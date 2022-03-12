@@ -1,0 +1,20 @@
+name: "Test Static Analysis: CppCheck"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.4.0
+    - name: Update
+      run: sudo apt update
+    - name: Install
+      run: sudo apt install cppcheck
+    - name: Check
+      run: cppcheck --verbose --suppressions-list=.cppcheck --error-exitcode=1 --enable=all -I include .

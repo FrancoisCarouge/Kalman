@@ -1,0 +1,22 @@
+name: "Test Address: Sanitizer"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.4.0
+    - name: Update
+      run: sudo apt update
+    - name: Install
+      run: sudo apt install gcc-11 g++-11
+    - name: Build
+      run: gcc-11 sample/*.cpp test/*.cpp source/*.cpp -Iinclude -std=c++23 -g -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -lstdc++
+    - name: Test
+      run: ASAN_OPTIONS=verbosity=2:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1 ./a.out

@@ -1,0 +1,20 @@
+name: "Test: Windows 2019 MSVC"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.4.0
+    - name: Install
+      uses: ilammy/msvc-dev-cmd@v1.10.0
+    - name: Version
+      run: cl
+    - name: Build
+      run: cl /EHsc /std:c++latest /I include /TP sample/*.cpp source/*.cpp test/*.cpp
