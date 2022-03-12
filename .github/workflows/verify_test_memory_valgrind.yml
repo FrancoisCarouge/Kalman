@@ -1,0 +1,22 @@
+name: "Test Memory: Valgrind"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.4.0
+    - name: Update
+      run: sudo apt update
+    - name: Install
+      run: sudo apt install gcc-11 g++-11 valgrind
+    - name: Build
+      run: gcc-11 sample/*.cpp test/*.cpp source/*.cpp -Iinclude -g -O0 -std=c++23 -lstdc++
+    - name: Test
+      run: valgrind --verbose ./a.out

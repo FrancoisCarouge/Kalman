@@ -1,0 +1,45 @@
+name: "Deploy Code Coverage: Coveralls"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.4.0
+    - name: Update
+      run: sudo apt update
+    - name: Install
+      run: sudo apt install gcc-11 g++-11 lcov
+    - name: Build
+      run: gcc-11 sample/*.cpp source/*.cpp test/*.cpp -Iinclude -O0 -g -std=c++23 -fmodules-ts --coverage -lstdc++
+    - name: "Coverage: Base"
+      run: |
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --capture --initial --directory . --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove base.info '/usr/*' --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove base.info '10' --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove base.info '*/test/*' --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove base.info '*/source/*' --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove base.info '*/sample/*' --output-file base.info
+    - name: run
+      run: ./a.out
+    - name: "Coverage: Test"
+      run: |
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --capture --directory . --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove test.info '/usr/*' --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove test.info '10' --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove test.info '*/test/*' --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove test.info '*/source/*' --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --remove test.info '*/sample/*' --output-file test.info
+    - name: "Coverage: Results"
+      run: lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --rc lcov_branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
+    - name: Coveralls
+      uses: coverallsapp/github-action@1.1.3
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: coverage.info
