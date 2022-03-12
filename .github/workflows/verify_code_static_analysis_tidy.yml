@@ -15,6 +15,19 @@ jobs:
     - name: Update
       run: sudo apt update
     - name: Install
-      run: sudo apt install clang-tidy-12
+      run: |
+        sudo apt install clang-tidy-12
+        ( cd /tmp ; mkdir eigen ;
+          git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
+          ( cd eigen ;
+            mkdir build ) ;
+          ( cd eigen/build ; 
+            cmake .. ; 
+            cmake --build . ;
+            sudo make install ) )
     - name: Tidy
-      run: clang-tidy-12 include/fcarouge/project.hpp --warnings-as-errors=* -- -std=c++2b
+      run: |
+        FILES=`find . -iname *.hpp`
+        clang-tidy-12 ${FILES} \
+          --warnings-as-errors=* \
+          -- -x c++ -Wall -Wextra -pedantic -std=c++2b -Iinclude -I/usr/local/include/eigen3

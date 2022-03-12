@@ -16,7 +16,15 @@ jobs:
       run: |
         wget http://kayari.org/gcc-latest/gcc-latest.deb
         sudo dpkg -i gcc-latest.deb
+        ( cd /tmp ; mkdir eigen ;
+          git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
+          ( cd eigen ;
+            mkdir build ) ;
+          ( cd eigen/build ; 
+            cmake .. ; 
+            cmake --build . ;
+            sudo make install ) )
     - name: Build
-      run: LD_LIBRARY_PATH=/opt/gcc-latest/lib64 LD_RUN_PATH=/opt/gcc-latest/lib64 /opt/gcc-latest/bin/gcc sample/*.cpp test/*.cpp source/*.cpp -Iinclude -Wall -Wextra -pedantic -std=c++23 -lstdc++
+      run: LD_LIBRARY_PATH=/opt/gcc-latest/lib64 LD_RUN_PATH=/opt/gcc-latest/lib64 /opt/gcc-latest/bin/gcc sample/*.cpp test/*.cpp source/*.cpp -Iinclude -I/usr/local/include/eigen3 -Wall -Wextra -pedantic -std=c++23 -lstdc++
     - name: Run
       run: ./a.out

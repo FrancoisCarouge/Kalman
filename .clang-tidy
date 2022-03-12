@@ -1,1 +1,5 @@
-Checks: '*'
+Checks: '*,
+        -fuchsia-overloaded-operator,
+        -misc-non-private-member-variables-in-classes,
+        -llvmlibc-*,
+        -modernize-use-trailing-return-type'

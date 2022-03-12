@@ -1,13 +1,13 @@
-/*_____  _____   ____       _ ______ _____ _______
- |  __ \|  __ \ / __ \     | |  ____/ ____|__   __|
- | |__) | |__) | |  | |    | | |__ | |       | |
- |  ___/|  _  /| |  | |_   | |  __|| |       | |
- | |    | | \ \| |__| | |__| | |___| |____   | |
- |_|    |_|  \_\\____/ \____/|______\_____|  |_|
+/*_  __          _      __  __          _   _
+ | |/ /    /\   | |    |  \/  |   /\   | \ | |
+ | ' /    /  \  | |    | \  / |  /  \  |  \| |
+ |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
+ | . \  / ____ \| |____| |  | |/ ____ \| |\  |
+ |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
-Project template for C++
+Kalman Filter for C++
 Version 0.1.0
-https://github.com/FrancoisCarouge/Project
+https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
 
@@ -36,18 +36,19 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include <cassert>
+#include "fcarouge/eigen.hpp"
+#include "fcarouge/kalman.hpp"
 
-#include "fcarouge/project.hpp"
+#include <cassert>
 
 namespace fcarouge::test
 {
 namespace
 {
-//! @test Verify the code.
-[[maybe_unused]] constexpr auto ctest = []() {
-  static_assert(true, "Compile-time test.");
-  assert(true && "Run-time test.");
+//! @test Demonstrate the code.
+[[maybe_unused]] constexpr auto test = []() {
+  static_assert(true, "Compile-time check.");
+  assert(true && "Run-time check.");
 
   return 0;
 }();
