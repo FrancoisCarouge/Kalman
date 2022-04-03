@@ -84,7 +84,9 @@ $(document).ready(function(){initNavTree('kalman_8hpp.xhtml',''); initResizable(
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">kalman.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -92,14 +94,71 @@ $(document).ready(function(){initNavTree('kalman_8hpp.xhtml',''); initResizable(
 
 <p>Kalman filter main project header.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;type_traits&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for kalman.hpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="kalman_8hpp__incl.svg" width="198" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="kalman_8hpp__dep__incl.svg" width="255" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+</div>
 <p><a href="kalman_8hpp_source.xhtml">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1transpose.xhtml">fcarouge::transpose&lt; Type &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1symmetrize.xhtml">fcarouge::symmetrize&lt; Type &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1divide.xhtml">fcarouge::divide&lt; Numerator, Denominator &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1identity.xhtml">fcarouge::identity&lt; Type &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacefcarouge"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></td></tr>
 <tr class="memdesc:namespacefcarouge"><td class="mdescLeft">&#160;</td><td class="mdescRight">Francois Carouge's projects namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a4dc9ea585453f05f12e9f765d08d545f"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a4dc9ea585453f05f12e9f765d08d545f">fcarouge::extrapolate_state</a> (const auto &amp;x, const auto &amp;f)</td></tr>
+<tr class="separator:a4dc9ea585453f05f12e9f765d08d545f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba1ee7114d412e16f5368788b3ed133c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aba1ee7114d412e16f5368788b3ed133c">fcarouge::extrapolate_state</a> (const auto &amp;x, const auto &amp;f, const auto &amp;g, const auto &amp;u)</td></tr>
+<tr class="separator:aba1ee7114d412e16f5368788b3ed133c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa8ef3ebc122ecb5970fe5d5da5cb3d"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; class Transpose&gt; </td></tr>
+<tr class="memitem:a9fa8ef3ebc122ecb5970fe5d5da5cb3d"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a9fa8ef3ebc122ecb5970fe5d5da5cb3d">fcarouge::extrapolate_covariance</a> (const auto &amp;p, const auto &amp;f, const auto &amp;q)</td></tr>
+<tr class="separator:a9fa8ef3ebc122ecb5970fe5d5da5cb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64c7abdbe0f3ab4923de70c86f602037"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Symmetrize&gt; </td></tr>
+<tr class="memitem:a64c7abdbe0f3ab4923de70c86f602037"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a64c7abdbe0f3ab4923de70c86f602037">fcarouge::predict</a> (auto &amp;x, auto &amp;p, const auto &amp;f, const auto &amp;q)</td></tr>
+<tr class="separator:a64c7abdbe0f3ab4923de70c86f602037"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1d214d789868b3303c570e6bc55d2fe"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Symmetrize&gt; </td></tr>
+<tr class="memitem:af1d214d789868b3303c570e6bc55d2fe"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af1d214d789868b3303c570e6bc55d2fe">fcarouge::predict</a> (auto &amp;x, auto &amp;p, const auto &amp;f, const auto &amp;q, const auto &amp;g, const auto &amp;u)</td></tr>
+<tr class="separator:af1d214d789868b3303c570e6bc55d2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61a69029a3b95a26748d6bb35e6b33b6"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a61a69029a3b95a26748d6bb35e6b33b6">fcarouge::update_state</a> (const auto &amp;x, const auto &amp;k, const auto &amp;z, const auto &amp;h)</td></tr>
+<tr class="separator:a61a69029a3b95a26748d6bb35e6b33b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61240a1a51b9bc2273b24f0459f4fc21"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Identity&gt; </td></tr>
+<tr class="memitem:a61240a1a51b9bc2273b24f0459f4fc21"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a61240a1a51b9bc2273b24f0459f4fc21">fcarouge::update_covariance</a> (const auto &amp;p, const auto &amp;k, const auto &amp;h, const auto &amp;r)</td></tr>
+<tr class="separator:a61240a1a51b9bc2273b24f0459f4fc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afae063c524e1b8112db42713307a7ee3"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename, typename &gt; typename Divide&gt; </td></tr>
+<tr class="memitem:afae063c524e1b8112db42713307a7ee3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#afae063c524e1b8112db42713307a7ee3">fcarouge::weight_gain</a> (const auto &amp;p, const auto &amp;h, const auto &amp;r)</td></tr>
+<tr class="separator:afae063c524e1b8112db42713307a7ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a276af45ca31e2b68b57a4b4015363984"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Symmetrize, template&lt; typename, typename &gt; typename Divide, template&lt; typename &gt; typename Identity&gt; </td></tr>
+<tr class="memitem:a276af45ca31e2b68b57a4b4015363984"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a276af45ca31e2b68b57a4b4015363984">fcarouge::update</a> (auto &amp;x, auto &amp;p, const auto &amp;h, const auto &amp;r, const auto &amp;z)</td></tr>
+<tr class="separator:a276af45ca31e2b68b57a4b4015363984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Kalman filter main project header. </p>
@@ -111,7 +170,7 @@ Namespaces</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sat Mar 12 2022 02:38:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sun Apr 3 2022 04:55:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

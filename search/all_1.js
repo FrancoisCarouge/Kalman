@@ -8,6 +8,6 @@ var searchData=
   ['contributing_8',['Contributing',['../md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
   ['contributing_2emd_9',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.xhtml',1,'']]],
   ['contributor_20covenant_20code_20of_20conduct_10',['Contributor Covenant Code of Conduct',['../md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml',1,'']]],
-  ['copy_11',['copy',['../_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424',1,'LICENSE.txt']]],
-  ['ctest_12',['ctest',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml#ad6daf43178cb5b6edb77a3f3583e64cd',1,'fcarouge::test::anonymous_namespace{test.cpp}']]]
+  ['control_5fg_11',['control_g',['../classfcarouge_1_1kalman.xhtml#aa75ec19accf3a89cc1aaef008a79adf3',1,'fcarouge::kalman']]],
+  ['copy_12',['copy',['../_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424',1,'LICENSE.txt']]]
 ];

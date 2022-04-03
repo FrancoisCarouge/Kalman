@@ -25,27 +25,32 @@
 var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
-    [ "Project Template for C++", "index.xhtml", [
+    [ "Kalman Filter for C++", "index.xhtml", [
       [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md13", null ],
-      [ "License", "index.xhtml#autotoc_md14", null ]
+      [ "Examples", "index.xhtml#autotoc_md14", [
+        [ "One-Dimensional", "index.xhtml#autotoc_md15", [
+          [ "Multi-Dimensional", "index.xhtml#autotoc_md16", null ]
+        ] ]
+      ] ],
+      [ "License", "index.xhtml#autotoc_md17", null ]
     ] ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
-      [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md1", null ],
-      [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md2", null ],
-      [ "Our Responsibilities", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md3", null ],
-      [ "Scope", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md4", null ],
-      [ "Enforcement", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md5", null ],
-      [ "Attribution", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ]
+      [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
+      [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
+      [ "Our Responsibilities", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
+      [ "Scope", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md9", null ],
+      [ "Enforcement", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md10", null ],
+      [ "Attribution", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md11", null ]
     ] ],
     [ "Contributing", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
-      [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md8", null ],
-      [ "Reporting Bugs", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md9", null ],
-      [ "Requesting Features", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md10", null ],
-      [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md11", null ]
+      [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md2", null ],
+      [ "Reporting Bugs", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md3", null ],
+      [ "Requesting Features", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md4", null ],
+      [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md5", null ]
     ] ],
     [ "Security Policy", "md__s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md16", null ],
-      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md17", null ]
+      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md19", null ],
+      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md20", null ]
     ] ],
     [ "Test List", "test.xhtml", null ],
     [ "Namespaces", "namespaces.xhtml", [
@@ -53,7 +58,18 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.xhtml", [
         [ "All", "namespacemembers.xhtml", null ],
         [ "Functions", "namespacemembers_func.xhtml", null ],
-        [ "Variables", "namespacemembers_vars.xhtml", null ]
+        [ "Variables", "namespacemembers_vars.xhtml", null ],
+        [ "Typedefs", "namespacemembers_type.xhtml", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.xhtml", [
+      [ "Class List", "annotated.xhtml", "annotated_dup" ],
+      [ "Class Index", "classes.xhtml", null ],
+      [ "Class Members", "functions.xhtml", [
+        [ "All", "functions.xhtml", null ],
+        [ "Functions", "functions_func.xhtml", null ],
+        [ "Variables", "functions_vars.xhtml", null ],
+        [ "Typedefs", "functions_type.xhtml", null ]
       ] ]
     ] ],
     [ "Files", "files.xhtml", [
@@ -69,7 +85,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"benchmark_8cpp.xhtml"
+"annotated.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

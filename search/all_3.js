@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['anonymous_5fnamespace_7bbenchmark_2ecpp_7d_14',['anonymous_namespace{benchmark.cpp}',['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02benchmark_8cpp_03.xhtml',1,'fcarouge::benchmark']]],
-  ['anonymous_5fnamespace_7bsample_2ecpp_7d_15',['anonymous_namespace{sample.cpp}',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02sample_8cpp_03.xhtml',1,'fcarouge::sample']]],
-  ['anonymous_5fnamespace_7btest_2ecpp_7d_16',['anonymous_namespace{test.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml',1,'fcarouge::test']]],
-  ['benchmark_17',['benchmark',['../namespacefcarouge_1_1benchmark.xhtml',1,'fcarouge']]],
-  ['fcarouge_18',['fcarouge',['../namespacefcarouge.xhtml',1,'']]],
-  ['from_19',['FROM',['../_l_i_c_e_n_s_e_8txt.xhtml#ad60b0e989fbef624c6d9ae96f49ff8e5',1,'LICENSE.txt']]],
-  ['internal_20',['internal',['../namespacefcarouge_1_1internal.xhtml',1,'fcarouge']]],
-  ['sample_21',['sample',['../namespacefcarouge_1_1sample.xhtml',1,'fcarouge']]],
-  ['test_22',['test',['../namespacefcarouge_1_1test.xhtml',1,'fcarouge']]]
+  ['eigen_2ehpp_15',['eigen.hpp',['../eigen_8hpp.xhtml',1,'']]],
+  ['estimate_5funcertainty_16',['estimate_uncertainty',['../classfcarouge_1_1kalman.xhtml#acc2408de5fd79926184b4e739b9f1ba0',1,'fcarouge::kalman']]],
+  ['estimate_5funcertainty_5fp_17',['estimate_uncertainty_p',['../classfcarouge_1_1kalman.xhtml#affbdb02f408d84c4a845dff9563e9847',1,'fcarouge::kalman']]],
+  ['extrapolate_5fcovariance_18',['extrapolate_covariance',['../namespacefcarouge.xhtml#a9fa8ef3ebc122ecb5970fe5d5da5cb3d',1,'fcarouge']]],
+  ['extrapolate_5fstate_19',['extrapolate_state',['../namespacefcarouge.xhtml#a4dc9ea585453f05f12e9f765d08d545f',1,'fcarouge::extrapolate_state(const auto &amp;x, const auto &amp;f)'],['../namespacefcarouge.xhtml#aba1ee7114d412e16f5368788b3ed133c',1,'fcarouge::extrapolate_state(const auto &amp;x, const auto &amp;f, const auto &amp;g, const auto &amp;u)']]]
 ];

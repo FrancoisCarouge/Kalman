@@ -87,16 +87,16 @@ $(document).ready(function(){initNavTree('test_8cpp_source.xhtml',''); initResiz
 <div class="title">test.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="test_8cpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*_____  _____   ____       _ ______ _____ _______</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> |  __ \|  __ \ / __ \     | |  ____/ ____|__   __|</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> | |__) | |__) | |  | |    | | |__ | |       | |</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> |  ___/|  _  /| |  | |_   | |  __|| |       | |</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> | |    | | \ \| |__| | |__| | |___| |____   | |</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> |_|    |_|  \_\\____/ \____/|______\_____|  |_|</span></div>
+<a href="test_8cpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*_  __          _      __  __          _   _</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> | |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> | &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> |  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> | . \  / ____ \| |____| |  | |/ ____ \| |\  |</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">Project template for C++</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">Kalman Filter for C++</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">Version 0.1.0</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">https://github.com/FrancoisCarouge/Project</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">https://github.com/FrancoisCarouge/Kalman</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">SPDX-License-Identifier: Unlicense</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span> </div>
@@ -125,24 +125,27 @@ $(document).ready(function(){initNavTree('test_8cpp_source.xhtml',''); initResiz
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;fcarouge/project.hpp&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml">   45</a></span>&#160;<span class="keyword">namespace</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml#ad6daf43178cb5b6edb77a3f3583e64cd">   48</a></span>&#160;[[maybe_unused]] constexpr <span class="keyword">auto</span> <a class="code" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml#ad6daf43178cb5b6edb77a3f3583e64cd">ctest</a> = []() {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  static_assert(<span class="keyword">true</span>, <span class="stringliteral">&quot;Compile-time test.&quot;</span>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  assert(<span class="keyword">true</span> &amp;&amp; <span class="stringliteral">&quot;Run-time test.&quot;</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <span class="comment">// namespace fcarouge::test</span></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03_xhtml_ad6daf43178cb5b6edb77a3f3583e64cd"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml#ad6daf43178cb5b6edb77a3f3583e64cd">fcarouge::test::anonymous_namespace{test.cpp}::ctest</a></div><div class="ttdeci">constexpr auto ctest</div><div class="ttdef"><b>Definition:</b> <a href="test_8cpp_source.xhtml#l00048">test.cpp:48</a></div></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="eigen_8hpp.xhtml">fcarouge/eigen.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml">   46</a></span>&#160;<span class="keyword">namespace</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml#ac27264a53fce5e9f607047bd8cddcbf3">   49</a></span>&#160;[[maybe_unused]] constexpr <span class="keyword">auto</span> <a class="code" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml#ac27264a53fce5e9f607047bd8cddcbf3">test</a> = []() {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  static_assert(<span class="keyword">true</span>, <span class="stringliteral">&quot;Compile-time check.&quot;</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  assert(<span class="keyword">true</span> &amp;&amp; <span class="stringliteral">&quot;Run-time check.&quot;</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="ttc" id="aeigen_8hpp_xhtml"><div class="ttname"><a href="eigen_8hpp.xhtml">eigen.hpp</a></div></div>
+<div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">Kalman filter main project header.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03_xhtml_ac27264a53fce5e9f607047bd8cddcbf3"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02test_8cpp_03.xhtml#ac27264a53fce5e9f607047bd8cddcbf3">fcarouge::test::anonymous_namespace{test.cpp}::test</a></div><div class="ttdeci">constexpr auto test</div><div class="ttdef"><b>Definition:</b> <a href="test_8cpp_source.xhtml#l00049">test.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -150,7 +153,7 @@ $(document).ready(function(){initNavTree('test_8cpp_source.xhtml',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.xhtml">test</a></li><li class="navelem"><a class="el" href="test_8cpp.xhtml">test.cpp</a></li>
-    <li class="footer">Generated on Sat Mar 12 2022 02:38:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sun Apr 3 2022 04:55:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

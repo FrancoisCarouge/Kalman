@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['benchmark_2ecpp_59',['benchmark.cpp',['../benchmark_8cpp.xhtml',1,'']]]
+  ['benchmark_2ecpp_96',['benchmark.cpp',['../benchmark_8cpp.xhtml',1,'']]]
 ];

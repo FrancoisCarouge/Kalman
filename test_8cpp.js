@@ -1,4 +1,4 @@
 var test_8cpp =
 [
-    [ "ctest", "test_8cpp.xhtml#ad6daf43178cb5b6edb77a3f3583e64cd", null ]
+    [ "test", "test_8cpp.xhtml#ac27264a53fce5e9f607047bd8cddcbf3", null ]
 ];
