@@ -36,11 +36,61 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-//! @brief Entry point to support the project.
-//!
-//! @details A valid and empty point of entry is provided to support the tests
-//! and samples. Not further code necessary.
-int main(int, char **)
+#ifndef FCAROUGE_EIGEN_HPP
+#define FCAROUGE_EIGEN_HPP
+
+#include "kalman.hpp"
+
+#include <Eigen/Eigen>
+
+namespace fcarouge::eigen
 {
-  return 0;
-}
+template <typename Type> struct transpose {
+  Eigen::Matrix<typename Type::Scalar, Type::ColsAtCompileTime,
+                Type::RowsAtCompileTime>
+  operator()(const Type &value)
+  {
+    return value.transpose();
+  }
+};
+
+template <typename Type> struct symmetrize {
+  Eigen::Matrix<typename Type::Scalar, Type::RowsAtCompileTime,
+                Type::ColsAtCompileTime>
+  operator()(const Type &value)
+  {
+    const auto e{ value.eval() };
+    return (e + e.transpose()) / 2;
+  }
+};
+
+template <typename Numerator, typename Denominator> struct divide {
+  Eigen::Matrix<typename Numerator::Scalar, Numerator::RowsAtCompileTime,
+                Denominator::RowsAtCompileTime>
+  operator()(const Numerator &numerator, const Denominator &denominator)
+  {
+    return denominator.transpose()
+        .fullPivHouseholderQr()
+        .solve(numerator.transpose())
+        .transpose();
+  }
+};
+
+template <typename Type> struct identity {
+  Eigen::Matrix<typename Type::Scalar, Type::RowsAtCompileTime,
+                Type::ColsAtCompileTime>
+  operator()()
+  {
+    return Type::Identity();
+  }
+};
+
+template <typename Type, int State, int Output, int Input>
+using kalman =
+    fcarouge::kalman<Eigen::Vector<Type, State>, Eigen::Vector<Type, Output>,
+                     Eigen::Vector<Type, Input>, transpose, symmetrize, divide,
+                     identity>;
+
+} // namespace fcarouge::eigen
+
+#endif // FCAROUGE_EIGEN_HPP

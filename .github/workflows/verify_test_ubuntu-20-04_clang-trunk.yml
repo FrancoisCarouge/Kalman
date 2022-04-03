@@ -18,8 +18,17 @@ jobs:
         sudo add-apt-repository -s "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main"
         sudo apt update
     - name: Install
-      run: sudo apt install clang-14 lldb-14 lld-14 libc++-14-dev libc++abi-14-dev
+      run: |
+        sudo apt install clang-14 lldb-14 lld-14 libc++-14-dev libc++abi-14-dev
+        ( cd /tmp ; mkdir eigen ;
+          git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
+          ( cd eigen ;
+            mkdir build ) ;
+          ( cd eigen/build ; 
+            cmake .. ; 
+            cmake --build . ;
+            sudo make install ) )
     - name: Build
-      run: clang++-14 sample/*.cpp source/*.cpp test/*.cpp -Iinclude -Wall -Wextra -pedantic -std=c++2b -stdlib=libc++
+      run: clang++-14 sample/*.cpp source/*.cpp test/*.cpp -Iinclude -I/usr/local/include/eigen3 -Wall -Wextra -pedantic -std=c++2b -stdlib=libc++
     - name: Run
       run: ./a.out
