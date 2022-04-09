@@ -47,42 +47,44 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge
 {
 template <typename Type> struct transpose {
-  auto operator()(const Type &value)
+  [[nodiscard]] inline constexpr auto operator()(const Type &value)
   {
     return value;
   }
 };
 
 template <typename Type> struct symmetrize {
-  auto operator()(const Type &value)
+  [[nodiscard]] inline constexpr auto operator()(const Type &value)
   {
     return value;
   }
 };
 
 template <typename Numerator, typename Denominator> struct divide {
-  auto operator()(const Numerator &numerator, const Denominator &denominator)
+  [[nodiscard]] inline constexpr auto operator()(const Numerator &numerator,
+                                                 const Denominator &denominator)
   {
     return numerator / denominator;
   }
 };
 
 template <typename Type> struct identity {
-  Type operator()()
+  [[nodiscard]] inline constexpr Type operator()()
   {
     return 1;
   }
 };
 
-auto extrapolate_state(const auto &x, const auto &f)
+[[nodiscard]] inline constexpr auto extrapolate_state(const auto &x,
+                                                      const auto &f)
 {
   using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
 
   return State{ f * x };
 }
 
-auto extrapolate_state(const auto &x, const auto &f, const auto &g,
-                       const auto &u)
+[[nodiscard]] inline constexpr auto
+extrapolate_state(const auto &x, const auto &f, const auto &g, const auto &u)
 {
   using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
 
@@ -90,7 +92,8 @@ auto extrapolate_state(const auto &x, const auto &f, const auto &g,
 }
 
 template <template <typename> class Transpose>
-auto extrapolate_covariance(const auto &p, const auto &f, const auto &q)
+[[nodiscard]] inline constexpr auto
+extrapolate_covariance(const auto &p, const auto &f, const auto &q)
 {
   using estimate_uncertainty_p =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
@@ -103,7 +106,7 @@ auto extrapolate_covariance(const auto &p, const auto &f, const auto &q)
 
 template <template <typename> typename Transpose,
           template <typename> typename Symmetrize>
-void predict(auto &x, auto &p, const auto &f, const auto &q)
+inline constexpr void predict(auto &x, auto &p, const auto &f, const auto &q)
 {
   x = extrapolate_state(x, f);
 
@@ -115,8 +118,8 @@ void predict(auto &x, auto &p, const auto &f, const auto &q)
 
 template <template <typename> typename Transpose,
           template <typename> typename Symmetrize>
-void predict(auto &x, auto &p, const auto &f, const auto &q, const auto &g,
-             const auto &u)
+inline constexpr void predict(auto &x, auto &p, const auto &f, const auto &q,
+                              const auto &g, const auto &u)
 {
   x = extrapolate_state(x, f, g, u);
 
@@ -126,7 +129,8 @@ void predict(auto &x, auto &p, const auto &f, const auto &q, const auto &g,
   p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
 }
 
-auto update_state(const auto &x, const auto &k, const auto &z, const auto &h)
+[[nodiscard]] inline constexpr auto update_state(const auto &x, const auto &k,
+                                                 const auto &z, const auto &h)
 {
   using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
 
@@ -135,8 +139,8 @@ auto update_state(const auto &x, const auto &k, const auto &z, const auto &h)
 
 template <template <typename> typename Transpose,
           template <typename> typename Identity>
-auto update_covariance(const auto &p, const auto &k, const auto &h,
-                       const auto &r)
+[[nodiscard]] inline constexpr auto
+update_covariance(const auto &p, const auto &k, const auto &h, const auto &r)
 {
   using estimate_uncertainty_p =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
@@ -151,7 +155,8 @@ auto update_covariance(const auto &p, const auto &k, const auto &h,
 
 template <template <typename> typename Transpose,
           template <typename, typename> typename Divide>
-auto weight_gain(const auto &p, const auto &h, const auto &r)
+[[nodiscard]] inline constexpr auto weight_gain(const auto &p, const auto &h,
+                                                const auto &r)
 {
   using observation_h = std::remove_reference_t<std::remove_cv_t<decltype(h)>>;
   using measurement_uncertainty_r =
@@ -167,7 +172,8 @@ template <template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity>
-void update(auto &x, auto &p, const auto &h, const auto &r, const auto &z)
+inline constexpr void update(auto &x, auto &p, const auto &h, const auto &r,
+                             const auto &z)
 {
   const auto k{ weight_gain<Transpose, Divide>(p, h, r) };
 
@@ -183,7 +189,8 @@ template <typename State, typename Output = State, typename Input = State,
           template <typename> typename Transpose = transpose,
           template <typename> typename Symmetrize = symmetrize,
           template <typename, typename> typename Divide = divide,
-          template <typename> typename Identity = identity>
+          template <typename> typename Identity = identity,
+          typename... PredictionArguments>
 class kalman
 {
   public:
@@ -204,29 +211,32 @@ class kalman
 
   state_x state;
   estimate_uncertainty_p estimate_uncertainty;
-  state_transition_f (*transition_state)();
-  process_noise_uncertainty_q (*noise_process)();
+
+  state_transition_f (*transition_state)(const PredictionArguments &...);
+  process_noise_uncertainty_q (*noise_process)(const PredictionArguments &...);
+  control_g (*transition_control)(const PredictionArguments &...);
+
   observation_h (*transition_observation)();
   measurement_uncertainty_r (*noise_observation)();
-  control_g (*transition_control)();
 
-  void predict()
+  inline constexpr void predict(const PredictionArguments &...arguments)
   {
-    const auto f{ transition_state() };
-    const auto q{ noise_process() };
+    const auto f{ transition_state(arguments...) };
+    const auto q{ noise_process(arguments...) };
     fcarouge::predict<Transpose, Symmetrize>(state, estimate_uncertainty, f, q);
   }
 
-  void predict(const input_u &input)
+  inline constexpr void predict(const input_u &input,
+                                const PredictionArguments &...arguments)
   {
-    const auto f{ transition_state() };
-    const auto q{ noise_process() };
-    const auto g{ transition_control() };
+    const auto f{ transition_state(arguments...) };
+    const auto q{ noise_process(arguments...) };
+    const auto g{ transition_control(arguments...) };
     fcarouge::predict<Transpose, Symmetrize>(state, estimate_uncertainty, f, q,
                                              g, input);
   }
 
-  void update(const output_z &output)
+  inline constexpr void update(const output_z &output)
   {
     const auto h{ transition_observation() };
     const auto r{ noise_observation() };

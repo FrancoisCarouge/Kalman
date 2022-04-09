@@ -46,8 +46,8 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::eigen
 {
 template <typename Type> struct transpose {
-  Eigen::Matrix<typename Type::Scalar, Type::ColsAtCompileTime,
-                Type::RowsAtCompileTime>
+  [[nodiscard]] inline constexpr Eigen::Matrix<
+      typename Type::Scalar, Type::ColsAtCompileTime, Type::RowsAtCompileTime>
   operator()(const Type &value)
   {
     return value.transpose();
@@ -55,8 +55,8 @@ template <typename Type> struct transpose {
 };
 
 template <typename Type> struct symmetrize {
-  Eigen::Matrix<typename Type::Scalar, Type::RowsAtCompileTime,
-                Type::ColsAtCompileTime>
+  [[nodiscard]] inline constexpr Eigen::Matrix<
+      typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime>
   operator()(const Type &value)
   {
     const auto e{ value.eval() };
@@ -65,8 +65,9 @@ template <typename Type> struct symmetrize {
 };
 
 template <typename Numerator, typename Denominator> struct divide {
-  Eigen::Matrix<typename Numerator::Scalar, Numerator::RowsAtCompileTime,
-                Denominator::RowsAtCompileTime>
+  [[nodiscard]] inline constexpr Eigen::Matrix<typename Numerator::Scalar,
+                                               Numerator::RowsAtCompileTime,
+                                               Denominator::RowsAtCompileTime>
   operator()(const Numerator &numerator, const Denominator &denominator)
   {
     return denominator.transpose()
@@ -77,19 +78,20 @@ template <typename Numerator, typename Denominator> struct divide {
 };
 
 template <typename Type> struct identity {
-  Eigen::Matrix<typename Type::Scalar, Type::RowsAtCompileTime,
-                Type::ColsAtCompileTime>
+  [[nodiscard]] inline constexpr Eigen::Matrix<
+      typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime>
   operator()()
   {
     return Type::Identity();
   }
 };
 
-template <typename Type, int State, int Output, int Input>
+template <typename Type, int State, int Output, int Input,
+          typename... PredictionArguments>
 using kalman =
     fcarouge::kalman<Eigen::Vector<Type, State>, Eigen::Vector<Type, Output>,
                      Eigen::Vector<Type, Input>, transpose, symmetrize, divide,
-                     identity>;
+                     identity, PredictionArguments...>;
 
 } // namespace fcarouge::eigen
 
