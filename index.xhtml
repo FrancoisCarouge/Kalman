@@ -111,9 +111,9 @@ Continuous Integration &amp; Deployment Actions</h1>
 Examples</h1>
 <h2><a class="anchor" id="autotoc_md15"></a>
 One-Dimensional</h2>
-<p><code><a class="el" href="main_8cpp.xhtml">main.cpp</a></code> </p><div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#af04e8d44914b89f662e742c440171cc3">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;float&gt;</a>;</div>
+<p><code><a class="el" href="main_8cpp.xhtml">main.cpp</a></code> </p><div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;float&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line"><a class="code" href="namespacefcarouge_1_1eigen.xhtml#af04e8d44914b89f662e742c440171cc3">kalman</a> k;</div>
+<div class="line"><a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">k.state = kalman::state_x{ 60 };</div>
 <div class="line">k.estimate_uncertainty = kalman::estimate_uncertainty_p{ 225 };</div>
@@ -123,14 +123,14 @@ One-Dimensional</h2>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">k.update(48.54);</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00187">kalman.hpp:188</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_af04e8d44914b89f662e742c440171cc3"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#af04e8d44914b89f662e742c440171cc3">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, transpose, symmetrize, divide, identity &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="eigen_8hpp_source.xhtml#l00089">eigen.hpp:92</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00194">kalman.hpp:195</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a9c082204cf7b71aebc7a5c7b490e6721"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, transpose, symmetrize, divide, identity, PredictionArguments... &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="eigen_8hpp_source.xhtml#l00091">eigen.hpp:94</a></div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md16"></a>
 Multi-Dimensional</h3>
 <p>Two states, one control, using Eigen3 support.</p>
-<p><code><a class="el" href="main_8cpp.xhtml">main.cpp</a></code> </p><div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#af04e8d44914b89f662e742c440171cc3">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1&gt;</a>;</div>
+<p><code><a class="el" href="main_8cpp.xhtml">main.cpp</a></code> </p><div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line"><a class="code" href="namespacefcarouge_1_1eigen.xhtml#af04e8d44914b89f662e742c440171cc3">kalman</a> k;</div>
+<div class="line"><a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">k.state = kalman::state_x{ 0, 0 };</div>
 <div class="line">k.estimate_uncertainty =</div>
@@ -165,7 +165,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Apr 3 2022 04:55:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 9 2022 02:54:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

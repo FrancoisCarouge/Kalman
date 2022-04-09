@@ -104,26 +104,26 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:af04e8d44914b89f662e742c440171cc3"><td class="memTemplParams" colspan="2">template&lt;typename Type , int State, int Output, int Input&gt; </td></tr>
-<tr class="memitem:af04e8d44914b89f662e742c440171cc3"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#af04e8d44914b89f662e742c440171cc3">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, <a class="el" href="structfcarouge_1_1eigen_1_1transpose.xhtml">transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml">divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml">identity</a> &gt;</td></tr>
-<tr class="separator:af04e8d44914b89f662e742c440171cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c082204cf7b71aebc7a5c7b490e6721"><td class="memTemplParams" colspan="2">template&lt;typename Type , int State, int Output, int Input, typename... PredictionArguments&gt; </td></tr>
+<tr class="memitem:a9c082204cf7b71aebc7a5c7b490e6721"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, <a class="el" href="structfcarouge_1_1eigen_1_1transpose.xhtml">transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml">divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml">identity</a>, PredictionArguments... &gt;</td></tr>
+<tr class="separator:a9c082204cf7b71aebc7a5c7b490e6721"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="af04e8d44914b89f662e742c440171cc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af04e8d44914b89f662e742c440171cc3">&#9670;&nbsp;</a></span>kalman</h2>
+<a id="a9c082204cf7b71aebc7a5c7b490e6721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c082204cf7b71aebc7a5c7b490e6721">&#9670;&nbsp;</a></span>kalman</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type , int State, int Output, int Input&gt; </div>
+template&lt;typename Type , int State, int Output, int Input, typename... PredictionArguments&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af04e8d44914b89f662e742c440171cc3">fcarouge::eigen::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt;Eigen::Vector&lt;Type, State&gt;, Eigen::Vector&lt;Type, Output&gt;, Eigen::Vector&lt;Type, Input&gt;, <a class="el" href="structfcarouge_1_1eigen_1_1transpose.xhtml">transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml">divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml">identity</a>&gt;</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">fcarouge::eigen::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt;Eigen::Vector&lt;Type, State&gt;, Eigen::Vector&lt;Type, Output&gt;, Eigen::Vector&lt;Type, Input&gt;, <a class="el" href="structfcarouge_1_1eigen_1_1transpose.xhtml">transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml">divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml">identity</a>, PredictionArguments...&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00089">89</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00091">91</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
 
 </div>
 </div>
@@ -133,7 +133,7 @@ template&lt;typename Type , int State, int Output, int Input&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li>
-    <li class="footer">Generated on Sun Apr 3 2022 04:55:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 9 2022 02:54:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
