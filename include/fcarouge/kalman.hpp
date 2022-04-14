@@ -40,7 +40,9 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_KALMAN_HPP
 
 //! @file
-//! @brief Kalman filter main project header.
+//! @brief The main Kalman filter class.
+
+#include "kalman_equation.hpp"
 
 #include <type_traits>
 
@@ -75,116 +77,17 @@ template <typename Type> struct identity {
   }
 };
 
-[[nodiscard]] inline constexpr auto extrapolate_state(const auto &x,
-                                                      const auto &f)
-{
-  using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
-
-  return State{ f * x };
-}
-
-[[nodiscard]] inline constexpr auto
-extrapolate_state(const auto &x, const auto &f, const auto &g, const auto &u)
-{
-  using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
-
-  return State{ f * x + g * u };
-}
-
-template <template <typename> class Transpose>
-[[nodiscard]] inline constexpr auto
-extrapolate_covariance(const auto &p, const auto &f, const auto &q)
-{
-  using estimate_uncertainty_p =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  using state_transition_f =
-      std::remove_reference_t<std::remove_cv_t<decltype(f)>>;
-  Transpose<state_transition_f> transpose;
-
-  return estimate_uncertainty_p{ f * p * transpose(f) + q };
-}
-
-template <template <typename> typename Transpose,
-          template <typename> typename Symmetrize>
-inline constexpr void predict(auto &x, auto &p, const auto &f, const auto &q)
-{
-  x = extrapolate_state(x, f);
-
-  using estimate_uncertainty_p =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  Symmetrize<estimate_uncertainty_p> symmetrize;
-  p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
-}
-
-template <template <typename> typename Transpose,
-          template <typename> typename Symmetrize>
-inline constexpr void predict(auto &x, auto &p, const auto &f, const auto &q,
-                              const auto &g, const auto &u)
-{
-  x = extrapolate_state(x, f, g, u);
-
-  using estimate_uncertainty_p =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  Symmetrize<estimate_uncertainty_p> symmetrize;
-  p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
-}
-
-[[nodiscard]] inline constexpr auto update_state(const auto &x, const auto &k,
-                                                 const auto &z, const auto &h)
-{
-  using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
-
-  return State{ x + k * (z - h * x) };
-}
-
-template <template <typename> typename Transpose,
-          template <typename> typename Identity>
-[[nodiscard]] inline constexpr auto
-update_covariance(const auto &p, const auto &k, const auto &h, const auto &r)
-{
-  using estimate_uncertainty_p =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  using gain = std::remove_reference_t<std::remove_cv_t<decltype(k)>>;
-  Transpose<estimate_uncertainty_p> transpose_p;
-  Transpose<gain> transpose_k;
-  Identity<estimate_uncertainty_p> i;
-
-  return estimate_uncertainty_p{ (i() - k * h) * p * transpose_p(i() - k * h) +
-                                 k * r * transpose_k(k) };
-}
-
-template <template <typename> typename Transpose,
-          template <typename, typename> typename Divide>
-[[nodiscard]] inline constexpr auto weight_gain(const auto &p, const auto &h,
-                                                const auto &r)
-{
-  using observation_h = std::remove_reference_t<std::remove_cv_t<decltype(h)>>;
-  using measurement_uncertainty_r =
-      std::remove_reference_t<std::remove_cv_t<decltype(r)>>;
-  using gain = std::invoke_result_t<Transpose<observation_h>, observation_h>;
-  Transpose<observation_h> transpose_h;
-  Divide<gain, measurement_uncertainty_r> divide;
-
-  return gain{ divide(p * transpose_h(h), h * p * transpose_h(h) + r) };
-}
-
-template <template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
-          template <typename> typename Identity>
-inline constexpr void update(auto &x, auto &p, const auto &h, const auto &r,
-                             const auto &z)
-{
-  const auto k{ weight_gain<Transpose, Divide>(p, h, r) };
-
-  x = update_state(x, k, z, h);
-
-  using estimate_uncertainty_p =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  Symmetrize<estimate_uncertainty_p> symmetrize;
-  p = symmetrize(update_covariance<Transpose, Identity>(p, k, h, r));
-}
-
+//! @brief Kalman filter.
+//!
+//! @tparam State The type template parameter of the state vector x.
+//! @tparam Output The type template parameter of the measurement vector z.
+//! @tparam Input The type template parameter of the control u.
+//! @tparam Transpose The template template parameter of the transpose functor.
+//! @tparam Divide The template template parameter of the division functor.
+//! @tparam Identity The template template parameter of the identity functor.
+//! @tparam PredictionArguments The variadic type template parameter for
+//! additional prediction function parameters. Time, or a delta thereof, is
+//! often a prediction parameter.
 template <typename State, typename Output = State, typename Input = State,
           template <typename> typename Transpose = transpose,
           template <typename> typename Symmetrize = symmetrize,
@@ -212,6 +115,8 @@ class kalman
   state_x state;
   estimate_uncertainty_p estimate_uncertainty;
 
+  // Functors could be replaced by the standard general-purpose polymorphic
+  // function wrapper `std::function` if lambda captures are needed.
   state_transition_f (*transition_state)(const PredictionArguments &...);
   process_noise_uncertainty_q (*noise_process)(const PredictionArguments &...);
   control_g (*transition_control)(const PredictionArguments &...);
