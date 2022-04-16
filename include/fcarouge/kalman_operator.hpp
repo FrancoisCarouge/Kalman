@@ -36,63 +36,43 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_EIGEN_HPP
-#define FCAROUGE_EIGEN_HPP
+#ifndef FCAROUGE_KALMAN_OPERATOR_HPP
+#define FCAROUGE_KALMAN_OPERATOR_HPP
 
-#include "kalman.hpp"
+//! @file
+//! @brief Kalman operation for standard types.
 
-#include <Eigen/Eigen>
-
-namespace fcarouge::eigen
+namespace fcarouge
 {
 template <typename Type> struct transpose {
-  [[nodiscard]] inline constexpr Eigen::Matrix<
-      typename Type::Scalar, Type::ColsAtCompileTime, Type::RowsAtCompileTime>
-  operator()(const Type &value)
+  [[nodiscard]] inline constexpr auto operator()(const Type &value)
   {
-    return value.transpose();
+    return value;
   }
 };
 
 template <typename Type> struct symmetrize {
-  [[nodiscard]] inline constexpr Eigen::Matrix<
-      typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime>
-  operator()(const Type &value)
+  [[nodiscard]] inline constexpr auto operator()(const Type &value)
   {
-    const auto e{ value.eval() };
-    return (e + e.transpose()) / 2;
+    return value;
   }
 };
 
 template <typename Numerator, typename Denominator> struct divide {
-  [[nodiscard]] inline constexpr Eigen::Matrix<typename Numerator::Scalar,
-                                               Numerator::RowsAtCompileTime,
-                                               Denominator::RowsAtCompileTime>
-  operator()(const Numerator &numerator, const Denominator &denominator)
+  [[nodiscard]] inline constexpr auto operator()(const Numerator &numerator,
+                                                 const Denominator &denominator)
   {
-    return denominator.transpose()
-        .fullPivHouseholderQr()
-        .solve(numerator.transpose())
-        .transpose();
+    return numerator / denominator;
   }
 };
 
 template <typename Type> struct identity {
-  [[nodiscard]] inline constexpr Eigen::Matrix<
-      typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime>
-  operator()()
+  [[nodiscard]] inline constexpr Type operator()()
   {
-    return Type::Identity();
+    return 1;
   }
 };
 
-template <typename Type, int State, int Output, int Input,
-          typename... PredictionArguments>
-using kalman =
-    fcarouge::kalman<Eigen::Vector<Type, State>, Eigen::Vector<Type, Output>,
-                     Eigen::Vector<Type, Input>, transpose, symmetrize, divide,
-                     identity, PredictionArguments...>;
+} // namespace fcarouge
 
-} // namespace fcarouge::eigen
-
-#endif // FCAROUGE_EIGEN_HPP
+#endif // FCAROUGE_KALMAN_OPERATOR_HPP
