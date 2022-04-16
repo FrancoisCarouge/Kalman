@@ -43,40 +43,12 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief The main Kalman filter class.
 
 #include "kalman_equation.hpp"
+#include "kalman_operator.hpp"
 
 #include <type_traits>
 
 namespace fcarouge
 {
-template <typename Type> struct transpose {
-  [[nodiscard]] inline constexpr auto operator()(const Type &value)
-  {
-    return value;
-  }
-};
-
-template <typename Type> struct symmetrize {
-  [[nodiscard]] inline constexpr auto operator()(const Type &value)
-  {
-    return value;
-  }
-};
-
-template <typename Numerator, typename Denominator> struct divide {
-  [[nodiscard]] inline constexpr auto operator()(const Numerator &numerator,
-                                                 const Denominator &denominator)
-  {
-    return numerator / denominator;
-  }
-};
-
-template <typename Type> struct identity {
-  [[nodiscard]] inline constexpr Type operator()()
-  {
-    return 1;
-  }
-};
-
 //! @brief Kalman filter.
 //!
 //! @tparam State The type template parameter of the state vector x.
