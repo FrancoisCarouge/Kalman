@@ -69,56 +69,57 @@ template <typename State, typename Output = State, typename Input = State,
 class kalman
 {
   public:
-  using state_x = State;
-  using output_z = Output;
-  using input_u = Input;
-  using estimate_uncertainty_p =
+  using state = State;
+  using output = Output;
+  using input = Input;
+  using estimate_uncertainty =
       std::invoke_result_t<Divide<State, State>, State, State>;
-  using process_noise_uncertainty_q =
+  using process_noise_uncertainty =
       std::invoke_result_t<Divide<State, State>, State, State>;
-  using state_transition_f =
+  using state_transition =
       std::invoke_result_t<Divide<State, State>, State, State>;
-  using observation_h =
+  using observation =
       std::invoke_result_t<Divide<Output, State>, Output, State>;
-  using measurement_uncertainty_r =
+  using measurement_uncertainty =
       std::invoke_result_t<Divide<Output, Output>, Output, Output>;
-  using control_g = std::invoke_result_t<Divide<State, Output>, State, Output>;
+  using control = std::invoke_result_t<Divide<State, Output>, State, Output>;
 
-  state_x state;
-  estimate_uncertainty_p estimate_uncertainty;
+  state state_x;
+  estimate_uncertainty estimate_uncertainty_p;
 
   // Functors could be replaced by the standard general-purpose polymorphic
   // function wrapper `std::function` if lambda captures are needed.
-  state_transition_f (*transition_state)(const PredictionArguments &...);
-  process_noise_uncertainty_q (*noise_process)(const PredictionArguments &...);
-  control_g (*transition_control)(const PredictionArguments &...);
+  state_transition (*transition_state_f)(const PredictionArguments &...);
+  process_noise_uncertainty (*noise_process_q)(const PredictionArguments &...);
+  control (*transition_control_g)(const PredictionArguments &...);
 
-  observation_h (*transition_observation)();
-  measurement_uncertainty_r (*noise_observation)();
+  observation (*transition_observation_h)();
+  measurement_uncertainty (*noise_observation_r)();
 
   inline constexpr void predict(const PredictionArguments &...arguments)
   {
-    const auto f{ transition_state(arguments...) };
-    const auto q{ noise_process(arguments...) };
-    fcarouge::predict<Transpose, Symmetrize>(state, estimate_uncertainty, f, q);
+    const auto f{ transition_state_f(arguments...) };
+    const auto q{ noise_process_q(arguments...) };
+    fcarouge::predict<Transpose, Symmetrize>(state_x, estimate_uncertainty_p, f,
+                                             q);
   }
 
-  inline constexpr void predict(const input_u &input,
+  inline constexpr void predict(const input &input_u,
                                 const PredictionArguments &...arguments)
   {
-    const auto f{ transition_state(arguments...) };
-    const auto q{ noise_process(arguments...) };
-    const auto g{ transition_control(arguments...) };
-    fcarouge::predict<Transpose, Symmetrize>(state, estimate_uncertainty, f, q,
-                                             g, input);
+    const auto f{ transition_state_f(arguments...) };
+    const auto q{ noise_process_q(arguments...) };
+    const auto g{ transition_control_g(arguments...) };
+    fcarouge::predict<Transpose, Symmetrize>(state_x, estimate_uncertainty_p, f,
+                                             q, g, input_u);
   }
 
-  inline constexpr void update(const output_z &output)
+  inline constexpr void update(const output &output_z)
   {
-    const auto h{ transition_observation() };
-    const auto r{ noise_observation() };
+    const auto h{ transition_observation_h() };
+    const auto r{ noise_observation_r() };
     fcarouge::update<Transpose, Symmetrize, Divide, Identity>(
-        state, estimate_uncertainty, h, r, output);
+        state_x, estimate_uncertainty_p, h, r, output_z);
   }
 };
 

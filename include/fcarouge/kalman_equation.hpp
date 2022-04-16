@@ -68,9 +68,9 @@ extrapolate_covariance(const auto &p, const auto &f, const auto &q)
 {
   using estimate_uncertainty_p =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  using state_transition_f =
+  using state_transition =
       std::remove_reference_t<std::remove_cv_t<decltype(f)>>;
-  Transpose<state_transition_f> transpose;
+  Transpose<state_transition> transpose;
 
   return estimate_uncertainty_p{ f * p * transpose(f) + q };
 }
@@ -129,12 +129,12 @@ template <template <typename> typename Transpose,
 [[nodiscard]] inline constexpr auto weight_gain(const auto &p, const auto &h,
                                                 const auto &r)
 {
-  using observation_h = std::remove_reference_t<std::remove_cv_t<decltype(h)>>;
-  using measurement_uncertainty_r =
+  using observation = std::remove_reference_t<std::remove_cv_t<decltype(h)>>;
+  using measurement_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(r)>>;
-  using gain = std::invoke_result_t<Transpose<observation_h>, observation_h>;
-  Transpose<observation_h> transpose_h;
-  Divide<gain, measurement_uncertainty_r> divide;
+  using gain = std::invoke_result_t<Transpose<observation>, observation>;
+  Transpose<observation> transpose_h;
+  Divide<gain, measurement_uncertainty> divide;
 
   return gain{ divide(p * transpose_h(h), h * p * transpose_h(h) + r) };
 }
