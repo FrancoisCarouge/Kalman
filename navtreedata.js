@@ -32,7 +32,8 @@ var NAVTREE =
           [ "Multi-Dimensional", "index.xhtml#autotoc_md16", null ]
         ] ]
       ] ],
-      [ "License", "index.xhtml#autotoc_md17", null ]
+      [ "Resources", "index.xhtml#autotoc_md17", null ],
+      [ "License", "index.xhtml#autotoc_md18", null ]
     ] ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
@@ -49,8 +50,8 @@ var NAVTREE =
       [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md5", null ]
     ] ],
     [ "Security Policy", "md__s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md19", null ],
-      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md20", null ]
+      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md20", null ],
+      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md21", null ]
     ] ],
     [ "Test List", "test.xhtml", null ],
     [ "Namespaces", "namespaces.xhtml", [

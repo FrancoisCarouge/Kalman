@@ -115,15 +115,15 @@ Continuous Integration &amp; Deployment Actions</h1>
 Examples</h1>
 <h2><a class="anchor" id="autotoc_md15"></a>
 One-Dimensional</h2>
-<p><code><a class="el" href="main_8cpp.xhtml">main.cpp</a></code> </p><div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;float&gt;</a>;</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;double&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">k.state = kalman::state_x{ 60 };</div>
-<div class="line">k.estimate_uncertainty = kalman::estimate_uncertainty_p{ 225 };</div>
-<div class="line">k.transition_observation = []() { <span class="keywordflow">return</span> kalman::observation_h{ 1 }; };</div>
-<div class="line">k.noise_observation = []() {</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::measurement_uncertainty_r{ 25 };</div>
+<div class="line">k.state_x = kalman::state{ 60 };</div>
+<div class="line">k.estimate_uncertainty_p = kalman::estimate_uncertainty{ 15 * 15 };</div>
+<div class="line">k.transition_observation_h = []() { <span class="keywordflow">return</span> kalman::observation{ 1 }; };</div>
+<div class="line">k.noise_observation_r = []() {</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::measurement_uncertainty{ 5 * 5 };</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">k.update(48.54);</div>
@@ -132,29 +132,48 @@ One-Dimensional</h2>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md16"></a>
 Multi-Dimensional</h3>
 <p>Two states, one control, using Eigen3 support.</p>
-<p><code><a class="el" href="main_8cpp.xhtml">main.cpp</a></code> </p><div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1&gt;</a>;</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> =</div>
+<div class="line">    <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1, std::chrono::milliseconds&gt;</a>;</div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> gravitational_acceleration{ -9.8 }; <span class="comment">// m.s^-2</span></div>
+<div class="line"><span class="keyword">const</span> std::chrono::milliseconds delta_time{ 250 };</div>
 <div class="line"><a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">k.state = kalman::state_x{ 0, 0 };</div>
-<div class="line">k.estimate_uncertainty =</div>
-<div class="line">    kalman::estimate_uncertainty_p{ { 500, 0 }, { 0, 500 } };</div>
-<div class="line">k.transition_state = []() {</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::state_transition_f{ { 1, 0.25 }, { 0, 1 } };</div>
+<div class="line">k.state_x = kalman::state{ 0, 0 };</div>
+<div class="line">k.estimate_uncertainty_p =</div>
+<div class="line">    kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } };</div>
+<div class="line">k.transition_state_f = [](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::state_transition{ { 1, dt }, { 0, 1 } };</div>
 <div class="line">};</div>
-<div class="line">k.noise_process = []() {</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::process_noise_uncertainty_q{ { 0.000009765625, 0.000078125 },</div>
-<div class="line">                                              { 0.000078125, 0.000625 } };</div>
+<div class="line">k.noise_process_q = [](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::process_noise_uncertainty{</div>
+<div class="line">    { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },</div>
+<div class="line">    { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }</div>
+<div class="line">  };</div>
 <div class="line">};</div>
-<div class="line">k.transition_observation = []() { <span class="keywordflow">return</span> kalman::observation_h{ { 1, 0 } }; };</div>
-<div class="line">k.noise_observation = []() {</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::measurement_uncertainty_r{ 400 };</div>
+<div class="line">k.transition_control_g = [](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::control{ 0.0313, dt };</div>
 <div class="line">};</div>
-<div class="line">k.transition_control = []() { <span class="keywordflow">return</span> kalman::control_g{ 0.0313, 0.25 }; };</div>
+<div class="line">k.transition_observation_h = []() { <span class="keywordflow">return</span> kalman::observation{ { 1, 0 } }; };</div>
+<div class="line">k.noise_observation_r = []() {</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::measurement_uncertainty{ 400 };</div>
+<div class="line">};</div>
 <div class="line"> </div>
-<div class="line">k.predict(kalman::input_u{ -9.8 });</div>
-<div class="line">k.update(kalman::output_z{ -32.4 });</div>
+<div class="line">k.predict(kalman::input{ gravitational_acceleration }, delta_time);</div>
+<div class="line">k.update(kalman::output{ -32.40 });</div>
+<div class="line">k.predict(kalman::input{ 39.72 }, delta_time);</div>
+<div class="line">k.update(kalman::output{ -11.1 });</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
+Resources</h1>
+<p>Awesome resources to learn about Kalman filters:</p>
+<ul>
+<li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
+<li><a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters in Python</a> by Roger Labbe.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md18"></a>
 License</h1>
 <p><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
 <p>Project for C++ is public domain:</p>
@@ -169,7 +188,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Apr 16 2022 05:13:11 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Apr 18 2022 01:45:09 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
