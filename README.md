@@ -47,53 +47,68 @@ A generic Kalman filter.
 
 ## One-Dimensional
 
-`main.cpp`
 ```cpp
-  using kalman = fcarouge::kalman<float>;
+using kalman = fcarouge::kalman<double>;
 
-  kalman k;
+kalman k;
 
-  k.state = kalman::state_x{ 60 };
-  k.estimate_uncertainty = kalman::estimate_uncertainty_p{ 225 };
-  k.transition_observation = []() { return kalman::observation_h{ 1 }; };
-  k.noise_observation = []() {
-    return kalman::measurement_uncertainty_r{ 25 };
-  };
+k.state_x = kalman::state{ 60 };
+k.estimate_uncertainty_p = kalman::estimate_uncertainty{ 15 * 15 };
+k.transition_observation_h = []() { return kalman::observation{ 1 }; };
+k.noise_observation_r = []() {
+  return kalman::measurement_uncertainty{ 5 * 5 };
+};
 
-  k.update(48.54);
+k.update(48.54);
 ```
 
 ### Multi-Dimensional
 
 Two states, one control, using Eigen3 support.
 
-`main.cpp`
 ```cpp
-  using kalman = fcarouge::eigen::kalman<double, 2, 1, 1>;
+using kalman =
+    fcarouge::eigen::kalman<double, 2, 1, 1, std::chrono::milliseconds>;
 
-  kalman k;
+const double gravitational_acceleration{ -9.8 }; // m.s^-2
+const std::chrono::milliseconds delta_time{ 250 };
+kalman k;
 
-  k.state = kalman::state_x{ 0, 0 };
-  k.estimate_uncertainty =
-      kalman::estimate_uncertainty_p{ { 500, 0 }, { 0, 500 } };
-  k.transition_state = []() {
-    return kalman::state_transition_f{ { 1, 0.25 }, { 0, 1 } };
+k.state_x = kalman::state{ 0, 0 };
+k.estimate_uncertainty_p =
+    kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } };
+k.transition_state_f = [](const std::chrono::milliseconds &delta_time) {
+  const auto dt{ std::chrono::duration<double>(delta_time).count() };
+  return kalman::state_transition{ { 1, dt }, { 0, 1 } };
+};
+k.noise_process_q = [](const std::chrono::milliseconds &delta_time) {
+  const auto dt{ std::chrono::duration<double>(delta_time).count() };
+  return kalman::process_noise_uncertainty{
+    { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },
+    { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }
   };
-  k.noise_process = []() {
-    return kalman::process_noise_uncertainty_q{ { 0.000009765625, 0.000078125 },
-                                                { 0.000078125, 0.000625 } };
-  };
-  k.transition_observation = []() { return kalman::observation_h{ { 1, 0 } }; };
-  k.noise_observation = []() {
-    return kalman::measurement_uncertainty_r{ 400 };
-  };
-  k.transition_control = []() { return kalman::control_g{ 0.0313, 0.25 }; };
+};
+k.transition_control_g = [](const std::chrono::milliseconds &delta_time) {
+  const auto dt{ std::chrono::duration<double>(delta_time).count() };
+  return kalman::control{ 0.0313, dt };
+};
+k.transition_observation_h = []() { return kalman::observation{ { 1, 0 } }; };
+k.noise_observation_r = []() {
+  return kalman::measurement_uncertainty{ 400 };
+};
 
-  k.predict(kalman::input_u{ -9.8 });
-  k.update(kalman::output_z{ -32.4 });
-
-
+k.predict(kalman::input{ gravitational_acceleration }, delta_time);
+k.update(kalman::output{ -32.40 });
+k.predict(kalman::input{ 39.72 }, delta_time);
+k.update(kalman::output{ -11.1 });
 ```
+
+# Resources
+
+Awesome resources to learn about Kalman filters:
+
+- [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
+- [Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) by Roger Labbe.
 
 # License
 
