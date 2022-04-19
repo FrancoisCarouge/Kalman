@@ -80,7 +80,7 @@ class kalman
       std::invoke_result_t<Divide<State, State>, State, State>;
   using observation =
       std::invoke_result_t<Divide<Output, State>, Output, State>;
-  using measurement_uncertainty =
+  using observation_noise_uncertainty =
       std::invoke_result_t<Divide<Output, Output>, Output, Output>;
   using control = std::invoke_result_t<Divide<State, Input>, State, Input>;
 
@@ -94,7 +94,7 @@ class kalman
   control (*transition_control_g)(const PredictionArguments &...);
 
   observation (*transition_observation_h)();
-  measurement_uncertainty (*noise_observation_r)();
+  observation_noise_uncertainty (*noise_observation_r)();
 
   inline constexpr void predict(const PredictionArguments &...arguments)
   {

@@ -130,11 +130,11 @@ template <template <typename> typename Transpose,
                                                 const auto &r)
 {
   using observation = std::remove_reference_t<std::remove_cv_t<decltype(h)>>;
-  using measurement_uncertainty =
+  using observation_noise_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(r)>>;
   using gain = std::invoke_result_t<Transpose<observation>, observation>;
   Transpose<observation> transpose_h;
-  Divide<gain, measurement_uncertainty> divide;
+  Divide<gain, observation_noise_uncertainty> divide;
 
   return gain{ divide(p * transpose_h(h), h * p * transpose_h(h) + r) };
 }
