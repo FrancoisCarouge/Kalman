@@ -89,12 +89,20 @@ class kalman
 
   // Functors could be replaced by the standard general-purpose polymorphic
   // function wrapper `std::function` if lambda captures are needed.
+  observation (*transition_observation_h)();
+  observation_noise_uncertainty (*noise_observation_r)();
+
   state_transition (*transition_state_f)(const PredictionArguments &...);
   process_noise_uncertainty (*noise_process_q)(const PredictionArguments &...);
   control (*transition_control_g)(const PredictionArguments &...);
 
-  observation (*transition_observation_h)();
-  observation_noise_uncertainty (*noise_observation_r)();
+  inline constexpr void update(const output &output_z)
+  {
+    const auto h{ transition_observation_h() };
+    const auto r{ noise_observation_r() };
+    fcarouge::update<Transpose, Symmetrize, Divide, Identity>(
+        state_x, estimate_uncertainty_p, h, r, output_z);
+  }
 
   inline constexpr void predict(const PredictionArguments &...arguments)
   {
@@ -112,14 +120,6 @@ class kalman
     const auto g{ transition_control_g(arguments...) };
     fcarouge::predict<Transpose, Symmetrize>(state_x, estimate_uncertainty_p, f,
                                              q, g, input_u);
-  }
-
-  inline constexpr void update(const output &output_z)
-  {
-    const auto h{ transition_observation_h() };
-    const auto r{ noise_observation_r() };
-    fcarouge::update<Transpose, Symmetrize, Divide, Identity>(
-        state_x, estimate_uncertainty_p, h, r, output_z);
   }
 };
 
