@@ -123,7 +123,7 @@ One-Dimensional</h2>
 <div class="line">k.estimate_uncertainty_p = kalman::estimate_uncertainty{ 15 * 15 };</div>
 <div class="line">k.transition_observation_h = []() { <span class="keywordflow">return</span> kalman::observation{ 1 }; };</div>
 <div class="line">k.noise_observation_r = []() {</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::measurement_uncertainty{ 5 * 5 };</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::observation_noise_uncertainty{ 5 * 5 };</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">k.update(48.54);</div>
@@ -159,7 +159,7 @@ Multi-Dimensional</h3>
 <div class="line">};</div>
 <div class="line">k.transition_observation_h = []() { <span class="keywordflow">return</span> kalman::observation{ { 1, 0 } }; };</div>
 <div class="line">k.noise_observation_r = []() {</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::measurement_uncertainty{ 400 };</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::observation_noise_uncertainty{ 400 };</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">k.predict(kalman::input{ gravitational_acceleration }, delta_time);</div>
@@ -188,7 +188,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 19 2022 02:12:58 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Apr 19 2022 03:27:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
