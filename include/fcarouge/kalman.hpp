@@ -82,7 +82,7 @@ class kalman
       std::invoke_result_t<Divide<Output, State>, Output, State>;
   using measurement_uncertainty =
       std::invoke_result_t<Divide<Output, Output>, Output, Output>;
-  using control = std::invoke_result_t<Divide<State, Output>, State, Output>;
+  using control = std::invoke_result_t<Divide<State, Input>, State, Input>;
 
   state state_x;
   estimate_uncertainty estimate_uncertainty_p;
