@@ -56,7 +56,7 @@ k.state_x = kalman::state{ 60 };
 k.estimate_uncertainty_p = kalman::estimate_uncertainty{ 15 * 15 };
 k.transition_observation_h = []() { return kalman::observation{ 1 }; };
 k.noise_observation_r = []() {
-  return kalman::measurement_uncertainty{ 5 * 5 };
+  return kalman::observation_noise_uncertainty{ 5 * 5 };
 };
 
 k.update(48.54);
@@ -94,7 +94,7 @@ k.transition_control_g = [](const std::chrono::milliseconds &delta_time) {
 };
 k.transition_observation_h = []() { return kalman::observation{ { 1, 0 } }; };
 k.noise_observation_r = []() {
-  return kalman::measurement_uncertainty{ 400 };
+  return kalman::observation_noise_uncertainty{ 400 };
 };
 
 k.predict(kalman::input{ gravitational_acceleration }, delta_time);
