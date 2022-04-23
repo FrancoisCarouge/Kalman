@@ -48,30 +48,65 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::eigen
 {
+//! @brief Function object for performing Eigen matrix transposition.
+//!
+//! @details Implemented with the Eigen linear algebra library matrices with
+//! sizes fixed at compile-time.
+//!
+//! @tparam Type The type template parameter of the matrix.
 template <typename Type> struct transpose {
+  //! @brief Returns the transpose of `value`.
+  //!
+  //! @param value Value to compute the transpose of.
+  //!
+  //! @exception May throw implementation-defined exceptions.
   [[nodiscard]] inline constexpr Eigen::Matrix<
       typename Type::Scalar, Type::ColsAtCompileTime, Type::RowsAtCompileTime>
-  operator()(const Type &value)
+  operator()(const Type &value) const
   {
     return value.transpose();
   }
 };
 
+//! @brief Function object for performing Eigen matrix symmetrization.
+//!
+//! @details Implemented with the Eigen linear algebra library matrices with
+//! sizes fixed at compile-time.
+//!
+//! @tparam Type The type template parameter of the matrix.
 template <typename Type> struct symmetrize {
+  //! @brief Returns the symmetrised `value`.
+  //!
+  //! @param value Value to compute the symmetry of.
+  //!
+  //! @exception May throw implementation-defined exceptions.
   [[nodiscard]] inline constexpr Eigen::Matrix<
       typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime>
-  operator()(const Type &value)
+  operator()(const Type &value) const
   {
     const auto e{ value.eval() };
     return (e + e.transpose()) / 2;
   }
 };
 
+//! @brief Function object for performing Eigen matrix division.
+//!
+//! @details Implemented with the Eigen linear algebra library matrices with
+//! sizes fixed at compile-time.
+//!
+//! @tparam Numerator The type template parameter of the dividend.
+//! @tparam Denominator The type template parameter of the divisor.
 template <typename Numerator, typename Denominator> struct divide {
+  //! @brief Returns the quotient of `numerator` and `denominator`.
+  //!
+  //! @param numerator The dividend of the division.
+  //! @param denominator The divisor of the division.
+  //!
+  //! @exception May throw implementation-defined exceptions.
   [[nodiscard]] inline constexpr Eigen::Matrix<typename Numerator::Scalar,
                                                Numerator::RowsAtCompileTime,
                                                Denominator::RowsAtCompileTime>
-  operator()(const Numerator &numerator, const Denominator &denominator)
+  operator()(const Numerator &numerator, const Denominator &denominator) const
   {
     return denominator.transpose()
         .fullPivHouseholderQr()
@@ -80,15 +115,42 @@ template <typename Numerator, typename Denominator> struct divide {
   }
 };
 
+//! @brief Function object for providing an Eigem identy matrix.
+//!
+//! @details Implemented with the Eigen linear algebra library matrices with
+//! sizes fixed at compile-time.
+//!
+//! @tparam Type The type template parameter of the matrix.
+//!
+//! @note This function object template should be a variable template. Proposed
+//! in paper P2008R0 entitled "Enabling variable template template parameters".
 template <typename Type> struct identity {
+  //! @brief Returns the identity maxtrix.
+  //!
+  //! @return The identity matrix `diag(1, 1, ..., 1)`.
+  //!
+  //! @exception May throw implementation-defined exceptions.
   [[nodiscard]] inline constexpr Eigen::Matrix<
       typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime>
-  operator()()
+  operator()() const
   {
     return Type::Identity();
   }
 };
 
+//! @brief Eigen-based Kalman filter.
+//!
+//! @details Implemented with the Eigen linear algebra library matrices with
+//! sizes fixed at compile-time.
+//!
+//! @tparam Type The type template parameter of the matrices data.
+//! @tparam State The non-type template parameter size of the state vector x.
+//! @tparam Output The non-type template parameter size of the measurement
+//! vector z.
+//! @tparam Input The non-type template parameter size of the control u.
+//! @tparam PredictionArguments The variadic type template parameter for
+//! additional prediction function parameters. Time, or a delta thereof, is
+//! often a prediction parameter.
 template <typename Type, int State, int Output, int Input,
           typename... PredictionArguments>
 using kalman =
