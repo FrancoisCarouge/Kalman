@@ -94,10 +94,27 @@ class kalman
     return observation{ Identity<observation>()() };
   };
 
-  observation_noise_uncertainty (*noise_observation_r)();
-  state_transition (*transition_state_f)(const PredictionArguments &...);
-  process_noise_uncertainty (*noise_process_q)(const PredictionArguments &...);
-  control (*transition_control_g)(const PredictionArguments &...);
+  observation_noise_uncertainty (*noise_observation_r)() = []() {
+    return observation_noise_uncertainty{};
+  };
+
+  state_transition (*transition_state_f)(const PredictionArguments &...) =
+      [](const PredictionArguments &...arguments) {
+        static_cast<void>((arguments, ...));
+        return state_transition{ Identity<state_transition>()() };
+      };
+
+  process_noise_uncertainty (*noise_process_q)(const PredictionArguments &...) =
+      [](const PredictionArguments &...arguments) {
+        static_cast<void>((arguments, ...));
+        return process_noise_uncertainty{};
+      };
+
+  control (*transition_control_g)(const PredictionArguments &...) =
+      [](const PredictionArguments &...arguments) {
+        static_cast<void>((arguments, ...));
+        return control{};
+      };
 
   inline constexpr void update(const output &output_z)
   {

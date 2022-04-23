@@ -39,17 +39,16 @@ namespace
   // Prediction
   // Now, we shall predict the next state based on the initialization values.
   assert(60 == k.state_x &&
-         "Since our system's Dynamic Model is constant, i.e. the building "
+         "Since our system's dynamic model is constant, i.e. the building "
          "doesn't change its height: 60 meters.");
   assert(225 == k.estimate_uncertainty_p &&
          "The extrapolated estimate uncertainty (variance) also doesn't "
          "change: 225");
 
   // Measure and Update
-  // The first measurement is: z1 = 48.54m.
-  // Since the standard deviation (σ) of the altimeter measurement error is 5,
-  // the variance (σ^2) would be 25, thus the measurement uncertainty is: r1
-  // = 25.
+  // The first measurement is: z1 = 48.54m. Since the standard deviation σ of
+  // the altimeter measurement error is 5, the variance σ^2 would be 25, thus
+  // the measurement uncertainty is: r1 = 25.
   k.noise_observation_r = []() {
     return kalman::observation_noise_uncertainty{ 5 * 5 };
   };
@@ -68,7 +67,7 @@ namespace
 
   // After 10 measurements the filter estimates the height of the building
   // at 49.57m.
-  assert(49.57 - 0.01 < k.state_x && k.state_x < 49.57 + 0.01 &&
+  assert(49.57 - 0.001 < k.state_x && k.state_x < 49.57 + 0.001 &&
          "After 10 measurement and update iterations, the building estimated "
          "height is: 49.57m.");
 
