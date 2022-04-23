@@ -80,7 +80,8 @@ var NAVTREE =
         [ "Functions", "globals_func.xhtml", null ],
         [ "Variables", "globals_vars.xhtml", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.xhtml", "examples" ]
   ] ]
 ];
 

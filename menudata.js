@@ -45,4 +45,5 @@ var menudata={children:[
 {text:"File Members",url:"globals.xhtml",children:[
 {text:"All",url:"globals.xhtml"},
 {text:"Functions",url:"globals_func.xhtml"},
-{text:"Variables",url:"globals_vars.xhtml"}]}]}]}
+{text:"Variables",url:"globals_vars.xhtml"}]}]},
+{text:"Examples",url:"examples.xhtml"}]}
