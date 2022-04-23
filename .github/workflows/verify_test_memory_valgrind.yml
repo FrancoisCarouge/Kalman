@@ -26,6 +26,6 @@ jobs:
             cmake --build . ;
             sudo make install ) )
     - name: Build
-      run: gcc-11 sample/*.cpp test/*.cpp source/*.cpp -Iinclude -I/usr/local/include/eigen3 -g -O0 -std=c++23 -lstdc++
+      run: gcc-11 sample/*.cpp test/*.cpp source/*.cpp -Iinclude -I/usr/local/include/eigen3 -g -O0 -std=c++23 -lstdc++ -lm
     - name: Test
       run: valgrind --verbose ./a.out

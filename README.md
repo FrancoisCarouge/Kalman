@@ -52,11 +52,11 @@ using kalman = fcarouge::kalman<double>;
 
 kalman k;
 
-k.state_x = kalman::state{ 60 };
-k.estimate_uncertainty_p = kalman::estimate_uncertainty{ 15 * 15 };
-k.transition_observation_h = []() { return kalman::observation{ 1 }; };
-k.noise_observation_r = []() {
-  return kalman::observation_noise_uncertainty{ 5 * 5 };
+k.state_x = 60;
+k.estimate_uncertainty_p = 225;
+k.transition_observation_h = [] { return kalman::observation{ 1 }; };
+k.noise_observation_r = [] {
+  return kalman::observation_noise_uncertainty{ 25 };
 };
 
 k.update(48.54);
@@ -74,7 +74,7 @@ const double gravitational_acceleration{ -9.8 }; // m.s^-2
 const std::chrono::milliseconds delta_time{ 250 };
 kalman k;
 
-k.state_x = kalman::state{ 0, 0 };
+k.state_x = { 0, 0 };
 k.estimate_uncertainty_p =
     kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } };
 k.transition_state_f = [](const std::chrono::milliseconds &delta_time) {
@@ -92,8 +92,8 @@ k.transition_control_g = [](const std::chrono::milliseconds &delta_time) {
   const auto dt{ std::chrono::duration<double>(delta_time).count() };
   return kalman::control{ 0.0313, dt };
 };
-k.transition_observation_h = []() { return kalman::observation{ { 1, 0 } }; };
-k.noise_observation_r = []() {
+k.transition_observation_h = [] { return kalman::observation{ { 1, 0 } }; };
+k.noise_observation_r = [] {
   return kalman::observation_noise_uncertainty{ 400 };
 };
 

@@ -25,6 +25,6 @@ jobs:
             cmake --build . ;
             sudo make install ) )
     - name: Build
-      run: LD_LIBRARY_PATH=/opt/gcc-latest/lib64 LD_RUN_PATH=/opt/gcc-latest/lib64 /opt/gcc-latest/bin/gcc sample/*.cpp test/*.cpp source/*.cpp -Iinclude -I/usr/local/include/eigen3 -Wall -Wextra -pedantic -std=c++23 -lstdc++
+      run: LD_LIBRARY_PATH=/opt/gcc-latest/lib64 LD_RUN_PATH=/opt/gcc-latest/lib64 /opt/gcc-latest/bin/gcc sample/*.cpp test/*.cpp source/*.cpp -Iinclude -I/usr/local/include/eigen3 -Wall -Wextra -pedantic -std=c++23 -lstdc++ -lm
     - name: Run
       run: ./a.out
