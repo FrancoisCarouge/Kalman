@@ -113,46 +113,45 @@ $(document).ready(function(){initNavTree('building__height_8cpp_source.xhtml',''
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">// Prediction</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  assert(60 == k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> &amp;&amp;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;         <span class="stringliteral">&quot;Since our system&#39;s Dynamic Model is constant, i.e. the building &quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  assert(225 == k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> &amp;&amp;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Measure and Update</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// The first measurement is: z1 = 48.54m.</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// Since the standard deviation (σ) of the altimeter measurement error is 5,</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// the variance (σ^2) would be 25, thus the measurement uncertainty is: r1</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// = 25.</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">noise_observation_r</a> = []() {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">kalman::observation_noise_uncertainty</a>{ 5 * 5 };</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  };</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(48.54);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// And so on.</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(47.11);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(55.01);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(55.15);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(49.89);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(40.85);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(46.72);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(50.05);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(51.27);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(49.95);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">// at 49.57m.</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  assert(49.57 - 0.01 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> &lt; 49.57 + 0.01 &amp;&amp;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}() };</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// The first measurement is: z1 = 48.54m. Since the standard deviation σ of</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// the altimeter measurement error is 5, the variance σ^2 would be 25, thus</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// the measurement uncertainty is: r1 = 25.</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">noise_observation_r</a> = []() {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">kalman::observation_noise_uncertainty</a>{ 5 * 5 };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  };</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(48.54);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// And so on.</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(47.11);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(55.01);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(55.15);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(49.89);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(40.85);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(46.72);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(50.05);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(51.27);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">update</a>(49.95);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">// at 49.57m.</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  assert(49.57 - 0.001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> &lt; 49.57 + 0.001 &amp;&amp;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}() };</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00069">kalman.hpp:70</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3a25d163f45a3fa32e85f9d34e321a36"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const output &amp;output_z)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00102">kalman.hpp:102</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3a25d163f45a3fa32e85f9d34e321a36"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3a25d163f45a3fa32e85f9d34e321a36">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const output &amp;output_z)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00119">kalman.hpp:119</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a63dafedafcd7be03c58b41b325fcda65"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">fcarouge::kalman::estimate_uncertainty_p</a></div><div class="ttdeci">estimate_uncertainty estimate_uncertainty_p</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00088">kalman.hpp:88</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a656dca40b07400e6d7dac7cb1e2ea14a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">fcarouge::kalman::noise_observation_r</a></div><div class="ttdeci">observation_noise_uncertainty(* noise_observation_r)()</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00097">kalman.hpp:97</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aad33049fe5c0775c2a3b145bd79ec96c"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aad33049fe5c0775c2a3b145bd79ec96c">fcarouge::kalman::state</a></div><div class="ttdeci">State state</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00072">kalman.hpp:72</a></div></div>
@@ -168,7 +167,7 @@ $(document).ready(function(){initNavTree('building__height_8cpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="building__height_8cpp.xhtml">building_height.cpp</a></li>
-    <li class="footer">Generated on Sat Apr 23 2022 01:20:40 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 23 2022 03:09:53 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

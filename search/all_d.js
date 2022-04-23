@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['sample_65',['sample',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02sample_8cpp_03.xhtml#a824a13ec76dd4f31a93be159e0f968d2',1,'fcarouge::sample::anonymous_namespace{sample.cpp}']]],
-  ['sample_2ecpp_66',['sample.cpp',['../sample_8cpp.xhtml',1,'']]],
   ['security_20policy_67',['Security Policy',['../md__s_e_c_u_r_i_t_y.xhtml',1,'']]],
   ['security_2emd_68',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]],
   ['sell_69',['sell',['../_l_i_c_e_n_s_e_8txt.xhtml#a3e5d6c430e9c2cde02449af9b69ae168',1,'LICENSE.txt']]],

@@ -117,17 +117,16 @@ $(document).ready(function(){initNavTree('building_height_8cpp-example.xhtml',''
 <div class="line">  <span class="comment">// Prediction</span></div>
 <div class="line">  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
 <div class="line">  assert(60 == k.state_x &amp;&amp;</div>
-<div class="line">         <span class="stringliteral">&quot;Since our system&#39;s Dynamic Model is constant, i.e. the building &quot;</span></div>
+<div class="line">         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
 <div class="line">  assert(225 == k.estimate_uncertainty_p &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Measure and Update</span></div>
-<div class="line">  <span class="comment">// The first measurement is: z1 = 48.54m.</span></div>
-<div class="line">  <span class="comment">// Since the standard deviation (σ) of the altimeter measurement error is 5,</span></div>
-<div class="line">  <span class="comment">// the variance (σ^2) would be 25, thus the measurement uncertainty is: r1</span></div>
-<div class="line">  <span class="comment">// = 25.</span></div>
+<div class="line">  <span class="comment">// The first measurement is: z1 = 48.54m. Since the standard deviation σ of</span></div>
+<div class="line">  <span class="comment">// the altimeter measurement error is 5, the variance σ^2 would be 25, thus</span></div>
+<div class="line">  <span class="comment">// the measurement uncertainty is: r1 = 25.</span></div>
 <div class="line">  k.noise_observation_r = []() {</div>
 <div class="line">    <span class="keywordflow">return</span> <a name="a4"></a><a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">kalman::observation_noise_uncertainty</a>{ 5 * 5 };</div>
 <div class="line">  };</div>
@@ -146,7 +145,7 @@ $(document).ready(function(){initNavTree('building_height_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
-<div class="line">  assert(49.57 - 0.01 &lt; k.state_x &amp;&amp; k.state_x &lt; 49.57 + 0.01 &amp;&amp;</div>
+<div class="line">  assert(49.57 - 0.001 &lt; k.state_x &amp;&amp; k.state_x &lt; 49.57 + 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"> </div>
@@ -167,7 +166,7 @@ $(document).ready(function(){initNavTree('building_height_8cpp-example.xhtml',''
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Apr 23 2022 01:20:40 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 23 2022 03:09:53 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
