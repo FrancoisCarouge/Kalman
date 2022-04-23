@@ -89,9 +89,12 @@ class kalman
 
   // Functors could be replaced by the standard general-purpose polymorphic
   // function wrapper `std::function` if lambda captures are needed.
-  observation (*transition_observation_h)();
-  observation_noise_uncertainty (*noise_observation_r)();
 
+  observation (*transition_observation_h)() = []() {
+    return observation{ Identity<observation>()() };
+  };
+
+  observation_noise_uncertainty (*noise_observation_r)();
   state_transition (*transition_state_f)(const PredictionArguments &...);
   process_noise_uncertainty (*noise_process_q)(const PredictionArguments &...);
   control (*transition_control_g)(const PredictionArguments &...);
