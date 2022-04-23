@@ -91,6 +91,9 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1eigen_1_1identity.xh
 </div><!--header-->
 <div class="contents">
 
+<p>Function object for providing an Eigem identy matrix.  
+ <a href="structfcarouge_1_1eigen_1_1identity.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for fcarouge::eigen::identity&lt; Type &gt;:</div>
@@ -103,18 +106,28 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1eigen_1_1identity.xh
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a40dd51de804903e6d49cd05b2cb1aaaa"><td class="memItemLeft" align="right" valign="top">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml#a40dd51de804903e6d49cd05b2cb1aaaa">operator()</a> ()</td></tr>
-<tr class="separator:a40dd51de804903e6d49cd05b2cb1aaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5a9b45a45157aadc1cdd50c4b337c56"><td class="memItemLeft" align="right" valign="top">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml#af5a9b45a45157aadc1cdd50c4b337c56">operator()</a> () const</td></tr>
+<tr class="memdesc:af5a9b45a45157aadc1cdd50c4b337c56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the identity maxtrix.  <a href="structfcarouge_1_1eigen_1_1identity.xhtml#af5a9b45a45157aadc1cdd50c4b337c56">More...</a><br /></td></tr>
+<tr class="separator:af5a9b45a45157aadc1cdd50c4b337c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Type&gt;<br />
 struct fcarouge::eigen::identity&lt; Type &gt;</h3>
 
+<p>Function object for providing an Eigem identy matrix. </p>
+<p>Implemented with the Eigen linear algebra library matrices with sizes fixed at compile-time.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>The type template parameter of the matrix.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function object template should be a variable template. Proposed in paper P2008R0 entitled "Enabling variable template template parameters". </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00083">83</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00127">127</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a40dd51de804903e6d49cd05b2cb1aaaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40dd51de804903e6d49cd05b2cb1aaaa">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="af5a9b45a45157aadc1cdd50c4b337c56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5a9b45a45157aadc1cdd50c4b337c56">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -128,7 +141,7 @@ template&lt;typename Type &gt; </div>
           <td class="memname">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime&gt; <a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml">fcarouge::eigen::identity</a>&lt; Type &gt;::operator() </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -138,10 +151,19 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00086">86</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> Type::Identity();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
+<p>Returns the identity maxtrix. </p>
+<dl class="section return"><dt>Returns</dt><dd>The identity matrix <code>diag(1, 1, ..., 1)</code>.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">May</td><td>throw implementation-defined exceptions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00135">135</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">return</span> Type::Identity();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -154,7 +176,7 @@ template&lt;typename Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml">identity</a></li>
-    <li class="footer">Generated on Tue Apr 19 2022 03:44:58 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 23 2022 00:45:33 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

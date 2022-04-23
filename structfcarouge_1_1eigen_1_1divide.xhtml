@@ -91,6 +91,9 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1eigen_1_1divide.xhtm
 </div><!--header-->
 <div class="contents">
 
+<p>Function object for performing Eigen matrix division.  
+ <a href="structfcarouge_1_1eigen_1_1divide.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for fcarouge::eigen::divide&lt; Numerator, Denominator &gt;:</div>
@@ -103,18 +106,28 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1eigen_1_1divide.xhtm
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9e1bfad9400347cc28034138074f92d2"><td class="memItemLeft" align="right" valign="top">constexpr Eigen::Matrix&lt; typename Numerator::Scalar, Numerator::RowsAtCompileTime, Denominator::RowsAtCompileTime &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml#a9e1bfad9400347cc28034138074f92d2">operator()</a> (const Numerator &amp;numerator, const Denominator &amp;denominator)</td></tr>
-<tr class="separator:a9e1bfad9400347cc28034138074f92d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd43dc7c27be41d88c10c79b66b597ef"><td class="memItemLeft" align="right" valign="top">constexpr Eigen::Matrix&lt; typename Numerator::Scalar, Numerator::RowsAtCompileTime, Denominator::RowsAtCompileTime &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml#abd43dc7c27be41d88c10c79b66b597ef">operator()</a> (const Numerator &amp;numerator, const Denominator &amp;denominator) const</td></tr>
+<tr class="memdesc:abd43dc7c27be41d88c10c79b66b597ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the quotient of <code>numerator</code> and <code>denominator</code>.  <a href="structfcarouge_1_1eigen_1_1divide.xhtml#abd43dc7c27be41d88c10c79b66b597ef">More...</a><br /></td></tr>
+<tr class="separator:abd43dc7c27be41d88c10c79b66b597ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Numerator, typename Denominator&gt;<br />
 struct fcarouge::eigen::divide&lt; Numerator, Denominator &gt;</h3>
 
+<p>Function object for performing Eigen matrix division. </p>
+<p>Implemented with the Eigen linear algebra library matrices with sizes fixed at compile-time.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Numerator</td><td>The type template parameter of the dividend. </td></tr>
+    <tr><td class="paramname">Denominator</td><td>The type template parameter of the divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00070">70</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00099">99</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9e1bfad9400347cc28034138074f92d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e1bfad9400347cc28034138074f92d2">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="abd43dc7c27be41d88c10c79b66b597ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd43dc7c27be41d88c10c79b66b597ef">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,7 +152,7 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -149,13 +162,28 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00074">74</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> denominator.transpose()</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        .fullPivHouseholderQr()</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        .solve(numerator.transpose())</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        .transpose();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
+<p>Returns the quotient of <code>numerator</code> and <code>denominator</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numerator</td><td>The dividend of the division. </td></tr>
+    <tr><td class="paramname">denominator</td><td>The divisor of the division.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">May</td><td>throw implementation-defined exceptions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00109">109</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">return</span> denominator.transpose()</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        .fullPivHouseholderQr()</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        .solve(numerator.transpose())</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        .transpose();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -168,7 +196,7 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml">divide</a></li>
-    <li class="footer">Generated on Tue Apr 19 2022 03:44:58 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 23 2022 00:45:33 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

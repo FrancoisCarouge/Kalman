@@ -91,6 +91,9 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1divide.xhtml',''); i
 </div><!--header-->
 <div class="contents">
 
+<p>Function object for performing matrix division.  
+ <a href="structfcarouge_1_1divide.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for fcarouge::divide&lt; Numerator, Denominator &gt;:</div>
@@ -103,18 +106,27 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1divide.xhtml',''); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a96e58ad13ce957ff950af564507ed674"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1divide.xhtml#a96e58ad13ce957ff950af564507ed674">operator()</a> (const Numerator &amp;numerator, const Denominator &amp;denominator)</td></tr>
-<tr class="separator:a96e58ad13ce957ff950af564507ed674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1237f6806b96b1aae37192bafbaf4ae8"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1divide.xhtml#a1237f6806b96b1aae37192bafbaf4ae8">operator()</a> (const Numerator &amp;numerator, const Denominator &amp;denominator) const noexcept</td></tr>
+<tr class="memdesc:a1237f6806b96b1aae37192bafbaf4ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the quotient of <code>numerator</code> and <code>denominator</code>.  <a href="structfcarouge_1_1divide.xhtml#a1237f6806b96b1aae37192bafbaf4ae8">More...</a><br /></td></tr>
+<tr class="separator:a1237f6806b96b1aae37192bafbaf4ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Numerator, typename Denominator&gt;<br />
 struct fcarouge::divide&lt; Numerator, Denominator &gt;</h3>
 
+<p>Function object for performing matrix division. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Numerator</td><td>The type template parameter of the dividend. </td></tr>
+    <tr><td class="paramname">Denominator</td><td>The type template parameter of the divisor. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00079">79</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a96e58ad13ce957ff950af564507ed674"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96e58ad13ce957ff950af564507ed674">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a1237f6806b96b1aae37192bafbaf4ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1237f6806b96b1aae37192bafbaf4ae8">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,20 +151,29 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00062">62</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> numerator / denominator;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+<p>Returns the quotient of <code>numerator</code> and <code>denominator</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numerator</td><td>The dividend of the division. </td></tr>
+    <tr><td class="paramname">denominator</td><td>The divisor of the division. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00085">85</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> numerator / denominator;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -165,7 +186,7 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1divide.xhtml">divide</a></li>
-    <li class="footer">Generated on Tue Apr 19 2022 03:44:58 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 23 2022 00:45:33 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

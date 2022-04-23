@@ -94,18 +94,23 @@ $(document).ready(function(){initNavTree('namespacefcarouge_1_1eigen.xhtml','');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1transpose.xhtml">transpose</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix transposition.  <a href="structfcarouge_1_1eigen_1_1transpose.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">symmetrize</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix symmetrization.  <a href="structfcarouge_1_1eigen_1_1symmetrize.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml">divide</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix division.  <a href="structfcarouge_1_1eigen_1_1divide.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml">identity</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for providing an Eigem identy matrix.  <a href="structfcarouge_1_1eigen_1_1identity.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a9c082204cf7b71aebc7a5c7b490e6721"><td class="memTemplParams" colspan="2">template&lt;typename Type , int State, int Output, int Input, typename... PredictionArguments&gt; </td></tr>
 <tr class="memitem:a9c082204cf7b71aebc7a5c7b490e6721"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, <a class="el" href="structfcarouge_1_1eigen_1_1transpose.xhtml">transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1divide.xhtml">divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1identity.xhtml">identity</a>, PredictionArguments... &gt;</td></tr>
+<tr class="memdesc:a9c082204cf7b71aebc7a5c7b490e6721"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">More...</a><br /></td></tr>
 <tr class="separator:a9c082204cf7b71aebc7a5c7b490e6721"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -123,7 +128,20 @@ template&lt;typename Type , int State, int Output, int Input, typename... Predic
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00094">94</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
+<p>Eigen-based Kalman filter. </p>
+<p>Implemented with the Eigen linear algebra library matrices with sizes fixed at compile-time.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>The type template parameter of the matrices data. </td></tr>
+    <tr><td class="paramname">State</td><td>The non-type template parameter size of the state vector x. </td></tr>
+    <tr><td class="paramname">Output</td><td>The non-type template parameter size of the measurement vector z. </td></tr>
+    <tr><td class="paramname">Input</td><td>The non-type template parameter size of the control u. </td></tr>
+    <tr><td class="paramname">PredictionArguments</td><td>The variadic type template parameter for additional prediction function parameters. Time, or a delta thereof, is often a prediction parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml#l00156">156</a> of file <a class="el" href="kalman__operator__eigen_8hpp_source.xhtml">kalman_operator_eigen.hpp</a>.</p>
 
 </div>
 </div>
@@ -133,7 +151,7 @@ template&lt;typename Type , int State, int Output, int Input, typename... Predic
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li>
-    <li class="footer">Generated on Tue Apr 19 2022 03:44:58 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 23 2022 00:45:33 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -91,6 +91,9 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1transpose.xhtml','')
 </div><!--header-->
 <div class="contents">
 
+<p>Function object for performing matrix transposition.  
+ <a href="structfcarouge_1_1transpose.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for fcarouge::transpose&lt; Type &gt;:</div>
@@ -103,18 +106,26 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1transpose.xhtml','')
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac16c859c16b6ebf185ea907cbcd1984c"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1transpose.xhtml#ac16c859c16b6ebf185ea907cbcd1984c">operator()</a> (const Type &amp;value)</td></tr>
-<tr class="separator:ac16c859c16b6ebf185ea907cbcd1984c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dcb5c1a133f40d23702befa5b1230a8"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1transpose.xhtml#a6dcb5c1a133f40d23702befa5b1230a8">operator()</a> (const Type &amp;value) const noexcept</td></tr>
+<tr class="memdesc:a6dcb5c1a133f40d23702befa5b1230a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the transpose of <code>value</code>.  <a href="structfcarouge_1_1transpose.xhtml#a6dcb5c1a133f40d23702befa5b1230a8">More...</a><br /></td></tr>
+<tr class="separator:a6dcb5c1a133f40d23702befa5b1230a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename Type&gt;<br />
 struct fcarouge::transpose&lt; Type &gt;</h3>
 
+<p>Function object for performing matrix transposition. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>The type template parameter of the matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00047">47</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00050">50</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac16c859c16b6ebf185ea907cbcd1984c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac16c859c16b6ebf185ea907cbcd1984c">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a6dcb5c1a133f40d23702befa5b1230a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dcb5c1a133f40d23702befa5b1230a8">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,20 +140,28 @@ template&lt;typename Type &gt; </div>
           <td>(</td>
           <td class="paramtype">const Type &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00048">48</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
+<p>Returns the transpose of <code>value</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Value to compute the transpose of. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00055">55</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -155,7 +174,7 @@ template&lt;typename Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1transpose.xhtml">transpose</a></li>
-    <li class="footer">Generated on Tue Apr 19 2022 03:44:58 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat Apr 23 2022 00:45:33 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
