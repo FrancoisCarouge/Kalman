@@ -166,11 +166,11 @@ $(document).ready(function(){initNavTree('kalman_8hpp_source.xhtml',''); initRes
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="comment">// Functors could be replaced by the standard general-purpose polymorphic</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">// function wrapper `std::function` if lambda captures are needed.</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#ab4e07d50bc9cb5be0fb5727b072becde">   93</a></span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#ae5c1331f5dfcbaf94ef6f5a8956ae04e">observation</a> (*<a class="code" href="classfcarouge_1_1kalman.xhtml#ab4e07d50bc9cb5be0fb5727b072becde">transition_observation_h</a>)() = []() {</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#ab4e07d50bc9cb5be0fb5727b072becde">   93</a></span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#ae5c1331f5dfcbaf94ef6f5a8956ae04e">observation</a> (*<a class="code" href="classfcarouge_1_1kalman.xhtml#ab4e07d50bc9cb5be0fb5727b072becde">transition_observation_h</a>)() = [] {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#ae5c1331f5dfcbaf94ef6f5a8956ae04e">observation</a>{ Identity&lt;observation&gt;()() };</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  };</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">   97</a></span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">observation_noise_uncertainty</a> (*<a class="code" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">noise_observation_r</a>)() = []() {</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">   97</a></span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">observation_noise_uncertainty</a> (*<a class="code" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">noise_observation_r</a>)() = [] {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">observation_noise_uncertainty</a>{};</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  };</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
@@ -251,7 +251,7 @@ $(document).ready(function(){initNavTree('kalman_8hpp_source.xhtml',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sat Apr 23 2022 03:09:53 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sun Apr 24 2022 02:42:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
