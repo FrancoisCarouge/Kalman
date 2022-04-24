@@ -181,8 +181,8 @@ namespace
   // projection on the x and y axes is not constant, therefore ax and ay are not
   // constant. Our Kalman Filter is designed for a constant acceleration model.
   // Nevertheless, it succeeds in tracking maneuvering vehicle due to a properly
-  // chosen σ2a parameter. I would like to encourage the readers to implement
-  // this example in software and see how different values of σ2a of R influence
+  // chosen σa parameter. I would like to encourage the readers to implement
+  // this example in software and see how different values of σa of R influence
   // the actual Kalman Filter accuracy, Kalman Gain convergence, and estimation
   // uncertainty.
 
