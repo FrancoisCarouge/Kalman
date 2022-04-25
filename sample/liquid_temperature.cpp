@@ -71,27 +71,27 @@ namespace
     return kalman::observation_noise_uncertainty{ 0.1 * 0.1 };
   };
 
-  k.update(49.95);
+  k.update(49.95f);
 
   // And so on, every measurements period: Δt = 5s (constant).
   k.predict();
-  k.update(49.967);
+  k.update(49.967f);
   k.predict();
-  k.update(50.1);
+  k.update(50.1f);
   k.predict();
-  k.update(50.106);
+  k.update(50.106f);
   k.predict();
-  k.update(49.992);
+  k.update(49.992f);
   k.predict();
-  k.update(49.819);
+  k.update(49.819f);
   k.predict();
-  k.update(49.933);
+  k.update(49.933f);
   k.predict();
-  k.update(50.007);
+  k.update(50.007f);
   k.predict();
-  k.update(50.023);
+  k.update(50.023f);
   k.predict();
-  k.update(49.99);
+  k.update(49.99f);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
   assert(0.0013 - 0.0001 < k.estimate_uncertainty_p &&
@@ -103,6 +103,7 @@ namespace
 
   assert(49.988 - 0.0001 < k.state_x && k.state_x < 49.988 + 0.0001 &&
          "The filter estimates the liquid temperature at 49.988°C.");
+
   // So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.
   // In this example we've measured a liquid temperature using the
   // one-dimensional Kalman filter. Although the system dynamics include a

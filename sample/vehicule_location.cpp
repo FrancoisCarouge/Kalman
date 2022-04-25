@@ -52,6 +52,7 @@ namespace
       { 0, 0, 0, 0.5, 1, 1 },   { 0, 0, 0, 0.5, 1, 1 }
     };
   };
+
   // The state transition matrix F would be:
   k.transition_state_f = [] {
     return kalman::state_transition{
@@ -69,6 +70,7 @@ namespace
   k.transition_observation_h = [] {
     return kalman::observation{ { 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0 } };
   };
+
   // Assume that the x and y measurements are uncorrelated, i.e. error in the x
   // coordinate measurement doesn't depend on the error in the y coordinate
   // measurement. In real-life applications, the measurement uncertainty can
@@ -83,77 +85,77 @@ namespace
   };
 
   // The measurement values: z1 = [-393.66, 300.4]
-  k.update({ -393.66, 300.4 });
+  k.update(-393.66, 300.4);
 
-  // And so on, every measurements period: Δt = 1s (constant).
+  // And so on, every measurements period: Δt = 1s (constant, built-in).
   k.predict();
-  k.update({ -375.93, 301.78 });
+  k.update(-375.93, 301.78);
   k.predict();
-  k.update({ -351.04, 295.1 });
+  k.update(-351.04, 295.1);
   k.predict();
-  k.update({ -328.96, 305.19 });
+  k.update(-328.96, 305.19);
   k.predict();
-  k.update({ -299.35, 301.06 });
+  k.update(-299.35, 301.06);
   k.predict();
-  k.update({ -273.36, 302.05 });
+  k.update(-273.36, 302.05);
   k.predict();
-  k.update({ -245.89, 300 });
+  k.update(-245.89, 300);
   k.predict();
-  k.update({ -222.58, 303.57 });
+  k.update(-222.58, 303.57);
   k.predict();
-  k.update({ -198.03, 296.33 });
+  k.update(-198.03, 296.33);
   k.predict();
-  k.update({ -174.17, 297.65 });
+  k.update(-174.17, 297.65);
   k.predict();
-  k.update({ -146.32, 297.41 });
+  k.update(-146.32, 297.41);
   k.predict();
-  k.update({ -123.72, 299.61 });
+  k.update(-123.72, 299.61);
   k.predict();
-  k.update({ -103.47, 299.6 });
+  k.update(-103.47, 299.6);
   k.predict();
-  k.update({ -78.23, 302.39 });
+  k.update(-78.23, 302.39);
   k.predict();
-  k.update({ -52.63, 295.04 });
+  k.update(-52.63, 295.04);
   k.predict();
-  k.update({ -23.34, 300.09 });
+  k.update(-23.34, 300.09);
   k.predict();
-  k.update({ 25.96, 294.72 });
+  k.update(25.96, 294.72);
   k.predict();
-  k.update({ 49.72, 298.61 });
+  k.update(49.72, 298.61);
   k.predict();
-  k.update({ 76.94, 294.64 });
+  k.update(76.94, 294.64);
   k.predict();
-  k.update({ 95.38, 284.88 });
+  k.update(95.38, 284.88);
   k.predict();
-  k.update({ 119.83, 272.82 });
+  k.update(119.83, 272.82);
   k.predict();
-  k.update({ 144.01, 264.93 });
+  k.update(144.01, 264.93);
   k.predict();
-  k.update({ 161.84, 251.46 });
+  k.update(161.84, 251.46);
   k.predict();
-  k.update({ 180.56, 241.27 });
+  k.update(180.56, 241.27);
   k.predict();
-  k.update({ 201.42, 222.98 });
+  k.update(201.42, 222.98);
   k.predict();
-  k.update({ 222.62, 203.73 });
+  k.update(222.62, 203.73);
   k.predict();
-  k.update({ 239.4, 184.1 });
+  k.update(239.4, 184.1);
   k.predict();
-  k.update({ 252.51, 166.12 });
+  k.update(252.51, 166.12);
   k.predict();
-  k.update({ 266.26, 138.71 });
+  k.update(266.26, 138.71);
   k.predict();
-  k.update({ 271.75, 119.71 });
+  k.update(271.75, 119.71);
   k.predict();
-  k.update({ 277.4, 100.41 });
+  k.update(277.4, 100.41);
   k.predict();
-  k.update({ 294.12, 79.76 });
+  k.update(294.12, 79.76);
   k.predict();
-  k.update({ 301.23, 50.62 });
+  k.update(301.23, 50.62);
   k.predict();
-  k.update({ 291.8, 32.99 });
+  k.update(291.8, 32.99);
   k.predict();
-  k.update({ 299.89, 2.14 });
+  k.update(299.89, 2.14);
 
   assert(5 - 0.0001 < k.estimate_uncertainty_p(0, 0) &&
          k.estimate_uncertainty_p(0, 0) < 5 + 1.84 &&

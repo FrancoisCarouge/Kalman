@@ -59,7 +59,9 @@ namespace fcarouge
 //! @tparam Identity The template template parameter of the identity functor.
 //! @tparam PredictionArguments The variadic type template parameter for
 //! additional prediction function parameters. Time, or a delta thereof, is
-//! often a prediction parameter.
+//! often a prediction parameter. The parameters are propagated to the function
+//! objects used to compute the process noise Q, the state transition F, and the
+//! control transition G matrices.
 template <typename State, typename Output = State, typename Input = State,
           template <typename> typename Transpose = transpose,
           template <typename> typename Symmetrize = symmetrize,
@@ -69,6 +71,9 @@ template <typename State, typename Output = State, typename Input = State,
 class kalman
 {
   public:
+  //! @name Public Member Types
+  //! @{
+
   using state = State;
   using output = Output;
   using input = Input;
@@ -84,8 +89,18 @@ class kalman
       std::invoke_result_t<Divide<Output, Output>, Output, Output>;
   using control = std::invoke_result_t<Divide<State, Input>, State, Input>;
 
+  //! @}
+
+  //! @name Public Member Variables
+  //! @{
+
   state state_x;
   estimate_uncertainty estimate_uncertainty_p;
+
+  //! @}
+
+  //! @name Public Member Function Objects
+  //! @{
 
   // Functors could be replaced by the standard general-purpose polymorphic
   // function wrapper `std::function` if lambda captures are needed.
@@ -116,31 +131,36 @@ class kalman
         return control{};
       };
 
-  inline constexpr void update(const output &output_z)
+  //! @}
+
+  //! @name Public Member Functions
+  //! @{
+
+  template <typename... Outputs>
+  inline constexpr void update(const Outputs &...output_z)
   {
+    auto &x{ state_x };
+    auto &p{ estimate_uncertainty_p };
     const auto h{ transition_observation_h() };
     const auto r{ noise_observation_r() };
-    fcarouge::update<Transpose, Symmetrize, Divide, Identity>(
-        state_x, estimate_uncertainty_p, h, r, output_z);
+    const auto z{ output{ output_z... } };
+    fcarouge::update<Transpose, Symmetrize, Divide, Identity>(x, p, h, r, z);
   }
 
-  inline constexpr void predict(const PredictionArguments &...arguments)
+  template <typename... Inputs>
+  inline constexpr void predict(const PredictionArguments &...arguments,
+                                const Inputs &...input_u)
   {
-    const auto f{ transition_state_f(arguments...) };
-    const auto q{ noise_process_q(arguments...) };
-    fcarouge::predict<Transpose, Symmetrize>(state_x, estimate_uncertainty_p, f,
-                                             q);
-  }
-
-  inline constexpr void predict(const input &input_u,
-                                const PredictionArguments &...arguments)
-  {
+    auto &x{ state_x };
+    auto &p{ estimate_uncertainty_p };
     const auto f{ transition_state_f(arguments...) };
     const auto q{ noise_process_q(arguments...) };
     const auto g{ transition_control_g(arguments...) };
-    fcarouge::predict<Transpose, Symmetrize>(state_x, estimate_uncertainty_p, f,
-                                             q, g, input_u);
+    const auto u{ input{ input_u... } };
+    fcarouge::predict<Transpose, Symmetrize>(x, p, f, q, g, u);
   }
+
+  //! @}
 };
 
 } // namespace fcarouge
