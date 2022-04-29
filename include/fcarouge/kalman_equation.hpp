@@ -49,17 +49,17 @@ namespace fcarouge
 [[nodiscard]] inline constexpr auto extrapolate_state(const auto &x,
                                                       const auto &f)
 {
-  using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
+  using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
 
-  return State{ f * x };
+  return state{ f * x };
 }
 
 [[nodiscard]] inline constexpr auto
 extrapolate_state(const auto &x, const auto &f, const auto &g, const auto &u)
 {
-  using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
+  using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
 
-  return State{ f * x + g * u };
+  return state{ f * x + g * u };
 }
 
 template <template <typename> class Transpose>
@@ -103,9 +103,9 @@ inline constexpr void predict(auto &x, auto &p, const auto &f, const auto &q,
 [[nodiscard]] inline constexpr auto update_state(const auto &x, const auto &k,
                                                  const auto &z, const auto &h)
 {
-  using State = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
+  using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
 
-  return State{ x + k * (z - h * x) };
+  return state{ x + k * (z - h * x) };
 }
 
 template <template <typename> typename Transpose,
