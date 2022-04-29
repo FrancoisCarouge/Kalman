@@ -136,17 +136,17 @@ $(document).ready(function(){initNavTree('kalman__equation_8hpp_source.xhtml',''
 <div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a67f4ceeabead317a1b539fa046ca0b94">   49</a></span>&#160;[[nodiscard]] <span class="keyword">inline</span> constexpr <span class="keyword">auto</span> <a class="code" href="namespacefcarouge.xhtml#a67f4ceeabead317a1b539fa046ca0b94">extrapolate_state</a>(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;x,</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                      <span class="keyword">const</span> <span class="keyword">auto</span> &amp;f)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">using</span> State = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(x)&gt;&gt;;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">using</span> state = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(x)&gt;&gt;;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> State{ f * x };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> state{ f * x };</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;[[nodiscard]] <span class="keyword">inline</span> constexpr <span class="keyword">auto</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#afb478e8db17b8db0555e09bbeafdbe9a">   58</a></span>&#160;<a class="code" href="namespacefcarouge.xhtml#a67f4ceeabead317a1b539fa046ca0b94">extrapolate_state</a>(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;x, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;f, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;g, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;u)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">using</span> State = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(x)&gt;&gt;;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">using</span> state = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(x)&gt;&gt;;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> State{ f * x + g * u };</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> state{ f * x + g * u };</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">class </span>Transpose&gt;</div>
@@ -190,9 +190,9 @@ $(document).ready(function(){initNavTree('kalman__equation_8hpp_source.xhtml',''
 <div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a582e3c5e47168b5ab730dd024cf47dc6">  103</a></span>&#160;[[nodiscard]] <span class="keyword">inline</span> constexpr <span class="keyword">auto</span> <a class="code" href="namespacefcarouge.xhtml#a582e3c5e47168b5ab730dd024cf47dc6">update_state</a>(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;x, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;k,</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                                 <span class="keyword">const</span> <span class="keyword">auto</span> &amp;z, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;h)</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keyword">using</span> State = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(x)&gt;&gt;;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keyword">using</span> state = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(x)&gt;&gt;;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> State{ x + k * (z - h * x) };</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> state{ x + k * (z - h * x) };</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Transpose,</div>
@@ -263,7 +263,7 @@ $(document).ready(function(){initNavTree('kalman__equation_8hpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman__equation_8hpp.xhtml">kalman_equation.hpp</a></li>
-    <li class="footer">Generated on Fri Apr 29 2022 03:39:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Apr 29 2022 03:49:21 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
