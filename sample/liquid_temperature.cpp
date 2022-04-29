@@ -71,27 +71,27 @@ namespace
     return kalman::observation_noise_uncertainty{ 0.1 * 0.1 };
   };
 
-  k.update(49.95f);
+  k.observe(49.95f);
 
   // And so on, every measurements period: Δt = 5s (constant).
   k.predict();
-  k.update(49.967f);
+  k.observe(49.967f);
   k.predict();
-  k.update(50.1f);
+  k.observe(50.1f);
   k.predict();
-  k.update(50.106f);
+  k.observe(50.106f);
   k.predict();
-  k.update(49.992f);
+  k.observe(49.992f);
   k.predict();
-  k.update(49.819f);
+  k.observe(49.819f);
   k.predict();
-  k.update(49.933f);
+  k.observe(49.933f);
   k.predict();
-  k.update(50.007f);
+  k.observe(50.007f);
   k.predict();
-  k.update(50.023f);
+  k.observe(50.023f);
   k.predict();
-  k.update(49.99f);
+  k.observe(49.99f);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
   assert(0.0013 - 0.0001 < k.estimate_uncertainty_p &&

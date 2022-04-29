@@ -52,18 +52,18 @@ namespace
   k.noise_observation_r = [] {
     return kalman::observation_noise_uncertainty{ 25 };
   };
-  k.update(48.54f);
+  k.observe(48.54f);
 
   // And so on.
-  k.update(47.11f);
-  k.update(55.01f);
-  k.update(55.15f);
-  k.update(49.89f);
-  k.update(40.85f);
-  k.update(46.72f);
-  k.update(50.05f);
-  k.update(51.27f);
-  k.update(49.95f);
+  k.observe(47.11f);
+  k.observe(55.01f);
+  k.observe(55.15f);
+  k.observe(49.89f);
+  k.observe(40.85f);
+  k.observe(46.72f);
+  k.observe(50.05f);
+  k.observe(51.27f);
+  k.observe(49.95f);
 
   // After 10 measurements the filter estimates the height of the building
   // at 49.57m.

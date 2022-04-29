@@ -61,7 +61,7 @@ k.noise_observation_r = [] {
   return kalman::observation_noise_uncertainty{ 25 };
 };
 
-k.update(48.54);
+k.observe(48.54);
 ```
 
 ### Multi-Dimensional
@@ -99,11 +99,20 @@ k.noise_observation_r = [] {
   return kalman::observation_noise_uncertainty{ 400 };
 };
 
-k.predict(kalman::input{ gravitational_acceleration }, delta_time);
-k.update(kalman::output{ -32.40 });
-k.predict(kalman::input{ 39.72 }, delta_time);
-k.update(kalman::output{ -11.1 });
+k.predict(delta_time, gravitational_acceleration);
+k.observe(-32.40 );
+k.predict(delta_time, 39.72);
+k.observe(-11.1);
 ```
+
+# Motivation
+
+Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.
+
+This package explores what could be a Kalman filter implementation a la standard library. The following concerns and tradeoffs are considered:
+- Separation of the application domain.
+- Separation of the algebra implementation.
+- Generalization of the support.
 
 # Resources
 
