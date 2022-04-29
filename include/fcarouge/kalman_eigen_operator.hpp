@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_OPERATOR_EIGEN_HPP
-#define FCAROUGE_KALMAN_OPERATOR_EIGEN_HPP
+#ifndef FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP
+#define FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP
 
 //! @file
 //! @brief Kalman operation for Eigen 3 types.
@@ -138,26 +138,6 @@ template <typename Type> struct identity {
   }
 };
 
-//! @brief Eigen-based Kalman filter.
-//!
-//! @details Implemented with the Eigen linear algebra library matrices with
-//! sizes fixed at compile-time.
-//!
-//! @tparam Type The type template parameter of the matrices data.
-//! @tparam State The non-type template parameter size of the state vector x.
-//! @tparam Output The non-type template parameter size of the measurement
-//! vector z.
-//! @tparam Input The non-type template parameter size of the control u.
-//! @tparam PredictionArguments The variadic type template parameter for
-//! additional prediction function parameters. Time, or a delta thereof, is
-//! often a prediction parameter.
-template <typename Type, int State, int Output, int Input,
-          typename... PredictionArguments>
-using kalman =
-    fcarouge::kalman<Eigen::Vector<Type, State>, Eigen::Vector<Type, Output>,
-                     Eigen::Vector<Type, Input>, transpose, symmetrize, divide,
-                     identity, PredictionArguments...>;
-
 } // namespace fcarouge::eigen
 
-#endif // FCAROUGE_KALMAN_OPERATOR_EIGEN_HPP
+#endif // FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP

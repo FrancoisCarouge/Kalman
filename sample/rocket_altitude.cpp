@@ -1,5 +1,4 @@
-#include "fcarouge/kalman.hpp"
-#include "fcarouge/kalman_operator_eigen.hpp"
+#include "fcarouge/kalman_eigen.hpp"
 
 #include <cassert>
 #include <chrono>
