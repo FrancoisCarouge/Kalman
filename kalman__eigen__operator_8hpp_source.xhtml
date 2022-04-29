@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: include/fcarouge/kalman_operator_eigen.hpp Source File</title>
+<title>Kalman: include/fcarouge/kalman_eigen_operator.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('kalman__operator__eigen_8hpp_source.xhtml',''); initResizable(); });
+$(document).ready(function(){initNavTree('kalman__eigen__operator_8hpp_source.xhtml',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -84,10 +84,10 @@ $(document).ready(function(){initNavTree('kalman__operator__eigen_8hpp_source.xh
 
 <div class="header">
   <div class="headertitle">
-<div class="title">kalman_operator_eigen.hpp</div>  </div>
+<div class="title">kalman_eigen_operator.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="kalman__operator__eigen_8hpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*_  __          _      __  __          _   _</span></div>
+<a href="kalman__eigen__operator_8hpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*_  __          _      __  __          _   _</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> | |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> | &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> |  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span></div>
@@ -125,15 +125,15 @@ $(document).ready(function(){initNavTree('kalman__operator__eigen_8hpp_source.xh
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifndef FCAROUGE_KALMAN_OPERATOR_EIGEN_HPP</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define FCAROUGE_KALMAN_OPERATOR_EIGEN_HPP</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifndef FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">kalman.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;Eigen/Eigen&gt;</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1eigen.xhtml">   49</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacefcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacefcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structfcarouge_1_1eigen_1_1transpose.xhtml">   57</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt; <span class="keyword">struct </span><a class="code" href="structfcarouge_1_1eigen_1_1transpose.xhtml">transpose</a> {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  [[nodiscard]] <span class="keyword">inline</span> constexpr Eigen::Matrix&lt;</div>
@@ -176,34 +176,26 @@ $(document).ready(function(){initNavTree('kalman__operator__eigen_8hpp_source.xh
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  }</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;};</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> State, <span class="keywordtype">int</span> Output, <span class="keywordtype">int</span> Input,</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;          <span class="keyword">typename</span>... PredictionArguments&gt;</div>
-<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">  156</a></span>&#160;<span class="keyword">using</span> <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman</a> =</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;Eigen::Vector&lt;Type, State&gt;</a>, Eigen::Vector&lt;Type, Output&gt;,</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                     Eigen::Vector&lt;Type, Input&gt;, <a class="code" href="structfcarouge_1_1eigen_1_1transpose.xhtml">transpose</a>, <a class="code" href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">symmetrize</a>, <a class="code" href="structfcarouge_1_1eigen_1_1divide.xhtml">divide</a>,</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                     <a class="code" href="structfcarouge_1_1eigen_1_1identity.xhtml">identity</a>, PredictionArguments...&gt;;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;} <span class="comment">// namespace fcarouge::eigen</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_OPERATOR_EIGEN_HPP</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00071">kalman.hpp:72</a></div></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;} <span class="comment">// namespace fcarouge::eigen</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The main Kalman filter class.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00049">kalman_operator_eigen.hpp:50</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1eigen_1_1divide_xhtml"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1divide.xhtml">fcarouge::eigen::divide</a></div><div class="ttdoc">Function object for performing Eigen matrix division.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00099">kalman_operator_eigen.hpp:99</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1eigen_1_1divide_xhtml_abd43dc7c27be41d88c10c79b66b597ef"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1divide.xhtml#abd43dc7c27be41d88c10c79b66b597ef">fcarouge::eigen::divide::operator()</a></div><div class="ttdeci">constexpr Eigen::Matrix&lt; typename Numerator::Scalar, Numerator::RowsAtCompileTime, Denominator::RowsAtCompileTime &gt; operator()(const Numerator &amp;numerator, const Denominator &amp;denominator) const</div><div class="ttdoc">Returns the quotient of numerator and denominator.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00109">kalman_operator_eigen.hpp:109</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1eigen_1_1identity_xhtml"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1identity.xhtml">fcarouge::eigen::identity</a></div><div class="ttdoc">Function object for providing an Eigem identy matrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00127">kalman_operator_eigen.hpp:127</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1eigen_1_1identity_xhtml_af5a9b45a45157aadc1cdd50c4b337c56"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1identity.xhtml#af5a9b45a45157aadc1cdd50c4b337c56">fcarouge::eigen::identity::operator()</a></div><div class="ttdeci">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime &gt; operator()() const</div><div class="ttdoc">Returns the identity maxtrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00135">kalman_operator_eigen.hpp:135</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1eigen_1_1symmetrize_xhtml"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">fcarouge::eigen::symmetrize</a></div><div class="ttdoc">Function object for performing Eigen matrix symmetrization.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00077">kalman_operator_eigen.hpp:77</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1eigen_1_1symmetrize_xhtml_a5d139cd412d81d2515ab02eedd59cce0"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1symmetrize.xhtml#a5d139cd412d81d2515ab02eedd59cce0">fcarouge::eigen::symmetrize::operator()</a></div><div class="ttdeci">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime &gt; operator()(const Type &amp;value) const</div><div class="ttdoc">Returns the symmetrised value.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00085">kalman_operator_eigen.hpp:85</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1eigen_1_1transpose_xhtml"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1transpose.xhtml">fcarouge::eigen::transpose</a></div><div class="ttdoc">Function object for performing Eigen matrix transposition.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00057">kalman_operator_eigen.hpp:57</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1eigen_1_1transpose_xhtml_af91f5ae2fbacb1970e5795e676f8402d"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1transpose.xhtml#af91f5ae2fbacb1970e5795e676f8402d">fcarouge::eigen::transpose::operator()</a></div><div class="ttdeci">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::ColsAtCompileTime, Type::RowsAtCompileTime &gt; operator()(const Type &amp;value) const</div><div class="ttdoc">Returns the transpose of value.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__operator__eigen_8hpp_source.xhtml#l00065">kalman_operator_eigen.hpp:65</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00050">kalman_eigen.hpp:51</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1eigen_1_1divide_xhtml"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1divide.xhtml">fcarouge::eigen::divide</a></div><div class="ttdoc">Function object for performing Eigen matrix division.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00099">kalman_eigen_operator.hpp:99</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1eigen_1_1divide_xhtml_abd43dc7c27be41d88c10c79b66b597ef"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1divide.xhtml#abd43dc7c27be41d88c10c79b66b597ef">fcarouge::eigen::divide::operator()</a></div><div class="ttdeci">constexpr Eigen::Matrix&lt; typename Numerator::Scalar, Numerator::RowsAtCompileTime, Denominator::RowsAtCompileTime &gt; operator()(const Numerator &amp;numerator, const Denominator &amp;denominator) const</div><div class="ttdoc">Returns the quotient of numerator and denominator.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00109">kalman_eigen_operator.hpp:109</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1eigen_1_1identity_xhtml"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1identity.xhtml">fcarouge::eigen::identity</a></div><div class="ttdoc">Function object for providing an Eigem identy matrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00127">kalman_eigen_operator.hpp:127</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1eigen_1_1identity_xhtml_af5a9b45a45157aadc1cdd50c4b337c56"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1identity.xhtml#af5a9b45a45157aadc1cdd50c4b337c56">fcarouge::eigen::identity::operator()</a></div><div class="ttdeci">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime &gt; operator()() const</div><div class="ttdoc">Returns the identity maxtrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00135">kalman_eigen_operator.hpp:135</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1eigen_1_1symmetrize_xhtml"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1symmetrize.xhtml">fcarouge::eigen::symmetrize</a></div><div class="ttdoc">Function object for performing Eigen matrix symmetrization.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00077">kalman_eigen_operator.hpp:77</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1eigen_1_1symmetrize_xhtml_a5d139cd412d81d2515ab02eedd59cce0"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1symmetrize.xhtml#a5d139cd412d81d2515ab02eedd59cce0">fcarouge::eigen::symmetrize::operator()</a></div><div class="ttdeci">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime &gt; operator()(const Type &amp;value) const</div><div class="ttdoc">Returns the symmetrised value.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00085">kalman_eigen_operator.hpp:85</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1eigen_1_1transpose_xhtml"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1transpose.xhtml">fcarouge::eigen::transpose</a></div><div class="ttdoc">Function object for performing Eigen matrix transposition.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00057">kalman_eigen_operator.hpp:57</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1eigen_1_1transpose_xhtml_af91f5ae2fbacb1970e5795e676f8402d"><div class="ttname"><a href="structfcarouge_1_1eigen_1_1transpose.xhtml#af91f5ae2fbacb1970e5795e676f8402d">fcarouge::eigen::transpose::operator()</a></div><div class="ttdeci">constexpr Eigen::Matrix&lt; typename Type::Scalar, Type::ColsAtCompileTime, Type::RowsAtCompileTime &gt; operator()(const Type &amp;value) const</div><div class="ttdoc">Returns the transpose of value.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00065">kalman_eigen_operator.hpp:65</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman__operator__eigen_8hpp.xhtml">kalman_operator_eigen.hpp</a></li>
-    <li class="footer">Generated on Fri Apr 29 2022 03:49:21 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman__eigen__operator_8hpp.xhtml">kalman_eigen_operator.hpp</a></li>
+    <li class="footer">Generated on Fri Apr 29 2022 04:15:55 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
