@@ -143,8 +143,8 @@ template <template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity>
-inline constexpr void update(auto &x, auto &p, const auto &h, const auto &r,
-                             const auto &z)
+inline constexpr void observe(auto &x, auto &p, const auto &h, const auto &r,
+                              const auto &z)
 {
   const auto k{ weight_gain<Transpose, Divide>(p, h, r) };
 

@@ -102,8 +102,9 @@ class kalman
   //! @name Public Member Function Objects
   //! @{
 
+  // Functors could be replaced by variables if data is constant.
   // Functors could be replaced by the standard general-purpose polymorphic
-  // function wrapper `std::function` if lambda captures are needed.
+  // function wrappers `std::function` if lambda captures were needed.
 
   observation (*transition_observation_h)() = [] {
     return observation{ Identity<observation>()() };
@@ -137,14 +138,14 @@ class kalman
   //! @{
 
   template <typename... Outputs>
-  inline constexpr void update(const Outputs &...output_z)
+  inline constexpr void observe(const Outputs &...output_z)
   {
     auto &x{ state_x };
     auto &p{ estimate_uncertainty_p };
     const auto h{ transition_observation_h() };
     const auto r{ noise_observation_r() };
     const auto z{ output{ output_z... } };
-    fcarouge::update<Transpose, Symmetrize, Divide, Identity>(x, p, h, r, z);
+    fcarouge::observe<Transpose, Symmetrize, Divide, Identity>(x, p, h, r, z);
   }
 
   template <typename... Inputs>
@@ -158,6 +159,17 @@ class kalman
     const auto g{ transition_control_g(arguments...) };
     const auto u{ input{ input_u... } };
     fcarouge::predict<Transpose, Symmetrize>(x, p, f, q, g, u);
+  }
+
+  inline constexpr void
+  predict(const PredictionArguments &...arguments) requires(
+      std::is_same_v<Input, void>)
+  {
+    auto &x{ state_x };
+    auto &p{ estimate_uncertainty_p };
+    const auto f{ transition_state_f(arguments...) };
+    const auto q{ noise_process_q(arguments...) };
+    fcarouge::predict<Transpose, Symmetrize>(x, p, f, q);
   }
 
   //! @}
