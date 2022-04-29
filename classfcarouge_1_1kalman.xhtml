@@ -128,12 +128,14 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Member Functions</div></td></tr>
-<tr class="memitem:a3ae36f3896a663e2d869a367ccf49d55"><td class="memTemplParams" colspan="2">template&lt;typename... Outputs&gt; </td></tr>
-<tr class="memitem:a3ae36f3896a663e2d869a367ccf49d55"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a3ae36f3896a663e2d869a367ccf49d55">update</a> (const Outputs &amp;...output_z)</td></tr>
-<tr class="separator:a3ae36f3896a663e2d869a367ccf49d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2491fa83103bd28c307082800675305"><td class="memTemplParams" colspan="2">template&lt;typename... Outputs&gt; </td></tr>
+<tr class="memitem:ab2491fa83103bd28c307082800675305"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a> (const Outputs &amp;...output_z)</td></tr>
+<tr class="separator:ab2491fa83103bd28c307082800675305"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1977e703d7b69b33a373aa402b8ad571"><td class="memTemplParams" colspan="2">template&lt;typename... Inputs&gt; </td></tr>
 <tr class="memitem:a1977e703d7b69b33a373aa402b8ad571"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a> (const PredictionArguments &amp;...arguments, const Inputs &amp;...input_u)</td></tr>
 <tr class="separator:a1977e703d7b69b33a373aa402b8ad571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a376bac65d1dd48e7002285371993157e"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a376bac65d1dd48e7002285371993157e">predict</a> (const PredictionArguments &amp;...arguments) requires(std</td></tr>
+<tr class="separator:a376bac65d1dd48e7002285371993157e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -341,8 +343,96 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab2491fa83103bd28c307082800675305"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2491fa83103bd28c307082800675305">&#9670;&nbsp;</a></span>observe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename State , typename Output  = State, typename Input  = State, template&lt; typename &gt; typename Transpose = transpose, template&lt; typename &gt; typename Symmetrize = symmetrize, template&lt; typename, typename &gt; typename Divide = divide, template&lt; typename &gt; typename Identity = identity, typename... PredictionArguments&gt; </div>
+<div class="memtemplate">
+template&lt;typename... Outputs&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::observe </td>
+          <td>(</td>
+          <td class="paramtype">const Outputs &amp;...&#160;</td>
+          <td class="paramname"><em>output_z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00141">141</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keyword">auto</span> &amp;x{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> };</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keyword">auto</span> &amp;p{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> };</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> h{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ab4e07d50bc9cb5be0fb5727b072becde">transition_observation_h</a>() };</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> r{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">noise_observation_r</a>() };</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> z{ <a class="code" href="classfcarouge_1_1kalman.xhtml#abc7af4f04f088dc2bccc17a969081b64">output</a>{ output_z... } };</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    fcarouge::observe&lt;Transpose, Symmetrize, Divide, Identity&gt;(x, p, h, r, z);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  }</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a63dafedafcd7be03c58b41b325fcda65"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">fcarouge::kalman::estimate_uncertainty_p</a></div><div class="ttdeci">estimate_uncertainty estimate_uncertainty_p</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00098">kalman.hpp:98</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a656dca40b07400e6d7dac7cb1e2ea14a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">fcarouge::kalman::noise_observation_r</a></div><div class="ttdeci">observation_noise_uncertainty(* noise_observation_r)()</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00113">kalman.hpp:113</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ab4e07d50bc9cb5be0fb5727b072becde"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ab4e07d50bc9cb5be0fb5727b072becde">fcarouge::kalman::transition_observation_h</a></div><div class="ttdeci">observation(* transition_observation_h)()</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00109">kalman.hpp:109</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_abc7af4f04f088dc2bccc17a969081b64"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#abc7af4f04f088dc2bccc17a969081b64">fcarouge::kalman::output</a></div><div class="ttdeci">Output output</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00078">kalman.hpp:78</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ac74978977e61b19d0baefbc6fb060d5f"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">fcarouge::kalman::state_x</a></div><div class="ttdeci">state state_x</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00097">kalman.hpp:97</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00098">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::estimate_uncertainty_p</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00113">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::noise_observation_r</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00097">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::state_x</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00109">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_observation_h</a>.</p>
+
+</div>
+</div>
+<a id="a376bac65d1dd48e7002285371993157e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a376bac65d1dd48e7002285371993157e">&#9670;&nbsp;</a></span>predict() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename State , typename Output  = State, typename Input  = State, template&lt; typename &gt; typename Transpose = transpose, template&lt; typename &gt; typename Symmetrize = symmetrize, template&lt; typename, typename &gt; typename Divide = divide, template&lt; typename &gt; typename Identity = identity, typename... PredictionArguments&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict </td>
+          <td>(</td>
+          <td class="paramtype">const PredictionArguments &amp;...&#160;</td>
+          <td class="paramname"><em>arguments</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00165">165</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keyword">auto</span> &amp;x{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> };</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keyword">auto</span> &amp;p{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> };</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> f{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ae3f9a8213e29cef0992ebdcb2b4169ed">transition_state_f</a>(arguments...) };</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> q{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a3c2b31325270144d06db0777d1778a0d">noise_process_q</a>(arguments...) };</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    fcarouge::predict&lt;Transpose, Symmetrize&gt;(x, p, f, q);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  }</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3c2b31325270144d06db0777d1778a0d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3c2b31325270144d06db0777d1778a0d">fcarouge::kalman::noise_process_q</a></div><div class="ttdeci">process_noise_uncertainty(* noise_process_q)(const PredictionArguments &amp;...)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00123">kalman.hpp:123</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ae3f9a8213e29cef0992ebdcb2b4169ed"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ae3f9a8213e29cef0992ebdcb2b4169ed">fcarouge::kalman::transition_state_f</a></div><div class="ttdeci">state_transition(* transition_state_f)(const PredictionArguments &amp;...)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00117">kalman.hpp:117</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00098">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::estimate_uncertainty_p</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00123">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::noise_process_q</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00097">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::state_x</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00117">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_state_f</a>.</p>
+
+</div>
+</div>
 <a id="a1977e703d7b69b33a373aa402b8ad571"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1977e703d7b69b33a373aa402b8ad571">&#9670;&nbsp;</a></span>predict()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1977e703d7b69b33a373aa402b8ad571">&#9670;&nbsp;</a></span>predict() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -379,69 +469,20 @@ template&lt;typename... Inputs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00151">151</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keyword">auto</span> &amp;x{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> };</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">auto</span> &amp;p{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> };</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> f{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ae3f9a8213e29cef0992ebdcb2b4169ed">transition_state_f</a>(arguments...) };</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> q{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a3c2b31325270144d06db0777d1778a0d">noise_process_q</a>(arguments...) };</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> g{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a9c041120ea8179f073edf3522c6ea827">transition_control_g</a>(arguments...) };</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> u{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a6160996daa1b4bce322a188b714c1831">input</a>{ input_u... } };</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    fcarouge::predict&lt;Transpose, Symmetrize&gt;(x, p, f, q, g, u);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  }</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3c2b31325270144d06db0777d1778a0d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3c2b31325270144d06db0777d1778a0d">fcarouge::kalman::noise_process_q</a></div><div class="ttdeci">process_noise_uncertainty(* noise_process_q)(const PredictionArguments &amp;...)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00122">kalman.hpp:122</a></div></div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00152">152</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">auto</span> &amp;x{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> };</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">auto</span> &amp;p{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> };</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> f{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ae3f9a8213e29cef0992ebdcb2b4169ed">transition_state_f</a>(arguments...) };</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> q{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a3c2b31325270144d06db0777d1778a0d">noise_process_q</a>(arguments...) };</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> g{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a9c041120ea8179f073edf3522c6ea827">transition_control_g</a>(arguments...) };</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> u{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a6160996daa1b4bce322a188b714c1831">input</a>{ input_u... } };</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    fcarouge::predict&lt;Transpose, Symmetrize&gt;(x, p, f, q, g, u);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  }</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6160996daa1b4bce322a188b714c1831"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6160996daa1b4bce322a188b714c1831">fcarouge::kalman::input</a></div><div class="ttdeci">Input input</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00079">kalman.hpp:79</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a63dafedafcd7be03c58b41b325fcda65"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">fcarouge::kalman::estimate_uncertainty_p</a></div><div class="ttdeci">estimate_uncertainty estimate_uncertainty_p</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00098">kalman.hpp:98</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a9c041120ea8179f073edf3522c6ea827"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a9c041120ea8179f073edf3522c6ea827">fcarouge::kalman::transition_control_g</a></div><div class="ttdeci">control(* transition_control_g)(const PredictionArguments &amp;...)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00128">kalman.hpp:128</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ac74978977e61b19d0baefbc6fb060d5f"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">fcarouge::kalman::state_x</a></div><div class="ttdeci">state state_x</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00097">kalman.hpp:97</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ae3f9a8213e29cef0992ebdcb2b4169ed"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ae3f9a8213e29cef0992ebdcb2b4169ed">fcarouge::kalman::transition_state_f</a></div><div class="ttdeci">state_transition(* transition_state_f)(const PredictionArguments &amp;...)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00116">kalman.hpp:116</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a9c041120ea8179f073edf3522c6ea827"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a9c041120ea8179f073edf3522c6ea827">fcarouge::kalman::transition_control_g</a></div><div class="ttdeci">control(* transition_control_g)(const PredictionArguments &amp;...)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00129">kalman.hpp:129</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00098">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::estimate_uncertainty_p</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00122">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::noise_process_q</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00097">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::state_x</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00128">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_control_g</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00116">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_state_f</a>.</p>
-
-</div>
-</div>
-<a id="a3ae36f3896a663e2d869a367ccf49d55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ae36f3896a663e2d869a367ccf49d55">&#9670;&nbsp;</a></span>update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename State , typename Output  = State, typename Input  = State, template&lt; typename &gt; typename Transpose = transpose, template&lt; typename &gt; typename Symmetrize = symmetrize, template&lt; typename, typename &gt; typename Divide = divide, template&lt; typename &gt; typename Identity = identity, typename... PredictionArguments&gt; </div>
-<div class="memtemplate">
-template&lt;typename... Outputs&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update </td>
-          <td>(</td>
-          <td class="paramtype">const Outputs &amp;...&#160;</td>
-          <td class="paramname"><em>output_z</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00140">140</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keyword">auto</span> &amp;x{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> };</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keyword">auto</span> &amp;p{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> };</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> h{ <a class="code" href="classfcarouge_1_1kalman.xhtml#ab4e07d50bc9cb5be0fb5727b072becde">transition_observation_h</a>() };</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> r{ <a class="code" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">noise_observation_r</a>() };</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> z{ <a class="code" href="classfcarouge_1_1kalman.xhtml#abc7af4f04f088dc2bccc17a969081b64">output</a>{ output_z... } };</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    fcarouge::update&lt;Transpose, Symmetrize, Divide, Identity&gt;(x, p, h, r, z);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  }</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a656dca40b07400e6d7dac7cb1e2ea14a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">fcarouge::kalman::noise_observation_r</a></div><div class="ttdeci">observation_noise_uncertainty(* noise_observation_r)()</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00112">kalman.hpp:112</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ab4e07d50bc9cb5be0fb5727b072becde"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ab4e07d50bc9cb5be0fb5727b072becde">fcarouge::kalman::transition_observation_h</a></div><div class="ttdeci">observation(* transition_observation_h)()</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00108">kalman.hpp:108</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_abc7af4f04f088dc2bccc17a969081b64"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#abc7af4f04f088dc2bccc17a969081b64">fcarouge::kalman::output</a></div><div class="ttdeci">Output output</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00078">kalman.hpp:78</a></div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00098">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::estimate_uncertainty_p</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00112">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::noise_observation_r</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00097">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::state_x</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00108">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_observation_h</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00098">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::estimate_uncertainty_p</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00123">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::noise_process_q</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00097">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::state_x</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00129">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_control_g</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00117">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_state_f</a>.</p>
 
 </div>
 </div>
@@ -462,7 +503,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00098">98</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00151">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00140">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00141">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::observe()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00152">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>.</p>
 
 </div>
 </div>
@@ -484,9 +525,9 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 <div class="line">  }</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_abb1bc633a64ff810d70aa8e08920b61d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">fcarouge::kalman::observation_noise_uncertainty</a></div><div class="ttdeci">std::invoke_result_t&lt; Divide&lt; Output, Output &gt;, Output, Output &gt; observation_noise_uncertainty</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00088">kalman.hpp:89</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00112">112</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00113">113</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00140">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00141">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::observe()</a>.</p>
 
 </div>
 </div>
@@ -510,9 +551,9 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 <div class="line">      }</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a76bfd96edbf8db02f1eb071974ebdc21"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a76bfd96edbf8db02f1eb071974ebdc21">fcarouge::kalman::process_noise_uncertainty</a></div><div class="ttdeci">std::invoke_result_t&lt; Divide&lt; State, State &gt;, State, State &gt; process_noise_uncertainty</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00082">kalman.hpp:83</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00122">122</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00123">123</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00151">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00152">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>.</p>
 
 </div>
 </div>
@@ -532,7 +573,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00097">97</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00151">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00140">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00141">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::observe()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00152">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>.</p>
 
 </div>
 </div>
@@ -556,9 +597,9 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 <div class="line">      }</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2de5803d0b4279cd5e514740cd5c8966"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2de5803d0b4279cd5e514740cd5c8966">fcarouge::kalman::control</a></div><div class="ttdeci">std::invoke_result_t&lt; Divide&lt; State, Input &gt;, State, Input &gt; control</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00090">kalman.hpp:90</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00128">128</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00129">129</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00151">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00152">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>.</p>
 
 </div>
 </div>
@@ -580,9 +621,9 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 <div class="line">  }</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ae5c1331f5dfcbaf94ef6f5a8956ae04e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ae5c1331f5dfcbaf94ef6f5a8956ae04e">fcarouge::kalman::observation</a></div><div class="ttdeci">std::invoke_result_t&lt; Divide&lt; Output, State &gt;, Output, State &gt; observation</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00086">kalman.hpp:87</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00108">108</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00109">109</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00140">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00141">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::observe()</a>.</p>
 
 </div>
 </div>
@@ -606,9 +647,9 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 <div class="line">      }</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2fc57fec4ae336e5add76d9883e5a466"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2fc57fec4ae336e5add76d9883e5a466">fcarouge::kalman::state_transition</a></div><div class="ttdeci">std::invoke_result_t&lt; Divide&lt; State, State &gt;, State, State &gt; state_transition</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00084">kalman.hpp:85</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00116">116</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00117">117</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00151">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00152">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict()</a>.</p>
 
 </div>
 </div>
@@ -621,7 +662,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Mon Apr 25 2022 03:56:40 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Apr 29 2022 03:39:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

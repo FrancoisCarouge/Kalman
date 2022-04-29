@@ -153,9 +153,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a031c6728f873dda4b426651b8e6740fc"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename, typename &gt; typename Divide&gt; </td></tr>
 <tr class="memitem:a031c6728f873dda4b426651b8e6740fc"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a031c6728f873dda4b426651b8e6740fc">weight_gain</a> (const auto &amp;p, const auto &amp;h, const auto &amp;r)</td></tr>
 <tr class="separator:a031c6728f873dda4b426651b8e6740fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe74ff9857569f37c2073a9bb042d678"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Symmetrize, template&lt; typename, typename &gt; typename Divide, template&lt; typename &gt; typename Identity&gt; </td></tr>
-<tr class="memitem:afe74ff9857569f37c2073a9bb042d678"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#afe74ff9857569f37c2073a9bb042d678">update</a> (auto &amp;x, auto &amp;p, const auto &amp;h, const auto &amp;r, const auto &amp;z)</td></tr>
-<tr class="separator:afe74ff9857569f37c2073a9bb042d678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8864c20d73effa6658a64d02d7784a2c"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Symmetrize, template&lt; typename, typename &gt; typename Divide, template&lt; typename &gt; typename Identity&gt; </td></tr>
+<tr class="memitem:a8864c20d73effa6658a64d02d7784a2c"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a8864c20d73effa6658a64d02d7784a2c">observe</a> (auto &amp;x, auto &amp;p, const auto &amp;h, const auto &amp;r, const auto &amp;z)</td></tr>
+<tr class="separator:a8864c20d73effa6658a64d02d7784a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
@@ -324,6 +324,85 @@ template&lt;template&lt; typename &gt; class Transpose&gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a8864c20d73effa6658a64d02d7784a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8864c20d73effa6658a64d02d7784a2c">&#9670;&nbsp;</a></span>observe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Symmetrize, template&lt; typename, typename &gt; typename Divide, template&lt; typename &gt; typename Identity&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void fcarouge::observe </td>
+          <td>(</td>
+          <td class="paramtype">auto &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">auto &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto &amp;&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto &amp;&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto &amp;&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00146">146</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> k{ weight_gain&lt;Transpose, Divide&gt;(p, h, r) };</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  x = <a class="code" href="namespacefcarouge.xhtml#a582e3c5e47168b5ab730dd024cf47dc6">update_state</a>(x, k, z, h);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keyword">using</span> estimate_uncertainty_p =</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(p)&gt;&gt;;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  Symmetrize&lt;estimate_uncertainty_p&gt; symmetrize;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  p = symmetrize(update_covariance&lt;Transpose, Identity&gt;(p, k, h, r));</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a582e3c5e47168b5ab730dd024cf47dc6"><div class="ttname"><a href="namespacefcarouge.xhtml#a582e3c5e47168b5ab730dd024cf47dc6">fcarouge::update_state</a></div><div class="ttdeci">constexpr auto update_state(const auto &amp;x, const auto &amp;k, const auto &amp;z, const auto &amp;h)</div><div class="ttdef"><b>Definition:</b> <a href="kalman__equation_8hpp_source.xhtml#l00103">kalman_equation.hpp:103</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="kalman__equation_8hpp_source.xhtml#l00103">update_state()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a8864c20d73effa6658a64d02d7784a2c_cgraph.svg" width="336" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a125979d41b4a1d9fd73967db5bdb3399"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a125979d41b4a1d9fd73967db5bdb3399">&#9670;&nbsp;</a></span>predict() <span class="overload">[1/2]</span></h2>
 
@@ -384,11 +463,11 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
 <div class="ttc" id="anamespacefcarouge_xhtml_afb478e8db17b8db0555e09bbeafdbe9a"><div class="ttname"><a href="namespacefcarouge.xhtml#afb478e8db17b8db0555e09bbeafdbe9a">fcarouge::extrapolate_state</a></div><div class="ttdeci">constexpr auto extrapolate_state(const auto &amp;x, const auto &amp;f, const auto &amp;g, const auto &amp;u)</div><div class="ttdef"><b>Definition:</b> <a href="kalman__equation_8hpp_source.xhtml#l00058">kalman_equation.hpp:58</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="kalman__equation_8hpp_source.xhtml#l00049">extrapolate_state()</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a125979d41b4a1d9fd73967db5bdb3399_cgraph.svg" width="318" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -466,91 +545,12 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="kalman__equation_8hpp_source.xhtml#l00049">extrapolate_state()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a5fc0be8dfef80d0cea0c3f37b5e27f36_cgraph.svg" width="318" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="afe74ff9857569f37c2073a9bb042d678"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe74ff9857569f37c2073a9bb042d678">&#9670;&nbsp;</a></span>update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Symmetrize, template&lt; typename, typename &gt; typename Divide, template&lt; typename &gt; typename Identity&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr void fcarouge::update </td>
-          <td>(</td>
-          <td class="paramtype">auto &amp;&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">auto &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const auto &amp;&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const auto &amp;&#160;</td>
-          <td class="paramname"><em>r</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const auto &amp;&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00146">146</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> k{ weight_gain&lt;Transpose, Divide&gt;(p, h, r) };</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  x = <a class="code" href="namespacefcarouge.xhtml#a582e3c5e47168b5ab730dd024cf47dc6">update_state</a>(x, k, z, h);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keyword">using</span> estimate_uncertainty_p =</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(p)&gt;&gt;;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  Symmetrize&lt;estimate_uncertainty_p&gt; symmetrize;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  p = symmetrize(update_covariance&lt;Transpose, Identity&gt;(p, k, h, r));</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a582e3c5e47168b5ab730dd024cf47dc6"><div class="ttname"><a href="namespacefcarouge.xhtml#a582e3c5e47168b5ab730dd024cf47dc6">fcarouge::update_state</a></div><div class="ttdeci">constexpr auto update_state(const auto &amp;x, const auto &amp;k, const auto &amp;z, const auto &amp;h)</div><div class="ttdef"><b>Definition:</b> <a href="kalman__equation_8hpp_source.xhtml#l00103">kalman_equation.hpp:103</a></div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman__equation_8hpp_source.xhtml#l00103">update_state()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_afe74ff9857569f37c2073a9bb042d678_cgraph.svg" width="330" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a5fc0be8dfef80d0cea0c3f37b5e27f36_cgraph.svg" width="318" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -672,13 +672,13 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> State{ x + k * (z - h * x) };</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="kalman__equation_8hpp_source.xhtml#l00146">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman__equation_8hpp_source.xhtml#l00146">observe()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a582e3c5e47168b5ab730dd024cf47dc6_icgraph.svg" width="330" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a582e3c5e47168b5ab730dd024cf47dc6_icgraph.svg" width="336" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -746,7 +746,7 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li>
-    <li class="footer">Generated on Mon Apr 25 2022 03:56:40 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Apr 29 2022 03:39:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

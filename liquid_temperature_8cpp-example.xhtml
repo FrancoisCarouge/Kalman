@@ -144,27 +144,27 @@ $(document).ready(function(){initNavTree('liquid_temperature_8cpp-example.xhtml'
 <div class="line">    <span class="keywordflow">return</span> <a name="a3"></a><a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">kalman::observation_noise_uncertainty</a>{ 0.1 * 0.1 };</div>
 <div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">  k.update(49.95f);</div>
+<div class="line">  k.observe(49.95f);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, every measurements period: Δt = 5s (constant).</span></div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(49.967f);</div>
+<div class="line">  k.observe(49.967f);</div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(50.1f);</div>
+<div class="line">  k.observe(50.1f);</div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(50.106f);</div>
+<div class="line">  k.observe(50.106f);</div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(49.992f);</div>
+<div class="line">  k.observe(49.992f);</div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(49.819f);</div>
+<div class="line">  k.observe(49.819f);</div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(49.933f);</div>
+<div class="line">  k.observe(49.933f);</div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(50.007f);</div>
+<div class="line">  k.observe(50.007f);</div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(50.023f);</div>
+<div class="line">  k.observe(50.023f);</div>
 <div class="line">  k.predict();</div>
-<div class="line">  k.update(49.99f);</div>
+<div class="line">  k.observe(49.99f);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The estimate uncertainty quickly goes down, after 10 measurements:</span></div>
 <div class="line">  assert(0.0013 - 0.0001 &lt; k.estimate_uncertainty_p &amp;&amp;</div>
@@ -198,7 +198,7 @@ $(document).ready(function(){initNavTree('liquid_temperature_8cpp-example.xhtml'
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Apr 25 2022 03:56:40 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Apr 29 2022 03:39:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
