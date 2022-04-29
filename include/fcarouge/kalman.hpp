@@ -74,19 +74,36 @@ class kalman
   //! @name Public Member Types
   //! @{
 
+  //! @brief Type of the state estimate vector x.
   using state = State;
+
+  //! @brief Type of the observation vector z, or y.
   using output = Output;
+
+  //! @brief Type of the control vector.
   using input = Input;
+
+  //! @brief Type of the estimated covariance matrix.
   using estimate_uncertainty =
       std::invoke_result_t<Divide<State, State>, State, State>;
+
+  //! @brief Type of the process noise covariance matrix.
   using process_noise_uncertainty =
       std::invoke_result_t<Divide<State, State>, State, State>;
-  using state_transition =
-      std::invoke_result_t<Divide<State, State>, State, State>;
-  using observation =
-      std::invoke_result_t<Divide<Output, State>, Output, State>;
+
+  //! @brief Type of the observation noise covariance matrix.
   using observation_noise_uncertainty =
       std::invoke_result_t<Divide<Output, Output>, Output, Output>;
+
+  //! @brief Type of the state transition matrix.
+  using state_transition =
+      std::invoke_result_t<Divide<State, State>, State, State>;
+
+  //! @brief Type of the observation transition matrix.
+  using observation =
+      std::invoke_result_t<Divide<Output, State>, Output, State>;
+
+  //! @brief Type of the control transition matrix G, or B.
   using control = std::invoke_result_t<Divide<State, Input>, State, Input>;
 
   //! @}
@@ -94,7 +111,12 @@ class kalman
   //! @name Public Member Variables
   //! @{
 
+  //! @brief The state estimate vector x.
   state state_x;
+
+  //! @brief The estimate uncertainty, covariance matrix P.
+  //!
+  //! @details The estimate uncertainty, covariance is also known as Σ.
   estimate_uncertainty estimate_uncertainty_p;
 
   //! @}
@@ -106,26 +128,35 @@ class kalman
   // Functors could be replaced by the standard general-purpose polymorphic
   // function wrappers `std::function` if lambda captures were needed.
 
+  //! @brief Compute observation transition H matrix.
+  //!
+  //! @details The observation transition H is also known as C.
   observation (*transition_observation_h)() = [] {
     return observation{ Identity<observation>()() };
   };
 
+  //! @brief Compute observation noise R matrix.
   observation_noise_uncertainty (*noise_observation_r)() = [] {
     return observation_noise_uncertainty{};
   };
 
+  //! @brief Compute state transition F matrix.
+  //!
+  //! @details The state transition F matrix is also known as Φ or A.
   state_transition (*transition_state_f)(const PredictionArguments &...) =
       [](const PredictionArguments &...arguments) {
         static_cast<void>((arguments, ...));
         return state_transition{ Identity<state_transition>()() };
       };
 
+  //! @brief Compute process noise Q matrix.
   process_noise_uncertainty (*noise_process_q)(const PredictionArguments &...) =
       [](const PredictionArguments &...arguments) {
         static_cast<void>((arguments, ...));
         return process_noise_uncertainty{};
       };
 
+  //! @brief Compute control transition G matrix.
   control (*transition_control_g)(const PredictionArguments &...) =
       [](const PredictionArguments &...arguments) {
         static_cast<void>((arguments, ...));
