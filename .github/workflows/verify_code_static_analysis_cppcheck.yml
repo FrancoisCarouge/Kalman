@@ -12,9 +12,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Update
-      run: sudo apt update
     - name: Install
-      run: sudo apt install cppcheck
+      run: |
+        ( cd /tmp ; mkdir cppcheck ;
+          git clone --depth 1 https://github.com/danmar/cppcheck.git ;
+          ( cd cppcheck ;
+            mkdir build ) ;
+          ( cd cppcheck/build ; 
+            cmake .. ; 
+            cmake --build . ; 
+            sudo make install ) )
+    - name: Version
+      run: cppcheck --version
     - name: Check
       run: cppcheck --verbose --suppressions-list=.cppcheck --error-exitcode=1 --enable=all -I include .

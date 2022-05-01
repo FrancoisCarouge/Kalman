@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP
-#define FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP
+#ifndef FCAROUGE_INTERNAL_KALMAN_EIGEN_OPERATOR_HPP
+#define FCAROUGE_INTERNAL_KALMAN_EIGEN_OPERATOR_HPP
 
 //! @file
 //! @brief Kalman operation for Eigen 3 types.
@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <Eigen/Eigen>
 
-namespace fcarouge::eigen
+namespace fcarouge::eigen::internal
 {
 //! @brief Function object for performing Eigen matrix transposition.
 //!
@@ -138,6 +138,6 @@ template <typename Type> struct identity {
   }
 };
 
-} // namespace fcarouge::eigen
+} // namespace fcarouge::eigen::internal
 
-#endif // FCAROUGE_KALMAN_EIGEN_OPERATOR_HPP
+#endif // FCAROUGE_INTERNAL_KALMAN_EIGEN_OPERATOR_HPP

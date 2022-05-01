@@ -36,13 +36,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_OPERATOR_HPP
-#define FCAROUGE_KALMAN_OPERATOR_HPP
+#ifndef FCAROUGE_INTERNAL_KALMAN_OPERATOR_HPP
+#define FCAROUGE_INTERNAL_KALMAN_OPERATOR_HPP
 
 //! @file
 //! @brief Kalman operation for standard types.
 
-namespace fcarouge
+namespace fcarouge::internal
 {
 //! @brief Function object for performing matrix transposition.
 //!
@@ -105,6 +105,6 @@ template <typename Type> struct identity {
   }
 };
 
-} // namespace fcarouge
+} // namespace fcarouge::internal
 
-#endif // FCAROUGE_KALMAN_OPERATOR_HPP
+#endif // FCAROUGE_INTERNAL_KALMAN_OPERATOR_HPP

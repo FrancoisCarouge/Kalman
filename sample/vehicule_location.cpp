@@ -32,33 +32,34 @@ namespace
   // The state is chosen to be the position, velocity, acceleration in the XY
   // plane: [px, vx, ax, py, vy, ay]. We don't know the vehicle location; we
   // will set initial position, velocity and acceleration to 0.
-  k.state_x = { 0, 0, 0, 0, 0, 0 };
+  k.x(0., 0., 0., 0., 0., 0.);
 
   // Since our initial state vector is a guess, we will set a very high estimate
   // uncertainty. The high estimate uncertainty results in a high Kalman Gain,
   // giving a high weight to the measurement.
-  k.estimate_uncertainty_p = kalman::estimate_uncertainty{
-    { 500, 0, 0, 0, 0, 0 }, { 0, 500, 0, 0, 0, 0 }, { 0, 0, 500, 0, 0, 0 },
-    { 0, 0, 0, 500, 0, 0 }, { 0, 0, 0, 0, 500, 0 }, { 0, 0, 0, 0, 0, 500 }
-  };
+  k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },
+                                    { 0, 500, 0, 0, 0, 0 },
+                                    { 0, 0, 500, 0, 0, 0 },
+                                    { 0, 0, 0, 500, 0, 0 },
+                                    { 0, 0, 0, 0, 500, 0 },
+                                    { 0, 0, 0, 0, 0, 500 } });
 
   // Prediction
   // The process noise matrix Q would be:
-  k.noise_process_q = [] {
-    return kalman::process_noise_uncertainty{
-      { 1, 0.5, 0.5, 0, 0, 0 }, { 0.5, 1, 1, 0, 0, 0 },
-      { 0.5, 1, 1, 0, 0, 0 },   { 0, 0, 0, 0.25, 0.5, 0.5 },
-      { 0, 0, 0, 0.5, 1, 1 },   { 0, 0, 0, 0.5, 1, 1 }
-    };
-  };
+  k.q(kalman::process_uncertainty{ { 1, 0.5, 0.5, 0, 0, 0 },
+                                   { 0.5, 1, 1, 0, 0, 0 },
+                                   { 0.5, 1, 1, 0, 0, 0 },
+                                   { 0, 0, 0, 0.25, 0.5, 0.5 },
+                                   { 0, 0, 0, 0.5, 1, 1 },
+                                   { 0, 0, 0, 0.5, 1, 1 } });
 
   // The state transition matrix F would be:
-  k.transition_state_f = [] {
-    return kalman::state_transition{
-      { 1, 1, 0.5, 0, 0, 0 }, { 0, 1, 1, 0, 0, 0 }, { 0, 0, 1, 0, 0, 0 },
-      { 0, 0, 0, 1, 1, 0.5 }, { 0, 0, 0, 0, 1, 1 }, { 0, 0, 0, 0, 0, 1 }
-    };
-  };
+  k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
+                                { 0, 1, 1, 0, 0, 0 },
+                                { 0, 0, 1, 0, 0, 0 },
+                                { 0, 0, 0, 1, 1, 0.5 },
+                                { 0, 0, 0, 0, 1, 1 },
+                                { 0, 0, 0, 0, 0, 1 } });
 
   // Now we can predict the next state based on the initialization values.
   k.predict();
@@ -66,9 +67,7 @@ namespace
   // Measure and Update
   // The dimension of zn is 2x1 and the dimension of xn is 6x1. Therefore the
   // dimension of the observation matrix H shall be 2x6.
-  k.transition_observation_h = [] {
-    return kalman::observation{ { 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0 } };
-  };
+  k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0 } });
 
   // Assume that the x and y measurements are uncorrelated, i.e. error in the x
   // coordinate measurement doesn't depend on the error in the y coordinate
@@ -79,9 +78,7 @@ namespace
   // For the sake of the example simplicity, we will assume a constant
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error
   // standard deviation: σxm = σym = 3m. The variance 9.
-  k.noise_observation_r = [] {
-    return kalman::observation_noise_uncertainty{ { 9, 0 }, { 0, 9 } };
-  };
+  k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });
 
   // The measurement values: z1 = [-393.66, 300.4]
   k.observe(-393.66, 300.4);
@@ -156,21 +153,19 @@ namespace
   k.predict();
   k.observe(299.89, 2.14);
 
-  assert(5 - 0.0001 < k.estimate_uncertainty_p(0, 0) &&
-         k.estimate_uncertainty_p(0, 0) < 5 + 1.84 &&
-         5 - 0.0001 < k.estimate_uncertainty_p(3, 3) &&
-         k.estimate_uncertainty_p(3, 3) < 5 + 1.751 &&
+  assert(5 - 0.0001 < k.p()(0, 0) && k.p()(0, 0) < 5 + 1.84 &&
+         5 - 0.0001 < k.p()(3, 3) && k.p()(3, 3) < 5 + 1.751 &&
          "At this point, the position uncertainty px = py = 5, which means "
          "that the standard deviation of the prediction is square root of 5m.");
 
   k.predict();
 
-  assert(298.5 - 1.7 < k.state_x(0) && k.state_x(0) < 298.5 + 0.0001 &&
-         -1.65 - 1 < k.state_x(1) && k.state_x(1) < -1.65 + 0.0001 &&
-         -1.9 - 0.3 < k.state_x(2) && k.state_x(2) < -1.9 + 0.0001 &&
-         -22.5 - 0.5 < k.state_x(3) && k.state_x(3) < -22.5 + 0.0001 &&
-         -26.1 - 1.5 < k.state_x(4) && k.state_x(4) < -26.1 + 0.0001 &&
-         -0.64 - 0.7 < k.state_x(5) && k.state_x(5) < -0.64 + 0.0001);
+  assert(298.5 - 1.7 < k.x()(0) && k.x()(0) < 298.5 + 0.0001 &&
+         -1.65 - 1 < k.x()(1) && k.x()(1) < -1.65 + 0.0001 &&
+         -1.9 - 0.3 < k.x()(2) && k.x()(2) < -1.9 + 0.0001 &&
+         -22.5 - 0.5 < k.x()(3) && k.x()(3) < -22.5 + 0.0001 &&
+         -26.1 - 1.5 < k.x()(4) && k.x()(4) < -26.1 + 0.0001 &&
+         -0.64 - 0.7 < k.x()(5) && k.x()(5) < -0.64 + 0.0001);
 
   // As you can see, the Kalman Filter tracks the vehicle quite well. However,
   // when the vehicle starts the turning maneuver, the estimates are not so

@@ -21,27 +21,27 @@ namespace
 //! 55.01m, 55.15m, 49.89m, 40.85m, 46.72m, 50.05m, 51.27m, 49.95m.
 //!
 //! @example building_height.cpp
-[[maybe_unused]] constexpr auto building_height{ [] {
+[[maybe_unused]] auto building_height{ [] {
   // A one-dimensional filter, constant system dynamic model.
-  using kalman = kalman<float>;
+  using kalman = kalman<double>;
   kalman k;
 
   // Initialization
   // One can estimate the building height simply by looking at it. The estimated
   // building height is: 60 meters.
-  k.state_x = 60;
+  k.x(60.);
 
   // Now we shall initialize the estimate uncertainty. A human’s estimation
   // error (standard deviation) is about 15 meters: σ = 15. Consequently the
   // variance is 225: σ^2 = 225.
-  k.estimate_uncertainty_p = 225;
+  k.p(225.);
 
   // Prediction
   // Now, we shall predict the next state based on the initialization values.
-  assert(60 == k.state_x &&
+  assert(60 == k.x() &&
          "Since our system's dynamic model is constant, i.e. the building "
          "doesn't change its height: 60 meters.");
-  assert(225 == k.estimate_uncertainty_p &&
+  assert(225 == k.p() &&
          "The extrapolated estimate uncertainty (variance) also doesn't "
          "change: 225");
 
@@ -49,25 +49,24 @@ namespace
   // The first measurement is: z1 = 48.54m. Since the standard deviation σ of
   // the altimeter measurement error is 5, the variance σ^2 would be 25, thus
   // the measurement uncertainty is: r1 = 25.
-  k.noise_observation_r = [] {
-    return kalman::observation_noise_uncertainty{ 25 };
-  };
-  k.observe(48.54f);
+  k.r(25.);
+
+  k.observe(48.54);
 
   // And so on.
-  k.observe(47.11f);
-  k.observe(55.01f);
-  k.observe(55.15f);
-  k.observe(49.89f);
-  k.observe(40.85f);
-  k.observe(46.72f);
-  k.observe(50.05f);
-  k.observe(51.27f);
-  k.observe(49.95f);
+  k.observe(47.11);
+  k.observe(55.01);
+  k.observe(55.15);
+  k.observe(49.89);
+  k.observe(40.85);
+  k.observe(46.72);
+  k.observe(50.05);
+  k.observe(51.27);
+  k.observe(49.95);
 
   // After 10 measurements the filter estimates the height of the building
   // at 49.57m.
-  assert(49.57 - 0.001 < k.state_x && k.state_x < 49.57 + 0.001 &&
+  assert(49.57 - 0.001 < k.x() && k.x() < 49.57 + 0.001 &&
          "After 10 measurement and update iterations, the building estimated "
          "height is: 49.57m.");
 

@@ -36,67 +36,48 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_EQUATION_HPP
-#define FCAROUGE_KALMAN_EQUATION_HPP
+#ifndef FCAROUGE_INTERNAL_KALMAN_EQUATION_HPP
+#define FCAROUGE_INTERNAL_KALMAN_EQUATION_HPP
 
 //! @file
 //! @brief Kalman filter main project header.
 
 #include <type_traits>
 
-namespace fcarouge
+namespace fcarouge::internal
 {
-[[nodiscard]] inline constexpr auto extrapolate_state(const auto &x,
-                                                      const auto &f)
-{
-  using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
-
-  return state{ f * x };
-}
-
 [[nodiscard]] inline constexpr auto
-extrapolate_state(const auto &x, const auto &f, const auto &g, const auto &u)
+extrapolate_state(const auto &x, const auto &ff, const auto &f, const auto &g,
+                  const auto &u)
 {
   using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
 
-  return state{ f * x + g * u };
+  return state{ ff(x, f) + g * u };
 }
 
 template <template <typename> class Transpose>
 [[nodiscard]] inline constexpr auto
 extrapolate_covariance(const auto &p, const auto &f, const auto &q)
 {
-  using estimate_uncertainty_p =
+  using estimate_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
   using state_transition =
       std::remove_reference_t<std::remove_cv_t<decltype(f)>>;
   Transpose<state_transition> transpose;
 
-  return estimate_uncertainty_p{ f * p * transpose(f) + q };
+  return estimate_uncertainty{ f * p * transpose(f) + q };
 }
 
 template <template <typename> typename Transpose,
           template <typename> typename Symmetrize>
-inline constexpr void predict(auto &x, auto &p, const auto &f, const auto &q)
+inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
+                              const auto &q, const auto &g, const auto &u)
 {
-  x = extrapolate_state(x, f);
+  x = extrapolate_state(x, ff, f, g, u);
 
-  using estimate_uncertainty_p =
+  using estimate_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  Symmetrize<estimate_uncertainty_p> symmetrize;
-  p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
-}
-
-template <template <typename> typename Transpose,
-          template <typename> typename Symmetrize>
-inline constexpr void predict(auto &x, auto &p, const auto &f, const auto &q,
-                              const auto &g, const auto &u)
-{
-  x = extrapolate_state(x, f, g, u);
-
-  using estimate_uncertainty_p =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  Symmetrize<estimate_uncertainty_p> symmetrize;
+  Symmetrize<estimate_uncertainty> symmetrize;
   p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
 }
 
@@ -108,20 +89,30 @@ inline constexpr void predict(auto &x, auto &p, const auto &f, const auto &q,
   return state{ x + k * (z - h * x) };
 }
 
+template <typename State>
+[[nodiscard]] inline constexpr auto
+update_state(const State &x, const auto &k, const auto &z,
+             std::remove_reference_t<std::remove_cv_t<State>> (*h)(State))
+{
+  using state = State;
+
+  return state{ x + k * (z - h(x)) };
+}
+
 template <template <typename> typename Transpose,
           template <typename> typename Identity>
 [[nodiscard]] inline constexpr auto
 update_covariance(const auto &p, const auto &k, const auto &h, const auto &r)
 {
-  using estimate_uncertainty_p =
+  using estimate_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
   using gain = std::remove_reference_t<std::remove_cv_t<decltype(k)>>;
-  Transpose<estimate_uncertainty_p> transpose_p;
+  Transpose<estimate_uncertainty> transpose_p;
   Transpose<gain> transpose_k;
-  Identity<estimate_uncertainty_p> i;
+  Identity<estimate_uncertainty> i;
 
-  return estimate_uncertainty_p{ (i() - k * h) * p * transpose_p(i() - k * h) +
-                                 k * r * transpose_k(k) };
+  return estimate_uncertainty{ (i() - k * h) * p * transpose_p(i() - k * h) +
+                               k * r * transpose_k(k) };
 }
 
 template <template <typename> typename Transpose,
@@ -130,11 +121,11 @@ template <template <typename> typename Transpose,
                                                 const auto &r)
 {
   using observation = std::remove_reference_t<std::remove_cv_t<decltype(h)>>;
-  using observation_noise_uncertainty =
+  using output_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(r)>>;
   using gain = std::invoke_result_t<Transpose<observation>, observation>;
   Transpose<observation> transpose_h;
-  Divide<gain, observation_noise_uncertainty> divide;
+  Divide<gain, output_uncertainty> divide;
 
   return gain{ divide(p * transpose_h(h), h * p * transpose_h(h) + r) };
 }
@@ -150,12 +141,12 @@ inline constexpr void observe(auto &x, auto &p, const auto &h, const auto &r,
 
   x = update_state(x, k, z, h);
 
-  using estimate_uncertainty_p =
+  using estimate_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  Symmetrize<estimate_uncertainty_p> symmetrize;
+  Symmetrize<estimate_uncertainty> symmetrize;
   p = symmetrize(update_covariance<Transpose, Identity>(p, k, h, r));
 }
 
-} // namespace fcarouge
+} // namespace fcarouge::internal
 
-#endif // FCAROUGE_KALMAN_EQUATION_HPP
+#endif // FCAROUGE_INTERNAL_KALMAN_EQUATION_HPP
