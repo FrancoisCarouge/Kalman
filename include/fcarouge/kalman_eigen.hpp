@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Kalman operation for Eigen 3 types.
 
 #include "kalman.hpp"
-#include "kalman_eigen_operator.hpp"
+#include "internal/kalman_eigen_operator.hpp"
 
 #include <Eigen/Eigen>
 
@@ -66,8 +66,9 @@ template <typename Type, int State, int Output, int Input,
           typename... PredictionArguments>
 using kalman =
     fcarouge::kalman<Eigen::Vector<Type, State>, Eigen::Vector<Type, Output>,
-                     Eigen::Vector<Type, Input>, transpose, symmetrize, divide,
-                     identity, PredictionArguments...>;
+                     Eigen::Vector<Type, Input>, internal::transpose,
+                     internal::symmetrize, internal::divide, internal::identity,
+                     PredictionArguments...>;
 
 } // namespace fcarouge::eigen
 

@@ -48,13 +48,12 @@ namespace
   // Initialization
   // We don't know the rocket location; we will set initial position and
   // velocity to 0.
-  k.state_x = { 0, 0 };
+  k.x(0, 0);
 
   // Since our initial state vector is a guess, we will set a very high estimate
   // uncertainty. The high estimate uncertainty results in high Kalman gain,
   // giving a high weight to the measurement.
-  k.estimate_uncertainty_p =
-      kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } };
+  k.p(kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } });
 
   // Prediction
   // We will assume a discrete noise model - the noise is different at each time
@@ -64,25 +63,25 @@ namespace
   // the system random acceleration. The accelerometer error v is much lower
   // than system's random acceleration, therefore we use ϵ^2 as a multiplier of
   // the process noise matrix. This makes our estimation uncertainty much lower!
-  k.noise_process_q = [](const std::chrono::milliseconds &delta_time) {
+  k.q([](const std::chrono::milliseconds &delta_time) {
     const auto dt{ std::chrono::duration<double>(delta_time).count() };
-    return kalman::process_noise_uncertainty{
+    return kalman::process_uncertainty{
       { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },
       { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }
     };
-  };
+  });
 
   // The state transition matrix F would be:
-  k.transition_state_f = [](const std::chrono::milliseconds &delta_time) {
+  k.f([](const std::chrono::milliseconds &delta_time) {
     const auto dt{ std::chrono::duration<double>(delta_time).count() };
     return kalman::state_transition{ { 1, dt }, { 0, 1 } };
-  };
+  });
 
   // The control matrix G would be:
-  k.transition_control_g = [](const std::chrono::milliseconds &delta_time) {
+  k.g([](const std::chrono::milliseconds &delta_time) {
     const auto dt{ std::chrono::duration<double>(delta_time).count() };
-    return kalman::control{ 0.0313, dt };
-  };
+    return kalman::input_control{ 0.0313, dt };
+  });
 
   // We also don't know what the rocket acceleration is, but we can assume that
   // it's greater than zero. Let's assume: u0 = g
@@ -93,13 +92,11 @@ namespace
   // Measure and Update
   // The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension
   // of the observation matrix H will be 1x2.
-  k.transition_observation_h = [] { return kalman::observation{ 1, 0 }; };
+  k.h(1, 0);
 
   // For the sake of the example simplicity, we will assume a constant
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
-  k.noise_observation_r = [] {
-    return kalman::observation_noise_uncertainty{ 400 };
-  };
+  k.r(400);
 
   // The measurement values: z1 = -32.40, u1 = 39.72.
   // And so on, every measurements period: Δt = 250ms (constant, as variable).
@@ -165,8 +162,7 @@ namespace
 
   // The Kalman gain for altitude converged to 0.12, which means that the
   // estimation weight is much higher than the measurement weight.
-  assert(49.3 - 0.01 < k.estimate_uncertainty_p(0, 0) &&
-         k.estimate_uncertainty_p(0, 0) < 49.3 + 0.0001 &&
+  assert(49.3 - 0.01 < k.p()(0, 0) && k.p()(0, 0) < 49.3 + 0.0001 &&
          "At this point, the altitude uncertainty px = 49.3, which means that "
          "the standard deviation of the prediction is square root of 49.3: "
          "7.02m (remember that the standard deviation of the measurement is "
@@ -181,8 +177,8 @@ namespace
   // with the true altitude. In this example we don't have any maneuvers that
   // cause acceleration changes, but if we had, the control input
   // (accelerometer) would update the state extrapolation equation.
-  assert(831.5 - 0.001 < k.state_x(0) && k.state_x(0) < 831.5 + 54 &&
-         222.94 - 0.001 < k.state_x(1) && k.state_x(1) < 222.94 + 40);
+  assert(831.5 - 0.001 < k.x()(0) && k.x()(0) < 831.5 + 54 &&
+         222.94 - 0.001 < k.x()(1) && k.x()(1) < 222.94 + 40);
 
   return 0;
 }() };

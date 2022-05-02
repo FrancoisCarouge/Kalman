@@ -54,12 +54,9 @@ using kalman = fcarouge::kalman<double>;
 
 kalman k;
 
-k.state_x = 60;
-k.estimate_uncertainty_p = 225;
-k.transition_observation_h = [] { return kalman::observation{ 1 }; };
-k.noise_observation_r = [] {
-  return kalman::observation_noise_uncertainty{ 25 };
-};
+k.x(60.);
+k.p(225.);
+k.r(25.);
 
 k.observe(48.54);
 ```
@@ -76,34 +73,49 @@ const double gravitational_acceleration{ -9.8 }; // m.s^-2
 const std::chrono::milliseconds delta_time{ 250 };
 kalman k;
 
-k.state_x = { 0, 0 };
-k.estimate_uncertainty_p =
-    kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } };
-k.transition_state_f = [](const std::chrono::milliseconds &delta_time) {
+k.x(0, 0);
+k.p(kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } });
+k.f([](const std::chrono::milliseconds &delta_time) {
   const auto dt{ std::chrono::duration<double>(delta_time).count() };
   return kalman::state_transition{ { 1, dt }, { 0, 1 } };
-};
-k.noise_process_q = [](const std::chrono::milliseconds &delta_time) {
+});
+k.q([](const std::chrono::milliseconds &delta_time) {
   const auto dt{ std::chrono::duration<double>(delta_time).count() };
-  return kalman::process_noise_uncertainty{
+  return kalman::process_uncertainty{
     { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },
     { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }
   };
-};
-k.transition_control_g = [](const std::chrono::milliseconds &delta_time) {
+});
+k.g([](const std::chrono::milliseconds &delta_time) {
   const auto dt{ std::chrono::duration<double>(delta_time).count() };
-  return kalman::control{ 0.0313, dt };
-};
-k.transition_observation_h = [] { return kalman::observation{ { 1, 0 } }; };
-k.noise_observation_r = [] {
-  return kalman::observation_noise_uncertainty{ 400 };
-};
+  return kalman::input_control{ 0.0313, dt };
+});
+k.h(1, 0);
+k.r(400);
 
 k.predict(delta_time, gravitational_acceleration);
 k.observe(-32.40 );
 k.predict(delta_time, 39.72);
 k.observe(-11.1);
 ```
+
+# Library
+
+- [Kalman Filter for C++](#kalman-filter-for-c)
+- [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
+- [Examples](#examples)
+  - [One-Dimensional](#one-dimensional)
+    - [Multi-Dimensional](#multi-dimensional)
+- [Library](#library)
+- [Motivation](#motivation)
+- [Resources](#resources)
+- [Class fcarouge::kalman](#class-fcarougekalman)
+  - [Template Parameters](#template-parameters)
+  - [Member Types](#member-types)
+  - [Member Functions](#member-functions)
+    - [Characteristics](#characteristics)
+    - [Modifiers](#modifiers)
+- [License](#license)
 
 # Motivation
 
@@ -120,6 +132,65 @@ Awesome resources to learn about Kalman filters:
 
 - [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
 - [Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) by Roger Labbe.
+
+# Class fcarouge::kalman
+
+Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
+
+```cpp
+template <typename State, typename Output = State, typename Input = State,
+          template <typename> typename Transpose = internal::transpose,
+          template <typename> typename Symmetrize = internal::symmetrize,
+          template <typename, typename> typename Divide = internal::divide,
+          template <typename> typename Identity = internal::identity,
+          typename... PredictionArguments>
+class kalman
+```
+
+## Template Parameters
+
+## Member Types
+
+| Member Type | Definition |
+| --- | --- |
+| `state` | Type of the state estimate vector X. |
+| `output` | Type of the observation vector Z, also known as Y. |
+| `input` | Type of the control vector U. |
+| `estimate_uncertainty` | Type of the estimated covariance matrix P, also known as Σ. |
+| `process_uncertainty` | Type of the process noise covariance matrix Q. |
+| `output_uncertainty` | Type of the observation, measurement noise covariance matrix R. |
+| `state_transition` | Type of the state transition matrix F, also known as Φ or A. |
+| `output_model` | Type of the observation transition matrix H, also known as C. |
+| `input_control` | Type of the control transition matrix G, also known as B. |
+
+## Member Functions
+
+| Member Function | Definition |
+| --- | --- |
+| `(constructor)` | Constructs the filter. |
+| `(destructor)` | Destructs the filter. |
+| `operator=` | Assigns values to the filter. |
+
+### Characteristics
+
+| Modifier | Definition |
+| --- | --- |
+| `x` | Manages the state estimate vector. |
+| `z` | Manages the observation vector. |
+| `u` | Manages the control vector. |
+| `p` | Manages the estimated covariance matrix. |
+| `q` | Manages the process noise covariance matrix. |
+| `r` | Manages the observation, measurement noise covariance matrix. |
+| `f` | Manages the state transition matrix. |
+| `h` | Manages the observation transition matrix. |
+| `g` | Manages the control transition matrix. |
+
+### Modifiers
+
+| Modifier | Definition |
+| --- | --- |
+| `observe` | Updates the estimates with the outcome of a measurement. |
+| `predict` | Produces estimates of the state variables and uncertainties. |
 
 # License
 
