@@ -99,27 +99,27 @@ $(document).ready(function(){initNavTree('building_height_8cpp-example.xhtml',''
 <div class="line">{</div>
 <div class="line"><span class="keyword">namespace</span></div>
 <div class="line">{</div>
-<div class="line">[[maybe_unused]] constexpr <span class="keyword">auto</span> <a name="a0"></a><a class="code" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02building__height_8cpp_03.xhtml#af54257d4657116dd0429c4b398af2134">building_height</a>{ [] {</div>
+<div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a name="a0"></a><a class="code" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02building__height_8cpp_03.xhtml#afb52f94db8102a947d7f8321efcfdb1c">building_height</a>{ [] {</div>
 <div class="line">  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
-<div class="line">  <span class="keyword">using</span> <a name="a1"></a><a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> = kalman&lt;float&gt;;</div>
-<div class="line">  <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">kalman</a> k;</div>
+<div class="line">  <span class="keyword">using</span> <a name="a1"></a><a class="code" href="namespacefcarouge_1_1eigen.xhtml#a1ec90a3f99f5fe01fe104be87319cf72">kalman</a> = kalman&lt;double&gt;;</div>
+<div class="line">  <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a1ec90a3f99f5fe01fe104be87319cf72">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="comment">// One can estimate the building height simply by looking at it. The estimated</span></div>
 <div class="line">  <span class="comment">// building height is: 60 meters.</span></div>
-<div class="line">  k.state_x = 60;</div>
+<div class="line">  k.x(60.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we shall initialize the estimate uncertainty. A human’s estimation</span></div>
 <div class="line">  <span class="comment">// error (standard deviation) is about 15 meters: σ = 15. Consequently the</span></div>
 <div class="line">  <span class="comment">// variance is 225: σ^2 = 225.</span></div>
-<div class="line">  k.estimate_uncertainty_p = 225;</div>
+<div class="line">  k.p(225.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Prediction</span></div>
 <div class="line">  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
-<div class="line">  assert(60 == k.state_x &amp;&amp;</div>
+<div class="line">  assert(60 == k.x() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
-<div class="line">  assert(225 == k.estimate_uncertainty_p &amp;&amp;</div>
+<div class="line">  assert(225 == k.p() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"> </div>
@@ -127,25 +127,24 @@ $(document).ready(function(){initNavTree('building_height_8cpp-example.xhtml',''
 <div class="line">  <span class="comment">// The first measurement is: z1 = 48.54m. Since the standard deviation σ of</span></div>
 <div class="line">  <span class="comment">// the altimeter measurement error is 5, the variance σ^2 would be 25, thus</span></div>
 <div class="line">  <span class="comment">// the measurement uncertainty is: r1 = 25.</span></div>
-<div class="line">  k.noise_observation_r = [] {</div>
-<div class="line">    <span class="keywordflow">return</span> <a name="a2"></a><a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">kalman::observation_noise_uncertainty</a>{ 25 };</div>
-<div class="line">  };</div>
-<div class="line">  k.observe(48.54f);</div>
+<div class="line">  k.r(25.);</div>
+<div class="line"> </div>
+<div class="line">  k.observe(48.54);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on.</span></div>
-<div class="line">  k.observe(47.11f);</div>
-<div class="line">  k.observe(55.01f);</div>
-<div class="line">  k.observe(55.15f);</div>
-<div class="line">  k.observe(49.89f);</div>
-<div class="line">  k.observe(40.85f);</div>
-<div class="line">  k.observe(46.72f);</div>
-<div class="line">  k.observe(50.05f);</div>
-<div class="line">  k.observe(51.27f);</div>
-<div class="line">  k.observe(49.95f);</div>
+<div class="line">  k.observe(47.11);</div>
+<div class="line">  k.observe(55.01);</div>
+<div class="line">  k.observe(55.15);</div>
+<div class="line">  k.observe(49.89);</div>
+<div class="line">  k.observe(40.85);</div>
+<div class="line">  k.observe(46.72);</div>
+<div class="line">  k.observe(50.05);</div>
+<div class="line">  k.observe(51.27);</div>
+<div class="line">  k.observe(49.95);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
-<div class="line">  assert(49.57 - 0.001 &lt; k.state_x &amp;&amp; k.state_x &lt; 49.57 + 0.001 &amp;&amp;</div>
+<div class="line">  assert(49.57 - 0.001 &lt; k.x() &amp;&amp; k.x() &lt; 49.57 + 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"> </div>
@@ -154,17 +153,16 @@ $(document).ready(function(){initNavTree('building_height_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_abb1bc633a64ff810d70aa8e08920b61d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">fcarouge::kalman::observation_noise_uncertainty</a></div><div class="ttdeci">std::invoke_result_t&lt; Divide&lt; Output, Output &gt;, Output, Output &gt; observation_noise_uncertainty</div><div class="ttdoc">Type of the observation noise covariance matrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00095">kalman.hpp:96</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The main Kalman filter class.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a9c082204cf7b71aebc7a5c7b490e6721"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a9c082204cf7b71aebc7a5c7b490e6721">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, transpose, symmetrize, divide, identity, PredictionArguments... &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00067">kalman_eigen.hpp:70</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02building__height_8cpp_03_xhtml_af54257d4657116dd0429c4b398af2134"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02building__height_8cpp_03.xhtml#af54257d4657116dd0429c4b398af2134">fcarouge::sample::anonymous_namespace{building_height.cpp}::building_height</a></div><div class="ttdeci">constexpr auto building_height</div><div class="ttdef"><b>Definition:</b> <a href="building__height_8cpp_source.xhtml#l00024">building_height.cpp:24</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a1ec90a3f99f5fe01fe104be87319cf72"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a1ec90a3f99f5fe01fe104be87319cf72">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, PredictionArguments... &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00067">kalman_eigen.hpp:71</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02building__height_8cpp_03_xhtml_afb52f94db8102a947d7f8321efcfdb1c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02building__height_8cpp_03.xhtml#afb52f94db8102a947d7f8321efcfdb1c">fcarouge::sample::anonymous_namespace{building_height.cpp}::building_height</a></div><div class="ttdeci">auto building_height</div><div class="ttdef"><b>Definition:</b> <a href="building__height_8cpp_source.xhtml#l00024">building_height.cpp:24</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Apr 29 2022 04:37:33 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon May 2 2022 03:24:31 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

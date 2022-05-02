@@ -95,105 +95,96 @@ $(document).ready(function(){initNavTree('liquid__temperature_8cpp_source.xhtml'
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03.xhtml">    7</a></span>&#160;<span class="keyword">namespace</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03.xhtml#aa9ea686bb72ef8ae2cd7a10ebf2939de">   29</a></span>&#160;[[maybe_unused]] constexpr <span class="keyword">auto</span> <a class="code" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03.xhtml#aa9ea686bb72ef8ae2cd7a10ebf2939de">liquid_temperature</a>{ [] {</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03.xhtml#ac9bf5531aa81c61f50cdf48b40060757">   29</a></span>&#160;[[maybe_unused]] <span class="keyword">auto</span> <a class="code" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03.xhtml#ac9bf5531aa81c61f50cdf48b40060757">liquid_temperature</a>{ [] {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">using</span> <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman&lt;float&gt;</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">using</span> <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman&lt;double&gt;</a>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman</a> k;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// Initialization</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">// Before the first iteration, we must initialize the Kalman filter and</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// predict the next state (which is the first state). We don&#39;t know what the</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">// temperature of the liquid is, and our guess is 10°C.</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> = 10;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>(10.);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// Our guess is very imprecise, so we set our initialization estimate error σ</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">// to 100. The estimate uncertainty of the initialization is the error</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="comment">// variance σ^2: p0,0 = 100^2 = 10,000. This variance is very high. If we</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// initialize with a more meaningful value, we will get faster Kalman filter</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="comment">// convergence.</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> = 100 * 100;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>(100 * 100.);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">// Prediction</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Now, we shall predict the next state based on the initialization values. We</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// think that we have an accurate model, thus we set the process noise</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// variance q to 0.0001.</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3c2b31325270144d06db0777d1778a0d">noise_process_q</a> = [] {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#a76bfd96edbf8db02f1eb071974ebdc21">kalman::process_noise_uncertainty</a>{ 0.0001 };</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  };</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#aaf8eec2b4dd3ba52b53c89e52fe687cd">q</a>(0.0001);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  assert(10 == k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> &amp;&amp;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;         <span class="stringliteral">&quot;Since our model has constant dynamics, the predicted estimate is &quot;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         <span class="stringliteral">&quot;equal to the current estimate: x^1,0 = 10°C.&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  assert(10000.0001 - 0.001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> &amp;&amp;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;         k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> &lt; 10000.0001 + 0.001 &amp;&amp;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = &quot;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;         <span class="stringliteral">&quot;10000 + 0.0001 = 10000.0001.&quot;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">// Measure and Update</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">// The measurement value: z1 = 49.95°C. Since the measurement error is σ =</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// 0.1, the variance σ^2 would be 0.01, thus the measurement uncertainty is:</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// r1 = 0.01. The measurement error (standard deviation) is 0.1 degrees</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="comment">// Celsius.</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">noise_observation_r</a> = [] {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">kalman::observation_noise_uncertainty</a>{ 0.1 * 0.1 };</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  };</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(49.95f);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// And so on, every measurements period: Δt = 5s (constant).</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(49.967f);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(50.1f);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(50.106f);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(49.992f);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(49.819f);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(49.933f);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(50.007f);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(50.023f);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">observe</a>(49.99f);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  assert(10 == k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>() &amp;&amp;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;         <span class="stringliteral">&quot;Since our model has constant dynamics, the predicted estimate is &quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;         <span class="stringliteral">&quot;equal to the current estimate: x^1,0 = 10°C.&quot;</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  assert(10000.0001 - 0.001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>() &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>() &lt; 10000.0001 + 0.001 &amp;&amp;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = &quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;         <span class="stringliteral">&quot;10000 + 0.0001 = 10000.0001.&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">// Measure and Update</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// The measurement value: z1 = 49.95°C. Since the measurement error is σ =</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">// 0.1, the variance σ^2 would be 0.01, thus the measurement uncertainty is:</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">// r1 = 0.01. The measurement error (standard deviation) is 0.1 degrees</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">// Celsius.</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">r</a>(0.1 * 0.1);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  k.observe(49.95);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="comment">// And so on, every measurements period: Δt = 5s (constant).</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  k.observe(49.967);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  k.observe(50.1);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  k.observe(50.106);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  k.observe(49.992);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  k.observe(49.819);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  k.observe(49.933);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  k.observe(50.007);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  k.observe(50.023);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  k.observe(49.99);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="comment">// The estimate uncertainty quickly goes down, after 10 measurements:</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  assert(0.0013 - 0.0001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>() &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>() &lt; 0.0013 + 0.0001 &amp;&amp;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;         <span class="stringliteral">&quot;The estimate uncertainty is 0.0013, i.e. the estimate error standard &quot;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;         <span class="stringliteral">&quot;deviation is: 0.036°C.&quot;</span>);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="comment">// The estimate uncertainty quickly goes down, after 10 measurements:</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  assert(0.0013 - 0.0001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> &amp;&amp;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;         k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">estimate_uncertainty_p</a> &lt; 0.0013 + 0.0001 &amp;&amp;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;         <span class="stringliteral">&quot;The estimate uncertainty is 0.0013, i.e. the estimate error standard &quot;</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;         <span class="stringliteral">&quot;deviation is: 0.036°C.&quot;</span>);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">predict</a>();</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  assert(49.988 - 0.0001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">state_x</a> &lt; 49.988 + 0.0001 &amp;&amp;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;         <span class="stringliteral">&quot;The filter estimates the liquid temperature at 49.988°C.&quot;</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="comment">// So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="comment">// In this example we&#39;ve measured a liquid temperature using the</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="comment">// one-dimensional Kalman filter. Although the system dynamics include a</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="comment">// random process noise, the Kalman filter can provide good estimation.</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}() };</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00071">kalman.hpp:72</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1977e703d7b69b33a373aa402b8ad571"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1977e703d7b69b33a373aa402b8ad571">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const PredictionArguments &amp;...arguments, const Inputs &amp;...input_u)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00183">kalman.hpp:183</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3c2b31325270144d06db0777d1778a0d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3c2b31325270144d06db0777d1778a0d">fcarouge::kalman::noise_process_q</a></div><div class="ttdeci">process_noise_uncertainty(* noise_process_q)(const PredictionArguments &amp;...)</div><div class="ttdoc">Compute process noise Q matrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00153">kalman.hpp:153</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a63dafedafcd7be03c58b41b325fcda65"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a63dafedafcd7be03c58b41b325fcda65">fcarouge::kalman::estimate_uncertainty_p</a></div><div class="ttdeci">estimate_uncertainty estimate_uncertainty_p</div><div class="ttdoc">The estimate uncertainty, covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00120">kalman.hpp:120</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a656dca40b07400e6d7dac7cb1e2ea14a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a656dca40b07400e6d7dac7cb1e2ea14a">fcarouge::kalman::noise_observation_r</a></div><div class="ttdeci">observation_noise_uncertainty(* noise_observation_r)()</div><div class="ttdoc">Compute observation noise R matrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00139">kalman.hpp:139</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a76bfd96edbf8db02f1eb071974ebdc21"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a76bfd96edbf8db02f1eb071974ebdc21">fcarouge::kalman::process_noise_uncertainty</a></div><div class="ttdeci">std::invoke_result_t&lt; Divide&lt; State, State &gt;, State, State &gt; process_noise_uncertainty</div><div class="ttdoc">Type of the process noise covariance matrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00091">kalman.hpp:92</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ab2491fa83103bd28c307082800675305"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ab2491fa83103bd28c307082800675305">fcarouge::kalman::observe</a></div><div class="ttdeci">constexpr void observe(const Outputs &amp;...output_z)</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00172">kalman.hpp:172</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_abb1bc633a64ff810d70aa8e08920b61d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#abb1bc633a64ff810d70aa8e08920b61d">fcarouge::kalman::observation_noise_uncertainty</a></div><div class="ttdeci">std::invoke_result_t&lt; Divide&lt; Output, Output &gt;, Output, Output &gt; observation_noise_uncertainty</div><div class="ttdoc">Type of the observation noise covariance matrix.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00095">kalman.hpp:96</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ac74978977e61b19d0baefbc6fb060d5f"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ac74978977e61b19d0baefbc6fb060d5f">fcarouge::kalman::state_x</a></div><div class="ttdeci">state state_x</div><div class="ttdoc">The state estimate vector x.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00115">kalman.hpp:115</a></div></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  assert(49.988 - 0.0001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>() &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>() &lt; 49.988 + 0.0001 &amp;&amp;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;         <span class="stringliteral">&quot;The filter estimates the liquid temperature at 49.988°C.&quot;</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="comment">// So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="comment">// In this example we&#39;ve measured a liquid temperature using the</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="comment">// one-dimensional Kalman filter. Although the system dynamics include a</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="comment">// random process noise, the Kalman filter can provide good estimation.</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}() };</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00075">kalman.hpp:76</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0844f4cf2a686c3de8b294ea014aeded"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr state x() const</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00392">kalman.hpp:392</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3a8c6ed3bfcdeb48f1ed926e397e8070"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr void constexpr q(const auto &amp;value) requires std void r(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the process noise covariance matrix Q function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00272">kalman.hpp:272</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a84462b9a06f423bc4ad5f68b4b9eeeaf"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr estimate_uncertainty p() const</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00420">kalman.hpp:420</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aaf8eec2b4dd3ba52b53c89e52fe687cd"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aaf8eec2b4dd3ba52b53c89e52fe687cd">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr process_uncertainty q() const</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00448">kalman.hpp:448</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ab982b714d1b27d0357f92d0dd6476e36"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00589">kalman.hpp:589</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The main Kalman filter class.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03_xhtml_aa9ea686bb72ef8ae2cd7a10ebf2939de"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03.xhtml#aa9ea686bb72ef8ae2cd7a10ebf2939de">fcarouge::sample::anonymous_namespace{liquid_temperature.cpp}::liquid_temperature</a></div><div class="ttdeci">constexpr auto liquid_temperature</div><div class="ttdef"><b>Definition:</b> <a href="liquid__temperature_8cpp_source.xhtml#l00029">liquid_temperature.cpp:29</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03_xhtml_ac9bf5531aa81c61f50cdf48b40060757"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02liquid__temperature_8cpp_03.xhtml#ac9bf5531aa81c61f50cdf48b40060757">fcarouge::sample::anonymous_namespace{liquid_temperature.cpp}::liquid_temperature</a></div><div class="ttdeci">auto liquid_temperature</div><div class="ttdef"><b>Definition:</b> <a href="liquid__temperature_8cpp_source.xhtml#l00029">liquid_temperature.cpp:29</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -201,7 +192,7 @@ $(document).ready(function(){initNavTree('liquid__temperature_8cpp_source.xhtml'
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="liquid__temperature_8cpp.xhtml">liquid_temperature.cpp</a></li>
-    <li class="footer">Generated on Fri Apr 29 2022 04:37:33 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon May 2 2022 03:24:31 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

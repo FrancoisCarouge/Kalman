@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['control_174',['control',['../classfcarouge_1_1kalman.xhtml#a2de5803d0b4279cd5e514740cd5c8966',1,'fcarouge::kalman']]]
+  ['estimate_5funcertainty_203',['estimate_uncertainty',['../structfcarouge_1_1internal_1_1kalman.xhtml#aeeab0bf87147ab5eb761b65329fa7306',1,'fcarouge::internal::kalman::estimate_uncertainty()'],['../classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e',1,'fcarouge::kalman::estimate_uncertainty()']]]
 ];

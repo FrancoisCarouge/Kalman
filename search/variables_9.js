@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['otherwise_161',['OTHERWISE',['../_l_i_c_e_n_s_e_8txt.xhtml#abcc03a69820d704ae8953ef8291126ae',1,'LICENSE.txt']]]
+  ['noise_5fobservation_5fr_184',['noise_observation_r',['../structfcarouge_1_1internal_1_1kalman.xhtml#a67cfd73334ae1202616e8e24c9b5c6d9',1,'fcarouge::internal::kalman']]],
+  ['noise_5fprocess_5fq_185',['noise_process_q',['../structfcarouge_1_1internal_1_1kalman.xhtml#a9a544930b1a04f11123f9cb61b79556e',1,'fcarouge::internal::kalman']]]
 ];

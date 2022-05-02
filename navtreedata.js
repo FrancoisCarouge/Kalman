@@ -32,9 +32,18 @@ var NAVTREE =
           [ "Multi-Dimensional", "index.xhtml#autotoc_md16", null ]
         ] ]
       ] ],
-      [ "Motivation", "index.xhtml#autotoc_md17", null ],
-      [ "Resources", "index.xhtml#autotoc_md18", null ],
-      [ "License", "index.xhtml#autotoc_md19", null ]
+      [ "Library", "index.xhtml#autotoc_md17", null ],
+      [ "Motivation", "index.xhtml#autotoc_md18", null ],
+      [ "Resources", "index.xhtml#autotoc_md19", null ],
+      [ "Class fcarouge::kalman", "index.xhtml#autotoc_md20", [
+        [ "Template Parameters", "index.xhtml#autotoc_md21", null ],
+        [ "Member Types", "index.xhtml#autotoc_md22", null ],
+        [ "Member Functions", "index.xhtml#autotoc_md23", [
+          [ "Characteristics", "index.xhtml#autotoc_md24", null ],
+          [ "Modifiers", "index.xhtml#autotoc_md25", null ]
+        ] ]
+      ] ],
+      [ "License", "index.xhtml#autotoc_md26", null ]
     ] ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md1", null ],
@@ -51,8 +60,8 @@ var NAVTREE =
       [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md11", null ]
     ] ],
     [ "Security Policy", "md__s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md21", null ],
-      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md22", null ]
+      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md28", null ],
+      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md29", null ]
     ] ],
     [ "Test List", "test.xhtml", null ],
     [ "Namespaces", "namespaces.xhtml", [

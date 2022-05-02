@@ -8,6 +8,5 @@ var searchData=
   ['contributing_10',['Contributing',['../md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
   ['contributing_2emd_11',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.xhtml',1,'']]],
   ['contributor_20covenant_20code_20of_20conduct_12',['Contributor Covenant Code of Conduct',['../md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml',1,'']]],
-  ['control_13',['control',['../classfcarouge_1_1kalman.xhtml#a2de5803d0b4279cd5e514740cd5c8966',1,'fcarouge::kalman']]],
-  ['copy_14',['copy',['../_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424',1,'LICENSE.txt']]]
+  ['copy_13',['copy',['../_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424',1,'LICENSE.txt']]]
 ];

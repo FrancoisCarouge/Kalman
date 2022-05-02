@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['divide_94',['divide',['../structfcarouge_1_1divide.xhtml',1,'fcarouge::divide&lt; Numerator, Denominator &gt;'],['../structfcarouge_1_1eigen_1_1divide.xhtml',1,'fcarouge::eigen::divide&lt; Numerator, Denominator &gt;']]]
+  ['divide_107',['divide',['../structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml',1,'fcarouge::eigen::internal::divide&lt; Numerator, Denominator &gt;'],['../structfcarouge_1_1internal_1_1divide.xhtml',1,'fcarouge::internal::divide&lt; Numerator, Denominator &gt;']]]
 ];
