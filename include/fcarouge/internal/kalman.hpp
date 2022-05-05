@@ -182,12 +182,12 @@ struct kalman {
   //! @name Public Member Functions
   //! @{
 
-  inline constexpr void observe(const auto &...output_z)
+  inline constexpr void update(const auto &...output_z)
   {
     h = transition_observation_h();
     r = noise_observation_r();
     const auto z{ output{ output_z... } };
-    internal::observe<Transpose, Symmetrize, Divide, Identity>(x, p, h, r, z);
+    internal::update<Transpose, Symmetrize, Divide, Identity>(x, p, h, r, z);
   }
 
   inline constexpr void predict(const PredictionArguments &...arguments,

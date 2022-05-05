@@ -66,27 +66,27 @@ namespace
   // Celsius.
   k.r(0.1 * 0.1);
 
-  k.observe(49.95);
+  k.update(49.95);
 
   // And so on, every measurements period: Δt = 5s (constant).
   k.predict();
-  k.observe(49.967);
+  k.update(49.967);
   k.predict();
-  k.observe(50.1);
+  k.update(50.1);
   k.predict();
-  k.observe(50.106);
+  k.update(50.106);
   k.predict();
-  k.observe(49.992);
+  k.update(49.992);
   k.predict();
-  k.observe(49.819);
+  k.update(49.819);
   k.predict();
-  k.observe(49.933);
+  k.update(49.933);
   k.predict();
-  k.observe(50.007);
+  k.update(50.007);
   k.predict();
-  k.observe(50.023);
+  k.update(50.023);
   k.predict();
-  k.observe(49.99);
+  k.update(49.99);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
   assert(0.0013 - 0.0001 < k.p() && k.p() < 0.0013 + 0.0001 &&
