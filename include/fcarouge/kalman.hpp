@@ -50,6 +50,8 @@ namespace fcarouge
 {
 //! @brief Kalman filter.
 //!
+//! @details Bayesian filter that uses Gaussians.
+//!
 //! @tparam State The type template parameter of the state vector x.
 //! @tparam Output The type template parameter of the measurement vector z.
 //! @tparam Input The type template parameter of the control u.
@@ -261,6 +263,8 @@ class kalman
 
   //! @brief Returns the observation, measurement noise covariance matrix R.
   //!
+  //! @details The variance there is in each measurement.
+  //!
   //! @return The observation, measurement noise covariance matrix R.
   //!
   //! @complexity Constant.
@@ -354,11 +358,16 @@ class kalman
 
   //! @brief Updates the estimates with the outcome of a measurement.
   //!
+  //! @details Implements the Bayes' theorem?
+  //! Combine one measurement and the prior estimate.
+  //!
   //! @tparam output_z Observation parameters. Types must be compatible with the
   //! `output` type.
-  inline constexpr void observe(const auto &...output_z);
+  inline constexpr void update(const auto &...output_z);
 
   //! @brief Produces estimates of the state variables and uncertainties.
+  //!
+  //! @details Implements the total probability theorem?
   //!
   //! @param arguments Optional prediction parameters passed through for
   //! computations of prediction matrices.
@@ -557,6 +566,21 @@ template <typename State, typename Output, typename Input,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
+[[nodiscard]] inline constexpr
+    typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+                    Identity, PredictionArguments...>::input_control
+    kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+           PredictionArguments...>::g() const
+{
+  return filter.g;
+}
+
+template <typename State, typename Output, typename Input,
+          template <typename> typename Transpose,
+          template <typename> typename Symmetrize,
+          template <typename, typename> typename Divide,
+          template <typename> typename Identity,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::g(const auto &value, const auto &...values)
@@ -573,9 +597,9 @@ template <typename State, typename Output, typename Input,
           typename... PredictionArguments>
 inline constexpr void
 kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::observe(const auto &...output_z)
+       PredictionArguments...>::update(const auto &...output_z)
 {
-  filter.observe(output_z...);
+  filter.update(output_z...);
 }
 
 template <typename State, typename Output, typename Input,

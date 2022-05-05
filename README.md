@@ -58,10 +58,10 @@ k.x(60.);
 k.p(225.);
 k.r(25.);
 
-k.observe(48.54);
+k.update(48.54);
 ```
 
-### Multi-Dimensional
+## Multi-Dimensional
 
 Two states, one control, using Eigen3 support.
 
@@ -94,9 +94,9 @@ k.h(1, 0);
 k.r(400);
 
 k.predict(delta_time, gravitational_acceleration);
-k.observe(-32.40 );
+k.update(-32.40 );
 k.predict(delta_time, 39.72);
-k.observe(-11.1);
+k.update(-11.1);
 ```
 
 # Library
@@ -105,19 +105,19 @@ k.observe(-11.1);
 - [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
 - [Examples](#examples)
   - [One-Dimensional](#one-dimensional)
-    - [Multi-Dimensional](#multi-dimensional)
+  - [Multi-Dimensional](#multi-dimensional)
 - [Library](#library)
-- [Motivation](#motivation)
+  - [Motivation](#motivation)
+  - [Class fcarouge::kalman](#class-fcarougekalman)
+    - [Template Parameters](#template-parameters)
+    - [Member Types](#member-types)
+    - [Member Functions](#member-functions)
+      - [Characteristics](#characteristics)
+      - [Modifiers](#modifiers)
 - [Resources](#resources)
-- [Class fcarouge::kalman](#class-fcarougekalman)
-  - [Template Parameters](#template-parameters)
-  - [Member Types](#member-types)
-  - [Member Functions](#member-functions)
-    - [Characteristics](#characteristics)
-    - [Modifiers](#modifiers)
 - [License](#license)
 
-# Motivation
+## Motivation
 
 Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.
 
@@ -126,14 +126,7 @@ This package explores what could be a Kalman filter implementation a la standard
 - Separation of the algebra implementation.
 - Generalization of the support.
 
-# Resources
-
-Awesome resources to learn about Kalman filters:
-
-- [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
-- [Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) by Roger Labbe.
-
-# Class fcarouge::kalman
+## Class fcarouge::kalman
 
 Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
 
@@ -147,9 +140,9 @@ template <typename State, typename Output = State, typename Input = State,
 class kalman
 ```
 
-## Template Parameters
+### Template Parameters
 
-## Member Types
+### Member Types
 
 | Member Type | Definition |
 | --- | --- |
@@ -163,7 +156,7 @@ class kalman
 | `output_model` | Type of the observation transition matrix H, also known as C. |
 | `input_control` | Type of the control transition matrix G, also known as B. |
 
-## Member Functions
+### Member Functions
 
 | Member Function | Definition |
 | --- | --- |
@@ -171,7 +164,7 @@ class kalman
 | `(destructor)` | Destructs the filter. |
 | `operator=` | Assigns values to the filter. |
 
-### Characteristics
+#### Characteristics
 
 | Modifier | Definition |
 | --- | --- |
@@ -185,12 +178,19 @@ class kalman
 | `h` | Manages the observation transition matrix. |
 | `g` | Manages the control transition matrix. |
 
-### Modifiers
+#### Modifiers
 
 | Modifier | Definition |
 | --- | --- |
-| `observe` | Updates the estimates with the outcome of a measurement. |
+| `update` | Updates the estimates with the outcome of a measurement. |
 | `predict` | Produces estimates of the state variables and uncertainties. |
+
+# Resources
+
+Awesome resources to learn about Kalman filters:
+
+- [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
+- [Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) by Roger Labbe.
 
 # License
 

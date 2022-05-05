@@ -51,18 +51,18 @@ namespace
   // the measurement uncertainty is: r1 = 25.
   k.r(25.);
 
-  k.observe(48.54);
+  k.update(48.54);
 
   // And so on.
-  k.observe(47.11);
-  k.observe(55.01);
-  k.observe(55.15);
-  k.observe(49.89);
-  k.observe(40.85);
-  k.observe(46.72);
-  k.observe(50.05);
-  k.observe(51.27);
-  k.observe(49.95);
+  k.update(47.11);
+  k.update(55.01);
+  k.update(55.15);
+  k.update(49.89);
+  k.update(40.85);
+  k.update(46.72);
+  k.update(50.05);
+  k.update(51.27);
+  k.update(49.95);
 
   // After 10 measurements the filter estimates the height of the building
   // at 49.57m.
