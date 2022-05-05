@@ -28,36 +28,36 @@ var NAVTREE =
     [ "Kalman Filter for C++", "index.xhtml", [
       [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md13", null ],
       [ "Examples", "index.xhtml#autotoc_md14", [
-        [ "One-Dimensional", "index.xhtml#autotoc_md15", [
-          [ "Multi-Dimensional", "index.xhtml#autotoc_md16", null ]
+        [ "One-Dimensional", "index.xhtml#autotoc_md15", null ],
+        [ "Multi-Dimensional", "index.xhtml#autotoc_md16", null ]
+      ] ],
+      [ "Library", "index.xhtml#autotoc_md17", [
+        [ "Motivation", "index.xhtml#autotoc_md18", null ],
+        [ "Class fcarouge::kalman", "index.xhtml#autotoc_md19", [
+          [ "Template Parameters", "index.xhtml#autotoc_md20", null ],
+          [ "Member Types", "index.xhtml#autotoc_md21", null ],
+          [ "Member Functions", "index.xhtml#autotoc_md22", [
+            [ "Characteristics", "index.xhtml#autotoc_md23", null ],
+            [ "Modifiers", "index.xhtml#autotoc_md24", null ]
+          ] ]
         ] ]
       ] ],
-      [ "Library", "index.xhtml#autotoc_md17", null ],
-      [ "Motivation", "index.xhtml#autotoc_md18", null ],
-      [ "Resources", "index.xhtml#autotoc_md19", null ],
-      [ "Class fcarouge::kalman", "index.xhtml#autotoc_md20", [
-        [ "Template Parameters", "index.xhtml#autotoc_md21", null ],
-        [ "Member Types", "index.xhtml#autotoc_md22", null ],
-        [ "Member Functions", "index.xhtml#autotoc_md23", [
-          [ "Characteristics", "index.xhtml#autotoc_md24", null ],
-          [ "Modifiers", "index.xhtml#autotoc_md25", null ]
-        ] ]
-      ] ],
+      [ "Resources", "index.xhtml#autotoc_md25", null ],
       [ "License", "index.xhtml#autotoc_md26", null ]
     ] ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
-      [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md1", null ],
-      [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md2", null ],
-      [ "Our Responsibilities", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md3", null ],
-      [ "Scope", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md4", null ],
-      [ "Enforcement", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md5", null ],
-      [ "Attribution", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ]
+      [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
+      [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
+      [ "Our Responsibilities", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
+      [ "Scope", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md9", null ],
+      [ "Enforcement", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md10", null ],
+      [ "Attribution", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md11", null ]
     ] ],
     [ "Contributing", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
-      [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md8", null ],
-      [ "Reporting Bugs", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md9", null ],
-      [ "Requesting Features", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md10", null ],
-      [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md11", null ]
+      [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md2", null ],
+      [ "Reporting Bugs", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md3", null ],
+      [ "Requesting Features", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md4", null ],
+      [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md5", null ]
     ] ],
     [ "Security Policy", "md__s_e_c_u_r_i_t_y.xhtml", [
       [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md28", null ],

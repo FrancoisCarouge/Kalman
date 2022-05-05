@@ -125,18 +125,18 @@ $(document).ready(function(){initNavTree('building__height_8cpp_source.xhtml',''
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// the measurement uncertainty is: r1 = 25.</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">r</a>(25.);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  k.observe(48.54);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  k.update(48.54);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// And so on.</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  k.observe(47.11);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  k.observe(55.01);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  k.observe(55.15);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  k.observe(49.89);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  k.observe(40.85);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  k.observe(46.72);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  k.observe(50.05);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  k.observe(51.27);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  k.observe(49.95);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  k.update(47.11);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  k.update(55.01);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  k.update(55.15);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  k.update(49.89);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  k.update(40.85);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  k.update(46.72);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  k.update(50.05);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  k.update(51.27);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  k.update(49.95);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// at 49.57m.</span></div>
@@ -149,10 +149,10 @@ $(document).ready(function(){initNavTree('building__height_8cpp_source.xhtml',''
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <span class="comment">// namespace</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00075">kalman.hpp:76</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0844f4cf2a686c3de8b294ea014aeded"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr state x() const</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00392">kalman.hpp:392</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3a8c6ed3bfcdeb48f1ed926e397e8070"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr void constexpr q(const auto &amp;value) requires std void r(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the process noise covariance matrix Q function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00272">kalman.hpp:272</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a84462b9a06f423bc4ad5f68b4b9eeeaf"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr estimate_uncertainty p() const</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00420">kalman.hpp:420</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00077">kalman.hpp:78</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0844f4cf2a686c3de8b294ea014aeded"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr state x() const</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00401">kalman.hpp:401</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3a8c6ed3bfcdeb48f1ed926e397e8070"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr void constexpr q(const auto &amp;value) requires std void r(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the process noise covariance matrix Q function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00276">kalman.hpp:276</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a84462b9a06f423bc4ad5f68b4b9eeeaf"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr estimate_uncertainty p() const</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00429">kalman.hpp:429</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The main Kalman filter class.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02building__height_8cpp_03_xhtml_afb52f94db8102a947d7f8321efcfdb1c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02building__height_8cpp_03.xhtml#afb52f94db8102a947d7f8321efcfdb1c">fcarouge::sample::anonymous_namespace{building_height.cpp}::building_height</a></div><div class="ttdeci">auto building_height</div><div class="ttdef"><b>Definition:</b> <a href="building__height_8cpp_source.xhtml#l00024">building_height.cpp:24</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
@@ -162,7 +162,7 @@ $(document).ready(function(){initNavTree('building__height_8cpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="building__height_8cpp.xhtml">building_height.cpp</a></li>
-    <li class="footer">Generated on Mon May 2 2022 03:24:31 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu May 5 2022 02:18:16 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

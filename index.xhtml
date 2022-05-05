@@ -124,11 +124,11 @@ One-Dimensional</h2>
 <div class="line">k.p(225.);</div>
 <div class="line">k.r(25.);</div>
 <div class="line"> </div>
-<div class="line">k.observe(48.54);</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00075">kalman.hpp:76</a></div></div>
+<div class="line">k.update(48.54);</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00077">kalman.hpp:78</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a1ec90a3f99f5fe01fe104be87319cf72"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a1ec90a3f99f5fe01fe104be87319cf72">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, PredictionArguments... &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00067">kalman_eigen.hpp:71</a></div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md16"></a>
-Multi-Dimensional</h3>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+Multi-Dimensional</h2>
 <p>Two states, one control, using Eigen3 support.</p>
 <div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespacefcarouge_1_1eigen.xhtml#a1ec90a3f99f5fe01fe104be87319cf72">kalman</a> =</div>
 <div class="line">    <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1, std::chrono::milliseconds&gt;</a>;</div>
@@ -158,24 +158,21 @@ Multi-Dimensional</h3>
 <div class="line">k.r(400);</div>
 <div class="line"> </div>
 <div class="line">k.predict(delta_time, gravitational_acceleration);</div>
-<div class="line">k.observe(-32.40 );</div>
+<div class="line">k.update(-32.40 );</div>
 <div class="line">k.predict(delta_time, 39.72);</div>
-<div class="line">k.observe(-11.1);</div>
+<div class="line">k.update(-11.1);</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
 Library</h1>
 <ul>
 <li><a href="#kalman-filter-for-c">Kalman Filter for C++</a></li>
 <li><a href="#continuous-integration--deployment-actions">Continuous Integration &amp; Deployment Actions</a></li>
 <li><a href="#examples">Examples</a><ul>
-<li><a href="#one-dimensional">One-Dimensional</a><ul>
+<li><a href="#one-dimensional">One-Dimensional</a></li>
 <li><a href="#multi-dimensional">Multi-Dimensional</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#library">Library</a></li>
+<li><a href="#library">Library</a><ul>
 <li><a href="#motivation">Motivation</a></li>
-<li><a href="#resources">Resources</a></li>
 <li><a href="#class-fcarougekalman">Class fcarouge::kalman</a><ul>
 <li><a href="#template-parameters">Template Parameters</a></li>
 <li><a href="#member-types">Member Types</a></li>
@@ -186,25 +183,21 @@ Library</h1>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#resources">Resources</a></li>
 <li><a href="#license">License</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md18"></a>
-Motivation</h1>
+<h2><a class="anchor" id="autotoc_md18"></a>
+Motivation</h2>
 <p>Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.</p>
 <p>This package explores what could be a Kalman filter implementation a la standard library. The following concerns and tradeoffs are considered:</p><ul>
 <li>Separation of the application domain.</li>
 <li>Separation of the algebra implementation.</li>
 <li>Generalization of the support.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md19"></a>
-Resources</h1>
-<p>Awesome resources to learn about Kalman filters:</p>
-<ul>
-<li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
-<li><a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters in Python</a> by Roger Labbe.</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md20"></a>
-Class fcarouge::kalman</h1>
+<h2><a class="anchor" id="autotoc_md19"></a>
+Class fcarouge::kalman</h2>
 <p>Defined in header <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a></p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output = State, <span class="keyword">typename</span> Input = State,</div>
 <div class="line">          <span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Transpose = internal::transpose,</div>
@@ -213,10 +206,10 @@ Class fcarouge::kalman</h1>
 <div class="line">          <span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Identity = internal::identity,</div>
 <div class="line">          <span class="keyword">typename</span>... PredictionArguments&gt;</div>
 <div class="line"><span class="keyword">class </span><a class="code" href="namespacefcarouge_1_1eigen.xhtml#a1ec90a3f99f5fe01fe104be87319cf72">kalman</a></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
-Template Parameters</h2>
-<h2><a class="anchor" id="autotoc_md22"></a>
-Member Types</h2>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md20"></a>
+Template Parameters</h3>
+<h3><a class="anchor" id="autotoc_md21"></a>
+Member Types</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Type   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -239,8 +232,8 @@ Member Types</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>input_control</code>   </td><td class="markdownTableBodyNone">Type of the control transition matrix G, also known as B.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md23"></a>
-Member Functions</h2>
+<h3><a class="anchor" id="autotoc_md22"></a>
+Member Functions</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Function   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -251,8 +244,8 @@ Member Functions</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>operator=</code>   </td><td class="markdownTableBodyNone">Assigns values to the filter.   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md24"></a>
-Characteristics</h3>
+<h4><a class="anchor" id="autotoc_md23"></a>
+Characteristics</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Modifier   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -275,16 +268,23 @@ Characteristics</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>g</code>   </td><td class="markdownTableBodyNone">Manages the control transition matrix.   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md25"></a>
-Modifiers</h3>
+<h4><a class="anchor" id="autotoc_md24"></a>
+Modifiers</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Modifier   </th><th class="markdownTableHeadNone">Definition    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>observe</code>   </td><td class="markdownTableBodyNone">Updates the estimates with the outcome of a measurement.    </td></tr>
+<td class="markdownTableBodyNone"><code>update</code>   </td><td class="markdownTableBodyNone">Updates the estimates with the outcome of a measurement.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>predict</code>   </td><td class="markdownTableBodyNone">Produces estimates of the state variables and uncertainties.   </td></tr>
 </table>
+<h1><a class="anchor" id="autotoc_md25"></a>
+Resources</h1>
+<p>Awesome resources to learn about Kalman filters:</p>
+<ul>
+<li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
+<li><a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters in Python</a> by Roger Labbe.</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md26"></a>
 License</h1>
 <p><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
@@ -300,7 +300,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon May 2 2022 03:24:31 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Thu May 5 2022 02:18:16 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
