@@ -116,13 +116,13 @@ Public Types</h2></td></tr>
 <tr class="memdesc:a599d23847b220984e2cfac8c21d053b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the control vector U.  <a href="classfcarouge_1_1kalman.xhtml#a599d23847b220984e2cfac8c21d053b8">More...</a><br /></td></tr>
 <tr class="separator:a599d23847b220984e2cfac8c21d053b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4673a5e2e4615374f56a1882a2d3238e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">estimate_uncertainty</a> = typename <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#aeeab0bf87147ab5eb761b65329fa7306">implementation::estimate_uncertainty</a></td></tr>
-<tr class="memdesc:a4673a5e2e4615374f56a1882a2d3238e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the estimated covariance matrix P.  <a href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">More...</a><br /></td></tr>
+<tr class="memdesc:a4673a5e2e4615374f56a1882a2d3238e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the estimated correlated variance matrix P.  <a href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">More...</a><br /></td></tr>
 <tr class="separator:a4673a5e2e4615374f56a1882a2d3238e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68a85f23dece8df5494f284ae152205b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">process_uncertainty</a> = typename <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a0696ec2114175e75b0329823b1c62c99">implementation::process_uncertainty</a></td></tr>
-<tr class="memdesc:a68a85f23dece8df5494f284ae152205b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the process noise covariance matrix Q.  <a href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">More...</a><br /></td></tr>
+<tr class="memdesc:a68a85f23dece8df5494f284ae152205b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the process noise correlated variance matrix Q.  <a href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">More...</a><br /></td></tr>
 <tr class="separator:a68a85f23dece8df5494f284ae152205b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2004ab338554e8bac196ba1790d645ef"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a2004ab338554e8bac196ba1790d645ef">output_uncertainty</a> = typename <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a0a25ddfd9d10e98bfcf2b1107626a74e">implementation::output_uncertainty</a></td></tr>
-<tr class="memdesc:a2004ab338554e8bac196ba1790d645ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the observation, measurement noise covariance matrix R.  <a href="classfcarouge_1_1kalman.xhtml#a2004ab338554e8bac196ba1790d645ef">More...</a><br /></td></tr>
+<tr class="memdesc:a2004ab338554e8bac196ba1790d645ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the observation noise correlated variance matrix R.  <a href="classfcarouge_1_1kalman.xhtml#a2004ab338554e8bac196ba1790d645ef">More...</a><br /></td></tr>
 <tr class="separator:a2004ab338554e8bac196ba1790d645ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa3d55a6a7017bbf6f64318ed3be4e63"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#afa3d55a6a7017bbf6f64318ed3be4e63">state_transition</a> = typename <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#ad9dad30b5500893230d878bf632d2f4a">implementation::state_transition</a></td></tr>
 <tr class="memdesc:afa3d55a6a7017bbf6f64318ed3be4e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the state transition matrix F.  <a href="classfcarouge_1_1kalman.xhtml#afa3d55a6a7017bbf6f64318ed3be4e63">More...</a><br /></td></tr>
@@ -155,12 +155,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afd3a868a3eada637707c1da922e6169a"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#afd3a868a3eada637707c1da922e6169a">~kalman</a> ()=default</td></tr>
 <tr class="memdesc:afd3a868a3eada637707c1da922e6169a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the kalman filter.  <a href="classfcarouge_1_1kalman.xhtml#afd3a868a3eada637707c1da922e6169a">More...</a><br /></td></tr>
 <tr class="separator:afd3a868a3eada637707c1da922e6169a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Public Modifiers Member Functions</div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Public Filtering Member Functions</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Sets the control transition matrix G function.</p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 </div></td></tr>
+<tr class="memitem:a90f339410582512a018e885335f4477b"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a90f339410582512a018e885335f4477b">update</a> (const auto &amp;...output_z)</td></tr>
+<tr class="memdesc:a90f339410582512a018e885335f4477b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the estimates with the outcome of a measurement.  <a href="classfcarouge_1_1kalman.xhtml#a90f339410582512a018e885335f4477b">More...</a><br /></td></tr>
+<tr class="separator:a90f339410582512a018e885335f4477b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab982b714d1b27d0357f92d0dd6476e36"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a> (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</td></tr>
-<tr class="memdesc:ab982b714d1b27d0357f92d0dd6476e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the estimates with the outcome of a measurement.  <a href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">More...</a><br /></td></tr>
+<tr class="memdesc:ab982b714d1b27d0357f92d0dd6476e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces estimates of the state variables and uncertainties.  <a href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">More...</a><br /></td></tr>
 <tr class="separator:ab982b714d1b27d0357f92d0dd6476e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
@@ -234,6 +237,8 @@ class fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, 
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This class could be usable in constant expressions if <code>std::function</code> could too. The polymorphic function wrapper was used in place of function pointers to enable default initialization from this class, captured member variables. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#_a2">rocket_altitude.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00077">77</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
@@ -251,8 +256,10 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
 </div><div class="memdoc">
 
-<p>Type of the estimated covariance matrix P. </p>
+<p>Type of the estimated correlated variance matrix P. </p>
 <p>Also known as Σ. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a3">rocket_altitude.cpp</a>, and <a class="el" href="vehicule_location_8cpp-example.xhtml#a2">vehicule_location.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00108">108</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -322,6 +329,8 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 
 <p>Type of the control transition matrix G. </p>
 <p>Also known as B. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a6">rocket_altitude.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00129">129</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -364,6 +373,8 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 
 <p>Type of the observation transition matrix H. </p>
 <p>Also known as C. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="vehicule_location_8cpp-example.xhtml#a5">vehicule_location.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00124">124</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -383,7 +394,9 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
 </div><div class="memdoc">
 
-<p>Type of the observation, measurement noise covariance matrix R. </p>
+<p>Type of the observation noise correlated variance matrix R. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="vehicule_location_8cpp-example.xhtml#a6">vehicule_location.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00114">114</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -403,7 +416,9 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
 </div><div class="memdoc">
 
-<p>Type of the process noise covariance matrix Q. </p>
+<p>Type of the process noise correlated variance matrix Q. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a4">rocket_altitude.cpp</a>, and <a class="el" href="vehicule_location_8cpp-example.xhtml#a3">vehicule_location.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00111">111</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -445,6 +460,8 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 
 <p>Type of the state transition matrix F. </p>
 <p>Also known as Φ or A. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a5">rocket_altitude.cpp</a>, and <a class="el" href="vehicule_location_8cpp-example.xhtml#a4">vehicule_location.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00119">119</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -471,7 +488,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -502,7 +519,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -540,7 +557,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -577,7 +594,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -609,7 +626,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -648,7 +665,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -689,19 +706,19 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 </div><div class="memdoc">
 
 <p>Returns the estimated covariance matrix P. </p>
-<dl class="section return"><dt>Returns</dt><dd>The estimated covariance matrix P.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The estimated correlated variance matrix P.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00429">429</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;{</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a96369239684b9408a98d0b6cf4d7ee6d">p</a>;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af71657097b5c1ad4fbeba22e45af8b6a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">fcarouge::kalman::filter</a></div><div class="ttdeci">implementation filter</div><div class="ttdoc">Encapsulates the implementation details of the filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00386">kalman.hpp:386</a></div></div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00500">500</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;{</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a96369239684b9408a98d0b6cf4d7ee6d">p</a>;</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;}</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af71657097b5c1ad4fbeba22e45af8b6a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">fcarouge::kalman::filter</a></div><div class="ttdeci">implementation filter</div><div class="ttdoc">Encapsulates the implementation details of the filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00457">kalman.hpp:457</a></div></div>
 <div class="ttc" id="astructfcarouge_1_1internal_1_1kalman_xhtml_a96369239684b9408a98d0b6cf4d7ee6d"><div class="ttname"><a href="structfcarouge_1_1internal_1_1kalman.xhtml#a96369239684b9408a98d0b6cf4d7ee6d">fcarouge::internal::kalman::p</a></div><div class="ttdeci">estimate_uncertainty p</div><div class="ttdoc">The estimate uncertainty, covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman_8hpp_source.xhtml#l00117">kalman.hpp:117</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00429">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::p()</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00500">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::p()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00429">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::p()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00500">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::p()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -760,13 +777,13 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 <p>Sets the estimated covariance matrix P. </p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00442">442</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;{</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a96369239684b9408a98d0b6cf4d7ee6d">p</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">estimate_uncertainty</a>{ value, values... };</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4673a5e2e4615374f56a1882a2d3238e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00108">kalman.hpp:108</a></div></div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00513">513</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;{</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a96369239684b9408a98d0b6cf4d7ee6d">p</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">estimate_uncertainty</a>{ value, values... };</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;}</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4673a5e2e4615374f56a1882a2d3238e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00108">kalman.hpp:108</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00429">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::p()</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00500">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::p()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -814,28 +831,23 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 </table>
 </div><div class="memdoc">
 
-<p>Updates the estimates with the outcome of a measurement. </p>
-<p>Implements the Bayes' theorem? Combine one measurement and the prior estimate.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">output_z</td><td>Observation parameters. Types must be compatible with the <code>output</code> type.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Produces estimates of the state variables and uncertainties.</p>
+<p>Produces estimates of the state variables and uncertainties. </p>
 <p>Implements the total probability theorem?</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">arguments</td><td>Optional prediction parameters passed through for computations of prediction matrices. </td></tr>
-    <tr><td class="paramname">input_u</td><td>Optional control parameters. Types must be compatible with the <code>Input</code> types. </td></tr>
+    <tr><td class="paramname">input_u</td><td>Optional control parameters. Types must be compatible with the <code>Input</code> types. The parameter pack types are always deduced per the greedy matching rule.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable? </p>
+</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00613">613</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;{</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#ab86860dc9f2992f0fb3c6b71e980c187">predict</a>(arguments..., input_u...);</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00684">684</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;{</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#ab86860dc9f2992f0fb3c6b71e980c187">predict</a>(arguments..., input_u...);</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;}</div>
 <div class="ttc" id="astructfcarouge_1_1internal_1_1kalman_xhtml_ab86860dc9f2992f0fb3c6b71e980c187"><div class="ttname"><a href="structfcarouge_1_1internal_1_1kalman.xhtml#ab86860dc9f2992f0fb3c6b71e980c187">fcarouge::internal::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman_8hpp_source.xhtml#l00193">kalman.hpp:193</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -863,18 +875,18 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 </div><div class="memdoc">
 
 <p>Returns the process noise covariance matrix Q. </p>
-<dl class="section return"><dt>Returns</dt><dd>The process noise covariance matrix Q.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The process noise correlated variance matrix Q.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00457">457</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;{</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#afd1da894df4e15d533ff3557665976cf">q</a>;</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00528">528</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;{</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#afd1da894df4e15d533ff3557665976cf">q</a>;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;}</div>
 <div class="ttc" id="astructfcarouge_1_1internal_1_1kalman_xhtml_afd1da894df4e15d533ff3557665976cf"><div class="ttname"><a href="structfcarouge_1_1internal_1_1kalman.xhtml#afd1da894df4e15d533ff3557665976cf">fcarouge::internal::kalman::q</a></div><div class="ttdeci">process_uncertainty q</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman_8hpp_source.xhtml#l00125">kalman.hpp:125</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00457">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q()</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00528">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00457">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00528">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -933,14 +945,14 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 <p>Sets the process noise covariance matrix Q. </p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00470">470</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;{</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#afd1da894df4e15d533ff3557665976cf">q</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">process_uncertainty</a>{ value, values... };</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;  <span class="comment">// +reset function</span></div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a68a85f23dece8df5494f284ae152205b"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise covariance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00111">kalman.hpp:111</a></div></div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00541">541</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;{</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#afd1da894df4e15d533ff3557665976cf">q</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">process_uncertainty</a>{ value, values... };</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  <span class="comment">// +reset function</span></div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;}</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a68a85f23dece8df5494f284ae152205b"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00111">kalman.hpp:111</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00457">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q()</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00528">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -983,6 +995,52 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 
 </div>
 </div>
+<a id="a90f339410582512a018e885335f4477b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90f339410582512a018e885335f4477b">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename State , typename Output , typename Input , template&lt; typename &gt; typename Transpose, template&lt; typename &gt; typename Symmetrize, template&lt; typename, typename &gt; typename Divide, template&lt; typename &gt; typename Identity, typename... PredictionArguments&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update </td>
+          <td>(</td>
+          <td class="paramtype">const auto &amp;...&#160;</td>
+          <td class="paramname"><em>output_z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates the estimates with the outcome of a measurement. </p>
+<p>Implements the Bayes' theorem? Combine one measurement and the prior estimate.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">output_z</td><td>Observation parameters. Types must be compatible with the <code>output</code> type.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable? </p>
+</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00671">671</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;{</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a549f84cd3dc8cbb3fdefd52aef3c35cc">update</a>(output_z...);</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;}</div>
+<div class="ttc" id="astructfcarouge_1_1internal_1_1kalman_xhtml_a549f84cd3dc8cbb3fdefd52aef3c35cc"><div class="ttname"><a href="structfcarouge_1_1internal_1_1kalman.xhtml#a549f84cd3dc8cbb3fdefd52aef3c35cc">fcarouge::internal::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...output_z)</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman_8hpp_source.xhtml#l00185">kalman.hpp:185</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a0844f4cf2a686c3de8b294ea014aeded"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0844f4cf2a686c3de8b294ea014aeded">&#9670;&nbsp;</a></span>x() <span class="overload">[1/2]</span></h2>
 
@@ -1009,15 +1067,15 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 <dl class="section return"><dt>Returns</dt><dd>The state estimate vector X.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00401">401</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;{</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a3c2fb73364094e21919a0f165a1ba926">x</a>;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00472">472</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;{</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a3c2fb73364094e21919a0f165a1ba926">x</a>;</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;}</div>
 <div class="ttc" id="astructfcarouge_1_1internal_1_1kalman_xhtml_a3c2fb73364094e21919a0f165a1ba926"><div class="ttname"><a href="structfcarouge_1_1internal_1_1kalman.xhtml#a3c2fb73364094e21919a0f165a1ba926">fcarouge::internal::kalman::x</a></div><div class="ttdeci">state x</div><div class="ttdoc">The state estimate vector x.</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman_8hpp_source.xhtml#l00112">kalman.hpp:112</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00401">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x()</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00472">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00401">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00472">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -1074,15 +1132,16 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 </div><div class="memdoc">
 
 <p>Sets the state estimate vector X. </p>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000001">Todo:</a></b></dt><dd>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00414">414</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;{</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a3c2fb73364094e21919a0f165a1ba926">x</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml#a560e82d7dd78f4a533805465d23be560">state</a>{ value, values... };</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00485">485</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;{</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml#af71657097b5c1ad4fbeba22e45af8b6a">filter</a>.<a class="code" href="structfcarouge_1_1internal_1_1kalman.xhtml#a3c2fb73364094e21919a0f165a1ba926">x</a> = <a class="code" href="classfcarouge_1_1kalman.xhtml#a560e82d7dd78f4a533805465d23be560">state</a>{ value, values... };</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;}</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a560e82d7dd78f4a533805465d23be560"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a560e82d7dd78f4a533805465d23be560">fcarouge::kalman::state</a></div><div class="ttdeci">typename implementation::state state</div><div class="ttdoc">Type of the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00095">kalman.hpp:95</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00401">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x()</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00472">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -1156,7 +1215,7 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 <p>Sets the state transition matrix F.</p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00298">298</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00317">317</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -1184,7 +1243,7 @@ template&lt;typename State , typename Output  = State, typename Input  = State, 
 
 <p>Encapsulates the implementation details of the filter. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00386">386</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00457">457</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -1218,7 +1277,7 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 <p>Sets the control transition matrix G.</p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00342">342</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00365">365</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -1252,7 +1311,7 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 <p>Sets the observation transition matrix H.</p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00320">320</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00341">341</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -1280,14 +1339,14 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 
 <p>Sets the process noise covariance matrix Q function. </p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<p>Returns the observation, measurement noise covariance matrix R.</p>
+<p>Returns the observation noise covariance matrix R.</p>
 <p>The variance there is in each measurement.</p>
-<dl class="section return"><dt>Returns</dt><dd>The observation, measurement noise covariance matrix R.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The observation noise correlated variance matrix R.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <p>Sets the observation noise covariance matrix R.</p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00276">276</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00293">293</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -1300,7 +1359,7 @@ template&lt;typename State , typename Output , typename Input , template&lt; typ
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Thu May 5 2022 02:18:16 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri May 6 2022 04:13:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

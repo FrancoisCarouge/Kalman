@@ -10,7 +10,7 @@ var structfcarouge_1_1internal_1_1kalman =
     [ "state", "structfcarouge_1_1internal_1_1kalman.xhtml#a15f8ae2111c2b7141eaf77bfc976eddc", null ],
     [ "state_transition", "structfcarouge_1_1internal_1_1kalman.xhtml#ad9dad30b5500893230d878bf632d2f4a", null ],
     [ "predict", "structfcarouge_1_1internal_1_1kalman.xhtml#ab86860dc9f2992f0fb3c6b71e980c187", null ],
-    [ "update", "structfcarouge_1_1internal_1_1kalman.xhtml#a90f339410582512a018e885335f4477b", null ],
+    [ "update", "structfcarouge_1_1internal_1_1kalman.xhtml#a549f84cd3dc8cbb3fdefd52aef3c35cc", null ],
     [ "f", "structfcarouge_1_1internal_1_1kalman.xhtml#a38eb1cb214c8119eb33abab5cd952d7b", null ],
     [ "g", "structfcarouge_1_1internal_1_1kalman.xhtml#af67df6bd81ca269314ef740d50d33e5f", null ],
     [ "h", "structfcarouge_1_1internal_1_1kalman.xhtml#a3bfec506273dd8b71a17ddb04e6b6cab", null ],

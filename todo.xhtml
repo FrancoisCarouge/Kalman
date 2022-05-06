@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: Contributing</title>
+<title>Kalman: Todo List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml',''); initResizable(); });
+$(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -84,22 +84,21 @@ $(document).ready(function(){initNavTree('md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml','')
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Contributing </div>  </div>
+<div class="title">Todo List </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Thank you for taking the time to contribute!</p>
-<h1><a class="anchor" id="autotoc_md8"></a>
-Code of Conduct</h1>
-<p>This project and everyone participating in it is governed by the <a href="https://github.com/FrancoisCarouge/Kalman/blob/develop/CODE_OF_CONDUCT.md">Code of Conduct</a>. By participating, you are expected to uphold this code. Please report unacceptable behavior to <a href="#" onclick="location.href='mai'+'lto:'+'fra'+'nc'+'ois'+'.c'+'aro'+'ug'+'e@g'+'ma'+'il.'+'co'+'m'; return false;">franc<span style="display: none;">.nosp@m.</span>ois.<span style="display: none;">.nosp@m.</span>carou<span style="display: none;">.nosp@m.</span>ge@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a>.</p>
-<h1><a class="anchor" id="autotoc_md9"></a>
-Reporting Bugs</h1>
-<p>Please fill out <a href="https://github.com/FrancoisCarouge/Kalman/issues/new/choose">the bug template</a>, the information it asks for helps us resolve issues faster.</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
-Requesting Features</h1>
-<p>Please fill out <a href="https://github.com/FrancoisCarouge/Kalman/issues/new/choose">the feature template</a>, the information it asks for helps us provide features faster.</p>
-<h1><a class="anchor" id="autotoc_md11"></a>
-Security Policy</h1>
-<p>Please review <a href="https://github.com/FrancoisCarouge/Kalman/security/policy">the security policy</a>, the process helps us better serve the community. </p>
+<div class="textblock"><dl class="reflist">
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </p>
+</dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a90f339410582512a018e885335f4477b">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update</a>  (const auto &amp;...output_z)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000003"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </p>
+</dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aaf08bbef3125b4aa01b28faef28f13cd">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x</a>  (const auto &amp;value, const auto &amp;...values)</dt>
+<dd><a class="anchor" id="_todo000001"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods. </dd>
+</dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

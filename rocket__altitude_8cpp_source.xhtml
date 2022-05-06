@@ -96,167 +96,147 @@ $(document).ready(function(){initNavTree('rocket__altitude_8cpp_source.xhtml',''
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml">    8</a></span>&#160;<span class="keyword">namespace</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">   42</a></span>&#160;[[maybe_unused]] <span class="keyword">auto</span> <a class="code" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">rocket_altitude</a>{ [] {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// A 2x1x1 filter, constant acceleration dynamic model, no control, step time.</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">using</span> <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman</a> =</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1, std::chrono::milliseconds&gt;</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman</a> k;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Initialization</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// We don&#39;t know the rocket location; we will set initial position and</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// velocity to 0.</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>(0, 0);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">// uncertainty. The high estimate uncertainty results in high Kalman gain,</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// giving a high weight to the measurement.</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>(<a class="code" href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">kalman::estimate_uncertainty</a>{ { 500, 0 }, { 0, 500 } });</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// Prediction</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">// We will assume a discrete noise model - the noise is different at each time</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// period, but it is constant between time periods. In our previous example,</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// we used the system&#39;s random variance in acceleration σ^2 as a multiplier of</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">// the process noise matrix. But here, we have an accelerometer that measures</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// the system random acceleration. The accelerometer error v is much lower</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">// than system&#39;s random acceleration, therefore we use ϵ^2 as a multiplier of</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">// the process noise matrix. This makes our estimation uncertainty much lower!</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#aaf8eec2b4dd3ba52b53c89e52fe687cd">q</a>([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">kalman::process_uncertainty</a>{</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    };</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  });</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a28e02a92c241e3ec7c312c68bb0cd9ab">f</a>([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#afa3d55a6a7017bbf6f64318ed3be4e63">kalman::state_transition</a>{ { 1, dt }, { 0, 1 } };</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  });</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="comment">// The control matrix G would be:</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a562e32889c094eed307d74068aaf5cb4">g</a>([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#a55c460ecef7aff22c337032154776d53">kalman::input_control</a>{ 0.0313, dt };</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  });</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="comment">// We also don&#39;t know what the rocket acceleration is, but we can assume that</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="comment">// it&#39;s greater than zero. Let&#39;s assume: u0 = g</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">double</span> gravitational_acceleration{ -9.8 }; <span class="comment">// m.s^-2</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keyword">const</span> std::chrono::milliseconds delta_time{ 250 };</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, gravitational_acceleration);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="comment">// Measure and Update</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="comment">// The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="comment">// of the observation matrix H will be 1x2.</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#accf9dac2b6b51745a2f9419448518992">h</a>(1, 0);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R.</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">r</a>(400);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="comment">// The measurement values: z1 = -32.40, u1 = 39.72.</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="comment">// And so on, every measurements period: Δt = 250ms (constant, as variable).</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  k.update(-32.40);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.72);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  k.update(-11.1);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 40.02);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  k.update(18);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.97);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  k.update(22.9);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.81);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  k.update(19.5);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.75);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  k.update(28.5);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.6);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  k.update(46.5);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.77);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  k.update(68.9);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.83);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  k.update(48.2);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.73);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  k.update(56.1);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.87);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  k.update(90.5);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.81);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  k.update(104.9);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.92);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  k.update(140.9);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.78);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  k.update(148);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.98);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  k.update(187.6);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.76);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  k.update(209.2);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.86);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  k.update(244.6);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.61);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  k.update(276.4);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.86);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  k.update(323.5);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.74);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  k.update(357.3);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.87);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  k.update(357.4);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.63);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  k.update(398.3);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.67);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  k.update(446.7);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.96);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  k.update(465.1);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.8);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  k.update(529.4);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.89);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  k.update(570.4);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.85);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  k.update(636.8);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.9);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  k.update(693.3);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.81);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  k.update(707.3);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.81);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  k.update(748.5);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="comment">// The Kalman gain for altitude converged to 0.12, which means that the</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="comment">// estimation weight is much higher than the measurement weight.</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  assert(49.3 - 0.01 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>()(0, 0) &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>()(0, 0) &lt; 49.3 + 0.0001 &amp;&amp;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;         <span class="stringliteral">&quot;At this point, the altitude uncertainty px = 49.3, which means that &quot;</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;         <span class="stringliteral">&quot;the standard deviation of the prediction is square root of 49.3: &quot;</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;         <span class="stringliteral">&quot;7.02m (remember that the standard deviation of the measurement is &quot;</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;         <span class="stringliteral">&quot;20m).&quot;</span>);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.68);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="comment">// At the beginning, the estimated altitude is influenced by measurements and</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="comment">// it is not aligned well with the true rocket altitude, since the</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="comment">// measurements are very noisy. But as the Kalman gain converges, the noisy</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="comment">// measurement has less influence and the estimated altitude is well aligned</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="comment">// with the true altitude. In this example we don&#39;t have any maneuvers that</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="comment">// cause acceleration changes, but if we had, the control input</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="comment">// (accelerometer) would update the state extrapolation equation.</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  assert(831.5 - 0.001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>()(0) &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>()(0) &lt; 831.5 + 54 &amp;&amp;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;         222.94 - 0.001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>()(1) &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>()(1) &lt; 222.94 + 40);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}() };</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">   44</a></span>&#160;[[maybe_unused]] <span class="keyword">auto</span> <a class="code" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">rocket_altitude</a>{ [] {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="comment">// A 2x1x1 filter, constant acceleration dynamic model, no control, step time.</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">using</span> <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman</a> =</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <a class="code" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1, std::chrono::milliseconds&gt;</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classfcarouge_1_1kalman.xhtml">kalman</a> k;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// Initialization</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// We don&#39;t know the rocket location; we will set initial position and</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// velocity to 0.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>(0, 0);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// uncertainty. The high estimate uncertainty results in high Kalman gain,</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// giving a high weight to the measurement.</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>(<a class="code" href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">kalman::estimate_uncertainty</a>{ { 500, 0 }, { 0, 500 } });</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// Prediction</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// We will assume a discrete noise model - the noise is different at each time</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">// period, but it is constant between time periods. In our previous example,</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">// we used the system&#39;s random variance in acceleration σ^2 as a multiplier of</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">// the process noise matrix. But here, we have an accelerometer that measures</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">// the system random acceleration. The accelerometer error v is much lower</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">// than system&#39;s random acceleration, therefore we use ϵ^2 as a multiplier of</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// the process noise matrix. This makes our estimation uncertainty much lower!</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#aaf8eec2b4dd3ba52b53c89e52fe687cd">q</a>([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">kalman::process_uncertainty</a>{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    };</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  });</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// The state transition matrix F would be:</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a28e02a92c241e3ec7c312c68bb0cd9ab">f</a>([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#afa3d55a6a7017bbf6f64318ed3be4e63">kalman::state_transition</a>{ { 1, dt }, { 0, 1 } };</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  });</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="comment">// The control matrix G would be:</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a562e32889c094eed307d74068aaf5cb4">g</a>([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classfcarouge_1_1kalman.xhtml#a55c460ecef7aff22c337032154776d53">kalman::input_control</a>{ 0.0313, dt };</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  });</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="comment">// We also don&#39;t know what the rocket acceleration is, but we can assume that</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="comment">// it&#39;s greater than zero. Let&#39;s assume: u0 = g</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">double</span> gravitational_acceleration{ -9.8 }; <span class="comment">// m.s^-2</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keyword">const</span> std::chrono::milliseconds delta_time{ 250 };</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, gravitational_acceleration);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="comment">// Measure and Update</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="comment">// The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="comment">// of the observation matrix H will be 1x2.</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#accf9dac2b6b51745a2f9419448518992">h</a>(1, 0);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R.</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">r</a>(400);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="comment">// The measurement values: z1 = -32.40, u1 = 39.72.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a90f339410582512a018e885335f4477b">update</a>(-32.40);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="comment">// measurements period: Δt = 250ms. The period is constant but passed as</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="comment">// variable for the example. The lambda helper shows how to simplify the</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="comment">// filter step call.</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> step{ [&amp;k](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;...args) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    k.template operator()&lt;<span class="keywordtype">double</span>&gt;(args...);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  } };</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  step(delta_time, 39.72, -11.1);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  step(delta_time, 40.02, 18);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  step(delta_time, 39.97, 22.9);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  step(delta_time, 39.81, 19.5);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  step(delta_time, 39.75, 28.5);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  step(delta_time, 39.6, 46.5);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  step(delta_time, 39.77, 68.9);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  step(delta_time, 39.83, 48.2);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  step(delta_time, 39.73, 56.1);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  step(delta_time, 39.87, 90.5);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  step(delta_time, 39.81, 104.9);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  step(delta_time, 39.92, 140.9);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  step(delta_time, 39.78, 148);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  step(delta_time, 39.98, 187.6);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  step(delta_time, 39.76, 209.2);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  step(delta_time, 39.86, 244.6);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  step(delta_time, 39.61, 276.4);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  step(delta_time, 39.86, 323.5);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  step(delta_time, 39.74, 357.3);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  step(delta_time, 39.87, 357.4);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  step(delta_time, 39.63, 398.3);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  step(delta_time, 39.67, 446.7);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  step(delta_time, 39.96, 465.1);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  step(delta_time, 39.8, 529.4);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  step(delta_time, 39.89, 570.4);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  step(delta_time, 39.85, 636.8);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  step(delta_time, 39.9, 693.3);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  step(delta_time, 39.81, 707.3);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  step(delta_time, 39.81, 707.3);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="comment">// The Kalman gain for altitude converged to 0.12, which means that the</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="comment">// estimation weight is much higher than the measurement weight.</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  assert(49.3 - 0.01 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>()(0, 0) &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">p</a>()(0, 0) &lt; 49.3 + 0.0001 &amp;&amp;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;         <span class="stringliteral">&quot;At this point, the altitude uncertainty px = 49.3, which means that &quot;</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;         <span class="stringliteral">&quot;the standard deviation of the prediction is square root of 49.3: &quot;</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;         <span class="stringliteral">&quot;7.02m (remember that the standard deviation of the measurement is &quot;</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;         <span class="stringliteral">&quot;20m).&quot;</span>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  k.<a class="code" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">predict</a>(delta_time, 39.68);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="comment">// At the beginning, the estimated altitude is influenced by measurements and</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="comment">// it is not aligned well with the true rocket altitude, since the</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="comment">// measurements are very noisy. But as the Kalman gain converges, the noisy</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="comment">// measurement has less influence and the estimated altitude is well aligned</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="comment">// with the true altitude. In this example we don&#39;t have any maneuvers that</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="comment">// cause acceleration changes, but if we had, the control input</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="comment">// (accelerometer) would update the state extrapolation equation.</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  assert(831.5 - 0.001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>()(0) &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>()(0) &lt; 831.5 + 54 &amp;&amp;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;         222.94 - 0.001 &lt; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>()(1) &amp;&amp; k.<a class="code" href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">x</a>()(1) &lt; 222.94 + 40);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}() };</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00077">kalman.hpp:78</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0844f4cf2a686c3de8b294ea014aeded"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr state x() const</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00401">kalman.hpp:401</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a28e02a92c241e3ec7c312c68bb0cd9ab"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a28e02a92c241e3ec7c312c68bb0cd9ab">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr void constexpr r(const auto &amp;value) requires std void f(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the observation noise covariance matrix R function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00298">kalman.hpp:298</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3a8c6ed3bfcdeb48f1ed926e397e8070"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr void constexpr q(const auto &amp;value) requires std void r(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the process noise covariance matrix Q function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00276">kalman.hpp:276</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4673a5e2e4615374f56a1882a2d3238e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00108">kalman.hpp:108</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0844f4cf2a686c3de8b294ea014aeded"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr state x() const</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00472">kalman.hpp:472</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a28e02a92c241e3ec7c312c68bb0cd9ab"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a28e02a92c241e3ec7c312c68bb0cd9ab">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr void constexpr r(const auto &amp;value) requires std void f(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the observation noise covariance matrix R function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00317">kalman.hpp:317</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3a8c6ed3bfcdeb48f1ed926e397e8070"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3a8c6ed3bfcdeb48f1ed926e397e8070">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr void constexpr q(const auto &amp;value) requires std void r(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the process noise covariance matrix Q function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00293">kalman.hpp:293</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4673a5e2e4615374f56a1882a2d3238e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4673a5e2e4615374f56a1882a2d3238e">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00108">kalman.hpp:108</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a55c460ecef7aff22c337032154776d53"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a55c460ecef7aff22c337032154776d53">fcarouge::kalman::input_control</a></div><div class="ttdeci">typename implementation::input_control input_control</div><div class="ttdoc">Type of the control transition matrix G.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00129">kalman.hpp:129</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a562e32889c094eed307d74068aaf5cb4"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a562e32889c094eed307d74068aaf5cb4">fcarouge::kalman::g</a></div><div class="ttdeci">constexpr void constexpr h(const auto &amp;value) requires std void g(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the observation transition matrix H function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00342">kalman.hpp:342</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a68a85f23dece8df5494f284ae152205b"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise covariance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00111">kalman.hpp:111</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a84462b9a06f423bc4ad5f68b4b9eeeaf"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr estimate_uncertainty p() const</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00429">kalman.hpp:429</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aaf8eec2b4dd3ba52b53c89e52fe687cd"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aaf8eec2b4dd3ba52b53c89e52fe687cd">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr process_uncertainty q() const</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00457">kalman.hpp:457</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ab982b714d1b27d0357f92d0dd6476e36"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00613">kalman.hpp:613</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_accf9dac2b6b51745a2f9419448518992"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#accf9dac2b6b51745a2f9419448518992">fcarouge::kalman::h</a></div><div class="ttdeci">constexpr void constexpr f(const auto &amp;value) requires std void h(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the state transition matrix F function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00320">kalman.hpp:320</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a562e32889c094eed307d74068aaf5cb4"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a562e32889c094eed307d74068aaf5cb4">fcarouge::kalman::g</a></div><div class="ttdeci">constexpr void constexpr h(const auto &amp;value) requires std void g(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the observation transition matrix H function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00365">kalman.hpp:365</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a68a85f23dece8df5494f284ae152205b"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a68a85f23dece8df5494f284ae152205b">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00111">kalman.hpp:111</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a84462b9a06f423bc4ad5f68b4b9eeeaf"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a84462b9a06f423bc4ad5f68b4b9eeeaf">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr estimate_uncertainty p() const</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00500">kalman.hpp:500</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a90f339410582512a018e885335f4477b"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a90f339410582512a018e885335f4477b">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...output_z)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00671">kalman.hpp:671</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aaf8eec2b4dd3ba52b53c89e52fe687cd"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aaf8eec2b4dd3ba52b53c89e52fe687cd">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr process_uncertainty q() const</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00528">kalman.hpp:528</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ab982b714d1b27d0357f92d0dd6476e36"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00684">kalman.hpp:684</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_accf9dac2b6b51745a2f9419448518992"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#accf9dac2b6b51745a2f9419448518992">fcarouge::kalman::h</a></div><div class="ttdeci">constexpr void constexpr f(const auto &amp;value) requires std void h(const auto &amp;value, const auto &amp;...values)</div><div class="ttdoc">Sets the state transition matrix F function.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00341">kalman.hpp:341</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afa3d55a6a7017bbf6f64318ed3be4e63"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afa3d55a6a7017bbf6f64318ed3be4e63">fcarouge::kalman::state_transition</a></div><div class="ttdeci">typename implementation::state_transition state_transition</div><div class="ttdoc">Type of the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00119">kalman.hpp:119</a></div></div>
 <div class="ttc" id="akalman__eigen_8hpp_xhtml"><div class="ttname"><a href="kalman__eigen_8hpp.xhtml">kalman_eigen.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03_xhtml_a63759677e8cdcc8efbbc101504f93f97"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">fcarouge::sample::anonymous_namespace{rocket_altitude.cpp}::rocket_altitude</a></div><div class="ttdeci">auto rocket_altitude</div><div class="ttdef"><b>Definition:</b> <a href="rocket__altitude_8cpp_source.xhtml#l00042">rocket_altitude.cpp:42</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03_xhtml_a63759677e8cdcc8efbbc101504f93f97"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">fcarouge::sample::anonymous_namespace{rocket_altitude.cpp}::rocket_altitude</a></div><div class="ttdeci">auto rocket_altitude</div><div class="ttdef"><b>Definition:</b> <a href="rocket__altitude_8cpp_source.xhtml#l00044">rocket_altitude.cpp:44</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -264,7 +244,7 @@ $(document).ready(function(){initNavTree('rocket__altitude_8cpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="rocket__altitude_8cpp.xhtml">rocket_altitude.cpp</a></li>
-    <li class="footer">Generated on Thu May 5 2022 02:18:16 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri May 6 2022 04:13:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

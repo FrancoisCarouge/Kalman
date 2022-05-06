@@ -22,6 +22,7 @@ var classfcarouge_1_1kalman =
     [ "q", "classfcarouge_1_1kalman.xhtml#aaf8eec2b4dd3ba52b53c89e52fe687cd", null ],
     [ "q", "classfcarouge_1_1kalman.xhtml#a1fb048ddaf25e01759269e60e0ffbbc2", null ],
     [ "u", "classfcarouge_1_1kalman.xhtml#a02e530252a39ccc9fa8067b574dd6da3", null ],
+    [ "update", "classfcarouge_1_1kalman.xhtml#a90f339410582512a018e885335f4477b", null ],
     [ "x", "classfcarouge_1_1kalman.xhtml#a0844f4cf2a686c3de8b294ea014aeded", null ],
     [ "x", "classfcarouge_1_1kalman.xhtml#aaf08bbef3125b4aa01b28faef28f13cd", null ],
     [ "z", "classfcarouge_1_1kalman.xhtml#a7f968760d0df4189d498d08c37d3b421", null ],
