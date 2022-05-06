@@ -6,7 +6,7 @@ namespace fcarouge::sample
 {
 namespace
 {
-//! @test Estimating the Temperature of the Liquid in a Tank
+//! @brief Estimating the Temperature of the Liquid in a Tank
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.
@@ -68,36 +68,24 @@ namespace
 
   k.update(49.95);
 
-  // And so on, every measurements period: Δt = 5s (constant).
-  k.predict();
-  k.update(49.967);
-  k.predict();
-  k.update(50.1);
-  k.predict();
-  k.update(50.106);
-  k.predict();
-  k.update(49.992);
-  k.predict();
-  k.update(49.819);
-  k.predict();
-  k.update(49.933);
-  k.predict();
-  k.update(50.007);
-  k.predict();
-  k.update(50.023);
-  k.predict();
-  k.update(49.99);
+  // And so on, run a step of the filter, predicting and updating, every
+  // measurements period: Δt = 5s (constant).
+  k(49.967);
+  k(50.1);
+  k(50.106);
+  k(49.992);
+  k(49.819);
+  k(49.933);
+  k(50.007);
+  k(50.023);
+  k(49.99);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
   assert(0.0013 - 0.0001 < k.p() && k.p() < 0.0013 + 0.0001 &&
          "The estimate uncertainty is 0.0013, i.e. the estimate error standard "
          "deviation is: 0.036°C.");
-
-  k.predict();
-
   assert(49.988 - 0.0001 < k.x() && k.x() < 49.988 + 0.0001 &&
          "The filter estimates the liquid temperature at 49.988°C.");
-
   // So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.
   // In this example we've measured a liquid temperature using the
   // one-dimensional Kalman filter. Although the system dynamics include a

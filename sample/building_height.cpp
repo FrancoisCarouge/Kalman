@@ -6,7 +6,7 @@ namespace fcarouge::sample
 {
 namespace
 {
-//! @test Estimating the Height of a Building
+//! @brief Estimating the Height of a Building
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.
@@ -38,6 +38,8 @@ namespace
 
   // Prediction
   // Now, we shall predict the next state based on the initialization values.
+  // Note: The prediction operation needs not be performed since the process
+  // noise covariance Q is null in this example.
   assert(60 == k.x() &&
          "Since our system's dynamic model is constant, i.e. the building "
          "doesn't change its height: 60 meters.");
