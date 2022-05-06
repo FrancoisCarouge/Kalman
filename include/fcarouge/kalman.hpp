@@ -102,15 +102,15 @@ class kalman
   //! @brief Type of the control vector U.
   using input = typename implementation::input;
 
-  //! @brief Type of the estimated covariance matrix P.
+  //! @brief Type of the estimated correlated variance matrix P.
   //!
   //! @details Also known as Σ.
   using estimate_uncertainty = typename implementation::estimate_uncertainty;
 
-  //! @brief Type of the process noise covariance matrix Q.
+  //! @brief Type of the process noise correlated variance matrix Q.
   using process_uncertainty = typename implementation::process_uncertainty;
 
-  //! @brief Type of the observation, measurement noise covariance matrix R.
+  //! @brief Type of the observation noise correlated variance matrix R.
   using output_uncertainty = typename implementation::output_uncertainty;
 
   //! @brief Type of the state transition matrix F.
@@ -136,7 +136,7 @@ class kalman
   //! @brief Constructs a Kalman filter without configuration.
   //!
   //! @complexity Constant.
-  constexpr kalman() = default;
+  inline constexpr kalman() = default;
 
   //! @brief Copy constructs a filter.
   //!
@@ -147,7 +147,7 @@ class kalman
   //! elements of the filter with.
   //!
   //! @complexity Constant.
-  constexpr kalman(const kalman &other) = default;
+  inline constexpr kalman(const kalman &other) = default;
 
   //! @brief Move constructs a filter.
   //!
@@ -159,7 +159,7 @@ class kalman
   //! elements of the filter with.
   //!
   //! @complexity Constant.
-  constexpr kalman(kalman &&other) noexcept = default;
+  inline constexpr kalman(kalman &&other) noexcept = default;
 
   //! @brief Copy assignment operator.
   //!
@@ -173,7 +173,7 @@ class kalman
   //! i.e. `*this`.
   //!
   //! @complexity Constant.
-  constexpr kalman &operator=(const kalman &other) = default;
+  inline constexpr kalman &operator=(const kalman &other) = default;
 
   //! @brief Move assignment operator.
   //!
@@ -189,12 +189,12 @@ class kalman
   //! i.e. `*this`.
   //!
   //! @complexity Constant.
-  constexpr kalman &operator=(kalman &&other) noexcept = default;
+  inline constexpr kalman &operator=(kalman &&other) noexcept = default;
 
   //! @brief Destructs the kalman filter.
   //!
   //! @complexity Constant.
-  constexpr ~kalman() = default;
+  inline constexpr ~kalman() = default;
 
   //! @}
 
@@ -206,11 +206,16 @@ class kalman
   //! @return The state estimate vector X.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr state x() const;
+  [[nodiscard("The returned state estimate vector X is unexpectedly "
+              "discarded.")]] inline constexpr state
+  x() const;
 
   //! @brief Sets the state estimate vector X.
   //!
   //! @complexity Constant.
+  //!
+  //! @todo Consider if a fluent interface would be preferrable? In addition to
+  //! constructors? Same question for all characteristics set methods.
   inline constexpr void x(const auto &value, const auto &...values);
 
   //! @brief Returns the observation vector Z.
@@ -218,21 +223,27 @@ class kalman
   //! @return The observation vector Z.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr output z() const;
+  [[nodiscard("The returned observation vector Z is unexpectedly "
+              "discarded.")]] inline constexpr output
+  z() const;
 
   //! @brief Returns the control vector U.
   //!
   //! @return The control vector U.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr input u() const;
+  [[nodiscard("The returned control vector U is unexpectedly "
+              "discarded.")]] inline constexpr input
+  u() const;
 
   //! @brief Returns the estimated covariance matrix P.
   //!
-  //! @return The estimated covariance matrix P.
+  //! @return The estimated correlated variance matrix P.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr estimate_uncertainty p() const;
+  [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
+              "discarded.")]] inline constexpr estimate_uncertainty
+  p() const;
 
   //! @brief Sets the estimated covariance matrix P.
   //!
@@ -241,10 +252,12 @@ class kalman
 
   //! @brief Returns the process noise covariance matrix Q.
   //!
-  //! @return The process noise covariance matrix Q.
+  //! @return The process noise correlated variance matrix Q.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr process_uncertainty q() const;
+  [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
+              "discarded.")]] inline constexpr process_uncertainty
+  q() const;
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
@@ -261,14 +274,18 @@ class kalman
     filter.noise_process_q = value;
   }
 
-  //! @brief Returns the observation, measurement noise covariance matrix R.
+  //! @brief Returns the observation noise covariance
+  //! matrix R.
   //!
   //! @details The variance there is in each measurement.
   //!
-  //! @return The observation, measurement noise covariance matrix R.
+  //! @return The observation noise correlated variance matrix R.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr output_uncertainty r() const;
+  [[nodiscard("The returned observation noise covariance "
+              "matrix R is "
+              "unexpectedly discarded.")]] inline constexpr output_uncertainty
+  r() const;
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
@@ -290,7 +307,9 @@ class kalman
   //! @return The state transition matrix F.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr state_transition f() const;
+  [[nodiscard("The returned state transition matrix F is unexpectedly "
+              "discarded.")]] inline constexpr state_transition
+  f() const;
 
   //! @brief Sets the state transition matrix F.
   //!
@@ -312,7 +331,9 @@ class kalman
   //! @return The observation transition matrix H.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr output_model h() const;
+  [[nodiscard("The returned observation transition matrix H is unexpectedly "
+              "discarded.")]] inline constexpr output_model
+  h() const;
 
   //! @brief Sets the observation transition matrix H.
   //!
@@ -334,7 +355,9 @@ class kalman
   //! @return The control transition matrix G.
   //!
   //! @complexity Constant.
-  [[nodiscard]] inline constexpr input_control g() const;
+  [[nodiscard("The returned control transition matrix G is unexpectedly "
+              "discarded.")]] inline constexpr input_control
+  g() const;
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -353,8 +376,43 @@ class kalman
 
   //! @}
 
-  //! @name Public Modifiers Member Functions
+  //! @name Public Filtering Member Functions
   //! @{
+
+  //! @brief Runs a step of the filter.
+  //!
+  //! @details Predicts and updates the estimates per prediction arguments,
+  //! control input, and measurement output.
+  //!
+  //! @param arguments Optional prediction parameters passed through for
+  //! computations of prediction matrices.
+  //! @param input_u Optional control parameters. Types must be compatible with
+  //! the `Input` types. The parameter pack types must always be explicitely
+  //! defined per the
+  // fair matching rule.
+  //! @param output_z Observation parameters. Types must be compatible with the
+  //! `output` type. The parameter pack types are always deduced per the greedy
+  //! matching rule.
+  //!
+  //! @note Called as `k(...);` with prediction values and output values when
+  //! the filter has no input parameters. The input type list is explicitely
+  //! empty. Otherwise can be called as `k.template operator()<input1_t,
+  //! input2_t, ...>(...);` with prediction values, input values, and output
+  //! values. The input type list being explicitely specified. A lambda can come
+  //! in handy to reduce the verbose call `const auto kf{ [&k](const auto
+  //! &...args) { k.template operator()<input1_t, input2_t,
+  //! ...>(args...); } };` then called as `kf(...);`.
+  //!
+  //! @todo Consider if returning the state vector X would be preferrable? And
+  //! if it would be compatible with an ES-EKF implementation? Or if a fluent
+  //! interface would be preferrable?
+  inline constexpr void operator()(const PredictionArguments &...arguments,
+                                   const auto &...input_u,
+                                   const auto &...output_z)
+  {
+    filter.predict(arguments..., input_u...);
+    filter.update(output_z...);
+  }
 
   //! @brief Updates the estimates with the outcome of a measurement.
   //!
@@ -363,6 +421,12 @@ class kalman
   //!
   //! @tparam output_z Observation parameters. Types must be compatible with the
   //! `output` type.
+  //!
+  //! @todo Consider whether this method needs to exist or if the operator() is
+  //! sufficient for all clients.
+  //! @todo Consider if returning the state vector X would be preferrable? And
+  //! if it would be compatible with an ES-EKF implementation? Or if a fluent
+  //! interface would be preferrable?
   inline constexpr void update(const auto &...output_z);
 
   //! @brief Produces estimates of the state variables and uncertainties.
@@ -372,7 +436,14 @@ class kalman
   //! @param arguments Optional prediction parameters passed through for
   //! computations of prediction matrices.
   //! @param input_u Optional control parameters. Types must be compatible with
-  //! the `Input` types.
+  //! the `Input` types. The parameter pack types are always deduced per the
+  //! greedy matching rule.
+  //!
+  //! @todo Consider whether this method needs to exist or if the operator() is
+  //! sufficient for all clients.
+  //! @todo Consider if returning the state vector X would be preferrable? And
+  //! if it would be compatible with an ES-EKF implementation? Or if a fluent
+  //! interface would be preferrable?
   inline constexpr void predict(const PredictionArguments &...arguments,
                                 const auto &...input_u);
 
@@ -394,7 +465,7 @@ template <typename State, typename Output, typename Input,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
-[[nodiscard]] inline constexpr
+inline constexpr
     typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::state
     kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
@@ -422,7 +493,7 @@ template <typename State, typename Output, typename Input,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
-[[nodiscard]] inline constexpr
+inline constexpr
     typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::estimate_uncertainty
     kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
@@ -450,7 +521,7 @@ template <typename State, typename Output, typename Input,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
-[[nodiscard]] inline constexpr
+inline constexpr
     typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::process_uncertainty
     kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
@@ -479,7 +550,7 @@ template <typename State, typename Output, typename Input,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
-[[nodiscard]] inline constexpr
+inline constexpr
     typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::output_uncertainty
     kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
@@ -508,7 +579,7 @@ template <typename State, typename Output, typename Input,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
-[[nodiscard]] inline constexpr
+inline constexpr
     typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::state_transition
     kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
@@ -537,7 +608,7 @@ template <typename State, typename Output, typename Input,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
-[[nodiscard]] inline constexpr
+inline constexpr
     typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::output_model
     kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
@@ -566,7 +637,7 @@ template <typename State, typename Output, typename Input,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
-[[nodiscard]] inline constexpr
+inline constexpr
     typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::input_control
     kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,

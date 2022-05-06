@@ -6,7 +6,7 @@ namespace fcarouge::sample
 {
 namespace
 {
-//! @test Estimating the Position of a Dog
+//! @brief Estimating the Position of a Dog
 //!
 //! @copyright This example is transcribed from Kalman and Bayesian Filters in
 //! Python copyright Roger Labbe
@@ -31,7 +31,7 @@ namespace
 //! Gaussian.
 //!
 //! @example dog_position.cpp
-[[maybe_unused]] auto building_height{ [] {
+[[maybe_unused]] auto dog_position{ [] {
   using kalman = kalman<double>;
   kalman k;
 

@@ -7,7 +7,7 @@ namespace fcarouge::sample
 {
 namespace
 {
-//! @test Estimating the Rocket Altitude
+//! @brief Estimating the Rocket Altitude
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.
@@ -39,6 +39,8 @@ namespace
 //! - The rocket acceleration: a= 30 m.s^-2
 //! - The altimeter measurement error standard deviation: σxm = 20m
 //! - The accelerometer measurement error standard deviation: ϵ = 0.1 m.s^-2
+//!
+//! @example rocket_altitude.cpp
 [[maybe_unused]] auto rocket_altitude{ [] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
   using kalman =
@@ -99,66 +101,45 @@ namespace
   k.r(400);
 
   // The measurement values: z1 = -32.40, u1 = 39.72.
-  // And so on, every measurements period: Δt = 250ms (constant, as variable).
   k.update(-32.40);
-  k.predict(delta_time, 39.72);
-  k.update(-11.1);
-  k.predict(delta_time, 40.02);
-  k.update(18);
-  k.predict(delta_time, 39.97);
-  k.update(22.9);
-  k.predict(delta_time, 39.81);
-  k.update(19.5);
-  k.predict(delta_time, 39.75);
-  k.update(28.5);
-  k.predict(delta_time, 39.6);
-  k.update(46.5);
-  k.predict(delta_time, 39.77);
-  k.update(68.9);
-  k.predict(delta_time, 39.83);
-  k.update(48.2);
-  k.predict(delta_time, 39.73);
-  k.update(56.1);
-  k.predict(delta_time, 39.87);
-  k.update(90.5);
-  k.predict(delta_time, 39.81);
-  k.update(104.9);
-  k.predict(delta_time, 39.92);
-  k.update(140.9);
-  k.predict(delta_time, 39.78);
-  k.update(148);
-  k.predict(delta_time, 39.98);
-  k.update(187.6);
-  k.predict(delta_time, 39.76);
-  k.update(209.2);
-  k.predict(delta_time, 39.86);
-  k.update(244.6);
-  k.predict(delta_time, 39.61);
-  k.update(276.4);
-  k.predict(delta_time, 39.86);
-  k.update(323.5);
-  k.predict(delta_time, 39.74);
-  k.update(357.3);
-  k.predict(delta_time, 39.87);
-  k.update(357.4);
-  k.predict(delta_time, 39.63);
-  k.update(398.3);
-  k.predict(delta_time, 39.67);
-  k.update(446.7);
-  k.predict(delta_time, 39.96);
-  k.update(465.1);
-  k.predict(delta_time, 39.8);
-  k.update(529.4);
-  k.predict(delta_time, 39.89);
-  k.update(570.4);
-  k.predict(delta_time, 39.85);
-  k.update(636.8);
-  k.predict(delta_time, 39.9);
-  k.update(693.3);
-  k.predict(delta_time, 39.81);
-  k.update(707.3);
-  k.predict(delta_time, 39.81);
-  k.update(748.5);
+
+  // And so on, run a step of the filter, predicting and updating, every
+  // measurements period: Δt = 250ms. The period is constant but passed as
+  // variable for the example. The lambda helper shows how to simplify the
+  // filter step call.
+  const auto step{ [&k](const auto &...args) {
+    k.template operator()<double>(args...);
+  } };
+
+  step(delta_time, 39.72, -11.1);
+  step(delta_time, 40.02, 18);
+  step(delta_time, 39.97, 22.9);
+  step(delta_time, 39.81, 19.5);
+  step(delta_time, 39.75, 28.5);
+  step(delta_time, 39.6, 46.5);
+  step(delta_time, 39.77, 68.9);
+  step(delta_time, 39.83, 48.2);
+  step(delta_time, 39.73, 56.1);
+  step(delta_time, 39.87, 90.5);
+  step(delta_time, 39.81, 104.9);
+  step(delta_time, 39.92, 140.9);
+  step(delta_time, 39.78, 148);
+  step(delta_time, 39.98, 187.6);
+  step(delta_time, 39.76, 209.2);
+  step(delta_time, 39.86, 244.6);
+  step(delta_time, 39.61, 276.4);
+  step(delta_time, 39.86, 323.5);
+  step(delta_time, 39.74, 357.3);
+  step(delta_time, 39.87, 357.4);
+  step(delta_time, 39.63, 398.3);
+  step(delta_time, 39.67, 446.7);
+  step(delta_time, 39.96, 465.1);
+  step(delta_time, 39.8, 529.4);
+  step(delta_time, 39.89, 570.4);
+  step(delta_time, 39.85, 636.8);
+  step(delta_time, 39.9, 693.3);
+  step(delta_time, 39.81, 707.3);
+  step(delta_time, 39.81, 707.3);
 
   // The Kalman gain for altitude converged to 0.12, which means that the
   // estimation weight is much higher than the measurement weight.

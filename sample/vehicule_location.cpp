@@ -6,7 +6,7 @@ namespace fcarouge::sample
 {
 namespace
 {
-//! @test Estimating the Vehicule Location
+//! @brief Estimating the Vehicule Location
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.
@@ -23,6 +23,8 @@ namespace
 //! maneuver, the vehicle experiences acceleration due to the circular motion
 //! (an angular acceleration). The measurements period: Δt = 1s (constant). The
 //! random acceleration standard deviation: σa = 0.2 m.s^-2.
+//!
+//! @example vehicule_location.cpp
 [[maybe_unused]] auto vehicule_location{ [] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   using kalman = eigen::kalman<double, 6, 2, 0>;
@@ -83,75 +85,42 @@ namespace
   // The measurement values: z1 = [-393.66, 300.4]
   k.update(-393.66, 300.4);
 
-  // And so on, every measurements period: Δt = 1s (constant, built-in).
-  k.predict();
-  k.update(-375.93, 301.78);
-  k.predict();
-  k.update(-351.04, 295.1);
-  k.predict();
-  k.update(-328.96, 305.19);
-  k.predict();
-  k.update(-299.35, 301.06);
-  k.predict();
-  k.update(-273.36, 302.05);
-  k.predict();
-  k.update(-245.89, 300);
-  k.predict();
-  k.update(-222.58, 303.57);
-  k.predict();
-  k.update(-198.03, 296.33);
-  k.predict();
-  k.update(-174.17, 297.65);
-  k.predict();
-  k.update(-146.32, 297.41);
-  k.predict();
-  k.update(-123.72, 299.61);
-  k.predict();
-  k.update(-103.47, 299.6);
-  k.predict();
-  k.update(-78.23, 302.39);
-  k.predict();
-  k.update(-52.63, 295.04);
-  k.predict();
-  k.update(-23.34, 300.09);
-  k.predict();
-  k.update(25.96, 294.72);
-  k.predict();
-  k.update(49.72, 298.61);
-  k.predict();
-  k.update(76.94, 294.64);
-  k.predict();
-  k.update(95.38, 284.88);
-  k.predict();
-  k.update(119.83, 272.82);
-  k.predict();
-  k.update(144.01, 264.93);
-  k.predict();
-  k.update(161.84, 251.46);
-  k.predict();
-  k.update(180.56, 241.27);
-  k.predict();
-  k.update(201.42, 222.98);
-  k.predict();
-  k.update(222.62, 203.73);
-  k.predict();
-  k.update(239.4, 184.1);
-  k.predict();
-  k.update(252.51, 166.12);
-  k.predict();
-  k.update(266.26, 138.71);
-  k.predict();
-  k.update(271.75, 119.71);
-  k.predict();
-  k.update(277.4, 100.41);
-  k.predict();
-  k.update(294.12, 79.76);
-  k.predict();
-  k.update(301.23, 50.62);
-  k.predict();
-  k.update(291.8, 32.99);
-  k.predict();
-  k.update(299.89, 2.14);
+  // And so on, run a step of the filter, predicting and updating, every
+  // measurements period: Δt = 1s (constant, built-in).
+  k(-375.93, 301.78);
+  k(-351.04, 295.1);
+  k(-328.96, 305.19);
+  k(-299.35, 301.06);
+  k(-273.36, 302.05);
+  k(-245.89, 300);
+  k(-222.58, 303.57);
+  k(-198.03, 296.33);
+  k(-174.17, 297.65);
+  k(-146.32, 297.41);
+  k(-123.72, 299.61);
+  k(-103.47, 299.6);
+  k(-78.23, 302.39);
+  k(-52.63, 295.04);
+  k(-23.34, 300.09);
+  k(25.96, 294.72);
+  k(49.72, 298.61);
+  k(76.94, 294.64);
+  k(95.38, 284.88);
+  k(119.83, 272.82);
+  k(144.01, 264.93);
+  k(161.84, 251.46);
+  k(180.56, 241.27);
+  k(201.42, 222.98);
+  k(222.62, 203.73);
+  k(239.4, 184.1);
+  k(252.51, 166.12);
+  k(266.26, 138.71);
+  k(271.75, 119.71);
+  k(277.4, 100.41);
+  k(294.12, 79.76);
+  k(301.23, 50.62);
+  k(291.8, 32.99);
+  k(299.89, 2.14);
 
   assert(5 - 0.0001 < k.p()(0, 0) && k.p()(0, 0) < 5 + 1.84 &&
          5 - 0.0001 < k.p()(3, 3) && k.p()(3, 3) < 5 + 1.751 &&
