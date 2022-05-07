@@ -88,16 +88,24 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
+<dt>Member <a class="el" href="namespacefcarouge_1_1internal.xhtml#af0a346261d79d359d8f7f7f662741872">fcarouge::internal::update</a>  (auto &amp;x, auto &amp;p, const auto &amp;h, const auto &amp;r, const auto &amp;z)</dt>
+<dd><a class="anchor" id="_todo000002"></a>Do we want to allow the client to view K?  </dd>
+<dt>Member <a class="el" href="namespacefcarouge_1_1internal.xhtml#af394cd07163322a838fc5e3b8a8023ca">fcarouge::internal::update_state</a>  (const State &amp;x, const auto &amp;k, const auto &amp;z, std::remove_reference_t&lt; std::remove_cv_t&lt; State &gt;&gt;(*h)(State))</dt>
+<dd><a class="anchor" id="_todo000001"></a>Do we want to allow the client to view the residual y?  </dd>
+<dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;</a>  </dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000003"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<p class="enddd">Would it be beneficial to support <code>Type</code> and <code>value_type</code> prior to the <code>State</code> type template parameter?  </p>
+</dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ab982b714d1b27d0357f92d0dd6476e36">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000007"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
 <p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a90f339410582512a018e885335f4477b">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update</a>  (const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000003"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000006"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
 <p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aaf08bbef3125b4aa01b28faef28f13cd">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x</a>  (const auto &amp;value, const auto &amp;...values)</dt>
-<dd><a class="anchor" id="_todo000001"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods. </dd>
+<dd><a class="anchor" id="_todo000004"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods. </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -105,7 +113,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri May 6 2022 04:13:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat May 7 2022 03:20:16 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

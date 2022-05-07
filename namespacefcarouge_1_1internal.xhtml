@@ -408,19 +408,20 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo:</a></b></dt><dd>Do we want to allow the client to view K? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00137">137</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;{</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> k{ weight_gain&lt;Transpose, Divide&gt;(p, h, r) };</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  x = <a class="code" href="namespacefcarouge_1_1internal.xhtml#af394cd07163322a838fc5e3b8a8023ca">update_state</a>(x, k, z, h);</div>
+<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00139">139</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keyword">const</span> <span class="keyword">auto</span> k{ weight_gain&lt;Transpose, Divide&gt;(p, h, r) };</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keyword">using</span> estimate_uncertainty =</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(p)&gt;&gt;;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  Symmetrize&lt;estimate_uncertainty&gt; symmetrize;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  p = symmetrize(update_covariance&lt;Transpose, Identity&gt;(p, k, h, r));</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_af394cd07163322a838fc5e3b8a8023ca"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#af394cd07163322a838fc5e3b8a8023ca">fcarouge::internal::update_state</a></div><div class="ttdeci">constexpr auto update_state(const State &amp;x, const auto &amp;k, const auto &amp;z, std::remove_reference_t&lt; std::remove_cv_t&lt; State &gt;&gt;(*h)(State))</div><div class="ttdef"><b>Definition:</b> <a href="kalman__equation_8hpp_source.xhtml#l00094">kalman_equation.hpp:94</a></div></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  x = <a class="code" href="namespacefcarouge_1_1internal.xhtml#af394cd07163322a838fc5e3b8a8023ca">update_state</a>(x, k, z, h);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keyword">using</span> estimate_uncertainty =</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(p)&gt;&gt;;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  Symmetrize&lt;estimate_uncertainty&gt; symmetrize;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  p = symmetrize(update_covariance&lt;Transpose, Identity&gt;(p, k, h, r));</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_af394cd07163322a838fc5e3b8a8023ca"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#af394cd07163322a838fc5e3b8a8023ca">fcarouge::internal::update_state</a></div><div class="ttdeci">constexpr auto update_state(const State &amp;x, const auto &amp;k, const auto &amp;z, std::remove_reference_t&lt; std::remove_cv_t&lt; State &gt;&gt;(*h)(State))</div><div class="ttdef"><b>Definition:</b> <a href="kalman__equation_8hpp_source.xhtml#l00095">kalman_equation.hpp:95</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="kalman__equation_8hpp_source.xhtml#l00084">update_state()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -482,18 +483,18 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00105">105</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keyword">using</span> estimate_uncertainty =</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(p)&gt;&gt;;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keyword">using</span> gain = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(k)&gt;&gt;;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  Transpose&lt;estimate_uncertainty&gt; transpose_p;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  Transpose&lt;gain&gt; transpose_k;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  Identity&lt;estimate_uncertainty&gt; i;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">return</span> estimate_uncertainty{ (i() - k * h) * p * transpose_p(i() - k * h) +</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                               k * r * transpose_k(k) };</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00106">106</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keyword">using</span> estimate_uncertainty =</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(p)&gt;&gt;;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keyword">using</span> gain = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(k)&gt;&gt;;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  Transpose&lt;estimate_uncertainty&gt; transpose_p;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  Transpose&lt;gain&gt; transpose_k;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  Identity&lt;estimate_uncertainty&gt; i;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordflow">return</span> estimate_uncertainty{ (i() - k * h) * p * transpose_p(i() - k * h) +</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                               k * r * transpose_k(k) };</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -550,7 +551,7 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">return</span> state{ x + k * (z - h * x) };</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="kalman__equation_8hpp_source.xhtml#l00137">update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman__equation_8hpp_source.xhtml#l00139">update()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -609,13 +610,14 @@ template&lt;typename State &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000001">Todo:</a></b></dt><dd>Do we want to allow the client to view the residual y? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00094">94</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keyword">using</span> state = State;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">return</span> state{ x + k * (z - h(x)) };</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00095">95</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keyword">using</span> state = State;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">return</span> state{ x + k * (z - h(x)) };</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -661,17 +663,17 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00120">120</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keyword">using</span> observation = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(h)&gt;&gt;;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keyword">using</span> output_uncertainty =</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(r)&gt;&gt;;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keyword">using</span> gain = std::invoke_result_t&lt;Transpose&lt;observation&gt;, observation&gt;;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  Transpose&lt;observation&gt; transpose_h;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  Divide&lt;gain, output_uncertainty&gt; divide;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordflow">return</span> gain{ divide(p * transpose_h(h), h * p * transpose_h(h) + r) };</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="kalman__equation_8hpp_source.xhtml#l00121">121</a> of file <a class="el" href="kalman__equation_8hpp_source.xhtml">kalman_equation.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;{</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keyword">using</span> observation = std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(h)&gt;&gt;;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keyword">using</span> output_uncertainty =</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      std::remove_reference_t&lt;std::remove_cv_t&lt;decltype(r)&gt;&gt;;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keyword">using</span> gain = std::invoke_result_t&lt;Transpose&lt;observation&gt;, observation&gt;;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  Transpose&lt;observation&gt; transpose_h;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  Divide&lt;gain, output_uncertainty&gt; divide;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">return</span> gain{ divide(p * transpose_h(h), h * p * transpose_h(h) + r) };</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -681,7 +683,7 @@ template&lt;template&lt; typename &gt; typename Transpose, template&lt; typename
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Fri May 6 2022 04:13:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Sat May 7 2022 03:20:16 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
