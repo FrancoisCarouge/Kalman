@@ -89,6 +89,7 @@ inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
   return state{ x + k * (z - h * x) };
 }
 
+//! @todo Do we want to allow the client to view the residual y?
 template <typename State>
 [[nodiscard]] inline constexpr auto
 update_state(const State &x, const auto &k, const auto &z,
@@ -130,6 +131,7 @@ template <template <typename> typename Transpose,
   return gain{ divide(p * transpose_h(h), h * p * transpose_h(h) + r) };
 }
 
+//! @todo Do we want to allow the client to view K?
 template <template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,

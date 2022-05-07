@@ -43,7 +43,7 @@ namespace fcarouge::test
 namespace
 {
 //! @test Demonstrate the code.
-[[maybe_unused]] constexpr auto test = []() {
+[[maybe_unused]] constexpr auto test = [] {
   static_assert(true, "Compile-time check.");
   assert(true && "Run-time check.");
 
