@@ -50,9 +50,14 @@ namespace fcarouge
 {
 //! @brief Kalman filter.
 //!
-//! @details Bayesian filter that uses Gaussians.
+//! @details A Bayesian filter that uses multivariate Gaussians. Kalman filters
+//! update estimates by multiplying Gaussians and predict estimates by adding
+//! Gaussians. Design the state (x, P), the process (F, Q), the measurement (z,
+//! R), the measurement function H, and if the system has control inputs (u, B).
 //!
-//! @tparam State The type template parameter of the state vector x.
+//! @tparam State The type template parameter of the state vector x. State
+//! variables can be observed (measured), or hidden variables (infeered). This
+//! is the the mean of the multivariate Gaussian.
 //! @tparam Output The type template parameter of the measurement vector z.
 //! @tparam Input The type template parameter of the control u.
 //! @tparam Transpose The template template parameter of the transpose functor.
@@ -68,6 +73,12 @@ namespace fcarouge
 //! could too. The polymorphic function wrapper was used in place of function
 //! pointers to enable default initialization from this class, captured member
 //! variables.
+//!
+//! @todo Is this filter restricted to Newton's equations of motion? That is
+//! only a discretized continuous-time kinematic filter? How about non-Newtonian
+//! systems?
+//! @todo Would it be beneficial to support `Type` and `value_type` prior to the
+//! `State` type template parameter?
 template <typename State, typename Output = State, typename Input = State,
           template <typename> typename Transpose = internal::transpose,
           template <typename> typename Symmetrize = internal::symmetrize,
@@ -120,7 +131,7 @@ class kalman
 
   //! @brief Type of the observation transition matrix H.
   //!
-  //! @details Also known as C.
+  //! @details Also known as the measurement transition matrix or C.
   using output_model = typename implementation::output_model;
 
   //! @brief Type of the control transition matrix G.
@@ -282,8 +293,7 @@ class kalman
   //! @return The observation noise correlated variance matrix R.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned observation noise covariance "
-              "matrix R is "
+  [[nodiscard("The returned observation noise covariance matrix R is "
               "unexpectedly discarded.")]] inline constexpr output_uncertainty
   r() const;
 
@@ -328,19 +338,19 @@ class kalman
 
   //! @brief Returns the observation transition matrix H.
   //!
-  //! @return The observation transition matrix H.
+  //! @return The observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
   [[nodiscard("The returned observation transition matrix H is unexpectedly "
               "discarded.")]] inline constexpr output_model
   h() const;
 
-  //! @brief Sets the observation transition matrix H.
+  //! @brief Sets the observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
   inline constexpr void h(const auto &value, const auto &...values);
 
-  //! @brief Sets the observation transition matrix H function.
+  //! @brief Sets the observation, measurement transition matrix H function.
   //!
   //! @complexity Constant.
   inline constexpr void h(const auto &value) requires std::constructible_from <
@@ -416,8 +426,8 @@ class kalman
 
   //! @brief Updates the estimates with the outcome of a measurement.
   //!
-  //! @details Implements the Bayes' theorem?
-  //! Combine one measurement and the prior estimate.
+  //! @details Implements the Bayes' theorem. Combine one measurement and the
+  //! prior estimate.
   //!
   //! @tparam output_z Observation parameters. Types must be compatible with the
   //! `output` type.
@@ -431,7 +441,7 @@ class kalman
 
   //! @brief Produces estimates of the state variables and uncertainties.
   //!
-  //! @details Implements the total probability theorem?
+  //! @details Implements the total probability theorem.
   //!
   //! @param arguments Optional prediction parameters passed through for
   //! computations of prediction matrices.
