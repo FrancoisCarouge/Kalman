@@ -6,6 +6,6 @@ var kalman__equation_8hpp =
     [ "update", "kalman__equation_8hpp.xhtml#af0a346261d79d359d8f7f7f662741872", null ],
     [ "update_covariance", "kalman__equation_8hpp.xhtml#a3d37fc08aea949d6fb899340236691ec", null ],
     [ "update_state", "kalman__equation_8hpp.xhtml#ae1cf4d210fd127617b49624969a8b9d0", null ],
-    [ "update_state", "kalman__equation_8hpp.xhtml#af394cd07163322a838fc5e3b8a8023ca", null ],
+    [ "update_state", "kalman__equation_8hpp.xhtml#a2f0f89423ac9d39030b284760bdf8a20", null ],
     [ "weight_gain", "kalman__equation_8hpp.xhtml#aca714003236e38aa420bea7a2b22b47c", null ]
 ];
