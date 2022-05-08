@@ -189,13 +189,20 @@ struct kalman {
   inline constexpr void predict(const PredictionArguments &...arguments,
                                 const auto &...input_u)
   {
-    // use member variables
     const auto ff{ predict_state };
     f = transition_state_f(arguments...);
     q = noise_process_q(arguments...);
     g = transition_control_g(arguments...);
     const auto u{ input{ input_u... } };
     internal::predict<Transpose, Symmetrize>(x, p, ff, f, q, g, u);
+  }
+
+  inline constexpr void predict(const PredictionArguments &...arguments)
+  {
+    const auto ff{ predict_state };
+    f = transition_state_f(arguments...);
+    q = noise_process_q(arguments...);
+    internal::predict<Transpose, Symmetrize>(x, p, ff, f, q);
   }
 
   //! @}

@@ -55,6 +55,14 @@ extrapolate_state(const auto &x, const auto &ff, const auto &f, const auto &g,
   return state{ ff(x, f) + g * u };
 }
 
+[[nodiscard]] inline constexpr auto
+extrapolate_state(const auto &x, const auto &ff, const auto &f)
+{
+  using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
+
+  return state{ ff(x, f) };
+}
+
 template <template <typename> class Transpose>
 [[nodiscard]] inline constexpr auto
 extrapolate_covariance(const auto &p, const auto &f, const auto &q)
@@ -63,9 +71,25 @@ extrapolate_covariance(const auto &p, const auto &f, const auto &q)
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
   using state_transition =
       std::remove_reference_t<std::remove_cv_t<decltype(f)>>;
+
   Transpose<state_transition> transpose;
 
   return estimate_uncertainty{ f * p * transpose(f) + q };
+}
+
+template <template <typename> typename Transpose,
+          template <typename> typename Symmetrize>
+inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
+                              const auto &q)
+{
+  x = extrapolate_state(x, ff, f);
+
+  using estimate_uncertainty =
+      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
+
+  Symmetrize<estimate_uncertainty> symmetrize;
+
+  p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
 }
 
 template <template <typename> typename Transpose,
@@ -77,27 +101,18 @@ inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
 
   using estimate_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
+
   Symmetrize<estimate_uncertainty> symmetrize;
+
   p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
 }
 
 [[nodiscard]] inline constexpr auto update_state(const auto &x, const auto &k,
-                                                 const auto &z, const auto &h)
+                                                 const auto &y)
 {
   using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
 
-  return state{ x + k * (z - h * x) };
-}
-
-//! @todo Do we want to allow the client to view the residual y?
-template <typename State>
-[[nodiscard]] inline constexpr auto
-update_state(const State &x, const auto &k, const auto &z,
-             std::remove_reference_t<std::remove_cv_t<State>> (*h)(State))
-{
-  using state = State;
-
-  return state{ x + k * (z - h(x)) };
+  return state{ x + k * y };
 }
 
 template <template <typename> typename Transpose,
@@ -108,6 +123,7 @@ update_covariance(const auto &p, const auto &k, const auto &h, const auto &r)
   using estimate_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
   using gain = std::remove_reference_t<std::remove_cv_t<decltype(k)>>;
+
   Transpose<estimate_uncertainty> transpose_p;
   Transpose<gain> transpose_k;
   Identity<estimate_uncertainty> i;
@@ -125,13 +141,27 @@ template <template <typename> typename Transpose,
   using output_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(r)>>;
   using gain = std::invoke_result_t<Transpose<observation>, observation>;
+
   Transpose<observation> transpose_h;
   Divide<gain, output_uncertainty> divide;
 
-  return gain{ divide(p * transpose_h(h), h * p * transpose_h(h) + r) };
+  using innovation_uncertainty =
+      std::remove_reference_t<std::remove_cv_t<decltype(r)>>;
+
+  const innovation_uncertainty s{ h * p * transpose_h(h) + r };
+
+  return gain{ divide(p * transpose_h(h), s) };
 }
 
-//! @todo Do we want to allow the client to view K?
+[[nodiscard]] inline constexpr auto innovate(const auto &x, const auto &z,
+                                             const auto &h)
+{
+  using innovation = std::remove_reference_t<std::remove_cv_t<decltype(z)>>;
+
+  return innovation{ z - h * x };
+}
+
+//! @todo Do we want to allow the client to view the gain k? And the residual y?
 template <template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
@@ -141,11 +171,15 @@ inline constexpr void update(auto &x, auto &p, const auto &h, const auto &r,
 {
   const auto k{ weight_gain<Transpose, Divide>(p, h, r) };
 
-  x = update_state(x, k, z, h);
+  const auto y{ innovate(x, z, h) };
+
+  x = update_state(x, k, y);
 
   using estimate_uncertainty =
       std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
+
   Symmetrize<estimate_uncertainty> symmetrize;
+
   p = symmetrize(update_covariance<Transpose, Identity>(p, k, h, r));
 }
 
