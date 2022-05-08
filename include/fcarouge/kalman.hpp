@@ -45,6 +45,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/kalman.hpp"
 
 #include <concepts>
+#include <functional>
 
 namespace fcarouge
 {
@@ -54,6 +55,7 @@ namespace fcarouge
 //! update estimates by multiplying Gaussians and predict estimates by adding
 //! Gaussians. Design the state (x, P), the process (F, Q), the measurement (z,
 //! R), the measurement function H, and if the system has control inputs (u, B).
+//! Designing a filter is as much art as science.
 //!
 //! @tparam State The type template parameter of the state vector x. State
 //! variables can be observed (measured), or hidden variables (infeered). This
@@ -79,6 +81,11 @@ namespace fcarouge
 //! systems?
 //! @todo Would it be beneficial to support `Type` and `value_type` prior to the
 //! `State` type template parameter?
+//! @todo Would it be beneficial to support initialization list for
+//! characteristis?
+//! @todo Symmetrization support might be superflous. How to confirm it is safe
+//! to remove?
+//! @todo Would we want to support smoothers?
 template <typename State, typename Output = State, typename Input = State,
           template <typename> typename Transpose = internal::transpose,
           template <typename> typename Symmetrize = internal::symmetrize,
@@ -540,6 +547,7 @@ inline constexpr
   return filter.q;
 }
 
+//! @todo Don't we need to reset functions or values when the other is set?
 template <typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
@@ -551,7 +559,6 @@ kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::q(const auto &value, const auto &...values)
 {
   filter.q = process_uncertainty{ value, values... };
-  // +reset function
 }
 
 template <typename State, typename Output, typename Input,
@@ -580,7 +587,6 @@ kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::r(const auto &value, const auto &...values)
 {
   filter.r = output_uncertainty{ value, values... };
-  // +reset function
 }
 
 template <typename State, typename Output, typename Input,
@@ -609,7 +615,6 @@ kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::f(const auto &value, const auto &...values)
 {
   filter.f = state_transition{ value, values... };
-  // +reset function
 }
 
 template <typename State, typename Output, typename Input,
@@ -638,7 +643,6 @@ kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::h(const auto &value, const auto &...values)
 {
   filter.h = output_model{ value, values... };
-  // +reset function
 }
 
 template <typename State, typename Output, typename Input,
@@ -667,7 +671,6 @@ kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::g(const auto &value, const auto &...values)
 {
   filter.g = input_control{ value, values... };
-  // +reset function
 }
 
 template <typename State, typename Output, typename Input,
