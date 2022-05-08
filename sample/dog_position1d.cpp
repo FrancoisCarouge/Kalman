@@ -31,7 +31,7 @@ namespace
 //! Gaussian.
 //!
 //! @example dog_position1d.cpp
-[[maybe_unused]] auto dog_position{ [] {
+[[maybe_unused]] auto dog_position1d{ [] {
   using kalman = kalman<double>;
   kalman k;
 
