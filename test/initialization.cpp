@@ -36,19 +36,29 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "fcarouge/kalman.hpp"
+
 #include <cassert>
 
 namespace fcarouge::test
 {
 namespace
 {
-//! @test Demonstrate the code.
-[[maybe_unused]] constexpr auto test = [] {
-  static_assert(true, "Compile-time check.");
-  assert(true && "Run-time check.");
+//! @test Verify default values are initialized.
+[[maybe_unused]] auto defaults{ [] {
+  using kalman = kalman<double>;
+  kalman k;
+
+  assert(0 == k.x() && "Origin state.");
+  assert(1 == k.p());
+  assert(0 == k.q() && "No process noise by default.");
+  assert(0 == k.r() && "No observation noise by default.");
+  assert(1 == k.f() && "");
+  assert(1 == k.h() && "");
+  assert(1 == k.g() && "");
 
   return 0;
-}();
+}() };
 
 } // namespace
 } // namespace fcarouge::test

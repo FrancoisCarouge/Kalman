@@ -109,22 +109,18 @@ struct kalman {
   //! @{
 
   //! @brief The state estimate vector x.
-  state x{};
+  state x{ 0 * Identity<state>()() };
 
   //! @brief The estimate uncertainty, covariance matrix P.
   //!
   //! @details The estimate uncertainty, covariance is also known as Σ.
   estimate_uncertainty p{ Identity<estimate_uncertainty>()() };
 
+  process_uncertainty q{ 0 * Identity<process_uncertainty>()() };
+  output_uncertainty r{ 0 * Identity<output_uncertainty>()() };
   output_model h{ Identity<output_model>()() };
-
-  output_uncertainty r{ Identity<output_uncertainty>()() };
-
   state_transition f{ Identity<state_transition>()() };
-
-  process_uncertainty q{};
-
-  input_control g{};
+  input_control g{ Identity<input_control>()() };
 
   //! @}
 
