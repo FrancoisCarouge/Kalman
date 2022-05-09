@@ -47,6 +47,9 @@ namespace fcarouge::internal
 //! @brief Function object for performing matrix transposition.
 //!
 //! @tparam Type The type template parameter of the matrix.
+//!
+//! @todo Should/could the operator be template instead of the class? If not,
+//! record rational.
 template <typename Type> struct transpose {
   //! @brief Returns the transpose of `value`.
   //!

@@ -55,16 +55,23 @@ namespace fcarouge
 //! update estimates by multiplying Gaussians and predict estimates by adding
 //! Gaussians. Design the state (x, P), the process (F, Q), the measurement (z,
 //! R), the measurement function H, and if the system has control inputs (u, B).
-//! Designing a filter is as much art as science.
+//! Designing a filter is as much art as science. Kalman filters assume white
+//! noise.
 //!
+//! @tparam Type The type template parameter of the value type of the filter.
 //! @tparam State The type template parameter of the state vector x. State
 //! variables can be observed (measured), or hidden variables (infeered). This
 //! is the the mean of the multivariate Gaussian.
 //! @tparam Output The type template parameter of the measurement vector z.
 //! @tparam Input The type template parameter of the control u.
-//! @tparam Transpose The template template parameter of the transpose functor.
-//! @tparam Divide The template template parameter of the division functor.
-//! @tparam Identity The template template parameter of the identity functor.
+//! @tparam Transpose The template template parameter of the matrix transpose
+//! functor.
+//! @tparam Symmetrize The template template parameter of the matrix
+//! symmetrization functor.
+//! @tparam Divide The template template parameter of the matrix division
+//! functor.
+//! @tparam Identity The template template parameter of the matrix identity
+//! functor.
 //! @tparam PredictionArguments The variadic type template parameter for
 //! additional prediction function parameters. Time, or a delta thereof, is
 //! often a prediction parameter. The parameters are propagated to the function
@@ -86,7 +93,8 @@ namespace fcarouge
 //! @todo Symmetrization support might be superflous. How to confirm it is safe
 //! to remove?
 //! @todo Would we want to support smoothers?
-template <typename State, typename Output = State, typename Input = State,
+template <typename Type = double, typename State = Type,
+          typename Output = State, typename Input = State,
           template <typename> typename Transpose = internal::transpose,
           template <typename> typename Symmetrize = internal::symmetrize,
           template <typename, typename> typename Divide = internal::divide,
@@ -108,6 +116,9 @@ class kalman
   public:
   //! @name Public Member Types
   //! @{
+
+  //! @brief The type of the filtered data elements.
+  using value_type = State;
 
   //! @brief Type of the state estimate vector X.
   using state = typename implementation::state;
@@ -133,7 +144,7 @@ class kalman
 
   //! @brief Type of the state transition matrix F.
   //!
-  //! @details Also known as Φ or A.
+  //! @details Also known as the fundamental matrix, Φ, or A.
   using state_transition = typename implementation::state_transition;
 
   //! @brief Type of the observation transition matrix H.
@@ -476,224 +487,224 @@ class kalman
   //! @}
 };
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
-    typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+    typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::state
-    kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+    kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
            PredictionArguments...>::x() const
 {
   return filter.x;
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::x(const auto &value, const auto &...values)
 {
   filter.x = state{ value, values... };
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
-    typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+    typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::estimate_uncertainty
-    kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+    kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
            PredictionArguments...>::p() const
 {
   return filter.p;
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::p(const auto &value, const auto &...values)
 {
   filter.p = estimate_uncertainty{ value, values... };
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
-    typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+    typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::process_uncertainty
-    kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+    kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
            PredictionArguments...>::q() const
 {
   return filter.q;
 }
 
 //! @todo Don't we need to reset functions or values when the other is set?
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::q(const auto &value, const auto &...values)
 {
   filter.q = process_uncertainty{ value, values... };
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
-    typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+    typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::output_uncertainty
-    kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+    kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
            PredictionArguments...>::r() const
 {
   return filter.r;
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::r(const auto &value, const auto &...values)
 {
   filter.r = output_uncertainty{ value, values... };
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
-    typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+    typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::state_transition
-    kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+    kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
            PredictionArguments...>::f() const
 {
   return filter.f;
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::f(const auto &value, const auto &...values)
 {
   filter.f = state_transition{ value, values... };
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
-    typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+    typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::output_model
-    kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+    kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
            PredictionArguments...>::h() const
 {
   return filter.h;
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::h(const auto &value, const auto &...values)
 {
   filter.h = output_model{ value, values... };
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
-    typename kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+    typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::input_control
-    kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+    kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
            PredictionArguments...>::g() const
 {
   return filter.g;
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::g(const auto &value, const auto &...values)
 {
   filter.g = input_control{ value, values... };
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::update(const auto &...output_z)
 {
   filter.update(output_z...);
 }
 
-template <typename State, typename Output, typename Input,
+template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
           template <typename> typename Symmetrize,
           template <typename, typename> typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::predict(const PredictionArguments &...arguments,
                                         const auto &...input_u)
 {

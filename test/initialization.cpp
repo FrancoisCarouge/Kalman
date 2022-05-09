@@ -46,7 +46,6 @@ namespace
 {
 //! @test Verify default values are initialized.
 [[maybe_unused]] auto defaults{ [] {
-  using kalman = kalman<double>;
   kalman k;
 
   assert(0 == k.x() && "Origin state.");

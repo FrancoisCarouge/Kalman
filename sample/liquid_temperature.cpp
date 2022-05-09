@@ -28,7 +28,6 @@ namespace
 //! @example liquid_temperature.cpp
 [[maybe_unused]] auto liquid_temperature{ [] {
   // A one-dimensional filter, constant system dynamic model.
-  using kalman = kalman<double>;
   kalman k;
 
   // Initialization
