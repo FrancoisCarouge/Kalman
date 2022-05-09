@@ -30,9 +30,8 @@ namespace
 //! overshoot by a little than a lot. Perhaps we can also model this with a
 //! Gaussian.
 //!
-//! @example dog_position1d.cpp
-[[maybe_unused]] auto dog_position1d{ [] {
-  using kalman = kalman<double>;
+//! @example dog_position.cpp
+[[maybe_unused]] auto dog_position{ [] {
   kalman k;
 
   // Initialization

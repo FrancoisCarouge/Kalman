@@ -23,7 +23,6 @@ namespace
 //! @example building_height.cpp
 [[maybe_unused]] auto building_height{ [] {
   // A one-dimensional filter, constant system dynamic model.
-  using kalman = kalman<double>;
   kalman k;
 
   // Initialization

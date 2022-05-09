@@ -50,15 +50,13 @@ A generic Kalman filter.
 ## One-Dimensional
 
 ```cpp
-using kalman = fcarouge::kalman<double>;
-
-kalman k;
+fcarouge::kalman k;
 
 k.x(60.);
 k.p(225.);
 k.r(25.);
 
-k.update(48.54);
+k(48.54);
 ```
 
 ## Multi-Dimensional
@@ -95,8 +93,6 @@ k.r(400);
 
 k.predict(delta_time, gravitational_acceleration);
 k.update(-32.40 );
-k.predict(delta_time, 39.72);
-k.update(-11.1);
 ```
 
 # Library
@@ -131,7 +127,8 @@ This package explores what could be a Kalman filter implementation a la standard
 Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
 
 ```cpp
-template <typename State, typename Output = State, typename Input = State,
+template <typename Type, typename State = Type, typename Output = State,
+          typename Input = State,
           template <typename> typename Transpose = internal::transpose,
           template <typename> typename Symmetrize = internal::symmetrize,
           template <typename, typename> typename Divide = internal::divide,
@@ -141,6 +138,18 @@ class kalman
 ```
 
 ### Template Parameters
+
+| Template Parameter | Definition |
+| --- | --- |
+| `Type` | The type template parameter of the value type of the filter. |
+| `State` | The type template parameter of the state vector x. State variables can be observed (measured), or hidden variables (infeered). This is the the mean of the multivariate Gaussian. |
+| `Output` | The type template parameter of the measurement vector z. |
+| `Input` | The type template parameter of the control u. |
+| `Transpose` | The template template parameter of the matrix transpose functor. |
+| `Symmetrize` | The template template parameter of the matrix symmetrization functor. |
+| `Divide` | The template template parameter of the matrix division functor. |
+| `Identity` | The template template parameter of the matrix identity functor. |
+| `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Time, or a delta thereof, is often a prediction parameter. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. |
 
 ### Member Types
 
@@ -166,7 +175,7 @@ class kalman
 
 #### Characteristics
 
-| Modifier | Definition |
+| Characteristic | Definition |
 | --- | --- |
 | `x` | Manages the state estimate vector. |
 | `z` | Manages the observation vector. |
@@ -182,6 +191,7 @@ class kalman
 
 | Modifier | Definition |
 | --- | --- |
+| `operator()` | Runs a step of the filter. Predicts and updates the estimates per prediction arguments, control input, and measurement output. |
 | `update` | Updates the estimates with the outcome of a measurement. |
 | `predict` | Produces estimates of the state variables and uncertainties. |
 
