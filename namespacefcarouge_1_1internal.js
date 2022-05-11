@@ -1,6 +1,5 @@
 var namespacefcarouge_1_1internal =
 [
-    [ "divide", "structfcarouge_1_1internal_1_1divide.xhtml", "structfcarouge_1_1internal_1_1divide" ],
     [ "identity", "structfcarouge_1_1internal_1_1identity.xhtml", "structfcarouge_1_1internal_1_1identity" ],
     [ "kalman", "structfcarouge_1_1internal_1_1kalman.xhtml", "structfcarouge_1_1internal_1_1kalman" ],
     [ "symmetrize", "structfcarouge_1_1internal_1_1symmetrize.xhtml", "structfcarouge_1_1internal_1_1symmetrize" ],
