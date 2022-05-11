@@ -46,6 +46,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <Eigen/Eigen>
 
+#include <type_traits>
+
 namespace fcarouge::eigen::internal
 {
 //! @brief Function object for performing Eigen matrix transposition.
@@ -93,20 +95,22 @@ template <typename Type> struct symmetrize {
 //!
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
-//!
-//! @tparam Numerator The type template parameter of the dividend.
-//! @tparam Denominator The type template parameter of the divisor.
-template <typename Numerator, typename Denominator> struct divide {
+struct divide {
   //! @brief Returns the quotient of `numerator` and `denominator`.
   //!
   //! @param numerator The dividend of the division.
   //! @param denominator The divisor of the division.
   //!
   //! @exception May throw implementation-defined exceptions.
-  [[nodiscard]] inline constexpr Eigen::Matrix<typename Numerator::Scalar,
-                                               Numerator::RowsAtCompileTime,
-                                               Denominator::RowsAtCompileTime>
-  operator()(const Numerator &numerator, const Denominator &denominator) const
+  //!
+  //! @todo Why compilation fails if we specifcy the return type in the body of
+  //! the function?
+  [[nodiscard]] inline constexpr auto operator()(const auto &numerator,
+                                                 const auto &denominator) const
+      -> typename Eigen::Matrix<
+          typename std::decay_t<decltype(numerator)>::Scalar,
+          std::decay_t<decltype(numerator)>::RowsAtCompileTime,
+          std::decay_t<decltype(denominator)>::RowsAtCompileTime>
   {
     return denominator.transpose()
         .fullPivHouseholderQr()

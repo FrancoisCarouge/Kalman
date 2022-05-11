@@ -75,23 +75,6 @@ template <typename Type> struct symmetrize {
   }
 };
 
-//! @brief Function object for performing matrix division.
-//!
-//! @tparam Numerator The type template parameter of the dividend.
-//! @tparam Denominator The type template parameter of the divisor.
-template <typename Numerator, typename Denominator> struct divide {
-  //! @brief Returns the quotient of `numerator` and `denominator`.
-  //!
-  //! @param numerator The dividend of the division.
-  //! @param denominator The divisor of the division.
-  [[nodiscard]] inline constexpr auto
-  operator()(const Numerator &numerator,
-             const Denominator &denominator) const noexcept
-  {
-    return numerator / denominator;
-  }
-};
-
 //! @brief Function object for providing an identy matrix.
 //!
 //! @tparam Type The type template parameter of the matrix.
