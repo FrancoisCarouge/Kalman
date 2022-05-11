@@ -53,7 +53,7 @@ namespace fcarouge::internal
 template <typename State, typename Output = State, typename Input = State,
           template <typename> typename Transpose = transpose,
           template <typename> typename Symmetrize = symmetrize,
-          template <typename, typename> typename Divide = divide,
+          typename Divide = std::divides<void>,
           template <typename> typename Identity = identity,
           typename... PredictionArguments>
 struct kalman {
@@ -74,34 +74,28 @@ struct kalman {
   //! @brief Type of the estimated covariance matrix P.
   //!
   //! @details Also known as Σ.
-  using estimate_uncertainty =
-      std::invoke_result_t<Divide<State, State>, State, State>;
+  using estimate_uncertainty = std::invoke_result_t<Divide, State, State>;
 
   //! @brief Type of the process noise covariance matrix Q.
-  using process_uncertainty =
-      std::invoke_result_t<Divide<State, State>, State, State>;
+  using process_uncertainty = std::invoke_result_t<Divide, State, State>;
 
   //! @brief Type of the observation, measurement noise covariance matrix R.
-  using output_uncertainty =
-      std::invoke_result_t<Divide<Output, Output>, Output, Output>;
+  using output_uncertainty = std::invoke_result_t<Divide, Output, Output>;
 
   //! @brief Type of the state transition matrix F.
   //!
   //! @details Also known as Φ or A.
-  using state_transition =
-      std::invoke_result_t<Divide<State, State>, State, State>;
+  using state_transition = std::invoke_result_t<Divide, State, State>;
 
   //! @brief Type of the observation transition matrix H.
   //!
   //! @details Also known as C.
-  using output_model =
-      std::invoke_result_t<Divide<Output, State>, Output, State>;
+  using output_model = std::invoke_result_t<Divide, Output, State>;
 
   //! @brief Type of the control transition matrix G.
   //!
   //! @details Also known as B.
-  using input_control =
-      std::invoke_result_t<Divide<State, Input>, State, Input>;
+  using input_control = std::invoke_result_t<Divide, State, Input>;
 
   //! @}
 

@@ -42,6 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Kalman filter main project header.
 
+#include <functional>
 #include <type_traits>
 
 namespace fcarouge::internal
@@ -50,7 +51,7 @@ namespace fcarouge::internal
 extrapolate_state(const auto &x, const auto &ff, const auto &f, const auto &g,
                   const auto &u)
 {
-  using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
+  using state = std::decay_t<decltype(x)>;
 
   return state{ ff(x, f) + g * u };
 }
@@ -58,7 +59,7 @@ extrapolate_state(const auto &x, const auto &ff, const auto &f, const auto &g,
 [[nodiscard]] inline constexpr auto
 extrapolate_state(const auto &x, const auto &ff, const auto &f)
 {
-  using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
+  using state = std::decay_t<decltype(x)>;
 
   return state{ ff(x, f) };
 }
@@ -67,10 +68,8 @@ template <template <typename> class Transpose>
 [[nodiscard]] inline constexpr auto
 extrapolate_covariance(const auto &p, const auto &f, const auto &q)
 {
-  using estimate_uncertainty =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  using state_transition =
-      std::remove_reference_t<std::remove_cv_t<decltype(f)>>;
+  using estimate_uncertainty = std::decay_t<decltype(p)>;
+  using state_transition = std::decay_t<decltype(f)>;
 
   Transpose<state_transition> transpose;
 
@@ -84,8 +83,7 @@ inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
 {
   x = extrapolate_state(x, ff, f);
 
-  using estimate_uncertainty =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
+  using estimate_uncertainty = std::decay_t<decltype(p)>;
 
   Symmetrize<estimate_uncertainty> symmetrize;
 
@@ -99,8 +97,7 @@ inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
 {
   x = extrapolate_state(x, ff, f, g, u);
 
-  using estimate_uncertainty =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
+  using estimate_uncertainty = std::decay_t<decltype(p)>;
 
   Symmetrize<estimate_uncertainty> symmetrize;
 
@@ -110,7 +107,7 @@ inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
 [[nodiscard]] inline constexpr auto update_state(const auto &x, const auto &k,
                                                  const auto &y)
 {
-  using state = std::remove_reference_t<std::remove_cv_t<decltype(x)>>;
+  using state = std::decay_t<decltype(x)>;
 
   return state{ x + k * y };
 }
@@ -120,9 +117,8 @@ template <template <typename> typename Transpose,
 [[nodiscard]] inline constexpr auto
 update_covariance(const auto &p, const auto &k, const auto &h, const auto &r)
 {
-  using estimate_uncertainty =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
-  using gain = std::remove_reference_t<std::remove_cv_t<decltype(k)>>;
+  using estimate_uncertainty = std::decay_t<decltype(p)>;
+  using gain = std::decay_t<decltype(k)>;
 
   Transpose<estimate_uncertainty> transpose_p;
   Transpose<gain> transpose_k;
@@ -132,39 +128,33 @@ update_covariance(const auto &p, const auto &k, const auto &h, const auto &r)
                                k * r * transpose_k(k) };
 }
 
-template <template <typename> typename Transpose,
-          template <typename, typename> typename Divide>
+template <template <typename> typename Transpose, typename Divide>
 [[nodiscard]] inline constexpr auto weight_gain(const auto &p, const auto &h,
                                                 const auto &r)
 {
-  using observation = std::remove_reference_t<std::remove_cv_t<decltype(h)>>;
-  using output_uncertainty =
-      std::remove_reference_t<std::remove_cv_t<decltype(r)>>;
+  using observation = std::decay_t<decltype(h)>;
   using gain = std::invoke_result_t<Transpose<observation>, observation>;
+  using innovation_uncertainty = std::decay_t<decltype(r)>;
 
   Transpose<observation> transpose_h;
-  Divide<gain, output_uncertainty> divide;
-
-  using innovation_uncertainty =
-      std::remove_reference_t<std::remove_cv_t<decltype(r)>>;
+  Divide divides;
 
   const innovation_uncertainty s{ h * p * transpose_h(h) + r };
 
-  return gain{ divide(p * transpose_h(h), s) };
+  return gain{ divides(p * transpose_h(h), s) };
 }
 
 [[nodiscard]] inline constexpr auto innovate(const auto &x, const auto &z,
                                              const auto &h)
 {
-  using innovation = std::remove_reference_t<std::remove_cv_t<decltype(z)>>;
+  using innovation = std::decay_t<decltype(z)>;
 
   return innovation{ z - h * x };
 }
 
 //! @todo Do we want to allow the client to view the gain k? And the residual y?
 template <template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity>
 inline constexpr void update(auto &x, auto &p, const auto &h, const auto &r,
                              const auto &z)
@@ -175,8 +165,7 @@ inline constexpr void update(auto &x, auto &p, const auto &h, const auto &r,
 
   x = update_state(x, k, y);
 
-  using estimate_uncertainty =
-      std::remove_reference_t<std::remove_cv_t<decltype(p)>>;
+  using estimate_uncertainty = std::decay_t<decltype(p)>;
 
   Symmetrize<estimate_uncertainty> symmetrize;
 

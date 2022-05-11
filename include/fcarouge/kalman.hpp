@@ -68,8 +68,8 @@ namespace fcarouge
 //! functor.
 //! @tparam Symmetrize The template template parameter of the matrix
 //! symmetrization functor.
-//! @tparam Divide The template template parameter of the matrix division
-//! functor.
+//! @tparam Divide The customization point object template parameter of the
+//! matrix division functor.
 //! @tparam Identity The template template parameter of the matrix identity
 //! functor.
 //! @tparam PredictionArguments The variadic type template parameter for
@@ -97,7 +97,7 @@ template <typename Type = double, typename State = Type,
           typename Output = State, typename Input = State,
           template <typename> typename Transpose = internal::transpose,
           template <typename> typename Symmetrize = internal::symmetrize,
-          template <typename, typename> typename Divide = internal::divide,
+          typename Divide = std::divides<void>,
           template <typename> typename Identity = internal::identity,
           typename... PredictionArguments>
 class kalman
@@ -489,8 +489,7 @@ class kalman
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
@@ -504,8 +503,7 @@ inline constexpr
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
@@ -517,8 +515,7 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
@@ -532,8 +529,7 @@ inline constexpr
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
@@ -545,8 +541,7 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
@@ -561,8 +556,7 @@ inline constexpr
 //! @todo Don't we need to reset functions or values when the other is set?
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
@@ -574,8 +568,7 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
@@ -589,8 +582,7 @@ inline constexpr
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
@@ -602,8 +594,7 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
@@ -617,8 +608,7 @@ inline constexpr
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
@@ -630,8 +620,7 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
@@ -645,8 +634,7 @@ inline constexpr
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
@@ -658,8 +646,7 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr
@@ -673,8 +660,7 @@ inline constexpr
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
@@ -686,8 +672,7 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
@@ -699,8 +684,7 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           template <typename> typename Transpose,
-          template <typename> typename Symmetrize,
-          template <typename, typename> typename Divide,
+          template <typename> typename Symmetrize, typename Divide,
           template <typename> typename Identity,
           typename... PredictionArguments>
 inline constexpr void
