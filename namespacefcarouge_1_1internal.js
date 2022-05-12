@@ -2,8 +2,6 @@ var namespacefcarouge_1_1internal =
 [
     [ "identity", "structfcarouge_1_1internal_1_1identity.xhtml", "structfcarouge_1_1internal_1_1identity" ],
     [ "kalman", "structfcarouge_1_1internal_1_1kalman.xhtml", "structfcarouge_1_1internal_1_1kalman" ],
-    [ "symmetrize", "structfcarouge_1_1internal_1_1symmetrize.xhtml", "structfcarouge_1_1internal_1_1symmetrize" ],
-    [ "transpose", "structfcarouge_1_1internal_1_1transpose.xhtml", "structfcarouge_1_1internal_1_1transpose" ],
     [ "extrapolate_covariance", "namespacefcarouge_1_1internal.xhtml#a62ef859bb167f2c4de9f8185d4160024", null ],
     [ "extrapolate_state", "namespacefcarouge_1_1internal.xhtml#a84f3bb8884aff1a719fd640f177c5d3e", null ],
     [ "extrapolate_state", "namespacefcarouge_1_1internal.xhtml#a0d4a117f1e5338b506841bd69d20f538", null ],

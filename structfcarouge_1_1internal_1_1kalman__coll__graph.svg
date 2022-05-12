@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1141;
+var viewWidth = 1562;
 var viewHeight = 402;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,34 +54,34 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-398 1137,-398 1137,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-398 1558,-398 1558,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="166.5,-0.5 166.5,-244.5 353.5,-244.5 353.5,-0.5 166.5,-0.5"/>
-<text text-anchor="start" x="174.5" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00">fcarouge::internal</text>
-<text text-anchor="start" x="174.5" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">::kalman&lt; State, Output,</text>
-<text text-anchor="start" x="174.5" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Input, Transpose, Symmetrize,</text>
-<text text-anchor="middle" x="260" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Divide, Identity, PredictionArguments &gt;</text>
-<polyline fill="none" stroke="black" points="166.5,-192.5 353.5,-192.5 "/>
-<text text-anchor="middle" x="260" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="166.5,-173.5 353.5,-173.5 "/>
-<text text-anchor="start" x="174.5" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ update()</text>
-<text text-anchor="start" x="174.5" y="-150.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ predict()</text>
-<text text-anchor="start" x="174.5" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ predict()</text>
-<text text-anchor="start" x="174.5" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">* state</text>
-<text text-anchor="start" x="174.5" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">* output</text>
-<text text-anchor="start" x="174.5" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">* input</text>
-<text text-anchor="start" x="174.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">* estimate_uncertainty</text>
-<text text-anchor="start" x="174.5" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">* process_uncertainty</text>
-<text text-anchor="start" x="174.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">* output_uncertainty</text>
-<text text-anchor="start" x="174.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">* state_transition</text>
-<text text-anchor="start" x="174.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">* output_model</text>
-<text text-anchor="start" x="174.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">* input_control</text>
-<text text-anchor="start" x="174.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">* update()</text>
-<text text-anchor="start" x="174.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">* predict()</text>
-<text text-anchor="start" x="174.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">* predict()</text>
+<polygon fill="#bfbfbf" stroke="black" points="586.5,-0.5 586.5,-244.5 773.5,-244.5 773.5,-0.5 586.5,-0.5"/>
+<text text-anchor="start" x="594.5" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00">fcarouge::internal</text>
+<text text-anchor="start" x="594.5" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00">::kalman&lt; State, Output,</text>
+<text text-anchor="start" x="594.5" y="-210.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Input, Transpose, Symmetrize,</text>
+<text text-anchor="middle" x="680" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Divide, Identity, PredictionArguments &gt;</text>
+<polyline fill="none" stroke="black" points="586.5,-192.5 773.5,-192.5 "/>
+<text text-anchor="middle" x="680" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="586.5,-173.5 773.5,-173.5 "/>
+<text text-anchor="start" x="594.5" y="-161.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ update()</text>
+<text text-anchor="start" x="594.5" y="-150.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ predict()</text>
+<text text-anchor="start" x="594.5" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00">+ predict()</text>
+<text text-anchor="start" x="594.5" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">* state</text>
+<text text-anchor="start" x="594.5" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00">* output</text>
+<text text-anchor="start" x="594.5" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00">* input</text>
+<text text-anchor="start" x="594.5" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00">* estimate_uncertainty</text>
+<text text-anchor="start" x="594.5" y="-84.5" font-family="Helvetica,sans-Serif" font-size="10.00">* process_uncertainty</text>
+<text text-anchor="start" x="594.5" y="-73.5" font-family="Helvetica,sans-Serif" font-size="10.00">* output_uncertainty</text>
+<text text-anchor="start" x="594.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">* state_transition</text>
+<text text-anchor="start" x="594.5" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">* output_model</text>
+<text text-anchor="start" x="594.5" y="-40.5" font-family="Helvetica,sans-Serif" font-size="10.00">* input_control</text>
+<text text-anchor="start" x="594.5" y="-29.5" font-family="Helvetica,sans-Serif" font-size="10.00">* update()</text>
+<text text-anchor="start" x="594.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">* predict()</text>
+<text text-anchor="start" x="594.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">* predict()</text>
 </a>
 </g>
 </g>
@@ -101,180 +101,221 @@ var sectionId = 'dynsection-1';
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M40.31,-325.08C43.18,-321.32 46.13,-317.54 49,-314 68.04,-290.52 72.37,-284.12 94,-263 113.59,-243.87 135.45,-224.35 156.71,-206.21"/>
-<polygon fill="none" stroke="#404040" points="156.95,-206.01 158.94,-199.08 166.1,-198.25 164.11,-205.18 156.95,-206.01"/>
-<text text-anchor="middle" x="100.5" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +x</text>
+<path fill="none" stroke="#404040" d="M37.01,-325.33C40.56,-321.09 44.58,-317.1 49,-314 210.64,-200.47 441.17,-153.43 574.21,-134.83"/>
+<polygon fill="none" stroke="#404040" points="574.49,-134.8 579.9,-130.02 586.38,-133.17 580.98,-137.95 574.49,-134.8"/>
+<text text-anchor="middle" x="131.5" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +x</text>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:title=" ">
-<polygon fill="white" stroke="black" points="58,-314.5 58,-393.5 176,-393.5 176,-314.5 58,-314.5"/>
-<text text-anchor="start" x="66" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">invoke_result_t&lt; std</text>
-<text text-anchor="start" x="66" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">::divides&lt; void &gt;, State,</text>
-<text text-anchor="middle" x="117" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00"> State &gt;</text>
-<polyline fill="none" stroke="black" points="58,-352.5 176,-352.5 "/>
-<text text-anchor="middle" x="117" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="58,-333.5 176,-333.5 "/>
-<text text-anchor="middle" x="117" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="white" stroke="black" points="58.5,-320 58.5,-388 179.5,-388 179.5,-320 58.5,-320"/>
+<text text-anchor="start" x="66.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">invoke_result_t&lt; Divide,</text>
+<text text-anchor="middle" x="119" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00"> State, State &gt;</text>
+<polyline fill="none" stroke="black" points="58.5,-358 179.5,-358 "/>
+<text text-anchor="middle" x="119" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="58.5,-339 179.5,-339 "/>
+<text text-anchor="middle" x="119" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node1 -->
 <g id="edge2" class="edge">
 <title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M110.52,-314.47C109.37,-298.03 110.26,-278.98 117,-263 126.29,-240.96 140.96,-220.66 157.43,-202.78"/>
-<polygon fill="none" stroke="#404040" points="157.88,-202.31 159.15,-195.21 166.19,-193.65 164.92,-200.75 157.88,-202.31"/>
-<text text-anchor="middle" x="123" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00"> +f</text>
-<text text-anchor="middle" x="123" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00">+p</text>
-<text text-anchor="middle" x="123" y="-266" font-family="Helvetica,sans-Serif" font-size="10.00">+q</text>
-</g>
-<!-- Node3&#45;&gt;Node1 -->
-<g id="edge3" class="edge">
-<title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M129.31,-314.23C135.18,-297.92 142.92,-279.05 152,-263 154.5,-258.58 157.13,-254.14 159.87,-249.71"/>
-<polygon fill="none" stroke="#404040" points="159.98,-249.53 159.83,-242.32 166.42,-239.4 166.58,-246.61 159.98,-249.53"/>
-<text text-anchor="middle" x="158" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +r</text>
-</g>
-<!-- Node3&#45;&gt;Node1 -->
-<g id="edge4" class="edge">
-<title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M150.33,-314.48C155.1,-308.43 159.81,-302.15 164,-296 172.77,-283.14 181.46,-269.41 189.8,-255.53"/>
-<polygon fill="none" stroke="#404040" points="189.99,-255.22 189.61,-248.01 196.12,-244.9 196.49,-252.1 189.99,-255.22"/>
-<text text-anchor="middle" x="192" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +h</text>
-</g>
-<!-- Node3&#45;&gt;Node1 -->
-<g id="edge5" class="edge">
-<title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M176.32,-320.03C185.48,-313.01 194.16,-304.97 201,-296 210.34,-283.77 218.25,-269.97 224.96,-255.63"/>
-<polygon fill="none" stroke="#404040" points="224.99,-255.55 223.76,-248.44 229.85,-244.57 231.08,-251.68 224.99,-255.55"/>
-<text text-anchor="middle" x="227" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +g</text>
+<path fill="none" stroke="#404040" d="M176.27,-319.81C180.21,-317.78 184.14,-315.82 188,-314 318.15,-252.42 473.97,-194.64 574.86,-159.21"/>
+<polygon fill="none" stroke="#404040" points="574.95,-159.18 579.29,-153.42 586.28,-155.21 581.94,-160.97 574.95,-159.18"/>
+<text text-anchor="middle" x="300" y="-288" font-family="Helvetica,sans-Serif" font-size="10.00"> +f</text>
+<text text-anchor="middle" x="300" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00">+p</text>
+<text text-anchor="middle" x="300" y="-266" font-family="Helvetica,sans-Serif" font-size="10.00">+q</text>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:title=" ">
-<polygon fill="white" stroke="black" points="194,-325.5 194,-382.5 324,-382.5 324,-325.5 194,-325.5"/>
-<text text-anchor="middle" x="259" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; output_model()&gt;</text>
-<polyline fill="none" stroke="black" points="194,-363.5 324,-363.5 "/>
-<text text-anchor="middle" x="259" y="-351.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="194,-344.5 324,-344.5 "/>
-<text text-anchor="middle" x="259" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="white" stroke="black" points="197.5,-320 197.5,-388 318.5,-388 318.5,-320 197.5,-320"/>
+<text text-anchor="start" x="205.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">invoke_result_t&lt; Divide,</text>
+<text text-anchor="middle" x="258" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00"> Output, Output &gt;</text>
+<polyline fill="none" stroke="black" points="197.5,-358 318.5,-358 "/>
+<text text-anchor="middle" x="258" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="197.5,-339 318.5,-339 "/>
+<text text-anchor="middle" x="258" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node1 -->
-<g id="edge6" class="edge">
+<g id="edge3" class="edge">
 <title>Node4&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M259.12,-325.32C259.2,-307.43 259.31,-282.7 259.42,-256.67"/>
-<polygon fill="none" stroke="#404040" points="259.42,-256.64 255.45,-250.62 259.47,-244.64 263.45,-250.66 259.42,-256.64"/>
-<text text-anchor="middle" x="317.5" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +transition_observation_h</text>
+<path fill="none" stroke="#404040" d="M316.3,-319.94C319.92,-317.92 323.51,-315.93 327,-314 410.35,-267.96 505.36,-216.76 575.81,-179.04"/>
+<polygon fill="none" stroke="#404040" points="575.87,-179 579.28,-172.65 586.45,-173.34 583.05,-179.7 575.87,-179"/>
+<text text-anchor="middle" x="420" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +r</text>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:title=" ">
-<polygon fill="white" stroke="black" points="342.5,-325.5 342.5,-382.5 493.5,-382.5 493.5,-325.5 342.5,-325.5"/>
-<text text-anchor="middle" x="418" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; output_uncertainty()&gt;</text>
-<polyline fill="none" stroke="black" points="342.5,-363.5 493.5,-363.5 "/>
-<text text-anchor="middle" x="418" y="-351.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="342.5,-344.5 493.5,-344.5 "/>
-<text text-anchor="middle" x="418" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="white" stroke="black" points="336.5,-320 336.5,-388 457.5,-388 457.5,-320 336.5,-320"/>
+<text text-anchor="start" x="344.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">invoke_result_t&lt; Divide,</text>
+<text text-anchor="middle" x="397" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00"> Output, State &gt;</text>
+<polyline fill="none" stroke="black" points="336.5,-358 457.5,-358 "/>
+<text text-anchor="middle" x="397" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="336.5,-339 457.5,-339 "/>
+<text text-anchor="middle" x="397" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node1 -->
-<g id="edge7" class="edge">
+<g id="edge4" class="edge">
 <title>Node5&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M408.4,-325.17C401.5,-306.82 391.25,-282.65 379,-263 373.43,-254.07 367.32,-245.12 360.89,-236.3"/>
-<polygon fill="none" stroke="#404040" points="360.69,-236.04 353.89,-233.62 353.51,-226.42 360.31,-228.83 360.69,-236.04"/>
-<text text-anchor="middle" x="443" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +noise_observation_r</text>
+<path fill="none" stroke="#404040" d="M437.85,-319.87C474.08,-290.49 528.57,-246.3 576.69,-207.28"/>
+<polygon fill="none" stroke="#404040" points="576.91,-207.1 579.05,-200.22 586.23,-199.55 584.09,-206.43 576.91,-207.1"/>
+<text text-anchor="middle" x="512" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +h</text>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:title=" ">
-<polygon fill="white" stroke="black" points="511.5,-320 511.5,-388 672.5,-388 672.5,-320 511.5,-320"/>
-<text text-anchor="start" x="519.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; state_transition</text>
-<text text-anchor="middle" x="592" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00">(const PredictionArguments &amp;...)&gt;</text>
-<polyline fill="none" stroke="black" points="511.5,-358 672.5,-358 "/>
-<text text-anchor="middle" x="592" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="511.5,-339 672.5,-339 "/>
-<text text-anchor="middle" x="592" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="white" stroke="black" points="475.5,-320 475.5,-388 596.5,-388 596.5,-320 475.5,-320"/>
+<text text-anchor="start" x="483.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">invoke_result_t&lt; Divide,</text>
+<text text-anchor="middle" x="536" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00"> State, Input &gt;</text>
+<polyline fill="none" stroke="black" points="475.5,-358 596.5,-358 "/>
+<text text-anchor="middle" x="536" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="475.5,-339 596.5,-339 "/>
+<text text-anchor="middle" x="536" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node1 -->
-<g id="edge8" class="edge">
+<g id="edge5" class="edge">
 <title>Node6&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M559.86,-319.92C541.67,-302.05 518,-280.19 495,-263 454.1,-232.43 406.05,-202.91 364.09,-178.95"/>
-<polygon fill="none" stroke="#404040" points="364.01,-178.9 356.82,-179.42 353.57,-172.99 360.76,-172.46 364.01,-178.9"/>
-<text text-anchor="middle" x="576" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +transition_state_f</text>
+<path fill="none" stroke="#404040" d="M556.94,-319.63C568.03,-301.95 582.45,-278.97 597.5,-254.99"/>
+<polygon fill="none" stroke="#404040" points="597.6,-254.82 597.4,-247.62 603.98,-244.66 604.18,-251.87 597.6,-254.82"/>
+<text text-anchor="middle" x="598" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +g</text>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:title=" ">
-<polygon fill="white" stroke="black" points="690.5,-320 690.5,-388 851.5,-388 851.5,-320 690.5,-320"/>
-<text text-anchor="start" x="698.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; process_uncertainty</text>
-<text text-anchor="middle" x="771" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00">(const PredictionArguments &amp;...)&gt;</text>
-<polyline fill="none" stroke="black" points="690.5,-358 851.5,-358 "/>
-<text text-anchor="middle" x="771" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="690.5,-339 851.5,-339 "/>
-<text text-anchor="middle" x="771" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="white" stroke="black" points="615,-325.5 615,-382.5 745,-382.5 745,-325.5 615,-325.5"/>
+<text text-anchor="middle" x="680" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; output_model()&gt;</text>
+<polyline fill="none" stroke="black" points="615,-363.5 745,-363.5 "/>
+<text text-anchor="middle" x="680" y="-351.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="615,-344.5 745,-344.5 "/>
+<text text-anchor="middle" x="680" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node7&#45;&gt;Node1 -->
-<g id="edge9" class="edge">
+<g id="edge6" class="edge">
 <title>Node7&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M721.21,-319.91C692.82,-301.82 656.19,-279.75 622,-263 538.04,-221.86 438.68,-184.32 365.32,-158.57"/>
-<polygon fill="none" stroke="#404040" points="365.11,-158.49 358.13,-160.29 353.78,-154.54 360.76,-152.74 365.11,-158.49"/>
-<text text-anchor="middle" x="721" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +noise_process_q</text>
+<path fill="none" stroke="#404040" d="M680,-325.32C680,-307.43 680,-282.7 680,-256.67"/>
+<polygon fill="none" stroke="#404040" points="680,-256.64 676,-250.64 680,-244.64 684,-250.64 680,-256.64"/>
+<text text-anchor="middle" x="737.5" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +transition_observation_h</text>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:title=" ">
-<polygon fill="white" stroke="black" points="869.5,-314.5 869.5,-393.5 1006.5,-393.5 1006.5,-314.5 869.5,-314.5"/>
-<text text-anchor="start" x="877.5" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; input_control</text>
-<text text-anchor="start" x="877.5" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">(const PredictionArguments</text>
-<text text-anchor="middle" x="938" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &amp;...)&gt;</text>
-<polyline fill="none" stroke="black" points="869.5,-352.5 1006.5,-352.5 "/>
-<text text-anchor="middle" x="938" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="869.5,-333.5 1006.5,-333.5 "/>
-<text text-anchor="middle" x="938" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="white" stroke="black" points="763.5,-325.5 763.5,-382.5 914.5,-382.5 914.5,-325.5 763.5,-325.5"/>
+<text text-anchor="middle" x="839" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; output_uncertainty()&gt;</text>
+<polyline fill="none" stroke="black" points="763.5,-363.5 914.5,-363.5 "/>
+<text text-anchor="middle" x="839" y="-351.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="763.5,-344.5 914.5,-344.5 "/>
+<text text-anchor="middle" x="839" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node8&#45;&gt;Node1 -->
-<g id="edge10" class="edge">
+<g id="edge7" class="edge">
 <title>Node8&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M872.17,-314.33C840.76,-296.99 802.21,-277.28 766,-263 631.52,-209.98 469.4,-169.1 365.54,-145.68"/>
-<polygon fill="none" stroke="#404040" points="365.51,-145.67 358.78,-148.26 353.8,-143.05 360.53,-140.46 365.51,-145.67"/>
-<text text-anchor="middle" x="880" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +transition_control_g</text>
+<path fill="none" stroke="#404040" d="M829.04,-325.18C821.91,-306.85 811.4,-282.67 799,-263 793.45,-254.19 787.38,-245.36 781.01,-236.65"/>
+<polygon fill="none" stroke="#404040" points="780.89,-236.49 774.09,-234.08 773.7,-226.88 780.5,-229.29 780.89,-236.49"/>
+<text text-anchor="middle" x="863" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +noise_observation_r</text>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:title=" ">
-<polygon fill="white" stroke="black" points="1025,-314.5 1025,-393.5 1133,-393.5 1133,-314.5 1025,-314.5"/>
-<text text-anchor="start" x="1033" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; state(const</text>
-<text text-anchor="start" x="1033" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00"> state &amp;, const state</text>
-<text text-anchor="middle" x="1079" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">_transition &amp;)&gt;</text>
-<polyline fill="none" stroke="black" points="1025,-352.5 1133,-352.5 "/>
-<text text-anchor="middle" x="1079" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
-<polyline fill="none" stroke="black" points="1025,-333.5 1133,-333.5 "/>
-<text text-anchor="middle" x="1079" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="white" stroke="black" points="932.5,-320 932.5,-388 1093.5,-388 1093.5,-320 932.5,-320"/>
+<text text-anchor="start" x="940.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; state_transition</text>
+<text text-anchor="middle" x="1013" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00">(const PredictionArguments &amp;...)&gt;</text>
+<polyline fill="none" stroke="black" points="932.5,-358 1093.5,-358 "/>
+<text text-anchor="middle" x="1013" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="932.5,-339 1093.5,-339 "/>
+<text text-anchor="middle" x="1013" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node1 -->
-<g id="edge11" class="edge">
+<g id="edge8" class="edge">
 <title>Node9&#45;&gt;Node1</title>
-<path fill="none" stroke="#404040" d="M1025.84,-314.46C998.65,-296.39 964.33,-276.03 931,-263 739.39,-188.09 500.51,-150.73 365.63,-134.37"/>
-<polygon fill="none" stroke="#404040" points="365.62,-134.37 359.19,-137.63 353.7,-132.95 360.13,-129.69 365.62,-134.37"/>
-<text text-anchor="middle" x="1026.5" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +predict_state</text>
+<path fill="none" stroke="#404040" d="M980.48,-319.95C962.08,-302.09 938.17,-280.23 915,-263 874.11,-232.6 826.17,-203.15 784.29,-179.21"/>
+<polygon fill="none" stroke="#404040" points="784.21,-179.17 777.02,-179.69 773.78,-173.25 780.97,-172.73 784.21,-179.17"/>
+<text text-anchor="middle" x="996" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +transition_state_f</text>
+</g>
+<!-- Node10 -->
+<g id="node10" class="node">
+<title>Node10</title>
+<g id="a_node10"><a xlink:title=" ">
+<polygon fill="white" stroke="black" points="1111.5,-320 1111.5,-388 1272.5,-388 1272.5,-320 1111.5,-320"/>
+<text text-anchor="start" x="1119.5" y="-376" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; process_uncertainty</text>
+<text text-anchor="middle" x="1192" y="-365" font-family="Helvetica,sans-Serif" font-size="10.00">(const PredictionArguments &amp;...)&gt;</text>
+<polyline fill="none" stroke="black" points="1111.5,-358 1272.5,-358 "/>
+<text text-anchor="middle" x="1192" y="-346" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1111.5,-339 1272.5,-339 "/>
+<text text-anchor="middle" x="1192" y="-327" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+</a>
+</g>
+</g>
+<!-- Node10&#45;&gt;Node1 -->
+<g id="edge9" class="edge">
+<title>Node10&#45;&gt;Node1</title>
+<path fill="none" stroke="#404040" d="M1141.85,-319.93C1113.26,-301.85 1076.39,-279.79 1042,-263 957.98,-221.98 858.63,-184.43 785.29,-158.64"/>
+<polygon fill="none" stroke="#404040" points="785.07,-158.57 778.09,-160.36 773.74,-154.61 780.73,-152.81 785.07,-158.57"/>
+<text text-anchor="middle" x="1142" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +noise_process_q</text>
+</g>
+<!-- Node11 -->
+<g id="node11" class="node">
+<title>Node11</title>
+<g id="a_node11"><a xlink:title=" ">
+<polygon fill="white" stroke="black" points="1290.5,-314.5 1290.5,-393.5 1427.5,-393.5 1427.5,-314.5 1290.5,-314.5"/>
+<text text-anchor="start" x="1298.5" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; input_control</text>
+<text text-anchor="start" x="1298.5" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00">(const PredictionArguments</text>
+<text text-anchor="middle" x="1359" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00"> &amp;...)&gt;</text>
+<polyline fill="none" stroke="black" points="1290.5,-352.5 1427.5,-352.5 "/>
+<text text-anchor="middle" x="1359" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1290.5,-333.5 1427.5,-333.5 "/>
+<text text-anchor="middle" x="1359" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+</a>
+</g>
+</g>
+<!-- Node11&#45;&gt;Node1 -->
+<g id="edge10" class="edge">
+<title>Node11&#45;&gt;Node1</title>
+<path fill="none" stroke="#404040" d="M1293.17,-314.32C1261.77,-296.98 1223.22,-277.27 1187,-263 1052.05,-209.84 889.33,-168.93 785.28,-145.54"/>
+<polygon fill="none" stroke="#404040" points="785.23,-145.53 778.5,-148.13 773.52,-142.92 780.25,-140.32 785.23,-145.53"/>
+<text text-anchor="middle" x="1301" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +transition_control_g</text>
+</g>
+<!-- Node12 -->
+<g id="node12" class="node">
+<title>Node12</title>
+<g id="a_node12"><a xlink:title=" ">
+<polygon fill="white" stroke="black" points="1446,-314.5 1446,-393.5 1554,-393.5 1554,-314.5 1446,-314.5"/>
+<text text-anchor="start" x="1454" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00">function&lt; state(const</text>
+<text text-anchor="start" x="1454" y="-370.5" font-family="Helvetica,sans-Serif" font-size="10.00"> state &amp;, const state</text>
+<text text-anchor="middle" x="1500" y="-359.5" font-family="Helvetica,sans-Serif" font-size="10.00">_transition &amp;)&gt;</text>
+<polyline fill="none" stroke="black" points="1446,-352.5 1554,-352.5 "/>
+<text text-anchor="middle" x="1500" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polyline fill="none" stroke="black" points="1446,-333.5 1554,-333.5 "/>
+<text text-anchor="middle" x="1500" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+</a>
+</g>
+</g>
+<!-- Node12&#45;&gt;Node1 -->
+<g id="edge11" class="edge">
+<title>Node12&#45;&gt;Node1</title>
+<path fill="none" stroke="#404040" d="M1446.85,-314.45C1419.65,-296.39 1385.33,-276.03 1352,-263 1159.97,-187.96 920.54,-150.63 785.5,-134.31"/>
+<polygon fill="none" stroke="#404040" points="785.48,-134.31 779.05,-137.57 773.56,-132.89 779.99,-129.63 785.48,-134.31"/>
+<text text-anchor="middle" x="1447.5" y="-277" font-family="Helvetica,sans-Serif" font-size="10.00"> +predict_state</text>
 </g>
 </g>
 </svg>

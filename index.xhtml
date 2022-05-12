@@ -123,9 +123,9 @@ One-Dimensional</h2>
 <div class="line"> </div>
 <div class="line">k(48.54);</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00103">kalman.hpp:104</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a44c7e9f1008c20710e3da602c65c89de"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a44c7e9f1008c20710e3da602c65c89de">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr estimate_uncertainty p() const</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00525">kalman.hpp:525</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a84905bab5a2b4ed397bf33425afb5cf6"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a84905bab5a2b4ed397bf33425afb5cf6">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr output_uncertainty r() const</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00578">kalman.hpp:578</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afde73aa8d6b0d8d7794ca7f0220526cd"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afde73aa8d6b0d8d7794ca7f0220526cd">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr state x() const</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00499">kalman.hpp:499</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a44c7e9f1008c20710e3da602c65c89de"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a44c7e9f1008c20710e3da602c65c89de">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr estimate_uncertainty p() const</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00519">kalman.hpp:519</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a84905bab5a2b4ed397bf33425afb5cf6"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a84905bab5a2b4ed397bf33425afb5cf6">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr output_uncertainty r() const</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00564">kalman.hpp:564</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afde73aa8d6b0d8d7794ca7f0220526cd"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afde73aa8d6b0d8d7794ca7f0220526cd">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr state x() const</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00497">kalman.hpp:497</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
 Multi-Dimensional</h2>
 <p >Two states, one control, using Eigen3 support.</p>
@@ -197,14 +197,13 @@ Motivation</h2>
 <h2><a class="anchor" id="autotoc_md19"></a>
 Class fcarouge::kalman</h2>
 <p >Defined in header <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a></p>
-<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keyword">typename</span> State = Type, <span class="keyword">typename</span> Output = State,</div>
-<div class="line">          <span class="keyword">typename</span> Input = State,</div>
-<div class="line">          <span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Transpose = internal::transpose,</div>
-<div class="line">          <span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Symmetrize = internal::symmetrize,</div>
-<div class="line">          <span class="keyword">template</span> &lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Divide = internal::divide,</div>
-<div class="line">          <span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">typename</span> Identity = internal::identity,</div>
-<div class="line">          <span class="keyword">typename</span>... PredictionArguments&gt;</div>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
+<div class="line">    <span class="keyword">typename</span> Type = <a class="code hl_class" href="classdouble.xhtml">double</a>, <span class="keyword">typename</span> State = Type, <span class="keyword">typename</span> Output = State,</div>
+<div class="line">    <span class="keyword">typename</span> Input = State, <span class="keyword">typename</span> Transpose = std::identity,</div>
+<div class="line">    <span class="keyword">typename</span> Symmetrize = std::identity, <span class="keyword">typename</span> Divide = std::divides&lt;void&gt;,</div>
+<div class="line">    <span class="keyword">typename</span> Identity = internal::identity, <span class="keyword">typename</span>... PredictionArguments&gt;</div>
 <div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">kalman</a></div>
+<div class="ttc" id="aclassdouble_xhtml"><div class="ttname"><a href="classdouble.xhtml">double</a></div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md20"></a>
 Template Parameters</h3>
 <table class="markdownTable">
@@ -323,7 +322,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed May 11 2022 04:40:06 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+    <li class="footer">Generated on Thu May 12 2022 05:00:19 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
   </ul>
 </div>
 </body>
