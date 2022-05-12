@@ -54,19 +54,20 @@ namespace fcarouge::eigen::internal
 //!
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
-//!
-//! @tparam Type The type template parameter of the matrix.
-template <typename Type> struct transpose {
+struct transpose {
   //! @brief Returns the transpose of `value`.
   //!
   //! @param value Value to compute the transpose of.
   //!
   //! @exception May throw implementation-defined exceptions.
-  [[nodiscard]] inline constexpr Eigen::Matrix<
-      typename Type::Scalar, Type::ColsAtCompileTime, Type::RowsAtCompileTime>
-  operator()(const Type &value) const
+  [[nodiscard]] inline constexpr auto operator()(const auto &value) const
   {
-    return value.transpose();
+    using type = std::decay_t<decltype(value)>;
+    using result_type =
+        typename Eigen::Matrix<typename type::Scalar, type::ColsAtCompileTime,
+                               type::RowsAtCompileTime>;
+
+    return result_type{ value.transpose() };
   }
 };
 
@@ -74,20 +75,17 @@ template <typename Type> struct transpose {
 //!
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
-//!
-//! @tparam Type The type template parameter of the matrix.
-template <typename Type> struct symmetrize {
+struct symmetrize {
   //! @brief Returns the symmetrised `value`.
   //!
   //! @param value Value to compute the symmetry of.
   //!
   //! @exception May throw implementation-defined exceptions.
-  [[nodiscard]] inline constexpr Eigen::Matrix<
-      typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime>
-  operator()(const Type &value) const
+  [[nodiscard]] inline constexpr auto operator()(const auto &value) const
   {
-    const auto e{ value.eval() };
-    return (e + e.transpose()) / 2;
+    using result_type = std::decay_t<decltype(value)>;
+
+    return result_type{ (value + value.transpose()) / 2 };
   }
 };
 
@@ -98,12 +96,14 @@ template <typename Type> struct symmetrize {
 struct divide {
   //! @brief Returns the quotient of `numerator` and `denominator`.
   //!
-  //! @param numerator The dividend of the division.
-  //! @param denominator The divisor of the division.
+  //! @param numerator The dividend matrix of the division. N: m x n
+  //! @param denominator The divisor matrix of the division. D: o x n
+  //!
+  //! @return The quotien matrix. Q: m x o
   //!
   //! @exception May throw implementation-defined exceptions.
   //!
-  //! @todo Why compilation fails if we specifcy the return type in the body of
+  //! @todo Why compilation fails if we specify the return type in the body of
   //! the function?
   [[nodiscard]] inline constexpr auto operator()(const auto &numerator,
                                                  const auto &denominator) const
@@ -124,19 +124,19 @@ struct divide {
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
 //!
-//! @tparam Type The type template parameter of the matrix.
-//!
-//! @note This function object template should be a variable template. Proposed
-//! in paper P2008R0 entitled "Enabling variable template template parameters".
-template <typename Type> struct identity {
+//! @note Could this function object template be replaced by a variable
+//! template? Proposed in paper P2008R0 entitled "Enabling variable template
+//! template parameters".
+struct identity {
   //! @brief Returns the identity maxtrix.
+  //!
+  //! @tparam Type The type template parameter of the matrix.
   //!
   //! @return The identity matrix `diag(1, 1, ..., 1)`.
   //!
   //! @exception May throw implementation-defined exceptions.
-  [[nodiscard]] inline constexpr Eigen::Matrix<
-      typename Type::Scalar, Type::RowsAtCompileTime, Type::ColsAtCompileTime>
-  operator()() const
+  template <typename Type>
+  [[nodiscard]] inline constexpr auto operator()() const
   {
     return Type::Identity();
   }

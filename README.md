@@ -127,13 +127,11 @@ This package explores what could be a Kalman filter implementation a la standard
 Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
 
 ```cpp
-template <typename Type, typename State = Type, typename Output = State,
-          typename Input = State,
-          template <typename> typename Transpose = internal::transpose,
-          template <typename> typename Symmetrize = internal::symmetrize,
-          template <typename, typename> typename Divide = internal::divide,
-          template <typename> typename Identity = internal::identity,
-          typename... PredictionArguments>
+template <
+    typename Type = double, typename State = Type, typename Output = State,
+    typename Input = State, typename Transpose = std::identity,
+    typename Symmetrize = std::identity, typename Divide = std::divides<void>,
+    typename Identity = internal::identity, typename... PredictionArguments>
 class kalman
 ```
 
