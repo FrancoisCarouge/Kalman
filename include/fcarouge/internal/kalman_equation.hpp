@@ -64,42 +64,35 @@ extrapolate_state(const auto &x, const auto &ff, const auto &f)
   return state{ ff(x, f) };
 }
 
-template <template <typename> class Transpose>
+template <typename Transpose>
 [[nodiscard]] inline constexpr auto
 extrapolate_covariance(const auto &p, const auto &f, const auto &q)
 {
   using estimate_uncertainty = std::decay_t<decltype(p)>;
-  using state_transition = std::decay_t<decltype(f)>;
 
-  Transpose<state_transition> transpose;
+  Transpose transpose;
 
   return estimate_uncertainty{ f * p * transpose(f) + q };
 }
 
-template <template <typename> typename Transpose,
-          template <typename> typename Symmetrize>
+template <typename Transpose, typename Symmetrize>
 inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
                               const auto &q)
 {
   x = extrapolate_state(x, ff, f);
 
-  using estimate_uncertainty = std::decay_t<decltype(p)>;
-
-  Symmetrize<estimate_uncertainty> symmetrize;
+  Symmetrize symmetrize;
 
   p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
 }
 
-template <template <typename> typename Transpose,
-          template <typename> typename Symmetrize>
+template <typename Transpose, typename Symmetrize>
 inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
                               const auto &q, const auto &g, const auto &u)
 {
   x = extrapolate_state(x, ff, f, g, u);
 
-  using estimate_uncertainty = std::decay_t<decltype(p)>;
-
-  Symmetrize<estimate_uncertainty> symmetrize;
+  Symmetrize symmetrize;
 
   p = symmetrize(extrapolate_covariance<Transpose>(p, f, q));
 }
@@ -112,36 +105,34 @@ inline constexpr void predict(auto &x, auto &p, const auto &ff, const auto &f,
   return state{ x + k * y };
 }
 
-template <template <typename> typename Transpose,
-          template <typename> typename Identity>
+template <typename Transpose, typename Identity>
 [[nodiscard]] inline constexpr auto
 update_covariance(const auto &p, const auto &k, const auto &h, const auto &r)
 {
   using estimate_uncertainty = std::decay_t<decltype(p)>;
-  using gain = std::decay_t<decltype(k)>;
 
-  Transpose<estimate_uncertainty> transpose_p;
-  Transpose<gain> transpose_k;
-  Identity<estimate_uncertainty> i;
+  Transpose transpose;
+  Identity identity;
+  const auto i{ identity.template operator()<estimate_uncertainty>() };
 
-  return estimate_uncertainty{ (i() - k * h) * p * transpose_p(i() - k * h) +
-                               k * r * transpose_k(k) };
+  return estimate_uncertainty{ (i - k * h) * p * transpose(i - k * h) +
+                               k * r * transpose(k) };
 }
 
-template <template <typename> typename Transpose, typename Divide>
+template <typename Transpose, typename Divide>
 [[nodiscard]] inline constexpr auto weight_gain(const auto &p, const auto &h,
                                                 const auto &r)
 {
   using observation = std::decay_t<decltype(h)>;
-  using gain = std::invoke_result_t<Transpose<observation>, observation>;
+  using gain = std::invoke_result_t<Transpose, observation>;
   using innovation_uncertainty = std::decay_t<decltype(r)>;
 
-  Transpose<observation> transpose_h;
+  Transpose transpose;
   Divide divides;
 
-  const innovation_uncertainty s{ h * p * transpose_h(h) + r };
+  const innovation_uncertainty s{ h * p * transpose(h) + r };
 
-  return gain{ divides(p * transpose_h(h), s) };
+  return gain{ divides(p * transpose(h), s) };
 }
 
 [[nodiscard]] inline constexpr auto innovate(const auto &x, const auto &z,
@@ -153,9 +144,8 @@ template <template <typename> typename Transpose, typename Divide>
 }
 
 //! @todo Do we want to allow the client to view the gain k? And the residual y?
-template <template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity>
+template <typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity>
 inline constexpr void update(auto &x, auto &p, const auto &h, const auto &r,
                              const auto &z)
 {
@@ -165,9 +155,7 @@ inline constexpr void update(auto &x, auto &p, const auto &h, const auto &r,
 
   x = update_state(x, k, y);
 
-  using estimate_uncertainty = std::decay_t<decltype(p)>;
-
-  Symmetrize<estimate_uncertainty> symmetrize;
+  Symmetrize symmetrize;
 
   p = symmetrize(update_covariance<Transpose, Identity>(p, k, h, r));
 }

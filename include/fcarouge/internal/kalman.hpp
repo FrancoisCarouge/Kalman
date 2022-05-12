@@ -50,11 +50,8 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::internal
 {
-template <typename State, typename Output = State, typename Input = State,
-          template <typename> typename Transpose = transpose,
-          template <typename> typename Symmetrize = symmetrize,
-          typename Divide = std::divides<void>,
-          template <typename> typename Identity = identity,
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
           typename... PredictionArguments>
 struct kalman {
   //! @name Public Member Types
@@ -103,18 +100,23 @@ struct kalman {
   //! @{
 
   //! @brief The state estimate vector x.
-  state x{ 0 * Identity<state>()() };
+  state x{ 0 * Identity().template operator()<state>() };
 
   //! @brief The estimate uncertainty, covariance matrix P.
   //!
   //! @details The estimate uncertainty, covariance is also known as Σ.
-  estimate_uncertainty p{ Identity<estimate_uncertainty>()() };
+  estimate_uncertainty p{
+    Identity().template operator()<estimate_uncertainty>()
+  };
 
-  process_uncertainty q{ 0 * Identity<process_uncertainty>()() };
-  output_uncertainty r{ 0 * Identity<output_uncertainty>()() };
-  output_model h{ Identity<output_model>()() };
-  state_transition f{ Identity<state_transition>()() };
-  input_control g{ Identity<input_control>()() };
+  process_uncertainty q{
+    0 * Identity().template operator()<process_uncertainty>()
+  };
+  output_uncertainty r{ 0 *
+                        Identity().template operator()<output_uncertainty>() };
+  output_model h{ Identity().template operator()<output_model>() };
+  state_transition f{ Identity().template operator()<state_transition>() };
+  input_control g{ Identity().template operator()<input_control>() };
 
   //! @}
 

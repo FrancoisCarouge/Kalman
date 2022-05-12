@@ -64,14 +64,14 @@ namespace fcarouge
 //! is the the mean of the multivariate Gaussian.
 //! @tparam Output The type template parameter of the measurement vector z.
 //! @tparam Input The type template parameter of the control u.
-//! @tparam Transpose The template template parameter of the matrix transpose
-//! functor.
-//! @tparam Symmetrize The template template parameter of the matrix
-//! symmetrization functor.
+//! @tparam Transpose The customization point object template parameter of the
+//! matrix transpose functor.
+//! @tparam Symmetrize The customization point object template parameter of the
+//! matrix symmetrization functor.
 //! @tparam Divide The customization point object template parameter of the
 //! matrix division functor.
-//! @tparam Identity The template template parameter of the matrix identity
-//! functor.
+//! @tparam Identity The customization point object template parameter of the
+//! matrix identity functor.
 //! @tparam PredictionArguments The variadic type template parameter for
 //! additional prediction function parameters. Time, or a delta thereof, is
 //! often a prediction parameter. The parameters are propagated to the function
@@ -93,13 +93,13 @@ namespace fcarouge
 //! @todo Symmetrization support might be superflous. How to confirm it is safe
 //! to remove?
 //! @todo Would we want to support smoothers?
-template <typename Type = double, typename State = Type,
-          typename Output = State, typename Input = State,
-          template <typename> typename Transpose = internal::transpose,
-          template <typename> typename Symmetrize = internal::symmetrize,
-          typename Divide = std::divides<void>,
-          template <typename> typename Identity = internal::identity,
-          typename... PredictionArguments>
+//! @todo How to add or associate constraints on the types and operation to
+//! support compilation and semantics?
+template <
+    typename Type = double, typename State = Type, typename Output = State,
+    typename Input = State, typename Transpose = std::identity,
+    typename Symmetrize = std::identity, typename Divide = std::divides<void>,
+    typename Identity = internal::identity, typename... PredictionArguments>
 class kalman
 {
   private:
@@ -488,10 +488,8 @@ class kalman
 };
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr
     typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::state
@@ -502,10 +500,8 @@ inline constexpr
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::x(const auto &value, const auto &...values)
@@ -514,10 +510,8 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr
     typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::estimate_uncertainty
@@ -528,10 +522,8 @@ inline constexpr
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::p(const auto &value, const auto &...values)
@@ -540,10 +532,8 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr
     typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::process_uncertainty
@@ -555,10 +545,8 @@ inline constexpr
 
 //! @todo Don't we need to reset functions or values when the other is set?
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::q(const auto &value, const auto &...values)
@@ -567,10 +555,8 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr
     typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::output_uncertainty
@@ -581,10 +567,8 @@ inline constexpr
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::r(const auto &value, const auto &...values)
@@ -593,10 +577,8 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr
     typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::state_transition
@@ -607,10 +589,8 @@ inline constexpr
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::f(const auto &value, const auto &...values)
@@ -619,10 +599,8 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr
     typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::output_model
@@ -633,10 +611,8 @@ inline constexpr
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::h(const auto &value, const auto &...values)
@@ -645,10 +621,8 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr
     typename kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                     Identity, PredictionArguments...>::input_control
@@ -659,10 +633,8 @@ inline constexpr
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::g(const auto &value, const auto &...values)
@@ -671,10 +643,8 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::update(const auto &...output_z)
@@ -683,10 +653,8 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 }
 
 template <typename Type, typename State, typename Output, typename Input,
-          template <typename> typename Transpose,
-          template <typename> typename Symmetrize, typename Divide,
-          template <typename> typename Identity,
-          typename... PredictionArguments>
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        PredictionArguments...>::predict(const PredictionArguments &...arguments,
