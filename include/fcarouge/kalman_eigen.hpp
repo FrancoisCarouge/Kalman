@@ -47,6 +47,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <Eigen/Eigen>
 
+#include <cstddef>
+#include <functional>
+
 namespace fcarouge::eigen
 {
 //! @brief Eigen-based Kalman filter.
@@ -62,12 +65,14 @@ namespace fcarouge::eigen
 //! @tparam PredictionArguments The variadic type template parameter for
 //! additional prediction function parameters. Time, or a delta thereof, is
 //! often a prediction parameter.
-template <typename Type, int State, int Output, int Input,
-          typename... PredictionArguments>
-using kalman = fcarouge::kalman<
-    Type, Eigen::Vector<Type, State>, Eigen::Vector<Type, Output>,
-    Eigen::Vector<Type, Input>, internal::transpose, internal::symmetrize,
-    internal::divide, internal::identity, PredictionArguments...>;
+template <typename Type, std::size_t State, std::size_t Output,
+          std::size_t Input, typename... PredictionArguments>
+using kalman =
+    fcarouge::kalman<Type, Eigen::Vector<Type, State>,
+                     Eigen::Vector<Type, Output>, Eigen::Vector<Type, Input>,
+                     internal::transpose, internal::symmetrize,
+                     internal::divide, internal::identity,
+                     std::multiplies<void>, PredictionArguments...>;
 
 } // namespace fcarouge::eigen
 

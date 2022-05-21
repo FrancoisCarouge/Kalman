@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::internal
 {
-//! @brief Function object for providing an identy matrix.
+//! @brief Function object for providing an identity matrix.
 //!
 //! @note This function object template should be a variable template. Proposed
 //! in paper P2008R0 entitled "Enabling variable template template parameters".
@@ -55,9 +55,9 @@ struct identity {
   //!
   //! @return The identity matrix `diag(1, 1, ..., 1)`.
   template <typename Type>
-  [[nodiscard]] inline constexpr Type operator()() const noexcept
+  [[nodiscard]] inline constexpr auto operator()() const noexcept
   {
-    return 1;
+    return Type{ 1 };
   }
 };
 
