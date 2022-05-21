@@ -1,4 +1,4 @@
-# Doxyfile 1.9.3
+# Doxyfile 1.9.5
 
 #---------------------------------------------------------------------------
 # Project related configuration options
@@ -10,6 +10,7 @@ PROJECT_BRIEF          = "Kalman Filter for C++"
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = documentation
 CREATE_SUBDIRS         = NO
+CREATE_SUBDIRS_LEVEL   = 8
 ALLOW_UNICODE_NAMES    = NO
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
@@ -117,6 +118,7 @@ WARN_IF_INCOMPLETE_DOC = YES
 WARN_NO_PARAMDOC       = YES
 WARN_AS_ERROR          = NO
 WARN_FORMAT            = "$file:$line: $text"
+WARN_LINE_FORMAT       = "at line $line of file $file"
 WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
@@ -196,6 +198,10 @@ REFERENCES_LINK_SOURCE = YES
 SOURCE_TOOLTIPS        = YES
 USE_HTAGS              = NO
 VERBATIM_HEADERS       = YES
+CLANG_ASSISTED_PARSING = NO
+CLANG_ADD_INC_PATHS    = YES
+CLANG_OPTIONS          =
+CLANG_DATABASE_PATH    =
 #---------------------------------------------------------------------------
 # Configuration options related to the alphabetical class index
 #---------------------------------------------------------------------------
@@ -248,6 +254,7 @@ FULL_SIDEBAR           = NO
 ENUM_VALUES_PER_LINE   = 4
 TREEVIEW_WIDTH         = 200
 EXT_LINKS_IN_WINDOW    = NO
+OBFUSCATE_EMAILS       = YES
 HTML_FORMULA_FORMAT    = png
 FORMULA_FONTSIZE       = 10
 FORMULA_TRANSPARENT    = YES
