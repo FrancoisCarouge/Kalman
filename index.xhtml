@@ -90,9 +90,9 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 <h1><a class="anchor" id="autotoc_md13"></a>
 Continuous Integration &amp; Deployment Actions</h1>
 <p ><a href="https://github.com/FrancoisCarouge/Kalman"><img src="https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen" alt="Code Repository" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_gcc-trunk.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_gcc-trunk.yml/badge.svg" alt="Test: Ubuntu 20.04 GCC Trunk" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_gcc-trunk.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_gcc-trunk.yml/badge.svg" alt="Test: Ubuntu 22.04 GCC Trunk" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml/badge.svg" alt="Test: Windows 2019 MSVC" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_clang-trunk.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_clang-trunk.yml/badge.svg" alt="Test: Ubuntu 20.04 Clang Trunk" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_clang-trunk.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_clang-trunk.yml/badge.svg" alt="Test: Ubuntu 22.04 Clang Trunk" style="pointer-events: none;" class="inline"/></a> <br  />
  <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg" alt="Test Undefined Behavior: Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml/badge.svg" alt="Test Thread: Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
@@ -201,7 +201,8 @@ Class fcarouge::kalman</h2>
 <div class="line">    <span class="keyword">typename</span> Type = double, <span class="keyword">typename</span> State = Type, <span class="keyword">typename</span> Output = State,</div>
 <div class="line">    <span class="keyword">typename</span> Input = State, <span class="keyword">typename</span> Transpose = std::identity,</div>
 <div class="line">    <span class="keyword">typename</span> Symmetrize = std::identity, <span class="keyword">typename</span> Divide = std::divides&lt;void&gt;,</div>
-<div class="line">    <span class="keyword">typename</span> Identity = internal::identity, <span class="keyword">typename</span>... PredictionArguments&gt;</div>
+<div class="line">    <span class="keyword">typename</span> Identity = internal::identity,</div>
+<div class="line">    <span class="keyword">typename</span> Multiply = std::multiplies&lt;void&gt;, <span class="keyword">typename</span>... PredictionArguments&gt;</div>
 <div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">kalman</a></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md20"></a>
 Template Parameters</h3>
@@ -217,14 +218,16 @@ Template Parameters</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>Input</code>   </td><td class="markdownTableBodyNone">The type template parameter of the control u.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>Transpose</code>   </td><td class="markdownTableBodyNone">The template template parameter of the matrix transpose functor.    </td></tr>
+<td class="markdownTableBodyNone"><code>Transpose</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix transpose functor.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>Symmetrize</code>   </td><td class="markdownTableBodyNone">The template template parameter of the matrix symmetrization functor.    </td></tr>
+<td class="markdownTableBodyNone"><code>Symmetrize</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix symmetrization functor.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>Divide</code>   </td><td class="markdownTableBodyNone">The template template parameter of the matrix division functor.    </td></tr>
+<td class="markdownTableBodyNone"><code>Divide</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix division functor.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>Identity</code>   </td><td class="markdownTableBodyNone">The template template parameter of the matrix identity functor.    </td></tr>
+<td class="markdownTableBodyNone"><code>Identity</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix identity functor.    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Multiply</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix multiplication functor.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>PredictionArguments...</code>   </td><td class="markdownTableBodyNone">The variadic type template parameter for additional prediction function parameters. Time, or a delta thereof, is often a prediction parameter. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices.   </td></tr>
 </table>
 <h3><a class="anchor" id="autotoc_md21"></a>
@@ -305,6 +308,7 @@ Resources</h1>
 <ul>
 <li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
 <li><a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters in Python</a> by Roger Labbe.</li>
+<li><a href="https://www.anuncommonlab.com/articles/how-kalman-filters-work">How Kalman Filters Work</a> by Tucker McClure of An Uncommon Lab.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md26"></a>
 License</h1>
@@ -321,7 +325,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat May 21 2022 21:15:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat May 21 2022 21:29:27 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
