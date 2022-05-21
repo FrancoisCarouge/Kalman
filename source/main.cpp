@@ -40,7 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details A valid and empty point of entry is provided to support the tests
 //! and samples. Not further code necessary.
-int main(int, char **)
+auto main() -> int
 {
   return 0;
 }

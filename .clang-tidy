@@ -1,7 +1,11 @@
 Checks: '*,
-        -fuchsia-overloaded-operator,
-        -misc-non-private-member-variables-in-classes,
-        -llvmlibc-*,
-        -modernize-use-trailing-return-type,
         -altera-struct-pack-align,
-        -fuchsia-trailing-return'
+        -fuchsia-overloaded-operator,
+        -fuchsia-trailing-return,
+        -llvmlibc-implementation-in-namespace,
+        -llvmlibc-restrict-system-libc-headers,
+        -portability-simd-intrinsics'
+
+CheckOptions:
+  - key: misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
+    value: 1

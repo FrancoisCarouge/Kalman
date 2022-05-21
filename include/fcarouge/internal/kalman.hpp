@@ -42,9 +42,6 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief The main Kalman filter class.
 
-#include "kalman_equation.hpp"
-#include "kalman_operator.hpp"
-
 #include <functional>
 #include <type_traits>
 
@@ -52,7 +49,7 @@ namespace fcarouge::internal
 {
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
-          typename... PredictionArguments>
+          typename Multiply, typename... PredictionArguments>
 struct kalman {
   //! @name Public Member Types
   //! @{
@@ -94,12 +91,18 @@ struct kalman {
   //! @details Also known as B.
   using input_control = std::invoke_result_t<Divide, State, Input>;
 
+  using innovation = output;
+  using innovation_uncertainty = output_uncertainty;
+  using gain = std::invoke_result_t<Transpose, output_model>;
+
   //! @}
 
   //! @name Public Member Variables
   //! @{
 
   //! @brief The state estimate vector x.
+  //!
+  //! @todo Is there a simpler, more portable way to get a zero initialization?
   state x{ 0 * Identity().template operator()<state>() };
 
   //! @brief The estimate uncertainty, covariance matrix P.
@@ -167,38 +170,64 @@ struct kalman {
   //! @details
   // Add prediction arguments?
   std::function<state(const state &, const state_transition &)> predict_state =
-      [](const state &x, const state_transition &f) { return state{ f * x }; };
+      [this](const state &x, const state_transition &f) {
+        return state{ multiply(f, x) };
+      };
+
+  Transpose transpose;
+  Divide divide;
+  Symmetrize symmetrize;
+  Identity identity;
+  Multiply multiply;
 
   //! @}
 
   //! @name Public Member Functions
   //! @{
 
+  //! @todo Do we want to allow the client to view the gain k? And the residual
+  //! y?
+  //! @todo Do we want to store i - k * h in a temporary result for reuse?
   inline constexpr void update(const auto &...output_z)
   {
+    const auto z{ output{ output_z... } };
+
     h = transition_observation_h();
     r = noise_observation_r();
-    const auto z{ output{ output_z... } };
-    internal::update<Transpose, Symmetrize, Divide, Identity>(x, p, h, r, z);
+
+    const innovation_uncertainty s{ h * p * transpose(h) + r };
+    const gain k{ divide(p * transpose(h), s) };
+    const innovation y{ z - h * x };
+    const auto i{ identity.template operator()<estimate_uncertainty>() };
+
+    x = state{ x + k * y };
+    p = symmetrize(estimate_uncertainty{
+        (i - k * h) * p * transpose(i - k * h) + k * r * transpose(k) });
   }
 
   inline constexpr void predict(const PredictionArguments &...arguments,
                                 const auto &...input_u)
   {
     const auto ff{ predict_state };
+    const auto u{ input{ input_u... } };
+
     f = transition_state_f(arguments...);
     q = noise_process_q(arguments...);
     g = transition_control_g(arguments...);
-    const auto u{ input{ input_u... } };
-    internal::predict<Transpose, Symmetrize>(x, p, ff, f, q, g, u);
+
+    x = state{ ff(x, f) + g * u };
+    p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
   inline constexpr void predict(const PredictionArguments &...arguments)
   {
     const auto ff{ predict_state };
+
     f = transition_state_f(arguments...);
     q = noise_process_q(arguments...);
-    internal::predict<Transpose, Symmetrize>(x, p, ff, f, q);
+
+    x = state{ ff(x, f) };
+    p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
   //! @}
