@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1internal_1_1identity
 </div><!--header-->
 <div class="contents">
 
-<p>Function object for providing an identy matrix.  
+<p>Function object for providing an identity matrix.  
  <a href="structfcarouge_1_1internal_1_1identity.xhtml#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>&gt;</code></p>
@@ -105,19 +105,19 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1internal_1_1identity
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8ace533bdc236a7f49553653b5616898"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a8ace533bdc236a7f49553653b5616898"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1internal_1_1identity.xhtml#a8ace533bdc236a7f49553653b5616898">operator()</a> () const noexcept</td></tr>
-<tr class="memdesc:a8ace533bdc236a7f49553653b5616898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the identity maxtrix.  <a href="structfcarouge_1_1internal_1_1identity.xhtml#a8ace533bdc236a7f49553653b5616898">More...</a><br /></td></tr>
-<tr class="separator:a8ace533bdc236a7f49553653b5616898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0674b549bf7dc792a007afeebc44602e"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a0674b549bf7dc792a007afeebc44602e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1internal_1_1identity.xhtml#a0674b549bf7dc792a007afeebc44602e">operator()</a> () const noexcept</td></tr>
+<tr class="memdesc:a0674b549bf7dc792a007afeebc44602e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the identity maxtrix.  <a href="structfcarouge_1_1internal_1_1identity.xhtml#a0674b549bf7dc792a007afeebc44602e">More...</a><br /></td></tr>
+<tr class="separator:a0674b549bf7dc792a007afeebc44602e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Function object for providing an identy matrix. </p>
+<div class="textblock"><p >Function object for providing an identity matrix. </p>
 <dl class="section note"><dt>Note</dt><dd>This function object template should be a variable template. Proposed in paper P2008R0 entitled "Enabling variable template template parameters". </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00051">51</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8ace533bdc236a7f49553653b5616898" name="a8ace533bdc236a7f49553653b5616898"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ace533bdc236a7f49553653b5616898">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a0674b549bf7dc792a007afeebc44602e" name="a0674b549bf7dc792a007afeebc44602e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0674b549bf7dc792a007afeebc44602e">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -128,7 +128,7 @@ template&lt;typename Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr Type fcarouge::internal::identity::operator() </td>
+          <td class="memname">constexpr auto fcarouge::internal::identity::operator() </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -152,7 +152,7 @@ template&lt;typename Type &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="kalman__operator_8hpp_source.xhtml#l00058">58</a> of file <a class="el" href="kalman__operator_8hpp_source.xhtml">kalman_operator.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> Type{ 1 };</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  }</div>
 </div><!-- fragment -->
 </div>
@@ -166,7 +166,7 @@ template&lt;typename Type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1internal_1_1identity.xhtml">identity</a></li>
-    <li class="footer">Generated on Sat May 21 2022 20:35:04 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat May 21 2022 21:08:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

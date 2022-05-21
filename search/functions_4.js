@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['h_0',['h',['../classfcarouge_1_1kalman.xhtml#a25b78a2bba5233d0a62c7f0fcc86fc65',1,'fcarouge::kalman::h() const'],['../classfcarouge_1_1kalman.xhtml#a8dcf68b4aaae3099c50a0ed20008a9fe',1,'fcarouge::kalman::h(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1kalman.xhtml#a82e43f5836c311939b62dc07ec508922',1,'fcarouge::kalman::h(const auto &amp;value)']]]
+  ['kalman_0',['kalman',['../classfcarouge_1_1kalman.xhtml#aa0585267361f92194703d2e427c360e2',1,'fcarouge::kalman::kalman()=default'],['../classfcarouge_1_1kalman.xhtml#afe9448cabe1bb04cbb4393f1c7fc5e90',1,'fcarouge::kalman::kalman(const kalman &amp;other)=default'],['../classfcarouge_1_1kalman.xhtml#a1ebd98e21b0bd4a652b9f9daf230cc27',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=default']]]
 ];

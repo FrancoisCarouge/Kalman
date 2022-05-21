@@ -133,19 +133,24 @@ $(document).ready(function(){initNavTree('kalman__eigen_8hpp_source.xhtml',''); 
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &lt;Eigen/Eigen&gt;</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, <span class="keywordtype">int</span> State, <span class="keywordtype">int</span> Output, <span class="keywordtype">int</span> Input,</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>          <span class="keyword">typename</span>... PredictionArguments&gt;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">   67</a></span><span class="keyword">using</span> <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    Type, Eigen::Vector&lt;Type, State&gt;, Eigen::Vector&lt;Type, Output&gt;,</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    Eigen::Vector&lt;Type, Input&gt;, <a class="code hl_struct" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">internal::transpose</a>, <a class="code hl_struct" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">internal::symmetrize</a>,</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_struct" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">internal::divide</a>, <a class="code hl_struct" href="structfcarouge_1_1eigen_1_1internal_1_1identity.xhtml">internal::identity</a>, PredictionArguments...&gt;;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>} <span class="comment">// namespace fcarouge::eigen</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_EIGEN_HPP</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00103">kalman.hpp:104</a></div></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, std::size_t State, std::size_t Output,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>          std::size_t Input, <span class="keyword">typename</span>... PredictionArguments&gt;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">   70</a></span><span class="keyword">using</span> <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> =</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;Type, Eigen::Vector&lt;Type, State&gt;</a>,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                     Eigen::Vector&lt;Type, Output&gt;, Eigen::Vector&lt;Type, Input&gt;,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                     <a class="code hl_struct" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">internal::transpose</a>, <a class="code hl_struct" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">internal::symmetrize</a>,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                     <a class="code hl_struct" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">internal::divide</a>, <a class="code hl_struct" href="structfcarouge_1_1eigen_1_1internal_1_1identity.xhtml">internal::identity</a>,</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                     std::multiplies&lt;void&gt;, PredictionArguments...&gt;;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>} <span class="comment">// namespace fcarouge::eigen</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_EIGEN_HPP</span></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00109">kalman.hpp:110</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The main Kalman filter class.</div></div>
 <div class="ttc" id="akalman__eigen__operator_8hpp_xhtml"><div class="ttname"><a href="kalman__eigen__operator_8hpp.xhtml">kalman_eigen_operator.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen__operator_8hpp_source.xhtml#l00051">kalman_eigen_operator.hpp:52</a></div></div>
@@ -159,7 +164,7 @@ $(document).ready(function(){initNavTree('kalman__eigen_8hpp_source.xhtml',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman__eigen_8hpp.xhtml">kalman_eigen.hpp</a></li>
-    <li class="footer">Generated on Sat May 21 2022 20:35:04 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat May 21 2022 21:08:11 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

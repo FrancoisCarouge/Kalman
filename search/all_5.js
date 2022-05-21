@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['g_0',['g',['../structfcarouge_1_1internal_1_1kalman.xhtml#af67df6bd81ca269314ef740d50d33e5f',1,'fcarouge::internal::kalman::g()'],['../classfcarouge_1_1kalman.xhtml#a27702301dba82053c689228a7a9cb657',1,'fcarouge::kalman::g() const'],['../classfcarouge_1_1kalman.xhtml#aad8a339e49e1163b0b03c0636137cca2',1,'fcarouge::kalman::g(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1kalman.xhtml#a17efe5f15e78bbaefa30d5b5a1094b74',1,'fcarouge::kalman::g(const auto &amp;value)']]]
+  ['g_0',['g',['../structfcarouge_1_1internal_1_1kalman.xhtml#a12e1e8075e3ca561e0ed6533e7ad4c1f',1,'fcarouge::internal::kalman::g()'],['../classfcarouge_1_1kalman.xhtml#ad60d58ee912f8baa623447d130a752f8',1,'fcarouge::kalman::g() const -&gt; input_control'],['../classfcarouge_1_1kalman.xhtml#a060bf1f3a910607039f4dc3cec23ba5d',1,'fcarouge::kalman::g(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1kalman.xhtml#a4db75e1475259468891e752e5a1ec046',1,'fcarouge::kalman::g(const auto &amp;callable)']]],
+  ['gain_1',['gain',['../structfcarouge_1_1internal_1_1kalman.xhtml#a5334daa20c1a8926b9c7f3671ee4c1a7',1,'fcarouge::internal::kalman']]]
 ];

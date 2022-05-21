@@ -117,26 +117,26 @@ Examples</h1>
 One-Dimensional</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afde73aa8d6b0d8d7794ca7f0220526cd">x</a>(60.);</div>
-<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a44c7e9f1008c20710e3da602c65c89de">p</a>(225.);</div>
-<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a84905bab5a2b4ed397bf33425afb5cf6">r</a>(25.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a762f85a877b62537527b891be64c1c23">x</a>(60.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa60e811666598154854e614bc8f3eb10">p</a>(225.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afeda2584795f82214e84b49777a04261">r</a>(25.);</div>
 <div class="line"> </div>
 <div class="line">k(48.54);</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00103">kalman.hpp:104</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a44c7e9f1008c20710e3da602c65c89de"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a44c7e9f1008c20710e3da602c65c89de">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr estimate_uncertainty p() const</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00519">kalman.hpp:519</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a84905bab5a2b4ed397bf33425afb5cf6"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a84905bab5a2b4ed397bf33425afb5cf6">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr output_uncertainty r() const</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00564">kalman.hpp:564</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afde73aa8d6b0d8d7794ca7f0220526cd"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afde73aa8d6b0d8d7794ca7f0220526cd">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr state x() const</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00497">kalman.hpp:497</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00109">kalman.hpp:110</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a762f85a877b62537527b891be64c1c23"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a762f85a877b62537527b891be64c1c23">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; state</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00506">kalman.hpp:506</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa60e811666598154854e614bc8f3eb10"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa60e811666598154854e614bc8f3eb10">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; estimate_uncertainty</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00527">kalman.hpp:527</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afeda2584795f82214e84b49777a04261"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afeda2584795f82214e84b49777a04261">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; output_uncertainty</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00570">kalman.hpp:570</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
 Multi-Dimensional</h2>
 <p >Two states, one control, using Eigen3 support.</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">kalman</a> =</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">kalman</a> =</div>
 <div class="line">    <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1, std::chrono::milliseconds&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> gravitational_acceleration{ -9.8 }; <span class="comment">// m.s^-2</span></div>
 <div class="line"><span class="keyword">const</span> std::chrono::milliseconds delta_time{ 250 };</div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">kalman</a> k;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afde73aa8d6b0d8d7794ca7f0220526cd">x</a>(0, 0);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a762f85a877b62537527b891be64c1c23">x</a>(0, 0);</div>
 <div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } });</div>
 <div class="line">k.f([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
@@ -158,7 +158,7 @@ Multi-Dimensional</h2>
 <div class="line"> </div>
 <div class="line">k.predict(delta_time, gravitational_acceleration);</div>
 <div class="line">k.update(-32.40 );</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a0a4898a4d871508e1af8d35cab6ecb01"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, PredictionArguments... &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00067">kalman_eigen.hpp:70</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_af57be964591879e808a2567fe7d4e107"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, std::multiplies&lt; void &gt;, PredictionArguments... &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00070">kalman_eigen.hpp:75</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
 Library</h1>
 <ul>
@@ -202,7 +202,7 @@ Class fcarouge::kalman</h2>
 <div class="line">    <span class="keyword">typename</span> Input = State, <span class="keyword">typename</span> Transpose = std::identity,</div>
 <div class="line">    <span class="keyword">typename</span> Symmetrize = std::identity, <span class="keyword">typename</span> Divide = std::divides&lt;void&gt;,</div>
 <div class="line">    <span class="keyword">typename</span> Identity = internal::identity, <span class="keyword">typename</span>... PredictionArguments&gt;</div>
-<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">kalman</a></div>
+<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">kalman</a></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md20"></a>
 Template Parameters</h3>
 <table class="markdownTable">
@@ -321,7 +321,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat May 21 2022 20:35:04 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat May 21 2022 21:08:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
