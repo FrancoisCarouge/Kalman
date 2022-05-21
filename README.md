@@ -6,11 +6,11 @@ A generic Kalman filter.
 
 [![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
 <br>
-[![Test: Ubuntu 20.04 GCC Trunk](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_gcc-trunk.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_gcc-trunk.yml)
+[![Test: Ubuntu 22.04 GCC Trunk](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_gcc-trunk.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_gcc-trunk.yml)
 <br>
 [![Test: Windows 2019 MSVC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml)
 <br>
-[![Test: Ubuntu 20.04 Clang Trunk](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_clang-trunk.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_clang-trunk.yml)
+[![Test: Ubuntu 22.04 Clang Trunk](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_clang-trunk.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-20-04_clang-trunk.yml)
 <br>
 <br>
 [![Test Undefined Behavior: Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml)
@@ -131,7 +131,8 @@ template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
     typename Symmetrize = std::identity, typename Divide = std::divides<void>,
-    typename Identity = internal::identity, typename... PredictionArguments>
+    typename Identity = internal::identity,
+    typename Multiply = std::multiplies<void>, typename... PredictionArguments>
 class kalman
 ```
 
@@ -143,10 +144,11 @@ class kalman
 | `State` | The type template parameter of the state vector x. State variables can be observed (measured), or hidden variables (infeered). This is the the mean of the multivariate Gaussian. |
 | `Output` | The type template parameter of the measurement vector z. |
 | `Input` | The type template parameter of the control u. |
-| `Transpose` | The template template parameter of the matrix transpose functor. |
-| `Symmetrize` | The template template parameter of the matrix symmetrization functor. |
-| `Divide` | The template template parameter of the matrix division functor. |
-| `Identity` | The template template parameter of the matrix identity functor. |
+| `Transpose` | The customization point object template parameter of the matrix transpose functor. |
+| `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. |
+| `Divide` | The customization point object template parameter of the matrix division functor. |
+| `Identity` | The customization point object template parameter of the matrix identity functor. |
+| `Multiply` | The customization point object template parameter of the matrix multiplication functor. |
 | `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Time, or a delta thereof, is often a prediction parameter. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. |
 
 ### Member Types
@@ -199,6 +201,7 @@ Awesome resources to learn about Kalman filters:
 
 - [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
 - [Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) by Roger Labbe.
+- [How Kalman Filters Work](https://www.anuncommonlab.com/articles/how-kalman-filters-work) by Tucker McClure of An Uncommon Lab.
 
 # License
 
