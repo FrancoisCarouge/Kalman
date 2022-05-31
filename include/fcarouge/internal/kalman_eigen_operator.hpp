@@ -119,7 +119,7 @@ struct divide {
   }
 };
 
-//! @brief Function object for providing an Eigem identy matrix.
+//! @brief Function object for providing an Eigen identity matrix.
 //!
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
