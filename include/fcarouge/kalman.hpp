@@ -75,6 +75,8 @@ namespace fcarouge
 //! matrix division functor.
 //! @tparam Identity The customization point object template parameter of the
 //! matrix identity functor.
+//! @tparam Multiply The customization point object template parameter of the
+//! matrix multiplication functor.
 //! @tparam PredictionArguments The variadic type template parameter for
 //! additional prediction function parameters. Time, or a delta thereof, is
 //! often a prediction parameter. The parameters are propagated to the function
@@ -89,8 +91,6 @@ namespace fcarouge
 //! @todo Is this filter restricted to Newton's equations of motion? That is
 //! only a discretized continuous-time kinematic filter? How about non-Newtonian
 //! systems?
-//! @todo Would it be beneficial to support `Type` and `value_type` prior to the
-//! `State` type template parameter?
 //! @todo Would it be beneficial to support initialization list for
 //! characteristis?
 //! @todo Symmetrization support might be superflous. How to confirm it is safe
@@ -99,7 +99,11 @@ namespace fcarouge
 //! @todo How to add or associate constraints on the types and operation to
 //! support compilation and semantics?
 //! @todo Which constructors to support?
-//! @todo Is the Kalman filter a recursive state estimation?
+//! @todo Is the Kalman filter a recursive state estimation, confirm
+//! terminology?
+//! @todo Prepare support for std::format?
+//! @todo Support ranges operator filter?
+//! @todo Support mux pipes https://github.com/joboccara/pipes operator filter?
 template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
@@ -449,8 +453,8 @@ class kalman
                                    const auto &...input_u,
                                    const auto &...output_z)
   {
-    filter.predict(arguments..., input_u...);
     filter.update(output_z...);
+    filter.predict(arguments..., input_u...);
   }
 
   //! @brief Updates the estimates with the outcome of a measurement.
