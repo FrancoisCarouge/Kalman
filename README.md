@@ -61,38 +61,37 @@ k(48.54);
 
 ## Multi-Dimensional
 
-Two states, one control, using Eigen3 support.
+Six states, two measurements, no control, using Eigen3 support.
 
 ```cpp
-using kalman =
-    fcarouge::eigen::kalman<double, 2, 1, 1, std::chrono::milliseconds>;
+using kalman = fcarouge::eigen::kalman<double, 6, 2, 0>;
 
-const double gravitational_acceleration{ -9.8 }; // m.s^-2
-const std::chrono::milliseconds delta_time{ 250 };
 kalman k;
 
-k.x(0, 0);
-k.p(kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } });
-k.f([](const std::chrono::milliseconds &delta_time) {
-  const auto dt{ std::chrono::duration<double>(delta_time).count() };
-  return kalman::state_transition{ { 1, dt }, { 0, 1 } };
-});
-k.q([](const std::chrono::milliseconds &delta_time) {
-  const auto dt{ std::chrono::duration<double>(delta_time).count() };
-  return kalman::process_uncertainty{
-    { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },
-    { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }
-  };
-});
-k.g([](const std::chrono::milliseconds &delta_time) {
-  const auto dt{ std::chrono::duration<double>(delta_time).count() };
-  return kalman::input_control{ 0.0313, dt };
-});
-k.h(1, 0);
-k.r(400);
+k.x(0., 0., 0., 0., 0., 0.);
+k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },
+                                    { 0, 500, 0, 0, 0, 0 },
+                                    { 0, 0, 500, 0, 0, 0 },
+                                    { 0, 0, 0, 500, 0, 0 },
+                                    { 0, 0, 0, 0, 500, 0 },
+                                    { 0, 0, 0, 0, 0, 500 } });
+k.q(0.2 * 0.2 *
+      kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },
+                                   { 0.5, 1, 1, 0, 0, 0 },
+                                   { 0.5, 1, 1, 0, 0, 0 },
+                                   { 0, 0, 0, 0.25, 0.5, 0.5 },
+                                   { 0, 0, 0, 0.5, 1, 1 },
+                                   { 0, 0, 0, 0.5, 1, 1 } });
+  k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
+                                { 0, 1, 1, 0, 0, 0 },
+                                { 0, 0, 1, 0, 0, 0 },
+                                { 0, 0, 0, 1, 1, 0.5 },
+                                { 0, 0, 0, 0, 1, 1 },
+                                { 0, 0, 0, 0, 0, 1 } });
+  k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0 } });
+  k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });
 
-k.predict(delta_time, gravitational_acceleration);
-k.update(-32.40 );
+  k(-375.93, 301.78);
 ```
 
 # Library
