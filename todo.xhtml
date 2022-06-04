@@ -99,8 +99,6 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd"></p>
-<p class="interdd">Would it be beneficial to support <code>Type</code> and <code>value_type</code> prior to the <code>State</code> type template parameter? </p>
-<p class="interdd"></p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristis? </p>
 <p class="interdd"></p>
 <p class="interdd">Symmetrization support might be superflous. How to confirm it is safe to remove? </p>
@@ -111,7 +109,13 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="interdd"></p>
 <p class="interdd">Which constructors to support? </p>
 <p class="interdd"></p>
-<p class="enddd">Is the Kalman filter a recursive state estimation?  </p>
+<p class="interdd">Is the Kalman filter a recursive state estimation, confirm terminology? </p>
+<p class="interdd"></p>
+<p class="interdd">Prepare support for std::format? </p>
+<p class="interdd"></p>
+<p class="interdd">Support ranges operator filter? </p>
+<p class="interdd"></p>
+<p class="enddd">Support mux pipes <a href="https://github.com/joboccara/pipes">https://github.com/joboccara/pipes</a> operator filter?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a82be0bedc54ec91ad3e21de6f3039bc8">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::operator()</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u, const auto &amp;...output_z)</dt>
 <dd><a class="anchor" id="_todo000007"></a>Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </dd>
@@ -136,7 +140,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun May 22 2022 01:11:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Jun 4 2022 22:49:32 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
