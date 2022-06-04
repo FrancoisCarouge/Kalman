@@ -128,36 +128,35 @@ One-Dimensional</h2>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afeda2584795f82214e84b49777a04261"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afeda2584795f82214e84b49777a04261">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; output_uncertainty</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00574">kalman.hpp:574</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
 Multi-Dimensional</h2>
-<p >Two states, one control, using Eigen3 support.</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">kalman</a> =</div>
-<div class="line">    <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 2, 1, 1, std::chrono::milliseconds&gt;</a>;</div>
+<p >Six states, two measurements, no control, using Eigen3 support.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 6, 2, 0&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> gravitational_acceleration{ -9.8 }; <span class="comment">// m.s^-2</span></div>
-<div class="line"><span class="keyword">const</span> std::chrono::milliseconds delta_time{ 250 };</div>
 <div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a762f85a877b62537527b891be64c1c23">x</a>(0, 0);</div>
-<div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } });</div>
-<div class="line">k.f([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::state_transition{ { 1, dt }, { 0, 1 } };</div>
-<div class="line">});</div>
-<div class="line">k.q([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::process_uncertainty{</div>
-<div class="line">    { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },</div>
-<div class="line">    { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }</div>
-<div class="line">  };</div>
-<div class="line">});</div>
-<div class="line">k.g([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::input_control{ 0.0313, dt };</div>
-<div class="line">});</div>
-<div class="line">k.h(1, 0);</div>
-<div class="line">k.r(400);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a762f85a877b62537527b891be64c1c23">x</a>(0., 0., 0., 0., 0., 0.);</div>
+<div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
+<div class="line">                                    { 0, 500, 0, 0, 0, 0 },</div>
+<div class="line">                                    { 0, 0, 500, 0, 0, 0 },</div>
+<div class="line">                                    { 0, 0, 0, 500, 0, 0 },</div>
+<div class="line">                                    { 0, 0, 0, 0, 500, 0 },</div>
+<div class="line">                                    { 0, 0, 0, 0, 0, 500 } });</div>
+<div class="line">k.q(0.2 * 0.2 *</div>
+<div class="line">      kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },</div>
+<div class="line">                                   { 0.5, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                   { 0.5, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                   { 0, 0, 0, 0.25, 0.5, 0.5 },</div>
+<div class="line">                                   { 0, 0, 0, 0.5, 1, 1 },</div>
+<div class="line">                                   { 0, 0, 0, 0.5, 1, 1 } });</div>
+<div class="line">  k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },</div>
+<div class="line">                                { 0, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                { 0, 0, 1, 0, 0, 0 },</div>
+<div class="line">                                { 0, 0, 0, 1, 1, 0.5 },</div>
+<div class="line">                                { 0, 0, 0, 0, 1, 1 },</div>
+<div class="line">                                { 0, 0, 0, 0, 0, 1 } });</div>
+<div class="line">  k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0 } });</div>
+<div class="line">  k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
 <div class="line"> </div>
-<div class="line">k.predict(delta_time, gravitational_acceleration);</div>
-<div class="line">k.update(-32.40 );</div>
+<div class="line">  k(-375.93, 301.78);</div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_af57be964591879e808a2567fe7d4e107"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, std::multiplies&lt; void &gt;, PredictionArguments... &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00070">kalman_eigen.hpp:75</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
 Library</h1>
@@ -325,7 +324,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jun 4 2022 22:49:32 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Jun 4 2022 23:40:31 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
