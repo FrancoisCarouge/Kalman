@@ -48,7 +48,8 @@ namespace
 
   // Prediction
   // The process noise matrix Q would be:
-  k.q(kalman::process_uncertainty{ { 1, 0.5, 0.5, 0, 0, 0 },
+  k.q(0.2 * 0.2 *
+      kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },
                                    { 0.5, 1, 1, 0, 0, 0 },
                                    { 0.5, 1, 1, 0, 0, 0 },
                                    { 0, 0, 0, 0.25, 0.5, 0.5 },
@@ -84,10 +85,19 @@ namespace
 
   // The measurement values: z1 = [-393.66, 300.4]
   k.update(-393.66, 300.4);
+  k.predict();
 
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 1s (constant, built-in).
   k(-375.93, 301.78);
+
+  assert(-277.8 - 0.1 < k.x()(0) && k.x()(0) < -277.8 + 0.1 &&
+         148.3 - 0.1 < k.x()(1) && k.x()(1) < 148.3 + 0.1 &&
+         94.5 - 0.1 < k.x()(2) && k.x()(2) < 94.5 + 0.1 &&
+         249.8 - 0.1 < k.x()(3) && k.x()(3) < 249.8 + 0.1 &&
+         -85.9 - 0.1 < k.x()(4) && k.x()(4) < -85.9 + 0.1 &&
+         -63.6 - 0.1 < k.x()(5) && k.x()(5) < -63.6 + 0.1);
+
   k(-351.04, 295.1);
   k(-328.96, 305.19);
   k(-299.35, 301.06);
@@ -122,19 +132,21 @@ namespace
   k(291.8, 32.99);
   k(299.89, 2.14);
 
-  assert(5 - 0.0001 < k.p()(0, 0) && k.p()(0, 0) < 5 + 1.84 &&
-         5 - 0.0001 < k.p()(3, 3) && k.p()(3, 3) < 5 + 1.751 &&
+  assert(298.5 - 0.1 < k.x()(0) && k.x()(0) < 298.5 + 0.1 &&
+         -1.65 - 0.1 < k.x()(1) && k.x()(1) < -1.65 + 0.1 &&
+         -1.9 - 0.1 < k.x()(2) && k.x()(2) < -1.9 + 0.1 &&
+         -22.5 - 0.1 < k.x()(3) && k.x()(3) < -22.5 + 0.1 &&
+         -26.1 - 0.1 < k.x()(4) && k.x()(4) < -26.1 + 0.1 &&
+         -0.64 - 0.1 < k.x()(5) && k.x()(5) < -0.64 + 0.1);
+
+  assert(11.25 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 11.25 + 0.1 &&
+         4.5 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 4.5 + 0.1 &&
+         0.9 - 0.1 < k.p()(0, 2) && k.p()(0, 2) < 0.9 + 0.1 &&
+         2.4 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 2.4 + 0.1 &&
+         0.2 - 0.1 < k.p()(2, 2) && k.p()(2, 2) < 0.2 + 0.1 &&
+         11.25 - 0.1 < k.p()(3, 3) && k.p()(3, 3) < 11.25 + 0.1 &&
          "At this point, the position uncertainty px = py = 5, which means "
          "that the standard deviation of the prediction is square root of 5m.");
-
-  k.predict();
-
-  assert(298.5 - 1.7 < k.x()(0) && k.x()(0) < 298.5 + 0.0001 &&
-         -1.65 - 1 < k.x()(1) && k.x()(1) < -1.65 + 0.0001 &&
-         -1.9 - 0.3 < k.x()(2) && k.x()(2) < -1.9 + 0.0001 &&
-         -22.5 - 0.5 < k.x()(3) && k.x()(3) < -22.5 + 0.0001 &&
-         -26.1 - 1.5 < k.x()(4) && k.x()(4) < -26.1 + 0.0001 &&
-         -0.64 - 0.7 < k.x()(5) && k.x()(5) < -0.64 + 0.0001);
 
   // As you can see, the Kalman Filter tracks the vehicle quite well. However,
   // when the vehicle starts the turning maneuver, the estimates are not so

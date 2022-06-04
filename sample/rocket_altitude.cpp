@@ -86,9 +86,16 @@ namespace
 
   // We also don't know what the rocket acceleration is, but we can assume that
   // it's greater than zero. Let's assume: u0 = g
-  const double gravitational_acceleration{ -9.8 }; // m.s^-2
+  const double gravity{ -9.8 }; // [m.s^-2]
   const std::chrono::milliseconds delta_time{ 250 };
-  k.predict(delta_time, gravitational_acceleration);
+  k.predict(delta_time, -gravity);
+
+  assert(0.3 - 0.1 < k.x()(0) && k.x()(0) < 0.3 + 0.1 &&
+         2.45 - 0.1 < k.x()(1) && k.x()(1) < 2.45 + 0.1);
+  assert(531.25 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 531.25 + 0.1 &&
+         125 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 125 + 0.1 &&
+         125 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 125 + 0.1 &&
+         500 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 500 + 0.1);
 
   // Measure and Update
   // The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension
@@ -99,10 +106,25 @@ namespace
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
   k.r(400);
 
-  // The measurement values: z1 = -32.40, u1 = 39.72.
-  k.update(-32.40);
+  k.update(-32.4);
 
-  // And so on, run a step of the filter, predicting and updating, every
+  assert(-18.35 - 0.1 < k.x()(0) && k.x()(0) < -18.35 + 0.1 &&
+         -1.94 - 0.1 < k.x()(1) && k.x()(1) < -1.94 + 0.1);
+  assert(228.2 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 228.2 + 0.1 &&
+         53.7 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 53.7 + 0.1 &&
+         53.7 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 53.7 + 0.1 &&
+         483.2 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 483.2 + 0.1);
+
+  k.predict(delta_time, 39.72 + gravity);
+
+  assert(-17.9 - 0.1 < k.x()(0) && k.x()(0) < -17.9 + 0.1 &&
+         5.54 - 0.1 < k.x()(1) && k.x()(1) < 5.54 + 0.1);
+  assert(285.2 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 285.2 + 0.1 &&
+         174.5 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 174.5 + 0.1 &&
+         174.5 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 174.5 + 0.1 &&
+         483.2 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 483.2 + 0.1);
+
+  // And so on, run a step of the filter, updating and predicting, every
   // measurements period: Δt = 250ms. The period is constant but passed as
   // variable for the example. The lambda helper shows how to simplify the
   // filter step call.
@@ -110,45 +132,54 @@ namespace
     k.template operator()<double>(args...);
   } };
 
-  step(delta_time, 39.72, -11.1);
-  step(delta_time, 40.02, 18);
-  step(delta_time, 39.97, 22.9);
-  step(delta_time, 39.81, 19.5);
-  step(delta_time, 39.75, 28.5);
-  step(delta_time, 39.6, 46.5);
-  step(delta_time, 39.77, 68.9);
-  step(delta_time, 39.83, 48.2);
-  step(delta_time, 39.73, 56.1);
-  step(delta_time, 39.87, 90.5);
-  step(delta_time, 39.81, 104.9);
-  step(delta_time, 39.92, 140.9);
-  step(delta_time, 39.78, 148);
-  step(delta_time, 39.98, 187.6);
-  step(delta_time, 39.76, 209.2);
-  step(delta_time, 39.86, 244.6);
-  step(delta_time, 39.61, 276.4);
-  step(delta_time, 39.86, 323.5);
-  step(delta_time, 39.74, 357.3);
-  step(delta_time, 39.87, 357.4);
-  step(delta_time, 39.63, 398.3);
-  step(delta_time, 39.67, 446.7);
-  step(delta_time, 39.96, 465.1);
-  step(delta_time, 39.8, 529.4);
-  step(delta_time, 39.89, 570.4);
-  step(delta_time, 39.85, 636.8);
-  step(delta_time, 39.9, 693.3);
-  step(delta_time, 39.81, 707.3);
-  step(delta_time, 39.81, 707.3);
+  step(delta_time, 40.02 + gravity, -11.1);
+
+  assert(-12.3 - 0.1 < k.x()(0) && k.x()(0) < -12.3 + 0.1 &&
+         14.8 - 0.1 < k.x()(1) && k.x()(1) < 14.8 + 0.1);
+  assert(244.9 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 244.9 + 0.1 &&
+         211.6 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 211.6 + 0.1 &&
+         211.6 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 211.6 + 0.1 &&
+         438.8 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 438.8 + 0.1);
+
+  step(delta_time, 39.97 + gravity, 18);
+  step(delta_time, 39.81 + gravity, 22.9);
+  step(delta_time, 39.75 + gravity, 19.5);
+  step(delta_time, 39.6 + gravity, 28.5);
+  step(delta_time, 39.77 + gravity, 46.5);
+  step(delta_time, 39.83 + gravity, 68.9);
+  step(delta_time, 39.73 + gravity, 48.2);
+  step(delta_time, 39.87 + gravity, 56.1);
+  step(delta_time, 39.81 + gravity, 90.5);
+  step(delta_time, 39.92 + gravity, 104.9);
+  step(delta_time, 39.78 + gravity, 140.9);
+  step(delta_time, 39.98 + gravity, 148);
+  step(delta_time, 39.76 + gravity, 187.6);
+  step(delta_time, 39.86 + gravity, 209.2);
+  step(delta_time, 39.61 + gravity, 244.6);
+  step(delta_time, 39.86 + gravity, 276.4);
+  step(delta_time, 39.74 + gravity, 323.5);
+  step(delta_time, 39.87 + gravity, 357.3);
+  step(delta_time, 39.63 + gravity, 357.4);
+  step(delta_time, 39.67 + gravity, 398.3);
+  step(delta_time, 39.96 + gravity, 446.7);
+  step(delta_time, 39.8 + gravity, 465.1);
+  step(delta_time, 39.89 + gravity, 529.4);
+  step(delta_time, 39.85 + gravity, 570.4);
+  step(delta_time, 39.9 + gravity, 636.8);
+  step(delta_time, 39.81 + gravity, 693.3);
+  step(delta_time, 39.81 + gravity, 707.3);
+
+  k.update(748.5);
 
   // The Kalman gain for altitude converged to 0.12, which means that the
   // estimation weight is much higher than the measurement weight.
-  assert(49.3 - 0.01 < k.p()(0, 0) && k.p()(0, 0) < 49.3 + 0.0001 &&
+  assert(49.3 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 49.3 + 0.1 &&
          "At this point, the altitude uncertainty px = 49.3, which means that "
          "the standard deviation of the prediction is square root of 49.3: "
          "7.02m (remember that the standard deviation of the measurement is "
          "20m).");
 
-  k.predict(delta_time, 39.68);
+  k.predict(delta_time, 39.68 + gravity);
 
   // At the beginning, the estimated altitude is influenced by measurements and
   // it is not aligned well with the true rocket altitude, since the
@@ -157,8 +188,12 @@ namespace
   // with the true altitude. In this example we don't have any maneuvers that
   // cause acceleration changes, but if we had, the control input
   // (accelerometer) would update the state extrapolation equation.
-  assert(831.5 - 0.001 < k.x()(0) && k.x()(0) < 831.5 + 54 &&
-         222.94 - 0.001 < k.x()(1) && k.x()(1) < 222.94 + 40);
+  assert(831.5 - 0.1 < k.x()(0) && k.x()(0) < 831.5 + 0.1 &&
+         222.94 - 0.1 < k.x()(1) && k.x()(1) < 222.94 + 0.1);
+  assert(54.3 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 54.3 + 0.1 &&
+         10.4 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 10.4 + 0.1 &&
+         10.4 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 10.4 + 0.1 &&
+         2.6 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 2.6 + 0.1);
 
   return 0;
 }() };
