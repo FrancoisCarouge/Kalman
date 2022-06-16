@@ -113,7 +113,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p >Function object for performing Eigen matrix transposition. </p>
 <p >Implemented with the Eigen linear algebra library matrices with sizes fixed at compile-time. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml#l00057">57</a> of file <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">kalman_eigen_operator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml#l00059">59</a> of file <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">kalman_eigen_operator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2c4e8b2dfeba5bc74783fae96a17443b" name="a2c4e8b2dfeba5bc74783fae96a17443b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c4e8b2dfeba5bc74783fae96a17443b">&#9670;&nbsp;</a></span>operator()()</h2>
@@ -153,15 +153,15 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml#l00063">63</a> of file <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">kalman_eigen_operator.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">using</span> type = std::decay_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">using</span> result_type =</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">typename</span> Eigen::Matrix&lt;<span class="keyword">typename</span> type::Scalar, type::ColsAtCompileTime,</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                               type::RowsAtCompileTime&gt;;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">return</span> result_type{ value.transpose() };</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml#l00065">65</a> of file <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">kalman_eigen_operator.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">using</span> type = std::decay_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">using</span> result_type =</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keyword">typename</span> Eigen::Matrix&lt;<span class="keyword">typename</span> type::Scalar, type::ColsAtCompileTime,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                               type::RowsAtCompileTime&gt;;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">return</span> result_type{ value.transpose() };</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -174,7 +174,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml">internal</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">transpose</a></li>
-    <li class="footer">Generated on Thu Jun 16 2022 01:21:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Jun 16 2022 01:30:47 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
