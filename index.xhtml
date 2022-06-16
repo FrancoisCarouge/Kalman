@@ -271,23 +271,29 @@ Characteristics</h4>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Characteristic   </th><th class="markdownTableHeadNone">Definition    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>x</code>   </td><td class="markdownTableBodyNone">Manages the state estimate vector.    </td></tr>
+<td class="markdownTableBodyNone"><code>f</code>   </td><td class="markdownTableBodyNone">Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable to compute the value.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>z</code>   </td><td class="markdownTableBodyNone">Manages the observation vector.    </td></tr>
+<td class="markdownTableBodyNone"><code>g</code>   </td><td class="markdownTableBodyNone">Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable to compute the value.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>u</code>   </td><td class="markdownTableBodyNone">Manages the control vector.    </td></tr>
+<td class="markdownTableBodyNone"><code>h</code>   </td><td class="markdownTableBodyNone">Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable to compute the value.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>p</code>   </td><td class="markdownTableBodyNone">Manages the estimated covariance matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>k</code>   </td><td class="markdownTableBodyNone">Manages the gain matrix K. Gets the value last computed during the update.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>q</code>   </td><td class="markdownTableBodyNone">Manages the process noise covariance matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>p</code>   </td><td class="markdownTableBodyNone">Manages the estimated covariance matrix P. Gets the value. Initializes and sets the value.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>r</code>   </td><td class="markdownTableBodyNone">Manages the observation, measurement noise covariance matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>q</code>   </td><td class="markdownTableBodyNone">Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable to compute the value.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>f</code>   </td><td class="markdownTableBodyNone">Manages the state transition matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>r</code>   </td><td class="markdownTableBodyNone">Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable to compute the value.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>h</code>   </td><td class="markdownTableBodyNone">Manages the observation transition matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>s</code>   </td><td class="markdownTableBodyNone">Manages the innovation uncertainty matrix S. Gets the value last computed during the update.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>g</code>   </td><td class="markdownTableBodyNone">Manages the control transition matrix.   </td></tr>
+<td class="markdownTableBodyNone"><code>u</code>   </td><td class="markdownTableBodyNone">Manages the control vector U. Gets the value last used in prediction.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>x</code>   </td><td class="markdownTableBodyNone">Manages the state estimate vector X. Gets the value. Initializes and sets the value.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>y</code>   </td><td class="markdownTableBodyNone">Manages the innovation vector Y. Gets the value last computed during the update.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>z</code>   </td><td class="markdownTableBodyNone">Manages the observation vector Z. Gets the value last computed during the update.   </td></tr>
 </table>
 <h4><a class="anchor" id="autotoc_md24"></a>
 Modifiers</h4>
@@ -312,7 +318,7 @@ Resources</h1>
 <h1><a class="anchor" id="autotoc_md26"></a>
 License</h1>
 <p ><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
-<p >Project for C++ is public domain:</p>
+<p >Kalman for C++ is public domain:</p>
 <p >This is free and unencumbered software released into the public domain.</p>
 <p >Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.</p>
 <p >In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.</p>
@@ -324,7 +330,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jun 7 2022 14:52:54 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Jun 16 2022 01:11:17 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
