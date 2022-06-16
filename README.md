@@ -176,15 +176,18 @@ class kalman
 
 | Characteristic | Definition |
 | --- | --- |
-| `x` | Manages the state estimate vector. |
-| `z` | Manages the observation vector. |
-| `u` | Manages the control vector. |
-| `p` | Manages the estimated covariance matrix. |
-| `q` | Manages the process noise covariance matrix. |
-| `r` | Manages the observation, measurement noise covariance matrix. |
-| `f` | Manages the state transition matrix. |
-| `h` | Manages the observation transition matrix. |
-| `g` | Manages the control transition matrix. |
+| `f` | Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
+| `g` | Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
+| `h` | Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
+| `k` | Manages the gain matrix K. Gets the value last computed during the update. |
+| `p` | Manages the estimated covariance matrix P. Gets the value. Initializes and sets the value. |
+| `q` | Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
+| `r` | Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
+| `s` | Manages the innovation uncertainty matrix S. Gets the value last computed during the update. |
+| `u` | Manages the control vector U. Gets the value last used in prediction. |
+| `x` | Manages the state estimate vector X. Gets the value. Initializes and sets the value. |
+| `y` | Manages the innovation vector Y. Gets the value last computed during the update. |
+| `z` | Manages the observation vector Z. Gets the value last computed during the update. |
 
 #### Modifiers
 
@@ -206,7 +209,7 @@ Awesome resources to learn about Kalman filters:
 
 <img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
 
-Project for C++ is public domain:
+Kalman for C++ is public domain:
 
 This is free and unencumbered software released into the public domain.
 
