@@ -36,10 +36,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-//! @brief Entry point to support the project.
+//! @brief Entry point to support the library.
 //!
 //! @details A valid and empty point of entry is provided to support the tests
-//! and samples. Not further code necessary.
+//! and samples. No further code necessary here.
 auto main() -> int
 {
   return 0;
