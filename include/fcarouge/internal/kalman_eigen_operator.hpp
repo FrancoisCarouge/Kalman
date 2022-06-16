@@ -41,6 +41,8 @@ For more information, please refer to <https://unlicense.org> */
 
 //! @file
 //! @brief Kalman operation for Eigen 3 types.
+//!
+//! @details Default customization point objects (CPO) for Eigen 3 types.
 
 #include "kalman.hpp"
 
