@@ -41,6 +41,8 @@ For more information, please refer to <https://unlicense.org> */
 
 //! @file
 //! @brief Kalman operation for standard types.
+//!
+//! @details Default customization point objects (CPO) for standard types.
 
 namespace fcarouge::internal
 {
