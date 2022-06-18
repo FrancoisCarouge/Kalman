@@ -52,9 +52,12 @@ namespace
   assert(1 == k.p());
   assert(0 == k.q() && "No process noise by default.");
   assert(0 == k.r() && "No observation noise by default.");
-  assert(1 == k.f() && "");
-  assert(1 == k.h() && "");
-  assert(1 == k.g() && "");
+  assert(1 == k.f());
+  assert(1 == k.h());
+  assert(1 == k.g());
+  assert(1 == k.k());
+  assert(1 == k.y());
+  assert(1 == k.s());
 
   return 0;
 }() };
