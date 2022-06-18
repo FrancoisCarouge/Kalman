@@ -67,6 +67,8 @@ namespace
 
   k.update(49.95);
 
+  assert(0.999999 - 0.001 < k.k() && k.k() < 0.999999 + 0.001);
+
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 5s (constant).
   k(49.967);
@@ -85,6 +87,7 @@ namespace
          "deviation is: 0.036°C.");
   assert(49.988 - 0.0001 < k.x() && k.x() < 49.988 + 0.0001 &&
          "The filter estimates the liquid temperature at 49.988°C.");
+  assert(0.1265 - 0.001 < k.k() && k.k() < 0.1265 + 0.001);
   // So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.
   // In this example we've measured a liquid temperature using the
   // one-dimensional Kalman filter. Although the system dynamics include a
