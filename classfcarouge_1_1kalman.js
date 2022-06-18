@@ -1,7 +1,10 @@
 var classfcarouge_1_1kalman =
 [
     [ "estimate_uncertainty", "classfcarouge_1_1kalman.xhtml#ac7fadbd41c0b8cf294b5484f48b864c1", null ],
+    [ "gain", "classfcarouge_1_1kalman.xhtml#adc509406110655a600bc2518aa1b7f94", null ],
     [ "implementation", "classfcarouge_1_1kalman.xhtml#ad11b791d6ca6fcd67af66459f308ed4d", null ],
+    [ "innovation", "classfcarouge_1_1kalman.xhtml#a80f4356fa25daee1f7926ab06d909dab", null ],
+    [ "innovation_uncertainty", "classfcarouge_1_1kalman.xhtml#a7a99b8c33c739e827712fa6ba803ca1f", null ],
     [ "input", "classfcarouge_1_1kalman.xhtml#a53748631abd1c09172732cc9062c7cb0", null ],
     [ "input_control", "classfcarouge_1_1kalman.xhtml#a0f5c80bcca633d47c8e24db7896aec93", null ],
     [ "output", "classfcarouge_1_1kalman.xhtml#a6545b0c2bdb982f9d9e6010fef2cd7b8", null ],
@@ -24,6 +27,7 @@ var classfcarouge_1_1kalman =
     [ "h", "classfcarouge_1_1kalman.xhtml#ae91d215471a963668bfcd4fd3f412552", null ],
     [ "h", "classfcarouge_1_1kalman.xhtml#ae346273c731745a80fe70101b7d45f09", null ],
     [ "h", "classfcarouge_1_1kalman.xhtml#ab35ab41ea31bbc797072d91111a2d3bd", null ],
+    [ "k", "classfcarouge_1_1kalman.xhtml#a77dbca3e9d666f5a8b7eadf0f930850e", null ],
     [ "operator()", "classfcarouge_1_1kalman.xhtml#a82be0bedc54ec91ad3e21de6f3039bc8", null ],
     [ "operator=", "classfcarouge_1_1kalman.xhtml#a3cada9b661838d1ae5b99316f48934b9", null ],
     [ "operator=", "classfcarouge_1_1kalman.xhtml#a08da056240a31162e2c17140a814066d", null ],
@@ -36,10 +40,12 @@ var classfcarouge_1_1kalman =
     [ "r", "classfcarouge_1_1kalman.xhtml#afeda2584795f82214e84b49777a04261", null ],
     [ "r", "classfcarouge_1_1kalman.xhtml#a126e0e2be10800eacf8ba4ad24969883", null ],
     [ "r", "classfcarouge_1_1kalman.xhtml#a9feadea9a0dbac9b03fe473a4500471a", null ],
+    [ "s", "classfcarouge_1_1kalman.xhtml#a892af372244788be928b1379badb04d2", null ],
     [ "u", "classfcarouge_1_1kalman.xhtml#a2bc41f17bc2db1f99150f8f77e133289", null ],
     [ "update", "classfcarouge_1_1kalman.xhtml#ad61561db60647bf2b7f54ff372ba1e70", null ],
     [ "x", "classfcarouge_1_1kalman.xhtml#a762f85a877b62537527b891be64c1c23", null ],
     [ "x", "classfcarouge_1_1kalman.xhtml#aa4efb19b9d90e6c3514e8b03d9f3abb3", null ],
+    [ "y", "classfcarouge_1_1kalman.xhtml#aa16f69286a7b3b48fb69e7bf2f216a0a", null ],
     [ "z", "classfcarouge_1_1kalman.xhtml#a3e49483dc7a9b0fd88037a64be28957d", null ],
     [ "filter", "classfcarouge_1_1kalman.xhtml#a5e75ea5391733ec60effde3f847cb90f", null ]
 ];

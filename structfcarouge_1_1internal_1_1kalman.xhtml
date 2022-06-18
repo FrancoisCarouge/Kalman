@@ -485,7 +485,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000006">Todo:</a></b></dt><dd>Would x = extended_ff(x) be extended? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo:</a></b></dt><dd>Would x = extended_ff(x) be extended? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00232">232</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  {</div>
@@ -544,7 +544,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo:</a></b></dt><dd><p class="startdd">F would be the predict Jacobian(x) extended? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd><p class="startdd">F would be the predict Jacobian(x) extended? </p>
 <p class="enddd">Would x = extended_ff(x, u) be extended? </p>
 </dd></dl>
 
@@ -565,7 +565,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00132">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::f</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00133">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::g</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00174">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::noise_process_q</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00122">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::p</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00126">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::q</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00188">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::symmetrize</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00181">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::transition_control_g</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00167">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::transition_state_f</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00186">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::transpose</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00117">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::x</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00452">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::operator()()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00505">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::operator()()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -602,7 +602,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd><p class="startdd">Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo:</a></b></dt><dd><p class="startdd">Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
 <p class="interdd">H would be the observe Jacobian(x) extended? </p>
 <p class="enddd">Would innovation y = z - extended_hh(x) be extended? </p>
 </dd></dl>
@@ -634,7 +634,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00187">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::divide</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00131">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::h</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00134">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::k</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00153">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::noise_observation_r</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00122">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::p</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00129">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::r</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00136">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::s</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00188">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::symmetrize</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00148">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::transition_observation_h</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00186">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::transpose</a>, <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00117">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::x</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00135">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::y</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00452">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::operator()()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00505">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::operator()()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -804,7 +804,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00153">153</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00338">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::r()</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00201">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00363">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::r()</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00201">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::update()</a>.</p>
 
 </div>
 </div>
@@ -830,7 +830,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00174">174</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00218">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00311">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::q()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00218">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00336">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::q()</a>.</p>
 
 </div>
 </div>
@@ -973,7 +973,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00181">181</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00413">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::g()</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00218">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00438">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::g()</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00218">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict()</a>.</p>
 
 </div>
 </div>
@@ -999,7 +999,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00148">148</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00388">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::h()</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00201">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00413">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::h()</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00201">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::update()</a>.</p>
 
 </div>
 </div>
@@ -1027,7 +1027,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00167">167</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00363">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::f()</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00218">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00388">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::f()</a>, and <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00218">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict()</a>.</p>
 
 </div>
 </div>
@@ -1103,7 +1103,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sat Jun 18 2022 01:02:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Jun 18 2022 01:18:50 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

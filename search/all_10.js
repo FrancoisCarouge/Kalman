@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s_0',['s',['../structfcarouge_1_1internal_1_1kalman.xhtml#a75b9bfbf8f040343b21666d0333092a5',1,'fcarouge::internal::kalman']]],
+  ['s_0',['s',['../structfcarouge_1_1internal_1_1kalman.xhtml#a75b9bfbf8f040343b21666d0333092a5',1,'fcarouge::internal::kalman::s()'],['../classfcarouge_1_1kalman.xhtml#a892af372244788be928b1379badb04d2',1,'fcarouge::kalman::s()']]],
   ['security_20policy_1',['Security Policy',['../md__s_e_c_u_r_i_t_y.xhtml',1,'']]],
   ['security_2emd_2',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]],
   ['sell_3',['sell',['../_l_i_c_e_n_s_e_8txt.xhtml#a3e5d6c430e9c2cde02449af9b69ae168',1,'LICENSE.txt']]],

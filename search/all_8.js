@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['k_0',['k',['../structfcarouge_1_1internal_1_1kalman.xhtml#a640b90ecfacc9b28f222ef09f4a1cecc',1,'fcarouge::internal::kalman']]],
+  ['k_0',['k',['../structfcarouge_1_1internal_1_1kalman.xhtml#a640b90ecfacc9b28f222ef09f4a1cecc',1,'fcarouge::internal::kalman::k()'],['../classfcarouge_1_1kalman.xhtml#a77dbca3e9d666f5a8b7eadf0f930850e',1,'fcarouge::kalman::k()']]],
   ['kalman_1',['kalman',['../structfcarouge_1_1internal_1_1kalman.xhtml',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;'],['../classfcarouge_1_1kalman.xhtml',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;'],['../classfcarouge_1_1kalman.xhtml#aa0585267361f92194703d2e427c360e2',1,'fcarouge::kalman::kalman()=default'],['../classfcarouge_1_1kalman.xhtml#afe9448cabe1bb04cbb4393f1c7fc5e90',1,'fcarouge::kalman::kalman(const kalman &amp;other)=default'],['../classfcarouge_1_1kalman.xhtml#a1ebd98e21b0bd4a652b9f9daf230cc27',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=default'],['../namespacefcarouge_1_1eigen.xhtml#af57be964591879e808a2567fe7d4e107',1,'fcarouge::eigen::kalman()']]],
   ['kalman_20filter_20for_20c_2b_2b_2',['Kalman Filter for C++',['../index.xhtml',1,'']]],
   ['kalman_2ehpp_3',['kalman.hpp',['../internal_2kalman_8hpp.xhtml',1,'(Global Namespace)'],['../kalman_8hpp.xhtml',1,'(Global Namespace)']]],
