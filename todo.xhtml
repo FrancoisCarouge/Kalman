@@ -89,15 +89,26 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <div class="textblock"><dl class="reflist">
 <dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a37a63ff235f1dba2aa6408d834f051e5">fcarouge::eigen::internal::divide::operator()</a>  (const auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::Matrix&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</dt>
 <dd><a class="anchor" id="_todo000003"></a>Why compilation fails if we specify the return type in the body of the function?  </dd>
-<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#af26346d4c53333bff5636d953aaa1562">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::update</a>  (const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000002"></a>Do we want to allow the client to view the gain k? And the residual y? </p>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#add1e8916a98a2b3f7daa9075b394cdff">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000005"></a>F would be the predict Jacobian(x) extended? </p>
 <p class="interdd"></p>
-<p class="enddd">Do we want to store i - k * h in a temporary result for reuse?  </p>
+<p class="enddd">Would x = extended_ff(x, u) be extended?  </p>
+</dd>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#aff8e39a0ba59dc42aa4903e14d7c446a">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict</a>  (const PredictionArguments &amp;...arguments)</dt>
+<dd><a class="anchor" id="_todo000006"></a>Would x = extended_ff(x) be extended?  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#ae6d5bf97566e1c2b5c0ceddb2739fc8f">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::transition_state_f</a>  </dt>
+<dd><a class="anchor" id="_todo000002"></a>Document arguments.  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#af26346d4c53333bff5636d953aaa1562">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::update</a>  (const auto &amp;...output_z)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
+<p class="interdd"></p>
+<p class="interdd">H would be the observe Jacobian(x) extended? </p>
+<p class="interdd"></p>
+<p class="enddd">Would innovation y = z - extended_hh(x) be extended?  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a881469cc203c78686835d8c20d016c10">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::x</a>  </dt>
 <dd><a class="anchor" id="_todo000001"></a>Is there a simpler, more portable way to get a zero initialization?  </dd>
 <dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000007"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd"></p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristis? </p>
 <p class="interdd"></p>
@@ -118,21 +129,21 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="enddd">Support mux pipes <a href="https://github.com/joboccara/pipes">https://github.com/joboccara/pipes</a> operator filter?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a82be0bedc54ec91ad3e21de6f3039bc8">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::operator()</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u, const auto &amp;...output_z)</dt>
-<dd><a class="anchor" id="_todo000007"></a>Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </dd>
+<dd><a class="anchor" id="_todo000010"></a>Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aa57af6d47ba33e9c02639ee317eb5ee1">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000009"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000012"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
 <p class="interdd"></p>
 <p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ad70adacbbc4958c2295b2ed621a4e542">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::q</a>  (const auto &amp;value, const auto &amp;...values)</dt>
-<dd><a class="anchor" id="_todo000005"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dd><a class="anchor" id="_todo000008"></a>Don't we need to reset functions or values when the other is set?  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ad61561db60647bf2b7f54ff372ba1e70">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::update</a>  (const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000008"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000011"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
 <p class="interdd"></p>
 <p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aa4efb19b9d90e6c3514e8b03d9f3abb3">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, Multiply, PredictionArguments &gt;::x</a>  (const auto &amp;value, const auto &amp;...values)</dt>
-<dd><a class="anchor" id="_todo000006"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods. </dd>
+<dd><a class="anchor" id="_todo000009"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods. </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -140,7 +151,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 16 2022 01:30:47 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Jun 18 2022 01:02:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
