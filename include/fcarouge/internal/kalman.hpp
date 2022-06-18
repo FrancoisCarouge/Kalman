@@ -68,32 +68,43 @@ struct kalman {
   //! @brief Type of the estimated covariance matrix P.
   //!
   //! @details Also known as Σ.
-  using estimate_uncertainty = std::invoke_result_t<Divide, State, State>;
+  using estimate_uncertainty =
+      std::decay_t<std::invoke_result_t<Divide, State, State>>;
 
   //! @brief Type of the process noise covariance matrix Q.
-  using process_uncertainty = std::invoke_result_t<Divide, State, State>;
+  using process_uncertainty =
+      std::decay_t<std::invoke_result_t<Divide, State, State>>;
 
   //! @brief Type of the observation, measurement noise covariance matrix R.
-  using output_uncertainty = std::invoke_result_t<Divide, Output, Output>;
+  using output_uncertainty =
+      std::decay_t<std::invoke_result_t<Divide, Output, Output>>;
 
   //! @brief Type of the state transition matrix F.
   //!
   //! @details Also known as Φ or A.
-  using state_transition = std::invoke_result_t<Divide, State, State>;
+  using state_transition =
+      std::decay_t<std::invoke_result_t<Divide, State, State>>;
 
   //! @brief Type of the observation transition matrix H.
   //!
   //! @details Also known as C.
-  using output_model = std::invoke_result_t<Divide, Output, State>;
+  using output_model =
+      std::decay_t<std::invoke_result_t<Divide, Output, State>>;
 
   //! @brief Type of the control transition matrix G.
   //!
   //! @details Also known as B.
-  using input_control = std::invoke_result_t<Divide, State, Input>;
+  using input_control =
+      std::decay_t<std::invoke_result_t<Divide, State, Input>>;
 
+  //! @brief Type of the gain matrix K.
+  using gain = std::decay_t<std::invoke_result_t<Transpose, output_model>>;
+
+  //! @brief Type of the innovation vector Y.
   using innovation = output;
+
+  //! @brief Type of the innovation uncertainty matrix S.
   using innovation_uncertainty = output_uncertainty;
-  using gain = std::invoke_result_t<Transpose, output_model>;
 
   //! @}
 
@@ -120,6 +131,11 @@ struct kalman {
   output_model h{ Identity().template operator()<output_model>() };
   state_transition f{ Identity().template operator()<state_transition>() };
   input_control g{ Identity().template operator()<input_control>() };
+  gain k{ Identity().template operator()<gain>() };
+  innovation y{ Identity().template operator()<innovation>() };
+  innovation_uncertainty s{
+    Identity().template operator()<innovation_uncertainty>()
+  };
 
   //! @}
 
@@ -145,6 +161,8 @@ struct kalman {
   //! transition function. F = ∂fj/∂xi that is each row i contains the the
   //! derivatives of the state transition function for every element j in the
   //! state vector x.
+  //!
+  //! @todo Document arguments.
   std::function<state_transition(const PredictionArguments &...)>
       transition_state_f{ [this](const PredictionArguments &...arguments) {
         static_cast<void>((arguments, ...));
@@ -165,15 +183,6 @@ struct kalman {
         return g;
       } };
 
-  //! @brief State transition function.
-  //!
-  //! @details
-  // Add prediction arguments?
-  std::function<state(const state &, const state_transition &)> predict_state =
-      [this](const state &x, const state_transition &f) {
-        return state{ multiply(f, x) };
-      };
-
   Transpose transpose;
   Divide divide;
   Symmetrize symmetrize;
@@ -185,48 +194,47 @@ struct kalman {
   //! @name Public Member Functions
   //! @{
 
-  //! @todo Do we want to allow the client to view the gain k? And the residual
-  //! y?
-  //! @todo Do we want to store i - k * h in a temporary result for reuse?
+  //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
+  //! does the compiler/linker do it for us?
+  //! @todo H would be the observe Jacobian(x) extended?
+  //! @todo Would innovation y = z - extended_hh(x) be extended?
   inline constexpr void update(const auto &...output_z)
   {
     const auto z{ output{ output_z... } };
+    const auto i{ identity.template operator()<estimate_uncertainty>() };
 
     h = transition_observation_h();
     r = noise_observation_r();
-
-    const innovation_uncertainty s{ h * p * transpose(h) + r };
-    const gain k{ divide(p * transpose(h), s) };
-    const innovation y{ z - h * x };
-    const auto i{ identity.template operator()<estimate_uncertainty>() };
-
-    x = state{ x + k * y };
+    s = h * p * transpose(h) + r;
+    k = divide(p * transpose(h), s);
+    y = z - h * x;
+    x = x + k * y;
     p = symmetrize(estimate_uncertainty{
         (i - k * h) * p * transpose(i - k * h) + k * r * transpose(k) });
   }
 
+  //! @todo F would be the predict Jacobian(x) extended?
+  //! @todo Would x = extended_ff(x, u) be extended?
   inline constexpr void predict(const PredictionArguments &...arguments,
                                 const auto &...input_u)
   {
-    const auto ff{ predict_state };
     const auto u{ input{ input_u... } };
 
     f = transition_state_f(arguments...);
     q = noise_process_q(arguments...);
     g = transition_control_g(arguments...);
 
-    x = state{ ff(x, f) + g * u };
+    x = f * x + g * u;
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
+  //! @todo Would x = extended_ff(x) be extended?
   inline constexpr void predict(const PredictionArguments &...arguments)
   {
-    const auto ff{ predict_state };
-
     f = transition_state_f(arguments...);
     q = noise_process_q(arguments...);
 
-    x = state{ ff(x, f) };
+    x = f * x;
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
