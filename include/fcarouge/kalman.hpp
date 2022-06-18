@@ -102,8 +102,14 @@ namespace fcarouge
 //! @todo Is the Kalman filter a recursive state estimation, confirm
 //! terminology?
 //! @todo Prepare support for std::format?
+//! @todo Prepare support for larger dataset recording for graphing, metrics of
+//! large test data to facilitate tuning.
+//! @todo Support filter generator? Integration? Reflection in C++...
+//! @todo Compare performance of general filter with its equivalent generated?
 //! @todo Support ranges operator filter?
 //! @todo Support mux pipes https://github.com/joboccara/pipes operator filter?
+//! @todo Reproduce Ardupilot's inertial navigation EKF and comparison
+//! benchmarks in SITL (software in the loop simulation).
 template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
@@ -166,6 +172,16 @@ class kalman
   //!
   //! @details Also known as B.
   using input_control = typename implementation::input_control;
+
+  //! @brief Type of the gain matrix K.
+  using gain = typename implementation::gain;
+
+  //! @brief Type of the innovation vector Y.
+  using innovation = typename implementation::innovation;
+
+  //! @brief Type of the innovation uncertainty matrix S.
+  using innovation_uncertainty =
+      typename implementation::innovation_uncertainty;
 
   //! @}
 
@@ -263,6 +279,8 @@ class kalman
   //! @return The observation vector Z.
   //!
   //! @complexity Constant.
+  //!
+  //! @todo Implement and test.
   [[nodiscard("The returned observation vector Z is unexpectedly "
               "discarded.")]] inline constexpr auto
   z() const -> output;
@@ -272,6 +290,8 @@ class kalman
   //! @return The control vector U.
   //!
   //! @complexity Constant.
+  //!
+  //! @todo Implement and test.
   [[nodiscard("The returned control vector U is unexpectedly "
               "discarded.")]] inline constexpr auto
   u() const -> input;
@@ -307,6 +327,11 @@ class kalman
   //! @brief Sets the process noise covariance matrix Q function.
   //!
   //! @complexity Constant.
+  //!
+  //! @todo Document parameters.
+  //! @todo Would universal reference be preferable to a constant reference? Or
+  //! an overload for both?
+  //! @todo Understand why the implementation cannot be moved out of the class.
   inline constexpr void
       q(const auto &callable) requires std::constructible_from <
       std::function<process_uncertainty(const PredictionArguments &...)>,
@@ -417,6 +442,33 @@ class kalman
     filter.transition_control_g = callable;
   }
 
+  //! @brief Returns the gain matrix K.
+  //!
+  //! @return The gain matrix K.
+  //!
+  //! @complexity Constant.
+  [[nodiscard("The returned gain matrix K is unexpectedly "
+              "discarded.")]] inline constexpr auto
+  k() const -> gain;
+
+  //! @brief Returns the innovation vector Y.
+  //!
+  //! @return The innovation vector Y.
+  //!
+  //! @complexity Constant.
+  [[nodiscard("The returned innovation vector Y is unexpectedly "
+              "discarded.")]] inline constexpr auto
+  y() const -> innovation;
+
+  //! @brief Returns the innovation uncertainty matrix S.
+  //!
+  //! @return The innovation uncertainty matrix S.
+  //!
+  //! @complexity Constant.
+  [[nodiscard("The returned innovation uncertainty matrix S is unexpectedly "
+              "discarded.")]] inline constexpr auto
+  s() const -> innovation_uncertainty;
+
   //! @}
 
   //! @name Public Filtering Member Functions
@@ -449,6 +501,7 @@ class kalman
   //! @todo Consider if returning the state vector X would be preferrable? And
   //! if it would be compatible with an ES-EKF implementation? Or if a fluent
   //! interface would be preferrable?
+  //! @todo Understand why the implementation cannot be moved out of the class.
   inline constexpr void operator()(const PredictionArguments &...arguments,
                                    const auto &...input_u,
                                    const auto &...output_z)
@@ -648,6 +701,36 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
                                             const auto &...values)
 {
   filter.g = input_control{ value, values... };
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename Multiply, typename... PredictionArguments>
+inline constexpr auto
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       Multiply, PredictionArguments...>::k() const -> gain
+{
+  return filter.k;
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename Multiply, typename... PredictionArguments>
+inline constexpr auto
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       Multiply, PredictionArguments...>::y() const -> innovation
+{
+  return filter.y;
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename Multiply, typename... PredictionArguments>
+inline constexpr auto
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       Multiply, PredictionArguments...>::s() const -> innovation_uncertainty
+{
+  return filter.s;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
