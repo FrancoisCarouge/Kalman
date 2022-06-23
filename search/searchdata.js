@@ -4,8 +4,8 @@ var indexSectionsWithContent =
   1: "dikst",
   2: "f",
   3: "bcdiklmrsv",
-  4: "bfghkmnopqrsuxyz~",
-  5: "bcdfghiklmnopqrstuvxy",
+  4: "bfghkmnopqrstuxyz~",
+  5: "bcdfghiklmnopqrstuvxyz",
   6: "egikopsv",
   7: "ckst"
 };
