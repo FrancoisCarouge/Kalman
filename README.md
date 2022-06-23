@@ -127,11 +127,15 @@ Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
 
 ```cpp
 template <
-    typename Type = double, typename State = Type, typename Output = State,
-    typename Input = State, typename Transpose = std::identity,
-    typename Symmetrize = std::identity, typename Divide = std::divides<void>,
+    typename Type = double,
+    typename State = Type,
+    typename Output = State,
+    typename Input = State,
+    typename Transpose = std::identity,
+    typename Symmetrize = std::identity,
+    typename Divide = std::divides<void>,
     typename Identity = internal::identity,
-    typename Multiply = std::multiplies<void>, typename... PredictionArguments>
+    typename... PredictionArguments>
 class kalman
 ```
 
@@ -147,7 +151,6 @@ class kalman
 | `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. |
 | `Divide` | The customization point object template parameter of the matrix division functor. |
 | `Identity` | The customization point object template parameter of the matrix identity functor. |
-| `Multiply` | The customization point object template parameter of the matrix multiplication functor. |
 | `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Time, or a delta thereof, is often a prediction parameter. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. |
 
 ### Member Types
@@ -176,18 +179,18 @@ class kalman
 
 | Characteristic | Definition |
 | --- | --- |
-| `f` | Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
-| `g` | Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
-| `h` | Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
-| `k` | Manages the gain matrix K. Gets the value last computed during the update. |
-| `p` | Manages the estimated covariance matrix P. Gets the value. Initializes and sets the value. |
-| `q` | Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
-| `r` | Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable to compute the value. |
-| `s` | Manages the innovation uncertainty matrix S. Gets the value last computed during the update. |
+| `f` | Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the identity matrix.|
+| `g` | Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the identity matrix. |
+| `h` | Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the identity matrix. |
+| `k` | Manages the gain matrix K. Gets the value last computed during the update. The default value is the identity matrix. |
+| `p` | Manages the estimated covariance matrix P. Gets the value. Initializes and sets the value. The default value is the identity matrix. |
+| `q` | Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the null matrix. |
+| `r` | Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the null matrix. |
+| `s` | Manages the innovation uncertainty matrix S. Gets the value last computed during the update. The default value is the identity matrix. |
 | `u` | Manages the control vector U. Gets the value last used in prediction. |
-| `x` | Manages the state estimate vector X. Gets the value. Initializes and sets the value. |
-| `y` | Manages the innovation vector Y. Gets the value last computed during the update. |
-| `z` | Manages the observation vector Z. Gets the value last computed during the update. |
+| `x` | Manages the state estimate vector X. Gets the value. Initializes and sets the value. The default value is the null vector. |
+| `y` | Manages the innovation vector Y. Gets the value last computed during the update. The default value is the null vector. |
+| `z` | Manages the observation vector Z. Gets the value last used during the update. The default value is the null vector. |
 
 #### Modifiers
 

@@ -49,7 +49,7 @@ namespace fcarouge::internal
 {
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
-          typename Multiply, typename... PredictionArguments>
+          typename... PredictionArguments>
 struct kalman {
   //! @name Public Member Types
   //! @{
@@ -59,7 +59,7 @@ struct kalman {
 
   //! @brief Type of the observation vector Z.
   //!
-  //! @details Also known as Y.
+  //! @details Also known as Y or O.
   using output = Output;
 
   //! @brief Type of the control vector U.
@@ -132,62 +132,98 @@ struct kalman {
   state_transition f{ Identity().template operator()<state_transition>() };
   input_control g{ Identity().template operator()<input_control>() };
   gain k{ Identity().template operator()<gain>() };
-  innovation y{ Identity().template operator()<innovation>() };
+  innovation y{ 0 * Identity().template operator()<innovation>() };
   innovation_uncertainty s{
     Identity().template operator()<innovation_uncertainty>()
   };
+  output z{ 0 * Identity().template operator()<output>() };
 
   //! @}
 
   //! @name Public Member Function Objects
   //! @{
 
-  //! @brief Compute observation transition H matrix.
+  //! @brief Compute the state observation H matrix.
   //!
-  //! @details The observation transition H is also known as C.
-  std::function<output_model()> transition_observation_h{ [this] {
-    return h;
-  } };
+  //! @details The state observation H is also known as C.
+  //! For non-linear system, or extended filter, H is the Jacobian of the state
+  //! observation function. H = ∂h/∂X = ∂hj/∂xi that is each row i
+  //! contains the derivatives of the state observation function for every
+  //! element j in the state vector X.
+  std::function<output_model(const state &)> observation_state_h{
+    [this](const state &x) -> output_model {
+      static_cast<void>(x);
+      return h;
+    }
+  };
 
   //! @brief Compute observation noise R matrix.
-  std::function<output_uncertainty()> noise_observation_r{ [this] {
-    return r;
-  } };
+  std::function<output_uncertainty()> noise_observation_r{
+    [this] -> output_uncertainty { return r; }
+  };
 
-  //! @brief Compute state transition F matrix.
+  //! @brief Compute the state transition F matrix.
   //!
   //! @details The state transition F matrix is also known as Φ or A.
   //! For non-linear system, or extended filter, F is the Jacobian of the state
-  //! transition function. F = ∂fj/∂xi that is each row i contains the the
+  //! transition function. F = ∂f/∂X = ∂fj/∂xi that is each row i contains the
   //! derivatives of the state transition function for every element j in the
-  //! state vector x.
+  //! state vector X.
   //!
-  //! @todo Document arguments.
+  //! @todo Pass the arguments by universal reference?
   std::function<state_transition(const PredictionArguments &...)>
-      transition_state_f{ [this](const PredictionArguments &...arguments) {
-        static_cast<void>((arguments, ...));
-        return f;
-      } };
+      transition_state_f{
+        [this](const PredictionArguments &...arguments) -> state_transition {
+          (static_cast<void>(arguments), ...);
+          return f;
+        }
+      };
 
   //! @brief Compute process noise Q matrix.
   std::function<process_uncertainty(const PredictionArguments &...)>
-      noise_process_q{ [this](const PredictionArguments &...arguments) {
-        static_cast<void>((arguments, ...));
-        return q;
-      } };
+      noise_process_q{
+        [this](const PredictionArguments &...arguments) -> process_uncertainty {
+          (static_cast<void>(arguments), ...);
+          return q;
+        }
+      };
 
   //! @brief Compute control transition G matrix.
   std::function<input_control(const PredictionArguments &...)>
-      transition_control_g{ [this](const PredictionArguments &...arguments) {
-        static_cast<void>((arguments, ...));
-        return g;
+      transition_control_g{
+        [this](const PredictionArguments &...arguments) -> input_control {
+          (static_cast<void>(arguments), ...);
+          return g;
+        }
+      };
+
+  //! @brief State transition function f.
+  //!
+  //! @details For linear system f(x) = F * X. For non-linear system, or
+  //! extended filter, the client implements a linearization of the transition
+  //! function f and the state transition F matrix is the Jacobian of the state
+  //! transition function.
+  std::function<state(const state &, const PredictionArguments &...)>
+      transition{ [this](const state &x,
+                         const PredictionArguments &...arguments) -> state {
+        (static_cast<void>(arguments), ...);
+        return f * x;
       } };
+
+  //! @brief State observation function h.
+  //!
+  //! @details For linear system h(x) = H * X. For non-linear system, or
+  //! extended filter, the client implements a linearization of the observation
+  //! function hand the state observation H matrix is the Jacobian of the state
+  //! observation function.
+  std::function<output(const state &)> observation{
+    [this](const state &x) -> output { return h * x; }
+  };
 
   Transpose transpose;
   Divide divide;
   Symmetrize symmetrize;
   Identity identity;
-  Multiply multiply;
 
   //! @}
 
@@ -200,14 +236,14 @@ struct kalman {
   //! @todo Would innovation y = z - extended_hh(x) be extended?
   inline constexpr void update(const auto &...output_z)
   {
-    const auto z{ output{ output_z... } };
     const auto i{ identity.template operator()<estimate_uncertainty>() };
 
-    h = transition_observation_h();
+    z = output{ output_z... };
+    h = observation_state_h(x);
     r = noise_observation_r();
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
-    y = z - h * x;
+    y = z - observation(x);
     x = x + k * y;
     p = symmetrize(estimate_uncertainty{
         (i - k * h) * p * transpose(i - k * h) + k * r * transpose(k) });
@@ -228,13 +264,12 @@ struct kalman {
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
-  //! @todo Would x = extended_ff(x) be extended?
   inline constexpr void predict(const PredictionArguments &...arguments)
   {
     f = transition_state_f(arguments...);
     q = noise_process_q(arguments...);
 
-    x = f * x;
+    x = transition(x, arguments...);
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 

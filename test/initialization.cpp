@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/kalman_eigen.hpp"
 
 #include <cassert>
 
@@ -44,20 +45,51 @@ namespace fcarouge::test
 {
 namespace
 {
-//! @test Verify default values are initialized.
-[[maybe_unused]] auto defaults{ [] {
+//! @test Verify default values are initialized for single dimension filters.
+[[maybe_unused]] auto defaults111{ [] {
   kalman k;
 
-  assert(0 == k.x() && "Origin state.");
-  assert(1 == k.p());
-  assert(0 == k.q() && "No process noise by default.");
-  assert(0 == k.r() && "No observation noise by default.");
-  assert(1 == k.f());
-  assert(1 == k.h());
-  assert(1 == k.g());
-  assert(1 == k.k());
-  assert(1 == k.y());
-  assert(1 == k.s());
+  assert(k.f() == 1);
+  assert(k.g() == 1);
+  assert(k.h() == 1);
+  assert(k.k() == 1);
+  assert(k.p() == 1);
+  assert(k.q() == 0 && "No process noise by default.");
+  assert(k.r() == 0 && "No observation noise by default.");
+  assert(k.s() == 1);
+  assert(k.x() == 0 && "Origin state.");
+  assert(k.y() == 0);
+  assert(k.z() == 0);
+
+  return 0;
+}() };
+
+//! @test Verify default values are initialized for multi-dimension filters.
+[[maybe_unused]] auto defaults543{ [] {
+  using kalman = eigen::kalman<double, 5, 4, 3>;
+
+  kalman k;
+  const auto i4x4{ Eigen::Matrix<double, 4, 4>::Identity() };
+  const auto i4x5{ Eigen::Matrix<double, 4, 5>::Identity() };
+  const auto i5x3{ Eigen::Matrix<double, 5, 3>::Identity() };
+  const auto i5x4{ Eigen::Matrix<double, 5, 4>::Identity() };
+  const auto i5x5{ Eigen::Matrix<double, 5, 5>::Identity() };
+  const auto z4x1{ Eigen::Vector<double, 4>::Zero() };
+  const auto z4x4{ Eigen::Matrix<double, 4, 4>::Zero() };
+  const auto z5x1{ Eigen::Vector<double, 5>::Zero() };
+  const auto z5x5{ Eigen::Matrix<double, 5, 5>::Zero() };
+
+  assert(k.f() == i5x5);
+  assert(k.g() == i5x3);
+  assert(k.h() == i4x5);
+  assert(k.k() == i5x4);
+  assert(k.p() == i5x5);
+  assert(k.q() == z5x5 && "No process noise by default.");
+  assert(k.r() == z4x4 && "No observation noise by default.");
+  assert(k.s() == i4x4);
+  assert(k.x() == z5x1 && "Origin state.");
+  assert(k.y() == z4x1);
+  assert(k.z() == z4x1);
 
   return 0;
 }() };

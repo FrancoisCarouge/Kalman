@@ -47,6 +47,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <concepts>
 #include <functional>
+#include <type_traits>
+#include <utility>
 
 namespace fcarouge
 {
@@ -75,8 +77,6 @@ namespace fcarouge
 //! matrix division functor.
 //! @tparam Identity The customization point object template parameter of the
 //! matrix identity functor.
-//! @tparam Multiply The customization point object template parameter of the
-//! matrix multiplication functor.
 //! @tparam PredictionArguments The variadic type template parameter for
 //! additional prediction function parameters. Time, or a delta thereof, is
 //! often a prediction parameter. The parameters are propagated to the function
@@ -114,8 +114,7 @@ template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
     typename Symmetrize = std::identity, typename Divide = std::divides<void>,
-    typename Identity = internal::identity,
-    typename Multiply = std::multiplies<void>, typename... PredictionArguments>
+    typename Identity = internal::identity, typename... PredictionArguments>
 class kalman
 {
   private:
@@ -125,7 +124,7 @@ class kalman
   //! @brief Implementation details of the filter.
   using implementation =
       internal::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
-                       Identity, Multiply, PredictionArguments...>;
+                       Identity, PredictionArguments...>;
 
   //! @}
 
@@ -141,7 +140,7 @@ class kalman
 
   //! @brief Type of the observation vector Z.
   //!
-  //! @details Also known as Y.
+  //! @details Also known as Y or O.
   using output = typename implementation::output;
 
   //! @brief Type of the control vector U.
@@ -268,11 +267,43 @@ class kalman
 
   //! @brief Sets the state estimate vector X.
   //!
+  //! @param value The copied state estimate vector X.
+  //!
+  //! @complexity Constant.
+  inline constexpr void x(const state &value);
+
+  //! @brief Sets the state estimate vector X.
+  //!
+  //! @param value The moved state estimate vector X.
+  //!
+  //! @complexity Constant.
+  inline constexpr void x(state &&value);
+
+  //! @brief Sets the state estimate vector X.
+  //!
+  //! @param value The first copied initializer used to set the state estimate
+  //! vector X.
+  //! @param values The second and other copied initializers to set the state
+  //! estimate vector X.
+  //!
   //! @complexity Constant.
   //!
   //! @todo Consider if a fluent interface would be preferrable? In addition to
   //! constructors? Same question for all characteristics set methods.
   inline constexpr void x(const auto &value, const auto &...values);
+
+  //! @brief Sets the state estimate vector X.
+  //!
+  //! @param value The first moved initializer used to set the state estimate
+  //! vector X.
+  //! @param values The second and other moved initializers to set the state
+  //! estimate vector X.
+  //!
+  //! @complexity Constant.
+  //!
+  //! @todo Consider if a fluent interface would be preferrable? In addition to
+  //! constructors? Same question for all characteristics set methods.
+  inline constexpr void x(auto &&value, auto &&...values);
 
   //! @brief Returns the observation vector Z.
   //!
@@ -307,8 +338,40 @@ class kalman
 
   //! @brief Sets the estimated covariance matrix P.
   //!
+  //! @param value The copied estimated covariance matrix P.
+  //!
+  //! @complexity Constant.
+  inline constexpr void p(const estimate_uncertainty &value);
+
+  //! @brief Sets the estimated covariance matrix P.
+  //!
+  //! @param value The moved estimated covariance matrix P.
+  //!
+  //! @complexity Constant.
+  inline constexpr void p(estimate_uncertainty &&value);
+
+  //! @brief Sets the estimated covariance matrix P.
+  //!
+  //! @param value The first copied initializer used to set the estimated
+  //! covariance matrix P.
+  //! @param values The second and other copied initializers to set the
+  //! estimated covariance matrix P.
+  //!
   //! @complexity Constant.
   inline constexpr void p(const auto &value, const auto &...values);
+
+  //! @brief Sets the estimated covariance matrix P.
+  //!
+  //! @param value The first moved initializer used to set the estimated
+  //! covariance matrix P.
+  //! @param values The second and other moved initializers to set the estimated
+  //! covariance matrix P.
+  //!
+  //! @complexity Constant.
+  //!
+  //! @todo Consider if a fluent interface would be preferrable? In addition to
+  //! constructors? Same question for all characteristics set methods.
+  inline constexpr void p(auto &&value, auto &&...values);
 
   //! @brief Returns the process noise covariance matrix Q.
   //!
@@ -321,23 +384,72 @@ class kalman
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
+  //! @param value The copied process noise covariance matrix Q.
+  //!
+  //! @complexity Constant.
+  inline constexpr void q(const process_uncertainty &value);
+
+  //! @brief Sets the process noise covariance matrix Q.
+  //!
+  //! @param value The moved process noise covariance matrix Q.
+  //!
+  //! @complexity Constant.
+  inline constexpr void q(process_uncertainty &&value);
+
+  //! @brief Sets the process noise covariance matrix Q.
+  //!
+  //! @param value The first copied initializer used to set the process noise
+  //! covariance matrix Q.
+  //! @param values The second and other copied initializers to set the process
+  //! noise covariance matrix Q.
+  //!
   //! @complexity Constant.
   inline constexpr void q(const auto &value, const auto &...values);
 
+  //! @brief Sets the process noise covariance matrix Q.
+  //!
+  //! @param value The first moved initializer used to set the process noise
+  //! covariance matrix Q.
+  //! @param values The second and other moved initializers used to set the
+  //! process noise covariance matrix Q.
+  //!
+  //! @complexity Constant.
+  inline constexpr void q(auto &&value, auto &&...values);
+
   //! @brief Sets the process noise covariance matrix Q function.
+  //!
+  //! @param callable The copied target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be bound to the prediction arguments and
+  //! called by the filter to compute the process noise covariance matrix Q on
+  //! prediction steps.
   //!
   //! @complexity Constant.
   //!
-  //! @todo Document parameters.
-  //! @todo Would universal reference be preferable to a constant reference? Or
-  //! an overload for both?
-  //! @todo Understand why the implementation cannot be moved out of the class.
-  inline constexpr void
-      q(const auto &callable) requires std::constructible_from <
-      std::function<process_uncertainty(const PredictionArguments &...)>,
-  decltype(callable) >
+  //! @todo Understand why Cland Tidy doesn't find the out-of-line definition.
+  inline constexpr void q(const auto &callable) requires std::is_invocable_r_v <
+      process_uncertainty,
+      std::decay_t<decltype(callable)>,
+  const PredictionArguments &... >
   {
     filter.noise_process_q = callable;
+  }
+
+  //! @brief Sets the process noise covariance matrix Q function.
+  //!
+  //! @param callable The moved target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be bound to the prediction arguments and
+  //! called by the filter to compute the process noise covariance matrix Q on
+  //! prediction steps.
+  //!
+  //! @complexity Constant.
+  inline constexpr void
+      q(auto &&callable) requires std::is_invocable_r_v < process_uncertainty,
+      std::decay_t<decltype(callable)>,
+  const PredictionArguments &... >
+  {
+    filter.noise_process_q = std::forward<decltype(callable)>(callable);
   }
 
   //! @brief Returns the observation noise covariance
@@ -354,17 +466,68 @@ class kalman
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
+  //! @param value The copied observation noise covariance matrix R.
+  //!
+  //! @complexity Constant.
+  inline constexpr void r(const output_uncertainty &value);
+
+  //! @brief Sets the observation noise covariance matrix R.
+  //!
+  //! @param value The moved observation noise covariance matrix R.
+  //!
+  //! @complexity Constant.
+  inline constexpr void r(output_uncertainty &&value);
+
+  //! @brief Sets the observation noise covariance matrix R.
+  //!
+  //! @param value The first copied initializer used to set the observation
+  //! noise covariance matrix R.
+  //! @param values The second and other copied initializers to set the
+  //! observation noise covariance matrix R.
+  //!
   //! @complexity Constant.
   inline constexpr void r(const auto &value, const auto &...values);
 
-  //! @brief Sets the observation noise covariance matrix R function.
+  //! @brief Sets the observation noise covariance matrix R.
+  //!
+  //! @param value The first moved initializer used to set the observation noise
+  //! covariance matrix R.
+  //! @param values The second and other moved initializers to set the
+  //! observation noise covariance matrix R.
   //!
   //! @complexity Constant.
-  inline constexpr void r(const auto &callable) requires
-      std::constructible_from < std::function<output_uncertainty()>,
-  decltype(callable) >
+  inline constexpr void r(auto &&value, auto &&...values);
+
+  //! @brief Sets the observation noise covariance matrix R function.
+  //!
+  //! @param callable The copied target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be
+  //! called by the filter to compute the observation noise covariance matrix R
+  //! on prediction steps.
+  //!
+  //! @complexity Constant.
+  //!
+  //! @todo Understand why Cland Tidy doesn't find the out-of-line definition.
+  inline constexpr void r(const auto &callable) requires std::is_invocable_r_v<
+      output_uncertainty, std::decay_t<decltype(callable)>>
   {
     filter.noise_observation_r = callable;
+  }
+
+  //! @brief Sets the observation noise covariance matrix R function.
+  //!
+  //! @param callable The moved target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be
+  //! called by the filter to compute the observation noise covariance matrix R
+  //! on prediction steps.
+  //!
+  //! @complexity Constant.
+  inline constexpr void r(auto &&callable) requires std::is_invocable_r_v<
+      output_uncertainty, std::decay_t<decltype(callable)>>
+  {
+    filter.noise_observation_r = std::forward<decltype(callable)>(callable);
   }
 
   //! @brief Returns the state transition matrix F.
@@ -378,18 +541,70 @@ class kalman
 
   //! @brief Sets the state transition matrix F.
   //!
+  //! @param value The copied state transition matrix F.
+  //!
+  //! @complexity Constant.
+  inline constexpr void f(const state_transition &value);
+
+  //! @brief Sets the state transition matrix F.
+  //!
+  //! @param value The moved state transition matrix F.
+  //!
+  //! @complexity Constant.
+  inline constexpr void f(state_transition &&value);
+
+  //! @brief Sets the state transition matrix F.
+  //!
+  //! @param value The first copied initializer used to set the state transition
+  //! matrix F.
+  //! @param values The second and other copied initializers to set the state
+  //! transition matrix F.
+  //!
   //! @complexity Constant.
   inline constexpr void f(const auto &value, const auto &...values);
 
+  //! @brief Sets the state transition matrix F.
+  //!
+  //! @param value The first moved initializer used to set the state transition
+  //! matrix F.
+  //! @param values The second and other moved initializers to set the state
+  //! transition matrix F.
+  //!
+  //! @complexity Constant.
+  inline constexpr void f(auto &&value, auto &&...values);
+
   //! @brief Sets the state transition matrix F function.
+  //!
+  //! @param callable The copied target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be bound to the prediction arguments and
+  //! called by the filter to compute the state transition matrix F function on
+  //! prediction steps.
   //!
   //! @complexity Constant.
   inline constexpr void
-      f(const auto &callable) requires std::constructible_from <
-      std::function<state_transition(const PredictionArguments &...)>,
-  decltype(callable) >
+      f(const auto &callable) requires std::is_invocable_r_v < state_transition,
+      std::decay_t<decltype(callable)>,
+  const PredictionArguments &... >
   {
     filter.transition_state_f = callable;
+  }
+
+  //! @brief Sets the state transition matrix F function.
+  //!
+  //! @param callable The moved target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be bound to the prediction arguments and
+  //! called by the filter to compute the state transition matrix F function on
+  //! prediction steps.
+  //!
+  //! @complexity Constant.
+  inline constexpr void
+      f(auto &&callable) requires std::is_invocable_r_v < state_transition,
+      std::decay_t<decltype(callable)>,
+  const PredictionArguments &... >
+  {
+    filter.transition_state_f = std::forward<decltype(callable)>(callable);
   }
 
   //! @brief Returns the observation transition matrix H.
@@ -401,20 +616,74 @@ class kalman
               "discarded.")]] inline constexpr auto
   h() const -> output_model;
 
+  //! @brief Sets the observation transition matrix H.
+  //!
+  //! @param value The copied observation transition matrix H.
+  //!
+  //! @complexity Constant.
+  inline constexpr void h(const output_model &value);
+
+  //! @brief Sets the observation transition matrix H.
+  //!
+  //! @param value The moved observation transition matrix H.
+  //!
+  //! @complexity Constant.
+  inline constexpr void h(output_model &&value);
+
   //! @brief Sets the observation, measurement transition matrix H.
+  //!
+  //! @param value The first copied initializer used to set the observation,
+  //! measurement transition matrix H.
+  //! @param values The second and other copied initializers to set the
+  //! observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
   inline constexpr void h(const auto &value, const auto &...values);
 
+  //! @brief Sets the observation, measurement transition matrix H.
+  //!
+  //! @param value The first moved initializer used to set the observation,
+  //! measurement transition matrix H.
+  //! @param values The second and other moved initializers to set the
+  //! observation, measurement transition matrix H.
+  //!
+  //! @complexity Constant.
+  inline constexpr void h(auto &&value, auto &&...values);
+
   //! @brief Sets the observation, measurement transition matrix H function.
+  //!
+  //! @param callable The copied target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be bound to the prediction arguments and
+  //! called by the filter to compute the observation, measurement transition
+  //! matrix H on update steps.
+  //!
+  //! @complexity Constant.
+  //!
+  //! @todo Understand why Cland Tidy doesn't find the out-of-line definition.
+  inline constexpr void
+      h(const auto &callable) requires std::is_invocable_r_v < output_model,
+      std::decay_t<decltype(callable)>,
+  const state & >
+  {
+    filter.observation_state_h = callable;
+  }
+
+  //! @brief Sets the observation, measurement transition matrix H function.
+  //!
+  //! @param callable The moved target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be bound to the prediction arguments and
+  //! called by the filter to compute the observation, measurement transition
+  //! matrix H on update steps.
   //!
   //! @complexity Constant.
   inline constexpr void
-      h(const auto &callable) requires std::constructible_from <
-      std::function<output_model(const PredictionArguments &...)>,
-  decltype(callable) >
+      h(auto &&callable) requires std::is_invocable_r_v < output_model,
+      std::decay_t<decltype(callable)>,
+  const state & >
   {
-    filter.transition_observation_h = callable;
+    filter.observation_state_h = std::forward<decltype(callable)>(callable);
   }
 
   //! @brief Returns the control transition matrix G.
@@ -428,18 +697,70 @@ class kalman
 
   //! @brief Sets the control transition matrix G.
   //!
+  //! @param value The copied control transition matrix G.
+  //!
+  //! @complexity Constant.
+  inline constexpr void g(const input_control &value);
+
+  //! @brief Sets the control transition matrix G.
+  //!
+  //! @param value The moved control transition matrix G.
+  //!
+  //! @complexity Constant.
+  inline constexpr void g(input_control &&value);
+
+  //! @brief Sets the control transition matrix G.
+  //!
+  //! @param value The first copied initializer used to set the control
+  //! transition matrix G.
+  //! @param values The second and other copied initializers to set the control
+  //! transition matrix G.
+  //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values);
 
+  //! @brief Sets the control transition matrix G.
+  //!
+  //! @param value The first moved initializer used to set the control
+  //! transition matrix G.
+  //! @param values The second and other moved initializers to set the control
+  //! transition matrix G.
+  //!
+  //! @complexity Constant.
+  inline constexpr void g(auto &&value, auto &&...values);
+
   //! @brief Sets the control transition matrix G function.
+  //!
+  //! @param callable The copied target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be bound to the prediction arguments and
+  //! called by the filter to compute the control transition matrix G on
+  //! prediction steps.
   //!
   //! @complexity Constant.
   inline constexpr void
-      g(const auto &callable) requires std::constructible_from <
-      std::function<input_control(const PredictionArguments &...)>,
-  decltype(callable) >
+      g(const auto &callable) requires std::is_invocable_r_v < input_control,
+      std::decay_t<decltype(callable)>,
+  const PredictionArguments &... >
   {
     filter.transition_control_g = callable;
+  }
+
+  //! @brief Sets the control transition matrix G function.
+  //!
+  //! @param callable The moved target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be bound to the prediction arguments and
+  //! called by the filter to compute the control transition matrix G on
+  //! prediction steps.
+  //!
+  //! @complexity Constant.
+  inline constexpr void
+      g(auto &&callable) requires std::is_invocable_r_v < input_control,
+      std::decay_t<decltype(callable)>,
+  const PredictionArguments &... >
+  {
+    filter.transition_control_g = std::forward<decltype(callable)>(callable);
   }
 
   //! @brief Returns the gain matrix K.
@@ -468,6 +789,38 @@ class kalman
   [[nodiscard("The returned innovation uncertainty matrix S is unexpectedly "
               "discarded.")]] inline constexpr auto
   s() const -> innovation_uncertainty;
+
+  inline constexpr void
+      transition(const auto &callable) requires std::is_invocable_r_v < state,
+      std::decay_t<decltype(callable)>,
+  const state &, const PredictionArguments &... >
+  {
+    filter.transition = callable;
+  }
+
+  inline constexpr void
+      transition(auto &&callable) requires std::is_invocable_r_v < state,
+      std::decay_t<decltype(callable)>,
+  const state &, const PredictionArguments &... >
+  {
+    filter.transition = std::forward<decltype(callable)>(callable);
+  }
+
+  inline constexpr void
+      observation(const auto &callable) requires std::is_invocable_r_v < output,
+      std::decay_t<decltype(callable)>,
+  const state & >
+  {
+    filter.observation = callable;
+  }
+
+  inline constexpr void
+      observation(auto &&callable) requires std::is_invocable_r_v < output,
+      std::decay_t<decltype(callable)>,
+  const state & >
+  {
+    filter.observation = std::forward<decltype(callable)>(callable);
+  }
 
   //! @}
 
@@ -557,52 +910,123 @@ class kalman
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::x() const -> state
+       PredictionArguments...>::x() const -> state
 {
   return filter.x;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::x(const auto &value,
-                                            const auto &...values)
+       PredictionArguments...>::x(const state &value)
 {
-  filter.x = state{ value, values... };
+  filter.x = value;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::x(state &&value)
+{
+  filter.x = std::move(value);
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::x(const auto &value, const auto &...values)
+{
+  filter.x = std::move(state{ value, values... });
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::x(auto &&value, auto &&...values)
+{
+  filter.x = std::move(state{ std::forward<decltype(value)>(value),
+                              std::forward<decltype(values)>(values)... });
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::p() const -> estimate_uncertainty
+       PredictionArguments...>::z() const -> output
+{
+  return filter.z;
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr auto
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::p() const -> estimate_uncertainty
 {
   return filter.p;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::p(const auto &value,
-                                            const auto &...values)
+       PredictionArguments...>::p(const estimate_uncertainty &value)
 {
-  filter.p = estimate_uncertainty{ value, values... };
+  filter.p = value;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::p(estimate_uncertainty &&value)
+{
+  filter.p = std::move(value);
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::p(const auto &value, const auto &...values)
+{
+  filter.p = std::move(estimate_uncertainty{ value, values... });
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::p(auto &&value, auto &&...values)
+{
+  filter.p = std::move(
+      estimate_uncertainty{ std::forward<decltype(value)>(value),
+                            std::forward<decltype(values)>(values)... });
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::q() const -> process_uncertainty
+       PredictionArguments...>::q() const -> process_uncertainty
 {
   return filter.q;
 }
@@ -610,147 +1034,304 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 //! @todo Don't we need to reset functions or values when the other is set?
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::q(const auto &value,
-                                            const auto &...values)
+       PredictionArguments...>::q(const process_uncertainty &value)
 {
-  filter.q = process_uncertainty{ value, values... };
+  filter.q = value;
+}
+
+//! @todo Don't we need to reset functions or values when the other is set?
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::q(process_uncertainty &&value)
+{
+  filter.q = std::move(value);
+}
+
+//! @todo Don't we need to reset functions or values when the other is set?
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::q(const auto &value, const auto &...values)
+{
+  filter.q = std::move(process_uncertainty{ value, values... });
+}
+
+//! @todo Don't we need to reset functions or values when the other is set?
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::q(auto &&value, auto &&...values)
+{
+  filter.q = std::move(
+      process_uncertainty{ std::forward<decltype(value)>(value),
+                           std::forward<decltype(values)>(values)... });
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::r() const -> output_uncertainty
+       PredictionArguments...>::r() const -> output_uncertainty
 {
   return filter.r;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::r(const auto &value,
-                                            const auto &...values)
+       PredictionArguments...>::r(const output_uncertainty &value)
+{
+  filter.r = value;
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::r(output_uncertainty &&value)
+{
+  filter.r = std::move(value);
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::r(const auto &value, const auto &...values)
 {
   filter.r = output_uncertainty{ value, values... };
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::r(auto &&value, auto &&...values)
+{
+  filter.r = std::move(
+      output_uncertainty{ std::forward<decltype(value)>(value),
+                          std::forward<decltype(values)>(values)... });
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::f() const -> state_transition
+       PredictionArguments...>::f() const -> state_transition
 {
   return filter.f;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::f(const auto &value,
-                                            const auto &...values)
+       PredictionArguments...>::f(const state_transition &value)
+{
+  filter.f = value;
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::f(state_transition &&value)
+{
+  filter.f = std::move(value);
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::f(const auto &value, const auto &...values)
 {
   filter.f = state_transition{ value, values... };
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::f(auto &&value, auto &&...values)
+{
+  filter.f =
+      std::move(state_transition{ std::forward<decltype(value)>(value),
+                                  std::forward<decltype(values)>(values)... });
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::h() const -> output_model
+       PredictionArguments...>::h() const -> output_model
 {
   return filter.h;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::h(const auto &value,
-                                            const auto &...values)
+       PredictionArguments...>::h(const output_model &value)
+{
+  filter.h = value;
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::h(output_model &&value)
+{
+  filter.h = std::move(value);
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::h(const auto &value, const auto &...values)
 {
   filter.h = output_model{ value, values... };
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::h(auto &&value, auto &&...values)
+{
+  filter.h =
+      std::move(output_model{ std::forward<decltype(value)>(value),
+                              std::forward<decltype(values)>(values)... });
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::g() const -> input_control
+       PredictionArguments...>::g() const -> input_control
 {
   return filter.g;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::g(const auto &value,
-                                            const auto &...values)
+       PredictionArguments...>::g(const input_control &value)
+{
+  filter.g = value;
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::g(input_control &&value)
+{
+  filter.g = std::move(value);
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::g(const auto &value, const auto &...values)
 {
   filter.g = input_control{ value, values... };
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
+inline constexpr void
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       PredictionArguments...>::g(auto &&value, auto &&...values)
+{
+  filter.g =
+      std::move(input_control{ std::forward<decltype(value)>(value),
+                               std::forward<decltype(values)>(values)... });
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::k() const -> gain
+       PredictionArguments...>::k() const -> gain
 {
   return filter.k;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::y() const -> innovation
+       PredictionArguments...>::y() const -> innovation
 {
   return filter.y;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::s() const -> innovation_uncertainty
+       PredictionArguments...>::s() const -> innovation_uncertainty
 {
   return filter.s;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::update(const auto &...output_z)
+       PredictionArguments...>::update(const auto &...output_z)
 {
   filter.update(output_z...);
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename Multiply, typename... PredictionArguments>
+          typename Identity, typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       Multiply, PredictionArguments...>::predict(const PredictionArguments
-                                                      &...arguments,
-                                                  const auto &...input_u)
+       PredictionArguments...>::predict(const PredictionArguments &...arguments,
+                                        const auto &...input_u)
 {
   filter.predict(arguments..., input_u...);
 }
