@@ -67,12 +67,10 @@ namespace fcarouge::eigen
 //! often a prediction parameter.
 template <typename Type, std::size_t State, std::size_t Output,
           std::size_t Input, typename... PredictionArguments>
-using kalman =
-    fcarouge::kalman<Type, Eigen::Vector<Type, State>,
-                     Eigen::Vector<Type, Output>, Eigen::Vector<Type, Input>,
-                     internal::transpose, internal::symmetrize,
-                     internal::divide, internal::identity,
-                     std::multiplies<void>, PredictionArguments...>;
+using kalman = fcarouge::kalman<
+    Type, Eigen::Vector<Type, State>, Eigen::Vector<Type, Output>,
+    Eigen::Vector<Type, Input>, internal::transpose, internal::symmetrize,
+    internal::divide, internal::identity, PredictionArguments...>;
 
 } // namespace fcarouge::eigen
 
