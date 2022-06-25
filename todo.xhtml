@@ -88,16 +88,24 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a37a63ff235f1dba2aa6408d834f051e5">fcarouge::eigen::internal::divide::operator()</a>  (const auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::Matrix&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</dt>
-<dd><a class="anchor" id="_todo000002"></a>Why compilation fails if we specify the return type in the body of the function?  </dd>
+<dd><a class="anchor" id="_todo000005"></a>Why compilation fails if we specify the return type in the body of the function?  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#af67df6bd81ca269314ef740d50d33e5f">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::g</a>  </dt>
+<dd><a class="anchor" id="_todo000003"></a>Should G be initialized to all ones?  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a3bfec506273dd8b71a17ddb04e6b6cab">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::h</a>  </dt>
+<dd><a class="anchor" id="_todo000002"></a>Should H be initialized to all ones?  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a1a9f6401b10747c71909a5c0d4bd0191">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::k</a>  </dt>
+<dd><a class="anchor" id="_todo000004"></a>Should K be initialized to all ones?  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a768ce84161980497fe1237a45011bd48">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::observation_state_h</a>  </dt>
+<dd><a class="anchor" id="_todo000006"></a>Should we pass through the reference to the state x or have the user access it through k.x() when needed? Where does the practical/performance tradeoff leans toward? For the general case? For the specialized cases? Same question applies to other parameters.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#ab86860dc9f2992f0fb3c6b71e980c187">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000005"></a>F would be the predict Jacobian(x) extended? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000009"></a>F would be the predict Jacobian(x) extended? </p>
 <p class="interdd"></p>
 <p class="enddd">Would x = extended_ff(x, u) be extended?  </p>
 </dd>
-<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a5de3662dc7198c5cec86f743c6015aa7">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_state_f</a>  </dt>
-<dd><a class="anchor" id="_todo000003"></a>Pass the arguments by universal reference?  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a6086d37a82cc56f95efc7a04e04b4692">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::transition_state_f</a>  </dt>
+<dd><a class="anchor" id="_todo000007"></a>Pass the arguments by universal reference?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a549f84cd3dc8cbb3fdefd52aef3c35cc">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update</a>  (const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000008"></a>Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
 <p class="interdd"></p>
 <p class="interdd">H would be the observe Jacobian(x) extended? </p>
 <p class="interdd"></p>
@@ -106,7 +114,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman.xhtml#a3c2fb73364094e21919a0f165a1ba926">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x</a>  </dt>
 <dd><a class="anchor" id="_todo000001"></a>Is there a simpler, more portable way to get a zero initialization?  </dd>
 <dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000006"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000010"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd"></p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristis? </p>
 <p class="interdd"></p>
@@ -135,44 +143,42 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="enddd">Reproduce Ardupilot's inertial navigation EKF and comparison benchmarks in SITL (software in the loop simulation).  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a87d960bf092b4d09b96cab469c41bdcf">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::h</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000018"></a>Understand why Cland Tidy doesn't find the out-of-line definition.  </dd>
+<dd><a class="anchor" id="_todo000021"></a>Understand why Cland Tidy doesn't find the out-of-line definition.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a1e49b408cd795e92589a34f506813a6a">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::operator()</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u, const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000019"></a>Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000022"></a>Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable? </p>
 <p class="interdd"></p>
 <p class="enddd">Understand why the implementation cannot be moved out of the class.  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ac2971219f51722acc7f16039b20b033f">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::p</a>  (auto &amp;&amp;value, auto &amp;&amp;...values)</dt>
-<dd><a class="anchor" id="_todo000015"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods.  </dd>
+<dd><a class="anchor" id="_todo000018"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#acd1393a459126fdd0fa1e276e2f7d0bc">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000021"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000024"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
 <p class="interdd"></p>
 <p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ab45a5313a880da2554b3f37fab13b05d">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q</a>  (auto &amp;&amp;value, auto &amp;&amp;...values)</dt>
-<dd><a class="anchor" id="_todo000010"></a>Don't we need to reset functions or values when the other is set?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a556623f2e309d756ef375ed0171a471b">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000016"></a>Understand why Cland Tidy doesn't find the out-of-line definition.  </dd>
+<dd><a class="anchor" id="_todo000014"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ab69b78f0a46308422836563e23af783a">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q</a>  (const auto &amp;callable)</dt>
+<dd><a class="anchor" id="_todo000019"></a>Understand why Cland Tidy doesn't find the out-of-line definition.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a66430f17480527d89070d7af2029edd9">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q</a>  (const auto &amp;value, const auto &amp;...values)</dt>
-<dd><a class="anchor" id="_todo000009"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dd><a class="anchor" id="_todo000013"></a>Don't we need to reset functions or values when the other is set?  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ada6203e61d5ce10b5cf0c975228038da">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q</a>  (process_uncertainty &amp;&amp;value)</dt>
-<dd><a class="anchor" id="_todo000008"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dd><a class="anchor" id="_todo000012"></a>Don't we need to reset functions or values when the other is set?  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a009565f056f1deb87a35f0e90c071ace">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::q</a>  (const process_uncertainty &amp;value)</dt>
-<dd><a class="anchor" id="_todo000007"></a>Don't we need to reset functions or values when the other is set?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#adfdfd0aedf4a47d4e7aee854819f0a6a">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::r</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000017"></a>Understand why Cland Tidy doesn't find the out-of-line definition.  </dd>
+<dd><a class="anchor" id="_todo000011"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a152f1ab0e73deb15b07d8b031ad05c69">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::r</a>  (const auto &amp;callable)</dt>
+<dd><a class="anchor" id="_todo000020"></a>Understand why Cland Tidy doesn't find the out-of-line definition.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a4f812a58b1635e7a8f9e6f613b7e24f0">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::u</a>  () const -&gt; input</dt>
-<dd><a class="anchor" id="_todo000014"></a>Implement and test.  </dd>
+<dd><a class="anchor" id="_todo000017"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af0c0297d0d677737625e9fa99c2bb28f">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::update</a>  (const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000020"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000023"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients. </p>
 <p class="interdd"></p>
 <p class="enddd">Consider if returning the state vector X would be preferrable? And if it would be compatible with an ES-EKF implementation? Or if a fluent interface would be preferrable?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#acb35b3deb5e763d7da221a1fd68b640d">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x</a>  (const auto &amp;value, const auto &amp;...values)</dt>
-<dd><a class="anchor" id="_todo000011"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods.  </dd>
+<dd><a class="anchor" id="_todo000015"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a17e7e3f2742bc4a51dabe18a18736a60">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::x</a>  (auto &amp;&amp;value, auto &amp;&amp;...values)</dt>
-<dd><a class="anchor" id="_todo000012"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a775d92b5ed7b1cdc2b6591dc4267af7e">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, PredictionArguments &gt;::z</a>  () const -&gt; output</dt>
-<dd><a class="anchor" id="_todo000013"></a>Implement and test. </dd>
+<dd><a class="anchor" id="_todo000016"></a>Consider if a fluent interface would be preferrable? In addition to constructors? Same question for all characteristics set methods. </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -180,7 +186,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 23 2022 04:57:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Jun 25 2022 00:28:48 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
