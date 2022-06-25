@@ -310,8 +310,6 @@ class kalman
   //! @return The observation vector Z.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Implement and test.
   [[nodiscard("The returned observation vector Z is unexpectedly "
               "discarded.")]] inline constexpr auto
   z() const -> output;
@@ -430,7 +428,7 @@ class kalman
   inline constexpr void q(const auto &callable) requires std::is_invocable_r_v <
       process_uncertainty,
       std::decay_t<decltype(callable)>,
-  const PredictionArguments &... >
+  const state &, const PredictionArguments &... >
   {
     filter.noise_process_q = callable;
   }
@@ -447,7 +445,7 @@ class kalman
   inline constexpr void
       q(auto &&callable) requires std::is_invocable_r_v < process_uncertainty,
       std::decay_t<decltype(callable)>,
-  const PredictionArguments &... >
+  const state &, const PredictionArguments &... >
   {
     filter.noise_process_q = std::forward<decltype(callable)>(callable);
   }
@@ -509,8 +507,10 @@ class kalman
   //! @complexity Constant.
   //!
   //! @todo Understand why Cland Tidy doesn't find the out-of-line definition.
-  inline constexpr void r(const auto &callable) requires std::is_invocable_r_v<
-      output_uncertainty, std::decay_t<decltype(callable)>>
+  inline constexpr void r(const auto &callable) requires std::is_invocable_r_v <
+      output_uncertainty,
+      std::decay_t<decltype(callable)>,
+  const state &, const output & >
   {
     filter.noise_observation_r = callable;
   }
@@ -524,8 +524,10 @@ class kalman
   //! on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void r(auto &&callable) requires std::is_invocable_r_v<
-      output_uncertainty, std::decay_t<decltype(callable)>>
+  inline constexpr void
+      r(auto &&callable) requires std::is_invocable_r_v < output_uncertainty,
+      std::decay_t<decltype(callable)>,
+  const state &, const output & >
   {
     filter.noise_observation_r = std::forward<decltype(callable)>(callable);
   }
@@ -585,7 +587,7 @@ class kalman
   inline constexpr void
       f(const auto &callable) requires std::is_invocable_r_v < state_transition,
       std::decay_t<decltype(callable)>,
-  const PredictionArguments &... >
+  const state &, const PredictionArguments &... >
   {
     filter.transition_state_f = callable;
   }
@@ -602,7 +604,7 @@ class kalman
   inline constexpr void
       f(auto &&callable) requires std::is_invocable_r_v < state_transition,
       std::decay_t<decltype(callable)>,
-  const PredictionArguments &... >
+  const state &, const PredictionArguments &... >
   {
     filter.transition_state_f = std::forward<decltype(callable)>(callable);
   }

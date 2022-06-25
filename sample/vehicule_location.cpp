@@ -48,13 +48,12 @@ namespace
 
   // Prediction
   // The process noise matrix Q would be:
-  k.q(0.2 * 0.2 *
-      kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },
-                                   { 0.5, 1, 1, 0, 0, 0 },
-                                   { 0.5, 1, 1, 0, 0, 0 },
-                                   { 0, 0, 0, 0.25, 0.5, 0.5 },
-                                   { 0, 0, 0, 0.5, 1, 1 },
-                                   { 0, 0, 0, 0.5, 1, 1 } });
+  kalman::process_uncertainty q{
+    { 0.25, 0.5, 0.5, 0, 0, 0 }, { 0.5, 1, 1, 0, 0, 0 }, { 0.5, 1, 1, 0, 0, 0 },
+    { 0, 0, 0, 0.25, 0.5, 0.5 }, { 0, 0, 0, 0.5, 1, 1 }, { 0, 0, 0, 0.5, 1, 1 }
+  };
+  q *= 0.2 * 0.2;
+  k.q(std::move(q));
 
   // The state transition matrix F would be:
   k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
