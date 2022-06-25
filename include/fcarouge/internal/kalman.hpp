@@ -128,9 +128,15 @@ struct kalman {
   };
   output_uncertainty r{ 0 *
                         Identity().template operator()<output_uncertainty>() };
+
+  //! @todo Should H be initialized to all ones?
   output_model h{ Identity().template operator()<output_model>() };
   state_transition f{ Identity().template operator()<state_transition>() };
+
+  //! @todo Should G be initialized to all ones?
   input_control g{ Identity().template operator()<input_control>() };
+
+  //! @todo Should K be initialized to all ones?
   gain k{ Identity().template operator()<gain>() };
   innovation y{ 0 * Identity().template operator()<innovation>() };
   innovation_uncertainty s{
@@ -150,6 +156,11 @@ struct kalman {
   //! observation function. H = ∂h/∂X = ∂hj/∂xi that is each row i
   //! contains the derivatives of the state observation function for every
   //! element j in the state vector X.
+  //!
+  //! @todo Should we pass through the reference to the state x or have the user
+  //! access it through k.x() when needed? Where does the practical/performance
+  //! tradeoff leans toward? For the general case? For the specialized cases?
+  //! Same question applies to other parameters.
   std::function<output_model(const state &)> observation_state_h{
     [this](const state &x) -> output_model {
       static_cast<void>(x);
@@ -158,9 +169,13 @@ struct kalman {
   };
 
   //! @brief Compute observation noise R matrix.
-  std::function<output_uncertainty()> noise_observation_r{
-    [this] -> output_uncertainty { return r; }
-  };
+  std::function<output_uncertainty(const state &, const output &)>
+      noise_observation_r{ [this](const state &x,
+                                  const output &z) -> output_uncertainty {
+        static_cast<void>(x);
+        static_cast<void>(z);
+        return r;
+      } };
 
   //! @brief Compute the state transition F matrix.
   //!
@@ -171,18 +186,23 @@ struct kalman {
   //! state vector X.
   //!
   //! @todo Pass the arguments by universal reference?
-  std::function<state_transition(const PredictionArguments &...)>
+  std::function<state_transition(const state &, const PredictionArguments &...)>
       transition_state_f{
-        [this](const PredictionArguments &...arguments) -> state_transition {
+        [this](const state &x,
+               const PredictionArguments &...arguments) -> state_transition {
+          static_cast<void>(x);
           (static_cast<void>(arguments), ...);
           return f;
         }
       };
 
   //! @brief Compute process noise Q matrix.
-  std::function<process_uncertainty(const PredictionArguments &...)>
+  std::function<process_uncertainty(const state &,
+                                    const PredictionArguments &...)>
       noise_process_q{
-        [this](const PredictionArguments &...arguments) -> process_uncertainty {
+        [this](const state &x,
+               const PredictionArguments &...arguments) -> process_uncertainty {
+          static_cast<void>(x);
           (static_cast<void>(arguments), ...);
           return q;
         }
@@ -240,9 +260,10 @@ struct kalman {
 
     z = output{ output_z... };
     h = observation_state_h(x);
-    r = noise_observation_r();
+    r = noise_observation_r(x, z);
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
+    // Do we want to support custom y = output_difference(z, observation(x))?
     y = z - observation(x);
     x = x + k * y;
     p = symmetrize(estimate_uncertainty{
@@ -256,19 +277,17 @@ struct kalman {
   {
     const auto u{ input{ input_u... } };
 
-    f = transition_state_f(arguments...);
-    q = noise_process_q(arguments...);
+    f = transition_state_f(x, arguments...);
+    q = noise_process_q(x, arguments...);
     g = transition_control_g(arguments...);
-
     x = f * x + g * u;
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
   inline constexpr void predict(const PredictionArguments &...arguments)
   {
-    f = transition_state_f(arguments...);
-    q = noise_process_q(arguments...);
-
+    f = transition_state_f(x, arguments...);
+    q = noise_process_q(x, arguments...);
     x = transition(x, arguments...);
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }

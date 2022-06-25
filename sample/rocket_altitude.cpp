@@ -64,7 +64,8 @@ namespace
   // the system random acceleration. The accelerometer error v is much lower
   // than system's random acceleration, therefore we use ϵ^2 as a multiplier of
   // the process noise matrix. This makes our estimation uncertainty much lower!
-  k.q([](const std::chrono::milliseconds &delta_time) {
+  k.q([](const kalman::state &x, const std::chrono::milliseconds &delta_time) {
+    static_cast<void>(x);
     const auto dt{ std::chrono::duration<double>(delta_time).count() };
     return kalman::process_uncertainty{
       { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },
@@ -73,7 +74,8 @@ namespace
   });
 
   // The state transition matrix F would be:
-  k.f([](const std::chrono::milliseconds &delta_time) {
+  k.f([](const kalman::state &x, const std::chrono::milliseconds &delta_time) {
+    static_cast<void>(x);
     const auto dt{ std::chrono::duration<double>(delta_time).count() };
     return kalman::state_transition{ { 1, dt }, { 0, 1 } };
   });
