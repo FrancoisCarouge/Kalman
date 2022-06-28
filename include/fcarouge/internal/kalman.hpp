@@ -49,8 +49,16 @@ namespace fcarouge::internal
 {
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
-          typename... PredictionArguments>
+          typename UpdateArguments, typename PredictionArguments>
 struct kalman {
+};
+
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename... UpdateArguments, typename... PredictionArguments>
+struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+              std::tuple<UpdateArguments...>,
+              std::tuple<PredictionArguments...>> {
   //! @name Public Member Types
   //! @{
 
@@ -161,21 +169,28 @@ struct kalman {
   //! access it through k.x() when needed? Where does the practical/performance
   //! tradeoff leans toward? For the general case? For the specialized cases?
   //! Same question applies to other parameters.
-  std::function<output_model(const state &)> observation_state_h{
-    [this](const state &x) -> output_model {
-      static_cast<void>(x);
-      return h;
-    }
-  };
+  std::function<output_model(const state &, const UpdateArguments &...)>
+      observation_state_h{
+        [this](const state &x,
+               const UpdateArguments &...arguments) -> output_model {
+          static_cast<void>(x);
+          (static_cast<void>(arguments), ...);
+          return h;
+        }
+      };
 
   //! @brief Compute observation noise R matrix.
-  std::function<output_uncertainty(const state &, const output &)>
-      noise_observation_r{ [this](const state &x,
-                                  const output &z) -> output_uncertainty {
-        static_cast<void>(x);
-        static_cast<void>(z);
-        return r;
-      } };
+  std::function<output_uncertainty(const state &, const output &,
+                                   const UpdateArguments &...)>
+      noise_observation_r{
+        [this](const state &x, const output &z,
+               const UpdateArguments &...arguments) -> output_uncertainty {
+          static_cast<void>(x);
+          static_cast<void>(z);
+          (static_cast<void>(arguments), ...);
+          return r;
+        }
+      };
 
   //! @brief Compute the state transition F matrix.
   //!
@@ -236,9 +251,12 @@ struct kalman {
   //! extended filter, the client implements a linearization of the observation
   //! function hand the state observation H matrix is the Jacobian of the state
   //! observation function.
-  std::function<output(const state &)> observation{
-    [this](const state &x) -> output { return h * x; }
-  };
+  std::function<output(const state &, const UpdateArguments &...arguments)>
+      observation{ [this](const state &x,
+                          const UpdateArguments &...arguments) -> output {
+        (static_cast<void>(arguments), ...);
+        return h * x;
+      } };
 
   Transpose transpose;
   Divide divide;
@@ -254,17 +272,18 @@ struct kalman {
   //! does the compiler/linker do it for us?
   //! @todo H would be the observe Jacobian(x) extended?
   //! @todo Would innovation y = z - extended_hh(x) be extended?
-  inline constexpr void update(const auto &...output_z)
+  inline constexpr void update(const UpdateArguments &...arguments,
+                               const auto &...output_z)
   {
     const auto i{ identity.template operator()<estimate_uncertainty>() };
 
     z = output{ output_z... };
-    h = observation_state_h(x);
-    r = noise_observation_r(x, z);
+    h = observation_state_h(x, arguments...);
+    r = noise_observation_r(x, z, arguments...);
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
     // Do we want to support custom y = output_difference(z, observation(x))?
-    y = z - observation(x);
+    y = z - observation(x, arguments...);
     x = x + k * y;
     p = symmetrize(estimate_uncertainty{
         (i - k * h) * p * transpose(i - k * h) + k * r * transpose(k) });

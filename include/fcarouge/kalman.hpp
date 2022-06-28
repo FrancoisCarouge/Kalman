@@ -47,6 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <concepts>
 #include <functional>
+#include <tuple>
 #include <type_traits>
 #include <utility>
 
@@ -110,12 +111,27 @@ namespace fcarouge
 //! @todo Support mux pipes https://github.com/joboccara/pipes operator filter?
 //! @todo Reproduce Ardupilot's inertial navigation EKF and comparison
 //! benchmarks in SITL (software in the loop simulation).
+//! @todo Can we provide the operator[] for the vector characteristics
+//! regardless of implementation? And for the matrix ones too? It could simplify
+//! client code.
 template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
     typename Symmetrize = std::identity, typename Divide = std::divides<void>,
-    typename Identity = internal::identity, typename... PredictionArguments>
+    typename Identity = internal::identity,
+    typename UpdateArguments = std::tuple<>,
+    typename PredictionArguments = std::tuple<>>
 class kalman
+{
+};
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
+class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
+             Identity, std::tuple<UpdateArguments...>,
+             std::tuple<PredictionArguments...>>
 {
   private:
   //! @name Private Member Types
@@ -124,7 +140,8 @@ class kalman
   //! @brief Implementation details of the filter.
   using implementation =
       internal::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
-                       Identity, PredictionArguments...>;
+                       Identity, std::tuple<UpdateArguments...>,
+                       std::tuple<PredictionArguments...>>;
 
   //! @}
 
@@ -510,7 +527,7 @@ class kalman
   inline constexpr void r(const auto &callable) requires std::is_invocable_r_v <
       output_uncertainty,
       std::decay_t<decltype(callable)>,
-  const state &, const output & >
+  const state &, const output &, const UpdateArguments &... >
   {
     filter.noise_observation_r = callable;
   }
@@ -527,7 +544,7 @@ class kalman
   inline constexpr void
       r(auto &&callable) requires std::is_invocable_r_v < output_uncertainty,
       std::decay_t<decltype(callable)>,
-  const state &, const output & >
+  const state &, const output &, const UpdateArguments &... >
   {
     filter.noise_observation_r = std::forward<decltype(callable)>(callable);
   }
@@ -666,7 +683,7 @@ class kalman
   inline constexpr void
       h(const auto &callable) requires std::is_invocable_r_v < output_model,
       std::decay_t<decltype(callable)>,
-  const state & >
+  const state &, const UpdateArguments &... >
   {
     filter.observation_state_h = callable;
   }
@@ -683,7 +700,7 @@ class kalman
   inline constexpr void
       h(auto &&callable) requires std::is_invocable_r_v < output_model,
       std::decay_t<decltype(callable)>,
-  const state & >
+  const state &, const UpdateArguments &... >
   {
     filter.observation_state_h = std::forward<decltype(callable)>(callable);
   }
@@ -811,7 +828,7 @@ class kalman
   inline constexpr void
       observation(const auto &callable) requires std::is_invocable_r_v < output,
       std::decay_t<decltype(callable)>,
-  const state & >
+  const state &, const UpdateArguments &... >
   {
     filter.observation = callable;
   }
@@ -819,7 +836,7 @@ class kalman
   inline constexpr void
       observation(auto &&callable) requires std::is_invocable_r_v < output,
       std::decay_t<decltype(callable)>,
-  const state & >
+  const state &, const UpdateArguments &... >
   {
     filter.observation = std::forward<decltype(callable)>(callable);
   }
@@ -878,7 +895,8 @@ class kalman
   //! @todo Consider if returning the state vector X would be preferrable? And
   //! if it would be compatible with an ES-EKF implementation? Or if a fluent
   //! interface would be preferrable?
-  inline constexpr void update(const auto &...output_z);
+  inline constexpr void update(const UpdateArguments &...arguments,
+                               const auto &...output_z);
 
   //! @brief Produces estimates of the state variables and uncertainties.
   //!
@@ -912,50 +930,61 @@ class kalman
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::x() const -> state
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::x()
+    const -> state
 {
   return filter.x;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::x(const state &value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::x(const state &value)
 {
   filter.x = value;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::x(state &&value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::x(state &&value)
 {
   filter.x = std::move(value);
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::x(const auto &value, const auto &...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::x(const auto &value,
+                                              const auto &...values)
 {
   filter.x = std::move(state{ value, values... });
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::x(auto &&value, auto &&...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::x(auto &&value, auto &&...values)
 {
   filter.x = std::move(state{ std::forward<decltype(value)>(value),
                               std::forward<decltype(values)>(values)... });
@@ -963,60 +992,73 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::z() const -> output
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::z()
+    const -> output
 {
   return filter.z;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::p() const -> estimate_uncertainty
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::p()
+    const -> estimate_uncertainty
 {
   return filter.p;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::p(const estimate_uncertainty &value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::p(const estimate_uncertainty &value)
 {
   filter.p = value;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::p(estimate_uncertainty &&value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::p(estimate_uncertainty &&value)
 {
   filter.p = std::move(value);
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::p(const auto &value, const auto &...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::p(const auto &value,
+                                              const auto &...values)
 {
   filter.p = std::move(estimate_uncertainty{ value, values... });
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::p(auto &&value, auto &&...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::p(auto &&value, auto &&...values)
 {
   filter.p = std::move(
       estimate_uncertainty{ std::forward<decltype(value)>(value),
@@ -1025,10 +1067,12 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::q() const -> process_uncertainty
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::q()
+    const -> process_uncertainty
 {
   return filter.q;
 }
@@ -1036,10 +1080,12 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 //! @todo Don't we need to reset functions or values when the other is set?
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::q(const process_uncertainty &value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::q(const process_uncertainty &value)
 {
   filter.q = value;
 }
@@ -1047,10 +1093,12 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 //! @todo Don't we need to reset functions or values when the other is set?
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::q(process_uncertainty &&value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::q(process_uncertainty &&value)
 {
   filter.q = std::move(value);
 }
@@ -1058,10 +1106,13 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 //! @todo Don't we need to reset functions or values when the other is set?
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::q(const auto &value, const auto &...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::q(const auto &value,
+                                              const auto &...values)
 {
   filter.q = std::move(process_uncertainty{ value, values... });
 }
@@ -1069,10 +1120,12 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 //! @todo Don't we need to reset functions or values when the other is set?
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::q(auto &&value, auto &&...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::q(auto &&value, auto &&...values)
 {
   filter.q = std::move(
       process_uncertainty{ std::forward<decltype(value)>(value),
@@ -1081,50 +1134,61 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::r() const -> output_uncertainty
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::r()
+    const -> output_uncertainty
 {
   return filter.r;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::r(const output_uncertainty &value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::r(const output_uncertainty &value)
 {
   filter.r = value;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::r(output_uncertainty &&value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::r(output_uncertainty &&value)
 {
   filter.r = std::move(value);
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::r(const auto &value, const auto &...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::r(const auto &value,
+                                              const auto &...values)
 {
   filter.r = output_uncertainty{ value, values... };
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::r(auto &&value, auto &&...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::r(auto &&value, auto &&...values)
 {
   filter.r = std::move(
       output_uncertainty{ std::forward<decltype(value)>(value),
@@ -1133,50 +1197,61 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::f() const -> state_transition
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::f()
+    const -> state_transition
 {
   return filter.f;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::f(const state_transition &value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::f(const state_transition &value)
 {
   filter.f = value;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::f(state_transition &&value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::f(state_transition &&value)
 {
   filter.f = std::move(value);
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::f(const auto &value, const auto &...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::f(const auto &value,
+                                              const auto &...values)
 {
   filter.f = state_transition{ value, values... };
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::f(auto &&value, auto &&...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::f(auto &&value, auto &&...values)
 {
   filter.f =
       std::move(state_transition{ std::forward<decltype(value)>(value),
@@ -1185,50 +1260,61 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::h() const -> output_model
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::h()
+    const -> output_model
 {
   return filter.h;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::h(const output_model &value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::h(const output_model &value)
 {
   filter.h = value;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::h(output_model &&value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::h(output_model &&value)
 {
   filter.h = std::move(value);
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::h(const auto &value, const auto &...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::h(const auto &value,
+                                              const auto &...values)
 {
   filter.h = output_model{ value, values... };
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::h(auto &&value, auto &&...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::h(auto &&value, auto &&...values)
 {
   filter.h =
       std::move(output_model{ std::forward<decltype(value)>(value),
@@ -1237,50 +1323,61 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::g() const -> input_control
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::g()
+    const -> input_control
 {
   return filter.g;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::g(const input_control &value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::g(const input_control &value)
 {
   filter.g = value;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::g(input_control &&value)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::g(input_control &&value)
 {
   filter.g = std::move(value);
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::g(const auto &value, const auto &...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::g(const auto &value,
+                                              const auto &...values)
 {
   filter.g = input_control{ value, values... };
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::g(auto &&value, auto &&...values)
+       std::tuple<UpdateArguments...>,
+       std::tuple<PredictionArguments...>>::g(auto &&value, auto &&...values)
 {
   filter.g =
       std::move(input_control{ std::forward<decltype(value)>(value),
@@ -1289,51 +1386,60 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::k() const -> gain
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::k()
+    const -> gain
 {
   return filter.k;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::y() const -> innovation
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::y()
+    const -> innovation
 {
   return filter.y;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr auto
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::s() const -> innovation_uncertainty
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::s()
+    const -> innovation_uncertainty
 {
   return filter.s;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::update(const auto &...output_z)
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::
+    update(const UpdateArguments &...arguments, const auto &...output_z)
 {
-  filter.update(output_z...);
+  filter.update(arguments..., output_z...);
 }
 
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
-          typename Identity, typename... PredictionArguments>
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
 inline constexpr void
 kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       PredictionArguments...>::predict(const PredictionArguments &...arguments,
-                                        const auto &...input_u)
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::
+    predict(const PredictionArguments &...arguments, const auto &...input_u)
 {
   filter.predict(arguments..., input_u...);
 }
