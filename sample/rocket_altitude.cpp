@@ -43,7 +43,8 @@ namespace
 //! @example rocket_altitude.cpp
 [[maybe_unused]] auto rocket_altitude{ [] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
-  using kalman = eigen::kalman<double, 2, 1, 1, std::chrono::milliseconds>;
+  using kalman = eigen::kalman<double, 2, 1, 1, std::tuple<>,
+                               std::tuple<std::chrono::milliseconds>>;
   kalman k;
 
   // Initialization
