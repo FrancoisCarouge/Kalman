@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['u_0',['u',['../classfcarouge_1_1kalman.xhtml#a4f812a58b1635e7a8f9e6f613b7e24f0',1,'fcarouge::kalman']]],
-  ['update_1',['update',['../structfcarouge_1_1internal_1_1kalman.xhtml#a549f84cd3dc8cbb3fdefd52aef3c35cc',1,'fcarouge::internal::kalman::update()'],['../classfcarouge_1_1kalman.xhtml#af0c0297d0d677737625e9fa99c2bb28f',1,'fcarouge::kalman::update()']]]
+  ['u_0',['u',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a6e6f32bce6418b0ee9eff0043f60b3b5',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
+  ['update_1',['update',['../structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#ada982df51bf70f5e21f6b5a7fa81cf7e',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::update()'],['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#aaba5bd00471dd86bb62ab433e601e290',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::update()']]]
 ];

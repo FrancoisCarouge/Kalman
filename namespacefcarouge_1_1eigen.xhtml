@@ -97,22 +97,22 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a0a4898a4d871508e1af8d35cab6ecb01"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t State, std::size_t Output, std::size_t Input, typename... PredictionArguments&gt; </td></tr>
-<tr class="memitem:a0a4898a4d871508e1af8d35cab6ecb01"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">internal::transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">internal::symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">internal::divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1identity.xhtml">internal::identity</a>, PredictionArguments... &gt;</td></tr>
-<tr class="memdesc:a0a4898a4d871508e1af8d35cab6ecb01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">More...</a><br /></td></tr>
-<tr class="separator:a0a4898a4d871508e1af8d35cab6ecb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a250650abbe73b50a044e72f75354a4c8"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 0, typename UpdateArguments  = std::tuple&lt;&gt;, typename PredictionArguments  = std::tuple&lt;&gt;&gt; </td></tr>
+<tr class="memitem:a250650abbe73b50a044e72f75354a4c8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">internal::transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">internal::symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">internal::divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1identity.xhtml">internal::identity</a>, UpdateArguments, PredictionArguments &gt;</td></tr>
+<tr class="memdesc:a250650abbe73b50a044e72f75354a4c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">More...</a><br /></td></tr>
+<tr class="separator:a250650abbe73b50a044e72f75354a4c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a0a4898a4d871508e1af8d35cab6ecb01" name="a0a4898a4d871508e1af8d35cab6ecb01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a4898a4d871508e1af8d35cab6ecb01">&#9670;&nbsp;</a></span>kalman</h2>
+<a id="a250650abbe73b50a044e72f75354a4c8" name="a250650abbe73b50a044e72f75354a4c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a250650abbe73b50a044e72f75354a4c8">&#9670;&nbsp;</a></span>kalman</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type , std::size_t State, std::size_t Output, std::size_t Input, typename... PredictionArguments&gt; </div>
+template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 0, typename UpdateArguments  = std::tuple&lt;&gt;, typename PredictionArguments  = std::tuple&lt;&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a0a4898a4d871508e1af8d35cab6ecb01">fcarouge::eigen::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, Eigen::Vector&lt;Type, State&gt;, Eigen::Vector&lt;Type, Output&gt;, Eigen::Vector&lt;Type, Input&gt;, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">internal::transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">internal::symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">internal::divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1identity.xhtml">internal::identity</a>, PredictionArguments...&gt;</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">fcarouge::eigen::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, Eigen::Vector&lt;Type, State&gt;, Eigen::Vector&lt;Type, Output&gt;, Eigen::Vector&lt;Type, Input&gt;, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">internal::transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">internal::symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">internal::divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1identity.xhtml">internal::identity</a>, UpdateArguments, PredictionArguments&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -132,7 +132,7 @@ template&lt;typename Type , std::size_t State, std::size_t Output, std::size_t I
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="building_height_8cpp-example.xhtml#a1">building_height.cpp</a>, <a class="el" href="dog_position_8cpp-example.xhtml#a1">dog_position.cpp</a>, <a class="el" href="liquid_temperature_8cpp-example.xhtml#a1">liquid_temperature.cpp</a>, <a class="el" href="rocket_altitude_8cpp-example.xhtml#a1">rocket_altitude.cpp</a>, and <a class="el" href="vehicule_location_8cpp-example.xhtml#a1">vehicule_location.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__eigen_8hpp_source.xhtml#l00070">70</a> of file <a class="el" href="kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman__eigen_8hpp_source.xhtml#l00072">72</a> of file <a class="el" href="kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
 
 </div>
 </div>
@@ -142,7 +142,7 @@ template&lt;typename Type , std::size_t State, std::size_t Output, std::size_t I
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li>
-    <li class="footer">Generated on Sat Jun 25 2022 00:28:48 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Tue Jun 28 2022 01:50:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

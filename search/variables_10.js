@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['transition_0',['transition',['../structfcarouge_1_1internal_1_1kalman.xhtml#af4717515ec7921871b2db5d6a6448038',1,'fcarouge::internal::kalman']]],
-  ['transition_5fcontrol_5fg_1',['transition_control_g',['../structfcarouge_1_1internal_1_1kalman.xhtml#a9a66a8ec4bc3b44f1baf393b6942e381',1,'fcarouge::internal::kalman']]],
-  ['transition_5fstate_5ff_2',['transition_state_f',['../structfcarouge_1_1internal_1_1kalman.xhtml#a6086d37a82cc56f95efc7a04e04b4692',1,'fcarouge::internal::kalman']]],
-  ['transpose_3',['transpose',['../structfcarouge_1_1internal_1_1kalman.xhtml#a4af3d4ae2e00204dee7935f1cebfa643',1,'fcarouge::internal::kalman']]]
+  ['transition_0',['transition',['../structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a0883dfa21c7567a1518fef109d1a9602',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
+  ['transition_5fcontrol_5fg_1',['transition_control_g',['../structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a9d091451db6b411b0a076635240ed19c',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
+  ['transition_5fstate_5ff_2',['transition_state_f',['../structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a0649cf6c3737f95785c98acb6b0c8b7b',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
+  ['transpose_3',['transpose',['../structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#ae292271b8b158500c336fd0864b4a380',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]]
 ];

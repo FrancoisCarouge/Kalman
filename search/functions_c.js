@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['transition_0',['transition',['../classfcarouge_1_1kalman.xhtml#a4a09b31c36d29ad4eb014682a730d01d',1,'fcarouge::kalman::transition(const auto &amp;callable)'],['../classfcarouge_1_1kalman.xhtml#aeed636a3d67148c33752dd6d4be4381d',1,'fcarouge::kalman::transition(auto &amp;&amp;callable)']]]
+  ['transition_0',['transition',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a7846683e1f74966f3c855d1b01ba9c51',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::transition(const auto &amp;callable)'],['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a4644c6c5e8987a82e6c2f39a9079d84d',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::transition(auto &amp;&amp;callable)']]]
 ];

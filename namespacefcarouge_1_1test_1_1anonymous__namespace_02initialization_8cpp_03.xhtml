@@ -111,32 +111,21 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">{ [] {</div>
 <div class="line">  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a837025671cf98f9fd71f05677581179c">f</a>() == 1);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a96762ae90b1e01be33634e8b781e12b3">g</a>() == 1);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6cb57fff11bff8192d14757ed09ac893">h</a>() == 1);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a4f4614f96ad5a959cc04c3b76b30df56">k</a>() == 1);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a4ccf9734622879455ce825de46dc5c4a">p</a>() == 1);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac9defadd14ff1ad5e1601cc46ddf05a7">q</a>() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a951f595f0919a6b6676a32c8df07a2ee">r</a>() == 0 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a4835d24ec7b4fd4cc7197b7ccf73f617">s</a>() == 1);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5ceac5e310022d1510d96b3f919c3cc7">x</a>() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a539aa5fc86af0bb2bdbb2d1c834b61a4">y</a>() == 0);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a775d92b5ed7b1cdc2b6591dc4267af7e">z</a>() == 0);</div>
+<div class="line">  assert(k.f() == 1);</div>
+<div class="line">  assert(k.g() == 1);</div>
+<div class="line">  assert(k.h() == 1);</div>
+<div class="line">  assert(k.k() == 1);</div>
+<div class="line">  assert(k.p() == 1);</div>
+<div class="line">  assert(k.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
+<div class="line">  assert(k.r() == 0 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
+<div class="line">  assert(k.s() == 1);</div>
+<div class="line">  assert(k.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
+<div class="line">  assert(k.y() == 0);</div>
+<div class="line">  assert(k.z() == 0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}() }</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00118">kalman.hpp:119</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4835d24ec7b4fd4cc7197b7ccf73f617"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4835d24ec7b4fd4cc7197b7ccf73f617">fcarouge::kalman::s</a></div><div class="ttdeci">constexpr auto s() const -&gt; innovation_uncertainty</div><div class="ttdoc">Returns the innovation uncertainty matrix S.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01315">kalman.hpp:1315</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4ccf9734622879455ce825de46dc5c4a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4ccf9734622879455ce825de46dc5c4a">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; estimate_uncertainty</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00979">kalman.hpp:979</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4f4614f96ad5a959cc04c3b76b30df56"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4f4614f96ad5a959cc04c3b76b30df56">fcarouge::kalman::k</a></div><div class="ttdeci">constexpr auto k() const -&gt; gain</div><div class="ttdoc">Returns the gain matrix K.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01295">kalman.hpp:1295</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a539aa5fc86af0bb2bdbb2d1c834b61a4"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a539aa5fc86af0bb2bdbb2d1c834b61a4">fcarouge::kalman::y</a></div><div class="ttdeci">constexpr auto y() const -&gt; innovation</div><div class="ttdoc">Returns the innovation vector Y.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01305">kalman.hpp:1305</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a5ceac5e310022d1510d96b3f919c3cc7"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a5ceac5e310022d1510d96b3f919c3cc7">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; state</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00918">kalman.hpp:918</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6cb57fff11bff8192d14757ed09ac893"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6cb57fff11bff8192d14757ed09ac893">fcarouge::kalman::h</a></div><div class="ttdeci">constexpr auto h() const -&gt; output_model</div><div class="ttdoc">Returns the observation transition matrix H.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01191">kalman.hpp:1191</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a775d92b5ed7b1cdc2b6591dc4267af7e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a775d92b5ed7b1cdc2b6591dc4267af7e">fcarouge::kalman::z</a></div><div class="ttdeci">constexpr auto z() const -&gt; output</div><div class="ttdoc">Returns the observation vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00969">kalman.hpp:969</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a837025671cf98f9fd71f05677581179c"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a837025671cf98f9fd71f05677581179c">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr auto f() const -&gt; state_transition</div><div class="ttdoc">Returns the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01139">kalman.hpp:1139</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a951f595f0919a6b6676a32c8df07a2ee"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a951f595f0919a6b6676a32c8df07a2ee">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; output_uncertainty</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01087">kalman.hpp:1087</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a96762ae90b1e01be33634e8b781e12b3"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a96762ae90b1e01be33634e8b781e12b3">fcarouge::kalman::g</a></div><div class="ttdeci">constexpr auto g() const -&gt; input_control</div><div class="ttdoc">Returns the control transition matrix G.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01243">kalman.hpp:1243</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ac9defadd14ff1ad5e1601cc46ddf05a7"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ac9defadd14ff1ad5e1601cc46ddf05a7">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr auto q() const -&gt; process_uncertainty</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01031">kalman.hpp:1031</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00124">kalman.hpp:125</a></div></div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000001">Test:</a></b></dt><dd>Verify default values are initialized for single dimension filters. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="initialization_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="initialization_8cpp_source.xhtml">initialization.cpp</a>.</p>
@@ -168,17 +157,17 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> z5x1{ Eigen::Vector&lt;double, 5&gt;::Zero() };</div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> z5x5{ Eigen::Matrix&lt;double, 5, 5&gt;::Zero() };</div>
 <div class="line"> </div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a837025671cf98f9fd71f05677581179c">f</a>() == i5x5);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a96762ae90b1e01be33634e8b781e12b3">g</a>() == i5x3);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6cb57fff11bff8192d14757ed09ac893">h</a>() == i4x5);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a4f4614f96ad5a959cc04c3b76b30df56">k</a>() == i5x4);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a4ccf9734622879455ce825de46dc5c4a">p</a>() == i5x5);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac9defadd14ff1ad5e1601cc46ddf05a7">q</a>() == z5x5 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a951f595f0919a6b6676a32c8df07a2ee">r</a>() == z4x4 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a4835d24ec7b4fd4cc7197b7ccf73f617">s</a>() == i4x4);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5ceac5e310022d1510d96b3f919c3cc7">x</a>() == z5x1 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a539aa5fc86af0bb2bdbb2d1c834b61a4">y</a>() == z4x1);</div>
-<div class="line">  assert(k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a775d92b5ed7b1cdc2b6591dc4267af7e">z</a>() == z4x1);</div>
+<div class="line">  assert(k.f() == i5x5);</div>
+<div class="line">  assert(k.g() == i5x3);</div>
+<div class="line">  assert(k.h() == i4x5);</div>
+<div class="line">  assert(k.k() == i5x4);</div>
+<div class="line">  assert(k.p() == i5x5);</div>
+<div class="line">  assert(k.q() == z5x5 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
+<div class="line">  assert(k.r() == z4x4 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
+<div class="line">  assert(k.s() == i4x4);</div>
+<div class="line">  assert(k.x() == z5x1 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
+<div class="line">  assert(k.y() == z4x1);</div>
+<div class="line">  assert(k.z() == z4x1);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}() }</div>
@@ -194,7 +183,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1test.xhtml">test</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml">anonymous_namespace{initialization.cpp}</a></li>
-    <li class="footer">Generated on Sat Jun 25 2022 00:28:48 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Tue Jun 28 2022 01:50:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
