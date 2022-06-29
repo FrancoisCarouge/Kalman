@@ -127,16 +127,27 @@ Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
 
 ```cpp
 template <
-    typename Type = double,
-    typename State = Type,
-    typename Output = State,
-    typename Input = State,
-    typename Transpose = std::identity,
-    typename Symmetrize = std::identity,
-    typename Divide = std::divides<void>,
-    typename Identity = internal::identity,
-    typename... PredictionArguments>
-class kalman
+  typename Type,
+  typename State,
+  typename Output,
+  typename Input,
+  typename Transpose,
+  typename Symmetrize,
+  typename Divide,
+  typename Identity,
+  typename... UpdateArguments,
+  typename... PredictionArguments>
+class kalman<
+  Type,
+  State,
+  Output,
+  Input,
+  Transpose,
+  Symmetrize,
+  Divide,
+  Identity,
+  std::tuple<UpdateArguments...>,
+  std::tuple<PredictionArguments...>>
 ```
 
 ### Template Parameters
@@ -144,28 +155,32 @@ class kalman
 | Template Parameter | Definition |
 | --- | --- |
 | `Type` | The type template parameter of the value type of the filter. |
-| `State` | The type template parameter of the state vector x. State variables can be observed (measured), or hidden variables (infeered). This is the the mean of the multivariate Gaussian. |
+| `State` | The type template parameter of the state vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. |
 | `Output` | The type template parameter of the measurement vector z. |
 | `Input` | The type template parameter of the control u. |
 | `Transpose` | The customization point object template parameter of the matrix transpose functor. |
 | `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. |
 | `Divide` | The customization point object template parameter of the matrix division functor. |
 | `Identity` | The customization point object template parameter of the matrix identity functor. |
-| `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Time, or a delta thereof, is often a prediction parameter. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. |
+| `UpdateArguments...` | The variadic type template parameter for additional update function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h.
+| `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object h. |
 
 ### Member Types
 
-| Member Type | Definition |
-| --- | --- |
-| `state` | Type of the state estimate vector X. |
-| `output` | Type of the observation vector Z, also known as Y. |
-| `input` | Type of the control vector U. |
-| `estimate_uncertainty` | Type of the estimated covariance matrix P, also known as Σ. |
-| `process_uncertainty` | Type of the process noise covariance matrix Q. |
-| `output_uncertainty` | Type of the observation, measurement noise covariance matrix R. |
-| `state_transition` | Type of the state transition matrix F, also known as Φ or A. |
-| `output_model` | Type of the observation transition matrix H, also known as C. |
-| `input_control` | Type of the control transition matrix G, also known as B. |
+| Member Type | Definition | Dimensions |
+| --- | --- | --- |
+| `estimate_uncertainty` | Type of the estimated covariance matrix P, also known as Σ. | x by z |
+| `gain` | Type of the gain matrix K. | x by z |
+| `innovation_uncertainty` | Type of the innovation uncertainty matrix S. | z by z |
+| `innovation` | Type of the innovation vector Y. | z by 1 |
+| `input_control` | Type of the control transition matrix G, also known as B. | x by u |
+| `input` | Type of the control vector U. | u by 1 |
+| `output_model` | Type of the observation transition matrix H, also known as C. | z by x |
+| `output_uncertainty` | Type of the observation, measurement noise covariance matrix R. | z by z |
+| `output` | Type of the observation vector Z, also known as Y or O. | z by 1 |
+| `process_uncertainty` | Type of the process noise covariance matrix Q. | x by x |
+| `state_transition` | Type of the state transition matrix F, also known as Φ or A. | x by x |
+| `state` | Type of the state estimate vector X. | x by 1 |
 
 ### Member Functions
 
@@ -179,18 +194,20 @@ class kalman
 
 | Characteristic | Definition |
 | --- | --- |
-| `f` | Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the identity matrix.|
-| `g` | Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the identity matrix. |
-| `h` | Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the identity matrix. |
+| `f` | Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
+| `g` | Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
+| `h` | Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
 | `k` | Manages the gain matrix K. Gets the value last computed during the update. The default value is the identity matrix. |
 | `p` | Manages the estimated covariance matrix P. Gets the value. Initializes and sets the value. The default value is the identity matrix. |
-| `q` | Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the null matrix. |
-| `r` | Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable to compute the value. The default value is the null matrix. |
+| `q` | Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix. |
+| `r` | Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix. |
 | `s` | Manages the innovation uncertainty matrix S. Gets the value last computed during the update. The default value is the identity matrix. |
 | `u` | Manages the control vector U. Gets the value last used in prediction. |
 | `x` | Manages the state estimate vector X. Gets the value. Initializes and sets the value. The default value is the null vector. |
 | `y` | Manages the innovation vector Y. Gets the value last computed during the update. The default value is the null vector. |
 | `z` | Manages the observation vector Z. Gets the value last used during the update. The default value is the null vector. |
+| `transition` | Manages the state transition function object f. Configures the callable object to compute the transition state value. The default value is the equivalent to `f(x) = F * X`. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while F is the Jacobian of the transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the derivatives of the state transition function for every element j in the state vector X. |
+| `observation` | Manages the state observation function object h. Configures the callable object to compute the observation state value. The default value is the equivalent to `h(x) = H * X`. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while H is the Jacobian of the observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i contains the derivatives of the state observation function for every element j in the state vector X. |
 
 #### Modifiers
 
