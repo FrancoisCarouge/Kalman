@@ -161,7 +161,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //!
   //! @details The state observation H is also known as C.
   //! For non-linear system, or extended filter, H is the Jacobian of the state
-  //! observation function. H = ∂h/∂X = ∂hj/∂xi that is each row i
+  //! observation function: H = ∂h/∂X = ∂hj/∂xi that is each row i
   //! contains the derivatives of the state observation function for every
   //! element j in the state vector X.
   //!
@@ -179,7 +179,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
         }
       };
 
-  //! @brief Compute observation noise R matrix.
+  //! @brief Compute the observation noise R matrix.
   std::function<output_uncertainty(const state &, const output &,
                                    const UpdateArguments &...)>
       noise_observation_r{
@@ -196,7 +196,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //!
   //! @details The state transition F matrix is also known as Φ or A.
   //! For non-linear system, or extended filter, F is the Jacobian of the state
-  //! transition function. F = ∂f/∂X = ∂fj/∂xi that is each row i contains the
+  //! transition function: F = ∂f/∂X = ∂fj/∂xi that is each row i contains the
   //! derivatives of the state transition function for every element j in the
   //! state vector X.
   //!
@@ -270,8 +270,8 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
   //! does the compiler/linker do it for us?
-  //! @todo H would be the observe Jacobian(x) extended?
-  //! @todo Would innovation y = z - extended_hh(x) be extended?
+  //! @todo Do we want to support extended custom y = output_difference(z,
+  //! observation(x))?
   inline constexpr void update(const UpdateArguments &...arguments,
                                const auto &...output_z)
   {
@@ -282,15 +282,13 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     r = noise_observation_r(x, z, arguments...);
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
-    // Do we want to support custom y = output_difference(z, observation(x))?
     y = z - observation(x, arguments...);
     x = x + k * y;
     p = symmetrize(estimate_uncertainty{
         (i - k * h) * p * transpose(i - k * h) + k * r * transpose(k) });
   }
 
-  //! @todo F would be the predict Jacobian(x) extended?
-  //! @todo Would x = extended_ff(x, u) be extended?
+  //! @todo Extended support?
   inline constexpr void predict(const PredictionArguments &...arguments,
                                 const auto &...input_u)
   {
