@@ -140,8 +140,10 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">  k.f([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line">  k.f([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time,</div>
+<div class="line">         <span class="keyword">const</span> kalman::input &amp;u) {</div>
 <div class="line">    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(x);</div>
+<div class="line">    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(u);</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
 <div class="line">    <span class="keywordflow">return</span> kalman::state_transition{ { 1, dt }, { 0, 1 } };</div>
 <div class="line">  });</div>
@@ -277,7 +279,7 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Jun 29 2022 02:58:19 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Jun 30 2022 02:19:21 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

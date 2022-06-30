@@ -32,8 +32,9 @@ var structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_
     [ "symmetrize", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#acbc6aeae461dac1580eec28f77a5a50f", null ],
     [ "transition", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a0883dfa21c7567a1518fef109d1a9602", null ],
     [ "transition_control_g", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a9d091451db6b411b0a076635240ed19c", null ],
-    [ "transition_state_f", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a0649cf6c3737f95785c98acb6b0c8b7b", null ],
+    [ "transition_state_f", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a7b8a1f820f5a73d6b6ec4a90e3ec48a3", null ],
     [ "transpose", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#ae292271b8b158500c336fd0864b4a380", null ],
+    [ "u", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a40af56d017b38b9dd87c58df8f7e6ee4", null ],
     [ "x", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a465a2c8a276b63dbe54c2beacb1beb07", null ],
     [ "y", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a2484d5ac2634661f49bae5df3ed805e9", null ],
     [ "z", "structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a71e02694e499381a6a4de04ae4dcb9e7", null ]
