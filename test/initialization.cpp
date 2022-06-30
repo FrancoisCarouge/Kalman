@@ -60,6 +60,7 @@ namespace
   assert(k.x() == 0 && "Origin state.");
   assert(k.y() == 0);
   assert(k.z() == 0);
+  assert(k.u() == 0 && "No initial control.");
 
   return 0;
 }() };
@@ -69,6 +70,7 @@ namespace
   using kalman = eigen::kalman<double, 5, 4, 3>;
 
   kalman k;
+  const auto z3x1{ Eigen::Vector<double, 3>::Zero() };
   const auto i4x4{ Eigen::Matrix<double, 4, 4>::Identity() };
   const auto i4x5{ Eigen::Matrix<double, 4, 5>::Identity() };
   const auto i5x3{ Eigen::Matrix<double, 5, 3>::Identity() };
@@ -90,6 +92,7 @@ namespace
   assert(k.x() == z5x1 && "Origin state.");
   assert(k.y() == z4x1);
   assert(k.z() == z4x1);
+  assert(k.u() == z3x1 && "No initial control.");
 
   return 0;
 }() };

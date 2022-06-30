@@ -75,8 +75,10 @@ namespace
   });
 
   // The state transition matrix F would be:
-  k.f([](const kalman::state &x, const std::chrono::milliseconds &delta_time) {
+  k.f([](const kalman::state &x, const std::chrono::milliseconds &delta_time,
+         const kalman::input &u) {
     static_cast<void>(x);
+    static_cast<void>(u);
     const auto dt{ std::chrono::duration<double>(delta_time).count() };
     return kalman::state_transition{ { 1, dt }, { 0, 1 } };
   });

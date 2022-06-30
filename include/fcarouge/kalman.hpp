@@ -66,7 +66,7 @@ namespace fcarouge
 //!
 //! @tparam Type The type template parameter of the value type of the filter.
 //! @tparam State The type template parameter of the state vector x. State
-//! variables can be observed (measured), or hidden variables (infeered). This
+//! variables can be observed (measured), or hidden variables (inferred). This
 //! is the the mean of the multivariate Gaussian.
 //! @tparam Output The type template parameter of the measurement vector z.
 //! @tparam Input The type template parameter of the control u.
@@ -93,8 +93,8 @@ namespace fcarouge
 //! only a discretized continuous-time kinematic filter? How about non-Newtonian
 //! systems?
 //! @todo Would it be beneficial to support initialization list for
-//! characteristis?
-//! @todo Symmetrization support might be superflous. How to confirm it is safe
+//! characteristics?
+//! @todo Symmetrization support might be superfluous. How to confirm it is safe
 //! to remove?
 //! @todo Would we want to support smoothers?
 //! @todo How to add or associate constraints on the types and operation to
@@ -114,6 +114,10 @@ namespace fcarouge
 //! @todo Can we provide the operator[] for the vector characteristics
 //! regardless of implementation? And for the matrix ones too? It could simplify
 //! client code.
+//! @todo Consider if a fluent interface would be preferable for
+//! characteristics?
+//! @todo Consider additional constructors?
+//! @todo Consider additional characteristics method overloads?
 template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
@@ -304,9 +308,6 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! estimate vector X.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Consider if a fluent interface would be preferrable? In addition to
-  //! constructors? Same question for all characteristics set methods.
   inline constexpr void x(const auto &value, const auto &...values);
 
   //! @brief Sets the state estimate vector X.
@@ -317,9 +318,6 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! estimate vector X.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Consider if a fluent interface would be preferrable? In addition to
-  //! constructors? Same question for all characteristics set methods.
   inline constexpr void x(auto &&value, auto &&...values);
 
   //! @brief Returns the observation vector Z.
@@ -336,8 +334,6 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! @return The control vector U.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Implement and test.
   [[nodiscard("The returned control vector U is unexpectedly "
               "discarded.")]] inline constexpr auto
   u() const -> input;
@@ -383,9 +379,6 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! covariance matrix P.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Consider if a fluent interface would be preferrable? In addition to
-  //! constructors? Same question for all characteristics set methods.
   inline constexpr void p(auto &&value, auto &&...values);
 
   //! @brief Returns the process noise covariance matrix Q.
@@ -441,7 +434,7 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //!
   //! @complexity Constant.
   //!
-  //! @todo Understand why Cland Tidy doesn't find the out-of-line definition.
+  //! @todo Understand why Clang Tidy doesn't find the out-of-line definition.
   inline constexpr void q(const auto &callable) requires std::is_invocable_r_v <
       process_uncertainty,
       std::decay_t<decltype(callable)>,
@@ -523,7 +516,7 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //!
   //! @complexity Constant.
   //!
-  //! @todo Understand why Cland Tidy doesn't find the out-of-line definition.
+  //! @todo Understand why Clang Tidy doesn't find the out-of-line definition.
   inline constexpr void r(const auto &callable) requires std::is_invocable_r_v <
       output_uncertainty,
       std::decay_t<decltype(callable)>,
@@ -604,7 +597,7 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   inline constexpr void
       f(const auto &callable) requires std::is_invocable_r_v < state_transition,
       std::decay_t<decltype(callable)>,
-  const state &, const PredictionArguments &... >
+  const state &, const PredictionArguments &..., const input & >
   {
     filter.transition_state_f = callable;
   }
@@ -621,7 +614,7 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   inline constexpr void
       f(auto &&callable) requires std::is_invocable_r_v < state_transition,
       std::decay_t<decltype(callable)>,
-  const state &, const PredictionArguments &... >
+  const state &, const PredictionArguments &..., const input & >
   {
     filter.transition_state_f = std::forward<decltype(callable)>(callable);
   }
@@ -679,7 +672,7 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //!
   //! @complexity Constant.
   //!
-  //! @todo Understand why Cland Tidy doesn't find the out-of-line definition.
+  //! @todo Understand why Clang Tidy doesn't find the out-of-line definition.
   inline constexpr void
       h(const auto &callable) requires std::is_invocable_r_v < output_model,
       std::decay_t<decltype(callable)>,
@@ -854,7 +847,7 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! @param arguments Optional prediction parameters passed through for
   //! computations of prediction matrices.
   //! @param input_u Optional control parameters. Types must be compatible with
-  //! the `Input` types. The parameter pack types must always be explicitely
+  //! the `Input` types. The parameter pack types must always be explicitly
   //! defined per the
   // fair matching rule.
   //! @param output_z Observation parameters. Types must be compatible with the
@@ -862,24 +855,24 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! matching rule.
   //!
   //! @note Called as `k(...);` with prediction values and output values when
-  //! the filter has no input parameters. The input type list is explicitely
+  //! the filter has no input parameters. The input type list is explicitly
   //! empty. Otherwise can be called as `k.template operator()<input1_t,
   //! input2_t, ...>(...);` with prediction values, input values, and output
-  //! values. The input type list being explicitely specified. A lambda can come
+  //! values. The input type list being explicitly specified. A lambda can come
   //! in handy to reduce the verbose call `const auto kf{ [&k](const auto
   //! &...args) { k.template operator()<input1_t, input2_t,
   //! ...>(args...); } };` then called as `kf(...);`.
   //!
-  //! @todo Consider if returning the state vector X would be preferrable? And
-  //! if it would be compatible with an ES-EKF implementation? Or if a fluent
-  //! interface would be preferrable?
+  //! @todo Consider if returning the state vector X would be preferable? Or
+  //! fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Understand why the implementation cannot be moved out of the class.
-  inline constexpr void operator()(const PredictionArguments &...arguments,
-                                   const auto &...input_u,
-                                   const auto &...output_z)
+  inline constexpr void
+  operator()(const PredictionArguments &...prediction_arguments,
+             const UpdateArguments &...update_arguments, const auto &...input_u,
+             const auto &...output_z)
   {
-    filter.update(output_z...);
-    filter.predict(arguments..., input_u...);
+    filter.update(update_arguments..., output_z...);
+    filter.predict(prediction_arguments..., input_u...);
   }
 
   //! @brief Updates the estimates with the outcome of a measurement.
@@ -891,10 +884,9 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! `output` type.
   //!
   //! @todo Consider whether this method needs to exist or if the operator() is
-  //! sufficient for all clients.
-  //! @todo Consider if returning the state vector X would be preferrable? And
-  //! if it would be compatible with an ES-EKF implementation? Or if a fluent
-  //! interface would be preferrable?
+  //! sufficient for all clients?
+  //! @todo Consider if returning the state vector X would be preferable? Or
+  //! fluent interface? Would be compatible with an ES-EKF implementation?
   inline constexpr void update(const UpdateArguments &...arguments,
                                const auto &...output_z);
 
@@ -909,10 +901,9 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! greedy matching rule.
   //!
   //! @todo Consider whether this method needs to exist or if the operator() is
-  //! sufficient for all clients.
-  //! @todo Consider if returning the state vector X would be preferrable? And
-  //! if it would be compatible with an ES-EKF implementation? Or if a fluent
-  //! interface would be preferrable?
+  //! sufficient for all clients?
+  //! @todo Consider if returning the state vector X would be preferable? Or
+  //! fluent interface? Would be compatible with an ES-EKF implementation?
   inline constexpr void predict(const PredictionArguments &...arguments,
                                 const auto &...input_u);
 
@@ -1000,6 +991,18 @@ kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     const -> output
 {
   return filter.z;
+}
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... UpdateArguments,
+          typename... PredictionArguments>
+inline constexpr auto
+kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       std::tuple<UpdateArguments...>, std::tuple<PredictionArguments...>>::u()
+    const -> input
+{
+  return filter.u;
 }
 
 template <typename Type, typename State, typename Output, typename Input,
