@@ -151,6 +151,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     Identity().template operator()<innovation_uncertainty>()
   };
   output z{ 0 * Identity().template operator()<output>() };
+  input u{ 0 * Identity().template operator()<input>() };
 
   //! @}
 
@@ -201,15 +202,16 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! state vector X.
   //!
   //! @todo Pass the arguments by universal reference?
-  std::function<state_transition(const state &, const PredictionArguments &...)>
-      transition_state_f{
-        [this](const state &x,
-               const PredictionArguments &...arguments) -> state_transition {
-          static_cast<void>(x);
-          (static_cast<void>(arguments), ...);
-          return f;
-        }
-      };
+  std::function<state_transition(const state &, const PredictionArguments &...,
+                                 const input &)>
+      transition_state_f{ [this](const state &x,
+                                 const PredictionArguments &...arguments,
+                                 const input &u) -> state_transition {
+        static_cast<void>(x);
+        (static_cast<void>(arguments), ...);
+        static_cast<void>(u);
+        return f;
+      } };
 
   //! @brief Compute process noise Q matrix.
   std::function<process_uncertainty(const state &,
@@ -292,9 +294,8 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   inline constexpr void predict(const PredictionArguments &...arguments,
                                 const auto &...input_u)
   {
-    const auto u{ input{ input_u... } };
-
-    f = transition_state_f(x, arguments...);
+    u = input{ input_u... };
+    f = transition_state_f(x, arguments..., u);
     q = noise_process_q(x, arguments...);
     g = transition_control_g(arguments...);
     x = f * x + g * u;
@@ -303,7 +304,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
   inline constexpr void predict(const PredictionArguments &...arguments)
   {
-    f = transition_state_f(x, arguments...);
+    f = transition_state_f(x, arguments..., input{});
     q = noise_process_q(x, arguments...);
     x = transition(x, arguments...);
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
