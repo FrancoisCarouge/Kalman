@@ -43,7 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief The main Kalman filter class.
 
 #include "internal/kalman.hpp"
-#include "internal/kalman_operator.hpp"
 
 #include <concepts>
 #include <functional>
@@ -53,6 +52,9 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge
 {
+//! @brief Function object for providing an identity matrix.
+using identity_matrix = internal::identity_matrix;
+
 //! @brief Kalman filter.
 //!
 //! @details A Bayesian filter that uses multivariate Gaussians.
@@ -60,16 +62,16 @@ namespace fcarouge
 //! assume white noise, propagation and measurement functions are
 //! differentiable, and that the uncertainty stays centered on the state
 //! estimate. The filter updates estimates by multiplying Gaussians and predicts
-//! estimates by adding Gaussians. Design the state (x, P), the process (F, Q),
-//! the measurement (z, R), the measurement function H, and if the system has
-//! control inputs (u, B). Designing a filter is as much art as science.
+//! estimates by adding Gaussians. Design the state (X, P), the process (F, Q),
+//! the measurement (Z, R), the measurement function H, and if the system has
+//! control inputs (U, B). Designing a filter is as much art as science.
 //!
 //! @tparam Type The type template parameter of the value type of the filter.
-//! @tparam State The type template parameter of the state vector x. State
+//! @tparam State The type template parameter of the state vector X. State
 //! variables can be observed (measured), or hidden variables (inferred). This
 //! is the the mean of the multivariate Gaussian.
-//! @tparam Output The type template parameter of the measurement vector z.
-//! @tparam Input The type template parameter of the control u.
+//! @tparam Output The type template parameter of the measurement vector Z.
+//! @tparam Input The type template parameter of the control U.
 //! @tparam Transpose The customization point object template parameter of the
 //! matrix transpose functor.
 //! @tparam Symmetrize The customization point object template parameter of the
@@ -78,11 +80,18 @@ namespace fcarouge
 //! matrix division functor.
 //! @tparam Identity The customization point object template parameter of the
 //! matrix identity functor.
+//! @tparam UpdateArguments The variadic type template parameter for additional
+//! update function parameters. Parameters such as delta times, variances, or
+//! linearized values. The parameters are propagated to the function objects
+//! used to compute the state observation H and the observation noise R
+//! matrices. The parameters are also propagated to the state observation
+//! function object h.
 //! @tparam PredictionArguments The variadic type template parameter for
-//! additional prediction function parameters. Time, or a delta thereof, is
-//! often a prediction parameter. The parameters are propagated to the function
-//! objects used to compute the process noise Q, the state transition F, and the
-//! control transition G matrices.
+//! additional prediction function parameters. Parameters such as delta times,
+//! variances, or linearized values. The parameters are propagated to the
+//! function objects used to compute the process noise Q, the state transition
+//! F, and the control transition G matrices. The parameters are also propagated
+//! to the state transition function object f.
 //!
 //! @note This class could be usable in constant expressions if `std::function`
 //! could too. The polymorphic function wrapper was used in place of function
@@ -118,11 +127,12 @@ namespace fcarouge
 //! characteristics?
 //! @todo Consider additional constructors?
 //! @todo Consider additional characteristics method overloads?
+//! @todo Could we do away with std::tuple, replaced by a template template?
 template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
     typename Symmetrize = std::identity, typename Divide = std::divides<void>,
-    typename Identity = internal::identity,
+    typename Identity = identity_matrix,
     typename UpdateArguments = std::tuple<>,
     typename PredictionArguments = std::tuple<>>
 class kalman

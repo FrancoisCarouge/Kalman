@@ -109,7 +109,7 @@ namespace
 
   // For the sake of the example simplicity, we will assume a constant
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
-  k.r(400);
+  k.r(400.);
 
   k.update(-32.4);
 
@@ -146,7 +146,7 @@ namespace
          211.6 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 211.6 + 0.1 &&
          438.8 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 438.8 + 0.1);
 
-  step(delta_time, 39.97 + gravity, 18);
+  step(delta_time, 39.97 + gravity, 18.);
   step(delta_time, 39.81 + gravity, 22.9);
   step(delta_time, 39.75 + gravity, 19.5);
   step(delta_time, 39.6 + gravity, 28.5);
@@ -157,7 +157,7 @@ namespace
   step(delta_time, 39.81 + gravity, 90.5);
   step(delta_time, 39.92 + gravity, 104.9);
   step(delta_time, 39.78 + gravity, 140.9);
-  step(delta_time, 39.98 + gravity, 148);
+  step(delta_time, 39.98 + gravity, 148.);
   step(delta_time, 39.76 + gravity, 187.6);
   step(delta_time, 39.86 + gravity, 209.2);
   step(delta_time, 39.61 + gravity, 244.6);
