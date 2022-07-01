@@ -92,18 +92,15 @@ $(document).ready(function(){initNavTree('kalman__eigen_8hpp.xhtml',''); initRes
 
 <p>Kalman operation for Eigen 3 types.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">internal/kalman_eigen_operator.hpp</a>&quot;</code><br />
-<code>#include &lt;Eigen/Eigen&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">internal/kalman_eigen.hpp</a>&quot;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;tuple&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for kalman_eigen.hpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="kalman__eigen_8hpp__incl.svg" width="100%" height="518"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="kalman__eigen_8hpp__incl.svg" width="640" height="351"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -127,10 +124,22 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a250650abbe73b50a044e72f75354a4c8"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 0, typename UpdateArguments  = std::tuple&lt;&gt;, typename PredictionArguments  = std::tuple&lt;&gt;&gt; </td></tr>
-<tr class="memitem:a250650abbe73b50a044e72f75354a4c8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">fcarouge::eigen::kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, UpdateArguments, PredictionArguments &gt;</td></tr>
-<tr class="memdesc:a250650abbe73b50a044e72f75354a4c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">More...</a><br /></td></tr>
-<tr class="separator:a250650abbe73b50a044e72f75354a4c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee16b54624e2726129560ae810e805ec"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">fcarouge::eigen::transpose</a> = internal::transpose</td></tr>
+<tr class="memdesc:aee16b54624e2726129560ae810e805ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix transposition.  <a href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">More...</a><br /></td></tr>
+<tr class="separator:aee16b54624e2726129560ae810e805ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af67bfce173c998d182c8d40f8dccf65c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">fcarouge::eigen::symmetrize</a> = internal::symmetrize</td></tr>
+<tr class="memdesc:af67bfce173c998d182c8d40f8dccf65c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix symmetrization.  <a href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">More...</a><br /></td></tr>
+<tr class="separator:af67bfce173c998d182c8d40f8dccf65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4a0f022ca9724e0e5e4a24732781365"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">fcarouge::eigen::divide</a> = internal::divide</td></tr>
+<tr class="memdesc:af4a0f022ca9724e0e5e4a24732781365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix division.  <a href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">More...</a><br /></td></tr>
+<tr class="separator:af4a0f022ca9724e0e5e4a24732781365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab99c4b80cb5488c202a697e056134bae"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">fcarouge::eigen::identity_matrix</a> = internal::identity_matrix</td></tr>
+<tr class="memdesc:ab99c4b80cb5488c202a697e056134bae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for providing an Eigen identity matrix.  <a href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">More...</a><br /></td></tr>
+<tr class="separator:ab99c4b80cb5488c202a697e056134bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eba7c4346aab45b41bb4465779f6b13"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 1, typename UpdateArguments  = std::tuple&lt;&gt;, typename PredictionArguments  = std::tuple&lt;&gt;&gt; </td></tr>
+<tr class="memitem:a6eba7c4346aab45b41bb4465779f6b13"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a6eba7c4346aab45b41bb4465779f6b13">fcarouge::eigen::kalman</a> = internal::kalman&lt; Type, State, Output, Input, UpdateArguments, PredictionArguments &gt;</td></tr>
+<tr class="memdesc:a6eba7c4346aab45b41bb4465779f6b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a6eba7c4346aab45b41bb4465779f6b13">More...</a><br /></td></tr>
+<tr class="separator:a6eba7c4346aab45b41bb4465779f6b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Kalman operation for Eigen 3 types. </p>
@@ -142,7 +151,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman__eigen_8hpp.xhtml">kalman_eigen.hpp</a></li>
-    <li class="footer">Generated on Thu Jun 30 2022 03:51:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 1 2022 03:13:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

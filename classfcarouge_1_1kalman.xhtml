@@ -100,25 +100,26 @@ $(document).ready(function(){initNavTree('classfcarouge_1_1kalman.xhtml',''); in
 </div>
 </div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename Type = double, typename State = Type, typename Output = State, typename Input = State, typename Transpose = std::identity, typename Symmetrize = std::identity, typename Divide = std::divides&lt;void&gt;, typename Identity = internal::identity, typename UpdateArguments = std::tuple&lt;&gt;, typename PredictionArguments = std::tuple&lt;&gt;&gt;<br />
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Type = double, typename State = Type, typename Output = State, typename Input = State, typename Transpose = std::identity, typename Symmetrize = std::identity, typename Divide = std::divides&lt;void&gt;, typename Identity = identity_matrix, typename UpdateArguments = std::tuple&lt;&gt;, typename PredictionArguments = std::tuple&lt;&gt;&gt;<br />
 class fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateArguments, PredictionArguments &gt;</div><p >Kalman filter. </p>
-<p >A Bayesian filter that uses multivariate Gaussians. Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (x, P), the process (F, Q), the measurement (z, R), the measurement function H, and if the system has control inputs (u, B). Designing a filter is as much art as science.</p>
+<p >A Bayesian filter that uses multivariate Gaussians. Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Type</td><td>The type template parameter of the value type of the filter. </td></tr>
-    <tr><td class="paramname">State</td><td>The type template parameter of the state vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. </td></tr>
-    <tr><td class="paramname">Output</td><td>The type template parameter of the measurement vector z. </td></tr>
-    <tr><td class="paramname">Input</td><td>The type template parameter of the control u. </td></tr>
+    <tr><td class="paramname">State</td><td>The type template parameter of the state vector X. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. </td></tr>
+    <tr><td class="paramname">Output</td><td>The type template parameter of the measurement vector Z. </td></tr>
+    <tr><td class="paramname">Input</td><td>The type template parameter of the control U. </td></tr>
     <tr><td class="paramname">Transpose</td><td>The customization point object template parameter of the matrix transpose functor. </td></tr>
     <tr><td class="paramname">Symmetrize</td><td>The customization point object template parameter of the matrix symmetrization functor. </td></tr>
     <tr><td class="paramname">Divide</td><td>The customization point object template parameter of the matrix division functor. </td></tr>
     <tr><td class="paramname">Identity</td><td>The customization point object template parameter of the matrix identity functor. </td></tr>
-    <tr><td class="paramname">PredictionArguments</td><td>The variadic type template parameter for additional prediction function parameters. Time, or a delta thereof, is often a prediction parameter. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices.</td></tr>
+    <tr><td class="paramname">UpdateArguments</td><td>The variadic type template parameter for additional update function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. </td></tr>
+    <tr><td class="paramname">PredictionArguments</td><td>The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This class could be usable in constant expressions if <code>std::function</code> could too. The polymorphic function wrapper was used in place of function pointers to enable default initialization from this class, captured member variables.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000010">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000013">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristics? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -135,10 +136,11 @@ class fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Di
 <p class="interdd">Can we provide the operator[] for the vector characteristics regardless of implementation? And for the matrix ones too? It could simplify client code. </p>
 <p class="interdd">Consider if a fluent interface would be preferable for characteristics? </p>
 <p class="interdd">Consider additional constructors? </p>
-<p class="enddd">Consider additional characteristics method overloads? </p>
+<p class="interdd">Consider additional characteristics method overloads? </p>
+<p class="enddd">Could we do away with std::tuple, replaced by a template template? </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00128">128</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00138">138</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/fcarouge/<a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a></li>
 </ul>
@@ -148,7 +150,7 @@ class fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Di
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Thu Jun 30 2022 03:51:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 1 2022 03:13:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

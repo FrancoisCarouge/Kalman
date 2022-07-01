@@ -93,13 +93,13 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1eigen_1_1internal_1_
 <p>Function object for performing Eigen matrix division.  
  <a href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">kalman_eigen_operator.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for fcarouge::eigen::internal::divide:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1eigen_1_1internal_1_1divide__coll__graph.svg" width="168" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1eigen_1_1internal_1_1divide__coll__graph.svg" width="168" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -108,15 +108,207 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a37a63ff235f1dba2aa6408d834f051e5"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a37a63ff235f1dba2aa6408d834f051e5">operator()</a> (const auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::Matrix&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</td></tr>
 <tr class="memdesc:a37a63ff235f1dba2aa6408d834f051e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the quotient of <code>numerator</code> and <code>denominator</code>.  <a href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a37a63ff235f1dba2aa6408d834f051e5">More...</a><br /></td></tr>
 <tr class="separator:a37a63ff235f1dba2aa6408d834f051e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab72bb1ae1ec6c568b3b3d62b88ebf39c"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#ab72bb1ae1ec6c568b3b3d62b88ebf39c">operator()</a> (const auto &amp;numerator, const arithmetic auto &amp;denominator) const -&gt; typename Eigen::Vector&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime &gt;</td></tr>
+<tr class="memdesc:ab72bb1ae1ec6c568b3b3d62b88ebf39c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the quotient of <code>numerator</code> and <code>denominator</code>.  <a href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#ab72bb1ae1ec6c568b3b3d62b88ebf39c">More...</a><br /></td></tr>
+<tr class="separator:ab72bb1ae1ec6c568b3b3d62b88ebf39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90303d5edb6a1a97c813b7e7fbac6da7"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a90303d5edb6a1a97c813b7e7fbac6da7">operator()</a> (const arithmetic auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::RowVector&lt; typename std::decay_t&lt; decltype(denominator)&gt;::Scalar, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</td></tr>
+<tr class="memdesc:a90303d5edb6a1a97c813b7e7fbac6da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the quotient of <code>numerator</code> and <code>denominator</code>.  <a href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a90303d5edb6a1a97c813b7e7fbac6da7">More...</a><br /></td></tr>
+<tr class="separator:a90303d5edb6a1a97c813b7e7fbac6da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab626f7ccce5d336d292e623aae9c96c1"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#ab626f7ccce5d336d292e623aae9c96c1">operator()</a> (const arithmetic auto &amp;numerator, const arithmetic auto &amp;denominator) const</td></tr>
+<tr class="memdesc:ab626f7ccce5d336d292e623aae9c96c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the quotient of <code>numerator</code> and <code>denominator</code>.  <a href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#ab626f7ccce5d336d292e623aae9c96c1">More...</a><br /></td></tr>
+<tr class="separator:ab626f7ccce5d336d292e623aae9c96c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function object for performing Eigen matrix division. </p>
 <p >Implemented with the Eigen linear algebra library matrices with sizes fixed at compile-time. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml#l00098">98</a> of file <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">kalman_eigen_operator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00106">106</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab626f7ccce5d336d292e623aae9c96c1" name="ab626f7ccce5d336d292e623aae9c96c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab626f7ccce5d336d292e623aae9c96c1">&#9670;&nbsp;</a></span>operator()() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto fcarouge::eigen::internal::divide::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const arithmetic auto &amp;&#160;</td>
+          <td class="paramname"><em>numerator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const arithmetic auto &amp;&#160;</td>
+          <td class="paramname"><em>denominator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the quotient of <code>numerator</code> and <code>denominator</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numerator</td><td>The dividend value of the division. </td></tr>
+    <tr><td class="paramname">denominator</td><td>The divisor value of the division.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The quotient value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00185">185</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  {</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordflow">return</span> numerator / denominator;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a90303d5edb6a1a97c813b7e7fbac6da7" name="a90303d5edb6a1a97c813b7e7fbac6da7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90303d5edb6a1a97c813b7e7fbac6da7">&#9670;&nbsp;</a></span>operator()() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto fcarouge::eigen::internal::divide::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const arithmetic auto &amp;&#160;</td>
+          <td class="paramname"><em>numerator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto &amp;&#160;</td>
+          <td class="paramname"><em>denominator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const -&gt; typename Eigen::RowVector&lt;
+          typename std::decay_t&lt;decltype(denominator)&gt;::Scalar,
+          std::decay_t&lt;decltype(denominator)&gt;::RowsAtCompileTime&gt;
+  </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the quotient of <code>numerator</code> and <code>denominator</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numerator</td><td>The dividend value of the division. </td></tr>
+    <tr><td class="paramname">denominator</td><td>The divisor matrix of the division. D: o x 1</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The quotient row vector. Q: 1 x o</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">May</td><td>throw implementation-defined exceptions.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000008">Todo:</a></b></dt><dd>Simplify implementation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00166">166</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordflow">return</span> denominator.transpose()</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        .fullPivHouseholderQr()</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        .solve(Eigen::Matrix&lt;<span class="keyword">typename</span> std::decay_t&lt;<span class="keyword">decltype</span>(numerator)&gt;::Scalar,</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                             1, 1&gt;{ numerator })</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        .<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>();</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  }</div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_aee16b54624e2726129560ae810e805ec"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">fcarouge::eigen::transpose</a></div><div class="ttdeci">internal::transpose transpose</div><div class="ttdoc">Function object for performing Eigen matrix transposition.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00053">kalman_eigen.hpp:53</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab72bb1ae1ec6c568b3b3d62b88ebf39c" name="ab72bb1ae1ec6c568b3b3d62b88ebf39c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab72bb1ae1ec6c568b3b3d62b88ebf39c">&#9670;&nbsp;</a></span>operator()() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto fcarouge::eigen::internal::divide::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const auto &amp;&#160;</td>
+          <td class="paramname"><em>numerator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const arithmetic auto &amp;&#160;</td>
+          <td class="paramname"><em>denominator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const -&gt; typename Eigen::Vector&lt;
+          typename std::decay_t&lt;decltype(numerator)&gt;::Scalar,
+          std::decay_t&lt;decltype(numerator)&gt;::RowsAtCompileTime&gt;
+  </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the quotient of <code>numerator</code> and <code>denominator</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numerator</td><td>The dividend matrix of the division. N: m x 1 </td></tr>
+    <tr><td class="paramname">denominator</td><td>The divisor value of the division.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The quotient column vector. Q: m x 1</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">May</td><td>throw implementation-defined exceptions.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd>Simplify implementation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00142">142</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">return</span> Eigen::Matrix&lt;<span class="keyword">typename</span> std::decay_t&lt;<span class="keyword">decltype</span>(numerator)&gt;::Scalar, 1,</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                         1&gt;{ denominator }</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        .transpose()</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        .fullPivHouseholderQr()</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        .solve(numerator.transpose())</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        .<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a37a63ff235f1dba2aa6408d834f051e5" name="a37a63ff235f1dba2aa6408d834f051e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37a63ff235f1dba2aa6408d834f051e5">&#9670;&nbsp;</a></span>operator()()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a63ff235f1dba2aa6408d834f051e5">&#9670;&nbsp;</a></span>operator()() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,27 +353,27 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The quotien matrix. Q: m x o</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The quotient matrix. Q: m x o</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">May</td><td>throw implementation-defined exceptions.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000006">Todo:</a></b></dt><dd>Why compilation fails if we specify the return type in the body of the function? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo:</a></b></dt><dd>Why compilation fails if we specify the return type in the body of the function? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml#l00110">110</a> of file <a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">kalman_eigen_operator.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">return</span> denominator.transpose()</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        .fullPivHouseholderQr()</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        .solve(numerator.transpose())</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        .transpose();</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00118">118</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">return</span> denominator.transpose()</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        .fullPivHouseholderQr()</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        .solve(numerator.transpose())</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        .transpose();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/fcarouge/internal/<a class="el" href="kalman__eigen__operator_8hpp_source.xhtml">kalman_eigen_operator.hpp</a></li>
+<li>include/fcarouge/internal/<a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -189,7 +381,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml">internal</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">divide</a></li>
-    <li class="footer">Generated on Thu Jun 30 2022 03:51:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 1 2022 03:13:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

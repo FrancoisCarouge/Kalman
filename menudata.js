@@ -32,6 +32,7 @@ var menudata={children:[
 {text:"Functions",url:"namespacemembers_func.xhtml"},
 {text:"Variables",url:"namespacemembers_vars.xhtml"},
 {text:"Typedefs",url:"namespacemembers_type.xhtml"}]}]},
+{text:"Concepts",url:"concepts.xhtml"},
 {text:"Classes",url:"annotated.xhtml",children:[
 {text:"Class List",url:"annotated.xhtml"},
 {text:"Class Index",url:"classes.xhtml"},

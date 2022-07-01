@@ -122,13 +122,13 @@ One-Dimensional</h2>
 <div class="line">k.r(25.);</div>
 <div class="line"> </div>
 <div class="line">k(48.54);</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00128">kalman.hpp:129</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00138">kalman.hpp:139</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
 Multi-Dimensional</h2>
 <p >Six states, two measurements, no control, using Eigen3 support.</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 6, 2, 0&gt;</a>;</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 6, 2, 0&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">kalman</a> k;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">k.x(0., 0., 0., 0., 0., 0.);</div>
 <div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
@@ -154,7 +154,7 @@ Multi-Dimensional</h2>
 <div class="line">  k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
 <div class="line"> </div>
 <div class="line">  k(-375.93, 301.78);</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a250650abbe73b50a044e72f75354a4c8"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00072">kalman_eigen.hpp:75</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman__eigen_8hpp_source.xhtml#l00228">kalman_eigen.hpp:232</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
 Library</h1>
 <ul>
@@ -204,7 +204,7 @@ Class fcarouge::kalman</h2>
 <div class="line">  <span class="keyword">typename</span> Identity,</div>
 <div class="line">  <span class="keyword">typename</span>... UpdateArguments,</div>
 <div class="line">  <span class="keyword">typename</span>... PredictionArguments&gt;</div>
-<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">kalman</a>&lt;</div>
+<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a>&lt;</div>
 <div class="line">  Type,</div>
 <div class="line">  State,</div>
 <div class="line">  Output,</div>
@@ -352,7 +352,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 30 2022 03:51:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 1 2022 03:13:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

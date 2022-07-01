@@ -74,6 +74,7 @@ var NAVTREE =
         [ "Typedefs", "namespacemembers_type.xhtml", null ]
       ] ]
     ] ],
+    [ "Concepts", "concepts.xhtml", "concepts" ],
     [ "Classes", "annotated.xhtml", [
       [ "Class List", "annotated.xhtml", "annotated_dup" ],
       [ "Class Index", "classes.xhtml", null ],
@@ -99,7 +100,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8"
+"md__s_e_c_u_r_i_t_y.xhtml#autotoc_md29"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

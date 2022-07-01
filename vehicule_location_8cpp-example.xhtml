@@ -99,8 +99,8 @@ $(document).ready(function(){initNavTree('vehicule_location_8cpp-example.xhtml',
 <div class="line">{</div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicule__location_8cpp_03.xhtml#a0e0f45374da8e39a93199a986aa1114b">vehicule_location</a>{ [] {</div>
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
-<div class="line">  <span class="keyword">using</span> <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">kalman</a> = eigen::kalman&lt;double, 6, 2, 0&gt;;</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">kalman</a> k;</div>
+<div class="line">  <span class="keyword">using</span> <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = eigen::kalman&lt;double, 6, 2, 0&gt;;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="comment">// The state is chosen to be the position, velocity, acceleration in the XY</span></div>
@@ -240,7 +240,7 @@ $(document).ready(function(){initNavTree('vehicule_location_8cpp-example.xhtml',
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman__eigen_8hpp_xhtml"><div class="ttname"><a href="kalman__eigen_8hpp.xhtml">kalman_eigen.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a250650abbe73b50a044e72f75354a4c8"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00072">kalman_eigen.hpp:75</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman__eigen_8hpp_source.xhtml#l00228">kalman_eigen.hpp:232</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicule__location_8cpp_03_xhtml_a0e0f45374da8e39a93199a986aa1114b"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicule__location_8cpp_03.xhtml#a0e0f45374da8e39a93199a986aa1114b">fcarouge::sample::anonymous_namespace{vehicule_location.cpp}::vehicule_location</a></div><div class="ttdeci">auto vehicule_location</div><div class="ttdef"><b>Definition:</b> <a href="vehicule__location_8cpp_source.xhtml#l00028">vehicule_location.cpp:28</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('vehicule_location_8cpp-example.xhtml',
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 30 2022 03:51:37 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 1 2022 03:13:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

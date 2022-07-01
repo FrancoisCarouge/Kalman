@@ -108,9 +108,9 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line">{</div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">rocket_altitude</a>{ [] {</div>
 <div class="line">  <span class="comment">// A 2x1x1 filter, constant acceleration dynamic model, no control, step time.</span></div>
-<div class="line">  <span class="keyword">using</span> <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">kalman</a> = eigen::kalman&lt;double, 2, 1, 1, std::tuple&lt;&gt;,</div>
+<div class="line">  <span class="keyword">using</span> <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = eigen::kalman&lt;double, 2, 1, 1, std::tuple&lt;&gt;,</div>
 <div class="line">                               std::tuple&lt;std::chrono::milliseconds&gt;&gt;;</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">kalman</a> k;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="comment">// We don&#39;t know the rocket location; we will set initial position and</span></div>
@@ -174,7 +174,7 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line">  <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
 <div class="line">  <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R.</span></div>
-<div class="line">  k.r(400);</div>
+<div class="line">  k.r(400.);</div>
 <div class="line"> </div>
 <div class="line">  k.update(-32.4);</div>
 <div class="line"> </div>
@@ -211,7 +211,7 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line">         211.6 - 0.1 &lt; k.p()(1, 0) &amp;&amp; k.p()(1, 0) &lt; 211.6 + 0.1 &amp;&amp;</div>
 <div class="line">         438.8 - 0.1 &lt; k.p()(1, 1) &amp;&amp; k.p()(1, 1) &lt; 438.8 + 0.1);</div>
 <div class="line"> </div>
-<div class="line">  step(delta_time, 39.97 + gravity, 18);</div>
+<div class="line">  step(delta_time, 39.97 + gravity, 18.);</div>
 <div class="line">  step(delta_time, 39.81 + gravity, 22.9);</div>
 <div class="line">  step(delta_time, 39.75 + gravity, 19.5);</div>
 <div class="line">  step(delta_time, 39.6 + gravity, 28.5);</div>
@@ -222,7 +222,7 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line">  step(delta_time, 39.81 + gravity, 90.5);</div>
 <div class="line">  step(delta_time, 39.92 + gravity, 104.9);</div>
 <div class="line">  step(delta_time, 39.78 + gravity, 140.9);</div>
-<div class="line">  step(delta_time, 39.98 + gravity, 148);</div>
+<div class="line">  step(delta_time, 39.98 + gravity, 148.);</div>
 <div class="line">  step(delta_time, 39.76 + gravity, 187.6);</div>
 <div class="line">  step(delta_time, 39.86 + gravity, 209.2);</div>
 <div class="line">  step(delta_time, 39.61 + gravity, 244.6);</div>
@@ -271,7 +271,7 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman__eigen_8hpp_xhtml"><div class="ttname"><a href="kalman__eigen_8hpp.xhtml">kalman_eigen.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a250650abbe73b50a044e72f75354a4c8"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a250650abbe73b50a044e72f75354a4c8">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, Eigen::Vector&lt; Type, State &gt;, Eigen::Vector&lt; Type, Output &gt;, Eigen::Vector&lt; Type, Input &gt;, internal::transpose, internal::symmetrize, internal::divide, internal::identity, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00072">kalman_eigen.hpp:75</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman__eigen_8hpp_source.xhtml#l00228">kalman_eigen.hpp:232</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03_xhtml_a63759677e8cdcc8efbbc101504f93f97"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">fcarouge::sample::anonymous_namespace{rocket_altitude.cpp}::rocket_altitude</a></div><div class="ttdeci">auto rocket_altitude</div><div class="ttdef"><b>Definition:</b> <a href="rocket__altitude_8cpp_source.xhtml#l00044">rocket_altitude.cpp:44</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
@@ -279,7 +279,7 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 30 2022 03:51:37 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 1 2022 03:13:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
