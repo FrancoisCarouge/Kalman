@@ -36,22 +36,30 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_KALMAN_EIGEN_OPERATOR_HPP
-#define FCAROUGE_INTERNAL_KALMAN_EIGEN_OPERATOR_HPP
+#ifndef FCAROUGE_INTERNAL_KALMAN_EIGEN_HPP
+#define FCAROUGE_INTERNAL_KALMAN_EIGEN_HPP
 
 //! @file
 //! @brief Kalman operation for Eigen 3 types.
 //!
-//! @details Default customization point objects (CPO) for Eigen 3 types.
+//! @details Default customization point objects (CPO).
 
-#include "kalman.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <Eigen/Eigen>
 
+#include <concepts>
+#include <cstddef>
+#include <functional>
 #include <type_traits>
 
 namespace fcarouge::eigen::internal
 {
+
+//! @brief Arithmetic concept.
+template <typename Type>
+concept arithmetic = std::integral<Type> || std::floating_point<Type>;
+
 //! @brief Function object for performing Eigen matrix transposition.
 //!
 //! @details Implemented with the Eigen linear algebra library matrices with
@@ -78,7 +86,7 @@ struct transpose {
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
 struct symmetrize {
-  //! @brief Returns the symmetrised `value`.
+  //! @brief Returns the symmetrized `value`.
   //!
   //! @param value Value to compute the symmetry of.
   //!
@@ -101,7 +109,7 @@ struct divide {
   //! @param numerator The dividend matrix of the division. N: m x n
   //! @param denominator The divisor matrix of the division. D: o x n
   //!
-  //! @return The quotien matrix. Q: m x o
+  //! @return The quotient matrix. Q: m x o
   //!
   //! @exception May throw implementation-defined exceptions.
   //!
@@ -119,6 +127,66 @@ struct divide {
         .solve(numerator.transpose())
         .transpose();
   }
+
+  //! @brief Returns the quotient of `numerator` and `denominator`.
+  //!
+  //! @param numerator The dividend matrix of the division. N: m x 1
+  //! @param denominator The divisor value of the division.
+  //!
+  //! @return The quotient column vector. Q: m x 1
+  //!
+  //! @exception May throw implementation-defined exceptions.
+  //!
+  //! @todo Simplify implementation.
+  [[nodiscard]] inline constexpr auto
+  operator()(const auto &numerator, const arithmetic auto &denominator) const ->
+      typename Eigen::Vector<
+          typename std::decay_t<decltype(numerator)>::Scalar,
+          std::decay_t<decltype(numerator)>::RowsAtCompileTime>
+  {
+    return Eigen::Matrix<typename std::decay_t<decltype(numerator)>::Scalar, 1,
+                         1>{ denominator }
+        .transpose()
+        .fullPivHouseholderQr()
+        .solve(numerator.transpose())
+        .transpose();
+  }
+
+  //! @brief Returns the quotient of `numerator` and `denominator`.
+  //!
+  //! @param numerator The dividend value of the division.
+  //! @param denominator The divisor matrix of the division. D: o x 1
+  //!
+  //! @return The quotient row vector. Q: 1 x o
+  //!
+  //! @exception May throw implementation-defined exceptions.
+  //!
+  //! @todo Simplify implementation.
+  [[nodiscard]] inline constexpr auto
+  operator()(const arithmetic auto &numerator, const auto &denominator) const ->
+      typename Eigen::RowVector<
+          typename std::decay_t<decltype(denominator)>::Scalar,
+          std::decay_t<decltype(denominator)>::RowsAtCompileTime>
+  {
+    return denominator.transpose()
+        .fullPivHouseholderQr()
+        .solve(Eigen::Matrix<typename std::decay_t<decltype(numerator)>::Scalar,
+                             1, 1>{ numerator })
+        .transpose();
+  }
+
+  //! @brief Returns the quotient of `numerator` and `denominator`.
+  //!
+  //! @param numerator The dividend value of the division.
+  //! @param denominator The divisor value of the division.
+  //!
+  //! @return The quotient value.
+  [[nodiscard]] inline constexpr auto
+  operator()(const arithmetic auto &numerator,
+             const arithmetic auto &denominator) const
+  {
+    return numerator / denominator;
+  }
 };
 
 //! @brief Function object for providing an Eigen identity matrix.
@@ -126,11 +194,10 @@ struct divide {
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
 //!
-//! @note Could this function object template be replaced by a variable
-//! template? Proposed in paper P2008R0 entitled "Enabling variable template
-//! template parameters".
-struct identity {
-  //! @brief Returns the identity maxtrix.
+//! @note Could this function object template be a variable template as proposed
+//! in paper P2008R0 entitled "Enabling variable template template parameters"?
+struct identity_matrix {
+  //! @brief Returns the identity matrix.
   //!
   //! @tparam Type The type template parameter of the matrix.
   //!
@@ -142,8 +209,28 @@ struct identity {
   {
     return Type::Identity();
   }
+
+  //! @brief Returns `1`, the 1-by-1 identity matrix equivalent.
+  //!
+  //! @tparam Type The type template parameter of the value.
+  //!
+  //! @return The value `1`.
+  template <arithmetic Type>
+  [[nodiscard]] inline constexpr auto operator()() const noexcept
+  {
+    return Type{ 1 };
+  }
 };
+
+template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
+          std::size_t Input = 1, typename UpdateArguments = std::tuple<>,
+          typename PredictionArguments = std::tuple<>>
+using kalman = fcarouge::kalman<
+    Type, std::conditional_t<State == 1, Type, Eigen::Vector<Type, State>>,
+    std::conditional_t<Output == 1, Type, Eigen::Vector<Type, Output>>,
+    std::conditional_t<Input == 1, Type, Eigen::Vector<Type, Input>>, transpose,
+    symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments>;
 
 } // namespace fcarouge::eigen::internal
 
-#endif // FCAROUGE_INTERNAL_KALMAN_EIGEN_OPERATOR_HPP
+#endif // FCAROUGE_INTERNAL_KALMAN_EIGEN_HPP

@@ -15,6 +15,6 @@ jobs:
     - name: Update
       run: sudo apt update
     - name: Install
-      run: sudo apt install clang-format-12
+      run: sudo apt install clang-format-14
     - name: Format
-      run: find . -iname *.hpp -o -iname *.cpp | xargs clang-format-12 --Werror --dry-run --verbose -style=file
+      run: find . -iname *.hpp -o -iname *.cpp | xargs clang-format-14 --Werror --dry-run --verbose -style=file

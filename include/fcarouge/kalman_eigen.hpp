@@ -42,37 +42,52 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Kalman operation for Eigen 3 types.
 
-#include "kalman.hpp"
-#include "internal/kalman_eigen_operator.hpp"
-
-#include <Eigen/Eigen>
+#include "internal/kalman_eigen.hpp"
 
 #include <cstddef>
-#include <functional>
 #include <tuple>
 
 namespace fcarouge::eigen
 {
+//! @brief Function object for performing Eigen matrix transposition.
+using transpose = internal::transpose;
+
+//! @brief Function object for performing Eigen matrix symmetrization.
+using symmetrize = internal::symmetrize;
+
+//! @brief Function object for performing Eigen matrix division.
+using divide = internal::divide;
+
+//! @brief Function object for providing an Eigen identity matrix.
+using identity_matrix = internal::identity_matrix;
+
 //! @brief Eigen-based Kalman filter.
 //!
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
 //!
 //! @tparam Type The type template parameter of the matrices data.
-//! @tparam State The non-type template parameter size of the state vector x.
+//! @tparam State The non-type template parameter size of the state vector X.
 //! @tparam Output The non-type template parameter size of the measurement
-//! vector z.
-//! @tparam Input The non-type template parameter size of the control u.
+//! vector Z.
+//! @tparam Input The non-type template parameter size of the control U.
+//! @tparam UpdateArguments The variadic type template parameter for additional
+//! update function parameters. Parameters such as delta times, variances, or
+//! linearized values. The parameters are propagated to the function objects
+//! used to compute the state observation H and the observation noise R
+//! matrices. The parameters are also propagated to the state observation
+//! function object h.
 //! @tparam PredictionArguments The variadic type template parameter for
-//! additional prediction function parameters. Time, or a delta thereof, is
-//! often a prediction parameter.
+//! additional prediction function parameters. Parameters such as delta times,
+//! variances, or linearized values. The parameters are propagated to the
+//! function objects used to compute the process noise Q, the state transition
+//! F, and the control transition G matrices. The parameters are also propagated
+//! to the state transition function object f.
 template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
-          std::size_t Input = 0, typename UpdateArguments = std::tuple<>,
+          std::size_t Input = 1, typename UpdateArguments = std::tuple<>,
           typename PredictionArguments = std::tuple<>>
-using kalman = fcarouge::kalman<
-    Type, Eigen::Vector<Type, State>, Eigen::Vector<Type, Output>,
-    Eigen::Vector<Type, Input>, internal::transpose, internal::symmetrize,
-    internal::divide, internal::identity, UpdateArguments, PredictionArguments>;
+using kalman = internal::kalman<Type, State, Output, Input, UpdateArguments,
+                                PredictionArguments>;
 
 } // namespace fcarouge::eigen
 

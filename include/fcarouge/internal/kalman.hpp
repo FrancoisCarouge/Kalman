@@ -47,6 +47,27 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::internal
 {
+
+//! @brief Function object for providing an identity matrix.
+//!
+//! @todo Could we remove this for a standard facility? Perhaps a form of
+//! std::integral_constant?
+//!
+//! @note Could this function object template be a variable template as proposed
+//! in paper P2008R0 entitled "Enabling variable template template parameters"?
+struct identity_matrix {
+  //! @brief Returns `1`, the 1-by-1 identity matrix equivalent.
+  //!
+  //! @tparam Type The type template parameter of the value.
+  //!
+  //! @return The value `1`.
+  template <typename Type>
+  [[nodiscard]] inline constexpr auto operator()() const noexcept
+  {
+    return Type{ 1 };
+  }
+};
+
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
           typename UpdateArguments, typename PredictionArguments>
