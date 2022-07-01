@@ -4,7 +4,8 @@ Checks: '*,
         -fuchsia-trailing-return,
         -llvmlibc-implementation-in-namespace,
         -llvmlibc-restrict-system-libc-headers,
-        -portability-simd-intrinsics'
+        -portability-simd-intrinsics,
+        -readability-identifier-length'
 
 CheckOptions:
   - key: misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
