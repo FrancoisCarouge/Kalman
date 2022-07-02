@@ -33,20 +33,23 @@ var NAVTREE =
       ] ],
       [ "Library", "index.xhtml#autotoc_md17", [
         [ "Motivation", "index.xhtml#autotoc_md18", null ],
-        [ "Class fcarouge::kalman", "index.xhtml#autotoc_md19", [
-          [ "Template Parameters", "index.xhtml#autotoc_md20", null ],
-          [ "Member Types", "index.xhtml#autotoc_md21", null ],
-          [ "Member Functions", "index.xhtml#autotoc_md22", [
-            [ "Characteristics", "index.xhtml#autotoc_md23", null ],
-            [ "Modifiers", "index.xhtml#autotoc_md24", null ]
+        [ "Usage", "index.xhtml#autotoc_md19", [
+          [ "System Installation", "index.xhtml#autotoc_md20", null ]
+        ] ],
+        [ "Class fcarouge::kalman", "index.xhtml#autotoc_md21", [
+          [ "Template Parameters", "index.xhtml#autotoc_md22", null ],
+          [ "Member Types", "index.xhtml#autotoc_md23", null ],
+          [ "Member Functions", "index.xhtml#autotoc_md24", [
+            [ "Characteristics", "index.xhtml#autotoc_md25", null ],
+            [ "Modifiers", "index.xhtml#autotoc_md26", null ]
           ] ]
         ] ]
       ] ],
-      [ "Resources", "index.xhtml#autotoc_md25", null ],
-      [ "License", "index.xhtml#autotoc_md26", null ]
+      [ "Resources", "index.xhtml#autotoc_md27", null ],
+      [ "License", "index.xhtml#autotoc_md28", null ]
     ] ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
-      [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md1", null ],
+      [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md2", null ],
       [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md3", null ],
       [ "Our Responsibilities", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
       [ "Scope", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md9", null ],
@@ -60,8 +63,8 @@ var NAVTREE =
       [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md7", null ]
     ] ],
     [ "Security Policy", "md__s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md28", null ],
-      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md29", null ]
+      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md30", null ],
+      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md31", null ]
     ] ],
     [ "Todo List", "todo.xhtml", null ],
     [ "Test List", "test.xhtml", null ],
@@ -100,7 +103,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"md__s_e_c_u_r_i_t_y.xhtml#autotoc_md29"
+"md__s_e_c_u_r_i_t_y.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

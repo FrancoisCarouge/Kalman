@@ -167,6 +167,10 @@ Library</h1>
 </li>
 <li><a href="#library">Library</a><ul>
 <li><a href="#motivation">Motivation</a></li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#system-installation">System Installation</a></li>
+</ul>
+</li>
 <li><a href="#class-fcarougekalman">Class fcarouge::kalman</a><ul>
 <li><a href="#template-parameters">Template Parameters</a></li>
 <li><a href="#member-types">Member Types</a></li>
@@ -191,6 +195,12 @@ Motivation</h2>
 <li>Generalization of the support.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md19"></a>
+Usage</h2>
+<h3><a class="anchor" id="autotoc_md20"></a>
+System Installation</h3>
+<p >Clone the repository, from within the cloned folder, run:</p>
+<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; sudo make install</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
 Class fcarouge::kalman</h2>
 <p >Defined in header <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a></p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
@@ -215,7 +225,7 @@ Class fcarouge::kalman</h2>
 <div class="line">  Identity,</div>
 <div class="line">  std::tuple&lt;UpdateArguments...&gt;,</div>
 <div class="line">  std::tuple&lt;PredictionArguments...&gt;&gt;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md20"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md22"></a>
 Template Parameters</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -239,9 +249,9 @@ Template Parameters</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>UpdateArguments...</code>   </td><td class="markdownTableBodyNone">The variadic type template parameter for additional update function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>PredictionArguments...</code>   </td><td class="markdownTableBodyNone">The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object h.   </td></tr>
+<td class="markdownTableBodyNone"><code>PredictionArguments...</code>   </td><td class="markdownTableBodyNone">The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f.   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md21"></a>
+<h3><a class="anchor" id="autotoc_md23"></a>
 Member Types</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -271,7 +281,7 @@ Member Types</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>state</code>   </td><td class="markdownTableBodyNone">Type of the state estimate vector X.   </td><td class="markdownTableBodyNone">x by 1   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md22"></a>
+<h3><a class="anchor" id="autotoc_md24"></a>
 Member Functions</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -283,7 +293,7 @@ Member Functions</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>operator=</code>   </td><td class="markdownTableBodyNone">Assigns values to the filter.   </td></tr>
 </table>
-<h4><a class="anchor" id="autotoc_md23"></a>
+<h4><a class="anchor" id="autotoc_md25"></a>
 Characteristics</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -317,7 +327,7 @@ Characteristics</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>observation</code>   </td><td class="markdownTableBodyNone">Manages the state observation function object h. Configures the callable object to compute the observation state value. The default value is the equivalent to <code>h(x) = H * X</code>. The default function is suitable for linear systems. For extended filters <code>observation</code> is a linearization of the state observation while H is the Jacobian of the observation function: <code>H = ∂h/∂X = ∂hj/∂xi</code> that is each row i contains the derivatives of the state observation function for every element j in the state vector X.   </td></tr>
 </table>
-<h4><a class="anchor" id="autotoc_md24"></a>
+<h4><a class="anchor" id="autotoc_md26"></a>
 Modifiers</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -329,7 +339,7 @@ Modifiers</h4>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>predict</code>   </td><td class="markdownTableBodyNone">Produces estimates of the state variables and uncertainties.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 Resources</h1>
 <p >Awesome resources to learn about Kalman filters:</p>
 <ul>
@@ -337,7 +347,7 @@ Resources</h1>
 <li><a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters in Python</a> by Roger Labbe.</li>
 <li><a href="https://www.anuncommonlab.com/articles/how-kalman-filters-work">How Kalman Filters Work</a> by Tucker McClure of An Uncommon Lab.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md28"></a>
 License</h1>
 <p ><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
 <p >Kalman for C++ is public domain:</p>
@@ -352,7 +362,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 1 2022 03:13:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Jul 2 2022 19:15:09 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
