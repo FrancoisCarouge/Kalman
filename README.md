@@ -103,6 +103,8 @@ k.q(0.2 * 0.2 *
   - [Multi-Dimensional](#multi-dimensional)
 - [Library](#library)
   - [Motivation](#motivation)
+  - [Usage](#usage)
+    - [System Installation](#system-installation)
   - [Class fcarouge::kalman](#class-fcarougekalman)
     - [Template Parameters](#template-parameters)
     - [Member Types](#member-types)
@@ -120,6 +122,16 @@ This package explores what could be a Kalman filter implementation a la standard
 - Separation of the application domain.
 - Separation of the algebra implementation.
 - Generalization of the support.
+
+## Usage
+
+### System Installation
+
+Clone the repository, from within the cloned folder, run:
+
+```
+mkdir build && cd build && cmake .. && sudo make install
+```
 
 ## Class fcarouge::kalman
 
@@ -162,8 +174,8 @@ class kalman<
 | `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. |
 | `Divide` | The customization point object template parameter of the matrix division functor. |
 | `Identity` | The customization point object template parameter of the matrix identity functor. |
-| `UpdateArguments...` | The variadic type template parameter for additional update function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h.
-| `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object h. |
+| `UpdateArguments...` | The variadic type template parameter for additional update function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. |
+| `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. |
 
 ### Member Types
 
