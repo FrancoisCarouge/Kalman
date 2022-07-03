@@ -133,14 +133,17 @@ class fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Di
 <p class="interdd">Support ranges operator filter? </p>
 <p class="interdd">Support mux pipes <a href="https://github.com/joboccara/pipes">https://github.com/joboccara/pipes</a> operator filter? </p>
 <p class="interdd">Reproduce Ardupilot's inertial navigation EKF and comparison benchmarks in SITL (software in the loop simulation). </p>
-<p class="interdd">Can we provide the operator[] for the vector characteristics regardless of implementation? And for the matrix ones too? It could simplify client code. </p>
+<p class="interdd">Should we provide the operator[] for the vector characteristics regardless of implementation? And for the matrix ones too? It could simplify client code. </p>
+<p class="interdd">Should we provide the operator[] for state directly on the filter? Is the state X always what the user would want? </p>
 <p class="interdd">Consider if a fluent interface would be preferable for characteristics? </p>
 <p class="interdd">Consider additional constructors? </p>
 <p class="interdd">Consider additional characteristics method overloads? </p>
-<p class="enddd">Could we do away with std::tuple, replaced by a template template? </p>
+<p class="interdd">Could we do away with std::tuple, replaced by a template template? </p>
+<p class="interdd">A clear or reset member equivalent may be useful for real-time re-initializations but to what default? </p>
+<p class="enddd">Could the Input be void by default? Or empty? </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00138">138</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00143">143</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/fcarouge/<a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a></li>
 </ul>
@@ -150,7 +153,7 @@ class fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Di
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sat Jul 2 2022 19:15:09 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Jul 3 2022 05:19:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

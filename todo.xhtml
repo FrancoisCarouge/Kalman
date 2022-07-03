@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a37a63ff235f1dba2aa6408d834f051e5">fcarouge::eigen::internal::divide::operator()</a>  (const auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::Matrix&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</dt>
 <dd><a class="anchor" id="_todo000002"></a>Why compilation fails if we specify the return type in the body of the function?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#ab72bb1ae1ec6c568b3b3d62b88ebf39c">fcarouge::eigen::internal::divide::operator()</a>  (const auto &amp;numerator, const arithmetic auto &amp;denominator) const -&gt; typename Eigen::Vector&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime &gt;</dt>
-<dd><a class="anchor" id="_todo000004"></a>Simplify implementation.  </dd>
+<dd><a class="anchor" id="_todo000005"></a>Simplify implementation.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a90303d5edb6a1a97c813b7e7fbac6da7">fcarouge::eigen::internal::divide::operator()</a>  (const arithmetic auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::RowVector&lt; typename std::decay_t&lt; decltype(denominator)&gt;::Scalar, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</dt>
 <dd><a class="anchor" id="_todo000008"></a>Simplify implementation.  </dd>
 <dt>Class <a class="el" href="structfcarouge_1_1internal_1_1identity__matrix.xhtml">fcarouge::internal::identity_matrix</a>  </dt>
@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#af6919e64102a3956686bd36da15f8d34">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::g</a>  </dt>
 <dd><a class="anchor" id="_todo000006"></a>Should G be initialized to all ones?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a11e07e73bc9c6e2746be37ea919bb3a8">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::h</a>  </dt>
-<dd><a class="anchor" id="_todo000005"></a>Should H be initialized to all ones?  </dd>
+<dd><a class="anchor" id="_todo000004"></a>Should H be initialized to all ones?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a03ce6e3922af86685f9ad41d11fc93b8">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::k</a>  </dt>
 <dd><a class="anchor" id="_todo000007"></a>Should K be initialized to all ones?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#aa2445b05ea9c828d98d60cb4ffc3c92e">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::observation_state_h</a>  </dt>
@@ -119,7 +119,9 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a4c611ea603ef3e6b8d77689257615d88">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::operator()</a>  (const PredictionArguments &amp;...prediction_arguments, const UpdateArguments &amp;...update_arguments, const auto &amp;...input_u, const auto &amp;...output_z)</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000021"></a>Consider if returning the state vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
-<p class="enddd">Understand why the implementation cannot be moved out of the class.  </p>
+<p class="interdd">Understand why the implementation cannot be moved out of the class. </p>
+<p class="interdd"></p>
+<p class="enddd">What should be the order of the parameters? Update first?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a7aace08260b714dcf1b71505db6e9c4d">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000023"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
@@ -172,7 +174,9 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="interdd"></p>
 <p class="interdd">Reproduce Ardupilot's inertial navigation EKF and comparison benchmarks in SITL (software in the loop simulation). </p>
 <p class="interdd"></p>
-<p class="interdd">Can we provide the operator[] for the vector characteristics regardless of implementation? And for the matrix ones too? It could simplify client code. </p>
+<p class="interdd">Should we provide the operator[] for the vector characteristics regardless of implementation? And for the matrix ones too? It could simplify client code. </p>
+<p class="interdd"></p>
+<p class="interdd">Should we provide the operator[] for state directly on the filter? Is the state X always what the user would want? </p>
 <p class="interdd"></p>
 <p class="interdd">Consider if a fluent interface would be preferable for characteristics? </p>
 <p class="interdd"></p>
@@ -180,7 +184,11 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="interdd"></p>
 <p class="interdd">Consider additional characteristics method overloads? </p>
 <p class="interdd"></p>
-<p class="enddd">Could we do away with std::tuple, replaced by a template template? </p>
+<p class="interdd">Could we do away with std::tuple, replaced by a template template? </p>
+<p class="interdd"></p>
+<p class="interdd">A clear or reset member equivalent may be useful for real-time re-initializations but to what default? </p>
+<p class="interdd"></p>
+<p class="enddd">Could the Input be void by default? Or empty? </p>
 </dd>
 </dl>
 </div></div><!-- contents -->
@@ -189,7 +197,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jul 2 2022 19:15:09 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Jul 3 2022 05:19:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

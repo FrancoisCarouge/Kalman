@@ -293,7 +293,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keyword">const</span> <span class="keyword">auto</span> i{ identity.template operator()&lt;<a class="code hl_typedef" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#aac4677d90d6b11eb8691da8ac7fa4442">estimate_uncertainty</a>&gt;() };</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    z = <a class="code hl_typedef" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#ad58389f483104f70dbee002813577af9">output</a>{ output_z... };</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    h = observation_state_h(x, arguments...);</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    h = observation_state_h(x, arguments...); <span class="comment">// x, z, args?</span></div>
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    r = noise_observation_r(x, z, arguments...);</div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    s = h * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(h) + r;</div>
 <div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    k = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>(p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(h), s);</div>
@@ -307,9 +307,9 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...input_u)</div>
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>  {</div>
 <div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    u = <a class="code hl_typedef" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#ad5b850e202b48f07b71f0faf54a9b122">input</a>{ input_u... };</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    f = transition_state_f(x, arguments..., u);</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    q = noise_process_q(x, arguments...);</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    g = transition_control_g(arguments...);</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    f = transition_state_f(x, arguments..., u); <span class="comment">// x, u, args?</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    q = noise_process_q(x, arguments...); <span class="comment">// x, u, args?</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    g = transition_control_g(arguments...); <span class="comment">// extend?</span></div>
 <div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    x = f * x + g * u;</div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    p = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>(<a class="code hl_typedef" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#aac4677d90d6b11eb8691da8ac7fa4442">estimate_uncertainty</a>{ f * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(f) + q });</div>
 <div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>  }</div>
@@ -359,7 +359,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sat Jul 2 2022 19:15:09 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Jul 3 2022 05:19:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
