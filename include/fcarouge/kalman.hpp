@@ -120,14 +120,19 @@ using identity_matrix = internal::identity_matrix;
 //! @todo Support mux pipes https://github.com/joboccara/pipes operator filter?
 //! @todo Reproduce Ardupilot's inertial navigation EKF and comparison
 //! benchmarks in SITL (software in the loop simulation).
-//! @todo Can we provide the operator[] for the vector characteristics
+//! @todo Should we provide the operator[] for the vector characteristics
 //! regardless of implementation? And for the matrix ones too? It could simplify
 //! client code.
+//! @todo Should we provide the operator[] for state directly on the filter? Is
+//! the state X always what the user would want?
 //! @todo Consider if a fluent interface would be preferable for
 //! characteristics?
 //! @todo Consider additional constructors?
 //! @todo Consider additional characteristics method overloads?
 //! @todo Could we do away with std::tuple, replaced by a template template?
+//! @todo A clear or reset member equivalent may be useful for real-time
+//! re-initializations but to what default?
+//! @todo Could the Input be void by default? Or empty?
 template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
@@ -876,6 +881,7 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! @todo Consider if returning the state vector X would be preferable? Or
   //! fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Understand why the implementation cannot be moved out of the class.
+  //! @todo What should be the order of the parameters? Update first?
   inline constexpr void
   operator()(const PredictionArguments &...prediction_arguments,
              const UpdateArguments &...update_arguments, const auto &...input_u,
