@@ -301,7 +301,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     const auto i{ identity.template operator()<estimate_uncertainty>() };
 
     z = output{ output_z... };
-    h = observation_state_h(x, arguments...);
+    h = observation_state_h(x, arguments...); // x, z, args?
     r = noise_observation_r(x, z, arguments...);
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
@@ -316,9 +316,9 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
                                 const auto &...input_u)
   {
     u = input{ input_u... };
-    f = transition_state_f(x, arguments..., u);
-    q = noise_process_q(x, arguments...);
-    g = transition_control_g(arguments...);
+    f = transition_state_f(x, arguments..., u); // x, u, args?
+    q = noise_process_q(x, arguments...); // x, u, args?
+    g = transition_control_g(arguments...); // extend?
     x = f * x + g * u;
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
