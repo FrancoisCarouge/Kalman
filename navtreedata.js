@@ -26,23 +26,22 @@ var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
     [ "Kalman Filter for C++", "index.xhtml", [
-      [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md13", null ],
-      [ "Examples", "index.xhtml#autotoc_md14", [
-        [ "One-Dimensional", "index.xhtml#autotoc_md15", null ],
-        [ "Multi-Dimensional", "index.xhtml#autotoc_md16", null ]
+      [ "Examples", "index.xhtml#autotoc_md13", [
+        [ "1x1 Constant System Dynamic Model", "index.xhtml#autotoc_md14", null ],
+        [ "6x2 Constant Acceleration Dynamic Model", "index.xhtml#autotoc_md15", null ],
+        [ "4x1 Non-Linear Dynamic Model", "index.xhtml#autotoc_md16", null ]
       ] ],
-      [ "Library", "index.xhtml#autotoc_md17", [
-        [ "Motivation", "index.xhtml#autotoc_md18", null ],
-        [ "Usage", "index.xhtml#autotoc_md19", [
-          [ "System Installation", "index.xhtml#autotoc_md20", null ]
-        ] ],
-        [ "Class fcarouge::kalman", "index.xhtml#autotoc_md21", [
-          [ "Template Parameters", "index.xhtml#autotoc_md22", null ],
-          [ "Member Types", "index.xhtml#autotoc_md23", null ],
-          [ "Member Functions", "index.xhtml#autotoc_md24", [
-            [ "Characteristics", "index.xhtml#autotoc_md25", null ],
-            [ "Modifiers", "index.xhtml#autotoc_md26", null ]
-          ] ]
+      [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md17", null ],
+      [ "Motivation", "index.xhtml#autotoc_md18", null ],
+      [ "Usage", "index.xhtml#autotoc_md19", [
+        [ "System Installation", "index.xhtml#autotoc_md20", null ]
+      ] ],
+      [ "Class kalman", "index.xhtml#autotoc_md21", [
+        [ "Template Parameters", "index.xhtml#autotoc_md22", null ],
+        [ "Member Types", "index.xhtml#autotoc_md23", null ],
+        [ "Member Functions", "index.xhtml#autotoc_md24", [
+          [ "Characteristics", "index.xhtml#autotoc_md25", null ],
+          [ "Modifiers", "index.xhtml#autotoc_md26", null ]
         ] ]
       ] ],
       [ "Resources", "index.xhtml#autotoc_md27", null ],
@@ -103,7 +102,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7"
+"md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

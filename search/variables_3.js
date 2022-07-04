@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['f_0',['f',['../structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#aa69abffd72727a761892466eb684a5ef',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
-  ['f111_1',['f111',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02f_8cpp_03.xhtml#a357bbb5ff71ad18a89a7002061508410',1,'fcarouge::test::anonymous_namespace{f.cpp}']]],
-  ['f543_2',['f543',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02f_8cpp_03.xhtml#ad5b64cef617e0026fdd98833f8f18fb8',1,'fcarouge::test::anonymous_namespace{f.cpp}']]],
-  ['filter_3',['filter',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#af0e798a32b80dee9a86b68e6ea8fb664',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
-  ['from_4',['FROM',['../_l_i_c_e_n_s_e_8txt.xhtml#ad60b0e989fbef624c6d9ae96f49ff8e5',1,'LICENSE.txt']]]
+  ['defaults111_0',['defaults111',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a2170b5f9ce16dba1a219ba4e1392a324',1,'fcarouge::test::anonymous_namespace{initialization.cpp}']]],
+  ['defaults543_1',['defaults543',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a7a397c5022337d20dbd4768e5d1bac61',1,'fcarouge::test::anonymous_namespace{initialization.cpp}']]],
+  ['divide_2',['divide',['../structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a0c9c25cb2f88839e8bbe629b409eb371',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
+  ['dog_5fposition_3',['dog_position',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02dog__position_8cpp_03.xhtml#aafec5a2e95aa8989c1e8f9708622ca35',1,'fcarouge::sample::anonymous_namespace{dog_position.cpp}']]]
 ];

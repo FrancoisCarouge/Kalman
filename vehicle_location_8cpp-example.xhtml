@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: vehicule_location.cpp</title>
+<title>Kalman: vehicle_location.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('vehicule_location_8cpp-example.xhtml',''); initResizable(); });
+$(document).ready(function(){initNavTree('vehicle_location_8cpp-example.xhtml',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -83,10 +83,10 @@ $(document).ready(function(){initNavTree('vehicule_location_8cpp-example.xhtml',
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">vehicule_location.cpp</div></div>
+  <div class="headertitle"><div class="title">vehicle_location.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<p >Estimating the Vehicule Location</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from KalmanFilter.NET copyright Alex Becker.</dd></dl>
+<p >Estimating the Vehicle Location</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from KalmanFilter.NET copyright Alex Becker.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://www.kalmanfilter.net/multiExamples.html#ex9">https://www.kalmanfilter.net/multiExamples.html#ex9</a></dd></dl>
 <p>In this example, we would like to estimate the location of the vehicle in the XY plane. The vehicle has an onboard location sensor that reports X and Y coordinates of the system. We assume constant acceleration dynamics. In this example we don't have a control variable u since we don't have control input. Let us assume a vehicle moving in a straight line in the X direction with a constant velocity. After traveling 400 meters the vehicle turns right, with a turning radius of 300 meters. During the turning maneuver, the vehicle experiences acceleration due to the circular motion (an angular acceleration). The measurements period: Δt = 1s (constant). The random acceleration standard deviation: σa = 0.2 m.s^-2.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman__eigen_8hpp.xhtml">fcarouge/kalman_eigen.hpp</a>&quot;</span></div>
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('vehicule_location_8cpp-example.xhtml',
 <div class="line">{</div>
 <div class="line"><span class="keyword">namespace</span></div>
 <div class="line">{</div>
-<div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicule__location_8cpp_03.xhtml#a0e0f45374da8e39a93199a986aa1114b">vehicule_location</a>{ [] {</div>
+<div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicle__location_8cpp_03.xhtml#a24827efc0dce5286e83c374d16e73be3">vehicle_location</a>{ [] {</div>
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
 <div class="line">  <span class="keyword">using</span> <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = eigen::kalman&lt;double, 6, 2, 0&gt;;</div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
@@ -241,14 +241,14 @@ $(document).ready(function(){initNavTree('vehicule_location_8cpp-example.xhtml',
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman__eigen_8hpp_xhtml"><div class="ttname"><a href="kalman__eigen_8hpp.xhtml">kalman_eigen.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman__eigen_8hpp_source.xhtml#l00228">kalman_eigen.hpp:232</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicule__location_8cpp_03_xhtml_a0e0f45374da8e39a93199a986aa1114b"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicule__location_8cpp_03.xhtml#a0e0f45374da8e39a93199a986aa1114b">fcarouge::sample::anonymous_namespace{vehicule_location.cpp}::vehicule_location</a></div><div class="ttdeci">auto vehicule_location</div><div class="ttdef"><b>Definition:</b> <a href="vehicule__location_8cpp_source.xhtml#l00028">vehicule_location.cpp:28</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicle__location_8cpp_03_xhtml_a24827efc0dce5286e83c374d16e73be3"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02vehicle__location_8cpp_03.xhtml#a24827efc0dce5286e83c374d16e73be3">fcarouge::sample::anonymous_namespace{vehicle_location.cpp}::vehicle_location</a></div><div class="ttdeci">auto vehicle_location</div><div class="ttdef"><b>Definition:</b> <a href="vehicle__location_8cpp_source.xhtml#l00028">vehicle_location.cpp:28</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jul 3 2022 05:19:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Jul 4 2022 19:41:47 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

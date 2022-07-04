@@ -87,7 +87,122 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_README"></a> A generic Kalman filter.</p>
+<p >The library supports simple and extended filters. The update equation uses the Joseph form. Control input is accepted. Customization point objects allow for using different linear algebra backends for which standard or Eigen3 implementation is provided.</p>
+<ul>
+<li><a href="#kalman-filter-for-c">Kalman Filter for C++</a></li>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#1x1-constant-system-dynamic-model">1x1 Constant System Dynamic Model</a></li>
+<li><a href="#6x2-constant-acceleration-dynamic-model">6x2 Constant Acceleration Dynamic Model</a></li>
+<li><a href="#4x1-non-linear-dynamic-model">4x1 Non-Linear Dynamic Model</a></li>
+</ul>
+</li>
+<li><a href="#continuous-integration--deployment-actions">Continuous Integration &amp; Deployment Actions</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#system-installation">System Installation</a></li>
+</ul>
+</li>
+<li><a href="#class-kalman">Class kalman</a><ul>
+<li><a href="#template-parameters">Template Parameters</a></li>
+<li><a href="#member-types">Member Types</a></li>
+<li><a href="#member-functions">Member Functions</a><ul>
+<li><a href="#characteristics">Characteristics</a></li>
+<li><a href="#modifiers">Modifiers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#license">License</a></li>
+</ul>
 <h1><a class="anchor" id="autotoc_md13"></a>
+Examples</h1>
+<h2><a class="anchor" id="autotoc_md14"></a>
+1x1 Constant System Dynamic Model</h2>
+<p >Example from the building height estimation sample. One estimated state and one observed output filter.</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a> k;</div>
+<div class="line"> </div>
+<div class="line">k.x(60.);</div>
+<div class="line">k.p(225.);</div>
+<div class="line">k.r(25.);</div>
+<div class="line"> </div>
+<div class="line">k(48.54);</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00143">kalman.hpp:144</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+6x2 Constant Acceleration Dynamic Model</h2>
+<p >Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 6, 2, 0&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
+<div class="line"> </div>
+<div class="line">k.x(0., 0., 0., 0., 0., 0.);</div>
+<div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
+<div class="line">                                  { 0, 500, 0, 0, 0, 0 },</div>
+<div class="line">                                  { 0, 0, 500, 0, 0, 0 },</div>
+<div class="line">                                  { 0, 0, 0, 500, 0, 0 },</div>
+<div class="line">                                  { 0, 0, 0, 0, 500, 0 },</div>
+<div class="line">                                  { 0, 0, 0, 0, 0, 500 } });</div>
+<div class="line">k.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },</div>
+<div class="line">                                             { 0.5, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                             { 0.5, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                             { 0, 0, 0, 0.25, 0.5, 0.5 },</div>
+<div class="line">                                             { 0, 0, 0, 0.5, 1, 1 },</div>
+<div class="line">                                             { 0, 0, 0, 0.5, 1, 1 } });</div>
+<div class="line">k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },</div>
+<div class="line">                              { 0, 1, 1, 0, 0, 0 },</div>
+<div class="line">                              { 0, 0, 1, 0, 0, 0 },</div>
+<div class="line">                              { 0, 0, 0, 1, 1, 0.5 },</div>
+<div class="line">                              { 0, 0, 0, 0, 1, 1 },</div>
+<div class="line">                              { 0, 0, 0, 0, 0, 1 } });</div>
+<div class="line">k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },</div>
+<div class="line">                          { 0, 0, 0, 1, 0, 0 } });</div>
+<div class="line">k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
+<div class="line"> </div>
+<div class="line">k(-375.93, 301.78);</div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman__eigen_8hpp_source.xhtml#l00228">kalman_eigen.hpp:232</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+4x1 Non-Linear Dynamic Model</h2>
+<p >Example from the thermal, current of warm air, strength, radius, and location estimation sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;float, 4, 1, 0, std::tuple&lt;float, float&gt;</a>,</div>
+<div class="line">                                        std::tuple&lt;float, float&gt;&gt;;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
+<div class="line"> </div>
+<div class="line">k.x(1 / 4.06, 80, 0, 0);</div>
+<div class="line">k.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
+<div class="line">                                  { 0, 400, 0, 0 },</div>
+<div class="line">                                  { 0, 0, 400, 0 },</div>
+<div class="line">                                  { 0, 0, 0, 400 } });</div>
+<div class="line">k.transition([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
+<div class="line">                <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; kalman::state {</div>
+<div class="line">  <span class="keywordflow">return</span> x + kalman::state{ 0, 0, -drift_x, -drift_y };</div>
+<div class="line">});</div>
+<div class="line">k.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },</div>
+<div class="line">                                 { 0, 0.0009, 0, 0 },</div>
+<div class="line">                                 { 0, 0, 0.0009, 0 },</div>
+<div class="line">                                 { 0, 0, 0, 0.0009 } });</div>
+<div class="line">k.r(0.2025);</div>
+<div class="line">k.observation([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">                 <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output {</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::output{ x(0) *</div>
+<div class="line">    std::exp(-((x(2) - position_x)*(x(2) - position_x) +</div>
+<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / x(1) * x(1)) };</div>
+<div class="line">k.h([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">       <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output_model {</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> exp{ std::exp(-((x(2) - position_x) * (x(2) - position_x) +</div>
+<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) };</div>
+<div class="line">  <span class="keyword">const</span> kalman::output_model h{</div>
+<div class="line">    exp,</div>
+<div class="line">    2 * x(0) * (((x(2) - position_x) * (x(2) - position_x) +</div>
+<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) * exp,</div>
+<div class="line">    -2 * (x(0) * (x(2) - position_x) / (x(1) * x(1))) * exp,</div>
+<div class="line">    -2 * (x(0) * (x(3) - position_y) / (x(1) * x(1))) * exp</div>
+<div class="line">  };</div>
+<div class="line">  <span class="keywordflow">return</span> h;</div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line">k(drift_x, drift_y, position_x, position_y, variometer);</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
 Continuous Integration &amp; Deployment Actions</h1>
 <p ><a href="https://github.com/FrancoisCarouge/Kalman"><img src="https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen" alt="Code Repository" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc-trunk.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc-trunk.yml/badge.svg" alt="Test: Ubuntu 22.04 GCC Trunk" style="pointer-events: none;" class="inline"/></a> <br  />
@@ -111,97 +226,22 @@ Continuous Integration &amp; Deployment Actions</h1>
  <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml/badge.svg" alt="Deploy Documentation: Doxygen GitHub Pages" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg" alt="Deploy Code Coverage: Coveralls" style="pointer-events: none;" class="inline"/></a></p>
-<h1><a class="anchor" id="autotoc_md14"></a>
-Examples</h1>
-<h2><a class="anchor" id="autotoc_md15"></a>
-One-Dimensional</h2>
-<div class="fragment"><div class="line"><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a> k;</div>
-<div class="line"> </div>
-<div class="line">k.x(60.);</div>
-<div class="line">k.p(225.);</div>
-<div class="line">k.r(25.);</div>
-<div class="line"> </div>
-<div class="line">k(48.54);</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00143">kalman.hpp:144</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
-Multi-Dimensional</h2>
-<p >Six states, two measurements, no control, using Eigen3 support.</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 6, 2, 0&gt;</a>;</div>
-<div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
-<div class="line"> </div>
-<div class="line">k.x(0., 0., 0., 0., 0., 0.);</div>
-<div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
-<div class="line">                                    { 0, 500, 0, 0, 0, 0 },</div>
-<div class="line">                                    { 0, 0, 500, 0, 0, 0 },</div>
-<div class="line">                                    { 0, 0, 0, 500, 0, 0 },</div>
-<div class="line">                                    { 0, 0, 0, 0, 500, 0 },</div>
-<div class="line">                                    { 0, 0, 0, 0, 0, 500 } });</div>
-<div class="line">k.q(0.2 * 0.2 *</div>
-<div class="line">      kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },</div>
-<div class="line">                                   { 0.5, 1, 1, 0, 0, 0 },</div>
-<div class="line">                                   { 0.5, 1, 1, 0, 0, 0 },</div>
-<div class="line">                                   { 0, 0, 0, 0.25, 0.5, 0.5 },</div>
-<div class="line">                                   { 0, 0, 0, 0.5, 1, 1 },</div>
-<div class="line">                                   { 0, 0, 0, 0.5, 1, 1 } });</div>
-<div class="line">  k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },</div>
-<div class="line">                                { 0, 1, 1, 0, 0, 0 },</div>
-<div class="line">                                { 0, 0, 1, 0, 0, 0 },</div>
-<div class="line">                                { 0, 0, 0, 1, 1, 0.5 },</div>
-<div class="line">                                { 0, 0, 0, 0, 1, 1 },</div>
-<div class="line">                                { 0, 0, 0, 0, 0, 1 } });</div>
-<div class="line">  k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0 } });</div>
-<div class="line">  k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
-<div class="line"> </div>
-<div class="line">  k(-375.93, 301.78);</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="internal_2kalman__eigen_8hpp_source.xhtml#l00228">kalman_eigen.hpp:232</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
-Library</h1>
-<ul>
-<li><a href="#kalman-filter-for-c">Kalman Filter for C++</a></li>
-<li><a href="#continuous-integration--deployment-actions">Continuous Integration &amp; Deployment Actions</a></li>
-<li><a href="#examples">Examples</a><ul>
-<li><a href="#one-dimensional">One-Dimensional</a></li>
-<li><a href="#multi-dimensional">Multi-Dimensional</a></li>
-</ul>
-</li>
-<li><a href="#library">Library</a><ul>
-<li><a href="#motivation">Motivation</a></li>
-<li><a href="#usage">Usage</a><ul>
-<li><a href="#system-installation">System Installation</a></li>
-</ul>
-</li>
-<li><a href="#class-fcarougekalman">Class fcarouge::kalman</a><ul>
-<li><a href="#template-parameters">Template Parameters</a></li>
-<li><a href="#member-types">Member Types</a></li>
-<li><a href="#member-functions">Member Functions</a><ul>
-<li><a href="#characteristics">Characteristics</a></li>
-<li><a href="#modifiers">Modifiers</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#resources">Resources</a></li>
-<li><a href="#license">License</a></li>
-</ul>
-<h2><a class="anchor" id="autotoc_md18"></a>
-Motivation</h2>
+<h1><a class="anchor" id="autotoc_md18"></a>
+Motivation</h1>
 <p >Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.</p>
 <p >This package explores what could be a Kalman filter implementation a la standard library. The following concerns and tradeoffs are considered:</p><ul>
 <li>Separation of the application domain.</li>
 <li>Separation of the algebra implementation.</li>
 <li>Generalization of the support.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md19"></a>
-Usage</h2>
-<h3><a class="anchor" id="autotoc_md20"></a>
-System Installation</h3>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Usage</h1>
+<h2><a class="anchor" id="autotoc_md20"></a>
+System Installation</h2>
 <p >Clone the repository, from within the cloned folder, run:</p>
 <div class="fragment"><div class="line">mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; sudo make install</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
-Class fcarouge::kalman</h2>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md21"></a>
+Class kalman</h1>
 <p >Defined in header <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a></p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
 <div class="line">  <span class="keyword">typename</span> Type,</div>
@@ -225,8 +265,8 @@ Class fcarouge::kalman</h2>
 <div class="line">  Identity,</div>
 <div class="line">  std::tuple&lt;UpdateArguments...&gt;,</div>
 <div class="line">  std::tuple&lt;PredictionArguments...&gt;&gt;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md22"></a>
-Template Parameters</h3>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
+Template Parameters</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Template Parameter   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -251,8 +291,8 @@ Template Parameters</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>PredictionArguments...</code>   </td><td class="markdownTableBodyNone">The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f.   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md23"></a>
-Member Types</h3>
+<h2><a class="anchor" id="autotoc_md23"></a>
+Member Types</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Type   </th><th class="markdownTableHeadNone">Definition   </th><th class="markdownTableHeadNone">Dimensions    </th></tr>
@@ -281,8 +321,8 @@ Member Types</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>state</code>   </td><td class="markdownTableBodyNone">Type of the state estimate vector X.   </td><td class="markdownTableBodyNone">x by 1   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md24"></a>
-Member Functions</h3>
+<h2><a class="anchor" id="autotoc_md24"></a>
+Member Functions</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Function   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -293,8 +333,8 @@ Member Functions</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>operator=</code>   </td><td class="markdownTableBodyNone">Assigns values to the filter.   </td></tr>
 </table>
-<h4><a class="anchor" id="autotoc_md25"></a>
-Characteristics</h4>
+<h3><a class="anchor" id="autotoc_md25"></a>
+Characteristics</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Characteristic   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -327,8 +367,8 @@ Characteristics</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>observation</code>   </td><td class="markdownTableBodyNone">Manages the state observation function object h. Configures the callable object to compute the observation state value. The default value is the equivalent to <code>h(x) = H * X</code>. The default function is suitable for linear systems. For extended filters <code>observation</code> is a linearization of the state observation while H is the Jacobian of the observation function: <code>H = ∂h/∂X = ∂hj/∂xi</code> that is each row i contains the derivatives of the state observation function for every element j in the state vector X.   </td></tr>
 </table>
-<h4><a class="anchor" id="autotoc_md26"></a>
-Modifiers</h4>
+<h3><a class="anchor" id="autotoc_md26"></a>
+Modifiers</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Modifier   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -346,6 +386,7 @@ Resources</h1>
 <li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
 <li><a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters in Python</a> by Roger Labbe.</li>
 <li><a href="https://www.anuncommonlab.com/articles/how-kalman-filters-work">How Kalman Filters Work</a> by Tucker McClure of An Uncommon Lab.</li>
+<li><a href="https://en.wikipedia.org/wiki/Kalman_filter">Wikipedia Kalman filter</a> by Wikipedia, the free encyclopedia.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md28"></a>
 License</h1>
@@ -362,7 +403,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jul 3 2022 05:19:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Jul 4 2022 19:41:47 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
