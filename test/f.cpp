@@ -7,7 +7,7 @@
 
 Kalman Filter for C++
 Version 0.1.0
-fttps://github.com/FrancoisCarouge/Kalman
+https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
 

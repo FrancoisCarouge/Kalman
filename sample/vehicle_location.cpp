@@ -6,7 +6,7 @@ namespace fcarouge::sample
 {
 namespace
 {
-//! @brief Estimating the Vehicule Location
+//! @brief Estimating the Vehicle Location
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.
@@ -24,8 +24,8 @@ namespace
 //! (an angular acceleration). The measurements period: Δt = 1s (constant). The
 //! random acceleration standard deviation: σa = 0.2 m.s^-2.
 //!
-//! @example vehicule_location.cpp
-[[maybe_unused]] auto vehicule_location{ [] {
+//! @example vehicle_location.cpp
+[[maybe_unused]] auto vehicle_location{ [] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   using kalman = eigen::kalman<double, 6, 2, 0>;
   kalman k;
