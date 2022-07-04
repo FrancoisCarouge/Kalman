@@ -2,6 +2,123 @@
 
 A generic Kalman filter.
 
+The library supports simple and extended filters. The update equation uses the Joseph form. Control input is accepted. Customization point objects allow for using different linear algebra backends for which standard or Eigen3 implementation is provided.
+
+- [Kalman Filter for C++](#kalman-filter-for-c)
+- [Examples](#examples)
+  - [1x1 Constant System Dynamic Model](#1x1-constant-system-dynamic-model)
+  - [6x2 Constant Acceleration Dynamic Model](#6x2-constant-acceleration-dynamic-model)
+  - [4x1 Non-Linear Dynamic Model](#4x1-non-linear-dynamic-model)
+- [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
+- [Motivation](#motivation)
+- [Usage](#usage)
+  - [System Installation](#system-installation)
+- [Class kalman](#class-kalman)
+  - [Template Parameters](#template-parameters)
+  - [Member Types](#member-types)
+  - [Member Functions](#member-functions)
+    - [Characteristics](#characteristics)
+    - [Modifiers](#modifiers)
+- [Resources](#resources)
+- [License](#license)
+
+# Examples
+
+## 1x1 Constant System Dynamic Model
+
+Example from the building height estimation sample. One estimated state and one observed output filter.
+
+```cpp
+fcarouge::kalman k;
+
+k.x(60.);
+k.p(225.);
+k.r(25.);
+
+k(48.54);
+```
+
+## 6x2 Constant Acceleration Dynamic Model
+
+Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.
+
+```cpp
+using kalman = fcarouge::eigen::kalman<double, 6, 2, 0>;
+
+kalman k;
+
+k.x(0., 0., 0., 0., 0., 0.);
+k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },
+                                  { 0, 500, 0, 0, 0, 0 },
+                                  { 0, 0, 500, 0, 0, 0 },
+                                  { 0, 0, 0, 500, 0, 0 },
+                                  { 0, 0, 0, 0, 500, 0 },
+                                  { 0, 0, 0, 0, 0, 500 } });
+k.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },
+                                             { 0.5, 1, 1, 0, 0, 0 },
+                                             { 0.5, 1, 1, 0, 0, 0 },
+                                             { 0, 0, 0, 0.25, 0.5, 0.5 },
+                                             { 0, 0, 0, 0.5, 1, 1 },
+                                             { 0, 0, 0, 0.5, 1, 1 } });
+k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
+                              { 0, 1, 1, 0, 0, 0 },
+                              { 0, 0, 1, 0, 0, 0 },
+                              { 0, 0, 0, 1, 1, 0.5 },
+                              { 0, 0, 0, 0, 1, 1 },
+                              { 0, 0, 0, 0, 0, 1 } });
+k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },
+                          { 0, 0, 0, 1, 0, 0 } });
+k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });
+
+k(-375.93, 301.78);
+```
+
+## 4x1 Non-Linear Dynamic Model
+
+Example from the thermal, current of warm air, strength, radius, and location estimation sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
+
+```cpp
+using kalman = fcarouge::eigen::kalman<float, 4, 1, 0, std::tuple<float, float>,
+                                        std::tuple<float, float>>;
+
+kalman k;
+
+k.x(1 / 4.06, 80, 0, 0);
+k.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },
+                                  { 0, 400, 0, 0 },
+                                  { 0, 0, 400, 0 },
+                                  { 0, 0, 0, 400 } });
+k.transition([](const kalman::state &x, const float &drift_x,
+                const float &drift_y) -> kalman::state {
+  return x + kalman::state{ 0, 0, -drift_x, -drift_y };
+});
+k.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },
+                                 { 0, 0.0009, 0, 0 },
+                                 { 0, 0, 0.0009, 0 },
+                                 { 0, 0, 0, 0.0009 } });
+k.r(0.2025);
+k.observation([](const kalman::state &x, const float &position_x,
+                 const float &position_y) -> kalman::output {
+  return kalman::output{ x(0) *
+    std::exp(-((x(2) - position_x)*(x(2) - position_x) +
+    (x(3) - position_y) * (x(3) - position_y)) / x(1) * x(1)) };
+k.h([](const kalman::state &x, const float &position_x,
+       const float &position_y) -> kalman::output_model {
+  const auto exp{ std::exp(-((x(2) - position_x) * (x(2) - position_x) +
+    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) };
+  const kalman::output_model h{
+    exp,
+    2 * x(0) * (((x(2) - position_x) * (x(2) - position_x) +
+    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) * exp,
+    -2 * (x(0) * (x(2) - position_x) / (x(1) * x(1))) * exp,
+    -2 * (x(0) * (x(3) - position_y) / (x(1) * x(1))) * exp
+  };
+  return h;
+});
+
+k(drift_x, drift_y, position_x, position_y, variometer);
+```
+
 # Continuous Integration & Deployment Actions
 
 [![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
@@ -45,76 +162,8 @@ A generic Kalman filter.
 <br>
 [![Deploy Code Coverage: Coveralls](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml)
 
-# Examples
 
-## One-Dimensional
-
-```cpp
-fcarouge::kalman k;
-
-k.x(60.);
-k.p(225.);
-k.r(25.);
-
-k(48.54);
-```
-
-## Multi-Dimensional
-
-Six states, two measurements, no control, using Eigen3 support.
-
-```cpp
-using kalman = fcarouge::eigen::kalman<double, 6, 2, 0>;
-
-kalman k;
-
-k.x(0., 0., 0., 0., 0., 0.);
-k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },
-                                    { 0, 500, 0, 0, 0, 0 },
-                                    { 0, 0, 500, 0, 0, 0 },
-                                    { 0, 0, 0, 500, 0, 0 },
-                                    { 0, 0, 0, 0, 500, 0 },
-                                    { 0, 0, 0, 0, 0, 500 } });
-k.q(0.2 * 0.2 *
-      kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },
-                                   { 0.5, 1, 1, 0, 0, 0 },
-                                   { 0.5, 1, 1, 0, 0, 0 },
-                                   { 0, 0, 0, 0.25, 0.5, 0.5 },
-                                   { 0, 0, 0, 0.5, 1, 1 },
-                                   { 0, 0, 0, 0.5, 1, 1 } });
-  k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
-                                { 0, 1, 1, 0, 0, 0 },
-                                { 0, 0, 1, 0, 0, 0 },
-                                { 0, 0, 0, 1, 1, 0.5 },
-                                { 0, 0, 0, 0, 1, 1 },
-                                { 0, 0, 0, 0, 0, 1 } });
-  k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0 } });
-  k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });
-
-  k(-375.93, 301.78);
-```
-
-# Library
-
-- [Kalman Filter for C++](#kalman-filter-for-c)
-- [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
-- [Examples](#examples)
-  - [One-Dimensional](#one-dimensional)
-  - [Multi-Dimensional](#multi-dimensional)
-- [Library](#library)
-  - [Motivation](#motivation)
-  - [Usage](#usage)
-    - [System Installation](#system-installation)
-  - [Class fcarouge::kalman](#class-fcarougekalman)
-    - [Template Parameters](#template-parameters)
-    - [Member Types](#member-types)
-    - [Member Functions](#member-functions)
-      - [Characteristics](#characteristics)
-      - [Modifiers](#modifiers)
-- [Resources](#resources)
-- [License](#license)
-
-## Motivation
+# Motivation
 
 Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.
 
@@ -123,9 +172,9 @@ This package explores what could be a Kalman filter implementation a la standard
 - Separation of the algebra implementation.
 - Generalization of the support.
 
-## Usage
+# Usage
 
-### System Installation
+## System Installation
 
 Clone the repository, from within the cloned folder, run:
 
@@ -133,7 +182,7 @@ Clone the repository, from within the cloned folder, run:
 mkdir build && cd build && cmake .. && sudo make install
 ```
 
-## Class fcarouge::kalman
+# Class kalman
 
 Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
 
@@ -162,7 +211,7 @@ class kalman<
   std::tuple<PredictionArguments...>>
 ```
 
-### Template Parameters
+## Template Parameters
 
 | Template Parameter | Definition |
 | --- | --- |
@@ -177,7 +226,7 @@ class kalman<
 | `UpdateArguments...` | The variadic type template parameter for additional update function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. |
 | `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. |
 
-### Member Types
+## Member Types
 
 | Member Type | Definition | Dimensions |
 | --- | --- | --- |
@@ -194,7 +243,7 @@ class kalman<
 | `state_transition` | Type of the state transition matrix F, also known as Φ or A. | x by x |
 | `state` | Type of the state estimate vector X. | x by 1 |
 
-### Member Functions
+## Member Functions
 
 | Member Function | Definition |
 | --- | --- |
@@ -202,7 +251,7 @@ class kalman<
 | `(destructor)` | Destructs the filter. |
 | `operator=` | Assigns values to the filter. |
 
-#### Characteristics
+### Characteristics
 
 | Characteristic | Definition |
 | --- | --- |
@@ -221,7 +270,7 @@ class kalman<
 | `transition` | Manages the state transition function object f. Configures the callable object to compute the transition state value. The default value is the equivalent to `f(x) = F * X`. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while F is the Jacobian of the transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the derivatives of the state transition function for every element j in the state vector X. |
 | `observation` | Manages the state observation function object h. Configures the callable object to compute the observation state value. The default value is the equivalent to `h(x) = H * X`. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while H is the Jacobian of the observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i contains the derivatives of the state observation function for every element j in the state vector X. |
 
-#### Modifiers
+### Modifiers
 
 | Modifier | Definition |
 | --- | --- |
@@ -236,6 +285,7 @@ Awesome resources to learn about Kalman filters:
 - [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
 - [Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) by Roger Labbe.
 - [How Kalman Filters Work](https://www.anuncommonlab.com/articles/how-kalman-filters-work) by Tucker McClure of An Uncommon Lab.
+- [Wikipedia Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter) by Wikipedia, the free encyclopedia.
 
 # License
 
