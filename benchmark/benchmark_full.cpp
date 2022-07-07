@@ -36,8 +36,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
+#include "fcarouge/benchmark/benchmark.hpp"
+
 #include <benchmark/benchmark.h>
-#include <cassert>
+
+#include <algorithm>
 #include <chrono>
 
 namespace fcarouge::benchmark
@@ -45,18 +48,18 @@ namespace fcarouge::benchmark
 namespace
 {
 //! @benchmark Measure performance.
-void bench(::benchmark::State &state)
+void benchmark_full(::benchmark::State &state)
 {
   for (auto _ : state) {
-    for (int i = 0; i < state.range(0); ++i) {
-    }
+    // Argument value is: state.range(0)
+
+    const auto start{ clock::now() };
     ::benchmark::ClobberMemory();
-    const auto start{ std::chrono::high_resolution_clock::now() };
 
     // Measure.
 
     ::benchmark::ClobberMemory();
-    const auto end{ std::chrono::high_resolution_clock::now() };
+    const auto end{ clock::now() };
 
     state.SetIterationTime(
         std::chrono::duration_cast<std::chrono::duration<double>>(end - start)
@@ -64,26 +67,19 @@ void bench(::benchmark::State &state)
   }
 }
 
-BENCHMARK(bench)
-    ->Name("Bench")
+BENCHMARK(benchmark_full)
+    ->Name("Benchmark Full")
     ->Unit(::benchmark::kNanosecond)
     ->ComputeStatistics("min",
-                        [](const std::vector<double> &v) -> double {
-                          return *(
-                              std::min_element(std::begin(v), std::end(v)));
+                        [](const auto &results) {
+                          return std::ranges::min(results);
                         })
-    ->ComputeStatistics("max",
-                        [](const std::vector<double> &v) -> double {
-                          return *(
-                              std::max_element(std::begin(v), std::end(v)));
-                        })
-    ->Arg(0)
-    ->UseManualTime()
-    ->Complexity(::benchmark::oAuto)
-    ->DisplayAggregatesOnly(true)
-    ->RangeMultiplier(2)
-    ->Repetitions(10)
-    ->Range(1, 1 << 28);
+        -> ComputeStatistics("max",
+                             [](const auto &results) {
+                               return std::ranges::max(results);
+                             }) -> Arg(0) -> UseManualTime()
+            -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
+                -> RangeMultiplier(2) -> Repetitions(10) -> Range(1, 1 << 3);
 
 } // namespace
 } // namespace fcarouge::benchmark
