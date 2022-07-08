@@ -79,6 +79,17 @@ struct transpose {
 
     return result_type{ value.transpose() };
   }
+
+  //! @brief Returns the transpose of `value`.
+  //!
+  //! @param value Value to compute the transpose of.
+  //!
+  //! @todo Can this be optimized?
+  [[nodiscard]] inline constexpr auto
+  operator()(const arithmetic auto &value) const
+  {
+    return value;
+  }
 };
 
 //! @brief Function object for performing Eigen matrix symmetrization.
@@ -96,6 +107,17 @@ struct symmetrize {
     using result_type = std::decay_t<decltype(value)>;
 
     return result_type{ (value + value.transpose()) / 2 };
+  }
+
+  //! @brief Returns the symmetrized `value`.
+  //!
+  //! @param value Value to compute the symmetry of.
+  //!
+  //! @todo Can this be optimized?
+  [[nodiscard]] inline constexpr auto
+  operator()(const arithmetic auto &value) const
+  {
+    return value;
   }
 };
 
