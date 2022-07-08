@@ -40,9 +40,10 @@ PYTHON_DOCSTRING       = YES
 INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 8
-ALIASES                = "complexity=\par Complexity^^" \
-                         "exceptions=\par Exceptions^^" \
-                         "benchmark=\par Benchmark^^"
+ALIASES                = "benchmark=\par Benchmark^^" \
+                         "complexity=\par Complexity^^" \
+                         "exception=\par Exception^^" \
+                         "requirement=\par Requirement^^"
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
@@ -186,6 +187,7 @@ FILTER_PATTERNS        =
 FILTER_SOURCE_FILES    = NO
 FILTER_SOURCE_PATTERNS =
 USE_MDFILE_AS_MAINPAGE = README.md
+FORTRAN_COMMENT_AFTER  = 72
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
 #---------------------------------------------------------------------------
