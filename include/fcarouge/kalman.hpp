@@ -859,8 +859,10 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   //! @details Predicts and updates the estimates per prediction arguments,
   //! control input, and measurement output.
   //!
-  //! @param arguments Optional prediction parameters passed through for
-  //! computations of prediction matrices.
+  //! @param prediction_arguments Optional prediction parameters passed through
+  //! for computations of prediction matrices.
+  //! @param update_arguments Optional update parameters passed through for
+  //! computations of update matrices.
   //! @param input_u Optional control parameters. Types must be compatible with
   //! the `Input` types. The parameter pack types must always be explicitly
   //! defined per the
