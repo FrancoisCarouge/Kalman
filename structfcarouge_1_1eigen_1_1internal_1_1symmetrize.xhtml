@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1eigen_1_1internal_1_
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1eigen_1_1internal_1_1symmetrize__coll__graph.svg" width="168" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1eigen_1_1internal_1_1symmetrize__coll__graph.svg" width="168" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
@@ -108,15 +108,58 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:add820b9ccda23fe4be56cd3199154573"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml#add820b9ccda23fe4be56cd3199154573">operator()</a> (const auto &amp;value) const</td></tr>
 <tr class="memdesc:add820b9ccda23fe4be56cd3199154573"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the symmetrized <code>value</code>.  <a href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml#add820b9ccda23fe4be56cd3199154573">More...</a><br /></td></tr>
 <tr class="separator:add820b9ccda23fe4be56cd3199154573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a778699bce188c63c76d5ae43a8c97515"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml#a778699bce188c63c76d5ae43a8c97515">operator()</a> (const arithmetic auto &amp;value) const</td></tr>
+<tr class="memdesc:a778699bce188c63c76d5ae43a8c97515"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the symmetrized <code>value</code>.  <a href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml#a778699bce188c63c76d5ae43a8c97515">More...</a><br /></td></tr>
+<tr class="separator:a778699bce188c63c76d5ae43a8c97515"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Function object for performing Eigen matrix symmetrization. </p>
 <p >Implemented with the Eigen linear algebra library matrices with sizes fixed at compile-time. </p>
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00088">88</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00099">99</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a778699bce188c63c76d5ae43a8c97515" name="a778699bce188c63c76d5ae43a8c97515"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a778699bce188c63c76d5ae43a8c97515">&#9670;&nbsp;</a></span>operator()() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto fcarouge::eigen::internal::symmetrize::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const arithmetic auto &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the symmetrized <code>value</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Value to compute the symmetry of.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd>Can this be optimized? </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00118">118</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="add820b9ccda23fe4be56cd3199154573" name="add820b9ccda23fe4be56cd3199154573"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add820b9ccda23fe4be56cd3199154573">&#9670;&nbsp;</a></span>operator()()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#add820b9ccda23fe4be56cd3199154573">&#9670;&nbsp;</a></span>operator()() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -148,12 +191,12 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section user"><dt>Exception</dt><dd>May throw implementation-defined exceptions. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00094">94</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">using</span> result_type = std::decay_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">return</span> result_type{ (value + value.transpose()) / 2 };</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00105">105</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keyword">using</span> result_type = std::decay_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">return</span> result_type{ (value + value.transpose()) / 2 };</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -166,7 +209,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml">internal</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">symmetrize</a></li>
-    <li class="footer">Generated on Fri Jul 8 2022 01:40:28 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 8 2022 01:51:53 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
