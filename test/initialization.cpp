@@ -45,7 +45,7 @@ namespace fcarouge::test
 {
 namespace
 {
-//! @test Verify default values are initialized for single dimension filters.
+//! @test Verifies default values are initialized for single-dimension filters.
 [[maybe_unused]] auto defaults111{ [] {
   kalman k;
 
@@ -57,15 +57,15 @@ namespace
   assert(k.q() == 0 && "No process noise by default.");
   assert(k.r() == 0 && "No observation noise by default.");
   assert(k.s() == 1);
+  assert(k.u() == 0 && "No initial control.");
   assert(k.x() == 0 && "Origin state.");
   assert(k.y() == 0);
   assert(k.z() == 0);
-  assert(k.u() == 0 && "No initial control.");
 
   return 0;
 }() };
 
-//! @test Verify default values are initialized for multi-dimension filters.
+//! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto defaults543{ [] {
   using kalman = eigen::kalman<double, 5, 4, 3>;
 
@@ -89,10 +89,10 @@ namespace
   assert(k.q() == z5x5 && "No process noise by default.");
   assert(k.r() == z4x4 && "No observation noise by default.");
   assert(k.s() == i4x4);
+  assert(k.u() == z3x1 && "No initial control.");
   assert(k.x() == z5x1 && "Origin state.");
   assert(k.y() == z4x1);
   assert(k.z() == z4x1);
-  assert(k.u() == z3x1 && "No initial control.");
 
   return 0;
 }() };
