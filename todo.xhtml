@@ -87,37 +87,37 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a90303d5edb6a1a97c813b7e7fbac6da7">fcarouge::eigen::internal::divide::operator()</a>  (const arithmetic auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::RowVector&lt; typename std::decay_t&lt; decltype(denominator)&gt;::Scalar, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</dt>
-<dd><a class="anchor" id="_todo000014"></a>Simplify implementation.  </dd>
-<dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#ab72bb1ae1ec6c568b3b3d62b88ebf39c">fcarouge::eigen::internal::divide::operator()</a>  (const auto &amp;numerator, const arithmetic auto &amp;denominator) const -&gt; typename Eigen::Vector&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime &gt;</dt>
-<dd><a class="anchor" id="_todo000013"></a>Simplify implementation.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a37a63ff235f1dba2aa6408d834f051e5">fcarouge::eigen::internal::divide::operator()</a>  (const auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::Matrix&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</dt>
-<dd><a class="anchor" id="_todo000010"></a>Why compilation fails if we specify the return type in the body of the function?  </dd>
+<dd><a class="anchor" id="_todo000004"></a>Why compilation fails if we specify the return type in the body of the function?  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#a90303d5edb6a1a97c813b7e7fbac6da7">fcarouge::eigen::internal::divide::operator()</a>  (const arithmetic auto &amp;numerator, const auto &amp;denominator) const -&gt; typename Eigen::RowVector&lt; typename std::decay_t&lt; decltype(denominator)&gt;::Scalar, std::decay_t&lt; decltype(denominator)&gt;::RowsAtCompileTime &gt;</dt>
+<dd><a class="anchor" id="_todo000010"></a>Simplify implementation.  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#ab72bb1ae1ec6c568b3b3d62b88ebf39c">fcarouge::eigen::internal::divide::operator()</a>  (const auto &amp;numerator, const arithmetic auto &amp;denominator) const -&gt; typename Eigen::Vector&lt; typename std::decay_t&lt; decltype(numerator)&gt;::Scalar, std::decay_t&lt; decltype(numerator)&gt;::RowsAtCompileTime &gt;</dt>
+<dd><a class="anchor" id="_todo000006"></a>Simplify implementation.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml#a778699bce188c63c76d5ae43a8c97515">fcarouge::eigen::internal::symmetrize::operator()</a>  (const arithmetic auto &amp;value) const</dt>
-<dd><a class="anchor" id="_todo000008"></a>Can this be optimized?  </dd>
+<dd><a class="anchor" id="_todo000003"></a>Can this be optimized?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml#af57c338f769c13735bec29bf65331d46">fcarouge::eigen::internal::transpose::operator()</a>  (const arithmetic auto &amp;value) const</dt>
-<dd><a class="anchor" id="_todo000006"></a>Can this be optimized?  </dd>
+<dd><a class="anchor" id="_todo000002"></a>Can this be optimized?  </dd>
 <dt>Class <a class="el" href="structfcarouge_1_1internal_1_1identity__matrix.xhtml">fcarouge::internal::identity_matrix</a>  </dt>
 <dd><a class="anchor" id="_todo000001"></a>Could we remove this for a standard facility? Perhaps a form of std::integral_constant? </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#af6919e64102a3956686bd36da15f8d34">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::g</a>  </dt>
-<dd><a class="anchor" id="_todo000004"></a>Should G be initialized to all ones?  </dd>
+<dd><a class="anchor" id="_todo000008"></a>Should G be initialized to all ones?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a11e07e73bc9c6e2746be37ea919bb3a8">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::h</a>  </dt>
-<dd><a class="anchor" id="_todo000003"></a>Should H be initialized to all ones?  </dd>
+<dd><a class="anchor" id="_todo000007"></a>Should H be initialized to all ones?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a03ce6e3922af86685f9ad41d11fc93b8">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::k</a>  </dt>
-<dd><a class="anchor" id="_todo000005"></a>Should K be initialized to all ones?  </dd>
+<dd><a class="anchor" id="_todo000009"></a>Should K be initialized to all ones?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#aa2445b05ea9c828d98d60cb4ffc3c92e">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::observation_state_h</a>  </dt>
-<dd><a class="anchor" id="_todo000007"></a>Should we pass through the reference to the state x or have the user access it through k.x() when needed? Where does the practical/performance tradeoff leans toward? For the general case? For the specialized cases? Same question applies to other parameters.  </dd>
+<dd><a class="anchor" id="_todo000011"></a>Should we pass through the reference to the state x or have the user access it through k.x() when needed? Where does the practical/performance tradeoff leans toward? For the general case? For the specialized cases? Same question applies to other parameters.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a2bba3eed22dd16a58476f26a66fe7204">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
-<dd><a class="anchor" id="_todo000012"></a>Extended support?  </dd>
+<dd><a class="anchor" id="_todo000014"></a>Extended support?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a7b8a1f820f5a73d6b6ec4a90e3ec48a3">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::transition_state_f</a>  </dt>
-<dd><a class="anchor" id="_todo000009"></a>Pass the arguments by universal reference?  </dd>
+<dd><a class="anchor" id="_todo000012"></a>Pass the arguments by universal reference?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#ada982df51bf70f5e21f6b5a7fa81cf7e">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::update</a>  (const UpdateArguments &amp;...arguments, const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000011"></a>Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000013"></a>Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
 <p class="interdd"></p>
 <p class="enddd">Do we want to support extended custom y = output_difference(z, observation(x))?  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#a465a2c8a276b63dbe54c2beacb1beb07">fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::x</a>  </dt>
-<dd><a class="anchor" id="_todo000002"></a>Is there a simpler, more portable way to get a zero initialization?  </dd>
+<dd><a class="anchor" id="_todo000005"></a>Is there a simpler, more portable way to get a zero initialization?  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a017a8b3600a2b964c13a098bd1138789">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::h</a>  (const auto &amp;callable)</dt>
 <dd><a class="anchor" id="_todo000022"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a4c611ea603ef3e6b8d77689257615d88">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::operator()</a>  (const PredictionArguments &amp;...prediction_arguments, const UpdateArguments &amp;...update_arguments, const auto &amp;...input_u, const auto &amp;...output_z)</dt>
@@ -201,7 +201,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jul 10 2022 00:27:09 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Jul 10 2022 00:44:48 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

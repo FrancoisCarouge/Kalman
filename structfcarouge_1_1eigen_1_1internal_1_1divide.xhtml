@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1eigen_1_1internal_1_
 <p>Function object for performing Eigen matrix division.  
  <a href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for fcarouge::eigen::internal::divide:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -122,7 +122,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p >Function object for performing Eigen matrix division. </p>
 <p >Implemented with the Eigen linear algebra library matrices with sizes fixed at compile-time. </p>
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00128">128</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00128">128</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab626f7ccce5d336d292e623aae9c96c1" name="ab626f7ccce5d336d292e623aae9c96c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab626f7ccce5d336d292e623aae9c96c1">&#9670;&nbsp;</a></span>operator()() <span class="overload">[1/4]</span></h2>
@@ -168,7 +168,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The quotient value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00207">207</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00207">207</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  {</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">return</span> numerator / denominator;</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  }</div>
@@ -222,9 +222,9 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The quotient row vector. Q: 1 x o</dd></dl>
 <dl class="section user"><dt>Exception</dt><dd>May throw implementation-defined exceptions.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000014">Todo:</a></b></dt><dd>Simplify implementation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000010">Todo:</a></b></dt><dd>Simplify implementation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00188">188</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00188">188</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  {</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">return</span> denominator.transpose()</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        .fullPivHouseholderQr()</div>
@@ -283,9 +283,9 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The quotient column vector. Q: m x 1</dd></dl>
 <dl class="section user"><dt>Exception</dt><dd>May throw implementation-defined exceptions.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000013">Todo:</a></b></dt><dd>Simplify implementation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000006">Todo:</a></b></dt><dd>Simplify implementation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00164">164</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00164">164</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  {</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">return</span> Eigen::Matrix&lt;<span class="keyword">typename</span> std::decay_t&lt;<span class="keyword">decltype</span>(numerator)&gt;::Scalar, 1,</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                         1&gt;{ denominator }</div>
@@ -345,9 +345,9 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The quotient matrix. Q: m x o</dd></dl>
 <dl class="section user"><dt>Exception</dt><dd>May throw implementation-defined exceptions.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000010">Todo:</a></b></dt><dd>Why compilation fails if we specify the return type in the body of the function? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd>Why compilation fails if we specify the return type in the body of the function? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml#l00140">140</a> of file <a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_8hpp_source.xhtml#l00140">140</a> of file <a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  {</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">return</span> denominator.transpose()</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        .fullPivHouseholderQr()</div>
@@ -358,7 +358,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/fcarouge/internal/<a class="el" href="internal_2kalman__eigen_8hpp_source.xhtml">kalman_eigen.hpp</a></li>
+<li>include/fcarouge/internal/<a class="el" href="eigen_8hpp_source.xhtml">eigen.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -366,7 +366,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml">internal</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">divide</a></li>
-    <li class="footer">Generated on Sun Jul 10 2022 00:27:09 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Jul 10 2022 00:44:48 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

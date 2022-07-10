@@ -542,7 +542,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000012">Todo:</a></b></dt><dd>Extended support? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000014">Todo:</a></b></dt><dd>Extended support? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00315">315</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>  {</div>
@@ -594,7 +594,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000011">Todo:</a></b></dt><dd><p class="startdd">Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000013">Todo:</a></b></dt><dd><p class="startdd">Do we want to store i - k * h in a temporary result for reuse? Or does the compiler/linker do it for us? </p>
 <p class="enddd">Do we want to support extended custom y = output_difference(z, observation(x))? </p>
 </dd></dl>
 
@@ -677,7 +677,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd>Should G be initialized to all ones? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000008">Todo:</a></b></dt><dd>Should G be initialized to all ones? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00166">166</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -696,7 +696,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo:</a></b></dt><dd>Should H be initialized to all ones? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000007">Todo:</a></b></dt><dd>Should H be initialized to all ones? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00162">162</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -733,7 +733,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo:</a></b></dt><dd>Should K be initialized to all ones? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000009">Todo:</a></b></dt><dd>Should K be initialized to all ones? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00169">169</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -850,7 +850,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </div><!-- fragment -->
 <p>Compute the state observation H matrix. </p>
 <p >The state observation H is also known as C. For non-linear system, or extended filter, H is the Jacobian of the state observation function: H = ∂h/∂X = ∂hj/∂xi that is each row i contains the derivatives of the state observation function for every element j in the state vector X.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000007">Todo:</a></b></dt><dd>Should we pass through the reference to the state x or have the user access it through k.x() when needed? Where does the practical/performance tradeoff leans toward? For the general case? For the specialized cases? Same question applies to other parameters. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000011">Todo:</a></b></dt><dd>Should we pass through the reference to the state x or have the user access it through k.x() when needed? Where does the practical/performance tradeoff leans toward? For the general case? For the specialized cases? Same question applies to other parameters. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00195">195</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -1039,7 +1039,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </div><!-- fragment -->
 <p>Compute the state transition F matrix. </p>
 <p >The state transition F matrix is also known as Φ or A. For non-linear system, or extended filter, F is the Jacobian of the state transition function: F = ∂f/∂X = ∂fj/∂xi that is each row i contains the derivatives of the state transition function for every element j in the state vector X.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000009">Todo:</a></b></dt><dd>Pass the arguments by universal reference? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000012">Todo:</a></b></dt><dd>Pass the arguments by universal reference? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00228">228</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -1096,7 +1096,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </div><div class="memdoc">
 
 <p>The state estimate vector x. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo:</a></b></dt><dd>Is there a simpler, more portable way to get a zero initialization? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo:</a></b></dt><dd>Is there a simpler, more portable way to get a zero initialization? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00146">146</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -1147,7 +1147,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li><li class="navelem"><a class="el" href="structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml">kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;</a></li>
-    <li class="footer">Generated on Sun Jul 10 2022 00:27:09 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Jul 10 2022 00:44:48 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
