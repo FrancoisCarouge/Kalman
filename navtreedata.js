@@ -26,44 +26,45 @@ var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
     [ "Kalman Filter for C++", "index.xhtml", [
-      [ "Examples", "index.xhtml#autotoc_md13", [
-        [ "1x1 Constant System Dynamic Model", "index.xhtml#autotoc_md14", null ],
-        [ "6x2 Constant Acceleration Dynamic Model", "index.xhtml#autotoc_md15", null ],
-        [ "4x1 Non-Linear Dynamic Model", "index.xhtml#autotoc_md16", null ]
+      [ "Examples", "index.xhtml#autotoc_md15", [
+        [ "1x1 Constant System Dynamic Model", "index.xhtml#autotoc_md16", null ],
+        [ "6x2 Constant Acceleration Dynamic Model", "index.xhtml#autotoc_md17", null ],
+        [ "4x1 Non-Linear Dynamic Model", "index.xhtml#autotoc_md18", null ]
       ] ],
-      [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md17", null ],
-      [ "Motivation", "index.xhtml#autotoc_md18", null ],
-      [ "Usage", "index.xhtml#autotoc_md19", [
-        [ "System Installation", "index.xhtml#autotoc_md20", null ]
-      ] ],
-      [ "Class kalman", "index.xhtml#autotoc_md21", [
-        [ "Template Parameters", "index.xhtml#autotoc_md22", null ],
-        [ "Member Types", "index.xhtml#autotoc_md23", null ],
-        [ "Member Functions", "index.xhtml#autotoc_md24", [
-          [ "Characteristics", "index.xhtml#autotoc_md25", null ],
-          [ "Modifiers", "index.xhtml#autotoc_md26", null ]
+      [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md19", null ],
+      [ "Motivation", "index.xhtml#autotoc_md20", null ],
+      [ "Installation", "index.xhtml#autotoc_md21", null ],
+      [ "Class kalman", "index.xhtml#autotoc_md22", [
+        [ "Template Parameters", "index.xhtml#autotoc_md23", null ],
+        [ "Member Types", "index.xhtml#autotoc_md24", null ],
+        [ "Member Functions", "index.xhtml#autotoc_md25", [
+          [ "Characteristics", "index.xhtml#autotoc_md26", null ],
+          [ "Modifiers", "index.xhtml#autotoc_md27", null ]
         ] ]
       ] ],
-      [ "Resources", "index.xhtml#autotoc_md27", null ],
-      [ "License", "index.xhtml#autotoc_md28", null ]
+      [ "Resources", "index.xhtml#autotoc_md28", null ],
+      [ "License", "index.xhtml#autotoc_md29", null ]
     ] ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
-      [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md2", null ],
-      [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
-      [ "Our Responsibilities", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
-      [ "Scope", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md9", null ],
-      [ "Enforcement", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md10", null ],
-      [ "Attribution", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md11", null ]
+      [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md1", null ],
+      [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md2", null ],
+      [ "Our Responsibilities", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md4", null ],
+      [ "Scope", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md5", null ],
+      [ "Enforcement", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
+      [ "Attribution", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md10", null ]
     ] ],
     [ "Contributing", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
-      [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md3", null ],
-      [ "Reporting Bugs", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md4", null ],
-      [ "Requesting Features", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md5", null ],
-      [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md7", null ]
+      [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md6", null ],
+      [ "Reporting Bugs", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md7", null ],
+      [ "Requesting Features", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md9", null ],
+      [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md11", null ]
+    ] ],
+    [ "Installation", "md__i_n_s_t_a_l_l.xhtml", [
+      [ "System", "md__i_n_s_t_a_l_l.xhtml#autotoc_md13", null ]
     ] ],
     [ "Security Policy", "md__s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md30", null ],
-      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md31", null ]
+      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md31", null ],
+      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md32", null ]
     ] ],
     [ "Todo List", "todo.xhtml", null ],
     [ "Test List", "test.xhtml", null ],
@@ -102,7 +103,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"kalman__eigen_8hpp_source.xhtml"
+"liquid__temperature_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
