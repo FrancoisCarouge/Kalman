@@ -11,8 +11,7 @@ The library supports simple and extended filters. The update equation uses the J
   - [4x1 Non-Linear Dynamic Model](#4x1-non-linear-dynamic-model)
 - [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
 - [Motivation](#motivation)
-- [Usage](#usage)
-  - [System Installation](#system-installation)
+- [Installation](#installation)
 - [Class kalman](#class-kalman)
   - [Template Parameters](#template-parameters)
   - [Member Types](#member-types)
@@ -172,15 +171,9 @@ This package explores what could be a Kalman filter implementation a la standard
 - Separation of the algebra implementation.
 - Generalization of the support.
 
-# Usage
+# Installation
 
-## System Installation
-
-Clone the repository, from within the cloned folder, run:
-
-```
-mkdir build && cd build && cmake .. && sudo make install
-```
+See installaton instructions in [INSTALL.txt](INSTALL.txt).
 
 # Class kalman
 
