@@ -42,6 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief The main Kalman filter class.
 
+#include "internal/format.hpp"
 #include "internal/kalman.hpp"
 
 #include <concepts>
@@ -602,6 +603,11 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
 
   //! @brief Sets the state transition matrix F function.
   //!
+  //! @details For non-linear system, or extended filter, F is the Jacobian of
+  //! the state transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i
+  //! contains the derivatives of the state transition function for every
+  //! element j in the state vector X.
+  //!
   //! @param callable The copied target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
   //! pointer to data member) that will be bound to the prediction arguments and
@@ -618,6 +624,11 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   }
 
   //! @brief Sets the state transition matrix F function.
+  //!
+  //! @details For non-linear system, or extended filter, F is the Jacobian of
+  //! the state transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i
+  //! contains the derivatives of the state transition function for every
+  //! element j in the state vector X.
   //!
   //! @param callable The moved target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
@@ -679,6 +690,11 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
 
   //! @brief Sets the observation, measurement transition matrix H function.
   //!
+  //! @details For non-linear system, or extended filter, H is the Jacobian of
+  //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
+  //! contains the derivatives of the state observation function for every
+  //! element j in the state vector X.
+  //!
   //! @param callable The copied target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
   //! pointer to data member) that will be bound to the prediction arguments and
@@ -697,6 +713,11 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
   }
 
   //! @brief Sets the observation, measurement transition matrix H function.
+  //!
+  //! @details For non-linear system, or extended filter, H is the Jacobian of
+  //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
+  //! contains the derivatives of the state observation function for every
+  //! element j in the state vector X.
   //!
   //! @param callable The moved target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
@@ -817,6 +838,17 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
               "discarded.")]] inline constexpr auto
   s() const -> innovation_uncertainty;
 
+  //! @brief Sets the extended state transition function f(x).
+  //!
+  //! @param callable The copied target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be called to compute the next state X on
+  //! prediction steps. The default function `f(x) = F * X` is suitable for
+  //! linear systems. For non-linear system, or extended filter, implement a
+  //! linearization of the transition function f and the state transition F
+  //! matrix is the Jacobian of the state transition function.
+  //!
+  //! @complexity Constant.
   inline constexpr void
       transition(const auto &callable) requires std::is_invocable_r_v < state,
       std::decay_t<decltype(callable)>,
@@ -825,6 +857,17 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
     filter.transition = callable;
   }
 
+  //! @brief Sets the extended state transition function f(x).
+  //!
+  //! @param callable The moved target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be called to compute the next state X on
+  //! prediction steps. The default function `f(x) = F * X` is suitable for
+  //! linear systems. For non-linear system, or extended filter, implement a
+  //! linearization of the transition function f and the state transition F
+  //! matrix is the Jacobian of the state transition function.
+  //!
+  //! @complexity Constant.
   inline constexpr void
       transition(auto &&callable) requires std::is_invocable_r_v < state,
       std::decay_t<decltype(callable)>,
@@ -833,6 +876,17 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
     filter.transition = std::forward<decltype(callable)>(callable);
   }
 
+  //! @brief Sets the extended state observation function h(x).
+  //!
+  //! @param callable The copied target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be called to compute the observation Z
+  //! on update steps. The default function `h(x) = H * X` is suitable for
+  //! linear systems. For non-linear system, or extended filter, the client
+  //! implements a linearization of the observation function hand the state
+  //! observation H matrix is the Jacobian of the state observation function.
+  //!
+  //! @complexity Constant.
   inline constexpr void
       observation(const auto &callable) requires std::is_invocable_r_v < output,
       std::decay_t<decltype(callable)>,
@@ -841,6 +895,17 @@ class kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
     filter.observation = callable;
   }
 
+  //! @brief Sets the extended state observation function h(x).
+  //!
+  //! @param callable The moved target Callable object (function object,
+  //! pointer to function, reference to function, pointer to member function, or
+  //! pointer to data member) that will be called to compute the observation Z
+  //! on update steps. The default function `h(x) = H * X` is suitable for
+  //! linear systems. For non-linear system, or extended filter, the client
+  //! implements a linearization of the observation function hand the state
+  //! observation H matrix is the Jacobian of the state observation function.
+  //!
+  //! @complexity Constant.
   inline constexpr void
       observation(auto &&callable) requires std::is_invocable_r_v < output,
       std::decay_t<decltype(callable)>,

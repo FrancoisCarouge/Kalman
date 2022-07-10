@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Kalman operation for Eigen 3 types.
 
-#include "internal/kalman_eigen.hpp"
+#include "internal/eigen.hpp"
 
 #include <cstddef>
 #include <tuple>

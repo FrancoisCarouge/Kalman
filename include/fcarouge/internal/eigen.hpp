@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_KALMAN_EIGEN_HPP
-#define FCAROUGE_INTERNAL_KALMAN_EIGEN_HPP
+#ifndef FCAROUGE_INTERNAL_EIGEN_HPP
+#define FCAROUGE_INTERNAL_EIGEN_HPP
 
 //! @file
 //! @brief Kalman operation for Eigen 3 types.
@@ -255,4 +255,4 @@ using kalman = fcarouge::kalman<
 
 } // namespace fcarouge::eigen::internal
 
-#endif // FCAROUGE_INTERNAL_KALMAN_EIGEN_HPP
+#endif // FCAROUGE_INTERNAL_EIGEN_HPP
