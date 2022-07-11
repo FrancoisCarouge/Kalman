@@ -16,7 +16,7 @@ jobs:
       run: sudo apt update
     - name: Install
       run: |
-        sudo apt install clang-tidy-13
+        sudo apt install clang-tidy-14
         ( cd /tmp ; mkdir eigen ;
           git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
           ( cd eigen ;
@@ -28,6 +28,6 @@ jobs:
     - name: Tidy
       run: |
         FILES=`find . -iname *.hpp`
-        clang-tidy-13 ${FILES} \
+        clang-tidy-14 ${FILES} \
           --warnings-as-errors=* \
           -- -x c++ -Wall -Wextra -pedantic -std=c++2b -Iinclude -I/usr/local/include/eigen3
