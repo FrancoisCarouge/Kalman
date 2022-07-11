@@ -16,15 +16,27 @@ jobs:
       run: |
         wget http://kayari.org/gcc-latest/gcc-latest.deb
         sudo dpkg -i gcc-latest.deb
-        ( cd /tmp ; mkdir eigen ;
+        ( cd /tmp ;
           git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
           ( cd eigen ;
-            mkdir build ) ;
-          ( cd eigen/build ; 
-            cmake .. ; 
-            cmake --build . ;
-            sudo make install ) )
+            mkdir build ;
+            ( cd build ; 
+              cmake .. ; 
+              cmake --build . ;
+              sudo make install ; ) ) )
+        ( cd /tmp ;
+          git clone --depth 1 https://github.com/fmtlib/fmt.git ;
+          ( cd fmt ;
+            mkdir build ;
+            ( cd build ;
+              cmake .. ;
+              sudo make install ; ) ) )
     - name: Build
-      run: LD_LIBRARY_PATH=/opt/gcc-latest/lib64 LD_RUN_PATH=/opt/gcc-latest/lib64 /opt/gcc-latest/bin/gcc sample/*.cpp test/*.cpp source/*.cpp -Iinclude -I/usr/local/include/eigen3 -Wall -Wextra -pedantic -std=c++23 -lstdc++ -lm
+      run: |
+        LD_LIBRARY_PATH=/opt/gcc-latest/lib64 LD_RUN_PATH=/opt/gcc-latest/lib64 \
+        /opt/gcc-latest/bin/gcc \
+          sample/*.cpp test/*.cpp source/*.cpp \
+          -Iinclude -I/usr/local/include/eigen3 -Isupport/include/fcarouge \
+          -Wall -Wextra -pedantic -std=c++23 -lstdc++ -lm -lfmt
     - name: Run
       run: ./a.out

@@ -20,15 +20,27 @@ jobs:
     - name: Install
       run: |
         sudo apt install clang-14 lld-14 libc++-14-dev libc++abi-14-dev
-        ( cd /tmp ; mkdir eigen ;
+        ( cd /tmp ;
           git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
           ( cd eigen ;
-            mkdir build ) ;
-          ( cd eigen/build ; 
-            cmake .. ; 
-            cmake --build . ;
-            sudo make install ) )
+            mkdir build ;
+            ( cd build ; 
+              cmake .. ; 
+              cmake --build . ;
+              sudo make install ; ) ) )
+        ( cd /tmp ;
+          git clone --depth 1 https://github.com/fmtlib/fmt.git ;
+          ( cd fmt ;
+            mkdir build ;
+            ( cd build ;
+              CXX=clang++-14 cmake -DFMT_HEADER_ONLY=TRUE .. ;
+              sudo make install ; ) ) )
     - name: Build
-      run: clang++-14 sample/*.cpp source/*.cpp test/*.cpp -Iinclude -I/usr/local/include/eigen3 -Wall -Wextra -pedantic -std=c++2b -stdlib=libc++
+      run: |
+        clang++-14 \
+          sample/*.cpp source/*.cpp test/*.cpp \
+          -Iinclude -I/usr/local/include/eigen3 -Isupport/include/fcarouge \
+          -DFMT_HEADER_ONLY \
+          -Wall -Wextra -pedantic -std=c++2b -stdlib=libc++ -lfmt
     - name: Run
       run: ./a.out
