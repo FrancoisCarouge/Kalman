@@ -1,14 +1,13 @@
 var indexSectionsWithContent =
 {
   0: "abcdefghiklmnopqrstuvxyz~",
-  1: "dikst",
+  1: "k",
   2: "f",
   3: "abcdefhiklmrsv",
   4: "bcfghkmnopqrstuxyz~",
-  5: "abcdfghiklmnopqrstuvxyz",
+  5: "abcdfhiklmoprsuv",
   6: "cdegikopstv",
-  7: "cikst",
-  8: "f"
+  7: "cikst"
 };
 
 var indexSectionNames =
@@ -20,8 +19,7 @@ var indexSectionNames =
   4: "functions",
   5: "variables",
   6: "typedefs",
-  7: "pages",
-  8: "concepts"
+  7: "pages"
 };
 
 var indexSectionLabels =
@@ -33,7 +31,6 @@ var indexSectionLabels =
   4: "Functions",
   5: "Variables",
   6: "Typedefs",
-  7: "Pages",
-  8: "Concepts"
+  7: "Pages"
 };
 

@@ -32,20 +32,17 @@ var menudata={children:[
 {text:"Functions",url:"namespacemembers_func.xhtml"},
 {text:"Variables",url:"namespacemembers_vars.xhtml"},
 {text:"Typedefs",url:"namespacemembers_type.xhtml"}]}]},
-{text:"Concepts",url:"concepts.xhtml"},
 {text:"Classes",url:"annotated.xhtml",children:[
 {text:"Class List",url:"annotated.xhtml"},
 {text:"Class Index",url:"classes.xhtml"},
 {text:"Class Members",url:"functions.xhtml",children:[
 {text:"All",url:"functions.xhtml",children:[
-{text:"d",url:"functions.xhtml#index_d"},
 {text:"e",url:"functions.xhtml#index_e"},
 {text:"f",url:"functions.xhtml#index_f"},
 {text:"g",url:"functions.xhtml#index_g"},
 {text:"h",url:"functions.xhtml#index_h"},
 {text:"i",url:"functions.xhtml#index_i"},
 {text:"k",url:"functions.xhtml#index_k"},
-{text:"n",url:"functions.xhtml#index_n"},
 {text:"o",url:"functions.xhtml#index_o"},
 {text:"p",url:"functions.xhtml#index_p"},
 {text:"q",url:"functions.xhtml#index_q"},

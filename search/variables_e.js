@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['q_0',['q',['../structfcarouge_1_1internal_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpose_00_01_s189f7199b0f919964d120b8cacfaae8a.xhtml#aad78e68fc14d2880b20b65952e39456f',1,'fcarouge::internal::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]]
+  ['use_0',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#a842ca74cb0de3caf554ff16be7a7f6ea',1,'LICENSE.txt']]]
 ];

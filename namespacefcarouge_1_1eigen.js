@@ -1,6 +1,9 @@
 var namespacefcarouge_1_1eigen =
 [
-    [ "internal", "namespacefcarouge_1_1eigen_1_1internal.xhtml", "namespacefcarouge_1_1eigen_1_1internal" ],
+    [ "internal", "namespacefcarouge_1_1eigen_1_1internal.xhtml", [
+      [ "arithmetic", "conceptfcarouge_1_1eigen_1_1internal_1_1arithmetic.xhtml", null ],
+      [ "kalman", "namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8", null ]
+    ] ],
     [ "divide", "namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365", null ],
     [ "identity_matrix", "namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae", null ],
     [ "kalman", "namespacefcarouge_1_1eigen.xhtml#a6eba7c4346aab45b41bb4465779f6b13", null ],

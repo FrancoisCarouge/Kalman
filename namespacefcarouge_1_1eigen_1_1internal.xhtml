@@ -93,29 +93,23 @@ $(document).ready(function(){initNavTree('namespacefcarouge_1_1eigen_1_1internal
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">divide</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix division.  <a href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>divide</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix division. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1identity__matrix.xhtml">identity_matrix</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for providing an Eigen identity matrix.  <a href="structfcarouge_1_1eigen_1_1internal_1_1identity__matrix.xhtml#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>identity_matrix</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for providing an Eigen identity matrix. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">symmetrize</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix symmetrization.  <a href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>symmetrize</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix symmetrization. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">transpose</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix transposition.  <a href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
-Concepts</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1eigen_1_1internal_1_1arithmetic.xhtml">arithmetic</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arithmetic concept. <br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transpose</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix transposition. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a41a6a60c1495641760e4ac1dfffca2b8"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 1, typename UpdateArguments  = std::tuple&lt;&gt;, typename PredictionArguments  = std::tuple&lt;&gt;&gt; </td></tr>
-<tr class="memitem:a41a6a60c1495641760e4ac1dfffca2b8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1identity__matrix.xhtml">identity_matrix</a>, UpdateArguments, PredictionArguments &gt;</td></tr>
+<tr class="memitem:a41a6a60c1495641760e4ac1dfffca2b8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateArguments, PredictionArguments &gt;</td></tr>
 <tr class="separator:a41a6a60c1495641760e4ac1dfffca2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -128,7 +122,7 @@ Typedefs</h2></td></tr>
 template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 1, typename UpdateArguments  = std::tuple&lt;&gt;, typename PredictionArguments  = std::tuple&lt;&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, std::conditional_t&lt;State == 1, Type, Eigen::Vector&lt;Type, State&gt; &gt;, std::conditional_t&lt;Output == 1, Type, Eigen::Vector&lt;Type, Output&gt; &gt;, std::conditional_t&lt;Input == 1, Type, Eigen::Vector&lt;Type, Input&gt; &gt;, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1transpose.xhtml">transpose</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1symmetrize.xhtml">symmetrize</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1divide.xhtml">divide</a>, <a class="el" href="structfcarouge_1_1eigen_1_1internal_1_1identity__matrix.xhtml">identity_matrix</a>, UpdateArguments, PredictionArguments&gt;</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, std::conditional_t&lt;State == 1, Type, Eigen::Vector&lt;Type, State&gt; &gt;, std::conditional_t&lt;Output == 1, Type, Eigen::Vector&lt;Type, Output&gt; &gt;, std::conditional_t&lt;Input == 1, Type, Eigen::Vector&lt;Type, Input&gt; &gt;, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateArguments, PredictionArguments&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -145,7 +139,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Sun Jul 10 2022 00:44:48 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Jul 11 2022 01:59:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
