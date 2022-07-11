@@ -129,7 +129,6 @@ struct identity_matrix {
 //! @todo Which constructors to support?
 //! @todo Is the Kalman filter a recursive state estimation, confirm
 //! terminology?
-//! @todo Prepare support for std::format?
 //! @todo Prepare support for larger dataset recording for graphing, metrics of
 //! large test data to facilitate tuning.
 //! @todo Support filter generator? Integration? Reflection in C++...
