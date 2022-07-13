@@ -54,7 +54,35 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge
 {
 //! @brief Function object for providing an identity matrix.
-using identity_matrix = internal::identity_matrix;
+//!
+//! @todo Could we remove this for a standard facility? Perhaps a form of
+//! std::integral_constant?
+//!
+//! @note Could this function object template be a variable template as proposed
+//! in paper P2008R0 entitled "Enabling variable template template parameters"?
+struct identity_matrix {
+  //! @brief Returns `1`, the 1-by-1 identity matrix equivalent.
+  //!
+  //! @tparam Type The type template parameter of the value.
+  //!
+  //! @return The value `1`.
+  template <typename Type>
+  [[nodiscard]] inline constexpr auto operator()() const noexcept
+  {
+    return Type{ 1 };
+  }
+};
+
+template <
+    typename Type = double, typename State = Type, typename Output = State,
+    typename Input = State, typename Transpose = std::identity,
+    typename Symmetrize = std::identity, typename Divide = std::divides<void>,
+    typename Identity = identity_matrix,
+    typename UpdateArguments = std::tuple<>,
+    typename PredictionArguments = std::tuple<>>
+class kalman
+{
+};
 
 //! @brief Kalman filter.
 //!
@@ -134,17 +162,6 @@ using identity_matrix = internal::identity_matrix;
 //! @todo A clear or reset member equivalent may be useful for real-time
 //! re-initializations but to what default?
 //! @todo Could the Input be void by default? Or empty?
-template <
-    typename Type = double, typename State = Type, typename Output = State,
-    typename Input = State, typename Transpose = std::identity,
-    typename Symmetrize = std::identity, typename Divide = std::divides<void>,
-    typename Identity = identity_matrix,
-    typename UpdateArguments = std::tuple<>,
-    typename PredictionArguments = std::tuple<>>
-class kalman
-{
-};
-
 template <typename Type, typename State, typename Output, typename Input,
           typename Transpose, typename Symmetrize, typename Divide,
           typename Identity, typename... UpdateArguments,
