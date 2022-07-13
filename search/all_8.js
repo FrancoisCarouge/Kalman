@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['identity_5fmatrix_0',['identity_matrix',['../namespacefcarouge.xhtml#ae1d712e36360de9746e1c1424870bbb3',1,'fcarouge::identity_matrix()'],['../namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae',1,'fcarouge::eigen::identity_matrix()']]],
+  ['identity_5fmatrix_0',['identity_matrix',['../structfcarouge_1_1identity__matrix.xhtml',1,'fcarouge::identity_matrix'],['../namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae',1,'fcarouge::eigen::identity_matrix()']]],
   ['implementation_1',['implementation',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a6d75c3fd77c3e71c27f557d8dee66ec7',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
   ['implied_2',['IMPLIED',['../_l_i_c_e_n_s_e_8txt.xhtml#af6f77b35aadc20e6a73077113bb72c10',1,'LICENSE.txt']]],
   ['information_3',['information',['../_l_i_c_e_n_s_e_8txt.xhtml#a68495fbd5555d1e07f2fb32de92cec85',1,'LICENSE.txt']]],

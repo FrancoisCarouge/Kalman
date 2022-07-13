@@ -87,38 +87,9 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a017a8b3600a2b964c13a098bd1138789">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::h</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000022"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a4c611ea603ef3e6b8d77689257615d88">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::operator()</a>  (const PredictionArguments &amp;...prediction_arguments, const UpdateArguments &amp;...update_arguments, const auto &amp;...input_u, const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000023"></a>Consider if returning the state vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
-<p class="interdd"></p>
-<p class="interdd">Understand why the implementation cannot be moved out of the class. </p>
-<p class="interdd"></p>
-<p class="enddd">What should be the order of the parameters? Update first?  </p>
-</dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a7aace08260b714dcf1b71505db6e9c4d">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000025"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
-<p class="interdd"></p>
-<p class="enddd">Consider if returning the state vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation?  </p>
-</dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a43a8130c43da1665805b4774e77a0308">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (const process_uncertainty &amp;value)</dt>
-<dd><a class="anchor" id="_todo000016"></a>Don't we need to reset functions or values when the other is set?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#ac534ebd63b2620769c4bbb76830df6b8">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (process_uncertainty &amp;&amp;value)</dt>
-<dd><a class="anchor" id="_todo000017"></a>Don't we need to reset functions or values when the other is set?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#ac35e3b90fc17719c1a8c0d4d8a008785">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (const auto &amp;value, const auto &amp;...values)</dt>
-<dd><a class="anchor" id="_todo000018"></a>Don't we need to reset functions or values when the other is set?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#af82ffde1dadd3bf88e215a3ac0bd1a0b">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (auto &amp;&amp;value, auto &amp;&amp;...values)</dt>
-<dd><a class="anchor" id="_todo000019"></a>Don't we need to reset functions or values when the other is set?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#ac348954166df8e25dc64d67a03caca79">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000020"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#affa201c6a10caab1e37fa12e10b67c55">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::r</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000021"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#aaba5bd00471dd86bb62ab433e601e290">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::update</a>  (const UpdateArguments &amp;...arguments, const auto &amp;...output_z)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000024"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
-<p class="interdd"></p>
-<p class="enddd">Consider if returning the state vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation?  </p>
-</dd>
-<dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateArguments, PredictionArguments &gt;</a>  </dt>
+<dt>Class <a class="el" href="structfcarouge_1_1identity__matrix.xhtml">fcarouge::identity_matrix</a>  </dt>
+<dd><a class="anchor" id="_todo000014"></a>Could we remove this for a standard facility? Perhaps a form of std::integral_constant? </dd>
+<dt>Class <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000015"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd"></p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristics? </p>
@@ -161,7 +132,38 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="interdd"></p>
 <p class="interdd">A clear or reset member equivalent may be useful for real-time re-initializations but to what default? </p>
 <p class="interdd"></p>
-<p class="enddd">Could the Input be void by default? Or empty? </p>
+<p class="enddd">Could the Input be void by default? Or empty?  </p>
+</dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a017a8b3600a2b964c13a098bd1138789">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::h</a>  (const auto &amp;callable)</dt>
+<dd><a class="anchor" id="_todo000022"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a4c611ea603ef3e6b8d77689257615d88">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::operator()</a>  (const PredictionArguments &amp;...prediction_arguments, const UpdateArguments &amp;...update_arguments, const auto &amp;...input_u, const auto &amp;...output_z)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000023"></a>Consider if returning the state vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<p class="interdd"></p>
+<p class="interdd">Understand why the implementation cannot be moved out of the class. </p>
+<p class="interdd"></p>
+<p class="enddd">What should be the order of the parameters? Update first?  </p>
+</dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a7aace08260b714dcf1b71505db6e9c4d">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::predict</a>  (const PredictionArguments &amp;...arguments, const auto &amp;...input_u)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000025"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<p class="interdd"></p>
+<p class="enddd">Consider if returning the state vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation?  </p>
+</dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a43a8130c43da1665805b4774e77a0308">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (const process_uncertainty &amp;value)</dt>
+<dd><a class="anchor" id="_todo000016"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#ac534ebd63b2620769c4bbb76830df6b8">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (process_uncertainty &amp;&amp;value)</dt>
+<dd><a class="anchor" id="_todo000017"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#ac35e3b90fc17719c1a8c0d4d8a008785">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (const auto &amp;value, const auto &amp;...values)</dt>
+<dd><a class="anchor" id="_todo000018"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#af82ffde1dadd3bf88e215a3ac0bd1a0b">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (auto &amp;&amp;value, auto &amp;&amp;...values)</dt>
+<dd><a class="anchor" id="_todo000019"></a>Don't we need to reset functions or values when the other is set?  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#ac348954166df8e25dc64d67a03caca79">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::q</a>  (const auto &amp;callable)</dt>
+<dd><a class="anchor" id="_todo000020"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#affa201c6a10caab1e37fa12e10b67c55">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::r</a>  (const auto &amp;callable)</dt>
+<dd><a class="anchor" id="_todo000021"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#aaba5bd00471dd86bb62ab433e601e290">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::update</a>  (const UpdateArguments &amp;...arguments, const auto &amp;...output_z)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000024"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<p class="interdd"></p>
+<p class="enddd">Consider if returning the state vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 </dd>
 </dl>
 </div></div><!-- contents -->
@@ -170,7 +172,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jul 11 2022 02:06:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Wed Jul 13 2022 00:47:03 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
