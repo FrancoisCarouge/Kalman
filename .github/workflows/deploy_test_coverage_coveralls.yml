@@ -26,7 +26,7 @@ jobs:
             cmake --build . ;
             sudo make install ) )
     - name: Build
-      run: gcc-11 sample/*.cpp source/*.cpp test/*.cpp -Iinclude -I/usr/local/include/eigen3 -O0 -g -std=c++23 -fmodules-ts --coverage -lstdc++ -lm
+      run: gcc-11 sample/*.cpp source/*.cpp test/*.cpp -Iinclude -I/usr/local/include/eigen3 -O0 -g -std=c++23 -fmodules-ts --coverage -fno-inline -lstdc++ -lm
     - name: "Coverage: Base"
       run: |
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --capture --initial --directory . --output-file base.info
