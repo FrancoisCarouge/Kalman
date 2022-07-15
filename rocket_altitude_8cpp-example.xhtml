@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line">  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
 <div class="line">  <span class="comment">// uncertainty. The high estimate uncertainty results in high Kalman gain,</span></div>
 <div class="line">  <span class="comment">// giving a high weight to the measurement.</span></div>
-<div class="line">  k.p(kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } });</div>
+<div class="line">  k.p(<a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af8d6f479798f305c207fdc67c07a2b5a">kalman::estimate_uncertainty</a>{ { 500, 0 }, { 0, 500 } });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Prediction</span></div>
 <div class="line">  <span class="comment">// We will assume a discrete noise model - the noise is different at each time</span></div>
@@ -130,28 +130,28 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line">  <span class="comment">// the system random acceleration. The accelerometer error v is much lower</span></div>
 <div class="line">  <span class="comment">// than system&#39;s random acceleration, therefore we use ϵ^2 as a multiplier of</span></div>
 <div class="line">  <span class="comment">// the process noise matrix. This makes our estimation uncertainty much lower!</span></div>
-<div class="line">  k.q([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line">  k.q([](<span class="keyword">const</span> <a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">kalman::state</a> &amp;x, <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
 <div class="line">    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(x);</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line">    <span class="keywordflow">return</span> kalman::process_uncertainty{</div>
+<div class="line">    <span class="keywordflow">return</span> <a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af3c5d0d70a3c0426a0802fdd85e7eeef">kalman::process_uncertainty</a>{</div>
 <div class="line">      { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },</div>
 <div class="line">      { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }</div>
 <div class="line">    };</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">  k.f([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time,</div>
-<div class="line">         <span class="keyword">const</span> kalman::input &amp;u) {</div>
+<div class="line">  k.f([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">kalman::state</a> &amp;x, <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time,</div>
+<div class="line">         <span class="keyword">const</span> <a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a92874ec3ecb10ab906df5bdf434b7899">kalman::input</a> &amp;u) {</div>
 <div class="line">    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(x);</div>
 <div class="line">    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(u);</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line">    <span class="keywordflow">return</span> kalman::state_transition{ { 1, dt }, { 0, 1 } };</div>
+<div class="line">    <span class="keywordflow">return</span> <a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#afae9e103ff365a53281f27028ff4a0ea">kalman::state_transition</a>{ { 1, dt }, { 0, 1 } };</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The control matrix G would be:</span></div>
 <div class="line">  k.g([](<span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> dt{ std::chrono::duration&lt;double&gt;(delta_time).count() };</div>
-<div class="line">    <span class="keywordflow">return</span> kalman::input_control{ 0.0313, dt };</div>
+<div class="line">    <span class="keywordflow">return</span> <a id="a7" name="a7"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#abeecd5f98be0e4fb04fcbd1fc6ecfe88">kalman::input_control</a>{ 0.0313, dt };</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// We also don&#39;t know what the rocket acceleration is, but we can assume that</span></div>
@@ -270,6 +270,12 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a546e3b8fcd1880d3dd9a2b57c939d442"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">fcarouge::kalman::state</a></div><div class="ttdeci">typename implementation::state state</div><div class="ttdoc">Type of the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00184">kalman.hpp:184</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a92874ec3ecb10ab906df5bdf434b7899"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a92874ec3ecb10ab906df5bdf434b7899">fcarouge::kalman::input</a></div><div class="ttdeci">typename implementation::input input</div><div class="ttdoc">Type of the control vector U.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00192">kalman.hpp:192</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_abeecd5f98be0e4fb04fcbd1fc6ecfe88"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#abeecd5f98be0e4fb04fcbd1fc6ecfe88">fcarouge::kalman::input_control</a></div><div class="ttdeci">typename implementation::input_control input_control</div><div class="ttdoc">Type of the control transition matrix G.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00218">kalman.hpp:218</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af3c5d0d70a3c0426a0802fdd85e7eeef"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af3c5d0d70a3c0426a0802fdd85e7eeef">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00200">kalman.hpp:200</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af8d6f479798f305c207fdc67c07a2b5a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af8d6f479798f305c207fdc67c07a2b5a">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00197">kalman.hpp:197</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afae9e103ff365a53281f27028ff4a0ea"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afae9e103ff365a53281f27028ff4a0ea">fcarouge::kalman::state_transition</a></div><div class="ttdeci">typename implementation::state_transition state_transition</div><div class="ttdoc">Type of the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00208">kalman.hpp:208</a></div></div>
 <div class="ttc" id="akalman__eigen_8hpp_xhtml"><div class="ttname"><a href="kalman__eigen_8hpp.xhtml">kalman_eigen.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="eigen_8hpp_source.xhtml#l00250">eigen.hpp:254</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03_xhtml_a63759677e8cdcc8efbbc101504f93f97"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02rocket__altitude_8cpp_03.xhtml#a63759677e8cdcc8efbbc101504f93f97">fcarouge::sample::anonymous_namespace{rocket_altitude.cpp}::rocket_altitude</a></div><div class="ttdeci">auto rocket_altitude</div><div class="ttdef"><b>Definition:</b> <a href="rocket__altitude_8cpp_source.xhtml#l00044">rocket_altitude.cpp:44</a></div></div>
@@ -279,7 +285,7 @@ $(document).ready(function(){initNavTree('rocket_altitude_8cpp-example.xhtml',''
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Jul 13 2022 00:59:13 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 15 2022 05:39:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

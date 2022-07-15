@@ -1,5 +1,5 @@
 var searchData=
 [
   ['target_5finclude_5fdirectories_0',['target_include_directories',['../_c_make_lists_8txt.xhtml#a509a51d606286aabcf0cd19309fe8b48',1,'CMakeLists.txt']]],
-  ['transition_1',['transition',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a7846683e1f74966f3c855d1b01ba9c51',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::transition(const auto &amp;callable)'],['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a4644c6c5e8987a82e6c2f39a9079d84d',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;::transition(auto &amp;&amp;callable)']]]
+  ['transition_1',['transition',['../classfcarouge_1_1kalman.xhtml#a85dfa2b7c0b14d4c30ac6d32192950df',1,'fcarouge::kalman::transition(const auto &amp;callable)'],['../classfcarouge_1_1kalman.xhtml#ad58f15facb009ca9a7088391687ef95d',1,'fcarouge::kalman::transition(auto &amp;&amp;callable)']]]
 ];

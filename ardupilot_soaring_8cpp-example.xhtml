@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('ardupilot_soaring_8cpp-example.xhtml',
 <dd>
 <a href="https://arxiv.org/abs/1802.08215">https://arxiv.org/abs/1802.08215</a></dd></dl>
 <p>The autonomous soaring functionality in ArduPilot allows the plane to respond to rising air current in order to extend endurance and gain altitude with minimal use of the motor. The full technical description is available in S. Tabor, I. Guilliard, A. Kolobov. ArduSoar: an Open-Source Thermalling Controller for Resource-Constrained Autopilots. International Conference on Intelligent Robots and Systems (IROS), 2018. Estimating the parameters of a Wharington et al thermal model state X: [W, R, x, y] with the speed or strength W [m.s^-1] at the center of the thermal of radius R [m] with the center distance x north of the sUAV and y east of the sUAV.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo:</a></b></dt><dd>Add a data set and assert for correctness of results. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd>Add a data set and assert for correctness of results. </dd></dl>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman__eigen_8hpp.xhtml">fcarouge/kalman_eigen.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
@@ -119,22 +119,22 @@ $(document).ready(function(){initNavTree('ardupilot_soaring_8cpp-example.xhtml',
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_covariance{ 0.0049 };</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> radius_covariance{ 400 };</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> position_covariance{ 400 }; <span class="comment">// For both positions x and y.</span></div>
-<div class="line">  k.p(kalman::estimate_uncertainty{ { strength_covariance, 0, 0, 0 },</div>
+<div class="line">  k.p(<a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af8d6f479798f305c207fdc67c07a2b5a">kalman::estimate_uncertainty</a>{ { strength_covariance, 0, 0, 0 },</div>
 <div class="line">                                    { 0, radius_covariance, 0, 0 },</div>
 <div class="line">                                    { 0, 0, position_covariance, 0 },</div>
 <div class="line">                                    { 0, 0, 0, position_covariance } });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// No process dynamics: F = ∂f/∂X = I4 Default.</span></div>
 <div class="line"> </div>
-<div class="line">  k.transition([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
-<div class="line">                  <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; kalman::state {</div>
-<div class="line">    <span class="keyword">const</span> kalman::state drifts{ 0, 0, -drift_x, -drift_y };</div>
+<div class="line">  k.transition([](<span class="keyword">const</span> <a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
+<div class="line">                  <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">kalman::state</a> {</div>
+<div class="line">    <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">kalman::state</a> drifts{ 0, 0, -drift_x, -drift_y };</div>
 <div class="line">    <span class="keywordflow">return</span> x + drifts;</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_noise{ std::pow(0.001f, 2.f) };</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> distance_noise{ std::pow(0.03f, 2.f) };</div>
-<div class="line">  k.q(kalman::process_uncertainty{ { strength_noise, 0, 0, 0 },</div>
+<div class="line">  k.q(<a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af3c5d0d70a3c0426a0802fdd85e7eeef">kalman::process_uncertainty</a>{ { strength_noise, 0, 0, 0 },</div>
 <div class="line">                                   { 0, distance_noise, 0, 0 },</div>
 <div class="line">                                   { 0, 0, distance_noise, 0 },</div>
 <div class="line">                                   { 0, 0, 0, distance_noise } });</div>
@@ -144,21 +144,21 @@ $(document).ready(function(){initNavTree('ardupilot_soaring_8cpp-example.xhtml',
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Observation Z: [w] vertical air velocity w at the aircraft’s</span></div>
 <div class="line">  <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
-<div class="line">  k.observation([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line">                   <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output {</div>
+<div class="line">  k.observation([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">                   <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6199ad3f51d6a22231e698c5ca44c03f">kalman::output</a> {</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> exp{ std::exp(</div>
 <div class="line">        -(std::pow(x(2) - position_x, 2.f) + std::pow(x(3) - position_y, 2.f)) /</div>
 <div class="line">        std::pow(x(1), 2.f)) };</div>
-<div class="line">    <span class="keywordflow">return</span> kalman::output{ x(0) * exp };</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6199ad3f51d6a22231e698c5ca44c03f">kalman::output</a>{ x(0) * exp };</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
-<div class="line">  k.h([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line">         <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output_model {</div>
+<div class="line">  k.h([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">         <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a791753b3b6d9d97a1772736d4e545507">kalman::output_model</a> {</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> exp{ std::exp(</div>
 <div class="line">        -(std::pow(x(2) - position_x, 2.f) + std::pow(x(3) - position_y, 2.f)) /</div>
 <div class="line">        std::pow(x(1), 2.f)) };</div>
-<div class="line">    <span class="keyword">const</span> kalman::output_model h{</div>
+<div class="line">    <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a791753b3b6d9d97a1772736d4e545507">kalman::output_model</a> h{</div>
 <div class="line">      exp,</div>
 <div class="line">      2 * x(0) *</div>
 <div class="line">          ((std::pow(x(2) - position_x, 2.f) +</div>
@@ -189,6 +189,11 @@ $(document).ready(function(){initNavTree('ardupilot_soaring_8cpp-example.xhtml',
 <div class="line"> </div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a546e3b8fcd1880d3dd9a2b57c939d442"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a546e3b8fcd1880d3dd9a2b57c939d442">fcarouge::kalman::state</a></div><div class="ttdeci">typename implementation::state state</div><div class="ttdoc">Type of the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00184">kalman.hpp:184</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6199ad3f51d6a22231e698c5ca44c03f"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6199ad3f51d6a22231e698c5ca44c03f">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00189">kalman.hpp:189</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a791753b3b6d9d97a1772736d4e545507"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a791753b3b6d9d97a1772736d4e545507">fcarouge::kalman::output_model</a></div><div class="ttdeci">typename implementation::output_model output_model</div><div class="ttdoc">Type of the observation transition matrix H.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00213">kalman.hpp:213</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af3c5d0d70a3c0426a0802fdd85e7eeef"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af3c5d0d70a3c0426a0802fdd85e7eeef">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00200">kalman.hpp:200</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af8d6f479798f305c207fdc67c07a2b5a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af8d6f479798f305c207fdc67c07a2b5a">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00197">kalman.hpp:197</a></div></div>
 <div class="ttc" id="akalman__eigen_8hpp_xhtml"><div class="ttname"><a href="kalman__eigen_8hpp.xhtml">kalman_eigen.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="eigen_8hpp_source.xhtml#l00250">eigen.hpp:254</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ardupilot__soaring_8cpp_03_xhtml_a7dc03328a16eccbebf58a471b5a3de1b"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ardupilot__soaring_8cpp_03.xhtml#a7dc03328a16eccbebf58a471b5a3de1b">fcarouge::sample::anonymous_namespace{ardupilot_soaring.cpp}::ardupilot_soaring</a></div><div class="ttdeci">auto ardupilot_soaring</div><div class="ttdef"><b>Definition:</b> <a href="ardupilot__soaring_8cpp_source.xhtml#l00032">ardupilot_soaring.cpp:32</a></div></div>
@@ -198,7 +203,7 @@ $(document).ready(function(){initNavTree('ardupilot_soaring_8cpp-example.xhtml',
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Jul 13 2022 00:59:13 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 15 2022 05:39:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

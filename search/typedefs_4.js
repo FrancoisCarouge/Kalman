@@ -1,9 +1,9 @@
 var searchData=
 [
   ['identity_5fmatrix_0',['identity_matrix',['../namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae',1,'fcarouge::eigen']]],
-  ['implementation_1',['implementation',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a6d75c3fd77c3e71c27f557d8dee66ec7',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
-  ['innovation_2',['innovation',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a3980092faa4f88756aa1356d1ff03b07',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
-  ['innovation_5funcertainty_3',['innovation_uncertainty',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a8ef1d10626818a47f20e82f4340f56e4',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
-  ['input_4',['input',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#ac8aa1578e6ffb2fda2cd615afef13258',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]],
-  ['input_5fcontrol_5',['input_control',['../classfcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_01_transpose_00_01_symc9c4c0380af457ba18e9450122cdac37.xhtml#a070b4a229b25866e0315c655a4f45363',1,'fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, std::tuple&lt; UpdateArguments... &gt;, std::tuple&lt; PredictionArguments... &gt; &gt;']]]
+  ['implementation_1',['implementation',['../classfcarouge_1_1kalman.xhtml#a246dd53d4cbad22494cfe0e0307c334e',1,'fcarouge::kalman']]],
+  ['innovation_2',['innovation',['../classfcarouge_1_1kalman.xhtml#aa8808beaa04f881b5eaace5e7c73b465',1,'fcarouge::kalman']]],
+  ['innovation_5funcertainty_3',['innovation_uncertainty',['../classfcarouge_1_1kalman.xhtml#a74b6538274bf1a812d3dc130b455255d',1,'fcarouge::kalman']]],
+  ['input_4',['input',['../classfcarouge_1_1kalman.xhtml#a92874ec3ecb10ab906df5bdf434b7899',1,'fcarouge::kalman']]],
+  ['input_5fcontrol_5',['input_control',['../classfcarouge_1_1kalman.xhtml#abeecd5f98be0e4fb04fcbd1fc6ecfe88',1,'fcarouge::kalman']]]
 ];

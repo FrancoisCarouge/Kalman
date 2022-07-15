@@ -119,12 +119,15 @@ Examples</h1>
 <p >Example from the building height estimation sample. One estimated state and one observed output filter.</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">k.x(60.);</div>
-<div class="line">k.p(225.);</div>
-<div class="line">k.r(25.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">x</a>(60.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aadce185c0e8bf0097fa9e92769266a8d">p</a>(225.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">r</a>(25.);</div>
 <div class="line"> </div>
 <div class="line">k(48.54);</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00083">kalman.hpp:84</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00160">kalman.hpp:161</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a154cbaed3f255ec32b08031b2de47feb"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; state</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00311">kalman.hpp:311</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a34031f643cc88ad51facb3777de765aa"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; output_uncertainty</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00557">kalman.hpp:557</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aadce185c0e8bf0097fa9e92769266a8d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aadce185c0e8bf0097fa9e92769266a8d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; estimate_uncertainty</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00394">kalman.hpp:394</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
 6x2 Constant Acceleration Dynamic Model</h2>
 <p >Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.</p>
@@ -132,7 +135,7 @@ Examples</h1>
 <div class="line"> </div>
 <div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">k.x(0., 0., 0., 0., 0., 0.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">x</a>(0., 0., 0., 0., 0., 0.);</div>
 <div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
 <div class="line">                                  { 0, 500, 0, 0, 0, 0 },</div>
 <div class="line">                                  { 0, 0, 500, 0, 0, 0 },</div>
@@ -397,7 +400,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Jul 13 2022 00:59:14 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Jul 15 2022 05:39:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
