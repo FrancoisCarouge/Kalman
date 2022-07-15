@@ -39,10 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_KALMAN_HPP
 #define FCAROUGE_INTERNAL_KALMAN_HPP
 
-//! @file
-//! @brief The main Kalman filter class.
-
 #include <functional>
+#include <tuple>
 #include <type_traits>
 
 namespace fcarouge::internal
@@ -52,100 +50,62 @@ template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
           typename UpdateArguments, typename PredictionArguments>
 struct kalman {
+  //! @todo Support some, all, or disable?
 };
 
+//! @todo Remove `std::tuple` dependency.
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
           typename... UpdateArguments, typename... PredictionArguments>
 struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
               std::tuple<UpdateArguments...>,
               std::tuple<PredictionArguments...>> {
-  //! @name Public Member Types
-  //! @{
-
-  //! @brief Type of the state estimate vector X.
   using state = State;
-
-  //! @brief Type of the observation vector Z.
-  //!
-  //! @details Also known as Y or O.
   using output = Output;
-
-  //! @brief Type of the control vector U.
   using input = Input;
-
-  //! @brief Type of the estimated covariance matrix P.
-  //!
-  //! @details Also known as Σ.
   using estimate_uncertainty =
       std::decay_t<std::invoke_result_t<Divide, State, State>>;
-
-  //! @brief Type of the process noise covariance matrix Q.
   using process_uncertainty =
       std::decay_t<std::invoke_result_t<Divide, State, State>>;
-
-  //! @brief Type of the observation, measurement noise covariance matrix R.
   using output_uncertainty =
       std::decay_t<std::invoke_result_t<Divide, Output, Output>>;
-
-  //! @brief Type of the state transition matrix F.
-  //!
-  //! @details Also known as Φ or A.
   using state_transition =
       std::decay_t<std::invoke_result_t<Divide, State, State>>;
-
-  //! @brief Type of the observation transition matrix H.
-  //!
-  //! @details Also known as C.
   using output_model =
       std::decay_t<std::invoke_result_t<Divide, Output, State>>;
-
-  //! @brief Type of the control transition matrix G.
-  //!
-  //! @details Also known as B.
   using input_control =
       std::decay_t<std::invoke_result_t<Divide, State, Input>>;
-
-  //! @brief Type of the gain matrix K.
   using gain = std::decay_t<std::invoke_result_t<Transpose, output_model>>;
-
-  //! @brief Type of the innovation vector Y.
   using innovation = output;
-
-  //! @brief Type of the innovation uncertainty matrix S.
   using innovation_uncertainty = output_uncertainty;
+  using observation_state_function =
+      std::function<output_model(const state &, const UpdateArguments &...)>;
+  using noise_observation_function = std::function<output_uncertainty(
+      const state &, const output &, const UpdateArguments &...)>;
+  using transition_state_function = std::function<state_transition(
+      const state &, const PredictionArguments &..., const input &)>;
+  using noise_process_function = std::function<process_uncertainty(
+      const state &, const PredictionArguments &...)>;
+  using transition_control_function =
+      std::function<input_control(const PredictionArguments &...)>;
+  using transition_function =
+      std::function<state(const state &, const PredictionArguments &...)>;
+  using observation_function =
+      std::function<output(const state &, const UpdateArguments &...arguments)>;
 
-  //! @}
-
-  //! @name Public Member Variables
-  //! @{
-
-  //! @brief The state estimate vector x.
-  //!
-  //! @todo Is there a simpler, more portable way to get a zero initialization?
+  //! @todo Is there a simpler way to initialize to the zero matrix?
   state x{ 0 * Identity().template operator()<state>() };
-
-  //! @brief The estimate uncertainty, covariance matrix P.
-  //!
-  //! @details The estimate uncertainty, covariance is also known as Σ.
   estimate_uncertainty p{
     Identity().template operator()<estimate_uncertainty>()
   };
-
   process_uncertainty q{
     0 * Identity().template operator()<process_uncertainty>()
   };
   output_uncertainty r{ 0 *
                         Identity().template operator()<output_uncertainty>() };
-
-  //! @todo Should H be initialized to all ones?
   output_model h{ Identity().template operator()<output_model>() };
   state_transition f{ Identity().template operator()<state_transition>() };
-
-  //! @todo Should G be initialized to all ones?
   input_control g{ Identity().template operator()<input_control>() };
-
-  //! @todo Should K be initialized to all ones?
   gain k{ Identity().template operator()<gain>() };
   innovation y{ 0 * Identity().template operator()<innovation>() };
   innovation_uncertainty s{
@@ -154,122 +114,68 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   output z{ 0 * Identity().template operator()<output>() };
   input u{ 0 * Identity().template operator()<input>() };
 
-  //! @}
-
-  //! @name Public Member Function Objects
-  //! @{
-
-  //! @brief Compute the state observation H matrix.
-  //!
-  //! @details The state observation H is also known as C.
-  //! For non-linear system, or extended filter, H is the Jacobian of the state
-  //! observation function: H = ∂h/∂X = ∂hj/∂xi that is each row i
-  //! contains the derivatives of the state observation function for every
-  //! element j in the state vector X.
-  //!
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through k.x() when needed? Where does the practical/performance
   //! tradeoff leans toward? For the general case? For the specialized cases?
   //! Same question applies to other parameters.
-  std::function<output_model(const state &, const UpdateArguments &...)>
-      observation_state_h{
-        [this](const state &x,
-               const UpdateArguments &...arguments) -> output_model {
-          static_cast<void>(x);
-          (static_cast<void>(arguments), ...);
-          return h;
-        }
-      };
-
-  //! @brief Compute the observation noise R matrix.
-  std::function<output_uncertainty(const state &, const output &,
-                                   const UpdateArguments &...)>
-      noise_observation_r{
-        [this](const state &x, const output &z,
-               const UpdateArguments &...arguments) -> output_uncertainty {
-          static_cast<void>(x);
-          static_cast<void>(z);
-          (static_cast<void>(arguments), ...);
-          return r;
-        }
-      };
-
-  //! @brief Compute the state transition F matrix.
-  //!
-  //! @details The state transition F matrix is also known as Φ or A.
-  //! For non-linear system, or extended filter, F is the Jacobian of the state
-  //! transition function: F = ∂f/∂X = ∂fj/∂xi that is each row i contains the
-  //! derivatives of the state transition function for every element j in the
-  //! state vector X.
-  //!
   //! @todo Pass the arguments by universal reference?
-  std::function<state_transition(const state &, const PredictionArguments &...,
-                                 const input &)>
-      transition_state_f{ [this](const state &x,
-                                 const PredictionArguments &...arguments,
-                                 const input &u) -> state_transition {
-        static_cast<void>(x);
-        (static_cast<void>(arguments), ...);
-        static_cast<void>(u);
-        return f;
-      } };
-
-  //! @brief Compute process noise Q matrix.
-  std::function<process_uncertainty(const state &,
-                                    const PredictionArguments &...)>
-      noise_process_q{
-        [this](const state &x,
-               const PredictionArguments &...arguments) -> process_uncertainty {
-          static_cast<void>(x);
-          (static_cast<void>(arguments), ...);
-          return q;
-        }
-      };
-
-  //! @brief Compute control transition G matrix.
-  std::function<input_control(const PredictionArguments &...)>
-      transition_control_g{
-        [this](const PredictionArguments &...arguments) -> input_control {
-          (static_cast<void>(arguments), ...);
-          return g;
-        }
-      };
-
-  //! @brief State transition function f.
-  //!
-  //! @details For linear system f(x) = F * X. For non-linear system, or
-  //! extended filter, the client implements a linearization of the transition
-  //! function f and the state transition F matrix is the Jacobian of the state
-  //! transition function.
-  std::function<state(const state &, const PredictionArguments &...)>
-      transition{ [this](const state &x,
-                         const PredictionArguments &...arguments) -> state {
-        (static_cast<void>(arguments), ...);
-        return f * x;
-      } };
-
-  //! @brief State observation function h.
-  //!
-  //! @details For linear system h(x) = H * X. For non-linear system, or
-  //! extended filter, the client implements a linearization of the observation
-  //! function hand the state observation H matrix is the Jacobian of the state
-  //! observation function.
-  std::function<output(const state &, const UpdateArguments &...arguments)>
-      observation{ [this](const state &x,
-                          const UpdateArguments &...arguments) -> output {
-        (static_cast<void>(arguments), ...);
-        return h * x;
-      } };
+  observation_state_function observation_state_h{
+    [this](const state &x,
+           const UpdateArguments &...arguments) -> output_model {
+      static_cast<void>(x);
+      (static_cast<void>(arguments), ...);
+      return h;
+    }
+  };
+  noise_observation_function noise_observation_r{
+    [this](const state &x, const output &z,
+           const UpdateArguments &...arguments) -> output_uncertainty {
+      static_cast<void>(x);
+      static_cast<void>(z);
+      (static_cast<void>(arguments), ...);
+      return r;
+    }
+  };
+  transition_state_function transition_state_f{
+    [this](const state &x, const PredictionArguments &...arguments,
+           const input &u) -> state_transition {
+      static_cast<void>(x);
+      (static_cast<void>(arguments), ...);
+      static_cast<void>(u);
+      return f;
+    }
+  };
+  noise_process_function noise_process_q{
+    [this](const state &x,
+           const PredictionArguments &...arguments) -> process_uncertainty {
+      static_cast<void>(x);
+      (static_cast<void>(arguments), ...);
+      return q;
+    }
+  };
+  transition_control_function transition_control_g{
+    [this](const PredictionArguments &...arguments) -> input_control {
+      (static_cast<void>(arguments), ...);
+      return g;
+    }
+  };
+  transition_function transition{
+    [this](const state &x, const PredictionArguments &...arguments) -> state {
+      (static_cast<void>(arguments), ...);
+      return f * x;
+    }
+  };
+  observation_function observation{
+    [this](const state &x, const UpdateArguments &...arguments) -> output {
+      (static_cast<void>(arguments), ...);
+      return h * x;
+    }
+  };
 
   Transpose transpose;
   Divide divide;
   Symmetrize symmetrize;
   Identity identity;
-
-  //! @}
-
-  //! @name Public Member Functions
-  //! @{
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
   //! does the compiler/linker do it for us?
@@ -292,13 +198,18 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   }
 
   //! @todo Extended support?
+  //! @todo Should the transition state F computation arguments be  {x, u, args}
+  //! instead of {x, args, u} or can we benefit for allowing passing through an
+  //! input pack to the function?
+  //! @todo Should input U be passed to noise process Q compute? Probably?
+  //! @todo How to extended next state x = f * x + g * u?
   inline constexpr void predict(const PredictionArguments &...arguments,
                                 const auto &...input_u)
   {
     u = input{ input_u... };
-    f = transition_state_f(x, arguments..., u); // x, u, args?
-    q = noise_process_q(x, arguments...); // x, u, args?
-    g = transition_control_g(arguments...); // extend?
+    f = transition_state_f(x, arguments..., u);
+    q = noise_process_q(x, arguments...);
+    g = transition_control_g(arguments...);
     x = f * x + g * u;
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
@@ -311,7 +222,14 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
-  //! @}
+  inline constexpr void
+  operator()(const PredictionArguments &...prediction_arguments,
+             const UpdateArguments &...update_arguments, const auto &...input_u,
+             const auto &...output_z)
+  {
+    update(update_arguments..., output_z...);
+    predict(prediction_arguments..., input_u...);
+  }
 };
 
 } // namespace fcarouge::internal
