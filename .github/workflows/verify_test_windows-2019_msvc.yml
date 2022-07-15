@@ -19,6 +19,6 @@ jobs:
     - name: Install Eigen
       run: vcpkg install eigen3
     - name: Build
-      run: cl /EHsc /std:c++latest /I include /I C:\vcpkg\packages\eigen3_x86-windows\include\eigen3 /TP sample/*.cpp source/*.cpp test/*.cpp /Fe:kalman.exe
+      run: cl /EHsc /Zc:auto- /std:c++latest /I include /I C:\vcpkg\packages\eigen3_x86-windows\include\eigen3 /TP sample/*.cpp source/*.cpp test/*.cpp /Fe:kalman.exe
     - name: Run
       run: ./kalman.exe
