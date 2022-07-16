@@ -137,12 +137,12 @@ struct divide {
   //!
   //! @todo Why compilation fails if we specify the return type in the body of
   //! the function?
-  [[nodiscard]] inline constexpr auto operator()(const auto &numerator,
-                                                 const auto &denominator) const
-      -> typename Eigen::Matrix<
-          typename std::decay_t<decltype(numerator)>::Scalar,
-          std::decay_t<decltype(numerator)>::RowsAtCompileTime,
-          std::decay_t<decltype(denominator)>::RowsAtCompileTime>
+  template <typename Numerator, typename Denominator>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Numerator &numerator, const Denominator &denominator) const
+      -> typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
+                                std::decay_t<Numerator>::RowsAtCompileTime,
+                                std::decay_t<Denominator>::RowsAtCompileTime>
   {
     return denominator.transpose()
         .fullPivHouseholderQr()
