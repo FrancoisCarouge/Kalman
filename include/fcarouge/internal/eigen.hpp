@@ -137,12 +137,12 @@ struct divide {
   //!
   //! @todo Why compilation fails if we specify the return type in the body of
   //! the function?
-  [[nodiscard]] inline constexpr auto operator()(const auto &numerator,
-                                                 const auto &denominator) const
-      -> typename Eigen::Matrix<
-          typename std::decay_t<decltype(numerator)>::Scalar,
-          std::decay_t<decltype(numerator)>::RowsAtCompileTime,
-          std::decay_t<decltype(denominator)>::RowsAtCompileTime>
+  template <typename Numerator, typename Denominator>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Numerator &numerator, const Denominator &denominator) const
+      -> typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
+                                std::decay_t<Numerator>::RowsAtCompileTime,
+                                std::decay_t<Denominator>::RowsAtCompileTime>
   {
     return denominator.transpose()
         .fullPivHouseholderQr()
@@ -160,14 +160,16 @@ struct divide {
   //! @exception May throw implementation-defined exceptions.
   //!
   //! @todo Simplify implementation.
+  template <typename Numerator>
   [[nodiscard]] inline constexpr auto
-  operator()(const auto &numerator, const arithmetic auto &denominator) const ->
-      typename Eigen::Vector<
-          typename std::decay_t<decltype(numerator)>::Scalar,
-          std::decay_t<decltype(numerator)>::RowsAtCompileTime>
+  operator()(const Numerator &numerator,
+             const arithmetic auto &denominator) const ->
+      typename Eigen::Vector<typename std::decay_t<Numerator>::Scalar,
+                             std::decay_t<Numerator>::RowsAtCompileTime>
   {
-    return Eigen::Matrix<typename std::decay_t<decltype(numerator)>::Scalar, 1,
-                         1>{ denominator }
+    return Eigen::Matrix<typename std::decay_t<Numerator>::Scalar, 1, 1>{
+      denominator
+    }
         .transpose()
         .fullPivHouseholderQr()
         .solve(numerator.transpose())
@@ -184,11 +186,12 @@ struct divide {
   //! @exception May throw implementation-defined exceptions.
   //!
   //! @todo Simplify implementation.
+  template <typename Denominator>
   [[nodiscard]] inline constexpr auto
-  operator()(const arithmetic auto &numerator, const auto &denominator) const ->
-      typename Eigen::RowVector<
-          typename std::decay_t<decltype(denominator)>::Scalar,
-          std::decay_t<decltype(denominator)>::RowsAtCompileTime>
+  operator()(const arithmetic auto &numerator,
+             const Denominator &denominator) const ->
+      typename Eigen::RowVector<typename std::decay_t<Denominator>::Scalar,
+                                std::decay_t<Denominator>::RowsAtCompileTime>
   {
     return denominator.transpose()
         .fullPivHouseholderQr()
