@@ -186,11 +186,12 @@ struct divide {
   //! @exception May throw implementation-defined exceptions.
   //!
   //! @todo Simplify implementation.
+  template <typename Denominator>
   [[nodiscard]] inline constexpr auto
-  operator()(const arithmetic auto &numerator, const auto &denominator) const ->
-      typename Eigen::RowVector<
-          typename std::decay_t<decltype(denominator)>::Scalar,
-          std::decay_t<decltype(denominator)>::RowsAtCompileTime>
+  operator()(const arithmetic auto &numerator,
+             const Denominator &denominator) const ->
+      typename Eigen::RowVector<typename std::decay_t<Denominator>::Scalar,
+                                std::decay_t<Denominator>::RowsAtCompileTime>
   {
     return denominator.transpose()
         .fullPivHouseholderQr()
