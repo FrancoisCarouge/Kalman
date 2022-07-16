@@ -160,14 +160,16 @@ struct divide {
   //! @exception May throw implementation-defined exceptions.
   //!
   //! @todo Simplify implementation.
+  template <typename Numerator>
   [[nodiscard]] inline constexpr auto
-  operator()(const auto &numerator, const arithmetic auto &denominator) const ->
-      typename Eigen::Vector<
-          typename std::decay_t<decltype(numerator)>::Scalar,
-          std::decay_t<decltype(numerator)>::RowsAtCompileTime>
+  operator()(const Numerator &numerator,
+             const arithmetic auto &denominator) const ->
+      typename Eigen::Vector<typename std::decay_t<Numerator>::Scalar,
+                             std::decay_t<Numerator>::RowsAtCompileTime>
   {
-    return Eigen::Matrix<typename std::decay_t<decltype(numerator)>::Scalar, 1,
-                         1>{ denominator }
+    return Eigen::Matrix<typename std::decay_t<Numerator>::Scalar, 1, 1>{
+      denominator
+    }
         .transpose()
         .fullPivHouseholderQr()
         .solve(numerator.transpose())
