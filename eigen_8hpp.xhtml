@@ -129,9 +129,9 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a41a6a60c1495641760e4ac1dfffca2b8"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 1, typename UpdateArguments  = std::tuple&lt;&gt;, typename PredictionArguments  = std::tuple&lt;&gt;&gt; </td></tr>
-<tr class="memitem:a41a6a60c1495641760e4ac1dfffca2b8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt;</td></tr>
-<tr class="separator:a41a6a60c1495641760e4ac1dfffca2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace09ea66f58e0665e148ac0be7d54c2c"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 1, typename UpdateTypes  = fcarouge::internal::empty_pack_t, typename PredictionTypes  = fcarouge::internal::empty_pack_t&gt; </td></tr>
+<tr class="memitem:ace09ea66f58e0665e148ac0be7d54c2c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">fcarouge::eigen::internal::kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==0||Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt;</td></tr>
+<tr class="separator:ace09ea66f58e0665e148ac0be7d54c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Kalman operation for Eigen 3 types. </p>
@@ -144,7 +144,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="eigen_8hpp.xhtml">eigen.hpp</a></li>
-    <li class="footer">Generated on Sat Jul 16 2022 03:27:49 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Jul 23 2022 05:39:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

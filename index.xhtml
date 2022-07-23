@@ -125,15 +125,15 @@ Examples</h1>
 <div class="line"> </div>
 <div class="line">k(48.54);</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00160">kalman.hpp:161</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a154cbaed3f255ec32b08031b2de47feb"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; state</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00311">kalman.hpp:311</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a34031f643cc88ad51facb3777de765aa"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; output_uncertainty</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00557">kalman.hpp:557</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aadce185c0e8bf0097fa9e92769266a8d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aadce185c0e8bf0097fa9e92769266a8d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; estimate_uncertainty</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00394">kalman.hpp:394</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a154cbaed3f255ec32b08031b2de47feb"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; state</div><div class="ttdoc">Returns the state estimate vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00312">kalman.hpp:312</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a34031f643cc88ad51facb3777de765aa"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; output_uncertainty</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00558">kalman.hpp:558</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aadce185c0e8bf0097fa9e92769266a8d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aadce185c0e8bf0097fa9e92769266a8d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; estimate_uncertainty</div><div class="ttdoc">Returns the estimated covariance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00395">kalman.hpp:395</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
 6x2 Constant Acceleration Dynamic Model</h2>
 <p >Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 6, 2, 0&gt;</a>;</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 6, 2, 0&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">x</a>(0., 0., 0., 0., 0., 0.);</div>
 <div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
@@ -159,14 +159,14 @@ Examples</h1>
 <div class="line">k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
 <div class="line"> </div>
 <div class="line">k(-375.93, 301.78);</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a41a6a60c1495641760e4ac1dfffca2b8"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="eigen_8hpp_source.xhtml#l00253">eigen.hpp:257</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_ace09ea66f58e0665e148ac0be7d54c2c"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==0||Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="eigen_8hpp_source.xhtml#l00257">eigen.hpp:263</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
 4x1 Non-Linear Dynamic Model</h2>
 <p >Example from the thermal, current of warm air, strength, radius, and location estimation sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;float, 4, 1, 0, std::tuple&lt;float, float&gt;</a>,</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;float, 4, 1, 0, std::tuple&lt;float, float&gt;</a>,</div>
 <div class="line">                                        std::tuple&lt;float, float&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a> k;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">k.x(1 / 4.06, 80, 0, 0);</div>
 <div class="line">k.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
@@ -249,19 +249,9 @@ Class kalman</h1>
 <div class="line">  <span class="keyword">typename</span> Symmetrize,</div>
 <div class="line">  <span class="keyword">typename</span> Divide,</div>
 <div class="line">  <span class="keyword">typename</span> Identity,</div>
-<div class="line">  <span class="keyword">typename</span>... UpdateArguments,</div>
-<div class="line">  <span class="keyword">typename</span>... PredictionArguments&gt;</div>
-<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a41a6a60c1495641760e4ac1dfffca2b8">kalman</a>&lt;</div>
-<div class="line">  Type,</div>
-<div class="line">  State,</div>
-<div class="line">  Output,</div>
-<div class="line">  Input,</div>
-<div class="line">  Transpose,</div>
-<div class="line">  Symmetrize,</div>
-<div class="line">  Divide,</div>
-<div class="line">  Identity,</div>
-<div class="line">  std::tuple&lt;UpdateArguments...&gt;,</div>
-<div class="line">  std::tuple&lt;PredictionArguments...&gt;&gt;</div>
+<div class="line">  <span class="keyword">typename</span> UpdateTypes,</div>
+<div class="line">  <span class="keyword">typename</span> PredictionTypes&gt;</div>
+<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">kalman</a></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
 Template Parameters</h2>
 <table class="markdownTable">
@@ -284,9 +274,9 @@ Template Parameters</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>Identity</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix identity functor.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>UpdateArguments...</code>   </td><td class="markdownTableBodyNone">The variadic type template parameter for additional update function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h.    </td></tr>
+<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>PredictionArguments...</code>   </td><td class="markdownTableBodyNone">The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f.   </td></tr>
+<td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f.   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md24"></a>
 Member Types</h2>
@@ -400,7 +390,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jul 16 2022 03:27:50 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Jul 23 2022 05:39:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
