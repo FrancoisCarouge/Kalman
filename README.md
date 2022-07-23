@@ -189,19 +189,9 @@ template <
   typename Symmetrize,
   typename Divide,
   typename Identity,
-  typename... UpdateArguments,
-  typename... PredictionArguments>
-class kalman<
-  Type,
-  State,
-  Output,
-  Input,
-  Transpose,
-  Symmetrize,
-  Divide,
-  Identity,
-  std::tuple<UpdateArguments...>,
-  std::tuple<PredictionArguments...>>
+  typename UpdateTypes,
+  typename PredictionTypes>
+class kalman
 ```
 
 ## Template Parameters
@@ -216,8 +206,8 @@ class kalman<
 | `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. |
 | `Divide` | The customization point object template parameter of the matrix division functor. |
 | `Identity` | The customization point object template parameter of the matrix identity functor. |
-| `UpdateArguments...` | The variadic type template parameter for additional update function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. |
-| `PredictionArguments...` | The variadic type template parameter for additional prediction function parameters. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. |
+| `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. |
+| `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. |
 
 ## Member Types
 

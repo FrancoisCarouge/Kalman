@@ -43,9 +43,9 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Kalman operation for Eigen 3 types.
 
 #include "internal/eigen.hpp"
+#include "internal/kalman.hpp"
 
 #include <cstddef>
-#include <tuple>
 
 namespace fcarouge::eigen
 {
@@ -71,23 +71,25 @@ using identity_matrix = internal::identity_matrix;
 //! @tparam Output The non-type template parameter size of the measurement
 //! vector Z.
 //! @tparam Input The non-type template parameter size of the control U.
-//! @tparam UpdateArguments The variadic type template parameter for additional
-//! update function parameters. Parameters such as delta times, variances, or
-//! linearized values. The parameters are propagated to the function objects
-//! used to compute the state observation H and the observation noise R
-//! matrices. The parameters are also propagated to the state observation
-//! function object h.
-//! @tparam PredictionArguments The variadic type template parameter for
-//! additional prediction function parameters. Parameters such as delta times,
-//! variances, or linearized values. The parameters are propagated to the
-//! function objects used to compute the process noise Q, the state transition
-//! F, and the control transition G matrices. The parameters are also propagated
-//! to the state transition function object f.
+//! @tparam UpdateTypes The additional update function parameter types passed in
+//! through a tuple-like parameter type, composing zero or more types.
+//! Parameters such as delta times, variances, or linearized values. The
+//! parameters are propagated to the function objects used to compute the state
+//! observation H and the observation noise R matrices. The parameters are also
+//! propagated to the state observation function object h.
+//! @tparam PredictionTypes The additional prediction function parameter types
+//! passed in through a tuple-like parameter type, composing zero or more types.
+//! Parameters such as delta times, variances, or linearized values. The
+//! parameters are propagated to the function objects used to compute the
+//! process noise Q, the state transition F, and the control transition G
+//! matrices. The parameters are also propagated to the state transition
+//! function object f.
 template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
-          std::size_t Input = 1, typename UpdateArguments = std::tuple<>,
-          typename PredictionArguments = std::tuple<>>
-using kalman = internal::kalman<Type, State, Output, Input, UpdateArguments,
-                                PredictionArguments>;
+          std::size_t Input = 1,
+          typename UpdateTypes = fcarouge::internal::empty_pack_t,
+          typename PredictionTypes = fcarouge::internal::empty_pack_t>
+using kalman =
+    internal::kalman<Type, State, Output, Input, UpdateTypes, PredictionTypes>;
 
 } // namespace fcarouge::eigen
 

@@ -47,7 +47,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <concepts>
 #include <functional>
-#include <tuple>
 #include <type_traits>
 #include <utility>
 
@@ -98,18 +97,19 @@ struct identity_matrix {
 //! matrix division functor.
 //! @tparam Identity The customization point object template parameter of the
 //! matrix identity functor.
-//! @tparam UpdateArguments The variadic type template parameter for additional
-//! update function parameters. Parameters such as delta times, variances, or
-//! linearized values. The parameters are propagated to the function objects
-//! used to compute the state observation H and the observation noise R
-//! matrices. The parameters are also propagated to the state observation
-//! function object h.
-//! @tparam PredictionArguments The variadic type template parameter for
-//! additional prediction function parameters. Parameters such as delta times,
-//! variances, or linearized values. The parameters are propagated to the
-//! function objects used to compute the process noise Q, the state transition
-//! F, and the control transition G matrices. The parameters are also propagated
-//! to the state transition function object f.
+//! @tparam UpdateTypes The additional update function parameter types passed in
+//! through a tuple-like parameter type, composing zero or more types.
+//! Parameters such as delta times, variances, or linearized values. The
+//! parameters are propagated to the function objects used to compute the state
+//! observation H and the observation noise R matrices. The parameters are also
+//! propagated to the state observation function object h.
+//! @tparam PredictionTypes The additional prediction function parameter types
+//! passed in through a tuple-like parameter type, composing zero or more types.
+//! Parameters such as delta times, variances, or linearized values. The
+//! parameters are propagated to the function objects used to compute the
+//! process noise Q, the state transition F, and the control transition G
+//! matrices. The parameters are also propagated to the state transition
+//! function object f.
 //!
 //! @note This class could be usable in constant expressions if `std::function`
 //! could too. The polymorphic function wrapper was used in place of function
@@ -147,7 +147,6 @@ struct identity_matrix {
 //! characteristics?
 //! @todo Consider additional constructors?
 //! @todo Consider additional characteristics method overloads?
-//! @todo Remove `std::tuple` dependency.
 //! @todo A clear or reset member equivalent may be useful for real-time
 //! re-initializations but to what default?
 //! @todo Could the Input be void by default? Or empty?
@@ -155,8 +154,9 @@ template <
     typename Type = double, typename State = Type, typename Output = State,
     typename Input = State, typename Transpose = std::identity,
     typename Symmetrize = std::identity, typename Divide = std::divides<void>,
-    typename Identity = identity_matrix, typename UpdateTypes = std::tuple<>,
-    typename PredictionTypes = std::tuple<>>
+    typename Identity = identity_matrix,
+    typename UpdateTypes = internal::empty_pack_t,
+    typename PredictionTypes = internal::empty_pack_t>
 class kalman
 {
   private:
@@ -169,7 +169,8 @@ class kalman
   //! tuple-like types which allows for multiple parameter pack deductions.
   using implementation =
       internal::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
-                       Identity, UpdateTypes, PredictionTypes>;
+                       Identity, internal::repack_t<UpdateTypes>,
+                       internal::repack_t<PredictionTypes>>;
 
   //! @}
 

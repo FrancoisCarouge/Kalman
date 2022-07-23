@@ -247,14 +247,20 @@ struct identity_matrix {
   }
 };
 
+//! @todo Improve support and optimize for no input: neither type nor void but
+//! an equivalent empty type? Void may be more intuitive, practical for the user
+//! although less theoretically correct?
 template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
-          std::size_t Input = 1, typename UpdateArguments = std::tuple<>,
-          typename PredictionArguments = std::tuple<>>
+          std::size_t Input = 1,
+          typename UpdateTypes = fcarouge::internal::empty_pack_t,
+          typename PredictionTypes = fcarouge::internal::empty_pack_t>
 using kalman = fcarouge::kalman<
     Type, std::conditional_t<State == 1, Type, Eigen::Vector<Type, State>>,
     std::conditional_t<Output == 1, Type, Eigen::Vector<Type, Output>>,
-    std::conditional_t<Input == 1, Type, Eigen::Vector<Type, Input>>, transpose,
-    symmetrize, divide, identity_matrix, UpdateArguments, PredictionArguments>;
+    std::conditional_t<Input == 0 || Input == 1, Type,
+                       Eigen::Vector<Type, Input>>,
+    transpose, symmetrize, divide, identity_matrix, UpdateTypes,
+    PredictionTypes>;
 
 } // namespace fcarouge::eigen::internal
 
