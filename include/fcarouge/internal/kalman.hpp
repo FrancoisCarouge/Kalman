@@ -40,26 +40,38 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_INTERNAL_KALMAN_HPP
 
 #include <functional>
-#include <tuple>
 #include <type_traits>
 
 namespace fcarouge::internal
 {
 
-template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename UpdateArguments, typename PredictionArguments>
-struct kalman {
-  //! @todo Support some, all, or disable?
+template <typename...> struct pack {
 };
 
-//! @todo Remove `std::tuple` dependency.
+using empty_pack_t = pack<>;
+
+template <typename Type> struct repack {
+  using type = Type;
+};
+
+template <template <typename...> typename From, typename... Types>
+struct repack<From<Types...>> {
+  using type = pack<Types...>;
+};
+
+template <typename From> using repack_t = typename repack<From>::type;
+
+template <typename, typename, typename, typename, typename, typename, typename,
+          typename, typename>
+struct kalman {
+  //! @todo Support some more specializations, all, or disable others?
+};
+
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
-          typename... UpdateArguments, typename... PredictionArguments>
+          typename... UpdateTypes, typename... PredictionTypes>
 struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-              std::tuple<UpdateArguments...>,
-              std::tuple<PredictionArguments...>> {
+              pack<UpdateTypes...>, pack<PredictionTypes...>> {
   using state = State;
   using output = Output;
   using input = Input;
@@ -79,19 +91,19 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
-      std::function<output_model(const state &, const UpdateArguments &...)>;
+      std::function<output_model(const state &, const UpdateTypes &...)>;
   using noise_observation_function = std::function<output_uncertainty(
-      const state &, const output &, const UpdateArguments &...)>;
+      const state &, const output &, const UpdateTypes &...)>;
   using transition_state_function = std::function<state_transition(
-      const state &, const PredictionArguments &..., const input &)>;
+      const state &, const PredictionTypes &..., const input &)>;
   using noise_process_function = std::function<process_uncertainty(
-      const state &, const PredictionArguments &...)>;
+      const state &, const PredictionTypes &...)>;
   using transition_control_function =
-      std::function<input_control(const PredictionArguments &...)>;
+      std::function<input_control(const PredictionTypes &...)>;
   using transition_function =
-      std::function<state(const state &, const PredictionArguments &...)>;
+      std::function<state(const state &, const PredictionTypes &...)>;
   using observation_function =
-      std::function<output(const state &, const UpdateArguments &...arguments)>;
+      std::function<output(const state &, const UpdateTypes &...arguments)>;
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
   state x{ 0 * Identity().template operator()<state>() };
@@ -120,8 +132,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-    [this](const state &x,
-           const UpdateArguments &...arguments) -> output_model {
+    [this](const state &x, const UpdateTypes &...arguments) -> output_model {
       static_cast<void>(x);
       (static_cast<void>(arguments), ...);
       return h;
@@ -129,7 +140,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   };
   noise_observation_function noise_observation_r{
     [this](const state &x, const output &z,
-           const UpdateArguments &...arguments) -> output_uncertainty {
+           const UpdateTypes &...arguments) -> output_uncertainty {
       static_cast<void>(x);
       static_cast<void>(z);
       (static_cast<void>(arguments), ...);
@@ -137,7 +148,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     }
   };
   transition_state_function transition_state_f{
-    [this](const state &x, const PredictionArguments &...arguments,
+    [this](const state &x, const PredictionTypes &...arguments,
            const input &u) -> state_transition {
       static_cast<void>(x);
       (static_cast<void>(arguments), ...);
@@ -147,26 +158,26 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   };
   noise_process_function noise_process_q{
     [this](const state &x,
-           const PredictionArguments &...arguments) -> process_uncertainty {
+           const PredictionTypes &...arguments) -> process_uncertainty {
       static_cast<void>(x);
       (static_cast<void>(arguments), ...);
       return q;
     }
   };
   transition_control_function transition_control_g{
-    [this](const PredictionArguments &...arguments) -> input_control {
+    [this](const PredictionTypes &...arguments) -> input_control {
       (static_cast<void>(arguments), ...);
       return g;
     }
   };
   transition_function transition{
-    [this](const state &x, const PredictionArguments &...arguments) -> state {
+    [this](const state &x, const PredictionTypes &...arguments) -> state {
       (static_cast<void>(arguments), ...);
       return f * x;
     }
   };
   observation_function observation{
-    [this](const state &x, const UpdateArguments &...arguments) -> output {
+    [this](const state &x, const UpdateTypes &...arguments) -> output {
       (static_cast<void>(arguments), ...);
       return h * x;
     }
@@ -181,7 +192,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! does the compiler/linker do it for us?
   //! @todo Do we want to support extended custom y = output_difference(z,
   //! observation(x))?
-  inline constexpr void update(const UpdateArguments &...arguments,
+  inline constexpr void update(const UpdateTypes &...arguments,
                                const auto &...output_z)
   {
     const auto i{ identity.template operator()<estimate_uncertainty>() };
@@ -203,7 +214,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! input pack to the function?
   //! @todo Should input U be passed to noise process Q compute? Probably?
   //! @todo How to extended next state x = f * x + g * u?
-  inline constexpr void predict(const PredictionArguments &...arguments,
+  inline constexpr void predict(const PredictionTypes &...arguments,
                                 const auto &...input_u)
   {
     u = input{ input_u... };
@@ -214,7 +225,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
-  inline constexpr void predict(const PredictionArguments &...arguments)
+  inline constexpr void predict(const PredictionTypes &...arguments)
   {
     f = transition_state_f(x, arguments..., input{});
     q = noise_process_q(x, arguments...);
@@ -223,8 +234,8 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   }
 
   inline constexpr void
-  operator()(const PredictionArguments &...prediction_arguments,
-             const UpdateArguments &...update_arguments, const auto &...input_u,
+  operator()(const PredictionTypes &...prediction_arguments,
+             const UpdateTypes &...update_arguments, const auto &...input_u,
              const auto &...output_z)
   {
     update(update_arguments..., output_z...);
