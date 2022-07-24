@@ -42,7 +42,7 @@ k(48.54);
 Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.
 
 ```cpp
-using kalman = fcarouge::eigen::kalman<double, 6, 2, 0>;
+using kalman = fcarouge::eigen::kalman<double, 6, 2>;
 
 kalman k;
 
