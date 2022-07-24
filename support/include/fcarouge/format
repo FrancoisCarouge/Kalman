@@ -1,0 +1,152 @@
+/*_  __          _      __  __          _   _
+ | |/ /    /\   | |    |  \/  |   /\   | \ | |
+ | ' /    /  \  | |    | \  / |  /  \  |  \| |
+ |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
+ | . \  / ____ \| |____| |  | |/ ____ \| |\  |
+ |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
+
+Kalman Filter for C++
+Version 0.1.0
+https://github.com/FrancoisCarouge/Kalman
+
+SPDX-License-Identifier: Unlicense
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org> */
+
+#ifndef FCAROUGE_FORMAT
+#define FCAROUGE_FORMAT
+
+//! @file
+//! @brief Standard formatter pre-compiler support.
+//!
+//! @details Mainstream compilers do not support `std::format` as of July 2022.
+//! The support is brought in through the `fmt` library.
+
+#include "fcarouge/internal/format.hpp"
+#include "fcarouge/kalman.hpp"
+
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <fmt/ranges.h>
+#include <fmt/chrono.h>
+#include <fmt/compile.h>
+#include <fmt/color.h>
+#include <fmt/os.h>
+#include <fmt/ostream.h>
+#include <fmt/printf.h>
+#include <fmt/xchar.h>
+
+namespace std
+{
+//! @brief Standard formatter placeholder.
+template <typename Type, typename Char>
+struct formatter : public fmt::formatter<Type, Char> {
+};
+
+//! @brief Stores formatted representation of the arguments in a new string.
+//!
+//! @details Format the arguments according to the formatting string, and return
+//! the result as a string.
+//!
+//! @param locale The `std::locale` used for locale-specific formatting.
+//! @param format Parameter of unspecified type, whose initialization is valid
+//! only if the argument is convertible to `std::string_view` or
+//! `std::wstring_view`, and the result of conversion is a constant expression
+//! and a valid format string for `arguments`. The format string consists of
+//! ordinary characters (except `{` and `}`), which are copied unchanged to the
+//! output, escape sequences `{{` and `}}`, which are replaced with `{` and `}`
+//! respectively in the output, and replacement fields.
+//! Each replacement field has the following format:
+//! `{ arg-id (optional) }`: replacement field without a format specification,
+//! `{ arg-id (optional) : format-spec }`: replacement field with a format
+//! specification. `arg-id` specifies the index of the argument in `arguments`
+//! whose value is to be used for formatting; if it is omitted, the arguments
+//! are used in order. The `arg-ids` in a format string must all be present or
+//! all be omitted. Mixing manual and automatic indexing is an error.
+//! `format-spec` the format specification defined by the `std::formatter`
+//! specialization for the corresponding argument. For basic types and standard
+//! string types, the format specification is interpreted as standard format
+//! specification. For `chrono` types, the format specification is interpreted
+//! as `chrono` format specification. For other formattable types, the format
+//! specification is determined by user-defined formatter specializations.
+//! @param arguments The arguments to be formatted.
+template <typename... Types>
+[[nodiscard]] inline auto format(const auto &locale,
+                                 fmt::format_string<Types...> format,
+                                 Types &&...arguments)
+{
+  return fmt::vformat(locale, format, fmt::make_format_args(arguments...));
+}
+
+//! @see format
+//!
+//! @todo Verify documentation.
+template <typename... Types>
+[[nodiscard]] inline auto format(fmt::format_string<Types...> format,
+                                 Types &&...arguments)
+{
+  return fmt::vformat(format, fmt::make_format_args(arguments...));
+}
+
+//! @todo Document.
+[[nodiscard]] inline auto format_to(auto out, const auto &locale, auto format,
+                                    auto &&...arguments)
+{
+  return fmt::format_to(out, locale, format, arguments...);
+}
+
+//! @todo Document.
+[[nodiscard]] inline auto format_to(auto out, auto format, auto &&...arguments)
+{
+  return fmt::format_to(out, format, arguments...);
+}
+} // namespace std
+
+namespace fcarouge
+{
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename UpdateArguments,
+          typename PredictionArguments>
+class kalman;
+} // namespace fcarouge
+
+template <typename Type, typename State, typename Output, typename Input,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename UpdateArguments,
+          typename PredictionArguments, typename Char>
+struct fmt::formatter<
+    fcarouge::kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
+                     Identity, UpdateArguments, PredictionArguments>,
+    Char>
+        : public std::formatter<
+              fcarouge::kalman<Type, State, Output, Input, Transpose,
+                               Symmetrize, Divide, Identity, UpdateArguments,
+                               PredictionArguments>,
+              Char> {
+};
+
+#endif // FCAROUGE_FORMAT
