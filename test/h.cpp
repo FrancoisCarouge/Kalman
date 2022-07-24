@@ -46,7 +46,7 @@ namespace
 {
 //! @test Verifies the observation transition matrix H management overloads for
 //! the default filter type.
-[[maybe_unused]] auto h111{ [] {
+[[maybe_unused]] auto h110{ [] {
   fcarouge::kalman k;
   using kalman = decltype(k);
 
@@ -83,7 +83,7 @@ namespace
     } };
     k.h(h);
     assert(k.h() == 5);
-    k.update(0.);
+    k.update();
     assert(k.h() == 6);
   }
 
@@ -94,7 +94,7 @@ namespace
     } };
     k.h(std::move(h));
     assert(k.h() == 6);
-    k.update(0.);
+    k.update();
     assert(k.h() == 7);
   }
 
@@ -111,6 +111,7 @@ namespace
   kalman k;
   const auto i4x5{ Eigen::Matrix<double, 4, 5>::Identity() };
   const auto z4x5{ Eigen::Matrix<double, 4, 5>::Zero() };
+  const Eigen::Matrix<double, 4, 1> z4x1{ Eigen::Matrix<double, 4, 1>::Zero() };
 
   assert(k.h() == i4x5);
 
@@ -150,7 +151,7 @@ namespace
     } };
     k.h(h);
     assert(k.h() == z4x5);
-    k.update(0., 0.f, 0, 0);
+    k.update(0., 0.f, 0, char(0), z4x1);
     assert(k.h() == i4x5);
   }
 
@@ -166,7 +167,7 @@ namespace
     } };
     k.h(std::move(h));
     assert(k.h() == i4x5);
-    k.update(0., 0.f, 0, 0);
+    k.update(0., 0.f, 0, char(0), z4x1);
     assert(k.h() == z4x5);
   }
 

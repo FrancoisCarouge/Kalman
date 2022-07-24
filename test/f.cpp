@@ -111,6 +111,7 @@ namespace
   kalman k;
   const auto i5x5{ Eigen::Matrix<double, 5, 5>::Identity() };
   const auto z5x5{ Eigen::Matrix<double, 5, 5>::Zero() };
+  const Eigen::Matrix<double, 3, 1> z3x1{ Eigen::Matrix<double, 3, 1>::Zero() };
 
   assert(k.f() == i5x5);
 
@@ -152,7 +153,7 @@ namespace
     } };
     k.f(f);
     assert(k.f() == z5x5);
-    k.predict(0, 0, 0.f, 0.);
+    k.predict(char(0), 0, 0.f, 0., z3x1);
     assert(k.f() == i5x5);
   }
 
@@ -170,7 +171,7 @@ namespace
     } };
     k.f(std::move(f));
     assert(k.f() == i5x5);
-    k.predict(0, 0, 0.f, 0.);
+    k.predict(0, 0, 0.f, 0., z3x1);
     assert(k.f() == z5x5);
   }
 

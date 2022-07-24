@@ -183,8 +183,9 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   //! does the compiler/linker do it for us?
   //! @todo Do we want to support extended custom y = output_difference(z,
   //! observation(x))?
+  template <typename... Outputs>
   inline constexpr void update(const UpdateTypes &...arguments,
-                               const auto &...output_z)
+                               const Outputs &...output_z)
   {
     const auto i{ identity.template operator()<estimate_uncertainty>() };
 
@@ -207,9 +208,10 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
+  template <typename... Outputs>
   inline constexpr void
   operator()(const PredictionTypes &...prediction_arguments,
-             const UpdateTypes &...update_arguments, const auto &...output_z)
+             const UpdateTypes &...update_arguments, const Outputs &...output_z)
   {
     update(update_arguments..., output_z...);
     predict(prediction_arguments...);
@@ -341,8 +343,9 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! does the compiler/linker do it for us?
   //! @todo Do we want to support extended custom y = output_difference(z,
   //! observation(x))?
+  template <typename... Outputs>
   inline constexpr void update(const UpdateTypes &...arguments,
-                               const auto &...output_z)
+                               const Outputs &...output_z)
   {
     const auto i{ identity.template operator()<estimate_uncertainty>() };
 
@@ -363,8 +366,9 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! input pack to the function?
   //! @todo Should input U be passed to noise process Q compute? Probably?
   //! @todo How to extended next state x = f * x + g * u?
+  template <typename... Inputs>
   inline constexpr void predict(const PredictionTypes &...arguments,
-                                const auto &...input_u)
+                                const Inputs &...input_u)
   {
     u = input{ input_u... };
     f = transition_state_f(x, arguments..., u);
@@ -374,17 +378,10 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
   }
 
-  inline constexpr void predict(const PredictionTypes &...arguments)
-  {
-    f = transition_state_f(x, arguments..., input{});
-    q = noise_process_q(x, arguments...);
-    x = transition(x, arguments...);
-    p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
-  }
-
+  template <typename... Inputs>
   inline constexpr void
   operator()(const PredictionTypes &...prediction_arguments,
-             const UpdateTypes &...update_arguments, const auto &...input_u,
+             const UpdateTypes &...update_arguments, const Inputs &...input_u,
              const auto &...output_z)
   {
     update(update_arguments..., output_z...);
