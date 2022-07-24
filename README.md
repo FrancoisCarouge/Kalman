@@ -200,7 +200,7 @@ class kalman
 | --- | --- |
 | `State` | The type template parameter of the state vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. |
 | `Output` | The type template parameter of the measurement vector z. |
-| `Input` | The type template parameter of the control u. |
+| `Input` | The type template parameter of the control u. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. |
 | `Transpose` | The customization point object template parameter of the matrix transpose functor. |
 | `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. |
 | `Divide` | The customization point object template parameter of the matrix division functor. |

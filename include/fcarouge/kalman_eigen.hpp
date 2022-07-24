@@ -85,7 +85,7 @@ using identity_matrix = internal::identity_matrix;
 //! matrices. The parameters are also propagated to the state transition
 //! function object f.
 template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
-          std::size_t Input = 1,
+          std::size_t Input = 0,
           typename UpdateTypes = fcarouge::internal::empty_pack_t,
           typename PredictionTypes = fcarouge::internal::empty_pack_t>
 using kalman =

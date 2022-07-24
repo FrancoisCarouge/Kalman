@@ -67,6 +67,155 @@ struct kalman {
   //! @todo Support some more specializations, all, or disable others?
 };
 
+template <typename State, typename Output, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename... UpdateTypes, typename... PredictionTypes>
+struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
+              pack<UpdateTypes...>, pack<PredictionTypes...>> {
+  struct empty {
+  };
+  using state = State;
+  using output = Output;
+  using input = empty;
+  using estimate_uncertainty =
+      std::decay_t<std::invoke_result_t<Divide, State, State>>;
+  using process_uncertainty =
+      std::decay_t<std::invoke_result_t<Divide, State, State>>;
+  using output_uncertainty =
+      std::decay_t<std::invoke_result_t<Divide, Output, Output>>;
+  using state_transition =
+      std::decay_t<std::invoke_result_t<Divide, State, State>>;
+  using output_model =
+      std::decay_t<std::invoke_result_t<Divide, Output, State>>;
+  using input_control = empty;
+  using gain = std::decay_t<std::invoke_result_t<Transpose, output_model>>;
+  using innovation = output;
+  using innovation_uncertainty = output_uncertainty;
+  using observation_state_function =
+      std::function<output_model(const state &, const UpdateTypes &...)>;
+  using noise_observation_function = std::function<output_uncertainty(
+      const state &, const output &, const UpdateTypes &...)>;
+  using transition_state_function = std::function<state_transition(
+      const state &, const PredictionTypes &...)>;
+  using noise_process_function = std::function<process_uncertainty(
+      const state &, const PredictionTypes &...)>;
+  using transition_control_function = empty;
+  using transition_function =
+      std::function<state(const state &, const PredictionTypes &...)>;
+  using observation_function =
+      std::function<output(const state &, const UpdateTypes &...arguments)>;
+
+  //! @todo Is there a simpler way to initialize to the zero matrix?
+  state x{ 0 * Identity().template operator()<state>() };
+  estimate_uncertainty p{
+    Identity().template operator()<estimate_uncertainty>()
+  };
+  process_uncertainty q{
+    0 * Identity().template operator()<process_uncertainty>()
+  };
+  output_uncertainty r{ 0 *
+                        Identity().template operator()<output_uncertainty>() };
+  output_model h{ Identity().template operator()<output_model>() };
+  state_transition f{ Identity().template operator()<state_transition>() };
+  gain k{ Identity().template operator()<gain>() };
+  innovation y{ 0 * Identity().template operator()<innovation>() };
+  innovation_uncertainty s{
+    Identity().template operator()<innovation_uncertainty>()
+  };
+  output z{ 0 * Identity().template operator()<output>() };
+
+  //! @todo Should we pass through the reference to the state x or have the user
+  //! access it through k.x() when needed? Where does the practical/performance
+  //! tradeoff leans toward? For the general case? For the specialized cases?
+  //! Same question applies to other parameters.
+  //! @todo Pass the arguments by universal reference?
+  observation_state_function observation_state_h{
+    [this](const state &x, const UpdateTypes &...arguments) -> output_model {
+      static_cast<void>(x);
+      (static_cast<void>(arguments), ...);
+      return h;
+    }
+  };
+  noise_observation_function noise_observation_r{
+    [this](const state &x, const output &z,
+           const UpdateTypes &...arguments) -> output_uncertainty {
+      static_cast<void>(x);
+      static_cast<void>(z);
+      (static_cast<void>(arguments), ...);
+      return r;
+    }
+  };
+  transition_state_function transition_state_f{
+    [this](const state &x,
+           const PredictionTypes &...arguments) -> state_transition {
+      static_cast<void>(x);
+      (static_cast<void>(arguments), ...);
+      return f;
+    }
+  };
+  noise_process_function noise_process_q{
+    [this](const state &x,
+           const PredictionTypes &...arguments) -> process_uncertainty {
+      static_cast<void>(x);
+      (static_cast<void>(arguments), ...);
+      return q;
+    }
+  };
+  transition_function transition{
+    [this](const state &x, const PredictionTypes &...arguments) -> state {
+      (static_cast<void>(arguments), ...);
+      return f * x;
+    }
+  };
+  observation_function observation{
+    [this](const state &x, const UpdateTypes &...arguments) -> output {
+      (static_cast<void>(arguments), ...);
+      return h * x;
+    }
+  };
+
+  Transpose transpose;
+  Divide divide;
+  Symmetrize symmetrize;
+  Identity identity;
+
+  //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
+  //! does the compiler/linker do it for us?
+  //! @todo Do we want to support extended custom y = output_difference(z,
+  //! observation(x))?
+  inline constexpr void update(const UpdateTypes &...arguments,
+                               const auto &...output_z)
+  {
+    const auto i{ identity.template operator()<estimate_uncertainty>() };
+
+    z = output{ output_z... };
+    h = observation_state_h(x, arguments...); // x, z, args?
+    r = noise_observation_r(x, z, arguments...);
+    s = h * p * transpose(h) + r;
+    k = divide(p * transpose(h), s);
+    y = z - observation(x, arguments...);
+    x = x + k * y;
+    p = symmetrize(estimate_uncertainty{
+        (i - k * h) * p * transpose(i - k * h) + k * r * transpose(k) });
+  }
+
+  inline constexpr void predict(const PredictionTypes &...arguments)
+  {
+    f = transition_state_f(x, arguments...);
+    q = noise_process_q(x, arguments...);
+    x = transition(x, arguments...);
+    p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
+  }
+
+  inline constexpr void
+  operator()(const PredictionTypes &...prediction_arguments,
+             const UpdateTypes &...update_arguments, const auto &...output_z)
+  {
+    update(update_arguments..., output_z...);
+    predict(prediction_arguments...);
+  }
+};
+
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
           typename... UpdateTypes, typename... PredictionTypes>
