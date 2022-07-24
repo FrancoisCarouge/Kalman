@@ -98,7 +98,8 @@ $(document).ready(function(){initNavTree('dog_position_8cpp-example.xhtml',''); 
 <div class="line"><span class="keyword">namespace</span></div>
 <div class="line">{</div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02dog__position_8cpp_03.xhtml#aafec5a2e95aa8989c1e8f9708622ca35">dog_position</a>{ [] {</div>
-<div class="line">  <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ac3f78a5abfd36f0bcecb8830569436c6">kalman</a> k;</div>
+<div class="line">  <span class="keyword">using</span> <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a7cf7faca778eb747dab6c1d5c044290b">kalman</a> = <a id="_a2" name="_a2"></a><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;double, double, double&gt;</a>;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a7cf7faca778eb747dab6c1d5c044290b">kalman</a> k;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="comment">// This is the dog&#39;s initial position expressed as a Gaussian. The position is</span></div>
@@ -159,8 +160,9 @@ $(document).ready(function(){initNavTree('dog_position_8cpp-example.xhtml',''); 
 <div class="line"> </div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00161">kalman.hpp:162</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The main Kalman filter class.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_ac3f78a5abfd36f0bcecb8830569436c6"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ac3f78a5abfd36f0bcecb8830569436c6">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==0||Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="eigen_8hpp_source.xhtml#l00257">eigen.hpp:263</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1internal_xhtml_a7cf7faca778eb747dab6c1d5c044290b"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1internal.xhtml#a7cf7faca778eb747dab6c1d5c044290b">fcarouge::eigen::internal::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==0, void, std::conditional_t&lt; Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt; &gt;, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdef"><b>Definition:</b> <a href="eigen_8hpp_source.xhtml#l00257">eigen.hpp:264</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02dog__position_8cpp_03_xhtml_aafec5a2e95aa8989c1e8f9708622ca35"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02dog__position_8cpp_03.xhtml#aafec5a2e95aa8989c1e8f9708622ca35">fcarouge::sample::anonymous_namespace{dog_position.cpp}::dog_position</a></div><div class="ttdeci">auto dog_position</div><div class="ttdef"><b>Definition:</b> <a href="dog__position_8cpp_source.xhtml#l00034">dog_position.cpp:34</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
@@ -168,7 +170,7 @@ $(document).ready(function(){initNavTree('dog_position_8cpp-example.xhtml',''); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jul 24 2022 01:26:11 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Jul 24 2022 03:36:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

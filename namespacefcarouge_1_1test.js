@@ -9,6 +9,7 @@ var namespacefcarouge_1_1test =
       [ "h543", "namespacefcarouge_1_1test_1_1anonymous__namespace_02h_8cpp_03.xhtml#ac1d0cd7c62f85d2fab4f18b018ebe154", null ]
     ] ],
     [ "anonymous_namespace{initialization.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml", [
+      [ "defaults110", "namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a3f77afd577edbc176cca510acda1fefb", null ],
       [ "defaults111", "namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a2170b5f9ce16dba1a219ba4e1392a324", null ],
       [ "defaults543", "namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a7a397c5022337d20dbd4768e5d1bac61", null ]
     ] ]
