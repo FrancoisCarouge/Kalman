@@ -255,7 +255,7 @@ template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
           typename UpdateTypes = fcarouge::internal::empty_pack_t,
           typename PredictionTypes = fcarouge::internal::empty_pack_t>
 using kalman = fcarouge::kalman<
-    Type, std::conditional_t<State == 1, Type, Eigen::Vector<Type, State>>,
+    std::conditional_t<State == 1, Type, Eigen::Vector<Type, State>>,
     std::conditional_t<Output == 1, Type, Eigen::Vector<Type, Output>>,
     std::conditional_t<Input == 0 || Input == 1, Type,
                        Eigen::Vector<Type, Input>>,
