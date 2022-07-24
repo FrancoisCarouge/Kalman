@@ -83,11 +83,14 @@ struct identity_matrix {
 //! the measurement (Z, R), the measurement function H, and if the system has
 //! control inputs (U, B). Designing a filter is as much art as science.
 //!
-//! @tparam State The type template parameter of the state vector X. State
+//! @tparam State The type template parameter of the state vector x. State
 //! variables can be observed (measured), or hidden variables (inferred). This
 //! is the the mean of the multivariate Gaussian.
-//! @tparam Output The type template parameter of the measurement vector Z.
-//! @tparam Input The type template parameter of the control U.
+//! @tparam Output The type template parameter of the measurement vector z.
+//! @tparam Input The type template parameter of the control u. A `void` input
+//! type can be used for systems with no input control to disable all of the
+//! input control features, the control transition matrix G support, and the
+//! other related computations from the filter.
 //! @tparam Transpose The customization point object template parameter of the
 //! matrix transpose functor.
 //! @tparam Symmetrize The customization point object template parameter of the
@@ -150,7 +153,7 @@ struct identity_matrix {
 //! re-initializations but to what default?
 //! @todo Could the Input be void by default? Or empty?
 template <
-    typename State = double, typename Output = State, typename Input = State,
+    typename State = double, typename Output = State, typename Input = void,
     typename Transpose = std::identity, typename Symmetrize = std::identity,
     typename Divide = std::divides<void>, typename Identity = identity_matrix,
     typename UpdateTypes = internal::empty_pack_t,
@@ -185,6 +188,8 @@ class kalman
   using output = typename implementation::output;
 
   //! @brief Type of the control vector U.
+  //!
+  //! @todo Conditionally remove this member type when no input is present.
   using input = typename implementation::input;
 
   //! @brief Type of the estimated correlated variance matrix P.
@@ -211,6 +216,8 @@ class kalman
   //! @brief Type of the control transition matrix G.
   //!
   //! @details Also known as B.
+  //!
+  //! @todo Conditionally remove this member type when no input is present.
   using input_control = typename implementation::input_control;
 
   //! @brief Type of the gain matrix K.
@@ -370,12 +377,14 @@ class kalman
 
   //! @brief Returns the last control vector U.
   //!
+  //! @details Not present when the filter has no input.
+  //!
   //! @return The last control vector U.
   //!
   //! @complexity Constant.
   [[nodiscard("The returned control vector U is unexpectedly "
               "discarded.")]] inline constexpr auto
-  u() const -> input
+  u() const -> input requires(!std::is_void_v<Input>)
   {
     return filter.u;
   }
@@ -860,7 +869,7 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned control transition matrix G is unexpectedly "
               "discarded.")]] inline constexpr auto
-  g() const -> input_control
+  g() const -> input_control requires(!std::is_void_v<Input>)
   {
     return filter.g;
   }
@@ -870,7 +879,8 @@ class kalman
   //! @param value The copied control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void g(const input_control &value)
+  inline constexpr void
+  g(const input_control &value) requires(!std::is_void_v<Input>)
   {
     filter.g = value;
   }
@@ -880,7 +890,8 @@ class kalman
   //! @param value The moved control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void g(input_control &&value)
+  inline constexpr void
+  g(input_control &&value) requires(!std::is_void_v<Input>)
   {
     filter.g = std::move(value);
   }
@@ -894,6 +905,7 @@ class kalman
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values) requires(
+      !std::is_void_v<Input> &&
       !std::is_assignable_v<
           typename implementation::transition_control_function,
           std::decay_t<decltype(value)>>)
@@ -910,6 +922,7 @@ class kalman
   //!
   //! @complexity Constant.
   inline constexpr void g(auto &&value, auto &&...values) requires(
+      !std::is_void_v<Input> &&
       !std::is_assignable_v<
           typename implementation::transition_control_function,
           std::decay_t<decltype(value)>>)
@@ -929,6 +942,7 @@ class kalman
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &callable) requires(
+      !std::is_void_v<Input> &&
       std::is_assignable_v<typename implementation::transition_control_function,
                            std::decay_t<decltype(callable)>>)
   {
@@ -945,6 +959,7 @@ class kalman
   //!
   //! @complexity Constant.
   inline constexpr void g(auto &&callable) requires(
+      !std::is_void_v<Input> &&
       std::is_assignable_v<typename implementation::transition_control_function,
                            std::decay_t<decltype(callable)>>)
   {

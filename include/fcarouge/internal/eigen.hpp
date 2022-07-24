@@ -257,8 +257,9 @@ template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
 using kalman = fcarouge::kalman<
     std::conditional_t<State == 1, Type, Eigen::Vector<Type, State>>,
     std::conditional_t<Output == 1, Type, Eigen::Vector<Type, Output>>,
-    std::conditional_t<Input == 0 || Input == 1, Type,
-                       Eigen::Vector<Type, Input>>,
+    std::conditional_t<
+        Input == 0, void,
+        std::conditional_t<Input == 1, Type, Eigen::Vector<Type, Input>>>,
     transpose, symmetrize, divide, identity_matrix, UpdateTypes,
     PredictionTypes>;
 

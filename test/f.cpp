@@ -77,28 +77,24 @@ namespace
   }
 
   {
-    const auto f{ [](const kalman::state &x,
-                     const kalman::input &u) -> kalman::state_transition {
+    const auto f{ [](const kalman::state &x) -> kalman::state_transition {
       static_cast<void>(x);
-      static_cast<void>(u);
       return 6.;
     } };
     k.f(f);
     assert(k.f() == 5);
-    k.predict(0.);
+    k.predict();
     assert(k.f() == 6);
   }
 
   {
-    const auto f{ [](const kalman::state &x,
-                     const kalman::input &u) -> kalman::state_transition {
+    const auto f{ [](const kalman::state &x) -> kalman::state_transition {
       static_cast<void>(x);
-      static_cast<void>(u);
       return 7.;
     } };
     k.f(std::move(f));
     assert(k.f() == 6);
-    k.predict(0.);
+    k.predict();
     assert(k.f() == 7);
   }
 
