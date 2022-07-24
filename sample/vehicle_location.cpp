@@ -27,7 +27,7 @@ namespace
 //! @example vehicle_location.cpp
 [[maybe_unused]] auto vehicle_location{ [] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
-  using kalman = eigen::kalman<double, 6, 2, 0>;
+  using kalman = eigen::kalman<double, 6, 2>;
   kalman k;
 
   // Initialization
