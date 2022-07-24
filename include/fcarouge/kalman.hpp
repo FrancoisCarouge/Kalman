@@ -83,7 +83,6 @@ struct identity_matrix {
 //! the measurement (Z, R), the measurement function H, and if the system has
 //! control inputs (U, B). Designing a filter is as much art as science.
 //!
-//! @tparam Type The type template parameter of the value type of the filter.
 //! @tparam State The type template parameter of the state vector X. State
 //! variables can be observed (measured), or hidden variables (inferred). This
 //! is the the mean of the multivariate Gaussian.
@@ -151,10 +150,9 @@ struct identity_matrix {
 //! re-initializations but to what default?
 //! @todo Could the Input be void by default? Or empty?
 template <
-    typename Type = double, typename State = Type, typename Output = State,
-    typename Input = State, typename Transpose = std::identity,
-    typename Symmetrize = std::identity, typename Divide = std::divides<void>,
-    typename Identity = identity_matrix,
+    typename State = double, typename Output = State, typename Input = State,
+    typename Transpose = std::identity, typename Symmetrize = std::identity,
+    typename Divide = std::divides<void>, typename Identity = identity_matrix,
     typename UpdateTypes = internal::empty_pack_t,
     typename PredictionTypes = internal::empty_pack_t>
 class kalman
@@ -177,9 +175,6 @@ class kalman
   public:
   //! @name Public Member Types
   //! @{
-
-  //! @brief The type of the filtered data elements.
-  using value_type = Type;
 
   //! @brief Type of the state estimate vector X.
   using state = typename implementation::state;
