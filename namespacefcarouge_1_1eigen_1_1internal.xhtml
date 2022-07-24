@@ -108,13 +108,13 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ace09ea66f58e0665e148ac0be7d54c2c"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 1, typename UpdateTypes  = fcarouge::internal::empty_pack_t, typename PredictionTypes  = fcarouge::internal::empty_pack_t&gt; </td></tr>
-<tr class="memitem:ace09ea66f58e0665e148ac0be7d54c2c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==0||Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateTypes, PredictionTypes &gt;</td></tr>
-<tr class="separator:ace09ea66f58e0665e148ac0be7d54c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3f78a5abfd36f0bcecb8830569436c6"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 1, typename UpdateTypes  = fcarouge::internal::empty_pack_t, typename PredictionTypes  = fcarouge::internal::empty_pack_t&gt; </td></tr>
+<tr class="memitem:ac3f78a5abfd36f0bcecb8830569436c6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ac3f78a5abfd36f0bcecb8830569436c6">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; std::conditional_t&lt; State==1, Type, Eigen::Vector&lt; Type, State &gt; &gt;, std::conditional_t&lt; Output==1, Type, Eigen::Vector&lt; Type, Output &gt; &gt;, std::conditional_t&lt; Input==0||Input==1, Type, Eigen::Vector&lt; Type, Input &gt; &gt;, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateTypes, PredictionTypes &gt;</td></tr>
+<tr class="separator:ac3f78a5abfd36f0bcecb8830569436c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ace09ea66f58e0665e148ac0be7d54c2c" name="ace09ea66f58e0665e148ac0be7d54c2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace09ea66f58e0665e148ac0be7d54c2c">&#9670;&nbsp;</a></span>kalman</h2>
+<a id="ac3f78a5abfd36f0bcecb8830569436c6" name="ac3f78a5abfd36f0bcecb8830569436c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3f78a5abfd36f0bcecb8830569436c6">&#9670;&nbsp;</a></span>kalman</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -122,11 +122,11 @@ Typedefs</h2></td></tr>
 template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output = 1, std::size_t Input = 1, typename UpdateTypes  = fcarouge::internal::empty_pack_t, typename PredictionTypes  = fcarouge::internal::empty_pack_t&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ace09ea66f58e0665e148ac0be7d54c2c">fcarouge::eigen::internal::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Type, std::conditional_t&lt;State == 1, Type, Eigen::Vector&lt;Type, State&gt; &gt;, std::conditional_t&lt;Output == 1, Type, Eigen::Vector&lt;Type, Output&gt; &gt;, std::conditional_t&lt;Input == 0 || Input == 1, Type, Eigen::Vector&lt;Type, Input&gt; &gt;, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateTypes, PredictionTypes&gt;</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ac3f78a5abfd36f0bcecb8830569436c6">fcarouge::eigen::internal::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; std::conditional_t&lt;State == 1, Type, Eigen::Vector&lt;Type, State&gt; &gt;, std::conditional_t&lt;Output == 1, Type, Eigen::Vector&lt;Type, Output&gt; &gt;, std::conditional_t&lt;Input == 0 || Input == 1, Type, Eigen::Vector&lt;Type, Input&gt; &gt;, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateTypes, PredictionTypes&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo:</a></b></dt><dd>Improve support and optimize for no input: neither type nor void but an equivalent empty type? Void may be more intuitive, practical for the user although less theoretically correct? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000001">Todo:</a></b></dt><dd>Improve support and optimize for no input: neither type nor void but an equivalent empty type? Void may be more intuitive, practical for the user although less theoretically correct? </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ardupilot_soaring_8cpp-example.xhtml#a1">ardupilot_soaring.cpp</a>, <a class="el" href="building_height_8cpp-example.xhtml#a1">building_height.cpp</a>, <a class="el" href="dog_position_8cpp-example.xhtml#a1">dog_position.cpp</a>, <a class="el" href="liquid_temperature_8cpp-example.xhtml#a1">liquid_temperature.cpp</a>, <a class="el" href="rocket_altitude_8cpp-example.xhtml#a1">rocket_altitude.cpp</a>, and <a class="el" href="vehicle_location_8cpp-example.xhtml#a1">vehicle_location.cpp</a>.</dd>
 </dl>
 
@@ -140,7 +140,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Sat Jul 23 2022 05:39:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Jul 24 2022 01:26:11 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
