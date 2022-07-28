@@ -109,6 +109,7 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </li>
 </ul>
 </li>
+<li><a href="#format">Format</a></li>
 <li><a href="#resources">Resources</a></li>
 <li><a href="#license">License</a></li>
 </ul>
@@ -365,6 +366,13 @@ Modifiers</h3>
 <td class="markdownTableBodyNone"><code>predict</code>   </td><td class="markdownTableBodyNone">Produces estimates of the state variables and uncertainties.   </td></tr>
 </table>
 <h1><a class="anchor" id="autotoc_md28"></a>
+Format</h1>
+<p >A specialization of the standard formatter is provided for the filter. Use <code>std::format</code> to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a> k;</div>
+<div class="line"> </div>
+<div class="line">std::string message{ std::format(<span class="stringliteral">&quot;{}&quot;</span>, k) };</div>
+<div class="line"><span class="comment">// {f:1,h:1,k:1,p:1,q:0,r:0,s:1,x:0,y:0,z:0}</span></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md29"></a>
 Resources</h1>
 <p >Awesome resources to learn about Kalman filters:</p>
 <ul>
@@ -373,7 +381,7 @@ Resources</h1>
 <li><a href="https://www.anuncommonlab.com/articles/how-kalman-filters-work">How Kalman Filters Work</a> by Tucker McClure of An Uncommon Lab.</li>
 <li><a href="https://en.wikipedia.org/wiki/Kalman_filter">Wikipedia Kalman filter</a> by Wikipedia, the free encyclopedia.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 License</h1>
 <p ><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
 <p >Kalman for C++ is public domain:</p>
@@ -388,7 +396,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jul 24 2022 06:10:28 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Jul 28 2022 04:29:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

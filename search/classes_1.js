@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kalman_0',['kalman',['../classfcarouge_1_1kalman.xhtml',1,'fcarouge']]]
+  ['identity_5fmatrix_0',['identity_matrix',['../structfcarouge_1_1identity__matrix.xhtml',1,'fcarouge']]]
 ];
