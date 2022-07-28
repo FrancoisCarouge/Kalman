@@ -131,7 +131,6 @@ struct identity_matrix {
 //! @todo Which constructors to support?
 //! @todo Is the Kalman filter a recursive state estimation, confirm
 //! terminology?
-//! @todo Prepare support for std::format?
 //! @todo Prepare support for larger dataset recording for graphing, metrics of
 //! large test data to facilitate tuning.
 //! @todo Support filter generator? Integration? Reflection in C++...
@@ -152,6 +151,7 @@ struct identity_matrix {
 //! @todo A clear or reset member equivalent may be useful for real-time
 //! re-initializations but to what default?
 //! @todo Could the Input be void by default? Or empty?
+//! @todo Expand std::format support with standard arguments and Eigen3 types.
 template <
     typename State = double, typename Output = State, typename Input = void,
     typename Transpose = std::identity, typename Symmetrize = std::identity,

@@ -17,16 +17,27 @@ jobs:
     - name: Install
       run: |
         sudo apt install gcc-11 g++-11 lcov
-        ( cd /tmp ; mkdir eigen ;
+        ( cd /tmp ;
           git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
           ( cd eigen ;
-            mkdir build ) ;
-          ( cd eigen/build ; 
-            cmake .. ; 
-            cmake --build . ;
-            sudo make install ) )
+            mkdir build ;
+            ( cd build ; 
+              cmake .. ; 
+              cmake --build . ;
+              sudo make install ; ) ) )
+        ( cd /tmp ;
+          git clone --depth 1 https://github.com/fmtlib/fmt.git ;
+          ( cd fmt ;
+            mkdir build ;
+            ( cd build ;
+              cmake .. ;
+              sudo make install ; ) ) )
     - name: Build
-      run: gcc-11 sample/*.cpp source/*.cpp test/*.cpp -Iinclude -I/usr/local/include/eigen3 -O0 -g -std=c++23 -fmodules-ts --coverage -fno-inline -lstdc++ -lm
+      run: |
+        gcc-11 \
+          sample/*.cpp source/*.cpp test/*.cpp \
+          -Iinclude -I/usr/local/include/eigen3 -Isupport/include/fcarouge \
+          -O0 -g -std=c++23 -fmodules-ts --coverage -fno-inline -lstdc++ -lm -lfmt
     - name: "Coverage: Base"
       run: |
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-11 --capture --initial --directory . --output-file base.info

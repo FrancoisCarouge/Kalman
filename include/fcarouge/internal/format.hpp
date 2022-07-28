@@ -39,4 +39,45 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_FORMAT_HPP
 #define FCAROUGE_INTERNAL_FORMAT_HPP
 
+#include <format>
+
+namespace fcarouge
+{
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename UpdateTypes, typename PredictionTypes>
+class kalman;
+} // namespace fcarouge
+
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename UpdateTypes, typename PredictionTypes, typename Char>
+struct std::formatter<
+    fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+                     Identity, UpdateTypes, PredictionTypes>,
+    Char> {
+  //! @todo Support parsing arguments.
+  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context)
+  {
+    return parse_context.begin();
+  }
+
+  // @todo How to support different nested types?
+  template <typename OutputIt>
+  auto format(const fcarouge::kalman<State, Output, Input, Transpose,
+                                     Symmetrize, Divide, Identity, UpdateTypes,
+                                     PredictionTypes> &filter,
+              std::basic_format_context<OutputIt, Char> &format_context)
+      -> OutputIt
+  {
+    return format_to(
+        format_context.out(),
+        "{{f:{},g:{},h:{},k:{},p:{},q:{},r:{},s:{},u:{},x:{},y:{},z:{}}}",
+        filter.f(), filter.g(), filter.h(), filter.k(), filter.p(), filter.q(),
+        filter.r(), filter.s(), filter.u(), filter.x(), filter.y(), filter.z());
+  }
+
+  //! @}
+};
+
 #endif // FCAROUGE_INTERNAL_FORMAT_HPP

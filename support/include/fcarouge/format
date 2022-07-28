@@ -1,0 +1,119 @@
+/*_  __          _      __  __          _   _
+ | |/ /    /\   | |    |  \/  |   /\   | \ | |
+ | ' /    /  \  | |    | \  / |  /  \  |  \| |
+ |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
+ | . \  / ____ \| |____| |  | |/ ____ \| |\  |
+ |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
+
+Kalman Filter for C++
+Version 0.1.0
+https://github.com/FrancoisCarouge/Kalman
+
+SPDX-License-Identifier: Unlicense
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org> */
+
+#ifndef FCAROUGE_FORMAT
+#define FCAROUGE_FORMAT
+
+// Standard formatter compiler support. Some mainstream compilers do not support
+// `std::format` as of July 2022. The support is brought in through the `fmt`
+// library.
+
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <fmt/ranges.h>
+#include <fmt/chrono.h>
+#include <fmt/compile.h>
+#include <fmt/color.h>
+#include <fmt/os.h>
+#include <fmt/ostream.h>
+#include <fmt/printf.h>
+#include <fmt/xchar.h>
+
+namespace fcarouge
+{
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename UpdateArguments, typename PredictionArguments>
+class kalman;
+} // namespace fcarouge
+
+namespace std
+{
+template <typename Type, typename Char>
+struct formatter : public fmt::formatter<Type, Char> {
+};
+
+template <typename FormatIterator, typename Char>
+using basic_format_context = fmt::basic_format_context<FormatIterator, Char>;
+
+template <typename Char>
+using basic_format_parse_context = fmt::basic_format_parse_context<Char>;
+
+template <class... Types>
+[[nodiscard]] std::string format(std::string_view format, Types &...arguments)
+{
+  return fmt::vformat(format, fmt::make_format_args(arguments...));
+}
+
+template <class... Types>
+[[nodiscard]] std::wstring format(std::wstring_view format, Types &...arguments)
+{
+  return fmt::vformat(format, fmt::make_wformat_args(arguments...));
+}
+
+template <class... Types>
+[[nodiscard]] std::string format(const std::locale &locale,
+                                 std::string_view format, Types &&...arguments)
+{
+  return fmt::vformat(locale, format, fmt::make_format_args(arguments...));
+}
+
+template <class... Types>
+[[nodiscard]] std::wstring format(const std::locale &locale,
+                                  std::wstring_view format,
+                                  Types &&...arguments)
+{
+  return fmt::vformat(locale, format, fmt::make_wformat_args(arguments...));
+}
+} // namespace std
+
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename UpdateArguments, typename PredictionArguments, typename Char>
+struct fmt::formatter<
+    fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+                     Identity, UpdateArguments, PredictionArguments>,
+    Char>
+        : public std::formatter<
+              fcarouge::kalman<State, Output, Input, Transpose, Symmetrize,
+                               Divide, Identity, UpdateArguments,
+                               PredictionArguments>,
+              Char> {
+};
+
+#endif // FCAROUGE_FORMAT

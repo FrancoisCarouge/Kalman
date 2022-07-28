@@ -18,6 +18,7 @@ The library supports simple and extended filters. The update equation uses the J
   - [Member Functions](#member-functions)
     - [Characteristics](#characteristics)
     - [Modifiers](#modifiers)
+- [Format](#format)
 - [Resources](#resources)
 - [License](#license)
 
@@ -259,6 +260,17 @@ class kalman
 | `operator()` | Runs a step of the filter. Predicts and updates the estimates per prediction arguments, control input, and measurement output. |
 | `update` | Updates the estimates with the outcome of a measurement. |
 | `predict` | Produces estimates of the state variables and uncertainties. |
+
+# Format
+
+A specialization of the standard formatter is provided for the filter. Use `std::format` to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.
+
+```cpp
+fcarouge::kalman k;
+
+std::string message{ std::format("{}", k) };
+// {f:1,h:1,k:1,p:1,q:0,r:0,s:1,x:0,y:0,z:0}
+```
 
 # Resources
 
