@@ -54,11 +54,14 @@ For more information, please refer to <https://unlicense.org> */
 #include <fmt/printf.h>
 #include <fmt/xchar.h>
 
+#include <cstddef>
+
 namespace fcarouge
 {
-template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename UpdateArguments, typename PredictionArguments>
+template <typename Type, std::size_t State, std::size_t Output,
+          std::size_t Input, typename Transpose, typename Symmetrize,
+          typename Divide, typename Identity, typename UpdateTypes,
+          typename PredictionTypes>
 class kalman;
 } // namespace fcarouge
 
@@ -102,17 +105,18 @@ template <class... Types>
 }
 } // namespace std
 
-template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename UpdateArguments, typename PredictionArguments, typename Char>
+template <typename Type, std::size_t State, std::size_t Output,
+          std::size_t Input, typename Transpose, typename Symmetrize,
+          typename Divide, typename Identity, typename UpdateTypes,
+          typename PredictionTypes, typename Char>
 struct fmt::formatter<
-    fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
-                     Identity, UpdateArguments, PredictionArguments>,
+    fcarouge::kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
+                     Identity, UpdateTypes, PredictionTypes>,
     Char>
         : public std::formatter<
-              fcarouge::kalman<State, Output, Input, Transpose, Symmetrize,
-                               Divide, Identity, UpdateArguments,
-                               PredictionArguments>,
+              fcarouge::kalman<Type, State, Output, Input, Transpose,
+                               Symmetrize, Divide, Identity, UpdateTypes,
+                               PredictionTypes>,
               Char> {
 };
 

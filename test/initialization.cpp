@@ -67,7 +67,7 @@ namespace
 //! @test Verifies default values are initialized for single-dimension filters
 //! with input control.
 [[maybe_unused]] auto defaults111{ [] {
-  using kalman = fcarouge::kalman<double, double, double>;
+  using kalman = fcarouge::kalman<double, 1, 1, 1>;
   kalman k;
 
   assert(k.f() == 1);

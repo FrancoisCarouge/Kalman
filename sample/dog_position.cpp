@@ -32,7 +32,7 @@ namespace
 //!
 //! @example dog_position.cpp
 [[maybe_unused]] auto dog_position{ [] {
-  using kalman = fcarouge::kalman<double, double, double>;
+  using kalman = fcarouge::kalman<double, 1, 1, 1>;
   kalman k;
 
   // Initialization

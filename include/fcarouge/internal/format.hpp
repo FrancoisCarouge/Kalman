@@ -43,17 +43,19 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge
 {
-template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename Type, std::size_t State, std::size_t Output,
+          std::size_t Input, typename Transpose, typename Symmetrize,
+          typename Divide, typename Identity, typename UpdateTypes,
+          typename PredictionTypes>
 class kalman;
 } // namespace fcarouge
 
-template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename UpdateTypes, typename PredictionTypes, typename Char>
+template <typename Type, std::size_t State, std::size_t Output,
+          std::size_t Input, typename Transpose, typename Symmetrize,
+          typename Divide, typename Identity, typename UpdateTypes,
+          typename PredictionTypes, typename Char>
 struct std::formatter<
-    fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+    fcarouge::kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
                      Identity, UpdateTypes, PredictionTypes>,
     Char> {
   //! @todo Support parsing arguments.
@@ -64,7 +66,7 @@ struct std::formatter<
 
   // @todo How to support different nested types?
   template <typename OutputIt>
-  auto format(const fcarouge::kalman<State, Output, Input, Transpose,
+  auto format(const fcarouge::kalman<Type, State, Output, Input, Transpose,
                                      Symmetrize, Divide, Identity, UpdateTypes,
                                      PredictionTypes> &filter,
               std::basic_format_context<OutputIt, Char> &format_context)

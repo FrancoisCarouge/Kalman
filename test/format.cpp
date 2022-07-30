@@ -51,7 +51,7 @@ namespace
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control.
 [[maybe_unused]] auto format111{ [] {
-  using kalman = fcarouge::kalman<double, double, double>;
+  using kalman = fcarouge::kalman<double, 1, 1, 1>;
   kalman k;
 
   assert(std::format("{}", k) ==
