@@ -18,6 +18,7 @@ The library supports simple and extended filters. The update equation uses the J
     - [Modifiers](#modifiers)
 - [Format](#format)
 - [Installation](#installation)
+- [Performance](#performance)
 - [Motivation](#motivation)
 - [Resources](#resources)
 - [Third Party Acknowledgement](#third-party-acknowledgement)
@@ -267,7 +268,13 @@ std::string message{ std::format("{}", k) };
 
 # Installation
 
-See installaton instructions in [INSTALL.txt](INSTALL.txt).
+See installation instructions in [INSTALL.txt](INSTALL.txt).
+
+# Performance
+
+The [benchmarks](benchmark) share some performance information.
+
+![Float](benchmark/float.svg)
 
 # Motivation
 

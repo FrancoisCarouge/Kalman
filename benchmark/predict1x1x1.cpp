@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/benchmark/benchmark.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <benchmark/benchmark.h>
 
@@ -47,14 +48,17 @@ namespace fcarouge::benchmark
 {
 namespace
 {
-//! @benchmark Measure performance.
-void benchmark_simple(::benchmark::State &state)
+//! @benchmark Measure predict, empty benchmark performance.
+void predict1x1x1(::benchmark::State &state)
 {
   for (auto _ : state) {
-    const auto start{ clock::now() };
-    ::benchmark::ClobberMemory();
+    using kalman = fcarouge::kalman<float, 1, 1, 1>;
+    kalman k;
 
-    // Measure.
+    ::benchmark::ClobberMemory();
+    const auto start{ clock::now() };
+
+    k.predict();
 
     ::benchmark::ClobberMemory();
     const auto end{ clock::now() };
@@ -65,8 +69,8 @@ void benchmark_simple(::benchmark::State &state)
   }
 }
 
-BENCHMARK(benchmark_simple)
-    ->Name("Benchmark Simple")
+BENCHMARK(predict1x1x1)
+    ->Name("predict1x1x1")
     ->Unit(::benchmark::kNanosecond)
     ->ComputeStatistics("min",
                         [](const auto &results) {
@@ -77,7 +81,7 @@ BENCHMARK(benchmark_simple)
                                return std::ranges::max(results);
                              }) -> UseManualTime()
             -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
-                -> Repetitions(10);
+                -> Repetitions(100);
 
 } // namespace
 } // namespace fcarouge::benchmark
