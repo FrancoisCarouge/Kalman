@@ -76,8 +76,6 @@ struct std::formatter<
         filter.f(), filter.g(), filter.h(), filter.k(), filter.p(), filter.q(),
         filter.r(), filter.s(), filter.u(), filter.x(), filter.y(), filter.z());
   }
-
-  //! @}
 };
 
 #endif // FCAROUGE_INTERNAL_FORMAT_HPP

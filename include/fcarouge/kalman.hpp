@@ -83,10 +83,11 @@ struct identity_matrix {
 //! the measurement (Z, R), the measurement function H, and if the system has
 //! control inputs (U, B). Designing a filter is as much art as science.
 //!
-//! @tparam State The type template parameter of the state vector x. State
-//! variables can be observed (measured), or hidden variables (inferred). This
-//! is the the mean of the multivariate Gaussian.
-//! @tparam Output The type template parameter of the measurement vector z.
+//! @tparam State The type template parameter of the state column vector x.
+//! State variables can be observed (measured), or hidden variables (inferred).
+//! This is the the mean of the multivariate Gaussian.
+//! @tparam Output The type template parameter of the measurement column vector
+//! z.
 //! @tparam Input The type template parameter of the control u. A `void` input
 //! type can be used for systems with no input control to disable all of the
 //! input control features, the control transition matrix G support, and the
@@ -179,15 +180,15 @@ class kalman
   //! @name Public Member Types
   //! @{
 
-  //! @brief Type of the state estimate vector X.
+  //! @brief Type of the state estimate column vector X.
   using state = typename implementation::state;
 
-  //! @brief Type of the observation vector Z.
+  //! @brief Type of the observation column vector Z.
   //!
   //! @details Also known as Y or O.
   using output = typename implementation::output;
 
-  //! @brief Type of the control vector U.
+  //! @brief Type of the control column vector U.
   //!
   //! @todo Conditionally remove this member type when no input is present.
   using input = typename implementation::input;
@@ -223,7 +224,7 @@ class kalman
   //! @brief Type of the gain matrix K.
   using gain = typename implementation::gain;
 
-  //! @brief Type of the innovation vector Y.
+  //! @brief Type of the innovation column vector Y.
   using innovation = typename implementation::innovation;
 
   //! @brief Type of the innovation uncertainty matrix S.
@@ -304,21 +305,21 @@ class kalman
   //! @name Public Characteristics Member Functions
   //! @{
 
-  //! @brief Returns the state estimate vector X.
+  //! @brief Returns the state estimate column vector X.
   //!
-  //! @return The state estimate vector X.
+  //! @return The state estimate column vector X.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned state estimate vector X is unexpectedly "
+  [[nodiscard("The returned state estimate column vector X is unexpectedly "
               "discarded.")]] inline constexpr auto
   x() const -> state
   {
     return filter.x;
   }
 
-  //! @brief Sets the state estimate vector X.
+  //! @brief Sets the state estimate column vector X.
   //!
-  //! @param value The copied state estimate vector X.
+  //! @param value The copied state estimate column vector X.
   //!
   //! @complexity Constant.
   inline constexpr void x(const state &value)
@@ -326,9 +327,9 @@ class kalman
     filter.x = value;
   }
 
-  //! @brief Sets the state estimate vector X.
+  //! @brief Sets the state estimate column vector X.
   //!
-  //! @param value The moved state estimate vector X.
+  //! @param value The moved state estimate column vector X.
   //!
   //! @complexity Constant.
   inline constexpr void x(state &&value)
@@ -336,12 +337,12 @@ class kalman
     filter.x = std::move(value);
   }
 
-  //! @brief Sets the state estimate vector X.
+  //! @brief Sets the state estimate column vector X.
   //!
   //! @param value The first copied initializer used to set the state estimate
-  //! vector X.
+  //! column vector X.
   //! @param values The second and other copied initializers to set the state
-  //! estimate vector X.
+  //! estimate column vector X.
   //!
   //! @complexity Constant.
   inline constexpr void x(const auto &value, const auto &...values)
@@ -349,12 +350,12 @@ class kalman
     filter.x = std::move(state{ value, values... });
   }
 
-  //! @brief Sets the state estimate vector X.
+  //! @brief Sets the state estimate column vector X.
   //!
   //! @param value The first moved initializer used to set the state estimate
-  //! vector X.
+  //! column vector X.
   //! @param values The second and other moved initializers to set the state
-  //! estimate vector X.
+  //! estimate column vector X.
   //!
   //! @complexity Constant.
   inline constexpr void x(auto &&value, auto &&...values)
@@ -363,26 +364,26 @@ class kalman
                                 std::forward<decltype(values)>(values)... });
   }
 
-  //! @brief Returns the last observation vector Z.
+  //! @brief Returns the last observation column vector Z.
   //!
-  //! @return The last observation vector Z.
+  //! @return The last observation column vector Z.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned observation vector Z is unexpectedly "
+  [[nodiscard("The returned observation column vector Z is unexpectedly "
               "discarded.")]] inline constexpr auto
   z() const -> output
   {
     return filter.z;
   }
 
-  //! @brief Returns the last control vector U.
+  //! @brief Returns the last control column vector U.
   //!
   //! @details Not present when the filter has no input.
   //!
-  //! @return The last control vector U.
+  //! @return The last control column vector U.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned control vector U is unexpectedly "
+  [[nodiscard("The returned control column vector U is unexpectedly "
               "discarded.")]] inline constexpr auto
   u() const -> input requires(!std::is_void_v<Input>)
   {
@@ -719,7 +720,7 @@ class kalman
   //! @details For non-linear system, or extended filter, F is the Jacobian of
   //! the state transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i
   //! contains the derivatives of the state transition function for every
-  //! element j in the state vector X.
+  //! element j in the state column vector X.
   //!
   //! @param callable The copied target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
@@ -740,7 +741,7 @@ class kalman
   //! @details For non-linear system, or extended filter, F is the Jacobian of
   //! the state transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i
   //! contains the derivatives of the state transition function for every
-  //! element j in the state vector X.
+  //! element j in the state column vector X.
   //!
   //! @param callable The moved target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
@@ -825,7 +826,7 @@ class kalman
   //! @details For non-linear system, or extended filter, H is the Jacobian of
   //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
   //! contains the derivatives of the state observation function for every
-  //! element j in the state vector X.
+  //! element j in the state column vector X.
   //!
   //! @param callable The copied target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
@@ -846,7 +847,7 @@ class kalman
   //! @details For non-linear system, or extended filter, H is the Jacobian of
   //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
   //! contains the derivatives of the state observation function for every
-  //! element j in the state vector X.
+  //! element j in the state column vector X.
   //!
   //! @param callable The moved target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
@@ -978,12 +979,12 @@ class kalman
     return filter.k;
   }
 
-  //! @brief Returns the innovation vector Y.
+  //! @brief Returns the innovation column vector Y.
   //!
-  //! @return The innovation vector Y.
+  //! @return The innovation column vector Y.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned innovation vector Y is unexpectedly "
+  [[nodiscard("The returned innovation column vector Y is unexpectedly "
               "discarded.")]] inline constexpr auto
   y() const -> innovation
   {
@@ -1108,8 +1109,8 @@ class kalman
   //! &...args) { k.template operator()<input1_t, input2_t,
   //! ...>(args...); } };` then called as `kf(...);`.
   //!
-  //! @todo Consider if returning the state vector X would be preferable? Or
-  //! fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Consider if returning the state column vector X would be preferable?
+  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Understand why the implementation cannot be moved out of the class.
   //! @todo What should be the order of the parameters? Update first?
   template <typename... InputTypes>
@@ -1133,8 +1134,8 @@ class kalman
   //!
   //! @todo Consider whether this method needs to exist or if the operator() is
   //! sufficient for all clients?
-  //! @todo Consider if returning the state vector X would be preferable? Or
-  //! fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Consider if returning the state column vector X would be preferable?
+  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   inline constexpr void update(const auto &...arguments)
   {
     filter.update(arguments...);
@@ -1154,8 +1155,8 @@ class kalman
   //!
   //! @todo Consider whether this method needs to exist or if the operator() is
   //! sufficient for all clients?
-  //! @todo Consider if returning the state vector X would be preferable? Or
-  //! fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Consider if returning the state column vector X would be preferable?
+  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   inline constexpr void predict(const auto &...arguments)
   {
     filter.predict(arguments...);
