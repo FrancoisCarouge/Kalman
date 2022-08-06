@@ -199,8 +199,8 @@ class kalman
 
 | Template Parameter | Definition |
 | --- | --- |
-| `State` | The type template parameter of the state vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. |
-| `Output` | The type template parameter of the measurement vector z. |
+| `State` | The type template parameter of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. |
+| `Output` | The type template parameter of the measurement column vector z. |
 | `Input` | The type template parameter of the control u. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. |
 | `Transpose` | The customization point object template parameter of the matrix transpose functor. |
 | `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. |
@@ -216,15 +216,15 @@ class kalman
 | `estimate_uncertainty` | Type of the estimated covariance matrix P, also known as Σ. | x by z |
 | `gain` | Type of the gain matrix K. | x by z |
 | `innovation_uncertainty` | Type of the innovation uncertainty matrix S. | z by z |
-| `innovation` | Type of the innovation vector Y. | z by 1 |
+| `innovation` | Type of the innovation column vector Y. | z by 1 |
 | `input_control` | Type of the control transition matrix G, also known as B. | x by u |
-| `input` | Type of the control vector U. | u by 1 |
+| `input` | Type of the control column vector U. | u by 1 |
 | `output_model` | Type of the observation transition matrix H, also known as C. | z by x |
 | `output_uncertainty` | Type of the observation, measurement noise covariance matrix R. | z by z |
-| `output` | Type of the observation vector Z, also known as Y or O. | z by 1 |
+| `output` | Type of the observation column vector Z, also known as Y or O. | z by 1 |
 | `process_uncertainty` | Type of the process noise covariance matrix Q. | x by x |
 | `state_transition` | Type of the state transition matrix F, also known as Φ or A. | x by x |
-| `state` | Type of the state estimate vector X. | x by 1 |
+| `state` | Type of the state estimate column vector X. | x by 1 |
 
 ## Member Functions
 
@@ -246,11 +246,11 @@ class kalman
 | `q` | Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix. |
 | `r` | Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix. |
 | `s` | Manages the innovation uncertainty matrix S. Gets the value last computed during the update. The default value is the identity matrix. |
-| `u` | Manages the control vector U. Gets the value last used in prediction. |
-| `x` | Manages the state estimate vector X. Gets the value. Initializes and sets the value. The default value is the null vector. |
-| `y` | Manages the innovation vector Y. Gets the value last computed during the update. The default value is the null vector. |
-| `z` | Manages the observation vector Z. Gets the value last used during the update. The default value is the null vector. |
-| `transition` | Manages the state transition function object f. Configures the callable object to compute the transition state value. The default value is the equivalent to `f(x) = F * X`. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while F is the Jacobian of the transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the derivatives of the state transition function for every element j in the state vector X. |
+| `u` | Manages the control column vector U. Gets the value last used in prediction. |
+| `x` | Manages the state estimate column vector X. Gets the value. Initializes and sets the value. The default value is the null column vector. |
+| `y` | Manages the innovation column vector Y. Gets the value last computed during the update. The default value is the null column vector. |
+| `z` | Manages the observation column vector Z. Gets the value last used during the update. The default value is the null column vector. |
+| `transition` | Manages the state transition function object f. Configures the callable object to compute the transition state value. The default value is the equivalent to `f(x) = F * X`. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while F is the Jacobian of the transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the derivatives of the state transition function for every element j in the state column vector X. |
 | `observation` | Manages the state observation function object h. Configures the callable object to compute the observation state value. The default value is the equivalent to `h(x) = H * X`. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while H is the Jacobian of the observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i contains the derivatives of the state observation function for every element j in the state vector X. |
 
 ### Modifiers
