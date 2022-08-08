@@ -43,7 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Kalman operation for Eigen 3 types.
 
 #include "internal/eigen.hpp"
-#include "internal/kalman.hpp"
 
 #include <cstddef>
 
@@ -61,35 +60,20 @@ using divide = internal::divide;
 //! @brief Function object for providing an Eigen identity matrix.
 using identity_matrix = internal::identity_matrix;
 
+using empty_pack = internal::empty_pack;
+
 //! @brief Eigen-based Kalman filter.
 //!
 //! @details Implemented with the Eigen linear algebra library matrices with
 //! sizes fixed at compile-time.
 //!
-//! @tparam Type The type template parameter of the matrices data.
-//! @tparam State The non-type template parameter size of the state vector X.
-//! @tparam Output The non-type template parameter size of the measurement
-//! vector Z.
-//! @tparam Input The non-type template parameter size of the control U.
-//! @tparam UpdateTypes The additional update function parameter types passed in
-//! through a tuple-like parameter type, composing zero or more types.
-//! Parameters such as delta times, variances, or linearized values. The
-//! parameters are propagated to the function objects used to compute the state
-//! observation H and the observation noise R matrices. The parameters are also
-//! propagated to the state observation function object h.
-//! @tparam PredictionTypes The additional prediction function parameter types
-//! passed in through a tuple-like parameter type, composing zero or more types.
-//! Parameters such as delta times, variances, or linearized values. The
-//! parameters are propagated to the function objects used to compute the
-//! process noise Q, the state transition F, and the control transition G
-//! matrices. The parameters are also propagated to the state transition
-//! function object f.
+//! @see fcarouge::kalman
 template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
-          std::size_t Input = 0,
-          typename UpdateTypes = fcarouge::internal::empty_pack_t,
-          typename PredictionTypes = fcarouge::internal::empty_pack_t>
+          std::size_t Input = 0, typename UpdateTypes = empty_pack,
+          typename PredictionTypes = empty_pack>
 using kalman =
-    internal::kalman<Type, State, Output, Input, UpdateTypes, PredictionTypes>;
+    fcarouge::kalman<Type, State, Output, Input, transpose, symmetrize, divide,
+                     identity_matrix, UpdateTypes, PredictionTypes>;
 
 } // namespace fcarouge::eigen
 

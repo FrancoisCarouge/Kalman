@@ -10,8 +10,6 @@ The library supports simple and extended filters. The update equation uses the J
   - [6x2 Constant Acceleration Dynamic Model](#6x2-constant-acceleration-dynamic-model)
   - [4x1 Non-Linear Dynamic Model](#4x1-non-linear-dynamic-model)
 - [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
-- [Motivation](#motivation)
-- [Installation](#installation)
 - [Class kalman](#class-kalman)
   - [Template Parameters](#template-parameters)
   - [Member Types](#member-types)
@@ -19,6 +17,8 @@ The library supports simple and extended filters. The update equation uses the J
     - [Characteristics](#characteristics)
     - [Modifiers](#modifiers)
 - [Format](#format)
+- [Installation](#installation)
+- [Motivation](#motivation)
 - [Resources](#resources)
 - [License](#license)
 
@@ -162,23 +162,11 @@ k(drift_x, drift_y, position_x, position_y, variometer);
 <br>
 [![Deploy Code Coverage: Coveralls](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml)
 
-
-# Motivation
-
-Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.
-
-This package explores what could be a Kalman filter implementation a la standard library. The following concerns and tradeoffs are considered:
-- Separation of the application domain.
-- Separation of the algebra implementation.
-- Generalization of the support.
-
-# Installation
-
-See installaton instructions in [INSTALL.txt](INSTALL.txt).
-
 # Class kalman
 
 Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
+
+A Bayesian filter that uses multivariate Gaussians. Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.
 
 ```cpp
 template <
@@ -199,15 +187,16 @@ class kalman
 
 | Template Parameter | Definition |
 | --- | --- |
-| `State` | The type template parameter of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. |
-| `Output` | The type template parameter of the measurement column vector z. |
-| `Input` | The type template parameter of the control u. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. |
-| `Transpose` | The customization point object template parameter of the matrix transpose functor. |
-| `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. |
-| `Divide` | The customization point object template parameter of the matrix division functor. |
-| `Identity` | The customization point object template parameter of the matrix identity functor. |
-| `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. |
-| `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. |
+| `Type` | The type template parameter of the filter data value type used for computation. Defaults to `double`. |
+| `State` | The non-type template size of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `1`. |
+| `Output` | The non-type template size of the measurement column vector z. Defaults to `1`. |
+| `Input` | The non-type template size of the control column vector u. A zero `0` input size value can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to `0`. |
+| `Transpose` | The customization point object template parameter of the matrix transpose functor. Defaults to the standard passthrough `std::identity` function object since the transposed value of an arithmetic type is itself. |
+| `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. Defaults to the standard passthrough `std::identity` function object since the symmetric value of an arithmetic type is itself. |
+| `Divide` | The customization point object template parameter of the matrix division functor. Default to the standard division `std::divides<void>` function object. |
+| `Identity` | The customization point object template parameter of the matrix identity functor. Defaults to an `identity_matrix` function object returning the arithmetic `1` value. |
+| `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack. |
+| `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. Defaults to no parameter types, the empty pack. |
 
 ## Member Types
 
@@ -271,6 +260,19 @@ fcarouge::kalman k;
 std::string message{ std::format("{}", k) };
 // {f:1,h:1,k:1,p:1,q:0,r:0,s:1,x:0,y:0,z:0}
 ```
+
+# Installation
+
+See installaton instructions in [INSTALL.txt](INSTALL.txt).
+
+# Motivation
+
+Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.
+
+This package explores what could be a Kalman filter implementation a la standard library. The following concerns and tradeoffs are considered:
+- Separation of the application domain.
+- Separation of the algebra implementation.
+- Generalization of the support.
 
 # Resources
 

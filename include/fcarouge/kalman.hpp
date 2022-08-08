@@ -46,6 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/kalman.hpp"
 
 #include <concepts>
+#include <cstddef>
 #include <functional>
 #include <type_traits>
 #include <utility>
@@ -72,6 +73,12 @@ struct identity_matrix {
   }
 };
 
+//! @brief Convenience tuple-like empty pack type.
+using empty_pack = internal::empty_pack;
+
+//! @brief Convenience tuple-like pack type.
+template <typename... Types> using pack = internal::pack<Types...>;
+
 //! @brief Kalman filter.
 //!
 //! @details A Bayesian filter that uses multivariate Gaussians.
@@ -82,37 +89,50 @@ struct identity_matrix {
 //! estimates by adding Gaussians. Design the state (X, P), the process (F, Q),
 //! the measurement (Z, R), the measurement function H, and if the system has
 //! control inputs (U, B). Designing a filter is as much art as science.
+//! Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no
+//! input) are supported through the Standard Templated Library (STL). Higher
+//! dimension filters require Eigen 3 support.
 //!
-//! @tparam State The type template parameter of the state column vector x.
-//! State variables can be observed (measured), or hidden variables (inferred).
-//! This is the the mean of the multivariate Gaussian.
-//! @tparam Output The type template parameter of the measurement column vector
-//! z.
-//! @tparam Input The type template parameter of the control u. A `void` input
-//! type can be used for systems with no input control to disable all of the
-//! input control features, the control transition matrix G support, and the
-//! other related computations from the filter.
+//! @tparam Type The type template parameter of the filter data value type used
+//! for computation. Defaults to `double`.
+//! @tparam State The non-type template size of the state column vector x. State
+//! variables can be observed (measured), or hidden variables (inferred). This
+//! is the the mean of the multivariate Gaussian. Defaults to one `1` state.
+//! @tparam Output The non-type template size of the measurement column vector
+//! z. Defaults to one `1` output.
+//! @tparam Input The non-type template size of the control column vector u. A
+//! zero `0` input size value can be used for systems with no input control to
+//! disable all of the input control features, the control transition matrix G
+//! support, and the other related computations from the filter. Defaults to
+//! no `0` input.
 //! @tparam Transpose The customization point object template parameter of the
-//! matrix transpose functor.
+//! matrix transpose functor. Defaults to the standard passthrough
+//! `std::identity` function object since the transposed value of an arithmetic
+//! type is itself.
 //! @tparam Symmetrize The customization point object template parameter of the
-//! matrix symmetrization functor.
+//! matrix symmetrization functor. Defaults to the standard passthrough
+//! `std::identity` function object since the symmetric value of an arithmetic
+//! type is itself.
 //! @tparam Divide The customization point object template parameter of the
-//! matrix division functor.
+//! matrix division functor. Default to the standard division
+//! `std::divides<void>` function object.
 //! @tparam Identity The customization point object template parameter of the
-//! matrix identity functor.
+//! matrix identity functor. Defaults to an `identity_matrix` function object
+//! returning the arithmetic `1` value.
 //! @tparam UpdateTypes The additional update function parameter types passed in
 //! through a tuple-like parameter type, composing zero or more types.
 //! Parameters such as delta times, variances, or linearized values. The
 //! parameters are propagated to the function objects used to compute the state
 //! observation H and the observation noise R matrices. The parameters are also
-//! propagated to the state observation function object h.
+//! propagated to the state observation function object h. Defaults to no
+//! parameter types, the empty pack.
 //! @tparam PredictionTypes The additional prediction function parameter types
 //! passed in through a tuple-like parameter type, composing zero or more types.
 //! Parameters such as delta times, variances, or linearized values. The
 //! parameters are propagated to the function objects used to compute the
 //! process noise Q, the state transition F, and the control transition G
 //! matrices. The parameters are also propagated to the state transition
-//! function object f.
+//! function object f. Defaults to no parameter types, the empty pack.
 //!
 //! @note This class could be usable in constant expressions if `std::function`
 //! could too. The polymorphic function wrapper was used in place of function
@@ -153,12 +173,13 @@ struct identity_matrix {
 //! re-initializations but to what default?
 //! @todo Could the Input be void by default? Or empty?
 //! @todo Expand std::format support with standard arguments and Eigen3 types.
+//! @todo Support complex number filters?
 template <
-    typename State = double, typename Output = State, typename Input = void,
-    typename Transpose = std::identity, typename Symmetrize = std::identity,
-    typename Divide = std::divides<void>, typename Identity = identity_matrix,
-    typename UpdateTypes = internal::empty_pack_t,
-    typename PredictionTypes = internal::empty_pack_t>
+    typename Type = double, std::size_t State = 1, std::size_t Output = 1,
+    std::size_t Input = 0, typename Transpose = std::identity,
+    typename Symmetrize = std::identity, typename Divide = std::divides<void>,
+    typename Identity = identity_matrix, typename UpdateTypes = empty_pack,
+    typename PredictionTypes = empty_pack>
 class kalman
 {
   private:
@@ -170,8 +191,8 @@ class kalman
   //! @brief The internal implementation unpacks the parameter packs from
   //! tuple-like types which allows for multiple parameter pack deductions.
   using implementation =
-      internal::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
-                       Identity, internal::repack_t<UpdateTypes>,
+      internal::kalman<Type, State, Output, Input, Transpose, Symmetrize,
+                       Divide, Identity, internal::repack_t<UpdateTypes>,
                        internal::repack_t<PredictionTypes>>;
 
   //! @}
@@ -179,6 +200,9 @@ class kalman
   public:
   //! @name Public Member Types
   //! @{
+
+  //! @brief Type of the filter scalar data.
+  using value_type = typename implementation::value_type;
 
   //! @brief Type of the state estimate column vector X.
   using state = typename implementation::state;
@@ -385,7 +409,7 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned control column vector U is unexpectedly "
               "discarded.")]] inline constexpr auto
-  u() const -> input requires(!std::is_void_v<Input>)
+  u() const -> input requires(Input > 0)
   {
     return filter.u;
   }
@@ -870,7 +894,7 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned control transition matrix G is unexpectedly "
               "discarded.")]] inline constexpr auto
-  g() const -> input_control requires(!std::is_void_v<Input>)
+  g() const -> input_control requires(Input > 0)
   {
     return filter.g;
   }
@@ -880,8 +904,7 @@ class kalman
   //! @param value The copied control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void
-  g(const input_control &value) requires(!std::is_void_v<Input>)
+  inline constexpr void g(const input_control &value) requires(Input > 0)
   {
     filter.g = value;
   }
@@ -891,8 +914,7 @@ class kalman
   //! @param value The moved control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void
-  g(input_control &&value) requires(!std::is_void_v<Input>)
+  inline constexpr void g(input_control &&value) requires(Input > 0)
   {
     filter.g = std::move(value);
   }
@@ -906,10 +928,9 @@ class kalman
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values) requires(
-      !std::is_void_v<Input> &&
-      !std::is_assignable_v<
-          typename implementation::transition_control_function,
-          std::decay_t<decltype(value)>>)
+      Input > 0 && !std::is_assignable_v<
+                       typename implementation::transition_control_function,
+                       std::decay_t<decltype(value)>>)
   {
     filter.g = std::move(input_control{ value, values... });
   }
@@ -923,10 +944,9 @@ class kalman
   //!
   //! @complexity Constant.
   inline constexpr void g(auto &&value, auto &&...values) requires(
-      !std::is_void_v<Input> &&
-      !std::is_assignable_v<
-          typename implementation::transition_control_function,
-          std::decay_t<decltype(value)>>)
+      Input > 0 && !std::is_assignable_v<
+                       typename implementation::transition_control_function,
+                       std::decay_t<decltype(value)>>)
   {
     filter.g =
         std::move(input_control{ std::forward<decltype(value)>(value),
@@ -943,7 +963,7 @@ class kalman
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &callable) requires(
-      !std::is_void_v<Input> &&
+      Input > 0 &&
       std::is_assignable_v<typename implementation::transition_control_function,
                            std::decay_t<decltype(callable)>>)
   {
@@ -960,7 +980,7 @@ class kalman
   //!
   //! @complexity Constant.
   inline constexpr void g(auto &&callable) requires(
-      !std::is_void_v<Input> &&
+      Input > 0 &&
       std::is_assignable_v<typename implementation::transition_control_function,
                            std::decay_t<decltype(callable)>>)
   {

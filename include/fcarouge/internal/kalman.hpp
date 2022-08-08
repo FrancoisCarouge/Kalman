@@ -39,6 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_KALMAN_HPP
 #define FCAROUGE_INTERNAL_KALMAN_HPP
 
+#include <array>
+#include <cstddef>
 #include <functional>
 #include <type_traits>
 
@@ -48,7 +50,7 @@ namespace fcarouge::internal
 template <typename...> struct pack {
 };
 
-using empty_pack_t = pack<>;
+using empty_pack = pack<>;
 
 template <typename Type> struct repack {
   using type = Type;
@@ -61,34 +63,41 @@ struct repack<From<Types...>> {
 
 template <typename From> using repack_t = typename repack<From>::type;
 
-template <typename, typename, typename, typename, typename, typename, typename,
-          typename, typename>
+template <typename, std::size_t, std::size_t, std::size_t, typename, typename,
+          typename, typename, typename, typename>
 struct kalman {
   //! @todo Support some more specializations, all, or disable others?
 };
 
-template <typename State, typename Output, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename... UpdateTypes, typename... PredictionTypes>
-struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
+template <typename Type, std::size_t State, std::size_t Output,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename... UpdateTypes,
+          typename... PredictionTypes>
+struct kalman<Type, State, Output, 0, Transpose, Symmetrize, Divide, Identity,
               pack<UpdateTypes...>, pack<PredictionTypes...>> {
   struct empty {
   };
-  using state = State;
-  using output = Output;
+  template <typename Row, typename Column>
+  using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
+  template <std::size_t Size>
+  //! @todo Should we remove the dependency on `std::array`? It can be done with
+  //! C-style `Type[Size]` array but may be not recommended.
+  using array = std::conditional_t<
+      Size == 1, Type,
+      std::decay_t<std::invoke_result_t<
+          Divide, std::conditional_t<Size == 1, Type, std::array<Type, Size>>,
+          Type>>>;
+  using value_type = Type;
+  using state = array<State>;
+  using output = array<Output>;
   using input = empty;
-  using estimate_uncertainty =
-      std::decay_t<std::invoke_result_t<Divide, State, State>>;
-  using process_uncertainty =
-      std::decay_t<std::invoke_result_t<Divide, State, State>>;
-  using output_uncertainty =
-      std::decay_t<std::invoke_result_t<Divide, Output, Output>>;
-  using state_transition =
-      std::decay_t<std::invoke_result_t<Divide, State, State>>;
-  using output_model =
-      std::decay_t<std::invoke_result_t<Divide, Output, State>>;
+  using estimate_uncertainty = matrix<state, state>;
+  using process_uncertainty = matrix<state, state>;
+  using output_uncertainty = matrix<output, output>;
+  using state_transition = matrix<state, state>;
+  using output_model = matrix<output, state>;
   using input_control = empty;
-  using gain = std::decay_t<std::invoke_result_t<Transpose, output_model>>;
+  using gain = matrix<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
@@ -106,23 +115,24 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
       std::function<output(const state &, const UpdateTypes &...arguments)>;
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{ 0 * Identity().template operator()<state>() };
+  state x{ value_type{ 0 } * Identity().template operator()<state>() };
   estimate_uncertainty p{
     Identity().template operator()<estimate_uncertainty>()
   };
   process_uncertainty q{
-    0 * Identity().template operator()<process_uncertainty>()
+    value_type{ 0 } * Identity().template operator()<process_uncertainty>()
   };
-  output_uncertainty r{ 0 *
+  output_uncertainty r{ value_type{ 0 } *
                         Identity().template operator()<output_uncertainty>() };
   output_model h{ Identity().template operator()<output_model>() };
   state_transition f{ Identity().template operator()<state_transition>() };
   gain k{ Identity().template operator()<gain>() };
-  innovation y{ 0 * Identity().template operator()<innovation>() };
+  innovation y{ value_type{ 0 } *
+                Identity().template operator()<innovation>() };
   innovation_uncertainty s{
     Identity().template operator()<innovation_uncertainty>()
   };
-  output z{ 0 * Identity().template operator()<output>() };
+  output z{ value_type{ 0 } * Identity().template operator()<output>() };
 
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through k.x() when needed? Where does the practical/performance
@@ -218,27 +228,31 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   }
 };
 
-template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename... UpdateTypes, typename... PredictionTypes>
-struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-              pack<UpdateTypes...>, pack<PredictionTypes...>> {
-  using state = State;
-  using output = Output;
-  using input = Input;
-  using estimate_uncertainty =
-      std::decay_t<std::invoke_result_t<Divide, State, State>>;
-  using process_uncertainty =
-      std::decay_t<std::invoke_result_t<Divide, State, State>>;
-  using output_uncertainty =
-      std::decay_t<std::invoke_result_t<Divide, Output, Output>>;
-  using state_transition =
-      std::decay_t<std::invoke_result_t<Divide, State, State>>;
-  using output_model =
-      std::decay_t<std::invoke_result_t<Divide, Output, State>>;
-  using input_control =
-      std::decay_t<std::invoke_result_t<Divide, State, Input>>;
-  using gain = std::decay_t<std::invoke_result_t<Transpose, output_model>>;
+template <typename Type, std::size_t State, std::size_t Output,
+          std::size_t Input, typename Transpose, typename Symmetrize,
+          typename Divide, typename Identity, typename... UpdateTypes,
+          typename... PredictionTypes>
+struct kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
+              Identity, pack<UpdateTypes...>, pack<PredictionTypes...>> {
+  template <typename Row, typename Column>
+  using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
+  template <std::size_t Size>
+  using array = std::conditional_t<
+      Size == 1, Type,
+      std::decay_t<std::invoke_result_t<
+          Divide, std::conditional_t<Size == 1, Type, std::array<Type, Size>>,
+          Type>>>;
+  using value_type = Type;
+  using state = array<State>;
+  using output = array<Output>;
+  using input = array<Input>;
+  using estimate_uncertainty = matrix<state, state>;
+  using process_uncertainty = matrix<state, state>;
+  using output_uncertainty = matrix<output, output>;
+  using state_transition = matrix<state, state>;
+  using output_model = matrix<output, state>;
+  using input_control = matrix<state, input>;
+  using gain = matrix<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
@@ -264,18 +278,19 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   process_uncertainty q{
     0 * Identity().template operator()<process_uncertainty>()
   };
-  output_uncertainty r{ 0 *
+  output_uncertainty r{ value_type{ 0 } *
                         Identity().template operator()<output_uncertainty>() };
   output_model h{ Identity().template operator()<output_model>() };
   state_transition f{ Identity().template operator()<state_transition>() };
   input_control g{ Identity().template operator()<input_control>() };
   gain k{ Identity().template operator()<gain>() };
-  innovation y{ 0 * Identity().template operator()<innovation>() };
+  innovation y{ value_type{ 0 } *
+                Identity().template operator()<innovation>() };
   innovation_uncertainty s{
     Identity().template operator()<innovation_uncertainty>()
   };
-  output z{ 0 * Identity().template operator()<output>() };
-  input u{ 0 * Identity().template operator()<input>() };
+  output z{ value_type{ 0 } * Identity().template operator()<output>() };
+  input u{ value_type{ 0 } * Identity().template operator()<input>() };
 
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through k.x() when needed? Where does the practical/performance
