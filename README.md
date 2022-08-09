@@ -20,6 +20,10 @@ The library supports simple and extended filters. The update equation uses the J
 - [Installation](#installation)
 - [Motivation](#motivation)
 - [Resources](#resources)
+- [Third Party Acknowledgement](#third-party-acknowledgement)
+- [Sponsors](#sponsors)
+  - [Corporate Sponsor](#corporate-sponsor)
+  - [Named Sponsors](#named-sponsors)
 - [License](#license)
 
 # Examples
@@ -155,7 +159,7 @@ k(drift_x, drift_y, position_x, position_y, variometer);
 <br>
 [![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
 <br>
-[![Sponsor](https://img.shields.io/badge/Sponsor-%EF%BC%84%EF%BC%84%EF%BC%84%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
+[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
 <br>
 <br>
 [![Deploy Documentation: Doxygen GitHub Pages](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml)
@@ -282,6 +286,37 @@ Awesome resources to learn about Kalman filters:
 - [Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) by Roger Labbe.
 - [How Kalman Filters Work](https://www.anuncommonlab.com/articles/how-kalman-filters-work) by Tucker McClure of An Uncommon Lab.
 - [Wikipedia Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter) by Wikipedia, the free encyclopedia.
+
+# Third Party Acknowledgement
+
+The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
+- [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
+- [Clang](https://clang.llvm.org) for compilation and code sanitizers.
+- [CMake](https://cmake.org) for build automation.
+- [Coveralls](https://coveralls.io) to measure [code coverage](https://coveralls.io/github/FrancoisCarouge/Kalman).
+- [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
+- [Doxygen](https://doxygen.nl) for documentation generation.
+- [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
+- [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
+- [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
+- [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
+- [Valgrind](https://valgrind.org) to check for correct memory management.
+
+# Sponsors
+
+Become a sponsor today! Support this project with coffee and infrastructure!
+
+[![Sponsor](https://img.shields.io/badge/Support-Sponsor-brightgreen)](http://paypal.me/francoiscarouge)
+
+## Corporate Sponsor
+
+You company logo and link here!
+
+## Named Sponsors
+
+Your name and link here!
+
+Thanks everyone!
 
 # License
 
