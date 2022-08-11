@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/benchmark/benchmark.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <benchmark/benchmark.h>
 
@@ -47,16 +48,17 @@ namespace fcarouge::benchmark
 {
 namespace
 {
-//! @benchmark Measure performance.
-void benchmark_full(::benchmark::State &state)
+//! @benchmark Measure predict, empty benchmark performance.
+void operator1x1x1(::benchmark::State &state)
 {
   for (auto _ : state) {
-    // Argument value is: state.range(0)
+    using kalman = fcarouge::kalman<float, 1, 1, 1>;
+    kalman k;
 
-    const auto start{ clock::now() };
     ::benchmark::ClobberMemory();
+    const auto start{ clock::now() };
 
-    // Measure.
+    k.template operator()<float>(0.f);
 
     ::benchmark::ClobberMemory();
     const auto end{ clock::now() };
@@ -67,8 +69,8 @@ void benchmark_full(::benchmark::State &state)
   }
 }
 
-BENCHMARK(benchmark_full)
-    ->Name("Benchmark Full")
+BENCHMARK(operator1x1x1)
+    ->Name("operator1x1x1")
     ->Unit(::benchmark::kNanosecond)
     ->ComputeStatistics("min",
                         [](const auto &results) {
@@ -77,9 +79,9 @@ BENCHMARK(benchmark_full)
         -> ComputeStatistics("max",
                              [](const auto &results) {
                                return std::ranges::max(results);
-                             }) -> Arg(0) -> UseManualTime()
+                             }) -> UseManualTime()
             -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
-                -> RangeMultiplier(2) -> Repetitions(10) -> Range(1, 1 << 3);
+                -> Repetitions(100);
 
 } // namespace
 } // namespace fcarouge::benchmark
