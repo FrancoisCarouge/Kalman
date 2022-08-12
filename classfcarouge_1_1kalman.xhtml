@@ -375,7 +375,7 @@ class fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Di
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This class could be usable in constant expressions if <code>std::function</code> could too. The polymorphic function wrapper was used in place of function pointers to enable default initialization from this class, captured member variables.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000014">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000015">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristics? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -530,7 +530,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
 </div><div class="memdoc">
 
 <p>Type of the control column vector U. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000015">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000016">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a5">rocket_altitude.cpp</a>.</dd>
 </dl>
 
@@ -554,7 +554,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
 
 <p>Type of the control transition matrix G. </p>
 <p >Also known as B.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000016">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a7">rocket_altitude.cpp</a>.</dd>
 </dl>
 
@@ -1917,7 +1917,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd>Help the user with callable type definition, visibility. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd>Help the user with callable type definition, visibility. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01093">1093</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>  {</div>
@@ -1962,7 +1962,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo:</a></b></dt><dd>Help the user with callable type definition, visibility. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd>Help the user with callable type definition, visibility. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01075">1075</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>  {</div>
@@ -2011,7 +2011,7 @@ template&lt;typename... InputTypes&gt; </div>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Called as <code>k(...);</code> with prediction values and output values when the filter has no input parameters. The input type list is explicitly empty. Otherwise can be called as <code>k.template operator()&lt;input1_t, input2_t, ...&gt;(...);</code> with prediction values, input values, and output values. The input type list being explicitly specified per the fair matching rule. A lambda can come in handy to reduce the verbose call `const auto kf{ <a href="const auto
 &amp;...args">&amp;k</a> { k.template operator()&lt;input1_t, input2_t, ...&gt;(args...); } };<code>then called as</code>kf(...);`.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd">Understand why the implementation cannot be moved out of the class. </p>
 <p class="enddd">What should be the order of the parameters? Update first? </p>
 </dd></dl>
@@ -2377,7 +2377,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
 <p class="enddd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 </dd></dl>
 
@@ -2528,7 +2528,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd>Reset functions or values when the other is set? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd>Reset functions or values when the other is set? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00534">534</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>  {</div>
@@ -2576,7 +2576,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd>Understand why Clang Tidy doesn't find the out-of-line definition. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>Understand why Clang Tidy doesn't find the out-of-line definition. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00554">554</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>  {</div>
@@ -2906,7 +2906,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>Understand why Clang Tidy doesn't find the out-of-line definition. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd>Understand why Clang Tidy doesn't find the out-of-line definition. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00655">655</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>  {</div>
@@ -3133,7 +3133,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo:</a></b></dt><dd>Help the user with callable type definition, visibility. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo:</a></b></dt><dd>Help the user with callable type definition, visibility. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01057">1057</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>  {</div>
@@ -3178,7 +3178,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd>Help the user with callable type definition, visibility. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo:</a></b></dt><dd>Help the user with callable type definition, visibility. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01039">1039</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>  {</div>
@@ -3263,7 +3263,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
 <p class="enddd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 </dd></dl>
 
@@ -3644,7 +3644,7 @@ template&lt;typename Type  = double, std::size_t State = 1, std::size_t Output =
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Thu Aug 11 2022 01:45:31 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Aug 12 2022 02:05:03 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

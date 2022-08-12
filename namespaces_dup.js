@@ -2,6 +2,7 @@ var namespaces_dup =
 [
     [ "fcarouge", "namespacefcarouge.xhtml", "namespacefcarouge" ],
     [ "std", null, [
+      [ "formatter< fcarouge::kalman< Type, State, Output, 0, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_010_00_01_trb793a90e6af8000cfb0ace0437693168.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_010_00_01_trb793a90e6af8000cfb0ace0437693168" ],
       [ "formatter< fcarouge::kalman< Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_ec464704e7188a4cfe03e7457b252aab.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_01_input_00_ec464704e7188a4cfe03e7457b252aab" ]
     ] ]
 ];
