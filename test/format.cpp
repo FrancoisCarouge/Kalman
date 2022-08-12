@@ -48,6 +48,16 @@ namespace fcarouge::test
 namespace
 {
 
+//! @test Verifies formatting filters for single-dimension filters without input
+//! control.
+[[maybe_unused]] auto format110{ [] {
+  kalman k;
+
+  assert(std::format("{}", k) == "{f:1,h:1,k:1,p:1,q:0,r:0,s:1,x:0,y:0,z:0}");
+
+  return 0;
+}() };
+
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control.
 [[maybe_unused]] auto format111{ [] {
