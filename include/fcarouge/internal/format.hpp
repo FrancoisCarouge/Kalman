@@ -80,4 +80,33 @@ struct std::formatter<
   }
 };
 
+template <typename Type, std::size_t State, std::size_t Output,
+          typename Transpose, typename Symmetrize, typename Divide,
+          typename Identity, typename UpdateTypes, typename PredictionTypes,
+          typename Char>
+struct std::formatter<
+    fcarouge::kalman<Type, State, Output, 0, Transpose, Symmetrize, Divide,
+                     Identity, UpdateTypes, PredictionTypes>,
+    Char> {
+  //! @todo Support parsing arguments.
+  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context)
+  {
+    return parse_context.begin();
+  }
+
+  template <typename OutputIt>
+  auto format(const fcarouge::kalman<Type, State, Output, 0, Transpose,
+                                     Symmetrize, Divide, Identity, UpdateTypes,
+                                     PredictionTypes> &filter,
+              std::basic_format_context<OutputIt, Char> &format_context)
+      -> OutputIt
+  {
+    return format_to(format_context.out(),
+                     "{{f:{},h:{},k:{},p:{},q:{},r:{},s:{},x:{},y:{},z:{}}}",
+                     filter.f(), filter.h(), filter.k(), filter.p(), filter.q(),
+                     filter.r(), filter.s(), filter.x(), filter.y(),
+                     filter.z());
+  }
+};
+
 #endif // FCAROUGE_INTERNAL_FORMAT_HPP
