@@ -197,6 +197,14 @@ class kalman
 
   //! @}
 
+  //! @name Private Member Variables
+  //! @{
+
+  //! @brief Encapsulates the implementation details of the filter.
+  implementation filter;
+
+  //! @}
+
   public:
   //! @name Public Member Types
   //! @{
@@ -254,6 +262,55 @@ class kalman
   //! @brief Type of the innovation uncertainty matrix S.
   using innovation_uncertainty =
       typename implementation::innovation_uncertainty;
+
+  //! @brief Type of the callable observation state function.
+  //!
+  //! @details The function is of the form `output_model(const state &, const
+  //! UpdateTypes &...)`.
+  using observation_state_function =
+      typename implementation::observation_state_function;
+
+  //! @brief Type of the callable noise observation function.
+  //!
+  //! @details The function is of the form `output_uncertainty(const state &,
+  //! const output &, const UpdateTypes &...)`.
+  using noise_observation_function =
+      typename implementation::noise_observation_function;
+
+  //! @brief Type of the callable transition state function.
+  //!
+  //! @details The function is of the form `state_transition(const state &,
+  //! const PredictionTypes &..., const input &)`.
+  using transition_state_function =
+      typename implementation::transition_state_function;
+
+  //! @brief Type of the callable noise process function.
+  //!
+  //! @details The function is of the form `process_uncertainty(const state &,
+  //! const PredictionTypes &...)`.
+  using noise_process_function =
+      typename implementation::noise_process_function;
+
+  //! @brief Type of the callable transition control function.
+  //!
+  //! @details The function is of the form `input_control(const PredictionTypes
+  //! &...)`.
+  //!
+  //! @todo Conditionally remove this member type when no input is present.
+  using transition_control_function =
+      typename implementation::transition_control_function;
+
+  //! @brief Type of the callable transition function.
+  //!
+  //! @details The function is of the form `state(const state &, const
+  //! PredictionTypes &...)`.
+  using transition_function = typename implementation::transition_function;
+
+  //! @brief Type of the callable observation function.
+  //!
+  //! @details The function is of the form `output(const state &, const
+  //! UpdateTypes &...arguments)`.
+  using observation_function = typename implementation::observation_function;
 
   //! @}
 
@@ -336,30 +393,21 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned state estimate column vector X is unexpectedly "
               "discarded.")]] inline constexpr auto
-  x() const -> state
-  {
-    return filter.x;
-  }
+  x() const -> state;
 
   //! @brief Sets the state estimate column vector X.
   //!
   //! @param value The copied state estimate column vector X.
   //!
   //! @complexity Constant.
-  inline constexpr void x(const state &value)
-  {
-    filter.x = value;
-  }
+  inline constexpr void x(const state &value);
 
   //! @brief Sets the state estimate column vector X.
   //!
   //! @param value The moved state estimate column vector X.
   //!
   //! @complexity Constant.
-  inline constexpr void x(state &&value)
-  {
-    filter.x = std::move(value);
-  }
+  inline constexpr void x(state &&value);
 
   //! @brief Sets the state estimate column vector X.
   //!
@@ -369,10 +417,8 @@ class kalman
   //! estimate column vector X.
   //!
   //! @complexity Constant.
-  inline constexpr void x(const auto &value, const auto &...values)
-  {
-    filter.x = std::move(state{ value, values... });
-  }
+  inline constexpr void x(const value_type &value,
+                          const std::same_as<value_type> auto &...values);
 
   //! @brief Sets the state estimate column vector X.
   //!
@@ -382,11 +428,8 @@ class kalman
   //! estimate column vector X.
   //!
   //! @complexity Constant.
-  inline constexpr void x(auto &&value, auto &&...values)
-  {
-    filter.x = std::move(state{ std::forward<decltype(value)>(value),
-                                std::forward<decltype(values)>(values)... });
-  }
+  inline constexpr void x(value_type &&value,
+                          std::same_as<value_type> auto &&...values);
 
   //! @brief Returns the last observation column vector Z.
   //!
@@ -395,10 +438,7 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned observation column vector Z is unexpectedly "
               "discarded.")]] inline constexpr auto
-  z() const -> output
-  {
-    return filter.z;
-  }
+  z() const -> output;
 
   //! @brief Returns the last control column vector U.
   //!
@@ -409,10 +449,7 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned control column vector U is unexpectedly "
               "discarded.")]] inline constexpr auto
-  u() const -> input requires(Input > 0)
-  {
-    return filter.u;
-  }
+  u() const -> input requires(Input > 0);
 
   //! @brief Returns the estimated covariance matrix P.
   //!
@@ -421,30 +458,21 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
               "discarded.")]] inline constexpr auto
-  p() const -> estimate_uncertainty
-  {
-    return filter.p;
-  }
+  p() const -> estimate_uncertainty;
 
   //! @brief Sets the estimated covariance matrix P.
   //!
   //! @param value The copied estimated covariance matrix P.
   //!
   //! @complexity Constant.
-  inline constexpr void p(const estimate_uncertainty &value)
-  {
-    filter.p = value;
-  }
+  inline constexpr void p(const estimate_uncertainty &value);
 
   //! @brief Sets the estimated covariance matrix P.
   //!
   //! @param value The moved estimated covariance matrix P.
   //!
   //! @complexity Constant.
-  inline constexpr void p(estimate_uncertainty &&value)
-  {
-    filter.p = std::move(value);
-  }
+  inline constexpr void p(estimate_uncertainty &&value);
 
   //! @brief Sets the estimated covariance matrix P.
   //!
@@ -454,10 +482,8 @@ class kalman
   //! estimated covariance matrix P.
   //!
   //! @complexity Constant.
-  inline constexpr void p(const auto &value, const auto &...values)
-  {
-    filter.p = std::move(estimate_uncertainty{ value, values... });
-  }
+  inline constexpr void p(const value_type &value,
+                          const std::same_as<value_type> auto &...values);
 
   //! @brief Sets the estimated covariance matrix P.
   //!
@@ -467,12 +493,8 @@ class kalman
   //! covariance matrix P.
   //!
   //! @complexity Constant.
-  inline constexpr void p(auto &&value, auto &&...values)
-  {
-    filter.p = std::move(
-        estimate_uncertainty{ std::forward<decltype(value)>(value),
-                              std::forward<decltype(values)>(values)... });
-  }
+  inline constexpr void p(value_type &&value,
+                          std::same_as<value_type> auto &&...values);
 
   //! @brief Returns the process noise covariance matrix Q.
   //!
@@ -481,30 +503,21 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
               "discarded.")]] inline constexpr auto
-  q() const -> process_uncertainty
-  {
-    return filter.q;
-  }
+  q() const -> process_uncertainty;
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
   //! @param value The copied process noise covariance matrix Q.
   //!
   //! @complexity Constant.
-  inline constexpr void q(const process_uncertainty &value)
-  {
-    filter.q = value;
-  }
+  inline constexpr void q(const process_uncertainty &value);
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
   //! @param value The moved process noise covariance matrix Q.
   //!
   //! @complexity Constant.
-  inline constexpr void q(process_uncertainty &&value)
-  {
-    filter.q = std::move(value);
-  }
+  inline constexpr void q(process_uncertainty &&value);
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
@@ -514,12 +527,8 @@ class kalman
   //! noise covariance matrix Q.
   //!
   //! @complexity Constant.
-  inline constexpr void q(const auto &value, const auto &...values) requires(
-      !std::is_assignable_v<typename implementation::noise_process_function,
-                            std::decay_t<decltype(value)>>)
-  {
-    filter.q = std::move(process_uncertainty{ value, values... });
-  }
+  inline constexpr void q(const value_type &value,
+                          const std::same_as<value_type> auto &...values);
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
@@ -529,16 +538,8 @@ class kalman
   //! process noise covariance matrix Q.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Reset functions or values when the other is set?
-  inline constexpr void q(auto &&value, auto &&...values) requires(
-      !std::is_assignable_v<typename implementation::noise_process_function,
-                            std::decay_t<decltype(value)>>)
-  {
-    filter.q = std::move(
-        process_uncertainty{ std::forward<decltype(value)>(value),
-                             std::forward<decltype(values)>(values)... });
-  }
+  inline constexpr void q(value_type &&value,
+                          std::same_as<value_type> auto &&...values);
 
   //! @brief Sets the process noise covariance matrix Q function.
   //!
@@ -549,14 +550,7 @@ class kalman
   //! prediction steps.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Understand why Clang Tidy doesn't find the out-of-line definition.
-  inline constexpr void q(const auto &callable) requires(
-      std::is_assignable_v<typename implementation::noise_process_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.noise_process_q = callable;
-  }
+  inline constexpr void q(const noise_process_function &callable);
 
   //! @brief Sets the process noise covariance matrix Q function.
   //!
@@ -567,12 +561,7 @@ class kalman
   //! prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void q(auto &&callable) requires(
-      std::is_assignable_v<typename implementation::noise_process_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.noise_process_q = std::forward<decltype(callable)>(callable);
-  }
+  inline constexpr void q(noise_process_function &&callable);
 
   //! @brief Returns the observation noise covariance
   //! matrix R.
@@ -584,30 +573,21 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned observation noise covariance matrix R is "
               "unexpectedly discarded.")]] inline constexpr auto
-  r() const -> output_uncertainty
-  {
-    return filter.r;
-  }
+  r() const -> output_uncertainty;
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
   //! @param value The copied observation noise covariance matrix R.
   //!
   //! @complexity Constant.
-  inline constexpr void r(const output_uncertainty &value)
-  {
-    filter.r = value;
-  }
+  inline constexpr void r(const output_uncertainty &value);
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
   //! @param value The moved observation noise covariance matrix R.
   //!
   //! @complexity Constant.
-  inline constexpr void r(output_uncertainty &&value)
-  {
-    filter.r = std::move(value);
-  }
+  inline constexpr void r(output_uncertainty &&value);
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
@@ -617,12 +597,8 @@ class kalman
   //! observation noise covariance matrix R.
   //!
   //! @complexity Constant.
-  inline constexpr void r(const auto &value, const auto &...values) requires(
-      !std::is_assignable_v<typename implementation::noise_observation_function,
-                            std::decay_t<decltype(value)>>)
-  {
-    filter.r = std::move(output_uncertainty{ value, values... });
-  }
+  inline constexpr void r(const value_type &value,
+                          const std::same_as<value_type> auto &...values);
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
@@ -632,14 +608,8 @@ class kalman
   //! observation noise covariance matrix R.
   //!
   //! @complexity Constant.
-  inline constexpr void r(auto &&value, auto &&...values) requires(
-      !std::is_assignable_v<typename implementation::noise_observation_function,
-                            std::decay_t<decltype(value)>>)
-  {
-    filter.r = std::move(
-        output_uncertainty{ std::forward<decltype(value)>(value),
-                            std::forward<decltype(values)>(values)... });
-  }
+  inline constexpr void r(value_type &&value,
+                          std::same_as<value_type> auto &&...values);
 
   //! @brief Sets the observation noise covariance matrix R function.
   //!
@@ -650,14 +620,7 @@ class kalman
   //! on prediction steps.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Understand why Clang Tidy doesn't find the out-of-line definition.
-  inline constexpr void r(const auto &callable) requires(
-      std::is_assignable_v<typename implementation::noise_observation_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.noise_observation_r = callable;
-  }
+  inline constexpr void r(const noise_observation_function &callable);
 
   //! @brief Sets the observation noise covariance matrix R function.
   //!
@@ -668,12 +631,7 @@ class kalman
   //! on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void r(auto &&callable) requires(
-      std::is_assignable_v<typename implementation::noise_observation_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.noise_observation_r = std::forward<decltype(callable)>(callable);
-  }
+  inline constexpr void r(noise_observation_function &&callable);
 
   //! @brief Returns the state transition matrix F.
   //!
@@ -682,30 +640,21 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned state transition matrix F is unexpectedly "
               "discarded.")]] inline constexpr auto
-  f() const -> state_transition
-  {
-    return filter.f;
-  }
+  f() const -> state_transition;
 
   //! @brief Sets the state transition matrix F.
   //!
   //! @param value The copied state transition matrix F.
   //!
   //! @complexity Constant.
-  inline constexpr void f(const state_transition &value)
-  {
-    filter.f = value;
-  }
+  inline constexpr void f(const state_transition &value);
 
   //! @brief Sets the state transition matrix F.
   //!
   //! @param value The moved state transition matrix F.
   //!
   //! @complexity Constant.
-  inline constexpr void f(state_transition &&value)
-  {
-    filter.f = std::move(value);
-  }
+  inline constexpr void f(state_transition &&value);
 
   //! @brief Sets the state transition matrix F.
   //!
@@ -715,12 +664,8 @@ class kalman
   //! transition matrix F.
   //!
   //! @complexity Constant.
-  inline constexpr void f(const auto &value, const auto &...values) requires(
-      !std::is_assignable_v<typename implementation::transition_state_function,
-                            std::decay_t<decltype(value)>>)
-  {
-    filter.f = std::move(state_transition{ value, values... });
-  }
+  inline constexpr void f(const value_type &value,
+                          const std::same_as<value_type> auto &...values);
 
   //! @brief Sets the state transition matrix F.
   //!
@@ -730,14 +675,8 @@ class kalman
   //! transition matrix F.
   //!
   //! @complexity Constant.
-  inline constexpr void f(auto &&value, auto &&...values) requires(
-      !std::is_assignable_v<typename implementation::transition_state_function,
-                            std::decay_t<decltype(value)>>)
-  {
-    filter.f = std::move(
-        state_transition{ std::forward<decltype(value)>(value),
-                          std::forward<decltype(values)>(values)... });
-  }
+  inline constexpr void f(value_type &&value,
+                          std::same_as<value_type> auto &&...values);
 
   //! @brief Sets the state transition matrix F function.
   //!
@@ -753,12 +692,7 @@ class kalman
   //! prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void f(const auto &callable) requires(
-      std::is_assignable_v<typename implementation::transition_state_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.transition_state_f = callable;
-  }
+  inline constexpr void f(const transition_state_function &callable);
 
   //! @brief Sets the state transition matrix F function.
   //!
@@ -774,12 +708,7 @@ class kalman
   //! prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void f(auto &&callable) requires(
-      std::is_assignable_v<typename implementation::transition_state_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.transition_state_f = std::forward<decltype(callable)>(callable);
-  }
+  inline constexpr void f(transition_state_function &&callable);
 
   //! @brief Returns the observation transition matrix H.
   //!
@@ -788,30 +717,21 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned observation transition matrix H is unexpectedly "
               "discarded.")]] inline constexpr auto
-  h() const -> output_model
-  {
-    return filter.h;
-  }
+  h() const -> output_model;
 
   //! @brief Sets the observation transition matrix H.
   //!
   //! @param value The copied observation transition matrix H.
   //!
   //! @complexity Constant.
-  inline constexpr void h(const output_model &value)
-  {
-    filter.h = value;
-  }
+  inline constexpr void h(const output_model &value);
 
   //! @brief Sets the observation transition matrix H.
   //!
   //! @param value The moved observation transition matrix H.
   //!
   //! @complexity Constant.
-  inline constexpr void h(output_model &&value)
-  {
-    filter.h = std::move(value);
-  }
+  inline constexpr void h(output_model &&value);
 
   //! @brief Sets the observation, measurement transition matrix H.
   //!
@@ -821,12 +741,8 @@ class kalman
   //! observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
-  inline constexpr void h(const auto &value, const auto &...values) requires(
-      !std::is_assignable_v<typename implementation::observation_state_function,
-                            std::decay_t<decltype(value)>>)
-  {
-    filter.h = std::move(output_model{ value, values... });
-  }
+  inline constexpr void h(const value_type &value,
+                          const std::same_as<value_type> auto &...values);
 
   //! @brief Sets the observation, measurement transition matrix H.
   //!
@@ -836,14 +752,8 @@ class kalman
   //! observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
-  inline constexpr void h(auto &&value, auto &&...values) requires(
-      !std::is_assignable_v<typename implementation::observation_state_function,
-                            std::decay_t<decltype(value)>>)
-  {
-    filter.h =
-        std::move(output_model{ std::forward<decltype(value)>(value),
-                                std::forward<decltype(values)>(values)... });
-  }
+  inline constexpr void h(value_type &&value,
+                          std::same_as<value_type> auto &&...values);
 
   //! @brief Sets the observation, measurement transition matrix H function.
   //!
@@ -859,12 +769,7 @@ class kalman
   //! matrix H on update steps.
   //!
   //! @complexity Constant.
-  inline constexpr void h(const auto &callable) requires(
-      std::is_assignable_v<typename implementation::observation_state_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.observation_state_h = callable;
-  }
+  inline constexpr void h(const observation_state_function &callable);
 
   //! @brief Sets the observation, measurement transition matrix H function.
   //!
@@ -880,12 +785,7 @@ class kalman
   //! matrix H on update steps.
   //!
   //! @complexity Constant.
-  inline constexpr void h(auto &&callable) requires(
-      std::is_assignable_v<typename implementation::observation_state_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.observation_state_h = std::forward<decltype(callable)>(callable);
-  }
+  inline constexpr void h(observation_state_function &&callable);
 
   //! @brief Returns the control transition matrix G.
   //!
@@ -894,30 +794,21 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned control transition matrix G is unexpectedly "
               "discarded.")]] inline constexpr auto
-  g() const -> input_control requires(Input > 0)
-  {
-    return filter.g;
-  }
+  g() const -> input_control requires(Input > 0);
 
   //! @brief Sets the control transition matrix G.
   //!
   //! @param value The copied control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void g(const input_control &value) requires(Input > 0)
-  {
-    filter.g = value;
-  }
+  inline constexpr void g(const input_control &value) requires(Input > 0);
 
   //! @brief Sets the control transition matrix G.
   //!
   //! @param value The moved control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void g(input_control &&value) requires(Input > 0)
-  {
-    filter.g = std::move(value);
-  }
+  inline constexpr void g(input_control &&value) requires(Input > 0);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -927,13 +818,8 @@ class kalman
   //! transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void g(const auto &value, const auto &...values) requires(
-      Input > 0 && !std::is_assignable_v<
-                       typename implementation::transition_control_function,
-                       std::decay_t<decltype(value)>>)
-  {
-    filter.g = std::move(input_control{ value, values... });
-  }
+  inline constexpr void g(const value_type &value,
+                          const std::same_as<value_type> auto &...values);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -943,15 +829,8 @@ class kalman
   //! transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void g(auto &&value, auto &&...values) requires(
-      Input > 0 && !std::is_assignable_v<
-                       typename implementation::transition_control_function,
-                       std::decay_t<decltype(value)>>)
-  {
-    filter.g =
-        std::move(input_control{ std::forward<decltype(value)>(value),
-                                 std::forward<decltype(values)>(values)... });
-  }
+  inline constexpr void g(value_type &&value,
+                          std::same_as<value_type> auto &&...values);
 
   //! @brief Sets the control transition matrix G function.
   //!
@@ -962,13 +841,7 @@ class kalman
   //! prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void g(const auto &callable) requires(
-      Input > 0 &&
-      std::is_assignable_v<typename implementation::transition_control_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.transition_control_g = callable;
-  }
+  inline constexpr void g(const transition_control_function &callable);
 
   //! @brief Sets the control transition matrix G function.
   //!
@@ -979,13 +852,7 @@ class kalman
   //! prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void g(auto &&callable) requires(
-      Input > 0 &&
-      std::is_assignable_v<typename implementation::transition_control_function,
-                           std::decay_t<decltype(callable)>>)
-  {
-    filter.transition_control_g = std::forward<decltype(callable)>(callable);
-  }
+  inline constexpr void g(transition_control_function &&callable);
 
   //! @brief Returns the gain matrix K.
   //!
@@ -994,10 +861,7 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned gain matrix K is unexpectedly "
               "discarded.")]] inline constexpr auto
-  k() const -> gain
-  {
-    return filter.k;
-  }
+  k() const -> gain;
 
   //! @brief Returns the innovation column vector Y.
   //!
@@ -1006,10 +870,7 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned innovation column vector Y is unexpectedly "
               "discarded.")]] inline constexpr auto
-  y() const -> innovation
-  {
-    return filter.y;
-  }
+  y() const -> innovation;
 
   //! @brief Returns the innovation uncertainty matrix S.
   //!
@@ -1018,10 +879,7 @@ class kalman
   //! @complexity Constant.
   [[nodiscard("The returned innovation uncertainty matrix S is unexpectedly "
               "discarded.")]] inline constexpr auto
-  s() const -> innovation_uncertainty
-  {
-    return filter.s;
-  }
+  s() const -> innovation_uncertainty;
 
   //! @brief Sets the extended state transition function f(x).
   //!
@@ -1034,12 +892,7 @@ class kalman
   //! matrix is the Jacobian of the state transition function.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Help the user with callable type definition, visibility.
-  inline constexpr void transition(const auto &callable)
-  {
-    filter.transition = callable;
-  }
+  inline constexpr void transition(const transition_function &callable);
 
   //! @brief Sets the extended state transition function f(x).
   //!
@@ -1052,12 +905,7 @@ class kalman
   //! matrix is the Jacobian of the state transition function.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Help the user with callable type definition, visibility.
-  inline constexpr void transition(auto &&callable)
-  {
-    filter.transition = std::forward<decltype(callable)>(callable);
-  }
+  inline constexpr void transition(transition_function &&callable);
 
   //! @brief Sets the extended state observation function h(x).
   //!
@@ -1070,12 +918,7 @@ class kalman
   //! observation H matrix is the Jacobian of the state observation function.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Help the user with callable type definition, visibility.
-  inline constexpr void observation(const auto &callable)
-  {
-    filter.observation = callable;
-  }
+  inline constexpr void observation(const observation_function &callable);
 
   //! @brief Sets the extended state observation function h(x).
   //!
@@ -1088,12 +931,7 @@ class kalman
   //! observation H matrix is the Jacobian of the state observation function.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Help the user with callable type definition, visibility.
-  inline constexpr void observation(auto &&callable)
-  {
-    filter.observation = std::forward<decltype(callable)>(callable);
-  }
+  inline constexpr void observation(observation_function &&callable);
 
   //! @}
 
@@ -1134,10 +972,7 @@ class kalman
   //! @todo Understand why the implementation cannot be moved out of the class.
   //! @todo What should be the order of the parameters? Update first?
   template <typename... InputTypes>
-  inline constexpr void operator()(const auto &...arguments)
-  {
-    filter.template operator()<InputTypes...>(arguments...);
-  }
+  inline constexpr void operator()(const auto &...arguments);
 
   //! @brief Updates the estimates with the outcome of a measurement.
   //!
@@ -1156,10 +991,7 @@ class kalman
   //! sufficient for all clients?
   //! @todo Consider if returning the state column vector X would be preferable?
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
-  inline constexpr void update(const auto &...arguments)
-  {
-    filter.update(arguments...);
-  }
+  inline constexpr void update(const auto &...arguments);
 
   //! @brief Produces estimates of the state variables and uncertainties.
   //!
@@ -1177,23 +1009,13 @@ class kalman
   //! sufficient for all clients?
   //! @todo Consider if returning the state column vector X would be preferable?
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
-  inline constexpr void predict(const auto &...arguments)
-  {
-    filter.predict(arguments...);
-  }
-
-  //! @}
-
-  private:
-  //! @name Private Member Variables
-  //! @{
-
-  //! @brief Encapsulates the implementation details of the filter.
-  implementation filter;
+  inline constexpr void predict(const auto &...arguments);
 
   //! @}
 };
 
 } // namespace fcarouge
+
+#include "internal/kalman.tpp"
 
 #endif // FCAROUGE_KALMAN_HPP

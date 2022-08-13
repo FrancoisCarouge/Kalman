@@ -34,7 +34,7 @@ jobs:
               sudo make install ; ) ) )
     - name: Tidy
       run: |
-        FILES=`find . -iname *.hpp`
+        FILES=`find . -iname *.hpp -o -iname *.tpp`
         clang-tidy-14 ${FILES} \
           --warnings-as-errors=* \
           -- -x c++ \
