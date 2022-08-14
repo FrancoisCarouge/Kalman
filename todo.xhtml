@@ -138,34 +138,22 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dd><a class="anchor" id="_todo000016"></a>Conditionally remove this member type when no input is present.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#abeecd5f98be0e4fb04fcbd1fc6ecfe88">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::input_control</a>  </dt>
 <dd><a class="anchor" id="_todo000017"></a>Conditionally remove this member type when no input is present.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ae02c51da28b27d3adbc8796ab5e3512a">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::observation</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000023"></a>Help the user with callable type definition, visibility.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a6b2bf4534f9e000c397390cfe1889021">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::observation</a>  (auto &amp;&amp;callable)</dt>
-<dd><a class="anchor" id="_todo000024"></a>Help the user with callable type definition, visibility.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af80601f5377d8e3cf9aba514ad2c0734">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::operator()</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000025"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000019"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="interdd">Understand why the implementation cannot be moved out of the class. </p>
 <p class="interdd"></p>
 <p class="enddd">What should be the order of the parameters? Update first?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a6713091dfcd048c2193f67d1e2c5cb53">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::predict</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000027"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000021"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
 <p class="interdd"></p>
 <p class="enddd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation?  </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aba01a0145a12d7107f4cd570ebee2148">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::q</a>  (auto &amp;&amp;value, auto &amp;&amp;...values)</dt>
-<dd><a class="anchor" id="_todo000018"></a>Reset functions or values when the other is set?  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a3cc2d50409afb049780832d0c20d4a80">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::q</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000019"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a8e08c701082cc8e64006777d478e3996">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::r</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000020"></a>Understand why Clang Tidy doesn't find the out-of-line definition.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a85dfa2b7c0b14d4c30ac6d32192950df">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::transition</a>  (const auto &amp;callable)</dt>
-<dd><a class="anchor" id="_todo000021"></a>Help the user with callable type definition, visibility.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ad58f15facb009ca9a7088391687ef95d">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::transition</a>  (auto &amp;&amp;callable)</dt>
-<dd><a class="anchor" id="_todo000022"></a>Help the user with callable type definition, visibility.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a236222a6f5b7dacc7dee85a3f069a121">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::transition_control_function</a>  </dt>
+<dd><a class="anchor" id="_todo000018"></a>Conditionally remove this member type when no input is present.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a321eca5e446f93eac94a25478967a27e">fcarouge::kalman&lt; Type, State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::update</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000026"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000020"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
 <p class="interdd"></p>
 <p class="enddd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation?  </p>
 </dd>
@@ -180,7 +168,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Aug 12 2022 02:05:03 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Aug 14 2022 02:35:13 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

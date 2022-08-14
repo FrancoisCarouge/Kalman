@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['output_0',['output',['../classfcarouge_1_1kalman.xhtml#a6199ad3f51d6a22231e698c5ca44c03f',1,'fcarouge::kalman']]],
-  ['output_5fmodel_1',['output_model',['../classfcarouge_1_1kalman.xhtml#a791753b3b6d9d97a1772736d4e545507',1,'fcarouge::kalman']]],
-  ['output_5funcertainty_2',['output_uncertainty',['../classfcarouge_1_1kalman.xhtml#acb3b1d04c231c1fa41b0dcea5beb09b0',1,'fcarouge::kalman']]]
+  ['noise_5fobservation_5ffunction_0',['noise_observation_function',['../classfcarouge_1_1kalman.xhtml#a916674d30ca915b2ab11ba7c2c147795',1,'fcarouge::kalman']]],
+  ['noise_5fprocess_5ffunction_1',['noise_process_function',['../classfcarouge_1_1kalman.xhtml#a081565d91a1d954b9b1e2b8db1063582',1,'fcarouge::kalman']]]
 ];
