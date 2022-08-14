@@ -50,7 +50,7 @@ namespace
   // Initialization
   // We don't know the rocket location; we will set initial position and
   // velocity to 0.
-  k.x(0, 0);
+  k.x(0., 0.);
 
   // Since our initial state vector is a guess, we will set a very high estimate
   // uncertainty. The high estimate uncertainty results in high Kalman gain,
@@ -105,7 +105,7 @@ namespace
   // Measure and Update
   // The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension
   // of the observation matrix H will be 1x2.
-  k.h(1, 0);
+  k.h(1., 0.);
 
   // For the sake of the example simplicity, we will assume a constant
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
