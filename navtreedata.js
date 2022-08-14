@@ -25,7 +25,34 @@
 var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
-    [ "Benchmark Results", "index.xhtml", null ],
+    [ "Kalman Filter for C++", "index.xhtml", [
+      [ "Examples", "index.xhtml#autotoc_md16", [
+        [ "1x1 Constant System Dynamic Model", "index.xhtml#autotoc_md17", null ],
+        [ "6x2 Constant Acceleration Dynamic Model", "index.xhtml#autotoc_md18", null ],
+        [ "4x1 Non-Linear Dynamic Model", "index.xhtml#autotoc_md19", null ]
+      ] ],
+      [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md20", null ],
+      [ "Class kalman", "index.xhtml#autotoc_md21", [
+        [ "Template Parameters", "index.xhtml#autotoc_md22", null ],
+        [ "Member Types", "index.xhtml#autotoc_md23", null ],
+        [ "Member Functions", "index.xhtml#autotoc_md24", [
+          [ "Characteristics", "index.xhtml#autotoc_md25", null ],
+          [ "Modifiers", "index.xhtml#autotoc_md26", null ]
+        ] ]
+      ] ],
+      [ "Format", "index.xhtml#autotoc_md27", null ],
+      [ "Installation", "index.xhtml#autotoc_md28", null ],
+      [ "Performance", "index.xhtml#autotoc_md29", null ],
+      [ "Motivation", "index.xhtml#autotoc_md30", null ],
+      [ "Resources", "index.xhtml#autotoc_md31", null ],
+      [ "Third Party Acknowledgement", "index.xhtml#autotoc_md32", null ],
+      [ "Sponsors", "index.xhtml#autotoc_md33", [
+        [ "Corporate Sponsor", "index.xhtml#autotoc_md34", null ],
+        [ "Named Sponsors", "index.xhtml#autotoc_md35", null ]
+      ] ],
+      [ "License", "index.xhtml#autotoc_md36", null ]
+    ] ],
+    [ "Benchmark Results", "md_benchmark__r_e_a_d_m_e.xhtml", null ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
       [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
@@ -83,7 +110,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"kalman__eigen_8hpp.xhtml#af67bfce173c998d182c8d40f8dccf65c"
+"index.xhtml#autotoc_md35"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

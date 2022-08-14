@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: Benchmark Results</title>
+<title>Kalman: Kalman Filter for C++</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,17 +83,360 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Benchmark Results </div></div>
+  <div class="headertitle"><div class="title">Kalman Filter for C++ </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_benchmark_README"></a> <img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/> <img src="float1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Float 1x1x0"/> <img src="float1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Float 1x1x1"/> <img src="baseline.svg" alt="" style="pointer-events: none;" class="inline" title="Baseline"/> <img src="update1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Update Float 1x1x0"/> <img src="update1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Update Float 1x1x1"/> <img src="predict1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Predict Float 1x1x0"/> <img src="predict1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Predict Float 1x1x1"/> <img src="operator1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Function Call Operator 1x1x0"/> <img src="operator1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Function Call Operator 1x1x1"/> </p>
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> A generic Kalman filter.</p>
+<p >The library supports simple and extended filters. The update equation uses the Joseph form. Control input is accepted. Customization point objects allow for using different linear algebra backends for which standard or Eigen3 implementation is provided.</p>
+<ul>
+<li><a href="#kalman-filter-for-c">Kalman Filter for C++</a></li>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#1x1-constant-system-dynamic-model">1x1 Constant System Dynamic Model</a></li>
+<li><a href="#6x2-constant-acceleration-dynamic-model">6x2 Constant Acceleration Dynamic Model</a></li>
+<li><a href="#4x1-non-linear-dynamic-model">4x1 Non-Linear Dynamic Model</a></li>
+</ul>
+</li>
+<li><a href="#continuous-integration--deployment-actions">Continuous Integration &amp; Deployment Actions</a></li>
+<li><a href="#class-kalman">Class kalman</a><ul>
+<li><a href="#template-parameters">Template Parameters</a></li>
+<li><a href="#member-types">Member Types</a></li>
+<li><a href="#member-functions">Member Functions</a><ul>
+<li><a href="#characteristics">Characteristics</a></li>
+<li><a href="#modifiers">Modifiers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#format">Format</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#third-party-acknowledgement">Third Party Acknowledgement</a></li>
+<li><a href="#sponsors">Sponsors</a><ul>
+<li><a href="#corporate-sponsor">Corporate Sponsor</a></li>
+<li><a href="#named-sponsors">Named Sponsors</a></li>
+</ul>
+</li>
+<li><a href="#license">License</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md16"></a>
+Examples</h1>
+<h2><a class="anchor" id="autotoc_md17"></a>
+1x1 Constant System Dynamic Model</h2>
+<p >Example from the building height estimation sample. One estimated state and one observed output filter.</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a> k;</div>
+<div class="line"> </div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">x</a>(60.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aadce185c0e8bf0097fa9e92769266a8d">p</a>(225.);</div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">r</a>(25.);</div>
+<div class="line"> </div>
+<div class="line">k(48.54);</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00183">kalman.hpp:184</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a154cbaed3f255ec32b08031b2de47feb"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; state</div><div class="ttdoc">Returns the state estimate column vector X.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a34031f643cc88ad51facb3777de765aa"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; output_uncertainty</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aadce185c0e8bf0097fa9e92769266a8d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aadce185c0e8bf0097fa9e92769266a8d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; estimate_uncertainty</div><div class="ttdoc">Returns the estimated covariance matrix P.</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+6x2 Constant Acceleration Dynamic Model</h2>
+<p >Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a19baaa3fe4523729db807408c3771dc3">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;double, 6, 2&gt;</a>;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a19baaa3fe4523729db807408c3771dc3">kalman</a> k;</div>
+<div class="line"> </div>
+<div class="line">k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">x</a>(0., 0., 0., 0., 0., 0.);</div>
+<div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
+<div class="line">                                  { 0, 500, 0, 0, 0, 0 },</div>
+<div class="line">                                  { 0, 0, 500, 0, 0, 0 },</div>
+<div class="line">                                  { 0, 0, 0, 500, 0, 0 },</div>
+<div class="line">                                  { 0, 0, 0, 0, 500, 0 },</div>
+<div class="line">                                  { 0, 0, 0, 0, 0, 500 } });</div>
+<div class="line">k.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },</div>
+<div class="line">                                             { 0.5, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                             { 0.5, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                             { 0, 0, 0, 0.25, 0.5, 0.5 },</div>
+<div class="line">                                             { 0, 0, 0, 0.5, 1, 1 },</div>
+<div class="line">                                             { 0, 0, 0, 0.5, 1, 1 } });</div>
+<div class="line">k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },</div>
+<div class="line">                              { 0, 1, 1, 0, 0, 0 },</div>
+<div class="line">                              { 0, 0, 1, 0, 0, 0 },</div>
+<div class="line">                              { 0, 0, 0, 1, 1, 0.5 },</div>
+<div class="line">                              { 0, 0, 0, 0, 1, 1 },</div>
+<div class="line">                              { 0, 0, 0, 0, 0, 1 } });</div>
+<div class="line">k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },</div>
+<div class="line">                          { 0, 0, 0, 1, 0, 0 } });</div>
+<div class="line">k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
+<div class="line"> </div>
+<div class="line">k(-375.93, 301.78);</div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a19baaa3fe4523729db807408c3771dc3"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a19baaa3fe4523729db807408c3771dc3">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; Type, State, Output, Input, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman__eigen_8hpp_source.xhtml#l00074">kalman_eigen.hpp:76</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
+4x1 Non-Linear Dynamic Model</h2>
+<p >Example from the thermal, current of warm air, strength, radius, and location estimation sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a19baaa3fe4523729db807408c3771dc3">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::eigen::kalman&lt;float, 4, 1, 0, std::tuple&lt;float, float&gt;</a>,</div>
+<div class="line">                                        std::tuple&lt;float, float&gt;&gt;;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a19baaa3fe4523729db807408c3771dc3">kalman</a> k;</div>
+<div class="line"> </div>
+<div class="line">k.x(1 / 4.06, 80, 0, 0);</div>
+<div class="line">k.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
+<div class="line">                                  { 0, 400, 0, 0 },</div>
+<div class="line">                                  { 0, 0, 400, 0 },</div>
+<div class="line">                                  { 0, 0, 0, 400 } });</div>
+<div class="line">k.transition([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
+<div class="line">                <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; kalman::state {</div>
+<div class="line">  <span class="keywordflow">return</span> x + kalman::state{ 0, 0, -drift_x, -drift_y };</div>
+<div class="line">});</div>
+<div class="line">k.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },</div>
+<div class="line">                                 { 0, 0.0009, 0, 0 },</div>
+<div class="line">                                 { 0, 0, 0.0009, 0 },</div>
+<div class="line">                                 { 0, 0, 0, 0.0009 } });</div>
+<div class="line">k.r(0.2025);</div>
+<div class="line">k.observation([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">                 <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output {</div>
+<div class="line">  <span class="keywordflow">return</span> kalman::output{ x(0) *</div>
+<div class="line">    std::exp(-((x(2) - position_x)*(x(2) - position_x) +</div>
+<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / x(1) * x(1)) };</div>
+<div class="line">k.h([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">       <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output_model {</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> exp{ std::exp(-((x(2) - position_x) * (x(2) - position_x) +</div>
+<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) };</div>
+<div class="line">  <span class="keyword">const</span> kalman::output_model h{</div>
+<div class="line">    exp,</div>
+<div class="line">    2 * x(0) * (((x(2) - position_x) * (x(2) - position_x) +</div>
+<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) * exp,</div>
+<div class="line">    -2 * (x(0) * (x(2) - position_x) / (x(1) * x(1))) * exp,</div>
+<div class="line">    -2 * (x(0) * (x(3) - position_y) / (x(1) * x(1))) * exp</div>
+<div class="line">  };</div>
+<div class="line">  <span class="keywordflow">return</span> h;</div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line">k(drift_x, drift_y, position_x, position_y, variometer);</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
+Continuous Integration &amp; Deployment Actions</h1>
+<p ><a href="https://github.com/FrancoisCarouge/Kalman"><img src="https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen" alt="Code Repository" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc-trunk.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc-trunk.yml/badge.svg" alt="Test: Ubuntu 22.04 GCC Trunk" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml/badge.svg" alt="Test: Windows 2019 MSVC" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang-trunk.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang-trunk.yml/badge.svg" alt="Test: Ubuntu 22.04 Clang Trunk" style="pointer-events: none;" class="inline"/></a> <br  />
+ <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg" alt="Test Undefined Behavior: Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml/badge.svg" alt="Test Thread: Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_code_static_analysis_cppcheck.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_code_static_analysis_cppcheck.yml/badge.svg" alt="Test Static Analysis: CppCheck" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_code_static_analysis_tidy.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_code_static_analysis_tidy.yml/badge.svg" alt="Test Static Analysis: ClangTidy" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml/badge.svg" alt="Test Memory: Valgrind" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml/badge.svg" alt="Test Leak: Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_code_style_format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_code_style_format.yml/badge.svg" alt="Test Code Style: ClangFormat" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml/badge.svg" alt="Test Address: Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://coveralls.io/github/FrancoisCarouge/Kalman?branch=develop"><img src="https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=develop" alt="Coverage Status" style="pointer-events: none;" class="inline"/></a> <br  />
+ <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_documentation_doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_documentation_doxygen.yml/badge.svg" alt="Test Documentation: Doxygen" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://raw.githubusercontent.com/francoiscarouge/Kalman/develop/LICENSE.txt"><img src="https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen" alt="Public Domain" class="inline"/></a> <br  />
+ <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield" alt="License Scan" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen" alt="Sponsor" class="inline"/></a> <br  />
+ <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml/badge.svg" alt="Deploy Documentation: Doxygen GitHub Pages" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg" alt="Deploy Code Coverage: Coveralls" style="pointer-events: none;" class="inline"/></a></p>
+<h1><a class="anchor" id="autotoc_md21"></a>
+Class kalman</h1>
+<p >Defined in header <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a></p>
+<p >A Bayesian filter that uses multivariate Gaussians. Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
+<div class="line">  <span class="keyword">typename</span> Type,</div>
+<div class="line">  <span class="keyword">typename</span> State,</div>
+<div class="line">  <span class="keyword">typename</span> Output,</div>
+<div class="line">  <span class="keyword">typename</span> Input,</div>
+<div class="line">  <span class="keyword">typename</span> Transpose,</div>
+<div class="line">  <span class="keyword">typename</span> Symmetrize,</div>
+<div class="line">  <span class="keyword">typename</span> Divide,</div>
+<div class="line">  <span class="keyword">typename</span> Identity,</div>
+<div class="line">  <span class="keyword">typename</span> UpdateTypes,</div>
+<div class="line">  <span class="keyword">typename</span> PredictionTypes&gt;</div>
+<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a19baaa3fe4523729db807408c3771dc3">kalman</a></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
+Template Parameters</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Template Parameter   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Type</code>   </td><td class="markdownTableBodyNone">The type template parameter of the filter data value type used for computation. Defaults to <code>double</code>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>State</code>   </td><td class="markdownTableBodyNone">The non-type template size of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to <code>1</code>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Output</code>   </td><td class="markdownTableBodyNone">The non-type template size of the measurement column vector z. Defaults to <code>1</code>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>Input</code>   </td><td class="markdownTableBodyNone">The non-type template size of the control column vector u. A zero <code>0</code> input size value can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to <code>0</code>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Transpose</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix transpose functor. Defaults to the standard passthrough <code>std::identity</code> function object since the transposed value of an arithmetic type is itself.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>Symmetrize</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix symmetrization functor. Defaults to the standard passthrough <code>std::identity</code> function object since the symmetric value of an arithmetic type is itself.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>Divide</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix division functor. Default to the standard division <code>std::divides&lt;void&gt;</code> function object.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>Identity</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix identity functor. Defaults to an <code>identity_matrix</code> function object returning the arithmetic <code>1</code> value.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. Defaults to no parameter types, the empty pack.   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md23"></a>
+Member Types</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Member Type   </th><th class="markdownTableHeadNone">Definition   </th><th class="markdownTableHeadNone">Dimensions    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>estimate_uncertainty</code>   </td><td class="markdownTableBodyNone">Type of the estimated covariance matrix P, also known as Σ.   </td><td class="markdownTableBodyNone">x by z    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>gain</code>   </td><td class="markdownTableBodyNone">Type of the gain matrix K.   </td><td class="markdownTableBodyNone">x by z    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>innovation_uncertainty</code>   </td><td class="markdownTableBodyNone">Type of the innovation uncertainty matrix S.   </td><td class="markdownTableBodyNone">z by z    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>innovation</code>   </td><td class="markdownTableBodyNone">Type of the innovation column vector Y.   </td><td class="markdownTableBodyNone">z by 1    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>input_control</code>   </td><td class="markdownTableBodyNone">Type of the control transition matrix G, also known as B.   </td><td class="markdownTableBodyNone">x by u    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>input</code>   </td><td class="markdownTableBodyNone">Type of the control column vector U.   </td><td class="markdownTableBodyNone">u by 1    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>output_model</code>   </td><td class="markdownTableBodyNone">Type of the observation transition matrix H, also known as C.   </td><td class="markdownTableBodyNone">z by x    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>output_uncertainty</code>   </td><td class="markdownTableBodyNone">Type of the observation, measurement noise covariance matrix R.   </td><td class="markdownTableBodyNone">z by z    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>output</code>   </td><td class="markdownTableBodyNone">Type of the observation column vector Z, also known as Y or O.   </td><td class="markdownTableBodyNone">z by 1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>process_uncertainty</code>   </td><td class="markdownTableBodyNone">Type of the process noise covariance matrix Q.   </td><td class="markdownTableBodyNone">x by x    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>state_transition</code>   </td><td class="markdownTableBodyNone">Type of the state transition matrix F, also known as Φ or A.   </td><td class="markdownTableBodyNone">x by x    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>state</code>   </td><td class="markdownTableBodyNone">Type of the state estimate column vector X.   </td><td class="markdownTableBodyNone">x by 1   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md24"></a>
+Member Functions</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Member Function   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>(constructor)</code>   </td><td class="markdownTableBodyNone">Constructs the filter.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(destructor)</code>   </td><td class="markdownTableBodyNone">Destructs the filter.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>operator=</code>   </td><td class="markdownTableBodyNone">Assigns values to the filter.   </td></tr>
+</table>
+<h3><a class="anchor" id="autotoc_md25"></a>
+Characteristics</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Characteristic   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>f</code>   </td><td class="markdownTableBodyNone">Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>g</code>   </td><td class="markdownTableBodyNone">Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>h</code>   </td><td class="markdownTableBodyNone">Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>k</code>   </td><td class="markdownTableBodyNone">Manages the gain matrix K. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>p</code>   </td><td class="markdownTableBodyNone">Manages the estimated covariance matrix P. Gets the value. Initializes and sets the value. The default value is the identity matrix.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>q</code>   </td><td class="markdownTableBodyNone">Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>r</code>   </td><td class="markdownTableBodyNone">Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>s</code>   </td><td class="markdownTableBodyNone">Manages the innovation uncertainty matrix S. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>u</code>   </td><td class="markdownTableBodyNone">Manages the control column vector U. Gets the value last used in prediction.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>x</code>   </td><td class="markdownTableBodyNone">Manages the state estimate column vector X. Gets the value. Initializes and sets the value. The default value is the null column vector.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>y</code>   </td><td class="markdownTableBodyNone">Manages the innovation column vector Y. Gets the value last computed during the update. The default value is the null column vector.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>z</code>   </td><td class="markdownTableBodyNone">Manages the observation column vector Z. Gets the value last used during the update. The default value is the null column vector.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>transition</code>   </td><td class="markdownTableBodyNone">Manages the state transition function object f. Configures the callable object to compute the transition state value. The default value is the equivalent to <code>f(x) = F * X</code>. The default function is suitable for linear systems. For extended filters <code>transition</code> is a linearization of the state transition while F is the Jacobian of the transition function: <code>F = ∂f/∂X = ∂fj/∂xi</code> that is each row i contains the derivatives of the state transition function for every element j in the state column vector X.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>observation</code>   </td><td class="markdownTableBodyNone">Manages the state observation function object h. Configures the callable object to compute the observation state value. The default value is the equivalent to <code>h(x) = H * X</code>. The default function is suitable for linear systems. For extended filters <code>observation</code> is a linearization of the state observation while H is the Jacobian of the observation function: <code>H = ∂h/∂X = ∂hj/∂xi</code> that is each row i contains the derivatives of the state observation function for every element j in the state vector X.   </td></tr>
+</table>
+<h3><a class="anchor" id="autotoc_md26"></a>
+Modifiers</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Modifier   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>operator()</code>   </td><td class="markdownTableBodyNone">Runs a step of the filter. Predicts and updates the estimates per prediction arguments, control input, and measurement output.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>update</code>   </td><td class="markdownTableBodyNone">Updates the estimates with the outcome of a measurement.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>predict</code>   </td><td class="markdownTableBodyNone">Produces estimates of the state variables and uncertainties.   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md27"></a>
+Format</h1>
+<p >A specialization of the standard formatter is provided for the filter. Use <code>std::format</code> to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a> k;</div>
+<div class="line"> </div>
+<div class="line">std::string message{ std::format(<span class="stringliteral">&quot;{}&quot;</span>, k) };</div>
+<div class="line"><span class="comment">// {f:1,h:1,k:1,p:1,q:0,r:0,s:1,x:0,y:0,z:0}</span></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md28"></a>
+Installation</h1>
+<p >See installation instructions in <a href="INSTALL.txt">INSTALL.txt</a>.</p>
+<h1><a class="anchor" id="autotoc_md29"></a>
+Performance</h1>
+<p >The [benchmarks](benchmark) share some performance information.</p>
+<p ><img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/></p>
+<h1><a class="anchor" id="autotoc_md30"></a>
+Motivation</h1>
+<p >Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.</p>
+<p >This package explores what could be a Kalman filter implementation a la standard library. The following concerns and tradeoffs are considered:</p><ul>
+<li>Separation of the application domain.</li>
+<li>Separation of the algebra implementation.</li>
+<li>Generalization of the support.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md31"></a>
+Resources</h1>
+<p >Awesome resources to learn about Kalman filters:</p>
+<ul>
+<li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
+<li><a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters in Python</a> by Roger Labbe.</li>
+<li><a href="https://www.anuncommonlab.com/articles/how-kalman-filters-work">How Kalman Filters Work</a> by Tucker McClure of An Uncommon Lab.</li>
+<li><a href="https://en.wikipedia.org/wiki/Kalman_filter">Wikipedia Kalman filter</a> by Wikipedia, the free encyclopedia.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md32"></a>
+Third Party Acknowledgement</h1>
+<p >The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:</p><ul>
+<li><a href="https://github.com/peaceiris/actions-gh-pages">actions-gh-pages</a> to upload the documentation to GitHub pages.</li>
+<li><a href="https://clang.llvm.org">Clang</a> for compilation and code sanitizers.</li>
+<li><a href="https://cmake.org">CMake</a> for build automation.</li>
+<li><a href="https://coveralls.io">Coveralls</a> to measure <a href="https://coveralls.io/github/FrancoisCarouge/Kalman">code coverage</a>.</li>
+<li><a href="https://cppcheck.sourceforge.io">cppcheck</a> for static analysis.</li>
+<li><a href="https://doxygen.nl">Doxygen</a> for documentation generation.</li>
+<li><a href="https://gcc.gnu.org">GCC</a> for compilation and code sanitizers.</li>
+<li><a href="https://github.com/google/benchmark">Google Benchmark</a> to implement the benchmarks.</li>
+<li><a href="http://ltp.sourceforge.net/coverage/lcov.php">lcov</a> to process coverage information.</li>
+<li><a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist">MSVC</a> for compilation and code sanitizers.</li>
+<li><a href="https://valgrind.org">Valgrind</a> to check for correct memory management.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md33"></a>
+Sponsors</h1>
+<p >Become a sponsor today! Support this project with coffee and infrastructure!</p>
+<p ><a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor-brightgreen" alt="Sponsor" class="inline"/></a></p>
+<h2><a class="anchor" id="autotoc_md34"></a>
+Corporate Sponsor</h2>
+<p >You company logo and link here!</p>
+<h2><a class="anchor" id="autotoc_md35"></a>
+Named Sponsors</h2>
+<p >Your name and link here!</p>
+<p >Thanks everyone!</p>
+<h1><a class="anchor" id="autotoc_md36"></a>
+License</h1>
+<p ><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
+<p >Kalman for C++ is public domain:</p>
+<p >This is free and unencumbered software released into the public domain.</p>
+<p >Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.</p>
+<p >In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.</p>
+<p >THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<p >For more information, please refer to <a href="https://unlicense.org">https://unlicense.org</a> </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 14 2022 02:35:13 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Aug 14 2022 02:47:56 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
