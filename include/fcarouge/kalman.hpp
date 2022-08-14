@@ -391,9 +391,7 @@ class kalman
   //! @return The state estimate column vector X.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned state estimate column vector X is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  x() const -> state;
+  inline constexpr auto x() const -> state;
 
   //! @brief Sets the state estimate column vector X.
   //!
@@ -436,9 +434,7 @@ class kalman
   //! @return The last observation column vector Z.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned observation column vector Z is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  z() const -> output;
+  inline constexpr auto z() const -> output;
 
   //! @brief Returns the last control column vector U.
   //!
@@ -447,18 +443,14 @@ class kalman
   //! @return The last control column vector U.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned control column vector U is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  u() const -> input requires(Input > 0);
+  inline constexpr auto u() const -> input requires(Input > 0);
 
   //! @brief Returns the estimated covariance matrix P.
   //!
   //! @return The estimated correlated variance matrix P.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  p() const -> estimate_uncertainty;
+  inline constexpr auto p() const -> estimate_uncertainty;
 
   //! @brief Sets the estimated covariance matrix P.
   //!
@@ -501,9 +493,7 @@ class kalman
   //! @return The process noise correlated variance matrix Q.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  q() const -> process_uncertainty;
+  inline constexpr auto q() const -> process_uncertainty;
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
@@ -571,9 +561,7 @@ class kalman
   //! @return The observation noise correlated variance matrix R.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned observation noise covariance matrix R is "
-              "unexpectedly discarded.")]] inline constexpr auto
-  r() const -> output_uncertainty;
+  inline constexpr auto r() const -> output_uncertainty;
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
@@ -638,9 +626,7 @@ class kalman
   //! @return The state transition matrix F.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned state transition matrix F is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  f() const -> state_transition;
+  inline constexpr auto f() const -> state_transition;
 
   //! @brief Sets the state transition matrix F.
   //!
@@ -715,9 +701,7 @@ class kalman
   //! @return The observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned observation transition matrix H is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  h() const -> output_model;
+  inline constexpr auto h() const -> output_model;
 
   //! @brief Sets the observation transition matrix H.
   //!
@@ -792,9 +776,7 @@ class kalman
   //! @return The control transition matrix G.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned control transition matrix G is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  g() const -> input_control requires(Input > 0);
+  inline constexpr auto g() const -> input_control requires(Input > 0);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -859,27 +841,21 @@ class kalman
   //! @return The gain matrix K.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned gain matrix K is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  k() const -> gain;
+  inline constexpr auto k() const -> gain;
 
   //! @brief Returns the innovation column vector Y.
   //!
   //! @return The innovation column vector Y.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned innovation column vector Y is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  y() const -> innovation;
+  inline constexpr auto y() const -> innovation;
 
   //! @brief Returns the innovation uncertainty matrix S.
   //!
   //! @return The innovation uncertainty matrix S.
   //!
   //! @complexity Constant.
-  [[nodiscard("The returned innovation uncertainty matrix S is unexpectedly "
-              "discarded.")]] inline constexpr auto
-  s() const -> innovation_uncertainty;
+  inline constexpr auto s() const -> innovation_uncertainty;
 
   //! @brief Sets the extended state transition function f(x).
   //!
