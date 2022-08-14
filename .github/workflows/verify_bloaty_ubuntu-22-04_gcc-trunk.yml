@@ -1,0 +1,42 @@
+name: "Test Bloaty: Ubuntu 22.04 GCC Trunk"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.0.2
+    - name: Install
+      run: |
+        wget http://kayari.org/gcc-latest/gcc-latest.deb
+        sudo dpkg -i gcc-latest.deb
+        ( cd /tmp ;
+          git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
+          ( cd eigen ;
+            mkdir build ;
+            ( cd build ; 
+              cmake .. ; 
+              cmake --build . ;
+              sudo make install ; ) ) )
+        ( cd /tmp ;
+          git clone --depth 1 https://github.com/fmtlib/fmt.git ;
+          ( cd fmt ;
+            mkdir build ;
+            ( cd build ;
+              cmake .. ;
+              sudo make install ; ) ) )
+    - name: Build
+      run: |
+        LD_LIBRARY_PATH=/opt/gcc-latest/lib64 LD_RUN_PATH=/opt/gcc-latest/lib64 \
+        /opt/gcc-latest/bin/gcc \
+          sample/*.cpp test/*.cpp source/*.cpp \
+          -Iinclude -I/usr/local/include/eigen3 -Isupport/include/fcarouge \
+          -Wall -Wextra -pedantic -std=c++23 -lstdc++ -lm -lfmt
+    - name: Run
+      run: ./a.out
