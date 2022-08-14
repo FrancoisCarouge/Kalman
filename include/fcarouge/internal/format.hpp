@@ -72,11 +72,12 @@ struct std::formatter<
               std::basic_format_context<OutputIt, Char> &format_context)
       -> OutputIt
   {
-    return format_to(
-        format_context.out(),
-        "{{f:{},g:{},h:{},k:{},p:{},q:{},r:{},s:{},u:{},x:{},y:{},z:{}}}",
-        filter.f(), filter.g(), filter.h(), filter.k(), filter.p(), filter.q(),
-        filter.r(), filter.s(), filter.u(), filter.x(), filter.y(), filter.z());
+    return format_to(format_context.out(),
+                     "{{\"f\":{},\"g\":{},\"h\":{},\"k\":{},\"p\":{},\"q\":{},"
+                     "\"r\":{},\"s\":{},\"u\":{},\"x\":{},\"y\":{},\"z\":{}}}",
+                     filter.f(), filter.g(), filter.h(), filter.k(), filter.p(),
+                     filter.q(), filter.r(), filter.s(), filter.u(), filter.x(),
+                     filter.y(), filter.z());
   }
 };
 
@@ -102,7 +103,8 @@ struct std::formatter<
       -> OutputIt
   {
     return format_to(format_context.out(),
-                     "{{f:{},h:{},k:{},p:{},q:{},r:{},s:{},x:{},y:{},z:{}}}",
+                     "{{\"f\":{},\"h\":{},\"k\":{},\"p\":{},\"q\":{},\"r\":{},"
+                     "\"s\":{},\"x\":{},\"y\":{},\"z\":{}}}",
                      filter.f(), filter.h(), filter.k(), filter.p(), filter.q(),
                      filter.r(), filter.s(), filter.x(), filter.y(),
                      filter.z());

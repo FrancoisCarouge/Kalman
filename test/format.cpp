@@ -53,7 +53,8 @@ namespace
 [[maybe_unused]] auto format110{ [] {
   kalman k;
 
-  assert(std::format("{}", k) == "{f:1,h:1,k:1,p:1,q:0,r:0,s:1,x:0,y:0,z:0}");
+  assert(std::format("{}", k) ==
+         R"({"f":1,"h":1,"k":1,"p":1,"q":0,"r":0,"s":1,"x":0,"y":0,"z":0})");
 
   return 0;
 }() };
@@ -64,8 +65,9 @@ namespace
   using kalman = fcarouge::kalman<double, 1, 1, 1>;
   kalman k;
 
-  assert(std::format("{}", k) ==
-         "{f:1,g:1,h:1,k:1,p:1,q:0,r:0,s:1,u:0,x:0,y:0,z:0}");
+  assert(
+      std::format("{}", k) ==
+      R"({"f":1,"g":1,"h":1,"k":1,"p":1,"q":0,"r":0,"s":1,"u":0,"x":0,"y":0,"z":0})");
 
   return 0;
 }() };
