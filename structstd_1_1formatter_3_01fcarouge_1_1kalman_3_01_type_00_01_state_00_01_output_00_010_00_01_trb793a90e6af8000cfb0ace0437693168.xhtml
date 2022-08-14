@@ -111,7 +111,7 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Type, std::size_t State, std::size_t Output, typename Transpose, typename Symmetrize, typename Divide, typename Identity, typename UpdateTypes, typename PredictionTypes, typename Char&gt;<br />
 struct std::formatter&lt; fcarouge::kalman&lt; Type, State, Output, 0, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;, Char &gt;</div>
-<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00087">87</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00088">88</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9f4e3aa0061ed763b3098bd215f5ae3e" name="a9f4e3aa0061ed763b3098bd215f5ae3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9f4e3aa0061ed763b3098bd215f5ae3e">&#9670;&nbsp;</a></span>format()</h2>
@@ -152,14 +152,15 @@ template&lt;typename OutputIt &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00098">98</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">return</span> format_to(format_context.out(),</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                     <span class="stringliteral">&quot;{{f:{},h:{},k:{},p:{},q:{},r:{},s:{},x:{},y:{},z:{}}}&quot;</span>,</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                     filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af374ab30a5a1a7eee7e5aaffa939c3bd">f</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa5702b0eb84c2624d32cd92c00d79c4f">h</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ab5e36130dfdd20d31788e5888d94e899">k</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aadce185c0e8bf0097fa9e92769266a8d">p</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a00c6d53aab568dd3cc4571152db95259">q</a>(),</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                     filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">r</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#adaaca0b4d2629296e4fc51c81e8e5563">s</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">x</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aac004214bb38a41811941949857fac4a">y</a>(),</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                     filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6f6c8a881ebdc16f7cb1ec40c70f69c1">z</a>());</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00099">99</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">return</span> format_to(format_context.out(),</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                     <span class="stringliteral">&quot;{{\&quot;f\&quot;:{},\&quot;h\&quot;:{},\&quot;k\&quot;:{},\&quot;p\&quot;:{},\&quot;q\&quot;:{},\&quot;r\&quot;:{},&quot;</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                     <span class="stringliteral">&quot;\&quot;s\&quot;:{},\&quot;x\&quot;:{},\&quot;y\&quot;:{},\&quot;z\&quot;:{}}}&quot;</span>,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                     filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af374ab30a5a1a7eee7e5aaffa939c3bd">f</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa5702b0eb84c2624d32cd92c00d79c4f">h</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ab5e36130dfdd20d31788e5888d94e899">k</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aadce185c0e8bf0097fa9e92769266a8d">p</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a00c6d53aab568dd3cc4571152db95259">q</a>(),</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                     filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">r</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#adaaca0b4d2629296e4fc51c81e8e5563">s</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">x</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aac004214bb38a41811941949857fac4a">y</a>(),</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                     filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6f6c8a881ebdc16f7cb1ec40c70f69c1">z</a>());</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  }</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a00c6d53aab568dd3cc4571152db95259"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a00c6d53aab568dd3cc4571152db95259">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr auto q() const -&gt; process_uncertainty</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a154cbaed3f255ec32b08031b2de47feb"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a154cbaed3f255ec32b08031b2de47feb">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; state</div><div class="ttdoc">Returns the state estimate column vector X.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a34031f643cc88ad51facb3777de765aa"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a34031f643cc88ad51facb3777de765aa">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; output_uncertainty</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div></div>
@@ -200,10 +201,10 @@ template&lt;typename Type , std::size_t State, std::size_t Output, typename Tran
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd>Support parsing arguments. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00092">92</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">return</span> parse_context.begin();</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">return</span> parse_context.begin();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -216,7 +217,7 @@ template&lt;typename Type , std::size_t State, std::size_t Output, typename Tran
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>std</b></li><li class="navelem"><a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_type_00_01_state_00_01_output_00_010_00_01_trb793a90e6af8000cfb0ace0437693168.xhtml">formatter&lt; fcarouge::kalman&lt; Type, State, Output, 0, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;, Char &gt;</a></li>
-    <li class="footer">Generated on Sun Aug 14 2022 18:50:03 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Aug 14 2022 19:06:47 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
