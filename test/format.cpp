@@ -51,8 +51,9 @@ namespace
 [[maybe_unused]] auto format_d_1x1x0{ [] {
   kalman k;
 
-  assert(std::format("{}", k) ==
-         R"({"f":1,"h":1,"k":1,"p":1,"q":0,"r":0,"s":1,"x":0,"y":0,"z":0})");
+  assert(
+      std::format("{}", k) ==
+      R"({"f": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0})");
 
   return 0;
 }() };
@@ -64,7 +65,24 @@ namespace
 
   assert(
       std::format("{}", k) ==
-      R"({"f":1,"g":1,"h":1,"k":1,"p":1,"q":0,"r":0,"s":1,"u":0,"x":0,"y":0,"z":0})");
+      R"({"f": 1, "g": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "u": 0, "x": 0, "y": 0, "z": 0})");
+
+  return 0;
+}() };
+
+//! @test Verifies formatting filters for single-dimension filters with input
+//! control and additional arguments.
+[[maybe_unused]] auto format_d_1x1x1_cifd_dfic{ [] {
+  using kalman =
+      fcarouge::kalman<double, double, double, std::identity, std::identity,
+                       std::divides<double>, identity_matrix,
+                       std::tuple<double, double, double>,
+                       std::tuple<double, double, double, double>>;
+  kalman k;
+
+  assert(
+      std::format("{}", k) ==
+      R"({"f": 1, "g": 1, "h": 1, "k": 1, "p": 1, "prediction_0": 0, "prediction_1": 0, "prediction_2": 0, "prediction_3": 0, "q": 0, "r": 0, "s": 1, "u": 0, "update_0": 0, "update_1": 0, "update_2": 0, "x": 0, "y": 0, "z": 0})");
 
   return 0;
 }() };

@@ -18,8 +18,11 @@ The library supports simple and extended filters. The update equation uses the J
     - [Modifiers](#modifiers)
 - [Format](#format)
 - [Installation](#installation)
-- [Performance](#performance)
-- [Motivation](#motivation)
+- [Considerations](#considerations)
+  - [Motivations](#motivations)
+  - [Selected Tradeoffs](#selected-tradeoffs)
+  - [Lessons Learned](#lessons-learned)
+  - [Performance](#performance)
 - [Resources](#resources)
 - [Third Party Acknowledgement](#third-party-acknowledgement)
 - [Sponsors](#sponsors)
@@ -169,9 +172,15 @@ k(drift_x, drift_y, position_x, position_y, variometer);
 
 # Class kalman
 
-Defined in header [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp)
+A Bayesian filter that uses multivariate Gaussians.
 
-A Bayesian filter that uses multivariate Gaussians. Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.
+Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science.
+
+Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.
+
+This class participates in a convenience formatter specialization for formatted string representation of the filter state.
+
+Declared and fully documented in the [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp) header.
 
 ```cpp
 template <
@@ -268,20 +277,34 @@ std::string message{ std::format("{}", k) };
 
 See installation instructions in [INSTALL.txt](INSTALL.txt).
 
-# Performance
+# Considerations
+
+## Motivations
+
+Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.
+
+This package explores what could be a Kalman filter implementation a la standard library. The following concerns are considered:
+- Separation of the application domain and integration needs.
+- Separation of the mathematical concepts and linear algebra implementation.
+- Generalization of the modern C++ language and library support.
+
+## Selected Tradeoffs
+
+In theory there is no difference between theory and practice, while in practice there is:
+
+- Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.
+
+## Lessons Learned
+
+Design, development, and testing uncovered unexpected facets of the projects:
+
+- The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full-compile time verification of unit and index-type safeties.
+
+## Performance
 
 The [benchmarks](benchmark) share some performance information.
 
 ![Float](benchmark/float.svg)
-
-# Motivation
-
-Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.
-
-This package explores what could be a Kalman filter implementation a la standard library. The following concerns and tradeoffs are considered:
-- Separation of the application domain.
-- Separation of the algebra implementation.
-- Generalization of the support.
 
 # Resources
 

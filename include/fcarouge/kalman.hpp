@@ -47,6 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/utility.hpp"
 
 #include <concepts>
+#include <cstddef>
 #include <functional>
 #include <type_traits>
 #include <utility>
@@ -82,6 +83,7 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! @brief Kalman filter.
 //!
 //! @details A Bayesian filter that uses multivariate Gaussians.
+//!
 //! Applicable for unimodal and uncorrelated uncertainties. Kalman filters
 //! assume white noise, propagation and measurement functions are
 //! differentiable, and that the uncertainty stays centered on the state
@@ -89,9 +91,13 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! estimates by adding Gaussians. Design the state (X, P), the process (F, Q),
 //! the measurement (Z, R), the measurement function H, and if the system has
 //! control inputs (U, B). Designing a filter is as much art as science.
+//!
 //! Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no
 //! input) are supported through the Standard Templated Library (STL). Higher
 //! dimension filters require Eigen 3 support.
+//!
+//! This class participates in a convenience formatter specialization for
+//! formatted string representation of the filter state.
 //!
 //! @tparam State The type template parameter of the state column vector x.
 //! State variables can be observed (measured), or hidden variables (inferred).
@@ -788,6 +794,11 @@ class kalman
   //! @details Predicts and updates the estimates per prediction arguments,
   //! control input, and measurement output.
   //!
+  //! @tparam InputTypes The template parameter pack types passed in the
+  //! `arguments` parameters after the update arguments and before the output
+  //! arguments. `InputTypes` must be compatible with the `Input` type template
+  //! parameter of the control u.
+  //!
   //! @param arguments The prediction, update, input, and output parameters of
   //! the filter, in that order. The arguments need to be compatible with the
   //! filter types. The prediction parameters convertible to the
@@ -836,7 +847,22 @@ class kalman
   //! sufficient for all clients?
   //! @todo Consider if returning the state column vector X would be preferable?
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Can the parameter pack of `UpdateTypes` be explicit in the method
+  //! declaration for user clarity?
   inline constexpr void update(const auto &...arguments);
+
+  //! @brief Returns the Nth update argument.
+  //!
+  //! @details Convenience access to the last used update arguments.
+  //!
+  //! @tparam The non-type template parameter index position of the update
+  //! argument types.
+  //!
+  //! @return The update argument corresponding to the Nth position of the
+  //! parameter pack of the tuple-like `UpdateTypes` class template type.
+  //!
+  //! @complexity Constant.
+  template <std::size_t Position> inline constexpr auto update() const;
 
   //! @brief Produces estimates of the state variables and uncertainties.
   //!
@@ -854,7 +880,22 @@ class kalman
   //! sufficient for all clients?
   //! @todo Consider if returning the state column vector X would be preferable?
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Can the parameter pack of `PredictionTypes` be explicit in the
+  //! method declaration for user clarity?
   inline constexpr void predict(const auto &...arguments);
+
+  //! @brief Returns the Nth prediction argument.
+  //!
+  //! @details Convenience access to the last used prediction arguments.
+  //!
+  //! @tparam The non-type template parameter index position of the prediction
+  //! argument types.
+  //!
+  //! @return The prediction argument corresponding to the Nth position of the
+  //! parameter pack of the tuple-like `PredictionTypes` class template type.
+  //!
+  //! @complexity Constant.
+  template <std::size_t Position> inline constexpr auto predict() const;
 
   //! @}
 };
@@ -1326,11 +1367,35 @@ kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
           typename UpdateTypes, typename PredictionTypes>
+template <std::size_t Position>
+[[nodiscard("The returned update argument is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       UpdateTypes, PredictionTypes>::update() const
+{
+  return std::get<Position>(filter.update_arguments);
+}
+
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        UpdateTypes, PredictionTypes>::predict(const auto &...arguments)
 {
   filter.predict(arguments...);
+}
+
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename UpdateTypes, typename PredictionTypes>
+template <std::size_t Position>
+[[nodiscard("The returned prediction argument is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+       UpdateTypes, PredictionTypes>::predict() const
+{
+  return std::get<Position>(filter.prediction_arguments);
 }
 
 } // namespace fcarouge
