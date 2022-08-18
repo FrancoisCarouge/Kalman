@@ -39,6 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_KALMAN_HPP
 #define FCAROUGE_INTERNAL_KALMAN_HPP
 
+#include "utility.hpp"
+
 #include <array>
 #include <cstddef>
 #include <functional>
@@ -46,22 +48,6 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::internal
 {
-
-template <typename...> struct pack {
-};
-
-using empty_pack = pack<>;
-
-template <typename Type> struct repack {
-  using type = Type;
-};
-
-template <template <typename...> typename From, typename... Types>
-struct repack<From<Types...>> {
-  using type = pack<Types...>;
-};
-
-template <typename From> using repack_t = typename repack<From>::type;
 
 template <typename, std::size_t, std::size_t, std::size_t, typename, typename,
           typename, typename, typename, typename>
