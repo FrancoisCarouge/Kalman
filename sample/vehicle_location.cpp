@@ -1,8 +1,8 @@
-#include "fcarouge/kalman_eigen.hpp"
+#include "fcarouge/eigen/kalman.hpp"
 
 #include <cassert>
 
-namespace fcarouge::sample
+namespace fcarouge::eigen::sample
 {
 namespace
 {
@@ -27,7 +27,8 @@ namespace
 //! @example vehicle_location.cpp
 [[maybe_unused]] auto vehicle_location{ [] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
-  using kalman = eigen::kalman<double, 6, 2>;
+  using kalman = kalman<vector<double, 6>, vector<double, 2>>;
+
   kalman k;
 
   // Initialization
@@ -166,4 +167,4 @@ namespace
 }() };
 
 } // namespace
-} // namespace fcarouge::sample
+} // namespace fcarouge::eigen::sample

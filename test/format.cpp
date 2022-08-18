@@ -37,11 +37,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-#include "fcarouge/kalman_eigen.hpp"
 
 #include <cassert>
 #include <format>
-#include <string>
 
 namespace fcarouge::test
 {
@@ -62,8 +60,7 @@ namespace
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control without additional arguments.
 [[maybe_unused]] auto format_d_1x1x1{ [] {
-  using kalman = fcarouge::kalman<double, 1, 1, 1>;
-  kalman k;
+  kalman<double, double, double> k;
 
   assert(
       std::format("{}", k) ==

@@ -54,7 +54,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <fmt/printf.h>
 #include <fmt/xchar.h>
 
-#include <cstddef>
 #include <cstdio>
 #include <locale>
 #include <string_view>
@@ -62,10 +61,8 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge
 {
-template <typename Type, std::size_t State, std::size_t Output,
-          std::size_t Input, typename Transpose, typename Symmetrize,
-          typename Divide, typename Identity, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename, typename, typename, typename, typename, typename, typename,
+          typename, typename>
 class kalman;
 } // namespace fcarouge
 
@@ -123,18 +120,16 @@ inline void print(std::FILE *file, std::string_view format,
 
 } // namespace std
 
-template <typename Type, std::size_t State, std::size_t Output,
-          std::size_t Input, typename Transpose, typename Symmetrize,
-          typename Divide, typename Identity, typename UpdateTypes,
-          typename PredictionTypes, typename Char>
+template <typename State, typename Output, typename Input, typename Transpose,
+          typename Symmetrize, typename Divide, typename Identity,
+          typename UpdateTypes, typename PredictionTypes, typename Char>
 struct fmt::formatter<
-    fcarouge::kalman<Type, State, Output, Input, Transpose, Symmetrize, Divide,
+    fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                      Identity, UpdateTypes, PredictionTypes>,
     Char>
         : public std::formatter<
-              fcarouge::kalman<Type, State, Output, Input, Transpose,
-                               Symmetrize, Divide, Identity, UpdateTypes,
-                               PredictionTypes>,
+              fcarouge::kalman<State, Output, Input, Transpose, Symmetrize,
+                               Divide, Identity, UpdateTypes, PredictionTypes>,
               Char> {
 };
 

@@ -37,7 +37,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-#include "fcarouge/kalman_eigen.hpp"
 
 #include <cassert>
 
@@ -67,7 +66,7 @@ namespace
 //! @test Verifies default values are initialized for single-dimension filters
 //! with input control.
 [[maybe_unused]] auto defaults111{ [] {
-  using kalman = fcarouge::kalman<double, 1, 1, 1>;
+  using kalman = fcarouge::kalman<double, double, double>;
   kalman k;
 
   assert(k.f() == 1);
@@ -82,38 +81,6 @@ namespace
   assert(k.x() == 0 && "Origin state.");
   assert(k.y() == 0);
   assert(k.z() == 0);
-
-  return 0;
-}() };
-
-//! @test Verifies default values are initialized for multi-dimension filters.
-[[maybe_unused]] auto defaults543{ [] {
-  using kalman = eigen::kalman<double, 5, 4, 3>;
-
-  kalman k;
-  const auto z3x1{ Eigen::Vector<double, 3>::Zero() };
-  const auto i4x4{ Eigen::Matrix<double, 4, 4>::Identity() };
-  const auto i4x5{ Eigen::Matrix<double, 4, 5>::Identity() };
-  const auto i5x3{ Eigen::Matrix<double, 5, 3>::Identity() };
-  const auto i5x4{ Eigen::Matrix<double, 5, 4>::Identity() };
-  const auto i5x5{ Eigen::Matrix<double, 5, 5>::Identity() };
-  const auto z4x1{ Eigen::Vector<double, 4>::Zero() };
-  const auto z4x4{ Eigen::Matrix<double, 4, 4>::Zero() };
-  const auto z5x1{ Eigen::Vector<double, 5>::Zero() };
-  const auto z5x5{ Eigen::Matrix<double, 5, 5>::Zero() };
-
-  assert(k.f() == i5x5);
-  assert(k.g() == i5x3);
-  assert(k.h() == i4x5);
-  assert(k.k() == i5x4);
-  assert(k.p() == i5x5);
-  assert(k.q() == z5x5 && "No process noise by default.");
-  assert(k.r() == z4x4 && "No observation noise by default.");
-  assert(k.s() == i4x4);
-  assert(k.u() == z3x1 && "No initial control.");
-  assert(k.x() == z5x1 && "Origin state.");
-  assert(k.y() == z4x1);
-  assert(k.z() == z4x1);
 
   return 0;
 }() };

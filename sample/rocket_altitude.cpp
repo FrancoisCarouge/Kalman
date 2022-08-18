@@ -1,9 +1,9 @@
-#include "fcarouge/kalman_eigen.hpp"
+#include "fcarouge/eigen/kalman.hpp"
 
 #include <cassert>
 #include <chrono>
 
-namespace fcarouge::sample
+namespace fcarouge::eigen::sample
 {
 namespace
 {
@@ -43,8 +43,8 @@ namespace
 //! @example rocket_altitude.cpp
 [[maybe_unused]] auto rocket_altitude{ [] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
-  using kalman = eigen::kalman<double, 2, 1, 1, std::tuple<>,
-                               std::tuple<std::chrono::milliseconds>>;
+  using kalman = kalman<vector<double, 2>, double, double, std::tuple<>,
+                        std::tuple<std::chrono::milliseconds>>;
   kalman k;
 
   // Initialization
@@ -105,11 +105,11 @@ namespace
   // Measure and Update
   // The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension
   // of the observation matrix H will be 1x2.
-  k.h(1., 0.);
+  k.h(kalman::output_model{ 1., 0. });
 
   // For the sake of the example simplicity, we will assume a constant
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
-  k.r(400.);
+  k.r(kalman::output_uncertainty{ 400. });
 
   k.update(-32.4);
 
@@ -204,4 +204,4 @@ namespace
 }() };
 
 } // namespace
-} // namespace fcarouge::sample
+} // namespace fcarouge::eigen::sample

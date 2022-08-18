@@ -1,9 +1,9 @@
-#include "fcarouge/kalman_eigen.hpp"
+#include "fcarouge/eigen/kalman.hpp"
 
 #include <cassert>
 #include <cmath>
 
-namespace fcarouge::sample
+namespace fcarouge::eigen::sample
 {
 namespace
 {
@@ -32,8 +32,8 @@ namespace
 [[maybe_unused]] auto ardupilot_soaring{ [] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
-  using kalman = eigen::kalman<float, 4, 1, 0, std::tuple<float, float>,
-                               std::tuple<float, float>>;
+  using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
+                        std::tuple<float, float>>;
 
   kalman k;
 
@@ -68,7 +68,7 @@ namespace
                                    { 0, 0, 0, distance_noise } });
 
   const float measure_noise{ std::pow(0.45f, 2.f) };
-  k.r(measure_noise);
+  k.r(kalman::output_uncertainty{ measure_noise });
 
   // Observation Z: [w] vertical air velocity w at the aircraft’s
   // position w.r.t. the thermal center [m.s^-1].
@@ -116,4 +116,4 @@ namespace
 }() };
 
 } // namespace
-} // namespace fcarouge::sample
+} // namespace fcarouge::eigen::sample

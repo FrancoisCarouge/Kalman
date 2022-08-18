@@ -34,7 +34,7 @@ The library supports simple and extended filters. The update equation uses the J
 Example from the building height estimation sample. One estimated state and one observed output filter.
 
 ```cpp
-fcarouge::kalman k;
+kalman k;
 
 k.x(60.);
 k.p(225.);
@@ -48,7 +48,7 @@ k(48.54);
 Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.
 
 ```cpp
-using kalman = fcarouge::eigen::kalman<double, 6, 2>;
+using kalman = kalman<vector<double, 6>, vector<double, 2>>;
 
 kalman k;
 
@@ -83,8 +83,8 @@ k(-375.93, 301.78);
 Example from the thermal, current of warm air, strength, radius, and location estimation sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
 
 ```cpp
-using kalman = fcarouge::eigen::kalman<float, 4, 1, 0, std::tuple<float, float>,
-                                        std::tuple<float, float>>;
+using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
+                             std::tuple<float, float>>;
 
 kalman k;
 
@@ -175,7 +175,6 @@ A Bayesian filter that uses multivariate Gaussians. Applicable for unimodal and 
 
 ```cpp
 template <
-  typename Type,
   typename State,
   typename Output,
   typename Input,
@@ -192,10 +191,9 @@ class kalman
 
 | Template Parameter | Definition |
 | --- | --- |
-| `Type` | The type template parameter of the filter data value type used for computation. Defaults to `double`. |
-| `State` | The non-type template size of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `1`. |
-| `Output` | The non-type template size of the measurement column vector z. Defaults to `1`. |
-| `Input` | The non-type template size of the control column vector u. A zero `0` input size value can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to `0`. |
+| `State` | The type template parameter of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `double`. |
+| `Output` | The type template parameter of the measurement column vector z. Defaults to `double`. |
+| `Input` | The type template parameter of the control u. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to `void`. |
 | `Transpose` | The customization point object template parameter of the matrix transpose functor. Defaults to the standard passthrough `std::identity` function object since the transposed value of an arithmetic type is itself. |
 | `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. Defaults to the standard passthrough `std::identity` function object since the symmetric value of an arithmetic type is itself. |
 | `Divide` | The customization point object template parameter of the matrix division functor. Default to the standard division `std::divides<void>` function object. |
