@@ -439,7 +439,7 @@ class kalman
 
   //! @brief Returns the last control column vector U.
   //!
-  //! @details Not present when the filter has no input.
+  //! @details This member function is not present when the filter has no input.
   //!
   //! @return The last control column vector U.
   //!
@@ -774,6 +774,8 @@ class kalman
 
   //! @brief Returns the control transition matrix G.
   //!
+  //! @details This member function is not present when the filter has no input.
+  //!
   //! @return The control transition matrix G.
   //!
   //! @complexity Constant.
@@ -781,12 +783,16 @@ class kalman
 
   //! @brief Sets the control transition matrix G.
   //!
+  //! @details This member function is not present when the filter has no input.
+  //!
   //! @param value The copied control transition matrix G.
   //!
   //! @complexity Constant.
   inline constexpr void g(const input_control &value) requires(Input > 0);
 
   //! @brief Sets the control transition matrix G.
+  //!
+  //! @details This member function is not present when the filter has no input.
   //!
   //! @param value The moved control transition matrix G.
   //!
