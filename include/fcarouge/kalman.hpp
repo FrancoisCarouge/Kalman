@@ -44,6 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "internal/format.hpp"
 #include "internal/kalman.hpp"
+#include "internal/utility.hpp"
 
 #include <concepts>
 #include <cstddef>
