@@ -263,7 +263,7 @@ A specialization of the standard formatter is provided for the filter. Use `std:
 fcarouge::kalman k;
 
 std::string message{ std::format("{}", k) };
-// {f:1,h:1,k:1,p:1,q:0,r:0,s:1,x:0,y:0,z:0}
+// {"f":1,"h":1,"k":1,"p":1,"q":0,"r":0,"s":1,"x":0,"y":0,"z":0}
 ```
 
 # Installation

@@ -49,8 +49,8 @@ namespace
 {
 
 //! @test Verifies formatting filters for single-dimension filters without input
-//! control.
-[[maybe_unused]] auto format110{ [] {
+//! control or additional arguments.
+[[maybe_unused]] auto format_d_1x1x0{ [] {
   kalman k;
 
   assert(std::format("{}", k) ==
@@ -60,8 +60,8 @@ namespace
 }() };
 
 //! @test Verifies formatting filters for single-dimension filters with input
-//! control.
-[[maybe_unused]] auto format111{ [] {
+//! control without additional arguments.
+[[maybe_unused]] auto format_d_1x1x1{ [] {
   using kalman = fcarouge::kalman<double, 1, 1, 1>;
   kalman k;
 
