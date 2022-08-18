@@ -85,7 +85,9 @@ $(document).ready(function(){initNavTree('namespacefcarouge_1_1internal.xhtml','
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">fcarouge::internal Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -115,6 +117,18 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memTemplParams" colspan="2">template&lt;typename From &gt; </td></tr>
 <tr class="memitem:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22">repack_t</a> = typename repack&lt; From &gt;::type</td></tr>
 <tr class="separator:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a4c0bbc15a41d76dd2b4b23d8566fba57"><td class="memTemplParams" colspan="2">template&lt;auto Begin, auto End, auto Increment, typename Function &gt; </td></tr>
+<tr class="memitem:a4c0bbc15a41d76dd2b4b23d8566fba57"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">for_constexpr</a> (Function &amp;&amp;function)</td></tr>
+<tr class="separator:a4c0bbc15a41d76dd2b4b23d8566fba57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memTemplParams" colspan="2">template&lt;typename From &gt; </td></tr>
+<tr class="memitem:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9">repack_s</a> { repack&lt;From&gt;::size }</td></tr>
+<tr class="separator:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Internal implementation details. </p>
@@ -132,7 +146,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00053">53</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00050">50</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -150,7 +164,71 @@ template&lt;typename From &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2kalman_8hpp_source.xhtml#l00064">64</a> of file <a class="el" href="internal_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00062">62</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a4c0bbc15a41d76dd2b4b23d8566fba57" name="a4c0bbc15a41d76dd2b4b23d8566fba57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c0bbc15a41d76dd2b4b23d8566fba57">&#9670;&nbsp;</a></span>for_constexpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;auto Begin, auto End, auto Increment, typename Function &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void fcarouge::internal::for_constexpr </td>
+          <td>(</td>
+          <td class="paramtype">Function &amp;&amp;&#160;</td>
+          <td class="paramname"><em>function</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00067">67</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">function</span>(std::integral_constant&lt;decltype(Begin), Begin&gt;());</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(<span class="keyword">function</span>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a61c7050558e5ccfe40b4c5d1c5c058b9" name="a61c7050558e5ccfe40b4c5d1c5c058b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61c7050558e5ccfe40b4c5d1c5c058b9">&#9670;&nbsp;</a></span>repack_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename From &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto fcarouge::internal::repack_s { repack&lt;From&gt;::size }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00064">64</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -160,7 +238,7 @@ template&lt;typename From &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Thu Aug 18 2022 00:55:45 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Aug 18 2022 01:22:47 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
