@@ -44,6 +44,9 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::internal
 {
 
+struct empty {
+};
+
 template <typename...> struct pack {
 };
 

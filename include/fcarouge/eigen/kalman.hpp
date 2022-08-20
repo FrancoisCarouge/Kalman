@@ -36,15 +36,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_EIGEN_HPP
-#define FCAROUGE_KALMAN_EIGEN_HPP
+#ifndef FCAROUGE_EIGEN_KALMAN_HPP
+#define FCAROUGE_EIGEN_KALMAN_HPP
 
 //! @file
 //! @brief Kalman operation for Eigen 3 types.
 
-#include "internal/eigen.hpp"
+#include "fcarouge/kalman.hpp"
+#include "internal/support.hpp"
 
-#include <cstddef>
+#include <Eigen/Eigen>
 
 namespace fcarouge::eigen
 {
@@ -60,7 +61,18 @@ using divide = internal::divide;
 //! @brief Function object for providing an Eigen identity matrix.
 using identity_matrix = internal::identity_matrix;
 
-using empty_pack = internal::empty_pack;
+//! @brief Convenience tuple-like empty pack type.
+using empty_pack = fcarouge::internal::empty_pack;
+
+//! @brief Convenience tuple-like pack type.
+template <typename... Types> using pack = fcarouge::internal::pack<Types...>;
+
+//! @brief Convenience Eigen vector.
+template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+
+//! @brief Convenience Eigen matrix.
+template <typename Type, auto RowSize, auto ColumnSize>
+using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @brief Eigen-based Kalman filter.
 //!
@@ -68,13 +80,13 @@ using empty_pack = internal::empty_pack;
 //! sizes fixed at compile-time.
 //!
 //! @see fcarouge::kalman
-template <typename Type = double, std::size_t State = 1, std::size_t Output = 1,
-          std::size_t Input = 0, typename UpdateTypes = empty_pack,
+template <typename State = double, typename Output = double,
+          typename Input = void, typename UpdateTypes = empty_pack,
           typename PredictionTypes = empty_pack>
 using kalman =
-    fcarouge::kalman<Type, State, Output, Input, transpose, symmetrize, divide,
+    fcarouge::kalman<State, Output, Input, transpose, symmetrize, divide,
                      identity_matrix, UpdateTypes, PredictionTypes>;
 
 } // namespace fcarouge::eigen
 
-#endif // FCAROUGE_KALMAN_EIGEN_HPP
+#endif // FCAROUGE_EIGEN_KALMAN_HPP

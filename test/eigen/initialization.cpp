@@ -36,70 +36,47 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman.hpp"
+#include "fcarouge/eigen/kalman.hpp"
 
 #include <cassert>
 
-namespace fcarouge::test
+namespace fcarouge::eigen::test
 {
 namespace
 {
-//! @test Verifies the state transition matrix F management overloads for
-//! the default filter type.
-[[maybe_unused]] auto f111{ [] {
-  using kalman = kalman<>;
+
+//! @test Verifies default values are initialized for multi-dimension filters.
+[[maybe_unused]] auto defaults543{ [] {
+  using kalman =
+      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>>;
   kalman k;
 
-  assert(k.f() == 1);
+  const auto z3x1{ vector<double, 3>::Zero() };
+  const auto i4x4{ matrix<double, 4, 4>::Identity() };
+  const auto i4x5{ matrix<double, 4, 5>::Identity() };
+  const auto i5x3{ matrix<double, 5, 3>::Identity() };
+  const auto i5x4{ matrix<double, 5, 4>::Identity() };
+  const auto i5x5{ matrix<double, 5, 5>::Identity() };
+  const auto z4x1{ vector<double, 4>::Zero() };
+  const auto z4x4{ matrix<double, 4, 4>::Zero() };
+  const auto z5x1{ vector<double, 5>::Zero() };
+  const auto z5x5{ matrix<double, 5, 5>::Zero() };
 
-  {
-    const auto f{ 2. };
-    k.f(f);
-    assert(k.f() == 2);
-  }
-
-  {
-    const auto f{ 3. };
-    k.f(std::move(f));
-    assert(k.f() == 3);
-  }
-
-  {
-    const auto f{ 4. };
-    k.f(f);
-    assert(k.f() == 4);
-  }
-
-  {
-    const auto f{ 5. };
-    k.f(std::move(f));
-    assert(k.f() == 5);
-  }
-
-  {
-    const auto f{ [](const kalman::state &x) -> kalman::state_transition {
-      static_cast<void>(x);
-      return 6.;
-    } };
-    k.f(f);
-    assert(k.f() == 5);
-    k.predict();
-    assert(k.f() == 6);
-  }
-
-  {
-    const auto f{ [](const kalman::state &x) -> kalman::state_transition {
-      static_cast<void>(x);
-      return 7.;
-    } };
-    k.f(std::move(f));
-    assert(k.f() == 6);
-    k.predict();
-    assert(k.f() == 7);
-  }
+  assert(k.f() == i5x5);
+  assert(k.g() == i5x3);
+  assert(k.h() == i4x5);
+  assert(k.k() == i5x4);
+  assert(k.p() == i5x5);
+  assert(k.q() == z5x5 && "No process noise by default.");
+  assert(k.r() == z4x4 && "No observation noise by default.");
+  assert(k.s() == i4x4);
+  assert(k.u() == z3x1 && "No initial control.");
+  assert(k.x() == z5x1 && "Origin state.");
+  assert(k.y() == z4x1);
+  assert(k.z() == z4x1);
 
   return 0;
 }() };
 
 } // namespace
-} // namespace fcarouge::test
+} // namespace fcarouge::eigen::test

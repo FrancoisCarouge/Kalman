@@ -36,15 +36,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_EIGEN_HPP
-#define FCAROUGE_INTERNAL_EIGEN_HPP
-
-#include "fcarouge/kalman.hpp"
+#ifndef FCAROUGE_EIGEN_INTERNAL_SUPPORT_HPP
+#define FCAROUGE_EIGEN_INTERNAL_SUPPORT_HPP
 
 #include <Eigen/Eigen>
 
 #include <concepts>
-#include <cstddef>
 #include <functional>
 #include <type_traits>
 
@@ -53,8 +50,6 @@ namespace fcarouge::eigen::internal
 
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
-
-using empty_pack = fcarouge::internal::empty_pack;
 
 struct matrix {
   template <typename Type>
@@ -70,7 +65,7 @@ struct matrix {
     return Eigen::Matrix<type, 1, 1>{ value };
   }
 
-  template <typename Type, std::size_t Size>
+  template <typename Type, auto Size>
   [[nodiscard]] inline constexpr auto
   operator()(const std::array<Type, Size> &value)
   {
@@ -137,4 +132,4 @@ struct identity_matrix {
 
 } // namespace fcarouge::eigen::internal
 
-#endif // FCAROUGE_INTERNAL_EIGEN_HPP
+#endif // FCAROUGE_EIGEN_INTERNAL_SUPPORT_HPP

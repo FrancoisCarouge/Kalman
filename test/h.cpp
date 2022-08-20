@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman_eigen.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <cassert>
 
@@ -96,79 +96,6 @@ namespace
     assert(k.h() == 6);
     k.update();
     assert(k.h() == 7);
-  }
-
-  return 0;
-}() };
-
-//! @test Verifies the observation transition matrix H management overloads for
-//! the Eigen filter type.
-[[maybe_unused]] auto h543{ [] {
-  using kalman =
-      eigen::kalman<double, 5, 4, 3, std::tuple<double, float, int, char>,
-                    std::tuple<char, int, float, double>>;
-
-  kalman k;
-  const auto i4x5{ Eigen::Matrix<double, 4, 5>::Identity() };
-  const auto z4x5{ Eigen::Matrix<double, 4, 5>::Zero() };
-  const Eigen::Matrix<double, 4, 1> z4x1{ Eigen::Matrix<double, 4, 1>::Zero() };
-
-  assert(k.h() == i4x5);
-
-  {
-    const auto h{ i4x5 };
-    k.h(h);
-    assert(k.h() == i4x5);
-  }
-
-  {
-    const auto h{ z4x5 };
-    k.h(std::move(h));
-    assert(k.h() == z4x5);
-  }
-
-  {
-    const auto h{ i4x5 };
-    k.h(h);
-    assert(k.h() == i4x5);
-  }
-
-  {
-    const auto h{ z4x5 };
-    k.h(std::move(h));
-    assert(k.h() == z4x5);
-  }
-
-  {
-    const auto h{ [](const kalman::state &x, const double &d, const float &f,
-                     const int &i, const char &c) -> kalman::output_model {
-      static_cast<void>(x);
-      static_cast<void>(d);
-      static_cast<void>(f);
-      static_cast<void>(i);
-      static_cast<void>(c);
-      return Eigen::Matrix<double, 4, 5>::Identity();
-    } };
-    k.h(h);
-    assert(k.h() == z4x5);
-    k.update(0., 0.f, 0, char(0), z4x1);
-    assert(k.h() == i4x5);
-  }
-
-  {
-    const auto h{ [](const kalman::state &x, const double &d, const float &f,
-                     const int &i, const char &c) -> kalman::output_model {
-      static_cast<void>(x);
-      static_cast<void>(d);
-      static_cast<void>(f);
-      static_cast<void>(i);
-      static_cast<void>(c);
-      return Eigen::Matrix<double, 4, 5>::Zero();
-    } };
-    k.h(std::move(h));
-    assert(k.h() == i4x5);
-    k.update(0., 0.f, 0, char(0), z4x1);
-    assert(k.h() == z4x5);
   }
 
   return 0;

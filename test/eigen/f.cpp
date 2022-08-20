@@ -36,70 +36,91 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman.hpp"
+#include "fcarouge/eigen/kalman.hpp"
 
 #include <cassert>
 
-namespace fcarouge::test
+namespace fcarouge::eigen::test
 {
 namespace
 {
 //! @test Verifies the state transition matrix F management overloads for
-//! the default filter type.
-[[maybe_unused]] auto f111{ [] {
-  using kalman = kalman<>;
+//! the Eigen filter type.
+[[maybe_unused]] auto f543{ [] {
+  using kalman = kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>,
+                        std::tuple<double, float, int, char>,
+                        std::tuple<char, int, float, double>>;
+
   kalman k;
 
-  assert(k.f() == 1);
+  const auto i5x5{ matrix<double, 5, 5>::Identity() };
+  const auto z5x5{ matrix<double, 5, 5>::Zero() };
+  const vector<double, 3> z3{ vector<double, 3>::Zero() };
+
+  assert(k.f() == i5x5);
 
   {
-    const auto f{ 2. };
+    const auto f{ i5x5 };
     k.f(f);
-    assert(k.f() == 2);
+    assert(k.f() == i5x5);
   }
 
   {
-    const auto f{ 3. };
+    const auto f{ z5x5 };
     k.f(std::move(f));
-    assert(k.f() == 3);
+    assert(k.f() == z5x5);
   }
 
   {
-    const auto f{ 4. };
+    const auto f{ i5x5 };
     k.f(f);
-    assert(k.f() == 4);
+    assert(k.f() == i5x5);
   }
 
   {
-    const auto f{ 5. };
+    const auto f{ z5x5 };
     k.f(std::move(f));
-    assert(k.f() == 5);
+    assert(k.f() == z5x5);
   }
 
   {
-    const auto f{ [](const kalman::state &x) -> kalman::state_transition {
+    const auto f{ [](const kalman::state &x, const char &c, const int &i,
+                     const float &f, const double &d,
+                     const kalman::input &u) -> kalman::state_transition {
       static_cast<void>(x);
-      return 6.;
+      static_cast<void>(d);
+      static_cast<void>(f);
+      static_cast<void>(i);
+      static_cast<void>(c);
+      static_cast<void>(u);
+      return matrix<double, 5, 5>::Identity();
     } };
     k.f(f);
-    assert(k.f() == 5);
-    k.predict();
-    assert(k.f() == 6);
+    assert(k.f() == z5x5);
+    k.predict(char(0), 0, 0.f, 0., z3);
+    assert(k.f() == i5x5);
   }
 
   {
-    const auto f{ [](const kalman::state &x) -> kalman::state_transition {
+    const auto f{ [](const kalman::state &x, const char &c, const int &i,
+                     const float &f, const double &d,
+                     const kalman::input &u) -> kalman::state_transition {
       static_cast<void>(x);
-      return 7.;
+      static_cast<void>(d);
+      static_cast<void>(f);
+      static_cast<void>(i);
+      static_cast<void>(c);
+      static_cast<void>(u);
+      return matrix<double, 5, 5>::Zero();
     } };
     k.f(std::move(f));
-    assert(k.f() == 6);
-    k.predict();
-    assert(k.f() == 7);
+    assert(k.f() == i5x5);
+    k.predict(0, 0, 0.f, 0., z3);
+    assert(k.f() == z5x5);
   }
 
   return 0;
 }() };
 
 } // namespace
-} // namespace fcarouge::test
+} // namespace fcarouge::eigen::test
