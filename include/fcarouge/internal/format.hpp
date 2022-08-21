@@ -39,6 +39,9 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_FORMAT_HPP
 #define FCAROUGE_INTERNAL_FORMAT_HPP
 
+#include "utility.hpp"
+
+#include <cstddef>
 #include <format>
 
 namespace fcarouge
@@ -55,13 +58,12 @@ struct std::formatter<
     fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                      Identity, UpdateTypes, PredictionTypes>,
     Char> {
-  //! @todo Support parsing arguments.
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context)
   {
     return parse_context.begin();
   }
 
-  // @todo How to support different nested types?
+  //! @todo P2585 may be useful in simplifying and standardizing the support.
   template <typename OutputIt>
   auto format(const fcarouge::kalman<State, Output, Input, Transpose,
                                      Symmetrize, Divide, Identity, UpdateTypes,
@@ -69,40 +71,48 @@ struct std::formatter<
               std::basic_format_context<OutputIt, Char> &format_context)
       -> OutputIt
   {
-    return format_to(format_context.out(),
-                     "{{\"f\":{},\"g\":{},\"h\":{},\"k\":{},\"p\":{},\"q\":{},"
-                     "\"r\":{},\"s\":{},\"u\":{},\"x\":{},\"y\":{},\"z\":{}}}",
-                     filter.f(), filter.g(), filter.h(), filter.k(), filter.p(),
-                     filter.q(), filter.r(), filter.s(), filter.u(), filter.x(),
-                     filter.y(), filter.z());
-  }
-};
+    format_context.advance_to(
+        format_to(format_context.out(), R"({{"f": {}, )", filter.f()));
 
-template <typename State, typename Output, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename UpdateTypes, typename PredictionTypes, typename Char>
-struct std::formatter<
-    fcarouge::kalman<State, Output, void, Transpose, Symmetrize, Divide,
-                     Identity, UpdateTypes, PredictionTypes>,
-    Char> {
-  //! @todo Support parsing arguments.
-  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context)
-  {
-    return parse_context.begin();
-  }
+    if constexpr (not std::is_same_v<Input, void>) {
+      format_context.advance_to(
+          format_to(format_context.out(), R"("g": {}, )", filter.g()));
+    }
 
-  template <typename OutputIt>
-  auto format(
-      const fcarouge::kalman<State, Output, void, Transpose, Symmetrize, Divide,
-                             Identity, UpdateTypes, PredictionTypes> &filter,
-      std::basic_format_context<OutputIt, Char> &format_context) -> OutputIt
-  {
-    return format_to(format_context.out(),
-                     "{{\"f\":{},\"h\":{},\"k\":{},\"p\":{},\"q\":{},\"r\":{},"
-                     "\"s\":{},\"x\":{},\"y\":{},\"z\":{}}}",
-                     filter.f(), filter.h(), filter.k(), filter.p(), filter.q(),
-                     filter.r(), filter.s(), filter.x(), filter.y(),
-                     filter.z());
+    format_context.advance_to(format_to(format_context.out(),
+                                        R"("h": {}, "k": {}, "p": {}, )",
+                                        filter.h(), filter.k(), filter.p()));
+
+    fcarouge::internal::for_constexpr<
+        std::size_t{ 0 }, fcarouge::internal::repack_s<PredictionTypes>, 1>(
+        [&format_context, &filter](auto position) {
+          format_context.advance_to(format_to(
+              format_context.out(), R"("prediction_{}": {}, )",
+              std::size_t{ position }, filter.template predict<position>()));
+        });
+
+    format_context.advance_to(format_to(format_context.out(),
+                                        R"("q": {}, "r": {}, "s": {}, )",
+                                        filter.q(), filter.r(), filter.s()));
+
+    if constexpr (not std::is_same_v<Input, void>) {
+      format_context.advance_to(
+          format_to(format_context.out(), R"("u": {}, )", filter.u()));
+    }
+
+    fcarouge::internal::for_constexpr<
+        std::size_t{ 0 }, fcarouge::internal::repack_s<UpdateTypes>, 1>(
+        [&format_context, &filter](auto position) {
+          format_context.advance_to(format_to(
+              format_context.out(), R"("update_{}": {}, )",
+              std::size_t{ position }, filter.template update<position>()));
+        });
+
+    format_context.advance_to(format_to(format_context.out(),
+                                        R"("x": {}, "y": {}, "z": {}}})",
+                                        filter.x(), filter.y(), filter.z()));
+
+    return format_context.out();
   }
 };
 

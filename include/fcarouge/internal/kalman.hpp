@@ -42,6 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "utility.hpp"
 
 #include <functional>
+#include <tuple>
 #include <type_traits>
 
 namespace fcarouge::internal
@@ -85,6 +86,8 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
       std::function<state(const state &, const PredictionTypes &...)>;
   using observation_function =
       std::function<output(const state &, const UpdateTypes &...arguments)>;
+  using update_types = std::tuple<UpdateTypes...>;
+  using prediction_types = std::tuple<PredictionTypes...>;
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
   state x{ 0 * Identity().template operator()<state>() };
@@ -104,6 +107,8 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
     Identity().template operator()<innovation_uncertainty>()
   };
   output z{ 0 * Identity().template operator()<output>() };
+  update_types update_arguments{};
+  prediction_types prediction_arguments{};
 
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through k.x() when needed? Where does the practical/performance
@@ -170,6 +175,7 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   {
     const auto i{ identity.template operator()<estimate_uncertainty>() };
 
+    update_arguments = { arguments... };
     z = output{ output_z... };
     h = observation_state_h(x, arguments...); // x, z, args?
     r = noise_observation_r(x, z, arguments...);
@@ -183,6 +189,7 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
 
   inline constexpr void predict(const PredictionTypes &...arguments)
   {
+    prediction_arguments = { arguments... };
     f = transition_state_f(x, arguments...);
     q = noise_process_q(x, arguments...);
     x = transition(x, arguments...);
@@ -232,6 +239,8 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
       std::function<state(const state &, const PredictionTypes &...)>;
   using observation_function =
       std::function<output(const state &, const UpdateTypes &...arguments)>;
+  using update_types = std::tuple<UpdateTypes...>;
+  using prediction_types = std::tuple<PredictionTypes...>;
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
   state x{ 0 * Identity().template operator()<state>() };
@@ -253,6 +262,8 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   };
   output z{ 0 * Identity().template operator()<output>() };
   input u{ 0 * Identity().template operator()<input>() };
+  update_types update_arguments{};
+  prediction_types prediction_arguments{};
 
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through k.x() when needed? Where does the practical/performance
@@ -326,6 +337,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   {
     const auto i{ identity.template operator()<estimate_uncertainty>() };
 
+    update_arguments = { arguments... };
     z = output{ output_z... };
     h = observation_state_h(x, arguments...); // x, z, args?
     r = noise_observation_r(x, z, arguments...);
@@ -347,6 +359,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   inline constexpr void predict(const PredictionTypes &...arguments,
                                 const Inputs &...input_u)
   {
+    prediction_arguments = { arguments... };
     u = input{ input_u... };
     f = transition_state_f(x, arguments..., u);
     q = noise_process_q(x, arguments...);
