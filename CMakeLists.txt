@@ -48,6 +48,9 @@ target_include_directories(kalman
 )
 
 add_executable(kalman_test_driver
+  test/eigen/f.cpp
+  test/eigen/h.cpp
+  test/eigen/initialization.cpp
   test/f.cpp
   test/format.cpp
   test/h.cpp
@@ -56,6 +59,7 @@ add_executable(kalman_test_driver
 
 target_link_libraries(kalman_test_driver
   PRIVATE
+    eigen
     fmt
     kalman
     main
