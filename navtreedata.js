@@ -42,15 +42,19 @@ var NAVTREE =
       ] ],
       [ "Format", "index.xhtml#autotoc_md27", null ],
       [ "Installation", "index.xhtml#autotoc_md28", null ],
-      [ "Performance", "index.xhtml#autotoc_md29", null ],
-      [ "Motivation", "index.xhtml#autotoc_md30", null ],
-      [ "Resources", "index.xhtml#autotoc_md31", null ],
-      [ "Third Party Acknowledgement", "index.xhtml#autotoc_md32", null ],
-      [ "Sponsors", "index.xhtml#autotoc_md33", [
-        [ "Corporate Sponsor", "index.xhtml#autotoc_md34", null ],
-        [ "Named Sponsors", "index.xhtml#autotoc_md35", null ]
+      [ "Considerations", "index.xhtml#autotoc_md29", [
+        [ "Motivations", "index.xhtml#autotoc_md30", null ],
+        [ "Selected Tradeoffs", "index.xhtml#autotoc_md31", null ],
+        [ "Lessons Learned", "index.xhtml#autotoc_md32", null ],
+        [ "Performance", "index.xhtml#autotoc_md33", null ]
       ] ],
-      [ "License", "index.xhtml#autotoc_md36", null ]
+      [ "Resources", "index.xhtml#autotoc_md34", null ],
+      [ "Third Party Acknowledgement", "index.xhtml#autotoc_md35", null ],
+      [ "Sponsors", "index.xhtml#autotoc_md36", [
+        [ "Corporate Sponsor", "index.xhtml#autotoc_md37", null ],
+        [ "Named Sponsors", "index.xhtml#autotoc_md38", null ]
+      ] ],
+      [ "License", "index.xhtml#autotoc_md39", null ]
     ] ],
     [ "Benchmark Results", "md_benchmark__r_e_a_d_m_e.xhtml", null ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
@@ -71,8 +75,8 @@ var NAVTREE =
       [ "System", "md__i_n_s_t_a_l_l.xhtml#autotoc_md14", null ]
     ] ],
     [ "Security Policy", "md__s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md38", null ],
-      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md39", null ]
+      [ "Supported Versions", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md41", null ],
+      [ "Reporting a Vulnerability", "md__s_e_c_u_r_i_t_y.xhtml#autotoc_md42", null ]
     ] ],
     [ "Todo List", "todo.xhtml", null ],
     [ "Test List", "test.xhtml", null ],
@@ -110,7 +114,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"kalman_8hpp.xhtml#aa5a28afb4550bbcbd55d875351de6e27"
+"index.xhtml#autotoc_md39"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

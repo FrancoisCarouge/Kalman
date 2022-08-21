@@ -109,8 +109,13 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </li>
 <li><a href="#format">Format</a></li>
 <li><a href="#installation">Installation</a></li>
+<li><a href="#considerations">Considerations</a><ul>
+<li><a href="#motivations">Motivations</a></li>
+<li><a href="#selected-tradeoffs">Selected Tradeoffs</a></li>
+<li><a href="#lessons-learned">Lessons Learned</a></li>
 <li><a href="#performance">Performance</a></li>
-<li><a href="#motivation">Motivation</a></li>
+</ul>
+</li>
 <li><a href="#resources">Resources</a></li>
 <li><a href="#third-party-acknowledgement">Third Party Acknowledgement</a></li>
 <li><a href="#sponsors">Sponsors</a><ul>
@@ -232,8 +237,11 @@ Continuous Integration &amp; Deployment Actions</h1>
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg" alt="Deploy Code Coverage: Coveralls" style="pointer-events: none;" class="inline"/></a></p>
 <h1><a class="anchor" id="autotoc_md21"></a>
 Class kalman</h1>
-<p >Defined in header <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a></p>
-<p >A Bayesian filter that uses multivariate Gaussians. Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.</p>
+<p >A Bayesian filter that uses multivariate Gaussians.</p>
+<p >Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science.</p>
+<p >Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.</p>
+<p >This class participates in a convenience formatter specialization for formatted string representation of the filter state.</p>
+<p >Declared and fully documented in the <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a> header.</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
 <div class="line">  <span class="keyword">typename</span> State,</div>
 <div class="line">  <span class="keyword">typename</span> Output,</div>
@@ -364,23 +372,37 @@ Format</h1>
 <div class="line"> </div>
 <div class="line">std::string message{ std::format(<span class="stringliteral">&quot;{}&quot;</span>, k) };</div>
 <div class="line"><span class="comment">// {&quot;f&quot;:1,&quot;h&quot;:1,&quot;k&quot;:1,&quot;p&quot;:1,&quot;q&quot;:0,&quot;r&quot;:0,&quot;s&quot;:1,&quot;x&quot;:0,&quot;y&quot;:0,&quot;z&quot;:0}</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00179">kalman.hpp:180</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00185">kalman.hpp:186</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md28"></a>
 Installation</h1>
 <p >See installation instructions in <a href="INSTALL.txt">INSTALL.txt</a>.</p>
 <h1><a class="anchor" id="autotoc_md29"></a>
-Performance</h1>
+Considerations</h1>
+<h2><a class="anchor" id="autotoc_md30"></a>
+Motivations</h2>
+<p >Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.</p>
+<p >This package explores what could be a Kalman filter implementation a la standard library. The following concerns are considered:</p><ul>
+<li>Separation of the application domain and integration needs.</li>
+<li>Separation of the mathematical concepts and linear algebra implementation.</li>
+<li>Generalization of the modern C++ language and library support.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md31"></a>
+Selected Tradeoffs</h2>
+<p >In theory there is no difference between theory and practice, while in practice there is:</p>
+<ul>
+<li>Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md32"></a>
+Lessons Learned</h2>
+<p >Design, development, and testing uncovered unexpected facets of the projects:</p>
+<ul>
+<li>The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full-compile time verification of unit and index-type safeties.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md33"></a>
+Performance</h2>
 <p >The [benchmarks](benchmark) share some performance information.</p>
 <p ><img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/></p>
-<h1><a class="anchor" id="autotoc_md30"></a>
-Motivation</h1>
-<p >Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.</p>
-<p >This package explores what could be a Kalman filter implementation a la standard library. The following concerns and tradeoffs are considered:</p><ul>
-<li>Separation of the application domain.</li>
-<li>Separation of the algebra implementation.</li>
-<li>Generalization of the support.</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md31"></a>
+<h1><a class="anchor" id="autotoc_md34"></a>
 Resources</h1>
 <p >Awesome resources to learn about Kalman filters:</p>
 <ul>
@@ -389,7 +411,7 @@ Resources</h1>
 <li><a href="https://www.anuncommonlab.com/articles/how-kalman-filters-work">How Kalman Filters Work</a> by Tucker McClure of An Uncommon Lab.</li>
 <li><a href="https://en.wikipedia.org/wiki/Kalman_filter">Wikipedia Kalman filter</a> by Wikipedia, the free encyclopedia.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md32"></a>
+<h1><a class="anchor" id="autotoc_md35"></a>
 Third Party Acknowledgement</h1>
 <p >The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:</p><ul>
 <li><a href="https://github.com/peaceiris/actions-gh-pages">actions-gh-pages</a> to upload the documentation to GitHub pages.</li>
@@ -404,18 +426,18 @@ Third Party Acknowledgement</h1>
 <li><a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist">MSVC</a> for compilation and code sanitizers.</li>
 <li><a href="https://valgrind.org">Valgrind</a> to check for correct memory management.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md33"></a>
+<h1><a class="anchor" id="autotoc_md36"></a>
 Sponsors</h1>
 <p >Become a sponsor today! Support this project with coffee and infrastructure!</p>
 <p ><a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor-brightgreen" alt="Sponsor" class="inline"/></a></p>
-<h2><a class="anchor" id="autotoc_md34"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Corporate Sponsor</h2>
 <p >You company logo and link here!</p>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Named Sponsors</h2>
 <p >Your name and link here!</p>
 <p >Thanks everyone!</p>
-<h1><a class="anchor" id="autotoc_md36"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 License</h1>
 <p ><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
 <p >Kalman for C++ is public domain:</p>
@@ -430,7 +452,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Aug 20 2022 03:49:13 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Aug 21 2022 00:25:17 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
