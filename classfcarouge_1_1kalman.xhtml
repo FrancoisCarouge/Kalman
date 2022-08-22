@@ -312,17 +312,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2eee8dab54e2cf6b78bf52551c988bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the extended state observation function h(x).  <a href="classfcarouge_1_1kalman.xhtml#a2eee8dab54e2cf6b78bf52551c988bf5">More...</a><br /></td></tr>
 <tr class="separator:a2eee8dab54e2cf6b78bf52551c988bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Filtering Member Functions</div></td></tr>
-<tr class="memitem:aab1dba08047eb5eb08dfbc8095ea1861"><td class="memTemplParams" colspan="2">template&lt;typename... InputTypes&gt; </td></tr>
-<tr class="memitem:aab1dba08047eb5eb08dfbc8095ea1861"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aab1dba08047eb5eb08dfbc8095ea1861">operator()</a> (const auto &amp;...arguments)</td></tr>
-<tr class="memdesc:aab1dba08047eb5eb08dfbc8095ea1861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a step of the filter.  <a href="classfcarouge_1_1kalman.xhtml#aab1dba08047eb5eb08dfbc8095ea1861">More...</a><br /></td></tr>
-<tr class="separator:aab1dba08047eb5eb08dfbc8095ea1861"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71b11bb6c9a898533dfd86ce6eef5c20"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">update</a> (const auto &amp;...arguments)</td></tr>
-<tr class="memdesc:a71b11bb6c9a898533dfd86ce6eef5c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the estimates with the outcome of a measurement.  <a href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">More...</a><br /></td></tr>
-<tr class="separator:a71b11bb6c9a898533dfd86ce6eef5c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bb0ab5cffd71944ac83f19d5f3b3c83"><td class="memTemplParams" colspan="2">template&lt;std::size_t Position&gt; </td></tr>
-<tr class="memitem:a8bb0ab5cffd71944ac83f19d5f3b3c83"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a8bb0ab5cffd71944ac83f19d5f3b3c83">update</a> () const</td></tr>
-<tr class="memdesc:a8bb0ab5cffd71944ac83f19d5f3b3c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Nth update argument.  <a href="classfcarouge_1_1kalman.xhtml#a8bb0ab5cffd71944ac83f19d5f3b3c83">More...</a><br /></td></tr>
-<tr class="separator:a8bb0ab5cffd71944ac83f19d5f3b3c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a326b305473fba0a1efc17660c94eb199"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">predict</a> (const auto &amp;...arguments)</td></tr>
 <tr class="memdesc:a326b305473fba0a1efc17660c94eb199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces estimates of the state variables and uncertainties.  <a href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">More...</a><br /></td></tr>
 <tr class="separator:a326b305473fba0a1efc17660c94eb199"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -330,6 +319,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aec1d96672e7eea0d0b7c53c21eaf6f90"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aec1d96672e7eea0d0b7c53c21eaf6f90">predict</a> () const</td></tr>
 <tr class="memdesc:aec1d96672e7eea0d0b7c53c21eaf6f90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Nth prediction argument.  <a href="classfcarouge_1_1kalman.xhtml#aec1d96672e7eea0d0b7c53c21eaf6f90">More...</a><br /></td></tr>
 <tr class="separator:aec1d96672e7eea0d0b7c53c21eaf6f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71b11bb6c9a898533dfd86ce6eef5c20"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">update</a> (const auto &amp;...arguments)</td></tr>
+<tr class="memdesc:a71b11bb6c9a898533dfd86ce6eef5c20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the estimates with the outcome of a measurement.  <a href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">More...</a><br /></td></tr>
+<tr class="separator:a71b11bb6c9a898533dfd86ce6eef5c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb0ab5cffd71944ac83f19d5f3b3c83"><td class="memTemplParams" colspan="2">template&lt;std::size_t Position&gt; </td></tr>
+<tr class="memitem:a8bb0ab5cffd71944ac83f19d5f3b3c83"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a8bb0ab5cffd71944ac83f19d5f3b3c83">update</a> () const</td></tr>
+<tr class="memdesc:a8bb0ab5cffd71944ac83f19d5f3b3c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Nth update argument.  <a href="classfcarouge_1_1kalman.xhtml#a8bb0ab5cffd71944ac83f19d5f3b3c83">More...</a><br /></td></tr>
+<tr class="separator:a8bb0ab5cffd71944ac83f19d5f3b3c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab1dba08047eb5eb08dfbc8095ea1861"><td class="memTemplParams" colspan="2">template&lt;typename... InputTypes&gt; </td></tr>
+<tr class="memitem:aab1dba08047eb5eb08dfbc8095ea1861"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aab1dba08047eb5eb08dfbc8095ea1861">operator()</a> (const auto &amp;...arguments)</td></tr>
+<tr class="memdesc:aab1dba08047eb5eb08dfbc8095ea1861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a full step of the filter.  <a href="classfcarouge_1_1kalman.xhtml#aab1dba08047eb5eb08dfbc8095ea1861">More...</a><br /></td></tr>
+<tr class="separator:aab1dba08047eb5eb08dfbc8095ea1861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -1769,8 +1769,8 @@ template&lt;typename... InputTypes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Runs a step of the filter. </p>
-<p >Predicts and updates the estimates per prediction arguments, control input, and measurement output.</p>
+<p>Runs a full step of the filter. </p>
+<p >Predicts and updates the estimates per arguments, control input, and measurement output.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">InputTypes</td><td>The template parameter pack types passed in the <code>arguments</code> parameters after the update arguments and before the output arguments. <code>InputTypes</code> must be compatible with the <code>Input</code> type template parameter of the control u.</td></tr>
@@ -1785,7 +1785,7 @@ template&lt;typename... InputTypes&gt; </div>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Called as <code>k(...);</code> with prediction values and output values when the filter has no input parameters. The input type list is explicitly empty. Otherwise can be called as <code>k.template operator()&lt;input1_t, input2_t, ...&gt;(...);</code> with prediction values, input values, and output values. The input type list being explicitly specified per the fair matching rule. A lambda can come in handy to reduce the verbose call `const auto kf{ <a href="const auto
 &amp;...args">&amp;k</a> { k.template operator()&lt;input1_t, input2_t, ...&gt;(args...); } };<code>then called as</code>kf(...);`.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd">Understand why the implementation cannot be moved out of the class. </p>
 <p class="enddd">What should be the order of the parameters? Update first? </p>
 </dd></dl>
@@ -2078,7 +2078,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
 <p class="interdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
@@ -2755,7 +2755,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </div><div class="memdoc">
 
 <p>Updates the estimates with the outcome of a measurement. </p>
-<p >Implements the Bayes' theorem. Combine one measurement and the prior estimate.</p>
+<p >Also known as the observation or correction step. Implements the Bayes' theorem. Combine one measurement and the prior estimate.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">arguments</td><td>The update and output parameters of the filter, in that order. The arguments need to be compatible with the filter types. The update parameters convertible to the <code>UpdateTypes</code> template pack types are passed through for computations of update matrices. The observation parameter pack types convertible to the <code>Output</code> template type. The update types are explicitly defined with the class definition.</td></tr>
@@ -3132,7 +3132,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sun Aug 21 2022 20:44:31 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Aug 22 2022 01:54:46 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
