@@ -16,7 +16,7 @@ jobs:
       run: |
         sudo apt install clang-format-14
         pip install cmakelang
-    - name: Verify
-      run: |
-        find . -iname *.hpp -o -iname *.cpp -o -iname *.tpp -o -iname support/** | xargs clang-format-14 --Werror --dry-run --verbose -style=file
-        cmake-format --check CMakeLists.txt
+    - name: Verify ClangFormat
+      run: find . -iname *.hpp -o -iname *.cpp -o -iname support/** | xargs clang-format-14 --Werror --dry-run --verbose -style=file
+    - name: Verify CMakeFormat
+      run: cmake-format --check CMakeLists.txt
