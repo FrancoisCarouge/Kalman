@@ -789,9 +789,76 @@ class kalman
   //! @name Public Filtering Member Functions
   //! @{
 
-  //! @brief Runs a step of the filter.
+  //! @brief Produces estimates of the state variables and uncertainties.
   //!
-  //! @details Predicts and updates the estimates per prediction arguments,
+  //! @details Implements the total probability theorem.
+  //!
+  //! @param arguments The prediction and input parameters of
+  //! the filter, in that order. The arguments need to be compatible with the
+  //! filter types. The prediction parameters convertible to the
+  //! `PredictionTypes` template pack types are passed through for computations
+  //! of prediction matrices. The control parameter pack types convertible to
+  //! the `Input` template type. The prediction types are explicitly defined
+  //! with the class definition.
+  //!
+  //! @todo Consider whether this method needs to exist or if the operator() is
+  //! sufficient for all clients?
+  //! @todo Consider if returning the state column vector X would be preferable?
+  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Can the parameter pack of `PredictionTypes` be explicit in the
+  //! method declaration for user clarity?
+  inline constexpr void predict(const auto &...arguments);
+
+  //! @brief Returns the Nth prediction argument.
+  //!
+  //! @details Convenience access to the last used prediction arguments.
+  //!
+  //! @tparam The non-type template parameter index position of the prediction
+  //! argument types.
+  //!
+  //! @return The prediction argument corresponding to the Nth position of the
+  //! parameter pack of the tuple-like `PredictionTypes` class template type.
+  //!
+  //! @complexity Constant.
+  template <std::size_t Position> inline constexpr auto predict() const;
+
+  //! @brief Updates the estimates with the outcome of a measurement.
+  //!
+  //! @details Also known as the observation or correction step. Implements the
+  //! Bayes' theorem. Combine one measurement and the prior estimate.
+  //!
+  //! @param arguments The update and output parameters of
+  //! the filter, in that order. The arguments need to be compatible with the
+  //! filter types. The update parameters convertible to the
+  //! `UpdateTypes` template pack types are passed through for computations of
+  //! update matrices. The observation parameter pack types convertible to
+  //! the `Output` template type. The update types are explicitly
+  //! defined with the class definition.
+  //!
+  //! @todo Consider whether this method needs to exist or if the operator() is
+  //! sufficient for all clients?
+  //! @todo Consider if returning the state column vector X would be preferable?
+  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Can the parameter pack of `UpdateTypes` be explicit in the method
+  //! declaration for user clarity?
+  inline constexpr void update(const auto &...arguments);
+
+  //! @brief Returns the Nth update argument.
+  //!
+  //! @details Convenience access to the last used update arguments.
+  //!
+  //! @tparam The non-type template parameter index position of the update
+  //! argument types.
+  //!
+  //! @return The update argument corresponding to the Nth position of the
+  //! parameter pack of the tuple-like `UpdateTypes` class template type.
+  //!
+  //! @complexity Constant.
+  template <std::size_t Position> inline constexpr auto update() const;
+
+  //! @brief Runs a full step of the filter.
+  //!
+  //! @details Predicts and updates the estimates per arguments,
   //! control input, and measurement output.
   //!
   //! @tparam InputTypes The template parameter pack types passed in the
@@ -829,73 +896,6 @@ class kalman
   //! @todo What should be the order of the parameters? Update first?
   template <typename... InputTypes>
   inline constexpr void operator()(const auto &...arguments);
-
-  //! @brief Updates the estimates with the outcome of a measurement.
-  //!
-  //! @details Implements the Bayes' theorem. Combine one measurement and the
-  //! prior estimate.
-  //!
-  //! @param arguments The update and output parameters of
-  //! the filter, in that order. The arguments need to be compatible with the
-  //! filter types. The update parameters convertible to the
-  //! `UpdateTypes` template pack types are passed through for computations of
-  //! update matrices. The observation parameter pack types convertible to
-  //! the `Output` template type. The update types are explicitly
-  //! defined with the class definition.
-  //!
-  //! @todo Consider whether this method needs to exist or if the operator() is
-  //! sufficient for all clients?
-  //! @todo Consider if returning the state column vector X would be preferable?
-  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
-  //! @todo Can the parameter pack of `UpdateTypes` be explicit in the method
-  //! declaration for user clarity?
-  inline constexpr void update(const auto &...arguments);
-
-  //! @brief Returns the Nth update argument.
-  //!
-  //! @details Convenience access to the last used update arguments.
-  //!
-  //! @tparam The non-type template parameter index position of the update
-  //! argument types.
-  //!
-  //! @return The update argument corresponding to the Nth position of the
-  //! parameter pack of the tuple-like `UpdateTypes` class template type.
-  //!
-  //! @complexity Constant.
-  template <std::size_t Position> inline constexpr auto update() const;
-
-  //! @brief Produces estimates of the state variables and uncertainties.
-  //!
-  //! @details Implements the total probability theorem.
-  //!
-  //! @param arguments The prediction and input parameters of
-  //! the filter, in that order. The arguments need to be compatible with the
-  //! filter types. The prediction parameters convertible to the
-  //! `PredictionTypes` template pack types are passed through for computations
-  //! of prediction matrices. The control parameter pack types convertible to
-  //! the `Input` template type. The prediction types are explicitly defined
-  //! with the class definition.
-  //!
-  //! @todo Consider whether this method needs to exist or if the operator() is
-  //! sufficient for all clients?
-  //! @todo Consider if returning the state column vector X would be preferable?
-  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
-  //! @todo Can the parameter pack of `PredictionTypes` be explicit in the
-  //! method declaration for user clarity?
-  inline constexpr void predict(const auto &...arguments);
-
-  //! @brief Returns the Nth prediction argument.
-  //!
-  //! @details Convenience access to the last used prediction arguments.
-  //!
-  //! @tparam The non-type template parameter index position of the prediction
-  //! argument types.
-  //!
-  //! @return The prediction argument corresponding to the Nth position of the
-  //! parameter pack of the tuple-like `PredictionTypes` class template type.
-  //!
-  //! @complexity Constant.
-  template <std::size_t Position> inline constexpr auto predict() const;
 
   //! @}
 };
