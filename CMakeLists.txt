@@ -27,26 +27,26 @@ FetchContent_MakeAvailable(eigen fmt)
 
 add_library(kalman INTERFACE)
 
-add_library(main source/main.cpp)
+add_library(main "source/main.cpp")
 
 target_include_directories(kalman INTERFACE "include"
                                             "support/include/fcarouge")
 
 add_executable(
   kalman_test_driver
-  test/eigen/f.cpp
-  test/eigen/h.cpp
-  test/eigen/initialization.cpp
-  test/f.cpp
-  test/format.cpp
-  test/h.cpp
-  test/initialization.cpp)
+  "test/eigen/f.cpp"
+  "test/eigen/h.cpp"
+  "test/eigen/initialization.cpp"
+  "test/f.cpp"
+  "test/format.cpp"
+  "test/h.cpp"
+  "test/initialization.cpp")
 
 target_link_libraries(kalman_test_driver PRIVATE eigen fmt kalman main)
 
 set_target_properties(
   kalman_test_driver
-  PROPERTIES CXX_STANDARD 23
+  PROPERTIES CXX_STANDARD "23"
              CXX_STANDARD_REQUIRED ON
              CXX_EXTENSIONS OFF)
 
