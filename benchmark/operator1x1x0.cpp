@@ -52,7 +52,7 @@ namespace
 void operator1x1x0(::benchmark::State &state)
 {
   for (auto _ : state) {
-    using kalman = fcarouge::kalman<float, 1, 1, 0>;
+    using kalman = fcarouge::kalman<float, float>;
     kalman k;
 
     ::benchmark::ClobberMemory();

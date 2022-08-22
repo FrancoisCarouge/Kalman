@@ -52,7 +52,7 @@ namespace
 void predict1x1x1(::benchmark::State &state)
 {
   for (auto _ : state) {
-    using kalman = fcarouge::kalman<float, 1, 1, 1>;
+    using kalman = fcarouge::kalman<float, float, float>;
     kalman k;
 
     ::benchmark::ClobberMemory();
