@@ -1,0 +1,41 @@
+name: "CppCheck"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.0.2
+    - name: Install
+      run: |
+        ( cd /tmp ;
+          git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
+          ( cd eigen ;
+            mkdir build ;
+            ( cd build ; 
+              cmake .. ; 
+              cmake --build . ;
+              sudo make install ; ) ) )
+        ( cd /tmp ;
+          git clone --depth 1 https://github.com/fmtlib/fmt.git ;
+          ( cd fmt ;
+            mkdir build ;
+            ( cd build ;
+              CXX=clang++-14 cmake -DFMT_HEADER_ONLY=TRUE .. ;
+              sudo make install ; ) ) )
+        ( cd /tmp ;
+          git clone --depth 1 https://github.com/danmar/cppcheck.git ;
+          ( cd cppcheck ;
+            mkdir build ;
+            ( cd build ; 
+              cmake .. ; 
+              cmake --build . ; 
+              sudo make install ; ) ) )
+    - name: Verify
+      run: cppcheck --verbose --error-exitcode=1 --enable=all -I include .

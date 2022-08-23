@@ -1,4 +1,4 @@
-name: "Test Style"
+name: "ClangFormat"
 
 on:
   push:
@@ -12,11 +12,5 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3.0.2
-    - name: Install
-      run: |
-        sudo apt install clang-format-14
-        pip install cmakelang
-    - name: Verify ClangFormat
+    - name: Verify
       run: find . -iname *.hpp -o -iname *.cpp -o -iname support/** | xargs clang-format-14 --Werror --dry-run --verbose -style=file
-    - name: Verify CMakeFormat
-      run: cmake-format --check CMakeLists.txt
