@@ -1,4 +1,4 @@
-name: "Test Static Analysis"
+name: "ClangTidy"
 
 on:
   push:
@@ -16,7 +16,6 @@ jobs:
       run: |
         sudo apt update
         sudo apt install clang-tidy-14
-        pip install cmakelang
         ( cd /tmp ;
           git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
           ( cd eigen ;
@@ -32,19 +31,12 @@ jobs:
             ( cd build ;
               CXX=clang++-14 cmake -DFMT_HEADER_ONLY=TRUE .. ;
               sudo make install ; ) ) )
-        ( cd /tmp ;
-          git clone --depth 1 https://github.com/danmar/cppcheck.git ;
-          ( cd cppcheck ;
-            mkdir build ;
-            ( cd build ; 
-              cmake .. ; 
-              cmake --build . ; 
-              sudo make install ; ) ) )
-    - name: Verify CppCheck
-      run: cppcheck --verbose --error-exitcode=1 --enable=all -I include .
-    - name: Verify ClangTidy
+    - name: Verify
       run: |
         FILES=`find . -iname *.hpp -o -iname *.tpp`
-        clang-tidy-14 ${FILES} --warnings-as-errors=* -- -x c++ -Iinclude -I/usr/local/include/eigen3 -Isupport/include/fcarouge -DFMT_HEADER_ONLY -Wall -Wextra -pedantic -std=c++2b -stdlib=libc++ -lfmt
-    - name: Verify CMakeLint
-      run: cmake-lint CMakeLists.txt
+        clang-tidy-14 ${FILES} --warnings-as-errors=* -- \
+          -x c++ -Iinclude \
+          -I/usr/local/include/eigen3 \
+          -Isupport/include/fcarouge \
+          -DFMT_HEADER_ONLY \
+          -Wall -Wextra -pedantic -std=c++2b -stdlib=libc++ -lfmt
