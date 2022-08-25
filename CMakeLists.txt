@@ -6,48 +6,59 @@ project(
   DESCRIPTION "Kalman Filter for C++"
   LANGUAGES "CXX")
 
+set(CMAKE_CXX_STANDARD "23" CMAKE_CXX_STANDARD_REQUIRED ON CMAKE_CXX_EXTENSIONS
+                       OFF)
+
 include(CTest)
 include(FetchContent)
 
 install(DIRECTORY "include/fcarouge" DESTINATION "include")
 
 FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
-  GIT_TAG "3147391d946bb4b6c68edd901f2add6ac1f31f8c" # 3.4.0
-)
+  eigen # 3.4.0
+  URL "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2"
+  URL_HASH MD5=132dde48fe2b563211675626d29f1707)
 
 FetchContent_Declare(
-  fmt
-  GIT_REPOSITORY "https://github.com/fmtlib/fmt.git"
-  GIT_TAG "c4ee726532178e556d923372f29163bd206d7732" # 9.0.0
-)
+  fmt # 9.0.0
+  URL "https://github.com/fmtlib/fmt/archive/refs/tags/9.0.0.tar.gz"
+  URL_HASH MD5=d56c8b0612b049bb1854f07c8b133f3c)
 
 FetchContent_MakeAvailable(eigen fmt)
 
 add_library(kalman INTERFACE)
 
-add_library(main "source/main.cpp")
+add_library(kalman_main "source/main.cpp")
 
 target_include_directories(kalman INTERFACE "include"
                                             "support/include/fcarouge")
 
-add_executable(
-  kalman_test_driver
-  "test/eigen/f.cpp"
-  "test/eigen/h.cpp"
-  "test/eigen/initialization.cpp"
-  "test/f.cpp"
-  "test/format.cpp"
-  "test/h.cpp"
-  "test/initialization.cpp")
+set(KALMAN_TEST_LIST
+    "test/eigen_f.cpp"
+    "test/eigen_h.cpp"
+    "test/eigen_initialization.cpp"
+    "test/f.cpp"
+    "test/format.cpp"
+    "test/h.cpp"
+    "test/initialization.cpp")
 
-target_link_libraries(kalman_test_driver PRIVATE eigen fmt kalman main)
+foreach(test ${KALMAN_TEST_LIST})
+  get_filename_component(test_name ${test} NAME_WE)
+  add_executable(kalman_${test_name}_driver ${test})
+  target_link_libraries(kalman_${test_name}_driver PRIVATE eigen fmt kalman
+                                                           kalman_main)
+  add_test(kalman_test_${test_name} kalman_${test_name}_driver)
+endforeach()
 
-set_target_properties(
-  kalman_test_driver
-  PROPERTIES CXX_STANDARD "23"
-             CXX_STANDARD_REQUIRED ON
-             CXX_EXTENSIONS OFF)
+set(KALMAN_SAMPLE_LIST
+    "sample/ardupilot_soaring.cpp" "sample/building_height.cpp"
+    "sample/dog_position.cpp" "sample/liquid_temperature.cpp"
+    "sample/rocket_altitude.cpp" "sample/vehicle_location.cpp")
 
-add_test(NAME kalman_test COMMAND kalman_test_driver)
+foreach(sample ${KALMAN_SAMPLE_LIST})
+  get_filename_component(sample_name ${sample} NAME_WE)
+  add_executable(kalman_${sample_name}_driver ${sample})
+  target_link_libraries(kalman_${sample_name}_driver PRIVATE eigen fmt kalman
+                                                             kalman_main)
+  add_test(kalman_sample_${sample_name} kalman_${sample_name}_driver)
+endforeach()
