@@ -181,9 +181,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa2f0430be3a57809a6bdca479c341954"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aa2f0430be3a57809a6bdca479c341954">operator=</a> (<a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a> &amp;&amp;other) noexcept -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a> &amp;=default</td></tr>
 <tr class="memdesc:aa2f0430be3a57809a6bdca479c341954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator.  <a href="classfcarouge_1_1kalman.xhtml#aa2f0430be3a57809a6bdca479c341954">More...</a><br /></td></tr>
 <tr class="separator:aa2f0430be3a57809a6bdca479c341954"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefcc6608c7aa96cd7ea0ab658fd5da54"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aefcc6608c7aa96cd7ea0ab658fd5da54">~kalman</a> ()=default</td></tr>
-<tr class="memdesc:aefcc6608c7aa96cd7ea0ab658fd5da54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the kalman filter.  <a href="classfcarouge_1_1kalman.xhtml#aefcc6608c7aa96cd7ea0ab658fd5da54">More...</a><br /></td></tr>
-<tr class="separator:aefcc6608c7aa96cd7ea0ab658fd5da54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d3511d8ef59c777c1b89cd397711de8"><td class="memItemLeft" align="right" valign="top">constexpr virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a1d3511d8ef59c777c1b89cd397711de8">~kalman</a> ()=default</td></tr>
+<tr class="memdesc:a1d3511d8ef59c777c1b89cd397711de8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the kalman filter.  <a href="classfcarouge_1_1kalman.xhtml#a1d3511d8ef59c777c1b89cd397711de8">More...</a><br /></td></tr>
+<tr class="separator:a1d3511d8ef59c777c1b89cd397711de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Characteristics Member Functions</div></td></tr>
 <tr class="memitem:a7da73fc2bef3808cb47836bf9e8208e5"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a7da73fc2bef3808cb47836bf9e8208e5">x</a> () const -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">state</a></td></tr>
 <tr class="memdesc:a7da73fc2bef3808cb47836bf9e8208e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the state estimate column vector X.  <a href="classfcarouge_1_1kalman.xhtml#a7da73fc2bef3808cb47836bf9e8208e5">More...</a><br /></td></tr>
@@ -348,8 +348,8 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename State = double, typename Output = double, typename Input = void, typename Transpose = std::identity, typename Symmetrize = std::identity, typename Divide = std::divides&lt;void&gt;, typename Identity = identity_matrix, typename UpdateTypes = empty_pack, typename PredictionTypes = empty_pack&gt;<br />
 class fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;</div><p >Kalman filter. </p>
-<p >A Bayesian filter that uses multivariate Gaussians.</p>
-<p >Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science.</p>
+<p >A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE).</p>
+<p >Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science.</p>
 <p >Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.</p>
 <p >This class participates in a convenience formatter specialization for formatted string representation of the filter state.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -372,8 +372,7 @@ class fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, 
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? </p>
 <p class="interdd">Would we want to support smoothers? </p>
 <p class="interdd">How to add or associate constraints on the types and operation to support compilation and semantics? </p>
-<p class="interdd">Which constructors to support? </p>
-<p class="interdd">Is the Kalman filter a recursive state estimation, confirm terminology? </p>
+<p class="interdd">Which constructors to support? Consider constructors? CTAD? Guides? </p>
 <p class="interdd">Prepare support for larger dataset recording for graphing, metrics of large test data to facilitate tuning. </p>
 <p class="interdd">Support filter generator? Integration? Reflection in C++... </p>
 <p class="interdd">Compare performance of general filter with its equivalent generated? </p>
@@ -383,17 +382,15 @@ class fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, 
 <p class="interdd">Should we provide the operator[] for the vector characteristics regardless of implementation? And for the matrix ones too? It could simplify client code. </p>
 <p class="interdd">Should we provide the operator[] for state directly on the filter? Is the state X always what the user would want? </p>
 <p class="interdd">Consider if a fluent interface would be preferable for characteristics? </p>
-<p class="interdd">Consider additional constructors? </p>
 <p class="interdd">Consider additional characteristics method overloads? </p>
 <p class="interdd">A clear or reset member equivalent may be useful for real-time re-initializations but to what default? </p>
-<p class="interdd">Could the Input be void by default? Or empty? </p>
 <p class="interdd">Expand std::format support with standard arguments and Eigen3 types. </p>
-<p class="enddd">Support complex number filters? </p>
+<p class="enddd">Support, test complex number filters? </p>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="dog_position_8cpp-example.xhtml#_a2">dog_position.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00185">185</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00183">183</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a15928894f06259752d02d9ee26b2e47e" name="a15928894f06259752d02d9ee26b2e47e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15928894f06259752d02d9ee26b2e47e">&#9670;&nbsp;</a></span>estimate_uncertainty</h2>
@@ -414,7 +411,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ardupilot_soaring_8cpp-example.xhtml#a2">ardupilot_soaring.cpp</a>, <a class="el" href="rocket_altitude_8cpp-example.xhtml#a2">rocket_altitude.cpp</a>, and <a class="el" href="vehicle_location_8cpp-example.xhtml#a2">vehicle_location.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00230">230</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00228">228</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -434,7 +431,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 <p>Type of the gain matrix K. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00256">256</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00254">254</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -463,7 +460,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Implementation details of the filter. </p>
 <p >The internal implementation unpacks the parameter packs from tuple-like types which allows for multiple parameter pack deductions. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00195">195</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00193">193</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -483,7 +480,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 <p>Type of the innovation column vector Y. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00259">259</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00257">257</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -503,7 +500,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 <p>Type of the innovation uncertainty matrix S. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00262">262</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00260">260</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -526,7 +523,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a5">rocket_altitude.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00225">225</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00223">223</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -550,7 +547,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a7">rocket_altitude.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00253">253</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00251">251</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -571,7 +568,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Type of the callable noise observation function. </p>
 <p >The function is of the form <code>output_uncertainty(const state &amp;, const output &amp;, const UpdateTypes &amp;...)</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00276">276</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00274">274</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -592,7 +589,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Type of the callable noise process function. </p>
 <p >The function is of the form <code>process_uncertainty(const state &amp;, const PredictionTypes &amp;...)</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00290">290</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00288">288</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -613,7 +610,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Type of the callable observation function. </p>
 <p >The function is of the form <code>output(const state &amp;, const UpdateTypes &amp;...arguments)</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00312">312</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00310">310</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -634,7 +631,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Type of the callable observation state function. </p>
 <p >The function is of the form <code>output_model(const state &amp;, const UpdateTypes &amp;...)</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00269">269</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00267">267</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -657,7 +654,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ardupilot_soaring_8cpp-example.xhtml#a6">ardupilot_soaring.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00220">220</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00218">218</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -680,7 +677,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ardupilot_soaring_8cpp-example.xhtml#a7">ardupilot_soaring.cpp</a>, <a class="el" href="rocket_altitude_8cpp-example.xhtml#a8">rocket_altitude.cpp</a>, and <a class="el" href="vehicle_location_8cpp-example.xhtml#a5">vehicle_location.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00246">246</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00244">244</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -702,7 +699,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ardupilot_soaring_8cpp-example.xhtml#a5">ardupilot_soaring.cpp</a>, <a class="el" href="rocket_altitude_8cpp-example.xhtml#a9">rocket_altitude.cpp</a>, and <a class="el" href="vehicle_location_8cpp-example.xhtml#a6">vehicle_location.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00236">236</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00234">234</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -724,7 +721,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ardupilot_soaring_8cpp-example.xhtml#a4">ardupilot_soaring.cpp</a>, <a class="el" href="rocket_altitude_8cpp-example.xhtml#a4">rocket_altitude.cpp</a>, and <a class="el" href="vehicle_location_8cpp-example.xhtml#a3">vehicle_location.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00233">233</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00231">231</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -746,7 +743,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ardupilot_soaring_8cpp-example.xhtml#a3">ardupilot_soaring.cpp</a>, and <a class="el" href="rocket_altitude_8cpp-example.xhtml#a3">rocket_altitude.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00215">215</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00213">213</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -769,7 +766,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="rocket_altitude_8cpp-example.xhtml#a6">rocket_altitude.cpp</a>, and <a class="el" href="vehicle_location_8cpp-example.xhtml#a4">vehicle_location.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00241">241</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00239">239</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -791,7 +788,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p >The function is of the form <code>input_control(const PredictionTypes &amp;...)</code>.</p>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000016">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00299">299</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00297">297</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -812,7 +809,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Type of the callable transition function. </p>
 <p >The function is of the form <code>state(const state &amp;, const PredictionTypes &amp;...)</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00306">306</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00304">304</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -833,7 +830,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Type of the callable transition state function. </p>
 <p >The function is of the form <code>state_transition(const state &amp;, const PredictionTypes &amp;..., const input &amp;)</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00283">283</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00281">281</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -944,8 +941,8 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 </div>
 </div>
-<a id="aefcc6608c7aa96cd7ea0ab658fd5da54" name="aefcc6608c7aa96cd7ea0ab658fd5da54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefcc6608c7aa96cd7ea0ab658fd5da54">&#9670;&nbsp;</a></span>~kalman()</h2>
+<a id="a1d3511d8ef59c777c1b89cd397711de8" name="a1d3511d8ef59c777c1b89cd397711de8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d3511d8ef59c777c1b89cd397711de8">&#9670;&nbsp;</a></span>~kalman()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -956,7 +953,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::~<a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a> </td>
+          <td class="memname">constexpr virtual <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::~<a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -964,7 +961,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1001,13 +998,13 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The state transition matrix F.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01119">1119</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>{</div>
-<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"> 1121</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.f;</div>
-<div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a642727d695ea4a1fee490ff7dd6ad7f8"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">fcarouge::kalman::filter</a></div><div class="ttdeci">implementation filter</div><div class="ttdoc">Encapsulates the implementation details of the filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00206">kalman.hpp:206</a></div></div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01117">1117</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span>{</div>
+<div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.f;</div>
+<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>}</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a642727d695ea4a1fee490ff7dd6ad7f8"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">fcarouge::kalman::filter</a></div><div class="ttdeci">implementation filter</div><div class="ttdoc">Encapsulates the implementation details of the filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00204">kalman.hpp:204</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1046,12 +1043,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01129">1129</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span>{</div>
-<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.f = value;</div>
-<div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01127">1127</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span>{</div>
+<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.f = value;</div>
+<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1091,12 +1088,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01149">1149</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>{</div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition_state_f = callable;</div>
-<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01147">1147</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>{</div>
+<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition_state_f = callable;</div>
+<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1135,12 +1132,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01139">1139</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>{</div>
-<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.f = std::move(value);</div>
-<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01137">1137</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>{</div>
+<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.f = std::move(value);</div>
+<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1180,12 +1177,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01160">1160</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span>{</div>
-<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition_state_f = std::forward&lt;decltype(callable)&gt;(callable);</div>
-<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01158">1158</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>{</div>
+<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition_state_f = std::forward&lt;decltype(callable)&gt;(callable);</div>
+<div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1216,12 +1213,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The control transition matrix G.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01223">1223</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01225" name="l01225"></a><span class="lineno"> 1225</span>{</div>
-<div class="line"><a id="l01226" name="l01226"></a><span class="lineno"> 1226</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.g;</div>
-<div class="line"><a id="l01227" name="l01227"></a><span class="lineno"> 1227</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01221">1221</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span>{</div>
+<div class="line"><a id="l01224" name="l01224"></a><span class="lineno"> 1224</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.g;</div>
+<div class="line"><a id="l01225" name="l01225"></a><span class="lineno"> 1225</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1262,12 +1259,12 @@ requires (not std::is_same_v&lt;Input, void&gt;)</div>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01233">1233</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01235" name="l01235"></a><span class="lineno"> 1235</span>{</div>
-<div class="line"><a id="l01236" name="l01236"></a><span class="lineno"> 1236</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.g = value;</div>
-<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01231">1231</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01233" name="l01233"></a><span class="lineno"> 1233</span>{</div>
+<div class="line"><a id="l01234" name="l01234"></a><span class="lineno"> 1234</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.g = value;</div>
+<div class="line"><a id="l01235" name="l01235"></a><span class="lineno"> 1235</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1306,12 +1303,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01254">1254</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span>{</div>
-<div class="line"><a id="l01257" name="l01257"></a><span class="lineno"> 1257</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition_control_g = callable;</div>
-<div class="line"><a id="l01258" name="l01258"></a><span class="lineno"> 1258</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01252">1252</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01254" name="l01254"></a><span class="lineno"> 1254</span>{</div>
+<div class="line"><a id="l01255" name="l01255"></a><span class="lineno"> 1255</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition_control_g = callable;</div>
+<div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1352,12 +1349,12 @@ requires (not std::is_same_v&lt;Input, void&gt;)</div>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01243">1243</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01245" name="l01245"></a><span class="lineno"> 1245</span>{</div>
-<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.g = std::move(value);</div>
-<div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01241">1241</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span>{</div>
+<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"> 1244</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.g = std::move(value);</div>
+<div class="line"><a id="l01245" name="l01245"></a><span class="lineno"> 1245</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1396,12 +1393,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01265">1265</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span>{</div>
-<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition_control_g = std::forward&lt;decltype(callable)&gt;(callable);</div>
-<div class="line"><a id="l01268" name="l01268"></a><span class="lineno"> 1268</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01263">1263</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01264" name="l01264"></a><span class="lineno"> 1264</span>{</div>
+<div class="line"><a id="l01265" name="l01265"></a><span class="lineno"> 1265</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition_control_g = std::forward&lt;decltype(callable)&gt;(callable);</div>
+<div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1431,12 +1428,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The observation, measurement transition matrix H.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01171">1171</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>{</div>
-<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.h;</div>
-<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01169">1169</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01170" name="l01170"></a><span class="lineno"> 1170</span>{</div>
+<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.h;</div>
+<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1476,12 +1473,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01201">1201</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01203" name="l01203"></a><span class="lineno"> 1203</span>{</div>
-<div class="line"><a id="l01204" name="l01204"></a><span class="lineno"> 1204</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.observation_state_h = callable;</div>
-<div class="line"><a id="l01205" name="l01205"></a><span class="lineno"> 1205</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01199">1199</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01201" name="l01201"></a><span class="lineno"> 1201</span>{</div>
+<div class="line"><a id="l01202" name="l01202"></a><span class="lineno"> 1202</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.observation_state_h = callable;</div>
+<div class="line"><a id="l01203" name="l01203"></a><span class="lineno"> 1203</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1520,12 +1517,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01181">1181</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span>{</div>
-<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.h = value;</div>
-<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01179">1179</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>{</div>
+<div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.h = value;</div>
+<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1565,12 +1562,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01212">1212</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>{</div>
-<div class="line"><a id="l01214" name="l01214"></a><span class="lineno"> 1214</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.observation_state_h = std::forward&lt;decltype(callable)&gt;(callable);</div>
-<div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01210">1210</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01211" name="l01211"></a><span class="lineno"> 1211</span>{</div>
+<div class="line"><a id="l01212" name="l01212"></a><span class="lineno"> 1212</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.observation_state_h = std::forward&lt;decltype(callable)&gt;(callable);</div>
+<div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1609,12 +1606,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01191">1191</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01192" name="l01192"></a><span class="lineno"> 1192</span>{</div>
-<div class="line"><a id="l01193" name="l01193"></a><span class="lineno"> 1193</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.h = std::move(value);</div>
-<div class="line"><a id="l01194" name="l01194"></a><span class="lineno"> 1194</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01189">1189</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01190" name="l01190"></a><span class="lineno"> 1190</span>{</div>
+<div class="line"><a id="l01191" name="l01191"></a><span class="lineno"> 1191</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.h = std::move(value);</div>
+<div class="line"><a id="l01192" name="l01192"></a><span class="lineno"> 1192</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1644,12 +1641,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The gain matrix K.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01276">1276</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01277" name="l01277"></a><span class="lineno"> 1277</span>{</div>
-<div class="line"><a id="l01278" name="l01278"></a><span class="lineno"> 1278</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.k;</div>
-<div class="line"><a id="l01279" name="l01279"></a><span class="lineno"> 1279</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01274">1274</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01275" name="l01275"></a><span class="lineno"> 1275</span>{</div>
+<div class="line"><a id="l01276" name="l01276"></a><span class="lineno"> 1276</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.k;</div>
+<div class="line"><a id="l01277" name="l01277"></a><span class="lineno"> 1277</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1688,12 +1685,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01329">1329</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01331" name="l01331"></a><span class="lineno"> 1331</span>{</div>
-<div class="line"><a id="l01332" name="l01332"></a><span class="lineno"> 1332</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.observation = callable;</div>
-<div class="line"><a id="l01333" name="l01333"></a><span class="lineno"> 1333</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01327">1327</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01329" name="l01329"></a><span class="lineno"> 1329</span>{</div>
+<div class="line"><a id="l01330" name="l01330"></a><span class="lineno"> 1330</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.observation = callable;</div>
+<div class="line"><a id="l01331" name="l01331"></a><span class="lineno"> 1331</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1732,12 +1729,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01340">1340</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01342" name="l01342"></a><span class="lineno"> 1342</span>{</div>
-<div class="line"><a id="l01343" name="l01343"></a><span class="lineno"> 1343</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.observation = std::forward&lt;decltype(callable)&gt;(callable);</div>
-<div class="line"><a id="l01344" name="l01344"></a><span class="lineno"> 1344</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01338">1338</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01340" name="l01340"></a><span class="lineno"> 1340</span>{</div>
+<div class="line"><a id="l01341" name="l01341"></a><span class="lineno"> 1341</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.observation = std::forward&lt;decltype(callable)&gt;(callable);</div>
+<div class="line"><a id="l01342" name="l01342"></a><span class="lineno"> 1342</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1785,17 +1782,17 @@ template&lt;typename... InputTypes&gt; </div>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Called as <code>k(...);</code> with prediction values and output values when the filter has no input parameters. The input type list is explicitly empty. Otherwise can be called as <code>k.template operator()&lt;input1_t, input2_t, ...&gt;(...);</code> with prediction values, input values, and output values. The input type list being explicitly specified per the fair matching rule. A lambda can come in handy to reduce the verbose call `const auto kf{ <a href="const auto
 &amp;...args">&amp;k</a> { k.template operator()&lt;input1_t, input2_t, ...&gt;(args...); } };<code>then called as</code>kf(...);`.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd">Understand why the implementation cannot be moved out of the class. </p>
 <p class="enddd">What should be the order of the parameters? Update first? </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01352">1352</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01353" name="l01353"></a><span class="lineno"> 1353</span>{</div>
-<div class="line"><a id="l01354" name="l01354"></a><span class="lineno"> 1354</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.template operator()&lt;InputTypes...&gt;(arguments...);</div>
-<div class="line"><a id="l01355" name="l01355"></a><span class="lineno"> 1355</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01350">1350</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01351" name="l01351"></a><span class="lineno"> 1351</span>{</div>
+<div class="line"><a id="l01352" name="l01352"></a><span class="lineno"> 1352</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.template operator()&lt;InputTypes...&gt;(arguments...);</div>
+<div class="line"><a id="l01353" name="l01353"></a><span class="lineno"> 1353</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1903,12 +1900,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The estimated correlated variance matrix P.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00985">985</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>{</div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.p;</div>
-<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00983">983</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>{</div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.p;</div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1947,12 +1944,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00995">995</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>{</div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.p = value;</div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00993">993</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>{</div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.p = value;</div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1991,12 +1988,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01005">1005</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>{</div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.p = std::move(value);</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01003">1003</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>{</div>
+<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.p = std::move(value);</div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2035,12 +2032,12 @@ template&lt;std::size_t Position&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The prediction argument corresponding to the Nth position of the parameter pack of the tuple-like <code>PredictionTypes</code> class template type.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01396">1396</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01397" name="l01397"></a><span class="lineno"> 1397</span>{</div>
-<div class="line"><a id="l01398" name="l01398"></a><span class="lineno"> 1398</span>  <span class="keywordflow">return</span> std::get&lt;Position&gt;(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.prediction_arguments);</div>
-<div class="line"><a id="l01399" name="l01399"></a><span class="lineno"> 1399</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01394">1394</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01395" name="l01395"></a><span class="lineno"> 1395</span>{</div>
+<div class="line"><a id="l01396" name="l01396"></a><span class="lineno"> 1396</span>  <span class="keywordflow">return</span> std::get&lt;Position&gt;(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.prediction_arguments);</div>
+<div class="line"><a id="l01397" name="l01397"></a><span class="lineno"> 1397</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2078,17 +2075,17 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
 <p class="interdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01384">1384</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01385" name="l01385"></a><span class="lineno"> 1385</span>{</div>
-<div class="line"><a id="l01386" name="l01386"></a><span class="lineno"> 1386</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.predict(arguments...);</div>
-<div class="line"><a id="l01387" name="l01387"></a><span class="lineno"> 1387</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01382">1382</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01383" name="l01383"></a><span class="lineno"> 1383</span>{</div>
+<div class="line"><a id="l01384" name="l01384"></a><span class="lineno"> 1384</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.predict(arguments...);</div>
+<div class="line"><a id="l01385" name="l01385"></a><span class="lineno"> 1385</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="predict1x1x0_8cpp_source.xhtml#l00052">fcarouge::benchmark::anonymous_namespace{predict1x1x0.cpp}::predict1x1x0()</a>, and <a class="el" href="predict1x1x1_8cpp_source.xhtml#l00052">fcarouge::benchmark::anonymous_namespace{predict1x1x1.cpp}::predict1x1x1()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -2128,12 +2125,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The process noise correlated variance matrix Q.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01016">1016</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>{</div>
-<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.q;</div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01014">1014</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>{</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.q;</div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2172,12 +2169,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01046">1046</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>{</div>
-<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.noise_process_q = callable;</div>
-<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01044">1044</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>{</div>
+<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.noise_process_q = callable;</div>
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2216,12 +2213,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01026">1026</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>{</div>
-<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.q = value;</div>
-<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01024">1024</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>{</div>
+<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.q = value;</div>
+<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2260,12 +2257,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01056">1056</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>{</div>
-<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.noise_process_q = std::forward&lt;decltype(callable)&gt;(callable);</div>
-<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01054">1054</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>{</div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.noise_process_q = std::forward&lt;decltype(callable)&gt;(callable);</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2304,12 +2301,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01036">1036</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>{</div>
-<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.q = std::move(value);</div>
-<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01034">1034</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>{</div>
+<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.q = std::move(value);</div>
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2340,12 +2337,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The observation noise correlated variance matrix R.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01067">1067</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>{</div>
-<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.r;</div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01065">1065</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>{</div>
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.r;</div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2384,12 +2381,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01097">1097</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>{</div>
-<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.noise_observation_r = callable;</div>
-<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01095">1095</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>{</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.noise_observation_r = callable;</div>
+<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2428,12 +2425,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01077">1077</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>{</div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.r = value;</div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01075">1075</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>{</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.r = value;</div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2472,12 +2469,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01108">1108</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>{</div>
-<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.noise_observation_r = std::forward&lt;decltype(callable)&gt;(callable);</div>
-<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01106">1106</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>{</div>
+<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.noise_observation_r = std::forward&lt;decltype(callable)&gt;(callable);</div>
+<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2516,12 +2513,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01087">1087</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>{</div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.r = std::move(value);</div>
-<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01085">1085</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>{</div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.r = std::move(value);</div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2551,12 +2548,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The innovation uncertainty matrix S.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01298">1298</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01299" name="l01299"></a><span class="lineno"> 1299</span>{</div>
-<div class="line"><a id="l01300" name="l01300"></a><span class="lineno"> 1300</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.s;</div>
-<div class="line"><a id="l01301" name="l01301"></a><span class="lineno"> 1301</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01296">1296</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01297" name="l01297"></a><span class="lineno"> 1297</span>{</div>
+<div class="line"><a id="l01298" name="l01298"></a><span class="lineno"> 1298</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.s;</div>
+<div class="line"><a id="l01299" name="l01299"></a><span class="lineno"> 1299</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2595,12 +2592,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01308">1308</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01310" name="l01310"></a><span class="lineno"> 1310</span>{</div>
-<div class="line"><a id="l01311" name="l01311"></a><span class="lineno"> 1311</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition = callable;</div>
-<div class="line"><a id="l01312" name="l01312"></a><span class="lineno"> 1312</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01306">1306</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01308" name="l01308"></a><span class="lineno"> 1308</span>{</div>
+<div class="line"><a id="l01309" name="l01309"></a><span class="lineno"> 1309</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition = callable;</div>
+<div class="line"><a id="l01310" name="l01310"></a><span class="lineno"> 1310</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2639,12 +2636,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01319">1319</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01320" name="l01320"></a><span class="lineno"> 1320</span>{</div>
-<div class="line"><a id="l01321" name="l01321"></a><span class="lineno"> 1321</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition = std::forward&lt;decltype(callable)&gt;(callable);</div>
-<div class="line"><a id="l01322" name="l01322"></a><span class="lineno"> 1322</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01317">1317</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01318" name="l01318"></a><span class="lineno"> 1318</span>{</div>
+<div class="line"><a id="l01319" name="l01319"></a><span class="lineno"> 1319</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.transition = std::forward&lt;decltype(callable)&gt;(callable);</div>
+<div class="line"><a id="l01320" name="l01320"></a><span class="lineno"> 1320</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2675,12 +2672,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The last control column vector U.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00973">973</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>{</div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.u;</div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00971">971</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>{</div>
+<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.u;</div>
+<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2719,12 +2716,12 @@ template&lt;std::size_t Position&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The update argument corresponding to the Nth position of the parameter pack of the tuple-like <code>UpdateTypes</code> class template type.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01374">1374</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01375" name="l01375"></a><span class="lineno"> 1375</span>{</div>
-<div class="line"><a id="l01376" name="l01376"></a><span class="lineno"> 1376</span>  <span class="keywordflow">return</span> std::get&lt;Position&gt;(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.update_arguments);</div>
-<div class="line"><a id="l01377" name="l01377"></a><span class="lineno"> 1377</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01372">1372</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01373" name="l01373"></a><span class="lineno"> 1373</span>{</div>
+<div class="line"><a id="l01374" name="l01374"></a><span class="lineno"> 1374</span>  <span class="keywordflow">return</span> std::get&lt;Position&gt;(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.update_arguments);</div>
+<div class="line"><a id="l01375" name="l01375"></a><span class="lineno"> 1375</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2762,17 +2759,17 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd><p class="startdd">Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
 <p class="interdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01362">1362</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01363" name="l01363"></a><span class="lineno"> 1363</span>{</div>
-<div class="line"><a id="l01364" name="l01364"></a><span class="lineno"> 1364</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.update(arguments...);</div>
-<div class="line"><a id="l01365" name="l01365"></a><span class="lineno"> 1365</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01360">1360</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01361" name="l01361"></a><span class="lineno"> 1361</span>{</div>
+<div class="line"><a id="l01362" name="l01362"></a><span class="lineno"> 1362</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.update(arguments...);</div>
+<div class="line"><a id="l01363" name="l01363"></a><span class="lineno"> 1363</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="update1x1x0_8cpp_source.xhtml#l00052">fcarouge::benchmark::anonymous_namespace{update1x1x0.cpp}::update1x1x0()</a>, and <a class="el" href="update1x1x1_8cpp_source.xhtml#l00052">fcarouge::benchmark::anonymous_namespace{update1x1x1.cpp}::update1x1x1()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -2812,12 +2809,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00909">909</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>{</div>
-<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x;</div>
-<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00907">907</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>{</div>
+<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x;</div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2867,14 +2864,14 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00950">950</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>{</div>
-<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">state</a>{ std::forward&lt;decltype(value)&gt;(value),</div>
-<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>                              std::forward&lt;decltype(values)&gt;(values)... });</div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1102f87212b368e4e55bcd5d637a600c"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">fcarouge::kalman::state</a></div><div class="ttdeci">typename implementation::state state</div><div class="ttdoc">Type of the state estimate column vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00215">kalman.hpp:215</a></div></div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00948">948</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>{</div>
+<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">state</a>{ std::forward&lt;decltype(value)&gt;(value),</div>
+<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>                              std::forward&lt;decltype(values)&gt;(values)... });</div>
+<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>}</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1102f87212b368e4e55bcd5d637a600c"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">fcarouge::kalman::state</a></div><div class="ttdeci">typename implementation::state state</div><div class="ttdoc">Type of the state estimate column vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00213">kalman.hpp:213</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2924,12 +2921,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00939">939</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>{</div>
-<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">state</a>{ value, values... });</div>
-<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00937">937</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>{</div>
+<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">state</a>{ value, values... });</div>
+<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -2968,12 +2965,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00919">919</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>{</div>
-<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x = value;</div>
-<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00917">917</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>{</div>
+<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x = value;</div>
+<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -3012,12 +3009,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00929">929</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>{</div>
-<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x = std::move(value);</div>
-<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00927">927</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>{</div>
+<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.x = std::move(value);</div>
+<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -3047,12 +3044,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The innovation column vector Y.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01287">1287</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l01288" name="l01288"></a><span class="lineno"> 1288</span>{</div>
-<div class="line"><a id="l01289" name="l01289"></a><span class="lineno"> 1289</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.y;</div>
-<div class="line"><a id="l01290" name="l01290"></a><span class="lineno"> 1290</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l01285">1285</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l01286" name="l01286"></a><span class="lineno"> 1286</span>{</div>
+<div class="line"><a id="l01287" name="l01287"></a><span class="lineno"> 1287</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.y;</div>
+<div class="line"><a id="l01288" name="l01288"></a><span class="lineno"> 1288</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -3082,12 +3079,12 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The last observation column vector Z.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00962">962</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>{</div>
-<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.z;</div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>}</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00960">960</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>{</div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a642727d695ea4a1fee490ff7dd6ad7f8">filter</a>.z;</div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00206">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00204">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -3116,9 +3113,9 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 <p>Encapsulates the implementation details of the filter. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00206">206</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00204">204</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l01119">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::f()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01223">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::g()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01171">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::h()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01276">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::k()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01329">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::observation()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01352">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::operator()()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00985">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::p()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01384">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::predict()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01016">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::q()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01067">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::r()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01298">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::s()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01308">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::transition()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00973">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::u()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01362">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::update()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00909">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::x()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01287">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::y()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00962">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::z()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l01117">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::f()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01221">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::g()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01169">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::h()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01274">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::k()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01327">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::observation()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01350">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::operator()()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00983">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::p()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01382">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::predict()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01014">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::q()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01065">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::r()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01296">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::s()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01306">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::transition()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00971">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::u()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01360">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::update()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00907">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::x()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l01285">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::y()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00960">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::z()</a>.</p>
 
 </div>
 </div>
@@ -3132,7 +3129,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sat Aug 27 2022 22:22:14 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sat Aug 27 2022 23:09:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
