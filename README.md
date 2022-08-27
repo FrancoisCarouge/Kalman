@@ -131,33 +131,47 @@ k(drift_x, drift_y, position_x, position_y, variometer);
 
 [![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
 <br>
-[![Test: Ubuntu 22.04 GCC Trunk](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc-trunk.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc-trunk.yml)
 <br>
-[![Test: Windows 2019 MSVC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019.yml)
+[![Ubuntu 22.04 GCC Trunk](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc-trunk.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc-trunk.yml)
 <br>
-[![Test: Ubuntu 22.04 Clang](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml)
+[![Windows 2019 MSVC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml)
+<br>
+[![Ubuntu 22.04 Clang](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml)
 <br>
 <br>
 [![ClangFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml)
+<br>
 [![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
+<br>
 [![CMakeFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml)
+<br>
 [![CMakeLint](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_lint.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_lint.yml)
+<br>
 [![Coverage Status](https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=develop)](https://coveralls.io/github/FrancoisCarouge/Kalman?branch=develop)
+<br>
 [![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
-[![Test Address: Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml)
-[![Test Documentation: Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_documentation_doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_documentation_doxygen.yml)
-[![Test Leak: Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml)
-[![Test Memory: Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml)
-[![Test Thread: Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml)
-[![Test Undefined Behavior: Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml)
+<br>
+[![Address Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml)
+<br>
+[![Test Documentation](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_documentation_doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_documentation_doxygen.yml)
+<br>
+[![Leak Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml)
+<br>
+[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml)
+<br>
+[![Thread Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml)
+<br>
+[![Undefined Behavior Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml)
 <br>
 <br>
 [![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/develop/LICENSE.txt)
+<br>
 [![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
 <br>
 <br>
-[![Deploy Documentation: Doxygen GitHub Pages](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml)
-[![Deploy Code Coverage: Coveralls](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml)
+[![Deploy Documentation](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_documentation_doxygen.yml)
+<br>
+[![Deploy Code Coverage](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml)
 <br>
 <br>
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
@@ -204,20 +218,20 @@ class kalman
 
 ## Member Types
 
-| Member Type | Definition | Dimensions |
-| --- | --- | --- |
-| `estimate_uncertainty` | Type of the estimated covariance matrix P, also known as Σ. | x by z |
-| `gain` | Type of the gain matrix K. | x by z |
-| `innovation_uncertainty` | Type of the innovation uncertainty matrix S. | z by z |
-| `innovation` | Type of the innovation column vector Y. | z by 1 |
-| `input_control` | Type of the control transition matrix G, also known as B. | x by u |
-| `input` | Type of the control column vector U. | u by 1 |
-| `output_model` | Type of the observation transition matrix H, also known as C. | z by x |
-| `output_uncertainty` | Type of the observation, measurement noise covariance matrix R. | z by z |
-| `output` | Type of the observation column vector Z, also known as Y or O. | z by 1 |
-| `process_uncertainty` | Type of the process noise covariance matrix Q. | x by x |
-| `state_transition` | Type of the state transition matrix F, also known as Φ or A. | x by x |
-| `state` | Type of the state estimate column vector X. | x by 1 |
+| Member Type | Dimensions | Definition | Also Known As |
+| --- | --- | --- | --- |
+| `estimate_uncertainty` | x by x | Type of the estimated covariance matrix `p`. | P, Σ |
+| `gain` | x by z | Type of the gain matrix `k`. | K |
+| `innovation_uncertainty` | z by z | Type of the innovation uncertainty matrix `s`. | S |
+| `innovation` | z by 1 | Type of the innovation column vector `y`. | Y |
+| `input_control` | x by u | Type of the control transition matrix `g`. | G, B |
+| `input` | u by 1 | Type of the control column vector `u`. | U |
+| `output_model` | z by x | Type of the observation transition matrix `h`. | H, C |
+| `output_uncertainty` | z by z | Type of the observation, measurement noise covariance matrix `r`. | R |
+| `output` | z by 1 | Type of the observation column vector `z`. | Z, Y, O |
+| `process_uncertainty` | x by x | Type of the process noise covariance matrix `q`. | Q |
+| `state_transition` | x by x | Type of the state transition matrix `f`. | F, Φ, A |
+| `state` | x by 1 | Type of the state estimate column vector `x`. | X |
 
 ## Member Functions
 
@@ -259,10 +273,10 @@ class kalman
 A specialization of the standard formatter is provided for the filter. Use `std::format` to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.
 
 ```cpp
-fcarouge::kalman k;
+kalman k;
 
-std::string message{ std::format("{}", k) };
-// {"f":1,"h":1,"k":1,"p":1,"q":0,"r":0,"s":1,"x":0,"y":0,"z":0}
+std::print("{}", k);
+// {"f": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0}
 ```
 
 # Installation
@@ -303,6 +317,7 @@ The [benchmarks](benchmark) share some performance information.
 
 Awesome resources to learn about Kalman filters:
 
+- [A New Approach to Linear Filtering and Prediction Problems](https://www.cs.unc.edu/~welch/kalman/kalmanPaper.html) by Kalman, Rudolph Emil in Transactions of the ASME - Journal of Basic Engineering, Volume 82, Series D, pp 35-45, 1960 - Transcription by John Lukesh.
 - [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
 - [Kalman and Bayesian Filters in Python](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python) by Roger Labbe.
 - [How Kalman Filters Work](https://www.anuncommonlab.com/articles/how-kalman-filters-work) by Tucker McClure of An Uncommon Lab.
