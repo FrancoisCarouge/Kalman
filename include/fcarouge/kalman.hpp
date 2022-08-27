@@ -82,14 +82,16 @@ template <typename... Types> using pack = internal::pack<Types...>;
 
 //! @brief Kalman filter.
 //!
-//! @details A Bayesian filter that uses multivariate Gaussians.
+//! @details A Bayesian filter that uses multivariate Gaussians, a recursive
+//! state estimator, and a linear quadratic estimator (LQE).
 //!
 //! Applicable for unimodal and uncorrelated uncertainties. Kalman filters
 //! assume white noise, propagation and measurement functions are
 //! differentiable, and that the uncertainty stays centered on the state
-//! estimate. The filter updates estimates by multiplying Gaussians and predicts
-//! estimates by adding Gaussians. Design the state (X, P), the process (F, Q),
-//! the measurement (Z, R), the measurement function H, and if the system has
+//! estimate. The filter is the optimal linear filter under assumptions. The
+//! filter updates estimates by multiplying Gaussians and predicts estimates by
+//! adding Gaussians. Design the state (X, P), the process (F, Q), the
+//! measurement (Z, R), the measurement function H, and if the system has
 //! control inputs (U, B). Designing a filter is as much art as science.
 //!
 //! Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no
@@ -152,9 +154,7 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! @todo Would we want to support smoothers?
 //! @todo How to add or associate constraints on the types and operation to
 //! support compilation and semantics?
-//! @todo Which constructors to support?
-//! @todo Is the Kalman filter a recursive state estimation, confirm
-//! terminology?
+//! @todo Which constructors to support? Consider constructors? CTAD? Guides?
 //! @todo Prepare support for larger dataset recording for graphing, metrics of
 //! large test data to facilitate tuning.
 //! @todo Support filter generator? Integration? Reflection in C++...
@@ -170,13 +170,11 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! the state X always what the user would want?
 //! @todo Consider if a fluent interface would be preferable for
 //! characteristics?
-//! @todo Consider additional constructors?
 //! @todo Consider additional characteristics method overloads?
 //! @todo A clear or reset member equivalent may be useful for real-time
 //! re-initializations but to what default?
-//! @todo Could the Input be void by default? Or empty?
 //! @todo Expand std::format support with standard arguments and Eigen3 types.
-//! @todo Support complex number filters?
+//! @todo Support, test complex number filters?
 template <
     typename State = double, typename Output = double, typename Input = void,
     typename Transpose = std::identity, typename Symmetrize = std::identity,
@@ -378,7 +376,7 @@ class kalman
   //! @brief Destructs the kalman filter.
   //!
   //! @complexity Constant.
-  inline constexpr ~kalman() = default;
+  inline constexpr virtual ~kalman() = default;
 
   //! @}
 
