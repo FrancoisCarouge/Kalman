@@ -2,10 +2,8 @@
 
 #include <cassert>
 
-namespace fcarouge::eigen::sample
-{
-namespace
-{
+namespace fcarouge::eigen::sample {
+namespace {
 //! @brief Estimating the Vehicle Location
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
@@ -25,7 +23,7 @@ namespace
 //! random acceleration standard deviation: σa = 0.2 m.s^-2.
 //!
 //! @example vehicle_location.cpp
-[[maybe_unused]] auto vehicle_location{ [] {
+[[maybe_unused]] auto vehicle_location{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   using kalman = kalman<vector<double, 6>, vector<double, 2>>;
 
@@ -40,29 +38,28 @@ namespace
   // Since our initial state vector is a guess, we will set a very high estimate
   // uncertainty. The high estimate uncertainty results in a high Kalman Gain,
   // giving a high weight to the measurement.
-  k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },
-                                    { 0, 500, 0, 0, 0, 0 },
-                                    { 0, 0, 500, 0, 0, 0 },
-                                    { 0, 0, 0, 500, 0, 0 },
-                                    { 0, 0, 0, 0, 500, 0 },
-                                    { 0, 0, 0, 0, 0, 500 } });
+  k.p(kalman::estimate_uncertainty{{500, 0, 0, 0, 0, 0},
+                                   {0, 500, 0, 0, 0, 0},
+                                   {0, 0, 500, 0, 0, 0},
+                                   {0, 0, 0, 500, 0, 0},
+                                   {0, 0, 0, 0, 500, 0},
+                                   {0, 0, 0, 0, 0, 500}});
 
   // Prediction
   // The process noise matrix Q would be:
   kalman::process_uncertainty q{
-    { 0.25, 0.5, 0.5, 0, 0, 0 }, { 0.5, 1, 1, 0, 0, 0 }, { 0.5, 1, 1, 0, 0, 0 },
-    { 0, 0, 0, 0.25, 0.5, 0.5 }, { 0, 0, 0, 0.5, 1, 1 }, { 0, 0, 0, 0.5, 1, 1 }
-  };
+      {0.25, 0.5, 0.5, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0},
+      {0, 0, 0, 0.25, 0.5, 0.5}, {0, 0, 0, 0.5, 1, 1}, {0, 0, 0, 0.5, 1, 1}};
   q *= 0.2 * 0.2;
   k.q(std::move(q));
 
   // The state transition matrix F would be:
-  k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
-                                { 0, 1, 1, 0, 0, 0 },
-                                { 0, 0, 1, 0, 0, 0 },
-                                { 0, 0, 0, 1, 1, 0.5 },
-                                { 0, 0, 0, 0, 1, 1 },
-                                { 0, 0, 0, 0, 0, 1 } });
+  k.f(kalman::state_transition{{1, 1, 0.5, 0, 0, 0},
+                               {0, 1, 1, 0, 0, 0},
+                               {0, 0, 1, 0, 0, 0},
+                               {0, 0, 0, 1, 1, 0.5},
+                               {0, 0, 0, 0, 1, 1},
+                               {0, 0, 0, 0, 0, 1}});
 
   // Now we can predict the next state based on the initialization values.
   k.predict();
@@ -70,7 +67,7 @@ namespace
   // Measure and Update
   // The dimension of zn is 2x1 and the dimension of xn is 6x1. Therefore the
   // dimension of the observation matrix H shall be 2x6.
-  k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0 } });
+  k.h(kalman::output_model{{1, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}});
 
   // Assume that the x and y measurements are uncorrelated, i.e. error in the x
   // coordinate measurement doesn't depend on the error in the y coordinate
@@ -81,7 +78,7 @@ namespace
   // For the sake of the example simplicity, we will assume a constant
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error
   // standard deviation: σxm = σym = 3m. The variance 9.
-  k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });
+  k.r(kalman::output_uncertainty{{9, 0}, {0, 9}});
 
   // The measurement values: z1 = [-393.66, 300.4]
   k.update(-393.66, 300.4);
@@ -164,7 +161,7 @@ namespace
   // uncertainty.
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::eigen::sample

@@ -40,13 +40,11 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
-namespace fcarouge::test
-{
-namespace
-{
+namespace fcarouge::test {
+namespace {
 //! @test Verifies default values are initialized for single-dimension filters
 //! without input control.
-[[maybe_unused]] auto defaults110{ [] {
+[[maybe_unused]] auto defaults110{[] {
   kalman k;
 
   assert(k.f() == 1);
@@ -61,11 +59,11 @@ namespace
   assert(k.z() == 0);
 
   return 0;
-}() };
+}()};
 
 //! @test Verifies default values are initialized for single-dimension filters
 //! with input control.
-[[maybe_unused]] auto defaults111{ [] {
+[[maybe_unused]] auto defaults111{[] {
   using kalman = fcarouge::kalman<double, double, double>;
   kalman k;
 
@@ -83,7 +81,7 @@ namespace
   assert(k.z() == 0);
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::test

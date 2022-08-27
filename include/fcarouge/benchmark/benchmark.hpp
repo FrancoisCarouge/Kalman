@@ -45,8 +45,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <chrono>
 #include <type_traits>
 
-namespace fcarouge::benchmark
-{
+namespace fcarouge::benchmark {
 
 //! @brief Type of the platform steady benchmark clock.
 using clock = std::conditional_t<std::chrono::high_resolution_clock::is_steady,

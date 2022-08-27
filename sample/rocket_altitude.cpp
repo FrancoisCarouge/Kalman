@@ -3,10 +3,8 @@
 #include <cassert>
 #include <chrono>
 
-namespace fcarouge::eigen::sample
-{
-namespace
-{
+namespace fcarouge::eigen::sample {
+namespace {
 //! @brief Estimating the Rocket Altitude
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
@@ -41,7 +39,7 @@ namespace
 //! - The accelerometer measurement error standard deviation: ϵ = 0.1 m.s^-2
 //!
 //! @example rocket_altitude.cpp
-[[maybe_unused]] auto rocket_altitude{ [] {
+[[maybe_unused]] auto rocket_altitude{[] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
   using kalman = kalman<vector<double, 2>, double, double, std::tuple<>,
                         std::tuple<std::chrono::milliseconds>>;
@@ -55,7 +53,7 @@ namespace
   // Since our initial state vector is a guess, we will set a very high estimate
   // uncertainty. The high estimate uncertainty results in high Kalman gain,
   // giving a high weight to the measurement.
-  k.p(kalman::estimate_uncertainty{ { 500, 0 }, { 0, 500 } });
+  k.p(kalman::estimate_uncertainty{{500, 0}, {0, 500}});
 
   // Prediction
   // We will assume a discrete noise model - the noise is different at each time
@@ -67,11 +65,10 @@ namespace
   // the process noise matrix. This makes our estimation uncertainty much lower!
   k.q([](const kalman::state &x, const std::chrono::milliseconds &delta_time) {
     static_cast<void>(x);
-    const auto dt{ std::chrono::duration<double>(delta_time).count() };
+    const auto dt{std::chrono::duration<double>(delta_time).count()};
     return kalman::process_uncertainty{
-      { 0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2 },
-      { 0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt }
-    };
+        {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
+        {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};
   });
 
   // The state transition matrix F would be:
@@ -79,20 +76,20 @@ namespace
          const kalman::input &u) {
     static_cast<void>(x);
     static_cast<void>(u);
-    const auto dt{ std::chrono::duration<double>(delta_time).count() };
-    return kalman::state_transition{ { 1, dt }, { 0, 1 } };
+    const auto dt{std::chrono::duration<double>(delta_time).count()};
+    return kalman::state_transition{{1, dt}, {0, 1}};
   });
 
   // The control matrix G would be:
   k.g([](const std::chrono::milliseconds &delta_time) {
-    const auto dt{ std::chrono::duration<double>(delta_time).count() };
-    return kalman::input_control{ 0.0313, dt };
+    const auto dt{std::chrono::duration<double>(delta_time).count()};
+    return kalman::input_control{0.0313, dt};
   });
 
   // We also don't know what the rocket acceleration is, but we can assume that
   // it's greater than zero. Let's assume: u0 = g
-  const double gravity{ -9.8 }; // [m.s^-2]
-  const std::chrono::milliseconds delta_time{ 250 };
+  const double gravity{-9.8}; // [m.s^-2]
+  const std::chrono::milliseconds delta_time{250};
   k.predict(delta_time, -gravity);
 
   assert(0.3 - 0.1 < k.x()(0) && k.x()(0) < 0.3 + 0.1 &&
@@ -105,11 +102,11 @@ namespace
   // Measure and Update
   // The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension
   // of the observation matrix H will be 1x2.
-  k.h(kalman::output_model{ 1., 0. });
+  k.h(kalman::output_model{1., 0.});
 
   // For the sake of the example simplicity, we will assume a constant
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
-  k.r(kalman::output_uncertainty{ 400. });
+  k.r(kalman::output_uncertainty{400.});
 
   k.update(-32.4);
 
@@ -133,9 +130,8 @@ namespace
   // measurements period: Δt = 250ms. The period is constant but passed as
   // variable for the example. The lambda helper shows how to simplify the
   // filter step call.
-  const auto step{ [&k](const auto &...args) {
-    k.template operator()<double>(args...);
-  } };
+  const auto step{
+      [&k](const auto &...args) { k.template operator()<double>(args...); }};
 
   step(delta_time, 40.02 + gravity, -11.1);
 
@@ -201,7 +197,7 @@ namespace
          2.6 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 2.6 + 0.1);
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::eigen::sample

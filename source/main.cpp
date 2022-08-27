@@ -40,7 +40,4 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details A valid and empty point of entry is provided to support the tests
 //! and samples. No further code necessary here.
-auto main() -> int
-{
-  return 0;
-}
+auto main() -> int { return 0; }

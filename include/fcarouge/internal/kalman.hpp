@@ -45,8 +45,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 #include <type_traits>
 
-namespace fcarouge::internal
-{
+namespace fcarouge::internal {
 
 template <typename, typename, typename, typename, typename, typename, typename,
           typename, typename>
@@ -90,23 +89,20 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   using prediction_types = std::tuple<PredictionTypes...>;
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{ 0 * Identity().template operator()<state>() };
+  state x{0 * Identity().template operator()<state>()};
   estimate_uncertainty p{
-    Identity().template operator()<estimate_uncertainty>()
-  };
-  process_uncertainty q{
-    0 * Identity().template operator()<process_uncertainty>()
-  };
-  output_uncertainty r{ 0 *
-                        Identity().template operator()<output_uncertainty>() };
-  output_model h{ Identity().template operator()<output_model>() };
-  state_transition f{ Identity().template operator()<state_transition>() };
-  gain k{ Identity().template operator()<gain>() };
-  innovation y{ 0 * Identity().template operator()<innovation>() };
+      Identity().template operator()<estimate_uncertainty>()};
+  process_uncertainty q{0 *
+                        Identity().template operator()<process_uncertainty>()};
+  output_uncertainty r{0 *
+                       Identity().template operator()<output_uncertainty>()};
+  output_model h{Identity().template operator()<output_model>()};
+  state_transition f{Identity().template operator()<state_transition>()};
+  gain k{Identity().template operator()<gain>()};
+  innovation y{0 * Identity().template operator()<innovation>()};
   innovation_uncertainty s{
-    Identity().template operator()<innovation_uncertainty>()
-  };
-  output z{ 0 * Identity().template operator()<output>() };
+      Identity().template operator()<innovation_uncertainty>()};
+  output z{0 * Identity().template operator()<output>()};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
@@ -116,49 +112,43 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   //! Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-    [this](const state &x, const UpdateTypes &...arguments) -> output_model {
-      static_cast<void>(x);
-      (static_cast<void>(arguments), ...);
-      return h;
-    }
-  };
+      [this](const state &x, const UpdateTypes &...arguments) -> output_model {
+        static_cast<void>(x);
+        (static_cast<void>(arguments), ...);
+        return h;
+      }};
   noise_observation_function noise_observation_r{
-    [this](const state &x, const output &z,
-           const UpdateTypes &...arguments) -> output_uncertainty {
-      static_cast<void>(x);
-      static_cast<void>(z);
-      (static_cast<void>(arguments), ...);
-      return r;
-    }
-  };
+      [this](const state &x, const output &z,
+             const UpdateTypes &...arguments) -> output_uncertainty {
+        static_cast<void>(x);
+        static_cast<void>(z);
+        (static_cast<void>(arguments), ...);
+        return r;
+      }};
   transition_state_function transition_state_f{
-    [this](const state &x,
-           const PredictionTypes &...arguments) -> state_transition {
-      static_cast<void>(x);
-      (static_cast<void>(arguments), ...);
-      return f;
-    }
-  };
+      [this](const state &x,
+             const PredictionTypes &...arguments) -> state_transition {
+        static_cast<void>(x);
+        (static_cast<void>(arguments), ...);
+        return f;
+      }};
   noise_process_function noise_process_q{
-    [this](const state &x,
-           const PredictionTypes &...arguments) -> process_uncertainty {
-      static_cast<void>(x);
-      (static_cast<void>(arguments), ...);
-      return q;
-    }
-  };
+      [this](const state &x,
+             const PredictionTypes &...arguments) -> process_uncertainty {
+        static_cast<void>(x);
+        (static_cast<void>(arguments), ...);
+        return q;
+      }};
   transition_function transition{
-    [this](const state &x, const PredictionTypes &...arguments) -> state {
-      (static_cast<void>(arguments), ...);
-      return f * x;
-    }
-  };
+      [this](const state &x, const PredictionTypes &...arguments) -> state {
+        (static_cast<void>(arguments), ...);
+        return f * x;
+      }};
   observation_function observation{
-    [this](const state &x, const UpdateTypes &...arguments) -> output {
-      (static_cast<void>(arguments), ...);
-      return h * x;
-    }
-  };
+      [this](const state &x, const UpdateTypes &...arguments) -> output {
+        (static_cast<void>(arguments), ...);
+        return h * x;
+      }};
 
   Transpose transpose;
   Divide divide;
@@ -171,36 +161,34 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   //! observation(x))?
   template <typename... Outputs>
   inline constexpr void update(const UpdateTypes &...arguments,
-                               const Outputs &...output_z)
-  {
-    const auto i{ identity.template operator()<estimate_uncertainty>() };
+                               const Outputs &...output_z) {
+    const auto i{identity.template operator()<estimate_uncertainty>()};
 
-    update_arguments = { arguments... };
-    z = output{ output_z... };
+    update_arguments = {arguments...};
+    z = output{output_z...};
     h = observation_state_h(x, arguments...); // x, z, args?
     r = noise_observation_r(x, z, arguments...);
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
     y = z - observation(x, arguments...);
     x = x + k * y;
-    p = symmetrize(estimate_uncertainty{
-        (i - k * h) * p * transpose(i - k * h) + k * r * transpose(k) });
+    p = symmetrize(estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
+                                        k * r * transpose(k)});
   }
 
-  inline constexpr void predict(const PredictionTypes &...arguments)
-  {
-    prediction_arguments = { arguments... };
+  inline constexpr void predict(const PredictionTypes &...arguments) {
+    prediction_arguments = {arguments...};
     f = transition_state_f(x, arguments...);
     q = noise_process_q(x, arguments...);
     x = transition(x, arguments...);
-    p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
+    p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
   }
 
   template <typename... Outputs>
   inline constexpr void
   operator()(const PredictionTypes &...prediction_arguments,
-             const UpdateTypes &...update_arguments, const Outputs &...output_z)
-  {
+             const UpdateTypes &...update_arguments,
+             const Outputs &...output_z) {
     update(update_arguments..., output_z...);
     predict(prediction_arguments...);
   }
@@ -243,25 +231,22 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   using prediction_types = std::tuple<PredictionTypes...>;
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{ 0 * Identity().template operator()<state>() };
+  state x{0 * Identity().template operator()<state>()};
   estimate_uncertainty p{
-    Identity().template operator()<estimate_uncertainty>()
-  };
-  process_uncertainty q{
-    0 * Identity().template operator()<process_uncertainty>()
-  };
-  output_uncertainty r{ 0 *
-                        Identity().template operator()<output_uncertainty>() };
-  output_model h{ Identity().template operator()<output_model>() };
-  state_transition f{ Identity().template operator()<state_transition>() };
-  input_control g{ Identity().template operator()<input_control>() };
-  gain k{ Identity().template operator()<gain>() };
-  innovation y{ 0 * Identity().template operator()<innovation>() };
+      Identity().template operator()<estimate_uncertainty>()};
+  process_uncertainty q{0 *
+                        Identity().template operator()<process_uncertainty>()};
+  output_uncertainty r{0 *
+                       Identity().template operator()<output_uncertainty>()};
+  output_model h{Identity().template operator()<output_model>()};
+  state_transition f{Identity().template operator()<state_transition>()};
+  input_control g{Identity().template operator()<input_control>()};
+  gain k{Identity().template operator()<gain>()};
+  innovation y{0 * Identity().template operator()<innovation>()};
   innovation_uncertainty s{
-    Identity().template operator()<innovation_uncertainty>()
-  };
-  output z{ 0 * Identity().template operator()<output>() };
-  input u{ 0 * Identity().template operator()<input>() };
+      Identity().template operator()<innovation_uncertainty>()};
+  output z{0 * Identity().template operator()<output>()};
+  input u{0 * Identity().template operator()<input>()};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
@@ -271,56 +256,49 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-    [this](const state &x, const UpdateTypes &...arguments) -> output_model {
-      static_cast<void>(x);
-      (static_cast<void>(arguments), ...);
-      return h;
-    }
-  };
+      [this](const state &x, const UpdateTypes &...arguments) -> output_model {
+        static_cast<void>(x);
+        (static_cast<void>(arguments), ...);
+        return h;
+      }};
   noise_observation_function noise_observation_r{
-    [this](const state &x, const output &z,
-           const UpdateTypes &...arguments) -> output_uncertainty {
-      static_cast<void>(x);
-      static_cast<void>(z);
-      (static_cast<void>(arguments), ...);
-      return r;
-    }
-  };
+      [this](const state &x, const output &z,
+             const UpdateTypes &...arguments) -> output_uncertainty {
+        static_cast<void>(x);
+        static_cast<void>(z);
+        (static_cast<void>(arguments), ...);
+        return r;
+      }};
   transition_state_function transition_state_f{
-    [this](const state &x, const PredictionTypes &...arguments,
-           const input &u) -> state_transition {
-      static_cast<void>(x);
-      (static_cast<void>(arguments), ...);
-      static_cast<void>(u);
-      return f;
-    }
-  };
+      [this](const state &x, const PredictionTypes &...arguments,
+             const input &u) -> state_transition {
+        static_cast<void>(x);
+        (static_cast<void>(arguments), ...);
+        static_cast<void>(u);
+        return f;
+      }};
   noise_process_function noise_process_q{
-    [this](const state &x,
-           const PredictionTypes &...arguments) -> process_uncertainty {
-      static_cast<void>(x);
-      (static_cast<void>(arguments), ...);
-      return q;
-    }
-  };
+      [this](const state &x,
+             const PredictionTypes &...arguments) -> process_uncertainty {
+        static_cast<void>(x);
+        (static_cast<void>(arguments), ...);
+        return q;
+      }};
   transition_control_function transition_control_g{
-    [this](const PredictionTypes &...arguments) -> input_control {
-      (static_cast<void>(arguments), ...);
-      return g;
-    }
-  };
+      [this](const PredictionTypes &...arguments) -> input_control {
+        (static_cast<void>(arguments), ...);
+        return g;
+      }};
   transition_function transition{
-    [this](const state &x, const PredictionTypes &...arguments) -> state {
-      (static_cast<void>(arguments), ...);
-      return f * x;
-    }
-  };
+      [this](const state &x, const PredictionTypes &...arguments) -> state {
+        (static_cast<void>(arguments), ...);
+        return f * x;
+      }};
   observation_function observation{
-    [this](const state &x, const UpdateTypes &...arguments) -> output {
-      (static_cast<void>(arguments), ...);
-      return h * x;
-    }
-  };
+      [this](const state &x, const UpdateTypes &...arguments) -> output {
+        (static_cast<void>(arguments), ...);
+        return h * x;
+      }};
 
   Transpose transpose;
   Divide divide;
@@ -333,20 +311,19 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! observation(x))?
   template <typename... Outputs>
   inline constexpr void update(const UpdateTypes &...arguments,
-                               const Outputs &...output_z)
-  {
-    const auto i{ identity.template operator()<estimate_uncertainty>() };
+                               const Outputs &...output_z) {
+    const auto i{identity.template operator()<estimate_uncertainty>()};
 
-    update_arguments = { arguments... };
-    z = output{ output_z... };
+    update_arguments = {arguments...};
+    z = output{output_z...};
     h = observation_state_h(x, arguments...); // x, z, args?
     r = noise_observation_r(x, z, arguments...);
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
     y = z - observation(x, arguments...);
     x = x + k * y;
-    p = symmetrize(estimate_uncertainty{
-        (i - k * h) * p * transpose(i - k * h) + k * r * transpose(k) });
+    p = symmetrize(estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
+                                        k * r * transpose(k)});
   }
 
   //! @todo Extended support?
@@ -357,23 +334,21 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! @todo How to extended next state x = f * x + g * u?
   template <typename... Inputs>
   inline constexpr void predict(const PredictionTypes &...arguments,
-                                const Inputs &...input_u)
-  {
-    prediction_arguments = { arguments... };
-    u = input{ input_u... };
+                                const Inputs &...input_u) {
+    prediction_arguments = {arguments...};
+    u = input{input_u...};
     f = transition_state_f(x, arguments..., u);
     q = noise_process_q(x, arguments...);
     g = transition_control_g(arguments...);
     x = f * x + g * u;
-    p = symmetrize(estimate_uncertainty{ f * p * transpose(f) + q });
+    p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
   }
 
   template <typename... Inputs>
   inline constexpr void
   operator()(const PredictionTypes &...prediction_arguments,
              const UpdateTypes &...update_arguments, const Inputs &...input_u,
-             const auto &...output_z)
-  {
+             const auto &...output_z) {
     update(update_arguments..., output_z...);
     predict(prediction_arguments..., input_u...);
   }

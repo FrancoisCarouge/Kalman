@@ -2,10 +2,8 @@
 
 #include <cassert>
 
-namespace fcarouge::sample
-{
-namespace
-{
+namespace fcarouge::sample {
+namespace {
 //! @brief Estimating the Height of a Building
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
@@ -21,7 +19,7 @@ namespace
 //! 55.01m, 55.15m, 49.89m, 40.85m, 46.72m, 50.05m, 51.27m, 49.95m.
 //!
 //! @example building_height.cpp
-[[maybe_unused]] auto building_height{ [] {
+[[maybe_unused]] auto building_height{[] {
   // A one-dimensional filter, constant system dynamic model.
   kalman k;
 
@@ -72,7 +70,7 @@ namespace
          "height is: 49.57m.");
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::sample

@@ -41,14 +41,11 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <type_traits>
 
-namespace fcarouge::internal
-{
+namespace fcarouge::internal {
 
-struct empty {
-};
+struct empty {};
 
-template <typename...> struct pack {
-};
+template <typename...> struct pack {};
 
 using empty_pack = pack<>;
 
@@ -59,16 +56,15 @@ template <typename Type> struct repack {
 template <template <typename...> typename From, typename... Types>
 struct repack<From<Types...>> {
   using type = pack<Types...>;
-  static inline constexpr auto size{ sizeof...(Types) };
+  static inline constexpr auto size{sizeof...(Types)};
 };
 
 template <typename From> using repack_t = typename repack<From>::type;
 
-template <typename From> inline constexpr auto repack_s{ repack<From>::size };
+template <typename From> inline constexpr auto repack_s{repack<From>::size};
 
 template <auto Begin, auto End, auto Increment, typename Function>
-constexpr void for_constexpr(Function &&function)
-{
+constexpr void for_constexpr(Function &&function) {
   if constexpr (Begin < End) {
     function(std::integral_constant<decltype(Begin), Begin>());
     for_constexpr<Begin + Increment, End, Increment>(function);
