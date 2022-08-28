@@ -44,26 +44,23 @@ For more information, please refer to <https://unlicense.org> */
 #include <algorithm>
 #include <chrono>
 
-namespace fcarouge::benchmark
-{
-namespace
-{
+namespace fcarouge::benchmark {
+namespace {
 //! @benchmark Measure update, empty benchmark performance.
-void update1x1x1(::benchmark::State &state)
-{
+void update1x1x1(::benchmark::State &state) {
   for (auto _ : state) {
     using kalman = fcarouge::kalman<float, float, float>;
     kalman k;
 
-    const float input{ 0. };
+    const float input{0.};
 
     ::benchmark::ClobberMemory();
-    const auto start{ clock::now() };
+    const auto start{clock::now()};
 
     k.update(input);
 
     ::benchmark::ClobberMemory();
-    const auto end{ clock::now() };
+    const auto end{clock::now()};
 
     state.SetIterationTime(
         std::chrono::duration_cast<std::chrono::duration<double>>(end - start)

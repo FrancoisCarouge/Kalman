@@ -43,21 +43,18 @@ For more information, please refer to <https://unlicense.org> */
 #include <algorithm>
 #include <chrono>
 
-namespace fcarouge::benchmark
-{
-namespace
-{
+namespace fcarouge::benchmark {
+namespace {
 //! @benchmark Measure baseline, empty benchmark performance.
-void baseline(::benchmark::State &state)
-{
+void baseline(::benchmark::State &state) {
   for (auto _ : state) {
     ::benchmark::ClobberMemory();
-    const auto start{ clock::now() };
+    const auto start{clock::now()};
 
     // Nothing to measure but the benchmark.
 
     ::benchmark::ClobberMemory();
-    const auto end{ clock::now() };
+    const auto end{clock::now()};
 
     state.SetIterationTime(
         std::chrono::duration_cast<std::chrono::duration<double>>(end - start)

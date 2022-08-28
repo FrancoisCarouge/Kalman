@@ -45,8 +45,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <functional>
 #include <type_traits>
 
-namespace fcarouge::eigen::internal
-{
+namespace fcarouge::eigen::internal {
 
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
@@ -54,38 +53,33 @@ concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 struct matrix {
   template <typename Type>
   [[nodiscard]] inline constexpr auto operator()(const Type &value) ->
-      typename std::decay_t<Type>::PlainMatrix
-  {
+      typename std::decay_t<Type>::PlainMatrix {
     return value;
   }
 
-  [[nodiscard]] inline constexpr auto operator()(const arithmetic auto &value)
-  {
+  [[nodiscard]] inline constexpr auto operator()(const arithmetic auto &value) {
     using type = std::decay_t<decltype(value)>;
-    return Eigen::Matrix<type, 1, 1>{ value };
+    return Eigen::Matrix<type, 1, 1>{value};
   }
 
   template <typename Type, auto Size>
   [[nodiscard]] inline constexpr auto
-  operator()(const std::array<Type, Size> &value)
-  {
-    return Eigen::Matrix<Type, Size, 1>{ value.data() };
+  operator()(const std::array<Type, Size> &value) {
+    return Eigen::Matrix<Type, Size, 1>{value.data()};
   }
 };
 
 struct transpose {
   template <typename Type>
   [[nodiscard]] inline constexpr auto operator()(const Type &value) const ->
-      typename Eigen::Transpose<Type>::PlainMatrix
-  {
+      typename Eigen::Transpose<Type>::PlainMatrix {
     return value.transpose();
   }
 };
 
 struct symmetrize {
   //! @todo Protect overflow? Is there a better way?
-  [[nodiscard]] inline constexpr auto operator()(const auto &value) const
-  {
+  [[nodiscard]] inline constexpr auto operator()(const auto &value) const {
     return (value + value.transpose()) / 2;
   }
 };
@@ -102,8 +96,7 @@ struct divide {
   template <typename Numerator, typename Denominator>
   [[nodiscard]] inline constexpr auto
   operator()(const Numerator &numerator, const Denominator &denominator) const
-      -> result<Numerator, Denominator>
-  {
+      -> result<Numerator, Denominator> {
     matrix to_matrix;
     return to_matrix(denominator)
         .transpose()
@@ -118,14 +111,12 @@ struct divide {
 //! in paper P2008R0 entitled "Enabling variable template template parameters"?
 struct identity_matrix {
   template <typename Type>
-  [[nodiscard]] inline constexpr auto operator()() const -> Type
-  {
+  [[nodiscard]] inline constexpr auto operator()() const -> Type {
     return Type::Identity();
   }
 
   template <arithmetic Type>
-  [[nodiscard]] inline constexpr auto operator()() const noexcept -> Type
-  {
+  [[nodiscard]] inline constexpr auto operator()() const noexcept -> Type {
     return 1;
   }
 };

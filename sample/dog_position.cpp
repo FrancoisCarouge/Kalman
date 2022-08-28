@@ -2,10 +2,8 @@
 
 #include <cassert>
 
-namespace fcarouge::sample
-{
-namespace
-{
+namespace fcarouge::sample {
+namespace {
 //! @brief Estimating the Position of a Dog
 //!
 //! @copyright This example is transcribed from Kalman and Bayesian Filters in
@@ -31,7 +29,7 @@ namespace
 //! Gaussian.
 //!
 //! @example dog_position.cpp
-[[maybe_unused]] auto dog_position{ [] {
+[[maybe_unused]] auto dog_position{[] {
   using kalman = fcarouge::kalman<double, double, double>;
   kalman k;
 
@@ -90,7 +88,7 @@ namespace
       "is equal to meters. Contrast this to the sensor's meters.");
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::sample

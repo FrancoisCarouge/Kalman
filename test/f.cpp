@@ -40,47 +40,45 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
-namespace fcarouge::test
-{
-namespace
-{
+namespace fcarouge::test {
+namespace {
 //! @test Verifies the state transition matrix F management overloads for
 //! the default filter type.
-[[maybe_unused]] auto f111{ [] {
+[[maybe_unused]] auto f111{[] {
   using kalman = kalman<>;
   kalman k;
 
   assert(k.f() == 1);
 
   {
-    const auto f{ 2. };
+    const auto f{2.};
     k.f(f);
     assert(k.f() == 2);
   }
 
   {
-    const auto f{ 3. };
+    const auto f{3.};
     k.f(std::move(f));
     assert(k.f() == 3);
   }
 
   {
-    const auto f{ 4. };
+    const auto f{4.};
     k.f(f);
     assert(k.f() == 4);
   }
 
   {
-    const auto f{ 5. };
+    const auto f{5.};
     k.f(std::move(f));
     assert(k.f() == 5);
   }
 
   {
-    const auto f{ [](const kalman::state &x) -> kalman::state_transition {
+    const auto f{[](const kalman::state &x) -> kalman::state_transition {
       static_cast<void>(x);
       return 6.;
-    } };
+    }};
     k.f(f);
     assert(k.f() == 5);
     k.predict();
@@ -88,10 +86,10 @@ namespace
   }
 
   {
-    const auto f{ [](const kalman::state &x) -> kalman::state_transition {
+    const auto f{[](const kalman::state &x) -> kalman::state_transition {
       static_cast<void>(x);
       return 7.;
-    } };
+    }};
     k.f(std::move(f));
     assert(k.f() == 6);
     k.predict();
@@ -99,7 +97,7 @@ namespace
   }
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::test

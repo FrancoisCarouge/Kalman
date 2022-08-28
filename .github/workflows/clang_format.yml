@@ -12,5 +12,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3.0.2
+    - name: Install
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 16 all
     - name: Verify
-      run: find . -iname *.hpp -o -iname *.cpp -o -iname support/** | xargs clang-format-14 --Werror --dry-run --verbose -style=file
+      run: find . -iname *.hpp -o -iname *.cpp -o -iname support/** | xargs clang-format-16 --Werror --dry-run --verbose -style=file

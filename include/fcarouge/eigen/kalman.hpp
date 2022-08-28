@@ -47,8 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <Eigen/Eigen>
 
-namespace fcarouge::eigen
-{
+namespace fcarouge::eigen {
 //! @brief Function object for performing Eigen matrix transposition.
 using transpose = internal::transpose;
 

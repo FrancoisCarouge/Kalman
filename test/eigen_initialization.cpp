@@ -40,27 +40,25 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
-namespace fcarouge::eigen::test
-{
-namespace
-{
+namespace fcarouge::eigen::test {
+namespace {
 
 //! @test Verifies default values are initialized for multi-dimension filters.
-[[maybe_unused]] auto defaults543{ [] {
+[[maybe_unused]] auto defaults543{[] {
   using kalman =
       kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>>;
   kalman k;
 
-  const auto z3x1{ vector<double, 3>::Zero() };
-  const auto i4x4{ matrix<double, 4, 4>::Identity() };
-  const auto i4x5{ matrix<double, 4, 5>::Identity() };
-  const auto i5x3{ matrix<double, 5, 3>::Identity() };
-  const auto i5x4{ matrix<double, 5, 4>::Identity() };
-  const auto i5x5{ matrix<double, 5, 5>::Identity() };
-  const auto z4x1{ vector<double, 4>::Zero() };
-  const auto z4x4{ matrix<double, 4, 4>::Zero() };
-  const auto z5x1{ vector<double, 5>::Zero() };
-  const auto z5x5{ matrix<double, 5, 5>::Zero() };
+  const auto z3x1{vector<double, 3>::Zero()};
+  const auto i4x4{matrix<double, 4, 4>::Identity()};
+  const auto i4x5{matrix<double, 4, 5>::Identity()};
+  const auto i5x3{matrix<double, 5, 3>::Identity()};
+  const auto i5x4{matrix<double, 5, 4>::Identity()};
+  const auto i5x5{matrix<double, 5, 5>::Identity()};
+  const auto z4x1{vector<double, 4>::Zero()};
+  const auto z4x4{matrix<double, 4, 4>::Zero()};
+  const auto z5x1{vector<double, 5>::Zero()};
+  const auto z5x5{matrix<double, 5, 5>::Zero()};
 
   assert(k.f() == i5x5);
   assert(k.g() == i5x3);
@@ -76,7 +74,7 @@ namespace
   assert(k.z() == z4x1);
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::eigen::test

@@ -44,8 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <cstddef>
 #include <format>
 
-namespace fcarouge
-{
+namespace fcarouge {
 template <typename, typename, typename, typename, typename, typename, typename,
           typename, typename>
 class kalman;
@@ -58,8 +57,7 @@ struct std::formatter<
     fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                      Identity, UpdateTypes, PredictionTypes>,
     Char> {
-  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context)
-  {
+  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 
@@ -69,8 +67,7 @@ struct std::formatter<
                                      Symmetrize, Divide, Identity, UpdateTypes,
                                      PredictionTypes> &filter,
               std::basic_format_context<OutputIt, Char> &format_context)
-      -> OutputIt
-  {
+      -> OutputIt {
     format_context.advance_to(
         format_to(format_context.out(), R"({{"f": {}, )", filter.f()));
 
@@ -84,11 +81,11 @@ struct std::formatter<
                                         filter.h(), filter.k(), filter.p()));
 
     fcarouge::internal::for_constexpr<
-        std::size_t{ 0 }, fcarouge::internal::repack_s<PredictionTypes>, 1>(
+        std::size_t{0}, fcarouge::internal::repack_s<PredictionTypes>, 1>(
         [&format_context, &filter](auto position) {
           format_context.advance_to(format_to(
               format_context.out(), R"("prediction_{}": {}, )",
-              std::size_t{ position }, filter.template predict<position>()));
+              std::size_t{position}, filter.template predict<position>()));
         });
 
     format_context.advance_to(format_to(format_context.out(),
@@ -101,11 +98,11 @@ struct std::formatter<
     }
 
     fcarouge::internal::for_constexpr<
-        std::size_t{ 0 }, fcarouge::internal::repack_s<UpdateTypes>, 1>(
+        std::size_t{0}, fcarouge::internal::repack_s<UpdateTypes>, 1>(
         [&format_context, &filter](auto position) {
           format_context.advance_to(format_to(
               format_context.out(), R"("update_{}": {}, )",
-              std::size_t{ position }, filter.template update<position>()));
+              std::size_t{position}, filter.template update<position>()));
         });
 
     format_context.advance_to(format_to(format_context.out(),

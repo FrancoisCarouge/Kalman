@@ -40,47 +40,45 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
-namespace fcarouge::test
-{
-namespace
-{
+namespace fcarouge::test {
+namespace {
 //! @test Verifies the observation transition matrix H management overloads for
 //! the default filter type.
-[[maybe_unused]] auto h110{ [] {
+[[maybe_unused]] auto h110{[] {
   fcarouge::kalman k;
   using kalman = decltype(k);
 
   assert(k.h() == 1);
 
   {
-    const auto h{ 2. };
+    const auto h{2.};
     k.h(h);
     assert(k.h() == 2);
   }
 
   {
-    const auto h{ 3. };
+    const auto h{3.};
     k.h(std::move(h));
     assert(k.h() == 3);
   }
 
   {
-    const auto h{ 4. };
+    const auto h{4.};
     k.h(h);
     assert(k.h() == 4);
   }
 
   {
-    const auto h{ 5. };
+    const auto h{5.};
     k.h(std::move(h));
     assert(k.h() == 5);
   }
 
   {
-    const auto h{ [](const kalman::state &x) -> kalman::output_model {
+    const auto h{[](const kalman::state &x) -> kalman::output_model {
       static_cast<void>(x);
       return 6.;
-    } };
+    }};
     k.h(h);
     assert(k.h() == 5);
     k.update();
@@ -88,10 +86,10 @@ namespace
   }
 
   {
-    const auto h{ [](const kalman::state &x) -> kalman::output_model {
+    const auto h{[](const kalman::state &x) -> kalman::output_model {
       static_cast<void>(x);
       return 7.;
-    } };
+    }};
     k.h(std::move(h));
     assert(k.h() == 6);
     k.update();
@@ -99,7 +97,7 @@ namespace
   }
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::test

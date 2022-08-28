@@ -2,10 +2,8 @@
 
 #include <cassert>
 
-namespace fcarouge::sample
-{
-namespace
-{
+namespace fcarouge::sample {
+namespace {
 //! @brief Estimating the Temperature of the Liquid in a Tank
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
@@ -26,7 +24,7 @@ namespace
 //! 50.023°C, and 49.99°C.
 //!
 //! @example liquid_temperature.cpp
-[[maybe_unused]] auto liquid_temperature{ [] {
+[[maybe_unused]] auto liquid_temperature{[] {
   // A one-dimensional filter, constant system dynamic model.
   kalman k;
 
@@ -94,7 +92,7 @@ namespace
   // random process noise, the Kalman filter can provide good estimation.
 
   return 0;
-}() };
+}()};
 
 } // namespace
 } // namespace fcarouge::sample

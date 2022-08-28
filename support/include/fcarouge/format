@@ -43,34 +43,31 @@ For more information, please refer to <https://unlicense.org> */
 // `std::format` as of July 2022. The support is brought in through the `fmt`
 // library.
 
+#include <fmt/chrono.h>
+#include <fmt/color.h>
+#include <fmt/compile.h>
 #include <fmt/core.h>
 #include <fmt/format.h>
-#include <fmt/ranges.h>
-#include <fmt/chrono.h>
-#include <fmt/compile.h>
-#include <fmt/color.h>
 #include <fmt/os.h>
 #include <fmt/ostream.h>
 #include <fmt/printf.h>
+#include <fmt/ranges.h>
 #include <fmt/xchar.h>
 
 #include <cstdio>
 #include <locale>
-#include <string_view>
 #include <string>
+#include <string_view>
 
-namespace fcarouge
-{
+namespace fcarouge {
 template <typename, typename, typename, typename, typename, typename, typename,
           typename, typename>
 class kalman;
 } // namespace fcarouge
 
-namespace std
-{
+namespace std {
 template <typename Type, typename Char>
-struct formatter : public fmt::formatter<Type, Char> {
-};
+struct formatter : public fmt::formatter<Type, Char> {};
 
 template <typename FormatIterator, typename Char>
 using basic_format_context = fmt::basic_format_context<FormatIterator, Char>;
@@ -79,42 +76,38 @@ template <typename Char>
 using basic_format_parse_context = fmt::basic_format_parse_context<Char>;
 
 template <class... Types>
-[[nodiscard]] std::string format(std::string_view format, Types &...arguments)
-{
+[[nodiscard]] std::string format(std::string_view format, Types &...arguments) {
   return fmt::vformat(format, fmt::make_format_args(arguments...));
 }
 
 template <class... Types>
-[[nodiscard]] std::wstring format(std::wstring_view format, Types &...arguments)
-{
+[[nodiscard]] std::wstring format(std::wstring_view format,
+                                  Types &...arguments) {
   return fmt::vformat(format, fmt::make_wformat_args(arguments...));
 }
 
 template <class... Types>
 [[nodiscard]] std::string format(const std::locale &locale,
-                                 std::string_view format, Types &&...arguments)
-{
+                                 std::string_view format,
+                                 Types &&...arguments) {
   return fmt::vformat(locale, format, fmt::make_format_args(arguments...));
 }
 
 template <class... Types>
 [[nodiscard]] std::wstring format(const std::locale &locale,
                                   std::wstring_view format,
-                                  Types &&...arguments)
-{
+                                  Types &&...arguments) {
   return fmt::vformat(locale, format, fmt::make_wformat_args(arguments...));
 }
 
 template <typename... Types>
-inline void print(std::string_view format, Types &&...arguments)
-{
+inline void print(std::string_view format, Types &&...arguments) {
   fmt::vprint(format, fmt::make_format_args(arguments...));
 }
 
 template <typename... Types>
 inline void print(std::FILE *file, std::string_view format,
-                  Types &&...arguments)
-{
+                  Types &&...arguments) {
   fmt::print(file, format, fmt::make_format_args(arguments...));
 }
 
@@ -127,10 +120,9 @@ struct fmt::formatter<
     fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                      Identity, UpdateTypes, PredictionTypes>,
     Char>
-        : public std::formatter<
-              fcarouge::kalman<State, Output, Input, Transpose, Symmetrize,
-                               Divide, Identity, UpdateTypes, PredictionTypes>,
-              Char> {
-};
+    : public std::formatter<
+          fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
+                           Identity, UpdateTypes, PredictionTypes>,
+          Char> {};
 
 #endif // FCAROUGE_FORMAT
