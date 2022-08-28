@@ -114,22 +114,22 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section user"><dt>Benchmark</dt><dd>Measure baseline, empty benchmark performance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="baseline_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="baseline_8cpp_source.xhtml">baseline.cpp</a>.</p>
-<div class="fragment"><div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    ::benchmark::ClobberMemory();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{ clock::now() };</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// Nothing to measure but the benchmark.</span></div>
+<p class="definition">Definition at line <a class="el" href="baseline_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="baseline_8cpp_source.xhtml">baseline.cpp</a>.</p>
+<div class="fragment"><div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                     {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    ::benchmark::ClobberMemory();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// Nothing to measure but the benchmark.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    ::benchmark::ClobberMemory();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    ::benchmark::ClobberMemory();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{ clock::now() };</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    state.SetIterationTime(</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        std::chrono::duration_cast&lt;std::chrono::duration&lt;double&gt;&gt;(end - start)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            .count());</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    state.SetIterationTime(</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        std::chrono::duration_cast&lt;std::chrono::duration&lt;double&gt;&gt;(end - start)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            .count());</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -157,7 +157,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml">anonymous_namespace{baseline.cpp}</a></li>
-    <li class="footer">Generated on Sat Aug 27 2022 23:09:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Aug 28 2022 00:46:23 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
