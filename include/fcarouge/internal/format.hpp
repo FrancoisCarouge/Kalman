@@ -53,6 +53,11 @@ class kalman;
 template <typename State, typename Output, typename Input, typename Transpose,
           typename Symmetrize, typename Divide, typename Identity,
           typename UpdateTypes, typename PredictionTypes, typename Char>
+// It is allowed to add template specializations for any standard library class
+// template to the namespace std only if the declaration depends on at least one
+// program-defined type and the specialization satisfies all requirements for
+// the original template, except where such specializations are prohibited.
+// NOLINTNEXTLINE(cert-dcl58-cpp)
 struct std::formatter<
     fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
                      Identity, UpdateTypes, PredictionTypes>,

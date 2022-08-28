@@ -52,19 +52,20 @@ concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
 struct matrix {
   template <typename Type>
-  [[nodiscard]] inline constexpr auto operator()(const Type &value) ->
+  [[nodiscard]] inline constexpr auto operator()(const Type &value) const ->
       typename std::decay_t<Type>::PlainMatrix {
     return value;
   }
 
-  [[nodiscard]] inline constexpr auto operator()(const arithmetic auto &value) {
+  [[nodiscard]] inline constexpr auto
+  operator()(const arithmetic auto &value) const {
     using type = std::decay_t<decltype(value)>;
     return Eigen::Matrix<type, 1, 1>{value};
   }
 
   template <typename Type, auto Size>
   [[nodiscard]] inline constexpr auto
-  operator()(const std::array<Type, Size> &value) {
+  operator()(const std::array<Type, Size> &value) const {
     return Eigen::Matrix<Type, Size, 1>{value.data()};
   }
 };
@@ -97,7 +98,7 @@ struct divide {
   [[nodiscard]] inline constexpr auto
   operator()(const Numerator &numerator, const Denominator &denominator) const
       -> result<Numerator, Denominator> {
-    matrix to_matrix;
+    const matrix to_matrix;
     return to_matrix(denominator)
         .transpose()
         .fullPivHouseholderQr()
