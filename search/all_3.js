@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['defaults110_0',['defaults110',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a3f77afd577edbc176cca510acda1fefb',1,'fcarouge::test::anonymous_namespace{initialization.cpp}']]],
-  ['defaults111_1',['defaults111',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a2170b5f9ce16dba1a219ba4e1392a324',1,'fcarouge::test::anonymous_namespace{initialization.cpp}']]],
-  ['defaults543_2',['defaults543',['../namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__initialization_8cpp_03.xhtml#a205c0e5908ce895cc9132dacbc86beb2',1,'fcarouge::eigen::test::anonymous_namespace{eigen_initialization.cpp}']]],
-  ['divide_3',['divide',['../namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365',1,'fcarouge::eigen']]],
-  ['documentation_2edox_4',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
-  ['dog_5fposition_5',['dog_position',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02dog__position_8cpp_03.xhtml#aafec5a2e95aa8989c1e8f9708622ca35',1,'fcarouge::sample::anonymous_namespace{dog_position.cpp}']]],
-  ['dog_5fposition_2ecpp_6',['dog_position.cpp',['../dog__position_8cpp.xhtml',1,'']]]
+  ['eigen_5ff_2ecpp_0',['eigen_f.cpp',['../eigen__f_8cpp.xhtml',1,'']]],
+  ['eigen_5fh_2ecpp_1',['eigen_h.cpp',['../eigen__h_8cpp.xhtml',1,'']]],
+  ['eigen_5finitialization_2ecpp_2',['eigen_initialization.cpp',['../eigen__initialization_8cpp.xhtml',1,'']]],
+  ['ekf_5f4x1x0_5fardupilot_5fsoaring_3',['ekf_4x1x0_ardupilot_soaring',['../namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__ardupilot__soaring_8cpp_03.xhtml#a423eb51a214ce2c2ff83e8d1265a3325',1,'fcarouge::eigen::sample::anonymous_namespace{ekf_4x1x0_ardupilot_soaring.cpp}']]],
+  ['ekf_5f4x1x0_5fardupilot_5fsoaring_2ecpp_4',['ekf_4x1x0_ardupilot_soaring.cpp',['../ekf__4x1x0__ardupilot__soaring_8cpp.xhtml',1,'']]],
+  ['empty_5fpack_5',['empty_pack',['../namespacefcarouge_1_1eigen.xhtml#a8c87a40fb734801894ffdd12ab7eda67',1,'fcarouge::eigen::empty_pack()'],['../namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503',1,'fcarouge::internal::empty_pack()'],['../namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca',1,'fcarouge::empty_pack()']]],
+  ['estimate_5funcertainty_6',['estimate_uncertainty',['../classfcarouge_1_1kalman.xhtml#a15928894f06259752d02d9ee26b2e47e',1,'fcarouge::kalman']]]
 ];

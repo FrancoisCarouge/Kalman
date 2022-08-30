@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kalman_2ehpp_0',['kalman.hpp',['../eigen_2kalman_8hpp.xhtml',1,'(Global Namespace)'],['../internal_2kalman_8hpp.xhtml',1,'(Global Namespace)'],['../kalman_8hpp.xhtml',1,'(Global Namespace)']]]
+  ['license_2etxt_0',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]]
 ];

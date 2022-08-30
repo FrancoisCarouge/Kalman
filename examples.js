@@ -1,9 +1,9 @@
 var examples =
 [
-    [ "ardupilot_soaring.cpp", "ardupilot_soaring_8cpp-example.xhtml", null ],
-    [ "building_height.cpp", "building_height_8cpp-example.xhtml", null ],
-    [ "dog_position.cpp", "dog_position_8cpp-example.xhtml", null ],
-    [ "liquid_temperature.cpp", "liquid_temperature_8cpp-example.xhtml", null ],
-    [ "rocket_altitude.cpp", "rocket_altitude_8cpp-example.xhtml", null ],
-    [ "vehicle_location.cpp", "vehicle_location_8cpp-example.xhtml", null ]
+    [ "ekf_4x1x0_ardupilot_soaring.cpp", "ekf_4x1x0_ardupilot_soaring_8cpp-example.xhtml", null ],
+    [ "kf_1x1x0_building_height.cpp", "kf_1x1x0_building_height_8cpp-example.xhtml", null ],
+    [ "kf_1x1x0_liquid_temperature.cpp", "kf_1x1x0_liquid_temperature_8cpp-example.xhtml", null ],
+    [ "kf_1x1x1_dog_position.cpp", "kf_1x1x1_dog_position_8cpp-example.xhtml", null ],
+    [ "kf_2x1x1_rocket_altitude.cpp", "kf_2x1x1_rocket_altitude_8cpp-example.xhtml", null ],
+    [ "kf_6x2x0_vehicle_location.cpp", "kf_6x2x0_vehicle_location_8cpp-example.xhtml", null ]
 ];

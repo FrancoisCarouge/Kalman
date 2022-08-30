@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ardupilot_5fsoaring_0',['ardupilot_soaring',['../namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02ardupilot__soaring_8cpp_03.xhtml#a3ab7a769f6bf60bff41643afed405da5',1,'fcarouge::eigen::sample::anonymous_namespace{ardupilot_soaring.cpp}']]]
+  ['binary_0',['binary',['../_l_i_c_e_n_s_e_8txt.xhtml#ab8bbc27d8fe80567e920dc10c46af49e',1,'LICENSE.txt']]]
 ];

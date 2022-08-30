@@ -1,16 +1,14 @@
 var searchData=
 [
-  ['observation_0',['observation',['../classfcarouge_1_1kalman.xhtml#a8322a989123873c88190f4dd7cea40a5',1,'fcarouge::kalman::observation(const observation_function &amp;callable)'],['../classfcarouge_1_1kalman.xhtml#a2eee8dab54e2cf6b78bf52551c988bf5',1,'fcarouge::kalman::observation(observation_function &amp;&amp;callable)']]],
-  ['observation_5ffunction_1',['observation_function',['../classfcarouge_1_1kalman.xhtml#a689fcc450a7698b5375da9dc9c6a535b',1,'fcarouge::kalman']]],
-  ['observation_5fstate_5ffunction_2',['observation_state_function',['../classfcarouge_1_1kalman.xhtml#a1985c7ac691e33223b6b470bd7516056',1,'fcarouge::kalman']]],
-  ['operator_28_29_3',['operator()',['../structfcarouge_1_1identity__matrix.xhtml#a3bc3899543cf8c8e0b11afc1412cf087',1,'fcarouge::identity_matrix::operator()()'],['../classfcarouge_1_1kalman.xhtml#aab1dba08047eb5eb08dfbc8095ea1861',1,'fcarouge::kalman::operator()()']]],
-  ['operator1x1x0_4',['operator1x1x0',['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02operator1x1x0_8cpp_03.xhtml#a87fb8501af121998a4b6e890eaf355e3',1,'fcarouge::benchmark::anonymous_namespace{operator1x1x0.cpp}']]],
-  ['operator1x1x0_2ecpp_5',['operator1x1x0.cpp',['../operator1x1x0_8cpp.xhtml',1,'']]],
-  ['operator1x1x1_6',['operator1x1x1',['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02operator1x1x1_8cpp_03.xhtml#aefc0812203d6c58de748caffc0cf8e8b',1,'fcarouge::benchmark::anonymous_namespace{operator1x1x1.cpp}']]],
-  ['operator1x1x1_2ecpp_7',['operator1x1x1.cpp',['../operator1x1x1_8cpp.xhtml',1,'']]],
-  ['operator_3d_8',['operator=',['../classfcarouge_1_1kalman.xhtml#a4ae5a09664832ca35039c426a4a15cc6',1,'fcarouge::kalman::operator=(const kalman &amp;other) -&gt; kalman &amp;=default'],['../classfcarouge_1_1kalman.xhtml#aa2f0430be3a57809a6bdca479c341954',1,'fcarouge::kalman::operator=(kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=default']]],
-  ['otherwise_9',['OTHERWISE',['../_l_i_c_e_n_s_e_8txt.xhtml#abcc03a69820d704ae8953ef8291126ae',1,'LICENSE.txt']]],
-  ['output_10',['output',['../classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1',1,'fcarouge::kalman']]],
-  ['output_5fmodel_11',['output_model',['../classfcarouge_1_1kalman.xhtml#a1642332d5ad9d1e135bbe5220961de64',1,'fcarouge::kalman']]],
-  ['output_5funcertainty_12',['output_uncertainty',['../classfcarouge_1_1kalman.xhtml#a9fac97289314ad4018774b6afbd73716',1,'fcarouge::kalman']]]
+  ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#a868e7283042616c9fd32ea86745c3ec4',1,'fcarouge::kalman::p() const -&gt; estimate_uncertainty'],['../classfcarouge_1_1kalman.xhtml#a922687019e99df6169eb09ddaa396bd7',1,'fcarouge::kalman::p(const estimate_uncertainty &amp;value)'],['../classfcarouge_1_1kalman.xhtml#ac5cb329547421eabc8bb91f2c16329b7',1,'fcarouge::kalman::p(estimate_uncertainty &amp;&amp;value)']]],
+  ['pack_1',['pack',['../namespacefcarouge_1_1eigen.xhtml#adadfe28b2fbaeffdd58efa04957aa556',1,'fcarouge::eigen::pack()'],['../namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27',1,'fcarouge::pack()']]],
+  ['parse_2',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpos070a7274636525b38c0e4419c7b19891.xhtml#a08d0c4d0c455b251b2e1d54e202c33b3',1,'std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;, Char &gt;']]],
+  ['predict_3',['predict',['../classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199',1,'fcarouge::kalman::predict(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#aec1d96672e7eea0d0b7c53c21eaf6f90',1,'fcarouge::kalman::predict() const']]],
+  ['predict1x1x0_4',['predict1x1x0',['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict1x1x0_8cpp_03.xhtml#aef5cb0967d86958de3ae040be1c77cc2',1,'fcarouge::benchmark::anonymous_namespace{predict1x1x0.cpp}']]],
+  ['predict1x1x0_2ecpp_5',['predict1x1x0.cpp',['../predict1x1x0_8cpp.xhtml',1,'']]],
+  ['predict1x1x1_6',['predict1x1x1',['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict1x1x1_8cpp_03.xhtml#ad26d01a0f30b59695bf065bf94af1d4d',1,'fcarouge::benchmark::anonymous_namespace{predict1x1x1.cpp}']]],
+  ['predict1x1x1_2ecpp_7',['predict1x1x1.cpp',['../predict1x1x1_8cpp.xhtml',1,'']]],
+  ['process_5funcertainty_8',['process_uncertainty',['../classfcarouge_1_1kalman.xhtml#a95e201e1563f135b128edbf2c9793e56',1,'fcarouge::kalman']]],
+  ['publish_9',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#af69bd29514c4d87c931d4688cf45a674',1,'LICENSE.txt']]],
+  ['purpose_10',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#a4b1b866c8fbf580a6c25d7af1d42b574',1,'LICENSE.txt']]]
 ];
