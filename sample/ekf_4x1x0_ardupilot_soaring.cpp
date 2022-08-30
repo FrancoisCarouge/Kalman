@@ -24,10 +24,10 @@ namespace {
 //! of radius R [m] with the center distance x north of the sUAV and y east of
 //! the sUAV.
 //!
-//! @example ardupilot_soaring.cpp
+//! @example ekf_4x1x0_ardupilot_soaring.cpp
 //!
 //! @todo Add a data set and assert for correctness of results.
-[[maybe_unused]] auto ardupilot_soaring{[] {
+[[maybe_unused]] auto ekf_4x1x0_ardupilot_soaring{[] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
   using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,

@@ -22,8 +22,8 @@ namespace {
 //! (an angular acceleration). The measurements period: Δt = 1s (constant). The
 //! random acceleration standard deviation: σa = 0.2 m.s^-2.
 //!
-//! @example vehicle_location.cpp
-[[maybe_unused]] auto vehicle_location{[] {
+//! @example kf_6x2x0_vehicle_location.cpp
+[[maybe_unused]] auto kf_6x2x0_vehicle_location{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   using kalman = kalman<vector<double, 6>, vector<double, 2>>;
 
