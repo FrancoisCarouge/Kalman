@@ -92,6 +92,9 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! measurement (Z, R), the measurement function H, and if the system has
 //! control inputs (U, B). Designing a filter is as much art as science.
 //!
+//! Arbitrary parameters can be added to the prediction and update stages to
+//! participate in gain-scheduling or linear parameter varying (LPV) systems.
+//!
 //! Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no
 //! input) are supported through the Standard Templated Library (STL). Higher
 //! dimension filters require Eigen 3 support.
@@ -173,6 +176,9 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! re-initializations but to what default?
 //! @todo Expand std::format support with standard arguments and Eigen3 types.
 //! @todo Support, test complex number filters?
+//! @todo Use automatic (Eigen::AutoDiffScalar?), symbolic, numerical solvers to
+//! define the filter characteristics and simplify solving the dynamic system
+//! for non-mathematicians.
 template <
     typename State = double, typename Output = double, typename Input = void,
     typename Transpose = std::identity, typename Symmetrize = std::identity,
