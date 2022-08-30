@@ -241,8 +241,9 @@ Continuous Integration &amp; Deployment Actions</h1>
  <a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen" alt="Sponsor" class="inline"/></a></p>
 <h1><a class="anchor" id="autotoc_md21"></a>
 Class kalman</h1>
-<p >A Bayesian filter that uses multivariate Gaussians.</p>
-<p >Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science.</p>
+<p >A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE).</p>
+<p >Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science.</p>
+<p >Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.</p>
 <p >Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.</p>
 <p >This class participates in a convenience formatter specialization for formatted string representation of the filter state.</p>
 <p >Declared and fully documented in the <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a> header.</p>
@@ -458,7 +459,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 28 2022 02:47:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Tue Aug 30 2022 01:40:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
