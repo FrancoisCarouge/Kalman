@@ -38,8 +38,8 @@ namespace {
 //! - The altimeter measurement error standard deviation: σxm = 20m
 //! - The accelerometer measurement error standard deviation: ϵ = 0.1 m.s^-2
 //!
-//! @example rocket_altitude.cpp
-[[maybe_unused]] auto rocket_altitude{[] {
+//! @example kf_2x1x1_rocket_altitude.cpp
+[[maybe_unused]] auto kf_2x1x1_rocket_altitude{[] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
   using kalman = kalman<vector<double, 2>, double, double, std::tuple<>,
                         std::tuple<std::chrono::milliseconds>>;

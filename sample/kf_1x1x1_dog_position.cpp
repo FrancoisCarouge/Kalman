@@ -28,8 +28,8 @@ namespace {
 //! overshoot by a little than a lot. Perhaps we can also model this with a
 //! Gaussian.
 //!
-//! @example dog_position.cpp
-[[maybe_unused]] auto dog_position{[] {
+//! @example kf_1x1x1_dog_position.cpp
+[[maybe_unused]] auto kf_1x1x1_dog_position{[] {
   using kalman = fcarouge::kalman<double, double, double>;
   kalman k;
 

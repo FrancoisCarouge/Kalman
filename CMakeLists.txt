@@ -51,9 +51,12 @@ foreach(test ${KALMAN_TEST_LIST})
 endforeach()
 
 set(KALMAN_SAMPLE_LIST
-    "sample/ardupilot_soaring.cpp" "sample/building_height.cpp"
-    "sample/dog_position.cpp" "sample/liquid_temperature.cpp"
-    "sample/rocket_altitude.cpp" "sample/vehicle_location.cpp")
+    "sample/ekf_4x1x0_ardupilot_soaring.cpp"
+    "sample/kf_1x1x0_building_height.cpp"
+    "sample/kf_1x1x0_liquid_temperature.cpp"
+    "sample/kf_1x1x1_dog_position.cpp"
+    "sample/kf_2x1x1_rocket_altitude.cpp"
+    "sample/kf_6x2x0_vehicle_location.cpp")
 
 foreach(sample ${KALMAN_SAMPLE_LIST})
   get_filename_component(sample_name ${sample} NAME_WE)
