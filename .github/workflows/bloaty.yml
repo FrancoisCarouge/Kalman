@@ -22,7 +22,7 @@ jobs:
             ( cd build ;
               cmake -B build -G Ninja -S .. ;
               cmake --build build ;
-              cmake --build build --target install ; ) ) )
+              sudo cmake --build build --target install ; ) ) )
     - name: Build
       run: |
         mkdir build
