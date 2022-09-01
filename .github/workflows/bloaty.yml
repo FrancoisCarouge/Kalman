@@ -20,7 +20,7 @@ jobs:
             mkdir build ;
             ( cd build ;
               cmake .. ; 
-              cmake --build --parallel . ;
+              cmake --build . --parallel ;
               sudo make install ; ) ) )
     - name: Build
       run: |
