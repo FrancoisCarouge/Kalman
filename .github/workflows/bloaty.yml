@@ -20,7 +20,7 @@ jobs:
           ( cd bloaty ;
             mkdir build ;
             ( cd build ;
-              cmake -B build -G Ninja -S . ;
+              cmake -B build -G Ninja -S .. ;
               cmake --build build ;
               cmake --build build --target install ; ) ) )
     - name: Build
