@@ -1,8 +1,20 @@
 # Kalman Filter for C++
 
-A generic Kalman filter.
+A generic Kalman filter for C++23.
 
-The library supports simple and extended filters. The update equation uses the Joseph form. Control input is accepted. Customization point objects allow for using different linear algebra backends for which standard or Eigen3 implementation is provided.
+A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE). A control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems.
+
+Simple and extended filters are supported. The update equation uses the Joseph form. Control input is supported. Various customization point objects allow for using different linear algebra backends for which standard or Eigen3 implementation is provided.
+
+The Kalman filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians.
+
+Designing a filter is as much art as science. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B).
+
+Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.
+
+Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.
+
+Standard formatter specialization provided for representation of the all filter states.
 
 - [Kalman Filter for C++](#kalman-filter-for-c)
 - [Examples](#examples)
@@ -11,6 +23,7 @@ The library supports simple and extended filters. The update equation uses the J
   - [4x1 Non-Linear Dynamic Model](#4x1-non-linear-dynamic-model)
 - [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
 - [Class kalman](#class-kalman)
+  - [Declaration](#declaration)
   - [Template Parameters](#template-parameters)
   - [Member Types](#member-types)
   - [Member Functions](#member-functions)
@@ -178,17 +191,9 @@ k(drift_x, drift_y, position_x, position_y, variometer);
 
 # Class kalman
 
-A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE).
+Also documented in the [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp) header.
 
-Applicable for unimodal and uncorrelated uncertainties. Kalman filters assume white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B). Designing a filter is as much art as science.
-
-Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.
-
-Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.
-
-This class participates in a convenience formatter specialization for formatted string representation of the filter state.
-
-Declared and fully documented in the [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp) header.
+## Declaration
 
 ```cpp
 template <
