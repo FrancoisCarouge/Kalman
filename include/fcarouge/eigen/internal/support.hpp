@@ -85,9 +85,11 @@ struct symmetrize {
   }
 };
 
+//! @todo Provide a division based on `colPivHouseholderQr()`.
+//! @todo Provide a division based on `householderQr()`.
 struct divide {
   template <typename Numerator, typename Denominator>
-  // Numerator [m x n] / Denominator [o x n] ->  Quotient [m x o]
+  // Numerator [m x n] / Denominator [o x n] -> Quotient [m x o]
   using result = typename Eigen::Matrix<
       typename std::decay_t<std::invoke_result_t<matrix, Numerator>>::Scalar,
       std::decay_t<std::invoke_result_t<matrix, Numerator>>::RowsAtCompileTime,

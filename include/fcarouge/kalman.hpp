@@ -78,19 +78,28 @@ using empty_pack = internal::empty_pack;
 //! @brief Convenience tuple-like pack type.
 template <typename... Types> using pack = internal::pack<Types...>;
 
-//! @brief Kalman filter.
+//! @brief A generic Kalman filter for C++23.
 //!
 //! @details A Bayesian filter that uses multivariate Gaussians, a recursive
-//! state estimator, and a linear quadratic estimator (LQE).
+//! state estimator, and a linear quadratic estimator (LQE). A control theory
+//! tool applicable to signal estimation, sensor fusion, or data assimilation
+//! problems.
 //!
-//! Applicable for unimodal and uncorrelated uncertainties. Kalman filters
-//! assume white noise, propagation and measurement functions are
+//! Simple and extended filters are supported. The update equation uses the
+//! Joseph form. Control input is supported. Various customization point objects
+//! allow for using different linear algebra backends for which standard or
+//! Eigen3 implementation is provided.
+//!
+//! The Kalman filter is applicable for unimodal and uncorrelated uncertainties.
+//! The filter assumes white noise, propagation and measurement functions are
 //! differentiable, and that the uncertainty stays centered on the state
 //! estimate. The filter is the optimal linear filter under assumptions. The
 //! filter updates estimates by multiplying Gaussians and predicts estimates by
-//! adding Gaussians. Design the state (X, P), the process (F, Q), the
-//! measurement (Z, R), the measurement function H, and if the system has
-//! control inputs (U, B). Designing a filter is as much art as science.
+//! adding Gaussians.
+//!
+//! Designing a filter is as much art as science. Design the state (X, P), the
+//! process (F, Q), the measurement (Z, R), the measurement function H, and if
+//! the system has control inputs (U, B).
 //!
 //! Arbitrary parameters can be added to the prediction and update stages to
 //! participate in gain-scheduling or linear parameter varying (LPV) systems.
@@ -99,8 +108,8 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! input) are supported through the Standard Templated Library (STL). Higher
 //! dimension filters require Eigen 3 support.
 //!
-//! This class participates in a convenience formatter specialization for
-//! formatted string representation of the filter state.
+//! Standard formatter specialization provided for representation of the all
+//! filter states.
 //!
 //! @tparam State The type template parameter of the state column vector x.
 //! State variables can be observed (measured), or hidden variables (inferred).
