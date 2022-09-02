@@ -26,8 +26,9 @@ jobs:
               cmake --build . ;
               sudo make install ; ) ) )
         ( cd /tmp ;
-          git clone --depth 1 https://github.com/fmtlib/fmt.git ;
+          git clone https://github.com/fmtlib/fmt.git ;
           ( cd fmt ;
+            git checkout 0b0f7cfbfcebd021c910078003d413354bd843e2 ;
             mkdir build ;
             ( cd build ;
               CXX=clang++-14 cmake -DFMT_HEADER_ONLY=TRUE .. ;
