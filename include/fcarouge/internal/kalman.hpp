@@ -49,7 +49,7 @@ namespace fcarouge::internal {
 
 template <typename, typename, typename, typename, typename, typename, typename,
           typename, typename>
-struct kalman {
+struct kalman final {
   //! @todo Support some more specializations, all, or disable others?
 };
 

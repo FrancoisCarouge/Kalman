@@ -50,7 +50,7 @@ namespace fcarouge::eigen::internal {
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
-struct matrix {
+struct matrix final {
   template <typename Type>
   [[nodiscard]] inline constexpr auto operator()(const Type &value) const ->
       typename std::decay_t<Type>::PlainMatrix {
@@ -70,7 +70,7 @@ struct matrix {
   }
 };
 
-struct transpose {
+struct transpose final {
   template <typename Type>
   [[nodiscard]] inline constexpr auto operator()(const Type &value) const ->
       typename Eigen::Transpose<Type>::PlainMatrix {
@@ -78,7 +78,7 @@ struct transpose {
   }
 };
 
-struct symmetrize {
+struct symmetrize final {
   //! @todo Protect overflow? Is there a better way?
   [[nodiscard]] inline constexpr auto operator()(const auto &value) const {
     return (value + value.transpose()) / 2;
@@ -87,7 +87,7 @@ struct symmetrize {
 
 //! @todo Provide a division based on `colPivHouseholderQr()`.
 //! @todo Provide a division based on `householderQr()`.
-struct divide {
+struct divide final {
   template <typename Numerator, typename Denominator>
   // Numerator [m x n] / Denominator [o x n] -> Quotient [m x o]
   using result = typename Eigen::Matrix<
@@ -112,7 +112,7 @@ struct divide {
 
 //! @todo Could this function object template be a variable template as proposed
 //! in paper P2008R0 entitled "Enabling variable template template parameters"?
-struct identity_matrix {
+struct identity_matrix final {
   template <typename Type>
   [[nodiscard]] inline constexpr auto operator()() const -> Type {
     return Type::Identity();
