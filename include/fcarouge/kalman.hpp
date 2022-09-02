@@ -60,7 +60,7 @@ namespace fcarouge {
 //!
 //! @note Could this function object template be a variable template as proposed
 //! in paper P2008R0 entitled "Enabling variable template template parameters"?
-struct identity_matrix {
+struct identity_matrix final {
   //! @brief Returns `1`, the 1-by-1 identity matrix equivalent.
   //!
   //! @tparam Type The type template parameter of the value.
@@ -193,7 +193,7 @@ template <
     typename Transpose = std::identity, typename Symmetrize = std::identity,
     typename Divide = std::divides<void>, typename Identity = identity_matrix,
     typename UpdateTypes = empty_pack, typename PredictionTypes = empty_pack>
-class kalman {
+class kalman final {
 private:
   //! @name Private Member Types
   //! @{
@@ -388,7 +388,7 @@ public:
   //! @brief Destructs the kalman filter.
   //!
   //! @complexity Constant.
-  inline constexpr virtual ~kalman() = default;
+  inline constexpr ~kalman() = default;
 
   //! @}
 
