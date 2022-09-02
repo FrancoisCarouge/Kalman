@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('support_8hpp_source.xhtml',''); initRe
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">concept </span>arithmetic = std::integral&lt;Type&gt; || std::floating_point&lt;Type&gt;;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a723d2d09906f780da22d7764cf9f5f48">matrix</a> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a723d2d09906f780da22d7764cf9f5f48">matrix</a> final {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator()(<span class="keyword">const</span> Type &amp;value) <span class="keyword">const</span> -&gt;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      <span class="keyword">typename</span> std::decay_t&lt;Type&gt;::PlainMatrix {</div>
@@ -158,7 +158,7 @@ $(document).ready(function(){initNavTree('support_8hpp_source.xhtml',''); initRe
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  }</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a> {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a> final {</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator()(<span class="keyword">const</span> Type &amp;value) <span class="keyword">const</span> -&gt;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      <span class="keyword">typename</span> Eigen::Transpose&lt;Type&gt;::PlainMatrix {</div>
@@ -166,13 +166,13 @@ $(document).ready(function(){initNavTree('support_8hpp_source.xhtml',''); initRe
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  }</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a> {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a> final {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator()(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value)<span class="keyword"> const </span>{</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> (value + value.transpose()) / 2;</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  }</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a> {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a> final {</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Numerator, <span class="keyword">typename</span> Denominator&gt;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="comment">// Numerator [m x n] / Denominator [o x n] -&gt; Quotient [m x o]</span></div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  <span class="keyword">using</span> result = <span class="keyword">typename</span> Eigen::Matrix&lt;</div>
@@ -195,7 +195,7 @@ $(document).ready(function(){initNavTree('support_8hpp_source.xhtml',''); initRe
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  }</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>};</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a> {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a> final {</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt;</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator()() <span class="keyword">const</span> -&gt; Type {</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">return</span> Type::Identity();</div>
@@ -223,7 +223,7 @@ $(document).ready(function(){initNavTree('support_8hpp_source.xhtml',''); initRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_58817dbcd177a26bda361ab0426398a1.xhtml">eigen</a></li><li class="navelem"><a class="el" href="dir_a5f48ff4e46e760ef906c6947b169acf.xhtml">internal</a></li><li class="navelem"><a class="el" href="support_8hpp.xhtml">support.hpp</a></li>
-    <li class="footer">Generated on Fri Sep 2 2022 20:23:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Fri Sep 2 2022 20:51:21 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
