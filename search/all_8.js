@@ -14,5 +14,7 @@ var searchData=
   ['kf_5f2x1x1_5frocket_5faltitude_2ecpp_11',['kf_2x1x1_rocket_altitude.cpp',['../kf__2x1x1__rocket__altitude_8cpp.xhtml',1,'']]],
   ['kf_5f6x2x0_5fvehicle_5flocation_12',['kf_6x2x0_vehicle_location',['../namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#acdca372528c3bc5b53990e4b08602fdc',1,'fcarouge::eigen::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}']]],
   ['kf_5f6x2x0_5fvehicle_5flocation_2ecpp_13',['kf_6x2x0_vehicle_location.cpp',['../kf__6x2x0__vehicle__location_8cpp.xhtml',1,'']]],
-  ['kind_14',['KIND',['../_l_i_c_e_n_s_e_8txt.xhtml#a206349c6c29ab1a385b7c7b8d57a2a06',1,'LICENSE.txt']]]
+  ['kf_5f8x4x0_5fdeep_5fsort_5fbounding_5fbox_14',['kf_8x4x0_deep_sort_bounding_box',['../namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#ab1fd2e8a0bb15ca4aee2bbbc81ff3b1d',1,'fcarouge::eigen::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}']]],
+  ['kf_5f8x4x0_5fdeep_5fsort_5fbounding_5fbox_2ecpp_15',['kf_8x4x0_deep_sort_bounding_box.cpp',['../kf__8x4x0__deep__sort__bounding__box_8cpp.xhtml',1,'']]],
+  ['kind_16',['KIND',['../_l_i_c_e_n_s_e_8txt.xhtml#a206349c6c29ab1a385b7c7b8d57a2a06',1,'LICENSE.txt']]]
 ];
