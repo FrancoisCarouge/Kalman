@@ -44,9 +44,9 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the observation transition matrix H management overloads for
 //! the default filter type.
-[[maybe_unused]] auto h110{[] {
-  fcarouge::kalman k;
-  using kalman = decltype(k);
+[[maybe_unused]] auto h_1x1x0{[] {
+  using kalman = kalman<>;
+  kalman k;
 
   assert(k.h() == 1);
 

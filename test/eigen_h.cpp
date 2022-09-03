@@ -45,7 +45,7 @@ namespace {
 
 //! @test Verifies the observation transition matrix H management overloads for
 //! the Eigen filter type.
-[[maybe_unused]] auto h543{[] {
+[[maybe_unused]] auto h_5x4x3{[] {
   using kalman = kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>,
                         std::tuple<double, float, int, char>,
                         std::tuple<char, int, float, double>>;

@@ -44,7 +44,7 @@ namespace fcarouge::eigen::test {
 namespace {
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
-[[maybe_unused]] auto f543{[] {
+[[maybe_unused]] auto f_5x4x3{[] {
   using kalman = kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>,
                         std::tuple<double, float, int, char>,
                         std::tuple<char, int, float, double>>;

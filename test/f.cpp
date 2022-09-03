@@ -44,7 +44,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the state transition matrix F management overloads for
 //! the default filter type.
-[[maybe_unused]] auto f111{[] {
+[[maybe_unused]] auto f_1x1x0{[] {
   using kalman = kalman<>;
   kalman k;
 
