@@ -289,7 +289,7 @@ public:
   //! @brief Type of the callable transition state function.
   //!
   //! @details The function is of the form `state_transition(const state &,
-  //! const PredictionTypes &..., const input &)`.
+  //! const input &, const PredictionTypes &...)`.
   using transition_state_function =
       typename implementation::transition_state_function;
 
@@ -311,8 +311,8 @@ public:
 
   //! @brief Type of the callable transition function.
   //!
-  //! @details The function is of the form `state(const state &, const
-  //! PredictionTypes &...)`.
+  //! @details The function is of the form `state(const state &, const input &,
+  //! const PredictionTypes &...)`.
   using transition_function = typename implementation::transition_function;
 
   //! @brief Type of the callable observation function.

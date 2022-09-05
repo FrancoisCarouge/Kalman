@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <chrono>
+#include <cmath>
 
 namespace fcarouge::eigen::sample {
 namespace {
@@ -72,8 +73,8 @@ namespace {
   });
 
   // The state transition matrix F would be:
-  k.f([](const kalman::state &x, const std::chrono::milliseconds &delta_time,
-         const kalman::input &u) {
+  k.f([](const kalman::state &x, const kalman::input &u,
+         const std::chrono::milliseconds &delta_time) {
     static_cast<void>(x);
     static_cast<void>(u);
     const auto dt{std::chrono::duration<double>(delta_time).count()};
@@ -92,12 +93,14 @@ namespace {
   const std::chrono::milliseconds delta_time{250};
   k.predict(delta_time, -gravity);
 
-  assert(0.3 - 0.1 < k.x()(0) && k.x()(0) < 0.3 + 0.1 &&
-         2.45 - 0.1 < k.x()(1) && k.x()(1) < 2.45 + 0.1);
-  assert(531.25 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 531.25 + 0.1 &&
-         125 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 125 + 0.1 &&
-         125 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 125 + 0.1 &&
-         500 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 500 + 0.1);
+  assert(std::abs(1 - k.x()[0] / 0.3) < 0.03 &&
+         std::abs(1 - k.x()[1] / 2.45) < 0.03 &&
+         "The state estimates expected at 3% accuracy.");
+  assert(std::abs(1 - k.p()(0, 0) / 531.25) < 0.001 &&
+         std::abs(1 - k.p()(0, 1) / 125) < 0.001 &&
+         std::abs(1 - k.p()(1, 0) / 125) < 0.001 &&
+         std::abs(1 - k.p()(1, 1) / 500) < 0.001 &&
+         "The estimate uncertainty expected at 0.1% accuracy.");
 
   // Measure and Update
   // The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension
@@ -110,21 +113,25 @@ namespace {
 
   k.update(-32.4);
 
-  assert(-18.35 - 0.1 < k.x()(0) && k.x()(0) < -18.35 + 0.1 &&
-         -1.94 - 0.1 < k.x()(1) && k.x()(1) < -1.94 + 0.1);
-  assert(228.2 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 228.2 + 0.1 &&
-         53.7 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 53.7 + 0.1 &&
-         53.7 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 53.7 + 0.1 &&
-         483.2 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 483.2 + 0.1);
+  assert(std::abs(1 - k.x()[0] / -18.35) < 0.001 &&
+         std::abs(1 - k.x()[1] / -1.94) < 0.001 &&
+         "The state estimates expected at 0.1% accuracy.");
+  assert(std::abs(1 - k.p()(0, 0) / 228.2) < 0.001 &&
+         std::abs(1 - k.p()(0, 1) / 53.7) < 0.001 &&
+         std::abs(1 - k.p()(1, 0) / 53.7) < 0.001 &&
+         std::abs(1 - k.p()(1, 1) / 483.2) < 0.001 &&
+         "The estimate uncertainty expected at 0.1% accuracy.");
 
   k.predict(delta_time, 39.72 + gravity);
 
-  assert(-17.9 - 0.1 < k.x()(0) && k.x()(0) < -17.9 + 0.1 &&
-         5.54 - 0.1 < k.x()(1) && k.x()(1) < 5.54 + 0.1);
-  assert(285.2 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 285.2 + 0.1 &&
-         174.5 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 174.5 + 0.1 &&
-         174.5 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 174.5 + 0.1 &&
-         483.2 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 483.2 + 0.1);
+  assert(std::abs(1 - k.x()[0] / -17.9) < 0.001 &&
+         std::abs(1 - k.x()[1] / 5.54) < 0.001 &&
+         "The state estimates expected at 0.1% accuracy.");
+  assert(std::abs(1 - k.p()(0, 0) / 285.2) < 0.001 &&
+         std::abs(1 - k.p()(0, 1) / 174.5) < 0.001 &&
+         std::abs(1 - k.p()(1, 0) / 174.5) < 0.001 &&
+         std::abs(1 - k.p()(1, 1) / 483.2) < 0.001 &&
+         "The estimate uncertainty expected at 0.1% accuracy.");
 
   // And so on, run a step of the filter, updating and predicting, every
   // measurements period: Δt = 250ms. The period is constant but passed as
@@ -135,12 +142,14 @@ namespace {
 
   step(delta_time, 40.02 + gravity, -11.1);
 
-  assert(-12.3 - 0.1 < k.x()(0) && k.x()(0) < -12.3 + 0.1 &&
-         14.8 - 0.1 < k.x()(1) && k.x()(1) < 14.8 + 0.1);
-  assert(244.9 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 244.9 + 0.1 &&
-         211.6 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 211.6 + 0.1 &&
-         211.6 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 211.6 + 0.1 &&
-         438.8 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 438.8 + 0.1);
+  assert(std::abs(1 - k.x()[0] / -12.3) < 0.002 &&
+         std::abs(1 - k.x()[1] / 14.8) < 0.002 &&
+         "The state estimates expected at 0.2% accuracy.");
+  assert(std::abs(1 - k.p()(0, 0) / 244.9) < 0.001 &&
+         std::abs(1 - k.p()(0, 1) / 211.6) < 0.001 &&
+         std::abs(1 - k.p()(1, 0) / 211.6) < 0.001 &&
+         std::abs(1 - k.p()(1, 1) / 438.8) < 0.001 &&
+         "The estimate uncertainty expected at 0.1% accuracy.");
 
   step(delta_time, 39.97 + gravity, 18.);
   step(delta_time, 39.81 + gravity, 22.9);
@@ -174,7 +183,7 @@ namespace {
 
   // The Kalman gain for altitude converged to 0.12, which means that the
   // estimation weight is much higher than the measurement weight.
-  assert(49.3 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 49.3 + 0.1 &&
+  assert(std::abs(1 - k.p()(0, 0) / 49.3) < 0.001 &&
          "At this point, the altitude uncertainty px = 49.3, which means that "
          "the standard deviation of the prediction is square root of 49.3: "
          "7.02m (remember that the standard deviation of the measurement is "
@@ -189,12 +198,15 @@ namespace {
   // with the true altitude. In this example we don't have any maneuvers that
   // cause acceleration changes, but if we had, the control input
   // (accelerometer) would update the state extrapolation equation.
-  assert(831.5 - 0.1 < k.x()(0) && k.x()(0) < 831.5 + 0.1 &&
-         222.94 - 0.1 < k.x()(1) && k.x()(1) < 222.94 + 0.1);
-  assert(54.3 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 54.3 + 0.1 &&
-         10.4 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 10.4 + 0.1 &&
-         10.4 - 0.1 < k.p()(1, 0) && k.p()(1, 0) < 10.4 + 0.1 &&
-         2.6 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 2.6 + 0.1);
+
+  assert(std::abs(1 - k.x()[0] / 831.5) < 0.001 &&
+         std::abs(1 - k.x()[1] / 222.94) < 0.001 &&
+         "The state estimates expected at 0.1% accuracy.");
+  assert(std::abs(1 - k.p()(0, 0) / 54.3) < 0.01 &&
+         std::abs(1 - k.p()(0, 1) / 10.4) < 0.01 &&
+         std::abs(1 - k.p()(1, 0) / 10.4) < 0.01 &&
+         std::abs(1 - k.p()(1, 1) / 2.6) < 0.01 &&
+         "The estimate uncertainty expected at 1% accuracy.");
 
   return 0;
 }()};

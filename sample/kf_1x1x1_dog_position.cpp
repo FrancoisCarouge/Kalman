@@ -1,6 +1,7 @@
 #include "fcarouge/kalman.hpp"
 
 #include <cassert>
+#include <cmath>
 
 namespace fcarouge::sample {
 namespace {
@@ -82,7 +83,8 @@ namespace {
   k.update(14.8);
 
   assert(
-      15.053 - 0.001 < k.x() && k.x() < 15.053 + 0.001 &&
+      std::abs(1 - k.x() / 15.053) < 0.001 &&
+      "The state estimates expected at 0.1% accuracy."
       "Here we can see that the variance converges to 2.1623 in 9 steps. This "
       "means that we have become very confident in our position estimate. It "
       "is equal to meters. Contrast this to the sensor's meters.");

@@ -1,6 +1,7 @@
 #include "fcarouge/kalman.hpp"
 
 #include <cassert>
+#include <cmath>
 
 namespace fcarouge::sample {
 namespace {
@@ -52,7 +53,7 @@ namespace {
   assert(10 == k.x() &&
          "Since our model has constant dynamics, the predicted estimate is "
          "equal to the current estimate: x^1,0 = 10°C.");
-  assert(10000.0001 - 0.001 < k.p() && k.p() < 10000.0001 + 0.001 &&
+  assert(10000.0001 == k.p() &&
          "The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = "
          "10000 + 0.0001 = 10000.0001.");
 
@@ -65,7 +66,8 @@ namespace {
 
   k.update(49.95);
 
-  assert(0.999999 - 0.001 < k.k() && k.k() < 0.999999 + 0.001);
+  assert(std::abs(1 - k.k() / 0.999999) < 0.0001 &&
+         "The gain expected at 0.01% accuracy.");
 
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 5s (constant).
@@ -80,12 +82,16 @@ namespace {
   k(49.99);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
-  assert(0.0013 - 0.0001 < k.p() && k.p() < 0.0013 + 0.0001 &&
+  assert(std::abs(1 - k.p() / 0.0013) < 0.05 &&
+         "The estimate uncertainty expected at 5% accuracy."
          "The estimate uncertainty is 0.0013, i.e. the estimate error standard "
          "deviation is: 0.036°C.");
-  assert(49.988 - 0.0001 < k.x() && k.x() < 49.988 + 0.0001 &&
+  assert(std::abs(1 - k.x() / 49.988) < 0.001 &&
+         "The state estimates expected at 0.1% accuracy."
          "The filter estimates the liquid temperature at 49.988°C.");
-  assert(0.1265 - 0.001 < k.k() && k.k() < 0.1265 + 0.001);
+  assert(std::abs(1 - k.k() / 0.1265) < 0.001 &&
+         "The gain expected at 0.1% accuracy.");
+
   // So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.
   // In this example we've measured a liquid temperature using the
   // one-dimensional Kalman filter. Although the system dynamics include a

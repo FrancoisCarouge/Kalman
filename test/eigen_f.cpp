@@ -82,12 +82,12 @@ namespace {
   }
 
   {
-    const auto f{[](const kalman::state &x, const char &c, const int &i,
-                    const float &f, const double &d,
-                    const kalman::input &u) -> kalman::state_transition {
+    const auto f{[](const kalman::state &x, const kalman::input &u,
+                    const char &c, const int &i, const float &fp,
+                    const double &d) -> kalman::state_transition {
       static_cast<void>(x);
       static_cast<void>(d);
-      static_cast<void>(f);
+      static_cast<void>(fp);
       static_cast<void>(i);
       static_cast<void>(c);
       static_cast<void>(u);
@@ -100,12 +100,12 @@ namespace {
   }
 
   {
-    const auto f{[](const kalman::state &x, const char &c, const int &i,
-                    const float &f, const double &d,
-                    const kalman::input &u) -> kalman::state_transition {
+    const auto f{[](const kalman::state &x, const kalman::input &u,
+                    const char &c, const int &i, const float &fp,
+                    const double &d) -> kalman::state_transition {
       static_cast<void>(x);
       static_cast<void>(d);
-      static_cast<void>(f);
+      static_cast<void>(fp);
       static_cast<void>(i);
       static_cast<void>(c);
       static_cast<void>(u);

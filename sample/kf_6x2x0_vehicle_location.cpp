@@ -1,6 +1,7 @@
 #include "fcarouge/eigen/kalman.hpp"
 
 #include <cassert>
+#include <cmath>
 
 namespace fcarouge::eigen::sample {
 namespace {
@@ -88,12 +89,14 @@ namespace {
   // measurements period: Δt = 1s (constant, built-in).
   k(-375.93, 301.78);
 
-  assert(-277.8 - 0.1 < k.x()(0) && k.x()(0) < -277.8 + 0.1 &&
-         148.3 - 0.1 < k.x()(1) && k.x()(1) < 148.3 + 0.1 &&
-         94.5 - 0.1 < k.x()(2) && k.x()(2) < 94.5 + 0.1 &&
-         249.8 - 0.1 < k.x()(3) && k.x()(3) < 249.8 + 0.1 &&
-         -85.9 - 0.1 < k.x()(4) && k.x()(4) < -85.9 + 0.1 &&
-         -63.6 - 0.1 < k.x()(5) && k.x()(5) < -63.6 + 0.1);
+  // Verify the example estimated state at 0.1% accuracy.
+  assert(std::abs(1 - k.x()[0] / -277.8) < 0.001 &&
+         std::abs(1 - k.x()[1] / 148.3) < 0.001 &&
+         std::abs(1 - k.x()[2] / 94.5) < 0.001 &&
+         std::abs(1 - k.x()[3] / 249.8) < 0.001 &&
+         std::abs(1 - k.x()[4] / -85.9) < 0.001 &&
+         std::abs(1 - k.x()[5] / -63.6) < 0.001 &&
+         "The state estimates expected at 0.1% accuracy.");
 
   k(-351.04, 295.1);
   k(-328.96, 305.19);
@@ -129,19 +132,20 @@ namespace {
   k(291.8, 32.99);
   k(299.89, 2.14);
 
-  assert(298.5 - 0.1 < k.x()(0) && k.x()(0) < 298.5 + 0.1 &&
-         -1.65 - 0.1 < k.x()(1) && k.x()(1) < -1.65 + 0.1 &&
-         -1.9 - 0.1 < k.x()(2) && k.x()(2) < -1.9 + 0.1 &&
-         -22.5 - 0.1 < k.x()(3) && k.x()(3) < -22.5 + 0.1 &&
-         -26.1 - 0.1 < k.x()(4) && k.x()(4) < -26.1 + 0.1 &&
-         -0.64 - 0.1 < k.x()(5) && k.x()(5) < -0.64 + 0.1);
-
-  assert(11.25 - 0.1 < k.p()(0, 0) && k.p()(0, 0) < 11.25 + 0.1 &&
-         4.5 - 0.1 < k.p()(0, 1) && k.p()(0, 1) < 4.5 + 0.1 &&
-         0.9 - 0.1 < k.p()(0, 2) && k.p()(0, 2) < 0.9 + 0.1 &&
-         2.4 - 0.1 < k.p()(1, 1) && k.p()(1, 1) < 2.4 + 0.1 &&
-         0.2 - 0.1 < k.p()(2, 2) && k.p()(2, 2) < 0.2 + 0.1 &&
-         11.25 - 0.1 < k.p()(3, 3) && k.p()(3, 3) < 11.25 + 0.1 &&
+  assert(std::abs(1 - k.x()[0] / 298.5) < 0.006 &&
+         std::abs(1 - k.x()[1] / -1.65) < 0.006 &&
+         std::abs(1 - k.x()[2] / -1.9) < 0.006 &&
+         std::abs(1 - k.x()[3] / -22.5) < 0.006 &&
+         std::abs(1 - k.x()[4] / -26.1) < 0.006 &&
+         std::abs(1 - k.x()[5] / -0.64) < 0.006 &&
+         "The state estimates expected at 0.6% accuracy.");
+  assert(std::abs(1 - k.p()(0, 0) / 11.25) < 0.001 &&
+         std::abs(1 - k.p()(0, 1) / 4.5) < 0.001 &&
+         std::abs(1 - k.p()(0, 2) / 0.9) < 0.001 &&
+         std::abs(1 - k.p()(1, 1) / 2.4) < 0.001 &&
+         std::abs(1 - k.p()(2, 2) / 0.2) < 0.001 &&
+         std::abs(1 - k.p()(3, 3) / 11.25) < 0.001 &&
+         "The estimate uncertainty expected at 0.1% accuracy."
          "At this point, the position uncertainty px = py = 5, which means "
          "that the standard deviation of the prediction is square root of 5m.");
 
