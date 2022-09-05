@@ -33,6 +33,30 @@ add_library(kalman_main "source/main.cpp")
 target_include_directories(kalman INTERFACE "include"
                                             "support/include/fcarouge")
 
+set(KALMAN_COMPILE_OPTIONS
+    "-ansi"
+    "-fno-check-new"
+    "-fno-common"
+    "-fstrict-aliasing"
+    "-pedantic"
+    "-Wall"
+    "-Wcast-align"
+    "-Wchar-subscripts"
+    "-Wdouble-promotion"
+    "-Wenum-conversion"
+    "-Werror"
+    "-Wextra"
+    "-Wformat-security"
+    "-Wno-long-long"
+    "-Wno-psabi"
+    "-Wno-variadic-macros"
+    "-Wnon-virtual-dtor"
+    "-Wpointer-arith"
+    "-Wshadow"
+    "-Wundef"
+    "-Wunused-local-typedefs"
+    "-Wwrite-strings")
+
 set(KALMAN_TEST_LIST
     "test/eigen_f.cpp"
     "test/eigen_h.cpp"
@@ -47,6 +71,8 @@ foreach(test ${KALMAN_TEST_LIST})
   add_executable(kalman_${test_name}_driver ${test})
   target_link_libraries(kalman_${test_name}_driver PRIVATE eigen fmt kalman
                                                            kalman_main)
+  target_compile_options(kalman_${test_name}_driver
+                         PRIVATE ${KALMAN_COMPILE_OPTIONS})
   add_test(kalman_test_${test_name} kalman_${test_name}_driver)
 endforeach()
 
@@ -56,12 +82,15 @@ set(KALMAN_SAMPLE_LIST
     "sample/kf_1x1x0_liquid_temperature.cpp"
     "sample/kf_1x1x1_dog_position.cpp"
     "sample/kf_2x1x1_rocket_altitude.cpp"
-    "sample/kf_6x2x0_vehicle_location.cpp")
+    "sample/kf_6x2x0_vehicle_location.cpp"
+    "sample/kf_8x4x0_deep_sort_bounding_box.cpp")
 
 foreach(sample ${KALMAN_SAMPLE_LIST})
   get_filename_component(sample_name ${sample} NAME_WE)
   add_executable(kalman_${sample_name}_driver ${sample})
   target_link_libraries(kalman_${sample_name}_driver PRIVATE eigen fmt kalman
                                                              kalman_main)
+  target_compile_options(kalman_${sample_name}_driver
+                         PRIVATE ${KALMAN_COMPILE_OPTIONS})
   add_test(kalman_sample_${sample_name} kalman_${sample_name}_driver)
 endforeach()
