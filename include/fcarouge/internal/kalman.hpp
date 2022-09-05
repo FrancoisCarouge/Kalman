@@ -84,7 +84,7 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   using transition_function =
       std::function<state(const state &, const PredictionTypes &...)>;
   using observation_function =
-      std::function<output(const state &, const UpdateTypes &...arguments)>;
+      std::function<output(const state &, const UpdateTypes &...)>;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
@@ -112,42 +112,45 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   //! Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-      [this](const state &x, const UpdateTypes &...arguments) -> output_model {
-        static_cast<void>(x);
-        (static_cast<void>(arguments), ...);
+      [&h = h](const state &state_x,
+               const UpdateTypes &...update_pack) -> output_model {
+        static_cast<void>(state_x);
+        (static_cast<void>(update_pack), ...);
         return h;
       }};
   noise_observation_function noise_observation_r{
-      [this](const state &x, const output &z,
-             const UpdateTypes &...arguments) -> output_uncertainty {
-        static_cast<void>(x);
-        static_cast<void>(z);
-        (static_cast<void>(arguments), ...);
+      [&r = r](const state &state_x, const output &output_z,
+               const UpdateTypes &...update_pack) -> output_uncertainty {
+        static_cast<void>(state_x);
+        static_cast<void>(output_z);
+        (static_cast<void>(update_pack), ...);
         return r;
       }};
   transition_state_function transition_state_f{
-      [this](const state &x,
-             const PredictionTypes &...arguments) -> state_transition {
-        static_cast<void>(x);
-        (static_cast<void>(arguments), ...);
+      [&f = f](const state &state_x,
+               const PredictionTypes &...prediction_pack) -> state_transition {
+        static_cast<void>(state_x);
+        (static_cast<void>(prediction_pack), ...);
         return f;
       }};
   noise_process_function noise_process_q{
-      [this](const state &x,
-             const PredictionTypes &...arguments) -> process_uncertainty {
-        static_cast<void>(x);
-        (static_cast<void>(arguments), ...);
+      [&q = q](const state &state_x, const PredictionTypes &...prediction_pack)
+          -> process_uncertainty {
+        static_cast<void>(state_x);
+        (static_cast<void>(prediction_pack), ...);
         return q;
       }};
   transition_function transition{
-      [this](const state &x, const PredictionTypes &...arguments) -> state {
-        (static_cast<void>(arguments), ...);
-        return f * x;
+      [&f = f](const state &state_x,
+               const PredictionTypes &...prediction_pack) -> state {
+        (static_cast<void>(prediction_pack), ...);
+        return f * state_x;
       }};
   observation_function observation{
-      [this](const state &x, const UpdateTypes &...arguments) -> output {
-        (static_cast<void>(arguments), ...);
-        return h * x;
+      [&h = h](const state &state_x,
+               const UpdateTypes &...update_pack) -> output {
+        (static_cast<void>(update_pack), ...);
+        return h * state_x;
       }};
 
   Transpose transpose;
@@ -159,38 +162,40 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   //! does the compiler/linker do it for us?
   //! @todo Do we want to support extended custom y = output_difference(z,
   //! observation(x))?
+  //! @todo Do we want to pass z to `observation_state_h()`? What are the use
+  //! cases?
+  //! @todo Do we want to pass z to `observation()`? What are the use cases?
   template <typename... Outputs>
-  inline constexpr void update(const UpdateTypes &...arguments,
+  inline constexpr void update(const UpdateTypes &...update_pack,
                                const Outputs &...output_z) {
     const auto i{identity.template operator()<estimate_uncertainty>()};
 
-    update_arguments = {arguments...};
+    update_arguments = {update_pack...};
     z = output{output_z...};
-    h = observation_state_h(x, arguments...); // x, z, args?
-    r = noise_observation_r(x, z, arguments...);
+    h = observation_state_h(x, update_pack...);
+    r = noise_observation_r(x, z, update_pack...);
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
-    y = z - observation(x, arguments...);
+    y = z - observation(x, update_pack...);
     x = x + k * y;
     p = symmetrize(estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
                                         k * r * transpose(k)});
   }
 
-  inline constexpr void predict(const PredictionTypes &...arguments) {
-    prediction_arguments = {arguments...};
-    f = transition_state_f(x, arguments...);
-    q = noise_process_q(x, arguments...);
-    x = transition(x, arguments...);
+  inline constexpr void predict(const PredictionTypes &...prediction_pack) {
+    prediction_arguments = {prediction_pack...};
+    f = transition_state_f(x, prediction_pack...);
+    q = noise_process_q(x, prediction_pack...);
+    x = transition(x, prediction_pack...);
     p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
   }
 
   template <typename... Outputs>
-  inline constexpr void
-  operator()(const PredictionTypes &...prediction_arguments,
-             const UpdateTypes &...update_arguments,
-             const Outputs &...output_z) {
-    update(update_arguments..., output_z...);
-    predict(prediction_arguments...);
+  inline constexpr void operator()(const PredictionTypes &...prediction_pack,
+                                   const UpdateTypes &...update_pack,
+                                   const Outputs &...output_z) {
+    update(update_pack..., output_z...);
+    predict(prediction_pack...);
   }
 };
 
@@ -218,15 +223,15 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   using noise_observation_function = std::function<output_uncertainty(
       const state &, const output &, const UpdateTypes &...)>;
   using transition_state_function = std::function<state_transition(
-      const state &, const PredictionTypes &..., const input &)>;
+      const state &, const input &, const PredictionTypes &...)>;
   using noise_process_function = std::function<process_uncertainty(
       const state &, const PredictionTypes &...)>;
   using transition_control_function =
       std::function<input_control(const PredictionTypes &...)>;
-  using transition_function =
-      std::function<state(const state &, const PredictionTypes &...)>;
+  using transition_function = std::function<state(const state &, const input &,
+                                                  const PredictionTypes &...)>;
   using observation_function =
-      std::function<output(const state &, const UpdateTypes &...arguments)>;
+      std::function<output(const state &, const UpdateTypes &...)>;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
@@ -256,48 +261,51 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-      [this](const state &x, const UpdateTypes &...arguments) -> output_model {
-        static_cast<void>(x);
-        (static_cast<void>(arguments), ...);
+      [&h = h](const state &state_x,
+               const UpdateTypes &...update_pack) -> output_model {
+        static_cast<void>(state_x);
+        (static_cast<void>(update_pack), ...);
         return h;
       }};
   noise_observation_function noise_observation_r{
-      [this](const state &x, const output &z,
-             const UpdateTypes &...arguments) -> output_uncertainty {
-        static_cast<void>(x);
-        static_cast<void>(z);
-        (static_cast<void>(arguments), ...);
+      [&r = r](const state &state_x, const output &output_z,
+               const UpdateTypes &...update_pack) -> output_uncertainty {
+        static_cast<void>(state_x);
+        static_cast<void>(output_z);
+        (static_cast<void>(update_pack), ...);
         return r;
       }};
   transition_state_function transition_state_f{
-      [this](const state &x, const PredictionTypes &...arguments,
-             const input &u) -> state_transition {
-        static_cast<void>(x);
-        (static_cast<void>(arguments), ...);
-        static_cast<void>(u);
+      [&f = f](const state &state_x, const input &input_u,
+               const PredictionTypes &...prediction_pack) -> state_transition {
+        static_cast<void>(state_x);
+        static_cast<void>(input_u);
+        (static_cast<void>(prediction_pack), ...);
         return f;
       }};
   noise_process_function noise_process_q{
-      [this](const state &x,
-             const PredictionTypes &...arguments) -> process_uncertainty {
-        static_cast<void>(x);
-        (static_cast<void>(arguments), ...);
+      [&q = q](const state &state_x, const PredictionTypes &...prediction_pack)
+          -> process_uncertainty {
+        static_cast<void>(state_x);
+        (static_cast<void>(prediction_pack), ...);
         return q;
       }};
   transition_control_function transition_control_g{
-      [this](const PredictionTypes &...arguments) -> input_control {
-        (static_cast<void>(arguments), ...);
+      [&g = g](const PredictionTypes &...prediction_pack) -> input_control {
+        (static_cast<void>(prediction_pack), ...);
         return g;
       }};
   transition_function transition{
-      [this](const state &x, const PredictionTypes &...arguments) -> state {
-        (static_cast<void>(arguments), ...);
-        return f * x;
+      [&f = f, &g = g](const state &state_x, const input &input_u,
+                       const PredictionTypes &...prediction_pack) -> state {
+        (static_cast<void>(prediction_pack), ...);
+        return f * state_x + g * input_u;
       }};
   observation_function observation{
-      [this](const state &x, const UpdateTypes &...arguments) -> output {
-        (static_cast<void>(arguments), ...);
-        return h * x;
+      [&h = h](const state &state_x,
+               const UpdateTypes &...update_pack) -> output {
+        (static_cast<void>(update_pack), ...);
+        return h * state_x;
       }};
 
   Transpose transpose;
@@ -309,18 +317,21 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! does the compiler/linker do it for us?
   //! @todo Do we want to support extended custom y = output_difference(z,
   //! observation(x))?
+  //! @todo Do we want to pass z to `observation_state_h()`? What are the use
+  //! cases?
+  //! @todo Do we want to pass z to `observation()`? What are the use cases?
   template <typename... Outputs>
-  inline constexpr void update(const UpdateTypes &...arguments,
+  inline constexpr void update(const UpdateTypes &...update_pack,
                                const Outputs &...output_z) {
     const auto i{identity.template operator()<estimate_uncertainty>()};
 
-    update_arguments = {arguments...};
+    update_arguments = {update_pack...};
     z = output{output_z...};
-    h = observation_state_h(x, arguments...); // x, z, args?
-    r = noise_observation_r(x, z, arguments...);
+    h = observation_state_h(x, update_pack...);
+    r = noise_observation_r(x, z, update_pack...);
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
-    y = z - observation(x, arguments...);
+    y = z - observation(x, update_pack...);
     x = x + k * y;
     p = symmetrize(estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
                                         k * r * transpose(k)});
@@ -329,28 +340,30 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! @todo Extended support?
   //! @todo Should the transition state F computation arguments be  {x, u, args}
   //! instead of {x, args, u} or can we benefit for allowing passing through an
-  //! input pack to the function?
-  //! @todo Should input U be passed to noise process Q compute? Probably?
-  //! @todo How to extended next state x = f * x + g * u?
+  //! input pack to the function? Similar parameter ordering question for
+  //! related functions.
+  //! @todo Do we want to pass u to `noise_process_q()`? What are the use cases?
+  //! @todo Do we want to pass x, u to `transition_control_g()`? What are the
+  //! use cases?
   template <typename... Inputs>
-  inline constexpr void predict(const PredictionTypes &...arguments,
+  inline constexpr void predict(const PredictionTypes &...prediction_pack,
                                 const Inputs &...input_u) {
-    prediction_arguments = {arguments...};
+    prediction_arguments = {prediction_pack...};
     u = input{input_u...};
-    f = transition_state_f(x, arguments..., u);
-    q = noise_process_q(x, arguments...);
-    g = transition_control_g(arguments...);
-    x = f * x + g * u;
+    f = transition_state_f(x, u, prediction_pack...);
+    q = noise_process_q(x, prediction_pack...);
+    g = transition_control_g(prediction_pack...);
+    x = transition(x, u, prediction_pack...);
     p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
   }
 
   template <typename... Inputs>
-  inline constexpr void
-  operator()(const PredictionTypes &...prediction_arguments,
-             const UpdateTypes &...update_arguments, const Inputs &...input_u,
-             const auto &...output_z) {
-    update(update_arguments..., output_z...);
-    predict(prediction_arguments..., input_u...);
+  inline constexpr void operator()(const PredictionTypes &...prediction_pack,
+                                   const UpdateTypes &...update_pack,
+                                   const Inputs &...input_u,
+                                   const auto &...output_z) {
+    update(update_pack..., output_z...);
+    predict(prediction_pack..., input_u...);
   }
 };
 

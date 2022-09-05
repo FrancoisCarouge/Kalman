@@ -1,6 +1,7 @@
 #include "fcarouge/eigen/kalman.hpp"
 
 #include <cassert>
+#include <cmath>
 
 namespace fcarouge::eigen::sample {
 namespace {
@@ -208,19 +209,19 @@ namespace {
     k(output);
   }
 
-  // Verify sample result after a hundred measurement, at 0.1% accuracy against
-  // Nwojke's Deep SORT filter's MOT16 sample, tracker #201 dataset.
-  assert(std::abs(1 - k.x()(0) / 370.932041394761) < 0.001 &&
-         std::abs(1 - k.x()(1) / 251.173174229878) < 0.001 &&
-         std::abs(1 - k.x()(2) / 0.314757138075364) < 0.001 &&
-         std::abs(1 - k.x()(3) / 287.859996019444) < 0.001 &&
-         std::abs(1 - k.x()(4) / 1.95865368159518) < 0.001 &&
-         std::abs(1 - k.x()(5) / 0.229282868701086) < 0.001 &&
+  assert(std::abs(1 - k.x()[0] / 370.932041394761) < 0.001 &&
+         std::abs(1 - k.x()[1] / 251.173174229878) < 0.001 &&
+         std::abs(1 - k.x()[2] / 0.314757138075364) < 0.001 &&
+         std::abs(1 - k.x()[3] / 287.859996019444) < 0.001 &&
+         std::abs(1 - k.x()[4] / 1.95865368159518) < 0.001 &&
+         std::abs(1 - k.x()[5] / 0.229282868701086) < 0.001 &&
          // The precision of the velocity appears to saturate early on in the
          // original example. The parameter could be scaled or larger types used
          // to improve comparison accuracy.
-         std::abs(1 - k.x()(6) / 2.46138628550094E-06) < 0.5 &&
-         std::abs(1 - k.x()(7) / 0.81402529074969) < 0.001);
+         std::abs(1 - k.x()[6] / 2.46138628550094E-06) < 0.5 &&
+         std::abs(1 - k.x()[7] / 0.81402529074969) < 0.001 &&
+         "The estimated states expected to meet Nwojke's Deep SORT filter's "
+         "MOT16 sample tracker #201 dataset at 0.1% accuracy.");
 
   return 0;
 }()};
