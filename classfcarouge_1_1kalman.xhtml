@@ -825,7 +825,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </div><div class="memdoc">
 
 <p>Type of the callable transition function. </p>
-<p >The function is of the form <code>state(const state &amp;, const PredictionTypes &amp;...)</code>. </p>
+<p >The function is of the form <code>state(const state &amp;, const input &amp;, const PredictionTypes &amp;...)</code>. </p>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00316">316</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -846,7 +846,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </div><div class="memdoc">
 
 <p>Type of the callable transition state function. </p>
-<p >The function is of the form <code>state_transition(const state &amp;, const PredictionTypes &amp;..., const input &amp;)</code>. </p>
+<p >The function is of the form <code>state_transition(const state &amp;, const input &amp;, const PredictionTypes &amp;...)</code>. </p>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00293">293</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -3366,7 +3366,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Mon Sep 5 2022 19:30:11 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Sep 5 2022 22:18:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

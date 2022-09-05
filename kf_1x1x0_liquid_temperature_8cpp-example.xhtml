@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('kf_1x1x0_liquid_temperature_8cpp-examp
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
@@ -123,7 +124,7 @@ $(document).ready(function(){initNavTree('kf_1x1x0_liquid_temperature_8cpp-examp
 <div class="line">  assert(10 == k.x() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;Since our model has constant dynamics, the predicted estimate is &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;equal to the current estimate: x^1,0 = 10°C.&quot;</span>);</div>
-<div class="line">  assert(10000.0001 - 0.001 &lt; k.p() &amp;&amp; k.p() &lt; 10000.0001 + 0.001 &amp;&amp;</div>
+<div class="line">  assert(10000.0001 == k.p() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;10000 + 0.0001 = 10000.0001.&quot;</span>);</div>
 <div class="line"> </div>
@@ -136,7 +137,8 @@ $(document).ready(function(){initNavTree('kf_1x1x0_liquid_temperature_8cpp-examp
 <div class="line"> </div>
 <div class="line">  k.update(49.95);</div>
 <div class="line"> </div>
-<div class="line">  assert(0.999999 - 0.001 &lt; k.k() &amp;&amp; k.k() &lt; 0.999999 + 0.001);</div>
+<div class="line">  assert(std::abs(1 - k.k() / 0.999999) &lt; 0.0001 &amp;&amp;</div>
+<div class="line">         <span class="stringliteral">&quot;The gain expected at 0.01% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line">  <span class="comment">// measurements period: Δt = 5s (constant).</span></div>
@@ -151,12 +153,16 @@ $(document).ready(function(){initNavTree('kf_1x1x0_liquid_temperature_8cpp-examp
 <div class="line">  k(49.99);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The estimate uncertainty quickly goes down, after 10 measurements:</span></div>
-<div class="line">  assert(0.0013 - 0.0001 &lt; k.p() &amp;&amp; k.p() &lt; 0.0013 + 0.0001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - k.p() / 0.0013) &lt; 0.05 &amp;&amp;</div>
+<div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 5% accuracy.&quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty is 0.0013, i.e. the estimate error standard &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;deviation is: 0.036°C.&quot;</span>);</div>
-<div class="line">  assert(49.988 - 0.0001 &lt; k.x() &amp;&amp; k.x() &lt; 49.988 + 0.0001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - k.x() / 49.988) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;The filter estimates the liquid temperature at 49.988°C.&quot;</span>);</div>
-<div class="line">  assert(0.1265 - 0.001 &lt; k.k() &amp;&amp; k.k() &lt; 0.1265 + 0.001);</div>
+<div class="line">  assert(std::abs(1 - k.k() / 0.1265) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         <span class="stringliteral">&quot;The gain expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"> </div>
 <div class="line">  <span class="comment">// So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.</span></div>
 <div class="line">  <span class="comment">// In this example we&#39;ve measured a liquid temperature using the</span></div>
 <div class="line">  <span class="comment">// one-dimensional Kalman filter. Although the system dynamics include a</span></div>
@@ -169,14 +175,14 @@ $(document).ready(function(){initNavTree('kf_1x1x0_liquid_temperature_8cpp-examp
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The main Kalman filter class.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a1b0dac1811e65af94771d85401c9ca39"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00085">kalman.hpp:87</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03_xhtml_a01bf8dff34935290c620f614b8eef2cc"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03.xhtml#a01bf8dff34935290c620f614b8eef2cc">fcarouge::sample::anonymous_namespace{kf_1x1x0_liquid_temperature.cpp}::kf_1x1x0_liquid_temperature</a></div><div class="ttdeci">auto kf_1x1x0_liquid_temperature</div><div class="ttdef"><b>Definition:</b> <a href="kf__1x1x0__liquid__temperature_8cpp_source.xhtml#l00027">kf_1x1x0_liquid_temperature.cpp:27</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03_xhtml_a01bf8dff34935290c620f614b8eef2cc"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03.xhtml#a01bf8dff34935290c620f614b8eef2cc">fcarouge::sample::anonymous_namespace{kf_1x1x0_liquid_temperature.cpp}::kf_1x1x0_liquid_temperature</a></div><div class="ttdeci">auto kf_1x1x0_liquid_temperature</div><div class="ttdef"><b>Definition:</b> <a href="kf__1x1x0__liquid__temperature_8cpp_source.xhtml#l00028">kf_1x1x0_liquid_temperature.cpp:28</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Sep 5 2022 19:30:11 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Sep 5 2022 22:18:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

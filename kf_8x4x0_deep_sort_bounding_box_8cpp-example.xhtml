@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="eigen_2kalman_8hpp.xhtml">fcarouge/eigen/kalman.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1eigen_1_1sample.xhtml">fcarouge::eigen::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
@@ -285,19 +286,19 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">    k(output);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// Verify sample result after a hundred measurement, at 0.1% accuracy against</span></div>
-<div class="line">  <span class="comment">// Nwojke&#39;s Deep SORT filter&#39;s MOT16 sample, tracker #201 dataset.</span></div>
-<div class="line">  assert(std::abs(1 - k.x()(0) / 370.932041394761) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()(1) / 251.173174229878) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()(2) / 0.314757138075364) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()(3) / 287.859996019444) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()(4) / 1.95865368159518) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()(5) / 0.229282868701086) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - k.x()[0] / 370.932041394761) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - k.x()[1] / 251.173174229878) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - k.x()[2] / 0.314757138075364) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - k.x()[3] / 287.859996019444) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - k.x()[4] / 1.95865368159518) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - k.x()[5] / 0.229282868701086) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="comment">// The precision of the velocity appears to saturate early on in the</span></div>
 <div class="line">         <span class="comment">// original example. The parameter could be scaled or larger types used</span></div>
 <div class="line">         <span class="comment">// to improve comparison accuracy.</span></div>
-<div class="line">         std::abs(1 - k.x()(6) / 2.46138628550094E-06) &lt; 0.5 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()(7) / 0.81402529074969) &lt; 0.001);</div>
+<div class="line">         std::abs(1 - k.x()[6] / 2.46138628550094E-06) &lt; 0.5 &amp;&amp;</div>
+<div class="line">         std::abs(1 - k.x()[7] / 0.81402529074969) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         <span class="stringliteral">&quot;The estimated states expected to meet Nwojke&#39;s Deep SORT filter&#39;s &quot;</span></div>
+<div class="line">         <span class="stringliteral">&quot;MOT16 sample tracker #201 dataset at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()};</div>
@@ -312,7 +313,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a9fac97289314ad4018774b6afbd73716"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a9fac97289314ad4018774b6afbd73716">fcarouge::kalman::output_uncertainty</a></div><div class="ttdeci">typename implementation::output_uncertainty output_uncertainty</div><div class="ttdoc">Type of the observation noise correlated variance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00246">kalman.hpp:246</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ab763d09902667e195848fa899e310beb"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ab763d09902667e195848fa899e310beb">fcarouge::kalman::state_transition</a></div><div class="ttdeci">typename implementation::state_transition state_transition</div><div class="ttdoc">Type of the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00251">kalman.hpp:251</a></div></div>
 <div class="ttc" id="aeigen_2kalman_8hpp_xhtml"><div class="ttname"><a href="eigen_2kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_ab1fd2e8a0bb15ca4aee2bbbc81ff3b1d"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#ab1fd2e8a0bb15ca4aee2bbbc81ff3b1d">fcarouge::eigen::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::kf_8x4x0_deep_sort_bounding_box</a></div><div class="ttdeci">auto kf_8x4x0_deep_sort_bounding_box</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00023">kf_8x4x0_deep_sort_bounding_box.cpp:23</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_ab1fd2e8a0bb15ca4aee2bbbc81ff3b1d"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#ab1fd2e8a0bb15ca4aee2bbbc81ff3b1d">fcarouge::eigen::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::kf_8x4x0_deep_sort_bounding_box</a></div><div class="ttdeci">auto kf_8x4x0_deep_sort_bounding_box</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00024">kf_8x4x0_deep_sort_bounding_box.cpp:24</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample.xhtml">fcarouge::eigen::sample</a></div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__ardupilot__soaring_8cpp_source.xhtml#l00006">ekf_4x1x0_ardupilot_soaring.cpp:6</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a1b0dac1811e65af94771d85401c9ca39"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00085">kalman.hpp:87</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
@@ -320,7 +321,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Sep 5 2022 19:30:11 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Mon Sep 5 2022 22:18:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
