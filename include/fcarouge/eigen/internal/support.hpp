@@ -62,12 +62,6 @@ struct matrix final {
     using type = std::decay_t<decltype(value)>;
     return Eigen::Matrix<type, 1, 1>{value};
   }
-
-  template <typename Type, auto Size>
-  [[nodiscard]] inline constexpr auto
-  operator()(const std::array<Type, Size> &value) const {
-    return Eigen::Matrix<Type, Size, 1>{value.data()};
-  }
 };
 
 struct transpose final {
