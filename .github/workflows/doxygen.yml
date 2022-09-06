@@ -1,4 +1,4 @@
-name: "Test Documentation: Doxygen"
+name: "Doxygen"
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3.0.2
     - name: Doxygen
-      uses: mattnotmitt/doxygen-action@v1.9.2
+      uses: mattnotmitt/doxygen-action@v1.9.4
       with:
         working-directory: '.'
         doxyfile-path: 'documentation/Doxyfile'
