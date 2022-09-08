@@ -140,7 +140,7 @@ namespace {
   const auto step{
       [&k](const auto &...args) { k.template operator()<double>(args...); }};
 
-  step(delta_time, 40.02 + gravity, -11.1);
+  step(-11.1, delta_time, 40.02 + gravity);
 
   assert(std::abs(1 - k.x()[0] / -12.3) < 0.002 &&
          std::abs(1 - k.x()[1] / 14.8) < 0.002 &&
@@ -151,33 +151,33 @@ namespace {
          std::abs(1 - k.p()(1, 1) / 438.8) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
-  step(delta_time, 39.97 + gravity, 18.);
-  step(delta_time, 39.81 + gravity, 22.9);
-  step(delta_time, 39.75 + gravity, 19.5);
-  step(delta_time, 39.6 + gravity, 28.5);
-  step(delta_time, 39.77 + gravity, 46.5);
-  step(delta_time, 39.83 + gravity, 68.9);
-  step(delta_time, 39.73 + gravity, 48.2);
-  step(delta_time, 39.87 + gravity, 56.1);
-  step(delta_time, 39.81 + gravity, 90.5);
-  step(delta_time, 39.92 + gravity, 104.9);
-  step(delta_time, 39.78 + gravity, 140.9);
-  step(delta_time, 39.98 + gravity, 148.);
-  step(delta_time, 39.76 + gravity, 187.6);
-  step(delta_time, 39.86 + gravity, 209.2);
-  step(delta_time, 39.61 + gravity, 244.6);
-  step(delta_time, 39.86 + gravity, 276.4);
-  step(delta_time, 39.74 + gravity, 323.5);
-  step(delta_time, 39.87 + gravity, 357.3);
-  step(delta_time, 39.63 + gravity, 357.4);
-  step(delta_time, 39.67 + gravity, 398.3);
-  step(delta_time, 39.96 + gravity, 446.7);
-  step(delta_time, 39.8 + gravity, 465.1);
-  step(delta_time, 39.89 + gravity, 529.4);
-  step(delta_time, 39.85 + gravity, 570.4);
-  step(delta_time, 39.9 + gravity, 636.8);
-  step(delta_time, 39.81 + gravity, 693.3);
-  step(delta_time, 39.81 + gravity, 707.3);
+  step(18., delta_time, 39.97 + gravity);
+  step(22.9, delta_time, 39.81 + gravity);
+  step(19.5, delta_time, 39.75 + gravity);
+  step(28.5, delta_time, 39.6 + gravity);
+  step(46.5, delta_time, 39.77 + gravity);
+  step(68.9, delta_time, 39.83 + gravity);
+  step(48.2, delta_time, 39.73 + gravity);
+  step(56.1, delta_time, 39.87 + gravity);
+  step(90.5, delta_time, 39.81 + gravity);
+  step(104.9, delta_time, 39.92 + gravity);
+  step(140.9, delta_time, 39.78 + gravity);
+  step(148., delta_time, 39.98 + gravity);
+  step(187.6, delta_time, 39.76 + gravity);
+  step(209.2, delta_time, 39.86 + gravity);
+  step(244.6, delta_time, 39.61 + gravity);
+  step(276.4, delta_time, 39.86 + gravity);
+  step(323.5, delta_time, 39.74 + gravity);
+  step(357.3, delta_time, 39.87 + gravity);
+  step(357.4, delta_time, 39.63 + gravity);
+  step(398.3, delta_time, 39.67 + gravity);
+  step(446.7, delta_time, 39.96 + gravity);
+  step(465.1, delta_time, 39.8 + gravity);
+  step(529.4, delta_time, 39.89 + gravity);
+  step(570.4, delta_time, 39.85 + gravity);
+  step(636.8, delta_time, 39.9 + gravity);
+  step(693.3, delta_time, 39.81 + gravity);
+  step(707.3, delta_time, 39.81 + gravity);
 
   k.update(748.5);
 
