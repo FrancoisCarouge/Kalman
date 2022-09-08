@@ -169,18 +169,18 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_ardupilot_soaring_8cpp-examp
 <div class="line">    <span class="keywordflow">return</span> h;</div>
 <div class="line">  });</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// Measure and Update</span></div>
-<div class="line">  <span class="keywordtype">float</span> drift_x{0};</div>
-<div class="line">  <span class="keywordtype">float</span> drift_y{0};</div>
-<div class="line">  k.predict(drift_x, drift_y);</div>
-<div class="line"> </div>
 <div class="line">  <span class="keywordtype">float</span> variometer{0};</div>
 <div class="line">  <span class="keywordtype">float</span> position_x{0};</div>
 <div class="line">  <span class="keywordtype">float</span> position_y{0};</div>
 <div class="line">  k.update(variometer, position_x, position_y);</div>
 <div class="line"> </div>
+<div class="line">  <span class="keywordtype">float</span> drift_x{0};</div>
+<div class="line">  <span class="keywordtype">float</span> drift_y{0};</div>
+<div class="line">  k.predict(drift_x, drift_y);</div>
+<div class="line"> </div>
 <div class="line">  <span class="comment">// Or so on.</span></div>
-<div class="line">  k(drift_x, drift_y, position_x, position_y, variometer);</div>
+<div class="line">  k.template operator()&lt;<span class="keywordtype">float</span>&gt;(position_x, position_y, variometer, drift_x,</div>
+<div class="line">                               drift_y);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()};</div>
@@ -202,7 +202,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_ardupilot_soaring_8cpp-examp
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Sep 8 2022 03:52:55 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Thu Sep 8 2022 04:50:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

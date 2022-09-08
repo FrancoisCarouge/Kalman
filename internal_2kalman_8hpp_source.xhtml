@@ -265,9 +265,9 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  }</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Outputs&gt;</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> operator()(<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack,</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                                   <span class="keyword">const</span> UpdateTypes &amp;...update_pack,</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                                   <span class="keyword">const</span> Outputs &amp;...output_z) {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> operator()(<span class="keyword">const</span> UpdateTypes &amp;...update_pack,</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                                   <span class="keyword">const</span> Outputs &amp;...output_z,</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                                   <span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) {</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    update(update_pack..., output_z...);</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    predict(prediction_pack...);</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  }</div>
@@ -410,11 +410,11 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    p = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>(estimate_uncertainty{f * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(f) + q});</div>
 <div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>  }</div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Inputs&gt;</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> operator()(<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack,</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>                                   <span class="keyword">const</span> UpdateTypes &amp;...update_pack,</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>                                   <span class="keyword">const</span> Inputs &amp;...input_u,</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>                                   <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...output_z) {</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Outputs&gt;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> operator()(<span class="keyword">const</span> UpdateTypes &amp;...update_pack,</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>                                   <span class="keyword">const</span> Outputs &amp;...output_z,</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>                                   <span class="keyword">const</span> PredictionTypes &amp;...prediction_pack,</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>                                   <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...input_u) {</div>
 <div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    update(update_pack..., output_z...);</div>
 <div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    predict(prediction_pack..., input_u...);</div>
 <div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>  }</div>
@@ -437,7 +437,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Thu Sep 8 2022 03:52:55 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Thu Sep 8 2022 04:50:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

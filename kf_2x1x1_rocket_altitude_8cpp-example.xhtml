@@ -206,7 +206,7 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> step{</div>
 <div class="line">      [&amp;k](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;...args) { k.template operator()&lt;<span class="keywordtype">double</span>&gt;(args...); }};</div>
 <div class="line"> </div>
-<div class="line">  step(delta_time, 40.02 + gravity, -11.1);</div>
+<div class="line">  step(-11.1, delta_time, 40.02 + gravity);</div>
 <div class="line"> </div>
 <div class="line">  assert(std::abs(1 - k.x()[0] / -12.3) &lt; 0.002 &amp;&amp;</div>
 <div class="line">         std::abs(1 - k.x()[1] / 14.8) &lt; 0.002 &amp;&amp;</div>
@@ -217,33 +217,33 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line">         std::abs(1 - k.p()(1, 1) / 438.8) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">  step(delta_time, 39.97 + gravity, 18.);</div>
-<div class="line">  step(delta_time, 39.81 + gravity, 22.9);</div>
-<div class="line">  step(delta_time, 39.75 + gravity, 19.5);</div>
-<div class="line">  step(delta_time, 39.6 + gravity, 28.5);</div>
-<div class="line">  step(delta_time, 39.77 + gravity, 46.5);</div>
-<div class="line">  step(delta_time, 39.83 + gravity, 68.9);</div>
-<div class="line">  step(delta_time, 39.73 + gravity, 48.2);</div>
-<div class="line">  step(delta_time, 39.87 + gravity, 56.1);</div>
-<div class="line">  step(delta_time, 39.81 + gravity, 90.5);</div>
-<div class="line">  step(delta_time, 39.92 + gravity, 104.9);</div>
-<div class="line">  step(delta_time, 39.78 + gravity, 140.9);</div>
-<div class="line">  step(delta_time, 39.98 + gravity, 148.);</div>
-<div class="line">  step(delta_time, 39.76 + gravity, 187.6);</div>
-<div class="line">  step(delta_time, 39.86 + gravity, 209.2);</div>
-<div class="line">  step(delta_time, 39.61 + gravity, 244.6);</div>
-<div class="line">  step(delta_time, 39.86 + gravity, 276.4);</div>
-<div class="line">  step(delta_time, 39.74 + gravity, 323.5);</div>
-<div class="line">  step(delta_time, 39.87 + gravity, 357.3);</div>
-<div class="line">  step(delta_time, 39.63 + gravity, 357.4);</div>
-<div class="line">  step(delta_time, 39.67 + gravity, 398.3);</div>
-<div class="line">  step(delta_time, 39.96 + gravity, 446.7);</div>
-<div class="line">  step(delta_time, 39.8 + gravity, 465.1);</div>
-<div class="line">  step(delta_time, 39.89 + gravity, 529.4);</div>
-<div class="line">  step(delta_time, 39.85 + gravity, 570.4);</div>
-<div class="line">  step(delta_time, 39.9 + gravity, 636.8);</div>
-<div class="line">  step(delta_time, 39.81 + gravity, 693.3);</div>
-<div class="line">  step(delta_time, 39.81 + gravity, 707.3);</div>
+<div class="line">  step(18., delta_time, 39.97 + gravity);</div>
+<div class="line">  step(22.9, delta_time, 39.81 + gravity);</div>
+<div class="line">  step(19.5, delta_time, 39.75 + gravity);</div>
+<div class="line">  step(28.5, delta_time, 39.6 + gravity);</div>
+<div class="line">  step(46.5, delta_time, 39.77 + gravity);</div>
+<div class="line">  step(68.9, delta_time, 39.83 + gravity);</div>
+<div class="line">  step(48.2, delta_time, 39.73 + gravity);</div>
+<div class="line">  step(56.1, delta_time, 39.87 + gravity);</div>
+<div class="line">  step(90.5, delta_time, 39.81 + gravity);</div>
+<div class="line">  step(104.9, delta_time, 39.92 + gravity);</div>
+<div class="line">  step(140.9, delta_time, 39.78 + gravity);</div>
+<div class="line">  step(148., delta_time, 39.98 + gravity);</div>
+<div class="line">  step(187.6, delta_time, 39.76 + gravity);</div>
+<div class="line">  step(209.2, delta_time, 39.86 + gravity);</div>
+<div class="line">  step(244.6, delta_time, 39.61 + gravity);</div>
+<div class="line">  step(276.4, delta_time, 39.86 + gravity);</div>
+<div class="line">  step(323.5, delta_time, 39.74 + gravity);</div>
+<div class="line">  step(357.3, delta_time, 39.87 + gravity);</div>
+<div class="line">  step(357.4, delta_time, 39.63 + gravity);</div>
+<div class="line">  step(398.3, delta_time, 39.67 + gravity);</div>
+<div class="line">  step(446.7, delta_time, 39.96 + gravity);</div>
+<div class="line">  step(465.1, delta_time, 39.8 + gravity);</div>
+<div class="line">  step(529.4, delta_time, 39.89 + gravity);</div>
+<div class="line">  step(570.4, delta_time, 39.85 + gravity);</div>
+<div class="line">  step(636.8, delta_time, 39.9 + gravity);</div>
+<div class="line">  step(693.3, delta_time, 39.81 + gravity);</div>
+<div class="line">  step(707.3, delta_time, 39.81 + gravity);</div>
 <div class="line"> </div>
 <div class="line">  k.update(748.5);</div>
 <div class="line"> </div>
@@ -296,7 +296,7 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Sep 8 2022 03:52:55 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Thu Sep 8 2022 04:50:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
