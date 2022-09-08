@@ -96,18 +96,18 @@ namespace {
     return h;
   });
 
-  // Measure and Update
-  float drift_x{0};
-  float drift_y{0};
-  k.predict(drift_x, drift_y);
-
   float variometer{0};
   float position_x{0};
   float position_y{0};
   k.update(variometer, position_x, position_y);
 
+  float drift_x{0};
+  float drift_y{0};
+  k.predict(drift_x, drift_y);
+
   // Or so on.
-  k(drift_x, drift_y, position_x, position_y, variometer);
+  k.template operator()<float>(position_x, position_y, variometer, drift_x,
+                               drift_y);
 
   return 0;
 }()};

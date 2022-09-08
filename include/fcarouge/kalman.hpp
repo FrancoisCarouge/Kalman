@@ -881,43 +881,37 @@ public:
 
   //! @brief Runs a full step of the filter.
   //!
-  //! @details Predicts and updates the estimates per arguments,
-  //! control input, and measurement output.
+  //! @details Updates and predict the estimates per update arguments,
+  //! measurement output, prediction arguments, and control input.
   //!
-  //! @tparam InputTypes The template parameter pack types passed in the
-  //! `arguments` parameters after the update arguments and before the output
-  //! arguments. `InputTypes` must be compatible with the `Input` type template
-  //! parameter of the control u.
+  //! @tparam Outputs The template parameter pack types passed in the
+  //! `arguments` parameters after the update arguments and before the
+  //! prediction arguments. The `Outputs` types must be compatible with the
+  //! `Output` type template parameter of the measurement output z.
   //!
-  //! @param arguments The prediction, update, input, and output parameters of
+  //! @param arguments The update, output, prediction, and input parameters of
   //! the filter, in that order. The arguments need to be compatible with the
-  //! filter types. The prediction parameters convertible to the
-  //! `PredictionTypes` template pack types are passed through for computations
-  //! of prediction matrices. The update parameters convertible to the
+  //! filter types. The update parameters convertible to the
   //! `UpdateTypes` template pack types are passed through for computations of
-  //! update matrices. The control parameter pack types convertible to the
-  //! `Input` template type. The observation parameter pack types convertible to
-  //! the `Output` template type. The update and prediction types are explicitly
-  //! defined with the class definition and the observation parameter pack types
-  //! are always deduced per the greedy matching rule. However the control
-  //! parameter pack types must always be explicitly defined per the fair
-  //! matching rule.
+  //! update matrices. The observation parameter pack types convertible to
+  //! the `Output` template type. The prediction parameters convertible to the
+  //! `PredictionTypes` template pack types are passed through for computations
+  //! of prediction matrices. The control parameter pack types convertible to
+  //! the `Input` template type. The update and prediction arguments types are
+  //! explicitly defined with the class definition and the control input
+  //! parameter pack types are always deduced per the parameter pack greedy
+  //! matching rule. However the measurement output parameter pack types must
+  //! always be explicitly defined per the parameter pack fair matching rule.
   //!
-  //! @note Called as `k(...);` with prediction values and output values when
-  //! the filter has no input parameters. The input type list is explicitly
-  //! empty. Otherwise can be called as `k.template operator()<input1_t,
-  //! input2_t, ...>(...);` with prediction values, input values, and output
-  //! values. The input type list being explicitly specified per the fair
-  //! matching rule. A lambda can come in handy to reduce the verbose call
-  //! `const auto kf{ [&k](const auto
-  //! &...args) { k.template operator()<input1_t, input2_t,
-  //! ...>(args...); } };` then called as `kf(...);`.
+  //! @note Call as `filter.template operator()<output1_t, output2_t,
+  //! ...>(...);` to lift ambiguity. A lambda can come in handy to reduce the
+  //! verbose call `const auto step{ [&k](const auto &...args) { filter.template
+  //! operator()<output1_t, output2_t, ...>(args...); } };` then called as
+  //! `step(...);`.
   //!
   //! @todo Consider if returning the state column vector X would be preferable?
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
-  //! @todo Understand why the implementation cannot be moved out of the class.
-  //! @todo What should be the order of the parameters? Update first?
-  template <typename... InputTypes>
+  template <typename... Outputs>
   inline constexpr void operator()(const auto &...arguments);
 
   //! @}

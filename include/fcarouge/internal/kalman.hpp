@@ -191,9 +191,9 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   }
 
   template <typename... Outputs>
-  inline constexpr void operator()(const PredictionTypes &...prediction_pack,
-                                   const UpdateTypes &...update_pack,
-                                   const Outputs &...output_z) {
+  inline constexpr void operator()(const UpdateTypes &...update_pack,
+                                   const Outputs &...output_z,
+                                   const PredictionTypes &...prediction_pack) {
     update(update_pack..., output_z...);
     predict(prediction_pack...);
   }
@@ -357,11 +357,11 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
   }
 
-  template <typename... Inputs>
-  inline constexpr void operator()(const PredictionTypes &...prediction_pack,
-                                   const UpdateTypes &...update_pack,
-                                   const Inputs &...input_u,
-                                   const auto &...output_z) {
+  template <typename... Outputs>
+  inline constexpr void operator()(const UpdateTypes &...update_pack,
+                                   const Outputs &...output_z,
+                                   const PredictionTypes &...prediction_pack,
+                                   const auto &...input_u) {
     update(update_pack..., output_z...);
     predict(prediction_pack..., input_u...);
   }
