@@ -108,8 +108,8 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! input) are supported through the Standard Templated Library (STL). Higher
 //! dimension filters require Eigen 3 support.
 //!
-//! Standard formatter specialization provided for representation of the all
-//! filter states.
+//! Standard formatter specialization provided for representation of the filter
+//! states.
 //!
 //! @tparam State The type template parameter of the state column vector x.
 //! State variables can be observed (measured), or hidden variables (inferred).
@@ -188,6 +188,9 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! @todo Use automatic (Eigen::AutoDiffScalar?), symbolic, numerical solvers to
 //! define the filter characteristics and simplify solving the dynamic system
 //! for non-mathematicians.
+//! @todo Support, use "Taking Static Type-Safety to the Next Level - Physical
+//! Units for Matrices" by Daniel Withopf and record the lesson learned: both
+//! usage and development is harder without compile time units verification.
 template <
     typename State = double, typename Output = double, typename Input = void,
     typename Transpose = std::identity, typename Symmetrize = std::identity,
