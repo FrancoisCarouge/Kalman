@@ -38,4 +38,12 @@ jobs:
               cmake --build . ; 
               sudo make install ; ) ) )
     - name: Verify
-      run: cppcheck --verbose --error-exitcode=1 --enable=all -I include .
+      # unusedStructMember https://trac.cppcheck.net/ticket/10699
+      run: |
+        cppcheck \
+          --enable=all \
+          --error-exitcode=1 \
+          --suppress=unusedStructMember:sample/ekf_4x1x0_ardupilot_soaring.cpp \
+          --verbose \
+          -I include \
+          .
