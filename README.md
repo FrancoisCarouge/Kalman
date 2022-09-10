@@ -14,7 +14,7 @@ Arbitrary parameters can be added to the prediction and update stages to partici
 
 Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.
 
-Standard formatter specialization provided for representation of the all filter states.
+Standard formatter specialization provided for representation of the filter states.
 
 - [Kalman Filter for C++](#kalman-filter-for-c)
 - [Examples](#examples)
@@ -288,7 +288,15 @@ std::print("{}", k);
 
 # Installation
 
-See installation instructions in [INSTALL.txt](INSTALL.txt).
+```shell
+git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git kalman
+mkdir kalman/build
+cd kalman/build
+cmake ..
+sudo cmake --install .
+```
+
+[For more, see installation instructions](INSTALL.md).
 
 # Considerations
 

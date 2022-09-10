@@ -2,8 +2,12 @@
 
 ## System
 
-Clone the repository, from within the cloned folder, run:
+Clone the repository, in a build folder configure CMake and install:
 
-```
-mkdir build && cd build && cmake .. && sudo make install
+```shell
+git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git kalman
+mkdir kalman/build
+cd kalman/build
+cmake ..
+sudo cmake --install .
 ```
