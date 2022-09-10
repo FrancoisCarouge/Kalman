@@ -88,15 +88,19 @@ $(document).ready(function(){initNavTree('md__i_n_s_t_a_l_l.xhtml',''); initResi
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md14"></a>
 System</h1>
-<p >Clone the repository, from within the cloned folder, run:</p>
-<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; sudo make install</div>
+<p >Clone the repository, in a build folder configure CMake and install:</p>
+<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git kalman</div>
+<div class="line">mkdir kalman/build</div>
+<div class="line">cd kalman/build</div>
+<div class="line">cmake ..</div>
+<div class="line">sudo cmake --install .</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Sep 10 2022 22:09:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Sep 10 2022 22:39:19 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

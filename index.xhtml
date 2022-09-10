@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 <p >Designing a filter is as much art as science. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B).</p>
 <p >Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.</p>
 <p >Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.</p>
-<p >Standard formatter specialization provided for representation of the all filter states.</p>
+<p >Standard formatter specialization provided for representation of the filter states.</p>
 <ul>
 <li>Kalman Filter for C++</li>
 <li>Examples<ul>
@@ -383,7 +383,12 @@ Format</h1>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;h&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;q&quot;: 0, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md29"></a>
 Installation</h1>
-<p >See installation instructions in <a href="INSTALL.txt">INSTALL.txt</a>.</p>
+<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git kalman</div>
+<div class="line">mkdir kalman/build</div>
+<div class="line">cd kalman/build</div>
+<div class="line">cmake ..</div>
+<div class="line">sudo cmake --install .</div>
+</div><!-- fragment --><p ><a class="el" href="md__i_n_s_t_a_l_l.xhtml">For more, see installation instructions</a>.</p>
 <h1><a class="anchor" id="autotoc_md30"></a>
 Considerations</h1>
 <h2><a class="anchor" id="autotoc_md31"></a>
@@ -466,7 +471,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Sep 10 2022 22:09:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Sep 10 2022 22:39:19 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

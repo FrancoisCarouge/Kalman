@@ -128,7 +128,10 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="interdd"></p>
 <p class="interdd">Support, test complex number filters? </p>
 <p class="interdd"></p>
-<p class="enddd">Use automatic (Eigen::AutoDiffScalar?), symbolic, numerical solvers to define the filter characteristics and simplify solving the dynamic system for non-mathematicians.  </p>
+<p class="interdd">Use automatic (Eigen::AutoDiffScalar?), symbolic, numerical solvers to define the filter characteristics and simplify solving the dynamic system for non-mathematicians. </p>
+<p class="interdd"></p>
+<p class="enddd">Support, use "Taking Static Type-Safety to the Next Level - Physical
+Units for Matrices" by Daniel Withopf and record the lesson learned: both usage and development is harder without compile time units verification.  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aca54b5a1f438d4c6299ac36035450d3c">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::input</a>  </dt>
 <dd><a class="anchor" id="_todo000015"></a>Conditionally remove this member type when no input is present.  </dd>
@@ -137,7 +140,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aab1dba08047eb5eb08dfbc8095ea1861">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::operator()</a>  (const auto &amp;...arguments)</dt>
 <dd><a class="anchor" id="_todo000022"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation?  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::predict</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000019"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000020"></a>Consider whether this method needs to exist or if the operator() is sufficient for all clients? </p>
 <p class="interdd"></p>
 <p class="interdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
@@ -163,7 +166,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Sep 10 2022 22:09:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Sep 10 2022 22:39:19 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
