@@ -27,8 +27,8 @@ namespace {
 
   kalman k;
 
-  // A hundred directly bounding box output measurements `(x, y, a, h)` from
-  // Deep SORT's MOT16 sample, tracker #201.
+  // A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT's
+  // MOT16 sample, tracker #201.
   const kalman::output measured[]{{603.5, 251.5, 0.187335092348285, 379},
                                   {599, 241, 0.24390243902439, 328},
                                   {599, 239.5, 0.257234726688103, 311},
@@ -205,7 +205,7 @@ namespace {
   });
 
   // And so on, run a step of the filter, updating and predicting, every frame.
-  for (auto &output : measured) {
+  for (const auto &output : measured) {
     k(output);
   }
 
