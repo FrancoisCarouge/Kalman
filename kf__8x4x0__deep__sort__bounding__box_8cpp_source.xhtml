@@ -100,8 +100,8 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> k;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="comment">// A hundred directly bounding box output measurements `(x, y, a, h)` from</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="comment">// Deep SORT&#39;s MOT16 sample, tracker #201.</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="comment">// MOT16 sample, tracker #201.</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1">kalman::output</a> measured[]{{603.5, 251.5, 0.187335092348285, 379},</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                                  {599, 241, 0.24390243902439, 328},</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                                  {599, 239.5, 0.257234726688103, 311},</div>
@@ -278,7 +278,7 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  });</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;output : measured) {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output : measured) {</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    k(output);</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  }</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
@@ -326,7 +326,7 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="kf__8x4x0__deep__sort__bounding__box_8cpp.xhtml">kf_8x4x0_deep_sort_bounding_box.cpp</a></li>
-    <li class="footer">Generated on Sat Sep 10 2022 21:43:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Sep 10 2022 22:09:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

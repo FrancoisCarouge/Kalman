@@ -105,8 +105,8 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// A hundred directly bounding box output measurements `(x, y, a, h)` from</span></div>
-<div class="line">  <span class="comment">// Deep SORT&#39;s MOT16 sample, tracker #201.</span></div>
+<div class="line">  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
+<div class="line">  <span class="comment">// MOT16 sample, tracker #201.</span></div>
 <div class="line">  <span class="keyword">const</span> <a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1">kalman::output</a> measured[]{{603.5, 251.5, 0.187335092348285, 379},</div>
 <div class="line">                                  {599, 241, 0.24390243902439, 328},</div>
 <div class="line">                                  {599, 239.5, 0.257234726688103, 311},</div>
@@ -283,7 +283,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;output : measured) {</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output : measured) {</div>
 <div class="line">    k(output);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -322,7 +322,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Sep 10 2022 21:43:20 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Sep 10 2022 22:09:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
