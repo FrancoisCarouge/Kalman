@@ -206,7 +206,8 @@ namespace {
 
   // And so on, run a step of the filter, updating and predicting, every frame.
   for (const auto &output : measured) {
-    k(output);
+    k.update(output);
+    k.predict();
   }
 
   assert(std::abs(1 - k.x()[0] / 370.932041394761f) < 0.001f &&

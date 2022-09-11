@@ -165,6 +165,7 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   //! @todo Do we want to pass z to `observation_state_h()`? What are the use
   //! cases?
   //! @todo Do we want to pass z to `observation()`? What are the use cases?
+  //! @todo Use operator `+=` for the state update?
   template <typename... Outputs>
   inline constexpr void update(const UpdateTypes &...update_pack,
                                const Outputs &...output_z) {
@@ -188,14 +189,6 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
     q = noise_process_q(x, prediction_pack...);
     x = transition(x, prediction_pack...);
     p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
-  }
-
-  template <typename... Outputs>
-  inline constexpr void operator()(const UpdateTypes &...update_pack,
-                                   const Outputs &...output_z,
-                                   const PredictionTypes &...prediction_pack) {
-    update(update_pack..., output_z...);
-    predict(prediction_pack...);
   }
 };
 
@@ -355,15 +348,6 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     g = transition_control_g(prediction_pack...);
     x = transition(x, u, prediction_pack...);
     p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
-  }
-
-  template <typename... Outputs>
-  inline constexpr void operator()(const UpdateTypes &...update_pack,
-                                   const Outputs &...output_z,
-                                   const PredictionTypes &...prediction_pack,
-                                   const auto &...input_u) {
-    update(update_pack..., output_z...);
-    predict(prediction_pack..., input_u...);
   }
 };
 

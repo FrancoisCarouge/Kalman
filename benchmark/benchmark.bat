@@ -51,5 +51,5 @@ cl ^
   /link ^
     "F:\Drive\Projects\cpp\vcpkg\packages\benchmark_x86-windows\lib\benchmark.lib" ^
     "shlwapi.lib"
-start "" /affinity 2 /Realtime "kalman.exe" --benchmark_filter="*" --benchmark_out="benchmark/results.json"
+start "" /affinity 2 /Realtime "kalman.exe" --benchmark_filter="." --benchmark_out="benchmark/results.json"
 cd benchmark

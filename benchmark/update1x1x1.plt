@@ -48,7 +48,7 @@ set grid ytics
 set boxwidth 0.9
 set xrange [ -0.5 : 0.5 ]
 set style fill solid border linecolor "black"
-set yrange [40 : 42]
+set yrange [40.4 : 42.5]
 set ytics .2
 set xtics ("Update 1x1x1 Float" 0)
 

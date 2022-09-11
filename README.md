@@ -271,7 +271,6 @@ class kalman
 
 | Modifier | Definition |
 | --- | --- |
-| `operator()` | Runs a step of the filter. Predicts and updates the estimates per prediction arguments, control input, and measurement output. |
 | `update` | Updates the estimates with the outcome of a measurement. |
 | `predict` | Produces estimates of the state variables and uncertainties. |
 
