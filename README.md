@@ -271,8 +271,8 @@ class kalman
 
 | Modifier | Definition |
 | --- | --- |
-| `update` | Updates the estimates with the outcome of a measurement. |
 | `predict` | Produces estimates of the state variables and uncertainties. |
+| `update` | Updates the estimates with the outcome of a measurement. |
 
 # Format
 
