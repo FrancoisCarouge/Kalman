@@ -48,7 +48,7 @@ set grid ytics
 set boxwidth 0.9
 set xrange [ -0.5 : 0.5 ]
 set style fill solid border linecolor "black"
-set yrange [33 : 39]
+set yrange [33 : 38]
 set ytics .5
 set xtics ("Predict 1x1x0 Float" 0)
 

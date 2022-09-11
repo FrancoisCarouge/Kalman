@@ -191,6 +191,8 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! @todo Support, use "Taking Static Type-Safety to the Next Level - Physical
 //! Units for Matrices" by Daniel Withopf and record the lesson learned: both
 //! usage and development is harder without compile time units verification.
+//! @todo Should we add back the call operator? How to resolve the
+//! update/predict ordering? And parameter ordering?
 template <
     typename State = double, typename Output = double, typename Input = void,
     typename Transpose = std::identity, typename Symmetrize = std::identity,
@@ -827,8 +829,6 @@ public:
   //! the `Input` template type. The prediction types are explicitly defined
   //! with the class definition.
   //!
-  //! @todo Consider whether this method needs to exist or if the operator() is
-  //! sufficient for all clients?
   //! @todo Consider if returning the state column vector X would be preferable?
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Can the parameter pack of `PredictionTypes` be explicit in the
@@ -861,8 +861,6 @@ public:
   //! the `Output` template type. The update types are explicitly
   //! defined with the class definition.
   //!
-  //! @todo Consider whether this method needs to exist or if the operator() is
-  //! sufficient for all clients?
   //! @todo Consider if returning the state column vector X would be preferable?
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Can the parameter pack of `UpdateTypes` be explicit in the method
@@ -881,41 +879,6 @@ public:
   //!
   //! @complexity Constant.
   template <std::size_t Position> inline constexpr auto update() const;
-
-  //! @brief Runs a full step of the filter.
-  //!
-  //! @details Updates and predict the estimates per update arguments,
-  //! measurement output, prediction arguments, and control input.
-  //!
-  //! @tparam Outputs The template parameter pack types passed in the
-  //! `arguments` parameters after the update arguments and before the
-  //! prediction arguments. The `Outputs` types must be compatible with the
-  //! `Output` type template parameter of the measurement output z.
-  //!
-  //! @param arguments The update, output, prediction, and input parameters of
-  //! the filter, in that order. The arguments need to be compatible with the
-  //! filter types. The update parameters convertible to the
-  //! `UpdateTypes` template pack types are passed through for computations of
-  //! update matrices. The observation parameter pack types convertible to
-  //! the `Output` template type. The prediction parameters convertible to the
-  //! `PredictionTypes` template pack types are passed through for computations
-  //! of prediction matrices. The control parameter pack types convertible to
-  //! the `Input` template type. The update and prediction arguments types are
-  //! explicitly defined with the class definition and the control input
-  //! parameter pack types are always deduced per the parameter pack greedy
-  //! matching rule. However the measurement output parameter pack types must
-  //! always be explicitly defined per the parameter pack fair matching rule.
-  //!
-  //! @note Call as `filter.template operator()<output1_t, output2_t,
-  //! ...>(...);` to lift ambiguity. A lambda can come in handy to reduce the
-  //! verbose call `const auto step{ [&k](const auto &...args) { filter.template
-  //! operator()<output1_t, output2_t, ...>(args...); } };` then called as
-  //! `step(...);`.
-  //!
-  //! @todo Consider if returning the state column vector X would be preferable?
-  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
-  template <typename... Outputs>
-  inline constexpr void operator()(const auto &...arguments);
 
   //! @}
 };
@@ -1403,16 +1366,6 @@ kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
        UpdateTypes, PredictionTypes>::observation(observation_function
                                                       &&callable) {
   filter.observation = std::forward<decltype(callable)>(callable);
-}
-
-template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename UpdateTypes, typename PredictionTypes>
-template <typename... InputTypes>
-inline constexpr void
-kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
-       UpdateTypes, PredictionTypes>::operator()(const auto &...arguments) {
-  filter.template operator()<InputTypes...>(arguments...);
 }
 
 template <typename State, typename Output, typename Input, typename Transpose,

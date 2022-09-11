@@ -66,11 +66,6 @@ grep "update1x1x0" /tmp/flat_results.json \
   > /tmp/update1x1x0.csv
 gnuplot update1x1x0.plt
 
-grep "operator1x1x0" /tmp/flat_results.json \
-  | sed -E 's#\{"name":"operator1x1x0/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/operator1x1x0.csv
-gnuplot operator1x1x0.plt
-
 grep "predict1x1x1" /tmp/flat_results.json \
   | sed -E 's#\{"name":"predict1x1x1/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
   > /tmp/predict1x1x1.csv
@@ -80,11 +75,6 @@ grep "update1x1x1" /tmp/flat_results.json \
   | sed -E 's#\{"name":"update1x1x1/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
   > /tmp/update1x1x1.csv
 gnuplot update1x1x1.plt
-
-grep "operator1x1x1" /tmp/flat_results.json \
-  | sed -E 's#\{"name":"operator1x1x1/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/operator1x1x1.csv
-gnuplot operator1x1x1.plt
 
 # Groups using results.
 gnuplot float1x1x0.plt

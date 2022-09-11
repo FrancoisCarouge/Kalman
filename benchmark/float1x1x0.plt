@@ -44,13 +44,12 @@ set output "float1x1x0.svg"
 set ylabel "Time (ns)"
 set grid ytics
 set boxwidth 0.9
-set xrange [ -0.5 : 3.5 ]
+set xrange [ -0.5 : 2.5 ]
 set style fill solid border linecolor "black"
-set yrange [20 : 50]
+set yrange [20 : 45]
 set ytics 1
 set xtics ("Baseline - No Code" 0, "Predict" 1, "Update" 2, "Operator()" 3) rotate by 345
 
 plot "/tmp/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F" notitle, \
  "/tmp/predict1x1x0.csv" using (1):1 with boxes linecolor rgb "#F4D03F" notitle, \
- "/tmp/update1x1x0.csv" using (2):1 with boxes linecolor rgb "#F4D03F" notitle, \
- "/tmp/operator1x1x0.csv" using (3):1 with boxes linecolor rgb "#F4D03F" notitle
+ "/tmp/update1x1x0.csv" using (2):1 with boxes linecolor rgb "#F4D03F" notitle

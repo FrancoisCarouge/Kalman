@@ -71,15 +71,20 @@ namespace {
 
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 5s (constant).
-  k(49.967);
-  k(50.1);
-  k(50.106);
-  k(49.992);
-  k(49.819);
-  k(49.933);
-  k(50.007);
-  k(50.023);
-  k(49.99);
+  const auto step{[&k](double temperature) {
+    k.predict();
+    k.update(temperature);
+  }};
+
+  step(49.967);
+  step(50.1);
+  step(50.106);
+  step(49.992);
+  step(49.819);
+  step(49.933);
+  step(50.007);
+  step(50.023);
+  step(49.99);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
   assert(std::abs(1 - k.p() / 0.0013) < 0.05 &&

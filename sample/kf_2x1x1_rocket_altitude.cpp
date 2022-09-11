@@ -137,8 +137,11 @@ namespace {
   // measurements period: Δt = 250ms. The period is constant but passed as
   // variable for the example. The lambda helper shows how to simplify the
   // filter step call.
-  const auto step{
-      [&k](const auto &...args) { k.template operator()<double>(args...); }};
+  const auto step{[&k](double altitude, std::chrono::milliseconds step_time,
+                       double acceleration) {
+    k.update(altitude);
+    k.predict(step_time, acceleration);
+  }};
 
   step(-11.1, delta_time, 40.02 + gravity);
 
