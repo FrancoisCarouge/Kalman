@@ -4,14 +4,6 @@ var namespacefcarouge_1_1benchmark =
       [ "baseline", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#aff658eaad4390e2683fd8de560ec17c6", null ],
       [ "Name", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#aaf76c42d75ae1d29dc31d6c0240b7471", null ]
     ] ],
-    [ "anonymous_namespace{operator1x1x0.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02operator1x1x0_8cpp_03.xhtml", [
-      [ "Name", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02operator1x1x0_8cpp_03.xhtml#aee6ccaea91d37b80a6d8b325cbf4f045", null ],
-      [ "operator1x1x0", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02operator1x1x0_8cpp_03.xhtml#a87fb8501af121998a4b6e890eaf355e3", null ]
-    ] ],
-    [ "anonymous_namespace{operator1x1x1.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02operator1x1x1_8cpp_03.xhtml", [
-      [ "Name", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02operator1x1x1_8cpp_03.xhtml#a16fb72b91bb9918e351bd200739e08d2", null ],
-      [ "operator1x1x1", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02operator1x1x1_8cpp_03.xhtml#aefc0812203d6c58de748caffc0cf8e8b", null ]
-    ] ],
     [ "anonymous_namespace{predict1x1x0.cpp}", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict1x1x0_8cpp_03.xhtml", [
       [ "Name", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict1x1x0_8cpp_03.xhtml#a29a2840f433056e619a6faf320af458d", null ],
       [ "predict1x1x0", "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict1x1x0_8cpp_03.xhtml#aef5cb0967d86958de3ae040be1c77cc2", null ]

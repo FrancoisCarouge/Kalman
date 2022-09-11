@@ -45,7 +45,6 @@ var classfcarouge_1_1kalman =
     [ "k", "classfcarouge_1_1kalman.xhtml#a9ab8dd1a980bb6a0ec2527ccc0b6370d", null ],
     [ "observation", "classfcarouge_1_1kalman.xhtml#a8322a989123873c88190f4dd7cea40a5", null ],
     [ "observation", "classfcarouge_1_1kalman.xhtml#a2eee8dab54e2cf6b78bf52551c988bf5", null ],
-    [ "operator()", "classfcarouge_1_1kalman.xhtml#aab1dba08047eb5eb08dfbc8095ea1861", null ],
     [ "operator=", "classfcarouge_1_1kalman.xhtml#a4ae5a09664832ca35039c426a4a15cc6", null ],
     [ "operator=", "classfcarouge_1_1kalman.xhtml#aa2f0430be3a57809a6bdca479c341954", null ],
     [ "p", "classfcarouge_1_1kalman.xhtml#a9742852191b4bb4397e77ffbffafde42", null ],
