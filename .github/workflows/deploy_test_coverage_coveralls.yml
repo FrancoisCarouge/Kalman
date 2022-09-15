@@ -35,7 +35,7 @@ jobs:
       run: |
         gcc-12 \
           sample/*.cpp source/*.cpp test/*.cpp \
-          -Iinclude -I/usr/local/include/eigen3 -Isupport/include/fcarouge \
+          -Iinclude -I/usr/local/include/eigen3 -Isupport \
           -O0 -g -std=c++23 -fmodules-ts --coverage -fno-inline -fno-exceptions -lstdc++ -lm -lfmt
     - name: "Coverage: Base"
       run: |

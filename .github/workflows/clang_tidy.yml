@@ -37,6 +37,6 @@ jobs:
         clang-tidy-16 ${FILES} --warnings-as-errors=* -- \
           -x c++ -Iinclude \
           -I/usr/local/include/eigen3 \
-          -Isupport/include/fcarouge \
+          -Isupport \
           -DFMT_HEADER_ONLY \
           -Wall -Wextra -pedantic -std=c++2b -stdlib=libc++ -lfmt
