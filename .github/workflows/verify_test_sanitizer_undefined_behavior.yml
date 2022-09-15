@@ -17,21 +17,20 @@ jobs:
     - name: Install
       run: |
         sudo apt install gcc-12 g++-12
-        ( cd /tmp ;
-          git clone --depth 1 https://gitlab.com/libeigen/eigen.git ;
-          ( cd eigen ;
-            mkdir build ;
-            ( cd build ; 
-              cmake .. ; 
-              cmake --build . ;
-              sudo make install ; ) ) )
-        ( cd /tmp ;
-          git clone --depth 1 https://github.com/fmtlib/fmt.git ;
-          ( cd fmt ;
-            mkdir build ;
-            ( cd build ;
-              cmake .. ;
-              sudo make install ; ) ) )
+        ( cd /tmp
+          git clone --depth 1 https://gitlab.com/libeigen/eigen.git
+          mkdir eigen/build
+          ( cd eigen/build
+            cmake ..
+            cmake --build . --parallel
+            sudo cmake --install . ) )
+        ( cd /tmp
+          git clone --depth 1 https://github.com/fmtlib/fmt.git
+          mkdir fmt/build
+          ( cd fmt/build
+            cmake ..
+            cmake --build . --parallel
+            sudo cmake --install . ) )
     - name: Build
       run: |
         gcc-12 \

@@ -21,6 +21,6 @@ jobs:
         mkdir build
         cd build
         cmake ..
-        make
-        ctest --tests-regex kalman --output-on-failure
-        sudo make install
+        cmake --build . --parallel
+        ctest --tests-regex kalman --output-on-failure --parallel
+        sudo cmake --install .
