@@ -158,8 +158,6 @@ k(drift_x, drift_y, position_x, position_y, variometer);
 <br>
 [![CMakeFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml)
 <br>
-[![CMakeLint](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_lint.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_lint.yml)
-<br>
 [![Coverage Status](https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=develop)](https://coveralls.io/github/FrancoisCarouge/Kalman?branch=develop)
 <br>
 [![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
