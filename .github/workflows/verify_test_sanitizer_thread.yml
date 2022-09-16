@@ -35,7 +35,7 @@ jobs:
       run: |
         gcc-12 \
           sample/*.cpp test/*.cpp source/*.cpp \
-          -Iinclude -I/usr/local/include/eigen3 -Isupport/include/fcarouge \
+          -Iinclude -I/usr/local/include/eigen3 -Isupport \
           -std=c++23 -g -fsanitize=thread -lstdc++ -lm -lfmt
     - name: Test
       run: TSAN_OPTIONS=verbosity=2 ./a.out
