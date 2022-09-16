@@ -60,7 +60,7 @@ var NAVTREE =
     [ "Benchmark Results", "md_benchmark__r_e_a_d_m_e.xhtml", null ],
     [ "Contributor Covenant Code of Conduct", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md3", null ],
-      [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
+      [ "Our Standards", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
       [ "Our Responsibilities", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md9", null ],
       [ "Scope", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md10", null ],
       [ "Enforcement", "md__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md11", null ],
@@ -69,7 +69,7 @@ var NAVTREE =
     [ "Contributing", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
       [ "Code of Conduct", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md4", null ],
       [ "Reporting Bugs", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md5", null ],
-      [ "Requesting Features", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md6", null ],
+      [ "Requesting Features", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md7", null ],
       [ "Security Policy", "md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md8", null ]
     ] ],
     [ "Installation", "md__i_n_s_t_a_l_l.xhtml", [
