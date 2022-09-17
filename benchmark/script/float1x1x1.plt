@@ -39,26 +39,17 @@
 
 set terminal svg enhanced background rgb "white" size 360,720
 set datafile separator ","
-set title "{/:Bold Predict 1x1x1 Float Benchmark}\n{/*0.8 kalman<float, float, float>::predict()}"
-set output "predict1x1x1.svg"
-set key noautotitle
-set key inside top left reverse Left
+set title "{/:Bold Float 1x1x1 Group Benchmark}\n"
+set output "kalman/benchmark/image/float1x1x1.svg"
 set ylabel "Time (ns)"
 set grid ytics
 set boxwidth 0.9
-set xrange [ -0.5 : 0.5 ]
+set xrange [ -0.5 : 2.5 ]
 set style fill solid border linecolor "black"
-set yrange [33 : 37]
-set ytics .2
-set xtics ("Predict 1x1x1 Float" 0)
+set yrange [12 : 27]
+set ytics 1
+set xtics ("Baseline - No Code" 0, "Predict" 1, "Update" 2) rotate by 345
 
-plot "/tmp/predict1x1x1.csv" using (0):6 with boxes linecolor rgb "#F7DC6F" title "Maximum", \
-  "" using (0):1 with boxes linecolor rgb "#F4D03F" title "Average", \
-  "" using (0):5 with boxes linecolor rgb "#F1C40F" title "Minimum", \
-  "" using (0):6:(sprintf("%8.2f", $6)) with labels right offset char -2,0.3, \
-  "" using (0):1:(sprintf("%8.2f", $1)) with labels right offset char -2,0.3, \
-  "" using (0):5:(sprintf("%8.2f", $5)) with labels right offset char -2,0.3, \
-  "" using (0):2:3 with yerrorbars linetype 1 linecolor "black" title "Mean and Standard Deviation", \
-  "" using (0):($2+$3):(sprintf("%.2f", $2+$3)) with labels left offset char 1,0, \
-  "" using (0):2:(sprintf("%.2f (cv: %.1f %%)", $2, $4 * 100)) with labels left offset char 1,0, \
-  "" using (0):($2-$3):(sprintf("%.2f", $2-$3)) with labels left offset char 1,0
+plot "/tmp/kalman/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F" notitle, \
+ "/tmp/kalman/predict1x1x1.csv" using (1):1 with boxes linecolor rgb "#F4D03F" notitle, \
+ "/tmp/kalman/update1x1x1.csv" using (2):1 with boxes linecolor rgb "#F4D03F" notitle

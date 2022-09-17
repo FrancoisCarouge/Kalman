@@ -16,9 +16,6 @@ jobs:
       run: |
         export CC=clang
         export CXX=clang++
-        mkdir build
-        cd build
-        cmake ..
-        cmake --build . --parallel
-        ctest --tests-regex kalman --output-on-failure --parallel
-        sudo cmake --install .
+        cmake -B "build" .
+        cmake --build "build" --parallel
+        ctest --test-dir "build" --tests-regex "kalman_(test|sample)" --output-on-failure --parallel

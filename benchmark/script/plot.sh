@@ -39,6 +39,16 @@
 
 set -e
 
+cp build/benchmark/*.json kalman/benchmark/result
+
+rm -rf /tmp/kalman
+mkdir /tmp/kalman
+
+RESULTS=`find "kalman/benchmark/result" -iname "*.json"`
+for RESULT in ${RESULTS}; do
+  cat ${RESULT} >> /tmp/kalman/results.json
+done
+
 # Filter benchmark results to flatten and retain plot data.
 jq --compact-output '[.benchmarks[]
   | select(has("aggregate_name"))
@@ -48,35 +58,35 @@ jq --compact-output '[.benchmarks[]
   | group_by([.name])
   | map((.[0]|del(.value)) + { values: (map(.value)) })[]
   | {name: .name, mean: .values[0].mean, median: .values[1].median, stddev: .values[2].stddev, cv: .values[3].cv, min: .values[4].min, max: .values[5].max}
-  ' results.json > /tmp/flat_results.json
+  ' /tmp/kalman/results.json > /tmp/kalman/flat_results.json
 
 # Individual CSV and plot results.
-grep "baseline" /tmp/flat_results.json \
+grep "baseline" /tmp/kalman/flat_results.json \
   | sed -E 's#\{"name":"baseline/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/baseline.csv
-gnuplot baseline.plt
+  > /tmp/kalman/baseline.csv
+gnuplot kalman/benchmark/script/baseline.plt
 
-grep "predict1x1x0" /tmp/flat_results.json \
+grep "predict1x1x0" /tmp/kalman/flat_results.json \
   | sed -E 's#\{"name":"predict1x1x0/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/predict1x1x0.csv
-gnuplot predict1x1x0.plt
+  > /tmp/kalman/predict1x1x0.csv
+gnuplot kalman/benchmark/script/predict1x1x0.plt
 
-grep "update1x1x0" /tmp/flat_results.json \
+grep "update1x1x0" /tmp/kalman/flat_results.json \
   | sed -E 's#\{"name":"update1x1x0/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/update1x1x0.csv
-gnuplot update1x1x0.plt
+  > /tmp/kalman/update1x1x0.csv
+gnuplot kalman/benchmark/script/update1x1x0.plt
 
-grep "predict1x1x1" /tmp/flat_results.json \
+grep "predict1x1x1" /tmp/kalman/flat_results.json \
   | sed -E 's#\{"name":"predict1x1x1/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/predict1x1x1.csv
-gnuplot predict1x1x1.plt
+  > /tmp/kalman/predict1x1x1.csv
+gnuplot kalman/benchmark/script/predict1x1x1.plt
 
-grep "update1x1x1" /tmp/flat_results.json \
+grep "update1x1x1" /tmp/kalman/flat_results.json \
   | sed -E 's#\{"name":"update1x1x1/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/update1x1x1.csv
-gnuplot update1x1x1.plt
+  > /tmp/kalman/update1x1x1.csv
+gnuplot kalman/benchmark/script/update1x1x1.plt
 
 # Groups using results.
-gnuplot float1x1x0.plt
-gnuplot float1x1x1.plt
-gnuplot float.plt
+gnuplot kalman/benchmark/script/float1x1x0.plt
+gnuplot kalman/benchmark/script/float1x1x1.plt
+gnuplot kalman/benchmark/script/float.plt

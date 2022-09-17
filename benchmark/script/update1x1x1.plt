@@ -39,8 +39,8 @@
 
 set terminal svg enhanced background rgb "white" size 360,720
 set datafile separator ","
-set title "{/:Bold Update 1x1x0 Float Benchmark}\n{/*0.8 kalman<float, float, void>::update()}"
-set output "update1x1x0.svg"
+set title "{/:Bold Update 1x1x1 Float Benchmark}\n{/*0.8 kalman<float, float, float>::update(0.f)}"
+set output "kalman/benchmark/image/update1x1x1.svg"
 set key noautotitle
 set key inside top left reverse Left
 set ylabel "Time (ns)"
@@ -48,11 +48,11 @@ set grid ytics
 set boxwidth 0.9
 set xrange [ -0.5 : 0.5 ]
 set style fill solid border linecolor "black"
-set yrange [40 : 42.5]
+set yrange [24 : 27]
 set ytics .2
-set xtics ("Update 1x1x0 Float" 0)
+set xtics ("Update 1x1x1 Float" 0)
 
-plot "/tmp/update1x1x0.csv" using (0):6 with boxes linecolor rgb "#F7DC6F" title "Maximum", \
+plot "/tmp/kalman/update1x1x1.csv" using (0):6 with boxes linecolor rgb "#F7DC6F" title "Maximum", \
   "" using (0):1 with boxes linecolor rgb "#F4D03F" title "Average", \
   "" using (0):5 with boxes linecolor rgb "#F1C40F" title "Minimum", \
   "" using (0):6:(sprintf("%8.2f", $6)) with labels right offset char -2,0.3, \

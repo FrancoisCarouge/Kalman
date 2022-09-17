@@ -45,9 +45,9 @@ set(SOURCES
     "h.cpp"
     "initialization.cpp")
 
-foreach(test ${SOURCES})
-  get_filename_component(test_name ${test} NAME_WE)
-  add_executable(kalman_${test_name}_driver ${test})
-  target_link_libraries(kalman_${test_name}_driver PRIVATE eigen kalman main)
-  add_test(kalman_test_${test_name} kalman_${test_name}_driver)
+foreach(TEST ${SOURCES})
+  get_filename_component(NAME ${TEST} NAME_WE)
+  add_executable(kalman_test_${NAME}_driver ${TEST})
+  target_link_libraries(kalman_test_${NAME}_driver PRIVATE eigen kalman main)
+  add_test(kalman_test_${NAME} kalman_test_${NAME}_driver)
 endforeach()

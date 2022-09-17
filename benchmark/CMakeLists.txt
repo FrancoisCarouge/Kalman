@@ -36,41 +36,15 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-if(WIN32)
-  set(OPTIONS "/EHsc" "/W4")
-else()
-  set(OPTIONS
-      "-ansi"
-      "-fno-check-new"
-      "-fno-common"
-      "-fstrict-aliasing"
-      "-pedantic"
-      "-Wall"
-      "-Wcast-align"
-      "-Wchar-subscripts"
-      "-Wdouble-promotion"
-      "-Wenum-conversion"
-      "-Werror"
-      "-Wextra"
-      "-Wformat-security"
-      "-Wno-long-long"
-      "-Wno-psabi"
-      "-Wno-variadic-macros"
-      "-Wnon-virtual-dtor"
-      "-Wpointer-arith"
-      "-Wshadow"
-      "-Wundef"
-      "-Wunused-local-typedefs"
-      "-Wwrite-strings")
-endif()
+set(SOURCES "baseline.cpp" "predict1x1x0.cpp" "predict1x1x1.cpp"
+            "update1x1x0.cpp" "update1x1x1.cpp")
 
-if(WIN32)
-  set(LIBRARIES)
-else()
-  set(LIBRARIES format)
-endif()
-
-add_library(kalman INTERFACE)
-target_include_directories(kalman INTERFACE ".")
-target_link_libraries(kalman INTERFACE ${LIBRARIES})
-target_compile_options(kalman INTERFACE ${OPTIONS})
+foreach(BENCHMARK ${SOURCES})
+  get_filename_component(NAME ${BENCHMARK} NAME_WE)
+  add_executable(kalman_benchmark_${NAME}_driver ${BENCHMARK})
+  target_link_libraries(
+    kalman_benchmark_${NAME}_driver
+    PRIVATE eigen kalman benchmark::benchmark_main benchmark::benchmark)
+  add_test(kalman_benchmark_${NAME} kalman_benchmark_${NAME}_driver
+           "--benchmark_out=kalman_benchmark_${NAME}.json")
+endforeach()
