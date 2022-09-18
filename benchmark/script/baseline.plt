@@ -37,10 +37,10 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 360,720
+set terminal svg enhanced background rgb "white" size 360,720 
 set datafile separator ","
-set title "{/:Bold Predict 1x1x0 Float Benchmark}\n{/*0.8 kalman<float, float, void>::predict()}"
-set output "predict1x1x0.svg"
+set title "{/:Bold Baseline Benchmark}\n{/*0.8 No code benchmark.}"
+set output "kalman/benchmark/image/baseline.svg"
 set key noautotitle
 set key inside top left reverse Left
 set ylabel "Time (ns)"
@@ -48,11 +48,11 @@ set grid ytics
 set boxwidth 0.9
 set xrange [ -0.5 : 0.5 ]
 set style fill solid border linecolor "black"
-set yrange [33 : 38]
-set ytics .5
-set xtics ("Predict 1x1x0 Float" 0)
+set yrange [13 : 15]
+set ytics .2
+set xtics ("Baseline - No Code" 0)
 
-plot "/tmp/predict1x1x0.csv" using (0):6 with boxes linecolor rgb "#F7DC6F" title "Maximum", \
+plot "/tmp/kalman/baseline.csv" using (0):6 with boxes linecolor rgb "#F7DC6F" title "Maximum", \
   "" using (0):1 with boxes linecolor rgb "#F4D03F" title "Average", \
   "" using (0):5 with boxes linecolor rgb "#F1C40F" title "Minimum", \
   "" using (0):6:(sprintf("%8.2f", $6)) with labels right offset char -2,0.3, \

@@ -45,9 +45,9 @@ set(SOURCES
     "kf_6x2x0_vehicle_location.cpp"
     "kf_8x4x0_deep_sort_bounding_box.cpp")
 
-foreach(sample ${SOURCES})
-  get_filename_component(sample_name ${sample} NAME_WE)
-  add_executable(kalman_${sample_name}_driver ${sample})
-  target_link_libraries(kalman_${sample_name}_driver PRIVATE eigen kalman main)
-  add_test(kalman_sample_${sample_name} kalman_${sample_name}_driver)
+foreach(SAMPLE ${SOURCES})
+  get_filename_component(NAME ${SAMPLE} NAME_WE)
+  add_executable(kalman_sample_${NAME}_driver ${SAMPLE})
+  target_link_libraries(kalman_sample_${NAME}_driver PRIVATE eigen kalman main)
+  add_test(kalman_sample_${NAME} kalman_sample_${NAME}_driver)
 endforeach()

@@ -37,21 +37,19 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 720,720
+set terminal svg enhanced background rgb "white" size 360,720
 set datafile separator ","
-set title "{/:Bold Float Group Benchmark}\n"
-set output "float.svg"
+set title "{/:Bold Float 1x1x0 Group Benchmark}\n"
+set output "kalman/benchmark/image/float1x1x0.svg"
 set ylabel "Time (ns)"
 set grid ytics
 set boxwidth 0.9
-set xrange [ -0.5 : 4.5 ]
+set xrange [ -0.5 : 2.5 ]
 set style fill solid border linecolor "black"
-set yrange [25 : 45]
+set yrange [12 : 27]
 set ytics 1
-set xtics ("Baseline - No Code" 0, "Predict 1x1x0" 1, "Predict 1x1x1" 2, "Update 1x1x0" 3, "Update 1x1x1" 4, "Operator() 1x1x0" 5, "Operator() 1x1x1" 6) rotate by 345
+set xtics ("Baseline - No Code" 0, "Predict" 1, "Update" 2) rotate by 345
 
-plot "/tmp/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F" notitle, \
- "/tmp/predict1x1x0.csv" using (1):1 with boxes linecolor rgb "#F4D03F" notitle, \
- "/tmp/predict1x1x1.csv" using (2):1 with boxes linecolor rgb "#F1C40F" notitle, \
- "/tmp/update1x1x0.csv" using (3):1 with boxes linecolor rgb "#F4D03F" notitle, \
- "/tmp/update1x1x1.csv" using (4):1 with boxes linecolor rgb "#F1C40F" notitle
+plot "/tmp/kalman/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F" notitle, \
+ "/tmp/kalman/predict1x1x0.csv" using (1):1 with boxes linecolor rgb "#F4D03F" notitle, \
+ "/tmp/kalman/update1x1x0.csv" using (2):1 with boxes linecolor rgb "#F4D03F" notitle

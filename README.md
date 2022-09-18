@@ -286,11 +286,10 @@ std::print("{}", k);
 # Installation
 
 ```shell
-git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git kalman
-mkdir kalman/build
-cd kalman/build
-cmake ..
-sudo cmake --install .
+git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git "kalman"
+cmake -S "kalman" -B "build"
+cmake --build "build" --parallel
+sudo cmake --install "build"
 ```
 
 [For more, see installation instructions](INSTALL.md).

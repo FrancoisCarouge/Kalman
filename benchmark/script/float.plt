@@ -37,28 +37,21 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 360,720 
+set terminal svg enhanced background rgb "white" size 720,720
 set datafile separator ","
-set title "{/:Bold Baseline Benchmark}\n{/*0.8 No code benchmark.}"
-set output "baseline.svg"
-set key noautotitle
-set key inside top left reverse Left
+set title "{/:Bold Float Group Benchmark}\n"
+set output "kalman/benchmark/image/float.svg"
 set ylabel "Time (ns)"
 set grid ytics
 set boxwidth 0.9
-set xrange [ -0.5 : 0.5 ]
+set xrange [ -0.5 : 4.5 ]
 set style fill solid border linecolor "black"
-set yrange [27 : 30]
-set ytics .2
-set xtics ("Baseline - No Code" 0)
+set yrange [12 : 27]
+set ytics 1
+set xtics ("Baseline - No Code" 0, "Predict 1x1x0" 1, "Predict 1x1x1" 2, "Update 1x1x0" 3, "Update 1x1x1" 4) rotate by 345
 
-plot "/tmp/baseline.csv" using (0):6 with boxes linecolor rgb "#F7DC6F" title "Maximum", \
-  "" using (0):1 with boxes linecolor rgb "#F4D03F" title "Average", \
-  "" using (0):5 with boxes linecolor rgb "#F1C40F" title "Minimum", \
-  "" using (0):6:(sprintf("%8.2f", $6)) with labels right offset char -2,0.3, \
-  "" using (0):1:(sprintf("%8.2f", $1)) with labels right offset char -2,0.3, \
-  "" using (0):5:(sprintf("%8.2f", $5)) with labels right offset char -2,0.3, \
-  "" using (0):2:3 with yerrorbars linetype 1 linecolor "black" title "Mean and Standard Deviation", \
-  "" using (0):($2+$3):(sprintf("%.2f", $2+$3)) with labels left offset char 1,0, \
-  "" using (0):2:(sprintf("%.2f (cv: %.1f %%)", $2, $4 * 100)) with labels left offset char 1,0, \
-  "" using (0):($2-$3):(sprintf("%.2f", $2-$3)) with labels left offset char 1,0
+plot "/tmp/kalman/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F" notitle, \
+ "/tmp/kalman/predict1x1x0.csv" using (1):1 with boxes linecolor rgb "#F4D03F" notitle, \
+ "/tmp/kalman/predict1x1x1.csv" using (2):1 with boxes linecolor rgb "#F1C40F" notitle, \
+ "/tmp/kalman/update1x1x0.csv" using (3):1 with boxes linecolor rgb "#F4D03F" notitle, \
+ "/tmp/kalman/update1x1x1.csv" using (4):1 with boxes linecolor rgb "#F1C40F" notitle

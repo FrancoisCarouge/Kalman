@@ -16,9 +16,8 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1.10.0
     - name: Version
       run: cl
-    - name: Install Eigen
-      run: vcpkg install eigen3
     - name: Build
-      run: cl /EHsc /std:c++latest /I include /I C:\vcpkg\packages\eigen3_x86-windows\include\eigen3 /TP sample/*.cpp source/*.cpp test/*.cpp /Fe:kalman.exe
-    - name: Run
-      run: ./kalman.exe
+      run: |
+        cmake -B "build" .
+        cmake --build "build" --parallel
+        ctest --test-dir "build" --tests-regex "kalman_(test|sample)" --output-on-failure --parallel

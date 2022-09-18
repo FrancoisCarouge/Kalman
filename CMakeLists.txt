@@ -57,8 +57,8 @@ FetchContent_Declare(
 
 FetchContent_Declare(
   google_benchmark
-  URL "https://github.com/google/benchmark/archive/refs/tags/v1.7.0.tar.gz"
-  URL_HASH MD5=a259f985e7f8e4f5d2286a592eabd7e9)
+  URL "https://github.com/google/benchmark/archive/refs/tags/v1.6.2.tar.gz"
+  URL_HASH MD5=14d14849e075af116143a161bc3b927b)
 
 FetchContent_Declare(
   eigen
@@ -72,10 +72,9 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(google_test google_benchmark eigen fmt)
 
+add_subdirectory(benchmark)
 add_subdirectory(include)
 add_subdirectory(sample)
 add_subdirectory(source)
 add_subdirectory(support)
 add_subdirectory(test)
-
-install(DIRECTORY "include/fcarouge" DESTINATION "include")
