@@ -86,21 +86,32 @@ $(document).ready(function(){initNavTree('md__i_n_s_t_a_l_l.xhtml',''); initResi
   <div class="headertitle"><div class="title">Installation </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md14"></a>
-System</h1>
-<p >Clone the repository, in a build folder configure CMake and install:</p>
-<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git kalman</div>
-<div class="line">mkdir kalman/build</div>
-<div class="line">cd kalman/build</div>
-<div class="line">cmake ..</div>
-<div class="line">sudo cmake --install .</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="autotoc_md15"></a>
+System Library</h1>
+<p >Install and use the library in your projects by cloning the repository, configuring, and installing the project on all platforms:</p>
+<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --parallel</div>
+<div class="line">sudo cmake --install &quot;build&quot;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
+Build &amp; Run</h1>
+<h2><a class="anchor" id="autotoc_md17"></a>
+Tests &amp; Samples</h2>
+<p >Build and run the tests and samples on all platforms:</p>
+<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot; -G &quot;Ninja Multi-Config&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --config &quot;Debug&quot; --parallel</div>
+<div class="line">ctest --test-dir &quot;build&quot; --tests-regex &quot;kalman_(test|sample)&quot; --output-on-failure --parallel</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+Benchmarks</h2>
+<p >See the <a href="benchmark/">Benchmark</a> section. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 16 2022 02:59:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

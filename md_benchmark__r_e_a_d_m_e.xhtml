@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: Benchmark Results</title>
+<title>Kalman: Benchmarks</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,17 +83,27 @@ $(document).ready(function(){initNavTree('md_benchmark__r_e_a_d_m_e.xhtml',''); 
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Benchmark Results </div></div>
+  <div class="headertitle"><div class="title">Benchmarks </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/>     <img src="float1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Float 1x1x0"/>     <img src="float1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Float 1x1x1"/>     <img src="baseline.svg" alt="" style="pointer-events: none;" class="inline" title="Baseline"/>     <img src="update1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Update Float 1x1x0"/>     <img src="update1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Update Float 1x1x1"/>     <img src="predict1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Predict Float 1x1x0"/>     <img src="predict1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Predict Float 1x1x1"/>     <img src="operator1x1x0.svg" alt="Function Call Operator 1x1x0" style="pointer-events: none;" class="inline"/> <img src="operator1x1x1.svg" alt="Function Call Operator 1x1x1" style="pointer-events: none;" class="inline"/> </p>
+<div class="textblock"><p >Build and run the benchmarks on all platforms:</p>
+<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot; -G &quot;Ninja Multi-Config&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --config &quot;Release&quot; --parallel</div>
+<div class="line">ctest --test-dir &quot;build&quot; --tests-regex &quot;kalman_benchmark&quot;</div>
+</div><!-- fragment --><p >Plot the results on Linux:</p>
+<div class="fragment"><div class="line">./kalman/benchmark/script/plot.sh</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md1"></a>
+Results</h1>
+<p >Run on Microsoft Windows 10 on native x64 with Visual Studio 2022 compiler 19.33 in release mode.</p>
+<p ><img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/>     <img src="float1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Float 1x1x0"/>     <img src="float1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Float 1x1x1"/>     <img src="baseline.svg" alt="" style="pointer-events: none;" class="inline" title="Baseline"/>     <img src="update1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Update Float 1x1x0"/>     <img src="update1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Update Float 1x1x1"/>     <img src="predict1x1x0.svg" alt="" style="pointer-events: none;" class="inline" title="Predict Float 1x1x0"/>     <img src="predict1x1x1.svg" alt="" style="pointer-events: none;" class="inline" title="Predict Float 1x1x1"/>     </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 16 2022 02:59:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
