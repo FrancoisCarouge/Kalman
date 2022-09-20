@@ -46,32 +46,32 @@ namespace {
 //! the default filter type.
 [[maybe_unused]] auto f_1x1x0{[] {
   using kalman = kalman<>;
-  kalman k;
+  kalman filter;
 
-  assert(k.f() == 1);
+  assert(filter.f() == 1);
 
   {
     const auto f{2.};
-    k.f(f);
-    assert(k.f() == 2);
+    filter.f(f);
+    assert(filter.f() == 2);
   }
 
   {
     const auto f{3.};
-    k.f(std::move(f));
-    assert(k.f() == 3);
+    filter.f(std::move(f));
+    assert(filter.f() == 3);
   }
 
   {
     const auto f{4.};
-    k.f(f);
-    assert(k.f() == 4);
+    filter.f(f);
+    assert(filter.f() == 4);
   }
 
   {
     const auto f{5.};
-    k.f(std::move(f));
-    assert(k.f() == 5);
+    filter.f(std::move(f));
+    assert(filter.f() == 5);
   }
 
   {
@@ -79,10 +79,10 @@ namespace {
       static_cast<void>(x);
       return 6.;
     }};
-    k.f(f);
-    assert(k.f() == 5);
-    k.predict();
-    assert(k.f() == 6);
+    filter.f(f);
+    assert(filter.f() == 5);
+    filter.predict();
+    assert(filter.f() == 6);
   }
 
   {
@@ -90,10 +90,10 @@ namespace {
       static_cast<void>(x);
       return 7.;
     }};
-    k.f(std::move(f));
-    assert(k.f() == 6);
-    k.predict();
-    assert(k.f() == 7);
+    filter.f(std::move(f));
+    assert(filter.f() == 6);
+    filter.predict();
+    assert(filter.f() == 7);
   }
 
   return 0;

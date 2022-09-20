@@ -45,18 +45,18 @@ namespace {
 //! @test Verifies default values are initialized for single-dimension filters
 //! without input control.
 [[maybe_unused]] auto defaults110{[] {
-  kalman k;
+  kalman filter;
 
-  assert(k.f() == 1);
-  assert(k.h() == 1);
-  assert(k.k() == 1);
-  assert(k.p() == 1);
-  assert(k.q() == 0 && "No process noise by default.");
-  assert(k.r() == 0 && "No observation noise by default.");
-  assert(k.s() == 1);
-  assert(k.x() == 0 && "Origin state.");
-  assert(k.y() == 0);
-  assert(k.z() == 0);
+  assert(filter.f() == 1);
+  assert(filter.h() == 1);
+  assert(filter.k() == 1);
+  assert(filter.p() == 1);
+  assert(filter.q() == 0 && "No process noise by default.");
+  assert(filter.r() == 0 && "No observation noise by default.");
+  assert(filter.s() == 1);
+  assert(filter.x() == 0 && "Origin state.");
+  assert(filter.y() == 0);
+  assert(filter.z() == 0);
 
   return 0;
 }()};
@@ -65,20 +65,20 @@ namespace {
 //! with input control.
 [[maybe_unused]] auto defaults111{[] {
   using kalman = fcarouge::kalman<double, double, double>;
-  kalman k;
+  kalman filter;
 
-  assert(k.f() == 1);
-  assert(k.g() == 1);
-  assert(k.h() == 1);
-  assert(k.k() == 1);
-  assert(k.p() == 1);
-  assert(k.q() == 0 && "No process noise by default.");
-  assert(k.r() == 0 && "No observation noise by default.");
-  assert(k.s() == 1);
-  assert(k.u() == 0 && "No initial control.");
-  assert(k.x() == 0 && "Origin state.");
-  assert(k.y() == 0);
-  assert(k.z() == 0);
+  assert(filter.f() == 1);
+  assert(filter.g() == 1);
+  assert(filter.h() == 1);
+  assert(filter.k() == 1);
+  assert(filter.p() == 1);
+  assert(filter.q() == 0 && "No process noise by default.");
+  assert(filter.r() == 0 && "No observation noise by default.");
+  assert(filter.s() == 1);
+  assert(filter.u() == 0 && "No initial control.");
+  assert(filter.x() == 0 && "Origin state.");
+  assert(filter.y() == 0);
+  assert(filter.z() == 0);
 
   return 0;
 }()};

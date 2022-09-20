@@ -32,7 +32,7 @@ namespace {
 //! @example kf_1x1x1_dog_position.cpp
 [[maybe_unused]] auto kf_1x1x1_dog_position{[] {
   using kalman = fcarouge::kalman<double, double, double>;
-  kalman k;
+  kalman filter;
 
   // Initialization
   // This is the dog's initial position expressed as a Gaussian. The position is
@@ -40,50 +40,50 @@ namespace {
   // meters. You can think of this as saying "I believe with 99.7% accuracy the
   // position is 0 plus or minus 60 meters". This is because with Gaussians
   // ~99.7% of values fall within of the mean.
-  k.x(1.);
-  k.p(20 * 20.);
+  filter.x(1.);
+  filter.p(20 * 20.);
 
   // Prediction
   // Variance in the dog's movement. The process variance is how much error
   // there is in the process model. Dogs rarely do what we expect, and things
   // like hills or the whiff of a squirrel will change his progress.
-  k.q(1.);
+  filter.q(1.);
 
   // Measure and Update
   // Variance in the sensor. The meaning of sensor variance should be clear - it
   // is how much variance there is in each measurement.
-  k.r(2.);
+  filter.r(2.);
 
   // We are predicting that at each time step the dog moves forward one meter.
   // This is the process model - the description of how we think the dog moves.
   // How do I know the velocity? Magic? Consider it a prediction, or perhaps we
   // have a secondary velocity sensor. Please accept this simplification for
   // now.
-  k.g(1.);
+  filter.g(1.);
 
-  k.predict(1.);
-  k.update(1.354);
-  k.predict(1.);
-  k.update(1.882);
-  k.predict(1.);
-  k.update(4.341);
-  k.predict(1.);
-  k.update(7.156);
-  k.predict(1.);
-  k.update(6.939);
-  k.predict(1.);
-  k.update(6.844);
-  k.predict(1.);
-  k.update(9.847);
-  k.predict(1.);
-  k.update(12.553);
-  k.predict(1.);
-  k.update(16.273);
-  k.predict(1.);
-  k.update(14.8);
+  filter.predict(1.);
+  filter.update(1.354);
+  filter.predict(1.);
+  filter.update(1.882);
+  filter.predict(1.);
+  filter.update(4.341);
+  filter.predict(1.);
+  filter.update(7.156);
+  filter.predict(1.);
+  filter.update(6.939);
+  filter.predict(1.);
+  filter.update(6.844);
+  filter.predict(1.);
+  filter.update(9.847);
+  filter.predict(1.);
+  filter.update(12.553);
+  filter.predict(1.);
+  filter.update(16.273);
+  filter.predict(1.);
+  filter.update(14.8);
 
   assert(
-      std::abs(1 - k.x() / 15.053) < 0.001 &&
+      std::abs(1 - filter.x() / 15.053) < 0.001 &&
       "The state estimates expected at 0.1% accuracy."
       "Here we can see that the variance converges to 2.1623 in 9 steps. This "
       "means that we have become very confident in our position estimate. It "

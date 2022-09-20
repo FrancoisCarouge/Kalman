@@ -1,0 +1,184 @@
+{
+  "context": {
+    "date": "2022-09-21T20:01:10-07:00",
+    "host_name": "FRANCOIS-DESK",
+    "executable": "F:/Drive/Projects/cpp/kalman/build/benchmark/Release/kalman_benchmark_eigen_update_31x2x0_driver.exe",
+    "num_cpus": 8,
+    "mhz_per_cpu": 4011,
+    "caches": [
+      {
+        "type": "Data",
+        "level": 1,
+        "size": 32768,
+        "num_sharing": 2
+      },
+      {
+        "type": "Instruction",
+        "level": 1,
+        "size": 32768,
+        "num_sharing": 2
+      },
+      {
+        "type": "Unified",
+        "level": 2,
+        "size": 262144,
+        "num_sharing": 2
+      },
+      {
+        "type": "Unified",
+        "level": 3,
+        "size": 8388608,
+        "num_sharing": 8
+      }
+    ],
+    "load_avg": [],
+    "library_build_type": "release"
+  },
+  "benchmarks": [
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "iteration",
+      "repetitions": 2,
+      "repetition_index": 0,
+      "threads": 1,
+      "iterations": 68458,
+      "real_time": 1.0227431417800084e+04,
+      "cpu_time": 1.0270896023839434e+04,
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "iteration",
+      "repetitions": 2,
+      "repetition_index": 1,
+      "threads": 1,
+      "iterations": 68458,
+      "real_time": 1.0229493996315656e+04,
+      "cpu_time": 1.0042653889976336e+04,
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time_mean",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "aggregate",
+      "repetitions": 2,
+      "threads": 1,
+      "aggregate_name": "mean",
+      "aggregate_unit": "time",
+      "iterations": 2,
+      "real_time": 1.0228462707057870e+04,
+      "cpu_time": 1.0156774956907886e+04,
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time_median",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "aggregate",
+      "repetitions": 2,
+      "threads": 1,
+      "aggregate_name": "median",
+      "aggregate_unit": "time",
+      "iterations": 2,
+      "real_time": 1.0228462707057870e+04,
+      "cpu_time": 1.0156774956907886e+04,
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time_stddev",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "aggregate",
+      "repetitions": 2,
+      "threads": 1,
+      "aggregate_name": "stddev",
+      "aggregate_unit": "time",
+      "iterations": 2,
+      "real_time": 1.4584632601347323e+00,
+      "cpu_time": 1.6139156060708473e+02,
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time_cv",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "aggregate",
+      "repetitions": 2,
+      "threads": 1,
+      "aggregate_name": "cv",
+      "aggregate_unit": "percentage",
+      "iterations": 2,
+      "real_time": 1.4258870584025885e-04,
+      "cpu_time": 1.5890040026663992e-02,
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time_min",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "aggregate",
+      "repetitions": 2,
+      "threads": 1,
+      "aggregate_name": "min",
+      "aggregate_unit": "time",
+      "iterations": 2,
+      "real_time": 1.0227431417800084e+04,
+      "cpu_time": 1.0042653889976336e+04,
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time_max",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "aggregate",
+      "repetitions": 2,
+      "threads": 1,
+      "aggregate_name": "max",
+      "aggregate_unit": "time",
+      "iterations": 2,
+      "real_time": 1.0229493996315658e+04,
+      "cpu_time": 1.0270896023839434e+04,
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time_BigO",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "aggregate",
+      "repetitions": 2,
+      "threads": 1,
+      "aggregate_name": "BigO",
+      "aggregate_unit": "time",
+      "cpu_coefficient": 1.0156774956907886e+04,
+      "real_coefficient": 1.0228462707057872e+04,
+      "big_o": "(1)",
+      "time_unit": "ns"
+    },
+    {
+      "name": "eigen_update_31x2x0/repeats:2/manual_time_RMS",
+      "family_index": 0,
+      "per_family_instance_index": 0,
+      "run_name": "eigen_update_31x2x0/repeats:2/manual_time",
+      "run_type": "aggregate",
+      "repetitions": 2,
+      "threads": 1,
+      "aggregate_name": "RMS",
+      "aggregate_unit": "percentage",
+      "rms": 1.1235955056179780e-02
+    }
+  ]
+}

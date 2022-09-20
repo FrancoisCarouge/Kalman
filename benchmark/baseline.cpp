@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/benchmark/benchmark.hpp"
+#include "benchmark.hpp"
 
 #include <benchmark/benchmark.h>
 
