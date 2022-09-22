@@ -48,7 +48,7 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
                CXX_EXTENSIONS OFF
                INTERPROCEDURAL_OPTIMIZATION TRUE)
   target_link_libraries(kalman_sample_${NAME}_driver PRIVATE kalman kalman_main
-                                                             kalman_options)
+                                                             kalman_options kalman_std)
   separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
   add_test(NAME kalman_sample_${NAME}
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_sample_${NAME}_driver>)
@@ -67,7 +67,7 @@ foreach(BACKEND IN ITEMS "eigen")
                  INTERPROCEDURAL_OPTIMIZATION TRUE)
     target_link_libraries(
       kalman_sample_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options kalman_std)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(NAME kalman_sample_${BACKEND}_${NAME}
              COMMAND ${TEST_COMMAND}

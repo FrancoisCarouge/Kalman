@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "function.hpp"
 #include "utility.hpp"
 
-#include <tuple>
+import std;
 
 namespace fcarouge::internal {
 template <typename, typename, typename, typename, typename>

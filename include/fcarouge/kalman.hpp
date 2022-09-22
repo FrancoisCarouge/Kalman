@@ -51,11 +51,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/kalman.hpp"
 #include "utility.hpp"
 
-#include <concepts>
-#include <cstddef>
-#include <functional>
-#include <type_traits>
-#include <utility>
+import std;
 
 namespace fcarouge {
 //! @brief A generic Kalman filter.

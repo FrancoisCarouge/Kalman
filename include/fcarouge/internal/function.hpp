@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_FUNCTION_HPP
 #define FCAROUGE_INTERNAL_FUNCTION_HPP
 
-#include <memory>
+import std;
 
 namespace fcarouge::internal {
 // Compile-time `std::function` partial drop-in.

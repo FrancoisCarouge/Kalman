@@ -2,7 +2,8 @@
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <cmath>
+
+import std;
 
 template <typename Numerator, fcarouge::algebraic Denominator>
 constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)

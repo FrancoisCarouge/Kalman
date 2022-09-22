@@ -103,7 +103,9 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_link_options(kalman_options INTERFACE "LINKER:-pie"
                       "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(kalman_options INTERFACE "/EHsc" "/W4")
+  target_compile_options(
+    kalman_options INTERFACE "/EHsc" "/W4" "/experimental:module"
+                             "/std:c++latest")
 endif()
 
 include(CheckSourceCompiles)
@@ -135,3 +137,9 @@ if(NOT CPP_LIB_GENERATOR)
     FILE_SET "kalman_generator_headers"
     DESTINATION "include/fcarouge")
 endif()
+
+add_library(kalman_std)
+target_compile_features(kalman_std PUBLIC cxx_std_23)
+# target_link_libraries(kalman_std PRIVATE kalman_options)
+target_sources(kalman_std PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES
+                                 "std.ixx")
