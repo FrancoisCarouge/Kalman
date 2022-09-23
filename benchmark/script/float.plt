@@ -49,9 +49,10 @@ set style fill solid border linecolor "black"
 set yrange [12 : 27]
 set ytics 1
 set xtics ("Baseline - No Code" 0, "Predict 1x1x0" 1, "Predict 1x1x1" 2, "Update 1x1x0" 3, "Update 1x1x1" 4) rotate by 345
+set key noautotitle
 
-plot "/tmp/kalman/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F" notitle, \
- "/tmp/kalman/predict_1x1x0.csv" using (1):1 with boxes linecolor rgb "#F4D03F" notitle, \
- "/tmp/kalman/predict_1x1x1.csv" using (2):1 with boxes linecolor rgb "#F1C40F" notitle, \
- "/tmp/kalman/update_1x1x0.csv" using (3):1 with boxes linecolor rgb "#F4D03F" notitle, \
- "/tmp/kalman/update_1x1x1.csv" using (4):1 with boxes linecolor rgb "#F1C40F" notitle
+plot "/tmp/kalman/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F", \
+ "/tmp/kalman/predict_1x1x0.csv" using (1):1 with boxes linecolor rgb "#F4D03F", \
+ "/tmp/kalman/predict_1x1x1.csv" using (2):1 with boxes linecolor rgb "#F1C40F", \
+ "/tmp/kalman/update_1x1x0.csv" using (3):1 with boxes linecolor rgb "#F4D03F", \
+ "/tmp/kalman/update_1x1x1.csv" using (4):1 with boxes linecolor rgb "#F1C40F"

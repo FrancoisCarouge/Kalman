@@ -58,5 +58,6 @@ set view 60,330,1.125,1.125
 show view
 set pm3d
 set hidden3d
+set key noautotitle
 
 splot "/tmp/kalman/eigen_predict.csv" using 1:2:3 with lines
