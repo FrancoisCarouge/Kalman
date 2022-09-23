@@ -62,37 +62,37 @@ jq --compact-output '[.benchmarks[]
 
 # Individual CSV and plot results.
 grep "baseline" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"baseline/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
+  | sed -E 's#\{"name":"baseline/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
   > /tmp/kalman/baseline.csv
 gnuplot kalman/benchmark/script/baseline.plt
 
 grep "predict_1x1x0" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"predict_1x1x0/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
+  | sed -E 's#\{"name":"predict_1x1x0/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
   > /tmp/kalman/predict_1x1x0.csv
 gnuplot kalman/benchmark/script/predict_1x1x0.plt
 
 grep "update_1x1x0" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"update_1x1x0/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
+  | sed -E 's#\{"name":"update_1x1x0/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
   > /tmp/kalman/update_1x1x0.csv
 gnuplot kalman/benchmark/script/update_1x1x0.plt
 
 grep "predict_1x1x1" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"predict_1x1x1/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
+  | sed -E 's#\{"name":"predict_1x1x1/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
   > /tmp/kalman/predict_1x1x1.csv
 gnuplot kalman/benchmark/script/predict_1x1x1.plt
 
 grep "update_1x1x1" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"update_1x1x1/repeats:100/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6#' \
+  | sed -E 's#\{"name":"update_1x1x1/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
   > /tmp/kalman/update_1x1x1.csv
 gnuplot kalman/benchmark/script/update_1x1x1.plt
 
 grep "eigen_update" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"eigen_update_([0-9]*)x([0-9]*)x0/repeats:2/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6, \7, \8#' \
+  | sed -E 's#\{"name":"eigen_update_([0-9]*)x([0-9]*)x0/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6, \7, \8#' \
   > /tmp/kalman/eigen_update.csv
 gnuplot kalman/benchmark/script/eigen_update.plt
 
 grep "eigen_predict" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"eigen_predict_([0-9]*)x1x([0-9]*)/repeats:2/manual_time","mean":([0-9.]*),"median":([0-9.]*),"stddev":([0-9.]*),"cv":([0-9.]*),"min":([0-9.]*),"max":([0-9.]*)}#\1, \2, \3, \4, \5, \6, \7, \8#' \
+  | sed -E 's#\{"name":"eigen_predict_([0-9]*)x1x([0-9]*)/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6, \7, \8#' \
   > /tmp/kalman/eigen_predict.csv
 gnuplot kalman/benchmark/script/eigen_predict.plt
 
