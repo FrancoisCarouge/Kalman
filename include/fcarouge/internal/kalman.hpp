@@ -107,9 +107,9 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   prediction_types prediction_arguments{};
 
   //! @todo Should we pass through the reference to the state x or have the user
-  //! access it through k.x() when needed? Where does the practical/performance
-  //! tradeoff leans toward? For the general case? For the specialized cases?
-  //! Same question applies to other parameters.
+  //! access it through filter.x() when needed? Where does the
+  //! practical/performance tradeoff leans toward? For the general case? For the
+  //! specialized cases? Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
       [&h = h](const state &state_x,
@@ -166,13 +166,15 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
   //! cases?
   //! @todo Do we want to pass z to `observation()`? What are the use cases?
   //! @todo Use operator `+=` for the state update?
-  template <typename... Outputs>
+  template <typename Output0, typename... OutputN>
   inline constexpr void update(const UpdateTypes &...update_pack,
-                               const Outputs &...output_z) {
+                               const Output0 &output_z,
+                               const OutputN &...outputs_z) {
+
     const auto i{identity.template operator()<estimate_uncertainty>()};
 
     update_arguments = {update_pack...};
-    z = output{output_z...};
+    z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
     s = h * p * transpose(h) + r;
@@ -249,9 +251,9 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   prediction_types prediction_arguments{};
 
   //! @todo Should we pass through the reference to the state x or have the user
-  //! access it through k.x() when needed? Where does the practical/performance
-  //! tradeoff leans toward? For the general case? For the specialized cases?
-  //! Same question applies to other parameters.
+  //! access it through filter.x() when needed? Where does the
+  //! practical/performance tradeoff leans toward? For the general case? For the
+  //! specialized cases? Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
       [&h = h](const state &state_x,
@@ -313,13 +315,15 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! @todo Do we want to pass z to `observation_state_h()`? What are the use
   //! cases?
   //! @todo Do we want to pass z to `observation()`? What are the use cases?
-  template <typename... Outputs>
+  template <typename Output0, typename... OutputN>
   inline constexpr void update(const UpdateTypes &...update_pack,
-                               const Outputs &...output_z) {
+                               const Output0 &output_z,
+                               const OutputN &...outputs_z) {
+
     const auto i{identity.template operator()<estimate_uncertainty>()};
 
     update_arguments = {update_pack...};
-    z = output{output_z...};
+    z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
     s = h * p * transpose(h) + r;
@@ -338,11 +342,13 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
   //! @todo Do we want to pass u to `noise_process_q()`? What are the use cases?
   //! @todo Do we want to pass x, u to `transition_control_g()`? What are the
   //! use cases?
-  template <typename... Inputs>
+  template <typename Input0, typename... InputN>
   inline constexpr void predict(const PredictionTypes &...prediction_pack,
-                                const Inputs &...input_u) {
+                                const Input0 &input_u,
+                                const InputN &...inputs_u) {
+
     prediction_arguments = {prediction_pack...};
-    u = input{input_u...};
+    u = input{input_u, inputs_u...};
     f = transition_state_f(x, u, prediction_pack...);
     q = noise_process_q(x, prediction_pack...);
     g = transition_control_g(prediction_pack...);
