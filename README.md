@@ -326,7 +326,8 @@ Design, development, and testing uncovered unexpected facets of the projects:
 
 The [benchmarks](benchmark) share some performance information.
 
-![Float](benchmark/float.svg)
+![Eigen Update](benchmark/image/eigen_update.svg)
+![Float](benchmark/image/float.svg)
 
 # Resources
 

@@ -19,6 +19,8 @@ Plot the results on Linux:
 
 Run on Microsoft Windows 10 on native x64 with Visual Studio 2022 compiler 19.33 in release mode.
 
+![Eigen Update](image/eigen_update.svg)
+![Eigen Predict](image/eigen_predict.svg)
 ![Float](image/float.svg)
 ![Float 1x1x0](image/float_1x1x0.svg)
 ![Float 1x1x1](image/float_1x1x1.svg)
