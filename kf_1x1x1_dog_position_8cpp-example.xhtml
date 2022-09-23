@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xht
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__dog__position_8cpp_03.xhtml#a56e28a3b74629722096724f3f693a3b7">kf_1x1x1_dog_position</a>{[] {</div>
 <div class="line">  <span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = <a id="_a2" name="_a2"></a><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;double, double, double&gt;</a>;</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="comment">// This is the dog&#39;s initial position expressed as a Gaussian. The position is</span></div>
@@ -107,50 +107,50 @@ $(document).ready(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xht
 <div class="line">  <span class="comment">// meters. You can think of this as saying &quot;I believe with 99.7% accuracy the</span></div>
 <div class="line">  <span class="comment">// position is 0 plus or minus 60 meters&quot;. This is because with Gaussians</span></div>
 <div class="line">  <span class="comment">// ~99.7% of values fall within of the mean.</span></div>
-<div class="line">  k.x(1.);</div>
-<div class="line">  k.p(20 * 20.);</div>
+<div class="line">  filter.x(1.);</div>
+<div class="line">  filter.p(20 * 20.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Prediction</span></div>
 <div class="line">  <span class="comment">// Variance in the dog&#39;s movement. The process variance is how much error</span></div>
 <div class="line">  <span class="comment">// there is in the process model. Dogs rarely do what we expect, and things</span></div>
 <div class="line">  <span class="comment">// like hills or the whiff of a squirrel will change his progress.</span></div>
-<div class="line">  k.q(1.);</div>
+<div class="line">  filter.q(1.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Measure and Update</span></div>
 <div class="line">  <span class="comment">// Variance in the sensor. The meaning of sensor variance should be clear - it</span></div>
 <div class="line">  <span class="comment">// is how much variance there is in each measurement.</span></div>
-<div class="line">  k.r(2.);</div>
+<div class="line">  filter.r(2.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// We are predicting that at each time step the dog moves forward one meter.</span></div>
 <div class="line">  <span class="comment">// This is the process model - the description of how we think the dog moves.</span></div>
 <div class="line">  <span class="comment">// How do I know the velocity? Magic? Consider it a prediction, or perhaps we</span></div>
 <div class="line">  <span class="comment">// have a secondary velocity sensor. Please accept this simplification for</span></div>
 <div class="line">  <span class="comment">// now.</span></div>
-<div class="line">  k.g(1.);</div>
+<div class="line">  filter.g(1.);</div>
 <div class="line"> </div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(1.354);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(1.882);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(4.341);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(7.156);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(6.939);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(6.844);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(9.847);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(12.553);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(16.273);</div>
-<div class="line">  k.predict(1.);</div>
-<div class="line">  k.update(14.8);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(1.354);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(1.882);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(4.341);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(7.156);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(6.939);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(6.844);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(9.847);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(12.553);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(16.273);</div>
+<div class="line">  filter.predict(1.);</div>
+<div class="line">  filter.update(14.8);</div>
 <div class="line"> </div>
 <div class="line">  assert(</div>
-<div class="line">      std::abs(1 - k.x() / 15.053) &lt; 0.001 &amp;&amp;</div>
+<div class="line">      std::abs(1 - filter.x() / 15.053) &lt; 0.001 &amp;&amp;</div>
 <div class="line">      <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span></div>
 <div class="line">      <span class="stringliteral">&quot;Here we can see that the variance converges to 2.1623 in 9 steps. This &quot;</span></div>
 <div class="line">      <span class="stringliteral">&quot;means that we have become very confident in our position estimate. It &quot;</span></div>
@@ -171,7 +171,7 @@ $(document).ready(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xht
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 23 2022 00:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

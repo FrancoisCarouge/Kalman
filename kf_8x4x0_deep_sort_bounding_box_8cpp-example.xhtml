@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
 <div class="line">  <span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = kalman&lt;vector&lt;float, 8&gt;, vector&lt;float, 4&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
 <div class="line">  <span class="comment">// MOT16 sample, tracker #201.</span></div>
@@ -213,14 +213,14 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">  <span class="comment">// first observed output. Bounding box position and velocity estimated state:</span></div>
 <div class="line">  <span class="comment">// [px, py, pa, ph, vx, vy, va, vh].</span></div>
 <div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1">kalman::output</a> initial_box{605.0, 248.0, 0.20481927710843373, 332.0};</div>
-<div class="line">  k.x(initial_box(0), initial_box(1), initial_box(2), initial_box(3), 0, 0, 0,</div>
-<div class="line">      0);</div>
+<div class="line">  filter.x(initial_box(0), initial_box(1), initial_box(2), initial_box(3), 0, 0,</div>
+<div class="line">           0, 0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Experimental position and velocity uncertainty standard deviation weights.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> position_weight{1. / 20.};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> velocity_weight{1. / 160.};</div>
 <div class="line"> </div>
-<div class="line">  k.p(<a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a15928894f06259752d02d9ee26b2e47e">kalman::estimate_uncertainty</a>{</div>
+<div class="line">  filter.p(<a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a15928894f06259752d02d9ee26b2e47e">kalman::estimate_uncertainty</a>{</div>
 <div class="line">      vector&lt;float, 8&gt;{2 * position_weight * initial_box(3),</div>
 <div class="line">                       2 * position_weight * initial_box(3), 1e-2,</div>
 <div class="line">                       2 * position_weight * initial_box(3),</div>
@@ -235,17 +235,17 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">  <span class="comment">// Constant velocity, linear state transition model. From one image frame to</span></div>
 <div class="line">  <span class="comment">// the other.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> delta_time{1};</div>
-<div class="line">  k.f(<a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab763d09902667e195848fa899e310beb">kalman::state_transition</a>{{1, 0, 0, 0, delta_time, 0, 0, 0},</div>
-<div class="line">                               {0, 1, 0, 0, 0, delta_time, 0, 0},</div>
-<div class="line">                               {0, 0, 1, 0, 0, 0, delta_time, 0},</div>
-<div class="line">                               {0, 0, 0, 1, 0, 0, 0, delta_time},</div>
-<div class="line">                               {0, 0, 0, 0, 1, 0, 0, 0},</div>
-<div class="line">                               {0, 0, 0, 0, 0, 1, 0, 0},</div>
-<div class="line">                               {0, 0, 0, 0, 0, 0, 1, 0},</div>
-<div class="line">                               {0, 0, 0, 0, 0, 0, 0, 1}});</div>
+<div class="line">  filter.f(<a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab763d09902667e195848fa899e310beb">kalman::state_transition</a>{{1, 0, 0, 0, delta_time, 0, 0, 0},</div>
+<div class="line">                                    {0, 1, 0, 0, 0, delta_time, 0, 0},</div>
+<div class="line">                                    {0, 0, 1, 0, 0, 0, delta_time, 0},</div>
+<div class="line">                                    {0, 0, 0, 1, 0, 0, 0, delta_time},</div>
+<div class="line">                                    {0, 0, 0, 0, 1, 0, 0, 0},</div>
+<div class="line">                                    {0, 0, 0, 0, 0, 1, 0, 0},</div>
+<div class="line">                                    {0, 0, 0, 0, 0, 0, 1, 0},</div>
+<div class="line">                                    {0, 0, 0, 0, 0, 0, 0, 1}});</div>
 <div class="line"> </div>
-<div class="line">  k.q([position_weight,</div>
-<div class="line">       velocity_weight](<span class="keyword">const</span> <a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">kalman::state</a> &amp;x) -&gt; <a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a95e201e1563f135b128edbf2c9793e56">kalman::process_uncertainty</a> {</div>
+<div class="line">  filter.q([position_weight, velocity_weight](</div>
+<div class="line">               <span class="keyword">const</span> <a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">kalman::state</a> &amp;x) -&gt; <a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a95e201e1563f135b128edbf2c9793e56">kalman::process_uncertainty</a> {</div>
 <div class="line">    <span class="keywordflow">return</span> vector&lt;float, 8&gt;{position_weight * x(3),</div>
 <div class="line">                            position_weight * x(3),</div>
 <div class="line">                            1e-2,</div>
@@ -261,44 +261,45 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line">  k.predict();</div>
+<div class="line">  filter.predict();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Measure and Update</span></div>
 <div class="line">  <span class="comment">// Direct linear observation transition model.</span></div>
-<div class="line">  k.h(<a id="a7" name="a7"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1642332d5ad9d1e135bbe5220961de64">kalman::output_model</a>{{1, 0, 0, 0, 0, 0, 0, 0},</div>
-<div class="line">                           {0, 1, 0, 0, 0, 0, 0, 0},</div>
-<div class="line">                           {0, 0, 1, 0, 0, 0, 0, 0},</div>
-<div class="line">                           {0, 0, 0, 1, 0, 0, 0, 0}});</div>
+<div class="line">  filter.h(<a id="a7" name="a7"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1642332d5ad9d1e135bbe5220961de64">kalman::output_model</a>{{1, 0, 0, 0, 0, 0, 0, 0},</div>
+<div class="line">                                {0, 1, 0, 0, 0, 0, 0, 0},</div>
+<div class="line">                                {0, 0, 1, 0, 0, 0, 0, 0},</div>
+<div class="line">                                {0, 0, 0, 1, 0, 0, 0, 0}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Observation, measurement noise covariance.</span></div>
-<div class="line">  k.r([position_weight](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">kalman::state</a> &amp;x,</div>
+<div class="line">  filter.r(</div>
+<div class="line">      [position_weight](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">kalman::state</a> &amp;x,</div>
 <div class="line">                        <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1">kalman::output</a> &amp;z) -&gt; <a id="a8" name="a8"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a9fac97289314ad4018774b6afbd73716">kalman::output_uncertainty</a> {</div>
-<div class="line">    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(z);</div>
-<div class="line">    <span class="keywordflow">return</span> vector&lt;float, 4&gt;{position_weight * x(3), position_weight * x(3),</div>
-<div class="line">                            1e-1, position_weight * x(3)}</div>
-<div class="line">        .array()</div>
-<div class="line">        .square()</div>
-<div class="line">        .matrix()</div>
-<div class="line">        .asDiagonal();</div>
-<div class="line">  });</div>
+<div class="line">        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(z);</div>
+<div class="line">        <span class="keywordflow">return</span> vector&lt;float, 4&gt;{position_weight * x(3), position_weight * x(3),</div>
+<div class="line">                                1e-1, position_weight * x(3)}</div>
+<div class="line">            .array()</div>
+<div class="line">            .square()</div>
+<div class="line">            .matrix()</div>
+<div class="line">            .asDiagonal();</div>
+<div class="line">      });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output : measured) {</div>
-<div class="line">    k.update(output);</div>
-<div class="line">    k.predict();</div>
+<div class="line">    filter.update(output);</div>
+<div class="line">    filter.predict();</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  assert(std::abs(1 - k.x()[0] / 370.932041394761f) &lt; 0.001f &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[1] / 251.173174229878f) &lt; 0.001f &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[2] / 0.314757138075364f) &lt; 0.001f &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[3] / 287.859996019444f) &lt; 0.001f &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[4] / 1.95865368159518f) &lt; 0.001f &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[5] / 0.229282868701086f) &lt; 0.001f &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - filter.x()[0] / 370.932041394761f) &lt; 0.001f &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[1] / 251.173174229878f) &lt; 0.001f &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[2] / 0.314757138075364f) &lt; 0.001f &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[3] / 287.859996019444f) &lt; 0.001f &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[4] / 1.95865368159518f) &lt; 0.001f &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[5] / 0.229282868701086f) &lt; 0.001f &amp;&amp;</div>
 <div class="line">         <span class="comment">// The precision of the velocity appears to saturate early on in the</span></div>
 <div class="line">         <span class="comment">// original example. The parameter could be scaled or larger types used</span></div>
 <div class="line">         <span class="comment">// to improve comparison accuracy.</span></div>
-<div class="line">         std::abs(1 - k.x()[6] / 2.46138628550094E-06f) &lt; 0.5f &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[7] / 0.81402529074969f) &lt; 0.001f &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[6] / 2.46138628550094E-06f) &lt; 0.5f &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[7] / 0.81402529074969f) &lt; 0.001f &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimated states expected to meet Nwojke&#39;s Deep SORT filter&#39;s &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;MOT16 sample tracker #201 dataset at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
@@ -323,7 +324,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 23 2022 00:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

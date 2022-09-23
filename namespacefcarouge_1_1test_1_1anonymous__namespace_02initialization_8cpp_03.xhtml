@@ -109,18 +109,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
-<div class="line">  assert(k.f() == 1);</div>
-<div class="line">  assert(k.h() == 1);</div>
-<div class="line">  assert(k.k() == 1);</div>
-<div class="line">  assert(k.p() == 1);</div>
-<div class="line">  assert(k.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
-<div class="line">  assert(k.r() == 0 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
-<div class="line">  assert(k.s() == 1);</div>
-<div class="line">  assert(k.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
-<div class="line">  assert(k.y() == 0);</div>
-<div class="line">  assert(k.z() == 0);</div>
+<div class="line">  assert(filter.f() == 1);</div>
+<div class="line">  assert(filter.h() == 1);</div>
+<div class="line">  assert(filter.k() == 1);</div>
+<div class="line">  assert(filter.p() == 1);</div>
+<div class="line">  assert(filter.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
+<div class="line">  assert(filter.r() == 0 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
+<div class="line">  assert(filter.s() == 1);</div>
+<div class="line">  assert(filter.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
+<div class="line">  assert(filter.y() == 0);</div>
+<div class="line">  assert(filter.z() == 0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -144,20 +144,20 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
 <div class="line">  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt;double, double, double&gt;</a>;</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
-<div class="line">  assert(k.f() == 1);</div>
-<div class="line">  assert(k.g() == 1);</div>
-<div class="line">  assert(k.h() == 1);</div>
-<div class="line">  assert(k.k() == 1);</div>
-<div class="line">  assert(k.p() == 1);</div>
-<div class="line">  assert(k.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
-<div class="line">  assert(k.r() == 0 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
-<div class="line">  assert(k.s() == 1);</div>
-<div class="line">  assert(k.u() == 0 &amp;&amp; <span class="stringliteral">&quot;No initial control.&quot;</span>);</div>
-<div class="line">  assert(k.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
-<div class="line">  assert(k.y() == 0);</div>
-<div class="line">  assert(k.z() == 0);</div>
+<div class="line">  assert(filter.f() == 1);</div>
+<div class="line">  assert(filter.g() == 1);</div>
+<div class="line">  assert(filter.h() == 1);</div>
+<div class="line">  assert(filter.k() == 1);</div>
+<div class="line">  assert(filter.p() == 1);</div>
+<div class="line">  assert(filter.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
+<div class="line">  assert(filter.r() == 0 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
+<div class="line">  assert(filter.s() == 1);</div>
+<div class="line">  assert(filter.u() == 0 &amp;&amp; <span class="stringliteral">&quot;No initial control.&quot;</span>);</div>
+<div class="line">  assert(filter.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
+<div class="line">  assert(filter.y() == 0);</div>
+<div class="line">  assert(filter.z() == 0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -174,7 +174,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1test.xhtml">test</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml">anonymous_namespace{initialization.cpp}</a></li>
-    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 23 2022 00:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

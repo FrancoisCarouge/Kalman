@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 930;
+var viewWidth = 1216;
 var viewHeight = 106;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,125 +54,157 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>include/fcarouge/eigen/kalman.hpp</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-102 926,-102 926,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-102 1212,-102 1212,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="Kalman operation for Eigen 3 types.">
-<polygon fill="#bfbfbf" stroke="black" points="442.5,-67.5 442.5,-97.5 556.5,-97.5 556.5,-67.5 442.5,-67.5"/>
-<text text-anchor="start" x="450.5" y="-85.5" font-family="Helvetica,sans-Serif" font-size="10.00">include/fcarouge/eigen</text>
-<text text-anchor="middle" x="499.5" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">/kalman.hpp</text>
+<polygon fill="#bfbfbf" stroke="black" points="587.5,-67.5 587.5,-97.5 701.5,-97.5 701.5,-67.5 587.5,-67.5"/>
+<text text-anchor="start" x="595.5" y="-85.5" font-family="Helvetica,sans-Serif" font-size="10.00">include/fcarouge/eigen</text>
+<text text-anchor="middle" x="644.5" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">/kalman.hpp</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="ekf__4x1x0__ardupilot__soaring_8cpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 137,-30.5 137,-0.5 0,-0.5"/>
-<text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sample/ekf_4x1x0_ardupilot</text>
-<text text-anchor="middle" x="68.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_soaring.cpp</text>
+<g id="a_node2"><a xlink:href="eigen__predict__x1x_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-0.5 0,-30.5 125,-30.5 125,-0.5 0,-0.5"/>
+<text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">benchmark/eigen_predict</text>
+<text text-anchor="middle" x="62.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_x1x.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M432.05,-72.7C360.92,-63.22 245.63,-47.3 146.5,-31 143.51,-30.51 140.46,-29.99 137.38,-29.46"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="431.85,-76.21 442.22,-74.05 432.77,-69.27 431.85,-76.21"/>
+<path fill="none" stroke="midnightblue" d="M577.1,-77.06C479.09,-70.1 291.64,-54.9 133.5,-31 130.76,-30.59 127.97,-30.14 125.16,-29.66"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="576.95,-80.56 587.17,-77.77 577.44,-73.58 576.95,-80.56"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="kf__2x1x1__rocket__altitude_8cpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="155.5,-0.5 155.5,-30.5 277.5,-30.5 277.5,-0.5 155.5,-0.5"/>
-<text text-anchor="start" x="163.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sample/kf_2x1x1_rocket</text>
-<text text-anchor="middle" x="216.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_altitude.cpp</text>
+<g id="a_node3"><a xlink:href="eigen__update__xx0_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="143,-0.5 143,-30.5 268,-30.5 268,-0.5 143,-0.5"/>
+<text text-anchor="start" x="151" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">benchmark/eigen_update</text>
+<text text-anchor="middle" x="205.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_xx0.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M432.45,-66.1C385.48,-55.31 323.2,-41.01 277.6,-30.53"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="431.7,-69.52 442.23,-68.35 433.27,-62.7 431.7,-69.52"/>
+<path fill="none" stroke="midnightblue" d="M577.16,-73.59C503.22,-64.6 381.08,-48.84 276.5,-31 273.77,-30.53 270.99,-30.04 268.18,-29.53"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="576.92,-77.09 587.27,-74.82 577.76,-70.14 576.92,-77.09"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="kf__6x2x0__vehicle__location_8cpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="296,-0.5 296,-30.5 421,-30.5 421,-0.5 296,-0.5"/>
-<text text-anchor="start" x="304" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sample/kf_6x2x0_vehicle</text>
-<text text-anchor="middle" x="358.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_location.cpp</text>
+<g id="a_node4"><a xlink:href="ekf__4x1x0__ardupilot__soaring_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="286,-0.5 286,-30.5 423,-30.5 423,-0.5 286,-0.5"/>
+<text text-anchor="start" x="294" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sample/ekf_4x1x0_ardupilot</text>
+<text text-anchor="middle" x="354.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_soaring.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M459.65,-63.13C437.25,-52.8 409.72,-40.11 389.04,-30.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="458.36,-66.39 468.91,-67.4 461.29,-60.03 458.36,-66.39"/>
+<path fill="none" stroke="midnightblue" d="M577.17,-66.41C528.91,-55.59 464.37,-41.13 417.21,-30.55"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="576.68,-69.89 587.21,-68.66 578.21,-63.06 576.68,-69.89"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="kf__8x4x0__deep__sort__bounding__box_8cpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="439,-0.5 439,-30.5 560,-30.5 560,-0.5 439,-0.5"/>
-<text text-anchor="start" x="447" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sample/kf_8x4x0_deep</text>
-<text text-anchor="middle" x="499.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sort_bounding_box.cpp</text>
+<g id="a_node5"><a xlink:href="kf__2x1x1__rocket__altitude_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="441.5,-0.5 441.5,-30.5 563.5,-30.5 563.5,-0.5 441.5,-0.5"/>
+<text text-anchor="start" x="449.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sample/kf_2x1x1_rocket</text>
+<text text-anchor="middle" x="502.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_altitude.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M499.5,-57.11C499.5,-48.15 499.5,-38.32 499.5,-30.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="496,-57.4 499.5,-67.4 503,-57.4 496,-57.4"/>
+<path fill="none" stroke="midnightblue" d="M604.37,-63.13C581.81,-52.8 554.08,-40.11 533.25,-30.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="603.14,-66.42 613.69,-67.4 606.05,-60.05 603.14,-66.42"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="eigen__f_8cpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="578.5,-6 578.5,-25 664.5,-25 664.5,-6 578.5,-6"/>
-<text text-anchor="middle" x="621.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">test/eigen_f.cpp</text>
+<g id="a_node6"><a xlink:href="kf__6x2x0__vehicle__location_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="582,-0.5 582,-30.5 707,-30.5 707,-0.5 582,-0.5"/>
+<text text-anchor="start" x="590" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sample/kf_6x2x0_vehicle</text>
+<text text-anchor="middle" x="644.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_location.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M534.9,-62.64C558.24,-50.2 587.69,-34.51 605.53,-25.01"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="533.15,-59.6 525.97,-67.4 536.44,-65.78 533.15,-59.6"/>
+<path fill="none" stroke="midnightblue" d="M644.5,-57.11C644.5,-48.15 644.5,-38.32 644.5,-30.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="641,-57.4 644.5,-67.4 648,-57.4 641,-57.4"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="eigen__h_8cpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="682.5,-6 682.5,-25 770.5,-25 770.5,-6 682.5,-6"/>
-<text text-anchor="middle" x="726.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">test/eigen_h.cpp</text>
+<g id="a_node7"><a xlink:href="kf__8x4x0__deep__sort__bounding__box_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="725,-0.5 725,-30.5 846,-30.5 846,-0.5 725,-0.5"/>
+<text text-anchor="start" x="733" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sample/kf_8x4x0_deep</text>
+<text text-anchor="middle" x="785.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sort_bounding_box.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M558.27,-64.67C602.64,-51.97 661.67,-35.06 696.72,-25.03"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="557.13,-61.36 548.48,-67.48 559.05,-68.09 557.13,-61.36"/>
+<path fill="none" stroke="midnightblue" d="M684.35,-63.13C706.75,-52.8 734.28,-40.11 754.96,-30.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="682.71,-60.03 675.09,-67.4 685.64,-66.39 682.71,-60.03"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="eigen__initialization_8cpp.xhtml" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="789,-6 789,-25 922,-25 922,-6 789,-6"/>
-<text text-anchor="middle" x="855.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">test/eigen_initialization.cpp</text>
+<g id="a_node8"><a xlink:href="eigen__f_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="864.5,-6 864.5,-25 950.5,-25 950.5,-6 864.5,-6"/>
+<text text-anchor="middle" x="907.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">test/eigen_f.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node1&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M566.57,-69.6C623.31,-59.48 706.77,-44.5 779.5,-31 789.8,-29.09 800.88,-27 811.31,-25.01"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="565.87,-66.17 556.64,-71.37 567.1,-73.06 565.87,-66.17"/>
+<path fill="none" stroke="midnightblue" d="M711.25,-66.19C752.84,-56.49 807.4,-43.46 855.5,-31 862.67,-29.14 870.36,-27.05 877.58,-25.05"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="710.45,-62.78 701.51,-68.46 712.04,-69.6 710.45,-62.78"/>
+</g>
+<!-- Node9 -->
+<g id="node9" class="node">
+<title>Node9</title>
+<g id="a_node9"><a xlink:href="eigen__h_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="968.5,-6 968.5,-25 1056.5,-25 1056.5,-6 968.5,-6"/>
+<text text-anchor="middle" x="1012.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">test/eigen_h.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node9 -->
+<g id="edge8" class="edge">
+<title>Node1&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M711.72,-72.87C775.77,-64.14 874.71,-49.34 959.5,-31 967.33,-29.31 975.73,-27.16 983.48,-25.05"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="711.19,-69.41 701.75,-74.22 712.13,-76.35 711.19,-69.41"/>
+</g>
+<!-- Node10 -->
+<g id="node10" class="node">
+<title>Node10</title>
+<g id="a_node10"><a xlink:href="eigen__initialization_8cpp.xhtml" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1075,-6 1075,-25 1208,-25 1208,-6 1075,-6"/>
+<text text-anchor="middle" x="1141.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">test/eigen_initialization.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node10 -->
+<g id="edge9" class="edge">
+<title>Node1&#45;&gt;Node10</title>
+<path fill="none" stroke="midnightblue" d="M711.61,-74.9C794.86,-66.37 941.03,-50.32 1065.5,-31 1076.52,-29.29 1088.38,-27.17 1099.38,-25.07"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="711.12,-71.43 701.53,-75.92 711.83,-78.39 711.12,-71.43"/>
 </g>
 </g>
 </svg>

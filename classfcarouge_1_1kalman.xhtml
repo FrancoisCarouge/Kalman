@@ -380,7 +380,7 @@ class fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, 
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This class could be usable in constant expressions if <code>std::function</code> could too. The polymorphic function wrapper was used in place of function pointers to enable default initialization from this class, captured member variables.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000014">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000016">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristics? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -536,7 +536,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </div><div class="memdoc">
 
 <p>Type of the control column vector U. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000015">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a5">kf_2x1x1_rocket_altitude.cpp</a>.</dd>
 </dl>
 
@@ -560,7 +560,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 <p>Type of the control transition matrix G. </p>
 <p >Also known as B.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000016">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a7">kf_2x1x1_rocket_altitude.cpp</a>.</dd>
 </dl>
 
@@ -808,7 +808,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Type of the callable transition control function. </p>
 <p >The function is of the form <code>input_control(const PredictionTypes
 &amp;...)</code>.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00314">314</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
@@ -2165,7 +2165,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -2176,13 +2176,13 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00221">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="predict1x1x0_8cpp_source.xhtml#l00050">fcarouge::benchmark::anonymous_namespace{predict1x1x0.cpp}::predict1x1x0()</a>, and <a class="el" href="predict1x1x1_8cpp_source.xhtml#l00050">fcarouge::benchmark::anonymous_namespace{predict1x1x1.cpp}::predict1x1x1()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="eigen__predict__x1x_8cpp_source.xhtml#l00058">fcarouge::eigen::benchmark::eigen_predict()</a>, <a class="el" href="predict__1x1x0_8cpp_source.xhtml#l00050">fcarouge::benchmark::anonymous_namespace{predict_1x1x0.cpp}::predict_1x1x0()</a>, and <a class="el" href="predict__1x1x1_8cpp_source.xhtml#l00051">fcarouge::benchmark::anonymous_namespace{predict_1x1x1.cpp}::predict_1x1x1()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a326b305473fba0a1efc17660c94eb199_icgraph.svg" width="431" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a326b305473fba0a1efc17660c94eb199_icgraph.svg" width="403" height="242"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -2910,7 +2910,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -2921,13 +2921,13 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00221">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="update1x1x0_8cpp_source.xhtml#l00050">fcarouge::benchmark::anonymous_namespace{update1x1x0.cpp}::update1x1x0()</a>, and <a class="el" href="update1x1x1_8cpp_source.xhtml#l00050">fcarouge::benchmark::anonymous_namespace{update1x1x1.cpp}::update1x1x1()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="eigen__update__xx0_8cpp_source.xhtml#l00058">fcarouge::eigen::benchmark::eigen_update()</a>, <a class="el" href="update__1x1x0_8cpp_source.xhtml#l00051">fcarouge::benchmark::anonymous_namespace{update_1x1x0.cpp}::update_1x1x0()</a>, and <a class="el" href="update__1x1x1_8cpp_source.xhtml#l00051">fcarouge::benchmark::anonymous_namespace{update_1x1x1.cpp}::update_1x1x1()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a71b11bb6c9a898533dfd86ce6eef5c20_icgraph.svg" width="431" height="147"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a71b11bb6c9a898533dfd86ce6eef5c20_icgraph.svg" width="446" height="212"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -2990,7 +2990,7 @@ template&lt;typename State , typename Output , typename Input , typename Transpo
 <dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00892">892</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  892</span>                                                               {</div>
@@ -3312,7 +3312,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 23 2022 00:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

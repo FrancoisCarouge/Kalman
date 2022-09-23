@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../classfcarouge_1_1kalman.xhtml#a768f798cf2e400312f713434fca71adb',1,'fcarouge::kalman']]]
+  ['x_0',['x',['../classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338',1,'fcarouge::kalman::x() const -&gt; const state &amp;'],['../classfcarouge_1_1kalman.xhtml#a4651ec960a279b0d44df09278ce7f452',1,'fcarouge::kalman::x() -&gt; state &amp;'],['../classfcarouge_1_1kalman.xhtml#a7f45fec5e2a499c7874350f27ff16959',1,'fcarouge::kalman::x(const state &amp;value)'],['../classfcarouge_1_1kalman.xhtml#a0c655b621eaaea59e65cce6abe12dbd7',1,'fcarouge::kalman::x(state &amp;&amp;value)'],['../classfcarouge_1_1kalman.xhtml#a232d3cdfe6af3eed0cfe3bbfc1a6a51b',1,'fcarouge::kalman::x(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1kalman.xhtml#a04f87358de723f8ae31cd0098b54feeb',1,'fcarouge::kalman::x(auto &amp;&amp;value, auto &amp;&amp;...values)']]]
 ];

@@ -137,74 +137,75 @@ Examples</h1>
 <h2><a class="anchor" id="autotoc_md21"></a>
 1x1 Constant System Dynamic Model</h2>
 <p >Example from the building height estimation sample. One estimated state and one observed output filter.</p>
-<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
-<div class="line">k.x(60.);</div>
-<div class="line">k.p(225.);</div>
-<div class="line">k.r(25.);</div>
+<div class="line">filter.x(60.);</div>
+<div class="line">filter.p(225.);</div>
+<div class="line">filter.r(25.);</div>
 <div class="line"> </div>
-<div class="line">k(48.54);</div>
+<div class="line">filter.update(48.54);</div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a1b0dac1811e65af94771d85401c9ca39"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00085">kalman.hpp:87</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
 6x2 Constant Acceleration Dynamic Model</h2>
 <p >Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
-<div class="line">k.x(0., 0., 0., 0., 0., 0.);</div>
-<div class="line">k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
-<div class="line">                                  { 0, 500, 0, 0, 0, 0 },</div>
-<div class="line">                                  { 0, 0, 500, 0, 0, 0 },</div>
-<div class="line">                                  { 0, 0, 0, 500, 0, 0 },</div>
-<div class="line">                                  { 0, 0, 0, 0, 500, 0 },</div>
-<div class="line">                                  { 0, 0, 0, 0, 0, 500 } });</div>
-<div class="line">k.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },</div>
-<div class="line">                                             { 0.5, 1, 1, 0, 0, 0 },</div>
-<div class="line">                                             { 0.5, 1, 1, 0, 0, 0 },</div>
-<div class="line">                                             { 0, 0, 0, 0.25, 0.5, 0.5 },</div>
-<div class="line">                                             { 0, 0, 0, 0.5, 1, 1 },</div>
-<div class="line">                                             { 0, 0, 0, 0.5, 1, 1 } });</div>
-<div class="line">k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },</div>
-<div class="line">                              { 0, 1, 1, 0, 0, 0 },</div>
-<div class="line">                              { 0, 0, 1, 0, 0, 0 },</div>
-<div class="line">                              { 0, 0, 0, 1, 1, 0.5 },</div>
-<div class="line">                              { 0, 0, 0, 0, 1, 1 },</div>
-<div class="line">                              { 0, 0, 0, 0, 0, 1 } });</div>
-<div class="line">k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },</div>
-<div class="line">                          { 0, 0, 0, 1, 0, 0 } });</div>
-<div class="line">k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
+<div class="line">filter.x(0., 0., 0., 0., 0., 0.);</div>
+<div class="line">filter.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
+<div class="line">                                       { 0, 500, 0, 0, 0, 0 },</div>
+<div class="line">                                       { 0, 0, 500, 0, 0, 0 },</div>
+<div class="line">                                       { 0, 0, 0, 500, 0, 0 },</div>
+<div class="line">                                       { 0, 0, 0, 0, 500, 0 },</div>
+<div class="line">                                       { 0, 0, 0, 0, 0, 500 } });</div>
+<div class="line">filter.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },</div>
+<div class="line">                                                  { 0.5, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                                  { 0.5, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                                  { 0, 0, 0, 0.25, 0.5, 0.5 },</div>
+<div class="line">                                                  { 0, 0, 0, 0.5, 1, 1 },</div>
+<div class="line">                                                  { 0, 0, 0, 0.5, 1, 1 } });</div>
+<div class="line">filter.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },</div>
+<div class="line">                                   { 0, 1, 1, 0, 0, 0 },</div>
+<div class="line">                                   { 0, 0, 1, 0, 0, 0 },</div>
+<div class="line">                                   { 0, 0, 0, 1, 1, 0.5 },</div>
+<div class="line">                                   { 0, 0, 0, 0, 1, 1 },</div>
+<div class="line">                                   { 0, 0, 0, 0, 0, 1 } });</div>
+<div class="line">filter.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },</div>
+<div class="line">                               { 0, 0, 0, 1, 0, 0 } });</div>
+<div class="line">filter.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
 <div class="line"> </div>
-<div class="line">k(-375.93, 301.78);</div>
+<div class="line">filter.predict();</div>
+<div class="line">filter.update(-375.93, 301.78);</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
 4x1 Non-Linear Dynamic Model</h2>
 <p >Example from the thermal, current of warm air, strength, radius, and location estimation sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
 <div class="line">                             std::tuple&lt;float, float&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
-<div class="line">k.x(1 / 4.06, 80, 0, 0);</div>
-<div class="line">k.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
-<div class="line">                                  { 0, 400, 0, 0 },</div>
-<div class="line">                                  { 0, 0, 400, 0 },</div>
-<div class="line">                                  { 0, 0, 0, 400 } });</div>
-<div class="line">k.transition([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
-<div class="line">                <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; kalman::state {</div>
+<div class="line">filter.x(1 / 4.06, 80, 0, 0);</div>
+<div class="line">filter.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
+<div class="line">                                       { 0, 400, 0, 0 },</div>
+<div class="line">                                       { 0, 0, 400, 0 },</div>
+<div class="line">                                       { 0, 0, 0, 400 } });</div>
+<div class="line">filter.transition([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
+<div class="line">                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; kalman::state {</div>
 <div class="line">  <span class="keywordflow">return</span> x + kalman::state{ 0, 0, -drift_x, -drift_y };</div>
 <div class="line">});</div>
-<div class="line">k.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },</div>
-<div class="line">                                 { 0, 0.0009, 0, 0 },</div>
-<div class="line">                                 { 0, 0, 0.0009, 0 },</div>
-<div class="line">                                 { 0, 0, 0, 0.0009 } });</div>
-<div class="line">k.r(0.2025);</div>
-<div class="line">k.observation([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line">                 <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output {</div>
+<div class="line">filter.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },</div>
+<div class="line">                                      { 0, 0.0009, 0, 0 },</div>
+<div class="line">                                      { 0, 0, 0.0009, 0 },</div>
+<div class="line">                                      { 0, 0, 0, 0.0009 } });</div>
+<div class="line">filter.r(0.2025);</div>
+<div class="line">filter.observation([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output {</div>
 <div class="line">  <span class="keywordflow">return</span> kalman::output{ x(0) *</div>
 <div class="line">    std::exp(-((x(2) - position_x)*(x(2) - position_x) +</div>
 <div class="line">    (x(3) - position_y) * (x(3) - position_y)) / x(1) * x(1)) };</div>
-<div class="line">k.h([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line">       <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output_model {</div>
+<div class="line">filter.h([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">            <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output_model {</div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> exp{ std::exp(-((x(2) - position_x) * (x(2) - position_x) +</div>
 <div class="line">    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) };</div>
 <div class="line">  <span class="keyword">const</span> kalman::output_model h{</div>
@@ -217,7 +218,8 @@ Examples</h1>
 <div class="line">  <span class="keywordflow">return</span> h;</div>
 <div class="line">});</div>
 <div class="line"> </div>
-<div class="line">k(drift_x, drift_y, position_x, position_y, variometer);</div>
+<div class="line">filter.predict(drift_x, drift_y);</div>
+<div class="line">filter.update(position_x, position_y, variometer);</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md24"></a>
 Continuous Integration &amp; Deployment Actions</h1>
 <p ><a href="https://github.com/FrancoisCarouge/Kalman"><img src="https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen" alt="Code Repository" class="inline"/></a> <br  />
@@ -374,9 +376,9 @@ Modifiers</h3>
 <h1><a class="anchor" id="autotoc_md32"></a>
 Format</h1>
 <p >A specialization of the standard formatter is provided for the filter. Use <code>std::format</code> to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.</p>
-<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
-<div class="line">std::print(<span class="stringliteral">&quot;{}&quot;</span>, k);</div>
+<div class="line">std::print(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;h&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;q&quot;: 0, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md33"></a>
 Installation</h1>
@@ -397,9 +399,10 @@ Motivations</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md36"></a>
 Selected Tradeoffs</h2>
-<p >In theory there is no difference between theory and practice, while in practice there is:</p>
+<p >In theory there is no difference between theory and practice, while in practice there is. The following tradeoffs hav been selected for the implementation:</p>
 <ul>
 <li>Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.</li>
+<li>The default floating point data type for the filter is <code>double</code> with about 16 significant digits to reduce loss of information compared to <code>float</code>.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md37"></a>
 Lessons Learned</h2>
@@ -407,6 +410,7 @@ Lessons Learned</h2>
 <ul>
 <li>The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full-compile time verification of unit and index-type safeties.</li>
 <li>There exists Kalman filters with hundreds of state variables.</li>
+<li>The <code>float</code> data type has about 7 significant digits. Floating point error is a loss of information to account for in design.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md38"></a>
 Performance</h2>
@@ -464,7 +468,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 23 2022 00:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

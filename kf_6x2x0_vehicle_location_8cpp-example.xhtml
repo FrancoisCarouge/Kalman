@@ -101,23 +101,23 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
 <div class="line">  <span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="comment">// The state is chosen to be the position, velocity, acceleration in the XY</span></div>
 <div class="line">  <span class="comment">// plane: [px, vx, ax, py, vy, ay]. We don&#39;t know the vehicle location; we</span></div>
 <div class="line">  <span class="comment">// will set initial position, velocity and acceleration to 0.</span></div>
-<div class="line">  k.x(0., 0., 0., 0., 0., 0.);</div>
+<div class="line">  filter.x(0., 0., 0., 0., 0., 0.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
 <div class="line">  <span class="comment">// uncertainty. The high estimate uncertainty results in a high Kalman Gain,</span></div>
 <div class="line">  <span class="comment">// giving a high weight to the measurement.</span></div>
-<div class="line">  k.p(<a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a15928894f06259752d02d9ee26b2e47e">kalman::estimate_uncertainty</a>{{500, 0, 0, 0, 0, 0},</div>
-<div class="line">                                   {0, 500, 0, 0, 0, 0},</div>
-<div class="line">                                   {0, 0, 500, 0, 0, 0},</div>
-<div class="line">                                   {0, 0, 0, 500, 0, 0},</div>
-<div class="line">                                   {0, 0, 0, 0, 500, 0},</div>
-<div class="line">                                   {0, 0, 0, 0, 0, 500}});</div>
+<div class="line">  filter.p(<a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a15928894f06259752d02d9ee26b2e47e">kalman::estimate_uncertainty</a>{{500, 0, 0, 0, 0, 0},</div>
+<div class="line">                                        {0, 500, 0, 0, 0, 0},</div>
+<div class="line">                                        {0, 0, 500, 0, 0, 0},</div>
+<div class="line">                                        {0, 0, 0, 500, 0, 0},</div>
+<div class="line">                                        {0, 0, 0, 0, 500, 0},</div>
+<div class="line">                                        {0, 0, 0, 0, 0, 500}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Prediction</span></div>
 <div class="line">  <span class="comment">// The process noise matrix Q would be:</span></div>
@@ -125,23 +125,23 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">      {0.25, 0.5, 0.5, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0},</div>
 <div class="line">      {0, 0, 0, 0.25, 0.5, 0.5}, {0, 0, 0, 0.5, 1, 1}, {0, 0, 0, 0.5, 1, 1}};</div>
 <div class="line">  q *= 0.2 * 0.2;</div>
-<div class="line">  k.q(std::move(q));</div>
+<div class="line">  filter.q(std::move(q));</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">  k.f(<a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab763d09902667e195848fa899e310beb">kalman::state_transition</a>{{1, 1, 0.5, 0, 0, 0},</div>
-<div class="line">                               {0, 1, 1, 0, 0, 0},</div>
-<div class="line">                               {0, 0, 1, 0, 0, 0},</div>
-<div class="line">                               {0, 0, 0, 1, 1, 0.5},</div>
-<div class="line">                               {0, 0, 0, 0, 1, 1},</div>
-<div class="line">                               {0, 0, 0, 0, 0, 1}});</div>
+<div class="line">  filter.f(<a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab763d09902667e195848fa899e310beb">kalman::state_transition</a>{{1, 1, 0.5, 0, 0, 0},</div>
+<div class="line">                                    {0, 1, 1, 0, 0, 0},</div>
+<div class="line">                                    {0, 0, 1, 0, 0, 0},</div>
+<div class="line">                                    {0, 0, 0, 1, 1, 0.5},</div>
+<div class="line">                                    {0, 0, 0, 0, 1, 1},</div>
+<div class="line">                                    {0, 0, 0, 0, 0, 1}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line">  k.predict();</div>
+<div class="line">  filter.predict();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Measure and Update</span></div>
 <div class="line">  <span class="comment">// The dimension of zn is 2x1 and the dimension of xn is 6x1. Therefore the</span></div>
 <div class="line">  <span class="comment">// dimension of the observation matrix H shall be 2x6.</span></div>
-<div class="line">  k.h(<a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1642332d5ad9d1e135bbe5220961de64">kalman::output_model</a>{{1, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}});</div>
+<div class="line">  filter.h(<a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1642332d5ad9d1e135bbe5220961de64">kalman::output_model</a>{{1, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Assume that the x and y measurements are uncorrelated, i.e. error in the x</span></div>
 <div class="line">  <span class="comment">// coordinate measurement doesn&#39;t depend on the error in the y coordinate</span></div>
@@ -152,28 +152,28 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
 <div class="line">  <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error</span></div>
 <div class="line">  <span class="comment">// standard deviation: σxm = σym = 3m. The variance 9.</span></div>
-<div class="line">  k.r(<a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a9fac97289314ad4018774b6afbd73716">kalman::output_uncertainty</a>{{9, 0}, {0, 9}});</div>
+<div class="line">  filter.r(<a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a9fac97289314ad4018774b6afbd73716">kalman::output_uncertainty</a>{{9, 0}, {0, 9}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The measurement values: z1 = [-393.66, 300.4]</span></div>
-<div class="line">  k.update(-393.66, 300.4);</div>
-<div class="line">  k.predict();</div>
+<div class="line">  filter.update(-393.66, 300.4);</div>
+<div class="line">  filter.predict();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line">  <span class="comment">// measurements period: Δt = 1s (constant, built-in).</span></div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;k](<span class="keywordtype">double</span> position_x, <span class="keywordtype">double</span> position_y) {</div>
-<div class="line">    k.update(position_x, position_y);</div>
-<div class="line">    k.predict();</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](<span class="keywordtype">double</span> position_x, <span class="keywordtype">double</span> position_y) {</div>
+<div class="line">    filter.update(position_x, position_y);</div>
+<div class="line">    filter.predict();</div>
 <div class="line">  }};</div>
 <div class="line"> </div>
 <div class="line">  step(-375.93, 301.78);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
-<div class="line">  assert(std::abs(1 - k.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - filter.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  step(-351.04, 295.1);</div>
@@ -210,19 +210,19 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  step(291.8, 32.99);</div>
 <div class="line">  step(299.89, 2.14);</div>
 <div class="line"> </div>
-<div class="line">  assert(std::abs(1 - k.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - filter.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.6% accuracy.&quot;</span>);</div>
-<div class="line">  assert(std::abs(1 - k.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.p()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - k.p()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - filter.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;At this point, the position uncertainty px = py = 5, which means &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;that the standard deviation of the prediction is square root of 5m.&quot;</span>);</div>
@@ -261,7 +261,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 23 2022 00:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

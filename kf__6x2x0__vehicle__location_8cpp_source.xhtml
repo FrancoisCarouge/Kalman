@@ -97,23 +97,23 @@ $(document).ready(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_sour
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman&lt;vector&lt;double, 6&gt;</a>, <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2b2e4798f0c1375a42b60011f5f9710e">vector&lt;double, 2&gt;</a>&gt;;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> k;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="comment">// Initialization</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="comment">// The state is chosen to be the position, velocity, acceleration in the XY</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="comment">// plane: [px, vx, ax, py, vy, ay]. We don&#39;t know the vehicle location; we</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="comment">// will set initial position, velocity and acceleration to 0.</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>(0., 0., 0., 0., 0., 0.);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>(0., 0., 0., 0., 0., 0.);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="comment">// uncertainty. The high estimate uncertainty results in a high Kalman Gain,</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="comment">// giving a high weight to the measurement.</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a15928894f06259752d02d9ee26b2e47e">kalman::estimate_uncertainty</a>{{500, 0, 0, 0, 0, 0},</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                   {0, 500, 0, 0, 0, 0},</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                                   {0, 0, 500, 0, 0, 0},</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                   {0, 0, 0, 500, 0, 0},</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                   {0, 0, 0, 0, 500, 0},</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                   {0, 0, 0, 0, 0, 500}});</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a15928894f06259752d02d9ee26b2e47e">kalman::estimate_uncertainty</a>{{500, 0, 0, 0, 0, 0},</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                        {0, 500, 0, 0, 0, 0},</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                                        {0, 0, 500, 0, 0, 0},</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                        {0, 0, 0, 500, 0, 0},</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                        {0, 0, 0, 0, 500, 0},</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                        {0, 0, 0, 0, 0, 500}});</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="comment">// Prediction</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="comment">// The process noise matrix Q would be:</span></div>
@@ -121,23 +121,23 @@ $(document).ready(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_sour
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      {0.25, 0.5, 0.5, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0},</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      {0, 0, 0, 0.25, 0.5, 0.5}, {0, 0, 0, 0.5, 1, 1}, {0, 0, 0, 0.5, 1, 1}};</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  q *= 0.2 * 0.2;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a39949781d9f392007b6dbf97d7b5bcab">q</a>(std::move(q));</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a39949781d9f392007b6dbf97d7b5bcab">q</a>(std::move(q));</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afe63ffd764a7eef508a9366605038a55">f</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab763d09902667e195848fa899e310beb">kalman::state_transition</a>{{1, 1, 0.5, 0, 0, 0},</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                               {0, 1, 1, 0, 0, 0},</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                               {0, 0, 1, 0, 0, 0},</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                               {0, 0, 0, 1, 1, 0.5},</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                               {0, 0, 0, 0, 1, 1},</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                               {0, 0, 0, 0, 0, 1}});</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afe63ffd764a7eef508a9366605038a55">f</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab763d09902667e195848fa899e310beb">kalman::state_transition</a>{{1, 1, 0.5, 0, 0, 0},</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                    {0, 1, 1, 0, 0, 0},</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                    {0, 0, 1, 0, 0, 0},</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                    {0, 0, 0, 1, 1, 0.5},</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                    {0, 0, 0, 0, 1, 1},</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                    {0, 0, 0, 0, 0, 1}});</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">predict</a>();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">predict</a>();</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="comment">// Measure and Update</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="comment">// The dimension of zn is 2x1 and the dimension of xn is 6x1. Therefore the</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="comment">// dimension of the observation matrix H shall be 2x6.</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2a696e4880433cce993a10b19887747b">h</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1642332d5ad9d1e135bbe5220961de64">kalman::output_model</a>{{1, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}});</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2a696e4880433cce993a10b19887747b">h</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1642332d5ad9d1e135bbe5220961de64">kalman::output_model</a>{{1, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}});</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="comment">// Assume that the x and y measurements are uncorrelated, i.e. error in the x</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="comment">// coordinate measurement doesn&#39;t depend on the error in the y coordinate</span></div>
@@ -148,28 +148,28 @@ $(document).ready(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_sour
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="comment">// standard deviation: σxm = σym = 3m. The variance 9.</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad36f348f6a553a23e0ea60be43d70f6a">r</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a9fac97289314ad4018774b6afbd73716">kalman::output_uncertainty</a>{{9, 0}, {0, 9}});</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad36f348f6a553a23e0ea60be43d70f6a">r</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a9fac97289314ad4018774b6afbd73716">kalman::output_uncertainty</a>{{9, 0}, {0, 9}});</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="comment">// The measurement values: z1 = [-393.66, 300.4]</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">update</a>(-393.66, 300.4);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">predict</a>();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">update</a>(-393.66, 300.4);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">predict</a>();</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="comment">// measurements period: Δt = 1s (constant, built-in).</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;k](<span class="keywordtype">double</span> position_x, <span class="keywordtype">double</span> position_y) {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">update</a>(position_x, position_y);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">predict</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](<span class="keywordtype">double</span> position_x, <span class="keywordtype">double</span> position_y) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">update</a>(position_x, position_y);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">predict</a>();</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }};</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  step(-375.93, 301.78);</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  assert(std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  assert(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  step(-351.04, 295.1);</div>
@@ -206,19 +206,19 @@ $(document).ready(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_sour
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  step(291.8, 32.99);</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  step(299.89, 2.14);</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  assert(std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  assert(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a283ddb031438dc6b3a9f7c6cadf09338">x</a>()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>         <span class="stringliteral">&quot;The state estimates expected at 0.6% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  assert(std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>         std::abs(1 - k.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  assert(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac86b75da175dc0a7ac9eec5803c92f4b">p</a>()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span></div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>         <span class="stringliteral">&quot;At this point, the position uncertainty px = py = 5, which means &quot;</span></div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>         <span class="stringliteral">&quot;that the standard deviation of the prediction is square root of 5m.&quot;</span>);</div>
@@ -267,7 +267,7 @@ $(document).ready(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_sour
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="kf__6x2x0__vehicle__location_8cpp.xhtml">kf_6x2x0_vehicle_location.cpp</a></li>
-    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 23 2022 00:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

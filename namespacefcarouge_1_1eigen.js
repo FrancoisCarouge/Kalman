@@ -1,5 +1,12 @@
 var namespacefcarouge_1_1eigen =
 [
+    [ "benchmark", "namespacefcarouge_1_1eigen_1_1benchmark.xhtml", [
+      [ "clock", "namespacefcarouge_1_1eigen_1_1benchmark.xhtml#a0402d6f04e55a21bd135a899d1edcfc3", null ],
+      [ "eigen_predict", "namespacefcarouge_1_1eigen_1_1benchmark.xhtml#a897fb328e6487b45ced0627b80b519d8", null ],
+      [ "eigen_update", "namespacefcarouge_1_1eigen_1_1benchmark.xhtml#aca97da7b0de714139cb1812d85859063", null ],
+      [ "Name", "namespacefcarouge_1_1eigen_1_1benchmark.xhtml#aa7b9230e680c4ab1410329a76d8f3ad5", null ],
+      [ "Name", "namespacefcarouge_1_1eigen_1_1benchmark.xhtml#a223a6c312b1d17ca2f05b0bcc0514c69", null ]
+    ] ],
     [ "internal", "namespacefcarouge_1_1eigen_1_1internal.xhtml", null ],
     [ "sample", "namespacefcarouge_1_1eigen_1_1sample.xhtml", "namespacefcarouge_1_1eigen_1_1sample" ],
     [ "test", "namespacefcarouge_1_1eigen_1_1test.xhtml", "namespacefcarouge_1_1eigen_1_1test" ],

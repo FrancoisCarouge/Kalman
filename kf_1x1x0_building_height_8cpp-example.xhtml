@@ -98,26 +98,26 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height_8cpp_03.xhtml#a483b7debca0932d5e2a64be49b97a67b">kf_1x1x0_building_height</a>{[] {</div>
 <div class="line">  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
-<div class="line">  <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> k;</div>
+<div class="line">  <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="comment">// One can estimate the building height simply by looking at it. The estimated</span></div>
 <div class="line">  <span class="comment">// building height is: 60 meters.</span></div>
-<div class="line">  k.x(60.);</div>
+<div class="line">  filter.x(60.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we shall initialize the estimate uncertainty. A human’s estimation</span></div>
 <div class="line">  <span class="comment">// error (standard deviation) is about 15 meters: σ = 15. Consequently the</span></div>
 <div class="line">  <span class="comment">// variance is 225: σ^2 = 225.</span></div>
-<div class="line">  k.p(225.);</div>
+<div class="line">  filter.p(225.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Prediction</span></div>
 <div class="line">  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
 <div class="line">  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
 <div class="line">  <span class="comment">// noise covariance Q is null in this example.</span></div>
-<div class="line">  assert(60 == k.x() &amp;&amp;</div>
+<div class="line">  assert(60 == filter.x() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
-<div class="line">  assert(225 == k.p() &amp;&amp;</div>
+<div class="line">  assert(225 == filter.p() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"> </div>
@@ -125,24 +125,24 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <div class="line">  <span class="comment">// The first measurement is: z1 = 48.54m. Since the standard deviation σ of</span></div>
 <div class="line">  <span class="comment">// the altimeter measurement error is 5, the variance σ^2 would be 25, thus</span></div>
 <div class="line">  <span class="comment">// the measurement uncertainty is: r1 = 25.</span></div>
-<div class="line">  k.r(25.);</div>
+<div class="line">  filter.r(25.);</div>
 <div class="line"> </div>
-<div class="line">  k.update(48.54);</div>
+<div class="line">  filter.update(48.54);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on.</span></div>
-<div class="line">  k.update(47.11);</div>
-<div class="line">  k.update(55.01);</div>
-<div class="line">  k.update(55.15);</div>
-<div class="line">  k.update(49.89);</div>
-<div class="line">  k.update(40.85);</div>
-<div class="line">  k.update(46.72);</div>
-<div class="line">  k.update(50.05);</div>
-<div class="line">  k.update(51.27);</div>
-<div class="line">  k.update(49.95);</div>
+<div class="line">  filter.update(47.11);</div>
+<div class="line">  filter.update(55.01);</div>
+<div class="line">  filter.update(55.15);</div>
+<div class="line">  filter.update(49.89);</div>
+<div class="line">  filter.update(40.85);</div>
+<div class="line">  filter.update(46.72);</div>
+<div class="line">  filter.update(50.05);</div>
+<div class="line">  filter.update(51.27);</div>
+<div class="line">  filter.update(49.95);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
-<div class="line">  assert(49.57 - 0.001 &lt; k.x() &amp;&amp; k.x() &lt; 49.57 + 0.001 &amp;&amp;</div>
+<div class="line">  assert(49.57 - 0.001 &lt; filter.x() &amp;&amp; filter.x() &lt; 49.57 + 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"> </div>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Sep 18 2022 22:03:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 23 2022 00:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

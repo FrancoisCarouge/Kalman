@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['f_0',['f',['../classfcarouge_1_1kalman.xhtml#afe63ffd764a7eef508a9366605038a55',1,'fcarouge::kalman::f() const -&gt; const state_transition &amp;'],['../classfcarouge_1_1kalman.xhtml#a0778be5a4f05b18fedc40ae519a4fb6c',1,'fcarouge::kalman::f() -&gt; state_transition &amp;'],['../classfcarouge_1_1kalman.xhtml#a0a36196d86b79b19e6456eb09fedd369',1,'fcarouge::kalman::f(const state_transition &amp;value)'],['../classfcarouge_1_1kalman.xhtml#a353d4448d3be51931e658b14bea01f2e',1,'fcarouge::kalman::f(state_transition &amp;&amp;value)'],['../classfcarouge_1_1kalman.xhtml#a7e051a24d4528313bb9345330eb72c60',1,'fcarouge::kalman::f(const transition_state_function &amp;callable)'],['../classfcarouge_1_1kalman.xhtml#a1669aec26e10199669598be7515b1b58',1,'fcarouge::kalman::f(transition_state_function &amp;&amp;callable)']]],
-  ['for_5fconstexpr_1',['for_constexpr',['../namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57',1,'fcarouge::internal']]],
-  ['format_2',['format',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_transpos070a7274636525b38c0e4419c7b19891.xhtml#ad8fe2b76ebc565ff8ffb46f214cddd35',1,'std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;, Char &gt;']]]
+  ['eigen_5fpredict_0',['eigen_predict',['../namespacefcarouge_1_1eigen_1_1benchmark.xhtml#a897fb328e6487b45ced0627b80b519d8',1,'fcarouge::eigen::benchmark']]],
+  ['eigen_5fupdate_1',['eigen_update',['../namespacefcarouge_1_1eigen_1_1benchmark.xhtml#aca97da7b0de714139cb1812d85859063',1,'fcarouge::eigen::benchmark']]]
 ];
