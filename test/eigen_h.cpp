@@ -50,35 +50,35 @@ namespace {
                         std::tuple<double, float, int, char>,
                         std::tuple<char, int, float, double>>;
 
-  kalman k;
+  kalman filter;
   const auto i4x5{matrix<double, 4, 5>::Identity()};
   const auto z4x5{matrix<double, 4, 5>::Zero()};
   const vector<double, 4> z4{vector<double, 4>::Zero()};
 
-  assert(k.h() == i4x5);
+  assert(filter.h() == i4x5);
 
   {
     const auto h{i4x5};
-    k.h(h);
-    assert(k.h() == i4x5);
+    filter.h(h);
+    assert(filter.h() == i4x5);
   }
 
   {
     const auto h{z4x5};
-    k.h(std::move(h));
-    assert(k.h() == z4x5);
+    filter.h(std::move(h));
+    assert(filter.h() == z4x5);
   }
 
   {
     const auto h{i4x5};
-    k.h(h);
-    assert(k.h() == i4x5);
+    filter.h(h);
+    assert(filter.h() == i4x5);
   }
 
   {
     const auto h{z4x5};
-    k.h(std::move(h));
-    assert(k.h() == z4x5);
+    filter.h(std::move(h));
+    assert(filter.h() == z4x5);
   }
 
   {
@@ -91,10 +91,10 @@ namespace {
       static_cast<void>(c);
       return matrix<double, 4, 5>::Identity();
     }};
-    k.h(h);
-    assert(k.h() == z4x5);
-    k.update(0., 0.f, 0, char(0), z4);
-    assert(k.h() == i4x5);
+    filter.h(h);
+    assert(filter.h() == z4x5);
+    filter.update(0., 0.f, 0, char(0), z4);
+    assert(filter.h() == i4x5);
   }
 
   {
@@ -107,10 +107,10 @@ namespace {
       static_cast<void>(c);
       return matrix<double, 4, 5>::Zero();
     }};
-    k.h(std::move(h));
-    assert(k.h() == i4x5);
-    k.update(0., 0.f, 0, char(0), z4);
-    assert(k.h() == z4x5);
+    filter.h(std::move(h));
+    assert(filter.h() == i4x5);
+    filter.update(0., 0.f, 0, char(0), z4);
+    assert(filter.h() == z4x5);
   }
 
   return 0;

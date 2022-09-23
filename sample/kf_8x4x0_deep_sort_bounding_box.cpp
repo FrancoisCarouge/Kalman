@@ -25,7 +25,7 @@ namespace {
   // A 8x4x0 filter, constant velocity, linear.
   using kalman = kalman<vector<float, 8>, vector<float, 4>>;
 
-  kalman k;
+  kalman filter;
 
   // A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT's
   // MOT16 sample, tracker #201.
@@ -135,14 +135,14 @@ namespace {
   // first observed output. Bounding box position and velocity estimated state:
   // [px, py, pa, ph, vx, vy, va, vh].
   const kalman::output initial_box{605.0, 248.0, 0.20481927710843373, 332.0};
-  k.x(initial_box(0), initial_box(1), initial_box(2), initial_box(3), 0, 0, 0,
-      0);
+  filter.x(initial_box(0), initial_box(1), initial_box(2), initial_box(3), 0, 0,
+           0, 0);
 
   // Experimental position and velocity uncertainty standard deviation weights.
   const float position_weight{1. / 20.};
   const float velocity_weight{1. / 160.};
 
-  k.p(kalman::estimate_uncertainty{
+  filter.p(kalman::estimate_uncertainty{
       vector<float, 8>{2 * position_weight * initial_box(3),
                        2 * position_weight * initial_box(3), 1e-2,
                        2 * position_weight * initial_box(3),
@@ -157,17 +157,17 @@ namespace {
   // Constant velocity, linear state transition model. From one image frame to
   // the other.
   const float delta_time{1};
-  k.f(kalman::state_transition{{1, 0, 0, 0, delta_time, 0, 0, 0},
-                               {0, 1, 0, 0, 0, delta_time, 0, 0},
-                               {0, 0, 1, 0, 0, 0, delta_time, 0},
-                               {0, 0, 0, 1, 0, 0, 0, delta_time},
-                               {0, 0, 0, 0, 1, 0, 0, 0},
-                               {0, 0, 0, 0, 0, 1, 0, 0},
-                               {0, 0, 0, 0, 0, 0, 1, 0},
-                               {0, 0, 0, 0, 0, 0, 0, 1}});
+  filter.f(kalman::state_transition{{1, 0, 0, 0, delta_time, 0, 0, 0},
+                                    {0, 1, 0, 0, 0, delta_time, 0, 0},
+                                    {0, 0, 1, 0, 0, 0, delta_time, 0},
+                                    {0, 0, 0, 1, 0, 0, 0, delta_time},
+                                    {0, 0, 0, 0, 1, 0, 0, 0},
+                                    {0, 0, 0, 0, 0, 1, 0, 0},
+                                    {0, 0, 0, 0, 0, 0, 1, 0},
+                                    {0, 0, 0, 0, 0, 0, 0, 1}});
 
-  k.q([position_weight,
-       velocity_weight](const kalman::state &x) -> kalman::process_uncertainty {
+  filter.q([position_weight, velocity_weight](
+               const kalman::state &x) -> kalman::process_uncertainty {
     return vector<float, 8>{position_weight * x(3),
                             position_weight * x(3),
                             1e-2,
@@ -183,44 +183,45 @@ namespace {
   });
 
   // Now we can predict the next state based on the initialization values.
-  k.predict();
+  filter.predict();
 
   // Measure and Update
   // Direct linear observation transition model.
-  k.h(kalman::output_model{{1, 0, 0, 0, 0, 0, 0, 0},
-                           {0, 1, 0, 0, 0, 0, 0, 0},
-                           {0, 0, 1, 0, 0, 0, 0, 0},
-                           {0, 0, 0, 1, 0, 0, 0, 0}});
+  filter.h(kalman::output_model{{1, 0, 0, 0, 0, 0, 0, 0},
+                                {0, 1, 0, 0, 0, 0, 0, 0},
+                                {0, 0, 1, 0, 0, 0, 0, 0},
+                                {0, 0, 0, 1, 0, 0, 0, 0}});
 
   // Observation, measurement noise covariance.
-  k.r([position_weight](const kalman::state &x,
+  filter.r(
+      [position_weight](const kalman::state &x,
                         const kalman::output &z) -> kalman::output_uncertainty {
-    static_cast<void>(z);
-    return vector<float, 4>{position_weight * x(3), position_weight * x(3),
-                            1e-1, position_weight * x(3)}
-        .array()
-        .square()
-        .matrix()
-        .asDiagonal();
-  });
+        static_cast<void>(z);
+        return vector<float, 4>{position_weight * x(3), position_weight * x(3),
+                                1e-1, position_weight * x(3)}
+            .array()
+            .square()
+            .matrix()
+            .asDiagonal();
+      });
 
   // And so on, run a step of the filter, updating and predicting, every frame.
   for (const auto &output : measured) {
-    k.update(output);
-    k.predict();
+    filter.update(output);
+    filter.predict();
   }
 
-  assert(std::abs(1 - k.x()[0] / 370.932041394761f) < 0.001f &&
-         std::abs(1 - k.x()[1] / 251.173174229878f) < 0.001f &&
-         std::abs(1 - k.x()[2] / 0.314757138075364f) < 0.001f &&
-         std::abs(1 - k.x()[3] / 287.859996019444f) < 0.001f &&
-         std::abs(1 - k.x()[4] / 1.95865368159518f) < 0.001f &&
-         std::abs(1 - k.x()[5] / 0.229282868701086f) < 0.001f &&
+  assert(std::abs(1 - filter.x()[0] / 370.932041394761f) < 0.001f &&
+         std::abs(1 - filter.x()[1] / 251.173174229878f) < 0.001f &&
+         std::abs(1 - filter.x()[2] / 0.314757138075364f) < 0.001f &&
+         std::abs(1 - filter.x()[3] / 287.859996019444f) < 0.001f &&
+         std::abs(1 - filter.x()[4] / 1.95865368159518f) < 0.001f &&
+         std::abs(1 - filter.x()[5] / 0.229282868701086f) < 0.001f &&
          // The precision of the velocity appears to saturate early on in the
          // original example. The parameter could be scaled or larger types used
          // to improve comparison accuracy.
-         std::abs(1 - k.x()[6] / 2.46138628550094E-06f) < 0.5f &&
-         std::abs(1 - k.x()[7] / 0.81402529074969f) < 0.001f &&
+         std::abs(1 - filter.x()[6] / 2.46138628550094E-06f) < 0.5f &&
+         std::abs(1 - filter.x()[7] / 0.81402529074969f) < 0.001f &&
          "The estimated states expected to meet Nwojke's Deep SORT filter's "
          "MOT16 sample tracker #201 dataset at 0.1% accuracy.");
 

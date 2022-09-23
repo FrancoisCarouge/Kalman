@@ -36,12 +36,27 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-set(SOURCES "baseline.cpp" "predict1x1x0.cpp" "predict1x1x1.cpp"
-            "update1x1x0.cpp" "update1x1x1.cpp")
+set(SOURCES "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
+            "update_1x1x0.cpp" "update_1x1x1.cpp")
+
+foreach(STATE_SIZE RANGE 1 2)
+  foreach(OUTPUT_SIZE RANGE 1 2)
+    configure_file(eigen_update_xx0.cpp
+                   eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
+    list(APPEND SOURCES eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
+  endforeach()
+  foreach(INPUT_SIZE RANGE 1 2)
+    configure_file(eigen_predict_x1x.cpp
+                   eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
+    list(APPEND SOURCES eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
+  endforeach()
+endforeach()
 
 foreach(BENCHMARK ${SOURCES})
   get_filename_component(NAME ${BENCHMARK} NAME_WE)
   add_executable(kalman_benchmark_${NAME}_driver ${BENCHMARK})
+  target_include_directories(kalman_benchmark_${NAME}_driver PRIVATE "."
+                                                                     "include")
   target_link_libraries(
     kalman_benchmark_${NAME}_driver
     PRIVATE eigen kalman benchmark::benchmark_main benchmark::benchmark)

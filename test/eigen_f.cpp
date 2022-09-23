@@ -49,36 +49,36 @@ namespace {
                         std::tuple<double, float, int, char>,
                         std::tuple<char, int, float, double>>;
 
-  kalman k;
+  kalman filter;
 
   const auto i5x5{matrix<double, 5, 5>::Identity()};
   const auto z5x5{matrix<double, 5, 5>::Zero()};
   const vector<double, 3> z3{vector<double, 3>::Zero()};
 
-  assert(k.f() == i5x5);
+  assert(filter.f() == i5x5);
 
   {
     const auto f{i5x5};
-    k.f(f);
-    assert(k.f() == i5x5);
+    filter.f(f);
+    assert(filter.f() == i5x5);
   }
 
   {
     const auto f{z5x5};
-    k.f(std::move(f));
-    assert(k.f() == z5x5);
+    filter.f(std::move(f));
+    assert(filter.f() == z5x5);
   }
 
   {
     const auto f{i5x5};
-    k.f(f);
-    assert(k.f() == i5x5);
+    filter.f(f);
+    assert(filter.f() == i5x5);
   }
 
   {
     const auto f{z5x5};
-    k.f(std::move(f));
-    assert(k.f() == z5x5);
+    filter.f(std::move(f));
+    assert(filter.f() == z5x5);
   }
 
   {
@@ -93,10 +93,10 @@ namespace {
       static_cast<void>(u);
       return matrix<double, 5, 5>::Identity();
     }};
-    k.f(f);
-    assert(k.f() == z5x5);
-    k.predict(char(0), 0, 0.f, 0., z3);
-    assert(k.f() == i5x5);
+    filter.f(f);
+    assert(filter.f() == z5x5);
+    filter.predict(char(0), 0, 0.f, 0., z3);
+    assert(filter.f() == i5x5);
   }
 
   {
@@ -111,10 +111,10 @@ namespace {
       static_cast<void>(u);
       return matrix<double, 5, 5>::Zero();
     }};
-    k.f(std::move(f));
-    assert(k.f() == i5x5);
-    k.predict(0, 0, 0.f, 0., z3);
-    assert(k.f() == z5x5);
+    filter.f(std::move(f));
+    assert(filter.f() == i5x5);
+    filter.predict(0, 0, 0.f, 0., z3);
+    assert(filter.f() == z5x5);
   }
 
   return 0;

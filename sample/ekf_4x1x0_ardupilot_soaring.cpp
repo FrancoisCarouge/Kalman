@@ -34,27 +34,28 @@ namespace {
   using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
                         std::tuple<float, float>>;
 
-  kalman k;
+  kalman filter;
 
   // Initialization
   const float trigger_strength{0};
   const float thermal_radius{80};
   const float thermal_position_x{5};
   const float thermal_position_y{0};
-  k.x(trigger_strength, thermal_radius, thermal_position_x, thermal_position_y);
+  filter.x(trigger_strength, thermal_radius, thermal_position_x,
+           thermal_position_y);
 
   const float strength_covariance{0.0049};
   const float radius_covariance{400};
   const float position_covariance{400};
-  k.p(kalman::estimate_uncertainty{{strength_covariance, 0, 0, 0},
-                                   {0, radius_covariance, 0, 0},
-                                   {0, 0, position_covariance, 0},
-                                   {0, 0, 0, position_covariance}});
+  filter.p(kalman::estimate_uncertainty{{strength_covariance, 0, 0, 0},
+                                        {0, radius_covariance, 0, 0},
+                                        {0, 0, position_covariance, 0},
+                                        {0, 0, 0, position_covariance}});
 
   // No process dynamics: F = ∂f/∂X = I4 Default.
 
-  k.transition([](const kalman::state &x, const float &drift_x,
-                  const float &drift_y) -> kalman::state {
+  filter.transition([](const kalman::state &x, const float &drift_x,
+                       const float &drift_y) -> kalman::state {
     //! @todo Could make sure that x[1] stays positive, greater than 40.
     const kalman::state drifts{0, 0, drift_x, drift_y};
     return x + drifts;
@@ -62,26 +63,26 @@ namespace {
 
   const float strength_noise{std::pow(0.001f, 2.f)};
   const float distance_noise{std::pow(0.03f, 2.f)};
-  k.q(kalman::process_uncertainty{{strength_noise, 0, 0, 0},
-                                  {0, distance_noise, 0, 0},
-                                  {0, 0, distance_noise, 0},
-                                  {0, 0, 0, distance_noise}});
+  filter.q(kalman::process_uncertainty{{strength_noise, 0, 0, 0},
+                                       {0, distance_noise, 0, 0},
+                                       {0, 0, distance_noise, 0},
+                                       {0, 0, 0, distance_noise}});
 
   const float measure_noise{std::pow(0.45f, 2.f)};
-  k.r(kalman::output_uncertainty{measure_noise});
+  filter.r(kalman::output_uncertainty{measure_noise});
 
   // Observation Z: [w] vertical air velocity w at the aircraft’s
   // position w.r.t. the thermal center [m.s^-1].
-  k.observation([](const kalman::state &x, const float &position_x,
-                   const float &position_y) -> kalman::output {
+  filter.observation([](const kalman::state &x, const float &position_x,
+                        const float &position_y) -> kalman::output {
     return x(0) * std::exp(-(std::pow(x[2] - position_x, 2.f) +
                              std::pow(x[3] - position_y, 2.f)) /
                            std::pow(x[1], 2.f));
   });
 
   // See the ArduSoar paper for the equation for H = ∂h/∂X:
-  k.h([](const kalman::state &x, const float &position_x,
-         const float &position_y) -> kalman::output_model {
+  filter.h([](const kalman::state &x, const float &position_x,
+              const float &position_y) -> kalman::output_model {
     const float expon{std::exp(
         -(std::pow(x[2] - position_x, 2.f) + std::pow(x[3] - position_y, 2.f)) /
         std::pow(x[1], 2.f))};
@@ -212,14 +213,14 @@ namespace {
       {0.635992, 0.590228, 0.629378, 0.112457, 0.78253}};
 
   for (const auto &output : measured) {
-    k.predict(output.drift_x, output.drift_y);
-    k.update(output.position_x, output.position_y, output.variometer);
+    filter.predict(output.drift_x, output.drift_y);
+    filter.update(output.position_x, output.position_y, output.variometer);
   }
 
-  assert(std::abs(1 - k.x()[0] / 0.347191f) < 0.0001f &&
-         std::abs(1 - k.x()[1] / 91.8926f) < 0.0001f &&
-         std::abs(1 - k.x()[2] / 22.9656f) < 0.0001f &&
-         std::abs(1 - k.x()[3] / 20.6146f) < 0.0001f &&
+  assert(std::abs(1 - filter.x()[0] / 0.347191f) < 0.0001f &&
+         std::abs(1 - filter.x()[1] / 91.8926f) < 0.0001f &&
+         std::abs(1 - filter.x()[2] / 22.9656f) < 0.0001f &&
+         std::abs(1 - filter.x()[3] / 20.6146f) < 0.0001f &&
          "The estimated states expected to meet ArduPilot soaring plane "
          "implementation at 0.01% accuracy.");
 

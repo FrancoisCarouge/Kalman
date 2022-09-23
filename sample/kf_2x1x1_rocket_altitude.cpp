@@ -44,17 +44,17 @@ namespace {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
   using kalman = kalman<vector<double, 2>, double, double, std::tuple<>,
                         std::tuple<std::chrono::milliseconds>>;
-  kalman k;
+  kalman filter;
 
   // Initialization
   // We don't know the rocket location; we will set initial position and
   // velocity to 0.
-  k.x(0., 0.);
+  filter.x(0., 0.);
 
   // Since our initial state vector is a guess, we will set a very high estimate
   // uncertainty. The high estimate uncertainty results in high Kalman gain,
   // giving a high weight to the measurement.
-  k.p(kalman::estimate_uncertainty{{500, 0}, {0, 500}});
+  filter.p(kalman::estimate_uncertainty{{500, 0}, {0, 500}});
 
   // Prediction
   // We will assume a discrete noise model - the noise is different at each time
@@ -64,17 +64,18 @@ namespace {
   // the system random acceleration. The accelerometer error v is much lower
   // than system's random acceleration, therefore we use ϵ^2 as a multiplier of
   // the process noise matrix. This makes our estimation uncertainty much lower!
-  k.q([](const kalman::state &x, const std::chrono::milliseconds &delta_time) {
-    static_cast<void>(x);
-    const auto dt{std::chrono::duration<double>(delta_time).count()};
-    return kalman::process_uncertainty{
-        {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
-        {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};
-  });
+  filter.q(
+      [](const kalman::state &x, const std::chrono::milliseconds &delta_time) {
+        static_cast<void>(x);
+        const auto dt{std::chrono::duration<double>(delta_time).count()};
+        return kalman::process_uncertainty{
+            {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
+            {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};
+      });
 
   // The state transition matrix F would be:
-  k.f([](const kalman::state &x, const kalman::input &u,
-         const std::chrono::milliseconds &delta_time) {
+  filter.f([](const kalman::state &x, const kalman::input &u,
+              const std::chrono::milliseconds &delta_time) {
     static_cast<void>(x);
     static_cast<void>(u);
     const auto dt{std::chrono::duration<double>(delta_time).count()};
@@ -82,7 +83,7 @@ namespace {
   });
 
   // The control matrix G would be:
-  k.g([](const std::chrono::milliseconds &delta_time) {
+  filter.g([](const std::chrono::milliseconds &delta_time) {
     const auto dt{std::chrono::duration<double>(delta_time).count()};
     return kalman::input_control{0.0313, dt};
   });
@@ -91,67 +92,68 @@ namespace {
   // it's greater than zero. Let's assume: u0 = g
   const double gravity{-9.8}; // [m.s^-2]
   const std::chrono::milliseconds delta_time{250};
-  k.predict(delta_time, -gravity);
+  filter.predict(delta_time, -gravity);
 
-  assert(std::abs(1 - k.x()[0] / 0.3) < 0.03 &&
-         std::abs(1 - k.x()[1] / 2.45) < 0.03 &&
+  assert(std::abs(1 - filter.x()[0] / 0.3) < 0.03 &&
+         std::abs(1 - filter.x()[1] / 2.45) < 0.03 &&
          "The state estimates expected at 3% accuracy.");
-  assert(std::abs(1 - k.p()(0, 0) / 531.25) < 0.001 &&
-         std::abs(1 - k.p()(0, 1) / 125) < 0.001 &&
-         std::abs(1 - k.p()(1, 0) / 125) < 0.001 &&
-         std::abs(1 - k.p()(1, 1) / 500) < 0.001 &&
+  assert(std::abs(1 - filter.p()(0, 0) / 531.25) < 0.001 &&
+         std::abs(1 - filter.p()(0, 1) / 125) < 0.001 &&
+         std::abs(1 - filter.p()(1, 0) / 125) < 0.001 &&
+         std::abs(1 - filter.p()(1, 1) / 500) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
   // Measure and Update
   // The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension
   // of the observation matrix H will be 1x2.
-  k.h(kalman::output_model{1., 0.});
+  filter.h(kalman::output_model{1., 0.});
 
   // For the sake of the example simplicity, we will assume a constant
   // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
-  k.r(kalman::output_uncertainty{400.});
+  filter.r(kalman::output_uncertainty{400.});
 
-  k.update(-32.4);
+  filter.update(-32.4);
 
-  assert(std::abs(1 - k.x()[0] / -18.35) < 0.001 &&
-         std::abs(1 - k.x()[1] / -1.94) < 0.001 &&
+  assert(std::abs(1 - filter.x()[0] / -18.35) < 0.001 &&
+         std::abs(1 - filter.x()[1] / -1.94) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
-  assert(std::abs(1 - k.p()(0, 0) / 228.2) < 0.001 &&
-         std::abs(1 - k.p()(0, 1) / 53.7) < 0.001 &&
-         std::abs(1 - k.p()(1, 0) / 53.7) < 0.001 &&
-         std::abs(1 - k.p()(1, 1) / 483.2) < 0.001 &&
+  assert(std::abs(1 - filter.p()(0, 0) / 228.2) < 0.001 &&
+         std::abs(1 - filter.p()(0, 1) / 53.7) < 0.001 &&
+         std::abs(1 - filter.p()(1, 0) / 53.7) < 0.001 &&
+         std::abs(1 - filter.p()(1, 1) / 483.2) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
-  k.predict(delta_time, 39.72 + gravity);
+  filter.predict(delta_time, 39.72 + gravity);
 
-  assert(std::abs(1 - k.x()[0] / -17.9) < 0.001 &&
-         std::abs(1 - k.x()[1] / 5.54) < 0.001 &&
+  assert(std::abs(1 - filter.x()[0] / -17.9) < 0.001 &&
+         std::abs(1 - filter.x()[1] / 5.54) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
-  assert(std::abs(1 - k.p()(0, 0) / 285.2) < 0.001 &&
-         std::abs(1 - k.p()(0, 1) / 174.5) < 0.001 &&
-         std::abs(1 - k.p()(1, 0) / 174.5) < 0.001 &&
-         std::abs(1 - k.p()(1, 1) / 483.2) < 0.001 &&
+  assert(std::abs(1 - filter.p()(0, 0) / 285.2) < 0.001 &&
+         std::abs(1 - filter.p()(0, 1) / 174.5) < 0.001 &&
+         std::abs(1 - filter.p()(1, 0) / 174.5) < 0.001 &&
+         std::abs(1 - filter.p()(1, 1) / 483.2) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
   // And so on, run a step of the filter, updating and predicting, every
   // measurements period: Δt = 250ms. The period is constant but passed as
   // variable for the example. The lambda helper shows how to simplify the
   // filter step call.
-  const auto step{[&k](double altitude, std::chrono::milliseconds step_time,
-                       double acceleration) {
-    k.update(altitude);
-    k.predict(step_time, acceleration);
+  const auto step{[&filter](double altitude,
+                            std::chrono::milliseconds step_time,
+                            double acceleration) {
+    filter.update(altitude);
+    filter.predict(step_time, acceleration);
   }};
 
   step(-11.1, delta_time, 40.02 + gravity);
 
-  assert(std::abs(1 - k.x()[0] / -12.3) < 0.002 &&
-         std::abs(1 - k.x()[1] / 14.8) < 0.002 &&
+  assert(std::abs(1 - filter.x()[0] / -12.3) < 0.002 &&
+         std::abs(1 - filter.x()[1] / 14.8) < 0.002 &&
          "The state estimates expected at 0.2% accuracy.");
-  assert(std::abs(1 - k.p()(0, 0) / 244.9) < 0.001 &&
-         std::abs(1 - k.p()(0, 1) / 211.6) < 0.001 &&
-         std::abs(1 - k.p()(1, 0) / 211.6) < 0.001 &&
-         std::abs(1 - k.p()(1, 1) / 438.8) < 0.001 &&
+  assert(std::abs(1 - filter.p()(0, 0) / 244.9) < 0.001 &&
+         std::abs(1 - filter.p()(0, 1) / 211.6) < 0.001 &&
+         std::abs(1 - filter.p()(1, 0) / 211.6) < 0.001 &&
+         std::abs(1 - filter.p()(1, 1) / 438.8) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
   step(18., delta_time, 39.97 + gravity);
@@ -182,17 +184,17 @@ namespace {
   step(693.3, delta_time, 39.81 + gravity);
   step(707.3, delta_time, 39.81 + gravity);
 
-  k.update(748.5);
+  filter.update(748.5);
 
   // The Kalman gain for altitude converged to 0.12, which means that the
   // estimation weight is much higher than the measurement weight.
-  assert(std::abs(1 - k.p()(0, 0) / 49.3) < 0.001 &&
+  assert(std::abs(1 - filter.p()(0, 0) / 49.3) < 0.001 &&
          "At this point, the altitude uncertainty px = 49.3, which means that "
          "the standard deviation of the prediction is square root of 49.3: "
          "7.02m (remember that the standard deviation of the measurement is "
          "20m).");
 
-  k.predict(delta_time, 39.68 + gravity);
+  filter.predict(delta_time, 39.68 + gravity);
 
   // At the beginning, the estimated altitude is influenced by measurements and
   // it is not aligned well with the true rocket altitude, since the
@@ -202,13 +204,13 @@ namespace {
   // cause acceleration changes, but if we had, the control input
   // (accelerometer) would update the state extrapolation equation.
 
-  assert(std::abs(1 - k.x()[0] / 831.5) < 0.001 &&
-         std::abs(1 - k.x()[1] / 222.94) < 0.001 &&
+  assert(std::abs(1 - filter.x()[0] / 831.5) < 0.001 &&
+         std::abs(1 - filter.x()[1] / 222.94) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
-  assert(std::abs(1 - k.p()(0, 0) / 54.3) < 0.01 &&
-         std::abs(1 - k.p()(0, 1) / 10.4) < 0.01 &&
-         std::abs(1 - k.p()(1, 0) / 10.4) < 0.01 &&
-         std::abs(1 - k.p()(1, 1) / 2.6) < 0.01 &&
+  assert(std::abs(1 - filter.p()(0, 0) / 54.3) < 0.01 &&
+         std::abs(1 - filter.p()(0, 1) / 10.4) < 0.01 &&
+         std::abs(1 - filter.p()(1, 0) / 10.4) < 0.01 &&
+         std::abs(1 - filter.p()(1, 1) / 2.6) < 0.01 &&
          "The estimate uncertainty expected at 1% accuracy.");
 
   return 0;

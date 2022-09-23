@@ -50,13 +50,13 @@ Standard formatter specialization provided for representation of the filter stat
 Example from the building height estimation sample. One estimated state and one observed output filter.
 
 ```cpp
-kalman k;
+kalman filter;
 
-k.x(60.);
-k.p(225.);
-k.r(25.);
+filter.x(60.);
+filter.p(225.);
+filter.r(25.);
 
-k(48.54);
+filter.update(48.54);
 ```
 
 ## 6x2 Constant Acceleration Dynamic Model
@@ -66,32 +66,33 @@ Example from the 2-dimension vehicle location estimation sample. Six estimated s
 ```cpp
 using kalman = kalman<vector<double, 6>, vector<double, 2>>;
 
-kalman k;
+kalman filter;
 
-k.x(0., 0., 0., 0., 0., 0.);
-k.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },
-                                  { 0, 500, 0, 0, 0, 0 },
-                                  { 0, 0, 500, 0, 0, 0 },
-                                  { 0, 0, 0, 500, 0, 0 },
-                                  { 0, 0, 0, 0, 500, 0 },
-                                  { 0, 0, 0, 0, 0, 500 } });
-k.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },
-                                             { 0.5, 1, 1, 0, 0, 0 },
-                                             { 0.5, 1, 1, 0, 0, 0 },
-                                             { 0, 0, 0, 0.25, 0.5, 0.5 },
-                                             { 0, 0, 0, 0.5, 1, 1 },
-                                             { 0, 0, 0, 0.5, 1, 1 } });
-k.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
-                              { 0, 1, 1, 0, 0, 0 },
-                              { 0, 0, 1, 0, 0, 0 },
-                              { 0, 0, 0, 1, 1, 0.5 },
-                              { 0, 0, 0, 0, 1, 1 },
-                              { 0, 0, 0, 0, 0, 1 } });
-k.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },
-                          { 0, 0, 0, 1, 0, 0 } });
-k.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });
+filter.x(0., 0., 0., 0., 0., 0.);
+filter.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },
+                                       { 0, 500, 0, 0, 0, 0 },
+                                       { 0, 0, 500, 0, 0, 0 },
+                                       { 0, 0, 0, 500, 0, 0 },
+                                       { 0, 0, 0, 0, 500, 0 },
+                                       { 0, 0, 0, 0, 0, 500 } });
+filter.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },
+                                                  { 0.5, 1, 1, 0, 0, 0 },
+                                                  { 0.5, 1, 1, 0, 0, 0 },
+                                                  { 0, 0, 0, 0.25, 0.5, 0.5 },
+                                                  { 0, 0, 0, 0.5, 1, 1 },
+                                                  { 0, 0, 0, 0.5, 1, 1 } });
+filter.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
+                                   { 0, 1, 1, 0, 0, 0 },
+                                   { 0, 0, 1, 0, 0, 0 },
+                                   { 0, 0, 0, 1, 1, 0.5 },
+                                   { 0, 0, 0, 0, 1, 1 },
+                                   { 0, 0, 0, 0, 0, 1 } });
+filter.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },
+                               { 0, 0, 0, 1, 0, 0 } });
+filter.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });
 
-k(-375.93, 301.78);
+filter.predict();
+filter.update(-375.93, 301.78);
 ```
 
 ## 4x1 Non-Linear Dynamic Model
@@ -102,29 +103,29 @@ Example from the thermal, current of warm air, strength, radius, and location es
 using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
                              std::tuple<float, float>>;
 
-kalman k;
+kalman filter;
 
-k.x(1 / 4.06, 80, 0, 0);
-k.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },
-                                  { 0, 400, 0, 0 },
-                                  { 0, 0, 400, 0 },
-                                  { 0, 0, 0, 400 } });
-k.transition([](const kalman::state &x, const float &drift_x,
-                const float &drift_y) -> kalman::state {
+filter.x(1 / 4.06, 80, 0, 0);
+filter.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },
+                                       { 0, 400, 0, 0 },
+                                       { 0, 0, 400, 0 },
+                                       { 0, 0, 0, 400 } });
+filter.transition([](const kalman::state &x, const float &drift_x,
+                     const float &drift_y) -> kalman::state {
   return x + kalman::state{ 0, 0, -drift_x, -drift_y };
 });
-k.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },
-                                 { 0, 0.0009, 0, 0 },
-                                 { 0, 0, 0.0009, 0 },
-                                 { 0, 0, 0, 0.0009 } });
-k.r(0.2025);
-k.observation([](const kalman::state &x, const float &position_x,
-                 const float &position_y) -> kalman::output {
+filter.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },
+                                      { 0, 0.0009, 0, 0 },
+                                      { 0, 0, 0.0009, 0 },
+                                      { 0, 0, 0, 0.0009 } });
+filter.r(0.2025);
+filter.observation([](const kalman::state &x, const float &position_x,
+                      const float &position_y) -> kalman::output {
   return kalman::output{ x(0) *
     std::exp(-((x(2) - position_x)*(x(2) - position_x) +
     (x(3) - position_y) * (x(3) - position_y)) / x(1) * x(1)) };
-k.h([](const kalman::state &x, const float &position_x,
-       const float &position_y) -> kalman::output_model {
+filter.h([](const kalman::state &x, const float &position_x,
+            const float &position_y) -> kalman::output_model {
   const auto exp{ std::exp(-((x(2) - position_x) * (x(2) - position_x) +
     (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) };
   const kalman::output_model h{
@@ -137,7 +138,8 @@ k.h([](const kalman::state &x, const float &position_x,
   return h;
 });
 
-k(drift_x, drift_y, position_x, position_y, variometer);
+filter.predict(drift_x, drift_y);
+filter.update(position_x, position_y, variometer);
 ```
 
 # Continuous Integration & Deployment Actions
@@ -277,9 +279,9 @@ class kalman
 A specialization of the standard formatter is provided for the filter. Use `std::format` to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.
 
 ```cpp
-kalman k;
+kalman filter;
 
-std::print("{}", k);
+std::print("{}", filter);
 // {"f": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0}
 ```
 
@@ -307,9 +309,10 @@ This package explores what could be a Kalman filter implementation a la standard
 
 ## Selected Tradeoffs
 
-In theory there is no difference between theory and practice, while in practice there is:
+In theory there is no difference between theory and practice, while in practice there is. The following tradeoffs hav been selected for the implementation:
 
 - Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.
+- The default floating point data type for the filter is `double` with about 16 significant digits to reduce loss of information compared to `float`.
 
 ## Lessons Learned
 
@@ -317,6 +320,7 @@ Design, development, and testing uncovered unexpected facets of the projects:
 
 - The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full-compile time verification of unit and index-type safeties.
 - There exists Kalman filters with hundreds of state variables.
+- The `float` data type has about 7 significant digits. Floating point error is a loss of information to account for in design.
 
 ## Performance
 

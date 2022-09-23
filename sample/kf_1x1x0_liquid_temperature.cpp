@@ -27,33 +27,33 @@ namespace {
 //! @example kf_1x1x0_liquid_temperature.cpp
 [[maybe_unused]] auto kf_1x1x0_liquid_temperature{[] {
   // A one-dimensional filter, constant system dynamic model.
-  kalman k;
+  kalman filter;
 
   // Initialization
   // Before the first iteration, we must initialize the Kalman filter and
   // predict the next state (which is the first state). We don't know what the
   // temperature of the liquid is, and our guess is 10°C.
-  k.x(10.);
+  filter.x(10.);
 
   // Our guess is very imprecise, so we set our initialization estimate error σ
   // to 100. The estimate uncertainty of the initialization is the error
   // variance σ^2: p0,0 = 100^2 = 10,000. This variance is very high. If we
   // initialize with a more meaningful value, we will get faster Kalman filter
   // convergence.
-  k.p(100 * 100.);
+  filter.p(100 * 100.);
 
   // Prediction
   // Now, we shall predict the next state based on the initialization values. We
   // think that we have an accurate model, thus we set the process noise
   // variance q to 0.0001.
-  k.q(0.0001);
+  filter.q(0.0001);
 
-  k.predict();
+  filter.predict();
 
-  assert(10 == k.x() &&
+  assert(10 == filter.x() &&
          "Since our model has constant dynamics, the predicted estimate is "
          "equal to the current estimate: x^1,0 = 10°C.");
-  assert(10000.0001 == k.p() &&
+  assert(10000.0001 == filter.p() &&
          "The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = "
          "10000 + 0.0001 = 10000.0001.");
 
@@ -62,18 +62,18 @@ namespace {
   // 0.1, the variance σ^2 would be 0.01, thus the measurement uncertainty is:
   // r1 = 0.01. The measurement error (standard deviation) is 0.1 degrees
   // Celsius.
-  k.r(0.1 * 0.1);
+  filter.r(0.1 * 0.1);
 
-  k.update(49.95);
+  filter.update(49.95);
 
-  assert(std::abs(1 - k.k() / 0.999999) < 0.0001 &&
+  assert(std::abs(1 - filter.k() / 0.999999) < 0.0001 &&
          "The gain expected at 0.01% accuracy.");
 
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 5s (constant).
-  const auto step{[&k](double temperature) {
-    k.predict();
-    k.update(temperature);
+  const auto step{[&filter](double temperature) {
+    filter.predict();
+    filter.update(temperature);
   }};
 
   step(49.967);
@@ -87,14 +87,14 @@ namespace {
   step(49.99);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
-  assert(std::abs(1 - k.p() / 0.0013) < 0.05 &&
+  assert(std::abs(1 - filter.p() / 0.0013) < 0.05 &&
          "The estimate uncertainty expected at 5% accuracy."
          "The estimate uncertainty is 0.0013, i.e. the estimate error standard "
          "deviation is: 0.036°C.");
-  assert(std::abs(1 - k.x() / 49.988) < 0.001 &&
+  assert(std::abs(1 - filter.x() / 49.988) < 0.001 &&
          "The state estimates expected at 0.1% accuracy."
          "The filter estimates the liquid temperature at 49.988°C.");
-  assert(std::abs(1 - k.k() / 0.1265) < 0.001 &&
+  assert(std::abs(1 - filter.k() / 0.1265) < 0.001 &&
          "The gain expected at 0.1% accuracy.");
 
   // So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.
