@@ -88,9 +88,9 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Member <a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark.xhtml#aa7b9230e680c4ab1410329a76d8f3ad5">fcarouge::eigen::benchmark::Name</a>  ("eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</dt>
-<dd><a class="anchor" id="_todo000002"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
-<dt>Member <a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark.xhtml#a223a6c312b1d17ca2f05b0bcc0514c69">fcarouge::eigen::benchmark::Name</a>  ("eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</dt>
 <dd><a class="anchor" id="_todo000001"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
+<dt>Member <a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark.xhtml#a223a6c312b1d17ca2f05b0bcc0514c69">fcarouge::eigen::benchmark::Name</a>  ("eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</dt>
+<dd><a class="anchor" id="_todo000002"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
 <dt>Class <a class="el" href="structfcarouge_1_1identity__matrix.xhtml">fcarouge::identity_matrix</a>  </dt>
 <dd><a class="anchor" id="_todo000015"></a>Could we remove this for a standard facility? Perhaps a form of std::integral_constant? </dd>
 <dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;</a>  </dt>
@@ -144,14 +144,14 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a59c62d02fbc8be939e05a135b0cec3b8">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::input_control</a>  </dt>
 <dd><a class="anchor" id="_todo000018"></a>Conditionally remove this member type when no input is present.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a326b305473fba0a1efc17660c94eb199">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::predict</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000022"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000021"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a78b78edf59992eb0f70a5ac7e929435e">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::transition_control_function</a>  </dt>
 <dd><a class="anchor" id="_todo000019"></a>Conditionally remove this member type when no input is present.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::update</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000023"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000022"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
@@ -166,7 +166,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Sep 25 2022 02:48:56 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Sep 25 2022 04:10:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
