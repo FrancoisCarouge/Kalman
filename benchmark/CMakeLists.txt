@@ -61,5 +61,5 @@ foreach(BENCHMARK ${SOURCES})
     kalman_benchmark_${NAME}_driver
     PRIVATE eigen kalman benchmark::benchmark_main benchmark::benchmark)
   add_test(kalman_benchmark_${NAME} kalman_benchmark_${NAME}_driver
-           "--benchmark_out=kalman_benchmark_${NAME}.json")
+           "--benchmark_out=${NAME}.json")
 endforeach()
