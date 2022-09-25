@@ -46,11 +46,8 @@ mkdir /tmp/kalman
 
 RESULTS=`find "kalman/benchmark/result" -iname "*.json"`
 for RESULT in ${RESULTS}; do
-  cat ${RESULT} >> /tmp/kalman/results.json
-done
-
-# Filter benchmark results to flatten and retain plot data.
-jq --compact-output '[.benchmarks[]
+  NAME=$(basename ${RESULT} .json)
+  jq --compact-output '[.benchmarks[]
   | select(has("aggregate_name"))
   | select(has("big_o") | not)
   | select(has("rms") | not)
@@ -58,45 +55,24 @@ jq --compact-output '[.benchmarks[]
   | group_by([.name])
   | map((.[0]|del(.value)) + { values: (map(.value)) })[]
   | {name: .name, mean: .values[0].mean, median: .values[1].median, stddev: .values[2].stddev, cv: .values[3].cv, min: .values[4].min, max: .values[5].max}
-  ' /tmp/kalman/results.json > /tmp/kalman/flat_results.json
+  ' ${RESULT} > /tmp/kalman/${NAME}.json
+  grep "manual_time" /tmp/kalman/${NAME}.json \
+    | sed -E 's#\{"name":".*/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
+    > /tmp/kalman/${NAME}.csv
+done
 
-# Individual CSV and plot results.
-grep "baseline" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"baseline/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/kalman/baseline.csv
-gnuplot kalman/benchmark/script/baseline.plt
+for STATE in {1..32}; do
+  for OUTPUT in {1..32}; do
+    echo -n "${STATE}, ${OUTPUT}, " >> "/tmp/kalman/kalman_benchmark_eigen_update.csv"
+    cat "/tmp/kalman/kalman_benchmark_eigen_update_${STATE}x${OUTPUT}x0.csv" >> "/tmp/kalman/kalman_benchmark_eigen_update.csv"
+  done
+  for INPUT in {1..32}; do
+    echo -n "${STATE}, ${INPUT}, " >> "/tmp/kalman/kalman_benchmark_eigen_predict.csv"
+    cat "/tmp/kalman/kalman_benchmark_eigen_predict_${STATE}x1x${INPUT}.csv" >> "/tmp/kalman/kalman_benchmark_eigen_predict.csv"
+  done
+done
 
-grep "predict_1x1x0" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"predict_1x1x0/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/kalman/predict_1x1x0.csv
-gnuplot kalman/benchmark/script/predict_1x1x0.plt
-
-grep "update_1x1x0" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"update_1x1x0/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/kalman/update_1x1x0.csv
-gnuplot kalman/benchmark/script/update_1x1x0.plt
-
-grep "predict_1x1x1" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"predict_1x1x1/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/kalman/predict_1x1x1.csv
-gnuplot kalman/benchmark/script/predict_1x1x1.plt
-
-grep "update_1x1x1" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"update_1x1x1/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6#' \
-  > /tmp/kalman/update_1x1x1.csv
-gnuplot kalman/benchmark/script/update_1x1x1.plt
-
-grep "eigen_update" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"eigen_update_([0-9]*)x([0-9]*)x0/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6, \7, \8#' \
-  > /tmp/kalman/eigen_update.csv
-gnuplot kalman/benchmark/script/eigen_update.plt
-
-grep "eigen_predict" /tmp/kalman/flat_results.json \
-  | sed -E 's#\{"name":"eigen_predict_([0-9]*)x1x([0-9]*)/repeats:[0-9]*/manual_time","mean":(.*),"median":(.*),"stddev":(.*),"cv":(.*),"min":(.*),"max":(.*)}#\1, \2, \3, \4, \5, \6, \7, \8#' \
-  > /tmp/kalman/eigen_predict.csv
-gnuplot kalman/benchmark/script/eigen_predict.plt
-
-# Groups using results.
-gnuplot kalman/benchmark/script/float_1x1x0.plt
-gnuplot kalman/benchmark/script/float_1x1x1.plt
-gnuplot kalman/benchmark/script/float.plt
+PLOTS=`find "kalman/benchmark/script" -iname "*.plt"`
+for PLOT in ${PLOTS}; do
+  gnuplot ${PLOT}
+done

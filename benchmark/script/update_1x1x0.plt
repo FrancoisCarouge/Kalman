@@ -52,7 +52,7 @@ set yrange [24 : 26]
 set ytics .2
 set xtics ("Update 1x1x0 Float" 0)
 
-plot "/tmp/kalman/update_1x1x0.csv" using (0):6 with boxes linecolor rgb "#F7DC6F" title "Maximum", \
+plot "/tmp/kalman/kalman_benchmark_update_1x1x0.csv" using (0):6 with boxes linecolor rgb "#F7DC6F" title "Maximum", \
   "" using (0):1 with boxes linecolor rgb "#F4D03F" title "Average", \
   "" using (0):5 with boxes linecolor rgb "#F1C40F" title "Minimum", \
   "" using (0):6:(sprintf("%8.2f", $6)) with labels right offset char -2,0.3, \

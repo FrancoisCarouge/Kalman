@@ -51,6 +51,6 @@ set ytics 1
 set xtics ("Baseline - No Code" 0, "Predict" 1, "Update" 2) rotate by 345
 set key noautotitle
 
-plot "/tmp/kalman/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F", \
- "/tmp/kalman/predict_1x1x1.csv" using (1):1 with boxes linecolor rgb "#F4D03F", \
- "/tmp/kalman/update_1x1x1.csv" using (2):1 with boxes linecolor rgb "#F4D03F"
+plot "/tmp/kalman/kalman_benchmark_baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F", \
+  "/tmp/kalman/kalman_benchmark_predict_1x1x1.csv" using (1):1 with boxes linecolor rgb "#F4D03F", \
+  "/tmp/kalman/kalman_benchmark_update_1x1x1.csv" using (2):1 with boxes linecolor rgb "#F4D03F"
