@@ -63,12 +63,12 @@ done
 
 for STATE in {1..32}; do
   for OUTPUT in {1..32}; do
-    echo -n "${STATE}, ${OUTPUT}, " >> "/tmp/kalman/kalman_benchmark_eigen_update.csv"
-    cat "/tmp/kalman/kalman_benchmark_eigen_update_${STATE}x${OUTPUT}x0.csv" >> "/tmp/kalman/kalman_benchmark_eigen_update.csv"
+    echo -n "${STATE}, ${OUTPUT}, " >> "/tmp/kalman/eigen_update.csv"
+    cat "/tmp/kalman/eigen_update_${STATE}x${OUTPUT}x0.csv" >> "/tmp/kalman/eigen_update.csv"
   done
   for INPUT in {1..32}; do
-    echo -n "${STATE}, ${INPUT}, " >> "/tmp/kalman/kalman_benchmark_eigen_predict.csv"
-    cat "/tmp/kalman/kalman_benchmark_eigen_predict_${STATE}x1x${INPUT}.csv" >> "/tmp/kalman/kalman_benchmark_eigen_predict.csv"
+    echo -n "${STATE}, ${INPUT}, " >> "/tmp/kalman/eigen_predict.csv"
+    cat "/tmp/kalman/eigen_predict_${STATE}x1x${INPUT}.csv" >> "/tmp/kalman/eigen_predict.csv"
   done
 done
 

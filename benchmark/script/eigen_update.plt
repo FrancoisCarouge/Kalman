@@ -60,4 +60,4 @@ set pm3d
 set hidden3d
 set key noautotitle
 
-splot "/tmp/kalman/kalman_benchmark_eigen_update.csv" using 1:2:3 with lines
+splot "/tmp/kalman/eigen_update.csv" using 1:2:3 with lines
