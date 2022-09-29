@@ -50,7 +50,12 @@ namespace fcarouge::eigen::internal {
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
-struct matrix final {
+template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+
+template <typename Type, auto RowSize, auto ColumnSize>
+using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
+
+struct matrify final {
   template <typename Type>
   [[nodiscard]] inline constexpr auto operator()(const Type &value) const ->
       typename std::decay_t<Type>::PlainMatrix {
@@ -79,22 +84,25 @@ struct symmetrize final {
   }
 };
 
-//! @todo Provide a division based on `colPivHouseholderQr()`.
-//! @todo Provide a division based on `householderQr()`.
+//! @todo Support `fullPivHouseholderQr()` for `FullPivHouseholderQR`.
+//! @todo Support `colPivHouseholderQr()` for `ColPivHouseholderQR`.
+//! @todo Support `householderQr()` for `HouseholderQR`.
+//! @todo Support `sparseQr()` for `SparseQR`.
 struct divide final {
+  // Numerator [m by n] / Denominator [o by n] -> Quotient [m by o]
+  // Used in: P.H^T [x by z] / S [z x z] -> K [x by z]
   template <typename Numerator, typename Denominator>
-  // Numerator [m x n] / Denominator [o x n] -> Quotient [m x o]
   using result = typename Eigen::Matrix<
-      typename std::decay_t<std::invoke_result_t<matrix, Numerator>>::Scalar,
-      std::decay_t<std::invoke_result_t<matrix, Numerator>>::RowsAtCompileTime,
+      typename std::decay_t<std::invoke_result_t<matrify, Numerator>>::Scalar,
+      std::decay_t<std::invoke_result_t<matrify, Numerator>>::RowsAtCompileTime,
       std::decay_t<
-          std::invoke_result_t<matrix, Denominator>>::RowsAtCompileTime>;
+          std::invoke_result_t<matrify, Denominator>>::RowsAtCompileTime>;
 
   template <typename Numerator, typename Denominator>
   [[nodiscard]] inline constexpr auto
   operator()(const Numerator &numerator, const Denominator &denominator) const
       -> result<Numerator, Denominator> {
-    const matrix to_matrix;
+    const matrify to_matrix;
     return to_matrix(denominator)
         .transpose()
         .fullPivHouseholderQr()
