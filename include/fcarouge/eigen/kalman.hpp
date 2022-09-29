@@ -67,11 +67,11 @@ using empty_pack = fcarouge::internal::empty_pack;
 template <typename... Types> using pack = fcarouge::internal::pack<Types...>;
 
 //! @brief Convenience Eigen vector.
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+template <typename Type, auto Size> using vector = internal::vector<Type, Size>;
 
 //! @brief Convenience Eigen matrix.
 template <typename Type, auto RowSize, auto ColumnSize>
-using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
+using matrix = internal::matrix<Type, RowSize, ColumnSize>;
 
 //! @brief Eigen-based Kalman filter.
 //!
