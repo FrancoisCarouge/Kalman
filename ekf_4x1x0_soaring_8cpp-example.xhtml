@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: ekf_4x1x0_ardupilot_soaring.cpp</title>
+<title>Kalman: ekf_4x1x0_soaring.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('ekf_4x1x0_ardupilot_soaring_8cpp-example.xhtml',''); initResizable(); });
+$(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -83,7 +83,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_ardupilot_soaring_8cpp-examp
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">ekf_4x1x0_ardupilot_soaring.cpp</div></div>
+  <div class="headertitle"><div class="title">ekf_4x1x0_soaring.cpp</div></div>
 </div><!--header-->
 <div class="contents">
 <p >ArduPilot Plane Soaring.</p>
@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_ardupilot_soaring_8cpp-examp
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1eigen_1_1sample.xhtml">fcarouge::eigen::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"> </div>
-<div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__ardupilot__soaring_8cpp_03.xhtml#a423eb51a214ce2c2ff83e8d1265a3325">ekf_4x1x0_ardupilot_soaring</a>{[] {</div>
+<div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aae4346fe4b6dc8c1285cab2e61ef07a7">ekf_4x1x0_soaring</a>{[] {</div>
 <div class="line">  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
 <div class="line">  <span class="comment">// driftY [m]. Constant time step.</span></div>
 <div class="line">  <span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
@@ -147,9 +147,9 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_ardupilot_soaring_8cpp-examp
 <div class="line">  <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
 <div class="line">  filter.observation([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
 <div class="line">                        <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1">kalman::output</a> {</div>
-<div class="line">    <span class="keywordflow">return</span> x(0) * std::exp(-(std::pow(x[2] - position_x, 2.f) +</div>
-<div class="line">                             std::pow(x[3] - position_y, 2.f)) /</div>
-<div class="line">                           std::pow(x[1], 2.f));</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1">kalman::output</a>{x(0) * std::exp(-(std::pow(x[2] - position_x, 2.f) +</div>
+<div class="line">                                            std::pow(x[3] - position_y, 2.f)) /</div>
+<div class="line">                                          std::pow(x[1], 2.f))};</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
@@ -308,15 +308,15 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_ardupilot_soaring_8cpp-examp
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a95e201e1563f135b128edbf2c9793e56"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a95e201e1563f135b128edbf2c9793e56">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00248">kalman.hpp:248</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a9fac97289314ad4018774b6afbd73716"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a9fac97289314ad4018774b6afbd73716">fcarouge::kalman::output_uncertainty</a></div><div class="ttdeci">typename implementation::output_uncertainty output_uncertainty</div><div class="ttdoc">Type of the observation noise correlated variance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00251">kalman.hpp:251</a></div></div>
 <div class="ttc" id="aeigen_2kalman_8hpp_xhtml"><div class="ttname"><a href="eigen_2kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__ardupilot__soaring_8cpp_03_xhtml_a423eb51a214ce2c2ff83e8d1265a3325"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__ardupilot__soaring_8cpp_03.xhtml#a423eb51a214ce2c2ff83e8d1265a3325">fcarouge::eigen::sample::anonymous_namespace{ekf_4x1x0_ardupilot_soaring.cpp}::ekf_4x1x0_ardupilot_soaring</a></div><div class="ttdeci">auto ekf_4x1x0_ardupilot_soaring</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__ardupilot__soaring_8cpp_source.xhtml#l00031">ekf_4x1x0_ardupilot_soaring.cpp:31</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample.xhtml">fcarouge::eigen::sample</a></div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__ardupilot__soaring_8cpp_source.xhtml#l00006">ekf_4x1x0_ardupilot_soaring.cpp:6</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_aae4346fe4b6dc8c1285cab2e61ef07a7"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aae4346fe4b6dc8c1285cab2e61ef07a7">fcarouge::eigen::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::ekf_4x1x0_soaring</a></div><div class="ttdeci">auto ekf_4x1x0_soaring</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00031">ekf_4x1x0_soaring.cpp:31</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample.xhtml">fcarouge::eigen::sample</a></div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00006">ekf_4x1x0_soaring.cpp:6</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a1b0dac1811e65af94771d85401c9ca39"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00085">kalman.hpp:87</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Sep 29 2022 00:56:37 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Sep 30 2022 01:22:32 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

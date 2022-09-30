@@ -1,6 +1,6 @@
 var dir_c29eeb5af533606caea8a09e66794740 =
 [
-    [ "ekf_4x1x0_ardupilot_soaring.cpp", "ekf__4x1x0__ardupilot__soaring_8cpp.xhtml", "ekf__4x1x0__ardupilot__soaring_8cpp" ],
+    [ "ekf_4x1x0_soaring.cpp", "ekf__4x1x0__soaring_8cpp.xhtml", "ekf__4x1x0__soaring_8cpp" ],
     [ "kf_1x1x0_building_height.cpp", "kf__1x1x0__building__height_8cpp.xhtml", "kf__1x1x0__building__height_8cpp" ],
     [ "kf_1x1x0_liquid_temperature.cpp", "kf__1x1x0__liquid__temperature_8cpp.xhtml", "kf__1x1x0__liquid__temperature_8cpp" ],
     [ "kf_1x1x1_dog_position.cpp", "kf__1x1x1__dog__position_8cpp.xhtml", "kf__1x1x1__dog__position_8cpp" ],

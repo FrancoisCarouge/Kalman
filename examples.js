@@ -1,6 +1,6 @@
 var examples =
 [
-    [ "ekf_4x1x0_ardupilot_soaring.cpp", "ekf_4x1x0_ardupilot_soaring_8cpp-example.xhtml", null ],
+    [ "ekf_4x1x0_soaring.cpp", "ekf_4x1x0_soaring_8cpp-example.xhtml", null ],
     [ "kf_1x1x0_building_height.cpp", "kf_1x1x0_building_height_8cpp-example.xhtml", null ],
     [ "kf_1x1x0_liquid_temperature.cpp", "kf_1x1x0_liquid_temperature_8cpp-example.xhtml", null ],
     [ "kf_1x1x1_dog_position.cpp", "kf_1x1x1_dog_position_8cpp-example.xhtml", null ],
