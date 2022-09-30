@@ -7,6 +7,5 @@ var searchData=
   ['software_4',['software',['../_l_i_c_e_n_s_e_8txt.xhtml#ab20fc6251e4dbdd80db7028a31b57d56',1,'LICENSE.txt']]],
   ['state_5',['state',['../classfcarouge_1_1kalman.xhtml#a1102f87212b368e4e55bcd5d637a600c',1,'fcarouge::kalman']]],
   ['state_5ftransition_6',['state_transition',['../classfcarouge_1_1kalman.xhtml#ab763d09902667e195848fa899e310beb',1,'fcarouge::kalman']]],
-  ['support_2ehpp_7',['support.hpp',['../support_8hpp.xhtml',1,'']]],
-  ['symmetrize_8',['symmetrize',['../namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c',1,'fcarouge::eigen']]]
+  ['symmetrize_7',['symmetrize',['../namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c',1,'fcarouge::eigen']]]
 ];
