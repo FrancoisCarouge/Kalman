@@ -67,8 +67,8 @@ FetchContent_Declare(
 
 FetchContent_Declare(
   fmt
-  URL "https://github.com/fmtlib/fmt/archive/refs/tags/9.0.0.tar.gz"
-  URL_HASH MD5=d56c8b0612b049bb1854f07c8b133f3c)
+  URL "https://github.com/fmtlib/fmt/archive/refs/tags/9.1.0.tar.gz"
+  URL_HASH MD5=21fac48cae8f3b4a5783ae06b443973a)
 
 FetchContent_MakeAvailable(google_test google_benchmark eigen fmt)
 
