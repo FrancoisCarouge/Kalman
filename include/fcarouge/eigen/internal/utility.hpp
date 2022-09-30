@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_EIGEN_INTERNAL_SUPPORT_HPP
-#define FCAROUGE_EIGEN_INTERNAL_SUPPORT_HPP
+#ifndef FCAROUGE_EIGEN_INTERNAL_UTILITY_HPP
+#define FCAROUGE_EIGEN_INTERNAL_UTILITY_HPP
 
 #include <Eigen/Eigen>
 
@@ -128,4 +128,4 @@ struct identity_matrix final {
 
 } // namespace fcarouge::eigen::internal
 
-#endif // FCAROUGE_EIGEN_INTERNAL_SUPPORT_HPP
+#endif // FCAROUGE_EIGEN_INTERNAL_UTILITY_HPP
