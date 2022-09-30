@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Kalman operation for Eigen 3 types.
 
 #include "fcarouge/kalman.hpp"
-#include "internal/support.hpp"
+#include "internal/utility.hpp"
 
 #include <Eigen/Eigen>
 
