@@ -25,10 +25,10 @@ namespace {
 //! of radius R [m] with the center distance x north of the sUAV and y east of
 //! the sUAV.
 //!
-//! @example ekf_4x1x0_ardupilot_soaring.cpp
+//! @example ekf_4x1x0_soaring.cpp
 //!
 //! @todo Add a data set and assert for correctness of results.
-[[maybe_unused]] auto ekf_4x1x0_ardupilot_soaring{[] {
+[[maybe_unused]] auto ekf_4x1x0_soaring{[] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
   using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
@@ -75,9 +75,9 @@ namespace {
   // position w.r.t. the thermal center [m.s^-1].
   filter.observation([](const kalman::state &x, const float &position_x,
                         const float &position_y) -> kalman::output {
-    return x(0) * std::exp(-(std::pow(x[2] - position_x, 2.f) +
-                             std::pow(x[3] - position_y, 2.f)) /
-                           std::pow(x[1], 2.f));
+    return kalman::output{x(0) * std::exp(-(std::pow(x[2] - position_x, 2.f) +
+                                            std::pow(x[3] - position_y, 2.f)) /
+                                          std::pow(x[1], 2.f))};
   });
 
   // See the ArduSoar paper for the equation for H = ∂h/∂X:
