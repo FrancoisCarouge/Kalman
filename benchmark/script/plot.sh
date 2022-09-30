@@ -39,7 +39,7 @@
 
 set -e
 
-cp build/benchmark/*.json kalman/benchmark/result
+mv build/benchmark/*.json kalman/benchmark/result 2>/dev/null || true
 
 rm -rf /tmp/kalman
 mkdir /tmp/kalman

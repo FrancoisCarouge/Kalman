@@ -37,7 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 set(SOURCES
-    "ekf_4x1x0_ardupilot_soaring.cpp"
+    "ekf_4x1x0_soaring.cpp"
     "kf_1x1x0_building_height.cpp"
     "kf_1x1x0_liquid_temperature.cpp"
     "kf_1x1x1_dog_position.cpp"

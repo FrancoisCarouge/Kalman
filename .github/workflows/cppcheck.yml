@@ -41,7 +41,7 @@ jobs:
         cppcheck \
           --enable=all \
           --error-exitcode=1 \
-          --suppress=unusedStructMember:sample/ekf_4x1x0_ardupilot_soaring.cpp \
+          --suppress=unusedStructMember:sample/ekf_4x1x0_soaring.cpp \
           --verbose \
           -I include \
           .
