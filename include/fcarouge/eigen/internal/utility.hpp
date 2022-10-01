@@ -55,24 +55,9 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 template <typename Type, auto RowSize, auto ColumnSize>
 using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
-struct matrify final {
-  template <typename Type>
-  [[nodiscard]] inline constexpr auto operator()(const Type &value) const ->
-      typename std::decay_t<Type>::PlainMatrix {
-    return value;
-  }
-
-  [[nodiscard]] inline constexpr auto
-  operator()(const arithmetic auto &value) const {
-    using type = std::decay_t<decltype(value)>;
-    return Eigen::Matrix<type, 1, 1>{value};
-  }
-};
-
 struct transpose final {
   template <typename Type>
-  [[nodiscard]] inline constexpr auto operator()(const Type &value) const ->
-      typename Eigen::Transpose<Type>::PlainMatrix {
+  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
     return value.transpose();
   }
 };
@@ -84,31 +69,52 @@ struct symmetrize final {
   }
 };
 
-//! @todo Support `fullPivHouseholderQr()` for `FullPivHouseholderQR`.
-//! @todo Support `colPivHouseholderQr()` for `ColPivHouseholderQR`.
-//! @todo Support `householderQr()` for `HouseholderQR`.
-//! @todo Support `sparseQr()` for `SparseQR`.
+// Numerator [m by n] / Denominator [o by n] -> Quotient [m by o]
 struct divide final {
-  // Numerator [m by n] / Denominator [o by n] -> Quotient [m by o]
-  // Used in: P.H^T [x by z] / S [z x z] -> K [x by z]
-  template <typename Numerator, typename Denominator>
-  using result = typename Eigen::Matrix<
-      typename std::decay_t<std::invoke_result_t<matrify, Numerator>>::Scalar,
-      std::decay_t<std::invoke_result_t<matrify, Numerator>>::RowsAtCompileTime,
-      std::decay_t<
-          std::invoke_result_t<matrify, Denominator>>::RowsAtCompileTime>;
-
   template <typename Numerator, typename Denominator>
   [[nodiscard]] inline constexpr auto
-  operator()(const Numerator &numerator, const Denominator &denominator) const
-      -> result<Numerator, Denominator> {
-    const matrify to_matrix;
-    return to_matrix(denominator)
-        .transpose()
-        .fullPivHouseholderQr()
-        .solve(to_matrix(numerator).transpose())
-        .transpose()
-        .eval();
+  operator()(const Numerator &numerator, const Denominator &denominator) const {
+    using result =
+        typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
+                               std::decay_t<Numerator>::RowsAtCompileTime,
+                               std::decay_t<Denominator>::RowsAtCompileTime>;
+
+    return result{denominator.transpose()
+                      .fullPivHouseholderQr()
+                      .solve(numerator.transpose())
+                      .transpose()
+                      .eval()};
+  }
+
+  template <typename Numerator, arithmetic Denominator>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Numerator &numerator, const Denominator &denominator) const {
+    using result =
+        typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
+                               std::decay_t<Numerator>::RowsAtCompileTime, 1>;
+
+    return result{numerator / denominator};
+  }
+
+  template <arithmetic Numerator, typename Denominator>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Numerator &numerator, const Denominator &denominator) const {
+    using result =
+        typename Eigen::Matrix<std::decay_t<Numerator>, 1,
+                               std::decay_t<Denominator>::RowsAtCompileTime>;
+
+    return result{
+        denominator.transpose()
+            .fullPivHouseholderQr()
+            .solve(Eigen::Matrix<std::decay_t<Numerator>, 1, 1>(numerator))
+            .transpose()
+            .eval()};
+  }
+
+  template <arithmetic Numerator, arithmetic Denominator>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Numerator &numerator, const Denominator &denominator) const {
+    return numerator / denominator;
   }
 };
 
