@@ -43,7 +43,12 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::internal {
 
-struct empty {};
+struct empty {
+  inline constexpr explicit empty(auto &&...any) noexcept {
+    // Constructs from anything for all initializations compatibility.
+    (static_cast<void>(any), ...);
+  }
+};
 
 template <typename...> struct pack {};
 
