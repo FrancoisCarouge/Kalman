@@ -144,12 +144,12 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   59</span> </div>
 <div class="line"><span class="lineno">   60</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
 <div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1">kalman::output</a> z{uniformly_distributed(random_generator)};</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aec2214f218a08e262928716c78b94783">kalman::output</a> z{uniformly_distributed(random_generator)};</div>
 <div class="line"><span class="lineno">   63</span> </div>
 <div class="line"><span class="lineno">   64</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   65</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
 <div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">update</a>(z);</div>
+<div class="line"><span class="lineno">   67</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa25300d568d2051e84b5603b7134322c">update</a>(z);</div>
 <div class="line"><span class="lineno">   68</span> </div>
 <div class="line"><span class="lineno">   69</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   70</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
@@ -159,11 +159,11 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   74</span>            .count());</div>
 <div class="line"><span class="lineno">   75</span>  }</div>
 <div class="line"><span class="lineno">   76</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter for C++23.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00201">kalman.hpp:201</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a71b11bb6c9a898533dfd86ce6eef5c20"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a71b11bb6c9a898533dfd86ce6eef5c20">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01376">kalman.hpp:1376</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a7fd585072f9799aa546943934e1a38e1"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a7fd585072f9799aa546943934e1a38e1">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00235">kalman.hpp:235</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter for C++23.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00197">kalman.hpp:197</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa25300d568d2051e84b5603b7134322c"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa25300d568d2051e84b5603b7134322c">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01357">kalman.hpp:1357</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aec2214f218a08e262928716c78b94783"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aec2214f218a08e262928716c78b94783">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00231">kalman.hpp:231</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l01376">fcarouge::kalman&lt; State, Output, Input, Transpose, Symmetrize, Divide, Identity, UpdateTypes, PredictionTypes &gt;::update()</a>.</p>
+<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l01357">fcarouge::kalman&lt; State, Output, Input, Transpose, Divide, Identity, UpdateTypes, PredictionTypes &gt;::update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -181,7 +181,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03.xhtml">anonymous_namespace{update_1x1x1.cpp}</a></li>
-    <li class="footer">Generated on Sat Oct 1 2022 21:34:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Oct 2 2022 04:22:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

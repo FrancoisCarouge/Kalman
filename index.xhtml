@@ -137,20 +137,20 @@ Examples</h1>
 <h2><a class="anchor" id="autotoc_md21"></a>
 1x1 Constant System Dynamic Model</h2>
 <p >Example from the building height estimation sample. One estimated state and one observed output filter.</p>
-<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
+<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(60.);</div>
 <div class="line">filter.p(225.);</div>
 <div class="line">filter.r(25.);</div>
 <div class="line"> </div>
 <div class="line">filter.update(48.54);</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a1b0dac1811e65af94771d85401c9ca39"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00085">kalman.hpp:87</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_acaa4803bfeb8c1cef9285fd03d3c3df4"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, divide, identity_matrix, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00082">kalman.hpp:83</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
 6x2 Constant Acceleration Dynamic Model</h2>
 <p >Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.</p>
-<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
+<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(0., 0., 0., 0., 0., 0.);</div>
 <div class="line">filter.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
@@ -180,10 +180,10 @@ Examples</h1>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
 4x1 Non-Linear Dynamic Model</h2>
 <p >Example from the thermal, current of warm air, strength, radius, and location estimation sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
-<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
+<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">kalman</a> = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
 <div class="line">                             std::tuple&lt;float, float&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(1 / 4.06, 80, 0, 0);</div>
 <div class="line">filter.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
@@ -257,12 +257,11 @@ Declaration</h2>
 <div class="line">  <span class="keyword">typename</span> Output,</div>
 <div class="line">  <span class="keyword">typename</span> Input,</div>
 <div class="line">  <span class="keyword">typename</span> Transpose,</div>
-<div class="line">  <span class="keyword">typename</span> Symmetrize,</div>
 <div class="line">  <span class="keyword">typename</span> Divide,</div>
 <div class="line">  <span class="keyword">typename</span> Identity,</div>
 <div class="line">  <span class="keyword">typename</span> UpdateTypes,</div>
 <div class="line">  <span class="keyword">typename</span> PredictionTypes&gt;</div>
-<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a></div>
+<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">kalman</a></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
 Template Parameters</h2>
 <table class="markdownTable">
@@ -277,14 +276,12 @@ Template Parameters</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>Transpose</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix transpose functor. Defaults to the standard passthrough <code>std::identity</code> function object since the transposed value of an arithmetic type is itself.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>Symmetrize</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix symmetrization functor. Defaults to the standard passthrough <code>std::identity</code> function object since the symmetric value of an arithmetic type is itself.    </td></tr>
-<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>Divide</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix division functor. Default to the standard division <code>std::divides&lt;void&gt;</code> function object.    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>Identity</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix identity functor. Defaults to an <code>identity_matrix</code> function object returning the arithmetic <code>1</code> value.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack.    </td></tr>
+<td class="markdownTableBodyNone"><code>Identity</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix identity functor. Defaults to an <code>identity_matrix</code> function object returning the arithmetic <code>1</code> value.    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. Defaults to no parameter types, the empty pack.   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md28"></a>
@@ -376,7 +373,7 @@ Modifiers</h3>
 <h1><a class="anchor" id="autotoc_md32"></a>
 Format</h1>
 <p >A specialization of the standard formatter is provided for the filter. Use <code>std::format</code> to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.</p>
-<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> filter;</div>
+<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">std::print(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;h&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;q&quot;: 0, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
@@ -399,22 +396,23 @@ Motivations</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md36"></a>
 Selected Tradeoffs</h2>
-<p >In theory there is no difference between theory and practice, while in practice there is. The following tradeoffs hav been selected for the implementation:</p>
+<p >In theory there is no difference between theory and practice, while in practice there is. The following tradeoffs have been selected for the implementation:</p>
 <ul>
 <li>Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.</li>
 <li>The default floating point data type for the filter is <code>double</code> with about 16 significant digits to reduce loss of information compared to <code>float</code>.</li>
+<li>The ergonomics and precision of the default filter takes precedence over performance.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md37"></a>
 Lessons Learned</h2>
 <p >Design, development, and testing uncovered unexpected facets of the projects:</p>
 <ul>
 <li>The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full-compile time verification of unit and index-type safeties.</li>
-<li>There exists Kalman filters with hundreds of state variables.</li>
-<li>The <code>float</code> data type has about 7 significant digits. Floating point error is a loss of information to account for in design.</li>
+<li>There exist Kalman filters with hundreds of state variables.</li>
+<li>The <code>float</code> data type has about seven significant digits. Floating point error is a loss of information to account for in design.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md38"></a>
 Performance</h2>
-<p >The [benchmarks](benchmark) share some performance information.</p>
+<p >The [benchmarks](benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>
 <p ><img src="eigen_update.svg" alt="" style="pointer-events: none;" class="inline" title="Eigen Update"/>     <img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/>    </p>
 <h1><a class="anchor" id="autotoc_md39"></a>
 Resources</h1>
@@ -468,7 +466,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Oct 1 2022 21:34:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Oct 2 2022 04:22:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

@@ -127,9 +127,6 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aee16b54624e2726129560ae810e805ec"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">fcarouge::eigen::transpose</a> = internal::transpose</td></tr>
 <tr class="memdesc:aee16b54624e2726129560ae810e805ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix transposition.  <a href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">More...</a><br /></td></tr>
 <tr class="separator:aee16b54624e2726129560ae810e805ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af67bfce173c998d182c8d40f8dccf65c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">fcarouge::eigen::symmetrize</a> = internal::symmetrize</td></tr>
-<tr class="memdesc:af67bfce173c998d182c8d40f8dccf65c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix symmetrization.  <a href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">More...</a><br /></td></tr>
-<tr class="separator:af67bfce173c998d182c8d40f8dccf65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4a0f022ca9724e0e5e4a24732781365"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">fcarouge::eigen::divide</a> = internal::divide</td></tr>
 <tr class="memdesc:af4a0f022ca9724e0e5e4a24732781365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix division.  <a href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">More...</a><br /></td></tr>
 <tr class="separator:af4a0f022ca9724e0e5e4a24732781365"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,10 +148,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a06b1a5e56409dffb00281ac0954aad04"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a06b1a5e56409dffb00281ac0954aad04">fcarouge::eigen::matrix</a> = internal::matrix&lt; Type, RowSize, ColumnSize &gt;</td></tr>
 <tr class="memdesc:a06b1a5e56409dffb00281ac0954aad04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience Eigen matrix.  <a href="namespacefcarouge_1_1eigen.xhtml#a06b1a5e56409dffb00281ac0954aad04">More...</a><br /></td></tr>
 <tr class="separator:a06b1a5e56409dffb00281ac0954aad04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b0dac1811e65af94771d85401c9ca39"><td class="memTemplParams" colspan="2">template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </td></tr>
-<tr class="memitem:a1b0dac1811e65af94771d85401c9ca39"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">fcarouge::eigen::kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, transpose, symmetrize, divide, identity_matrix, UpdateTypes, PredictionTypes &gt;</td></tr>
-<tr class="memdesc:a1b0dac1811e65af94771d85401c9ca39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">More...</a><br /></td></tr>
-<tr class="separator:a1b0dac1811e65af94771d85401c9ca39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaa4803bfeb8c1cef9285fd03d3c3df4"><td class="memTemplParams" colspan="2">template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </td></tr>
+<tr class="memitem:acaa4803bfeb8c1cef9285fd03d3c3df4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">fcarouge::eigen::kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, transpose, divide, identity_matrix, UpdateTypes, PredictionTypes &gt;</td></tr>
+<tr class="memdesc:acaa4803bfeb8c1cef9285fd03d3c3df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">More...</a><br /></td></tr>
+<tr class="separator:acaa4803bfeb8c1cef9285fd03d3c3df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Kalman operation for Eigen 3 types. </p>
@@ -166,7 +163,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_58817dbcd177a26bda361ab0426398a1.xhtml">eigen</a></li><li class="navelem"><a class="el" href="eigen_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sat Oct 1 2022 21:34:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Oct 2 2022 04:22:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

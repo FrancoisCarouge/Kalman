@@ -106,9 +106,6 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aee16b54624e2726129560ae810e805ec"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a> = internal::transpose</td></tr>
 <tr class="memdesc:aee16b54624e2726129560ae810e805ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix transposition.  <a href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">More...</a><br /></td></tr>
 <tr class="separator:aee16b54624e2726129560ae810e805ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af67bfce173c998d182c8d40f8dccf65c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a> = internal::symmetrize</td></tr>
-<tr class="memdesc:af67bfce173c998d182c8d40f8dccf65c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix symmetrization.  <a href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">More...</a><br /></td></tr>
-<tr class="separator:af67bfce173c998d182c8d40f8dccf65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4a0f022ca9724e0e5e4a24732781365"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a> = internal::divide</td></tr>
 <tr class="memdesc:af4a0f022ca9724e0e5e4a24732781365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix division.  <a href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">More...</a><br /></td></tr>
 <tr class="separator:af4a0f022ca9724e0e5e4a24732781365"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,10 +127,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a06b1a5e56409dffb00281ac0954aad04"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a06b1a5e56409dffb00281ac0954aad04">matrix</a> = <a class="el" href="namespacefcarouge_1_1eigen_1_1internal.xhtml#ac55f3b881cb53fd237cef8003d2b5c3b">internal::matrix</a>&lt; Type, RowSize, ColumnSize &gt;</td></tr>
 <tr class="memdesc:a06b1a5e56409dffb00281ac0954aad04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience Eigen matrix.  <a href="namespacefcarouge_1_1eigen.xhtml#a06b1a5e56409dffb00281ac0954aad04">More...</a><br /></td></tr>
 <tr class="separator:a06b1a5e56409dffb00281ac0954aad04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b0dac1811e65af94771d85401c9ca39"><td class="memTemplParams" colspan="2">template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </td></tr>
-<tr class="memitem:a1b0dac1811e65af94771d85401c9ca39"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateTypes, PredictionTypes &gt;</td></tr>
-<tr class="memdesc:a1b0dac1811e65af94771d85401c9ca39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">More...</a><br /></td></tr>
-<tr class="separator:a1b0dac1811e65af94771d85401c9ca39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaa4803bfeb8c1cef9285fd03d3c3df4"><td class="memTemplParams" colspan="2">template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </td></tr>
+<tr class="memitem:acaa4803bfeb8c1cef9285fd03d3c3df4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateTypes, PredictionTypes &gt;</td></tr>
+<tr class="memdesc:acaa4803bfeb8c1cef9285fd03d3c3df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">More...</a><br /></td></tr>
+<tr class="separator:acaa4803bfeb8c1cef9285fd03d3c3df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="af4a0f022ca9724e0e5e4a24732781365" name="af4a0f022ca9724e0e5e4a24732781365"></a>
@@ -150,7 +147,7 @@ Typedefs</h2></td></tr>
 
 <p>Function object for performing Eigen matrix division. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00058">58</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00055">55</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -168,7 +165,7 @@ Typedefs</h2></td></tr>
 
 <p>Convenience tuple-like empty pack type. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00064">64</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -186,12 +183,12 @@ Typedefs</h2></td></tr>
 
 <p>Function object for providing an Eigen identity matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00058">58</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a1b0dac1811e65af94771d85401c9ca39" name="a1b0dac1811e65af94771d85401c9ca39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b0dac1811e65af94771d85401c9ca39">&#9670;&nbsp;</a></span>kalman</h2>
+<a id="acaa4803bfeb8c1cef9285fd03d3c3df4" name="acaa4803bfeb8c1cef9285fd03d3c3df4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaa4803bfeb8c1cef9285fd03d3c3df4">&#9670;&nbsp;</a></span>kalman</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -199,7 +196,7 @@ Typedefs</h2></td></tr>
 template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a1b0dac1811e65af94771d85401c9ca39">fcarouge::eigen::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt;State, Output, Input, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">symmetrize</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateTypes, PredictionTypes&gt;</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#acaa4803bfeb8c1cef9285fd03d3c3df4">fcarouge::eigen::kalman</a> = typedef <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt;State, Output, Input, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#ab99c4b80cb5488c202a697e056134bae">identity_matrix</a>, UpdateTypes, PredictionTypes&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -210,7 +207,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a1">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a1">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#a1">kf_1x1x1_dog_position.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a1">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a1">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a1">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00085">85</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00082">82</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -230,7 +227,7 @@ template&lt;typename Type , auto RowSize, auto ColumnSize&gt; </div>
 
 <p>Convenience Eigen matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00074">74</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00071">71</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -250,25 +247,7 @@ template&lt;typename... Types&gt; </div>
 
 <p>Convenience tuple-like pack type. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00067">67</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-
-</div>
-</div>
-<a id="af67bfce173c998d182c8d40f8dccf65c" name="af67bfce173c998d182c8d40f8dccf65c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af67bfce173c998d182c8d40f8dccf65c">&#9670;&nbsp;</a></span>symmetrize</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#af67bfce173c998d182c8d40f8dccf65c">fcarouge::eigen::symmetrize</a> = typedef internal::symmetrize</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function object for performing Eigen matrix symmetrization. </p>
-
-<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00055">55</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00064">64</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,7 +285,7 @@ template&lt;typename Type , auto Size&gt; </div>
 
 <p>Convenience Eigen vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00070">70</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2kalman_8hpp_source.xhtml#l00067">67</a> of file <a class="el" href="eigen_2kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -316,7 +295,7 @@ template&lt;typename Type , auto Size&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li>
-    <li class="footer">Generated on Sat Oct 1 2022 21:34:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Oct 2 2022 04:22:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
