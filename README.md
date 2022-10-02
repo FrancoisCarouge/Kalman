@@ -201,7 +201,6 @@ template <
   typename Output,
   typename Input,
   typename Transpose,
-  typename Symmetrize,
   typename Divide,
   typename Identity,
   typename UpdateTypes,
@@ -217,7 +216,6 @@ class kalman
 | `Output` | The type template parameter of the measurement column vector z. Defaults to `double`. |
 | `Input` | The type template parameter of the control u. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to `void`. |
 | `Transpose` | The customization point object template parameter of the matrix transpose functor. Defaults to the standard passthrough `std::identity` function object since the transposed value of an arithmetic type is itself. |
-| `Symmetrize` | The customization point object template parameter of the matrix symmetrization functor. Defaults to the standard passthrough `std::identity` function object since the symmetric value of an arithmetic type is itself. |
 | `Divide` | The customization point object template parameter of the matrix division functor. Default to the standard division `std::divides<void>` function object. |
 | `Identity` | The customization point object template parameter of the matrix identity functor. Defaults to an `identity_matrix` function object returning the arithmetic `1` value. |
 | `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack. |
@@ -309,22 +307,23 @@ This package explores what could be a Kalman filter implementation a la standard
 
 ## Selected Tradeoffs
 
-In theory there is no difference between theory and practice, while in practice there is. The following tradeoffs hav been selected for the implementation:
+In theory there is no difference between theory and practice, while in practice there is. The following tradeoffs have been selected for the implementation:
 
 - Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.
 - The default floating point data type for the filter is `double` with about 16 significant digits to reduce loss of information compared to `float`.
+- The ergonomics and precision of the default filter takes precedence over performance.
 
 ## Lessons Learned
 
 Design, development, and testing uncovered unexpected facets of the projects:
 
 - The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full-compile time verification of unit and index-type safeties.
-- There exists Kalman filters with hundreds of state variables.
-- The `float` data type has about 7 significant digits. Floating point error is a loss of information to account for in design.
+- There exist Kalman filters with hundreds of state variables.
+- The `float` data type has about seven significant digits. Floating point error is a loss of information to account for in design.
 
 ## Performance
 
-The [benchmarks](benchmark) share some performance information.
+The [benchmarks](benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
 
 ![Eigen Update](benchmark/image/eigen_update.svg)
 ![Float](benchmark/image/float.svg)

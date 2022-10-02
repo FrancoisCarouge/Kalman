@@ -51,9 +51,6 @@ namespace fcarouge::eigen {
 //! @brief Function object for performing Eigen matrix transposition.
 using transpose = internal::transpose;
 
-//! @brief Function object for performing Eigen matrix symmetrization.
-using symmetrize = internal::symmetrize;
-
 //! @brief Function object for performing Eigen matrix division.
 using divide = internal::divide;
 
@@ -82,9 +79,8 @@ using matrix = internal::matrix<Type, RowSize, ColumnSize>;
 template <typename State = double, typename Output = double,
           typename Input = void, typename UpdateTypes = empty_pack,
           typename PredictionTypes = empty_pack>
-using kalman =
-    fcarouge::kalman<State, Output, Input, transpose, symmetrize, divide,
-                     identity_matrix, UpdateTypes, PredictionTypes>;
+using kalman = fcarouge::kalman<State, Output, Input, transpose, divide,
+                                identity_matrix, UpdateTypes, PredictionTypes>;
 
 } // namespace fcarouge::eigen
 
