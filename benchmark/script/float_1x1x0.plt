@@ -41,6 +41,7 @@ set terminal svg enhanced background rgb "white" size 360,720
 set datafile separator ","
 set title "{/:Bold Float 1x1x0 Group Benchmark}\n"
 set output "kalman/benchmark/image/float_1x1x0.svg"
+set timestamp
 set ylabel "Time (ns)"
 set grid ytics
 set boxwidth 0.9

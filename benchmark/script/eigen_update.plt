@@ -41,6 +41,7 @@ set terminal svg enhanced background rgb "white" size 800,600
 set datafile separator ","
 set title "{/:Bold Eigen Update Float Group Benchmark}\n"
 set output "kalman/benchmark/image/eigen_update.svg"
+set timestamp
 set grid
 set grid ztics
 set xlabel "State (count)"
