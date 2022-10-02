@@ -37,10 +37,11 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 360,720 
+set terminal svg enhanced background rgb "white" size 360,720
 set datafile separator ","
 set title "{/:Bold Baseline Benchmark}\n{/*0.8 No code benchmark.}"
 set output "kalman/benchmark/image/baseline.svg"
+set timestamp
 set key noautotitle
 set key inside top left reverse Left
 set ylabel "Time (ns)"

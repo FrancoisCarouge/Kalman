@@ -41,6 +41,7 @@ set terminal svg enhanced background rgb "white" size 360,720
 set datafile separator ","
 set title "{/:Bold Update 1x1x0 Float Benchmark}\n{/*0.8 kalman<float, float, void>::update()}"
 set output "kalman/benchmark/image/update_1x1x0.svg"
+set timestamp
 set key noautotitle
 set key inside top left reverse Left
 set ylabel "Time (ns)"
