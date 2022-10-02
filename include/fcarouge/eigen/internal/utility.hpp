@@ -62,13 +62,6 @@ struct transpose final {
   }
 };
 
-struct symmetrize final {
-  //! @todo Protect overflow? Is there a better way?
-  [[nodiscard]] inline constexpr auto operator()(const auto &value) const {
-    return (value + value.transpose()) / 2;
-  }
-};
-
 // Numerator [m by n] / Denominator [o by n] -> Quotient [m by o]
 struct divide final {
   template <typename Numerator, typename Denominator>

@@ -61,7 +61,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 template <typename, typename, typename, typename, typename, typename, typename,
-          typename, typename>
+          typename>
 class kalman;
 } // namespace fcarouge
 
@@ -114,15 +114,14 @@ inline void print(std::FILE *file, std::string_view format,
 } // namespace std
 
 template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename UpdateTypes, typename PredictionTypes, typename Char>
-struct fmt::formatter<
-    fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
-                     Identity, UpdateTypes, PredictionTypes>,
-    Char>
+          typename Divide, typename Identity, typename UpdateTypes,
+          typename PredictionTypes, typename Char>
+struct fmt::formatter<fcarouge::kalman<State, Output, Input, Transpose, Divide,
+                                       Identity, UpdateTypes, PredictionTypes>,
+                      Char>
     : public std::formatter<
-          fcarouge::kalman<State, Output, Input, Transpose, Symmetrize, Divide,
-                           Identity, UpdateTypes, PredictionTypes>,
+          fcarouge::kalman<State, Output, Input, Transpose, Divide, Identity,
+                           UpdateTypes, PredictionTypes>,
           Char> {};
 
 #endif // FCAROUGE_FORMAT

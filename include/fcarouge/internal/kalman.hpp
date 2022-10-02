@@ -48,15 +48,15 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::internal {
 
 template <typename, typename, typename, typename, typename, typename, typename,
-          typename, typename>
+          typename>
 struct kalman final {
   //! @todo Support some more specializations, all, or disable others?
 };
 
-template <typename State, typename Output, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename... UpdateTypes, typename... PredictionTypes>
-struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
+template <typename State, typename Output, typename Transpose, typename Divide,
+          typename Identity, typename... UpdateTypes,
+          typename... PredictionTypes>
+struct kalman<State, Output, void, Transpose, Divide, Identity,
               pack<UpdateTypes...>, pack<PredictionTypes...>> {
   template <typename Row, typename Column>
   using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
@@ -155,7 +155,6 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
 
   Transpose transpose;
   Divide divide;
-  Symmetrize symmetrize;
   Identity identity;
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
@@ -177,12 +176,12 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
-    s = h * p * transpose(h) + r;
+    s = innovation_uncertainty{h * p * transpose(h) + r};
     k = divide(p * transpose(h), s);
     y = z - observation(x, update_pack...);
-    x = x + k * y;
-    p = symmetrize(estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
-                                        k * r * transpose(k)});
+    x = state{x + k * y};
+    p = estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
+                             k * r * transpose(k)};
   }
 
   inline constexpr void predict(const PredictionTypes &...prediction_pack) {
@@ -190,14 +189,14 @@ struct kalman<State, Output, void, Transpose, Symmetrize, Divide, Identity,
     f = transition_state_f(x, prediction_pack...);
     q = noise_process_q(x, prediction_pack...);
     x = transition(x, prediction_pack...);
-    p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
+    p = estimate_uncertainty{f * p * transpose(f) + q};
   }
 };
 
 template <typename State, typename Output, typename Input, typename Transpose,
-          typename Symmetrize, typename Divide, typename Identity,
-          typename... UpdateTypes, typename... PredictionTypes>
-struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
+          typename Divide, typename Identity, typename... UpdateTypes,
+          typename... PredictionTypes>
+struct kalman<State, Output, Input, Transpose, Divide, Identity,
               pack<UpdateTypes...>, pack<PredictionTypes...>> {
   template <typename Row, typename Column>
   using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
@@ -305,7 +304,6 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
 
   Transpose transpose;
   Divide divide;
-  Symmetrize symmetrize;
   Identity identity;
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
@@ -329,9 +327,9 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     s = h * p * transpose(h) + r;
     k = divide(p * transpose(h), s);
     y = z - observation(x, update_pack...);
-    x = x + k * y;
-    p = symmetrize(estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
-                                        k * r * transpose(k)});
+    x = state{x + k * y};
+    p = estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
+                             k * r * transpose(k)};
   }
 
   //! @todo Extended support?
@@ -353,7 +351,7 @@ struct kalman<State, Output, Input, Transpose, Symmetrize, Divide, Identity,
     q = noise_process_q(x, prediction_pack...);
     g = transition_control_g(prediction_pack...);
     x = transition(x, u, prediction_pack...);
-    p = symmetrize(estimate_uncertainty{f * p * transpose(f) + q});
+    p = estimate_uncertainty{f * p * transpose(f) + q};
   }
 };
 
