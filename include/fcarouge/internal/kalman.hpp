@@ -42,10 +42,29 @@ For more information, please refer to <https://unlicense.org> */
 #include "utility.hpp"
 
 #include <functional>
+#include <ranges>
 #include <tuple>
 #include <type_traits>
 
 namespace fcarouge::internal {
+
+template <typename Identity> struct zero final {
+  template <typename Type>
+  [[nodiscard]] inline constexpr auto operator()() const -> Type {
+    return 0 * Identity().template operator()<Type>();
+  }
+
+  template <std::ranges::range Type>
+  [[nodiscard]] inline constexpr auto operator()() const -> Type {
+    Type value;
+    for (auto &&element : value) {
+      element = 0;
+    }
+    return value;
+  }
+
+  // Specialize for arithmetic concept?
+};
 
 template <typename, typename, typename, typename, typename, typename, typename,
           typename>
@@ -89,20 +108,20 @@ struct kalman<State, Output, void, Transpose, Divide, Identity,
   using prediction_types = std::tuple<PredictionTypes...>;
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{0 * Identity().template operator()<state>()};
+  state x{zero<Identity>().template operator()<state>()};
   estimate_uncertainty p{
       Identity().template operator()<estimate_uncertainty>()};
-  process_uncertainty q{0 *
-                        Identity().template operator()<process_uncertainty>()};
-  output_uncertainty r{0 *
-                       Identity().template operator()<output_uncertainty>()};
+  process_uncertainty q{
+      zero<Identity>().template operator()<process_uncertainty>()};
+  output_uncertainty r{
+      zero<Identity>().template operator()<output_uncertainty>()};
   output_model h{Identity().template operator()<output_model>()};
   state_transition f{Identity().template operator()<state_transition>()};
   gain k{Identity().template operator()<gain>()};
-  innovation y{0 * Identity().template operator()<innovation>()};
+  innovation y{zero<Identity>().template operator()<innovation>()};
   innovation_uncertainty s{
       Identity().template operator()<innovation_uncertainty>()};
-  output z{0 * Identity().template operator()<output>()};
+  output z{zero<Identity>().template operator()<output>()};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
@@ -230,22 +249,22 @@ struct kalman<State, Output, Input, Transpose, Divide, Identity,
   using prediction_types = std::tuple<PredictionTypes...>;
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{0 * Identity().template operator()<state>()};
+  state x{zero<Identity>().template operator()<state>()};
   estimate_uncertainty p{
       Identity().template operator()<estimate_uncertainty>()};
-  process_uncertainty q{0 *
-                        Identity().template operator()<process_uncertainty>()};
-  output_uncertainty r{0 *
-                       Identity().template operator()<output_uncertainty>()};
+  process_uncertainty q{
+      zero<Identity>().template operator()<process_uncertainty>()};
+  output_uncertainty r{
+      zero<Identity>().template operator()<output_uncertainty>()};
   output_model h{Identity().template operator()<output_model>()};
   state_transition f{Identity().template operator()<state_transition>()};
   input_control g{Identity().template operator()<input_control>()};
   gain k{Identity().template operator()<gain>()};
-  innovation y{0 * Identity().template operator()<innovation>()};
+  innovation y{zero<Identity>().template operator()<innovation>()};
   innovation_uncertainty s{
       Identity().template operator()<innovation_uncertainty>()};
-  output z{0 * Identity().template operator()<output>()};
-  input u{0 * Identity().template operator()<input>()};
+  output z{zero<Identity>().template operator()<output>()};
+  input u{zero<Identity>().template operator()<input>()};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 

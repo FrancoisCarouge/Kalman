@@ -48,6 +48,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <concepts>
 #include <cstddef>
+// #include <experimental/linalg>
+#include <experimental/mdarray>
+#include <experimental/mdspan>
 #include <functional>
 #include <type_traits>
 #include <utility>
@@ -189,6 +192,176 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! usage and development is harder without compile time units verification.
 //! @todo Should we add back the call operator? How to resolve the
 //! update/predict ordering? And parameter ordering?
+
+namespace stdex = std::experimental;
+namespace stdla = stdex::linalg;
+
+template <typename Type = double,
+          typename Extents = stdex::dextents<std::size_t, 3>,
+          typename LayoutPolicy = stdex::layout_right,
+          typename Container = std::vector<Type>>
+class kalman2 final {
+public:
+  using type = Type;
+  using size_type = typename Extents::size_type;
+  using layout_policy = LayoutPolicy;
+  using container = Container;
+  using accessor_policy = container;
+
+  static inline constexpr size_type state_size{Extents::static_extent(0)};
+  static inline constexpr size_type output_size{Extents::static_extent(1)};
+  static inline constexpr size_type input_size{Extents::static_extent(2)};
+
+  using state = stdex::mdarray<type, stdex::extents<size_type, state_size>,
+                               layout_policy /*, container*/>;
+  using output = stdex::mdarray<type, stdex::extents<size_type, output_size>,
+                                layout_policy>;
+  using input = stdex::mdarray<type, stdex::extents<size_type, input_size>,
+                               layout_policy>;
+  using estimate_uncertainty =
+      stdex::mdarray<type, stdex::extents<size_type, state_size, state_size>,
+                     layout_policy>;
+  using process_uncertainty =
+      stdex::mdarray<type, stdex::extents<size_type, state_size, state_size>,
+                     layout_policy>;
+  using output_uncertainty =
+      stdex::mdarray<type, stdex::extents<size_type, output_size, output_size>,
+                     layout_policy>;
+  using state_transition =
+      stdex::mdarray<type, stdex::extents<size_type, state_size, state_size>,
+                     layout_policy>;
+  using output_model =
+      stdex::mdarray<type, stdex::extents<size_type, output_size, state_size>,
+                     layout_policy>;
+  using input_control =
+      stdex::mdarray<type, stdex::extents<size_type, state_size, input_size>,
+                     layout_policy>;
+  using gain =
+      stdex::mdarray<type, stdex::extents<size_type, state_size, output_size>,
+                     layout_policy>;
+  using innovation = output;
+  using innovation_uncertainty = output_uncertainty;
+
+  state xv{/*...*/};
+  estimate_uncertainty pv{/*...*/};
+  process_uncertainty qv{/*...*/};
+  output_uncertainty rv{/*...*/};
+  output_model hv{/*...*/};
+  state_transition fv{/*...*/};
+  input_control gv{/*...*/};
+  gain kv{/*...*/};
+  innovation yv{/*...*/};
+  innovation_uncertainty sv{/*...*/};
+  output zv{/*...*/};
+  input uv{/*...*/};
+
+  template <typename Mdarray>
+  using mdspan = stdex::mdspan<
+      typename Mdarray::value_type, typename Mdarray::extents_type,
+      typename Mdarray::layout_type /*, typename Mdarray::container_type*/>;
+
+  using state_view = mdspan<state>;
+  using output_view = mdspan<output>;
+  using input_view = mdspan<input>;
+  using estimate_uncertainty_view = mdspan<estimate_uncertainty>;
+  using process_uncertainty_view = mdspan<process_uncertainty>;
+  using output_uncertainty_view = mdspan<output_uncertainty>;
+  using state_transition_view = mdspan<state_transition>;
+  using output_model_view = mdspan<output_model>;
+  using input_control_view = mdspan<input_control>;
+  using gain_view = mdspan<gain>;
+  using innovation_view = mdspan<innovation>;
+  using innovation_uncertainty_view = mdspan<innovation_uncertainty>;
+
+  state_view x{xv.data(), xv.extents()};
+  estimate_uncertainty_view p{pv.data(), pv.extents()};
+  process_uncertainty_view q{qv.data(), qv.extents()};
+  output_uncertainty_view r{rv.data(), rv.extents()};
+  output_model_view h{hv.data(), hv.extents()};
+  state_transition_view f{fv.data(), fv.extents()};
+  input_control_view g{gv.data(), gv.extents()};
+  gain_view k{kv.data(), kv.extents()};
+  innovation_view y{yv.data(), yv.extents()};
+  innovation_uncertainty_view s{sv.data(), sv.extents()};
+  output_view z{zv.data(), zv.extents()};
+  input_view u{uv.data(), uv.extents()};
+
+  // inline constexpr auto x() -> state & { return xv; }
+  // inline constexpr auto x() const -> const state &;
+  // inline constexpr auto x() -> const state &;
+  // inline constexpr void x(const state &value);
+  // inline constexpr void x(state &&value);
+  // inline constexpr void x(const auto &value, const auto &...values);
+  // inline constexpr void x(auto &&value, auto &&...values);
+  // inline constexpr auto z() const -> const output &;
+  // inline constexpr auto u() const
+  //     -> const input &requires(not std::is_same_v<Input, void>)
+  // ;
+  // inline constexpr auto p() -> estimate_uncertainty & { return pv; }
+  // inline constexpr auto p() const -> const estimate_uncertainty & { return
+  // pv; } inline constexpr auto p() -> estimate_uncertainty & { return pv; }
+  // inline constexpr void p(const estimate_uncertainty &value);
+  // inline constexpr void p(estimate_uncertainty &&value);
+  // inline constexpr auto q() const -> const process_uncertainty &;
+  // inline constexpr auto q() -> process_uncertainty &;
+  // inline constexpr void q(const process_uncertainty &value);
+  // inline constexpr void q(process_uncertainty &&value);
+  // inline constexpr void q(const noise_process_function &callable);
+  // inline constexpr void q(noise_process_function &&callable);
+  // inline constexpr auto r() -> output_uncertainty & { return rv; }
+  // inline constexpr auto r() const -> const output_uncertainty &;
+  // inline constexpr auto r() -> output_uncertainty &;
+  // inline constexpr void r(const output_uncertainty &value);
+  // inline constexpr void r(output_uncertainty &&value);
+  // // inline constexpr void r(const noise_observation_function &callable);
+  // inline constexpr void r(noise_observation_function &&callable);
+  // inline constexpr auto f() const -> const state_transition &;
+  // inline constexpr auto f() -> state_transition &;
+  // inline constexpr void f(const state_transition &value);
+  // inline constexpr void f(state_transition &&value);
+  // inline constexpr void f(const transition_state_function &callable);
+  // inline constexpr void f(transition_state_function &&callable);
+  // inline constexpr auto h() const -> const output_model &;
+  // inline constexpr auto h() -> output_model &;
+  // inline constexpr void h(const output_model &value);
+  // inline constexpr void h(output_model &&value);
+  // inline constexpr void h(const observation_state_function &callable);
+  // inline constexpr void h(observation_state_function &&callable);
+  // inline constexpr auto g() const
+  //     -> const input_control &requires(not std::is_same_v<Input, void>)
+  // ;
+  // inline constexpr auto g()
+  //     -> input_control &requires(not std::is_same_v<Input, void>)
+  // ;
+  // inline constexpr void g(const input_control &value)
+  // requires(not std::is_same_v<Input, void>)
+  // ;
+  // inline constexpr void g(input_control &&value)
+  // requires(not std::is_same_v<Input, void>)
+  // ;
+  // inline constexpr void g(const transition_control_function &callable);
+  // inline constexpr void g(transition_control_function &&callable);
+  // inline constexpr auto k() const -> const gain &;
+  // inline constexpr auto y() const -> const innovation &;
+  // inline constexpr auto s() const -> const innovation_uncertainty &;
+  // inline constexpr void transition(const transition_function &callable);
+  // inline constexpr void transition(transition_function &&callable);
+  // inline constexpr void observation(const observation_function &callable);
+  // inline constexpr void observation(observation_function &&callable);
+  // inline constexpr void predict(const auto &...arguments);
+  // template <std::size_t Position> inline constexpr auto predict() const;
+
+  template <typename Output0, typename... OutputN>
+  inline constexpr void update(const Output0 &output_z,
+                               const OutputN &...outputs_z) {
+
+    z[0] = output_z; // constexpr_for
+    // s = innovation_uncertainty{h * p * transpose(h) + r};
+    stdla::transposed(h);
+  }
+  // template <std::size_t Position> inline constexpr auto update() const;
+};
+
 template <
     typename State = double, typename Output = double, typename Input = void,
     typename Transpose = std::identity, typename Divide = std::divides<void>,
@@ -407,7 +580,7 @@ public:
   //! @todo Collapse cv-ref qualifier-aware member functions per C++23 P0847 to
   //! avoid duplication: `inline constexpr auto & x(this auto&& self)`.
   inline constexpr auto x() const -> const state &;
-  inline constexpr auto x() -> state &;
+  inline constexpr auto x() -> const state &;
 
   //! @brief Sets the state estimate column vector X.
   //!
@@ -895,7 +1068,7 @@ template <typename State, typename Output, typename Input, typename Transpose,
 [[nodiscard("The returned state estimate column vector X is unexpectedly "
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Transpose, Divide, Identity, UpdateTypes,
-       PredictionTypes>::x() -> state & {
+       PredictionTypes>::x() -> const state & {
   return filter.x;
 }
 

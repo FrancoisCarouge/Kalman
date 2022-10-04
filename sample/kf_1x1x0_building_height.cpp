@@ -21,26 +21,32 @@ namespace {
 //! @example kf_1x1x0_building_height.cpp
 [[maybe_unused]] auto kf_1x1x0_building_height{[] {
   // A one-dimensional filter, constant system dynamic model.
+  using kalman = kalman2<double, stdex::extents<std::size_t, 1, 1, 0>>;
   kalman filter;
 
   // Initialization
   // One can estimate the building height simply by looking at it. The estimated
   // building height is: 60 meters.
-  filter.x(60.);
+  //   kalman::state x{1};
+  //   x[0] = 60.;
+  filter.x[0] = 60.;
 
   // Now we shall initialize the estimate uncertainty. A human’s estimation
   // error (standard deviation) is about 15 meters: σ = 15. Consequently the
   // variance is 225: σ^2 = 225.
-  filter.p(225.);
+  //   kalman::estimate_uncertainty p{1, 1};
+  //   p[0, 0] = 225.;
+  //   filter.p(p);
+  filter.p[0, 0] = 225.;
 
   // Prediction
   // Now, we shall predict the next state based on the initialization values.
   // Note: The prediction operation needs not be performed since the process
   // noise covariance Q is null in this example.
-  assert(60 == filter.x() &&
+  assert(60 == filter.x[0] &&
          "Since our system's dynamic model is constant, i.e. the building "
          "doesn't change its height: 60 meters.");
-  assert(225 == filter.p() &&
+  assert((225 == filter.p[0, 0]) &&
          "The extrapolated estimate uncertainty (variance) also doesn't "
          "change: 225");
 
@@ -48,7 +54,10 @@ namespace {
   // The first measurement is: z1 = 48.54m. Since the standard deviation σ of
   // the altimeter measurement error is 5, the variance σ^2 would be 25, thus
   // the measurement uncertainty is: r1 = 25.
-  filter.r(25.);
+  //   kalman::output_uncertainty r{1, 1};
+  //   r[0, 0] = 25.;
+  //   filter.r(r);
+  filter.r[0, 0] = 25.;
 
   filter.update(48.54);
 
@@ -65,7 +74,7 @@ namespace {
 
   // After 10 measurements the filter estimates the height of the building
   // at 49.57m.
-  assert(49.57 - 0.001 < filter.x() && filter.x() < 49.57 + 0.001 &&
+  assert(49.57 - 0.001 < filter.x[0] && filter.x[0] < 49.57 + 0.001 &&
          "After 10 measurement and update iterations, the building estimated "
          "height is: 49.57m.");
 
