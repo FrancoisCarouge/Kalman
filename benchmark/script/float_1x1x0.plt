@@ -54,4 +54,4 @@ set key noautotitle
 
 plot "/tmp/kalman/baseline.csv" using (0):1 with boxes linecolor rgb "#F7DC6F", \
   "/tmp/kalman/predict_1x1x0.csv" using (1):1 with boxes linecolor rgb "#F4D03F", \
-  "/tmp/kalman/update_1x1x0.csv" using (2):1 with boxes linecolor rgb "#F4D03F"
+  "/tmp/kalman/update_1x1x0.csv" using (2):1 with boxes linecolor rgb "#F1C40F"
