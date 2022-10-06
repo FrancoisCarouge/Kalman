@@ -6,7 +6,7 @@ Build and run the benchmarks on all platforms:
 git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git "kalman"
 cmake -S "kalman" -B "build" -G "Ninja Multi-Config"
 cmake --build "build" --config "Release" --parallel
-ctest --test-dir "build" --tests-regex "kalman_benchmark"
+ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark"
 ```
 
 Plot the results on Linux:
