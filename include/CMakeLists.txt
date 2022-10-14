@@ -72,5 +72,5 @@ endif()
 
 add_library(kalman INTERFACE)
 target_include_directories(kalman INTERFACE ".")
-target_link_libraries(kalman INTERFACE ${LIBRARIES})
+target_link_libraries(kalman INTERFACE ${LIBRARIES} Eigen3::Eigen)
 target_compile_options(kalman INTERFACE ${OPTIONS})

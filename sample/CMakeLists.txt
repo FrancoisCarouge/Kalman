@@ -48,6 +48,7 @@ set(SOURCES
 foreach(SAMPLE ${SOURCES})
   get_filename_component(NAME ${SAMPLE} NAME_WE)
   add_executable(kalman_sample_${NAME}_driver ${SAMPLE})
-  target_link_libraries(kalman_sample_${NAME}_driver PRIVATE eigen kalman main)
+  target_link_libraries(kalman_sample_${NAME}_driver PRIVATE Eigen3::Eigen
+                                                             kalman main)
   add_test(kalman_sample_${NAME} kalman_sample_${NAME}_driver)
 endforeach()
