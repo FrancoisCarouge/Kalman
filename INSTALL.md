@@ -21,7 +21,7 @@ Build and run the tests and samples on all platforms:
 git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git "kalman"
 cmake -S "kalman" -B "build" -G "Ninja Multi-Config"
 cmake --build "build" --config "Debug" --parallel
-ctest --test-dir "build" --tests-regex "kalman_(test|sample)" --output-on-failure --parallel
+ctest --test-dir "build" --build-config "Debug" --tests-regex "kalman_(test|sample)" --output-on-failure --parallel
 ```
 
 ## Benchmarks

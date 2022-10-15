@@ -59,7 +59,7 @@ foreach(BENCHMARK ${SOURCES})
                                                                      "include")
   target_link_libraries(
     kalman_benchmark_${NAME}_driver
-    PRIVATE eigen kalman benchmark::benchmark_main benchmark::benchmark)
+    PRIVATE Eigen3::Eigen kalman benchmark::benchmark_main benchmark::benchmark)
   add_test(kalman_benchmark_${NAME} kalman_benchmark_${NAME}_driver
            "--benchmark_out=${NAME}.json")
 endforeach()
