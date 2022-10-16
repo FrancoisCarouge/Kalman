@@ -18,10 +18,10 @@ Standard formatter specialization provided for representation of the filter stat
 
 - [Kalman Filter for C++](#kalman-filter-for-c)
 - [Examples](#examples)
-  - [1x1 Constant System Dynamic Model](#1x1-constant-system-dynamic-model)
-  - [6x2 Constant Acceleration Dynamic Model](#6x2-constant-acceleration-dynamic-model)
-  - [4x1 Non-Linear Dynamic Model](#4x1-non-linear-dynamic-model)
-- [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
+  - [1x1 Constant System Dynamic Model Filter](#1x1-constant-system-dynamic-model-filter)
+  - [6x2 Constant Acceleration Dynamic Model Filter](#6x2-constant-acceleration-dynamic-model-filter)
+  - [4x1 Non-Linear Dynamic Model Extended Filter](#4x1-non-linear-dynamic-model-extended-filter)
+  - [Other Examples](#other-examples)
 - [Class kalman](#class-kalman)
   - [Declaration](#declaration)
   - [Template Parameters](#template-parameters)
@@ -37,6 +37,7 @@ Standard formatter specialization provided for representation of the filter stat
   - [Lessons Learned](#lessons-learned)
   - [Performance](#performance)
 - [Resources](#resources)
+- [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
 - [Third Party Acknowledgement](#third-party-acknowledgement)
 - [Sponsors](#sponsors)
   - [Corporate Sponsor](#corporate-sponsor)
@@ -45,9 +46,9 @@ Standard formatter specialization provided for representation of the filter stat
 
 # Examples
 
-## 1x1 Constant System Dynamic Model
+## 1x1 Constant System Dynamic Model Filter
 
-Example from the building height estimation sample. One estimated state and one observed output filter.
+Example from the [building height estimation](sample/kf_1x1x0_building_height.cpp) sample. One estimated state and one observed output filter.
 
 ```cpp
 kalman filter;
@@ -59,9 +60,9 @@ filter.r(25.);
 filter.update(48.54);
 ```
 
-## 6x2 Constant Acceleration Dynamic Model
+## 6x2 Constant Acceleration Dynamic Model Filter
 
-Example from the 2-dimension vehicle location estimation sample. Six estimated states and two observed outputs filter.
+Example from the [2-dimension vehicle location, velocity, and acceleration vehicle estimation](sample/kf_6x2x0_vehicle_location.cpp) sample. Six estimated states and two observed outputs filter.
 
 ```cpp
 using kalman = kalman<vector<double, 6>, vector<double, 2>>;
@@ -95,9 +96,9 @@ filter.predict();
 filter.update(-375.93, 301.78);
 ```
 
-## 4x1 Non-Linear Dynamic Model
+## 4x1 Non-Linear Dynamic Model Extended Filter
 
-Example from the thermal, current of warm air, strength, radius, and location estimation sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
+Example from the [thermal, current of warm air, strength, radius, and location estimation](sample/ekf_4x1x0_soaring.cpp) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
 
 ```cpp
 using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
@@ -142,52 +143,12 @@ filter.predict(drift_x, drift_y);
 filter.update(position_x, position_y, variometer);
 ```
 
-# Continuous Integration & Deployment Actions
+## Other Examples
 
-[![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
-<br>
-<br>
-[![Test: Ubuntu 22.04 GCC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc.yml)
-<br>
-[![Windows 2019 MSVC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml)
-<br>
-[![Ubuntu 22.04 Clang](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml)
-<br>
-<br>
-[![ClangFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml)
-<br>
-[![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
-<br>
-[![CMakeFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml)
-<br>
-[![Coverage Status](https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=develop)](https://coveralls.io/github/FrancoisCarouge/Kalman?branch=develop)
-<br>
-[![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
-<br>
-[![Address Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml)
-<br>
-[![Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml)
-<br>
-[![Leak Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml)
-<br>
-[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml)
-<br>
-[![Thread Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml)
-<br>
-[![Undefined Behavior Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml)
-<br>
-<br>
-[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/develop/LICENSE.txt)
-<br>
-[![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
-<br>
-<br>
-[![Deploy Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml)
-<br>
-[![Deploy Code Coverage](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml)
-<br>
-<br>
-[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
+- 1x1 constant system dynamic model filter of the [temperature of a liquid in a tank](sample/kf_1x1x0_building_height.cpp).
+- 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](sample/kf_1x1x1_dog_position.cpp).
+- 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](sample/kf_2x1x1_rocket_altitude.cpp).
+- 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](sample/kf_8x4x0_deep_sort_bounding_box.cpp).
 
 # Class kalman
 
@@ -338,6 +299,53 @@ Awesome resources to learn about Kalman filters:
 - [How Kalman Filters Work](https://www.anuncommonlab.com/articles/how-kalman-filters-work) by Tucker McClure of An Uncommon Lab.
 - [Wikipedia Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter) by Wikipedia, the free encyclopedia.
 - [Applications of Kalman Filtering in Aerospace 1960 to the Present](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5466132) by Mohinder S. Grewal and Angus P. Andrews. IEEE 2010.
+
+# Continuous Integration & Deployment Actions
+
+[![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
+<br>
+<br>
+[![Test: Ubuntu 22.04 GCC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc.yml)
+<br>
+[![Windows 2019 MSVC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml)
+<br>
+[![Ubuntu 22.04 Clang](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml)
+<br>
+<br>
+[![ClangFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml)
+<br>
+[![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
+<br>
+[![CMakeFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml)
+<br>
+[![Coverage Status](https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=develop)](https://coveralls.io/github/FrancoisCarouge/Kalman?branch=develop)
+<br>
+[![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
+<br>
+[![Address Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml)
+<br>
+[![Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml)
+<br>
+[![Leak Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml)
+<br>
+[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml)
+<br>
+[![Thread Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml)
+<br>
+[![Undefined Behavior Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml)
+<br>
+<br>
+[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/develop/LICENSE.txt)
+<br>
+[![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
+<br>
+<br>
+[![Deploy Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml)
+<br>
+[![Deploy Code Coverage](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml)
+<br>
+<br>
+[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
 
 # Third Party Acknowledgement
 
