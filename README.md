@@ -348,6 +348,7 @@ The library is designed, developed, and tested with the help of third-party tool
 - [Coveralls](https://coveralls.io) to measure [code coverage](https://coveralls.io/github/FrancoisCarouge/Kalman).
 - [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
 - [Doxygen](https://doxygen.nl) for documentation generation.
+- [Eigen](https://eigen.tuxfamily.org/) for linear algebra.
 - [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
 - [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
 - [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
