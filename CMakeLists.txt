@@ -54,7 +54,8 @@ include(GNUInstallDirs)
 FetchContent_Declare(
   eigen
   URL "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2"
-  URL_HASH MD5=132dde48fe2b563211675626d29f1707)
+  URL_HASH MD5=132dde48fe2b563211675626d29f1707
+  FIND_PACKAGE_ARGS NAMES Eigen3)
 
 FetchContent_Declare(
   fmt
