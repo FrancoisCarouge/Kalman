@@ -75,7 +75,17 @@ FetchContent_Declare(
   URL_HASH MD5=e82199374acdfda3f425331028eb4e2a
   FIND_PACKAGE_ARGS NAMES GTest)
 
-FetchContent_MakeAvailable(eigen fmt google_test google_benchmark)
+FetchContent_Declare(
+  linalg
+  GIT_REPOSITORY "https://github.com/kokkos/stdBLAS.git"
+  GIT_TAG b32be9710be5a7b783dba49c7c4070f66c26259b)
+
+FetchContent_Declare(
+  mdspan
+  GIT_REPOSITORY "https://github.com/kokkos/mdspan.git"
+  GIT_TAG 760060059fb746018a9849234e02dc9bf003861b)
+
+FetchContent_MakeAvailable(eigen fmt google_test google_benchmark mdspan linalg)
 
 add_subdirectory(benchmark)
 add_subdirectory(include)
