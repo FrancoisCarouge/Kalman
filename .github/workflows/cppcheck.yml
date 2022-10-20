@@ -35,6 +35,20 @@ jobs:
             cmake ..
             cmake --build . --parallel
             sudo cmake --install . ) )
+        ( cd /tmp
+          git clone --depth 1 https://github.com/kokkos/mdspan.git
+          mkdir mdspan/build
+          ( cd mdspan/build
+            cmake ..
+            cmake --build . --parallel
+            sudo cmake --install . ) )
+        ( cd /tmp
+          git clone --depth 1 https://github.com/kokkos/stdBLAS.git
+          mkdir stdBLAS/build
+          ( cd stdBLAS/build
+            cmake ..
+            cmake --build . --parallel
+            sudo cmake --install . ) )
     - name: Verify
       run: |
         cppcheck \
