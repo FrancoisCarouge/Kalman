@@ -54,9 +54,6 @@ using transpose = internal::transpose;
 //! @brief Function object for performing Eigen matrix division.
 using divide = internal::divide;
 
-//! @brief Function object for providing an Eigen identity matrix.
-using identity_matrix = internal::identity_matrix;
-
 //! @brief Convenience tuple-like empty pack type.
 using empty_pack = fcarouge::internal::empty_pack;
 
@@ -80,7 +77,7 @@ template <typename State = double, typename Output = double,
           typename Input = void, typename UpdateTypes = empty_pack,
           typename PredictionTypes = empty_pack>
 using kalman = fcarouge::kalman<State, Output, Input, transpose, divide,
-                                identity_matrix, UpdateTypes, PredictionTypes>;
+                                UpdateTypes, PredictionTypes>;
 
 } // namespace fcarouge::eigen
 

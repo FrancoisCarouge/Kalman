@@ -39,9 +39,13 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_UTILITY_HPP
 #define FCAROUGE_INTERNAL_UTILITY_HPP
 
+#include <concepts>
 #include <type_traits>
 
 namespace fcarouge::internal {
+
+template <typename Type>
+concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
 struct empty {
   inline constexpr explicit empty(auto &&...any) noexcept {
@@ -75,6 +79,18 @@ constexpr void for_constexpr(Function &&function) {
     for_constexpr<Begin + Increment, End, Increment>(function);
   }
 }
+
+template <typename Type>
+inline const Type identity_v{
+    //! @todo Implement standard, default form.
+};
+
+template <arithmetic Arithmetic>
+inline const Arithmetic identity_v<Arithmetic>{1};
+
+template <typename Matrix>
+  requires requires(Matrix value) { value.Identity(); }
+inline const auto identity_v<Matrix>{Matrix::Identity()};
 
 } // namespace fcarouge::internal
 
