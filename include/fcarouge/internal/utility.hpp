@@ -92,6 +92,17 @@ template <typename Matrix>
   requires requires(Matrix value) { value.Identity(); }
 inline const auto identity_v<Matrix>{Matrix::Identity()};
 
+template <typename Type>
+inline const Type zero_v{
+    //! @todo Implement standard, default form.
+};
+
+template <arithmetic Arithmetic> inline const Arithmetic zero_v<Arithmetic>{0};
+
+template <typename Matrix>
+  requires requires(Matrix value) { value.Zero(); }
+inline const auto zero_v<Matrix>{Matrix::Zero()};
+
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP
