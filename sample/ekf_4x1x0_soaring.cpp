@@ -1,10 +1,14 @@
 #include "fcarouge/eigen/kalman.hpp"
 
+#include <Eigen/Eigen>
+
 #include <cassert>
 #include <cmath>
 
 namespace fcarouge::eigen::sample {
 namespace {
+
+template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 
 //! @brief ArduPilot Plane Soaring
 //!

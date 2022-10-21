@@ -45,8 +45,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman.hpp"
 #include "internal/utility.hpp"
 
-#include <Eigen/Eigen>
-
 namespace fcarouge::eigen {
 //! @brief Function object for performing Eigen matrix transposition.
 using transpose = internal::transpose;
@@ -59,13 +57,6 @@ using empty_pack = fcarouge::internal::empty_pack;
 
 //! @brief Convenience tuple-like pack type.
 template <typename... Types> using pack = fcarouge::internal::pack<Types...>;
-
-//! @brief Convenience Eigen vector.
-template <typename Type, auto Size> using vector = internal::vector<Type, Size>;
-
-//! @brief Convenience Eigen matrix.
-template <typename Type, auto RowSize, auto ColumnSize>
-using matrix = internal::matrix<Type, RowSize, ColumnSize>;
 
 //! @brief Eigen-based Kalman filter.
 //!

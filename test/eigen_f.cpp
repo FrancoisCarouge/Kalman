@@ -38,10 +38,18 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/eigen/kalman.hpp"
 
+#include <Eigen/Eigen>
+
 #include <cassert>
 
 namespace fcarouge::eigen::test {
 namespace {
+
+template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+
+template <typename Type, auto RowSize, auto ColumnSize>
+using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
+
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto f_5x4x3{[] {
