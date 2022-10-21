@@ -89,16 +89,16 @@ struct kalman<State, Output, void, Transpose, Divide, pack<UpdateTypes...>,
   inline static const auto i{identity_v<matrix<state, state>>};
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{0 * identity_v<state>};
+  state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
-  process_uncertainty q{0 * identity_v<process_uncertainty>};
-  output_uncertainty r{0 * identity_v<output_uncertainty>};
+  process_uncertainty q{zero_v<process_uncertainty>};
+  output_uncertainty r{zero_v<output_uncertainty>};
   output_model h{identity_v<output_model>};
   state_transition f{identity_v<state_transition>};
   gain k{identity_v<gain>};
-  innovation y{0 * identity_v<innovation>};
+  innovation y{zero_v<innovation>};
   innovation_uncertainty s{identity_v<innovation_uncertainty>};
-  output z{0 * identity_v<output>};
+  output z{zero_v<output>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
@@ -223,18 +223,18 @@ struct kalman<State, Output, Input, Transpose, Divide, pack<UpdateTypes...>,
   inline static const auto i{identity_v<matrix<state, state>>};
 
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{0 * identity_v<state>};
+  state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
-  process_uncertainty q{0 * identity_v<process_uncertainty>};
-  output_uncertainty r{0 * identity_v<output_uncertainty>};
+  process_uncertainty q{zero_v<process_uncertainty>};
+  output_uncertainty r{zero_v<output_uncertainty>};
   output_model h{identity_v<output_model>};
   state_transition f{identity_v<state_transition>};
   input_control g{identity_v<input_control>};
   gain k{identity_v<gain>};
-  innovation y{0 * identity_v<innovation>};
+  innovation y{zero_v<innovation>};
   innovation_uncertainty s{identity_v<innovation_uncertainty>};
-  output z{0 * identity_v<output>};
-  input u{0 * identity_v<input>};
+  output z{zero_v<output>};
+  input u{zero_v<input>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
