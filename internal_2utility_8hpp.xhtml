@@ -91,13 +91,14 @@ $(document).ready(function(){initNavTree('internal_2utility_8hpp.xhtml',''); ini
   <div class="headertitle"><div class="title">utility.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;type_traits&gt;</code><br />
+<div class="textblock"><code>#include &lt;concepts&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for utility.hpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="internal_2utility_8hpp__incl.svg" width="174" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="internal_2utility_8hpp__incl.svg" width="192" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -139,6 +140,15 @@ Variables</h2></td></tr>
 <tr class="memitem:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memTemplParams" colspan="2">template&lt;typename From &gt; </td></tr>
 <tr class="memitem:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9">fcarouge::internal::repack_s</a> {repack&lt;From&gt;::size}</td></tr>
 <tr class="separator:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49cc5985ed906b5c5380955ce30d875e"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a49cc5985ed906b5c5380955ce30d875e"><td class="memTemplItemLeft" align="right" valign="top">const Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a49cc5985ed906b5c5380955ce30d875e">fcarouge::internal::identity_v</a></td></tr>
+<tr class="separator:a49cc5985ed906b5c5380955ce30d875e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae63dc37ad3ac075dec1c53ff5e5682"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:a7ae63dc37ad3ac075dec1c53ff5e5682"><td class="memTemplItemLeft" align="right" valign="top">const Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a7ae63dc37ad3ac075dec1c53ff5e5682">fcarouge::internal::identity_v&lt; Arithmetic &gt;</a> {1}</td></tr>
+<tr class="separator:a7ae63dc37ad3ac075dec1c53ff5e5682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f3c00157550eff4aadf4c465238923"><td class="memTemplParams" colspan="2">template&lt;typename Matrix &gt; </td></tr>
+<tr class="memitem:a26f3c00157550eff4aadf4c465238923"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a26f3c00157550eff4aadf4c465238923">fcarouge::internal::identity_v&lt; Matrix &gt;</a> {Matrix::Identity()}</td></tr>
+<tr class="separator:a26f3c00157550eff4aadf4c465238923"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -146,7 +156,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2utility_8hpp.xhtml">utility.hpp</a></li>
-    <li class="footer">Generated on Thu Oct 20 2022 04:49:22 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Oct 21 2022 02:45:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

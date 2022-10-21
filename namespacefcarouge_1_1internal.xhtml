@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('namespacefcarouge_1_1internal.xhtml','
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#concepts">Concepts</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -101,9 +102,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, Input, Transpose, Divide, Identity, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, Input, Transpose, Divide, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, void, Transpose, Divide, Identity, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, void, Transpose, Divide, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>pack</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +132,15 @@ Variables</h2></td></tr>
 <tr class="memitem:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memTemplParams" colspan="2">template&lt;typename From &gt; </td></tr>
 <tr class="memitem:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9">repack_s</a> {repack&lt;From&gt;::size}</td></tr>
 <tr class="separator:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49cc5985ed906b5c5380955ce30d875e"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a49cc5985ed906b5c5380955ce30d875e"><td class="memTemplItemLeft" align="right" valign="top">const Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a49cc5985ed906b5c5380955ce30d875e">identity_v</a></td></tr>
+<tr class="separator:a49cc5985ed906b5c5380955ce30d875e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae63dc37ad3ac075dec1c53ff5e5682"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:a7ae63dc37ad3ac075dec1c53ff5e5682"><td class="memTemplItemLeft" align="right" valign="top">const Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a7ae63dc37ad3ac075dec1c53ff5e5682">identity_v&lt; Arithmetic &gt;</a> {1}</td></tr>
+<tr class="separator:a7ae63dc37ad3ac075dec1c53ff5e5682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f3c00157550eff4aadf4c465238923"><td class="memTemplParams" colspan="2">template&lt;typename Matrix &gt; </td></tr>
+<tr class="memitem:a26f3c00157550eff4aadf4c465238923"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a26f3c00157550eff4aadf4c465238923">identity_v&lt; Matrix &gt;</a> {Matrix::Identity()}</td></tr>
+<tr class="separator:a26f3c00157550eff4aadf4c465238923"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Internal implementation details. </p>
@@ -148,7 +158,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00055">55</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00059">59</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -166,7 +176,7 @@ template&lt;typename From &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00067">67</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00071">71</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -197,27 +207,108 @@ template&lt;auto Begin, auto End, auto Increment, typename Function &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00072">72</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>                                                  {</div>
-<div class="line"><span class="lineno">   73</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
-<div class="line"><span class="lineno">   74</span>    function(std::integral_constant&lt;<span class="keyword">decltype</span>(Begin), Begin&gt;());</div>
-<div class="line"><span class="lineno">   75</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(function);</div>
-<div class="line"><span class="lineno">   76</span>  }</div>
-<div class="line"><span class="lineno">   77</span>}</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00076">76</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                  {</div>
+<div class="line"><span class="lineno">   77</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
+<div class="line"><span class="lineno">   78</span>    function(std::integral_constant&lt;<span class="keyword">decltype</span>(Begin), Begin&gt;());</div>
+<div class="line"><span class="lineno">   79</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(function);</div>
+<div class="line"><span class="lineno">   80</span>  }</div>
+<div class="line"><span class="lineno">   81</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="eigen__predict__x1x_8cpp_source.xhtml#l00058">fcarouge::eigen::benchmark::eigen_predict()</a>, <a class="el" href="eigen__update__xx0_8cpp_source.xhtml#l00058">fcarouge::eigen::benchmark::eigen_update()</a>, and <a class="el" href="format_8hpp_source.xhtml#l00071">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, Transpose, Divide, Identity, UpdateTypes, PredictionTypes &gt;, Char &gt;::format()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="eigen__predict__x1x_8cpp_source.xhtml#l00058">fcarouge::eigen::benchmark::eigen_predict()</a>, <a class="el" href="eigen__update__xx0_8cpp_source.xhtml#l00058">fcarouge::eigen::benchmark::eigen_update()</a>, and <a class="el" href="format_8hpp_source.xhtml#l00069">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, Transpose, Divide, UpdateTypes, PredictionTypes &gt;, Char &gt;::format()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a4c0bbc15a41d76dd2b4b23d8566fba57_icgraph.svg" width="395" height="228"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a4c0bbc15a41d76dd2b4b23d8566fba57_icgraph.svg" width="382" height="228"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a49cc5985ed906b5c5380955ce30d875e" name="a49cc5985ed906b5c5380955ce30d875e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49cc5985ed906b5c5380955ce30d875e">&#9670;&nbsp;</a></span>identity_v</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const Type fcarouge::internal::identity_v</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">    </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00084">84</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7ae63dc37ad3ac075dec1c53ff5e5682" name="a7ae63dc37ad3ac075dec1c53ff5e5682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ae63dc37ad3ac075dec1c53ff5e5682">&#9670;&nbsp;</a></span>identity_v&lt; Arithmetic &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;arithmetic Arithmetic&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const Arithmetic <a class="el" href="namespacefcarouge_1_1internal.xhtml#a49cc5985ed906b5c5380955ce30d875e">fcarouge::internal::identity_v</a>&lt; Arithmetic &gt; {1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00089">89</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a26f3c00157550eff4aadf4c465238923" name="a26f3c00157550eff4aadf4c465238923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26f3c00157550eff4aadf4c465238923">&#9670;&nbsp;</a></span>identity_v&lt; Matrix &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto <a class="el" href="namespacefcarouge_1_1internal.xhtml#a49cc5985ed906b5c5380955ce30d875e">fcarouge::internal::identity_v</a>&lt; Matrix &gt; {Matrix::Identity()}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a61c7050558e5ccfe40b4c5d1c5c058b9" name="a61c7050558e5ccfe40b4c5d1c5c058b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a61c7050558e5ccfe40b4c5d1c5c058b9">&#9670;&nbsp;</a></span>repack_s</h2>
 
@@ -240,7 +331,7 @@ template&lt;typename From &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00069">69</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00073">73</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -250,7 +341,7 @@ template&lt;typename From &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Thu Oct 20 2022 04:49:22 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Oct 21 2022 02:45:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
