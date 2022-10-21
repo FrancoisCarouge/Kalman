@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/eigen/kalman.hpp"
 #include "fcarouge/internal/utility.hpp"
 
+#include <Eigen/Eigen>
 #include <benchmark/benchmark.h>
 
 #include <algorithm>
@@ -51,6 +52,9 @@ For more information, please refer to <https://unlicense.org> */
 #include <random>
 
 namespace fcarouge::eigen::benchmark {
+namespace {
+
+template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 
 //! @benchmark Measure the prediction of the filter for different dimensions of
 //! states and inputs with the Eigen linear algebra backend.
@@ -104,4 +108,5 @@ BENCHMARK(eigen_predict<${STATE_SIZE}, ${INPUT_SIZE}>)
             -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
                 -> Repetitions(100);
 
+} // namespace
 } // namespace fcarouge::eigen::benchmark

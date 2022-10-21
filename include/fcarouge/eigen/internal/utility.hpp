@@ -50,11 +50,6 @@ namespace fcarouge::eigen::internal {
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
-
-template <typename Type, auto RowSize, auto ColumnSize>
-using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
-
 struct transpose final {
   template <typename Type>
   [[nodiscard]] inline constexpr auto operator()(const Type &value) const {

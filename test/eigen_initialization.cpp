@@ -38,10 +38,17 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/eigen/kalman.hpp"
 
+#include <Eigen/Eigen>
+
 #include <cassert>
 
 namespace fcarouge::eigen::test {
 namespace {
+
+template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+
+template <typename Type, auto RowSize, auto ColumnSize>
+using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto defaults543{[] {
