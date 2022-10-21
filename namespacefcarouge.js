@@ -10,7 +10,10 @@ var namespacefcarouge =
       [ "identity_v", "namespacefcarouge_1_1internal.xhtml#a49cc5985ed906b5c5380955ce30d875e", null ],
       [ "identity_v< Arithmetic >", "namespacefcarouge_1_1internal.xhtml#a7ae63dc37ad3ac075dec1c53ff5e5682", null ],
       [ "identity_v< Matrix >", "namespacefcarouge_1_1internal.xhtml#a26f3c00157550eff4aadf4c465238923", null ],
-      [ "repack_s", "namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9", null ]
+      [ "repack_s", "namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9", null ],
+      [ "zero_v", "namespacefcarouge_1_1internal.xhtml#a3e93bd2cb263c45e44549d3d172d14f4", null ],
+      [ "zero_v< Arithmetic >", "namespacefcarouge_1_1internal.xhtml#ad5b370add02a0bfd986b84c4806fc2dc", null ],
+      [ "zero_v< Matrix >", "namespacefcarouge_1_1internal.xhtml#ace0a378b2a42f9e8c113c89bfb3b816c", null ]
     ] ],
     [ "sample", "namespacefcarouge_1_1sample.xhtml", "namespacefcarouge_1_1sample" ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],

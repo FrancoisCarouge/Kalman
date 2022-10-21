@@ -141,6 +141,15 @@ Variables</h2></td></tr>
 <tr class="memitem:a26f3c00157550eff4aadf4c465238923"><td class="memTemplParams" colspan="2">template&lt;typename Matrix &gt; </td></tr>
 <tr class="memitem:a26f3c00157550eff4aadf4c465238923"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a26f3c00157550eff4aadf4c465238923">identity_v&lt; Matrix &gt;</a> {Matrix::Identity()}</td></tr>
 <tr class="separator:a26f3c00157550eff4aadf4c465238923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e93bd2cb263c45e44549d3d172d14f4"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a3e93bd2cb263c45e44549d3d172d14f4"><td class="memTemplItemLeft" align="right" valign="top">const Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a3e93bd2cb263c45e44549d3d172d14f4">zero_v</a></td></tr>
+<tr class="separator:a3e93bd2cb263c45e44549d3d172d14f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b370add02a0bfd986b84c4806fc2dc"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:ad5b370add02a0bfd986b84c4806fc2dc"><td class="memTemplItemLeft" align="right" valign="top">const Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ad5b370add02a0bfd986b84c4806fc2dc">zero_v&lt; Arithmetic &gt;</a> {0}</td></tr>
+<tr class="separator:ad5b370add02a0bfd986b84c4806fc2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace0a378b2a42f9e8c113c89bfb3b816c"><td class="memTemplParams" colspan="2">template&lt;typename Matrix &gt; </td></tr>
+<tr class="memitem:ace0a378b2a42f9e8c113c89bfb3b816c"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ace0a378b2a42f9e8c113c89bfb3b816c">zero_v&lt; Matrix &gt;</a> {Matrix::Zero()}</td></tr>
+<tr class="separator:ace0a378b2a42f9e8c113c89bfb3b816c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Internal implementation details. </p>
@@ -335,13 +344,94 @@ template&lt;typename From &gt; </div>
 
 </div>
 </div>
+<a id="a3e93bd2cb263c45e44549d3d172d14f4" name="a3e93bd2cb263c45e44549d3d172d14f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e93bd2cb263c45e44549d3d172d14f4">&#9670;&nbsp;</a></span>zero_v</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const Type fcarouge::internal::zero_v</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">    </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00096">96</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad5b370add02a0bfd986b84c4806fc2dc" name="ad5b370add02a0bfd986b84c4806fc2dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b370add02a0bfd986b84c4806fc2dc">&#9670;&nbsp;</a></span>zero_v&lt; Arithmetic &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;arithmetic Arithmetic&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const Arithmetic <a class="el" href="namespacefcarouge_1_1internal.xhtml#a3e93bd2cb263c45e44549d3d172d14f4">fcarouge::internal::zero_v</a>&lt; Arithmetic &gt; {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00100">100</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ace0a378b2a42f9e8c113c89bfb3b816c" name="ace0a378b2a42f9e8c113c89bfb3b816c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace0a378b2a42f9e8c113c89bfb3b816c">&#9670;&nbsp;</a></span>zero_v&lt; Matrix &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto <a class="el" href="namespacefcarouge_1_1internal.xhtml#a3e93bd2cb263c45e44549d3d172d14f4">fcarouge::internal::zero_v</a>&lt; Matrix &gt; {Matrix::Zero()}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00104">104</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Fri Oct 21 2022 02:45:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Oct 21 2022 03:06:55 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
