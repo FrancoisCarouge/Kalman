@@ -163,7 +163,6 @@ template <
   typename Input,
   typename Transpose,
   typename Divide,
-  typename Identity,
   typename UpdateTypes,
   typename PredictionTypes>
 class kalman
@@ -178,7 +177,6 @@ class kalman
 | `Input` | The type template parameter of the control u. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to `void`. |
 | `Transpose` | The customization point object template parameter of the matrix transpose functor. Defaults to the standard passthrough `std::identity` function object since the transposed value of an arithmetic type is itself. |
 | `Divide` | The customization point object template parameter of the matrix division functor. Default to the standard division `std::divides<void>` function object. |
-| `Identity` | The customization point object template parameter of the matrix identity functor. Defaults to an `identity_matrix` function object returning the arithmetic `1` value. |
 | `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack. |
 | `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. Defaults to no parameter types, the empty pack. |
 

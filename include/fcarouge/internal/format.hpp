@@ -45,21 +45,20 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 
 namespace fcarouge {
-template <typename, typename, typename, typename, typename, typename, typename,
-          typename>
+template <typename, typename, typename, typename, typename, typename, typename>
 class kalman;
 } // namespace fcarouge
 
 template <typename State, typename Output, typename Input, typename Transpose,
-          typename Divide, typename Identity, typename UpdateTypes,
-          typename PredictionTypes, typename Char>
+          typename Divide, typename UpdateTypes, typename PredictionTypes,
+          typename Char>
 // It is allowed to add template specializations for any standard library class
 // template to the namespace std only if the declaration depends on at least one
 // program-defined type and the specialization satisfies all requirements for
 // the original template, except where such specializations are prohibited.
 // NOLINTNEXTLINE(cert-dcl58-cpp)
 struct std::formatter<fcarouge::kalman<State, Output, Input, Transpose, Divide,
-                                       Identity, UpdateTypes, PredictionTypes>,
+                                       UpdateTypes, PredictionTypes>,
                       Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
@@ -67,10 +66,9 @@ struct std::formatter<fcarouge::kalman<State, Output, Input, Transpose, Divide,
 
   //! @todo P2585 may be useful in simplifying and standardizing the support.
   template <typename OutputIt>
-  auto
-  format(const fcarouge::kalman<State, Output, Input, Transpose, Divide,
-                                Identity, UpdateTypes, PredictionTypes> &filter,
-         std::basic_format_context<OutputIt, Char> &format_context)
+  auto format(const fcarouge::kalman<State, Output, Input, Transpose, Divide,
+                                     UpdateTypes, PredictionTypes> &filter,
+              std::basic_format_context<OutputIt, Char> &format_context)
       -> OutputIt {
     format_context.advance_to(
         format_to(format_context.out(), R"({{"f": {}, )", filter.f()));

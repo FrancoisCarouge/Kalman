@@ -111,20 +111,6 @@ struct divide final {
   }
 };
 
-//! @todo Could this function object template be a variable template as proposed
-//! in paper P2008R0 entitled "Enabling variable template template parameters"?
-struct identity_matrix final {
-  template <typename Type>
-  [[nodiscard]] inline constexpr auto operator()() const -> Type {
-    return Type::Identity();
-  }
-
-  template <arithmetic Type>
-  [[nodiscard]] inline constexpr auto operator()() const noexcept -> Type {
-    return 1;
-  }
-};
-
 } // namespace fcarouge::eigen::internal
 
 #endif // FCAROUGE_EIGEN_INTERNAL_UTILITY_HPP

@@ -47,17 +47,15 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::internal {
 
-template <typename, typename, typename, typename, typename, typename, typename,
-          typename>
+template <typename, typename, typename, typename, typename, typename, typename>
 struct kalman final {
   //! @todo Support some more specializations, all, or disable others?
 };
 
 template <typename State, typename Output, typename Transpose, typename Divide,
-          typename Identity, typename... UpdateTypes,
-          typename... PredictionTypes>
-struct kalman<State, Output, void, Transpose, Divide, Identity,
-              pack<UpdateTypes...>, pack<PredictionTypes...>> {
+          typename... UpdateTypes, typename... PredictionTypes>
+struct kalman<State, Output, void, Transpose, Divide, pack<UpdateTypes...>,
+              pack<PredictionTypes...>> {
   template <typename Row, typename Column>
   using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
   using state = State;
@@ -88,21 +86,19 @@ struct kalman<State, Output, void, Transpose, Divide, Identity,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
+  inline static const auto i{identity_v<matrix<state, state>>};
+
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{0 * Identity().template operator()<state>()};
-  estimate_uncertainty p{
-      Identity().template operator()<estimate_uncertainty>()};
-  process_uncertainty q{0 *
-                        Identity().template operator()<process_uncertainty>()};
-  output_uncertainty r{0 *
-                       Identity().template operator()<output_uncertainty>()};
-  output_model h{Identity().template operator()<output_model>()};
-  state_transition f{Identity().template operator()<state_transition>()};
-  gain k{Identity().template operator()<gain>()};
-  innovation y{0 * Identity().template operator()<innovation>()};
-  innovation_uncertainty s{
-      Identity().template operator()<innovation_uncertainty>()};
-  output z{0 * Identity().template operator()<output>()};
+  state x{0 * identity_v<state>};
+  estimate_uncertainty p{identity_v<estimate_uncertainty>};
+  process_uncertainty q{0 * identity_v<process_uncertainty>};
+  output_uncertainty r{0 * identity_v<output_uncertainty>};
+  output_model h{identity_v<output_model>};
+  state_transition f{identity_v<state_transition>};
+  gain k{identity_v<gain>};
+  innovation y{0 * identity_v<innovation>};
+  innovation_uncertainty s{identity_v<innovation_uncertainty>};
+  output z{0 * identity_v<output>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
@@ -155,7 +151,6 @@ struct kalman<State, Output, void, Transpose, Divide, Identity,
 
   Transpose transpose;
   Divide divide;
-  Identity identity;
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
   //! does the compiler/linker do it for us?
@@ -169,9 +164,6 @@ struct kalman<State, Output, void, Transpose, Divide, Identity,
   inline constexpr void update(const UpdateTypes &...update_pack,
                                const Output0 &output_z,
                                const OutputN &...outputs_z) {
-
-    const auto i{identity.template operator()<estimate_uncertainty>()};
-
     update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
@@ -194,10 +186,9 @@ struct kalman<State, Output, void, Transpose, Divide, Identity,
 };
 
 template <typename State, typename Output, typename Input, typename Transpose,
-          typename Divide, typename Identity, typename... UpdateTypes,
-          typename... PredictionTypes>
-struct kalman<State, Output, Input, Transpose, Divide, Identity,
-              pack<UpdateTypes...>, pack<PredictionTypes...>> {
+          typename Divide, typename... UpdateTypes, typename... PredictionTypes>
+struct kalman<State, Output, Input, Transpose, Divide, pack<UpdateTypes...>,
+              pack<PredictionTypes...>> {
   template <typename Row, typename Column>
   using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
   using state = State;
@@ -229,23 +220,21 @@ struct kalman<State, Output, Input, Transpose, Divide, Identity,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
+  inline static const auto i{identity_v<matrix<state, state>>};
+
   //! @todo Is there a simpler way to initialize to the zero matrix?
-  state x{0 * Identity().template operator()<state>()};
-  estimate_uncertainty p{
-      Identity().template operator()<estimate_uncertainty>()};
-  process_uncertainty q{0 *
-                        Identity().template operator()<process_uncertainty>()};
-  output_uncertainty r{0 *
-                       Identity().template operator()<output_uncertainty>()};
-  output_model h{Identity().template operator()<output_model>()};
-  state_transition f{Identity().template operator()<state_transition>()};
-  input_control g{Identity().template operator()<input_control>()};
-  gain k{Identity().template operator()<gain>()};
-  innovation y{0 * Identity().template operator()<innovation>()};
-  innovation_uncertainty s{
-      Identity().template operator()<innovation_uncertainty>()};
-  output z{0 * Identity().template operator()<output>()};
-  input u{0 * Identity().template operator()<input>()};
+  state x{0 * identity_v<state>};
+  estimate_uncertainty p{identity_v<estimate_uncertainty>};
+  process_uncertainty q{0 * identity_v<process_uncertainty>};
+  output_uncertainty r{0 * identity_v<output_uncertainty>};
+  output_model h{identity_v<output_model>};
+  state_transition f{identity_v<state_transition>};
+  input_control g{identity_v<input_control>};
+  gain k{identity_v<gain>};
+  innovation y{0 * identity_v<innovation>};
+  innovation_uncertainty s{identity_v<innovation_uncertainty>};
+  output z{0 * identity_v<output>};
+  input u{0 * identity_v<input>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
@@ -304,7 +293,6 @@ struct kalman<State, Output, Input, Transpose, Divide, Identity,
 
   Transpose transpose;
   Divide divide;
-  Identity identity;
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
   //! does the compiler/linker do it for us?
@@ -317,9 +305,6 @@ struct kalman<State, Output, Input, Transpose, Divide, Identity,
   inline constexpr void update(const UpdateTypes &...update_pack,
                                const Output0 &output_z,
                                const OutputN &...outputs_z) {
-
-    const auto i{identity.template operator()<estimate_uncertainty>()};
-
     update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
