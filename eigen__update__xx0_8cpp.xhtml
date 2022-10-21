@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('eigen__update__xx0_8cpp.xhtml',''); in
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">eigen_update_xx0.cpp File Reference</div></div>
 </div><!--header-->
@@ -92,6 +93,7 @@ $(document).ready(function(){initNavTree('eigen__update__xx0_8cpp.xhtml',''); in
 <div class="textblock"><code>#include &quot;<a class="el" href="benchmark_8hpp_source.xhtml">benchmark.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="eigen_2kalman_8hpp_source.xhtml">fcarouge/eigen/kalman.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="internal_2utility_8hpp_source.xhtml">fcarouge/internal/utility.hpp</a>&quot;</code><br />
+<code>#include &lt;Eigen/Eigen&gt;</code><br />
 <code>#include &lt;benchmark/benchmark.h&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
@@ -120,14 +122,22 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacefcarouge_1_1eigen_1_1benchmark"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark.xhtml">fcarouge::eigen::benchmark</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacefcarouge_1_1eigen_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml">fcarouge::eigen::benchmark::anonymous_namespace{eigen_update_xx0.cpp}</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a7c87efd2c8114f0c65cb991c355dd685"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Size&gt; </td></tr>
+<tr class="memitem:a7c87efd2c8114f0c65cb991c355dd685"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#a7c87efd2c8114f0c65cb991c355dd685">fcarouge::eigen::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::vector</a> = Eigen::Vector&lt; Type, Size &gt;</td></tr>
+<tr class="separator:a7c87efd2c8114f0c65cb991c355dd685"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aca97da7b0de714139cb1812d85859063"><td class="memTemplParams" colspan="2">template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </td></tr>
-<tr class="memitem:aca97da7b0de714139cb1812d85859063"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark.xhtml#aca97da7b0de714139cb1812d85859063">fcarouge::eigen::benchmark::eigen_update</a> (::benchmark::State &amp;state)</td></tr>
-<tr class="separator:aca97da7b0de714139cb1812d85859063"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a223a6c312b1d17ca2f05b0bcc0514c69"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark.xhtml#a223a6c312b1d17ca2f05b0bcc0514c69">fcarouge::eigen::benchmark::Name</a> (&quot;eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0&quot;) -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics(&quot;min&quot;, [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics(&quot;max&quot;, [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</td></tr>
-<tr class="separator:a223a6c312b1d17ca2f05b0bcc0514c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a368a9891aca734e818fa5468d02735ed"><td class="memTemplParams" colspan="2">template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </td></tr>
+<tr class="memitem:a368a9891aca734e818fa5468d02735ed"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#a368a9891aca734e818fa5468d02735ed">fcarouge::eigen::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::eigen_update</a> (::benchmark::State &amp;state)</td></tr>
+<tr class="separator:a368a9891aca734e818fa5468d02735ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61d03787dcc2e69d50ce425b1997e460"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#a61d03787dcc2e69d50ce425b1997e460">fcarouge::eigen::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::Name</a> (&quot;eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0&quot;) -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics(&quot;min&quot;, [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics(&quot;max&quot;, [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</td></tr>
+<tr class="separator:a61d03787dcc2e69d50ce425b1997e460"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -135,7 +145,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_44cec6e3ea30e076b9313c4641539d9f.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="eigen__update__xx0_8cpp.xhtml">eigen_update_xx0.cpp</a></li>
-    <li class="footer">Generated on Fri Oct 21 2022 03:06:55 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Oct 21 2022 03:55:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

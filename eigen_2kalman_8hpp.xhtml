@@ -94,7 +94,6 @@ $(document).ready(function(){initNavTree('eigen_2kalman_8hpp.xhtml',''); initRes
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="kalman_8hpp_source.xhtml">fcarouge/kalman.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="eigen_2internal_2utility_8hpp_source.xhtml">internal/utility.hpp</a>&quot;</code><br />
-<code>#include &lt;Eigen/Eigen&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for kalman.hpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -137,14 +136,6 @@ Typedefs</h2></td></tr>
 <tr class="memitem:adadfe28b2fbaeffdd58efa04957aa556"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#adadfe28b2fbaeffdd58efa04957aa556">fcarouge::eigen::pack</a> = fcarouge::internal::pack&lt; Types... &gt;</td></tr>
 <tr class="memdesc:adadfe28b2fbaeffdd58efa04957aa556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience tuple-like pack type.  <a href="namespacefcarouge_1_1eigen.xhtml#adadfe28b2fbaeffdd58efa04957aa556">More...</a><br /></td></tr>
 <tr class="separator:adadfe28b2fbaeffdd58efa04957aa556"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7af38f38950d3b3f6c0fdd598c68f2d4"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Size&gt; </td></tr>
-<tr class="memitem:a7af38f38950d3b3f6c0fdd598c68f2d4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a7af38f38950d3b3f6c0fdd598c68f2d4">fcarouge::eigen::vector</a> = internal::vector&lt; Type, Size &gt;</td></tr>
-<tr class="memdesc:a7af38f38950d3b3f6c0fdd598c68f2d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience Eigen vector.  <a href="namespacefcarouge_1_1eigen.xhtml#a7af38f38950d3b3f6c0fdd598c68f2d4">More...</a><br /></td></tr>
-<tr class="separator:a7af38f38950d3b3f6c0fdd598c68f2d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06b1a5e56409dffb00281ac0954aad04"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto RowSize, auto ColumnSize&gt; </td></tr>
-<tr class="memitem:a06b1a5e56409dffb00281ac0954aad04"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a06b1a5e56409dffb00281ac0954aad04">fcarouge::eigen::matrix</a> = internal::matrix&lt; Type, RowSize, ColumnSize &gt;</td></tr>
-<tr class="memdesc:a06b1a5e56409dffb00281ac0954aad04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience Eigen matrix.  <a href="namespacefcarouge_1_1eigen.xhtml#a06b1a5e56409dffb00281ac0954aad04">More...</a><br /></td></tr>
-<tr class="separator:a06b1a5e56409dffb00281ac0954aad04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6200288e83ea7493c432fcf77aca131d"><td class="memTemplParams" colspan="2">template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </td></tr>
 <tr class="memitem:a6200288e83ea7493c432fcf77aca131d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">fcarouge::eigen::kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, transpose, divide, UpdateTypes, PredictionTypes &gt;</td></tr>
 <tr class="memdesc:a6200288e83ea7493c432fcf77aca131d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">More...</a><br /></td></tr>
@@ -160,7 +151,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_58817dbcd177a26bda361ab0426398a1.xhtml">eigen</a></li><li class="navelem"><a class="el" href="eigen_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Fri Oct 21 2022 03:06:55 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Oct 21 2022 03:55:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
