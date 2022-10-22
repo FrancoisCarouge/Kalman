@@ -57,7 +57,7 @@ template <typename State, typename Output, typename Divide,
 struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
               pack<PredictionTypes...>> {
   template <typename Row, typename Column>
-  using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
+  using matrix = deduce_matrix_type_from<Divide, Row, Column>;
   using state = State;
   using output = Output;
   using input = empty;
@@ -188,7 +188,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
               pack<PredictionTypes...>> {
   template <typename Row, typename Column>
-  using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
+  using matrix = deduce_matrix_type_from<Divide, Row, Column>;
   using state = State;
   using output = Output;
   using input = Input;
