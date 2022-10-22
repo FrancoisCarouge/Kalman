@@ -46,9 +46,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/utility.hpp"
 
 namespace fcarouge::eigen {
-//! @brief Function object for performing Eigen matrix transposition.
-using transpose = internal::transpose;
-
 //! @brief Function object for performing Eigen matrix division.
 using divide = internal::divide;
 
@@ -67,8 +64,8 @@ template <typename... Types> using pack = fcarouge::internal::pack<Types...>;
 template <typename State = double, typename Output = double,
           typename Input = void, typename UpdateTypes = empty_pack,
           typename PredictionTypes = empty_pack>
-using kalman = fcarouge::kalman<State, Output, Input, transpose, divide,
-                                UpdateTypes, PredictionTypes>;
+using kalman = fcarouge::kalman<State, Output, Input, divide, UpdateTypes,
+                                PredictionTypes>;
 
 } // namespace fcarouge::eigen
 

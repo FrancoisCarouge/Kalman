@@ -103,6 +103,20 @@ template <typename Matrix>
   requires requires(Matrix value) { value.Zero(); }
 inline const auto zero_v<Matrix>{Matrix::Zero()};
 
+struct transpose final {
+  template <arithmetic Arithmetic>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Arithmetic &value) const {
+    return value;
+  }
+
+  template <typename Matrix>
+    requires requires(Matrix value) { value.transpose(); }
+  [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
+    return value.transpose();
+  }
+};
+
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP

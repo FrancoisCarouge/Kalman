@@ -71,10 +71,9 @@ namespace {
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control and additional arguments.
 [[maybe_unused]] auto format_d_1x1x1_cifd_dfic{[] {
-  using kalman =
-      fcarouge::kalman<double, double, double, std::identity,
-                       std::divides<double>, std::tuple<double, double, double>,
-                       std::tuple<double, double, double, double>>;
+  using kalman = fcarouge::kalman<double, double, double, std::divides<double>,
+                                  std::tuple<double, double, double>,
+                                  std::tuple<double, double, double, double>>;
   kalman filter;
 
   assert(

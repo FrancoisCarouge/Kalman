@@ -4,7 +4,7 @@ A generic Kalman filter for C++23.
 
 A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE). A control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems.
 
-Simple and extended filters are supported. The update equation uses the Joseph form. Control input is supported. Various customization point objects allow for using different linear algebra backends for which standard or Eigen3 implementation is provided.
+Simple and extended filters are supported. The update equation uses the Joseph form. Control input is supported. Standard and type-erased Eigen3 linear algebra backends are supported.
 
 The Kalman filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians.
 
@@ -161,7 +161,6 @@ template <
   typename State,
   typename Output,
   typename Input,
-  typename Transpose,
   typename Divide,
   typename UpdateTypes,
   typename PredictionTypes>
@@ -175,7 +174,6 @@ class kalman
 | `State` | The type template parameter of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `double`. |
 | `Output` | The type template parameter of the measurement column vector z. Defaults to `double`. |
 | `Input` | The type template parameter of the control u. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to `void`. |
-| `Transpose` | The customization point object template parameter of the matrix transpose functor. Defaults to the standard passthrough `std::identity` function object since the transposed value of an arithmetic type is itself. |
 | `Divide` | The customization point object template parameter of the matrix division functor. Default to the standard division `std::divides<void>` function object. |
 | `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack. |
 | `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. Defaults to no parameter types, the empty pack. |
@@ -266,7 +264,7 @@ This package explores what could be a Kalman filter implementation a la standard
 
 ## Selected Tradeoffs
 
-In theory there is no difference between theory and practice, while in practice there is. The following tradeoffs have been selected for the implementation:
+In theory there is no difference between theory and practice, while in practice there is. The following engineering tradeoffs have been selected for the implementation:
 
 - Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.
 - The default floating point data type for the filter is `double` with about 16 significant digits to reduce loss of information compared to `float`.
@@ -276,7 +274,7 @@ In theory there is no difference between theory and practice, while in practice 
 
 Design, development, and testing uncovered unexpected facets of the projects:
 
-- The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full-compile time verification of unit and index-type safeties.
+- The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full compile-time verification of unit- and index-type safeties for input parameters and characteristics.
 - There exist Kalman filters with hundreds of state variables.
 - The `float` data type has about seven significant digits. Floating point error is a loss of information to account for in design.
 
@@ -289,7 +287,7 @@ The [benchmarks](benchmark) share some performance information. Custom specializ
 
 # Resources
 
-Awesome resources to learn about Kalman filters:
+Resources to learn about Kalman filters:
 
 - [A New Approach to Linear Filtering and Prediction Problems](https://www.cs.unc.edu/~welch/kalman/kalmanPaper.html) by Kalman, Rudolph Emil in Transactions of the ASME - Journal of Basic Engineering, Volume 82, Series D, pp 35-45, 1960 - Transcription by John Lukesh.
 - [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
@@ -369,11 +367,11 @@ Become a sponsor today! Support this project with coffee and infrastructure!
 
 ## Corporate Sponsor
 
-You company logo and link here!
+*You company logo and link here!*
 
 ## Named Sponsors
 
-Your name and link here!
+*Your name and link here!*
 
 Thanks everyone!
 
