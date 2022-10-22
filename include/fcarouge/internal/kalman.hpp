@@ -88,7 +88,6 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
 
   inline static const auto i{identity_v<matrix<state, state>>};
 
-  //! @todo Is there a simpler way to initialize to the zero matrix?
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
   process_uncertainty q{zero_v<process_uncertainty>};
@@ -221,7 +220,6 @@ struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
 
   inline static const auto i{identity_v<matrix<state, state>>};
 
-  //! @todo Is there a simpler way to initialize to the zero matrix?
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
   process_uncertainty q{zero_v<process_uncertainty>};
