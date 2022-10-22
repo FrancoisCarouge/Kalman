@@ -189,9 +189,23 @@ $(document).ready(function(){initNavTree('internal_2utility_8hpp_source.xhtml','
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="keyword">requires</span> <span class="keyword">requires</span>(Matrix value) { value.Zero(); }</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1internal.xhtml#ace0a378b2a42f9e8c113c89bfb3b816c">  104</a></span><span class="keyword">inline</span> <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#ace0a378b2a42f9e8c113c89bfb3b816c">zero_v&lt;Matrix&gt;</a>{Matrix::Zero()};</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>} <span class="comment">// namespace fcarouge::internal</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_UTILITY_HPP</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keyword">struct </span>transpose final {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  <span class="keyword">template</span> &lt;arithmetic Arithmetic&gt;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  operator()(<span class="keyword">const</span> Arithmetic &amp;value)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Matrix&gt;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keyword">requires</span> <span class="keyword">requires</span>(Matrix value) { value.transpose(); }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  [[nodiscard]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> operator()(<span class="keyword">const</span> Matrix &amp;value)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordflow">return</span> value.transpose();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>};</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>} <span class="comment">// namespace fcarouge::internal</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_UTILITY_HPP</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a></div><div class="ttdoc">Internal implementation details.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a26f3c00157550eff4aadf4c465238923"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a26f3c00157550eff4aadf4c465238923">fcarouge::internal::identity_v&lt; Matrix &gt;</a></div><div class="ttdeci">const auto identity_v&lt; Matrix &gt;</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00093">utility.hpp:93</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a3e93bd2cb263c45e44549d3d172d14f4"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a3e93bd2cb263c45e44549d3d172d14f4">fcarouge::internal::zero_v</a></div><div class="ttdeci">const Type zero_v</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00096">utility.hpp:96</a></div></div>
@@ -210,7 +224,7 @@ $(document).ready(function(){initNavTree('internal_2utility_8hpp_source.xhtml','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2utility_8hpp.xhtml">utility.hpp</a></li>
-    <li class="footer">Generated on Sat Oct 22 2022 19:24:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 22 2022 22:19:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

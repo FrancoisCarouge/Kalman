@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_README"></a> A generic Kalman filter for C++23.</p>
 <p >A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE). A control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems.</p>
-<p >Simple and extended filters are supported. The update equation uses the Joseph form. Control input is supported. Various customization point objects allow for using different linear algebra backends for which standard or Eigen3 implementation is provided.</p>
+<p >Simple and extended filters are supported. The update equation uses the Joseph form. Control input is supported. Standard and type-erased Eigen3 linear algebra backends are supported.</p>
 <p >The Kalman filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians.</p>
 <p >Designing a filter is as much art as science. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B).</p>
 <p >Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.</p>
@@ -138,20 +138,20 @@ Examples</h1>
 <h2><a class="anchor" id="autotoc_md21"></a>
 1x1 Constant System Dynamic Model Filter</h2>
 <p >Example from the <a href="sample/kf_1x1x0_building_height.cpp">building height estimation</a> sample. One estimated state and one observed output filter.</p>
-<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> filter;</div>
+<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(60.);</div>
 <div class="line">filter.p(225.);</div>
 <div class="line">filter.r(25.);</div>
 <div class="line"> </div>
 <div class="line">filter.update(48.54);</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a6200288e83ea7493c432fcf77aca131d"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, divide, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00070">kalman.hpp:71</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a925b0f42b9633e563c3083394cdb26db"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, divide, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00067">kalman.hpp:68</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
 6x2 Constant Acceleration Dynamic Model Filter</h2>
 <p >Example from the <a href="sample/kf_6x2x0_vehicle_location.cpp">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
-<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
+<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> filter;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(0., 0., 0., 0., 0., 0.);</div>
 <div class="line">filter.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
@@ -181,10 +181,10 @@ Examples</h1>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
 4x1 Non-Linear Dynamic Model Extended Filter</h2>
 <p >Example from the <a href="sample/ekf_4x1x0_soaring.cpp">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
-<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
+<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
 <div class="line">                             std::tuple&lt;float, float&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> filter;</div>
+<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(1 / 4.06, 80, 0, 0);</div>
 <div class="line">filter.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
@@ -238,11 +238,10 @@ Declaration</h2>
 <div class="line">  <span class="keyword">typename</span> State,</div>
 <div class="line">  <span class="keyword">typename</span> Output,</div>
 <div class="line">  <span class="keyword">typename</span> Input,</div>
-<div class="line">  <span class="keyword">typename</span> Transpose,</div>
 <div class="line">  <span class="keyword">typename</span> Divide,</div>
 <div class="line">  <span class="keyword">typename</span> UpdateTypes,</div>
 <div class="line">  <span class="keyword">typename</span> PredictionTypes&gt;</div>
-<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a></div>
+<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
 Template Parameters</h2>
 <table class="markdownTable">
@@ -255,12 +254,10 @@ Template Parameters</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>Input</code>   </td><td class="markdownTableBodyNone">The type template parameter of the control u. A <code>void</code> input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to <code>void</code>.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>Transpose</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix transpose functor. Defaults to the standard passthrough <code>std::identity</code> function object since the transposed value of an arithmetic type is itself.    </td></tr>
-<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>Divide</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix division functor. Default to the standard division <code>std::divides&lt;void&gt;</code> function object.    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack.    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. Defaults to no parameter types, the empty pack.   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md28"></a>
@@ -352,7 +349,7 @@ Modifiers</h3>
 <h1><a class="anchor" id="autotoc_md32"></a>
 Format</h1>
 <p >A specialization of the standard formatter is provided for the filter. Use <code>std::format</code> to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.</p>
-<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> filter;</div>
+<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">std::print(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;h&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;q&quot;: 0, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
@@ -375,7 +372,7 @@ Motivations</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md36"></a>
 Selected Tradeoffs</h2>
-<p >In theory there is no difference between theory and practice, while in practice there is. The following tradeoffs have been selected for the implementation:</p>
+<p >In theory there is no difference between theory and practice, while in practice there is. The following engineering tradeoffs have been selected for the implementation:</p>
 <ul>
 <li>Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.</li>
 <li>The default floating point data type for the filter is <code>double</code> with about 16 significant digits to reduce loss of information compared to <code>float</code>.</li>
@@ -385,7 +382,7 @@ Selected Tradeoffs</h2>
 Lessons Learned</h2>
 <p >Design, development, and testing uncovered unexpected facets of the projects:</p>
 <ul>
-<li>The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full-compile time verification of unit and index-type safeties.</li>
+<li>The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full compile-time verification of unit- and index-type safeties for input parameters and characteristics.</li>
 <li>There exist Kalman filters with hundreds of state variables.</li>
 <li>The <code>float</code> data type has about seven significant digits. Floating point error is a loss of information to account for in design.</li>
 </ul>
@@ -395,7 +392,7 @@ Performance</h2>
 <p ><img src="eigen_update.svg" alt="" style="pointer-events: none;" class="inline" title="Eigen Update"/>     <img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/>    </p>
 <h1><a class="anchor" id="autotoc_md39"></a>
 Resources</h1>
-<p >Awesome resources to learn about Kalman filters:</p>
+<p >Resources to learn about Kalman filters:</p>
 <ul>
 <li><a href="https://www.cs.unc.edu/~welch/kalman/kalmanPaper.html">A New Approach to Linear Filtering and Prediction Problems</a> by Kalman, Rudolph Emil in Transactions of the ASME - Journal of Basic Engineering, Volume 82, Series D, pp 35-45, 1960 - Transcription by John Lukesh.</li>
 <li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
@@ -453,10 +450,10 @@ Sponsors</h1>
 <p ><a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor-brightgreen" alt="Sponsor" class="inline"/></a></p>
 <h2><a class="anchor" id="autotoc_md43"></a>
 Corporate Sponsor</h2>
-<p >You company logo and link here!</p>
+<p ><em>You company logo and link here!</em></p>
 <h2><a class="anchor" id="autotoc_md44"></a>
 Named Sponsors</h2>
-<p >Your name and link here!</p>
+<p ><em>Your name and link here!</em></p>
 <p >Thanks everyone!</p>
 <h1><a class="anchor" id="autotoc_md45"></a>
 License</h1>
@@ -473,7 +470,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Oct 22 2022 19:24:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 22 2022 22:19:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

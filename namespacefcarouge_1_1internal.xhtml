@@ -102,15 +102,17 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, Input, Transpose, Divide, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, Input, Divide, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, void, Transpose, Divide, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, void, Divide, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>pack</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>repack</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>repack&lt; From&lt; Types... &gt; &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transpose</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -224,13 +226,13 @@ template&lt;auto Begin, auto End, auto Increment, typename Function &gt; </div>
 <div class="line"><span class="lineno">   80</span>  }</div>
 <div class="line"><span class="lineno">   81</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="eigen__predict__x1x_8cpp_source.xhtml#l00062">fcarouge::eigen::benchmark::anonymous_namespace{eigen_predict_x1x.cpp}::eigen_predict()</a>, <a class="el" href="eigen__update__xx0_8cpp_source.xhtml#l00062">fcarouge::eigen::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::eigen_update()</a>, and <a class="el" href="format_8hpp_source.xhtml#l00069">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, Transpose, Divide, UpdateTypes, PredictionTypes &gt;, Char &gt;::format()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="eigen__predict__x1x_8cpp_source.xhtml#l00062">fcarouge::eigen::benchmark::anonymous_namespace{eigen_predict_x1x.cpp}::eigen_predict()</a>, <a class="el" href="eigen__update__xx0_8cpp_source.xhtml#l00062">fcarouge::eigen::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::eigen_update()</a>, and <a class="el" href="format_8hpp_source.xhtml#l00068">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;, Char &gt;::format()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a4c0bbc15a41d76dd2b4b23d8566fba57_icgraph.svg" width="387" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a4c0bbc15a41d76dd2b4b23d8566fba57_icgraph.svg" width="396" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -431,7 +433,7 @@ template&lt;typename Matrix &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Sat Oct 22 2022 19:24:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 22 2022 22:19:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

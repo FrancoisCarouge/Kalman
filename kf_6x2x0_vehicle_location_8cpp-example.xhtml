@@ -104,9 +104,9 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> <a id="a1" name="a1"></a><a class="code hl_variable" href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#acdca372528c3bc5b53990e4b08602fdc">kf_6x2x0_vehicle_location</a>{[] {</div>
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
-<div class="line">  <span class="keyword">using </span><a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
+<div class="line">  <span class="keyword">using </span><a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> filter;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="comment">// The state is chosen to be the position, velocity, acceleration in the XY</span></div>
@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
 <div class="line">  <span class="comment">// uncertainty. The high estimate uncertainty results in a high Kalman Gain,</span></div>
 <div class="line">  <span class="comment">// giving a high weight to the measurement.</span></div>
-<div class="line">  filter.p(<a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a78e08dba6680ac9b8733d70bd8a7a4a1">kalman::estimate_uncertainty</a>{{500, 0, 0, 0, 0, 0},</div>
+<div class="line">  filter.p(<a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1d1f1dacf69723b9a2027df00faa44d7">kalman::estimate_uncertainty</a>{{500, 0, 0, 0, 0, 0},</div>
 <div class="line">                                        {0, 500, 0, 0, 0, 0},</div>
 <div class="line">                                        {0, 0, 500, 0, 0, 0},</div>
 <div class="line">                                        {0, 0, 0, 500, 0, 0},</div>
@@ -126,14 +126,14 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Prediction</span></div>
 <div class="line">  <span class="comment">// The process noise matrix Q would be:</span></div>
-<div class="line">  <a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a220002b41b1231400e8b0011de61b4e0">kalman::process_uncertainty</a> q{</div>
+<div class="line">  <a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">kalman::process_uncertainty</a> q{</div>
 <div class="line">      {0.25, 0.5, 0.5, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0},</div>
 <div class="line">      {0, 0, 0, 0.25, 0.5, 0.5}, {0, 0, 0, 0.5, 1, 1}, {0, 0, 0, 0.5, 1, 1}};</div>
 <div class="line">  q *= 0.2 * 0.2;</div>
 <div class="line">  filter.q(std::move(q));</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">  filter.f(<a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aa1c8d1fa8c597eca32684c1c43a373d5">kalman::state_transition</a>{{1, 1, 0.5, 0, 0, 0},</div>
+<div class="line">  filter.f(<a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">kalman::state_transition</a>{{1, 1, 0.5, 0, 0, 0},</div>
 <div class="line">                                    {0, 1, 1, 0, 0, 0},</div>
 <div class="line">                                    {0, 0, 1, 0, 0, 0},</div>
 <div class="line">                                    {0, 0, 0, 1, 1, 0.5},</div>
@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <span class="comment">// Measure and Update</span></div>
 <div class="line">  <span class="comment">// The dimension of zn is 2x1 and the dimension of xn is 6x1. Therefore the</span></div>
 <div class="line">  <span class="comment">// dimension of the observation matrix H shall be 2x6.</span></div>
-<div class="line">  filter.h(<a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a340c6843cf9a87ace05832d1446589f7">kalman::output_model</a>{{1, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}});</div>
+<div class="line">  filter.h(<a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aadb2093697f3eb6b26b80d0f1af5fbed">kalman::output_model</a>{{1, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Assume that the x and y measurements are uncorrelated, i.e. error in the x</span></div>
 <div class="line">  <span class="comment">// coordinate measurement doesn&#39;t depend on the error in the y coordinate</span></div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
 <div class="line">  <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error</span></div>
 <div class="line">  <span class="comment">// standard deviation: σxm = σym = 3m. The variance 9.</span></div>
-<div class="line">  filter.r(<a id="a7" name="a7"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a546f2e777f16d4802da6d2c18cd5cd2f">kalman::output_uncertainty</a>{{9, 0}, {0, 9}});</div>
+<div class="line">  filter.r(<a id="a7" name="a7"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">kalman::output_uncertainty</a>{{9, 0}, {0, 9}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The measurement values: z1 = [-393.66, 300.4]</span></div>
 <div class="line">  filter.update(-393.66, 300.4);</div>
@@ -252,22 +252,22 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line"> </div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::eigen::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a220002b41b1231400e8b0011de61b4e0"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a220002b41b1231400e8b0011de61b4e0">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00222">kalman.hpp:222</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a340c6843cf9a87ace05832d1446589f7"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a340c6843cf9a87ace05832d1446589f7">fcarouge::kalman::output_model</a></div><div class="ttdeci">typename implementation::output_model output_model</div><div class="ttdoc">Type of the observation transition matrix H.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00235">kalman.hpp:235</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a546f2e777f16d4802da6d2c18cd5cd2f"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a546f2e777f16d4802da6d2c18cd5cd2f">fcarouge::kalman::output_uncertainty</a></div><div class="ttdeci">typename implementation::output_uncertainty output_uncertainty</div><div class="ttdoc">Type of the observation noise correlated variance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00225">kalman.hpp:225</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a78e08dba6680ac9b8733d70bd8a7a4a1"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a78e08dba6680ac9b8733d70bd8a7a4a1">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00219">kalman.hpp:219</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa1c8d1fa8c597eca32684c1c43a373d5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa1c8d1fa8c597eca32684c1c43a373d5">fcarouge::kalman::state_transition</a></div><div class="ttdeci">typename implementation::state_transition state_transition</div><div class="ttdoc">Type of the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00230">kalman.hpp:230</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a052507ea7e38da8fbbc78e3bf04c96b2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">fcarouge::kalman::state_transition</a></div><div class="ttdeci">typename implementation::state_transition state_transition</div><div class="ttdoc">Type of the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00225">kalman.hpp:225</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b119b5d090c39ddf0a5aaafbeeb8f6c"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">fcarouge::kalman::output_uncertainty</a></div><div class="ttdeci">typename implementation::output_uncertainty output_uncertainty</div><div class="ttdoc">Type of the observation noise correlated variance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00220">kalman.hpp:220</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1d1f1dacf69723b9a2027df00faa44d7"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1d1f1dacf69723b9a2027df00faa44d7">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00214">kalman.hpp:214</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aadb2093697f3eb6b26b80d0f1af5fbed"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aadb2093697f3eb6b26b80d0f1af5fbed">fcarouge::kalman::output_model</a></div><div class="ttdeci">typename implementation::output_model output_model</div><div class="ttdoc">Type of the observation transition matrix H.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00230">kalman.hpp:230</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aba3d1735b4c0ee10bfa6b2dfa2266ad7"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00217">kalman.hpp:217</a></div></div>
 <div class="ttc" id="aeigen_2kalman_8hpp_xhtml"><div class="ttname"><a href="eigen_2kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">Kalman operation for Eigen 3 types.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_a9840733c4f12829fbaadde48a4a43abf"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#a9840733c4f12829fbaadde48a4a43abf">fcarouge::eigen::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Size &gt; vector</div><div class="ttdef"><b>Definition:</b> <a href="kf__6x2x0__vehicle__location_8cpp_source.xhtml#l00011">kf_6x2x0_vehicle_location.cpp:11</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_acdca372528c3bc5b53990e4b08602fdc"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#acdca372528c3bc5b53990e4b08602fdc">fcarouge::eigen::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::kf_6x2x0_vehicle_location</a></div><div class="ttdeci">auto kf_6x2x0_vehicle_location</div><div class="ttdef"><b>Definition:</b> <a href="kf__6x2x0__vehicle__location_8cpp_source.xhtml#l00032">kf_6x2x0_vehicle_location.cpp:32</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1sample.xhtml">fcarouge::eigen::sample</a></div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00008">ekf_4x1x0_soaring.cpp:8</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a6200288e83ea7493c432fcf77aca131d"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, divide, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00070">kalman.hpp:71</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a925b0f42b9633e563c3083394cdb26db"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, divide, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00067">kalman.hpp:68</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Oct 22 2022 19:24:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 22 2022 22:19:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

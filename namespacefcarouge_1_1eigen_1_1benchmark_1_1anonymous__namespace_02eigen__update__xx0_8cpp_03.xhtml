@@ -155,7 +155,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div class="line"><span class="lineno">   70</span> </div>
 <div class="line"><span class="lineno">   71</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
 <div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>    <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aff08f3b6c981112f9f9f348b02dba322">kalman::output</a> z;</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436">kalman::output</a> z;</div>
 <div class="line"><span class="lineno">   74</span> </div>
 <div class="line"><span class="lineno">   75</span>    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">fcarouge::internal::for_constexpr</a>&lt;std::size_t{0}, OutputSize, 1&gt;(</div>
 <div class="line"><span class="lineno">   76</span>        [&amp;z, &amp;uniformly_distributed, &amp;random_generator](<span class="keyword">auto</span> position) {</div>
@@ -165,7 +165,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div class="line"><span class="lineno">   80</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   81</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
 <div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a86a8854b3ea278e4d743b72ffdbd35da">update</a>(z);</div>
+<div class="line"><span class="lineno">   83</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2697eb6865282a481107ec3aa4d42af5">update</a>(z);</div>
 <div class="line"><span class="lineno">   84</span> </div>
 <div class="line"><span class="lineno">   85</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   86</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
@@ -175,13 +175,13 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div class="line"><span class="lineno">   90</span>            .count());</div>
 <div class="line"><span class="lineno">   91</span>  }</div>
 <div class="line"><span class="lineno">   92</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter for C++23.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00175">kalman.hpp:175</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a86a8854b3ea278e4d743b72ffdbd35da"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a86a8854b3ea278e4d743b72ffdbd35da">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01285">kalman.hpp:1285</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aff08f3b6c981112f9f9f348b02dba322"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aff08f3b6c981112f9f9f348b02dba322">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00209">kalman.hpp:209</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter for C++23.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00171">kalman.hpp:171</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2697eb6865282a481107ec3aa4d42af5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2697eb6865282a481107ec3aa4d42af5">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01275">kalman.hpp:1275</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af56b8ad91ef0452ff3da4e94ce0b7436"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00204">kalman.hpp:204</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03_xhtml_a7c87efd2c8114f0c65cb991c355dd685"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#a7c87efd2c8114f0c65cb991c355dd685">fcarouge::eigen::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Size &gt; vector</div><div class="ttdef"><b>Definition:</b> <a href="eigen__update__xx0_8cpp_source.xhtml#l00057">eigen_update_xx0.cpp:57</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a4c0bbc15a41d76dd2b4b23d8566fba57"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">fcarouge::internal::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00076">utility.hpp:76</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="internal_2utility_8hpp_source.xhtml#l00076">fcarouge::internal::for_constexpr()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l01285">fcarouge::kalman&lt; State, Output, Input, Transpose, Divide, UpdateTypes, PredictionTypes &gt;::update()</a>.</p>
+<p class="reference">References <a class="el" href="internal_2utility_8hpp_source.xhtml#l00076">fcarouge::internal::for_constexpr()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l01275">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -208,7 +208,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000001">Todo:</a></b></dt><dd>Find a way to remove macros or find a different benchmark library that doesn't use macros. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo:</a></b></dt><dd>Find a way to remove macros or find a different benchmark library that doesn't use macros. </dd></dl>
 
 </div>
 </div>
@@ -218,7 +218,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1eigen_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml">anonymous_namespace{eigen_update_xx0.cpp}</a></li>
-    <li class="footer">Generated on Sat Oct 22 2022 19:24:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 22 2022 22:19:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

@@ -123,9 +123,6 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aee16b54624e2726129560ae810e805ec"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">fcarouge::eigen::transpose</a> = internal::transpose</td></tr>
-<tr class="memdesc:aee16b54624e2726129560ae810e805ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix transposition.  <a href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">More...</a><br /></td></tr>
-<tr class="separator:aee16b54624e2726129560ae810e805ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4a0f022ca9724e0e5e4a24732781365"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">fcarouge::eigen::divide</a> = internal::divide</td></tr>
 <tr class="memdesc:af4a0f022ca9724e0e5e4a24732781365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function object for performing Eigen matrix division.  <a href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">More...</a><br /></td></tr>
 <tr class="separator:af4a0f022ca9724e0e5e4a24732781365"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,10 +133,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:adadfe28b2fbaeffdd58efa04957aa556"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#adadfe28b2fbaeffdd58efa04957aa556">fcarouge::eigen::pack</a> = fcarouge::internal::pack&lt; Types... &gt;</td></tr>
 <tr class="memdesc:adadfe28b2fbaeffdd58efa04957aa556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience tuple-like pack type.  <a href="namespacefcarouge_1_1eigen.xhtml#adadfe28b2fbaeffdd58efa04957aa556">More...</a><br /></td></tr>
 <tr class="separator:adadfe28b2fbaeffdd58efa04957aa556"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6200288e83ea7493c432fcf77aca131d"><td class="memTemplParams" colspan="2">template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </td></tr>
-<tr class="memitem:a6200288e83ea7493c432fcf77aca131d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">fcarouge::eigen::kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, transpose, divide, UpdateTypes, PredictionTypes &gt;</td></tr>
-<tr class="memdesc:a6200288e83ea7493c432fcf77aca131d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">More...</a><br /></td></tr>
-<tr class="separator:a6200288e83ea7493c432fcf77aca131d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925b0f42b9633e563c3083394cdb26db"><td class="memTemplParams" colspan="2">template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </td></tr>
+<tr class="memitem:a925b0f42b9633e563c3083394cdb26db"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">fcarouge::eigen::kalman</a> = <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, divide, UpdateTypes, PredictionTypes &gt;</td></tr>
+<tr class="memdesc:a925b0f42b9633e563c3083394cdb26db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen-based Kalman filter.  <a href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">More...</a><br /></td></tr>
+<tr class="separator:a925b0f42b9633e563c3083394cdb26db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Kalman operation for Eigen 3 types. </p>
@@ -151,7 +148,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_58817dbcd177a26bda361ab0426398a1.xhtml">eigen</a></li><li class="navelem"><a class="el" href="eigen_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sat Oct 22 2022 19:24:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 22 2022 22:19:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

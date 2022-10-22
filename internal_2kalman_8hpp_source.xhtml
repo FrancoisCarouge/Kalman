@@ -135,13 +135,13 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a> {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>&gt;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a> final {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>&gt;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> final {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Transpose, <span class="keyword">typename</span> Divide,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Divide,</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>          <span class="keyword">typename</span>... UpdateTypes, <span class="keyword">typename</span>... PredictionTypes&gt;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a>&lt;State, Output, void, Transpose, Divide, <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;UpdateTypes...&gt;,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a>&lt;State, Output, void, Divide, <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;UpdateTypes...&gt;,</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>              <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;PredictionTypes...&gt;&gt; {</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Row, <span class="keyword">typename</span> Column&gt;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#abf8a13fb9b4cd98b787d279fe1f8483d">matrix</a> = std::decay_t&lt;std::invoke_result_t&lt;Divide, Row, Column&gt;&gt;;</div>
@@ -230,7 +230,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keywordflow">return</span> h * state_x;</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>      }};</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  Transpose <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  transpose t;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  Divide <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>;</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Output0, <span class="keyword">typename</span>... OutputN&gt;</div>
@@ -241,165 +241,162 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    z = output{output_z, outputs_z...};</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    h = observation_state_h(x, update_pack...);</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    r = noise_observation_r(x, z, update_pack...);</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    s = innovation_uncertainty{h * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(h) + r};</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    k = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>(p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(h), s);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    s = innovation_uncertainty{h * p * t(h) + r};</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    k = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>(p * t(h), s);</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    y = z - observation(x, update_pack...);</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    x = state{x + k * y};</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    p = estimate_uncertainty{(i - k * h) * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(i - k * h) +</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                             k * r * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(k)};</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  }</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> predict(<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) {</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    prediction_arguments = {prediction_pack...};</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    f = transition_state_f(x, prediction_pack...);</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    q = noise_process_q(x, prediction_pack...);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    x = transition(x, prediction_pack...);</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    p = estimate_uncertainty{f * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(f) + q};</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  }</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>};</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Input, <span class="keyword">typename</span> Transpose,</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>          <span class="keyword">typename</span> Divide, <span class="keyword">typename</span>... UpdateTypes, <span class="keyword">typename</span>... PredictionTypes&gt;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">kalman</a>&lt;State, Output, Input, Transpose, Divide, <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;UpdateTypes...&gt;,</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>              <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;PredictionTypes...&gt;&gt; {</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Row, <span class="keyword">typename</span> Column&gt;</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#abf8a13fb9b4cd98b787d279fe1f8483d">matrix</a> = std::decay_t&lt;std::invoke_result_t&lt;Divide, Row, Column&gt;&gt;;</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="keyword">using </span>state = State;</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  <span class="keyword">using </span>output = Output;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  <span class="keyword">using </span>input = Input;</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="keyword">using </span>estimate_uncertainty = matrix&lt;state, state&gt;;</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <span class="keyword">using </span>process_uncertainty = matrix&lt;state, state&gt;;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="keyword">using </span>output_uncertainty = matrix&lt;output, output&gt;;</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="keyword">using </span>state_transition = matrix&lt;state, state&gt;;</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="keyword">using </span>output_model = matrix&lt;output, state&gt;;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="keyword">using </span>input_control = matrix&lt;state, input&gt;;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="keyword">using </span>gain = matrix&lt;state, output&gt;;</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="keyword">using </span>innovation = output;</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  <span class="keyword">using </span>observation_state_function =</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>      std::function&lt;output_model(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  <span class="keyword">using </span>noise_observation_function = std::function&lt;output_uncertainty(</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>      <span class="keyword">const</span> state &amp;, <span class="keyword">const</span> output &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <span class="keyword">using </span>transition_state_function = std::function&lt;state_transition(</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>      <span class="keyword">const</span> state &amp;, <span class="keyword">const</span> input &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="keyword">using </span>noise_process_function = std::function&lt;process_uncertainty(</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>      <span class="keyword">const</span> state &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  <span class="keyword">using </span>transition_control_function =</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>      std::function&lt;input_control(<span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  <span class="keyword">using </span>transition_function = std::function&lt;state(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> input &amp;,</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>                                                  <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>  <span class="keyword">using </span>observation_function =</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>      std::function&lt;output(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  <span class="keyword">using </span>update_types = std::tuple&lt;UpdateTypes...&gt;;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>  <span class="keyword">using </span>prediction_types = std::tuple&lt;PredictionTypes...&gt;;</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>  <span class="keyword">inline</span> <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> i{identity_v&lt;matrix&lt;state, state&gt;&gt;};</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>  state x{zero_v&lt;state&gt;};</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  estimate_uncertainty p{identity_v&lt;estimate_uncertainty&gt;};</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  process_uncertainty q{zero_v&lt;process_uncertainty&gt;};</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>  output_uncertainty r{zero_v&lt;output_uncertainty&gt;};</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>  output_model h{identity_v&lt;output_model&gt;};</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  state_transition f{identity_v&lt;state_transition&gt;};</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  input_control g{identity_v&lt;input_control&gt;};</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  gain k{identity_v&lt;gain&gt;};</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  innovation y{zero_v&lt;innovation&gt;};</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>  innovation_uncertainty s{identity_v&lt;innovation_uncertainty&gt;};</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  output z{zero_v&lt;output&gt;};</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>  input u{zero_v&lt;input&gt;};</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  update_types update_arguments{};</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>  prediction_types prediction_arguments{};</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>  observation_state_function observation_state_h{</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>      [&amp;h = h](<span class="keyword">const</span> state &amp;state_x,</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>               <span class="keyword">const</span> UpdateTypes &amp;...update_pack) -&gt; output_model {</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(state_x);</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(update_pack), ...);</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="keywordflow">return</span> h;</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>      }};</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>  noise_observation_function noise_observation_r{</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>      [&amp;r = r](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> output &amp;output_z,</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>               <span class="keyword">const</span> UpdateTypes &amp;...update_pack) -&gt; output_uncertainty {</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(state_x);</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(output_z);</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(update_pack), ...);</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <span class="keywordflow">return</span> r;</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>      }};</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  transition_state_function transition_state_f{</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>      [&amp;f = f](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> input &amp;input_u,</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>               <span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) -&gt; state_transition {</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(state_x);</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(input_u);</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(prediction_pack), ...);</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="keywordflow">return</span> f;</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>      }};</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>  noise_process_function noise_process_q{</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>      [&amp;q = q](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> PredictionTypes &amp;...prediction_pack)</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>          -&gt; process_uncertainty {</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(state_x);</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(prediction_pack), ...);</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="keywordflow">return</span> q;</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>      }};</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>  transition_control_function transition_control_g{</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>      [&amp;g = g](<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) -&gt; input_control {</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(prediction_pack), ...);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keywordflow">return</span> g;</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>      }};</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>  transition_function transition{</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>      [&amp;f = f, &amp;g = g](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> input &amp;input_u,</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                       <span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) -&gt; state {</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(prediction_pack), ...);</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <span class="keywordflow">return</span> f * state_x + g * input_u;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>      }};</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>  observation_function observation{</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>      [&amp;h = h](<span class="keyword">const</span> state &amp;state_x,</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>               <span class="keyword">const</span> UpdateTypes &amp;...update_pack) -&gt; output {</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(update_pack), ...);</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="keywordflow">return</span> h * state_x;</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>      }};</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>  Transpose <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>;</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>  Divide <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>;</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Output0, <span class="keyword">typename</span>... OutputN&gt;</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> update(<span class="keyword">const</span> UpdateTypes &amp;...update_pack,</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>                               <span class="keyword">const</span> Output0 &amp;output_z,</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>                               <span class="keyword">const</span> OutputN &amp;...outputs_z) {</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    update_arguments = {update_pack...};</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    z = output{output_z, outputs_z...};</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    h = observation_state_h(x, update_pack...);</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    r = noise_observation_r(x, z, update_pack...);</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    s = h * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(h) + r;</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    k = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>(p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(h), s);</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    y = z - observation(x, update_pack...);</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    x = state{x + k * y};</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    p = estimate_uncertainty{(i - k * h) * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(i - k * h) +</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>                             k * r * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(k)};</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>  }</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Input0, <span class="keyword">typename</span>... InputN&gt;</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> predict(<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack,</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>                                <span class="keyword">const</span> Input0 &amp;input_u,</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>                                <span class="keyword">const</span> InputN &amp;...inputs_u) {</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    prediction_arguments = {prediction_pack...};</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    u = input{input_u, inputs_u...};</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    f = transition_state_f(x, u, prediction_pack...);</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    q = noise_process_q(x, prediction_pack...);</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    g = transition_control_g(prediction_pack...);</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    x = transition(x, u, prediction_pack...);</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    p = estimate_uncertainty{f * p * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">transpose</a>(f) + q};</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>  }</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>};</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  }</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> predict(<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    prediction_arguments = {prediction_pack...};</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    f = transition_state_f(x, prediction_pack...);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    q = noise_process_q(x, prediction_pack...);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    x = transition(x, prediction_pack...);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    p = estimate_uncertainty{f * p * t(f) + q};</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  }</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>};</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Input, <span class="keyword">typename</span> Divide,</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>          <span class="keyword">typename</span>... UpdateTypes, <span class="keyword">typename</span>... PredictionTypes&gt;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a>&lt;State, Output, Input, Divide, <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;UpdateTypes...&gt;,</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>              <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;PredictionTypes...&gt;&gt; {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Row, <span class="keyword">typename</span> Column&gt;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#abf8a13fb9b4cd98b787d279fe1f8483d">matrix</a> = std::decay_t&lt;std::invoke_result_t&lt;Divide, Row, Column&gt;&gt;;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <span class="keyword">using </span>state = State;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="keyword">using </span>output = Output;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  <span class="keyword">using </span>input = Input;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  <span class="keyword">using </span>estimate_uncertainty = matrix&lt;state, state&gt;;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="keyword">using </span>process_uncertainty = matrix&lt;state, state&gt;;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <span class="keyword">using </span>output_uncertainty = matrix&lt;output, output&gt;;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="keyword">using </span>state_transition = matrix&lt;state, state&gt;;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="keyword">using </span>output_model = matrix&lt;output, state&gt;;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="keyword">using </span>input_control = matrix&lt;state, input&gt;;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="keyword">using </span>gain = matrix&lt;state, output&gt;;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="keyword">using </span>innovation = output;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="keyword">using </span>observation_state_function =</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>      std::function&lt;output_model(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <span class="keyword">using </span>noise_observation_function = std::function&lt;output_uncertainty(</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>      <span class="keyword">const</span> state &amp;, <span class="keyword">const</span> output &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="keyword">using </span>transition_state_function = std::function&lt;state_transition(</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>      <span class="keyword">const</span> state &amp;, <span class="keyword">const</span> input &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  <span class="keyword">using </span>noise_process_function = std::function&lt;process_uncertainty(</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>      <span class="keyword">const</span> state &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <span class="keyword">using </span>transition_control_function =</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>      std::function&lt;input_control(<span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>  <span class="keyword">using </span>transition_function = std::function&lt;state(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> input &amp;,</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                                                  <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>  <span class="keyword">using </span>observation_function =</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>      std::function&lt;output(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>  <span class="keyword">using </span>update_types = std::tuple&lt;UpdateTypes...&gt;;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  <span class="keyword">using </span>prediction_types = std::tuple&lt;PredictionTypes...&gt;;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  <span class="keyword">inline</span> <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> i{identity_v&lt;matrix&lt;state, state&gt;&gt;};</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  state x{zero_v&lt;state&gt;};</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>  estimate_uncertainty p{identity_v&lt;estimate_uncertainty&gt;};</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  process_uncertainty q{zero_v&lt;process_uncertainty&gt;};</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  output_uncertainty r{zero_v&lt;output_uncertainty&gt;};</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>  output_model h{identity_v&lt;output_model&gt;};</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>  state_transition f{identity_v&lt;state_transition&gt;};</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>  input_control g{identity_v&lt;input_control&gt;};</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  gain k{identity_v&lt;gain&gt;};</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>  innovation y{zero_v&lt;innovation&gt;};</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>  innovation_uncertainty s{identity_v&lt;innovation_uncertainty&gt;};</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>  output z{zero_v&lt;output&gt;};</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>  input u{zero_v&lt;input&gt;};</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>  update_types update_arguments{};</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>  prediction_types prediction_arguments{};</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>  observation_state_function observation_state_h{</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>      [&amp;h = h](<span class="keyword">const</span> state &amp;state_x,</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>               <span class="keyword">const</span> UpdateTypes &amp;...update_pack) -&gt; output_model {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(state_x);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(update_pack), ...);</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">return</span> h;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>      }};</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>  noise_observation_function noise_observation_r{</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>      [&amp;r = r](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> output &amp;output_z,</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>               <span class="keyword">const</span> UpdateTypes &amp;...update_pack) -&gt; output_uncertainty {</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(state_x);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(output_z);</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(update_pack), ...);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="keywordflow">return</span> r;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>      }};</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>  transition_state_function transition_state_f{</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>      [&amp;f = f](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> input &amp;input_u,</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>               <span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) -&gt; state_transition {</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(state_x);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(input_u);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(prediction_pack), ...);</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <span class="keywordflow">return</span> f;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>      }};</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>  noise_process_function noise_process_q{</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>      [&amp;q = q](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> PredictionTypes &amp;...prediction_pack)</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>          -&gt; process_uncertainty {</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(state_x);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(prediction_pack), ...);</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keywordflow">return</span> q;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>      }};</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>  transition_control_function transition_control_g{</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>      [&amp;g = g](<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) -&gt; input_control {</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(prediction_pack), ...);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        <span class="keywordflow">return</span> g;</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>      }};</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>  transition_function transition{</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>      [&amp;f = f, &amp;g = g](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> input &amp;input_u,</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                       <span class="keyword">const</span> PredictionTypes &amp;...prediction_pack) -&gt; state {</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(prediction_pack), ...);</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="keywordflow">return</span> f * state_x + g * input_u;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>      }};</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>  observation_function observation{</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>      [&amp;h = h](<span class="keyword">const</span> state &amp;state_x,</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>               <span class="keyword">const</span> UpdateTypes &amp;...update_pack) -&gt; output {</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        (<span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(update_pack), ...);</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        <span class="keywordflow">return</span> h * state_x;</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>      }};</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>  transpose t;</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>  Divide <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>;</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Output0, <span class="keyword">typename</span>... OutputN&gt;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> update(<span class="keyword">const</span> UpdateTypes &amp;...update_pack,</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>                               <span class="keyword">const</span> Output0 &amp;output_z,</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>                               <span class="keyword">const</span> OutputN &amp;...outputs_z) {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    update_arguments = {update_pack...};</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    z = output{output_z, outputs_z...};</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    h = observation_state_h(x, update_pack...);</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    r = noise_observation_r(x, z, update_pack...);</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    s = h * p * t(h) + r;</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    k = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">divide</a>(p * t(h), s);</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    y = z - observation(x, update_pack...);</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    x = state{x + k * y};</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>  }</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Input0, <span class="keyword">typename</span>... InputN&gt;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> predict(<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack,</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>                                <span class="keyword">const</span> Input0 &amp;input_u,</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>                                <span class="keyword">const</span> InputN &amp;...inputs_u) {</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    prediction_arguments = {prediction_pack...};</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    u = input{input_u, inputs_u...};</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    f = transition_state_f(x, u, prediction_pack...);</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    q = noise_process_q(x, prediction_pack...);</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    g = transition_control_g(prediction_pack...);</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    x = transition(x, u, prediction_pack...);</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    p = estimate_uncertainty{f * p * t(f) + q};</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>  }</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>};</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>} <span class="comment">// namespace fcarouge::internal</span></div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>} <span class="comment">// namespace fcarouge::internal</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_KALMAN_HPP</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_KALMAN_HPP</span></div>
 <div class="ttc" id="ainternal_2utility_8hpp_xhtml"><div class="ttname"><a href="internal_2utility_8hpp.xhtml">utility.hpp</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03_xhtml_abf8a13fb9b4cd98b787d279fe1f8483d"><div class="ttname"><a href="namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#abf8a13fb9b4cd98b787d279fe1f8483d">fcarouge::eigen::test::anonymous_namespace{eigen_f.cpp}::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, RowSize, ColumnSize &gt; matrix</div><div class="ttdef"><b>Definition:</b> <a href="eigen__f_8cpp_source.xhtml#l00051">eigen_f.cpp:51</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a6200288e83ea7493c432fcf77aca131d"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a6200288e83ea7493c432fcf77aca131d">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, transpose, divide, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00070">kalman.hpp:71</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_aee16b54624e2726129560ae810e805ec"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#aee16b54624e2726129560ae810e805ec">fcarouge::eigen::transpose</a></div><div class="ttdeci">internal::transpose transpose</div><div class="ttdoc">Function object for performing Eigen matrix transposition.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00050">kalman.hpp:50</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_af4a0f022ca9724e0e5e4a24732781365"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">fcarouge::eigen::divide</a></div><div class="ttdeci">internal::divide divide</div><div class="ttdoc">Function object for performing Eigen matrix division.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00053">kalman.hpp:53</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a925b0f42b9633e563c3083394cdb26db"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, divide, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00067">kalman.hpp:68</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_af4a0f022ca9724e0e5e4a24732781365"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#af4a0f022ca9724e0e5e4a24732781365">fcarouge::eigen::divide</a></div><div class="ttdeci">internal::divide divide</div><div class="ttdoc">Function object for performing Eigen matrix division.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00050">kalman.hpp:50</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a></div><div class="ttdoc">Internal implementation details.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aa5a28afb4550bbcbd55d875351de6e27"><div class="ttname"><a href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a></div><div class="ttdeci">internal::pack&lt; Types... &gt; pack</div><div class="ttdoc">Convenience tuple-like pack type.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00061">kalman.hpp:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -408,7 +405,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sat Oct 22 2022 19:24:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 22 2022 22:19:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
