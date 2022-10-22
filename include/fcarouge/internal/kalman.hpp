@@ -47,14 +47,14 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::internal {
 
-template <typename, typename, typename, typename, typename, typename, typename>
+template <typename, typename, typename, typename, typename, typename>
 struct kalman final {
   //! @todo Support some more specializations, all, or disable others?
 };
 
-template <typename State, typename Output, typename Transpose, typename Divide,
+template <typename State, typename Output, typename Divide,
           typename... UpdateTypes, typename... PredictionTypes>
-struct kalman<State, Output, void, Transpose, Divide, pack<UpdateTypes...>,
+struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
               pack<PredictionTypes...>> {
   template <typename Row, typename Column>
   using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
@@ -149,7 +149,7 @@ struct kalman<State, Output, void, Transpose, Divide, pack<UpdateTypes...>,
         return h * state_x;
       }};
 
-  Transpose transpose;
+  transpose t;
   Divide divide;
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
@@ -168,12 +168,11 @@ struct kalman<State, Output, void, Transpose, Divide, pack<UpdateTypes...>,
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
-    s = innovation_uncertainty{h * p * transpose(h) + r};
-    k = divide(p * transpose(h), s);
+    s = innovation_uncertainty{h * p * t(h) + r};
+    k = divide(p * t(h), s);
     y = z - observation(x, update_pack...);
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
-                             k * r * transpose(k)};
+    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
   }
 
   inline constexpr void predict(const PredictionTypes &...prediction_pack) {
@@ -181,13 +180,13 @@ struct kalman<State, Output, void, Transpose, Divide, pack<UpdateTypes...>,
     f = transition_state_f(x, prediction_pack...);
     q = noise_process_q(x, prediction_pack...);
     x = transition(x, prediction_pack...);
-    p = estimate_uncertainty{f * p * transpose(f) + q};
+    p = estimate_uncertainty{f * p * t(f) + q};
   }
 };
 
-template <typename State, typename Output, typename Input, typename Transpose,
-          typename Divide, typename... UpdateTypes, typename... PredictionTypes>
-struct kalman<State, Output, Input, Transpose, Divide, pack<UpdateTypes...>,
+template <typename State, typename Output, typename Input, typename Divide,
+          typename... UpdateTypes, typename... PredictionTypes>
+struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
               pack<PredictionTypes...>> {
   template <typename Row, typename Column>
   using matrix = std::decay_t<std::invoke_result_t<Divide, Row, Column>>;
@@ -291,7 +290,7 @@ struct kalman<State, Output, Input, Transpose, Divide, pack<UpdateTypes...>,
         return h * state_x;
       }};
 
-  Transpose transpose;
+  transpose t;
   Divide divide;
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
@@ -309,12 +308,11 @@ struct kalman<State, Output, Input, Transpose, Divide, pack<UpdateTypes...>,
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
-    s = h * p * transpose(h) + r;
-    k = divide(p * transpose(h), s);
+    s = h * p * t(h) + r;
+    k = divide(p * t(h), s);
     y = z - observation(x, update_pack...);
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * transpose(i - k * h) +
-                             k * r * transpose(k)};
+    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
   }
 
   //! @todo Extended support?
@@ -336,7 +334,7 @@ struct kalman<State, Output, Input, Transpose, Divide, pack<UpdateTypes...>,
     q = noise_process_q(x, prediction_pack...);
     g = transition_control_g(prediction_pack...);
     x = transition(x, u, prediction_pack...);
-    p = estimate_uncertainty{f * p * transpose(f) + q};
+    p = estimate_uncertainty{f * p * t(f) + q};
   }
 };
 
