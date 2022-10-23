@@ -41,6 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <concepts>
 #include <type_traits>
+#include <utility>
 
 namespace fcarouge::internal {
 
@@ -134,6 +135,27 @@ struct deducer final {
       -> decltype(lhs / rhs);
 
   // Eigen's types deductions.
+
+  // P1385 types deduction's.
+  template <typename Lhs, typename Rhs>
+    requires requires(Lhs lhs, Rhs rhs) {
+               typename Lhs::PlainMatrix;
+               typename Lhs::PlainMatrix;
+             }
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs * std::declval<typename Rhs::transpose_type>());
+
+  template <arithmetic Lhs, typename Rhs>
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(std::declval<typename Rhs::transpose_type>());
+
+  template <typename Lhs, arithmetic Rhs>
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const -> Lhs;
+
+  // Eigen types deduction's.
   template <typename Lhs, typename Rhs>
     requires requires(Lhs lhs, Rhs rhs) {
                typename Lhs::PlainMatrix;

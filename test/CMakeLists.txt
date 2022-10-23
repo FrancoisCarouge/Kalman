@@ -36,7 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
+foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp"
+             "p1385_initialization.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main)
