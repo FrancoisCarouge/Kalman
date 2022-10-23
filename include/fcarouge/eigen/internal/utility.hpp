@@ -50,7 +50,6 @@ namespace fcarouge::eigen::internal {
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
-// Numerator [m by n] / Denominator [o by n] -> Quotient [m by o]
 struct divide final {
   template <typename Numerator, typename Denominator>
   [[nodiscard]] inline constexpr auto

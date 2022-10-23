@@ -117,6 +117,18 @@ struct transpose final {
   }
 };
 
+//! @todo The dimensional analysis shows the "division" of matrices gives us the
+//! correctly sized resulting matrix but the correctness of the units have yet
+//! to be proven, nor whether its systematic usage is in fact appropriate.
+//! Hypothesis: units would be correct, usage may be incorrect, for example for
+//! `state_transition` may actually be unit-less and would need a unit-less
+//! identity denominator instead of state. Note the numerator column size and
+//! denominator row size are the quotient column and row sizes, respectively:
+//! Numerator [m by n] / Denominator [o by n] -> Quotient [m by o]
+template <typename Divide, typename Numerator, typename Denominator>
+using deduce_matrix_type_from =
+    std::decay_t<std::invoke_result_t<Divide, Numerator, Denominator>>;
+
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP
