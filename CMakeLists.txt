@@ -54,25 +54,25 @@ include(GNUInstallDirs)
 FetchContent_Declare(
   eigen
   URL "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2"
-  URL_HASH MD5=132dde48fe2b563211675626d29f1707
+  URL_HASH "MD5=132dde48fe2b563211675626d29f1707"
   FIND_PACKAGE_ARGS NAMES Eigen3)
 
 FetchContent_Declare(
   fmt
   URL "https://github.com/fmtlib/fmt/archive/refs/tags/9.1.0.tar.gz"
-  URL_HASH MD5=21fac48cae8f3b4a5783ae06b443973a
+  URL_HASH "MD5=21fac48cae8f3b4a5783ae06b443973a"
   FIND_PACKAGE_ARGS NAMES FMT)
 
 FetchContent_Declare(
   google_benchmark
   URL "https://github.com/google/benchmark/archive/refs/tags/v1.6.2.tar.gz"
-  URL_HASH MD5=14d14849e075af116143a161bc3b927b
+  URL_HASH "MD5=14d14849e075af116143a161bc3b927b"
   FIND_PACKAGE_ARGS NAMES benchmark)
 
 FetchContent_Declare(
   google_test
   URL "https://github.com/google/googletest/archive/refs/tags/release-1.12.1.tar.gz"
-  URL_HASH MD5=e82199374acdfda3f425331028eb4e2a
+  URL_HASH "MD5=e82199374acdfda3f425331028eb4e2a"
   FIND_PACKAGE_ARGS NAMES GTest)
 
 FetchContent_MakeAvailable(eigen fmt google_test google_benchmark)
