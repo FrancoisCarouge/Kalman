@@ -73,13 +73,27 @@ FetchContent_Declare(
   GIT_REPOSITORY "https://github.com/google/benchmark"
   GIT_TAG "main"
   FIND_PACKAGE_ARGS NAMES benchmark)
-
 FetchContent_Declare(
   google_test
   GIT_REPOSITORY "https://github.com/google/googletest"
   GIT_TAG "main"
   FIND_PACKAGE_ARGS NAMES GTest)
 FetchContent_MakeAvailable(google_test google_benchmark)
+
+FetchContent_Declare(
+  kokkos
+  GIT_REPOSITORY "https://github.com/kokkos/kokkos"
+  FIND_PACKAGE_ARGS NAMES Kokkos)
+FetchContent_Declare(
+  kokkos_kernels
+  GIT_REPOSITORY "https://github.com/kokkos/kokkos-kernels"
+  FIND_PACKAGE_ARGS NAMES KokkosKernels)
+FetchContent_Declare(
+  stdblas
+  GIT_REPOSITORY "https://github.com/kokkos/stdblas"
+  GIT_TAG "main"
+  FIND_PACKAGE_ARGS NAMES linalg)
+FetchContent_MakeAvailable(kokkos kokkos_kernels stdblas)
 
 FetchContent_Declare(
   mdspan
