@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a>&lt;State, Output, void, Divide, <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;UpdateTypes...&gt;,</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>              <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;PredictionTypes...&gt;&gt; {</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Row, <span class="keyword">typename</span> Column&gt;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#abf8a13fb9b4cd98b787d279fe1f8483d">matrix</a> = std::decay_t&lt;std::invoke_result_t&lt;Divide, Row, Column&gt;&gt;;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#abf8a13fb9b4cd98b787d279fe1f8483d">matrix</a> = deduce_matrix_type_from&lt;Divide, Row, Column&gt;;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">using </span>state = State;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">using </span>output = Output;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">using </span>input = empty;</div>
@@ -262,7 +262,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keyword">struct </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a>&lt;State, Output, Input, Divide, <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;UpdateTypes...&gt;,</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>              <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;PredictionTypes...&gt;&gt; {</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Row, <span class="keyword">typename</span> Column&gt;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#abf8a13fb9b4cd98b787d279fe1f8483d">matrix</a> = std::decay_t&lt;std::invoke_result_t&lt;Divide, Row, Column&gt;&gt;;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#abf8a13fb9b4cd98b787d279fe1f8483d">matrix</a> = deduce_matrix_type_from&lt;Divide, Row, Column&gt;;</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  <span class="keyword">using </span>state = State;</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  <span class="keyword">using </span>output = Output;</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="keyword">using </span>input = Input;</div>
@@ -405,7 +405,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sat Oct 22 2022 23:22:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Oct 23 2022 01:29:59 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

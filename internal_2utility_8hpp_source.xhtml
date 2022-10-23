@@ -203,9 +203,13 @@ $(document).ready(function(){initNavTree('internal_2utility_8hpp_source.xhtml','
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  }</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>};</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>} <span class="comment">// namespace fcarouge::internal</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_UTILITY_HPP</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Div<span class="keywordtype">id</span>e, <span class="keyword">typename</span> Numerator, <span class="keyword">typename</span> Denominator&gt;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1internal.xhtml#ae2b5a5f850c9464c49cf538e1e9f7e60">  129</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1internal.xhtml#ae2b5a5f850c9464c49cf538e1e9f7e60">deduce_matrix_type_from</a> =</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    std::decay_t&lt;std::invoke_result_t&lt;Divide, Numerator, Denominator&gt;&gt;;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>} <span class="comment">// namespace fcarouge::internal</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_UTILITY_HPP</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a></div><div class="ttdoc">Internal implementation details.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a26f3c00157550eff4aadf4c465238923"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a26f3c00157550eff4aadf4c465238923">fcarouge::internal::identity_v&lt; Matrix &gt;</a></div><div class="ttdeci">const auto identity_v&lt; Matrix &gt;</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00093">utility.hpp:93</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a3e93bd2cb263c45e44549d3d172d14f4"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a3e93bd2cb263c45e44549d3d172d14f4">fcarouge::internal::zero_v</a></div><div class="ttdeci">const Type zero_v</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00096">utility.hpp:96</a></div></div>
@@ -217,6 +221,7 @@ $(document).ready(function(){initNavTree('internal_2utility_8hpp_source.xhtml','
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a990c3b3d2e7c4889c7f666cc8e82c503"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">fcarouge::internal::empty_pack</a></div><div class="ttdeci">pack&lt;&gt; empty_pack</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00059">utility.hpp:59</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_ace0a378b2a42f9e8c113c89bfb3b816c"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#ace0a378b2a42f9e8c113c89bfb3b816c">fcarouge::internal::zero_v&lt; Matrix &gt;</a></div><div class="ttdeci">const auto zero_v&lt; Matrix &gt;</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00104">utility.hpp:104</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_ad5b370add02a0bfd986b84c4806fc2dc"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#ad5b370add02a0bfd986b84c4806fc2dc">fcarouge::internal::zero_v&lt; Arithmetic &gt;</a></div><div class="ttdeci">const Arithmetic zero_v&lt; Arithmetic &gt;</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00100">utility.hpp:100</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_ae2b5a5f850c9464c49cf538e1e9f7e60"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#ae2b5a5f850c9464c49cf538e1e9f7e60">fcarouge::internal::deduce_matrix_type_from</a></div><div class="ttdeci">std::decay_t&lt; std::invoke_result_t&lt; Divide, Numerator, Denominator &gt; &gt; deduce_matrix_type_from</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00129">utility.hpp:130</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aa5a28afb4550bbcbd55d875351de6e27"><div class="ttname"><a href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a></div><div class="ttdeci">internal::pack&lt; Types... &gt; pack</div><div class="ttdoc">Convenience tuple-like pack type.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00061">kalman.hpp:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -224,7 +229,7 @@ $(document).ready(function(){initNavTree('internal_2utility_8hpp_source.xhtml','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2utility_8hpp.xhtml">utility.hpp</a></li>
-    <li class="footer">Generated on Sat Oct 22 2022 23:22:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Oct 23 2022 01:29:59 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
