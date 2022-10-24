@@ -4,8 +4,8 @@ var namespacefcarouge =
     [ "eigen", "namespacefcarouge_1_1eigen.xhtml", "namespacefcarouge_1_1eigen" ],
     [ "internal", "namespacefcarouge_1_1internal.xhtml", [
       [ "arithmetic", "conceptfcarouge_1_1internal_1_1arithmetic.xhtml", null ],
-      [ "deduce_matrix_type_from", "namespacefcarouge_1_1internal.xhtml#ae2b5a5f850c9464c49cf538e1e9f7e60", null ],
       [ "empty_pack", "namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503", null ],
+      [ "matrix", "namespacefcarouge_1_1internal.xhtml#aa6ea711fa95c137443798ecd78f0b841", null ],
       [ "repack_t", "namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22", null ],
       [ "for_constexpr", "namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57", null ],
       [ "identity_v", "namespacefcarouge_1_1internal.xhtml#a49cc5985ed906b5c5380955ce30d875e", null ],

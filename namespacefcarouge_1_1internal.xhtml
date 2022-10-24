@@ -98,6 +98,8 @@ $(document).ready(function(){initNavTree('namespacefcarouge_1_1internal.xhtml','
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>deducer</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>empty</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman</b></td></tr>
@@ -122,9 +124,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memTemplParams" colspan="2">template&lt;typename From &gt; </td></tr>
 <tr class="memitem:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22">repack_t</a> = typename repack&lt; From &gt;::type</td></tr>
 <tr class="separator:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2b5a5f850c9464c49cf538e1e9f7e60"><td class="memTemplParams" colspan="2">template&lt;typename Divide , typename Numerator , typename Denominator &gt; </td></tr>
-<tr class="memitem:ae2b5a5f850c9464c49cf538e1e9f7e60"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ae2b5a5f850c9464c49cf538e1e9f7e60">deduce_matrix_type_from</a> = std::decay_t&lt; std::invoke_result_t&lt; Divide, Numerator, Denominator &gt; &gt;</td></tr>
-<tr class="separator:ae2b5a5f850c9464c49cf538e1e9f7e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6ea711fa95c137443798ecd78f0b841"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:aa6ea711fa95c137443798ecd78f0b841"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#aa6ea711fa95c137443798ecd78f0b841">matrix</a> = std::decay_t&lt; std::invoke_result_t&lt; deducer, Lhs, Rhs &gt; &gt;</td></tr>
+<tr class="separator:aa6ea711fa95c137443798ecd78f0b841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -160,25 +162,6 @@ Variables</h2></td></tr>
 <div class="textblock"><p >Internal implementation details. </p>
 <p >Solely intended for this library usage. Do not rely on these details in your projects. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="ae2b5a5f850c9464c49cf538e1e9f7e60" name="ae2b5a5f850c9464c49cf538e1e9f7e60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2b5a5f850c9464c49cf538e1e9f7e60">&#9670;&nbsp;</a></span>deduce_matrix_type_from</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Divide , typename Numerator , typename Denominator &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#ae2b5a5f850c9464c49cf538e1e9f7e60">fcarouge::internal::deduce_matrix_type_from</a> = typedef std::decay_t&lt;std::invoke_result_t&lt;Divide, Numerator, Denominator&gt; &gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo:</a></b></dt><dd>The dimensional analysis shows the "division" of matrices gives us the correctly sized resulting matrix but the correctness of the units have yet to be proven, nor whether its systematic usage is in fact appropriate. Hypothesis: units would be correct, usage may be incorrect, for example for <code>state_transition</code> may actually be unit-less and would need a unit-less identity denominator instead of state. Note the numerator column size and denominator row size are the quotient column and row sizes, respectively: Numerator [m by n] / Denominator [o by n] -&gt; Quotient [m by o] </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00129">129</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a990c3b3d2e7c4889c7f666cc8e82c503" name="a990c3b3d2e7c4889c7f666cc8e82c503"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a990c3b3d2e7c4889c7f666cc8e82c503">&#9670;&nbsp;</a></span>empty_pack</h2>
 
@@ -192,6 +175,24 @@ template&lt;typename Divide , typename Numerator , typename Denominator &gt; </d
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00059">59</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa6ea711fa95c137443798ecd78f0b841" name="aa6ea711fa95c137443798ecd78f0b841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6ea711fa95c137443798ecd78f0b841">&#9670;&nbsp;</a></span>matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Lhs , typename Rhs &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa6ea711fa95c137443798ecd78f0b841">fcarouge::internal::matrix</a> = typedef std::decay_t&lt;std::invoke_result_t&lt;deducer, Lhs, Rhs&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00152">152</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -455,7 +456,7 @@ template&lt;typename Matrix &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Sun Oct 23 2022 02:50:33 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Mon Oct 24 2022 20:26:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

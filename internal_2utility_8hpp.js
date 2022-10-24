@@ -1,7 +1,7 @@
 var internal_2utility_8hpp =
 [
-    [ "deduce_matrix_type_from", "internal_2utility_8hpp.xhtml#ae2b5a5f850c9464c49cf538e1e9f7e60", null ],
     [ "empty_pack", "internal_2utility_8hpp.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503", null ],
+    [ "matrix", "internal_2utility_8hpp.xhtml#aa6ea711fa95c137443798ecd78f0b841", null ],
     [ "repack_t", "internal_2utility_8hpp.xhtml#a567d18fbfbf6f8d1543bca57ba706f22", null ],
     [ "for_constexpr", "internal_2utility_8hpp.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57", null ],
     [ "identity_v", "internal_2utility_8hpp.xhtml#a49cc5985ed906b5c5380955ce30d875e", null ],
