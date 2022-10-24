@@ -37,8 +37,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "benchmark.hpp"
-#include "fcarouge/eigen/kalman.hpp"
 #include "fcarouge/internal/utility.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <Eigen/Eigen>
 #include <benchmark/benchmark.h>
@@ -51,17 +51,35 @@ For more information, please refer to <https://unlicense.org> */
 #include <cstring>
 #include <random>
 
-namespace fcarouge::eigen::benchmark {
+namespace fcarouge::benchmark {
 namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+
+struct divide final {
+  template <typename Numerator, typename Denominator>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Numerator &numerator, const Denominator &denominator) const {
+    using result =
+        typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
+                               std::decay_t<Numerator>::RowsAtCompileTime,
+                               std::decay_t<Denominator>::RowsAtCompileTime>;
+
+    return result{denominator.transpose()
+                      .fullPivHouseholderQr()
+                      .solve(numerator.transpose())
+                      .transpose()
+                      .eval()};
+  }
+};
 
 //! @benchmark Measure the update of the filter for different dimensions of
 //! states and outputs with the Eigen linear algebra backend.
 template <std::size_t StateSize, std::size_t OutputSize>
 void eigen_update(::benchmark::State &state) {
 
-  using kalman = kalman<vector<float, StateSize>, vector<float, OutputSize>>;
+  using kalman =
+      kalman<vector<float, StateSize>, vector<float, OutputSize>, void, divide>;
 
   kalman filter;
   std::random_device random_device;
@@ -108,4 +126,4 @@ BENCHMARK(eigen_update<${STATE_SIZE}, ${OUTPUT_SIZE}>)
                 -> Repetitions(100);
 
 } // namespace
-} // namespace fcarouge::eigen::benchmark
+} // namespace fcarouge::benchmark

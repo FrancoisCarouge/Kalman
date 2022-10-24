@@ -1,14 +1,31 @@
-#include "fcarouge/eigen/kalman.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <Eigen/Eigen>
 
 #include <cassert>
 #include <cmath>
 
-namespace fcarouge::eigen::sample {
+namespace fcarouge::sample {
 namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+
+struct divide final {
+  template <typename Numerator, typename Denominator>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Numerator &numerator, const Denominator &denominator) const {
+    using result =
+        typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
+                               std::decay_t<Numerator>::RowsAtCompileTime,
+                               std::decay_t<Denominator>::RowsAtCompileTime>;
+
+    return result{denominator.transpose()
+                      .fullPivHouseholderQr()
+                      .solve(numerator.transpose())
+                      .transpose()
+                      .eval()};
+  }
+};
 
 //! @brief Estimating the position of bounding boxes in image space.
 //!
@@ -27,7 +44,7 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 //! @example kf_8x4x0_deep_sort_bounding_box.cpp
 [[maybe_unused]] auto kf_8x4x0_deep_sort_bounding_box{[] {
   // A 8x4x0 filter, constant velocity, linear.
-  using kalman = kalman<vector<float, 8>, vector<float, 4>>;
+  using kalman = kalman<vector<float, 8>, vector<float, 4>, void, divide>;
 
   kalman filter;
 
@@ -234,4 +251,4 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 }()};
 
 } // namespace
-} // namespace fcarouge::eigen::sample
+} // namespace fcarouge::sample

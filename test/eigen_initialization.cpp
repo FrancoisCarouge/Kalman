@@ -36,13 +36,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/eigen/kalman.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <Eigen/Eigen>
 
 #include <cassert>
 
-namespace fcarouge::eigen::test {
+namespace fcarouge::test {
 namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
@@ -84,4 +84,4 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 }()};
 
 } // namespace
-} // namespace fcarouge::eigen::test
+} // namespace fcarouge::test
