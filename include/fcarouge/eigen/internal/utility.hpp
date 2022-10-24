@@ -73,6 +73,8 @@ struct divide final {
         typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
                                std::decay_t<Numerator>::RowsAtCompileTime, 1>;
 
+    //! @todo Verify the correctness this operation and others for dimensions
+    //! and units.
     return result{numerator / denominator};
   }
 
