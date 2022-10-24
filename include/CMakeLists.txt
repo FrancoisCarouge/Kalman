@@ -48,7 +48,7 @@ else()
       "-Wall"
       "-Wcast-align"
       "-Wchar-subscripts"
-      "-Wconversion"
+      # "-Wconversion"
       "-Wdouble-promotion"
       "-Wenum-conversion"
       "-Werror"
