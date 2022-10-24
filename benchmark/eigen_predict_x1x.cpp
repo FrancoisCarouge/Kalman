@@ -37,8 +37,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "benchmark.hpp"
-#include "fcarouge/eigen/kalman.hpp"
 #include "fcarouge/internal/utility.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <Eigen/Eigen>
 #include <benchmark/benchmark.h>
@@ -51,7 +51,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <cstring>
 #include <random>
 
-namespace fcarouge::eigen::benchmark {
+namespace fcarouge::benchmark {
 namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
@@ -109,4 +109,4 @@ BENCHMARK(eigen_predict<${STATE_SIZE}, ${INPUT_SIZE}>)
                 -> Repetitions(100);
 
 } // namespace
-} // namespace fcarouge::eigen::benchmark
+} // namespace fcarouge::benchmark

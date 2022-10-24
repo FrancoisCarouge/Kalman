@@ -36,13 +36,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/eigen/kalman.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <Eigen/Eigen>
 
 #include <cassert>
 
-namespace fcarouge::eigen::test {
+namespace fcarouge::test {
 namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
@@ -50,11 +50,28 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 template <typename Type, auto RowSize, auto ColumnSize>
 using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
+struct divide final {
+  template <typename Numerator, typename Denominator>
+  [[nodiscard]] inline constexpr auto
+  operator()(const Numerator &numerator, const Denominator &denominator) const {
+    using result =
+        typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
+                               std::decay_t<Numerator>::RowsAtCompileTime,
+                               std::decay_t<Denominator>::RowsAtCompileTime>;
+
+    return result{denominator.transpose()
+                      .fullPivHouseholderQr()
+                      .solve(numerator.transpose())
+                      .transpose()
+                      .eval()};
+  }
+};
+
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto f_5x4x3{[] {
   using kalman =
-      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>,
+      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>, divide,
              std::tuple<double, float, int>, std::tuple<int, float, double>>;
 
   kalman filter;
@@ -127,4 +144,4 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 }()};
 
 } // namespace
-} // namespace fcarouge::eigen::test
+} // namespace fcarouge::test

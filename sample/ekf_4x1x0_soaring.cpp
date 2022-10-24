@@ -1,11 +1,11 @@
-#include "fcarouge/eigen/kalman.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <Eigen/Eigen>
 
 #include <cassert>
 #include <cmath>
 
-namespace fcarouge::eigen::sample {
+namespace fcarouge::sample {
 namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
@@ -35,8 +35,8 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 [[maybe_unused]] auto ekf_4x1x0_soaring{[] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
-  using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
-                        std::tuple<float, float>>;
+  using kalman = kalman<vector<float, 4>, float, void, std::divides<void>,
+                        std::tuple<float, float>, std::tuple<float, float>>;
 
   kalman filter;
 
@@ -232,4 +232,4 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 }()};
 
 } // namespace
-} // namespace fcarouge::eigen::sample
+} // namespace fcarouge::sample

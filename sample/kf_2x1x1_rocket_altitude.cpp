@@ -1,4 +1,4 @@
-#include "fcarouge/eigen/kalman.hpp"
+#include "fcarouge/kalman.hpp"
 
 #include <Eigen/Eigen>
 
@@ -6,7 +6,7 @@
 #include <chrono>
 #include <cmath>
 
-namespace fcarouge::eigen::sample {
+namespace fcarouge::sample {
 namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
@@ -47,8 +47,8 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 //! @example kf_2x1x1_rocket_altitude.cpp
 [[maybe_unused]] auto kf_2x1x1_rocket_altitude{[] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
-  using kalman = kalman<vector<double, 2>, double, double, std::tuple<>,
-                        std::tuple<std::chrono::milliseconds>>;
+  using kalman = kalman<vector<double, 2>, double, double, std::divides<void>,
+                        std::tuple<>, std::tuple<std::chrono::milliseconds>>;
   kalman filter;
 
   // Initialization
@@ -222,4 +222,4 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 }()};
 
 } // namespace
-} // namespace fcarouge::eigen::sample
+} // namespace fcarouge::sample

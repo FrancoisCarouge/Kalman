@@ -54,13 +54,4 @@ using clock = std::conditional_t<std::chrono::high_resolution_clock::is_steady,
 
 } // namespace fcarouge::benchmark
 
-namespace fcarouge::eigen::benchmark {
-
-//! @brief Type of the platform steady benchmark clock.
-//!
-//! @details Conveniently makes the clock available in the eigen namespace.
-using clock = fcarouge::benchmark::clock;
-
-} // namespace fcarouge::eigen::benchmark
-
 #endif // BENCHMARK_HPP
