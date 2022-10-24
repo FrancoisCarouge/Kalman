@@ -1,7 +1,6 @@
 var namespacefcarouge =
 [
     [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", "namespacefcarouge_1_1benchmark" ],
-    [ "eigen", "namespacefcarouge_1_1eigen.xhtml", "namespacefcarouge_1_1eigen" ],
     [ "internal", "namespacefcarouge_1_1internal.xhtml", [
       [ "arithmetic", "conceptfcarouge_1_1internal_1_1arithmetic.xhtml", null ],
       [ "empty_pack", "namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503", null ],

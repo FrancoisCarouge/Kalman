@@ -138,20 +138,19 @@ Examples</h1>
 <h2><a class="anchor" id="autotoc_md21"></a>
 1x1 Constant System Dynamic Model Filter</h2>
 <p >Example from the <a href="sample/kf_1x1x0_building_height.cpp">building height estimation</a> sample. One estimated state and one observed output filter.</p>
-<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
+<div class="fragment"><div class="line">kalman filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(60.);</div>
 <div class="line">filter.p(225.);</div>
 <div class="line">filter.r(25.);</div>
 <div class="line"> </div>
 <div class="line">filter.update(48.54);</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a925b0f42b9633e563c3083394cdb26db"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">fcarouge::eigen::kalman</a></div><div class="ttdeci">fcarouge::kalman&lt; State, Output, Input, divide, UpdateTypes, PredictionTypes &gt; kalman</div><div class="ttdoc">Eigen-based Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="eigen_2kalman_8hpp_source.xhtml#l00067">kalman.hpp:68</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
 6x2 Constant Acceleration Dynamic Model Filter</h2>
 <p >Example from the <a href="sample/kf_6x2x0_vehicle_location.cpp">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
-<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
+<div class="fragment"><div class="line"><span class="keyword">using </span>kalman = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
+<div class="line">kalman filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(0., 0., 0., 0., 0., 0.);</div>
 <div class="line">filter.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
@@ -181,10 +180,10 @@ Examples</h1>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
 4x1 Non-Linear Dynamic Model Extended Filter</h2>
 <p >Example from the <a href="sample/ekf_4x1x0_soaring.cpp">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
-<div class="fragment"><div class="line"><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
+<div class="fragment"><div class="line"><span class="keyword">using </span>kalman = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
 <div class="line">                             std::tuple&lt;float, float&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
+<div class="line">kalman filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(1 / 4.06, 80, 0, 0);</div>
 <div class="line">filter.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
@@ -241,7 +240,7 @@ Declaration</h2>
 <div class="line">  <span class="keyword">typename</span> Divide,</div>
 <div class="line">  <span class="keyword">typename</span> UpdateTypes,</div>
 <div class="line">  <span class="keyword">typename</span> PredictionTypes&gt;</div>
-<div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a></div>
+<div class="line"><span class="keyword">class </span>kalman</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
 Template Parameters</h2>
 <table class="markdownTable">
@@ -349,7 +348,7 @@ Modifiers</h3>
 <h1><a class="anchor" id="autotoc_md32"></a>
 Format</h1>
 <p >A specialization of the standard formatter is provided for the filter. Use <code>std::format</code> to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.</p>
-<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a925b0f42b9633e563c3083394cdb26db">kalman</a> filter;</div>
+<div class="fragment"><div class="line">kalman filter;</div>
 <div class="line"> </div>
 <div class="line">std::print(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;h&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;q&quot;: 0, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
@@ -470,7 +469,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 24 2022 23:18:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Mon Oct 24 2022 23:47:00 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
