@@ -117,17 +117,39 @@ struct transpose final {
   }
 };
 
-//! @todo The dimensional analysis shows the "division" of matrices gives us the
+//! @todo The dimensional analysis shows the deduction of matrices gives us the
 //! correctly sized resulting matrix but the correctness of the units have yet
 //! to be proven, nor whether its systematic usage is in fact appropriate.
-//! Hypothesis: units would be correct, usage may be incorrect, for example for
-//! `state_transition` may actually be unit-less and would need a unit-less
-//! identity denominator instead of state. Note the numerator column size and
-//! denominator row size are the quotient column and row sizes, respectively:
-//! Numerator [m by n] / Denominator [o by n] -> Quotient [m by o]
-template <typename Divide, typename Numerator, typename Denominator>
-using deduce_matrix_type_from =
-    std::decay_t<std::invoke_result_t<Divide, Numerator, Denominator>>;
+//! Hypothesis: units are incorrect, usage may be incorrect, for example
+//! `state_transition` may actually be unit-less. Note the lhs column size and
+//! rhs row size are the resulting type's column and row sizes, respectively:
+//! Lhs [m by n] and Rhs [o by n] -> Result [m by o].
+//! @todo Is there a better, simpler, canonical, standard way of doing this type
+//! deductions?
+struct deducer final {
+  template <typename Lhs, typename Rhs>
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const ->
+      typename decltype(lhs * rhs.transpose())::PlainMatrix;
+
+  template <typename Lhs, arithmetic Rhs>
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const ->
+      typename Lhs::PlainMatrix;
+
+  template <arithmetic Lhs, typename Rhs>
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const ->
+      typename decltype(rhs.transpose())::PlainMatrix;
+
+  template <arithmetic Lhs, arithmetic Rhs>
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs / rhs);
+};
+
+template <typename Lhs, typename Rhs>
+using matrix = std::decay_t<std::invoke_result_t<deducer, Lhs, Rhs>>;
 
 } // namespace fcarouge::internal
 
