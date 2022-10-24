@@ -53,9 +53,9 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto f_5x4x3{[] {
-  using kalman = kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>,
-                        std::tuple<double, float, int, char>,
-                        std::tuple<char, int, float, double>>;
+  using kalman =
+      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>,
+             std::tuple<double, float, int>, std::tuple<int, float, double>>;
 
   kalman filter;
 
@@ -91,37 +91,35 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
   {
     const auto f{[](const kalman::state &x, const kalman::input &u,
-                    const char &c, const int &i, const float &fp,
+                    const int &i, const float &fp,
                     const double &d) -> kalman::state_transition {
       static_cast<void>(x);
       static_cast<void>(d);
       static_cast<void>(fp);
       static_cast<void>(i);
-      static_cast<void>(c);
       static_cast<void>(u);
       return matrix<double, 5, 5>::Identity();
     }};
     filter.f(f);
     assert(filter.f() == z5x5);
-    filter.predict(char(0), 0, 0.f, 0., z3);
+    filter.predict(0, 0.f, 0., z3);
     assert(filter.f() == i5x5);
   }
 
   {
     const auto f{[](const kalman::state &x, const kalman::input &u,
-                    const char &c, const int &i, const float &fp,
+                    const int &i, const float &fp,
                     const double &d) -> kalman::state_transition {
       static_cast<void>(x);
       static_cast<void>(d);
       static_cast<void>(fp);
       static_cast<void>(i);
-      static_cast<void>(c);
       static_cast<void>(u);
       return matrix<double, 5, 5>::Zero();
     }};
     filter.f(std::move(f));
     assert(filter.f() == i5x5);
-    filter.predict(0, 0, 0.f, 0., z3);
+    filter.predict(0, 0.f, 0., z3);
     assert(filter.f() == z5x5);
   }
 
