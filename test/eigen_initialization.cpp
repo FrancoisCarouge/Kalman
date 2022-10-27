@@ -83,5 +83,206 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
   return 0;
 }()};
 
+//! @test Verifies default values are initialized for multi-dimension filters,
+//! no input.
+[[maybe_unused]] auto defaults54{[] {
+  using kalman = kalman<vector<double, 5>, vector<double, 4>>;
+  kalman filter;
+
+  const auto i4x4{matrix<double, 4, 4>::Identity()};
+  const auto i4x5{matrix<double, 4, 5>::Identity()};
+  const auto i5x4{matrix<double, 5, 4>::Identity()};
+  const auto i5x5{matrix<double, 5, 5>::Identity()};
+  const auto z4x1{vector<double, 4>::Zero()};
+  const auto z4x4{matrix<double, 4, 4>::Zero()};
+  const auto z5x1{vector<double, 5>::Zero()};
+  const auto z5x5{matrix<double, 5, 5>::Zero()};
+
+  assert(filter.f() == i5x5);
+  assert(filter.h() == i4x5);
+  assert(filter.k() == i5x4);
+  assert(filter.p() == i5x5);
+  assert(filter.q() == z5x5 && "No process noise by default.");
+  assert(filter.r() == z4x4 && "No observation noise by default.");
+  assert(filter.s() == i4x4);
+  assert(filter.x() == z5x1 && "Origin state.");
+  assert(filter.y() == z4x1);
+  assert(filter.z() == z4x1);
+
+  return 0;
+}()};
+
+//! @test Verifies default values are initialized for multi-dimension filters,
+//! single state edge case.
+[[maybe_unused]] auto defaults143{[] {
+  using kalman = kalman<double, vector<double, 4>, vector<double, 3>>;
+  kalman filter;
+
+  const auto z3x1{vector<double, 3>::Zero()};
+  const auto i4x4{matrix<double, 4, 4>::Identity()};
+  const auto i4x1{matrix<double, 4, 1>::Identity()};
+  const auto i1x3{matrix<double, 1, 3>::Identity()};
+  const auto i1x4{matrix<double, 1, 4>::Identity()};
+  const auto z4x1{vector<double, 4>::Zero()};
+  const auto z4x4{matrix<double, 4, 4>::Zero()};
+
+  assert(filter.f() == 1);
+  assert(filter.g() == i1x3);
+  assert(filter.h() == i4x1);
+  assert(filter.k() == i1x4);
+  assert(filter.p() == 1);
+  assert(filter.q() == 0 && "No process noise by default.");
+  assert(filter.r() == z4x4 && "No observation noise by default.");
+  assert(filter.s() == i4x4);
+  assert(filter.u() == z3x1 && "No initial control.");
+  assert(filter.x() == 0 && "Origin state.");
+  assert(filter.y() == z4x1);
+  assert(filter.z() == z4x1);
+
+  return 0;
+}()};
+
+//! @test Verifies default values are initialized for multi-dimension filters,
+//! single output edge case.
+[[maybe_unused]] auto defaults513{[] {
+  using kalman = kalman<vector<double, 5>, double, vector<double, 3>>;
+  kalman filter;
+
+  const auto z3x1{vector<double, 3>::Zero()};
+  const auto i1x5{matrix<double, 1, 5>::Identity()};
+  const auto i5x3{matrix<double, 5, 3>::Identity()};
+  const auto i5x1{matrix<double, 5, 1>::Identity()};
+  const auto i5x5{matrix<double, 5, 5>::Identity()};
+  const auto z5x1{vector<double, 5>::Zero()};
+  const auto z5x5{matrix<double, 5, 5>::Zero()};
+
+  assert(filter.f() == i5x5);
+  assert(filter.g() == i5x3);
+  assert(filter.h() == i1x5);
+  assert(filter.k() == i5x1);
+  assert(filter.p() == i5x5);
+  assert(filter.q() == z5x5 && "No process noise by default.");
+  assert(filter.r() == 0 && "No observation noise by default.");
+  assert(filter.s() == 1);
+  assert(filter.u() == z3x1 && "No initial control.");
+  assert(filter.x() == z5x1 && "Origin state.");
+  assert(filter.y() == 0);
+  assert(filter.z() == 0);
+
+  return 0;
+}()};
+
+//! @test Verifies default values are initialized for multi-dimension filters,
+//! single input edge case.
+[[maybe_unused]] auto defaults541{[] {
+  using kalman = kalman<vector<double, 5>, vector<double, 4>, double>;
+  kalman filter;
+
+  const auto i4x4{matrix<double, 4, 4>::Identity()};
+  const auto i4x5{matrix<double, 4, 5>::Identity()};
+  const auto i5x1{matrix<double, 5, 1>::Identity()};
+  const auto i5x4{matrix<double, 5, 4>::Identity()};
+  const auto i5x5{matrix<double, 5, 5>::Identity()};
+  const auto z4x1{vector<double, 4>::Zero()};
+  const auto z4x4{matrix<double, 4, 4>::Zero()};
+  const auto z5x1{vector<double, 5>::Zero()};
+  const auto z5x5{matrix<double, 5, 5>::Zero()};
+
+  assert(filter.f() == i5x5);
+  assert(filter.g() == i5x1);
+  assert(filter.h() == i4x5);
+  assert(filter.k() == i5x4);
+  assert(filter.p() == i5x5);
+  assert(filter.q() == z5x5 && "No process noise by default.");
+  assert(filter.r() == z4x4 && "No observation noise by default.");
+  assert(filter.s() == i4x4);
+  assert(filter.u() == 0 && "No initial control.");
+  assert(filter.x() == z5x1 && "Origin state.");
+  assert(filter.y() == z4x1);
+  assert(filter.z() == z4x1);
+
+  return 0;
+}()};
+
+//! @test Verifies default values are initialized for multi-dimension filters,
+//! single output and input edge case.
+[[maybe_unused]] auto defaults511{[] {
+  using kalman = kalman<vector<double, 5>, double, double>;
+  kalman filter;
+
+  const auto i1x5{matrix<double, 1, 5>::Identity()};
+  const auto i5x1{matrix<double, 5, 1>::Identity()};
+  const auto i5x5{matrix<double, 5, 5>::Identity()};
+  const auto z5x1{vector<double, 5>::Zero()};
+  const auto z5x5{matrix<double, 5, 5>::Zero()};
+
+  assert(filter.f() == i5x5);
+  assert(filter.g() == i5x1);
+  assert(filter.h() == i1x5);
+  assert(filter.k() == i5x1);
+  assert(filter.p() == i5x5);
+  assert(filter.q() == z5x5 && "No process noise by default.");
+  assert(filter.r() == 0 && "No observation noise by default.");
+  assert(filter.s() == 1);
+  assert(filter.u() == 0 && "No initial control.");
+  assert(filter.x() == z5x1 && "Origin state.");
+  assert(filter.y() == 0);
+  assert(filter.z() == 0);
+
+  return 0;
+}()};
+
+//! @test Verifies default values are initialized for multi-dimension filters,
+//! single state and input edge case.
+[[maybe_unused]] auto defaults141{[] {
+  using kalman = kalman<double, vector<double, 4>, double>;
+  kalman filter;
+
+  const auto i4x4{matrix<double, 4, 4>::Identity()};
+  const auto i4x1{matrix<double, 4, 1>::Identity()};
+  const auto i1x4{matrix<double, 1, 4>::Identity()};
+  const auto z4x1{vector<double, 4>::Zero()};
+  const auto z4x4{matrix<double, 4, 4>::Zero()};
+
+  assert(filter.f() == 1);
+  assert(filter.g() == 1);
+  assert(filter.h() == i4x1);
+  assert(filter.k() == i1x4);
+  assert(filter.p() == 1);
+  assert(filter.q() == 0 && "No process noise by default.");
+  assert(filter.r() == z4x4 && "No observation noise by default.");
+  assert(filter.s() == i4x4);
+  assert(filter.u() == 0 && "No initial control.");
+  assert(filter.x() == 0 && "Origin state.");
+  assert(filter.y() == z4x1);
+  assert(filter.z() == z4x1);
+
+  return 0;
+}()};
+
+//! @test Verifies default values are initialized for multi-dimension filters.
+[[maybe_unused]] auto defaults113{[] {
+  using kalman = kalman<double, double, vector<double, 3>>;
+  kalman filter;
+
+  const auto z3x1{vector<double, 3>::Zero()};
+  const auto i1x3{matrix<double, 1, 3>::Identity()};
+
+  assert(filter.f() == 1);
+  assert(filter.g() == i1x3);
+  assert(filter.h() == 1);
+  assert(filter.k() == 1);
+  assert(filter.p() == 1);
+  assert(filter.q() == 0 && "No process noise by default.");
+  assert(filter.r() == 0 && "No observation noise by default.");
+  assert(filter.s() == 1);
+  assert(filter.u() == z3x1 && "No initial control.");
+  assert(filter.x() == 0 && "Origin state.");
+  assert(filter.y() == 0);
+  assert(filter.z() == 0);
+
+  return 0;
+}()};
+
 } // namespace
 } // namespace fcarouge::test
