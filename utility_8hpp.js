@@ -4,11 +4,11 @@ var utility_8hpp =
     [ "matrix", "utility_8hpp.xhtml#aa6ea711fa95c137443798ecd78f0b841", null ],
     [ "repack_t", "utility_8hpp.xhtml#a567d18fbfbf6f8d1543bca57ba706f22", null ],
     [ "for_constexpr", "utility_8hpp.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57", null ],
-    [ "identity_v", "utility_8hpp.xhtml#a49cc5985ed906b5c5380955ce30d875e", null ],
-    [ "identity_v< Arithmetic >", "utility_8hpp.xhtml#a7ae63dc37ad3ac075dec1c53ff5e5682", null ],
+    [ "identity_v", "utility_8hpp.xhtml#a3d7b84ab74ee71bcbb7b325f43c56b77", null ],
+    [ "identity_v< Arithmetic >", "utility_8hpp.xhtml#a34c026775cd123752a3d2876ba5ae7d2", null ],
     [ "identity_v< Matrix >", "utility_8hpp.xhtml#a26f3c00157550eff4aadf4c465238923", null ],
     [ "repack_s", "utility_8hpp.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9", null ],
-    [ "zero_v", "utility_8hpp.xhtml#a3e93bd2cb263c45e44549d3d172d14f4", null ],
-    [ "zero_v< Arithmetic >", "utility_8hpp.xhtml#ad5b370add02a0bfd986b84c4806fc2dc", null ],
+    [ "zero_v", "utility_8hpp.xhtml#a75b681b290b4c991f15e939cda798bb3", null ],
+    [ "zero_v< Arithmetic >", "utility_8hpp.xhtml#a211fcef052146cd878e1ad70d12cf27d", null ],
     [ "zero_v< Matrix >", "utility_8hpp.xhtml#ace0a378b2a42f9e8c113c89bfb3b816c", null ]
 ];
