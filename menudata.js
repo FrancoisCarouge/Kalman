@@ -45,7 +45,15 @@ var menudata={children:[
 {text:"v",url:"namespacemembers.xhtml#index_v"},
 {text:"z",url:"namespacemembers.xhtml#index_z"}]},
 {text:"Functions",url:"namespacemembers_func.xhtml"},
-{text:"Variables",url:"namespacemembers_vars.xhtml"},
+{text:"Variables",url:"namespacemembers_vars.xhtml",children:[
+{text:"d",url:"namespacemembers_vars.xhtml#index_d"},
+{text:"e",url:"namespacemembers_vars.xhtml#index_e"},
+{text:"f",url:"namespacemembers_vars.xhtml#index_f"},
+{text:"h",url:"namespacemembers_vars.xhtml#index_h"},
+{text:"i",url:"namespacemembers_vars.xhtml#index_i"},
+{text:"k",url:"namespacemembers_vars.xhtml#index_k"},
+{text:"r",url:"namespacemembers_vars.xhtml#index_r"},
+{text:"z",url:"namespacemembers_vars.xhtml#index_z"}]},
 {text:"Typedefs",url:"namespacemembers_type.xhtml"}]}]},
 {text:"Classes",url:"annotated.xhtml",children:[
 {text:"Class List",url:"annotated.xhtml"},
