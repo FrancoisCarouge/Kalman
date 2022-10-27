@@ -84,7 +84,7 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  inline static const auto i{identity_v<matrix<state, state>>};
+  static inline const auto i{identity_v<matrix<state, state>>};
 
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
@@ -214,7 +214,7 @@ struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  inline static const auto i{identity_v<matrix<state, state>>};
+  static inline const auto i{identity_v<matrix<state, state>>};
 
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
