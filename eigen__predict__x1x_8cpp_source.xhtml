@@ -172,28 +172,26 @@ $(document).ready(function(){initNavTree('eigen__predict__x1x_8cpp_source.xhtml'
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    state.SetIterationTime(</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        std::chrono::duration_cast&lt;std::chrono::duration&lt;double&gt;&gt;(end - start)</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            .count());</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  }</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>BENCHMARK(<a class="code hl_function" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml#a4a2ff14036596cccfffaf6197e678a74">eigen_predict</a>&lt;${STATE_SIZE}, ${INPUT_SIZE}&gt;)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml#a69092a1039a7c0a83dfd23cbd788e58e">   98</a></span>    -&gt;<a class="code hl_function" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml#a69092a1039a7c0a83dfd23cbd788e58e">Name</a>(<span class="stringliteral">&quot;eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}&quot;</span>)</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    -&gt;Unit(::benchmark::kNanosecond)</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    -&gt;ComputeStatistics(<span class="stringliteral">&quot;min&quot;</span>,</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                        [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;results) {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                          <span class="keywordflow">return</span> std::ranges::min(results);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                        })</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        -&gt; ComputeStatistics(<span class="stringliteral">&quot;max&quot;</span>,</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                             [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;results) {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                               <span class="keywordflow">return</span> std::ranges::max(results);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                             }) -&gt; UseManualTime()</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(<span class="keyword">true</span>)</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                -&gt; Repetitions(100);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>} <span class="comment">// namespace fcarouge::benchmark</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    state.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>BENCHMARK(<a class="code hl_function" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml#a4a2ff14036596cccfffaf6197e678a74">eigen_predict</a>&lt;${STATE_SIZE}, ${INPUT_SIZE}&gt;)</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml#a69092a1039a7c0a83dfd23cbd788e58e">   96</a></span>    -&gt;<a class="code hl_function" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml#a69092a1039a7c0a83dfd23cbd788e58e">Name</a>(<span class="stringliteral">&quot;eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}&quot;</span>)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    -&gt;Unit(::benchmark::kNanosecond)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    -&gt;ComputeStatistics(<span class="stringliteral">&quot;min&quot;</span>,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                        [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;results) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                          <span class="keywordflow">return</span> std::ranges::min(results);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                        })</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        -&gt; ComputeStatistics(<span class="stringliteral">&quot;max&quot;</span>,</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                             [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;results) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                               <span class="keywordflow">return</span> std::ranges::max(results);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                             }) -&gt; UseManualTime()</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(<span class="keyword">true</span>)</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                -&gt; Repetitions(100);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>} <span class="comment">// namespace fcarouge::benchmark</span></div>
 <div class="ttc" id="abenchmark_8hpp_xhtml"><div class="ttname"><a href="benchmark_8hpp.xhtml">benchmark.hpp</a></div><div class="ttdoc">Benchmarking support.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter for C++23.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00171">kalman.hpp:171</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3898db7da690aec04fa4621727d4bf56"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01293">kalman.hpp:1293</a></div></div>
@@ -211,7 +209,7 @@ $(document).ready(function(){initNavTree('eigen__predict__x1x_8cpp_source.xhtml'
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_44cec6e3ea30e076b9313c4641539d9f.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="eigen__predict__x1x_8cpp.xhtml">eigen_predict_x1x.cpp</a></li>
-    <li class="footer">Generated on Thu Oct 27 2022 04:15:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 29 2022 23:15:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

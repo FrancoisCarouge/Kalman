@@ -177,11 +177,9 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div class="line"><span class="lineno">  103</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">  104</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
 <div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span>    state.SetIterationTime(</div>
-<div class="line"><span class="lineno">  107</span>        std::chrono::duration_cast&lt;std::chrono::duration&lt;double&gt;&gt;(end - start)</div>
-<div class="line"><span class="lineno">  108</span>            .count());</div>
-<div class="line"><span class="lineno">  109</span>  }</div>
-<div class="line"><span class="lineno">  110</span>}</div>
+<div class="line"><span class="lineno">  106</span>    state.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
+<div class="line"><span class="lineno">  107</span>  }</div>
+<div class="line"><span class="lineno">  108</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter for C++23.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00171">kalman.hpp:171</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2697eb6865282a481107ec3aa4d42af5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2697eb6865282a481107ec3aa4d42af5">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l01275">kalman.hpp:1275</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af56b8ad91ef0452ff3da4e94ce0b7436"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00204">kalman.hpp:204</a></div></div>
@@ -226,7 +224,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml">anonymous_namespace{eigen_update_xx0.cpp}</a></li>
-    <li class="footer">Generated on Thu Oct 27 2022 04:15:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Oct 29 2022 23:15:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
