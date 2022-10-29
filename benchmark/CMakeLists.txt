@@ -36,6 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+set(PROCESSOR_AFFINITY TRUE)
+
 set(SOURCES "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
             "update_1x1x0.cpp" "update_1x1x1.cpp")
 
