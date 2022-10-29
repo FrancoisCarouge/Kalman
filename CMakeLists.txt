@@ -44,8 +44,9 @@ project(
   DESCRIPTION "Kalman Filter for C++"
   LANGUAGES "CXX")
 
-set(CMAKE_CXX_STANDARD "23" CMAKE_CXX_STANDARD_REQUIRED ON CMAKE_CXX_EXTENSIONS
-                       OFF)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD "23")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(CTest)
 include(FetchContent)
