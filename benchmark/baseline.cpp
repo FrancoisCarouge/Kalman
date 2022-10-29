@@ -56,9 +56,7 @@ void baseline(::benchmark::State &state) {
     ::benchmark::ClobberMemory();
     const auto end{clock::now()};
 
-    state.SetIterationTime(
-        std::chrono::duration_cast<std::chrono::duration<double>>(end - start)
-            .count());
+    state.SetIterationTime(std::chrono::duration<double>{end - start}.count());
   }
 }
 
