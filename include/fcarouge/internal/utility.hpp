@@ -128,25 +128,33 @@ struct transpose final {
 //! @todo Is there a better, simpler, canonical, standard way of doing this type
 //! deductions?
 struct deducer final {
+  // Built-in's types deductions.
+  template <arithmetic Lhs, arithmetic Rhs>
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs / rhs);
+
+  // Eigen's types deductions.
   template <typename Lhs, typename Rhs>
+    requires requires(Lhs lhs, Rhs rhs) {
+               typename Lhs::PlainMatrix;
+               typename Lhs::PlainMatrix;
+             }
   [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
                                                  const Rhs &rhs) const ->
       typename decltype(lhs * rhs.transpose())::PlainMatrix;
 
   template <typename Lhs, arithmetic Rhs>
+    requires requires(Lhs lhs) { typename Lhs::PlainMatrix; }
   [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
                                                  const Rhs &rhs) const ->
       typename Lhs::PlainMatrix;
 
   template <arithmetic Lhs, typename Rhs>
+    requires requires(Rhs rhs) { typename Rhs::PlainMatrix; }
   [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
                                                  const Rhs &rhs) const ->
       typename decltype(rhs.transpose())::PlainMatrix;
-
-  template <arithmetic Lhs, arithmetic Rhs>
-  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
-                                                 const Rhs &rhs) const
-      -> decltype(lhs / rhs);
 };
 
 template <typename Lhs, typename Rhs>
