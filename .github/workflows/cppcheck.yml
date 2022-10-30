@@ -51,6 +51,12 @@ jobs:
             cmake ..
             cmake --build . --parallel
             sudo cmake --install . ) )
+        ( cd /tmp
+          git clone --depth 1 https://github.com/BobSteagall/wg21.git
+          mkdir wg21/build
+          ( cd wg21/build
+            cmake ..
+            sudo cmake --install . ) )
     - name: Verify
       # unusedStructMember https://trac.cppcheck.net/ticket/10699
       run: |
