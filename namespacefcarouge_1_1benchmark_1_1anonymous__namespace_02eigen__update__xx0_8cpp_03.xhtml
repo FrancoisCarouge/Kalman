@@ -157,8 +157,8 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div class="line"><span class="lineno">   83</span> </div>
 <div class="line"><span class="lineno">   84</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
 <div class="line"><span class="lineno">   85</span>  std::random_device random_device;</div>
-<div class="line"><span class="lineno">   86</span>  std::mt19937 random_generator(random_device());</div>
-<div class="line"><span class="lineno">   87</span>  std::uniform_real_distribution uniformly_distributed(0.f, 1.f);</div>
+<div class="line"><span class="lineno">   86</span>  std::mt19937 random_generator{random_device()};</div>
+<div class="line"><span class="lineno">   87</span>  std::uniform_real_distribution&lt;float&gt; uniformly_distributed;</div>
 <div class="line"><span class="lineno">   88</span> </div>
 <div class="line"><span class="lineno">   89</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
 <div class="line"><span class="lineno">   90</span> </div>
@@ -224,7 +224,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml">anonymous_namespace{eigen_update_xx0.cpp}</a></li>
-    <li class="footer">Generated on Sat Oct 29 2022 23:57:51 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Oct 30 2022 00:13:37 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
