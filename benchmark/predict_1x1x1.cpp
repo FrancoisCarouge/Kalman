@@ -54,8 +54,8 @@ void predict_1x1x1(::benchmark::State &state) {
 
   kalman filter;
   std::random_device random_device;
-  std::mt19937 random_generator(random_device());
-  std::uniform_real_distribution uniformly_distributed(0.f, 1.f);
+  std::mt19937 random_generator{random_device()};
+  std::uniform_real_distribution<float> uniformly_distributed;
 
   for (auto _ : state) {
 
