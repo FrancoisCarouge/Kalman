@@ -42,6 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
+
 //! @test Verifies default values are initialized for single-dimension filters
 //! without input control.
 [[maybe_unused]] auto defaults110{[] {
@@ -76,6 +77,27 @@ namespace {
   assert(filter.r() == 0 && "No observation noise by default.");
   assert(filter.s() == 1);
   assert(filter.u() == 0 && "No initial control.");
+  assert(filter.x() == 0 && "Origin state.");
+  assert(filter.y() == 0);
+  assert(filter.z() == 0);
+
+  return 0;
+}()};
+
+//! @test Verifies default values are initialized for single-dimension filters
+//! without input control from models.
+[[maybe_unused]] auto models110{[] {
+  prediction_model predictor;
+  update_model updator;
+  kalman filter{predictor, updator};
+
+  assert(filter.f() == 1);
+  assert(filter.h() == 1);
+  assert(filter.k() == 1);
+  assert(filter.p() == 1);
+  assert(filter.q() == 0 && "No process noise by default.");
+  assert(filter.r() == 0 && "No observation noise by default.");
+  assert(filter.s() == 1);
   assert(filter.x() == 0 && "Origin state.");
   assert(filter.y() == 0);
   assert(filter.z() == 0);

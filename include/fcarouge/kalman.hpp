@@ -60,6 +60,207 @@ using empty_pack = internal::empty_pack;
 //! @brief Convenience tuple-like pack type.
 template <typename... Types> using pack = internal::pack<Types...>;
 
+template <typename State = double, typename Output = double,
+          typename Divide = std::divides<void>, typename... UpdateTypes>
+// class update_model final {};
+
+// template <typename State, typename Output, typename Divide,
+//           typename... UpdateTypes>
+class update_model /*<State, Output, Divide, pack<UpdateTypes...>>*/ final {
+public:
+  using state = State;
+  using output = Output;
+  using divide = Divide;
+  using estimate_uncertainty = internal::matrix<state, state>;
+  using update_types = std::tuple<UpdateTypes...>;
+  using output_model = internal::matrix<output, state>;
+  using output_uncertainty = internal::matrix<output, output>;
+  using innovation_uncertainty = output_uncertainty;
+  using gain = internal::matrix<state, output>;
+  using innovation = output;
+  using observation_state_function =
+      std::function<output_model(const state &, const UpdateTypes &...)>;
+  using noise_observation_function = std::function<output_uncertainty(
+      const state &, const output &, const UpdateTypes &...)>;
+  using observation_function =
+      std::function<output(const state &, const UpdateTypes &...)>;
+
+  static inline const auto i{
+      internal::identity_v<internal::matrix<state, state>>};
+
+  update_types update_arguments{};
+  output z{internal::zero_v<output>};
+  output_model h{internal::identity_v<output_model>};
+  output_uncertainty r{internal::zero_v<output_uncertainty>};
+  innovation_uncertainty s{internal::identity_v<innovation_uncertainty>};
+  gain k{internal::identity_v<gain>};
+  innovation y{internal::zero_v<innovation>};
+  internal::transpose t;
+  divide d;
+  observation_state_function observation_state_h{
+      [&h = h](const state &state_x,
+               const UpdateTypes &...update_pack) -> output_model {
+        static_cast<void>(state_x);
+        (static_cast<void>(update_pack), ...);
+        return h;
+      }};
+  noise_observation_function noise_observation_r{
+      [&r = r](const state &state_x, const output &output_z,
+               const UpdateTypes &...update_pack) -> output_uncertainty {
+        static_cast<void>(state_x);
+        static_cast<void>(output_z);
+        (static_cast<void>(update_pack), ...);
+        return r;
+      }};
+  observation_function observation{
+      [&h = h](const state &state_x,
+               const UpdateTypes &...update_pack) -> output {
+        (static_cast<void>(update_pack), ...);
+        return h * state_x;
+      }};
+
+  template <typename Output0, typename... OutputN>
+  inline constexpr std::tuple<state, estimate_uncertainty>
+  operator()(const state &x, const estimate_uncertainty &p,
+             const UpdateTypes &...update_pack, const Output0 &output_z,
+             const OutputN &...outputs_z) {
+    update_arguments = {update_pack...};
+    z = output{output_z, outputs_z...};
+    h = observation_state_h(x, update_pack...);
+    r = noise_observation_r(x, z, update_pack...);
+    s = innovation_uncertainty{h * p * t(h) + r};
+    k = d(p * t(h), s);
+    y = z - observation(x, update_pack...);
+    return {
+        state{x + k * y},
+        estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)}};
+  }
+};
+
+template <typename State = double, typename Input = void,
+          typename... PredictionTypes>
+class prediction_model final {
+public:
+  using state = State;
+  using input = Input;
+  using estimate_uncertainty = internal::matrix<state, state>;
+  using process_uncertainty = internal::matrix<state, state>;
+  using state_transition = internal::matrix<state, state>;
+  using prediction_types = std::tuple<PredictionTypes...>;
+  using input_control = internal::matrix<state, input>;
+  using transition_state_function = std::function<state_transition(
+      const state &, const input &, const PredictionTypes &...)>;
+  using noise_process_function = std::function<process_uncertainty(
+      const state &, const PredictionTypes &...)>;
+  using transition_control_function =
+      std::function<input_control(const PredictionTypes &...)>;
+  using transition_function = std::function<state(const state &, const input &,
+                                                  const PredictionTypes &...)>;
+
+  prediction_types prediction_arguments{};
+  process_uncertainty q{internal::zero_v<process_uncertainty>};
+  state_transition f{internal::identity_v<state_transition>};
+  input_control g{internal::identity_v<input_control>};
+  input u{internal::zero_v<input>};
+  internal::transpose t;
+  transition_state_function transition_state_f{
+      [&f = f](const state &state_x, const input &input_u,
+               const PredictionTypes &...prediction_pack) -> state_transition {
+        static_cast<void>(state_x);
+        static_cast<void>(input_u);
+        (static_cast<void>(prediction_pack), ...);
+        return f;
+      }};
+  noise_process_function noise_process_q{
+      [&q = q](const state &state_x, const PredictionTypes &...prediction_pack)
+          -> process_uncertainty {
+        static_cast<void>(state_x);
+        (static_cast<void>(prediction_pack), ...);
+        return q;
+      }};
+  transition_control_function transition_control_g{
+      [&g = g](const PredictionTypes &...prediction_pack) -> input_control {
+        (static_cast<void>(prediction_pack), ...);
+        return g;
+      }};
+  transition_function transition{
+      [&f = f, &g = g](const state &state_x, const input &input_u,
+                       const PredictionTypes &...prediction_pack) -> state {
+        (static_cast<void>(prediction_pack), ...);
+        return f * state_x + g * input_u;
+      }};
+
+  template <typename Input0, typename... InputN>
+  inline constexpr std::tuple<state, estimate_uncertainty>
+  operator()(const state &x, const estimate_uncertainty &p,
+             const PredictionTypes &...prediction_pack, const Input0 &input_u,
+             const InputN &...inputs_u) {
+    prediction_arguments = {prediction_pack...};
+    u = input{input_u, inputs_u...};
+    f = transition_state_f(x, u, prediction_pack...);
+    q = noise_process_q(x, prediction_pack...);
+    g = transition_control_g(prediction_pack...);
+
+    return {transition(x, u, prediction_pack...),
+            estimate_uncertainty{f * p * t(f) + q}};
+  }
+};
+
+template <typename State, typename... PredictionTypes>
+class prediction_model<State, void, PredictionTypes...> final {
+public:
+  using state = State;
+  using input = internal::empty;
+  using estimate_uncertainty = internal::matrix<state, state>;
+  using process_uncertainty = internal::matrix<state, state>;
+  using state_transition = internal::matrix<state, state>;
+  using prediction_types = std::tuple<PredictionTypes...>;
+  using input_control = internal::empty;
+  using transition_state_function = std::function<state_transition(
+      const state &, const PredictionTypes &...)>;
+  using noise_process_function = std::function<process_uncertainty(
+      const state &, const PredictionTypes &...)>;
+  using transition_control_function = internal::empty;
+  using transition_function =
+      std::function<state(const state &, const PredictionTypes &...)>;
+
+  prediction_types prediction_arguments{};
+  process_uncertainty q{internal::zero_v<process_uncertainty>};
+  state_transition f{internal::identity_v<state_transition>};
+  internal::transpose t;
+  transition_state_function transition_state_f{
+      [&f = f](const state &state_x,
+               const PredictionTypes &...prediction_pack) -> state_transition {
+        static_cast<void>(state_x);
+        (static_cast<void>(prediction_pack), ...);
+        return f;
+      }};
+  noise_process_function noise_process_q{
+      [&q = q](const state &state_x, const PredictionTypes &...prediction_pack)
+          -> process_uncertainty {
+        static_cast<void>(state_x);
+        (static_cast<void>(prediction_pack), ...);
+        return q;
+      }};
+  transition_function transition{
+      [&f = f](const state &state_x,
+               const PredictionTypes &...prediction_pack) -> state {
+        (static_cast<void>(prediction_pack), ...);
+        return f * state_x;
+      }};
+
+  inline constexpr std::tuple<state, estimate_uncertainty>
+  operator()(const state &x, const estimate_uncertainty &p,
+             const PredictionTypes &...prediction_pack) {
+    prediction_arguments = {prediction_pack...};
+    f = transition_state_f(x, prediction_pack...);
+    q = noise_process_q(x, prediction_pack...);
+
+    return {transition(x, prediction_pack...),
+            estimate_uncertainty{f * p * t(f) + q}};
+  }
+};
+
 //! @brief A generic Kalman filter for C++23.
 //!
 //! @details A Bayesian filter that uses multivariate Gaussians, a recursive
@@ -177,9 +378,9 @@ private:
   //!
   //! @brief The internal implementation unpacks the parameter packs from
   //! tuple-like types which allows for multiple parameter pack deductions.
-  using implementation = internal::kalman<State, Output, Input, Divide,
-                                          internal::repack_t<UpdateTypes>,
-                                          internal::repack_t<PredictionTypes>>;
+  using implementation =
+      internal::kalman<prediction_model<State, Input, PredictionTypes>,
+                       update_model<State, Output, Divide, UpdateTypes>>;
 
   //! @}
 
@@ -327,6 +528,12 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr kalman(kalman &&other) noexcept = default;
+
+  template <typename PredictionModel, typename UpdateModel>
+  kalman(const PredictionModel &predictor, const UpdateModel &updator) {
+    static_cast<void>(predictor);
+    static_cast<void>(updator);
+  }
 
   //! @brief Copy assignment operator.
   //!
@@ -852,6 +1059,16 @@ public:
   //! @}
 };
 
+//! @name Deduction Guides
+//! @{
+
+template <typename PredictionModel, typename UpdateModel>
+kalman(const PredictionModel &predictor, const UpdateModel &updator)
+    -> kalman<typename UpdateModel::state, typename UpdateModel::output,
+              typename PredictionModel::input, typename UpdateModel::divide>;
+
+//! @}
+
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 [[nodiscard("The returned state estimate column vector X is unexpectedly "
@@ -909,7 +1126,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::z() const
     -> const output & {
-  return filter.z;
+  return filter.updator.z;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -918,7 +1135,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::u() const
     -> const input &requires(not std::is_same_v<Input, void>) {
-      return filter.u;
+      return filter.predictor.u;
     }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -962,7 +1179,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q() const
     -> const process_uncertainty & {
-  return filter.q;
+  return filter.predictor.q;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -971,7 +1188,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q()
     -> process_uncertainty & {
-  return filter.q;
+  return filter.predictor.q;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -979,7 +1196,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
     const process_uncertainty &value) {
-  filter.q = value;
+  filter.predictor.q = value;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -987,7 +1204,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
     process_uncertainty &&value) {
-  filter.q = std::move(value);
+  filter.predictor.q = std::move(value);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1012,7 +1229,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "unexpectedly discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r() const
     -> const output_uncertainty & {
-  return filter.r;
+  return filter.updator.r;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1021,7 +1238,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "unexpectedly discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r()
     -> output_uncertainty & {
-  return filter.r;
+  return filter.updator.r;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1029,7 +1246,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
     const output_uncertainty &value) {
-  filter.r = value;
+  filter.updator.r = value;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1037,7 +1254,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
     output_uncertainty &&value) {
-  filter.r = std::move(value);
+  filter.updator.r = std::move(value);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1062,7 +1279,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f() const
     -> const state_transition & {
-  return filter.f;
+  return filter.predictor.f;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1071,7 +1288,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f()
     -> state_transition & {
-  return filter.f;
+  return filter.predictor.f;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1079,7 +1296,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
     const state_transition &value) {
-  filter.f = value;
+  filter.predictor.f = value;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1087,7 +1304,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
     state_transition &&value) {
-  filter.f = std::move(value);
+  filter.predictor.f = std::move(value);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1095,7 +1312,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
     const transition_state_function &callable) {
-  filter.transition_state_f = callable;
+  filter.predictor.transition_state_f = callable;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1103,7 +1320,8 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
     transition_state_function &&callable) {
-  filter.transition_state_f = std::forward<decltype(callable)>(callable);
+  filter.predictor.transition_state_f =
+      std::forward<decltype(callable)>(callable);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1112,7 +1330,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h() const
     -> const output_model & {
-  return filter.h;
+  return filter.updator.h;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1121,7 +1339,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h()
     -> output_model & {
-  return filter.h;
+  return filter.updator.h;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1129,7 +1347,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
     const output_model &value) {
-  filter.h = value;
+  filter.updator.h = value;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1137,7 +1355,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
     output_model &&value) {
-  filter.h = std::move(value);
+  filter.updator.h = std::move(value);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1162,7 +1380,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g() const
     -> const input_control &requires(not std::is_same_v<Input, void>) {
-      return filter.g;
+      return filter.predictor.g;
     }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1172,7 +1390,7 @@ template <typename State, typename Output, typename Input, typename Divide,
                                                          Divide, UpdateTypes,
                                                          PredictionTypes>::g()
     -> input_control &requires(not std::is_same_v<Input, void>) {
-      return filter.g;
+      return filter.predictor.g;
     }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1181,7 +1399,7 @@ inline constexpr void kalman<State, Output, Input, Divide, UpdateTypes,
                              PredictionTypes>::g(const input_control &value)
   requires(not std::is_same_v<Input, void>)
 {
-  filter.g = value;
+  filter.predictor.g = value;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1191,7 +1409,7 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g(
     input_control &&value)
   requires(not std::is_same_v<Input, void>)
 {
-  filter.g = std::move(value);
+  filter.predictor.g = std::move(value);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1199,7 +1417,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g(
     const transition_control_function &callable) {
-  filter.transition_control_g = callable;
+  filter.predictor.transition_control_g = callable;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1207,7 +1425,8 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g(
     transition_control_function &&callable) {
-  filter.transition_control_g = std::forward<decltype(callable)>(callable);
+  filter.predictor.transition_control_g =
+      std::forward<decltype(callable)>(callable);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1216,7 +1435,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::k() const
     -> const gain & {
-  return filter.k;
+  return filter.updator.k;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1225,7 +1444,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::y() const
     -> const innovation & {
-  return filter.y;
+  return filter.updator.y;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1234,7 +1453,7 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::s() const
     -> const innovation_uncertainty & {
-  return filter.s;
+  return filter.updator.s;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1242,7 +1461,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::transition(
     const transition_function &callable) {
-  filter.transition = callable;
+  filter.predictor.transition = callable;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1250,7 +1469,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::transition(
     transition_function &&callable) {
-  filter.transition = std::forward<decltype(callable)>(callable);
+  filter.predictor.transition = std::forward<decltype(callable)>(callable);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1258,7 +1477,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::observation(
     const observation_function &callable) {
-  filter.observation = callable;
+  filter.updator.observation = callable;
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1266,7 +1485,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::observation(
     observation_function &&callable) {
-  filter.observation = std::forward<decltype(callable)>(callable);
+  filter.updator.observation = std::forward<decltype(callable)>(callable);
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
