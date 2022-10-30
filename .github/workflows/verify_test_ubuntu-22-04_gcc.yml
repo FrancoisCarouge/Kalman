@@ -12,6 +12,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3.1.0
+    - name: Install
+      # Workaround to wg21 CMake installation issues.
+      run: |
+        ( cd /tmp
+          git clone --depth 1 https://github.com/BobSteagall/wg21.git
+          mkdir wg21/build
+          ( cd wg21/build
+            cmake ..
+            sudo cmake --install . ) )
     - name: Build
       run: |
         cmake -B "build" .
