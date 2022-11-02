@@ -48,7 +48,7 @@ Standard formatter specialization provided for representation of the filter stat
 
 ## 1x1 Constant System Dynamic Model Filter
 
-Example from the [building height estimation](sample/kf_1x1x0_building_height.cpp) sample. One estimated state and one observed output filter.
+Example from the [building height estimation](https://francoiscarouge.github.io/Kalman/kf_1x1x0_building_height_8cpp-example.xhtml) sample. One estimated state and one observed output filter.
 
 ```cpp
 kalman filter;
@@ -60,9 +60,11 @@ filter.r(25.);
 filter.update(48.54);
 ```
 
+[full sample code](sample/kf_1x1x0_building_height.cpp)
+
 ## 6x2 Constant Acceleration Dynamic Model Filter
 
-Example from the [2-dimension vehicle location, velocity, and acceleration vehicle estimation](sample/kf_6x2x0_vehicle_location.cpp) sample. Six estimated states and two observed outputs filter.
+Example from the [2-dimension vehicle location, velocity, and acceleration vehicle estimation](https://francoiscarouge.github.io/Kalman/kf_6x2x0_vehicle_location_8cpp-example.xhtml) sample. Six estimated states and two observed outputs filter.
 
 ```cpp
 using kalman = kalman<vector<double, 6>, vector<double, 2>>;
@@ -96,9 +98,11 @@ filter.predict();
 filter.update(-375.93, 301.78);
 ```
 
+[full sample code](sample/kf_6x2x0_vehicle_location.cpp)
+
 ## 4x1 Non-Linear Dynamic Model Extended Filter
 
-Example from the [thermal, current of warm air, strength, radius, and location estimation](sample/ekf_4x1x0_soaring.cpp) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
+Example from the [thermal, current of warm air, strength, radius, and location estimation](https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
 
 ```cpp
 using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
@@ -142,6 +146,8 @@ filter.h([](const kalman::state &x, const float &position_x,
 filter.predict(drift_x, drift_y);
 filter.update(position_x, position_y, variometer);
 ```
+
+[full sample code](sample/ekf_4x1x0_soaring.cpp)
 
 ## Other Examples
 
