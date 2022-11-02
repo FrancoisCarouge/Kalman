@@ -98,6 +98,8 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
   output z{zero_v<output>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
+  transpose t{};
+  Divide divide{};
 
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through filter.x() when needed? Where does the
@@ -145,9 +147,6 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
         (static_cast<void>(update_pack), ...);
         return h * state_x;
       }};
-
-  transpose t;
-  Divide divide;
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
   //! does the compiler/linker do it for us?
@@ -230,6 +229,8 @@ struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
   input u{zero_v<input>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
+  transpose t{};
+  Divide divide{};
 
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through filter.x() when needed? Where does the
@@ -283,9 +284,6 @@ struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
         (static_cast<void>(update_pack), ...);
         return h * state_x;
       }};
-
-  transpose t;
-  Divide divide;
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
   //! does the compiler/linker do it for us?
