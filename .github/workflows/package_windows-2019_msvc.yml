@@ -1,0 +1,30 @@
+name: "Package: Windows 2019 MSVC"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.1.0
+    - name: Install
+      uses: ilammy/msvc-dev-cmd@v1.12.0
+    - name: "Install Linear Algebra"
+      # Workaround to wg21 CMake installation issues.
+      run: |
+        git clone --depth 1 https://github.com/BobSteagall/wg21.git
+        mkdir wg21/build
+        cd wg21/build
+        cmake ..
+        cmake --install .
+    - name: Version
+      run: cl
+    - name: Build
+      run: |
+        cmake -B "build" .
+        cmake --build "build" --config "Release" --target "package" --parallel 4

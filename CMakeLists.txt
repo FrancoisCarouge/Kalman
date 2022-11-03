@@ -40,14 +40,19 @@ cmake_minimum_required(VERSION "3.24")
 
 project(
   kalman
-  VERSION "0.1.0"
   DESCRIPTION "Kalman Filter for C++"
-  LANGUAGES "CXX")
+  HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
+  LANGUAGES "CXX"
+  VERSION "0.1.0")
 
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD "23")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CPACK_PACKAGE_CHECKSUM "SHA512")
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE.txt")
 
+include(CPack)
 include(CTest)
 include(FetchContent)
 include(GNUInstallDirs)
