@@ -18,4 +18,4 @@ jobs:
         chmod +x llvm.sh
         sudo ./llvm.sh 16 all
     - name: Verify
-      run: find . -iname *.hpp -o -iname *.cpp -o -iname support/** | xargs clang-format-16 --Werror --dry-run --verbose -style=file
+      run: find . -iname "*.hpp" -o -iname "*.cpp" -o -iwholename "./support/format" | xargs clang-format-16 --Werror --dry-run --verbose -style=file
