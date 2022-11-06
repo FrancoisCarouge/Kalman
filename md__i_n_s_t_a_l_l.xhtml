@@ -87,9 +87,9 @@ $(document).ready(function(){initNavTree('md__i_n_s_t_a_l_l.xhtml',''); initResi
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md15"></a>
-System Library</h1>
+From Repository Sources</h1>
 <p >Install and use the library in your projects by cloning the repository, configuring, and installing the project on all platforms:</p>
-<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git &quot;kalman&quot;</div>
+<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/Kalman.git&quot; &quot;kalman&quot;</div>
 <div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
 <div class="line">cmake --build &quot;build&quot; --parallel</div>
 <div class="line">sudo cmake --install &quot;build&quot;</div>
@@ -98,20 +98,26 @@ Build &amp; Run</h1>
 <h2><a class="anchor" id="autotoc_md17"></a>
 Tests &amp; Samples</h2>
 <p >Build and run the tests and samples on all platforms:</p>
-<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git &quot;kalman&quot;</div>
-<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot; -G &quot;Ninja Multi-Config&quot;</div>
+<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/Kalman.git&quot; &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
 <div class="line">cmake --build &quot;build&quot; --config &quot;Debug&quot; --parallel</div>
 <div class="line">ctest --test-dir &quot;build&quot; --build-config &quot;Debug&quot; --tests-regex &quot;kalman_(test|sample)&quot; --output-on-failure --parallel</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
 Benchmarks</h2>
-<p >See the <a href="benchmark/">Benchmark</a> section. </p>
-</div></div><!-- contents -->
+<p >See the <a href="benchmark/">Benchmark</a> section.</p>
+<h2><a class="anchor" id="autotoc_md19"></a>
+Installation Package</h2>
+<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/Kalman.git&quot; &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --target &quot;package&quot; --parallel</div>
+<div class="line">cmake --build &quot;build&quot; --target &quot;package_source&quot; --parallel</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 4 2022 00:54:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Nov 6 2022 04:10:01 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
