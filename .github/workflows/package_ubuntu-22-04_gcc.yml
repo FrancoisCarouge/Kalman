@@ -1,4 +1,4 @@
-name: "Test: Ubuntu 22.04 Clang"
+name: "Package: Ubuntu 22.04 GCC"
 
 on:
   push:
@@ -23,9 +23,6 @@ jobs:
             sudo cmake --install . ) )
     - name: Build
       run: |
-        export CC=clang
-        export CXX=clang++
         cmake -B "build" .
-        cmake --build "build" --parallel 8
-        ctest --test-dir "build" --tests-regex "kalman_(test|sample)" --output-on-failure --parallel 8
-        sudo cmake --install "build"
+        cmake --build "build" --target "package" --parallel 4
+        cmake --build "build" --target "package_source" --parallel 4

@@ -71,6 +71,16 @@ else()
 endif()
 
 add_library(kalman INTERFACE)
-target_include_directories(kalman INTERFACE ".")
+target_sources(
+  kalman
+  INTERFACE FILE_SET
+            "kalman_headers"
+            TYPE
+            "HEADERS"
+            FILES
+            "internal/format.hpp"
+            "internal/kalman.hpp"
+            "internal/utility.hpp"
+            "kalman.hpp")
 target_link_libraries(kalman INTERFACE ${LIBRARIES})
 target_compile_options(kalman INTERFACE ${OPTIONS})
