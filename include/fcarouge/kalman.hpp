@@ -918,8 +918,8 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::u() const
     -> const input &requires(not std::is_same_v<Input, void>) {
-                      return filter.u;
-                    }
+      return filter.u;
+    }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
@@ -1162,8 +1162,8 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g() const
     -> const input_control &requires(not std::is_same_v<Input, void>) {
-                              return filter.g;
-                            }
+      return filter.g;
+    }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
@@ -1172,8 +1172,8 @@ template <typename State, typename Output, typename Input, typename Divide,
                                                          Divide, UpdateTypes,
                                                          PredictionTypes>::g()
     -> input_control &requires(not std::is_same_v<Input, void>) {
-                        return filter.g;
-                      }
+      return filter.g;
+    }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>

@@ -137,9 +137,9 @@ struct deducer final {
   // Eigen's types deductions.
   template <typename Lhs, typename Rhs>
     requires requires(Lhs lhs, Rhs rhs) {
-               typename Lhs::PlainMatrix;
-               typename Lhs::PlainMatrix;
-             }
+      typename Lhs::PlainMatrix;
+      typename Lhs::PlainMatrix;
+    }
   [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
                                                  const Rhs &rhs) const ->
       typename decltype(lhs * rhs.transpose())::PlainMatrix;
