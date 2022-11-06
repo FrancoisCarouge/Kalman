@@ -397,8 +397,8 @@ $(document).ready(function(){initNavTree('kalman_8hpp_source.xhtml',''); initRes
 <div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>            <span class="stringliteral">&quot;discarded.&quot;</span>)]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
 <div class="line"><a id="l00919" name="l00919"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a75faf76f6d2e995276409a50a216f36b">  919</a></span><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a75faf76f6d2e995276409a50a216f36b">kalman&lt;State, Output, Input, Divide, UpdateTypes, PredictionTypes&gt;::u</a>() const</div>
 <div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>    -&gt; const <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ae50bc6a7b064ac6c91ddab3791b120db">input</a> &amp;requires(not std::is_same_v&lt;Input, <span class="keywordtype">void</span>&gt;) {</div>
-<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>                      <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.u;</div>
-<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>                    }</div>
+<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>      <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.u;</div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>    }</div>
 <div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span> </div>
 <div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Input, <span class="keyword">typename</span> Divide,</div>
 <div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>          <span class="keyword">typename</span> UpdateTypes, <span class="keyword">typename</span> PredictionTypes&gt;</div>
@@ -641,8 +641,8 @@ $(document).ready(function(){initNavTree('kalman_8hpp_source.xhtml',''); initRes
 <div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>            <span class="stringliteral">&quot;discarded.&quot;</span>)]] <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
 <div class="line"><a id="l01163" name="l01163"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a4734807882ed3bd3aeaffbb678e37be7"> 1163</a></span><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a4734807882ed3bd3aeaffbb678e37be7">kalman&lt;State, Output, Input, Divide, UpdateTypes, PredictionTypes&gt;::g</a>() const</div>
 <div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span>    -&gt; const <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a8fe68f6c32515ec3e338c9c3d205a753">input_control</a> &amp;requires(not std::is_same_v&lt;Input, <span class="keywordtype">void</span>&gt;) {</div>
-<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span>                              <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.g;</div>
-<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>                            }</div>
+<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span>      <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.g;</div>
+<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>    }</div>
 <div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span> </div>
 <div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Input, <span class="keyword">typename</span> Divide,</div>
 <div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>          <span class="keyword">typename</span> UpdateTypes, <span class="keyword">typename</span> PredictionTypes&gt;</div>
@@ -651,8 +651,8 @@ $(document).ready(function(){initNavTree('kalman_8hpp_source.xhtml',''); initRes
 <div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>                                                         Divide, UpdateTypes,</div>
 <div class="line"><a id="l01173" name="l01173"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a88a19fdd1af2a50cf4f510be7d98bb13"> 1173</a></span>                                                         PredictionTypes&gt;<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a4734807882ed3bd3aeaffbb678e37be7">::g</a>()</div>
 <div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>    -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a8fe68f6c32515ec3e338c9c3d205a753">input_control</a> &amp;<span class="keyword">requires</span>(not std::is_same_v&lt;Input, void&gt;) {</div>
-<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>                        <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.g;</div>
-<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>                      }</div>
+<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>      <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.g;</div>
+<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>    }</div>
 <div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span> </div>
 <div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Input, <span class="keyword">typename</span> Divide,</div>
 <div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>          <span class="keyword">typename</span> UpdateTypes, <span class="keyword">typename</span> PredictionTypes&gt;</div>
@@ -846,7 +846,7 @@ $(document).ready(function(){initNavTree('kalman_8hpp_source.xhtml',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sun Nov 6 2022 04:10:01 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Nov 6 2022 20:09:04 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
