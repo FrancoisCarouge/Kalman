@@ -18,6 +18,8 @@ namespace {
 //! deviation) is 5 meters. The set of ten measurements is: 48.54m, 47.11m,
 //! 55.01m, 55.15m, 49.89m, 40.85m, 46.72m, 50.05m, 51.27m, 49.95m.
 //!
+//! @image image/kf_1x1x0_building_height.svg
+//!
 //! @example kf_1x1x0_building_height.cpp
 [[maybe_unused]] auto kf_1x1x0_building_height{[] {
   // A one-dimensional filter, constant system dynamic model.
