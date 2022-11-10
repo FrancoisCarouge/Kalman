@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 Examples</h1>
 <h2><a class="anchor" id="autotoc_md22"></a>
 1x1 Constant System Dynamic Model Filter</h2>
-<p >Example from the <a href="sample/kf_1x1x0_building_height.cpp">building height estimation</a> sample. One estimated state and one observed output filter.</p>
+<p >Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_1x1x0_building_height_8cpp-example.xhtml">building height estimation</a> sample. One estimated state and one observed output filter.</p>
 <div class="fragment"><div class="line">kalman filter;</div>
 <div class="line"> </div>
 <div class="line">filter.x(60.);</div>
@@ -145,9 +145,10 @@ Examples</h1>
 <div class="line">filter.r(25.);</div>
 <div class="line"> </div>
 <div class="line">filter.update(48.54);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
+</div><!-- fragment --><p ><a href="sample/kf_1x1x0_building_height.cpp">full sample code</a></p>
+<h2><a class="anchor" id="autotoc_md23"></a>
 6x2 Constant Acceleration Dynamic Model Filter</h2>
-<p >Example from the <a href="sample/kf_6x2x0_vehicle_location.cpp">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
+<p >Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_6x2x0_vehicle_location_8cpp-example.xhtml">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span>kalman = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line">kalman filter;</div>
@@ -177,9 +178,10 @@ Examples</h1>
 <div class="line"> </div>
 <div class="line">filter.predict();</div>
 <div class="line">filter.update(-375.93, 301.78);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md24"></a>
+</div><!-- fragment --><p ><a href="sample/kf_6x2x0_vehicle_location.cpp">full sample code</a></p>
+<h2><a class="anchor" id="autotoc_md24"></a>
 4x1 Non-Linear Dynamic Model Extended Filter</h2>
-<p >Example from the <a href="sample/ekf_4x1x0_soaring.cpp">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
+<p >Example from the <a href="https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span>kalman = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
 <div class="line">                             std::tuple&lt;float, float&gt;&gt;;</div>
 <div class="line"> </div>
@@ -220,7 +222,8 @@ Examples</h1>
 <div class="line"> </div>
 <div class="line">filter.predict(drift_x, drift_y);</div>
 <div class="line">filter.update(position_x, position_y, variometer);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
+</div><!-- fragment --><p ><a href="sample/ekf_4x1x0_soaring.cpp">full sample code</a></p>
+<h2><a class="anchor" id="autotoc_md25"></a>
 Other Examples</h2>
 <ul>
 <li>1x1 constant system dynamic model filter of the <a href="sample/kf_1x1x0_building_height.cpp">temperature of a liquid in a tank</a>.</li>
@@ -469,7 +472,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Nov 6 2022 20:09:05 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Thu Nov 10 2022 03:54:37 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
