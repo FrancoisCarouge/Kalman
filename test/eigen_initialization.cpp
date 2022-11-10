@@ -52,8 +52,11 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto defaults543{[] {
-  using kalman =
-      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>>;
+  using update_model = update_model<vector<double, 5>, vector<double, 4>>;
+  using prediction_model =
+      prediction_model<vector<double, 5>, vector<double, 3>>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   const auto z3x1{vector<double, 3>::Zero()};
@@ -86,7 +89,10 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! no input.
 [[maybe_unused]] auto defaults54{[] {
-  using kalman = kalman<vector<double, 5>, vector<double, 4>>;
+  using update_model = update_model<vector<double, 5>, vector<double, 4>>;
+  using prediction_model = prediction_model<vector<double, 5>>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   const auto i4x4{matrix<double, 4, 4>::Identity()};
@@ -115,7 +121,10 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single state edge case.
 [[maybe_unused]] auto defaults143{[] {
-  using kalman = kalman<double, vector<double, 4>, vector<double, 3>>;
+  using update_model = update_model<double, vector<double, 4>>;
+  using prediction_model = prediction_model<double, vector<double, 3>>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   const auto z3x1{vector<double, 3>::Zero()};
@@ -145,7 +154,11 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single output edge case.
 [[maybe_unused]] auto defaults513{[] {
-  using kalman = kalman<vector<double, 5>, double, vector<double, 3>>;
+  using update_model = update_model<vector<double, 5>, double>;
+  using prediction_model =
+      prediction_model<vector<double, 5>, vector<double, 3>>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   const auto z3x1{vector<double, 3>::Zero()};
@@ -175,7 +188,10 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single input edge case.
 [[maybe_unused]] auto defaults541{[] {
-  using kalman = kalman<vector<double, 5>, vector<double, 4>, double>;
+  using update_model = update_model<vector<double, 5>, vector<double, 4>>;
+  using prediction_model = prediction_model<vector<double, 5>, double>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   const auto i4x4{matrix<double, 4, 4>::Identity()};
@@ -207,7 +223,10 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single output and input edge case.
 [[maybe_unused]] auto defaults511{[] {
-  using kalman = kalman<vector<double, 5>, double, double>;
+  using update_model = update_model<vector<double, 5>, double>;
+  using prediction_model = prediction_model<vector<double, 5>, double>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   const auto i1x5{matrix<double, 1, 5>::Identity()};
@@ -235,7 +254,10 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single state and input edge case.
 [[maybe_unused]] auto defaults141{[] {
-  using kalman = kalman<double, vector<double, 4>, double>;
+  using update_model = update_model<double, vector<double, 4>>;
+  using prediction_model = prediction_model<double, double>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   const auto i4x4{matrix<double, 4, 4>::Identity()};
@@ -262,7 +284,10 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto defaults113{[] {
-  using kalman = kalman<double, double, vector<double, 3>>;
+  using update_model = update_model<double, double>;
+  using prediction_model = prediction_model<double, vector<double, 3>>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   const auto z3x1{vector<double, 3>::Zero()};

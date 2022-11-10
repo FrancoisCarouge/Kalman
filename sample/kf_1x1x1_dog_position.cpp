@@ -31,7 +31,10 @@ namespace {
 //!
 //! @example kf_1x1x1_dog_position.cpp
 [[maybe_unused]] auto kf_1x1x1_dog_position{[] {
-  using kalman = kalman<double, double, double>;
+  using update_model = update_model<double, double>;
+  using prediction_model = prediction_model<double, double>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   // Initialization

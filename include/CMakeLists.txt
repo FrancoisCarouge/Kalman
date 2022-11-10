@@ -36,6 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+# -msse2 ? #####################################################################
+
 if(WIN32)
   set(OPTIONS "/EHsc" "/W4")
 else()

@@ -50,7 +50,9 @@ namespace {
 //! @benchmark Measure update, empty benchmark performance.
 void update_1x1x0(::benchmark::State &state) {
 
-  using kalman = kalman<float, float>;
+  using update_model = update_model<float, float>;
+  using prediction_model = prediction_model<float>;
+  using kalman = kalman<update_model, prediction_model>;
 
   kalman filter;
   std::random_device random_device;

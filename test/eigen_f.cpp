@@ -70,9 +70,12 @@ struct divide final {
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto f_5x4x3{[] {
-  using kalman =
-      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>, divide,
-             std::tuple<double, float, int>, std::tuple<int, float, double>>;
+  using update_model = update_model<vector<double, 5>, vector<double, 4>,
+                                    divide, double, float, int>;
+  using prediction_model =
+      prediction_model<vector<double, 5>, vector<double, 3>, int, float,
+                       double>;
+  using kalman = kalman<update_model, prediction_model>;
 
   kalman filter;
 

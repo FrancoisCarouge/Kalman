@@ -47,8 +47,12 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 //! @example kf_2x1x1_rocket_altitude.cpp
 [[maybe_unused]] auto kf_2x1x1_rocket_altitude{[] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
-  using kalman = kalman<vector<double, 2>, double, double, std::divides<void>,
-                        std::tuple<>, std::tuple<std::chrono::milliseconds>>;
+  using update_model =
+      update_model<vector<double, 2>, double, std::divides<void>>;
+  using prediction_model =
+      prediction_model<vector<double, 2>, double, std::chrono::milliseconds>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   // Initialization

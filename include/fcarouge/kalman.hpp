@@ -54,11 +54,18 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 
-//! @brief Convenience tuple-like empty pack type.
-using empty_pack = internal::empty_pack;
+// RENAME TO EXTENDED MODEL ////////////////////////////////////////////////////
+template <typename State = double, typename Output = double,
+          typename Divide = std::divides<void>, typename... UpdateTypes>
+class update_model;
 
-//! @brief Convenience tuple-like pack type.
-template <typename... Types> using pack = internal::pack<Types...>;
+template <typename State = double, typename Input = void,
+          typename... PredictionTypes>
+class prediction_model;
+
+template <typename UpdateModel = update_model<>,
+          typename PredictionModel = prediction_model<>>
+class kalman;
 
 //! @brief A generic Kalman filter for C++23.
 //!
@@ -160,11 +167,7 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! usage and development is harder without compile time units verification.
 //! @todo Should we add back the call operator? How to resolve the
 //! update/predict ordering? And parameter ordering?
-template <typename State = double, typename Output = double,
-          typename Input = void, typename Divide = std::divides<void>,
-          typename UpdateTypes = empty_pack,
-          typename PredictionTypes = empty_pack>
-class kalman final {
+template <typename UpdateModel, typename PredictionModel> class kalman final {
 private:
   //! @name Private Member Types
   //! @{
@@ -173,9 +176,7 @@ private:
   //!
   //! @brief The internal implementation unpacks the parameter packs from
   //! tuple-like types which allows for multiple parameter pack deductions.
-  using implementation = internal::kalman<State, Output, Input, Divide,
-                                          internal::repack_t<UpdateTypes>,
-                                          internal::repack_t<PredictionTypes>>;
+  using implementation = internal::kalman<UpdateModel, PredictionModel>;
 
   //! @}
 
@@ -326,6 +327,7 @@ public:
   //!
   //! @todo Collapse cv-ref qualifier-aware member functions per C++23 P0847 to
   //! avoid duplication: `inline constexpr auto & x(this auto&& self)`.
+  // SHOULD decltype(auto) BE USED INSTEAD OF AUTO AND TRAILING? ///////////////
   inline constexpr auto x() const -> const state &;
   inline constexpr auto x() -> state &;
 
@@ -354,7 +356,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr auto u() const
-      -> const input &requires(not std::is_same_v<Input, void>);
+      -> const input &requires(not std::is_same_v<input, internal::empty>);
 
   //! @brief Returns the estimated covariance matrix P.
   //!
@@ -490,13 +492,11 @@ public:
   //! @return The control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr auto g() const
-      -> const input_control &requires(not std::is_same_v<Input, void>);
-  inline constexpr auto g()
-      -> input_control &requires(not std::is_same_v<Input, void>);
+  inline constexpr auto g() const -> const input_control &requires(
+      not std::is_same_v<input_control, internal::empty>);
+  inline constexpr auto g() -> input_control &requires(
+      not std::is_same_v<input_control, internal::empty>);
 
-  //! @brief Sets the control transition matrix G.
-  //!
   //! @details The control transition matrix G is of type `input_control` and
   //! the function is of the form `input_control(const PredictionTypes &...)`.
   //! This member function is not present when the filter has no input.
@@ -512,11 +512,10 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values)
-    requires(not std::is_same_v<Input, void>);
+    requires(not std::is_same_v<input_control, internal::empty>);
 
   //! @brief Returns the gain matrix K.
   //!
-  //! @return The gain matrix K.
   //!
   //! @complexity Constant.
   inline constexpr auto k() const -> const gain &;
@@ -632,319 +631,732 @@ public:
   template <std::size_t Position> inline constexpr auto update() const;
 
   //! @}
+
+  // explicit kalman(const UpdateModel &updator) {
+  //   static_cast<void>(updator);
+  //   // x(updator.x());
+  //   // updator.x(x());
+  // }
+
+  // kalman(const UpdateModel &updator, const PredictionModel &predictor) {
+  //   static_cast<void>(updator);
+  //   static_cast<void>(predictor);
+  // }
 };
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned state estimate column vector X is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::x() const
-    -> const state & {
-  return filter.x;
-}
+//! @name Deduction Guides
+//! @{
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned state estimate column vector X is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::x()
-    -> state & {
-  return filter.x;
-}
+// template <typename UpdateModel, typename PredictionModel>
+// kalman(const UpdateModel &)
+//     -> kalman<UpdateModel, prediction_model<typename UpdateModel::state>>;
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::x(
-    const auto &value, const auto &...values) {
-  filter.x = std::move(state{value, values...});
-}
+//! @}
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned observation column vector Z is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::z() const
-    -> const output & {
-  return filter.z;
-}
+template <typename State, typename Output, typename Divide,
+          typename... UpdateTypes>
+class update_model final {
+private:
+  //! @name Private Member Types
+  //! @{
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned control column vector U is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::u() const
-    -> const input &requires(not std::is_same_v<Input, void>) {
-                      return filter.u;
-                    }
+  //! @brief Implementation details of the model.
+  using implementation = internal::update_model<State, Output, Divide,
+                                                internal::pack<UpdateTypes...>>;
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-            "discarded.")]] inline constexpr auto kalman<State, Output, Input,
-                                                         Divide, UpdateTypes,
-                                                         PredictionTypes>::p()
-    const -> const estimate_uncertainty & {
-  return filter.p;
-}
+  //! @}
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::p()
-    -> estimate_uncertainty & {
-  return filter.p;
-}
+  //! @name Private Member Variables
+  //! @{
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::p(
-    const auto &value, const auto &...values) {
-  filter.p = std::move(estimate_uncertainty{value, values...});
-}
+  //! @brief Encapsulates the implementation details of the model.
+  implementation model;
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q() const
-    -> const process_uncertainty & {
-  return filter.q;
-}
+  //! @}
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q()
-    -> process_uncertainty & {
-  return filter.q;
-}
+public:
+  //! @name Public Member Types
+  //! @{
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), process_uncertainty>) {
-    filter.q = std::move(process_uncertainty{value, values...});
-  } else {
-    using noise_process_function = decltype(filter.noise_process_q);
-    filter.noise_process_q =
-        std::move(noise_process_function{value, values...});
+  //! @brief Type of the state estimate column vector X.
+  using state = typename implementation::state;
+
+  //! @brief Type of the observation column vector Z.
+  //!
+  //! @details Also known as Y or O.
+  using output = typename implementation::output;
+
+  //! @brief Type of the estimated correlated variance matrix P.
+  //!
+  //! @details Also known as Σ.
+  using estimate_uncertainty = typename implementation::estimate_uncertainty;
+
+  //! @brief Type of the observation noise correlated variance matrix R.
+  using output_uncertainty = typename implementation::output_uncertainty;
+
+  //! @brief Type of the observation transition matrix H.
+  //!
+  //! @details Also known as the measurement transition matrix or C.
+  using output_model = typename implementation::output_model;
+
+  //! @brief Type of the gain matrix K.
+  using gain = typename implementation::gain;
+
+  //! @brief Type of the innovation column vector Y.
+  using innovation = typename implementation::innovation;
+
+  //! @brief Type of the innovation uncertainty matrix S.
+  using innovation_uncertainty =
+      typename implementation::innovation_uncertainty;
+
+  //! @}
+
+  //! @name Public Member Functions
+  //! @{
+
+  //! @brief Constructs a model without configuration.
+  //!
+  //! @complexity Constant.
+  inline constexpr update_model() = default;
+
+  //! @brief Copy constructs a model.
+  //!
+  //! @details Constructs the model with the copy of the contents of the
+  //! `other` model.
+  //!
+  //! @param other Another model to be used as source to initialize the
+  //! elements of the model with.
+  //!
+  //! @complexity Constant.
+  inline constexpr update_model(const update_model &other) = default;
+
+  //! @brief Move constructs a model.
+  //!
+  //! @details Move constructor. Constructs the model with the contents of
+  //! the `other` model using move semantics (i.e. the data in `other`
+  //! model is moved from the other into this model).
+  //!
+  //! @param other Another model to be used as source to initialize the
+  //! elements of the model with.
+  //!
+  //! @complexity Constant.
+  inline constexpr update_model(update_model &&other) noexcept = default;
+
+  //! @brief Copy assignment operator.
+  //!
+  //! @details Destroys or copy-assigns the contents with a copy of the contents
+  //! of the other model.
+  //!
+  //! @param other Another model to be used as source to initialize the
+  //! elements of the model with.
+  //!
+  //! @return The reference value of this implicit object model parameter,
+  //! i.e. `*this`.
+  //!
+  //! @complexity Constant.
+  inline constexpr auto operator=(const update_model &other)
+      -> update_model & = default;
+
+  //! @brief Move assignment operator.
+  //!
+  //! @details Replaces the contents of the model with those of the `other`
+  //! model using move semantics (i.e. the data in `other` model is
+  //! moved from the other into this model). The other model is in a
+  //! valid but unspecified state afterwards.
+  //!
+  //! @param other Another model to be used as source to initialize the
+  //! elements of the model with.
+  //!
+  //! @return The reference value of this implicit object model parameter,
+  //! i.e. `*this`.
+  //!
+  //! @complexity Constant.
+  inline constexpr auto operator=(update_model &&other) noexcept
+      -> update_model & = default;
+
+  //! @brief Destructs the model.
+  //!
+  //! @complexity Constant.
+  inline constexpr ~update_model() = default;
+
+  //! @}
+
+  //! @name Public Characteristics Member Functions
+  //! @{
+
+  inline constexpr auto x() const -> const state & { return model.x; }
+
+  inline constexpr auto x() -> state & { return model.x; }
+
+  inline constexpr void x(const auto &value, const auto &...values) {
+    model.x = {value, values...};
   }
-}
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned observation noise covariance matrix R is "
-            "unexpectedly discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r() const
-    -> const output_uncertainty & {
-  return filter.r;
-}
+  inline constexpr auto z() const -> const output & { return model.z; }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned observation noise covariance matrix R is "
-            "unexpectedly discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r()
-    -> output_uncertainty & {
-  return filter.r;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
-    filter.r = std::move(output_uncertainty{value, values...});
-  } else {
-    using noise_observation_function = decltype(filter.noise_observation_r);
-    filter.noise_observation_r =
-        std::move(noise_observation_function{value, values...});
+  inline constexpr auto p() const -> const estimate_uncertainty & {
+    return model.p;
   }
-}
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned state transition matrix F is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f() const
-    -> const state_transition & {
-  return filter.f;
-}
+  inline constexpr auto p() -> estimate_uncertainty & { return model.p; }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned state transition matrix F is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f()
-    -> state_transition & {
-  return filter.f;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), state_transition>) {
-    filter.f = std::move(state_transition{value, values...});
-  } else {
-    using transition_state_function = decltype(filter.transition_state_f);
-    filter.transition_state_f =
-        std::move(transition_state_function{value, values...});
+  inline constexpr void p(const auto &value, const auto &...values) {
+    model.p = {value, values...};
   }
-}
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned observation transition matrix H is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h() const
-    -> const output_model & {
-  return filter.h;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned observation transition matrix H is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h()
-    -> output_model & {
-  return filter.h;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), output_model>) {
-    filter.h = std::move(output_model{value, values...});
-  } else {
-    using observation_state_function = decltype(filter.observation_state_h);
-    filter.observation_state_h =
-        std::move(observation_state_function{value, values...});
+  inline constexpr auto r() const -> const output_uncertainty & {
+    return model.r;
   }
-}
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g() const
-    -> const input_control &requires(not std::is_same_v<Input, void>) {
-                              return filter.g;
-                            }
+  inline constexpr auto r() -> output_uncertainty & { return model.r; }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-[[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr auto kalman<State, Output, Input,
-                                                         Divide, UpdateTypes,
-                                                         PredictionTypes>::g()
-    -> input_control &requires(not std::is_same_v<Input, void>) {
-                        return filter.g;
+  inline constexpr void r(const auto &value, const auto &...values) {
+    // SHOULD ALSO USE VALUES... IN CONVERSION? ////////////////////////////////
+    if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
+      model.r = {value, values...};
+    } else {
+      model.noise_observation_r = {value, values...};
+    }
+  }
+
+  inline constexpr auto h() const -> const output_model & { return model.h; }
+
+  inline constexpr auto h() -> output_model & { return model.h; }
+
+  inline constexpr void h(const auto &value, const auto &...values) {
+    if constexpr (std::is_convertible_v<decltype(value), output_model>) {
+      model.h = {value, values...};
+    } else {
+      model.observation_state_h = {value, values...};
+    }
+  }
+
+  inline constexpr auto k() const -> const gain & { return model.k; }
+
+  inline constexpr auto y() const -> const innovation & { return model.y; }
+
+  inline constexpr auto s() const -> const innovation_uncertainty & {
+    return model.s;
+  }
+
+  inline constexpr void observation(const auto &callable) {
+    model.observation = callable;
+  }
+
+  //! @}
+
+  //! @name Public Filtering Member Functions
+  //! @{
+
+  //! @brief Updates the estimates with the outcome of a measurement.
+  //!
+  //! @details Also known as the observation or correction step. Implements the
+  //! Bayes' theorem. Combine one measurement and the prior estimate.
+  //!
+  //! @param arguments The update and output parameters of
+  //! the filter, in that order. The arguments need to be compatible with the
+  //! filter types. The update parameters convertible to the
+  //! `UpdateTypes` template pack types are passed through for computations of
+  //! update matrices. The observation parameter pack types convertible to
+  //! the `Output` template type. The update types are explicitly
+  //! defined with the class definition.
+  //!
+  //! @todo Consider if returning the state column vector X would be preferable?
+  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Can the parameter pack of `UpdateTypes` be explicit in the method
+  //! declaration for user clarity?
+  inline constexpr void operator()(const auto &...arguments) {
+    model(arguments...);
+  }
+
+  //! @brief Returns the Nth update argument.
+  //!
+  //! @details Convenience access to the last used update arguments.
+  //!
+  //! @tparam The non-type template parameter index position of the update
+  //! argument types.
+  //!
+  //! @return The update argument corresponding to the Nth position of the
+  //! parameter pack of the tuple-like `UpdateTypes` class template type.
+  //!
+  //! @complexity Constant.
+  template <std::size_t Position> inline constexpr auto operator()() const {
+    return model.template operator()<Position>();
+  }
+
+  //! @}
+};
+
+template <typename State, typename Input, typename... PredictionTypes>
+class prediction_model final {
+private:
+  //! @name Private Member Types
+  //! @{
+
+  //! @brief Implementation details of the model.
+  using implementation =
+      internal::prediction_model<State, Input,
+                                 internal::pack<PredictionTypes...>>;
+
+  //! @}
+
+  //! @name Private Member Variables
+  //! @{
+
+  //! @brief Encapsulates the implementation details of the model.
+  implementation model;
+
+  //! @}
+
+public:
+  //! @name Public Member Types
+  //! @{
+
+  //! @brief Type of the state estimate column vector X.
+  using state = typename implementation::state;
+
+  //! @brief Type of the control column vector U.
+  //!
+  //! @todo Conditionally remove this member type when no input is present.
+  using input = typename implementation::input;
+
+  //! @brief Type of the estimated correlated variance matrix P.
+  //!
+  //! @details Also known as Σ.
+  using estimate_uncertainty = typename implementation::estimate_uncertainty;
+
+  //! @brief Type of the process noise correlated variance matrix Q.
+  using process_uncertainty = typename implementation::process_uncertainty;
+
+  //! @brief Type of the state transition matrix F.
+  //!
+  //! @details Also known as the fundamental matrix, propagation, Φ, or A.
+  using state_transition = typename implementation::state_transition;
+
+  //! @brief Type of the control transition matrix G.
+  //!
+  //! @details Also known as B.
+  //!
+  //! @todo Conditionally remove this member type when no input is present.
+  using input_control = typename implementation::input_control;
+
+  //! @}
+
+  //! @name Public Member Functions
+  //! @{
+
+  //! @brief Constructs a model without configuration.
+  //!
+  //! @complexity Constant.
+  inline constexpr prediction_model() = default;
+
+  //! @brief Copy constructs a model.
+  //!
+  //! @details Constructs the model with the copy of the contents of the
+  //! `other` model.
+  //!
+  //! @param other Another model to be used as source to initialize the
+  //! elements of the model with.
+  //!
+  //! @complexity Constant.
+  inline constexpr prediction_model(const prediction_model &other) = default;
+
+  //! @brief Move constructs a model.
+  //!
+  //! @details Move constructor. Constructs the model with the contents of
+  //! the `other` model using move semantics (i.e. the data in `other`
+  //! model is moved from the other into this model).
+  //!
+  //! @param other Another model to be used as source to initialize the
+  //! elements of the model with.
+  //!
+  //! @complexity Constant.
+  inline constexpr prediction_model(prediction_model &&other) noexcept =
+      default;
+
+  //! @brief Copy assignment operator.
+  //!
+  //! @details Destroys or copy-assigns the contents with a copy of the contents
+  //! of the other model.
+  //!
+  //! @param other Another model to be used as source to initialize the
+  //! elements of the model with.
+  //!
+  //! @return The reference value of this implicit object model parameter,
+  //! i.e. `*this`.
+  //!
+  //! @complexity Constant.
+  inline constexpr auto operator=(const prediction_model &other)
+      -> prediction_model & = default;
+
+  //! @brief Move assignment operator.
+  //!
+  //! @details Replaces the contents of the model with those of the `other`
+  //! model using move semantics (i.e. the data in `other` model is
+  //! moved from the other into this model). The other model is in a
+  //! valid but unspecified state afterwards.
+  //!
+  //! @param other Another model to be used as source to initialize the
+  //! elements of the model with.
+  //!
+  //! @return The reference value of this implicit object model parameter,
+  //! i.e. `*this`.
+  //!
+  //! @complexity Constant.
+  inline constexpr auto operator=(prediction_model &&other) noexcept
+      -> prediction_model & = default;
+
+  //! @brief Destructs the model.
+  //!
+  //! @complexity Constant.
+  inline constexpr ~prediction_model() = default;
+
+  //! @}
+
+  //! @name Public Characteristics Member Functions
+  //! @{
+
+  inline constexpr auto x() const -> const state & { return model.x; }
+
+  inline constexpr auto x() -> state & { return model.x; }
+
+  inline constexpr void x(const auto &value, const auto &...values) {
+    model.x = {value, values...};
+  }
+
+  inline constexpr auto p() const -> const estimate_uncertainty & {
+    return model.p;
+  }
+
+  inline constexpr auto p() -> estimate_uncertainty & { return model.p; }
+
+  inline constexpr void p(const auto &value, const auto &...values) {
+    model.p = {value, values...};
+  }
+
+  inline constexpr auto q() const -> const process_uncertainty & {
+    return model.q;
+  }
+  inline constexpr auto q() -> process_uncertainty & { return model.q; }
+
+  inline constexpr void q(const auto &value, const auto &...values) {
+    if constexpr (std::is_convertible_v<decltype(value), process_uncertainty>) {
+      model.q = {value, values...};
+    } else {
+      model.noise_process_q = {value, values...};
+    }
+  }
+
+  inline constexpr auto f() const -> const state_transition & {
+    return model.f;
+  }
+
+  inline constexpr auto f() -> state_transition & { return model.f; }
+
+  inline constexpr void f(const auto &value, const auto &...values) {
+    if constexpr (std::is_convertible_v<decltype(value), state_transition>) {
+      model.f = {value, values...};
+    } else {
+      model.transition_state_f = {value, values...};
+    }
+  }
+
+  inline constexpr auto g() const -> const input_control &requires(
+      not std::is_same_v<input_control, internal::empty>) { return model.g; }
+
+  inline constexpr auto g() -> input_control &requires(
+      not std::is_same_v<input_control, internal::empty>) { return model.g; }
+
+  inline constexpr void g(const auto &value, const auto &...values)
+    requires(not std::is_same_v<input_control, internal::empty>)
+  {
+    if constexpr (std::is_convertible_v<decltype(value), input_control>) {
+      model.g = {value, values...};
+    } else {
+      model.transition_control_g = {value, values...};
+    }
+  }
+
+  inline constexpr auto u() const
+      -> const input &requires(not std::is_same_v<input, internal::empty>) {
+                        return model.u;
                       }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void kalman<State, Output, Input, Divide, UpdateTypes,
-                             PredictionTypes>::g(const auto &value,
-                                                 const auto &...values)
-  requires(not std::is_same_v<Input, void>)
-{
-  if constexpr (std::is_convertible_v<decltype(value), input_control>) {
-    filter.g = std::move(input_control{value, values...});
-  } else {
-    using transition_control_function = decltype(filter.transition_control_g);
-    filter.transition_control_g =
-        std::move(transition_control_function{value, values...});
+  inline constexpr void transition(const auto &callable) {
+    model.transition = callable;
   }
+
+  //! @}
+
+  //! @name Public Filtering Member Functions
+  //! @{
+
+  //! @brief Produces estimates of the state variables and uncertainties.
+  //!
+  //! @details Implements the total probability theorem.
+  //!
+  //! @param arguments The prediction and input parameters of
+  //! the filter, in that order. The arguments need to be compatible with the
+  //! filter types. The prediction parameters convertible to the
+  //! `PredictionTypes` template pack types are passed through for computations
+  //! of prediction matrices. The control parameter pack types convertible to
+  //! the `Input` template type. The prediction types are explicitly defined
+  //! with the class definition.
+  //!
+  //! @todo Consider if returning the state column vector X would be preferable?
+  //! Or fluent interface? Would be compatible with an ES-EKF implementation?
+  //! @todo Can the parameter pack of `PredictionTypes` be explicit in the
+  //! method declaration for user clarity?
+  inline constexpr void operator()(const auto &...arguments) {
+    model(arguments...);
+  }
+
+  //! @brief Returns the Nth prediction argument.
+  //!
+  //! @details Convenience access to the last used prediction arguments.
+  //!
+  //! @tparam The non-type template parameter index position of the prediction
+  //! argument types.
+  //!
+  //! @return The prediction argument corresponding to the Nth position of the
+  //! parameter pack of the tuple-like `PredictionTypes` class template type.
+  //!
+  //! @complexity Constant.
+  template <std::size_t Position> inline constexpr auto operator()() const {
+    return model.template operator()<Position>();
+  }
+
+  //! @}
+};
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned state estimate column vector X is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::x() const -> const state & {
+  return filter.x();
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned state estimate column vector X is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::x() -> state & {
+  return filter.x();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+inline constexpr void
+kalman<UpdateModel, PredictionModel>::x(const auto &value,
+                                        const auto &...values) {
+  filter.x(value, values...);
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned observation column vector Z is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::z() const -> const output & {
+  return filter.z();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned control column vector U is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::u() const
+    -> const input &requires(not std::is_same_v<input, internal::empty>) {
+                      return filter.u();
+                    }
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned estimated covariance matrix P is unexpectedly "
+            "discarded.")]] inline constexpr auto kalman<UpdateModel,
+                                                         PredictionModel>::p()
+    const -> const estimate_uncertainty & {
+  return filter.p();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned estimated covariance matrix P is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::p() -> estimate_uncertainty & {
+  return filter.p();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+inline constexpr void
+kalman<UpdateModel, PredictionModel>::p(const auto &value,
+                                        const auto &...values) {
+  filter.p(value, values...);
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::q() const -> const process_uncertainty & {
+  return filter.q();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::q() -> process_uncertainty & {
+  return filter.q();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+inline constexpr void
+kalman<UpdateModel, PredictionModel>::q(const auto &value,
+                                        const auto &...values) {
+  filter.q(value, values...);
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned observation noise covariance matrix R is "
+            "unexpectedly discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::r() const -> const output_uncertainty & {
+  return filter.r();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned observation noise covariance matrix R is "
+            "unexpectedly discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::r() -> output_uncertainty & {
+  return filter.r();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+inline constexpr void
+kalman<UpdateModel, PredictionModel>::r(const auto &value,
+                                        const auto &...values) {
+  filter.r(value, values...);
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned state transition matrix F is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::f() const -> const state_transition & {
+  return filter.f();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned state transition matrix F is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::f() -> state_transition & {
+  return filter.f();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+inline constexpr void
+kalman<UpdateModel, PredictionModel>::f(const auto &value,
+                                        const auto &...values) {
+  filter.f(value, values...);
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned observation transition matrix H is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::h() const -> const output_model & {
+  return filter.h();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned observation transition matrix H is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::h() -> output_model & {
+  return filter.h();
+}
+
+template <typename UpdateModel, typename PredictionModel>
+inline constexpr void
+kalman<UpdateModel, PredictionModel>::h(const auto &value,
+                                        const auto &...values) {
+  filter.h(value, values...);
+}
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned control transition matrix G is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<UpdateModel, PredictionModel>::g() const
+    -> const input_control &requires(
+        not std::is_same_v<input_control, internal::empty>) {
+                              return filter.g();
+                            }
+
+template <typename UpdateModel, typename PredictionModel>
+[[nodiscard("The returned control transition matrix G is unexpectedly "
+            "discarded.")]] inline constexpr auto kalman<UpdateModel,
+                                                         PredictionModel>::g()
+    -> input_control &requires(
+        not std::is_same_v<input_control, internal::empty>) {
+                        return filter.g();
+                      }
+
+template <typename UpdateModel, typename PredictionModel>
+inline constexpr void kalman<UpdateModel, PredictionModel>::g(
+    const auto &value, const auto &...values)
+  requires(not std::is_same_v<input_control, internal::empty>)
+{
+  filter.g(value, values...);
+}
+
+template <typename UpdateModel, typename PredictionModel>
 [[nodiscard("The returned gain matrix K is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::k() const
-    -> const gain & {
-  return filter.k;
+kalman<UpdateModel, PredictionModel>::k() const -> const gain & {
+  return filter.k();
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
 [[nodiscard("The returned innovation column vector Y is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::y() const
-    -> const innovation & {
-  return filter.y;
+kalman<UpdateModel, PredictionModel>::y() const -> const innovation & {
+  return filter.y();
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
 [[nodiscard("The returned innovation uncertainty matrix S is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::s() const
+kalman<UpdateModel, PredictionModel>::s() const
     -> const innovation_uncertainty & {
-  return filter.s;
+  return filter.s();
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
 inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::transition(
-    const auto &callable) {
-  filter.transition = callable;
+kalman<UpdateModel, PredictionModel>::transition(const auto &callable) {
+  filter.transition(callable);
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
 inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::observation(
-    const auto &callable) {
-  filter.observation = callable;
+kalman<UpdateModel, PredictionModel>::observation(const auto &callable) {
+  filter.observation(callable);
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
 inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::update(
-    const auto &...arguments) {
+kalman<UpdateModel, PredictionModel>::update(const auto &...arguments) {
   filter.update(arguments...);
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
 template <std::size_t Position>
 [[nodiscard("The returned update argument is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::update()
-    const {
-  return std::get<Position>(filter.update_arguments);
+kalman<UpdateModel, PredictionModel>::update() const {
+  return filter.template update<Position>();
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
 inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::predict(
-    const auto &...arguments) {
+kalman<UpdateModel, PredictionModel>::predict(const auto &...arguments) {
   filter.predict(arguments...);
 }
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
+template <typename UpdateModel, typename PredictionModel>
 template <std::size_t Position>
 [[nodiscard("The returned prediction argument is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::predict()
-    const {
-  return std::get<Position>(filter.prediction_arguments);
+kalman<UpdateModel, PredictionModel>::predict() const {
+  return filter.template predict<Position>();
 }
 
 } // namespace fcarouge

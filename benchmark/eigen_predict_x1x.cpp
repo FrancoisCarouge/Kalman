@@ -61,8 +61,10 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 template <std::size_t StateSize, std::size_t InputSize>
 void eigen_predict(::benchmark::State &state) {
 
-  using kalman =
-      kalman<vector<float, StateSize>, float, vector<float, InputSize>>;
+  using update_model = update_model<vector<float, StateSize>, float>;
+  using prediction_model =
+      prediction_model<vector<float, StateSize>, vector<float, InputSize>>;
+  using kalman = kalman<update_model, prediction_model>;
 
   kalman filter;
   std::random_device random_device;

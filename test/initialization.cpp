@@ -64,7 +64,10 @@ namespace {
 //! @test Verifies default values are initialized for single-dimension filters
 //! with input control.
 [[maybe_unused]] auto defaults111{[] {
-  using kalman = kalman<double, double, double>;
+  using update_model = update_model<double, double>;
+  using prediction_model = prediction_model<double, double>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   assert(filter.f() == 1);

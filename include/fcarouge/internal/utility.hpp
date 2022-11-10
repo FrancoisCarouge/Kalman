@@ -68,6 +68,7 @@ struct repack<From<Types...>> {
   static inline constexpr auto size{sizeof...(Types)};
 };
 
+// USED? ///////////////////////////////////////////////////////////////////////
 template <typename From> using repack_t = typename repack<From>::type;
 
 template <typename From> inline constexpr auto repack_s{repack<From>::size};
@@ -104,6 +105,8 @@ template <typename Matrix>
   requires requires(Matrix value) { value.Zero(); }
 inline const auto zero_v<Matrix>{Matrix::Zero()};
 
+//! @todo Consider P1169 making all compatible call operators static member
+//! functions?
 struct transpose final {
   template <arithmetic Arithmetic>
   [[nodiscard]] inline constexpr auto
