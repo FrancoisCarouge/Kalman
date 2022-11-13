@@ -5,7 +5,7 @@
 
 namespace fcarouge::sample {
 namespace {
-//! @brief Estimating the Temperature of the Liquid in a Tank
+//! @brief Estimating the temperature of the liquid in a tank.
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.

@@ -10,7 +10,7 @@ namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 
-//! @brief ArduPilot Plane Soaring
+//! @brief ArduPilot plane soaring.
 //!
 //! @copyright This example is transcribed from the ArduPilot Soaring Plane
 //! copyright ArduPilot Dev Team.

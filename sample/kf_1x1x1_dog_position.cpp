@@ -5,7 +5,7 @@
 
 namespace fcarouge::sample {
 namespace {
-//! @brief Estimating the Position of a Dog
+//! @brief Estimating the position of a dog.
 //!
 //! @copyright This example is transcribed from Kalman and Bayesian Filters in
 //! Python copyright Roger Labbe
