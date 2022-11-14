@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('kf__1x1x0__building__height_8cpp_sourc
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="comment">// at 49.57m.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  assert(49.57 - 0.001 &lt; filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac1f06b20e6494b0301d5b2ab8e4214b3">x</a>() &amp;&amp; filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac1f06b20e6494b0301d5b2ab8e4214b3">x</a>() &lt; 49.57 + 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  assert(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ac1f06b20e6494b0301d5b2ab8e4214b3">x</a>() / 49.57) &lt; 0.001 &amp;&amp;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
@@ -161,7 +161,7 @@ $(document).ready(function(){initNavTree('kf__1x1x0__building__height_8cpp_sourc
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="kf__1x1x0__building__height_8cpp.xhtml">kf_1x1x0_building_height.cpp</a></li>
-    <li class="footer">Generated on Mon Nov 14 2022 01:19:23 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Mon Nov 14 2022 03:20:46 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

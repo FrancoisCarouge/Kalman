@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
-<div class="line">  assert(49.57 - 0.001 &lt; filter.x() &amp;&amp; filter.x() &lt; 49.57 + 0.001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - filter.x() / 49.57) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"> </div>
@@ -162,7 +162,7 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Nov 14 2022 01:19:23 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Mon Nov 14 2022 03:20:46 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
