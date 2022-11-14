@@ -51,13 +51,15 @@ For more information, please refer to <https://unlicense.org> */
 #include <fmt/os.h>
 #include <fmt/ostream.h>
 #include <fmt/printf.h>
-#include <fmt/ranges.h>
+// #include <fmt/ranges.h>
 #include <fmt/xchar.h>
 
 #include <cstdio>
 #include <locale>
 #include <string>
 #include <string_view>
+
+#include <Eigen/Eigen>
 
 namespace fcarouge {
 template <typename, typename, typename, typename, typename, typename>
@@ -120,5 +122,9 @@ struct fmt::formatter<fcarouge::kalman<State, Output, Input, Divide,
     : public std::formatter<fcarouge::kalman<State, Output, Input, Divide,
                                              UpdateTypes, PredictionTypes>,
                             Char> {};
+
+// template <typename Char>
+// struct fmt::formatter<Eigen::Matrix<double, 5, 3>, Char>
+//     : public std::formatter<Eigen::Matrix<double, 5, 3>, Char> {};
 
 #endif // FCAROUGE_FORMAT

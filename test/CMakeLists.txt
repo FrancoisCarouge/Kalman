@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> ]]
 
 set(SOURCES
     "eigen_f.cpp"
+    "eigen_format.cpp"
     "eigen_h.cpp"
     "eigen_initialization.cpp"
     "f.cpp"
