@@ -86,10 +86,13 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
   <div class="headertitle"><div class="title">kf_1x1x0_building_height.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<p >Estimating the Height of a Building.</p>
-<p >Estimating the Height of a Building</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from KalmanFilter.NET copyright Alex Becker.</dd></dl>
+<p >Estimating the height of a building.</p>
+<p >Estimating the height of a building.</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from KalmanFilter.NET copyright Alex Becker.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://www.kalmanfilter.net/kalman1d.html#ex5">https://www.kalmanfilter.net/kalman1d.html#ex5</a></dd></dl>
 <p>Assume that we would like to estimate the height of a building using a very imprecise altimeter. We know for sure, that the building height doesn’t change over time, at least during the short measurement process. The true building height is 50 meters. The altimeter measurement error (standard deviation) is 5 meters. The set of ten measurements is: 48.54m, 47.11m, 55.01m, 55.15m, 49.89m, 40.85m, 46.72m, 50.05m, 51.27m, 49.95m.</p>
+<div class="image">
+<object type="image/svg+xml" data="kf_1x1x0_building_height.svg" style="pointer-events: none;"></object>
+</div>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
@@ -159,7 +162,7 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 11 2022 01:41:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Mon Nov 14 2022 00:30:01 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

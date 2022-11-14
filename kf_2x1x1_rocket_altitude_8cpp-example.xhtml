@@ -86,8 +86,8 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
   <div class="headertitle"><div class="title">kf_2x1x1_rocket_altitude.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<p >Estimating the Rocket Altitude.</p>
-<p >Estimating the Rocket Altitude</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from KalmanFilter.NET copyright Alex Becker.</dd></dl>
+<p >Estimating the rocket altitude.</p>
+<p >Estimating the rocket altitude.</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from KalmanFilter.NET copyright Alex Becker.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://www.kalmanfilter.net/multiExamples.html#ex10">https://www.kalmanfilter.net/multiExamples.html#ex10</a></dd></dl>
 <p>In this example, we will estimate the altitude of a rocket. The rocket is equipped with an onboard altimeter that provides altitude measurements. In addition to an altimeter, the rocket is equipped with an accelerometer that measures the rocket acceleration. The accelerometer serves as a control input to the Kalman Filter. We assume constant acceleration dynamics. Accelerometers don't sense gravity. An accelerometer at rest on a table would measure 1g upwards, while accelerometers in free fall will measure zero. Thus, we need to subtract the gravitational acceleration constant g from each accelerometer measurement. The accelerometer measurement at time step n is: an = a − g + ϵ where:</p><ul>
 <li>a is the actual acceleration of the object (the second derivative of the object position).</li>
@@ -306,7 +306,7 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 11 2022 01:41:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Mon Nov 14 2022 00:30:01 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
