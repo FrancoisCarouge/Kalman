@@ -67,7 +67,7 @@ namespace {
 
   // After 10 measurements the filter estimates the height of the building
   // at 49.57m.
-  assert(49.57 - 0.001 < filter.x() && filter.x() < 49.57 + 0.001 &&
+  assert(std::abs(1 - filter.x() / 49.57) < 0.001 &&
          "After 10 measurement and update iterations, the building estimated "
          "height is: 49.57m.");
 
