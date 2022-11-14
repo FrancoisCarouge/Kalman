@@ -11,7 +11,7 @@ namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 
-//! @brief Estimating the Rocket Altitude
+//! @brief Estimating the rocket altitude.
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.

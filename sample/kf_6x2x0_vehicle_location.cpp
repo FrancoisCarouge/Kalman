@@ -27,7 +27,7 @@ struct divide final {
   }
 };
 
-//! @brief Estimating the Vehicle Location
+//! @brief Estimating the vehicle location.
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.
