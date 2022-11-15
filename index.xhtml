@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 <p >A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE). A control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems.</p>
 <p >Simple and extended filters are supported. The update equation uses the Joseph form. Control input is supported. Standard and type-erased Eigen3 linear algebra backends are supported.</p>
 <p >The Kalman filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians.</p>
-<p >Designing a filter is as much art as science. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B).</p>
+<p >Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.</p>
 <p >Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.</p>
 <p >Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.</p>
 <p >Standard formatter specialization provided for representation of the filter states.</p>
@@ -250,17 +250,17 @@ Template Parameters</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Template Parameter   </th><th class="markdownTableHeadNone">Definition    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>State</code>   </td><td class="markdownTableBodyNone">The type template parameter of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to <code>double</code>.    </td></tr>
+<td class="markdownTableBodyNone"><code>State</code>   </td><td class="markdownTableBodyNone">The type template parameter of the state column vector $X$. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to <code>double</code>.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>Output</code>   </td><td class="markdownTableBodyNone">The type template parameter of the measurement column vector z. Defaults to <code>double</code>.    </td></tr>
+<td class="markdownTableBodyNone"><code>Output</code>   </td><td class="markdownTableBodyNone">The type template parameter of the measurement column vector $Z$. Defaults to <code>double</code>.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>Input</code>   </td><td class="markdownTableBodyNone">The type template parameter of the control u. A <code>void</code> input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to <code>void</code>.    </td></tr>
+<td class="markdownTableBodyNone"><code>Input</code>   </td><td class="markdownTableBodyNone">The type template parameter of the control $U$. A <code>void</code> input type can be used for systems with no input control to disable all of the input control features, the control transition matrix $G$ support, and the other related computations from the filter. Defaults to <code>void</code>.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>Divide</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix division functor. Default to the standard division <code>std::divides&lt;void&gt;</code> function object.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack.    </td></tr>
+<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation $H$ and the observation noise $R$ matrices. The parameters are also propagated to the state observation function object $H$. Defaults to no parameter types, the empty pack.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. Defaults to no parameter types, the empty pack.   </td></tr>
+<td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise $Q$, the state transition $F$, and the control transition $G$ matrices. The parameters are also propagated to the state transition function object $F$. Defaults to no parameter types, the empty pack.   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md29"></a>
 Member Types</h2>
@@ -268,29 +268,29 @@ Member Types</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Type   </th><th class="markdownTableHeadNone">Dimensions   </th><th class="markdownTableHeadNone">Definition   </th><th class="markdownTableHeadNone">Also Known As    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>estimate_uncertainty</code>   </td><td class="markdownTableBodyNone">x by x   </td><td class="markdownTableBodyNone">Type of the estimated covariance matrix <code>p</code>.   </td><td class="markdownTableBodyNone">P, Σ    </td></tr>
+<td class="markdownTableBodyNone"><code>estimate_uncertainty</code>   </td><td class="markdownTableBodyNone">x by x   </td><td class="markdownTableBodyNone">Type of the estimated covariance matrix <code>p</code>.   </td><td class="markdownTableBodyNone">$P$, $Σ$    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>gain</code>   </td><td class="markdownTableBodyNone">x by z   </td><td class="markdownTableBodyNone">Type of the gain matrix <code>k</code>.   </td><td class="markdownTableBodyNone">K    </td></tr>
+<td class="markdownTableBodyNone"><code>gain</code>   </td><td class="markdownTableBodyNone">x by z   </td><td class="markdownTableBodyNone">Type of the gain matrix <code>k</code>.   </td><td class="markdownTableBodyNone">$K$    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>innovation_uncertainty</code>   </td><td class="markdownTableBodyNone">z by z   </td><td class="markdownTableBodyNone">Type of the innovation uncertainty matrix <code>s</code>.   </td><td class="markdownTableBodyNone">S    </td></tr>
+<td class="markdownTableBodyNone"><code>innovation_uncertainty</code>   </td><td class="markdownTableBodyNone">z by z   </td><td class="markdownTableBodyNone">Type of the innovation uncertainty matrix <code>s</code>.   </td><td class="markdownTableBodyNone">$S$    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>innovation</code>   </td><td class="markdownTableBodyNone">z by 1   </td><td class="markdownTableBodyNone">Type of the innovation column vector <code>y</code>.   </td><td class="markdownTableBodyNone">Y    </td></tr>
+<td class="markdownTableBodyNone"><code>innovation</code>   </td><td class="markdownTableBodyNone">z by 1   </td><td class="markdownTableBodyNone">Type of the innovation column vector <code>y</code>.   </td><td class="markdownTableBodyNone">$Y$    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>input_control</code>   </td><td class="markdownTableBodyNone">x by u   </td><td class="markdownTableBodyNone">Type of the control transition matrix <code>g</code>.   </td><td class="markdownTableBodyNone">G, B    </td></tr>
+<td class="markdownTableBodyNone"><code>input_control</code>   </td><td class="markdownTableBodyNone">x by u   </td><td class="markdownTableBodyNone">Type of the control transition matrix <code>g</code>.   </td><td class="markdownTableBodyNone">$G$, $B$    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>input</code>   </td><td class="markdownTableBodyNone">u by 1   </td><td class="markdownTableBodyNone">Type of the control column vector <code>u</code>.   </td><td class="markdownTableBodyNone">U    </td></tr>
+<td class="markdownTableBodyNone"><code>input</code>   </td><td class="markdownTableBodyNone">u by 1   </td><td class="markdownTableBodyNone">Type of the control column vector <code>u</code>.   </td><td class="markdownTableBodyNone">$U$    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>output_model</code>   </td><td class="markdownTableBodyNone">z by x   </td><td class="markdownTableBodyNone">Type of the observation transition matrix <code>h</code>.   </td><td class="markdownTableBodyNone">H, C    </td></tr>
+<td class="markdownTableBodyNone"><code>output_model</code>   </td><td class="markdownTableBodyNone">z by x   </td><td class="markdownTableBodyNone">Type of the observation transition matrix <code>h</code>.   </td><td class="markdownTableBodyNone">$H$, $C$    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>output_uncertainty</code>   </td><td class="markdownTableBodyNone">z by z   </td><td class="markdownTableBodyNone">Type of the observation, measurement noise covariance matrix <code>r</code>.   </td><td class="markdownTableBodyNone">R    </td></tr>
+<td class="markdownTableBodyNone"><code>output_uncertainty</code>   </td><td class="markdownTableBodyNone">z by z   </td><td class="markdownTableBodyNone">Type of the observation, measurement noise covariance matrix <code>r</code>.   </td><td class="markdownTableBodyNone">$R$    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>output</code>   </td><td class="markdownTableBodyNone">z by 1   </td><td class="markdownTableBodyNone">Type of the observation column vector <code>z</code>.   </td><td class="markdownTableBodyNone">Z, Y, O    </td></tr>
+<td class="markdownTableBodyNone"><code>output</code>   </td><td class="markdownTableBodyNone">z by 1   </td><td class="markdownTableBodyNone">Type of the observation column vector <code>z</code>.   </td><td class="markdownTableBodyNone">$Z$, $Y$, $O$    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>process_uncertainty</code>   </td><td class="markdownTableBodyNone">x by x   </td><td class="markdownTableBodyNone">Type of the process noise covariance matrix <code>q</code>.   </td><td class="markdownTableBodyNone">Q    </td></tr>
+<td class="markdownTableBodyNone"><code>process_uncertainty</code>   </td><td class="markdownTableBodyNone">x by x   </td><td class="markdownTableBodyNone">Type of the process noise covariance matrix <code>q</code>.   </td><td class="markdownTableBodyNone">$Q$    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>state_transition</code>   </td><td class="markdownTableBodyNone">x by x   </td><td class="markdownTableBodyNone">Type of the state transition matrix <code>f</code>.   </td><td class="markdownTableBodyNone">F, Φ, A    </td></tr>
+<td class="markdownTableBodyNone"><code>state_transition</code>   </td><td class="markdownTableBodyNone">x by x   </td><td class="markdownTableBodyNone">Type of the state transition matrix <code>f</code>.   </td><td class="markdownTableBodyNone">$F$, $Φ$, $A$    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>state</code>   </td><td class="markdownTableBodyNone">x by 1   </td><td class="markdownTableBodyNone">Type of the state estimate column vector <code>x</code>.   </td><td class="markdownTableBodyNone">X   </td></tr>
+<td class="markdownTableBodyNone"><code>state</code>   </td><td class="markdownTableBodyNone">x by 1   </td><td class="markdownTableBodyNone">Type of the state estimate column vector <code>x</code>.   </td><td class="markdownTableBodyNone">$X$   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md30"></a>
 Member Functions</h2>
@@ -310,33 +310,33 @@ Characteristics</h3>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Characteristic   </th><th class="markdownTableHeadNone">Definition    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>f</code>   </td><td class="markdownTableBodyNone">Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>f</code>   </td><td class="markdownTableBodyNone">Manages the state transition matrix $F$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>g</code>   </td><td class="markdownTableBodyNone">Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>g</code>   </td><td class="markdownTableBodyNone">Manages the control transition matrix $G$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>h</code>   </td><td class="markdownTableBodyNone">Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>h</code>   </td><td class="markdownTableBodyNone">Manages the observation transition matrix $H$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>k</code>   </td><td class="markdownTableBodyNone">Manages the gain matrix K. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>k</code>   </td><td class="markdownTableBodyNone">Manages the gain matrix $K$. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>p</code>   </td><td class="markdownTableBodyNone">Manages the estimated covariance matrix P. Gets the value. Initializes and sets the value. The default value is the identity matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>p</code>   </td><td class="markdownTableBodyNone">Manages the estimated covariance matrix $P$. Gets the value. Initializes and sets the value. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>q</code>   </td><td class="markdownTableBodyNone">Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>q</code>   </td><td class="markdownTableBodyNone">Manages the process noise covariance matrix $Q$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>r</code>   </td><td class="markdownTableBodyNone">Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>r</code>   </td><td class="markdownTableBodyNone">Manages the observation, measurement noise covariance matrix $R$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>s</code>   </td><td class="markdownTableBodyNone">Manages the innovation uncertainty matrix S. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>s</code>   </td><td class="markdownTableBodyNone">Manages the innovation uncertainty matrix $S$. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>u</code>   </td><td class="markdownTableBodyNone">Manages the control column vector U. Gets the value last used in prediction.    </td></tr>
+<td class="markdownTableBodyNone"><code>u</code>   </td><td class="markdownTableBodyNone">Manages the control column vector $U$. Gets the value last used in prediction.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>x</code>   </td><td class="markdownTableBodyNone">Manages the state estimate column vector X. Gets the value. Initializes and sets the value. The default value is the null column vector.    </td></tr>
+<td class="markdownTableBodyNone"><code>x</code>   </td><td class="markdownTableBodyNone">Manages the state estimate column vector $X$. Gets the value. Initializes and sets the value. The default value is the null column vector.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>y</code>   </td><td class="markdownTableBodyNone">Manages the innovation column vector Y. Gets the value last computed during the update. The default value is the null column vector.    </td></tr>
+<td class="markdownTableBodyNone"><code>y</code>   </td><td class="markdownTableBodyNone">Manages the innovation column vector $Y$. Gets the value last computed during the update. The default value is the null column vector.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>z</code>   </td><td class="markdownTableBodyNone">Manages the observation column vector Z. Gets the value last used during the update. The default value is the null column vector.    </td></tr>
+<td class="markdownTableBodyNone"><code>z</code>   </td><td class="markdownTableBodyNone">Manages the observation column vector $Z$. Gets the value last used during the update. The default value is the null column vector.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>transition</code>   </td><td class="markdownTableBodyNone">Manages the state transition function object f. Configures the callable object to compute the transition state value. The default value is the equivalent to <code>f(x) = F * X</code>. The default function is suitable for linear systems. For extended filters <code>transition</code> is a linearization of the state transition while F is the Jacobian of the transition function: <code>F = ∂f/∂X = ∂fj/∂xi</code> that is each row i contains the derivatives of the state transition function for every element j in the state column vector X.    </td></tr>
+<td class="markdownTableBodyNone"><code>transition</code>   </td><td class="markdownTableBodyNone">Manages the state transition function object $f$. Configures the callable object to compute the transition state value. The default value is the equivalent to $f(x) = F * X$. The default function is suitable for linear systems. For extended filters <code>transition</code> is a linearization of the state transition while $F$ is the Jacobian of the transition function: $F = ∂f/∂X = ∂fj/∂xi$ that is each row $i$ contains the derivatives of the state transition function for every element $j$ in the state column vector $X$.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>observation</code>   </td><td class="markdownTableBodyNone">Manages the state observation function object h. Configures the callable object to compute the observation state value. The default value is the equivalent to <code>h(x) = H * X</code>. The default function is suitable for linear systems. For extended filters <code>observation</code> is a linearization of the state observation while H is the Jacobian of the observation function: <code>H = ∂h/∂X = ∂hj/∂xi</code> that is each row i contains the derivatives of the state observation function for every element j in the state vector X.   </td></tr>
+<td class="markdownTableBodyNone"><code>observation</code>   </td><td class="markdownTableBodyNone">Manages the state observation function object $h$. Configures the callable object to compute the observation state value. The default value is the equivalent to $h(x) = H * X$. The default function is suitable for linear systems. For extended filters <code>observation</code> is a linearization of the state observation while $H$ is the Jacobian of the observation function: $H = ∂h/∂X = ∂hj/∂xi$ that is each row $i$ contains the derivatives of the state observation function for every element $j$ in the state vector $X$.   </td></tr>
 </table>
 <h3><a class="anchor" id="autotoc_md32"></a>
 Modifiers</h3>
@@ -407,21 +407,21 @@ Resources</h1>
 Continuous Integration &amp; Deployment Actions</h1>
 <p ><a href="https://github.com/FrancoisCarouge/Kalman"><img src="https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen" alt="Code Repository" class="inline"/></a> <br  />
  <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc.yml/badge.svg" alt="Test: Ubuntu 22.04 GCC" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml/badge.svg" alt="Windows 2019 MSVC" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml/badge.svg" alt="Ubuntu 22.04 Clang" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_gcc.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_gcc.yml/badge.svg" alt="Ubuntu 22.04 GCC" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_windows-2019_msvc.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_windows-2019_msvc.yml/badge.svg" alt="Windows 2019 MSVC" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_clang.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_clang.yml/badge.svg" alt="Ubuntu 22.04 Clang" style="pointer-events: none;" class="inline"/></a> <br  />
  <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml/badge.svg" alt="ClangFormat" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg" alt="ClangTidy" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml/badge.svg" alt="CMakeFormat" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://coveralls.io/github/FrancoisCarouge/Kalman?branch=develop"><img src="https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=develop" alt="Coverage Status" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg" alt="CppCheck" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml/badge.svg" alt="Address Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_address.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_address.yml/badge.svg" alt="Address Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml/badge.svg" alt="Leak Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml/badge.svg" alt="Valgrind" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml/badge.svg" alt="Thread Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg" alt="Undefined Behavior Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_leak.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_leak.yml/badge.svg" alt="Leak Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml/badge.svg" alt="Valgrind" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_thread.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_thread.yml/badge.svg" alt="Thread Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_undefined_behavior.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_undefined_behavior.yml/badge.svg" alt="Undefined Behavior Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
  <br  />
  <a href="https://raw.githubusercontent.com/francoiscarouge/Kalman/develop/LICENSE.txt"><img src="https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen" alt="Public Domain" class="inline"/></a> <br  />
  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield" alt="License Scan" style="pointer-events: none;" class="inline"/></a> <br  />
@@ -472,7 +472,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Nov 14 2022 03:20:46 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Tue Nov 15 2022 03:10:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
