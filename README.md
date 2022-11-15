@@ -8,7 +8,7 @@ Simple and extended filters are supported. The update equation uses the Joseph f
 
 The Kalman filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians.
 
-Designing a filter is as much art as science. Design the state (X, P), the process (F, Q), the measurement (Z, R), the measurement function H, and if the system has control inputs (U, B).
+Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.
 
 Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.
 
@@ -177,29 +177,29 @@ class kalman
 
 | Template Parameter | Definition |
 | --- | --- |
-| `State` | The type template parameter of the state column vector x. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `double`. |
-| `Output` | The type template parameter of the measurement column vector z. Defaults to `double`. |
-| `Input` | The type template parameter of the control u. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix G support, and the other related computations from the filter. Defaults to `void`. |
+| `State` | The type template parameter of the state column vector $X$. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `double`. |
+| `Output` | The type template parameter of the measurement column vector $Z$. Defaults to `double`. |
+| `Input` | The type template parameter of the control $U$. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix $G$ support, and the other related computations from the filter. Defaults to `void`. |
 | `Divide` | The customization point object template parameter of the matrix division functor. Default to the standard division `std::divides<void>` function object. |
-| `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation H and the observation noise R matrices. The parameters are also propagated to the state observation function object h. Defaults to no parameter types, the empty pack. |
-| `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise Q, the state transition F, and the control transition G matrices. The parameters are also propagated to the state transition function object f. Defaults to no parameter types, the empty pack. |
+| `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation $H$ and the observation noise $R$ matrices. The parameters are also propagated to the state observation function object $H$. Defaults to no parameter types, the empty pack. |
+| `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise $Q$, the state transition $F$, and the control transition $G$ matrices. The parameters are also propagated to the state transition function object $F$. Defaults to no parameter types, the empty pack. |
 
 ## Member Types
 
 | Member Type | Dimensions | Definition | Also Known As |
 | --- | --- | --- | --- |
-| `estimate_uncertainty` | x by x | Type of the estimated covariance matrix `p`. | P, Σ |
-| `gain` | x by z | Type of the gain matrix `k`. | K |
-| `innovation_uncertainty` | z by z | Type of the innovation uncertainty matrix `s`. | S |
-| `innovation` | z by 1 | Type of the innovation column vector `y`. | Y |
-| `input_control` | x by u | Type of the control transition matrix `g`. | G, B |
-| `input` | u by 1 | Type of the control column vector `u`. | U |
-| `output_model` | z by x | Type of the observation transition matrix `h`. | H, C |
-| `output_uncertainty` | z by z | Type of the observation, measurement noise covariance matrix `r`. | R |
-| `output` | z by 1 | Type of the observation column vector `z`. | Z, Y, O |
-| `process_uncertainty` | x by x | Type of the process noise covariance matrix `q`. | Q |
-| `state_transition` | x by x | Type of the state transition matrix `f`. | F, Φ, A |
-| `state` | x by 1 | Type of the state estimate column vector `x`. | X |
+| `estimate_uncertainty` | x by x | Type of the estimated covariance matrix `p`. | $P$, $Σ$ |
+| `gain` | x by z | Type of the gain matrix `k`. | $K$ |
+| `innovation_uncertainty` | z by z | Type of the innovation uncertainty matrix `s`. | $S$ |
+| `innovation` | z by 1 | Type of the innovation column vector `y`. | $Y$ |
+| `input_control` | x by u | Type of the control transition matrix `g`. | $G$, $B$ |
+| `input` | u by 1 | Type of the control column vector `u`. | $U$ |
+| `output_model` | z by x | Type of the observation transition matrix `h`. | $H$, $C$ |
+| `output_uncertainty` | z by z | Type of the observation, measurement noise covariance matrix `r`. | $R$ |
+| `output` | z by 1 | Type of the observation column vector `z`. | $Z$, $Y$, $O$ |
+| `process_uncertainty` | x by x | Type of the process noise covariance matrix `q`. | $Q$ |
+| `state_transition` | x by x | Type of the state transition matrix `f`. | $F$, $Φ$, $A$ |
+| `state` | x by 1 | Type of the state estimate column vector `x`. | $X$ |
 
 ## Member Functions
 
@@ -213,20 +213,20 @@ class kalman
 
 | Characteristic | Definition |
 | --- | --- |
-| `f` | Manages the state transition matrix F. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
-| `g` | Manages the control transition matrix G. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
-| `h` | Manages the observation transition matrix H. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
-| `k` | Manages the gain matrix K. Gets the value last computed during the update. The default value is the identity matrix. |
-| `p` | Manages the estimated covariance matrix P. Gets the value. Initializes and sets the value. The default value is the identity matrix. |
-| `q` | Manages the process noise covariance matrix Q. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix. |
-| `r` | Manages the observation, measurement noise covariance matrix R. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix. |
-| `s` | Manages the innovation uncertainty matrix S. Gets the value last computed during the update. The default value is the identity matrix. |
-| `u` | Manages the control column vector U. Gets the value last used in prediction. |
-| `x` | Manages the state estimate column vector X. Gets the value. Initializes and sets the value. The default value is the null column vector. |
-| `y` | Manages the innovation column vector Y. Gets the value last computed during the update. The default value is the null column vector. |
-| `z` | Manages the observation column vector Z. Gets the value last used during the update. The default value is the null column vector. |
-| `transition` | Manages the state transition function object f. Configures the callable object to compute the transition state value. The default value is the equivalent to `f(x) = F * X`. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while F is the Jacobian of the transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the derivatives of the state transition function for every element j in the state column vector X. |
-| `observation` | Manages the state observation function object h. Configures the callable object to compute the observation state value. The default value is the equivalent to `h(x) = H * X`. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while H is the Jacobian of the observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i contains the derivatives of the state observation function for every element j in the state vector X. |
+| `f` | Manages the state transition matrix $F$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
+| `g` | Manages the control transition matrix $G$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
+| `h` | Manages the observation transition matrix $H$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the identity matrix. |
+| `k` | Manages the gain matrix $K$. Gets the value last computed during the update. The default value is the identity matrix. |
+| `p` | Manages the estimated covariance matrix $P$. Gets the value. Initializes and sets the value. The default value is the identity matrix. |
+| `q` | Manages the process noise covariance matrix $Q$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix. |
+| `r` | Manages the observation, measurement noise covariance matrix $R$. Gets the value. Initializes and sets the value. Configures the callable object to compute the value. The default value is the null matrix. |
+| `s` | Manages the innovation uncertainty matrix $S$. Gets the value last computed during the update. The default value is the identity matrix. |
+| `u` | Manages the control column vector $U$. Gets the value last used in prediction. |
+| `x` | Manages the state estimate column vector $X$. Gets the value. Initializes and sets the value. The default value is the null column vector. |
+| `y` | Manages the innovation column vector $Y$. Gets the value last computed during the update. The default value is the null column vector. |
+| `z` | Manages the observation column vector $Z$. Gets the value last used during the update. The default value is the null column vector. |
+| `transition` | Manages the state transition function object $f$. Configures the callable object to compute the transition state value. The default value is the equivalent to $f(x) = F * X$. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while $F$ is the Jacobian of the transition function: $F = ∂f/∂X = ∂fj/∂xi$ that is each row $i$ contains the derivatives of the state transition function for every element $j$ in the state column vector $X$. |
+| `observation` | Manages the state observation function object $h$. Configures the callable object to compute the observation state value. The default value is the equivalent to $h(x) = H * X$. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while $H$ is the Jacobian of the observation function: $H = ∂h/∂X = ∂hj/∂xi$ that is each row $i$ contains the derivatives of the state observation function for every element $j$ in the state vector $X$. |
 
 ### Modifiers
 
@@ -307,11 +307,11 @@ Resources to learn about Kalman filters:
 [![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
 <br>
 <br>
-[![Test: Ubuntu 22.04 GCC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_gcc.yml)
+[![Ubuntu 22.04 GCC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_gcc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_gcc.yml)
 <br>
-[![Windows 2019 MSVC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_windows-2019_msvc.yml)
+[![Windows 2019 MSVC](https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_windows-2019_msvc.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_windows-2019_msvc.yml)
 <br>
-[![Ubuntu 22.04 Clang](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_ubuntu-22-04_clang.yml)
+[![Ubuntu 22.04 Clang](https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_clang.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_clang.yml)
 <br>
 <br>
 [![ClangFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml)
@@ -324,17 +324,17 @@ Resources to learn about Kalman filters:
 <br>
 [![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
 <br>
-[![Address Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_address.yml)
+[![Address Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_address.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_address.yml)
 <br>
 [![Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml)
 <br>
-[![Leak Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_leak.yml)
+[![Leak Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_leak.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_leak.yml)
 <br>
-[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_memory_valgrind.yml)
+[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml)
 <br>
-[![Thread Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_thread.yml)
+[![Thread Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_thread.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_thread.yml)
 <br>
-[![Undefined Behavior Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/verify_test_sanitizer_undefined_behavior.yml)
+[![Undefined Behavior Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_undefined_behavior.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_undefined_behavior.yml)
 <br>
 <br>
 [![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/develop/LICENSE.txt)
