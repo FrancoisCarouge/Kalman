@@ -84,3 +84,4 @@ target_sources(
             "kalman.hpp")
 target_link_libraries(kalman INTERFACE ${LIBRARIES})
 target_compile_options(kalman INTERFACE ${OPTIONS})
+target_compile_features(kalman INTERFACE cxx_std_23)
