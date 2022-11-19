@@ -16,7 +16,7 @@ jobs:
       run: |
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
-        sudo ./llvm.sh 16 all
+        sudo ./llvm.sh 15 all
         ( cd /tmp
           git clone --depth 1 https://gitlab.com/libeigen/eigen.git
           mkdir eigen/build
@@ -54,7 +54,7 @@ jobs:
     - name: Verify
       run: |
         FILES=`find . -iname *.hpp -o -iname *.tpp`
-        clang-tidy-16 ${FILES} --warnings-as-errors=* -- \
+        clang-tidy-15 ${FILES} --warnings-as-errors=* -- \
           -x c++ -Iinclude \
           -I/usr/local/include/eigen3 \
           -Isupport \
