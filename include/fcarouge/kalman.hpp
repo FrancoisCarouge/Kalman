@@ -246,55 +246,6 @@ public:
   using innovation_uncertainty =
       typename implementation::innovation_uncertainty;
 
-  //! @brief Type of the callable observation state function.
-  //!
-  //! @details The function is of the form `output_model(const state &, const
-  //! UpdateTypes &...)`.
-  using observation_state_function =
-      typename implementation::observation_state_function;
-
-  //! @brief Type of the callable noise observation function.
-  //!
-  //! @details The function is of the form `output_uncertainty(const state &,
-  //! const output &, const UpdateTypes &...)`.
-  using noise_observation_function =
-      typename implementation::noise_observation_function;
-
-  //! @brief Type of the callable transition state function.
-  //!
-  //! @details The function is of the form `state_transition(const state &,
-  //! const input &, const PredictionTypes &...)`.
-  using transition_state_function =
-      typename implementation::transition_state_function;
-
-  //! @brief Type of the callable noise process function.
-  //!
-  //! @details The function is of the form `process_uncertainty(const state &,
-  //! const PredictionTypes &...)`.
-  using noise_process_function =
-      typename implementation::noise_process_function;
-
-  //! @brief Type of the callable transition control function.
-  //!
-  //! @details The function is of the form `input_control(const PredictionTypes
-  //! &...)`.
-  //!
-  //! @todo Conditionally remove this member type when no input is present.
-  using transition_control_function =
-      typename implementation::transition_control_function;
-
-  //! @brief Type of the callable transition function.
-  //!
-  //! @details The function is of the form `state(const state &, const input &,
-  //! const PredictionTypes &...)`.
-  using transition_function = typename implementation::transition_function;
-
-  //! @brief Type of the callable observation function.
-  //!
-  //! @details The function is of the form `output(const state &, const
-  //! UpdateTypes &...arguments)`.
-  using observation_function = typename implementation::observation_function;
-
   //! @}
 
   //! @name Public Member Functions
@@ -465,39 +416,31 @@ public:
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
-  //! @param value The copied process noise covariance matrix Q.
+  //! @param value The process noise covariance matrix Q is of type
+  //! `process_uncertainty` and the function is of the form
+  //! `process_uncertainty(const state &, const PredictionTypes &...)`. The
+  //! copied process noise covariance matrix Q or the copied target Callable
+  //! object (function object, pointer to function, reference to function,
+  //! pointer to member function, or pointer to data member) that will be bound
+  //! to the prediction arguments and called by the filter to compute the
+  //! process noise covariance matrix Q on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void q(const process_uncertainty &value);
+  inline constexpr void q(const auto &value);
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
-  //! @param value The moved process noise covariance matrix Q.
+  //! @param value The process noise covariance matrix Q is of type
+  //! `process_uncertainty` and the function is of the form
+  //! `process_uncertainty(const state &, const PredictionTypes &...)`. The
+  //! moved process noise covariance matrix Q or the moved target Callable
+  //! object (function object, pointer to function, reference to function,
+  //! pointer to member function, or pointer to data member) that will be bound
+  //! to the prediction arguments and called by the filter to compute the
+  //! process noise covariance matrix Q on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void q(process_uncertainty &&value);
-
-  //! @brief Sets the process noise covariance matrix Q function.
-  //!
-  //! @param callable The copied target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be bound to the prediction arguments and
-  //! called by the filter to compute the process noise covariance matrix Q on
-  //! prediction steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void q(const noise_process_function &callable);
-
-  //! @brief Sets the process noise covariance matrix Q function.
-  //!
-  //! @param callable The moved target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be bound to the prediction arguments and
-  //! called by the filter to compute the process noise covariance matrix Q on
-  //! prediction steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void q(noise_process_function &&callable);
+  inline constexpr void q(auto &&value);
 
   //! @brief Returns the observation noise covariance
   //! matrix R.
@@ -512,39 +455,31 @@ public:
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
-  //! @param value The copied observation noise covariance matrix R.
+  //! @param value The observation noise covariance matrix R is of type
+  //! `output_uncertainty` and the function is of the form
+  //! `output_uncertainty(const state &, const output &, const UpdateTypes
+  //! &...)`. The copied observation noise covariance matrix R or the copied
+  //! target Callable object (function object, pointer to function, reference to
+  //! function, pointer to member function, or pointer to data member) that will
+  //! be called by the filter to compute the observation noise covariance matrix
+  //! R on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void r(const output_uncertainty &value);
+  inline constexpr void r(const auto &value);
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
-  //! @param value The moved observation noise covariance matrix R.
+  //! @param value The observation noise covariance matrix R is of type
+  //! `output_uncertainty` and the function is of the form
+  //! `output_uncertainty(const state &, const output &, const UpdateTypes
+  //! &...)`. The moved observation noise covariance matrix R or the moved
+  //! target Callable object (function object, pointer to function, reference to
+  //! function, pointer to member function, or pointer to data member) that will
+  //! be called by the filter to compute the observation noise covariance matrix
+  //! R on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void r(output_uncertainty &&value);
-
-  //! @brief Sets the observation noise covariance matrix R function.
-  //!
-  //! @param callable The copied target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be
-  //! called by the filter to compute the observation noise covariance matrix R
-  //! on prediction steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void r(const noise_observation_function &callable);
-
-  //! @brief Sets the observation noise covariance matrix R function.
-  //!
-  //! @param callable The moved target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be
-  //! called by the filter to compute the observation noise covariance matrix R
-  //! on prediction steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void r(noise_observation_function &&callable);
+  inline constexpr void r(auto &&value);
 
   //! @brief Returns the state transition matrix F.
   //!
@@ -556,49 +491,39 @@ public:
 
   //! @brief Sets the state transition matrix F.
   //!
-  //! @param value The copied state transition matrix F.
+  //! @details The state transition matrix F is of type `state_transition` and
+  //! the function is of the form `state_transition(const state &, const input
+  //! &, const PredictionTypes &...)`. For non-linear system, or extended
+  //! filter, F is the Jacobian of the state transition function: `F = ∂f/∂X =
+  //! ∂fj/∂xi` that is each row i contains the derivatives of the state
+  //! transition function for every element j in the state column vector X.
+  //!
+  //! @param value The copied state transition matrix F or the copied target
+  //! Callable object (function object, pointer to function, reference to
+  //! function, pointer to member function, or pointer to data member) that will
+  //! be bound to the prediction arguments and called by the filter to compute
+  //! the state transition matrix F function on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void f(const state_transition &value);
+  inline constexpr void f(const auto &value);
 
   //! @brief Sets the state transition matrix F.
   //!
-  //! @param value The moved state transition matrix F.
+  //! @details The state transition matrix F is of type `state_transition` and
+  //! the function is of the form `state_transition(const state &, const input
+  //! &, const PredictionTypes &...)`. For non-linear system, or extended
+  //! filter, F is the Jacobian of the state transition function: `F = ∂f/∂X =
+  //! ∂fj/∂xi` that is each row i contains the derivatives of the state
+  //! transition function for every element j in the state column vector X.
+  //!
+  //! @param value The moved state transition matrix F or the moved target
+  //! Callable object (function object, pointer to function, reference to
+  //! function, pointer to member function, or pointer to data member) that will
+  //! be bound to the prediction arguments and called by the filter to compute
+  //! the state transition matrix F function on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void f(state_transition &&value);
-
-  //! @brief Sets the state transition matrix F function.
-  //!
-  //! @details For non-linear system, or extended filter, F is the Jacobian of
-  //! the state transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i
-  //! contains the derivatives of the state transition function for every
-  //! element j in the state column vector X.
-  //!
-  //! @param callable The copied target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be bound to the prediction arguments and
-  //! called by the filter to compute the state transition matrix F function on
-  //! prediction steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void f(const transition_state_function &callable);
-
-  //! @brief Sets the state transition matrix F function.
-  //!
-  //! @details For non-linear system, or extended filter, F is the Jacobian of
-  //! the state transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i
-  //! contains the derivatives of the state transition function for every
-  //! element j in the state column vector X.
-  //!
-  //! @param callable The moved target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be bound to the prediction arguments and
-  //! called by the filter to compute the state transition matrix F function on
-  //! prediction steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void f(transition_state_function &&callable);
+  inline constexpr void f(auto &&value);
 
   //! @brief Returns the observation transition matrix H.
   //!
@@ -610,49 +535,39 @@ public:
 
   //! @brief Sets the observation transition matrix H.
   //!
-  //! @param value The copied observation transition matrix H.
+  //! @details The observation transition matrix H is of type `output_model` and
+  //! the function is of the form `output_model(const state &, const UpdateTypes
+  //! &...)`. For non-linear system, or extended filter, H is the Jacobian of
+  //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
+  //! contains the derivatives of the state observation function for every
+  //! element j in the state column vector X.
+  //!
+  //! @param value The copied observation transition matrix H or the copied
+  //! target Callable object (function object, pointer to function, reference to
+  //! function, pointer to member function, or pointer to data member) that will
+  //! be bound to the prediction arguments and called by the filter to compute
+  //! the observation, measurement transition matrix H on update steps.
   //!
   //! @complexity Constant.
-  inline constexpr void h(const output_model &value);
+  inline constexpr void h(const auto &value);
 
   //! @brief Sets the observation transition matrix H.
   //!
-  //! @param value The moved observation transition matrix H.
-  //!
-  //! @complexity Constant.
-  inline constexpr void h(output_model &&value);
-
-  //! @brief Sets the observation, measurement transition matrix H function.
-  //!
-  //! @details For non-linear system, or extended filter, H is the Jacobian of
+  //! @details The observation transition matrix H is of type `output_model` and
+  //! the function is of the form `output_model(const state &, const UpdateTypes
+  //! &...)`. For non-linear system, or extended filter, H is the Jacobian of
   //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
   //! contains the derivatives of the state observation function for every
   //! element j in the state column vector X.
   //!
-  //! @param callable The copied target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be bound to the prediction arguments and
-  //! called by the filter to compute the observation, measurement transition
-  //! matrix H on update steps.
+  //! @param value The moved observation transition matrix H or the moved target
+  //! Callable object (function object, pointer to function, reference to
+  //! function, pointer to member function, or pointer to data member) that will
+  //! be bound to the prediction arguments and called by the filter to compute
+  //! the observation, measurement transition matrix H on update steps.
   //!
   //! @complexity Constant.
-  inline constexpr void h(const observation_state_function &callable);
-
-  //! @brief Sets the observation, measurement transition matrix H function.
-  //!
-  //! @details For non-linear system, or extended filter, H is the Jacobian of
-  //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
-  //! contains the derivatives of the state observation function for every
-  //! element j in the state column vector X.
-  //!
-  //! @param callable The moved target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be bound to the prediction arguments and
-  //! called by the filter to compute the observation, measurement transition
-  //! matrix H on update steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void h(observation_state_function &&callable);
+  inline constexpr void h(auto &&value);
 
   //! @brief Returns the control transition matrix G.
   //!
@@ -668,45 +583,35 @@ public:
 
   //! @brief Sets the control transition matrix G.
   //!
-  //! @details This member function is not present when the filter has no input.
+  //! @details The control transition matrix G is of type `input_control` and
+  //! the function is of the form `input_control(const PredictionTypes &...)`.
+  //! This member function is not present when the filter has no input.
   //!
-  //! @param value The copied control transition matrix G.
+  //! @param value The copied control transition matrix G or the copied target
+  //! Callable object (function object, pointer to function, reference to
+  //! function, pointer to member function, or pointer to data member) that will
+  //! be bound to the prediction arguments and called by the filter to compute
+  //! the control transition matrix G on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void g(const input_control &value)
+  inline constexpr void g(const auto &value)
     requires(not std::is_same_v<Input, void>);
 
   //! @brief Sets the control transition matrix G.
   //!
-  //! @details This member function is not present when the filter has no input.
+  //! @details The control transition matrix G is of type `input_control` and
+  //! the function is of the form `input_control(const PredictionTypes &...)`.
+  //! This member function is not present when the filter has no input.
   //!
-  //! @param value The moved control transition matrix G.
+  //! @param value The moved control transition matrix G or the moved target
+  //! Callable object (function object, pointer to function, reference to
+  //! function, pointer to member function, or pointer to data member) that will
+  //! be bound to the prediction arguments and called by the filter to compute
+  //! the control transition matrix G on prediction steps.
   //!
   //! @complexity Constant.
-  inline constexpr void g(input_control &&value)
+  inline constexpr void g(auto &&value)
     requires(not std::is_same_v<Input, void>);
-
-  //! @brief Sets the control transition matrix G function.
-  //!
-  //! @param callable The copied target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be bound to the prediction arguments and
-  //! called by the filter to compute the control transition matrix G on
-  //! prediction steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void g(const transition_control_function &callable);
-
-  //! @brief Sets the control transition matrix G function.
-  //!
-  //! @param callable The moved target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be bound to the prediction arguments and
-  //! called by the filter to compute the control transition matrix G on
-  //! prediction steps.
-  //!
-  //! @complexity Constant.
-  inline constexpr void g(transition_control_function &&callable);
 
   //! @brief Returns the gain matrix K.
   //!
@@ -734,52 +639,56 @@ public:
   //! @param callable The copied target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
   //! pointer to data member) that will be called to compute the next state X on
-  //! prediction steps. The default function `f(x) = F * X` is suitable for
-  //! linear systems. For non-linear system, or extended filter, implement a
+  //! prediction steps of expression `state(const state &, const input &, const
+  //! PredictionTypes &...)`. The default function `f(x) = F * X` is suitable
+  //! for linear systems. For non-linear system, or extended filter, implement a
   //! linearization of the transition function f and the state transition F
   //! matrix is the Jacobian of the state transition function.
   //!
   //! @complexity Constant.
-  inline constexpr void transition(const transition_function &callable);
+  inline constexpr void transition(const auto &callable);
 
   //! @brief Sets the extended state transition function f(x).
   //!
   //! @param callable The moved target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
   //! pointer to data member) that will be called to compute the next state X on
-  //! prediction steps. The default function `f(x) = F * X` is suitable for
-  //! linear systems. For non-linear system, or extended filter, implement a
+  //! prediction steps of expression `state(const state &, const input &, const
+  //! PredictionTypes &...)`. The default function `f(x) = F * X` is suitable
+  //! for linear systems. For non-linear system, or extended filter, implement a
   //! linearization of the transition function f and the state transition F
   //! matrix is the Jacobian of the state transition function.
   //!
   //! @complexity Constant.
-  inline constexpr void transition(transition_function &&callable);
+  inline constexpr void transition(auto &&callable);
 
   //! @brief Sets the extended state observation function h(x).
   //!
   //! @param callable The copied target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
   //! pointer to data member) that will be called to compute the observation Z
-  //! on update steps. The default function `h(x) = H * X` is suitable for
+  //! on update steps of expression `output(const state &, const UpdateTypes
+  //! &...arguments)`. The default function `h(x) = H * X` is suitable for
   //! linear systems. For non-linear system, or extended filter, the client
   //! implements a linearization of the observation function hand the state
   //! observation H matrix is the Jacobian of the state observation function.
   //!
   //! @complexity Constant.
-  inline constexpr void observation(const observation_function &callable);
+  inline constexpr void observation(const auto &callable);
 
   //! @brief Sets the extended state observation function h(x).
   //!
   //! @param callable The moved target Callable object (function object,
   //! pointer to function, reference to function, pointer to member function, or
   //! pointer to data member) that will be called to compute the observation Z
-  //! on update steps. The default function `h(x) = H * X` is suitable for
+  //! on update steps of expression `output(const state &, const UpdateTypes
+  //! &...arguments)`. The default function `h(x) = H * X` is suitable for
   //! linear systems. For non-linear system, or extended filter, the client
   //! implements a linearization of the observation function hand the state
   //! observation H matrix is the Jacobian of the state observation function.
   //!
   //! @complexity Constant.
-  inline constexpr void observation(observation_function &&callable);
+  inline constexpr void observation(auto &&callable);
 
   //! @}
 
@@ -978,32 +887,24 @@ template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
-    const process_uncertainty &value) {
-  filter.q = value;
+    const auto &value) {
+  if constexpr (std::is_convertible_v<decltype(value), process_uncertainty>) {
+    filter.q = value;
+  } else {
+    filter.noise_process_q = value;
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
-    process_uncertainty &&value) {
-  filter.q = std::move(value);
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
-    const noise_process_function &callable) {
-  filter.noise_process_q = callable;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
-    noise_process_function &&callable) {
-  filter.noise_process_q = std::forward<decltype(callable)>(callable);
+    auto &&value) {
+  if constexpr (std::is_convertible_v<decltype(value), process_uncertainty>) {
+    filter.q = std::forward<decltype(value)>(value);
+  } else {
+    filter.noise_process_q = std::forward<decltype(value)>(value);
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1028,32 +929,24 @@ template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
-    const output_uncertainty &value) {
-  filter.r = value;
+    const auto &value) {
+  if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
+    filter.r = value;
+  } else {
+    filter.noise_observation_r = value;
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
-    output_uncertainty &&value) {
-  filter.r = std::move(value);
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
-    const noise_observation_function &callable) {
-  filter.noise_observation_r = callable;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
-    noise_observation_function &&callable) {
-  filter.noise_observation_r = std::forward<decltype(callable)>(callable);
+    auto &&value) {
+  if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
+    filter.r = std::forward<decltype(value)>(value);
+  } else {
+    filter.noise_observation_r = std::forward<decltype(value)>(value);
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1078,32 +971,24 @@ template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
-    const state_transition &value) {
-  filter.f = value;
+    const auto &value) {
+  if constexpr (std::is_convertible_v<decltype(value), state_transition>) {
+    filter.f = value;
+  } else {
+    filter.transition_state_f = value;
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
-    state_transition &&value) {
-  filter.f = std::move(value);
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
-    const transition_state_function &callable) {
-  filter.transition_state_f = callable;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
-    transition_state_function &&callable) {
-  filter.transition_state_f = std::forward<decltype(callable)>(callable);
+    auto &&value) {
+  if constexpr (std::is_convertible_v<decltype(value), state_transition>) {
+    filter.f = std::forward<decltype(value)>(value);
+  } else {
+    filter.transition_state_f = std::forward<decltype(value)>(value);
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1128,32 +1013,24 @@ template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
-    const output_model &value) {
-  filter.h = value;
+    const auto &value) {
+  if constexpr (std::is_convertible_v<decltype(value), output_model>) {
+    filter.h = value;
+  } else {
+    filter.observation_state_h = value;
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
-    output_model &&value) {
-  filter.h = std::move(value);
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
-    const observation_state_function &callable) {
-  filter.observation_state_h = callable;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
-    observation_state_function &&callable) {
-  filter.observation_state_h = std::forward<decltype(callable)>(callable);
+    auto &&value) {
+  if constexpr (std::is_convertible_v<decltype(value), output_model>) {
+    filter.h = std::forward<decltype(value)>(value);
+  } else {
+    filter.observation_state_h = std::forward<decltype(value)>(value);
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1178,36 +1055,28 @@ template <typename State, typename Output, typename Input, typename Divide,
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void kalman<State, Output, Input, Divide, UpdateTypes,
-                             PredictionTypes>::g(const input_control &value)
+                             PredictionTypes>::g(const auto &value)
   requires(not std::is_same_v<Input, void>)
 {
-  filter.g = value;
+  if constexpr (std::is_convertible_v<decltype(value), input_control>) {
+    filter.g = value;
+  } else {
+    filter.transition_control_g = value;
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g(
-    input_control &&value)
+    auto &&value)
   requires(not std::is_same_v<Input, void>)
 {
-  filter.g = std::move(value);
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g(
-    const transition_control_function &callable) {
-  filter.transition_control_g = callable;
-}
-
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g(
-    transition_control_function &&callable) {
-  filter.transition_control_g = std::forward<decltype(callable)>(callable);
+  if constexpr (std::is_convertible_v<decltype(value), input_control>) {
+    filter.g = std::forward<decltype(value)>(value);
+  } else {
+    filter.transition_control_g = std::forward<decltype(value)>(value);
+  }
 }
 
 template <typename State, typename Output, typename Input, typename Divide,
@@ -1241,7 +1110,7 @@ template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::transition(
-    const transition_function &callable) {
+    const auto &callable) {
   filter.transition = callable;
 }
 
@@ -1249,7 +1118,7 @@ template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::transition(
-    transition_function &&callable) {
+    auto &&callable) {
   filter.transition = std::forward<decltype(callable)>(callable);
 }
 
@@ -1257,7 +1126,7 @@ template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::observation(
-    const observation_function &callable) {
+    const auto &callable) {
   filter.observation = callable;
 }
 
@@ -1265,7 +1134,7 @@ template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::observation(
-    observation_function &&callable) {
+    auto &&callable) {
   filter.observation = std::forward<decltype(callable)>(callable);
 }
 
