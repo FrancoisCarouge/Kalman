@@ -53,7 +53,7 @@ jobs:
             sudo cmake --install . ) )
     - name: Verify
       run: |
-        FILES=`find . -iname *.hpp -o -iname *.tpp`
+        FILES=`find . -iname *.hpp`
         clang-tidy-15 ${FILES} --warnings-as-errors=* -- \
           -x c++ -Iinclude \
           -I/usr/local/include/eigen3 \
