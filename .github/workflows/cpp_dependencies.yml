@@ -1,0 +1,28 @@
+name: "cpp-dependencies"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.1.0
+    - name: Install
+      run: |
+        ( cd /tmp
+          git clone --depth 1 https://github.com/tomtom-international/cpp-dependencies.git
+          mkdir cpp-dependencies/build
+          ( cd cpp-dependencies/build
+            cmake -DWITH_BOOST=OFF ..
+            cmake --build . --parallel
+            sudo cmake --install . ) )
+    - name: Verify
+      run: |
+        cpp-dependencies --stats .
+        cpp-dependencies --graph kalman_dependencies.dot .
+        dot -Tpng kalman_dependencies.dot > kalman_dependencies.png
