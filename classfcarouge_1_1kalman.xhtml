@@ -350,8 +350,6 @@ class fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, Prediction
 Units for Matrices" by Daniel Withopf and record the lesson learned: both usage and development is harder without compile time units verification. </p>
 <p class="enddd">Should we add back the call operator? How to resolve the update/predict ordering? And parameter ordering? </p>
 </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#_a1">kf_1x1x1_dog_position.cpp</a>.</dd>
-</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00171">171</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
@@ -2316,7 +2314,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000016">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -2397,8 +2395,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000014">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#a2">kf_1x1x1_dog_position.cpp</a>.</dd>
-</dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00768">768</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  769</span>                     {</div>
@@ -2720,7 +2716,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sat Nov 19 2022 22:08:23 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Nov 20 2022 21:57:29 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
