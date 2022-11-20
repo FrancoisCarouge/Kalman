@@ -73,7 +73,7 @@ void eigen_predict(::benchmark::State &state) {
 
     typename kalman::input u;
 
-    fcarouge::internal::for_constexpr<std::size_t{0}, InputSize, 1>(
+    internal::for_constexpr<std::size_t{0}, InputSize, 1>(
         [&u, &uniformly_distributed, &random_generator](auto position) {
           u[position] = uniformly_distributed(random_generator);
         });
