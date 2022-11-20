@@ -29,9 +29,7 @@ jobs:
             cmake --build . --parallel
             sudo cmake --install . ) )
         ( cd /tmp
-          git clone https://github.com/danmar/cppcheck.git 
-          ( cd cppcheck
-            git checkout 5a8e55c083f693494ab9a8f92cb522157743a711 )
+          git clone https://github.com/danmar/cppcheck.git
           mkdir cppcheck/build
           ( cd cppcheck/build
             cmake ..
