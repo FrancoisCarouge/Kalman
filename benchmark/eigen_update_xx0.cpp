@@ -90,7 +90,7 @@ void eigen_update(::benchmark::State &state) {
 
     typename kalman::output z;
 
-    fcarouge::internal::for_constexpr<std::size_t{0}, OutputSize, 1>(
+    internal::for_constexpr<std::size_t{0}, OutputSize, 1>(
         [&z, &uniformly_distributed, &random_generator](auto position) {
           z[position] = uniformly_distributed(random_generator);
         });

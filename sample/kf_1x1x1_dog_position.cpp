@@ -31,7 +31,7 @@ namespace {
 //!
 //! @example kf_1x1x1_dog_position.cpp
 [[maybe_unused]] auto kf_1x1x1_dog_position{[] {
-  using kalman = fcarouge::kalman<double, double, double>;
+  using kalman = kalman<double, double, double>;
   kalman filter;
 
   // Initialization

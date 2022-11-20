@@ -50,7 +50,7 @@ namespace {
 //! @benchmark Measure predict, empty benchmark performance.
 void predict_1x1x1(::benchmark::State &state) {
 
-  using kalman = fcarouge::kalman<float, float, float>;
+  using kalman = kalman<float, float, float>;
 
   kalman filter;
   std::random_device random_device;
