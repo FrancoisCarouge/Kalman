@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> ]]
 if(WIN32)
   set(OPTIONS "/EHsc" "/W4")
 else()
+  set(LIBRARIES format)
   set(OPTIONS
       "-ansi"
       "-fno-check-new"
@@ -62,12 +63,6 @@ else()
       "-Wundef"
       "-Wunused-local-typedefs"
       "-Wwrite-strings")
-endif()
-
-if(WIN32)
-  set(LIBRARIES)
-else()
-  set(LIBRARIES format)
 endif()
 
 add_library(kalman INTERFACE)
