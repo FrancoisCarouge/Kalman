@@ -87,22 +87,19 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_README"></a> A generic Kalman filter for C++23.</p>
-<p >A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE). A control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems.</p>
-<p >Simple and extended filters are supported. The update equation uses the Joseph form. Control input is supported. Standard and type-erased Eigen3 linear algebra backends are supported.</p>
-<p >The Kalman filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians.</p>
-<p >Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.</p>
-<p >Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.</p>
-<p >Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.</p>
-<p >Standard formatter specialization provided for representation of the filter states.</p>
+<p >The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.</p>
+<p >This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
 <ul>
 <li>Kalman Filter for C++</li>
 <li>Examples<ul>
 <li>1x1 Constant System Dynamic Model Filter</li>
 <li>6x2 Constant Acceleration Dynamic Model Filter</li>
-<li>4x1 Non-Linear Dynamic Model Extended Filter</li>
+<li>4x1 Nonlinear Dynamic Model Extended Filter</li>
 <li>Other Examples</li>
 </ul>
 </li>
+<li>Installation</li>
+<li>Reference<ul>
 <li>Class kalman<ul>
 <li>Declaration</li>
 <li>Template Parameters</li>
@@ -115,7 +112,8 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </ul>
 </li>
 <li>Format</li>
-<li>Installation</li>
+</ul>
+</li>
 <li>Considerations<ul>
 <li>Motivations</li>
 <li>Selected Tradeoffs</li>
@@ -123,7 +121,11 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 <li>Performance</li>
 </ul>
 </li>
-<li>Resources</li>
+<li>Resources<ul>
+<li>Definitions</li>
+<li>Articles</li>
+</ul>
+</li>
 <li>Continuous Integration &amp; Deployment Actions</li>
 <li>Third Party Acknowledgement</li>
 <li>Sponsors<ul>
@@ -180,7 +182,7 @@ Examples</h1>
 <div class="line">filter.update(-375.93, 301.78);</div>
 </div><!-- fragment --><p ><a href="sample/kf_6x2x0_vehicle_location.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md24"></a>
-4x1 Non-Linear Dynamic Model Extended Filter</h2>
+4x1 Nonlinear Dynamic Model Extended Filter</h2>
 <p >Example from the <a href="https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span>kalman = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
 <div class="line">                             std::tuple&lt;float, float&gt;&gt;;</div>
@@ -232,10 +234,19 @@ Other Examples</h2>
 <li>8x4 constant velocity dynamic model filter of the <a href="sample/kf_8x4x0_deep_sort_bounding_box.cpp">2-dimension position and velocity of the center, aspect ratio, and height of a bounding box</a>.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md26"></a>
-Class kalman</h1>
+Installation</h1>
+<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --parallel</div>
+<div class="line">sudo cmake --install &quot;build&quot;</div>
+</div><!-- fragment --><p ><a class="el" href="md__i_n_s_t_a_l_l.xhtml">For more, see installation instructions</a>.</p>
+<h1><a class="anchor" id="autotoc_md27"></a>
+Reference</h1>
+<h2><a class="anchor" id="autotoc_md28"></a>
+Class kalman</h2>
 <p >Also documented in the <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a> header.</p>
-<h2><a class="anchor" id="autotoc_md27"></a>
-Declaration</h2>
+<h3><a class="anchor" id="autotoc_md29"></a>
+Declaration</h3>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
 <div class="line">  <span class="keyword">typename</span> State,</div>
 <div class="line">  <span class="keyword">typename</span> Output,</div>
@@ -244,8 +255,8 @@ Declaration</h2>
 <div class="line">  <span class="keyword">typename</span> UpdateTypes,</div>
 <div class="line">  <span class="keyword">typename</span> PredictionTypes&gt;</div>
 <div class="line"><span class="keyword">class </span>kalman</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md28"></a>
-Template Parameters</h2>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md30"></a>
+Template Parameters</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Template Parameter   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -262,8 +273,8 @@ Template Parameters</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise $Q$, the state transition $F$, and the control transition $G$ matrices. The parameters are also propagated to the state transition function object $F$. Defaults to no parameter types, the empty pack.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md29"></a>
-Member Types</h2>
+<h3><a class="anchor" id="autotoc_md31"></a>
+Member Types</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Type   </th><th class="markdownTableHeadNone">Dimensions   </th><th class="markdownTableHeadNone">Definition   </th><th class="markdownTableHeadNone">Also Known As    </th></tr>
@@ -292,8 +303,8 @@ Member Types</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>state</code>   </td><td class="markdownTableBodyNone">x by 1   </td><td class="markdownTableBodyNone">Type of the state estimate column vector <code>x</code>.   </td><td class="markdownTableBodyNone">$X$   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md30"></a>
-Member Functions</h2>
+<h3><a class="anchor" id="autotoc_md32"></a>
+Member Functions</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Function   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -304,8 +315,8 @@ Member Functions</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>operator=</code>   </td><td class="markdownTableBodyNone">Assigns values to the filter.   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md31"></a>
-Characteristics</h3>
+<h4><a class="anchor" id="autotoc_md33"></a>
+Characteristics</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Characteristic   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -338,8 +349,8 @@ Characteristics</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>observation</code>   </td><td class="markdownTableBodyNone">Manages the state observation function object $h$. Configures the callable object of expression <code>output(const state &amp;, const UpdateTypes &amp;...arguments)</code> to compute the observation state value. The default value is the equivalent to $h(x) = H * X$. The default function is suitable for linear systems. For extended filters <code>observation</code> is a linearization of the state observation while $H$ is the Jacobian of the observation function: $H = ∂h/∂X = ∂hj/∂xi$ that is each row $i$ contains the derivatives of the state observation function for every element $j$ in the state vector $X$.   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md32"></a>
-Modifiers</h3>
+<h4><a class="anchor" id="autotoc_md34"></a>
+Modifiers</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Modifier   </th><th class="markdownTableHeadNone">Definition    </th></tr>
@@ -348,23 +359,16 @@ Modifiers</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>update</code>   </td><td class="markdownTableBodyNone">Updates the estimates with the outcome of a measurement.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md33"></a>
-Format</h1>
+<h2><a class="anchor" id="autotoc_md35"></a>
+Format</h2>
 <p >A specialization of the standard formatter is provided for the filter. Use <code>std::format</code> to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.</p>
 <div class="fragment"><div class="line">kalman filter;</div>
 <div class="line"> </div>
 <div class="line">std::print(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;h&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;q&quot;: 0, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md34"></a>
-Installation</h1>
-<div class="fragment"><div class="line">git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git &quot;kalman&quot;</div>
-<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
-<div class="line">cmake --build &quot;build&quot; --parallel</div>
-<div class="line">sudo cmake --install &quot;build&quot;</div>
-</div><!-- fragment --><p ><a class="el" href="md__i_n_s_t_a_l_l.xhtml">For more, see installation instructions</a>.</p>
-<h1><a class="anchor" id="autotoc_md35"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md36"></a>
 Considerations</h1>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Motivations</h2>
 <p >Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.</p>
 <p >This package explores what could be a Kalman filter implementation a la standard library. The following concerns are considered:</p><ul>
@@ -372,15 +376,15 @@ Motivations</h2>
 <li>Separation of the mathematical concepts and linear algebra implementation.</li>
 <li>Generalization of the modern C++ language and library support.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Selected Tradeoffs</h2>
-<p >In theory there is no difference between theory and practice, while in practice there is. The following engineering tradeoffs have been selected for the implementation:</p>
+<p >In theory there is no difference between theory and practice, while in practice there is. The following engineering tradeoffs have been selected for this library implementation:</p>
 <ul>
 <li>Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.</li>
 <li>The default floating point data type for the filter is <code>double</code> with about 16 significant digits to reduce loss of information compared to <code>float</code>.</li>
 <li>The ergonomics and precision of the default filter takes precedence over performance.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 Lessons Learned</h2>
 <p >Design, development, and testing uncovered unexpected facets of the projects:</p>
 <ul>
@@ -388,12 +392,27 @@ Lessons Learned</h2>
 <li>There exist Kalman filters with hundreds of state variables.</li>
 <li>The <code>float</code> data type has about seven significant digits. Floating point error is a loss of information to account for in design.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 Performance</h2>
 <p >The [benchmarks](benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>
 <p ><img src="eigen_update.svg" alt="" style="pointer-events: none;" class="inline" title="Eigen Update"/>     <img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/>    </p>
-<h1><a class="anchor" id="autotoc_md40"></a>
+<h1><a class="anchor" id="autotoc_md41"></a>
 Resources</h1>
+<h2><a class="anchor" id="autotoc_md42"></a>
+Definitions</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Term   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">EKF   </td><td class="markdownTableBodyNone">The Extended Kalman Filter is the nonlinear version of the Kalman filter. Useful for nonlinear dynamics systems. This filter linearizes the model about an estimate working point of the current mean and covariance.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ESKF   </td><td class="markdownTableBodyNone">The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">UKF   </td><td class="markdownTableBodyNone">The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples sigma points about an estimate working point of the current mean using an Unscented Transformation technique.   </td></tr>
+</table>
+<p >Further terms should be defined and demonstrated for completeness: CKF, EnKF, Euler-KF, Forward-Backward, FKF, IEKF, Joseph, KF, MEKF, MRP-EKF, MRP-UKF, MSCKF, SKF, Smoother, USQUE, UDU, UT.</p>
+<h2><a class="anchor" id="autotoc_md43"></a>
+Articles</h2>
 <p >Resources to learn about Kalman filters:</p>
 <ul>
 <li><a href="https://www.cs.unc.edu/~welch/kalman/kalmanPaper.html">A New Approach to Linear Filtering and Prediction Problems</a> by Kalman, Rudolph Emil in Transactions of the ASME - Journal of Basic Engineering, Volume 82, Series D, pp 35-45, 1960 - Transcription by John Lukesh.</li>
@@ -403,7 +422,7 @@ Resources</h1>
 <li><a href="https://en.wikipedia.org/wiki/Kalman_filter">Wikipedia Kalman filter</a> by Wikipedia, the free encyclopedia.</li>
 <li><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=5466132">Applications of Kalman Filtering in Aerospace 1960 to the Present</a> by Mohinder S. Grewal and Angus P. Andrews. IEEE 2010.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md41"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 Continuous Integration &amp; Deployment Actions</h1>
 <p ><a href="https://github.com/FrancoisCarouge/Kalman"><img src="https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen" alt="Code Repository" class="inline"/></a> <br  />
  <br  />
@@ -430,7 +449,7 @@ Continuous Integration &amp; Deployment Actions</h1>
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_test_coverage_coveralls.yml/badge.svg" alt="Deploy Code Coverage" style="pointer-events: none;" class="inline"/></a> <br  />
  <br  />
  <a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen" alt="Sponsor" class="inline"/></a></p>
-<h1><a class="anchor" id="autotoc_md42"></a>
+<h1><a class="anchor" id="autotoc_md45"></a>
 Third Party Acknowledgement</h1>
 <p >The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:</p><ul>
 <li><a href="https://github.com/peaceiris/actions-gh-pages">actions-gh-pages</a> to upload the documentation to GitHub pages.</li>
@@ -446,18 +465,18 @@ Third Party Acknowledgement</h1>
 <li><a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist">MSVC</a> for compilation and code sanitizers.</li>
 <li><a href="https://valgrind.org">Valgrind</a> to check for correct memory management.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md43"></a>
+<h1><a class="anchor" id="autotoc_md46"></a>
 Sponsors</h1>
 <p >Become a sponsor today! Support this project with coffee and infrastructure!</p>
 <p ><a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor-brightgreen" alt="Sponsor" class="inline"/></a></p>
-<h2><a class="anchor" id="autotoc_md44"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 Corporate Sponsor</h2>
 <p ><em>You company logo and link here!</em></p>
-<h2><a class="anchor" id="autotoc_md45"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 Named Sponsors</h2>
 <p ><em>Your name and link here!</em></p>
 <p >Thanks everyone!</p>
-<h1><a class="anchor" id="autotoc_md46"></a>
+<h1><a class="anchor" id="autotoc_md49"></a>
 License</h1>
 <p ><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
 <p >Kalman for C++ is public domain:</p>
@@ -472,7 +491,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Nov 21 2022 18:37:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Tue Nov 22 2022 04:25:28 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
