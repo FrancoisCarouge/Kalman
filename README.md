@@ -2,42 +2,35 @@
 
 A generic Kalman filter for C++23.
 
-A Bayesian filter that uses multivariate Gaussians, a recursive state estimator, and a linear quadratic estimator (LQE). A control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems.
+The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.
 
-Simple and extended filters are supported. The update equation uses the Joseph form. Control input is supported. Standard and type-erased Eigen3 linear algebra backends are supported.
-
-The Kalman filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians.
-
-Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.
-
-Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems.
-
-Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through the Standard Templated Library (STL). Higher dimension filters require Eigen 3 support.
-
-Standard formatter specialization provided for representation of the filter states.
+This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.
 
 - [Kalman Filter for C++](#kalman-filter-for-c)
 - [Examples](#examples)
   - [1x1 Constant System Dynamic Model Filter](#1x1-constant-system-dynamic-model-filter)
   - [6x2 Constant Acceleration Dynamic Model Filter](#6x2-constant-acceleration-dynamic-model-filter)
-  - [4x1 Non-Linear Dynamic Model Extended Filter](#4x1-non-linear-dynamic-model-extended-filter)
+  - [4x1 Nonlinear Dynamic Model Extended Filter](#4x1-nonlinear-dynamic-model-extended-filter)
   - [Other Examples](#other-examples)
-- [Class kalman](#class-kalman)
-  - [Declaration](#declaration)
-  - [Template Parameters](#template-parameters)
-  - [Member Types](#member-types)
-  - [Member Functions](#member-functions)
-    - [Characteristics](#characteristics)
-    - [Modifiers](#modifiers)
-- [Format](#format)
 - [Installation](#installation)
+- [Reference](#reference)
+  - [Class kalman](#class-kalman)
+    - [Declaration](#declaration)
+    - [Template Parameters](#template-parameters)
+    - [Member Types](#member-types)
+    - [Member Functions](#member-functions)
+      - [Characteristics](#characteristics)
+      - [Modifiers](#modifiers)
+  - [Format](#format)
 - [Considerations](#considerations)
   - [Motivations](#motivations)
   - [Selected Tradeoffs](#selected-tradeoffs)
   - [Lessons Learned](#lessons-learned)
   - [Performance](#performance)
 - [Resources](#resources)
-- [Continuous Integration & Deployment Actions](#continuous-integration--deployment-actions)
+  - [Definitions](#definitions)
+  - [Articles](#articles)
+- [Continuous Integration \& Deployment Actions](#continuous-integration--deployment-actions)
 - [Third Party Acknowledgement](#third-party-acknowledgement)
 - [Sponsors](#sponsors)
   - [Corporate Sponsor](#corporate-sponsor)
@@ -100,7 +93,7 @@ filter.update(-375.93, 301.78);
 
 [full sample code](sample/kf_6x2x0_vehicle_location.cpp)
 
-## 4x1 Non-Linear Dynamic Model Extended Filter
+## 4x1 Nonlinear Dynamic Model Extended Filter
 
 Example from the [thermal, current of warm air, strength, radius, and location estimation](https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
 
@@ -156,11 +149,24 @@ filter.update(position_x, position_y, variometer);
 - 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](sample/kf_2x1x1_rocket_altitude.cpp).
 - 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](sample/kf_8x4x0_deep_sort_bounding_box.cpp).
 
-# Class kalman
+# Installation
+
+```shell
+git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git "kalman"
+cmake -S "kalman" -B "build"
+cmake --build "build" --parallel
+sudo cmake --install "build"
+```
+
+[For more, see installation instructions](INSTALL.md).
+
+# Reference
+
+## Class kalman
 
 Also documented in the [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp) header.
 
-## Declaration
+### Declaration
 
 ```cpp
 template <
@@ -173,7 +179,7 @@ template <
 class kalman
 ```
 
-## Template Parameters
+### Template Parameters
 
 | Template Parameter | Definition |
 | --- | --- |
@@ -184,7 +190,7 @@ class kalman
 | `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation $H$ and the observation noise $R$ matrices. The parameters are also propagated to the state observation function object $H$. Defaults to no parameter types, the empty pack. |
 | `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise $Q$, the state transition $F$, and the control transition $G$ matrices. The parameters are also propagated to the state transition function object $F$. Defaults to no parameter types, the empty pack. |
 
-## Member Types
+### Member Types
 
 | Member Type | Dimensions | Definition | Also Known As |
 | --- | --- | --- | --- |
@@ -201,7 +207,7 @@ class kalman
 | `state_transition` | x by x | Type of the state transition matrix `f`. | $F$, $Φ$, $A$ |
 | `state` | x by 1 | Type of the state estimate column vector `x`. | $X$ |
 
-## Member Functions
+### Member Functions
 
 | Member Function | Definition |
 | --- | --- |
@@ -209,7 +215,7 @@ class kalman
 | `(destructor)` | Destructs the filter. |
 | `operator=` | Assigns values to the filter. |
 
-### Characteristics
+#### Characteristics
 
 | Characteristic | Definition |
 | --- | --- |
@@ -228,14 +234,14 @@ class kalman
 | `transition` | Manages the state transition function object $f$. Configures the callable object of expression `state(const state &, const input &, const PredictionTypes &...)` to compute the transition state value. The default value is the equivalent to $f(x) = F * X$. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while $F$ is the Jacobian of the transition function: $F = ∂f/∂X = ∂fj/∂xi$ that is each row $i$ contains the derivatives of the state transition function for every element $j$ in the state column vector $X$. |
 | `observation` | Manages the state observation function object $h$. Configures the callable object of expression `output(const state &, const UpdateTypes &...arguments)` to compute the observation state value. The default value is the equivalent to $h(x) = H * X$. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while $H$ is the Jacobian of the observation function: $H = ∂h/∂X = ∂hj/∂xi$ that is each row $i$ contains the derivatives of the state observation function for every element $j$ in the state vector $X$. |
 
-### Modifiers
+#### Modifiers
 
 | Modifier | Definition |
 | --- | --- |
 | `predict` | Produces estimates of the state variables and uncertainties. |
 | `update` | Updates the estimates with the outcome of a measurement. |
 
-# Format
+## Format
 
 A specialization of the standard formatter is provided for the filter. Use `std::format` to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.
 
@@ -245,17 +251,6 @@ kalman filter;
 std::print("{}", filter);
 // {"f": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0}
 ```
-
-# Installation
-
-```shell
-git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git "kalman"
-cmake -S "kalman" -B "build"
-cmake --build "build" --parallel
-sudo cmake --install "build"
-```
-
-[For more, see installation instructions](INSTALL.md).
 
 # Considerations
 
@@ -270,7 +265,7 @@ This package explores what could be a Kalman filter implementation a la standard
 
 ## Selected Tradeoffs
 
-In theory there is no difference between theory and practice, while in practice there is. The following engineering tradeoffs have been selected for the implementation:
+In theory there is no difference between theory and practice, while in practice there is. The following engineering tradeoffs have been selected for this library implementation:
 
 - Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.
 - The default floating point data type for the filter is `double` with about 16 significant digits to reduce loss of information compared to `float`.
@@ -292,6 +287,18 @@ The [benchmarks](benchmark) share some performance information. Custom specializ
 ![Float](benchmark/image/float.svg)
 
 # Resources
+
+## Definitions
+
+| Term | Definition |
+| --- | --- |
+| EKF | The Extended Kalman Filter is the nonlinear version of the Kalman filter. Useful for nonlinear dynamics systems. This filter linearizes the model about an estimate working point of the current mean and covariance. |
+| ESKF | The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states. 
+| UKF | The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples sigma points about an estimate working point of the current mean using an Unscented Transformation technique. |
+
+Further terms should be defined and demonstrated for completeness: CKF, EnKF, Euler-KF, Forward-Backward, FKF, IEKF, Joseph, KF, MEKF, MRP-EKF, MRP-UKF, MSCKF, SKF, Smoother, USQUE, UDU, UT.
+
+## Articles
 
 Resources to learn about Kalman filters:
 

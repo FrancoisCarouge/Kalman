@@ -62,36 +62,32 @@ template <typename... Types> using pack = internal::pack<Types...>;
 
 //! @brief A generic Kalman filter for C++23.
 //!
-//! @details A Bayesian filter that uses multivariate Gaussians, a recursive
-//! state estimator, and a linear quadratic estimator (LQE). A control theory
-//! tool applicable to signal estimation, sensor fusion, or data assimilation
-//! problems.
+//! @details The Kalman filter is a Bayesian filter that uses multivariate
+//! Gaussians, a recursive state estimator, a linear quadratic estimator (LQE),
+//! and an Infinite Impulse Response (IIR) filter. It is a control theory tool
+//! applicable to signal estimation, sensor fusion, or data assimilation
+//! problems. The filter is applicable for unimodal and uncorrelated
+//! uncertainties. The filter assumes white noise, propagation and measurement
+//! functions are differentiable, and that the uncertainty stays centered on the
+//! state estimate. The filter is the optimal linear filter under assumptions.
+//! The filter updates estimates by multiplying Gaussians and predicts estimates
+//! by adding Gaussians. Designing a filter is as much art as science. Design
+//! the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the
+//! measurement function $H$, and if the system has control inputs $U$, $G$.
 //!
-//! Simple and extended filters are supported. The update equation uses the
-//! Joseph form. Control input is supported. Various customization point objects
-//! allow for using different linear algebra backends for which standard or
-//! Eigen3 implementation is provided.
-//!
-//! The Kalman filter is applicable for unimodal and uncorrelated uncertainties.
-//! The filter assumes white noise, propagation and measurement functions are
-//! differentiable, and that the uncertainty stays centered on the state
-//! estimate. The filter is the optimal linear filter under assumptions. The
-//! filter updates estimates by multiplying Gaussians and predicts estimates by
-//! adding Gaussians.
-//!
-//! Designing a filter is as much art as science. Design the state (X, P), the
-//! process (F, Q), the measurement (Z, R), the measurement function H, and if
-//! the system has control inputs (U, B).
-//!
-//! Arbitrary parameters can be added to the prediction and update stages to
-//! participate in gain-scheduling or linear parameter varying (LPV) systems.
-//!
-//! Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no
-//! input) are supported through the Standard Templated Library (STL). Higher
-//! dimension filters require Eigen 3 support.
-//!
-//! Standard formatter specialization provided for representation of the filter
-//! states.
+//! This library supports various simple and extended filters. The
+//! implementation is independent from linear algebra backends. Arbitrary
+//! parameters can be added to the prediction and update stages to participate
+//! in gain-scheduling or linear parameter varying (LPV) systems. The default
+//! filter type is a generalized, customizable, and extended filter. The default
+//! type parameters implement a one-state, one-output, and double-precision
+//! floating-point type filter. The default update equation uses the Joseph
+//! form. Examples illustrate various usages and implementation tradeoffs. A
+//! standard formatter specialization is included for representation of the
+//! filter states. Filters with `state x output x input` dimensions as 1x1x1 and
+//! 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters
+//! require a linear algebra backend. Customization points and type injections
+//! allow for implementation tradeoffs.
 //!
 //! @tparam State The type template parameter of the state column vector x.
 //! State variables can be observed (measured), or hidden variables (inferred).
