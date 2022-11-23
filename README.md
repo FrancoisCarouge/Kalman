@@ -1,12 +1,10 @@
-# Kalman Filter for C++
+# A Generic Kalman Filter for C++23
 
-A generic Kalman filter for C++23.
-
-The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.
+The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state *X*, *P*, the process *F*, *Q*, the measurement *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*.
 
 This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.
 
-- [Kalman Filter for C++](#kalman-filter-for-c)
+- [A Generic Kalman Filter for C++23](#a-generic-kalman-filter-for-c23)
 - [Examples](#examples)
   - [1x1 Constant System Dynamic Model Filter](#1x1-constant-system-dynamic-model-filter)
   - [6x2 Constant Acceleration Dynamic Model Filter](#6x2-constant-acceleration-dynamic-model-filter)
@@ -183,29 +181,29 @@ class kalman
 
 | Template Parameter | Definition |
 | --- | --- |
-| `State` | The type template parameter of the state column vector $X$. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `double`. |
-| `Output` | The type template parameter of the measurement column vector $Z$. Defaults to `double`. |
-| `Input` | The type template parameter of the control $U$. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix $G$ support, and the other related computations from the filter. Defaults to `void`. |
+| `State` | The type template parameter of the state column vector *X*. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `double`. |
+| `Output` | The type template parameter of the measurement column vector *Z*. Defaults to `double`. |
+| `Input` | The type template parameter of the control *U*. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix *G* support, and the other related computations from the filter. Defaults to `void`. |
 | `Divide` | The customization point object template parameter of the matrix division functor. Default to the standard division `std::divides<void>` function object. |
-| `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation $H$ and the observation noise $R$ matrices. The parameters are also propagated to the state observation function object $H$. Defaults to no parameter types, the empty pack. |
-| `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise $Q$, the state transition $F$, and the control transition $G$ matrices. The parameters are also propagated to the state transition function object $F$. Defaults to no parameter types, the empty pack. |
+| `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation *H* and the observation noise *R* matrices. The parameters are also propagated to the state observation function object *H*. Defaults to no parameter types, the empty pack. |
+| `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise *Q*, the state transition *F*, and the control transition *G* matrices. The parameters are also propagated to the state transition function object *F*. Defaults to no parameter types, the empty pack. |
 
 ### Member Types
 
 | Member Type | Dimensions | Definition | Also Known As |
 | --- | --- | --- | --- |
-| `estimate_uncertainty` | x by x | Type of the estimated covariance matrix `p`. | $P$, $Σ$ |
-| `gain` | x by z | Type of the gain matrix `k`. | $K$ |
-| `innovation_uncertainty` | z by z | Type of the innovation uncertainty matrix `s`. | $S$ |
-| `innovation` | z by 1 | Type of the innovation column vector `y`. | $Y$ |
-| `input_control` | x by u | Type of the control transition matrix `g`. | $G$, $B$ |
-| `input` | u by 1 | Type of the control column vector `u`. | $U$ |
-| `output_model` | z by x | Type of the observation transition matrix `h`. | $H$, $C$ |
-| `output_uncertainty` | z by z | Type of the observation, measurement noise covariance matrix `r`. | $R$ |
-| `output` | z by 1 | Type of the observation column vector `z`. | $Z$, $Y$, $O$ |
-| `process_uncertainty` | x by x | Type of the process noise covariance matrix `q`. | $Q$ |
-| `state_transition` | x by x | Type of the state transition matrix `f`. | $F$, $Φ$, $A$ |
-| `state` | x by 1 | Type of the state estimate column vector `x`. | $X$ |
+| `estimate_uncertainty` | x by x | Type of the estimated covariance matrix `p`. | *P*, *Σ* |
+| `gain` | x by z | Type of the gain matrix `k`. | *K* |
+| `innovation_uncertainty` | z by z | Type of the innovation uncertainty matrix `s`. | *S* |
+| `innovation` | z by 1 | Type of the innovation column vector `y`. | *Y* |
+| `input_control` | x by u | Type of the control transition matrix `g`. | *G*, *B* |
+| `input` | u by 1 | Type of the control column vector `u`. | *U* |
+| `output_model` | z by x | Type of the observation transition matrix `h`. | *H*, *C* |
+| `output_uncertainty` | z by z | Type of the observation, measurement noise covariance matrix `r`. | *R* |
+| `output` | z by 1 | Type of the observation column vector `z`. | *Z*, *Y*, *O* |
+| `process_uncertainty` | x by x | Type of the process noise covariance matrix `q`. | *Q* |
+| `state_transition` | x by x | Type of the state transition matrix `f`. | *F*, *Φ*, *A* |
+| `state` | x by 1 | Type of the state estimate column vector `x`. | *X* |
 
 ### Member Functions
 
@@ -219,20 +217,20 @@ class kalman
 
 | Characteristic | Definition |
 | --- | --- |
-| `f` | Manages the state transition matrix $F$. Gets the value. Initializes and sets the value. Configures the callable object of expression `state_transition(const state &, const input &, const PredictionTypes &...)` to compute the value. The default value is the identity matrix. |
-| `g` | Manages the control transition matrix $G$. Gets the value. Initializes and sets the value. Configures the callable object of expression `input_control(const PredictionTypes &...)` to compute the value. The default value is the identity matrix. |
-| `h` | Manages the observation transition matrix $H$. Gets the value. Initializes and sets the value. Configures the callable object of expression `output_model(const state &, const UpdateTypes &...)` to compute the value. The default value is the identity matrix. |
-| `k` | Manages the gain matrix $K$. Gets the value last computed during the update. The default value is the identity matrix. |
-| `p` | Manages the estimated covariance matrix $P$. Gets the value. Initializes and sets the value. The default value is the identity matrix. |
-| `q` | Manages the process noise covariance matrix $Q$. Gets the value. Initializes and sets the value. Configures the callable object of expression `process_uncertainty(const state &, const PredictionTypes &...)` to compute the value. The default value is the null matrix. |
-| `r` | Manages the observation, measurement noise covariance matrix $R$. Gets the value. Initializes and sets the value. Configures the callable object of expression `output_uncertainty(const state &, const output &, const UpdateTypes &...)` to compute the value. The default value is the null matrix. |
-| `s` | Manages the innovation uncertainty matrix $S$. Gets the value last computed during the update. The default value is the identity matrix. |
-| `u` | Manages the control column vector $U$. Gets the value last used in prediction. |
-| `x` | Manages the state estimate column vector $X$. Gets the value. Initializes and sets the value. The default value is the null column vector. |
-| `y` | Manages the innovation column vector $Y$. Gets the value last computed during the update. The default value is the null column vector. |
-| `z` | Manages the observation column vector $Z$. Gets the value last used during the update. The default value is the null column vector. |
-| `transition` | Manages the state transition function object $f$. Configures the callable object of expression `state(const state &, const input &, const PredictionTypes &...)` to compute the transition state value. The default value is the equivalent to $f(x) = F * X$. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while $F$ is the Jacobian of the transition function: $F = ∂f/∂X = ∂fj/∂xi$ that is each row $i$ contains the derivatives of the state transition function for every element $j$ in the state column vector $X$. |
-| `observation` | Manages the state observation function object $h$. Configures the callable object of expression `output(const state &, const UpdateTypes &...arguments)` to compute the observation state value. The default value is the equivalent to $h(x) = H * X$. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while $H$ is the Jacobian of the observation function: $H = ∂h/∂X = ∂hj/∂xi$ that is each row $i$ contains the derivatives of the state observation function for every element $j$ in the state vector $X$. |
+| `f` | Manages the state transition matrix *F*. Gets the value. Initializes and sets the value. Configures the callable object of expression `state_transition(const state &, const input &, const PredictionTypes &...)` to compute the value. The default value is the identity matrix. |
+| `g` | Manages the control transition matrix *G*. Gets the value. Initializes and sets the value. Configures the callable object of expression `input_control(const PredictionTypes &...)` to compute the value. The default value is the identity matrix. |
+| `h` | Manages the observation transition matrix *H*. Gets the value. Initializes and sets the value. Configures the callable object of expression `output_model(const state &, const UpdateTypes &...)` to compute the value. The default value is the identity matrix. |
+| `k` | Manages the gain matrix *K*. Gets the value last computed during the update. The default value is the identity matrix. |
+| `p` | Manages the estimated covariance matrix *P*. Gets the value. Initializes and sets the value. The default value is the identity matrix. |
+| `q` | Manages the process noise covariance matrix *Q*. Gets the value. Initializes and sets the value. Configures the callable object of expression `process_uncertainty(const state &, const PredictionTypes &...)` to compute the value. The default value is the null matrix. |
+| `r` | Manages the observation, measurement noise covariance matrix *R*. Gets the value. Initializes and sets the value. Configures the callable object of expression `output_uncertainty(const state &, const output &, const UpdateTypes &...)` to compute the value. The default value is the null matrix. |
+| `s` | Manages the innovation uncertainty matrix *S*. Gets the value last computed during the update. The default value is the identity matrix. |
+| `u` | Manages the control column vector *U*. Gets the value last used in prediction. |
+| `x` | Manages the state estimate column vector *X*. Gets the value. Initializes and sets the value. The default value is the null column vector. |
+| `y` | Manages the innovation column vector *Y*. Gets the value last computed during the update. The default value is the null column vector. |
+| `z` | Manages the observation column vector *Z*. Gets the value last used during the update. The default value is the null column vector. |
+| `transition` | Manages the state transition function object *f*. Configures the callable object of expression `state(const state &, const input &, const PredictionTypes &...)` to compute the transition state value. The default value is the equivalent to *f(x) = F * X*. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while *F* is the Jacobian of the transition function: *F = ∂f/∂X = ∂fj/∂xi* that is each row *i* contains the derivatives of the state transition function for every element *j* in the state column vector *X*. |
+| `observation` | Manages the state observation function object *h*. Configures the callable object of expression `output(const state &, const UpdateTypes &...arguments)` to compute the observation state value. The default value is the equivalent to *h(x) = H * X*. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while *H* is the Jacobian of the observation function: *H = ∂h/∂X = ∂hj/∂xi* that is each row *i* contains the derivatives of the state observation function for every element *j* in the state vector *X*. |
 
 #### Modifiers
 
