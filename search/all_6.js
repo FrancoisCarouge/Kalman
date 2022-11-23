@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['h_0',['h',['../classfcarouge_1_1kalman.xhtml#a70e5dcb292b21eb58a81edf2b50bdf98',1,'fcarouge::kalman::h() const -&gt; const output_model &amp;'],['../classfcarouge_1_1kalman.xhtml#a7fe9446253d84cd6b45128fa9652d35d',1,'fcarouge::kalman::h() -&gt; output_model &amp;'],['../classfcarouge_1_1kalman.xhtml#ad491fbf0c333c7da89abfa58a4e2fc9c',1,'fcarouge::kalman::h(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1kalman.xhtml#ac608d593a19dc336ab5440c631033a82',1,'fcarouge::kalman::h(auto &amp;&amp;value, auto &amp;&amp;...values)']]],
-  ['h_2ecpp_1',['h.cpp',['../h_8cpp.xhtml',1,'']]],
-  ['h_5f1x1x0_2',['h_1x1x0',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02h_8cpp_03.xhtml#aa4dc6d20a4bbca39548cdb29400e1d78',1,'fcarouge::test::anonymous_namespace{h.cpp}']]],
-  ['h_5f5x4x3_3',['h_5x4x3',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__h_8cpp_03.xhtml#a11da61e5cf074a71b0786605f2261faf',1,'fcarouge::test::anonymous_namespace{eigen_h.cpp}']]]
+  ['g_0',['g',['../classfcarouge_1_1kalman.xhtml#a4734807882ed3bd3aeaffbb678e37be7',1,'fcarouge::kalman::g() const -&gt; const input_control &amp;requires(not std::is_same_v&lt; Input, void &gt;)'],['../classfcarouge_1_1kalman.xhtml#a88a19fdd1af2a50cf4f510be7d98bb13',1,'fcarouge::kalman::g() -&gt; input_control &amp;requires(not std::is_same_v&lt; Input, void &gt;)'],['../classfcarouge_1_1kalman.xhtml#a594760bcd19296b31308616efc680f92',1,'fcarouge::kalman::g(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1kalman.xhtml#a283bc43fff9ded2744d0649a353896da',1,'fcarouge::kalman::g(auto &amp;&amp;value, auto &amp;&amp;...values)']]],
+  ['gain_1',['gain',['../classfcarouge_1_1kalman.xhtml#ab7895cfe42821ddfbe0f28b89f48baba',1,'fcarouge::kalman']]]
 ];

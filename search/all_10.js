@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['s_0',['s',['../classfcarouge_1_1kalman.xhtml#a366196a038db0f54b7322b29f1862be0',1,'fcarouge::kalman']]],
-  ['security_20policy_1',['Security Policy',['../md__s_e_c_u_r_i_t_y.xhtml',1,'']]],
-  ['security_2emd_2',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]],
-  ['sell_3',['sell',['../_l_i_c_e_n_s_e_8txt.xhtml#a3e5d6c430e9c2cde02449af9b69ae168',1,'LICENSE.txt']]],
-  ['software_4',['software',['../_l_i_c_e_n_s_e_8txt.xhtml#ab20fc6251e4dbdd80db7028a31b57d56',1,'LICENSE.txt']]],
-  ['state_5',['state',['../classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a',1,'fcarouge::kalman']]],
-  ['state_5ftransition_6',['state_transition',['../classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2',1,'fcarouge::kalman']]]
+  ['r_0',['r',['../classfcarouge_1_1kalman.xhtml#afd422d2d0b9bdf85ffc00df9ae380be3',1,'fcarouge::kalman::r() const -&gt; const output_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a7e1eba9eca64dcbe6dafff106d8f2288',1,'fcarouge::kalman::r() -&gt; output_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a8b2ed49c4ebbb1d1bfa7028f6835f301',1,'fcarouge::kalman::r(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1kalman.xhtml#a52d4518585f2dd3ae3e4fc2b5effce13',1,'fcarouge::kalman::r(auto &amp;&amp;value, auto &amp;&amp;...values)']]],
+  ['readme_2emd_1',['README.md',['../benchmark_2_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)'],['../_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)']]],
+  ['repack_5fs_2',['repack_s',['../namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9',1,'fcarouge::internal']]],
+  ['repack_5ft_3',['repack_t',['../namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22',1,'fcarouge::internal']]]
 ];
