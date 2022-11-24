@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.4" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kalman: Contributing</title>
+  <title>Kalman: Installation</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -88,7 +88,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml',''); initResizable(); });
+$(document).ready(function(){initNavTree('md__github_workspace__i_n_s_t_a_l_l.xhtml',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -107,29 +107,41 @@ $(document).ready(function(){initNavTree('md__c_o_n_t_r_i_b_u_t_i_n_g.xhtml','')
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Contributing </div></div>
+  <div class="headertitle"><div class="title">Installation </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >Thank you for taking the time to contribute!</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
-Code of Conduct</h1>
-<p >This project and everyone participating in it is governed by the <a href="https://github.com/FrancoisCarouge/Kalman/blob/develop/CODE_OF_CONDUCT.md">Code of Conduct</a>. By participating, you are expected to uphold this code. Please report unacceptable behavior to <a href="#" onclick="location.href='mai'+'lto:'+'fra'+'nc'+'ois'+'.c'+'aro'+'ug'+'e@g'+'ma'+'il.'+'co'+'m'; return false;">franc<span class="obfuscator">.nosp@m.</span>ois.<span class="obfuscator">.nosp@m.</span>carou<span class="obfuscator">.nosp@m.</span>ge@g<span class="obfuscator">.nosp@m.</span>mail.<span class="obfuscator">.nosp@m.</span>com</a>.</p>
-<h1><a class="anchor" id="autotoc_md11"></a>
-Reporting Bugs</h1>
-<p >Please fill out <a href="https://github.com/FrancoisCarouge/Kalman/issues/new/choose">the bug template</a>, the information it asks for helps us resolve issues faster.</p>
-<h1><a class="anchor" id="autotoc_md12"></a>
-Requesting Features</h1>
-<p >Please fill out <a href="https://github.com/FrancoisCarouge/Kalman/issues/new/choose">the feature template</a>, the information it asks for helps us provide features faster.</p>
-<h1><a class="anchor" id="autotoc_md13"></a>
-Security Policy</h1>
-<p >Please review <a href="https://github.com/FrancoisCarouge/Kalman/security/policy">the security policy</a>, the process helps us better serve the community. </p>
-</div></div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="autotoc_md15"></a>
+From Repository Sources</h1>
+<p >Install and use the library in your projects by cloning the repository, configuring, and installing the project on all platforms:</p>
+<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/Kalman.git&quot; &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --parallel</div>
+<div class="line">sudo cmake --install &quot;build&quot;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
+Build &amp; Run</h1>
+<h2><a class="anchor" id="autotoc_md17"></a>
+Tests &amp; Samples</h2>
+<p >Build and run the tests and samples on all platforms:</p>
+<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/Kalman.git&quot; &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --config &quot;Debug&quot; --parallel</div>
+<div class="line">ctest --test-dir &quot;build&quot; --build-config &quot;Debug&quot; --tests-regex &quot;kalman_(test|sample)&quot; --output-on-failure --parallel</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+Benchmarks</h2>
+<p >See the <a href="benchmark/">Benchmark</a> section.</p>
+<h2><a class="anchor" id="autotoc_md19"></a>
+Installation Package</h2>
+<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/Kalman.git&quot; &quot;kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
+<div class="line">cmake --build &quot;build&quot; --target &quot;package&quot; --parallel</div>
+<div class="line">cmake --build &quot;build&quot; --target &quot;package_source&quot; --parallel</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Nov 23 2022 21:19:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 00:41:47 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

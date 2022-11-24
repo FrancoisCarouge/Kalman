@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
   <div class="headertitle"><div class="title">A Generic Kalman Filter for C++23 </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_README"></a> The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state <em>X</em>, <em>P</em>, the process <em>F</em>, <em>Q</em>, the measurement <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>.</p>
+<div class="textblock"><p ><a class="anchor" id="md__github_workspace_README"></a> The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state <em>X</em>, <em>P</em>, the process <em>F</em>, <em>Q</em>, the measurement <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>.</p>
 <p >This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
 <ul>
 <li>A Generic Kalman Filter for C++23</li>
@@ -262,7 +262,7 @@ Installation</h1>
 <div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
 <div class="line">cmake --build &quot;build&quot; --parallel</div>
 <div class="line">sudo cmake --install &quot;build&quot;</div>
-</div><!-- fragment --><p ><a class="el" href="md__i_n_s_t_a_l_l.xhtml">For more, see installation instructions</a>.</p>
+</div><!-- fragment --><p ><a class="el" href="md__github_workspace__i_n_s_t_a_l_l.xhtml">For more, see installation instructions</a>.</p>
 <h1><a class="anchor" id="autotoc_md27"></a>
 Reference</h1>
 <h2><a class="anchor" id="autotoc_md28"></a>
@@ -514,7 +514,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Nov 23 2022 21:19:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Thu Nov 24 2022 00:41:48 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
