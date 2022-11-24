@@ -36,6 +36,20 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(format INTERFACE)
-target_include_directories(format INTERFACE ".")
-target_link_libraries(format INTERFACE fmt::fmt)
+if(WIN32)
+  # Microsoft Windows MSVC CL toolchain supports C++'s standard format library.
+  # Other compilers don't support it yet. TODO: This platform check is not ideal
+  # and should be replaced with a check for the compiler library support.
+else()
+  FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY "https://github.com/fmtlib/fmt.git"
+    FIND_PACKAGE_ARGS NAMES FMT)
+
+  FetchContent_MakeAvailable(fmt)
+
+  add_library(format INTERFACE)
+  target_sources(format INTERFACE FILE_SET "format_headers" TYPE "HEADERS"
+                                  FILES "format")
+  target_link_libraries(format INTERFACE fmt::fmt)
+endif()

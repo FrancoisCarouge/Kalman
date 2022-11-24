@@ -36,19 +36,24 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-set(SOURCES
-    "eigen_f.cpp"
-    "eigen_h.cpp"
-    "eigen_initialization.cpp"
-    "f.cpp"
-    "format.cpp"
-    "h.cpp"
-    "initialization.cpp")
-
-foreach(TEST ${SOURCES})
+foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
-  target_link_libraries(kalman_test_${NAME}_driver PRIVATE Eigen3::Eigen kalman
-                                                           main)
+  target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman main)
   add_test(kalman_test_${NAME} kalman_test_${NAME}_driver)
+endforeach()
+
+FetchContent_Declare(
+  eigen
+  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
+  FIND_PACKAGE_ARGS NAMES Eigen3)
+
+FetchContent_MakeAvailable(eigen)
+
+foreach(TEST_EIGEN "eigen_f.cpp" "eigen_h.cpp" "eigen_initialization.cpp")
+  get_filename_component(NAME ${TEST_EIGEN} NAME_WE)
+  add_executable(kalman_test_eigen_${NAME}_driver ${TEST_EIGEN})
+  target_link_libraries(kalman_test_eigen_${NAME}_driver PRIVATE Eigen3::Eigen
+                                                                 kalman main)
+  add_test(kalman_test_eigen_${NAME} kalman_test_eigen_${NAME}_driver)
 endforeach()
