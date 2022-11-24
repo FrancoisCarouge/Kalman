@@ -44,13 +44,6 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
   add_test(kalman_sample_${NAME} kalman_sample_${NAME}_driver)
 endforeach()
 
-FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
-  FIND_PACKAGE_ARGS NAMES Eigen3)
-
-FetchContent_MakeAvailable(eigen)
-
 foreach(SAMPLE_EIGEN
         "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp"
         "kf_6x2x0_vehicle_location.cpp" "kf_8x4x0_deep_sort_bounding_box.cpp")
