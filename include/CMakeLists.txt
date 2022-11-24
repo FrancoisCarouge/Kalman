@@ -73,10 +73,12 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
-            "internal/format.hpp"
-            "internal/kalman.hpp"
-            "internal/utility.hpp"
-            "kalman.hpp")
+            "fcarouge/internal/format.hpp"
+            "fcarouge/internal/kalman.hpp"
+            "fcarouge/internal/utility.hpp"
+            "fcarouge/kalman.hpp")
 target_link_libraries(kalman INTERFACE ${LIBRARIES})
 target_compile_options(kalman INTERFACE ${OPTIONS})
 target_compile_features(kalman INTERFACE cxx_std_23)
+install(TARGETS kalman FILE_SET "kalman_headers"
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")

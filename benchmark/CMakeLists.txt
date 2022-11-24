@@ -38,20 +38,6 @@ For more information, please refer to <https://unlicense.org> ]]
 
 set(PROCESSOR_AFFINITY TRUE)
 
-FetchContent_Declare(
-  google_benchmark
-  GIT_REPOSITORY "https://github.com/google/benchmark.git"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES benchmark)
-
-FetchContent_Declare(
-  google_test
-  GIT_REPOSITORY "https://github.com/google/googletest.git"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES GTest)
-
-FetchContent_MakeAvailable(google_test google_benchmark)
-
 foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
                   "update_1x1x0.cpp" "update_1x1x1.cpp")
   get_filename_component(NAME ${BENCHMARK} NAME_WE)
@@ -64,13 +50,6 @@ foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
   add_test(kalman_benchmark_${NAME} kalman_benchmark_${NAME}_driver
            "--benchmark_out=${NAME}.json")
 endforeach()
-
-FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
-  FIND_PACKAGE_ARGS NAMES Eigen3)
-
-FetchContent_MakeAvailable(eigen)
 
 foreach(STATE_SIZE RANGE 1 2)
   foreach(OUTPUT_SIZE RANGE 1 2)

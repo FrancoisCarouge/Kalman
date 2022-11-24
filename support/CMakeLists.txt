@@ -41,13 +41,6 @@ if(WIN32)
   # Other compilers don't support it yet. TODO: This platform check is not ideal
   # and should be replaced with a check for the compiler library support.
 else()
-  FetchContent_Declare(
-    fmt
-    GIT_REPOSITORY "https://github.com/fmtlib/fmt.git"
-    FIND_PACKAGE_ARGS NAMES FMT)
-
-  FetchContent_MakeAvailable(fmt)
-
   add_library(format INTERFACE)
   target_sources(format INTERFACE FILE_SET "format_headers" TYPE "HEADERS"
                                   FILES "format")
