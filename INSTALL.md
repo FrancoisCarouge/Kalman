@@ -11,11 +11,11 @@ cmake --build "build" --parallel
 sudo cmake --install "build"
 ```
 
-# Build & Run
+# Development Build & Run
 
 ## Tests & Samples
 
-Build and run the tests and samples on all platforms:
+Build and run the tests and samples:
 
 ```shell
 git clone --depth 1 "https://github.com/FrancoisCarouge/Kalman.git" "kalman"

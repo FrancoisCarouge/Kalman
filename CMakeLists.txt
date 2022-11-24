@@ -54,30 +54,6 @@ include(CTest)
 include(FetchContent)
 include(GNUInstallDirs)
 
-FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
-  FIND_PACKAGE_ARGS NAMES Eigen3)
-
-FetchContent_Declare(
-  fmt
-  GIT_REPOSITORY "https://github.com/fmtlib/fmt.git"
-  FIND_PACKAGE_ARGS NAMES FMT)
-
-FetchContent_Declare(
-  google_benchmark
-  GIT_REPOSITORY "https://github.com/google/benchmark.git"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES benchmark)
-
-FetchContent_Declare(
-  google_test
-  GIT_REPOSITORY "https://github.com/google/googletest.git"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES GTest)
-
-FetchContent_MakeAvailable(fmt google_test google_benchmark eigen)
-
 add_subdirectory(benchmark)
 add_subdirectory(include)
 add_subdirectory(sample)
