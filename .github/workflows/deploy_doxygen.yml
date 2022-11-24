@@ -13,8 +13,8 @@ jobs:
     - name: Doxygen
       uses: mattnotmitt/doxygen-action@v1.9.4
       with:
-        working-directory: '.'
-        doxyfile-path: 'documentation/Doxyfile'
+        working-directory: 'documentation'
+        doxyfile-path: 'Doxyfile'
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3.8.0
       with:
