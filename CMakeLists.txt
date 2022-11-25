@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter for C++
-Version 0.1.0
+Version 0.2.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -43,7 +43,7 @@ project(
   DESCRIPTION "Kalman Filter for C++"
   HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
   LANGUAGES "CXX"
-  VERSION "0.1.0")
+  VERSION "0.2.0")
 
 set(CPACK_PACKAGE_CHECKSUM "SHA512")
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")

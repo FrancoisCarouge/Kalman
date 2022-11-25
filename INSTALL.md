@@ -28,11 +28,22 @@ ctest --test-dir "build" --build-config "Debug" --tests-regex "kalman_(test|samp
 
 See the [Benchmark](benchmark/) section.
 
-## Installation Package
+## Installation Packages
+
+### Linux
 
 ```shell
 git clone --depth 1 "https://github.com/FrancoisCarouge/Kalman.git" "kalman"
 cmake -S "kalman" -B "build"
 cmake --build "build" --target "package" --parallel
 cmake --build "build" --target "package_source" --parallel
+```
+
+### Windows
+
+```shell
+git clone --depth 1 "https://github.com/FrancoisCarouge/Kalman.git" "kalman"
+cmake -S "kalman" -B "build"
+cmake --build "build" --target "package" --parallel --config "Release"
+cmake --build "build" --target "package_source" --parallel --config "Release"
 ```
