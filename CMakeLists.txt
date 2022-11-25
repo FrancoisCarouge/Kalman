@@ -82,6 +82,52 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(google_test google_benchmark)
 
+FetchContent_Declare(scope
+                     GIT_REPOSITORY "https://github.com/offa/scope-guard.git")
+
+FetchContent_Populate(scope)
+set(SCOPE_INCLUDES ${scope_SOURCE_DIR}/include)
+
+find_package(PkgConfig)
+
+pkg_check_modules(GSTREAMER gstreamer-1.0)
+find_path(
+  GSTREAMER_INCLUDES
+  NAMES gst/gst.h
+  HINTS ${GSTREAMER_INCLUDE_DIRS} ${GSTREAMER_INCLUDEDIR}
+  PATH_SUFFIXES gstreamer-1.0)
+find_library(
+  GSTREAMER_LIBRARIES
+  NAMES gstreamer-1.0
+  HINTS ${GSTREAMER_LIBRARY_DIRS} ${GSTREAMER_LIBDIR})
+
+pkg_check_modules(GLIB glib-2.0)
+find_path(
+  GLIBCONFIG_INCLUDES
+  NAMES glibconfig.h
+  HINTS ${GLIB_INCLUDE_DIRS} ${GLIB_INCLUDEDIR}
+  PATH_SUFFIXES glib-2.0/include)
+find_path(
+  GLIB_INCLUDES
+  NAMES glib.h
+  HINTS ${GLIB_INCLUDE_DIRS} ${GLIB_INCLUDEDIR}
+  PATH_SUFFIXES glib-2.0)
+find_library(
+  GLIB_LIBRARIES
+  NAMES glib-2.0
+  HINTS ${GLIB_LIBRARY_DIRS} ${GLIB_LIBDIR})
+
+pkg_check_modules(GOBJECT gobject-2.0)
+find_path(
+  GOBJECT_INCLUDES
+  NAMES gobject/gobject.h
+  HINTS ${GOBJECT_INCLUDE_DIRS} ${GOBJECT_INCLUDEDIR}
+  PATH_SUFFIXES glib-2.0)
+find_library(
+  GOBJECT_LIBRARIES
+  NAMES gobject-2.0
+  HINTS ${GOBJECT_LIBRARY_DIRS} ${GOBJECT_LIBDIR})
+
 add_subdirectory(benchmark)
 add_subdirectory(include)
 add_subdirectory(sample)

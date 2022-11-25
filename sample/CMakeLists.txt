@@ -44,12 +44,27 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
   add_test(kalman_sample_${NAME} kalman_sample_${NAME}_driver)
 endforeach()
 
-foreach(SAMPLE_EIGEN
-        "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp"
-        "kf_6x2x0_vehicle_location.cpp" "kf_8x4x0_deep_sort_bounding_box.cpp")
+foreach(
+  SAMPLE_EIGEN
+  "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp"
+  "kf_6x2x0_vehicle_location.cpp" "kf_8x4x0_deep_sort_bounding_box.cpp"
+  "kf_video.cpp")
   get_filename_component(NAME ${SAMPLE_EIGEN} NAME_WE)
   add_executable(kalman_sample_eigen_${NAME}_driver ${SAMPLE_EIGEN})
-  target_link_libraries(kalman_sample_eigen_${NAME}_driver PRIVATE Eigen3::Eigen
-                                                                   kalman main)
+  target_include_directories(
+    kalman_sample_eigen_${NAME}_driver
+    PRIVATE ${GSTREAMER_INCLUDES} ${GLIB_INCLUDES} ${GLIBCONFIG_INCLUDES}
+            ${GOBJECT_INCLUDES} ${SCOPE_INCLUDES})
+  target_link_libraries(
+    kalman_sample_eigen_${NAME}_driver
+    PRIVATE Eigen3::Eigen kalman main ${GSTREAMER_LIBRARIES} ${GLIB_LIBRARIES}
+            ${GOBJECT_LIBRARIES})
   add_test(kalman_sample_eigen_${NAME} kalman_sample_eigen_${NAME}_driver)
 endforeach()
+
+add_library(plugin SHARED "gstplugin.cpp")
+target_compile_definitions(
+  plugin PRIVATE PACKAGE_VERSION="0.2.0" GST_LICENSE="Unlicense"
+                 GST_PACKAGE_NAME="kalman" GST_PACKAGE_ORIGIN="TODO")
+target_include_directories(
+  plugin PRIVATE ${GSTREAMER_INCLUDES} ${GLIB_INCLUDES} ${GLIBCONFIG_INCLUDES})
