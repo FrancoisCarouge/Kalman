@@ -12,39 +12,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3.1.0
-    - name: Update
-      run: sudo apt update
     - name: Install
+      # Workaround to wg21 CMake installation issues.
       run: |
-        sudo apt install gcc-12 g++-12 valgrind
-        ( cd /tmp
-          git clone --depth 1 https://gitlab.com/libeigen/eigen.git
-          mkdir eigen/build
-          ( cd eigen/build
-            cmake ..
-            cmake --build . --parallel
-            sudo cmake --install . ) )
-        ( cd /tmp
-          git clone --depth 1 https://github.com/fmtlib/fmt.git
-          mkdir fmt/build
-          ( cd fmt/build
-            cmake ..
-            cmake --build . --parallel
-            sudo cmake --install . ) )
-        ( cd /tmp
-          git clone --depth 1 https://github.com/kokkos/mdspan.git
-          mkdir mdspan/build
-          ( cd mdspan/build
-            cmake ..
-            cmake --build . --parallel
-            sudo cmake --install . ) )
-        ( cd /tmp
-          git clone --depth 1 https://github.com/kokkos/stdBLAS.git
-          mkdir stdBLAS/build
-          ( cd stdBLAS/build
-            cmake ..
-            cmake --build . --parallel
-            sudo cmake --install . ) )
+        sudo apt install valgrind
         ( cd /tmp
           git clone --depth 1 https://github.com/BobSteagall/wg21.git
           mkdir wg21/build
@@ -53,9 +24,6 @@ jobs:
             sudo cmake --install . ) )
     - name: Build
       run: |
-        gcc-12 \
-          sample/*.cpp test/*.cpp source/*.cpp \
-          -Iinclude -I/usr/local/include/eigen3 -Isupport \
-          -g -O0 -std=c++23 -lstdc++ -lm -lfmt
-    - name: Test
-      run: valgrind --verbose ./a.out
+        cmake -B "build" .
+        cmake --build "build" --parallel 4
+        ctest --test-dir "build" --tests-regex "kalman_valgrind" --output-on-failure --parallel 4

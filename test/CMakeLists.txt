@@ -41,6 +41,10 @@ foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
   add_executable(kalman_test_${NAME}_driver ${TEST})
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman main)
   add_test(kalman_test_${NAME} kalman_test_${NAME}_driver)
+  add_test(
+    NAME kalman_valgrind_${NAME}
+    COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
+            $<TARGET_FILE:kalman_test_${NAME}_driver>)
 endforeach()
 
 foreach(TEST_EIGEN "eigen_f.cpp" "eigen_h.cpp" "eigen_initialization.cpp")
@@ -49,4 +53,8 @@ foreach(TEST_EIGEN "eigen_f.cpp" "eigen_h.cpp" "eigen_initialization.cpp")
   target_link_libraries(kalman_test_eigen_${NAME}_driver PRIVATE Eigen3::Eigen
                                                                  kalman main)
   add_test(kalman_test_eigen_${NAME} kalman_test_eigen_${NAME}_driver)
+  add_test(
+    NAME kalman_valgrind_eigen_${NAME}
+    COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
+            $<TARGET_FILE:kalman_test_eigen_${NAME}_driver>)
 endforeach()
