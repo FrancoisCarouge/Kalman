@@ -42,6 +42,10 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
   add_executable(kalman_sample_${NAME}_driver ${SAMPLE})
   target_link_libraries(kalman_sample_${NAME}_driver PRIVATE kalman main)
   add_test(kalman_sample_${NAME} kalman_sample_${NAME}_driver)
+  add_test(
+    NAME kalman_valgrind_${NAME}
+    COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
+            $<TARGET_FILE:kalman_sample_${NAME}_driver>)
 endforeach()
 
 foreach(SAMPLE_EIGEN
@@ -52,4 +56,8 @@ foreach(SAMPLE_EIGEN
   target_link_libraries(kalman_sample_eigen_${NAME}_driver PRIVATE Eigen3::Eigen
                                                                    kalman main)
   add_test(kalman_sample_eigen_${NAME} kalman_sample_eigen_${NAME}_driver)
+  add_test(
+    NAME kalman_valgrind_eigen_${NAME}
+    COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
+            $<TARGET_FILE:kalman_sample_eigen_${NAME}_driver>)
 endforeach()
