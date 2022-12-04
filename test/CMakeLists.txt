@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> ]]
 foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
-  target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman main)
+  target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main)
   add_test(kalman_test_${NAME} kalman_test_${NAME}_driver)
   add_test(
     NAME kalman_valgrind_${NAME}
@@ -50,8 +50,8 @@ endforeach()
 foreach(TEST_EIGEN "eigen_f.cpp" "eigen_h.cpp" "eigen_initialization.cpp")
   get_filename_component(NAME ${TEST_EIGEN} NAME_WE)
   add_executable(kalman_test_eigen_${NAME}_driver ${TEST_EIGEN})
-  target_link_libraries(kalman_test_eigen_${NAME}_driver PRIVATE Eigen3::Eigen
-                                                                 kalman main)
+  target_link_libraries(kalman_test_eigen_${NAME}_driver
+                        PRIVATE Eigen3::Eigen kalman kalman_main)
   add_test(kalman_test_eigen_${NAME} kalman_test_eigen_${NAME}_driver)
   add_test(
     NAME kalman_valgrind_eigen_${NAME}

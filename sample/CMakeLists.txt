@@ -40,7 +40,7 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
                "kf_1x1x1_dog_position.cpp")
   get_filename_component(NAME ${SAMPLE} NAME_WE)
   add_executable(kalman_sample_${NAME}_driver ${SAMPLE})
-  target_link_libraries(kalman_sample_${NAME}_driver PRIVATE kalman main)
+  target_link_libraries(kalman_sample_${NAME}_driver PRIVATE kalman kalman_main)
   add_test(kalman_sample_${NAME} kalman_sample_${NAME}_driver)
   add_test(
     NAME kalman_valgrind_${NAME}
@@ -53,8 +53,8 @@ foreach(SAMPLE_EIGEN
         "kf_6x2x0_vehicle_location.cpp" "kf_8x4x0_deep_sort_bounding_box.cpp")
   get_filename_component(NAME ${SAMPLE_EIGEN} NAME_WE)
   add_executable(kalman_sample_eigen_${NAME}_driver ${SAMPLE_EIGEN})
-  target_link_libraries(kalman_sample_eigen_${NAME}_driver PRIVATE Eigen3::Eigen
-                                                                   kalman main)
+  target_link_libraries(kalman_sample_eigen_${NAME}_driver
+                        PRIVATE Eigen3::Eigen kalman kalman_main)
   add_test(kalman_sample_eigen_${NAME} kalman_sample_eigen_${NAME}_driver)
   add_test(
     NAME kalman_valgrind_eigen_${NAME}
