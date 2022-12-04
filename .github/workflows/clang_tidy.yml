@@ -51,12 +51,18 @@ jobs:
           ( cd wg21/build
             cmake ..
             sudo cmake --install . ) )
+        ( cd /tmp
+          git clone --depth 1 https://github.com/google/benchmark.git
+          mkdir benchmark/build
+          ( cd benchmark/build
+            cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=on -DCMAKE_BUILD_TYPE=Release ..
+            cmake --build . --config Release --parallel 4
+            sudo cmake --install . ) )
     - name: Verify
       run: |
-        FILES=`find . -iname *.hpp`
-        clang-tidy-15 ${FILES} --warnings-as-errors=* -- \
-          -x c++ -Iinclude \
-          -I/usr/local/include/eigen3 \
-          -Isupport \
-          -DFMT_HEADER_ONLY \
-          -Wall -Wextra -pedantic -std=c++2b -stdlib=libc++ -lfmt
+        clang-tidy \
+          `find . -iname "*.hpp" -o -iname "*.cpp"` \
+          -header-filter=.* -system-headers=0 --warnings-as-errors=* -- \
+          -x c++ -Wall -Wextra -pedantic -std=c++2b \
+          -Iinclude -Ibenchmark/include -Isupport -I/usr/local/include/eigen3 \
+          -DFMT_HEADER_ONLY -stdlib=libc++ -lfmt
