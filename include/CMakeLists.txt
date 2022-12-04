@@ -80,5 +80,15 @@ target_sources(
 target_link_libraries(kalman INTERFACE ${LIBRARIES})
 target_compile_options(kalman INTERFACE ${OPTIONS})
 target_compile_features(kalman INTERFACE cxx_std_23)
-install(TARGETS kalman FILE_SET "kalman_headers"
-        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+install(
+  TARGETS kalman
+  EXPORT KalmanTargets
+  FILE_SET "kalman_headers")
+
+export(PACKAGE kalman)
+
+export(
+  TARGETS kalman
+  NAMESPACE kalman::
+  FILE "KalmanTargets.cmake")

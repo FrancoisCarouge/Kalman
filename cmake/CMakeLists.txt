@@ -36,59 +36,21 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-cmake_minimum_required(VERSION "3.24")
+include(CMakePackageConfigHelpers)
 
-project(
-  kalman
-  DESCRIPTION "Kalman Filter for C++"
-  HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
-  LANGUAGES "CXX"
-  VERSION "0.2.0")
+configure_package_config_file(
+  "KalmanConfig.cmake.in" "KalmanConfig.cmake"
+  INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge/cmake"
+  NO_SET_AND_CHECK_MACRO NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
-set(CPACK_PACKAGE_CHECKSUM "SHA512")
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE.txt")
+write_basic_package_version_file(
+  "KalmanConfigVersion.cmake" COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
 
-include(CPack)
-include(CTest)
-include(FetchContent)
-include(GNUInstallDirs)
+install(
+  EXPORT KalmanTargets
+  NAMESPACE kalman::
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge/cmake")
 
-FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
-  GIT_TAG "23524ab6fcbf557b4ae1885d25d867727330c0c2"
-  FIND_PACKAGE_ARGS NAMES Eigen3)
-
-FetchContent_MakeAvailable(eigen)
-
-FetchContent_Declare(
-  fmt
-  GIT_REPOSITORY "https://github.com/fmtlib/fmt.git"
-  FIND_PACKAGE_ARGS NAMES FMT)
-
-option(FMT_INSTALL "Enable installation for the {fmt} project." ON)
-FetchContent_MakeAvailable(fmt)
-
-FetchContent_Declare(
-  google_benchmark
-  GIT_REPOSITORY "https://github.com/google/benchmark.git"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES benchmark)
-
-FetchContent_Declare(
-  google_test
-  GIT_REPOSITORY "https://github.com/google/googletest.git"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES GTest)
-
-FetchContent_MakeAvailable(google_test google_benchmark)
-
-add_subdirectory(benchmark)
-add_subdirectory(cmake)
-add_subdirectory(include)
-add_subdirectory(pkgconfig)
-add_subdirectory(sample)
-add_subdirectory(source)
-add_subdirectory(support)
-add_subdirectory(test)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/KalmanConfig.cmake"
+              "${CMAKE_CURRENT_BINARY_DIR}/KalmanConfigVersion.cmake"
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge/cmake")

@@ -45,4 +45,14 @@ else()
   target_sources(format INTERFACE FILE_SET "format_headers" TYPE "HEADERS"
                                   FILES "format")
   target_link_libraries(format INTERFACE fmt::fmt)
+  install(
+    TARGETS format
+    EXPORT KalmanTargets
+    FILE_SET "format_headers"
+    DESTINATION "include/fcarouge"
+    ARCHIVE DESTINATION "lib/fcarouge")
+  export(
+    TARGETS format
+    NAMESPACE kalman::
+    FILE "KalmanTargets.cmake")
 endif()
