@@ -41,18 +41,18 @@ if(WIN32)
   # Other compilers don't support it yet. TODO: This platform check is not ideal
   # and should be replaced with a check for the compiler library support.
 else()
-  add_library(format INTERFACE)
-  target_sources(format INTERFACE FILE_SET "format_headers" TYPE "HEADERS"
-                                  FILES "format")
-  target_link_libraries(format INTERFACE fmt::fmt)
+  add_library(kalman_format INTERFACE)
+  target_sources(kalman_format INTERFACE FILE_SET "format_headers" TYPE
+                                         "HEADERS" FILES "format")
+  target_link_libraries(kalman_format INTERFACE fmt::fmt)
   install(
-    TARGETS format
+    TARGETS kalman_format
     EXPORT KalmanTargets
     FILE_SET "format_headers"
     DESTINATION "include/fcarouge"
     ARCHIVE DESTINATION "lib/fcarouge")
   export(
-    TARGETS format
+    TARGETS kalman_format
     NAMESPACE kalman::
     FILE "KalmanTargets.cmake")
 endif()

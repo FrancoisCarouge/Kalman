@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> ]]
 if(WIN32)
   set(OPTIONS "/EHsc" "/W4")
 else()
-  set(LIBRARIES format)
+  set(LIBRARIES kalman_format)
   set(OPTIONS
       "-ansi"
       "-fno-check-new"
