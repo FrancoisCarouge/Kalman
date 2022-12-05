@@ -22,28 +22,28 @@ jobs:
           mkdir eigen/build
           ( cd eigen/build
             cmake ..
-            cmake --build . --parallel
+            cmake --build . --parallel 4
             sudo cmake --install . ) )
         ( cd /tmp
           git clone --depth 1 https://github.com/fmtlib/fmt.git
           mkdir fmt/build
           ( cd fmt/build
             cmake ..
-            cmake --build . --parallel
+            cmake --build . --parallel 4
             sudo cmake --install . ) )
         ( cd /tmp
           git clone --depth 1 https://github.com/kokkos/mdspan.git
           mkdir mdspan/build
           ( cd mdspan/build
             cmake ..
-            cmake --build . --parallel
+            cmake --build . --parallel 4
             sudo cmake --install . ) )
         ( cd /tmp
           git clone --depth 1 https://github.com/kokkos/stdBLAS.git
           mkdir stdBLAS/build
           ( cd stdBLAS/build
             cmake ..
-            cmake --build . --parallel
+            cmake --build . --parallel 4
             sudo cmake --install . ) )
         ( cd /tmp
           git clone --depth 1 https://github.com/BobSteagall/wg21.git
