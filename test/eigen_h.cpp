@@ -70,9 +70,9 @@ struct divide final {
 //! @test Verifies the observation transition matrix H management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto h_5x4x3{[] {
-  using kalman = kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>,
-                        divide, std::tuple<double, float, int, char>,
-                        std::tuple<char, int, float, double>>;
+  using kalman =
+      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>, divide,
+             std::tuple<double, float, int>, std::tuple<int, float, double>>;
 
   kalman filter;
   const auto i4x5{matrix<double, 4, 5>::Identity()};
@@ -107,33 +107,31 @@ struct divide final {
 
   {
     const auto h{[](const kalman::state &x, const double &d, const float &f,
-                    const int &i, const char &c) -> kalman::output_model {
+                    const int &i) -> kalman::output_model {
       static_cast<void>(x);
       static_cast<void>(d);
       static_cast<void>(f);
       static_cast<void>(i);
-      static_cast<void>(c);
       return matrix<double, 4, 5>::Identity();
     }};
     filter.h(h);
     assert(filter.h() == z4x5);
-    filter.update(0., 0.f, 0, char(0), z4);
+    filter.update(0., 0.f, 0, z4);
     assert(filter.h() == i4x5);
   }
 
   {
     const auto h{[](const kalman::state &x, const double &d, const float &f,
-                    const int &i, const char &c) -> kalman::output_model {
+                    const int &i) -> kalman::output_model {
       static_cast<void>(x);
       static_cast<void>(d);
       static_cast<void>(f);
       static_cast<void>(i);
-      static_cast<void>(c);
       return matrix<double, 4, 5>::Zero();
     }};
     filter.h(std::move(h));
     assert(filter.h() == i4x5);
-    filter.update(0., 0.f, 0, char(0), z4);
+    filter.update(0., 0.f, 0, z4);
     assert(filter.h() == z4x5);
   }
 
