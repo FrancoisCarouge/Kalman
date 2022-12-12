@@ -42,6 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief The main Kalman filter class.
 
+#include "internal/algorithm.hpp"
 #include "internal/format.hpp"
 #include "internal/kalman.hpp"
 #include "internal/utility.hpp"
@@ -526,6 +527,8 @@ public:
   //! @return The innovation column vector Y.
   //!
   //! @complexity Constant.
+  //!
+  //! @todo Add measurement post-fit residual.
   inline constexpr auto y() const -> const innovation &;
 
   //! @brief Returns the innovation uncertainty matrix S.
