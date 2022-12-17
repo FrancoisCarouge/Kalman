@@ -131,7 +131,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml"
+"kf__8x4x0__deep__sort__bounding__box_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
