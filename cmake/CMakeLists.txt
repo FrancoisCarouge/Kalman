@@ -40,7 +40,7 @@ include(CMakePackageConfigHelpers)
 
 configure_package_config_file(
   "KalmanConfig.cmake.in" "KalmanConfig.cmake"
-  INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge/cmake"
+  INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/Kalman/cmake"
   NO_SET_AND_CHECK_MACRO NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
 write_basic_package_version_file(
@@ -49,8 +49,8 @@ write_basic_package_version_file(
 install(
   EXPORT KalmanTargets
   NAMESPACE kalman::
-  DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge/cmake")
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/Kalman/cmake")
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/KalmanConfig.cmake"
               "${CMAKE_CURRENT_BINARY_DIR}/KalmanConfigVersion.cmake"
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge/cmake")
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/Kalman/cmake")
