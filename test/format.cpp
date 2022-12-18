@@ -59,7 +59,11 @@ namespace {
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control without additional arguments.
 [[maybe_unused]] auto format_d_1x1x1{[] {
-  kalman<double, double, double> filter;
+  using update_model = update_model<double, double>;
+  using prediction_model = prediction_model<double, double>;
+  using kalman = kalman<update_model, prediction_model>;
+
+  kalman filter;
 
   assert(
       std::format("{}", filter) ==
@@ -71,9 +75,12 @@ namespace {
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control and additional arguments.
 [[maybe_unused]] auto format_d_1x1x1_cifd_dfic{[] {
-  using kalman = kalman<double, double, double, std::divides<double>,
-                        std::tuple<double, double, double>,
-                        std::tuple<double, double, double, double>>;
+  using update_model = update_model<double, double, std::divides<double>,
+                                    double, double, double>;
+  using prediction_model =
+      prediction_model<double, double, double, double, double, double>;
+  using kalman = kalman<update_model, prediction_model>;
+
   kalman filter;
 
   assert(

@@ -35,8 +35,11 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 [[maybe_unused]] auto ekf_4x1x0_soaring{[] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
-  using kalman = kalman<vector<float, 4>, float, void, std::divides<void>,
-                        std::tuple<float, float>, std::tuple<float, float>>;
+  using update_model =
+      update_model<vector<float, 4>, float, std::divides<void>, float, float>;
+  using prediction_model =
+      prediction_model<vector<float, 4>, void, float, float>;
+  using kalman = kalman<update_model, prediction_model>;
 
   kalman filter;
 

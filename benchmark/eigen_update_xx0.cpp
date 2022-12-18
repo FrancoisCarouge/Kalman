@@ -78,8 +78,10 @@ struct divide final {
 template <std::size_t StateSize, std::size_t OutputSize>
 void eigen_update(::benchmark::State &state) {
 
-  using kalman =
-      kalman<vector<float, StateSize>, vector<float, OutputSize>, void, divide>;
+  using update_model =
+      update_model<vector<float, StateSize>, vector<float, OutputSize>, divide>;
+  using prediction_model = prediction_model<vector<float, StateSize>>;
+  using kalman = kalman<update_model, prediction_model>;
 
   kalman filter;
   std::random_device random_device;

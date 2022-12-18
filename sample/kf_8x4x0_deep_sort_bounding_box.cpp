@@ -44,7 +44,9 @@ struct divide final {
 //! @example kf_8x4x0_deep_sort_bounding_box.cpp
 [[maybe_unused]] auto kf_8x4x0_deep_sort_bounding_box{[] {
   // A 8x4x0 filter, constant velocity, linear.
-  using kalman = kalman<vector<float, 8>, vector<float, 4>, void, divide>;
+  using update_model = update_model<vector<float, 8>, vector<float, 4>, divide>;
+  using prediction_model = prediction_model<vector<float, 8>, void>;
+  using kalman = kalman<update_model, prediction_model>;
 
   kalman filter;
 

@@ -70,9 +70,12 @@ struct divide final {
 //! @test Verifies the observation transition matrix H management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto h_5x4x3{[] {
-  using kalman =
-      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>, divide,
-             std::tuple<double, float, int>, std::tuple<int, float, double>>;
+  using update_model = update_model<vector<double, 5>, vector<double, 4>,
+                                    divide, double, float, int>;
+  using prediction_model =
+      prediction_model<vector<double, 5>, vector<double, 3>, int, float,
+                       double>;
+  using kalman = kalman<update_model, prediction_model>;
 
   kalman filter;
   const auto i4x5{matrix<double, 4, 5>::Identity()};

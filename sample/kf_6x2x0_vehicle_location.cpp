@@ -48,7 +48,10 @@ struct divide final {
 //! @example kf_6x2x0_vehicle_location.cpp
 [[maybe_unused]] auto kf_6x2x0_vehicle_location{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
-  using kalman = kalman<vector<double, 6>, vector<double, 2>, void, divide>;
+  using update_model =
+      update_model<vector<double, 6>, vector<double, 2>, divide>;
+  using prediction_model = prediction_model<vector<double, 6>>;
+  using kalman = kalman<update_model, prediction_model>;
 
   kalman filter;
 

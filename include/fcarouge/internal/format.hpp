@@ -45,34 +45,30 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 
 namespace fcarouge {
-template <typename, typename, typename, typename, typename, typename>
-class kalman;
+template <typename, typename> class kalman;
 } // namespace fcarouge
 
-template <typename State, typename Output, typename Input, typename Divide,
-          typename UpdateTypes, typename PredictionTypes, typename Char>
+template <typename UpdateModel, typename PredictionModel, typename Char>
 // It is allowed to add template specializations for any standard library class
 // template to the namespace std only if the declaration depends on at least one
 // program-defined type and the specialization satisfies all requirements for
 // the original template, except where such specializations are prohibited.
 // NOLINTNEXTLINE(cert-dcl58-cpp)
-struct std::formatter<fcarouge::kalman<State, Output, Input, Divide,
-                                       UpdateTypes, PredictionTypes>,
-                      Char> {
+struct std::formatter<fcarouge::kalman<UpdateModel, PredictionModel>, Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 
   //! @todo P2585 may be useful in simplifying and standardizing the support.
   template <typename OutputIt>
-  auto format(const fcarouge::kalman<State, Output, Input, Divide, UpdateTypes,
-                                     PredictionTypes> &filter,
+  auto format(const fcarouge::kalman<UpdateModel, PredictionModel> &filter,
               std::basic_format_context<OutputIt, Char> &format_context)
       -> OutputIt {
     format_context.advance_to(
         format_to(format_context.out(), R"({{"f": {}, )", filter.f()));
 
-    if constexpr (not std::is_same_v<Input, void>) {
+    if constexpr (not std::is_same_v<typename PredictionModel::input_control,
+                                     fcarouge::internal::empty>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
@@ -82,7 +78,7 @@ struct std::formatter<fcarouge::kalman<State, Output, Input, Divide,
                                         filter.h(), filter.k(), filter.p()));
 
     fcarouge::internal::for_constexpr<
-        std::size_t{0}, fcarouge::internal::repack_s<PredictionTypes>, 1>(
+        std::size_t{0}, fcarouge::internal::repack_s<PredictionModel> - 2, 1>(
         [&format_context, &filter](auto position) {
           format_context.advance_to(format_to(
               format_context.out(), R"("prediction_{}": {}, )",
@@ -93,13 +89,14 @@ struct std::formatter<fcarouge::kalman<State, Output, Input, Divide,
                                         R"("q": {}, "r": {}, "s": {}, )",
                                         filter.q(), filter.r(), filter.s()));
 
-    if constexpr (not std::is_same_v<Input, void>) {
+    if constexpr (not std::is_same_v<typename PredictionModel::input,
+                                     fcarouge::internal::empty>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }
 
     fcarouge::internal::for_constexpr<
-        std::size_t{0}, fcarouge::internal::repack_s<UpdateTypes>, 1>(
+        std::size_t{0}, fcarouge::internal::repack_s<UpdateModel> - 3, 1>(
         [&format_context, &filter](auto position) {
           format_context.advance_to(format_to(
               format_context.out(), R"("update_{}": {}, )",
