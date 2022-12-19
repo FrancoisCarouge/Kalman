@@ -39,7 +39,6 @@ For more information, please refer to <https://unlicense.org> ]]
 if(WIN32)
   set(OPTIONS "/EHsc" "/W4")
 else()
-  set(LIBRARIES kalman_format)
   set(OPTIONS
       "-ansi"
       "-fno-check-new"
@@ -79,16 +78,13 @@ target_sources(
             "fcarouge/kalman.hpp")
 target_compile_options(kalman INTERFACE ${OPTIONS})
 target_compile_features(kalman INTERFACE cxx_std_23)
-target_link_libraries(kalman INTERFACE ${LIBRARIES})
-
+target_link_libraries(kalman INTERFACE $<$<NOT:$<BOOL:${WIN32}>>:kalman_format>)
 install(
   TARGETS kalman
-  EXPORT KalmanTargets
-  FILE_SET "kalman_headers")
-
-export(PACKAGE kalman)
-
-export(
-  TARGETS kalman
+  EXPORT kalmanTargets
+  FILE_SET "kalman_headers"
+  DESTINATION "include/fcarouge")
+install(
+  EXPORT kalmanTargets
   NAMESPACE kalman::
-  FILE "KalmanTargets.cmake")
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")

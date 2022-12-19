@@ -42,17 +42,17 @@ if(WIN32)
   # and should be replaced with a check for the compiler library support.
 else()
   add_library(kalman_format INTERFACE)
-  target_sources(kalman_format INTERFACE FILE_SET "format_headers" TYPE
+  target_sources(kalman_format INTERFACE FILE_SET "kalman_format_headers" TYPE
                                          "HEADERS" FILES "format")
   target_link_libraries(kalman_format INTERFACE fmt::fmt)
   install(
     TARGETS kalman_format
-    EXPORT KalmanTargets
-    FILE_SET "format_headers"
+    EXPORT kalmanTargets
+    FILE_SET "kalman_format_headers"
     DESTINATION "include/fcarouge"
     ARCHIVE DESTINATION "lib/fcarouge")
-  export(
-    TARGETS kalman_format
+  install(
+    EXPORT kalmanTargets
     NAMESPACE kalman::
-    FILE "KalmanTargets.cmake")
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
 endif()
