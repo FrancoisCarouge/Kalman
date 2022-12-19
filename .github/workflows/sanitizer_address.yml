@@ -16,44 +16,29 @@ jobs:
       run: sudo apt update
     - name: Install
       run: |
-        sudo apt install gcc-12 g++-12
         ( cd /tmp
-          git clone --depth 1 https://gitlab.com/libeigen/eigen.git
-          mkdir eigen/build
-          ( cd eigen/build
-            cmake ..
-            cmake --build . --parallel 4
-            sudo cmake --install . ) )
+          git clone --depth 1 "https://gitlab.com/libeigen/eigen.git"
+          cmake -S "eigen" -B "eigen/build"
+          cmake --build "eigen/build" --parallel 4
+          sudo cmake --install "eigen/build" )
         ( cd /tmp
-          git clone --depth 1 https://github.com/fmtlib/fmt.git
-          mkdir fmt/build
-          ( cd fmt/build
-            cmake ..
-            cmake --build . --parallel 4
-            sudo cmake --install . ) )
+          git clone --depth 1 "https://github.com/fmtlib/fmt.git"
+          cmake -S "fmt" -B "fmt/build"
+          cmake --build "fmt/build" --parallel 4
+          sudo cmake --install "fmt/build" )
         ( cd /tmp
-          git clone --depth 1 https://github.com/kokkos/mdspan.git
-          mkdir mdspan/build
-          ( cd mdspan/build
-            cmake ..
-            cmake --build . --parallel 4
-            sudo cmake --install . ) )
+          git clone --depth 1 "https://github.com/kokkos/mdspan.git"
+          cmake -S "mdspan" -B "mdspan/build"
+          cmake --build "mdspan/build" --parallel 4
+          sudo cmake --install "mdspan/build" )
         ( cd /tmp
-          git clone --depth 1 https://github.com/kokkos/stdBLAS.git
-          mkdir stdBLAS/build
-          ( cd stdBLAS/build
-            cmake ..
-            cmake --build . --parallel 4
-            sudo cmake --install . ) )
-        ( cd /tmp
-          git clone --depth 1 https://github.com/BobSteagall/wg21.git
-          mkdir wg21/build
-          ( cd wg21/build
-            cmake ..
-            sudo cmake --install . ) )
+          git clone --depth 1 "https://github.com/kokkos/stdBLAS.git"
+          cmake -S "stdBLAS" -B "stdBLAS/build"
+          cmake --build "stdBLAS/build" --parallel 4
+          sudo cmake --install "stdBLAS/build" )
     - name: Build
       run: |
-        gcc-12 \
+        gcc \
           sample/*.cpp test/*.cpp source/*.cpp \
           -Iinclude -I/usr/local/include/eigen3 -Isupport \
           -std=c++23 -g -fsanitize=address -fsanitize-address-use-after-scope -fno-omit-frame-pointer -lstdc++ -lm -lfmt
