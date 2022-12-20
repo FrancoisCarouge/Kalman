@@ -42,8 +42,7 @@ foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
                   "update_1x1x0.cpp" "update_1x1x1.cpp")
   get_filename_component(NAME ${BENCHMARK} NAME_WE)
   add_executable(kalman_benchmark_${NAME}_driver ${BENCHMARK})
-  target_include_directories(kalman_benchmark_${NAME}_driver PRIVATE "."
-                                                                     "include")
+  target_include_directories(kalman_benchmark_${NAME}_driver PRIVATE "include")
   target_link_libraries(
     kalman_benchmark_${NAME}_driver PRIVATE benchmark::benchmark
                                             benchmark::benchmark_main kalman)
@@ -60,7 +59,7 @@ foreach(STATE_SIZE RANGE 1 2)
     add_executable(kalman_benchmark_${NAME}_driver
                    eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
     target_include_directories(kalman_benchmark_${NAME}_driver
-                               PRIVATE "." "include")
+                               PRIVATE "include")
     target_link_libraries(
       kalman_benchmark_${NAME}_driver
       PRIVATE benchmark::benchmark benchmark::benchmark_main Eigen3::Eigen
@@ -76,7 +75,7 @@ foreach(STATE_SIZE RANGE 1 2)
     add_executable(kalman_benchmark_${NAME}_driver
                    eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
     target_include_directories(kalman_benchmark_${NAME}_driver
-                               PRIVATE "." "include")
+                               PRIVATE "include")
     target_link_libraries(
       kalman_benchmark_${NAME}_driver
       PRIVATE benchmark::benchmark benchmark::benchmark_main Eigen3::Eigen

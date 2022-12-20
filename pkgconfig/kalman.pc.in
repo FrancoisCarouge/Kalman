@@ -1,9 +1,7 @@
 prefix=@CMAKE_INSTALL_PREFIX@
-exec_prefix=${prefix}
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
 
-Name: Kalman
+Name: kalman
 Description: Kalman Filter for C++.
-Requires:
 Version: @CMAKE_PROJECT_VERSION@
-Libs:
-Cflags: -I${prefix}/@INCLUDE_INSTALL_DIR@
+Cflags: -I${includedir}

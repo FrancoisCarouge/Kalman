@@ -36,21 +36,19 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-include(CMakePackageConfigHelpers)
-
 configure_package_config_file(
-  "KalmanConfig.cmake.in" "KalmanConfig.cmake"
-  INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/Kalman/cmake"
+  "kalman-config.cmake.in" "kalman-config.cmake"
+  INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake"
   NO_SET_AND_CHECK_MACRO NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
 write_basic_package_version_file(
-  "KalmanConfigVersion.cmake" COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
+  "kalman-config-version.cmake" COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
 
 install(
-  EXPORT KalmanTargets
+  EXPORT kalmanTargets
   NAMESPACE kalman::
-  DESTINATION "${CMAKE_INSTALL_DATADIR}/Kalman/cmake")
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/KalmanConfig.cmake"
-              "${CMAKE_CURRENT_BINARY_DIR}/KalmanConfigVersion.cmake"
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/Kalman/cmake")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kalman-config.cmake"
+              "${CMAKE_CURRENT_BINARY_DIR}/kalman-config-version.cmake"
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
