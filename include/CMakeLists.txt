@@ -78,7 +78,8 @@ target_sources(
             "fcarouge/kalman.hpp")
 target_compile_options(kalman INTERFACE ${OPTIONS})
 target_compile_features(kalman INTERFACE cxx_std_23)
-target_link_libraries(kalman INTERFACE $<$<NOT:$<BOOL:${WIN32}>>:kalman_format>)
+target_link_libraries(
+  kalman INTERFACE $<BUILD_INTERFACE:$<$<NOT:$<BOOL:${WIN32}>>:kalman_format>>)
 install(
   TARGETS kalman
   EXPORT kalmanTargets

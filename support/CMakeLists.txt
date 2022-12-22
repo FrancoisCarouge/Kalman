@@ -49,8 +49,7 @@ else()
     TARGETS kalman_format
     EXPORT kalmanTargets
     FILE_SET "kalman_format_headers"
-    DESTINATION "include/fcarouge"
-    ARCHIVE DESTINATION "lib/fcarouge")
+    DESTINATION "include/fcarouge")
   install(
     EXPORT kalmanTargets
     NAMESPACE kalman::
