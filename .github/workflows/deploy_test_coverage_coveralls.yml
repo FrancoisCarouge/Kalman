@@ -12,8 +12,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3.1.0
-    - name: Update
-      run: sudo apt update
     - name: Install
       run: |
         sudo apt install gcc-12 g++-12 lcov
