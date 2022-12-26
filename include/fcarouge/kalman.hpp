@@ -261,7 +261,9 @@ public:
   //! elements of the filter with.
   //!
   //! @complexity Constant.
-  inline constexpr kalman(const kalman &other) = default;
+  //!
+  //! @todo Implement and test.
+  inline constexpr kalman(const kalman &other) = delete;
 
   //! @brief Move constructs a filter.
   //!
@@ -273,7 +275,9 @@ public:
   //! elements of the filter with.
   //!
   //! @complexity Constant.
-  inline constexpr kalman(kalman &&other) noexcept = default;
+  //!
+  //! @todo Implement and test.
+  inline constexpr kalman(kalman &&other) noexcept = delete;
 
   //! @brief Copy assignment operator.
   //!
@@ -287,7 +291,9 @@ public:
   //! i.e. `*this`.
   //!
   //! @complexity Constant.
-  inline constexpr auto operator=(const kalman &other) -> kalman & = default;
+  //!
+  //! @todo Implement and test.
+  inline constexpr auto operator=(const kalman &other) -> kalman & = delete;
 
   //! @brief Move assignment operator.
   //!
@@ -303,8 +309,9 @@ public:
   //! i.e. `*this`.
   //!
   //! @complexity Constant.
-  inline constexpr auto operator=(kalman &&other) noexcept
-      -> kalman & = default;
+  //!
+  //! @todo Implement and test.
+  inline constexpr auto operator=(kalman &&other) noexcept -> kalman & = delete;
 
   //! @brief Destructs the kalman filter.
   //!
