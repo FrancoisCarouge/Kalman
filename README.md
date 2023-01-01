@@ -312,6 +312,45 @@ Resources to learn about Kalman filters:
 - [Wikipedia Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter) by Wikipedia, the free encyclopedia.
 - [Applications of Kalman Filtering in Aerospace 1960 to the Present](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5466132) by Mohinder S. Grewal and Angus P. Andrews. IEEE 2010.
 
+## Projects
+
+The library is used in projects:
+
+- [GstKalman](https://github.com/FrancoisCarouge/GstKalman): A GStreamer Kalman filter video plugin.
+
+*Your project link here!*
+
+## Third Party Acknowledgement
+
+The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
+
+- [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
+- [Clang](https://clang.llvm.org) for compilation and code sanitizers.
+- [CMake](https://cmake.org) for build automation.
+- [cmakelang](https://pypi.org/project/cmakelang) for pretty CMake list files.
+- [Coveralls](https://coveralls.io) to measure [code coverage](https://coveralls.io/github/FrancoisCarouge/Kalman).
+- [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
+- [Doxygen](https://doxygen.nl) for documentation generation.
+- [Doxygen Awesome](https://github.com/jothepro/doxygen-awesome-css) for pretty documentation.
+- [Eigen](https://eigen.tuxfamily.org/) for linear algebra.
+- [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
+- [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
+- [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
+- [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
+- [Valgrind](https://valgrind.org) to check for correct memory management.
+
+## Sponsors
+
+### Corporations & Institutions
+
+*Your group logo and link here!*
+
+### Individuals
+
+*Your name and link here!*
+
+Thanks everyone!
+
 # Continuous Integration & Deployment Actions
 
 [![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
@@ -359,37 +398,11 @@ Resources to learn about Kalman filters:
 <br>
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
 
-# Third Party Acknowledgement
-
-The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
-- [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
-- [Clang](https://clang.llvm.org) for compilation and code sanitizers.
-- [CMake](https://cmake.org) for build automation.
-- [Coveralls](https://coveralls.io) to measure [code coverage](https://coveralls.io/github/FrancoisCarouge/Kalman).
-- [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
-- [Doxygen](https://doxygen.nl) for documentation generation.
-- [Eigen](https://eigen.tuxfamily.org/) for linear algebra.
-- [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
-- [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
-- [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
-- [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
-- [Valgrind](https://valgrind.org) to check for correct memory management.
-
 # Sponsors
 
 Become a sponsor today! Support this project with coffee and infrastructure!
 
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor-brightgreen)](http://paypal.me/francoiscarouge)
-
-## Corporate Sponsor
-
-*You company logo and link here!*
-
-## Named Sponsors
-
-*Your name and link here!*
-
-Thanks everyone!
 
 # License
 
