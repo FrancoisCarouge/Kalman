@@ -28,11 +28,13 @@ This library supports various simple and extended filters. The implementation is
 - [Resources](#resources)
   - [Definitions](#definitions)
   - [Articles](#articles)
+  - [Projects](#projects)
+  - [Third Party Acknowledgement](#third-party-acknowledgement)
+  - [Sponsors](#sponsors)
+    - [Corporations \& Institutions](#corporations--institutions)
+    - [Individuals](#individuals)
 - [Continuous Integration \& Deployment Actions](#continuous-integration--deployment-actions)
-- [Third Party Acknowledgement](#third-party-acknowledgement)
-- [Sponsors](#sponsors)
-  - [Corporate Sponsor](#corporate-sponsor)
-  - [Named Sponsors](#named-sponsors)
+- [Sponsors](#sponsors-1)
 - [License](#license)
 
 # Examples

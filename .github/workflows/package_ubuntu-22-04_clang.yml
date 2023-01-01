@@ -12,10 +12,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3.1.0
+    - name: Install
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 15 all
     - name: Build
       run: |
-        export CC=clang
-        export CXX=clang++
+        export CC=clang-15
+        export CXX=clang++-15
         cmake -B "build" .
         cmake --build "build" --target "package" --parallel 4
         cmake --build "build" --target "package_source" --parallel 4
