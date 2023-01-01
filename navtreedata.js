@@ -53,15 +53,17 @@ var NAVTREE =
       ] ],
       [ "Resources", "index.xhtml#autotoc_md42", [
         [ "Definitions", "index.xhtml#autotoc_md43", null ],
-        [ "Articles", "index.xhtml#autotoc_md44", null ]
+        [ "Articles", "index.xhtml#autotoc_md44", null ],
+        [ "Projects", "index.xhtml#autotoc_md45", null ],
+        [ "Third Party Acknowledgement", "index.xhtml#autotoc_md46", null ],
+        [ "Sponsors", "index.xhtml#autotoc_md47", [
+          [ "Corporations & Institutions", "index.xhtml#autotoc_md48", null ],
+          [ "Individuals", "index.xhtml#autotoc_md49", null ]
+        ] ]
       ] ],
-      [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md45", null ],
-      [ "Third Party Acknowledgement", "index.xhtml#autotoc_md46", null ],
-      [ "Sponsors", "index.xhtml#autotoc_md47", [
-        [ "Corporate Sponsor", "index.xhtml#autotoc_md48", null ],
-        [ "Named Sponsors", "index.xhtml#autotoc_md49", null ]
-      ] ],
-      [ "License", "index.xhtml#autotoc_md50", null ]
+      [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md50", null ],
+      [ "Sponsors", "index.xhtml#autotoc_md51", null ],
+      [ "License", "index.xhtml#autotoc_md52", null ]
     ] ],
     [ "Benchmarks", "md__github_workspace_benchmark__r_e_a_d_m_e.xhtml", [
       [ "Results", "md__github_workspace_benchmark__r_e_a_d_m_e.xhtml#autotoc_md1", null ]
@@ -69,13 +71,13 @@ var NAVTREE =
     [ "Contributor Covenant Code of Conduct", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md3", null ],
       [ "Our Standards", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md4", null ],
-      [ "Our Responsibilities", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
-      [ "Scope", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
-      [ "Enforcement", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
-      [ "Attribution", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md10", null ]
+      [ "Our Responsibilities", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md5", null ],
+      [ "Scope", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
+      [ "Enforcement", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
+      [ "Attribution", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ]
     ] ],
     [ "Contributing", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
-      [ "Code of Conduct", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md9", null ],
+      [ "Code of Conduct", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md10", null ],
       [ "Reporting Bugs", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md11", null ],
       [ "Requesting Features", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md12", null ],
       [ "Security Policy", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md13", null ]
@@ -91,8 +93,8 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Security Policy", "md__github_workspace__s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__github_workspace__s_e_c_u_r_i_t_y.xhtml#autotoc_md52", null ],
-      [ "Reporting a Vulnerability", "md__github_workspace__s_e_c_u_r_i_t_y.xhtml#autotoc_md53", null ]
+      [ "Supported Versions", "md__github_workspace__s_e_c_u_r_i_t_y.xhtml#autotoc_md54", null ],
+      [ "Reporting a Vulnerability", "md__github_workspace__s_e_c_u_r_i_t_y.xhtml#autotoc_md55", null ]
     ] ],
     [ "Todo List", "todo.xhtml", null ],
     [ "Test List", "test.xhtml", null ],
@@ -130,7 +132,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"kf__8x4x0__deep__sort__bounding__box_8cpp.xhtml"
+"kf__6x2x0__vehicle__location_8cpp.xhtml#a687f6b66de7a823dd4a43e9d571bcaef"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
