@@ -57,32 +57,29 @@ include(GNUInstallDirs)
 
 FetchContent_Declare(
   eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen.git"
+  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
   GIT_TAG "23524ab6fcbf557b4ae1885d25d867727330c0c2"
   FIND_PACKAGE_ARGS NAMES Eigen3)
-
 FetchContent_MakeAvailable(eigen)
 
 FetchContent_Declare(
   fmt
-  GIT_REPOSITORY "https://github.com/fmtlib/fmt.git"
-  FIND_PACKAGE_ARGS NAMES FMT)
-
+  GIT_REPOSITORY "https://github.com/fmtlib/fmt"
+  FIND_PACKAGE_ARGS NAMES fmt)
 option(FMT_INSTALL "Enable installation for the {fmt} project." ON)
 FetchContent_MakeAvailable(fmt)
 
 FetchContent_Declare(
   google_benchmark
-  GIT_REPOSITORY "https://github.com/google/benchmark.git"
+  GIT_REPOSITORY "https://github.com/google/benchmark"
   GIT_TAG "main"
   FIND_PACKAGE_ARGS NAMES benchmark)
 
 FetchContent_Declare(
   google_test
-  GIT_REPOSITORY "https://github.com/google/googletest.git"
+  GIT_REPOSITORY "https://github.com/google/googletest"
   GIT_TAG "main"
   FIND_PACKAGE_ARGS NAMES GTest)
-
 FetchContent_MakeAvailable(google_test google_benchmark)
 
 add_subdirectory(benchmark)
