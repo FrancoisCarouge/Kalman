@@ -3,7 +3,7 @@
 Build and run the benchmarks on all platforms:
 
 ```shell
-git clone --depth 1 https://github.com/FrancoisCarouge/Kalman.git "kalman"
+git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
 cmake -S "kalman" -B "build"
 cmake --build "build" --config "Release" --parallel
 ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark"

@@ -152,7 +152,7 @@ filter.update(position_x, position_y, variometer);
 # Installation
 
 ```shell
-git clone --depth 1 https://github.com/FrancoisCarouge/kalman.git
+git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
 cmake -S "kalman" -B "build"
 cmake --build "build" --parallel
 sudo cmake --install "build"

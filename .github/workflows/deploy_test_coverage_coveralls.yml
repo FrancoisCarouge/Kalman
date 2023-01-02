@@ -16,25 +16,25 @@ jobs:
       run: |
         sudo apt install gcc-12 g++-12 lcov
         ( cd /tmp
-          git clone --depth 1 "https://gitlab.com/libeigen/eigen.git"
+          git clone --depth 1 "https://gitlab.com/libeigen/eigen"
           cmake -S "eigen" -B "eigen/build"
           cmake --build "eigen/build" --parallel 4
           sudo cmake --install "eigen/build" )
         ( cd /tmp
-          git clone --depth 1 "https://github.com/fmtlib/fmt.git"
+          git clone --depth 1 "https://github.com/fmtlib/fmt"
           cmake -S "fmt" -B "fmt/build"
           cmake --build "fmt/build" --parallel 4
           sudo cmake --install "fmt/build" )
         ( cd /tmp
-          git clone --depth 1 "https://github.com/kokkos/mdspan.git"
+          git clone --depth 1 "https://github.com/kokkos/mdspan"
           cmake -S "mdspan" -B "mdspan/build"
           cmake --build "mdspan/build" --parallel 4
           sudo cmake --install "mdspan/build" )
         ( cd /tmp
-          git clone --depth 1 "https://github.com/kokkos/stdBLAS.git"
-          cmake -S "stdBLAS" -B "stdBLAS/build"
-          cmake --build "stdBLAS/build" --parallel 4
-          sudo cmake --install "stdBLAS/build" )
+          git clone --depth 1 "https://github.com/kokkos/stdblas"
+          cmake -S "stdblas" -B "stdblas/build"
+          cmake --build "stdblas/build" --parallel 4
+          sudo cmake --install "stdblas/build" )
     - name: Build
       run: |
         gcc-12 \
