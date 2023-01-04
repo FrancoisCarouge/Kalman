@@ -82,6 +82,13 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES GTest)
 FetchContent_MakeAvailable(google_test google_benchmark)
 
+FetchContent_Declare(
+  mdspan
+  GIT_REPOSITORY "https://github.com/kokkos/mdspan"
+  GIT_TAG "stable"
+  FIND_PACKAGE_ARGS NAMES mdspan)
+FetchContent_MakeAvailable(mdspan)
+
 add_subdirectory(benchmark)
 add_subdirectory(cmake)
 add_subdirectory(include)
