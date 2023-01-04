@@ -65,6 +65,7 @@ else()
 endif()
 
 add_library(kalman INTERFACE)
+add_library(kalman::kalman ALIAS kalman)
 target_sources(
   kalman
   INTERFACE FILE_SET
