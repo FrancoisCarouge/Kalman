@@ -96,6 +96,15 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES Kokkos)
 FetchContent_MakeAvailable(kokkos)
 
+FetchContent_Declare(
+  kokkos_kernels
+  GIT_REPOSITORY "https://github.com/kokkos/kokkos-kernels"
+  FIND_PACKAGE_ARGS NAMES KokkosKernels)
+FetchContent_MakeAvailable(kokkos_kernels)
+# if(WIN32)
+#   target_compile_options(kokkoskernels PRIVATE "/bigobj")
+# endif()
+
 add_subdirectory(benchmark)
 add_subdirectory(cmake)
 add_subdirectory(include)
