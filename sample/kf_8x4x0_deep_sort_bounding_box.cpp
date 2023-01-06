@@ -215,17 +215,16 @@ struct divide final {
                                 {0, 0, 0, 1, 0, 0, 0, 0}});
 
   // Observation, measurement noise covariance.
-  filter.r(
-      [position_weight](const kalman::state &x,
-                        const kalman::output &z) -> kalman::output_uncertainty {
-        static_cast<void>(z);
-        return vector<float, 4>{position_weight * x(3), position_weight * x(3),
-                                1e-1f, position_weight * x(3)}
-            .array()
-            .square()
-            .matrix()
-            .asDiagonal();
-      });
+  filter.r([position_weight](const kalman::state &x,
+                             [[maybe_unused]] const kalman::output &z)
+               -> kalman::output_uncertainty {
+    return vector<float, 4>{position_weight * x(3), position_weight * x(3),
+                            1e-1f, position_weight * x(3)}
+        .array()
+        .square()
+        .matrix()
+        .asDiagonal();
+  });
 
   // And so on, run a step of the filter, updating and predicting, every frame.
   for (const auto &output : measured) {

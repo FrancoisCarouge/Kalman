@@ -106,12 +106,10 @@ struct divide final {
   }
 
   {
-    const auto h{[](const kalman::state &x, const double &d, const float &f,
-                    const int &i) -> kalman::output_model {
-      static_cast<void>(x);
-      static_cast<void>(d);
-      static_cast<void>(f);
-      static_cast<void>(i);
+    const auto h{[]([[maybe_unused]] const kalman::state &x,
+                    [[maybe_unused]] const double &d,
+                    [[maybe_unused]] const float &f,
+                    [[maybe_unused]] const int &i) -> kalman::output_model {
       return matrix<double, 4, 5>::Identity();
     }};
     filter.h(h);
@@ -121,12 +119,10 @@ struct divide final {
   }
 
   {
-    const auto h{[](const kalman::state &x, const double &d, const float &f,
-                    const int &i) -> kalman::output_model {
-      static_cast<void>(x);
-      static_cast<void>(d);
-      static_cast<void>(f);
-      static_cast<void>(i);
+    const auto h{[]([[maybe_unused]] const kalman::state &x,
+                    [[maybe_unused]] const double &d,
+                    [[maybe_unused]] const float &f,
+                    [[maybe_unused]] const int &i) -> kalman::output_model {
       return matrix<double, 4, 5>::Zero();
     }};
     filter.h(std::move(h));

@@ -69,20 +69,18 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
   // the system random acceleration. The accelerometer error v is much lower
   // than system's random acceleration, therefore we use ϵ^2 as a multiplier of
   // the process noise matrix. This makes our estimation uncertainty much lower!
-  filter.q(
-      [](const kalman::state &x, const std::chrono::milliseconds &delta_time) {
-        static_cast<void>(x);
-        const auto dt{std::chrono::duration<double>(delta_time).count()};
-        return kalman::process_uncertainty{
-            {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
-            {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};
-      });
+  filter.q([]([[maybe_unused]] const kalman::state &x,
+              const std::chrono::milliseconds &delta_time) {
+    const auto dt{std::chrono::duration<double>(delta_time).count()};
+    return kalman::process_uncertainty{
+        {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
+        {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};
+  });
 
   // The state transition matrix F would be:
-  filter.f([](const kalman::state &x, const kalman::input &u,
+  filter.f([]([[maybe_unused]] const kalman::state &x,
+              [[maybe_unused]] const kalman::input &u,
               const std::chrono::milliseconds &delta_time) {
-    static_cast<void>(x);
-    static_cast<void>(u);
     const auto dt{std::chrono::duration<double>(delta_time).count()};
     return kalman::state_transition{{1, dt}, {0, 1}};
   });
