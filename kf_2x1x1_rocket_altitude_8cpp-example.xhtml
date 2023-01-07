@@ -137,20 +137,18 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line">  <span class="comment">// the system random acceleration. The accelerometer error v is much lower</span></div>
 <div class="line">  <span class="comment">// than system&#39;s random acceleration, therefore we use ϵ^2 as a multiplier of</span></div>
 <div class="line">  <span class="comment">// the process noise matrix. This makes our estimation uncertainty much lower!</span></div>
-<div class="line">  filter.q(</div>
-<div class="line">      [](<span class="keyword">const</span> <a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x, <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
-<div class="line">        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(x);</div>
-<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> dt{std::chrono::duration&lt;double&gt;(delta_time).count()};</div>
-<div class="line">        <span class="keywordflow">return</span> <a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">kalman::process_uncertainty</a>{</div>
-<div class="line">            {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},</div>
-<div class="line">            {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};</div>
-<div class="line">      });</div>
+<div class="line">  filter.q([]([[maybe_unused]] <span class="keyword">const</span> <a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x,</div>
+<div class="line">              <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> dt{std::chrono::duration&lt;double&gt;(delta_time).count()};</div>
+<div class="line">    <span class="keywordflow">return</span> <a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">kalman::process_uncertainty</a>{</div>
+<div class="line">        {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},</div>
+<div class="line">        {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};</div>
+<div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">  filter.f([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x, <span class="keyword">const</span> <a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ae50bc6a7b064ac6c91ddab3791b120db">kalman::input</a> &amp;u,</div>
+<div class="line">  filter.f([]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x,</div>
+<div class="line">              [[maybe_unused]] <span class="keyword">const</span> <a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ae50bc6a7b064ac6c91ddab3791b120db">kalman::input</a> &amp;u,</div>
 <div class="line">              <span class="keyword">const</span> std::chrono::milliseconds &amp;delta_time) {</div>
-<div class="line">    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(x);</div>
-<div class="line">    <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(u);</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> dt{std::chrono::duration&lt;double&gt;(delta_time).count()};</div>
 <div class="line">    <span class="keywordflow">return</span> <a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">kalman::state_transition</a>{{1, dt}, {0, 1}};</div>
 <div class="line">  });</div>
@@ -308,7 +306,7 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jan 6 2023 06:02:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Jan 7 2023 01:51:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

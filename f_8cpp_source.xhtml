@@ -163,32 +163,28 @@ $(document).ready(function(){initNavTree('f_8cpp_source.xhtml',''); initResizabl
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  }</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{[](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">kalman::state_transition</a> {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>      <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(x);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>      <span class="keywordflow">return</span> 6.;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }};</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>(f);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>() == 5);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">predict</a>();</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>() == 6);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{[](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">kalman::state_transition</a> {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(x);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      <span class="keywordflow">return</span> 7.;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }};</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>(std::move(f));</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>() == 6);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">predict</a>();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>() == 7);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}()};</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{[]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                     -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">kalman::state_transition</a> { <span class="keywordflow">return</span> 6.; }};</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>(f);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>() == 5);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">predict</a>();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>() == 6);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{[]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                     -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">kalman::state_transition</a> { <span class="keywordflow">return</span> 7.; }};</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>(std::move(f));</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>() == 6);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">predict</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a97aceea287d6f047b294f556db529baa">f</a>() == 7);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}()};</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter for C++23.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00167">kalman.hpp:167</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a052507ea7e38da8fbbc78e3bf04c96b2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">fcarouge::kalman::state_transition</a></div><div class="ttdeci">typename implementation::state_transition state_transition</div><div class="ttdoc">Type of the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00221">kalman.hpp:221</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3898db7da690aec04fa4621727d4bf56"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00942">kalman.hpp:942</a></div></div>
@@ -203,7 +199,7 @@ $(document).ready(function(){initNavTree('f_8cpp_source.xhtml',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.xhtml">test</a></li><li class="navelem"><a class="el" href="f_8cpp.xhtml">f.cpp</a></li>
-    <li class="footer">Generated on Fri Jan 6 2023 06:02:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Jan 7 2023 01:51:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

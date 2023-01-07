@@ -295,17 +295,16 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">                                {0, 0, 0, 1, 0, 0, 0, 0}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Observation, measurement noise covariance.</span></div>
-<div class="line">  filter.r(</div>
-<div class="line">      [position_weight](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x,</div>
-<div class="line">                        <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436">kalman::output</a> &amp;z) -&gt; <a id="a8" name="a8"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">kalman::output_uncertainty</a> {</div>
-<div class="line">        <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(z);</div>
-<div class="line">        <span class="keywordflow">return</span> vector&lt;float, 4&gt;{position_weight * x(3), position_weight * x(3),</div>
-<div class="line">                                1e-1f, position_weight * x(3)}</div>
-<div class="line">            .array()</div>
-<div class="line">            .square()</div>
-<div class="line">            .matrix()</div>
-<div class="line">            .asDiagonal();</div>
-<div class="line">      });</div>
+<div class="line">  filter.r([position_weight](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">kalman::state</a> &amp;x,</div>
+<div class="line">                             [[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436">kalman::output</a> &amp;z)</div>
+<div class="line">               -&gt; <a id="a8" name="a8"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">kalman::output_uncertainty</a> {</div>
+<div class="line">    <span class="keywordflow">return</span> vector&lt;float, 4&gt;{position_weight * x(3), position_weight * x(3),</div>
+<div class="line">                            1e-1f, position_weight * x(3)}</div>
+<div class="line">        .array()</div>
+<div class="line">        .square()</div>
+<div class="line">        .matrix()</div>
+<div class="line">        .asDiagonal();</div>
+<div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output : measured) {</div>
@@ -348,7 +347,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jan 6 2023 06:02:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Jan 7 2023 01:51:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
