@@ -65,21 +65,21 @@ FetchContent_Declare(
   fmt
   GIT_REPOSITORY "https://github.com/fmtlib/fmt"
   FIND_PACKAGE_ARGS NAMES fmt)
-option(FMT_INSTALL "Enable installation for the {fmt} project." ON)
 FetchContent_MakeAvailable(fmt)
-
-FetchContent_Declare(
-  google_benchmark
-  GIT_REPOSITORY "https://github.com/google/benchmark"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES benchmark)
 
 FetchContent_Declare(
   google_test
   GIT_REPOSITORY "https://github.com/google/googletest"
   GIT_TAG "main"
   FIND_PACKAGE_ARGS NAMES GTest)
-FetchContent_MakeAvailable(google_test google_benchmark)
+FetchContent_MakeAvailable(google_test)
+
+FetchContent_Declare(
+  google_benchmark
+  GIT_REPOSITORY "https://github.com/google/benchmark"
+  GIT_TAG "main"
+  FIND_PACKAGE_ARGS NAMES benchmark)
+FetchContent_MakeAvailable(google_benchmark)
 
 FetchContent_Declare(
   mdspan
