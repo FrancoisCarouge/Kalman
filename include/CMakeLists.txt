@@ -85,7 +85,7 @@ install(
   TARGETS kalman
   EXPORT kalmanTargets
   FILE_SET "kalman_headers"
-  DESTINATION "include/fcarouge")
+  DESTINATION "include")
 install(
   EXPORT kalmanTargets
   NAMESPACE kalman::
