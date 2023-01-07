@@ -48,9 +48,8 @@ template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
 struct empty {
-  inline constexpr explicit empty(auto &&...any) noexcept {
+  inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {
     // Constructs from anything for all initializations compatibility.
-    (static_cast<void>(any), ...);
   }
 };
 

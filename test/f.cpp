@@ -75,10 +75,8 @@ namespace {
   }
 
   {
-    const auto f{[](const kalman::state &x) -> kalman::state_transition {
-      static_cast<void>(x);
-      return 6.;
-    }};
+    const auto f{[]([[maybe_unused]] const kalman::state &x)
+                     -> kalman::state_transition { return 6.; }};
     filter.f(f);
     assert(filter.f() == 5);
     filter.predict();
@@ -86,10 +84,8 @@ namespace {
   }
 
   {
-    const auto f{[](const kalman::state &x) -> kalman::state_transition {
-      static_cast<void>(x);
-      return 7.;
-    }};
+    const auto f{[]([[maybe_unused]] const kalman::state &x)
+                     -> kalman::state_transition { return 7.; }};
     filter.f(std::move(f));
     assert(filter.f() == 6);
     filter.predict();

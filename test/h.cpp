@@ -75,10 +75,10 @@ namespace {
   }
 
   {
-    const auto h{[](const kalman::state &x) -> kalman::output_model {
-      static_cast<void>(x);
-      return 6.;
-    }};
+    const auto h{
+        []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
+          return 6.;
+        }};
     filter.h(h);
     assert(filter.h() == 5);
     filter.update(0.);
@@ -86,10 +86,10 @@ namespace {
   }
 
   {
-    const auto h{[](const kalman::state &x) -> kalman::output_model {
-      static_cast<void>(x);
-      return 7.;
-    }};
+    const auto h{
+        []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
+          return 7.;
+        }};
     filter.h(std::move(h));
     assert(filter.h() == 6);
     filter.update(0.);

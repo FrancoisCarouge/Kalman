@@ -107,16 +107,13 @@ struct divide final {
   }
 
   {
-    const auto f{[](const kalman::state &x, const kalman::input &u,
-                    const int &i, const float &fp,
-                    const double &d) -> kalman::state_transition {
-      static_cast<void>(x);
-      static_cast<void>(d);
-      static_cast<void>(fp);
-      static_cast<void>(i);
-      static_cast<void>(u);
-      return matrix<double, 5, 5>::Identity();
-    }};
+    const auto f{
+        []([[maybe_unused]] const kalman::state &x,
+           [[maybe_unused]] const kalman::input &u,
+           [[maybe_unused]] const int &i, [[maybe_unused]] const float &fp,
+           [[maybe_unused]] const double &d) -> kalman::state_transition {
+          return matrix<double, 5, 5>::Identity();
+        }};
     filter.f(f);
     assert(filter.f() == z5x5);
     filter.predict(0, 0.f, 0., z3);
@@ -124,16 +121,13 @@ struct divide final {
   }
 
   {
-    const auto f{[](const kalman::state &x, const kalman::input &u,
-                    const int &i, const float &fp,
-                    const double &d) -> kalman::state_transition {
-      static_cast<void>(x);
-      static_cast<void>(d);
-      static_cast<void>(fp);
-      static_cast<void>(i);
-      static_cast<void>(u);
-      return matrix<double, 5, 5>::Zero();
-    }};
+    const auto f{
+        []([[maybe_unused]] const kalman::state &x,
+           [[maybe_unused]] const kalman::input &u,
+           [[maybe_unused]] const int &i, [[maybe_unused]] const float &fp,
+           [[maybe_unused]] const double &d) -> kalman::state_transition {
+          return matrix<double, 5, 5>::Zero();
+        }};
     filter.f(std::move(f));
     assert(filter.f() == i5x5);
     filter.predict(0, 0.f, 0., z3);

@@ -107,44 +107,29 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
   //! specialized cases? Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-      [&h = h](const state &state_x,
-               const UpdateTypes &...update_pack) -> output_model {
-        static_cast<void>(state_x);
-        (static_cast<void>(update_pack), ...);
-        return h;
-      }};
+      [&h = h]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const UpdateTypes &...update_pack)
+          -> output_model { return h; }};
   noise_observation_function noise_observation_r{
-      [&r = r](const state &state_x, const output &output_z,
-               const UpdateTypes &...update_pack) -> output_uncertainty {
-        static_cast<void>(state_x);
-        static_cast<void>(output_z);
-        (static_cast<void>(update_pack), ...);
-        return r;
-      }};
+      [&r = r]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const output &output_z,
+               [[maybe_unused]] const UpdateTypes &...update_pack)
+          -> output_uncertainty { return r; }};
   transition_state_function transition_state_f{
-      [&f = f](const state &state_x,
-               const PredictionTypes &...prediction_pack) -> state_transition {
-        static_cast<void>(state_x);
-        (static_cast<void>(prediction_pack), ...);
-        return f;
-      }};
+      [&f = f]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> state_transition { return f; }};
   noise_process_function noise_process_q{
-      [&q = q](const state &state_x, const PredictionTypes &...prediction_pack)
-          -> process_uncertainty {
-        static_cast<void>(state_x);
-        (static_cast<void>(prediction_pack), ...);
-        return q;
-      }};
+      [&q = q]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> process_uncertainty { return q; }};
   transition_function transition{
       [&f = f](const state &state_x,
-               const PredictionTypes &...prediction_pack) -> state {
-        (static_cast<void>(prediction_pack), ...);
-        return f * state_x;
-      }};
+               [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> state { return f * state_x; }};
   observation_function observation{
       [&h = h](const state &state_x,
-               const UpdateTypes &...update_pack) -> output {
-        (static_cast<void>(update_pack), ...);
+               [[maybe_unused]] const UpdateTypes &...update_pack) -> output {
         return h * state_x;
       }};
 
@@ -238,50 +223,35 @@ struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
   //! specialized cases? Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-      [&h = h](const state &state_x,
-               const UpdateTypes &...update_pack) -> output_model {
-        static_cast<void>(state_x);
-        (static_cast<void>(update_pack), ...);
-        return h;
-      }};
+      [&h = h]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const UpdateTypes &...update_pack)
+          -> output_model { return h; }};
   noise_observation_function noise_observation_r{
-      [&r = r](const state &state_x, const output &output_z,
-               const UpdateTypes &...update_pack) -> output_uncertainty {
-        static_cast<void>(state_x);
-        static_cast<void>(output_z);
-        (static_cast<void>(update_pack), ...);
-        return r;
-      }};
+      [&r = r]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const output &output_z,
+               [[maybe_unused]] const UpdateTypes &...update_pack)
+          -> output_uncertainty { return r; }};
   transition_state_function transition_state_f{
-      [&f = f](const state &state_x, const input &input_u,
-               const PredictionTypes &...prediction_pack) -> state_transition {
-        static_cast<void>(state_x);
-        static_cast<void>(input_u);
-        (static_cast<void>(prediction_pack), ...);
-        return f;
-      }};
+      [&f = f]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const input &input_u,
+               [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> state_transition { return f; }};
   noise_process_function noise_process_q{
-      [&q = q](const state &state_x, const PredictionTypes &...prediction_pack)
-          -> process_uncertainty {
-        static_cast<void>(state_x);
-        (static_cast<void>(prediction_pack), ...);
-        return q;
-      }};
+      [&q = q]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> process_uncertainty { return q; }};
   transition_control_function transition_control_g{
-      [&g = g](const PredictionTypes &...prediction_pack) -> input_control {
-        (static_cast<void>(prediction_pack), ...);
-        return g;
-      }};
+      [&g = g]([[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> input_control { return g; }};
   transition_function transition{
-      [&f = f, &g = g](const state &state_x, const input &input_u,
-                       const PredictionTypes &...prediction_pack) -> state {
-        (static_cast<void>(prediction_pack), ...);
+      [&f = f, &g = g](
+          const state &state_x, const input &input_u,
+          [[maybe_unused]] const PredictionTypes &...prediction_pack) -> state {
         return f * state_x + g * input_u;
       }};
   observation_function observation{
       [&h = h](const state &state_x,
-               const UpdateTypes &...update_pack) -> output {
-        (static_cast<void>(update_pack), ...);
+               [[maybe_unused]] const UpdateTypes &...update_pack) -> output {
         return h * state_x;
       }};
 
