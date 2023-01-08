@@ -131,8 +131,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.xhtml",
-"kf__6x2x0__vehicle__location_8cpp.xhtml#a687f6b66de7a823dd4a43e9d571bcaef"
+"algorithm_8hpp.xhtml",
+"kf__2x1x1__rocket__altitude_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
