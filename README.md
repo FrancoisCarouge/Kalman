@@ -122,6 +122,7 @@ filter.update(position_x, position_y, variometer);
 - 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_dog_position.cpp).
 - 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_rocket_altitude.cpp).
 - 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_deep_sort_bounding_box.cpp).
+- [Apollo guidance, navigation, and control](sample/apollo.cpp).
 
 # Installation
 
@@ -307,6 +308,7 @@ Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM,
 - [Applications of Kalman Filtering in Aerospace 1960 to the Present](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5466132) by Mohinder S. Grewal and Angus P. Andrews. IEEE 2010.
 - [Taking Static Type-Safety to the Next Level - Physical Units for Matrices](https://www.youtube.com/watch?v=aF3samjRzD4) by Daniel Withopf at CppCon 2022 [[slides](https://meetingcpp.com/mcpp/slides/2021/Physical-units-for-matrices6397.pdf)].
 - [Units Libraries and Autonomous Vehicles: Lessons from the Trenches](https://www.youtube.com/watch?v=5dhFtSu3wCo) by Chip Hogg at CppCon 2021.
+- [R-649: The Apollo Rendezvous Navigation Filter Theory, Description and Performance, Volume 1 of 2](https://archive.org/details/R649Volume1) by Eugene S. Muller, Jr., and Peter M. Kachmar.
 
 ## Projects
 
