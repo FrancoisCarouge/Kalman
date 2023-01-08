@@ -36,17 +36,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_HPP
-#define FCAROUGE_KALMAN_HPP
+#ifndef FCAROUGE_ALGORITHM_HPP
+#define FCAROUGE_ALGORITHM_HPP
 
 //! @file
-//! @brief The Kalman library top-level header.
+//! @brief The collection of Kalman algorithms.
 //!
-//! @details Provides definitions of filters, algorithms, and utilities.
+//! @details Definitions and documentation.
+//!
+//! @todo Implement and test.
 
-#include "algorithm.hpp"
-#include "filter.hpp"
-
-#include "internal/detail.hpp"
-
-#endif // FCAROUGE_KALMAN_HPP
+#endif // FCAROUGE_ALGORITHM_HPP

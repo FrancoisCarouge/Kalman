@@ -73,9 +73,12 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
+            "fcarouge/internal/detail.hpp"
             "fcarouge/internal/format.hpp"
             "fcarouge/internal/kalman.hpp"
             "fcarouge/internal/utility.hpp"
+            "fcarouge/algorithm.hpp"
+            "fcarouge/filter.hpp"
             "fcarouge/kalman.hpp")
 target_compile_options(kalman INTERFACE ${OPTIONS})
 target_compile_features(kalman INTERFACE cxx_std_23)
