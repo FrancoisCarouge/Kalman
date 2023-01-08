@@ -34,7 +34,6 @@ This library supports various simple and extended filters. The implementation is
     - [Corporations \& Institutions](#corporations--institutions)
     - [Individuals](#individuals)
 - [Continuous Integration \& Deployment Actions](#continuous-integration--deployment-actions)
-- [Sponsors](#sponsors-1)
 - [License](#license)
 
 # Examples
@@ -343,6 +342,10 @@ The library is designed, developed, and tested with the help of third-party tool
 
 ## Sponsors
 
+Become a sponsor today! Support this project with coffee and infrastructure!
+
+[![Sponsor](https://img.shields.io/badge/Support-Sponsor-brightgreen)](http://paypal.me/francoiscarouge)
+
 ### Corporations & Institutions
 
 *Your group logo and link here!*
@@ -399,12 +402,6 @@ Thanks everyone!
 <br>
 <br>
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
-
-# Sponsors
-
-Become a sponsor today! Support this project with coffee and infrastructure!
-
-[![Sponsor](https://img.shields.io/badge/Support-Sponsor-brightgreen)](http://paypal.me/francoiscarouge)
 
 # License
 
