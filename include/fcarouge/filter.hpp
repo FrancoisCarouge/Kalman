@@ -535,6 +535,8 @@ public:
   //! @return The innovation column vector Y.
   //!
   //! @complexity Constant.
+  //!
+  //! @todo Add measurement post-fit residual by default and example?
   inline constexpr auto y() const -> const innovation &;
 
   //! @brief Returns the innovation uncertainty matrix S.
