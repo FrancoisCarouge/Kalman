@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_KALMAN_HPP
 #define FCAROUGE_INTERNAL_KALMAN_HPP
 
+#include "fcarouge/algorithm.hpp"
 #include "fcarouge/utility.hpp"
 
 #include <functional>

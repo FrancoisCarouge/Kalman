@@ -84,9 +84,7 @@ constexpr void for_constexpr(Function &&function) {
 }
 
 template <typename Type>
-inline constexpr Type identity_v{
-    //! @todo Implement standard, default form.
-};
+inline constexpr auto identity_v{identity_v<std::decay_t<Type>>};
 
 template <arithmetic Arithmetic>
 inline constexpr Arithmetic identity_v<Arithmetic>{1};
@@ -96,9 +94,7 @@ template <typename Matrix>
 inline const auto identity_v<Matrix>{Matrix::Identity()};
 
 template <typename Type>
-inline constexpr Type zero_v{
-    //! @todo Implement standard, default form.
-};
+inline constexpr auto zero_v{identity_v<std::decay_t<Type>>};
 
 template <arithmetic Arithmetic>
 inline constexpr Arithmetic zero_v<Arithmetic>{0};

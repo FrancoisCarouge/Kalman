@@ -46,4 +46,99 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @todo Implement and test.
 
+#include "fcarouge/utility.hpp"
+
+#include <type_traits>
+
+namespace fcarouge {
+
+//! @brief Produces estimates of the state variables and uncertainties.
+//!
+//! @details Also known as the propagation step. Implements the total
+//! probability theorem. Estimate the next state by suming the known
+//! probabilities.
+//!
+//! @note No input.
+inline constexpr void predict(auto f, auto &p, auto q, auto &x) {
+  x = f * x;
+  p = f * p * transposed(f) + q;
+}
+
+//! @brief Produces estimates of the state variables and uncertainties.
+//!
+//! @details Also known as the propagation step. Implements the total
+//! probability theorem. Estimate the next state by suming the known
+//! probabilities.
+inline constexpr void predict(auto f, auto g, auto &p, auto q, auto u,
+                              auto &x) {
+  x = f * x + g * u;
+  p = f * p * transposed(f) + q;
+}
+
+//! @brief Updates the estimates with the outcome of a measurement.
+//!
+//! @details Also known as the observation or correction step. Implements the
+//! Bayes' theorem. Combine one measurement and the prior estimate by applying
+//! the multiplicative law.
+//!
+//! @note Joseph form.
+inline constexpr void update(auto h, auto &p, auto r, auto &x, auto z) {
+  auto i{identity_v<decltype(p)>};
+  auto y{z - h * x};
+  auto s{h * p * transposed(h) + r};
+  auto k{p * transposed(h) / s};
+  x += k * y;
+  p = (i - k * h) * p * transposed(i - k * h) + k * r * transposed(k);
+}
+
+//! @brief Updates the estimates with the outcome of a measurement.
+//!
+//! @details Also known as the observation or correction step. Implements the
+//! Bayes' theorem. Combine one measurement and the prior estimate by applying
+//! the multiplicative law.
+//!
+//! @note Joseph form, identity observation transition.
+inline constexpr void update(auto &p, auto r, auto &x, auto z) {
+  auto i{identity_v<decltype(p)>};
+  auto y{z - x};
+  auto s{p + r};
+  auto k{p / s};
+  x += k * y;
+  p = (i - k) * p * transposed(i - k) + k * r * transposed(k);
+}
+
+//! @brief Updates the estimates with the outcome of a measurement.
+//!
+//! @details Also known as the observation or correction step. Implements the
+//! Bayes' theorem. Combine one measurement and the prior estimate by applying
+//! the multiplicative law.
+//!
+//! @note Optimal gain form. Tradeoff stability for performance if gain is
+//! optimal.
+inline constexpr void update2(auto h, auto &p, auto r, auto &x, auto z) {
+  auto i{identity_v<decltype(p)>};
+  auto y{z - h * x};
+  auto s{h * p * transposed(h) + r};
+  auto k{p * transposed(h) / s};
+  x += k * y;
+  p = (i - k * h) * p;
+}
+
+//! @brief Updates the estimates with the outcome of a measurement.
+//!
+//! @details Also known as the observation or correction step. Implements the
+//! Bayes' theorem. Combine one measurement and the prior estimate by applying
+//! the multiplicative law.
+//!
+//! @note Optimal gain form, identity observation transition.
+inline constexpr void update2(auto &p, auto r, auto &x, auto z) {
+  auto y{z - x};
+  auto s{p + r};
+  auto k{p / s};
+  x += k * y;
+  p -= k * p;
+}
+
+} // namespace fcarouge
+
 #endif // FCAROUGE_ALGORITHM_HPP
