@@ -154,17 +154,19 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#abfbdd536b26f2e0ad79fac3d4cb00e0b">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::operator=</a>  (const kalman &amp;other) -&gt; kalman &amp;=delete</dt>
 <dd><a class="anchor" id="_todo000010"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::predict</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000019"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000020"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a2697eb6865282a481107ec3aa4d42af5">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::update</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000020"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000021"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ac1f06b20e6494b0301d5b2ab8e4214b3">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::x</a>  () const -&gt; const state &amp;</dt>
 <dd><a class="anchor" id="_todo000012"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ae595d0ba1c0ede697b3669db0ff2dc20">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
+<dd><a class="anchor" id="_todo000017"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_divide_091fff7b634347e14b96e7877a9e05eb7.xhtml#a0fa1e05de18105998571dbf3631ec8de">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;, Char &gt;::format</a>  (const fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt; &amp;filter, std::basic_format_context&lt; OutputIt, Char &gt; &amp;format_context) -&gt; OutputIt</dt>
 <dd><a class="anchor" id="_todo000005"></a>P2585 may be useful in simplifying and standardizing the support. </dd>
 </dl>
@@ -174,7 +176,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jan 8 2023 23:14:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Tue Jan 10 2023 03:48:54 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
