@@ -285,7 +285,7 @@ Design, development, and testing uncovered unexpected facets of the projects:
 
 ## Performance
 
-The [benchmarks](benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
+The [benchmarks](benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix solver; removing unused or identity model dynamics supports; using non-polymorphic function callbacks; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
 
 ![Eigen Update](benchmark/image/eigen_update.svg)
 ![Float](benchmark/image/float.svg)
