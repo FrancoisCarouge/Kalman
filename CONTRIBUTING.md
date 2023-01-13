@@ -4,7 +4,7 @@ Thank you for taking the time to contribute!
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the [Code of Conduct](https://github.com/FrancoisCarouge/Kalman/blob/develop/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to francois.carouge@gmail.com.
+This project and everyone participating in it is governed by the [Code of Conduct](https://github.com/FrancoisCarouge/Kalman/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to francois.carouge@gmail.com.
 
 ## Reporting Bugs
 

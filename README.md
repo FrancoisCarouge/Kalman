@@ -374,7 +374,7 @@ Thanks everyone!
 <br>
 [![CMakeFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml)
 <br>
-[![Coverage Status](https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=develop)](https://coveralls.io/github/FrancoisCarouge/Kalman?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=master)](https://coveralls.io/github/FrancoisCarouge/Kalman?branch=master)
 <br>
 [![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
 <br>
@@ -391,7 +391,7 @@ Thanks everyone!
 [![Undefined Behavior Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_undefined_behavior.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_undefined_behavior.yml)
 <br>
 <br>
-[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/develop/LICENSE.txt)
+[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt)
 <br>
 [![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
 <br>
