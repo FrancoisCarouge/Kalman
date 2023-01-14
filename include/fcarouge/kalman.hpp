@@ -49,7 +49,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "algorithm.hpp"
 #include "internal/format.hpp"
 #include "internal/kalman.hpp"
-#include "internal/utility.hpp"
+#include "utility.hpp"
 
 #include <concepts>
 #include <cstddef>
@@ -58,12 +58,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-
-//! @brief Convenience tuple-like empty pack type.
-using empty_pack = internal::empty_pack;
-
-//! @brief Convenience tuple-like pack type.
-template <typename... Types> using pack = internal::pack<Types...>;
 
 //! @brief A generic Kalman filter for C++23.
 //!

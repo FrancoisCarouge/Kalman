@@ -78,7 +78,8 @@ target_sources(
             "fcarouge/internal/kalman.hpp"
             "fcarouge/internal/utility.hpp"
             "fcarouge/algorithm.hpp"
-            "fcarouge/kalman.hpp")
+            "fcarouge/kalman.hpp"
+            "fcarouge/utility.hpp")
 target_compile_options(kalman INTERFACE ${OPTIONS})
 target_compile_features(kalman INTERFACE cxx_std_23)
 target_link_libraries(
