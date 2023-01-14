@@ -9,6 +9,6 @@ var searchData=
   ['eigen_5fupdate_5fxx0_2ecpp_6',['eigen_update_xx0.cpp',['../eigen__update__xx0_8cpp.xhtml',1,'']]],
   ['ekf_5f4x1x0_5fsoaring_7',['ekf_4x1x0_soaring',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a2e1b5924521668d6ef2cdd18d33fff13',1,'fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}']]],
   ['ekf_5f4x1x0_5fsoaring_2ecpp_8',['ekf_4x1x0_soaring.cpp',['../ekf__4x1x0__soaring_8cpp.xhtml',1,'']]],
-  ['empty_5fpack_9',['empty_pack',['../namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca',1,'fcarouge::empty_pack()'],['../namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503',1,'fcarouge::internal::empty_pack()']]],
+  ['empty_5fpack_9',['empty_pack',['../namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503',1,'fcarouge::internal::empty_pack()'],['../namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca',1,'fcarouge::empty_pack()']]],
   ['estimate_5funcertainty_10',['estimate_uncertainty',['../classfcarouge_1_1kalman.xhtml#a1d1f1dacf69723b9a2027df00faa44d7',1,'fcarouge::kalman']]]
 ];
