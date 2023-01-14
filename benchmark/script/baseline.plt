@@ -6,7 +6,7 @@
 # | . \  / ____ \| |____| |  | |/ ____ \| |\  |
 # |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
-# Kalman Filter for C++
+# Kalman Filter
 # Version 0.2.0
 # https://github.com/FrancoisCarouge/Kalman
 

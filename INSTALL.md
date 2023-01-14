@@ -39,7 +39,7 @@ ctest --test-dir "build" --build-config "Debug" --tests-regex "kalman_(test|samp
 
 ## Benchmarks
 
-See the [Benchmark](benchmark/) section.
+See the [Benchmark](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark) section.
 
 ## Installation Packages
 
