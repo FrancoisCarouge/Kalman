@@ -107,30 +107,32 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
   //! specialized cases? Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-      [&h = h]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const UpdateTypes &...update_pack)
-          -> output_model { return h; }};
+      []([[maybe_unused]] const state &state_x,
+         [[maybe_unused]] const UpdateTypes &...update_pack) -> output_model {
+        return identity_v<output_model>;
+      }};
   noise_observation_function noise_observation_r{
-      [&r = r]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const output &output_z,
-               [[maybe_unused]] const UpdateTypes &...update_pack)
-          -> output_uncertainty { return r; }};
+      []([[maybe_unused]] const state &state_x,
+         [[maybe_unused]] const output &output_z,
+         [[maybe_unused]] const UpdateTypes &...update_pack)
+          -> output_uncertainty { return zero_v<output_uncertainty>; }};
   transition_state_function transition_state_f{
-      [&f = f]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> state_transition { return f; }};
+      []([[maybe_unused]] const state &state_x,
+         [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> state_transition { return identity_v<state_transition>; }};
   noise_process_function noise_process_q{
-      [&q = q]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> process_uncertainty { return q; }};
+      []([[maybe_unused]] const state &state_x,
+         [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> process_uncertainty { return zero_v<process_uncertainty>; }};
   transition_function transition{
-      [&f = f](const state &state_x,
-               [[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> state { return f * state_x; }};
+      [](const state &state_x,
+         [[maybe_unused]] const PredictionTypes &...prediction_pack) -> state {
+        return state_x;
+      }};
   observation_function observation{
-      [&h = h](const state &state_x,
-               [[maybe_unused]] const UpdateTypes &...update_pack) -> output {
-        return h * state_x;
+      [](const state &state_x,
+         [[maybe_unused]] const UpdateTypes &...update_pack) -> output {
+        return identity_v<output_model> * state_x;
       }};
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
@@ -223,36 +225,36 @@ struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
   //! specialized cases? Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-      [&h = h]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const UpdateTypes &...update_pack)
-          -> output_model { return h; }};
+      []([[maybe_unused]] const state &state_x,
+         [[maybe_unused]] const UpdateTypes &...update_pack) -> output_model {
+        return identity_v<output_model>;
+      }};
   noise_observation_function noise_observation_r{
-      [&r = r]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const output &output_z,
-               [[maybe_unused]] const UpdateTypes &...update_pack)
-          -> output_uncertainty { return r; }};
+      []([[maybe_unused]] const state &state_x,
+         [[maybe_unused]] const output &output_z,
+         [[maybe_unused]] const UpdateTypes &...update_pack)
+          -> output_uncertainty { return zero_v<output_uncertainty>; }};
   transition_state_function transition_state_f{
-      [&f = f]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const input &input_u,
-               [[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> state_transition { return f; }};
+      []([[maybe_unused]] const state &state_x,
+         [[maybe_unused]] const input &input_u,
+         [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> state_transition { return identity_v<state_transition>; }};
   noise_process_function noise_process_q{
-      [&q = q]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> process_uncertainty { return q; }};
+      []([[maybe_unused]] const state &state_x,
+         [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> process_uncertainty { return zero_v<process_uncertainty>; }};
   transition_control_function transition_control_g{
-      [&g = g]([[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> input_control { return g; }};
+      []([[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> input_control { return identity_v<input_control>; }};
   transition_function transition{
-      [&f = f, &g = g](
-          const state &state_x, const input &input_u,
-          [[maybe_unused]] const PredictionTypes &...prediction_pack) -> state {
-        return f * state_x + g * input_u;
+      [](const state &state_x, const input &input_u,
+         [[maybe_unused]] const PredictionTypes &...prediction_pack) -> state {
+        return state_x + identity_v<input_control> * input_u;
       }};
   observation_function observation{
-      [&h = h](const state &state_x,
-               [[maybe_unused]] const UpdateTypes &...update_pack) -> output {
-        return h * state_x;
+      [](const state &state_x,
+         [[maybe_unused]] const UpdateTypes &...update_pack) -> output {
+        return identity_v<output_model> * state_x;
       }};
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or

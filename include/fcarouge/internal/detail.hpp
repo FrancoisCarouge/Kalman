@@ -139,6 +139,15 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
     const auto &value, const auto &...values) {
   if constexpr (std::is_convertible_v<decltype(value), process_uncertainty>) {
     filter.q = std::move(process_uncertainty{value, values...});
+
+    [&]<template <typename...> typename Packed, typename... Pack>(
+        [[maybe_unused]] Packed<Pack...> pack) {
+      filter.noise_process_q =
+          [q = filter.q]([[maybe_unused]] const state &state_x,
+                         [[maybe_unused]] const Pack &...prediction_pack)
+          -> process_uncertainty { return q; };
+    }(PredictionTypes{});
+
   } else {
     using noise_process_function = decltype(filter.noise_process_q);
     filter.noise_process_q =
@@ -171,6 +180,16 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
     const auto &value, const auto &...values) {
   if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
     filter.r = std::move(output_uncertainty{value, values...});
+
+    [&]<template <typename...> typename Packed, typename... Pack>(
+        [[maybe_unused]] Packed<Pack...> pack) {
+      filter.noise_observation_r =
+          [r = filter.r]([[maybe_unused]] const state &state_x,
+                         [[maybe_unused]] const output &output_z,
+                         [[maybe_unused]] const Pack &...update_pack)
+          -> output_uncertainty { return r; };
+    }(UpdateTypes{});
+
   } else {
     using noise_observation_function = decltype(filter.noise_observation_r);
     filter.noise_observation_r =
@@ -203,10 +222,40 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
     const auto &value, const auto &...values) {
   if constexpr (std::is_convertible_v<decltype(value), state_transition>) {
     filter.f = std::move(state_transition{value, values...});
+
+    [&]<template <typename...> typename Packed, typename... Pack>(
+        [[maybe_unused]] Packed<Pack...> pack) {
+      if constexpr (std::is_same_v<Input, void>) {
+        filter.transition_state_f =
+            [f = filter.f]([[maybe_unused]] const state &state_x,
+                           [[maybe_unused]] const Pack &...prediction_pack)
+            -> state_transition { return f; };
+        filter.transition =       [f = filter.f](const state &state_x,
+         [[maybe_unused]] const PredictionTypes &...prediction_pack) -> state {
+        return f * state_x;
+      };
+          
+      } else {
+        filter.transition_state_f =
+            [f = filter.f]([[maybe_unused]] const state &state_x,
+                           [[maybe_unused]] const input &input_u,
+                           [[maybe_unused]] const Pack &...prediction_pack)
+            -> state_transition { return f; };
+        filter.transition =       [f = filter.f, g = filter.g](const state &state_x,
+         [[maybe_unused]] const PredictionTypes &...prediction_pack) -> state {
+        return f * state_x + g * input_u;
+      };
+      }
+    }(PredictionTypes{});
+
   } else {
     using transition_state_function = decltype(filter.transition_state_f);
     filter.transition_state_f =
         std::move(transition_state_function{value, values...});
+
+        // Variable F --> transition???
+        // We really need model composition, we can't practically be both 
+        // a classic filter and an extended model at the same time...
   }
 }
 
@@ -235,6 +284,17 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
     const auto &value, const auto &...values) {
   if constexpr (std::is_convertible_v<decltype(value), output_model>) {
     filter.h = std::move(output_model{value, values...});
+
+    [&]<template <typename...> typename Packed, typename... Pack>(
+        [[maybe_unused]] Packed<Pack...> pack) {
+      filter.observation_state_h =
+          [h = filter.h](
+              [[maybe_unused]] const state &state_x,
+              [[maybe_unused]] const Pack &...update_pack) -> output_model {
+        return h;
+      };
+    }(UpdateTypes{});
+
   } else {
     using observation_state_function = decltype(filter.observation_state_h);
     filter.observation_state_h =
@@ -270,6 +330,14 @@ inline constexpr void kalman<State, Output, Input, Divide, UpdateTypes,
 {
   if constexpr (std::is_convertible_v<decltype(value), input_control>) {
     filter.g = std::move(input_control{value, values...});
+
+    [&]<template <typename...> typename Packed, typename... Pack>(
+        [[maybe_unused]] Packed<Pack...> pack) {
+      filter.transition_control_g =
+          [g = filter.g]([[maybe_unused]] const Pack &...prediction_pack)
+          -> input_control { return g; };
+    }(PredictionTypes{});
+
   } else {
     using transition_control_function = decltype(filter.transition_control_g);
     filter.transition_control_g =
