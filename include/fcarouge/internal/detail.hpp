@@ -39,8 +39,6 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_DETAIL_HPP
 #define FCAROUGE_INTERNAL_DETAIL_HPP
 
-#include "fcarouge/filter.hpp"
-
 namespace fcarouge {
 
 template <typename State, typename Output, typename Input, typename Divide,

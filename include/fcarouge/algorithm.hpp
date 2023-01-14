@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief The collection of Kalman algorithms.
 //!
-//! @details Definitions and documentation.
+//! @details Public Kalman algorithm definitions and documentation.
 //!
 //! @todo Implement and test.
 
