@@ -88,6 +88,7 @@ $(document).ready(function(){initNavTree('namespacefcarouge.xhtml',''); initResi
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#concepts">Concepts</a> &#124;
 <a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle"><div class="title">fcarouge Namespace Reference</div></div>
 </div><!--header-->
@@ -117,15 +118,21 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A generic Kalman filter for C++23.  <a href="classfcarouge_1_1kalman.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
+Concepts</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1arithmetic.xhtml">arithmetic</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arithmetic concept. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">empty_pack</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">internal::empty_pack</a></td></tr>
-<tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience tuple-like empty pack type.  <a href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">More...</a><br /></td></tr>
-<tr class="separator:af07a5637ebbb4bd8c0244134151732ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a> = internal::pack&lt; Types... &gt;</td></tr>
-<tr class="memdesc:aa5a28afb4550bbcbd55d875351de6e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience tuple-like pack type.  <a href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">More...</a><br /></td></tr>
+<tr class="memdesc:aa5a28afb4550bbcbd55d875351de6e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like pack type.  <a href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">More...</a><br /></td></tr>
 <tr class="separator:aa5a28afb4550bbcbd55d875351de6e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">empty_pack</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">internal::empty_pack</a></td></tr>
+<tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like empty pack type.  <a href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">More...</a><br /></td></tr>
+<tr class="separator:af07a5637ebbb4bd8c0244134151732ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Francois Carouge's projects namespace. </p>
@@ -143,9 +150,10 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Convenience tuple-like empty pack type. </p>
+<p>Tuple-like empty pack type. </p>
+<p >A <code>pack</code> type with no composed types. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00063">63</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00065">65</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -163,9 +171,10 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Convenience tuple-like pack type. </p>
+<p>Tuple-like pack type. </p>
+<p >An alternative to tuple-like types. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00066">66</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00060">60</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -175,7 +184,7 @@ template&lt;typename... Types&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li>
-    <li class="footer">Generated on Sat Jan 14 2023 22:13:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jan 15 2023 00:53:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

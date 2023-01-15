@@ -18,6 +18,7 @@ var namespacefcarouge =
     [ "sample", "namespacefcarouge_1_1sample.xhtml", "namespacefcarouge_1_1sample" ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
+    [ "arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
     [ "empty_pack", "namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca", null ],
     [ "pack", "namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27", null ]
 ];
