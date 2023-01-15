@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: A Generic Kalman Filter for C++23</title>
+<title>Kalman: A Generic Kalman Filter</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">Kalman<span id="projectnumber">&#160;0.2.0</span>
    </div>
-   <div id="projectbrief">Kalman Filter for C++</div>
+   <div id="projectbrief">Kalman Filter</div>
   </td>
  </tr>
  </tbody>
@@ -85,13 +85,13 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">A Generic Kalman Filter for C++23 </div></div>
+  <div class="headertitle"><div class="title">A Generic Kalman Filter </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md__github_workspace_README"></a> The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state <em>X</em>, <em>P</em>, the process <em>F</em>, <em>Q</em>, the measurement <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>.</p>
 <p >This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
 <ul>
-<li>A Generic Kalman Filter for C++23</li>
+<li>A Generic Kalman Filter</li>
 <li>Examples<ul>
 <li>1x1 Constant System Dynamic Model Filter</li>
 <li>6x2 Constant Acceleration Dynamic Model Filter</li>
@@ -149,7 +149,7 @@ Examples</h1>
 <div class="line">filter.r(25.);</div>
 <div class="line"> </div>
 <div class="line">filter.update(48.54);</div>
-</div><!-- fragment --><p ><a href="sample/kf_1x1x0_building_height.cpp">full sample code</a></p>
+</div><!-- fragment --><p ><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md24"></a>
 6x2 Constant Acceleration Dynamic Model Filter</h2>
 <p >Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_6x2x0_vehicle_location_8cpp-example.xhtml">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
@@ -182,7 +182,7 @@ Examples</h1>
 <div class="line"> </div>
 <div class="line">filter.predict();</div>
 <div class="line">filter.update(-375.93, 301.78);</div>
-</div><!-- fragment --><p ><a href="sample/kf_6x2x0_vehicle_location.cpp">full sample code</a></p>
+</div><!-- fragment --><p ><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_vehicle_location.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md25"></a>
 4x1 Nonlinear Dynamic Model Extended Filter</h2>
 <p >Example from the <a href="https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
@@ -226,14 +226,14 @@ Examples</h1>
 <div class="line"> </div>
 <div class="line">filter.predict(drift_x, drift_y);</div>
 <div class="line">filter.update(position_x, position_y, variometer);</div>
-</div><!-- fragment --><p ><a href="sample/ekf_4x1x0_soaring.cpp">full sample code</a></p>
+</div><!-- fragment --><p ><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_soaring.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md26"></a>
 Other Examples</h2>
 <ul>
-<li>1x1 constant system dynamic model filter of the <a href="sample/kf_1x1x0_building_height.cpp">temperature of a liquid in a tank</a>.</li>
-<li>1x1x1 constant velocity dynamic model filter of the <a href="sample/kf_1x1x1_dog_position.cpp">1-dimension position of a dog</a>.</li>
-<li>2x1x1 constant acceleration dynamic model filter of the <a href="sample/kf_2x1x1_rocket_altitude.cpp">1-dimension position and velocity of a rocket altitude</a>.</li>
-<li>8x4 constant velocity dynamic model filter of the <a href="sample/kf_8x4x0_deep_sort_bounding_box.cpp">2-dimension position and velocity of the center, aspect ratio, and height of a bounding box</a>.</li>
+<li>1x1 constant system dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">temperature of a liquid in a tank</a>.</li>
+<li>1x1x1 constant velocity dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_dog_position.cpp">1-dimension position of a dog</a>.</li>
+<li>2x1x1 constant acceleration dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_rocket_altitude.cpp">1-dimension position and velocity of a rocket altitude</a>.</li>
+<li>8x4 constant velocity dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_deep_sort_bounding_box.cpp">2-dimension position and velocity of the center, aspect ratio, and height of a bounding box</a>.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md27"></a>
 Installation</h1>
@@ -243,12 +243,12 @@ Installation</h1>
 <div class="line">sudo cmake --install &quot;build&quot;</div>
 </div><!-- fragment --><div class="fragment"><div class="line">find_package(kalman)</div>
 <div class="line">target_link_libraries(your_target PRIVATE kalman::kalman)</div>
-</div><!-- fragment --><p ><a class="el" href="md__github_workspace__i_n_s_t_a_l_l.xhtml">For more, see installation instructions</a>.</p>
+</div><!-- fragment --><p ><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/INSTALL.md">For more, see installation instructions</a>.</p>
 <h1><a class="anchor" id="autotoc_md28"></a>
 Reference</h1>
 <h2><a class="anchor" id="autotoc_md29"></a>
 Class kalman</h2>
-<p >Also documented in the <a href="include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a> header.</p>
+<p >Also documented in the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a> header.</p>
 <h3><a class="anchor" id="autotoc_md30"></a>
 Declaration</h3>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
@@ -378,7 +378,7 @@ Motivations</h2>
 <p >This package explores what could be a Kalman filter implementation a la standard library. The following concerns are considered:</p><ul>
 <li>Separation of the application domain and integration needs.</li>
 <li>Separation of the mathematical concepts and linear algebra implementation.</li>
-<li>Generalization of the modern C++ language and library support.</li>
+<li>Generalization and specialization of modern language and library support.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md39"></a>
 Selected Tradeoffs</h2>
@@ -398,8 +398,8 @@ Lessons Learned</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md41"></a>
 Performance</h2>
-<p >The [benchmarks](benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>
-<p ><img src="eigen_update.svg" alt="" style="pointer-events: none;" class="inline" title="Eigen Update"/>     <img src="float.svg" alt="" style="pointer-events: none;" class="inline" title="Float"/>    </p>
+<p >The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark">benchmarks</a> share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>
+<p ><img src="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/image/eigen_update.svg" alt="Eigen Update" style="pointer-events: none;" class="inline"/> <img src="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/image/float.svg" alt="Float" style="pointer-events: none;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md42"></a>
 Resources</h1>
 <h2><a class="anchor" id="autotoc_md43"></a>
@@ -493,7 +493,7 @@ Continuous Integration &amp; Deployment Actions</h1>
 <h1><a class="anchor" id="autotoc_md51"></a>
 License</h1>
 <p ><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>
-<p >Kalman for C++ is public domain:</p>
+<p >Kalman Filter is public domain:</p>
 <p >This is free and unencumbered software released into the public domain.</p>
 <p >Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.</p>
 <p >In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.</p>
@@ -505,7 +505,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jan 15 2023 00:53:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jan 15 2023 01:35:23 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

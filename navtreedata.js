@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
-    [ "A Generic Kalman Filter for C++23", "index.xhtml", [
+    [ "A Generic Kalman Filter", "index.xhtml", [
       [ "Examples", "index.xhtml#autotoc_md22", [
         [ "1x1 Constant System Dynamic Model Filter", "index.xhtml#autotoc_md23", null ],
         [ "6x2 Constant Acceleration Dynamic Model Filter", "index.xhtml#autotoc_md24", null ],

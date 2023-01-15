@@ -29,7 +29,7 @@
   <td id="projectalign">
    <div id="projectname">Kalman<span id="projectnumber">&#160;0.2.0</span>
    </div>
-   <div id="projectbrief">Kalman Filter for C++</div>
+   <div id="projectbrief">Kalman Filter</div>
   </td>
  </tr>
  </tbody>
@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('classfcarouge_1_1kalman.xhtml',''); in
 </div><!--header-->
 <div class="contents">
 
-<p>A generic Kalman filter for C++23.  
+<p>A generic Kalman filter.  
  <a href="classfcarouge_1_1kalman.xhtml#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>&gt;</code></p>
@@ -275,7 +275,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename State = double, typename Output = double, typename Input = void, typename Divide = std::divides&lt;void&gt;, typename UpdateTypes = empty_pack, typename PredictionTypes = empty_pack&gt;<br />
-class fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;</div><p >A generic Kalman filter for C++23. </p>
+class fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;</div><p >A generic Kalman filter. </p>
 <p >The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.</p>
 <p >This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -2223,7 +2223,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sun Jan 15 2023 00:53:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jan 15 2023 01:35:23 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
