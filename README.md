@@ -1,10 +1,10 @@
-# A Generic Kalman Filter for C++23
+# A Generic Kalman Filter
 
 The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state *X*, *P*, the process *F*, *Q*, the measurement *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*.
 
 This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.
 
-- [A Generic Kalman Filter for C++23](#a-generic-kalman-filter-for-c23)
+- [A Generic Kalman Filter](#a-generic-kalman-filter)
 - [Examples](#examples)
   - [1x1 Constant System Dynamic Model Filter](#1x1-constant-system-dynamic-model-filter)
   - [6x2 Constant Acceleration Dynamic Model Filter](#6x2-constant-acceleration-dynamic-model-filter)
@@ -52,7 +52,7 @@ filter.r(25.);
 filter.update(48.54);
 ```
 
-[full sample code](sample/kf_1x1x0_building_height.cpp)
+[full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp)
 
 ## 6x2 Constant Acceleration Dynamic Model Filter
 
@@ -90,7 +90,7 @@ filter.predict();
 filter.update(-375.93, 301.78);
 ```
 
-[full sample code](sample/kf_6x2x0_vehicle_location.cpp)
+[full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_vehicle_location.cpp)
 
 ## 4x1 Nonlinear Dynamic Model Extended Filter
 
@@ -139,14 +139,14 @@ filter.predict(drift_x, drift_y);
 filter.update(position_x, position_y, variometer);
 ```
 
-[full sample code](sample/ekf_4x1x0_soaring.cpp)
+[full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_soaring.cpp)
 
 ## Other Examples
 
-- 1x1 constant system dynamic model filter of the [temperature of a liquid in a tank](sample/kf_1x1x0_building_height.cpp).
-- 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](sample/kf_1x1x1_dog_position.cpp).
-- 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](sample/kf_2x1x1_rocket_altitude.cpp).
-- 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](sample/kf_8x4x0_deep_sort_bounding_box.cpp).
+- 1x1 constant system dynamic model filter of the [temperature of a liquid in a tank](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp).
+- 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_dog_position.cpp).
+- 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_rocket_altitude.cpp).
+- 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_deep_sort_bounding_box.cpp).
 
 # Installation
 
@@ -162,13 +162,13 @@ find_package(kalman)
 target_link_libraries(your_target PRIVATE kalman::kalman)
 ```
 
-[For more, see installation instructions](INSTALL.md).
+[For more, see installation instructions](https://github.com/FrancoisCarouge/Kalman/tree/master/INSTALL.md).
 
 # Reference
 
 ## Class kalman
 
-Also documented in the [fcarouge/kalman.hpp](include/fcarouge/kalman.hpp) header.
+Also documented in the [fcarouge/kalman.hpp](https://github.com/FrancoisCarouge/Kalman/tree/master/include/fcarouge/kalman.hpp) header.
 
 ### Declaration
 
@@ -265,7 +265,7 @@ Kalman filters can be difficult to learn, use, and implement. Users often need f
 This package explores what could be a Kalman filter implementation a la standard library. The following concerns are considered:
 - Separation of the application domain and integration needs.
 - Separation of the mathematical concepts and linear algebra implementation.
-- Generalization of the modern C++ language and library support.
+- Generalization and specialization of modern language and library support.
 
 ## Selected Tradeoffs
 
@@ -285,10 +285,10 @@ Design, development, and testing uncovered unexpected facets of the projects:
 
 ## Performance
 
-The [benchmarks](benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
+The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
 
-![Eigen Update](benchmark/image/eigen_update.svg)
-![Float](benchmark/image/float.svg)
+![Eigen Update](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/image/eigen_update.svg)
+![Float](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/image/float.svg)
 
 # Resources
 
@@ -407,7 +407,7 @@ Thanks everyone!
 
 <img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
 
-Kalman for C++ is public domain:
+Kalman Filter is public domain:
 
 This is free and unencumbered software released into the public domain.
 

@@ -5,7 +5,7 @@
 | . \  / ____ \| |____| |  | |/ ____ \| |\  |
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
-Kalman Filter for C++
+Kalman Filter
 Version 0.2.0
 https://github.com/FrancoisCarouge/Kalman
 
@@ -59,7 +59,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 
-//! @brief A generic Kalman filter for C++23.
+//! @brief A generic Kalman filter.
 //!
 //! @details The Kalman filter is a Bayesian filter that uses multivariate
 //! Gaussians, a recursive state estimator, a linear quadratic estimator (LQE),

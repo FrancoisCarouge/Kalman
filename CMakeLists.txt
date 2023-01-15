@@ -5,7 +5,7 @@
 | . \  / ____ \| |____| |  | |/ ____ \| |\  |
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
-Kalman Filter for C++
+Kalman Filter
 Version 0.2.0
 https://github.com/FrancoisCarouge/Kalman
 
@@ -40,7 +40,7 @@ cmake_minimum_required(VERSION "3.24")
 
 project(
   kalman
-  DESCRIPTION "Kalman Filter for C++"
+  DESCRIPTION "Kalman Filter"
   HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
   LANGUAGES "CXX"
   VERSION "0.2.0")
