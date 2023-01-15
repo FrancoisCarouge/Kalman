@@ -65,7 +65,6 @@ else()
 endif()
 
 add_library(kalman INTERFACE)
-add_library(kalman::kalman ALIAS kalman)
 target_sources(
   kalman
   INTERFACE FILE_SET
@@ -82,8 +81,7 @@ target_sources(
             "fcarouge/utility.hpp")
 target_compile_options(kalman INTERFACE ${OPTIONS})
 target_compile_features(kalman INTERFACE cxx_std_23)
-target_link_libraries(
-  kalman INTERFACE $<BUILD_INTERFACE:$<$<NOT:$<BOOL:${WIN32}>>:kalman_format>>)
+target_link_libraries(kalman INTERFACE $<$<NOT:$<BOOL:${WIN32}>>:kalman_format>)
 install(
   TARGETS kalman
   EXPORT kalmanTargets
@@ -93,3 +91,10 @@ install(
   EXPORT kalmanTargets
   NAMESPACE kalman::
   DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
+
+# Conditionally provide the namespace alias target which may be an imported
+# target from a package, or an aliased target if built as part of the same
+# buildsystem.
+if(NOT TARGET kalman::kalman)
+  add_library(kalman::kalman ALIAS kalman)
+endif()
