@@ -84,12 +84,11 @@ target_compile_features(kalman INTERFACE cxx_std_23)
 target_link_libraries(kalman INTERFACE $<$<NOT:$<BOOL:${WIN32}>>:kalman_format>)
 install(
   TARGETS kalman
-  EXPORT kalmanTargets
-  FILE_SET "kalman_headers"
-  DESTINATION "include")
+  EXPORT "kalman-target"
+  FILE_SET "kalman_headers")
 install(
-  EXPORT kalmanTargets
-  NAMESPACE kalman::
+  EXPORT "kalman-target"
+  NAMESPACE "kalman::"
   DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
 
 # Conditionally provide the namespace alias target which may be an imported

@@ -47,11 +47,11 @@ else()
   target_link_libraries(kalman_format INTERFACE fmt::fmt)
   install(
     TARGETS kalman_format
-    EXPORT kalmanTargets
+    EXPORT "kalman-target"
     FILE_SET "kalman_format_headers"
     DESTINATION "include/fcarouge")
   install(
-    EXPORT kalmanTargets
-    NAMESPACE kalman::
+    EXPORT "kalman-target"
+    NAMESPACE "kalman::"
     DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
 endif()

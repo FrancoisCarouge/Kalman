@@ -45,8 +45,8 @@ write_basic_package_version_file(
   "kalman-config-version.cmake" COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
 
 install(
-  EXPORT kalmanTargets
-  NAMESPACE kalman::
+  EXPORT "kalman-target"
+  NAMESPACE "kalman::"
   DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kalman-config.cmake"
