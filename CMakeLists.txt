@@ -58,6 +58,7 @@ include(GNUInstallDirs)
 FetchContent_Declare(
   eigen
   GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
+  GIT_TAG "bae119bb7e874133dc9b71355f19e9b136872ac7"
   FIND_PACKAGE_ARGS NAMES Eigen3)
 FetchContent_MakeAvailable(eigen)
 
