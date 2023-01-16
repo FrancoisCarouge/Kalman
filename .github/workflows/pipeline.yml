@@ -14,15 +14,23 @@ jobs:
       matrix:
         os: ["ubuntu-latest", "windows-latest"]
         config: ["Release", "Debug"]
-    name: "OS: ${{ matrix.os }} / Config: ${{ matrix.config }}"
+        generator: ["Ninja", "Unix Makefiles"]
+        exclude:
+        - os: "windows-latest"
+          generator: "Unix Makefiles"
+    name: "${{ matrix.os }} / ${{ matrix.config }} / ${{ matrix.generator }}"
     runs-on: ${{ matrix.os }}
     steps:
     - name: "Checkout"
       uses: actions/checkout@v3
-    - name: "Tools"
+    - name: "Tool: MSVC"
+      if: ${{ matrix.os == 'windows-latest' }}
       uses: ilammy/msvc-dev-cmd@v1
+    - name: "Tool: Ninja"
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.generator == 'Ninja' }}
+      run: sudo apt install ninja-build
     - name: "Configure"
-      run: cmake -B "build" .
+      run: cmake -S . -B "build" -G "${{ matrix.generator }}"
     - name: "Build"
       run: cmake --build "build" --config "${{ matrix.config }}"
     - name: "Test"
@@ -31,3 +39,5 @@ jobs:
       run: cmake --install "build" --config "${{ matrix.config }}" --prefix "install"
     - name: "Package"
       run: cmake --build "build" --config "${{ matrix.config }}" --target "package"
+    - name: "Package Source"
+      run: cmake --build "build" --config "${{ matrix.config }}" --target "package_source"
