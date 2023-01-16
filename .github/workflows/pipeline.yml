@@ -16,8 +16,7 @@ jobs:
         config: ["Release", "Debug"]
         generator: ["Ninja", "Unix Makefiles"]
         exclude:
-        - os: "windows-latest"
-          generator: "Unix Makefiles"
+        - { os: "windows-latest", generator: "Unix Makefiles" }
     name: "${{ matrix.os }} / ${{ matrix.config }} / ${{ matrix.generator }}"
     runs-on: ${{ matrix.os }}
     steps:
@@ -32,12 +31,12 @@ jobs:
     - name: "Configure"
       run: cmake -S . -B "build" -G "${{ matrix.generator }}"
     - name: "Build"
-      run: cmake --build "build" --config "${{ matrix.config }}"
+      run: cmake --build "build" --config "${{ matrix.config }}" --verbose
     - name: "Test"
-      run: ctest --test-dir "build" --config "${{ matrix.config }}" --tests-regex "kalman_(test|sample)"
+      run: ctest --test-dir "build" --config "${{ matrix.config }}" --tests-regex "kalman_(test|sample)" --verbose
     - name: "Install"
-      run: cmake --install "build" --config "${{ matrix.config }}" --prefix "install"
+      run: cmake --install "build" --config "${{ matrix.config }}" --prefix "install" --verbose
     - name: "Package"
-      run: cmake --build "build" --config "${{ matrix.config }}" --target "package"
+      run: cmake --build "build" --config "${{ matrix.config }}" --target "package" --verbose
     - name: "Package Source"
-      run: cmake --build "build" --config "${{ matrix.config }}" --target "package_source"
+      run: cmake --build "build" --config "${{ matrix.config }}" --target "package_source" --verbose
