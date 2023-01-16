@@ -1,0 +1,33 @@
+name: "Pipeline"
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+  - cron: 0 0 * * *
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "windows-latest"]
+        config: ["Release", "Debug"]
+    name: "OS: ${{ matrix.os }} / Config: ${{ matrix.config }}"
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v3
+    - name: "Tools"
+      uses: ilammy/msvc-dev-cmd@v1
+    - name: "Configure"
+      run: cmake -B "build" .
+    - name: "Build"
+      run: cmake --build "build" --config "${{ matrix.config }}"
+    - name: "Test"
+      run: ctest --test-dir "build" --config "${{ matrix.config }}" --tests-regex "kalman_(test|sample)"
+    - name: "Install"
+      run: cmake --install "build" --config "${{ matrix.config }}" --prefix "install"
+    - name: "Package"
+      run: cmake --build "build" --config "${{ matrix.config }}" --target "package"
