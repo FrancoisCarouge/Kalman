@@ -15,8 +15,6 @@ jobs:
         os: ["ubuntu-latest", "windows-latest"]
         config: ["Release", "Debug"]
         generator: ["Ninja", "Unix Makefiles"]
-        exclude:
-        - { os: "windows-latest", generator: "Unix Makefiles" }
     name: "${{ matrix.os }} / ${{ matrix.config }} / ${{ matrix.generator }}"
     runs-on: ${{ matrix.os }}
     steps:
