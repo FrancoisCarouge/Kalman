@@ -1,0 +1,25 @@
+name: "Format"
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v3
+    - name: "Install"
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 15 all
+        pip install cmakelang
+    - name: "Test"
+      run: |
+        find . -iname "*.hpp" -o -iname "*.cpp" -o -iwholename "./support/format" | xargs \
+          clang-format-15 --Werror --dry-run --verbose -style=file
+        cmake-format --check CMakeLists.txt
