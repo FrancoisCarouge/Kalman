@@ -399,7 +399,7 @@ Lessons Learned</h2>
 <h2><a class="anchor" id="autotoc_md41"></a>
 Performance</h2>
 <p >The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark">benchmarks</a> share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>
-<p ><img src="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/image/eigen_update.svg" alt="Eigen Update" style="pointer-events: none;" class="inline"/> <img src="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/image/float.svg" alt="Float" style="pointer-events: none;" class="inline"/></p>
+<p ><img src="https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg" alt="Eigen Update" style="pointer-events: none;" class="inline"/> <img src="https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float.svg" alt="Float" style="pointer-events: none;" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md42"></a>
 Resources</h1>
 <h2><a class="anchor" id="autotoc_md43"></a>
@@ -467,21 +467,16 @@ Individuals</h3>
 Continuous Integration &amp; Deployment Actions</h1>
 <p ><a href="https://github.com/FrancoisCarouge/Kalman"><img src="https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen" alt="Code Repository" class="inline"/></a> <br  />
  <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_gcc.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_gcc.yml/badge.svg" alt="Ubuntu 22.04 GCC" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_windows-2019_msvc.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_windows-2019_msvc.yml/badge.svg" alt="Windows 2019 MSVC" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_clang.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/test_ubuntu-22-04_clang.yml/badge.svg" alt="Ubuntu 22.04 Clang" style="pointer-events: none;" class="inline"/></a> <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg" alt="Pipeline" style="pointer-events: none;" class="inline"/></a> <br  />
  <br  />
+ <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg" alt="Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml/badge.svg" alt="ClangFormat" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg" alt="ClangTidy" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml/badge.svg" alt="CMakeFormat" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://coveralls.io/github/FrancoisCarouge/Kalman?branch=master"><img src="https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=master" alt="Coverage Status" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg" alt="CppCheck" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_address.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_address.yml/badge.svg" alt="Address Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_leak.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_leak.yml/badge.svg" alt="Leak Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
  <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml/badge.svg" alt="Valgrind" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_thread.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_thread.yml/badge.svg" alt="Thread Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_undefined_behavior.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer_undefined_behavior.yml/badge.svg" alt="Undefined Behavior Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
  <br  />
  <a href="https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen" alt="Public Domain" class="inline"/></a> <br  />
  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield" alt="License Scan" style="pointer-events: none;" class="inline"/></a> <br  />
@@ -505,7 +500,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jan 19 2023 03:17:14 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Thu Jan 19 2023 04:28:17 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
