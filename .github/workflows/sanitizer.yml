@@ -1,0 +1,40 @@
+name: "Sanitizer"
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        sanitizer:
+        - name: "Address"
+          cpp_flags: "-g -O0 -fsanitize=address"
+          run_flags: "ASAN_OPTIONS=verbosity=2:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1"
+        - name: "Leak"
+          cpp_flags: "-g -O0 -fsanitize=leak"
+          run_flags: "LSAN_OPTIONS=verbosity=2"
+        - name: "Thread"
+          cpp_flags: "-g -O0 -fsanitize=thread"
+          run_flags: "TSAN_OPTIONS=verbosity=2"
+        - name: "Undefined"
+          cpp_flags: "-g -O0 -fsanitize=undefined"
+          run_flags: "UBSAN_OPTIONS=verbosity=2"
+    name: "${{ matrix.sanitizer.name }}"
+    runs-on: ubuntu-latest
+    env:
+      CXXFLAGS: "${{ matrix.sanitizer.cpp_flags }}"
+    steps:
+    - name: "Checkout"
+      uses: actions/checkout@v3
+    - name: "Configure"
+      run: cmake -S . -B "build"
+    - name: "Build"
+      run: cmake --build "build" --verbose
+    - name: "Test"
+      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir "build" --tests-regex "kalman_(test|sample)" --verbose
