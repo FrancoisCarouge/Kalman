@@ -366,11 +366,9 @@ Thanks everyone!
 <br>
 [![Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml)
 <br>
-[![ClangFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_format.yml)
+[![Format](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml)
 <br>
 [![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
-<br>
-[![CMakeFormat](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cmake_format.yml)
 <br>
 [![Coverage Status](https://coveralls.io/repos/github/FrancoisCarouge/Kalman/badge.svg?branch=master)](https://coveralls.io/github/FrancoisCarouge/Kalman?branch=master)
 <br>
