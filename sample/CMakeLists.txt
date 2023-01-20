@@ -49,7 +49,7 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
 endforeach()
 
 foreach(SAMPLE_EIGEN
-        "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp"
+        "apollo.cpp" "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp"
         "kf_6x2x0_vehicle_location.cpp" "kf_8x4x0_deep_sort_bounding_box.cpp")
   get_filename_component(NAME ${SAMPLE_EIGEN} NAME_WE)
   add_executable(kalman_sample_eigen_${NAME}_driver ${SAMPLE_EIGEN})

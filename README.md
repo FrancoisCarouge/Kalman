@@ -147,6 +147,7 @@ filter.update(position_x, position_y, variometer);
 - 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](sample/kf_1x1x1_dog_position.cpp).
 - 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](sample/kf_2x1x1_rocket_altitude.cpp).
 - 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](sample/kf_8x4x0_deep_sort_bounding_box.cpp).
+- [Apollo guidance, navigation, and control](sample/apollo.cpp).
 
 # Installation
 
@@ -312,6 +313,7 @@ Resources to learn about Kalman filters:
 - [How Kalman Filters Work](https://www.anuncommonlab.com/articles/how-kalman-filters-work) by Tucker McClure of An Uncommon Lab.
 - [Wikipedia Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter) by Wikipedia, the free encyclopedia.
 - [Applications of Kalman Filtering in Aerospace 1960 to the Present](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5466132) by Mohinder S. Grewal and Angus P. Andrews. IEEE 2010.
+- [R-649: The Apollo Rendezvous Navigation Filter Theory, Description and Performance, Volume 1 of 2](https://archive.org/details/R649Volume1) by Eugene S. Muller, Jr., and Peter M. Kachmar.
 
 ## Projects
 
