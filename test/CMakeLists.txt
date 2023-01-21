@@ -44,6 +44,13 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES Eigen3)
 FetchContent_MakeAvailable(eigen)
 
+FetchContent_Declare(
+  armadillo
+  GIT_REPOSITORY "https://gitlab.com/conradsnicta/armadillo-code"
+  GIT_TAG "unstable"
+  FIND_PACKAGE_ARGS NAMES armadillo)
+FetchContent_MakeAvailable(armadillo)
+
 foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})

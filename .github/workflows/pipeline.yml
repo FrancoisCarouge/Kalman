@@ -37,6 +37,8 @@ jobs:
     - name: "Install"
       run: cmake --install "build" --config "${{ matrix.config }}" --prefix "install" --verbose
     - name: "Package"
-      run: cmake --build "build" --config "${{ matrix.config }}" --target "package" --verbose --parallel 4
+      run: |
+        type build/_deps/armadillo-build/cmake_install.cmake
+        cmake --build "build" --config "${{ matrix.config }}" --target "package" --verbose --parallel 4
     - name: "Package Source"
       run: cmake --build "build" --config "${{ matrix.config }}" --target "package_source" --verbose --parallel 4
