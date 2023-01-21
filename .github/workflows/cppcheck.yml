@@ -35,9 +35,7 @@ jobs:
           cmake --build "stdblas/build" --parallel 4
           sudo cmake --install "stdblas/build" )
         ( cd /tmp
-          git clone "https://github.com/danmar/cppcheck"
-          ( cd cppcheck
-            git checkout a79dff15ab3c3c56810de4b4c304afc48e727dfe )
+          git clone --depth 1 "https://github.com/danmar/cppcheck"
           cmake -S "cppcheck" -B "cppcheck/build"
           cmake --build "cppcheck/build" --parallel 4
           sudo cmake --install "cppcheck/build" )
