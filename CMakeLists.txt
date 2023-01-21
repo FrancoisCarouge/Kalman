@@ -95,6 +95,12 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES Kokkos)
 FetchContent_MakeAvailable(kokkos)
 
+FetchContent_Declare(
+  linear_algebra
+  GIT_REPOSITORY "https://github.com/BobSteagall/wg21"
+  FIND_PACKAGE_ARGS NAMES wg21_linear_algebra-target)
+FetchContent_MakeAvailable(google_test google_benchmark linear_algebra)
+
 add_subdirectory(benchmark)
 add_subdirectory(cmake)
 add_subdirectory(include)
