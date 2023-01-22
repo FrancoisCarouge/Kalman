@@ -159,6 +159,11 @@ namespace fcarouge {
 //! usage and development is harder without compile time units verification.
 //! @todo Should we add back the call operator? How to resolve the
 //! update/predict ordering? And parameter ordering?
+//! @todo Should we support the noise cross covariance `N = E[wvᵀ]` for
+//! correlated noise sources, with default to null?
+//! @todo Can we implement Temporal Parallelization of Bayesian Smoothers, Simo
+//! Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez,
+//! https://arxiv.org/pdf/1905.13002.pdf ?
 template <typename State = double, typename Output = double,
           typename Input = void, typename Divide = std::divides<void>,
           typename UpdateTypes = empty_pack,
