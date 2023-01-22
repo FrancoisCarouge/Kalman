@@ -285,7 +285,7 @@ Member Types</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>estimate_uncertainty</code>   </td><td class="markdownTableBodyNone">x by x   </td><td class="markdownTableBodyNone">Type of the estimated covariance matrix <code>p</code>.   </td><td class="markdownTableBodyNone"><em>P</em>, <em>Σ</em>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>gain</code>   </td><td class="markdownTableBodyNone">x by z   </td><td class="markdownTableBodyNone">Type of the gain matrix <code>k</code>.   </td><td class="markdownTableBodyNone"><em>K</em>    </td></tr>
+<td class="markdownTableBodyNone"><code>gain</code>   </td><td class="markdownTableBodyNone">x by z   </td><td class="markdownTableBodyNone">Type of the gain matrix <code>k</code>.   </td><td class="markdownTableBodyNone"><em>K</em>, <em>L</em>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>innovation_uncertainty</code>   </td><td class="markdownTableBodyNone">z by z   </td><td class="markdownTableBodyNone">Type of the innovation uncertainty matrix <code>s</code>.   </td><td class="markdownTableBodyNone"><em>S</em>    </td></tr>
 <tr class="markdownTableRowEven">
@@ -335,9 +335,9 @@ Characteristics</h4>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>p</code>   </td><td class="markdownTableBodyNone">Manages the estimated covariance matrix <em>P</em>. Gets the value. Initializes and sets the value. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>q</code>   </td><td class="markdownTableBodyNone">Manages the process noise covariance matrix <em>Q</em>. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>process_uncertainty(const state &amp;, const PredictionTypes &amp;...)</code> to compute the value. The default value is the null matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>q</code>   </td><td class="markdownTableBodyNone">Manages the process noise covariance matrix <em>Q</em> from the process noise <em>w</em> expected value <em>E[wwᵀ]</em> and its variance <em>σ²</em> found by measuring, tuning, educated guesses of the noise. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>process_uncertainty(const state &amp;, const PredictionTypes &amp;...)</code> to compute the value. The default value is the null matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>r</code>   </td><td class="markdownTableBodyNone">Manages the observation, measurement noise covariance matrix <em>R</em>. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>output_uncertainty(const state &amp;, const output &amp;, const UpdateTypes &amp;...)</code> to compute the value. The default value is the null matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>r</code>   </td><td class="markdownTableBodyNone">Manages the observation, measurement noise covariance matrix <em>R</em> from the measurement noise <em>v</em> expected value <em>E[vvᵀ]</em> and its variance <em>σ²</em> found by measuring, tuning, educated guesses of the noise. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>output_uncertainty(const state &amp;, const output &amp;, const UpdateTypes &amp;...)</code> to compute the value. The default value is the null matrix.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>s</code>   </td><td class="markdownTableBodyNone">Manages the innovation uncertainty matrix <em>S</em>. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -499,7 +499,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jan 22 2023 20:11:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jan 22 2023 23:32:05 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
