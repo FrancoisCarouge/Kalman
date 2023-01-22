@@ -56,6 +56,12 @@ include(FetchContent)
 include(GNUInstallDirs)
 
 FetchContent_Declare(
+  linear_algebra
+  GIT_REPOSITORY "https://github.com/BobSteagall/wg21"
+  FIND_PACKAGE_ARGS NAMES wg21_linear_algebra)
+FetchContent_MakeAvailable(linear_algebra)
+
+FetchContent_Declare(
   eigen
   GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
   GIT_TAG "bae119bb7e874133dc9b71355f19e9b136872ac7"
