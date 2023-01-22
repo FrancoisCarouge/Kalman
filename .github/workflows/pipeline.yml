@@ -32,12 +32,12 @@ jobs:
     - name: "Configure"
       run: cmake -S . -B "build" -G "${{ matrix.generator }}"
     - name: "Build"
-      run: cmake --build "build" --config "${{ matrix.config }}" --verbose
+      run: cmake --build "build" --config "${{ matrix.config }}" --verbose --parallel 4
     - name: "Test"
-      run: ctest --test-dir "build" --config "${{ matrix.config }}" --tests-regex "kalman_(test|sample)" --verbose
+      run: ctest --test-dir "build" --config "${{ matrix.config }}" --tests-regex "kalman_(test|sample)" --verbose --parallel 4
     - name: "Install"
       run: cmake --install "build" --config "${{ matrix.config }}" --prefix "install" --verbose
     - name: "Package"
-      run: cmake --build "build" --config "${{ matrix.config }}" --target "package" --verbose
+      run: cmake --build "build" --config "${{ matrix.config }}" --target "package" --verbose --parallel 4
     - name: "Package Source"
-      run: cmake --build "build" --config "${{ matrix.config }}" --target "package_source" --verbose
+      run: cmake --build "build" --config "${{ matrix.config }}" --target "package_source" --verbose --parallel 4
