@@ -360,7 +360,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr auto u() const
-      -> const input &requires(not std::is_same_v<Input, void>);
+      -> const input &requires(not std::is_same_v<input, internal::empty>);
 
   //! @brief Returns the estimated covariance matrix P.
   //!
@@ -496,10 +496,10 @@ public:
   //! @return The control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr auto g() const
-      -> const input_control &requires(not std::is_same_v<Input, void>);
-  inline constexpr auto g()
-      -> input_control &requires(not std::is_same_v<Input, void>);
+  inline constexpr auto g() const -> const input_control &requires(
+      not std::is_same_v<input_control, internal::empty>);
+  inline constexpr auto g() -> input_control &requires(
+      not std::is_same_v<input_control, internal::empty>);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -518,7 +518,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values)
-    requires(not std::is_same_v<Input, void>);
+    requires(not std::is_same_v<input_control, internal::empty>);
 
   //! @brief Returns the gain matrix K.
   //!

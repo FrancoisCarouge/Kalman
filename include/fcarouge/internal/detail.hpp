@@ -81,7 +81,7 @@ template <typename State, typename Output, typename Input, typename Divide,
 [[nodiscard("The returned control column vector U is unexpectedly "
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::u() const
-    -> const input &requires(not std::is_same_v<Input, void>) {
+    -> const input &requires(not std::is_same_v<input, internal::empty>) {
                       return filter.u;
                     }
 
@@ -245,9 +245,8 @@ template <typename State, typename Output, typename Input, typename Divide,
 [[nodiscard("The returned control transition matrix G is unexpectedly "
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::g() const
-    -> const input_control &requires(not std::is_same_v<Input, void>) {
-                              return filter.g;
-                            }
+    -> const input_control &requires(
+        not std::is_same_v<input_control, internal::empty>) { return filter.g; }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
@@ -255,16 +254,15 @@ template <typename State, typename Output, typename Input, typename Divide,
             "discarded.")]] inline constexpr auto kalman<State, Output, Input,
                                                          Divide, UpdateTypes,
                                                          PredictionTypes>::g()
-    -> input_control &requires(not std::is_same_v<Input, void>) {
-                        return filter.g;
-                      }
+    -> input_control &requires(
+        not std::is_same_v<input_control, internal::empty>) { return filter.g; }
 
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void kalman<State, Output, Input, Divide, UpdateTypes,
                              PredictionTypes>::g(const auto &value,
                                                  const auto &...values)
-  requires(not std::is_same_v<Input, void>)
+  requires(not std::is_same_v<input_control, internal::empty>)
 {
   if constexpr (std::is_convertible_v<decltype(value), input_control>) {
     filter.g = std::move(input_control{value, values...});
