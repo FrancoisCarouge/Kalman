@@ -36,6 +36,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+include(FetchContent)
+
+FetchContent_Declare(
+  eigen
+  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
+  FIND_PACKAGE_ARGS NAMES Eigen3)
+FetchContent_MakeAvailable(eigen)
+
 foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
                "kf_1x1x1_dog_position.cpp")
   get_filename_component(NAME ${SAMPLE} NAME_WE)
