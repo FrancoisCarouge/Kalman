@@ -76,8 +76,14 @@ target_sources(
             "fcarouge/internal/format.hpp"
             "fcarouge/internal/kalman.hpp"
             "fcarouge/internal/kalman.tpp"
+            "fcarouge/internal/predict.hpp"
+            "fcarouge/internal/predict.tpp"
+            "fcarouge/internal/update.hpp"
+            "fcarouge/internal/update.tpp"
             "fcarouge/internal/utility.hpp"
             "fcarouge/kalman.hpp"
+            "fcarouge/predict.hpp"
+            "fcarouge/update.hpp"
             "fcarouge/utility.hpp")
 target_compile_options(kalman INTERFACE ${OPTIONS})
 target_compile_features(kalman INTERFACE cxx_std_23)

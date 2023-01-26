@@ -49,6 +49,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "algorithm.hpp"
 #include "internal/format.hpp"
 #include "internal/kalman.hpp"
+#include "predict.hpp"
+#include "update.hpp"
 #include "utility.hpp"
 
 #include <concepts>
