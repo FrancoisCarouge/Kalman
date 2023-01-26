@@ -89,12 +89,6 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES mdspan)
 FetchContent_MakeAvailable(mdspan)
 
-FetchContent_Declare(
-  kokkos
-  GIT_REPOSITORY "https://github.com/kokkos/kokkos"
-  FIND_PACKAGE_ARGS NAMES Kokkos)
-FetchContent_MakeAvailable(kokkos)
-
 add_subdirectory(benchmark)
 add_subdirectory(cmake)
 add_subdirectory(include)
