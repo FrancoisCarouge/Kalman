@@ -13,23 +13,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest", "windows-latest"]
-        config: ["Release", "Debug"]
-        generator: ["Ninja", "Unix Makefiles"]
-        exclude:
-        - { os: "windows-latest", generator: "Unix Makefiles" }
-    name: "${{ matrix.os }} / ${{ matrix.config }} / ${{ matrix.generator }}"
+        include:
+        - { os: "ubuntu-latest", compiler: {cpp: "clang++", c: "clang"}, generator: "Unix Makefiles" }
+        - { os: "ubuntu-latest", compiler: {cpp: "g++", c: "gcc"}, generator: "Unix Makefiles" }
+        - { os: "windows-latest", compiler: {cpp: "cl", c: "cl"}, generator: "Ninja", config: "Debug" }
+        - { os: "windows-latest", compiler: {cpp: "cl", c: "cl"}, generator: "Ninja", config: "Release" }
+    name: "${{ matrix.os }} / ${{ matrix.compiler.cpp }} / ${{ matrix.generator }} / ${{ matrix.config }}"
     runs-on: "${{ matrix.os }}"
     steps:
     - name: "Checkout"
       uses: actions/checkout@v3
     - name: "Tool: MSVC"
-      if: ${{ matrix.os == 'windows-latest' }}
       uses: ilammy/msvc-dev-cmd@v1
-    - name: "Tool: Ninja"
-      if: ${{ matrix.os == 'ubuntu-latest' && matrix.generator == 'Ninja' }}
-      run: sudo apt install ninja-build
     - name: "Configure"
+      env:
+        CC: "${{ matrix.compiler.c }}"
+        CXX: "${{ matrix.compiler.cpp }}"
       run: cmake -S . -B "build" -G "${{ matrix.generator }}"
     - name: "Build"
       run: cmake --build "build" --config "${{ matrix.config }}" --verbose --parallel 4
