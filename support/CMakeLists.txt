@@ -41,6 +41,14 @@ if(WIN32)
   # Other compilers don't support it yet. TODO: This platform check is not ideal
   # and should be replaced with a check for the compiler library support.
 else()
+  include(FetchContent)
+
+  FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY "https://github.com/fmtlib/fmt"
+    FIND_PACKAGE_ARGS NAMES fmt)
+  FetchContent_MakeAvailable(fmt)
+
   add_library(kalman_format INTERFACE)
   target_sources(kalman_format INTERFACE FILE_SET "kalman_format_headers" TYPE
                                          "HEADERS" FILES "format")

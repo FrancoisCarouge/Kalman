@@ -53,41 +53,7 @@ set(CPACK_SOURCE_GENERATOR "TBZ2")
 include(CMakePackageConfigHelpers)
 include(CPack)
 include(CTest)
-include(FetchContent)
 include(GNUInstallDirs)
-
-FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
-  FIND_PACKAGE_ARGS NAMES Eigen3)
-FetchContent_MakeAvailable(eigen)
-
-FetchContent_Declare(
-  fmt
-  GIT_REPOSITORY "https://github.com/fmtlib/fmt"
-  FIND_PACKAGE_ARGS NAMES fmt)
-FetchContent_MakeAvailable(fmt)
-
-FetchContent_Declare(
-  google_test
-  GIT_REPOSITORY "https://github.com/google/googletest"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES GTest)
-FetchContent_MakeAvailable(google_test)
-
-FetchContent_Declare(
-  google_benchmark
-  GIT_REPOSITORY "https://github.com/google/benchmark"
-  GIT_TAG "main"
-  FIND_PACKAGE_ARGS NAMES benchmark)
-FetchContent_MakeAvailable(google_benchmark)
-
-FetchContent_Declare(
-  mdspan
-  GIT_REPOSITORY "https://github.com/kokkos/mdspan"
-  GIT_TAG "stable"
-  FIND_PACKAGE_ARGS NAMES mdspan)
-FetchContent_MakeAvailable(mdspan)
 
 add_subdirectory(benchmark)
 add_subdirectory(cmake)

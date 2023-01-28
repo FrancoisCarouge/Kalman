@@ -36,6 +36,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+include(FetchContent)
+
+FetchContent_Declare(
+  eigen
+  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
+  FIND_PACKAGE_ARGS NAMES Eigen3)
+FetchContent_MakeAvailable(eigen)
+
 foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})

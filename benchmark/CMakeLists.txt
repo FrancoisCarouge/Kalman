@@ -36,6 +36,28 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+include(FetchContent)
+
+FetchContent_Declare(
+  eigen
+  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
+  FIND_PACKAGE_ARGS NAMES Eigen3)
+FetchContent_MakeAvailable(eigen)
+
+FetchContent_Declare(
+  google_test
+  GIT_REPOSITORY "https://github.com/google/googletest"
+  GIT_TAG "main"
+  FIND_PACKAGE_ARGS NAMES GTest)
+FetchContent_MakeAvailable(google_test)
+
+FetchContent_Declare(
+  google_benchmark
+  GIT_REPOSITORY "https://github.com/google/benchmark"
+  GIT_TAG "main"
+  FIND_PACKAGE_ARGS NAMES benchmark)
+FetchContent_MakeAvailable(google_benchmark)
+
 set(PROCESSOR_AFFINITY TRUE)
 
 foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
