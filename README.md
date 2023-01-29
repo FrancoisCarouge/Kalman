@@ -300,7 +300,7 @@ The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark
 | ESKF | The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states. 
 | UKF | The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples sigma points about an estimate working point of the current mean using an Unscented Transformation technique. |
 
-Further terms should be defined and demonstrated for completeness: CKF, EnKF, Euler-KF, Forward-Backward, FKF, IEKF, Joseph, KF, MEKF, MRP-EKF, MRP-UKF, MSCKF, SKF, Smoother, USQUE, UDU, UT.
+Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Forward-Backward, FKF, IEKF, Joseph, KF, MEKF, MRP-EKF, MRP-UKF, MSCKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.
 
 ## Articles
 
