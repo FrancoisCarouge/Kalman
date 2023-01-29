@@ -2,12 +2,12 @@ var eigen__initialization_8cpp =
 [
     [ "matrix", "eigen__initialization_8cpp.xhtml#a778d05129b0c49afddba132effcd412e", null ],
     [ "vector", "eigen__initialization_8cpp.xhtml#a303fc28c1f0d25034be22be1666a2fec", null ],
-    [ "defaults113", "eigen__initialization_8cpp.xhtml#aa4d409e8814f1ff95ca98965a5aab2bd", null ],
-    [ "defaults141", "eigen__initialization_8cpp.xhtml#a58a71bfb2c59642fa2d863c0d6ff1ce8", null ],
-    [ "defaults143", "eigen__initialization_8cpp.xhtml#a7ebadc8b8c8a56900a05ae40620cdc6d", null ],
-    [ "defaults511", "eigen__initialization_8cpp.xhtml#a364cc76ccc9e880d7a31a8c4d0457c80", null ],
-    [ "defaults513", "eigen__initialization_8cpp.xhtml#a1bee717e0ee1900581eb442a6eda7bf3", null ],
-    [ "defaults54", "eigen__initialization_8cpp.xhtml#a1fa5d89d767ab85f6b030848ca0b7183", null ],
-    [ "defaults541", "eigen__initialization_8cpp.xhtml#a0143751961127719a363bf55a9d8a1e5", null ],
-    [ "defaults543", "eigen__initialization_8cpp.xhtml#a991d530609aef3e10f6b455c79ffbc3d", null ]
+    [ "kalman113", "eigen__initialization_8cpp.xhtml#af2367a0e31dae657282581cae39b9e5e", null ],
+    [ "kalman141", "eigen__initialization_8cpp.xhtml#a3cab8707dadaf3dfcba6768b47ab308c", null ],
+    [ "kalman143", "eigen__initialization_8cpp.xhtml#a162c2eba497cb5500879448a051df5ef", null ],
+    [ "kalman511", "eigen__initialization_8cpp.xhtml#ac03084763746ab37c5552d66a8501099", null ],
+    [ "kalman513", "eigen__initialization_8cpp.xhtml#aeb2393d12521f9f367f84152249fd528", null ],
+    [ "kalman54", "eigen__initialization_8cpp.xhtml#a1092b6610d73a3fa7ee2b374060427f8", null ],
+    [ "kalman541", "eigen__initialization_8cpp.xhtml#aaeefaa840d02eaeb158891aab2e4fdca", null ],
+    [ "kalman543", "eigen__initialization_8cpp.xhtml#a1e9e5ac7c1d48dc8314d842df871a821", null ]
 ];
