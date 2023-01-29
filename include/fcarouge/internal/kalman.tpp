@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_DETAIL_HPP
-#define FCAROUGE_INTERNAL_DETAIL_HPP
+#ifndef FCAROUGE_INTERNAL_KALMAN_TPP
+#define FCAROUGE_INTERNAL_KALMAN_TPP
 
 namespace fcarouge {
 
@@ -356,4 +356,4 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::predict()
 
 } // namespace fcarouge
 
-#endif // FCAROUGE_INTERNAL_DETAIL_HPP
+#endif // FCAROUGE_INTERNAL_KALMAN_TPP
