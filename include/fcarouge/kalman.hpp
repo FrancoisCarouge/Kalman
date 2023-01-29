@@ -40,7 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_KALMAN_HPP
 
 //! @file
-//! @brief The Kalman filter-class and library top-level header.
+//! @brief The Kalman filter class and library top-level header.
 //!
 //! @details Provides the library public definitions of filters, algorithms,
 //! utilities, and documentation. Only this header file is intended for
@@ -317,7 +317,7 @@ public:
   //! @todo Implement and test.
   inline constexpr auto operator=(kalman &&other) noexcept -> kalman & = delete;
 
-  //! @brief Destructs the kalman filter.
+  //! @brief Destructs the Kalman filter.
   //!
   //! @complexity Constant.
   inline constexpr ~kalman() = default;
@@ -649,6 +649,6 @@ public:
 
 } // namespace fcarouge
 
-#include "internal/detail.hpp"
+#include "internal/kalman.tpp"
 
 #endif // FCAROUGE_KALMAN_HPP

@@ -72,7 +72,7 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
-            "fcarouge/internal/detail.hpp"
+            "fcarouge/internal/kalman.tpp"
             "fcarouge/internal/format.hpp"
             "fcarouge/internal/kalman.hpp"
             "fcarouge/internal/utility.hpp"
