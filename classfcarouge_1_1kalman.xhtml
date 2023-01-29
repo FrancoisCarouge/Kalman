@@ -163,7 +163,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5fb8c4488181bd033929563bbbf45242"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator.  <a href="classfcarouge_1_1kalman.xhtml#a5fb8c4488181bd033929563bbbf45242">More...</a><br /></td></tr>
 <tr class="separator:a5fb8c4488181bd033929563bbbf45242"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a432db2db2655d52094bae8d72559c936"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a432db2db2655d52094bae8d72559c936">~kalman</a> ()=default</td></tr>
-<tr class="memdesc:a432db2db2655d52094bae8d72559c936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the kalman filter.  <a href="classfcarouge_1_1kalman.xhtml#a432db2db2655d52094bae8d72559c936">More...</a><br /></td></tr>
+<tr class="memdesc:a432db2db2655d52094bae8d72559c936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the Kalman filter.  <a href="classfcarouge_1_1kalman.xhtml#a432db2db2655d52094bae8d72559c936">More...</a><br /></td></tr>
 <tr class="separator:a432db2db2655d52094bae8d72559c936"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Characteristics Member Functions</div></td></tr>
 <tr class="memitem:ac1f06b20e6494b0301d5b2ab8e4214b3"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ac1f06b20e6494b0301d5b2ab8e4214b3">x</a> () const -&gt; const <a class="el" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">state</a> &amp;</td></tr>
@@ -747,7 +747,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </table>
 </div><div class="memdoc">
 
-<p>Destructs the kalman filter. </p>
+<p>Destructs the Kalman filter. </p>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
@@ -759,13 +759,16 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::f</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::f </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">state_transition</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -775,12 +778,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00192">192</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  193</span>                          {</div>
-<div class="line"><span class="lineno">  194</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.f;</div>
-<div class="line"><span class="lineno">  195</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a94d03e7176de95c51894d0f37d83e2cf"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">fcarouge::kalman::filter</a></div><div class="ttdeci">implementation filter</div><div class="ttdoc">Encapsulates the implementation details of the filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00190">kalman.hpp:190</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a97aceea287d6f047b294f556db529baa" name="a97aceea287d6f047b294f556db529baa"></a>
@@ -789,13 +786,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::f</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::f </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">state_transition</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -809,11 +809,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The state transition matrix F.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00183">183</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  184</span>                                {</div>
-<div class="line"><span class="lineno">  185</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.f;</div>
-<div class="line"><span class="lineno">  186</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a423332ade623ff83c56ad8eb96689897" name="a423332ade623ff83c56ad8eb96689897"></a>
@@ -822,7 +817,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -864,18 +859,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00200">200</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  201</span>                                              {</div>
-<div class="line"><span class="lineno">  202</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_convertible_v&lt;<span class="keyword">decltype</span>(value), <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">state_transition</a>&gt;) {</div>
-<div class="line"><span class="lineno">  203</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.f = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">state_transition</a>{value, values...});</div>
-<div class="line"><span class="lineno">  204</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  205</span>    <span class="keyword">using </span>transition_state_function = <span class="keyword">decltype</span>(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.transition_state_f);</div>
-<div class="line"><span class="lineno">  206</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.transition_state_f =</div>
-<div class="line"><span class="lineno">  207</span>        std::move(transition_state_function{value, values...});</div>
-<div class="line"><span class="lineno">  208</span>  }</div>
-<div class="line"><span class="lineno">  209</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a052507ea7e38da8fbbc78e3bf04c96b2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a052507ea7e38da8fbbc78e3bf04c96b2">fcarouge::kalman::state_transition</a></div><div class="ttdeci">typename implementation::state_transition state_transition</div><div class="ttdoc">Type of the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00225">kalman.hpp:225</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a88a19fdd1af2a50cf4f510be7d98bb13" name="a88a19fdd1af2a50cf4f510be7d98bb13"></a>
@@ -884,13 +867,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::g</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::g </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a8fe68f6c32515ec3e338c9c3d205a753">input_control</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td>
         </tr>
       </table>
   </td>
@@ -900,21 +886,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00257">257</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  258</span>                                                              {</div>
-<div class="line"><span class="lineno">  259</span>                        <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.g;</div>
-<div class="line"><span class="lineno">  260</span>                      }</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="detail_8hpp_source.xhtml#l00247">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::g()</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a88a19fdd1af2a50cf4f510be7d98bb13_cgraph.svg" width="326" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
 </div>
 </div>
 <a id="a4734807882ed3bd3aeaffbb678e37be7" name="a4734807882ed3bd3aeaffbb678e37be7"></a>
@@ -923,13 +894,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::g</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::g </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a8fe68f6c32515ec3e338c9c3d205a753">input_control</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td>
         </tr>
       </table>
   </td>
@@ -944,21 +918,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The control transition matrix G.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00247">247</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  248</span>                                                                    {</div>
-<div class="line"><span class="lineno">  249</span>                              <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.g;</div>
-<div class="line"><span class="lineno">  250</span>                            }</div>
-</div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="detail_8hpp_source.xhtml#l00257">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::g()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a4734807882ed3bd3aeaffbb678e37be7_icgraph.svg" width="326" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
 </div>
 </div>
 <a id="a594760bcd19296b31308616efc680f92" name="a594760bcd19296b31308616efc680f92"></a>
@@ -967,8 +926,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; <br />
-requires (not std::is_same_v&lt;Input, void&gt;)</div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1009,28 +967,6 @@ requires (not std::is_same_v&lt;Input, void&gt;)</div>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00265">265</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  268</span>{</div>
-<div class="line"><span class="lineno">  269</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_convertible_v&lt;<span class="keyword">decltype</span>(value), <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a8fe68f6c32515ec3e338c9c3d205a753">input_control</a>&gt;) {</div>
-<div class="line"><span class="lineno">  270</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.g = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a8fe68f6c32515ec3e338c9c3d205a753">input_control</a>{value, values...});</div>
-<div class="line"><span class="lineno">  271</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  272</span>    <span class="keyword">using </span>transition_control_function = <span class="keyword">decltype</span>(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.transition_control_g);</div>
-<div class="line"><span class="lineno">  273</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.transition_control_g =</div>
-<div class="line"><span class="lineno">  274</span>        std::move(transition_control_function{value, values...});</div>
-<div class="line"><span class="lineno">  275</span>  }</div>
-<div class="line"><span class="lineno">  276</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a8fe68f6c32515ec3e338c9c3d205a753"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a8fe68f6c32515ec3e338c9c3d205a753">fcarouge::kalman::input_control</a></div><div class="ttdeci">typename implementation::input_control input_control</div><div class="ttdoc">Type of the control transition matrix G.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00237">kalman.hpp:237</a></div></div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="detail_8hpp_source.xhtml#l00247">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::g()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a594760bcd19296b31308616efc680f92_cgraph.svg" width="326" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
 </div>
 </div>
 <a id="a7fe9446253d84cd6b45128fa9652d35d" name="a7fe9446253d84cd6b45128fa9652d35d"></a>
@@ -1039,13 +975,16 @@ requires (not std::is_same_v&lt;Input, void&gt;)</div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::h</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::h </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#aadb2093697f3eb6b26b80d0f1af5fbed">output_model</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1055,11 +994,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00224">224</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  225</span>                      {</div>
-<div class="line"><span class="lineno">  226</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.h;</div>
-<div class="line"><span class="lineno">  227</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a70e5dcb292b21eb58a81edf2b50bdf98" name="a70e5dcb292b21eb58a81edf2b50bdf98"></a>
@@ -1068,13 +1002,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::h</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::h </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#aadb2093697f3eb6b26b80d0f1af5fbed">output_model</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1088,11 +1025,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The observation, measurement transition matrix H.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00215">215</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  216</span>                            {</div>
-<div class="line"><span class="lineno">  217</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.h;</div>
-<div class="line"><span class="lineno">  218</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ad491fbf0c333c7da89abfa58a4e2fc9c" name="ad491fbf0c333c7da89abfa58a4e2fc9c"></a>
@@ -1101,7 +1033,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1143,18 +1075,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00232">232</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  233</span>                                              {</div>
-<div class="line"><span class="lineno">  234</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_convertible_v&lt;<span class="keyword">decltype</span>(value), <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aadb2093697f3eb6b26b80d0f1af5fbed">output_model</a>&gt;) {</div>
-<div class="line"><span class="lineno">  235</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.h = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aadb2093697f3eb6b26b80d0f1af5fbed">output_model</a>{value, values...});</div>
-<div class="line"><span class="lineno">  236</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  237</span>    <span class="keyword">using </span>observation_state_function = <span class="keyword">decltype</span>(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.observation_state_h);</div>
-<div class="line"><span class="lineno">  238</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.observation_state_h =</div>
-<div class="line"><span class="lineno">  239</span>        std::move(observation_state_function{value, values...});</div>
-<div class="line"><span class="lineno">  240</span>  }</div>
-<div class="line"><span class="lineno">  241</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aadb2093697f3eb6b26b80d0f1af5fbed"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aadb2093697f3eb6b26b80d0f1af5fbed">fcarouge::kalman::output_model</a></div><div class="ttdeci">typename implementation::output_model output_model</div><div class="ttdoc">Type of the observation transition matrix H.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00230">kalman.hpp:230</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a74e44ad09f9cfef290aa929c3cc9a7e9" name="a74e44ad09f9cfef290aa929c3cc9a7e9"></a>
@@ -1163,13 +1083,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::k</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::k </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#ab7895cfe42821ddfbe0f28b89f48baba">gain</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1183,11 +1106,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The gain matrix K.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00282">282</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  283</span>                    {</div>
-<div class="line"><span class="lineno">  284</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.k;</div>
-<div class="line"><span class="lineno">  285</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a379932f428ca47291e1153a674a1077b" name="a379932f428ca47291e1153a674a1077b"></a>
@@ -1196,7 +1114,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1226,11 +1144,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00316">316</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  317</span>                          {</div>
-<div class="line"><span class="lineno">  318</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.observation = callable;</div>
-<div class="line"><span class="lineno">  319</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="abfbdd536b26f2e0ad79fac3d4cb00e0b" name="abfbdd536b26f2e0ad79fac3d4cb00e0b"></a>
@@ -1319,13 +1232,16 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::p</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::p </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a1d1f1dacf69723b9a2027df00faa44d7">estimate_uncertainty</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1335,11 +1251,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00102">102</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  103</span>                              {</div>
-<div class="line"><span class="lineno">  104</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.p;</div>
-<div class="line"><span class="lineno">  105</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a321ed407a09472e739e593efd9d89dd7" name="a321ed407a09472e739e593efd9d89dd7"></a>
@@ -1348,13 +1259,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::p</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::p </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a1d1f1dacf69723b9a2027df00faa44d7">estimate_uncertainty</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1368,31 +1282,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The estimated correlated variance matrix P.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>                                          {</div>
-<div class="line"><span class="lineno">   95</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.p;</div>
-<div class="line"><span class="lineno">   96</span>}</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="detail_8hpp_source.xhtml#l00093">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::p()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="detail_8hpp_source.xhtml#l00093">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::p()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a321ed407a09472e739e593efd9d89dd7_cgraph.svg" width="144" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a321ed407a09472e739e593efd9d89dd7_icgraph.svg" width="144" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
 </div>
 </div>
 <a id="a6943317c8507c0ac7f42810e43ecfa84" name="a6943317c8507c0ac7f42810e43ecfa84"></a>
@@ -1401,7 +1290,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1441,12 +1330,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00110">110</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>                                              {</div>
-<div class="line"><span class="lineno">  112</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.p = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1d1f1dacf69723b9a2027df00faa44d7">estimate_uncertainty</a>{value, values...});</div>
-<div class="line"><span class="lineno">  113</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1d1f1dacf69723b9a2027df00faa44d7"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1d1f1dacf69723b9a2027df00faa44d7">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">typename implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00214">kalman.hpp:214</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ab129b3dd58d760c5630a451541590f6f" name="ab129b3dd58d760c5630a451541590f6f"></a>
@@ -1455,7 +1338,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <div class="memtemplate">
 template&lt;std::size_t Position&gt; </div>
 <table class="mlabels">
@@ -1463,7 +1346,10 @@ template&lt;std::size_t Position&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::predict</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::predict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -1484,11 +1370,6 @@ template&lt;std::size_t Position&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The prediction argument corresponding to the Nth position of the parameter pack of the tuple-like <code>PredictionTypes</code> class template type.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00352">352</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  353</span>          {</div>
-<div class="line"><span class="lineno">  354</span>  <span class="keywordflow">return</span> std::get&lt;Position&gt;(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.prediction_arguments);</div>
-<div class="line"><span class="lineno">  355</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a3898db7da690aec04fa4621727d4bf56" name="a3898db7da690aec04fa4621727d4bf56"></a>
@@ -1497,7 +1378,7 @@ template&lt;std::size_t Position&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1529,17 +1410,12 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00342">342</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  343</span>                              {</div>
-<div class="line"><span class="lineno">  344</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.predict(arguments...);</div>
-<div class="line"><span class="lineno">  345</span>}</div>
-</div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="eigen__predict__x1x_8cpp_source.xhtml#l00062">fcarouge::benchmark::anonymous_namespace{eigen_predict_x1x.cpp}::eigen_predict()</a>, <a class="el" href="predict__1x1x0_8cpp_source.xhtml#l00050">fcarouge::benchmark::anonymous_namespace{predict_1x1x0.cpp}::predict_1x1x0()</a>, and <a class="el" href="predict__1x1x1_8cpp_source.xhtml#l00051">fcarouge::benchmark::anonymous_namespace{predict_1x1x1.cpp}::predict_1x1x1()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a3898db7da690aec04fa4621727d4bf56_icgraph.svg" width="392" height="271"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -1552,13 +1428,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::q</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::q </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">process_uncertainty</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1568,11 +1447,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00128">128</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  129</span>                             {</div>
-<div class="line"><span class="lineno">  130</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.q;</div>
-<div class="line"><span class="lineno">  131</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a20e4a128994e061d95c7cc8547edeae2" name="a20e4a128994e061d95c7cc8547edeae2"></a>
@@ -1581,13 +1455,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::q</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::q </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">process_uncertainty</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1601,11 +1478,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The process noise correlated variance matrix Q.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00119">119</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>                                   {</div>
-<div class="line"><span class="lineno">  121</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.q;</div>
-<div class="line"><span class="lineno">  122</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a572e6899627301526b3b61b75fd5c642" name="a572e6899627301526b3b61b75fd5c642"></a>
@@ -1614,7 +1486,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1655,18 +1527,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00136">136</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  137</span>                                              {</div>
-<div class="line"><span class="lineno">  138</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_convertible_v&lt;<span class="keyword">decltype</span>(value), <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">process_uncertainty</a>&gt;) {</div>
-<div class="line"><span class="lineno">  139</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.q = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">process_uncertainty</a>{value, values...});</div>
-<div class="line"><span class="lineno">  140</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keyword">using </span>noise_process_function = <span class="keyword">decltype</span>(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.noise_process_q);</div>
-<div class="line"><span class="lineno">  142</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.noise_process_q =</div>
-<div class="line"><span class="lineno">  143</span>        std::move(noise_process_function{value, values...});</div>
-<div class="line"><span class="lineno">  144</span>  }</div>
-<div class="line"><span class="lineno">  145</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aba3d1735b4c0ee10bfa6b2dfa2266ad7"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aba3d1735b4c0ee10bfa6b2dfa2266ad7">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00217">kalman.hpp:217</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a7e1eba9eca64dcbe6dafff106d8f2288" name="a7e1eba9eca64dcbe6dafff106d8f2288"></a>
@@ -1675,13 +1535,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::r</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::r </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">output_uncertainty</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1691,11 +1554,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00160">160</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  161</span>                            {</div>
-<div class="line"><span class="lineno">  162</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.r;</div>
-<div class="line"><span class="lineno">  163</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="afd422d2d0b9bdf85ffc00df9ae380be3" name="afd422d2d0b9bdf85ffc00df9ae380be3"></a>
@@ -1704,13 +1562,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::r</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::r </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">output_uncertainty</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1725,11 +1586,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The observation noise correlated variance matrix R.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00151">151</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  152</span>                                  {</div>
-<div class="line"><span class="lineno">  153</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.r;</div>
-<div class="line"><span class="lineno">  154</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a8b2ed49c4ebbb1d1bfa7028f6835f301" name="a8b2ed49c4ebbb1d1bfa7028f6835f301"></a>
@@ -1738,7 +1594,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1779,18 +1635,6 @@ UpdateTypes &amp;...)</code>. The copied observation noise covariance matrix R o
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00168">168</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  169</span>                                              {</div>
-<div class="line"><span class="lineno">  170</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_convertible_v&lt;<span class="keyword">decltype</span>(value), <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">output_uncertainty</a>&gt;) {</div>
-<div class="line"><span class="lineno">  171</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.r = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">output_uncertainty</a>{value, values...});</div>
-<div class="line"><span class="lineno">  172</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  173</span>    <span class="keyword">using </span>noise_observation_function = <span class="keyword">decltype</span>(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.noise_observation_r);</div>
-<div class="line"><span class="lineno">  174</span>    <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.noise_observation_r =</div>
-<div class="line"><span class="lineno">  175</span>        std::move(noise_observation_function{value, values...});</div>
-<div class="line"><span class="lineno">  176</span>  }</div>
-<div class="line"><span class="lineno">  177</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b119b5d090c39ddf0a5aaafbeeb8f6c"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c">fcarouge::kalman::output_uncertainty</a></div><div class="ttdeci">typename implementation::output_uncertainty output_uncertainty</div><div class="ttdoc">Type of the observation noise correlated variance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00220">kalman.hpp:220</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a366196a038db0f54b7322b29f1862be0" name="a366196a038db0f54b7322b29f1862be0"></a>
@@ -1799,13 +1643,16 @@ UpdateTypes &amp;...)</code>. The copied observation noise covariance matrix R o
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::s</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::s </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#adea589845c322523f9af114f5f500cba">innovation_uncertainty</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -1819,11 +1666,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The innovation uncertainty matrix S.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00300">300</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  301</span>                                      {</div>
-<div class="line"><span class="lineno">  302</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.s;</div>
-<div class="line"><span class="lineno">  303</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a9d60faef054e3b26f2f23fa5cdd0aa41" name="a9d60faef054e3b26f2f23fa5cdd0aa41"></a>
@@ -1832,7 +1674,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1862,11 +1704,6 @@ PredictionTypes &amp;...)</code>. The default function <code>f(x) = F * X</code>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00308">308</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  309</span>                          {</div>
-<div class="line"><span class="lineno">  310</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.transition = callable;</div>
-<div class="line"><span class="lineno">  311</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a75faf76f6d2e995276409a50a216f36b" name="a75faf76f6d2e995276409a50a216f36b"></a>
@@ -1875,13 +1712,16 @@ PredictionTypes &amp;...)</code>. The default function <code>f(x) = F * X</code>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::u</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::u </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#ae50bc6a7b064ac6c91ddab3791b120db">input</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td>
         </tr>
       </table>
   </td>
@@ -1896,11 +1736,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The last control column vector U.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00083">83</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>                                                            {</div>
-<div class="line"><span class="lineno">   85</span>                      <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.u;</div>
-<div class="line"><span class="lineno">   86</span>                    }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a1916944cc648bdddbab53fa431058f7f" name="a1916944cc648bdddbab53fa431058f7f"></a>
@@ -1909,7 +1744,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <div class="memtemplate">
 template&lt;std::size_t Position&gt; </div>
 <table class="mlabels">
@@ -1917,7 +1752,10 @@ template&lt;std::size_t Position&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::update</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -1938,11 +1776,6 @@ template&lt;std::size_t Position&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The update argument corresponding to the Nth position of the parameter pack of the tuple-like <code>UpdateTypes</code> class template type.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00334">334</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  335</span>          {</div>
-<div class="line"><span class="lineno">  336</span>  <span class="keywordflow">return</span> std::get&lt;Position&gt;(<a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.update_arguments);</div>
-<div class="line"><span class="lineno">  337</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a2697eb6865282a481107ec3aa4d42af5" name="a2697eb6865282a481107ec3aa4d42af5"></a>
@@ -1951,7 +1784,7 @@ template&lt;std::size_t Position&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1983,17 +1816,12 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00324">324</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  325</span>                              {</div>
-<div class="line"><span class="lineno">  326</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.update(arguments...);</div>
-<div class="line"><span class="lineno">  327</span>}</div>
-</div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="eigen__update__xx0_8cpp_source.xhtml#l00079">fcarouge::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::eigen_update()</a>, <a class="el" href="update__1x1x0_8cpp_source.xhtml#l00051">fcarouge::benchmark::anonymous_namespace{update_1x1x0.cpp}::update_1x1x0()</a>, and <a class="el" href="update__1x1x1_8cpp_source.xhtml#l00051">fcarouge::benchmark::anonymous_namespace{update_1x1x1.cpp}::update_1x1x1()</a>.</p>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_a2697eb6865282a481107ec3aa4d42af5_icgraph.svg" width="446" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
@@ -2006,13 +1834,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::x</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::x </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">state</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -2022,11 +1853,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00057">57</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>               {</div>
-<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.x;</div>
-<div class="line"><span class="lineno">   60</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ac1f06b20e6494b0301d5b2ab8e4214b3" name="ac1f06b20e6494b0301d5b2ab8e4214b3"></a>
@@ -2035,13 +1861,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::x</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::x </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">state</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -2057,11 +1886,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00048">48</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                     {</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.x;</div>
-<div class="line"><span class="lineno">   51</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="affc713c9d1b380f2200587dae227f9e6" name="affc713c9d1b380f2200587dae227f9e6"></a>
@@ -2070,7 +1894,7 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -2110,12 +1934,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00065">65</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>                                              {</div>
-<div class="line"><span class="lineno">   67</span>  <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.x = std::move(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">state</a>{value, values...});</div>
-<div class="line"><span class="lineno">   68</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a57bfc90129e1eff359b9750cf7e3c38a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a57bfc90129e1eff359b9750cf7e3c38a">fcarouge::kalman::state</a></div><div class="ttdeci">typename implementation::state state</div><div class="ttdoc">Type of the state estimate column vector X.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00199">kalman.hpp:199</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ae595d0ba1c0ede697b3669db0ff2dc20" name="ae595d0ba1c0ede697b3669db0ff2dc20"></a>
@@ -2124,13 +1942,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::y</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::y </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a4defeafa4957fc2e247792fd0883776d">innovation</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -2145,11 +1966,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00291">291</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  292</span>                          {</div>
-<div class="line"><span class="lineno">  293</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.y;</div>
-<div class="line"><span class="lineno">  294</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="afe87bffe9950ca5fbb77b3ef8b610dac" name="afe87bffe9950ca5fbb77b3ef8b610dac"></a>
@@ -2158,13 +1974,16 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename State , typename Output , typename Input , typename Divide , typename UpdateTypes , typename PredictionTypes &gt; </div>
+template&lt;typename State  = double, typename Output  = double, typename Input  = void, typename Divide  = std::divides&lt;void&gt;, typename UpdateTypes  = empty_pack, typename PredictionTypes  = empty_pack&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::z</td>
+          <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::z </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436">output</a> &amp;</td>
         </tr>
       </table>
   </td>
@@ -2178,11 +1997,6 @@ template&lt;typename State , typename Output , typename Input , typename Divide 
 <dl class="section return"><dt>Returns</dt><dd>The last observation column vector Z.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="detail_8hpp_source.xhtml#l00074">74</a> of file <a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   75</span>                      {</div>
-<div class="line"><span class="lineno">   76</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a94d03e7176de95c51894d0f37d83e2cf">filter</a>.z;</div>
-<div class="line"><span class="lineno">   77</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -2217,7 +2031,6 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/github/workspace/include/fcarouge/internal/<a class="el" href="format_8hpp_source.xhtml">format.hpp</a></li>
 <li>/github/workspace/include/fcarouge/<a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a></li>
-<li>/github/workspace/include/fcarouge/internal/<a class="el" href="detail_8hpp_source.xhtml">detail.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -2225,7 +2038,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sat Jan 28 2023 01:04:28 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jan 29 2023 04:33:59 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
