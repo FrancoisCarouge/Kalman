@@ -44,7 +44,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies default values are initialized for single-dimension filters
 //! without input control.
-[[maybe_unused]] auto defaults110{[] {
+[[maybe_unused]] auto kalman110{[] {
   kalman filter;
 
   assert(filter.f() == 1);
@@ -63,7 +63,7 @@ namespace {
 
 //! @test Verifies default values are initialized for single-dimension filters
 //! with input control.
-[[maybe_unused]] auto defaults111{[] {
+[[maybe_unused]] auto kalman111{[] {
   using kalman = kalman<double, double, double>;
   kalman filter;
 

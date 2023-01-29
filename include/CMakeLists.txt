@@ -72,11 +72,11 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
-            "fcarouge/internal/kalman.tpp"
+            "fcarouge/algorithm.hpp"
             "fcarouge/internal/format.hpp"
             "fcarouge/internal/kalman.hpp"
+            "fcarouge/internal/kalman.tpp"
             "fcarouge/internal/utility.hpp"
-            "fcarouge/algorithm.hpp"
             "fcarouge/kalman.hpp"
             "fcarouge/utility.hpp")
 target_compile_options(kalman INTERFACE ${OPTIONS})

@@ -51,7 +51,7 @@ template <typename Type, auto RowSize, auto ColumnSize>
 using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters.
-[[maybe_unused]] auto defaults543{[] {
+[[maybe_unused]] auto kalman543{[] {
   using kalman =
       kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>>;
   kalman filter;
@@ -85,7 +85,7 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! no input.
-[[maybe_unused]] auto defaults54{[] {
+[[maybe_unused]] auto kalman54{[] {
   using kalman = kalman<vector<double, 5>, vector<double, 4>>;
   kalman filter;
 
@@ -114,7 +114,7 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single state edge case.
-[[maybe_unused]] auto defaults143{[] {
+[[maybe_unused]] auto kalman143{[] {
   using kalman = kalman<double, vector<double, 4>, vector<double, 3>>;
   kalman filter;
 
@@ -144,7 +144,7 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single output edge case.
-[[maybe_unused]] auto defaults513{[] {
+[[maybe_unused]] auto kalman513{[] {
   using kalman = kalman<vector<double, 5>, double, vector<double, 3>>;
   kalman filter;
 
@@ -174,7 +174,7 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single input edge case.
-[[maybe_unused]] auto defaults541{[] {
+[[maybe_unused]] auto kalman541{[] {
   using kalman = kalman<vector<double, 5>, vector<double, 4>, double>;
   kalman filter;
 
@@ -206,7 +206,7 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single output and input edge case.
-[[maybe_unused]] auto defaults511{[] {
+[[maybe_unused]] auto kalman511{[] {
   using kalman = kalman<vector<double, 5>, double, double>;
   kalman filter;
 
@@ -234,7 +234,7 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single state and input edge case.
-[[maybe_unused]] auto defaults141{[] {
+[[maybe_unused]] auto kalman141{[] {
   using kalman = kalman<double, vector<double, 4>, double>;
   kalman filter;
 
@@ -261,7 +261,7 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 }()};
 
 //! @test Verifies default values are initialized for multi-dimension filters.
-[[maybe_unused]] auto defaults113{[] {
+[[maybe_unused]] auto kalman113{[] {
   using kalman = kalman<double, double, vector<double, 3>>;
   kalman filter;
 
