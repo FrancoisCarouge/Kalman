@@ -45,10 +45,10 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+template <auto Size> using vector = Eigen::Vector<double, Size>;
 
-template <typename Type, auto RowSize, auto ColumnSize>
-using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
+template <auto Row, auto Column>
+using matrix = Eigen::Matrix<double, Row, Column>;
 
 struct divide final {
   template <typename Numerator, typename Denominator>
@@ -71,14 +71,14 @@ struct divide final {
 //! the Eigen filter type.
 [[maybe_unused]] auto f_5x4x3{[] {
   using kalman =
-      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>, divide,
+      kalman<vector<5>, vector<4>, vector<3>, divide,
              std::tuple<double, float, int>, std::tuple<int, float, double>>;
 
   kalman filter;
 
-  const auto i5x5{matrix<double, 5, 5>::Identity()};
-  const auto z5x5{matrix<double, 5, 5>::Zero()};
-  const vector<double, 3> z3{vector<double, 3>::Zero()};
+  const auto i5x5{matrix<5, 5>::Identity()};
+  const auto z5x5{matrix<5, 5>::Zero()};
+  const vector<3> z3{vector<3>::Zero()};
 
   assert(filter.f() == i5x5);
 
@@ -112,7 +112,7 @@ struct divide final {
            [[maybe_unused]] const kalman::input &u,
            [[maybe_unused]] const int &i, [[maybe_unused]] const float &fp,
            [[maybe_unused]] const double &d) -> kalman::state_transition {
-          return matrix<double, 5, 5>::Identity();
+          return matrix<5, 5>::Identity();
         }};
     filter.f(f);
     assert(filter.f() == z5x5);
@@ -126,7 +126,7 @@ struct divide final {
            [[maybe_unused]] const kalman::input &u,
            [[maybe_unused]] const int &i, [[maybe_unused]] const float &fp,
            [[maybe_unused]] const double &d) -> kalman::state_transition {
-          return matrix<double, 5, 5>::Zero();
+          return matrix<5, 5>::Zero();
         }};
     filter.f(std::move(f));
     assert(filter.f() == i5x5);

@@ -45,10 +45,10 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+template <auto Size> using vector = Eigen::Vector<double, Size>;
 
-template <typename Type, auto RowSize, auto ColumnSize>
-using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
+template <auto Row, auto Column>
+using matrix = Eigen::Matrix<double, Row, Column>;
 
 struct divide final {
   template <typename Numerator, typename Denominator>
@@ -71,13 +71,13 @@ struct divide final {
 //! the Eigen filter type.
 [[maybe_unused]] auto h_5x4x3{[] {
   using kalman =
-      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>, divide,
+      kalman<vector<5>, vector<4>, vector<3>, divide,
              std::tuple<double, float, int>, std::tuple<int, float, double>>;
 
   kalman filter;
-  const auto i4x5{matrix<double, 4, 5>::Identity()};
-  const auto z4x5{matrix<double, 4, 5>::Zero()};
-  const vector<double, 4> z4{vector<double, 4>::Zero()};
+  const auto i4x5{matrix<4, 5>::Identity()};
+  const auto z4x5{matrix<4, 5>::Zero()};
+  const vector<4> z4{vector<4>::Zero()};
 
   assert(filter.h() == i4x5);
 
@@ -110,7 +110,7 @@ struct divide final {
                     [[maybe_unused]] const double &d,
                     [[maybe_unused]] const float &f,
                     [[maybe_unused]] const int &i) -> kalman::output_model {
-      return matrix<double, 4, 5>::Identity();
+      return matrix<4, 5>::Identity();
     }};
     filter.h(h);
     assert(filter.h() == z4x5);
@@ -123,7 +123,7 @@ struct divide final {
                     [[maybe_unused]] const double &d,
                     [[maybe_unused]] const float &f,
                     [[maybe_unused]] const int &i) -> kalman::output_model {
-      return matrix<double, 4, 5>::Zero();
+      return matrix<4, 5>::Zero();
     }};
     filter.h(std::move(h));
     assert(filter.h() == i4x5);
