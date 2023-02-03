@@ -55,9 +55,9 @@ foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
             $<TARGET_FILE:kalman_test_${NAME}_driver>)
 endforeach()
 
-foreach(TEST_EIGEN "eigen_f.cpp" "eigen_h.cpp" "eigen_initialization.cpp")
-  get_filename_component(NAME ${TEST_EIGEN} NAME_WE)
-  add_executable(kalman_test_eigen_${NAME}_driver ${TEST_EIGEN})
+foreach(TEST "eigen_f.cpp" "eigen_h.cpp" "eigen_initialization.cpp")
+  get_filename_component(NAME ${TEST} NAME_WE)
+  add_executable(kalman_test_eigen_${NAME}_driver ${TEST})
   target_link_libraries(kalman_test_eigen_${NAME}_driver
                         PRIVATE Eigen3::Eigen kalman kalman_main)
   add_test(kalman_test_eigen_${NAME} kalman_test_eigen_${NAME}_driver)

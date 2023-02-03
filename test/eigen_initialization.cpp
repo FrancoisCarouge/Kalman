@@ -45,27 +45,26 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+template <auto Size> using vector = Eigen::Vector<double, Size>;
 
-template <typename Type, auto RowSize, auto ColumnSize>
-using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
+template <auto Row, auto Column>
+using matrix = Eigen::Matrix<double, Row, Column>;
 
 //! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto kalman543{[] {
-  using kalman =
-      kalman<vector<double, 5>, vector<double, 4>, vector<double, 3>>;
+  using kalman = kalman<vector<5>, vector<4>, vector<3>>;
   kalman filter;
 
-  const auto z3x1{vector<double, 3>::Zero()};
-  const auto i4x4{matrix<double, 4, 4>::Identity()};
-  const auto i4x5{matrix<double, 4, 5>::Identity()};
-  const auto i5x3{matrix<double, 5, 3>::Identity()};
-  const auto i5x4{matrix<double, 5, 4>::Identity()};
-  const auto i5x5{matrix<double, 5, 5>::Identity()};
-  const auto z4x1{vector<double, 4>::Zero()};
-  const auto z4x4{matrix<double, 4, 4>::Zero()};
-  const auto z5x1{vector<double, 5>::Zero()};
-  const auto z5x5{matrix<double, 5, 5>::Zero()};
+  const auto z3x1{vector<3>::Zero()};
+  const auto i4x4{matrix<4, 4>::Identity()};
+  const auto i4x5{matrix<4, 5>::Identity()};
+  const auto i5x3{matrix<5, 3>::Identity()};
+  const auto i5x4{matrix<5, 4>::Identity()};
+  const auto i5x5{matrix<5, 5>::Identity()};
+  const auto z4x1{vector<4>::Zero()};
+  const auto z4x4{matrix<4, 4>::Zero()};
+  const auto z5x1{vector<5>::Zero()};
+  const auto z5x5{matrix<5, 5>::Zero()};
 
   assert(filter.f() == i5x5);
   assert(filter.g() == i5x3);
@@ -86,17 +85,17 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! no input.
 [[maybe_unused]] auto kalman54{[] {
-  using kalman = kalman<vector<double, 5>, vector<double, 4>>;
+  using kalman = kalman<vector<5>, vector<4>>;
   kalman filter;
 
-  const auto i4x4{matrix<double, 4, 4>::Identity()};
-  const auto i4x5{matrix<double, 4, 5>::Identity()};
-  const auto i5x4{matrix<double, 5, 4>::Identity()};
-  const auto i5x5{matrix<double, 5, 5>::Identity()};
-  const auto z4x1{vector<double, 4>::Zero()};
-  const auto z4x4{matrix<double, 4, 4>::Zero()};
-  const auto z5x1{vector<double, 5>::Zero()};
-  const auto z5x5{matrix<double, 5, 5>::Zero()};
+  const auto i4x4{matrix<4, 4>::Identity()};
+  const auto i4x5{matrix<4, 5>::Identity()};
+  const auto i5x4{matrix<5, 4>::Identity()};
+  const auto i5x5{matrix<5, 5>::Identity()};
+  const auto z4x1{vector<4>::Zero()};
+  const auto z4x4{matrix<4, 4>::Zero()};
+  const auto z5x1{vector<5>::Zero()};
+  const auto z5x5{matrix<5, 5>::Zero()};
 
   assert(filter.f() == i5x5);
   assert(filter.h() == i4x5);
@@ -115,16 +114,16 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single state edge case.
 [[maybe_unused]] auto kalman143{[] {
-  using kalman = kalman<double, vector<double, 4>, vector<double, 3>>;
+  using kalman = kalman<double, vector<4>, vector<3>>;
   kalman filter;
 
-  const auto z3x1{vector<double, 3>::Zero()};
-  const auto i4x4{matrix<double, 4, 4>::Identity()};
-  const auto i4x1{matrix<double, 4, 1>::Identity()};
-  const auto i1x3{matrix<double, 1, 3>::Identity()};
-  const auto i1x4{matrix<double, 1, 4>::Identity()};
-  const auto z4x1{vector<double, 4>::Zero()};
-  const auto z4x4{matrix<double, 4, 4>::Zero()};
+  const auto z3x1{vector<3>::Zero()};
+  const auto i4x4{matrix<4, 4>::Identity()};
+  const auto i4x1{matrix<4, 1>::Identity()};
+  const auto i1x3{matrix<1, 3>::Identity()};
+  const auto i1x4{matrix<1, 4>::Identity()};
+  const auto z4x1{vector<4>::Zero()};
+  const auto z4x4{matrix<4, 4>::Zero()};
 
   assert(filter.f() == 1);
   assert(filter.g() == i1x3);
@@ -145,16 +144,16 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single output edge case.
 [[maybe_unused]] auto kalman513{[] {
-  using kalman = kalman<vector<double, 5>, double, vector<double, 3>>;
+  using kalman = kalman<vector<5>, double, vector<3>>;
   kalman filter;
 
-  const auto z3x1{vector<double, 3>::Zero()};
-  const auto i1x5{matrix<double, 1, 5>::Identity()};
-  const auto i5x3{matrix<double, 5, 3>::Identity()};
-  const auto i5x1{matrix<double, 5, 1>::Identity()};
-  const auto i5x5{matrix<double, 5, 5>::Identity()};
-  const auto z5x1{vector<double, 5>::Zero()};
-  const auto z5x5{matrix<double, 5, 5>::Zero()};
+  const auto z3x1{vector<3>::Zero()};
+  const auto i1x5{matrix<1, 5>::Identity()};
+  const auto i5x3{matrix<5, 3>::Identity()};
+  const auto i5x1{matrix<5, 1>::Identity()};
+  const auto i5x5{matrix<5, 5>::Identity()};
+  const auto z5x1{vector<5>::Zero()};
+  const auto z5x5{matrix<5, 5>::Zero()};
 
   assert(filter.f() == i5x5);
   assert(filter.g() == i5x3);
@@ -175,18 +174,18 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single input edge case.
 [[maybe_unused]] auto kalman541{[] {
-  using kalman = kalman<vector<double, 5>, vector<double, 4>, double>;
+  using kalman = kalman<vector<5>, vector<4>, double>;
   kalman filter;
 
-  const auto i4x4{matrix<double, 4, 4>::Identity()};
-  const auto i4x5{matrix<double, 4, 5>::Identity()};
-  const auto i5x1{matrix<double, 5, 1>::Identity()};
-  const auto i5x4{matrix<double, 5, 4>::Identity()};
-  const auto i5x5{matrix<double, 5, 5>::Identity()};
-  const auto z4x1{vector<double, 4>::Zero()};
-  const auto z4x4{matrix<double, 4, 4>::Zero()};
-  const auto z5x1{vector<double, 5>::Zero()};
-  const auto z5x5{matrix<double, 5, 5>::Zero()};
+  const auto i4x4{matrix<4, 4>::Identity()};
+  const auto i4x5{matrix<4, 5>::Identity()};
+  const auto i5x1{matrix<5, 1>::Identity()};
+  const auto i5x4{matrix<5, 4>::Identity()};
+  const auto i5x5{matrix<5, 5>::Identity()};
+  const auto z4x1{vector<4>::Zero()};
+  const auto z4x4{matrix<4, 4>::Zero()};
+  const auto z5x1{vector<5>::Zero()};
+  const auto z5x5{matrix<5, 5>::Zero()};
 
   assert(filter.f() == i5x5);
   assert(filter.g() == i5x1);
@@ -207,14 +206,14 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single output and input edge case.
 [[maybe_unused]] auto kalman511{[] {
-  using kalman = kalman<vector<double, 5>, double, double>;
+  using kalman = kalman<vector<5>, double, double>;
   kalman filter;
 
-  const auto i1x5{matrix<double, 1, 5>::Identity()};
-  const auto i5x1{matrix<double, 5, 1>::Identity()};
-  const auto i5x5{matrix<double, 5, 5>::Identity()};
-  const auto z5x1{vector<double, 5>::Zero()};
-  const auto z5x5{matrix<double, 5, 5>::Zero()};
+  const auto i1x5{matrix<1, 5>::Identity()};
+  const auto i5x1{matrix<5, 1>::Identity()};
+  const auto i5x5{matrix<5, 5>::Identity()};
+  const auto z5x1{vector<5>::Zero()};
+  const auto z5x5{matrix<5, 5>::Zero()};
 
   assert(filter.f() == i5x5);
   assert(filter.g() == i5x1);
@@ -235,14 +234,14 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single state and input edge case.
 [[maybe_unused]] auto kalman141{[] {
-  using kalman = kalman<double, vector<double, 4>, double>;
+  using kalman = kalman<double, vector<4>, double>;
   kalman filter;
 
-  const auto i4x4{matrix<double, 4, 4>::Identity()};
-  const auto i4x1{matrix<double, 4, 1>::Identity()};
-  const auto i1x4{matrix<double, 1, 4>::Identity()};
-  const auto z4x1{vector<double, 4>::Zero()};
-  const auto z4x4{matrix<double, 4, 4>::Zero()};
+  const auto i4x4{matrix<4, 4>::Identity()};
+  const auto i4x1{matrix<4, 1>::Identity()};
+  const auto i1x4{matrix<1, 4>::Identity()};
+  const auto z4x1{vector<4>::Zero()};
+  const auto z4x4{matrix<4, 4>::Zero()};
 
   assert(filter.f() == 1);
   assert(filter.g() == 1);
@@ -262,11 +261,11 @@ using matrix = Eigen::Matrix<Type, RowSize, ColumnSize>;
 
 //! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto kalman113{[] {
-  using kalman = kalman<double, double, vector<double, 3>>;
+  using kalman = kalman<double, double, vector<3>>;
   kalman filter;
 
-  const auto z3x1{vector<double, 3>::Zero()};
-  const auto i1x3{matrix<double, 1, 3>::Identity()};
+  const auto z3x1{vector<3>::Zero()};
+  const auto i1x3{matrix<1, 3>::Identity()};
 
   assert(filter.f() == 1);
   assert(filter.g() == i1x3);
