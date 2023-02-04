@@ -583,7 +583,9 @@ public:
 
   //! @brief Produces estimates of the state variables and uncertainties.
   //!
-  //! @details Implements the total probability theorem.
+  //! @details Also known as the propagation step. Implements the total
+  //! probability theorem. Estimate the next state by suming the known
+  //! probabilities.
   //!
   //! @param arguments The prediction and input parameters of
   //! the filter, in that order. The arguments need to be compatible with the
@@ -615,7 +617,8 @@ public:
   //! @brief Updates the estimates with the outcome of a measurement.
   //!
   //! @details Also known as the observation or correction step. Implements the
-  //! Bayes' theorem. Combine one measurement and the prior estimate.
+  //! Bayes' theorem. Combine one measurement and the prior estimate by applying
+  //! the multiplicative law.
   //!
   //! @param arguments The update and output parameters of
   //! the filter, in that order. The arguments need to be compatible with the
