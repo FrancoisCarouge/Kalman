@@ -1399,7 +1399,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </div><div class="memdoc">
 
 <p>Produces estimates of the state variables and uncertainties. </p>
-<p >Implements the total probability theorem.</p>
+<p >Also known as the propagation step. Implements the total probability theorem. Estimate the next state by suming the known probabilities.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">arguments</td><td>The prediction and input parameters of the filter, in that order. The arguments need to be compatible with the filter types. The prediction parameters convertible to the <code>PredictionTypes</code> template pack types are passed through for computations of prediction matrices. The control parameter pack types convertible to the <code>Input</code> template type. The prediction types are explicitly defined with the class definition.</td></tr>
@@ -1805,7 +1805,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </div><div class="memdoc">
 
 <p>Updates the estimates with the outcome of a measurement. </p>
-<p >Also known as the observation or correction step. Implements the Bayes' theorem. Combine one measurement and the prior estimate.</p>
+<p >Also known as the observation or correction step. Implements the Bayes' theorem. Combine one measurement and the prior estimate by applying the multiplicative law.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">arguments</td><td>The update and output parameters of the filter, in that order. The arguments need to be compatible with the filter types. The update parameters convertible to the <code>UpdateTypes</code> template pack types are passed through for computations of update matrices. The observation parameter pack types convertible to the <code>Output</code> template type. The update types are explicitly defined with the class definition.</td></tr>
@@ -2038,7 +2038,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Fri Feb 3 2023 03:09:21 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Feb 4 2023 02:51:00 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
