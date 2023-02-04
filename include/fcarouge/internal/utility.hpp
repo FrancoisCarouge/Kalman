@@ -157,6 +157,8 @@ struct deducer final {
 };
 
 template <typename Lhs, typename Rhs>
+//! @todo How to return the `emtpy` type if the deducer would fail to help avoid
+//! specialization?
 using matrix = std::decay_t<std::invoke_result_t<deducer, Lhs, Rhs>>;
 
 } // namespace fcarouge::internal
