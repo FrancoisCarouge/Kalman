@@ -43,13 +43,13 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <functional>
 #include <tuple>
-#include <type_traits>
 
 namespace fcarouge::internal {
 
 template <typename, typename, typename, typename, typename, typename>
 struct kalman final {
   //! @todo Support some more specializations, all, or disable others?
+  //! @todo Add a pretty compilation error?
 };
 
 template <typename State, typename Output, typename Divide,
