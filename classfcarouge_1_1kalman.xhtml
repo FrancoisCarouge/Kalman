@@ -290,7 +290,7 @@ class fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, Prediction
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This class could be usable in constant expressions if <code>std::function</code> could too. The polymorphic function wrapper was used in place of function pointers to enable default initialization from this class, captured member variables.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000012">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000013">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristics? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -446,7 +446,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </div><div class="memdoc">
 
 <p>Type of the control column vector U. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000013">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000014">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a5">kf_2x1x1_rocket_altitude.cpp</a>.</dd>
 </dl>
 
@@ -470,7 +470,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 <p>Type of the control transition matrix G. </p>
 <p >Also known as B.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000014">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000015">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a7">kf_2x1x1_rocket_altitude.cpp</a>.</dd>
 </dl>
 
@@ -679,7 +679,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000015">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000016">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
 
 </div>
 </div>
@@ -718,7 +718,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000016">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
 
 </div>
 </div>
@@ -1182,7 +1182,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The reference value of this implicit object filter parameter, i.e. <code>*this</code>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
 
 </div>
 </div>
@@ -1222,7 +1222,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The reference value of this implicit object filter parameter, i.e. <code>*this</code>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
 
 </div>
 </div>
@@ -1406,7 +1406,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -1812,7 +1812,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -1884,7 +1884,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
 
 </div>
 </div>
@@ -1964,7 +1964,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <p>Returns the innovation column vector Y. </p>
 <dl class="section return"><dt>Returns</dt><dd>The innovation column vector Y.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
 
 </div>
 </div>
@@ -2038,7 +2038,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Sat Feb 4 2023 02:51:00 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Feb 5 2023 01:24:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
