@@ -130,6 +130,8 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q()
   return filter.q;
 }
 
+///////// MORE ARGS TO SIMPLIFY OUT? /////////////////////////////////////
+
 template <typename State, typename Output, typename Input, typename Divide,
           typename UpdateTypes, typename PredictionTypes>
 inline constexpr void
@@ -137,6 +139,11 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::q(
     const auto &value, const auto &...values) {
   if constexpr (std::is_convertible_v<decltype(value), process_uncertainty>) {
     filter.q = std::move(process_uncertainty{value, values...});
+    filter.noise_process_q =
+        [q = filter.q](
+            [[maybe_unused]] const auto &...arguments) -> process_uncertainty {
+      return q;
+    };
   } else {
     using noise_process_function = decltype(filter.noise_process_q);
     filter.noise_process_q =
@@ -169,6 +176,11 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::r(
     const auto &value, const auto &...values) {
   if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
     filter.r = std::move(output_uncertainty{value, values...});
+    filter.noise_observation_r =
+        [r = filter.r](
+            [[maybe_unused]] const auto &...arguments) -> output_uncertainty {
+      return r;
+    };
   } else {
     using noise_observation_function = decltype(filter.noise_observation_r);
     filter.noise_observation_r =
@@ -201,6 +213,11 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::f(
     const auto &value, const auto &...values) {
   if constexpr (std::is_convertible_v<decltype(value), state_transition>) {
     filter.f = std::move(state_transition{value, values...});
+    filter.transition_state_f =
+        [f = filter.f](
+            [[maybe_unused]] const auto &...arguments) -> state_transition {
+      return f;
+    };
   } else {
     using transition_state_function = decltype(filter.transition_state_f);
     filter.transition_state_f =
@@ -233,6 +250,11 @@ kalman<State, Output, Input, Divide, UpdateTypes, PredictionTypes>::h(
     const auto &value, const auto &...values) {
   if constexpr (std::is_convertible_v<decltype(value), output_model>) {
     filter.h = std::move(output_model{value, values...});
+    filter.observation_state_h =
+        [h = filter.h](
+            [[maybe_unused]] const auto &...arguments) -> output_model {
+      return h;
+    };
   } else {
     using observation_state_function = decltype(filter.observation_state_h);
     filter.observation_state_h =
