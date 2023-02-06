@@ -20,6 +20,6 @@ jobs:
         pip install cmakelang
     - name: "Test"
       run: |
-        find . -iname "*.hpp" -o -iname "*.cpp" -o -iwholename "./support/format" | xargs \
+        find . -iname "*.hpp" -o -iname "*.tpp" -o -iname "*.cpp" -o -iwholename "./support/format" | xargs \
           clang-format-15 --Werror --dry-run --verbose -style=file
         cmake-format --check CMakeLists.txt
