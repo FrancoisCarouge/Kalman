@@ -42,6 +42,16 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
+template <non_arithmetic Numerator, non_arithmetic Denominator>
+auto operator/(const Numerator &lhs, const Denominator &rhs)
+    -> fcarouge::internal::matrix<Numerator, Denominator> {
+  return rhs.transpose()
+      .fullPivHouseholderQr()
+      .solve(lhs.transpose())
+      .transpose()
+      .eval();
+}
+
 namespace fcarouge::test {
 namespace {
 
@@ -50,29 +60,12 @@ template <auto Size> using vector = Eigen::Vector<double, Size>;
 template <auto Row, auto Column>
 using matrix = Eigen::Matrix<double, Row, Column>;
 
-struct divide final {
-  template <typename Numerator, typename Denominator>
-  [[nodiscard]] inline constexpr auto
-  operator()(const Numerator &numerator, const Denominator &denominator) const {
-    using result =
-        typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
-                               std::decay_t<Numerator>::RowsAtCompileTime,
-                               std::decay_t<Denominator>::RowsAtCompileTime>;
-
-    return result{denominator.transpose()
-                      .fullPivHouseholderQr()
-                      .solve(numerator.transpose())
-                      .transpose()
-                      .eval()};
-  }
-};
-
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto f_5x4x3{[] {
   using kalman =
-      kalman<vector<5>, vector<4>, vector<3>, divide,
-             std::tuple<double, float, int>, std::tuple<int, float, double>>;
+      kalman<vector<5>, vector<4>, vector<3>, std::tuple<double, float, int>,
+             std::tuple<int, float, double>>;
 
   kalman filter;
 

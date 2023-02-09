@@ -177,7 +177,6 @@ template <
   typename State,
   typename Output,
   typename Input,
-  typename Divide,
   typename UpdateTypes,
   typename PredictionTypes>
 class kalman
@@ -190,7 +189,6 @@ class kalman
 | `State` | The type template parameter of the state column vector *X*. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `double`. |
 | `Output` | The type template parameter of the measurement column vector *Z*. Defaults to `double`. |
 | `Input` | The type template parameter of the control *U*. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix *G* support, and the other related computations from the filter. Defaults to `void`. |
-| `Divide` | The customization point object template parameter of the matrix division functor. Default to the standard division `std::divides<void>` function object. |
 | `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation *H* and the observation noise *R* matrices. The parameters are also propagated to the state observation function object *H*. Defaults to no parameter types, the empty pack. |
 | `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise *Q*, the state transition *F*, and the control transition *G* matrices. The parameters are also propagated to the state transition function object *F*. Defaults to no parameter types, the empty pack. |
 

@@ -97,9 +97,6 @@ namespace fcarouge {
 //! type can be used for systems with no input control to disable all of the
 //! input control features, the control transition matrix G support, and the
 //! other related computations from the filter. Defaults to `void`.
-//! @tparam Divide The customization point object template parameter of the
-//! matrix division functor. Default to the standard division
-//! `std::divides<void>` function object.
 //! @tparam UpdateTypes The additional update function parameter types passed in
 //! through a tuple-like parameter type, composing zero or more types.
 //! Parameters such as delta times, variances, or linearized values. The
@@ -165,8 +162,7 @@ namespace fcarouge {
 //! Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez,
 //! https://arxiv.org/pdf/1905.13002.pdf ?
 template <typename State = double, typename Output = double,
-          typename Input = void, typename Divide = std::divides<void>,
-          typename UpdateTypes = empty_pack,
+          typename Input = void, typename UpdateTypes = empty_pack,
           typename PredictionTypes = empty_pack>
 class kalman final {
 private:
@@ -177,9 +173,9 @@ private:
   //!
   //! @brief The internal implementation unpacks the parameter packs from
   //! tuple-like types which allows for multiple parameter pack deductions.
-  using implementation = internal::kalman<State, Output, Input, Divide,
-                                          internal::repack_t<UpdateTypes>,
-                                          internal::repack_t<PredictionTypes>>;
+  using implementation =
+      internal::kalman<State, Output, Input, internal::repack_t<UpdateTypes>,
+                       internal::repack_t<PredictionTypes>>;
 
   //! @}
 

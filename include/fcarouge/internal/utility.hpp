@@ -163,4 +163,12 @@ using matrix = std::decay_t<std::invoke_result_t<deducer, Lhs, Rhs>>;
 
 } // namespace fcarouge::internal
 
+template <typename Type>
+concept non_arithmetic = !
+fcarouge::internal::arithmetic<Type>;
+
+template <non_arithmetic Numerator, non_arithmetic Denominator>
+auto operator/(const Numerator &lhs, const Denominator &rhs)
+    -> fcarouge::internal::matrix<Numerator, Denominator>;
+
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP
