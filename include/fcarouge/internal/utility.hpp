@@ -47,6 +47,10 @@ namespace fcarouge::internal {
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
+template <typename Type>
+concept algebraic = not
+arithmetic<Type>;
+
 struct empty {
   inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {
     // Constructs from anything for all initializations compatibility.
@@ -156,10 +160,11 @@ struct deducer final {
       typename decltype(rhs.transpose())::PlainMatrix;
 };
 
-template <typename Lhs, typename Rhs>
+template <typename Numerator, typename Denominator>
 //! @todo How to return the `emtpy` type if the deducer would fail to help avoid
 //! specialization?
-using matrix = std::decay_t<std::invoke_result_t<deducer, Lhs, Rhs>>;
+using quotient =
+    std::decay_t<std::invoke_result_t<deducer, Numerator, Denominator>>;
 
 } // namespace fcarouge::internal
 

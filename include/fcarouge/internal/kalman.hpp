@@ -39,22 +39,22 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_KALMAN_HPP
 #define FCAROUGE_INTERNAL_KALMAN_HPP
 
-#include "utility.hpp"
+#include "fcarouge/utility.hpp"
 
 #include <functional>
 #include <tuple>
 
 namespace fcarouge::internal {
 
-template <typename, typename, typename, typename, typename, typename>
+template <typename, typename, typename, typename, typename>
 struct kalman final {
   //! @todo Support some more specializations, all, or disable others?
   //! @todo Add a pretty compilation error?
 };
 
-template <typename State, typename Output, typename Divide,
-          typename... UpdateTypes, typename... PredictionTypes>
-struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
+template <typename State, typename Output, typename... UpdateTypes,
+          typename... PredictionTypes>
+struct kalman<State, Output, void, pack<UpdateTypes...>,
               pack<PredictionTypes...>> {
   using state = State;
   using output = Output;
@@ -99,7 +99,6 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
   update_types update_arguments{};
   prediction_types prediction_arguments{};
   transpose t{};
-  Divide divide{};
 
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through filter.x() when needed? Where does the
@@ -150,7 +149,7 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
     s = innovation_uncertainty{h * p * t(h) + r};
-    k = divide(p * t(h), s);
+    k = p * t(h) / s;
     y = z - observation(x, update_pack...);
     x = state{x + k * y};
     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
@@ -165,9 +164,9 @@ struct kalman<State, Output, void, Divide, pack<UpdateTypes...>,
   }
 };
 
-template <typename State, typename Output, typename Input, typename Divide,
+template <typename State, typename Output, typename Input,
           typename... UpdateTypes, typename... PredictionTypes>
-struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
+struct kalman<State, Output, Input, pack<UpdateTypes...>,
               pack<PredictionTypes...>> {
   using state = State;
   using output = Output;
@@ -215,7 +214,6 @@ struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
   update_types update_arguments{};
   prediction_types prediction_arguments{};
   transpose t{};
-  Divide divide{};
 
   //! @todo Should we pass through the reference to the state x or have the user
   //! access it through filter.x() when needed? Where does the
@@ -269,7 +267,7 @@ struct kalman<State, Output, Input, Divide, pack<UpdateTypes...>,
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
     s = h * p * t(h) + r;
-    k = divide(p * t(h), s);
+    k = p * t(h) / s;
     y = z - observation(x, update_pack...);
     x = state{x + k * y};
     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};

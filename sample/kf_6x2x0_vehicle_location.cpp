@@ -5,27 +5,19 @@
 #include <cassert>
 #include <cmath>
 
+template <typename Numerator, fcarouge::algebraic Denominator>
+auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
+    -> fcarouge::quotient<Numerator, Denominator> {
+  return rhs.transpose()
+      .fullPivHouseholderQr()
+      .solve(lhs.transpose())
+      .transpose();
+}
+
 namespace fcarouge::sample {
 namespace {
 
 template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
-
-struct divide final {
-  template <typename Numerator, typename Denominator>
-  [[nodiscard]] inline constexpr auto
-  operator()(const Numerator &numerator, const Denominator &denominator) const {
-    using result =
-        typename Eigen::Matrix<typename std::decay_t<Numerator>::Scalar,
-                               std::decay_t<Numerator>::RowsAtCompileTime,
-                               std::decay_t<Denominator>::RowsAtCompileTime>;
-
-    return result{denominator.transpose()
-                      .fullPivHouseholderQr()
-                      .solve(numerator.transpose())
-                      .transpose()
-                      .eval()};
-  }
-};
 
 //! @brief Estimating the vehicle location.
 //!
@@ -48,7 +40,7 @@ struct divide final {
 //! @example kf_6x2x0_vehicle_location.cpp
 [[maybe_unused]] auto kf_6x2x0_vehicle_location{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
-  using kalman = kalman<vector<double, 6>, vector<double, 2>, void, divide>;
+  using kalman = kalman<vector<double, 6>, vector<double, 2>, void>;
 
   kalman filter;
 
