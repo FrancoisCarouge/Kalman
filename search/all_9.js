@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['k_0',['k',['../classfcarouge_1_1kalman.xhtml#a74e44ad09f9cfef290aa929c3cc9a7e9',1,'fcarouge::kalman']]],
-  ['kalman_1',['kalman',['../classfcarouge_1_1kalman.xhtml',1,'fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;'],['../classfcarouge_1_1kalman.xhtml#a2655ea8a18c6f332626bda0efeeae010',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=delete'],['../classfcarouge_1_1kalman.xhtml#a82243507de3bb5f96963ef515d7c5845',1,'fcarouge::kalman::kalman(const kalman &amp;other)=delete'],['../classfcarouge_1_1kalman.xhtml#a5a02dcd9ae659726a2593f2e3dd91f34',1,'fcarouge::kalman::kalman()=default']]],
+  ['k_0',['k',['../classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae',1,'fcarouge::kalman']]],
+  ['kalman_1',['kalman',['../classfcarouge_1_1kalman.xhtml',1,'fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;'],['../classfcarouge_1_1kalman.xhtml#a221645b98bab026858436965b94c7d9d',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=delete'],['../classfcarouge_1_1kalman.xhtml#a4aaccf622ce45bee7ac25c2068b2f675',1,'fcarouge::kalman::kalman(const kalman &amp;other)=delete'],['../classfcarouge_1_1kalman.xhtml#a85ace6a5eab46e4f9438a70c29d1676b',1,'fcarouge::kalman::kalman()=default']]],
   ['kalman_2ehpp_2',['kalman.hpp',['../internal_2kalman_8hpp.xhtml',1,'(Global Namespace)'],['../kalman_8hpp.xhtml',1,'(Global Namespace)']]],
   ['kalman110_3',['kalman110',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a938ade872a86baf9a8cf6113387ab2c6',1,'fcarouge::test::anonymous_namespace{initialization.cpp}']]],
   ['kalman111_4',['kalman111',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02initialization_8cpp_03.xhtml#a164ef8d3b7ce789544c7afa34f22a074',1,'fcarouge::test::anonymous_namespace{initialization.cpp}']]],

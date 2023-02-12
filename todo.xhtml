@@ -95,10 +95,10 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dd><a class="anchor" id="_todo000001"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
 <dt>{<a class="el" href="eigen__update__xx0_8cpp.xhtml">eigen_update_xx0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#aebc41f6f242eb7940f62a476a4faec25">fcarouge::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::Name</a>  ("eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</dt>
 <dd><a class="anchor" id="_todo000002"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
-<dt>Member <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa6ea711fa95c137443798ecd78f0b841">fcarouge::internal::matrix</a>  </dt>
-<dd><a class="anchor" id="_todo000009"></a>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization?  </dd>
-<dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000013"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<dt>Member <a class="el" href="namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332">fcarouge::internal::quotient</a>  </dt>
+<dd><a class="anchor" id="_todo000007"></a>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization?  </dd>
+<dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;</a>  </dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000014"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd"></p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristics? </p>
 <p class="interdd"></p>
@@ -147,33 +147,33 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <p class="interdd"></p>
 <p class="enddd">Can we implement Temporal Parallelization of Bayesian Smoothers, Simo Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez, <a href="https://arxiv.org/pdf/1905.13002.pdf">https://arxiv.org/pdf/1905.13002.pdf</a> ?  </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ae50bc6a7b064ac6c91ddab3791b120db">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::input</a>  </dt>
-<dd><a class="anchor" id="_todo000014"></a>Conditionally remove this member type when no input is present.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a8fe68f6c32515ec3e338c9c3d205a753">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::input_control</a>  </dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ad73f295bc047ef3c931a4d20104e4127">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::input</a>  </dt>
 <dd><a class="anchor" id="_todo000015"></a>Conditionally remove this member type when no input is present.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a82243507de3bb5f96963ef515d7c5845">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::kalman</a>  (const kalman &amp;other)=delete</dt>
-<dd><a class="anchor" id="_todo000016"></a>Implement and test.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a2655ea8a18c6f332626bda0efeeae010">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::kalman</a>  (kalman &amp;&amp;other) noexcept=delete</dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aa4216a5e5baa908a826b359f14779934">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::input_control</a>  </dt>
+<dd><a class="anchor" id="_todo000016"></a>Conditionally remove this member type when no input is present.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a4aaccf622ce45bee7ac25c2068b2f675">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::kalman</a>  (const kalman &amp;other)=delete</dt>
 <dd><a class="anchor" id="_todo000017"></a>Implement and test.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#abfbdd536b26f2e0ad79fac3d4cb00e0b">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::operator=</a>  (const kalman &amp;other) -&gt; kalman &amp;=delete</dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a221645b98bab026858436965b94c7d9d">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::kalman</a>  (kalman &amp;&amp;other) noexcept=delete</dt>
 <dd><a class="anchor" id="_todo000018"></a>Implement and test.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a5fb8c4488181bd033929563bbbf45242">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::operator=</a>  (kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=delete</dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ab2db3b065650ffd42931f010d6781835">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::operator=</a>  (const kalman &amp;other) -&gt; kalman &amp;=delete</dt>
 <dd><a class="anchor" id="_todo000019"></a>Implement and test.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::predict</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000022"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a5215bcddbc15cd25df587f7988334ed8">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::operator=</a>  (kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=delete</dt>
+<dd><a class="anchor" id="_todo000020"></a>Implement and test.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::predict</a>  (const auto &amp;...arguments)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000023"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a2697eb6865282a481107ec3aa4d42af5">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::update</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000023"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::update</a>  (const auto &amp;...arguments)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000024"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ac1f06b20e6494b0301d5b2ab8e4214b3">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::x</a>  () const -&gt; const state &amp;</dt>
-<dd><a class="anchor" id="_todo000020"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ae595d0ba1c0ede697b3669db0ff2dc20">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
-<dd><a class="anchor" id="_todo000021"></a>Add measurement post-fit residual by default and example?  </dd>
-<dt>Member <a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_divide_091fff7b634347e14b96e7877a9e05eb7.xhtml#a0fa1e05de18105998571dbf3631ec8de">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;, Char &gt;::format</a>  (const fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt; &amp;filter, std::basic_format_context&lt; OutputIt, Char &gt; &amp;format_context) -&gt; OutputIt</dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::x</a>  () const -&gt; const state &amp;</dt>
+<dd><a class="anchor" id="_todo000021"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
+<dd><a class="anchor" id="_todo000022"></a>Add measurement post-fit residual by default and example?  </dd>
+<dt>Member <a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#ada34644f2cf8e8708c15e0b4975028f7">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;, Char &gt;::format</a>  (const fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt; &amp;filter, std::basic_format_context&lt; OutputIt, Char &gt; &amp;format_context) -&gt; OutputIt</dt>
 <dd><a class="anchor" id="_todo000004"></a>P2585 may be useful in simplifying and standardizing the support. </dd>
 </dl>
 </div></div><!-- contents -->
@@ -182,7 +182,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Feb 6 2023 02:23:24 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Feb 12 2023 20:46:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

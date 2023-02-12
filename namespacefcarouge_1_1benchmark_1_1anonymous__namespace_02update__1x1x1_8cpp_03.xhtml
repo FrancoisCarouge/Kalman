@@ -146,12 +146,12 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   59</span> </div>
 <div class="line"><span class="lineno">   60</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
 <div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436">kalman::output</a> z{uniformly_distributed(random_generator)};</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> z{uniformly_distributed(random_generator)};</div>
 <div class="line"><span class="lineno">   63</span> </div>
 <div class="line"><span class="lineno">   64</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   65</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
 <div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2697eb6865282a481107ec3aa4d42af5">update</a>(z);</div>
+<div class="line"><span class="lineno">   67</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(z);</div>
 <div class="line"><span class="lineno">   68</span> </div>
 <div class="line"><span class="lineno">   69</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   70</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
@@ -159,11 +159,11 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   72</span>    state.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
 <div class="line"><span class="lineno">   73</span>  }</div>
 <div class="line"><span class="lineno">   74</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00171">kalman.hpp:171</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2697eb6865282a481107ec3aa4d42af5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2697eb6865282a481107ec3aa4d42af5">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af56b8ad91ef0452ff3da4e94ce0b7436"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00204">kalman.hpp:204</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00167">kalman.hpp:167</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6bf8d8bc6c862a1fc087361e36541dfa"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00200">kalman.hpp:200</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af971a3cfb03099d42c99e6a165c56ad5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classfcarouge_1_1kalman.xhtml#a2697eb6865282a481107ec3aa4d42af5">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::update()</a>.</p>
+<p class="reference">References <a class="el" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::update()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -181,7 +181,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03.xhtml">anonymous_namespace{update_1x1x1.cpp}</a></li>
-    <li class="footer">Generated on Mon Feb 6 2023 02:23:24 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Feb 12 2023 20:46:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

@@ -17,6 +17,12 @@ var namespacefcarouge_1_1sample =
       [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#ac8465c2c1ce5f48416e03b9b4c1c236b", null ],
       [ "kf_2x1x1_rocket_altitude", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#a6cd03984df2ea54a7b8686e60d08de17", null ]
     ] ],
-    [ "anonymous_namespace{kf_6x2x0_vehicle_location.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03" ],
-    [ "anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03" ]
+    [ "anonymous_namespace{kf_6x2x0_vehicle_location.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml", [
+      [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#a21c0182ce3045b919c4a7f2b84ef733d", null ],
+      [ "kf_6x2x0_vehicle_location", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#a687f6b66de7a823dd4a43e9d571bcaef", null ]
+    ] ],
+    [ "anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml", [
+      [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#aa16867102d4a53ebaae0261c4c34dd18", null ],
+      [ "kf_8x4x0_deep_sort_bounding_box", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a81cd351e59e34920e8287aaf0d045f49", null ]
+    ] ]
 ];

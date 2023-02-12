@@ -158,7 +158,7 @@ template&lt;std::size_t StateSize, std::size_t InputSize&gt; </div>
 <div class="line"><span class="lineno">   71</span> </div>
 <div class="line"><span class="lineno">   72</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
 <div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>    <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ae50bc6a7b064ac6c91ddab3791b120db">kalman::input</a> u;</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ad73f295bc047ef3c931a4d20104e4127">kalman::input</a> u;</div>
 <div class="line"><span class="lineno">   75</span> </div>
 <div class="line"><span class="lineno">   76</span>    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">internal::for_constexpr</a>&lt;std::size_t{0}, InputSize, 1&gt;(</div>
 <div class="line"><span class="lineno">   77</span>        [&amp;u, &amp;uniformly_distributed, &amp;random_generator](<span class="keyword">auto</span> position) {</div>
@@ -168,7 +168,7 @@ template&lt;std::size_t StateSize, std::size_t InputSize&gt; </div>
 <div class="line"><span class="lineno">   81</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   82</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
 <div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">predict</a>(u);</div>
+<div class="line"><span class="lineno">   84</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>(u);</div>
 <div class="line"><span class="lineno">   85</span> </div>
 <div class="line"><span class="lineno">   86</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   87</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
@@ -176,13 +176,13 @@ template&lt;std::size_t StateSize, std::size_t InputSize&gt; </div>
 <div class="line"><span class="lineno">   89</span>    state.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
 <div class="line"><span class="lineno">   90</span>  }</div>
 <div class="line"><span class="lineno">   91</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00171">kalman.hpp:171</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3898db7da690aec04fa4621727d4bf56"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ae50bc6a7b064ac6c91ddab3791b120db"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ae50bc6a7b064ac6c91ddab3791b120db">fcarouge::kalman::input</a></div><div class="ttdeci">typename implementation::input input</div><div class="ttdoc">Type of the control column vector U.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00209">kalman.hpp:209</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00167">kalman.hpp:167</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1a54f32cfaafea2d586a5f7b28898fec"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad73f295bc047ef3c931a4d20104e4127"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad73f295bc047ef3c931a4d20104e4127">fcarouge::kalman::input</a></div><div class="ttdeci">typename implementation::input input</div><div class="ttdoc">Type of the control column vector U.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00205">kalman.hpp:205</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03_xhtml_aafec824f2dcfe764a8b4c25afbe47df7"><div class="ttname"><a href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml#aafec824f2dcfe764a8b4c25afbe47df7">fcarouge::benchmark::anonymous_namespace{eigen_predict_x1x.cpp}::vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Size &gt; vector</div><div class="ttdef"><b>Definition:</b> <a href="eigen__predict__x1x_8cpp_source.xhtml#l00057">eigen_predict_x1x.cpp:57</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a4c0bbc15a41d76dd2b4b23d8566fba57"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">fcarouge::internal::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00075">utility.hpp:75</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a4c0bbc15a41d76dd2b4b23d8566fba57"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">fcarouge::internal::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00079">utility.hpp:79</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="internal_2utility_8hpp_source.xhtml#l00075">fcarouge::internal::for_constexpr()</a>, and <a class="el" href="classfcarouge_1_1kalman.xhtml#a3898db7da690aec04fa4621727d4bf56">fcarouge::kalman&lt; State, Output, Input, Divide, UpdateTypes, PredictionTypes &gt;::predict()</a>.</p>
+<p class="reference">References <a class="el" href="internal_2utility_8hpp_source.xhtml#l00079">fcarouge::internal::for_constexpr()</a>, and <a class="el" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::predict()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -219,7 +219,7 @@ template&lt;std::size_t StateSize, std::size_t InputSize&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml">anonymous_namespace{eigen_predict_x1x.cpp}</a></li>
-    <li class="footer">Generated on Mon Feb 6 2023 02:23:24 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Feb 12 2023 20:46:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

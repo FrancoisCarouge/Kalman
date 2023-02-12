@@ -1,7 +1,15 @@
 var namespacefcarouge_1_1test =
 [
-    [ "anonymous_namespace{eigen_f.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03" ],
-    [ "anonymous_namespace{eigen_h.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__h_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__h_8cpp_03" ],
+    [ "anonymous_namespace{eigen_f.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml", [
+      [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#ac4500053f3604c7b512cde689504e512", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#ae0aecc3967068e2a6da2a5b5ce188d07", null ],
+      [ "f_5x4x3", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03.xhtml#accf9a2c6f16f437bc09184d356fa4763", null ]
+    ] ],
+    [ "anonymous_namespace{eigen_h.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__h_8cpp_03.xhtml", [
+      [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__h_8cpp_03.xhtml#ac70dc91f3e6dc684654d7b47b97d9435", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__h_8cpp_03.xhtml#ad0ab5495237cf25e57187edf6d77cda2", null ],
+      [ "h_5x4x3", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__h_8cpp_03.xhtml#a11da61e5cf074a71b0786605f2261faf", null ]
+    ] ],
     [ "anonymous_namespace{eigen_initialization.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__initialization_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__initialization_8cpp_03.xhtml#ac3e5b3ff8809e6c91d631846978e3748", null ],
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02eigen__initialization_8cpp_03.xhtml#a4e3ab7c694973102e7c5272559277794", null ],

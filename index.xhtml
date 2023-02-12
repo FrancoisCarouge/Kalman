@@ -255,7 +255,6 @@ Declaration</h3>
 <div class="line">  <span class="keyword">typename</span> State,</div>
 <div class="line">  <span class="keyword">typename</span> Output,</div>
 <div class="line">  <span class="keyword">typename</span> Input,</div>
-<div class="line">  <span class="keyword">typename</span> Divide,</div>
 <div class="line">  <span class="keyword">typename</span> UpdateTypes,</div>
 <div class="line">  <span class="keyword">typename</span> PredictionTypes&gt;</div>
 <div class="line"><span class="keyword">class </span>kalman</div>
@@ -271,10 +270,8 @@ Template Parameters</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>Input</code>   </td><td class="markdownTableBodyNone">The type template parameter of the control <em>U</em>. A <code>void</code> input type can be used for systems with no input control to disable all of the input control features, the control transition matrix <em>G</em> support, and the other related computations from the filter. Defaults to <code>void</code>.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>Divide</code>   </td><td class="markdownTableBodyNone">The customization point object template parameter of the matrix division functor. Default to the standard division <code>std::divides&lt;void&gt;</code> function object.    </td></tr>
-<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation <em>H</em> and the observation noise <em>R</em> matrices. The parameters are also propagated to the state observation function object <em>H</em>. Defaults to no parameter types, the empty pack.    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise <em>Q</em>, the state transition <em>F</em>, and the control transition <em>G</em> matrices. The parameters are also propagated to the state transition function object <em>F</em>. Defaults to no parameter types, the empty pack.   </td></tr>
 </table>
 <h3><a class="anchor" id="autotoc_md32"></a>
@@ -499,7 +496,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Feb 6 2023 02:23:24 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Feb 12 2023 20:46:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

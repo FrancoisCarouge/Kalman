@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['observation_0',['observation',['../classfcarouge_1_1kalman.xhtml#a379932f428ca47291e1153a674a1077b',1,'fcarouge::kalman']]],
-  ['operator_28_29_1',['operator()',['../structfcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03_1_1divide.xhtml#a82594f148ef156695a5bee47b09cc260',1,'fcarouge::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::divide::operator()()'],['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_1_1divide.xhtml#a83d3ee7d57a0873c726eecb6353ba046',1,'fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::divide::operator()()'],['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_1_1divide.xhtml#a3a32a746e82864f1d6f7ecc1bfdbc37c',1,'fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::divide::operator()()'],['../structfcarouge_1_1test_1_1anonymous__namespace_02eigen__f_8cpp_03_1_1divide.xhtml#af3fd3cdfca07c99f8f41ceb84dc552f7',1,'fcarouge::test::anonymous_namespace{eigen_f.cpp}::divide::operator()()'],['../structfcarouge_1_1test_1_1anonymous__namespace_02eigen__h_8cpp_03_1_1divide.xhtml#a9e8e1a74e53bcf7ae53540d243576c44',1,'fcarouge::test::anonymous_namespace{eigen_h.cpp}::divide::operator()()']]],
-  ['operator_3d_2',['operator=',['../classfcarouge_1_1kalman.xhtml#abfbdd536b26f2e0ad79fac3d4cb00e0b',1,'fcarouge::kalman::operator=(const kalman &amp;other) -&gt; kalman &amp;=delete'],['../classfcarouge_1_1kalman.xhtml#a5fb8c4488181bd033929563bbbf45242',1,'fcarouge::kalman::operator=(kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=delete']]],
+  ['observation_0',['observation',['../classfcarouge_1_1kalman.xhtml#a6324da65597f0e0a91573a31a9aa1465',1,'fcarouge::kalman']]],
+  ['operator_2f_1',['operator/',['../namespacefcarouge.xhtml#aedda70f7a23b35d46bbc4dfe829e3e0d',1,'fcarouge']]],
+  ['operator_3d_2',['operator=',['../classfcarouge_1_1kalman.xhtml#ab2db3b065650ffd42931f010d6781835',1,'fcarouge::kalman::operator=(const kalman &amp;other) -&gt; kalman &amp;=delete'],['../classfcarouge_1_1kalman.xhtml#a5215bcddbc15cd25df587f7988334ed8',1,'fcarouge::kalman::operator=(kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=delete']]],
   ['otherwise_3',['OTHERWISE',['../_l_i_c_e_n_s_e_8txt.xhtml#abcc03a69820d704ae8953ef8291126ae',1,'LICENSE.txt']]],
-  ['output_4',['output',['../classfcarouge_1_1kalman.xhtml#af56b8ad91ef0452ff3da4e94ce0b7436',1,'fcarouge::kalman']]],
-  ['output_5fmodel_5',['output_model',['../classfcarouge_1_1kalman.xhtml#aadb2093697f3eb6b26b80d0f1af5fbed',1,'fcarouge::kalman']]],
-  ['output_5funcertainty_6',['output_uncertainty',['../classfcarouge_1_1kalman.xhtml#a0b119b5d090c39ddf0a5aaafbeeb8f6c',1,'fcarouge::kalman']]]
+  ['output_4',['output',['../classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa',1,'fcarouge::kalman']]],
+  ['output_5fmodel_5',['output_model',['../classfcarouge_1_1kalman.xhtml#a1a9d07aa2b616cc3e4e444a4a100bbf2',1,'fcarouge::kalman']]],
+  ['output_5funcertainty_6',['output_uncertainty',['../classfcarouge_1_1kalman.xhtml#af92fafd91695af30574a7be7771e5357',1,'fcarouge::kalman']]]
 ];

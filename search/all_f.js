@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['q_0',['q',['../classfcarouge_1_1kalman.xhtml#a20e4a128994e061d95c7cc8547edeae2',1,'fcarouge::kalman::q() const -&gt; const process_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a1cb2e62aae0d3cca44269aac7e36cdc1',1,'fcarouge::kalman::q() -&gt; process_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a572e6899627301526b3b61b75fd5c642',1,'fcarouge::kalman::q(const auto &amp;value, const auto &amp;...values)']]]
+  ['q_0',['q',['../classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605',1,'fcarouge::kalman::q() const -&gt; const process_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#adb6b142268aa61b73de726f99fef51ea',1,'fcarouge::kalman::q() -&gt; process_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a81b06eb44c221c9de437574983b57927',1,'fcarouge::kalman::q(const auto &amp;value, const auto &amp;...values)']]],
+  ['quotient_1',['quotient',['../namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332',1,'fcarouge::internal::quotient()'],['../namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992',1,'fcarouge::quotient()']]]
 ];
