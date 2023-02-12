@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_FORMAT_HPP
 #define FCAROUGE_INTERNAL_FORMAT_HPP
 
-#include "utility.hpp"
+#include "fcarouge/utility.hpp"
 
 #include <cstddef>
 #include <format>

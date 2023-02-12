@@ -54,6 +54,15 @@ namespace fcarouge {
 template <typename Type>
 concept arithmetic = internal::arithmetic<Type>;
 
+//! @brief Algebraic concept.
+//!
+//! @details Not an arithmetic type.
+//!
+//! @todo Is the implementation and definition of an algebraic concept poor,
+//! incorrect, or incomplete?
+template <typename Type>
+concept algebraic = internal::algebraic<Type>;
+
 //! @brief Tuple-like pack type.
 //!
 //! @details An alternative to tuple-like types.
@@ -63,6 +72,28 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //!
 //! @details A `pack` type with no composed types.
 using empty_pack = internal::empty_pack;
+
+//! @brief The matrix type satisfying `X * Row = Column`.
+//!
+//! @details The resulting type of a matrix division.
+template <typename Numerator, typename Denominator>
+using quotient = internal::quotient<Numerator, Denominator>;
+
+//! @brief The matrix type satisfying `X * Row = Column`.
+//!
+//! @details The resulting matrix type has as many rows as the `Row` matrix,
+//! respectively for columns as the `Column` matrix.
+template <typename Row, typename Column> using matrix = quotient<Row, Column>;
+
+//! @brief A user-defined algebraic division solution.
+//!
+//! @details There exists several ways to find  `X` in  `X = lhs * rhs^-1` for
+//! different tradeoffs. The user provides their implementation. Often, matrix
+//! inversion is avoided by solving `X * rhs = lhs` for `rhs` through a
+//! decomposer.
+template <typename Numerator, algebraic Denominator>
+auto operator/(const Numerator &lhs, const Denominator &rhs)
+    -> quotient<Numerator, Denominator>;
 
 } // namespace fcarouge
 

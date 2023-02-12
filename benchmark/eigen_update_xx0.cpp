@@ -51,14 +51,13 @@ For more information, please refer to <https://unlicense.org> */
 #include <cstring>
 #include <random>
 
-template <non_arithmetic Numerator, non_arithmetic Denominator>
-auto operator/(const Numerator &lhs, const Denominator &rhs)
-    -> fcarouge::internal::matrix<Numerator, Denominator> {
+template <typename Numerator, fcarouge::algebraic Denominator>
+auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
+    -> fcarouge::quotient<Numerator, Denominator> {
   return rhs.transpose()
       .fullPivHouseholderQr()
       .solve(lhs.transpose())
-      .transpose()
-      .eval();
+      .transpose();
 }
 
 namespace fcarouge::benchmark {
