@@ -65,8 +65,6 @@ endforeach()
 
 foreach(
   TEST
-  "eigen_f.cpp"
-  "eigen_h.cpp"
   "kalman_constructor_default_eigen_1x1x3.cpp"
   "kalman_constructor_default_eigen_1x4x1.cpp"
   "kalman_constructor_default_eigen_1x4x3.cpp"
@@ -74,7 +72,9 @@ foreach(
   "kalman_constructor_default_eigen_5x1x3.cpp"
   "kalman_constructor_default_eigen_5x4x0.cpp"
   "kalman_constructor_default_eigen_5x4x1.cpp"
-  "kalman_constructor_default_eigen_5x4x3.cpp")
+  "kalman_constructor_default_eigen_5x4x3.cpp"
+  "kalman_f_eigen_5x4x3.cpp"
+  "kalman_h_eigen_5x4x3.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_eigen_${NAME}_driver ${TEST})
   target_link_libraries(kalman_test_eigen_${NAME}_driver
