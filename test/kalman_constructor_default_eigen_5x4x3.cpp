@@ -38,47 +38,46 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 
+#include <Eigen/Eigen>
+
 #include <cassert>
-#include <format>
 
 namespace fcarouge::test {
 namespace {
 
-//! @test Verifies formatting filters for single-dimension filters without input
-//! control or additional arguments.
-[[maybe_unused]] auto format_d_1x1x0{[] {
+template <auto Size> using vector = Eigen::Vector<double, Size>;
+
+template <auto Row, auto Column>
+using matrix = Eigen::Matrix<double, Row, Column>;
+
+//! @test Verifies default values are initialized for multi-dimension filters.
+[[maybe_unused]] auto test{[] {
+  using kalman = kalman<vector<5>, vector<4>, vector<3>>;
   kalman filter;
 
-  assert(
-      std::format("{}", filter) ==
-      R"({"f": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0})");
+  const auto z3x1{vector<3>::Zero()};
+  const auto i4x4{matrix<4, 4>::Identity()};
+  const auto i4x5{matrix<4, 5>::Identity()};
+  const auto i5x3{matrix<5, 3>::Identity()};
+  const auto i5x4{matrix<5, 4>::Identity()};
+  const auto i5x5{matrix<5, 5>::Identity()};
+  const auto z4x1{vector<4>::Zero()};
+  const auto z4x4{matrix<4, 4>::Zero()};
+  const auto z5x1{vector<5>::Zero()};
+  const auto z5x5{matrix<5, 5>::Zero()};
 
-  return 0;
-}()};
-
-//! @test Verifies formatting filters for single-dimension filters with input
-//! control without additional arguments.
-[[maybe_unused]] auto format_d_1x1x1{[] {
-  kalman<double, double, double> filter;
-
-  assert(
-      std::format("{}", filter) ==
-      R"({"f": 1, "g": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "u": 0, "x": 0, "y": 0, "z": 0})");
-
-  return 0;
-}()};
-
-//! @test Verifies formatting filters for single-dimension filters with input
-//! control and additional arguments.
-[[maybe_unused]] auto format_d_1x1x1_cifd_dfic{[] {
-  using kalman =
-      kalman<double, double, double, std::tuple<double, double, double>,
-             std::tuple<double, double, double, double>>;
-  kalman filter;
-
-  assert(
-      std::format("{}", filter) ==
-      R"({"f": 1, "g": 1, "h": 1, "k": 1, "p": 1, "prediction_0": 0, "prediction_1": 0, "prediction_2": 0, "prediction_3": 0, "q": 0, "r": 0, "s": 1, "u": 0, "update_0": 0, "update_1": 0, "update_2": 0, "x": 0, "y": 0, "z": 0})");
+  assert(filter.f() == i5x5);
+  assert(filter.g() == i5x3);
+  assert(filter.h() == i4x5);
+  assert(filter.k() == i5x4);
+  assert(filter.p() == i5x5);
+  assert(filter.q() == z5x5 && "No process noise by default.");
+  assert(filter.r() == z4x4 && "No observation noise by default.");
+  assert(filter.s() == i4x4);
+  assert(filter.u() == z3x1 && "No initial control.");
+  assert(filter.x() == z5x1 && "Origin state.");
+  assert(filter.y() == z4x1);
+  assert(filter.z() == z4x1);
 
   return 0;
 }()};

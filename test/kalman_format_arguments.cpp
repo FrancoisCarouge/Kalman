@@ -39,62 +39,21 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman.hpp"
 
 #include <cassert>
+#include <format>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the observation transition matrix H management overloads for
-//! the default filter type.
-[[maybe_unused]] auto h_1x1x0{[] {
-  using kalman = kalman<>;
+
+//! @test Verifies formatting filters for single-dimension filters with input
+//! control and additional arguments.
+[[maybe_unused]] auto test{[] {
+  using kalman = kalman<double, double, double, std::tuple<double, double>,
+                        std::tuple<double, double, double>>;
   kalman filter;
 
-  assert(filter.h() == 1);
-
-  {
-    const auto h{2.};
-    filter.h(h);
-    assert(filter.h() == 2);
-  }
-
-  {
-    const auto h{3.};
-    filter.h(std::move(h));
-    assert(filter.h() == 3);
-  }
-
-  {
-    const auto h{4.};
-    filter.h(h);
-    assert(filter.h() == 4);
-  }
-
-  {
-    const auto h{5.};
-    filter.h(std::move(h));
-    assert(filter.h() == 5);
-  }
-
-  {
-    const auto h{
-        []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
-          return 6.;
-        }};
-    filter.h(h);
-    assert(filter.h() == 5);
-    filter.update(0.);
-    assert(filter.h() == 6);
-  }
-
-  {
-    const auto h{
-        []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
-          return 7.;
-        }};
-    filter.h(std::move(h));
-    assert(filter.h() == 6);
-    filter.update(0.);
-    assert(filter.h() == 7);
-  }
+  assert(
+      std::format("{}", filter) ==
+      R"({"f": 1, "g": 1, "h": 1, "k": 1, "p": 1, "prediction_0": 0, "prediction_1": 0, "prediction_2": 0, "q": 0, "r": 0, "s": 1, "u": 0, "update_0": 0, "update_1": 0, "x": 0, "y": 0, "z": 0})");
 
   return 0;
 }()};

@@ -39,46 +39,19 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman.hpp"
 
 #include <cassert>
+#include <format>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies default values are initialized for single-dimension filters
-//! without input control.
-[[maybe_unused]] auto kalman110{[] {
+
+//! @test Verifies formatting filters for single-dimension filters without input
+//! control or additional arguments.
+[[maybe_unused]] auto test{[] {
   kalman filter;
 
-  assert(filter.f() == 1);
-  assert(filter.h() == 1);
-  assert(filter.k() == 1);
-  assert(filter.p() == 1);
-  assert(filter.q() == 0 && "No process noise by default.");
-  assert(filter.r() == 0 && "No observation noise by default.");
-  assert(filter.s() == 1);
-  assert(filter.x() == 0 && "Origin state.");
-  assert(filter.y() == 0);
-  assert(filter.z() == 0);
-
-  return 0;
-}()};
-
-//! @test Verifies default values are initialized for single-dimension filters
-//! with input control.
-[[maybe_unused]] auto kalman111{[] {
-  using kalman = kalman<double, double, double>;
-  kalman filter;
-
-  assert(filter.f() == 1);
-  assert(filter.g() == 1);
-  assert(filter.h() == 1);
-  assert(filter.k() == 1);
-  assert(filter.p() == 1);
-  assert(filter.q() == 0 && "No process noise by default.");
-  assert(filter.r() == 0 && "No observation noise by default.");
-  assert(filter.s() == 1);
-  assert(filter.u() == 0 && "No initial control.");
-  assert(filter.x() == 0 && "Origin state.");
-  assert(filter.y() == 0);
-  assert(filter.z() == 0);
+  assert(
+      std::format("{}", filter) ==
+      R"({"f": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0})");
 
   return 0;
 }()};

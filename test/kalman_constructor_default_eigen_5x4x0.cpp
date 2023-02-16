@@ -38,59 +38,43 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 
+#include <Eigen/Eigen>
+
 #include <cassert>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the state transition matrix F management overloads for
-//! the default filter type.
-[[maybe_unused]] auto f_1x1x0{[] {
-  using kalman = kalman<>;
+
+template <auto Size> using vector = Eigen::Vector<double, Size>;
+
+template <auto Row, auto Column>
+using matrix = Eigen::Matrix<double, Row, Column>;
+
+//! @test Verifies default values are initialized for multi-dimension filters,
+//! no input.
+[[maybe_unused]] auto test{[] {
+  using kalman = kalman<vector<5>, vector<4>>;
   kalman filter;
 
-  assert(filter.f() == 1);
+  const auto i4x4{matrix<4, 4>::Identity()};
+  const auto i4x5{matrix<4, 5>::Identity()};
+  const auto i5x4{matrix<5, 4>::Identity()};
+  const auto i5x5{matrix<5, 5>::Identity()};
+  const auto z4x1{vector<4>::Zero()};
+  const auto z4x4{matrix<4, 4>::Zero()};
+  const auto z5x1{vector<5>::Zero()};
+  const auto z5x5{matrix<5, 5>::Zero()};
 
-  {
-    const auto f{2.};
-    filter.f(f);
-    assert(filter.f() == 2);
-  }
-
-  {
-    const auto f{3.};
-    filter.f(std::move(f));
-    assert(filter.f() == 3);
-  }
-
-  {
-    const auto f{4.};
-    filter.f(f);
-    assert(filter.f() == 4);
-  }
-
-  {
-    const auto f{5.};
-    filter.f(std::move(f));
-    assert(filter.f() == 5);
-  }
-
-  {
-    const auto f{[]([[maybe_unused]] const kalman::state &x)
-                     -> kalman::state_transition { return 6.; }};
-    filter.f(f);
-    assert(filter.f() == 5);
-    filter.predict();
-    assert(filter.f() == 6);
-  }
-
-  {
-    const auto f{[]([[maybe_unused]] const kalman::state &x)
-                     -> kalman::state_transition { return 7.; }};
-    filter.f(std::move(f));
-    assert(filter.f() == 6);
-    filter.predict();
-    assert(filter.f() == 7);
-  }
+  assert(filter.f() == i5x5);
+  assert(filter.h() == i4x5);
+  assert(filter.k() == i5x4);
+  assert(filter.p() == i5x5);
+  assert(filter.q() == z5x5 && "No process noise by default.");
+  assert(filter.r() == z4x4 && "No observation noise by default.");
+  assert(filter.s() == i4x4);
+  assert(filter.x() == z5x1 && "Origin state.");
+  assert(filter.y() == z4x1);
+  assert(filter.z() == z4x1);
 
   return 0;
 }()};

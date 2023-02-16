@@ -44,7 +44,15 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES Eigen3)
 FetchContent_MakeAvailable(eigen)
 
-foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
+foreach(
+  TEST
+  "kalman_constructor_default_float_1x1x1.cpp"
+  "kalman_constructor_default.cpp"
+  "kalman_f.cpp"
+  "kalman_format_arguments.cpp"
+  "kalman_format_float_1x1x1.cpp"
+  "kalman_format.cpp"
+  "kalman_h.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main)
@@ -55,7 +63,18 @@ foreach(TEST "f.cpp" "format.cpp" "h.cpp" "initialization.cpp")
             $<TARGET_FILE:kalman_test_${NAME}_driver>)
 endforeach()
 
-foreach(TEST "eigen_f.cpp" "eigen_h.cpp" "eigen_initialization.cpp")
+foreach(
+  TEST
+  "eigen_f.cpp"
+  "eigen_h.cpp"
+  "kalman_constructor_default_eigen_1x1x3.cpp"
+  "kalman_constructor_default_eigen_1x4x1.cpp"
+  "kalman_constructor_default_eigen_1x4x3.cpp"
+  "kalman_constructor_default_eigen_5x1x1.cpp"
+  "kalman_constructor_default_eigen_5x1x3.cpp"
+  "kalman_constructor_default_eigen_5x4x0.cpp"
+  "kalman_constructor_default_eigen_5x4x1.cpp"
+  "kalman_constructor_default_eigen_5x4x3.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_eigen_${NAME}_driver ${TEST})
   target_link_libraries(kalman_test_eigen_${NAME}_driver
