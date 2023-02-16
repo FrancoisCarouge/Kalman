@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['repack_5fs_0',['repack_s',['../namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9',1,'fcarouge::internal']]]
+  ['sell_0',['sell',['../_l_i_c_e_n_s_e_8txt.xhtml#a3e5d6c430e9c2cde02449af9b69ae168',1,'LICENSE.txt']]],
+  ['software_1',['software',['../_l_i_c_e_n_s_e_8txt.xhtml#ab20fc6251e4dbdd80db7028a31b57d56',1,'LICENSE.txt']]]
 ];

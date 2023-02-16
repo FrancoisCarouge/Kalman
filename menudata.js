@@ -33,7 +33,6 @@ var menudata={children:[
 {text:"c",url:"namespacemembers.xhtml#index_c"},
 {text:"e",url:"namespacemembers.xhtml#index_e"},
 {text:"f",url:"namespacemembers.xhtml#index_f"},
-{text:"h",url:"namespacemembers.xhtml#index_h"},
 {text:"i",url:"namespacemembers.xhtml#index_i"},
 {text:"k",url:"namespacemembers.xhtml#index_k"},
 {text:"m",url:"namespacemembers.xhtml#index_m"},
@@ -49,8 +48,6 @@ var menudata={children:[
 {text:"Functions",url:"namespacemembers_func.xhtml"},
 {text:"Variables",url:"namespacemembers_vars.xhtml",children:[
 {text:"e",url:"namespacemembers_vars.xhtml#index_e"},
-{text:"f",url:"namespacemembers_vars.xhtml#index_f"},
-{text:"h",url:"namespacemembers_vars.xhtml#index_h"},
 {text:"i",url:"namespacemembers_vars.xhtml#index_i"},
 {text:"k",url:"namespacemembers_vars.xhtml#index_k"},
 {text:"r",url:"namespacemembers_vars.xhtml#index_r"},
