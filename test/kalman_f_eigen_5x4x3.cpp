@@ -61,7 +61,7 @@ using matrix = Eigen::Matrix<double, Row, Column>;
 
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
-[[maybe_unused]] auto f_5x4x3{[] {
+[[maybe_unused]] auto test{[] {
   using kalman =
       kalman<vector<5>, vector<4>, vector<3>, std::tuple<double, float, int>,
              std::tuple<int, float, double>>;
