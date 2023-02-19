@@ -1,6 +1,7 @@
 #include "fcarouge/kalman.hpp"
 
 #include <cassert>
+#include <cmath>
 
 namespace fcarouge::sample {
 namespace {
