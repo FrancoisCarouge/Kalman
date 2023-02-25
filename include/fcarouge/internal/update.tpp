@@ -41,103 +41,140 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
+inline constexpr update<State, Output, UpdateTypes...>::update(
+    state &x, estimate_uncertainty &p)
+    : model{x, p} {}
+
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned state estimate column vector X is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::x() const -> const state & {
+update<State, Output, UpdateTypes...>::x() const -> const state & {
   return model.x;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned state estimate column vector X is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::x() -> state & {
+update<State, Output, UpdateTypes...>::x() -> state & {
   return model.x;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned observation column vector Z is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::z() const -> const output & {
+update<State, Output, UpdateTypes...>::z() const -> const output & {
   return model.z;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::p() const -> const estimate_uncertainty & {
+update<State, Output, UpdateTypes...>::p() const
+    -> const estimate_uncertainty & {
   return model.p;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::p() -> estimate_uncertainty & {
+update<State, Output, UpdateTypes...>::p() -> estimate_uncertainty & {
   return model.p;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned observation transition matrix H is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::h() const -> const output_model & {
+update<State, Output, UpdateTypes...>::h() const -> const output_model & {
   return model.h;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned observation transition matrix H is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::h() -> output_model & {
+update<State, Output, UpdateTypes...>::h() -> output_model & {
   return model.h;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
+inline constexpr void
+update<State, Output, UpdateTypes...>::h(const auto &value,
+                                         const auto &...values) {
+  if constexpr (std::is_convertible_v<decltype(value), output_model>) {
+    model.h = std::move(output_model{value, values...});
+  } else {
+    using observation_state_function = decltype(model.observation_state_h);
+    model.observation_state_h =
+        std::move(observation_state_function{value, values...});
+  }
+}
+
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned observation noise covariance matrix R is "
             "unexpectedly discarded.")]] inline constexpr auto
-update<Implementation>::r() const -> const output_uncertainty & {
+update<State, Output, UpdateTypes...>::r() const -> const output_uncertainty & {
   return model.r;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned observation noise covariance matrix R is "
             "unexpectedly discarded.")]] inline constexpr auto
-update<Implementation>::r() -> output_uncertainty & {
+update<State, Output, UpdateTypes...>::r() -> output_uncertainty & {
   return model.r;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
+inline constexpr void
+update<State, Output, UpdateTypes...>::r(const auto &value,
+                                         const auto &...values) {
+  if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
+    model.r = std::move(output_uncertainty{value, values...});
+  } else {
+    using noise_observation_function = decltype(model.noise_observation_r);
+    model.noise_observation_r =
+        std::move(noise_observation_function{value, values...});
+  }
+}
+
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned gain matrix K is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::k() const -> const gain & {
+update<State, Output, UpdateTypes...>::k() const -> const gain & {
   return model.k;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned innovation column vector Y is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::y() const -> const innovation & {
+update<State, Output, UpdateTypes...>::y() const -> const innovation & {
   return model.y;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 [[nodiscard("The returned innovation uncertainty matrix S is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::s() const -> const innovation_uncertainty & {
+update<State, Output, UpdateTypes...>::s() const
+    -> const innovation_uncertainty & {
   return model.s;
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 inline constexpr void
-update<Implementation>::operator()(
-    const auto &...arguments) {
+update<State, Output, UpdateTypes...>::observation(const auto &callable) {
+  model.observation = callable;
+}
+
+template <typename State, typename Output, typename... UpdateTypes>
+inline constexpr void
+update<State, Output, UpdateTypes...>::operator()(const auto &...arguments) {
   model(arguments...);
 }
 
-template <typename Implementation>
+template <typename State, typename Output, typename... UpdateTypes>
 template <std::size_t Position>
 [[nodiscard("The returned update argument is unexpectedly "
             "discarded.")]] inline constexpr auto
-update<Implementation>::operator()()
-    const {
+update<State, Output, UpdateTypes...>::operator()() const {
   return std::get<Position>(model.update_arguments);
 }
 

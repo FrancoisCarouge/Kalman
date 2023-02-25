@@ -48,6 +48,7 @@ foreach(
   TEST
   "kalman_constructor_default_float_1x1x1.cpp"
   "kalman_constructor_default.cpp"
+  "kalman_constructor_models.cpp"
   "kalman_f.cpp"
   "kalman_format_arguments.cpp"
   "kalman_format_float_1x1x1.cpp"

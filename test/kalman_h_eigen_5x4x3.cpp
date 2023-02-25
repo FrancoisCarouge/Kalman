@@ -62,9 +62,9 @@ using matrix = Eigen::Matrix<double, Row, Column>;
 //! @test Verifies the observation transition matrix H management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto test{[] {
-  using kalman =
-      kalman<vector<5>, vector<4>, vector<3>, std::tuple<double, float, int>,
-             std::tuple<int, float, double>>;
+  using update = update<vector<5>, vector<4>, double, float, int>;
+  using predict = predict<vector<5>, vector<3>, int, float, double>;
+  using kalman = kalman<update, predict>;
 
   kalman filter;
   const auto i4x5{matrix<4, 5>::Identity()};

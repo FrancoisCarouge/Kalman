@@ -50,8 +50,10 @@ using input = double;
 //! @example kf_2x1x1_rocket_altitude.cpp
 [[maybe_unused]] auto kf_2x1x1_rocket_altitude{[] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
-  using kalman = kalman<state, output, input, std::tuple<>,
-                        std::tuple<std::chrono::milliseconds>>;
+  using update = update<state, output>;
+  using predict = predict<state, input, std::chrono::milliseconds>;
+  using kalman = kalman<update, predict>;
+
   kalman filter;
 
   // Initialization

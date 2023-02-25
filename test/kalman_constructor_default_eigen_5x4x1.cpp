@@ -53,7 +53,10 @@ using matrix = Eigen::Matrix<double, Row, Column>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single input edge case.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<vector<5>, vector<4>, double>;
+  using update = update<vector<5>, vector<4>>;
+  using predict = predict<vector<5>, double>;
+  using kalman = kalman<update, predict>;
+
   kalman filter;
 
   const auto i4x4{matrix<4, 4>::Identity()};

@@ -47,8 +47,10 @@ namespace {
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control and additional arguments.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<double, double, double, std::tuple<double, double>,
-                        std::tuple<double, double, double>>;
+  using update = update<double, double, double, double>;
+  using predict = predict<double, double, double, double, double>;
+  using kalman = kalman<update, predict>;
+
   kalman filter;
 
   assert(

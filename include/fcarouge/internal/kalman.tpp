@@ -41,314 +41,233 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
+inline constexpr kalman<Update, Predict>::kalman(
+    [[maybe_unused]] const Update &updator,
+    [[maybe_unused]] const Predict &predictor)
+//: filter{.updator = updator, .predictor = predictor}
+{}
+
+template <typename Update, typename Predict>
 [[nodiscard("The returned state estimate column vector X is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::x() const
-    -> const state & {
+kalman<Update, Predict>::x() const -> const state & {
   return filter.x;
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned state estimate column vector X is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::x() -> state & {
+kalman<Update, Predict>::x() -> state & {
   return filter.x;
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::x(
-    const auto &value, const auto &...values) {
+template <typename Update, typename Predict>
+inline constexpr void kalman<Update, Predict>::x(const auto &value,
+                                                 const auto &...values) {
   filter.x = std::move(state{value, values...});
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned observation column vector Z is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::z() const
-    -> const output & {
-  return filter.z;
+kalman<Update, Predict>::z() const -> const output & {
+  return filter.updator.z();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned control column vector U is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::u() const
-    -> const input &requires(not std::is_same_v<Input, void>) {
-                      return filter.u;
+kalman<Update, Predict>::u() const
+    -> const input &requires(
+        not std::is_same_v<typename Predict::input, void>) {
+                      return filter.predictor.u();
                     }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-            "discarded.")]] inline constexpr auto kalman<State, Output, Input,
-                                                         UpdateTypes,
-                                                         PredictionTypes>::p()
+            "discarded.")]] inline constexpr auto kalman<Update, Predict>::p()
     const -> const estimate_uncertainty & {
   return filter.p;
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::p()
-    -> estimate_uncertainty & {
+kalman<Update, Predict>::p() -> estimate_uncertainty & {
   return filter.p;
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::p(
-    const auto &value, const auto &...values) {
+template <typename Update, typename Predict>
+inline constexpr void kalman<Update, Predict>::p(const auto &value,
+                                                 const auto &...values) {
   filter.p = std::move(estimate_uncertainty{value, values...});
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::q() const
-    -> const process_uncertainty & {
-  return filter.q;
+kalman<Update, Predict>::q() const -> const process_uncertainty & {
+  return filter.predictor.q();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::q()
-    -> process_uncertainty & {
-  return filter.q;
+kalman<Update, Predict>::q() -> process_uncertainty & {
+  return filter.predictor.q();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::q(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), process_uncertainty>) {
-    filter.q = std::move(process_uncertainty{value, values...});
-  } else {
-    using noise_process_function = decltype(filter.noise_process_q);
-    filter.noise_process_q =
-        std::move(noise_process_function{value, values...});
-  }
+template <typename Update, typename Predict>
+inline constexpr void kalman<Update, Predict>::q(const auto &value,
+                                                 const auto &...values) {
+  filter.predictor.q(value, values...);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned observation noise covariance matrix R is "
             "unexpectedly discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::r() const
-    -> const output_uncertainty & {
-  return filter.r;
+kalman<Update, Predict>::r() const -> const output_uncertainty & {
+  return filter.updator.r();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned observation noise covariance matrix R is "
             "unexpectedly discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::r()
-    -> output_uncertainty & {
-  return filter.r;
+kalman<Update, Predict>::r() -> output_uncertainty & {
+  return filter.updator.r();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::r(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
-    filter.r = std::move(output_uncertainty{value, values...});
-  } else {
-    using noise_observation_function = decltype(filter.noise_observation_r);
-    filter.noise_observation_r =
-        std::move(noise_observation_function{value, values...});
-  }
+template <typename Update, typename Predict>
+inline constexpr void kalman<Update, Predict>::r(const auto &value,
+                                                 const auto &...values) {
+  filter.updator.r(value, values...);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned state transition matrix F is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::f() const
-    -> const state_transition & {
-  return filter.f;
+kalman<Update, Predict>::f() const -> const state_transition & {
+  return filter.predictor.f();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned state transition matrix F is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::f()
-    -> state_transition & {
-  return filter.f;
+kalman<Update, Predict>::f() -> state_transition & {
+  return filter.predictor.f();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::f(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), state_transition>) {
-    filter.f = std::move(state_transition{value, values...});
-  } else {
-    using transition_state_function = decltype(filter.transition_state_f);
-    filter.transition_state_f =
-        std::move(transition_state_function{value, values...});
-  }
+template <typename Update, typename Predict>
+inline constexpr void kalman<Update, Predict>::f(const auto &value,
+                                                 const auto &...values) {
+  filter.predictor.f(value, values...);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned observation transition matrix H is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::h() const
-    -> const output_model & {
-  return filter.h;
+kalman<Update, Predict>::h() const -> const output_model & {
+  return filter.updator.h();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned observation transition matrix H is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::h()
-    -> output_model & {
-  return filter.h;
+kalman<Update, Predict>::h() -> output_model & {
+  return filter.updator.h();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
-inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::h(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), output_model>) {
-    filter.h = std::move(output_model{value, values...});
-  } else {
-    using observation_state_function = decltype(filter.observation_state_h);
-    filter.observation_state_h =
-        std::move(observation_state_function{value, values...});
-  }
+template <typename Update, typename Predict>
+inline constexpr void kalman<Update, Predict>::h(const auto &value,
+                                                 const auto &...values) {
+  filter.updator.h(value, values...);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned control transition matrix G is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::g() const
-    -> const input_control &requires(not std::is_same_v<Input, void>) {
-                              return filter.g;
+kalman<Update, Predict>::g() const
+    -> const input_control &requires(
+        not std::is_same_v<typename Predict::input, internal::empty>) {
+                              return filter.predictor.g();
                             }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr auto kalman<State, Output, Input,
-                                                         UpdateTypes,
-                                                         PredictionTypes>::g()
-    -> input_control &requires(not std::is_same_v<Input, void>) {
-                        return filter.g;
+            "discarded.")]] inline constexpr auto kalman<Update, Predict>::g()
+    -> input_control &requires(
+        not std::is_same_v<typename Predict::input, internal::empty>) {
+                        return filter.predictor.g();
                       }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
-inline constexpr void kalman<State, Output, Input, UpdateTypes,
-                             PredictionTypes>::g(const auto &value,
+template <typename Update, typename Predict>
+inline constexpr void kalman<Update, Predict>::g(const auto &value,
                                                  const auto &...values)
-  requires(not std::is_same_v<Input, void>)
+  requires(not std::is_same_v<typename Predict::input, internal::empty>)
 {
-  if constexpr (std::is_convertible_v<decltype(value), input_control>) {
-    filter.g = std::move(input_control{value, values...});
-  } else {
-    using transition_control_function = decltype(filter.transition_control_g);
-    filter.transition_control_g =
-        std::move(transition_control_function{value, values...});
-  }
+  filter.predictor.g(value, values...);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned gain matrix K is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::k() const
-    -> const gain & {
-  return filter.k;
+kalman<Update, Predict>::k() const -> const gain & {
+  return filter.updator.k();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned innovation column vector Y is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::y() const
-    -> const innovation & {
-  return filter.y;
+kalman<Update, Predict>::y() const -> const innovation & {
+  return filter.updator.y();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 [[nodiscard("The returned innovation uncertainty matrix S is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::s() const
-    -> const innovation_uncertainty & {
-  return filter.s;
+kalman<Update, Predict>::s() const -> const innovation_uncertainty & {
+  return filter.updator.s();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::transition(
-    const auto &callable) {
-  filter.transition = callable;
+kalman<Update, Predict>::transition(const auto &callable) {
+  filter.predictor.transition(callable);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::observation(
-    const auto &callable) {
-  filter.observation = callable;
+kalman<Update, Predict>::observation(const auto &callable) {
+  filter.updator.observation(callable);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::update(
-    const auto &...arguments) {
+kalman<Update, Predict>::update(const auto &...arguments) {
   filter.update(arguments...);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 template <std::size_t Position>
 [[nodiscard("The returned update argument is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::update() const {
-  return std::get<Position>(filter.update_arguments);
+kalman<Update, Predict>::update() const {
+  return filter.updator.template operator()<Position>();
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 inline constexpr void
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::predict(
-    const auto &...arguments) {
+kalman<Update, Predict>::predict(const auto &...arguments) {
   filter.predict(arguments...);
 }
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes>
+template <typename Update, typename Predict>
 template <std::size_t Position>
 [[nodiscard("The returned prediction argument is unexpectedly "
             "discarded.")]] inline constexpr auto
-kalman<State, Output, Input, UpdateTypes, PredictionTypes>::predict() const {
-  return std::get<Position>(filter.prediction_arguments);
+kalman<Update, Predict>::predict() const {
+  return filter.predictor.template operator()<Position>();
 }
 
 } // namespace fcarouge

@@ -44,16 +44,21 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Provides the library public definitions of the predict model.
 
+#include "internal/predict.hpp"
+
 namespace fcarouge {
 
 //! @brief A generic Kalman predict model.
-template <typename Implementation> class predict final {
+
+template <typename State = double, typename Input = void,
+          typename... PredictionTypes>
+class predict final {
 private:
   //! @name Private Member Types
   //! @{
 
-  //! @brief Implementation details of the model.
-  using implementation = Implementation;
+  //! @brief implementation details of the model.
+  using implementation = internal::predict<State, Input, PredictionTypes...>;
 
   //! @}
 
@@ -70,32 +75,32 @@ public:
   //! @{
 
   //! @brief Type of the state estimate column vector X.
-  using state = typename Implementation::state;
+  using state = typename implementation::state;
 
   //! @brief Type of the control column vector U.
   //!
   //! @todo Conditionally remove this member type when no input is present.
-  using input = typename Implementation::input;
+  using input = typename implementation::input;
 
   //! @brief Type of the estimated correlated variance matrix P.
   //!
   //! @details Also known as Σ.
-  using estimate_uncertainty = typename Implementation::estimate_uncertainty;
+  using estimate_uncertainty = typename implementation::estimate_uncertainty;
 
   //! @brief Type of the process noise correlated variance matrix Q.
-  using process_uncertainty = typename Implementation::process_uncertainty;
+  using process_uncertainty = typename implementation::process_uncertainty;
 
   //! @brief Type of the state transition matrix F.
   //!
   //! @details Also known as the fundamental matrix, propagation, Φ, or A.
-  using state_transition = typename Implementation::state_transition;
+  using state_transition = typename implementation::state_transition;
 
   //! @brief Type of the control transition matrix G.
   //!
   //! @details Also known as B.
   //!
   //! @todo Conditionally remove this member type when no input is present.
-  using input_control = typename Implementation::input_control;
+  using input_control = typename implementation::input_control;
 
   //! @}
 
@@ -106,6 +111,8 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr predict() = default;
+
+  inline constexpr predict(state &x, estimate_uncertainty &p);
 
   //! @brief Copy constructs a prediction model.
   //!
@@ -211,8 +218,8 @@ public:
   //! @return The last control column vector U.
   //!
   //! @complexity Constant.
-  inline constexpr auto u() const -> const input &requires(
-      not std::is_same_v<typename Implementation::input, void>);
+  inline constexpr auto u() const
+      -> const input &requires(not std::is_same_v<Input, void>);
 
   //! @brief Returns the estimated covariance matrix P.
   //!
@@ -293,10 +300,10 @@ public:
   //! @return The control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr auto g() const -> const input_control &requires(
-      not std::is_same_v<typename Implementation::input, void>);
-  inline constexpr auto g() -> input_control &requires(
-      not std::is_same_v<typename Implementation::input, void>);
+  inline constexpr auto g() const
+      -> const input_control &requires(not std::is_same_v<Input, void>);
+  inline constexpr auto g()
+      -> input_control &requires(not std::is_same_v<Input, void>);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -316,7 +323,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values)
-    requires(not std::is_same_v<typename Implementation::input, void>);
+    requires(not std::is_same_v<Input, void>);
 
   //! @brief Sets the extended state transition function f(x).
   //!
@@ -346,7 +353,7 @@ public:
   //! with the prediction model types. The prediction parameters convertible to
   //! the `PredictionTypes` template pack types are passed through for
   //! computations of prediction matrices. The control parameter pack types
-  //! convertible to the `typename Implementation::input` template type. The
+  //! convertible to the `typename implementation::input` template type. The
   //! prediction types are explicitly defined with the class definition.
   //!
   //! @todo Consider if returning the state column vector X would be preferable?

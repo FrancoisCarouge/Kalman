@@ -44,61 +44,10 @@ For more information, please refer to <https://unlicense.org> */
 #include <functional>
 #include <tuple>
 
-namespace fcarouge {
-namespace internal {
+namespace fcarouge::internal {
 
 template <typename State, typename Input, typename... PredictionTypes>
 struct predict final {
-  //! @todo Add a pretty compilation error?
-};
-
-template <typename State, typename... PredictionTypes>
-struct predict<State, void, PredictionTypes...> {
-  using state = State;
-  using input = empty;
-  using estimate_uncertainty = matrix<state, state>;
-  using process_uncertainty = matrix<state, state>;
-  using state_transition = matrix<state, state>;
-  using input_control = empty;
-  using transition_state_function = std::function<state_transition(
-      const state &, const input &, const PredictionTypes &...)>;
-  using noise_process_function = std::function<process_uncertainty(
-      const state &, const PredictionTypes &...)>;
-  using transition_control_function = empty;
-  using transition_function = std::function<state(const state &, const input &,
-                                                  const PredictionTypes &...)>;
-  using prediction_types = std::tuple<PredictionTypes...>;
-
-  state x{zero_v<state>};
-  estimate_uncertainty p{identity_v<estimate_uncertainty>};
-  process_uncertainty q{zero_v<process_uncertainty>};
-  prediction_types prediction_arguments{};
-  transpose t{};
-
-  transition_state_function transition_state_f{
-      [&f = f]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> state_transition { return f; }};
-  noise_process_function noise_process_q{
-      [&q = q]([[maybe_unused]] const state &state_x,
-               [[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> process_uncertainty { return q; }};
-  transition_function transition{
-      [&f = f](const state &state_x,
-               [[maybe_unused]] const PredictionTypes &...prediction_pack)
-          -> state { return f * state_x; }};
-
-  inline constexpr void operator()(const PredictionTypes &...prediction_pack) {
-    prediction_arguments = {prediction_pack...};
-    f = transition_state_f(x, prediction_pack...);
-    q = noise_process_q(x, prediction_pack...);
-    x = transition(x, prediction_pack...);
-    p = estimate_uncertainty{f * p * t(f) + q};
-  }
-};
-
-template <typename State, typename Input, typename... PredictionTypes>
-struct predict<State, Input, PredictionTypes...> {
   using state = State;
   using input = Input;
   using estimate_uncertainty = matrix<state, state>;
@@ -115,8 +64,13 @@ struct predict<State, Input, PredictionTypes...> {
                                                   const PredictionTypes &...)>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  state x{zero_v<state>};
-  estimate_uncertainty p{identity_v<estimate_uncertainty>};
+  predict() = default;
+  predict(state &x_view, estimate_uncertainty &p_view) : x{x_view}, p{p_view} {}
+
+  state x_storage{zero_v<state>};
+  state &x{x_storage};
+  estimate_uncertainty p_storage{identity_v<estimate_uncertainty>};
+  estimate_uncertainty &p{p_storage};
   process_uncertainty q{zero_v<process_uncertainty>};
   state_transition f{identity_v<state_transition>};
   input_control g{identity_v<input_control>};
@@ -158,7 +112,59 @@ struct predict<State, Input, PredictionTypes...> {
   }
 };
 
-} // namespace internal
-} // namespace fcarouge
+template <typename State, typename... PredictionTypes>
+struct predict<State, void, PredictionTypes...> {
+  using state = State;
+  using input = empty;
+  using estimate_uncertainty = matrix<state, state>;
+  using process_uncertainty = matrix<state, state>;
+  using state_transition = matrix<state, state>;
+  using input_control = empty;
+  using transition_state_function = std::function<state_transition(
+      const state &, const PredictionTypes &...)>;
+  using noise_process_function = std::function<process_uncertainty(
+      const state &, const PredictionTypes &...)>;
+  using transition_control_function = empty;
+  using transition_function =
+      std::function<state(const state &, const PredictionTypes &...)>;
+  using prediction_types = std::tuple<PredictionTypes...>;
+
+  // Workaround against C2888 MSVC for generic lambda variable symbol
+  // definition in a different namespace.
+  predict() = default;
+  predict(state &x_view, estimate_uncertainty &p_view) : x{x_view}, p{p_view} {}
+
+  state x_storage{zero_v<state>};
+  state &x{x_storage};
+  estimate_uncertainty p_storage{identity_v<estimate_uncertainty>};
+  estimate_uncertainty &p{p_storage};
+  process_uncertainty q{zero_v<process_uncertainty>};
+  state_transition f{identity_v<state_transition>};
+  prediction_types prediction_arguments{};
+  transpose t{};
+
+  transition_state_function transition_state_f{
+      [&f = f]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> state_transition { return f; }};
+  noise_process_function noise_process_q{
+      [&q = q]([[maybe_unused]] const state &state_x,
+               [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> process_uncertainty { return q; }};
+  transition_function transition{
+      [&f = f](const state &state_x,
+               [[maybe_unused]] const PredictionTypes &...prediction_pack)
+          -> state { return f * state_x; }};
+
+  inline constexpr void operator()(const PredictionTypes &...prediction_pack) {
+    prediction_arguments = {prediction_pack...};
+    f = transition_state_f(x, prediction_pack...);
+    q = noise_process_q(x, prediction_pack...);
+    x = transition(x, prediction_pack...);
+    p = estimate_uncertainty{f * p * t(f) + q};
+  }
+};
+
+} // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_PREDICT_HPP

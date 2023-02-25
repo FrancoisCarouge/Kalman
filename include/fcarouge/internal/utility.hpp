@@ -137,6 +137,11 @@ struct deducer final {
                                                  const Rhs &rhs) const
       -> decltype(lhs / rhs);
 
+  template <typename Lhs>
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const empty &rhs) const
+      -> empty;
+
   // Eigen's types deductions.
   template <typename Lhs, typename Rhs>
     requires requires(Lhs lhs, Rhs rhs) {

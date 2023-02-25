@@ -39,23 +39,25 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_UPDATE_HPP
 #define FCAROUGE_UPDATE_HPP
 
-#include "internal/update.hpp"
-
 //! @file
 //! @brief The Kalman update model class.
 //!
 //! @details Provides the library public definitions of the update model.
 
+#include "internal/update.hpp"
+
 namespace fcarouge {
 
 //! @brief A generic Kalman update model.
-template <typename Implementation> class update final {
+template <typename State = double, typename Output = double,
+          typename... UpdateTypes>
+class update final {
 private:
   //! @name Private Member Types
   //! @{
 
   //! @brief Implementation details of the model.
-  using implementation = Implementation;
+  using implementation = internal::update<State, Output, UpdateTypes...>;
 
   //! @}
 
@@ -111,6 +113,8 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr update() = default;
+
+  inline constexpr update(state &x, estimate_uncertainty &p);
 
   //! @brief Copy constructs an update model.
   //!
@@ -364,13 +368,6 @@ public:
 
   //! @}
 };
-
-//! @name Deduction Guides
-//! @{
-
-update()->update<internal::update<>>;
-
-//! @}
 
 } // namespace fcarouge
 

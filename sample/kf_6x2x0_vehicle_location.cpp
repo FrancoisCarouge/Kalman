@@ -43,7 +43,9 @@ using no_input = void;
 //! @example kf_6x2x0_vehicle_location.cpp
 [[maybe_unused]] auto kf_6x2x0_vehicle_location{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
-  using kalman = kalman<state, output, no_input>;
+  using update = update<state, output>;
+  using predict = predict<state, no_input>;
+  using kalman = kalman<update, predict>;
 
   kalman filter;
 

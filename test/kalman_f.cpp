@@ -47,6 +47,7 @@ namespace {
 //! the default filter type.
 [[maybe_unused]] auto test{[] {
   using kalman = kalman<>;
+
   kalman filter;
 
   assert(filter.f() == 1);

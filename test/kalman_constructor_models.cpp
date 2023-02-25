@@ -39,23 +39,26 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman.hpp"
 
 #include <cassert>
-#include <format>
 
 namespace fcarouge::test {
 namespace {
 
-//! @test Verifies formatting filters for single-dimension filters with input
-//! control without additional arguments.
+//! @test Verifies ...
 [[maybe_unused]] auto test{[] {
-  using update = update<float, float>;
-  using predict = predict<float, float>;
-  using kalman = kalman<update, predict>;
+  update<> updator;
+  predict<> predictor;
+  kalman filter{updator, predictor};
 
-  kalman filter;
-
-  assert(
-      std::format("{}", filter) ==
-      R"({"f": 1, "g": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "u": 0, "x": 0, "y": 0, "z": 0})");
+  assert(filter.f() == 1);
+  assert(filter.h() == 1);
+  assert(filter.k() == 1);
+  assert(filter.p() == 1);
+  assert(filter.q() == 0 && "No process noise by default.");
+  assert(filter.r() == 0 && "No observation noise by default.");
+  assert(filter.s() == 1);
+  assert(filter.x() == 0 && "Origin state.");
+  assert(filter.y() == 0);
+  assert(filter.z() == 0);
 
   return 0;
 }()};

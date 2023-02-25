@@ -49,8 +49,9 @@ namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure update, empty benchmark performance.
 void update_1x1x0(::benchmark::State &state) {
-
-  using kalman = kalman<float, float>;
+  using update = update<float, float>;
+  using predict = predict<float, void>;
+  using kalman = kalman<update, predict>;
 
   kalman filter;
   std::random_device random_device;

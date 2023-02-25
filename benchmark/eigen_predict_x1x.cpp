@@ -60,8 +60,9 @@ template <auto Size> using vector = Eigen::Vector<float, Size>;
 //! states and inputs with the Eigen linear algebra backend.
 template <std::size_t StateSize, std::size_t InputSize>
 void eigen_predict(::benchmark::State &state) {
-
-  using kalman = kalman<vector<StateSize>, float, vector<InputSize>>;
+  using update = update<vector<StateSize>, float>;
+  using predict = predict<vector<StateSize>, vector<InputSize>>;
+  using kalman = kalman<update, predict>;
 
   kalman filter;
   std::random_device random_device;

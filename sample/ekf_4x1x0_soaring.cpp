@@ -38,8 +38,9 @@ using no_input = void;
 [[maybe_unused]] auto ekf_4x1x0_soaring{[] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
-  using kalman = kalman<state, output, no_input, std::tuple<float, float>,
-                        std::tuple<float, float>>;
+  using update = update<state, output, float, float>;
+  using predict = predict<state, no_input, float, float>;
+  using kalman = kalman<update, predict>;
 
   kalman filter;
 

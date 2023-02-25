@@ -52,7 +52,10 @@ using matrix = Eigen::Matrix<double, Row, Column>;
 
 //! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<double, double, vector<3>>;
+  using update = update<double, double>;
+  using predict = predict<double, vector<3>>;
+  using kalman = kalman<update, predict>;
+
   kalman filter;
 
   const auto z3x1{vector<3>::Zero()};

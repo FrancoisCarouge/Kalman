@@ -163,9 +163,7 @@ namespace fcarouge {
 //! @todo Can we implement Temporal Parallelization of Bayesian Smoothers, Simo
 //! Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez,
 //! https://arxiv.org/pdf/1905.13002.pdf ?
-template <typename State = double, typename Output = double,
-          typename Input = void, typename UpdateTypes = empty_pack,
-          typename PredictionTypes = empty_pack>
+template <typename Update = update<>, typename Predict = predict<>>
 class kalman final {
 private:
   //! @name Private Member Types
@@ -175,9 +173,7 @@ private:
   //!
   //! @brief The internal implementation unpacks the parameter packs from
   //! tuple-like types which allows for multiple parameter pack deductions.
-  using implementation =
-      internal::kalman<State, Output, Input, internal::repack_t<UpdateTypes>,
-                       internal::repack_t<PredictionTypes>>;
+  using implementation = internal::kalman<Update, Predict>;
 
   //! @}
 
@@ -249,10 +245,15 @@ public:
   //! @name Public Member Functions
   //! @{
 
-  //! @brief Constructs a Kalman filter without configuration.
+  //! @brief Constructs a default Kalman filter without configuration.
   //!
   //! @complexity Constant.
   inline constexpr kalman() = default;
+
+  //! @brief Constructs a Kalman filter from update and predict models.
+  //!
+  //! @complexity Constant.
+  inline constexpr kalman(const Update &updator, const Predict &predictor);
 
   //! @brief Copy constructs a filter.
   //!
@@ -362,8 +363,8 @@ public:
   //! @return The last control column vector U.
   //!
   //! @complexity Constant.
-  inline constexpr auto u() const
-      -> const input &requires(not std::is_same_v<Input, void>);
+  inline constexpr auto u() const -> const input &requires(
+      not std::is_same_v<typename Predict::input, void>);
 
   //! @brief Returns the estimated covariance matrix P.
   //!
@@ -499,10 +500,10 @@ public:
   //! @return The control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr auto g() const
-      -> const input_control &requires(not std::is_same_v<Input, void>);
-  inline constexpr auto g()
-      -> input_control &requires(not std::is_same_v<Input, void>);
+  inline constexpr auto g() const -> const input_control &requires(
+      not std::is_same_v<typename Predict::input, internal::empty>);
+  inline constexpr auto g() -> input_control &requires(
+      not std::is_same_v<typename Predict::input, internal::empty>);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -521,7 +522,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values)
-    requires(not std::is_same_v<Input, void>);
+    requires(not std::is_same_v<typename Predict::input, internal::empty>);
 
   //! @brief Returns the gain matrix K.
   //!
