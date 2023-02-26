@@ -8,7 +8,10 @@
 namespace fcarouge::sample {
 namespace {
 
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+template <auto Size> using vector = Eigen::Vector<float, Size>;
+using state = vector<4>;
+using output = float;
+using no_input = void;
 
 //! @brief ArduPilot plane soaring.
 //!
@@ -35,7 +38,7 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 [[maybe_unused]] auto ekf_4x1x0_soaring{[] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
-  using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
+  using kalman = kalman<state, output, no_input, std::tuple<float, float>,
                         std::tuple<float, float>>;
 
   kalman filter;
@@ -216,9 +219,9 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
       {0.285113f, 0.12198f, 0.74075f, 0.834888f, 0.561457f},
       {0.635992f, 0.590228f, 0.629378f, 0.112457f, 0.78253f}};
 
-  for (const auto &output : measured) {
-    filter.predict(output.drift_x, output.drift_y);
-    filter.update(output.position_x, output.position_y, output.variometer);
+  for (const auto &measure : measured) {
+    filter.predict(measure.drift_x, measure.drift_y);
+    filter.update(measure.position_x, measure.position_y, measure.variometer);
   }
 
   assert(std::abs(1 - filter.x()[0] / 0.347191f) < 0.0001f &&
