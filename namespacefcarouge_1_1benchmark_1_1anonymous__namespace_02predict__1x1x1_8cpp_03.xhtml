@@ -144,7 +144,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   57</span>  std::mt19937 random_generator{random_device()};</div>
 <div class="line"><span class="lineno">   58</span>  std::uniform_real_distribution&lt;float&gt; uniformly_distributed;</div>
 <div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a>) {</div>
 <div class="line"><span class="lineno">   61</span> </div>
 <div class="line"><span class="lineno">   62</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> u{uniformly_distributed(random_generator)};</div>
 <div class="line"><span class="lineno">   63</span> </div>
@@ -156,12 +156,13 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   69</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   70</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
 <div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    state.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a>.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
 <div class="line"><span class="lineno">   73</span>  }</div>
 <div class="line"><span class="lineno">   74</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00167">kalman.hpp:167</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1a54f32cfaafea2d586a5f7b28898fec"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6bf8d8bc6c862a1fc087361e36541dfa"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00200">kalman.hpp:200</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a7e29df93d84e25987f0c06c89a42b865"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">vector&lt; 4 &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00012">ekf_4x1x0_soaring.cpp:12</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::predict()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -181,7 +182,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03.xhtml">anonymous_namespace{predict_1x1x1.cpp}</a></li>
-    <li class="footer">Generated on Sun Feb 19 2023 02:02:24 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Mar 3 2023 02:45:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

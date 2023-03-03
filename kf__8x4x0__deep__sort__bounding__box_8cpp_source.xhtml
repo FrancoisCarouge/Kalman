@@ -107,217 +107,220 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml">   18</a></span><span class="keyword">namespace </span>{</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#aa16867102d4a53ebaae0261c4c34dd18">   20</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type, auto Size&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#aa16867102d4a53ebaae0261c4c34dd18">vector</a> = Eigen::Vector&lt;Type, Size&gt;;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a81cd351e59e34920e8287aaf0d045f49">   37</a></span>[[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a81cd351e59e34920e8287aaf0d045f49">kf_8x4x0_deep_sort_bounding_box</a>{[] {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman&lt;vector&lt;float, 8&gt;</a>, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#aa16867102d4a53ebaae0261c4c34dd18">vector&lt;float, 4&gt;</a>, <span class="keywordtype">void</span>&gt;;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="comment">// MOT16 sample, tracker #201.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> measured[]{{603.5f, 251.5f, 0.187335092348285f, 379},</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                  {599, 241, 0.24390243902439f, 328},</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                  {599, 239.5f, 0.257234726688103f, 311},</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                                  {602.5f, 244, 0.240131578947368f, 304},</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                  {598, 248.5f, 0.272425249169435f, 301},</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                  {596.5f, 240.5f, 0.283276450511945f, 293},</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                                  {601, 227, 0.301587301587302f, 252},</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                  {603.5f, 235.5f, 0.282868525896414f, 251},</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                  {602, 242.5f, 0.292490118577075f, 253},</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                                  {602.5f, 253, 0.218562874251497f, 334},</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                  {593, 254, 0.273291925465838f, 322},</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                  {603, 264, 0.22360248447205f, 322},</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                                  {600.5f, 278.5f, 0.198966408268734f, 387},</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                                  {593, 280, 0.237113402061856f, 388},</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                  {588.5f, 269, 0.267195767195767f, 378},</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                  {579, 260, 0.311111111111111f, 360},</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                  {565.5f, 268.5f, 0.339130434782609f, 345},</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                  {558.5f, 255.5f, 0.366568914956012f, 341},</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                  {544, 268, 0.364705882352941f, 340},</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                  {533, 258.5f, 0.356083086053412f, 337},</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                  {519, 258, 0.353293413173653f, 334},</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                  {511.5f, 252.5f, 0.333333333333333f, 333},</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                  {515.5f, 252.5f, 0.31306990881459f, 329},</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                  {523.5f, 251, 0.298192771084337f, 332},</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                                  {540, 252.5f, 0.318318318318318f, 333},</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                  {574, 262, 0.344827586206897f, 348},</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                  {590.5f, 265, 0.278735632183908f, 348},</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                  {613, 268, 0.164556962025316f, 316},</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                                  {617, 260.5f, 0.161172161172161f, 273},</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                  {615.5f, 261.5f, 0.15210355987055f, 309},</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                  {605.5f, 259, 0.226351351351351f, 296},</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                  {595.5f, 258.5f, 0.289036544850498f, 301},</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                                  {588, 257.5f, 0.350515463917526f, 291},</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                                  {579.5f, 254, 0.343537414965986f, 294},</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                                  {569.5f, 258.5f, 0.353535353535354f, 297},</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                                  {565.5f, 257, 0.37248322147651f, 298},</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                                  {555, 250, 0.388157894736842f, 304},</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                                  {546.5f, 249, 0.336666666666667f, 300},</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                                  {535, 251, 0.30718954248366f, 306},</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                                  {530, 246, 0.308724832214765f, 298},</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                                  {521, 252, 0.278145695364238f, 302},</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                                  {521.5f, 254.5f, 0.331010452961672f, 287},</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                                  {521, 258.5f, 0.32280701754386f, 285},</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                                  {519.5f, 255, 0.316326530612245f, 294},</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                                  {518.5f, 255, 0.304794520547945f, 292},</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                                  {511, 253, 0.310810810810811f, 296},</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                                  {506, 255, 0.319727891156463f, 294},</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                                  {499, 256, 0.352112676056338f, 284},</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                                  {492.5f, 256.5f, 0.349152542372881f, 295},</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                  {489.5f, 257, 0.362068965517241f, 290},</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                  {481, 251.5f, 0.357894736842105f, 285},</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                  {474, 249, 0.324137931034483f, 290},</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                  {466, 250, 0.306122448979592f, 294},</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                  {461.5f, 248, 0.304794520547945f, 292},</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                                  {450.5f, 248.5f, 0.323843416370107f, 281},</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                                  {442, 260.5f, 0.32280701754386f, 285},</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                                  {437, 255.5f, 0.329824561403509f, 285},</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                                  {427, 251.5f, 0.329896907216495f, 291},</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                                  {419, 251, 0.330985915492958f, 284},</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                                  {411, 251, 0.328671328671329f, 286},</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                                  {411, 251.5f, 0.325259515570934f, 289},</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                                  {410, 249, 0.324137931034483f, 290},</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                                  {407, 247.5f, 0.346020761245675f, 289},</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                                  {398.5f, 248.5f, 0.356890459363958f, 283},</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                                  {393, 249, 0.347222222222222f, 288},</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                                  {390.5f, 246.5f, 0.331058020477816f, 293},</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                                  {387, 246, 0.308724832214765f, 298},</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                                  {379.5f, 244.5f, 0.303754266211604f, 293},</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                                  {370, 255.5f, 0.258899676375404f, 309},</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                                  {372, 252.5f, 0.307167235494881f, 293},</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                                  {368, 254.5f, 0.311418685121107f, 289},</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                                  {365.5f, 251, 0.322916666666667f, 288},</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                                  {360.5f, 250.5f, 0.301694915254237f, 295},</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                                  {353, 251.5f, 0.316151202749141f, 291},</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                                  {349.5f, 248.5f, 0.32404181184669f, 287},</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                                  {343.5f, 246, 0.327464788732394f, 284},</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                                  {334.5f, 251.5f, 0.335689045936396f, 283},</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                                  {328.5f, 249.5f, 0.342960288808664f, 277},</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                                  {321.5f, 256.5f, 0.328621908127208f, 283},</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                                  {321.5f, 259.5f, 0.317073170731707f, 287},</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                                  {319.5f, 252, 0.313380281690141f, 284},</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                                  {317.5f, 247.5f, 0.314487632508834f, 283},</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                                  {314.5f, 248, 0.313380281690141f, 284},</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                                  {318.5f, 255, 0.311188811188811f, 286},</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                                  {324.5f, 252, 0.317857142857143f, 280},</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                                  {328.5f, 249, 0.311188811188811f, 286},</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                                  {330, 248, 0.318840579710145f, 276},</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                                  {334.5f, 245, 0.320143884892086f, 278},</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                                  {342.5f, 248, 0.324817518248175f, 274},</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                                  {348, 247.5f, 0.312727272727273f, 275},</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                                  {349.5f, 245.5f, 0.326007326007326f, 273},</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                                  {350, 250, 0.321167883211679f, 274},</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                                  {350.5f, 252.5f, 0.323636363636364f, 275},</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                                  {356.5f, 249, 0.31294964028777f, 278},</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                                  {356.5f, 245, 0.320143884892086f, 278},</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                                  {357, 245, 0.314285714285714f, 280},</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                                  {361, 246, 0.318840579710145f, 276},</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                                  {364, 251.5f, 0.308771929824561f, 285},</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                                  {368, 252.5f, 0.303886925795053f, 283},</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                                  {369, 250.5f, 0.29757785467128f, 289}};</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  <span class="comment">// Initialization</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="comment">// The filter is initialized at runtime, on bounding box detection, with the</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="comment">// first observed output. Bounding box position and velocity estimated state:</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  <span class="comment">// [px, py, pa, ph, vx, vy, va, vh].</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> initial_box{605.0f, 248.0f, 0.20481927710843373f,</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                                   332.0f};</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>(initial_box(0), initial_box(1), initial_box(2), initial_box(3), 0, 0,</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>           0, 0);</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  <span class="comment">// Experimental position and velocity uncertainty standard deviation weights.</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> position_weight{1.f / 20.f};</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> velocity_weight{1.f / 160.f};</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6d203bb8f431e7d683ca21261d2e512b">kalman::estimate_uncertainty</a>{</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#aa16867102d4a53ebaae0261c4c34dd18">vector&lt;float, 8&gt;</a>{2 * position_weight * initial_box(3),</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                       2 * position_weight * initial_box(3), 1e-2f,</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                       2 * position_weight * initial_box(3),</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                       10 * velocity_weight * initial_box(3),</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                       10 * velocity_weight * initial_box(3), 1e-5f,</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                       10 * velocity_weight * initial_box(3)}</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>          .array()</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>          .square()</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>          .matrix()</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>          .asDiagonal()});</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="comment">// Constant velocity, linear state transition model. From one image frame to</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="comment">// the other.</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> delta_time{1};</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2e2b3d64520fb7e7476b6b8bbb0352e9">f</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a554a853cc7e8ebbf878b140551a535c8">kalman::state_transition</a>{{1, 0, 0, 0, delta_time, 0, 0, 0},</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                                    {0, 1, 0, 0, 0, delta_time, 0, 0},</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                                    {0, 0, 1, 0, 0, 0, delta_time, 0},</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                                    {0, 0, 0, 1, 0, 0, 0, delta_time},</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                                    {0, 0, 0, 0, 1, 0, 0, 0},</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                                    {0, 0, 0, 0, 0, 1, 0, 0},</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                                    {0, 0, 0, 0, 0, 0, 1, 0},</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                                    {0, 0, 0, 0, 0, 0, 0, 1}});</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a>([position_weight, velocity_weight](</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>               <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af6ce8697cff935182e0038cdcfd844f4">kalman::state</a> &amp;x) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a10744ae8b23cfeee58b6ce4987242c87">kalman::process_uncertainty</a> {</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#aa16867102d4a53ebaae0261c4c34dd18">vector&lt;float, 8&gt;</a>{position_weight * x(3),</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                            position_weight * x(3),</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                            1e-2f,</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                            position_weight * x(3),</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                            velocity_weight * x(3),</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                            velocity_weight * x(3),</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                            1e-5f,</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                            velocity_weight * x(3)}</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        .array()</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        .square()</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        .matrix()</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        .asDiagonal();</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  });</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#adc81ebf61d94e662c636a6b355b57a56">   20</a></span><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#adc81ebf61d94e662c636a6b355b57a56">vector</a> = Eigen::Vector&lt;float, Size&gt;;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a30ca48fcba36de5e3ccaaf2945344670">   21</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a30ca48fcba36de5e3ccaaf2945344670">state</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#adc81ebf61d94e662c636a6b355b57a56">vector&lt;8&gt;</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#ac21a1bc21b821fcc5b6d134afb7fdc7b">   22</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#ac21a1bc21b821fcc5b6d134afb7fdc7b">output</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#adc81ebf61d94e662c636a6b355b57a56">vector&lt;4&gt;</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a20ef900481a7ac9dabcdc874774cfd88">   23</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a20ef900481a7ac9dabcdc874774cfd88">no_input</a> = void;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a81cd351e59e34920e8287aaf0d045f49">   40</a></span>[[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a81cd351e59e34920e8287aaf0d045f49">kf_8x4x0_deep_sort_bounding_box</a>{[] {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman&lt;state, output, no_input&gt;</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="comment">// MOT16 sample, tracker #201.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> measured[]{{603.5f, 251.5f, 0.187335092348285f, 379},</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                  {599, 241, 0.24390243902439f, 328},</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                  {599, 239.5f, 0.257234726688103f, 311},</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                                  {602.5f, 244, 0.240131578947368f, 304},</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                  {598, 248.5f, 0.272425249169435f, 301},</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                  {596.5f, 240.5f, 0.283276450511945f, 293},</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                                  {601, 227, 0.301587301587302f, 252},</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                  {603.5f, 235.5f, 0.282868525896414f, 251},</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                  {602, 242.5f, 0.292490118577075f, 253},</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                                  {602.5f, 253, 0.218562874251497f, 334},</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                                  {593, 254, 0.273291925465838f, 322},</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                  {603, 264, 0.22360248447205f, 322},</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                  {600.5f, 278.5f, 0.198966408268734f, 387},</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                  {593, 280, 0.237113402061856f, 388},</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                  {588.5f, 269, 0.267195767195767f, 378},</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                  {579, 260, 0.311111111111111f, 360},</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                  {565.5f, 268.5f, 0.339130434782609f, 345},</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                  {558.5f, 255.5f, 0.366568914956012f, 341},</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                  {544, 268, 0.364705882352941f, 340},</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                  {533, 258.5f, 0.356083086053412f, 337},</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                  {519, 258, 0.353293413173653f, 334},</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                                  {511.5f, 252.5f, 0.333333333333333f, 333},</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                  {515.5f, 252.5f, 0.31306990881459f, 329},</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                  {523.5f, 251, 0.298192771084337f, 332},</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                  {540, 252.5f, 0.318318318318318f, 333},</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                                  {574, 262, 0.344827586206897f, 348},</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                  {590.5f, 265, 0.278735632183908f, 348},</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                  {613, 268, 0.164556962025316f, 316},</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                  {617, 260.5f, 0.161172161172161f, 273},</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                                  {615.5f, 261.5f, 0.15210355987055f, 309},</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                                  {605.5f, 259, 0.226351351351351f, 296},</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                                  {595.5f, 258.5f, 0.289036544850498f, 301},</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                                  {588, 257.5f, 0.350515463917526f, 291},</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                                  {579.5f, 254, 0.343537414965986f, 294},</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                                  {569.5f, 258.5f, 0.353535353535354f, 297},</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                                  {565.5f, 257, 0.37248322147651f, 298},</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                                  {555, 250, 0.388157894736842f, 304},</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                                  {546.5f, 249, 0.336666666666667f, 300},</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                                  {535, 251, 0.30718954248366f, 306},</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                                  {530, 246, 0.308724832214765f, 298},</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                                  {521, 252, 0.278145695364238f, 302},</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                                  {521.5f, 254.5f, 0.331010452961672f, 287},</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                                  {521, 258.5f, 0.32280701754386f, 285},</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                                  {519.5f, 255, 0.316326530612245f, 294},</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                                  {518.5f, 255, 0.304794520547945f, 292},</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                                  {511, 253, 0.310810810810811f, 296},</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                  {506, 255, 0.319727891156463f, 294},</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                  {499, 256, 0.352112676056338f, 284},</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                  {492.5f, 256.5f, 0.349152542372881f, 295},</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                  {489.5f, 257, 0.362068965517241f, 290},</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                  {481, 251.5f, 0.357894736842105f, 285},</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                                  {474, 249, 0.324137931034483f, 290},</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                                  {466, 250, 0.306122448979592f, 294},</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                                  {461.5f, 248, 0.304794520547945f, 292},</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                                  {450.5f, 248.5f, 0.323843416370107f, 281},</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                                  {442, 260.5f, 0.32280701754386f, 285},</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                                  {437, 255.5f, 0.329824561403509f, 285},</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                                  {427, 251.5f, 0.329896907216495f, 291},</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                                  {419, 251, 0.330985915492958f, 284},</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                                  {411, 251, 0.328671328671329f, 286},</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                                  {411, 251.5f, 0.325259515570934f, 289},</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                                  {410, 249, 0.324137931034483f, 290},</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                                  {407, 247.5f, 0.346020761245675f, 289},</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                                  {398.5f, 248.5f, 0.356890459363958f, 283},</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                                  {393, 249, 0.347222222222222f, 288},</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                                  {390.5f, 246.5f, 0.331058020477816f, 293},</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                                  {387, 246, 0.308724832214765f, 298},</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                                  {379.5f, 244.5f, 0.303754266211604f, 293},</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                                  {370, 255.5f, 0.258899676375404f, 309},</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                                  {372, 252.5f, 0.307167235494881f, 293},</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                                  {368, 254.5f, 0.311418685121107f, 289},</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                                  {365.5f, 251, 0.322916666666667f, 288},</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                                  {360.5f, 250.5f, 0.301694915254237f, 295},</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                                  {353, 251.5f, 0.316151202749141f, 291},</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                                  {349.5f, 248.5f, 0.32404181184669f, 287},</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                                  {343.5f, 246, 0.327464788732394f, 284},</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                                  {334.5f, 251.5f, 0.335689045936396f, 283},</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                                  {328.5f, 249.5f, 0.342960288808664f, 277},</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                                  {321.5f, 256.5f, 0.328621908127208f, 283},</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                                  {321.5f, 259.5f, 0.317073170731707f, 287},</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                                  {319.5f, 252, 0.313380281690141f, 284},</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                                  {317.5f, 247.5f, 0.314487632508834f, 283},</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                                  {314.5f, 248, 0.313380281690141f, 284},</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                                  {318.5f, 255, 0.311188811188811f, 286},</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                                  {324.5f, 252, 0.317857142857143f, 280},</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                                  {328.5f, 249, 0.311188811188811f, 286},</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                                  {330, 248, 0.318840579710145f, 276},</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                                  {334.5f, 245, 0.320143884892086f, 278},</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                                  {342.5f, 248, 0.324817518248175f, 274},</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                                  {348, 247.5f, 0.312727272727273f, 275},</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                                  {349.5f, 245.5f, 0.326007326007326f, 273},</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                                  {350, 250, 0.321167883211679f, 274},</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                                  {350.5f, 252.5f, 0.323636363636364f, 275},</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                                  {356.5f, 249, 0.31294964028777f, 278},</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                                  {356.5f, 245, 0.320143884892086f, 278},</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                                  {357, 245, 0.314285714285714f, 280},</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                                  {361, 246, 0.318840579710145f, 276},</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                                  {364, 251.5f, 0.308771929824561f, 285},</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                                  {368, 252.5f, 0.303886925795053f, 283},</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                                  {369, 250.5f, 0.29757785467128f, 289}};</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  <span class="comment">// Initialization</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="comment">// The filter is initialized at runtime, on bounding box detection, with the</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="comment">// first observed output. Bounding box position and velocity estimated state:</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  <span class="comment">// [px, py, pa, ph, vx, vy, va, vh].</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> initial_box{605.0f, 248.0f, 0.20481927710843373f,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                                   332.0f};</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>(initial_box(0), initial_box(1), initial_box(2), initial_box(3), 0, 0,</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>           0, 0);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  <span class="comment">// Experimental position and velocity uncertainty standard deviation weights.</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> position_weight{1.f / 20.f};</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> velocity_weight{1.f / 160.f};</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6d203bb8f431e7d683ca21261d2e512b">kalman::estimate_uncertainty</a>{</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a30ca48fcba36de5e3ccaaf2945344670">state</a>{2 * position_weight * initial_box(3),</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            2 * position_weight * initial_box(3), 1e-2f,</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            2 * position_weight * initial_box(3),</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            10 * velocity_weight * initial_box(3),</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            10 * velocity_weight * initial_box(3), 1e-5f,</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            10 * velocity_weight * initial_box(3)}</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>          .array()</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>          .square()</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>          .matrix()</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>          .asDiagonal()});</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="comment">// Constant velocity, linear state transition model. From one image frame to</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="comment">// the other.</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> delta_time{1};</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2e2b3d64520fb7e7476b6b8bbb0352e9">f</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a554a853cc7e8ebbf878b140551a535c8">kalman::state_transition</a>{{1, 0, 0, 0, delta_time, 0, 0, 0},</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                                    {0, 1, 0, 0, 0, delta_time, 0, 0},</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                                    {0, 0, 1, 0, 0, 0, delta_time, 0},</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                                    {0, 0, 0, 1, 0, 0, 0, delta_time},</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                                    {0, 0, 0, 0, 1, 0, 0, 0},</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                                    {0, 0, 0, 0, 0, 1, 0, 0},</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                                    {0, 0, 0, 0, 0, 0, 1, 0},</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                                    {0, 0, 0, 0, 0, 0, 0, 1}});</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a>([position_weight, velocity_weight](</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>               <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af6ce8697cff935182e0038cdcfd844f4">kalman::state</a> &amp;x) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a10744ae8b23cfeee58b6ce4987242c87">kalman::process_uncertainty</a> {</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a30ca48fcba36de5e3ccaaf2945344670">state</a>{position_weight * x(3),</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                 position_weight * x(3),</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                 1e-2f,</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                 position_weight * x(3),</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                 velocity_weight * x(3),</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                 velocity_weight * x(3),</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                 1e-5f,</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                 velocity_weight * x(3)}</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        .array()</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        .square()</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        .matrix()</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        .asDiagonal();</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  });</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment">// Measure and Update</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="comment">// Direct linear observation transition model.</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">h</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1a9d07aa2b616cc3e4e444a4a100bbf2">kalman::output_model</a>{{1, 0, 0, 0, 0, 0, 0, 0},</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                                {0, 1, 0, 0, 0, 0, 0, 0},</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                                {0, 0, 1, 0, 0, 0, 0, 0},</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                                {0, 0, 0, 1, 0, 0, 0, 0}});</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="comment">// Observation, measurement noise covariance.</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">r</a>([position_weight](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af6ce8697cff935182e0038cdcfd844f4">kalman::state</a> &amp;x,</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                             [[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> &amp;z)</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>               -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af92fafd91695af30574a7be7771e5357">kalman::output_uncertainty</a> {</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#aa16867102d4a53ebaae0261c4c34dd18">vector&lt;float, 4&gt;</a>{position_weight * x(3), position_weight * x(3),</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                            1e-1f, position_weight * x(3)}</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        .array()</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        .square()</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        .matrix()</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        .asDiagonal();</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>  });</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output : measured) {</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(output);</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>();</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  }</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  assert(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[0] / 370.932041394761f) &lt; 0.001f &amp;&amp;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[1] / 251.173174229878f) &lt; 0.001f &amp;&amp;</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[2] / 0.314757138075364f) &lt; 0.001f &amp;&amp;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[3] / 287.859996019444f) &lt; 0.001f &amp;&amp;</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[4] / 1.95865368159518f) &lt; 0.001f &amp;&amp;</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[5] / 0.229282868701086f) &lt; 0.001f &amp;&amp;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>         <span class="comment">// The precision of the velocity appears to saturate early on in the</span></div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>         <span class="comment">// original example. The parameter could be scaled or larger types used</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>         <span class="comment">// to improve comparison accuracy.</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[6] / 2.46138628550094E-06f) &lt; 0.5f &amp;&amp;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[7] / 0.81402529074969f) &lt; 0.001f &amp;&amp;</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>         <span class="stringliteral">&quot;The estimated states expected to meet Nwojke&#39;s Deep SORT filter&#39;s &quot;</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>         <span class="stringliteral">&quot;MOT16 sample tracker #201 dataset at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>}()};</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>();</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="comment">// Measure and Update</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  <span class="comment">// Direct linear observation transition model.</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">h</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1a9d07aa2b616cc3e4e444a4a100bbf2">kalman::output_model</a>{{1, 0, 0, 0, 0, 0, 0, 0},</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                                {0, 1, 0, 0, 0, 0, 0, 0},</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                                {0, 0, 1, 0, 0, 0, 0, 0},</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                                {0, 0, 0, 1, 0, 0, 0, 0}});</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="comment">// Observation, measurement noise covariance.</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">r</a>([position_weight](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af6ce8697cff935182e0038cdcfd844f4">kalman::state</a> &amp;x,</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                             [[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> &amp;z)</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>               -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af92fafd91695af30574a7be7771e5357">kalman::output_uncertainty</a> {</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#ac21a1bc21b821fcc5b6d134afb7fdc7b">output</a>{position_weight * x(3), position_weight * x(3), 1e-1f,</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>                  position_weight * x(3)}</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        .array()</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        .square()</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        .matrix()</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        .asDiagonal();</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  });</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(measure);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>();</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  }</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>  assert(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[0] / 370.932041394761f) &lt; 0.001f &amp;&amp;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[1] / 251.173174229878f) &lt; 0.001f &amp;&amp;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[2] / 0.314757138075364f) &lt; 0.001f &amp;&amp;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[3] / 287.859996019444f) &lt; 0.001f &amp;&amp;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[4] / 1.95865368159518f) &lt; 0.001f &amp;&amp;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[5] / 0.229282868701086f) &lt; 0.001f &amp;&amp;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>         <span class="comment">// The precision of the velocity appears to saturate early on in the</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>         <span class="comment">// original example. The parameter could be scaled or larger types used</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>         <span class="comment">// to improve comparison accuracy.</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[6] / 2.46138628550094E-06f) &lt; 0.5f &amp;&amp;</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[7] / 0.81402529074969f) &lt; 0.001f &amp;&amp;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>         <span class="stringliteral">&quot;The estimated states expected to meet Nwojke&#39;s Deep SORT filter&#39;s &quot;</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>         <span class="stringliteral">&quot;MOT16 sample tracker #201 dataset at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}()};</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00167">kalman.hpp:167</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a04da55f7c46559f46cac6da0a5132605"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr auto q() const -&gt; const process_uncertainty &amp;</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a10744ae8b23cfeee58b6ce4987242c87"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a10744ae8b23cfeee58b6ce4987242c87">fcarouge::kalman::process_uncertainty</a></div><div class="ttdeci">typename implementation::process_uncertainty process_uncertainty</div><div class="ttdoc">Type of the process noise correlated variance matrix Q.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00213">kalman.hpp:213</a></div></div>
@@ -335,8 +338,11 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af971a3cfb03099d42c99e6a165c56ad5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afd28eccbb617441b0792ca0f3eadbb58"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">fcarouge::kalman::h</a></div><div class="ttdeci">constexpr auto h() const -&gt; const output_model &amp;</div><div class="ttdoc">Returns the observation transition matrix H.</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_a81cd351e59e34920e8287aaf0d045f49"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a81cd351e59e34920e8287aaf0d045f49">fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::kf_8x4x0_deep_sort_bounding_box</a></div><div class="ttdeci">auto kf_8x4x0_deep_sort_bounding_box</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00037">kf_8x4x0_deep_sort_bounding_box.cpp:37</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_aa16867102d4a53ebaae0261c4c34dd18"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#aa16867102d4a53ebaae0261c4c34dd18">fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Size &gt; vector</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00020">kf_8x4x0_deep_sort_bounding_box.cpp:20</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_a20ef900481a7ac9dabcdc874774cfd88"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a20ef900481a7ac9dabcdc874774cfd88">fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::no_input</a></div><div class="ttdeci">void no_input</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00023">kf_8x4x0_deep_sort_bounding_box.cpp:23</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_a30ca48fcba36de5e3ccaaf2945344670"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a30ca48fcba36de5e3ccaaf2945344670">fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::state</a></div><div class="ttdeci">vector&lt; 8 &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00021">kf_8x4x0_deep_sort_bounding_box.cpp:21</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_a81cd351e59e34920e8287aaf0d045f49"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a81cd351e59e34920e8287aaf0d045f49">fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::kf_8x4x0_deep_sort_bounding_box</a></div><div class="ttdeci">auto kf_8x4x0_deep_sort_bounding_box</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00040">kf_8x4x0_deep_sort_bounding_box.cpp:40</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_ac21a1bc21b821fcc5b6d134afb7fdc7b"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#ac21a1bc21b821fcc5b6d134afb7fdc7b">fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::output</a></div><div class="ttdeci">vector&lt; 4 &gt; output</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00022">kf_8x4x0_deep_sort_bounding_box.cpp:22</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03_xhtml_adc81ebf61d94e662c636a6b355b57a56"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#adc81ebf61d94e662c636a6b355b57a56">fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::vector</a></div><div class="ttdeci">Eigen::Vector&lt; float, Size &gt; vector</div><div class="ttdef"><b>Definition:</b> <a href="kf__8x4x0__deep__sort__bounding__box_8cpp_source.xhtml#l00020">kf_8x4x0_deep_sort_bounding_box.cpp:20</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_acd64ab811e0773f298e29a93f825c992"><div class="ttname"><a href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient</a></div><div class="ttdeci">internal::quotient&lt; Numerator, Denominator &gt; quotient</div><div class="ttdoc">The matrix type satisfying X * Row = Column.</div><div class="ttdef"><b>Definition:</b> <a href="utility_8hpp_source.xhtml#l00080">utility.hpp:80</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aedda70f7a23b35d46bbc4dfe829e3e0d"><div class="ttname"><a href="namespacefcarouge.xhtml#aedda70f7a23b35d46bbc4dfe829e3e0d">fcarouge::operator/</a></div><div class="ttdeci">auto operator/(const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; quotient&lt; Numerator, Denominator &gt;</div><div class="ttdoc">A user-defined algebraic division solution.</div><div class="ttdef"><b>Definition:</b> <a href="eigen__update__xx0_8cpp_source.xhtml#l00055">eigen_update_xx0.cpp:55</a></div></div>
@@ -346,7 +352,7 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="kf__8x4x0__deep__sort__bounding__box_8cpp.xhtml">kf_8x4x0_deep_sort_bounding_box.cpp</a></li>
-    <li class="footer">Generated on Sun Feb 19 2023 02:02:24 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Mar 3 2023 02:45:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

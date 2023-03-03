@@ -196,21 +196,21 @@ Examples</h1>
 <div class="line">                                       { 0, 400, 0, 0 },</div>
 <div class="line">                                       { 0, 0, 400, 0 },</div>
 <div class="line">                                       { 0, 0, 0, 400 } });</div>
-<div class="line">filter.transition([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
-<div class="line">                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; kalman::state {</div>
-<div class="line">  <span class="keywordflow">return</span> x + kalman::state{ 0, 0, -drift_x, -drift_y };</div>
+<div class="line">filter.transition([](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
+<div class="line">                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">kalman::state</a> {</div>
+<div class="line">  <span class="keywordflow">return</span> x + <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">kalman::state</a>{ 0, 0, -drift_x, -drift_y };</div>
 <div class="line">});</div>
 <div class="line">filter.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },</div>
 <div class="line">                                      { 0, 0.0009, 0, 0 },</div>
 <div class="line">                                      { 0, 0, 0.0009, 0 },</div>
 <div class="line">                                      { 0, 0, 0, 0.0009 } });</div>
 <div class="line">filter.r(0.2025);</div>
-<div class="line">filter.observation([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line">                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output {</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::output{ x(0) *</div>
+<div class="line">filter.observation([](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">kalman::output</a> {</div>
+<div class="line">  <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">kalman::output</a>{ x(0) *</div>
 <div class="line">    std::exp(-((x(2) - position_x)*(x(2) - position_x) +</div>
 <div class="line">    (x(3) - position_y) * (x(3) - position_y)) / x(1) * x(1)) };</div>
-<div class="line">filter.h([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">filter.h([](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
 <div class="line">            <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output_model {</div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> exp{ std::exp(-((x(2) - position_x) * (x(2) - position_x) +</div>
 <div class="line">    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) };</div>
@@ -226,6 +226,8 @@ Examples</h1>
 <div class="line"> </div>
 <div class="line">filter.predict(drift_x, drift_y);</div>
 <div class="line">filter.update(position_x, position_y, variometer);</div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a7e29df93d84e25987f0c06c89a42b865"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">vector&lt; 4 &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00012">ekf_4x1x0_soaring.cpp:12</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a86794f6437ff542b83abc16de5df6373"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::output</a></div><div class="ttdeci">float output</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00013">ekf_4x1x0_soaring.cpp:13</a></div></div>
 </div><!-- fragment --><p ><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_soaring.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md26"></a>
 Other Examples</h2>
@@ -496,7 +498,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Feb 19 2023 02:02:25 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Mar 3 2023 02:45:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

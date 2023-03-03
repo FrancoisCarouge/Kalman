@@ -41,6 +41,7 @@ var menudata={children:[
 {text:"p",url:"namespacemembers.xhtml#index_p"},
 {text:"q",url:"namespacemembers.xhtml#index_q"},
 {text:"r",url:"namespacemembers.xhtml#index_r"},
+{text:"s",url:"namespacemembers.xhtml#index_s"},
 {text:"t",url:"namespacemembers.xhtml#index_t"},
 {text:"u",url:"namespacemembers.xhtml#index_u"},
 {text:"v",url:"namespacemembers.xhtml#index_v"},
@@ -56,10 +57,14 @@ var menudata={children:[
 {text:"Typedefs",url:"namespacemembers_type.xhtml",children:[
 {text:"c",url:"namespacemembers_type.xhtml#index_c"},
 {text:"e",url:"namespacemembers_type.xhtml#index_e"},
+{text:"i",url:"namespacemembers_type.xhtml#index_i"},
 {text:"m",url:"namespacemembers_type.xhtml#index_m"},
+{text:"n",url:"namespacemembers_type.xhtml#index_n"},
+{text:"o",url:"namespacemembers_type.xhtml#index_o"},
 {text:"p",url:"namespacemembers_type.xhtml#index_p"},
 {text:"q",url:"namespacemembers_type.xhtml#index_q"},
 {text:"r",url:"namespacemembers_type.xhtml#index_r"},
+{text:"s",url:"namespacemembers_type.xhtml#index_s"},
 {text:"v",url:"namespacemembers_type.xhtml#index_v"}]}]}]},
 {text:"Concepts",url:"concepts.xhtml"},
 {text:"Classes",url:"annotated.xhtml",children:[
