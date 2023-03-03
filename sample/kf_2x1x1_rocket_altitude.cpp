@@ -9,7 +9,10 @@
 namespace fcarouge::sample {
 namespace {
 
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+template <auto Size> using vector = Eigen::Vector<double, Size>;
+using state = vector<2>;
+using output = double;
+using input = double;
 
 //! @brief Estimating the rocket altitude.
 //!
@@ -47,7 +50,7 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 //! @example kf_2x1x1_rocket_altitude.cpp
 [[maybe_unused]] auto kf_2x1x1_rocket_altitude{[] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
-  using kalman = kalman<vector<double, 2>, double, double, std::tuple<>,
+  using kalman = kalman<state, output, input, std::tuple<>,
                         std::tuple<std::chrono::milliseconds>>;
   kalman filter;
 

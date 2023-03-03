@@ -63,15 +63,14 @@ auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
 namespace fcarouge::benchmark {
 namespace {
 
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+template <auto Size> using vector = Eigen::Vector<float, Size>;
 
 //! @benchmark Measure the update of the filter for different dimensions of
 //! states and outputs with the Eigen linear algebra backend.
 template <std::size_t StateSize, std::size_t OutputSize>
 void eigen_update(::benchmark::State &state) {
 
-  using kalman =
-      kalman<vector<float, StateSize>, vector<float, OutputSize>, void>;
+  using kalman = kalman<vector<StateSize>, vector<OutputSize>, void>;
 
   kalman filter;
   std::random_device random_device;

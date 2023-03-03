@@ -17,7 +17,10 @@ auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
 namespace fcarouge::sample {
 namespace {
 
-template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
+template <auto Size> using vector = Eigen::Vector<float, Size>;
+using state = vector<8>;
+using output = vector<4>;
+using no_input = void;
 
 //! @brief Estimating the position of bounding boxes in image space.
 //!
@@ -36,7 +39,7 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 //! @example kf_8x4x0_deep_sort_bounding_box.cpp
 [[maybe_unused]] auto kf_8x4x0_deep_sort_bounding_box{[] {
   // A 8x4x0 filter, constant velocity, linear.
-  using kalman = kalman<vector<float, 8>, vector<float, 4>, void>;
+  using kalman = kalman<state, output, no_input>;
 
   kalman filter;
 
@@ -157,12 +160,12 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
   const float velocity_weight{1.f / 160.f};
 
   filter.p(kalman::estimate_uncertainty{
-      vector<float, 8>{2 * position_weight * initial_box(3),
-                       2 * position_weight * initial_box(3), 1e-2f,
-                       2 * position_weight * initial_box(3),
-                       10 * velocity_weight * initial_box(3),
-                       10 * velocity_weight * initial_box(3), 1e-5f,
-                       10 * velocity_weight * initial_box(3)}
+      state{2 * position_weight * initial_box(3),
+            2 * position_weight * initial_box(3), 1e-2f,
+            2 * position_weight * initial_box(3),
+            10 * velocity_weight * initial_box(3),
+            10 * velocity_weight * initial_box(3), 1e-5f,
+            10 * velocity_weight * initial_box(3)}
           .array()
           .square()
           .matrix()
@@ -182,14 +185,14 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
 
   filter.q([position_weight, velocity_weight](
                const kalman::state &x) -> kalman::process_uncertainty {
-    return vector<float, 8>{position_weight * x(3),
-                            position_weight * x(3),
-                            1e-2f,
-                            position_weight * x(3),
-                            velocity_weight * x(3),
-                            velocity_weight * x(3),
-                            1e-5f,
-                            velocity_weight * x(3)}
+    return state{position_weight * x(3),
+                 position_weight * x(3),
+                 1e-2f,
+                 position_weight * x(3),
+                 velocity_weight * x(3),
+                 velocity_weight * x(3),
+                 1e-5f,
+                 velocity_weight * x(3)}
         .array()
         .square()
         .matrix()
@@ -210,8 +213,8 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
   filter.r([position_weight](const kalman::state &x,
                              [[maybe_unused]] const kalman::output &z)
                -> kalman::output_uncertainty {
-    return vector<float, 4>{position_weight * x(3), position_weight * x(3),
-                            1e-1f, position_weight * x(3)}
+    return output{position_weight * x(3), position_weight * x(3), 1e-1f,
+                  position_weight * x(3)}
         .array()
         .square()
         .matrix()
@@ -219,8 +222,8 @@ template <typename Type, auto Size> using vector = Eigen::Vector<Type, Size>;
   });
 
   // And so on, run a step of the filter, updating and predicting, every frame.
-  for (const auto &output : measured) {
-    filter.update(output);
+  for (const auto &measure : measured) {
+    filter.update(measure);
     filter.predict();
   }
 
