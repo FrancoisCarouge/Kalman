@@ -40,7 +40,6 @@ if(WIN32)
   set(OPTIONS "/EHsc" "/W4")
 else()
   set(OPTIONS
-      "-ansi"
       "-fno-check-new"
       "-fno-common"
       "-fstrict-aliasing"
