@@ -63,6 +63,14 @@ concept arithmetic = internal::arithmetic<Type>;
 template <typename Type>
 concept algebraic = internal::algebraic<Type>;
 
+template <typename Type>
+inline constexpr auto identity_v{internal::identity_v<Type>};
+
+[[nodiscard]] inline constexpr auto transposed(const auto &value) {
+  internal::transpose t;
+  return t(value);
+}
+
 //! @brief Tuple-like pack type.
 //!
 //! @details An alternative to tuple-like types.
