@@ -55,6 +55,9 @@ foreach(
   "kalman_h.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
+  set_target_properties(kalman_test_${NAME}_driver PROPERTIES CXX_STANDARD 23)
+  set_target_properties(kalman_test_${NAME}_driver PROPERTIES CXX_EXTENSIONS
+                                                              OFF)
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main)
   add_test(kalman_test_${NAME} kalman_test_${NAME}_driver)
   add_test(
@@ -77,6 +80,10 @@ foreach(
   "kalman_h_eigen_5x4x3.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_eigen_${NAME}_driver ${TEST})
+  set_target_properties(kalman_test_eigen_${NAME}_driver PROPERTIES CXX_STANDARD
+                                                                    23)
+  set_target_properties(kalman_test_eigen_${NAME}_driver
+                        PROPERTIES CXX_EXTENSIONS OFF)
   target_link_libraries(kalman_test_eigen_${NAME}_driver
                         PRIVATE Eigen3::Eigen kalman kalman_main)
   add_test(kalman_test_eigen_${NAME} kalman_test_eigen_${NAME}_driver)
