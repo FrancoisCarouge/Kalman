@@ -14,11 +14,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: "ubuntu-latest", compiler: {cpp: "clang++", c: "clang"}, generator: "Unix Makefiles" }
-        - { os: "ubuntu-latest", compiler: {cpp: "g++", c: "gcc"}, generator: "Unix Makefiles" }
-        - { os: "windows-latest", compiler: {cpp: "cl", c: "cl"}, generator: "Ninja", config: "Debug" }
-        - { os: "windows-latest", compiler: {cpp: "cl", c: "cl"}, generator: "Ninja", config: "Release" }
-    name: "${{ matrix.os }} / ${{ matrix.compiler.cpp }} / ${{ matrix.generator }} / ${{ matrix.config }}"
+        - { os: "ubuntu-latest", compiler: "clang++", generator: "Unix Makefiles" }
+        - { os: "ubuntu-latest", compiler: "g++", generator: "Unix Makefiles" }
+        - { os: "windows-latest", compiler: "cl", generator: "Ninja", config: "Debug" }
+        - { os: "windows-latest", compiler: "cl", generator: "Ninja", config: "Release" }
+    name: "${{ matrix.os }} / ${{ matrix.compiler }} / ${{ matrix.generator }} / ${{ matrix.config }}"
     runs-on: "${{ matrix.os }}"
     steps:
     - name: "Checkout"
@@ -27,8 +27,7 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
     - name: "Configure"
       env:
-        CC: "${{ matrix.compiler.c }}"
-        CXX: "${{ matrix.compiler.cpp }}"
+        CXX: "${{ matrix.compiler }}"
       run: cmake -S . -B "build" -G "${{ matrix.generator }}"
     - name: "Build"
       run: cmake --build "build" --config "${{ matrix.config }}" --verbose --parallel 4
