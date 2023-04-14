@@ -37,7 +37,7 @@ jobs:
     - name: Verify
       run: |
         FILES="include/fcarouge/kalman.hpp benchmark/include/benchmark.hpp"
-        clang-tidy ${FILES} --warnings-as-errors=* -- \
+        clang-tidy-14 ${FILES} --warnings-as-errors=* -- \
           -x c++ -Iinclude \
           -I/usr/local/include/eigen3 \
           -Isupport \
