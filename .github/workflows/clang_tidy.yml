@@ -14,9 +14,6 @@ jobs:
       uses: actions/checkout@v3.1.0
     - name: Install
       run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 15 all
         ( cd /tmp
           git clone --depth 1 "https://gitlab.com/libeigen/eigen"
           cmake -S "eigen" -B "eigen/build"
@@ -40,7 +37,7 @@ jobs:
     - name: Verify
       run: |
         FILES="include/fcarouge/kalman.hpp benchmark/include/benchmark.hpp"
-        clang-tidy-15 ${FILES} --warnings-as-errors=* -- \
+        clang-tidy ${FILES} --warnings-as-errors=* -- \
           -x c++ -Iinclude \
           -I/usr/local/include/eigen3 \
           -Isupport \

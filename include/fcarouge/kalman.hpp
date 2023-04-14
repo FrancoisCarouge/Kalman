@@ -518,8 +518,9 @@ public:
   //! control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr void g(const auto &value, const auto &...values)
-    requires(not std::is_same_v<Input, void>);
+  inline constexpr void
+  g(const auto &value,
+    const auto &...values) requires(not std::is_same_v<Input, void>);
 
   //! @brief Returns the gain matrix K.
   //!

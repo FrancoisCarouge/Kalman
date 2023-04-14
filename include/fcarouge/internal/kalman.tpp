@@ -81,16 +81,15 @@ template <typename State, typename Output, typename Input, typename UpdateTypes,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::u() const
     -> const input &requires(not std::is_same_v<Input, void>) {
-                      return filter.u;
-                    }
+  return filter.u;
+}
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-            "discarded.")]] inline constexpr auto kalman<State, Output, Input,
-                                                         UpdateTypes,
-                                                         PredictionTypes>::p()
-    const -> const estimate_uncertainty & {
+            "discarded.")]] inline constexpr auto
+kalman<State, Output, Input, UpdateTypes, PredictionTypes>::p() const
+    -> const estimate_uncertainty & {
   return filter.p;
 }
 
@@ -245,26 +244,24 @@ template <typename State, typename Output, typename Input, typename UpdateTypes,
             "discarded.")]] inline constexpr auto
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::g() const
     -> const input_control &requires(not std::is_same_v<Input, void>) {
-                              return filter.g;
-                            }
+  return filter.g;
+}
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr auto kalman<State, Output, Input,
-                                                         UpdateTypes,
-                                                         PredictionTypes>::g()
+            "discarded.")]] inline constexpr auto
+kalman<State, Output, Input, UpdateTypes, PredictionTypes>::g()
     -> input_control &requires(not std::is_same_v<Input, void>) {
-                        return filter.g;
-                      }
+  return filter.g;
+}
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
-inline constexpr void kalman<State, Output, Input, UpdateTypes,
-                             PredictionTypes>::g(const auto &value,
-                                                 const auto &...values)
-  requires(not std::is_same_v<Input, void>)
-{
+inline constexpr void
+kalman<State, Output, Input, UpdateTypes, PredictionTypes>::g(
+    const auto &value,
+    const auto &...values) requires(not std::is_same_v<Input, void>) {
   if constexpr (std::is_convertible_v<decltype(value), input_control>) {
     filter.g = std::move(input_control{value, values...});
   } else {

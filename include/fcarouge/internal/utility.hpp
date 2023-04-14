@@ -48,8 +48,7 @@ template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
 template <typename Type>
-concept algebraic = not
-arithmetic<Type>;
+concept algebraic = not arithmetic<Type>;
 
 struct empty {
   inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {
@@ -61,9 +60,7 @@ template <typename...> struct pack {};
 
 using empty_pack = pack<>;
 
-template <typename Type> struct repack {
-  using type = Type;
-};
+template <typename Type> struct repack { using type = Type; };
 
 template <template <typename...> typename From, typename... Types>
 struct repack<From<Types...>> {
@@ -92,7 +89,7 @@ template <arithmetic Arithmetic>
 inline constexpr Arithmetic identity_v<Arithmetic>{1};
 
 template <typename Matrix>
-  requires requires(Matrix value) { value.Identity(); }
+requires requires(Matrix value) { value.Identity(); }
 inline const auto identity_v<Matrix>{Matrix::Identity()};
 
 template <typename Type>
@@ -104,7 +101,7 @@ template <arithmetic Arithmetic>
 inline constexpr Arithmetic zero_v<Arithmetic>{0};
 
 template <typename Matrix>
-  requires requires(Matrix value) { value.Zero(); }
+requires requires(Matrix value) { value.Zero(); }
 inline const auto zero_v<Matrix>{Matrix::Zero()};
 
 struct transpose final {
@@ -115,7 +112,7 @@ struct transpose final {
   }
 
   template <typename Matrix>
-    requires requires(Matrix value) { value.transpose(); }
+  requires requires(Matrix value) { value.transpose(); }
   [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
     return value.transpose();
   }
@@ -139,22 +136,22 @@ struct deducer final {
 
   // Eigen's types deductions.
   template <typename Lhs, typename Rhs>
-    requires requires(Lhs lhs, Rhs rhs) {
-               typename Lhs::PlainMatrix;
-               typename Lhs::PlainMatrix;
-             }
+  requires requires(Lhs lhs, Rhs rhs) {
+    typename Lhs::PlainMatrix;
+    typename Lhs::PlainMatrix;
+  }
   [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
                                                  const Rhs &rhs) const ->
       typename decltype(lhs * rhs.transpose())::PlainMatrix;
 
   template <typename Lhs, arithmetic Rhs>
-    requires requires(Lhs lhs) { typename Lhs::PlainMatrix; }
+  requires requires(Lhs lhs) { typename Lhs::PlainMatrix; }
   [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
                                                  const Rhs &rhs) const ->
       typename Lhs::PlainMatrix;
 
   template <arithmetic Lhs, typename Rhs>
-    requires requires(Rhs rhs) { typename Rhs::PlainMatrix; }
+  requires requires(Rhs rhs) { typename Rhs::PlainMatrix; }
   [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
                                                  const Rhs &rhs) const ->
       typename decltype(rhs.transpose())::PlainMatrix;
