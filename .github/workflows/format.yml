@@ -18,5 +18,5 @@ jobs:
     - name: "Test"
       run: |
         find . -iname "*.hpp" -o -iname "*.tpp" -o -iname "*.cpp" -o -iwholename "./support/format" | xargs \
-          clang-format --Werror --dry-run --verbose -style=file
+          clang-format-14 --Werror --dry-run --verbose -style=file
         cmake-format --check CMakeLists.txt
