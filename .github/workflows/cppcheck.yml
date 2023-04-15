@@ -46,10 +46,10 @@ jobs:
         cppcheck \
           --enable=all \
           --error-exitcode=1 \
-          --suppress=unusedStructMember:sample/ekf_4x1x0_soaring.cpp \
+          --suppress=missingIncludeSystem \
           --suppress=unusedFunction:benchmark/eigen_predict_x1x.cpp \
           --suppress=unusedFunction:benchmark/eigen_update_xx0.cpp \
-          --suppress=missingIncludeSystem \
+          --suppress=unusedStructMember:sample/ekf_4x1x0_soaring.cpp \
           --verbose \
           -I benchmark/include \
           -I include \
