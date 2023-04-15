@@ -14,12 +14,9 @@ jobs:
       uses: actions/checkout@v3
     - name: "Install"
       run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 15 all
         pip install cmakelang
     - name: "Test"
       run: |
         find . -iname "*.hpp" -o -iname "*.tpp" -o -iname "*.cpp" -o -iwholename "./support/format" | xargs \
-          clang-format-15 --Werror --dry-run --verbose -style=file
+          clang-format-14 --Werror --dry-run --verbose -style=file
         cmake-format --check CMakeLists.txt
