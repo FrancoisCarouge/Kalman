@@ -4,6 +4,7 @@ var namespacefcarouge =
     [ "internal", "namespacefcarouge_1_1internal.xhtml", [
       [ "arithmetic", "conceptfcarouge_1_1internal_1_1arithmetic.xhtml", null ],
       [ "algebraic", "conceptfcarouge_1_1internal_1_1algebraic.xhtml", null ],
+      [ "eigen", "conceptfcarouge_1_1internal_1_1eigen.xhtml", null ],
       [ "empty_pack", "namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503", null ],
       [ "quotient", "namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332", null ],
       [ "repack_t", "namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22", null ],

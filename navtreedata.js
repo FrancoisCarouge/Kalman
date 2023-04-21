@@ -70,7 +70,7 @@ var NAVTREE =
     [ "Contributor Covenant Code of Conduct", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md3", null ],
       [ "Our Standards", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md4", null ],
-      [ "Our Responsibilities", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md5", null ],
+      [ "Our Responsibilities", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
       [ "Scope", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
       [ "Enforcement", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
       [ "Attribution", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md9", null ]
@@ -132,8 +132,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithm_8hpp.xhtml",
-"kalman__constructor__default__eigen__5x4x1_8cpp_source.xhtml",
-"update__1x1x1_8cpp.xhtml#a109e0f4470484e202660821963f32f0d"
+"kalman__constructor__default__eigen__5x4x1_8cpp.xhtml#a8f39cdea9d0e707a2c9bc3fc12673145",
+"update__1x1x1_8cpp.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
