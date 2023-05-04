@@ -46,6 +46,7 @@ FetchContent_MakeAvailable(eigen)
 
 foreach(
   TEST
+  "kalman_constructor_default_constexpr.cpp"
   "kalman_constructor_default_float_1x1x1.cpp"
   "kalman_constructor_default.cpp"
   "kalman_f.cpp"

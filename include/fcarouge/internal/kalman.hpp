@@ -39,9 +39,9 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_KALMAN_HPP
 #define FCAROUGE_INTERNAL_KALMAN_HPP
 
+#include "function.hpp"
 #include "utility.hpp"
 
-#include <functional>
 #include <tuple>
 
 namespace fcarouge::internal {
@@ -69,18 +69,18 @@ struct kalman<State, Output, void, pack<UpdateTypes...>,
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
-      std::function<output_model(const state &, const UpdateTypes &...)>;
-  using noise_observation_function = std::function<output_uncertainty(
+      function<output_model(const state &, const UpdateTypes &...)>;
+  using noise_observation_function = function<output_uncertainty(
       const state &, const output &, const UpdateTypes &...)>;
-  using transition_state_function = std::function<state_transition(
-      const state &, const PredictionTypes &...)>;
-  using noise_process_function = std::function<process_uncertainty(
-      const state &, const PredictionTypes &...)>;
+  using transition_state_function =
+      function<state_transition(const state &, const PredictionTypes &...)>;
+  using noise_process_function =
+      function<process_uncertainty(const state &, const PredictionTypes &...)>;
   using transition_control_function = empty;
   using transition_function =
-      std::function<state(const state &, const PredictionTypes &...)>;
+      function<state(const state &, const PredictionTypes &...)>;
   using observation_function =
-      std::function<output(const state &, const UpdateTypes &...)>;
+      function<output(const state &, const UpdateTypes &...)>;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
@@ -181,19 +181,19 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
-      std::function<output_model(const state &, const UpdateTypes &...)>;
-  using noise_observation_function = std::function<output_uncertainty(
+      function<output_model(const state &, const UpdateTypes &...)>;
+  using noise_observation_function = function<output_uncertainty(
       const state &, const output &, const UpdateTypes &...)>;
-  using transition_state_function = std::function<state_transition(
+  using transition_state_function = function<state_transition(
       const state &, const input &, const PredictionTypes &...)>;
-  using noise_process_function = std::function<process_uncertainty(
-      const state &, const PredictionTypes &...)>;
+  using noise_process_function =
+      function<process_uncertainty(const state &, const PredictionTypes &...)>;
   using transition_control_function =
-      std::function<input_control(const PredictionTypes &...)>;
-  using transition_function = std::function<state(const state &, const input &,
-                                                  const PredictionTypes &...)>;
+      function<input_control(const PredictionTypes &...)>;
+  using transition_function =
+      function<state(const state &, const input &, const PredictionTypes &...)>;
   using observation_function =
-      std::function<output(const state &, const UpdateTypes &...)>;
+      function<output(const state &, const UpdateTypes &...)>;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 

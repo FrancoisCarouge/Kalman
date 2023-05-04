@@ -72,6 +72,7 @@ target_sources(
             FILES
             "fcarouge/algorithm.hpp"
             "fcarouge/internal/format.hpp"
+            "fcarouge/internal/function.hpp"
             "fcarouge/internal/kalman.hpp"
             "fcarouge/internal/kalman.tpp"
             "fcarouge/internal/utility.hpp"
