@@ -51,9 +51,7 @@ template <typename Type>
 concept algebraic = not arithmetic<Type>;
 
 template <typename Type>
-concept eigen = requires {
-  typename Type::PlainMatrix;
-};
+concept eigen = requires { typename Type::PlainMatrix; };
 
 struct empty {
   inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {
@@ -65,7 +63,9 @@ template <typename...> struct pack {};
 
 using empty_pack = pack<>;
 
-template <typename Type> struct repack { using type = Type; };
+template <typename Type> struct repack {
+  using type = Type;
+};
 
 template <template <typename...> typename From, typename... Types>
 struct repack<From<Types...>> {
@@ -94,7 +94,7 @@ template <arithmetic Arithmetic>
 inline constexpr Arithmetic identity_v<Arithmetic>{1};
 
 template <typename Matrix>
-requires requires(Matrix value) { value.Identity(); }
+  requires requires(Matrix value) { value.Identity(); }
 inline const auto identity_v<Matrix>{Matrix::Identity()};
 
 template <typename Type>
@@ -106,7 +106,7 @@ template <arithmetic Arithmetic>
 inline constexpr Arithmetic zero_v<Arithmetic>{0};
 
 template <typename Matrix>
-requires requires(Matrix value) { value.Zero(); }
+  requires requires(Matrix value) { value.Zero(); }
 inline const auto zero_v<Matrix>{Matrix::Zero()};
 
 struct transpose final {
@@ -117,7 +117,7 @@ struct transpose final {
   }
 
   template <typename Matrix>
-  requires requires(Matrix value) { value.transpose(); }
+    requires requires(Matrix value) { value.transpose(); }
   [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
     return value.transpose();
   }
