@@ -241,37 +241,36 @@ $(document).ready(function(){initNavTree('kalman_8hpp_source.xhtml',''); initRes
 <div class="line"><a id="l00502" name="l00502"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#af9786c0248f3c6a3976a781144093480">  502</a></span>  inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5af98d8612ba9d97ebb12ef8174093d6">g</a>()</div>
 <div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>      -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aa4216a5e5baa908a826b359f14779934">input_control</a> &amp;requires(not std::is_same_v&lt;Input, <span class="keywordtype">void</span>&gt;);</div>
 <div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span> </div>
-<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>  inline constexpr <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00522" name="l00522"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#aa20cd8bfecec0929b48b8a47fdb63704">  522</a></span>  <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5af98d8612ba9d97ebb12ef8174093d6">g</a>(const auto &amp;value,</div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>    const auto &amp;...values) requires(not std::is_same_v&lt;Input, <span class="keywordtype">void</span>&gt;);</div>
-<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span> </div>
-<div class="line"><a id="l00530" name="l00530"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">  530</a></span>  inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">k</a>() const -&gt; const <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2c60e9961ecee1e7dc26ed2bc0c88a13">gain</a> &amp;;</div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span> </div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">  539</a></span>  inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">y</a>() const -&gt; const <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a910381f1bbe3a93ba8d773ce1c2395fd">innovation</a> &amp;;</div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span> </div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b">  546</a></span>  inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b">s</a>() const -&gt; const <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a324ad372c3ae86e182bda9e7c061e2b4">innovation_uncertainty</a> &amp;;</div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span> </div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a2ed4b91a17ec129f7ccb8263d5255534">  560</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2ed4b91a17ec129f7ccb8263d5255534">transition</a>(const auto &amp;callable);</div>
-<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span> </div>
-<div class="line"><a id="l00574" name="l00574"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a6324da65597f0e0a91573a31a9aa1465">  574</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6324da65597f0e0a91573a31a9aa1465">observation</a>(const auto &amp;callable);</div>
-<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span> </div>
-<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span> </div>
-<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span> </div>
-<div class="line"><a id="l00599" name="l00599"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">  599</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103">predict</a>(const auto &amp;...arguments);</div>
-<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span> </div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103">  612</a></span>  template &lt;std::<span class="keywordtype">size_t</span> Position&gt; inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103">predict</a>() const;</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span> </div>
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">  632</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a66aab654dafb41e90cebecf3c9c30b95">update</a>(const auto &amp;...arguments);</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span> </div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a66aab654dafb41e90cebecf3c9c30b95">  645</a></span>  template &lt;std::<span class="keywordtype">size_t</span> Position&gt; inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a66aab654dafb41e90cebecf3c9c30b95">update</a>() const;</div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span> </div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>};</div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span> </div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>} <span class="comment">// namespace fcarouge</span></div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span> </div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span><span class="preprocessor">#include &quot;internal/kalman.tpp&quot;</span></div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span> </div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_HPP</span></div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#aa20cd8bfecec0929b48b8a47fdb63704">  521</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5af98d8612ba9d97ebb12ef8174093d6">g</a>(const auto &amp;value, const auto &amp;...values)</div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>    requires(not std::is_same_v&lt;Input, <span class="keywordtype">void</span>&gt;);</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span> </div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">  529</a></span>  inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">k</a>() const -&gt; const <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2c60e9961ecee1e7dc26ed2bc0c88a13">gain</a> &amp;;</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span> </div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">  538</a></span>  inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">y</a>() const -&gt; const <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a910381f1bbe3a93ba8d773ce1c2395fd">innovation</a> &amp;;</div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span> </div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b">  545</a></span>  inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b">s</a>() const -&gt; const <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a324ad372c3ae86e182bda9e7c061e2b4">innovation_uncertainty</a> &amp;;</div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span> </div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a2ed4b91a17ec129f7ccb8263d5255534">  559</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2ed4b91a17ec129f7ccb8263d5255534">transition</a>(const auto &amp;callable);</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span> </div>
+<div class="line"><a id="l00573" name="l00573"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a6324da65597f0e0a91573a31a9aa1465">  573</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6324da65597f0e0a91573a31a9aa1465">observation</a>(const auto &amp;callable);</div>
+<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span> </div>
+<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span> </div>
+<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span> </div>
+<div class="line"><a id="l00598" name="l00598"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">  598</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103">predict</a>(const auto &amp;...arguments);</div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span> </div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103">  611</a></span>  template &lt;std::<span class="keywordtype">size_t</span> Position&gt; inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103">predict</a>() const;</div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span> </div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">  631</a></span>  inline constexpr <span class="keywordtype">void</span> <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a66aab654dafb41e90cebecf3c9c30b95">update</a>(const auto &amp;...arguments);</div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span> </div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno"><a class="line" href="classfcarouge_1_1kalman.xhtml#a66aab654dafb41e90cebecf3c9c30b95">  644</a></span>  template &lt;std::<span class="keywordtype">size_t</span> Position&gt; inline constexpr auto <a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a66aab654dafb41e90cebecf3c9c30b95">update</a>() const;</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span> </div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>};</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span> </div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>} <span class="comment">// namespace fcarouge</span></div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span> </div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span><span class="preprocessor">#include &quot;internal/kalman.tpp&quot;</span></div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span> </div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_HPP</span></div>
 <div class="ttc" id="aalgorithm_8hpp_xhtml"><div class="ttname"><a href="algorithm_8hpp.xhtml">algorithm.hpp</a></div><div class="ttdoc">The collection of Kalman algorithms.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00167">kalman.hpp:167</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a04da55f7c46559f46cac6da0a5132605"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr auto q() const -&gt; const process_uncertainty &amp;</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div></div>
@@ -325,7 +324,7 @@ $(document).ready(function(){initNavTree('kalman_8hpp_source.xhtml',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sat May 6 2023 05:02:56 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat May 6 2023 20:40:16 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
