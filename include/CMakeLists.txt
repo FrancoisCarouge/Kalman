@@ -46,7 +46,6 @@ else()
       "-pedantic"
       "-Wall"
       "-Wcast-align"
-      "-Wchar-subscripts"
       "-Wdouble-promotion"
       "-Wenum-conversion"
       "-Werror"
