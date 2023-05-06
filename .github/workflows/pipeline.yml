@@ -17,7 +17,6 @@ jobs:
         - { os: "ubuntu-latest", compiler: "clang++-14", generator: "Unix Makefiles", package: "clang-14" }
         - { os: "ubuntu-latest", compiler: "clang++-15", generator: "Unix Makefiles", package: "clang-15"  }
         - { os: "ubuntu-latest", compiler: "clang++-16", generator: "Unix Makefiles", package: "clang-16"  }
-        - { os: "ubuntu-latest", compiler: "g++-11", generator: "Unix Makefiles", package: "gcc-11"  }
         - { os: "ubuntu-latest", compiler: "g++-12", generator: "Unix Makefiles", package: "gcc-12"  }
         - { os: "windows-latest", compiler: "cl", generator: "Ninja", config: "Debug" }
         - { os: "windows-latest", compiler: "cl", generator: "Ninja", config: "Release" }
@@ -29,8 +28,7 @@ jobs:
     - name: "Tool: Microsoft Windows"
       uses: ilammy/msvc-dev-cmd@v1
     - name: "Tool: Ubuntu"
-      if: ${{ matrix.package == 'gcc-11' ||
-              matrix.package == 'gcc-12' ||
+      if: ${{ matrix.package == 'gcc-12' ||
               matrix.package == 'clang-14' ||
               matrix.package == 'clang-15' }}
       run: |
