@@ -34,6 +34,8 @@ jobs:
     - name: "Checkout"
       uses: actions/checkout@v3
     - name: "Configure"
+      env:
+        CXX: "g++-12"
       run: cmake -S . -B "build"
     - name: "Build"
       run: cmake --build "build" --verbose --parallel 4
