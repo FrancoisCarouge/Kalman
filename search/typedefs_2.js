@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gain_0',['gain',['../classfcarouge_1_1kalman.xhtml#a2c60e9961ecee1e7dc26ed2bc0c88a13',1,'fcarouge::kalman']]]
+  ['function_5ftraits_5ft_0',['function_traits_t',['../namespacefcarouge_1_1internal.xhtml#a863fcca945056cfd1b3ffa2a684acfda',1,'fcarouge::internal']]]
 ];

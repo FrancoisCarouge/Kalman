@@ -57,6 +57,7 @@ var menudata={children:[
 {text:"Typedefs",url:"namespacemembers_type.xhtml",children:[
 {text:"c",url:"namespacemembers_type.xhtml#index_c"},
 {text:"e",url:"namespacemembers_type.xhtml#index_e"},
+{text:"f",url:"namespacemembers_type.xhtml#index_f"},
 {text:"i",url:"namespacemembers_type.xhtml#index_i"},
 {text:"m",url:"namespacemembers_type.xhtml#index_m"},
 {text:"n",url:"namespacemembers_type.xhtml#index_n"},
