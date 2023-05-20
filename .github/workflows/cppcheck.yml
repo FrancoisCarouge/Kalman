@@ -49,7 +49,6 @@ jobs:
           --suppress=missingIncludeSystem \
           --suppress=unusedFunction:benchmark/eigen_predict_x1x.cpp \
           --suppress=unusedFunction:benchmark/eigen_update_xx0.cpp \
-          --suppress=unusedStructMember:sample/ekf_4x1x0_soaring.cpp \
           --verbose \
           -I benchmark/include \
           -I include \

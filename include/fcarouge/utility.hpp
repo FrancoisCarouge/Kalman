@@ -92,7 +92,7 @@ template <typename Row, typename Column> using matrix = quotient<Row, Column>;
 //! inversion is avoided by solving `X * rhs = lhs` for `rhs` through a
 //! decomposer.
 template <typename Numerator, algebraic Denominator>
-auto operator/(const Numerator &lhs, const Denominator &rhs)
+constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
     -> quotient<Numerator, Denominator>;
 
 } // namespace fcarouge
