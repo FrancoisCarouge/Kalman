@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_sour
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Numerator, fcarouge::algebraic Denominator&gt;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">auto</span> <a class="code hl_function" href="namespacefcarouge.xhtml#aedda70f7a23b35d46bbc4dfe829e3e0d">fcarouge::operator/</a>(<span class="keyword">const</span> Numerator &amp;lhs, <span class="keyword">const</span> Denominator &amp;rhs)</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">fcarouge::operator/</a>(<span class="keyword">const</span> Numerator &amp;lhs, <span class="keyword">const</span> Denominator &amp;rhs)</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    -&gt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient&lt;Numerator, Denominator&gt;</a> {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keywordflow">return</span> rhs.transpose()</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>      .fullPivHouseholderQr()</div>
@@ -284,14 +284,14 @@ $(document).ready(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_sour
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_aab2cb98547e0e5891566bd8ae36f7373"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#aab2cb98547e0e5891566bd8ae36f7373">fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::no_input</a></div><div class="ttdeci">void no_input</div><div class="ttdef"><b>Definition:</b> <a href="kf__6x2x0__vehicle__location_8cpp_source.xhtml#l00023">kf_6x2x0_vehicle_location.cpp:23</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_acd64ab811e0773f298e29a93f825c992"><div class="ttname"><a href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient</a></div><div class="ttdeci">internal::quotient&lt; Numerator, Denominator &gt; quotient</div><div class="ttdoc">The matrix type satisfying X * Row = Column.</div><div class="ttdef"><b>Definition:</b> <a href="utility_8hpp_source.xhtml#l00080">utility.hpp:80</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aedda70f7a23b35d46bbc4dfe829e3e0d"><div class="ttname"><a href="namespacefcarouge.xhtml#aedda70f7a23b35d46bbc4dfe829e3e0d">fcarouge::operator/</a></div><div class="ttdeci">auto operator/(const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; quotient&lt; Numerator, Denominator &gt;</div><div class="ttdoc">A user-defined algebraic division solution.</div><div class="ttdef"><b>Definition:</b> <a href="eigen__update__xx0_8cpp_source.xhtml#l00055">eigen_update_xx0.cpp:55</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_ae6a34b26f8067a57bfc5de22cb4b625a"><div class="ttname"><a href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">fcarouge::operator/</a></div><div class="ttdeci">constexpr auto operator/(const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; quotient&lt; Numerator, Denominator &gt;</div><div class="ttdoc">A user-defined algebraic division solution.</div><div class="ttdef"><b>Definition:</b> <a href="eigen__update__xx0_8cpp_source.xhtml#l00055">eigen_update_xx0.cpp:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="kf__6x2x0__vehicle__location_8cpp.xhtml">kf_6x2x0_vehicle_location.cpp</a></li>
-    <li class="footer">Generated on Sun May 7 2023 18:31:08 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat May 20 2023 04:39:03 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
