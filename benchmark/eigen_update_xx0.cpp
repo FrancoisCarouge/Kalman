@@ -52,7 +52,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <random>
 
 template <typename Numerator, fcarouge::algebraic Denominator>
-auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
+constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
     -> fcarouge::quotient<Numerator, Denominator> {
   return rhs.transpose()
       .fullPivHouseholderQr()
