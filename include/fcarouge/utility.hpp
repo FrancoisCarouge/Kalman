@@ -47,7 +47,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/utility.hpp"
 
 namespace fcarouge {
-
 //! @brief Arithmetic concept.
 //!
 //! @details Any integer or floating point type.
@@ -94,7 +93,6 @@ template <typename Row, typename Column> using matrix = quotient<Row, Column>;
 template <typename Numerator, algebraic Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
     -> quotient<Numerator, Denominator>;
-
 } // namespace fcarouge
 
 #endif // FCAROUGE_UTILITY_HPP

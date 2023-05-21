@@ -53,14 +53,12 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::benchmark {
 namespace {
-
 template <auto Size> using vector = Eigen::Vector<float, Size>;
 
 //! @benchmark Measure the prediction of the filter for different dimensions of
 //! states and inputs with the Eigen linear algebra backend.
 template <std::size_t StateSize, std::size_t InputSize>
 void bench(::benchmark::State &state) {
-
   using kalman = kalman<vector<StateSize>, float, vector<InputSize>>;
 
   kalman filter;
@@ -69,7 +67,6 @@ void bench(::benchmark::State &state) {
   std::uniform_real_distribution<float> uniformly_distributed;
 
   for (auto _ : state) {
-
     typename kalman::input u;
 
     internal::for_constexpr<std::size_t{0}, InputSize, 1>(
@@ -104,6 +101,5 @@ BENCHMARK(bench<${STATE_SIZE}, ${INPUT_SIZE}>)
                              }) -> UseManualTime()
             -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
                 -> Repetitions(100);
-
 } // namespace
 } // namespace fcarouge::benchmark

@@ -44,9 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-
 template <auto Size> using vector = Eigen::Vector<double, Size>;
-
 template <auto Row, auto Column>
 using matrix = Eigen::Matrix<double, Row, Column>;
 
@@ -77,6 +75,5 @@ using matrix = Eigen::Matrix<double, Row, Column>;
 
   return 0;
 }()};
-
 } // namespace
 } // namespace fcarouge::test

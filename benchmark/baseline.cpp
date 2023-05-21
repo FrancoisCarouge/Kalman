@@ -73,6 +73,5 @@ BENCHMARK(bench)
                              }) -> UseManualTime()
             -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
                 -> Repetitions(100);
-
 } // namespace
 } // namespace fcarouge::benchmark

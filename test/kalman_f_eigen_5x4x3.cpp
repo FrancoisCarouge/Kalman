@@ -53,9 +53,7 @@ constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
 
 namespace fcarouge::test {
 namespace {
-
 template <auto Size> using vector = Eigen::Vector<double, Size>;
-
 template <auto Row, auto Column>
 using matrix = Eigen::Matrix<double, Row, Column>;
 
@@ -128,6 +126,5 @@ using matrix = Eigen::Matrix<double, Row, Column>;
 
   return 0;
 }()};
-
 } // namespace
 } // namespace fcarouge::test

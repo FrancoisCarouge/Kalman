@@ -48,13 +48,11 @@ namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure predict, empty benchmark performance.
 void bench(::benchmark::State &state) {
-
   using kalman = kalman<float, float>;
 
   kalman filter;
 
   for (auto _ : state) {
-
     ::benchmark::ClobberMemory();
     const auto start{clock::now()};
 
@@ -80,6 +78,5 @@ BENCHMARK(bench)
                              }) -> UseManualTime()
             -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
                 -> Repetitions(100);
-
 } // namespace
 } // namespace fcarouge::benchmark

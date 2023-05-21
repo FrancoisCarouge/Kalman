@@ -42,7 +42,6 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-
 //! @test Verifies default values are initialized for single-dimension filters
 //! without input control within constant expression.
 //!
@@ -63,6 +62,5 @@ namespace {
 
   return 0;
 }()};
-
 } // namespace
 } // namespace fcarouge::test

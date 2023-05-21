@@ -43,7 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 
 namespace fcarouge::internal {
-
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
@@ -161,7 +160,6 @@ template <typename Numerator, typename Denominator>
 //! specialization?
 using quotient =
     std::decay_t<std::invoke_result_t<deducer, Numerator, Denominator>>;
-
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP

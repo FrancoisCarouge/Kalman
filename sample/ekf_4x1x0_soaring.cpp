@@ -7,7 +7,6 @@
 
 namespace fcarouge::sample {
 namespace {
-
 template <auto Size> using vector = Eigen::Vector<float, Size>;
 using state = vector<4>;
 using output = float;
@@ -233,6 +232,5 @@ using no_input = void;
 
   return 0;
 }()};
-
 } // namespace
 } // namespace fcarouge::sample
