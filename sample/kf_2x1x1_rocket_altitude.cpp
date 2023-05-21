@@ -8,7 +8,6 @@
 
 namespace fcarouge::sample {
 namespace {
-
 template <auto Size> using vector = Eigen::Vector<double, Size>;
 using state = vector<2>;
 using output = double;
@@ -221,6 +220,5 @@ using input = double;
 
   return 0;
 }()};
-
 } // namespace
 } // namespace fcarouge::sample

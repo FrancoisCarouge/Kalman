@@ -40,7 +40,6 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_INTERNAL_KALMAN_TPP
 
 namespace fcarouge {
-
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned state estimate column vector X is unexpectedly "
@@ -350,7 +349,6 @@ template <std::size_t Position>
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::predict() const {
   return std::get<Position>(filter.prediction_arguments);
 }
-
 } // namespace fcarouge
 
 #endif // FCAROUGE_INTERNAL_KALMAN_TPP

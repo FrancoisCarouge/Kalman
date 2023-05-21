@@ -45,7 +45,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge::internal {
-
 template <typename, typename, typename, typename, typename>
 struct kalman final {
   //! @todo Support some more specializations, all, or disable others?
@@ -285,7 +284,6 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
   inline constexpr void predict(const PredictionTypes &...prediction_pack,
                                 const Input0 &input_u,
                                 const InputN &...inputs_u) {
-
     prediction_arguments = {prediction_pack...};
     u = input{input_u, inputs_u...};
     f = transition_state_f(x, u, prediction_pack...);
@@ -295,7 +293,6 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
     p = estimate_uncertainty{f * p * t(f) + q};
   }
 };
-
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_KALMAN_HPP

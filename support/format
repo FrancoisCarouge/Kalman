@@ -108,7 +108,6 @@ inline void print(std::FILE *file, std::string_view format,
                   Types &&...arguments) {
   fmt::print(file, format, fmt::make_format_args(arguments...));
 }
-
 } // namespace std
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,

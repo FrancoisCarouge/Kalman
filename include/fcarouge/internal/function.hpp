@@ -42,7 +42,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <memory>
 
 namespace fcarouge::internal {
-
 // Compile-time `std::function` partial drop-in.
 template <typename Undefined> class function;
 
@@ -100,7 +99,6 @@ function(Callable) -> function<function_traits_t<Callable>>;
 
 template <typename Result, typename... Arguments>
 function(Result(Arguments...)) -> function<Result(Arguments...)>;
-
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_FUNCTION_HPP

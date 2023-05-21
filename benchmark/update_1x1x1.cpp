@@ -49,7 +49,6 @@ namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure update, empty benchmark performance.
 void bench(::benchmark::State &state) {
-
   using kalman = kalman<float, float, float>;
 
   kalman filter;
@@ -58,7 +57,6 @@ void bench(::benchmark::State &state) {
   std::uniform_real_distribution<float> uniformly_distributed;
 
   for (auto _ : state) {
-
     const typename kalman::output z{uniformly_distributed(random_generator)};
 
     ::benchmark::ClobberMemory();
@@ -86,6 +84,5 @@ BENCHMARK(bench)
                              }) -> UseManualTime()
             -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
                 -> Repetitions(100);
-
 } // namespace
 } // namespace fcarouge::benchmark

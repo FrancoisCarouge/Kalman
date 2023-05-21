@@ -58,7 +58,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-
 //! @brief A generic Kalman filter.
 //!
 //! @details The Kalman filter is a Bayesian filter that uses multivariate
@@ -168,7 +167,6 @@ class kalman final {
 private:
   //! @name Private Member Types
   //! @{
-
   //! @brief Implementation details of the filter.
   //!
   //! @brief The internal implementation unpacks the parameter packs from
@@ -176,21 +174,17 @@ private:
   using implementation =
       internal::kalman<State, Output, Input, internal::repack_t<UpdateTypes>,
                        internal::repack_t<PredictionTypes>>;
-
   //! @}
 
   //! @name Private Member Variables
   //! @{
-
   //! @brief Encapsulates the implementation details of the filter.
   implementation filter;
-
   //! @}
 
 public:
   //! @name Public Member Types
   //! @{
-
   //! @brief Type of the state estimate column vector X.
   using state = typename implementation::state;
 
@@ -241,12 +235,10 @@ public:
   //! @brief Type of the innovation uncertainty matrix S.
   using innovation_uncertainty =
       typename implementation::innovation_uncertainty;
-
   //! @}
 
   //! @name Public Member Functions
   //! @{
-
   //! @brief Constructs a Kalman filter without configuration.
   //!
   //! @complexity Constant.
@@ -317,12 +309,10 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr ~kalman() = default;
-
   //! @}
 
   //! @name Public Characteristics Member Functions
   //! @{
-
   //! @brief Returns the state estimate column vector X.
   //!
   //! @return The state estimate column vector X.
@@ -571,12 +561,10 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void observation(const auto &callable);
-
   //! @}
 
   //! @name Public Filtering Member Functions
   //! @{
-
   //! @brief Produces estimates of the state variables and uncertainties.
   //!
   //! @details Also known as the propagation step. Implements the total
@@ -642,10 +630,8 @@ public:
   //!
   //! @complexity Constant.
   template <std::size_t Position> inline constexpr auto update() const;
-
   //! @}
 };
-
 } // namespace fcarouge
 
 #include "internal/kalman.tpp"

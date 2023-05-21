@@ -43,7 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control and additional arguments.
 [[maybe_unused]] auto test{[] {
@@ -57,6 +56,5 @@ namespace {
 
   return 0;
 }()};
-
 } // namespace
 } // namespace fcarouge::test

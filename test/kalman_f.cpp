@@ -42,7 +42,6 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-
 //! @test Verifies the state transition matrix F management overloads for
 //! the default filter type.
 [[maybe_unused]] auto test{[] {
@@ -95,6 +94,5 @@ namespace {
 
   return 0;
 }()};
-
 } // namespace
 } // namespace fcarouge::test

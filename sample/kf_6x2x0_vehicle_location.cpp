@@ -16,7 +16,6 @@ constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
 
 namespace fcarouge::sample {
 namespace {
-
 template <auto Size> using vector = Eigen::Vector<double, Size>;
 using state = vector<6>;
 using output = vector<2>;
@@ -188,6 +187,5 @@ using no_input = void;
 
   return 0;
 }()};
-
 } // namespace
 } // namespace fcarouge::sample
