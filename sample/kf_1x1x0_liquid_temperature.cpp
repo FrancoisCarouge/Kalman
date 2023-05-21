@@ -25,7 +25,7 @@ namespace {
 //! 50.023°C, and 49.99°C.
 //!
 //! @example kf_1x1x0_liquid_temperature.cpp
-[[maybe_unused]] auto kf_1x1x0_liquid_temperature{[] {
+[[maybe_unused]] auto sample{[] {
   // A one-dimensional filter, constant system dynamic model.
   kalman filter;
 

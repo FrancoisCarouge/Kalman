@@ -22,7 +22,7 @@ namespace {
 //! @image html ./sample/image/kf_1x1x0_building_height.svg
 //!
 //! @example kf_1x1x0_building_height.cpp
-[[maybe_unused]] auto kf_1x1x0_building_height{[] {
+[[maybe_unused]] auto sample{[] {
   // A one-dimensional filter, constant system dynamic model.
   kalman filter;
 

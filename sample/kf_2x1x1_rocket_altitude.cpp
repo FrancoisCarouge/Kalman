@@ -48,7 +48,7 @@ using input = double;
 //! - The accelerometer measurement error standard deviation: ϵ = 0.1 m.s^-2
 //!
 //! @example kf_2x1x1_rocket_altitude.cpp
-[[maybe_unused]] auto kf_2x1x1_rocket_altitude{[] {
+[[maybe_unused]] auto sample{[] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
   using kalman = kalman<state, output, input, std::tuple<>,
                         std::tuple<std::chrono::milliseconds>>;

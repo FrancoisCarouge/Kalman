@@ -37,7 +37,7 @@ using no_input = void;
 //! precision early on.
 //!
 //! @example kf_8x4x0_deep_sort_bounding_box.cpp
-[[maybe_unused]] auto kf_8x4x0_deep_sort_bounding_box{[] {
+[[maybe_unused]] auto sample{[] {
   // A 8x4x0 filter, constant velocity, linear.
   using kalman = kalman<state, output, no_input>;
 

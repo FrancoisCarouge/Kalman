@@ -47,8 +47,6 @@ jobs:
           --enable=all \
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
-          --suppress=unusedFunction:benchmark/eigen_predict_x1x.cpp \
-          --suppress=unusedFunction:benchmark/eigen_update_xx0.cpp \
           --verbose \
           -I benchmark/include \
           -I include \
