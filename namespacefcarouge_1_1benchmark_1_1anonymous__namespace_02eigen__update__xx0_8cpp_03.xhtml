@@ -100,9 +100,9 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aafd4bf2641b0d6a877e33093999de4eb"><td class="memTemplParams" colspan="2">template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </td></tr>
-<tr class="memitem:aafd4bf2641b0d6a877e33093999de4eb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#aafd4bf2641b0d6a877e33093999de4eb">eigen_update</a> (::benchmark::State &amp;state)</td></tr>
-<tr class="separator:aafd4bf2641b0d6a877e33093999de4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec2cfbcb849d679afc150090db22183"><td class="memTemplParams" colspan="2">template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </td></tr>
+<tr class="memitem:aeec2cfbcb849d679afc150090db22183"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#aeec2cfbcb849d679afc150090db22183">bench</a> (::benchmark::State &amp;state)</td></tr>
+<tr class="separator:aeec2cfbcb849d679afc150090db22183"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebc41f6f242eb7940f62a476a4faec25"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#aebc41f6f242eb7940f62a476a4faec25">Name</a> (&quot;eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0&quot;) -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics(&quot;min&quot;, [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics(&quot;max&quot;, [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</td></tr>
 <tr class="separator:aebc41f6f242eb7940f62a476a4faec25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -126,8 +126,8 @@ template&lt;auto Size&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aafd4bf2641b0d6a877e33093999de4eb" name="aafd4bf2641b0d6a877e33093999de4eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafd4bf2641b0d6a877e33093999de4eb">&#9670;&nbsp;</a></span>eigen_update()</h2>
+<a id="aeec2cfbcb849d679afc150090db22183" name="aeec2cfbcb849d679afc150090db22183"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeec2cfbcb849d679afc150090db22183">&#9670;&nbsp;</a></span>bench()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -135,7 +135,7 @@ template&lt;auto Size&gt; </div>
 template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void fcarouge::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::eigen_update </td>
+          <td class="memname">void fcarouge::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::bench </td>
           <td>(</td>
           <td class="paramtype">::benchmark::State &amp;&#160;</td>
           <td class="paramname"><em>state</em></td><td>)</td>
@@ -146,7 +146,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <dl class="section user"><dt>Benchmark</dt><dd>Measure the update of the filter for different dimensions of states and outputs with the Eigen linear algebra backend. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="eigen__update__xx0_8cpp_source.xhtml#l00071">71</a> of file <a class="el" href="eigen__update__xx0_8cpp_source.xhtml">eigen_update_xx0.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>                                         {</div>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>                                  {</div>
 <div class="line"><span class="lineno">   72</span> </div>
 <div class="line"><span class="lineno">   73</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman&lt;vector&lt;StateSize&gt;</a>, <a class="code hl_typedef" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#a38fa6a43ade59c805b9d8520185a5eed">vector&lt;OutputSize&gt;</a>, <span class="keywordtype">void</span>&gt;;</div>
 <div class="line"><span class="lineno">   74</span> </div>
@@ -188,7 +188,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03_aafd4bf2641b0d6a877e33093999de4eb_cgraph.svg" width="560" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03_aeec2cfbcb849d679afc150090db22183_cgraph.svg" width="560" height="104"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -219,7 +219,7 @@ template&lt;std::size_t StateSize, std::size_t OutputSize&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml">anonymous_namespace{eigen_update_xx0.cpp}</a></li>
-    <li class="footer">Generated on Sat May 20 2023 04:39:03 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun May 21 2023 02:31:02 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['observation_0',['observation',['../classfcarouge_1_1kalman.xhtml#a6324da65597f0e0a91573a31a9aa1465',1,'fcarouge::kalman']]],
-  ['operator_2f_1',['operator/',['../namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a',1,'fcarouge']]],
-  ['operator_3d_2',['operator=',['../classfcarouge_1_1kalman.xhtml#ab2db3b065650ffd42931f010d6781835',1,'fcarouge::kalman::operator=(const kalman &amp;other) -&gt; kalman &amp;=delete'],['../classfcarouge_1_1kalman.xhtml#a5215bcddbc15cd25df587f7988334ed8',1,'fcarouge::kalman::operator=(kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=delete']]]
+  ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508',1,'fcarouge::kalman::p() const -&gt; const estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a7376e78189711ae8c1e304b2a7cde703',1,'fcarouge::kalman::p() -&gt; estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a6a61e7dfc8c8de4ef5bcb126417f9d98',1,'fcarouge::kalman::p(const auto &amp;value, const auto &amp;...values)']]],
+  ['parse_1',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#ab75415d6c64f84ed42e54ea33b3fd87b',1,'std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;, Char &gt;']]],
+  ['predict_2',['predict',['../classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec',1,'fcarouge::kalman::predict(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103',1,'fcarouge::kalman::predict() const']]]
 ];

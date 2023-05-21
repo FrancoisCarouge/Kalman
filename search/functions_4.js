@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['h_0',['h',['../classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58',1,'fcarouge::kalman::h() const -&gt; const output_model &amp;'],['../classfcarouge_1_1kalman.xhtml#aec6111798cfb4ead488f49a849ae9ac9',1,'fcarouge::kalman::h() -&gt; output_model &amp;'],['../classfcarouge_1_1kalman.xhtml#a44efd1367cbb4d79d814440f3129a326',1,'fcarouge::kalman::h(const auto &amp;value, const auto &amp;...values)']]]
+  ['k_0',['k',['../classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae',1,'fcarouge::kalman']]],
+  ['kalman_1',['kalman',['../classfcarouge_1_1kalman.xhtml#a85ace6a5eab46e4f9438a70c29d1676b',1,'fcarouge::kalman::kalman()=default'],['../classfcarouge_1_1kalman.xhtml#a4aaccf622ce45bee7ac25c2068b2f675',1,'fcarouge::kalman::kalman(const kalman &amp;other)=delete'],['../classfcarouge_1_1kalman.xhtml#a221645b98bab026858436965b94c7d9d',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=delete']]]
 ];

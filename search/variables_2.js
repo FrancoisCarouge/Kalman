@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ekf_5f4x1x0_5fsoaring_0',['ekf_4x1x0_soaring',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a2e1b5924521668d6ef2cdd18d33fff13',1,'fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}']]]
+  ['filter_0',['filter',['../classfcarouge_1_1kalman.xhtml#a445c99c395ca229e44806a3c044e5e13',1,'fcarouge::kalman']]],
+  ['from_1',['FROM',['../_l_i_c_e_n_s_e_8txt.xhtml#ad60b0e989fbef624c6d9ae96f49ff8e5',1,'LICENSE.txt']]]
 ];
