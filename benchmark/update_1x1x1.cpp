@@ -48,7 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure update, empty benchmark performance.
-void update_1x1x1(::benchmark::State &state) {
+void bench(::benchmark::State &state) {
 
   using kalman = kalman<float, float, float>;
 
@@ -73,7 +73,7 @@ void update_1x1x1(::benchmark::State &state) {
   }
 }
 
-BENCHMARK(update_1x1x1)
+BENCHMARK(bench)
     ->Name("update_1x1x1")
     ->Unit(::benchmark::kNanosecond)
     ->ComputeStatistics("min",

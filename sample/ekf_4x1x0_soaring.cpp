@@ -35,7 +35,7 @@ using no_input = void;
 //! @example ekf_4x1x0_soaring.cpp
 //!
 //! @todo Add a data set and assert for correctness of results.
-[[maybe_unused]] auto ekf_4x1x0_soaring{[] {
+[[maybe_unused]] auto sample{[] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
   using kalman = kalman<state, output, no_input, std::tuple<float, float>,

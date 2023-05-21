@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure baseline, empty benchmark performance.
-void baseline(::benchmark::State &state) {
+void bench(::benchmark::State &state) {
   for (auto _ : state) {
     ::benchmark::ClobberMemory();
     const auto start{clock::now()};
@@ -60,7 +60,7 @@ void baseline(::benchmark::State &state) {
   }
 }
 
-BENCHMARK(baseline)
+BENCHMARK(bench)
     ->Name("baseline")
     ->Unit(::benchmark::kNanosecond)
     ->ComputeStatistics("min",

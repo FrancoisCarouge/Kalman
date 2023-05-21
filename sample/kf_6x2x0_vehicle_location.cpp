@@ -41,7 +41,7 @@ using no_input = void;
 //! random acceleration standard deviation: σa = 0.2 m.s^-2.
 //!
 //! @example kf_6x2x0_vehicle_location.cpp
-[[maybe_unused]] auto kf_6x2x0_vehicle_location{[] {
+[[maybe_unused]] auto sample{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   using kalman = kalman<state, output, no_input>;
 

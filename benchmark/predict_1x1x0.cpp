@@ -47,7 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure predict, empty benchmark performance.
-void predict_1x1x0(::benchmark::State &state) {
+void bench(::benchmark::State &state) {
 
   using kalman = kalman<float, float>;
 
@@ -67,7 +67,7 @@ void predict_1x1x0(::benchmark::State &state) {
   }
 }
 
-BENCHMARK(predict_1x1x0)
+BENCHMARK(bench)
     ->Name("predict_1x1x0")
     ->Unit(::benchmark::kNanosecond)
     ->ComputeStatistics("min",

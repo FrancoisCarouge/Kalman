@@ -59,7 +59,7 @@ template <auto Size> using vector = Eigen::Vector<float, Size>;
 //! @benchmark Measure the prediction of the filter for different dimensions of
 //! states and inputs with the Eigen linear algebra backend.
 template <std::size_t StateSize, std::size_t InputSize>
-void eigen_predict(::benchmark::State &state) {
+void bench(::benchmark::State &state) {
 
   using kalman = kalman<vector<StateSize>, float, vector<InputSize>>;
 
@@ -91,7 +91,7 @@ void eigen_predict(::benchmark::State &state) {
 
 //! @todo Find a way to remove macros or find a different benchmark library that
 //! doesn't use macros.
-BENCHMARK(eigen_predict<${STATE_SIZE}, ${INPUT_SIZE}>)
+BENCHMARK(bench<${STATE_SIZE}, ${INPUT_SIZE}>)
     ->Name("eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}")
     ->Unit(::benchmark::kNanosecond)
     ->ComputeStatistics("min",

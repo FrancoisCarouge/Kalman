@@ -30,7 +30,7 @@ namespace {
 //! Gaussian.
 //!
 //! @example kf_1x1x1_dog_position.cpp
-[[maybe_unused]] auto kf_1x1x1_dog_position{[] {
+[[maybe_unused]] auto sample{[] {
   using kalman = kalman<double, double, double>;
   kalman filter;
 
