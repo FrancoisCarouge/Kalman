@@ -50,8 +50,15 @@ else()
   FetchContent_MakeAvailable(fmt)
 
   add_library(kalman_format INTERFACE)
-  target_sources(kalman_format INTERFACE FILE_SET "kalman_format_headers" TYPE
-                                         "HEADERS" FILES "format")
+  target_sources(
+    kalman_format
+    INTERFACE FILE_SET
+              "kalman_format_headers"
+              TYPE
+              "HEADERS"
+              FILES
+              "format"
+              "print")
   target_link_libraries(kalman_format INTERFACE fmt::fmt)
   install(
     TARGETS kalman_format
