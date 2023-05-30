@@ -51,7 +51,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <fmt/os.h>
 #include <fmt/ostream.h>
 #include <fmt/printf.h>
-#include <fmt/ranges.h>
 #include <fmt/xchar.h>
 
 #include <cstdio>
@@ -96,17 +95,6 @@ template <class... Types>
                                   std::wstring_view format,
                                   Types &&...arguments) {
   return fmt::vformat(locale, format, fmt::make_wformat_args(arguments...));
-}
-
-template <typename... Types>
-inline void print(std::string_view format, Types &&...arguments) {
-  fmt::vprint(format, fmt::make_format_args(arguments...));
-}
-
-template <typename... Types>
-inline void print(std::FILE *file, std::string_view format,
-                  Types &&...arguments) {
-  fmt::print(file, format, fmt::make_format_args(arguments...));
 }
 } // namespace std
 
