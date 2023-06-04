@@ -168,37 +168,45 @@ template&lt;typename OutputIt &gt; </div>
 <div class="line"><span class="lineno">   80</span><span class="stringliteral">                                        R</span><span class="stringliteral">&quot;(&quot;h&quot;: {}, &quot;k&quot;: {}, &quot;p&quot;: {}, )&quot;,</span></div>
 <div class="line"><span class="lineno">   81</span><span class="stringliteral">                                        filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">h</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">k</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>()));</span></div>
 <div class="line"><span class="lineno">   82</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">   83</span><span class="stringliteral">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">fcarouge::internal::for_constexpr</a>&lt;</span></div>
-<div class="line"><span class="lineno">   84</span><span class="stringliteral">        std::size_t{0}, fcarouge::internal::repack_s&lt;PredictionTypes&gt;, 1&gt;(</span></div>
-<div class="line"><span class="lineno">   85</span><span class="stringliteral">        [&amp;format_context, &amp;filter](</span><span class="keyword">auto</span> position) {</div>
-<div class="line"><span class="lineno">   86</span>          format_context.advance_to(format_to(</div>
-<div class="line"><span class="lineno">   87</span>              format_context.out(), R<span class="stringliteral">&quot;(&quot;prediction_{}&quot;: {}, )&quot;,</span></div>
-<div class="line"><span class="lineno">   88</span><span class="stringliteral">              std::size_t{position}, filter.template predict&lt;position&gt;()));</span></div>
-<div class="line"><span class="lineno">   89</span><span class="stringliteral">        });</span></div>
-<div class="line"><span class="lineno">   90</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">   91</span><span class="stringliteral">    format_context.advance_to(format_to(format_context.out(),</span></div>
-<div class="line"><span class="lineno">   92</span><span class="stringliteral">                                        R</span><span class="stringliteral">&quot;(&quot;q&quot;: {}, &quot;r&quot;: {}, &quot;s&quot;: {}, )&quot;,</span></div>
-<div class="line"><span class="lineno">   93</span><span class="stringliteral">                                        filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">r</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b">s</a>()));</span></div>
+<div class="line"><span class="lineno">   83</span><span class="stringliteral">    {</span></div>
+<div class="line"><span class="lineno">   84</span><span class="stringliteral">      </span><span class="keyword">constexpr</span> <span class="keyword">auto</span> end{fcarouge::internal::repack_s&lt;PredictionTypes&gt;};</div>
+<div class="line"><span class="lineno">   85</span>      <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(end) begin{0};</div>
+<div class="line"><span class="lineno">   86</span>      <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(end) next{1};</div>
+<div class="line"><span class="lineno">   87</span>      fcarouge::internal::for_constexpr&lt;begin, end, next&gt;(</div>
+<div class="line"><span class="lineno">   88</span>          [&amp;format_context, &amp;filter](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">   89</span>            format_context.advance_to(</div>
+<div class="line"><span class="lineno">   90</span>                format_to(format_context.out(), R<span class="stringliteral">&quot;(&quot;prediction_{}&quot;: {}, )&quot;,</span></div>
+<div class="line"><span class="lineno">   91</span><span class="stringliteral">                          position(), filter.template predict&lt;position&gt;()));</span></div>
+<div class="line"><span class="lineno">   92</span><span class="stringliteral">          });</span></div>
+<div class="line"><span class="lineno">   93</span><span class="stringliteral">    }</span></div>
 <div class="line"><span class="lineno">   94</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">   95</span><span class="stringliteral">    </span><span class="keywordflow">if</span> <span class="keyword">constexpr</span> (not std::is_same_v&lt;Input, void&gt;) {</div>
-<div class="line"><span class="lineno">   96</span>      format_context.advance_to(</div>
-<div class="line"><span class="lineno">   97</span>          format_to(format_context.out(), R<span class="stringliteral">&quot;(&quot;u&quot;: {}, )&quot;, filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a70ea593ac7161ef2e964642050d49574">u</a>()));</span></div>
-<div class="line"><span class="lineno">   98</span><span class="stringliteral">    }</span></div>
-<div class="line"><span class="lineno">   99</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">  100</span><span class="stringliteral">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">fcarouge::internal::for_constexpr</a>&lt;</span></div>
-<div class="line"><span class="lineno">  101</span><span class="stringliteral">        std::size_t{0}, fcarouge::internal::repack_s&lt;UpdateTypes&gt;, 1&gt;(</span></div>
-<div class="line"><span class="lineno">  102</span><span class="stringliteral">        [&amp;format_context, &amp;filter](</span><span class="keyword">auto</span> position) {</div>
-<div class="line"><span class="lineno">  103</span>          format_context.advance_to(format_to(</div>
-<div class="line"><span class="lineno">  104</span>              format_context.out(), R<span class="stringliteral">&quot;(&quot;update_{}&quot;: {}, )&quot;,</span></div>
-<div class="line"><span class="lineno">  105</span><span class="stringliteral">              std::size_t{position}, filter.template update&lt;position&gt;()));</span></div>
-<div class="line"><span class="lineno">  106</span><span class="stringliteral">        });</span></div>
-<div class="line"><span class="lineno">  107</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">  108</span><span class="stringliteral">    format_context.advance_to(format_to(format_context.out(),</span></div>
-<div class="line"><span class="lineno">  109</span><span class="stringliteral">                                        R</span><span class="stringliteral">&quot;(&quot;x&quot;: {}, &quot;y&quot;: {}, &quot;z&quot;: {}}})&quot;,</span></div>
-<div class="line"><span class="lineno">  110</span><span class="stringliteral">                                        filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">y</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#adebb582755e6b597f1d4171bbc236cc3">z</a>()));</span></div>
-<div class="line"><span class="lineno">  111</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">  112</span><span class="stringliteral">    </span><span class="keywordflow">return</span> format_context.out();</div>
-<div class="line"><span class="lineno">  113</span>  }</div>
+<div class="line"><span class="lineno">   95</span><span class="stringliteral">    format_context.advance_to(format_to(format_context.out(),</span></div>
+<div class="line"><span class="lineno">   96</span><span class="stringliteral">                                        R</span><span class="stringliteral">&quot;(&quot;q&quot;: {}, &quot;r&quot;: {}, &quot;s&quot;: {}, )&quot;,</span></div>
+<div class="line"><span class="lineno">   97</span><span class="stringliteral">                                        filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">r</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b">s</a>()));</span></div>
+<div class="line"><span class="lineno">   98</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">   99</span><span class="stringliteral">    </span><span class="keywordflow">if</span> <span class="keyword">constexpr</span> (not std::is_same_v&lt;Input, void&gt;) {</div>
+<div class="line"><span class="lineno">  100</span>      format_context.advance_to(</div>
+<div class="line"><span class="lineno">  101</span>          format_to(format_context.out(), R<span class="stringliteral">&quot;(&quot;u&quot;: {}, )&quot;, filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a70ea593ac7161ef2e964642050d49574">u</a>()));</span></div>
+<div class="line"><span class="lineno">  102</span><span class="stringliteral">    }</span></div>
+<div class="line"><span class="lineno">  103</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  104</span><span class="stringliteral">    {</span></div>
+<div class="line"><span class="lineno">  105</span><span class="stringliteral">      </span><span class="keyword">constexpr</span> <span class="keyword">auto</span> end{fcarouge::internal::repack_s&lt;UpdateTypes&gt;};</div>
+<div class="line"><span class="lineno">  106</span>      <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(end) begin{0};</div>
+<div class="line"><span class="lineno">  107</span>      <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(end) next{1};</div>
+<div class="line"><span class="lineno">  108</span>      fcarouge::internal::for_constexpr&lt;begin, end, next&gt;(</div>
+<div class="line"><span class="lineno">  109</span>          [&amp;format_context, &amp;filter](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">  110</span>            format_context.advance_to(</div>
+<div class="line"><span class="lineno">  111</span>                format_to(format_context.out(), R<span class="stringliteral">&quot;(&quot;update_{}&quot;: {}, )&quot;,</span></div>
+<div class="line"><span class="lineno">  112</span><span class="stringliteral">                          position(), filter.template update&lt;position&gt;()));</span></div>
+<div class="line"><span class="lineno">  113</span><span class="stringliteral">          });</span></div>
+<div class="line"><span class="lineno">  114</span><span class="stringliteral">    }</span></div>
+<div class="line"><span class="lineno">  115</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  116</span><span class="stringliteral">    format_context.advance_to(format_to(format_context.out(),</span></div>
+<div class="line"><span class="lineno">  117</span><span class="stringliteral">                                        R</span><span class="stringliteral">&quot;(&quot;x&quot;: {}, &quot;y&quot;: {}, &quot;z&quot;: {}}})&quot;,</span></div>
+<div class="line"><span class="lineno">  118</span><span class="stringliteral">                                        filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">y</a>(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#adebb582755e6b597f1d4171bbc236cc3">z</a>()));</span></div>
+<div class="line"><span class="lineno">  119</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  120</span><span class="stringliteral">    </span><span class="keywordflow">return</span> format_context.out();</div>
+<div class="line"><span class="lineno">  121</span>  }</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a04da55f7c46559f46cac6da0a5132605"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr auto q() const -&gt; const process_uncertainty &amp;</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2e2b3d64520fb7e7476b6b8bbb0352e9"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2e2b3d64520fb7e7476b6b8bbb0352e9">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr auto f() const -&gt; const state_transition &amp;</div><div class="ttdoc">Returns the state transition matrix F.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3ae3ff5bfaa781f0b64ed8e88d804508"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; const estimate_uncertainty &amp;</div><div class="ttdoc">Returns the estimated covariance matrix P.</div></div>
@@ -211,18 +219,7 @@ template&lt;typename OutputIt &gt; </div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad24bd49bfc9877ef197ab7aec6302282"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; const state &amp;</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_adebb582755e6b597f1d4171bbc236cc3"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#adebb582755e6b597f1d4171bbc236cc3">fcarouge::kalman::z</a></div><div class="ttdeci">constexpr auto z() const -&gt; const output &amp;</div><div class="ttdoc">Returns the last observation column vector Z.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afd28eccbb617441b0792ca0f3eadbb58"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">fcarouge::kalman::h</a></div><div class="ttdeci">constexpr auto h() const -&gt; const output_model &amp;</div><div class="ttdoc">Returns the observation transition matrix H.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a4c0bbc15a41d76dd2b4b23d8566fba57"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">fcarouge::internal::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdef"><b>Definition:</b> <a href="internal_2utility_8hpp_source.xhtml#l00080">utility.hpp:80</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="internal_2utility_8hpp_source.xhtml#l00080">fcarouge::internal::for_constexpr()</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4_ada34644f2cf8e8708c15e0b4975028f7_cgraph.svg" width="550" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
 </div>
 </div>
 <a id="ab75415d6c64f84ed42e54ea33b3fd87b" name="ab75415d6c64f84ed42e54ea33b3fd87b"></a>
@@ -267,7 +264,7 @@ template&lt;typename State , typename Output , typename Input , typename UpdateT
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>std</b></li><li class="navelem"><a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml">formatter&lt; fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;, Char &gt;</a></li>
-    <li class="footer">Generated on Tue May 30 2023 01:57:17 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jun 4 2023 21:49:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
