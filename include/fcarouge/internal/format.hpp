@@ -41,8 +41,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
-#include <cstddef>
 #include <format>
+#include <type_traits>
 
 namespace fcarouge {
 template <typename, typename, typename, typename, typename> class kalman;
@@ -80,13 +80,17 @@ struct std::formatter<
                                         R"("h": {}, "k": {}, "p": {}, )",
                                         filter.h(), filter.k(), filter.p()));
 
-    fcarouge::internal::for_constexpr<
-        std::size_t{0}, fcarouge::internal::repack_s<PredictionTypes>, 1>(
-        [&format_context, &filter](auto position) {
-          format_context.advance_to(format_to(
-              format_context.out(), R"("prediction_{}": {}, )",
-              std::size_t{position}, filter.template predict<position>()));
-        });
+    {
+      constexpr auto end{fcarouge::internal::repack_s<PredictionTypes>};
+      constexpr decltype(end) begin{0};
+      constexpr decltype(end) next{1};
+      fcarouge::internal::for_constexpr<begin, end, next>(
+          [&format_context, &filter](auto position) {
+            format_context.advance_to(
+                format_to(format_context.out(), R"("prediction_{}": {}, )",
+                          position(), filter.template predict<position>()));
+          });
+    }
 
     format_context.advance_to(format_to(format_context.out(),
                                         R"("q": {}, "r": {}, "s": {}, )",
@@ -97,13 +101,17 @@ struct std::formatter<
           format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }
 
-    fcarouge::internal::for_constexpr<
-        std::size_t{0}, fcarouge::internal::repack_s<UpdateTypes>, 1>(
-        [&format_context, &filter](auto position) {
-          format_context.advance_to(format_to(
-              format_context.out(), R"("update_{}": {}, )",
-              std::size_t{position}, filter.template update<position>()));
-        });
+    {
+      constexpr auto end{fcarouge::internal::repack_s<UpdateTypes>};
+      constexpr decltype(end) begin{0};
+      constexpr decltype(end) next{1};
+      fcarouge::internal::for_constexpr<begin, end, next>(
+          [&format_context, &filter](auto position) {
+            format_context.advance_to(
+                format_to(format_context.out(), R"("update_{}": {}, )",
+                          position(), filter.template update<position>()));
+          });
+    }
 
     format_context.advance_to(format_to(format_context.out(),
                                         R"("x": {}, "y": {}, "z": {}}})",
