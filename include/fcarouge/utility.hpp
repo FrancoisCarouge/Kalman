@@ -74,15 +74,11 @@ using empty_pack = internal::empty_pack;
 
 //! @brief The matrix type satisfying `X * Row = Column`.
 //!
-//! @details The resulting type of a matrix division.
+//! @details The resulting type of a matrix division. The resulting matrix type
+//! has as many rows as the `Row` matrix, respectively for columns as the
+//! `Column` matrix.
 template <typename Numerator, typename Denominator>
 using quotient = internal::quotient<Numerator, Denominator>;
-
-//! @brief The matrix type satisfying `X * Row = Column`.
-//!
-//! @details The resulting matrix type has as many rows as the `Row` matrix,
-//! respectively for columns as the `Column` matrix.
-template <typename Row, typename Column> using matrix = quotient<Row, Column>;
 
 //! @brief A user-defined algebraic division solution.
 //!

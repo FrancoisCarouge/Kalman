@@ -58,13 +58,13 @@ struct kalman<State, Output, void, pack<UpdateTypes...>,
   using state = State;
   using output = Output;
   using input = empty;
-  using estimate_uncertainty = matrix<state, state>;
-  using process_uncertainty = matrix<state, state>;
-  using output_uncertainty = matrix<output, output>;
-  using state_transition = matrix<state, state>;
-  using output_model = matrix<output, state>;
+  using estimate_uncertainty = quotient<state, state>;
+  using process_uncertainty = quotient<state, state>;
+  using output_uncertainty = quotient<output, output>;
+  using state_transition = quotient<state, state>;
+  using output_model = quotient<output, state>;
   using input_control = empty;
-  using gain = matrix<state, output>;
+  using gain = quotient<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
@@ -83,7 +83,7 @@ struct kalman<State, Output, void, pack<UpdateTypes...>,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  static inline const auto i{identity_v<matrix<state, state>>};
+  static inline const auto i{identity_v<quotient<state, state>>};
 
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
@@ -170,13 +170,13 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
   using state = State;
   using output = Output;
   using input = Input;
-  using estimate_uncertainty = matrix<state, state>;
-  using process_uncertainty = matrix<state, state>;
-  using output_uncertainty = matrix<output, output>;
-  using state_transition = matrix<state, state>;
-  using output_model = matrix<output, state>;
-  using input_control = matrix<state, input>;
-  using gain = matrix<state, output>;
+  using estimate_uncertainty = quotient<state, state>;
+  using process_uncertainty = quotient<state, state>;
+  using output_uncertainty = quotient<output, output>;
+  using state_transition = quotient<state, state>;
+  using output_model = quotient<output, state>;
+  using input_control = quotient<state, input>;
+  using gain = quotient<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
@@ -196,7 +196,7 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  static inline const auto i{identity_v<matrix<state, state>>};
+  static inline const auto i{identity_v<quotient<state, state>>};
 
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
