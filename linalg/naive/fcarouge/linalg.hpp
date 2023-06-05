@@ -311,17 +311,44 @@ template <typename Type, auto Row>
 
 template <typename Type, auto Row, auto Column>
 [[nodiscard]] inline constexpr auto
-transpose(const matrix<Type, Row, Column> &lhs) {
+transpose(const matrix<Type, Row, Column> &other) {
   matrix<Type, Column, Row> result;
 
   for (decltype(Row) i{0}; i < Row; ++i) {
     for (decltype(Column) j{0}; j < Column; ++j) {
-      result.data[j][i] = lhs.data[i][j];
+      result.data[j][i] = other.data[i][j];
     }
   }
 
   return result;
 }
+
+[[nodiscard]] inline auto llt(const auto &A) {
+  std::remove_cvref_t<decltype(A)> L;
+
+  for (int i = 0; i < 2; i++) {
+    for (int j = 0; j <= i; j++) {
+      double sum = 0;
+      for (int k = 0; k < j; k++)
+        sum += L(i, k) * L(j, k);
+
+      if (i == j)
+        L.data[i][j] = sqrt(A(i, i) - sum);
+      else
+        L.data[i][j] = (1.0 / L(j, j) * (A(i, j) - sum));
+    }
+  }
+
+  return L;
+}
+
+[[nodiscard]] inline auto solve(const auto &lhs, const auto &rhs) {
+  static_cast<void>(lhs);
+  static_cast<void>(rhs);
+  matrix<double, 2, 6> m;
+  return m;
+}
+
 } // namespace fcarouge
 
 #endif // FCAROUGE_LINALG_HPP

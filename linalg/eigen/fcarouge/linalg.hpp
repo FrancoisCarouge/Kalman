@@ -50,6 +50,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <Eigen/Eigen>
 
+#include <format>
+
 namespace fcarouge {
 //! @name Algebraic Types
 //! @{
@@ -75,6 +77,34 @@ inline const auto identity_v<Matrix>{Matrix::Identity()};
 //! @brief The zero matrix Eigen specialization.
 template <eigen Matrix> inline const auto zero_v<Matrix>{Matrix::Zero()};
 //! @}
+
+[[nodiscard]] inline auto transpose(const auto &other) {
+  return other.transpose();
+}
+
+[[nodiscard]] inline auto llt(const auto &A) { return A.llt(); }
+
+[[nodiscard]] inline auto solve(const auto &lhs, const auto &rhs) {
+
+  return lhs.solve(rhs);
+  // Eigen::Solve< Decomposition, RhsType >
+}
 } // namespace fcarouge
+
+// // Until Eigen catches up.
+// template <fcarouge::eigen Matrix, typename Char>
+// struct std::formatter<Matrix, Char> : public std::formatter<> {
+//   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context)
+//   {
+//     return parse_context.begin();
+//   }
+
+//   template <typename OutputIt>
+//   auto format(const Matrix &m,
+//               std::basic_format_context<OutputIt, Char> &format_context)
+//       -> OutputIt {
+//     return format_context.out();
+//   }
+// };
 
 #endif // FCAROUGE_LINALG_HPP
