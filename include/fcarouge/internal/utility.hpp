@@ -76,7 +76,8 @@ template <typename From> using repack_t = typename repack<From>::type;
 
 template <typename From> inline constexpr auto repack_s{repack<From>::size};
 
-template <auto Begin, auto End, auto Increment, typename Function>
+template <auto Begin, decltype(Begin) End, decltype(Begin) Increment,
+          typename Function>
 constexpr void for_constexpr(Function &&function) {
   if constexpr (Begin < End) {
     function(std::integral_constant<decltype(Begin), Begin>());
@@ -84,10 +85,20 @@ constexpr void for_constexpr(Function &&function) {
   }
 }
 
-template <typename Type>
-inline constexpr Type identity_v{
-    //! @todo Implement standard, default form.
+template <typename Dependent>
+constexpr auto type_dependent_false{sizeof(Dependent) != sizeof(Dependent)};
+
+template <typename Type> struct not_implemented {
+  static constexpr auto none{type_dependent_false<Type>};
+  template <auto Size>
+  inline constexpr explicit not_implemented(
+      [[maybe_unused]] const char (&message)[Size]) {}
+  static_assert(none, "This type is not implemented. See message.");
 };
+
+template <typename Type = double>
+inline constexpr Type identity_v{not_implemented<Type>{
+    "The linear algebra identity matrix for this type is not implemented."}};
 
 template <arithmetic Arithmetic>
 inline constexpr Arithmetic identity_v<Arithmetic>{1};
@@ -96,10 +107,9 @@ template <typename Matrix>
   requires requires(Matrix value) { value.Identity(); }
 inline const auto identity_v<Matrix>{Matrix::Identity()};
 
-template <typename Type>
-inline constexpr Type zero_v{
-    //! @todo Implement standard, default form.
-};
+template <typename Type = double>
+inline constexpr Type zero_v{not_implemented<Type>{
+    "The linear algebra zero matrix for this type is not implemented."}};
 
 template <arithmetic Arithmetic>
 inline constexpr Arithmetic zero_v<Arithmetic>{0};
