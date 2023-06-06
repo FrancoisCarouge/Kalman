@@ -12,53 +12,37 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3.1.0
-    - name: Install
-      run: |
-        sudo apt install gcc-12 g++-12 lcov
-        ( cd /tmp
-          git clone --depth 1 "https://gitlab.com/libeigen/eigen"
-          cmake -S "eigen" -B "eigen/build"
-          cmake --build "eigen/build" --parallel 4
-          sudo cmake --install "eigen/build" )
-        ( cd /tmp
-          git clone --depth 1 "https://github.com/fmtlib/fmt"
-          cmake -S "fmt" -B "fmt/build"
-          cmake --build "fmt/build" --parallel 4
-          sudo cmake --install "fmt/build" )
-        ( cd /tmp
-          git clone --depth 1 "https://github.com/kokkos/mdspan"
-          cmake -S "mdspan" -B "mdspan/build"
-          cmake --build "mdspan/build" --parallel 4
-          sudo cmake --install "mdspan/build" )
-        ( cd /tmp
-          git clone --depth 1 "https://github.com/kokkos/stdblas"
-          cmake -S "stdblas" -B "stdblas/build"
-          cmake --build "stdblas/build" --parallel 4
-          sudo cmake --install "stdblas/build" )
-    - name: Build
-      run: |
-        gcc-12 \
-          sample/*.cpp source/*.cpp test/*.cpp \
-          -Iinclude -I/usr/local/include/eigen3 -Isupport \
-          -O0 -g -std=c++23 -fmodules-ts --coverage -fno-inline -fno-exceptions -lstdc++ -lm -lfmt
+    - name: "Install"
+      run: sudo apt install lcov
+    - name: "Configure"
+      env:
+        CXX: "g++-12"
+        CXXFLAGS: "-O0 -g --coverage -fno-inline -fno-exceptions"
+      run: cmake -S . -B "build"
+    - name: "Build"
+      run: cmake --build "build" --verbose --parallel 4
     - name: "Coverage: Base"
       run: |
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --capture --initial --directory . --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '*/benchmark/*' --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '*/build/*' --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '*/sample/*' --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '*/source/*' --output-file base.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '*/test/*' --output-file base.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '/usr/*' --output-file base.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '10' --output-file base.info
-        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '*/test/*' --output-file base.info
-        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '*/source/*' --output-file base.info
-        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove base.info '*/sample/*' --output-file base.info
-    - name: run
-      run: ./a.out
+    - name: "Test"
+      run: ctest --test-dir "build"  --tests-regex "kalman_(test|sample)" --verbose --parallel 4
     - name: "Coverage: Test"
       run: |
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --capture --directory . --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '*/benchmark/*' --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '*/build/*' --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '*/sample/*' --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '*/source/*' --output-file test.info
+        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '*/test/*' --output-file test.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '/usr/*' --output-file test.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '10' --output-file test.info
-        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '*/test/*' --output-file test.info
-        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '*/source/*' --output-file test.info
-        lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --remove test.info '*/sample/*' --output-file test.info
     - name: "Coverage: Results"
       run: lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --rc lcov_branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
     - name: Coveralls
