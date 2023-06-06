@@ -62,6 +62,12 @@ concept arithmetic = internal::arithmetic<Type>;
 template <typename Type>
 concept algebraic = internal::algebraic<Type>;
 
+//! @brief Eigen3 algebraic concept.
+//!
+//! @details A third party Eigen3 algebraic concept.
+template <typename Type>
+concept eigen = internal::eigen<Type>;
+
 //! @brief Tuple-like pack type.
 //!
 //! @details An alternative to tuple-like types.
