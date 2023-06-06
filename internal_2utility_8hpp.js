@@ -8,6 +8,7 @@ var internal_2utility_8hpp =
     [ "identity_v< Arithmetic >", "internal_2utility_8hpp.xhtml#a34c026775cd123752a3d2876ba5ae7d2", null ],
     [ "identity_v< Matrix >", "internal_2utility_8hpp.xhtml#a26f3c00157550eff4aadf4c465238923", null ],
     [ "repack_s", "internal_2utility_8hpp.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9", null ],
+    [ "type_dependent_false", "internal_2utility_8hpp.xhtml#a24eb1204e458c448bab3a64ba63997d2", null ],
     [ "zero_v", "internal_2utility_8hpp.xhtml#a75b681b290b4c991f15e939cda798bb3", null ],
     [ "zero_v< Arithmetic >", "internal_2utility_8hpp.xhtml#a211fcef052146cd878e1ad70d12cf27d", null ],
     [ "zero_v< Matrix >", "internal_2utility_8hpp.xhtml#ace0a378b2a42f9e8c113c89bfb3b816c", null ]
