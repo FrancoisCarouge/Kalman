@@ -39,12 +39,6 @@ For more information, please refer to <https://unlicense.org> ]]
 include(FetchContent)
 
 FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
-  FIND_PACKAGE_ARGS NAMES Eigen3)
-FetchContent_MakeAvailable(eigen)
-
-FetchContent_Declare(
   google_test
   GIT_REPOSITORY "https://github.com/google/googletest"
   GIT_TAG "main"
@@ -76,45 +70,49 @@ foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
            "--benchmark_out=${NAME}.json")
 endforeach()
 
-foreach(STATE_SIZE RANGE 1 2)
-  foreach(OUTPUT_SIZE RANGE 1 2)
-    configure_file(eigen_update_xx0.cpp
-                   eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
-    get_filename_component(NAME eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp
-                           NAME_WE)
-    add_executable(kalman_benchmark_${NAME}_driver
-                   eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
-    target_include_directories(kalman_benchmark_${NAME}_driver
-                               PRIVATE "include")
-    set_target_properties(kalman_benchmark_${NAME}_driver
-                          PROPERTIES CXX_STANDARD 23)
-    set_target_properties(kalman_benchmark_${NAME}_driver
-                          PROPERTIES CXX_EXTENSIONS OFF)
-    target_link_libraries(
-      kalman_benchmark_${NAME}_driver
-      PRIVATE benchmark::benchmark benchmark::benchmark_main Eigen3::Eigen
-              kalman)
-    add_test(kalman_benchmark_${NAME} kalman_benchmark_${NAME}_driver
-             "--benchmark_out=${NAME}.json")
-  endforeach()
-  foreach(INPUT_SIZE RANGE 1 2)
-    configure_file(eigen_predict_x1x.cpp
-                   eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
-    get_filename_component(NAME eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}.cpp
-                           NAME_WE)
-    add_executable(kalman_benchmark_${NAME}_driver
-                   eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
-    target_include_directories(kalman_benchmark_${NAME}_driver
-                               PRIVATE "include")
-    set_target_properties(kalman_benchmark_${NAME}_driver
-                          PROPERTIES CXX_STANDARD 23)
-    set_target_properties(kalman_benchmark_${NAME}_driver
-                          PROPERTIES CXX_EXTENSIONS OFF)
-    target_link_libraries(
-      kalman_benchmark_${NAME}_driver
-      PRIVATE benchmark::benchmark benchmark::benchmark_main Eigen3::Eigen
-              kalman)
-    add_test(kalman_benchmark_${NAME} kalman_benchmark_${NAME}_driver
-             "--benchmark_out=${NAME}.json")
+foreach(BACKEND IN ITEMS "eigen")
+  foreach(STATE_SIZE RANGE 1 2)
+    foreach(OUTPUT_SIZE RANGE 1 2)
+      configure_file(update_linalg_xx0.cpp
+                     update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
+      get_filename_component(
+        NAME update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp NAME_WE)
+      add_executable(kalman_${BACKEND}_benchmark_${NAME}_driver
+                     update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
+      target_include_directories(kalman_${BACKEND}_benchmark_${NAME}_driver
+                                 PRIVATE "include")
+      set_target_properties(kalman_${BACKEND}_benchmark_${NAME}_driver
+                            PROPERTIES CXX_STANDARD 23)
+      set_target_properties(kalman_${BACKEND}_benchmark_${NAME}_driver
+                            PROPERTIES CXX_EXTENSIONS OFF)
+      target_link_libraries(
+        kalman_${BACKEND}_benchmark_${NAME}_driver
+        PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
+                kalman_linalg_${BACKEND})
+      add_test(kalman_${BACKEND}_benchmark_${NAME}
+               kalman_${BACKEND}_benchmark_${NAME}_driver
+               "--benchmark_out=${NAME}.json")
+    endforeach()
+    foreach(INPUT_SIZE RANGE 1 2)
+      configure_file(predict_linalg_x1x.cpp
+                     predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
+      get_filename_component(
+        NAME predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}.cpp NAME_WE)
+      add_executable(kalman_${BACKEND}_benchmark_${NAME}_driver
+                     predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
+      target_include_directories(kalman_${BACKEND}_benchmark_${NAME}_driver
+                                 PRIVATE "include")
+      set_target_properties(kalman_${BACKEND}_benchmark_${NAME}_driver
+                            PROPERTIES CXX_STANDARD 23)
+      set_target_properties(kalman_${BACKEND}_benchmark_${NAME}_driver
+                            PROPERTIES CXX_EXTENSIONS OFF)
+      target_link_libraries(
+        kalman_${BACKEND}_benchmark_${NAME}_driver
+        PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
+                kalman_linalg_${BACKEND})
+      add_test(kalman_${BACKEND}_benchmark_${NAME}
+               kalman_${BACKEND}_benchmark_${NAME}_driver
+               "--benchmark_out=${NAME}.json")
+    endforeach()
   endforeach()
 endforeach()

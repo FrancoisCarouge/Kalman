@@ -36,31 +36,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-cmake_minimum_required(VERSION "3.24")
+FetchContent_Declare(
+  eigen
+  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
+  FIND_PACKAGE_ARGS NAMES Eigen3)
+FetchContent_MakeAvailable(eigen)
 
-project(
-  kalman
-  DESCRIPTION "Kalman Filter"
-  HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
-  LANGUAGES "CXX"
-  VERSION "0.2.0")
-
-set(CPACK_PACKAGE_CHECKSUM "SHA512")
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE.txt")
-set(CPACK_SOURCE_GENERATOR "TBZ2")
-
-include(CMakePackageConfigHelpers)
-include(CPack)
-include(CTest)
-include(GNUInstallDirs)
-
-add_subdirectory(benchmark)
-add_subdirectory(cmake)
-add_subdirectory(include)
-add_subdirectory(linalg)
-add_subdirectory(pkgconfig)
-add_subdirectory(sample)
-add_subdirectory(source)
-add_subdirectory(support)
-add_subdirectory(test)
+add_library(kalman_linalg_eigen INTERFACE)
+target_include_directories(kalman_linalg_eigen INTERFACE "eigen")
+target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman)

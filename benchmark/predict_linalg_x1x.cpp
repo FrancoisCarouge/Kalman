@@ -39,8 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "benchmark.hpp"
 #include "fcarouge/internal/utility.hpp"
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/linalg.hpp"
 
-#include <Eigen/Eigen>
 #include <benchmark/benchmark.h>
 
 #include <algorithm>
@@ -53,11 +53,11 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::benchmark {
 namespace {
-template <auto Size> using vector = Eigen::Vector<float, Size>;
+template <auto Size> using vector = column_vector<float, Size>;
 
 //! @benchmark Measure the prediction of the filter for different dimensions of
 //! states and inputs with the Eigen linear algebra backend.
-template <std::size_t StateSize, std::size_t InputSize>
+template <auto StateSize, auto InputSize>
 void bench(::benchmark::State &state) {
   using kalman = kalman<vector<StateSize>, float, vector<InputSize>>;
 
@@ -67,12 +67,14 @@ void bench(::benchmark::State &state) {
   std::uniform_real_distribution<float> uniformly_distributed;
 
   for (auto _ : state) {
-    typename kalman::input u;
+    float uv[InputSize];
 
-    internal::for_constexpr<std::size_t{0}, InputSize, 1>(
-        [&u, &uniformly_distributed, &random_generator](auto position) {
-          u[position] = uniformly_distributed(random_generator);
+    internal::for_constexpr<0, InputSize, 1>(
+        [&uv, &uniformly_distributed, &random_generator](auto position) {
+          uv[position] = uniformly_distributed(random_generator);
         });
+
+    typename kalman::input u{uv};
 
     ::benchmark::ClobberMemory();
     const auto start{clock::now()};
@@ -89,7 +91,7 @@ void bench(::benchmark::State &state) {
 //! @todo Find a way to remove macros or find a different benchmark library that
 //! doesn't use macros.
 BENCHMARK(bench<${STATE_SIZE}, ${INPUT_SIZE}>)
-    ->Name("eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}")
+    ->Name("predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}")
     ->Unit(::benchmark::kNanosecond)
     ->ComputeStatistics("min",
                         [](const auto &results) {

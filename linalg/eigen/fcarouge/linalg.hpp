@@ -36,45 +36,48 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman.hpp"
+#ifndef FCAROUGE_LINALG_HPP
+#define FCAROUGE_LINALG_HPP
+
+//! @file
+//! @brief Linear algebra facade for Eigen3 third party implementation.
+//!
+//! @details Standardizes matrix, vectors, and algebraic values type names for
+//! the library usage.
+//!
+//! @note The Eigen3 linear algebra is not constexpr-compatible.
+
+#include "fcarouge/internal/utility.hpp"
 
 #include <Eigen/Eigen>
 
-#include <cassert>
+namespace fcarouge {
+//! @name Algebraic Types
+//! @{
+//! @brief Compile-time sized Eigen3 matrix.
+template <typename Type = double, auto Row = 1, auto Column = 1>
+using matrix = Eigen::Matrix<Type, Row, Column>;
 
-namespace fcarouge::test {
-namespace {
-template <auto Size> using vector = Eigen::Vector<double, Size>;
-template <auto Row, auto Column>
-using matrix = Eigen::Matrix<double, Row, Column>;
+//! @brief Compile-time sized Eigen3 row vector.
+template <typename Type = double, auto Column = 1>
+using row_vector = Eigen::RowVector<Type, Column>;
 
-//! @test Verifies default values are initialized for multi-dimension filters,
-//! no input.
-[[maybe_unused]] auto test{[] {
-  using kalman = kalman<vector<5>, vector<4>>;
-  kalman filter;
+//! @brief Compile-time sized Eigen3 column vector.
+template <typename Type = double, auto Row = 1>
+using column_vector = Eigen::Vector<Type, Row>;
+//! @}
 
-  const auto i4x4{matrix<4, 4>::Identity()};
-  const auto i4x5{matrix<4, 5>::Identity()};
-  const auto i5x4{matrix<5, 4>::Identity()};
-  const auto i5x5{matrix<5, 5>::Identity()};
-  const auto z4x1{vector<4>::Zero()};
-  const auto z4x4{matrix<4, 4>::Zero()};
-  const auto z5x1{vector<5>::Zero()};
-  const auto z5x5{matrix<5, 5>::Zero()};
+//! @name Algebraic Named Values
+//! @{
+//! @brief The identity matrix.
+template <typename Type = double>
+inline const auto identity_v{internal::identity_v<Type>};
 
-  assert(filter.f() == i5x5);
-  assert(filter.h() == i4x5);
-  assert(filter.k() == i5x4);
-  assert(filter.p() == i5x5);
-  assert(filter.q() == z5x5 && "No process noise by default.");
-  assert(filter.r() == z4x4 && "No observation noise by default.");
-  assert(filter.s() == i4x4);
-  assert(filter.x() == z5x1 && "Origin state.");
-  assert(filter.y() == z4x1);
-  assert(filter.z() == z4x1);
+//! @brief The zero matrix.
+template <typename Type = double>
+inline const auto zero_v{internal::zero_v<Type>};
+//! @}
 
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+} // namespace fcarouge
+
+#endif // FCAROUGE_LINALG_HPP

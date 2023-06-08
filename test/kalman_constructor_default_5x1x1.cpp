@@ -37,16 +37,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-
-#include <Eigen/Eigen>
+#include "fcarouge/linalg.hpp"
 
 #include <cassert>
 
 namespace fcarouge::test {
 namespace {
-template <auto Size> using vector = Eigen::Vector<double, Size>;
-template <auto Row, auto Column>
-using matrix = Eigen::Matrix<double, Row, Column>;
+template <auto Size> using vector = column_vector<double, Size>;
+template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single output and input edge case.
@@ -54,11 +52,11 @@ using matrix = Eigen::Matrix<double, Row, Column>;
   using kalman = kalman<vector<5>, double, double>;
   kalman filter;
 
-  const auto i1x5{matrix<1, 5>::Identity()};
-  const auto i5x1{matrix<5, 1>::Identity()};
-  const auto i5x5{matrix<5, 5>::Identity()};
-  const auto z5x1{vector<5>::Zero()};
-  const auto z5x5{matrix<5, 5>::Zero()};
+  const auto i1x5{identity_v<matrix<1, 5>>};
+  const auto i5x1{identity_v<matrix<5, 1>>};
+  const auto i5x5{identity_v<matrix<5, 5>>};
+  const auto z5x1{zero_v<vector<5>>};
+  const auto z5x5{zero_v<matrix<5, 5>>};
 
   assert(filter.f() == i5x5);
   assert(filter.g() == i5x1);

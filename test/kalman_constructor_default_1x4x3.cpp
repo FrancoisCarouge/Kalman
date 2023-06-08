@@ -37,37 +37,41 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-
-#include <Eigen/Eigen>
+#include "fcarouge/linalg.hpp"
 
 #include <cassert>
 
 namespace fcarouge::test {
 namespace {
-template <auto Size> using vector = Eigen::Vector<double, Size>;
-template <auto Row, auto Column>
-using matrix = Eigen::Matrix<double, Row, Column>;
+template <auto Size> using vector = column_vector<double, Size>;
+template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
-//! @test Verifies default values are initialized for multi-dimension filters.
+//! @test Verifies default values are initialized for multi-dimension filters,
+//! single state edge case.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<double, double, vector<3>>;
+  using kalman = kalman<double, vector<4>, vector<3>>;
   kalman filter;
 
-  const auto z3x1{vector<3>::Zero()};
-  const auto i1x3{matrix<1, 3>::Identity()};
+  const auto z3x1{zero_v<vector<3>>};
+  const auto i4x4{identity_v<matrix<4, 4>>};
+  const auto i4x1{identity_v<matrix<4, 1>>};
+  const auto i1x3{identity_v<matrix<1, 3>>};
+  const auto i1x4{identity_v<matrix<1, 4>>};
+  const auto z4x1{zero_v<vector<4>>};
+  const auto z4x4{zero_v<matrix<4, 4>>};
 
   assert(filter.f() == 1);
   assert(filter.g() == i1x3);
-  assert(filter.h() == 1);
-  assert(filter.k() == 1);
+  assert(filter.h() == i4x1);
+  assert(filter.k() == i1x4);
   assert(filter.p() == 1);
   assert(filter.q() == 0 && "No process noise by default.");
-  assert(filter.r() == 0 && "No observation noise by default.");
-  assert(filter.s() == 1);
+  assert(filter.r() == z4x4 && "No observation noise by default.");
+  assert(filter.s() == i4x4);
   assert(filter.u() == z3x1 && "No initial control.");
   assert(filter.x() == 0 && "Origin state.");
-  assert(filter.y() == 0);
-  assert(filter.z() == 0);
+  assert(filter.y() == z4x1);
+  assert(filter.z() == z4x1);
 
   return 0;
 }()};

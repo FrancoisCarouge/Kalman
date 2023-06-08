@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,33 +34,24 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-cmake_minimum_required(VERSION "3.24")
+#include "fcarouge/linalg.hpp"
 
-project(
-  kalman
-  DESCRIPTION "Kalman Filter"
-  HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
-  LANGUAGES "CXX"
-  VERSION "0.2.0")
+#include <cassert>
 
-set(CPACK_PACKAGE_CHECKSUM "SHA512")
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE.txt")
-set(CPACK_SOURCE_GENERATOR "TBZ2")
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the equality operator.
+[[maybe_unused]] auto test{[] {
+  auto m{zero_v<matrix<double, 5, 5>>};
+  auto i{identity_v<matrix<double, 5, 5>>};
+  auto z{zero_v<matrix<double, 5, 5>>};
 
-include(CMakePackageConfigHelpers)
-include(CPack)
-include(CTest)
-include(GNUInstallDirs)
+  assert(m == z);
+  assert(m != i);
 
-add_subdirectory(benchmark)
-add_subdirectory(cmake)
-add_subdirectory(include)
-add_subdirectory(linalg)
-add_subdirectory(pkgconfig)
-add_subdirectory(sample)
-add_subdirectory(source)
-add_subdirectory(support)
-add_subdirectory(test)
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
