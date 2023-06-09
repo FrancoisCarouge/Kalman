@@ -27,8 +27,13 @@ var namespacefcarouge =
     [ "arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
     [ "algebraic", "conceptfcarouge_1_1algebraic.xhtml", null ],
     [ "eigen", "conceptfcarouge_1_1eigen.xhtml", null ],
+    [ "column_vector", "namespacefcarouge.xhtml#a5f44ac24741780d7c6c2b3d9d5280c3b", null ],
     [ "empty_pack", "namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca", null ],
+    [ "matrix", "namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6", null ],
     [ "pack", "namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27", null ],
     [ "quotient", "namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992", null ],
-    [ "operator/", "namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a", null ]
+    [ "row_vector", "namespacefcarouge.xhtml#a13ee20558d8cfceef63e312b88e9b1b3", null ],
+    [ "operator/", "namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a", null ],
+    [ "identity_v", "namespacefcarouge.xhtml#a6f4bb1994e50717a4cc1b25bd6adc1a7", null ],
+    [ "zero_v", "namespacefcarouge.xhtml#ae5fbe6f4ccd2a0d0685d10a4c7e81a46", null ]
 ];

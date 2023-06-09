@@ -6,7 +6,8 @@ var searchData=
   ['predict_3',['predict',['../classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec',1,'fcarouge::kalman::predict(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103',1,'fcarouge::kalman::predict() const']]],
   ['predict_5f1x1x0_2ecpp_4',['predict_1x1x0.cpp',['../predict__1x1x0_8cpp.xhtml',1,'']]],
   ['predict_5f1x1x1_2ecpp_5',['predict_1x1x1.cpp',['../predict__1x1x1_8cpp.xhtml',1,'']]],
-  ['process_5funcertainty_6',['process_uncertainty',['../classfcarouge_1_1kalman.xhtml#a10744ae8b23cfeee58b6ce4987242c87',1,'fcarouge::kalman']]],
-  ['publish_7',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#af69bd29514c4d87c931d4688cf45a674',1,'LICENSE.txt']]],
-  ['purpose_8',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#a4b1b866c8fbf580a6c25d7af1d42b574',1,'LICENSE.txt']]]
+  ['predict_5flinalg_5fx1x_2ecpp_6',['predict_linalg_x1x.cpp',['../predict__linalg__x1x_8cpp.xhtml',1,'']]],
+  ['process_5funcertainty_7',['process_uncertainty',['../classfcarouge_1_1kalman.xhtml#a10744ae8b23cfeee58b6ce4987242c87',1,'fcarouge::kalman']]],
+  ['publish_8',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#af69bd29514c4d87c931d4688cf45a674',1,'LICENSE.txt']]],
+  ['purpose_9',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#a4b1b866c8fbf580a6c25d7af1d42b574',1,'LICENSE.txt']]]
 ];

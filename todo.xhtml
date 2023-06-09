@@ -91,9 +91,9 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <div class="textblock"><dl class="reflist">
 <dt>File <a class="el" href="algorithm_8hpp.xhtml">algorithm.hpp</a>  </dt>
 <dd><a class="anchor" id="_todo000003"></a>Implement and test.  </dd>
-<dt>{<a class="el" href="eigen__predict__x1x_8cpp.xhtml">eigen_predict_x1x.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__predict__x1x_8cpp_03.xhtml#a69092a1039a7c0a83dfd23cbd788e58e">fcarouge::benchmark::anonymous_namespace{eigen_predict_x1x.cpp}::Name</a>  ("eigen_predict_${STATE_SIZE}x1x${INPUT_SIZE}") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</dt>
+<dt>{<a class="el" href="predict__linalg__x1x_8cpp.xhtml">predict_linalg_x1x.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03.xhtml#a851f83e877d791f6e7d54158a1c58724">fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::Name</a>  ("predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</dt>
 <dd><a class="anchor" id="_todo000001"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
-<dt>{<a class="el" href="eigen__update__xx0_8cpp.xhtml">eigen_update_xx0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02eigen__update__xx0_8cpp_03.xhtml#aebc41f6f242eb7940f62a476a4faec25">fcarouge::benchmark::anonymous_namespace{eigen_update_xx0.cpp}::Name</a>  ("eigen_update_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</dt>
+<dt>{<a class="el" href="update__linalg__xx0_8cpp.xhtml">update_linalg_xx0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#a0857bb37f31dc89222275ef82f168a90">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::Name</a>  ("update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(100)</dt>
 <dd><a class="anchor" id="_todo000002"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332">fcarouge::internal::quotient</a>  </dt>
 <dd><a class="anchor" id="_todo000008"></a>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization?  </dd>
@@ -151,10 +151,10 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dd><a class="anchor" id="_todo000016"></a>Conditionally remove this member type when no input is present.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aa4216a5e5baa908a826b359f14779934">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::input_control</a>  </dt>
 <dd><a class="anchor" id="_todo000017"></a>Conditionally remove this member type when no input is present.  </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a4aaccf622ce45bee7ac25c2068b2f675">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::kalman</a>  (const kalman &amp;other)=delete</dt>
-<dd><a class="anchor" id="_todo000018"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a221645b98bab026858436965b94c7d9d">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::kalman</a>  (kalman &amp;&amp;other) noexcept=delete</dt>
 <dd><a class="anchor" id="_todo000019"></a>Implement and test.  </dd>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a4aaccf622ce45bee7ac25c2068b2f675">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::kalman</a>  (const kalman &amp;other)=delete</dt>
+<dd><a class="anchor" id="_todo000018"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ab2db3b065650ffd42931f010d6781835">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::operator=</a>  (const kalman &amp;other) -&gt; kalman &amp;=delete</dt>
 <dd><a class="anchor" id="_todo000020"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a5215bcddbc15cd25df587f7988334ed8">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::operator=</a>  (kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=delete</dt>
@@ -166,8 +166,14 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
 <dd><a class="anchor" id="_todo000023"></a>Add measurement post-fit residual by default and example?  </dd>
-<dt>{<a class="el" href="kalman__constructor__default__constexpr_8cpp.xhtml">kalman_constructor_default_constexpr.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__constexpr_8cpp_03.xhtml#a57573f5e4086dbbf340b6b38a8b3cc3b">fcarouge::test::anonymous_namespace{kalman_constructor_default_constexpr.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000027"></a>Make the lambda <code>consteval</code> when MSVC supports it.  </dd>
+<dt>{<a class="el" href="linalg__assign_8cpp.xhtml">linalg_assign.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__assign_8cpp_03.xhtml#a4c98e308d4ac9d24947134de6c580520">fcarouge::test::anonymous_namespace{linalg_assign.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000027"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__constructor_8cpp.xhtml">linalg_constructor.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor_8cpp_03.xhtml#a8770e55c140294fcecae0e311fcbc098">fcarouge::test::anonymous_namespace{linalg_constructor.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000028"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__copy_8cpp.xhtml">linalg_copy.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__copy_8cpp_03.xhtml#a0887ab7e5f2d679324ac959b627f5f17">fcarouge::test::anonymous_namespace{linalg_copy.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000029"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__identity_8cpp.xhtml">linalg_identity.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity_8cpp_03.xhtml#a96696a636cb3338b86fec91d6c31c303">fcarouge::test::anonymous_namespace{linalg_identity.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000030"></a>Rewrite this test as a property-based test.  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#ada34644f2cf8e8708c15e0b4975028f7">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;, Char &gt;::format</a>  (const fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt; &amp;filter, std::basic_format_context&lt; OutputIt, Char &gt; &amp;format_context) -&gt; OutputIt</dt>
 <dd><a class="anchor" id="_todo000004"></a>P2585 may be useful in simplifying and standardizing the support. </dd>
 </dl>
@@ -177,7 +183,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jun 6 2023 01:25:55 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Fri Jun 9 2023 02:27:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
