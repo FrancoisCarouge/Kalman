@@ -102,6 +102,6 @@ BENCHMARK(bench<${STATE_SIZE}, ${INPUT_SIZE}>)
                                return std::ranges::max(results);
                              }) -> UseManualTime()
             -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
-                -> Repetitions(100);
+                -> Repetitions(3);
 } // namespace
 } // namespace fcarouge::benchmark
