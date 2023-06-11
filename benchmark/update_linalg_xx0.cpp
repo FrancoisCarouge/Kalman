@@ -102,15 +102,10 @@ void bench(::benchmark::State &state) {
 BENCHMARK(bench<${STATE_SIZE}, ${OUTPUT_SIZE}>)
     ->Name("update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0")
     ->Unit(::benchmark::kNanosecond)
-    ->ComputeStatistics("min",
-                        [](const auto &results) {
-                          return std::ranges::min(results);
-                        })
-        -> ComputeStatistics("max",
-                             [](const auto &results) {
-                               return std::ranges::max(results);
-                             }) -> UseManualTime()
-            -> Complexity(::benchmark::oAuto) -> DisplayAggregatesOnly(true)
-                -> Repetitions(3);
+    ->ComputeStatistics("min", [](const auto &results) {
+      return std::ranges::min(results);
+    }) -> ComputeStatistics("max", [](const auto &results) {
+      return std::ranges::max(results);
+    }) -> UseManualTime() -> DisplayAggregatesOnly(true) -> Repetitions(3);
 } // namespace
 } // namespace fcarouge::benchmark
