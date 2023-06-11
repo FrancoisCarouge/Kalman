@@ -161,20 +161,15 @@ $(document).ready(function(){initNavTree('update__1x1x1_8cpp_source.xhtml',''); 
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>BENCHMARK(<a class="code hl_function" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03.xhtml#a91fb266cf991e3da8a0dec20dbfd200f">bench</a>)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03.xhtml#aa5d55faf8c945651e0cee8959c724b43">   75</a></span>    -&gt;Name(<span class="stringliteral">&quot;update_1x1x1&quot;</span>)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03.xhtml#a294813eb1865178a5a5d2f8e1c8cfb64">   75</a></span>    -&gt;Name(<span class="stringliteral">&quot;update_1x1x1&quot;</span>)</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    -&gt;Unit(::benchmark::kNanosecond)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    -&gt;ComputeStatistics(<span class="stringliteral">&quot;min&quot;</span>,</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                        [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;results) {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                          <span class="keywordflow">return</span> std::ranges::min(results);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                        })</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        -&gt; ComputeStatistics(<span class="stringliteral">&quot;max&quot;</span>,</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                             [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;results) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                               <span class="keywordflow">return</span> std::ranges::max(results);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                             }) -&gt; UseManualTime()</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            -&gt; Complexity(::benchmark::oAuto) -&gt; DisplayAggregatesOnly(<span class="keyword">true</span>)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                -&gt; Repetitions(3);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>} <span class="comment">// namespace fcarouge::benchmark</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    -&gt;ComputeStatistics(<span class="stringliteral">&quot;min&quot;</span>, [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;results) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      <span class="keywordflow">return</span> std::ranges::min(results);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }) -&gt; ComputeStatistics(<span class="stringliteral">&quot;max&quot;</span>, [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;results) {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>      <span class="keywordflow">return</span> std::ranges::max(results);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(<span class="keyword">true</span>) -&gt; Repetitions(3);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>} <span class="comment">// namespace fcarouge::benchmark</span></div>
 <div class="ttc" id="abenchmark_8hpp_xhtml"><div class="ttname"><a href="benchmark_8hpp.xhtml">benchmark.hpp</a></div><div class="ttdoc">Benchmarking support.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00166">kalman.hpp:166</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6bf8d8bc6c862a1fc087361e36541dfa"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">fcarouge::kalman::output</a></div><div class="ttdeci">typename implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00194">kalman.hpp:194</a></div></div>
@@ -189,7 +184,7 @@ $(document).ready(function(){initNavTree('update__1x1x1_8cpp_source.xhtml',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_44cec6e3ea30e076b9313c4641539d9f.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="update__1x1x1_8cpp.xhtml">update_1x1x1.cpp</a></li>
-    <li class="footer">Generated on Sat Jun 10 2023 21:42:56 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jun 11 2023 00:09:06 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
