@@ -22,7 +22,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "linalg_copy.cpp", "linalg__copy_8cpp.xhtml", "linalg__copy_8cpp" ],
     [ "linalg_identity.cpp", "linalg__identity_8cpp.xhtml", "linalg__identity_8cpp" ],
     [ "linalg_identity_default.cpp", "linalg__identity__default_8cpp.xhtml", "linalg__identity__default_8cpp" ],
-    [ "linalg_operator_bracket_1x2.cpp", "linalg__operator__bracket__1x2_8cpp.xhtml", "linalg__operator__bracket__1x2_8cpp" ],
+    [ "linalg_operator_bracket.cpp", "linalg__operator__bracket_8cpp.xhtml", "linalg__operator__bracket_8cpp" ],
     [ "linalg_operator_equality.cpp", "linalg__operator__equality_8cpp.xhtml", "linalg__operator__equality_8cpp" ],
     [ "linalg_zero.cpp", "linalg__zero_8cpp.xhtml", "linalg__zero_8cpp" ],
     [ "linalg_zero_default.cpp", "linalg__zero__default_8cpp.xhtml", "linalg__zero__default_8cpp" ]

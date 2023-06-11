@@ -86,8 +86,8 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{linalg_identity_default.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity__default_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity__default_8cpp_03.xhtml#ae123fa429108c7df6faf7d935028c90e", null ]
     ] ],
-    [ "anonymous_namespace{linalg_operator_bracket_1x2.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket__1x2_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket__1x2_8cpp_03.xhtml#acf274c6a597b5af279822d8e83533813", null ]
+    [ "anonymous_namespace{linalg_operator_bracket.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml#ad8d22e6caa976eab5167898fecb8f55b", null ]
     ] ],
     [ "anonymous_namespace{linalg_operator_equality.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__equality_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__equality_8cpp_03.xhtml#a9402ea240ca2ff34596a89189d7c2884", null ]
