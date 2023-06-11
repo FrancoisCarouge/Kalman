@@ -42,9 +42,15 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies ...
+//! @test Verifies the 1x1 matrix bracket operator.
+//!
+//! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
-  // matrix<double, 1, 2> m;
+  matrix<> m{42.0};
+
+  assert(m(0) == 42.0);
+  assert(m(0, 0) == 42.0);
+  assert(m[0] == 42.0);
 
   return 0;
 }()};

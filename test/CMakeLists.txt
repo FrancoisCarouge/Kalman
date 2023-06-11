@@ -78,7 +78,7 @@ foreach(BACKEND IN ITEMS eigen)
     "linalg_copy.cpp"
     "linalg_identity_default.cpp"
     "linalg_identity.cpp"
-    "linalg_operator_bracket_1x2.cpp"
+    "linalg_operator_bracket.cpp"
     "linalg_operator_equality.cpp"
     "linalg_zero_default.cpp"
     "linalg_zero.cpp")
