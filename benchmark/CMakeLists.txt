@@ -77,20 +77,20 @@ foreach(BACKEND IN ITEMS "eigen")
                      update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
       get_filename_component(
         NAME update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp NAME_WE)
-      add_executable(kalman_${BACKEND}_benchmark_${NAME}_driver
+      add_executable(kalman_benchmark_${BACKEND}_${NAME}_driver
                      update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
-      target_include_directories(kalman_${BACKEND}_benchmark_${NAME}_driver
+      target_include_directories(kalman_benchmark_${BACKEND}_${NAME}_driver
                                  PRIVATE "include")
-      set_target_properties(kalman_${BACKEND}_benchmark_${NAME}_driver
+      set_target_properties(kalman_benchmark_${BACKEND}_${NAME}_driver
                             PROPERTIES CXX_STANDARD 23)
-      set_target_properties(kalman_${BACKEND}_benchmark_${NAME}_driver
+      set_target_properties(kalman_benchmark_${BACKEND}_${NAME}_driver
                             PROPERTIES CXX_EXTENSIONS OFF)
       target_link_libraries(
-        kalman_${BACKEND}_benchmark_${NAME}_driver
+        kalman_benchmark_${BACKEND}_${NAME}_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
                 kalman_linalg_${BACKEND})
-      add_test(kalman_${BACKEND}_benchmark_${NAME}
-               kalman_${BACKEND}_benchmark_${NAME}_driver
+      add_test(kalman_benchmark_${BACKEND}_${NAME}
+               kalman_benchmark_${BACKEND}_${NAME}_driver
                "--benchmark_out=${NAME}.json")
     endforeach()
     foreach(INPUT_SIZE RANGE 1 2)
@@ -98,20 +98,20 @@ foreach(BACKEND IN ITEMS "eigen")
                      predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
       get_filename_component(
         NAME predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}.cpp NAME_WE)
-      add_executable(kalman_${BACKEND}_benchmark_${NAME}_driver
+      add_executable(kalman_benchmark_${BACKEND}_${NAME}_driver
                      predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}.cpp)
-      target_include_directories(kalman_${BACKEND}_benchmark_${NAME}_driver
+      target_include_directories(kalman_benchmark_${BACKEND}_${NAME}_driver
                                  PRIVATE "include")
-      set_target_properties(kalman_${BACKEND}_benchmark_${NAME}_driver
+      set_target_properties(kalman_benchmark_${BACKEND}_${NAME}_driver
                             PROPERTIES CXX_STANDARD 23)
-      set_target_properties(kalman_${BACKEND}_benchmark_${NAME}_driver
+      set_target_properties(kalman_benchmark_${BACKEND}_${NAME}_driver
                             PROPERTIES CXX_EXTENSIONS OFF)
       target_link_libraries(
-        kalman_${BACKEND}_benchmark_${NAME}_driver
+        kalman_benchmark_${BACKEND}_${NAME}_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
                 kalman_linalg_${BACKEND})
-      add_test(kalman_${BACKEND}_benchmark_${NAME}
-               kalman_${BACKEND}_benchmark_${NAME}_driver
+      add_test(kalman_benchmark_${BACKEND}_${NAME}
+               kalman_benchmark_${BACKEND}_${NAME}_driver
                "--benchmark_out=${NAME}.json")
     endforeach()
   endforeach()
