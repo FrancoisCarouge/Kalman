@@ -165,9 +165,9 @@ struct deducer final {
       typename decltype(rhs.transpose())::PlainMatrix;
 };
 
-template <typename Numerator, typename Denominator>
 //! @todo How to return the `emtpy` type if the deducer would fail to help avoid
 //! specialization?
+template <typename Numerator, typename Denominator>
 using quotient =
     std::decay_t<std::invoke_result_t<deducer, Numerator, Denominator>>;
 } // namespace fcarouge::internal
