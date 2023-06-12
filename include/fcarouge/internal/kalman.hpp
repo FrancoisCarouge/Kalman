@@ -83,8 +83,6 @@ struct kalman<State, Output, void, pack<UpdateTypes...>,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  static inline const auto i{identity_v<quotient<state, state>>};
-
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
   process_uncertainty q{zero_v<process_uncertainty>};
@@ -151,7 +149,9 @@ struct kalman<State, Output, void, pack<UpdateTypes...>,
     k = p * t(h) / s;
     y = z - observation(x, update_pack...);
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    p = estimate_uncertainty{(identity_v<quotient<state, state>> - k * h) * p *
+                                 t(identity_v<quotient<state, state>> - k * h) +
+                             k * r * t(k)};
   }
 
   inline constexpr void predict(const PredictionTypes &...prediction_pack) {
@@ -195,8 +195,6 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
       function<output(const state &, const UpdateTypes &...)>;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
-
-  static inline const auto i{identity_v<quotient<state, state>>};
 
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};
@@ -269,7 +267,9 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
     k = p * t(h) / s;
     y = z - observation(x, update_pack...);
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    p = estimate_uncertainty{(identity_v<quotient<state, state>> - k * h) * p *
+                                 t(identity_v<quotient<state, state>> - k * h) +
+                             k * r * t(k)};
   }
 
   //! @todo Extended support?
