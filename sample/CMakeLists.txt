@@ -38,12 +38,6 @@ For more information, please refer to <https://unlicense.org> ]]
 
 include(FetchContent)
 
-FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
-  FIND_PACKAGE_ARGS NAMES Eigen3)
-FetchContent_MakeAvailable(eigen)
-
 foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
                "kf_1x1x1_dog_position.cpp")
   get_filename_component(NAME ${SAMPLE} NAME_WE)
@@ -59,20 +53,23 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
             $<TARGET_FILE:kalman_sample_${NAME}_driver>)
 endforeach()
 
-foreach(SAMPLE_EIGEN
-        "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp"
-        "kf_6x2x0_vehicle_location.cpp" "kf_8x4x0_deep_sort_bounding_box.cpp")
-  get_filename_component(NAME ${SAMPLE_EIGEN} NAME_WE)
-  add_executable(kalman_sample_eigen_${NAME}_driver ${SAMPLE_EIGEN})
-  set_target_properties(kalman_sample_eigen_${NAME}_driver
-                        PROPERTIES CXX_STANDARD 23)
-  set_target_properties(kalman_sample_eigen_${NAME}_driver
-                        PROPERTIES CXX_EXTENSIONS OFF)
-  target_link_libraries(kalman_sample_eigen_${NAME}_driver
-                        PRIVATE Eigen3::Eigen kalman kalman_main)
-  add_test(kalman_sample_eigen_${NAME} kalman_sample_eigen_${NAME}_driver)
-  add_test(
-    NAME kalman_valgrind_eigen_${NAME}
-    COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
-            $<TARGET_FILE:kalman_sample_eigen_${NAME}_driver>)
+foreach(BACKEND IN ITEMS "eigen")
+  foreach(SAMPLE
+          "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp"
+          "kf_6x2x0_vehicle_location.cpp" "kf_8x4x0_deep_sort_bounding_box.cpp")
+    get_filename_component(NAME ${SAMPLE} NAME_WE)
+    add_executable(kalman_sample_${BACKEND}_${NAME}_driver ${SAMPLE})
+    set_target_properties(kalman_sample_${BACKEND}_${NAME}_driver
+                          PROPERTIES CXX_STANDARD 23)
+    set_target_properties(kalman_sample_${BACKEND}_${NAME}_driver
+                          PROPERTIES CXX_EXTENSIONS OFF)
+    target_link_libraries(kalman_sample_${BACKEND}_${NAME}_driver
+                          PRIVATE kalman kalman_main kalman_linalg_${BACKEND})
+    add_test(kalman_sample_${BACKEND}_${NAME}
+             kalman_sample_${BACKEND}_${NAME}_driver)
+    add_test(
+      NAME kalman_valgrind_${BACKEND}_${NAME}
+      COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
+              $<TARGET_FILE:kalman_sample_${BACKEND}_${NAME}_driver>)
+  endforeach()
 endforeach()
