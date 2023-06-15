@@ -1,6 +1,5 @@
 #include "fcarouge/kalman.hpp"
-
-#include <Eigen/Eigen>
+#include "fcarouge/linalg.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -16,7 +15,7 @@ constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
 
 namespace fcarouge::sample {
 namespace {
-template <auto Size> using vector = Eigen::Vector<float, Size>;
+template <auto Size> using vector = column_vector<float, Size>;
 using state = vector<8>;
 using output = vector<4>;
 using no_input = void;

@@ -1,6 +1,5 @@
 #include "fcarouge/kalman.hpp"
-
-#include <Eigen/Eigen>
+#include "fcarouge/linalg.hpp"
 
 #include <cassert>
 #include <chrono>
@@ -8,7 +7,7 @@
 
 namespace fcarouge::sample {
 namespace {
-template <auto Size> using vector = Eigen::Vector<double, Size>;
+template <auto Size> using vector = column_vector<double, Size>;
 using state = vector<2>;
 using output = double;
 using input = double;

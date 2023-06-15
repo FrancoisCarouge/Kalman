@@ -1,13 +1,12 @@
 #include "fcarouge/kalman.hpp"
-
-#include <Eigen/Eigen>
+#include "fcarouge/linalg.hpp"
 
 #include <cassert>
 #include <cmath>
 
 namespace fcarouge::sample {
 namespace {
-template <auto Size> using vector = Eigen::Vector<float, Size>;
+template <auto Size> using vector = column_vector<float, Size>;
 using state = vector<4>;
 using output = float;
 using no_input = void;
