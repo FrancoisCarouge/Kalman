@@ -20,6 +20,12 @@ jobs:
         sudo ./llvm.sh 16 all
     - name: "Test"
       run: |
-        find . -iname "*.hpp" -o -iname "*.tpp" -o -iname "*.cpp" -o -iwholename "./support/format" | xargs \
+        find . \
+          -iname "*.hpp" \
+          -o -iname "*.tpp" \
+          -o -iname "*.cpp" \
+          -o -iwholename "./support/format" \
+          -o -iwholename "./support/print" \
+          | xargs \
           clang-format-16 --Werror --dry-run --verbose -style=file
         cmake-format --check CMakeLists.txt
