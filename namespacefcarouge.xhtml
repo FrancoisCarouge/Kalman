@@ -140,8 +140,11 @@ Typedefs</h2></td></tr>
 <tr class="memitem:af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">empty_pack</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">internal::empty_pack</a></td></tr>
 <tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like empty pack type.  <a href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">More...</a><br /></td></tr>
 <tr class="separator:af07a5637ebbb4bd8c0244134151732ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eb9e4891ea365699582d1b89f45bf92"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a4eb9e4891ea365699582d1b89f45bf92">transpose</a> = internal::transpose</td></tr>
+<tr class="memdesc:a4eb9e4891ea365699582d1b89f45bf92"><td class="mdescLeft">&#160;</td><td class="mdescRight">A user-definable transposition object function.  <a href="namespacefcarouge.xhtml#a4eb9e4891ea365699582d1b89f45bf92">More...</a><br /></td></tr>
+<tr class="separator:a4eb9e4891ea365699582d1b89f45bf92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd64ab811e0773f298e29a93f825c992"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , typename Denominator &gt; </td></tr>
-<tr class="memitem:acd64ab811e0773f298e29a93f825c992"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">quotient</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332">internal::quotient</a>&lt; Numerator, Denominator &gt;</td></tr>
+<tr class="memitem:acd64ab811e0773f298e29a93f825c992"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">quotient</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">internal::quotient</a>&lt; Numerator, Denominator &gt;</td></tr>
 <tr class="memdesc:acd64ab811e0773f298e29a93f825c992"><td class="mdescLeft">&#160;</td><td class="mdescRight">The matrix type satisfying <code>X * Row = Column</code>.  <a href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">More...</a><br /></td></tr>
 <tr class="separator:acd64ab811e0773f298e29a93f825c992"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algebraic Types</div></td></tr>
@@ -163,7 +166,7 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , algebraic Denominator&gt; </td></tr>
 <tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">operator/</a> (const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; <a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">quotient</a>&lt; Numerator, Denominator &gt;</td></tr>
-<tr class="memdesc:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A user-defined algebraic division solution.  <a href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">More...</a><br /></td></tr>
+<tr class="memdesc:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A user-definable algebraic division solution.  <a href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">More...</a><br /></td></tr>
 <tr class="separator:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -270,7 +273,7 @@ template&lt;typename... Types&gt; </div>
 template&lt;typename Numerator , typename Denominator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient</a> = typedef <a class="el" href="namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332">internal::quotient</a>&lt;Numerator, Denominator&gt;</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient</a> = typedef <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">internal::quotient</a>&lt;Numerator, Denominator&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -278,7 +281,7 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
 <p>The matrix type satisfying <code>X * Row = Column</code>. </p>
 <p >The resulting type of a matrix division. The resulting matrix type has as many rows as the <code>Row</code> matrix, respectively for columns as the <code>Column</code> matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00087">87</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -299,6 +302,25 @@ template&lt;typename Type  = double, auto Column = 1&gt; </div>
 <p>Compile-time sized Eigen3 row vector. </p>
 
 <p class="definition">Definition at line <a class="el" href="linalg_8hpp_source.xhtml#l00063">63</a> of file <a class="el" href="linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4eb9e4891ea365699582d1b89f45bf92" name="a4eb9e4891ea365699582d1b89f45bf92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eb9e4891ea365699582d1b89f45bf92">&#9670;&nbsp;</a></span>transpose</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacefcarouge.xhtml#a4eb9e4891ea365699582d1b89f45bf92">fcarouge::transpose</a> = typedef internal::transpose</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A user-definable transposition object function. </p>
+<p >Implemented for known libraries. User-definable in other cases. Transposes the matrix. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00085">85</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -339,8 +361,8 @@ template&lt;typename Numerator , algebraic Denominator&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>A user-defined algebraic division solution. </p>
-<p >There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
+<p>A user-definable algebraic division solution. </p>
+<p >Implemented for known libraries. User-definable in other cases. There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
@@ -415,7 +437,7 @@ template&lt;typename Type  = double&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li>
-    <li class="footer">Generated on Sun Jun 18 2023 05:13:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

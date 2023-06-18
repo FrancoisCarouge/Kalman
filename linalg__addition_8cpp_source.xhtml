@@ -135,15 +135,16 @@ $(document).ready(function(){initNavTree('linalg__addition_8cpp_source.xhtml',''
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml#a58f62760145a6a0839b43901056530bb">   48</a></span>[[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml#a58f62760145a6a0839b43901056530bb">test</a>{[] {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix&lt;double, 1, 2&gt;</a> a{1.0, 2.0};</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix&lt;double, 1, 2&gt;</a> b{3.0, 4.0};</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix&lt;double, 1, 2&gt;</a> r{a + b};</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  assert(r(0, 0) == 4.0);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  assert(r(0, 1) == 6.0);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}()};</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix&lt;double, 1, 2&gt;</a> c{4.0, 6.0};</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">auto</span> r{a + b + c};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  assert(r(0, 0) == 8.0);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  assert(r(0, 1) == 12.0);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}()};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="alinalg_8hpp_xhtml"><div class="ttname"><a href="linalg_8hpp.xhtml">linalg.hpp</a></div><div class="ttdoc">Linear algebra facade for Eigen3 third party implementation.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03_xhtml_a58f62760145a6a0839b43901056530bb"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml#a58f62760145a6a0839b43901056530bb">fcarouge::test::anonymous_namespace{linalg_addition.cpp}::test</a></div><div class="ttdeci">auto test</div><div class="ttdef"><b>Definition:</b> <a href="linalg__addition_8cpp_source.xhtml#l00048">linalg_addition.cpp:48</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
@@ -154,7 +155,7 @@ $(document).ready(function(){initNavTree('linalg__addition_8cpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.xhtml">test</a></li><li class="navelem"><a class="el" href="linalg__addition_8cpp.xhtml">linalg_addition.cpp</a></li>
-    <li class="footer">Generated on Sun Jun 18 2023 05:13:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

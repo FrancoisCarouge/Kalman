@@ -139,9 +139,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memTemplParams" colspan="2">template&lt;typename From &gt; </td></tr>
 <tr class="memitem:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22">repack_t</a> = typename repack&lt; From &gt;::type</td></tr>
 <tr class="separator:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfc1d6795cb62b58ab5516b20a213332"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , typename Denominator &gt; </td></tr>
-<tr class="memitem:acfc1d6795cb62b58ab5516b20a213332"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332">quotient</a> = std::decay_t&lt; std::invoke_result_t&lt; deducer, Numerator, Denominator &gt; &gt;</td></tr>
-<tr class="separator:acfc1d6795cb62b58ab5516b20a213332"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e5d81297e01a8f865bec3aee32b0fe"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , typename Denominator &gt; </td></tr>
+<tr class="memitem:aa5e5d81297e01a8f865bec3aee32b0fe"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">quotient</a> = std::remove_cvref_t&lt; std::invoke_result_t&lt; deducer, Numerator, Denominator &gt; &gt;</td></tr>
+<tr class="separator:aa5e5d81297e01a8f865bec3aee32b0fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -220,8 +220,8 @@ template&lt;typename Callable &gt; </div>
 
 </div>
 </div>
-<a id="acfc1d6795cb62b58ab5516b20a213332" name="acfc1d6795cb62b58ab5516b20a213332"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfc1d6795cb62b58ab5516b20a213332">&#9670;&nbsp;</a></span>quotient</h2>
+<a id="aa5e5d81297e01a8f865bec3aee32b0fe" name="aa5e5d81297e01a8f865bec3aee32b0fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e5d81297e01a8f865bec3aee32b0fe">&#9670;&nbsp;</a></span>quotient</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +229,7 @@ template&lt;typename Callable &gt; </div>
 template&lt;typename Numerator , typename Denominator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332">fcarouge::internal::quotient</a> = typedef std::decay_t&lt;std::invoke_result_t&lt;deducer, Numerator, Denominator&gt; &gt;</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">fcarouge::internal::quotient</a> = typedef std::remove_cvref_t&lt;std::invoke_result_t&lt;deducer, Numerator, Denominator&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -574,7 +574,7 @@ template&lt;typename Matrix &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Sun Jun 18 2023 05:13:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

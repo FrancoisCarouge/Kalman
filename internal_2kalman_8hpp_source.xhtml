@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a> z{zero_v&lt;output&gt;};</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  update_types update_arguments{};</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  prediction_types prediction_arguments{};</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  transpose t{};</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a4eb9e4891ea365699582d1b89f45bf92">transpose</a> t{};</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  observation_state_function observation_state_h{</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      [&amp;h = h]([[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...arguments) -&gt; output_model {</div>
@@ -285,7 +285,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#aa628c1ade77c9a1d33116f327f91aa70">input</a> u{zero_v&lt;input&gt;};</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  update_types update_arguments{};</div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  prediction_types prediction_arguments{};</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  transpose t{};</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a4eb9e4891ea365699582d1b89f45bf92">transpose</a> t{};</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  observation_state_function observation_state_h{</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>      [&amp;h = h]([[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...arguments) -&gt; output_model {</div>
@@ -358,6 +358,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a7e29df93d84e25987f0c06c89a42b865"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">vector&lt; 4 &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00010">ekf_4x1x0_soaring.cpp:10</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a86794f6437ff542b83abc16de5df6373"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::output</a></div><div class="ttdeci">float output</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00011">ekf_4x1x0_soaring.cpp:11</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03_xhtml_aa628c1ade77c9a1d33116f327f91aa70"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#aa628c1ade77c9a1d33116f327f91aa70">fcarouge::sample::anonymous_namespace{kf_2x1x1_rocket_altitude.cpp}::input</a></div><div class="ttdeci">double input</div><div class="ttdef"><b>Definition:</b> <a href="kf__2x1x1__rocket__altitude_8cpp_source.xhtml#l00013">kf_2x1x1_rocket_altitude.cpp:13</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a4eb9e4891ea365699582d1b89f45bf92"><div class="ttname"><a href="namespacefcarouge.xhtml#a4eb9e4891ea365699582d1b89f45bf92">fcarouge::transpose</a></div><div class="ttdeci">internal::transpose transpose</div><div class="ttdoc">A user-definable transposition object function.</div><div class="ttdef"><b>Definition:</b> <a href="utility_8hpp_source.xhtml#l00085">utility.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aa5a28afb4550bbcbd55d875351de6e27"><div class="ttname"><a href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a></div><div class="ttdeci">internal::pack&lt; Types... &gt; pack</div><div class="ttdoc">Tuple-like pack type.</div><div class="ttdef"><b>Definition:</b> <a href="utility_8hpp_source.xhtml#l00074">utility.hpp:74</a></div></div>
 <div class="ttc" id="autility_8hpp_xhtml"><div class="ttname"><a href="utility_8hpp.xhtml">utility.hpp</a></div><div class="ttdoc">The collection of utilities supporting the library.</div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -366,7 +367,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Sun Jun 18 2023 05:13:35 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

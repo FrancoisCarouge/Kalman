@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: A Generic Kalman Filter</title>
+<title>Kalman: Kalman Filter</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,13 +85,13 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">A Generic Kalman Filter </div></div>
+  <div class="headertitle"><div class="title">Kalman Filter </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md__github_workspace_README"></a> The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. The filter maintains an estimate of the state and its uncertainty over the sequential estimation process. The filter is named after Rudolf E. Kálmán, who was one of the primary developers of its theory in 1960. Designing a filter is as much art as science. Design the state <em>X</em>, <em>P</em>, the process <em>F</em>, <em>Q</em>, the measurement <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>.</p>
 <p >This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
 <ul>
-<li>A Generic Kalman Filter</li>
+<li>Kalman Filter</li>
 <li>Examples<ul>
 <li>1x1 Constant System Dynamic Model Filter</li>
 <li>6x2 Constant Acceleration Dynamic Model Filter</li>
@@ -498,7 +498,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jun 18 2023 05:13:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

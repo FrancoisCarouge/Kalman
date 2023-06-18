@@ -107,6 +107,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{linalg_identity_default.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity__default_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity__default_8cpp_03.xhtml#ae123fa429108c7df6faf7d935028c90e", null ]
     ] ],
+    [ "anonymous_namespace{linalg_multiplication_arithmetic.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__arithmetic_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__arithmetic_8cpp_03.xhtml#ab6163c2a745098b0d1d224d185dbd9ca", null ]
+    ] ],
     [ "anonymous_namespace{linalg_operator_bracket.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml#ad8d22e6caa976eab5167898fecb8f55b", null ]
     ] ],

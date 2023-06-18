@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['a_20generic_20kalman_20filter_0',['A Generic Kalman Filter',['../index.xhtml',1,'']]]
+  ['benchmarks_0',['Benchmarks',['../md__github_workspace_benchmark__r_e_a_d_m_e.xhtml',1,'']]]
 ];

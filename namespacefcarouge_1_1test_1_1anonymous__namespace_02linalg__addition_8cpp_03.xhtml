@@ -111,10 +111,11 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
 <div class="line">  matrix&lt;double, 1, 2&gt; a{1.0, 2.0};</div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix&lt;double, 1, 2&gt;</a> b{3.0, 4.0};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix&lt;double, 1, 2&gt;</a> r{a + b};</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix&lt;double, 1, 2&gt;</a> c{4.0, 6.0};</div>
+<div class="line">  <span class="keyword">auto</span> r{a + b + c};</div>
 <div class="line"> </div>
-<div class="line">  assert(r(0, 0) == 4.0);</div>
-<div class="line">  assert(r(0, 1) == 6.0);</div>
+<div class="line">  assert(r(0, 0) == 8.0);</div>
+<div class="line">  assert(r(0, 1) == 12.0);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -132,7 +133,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1test.xhtml">test</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml">anonymous_namespace{linalg_addition.cpp}</a></li>
-    <li class="footer">Generated on Sun Jun 18 2023 05:13:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

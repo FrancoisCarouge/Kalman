@@ -7,7 +7,7 @@ var namespacefcarouge =
       [ "eigen", "conceptfcarouge_1_1internal_1_1eigen.xhtml", null ],
       [ "empty_pack", "namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503", null ],
       [ "function_traits_t", "namespacefcarouge_1_1internal.xhtml#a863fcca945056cfd1b3ffa2a684acfda", null ],
-      [ "quotient", "namespacefcarouge_1_1internal.xhtml#acfc1d6795cb62b58ab5516b20a213332", null ],
+      [ "quotient", "namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe", null ],
       [ "repack_t", "namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22", null ],
       [ "for_constexpr", "namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57", null ],
       [ "function", "namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e", null ],
@@ -33,6 +33,7 @@ var namespacefcarouge =
     [ "pack", "namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27", null ],
     [ "quotient", "namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992", null ],
     [ "row_vector", "namespacefcarouge.xhtml#a13ee20558d8cfceef63e312b88e9b1b3", null ],
+    [ "transpose", "namespacefcarouge.xhtml#a4eb9e4891ea365699582d1b89f45bf92", null ],
     [ "operator/", "namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a", null ],
     [ "identity_v", "namespacefcarouge.xhtml#a6f4bb1994e50717a4cc1b25bd6adc1a7", null ],
     [ "zero_v", "namespacefcarouge.xhtml#ae5fbe6f4ccd2a0d0685d10a4c7e81a46", null ]
