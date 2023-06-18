@@ -84,10 +84,6 @@ install(
   TARGETS kalman
   EXPORT "kalman-target"
   FILE_SET "kalman_headers")
-install(
-  EXPORT "kalman-target"
-  NAMESPACE "kalman::"
-  DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
 
 # Conditionally provide the namespace alias target which may be an imported
 # target from a package, or an aliased target if built as part of the same

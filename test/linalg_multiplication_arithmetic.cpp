@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,35 +34,27 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-if(WIN32)
-  # Microsoft Windows MSVC CL toolchain supports C++'s standard format library.
-  # Other compilers don't support it yet. TODO: This platform check is not ideal
-  # and should be replaced with a check for the compiler library support.
-else()
-  include(FetchContent)
+#include "fcarouge/linalg.hpp"
 
-  FetchContent_Declare(
-    fmt
-    GIT_REPOSITORY "https://github.com/fmtlib/fmt"
-    FIND_PACKAGE_ARGS NAMES fmt)
-  FetchContent_MakeAvailable(fmt)
+#include <cassert>
 
-  add_library(kalman_format INTERFACE)
-  target_sources(
-    kalman_format
-    INTERFACE FILE_SET
-              "kalman_format_headers"
-              TYPE
-              "HEADERS"
-              FILES
-              "format"
-              "print")
-  target_link_libraries(kalman_format INTERFACE fmt::fmt)
-  install(
-    TARGETS kalman_format
-    EXPORT "kalman-target"
-    FILE_SET "kalman_format_headers"
-    DESTINATION "include/fcarouge")
-endif()
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the assignment operator.
+//!
+//! @todo Rewrite this test as a property-based test.
+[[maybe_unused]] auto test{[] {
+  matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
+  auto r{a * 2.0};
+
+  assert(r(0, 0) == 2.0);
+  assert(r(0, 1) == 4.0);
+  assert(r(1, 0) == 6.0);
+  assert(r(1, 1) == 8.0);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
