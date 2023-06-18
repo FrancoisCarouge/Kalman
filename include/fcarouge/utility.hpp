@@ -78,6 +78,12 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! @details A `pack` type with no composed types.
 using empty_pack = internal::empty_pack;
 
+//! @brief A user-definable transposition object function.
+//!
+//! @details Implemented for known libraries. User-definable in other cases.
+//! Transposes the matrix.
+using transpose = internal::transpose;
+
 //! @brief The matrix type satisfying `X * Row = Column`.
 //!
 //! @details The resulting type of a matrix division. The resulting matrix type
@@ -86,12 +92,12 @@ using empty_pack = internal::empty_pack;
 template <typename Numerator, typename Denominator>
 using quotient = internal::quotient<Numerator, Denominator>;
 
-//! @brief A user-defined algebraic division solution.
+//! @brief A user-definable algebraic division solution.
 //!
-//! @details There exists several ways to find  `X` in  `X = lhs * rhs^-1` for
-//! different tradeoffs. The user provides their implementation. Often, matrix
-//! inversion is avoided by solving `X * rhs = lhs` for `rhs` through a
-//! decomposer.
+//! @details Implemented for known libraries. User-definable in other cases.
+//! There exists several ways to find  `X` in  `X = lhs * rhs^-1` for different
+//! tradeoffs. The user provides their implementation. Often, matrix inversion
+//! is avoided by solving `X * rhs = lhs` for `rhs` through a decomposer.
 template <typename Numerator, algebraic Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
     -> quotient<Numerator, Denominator>;

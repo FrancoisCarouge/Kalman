@@ -169,7 +169,7 @@ struct deducer final {
 //! specialization?
 template <typename Numerator, typename Denominator>
 using quotient =
-    std::decay_t<std::invoke_result_t<deducer, Numerator, Denominator>>;
+    std::remove_cvref_t<std::invoke_result_t<deducer, Numerator, Denominator>>;
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP
