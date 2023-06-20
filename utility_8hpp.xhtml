@@ -87,9 +87,7 @@ $(document).ready(function(){initNavTree('utility_8hpp.xhtml',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#concepts">Concepts</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#concepts">Concepts</a>  </div>
   <div class="headertitle"><div class="title">utility.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -125,7 +123,6 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
 Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1arithmetic.xhtml">fcarouge::arithmetic</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arithmetic concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1algebraic.xhtml">fcarouge::algebraic</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Algebraic concept. <br /></td></tr>
@@ -136,9 +133,12 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Types</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Tuple-like pack type.</p>
+<p >An alternative to tuple-like types. </p>
+</div></td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a> = internal::pack&lt; Types... &gt;</td></tr>
-<tr class="memdesc:aa5a28afb4550bbcbd55d875351de6e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like pack type.  <a href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">More...</a><br /></td></tr>
 <tr class="separator:aa5a28afb4550bbcbd55d875351de6e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">fcarouge::empty_pack</a> = internal::empty_pack</td></tr>
 <tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like empty pack type.  <a href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">More...</a><br /></td></tr>
@@ -153,10 +153,34 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >A user-definable algebraic division solution.</p>
+<p >Implemented for known libraries. User-definable in other cases. There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
+</div></td></tr>
 <tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , algebraic Denominator&gt; </td></tr>
 <tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">fcarouge::operator/</a> (const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; quotient&lt; Numerator, Denominator &gt;</td></tr>
-<tr class="memdesc:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A user-definable algebraic division solution.  <a href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">More...</a><br /></td></tr>
 <tr class="separator:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Algebraic Named Values</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >The identity matrix Eigen specialization. </p>
+</div></td></tr>
+<tr class="memitem:af5d9207021a8118ac46558fd9a453d6d"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
+<tr class="memitem:af5d9207021a8118ac46558fd9a453d6d"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d">fcarouge::identity_v</a></td></tr>
+<tr class="separator:af5d9207021a8118ac46558fd9a453d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3366ce166772e7a795df711ec8fd4e7"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:ad3366ce166772e7a795df711ec8fd4e7"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ad3366ce166772e7a795df711ec8fd4e7">fcarouge::identity_v&lt; Arithmetic &gt;</a> {1}</td></tr>
+<tr class="memdesc:ad3366ce166772e7a795df711ec8fd4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton identity matrix specialization.  <a href="namespacefcarouge.xhtml#ad3366ce166772e7a795df711ec8fd4e7">More...</a><br /></td></tr>
+<tr class="separator:ad3366ce166772e7a795df711ec8fd4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02138eddd50d93b33b26d70dfbd80edf"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
+<tr class="memitem:a02138eddd50d93b33b26d70dfbd80edf"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a02138eddd50d93b33b26d70dfbd80edf">fcarouge::zero_v</a></td></tr>
+<tr class="memdesc:a02138eddd50d93b33b26d70dfbd80edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <a href="namespacefcarouge.xhtml#a02138eddd50d93b33b26d70dfbd80edf">More...</a><br /></td></tr>
+<tr class="separator:a02138eddd50d93b33b26d70dfbd80edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f">fcarouge::zero_v&lt; Arithmetic &gt;</a> {0}</td></tr>
+<tr class="memdesc:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton zero matrix specialization.  <a href="namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f">More...</a><br /></td></tr>
+<tr class="separator:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The collection of utilities supporting the library. </p>
@@ -169,7 +193,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="utility_8hpp.xhtml">utility.hpp</a></li>
-    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Tue Jun 20 2023 03:42:40 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

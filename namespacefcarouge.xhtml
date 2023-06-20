@@ -88,9 +88,7 @@ $(document).ready(function(){initNavTree('namespacefcarouge.xhtml',''); initResi
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#concepts">Concepts</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#concepts">Concepts</a>  </div>
   <div class="headertitle"><div class="title">fcarouge Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -122,7 +120,6 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
 Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1arithmetic.xhtml">arithmetic</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arithmetic concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1algebraic.xhtml">algebraic</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Algebraic concept. <br /></td></tr>
@@ -133,9 +130,12 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Types</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >Tuple-like pack type.</p>
+<p >An alternative to tuple-like types. </p>
+</div></td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a> = internal::pack&lt; Types... &gt;</td></tr>
-<tr class="memdesc:aa5a28afb4550bbcbd55d875351de6e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like pack type.  <a href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">More...</a><br /></td></tr>
 <tr class="separator:aa5a28afb4550bbcbd55d875351de6e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">empty_pack</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">internal::empty_pack</a></td></tr>
 <tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like empty pack type.  <a href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">More...</a><br /></td></tr>
@@ -164,23 +164,41 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p >A user-definable algebraic division solution.</p>
+<p >Implemented for known libraries. User-definable in other cases. There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
+</div></td></tr>
 <tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , algebraic Denominator&gt; </td></tr>
 <tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">operator/</a> (const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; <a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">quotient</a>&lt; Numerator, Denominator &gt;</td></tr>
-<tr class="memdesc:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A user-definable algebraic division solution.  <a href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">More...</a><br /></td></tr>
 <tr class="separator:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algebraic Named Values</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >The identity matrix. </p>
+<tr><td colspan="2"><div class="groupText"><p >The identity matrix Eigen specialization. </p>
 </div></td></tr>
-<tr class="memitem:a6f4bb1994e50717a4cc1b25bd6adc1a7"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
-<tr class="memitem:a6f4bb1994e50717a4cc1b25bd6adc1a7"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a6f4bb1994e50717a4cc1b25bd6adc1a7">identity_v</a> {internal::identity_v&lt;Type&gt;}</td></tr>
-<tr class="separator:a6f4bb1994e50717a4cc1b25bd6adc1a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5fbe6f4ccd2a0d0685d10a4c7e81a46"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
-<tr class="memitem:ae5fbe6f4ccd2a0d0685d10a4c7e81a46"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae5fbe6f4ccd2a0d0685d10a4c7e81a46">zero_v</a> {internal::zero_v&lt;Type&gt;}</td></tr>
-<tr class="memdesc:ae5fbe6f4ccd2a0d0685d10a4c7e81a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <a href="namespacefcarouge.xhtml#ae5fbe6f4ccd2a0d0685d10a4c7e81a46">More...</a><br /></td></tr>
-<tr class="separator:ae5fbe6f4ccd2a0d0685d10a4c7e81a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d9207021a8118ac46558fd9a453d6d"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
+<tr class="memitem:af5d9207021a8118ac46558fd9a453d6d"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d">identity_v</a></td></tr>
+<tr class="separator:af5d9207021a8118ac46558fd9a453d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3366ce166772e7a795df711ec8fd4e7"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:ad3366ce166772e7a795df711ec8fd4e7"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ad3366ce166772e7a795df711ec8fd4e7">identity_v&lt; Arithmetic &gt;</a> {1}</td></tr>
+<tr class="memdesc:ad3366ce166772e7a795df711ec8fd4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton identity matrix specialization.  <a href="namespacefcarouge.xhtml#ad3366ce166772e7a795df711ec8fd4e7">More...</a><br /></td></tr>
+<tr class="separator:ad3366ce166772e7a795df711ec8fd4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02138eddd50d93b33b26d70dfbd80edf"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
+<tr class="memitem:a02138eddd50d93b33b26d70dfbd80edf"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a02138eddd50d93b33b26d70dfbd80edf">zero_v</a></td></tr>
+<tr class="memdesc:a02138eddd50d93b33b26d70dfbd80edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <a href="namespacefcarouge.xhtml#a02138eddd50d93b33b26d70dfbd80edf">More...</a><br /></td></tr>
+<tr class="separator:a02138eddd50d93b33b26d70dfbd80edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f">zero_v&lt; Arithmetic &gt;</a> {0}</td></tr>
+<tr class="memdesc:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton zero matrix specialization.  <a href="namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f">More...</a><br /></td></tr>
+<tr class="separator:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86526ddb6bfec8982d096d3d47fae040"><td class="memTemplParams" colspan="2">template&lt;eigen Matrix&gt; </td></tr>
+<tr class="memitem:a86526ddb6bfec8982d096d3d47fae040"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a86526ddb6bfec8982d096d3d47fae040">identity_v&lt; Matrix &gt;</a> {Matrix::Identity()}</td></tr>
+<tr class="separator:a86526ddb6bfec8982d096d3d47fae040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a906ad0e7a837c8935b27497a2e02f2c4"><td class="memTemplParams" colspan="2">template&lt;eigen Matrix&gt; </td></tr>
+<tr class="memitem:a906ad0e7a837c8935b27497a2e02f2c4"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a906ad0e7a837c8935b27497a2e02f2c4">zero_v&lt; Matrix &gt;</a> {Matrix::Zero()}</td></tr>
+<tr class="memdesc:a906ad0e7a837c8935b27497a2e02f2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix Eigen specialization.  <a href="namespacefcarouge.xhtml#a906ad0e7a837c8935b27497a2e02f2c4">More...</a><br /></td></tr>
+<tr class="separator:a906ad0e7a837c8935b27497a2e02f2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Francois Carouge's projects namespace. </p>
@@ -221,7 +239,7 @@ template&lt;typename Type  = double, auto Row = 1&gt; </div>
 <p>Tuple-like empty pack type. </p>
 <p >A <code>pack</code> type with no composed types. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00079">79</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00084">84</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -257,10 +275,7 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Tuple-like pack type. </p>
-<p >An alternative to tuple-like types. </p>
-
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00074">74</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00079">79</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -281,7 +296,7 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
 <p>The matrix type satisfying <code>X * Row = Column</code>. </p>
 <p >The resulting type of a matrix division. The resulting matrix type has as many rows as the <code>Row</code> matrix, respectively for columns as the <code>Column</code> matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00098">98</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -320,7 +335,7 @@ template&lt;typename Type  = double, auto Column = 1&gt; </div>
 <p>A user-definable transposition object function. </p>
 <p >Implemented for known libraries. User-definable in other cases. Transposes the matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00085">85</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00090">90</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -360,9 +375,6 @@ template&lt;typename Numerator , algebraic Denominator&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>A user-definable algebraic division solution. </p>
-<p >Implemented for known libraries. User-definable in other cases. There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
@@ -377,8 +389,8 @@ template&lt;typename Numerator , algebraic Denominator&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a6f4bb1994e50717a4cc1b25bd6adc1a7" name="a6f4bb1994e50717a4cc1b25bd6adc1a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f4bb1994e50717a4cc1b25bd6adc1a7">&#9670;&nbsp;</a></span>identity_v</h2>
+<a id="af5d9207021a8118ac46558fd9a453d6d" name="af5d9207021a8118ac46558fd9a453d6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5d9207021a8118ac46558fd9a453d6d">&#9670;&nbsp;</a></span>identity_v</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,7 +401,63 @@ template&lt;typename Type  = double&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const auto fcarouge::identity_v {internal::identity_v&lt;Type&gt;}</td>
+          <td class="memname">constexpr Type fcarouge::identity_v</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{internal::not_implemented&lt;Type&gt;{</div>
+<div class="line">    <span class="stringliteral">&quot;Implement the linear algebra identity matrix for this type.&quot;</span>}}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00120">120</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad3366ce166772e7a795df711ec8fd4e7" name="ad3366ce166772e7a795df711ec8fd4e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3366ce166772e7a795df711ec8fd4e7">&#9670;&nbsp;</a></span>identity_v&lt; Arithmetic &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;arithmetic Arithmetic&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr Arithmetic <a class="el" href="namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d">fcarouge::identity_v</a>&lt; Arithmetic &gt; {1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The singleton identity matrix specialization. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00125">125</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a86526ddb6bfec8982d096d3d47fae040" name="a86526ddb6bfec8982d096d3d47fae040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86526ddb6bfec8982d096d3d47fae040">&#9670;&nbsp;</a></span>identity_v&lt; Matrix &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;eigen Matrix&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto <a class="el" href="namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d">fcarouge::identity_v</a>&lt; Matrix &gt; {Matrix::Identity()}</td>
         </tr>
       </table>
   </td>
@@ -403,8 +471,8 @@ template&lt;typename Type  = double&gt; </div>
 
 </div>
 </div>
-<a id="ae5fbe6f4ccd2a0d0685d10a4c7e81a46" name="ae5fbe6f4ccd2a0d0685d10a4c7e81a46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5fbe6f4ccd2a0d0685d10a4c7e81a46">&#9670;&nbsp;</a></span>zero_v</h2>
+<a id="a02138eddd50d93b33b26d70dfbd80edf" name="a02138eddd50d93b33b26d70dfbd80edf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02138eddd50d93b33b26d70dfbd80edf">&#9670;&nbsp;</a></span>zero_v</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -415,7 +483,66 @@ template&lt;typename Type  = double&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const auto fcarouge::zero_v {internal::zero_v&lt;Type&gt;}</td>
+          <td class="memname">constexpr Type fcarouge::zero_v</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{internal::not_implemented&lt;Type&gt;{</div>
+<div class="line">    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}}</div>
+</div><!-- fragment -->
+<p>The zero matrix. </p>
+<p >User-defined. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00131">131</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8cc0f52579fef5ea2023d3927a3b1a7f" name="a8cc0f52579fef5ea2023d3927a3b1a7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cc0f52579fef5ea2023d3927a3b1a7f">&#9670;&nbsp;</a></span>zero_v&lt; Arithmetic &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;arithmetic Arithmetic&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr Arithmetic <a class="el" href="namespacefcarouge.xhtml#a02138eddd50d93b33b26d70dfbd80edf">fcarouge::zero_v</a>&lt; Arithmetic &gt; {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The singleton zero matrix specialization. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00136">136</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a906ad0e7a837c8935b27497a2e02f2c4" name="a906ad0e7a837c8935b27497a2e02f2c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906ad0e7a837c8935b27497a2e02f2c4">&#9670;&nbsp;</a></span>zero_v&lt; Matrix &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;eigen Matrix&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto <a class="el" href="namespacefcarouge.xhtml#a02138eddd50d93b33b26d70dfbd80edf">fcarouge::zero_v</a>&lt; Matrix &gt; {Matrix::Zero()}</td>
         </tr>
       </table>
   </td>
@@ -425,9 +552,9 @@ template&lt;typename Type  = double&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>The zero matrix. </p>
+<p>The zero matrix Eigen specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="linalg_8hpp_source.xhtml#l00078">78</a> of file <a class="el" href="linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linalg_8hpp_source.xhtml#l00077">77</a> of file <a class="el" href="linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
 </div>
 </div>
@@ -437,7 +564,7 @@ template&lt;typename Type  = double&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li>
-    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Tue Jun 20 2023 03:42:40 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

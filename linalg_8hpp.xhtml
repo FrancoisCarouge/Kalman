@@ -93,14 +93,14 @@ $(document).ready(function(){initNavTree('linalg_8hpp.xhtml',''); initResizable(
 
 <p>Linear algebra facade for Eigen3 third party implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="internal_2utility_8hpp_source.xhtml">fcarouge/internal/utility.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="utility_8hpp_source.xhtml">fcarouge/utility.hpp</a>&quot;</code><br />
 <code>#include &lt;Eigen/Eigen&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for linalg.hpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="linalg_8hpp__incl.svg" width="302" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="linalg_8hpp__incl.svg" width="279" height="276"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -140,15 +140,15 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algebraic Named Values</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >The identity matrix. </p>
+<tr><td colspan="2"><div class="groupText"><p >The identity matrix Eigen specialization. </p>
 </div></td></tr>
-<tr class="memitem:a6f4bb1994e50717a4cc1b25bd6adc1a7"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
-<tr class="memitem:a6f4bb1994e50717a4cc1b25bd6adc1a7"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a6f4bb1994e50717a4cc1b25bd6adc1a7">fcarouge::identity_v</a> {internal::identity_v&lt;Type&gt;}</td></tr>
-<tr class="separator:a6f4bb1994e50717a4cc1b25bd6adc1a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5fbe6f4ccd2a0d0685d10a4c7e81a46"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
-<tr class="memitem:ae5fbe6f4ccd2a0d0685d10a4c7e81a46"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae5fbe6f4ccd2a0d0685d10a4c7e81a46">fcarouge::zero_v</a> {internal::zero_v&lt;Type&gt;}</td></tr>
-<tr class="memdesc:ae5fbe6f4ccd2a0d0685d10a4c7e81a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <a href="namespacefcarouge.xhtml#ae5fbe6f4ccd2a0d0685d10a4c7e81a46">More...</a><br /></td></tr>
-<tr class="separator:ae5fbe6f4ccd2a0d0685d10a4c7e81a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86526ddb6bfec8982d096d3d47fae040"><td class="memTemplParams" colspan="2">template&lt;eigen Matrix&gt; </td></tr>
+<tr class="memitem:a86526ddb6bfec8982d096d3d47fae040"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a86526ddb6bfec8982d096d3d47fae040">fcarouge::identity_v&lt; Matrix &gt;</a> {Matrix::Identity()}</td></tr>
+<tr class="separator:a86526ddb6bfec8982d096d3d47fae040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a906ad0e7a837c8935b27497a2e02f2c4"><td class="memTemplParams" colspan="2">template&lt;eigen Matrix&gt; </td></tr>
+<tr class="memitem:a906ad0e7a837c8935b27497a2e02f2c4"><td class="memTemplItemLeft" align="right" valign="top">const auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a906ad0e7a837c8935b27497a2e02f2c4">fcarouge::zero_v&lt; Matrix &gt;</a> {Matrix::Zero()}</td></tr>
+<tr class="memdesc:a906ad0e7a837c8935b27497a2e02f2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix Eigen specialization.  <a href="namespacefcarouge.xhtml#a906ad0e7a837c8935b27497a2e02f2c4">More...</a><br /></td></tr>
+<tr class="separator:a906ad0e7a837c8935b27497a2e02f2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Linear algebra facade for Eigen3 third party implementation. </p>
@@ -162,7 +162,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c1845e5bf011c2136883d0d7188f50e9.xhtml">linalg</a></li><li class="navelem"><a class="el" href="dir_e6c5ed0f3a4dd8c39ba2a3155e1bbb7c.xhtml">eigen</a></li><li class="navelem"><a class="el" href="dir_171332e70b2c51067b72c12a9b837707.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="linalg_8hpp.xhtml">linalg.hpp</a></li>
-    <li class="footer">Generated on Sun Jun 18 2023 19:18:36 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Tue Jun 20 2023 03:42:40 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
