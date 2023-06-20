@@ -47,6 +47,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/utility.hpp"
 
 namespace fcarouge {
+//! @name Concepts
+//! @{
 //! @brief Arithmetic concept.
 //!
 //! @details Any integer or floating point type.
@@ -67,7 +69,10 @@ concept algebraic = internal::algebraic<Type>;
 //! @details A third party Eigen3 algebraic concept.
 template <typename Type>
 concept eigen = internal::eigen<Type>;
+//! @}
 
+//! @name Types
+//! @{
 //! @brief Tuple-like pack type.
 //!
 //! @details An alternative to tuple-like types.
@@ -91,7 +96,10 @@ using transpose = internal::transpose;
 //! `Column` matrix.
 template <typename Numerator, typename Denominator>
 using quotient = internal::quotient<Numerator, Denominator>;
+//! @}
 
+//! @name Functions
+//! @{
 //! @brief A user-definable algebraic division solution.
 //!
 //! @details Implemented for known libraries. User-definable in other cases.
@@ -101,6 +109,32 @@ using quotient = internal::quotient<Numerator, Denominator>;
 template <typename Numerator, algebraic Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
     -> quotient<Numerator, Denominator>;
+//! @}
+
+//! @name Algebraic Named Values
+//! @{
+//! @brief The identity matrix.
+//!
+//! @details User-defined.
+template <typename Type = double>
+inline constexpr Type identity_v{internal::not_implemented<Type>{
+    "Implement the linear algebra identity matrix for this type."}};
+
+//! @brief The singleton identity matrix specialization.
+template <arithmetic Arithmetic>
+inline constexpr Arithmetic identity_v<Arithmetic>{1};
+
+//! @brief The zero matrix.
+//!
+//! @details User-defined.
+template <typename Type = double>
+inline constexpr Type zero_v{internal::not_implemented<Type>{
+    "Implement the linear algebra zero matrix for this type."}};
+
+//! @brief The singleton zero matrix specialization.
+template <arithmetic Arithmetic>
+inline constexpr Arithmetic zero_v<Arithmetic>{0};
+//! @}
 } // namespace fcarouge
 
 #endif // FCAROUGE_UTILITY_HPP

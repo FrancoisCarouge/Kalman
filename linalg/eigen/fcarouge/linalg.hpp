@@ -47,7 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @note The Eigen3 linear algebra is not constexpr-compatible.
 
-#include "fcarouge/internal/utility.hpp"
+#include "fcarouge/utility.hpp"
 
 #include <Eigen/Eigen>
 
@@ -69,15 +69,13 @@ using column_vector = Eigen::Vector<Type, Row>;
 
 //! @name Algebraic Named Values
 //! @{
-//! @brief The identity matrix.
-template <typename Type = double>
-inline const auto identity_v{internal::identity_v<Type>};
+//! @brief The identity matrix Eigen specialization.
+template <eigen Matrix>
+inline const auto identity_v<Matrix>{Matrix::Identity()};
 
-//! @brief The zero matrix.
-template <typename Type = double>
-inline const auto zero_v{internal::zero_v<Type>};
+//! @brief The zero matrix Eigen specialization.
+template <eigen Matrix> inline const auto zero_v<Matrix>{Matrix::Zero()};
 //! @}
-
 } // namespace fcarouge
 
 #endif // FCAROUGE_LINALG_HPP
