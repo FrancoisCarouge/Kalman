@@ -96,28 +96,6 @@ template <typename Type> struct not_implemented {
   static_assert(none, "This type is not implemented. See message.");
 };
 
-template <typename Type = double>
-inline constexpr Type identity_v{not_implemented<Type>{
-    "The linear algebra identity matrix for this type is not implemented."}};
-
-template <arithmetic Arithmetic>
-inline constexpr Arithmetic identity_v<Arithmetic>{1};
-
-template <typename Matrix>
-  requires requires(Matrix value) { value.Identity(); }
-inline const auto identity_v<Matrix>{Matrix::Identity()};
-
-template <typename Type = double>
-inline constexpr Type zero_v{not_implemented<Type>{
-    "The linear algebra zero matrix for this type is not implemented."}};
-
-template <arithmetic Arithmetic>
-inline constexpr Arithmetic zero_v<Arithmetic>{0};
-
-template <typename Matrix>
-  requires requires(Matrix value) { value.Zero(); }
-inline const auto zero_v<Matrix>{Matrix::Zero()};
-
 struct transpose final {
   template <arithmetic Arithmetic>
   [[nodiscard]] inline constexpr auto
