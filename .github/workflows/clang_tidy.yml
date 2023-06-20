@@ -1,0 +1,34 @@
+name: "ClangTidy"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.1.0
+    - name: "Tool: Clang 16"
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x llvm.sh
+        sudo ./llvm.sh 16 all
+    - name: "Configure"
+      env:
+        CXX: "clang++-16"
+      run: |
+        cmake -S . -B "build" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+    - name: Verify
+      run: |
+        cat build/compile_commands.json
+        FILES=`find . \
+          -type f -path "./build/benchmark/*.cpp" -o \
+          -type f -path "./sample/*.cpp" -o \
+          -type f -path "./source/*.cpp" -o \
+          -type f -path "./test/*.cpp"`
+        echo $FILES
+        clang-tidy-16 -p "build" $FILES
