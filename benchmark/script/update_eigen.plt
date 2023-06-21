@@ -40,7 +40,7 @@
 set terminal svg enhanced background rgb "white" size 800,600
 set datafile separator ","
 set title "{/:Bold Eigen Update Float Group Benchmark}\n"
-set output "kalman/benchmark/image/eigen_update.svg"
+set output "kalman/benchmark/image/update_eigen.svg"
 set timestamp
 set grid
 set grid ztics
@@ -61,4 +61,4 @@ set pm3d
 set hidden3d
 set key noautotitle
 
-splot "/tmp/kalman/eigen_update.csv" using 1:2:3 with lines
+splot "/tmp/kalman/update_eigen.csv" using 1:2:3 with lines

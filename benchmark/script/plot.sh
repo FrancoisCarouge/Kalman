@@ -39,11 +39,21 @@
 
 set -e
 
-mv build/benchmark/*.json kalman/benchmark/result 2>/dev/null || true
+echo -n "Plotting:"
+
+# List out the new benchmark results.
+RESULTS=`find "build/benchmark/" -iname "*.json"`
+for RESULT in ${RESULTS}; do
+  echo "New benchmark resut: ${RESULT}"
+done
+cp build/benchmark/*.json kalman/benchmark/result 2>/dev/null || true
 
 rm -rf /tmp/kalman
 mkdir /tmp/kalman
 
+# Retrieve, convert, standardize output as CSV format file for gnuplot
+# consumption.
+echo "Preparing data..."
 RESULTS=`find "kalman/benchmark/result" -iname "*.json"`
 for RESULT in ${RESULTS}; do
   NAME=$(basename ${RESULT} .json)
@@ -61,17 +71,21 @@ for RESULT in ${RESULTS}; do
     > /tmp/kalman/${NAME}.csv
 done
 
-for STATE in {1..32}; do
-  for OUTPUT in {1..32}; do
-    echo -n "${STATE}, ${OUTPUT}, " >> "/tmp/kalman/eigen_update.csv"
-    cat "/tmp/kalman/eigen_update_${STATE}x${OUTPUT}x0.csv" >> "/tmp/kalman/eigen_update.csv"
-  done
-  for INPUT in {1..32}; do
-    echo -n "${STATE}, ${INPUT}, " >> "/tmp/kalman/eigen_predict.csv"
-    cat "/tmp/kalman/eigen_predict_${STATE}x1x${INPUT}.csv" >> "/tmp/kalman/eigen_predict.csv"
+# Further data presentation as CSV for gnuplot.
+for BACKEND in "eigen"; do
+  for STATE in {1..32}; do
+    for OUTPUT in {1..32}; do
+      echo -n "${STATE}, ${OUTPUT}, " >> "/tmp/kalman/update_${BACKEND}.csv"
+      cat "/tmp/kalman/update_${BACKEND}_${STATE}x${OUTPUT}x0.csv" >> "/tmp/kalman/update_${BACKEND}.csv"
+    done
+    for INPUT in {1..32}; do
+      echo -n "${STATE}, ${INPUT}, " >> "/tmp/kalman/predict_${BACKEND}.csv"
+      cat "/tmp/kalman/predict_${BACKEND}_${STATE}x1x${INPUT}.csv" >> "/tmp/kalman/predict_${BACKEND}.csv"
+    done
   done
 done
 
+echo "Plotting..."
 PLOTS=`find "kalman/benchmark/script" -iname "*.plt"`
 for PLOT in ${PLOTS}; do
   gnuplot ${PLOT}
