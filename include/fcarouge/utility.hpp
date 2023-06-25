@@ -83,12 +83,6 @@ template <typename... Types> using pack = internal::pack<Types...>;
 //! @details A `pack` type with no composed types.
 using empty_pack = internal::empty_pack;
 
-//! @brief A user-definable transposition object function.
-//!
-//! @details Implemented for known libraries. User-definable in other cases.
-//! Transposes the matrix.
-using transpose = internal::transpose;
-
 //! @brief The matrix type satisfying `X * Row = Column`.
 //!
 //! @details The resulting type of a matrix division. The resulting matrix type
