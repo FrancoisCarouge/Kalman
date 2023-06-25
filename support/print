@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_FORMAT
-#define FCAROUGE_FORMAT
+#ifndef FCAROUGE_PRINT
+#define FCAROUGE_PRINT
 
 // Standard printer compiler support. Some mainstream compilers do not support
 // `std::print` as of May 2023. The support is brought in through the `fmt`
@@ -61,4 +61,4 @@ inline void print(std::FILE *file, std::string_view format,
 }
 } // namespace std
 
-#endif // FCAROUGE_FORMAT
+#endif // FCAROUGE_PRINT
