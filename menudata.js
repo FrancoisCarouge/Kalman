@@ -63,7 +63,6 @@ var menudata={children:[
 {text:"q",url:"namespacemembers_type.xhtml#index_q"},
 {text:"r",url:"namespacemembers_type.xhtml#index_r"},
 {text:"s",url:"namespacemembers_type.xhtml#index_s"},
-{text:"t",url:"namespacemembers_type.xhtml#index_t"},
 {text:"v",url:"namespacemembers_type.xhtml#index_v"}]}]}]},
 {text:"Concepts",url:"concepts.xhtml"},
 {text:"Classes",url:"annotated.xhtml",children:[

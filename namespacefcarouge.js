@@ -27,7 +27,6 @@ var namespacefcarouge =
     [ "pack", "namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27", null ],
     [ "quotient", "namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992", null ],
     [ "row_vector", "namespacefcarouge.xhtml#a13ee20558d8cfceef63e312b88e9b1b3", null ],
-    [ "transpose", "namespacefcarouge.xhtml#a4eb9e4891ea365699582d1b89f45bf92", null ],
     [ "operator/", "namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a", null ],
     [ "identity_v", "namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d", null ],
     [ "identity_v< Arithmetic >", "namespacefcarouge.xhtml#ad3366ce166772e7a795df711ec8fd4e7", null ],
