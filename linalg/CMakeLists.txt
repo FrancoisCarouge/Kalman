@@ -45,3 +45,11 @@ FetchContent_MakeAvailable(eigen)
 add_library(kalman_linalg_eigen INTERFACE)
 target_include_directories(kalman_linalg_eigen INTERFACE "eigen")
 target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman)
+
+add_library(kalman_linalg_lazy INTERFACE)
+target_include_directories(kalman_linalg_lazy INTERFACE "lazy")
+target_link_libraries(kalman_linalg_lazy INTERFACE kalman kalman_generator)
+
+add_library(kalman_linalg_naive INTERFACE)
+target_include_directories(kalman_linalg_naive INTERFACE "naive")
+target_link_libraries(kalman_linalg_naive INTERFACE kalman)

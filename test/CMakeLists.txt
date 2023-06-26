@@ -60,7 +60,7 @@ foreach(
             $<TARGET_FILE:kalman_test_${NAME}_driver>)
 endforeach()
 
-foreach(BACKEND IN ITEMS eigen)
+foreach(BACKEND IN ITEMS "eigen")
   foreach(
     TEST
     "kalman_constructor_default_1x1x3.cpp"
@@ -72,7 +72,27 @@ foreach(BACKEND IN ITEMS eigen)
     "kalman_constructor_default_5x4x1.cpp"
     "kalman_constructor_default_5x4x3.cpp"
     "kalman_f_5x4x3.cpp"
-    "kalman_h_5x4x3.cpp"
+    "kalman_h_5x4x3.cpp")
+    get_filename_component(NAME ${TEST} NAME_WE)
+    add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
+    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
+                          PROPERTIES CXX_STANDARD 23)
+    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
+                          PROPERTIES CXX_EXTENSIONS OFF)
+    target_link_libraries(kalman_test_${BACKEND}_${NAME}_driver
+                          PRIVATE kalman kalman_main kalman_linalg_${BACKEND})
+    add_test(kalman_test_${BACKEND}_${NAME}
+             kalman_test_${BACKEND}_${NAME}_driver)
+    add_test(
+      NAME kalman_${BACKEND}_valgrind_${NAME}
+      COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
+              $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
+  endforeach()
+endforeach()
+
+foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
+  foreach(
+    TEST
     "linalg_addition.cpp"
     "linalg_assign.cpp"
     "linalg_constructor_1x1_array.cpp"
