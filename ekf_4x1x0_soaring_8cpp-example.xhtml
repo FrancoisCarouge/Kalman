@@ -94,9 +94,9 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <dd>
 <a href="https://arxiv.org/abs/1802.08215">https://arxiv.org/abs/1802.08215</a></dd></dl>
 <p>The autonomous soaring functionality in ArduPilot allows the plane to respond to rising air current in order to extend endurance and gain altitude with minimal use of the motor. The full technical description is available in S. Tabor, I. Guilliard, A. Kolobov. ArduSoar: an Open-Source Thermalling Controller for Resource-Constrained Autopilots. International Conference on Intelligent Robots and Systems (IROS), 2018. Estimating the parameters of a Wharington et al thermal model state X: [W, R, x, y] with the speed or strength W [m.s^-1] at the center of the thermal of radius R [m] with the center distance x north of the sUAV and y east of the sUAV.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo:</a></b></dt><dd>Add a data set and assert for correctness of results. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000030">Todo:</a></b></dt><dd>Add a data set and assert for correctness of results. </dd></dl>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="linalg_8hpp.xhtml">fcarouge/linalg.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
@@ -314,7 +314,6 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af6ce8697cff935182e0038cdcfd844f4"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af6ce8697cff935182e0038cdcfd844f4">fcarouge::kalman::state</a></div><div class="ttdeci">typename implementation::state state</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00189">kalman.hpp:189</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af92fafd91695af30574a7be7771e5357"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af92fafd91695af30574a7be7771e5357">fcarouge::kalman::output_uncertainty</a></div><div class="ttdeci">typename implementation::output_uncertainty output_uncertainty</div><div class="ttdoc">Type of the observation noise correlated variance matrix R.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00210">kalman.hpp:210</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="alinalg_8hpp_xhtml"><div class="ttname"><a href="linalg_8hpp.xhtml">linalg.hpp</a></div><div class="ttdoc">Linear algebra facade for Eigen3 third party implementation.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a336fa3b575fd3f1d187dec64aafbcbc0"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a336fa3b575fd3f1d187dec64aafbcbc0">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; float, Size &gt; vector</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00009">ekf_4x1x0_soaring.cpp:9</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a53cc27ea160c76f1ea37a29541bd98b5"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a53cc27ea160c76f1ea37a29541bd98b5">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::sample</a></div><div class="ttdeci">auto sample</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00036">ekf_4x1x0_soaring.cpp:36</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a7e29df93d84e25987f0c06c89a42b865"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">vector&lt; 4 &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00010">ekf_4x1x0_soaring.cpp:10</a></div></div>
@@ -326,7 +325,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jun 25 2023 22:11:06 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Mon Jun 26 2023 03:25:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

@@ -1,8 +1,24 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.xhtml#a8216c1645620cdb2f629cde3ac02ffef',1,'main.cpp']]],
-  ['main_2ecpp_1',['main.cpp',['../main_8cpp.xhtml',1,'']]],
-  ['matrix_2',['matrix',['../namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6',1,'fcarouge::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__1x1x3_8cpp_03.xhtml#a3ea4b8d4d510b0a7e4699be04ef54abe',1,'fcarouge::test::anonymous_namespace{kalman_constructor_default_1x1x3.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__1x4x1_8cpp_03.xhtml#a65180e5e0cb1e8aa15b8138a2c4d7724',1,'fcarouge::test::anonymous_namespace{kalman_constructor_default_1x4x1.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__1x4x3_8cpp_03.xhtml#a1fab9d63ec65bfdade805cf0fb4d57ee',1,'fcarouge::test::anonymous_namespace{kalman_constructor_default_1x4x3.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x1x1_8cpp_03.xhtml#a4a96c37b3d8c6687abaa5b599ab38999',1,'fcarouge::test::anonymous_namespace{kalman_constructor_default_5x1x1.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x1x3_8cpp_03.xhtml#ab014392d5339532eccbf32170d56b332',1,'fcarouge::test::anonymous_namespace{kalman_constructor_default_5x1x3.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x4x0_8cpp_03.xhtml#a15c280d084950bc1197203e2bcac9a8b',1,'fcarouge::test::anonymous_namespace{kalman_constructor_default_5x4x0.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x4x1_8cpp_03.xhtml#af03b68a45bf0d5c48a084fe8ac225a2e',1,'fcarouge::test::anonymous_namespace{kalman_constructor_default_5x4x1.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x4x3_8cpp_03.xhtml#a5d6857909eb44d44ac9258b4f3942874',1,'fcarouge::test::anonymous_namespace{kalman_constructor_default_5x4x3.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__f__5x4x3_8cpp_03.xhtml#adc33db9532961b41965cab036786ed92',1,'fcarouge::test::anonymous_namespace{kalman_f_5x4x3.cpp}::matrix()'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml#a62a7c4179316c139bec9f340db06342e',1,'fcarouge::test::anonymous_namespace{kalman_h_5x4x3.cpp}::matrix()']]],
-  ['merchantability_3',['MERCHANTABILITY',['../_l_i_c_e_n_s_e_8txt.xhtml#a452e1ae031695ad10d3455f2c8b6514c',1,'LICENSE.txt']]],
-  ['modify_4',['modify',['../_l_i_c_e_n_s_e_8txt.xhtml#aec8d7668000cae0b4e55f417c28da71e',1,'LICENSE.txt']]]
+  ['laws_0',['laws',['../_l_i_c_e_n_s_e_8txt.xhtml#ae5f41137d2c741b8ea91bb59a46824ae',1,'LICENSE.txt']]],
+  ['liability_1',['LIABILITY',['../_l_i_c_e_n_s_e_8txt.xhtml#a7950fa72a066177fc05a22a49351ca5e',1,'LICENSE.txt']]],
+  ['license_2etxt_2',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
+  ['linalg_2ehpp_3',['linalg.hpp',['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../lazy_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../naive_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]],
+  ['linalg_5faddition_2ecpp_4',['linalg_addition.cpp',['../linalg__addition_8cpp.xhtml',1,'']]],
+  ['linalg_5fassign_2ecpp_5',['linalg_assign.cpp',['../linalg__assign_8cpp.xhtml',1,'']]],
+  ['linalg_5fconstructor_5f1x1_2ecpp_6',['linalg_constructor_1x1.cpp',['../linalg__constructor__1x1_8cpp.xhtml',1,'']]],
+  ['linalg_5fconstructor_5f1x1_5farray_2ecpp_7',['linalg_constructor_1x1_array.cpp',['../linalg__constructor__1x1__array_8cpp.xhtml',1,'']]],
+  ['linalg_5fconstructor_5f1xn_2ecpp_8',['linalg_constructor_1xn.cpp',['../linalg__constructor__1xn_8cpp.xhtml',1,'']]],
+  ['linalg_5fconstructor_5f1xn_5farray_2ecpp_9',['linalg_constructor_1xn_array.cpp',['../linalg__constructor__1xn__array_8cpp.xhtml',1,'']]],
+  ['linalg_5fconstructor_5finitializer_5flists_2ecpp_10',['linalg_constructor_initializer_lists.cpp',['../linalg__constructor__initializer__lists_8cpp.xhtml',1,'']]],
+  ['linalg_5fconstructor_5fnx1_2ecpp_11',['linalg_constructor_nx1.cpp',['../linalg__constructor__nx1_8cpp.xhtml',1,'']]],
+  ['linalg_5fconstructor_5fnx1_5farray_2ecpp_12',['linalg_constructor_nx1_array.cpp',['../linalg__constructor__nx1__array_8cpp.xhtml',1,'']]],
+  ['linalg_5fcopy_2ecpp_13',['linalg_copy.cpp',['../linalg__copy_8cpp.xhtml',1,'']]],
+  ['linalg_5fidentity_2ecpp_14',['linalg_identity.cpp',['../linalg__identity_8cpp.xhtml',1,'']]],
+  ['linalg_5fidentity_5fdefault_2ecpp_15',['linalg_identity_default.cpp',['../linalg__identity__default_8cpp.xhtml',1,'']]],
+  ['linalg_5fmultiplication_5farithmetic_2ecpp_16',['linalg_multiplication_arithmetic.cpp',['../linalg__multiplication__arithmetic_8cpp.xhtml',1,'']]],
+  ['linalg_5foperator_5fbracket_2ecpp_17',['linalg_operator_bracket.cpp',['../linalg__operator__bracket_8cpp.xhtml',1,'']]],
+  ['linalg_5foperator_5fequality_2ecpp_18',['linalg_operator_equality.cpp',['../linalg__operator__equality_8cpp.xhtml',1,'']]],
+  ['linalg_5fzero_2ecpp_19',['linalg_zero.cpp',['../linalg__zero_8cpp.xhtml',1,'']]],
+  ['linalg_5fzero_5fdefault_2ecpp_20',['linalg_zero_default.cpp',['../linalg__zero__default_8cpp.xhtml',1,'']]]
 ];

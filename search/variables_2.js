@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['filter_0',['filter',['../classfcarouge_1_1kalman.xhtml#a445c99c395ca229e44806a3c044e5e13',1,'fcarouge::kalman']]],
-  ['from_1',['FROM',['../_l_i_c_e_n_s_e_8txt.xhtml#ad60b0e989fbef624c6d9ae96f49ff8e5',1,'LICENSE.txt']]]
+  ['data_0',['data',['../structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce',1,'fcarouge::matrix']]]
 ];

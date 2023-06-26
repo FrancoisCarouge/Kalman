@@ -1,5 +1,14 @@
 var searchData=
 [
-  ['q_0',['q',['../classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605',1,'fcarouge::kalman::q() const -&gt; const process_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#adb6b142268aa61b73de726f99fef51ea',1,'fcarouge::kalman::q() -&gt; process_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a81b06eb44c221c9de437574983b57927',1,'fcarouge::kalman::q(const auto &amp;value, const auto &amp;...values)']]],
-  ['quotient_1',['quotient',['../namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe',1,'fcarouge::internal::quotient()'],['../namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992',1,'fcarouge::quotient()']]]
+  ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508',1,'fcarouge::kalman::p() const -&gt; const estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a7376e78189711ae8c1e304b2a7cde703',1,'fcarouge::kalman::p() -&gt; estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a6a61e7dfc8c8de4ef5bcb126417f9d98',1,'fcarouge::kalman::p(const auto &amp;value, const auto &amp;...values)']]],
+  ['pack_1',['pack',['../namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27',1,'fcarouge']]],
+  ['parse_2',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#ab75415d6c64f84ed42e54ea33b3fd87b',1,'std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;, Char &gt;']]],
+  ['predict_3',['predict',['../classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec',1,'fcarouge::kalman::predict(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103',1,'fcarouge::kalman::predict() const']]],
+  ['predict_5f1x1x0_2ecpp_4',['predict_1x1x0.cpp',['../predict__1x1x0_8cpp.xhtml',1,'']]],
+  ['predict_5f1x1x1_2ecpp_5',['predict_1x1x1.cpp',['../predict__1x1x1_8cpp.xhtml',1,'']]],
+  ['predict_5flinalg_5fx1x_2ecpp_6',['predict_linalg_x1x.cpp',['../predict__linalg__x1x_8cpp.xhtml',1,'']]],
+  ['process_5funcertainty_7',['process_uncertainty',['../classfcarouge_1_1kalman.xhtml#a10744ae8b23cfeee58b6ce4987242c87',1,'fcarouge::kalman']]],
+  ['promise_5ftype_8',['promise_type',['../structfcarouge_1_1matrix.xhtml#a59cdd2df33a514becc638338dad14c89',1,'fcarouge::matrix']]],
+  ['publish_9',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#af69bd29514c4d87c931d4688cf45a674',1,'LICENSE.txt']]],
+  ['purpose_10',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#a4b1b866c8fbf580a6c25d7af1d42b574',1,'LICENSE.txt']]]
 ];

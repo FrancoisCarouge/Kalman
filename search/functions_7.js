@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['observation_0',['observation',['../classfcarouge_1_1kalman.xhtml#a6324da65597f0e0a91573a31a9aa1465',1,'fcarouge::kalman']]],
-  ['operator_2f_1',['operator/',['../namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a',1,'fcarouge']]],
-  ['operator_3d_2',['operator=',['../classfcarouge_1_1kalman.xhtml#ab2db3b065650ffd42931f010d6781835',1,'fcarouge::kalman::operator=(const kalman &amp;other) -&gt; kalman &amp;=delete'],['../classfcarouge_1_1kalman.xhtml#a5215bcddbc15cd25df587f7988334ed8',1,'fcarouge::kalman::operator=(kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=delete']]]
+  ['k_0',['k',['../classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae',1,'fcarouge::kalman']]],
+  ['kalman_1',['kalman',['../classfcarouge_1_1kalman.xhtml#a85ace6a5eab46e4f9438a70c29d1676b',1,'fcarouge::kalman::kalman()=default'],['../classfcarouge_1_1kalman.xhtml#a4aaccf622ce45bee7ac25c2068b2f675',1,'fcarouge::kalman::kalman(const kalman &amp;other)=delete'],['../classfcarouge_1_1kalman.xhtml#a221645b98bab026858436965b94c7d9d',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=delete']]]
 ];

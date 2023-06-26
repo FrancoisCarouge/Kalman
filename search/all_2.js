@@ -1,15 +1,9 @@
 var searchData=
 [
-  ['claim_0',['CLAIM',['../_l_i_c_e_n_s_e_8txt.xhtml#a9fa35e0b1533222a30acacd298b42f8d',1,'LICENSE.txt']]],
-  ['clock_1',['clock',['../namespacefcarouge_1_1benchmark.xhtml#a38b91e941c8745d9bd6f59c93358783e',1,'fcarouge::benchmark']]],
-  ['cmakelists_2etxt_2',['CMakeLists.txt',['../benchmark_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../cmake_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../include_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../linalg_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../pkgconfig_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../sample_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../source_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../support_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../test_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)']]],
-  ['code_5fof_5fconduct_2emd_3',['CODE_OF_CONDUCT.md',['../_c_o_d_e___o_f___c_o_n_d_u_c_t_8md.xhtml',1,'']]],
-  ['column_5fvector_4',['column_vector',['../namespacefcarouge.xhtml#a5f44ac24741780d7c6c2b3d9d5280c3b',1,'fcarouge']]],
-  ['commercial_5',['commercial',['../_l_i_c_e_n_s_e_8txt.xhtml#a8b190fca0e79b9b521f10c668183c688',1,'LICENSE.txt']]],
-  ['compile_6',['compile',['../_l_i_c_e_n_s_e_8txt.xhtml#a87dbd4c86dd22ff9832c62793d0a8593',1,'LICENSE.txt']]],
-  ['contract_7',['CONTRACT',['../_l_i_c_e_n_s_e_8txt.xhtml#aa3f3c150dded46b3fdb172f55d2eda89',1,'LICENSE.txt']]],
-  ['contributing_8',['Contributing',['../md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
-  ['contributing_2emd_9',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.xhtml',1,'']]],
-  ['contributor_20covenant_20code_20of_20conduct_10',['Contributor Covenant Code of Conduct',['../md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml',1,'']]],
-  ['copy_11',['copy',['../_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424',1,'LICENSE.txt']]]
+  ['baseline_2ecpp_0',['baseline.cpp',['../baseline_8cpp.xhtml',1,'']]],
+  ['begin_1',['begin',['../structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b',1,'fcarouge::matrix']]],
+  ['bench_2',['bench',['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#a8b7d9cbc17e56e2d70aeed5d93a6410e',1,'fcarouge::benchmark::anonymous_namespace{baseline.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x0_8cpp_03.xhtml#a6caf56d33c3263048fd278be894f6eff',1,'fcarouge::benchmark::anonymous_namespace{predict_1x1x0.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03.xhtml#a453f0ffca8059675ac4b4a114d0f5e73',1,'fcarouge::benchmark::anonymous_namespace{predict_1x1x1.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03.xhtml#af6dc535cabf55d361b745dd050887b58',1,'fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x0_8cpp_03.xhtml#a206035c66c7e4ae624cde3e3b654061e',1,'fcarouge::benchmark::anonymous_namespace{update_1x1x0.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03.xhtml#a91fb266cf991e3da8a0dec20dbfd200f',1,'fcarouge::benchmark::anonymous_namespace{update_1x1x1.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#a4922da14e25c9cddd6f3b451840de62d',1,'fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::bench()']]],
+  ['benchmark_2ehpp_3',['benchmark.hpp',['../benchmark_8hpp.xhtml',1,'']]],
+  ['benchmarks_4',['Benchmarks',['../md__github_workspace_benchmark__r_e_a_d_m_e.xhtml',1,'']]],
+  ['binary_5',['binary',['../_l_i_c_e_n_s_e_8txt.xhtml#ab8bbc27d8fe80567e920dc10c46af49e',1,'LICENSE.txt']]]
 ];
