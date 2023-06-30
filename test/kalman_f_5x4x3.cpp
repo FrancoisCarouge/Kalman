@@ -104,7 +104,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
         }};
     filter.f(f);
     assert(filter.f() == z5x5);
-    filter.predict(0, 0.f, 0., z3);
+    filter.predict(0, 0.F, 0., z3);
     assert(filter.f() == i5x5);
   }
 
@@ -118,7 +118,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
         }};
     filter.f(std::move(f));
     assert(filter.f() == i5x5);
-    filter.predict(0, 0.f, 0., z3);
+    filter.predict(0, 0.F, 0., z3);
     assert(filter.f() == z5x5);
   }
 
