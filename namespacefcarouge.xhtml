@@ -89,7 +89,8 @@ $(document).ready(function(){initNavTree('namespacefcarouge.xhtml',''); initResi
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#concepts">Concepts</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">fcarouge Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -164,26 +165,33 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7304a0ee69961148ab8bc5cac7ec21de"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a7304a0ee69961148ab8bc5cac7ec21de">make_generator</a> (auto elements) -&gt; std::generator&lt; typename decltype(elements)::value_type &gt; requires(std::ranges::range&lt; decltype(elements)&gt;)</td></tr>
-<tr class="separator:a7304a0ee69961148ab8bc5cac7ec21de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf72e9b6f87c31da7de5c9a819d5e45b"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:abf72e9b6f87c31da7de5c9a819d5e45b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#abf72e9b6f87c31da7de5c9a819d5e45b">make_generator</a> (Type element) -&gt; std::generator&lt; Type &gt;</td></tr>
-<tr class="separator:abf72e9b6f87c31da7de5c9a819d5e45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae167596e2c65ae7024cbc80f5b5d1974"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range Range&gt; </td></tr>
+<tr class="memitem:ae167596e2c65ae7024cbc80f5b5d1974"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::generator&lt; typename Range::value_type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae167596e2c65ae7024cbc80f5b5d1974">make_generator</a> (Range elements)</td></tr>
+<tr class="separator:ae167596e2c65ae7024cbc80f5b5d1974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34cda4cdb141fdaa3b43f3973585e4b1"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a34cda4cdb141fdaa3b43f3973585e4b1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1">make_generator</a> (Type element) -&gt; std::generator&lt; Type &gt;</td></tr>
+<tr class="separator:a34cda4cdb141fdaa3b43f3973585e4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62fb05e2f569f36e8cac44a90ccbc106"><td class="memTemplParams" colspan="2">template&lt;std::invocable L&gt; </td></tr>
+<tr class="memitem:a62fb05e2f569f36e8cac44a90ccbc106"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a62fb05e2f569f36e8cac44a90ccbc106">operator==</a> (L lhs, L rhs)</td></tr>
+<tr class="separator:a62fb05e2f569f36e8cac44a90ccbc106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47d78fa7b2fbab1fdec6f6e30d6b1da0"><td class="memTemplParams" colspan="2">template&lt;std::invocable L, typename T &gt; </td></tr>
+<tr class="memitem:a47d78fa7b2fbab1fdec6f6e30d6b1da0"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a47d78fa7b2fbab1fdec6f6e30d6b1da0">operator==</a> (L lhs, T rhs)</td></tr>
+<tr class="separator:a47d78fa7b2fbab1fdec6f6e30d6b1da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84939a609e68330c2689aff14d978311"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column, bool CopyableOrNot1, bool CopyableOrNot2&gt; </td></tr>
 <tr class="memitem:a84939a609e68330c2689aff14d978311"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a84939a609e68330c2689aff14d978311">operator==</a> (<a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column, CopyableOrNot1 &gt; lhs, <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column, CopyableOrNot2 &gt; rhs)</td></tr>
 <tr class="separator:a84939a609e68330c2689aff14d978311"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab12bc1536f8118a07fc0c2a0fdf9e584"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Size&gt; </td></tr>
-<tr class="memitem:ab12bc1536f8118a07fc0c2a0fdf9e584"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ab12bc1536f8118a07fc0c2a0fdf9e584">operator*</a> (<a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Size &gt; lhs, <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Size, 1 &gt; rhs)</td></tr>
-<tr class="separator:ab12bc1536f8118a07fc0c2a0fdf9e584"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84457aed55565d1b05b6cf41b8215fc5"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
-<tr class="memitem:a84457aed55565d1b05b6cf41b8215fc5"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a84457aed55565d1b05b6cf41b8215fc5">operator*</a> (<a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; lhs, arithmetic auto rhs)</td></tr>
-<tr class="separator:a84457aed55565d1b05b6cf41b8215fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a558316705dce6d491989b759834a6e5f"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a558316705dce6d491989b759834a6e5f"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, 1, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a558316705dce6d491989b759834a6e5f">operator+</a> (Type lhs, <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, 1, 1 &gt; rhs)</td></tr>
-<tr class="separator:a558316705dce6d491989b759834a6e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3448412f3bb0b10fb80afd737990639"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
-<tr class="memitem:ac3448412f3bb0b10fb80afd737990639"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac3448412f3bb0b10fb80afd737990639">operator+</a> (<a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; lhs, <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; rhs)</td></tr>
-<tr class="separator:ac3448412f3bb0b10fb80afd737990639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f46009dfa013275132875c5be3ab85c"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Size&gt; </td></tr>
+<tr class="memitem:a5f46009dfa013275132875c5be3ab85c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a5f46009dfa013275132875c5be3ab85c">operator*</a> (<a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Size &gt; lhs, <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Size, 1 &gt; rhs)</td></tr>
+<tr class="separator:a5f46009dfa013275132875c5be3ab85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0647c4efb9c02b9ea365aacec50e4ae0"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a0647c4efb9c02b9ea365aacec50e4ae0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a0647c4efb9c02b9ea365aacec50e4ae0">operator*</a> (<a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; lhs, arithmetic auto rhs)</td></tr>
+<tr class="separator:a0647c4efb9c02b9ea365aacec50e4ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a214880fe1dfe8701212c14c9ece44013"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a214880fe1dfe8701212c14c9ece44013"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, 1, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a214880fe1dfe8701212c14c9ece44013">operator+</a> (Type lhs, <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, 1, 1 &gt; rhs)</td></tr>
+<tr class="separator:a214880fe1dfe8701212c14c9ece44013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37839500158d123b7bdc6824a025f0bc"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a37839500158d123b7bdc6824a025f0bc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a37839500158d123b7bdc6824a025f0bc">operator+</a> (<a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; lhs, <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; rhs)</td></tr>
+<tr class="separator:a37839500158d123b7bdc6824a025f0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a187a07dcf4d00a975909a9c2a7283b95"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column, auto Size&gt; </td></tr>
 <tr class="memitem:a187a07dcf4d00a975909a9c2a7283b95"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a187a07dcf4d00a975909a9c2a7283b95">operator*</a> (const <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Size &gt; &amp;lhs, const <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Size, Column &gt; &amp;rhs)</td></tr>
 <tr class="separator:a187a07dcf4d00a975909a9c2a7283b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -243,6 +251,12 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a3b0c4f263f282cbb330a4ca6b5ad10d9"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a3b0c4f263f282cbb330a4ca6b5ad10d9"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a3b0c4f263f282cbb330a4ca6b5ad10d9">make_identity_generator</a></td></tr>
+<tr class="separator:a3b0c4f263f282cbb330a4ca6b5ad10d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a7fe918283834c2c859a7325fc8d3a563">make_zero_generator</a></td></tr>
+<tr class="separator:a7fe918283834c2c859a7325fc8d3a563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algebraic Named Values</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Identity </p>
 </div></td></tr>
@@ -269,10 +283,10 @@ Variables</h2></td></tr>
 <tr class="memdesc:a906ad0e7a837c8935b27497a2e02f2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix Eigen specialization.  <a href="namespacefcarouge.xhtml#a906ad0e7a837c8935b27497a2e02f2c4">More...</a><br /></td></tr>
 <tr class="separator:a906ad0e7a837c8935b27497a2e02f2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ea35424b203a1ba2ab287785e36b753"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
-<tr class="memitem:a1ea35424b203a1ba2ab287785e36b753"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column, true &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1ea35424b203a1ba2ab287785e36b753">identity_v&lt; matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
+<tr class="memitem:a1ea35424b203a1ba2ab287785e36b753"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1ea35424b203a1ba2ab287785e36b753">identity_v&lt; matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
 <tr class="separator:a1ea35424b203a1ba2ab287785e36b753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27e109425619816f11a1c78c3a9e59f6"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
-<tr class="memitem:a27e109425619816f11a1c78c3a9e59f6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column, true &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a27e109425619816f11a1c78c3a9e59f6">zero_v&lt; matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
+<tr class="memitem:a27e109425619816f11a1c78c3a9e59f6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a27e109425619816f11a1c78c3a9e59f6">zero_v&lt; matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
 <tr class="memdesc:a27e109425619816f11a1c78c3a9e59f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <a href="namespacefcarouge.xhtml#a27e109425619816f11a1c78c3a9e59f6">More...</a><br /></td></tr>
 <tr class="separator:a27e109425619816f11a1c78c3a9e59f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab72aa970a8b67a534e758d252e349066"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
@@ -408,76 +422,94 @@ template&lt;typename Type  = double, auto Column = 1&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a7304a0ee69961148ab8bc5cac7ec21de" name="a7304a0ee69961148ab8bc5cac7ec21de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7304a0ee69961148ab8bc5cac7ec21de">&#9670;&nbsp;</a></span>make_generator() <span class="overload">[1/2]</span></h2>
+<a id="ae167596e2c65ae7024cbc80f5b5d1974" name="ae167596e2c65ae7024cbc80f5b5d1974"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae167596e2c65ae7024cbc80f5b5d1974">&#9670;&nbsp;</a></span>make_generator() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;std::ranges::range Range&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto fcarouge::make_generator </td>
+          <td class="memname">constexpr std::generator&lt; typename Range::value_type &gt; fcarouge::make_generator </td>
           <td>(</td>
-          <td class="paramtype">auto&#160;</td>
+          <td class="paramtype">Range&#160;</td>
           <td class="paramname"><em>elements</em></td><td>)</td>
-          <td> -&gt; std::generator&lt;typename decltype(elements)::value_type&gt;
-  requires(std::ranges::range&lt;decltype(elements)&gt;)
-</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00067">67</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
-<div class="line"><span class="lineno">   71</span>  <span class="keywordflow">return</span> [](<span class="keyword">auto</span> elements_copy)</div>
-<div class="line"><span class="lineno">   72</span>             -&gt; std::generator&lt;<span class="keyword">typename</span> <span class="keyword">decltype</span>(elements)::value_type&gt; {</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keyword">co_yield</span> std::ranges::elements_of(elements_copy);</div>
-<div class="line"><span class="lineno">   74</span>  }(elements);</div>
-<div class="line"><span class="lineno">   75</span>}</div>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00069">69</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>                               {</div>
+<div class="line"><span class="lineno">   70</span>  <span class="keywordflow">return</span> [](<span class="keyword">auto</span> elements_copy)</div>
+<div class="line"><span class="lineno">   71</span>             -&gt; std::generator&lt;<span class="keyword">typename</span> <span class="keyword">decltype</span>(elements)::value_type&gt; {</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;element : elements_copy) { <span class="comment">// std::ranges::elements_of</span></div>
+<div class="line"><span class="lineno">   73</span>      <span class="keyword">co_yield</span> element;</div>
+<div class="line"><span class="lineno">   74</span>    }</div>
+<div class="line"><span class="lineno">   75</span>  }(elements);</div>
+<div class="line"><span class="lineno">   76</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00173">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::clone()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00187">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::explicit()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00156">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00224">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00213">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator[]()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00184">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::clone()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00198">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::explicit()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00166">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00234">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00223">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator[]()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a7304a0ee69961148ab8bc5cac7ec21de_icgraph.svg" width="627" height="266"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_ae167596e2c65ae7024cbc80f5b5d1974_icgraph.svg" width="627" height="266"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="abf72e9b6f87c31da7de5c9a819d5e45b" name="abf72e9b6f87c31da7de5c9a819d5e45b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf72e9b6f87c31da7de5c9a819d5e45b">&#9670;&nbsp;</a></span>make_generator() <span class="overload">[2/2]</span></h2>
+<a id="a34cda4cdb141fdaa3b43f3973585e4b1" name="a34cda4cdb141fdaa3b43f3973585e4b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34cda4cdb141fdaa3b43f3973585e4b1">&#9670;&nbsp;</a></span>make_generator() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Type &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto fcarouge::make_generator </td>
+          <td class="memname">constexpr auto fcarouge::make_generator </td>
           <td>(</td>
           <td class="paramtype">Type&#160;</td>
           <td class="paramname"><em>element</em></td><td>)</td>
           <td> -&gt; std::generator&lt;Type&gt; </td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00079">79</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   79</span>                                                        {</div>
-<div class="line"><span class="lineno">   80</span>  <span class="keywordflow">return</span> [](Type element_copy) -&gt; std::generator&lt;Type&gt; {</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keyword">co_yield</span> element_copy;</div>
-<div class="line"><span class="lineno">   82</span>  }(element);</div>
-<div class="line"><span class="lineno">   83</span>}</div>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00080">80</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                                         {</div>
+<div class="line"><span class="lineno">   81</span>  <span class="keywordflow">return</span> [](Type element_copy) -&gt; std::generator&lt;Type&gt; {</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keyword">co_yield</span> element_copy;</div>
+<div class="line"><span class="lineno">   83</span>  }(element);</div>
+<div class="line"><span class="lineno">   84</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00324">operator==()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00362">operator==()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_abf72e9b6f87c31da7de5c9a819d5e45b_icgraph.svg" width="371" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a34cda4cdb141fdaa3b43f3973585e4b1_icgraph.svg" width="371" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -653,7 +685,7 @@ template&lt;typename Type , auto Column&gt; </div>
 <div class="line"><span class="lineno">  230</span> </div>
 <div class="line"><span class="lineno">  231</span>  <span class="keywordflow">return</span> result;</div>
 <div class="line"><span class="lineno">  232</span>}</div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00113">linalg.hpp:113</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00116">linalg.hpp:116</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00144">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
@@ -714,8 +746,8 @@ template&lt;typename Type , auto Row, auto Column, auto Size&gt; </div>
 
 </div>
 </div>
-<a id="a84457aed55565d1b05b6cf41b8215fc5" name="a84457aed55565d1b05b6cf41b8215fc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84457aed55565d1b05b6cf41b8215fc5">&#9670;&nbsp;</a></span>operator*() <span class="overload">[4/6]</span></h2>
+<a id="a0647c4efb9c02b9ea365aacec50e4ae0" name="a0647c4efb9c02b9ea365aacec50e4ae0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0647c4efb9c02b9ea365aacec50e4ae0">&#9670;&nbsp;</a></span>operator*() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -726,7 +758,7 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; fcarouge::operator* </td>
+          <td class="memname"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; fcarouge::operator* </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt;&#160;</td>
           <td class="paramname"><em>lhs</em>, </td>
@@ -745,27 +777,27 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00355">355</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  355</span>                                                              {</div>
-<div class="line"><span class="lineno">  356</span>  <span class="keyword">auto</span> next{lhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>()};</div>
-<div class="line"><span class="lineno">  357</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> k{Row * Column}; k &gt; 0; --k, ++next) {</div>
-<div class="line"><span class="lineno">  358</span>    <span class="keyword">co_yield</span> *next *rhs;</div>
-<div class="line"><span class="lineno">  359</span>  }</div>
-<div class="line"><span class="lineno">  360</span>}</div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_ac6248dacd7be4fb05540b8ab2956cb7b"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">fcarouge::matrix::begin</a></div><div class="ttdeci">auto begin() const</div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00261">linalg.hpp:261</a></div></div>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00393">393</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  393</span>                                                              {</div>
+<div class="line"><span class="lineno">  394</span>  <span class="keyword">auto</span> next{lhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>()};</div>
+<div class="line"><span class="lineno">  395</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> k{Row * Column}; k &gt; 0; --k, ++next) {</div>
+<div class="line"><span class="lineno">  396</span>    <span class="keyword">co_yield</span> *next *rhs;</div>
+<div class="line"><span class="lineno">  397</span>  }</div>
+<div class="line"><span class="lineno">  398</span>}</div>
+<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_ac6248dacd7be4fb05540b8ab2956cb7b"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">fcarouge::matrix::begin</a></div><div class="ttdeci">auto begin() const</div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00271">linalg.hpp:271</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00261">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00271">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a84457aed55565d1b05b6cf41b8215fc5_cgraph.svg" width="340" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a0647c4efb9c02b9ea365aacec50e4ae0_cgraph.svg" width="340" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -814,8 +846,8 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab12bc1536f8118a07fc0c2a0fdf9e584" name="ab12bc1536f8118a07fc0c2a0fdf9e584"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab12bc1536f8118a07fc0c2a0fdf9e584">&#9670;&nbsp;</a></span>operator*() <span class="overload">[6/6]</span></h2>
+<a id="a5f46009dfa013275132875c5be3ab85c" name="a5f46009dfa013275132875c5be3ab85c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f46009dfa013275132875c5be3ab85c">&#9670;&nbsp;</a></span>operator*() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -826,7 +858,7 @@ template&lt;typename Type , auto Row, auto Size&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, 1 &gt; fcarouge::operator* </td>
+          <td class="memname"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, 1 &gt; fcarouge::operator* </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Size &gt;&#160;</td>
           <td class="paramname"><em>lhs</em>, </td>
@@ -845,34 +877,34 @@ template&lt;typename Type , auto Row, auto Size&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00339">339</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  339</span>                                                                  {</div>
-<div class="line"><span class="lineno">  340</span>  <span class="comment">// fix me?</span></div>
-<div class="line"><span class="lineno">  341</span>  <span class="keyword">auto</span> next1{lhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>()};</div>
-<div class="line"><span class="lineno">  342</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {       <span class="comment">// chunk_by_rows</span></div>
-<div class="line"><span class="lineno">  343</span>    matrix&lt;Type, Size, 1&gt; rhs_copy{rhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#a3d43f3ebeab72104b65bc49131d293fc">clone</a>()}; <span class="comment">// repeat_n</span></div>
-<div class="line"><span class="lineno">  344</span>    <span class="keyword">auto</span> next2{rhs_copy.begin()};</div>
-<div class="line"><span class="lineno">  345</span>    Type result{0}; <span class="comment">// inner_product?</span></div>
-<div class="line"><span class="lineno">  346</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Size) k{0}; k &lt; Size; ++k, ++next1, ++next2) {</div>
-<div class="line"><span class="lineno">  347</span>      result += *next1 * *next2;</div>
-<div class="line"><span class="lineno">  348</span>    }</div>
-<div class="line"><span class="lineno">  349</span>    <span class="keyword">co_yield</span> result;</div>
-<div class="line"><span class="lineno">  350</span>  }</div>
-<div class="line"><span class="lineno">  351</span>}</div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a3d43f3ebeab72104b65bc49131d293fc"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a3d43f3ebeab72104b65bc49131d293fc">fcarouge::matrix::clone</a></div><div class="ttdeci">constexpr std::generator&lt; Type &gt; clone() const</div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00173">linalg.hpp:173</a></div></div>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00376">376</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  377</span>                                                                               {</div>
+<div class="line"><span class="lineno">  378</span>  <span class="comment">// fix me?</span></div>
+<div class="line"><span class="lineno">  379</span>  <span class="keyword">auto</span> next1{lhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>()};</div>
+<div class="line"><span class="lineno">  380</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {       <span class="comment">// chunk_by_rows</span></div>
+<div class="line"><span class="lineno">  381</span>    matrix&lt;Type, Size, 1&gt; rhs_copy{rhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#a3d43f3ebeab72104b65bc49131d293fc">clone</a>()}; <span class="comment">// repeat_n</span></div>
+<div class="line"><span class="lineno">  382</span>    <span class="keyword">auto</span> next2{rhs_copy.begin()};</div>
+<div class="line"><span class="lineno">  383</span>    Type element{}; <span class="comment">// inner_product?</span></div>
+<div class="line"><span class="lineno">  384</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Size) k{0}; k &lt; Size; ++k, ++next1, ++next2) {</div>
+<div class="line"><span class="lineno">  385</span>      element += *next1 * *next2;</div>
+<div class="line"><span class="lineno">  386</span>    }</div>
+<div class="line"><span class="lineno">  387</span>    <span class="keyword">co_yield</span> element;</div>
+<div class="line"><span class="lineno">  388</span>  }</div>
+<div class="line"><span class="lineno">  389</span>}</div>
+<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a3d43f3ebeab72104b65bc49131d293fc"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a3d43f3ebeab72104b65bc49131d293fc">fcarouge::matrix::clone</a></div><div class="ttdeci">constexpr std::generator&lt; Type &gt; clone() const</div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00184">linalg.hpp:184</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00261">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00173">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::clone()</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00271">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00184">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::clone()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_ab12bc1536f8118a07fc0c2a0fdf9e584_cgraph.svg" width="559" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a5f46009dfa013275132875c5be3ab85c_cgraph.svg" width="559" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1066,8 +1098,8 @@ template&lt;typename Type &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ac3448412f3bb0b10fb80afd737990639" name="ac3448412f3bb0b10fb80afd737990639"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3448412f3bb0b10fb80afd737990639">&#9670;&nbsp;</a></span>operator+() <span class="overload">[4/5]</span></h2>
+<a id="a37839500158d123b7bdc6824a025f0bc" name="a37839500158d123b7bdc6824a025f0bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37839500158d123b7bdc6824a025f0bc">&#9670;&nbsp;</a></span>operator+() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1078,7 +1110,7 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; fcarouge::operator+ </td>
+          <td class="memname"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; fcarouge::operator+ </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt;&#160;</td>
           <td class="paramname"><em>lhs</em>, </td>
@@ -1097,34 +1129,34 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00370">370</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  370</span>                                                                        {</div>
-<div class="line"><span class="lineno">  371</span>  <span class="keyword">auto</span> next1{lhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>()};</div>
-<div class="line"><span class="lineno">  372</span>  <span class="keyword">auto</span> next2{rhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>()};</div>
-<div class="line"><span class="lineno">  373</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> k{Row * Column}; k &gt; 0; --k, ++next1, ++next2) {</div>
-<div class="line"><span class="lineno">  374</span>    <span class="keyword">co_yield</span> *next1 + *next2;</div>
-<div class="line"><span class="lineno">  375</span>  }</div>
-<div class="line"><span class="lineno">  376</span>}</div>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00408">408</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  408</span>                                                                        {</div>
+<div class="line"><span class="lineno">  409</span>  <span class="keyword">auto</span> next1{lhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>()};</div>
+<div class="line"><span class="lineno">  410</span>  <span class="keyword">auto</span> next2{rhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>()};</div>
+<div class="line"><span class="lineno">  411</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> k{Row * Column}; k &gt; 0; --k, ++next1, ++next2) {</div>
+<div class="line"><span class="lineno">  412</span>    <span class="keyword">co_yield</span> *next1 + *next2;</div>
+<div class="line"><span class="lineno">  413</span>  }</div>
+<div class="line"><span class="lineno">  414</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00261">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00271">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_ac3448412f3bb0b10fb80afd737990639_cgraph.svg" width="343" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a37839500158d123b7bdc6824a025f0bc_cgraph.svg" width="343" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="a558316705dce6d491989b759834a6e5f" name="a558316705dce6d491989b759834a6e5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a558316705dce6d491989b759834a6e5f">&#9670;&nbsp;</a></span>operator+() <span class="overload">[5/5]</span></h2>
+<a id="a214880fe1dfe8701212c14c9ece44013" name="a214880fe1dfe8701212c14c9ece44013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a214880fe1dfe8701212c14c9ece44013">&#9670;&nbsp;</a></span>operator+() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1135,7 +1167,7 @@ template&lt;typename Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, 1, 1 &gt; fcarouge::operator+ </td>
+          <td class="memname"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, 1, 1 &gt; fcarouge::operator+ </td>
           <td>(</td>
           <td class="paramtype">Type&#160;</td>
           <td class="paramname"><em>lhs</em>, </td>
@@ -1154,23 +1186,23 @@ template&lt;typename Type &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00364">364</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  364</span>                                            {</div>
-<div class="line"><span class="lineno">  365</span>  <span class="keyword">co_yield</span> lhs + *rhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>();</div>
-<div class="line"><span class="lineno">  366</span>}</div>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00401">401</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  402</span>                                                                          {</div>
+<div class="line"><span class="lineno">  403</span>  <span class="keyword">co_yield</span> lhs + *rhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>();</div>
+<div class="line"><span class="lineno">  404</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00261">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00271">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a558316705dce6d491989b759834a6e5f_cgraph.svg" width="343" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a214880fe1dfe8701212c14c9ece44013_cgraph.svg" width="343" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -1371,8 +1403,78 @@ template&lt;typename Numerator , algebraic Denominator&gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a62fb05e2f569f36e8cac44a90ccbc106" name="a62fb05e2f569f36e8cac44a90ccbc106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62fb05e2f569f36e8cac44a90ccbc106">&#9670;&nbsp;</a></span>operator==() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::invocable L&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fcarouge::operator== </td>
+          <td>(</td>
+          <td class="paramtype">L&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">L&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00351">351</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  351</span>                                                        {</div>
+<div class="line"><span class="lineno">  352</span>  <span class="keywordflow">return</span> lhs() == rhs();</div>
+<div class="line"><span class="lineno">  353</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a47d78fa7b2fbab1fdec6f6e30d6b1da0" name="a47d78fa7b2fbab1fdec6f6e30d6b1da0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d78fa7b2fbab1fdec6f6e30d6b1da0">&#9670;&nbsp;</a></span>operator==() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;std::invocable L, typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fcarouge::operator== </td>
+          <td>(</td>
+          <td class="paramtype">L&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00355">355</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  355</span>                                                                    {</div>
+<div class="line"><span class="lineno">  356</span>  <span class="keywordflow">return</span> lhs() == rhs;</div>
+<div class="line"><span class="lineno">  357</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a84939a609e68330c2689aff14d978311" name="a84939a609e68330c2689aff14d978311"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84939a609e68330c2689aff14d978311">&#9670;&nbsp;</a></span>operator==()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a84939a609e68330c2689aff14d978311">&#9670;&nbsp;</a></span>operator==() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1407,23 +1509,23 @@ template&lt;typename Type , auto Row, auto Column, bool CopyableOrNot1, bool Cop
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00324">324</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  325</span>                                                          {</div>
-<div class="line"><span class="lineno">  326</span>  std::array&lt;Type, Row * Column&gt; lhs_elements; <span class="comment">// std::ranges::to</span></div>
-<div class="line"><span class="lineno">  327</span>  <a class="code hl_variable" href="_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424">std::ranges::copy</a>(lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a>, lhs_elements.begin());</div>
-<div class="line"><span class="lineno">  328</span>  lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a> = <a class="code hl_function" href="namespacefcarouge.xhtml#abf72e9b6f87c31da7de5c9a819d5e45b">make_generator</a>(lhs_elements);</div>
-<div class="line"><span class="lineno">  329</span> </div>
-<div class="line"><span class="lineno">  330</span>  std::array&lt;Type, Row * Column&gt; rhs_elements; <span class="comment">// std::ranges::to</span></div>
-<div class="line"><span class="lineno">  331</span>  <a class="code hl_variable" href="_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424">std::ranges::copy</a>(rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a>, rhs_elements.begin());</div>
-<div class="line"><span class="lineno">  332</span>  rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a> = <a class="code hl_function" href="namespacefcarouge.xhtml#abf72e9b6f87c31da7de5c9a819d5e45b">make_generator</a>(rhs_elements);</div>
-<div class="line"><span class="lineno">  333</span> </div>
-<div class="line"><span class="lineno">  334</span>  <span class="keywordflow">return</span> lhs_elements == rhs_elements;</div>
-<div class="line"><span class="lineno">  335</span>}</div>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00362">362</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  363</span>                                                          {</div>
+<div class="line"><span class="lineno">  364</span>  std::array&lt;Type, Row * Column&gt; lhs_elements; <span class="comment">// std::ranges::to</span></div>
+<div class="line"><span class="lineno">  365</span>  <a class="code hl_variable" href="_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424">std::ranges::copy</a>(lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a>, lhs_elements.begin());</div>
+<div class="line"><span class="lineno">  366</span>  lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a> = <a class="code hl_function" href="namespacefcarouge.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1">make_generator</a>(lhs_elements);</div>
+<div class="line"><span class="lineno">  367</span> </div>
+<div class="line"><span class="lineno">  368</span>  std::array&lt;Type, Row * Column&gt; rhs_elements; <span class="comment">// std::ranges::to</span></div>
+<div class="line"><span class="lineno">  369</span>  <a class="code hl_variable" href="_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424">std::ranges::copy</a>(rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a>, rhs_elements.begin());</div>
+<div class="line"><span class="lineno">  370</span>  rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a> = <a class="code hl_function" href="namespacefcarouge.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1">make_generator</a>(rhs_elements);</div>
+<div class="line"><span class="lineno">  371</span> </div>
+<div class="line"><span class="lineno">  372</span>  <span class="keywordflow">return</span> lhs_elements == rhs_elements;</div>
+<div class="line"><span class="lineno">  373</span>}</div>
 <div class="ttc" id="a_l_i_c_e_n_s_e_8txt_xhtml_aaff024f9fd06471d3fb778f865b5b424"><div class="ttname"><a href="_l_i_c_e_n_s_e_8txt.xhtml#aaff024f9fd06471d3fb778f865b5b424">copy</a></div><div class="ttdeci">This is free and unencumbered software released into the public domain Anyone is free to copy</div><div class="ttdef"><b>Definition:</b> <a href="_l_i_c_e_n_s_e_8txt_source.xhtml#l00003">LICENSE.txt:3</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_abf72e9b6f87c31da7de5c9a819d5e45b"><div class="ttname"><a href="namespacefcarouge.xhtml#abf72e9b6f87c31da7de5c9a819d5e45b">fcarouge::make_generator</a></div><div class="ttdeci">auto make_generator(Type element) -&gt; std::generator&lt; Type &gt;</div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00079">linalg.hpp:79</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a345b32af8d533e28e162b7757e23d2ec"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">fcarouge::matrix::genie</a></div><div class="ttdeci">generator genie</div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00268">linalg.hpp:268</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a34cda4cdb141fdaa3b43f3973585e4b1"><div class="ttname"><a href="namespacefcarouge.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1">fcarouge::make_generator</a></div><div class="ttdeci">constexpr auto make_generator(Type element) -&gt; std::generator&lt; Type &gt;</div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00080">linalg.hpp:80</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a345b32af8d533e28e162b7757e23d2ec"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">fcarouge::matrix::genie</a></div><div class="ttdeci">generator genie</div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00278">linalg.hpp:278</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="_l_i_c_e_n_s_e_8txt_source.xhtml#l00003">copy</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00268">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::genie</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00079">make_generator()</a>.</p>
+<p class="reference">References <a class="el" href="_l_i_c_e_n_s_e_8txt_source.xhtml#l00003">copy</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00278">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::genie</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00080">make_generator()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -1608,16 +1710,65 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">    [] -&gt; std::generator&lt;Type&gt; {</div>
-<div class="line">      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line">          <span class="keyword">co_yield</span> i == j;</div>
-<div class="line">        }</div>
-<div class="line">      }</div>
-<div class="line">    }()}</div>
+<b>Initial value:</b><div class="fragment"><div class="line">{[](<span class="keyword">auto</span>... args) {</div>
+<div class="line">  matrix&lt;Type, Row, Column, true&gt; m{</div>
+<div class="line">      make_identity_generator&lt;Type, Row, Column&gt;()};</div>
+<div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(args)) {</div>
+<div class="line">    <span class="keywordflow">return</span> m(args...);</div>
+<div class="line">  } <span class="keywordflow">else</span> {</div>
+<div class="line">    <span class="keywordflow">return</span> m;</div>
+<div class="line">  }</div>
+<div class="line">}}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00293">293</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00328">328</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3b0c4f263f282cbb330a4ca6b5ad10d9" name="a3b0c4f263f282cbb330a4ca6b5ad10d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b0c4f263f282cbb330a4ca6b5ad10d9">&#9670;&nbsp;</a></span>make_identity_generator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , auto Row, auto Column&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::make_identity_generator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{[]() -&gt; std::generator&lt;Type&gt; {</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line">      <span class="keyword">co_yield</span> i == j;</div>
+<div class="line">    }</div>
+<div class="line">  }</div>
+<div class="line">}}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00309">309</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7fe918283834c2c859a7325fc8d3a563" name="a7fe918283834c2c859a7325fc8d3a563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fe918283834c2c859a7325fc8d3a563">&#9670;&nbsp;</a></span>make_zero_generator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , auto Row, auto Column&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::make_zero_generator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{[]() -&gt; std::generator&lt;Type&gt; {</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">auto</span> k{Row * Column}; k &gt; 0; --k) {</div>
+<div class="line">    <span class="keyword">co_yield</span> 0.0;</div>
+<div class="line">  }</div>
+<div class="line">}}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00318">318</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
 </div>
 </div>
@@ -1757,16 +1908,18 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">    [] -&gt; std::generator&lt;Type&gt; {</div>
-<div class="line">      <span class="keywordflow">for</span> (<span class="keyword">auto</span> k{Row * Column}; k &gt; 0; --k) {</div>
-<div class="line">        <span class="keyword">co_yield</span> 0.0;</div>
-<div class="line">      }</div>
-<div class="line">    }()}</div>
+<b>Initial value:</b><div class="fragment"><div class="line">{[](<span class="keyword">auto</span>... args) {</div>
+<div class="line">  matrix&lt;Type, Row, Column, true&gt; m{make_zero_generator&lt;Type, Row, Column&gt;()};</div>
+<div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(args)) {</div>
+<div class="line">    <span class="keywordflow">return</span> m(args...);</div>
+<div class="line">  } <span class="keywordflow">else</span> {</div>
+<div class="line">    <span class="keywordflow">return</span> m;</div>
+<div class="line">  }</div>
+<div class="line">}}</div>
 </div><!-- fragment -->
 <p>The zero matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00293">293</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00340">340</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
 </div>
 </div>
@@ -1776,7 +1929,7 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li>
-    <li class="footer">Generated on Sat Jul 1 2023 04:17:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Jul 1 2023 19:17:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

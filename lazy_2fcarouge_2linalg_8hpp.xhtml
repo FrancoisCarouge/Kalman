@@ -88,7 +88,8 @@ $(document).ready(function(){initNavTree('lazy_2fcarouge_2linalg_8hpp.xhtml','')
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">linalg.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -128,26 +129,33 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7304a0ee69961148ab8bc5cac7ec21de"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a7304a0ee69961148ab8bc5cac7ec21de">fcarouge::make_generator</a> (auto elements) -&gt; std::generator&lt; typename decltype(elements)::value_type &gt; requires(std::ranges::range&lt; decltype(elements)&gt;)</td></tr>
-<tr class="separator:a7304a0ee69961148ab8bc5cac7ec21de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf72e9b6f87c31da7de5c9a819d5e45b"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:abf72e9b6f87c31da7de5c9a819d5e45b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#abf72e9b6f87c31da7de5c9a819d5e45b">fcarouge::make_generator</a> (Type element) -&gt; std::generator&lt; Type &gt;</td></tr>
-<tr class="separator:abf72e9b6f87c31da7de5c9a819d5e45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae167596e2c65ae7024cbc80f5b5d1974"><td class="memTemplParams" colspan="2">template&lt;std::ranges::range Range&gt; </td></tr>
+<tr class="memitem:ae167596e2c65ae7024cbc80f5b5d1974"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::generator&lt; typename Range::value_type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae167596e2c65ae7024cbc80f5b5d1974">fcarouge::make_generator</a> (Range elements)</td></tr>
+<tr class="separator:ae167596e2c65ae7024cbc80f5b5d1974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34cda4cdb141fdaa3b43f3973585e4b1"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a34cda4cdb141fdaa3b43f3973585e4b1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1">fcarouge::make_generator</a> (Type element) -&gt; std::generator&lt; Type &gt;</td></tr>
+<tr class="separator:a34cda4cdb141fdaa3b43f3973585e4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62fb05e2f569f36e8cac44a90ccbc106"><td class="memTemplParams" colspan="2">template&lt;std::invocable L&gt; </td></tr>
+<tr class="memitem:a62fb05e2f569f36e8cac44a90ccbc106"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a62fb05e2f569f36e8cac44a90ccbc106">fcarouge::operator==</a> (L lhs, L rhs)</td></tr>
+<tr class="separator:a62fb05e2f569f36e8cac44a90ccbc106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47d78fa7b2fbab1fdec6f6e30d6b1da0"><td class="memTemplParams" colspan="2">template&lt;std::invocable L, typename T &gt; </td></tr>
+<tr class="memitem:a47d78fa7b2fbab1fdec6f6e30d6b1da0"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a47d78fa7b2fbab1fdec6f6e30d6b1da0">fcarouge::operator==</a> (L lhs, T rhs)</td></tr>
+<tr class="separator:a47d78fa7b2fbab1fdec6f6e30d6b1da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84939a609e68330c2689aff14d978311"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column, bool CopyableOrNot1, bool CopyableOrNot2&gt; </td></tr>
 <tr class="memitem:a84939a609e68330c2689aff14d978311"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a84939a609e68330c2689aff14d978311">fcarouge::operator==</a> (matrix&lt; Type, Row, Column, CopyableOrNot1 &gt; lhs, matrix&lt; Type, Row, Column, CopyableOrNot2 &gt; rhs)</td></tr>
 <tr class="separator:a84939a609e68330c2689aff14d978311"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab12bc1536f8118a07fc0c2a0fdf9e584"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Size&gt; </td></tr>
-<tr class="memitem:ab12bc1536f8118a07fc0c2a0fdf9e584"><td class="memTemplItemLeft" align="right" valign="top">constexpr matrix&lt; Type, Row, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ab12bc1536f8118a07fc0c2a0fdf9e584">fcarouge::operator*</a> (matrix&lt; Type, Row, Size &gt; lhs, matrix&lt; Type, Size, 1 &gt; rhs)</td></tr>
-<tr class="separator:ab12bc1536f8118a07fc0c2a0fdf9e584"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84457aed55565d1b05b6cf41b8215fc5"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
-<tr class="memitem:a84457aed55565d1b05b6cf41b8215fc5"><td class="memTemplItemLeft" align="right" valign="top">constexpr matrix&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a84457aed55565d1b05b6cf41b8215fc5">fcarouge::operator*</a> (matrix&lt; Type, Row, Column &gt; lhs, arithmetic auto rhs)</td></tr>
-<tr class="separator:a84457aed55565d1b05b6cf41b8215fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a558316705dce6d491989b759834a6e5f"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a558316705dce6d491989b759834a6e5f"><td class="memTemplItemLeft" align="right" valign="top">constexpr matrix&lt; Type, 1, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a558316705dce6d491989b759834a6e5f">fcarouge::operator+</a> (Type lhs, matrix&lt; Type, 1, 1 &gt; rhs)</td></tr>
-<tr class="separator:a558316705dce6d491989b759834a6e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3448412f3bb0b10fb80afd737990639"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
-<tr class="memitem:ac3448412f3bb0b10fb80afd737990639"><td class="memTemplItemLeft" align="right" valign="top">constexpr matrix&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac3448412f3bb0b10fb80afd737990639">fcarouge::operator+</a> (matrix&lt; Type, Row, Column &gt; lhs, matrix&lt; Type, Row, Column &gt; rhs)</td></tr>
-<tr class="separator:ac3448412f3bb0b10fb80afd737990639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f46009dfa013275132875c5be3ab85c"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Size&gt; </td></tr>
+<tr class="memitem:a5f46009dfa013275132875c5be3ab85c"><td class="memTemplItemLeft" align="right" valign="top">matrix&lt; Type, Row, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a5f46009dfa013275132875c5be3ab85c">fcarouge::operator*</a> (matrix&lt; Type, Row, Size &gt; lhs, matrix&lt; Type, Size, 1 &gt; rhs)</td></tr>
+<tr class="separator:a5f46009dfa013275132875c5be3ab85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0647c4efb9c02b9ea365aacec50e4ae0"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a0647c4efb9c02b9ea365aacec50e4ae0"><td class="memTemplItemLeft" align="right" valign="top">matrix&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a0647c4efb9c02b9ea365aacec50e4ae0">fcarouge::operator*</a> (matrix&lt; Type, Row, Column &gt; lhs, arithmetic auto rhs)</td></tr>
+<tr class="separator:a0647c4efb9c02b9ea365aacec50e4ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a214880fe1dfe8701212c14c9ece44013"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a214880fe1dfe8701212c14c9ece44013"><td class="memTemplItemLeft" align="right" valign="top">matrix&lt; Type, 1, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a214880fe1dfe8701212c14c9ece44013">fcarouge::operator+</a> (Type lhs, matrix&lt; Type, 1, 1 &gt; rhs)</td></tr>
+<tr class="separator:a214880fe1dfe8701212c14c9ece44013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37839500158d123b7bdc6824a025f0bc"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a37839500158d123b7bdc6824a025f0bc"><td class="memTemplItemLeft" align="right" valign="top">matrix&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a37839500158d123b7bdc6824a025f0bc">fcarouge::operator+</a> (matrix&lt; Type, Row, Column &gt; lhs, matrix&lt; Type, Row, Column &gt; rhs)</td></tr>
+<tr class="separator:a37839500158d123b7bdc6824a025f0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Deduction Guides</div></td></tr>
 <tr class="memitem:a4833d152f612bead262723ae23039575"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a4833d152f612bead262723ae23039575"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a4833d152f612bead262723ae23039575">fcarouge::matrix</a> (Type) -&gt; matrix&lt; Type, 1, 1 &gt;</td></tr>
@@ -164,14 +172,20 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a3b0c4f263f282cbb330a4ca6b5ad10d9"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a3b0c4f263f282cbb330a4ca6b5ad10d9"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a3b0c4f263f282cbb330a4ca6b5ad10d9">fcarouge::make_identity_generator</a></td></tr>
+<tr class="separator:a3b0c4f263f282cbb330a4ca6b5ad10d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a7fe918283834c2c859a7325fc8d3a563">fcarouge::make_zero_generator</a></td></tr>
+<tr class="separator:a7fe918283834c2c859a7325fc8d3a563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algebraic Named Values</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p >Identity </p>
 </div></td></tr>
 <tr class="memitem:a1ea35424b203a1ba2ab287785e36b753"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
-<tr class="memitem:a1ea35424b203a1ba2ab287785e36b753"><td class="memTemplItemLeft" align="right" valign="top">matrix&lt; Type, Row, Column, true &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1ea35424b203a1ba2ab287785e36b753">fcarouge::identity_v&lt; matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
+<tr class="memitem:a1ea35424b203a1ba2ab287785e36b753"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1ea35424b203a1ba2ab287785e36b753">fcarouge::identity_v&lt; matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
 <tr class="separator:a1ea35424b203a1ba2ab287785e36b753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27e109425619816f11a1c78c3a9e59f6"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
-<tr class="memitem:a27e109425619816f11a1c78c3a9e59f6"><td class="memTemplItemLeft" align="right" valign="top">matrix&lt; Type, Row, Column, true &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a27e109425619816f11a1c78c3a9e59f6">fcarouge::zero_v&lt; matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
+<tr class="memitem:a27e109425619816f11a1c78c3a9e59f6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a27e109425619816f11a1c78c3a9e59f6">fcarouge::zero_v&lt; matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
 <tr class="memdesc:a27e109425619816f11a1c78c3a9e59f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <a href="namespacefcarouge.xhtml#a27e109425619816f11a1c78c3a9e59f6">More...</a><br /></td></tr>
 <tr class="separator:a27e109425619816f11a1c78c3a9e59f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -187,7 +201,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c1845e5bf011c2136883d0d7188f50e9.xhtml">linalg</a></li><li class="navelem"><a class="el" href="dir_a5865fd9dbf72bad167b68249efe8e33.xhtml">lazy</a></li><li class="navelem"><a class="el" href="dir_0a4f59775a28c8901f3ddbf67298531c.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="lazy_2fcarouge_2linalg_8hpp.xhtml">linalg.hpp</a></li>
-    <li class="footer">Generated on Sat Jul 1 2023 04:17:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Jul 1 2023 19:17:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

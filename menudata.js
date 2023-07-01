@@ -53,6 +53,7 @@ var menudata={children:[
 {text:"t",url:"namespacemembers_func.xhtml#index_t"}]},
 {text:"Variables",url:"namespacemembers_vars.xhtml",children:[
 {text:"i",url:"namespacemembers_vars.xhtml#index_i"},
+{text:"m",url:"namespacemembers_vars.xhtml#index_m"},
 {text:"r",url:"namespacemembers_vars.xhtml#index_r"},
 {text:"s",url:"namespacemembers_vars.xhtml#index_s"},
 {text:"t",url:"namespacemembers_vars.xhtml#index_t"},
