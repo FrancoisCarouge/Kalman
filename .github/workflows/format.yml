@@ -25,6 +25,7 @@ jobs:
           -o -iname "*.tpp" \
           -o -iname "*.cpp" \
           -o -iwholename "./support/format" \
+          -o -iwholename "./support/generator" \
           -o -iwholename "./support/print" \
           | xargs \
           clang-format-16 --Werror --dry-run --verbose -style=file
