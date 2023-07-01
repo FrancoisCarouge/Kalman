@@ -66,3 +66,19 @@ else()
     FILE_SET "kalman_format_headers"
     DESTINATION "include/fcarouge")
 endif()
+
+FetchContent_Declare(
+  stdgenerator
+  GIT_REPOSITORY "https://github.com/FrancoisCarouge/generator"
+  FIND_PACKAGE_ARGS NAMES stdgenerator)
+FetchContent_MakeAvailable(stdgenerator)
+
+add_library(kalman_generator INTERFACE)
+target_sources(kalman_generator INTERFACE FILE_SET "kalman_generator_headers"
+                                          TYPE "HEADERS" FILES "generator")
+target_link_libraries(kalman_generator INTERFACE stdgenerator::stdgenerator)
+install(
+  TARGETS kalman_generator
+  EXPORT "kalman-target"
+  FILE_SET "kalman_generator_headers"
+  DESTINATION "include/fcarouge")
