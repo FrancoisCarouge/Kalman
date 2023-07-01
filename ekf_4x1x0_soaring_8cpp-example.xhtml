@@ -124,7 +124,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <div class="line">  filter.x(trigger_strength, thermal_radius, thermal_position_x,</div>
 <div class="line">           thermal_position_y);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_covariance{0.0049f};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_covariance{0.0049F};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> radius_covariance{400};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> position_covariance{400};</div>
 <div class="line">  filter.p(<a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6d203bb8f431e7d683ca21261d2e512b">kalman::estimate_uncertainty</a>{{strength_covariance, 0, 0, 0},</div>
@@ -140,41 +140,41 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <div class="line">    <span class="keywordflow">return</span> x + drifts;</div>
 <div class="line">  });</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_noise{std::pow(0.001f, 2.f)};</div>
-<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> distance_noise{std::pow(0.03f, 2.f)};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_noise{std::pow(0.001F, 2.F)};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> distance_noise{std::pow(0.03F, 2.F)};</div>
 <div class="line">  filter.q(<a id="a7" name="a7"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a10744ae8b23cfeee58b6ce4987242c87">kalman::process_uncertainty</a>{{strength_noise, 0, 0, 0},</div>
 <div class="line">                                       {0, distance_noise, 0, 0},</div>
 <div class="line">                                       {0, 0, distance_noise, 0},</div>
 <div class="line">                                       {0, 0, 0, distance_noise}});</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> measure_noise{std::pow(0.45f, 2.f)};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> measure_noise{std::pow(0.45F, 2.F)};</div>
 <div class="line">  filter.r(<a id="a8" name="a8"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af92fafd91695af30574a7be7771e5357">kalman::output_uncertainty</a>{measure_noise});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Observation Z: [w] vertical air velocity w at the aircraft’s</span></div>
 <div class="line">  <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
 <div class="line">  filter.observation([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af6ce8697cff935182e0038cdcfd844f4">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
 <div class="line">                        <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a id="a9" name="a9"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a> {</div>
-<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a>{x(0) * std::exp(-(std::pow(x[2] - position_x, 2.f) +</div>
-<div class="line">                                            std::pow(x[3] - position_y, 2.f)) /</div>
-<div class="line">                                          std::pow(x[1], 2.f))};</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a6bf8d8bc6c862a1fc087361e36541dfa">kalman::output</a>{x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
+<div class="line">                                            std::pow(x[3] - position_y, 2.F)) /</div>
+<div class="line">                                          std::pow(x[1], 2.F))};</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
 <div class="line">  filter.h([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#af6ce8697cff935182e0038cdcfd844f4">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
 <div class="line">              <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a id="a10" name="a10"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1a9d07aa2b616cc3e4e444a4a100bbf2">kalman::output_model</a> {</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">float</span> expon{std::exp(</div>
-<div class="line">        -(std::pow(x[2] - position_x, 2.f) + std::pow(x[3] - position_y, 2.f)) /</div>
-<div class="line">        std::pow(x[1], 2.f))};</div>
+<div class="line">        -(std::pow(x[2] - position_x, 2.F) + std::pow(x[3] - position_y, 2.F)) /</div>
+<div class="line">        std::pow(x[1], 2.F))};</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a1a9d07aa2b616cc3e4e444a4a100bbf2">kalman::output_model</a> h{</div>
 <div class="line">        expon,</div>
 <div class="line">        2 * x(0) *</div>
-<div class="line">            ((std::pow(x(2) - position_x, 2.f) +</div>
-<div class="line">              std::pow(x(3) - position_y, 2.f)) /</div>
-<div class="line">             std::pow(x(1), 3.f)) *</div>
+<div class="line">            ((std::pow(x(2) - position_x, 2.F) +</div>
+<div class="line">              std::pow(x(3) - position_y, 2.F)) /</div>
+<div class="line">             std::pow(x(1), 3.F)) *</div>
 <div class="line">            expon,</div>
-<div class="line">        -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.f)) * expon,</div>
-<div class="line">        -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.f)) * expon};</div>
+<div class="line">        -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,</div>
+<div class="line">        -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> h;</div>
 <div class="line">  });</div>
@@ -189,117 +189,117 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A hundred randomly generated data point.</span></div>
 <div class="line">  <span class="keyword">constexpr</span> data measured[]{</div>
-<div class="line">      {0.0756891f, 0.749786f, 0.878827f, 0.806808f, 0.155487f},</div>
-<div class="line">      {0.506366f, 0.261469f, 0.886986f, 0.332883f, 0.434406f},</div>
-<div class="line">      {0.249769f, 0.242154f, 0.616454f, 0.672545f, 0.24927f},</div>
-<div class="line">      {0.358587f, 0.556206f, 0.909985f, 0.370336f, 0.553264f},</div>
-<div class="line">      {0.370579f, 0.368003f, 0.491917f, 0.635429f, 0.73594f},</div>
-<div class="line">      {0.82946f, 0.0221123f, 0.461047f, 0.940697f, 0.987409f},</div>
-<div class="line">      {0.462132f, 0.708865f, 0.941915f, 0.122432f, 0.911597f},</div>
-<div class="line">      {0.888334f, 0.542419f, 0.773781f, 0.116075f, 0.917592f},</div>
-<div class="line">      {0.229376f, 0.174244f, 0.972009f, 0.509611f, 0.37637f},</div>
-<div class="line">      {0.887738f, 0.707866f, 0.90959f, 0.430274f, 0.242523f},</div>
-<div class="line">      {0.40713f, 0.0696747f, 0.456659f, 0.979656f, 0.11167f},</div>
-<div class="line">      {0.77115f, 0.183994f, 0.944587f, 0.467626f, 0.0219546f},</div>
-<div class="line">      {0.137442f, 0.316077f, 0.660742f, 0.828009f, 0.852228f},</div>
-<div class="line">      {0.128113f, 0.0757587f, 0.742959f, 0.360531f, 0.3932f},</div>
-<div class="line">      {0.161107f, 0.709262f, 0.690847f, 0.161165f, 0.237205f},</div>
-<div class="line">      {0.664184f, 0.658516f, 0.972067f, 0.465567f, 0.807259f},</div>
-<div class="line">      {0.669789f, 0.236436f, 0.341701f, 0.430546f, 0.229097f},</div>
-<div class="line">      {0.159471f, 0.122824f, 0.975034f, 0.833685f, 0.78011f},</div>
-<div class="line">      {0.284848f, 0.917524f, 0.358084f, 0.82927f, 0.0983398f},</div>
-<div class="line">      {0.209027f, 0.573124f, 0.428336f, 0.106116f, 0.17974f},</div>
-<div class="line">      {0.861987f, 0.110099f, 0.0994602f, 0.208052f, 0.0545667f},</div>
-<div class="line">      {0.483002f, 0.707016f, 0.189368f, 0.0626376f, 0.992816f},</div>
-<div class="line">      {0.588928f, 0.644143f, 0.763512f, 0.444366f, 0.251652f},</div>
-<div class="line">      {0.419946f, 0.338175f, 0.286543f, 0.97232f, 0.908061f},</div>
-<div class="line">      {0.0625373f, 0.855109f, 0.763831f, 0.622934f, 0.364608f},</div>
-<div class="line">      {0.55833f, 0.505803f, 0.600797f, 0.342724f, 0.735087f},</div>
-<div class="line">      {0.664873f, 0.224638f, 0.385409f, 0.892807f, 0.695f},</div>
-<div class="line">      {0.255295f, 0.0264766f, 0.229274f, 0.723291f, 0.552242f},</div>
-<div class="line">      {0.412129f, 0.856404f, 0.395075f, 0.261842f, 0.947885f},</div>
-<div class="line">      {0.468212f, 0.849367f, 0.00615251f, 0.842904f, 0.700869f},</div>
-<div class="line">      {0.311582f, 0.293401f, 0.299637f, 0.567025f, 0.659598f},</div>
-<div class="line">      {0.695464f, 0.941376f, 0.21219f, 0.27813f, 0.289406f},</div>
-<div class="line">      {0.000397467f, 0.301337f, 0.71608f, 0.296278f, 0.718923f},</div>
-<div class="line">      {0.36314f, 0.263077f, 0.193163f, 0.295399f, 0.0523569f},</div>
-<div class="line">      {0.128381f, 0.572157f, 0.971297f, 0.516492f, 0.921166f},</div>
-<div class="line">      {0.596215f, 0.909239f, 0.133898f, 0.506903f, 0.0335569f},</div>
-<div class="line">      {0.444556f, 0.997721f, 0.348369f, 0.644847f, 0.80885f},</div>
-<div class="line">      {0.891465f, 0.0797467f, 0.85753f, 0.369457f, 0.418543f},</div>
-<div class="line">      {0.861948f, 0.520583f, 0.900797f, 0.153884f, 0.080031f},</div>
-<div class="line">      {0.169696f, 0.981169f, 0.406729f, 0.292696f, 0.831505f},</div>
-<div class="line">      {0.172591f, 0.349291f, 0.782213f, 0.534652f, 0.214628f},</div>
-<div class="line">      {0.875081f, 0.746097f, 0.0806311f, 0.15685f, 0.357471f},</div>
-<div class="line">      {0.519389f, 0.007303f, 0.18117f, 0.370993f, 0.427305f},</div>
-<div class="line">      {0.961372f, 0.218945f, 0.486608f, 0.618755f, 0.168813f},</div>
-<div class="line">      {0.537862f, 0.451312f, 0.384422f, 0.540216f, 0.525636f},</div>
-<div class="line">      {0.494387f, 0.162124f, 0.0136825f, 0.127037f, 0.803511f},</div>
-<div class="line">      {0.409087f, 0.991167f, 0.276877f, 0.188698f, 0.155701f},</div>
-<div class="line">      {0.851474f, 0.54778f, 0.133586f, 0.37391f, 0.137362f},</div>
-<div class="line">      {0.0148137f, 0.97396f, 0.945259f, 0.297432f, 0.260494f},</div>
-<div class="line">      {0.906864f, 0.13484f, 0.214258f, 0.924681f, 0.618572f},</div>
-<div class="line">      {0.141742f, 0.563986f, 0.502602f, 0.416297f, 0.97038f},</div>
-<div class="line">      {0.698555f, 0.406929f, 0.558199f, 0.875364f, 0.736008f},</div>
-<div class="line">      {0.175105f, 0.270328f, 0.332957f, 0.145101f, 0.765857f},</div>
-<div class="line">      {0.68083f, 0.125673f, 0.922594f, 0.831683f, 0.457214f},</div>
-<div class="line">      {0.520728f, 0.26214f, 0.458674f, 0.306454f, 0.783164f},</div>
-<div class="line">      {0.780442f, 0.472245f, 0.125185f, 0.460146f, 0.0847598f},</div>
-<div class="line">      {0.360083f, 0.0686402f, 0.328997f, 0.799852f, 0.818809f},</div>
-<div class="line">      {0.71546f, 0.717884f, 0.253842f, 0.812915f, 0.0141433f},</div>
-<div class="line">      {0.441185f, 0.171204f, 0.0432966f, 0.739241f, 0.448679f},</div>
-<div class="line">      {0.399117f, 0.148854f, 0.743042f, 0.0230124f, 0.378786f},</div>
-<div class="line">      {0.841239f, 0.292533f, 0.391296f, 0.734326f, 0.0597166f},</div>
-<div class="line">      {0.350847f, 0.519149f, 0.808508f, 0.113644f, 0.673261f},</div>
-<div class="line">      {0.229909f, 0.814871f, 0.118688f, 0.612729f, 0.354682f},</div>
-<div class="line">      {0.734755f, 0.675693f, 0.646155f, 0.0296504f, 0.405621f},</div>
-<div class="line">      {0.121731f, 0.231111f, 0.47879f, 0.733299f, 0.270893f},</div>
-<div class="line">      {0.732981f, 0.813999f, 0.597652f, 0.455436f, 0.691262f},</div>
-<div class="line">      {0.10297f, 0.534613f, 0.553605f, 0.777385f, 0.553588f},</div>
-<div class="line">      {0.441429f, 0.974205f, 0.120671f, 0.279931f, 0.624484f},</div>
-<div class="line">      {0.531836f, 0.697762f, 0.274009f, 0.827927f, 0.741129f},</div>
-<div class="line">      {0.745307f, 0.085542f, 0.473629f, 0.286912f, 0.175756f},</div>
-<div class="line">      {0.758466f, 0.268705f, 0.108006f, 0.291002f, 0.559732f},</div>
-<div class="line">      {0.632262f, 0.733193f, 0.919653f, 0.165692f, 0.84716f},</div>
-<div class="line">      {0.0107621f, 0.694084f, 0.35781f, 0.793076f, 0.0818898f},</div>
-<div class="line">      {0.17388f, 0.333606f, 0.867638f, 0.969285f, 0.887633f},</div>
-<div class="line">      {0.255376f, 0.180532f, 0.737631f, 0.869954f, 0.875926f},</div>
-<div class="line">      {0.525821f, 0.882517f, 0.224126f, 0.906093f, 0.557676f},</div>
-<div class="line">      {0.516693f, 0.986614f, 0.644313f, 0.00903489f, 0.207868f},</div>
-<div class="line">      {0.00175451f, 0.49772f, 0.436713f, 0.0418148f, 0.63547f},</div>
-<div class="line">      {0.559954f, 0.192099f, 0.0787102f, 0.976933f, 0.552542f},</div>
-<div class="line">      {0.983202f, 0.165426f, 0.136735f, 0.467933f, 0.626612f},</div>
-<div class="line">      {0.520497f, 0.593702f, 0.0155549f, 0.791301f, 0.635127f},</div>
-<div class="line">      {0.934924f, 0.0663795f, 0.513404f, 0.791586f, 0.68594f},</div>
-<div class="line">      {0.977299f, 0.682359f, 0.0689664f, 0.769369f, 0.169862f},</div>
-<div class="line">      {0.681586f, 0.900795f, 0.312534f, 0.854568f, 0.113097f},</div>
-<div class="line">      {0.0783791f, 0.340692f, 0.23686f, 0.5932f, 0.38193f},</div>
-<div class="line">      {0.430041f, 0.401364f, 0.88266f, 0.226286f, 0.514185f},</div>
-<div class="line">      {0.422123f, 0.713778f, 0.813105f, 0.960577f, 0.794308f},</div>
-<div class="line">      {0.0531423f, 0.930818f, 0.913336f, 0.382305f, 0.372521f},</div>
-<div class="line">      {0.91698f, 0.128078f, 0.901849f, 0.0860355f, 0.432365f},</div>
-<div class="line">      {0.749259f, 0.198112f, 0.538301f, 0.739992f, 0.909026f},</div>
-<div class="line">      {0.903781f, 0.206122f, 0.743227f, 0.700662f, 0.784729f},</div>
-<div class="line">      {0.914658f, 0.625943f, 0.697374f, 0.333459f, 0.213769f},</div>
-<div class="line">      {0.313091f, 0.0485961f, 0.625018f, 0.916347f, 0.363119f},</div>
-<div class="line">      {0.455916f, 0.982769f, 0.245987f, 0.555492f, 0.938798f},</div>
-<div class="line">      {0.0737146f, 0.324519f, 0.325405f, 0.677491f, 0.148078f},</div>
-<div class="line">      {0.918677f, 0.537612f, 0.917458f, 0.611973f, 0.965844f},</div>
-<div class="line">      {0.832977f, 0.466222f, 0.528761f, 0.348765f, 0.472975f},</div>
-<div class="line">      {0.784042f, 0.866144f, 0.00524178f, 0.217837f, 0.145246f},</div>
-<div class="line">      {0.308576f, 0.993283f, 0.0244056f, 0.543786f, 0.575841f},</div>
-<div class="line">      {0.285113f, 0.12198f, 0.74075f, 0.834888f, 0.561457f},</div>
-<div class="line">      {0.635992f, 0.590228f, 0.629378f, 0.112457f, 0.78253f}};</div>
+<div class="line">      {0.0756891F, 0.749786F, 0.878827F, 0.806808F, 0.155487F},</div>
+<div class="line">      {0.506366F, 0.261469F, 0.886986F, 0.332883F, 0.434406F},</div>
+<div class="line">      {0.249769F, 0.242154F, 0.616454F, 0.672545F, 0.24927F},</div>
+<div class="line">      {0.358587F, 0.556206F, 0.909985F, 0.370336F, 0.553264F},</div>
+<div class="line">      {0.370579F, 0.368003F, 0.491917F, 0.635429F, 0.73594F},</div>
+<div class="line">      {0.82946F, 0.0221123F, 0.461047F, 0.940697F, 0.987409F},</div>
+<div class="line">      {0.462132F, 0.708865F, 0.941915F, 0.122432F, 0.911597F},</div>
+<div class="line">      {0.888334F, 0.542419F, 0.773781F, 0.116075F, 0.917592F},</div>
+<div class="line">      {0.229376F, 0.174244F, 0.972009F, 0.509611F, 0.37637F},</div>
+<div class="line">      {0.887738F, 0.707866F, 0.90959F, 0.430274F, 0.242523F},</div>
+<div class="line">      {0.40713F, 0.0696747F, 0.456659F, 0.979656F, 0.11167F},</div>
+<div class="line">      {0.77115F, 0.183994F, 0.944587F, 0.467626F, 0.0219546F},</div>
+<div class="line">      {0.137442F, 0.316077F, 0.660742F, 0.828009F, 0.852228F},</div>
+<div class="line">      {0.128113F, 0.0757587F, 0.742959F, 0.360531F, 0.3932F},</div>
+<div class="line">      {0.161107F, 0.709262F, 0.690847F, 0.161165F, 0.237205F},</div>
+<div class="line">      {0.664184F, 0.658516F, 0.972067F, 0.465567F, 0.807259F},</div>
+<div class="line">      {0.669789F, 0.236436F, 0.341701F, 0.430546F, 0.229097F},</div>
+<div class="line">      {0.159471F, 0.122824F, 0.975034F, 0.833685F, 0.78011F},</div>
+<div class="line">      {0.284848F, 0.917524F, 0.358084F, 0.82927F, 0.0983398F},</div>
+<div class="line">      {0.209027F, 0.573124F, 0.428336F, 0.106116F, 0.17974F},</div>
+<div class="line">      {0.861987F, 0.110099F, 0.0994602F, 0.208052F, 0.0545667F},</div>
+<div class="line">      {0.483002F, 0.707016F, 0.189368F, 0.0626376F, 0.992816F},</div>
+<div class="line">      {0.588928F, 0.644143F, 0.763512F, 0.444366F, 0.251652F},</div>
+<div class="line">      {0.419946F, 0.338175F, 0.286543F, 0.97232F, 0.908061F},</div>
+<div class="line">      {0.0625373F, 0.855109F, 0.763831F, 0.622934F, 0.364608F},</div>
+<div class="line">      {0.55833F, 0.505803F, 0.600797F, 0.342724F, 0.735087F},</div>
+<div class="line">      {0.664873F, 0.224638F, 0.385409F, 0.892807F, 0.695F},</div>
+<div class="line">      {0.255295F, 0.0264766F, 0.229274F, 0.723291F, 0.552242F},</div>
+<div class="line">      {0.412129F, 0.856404F, 0.395075F, 0.261842F, 0.947885F},</div>
+<div class="line">      {0.468212F, 0.849367F, 0.00615251F, 0.842904F, 0.700869F},</div>
+<div class="line">      {0.311582F, 0.293401F, 0.299637F, 0.567025F, 0.659598F},</div>
+<div class="line">      {0.695464F, 0.941376F, 0.21219F, 0.27813F, 0.289406F},</div>
+<div class="line">      {0.000397467F, 0.301337F, 0.71608F, 0.296278F, 0.718923F},</div>
+<div class="line">      {0.36314F, 0.263077F, 0.193163F, 0.295399F, 0.0523569F},</div>
+<div class="line">      {0.128381F, 0.572157F, 0.971297F, 0.516492F, 0.921166F},</div>
+<div class="line">      {0.596215F, 0.909239F, 0.133898F, 0.506903F, 0.0335569F},</div>
+<div class="line">      {0.444556F, 0.997721F, 0.348369F, 0.644847F, 0.80885F},</div>
+<div class="line">      {0.891465F, 0.0797467F, 0.85753F, 0.369457F, 0.418543F},</div>
+<div class="line">      {0.861948F, 0.520583F, 0.900797F, 0.153884F, 0.080031F},</div>
+<div class="line">      {0.169696F, 0.981169F, 0.406729F, 0.292696F, 0.831505F},</div>
+<div class="line">      {0.172591F, 0.349291F, 0.782213F, 0.534652F, 0.214628F},</div>
+<div class="line">      {0.875081F, 0.746097F, 0.0806311F, 0.15685F, 0.357471F},</div>
+<div class="line">      {0.519389F, 0.007303F, 0.18117F, 0.370993F, 0.427305F},</div>
+<div class="line">      {0.961372F, 0.218945F, 0.486608F, 0.618755F, 0.168813F},</div>
+<div class="line">      {0.537862F, 0.451312F, 0.384422F, 0.540216F, 0.525636F},</div>
+<div class="line">      {0.494387F, 0.162124F, 0.0136825F, 0.127037F, 0.803511F},</div>
+<div class="line">      {0.409087F, 0.991167F, 0.276877F, 0.188698F, 0.155701F},</div>
+<div class="line">      {0.851474F, 0.54778F, 0.133586F, 0.37391F, 0.137362F},</div>
+<div class="line">      {0.0148137F, 0.97396F, 0.945259F, 0.297432F, 0.260494F},</div>
+<div class="line">      {0.906864F, 0.13484F, 0.214258F, 0.924681F, 0.618572F},</div>
+<div class="line">      {0.141742F, 0.563986F, 0.502602F, 0.416297F, 0.97038F},</div>
+<div class="line">      {0.698555F, 0.406929F, 0.558199F, 0.875364F, 0.736008F},</div>
+<div class="line">      {0.175105F, 0.270328F, 0.332957F, 0.145101F, 0.765857F},</div>
+<div class="line">      {0.68083F, 0.125673F, 0.922594F, 0.831683F, 0.457214F},</div>
+<div class="line">      {0.520728F, 0.26214F, 0.458674F, 0.306454F, 0.783164F},</div>
+<div class="line">      {0.780442F, 0.472245F, 0.125185F, 0.460146F, 0.0847598F},</div>
+<div class="line">      {0.360083F, 0.0686402F, 0.328997F, 0.799852F, 0.818809F},</div>
+<div class="line">      {0.71546F, 0.717884F, 0.253842F, 0.812915F, 0.0141433F},</div>
+<div class="line">      {0.441185F, 0.171204F, 0.0432966F, 0.739241F, 0.448679F},</div>
+<div class="line">      {0.399117F, 0.148854F, 0.743042F, 0.0230124F, 0.378786F},</div>
+<div class="line">      {0.841239F, 0.292533F, 0.391296F, 0.734326F, 0.0597166F},</div>
+<div class="line">      {0.350847F, 0.519149F, 0.808508F, 0.113644F, 0.673261F},</div>
+<div class="line">      {0.229909F, 0.814871F, 0.118688F, 0.612729F, 0.354682F},</div>
+<div class="line">      {0.734755F, 0.675693F, 0.646155F, 0.0296504F, 0.405621F},</div>
+<div class="line">      {0.121731F, 0.231111F, 0.47879F, 0.733299F, 0.270893F},</div>
+<div class="line">      {0.732981F, 0.813999F, 0.597652F, 0.455436F, 0.691262F},</div>
+<div class="line">      {0.10297F, 0.534613F, 0.553605F, 0.777385F, 0.553588F},</div>
+<div class="line">      {0.441429F, 0.974205F, 0.120671F, 0.279931F, 0.624484F},</div>
+<div class="line">      {0.531836F, 0.697762F, 0.274009F, 0.827927F, 0.741129F},</div>
+<div class="line">      {0.745307F, 0.085542F, 0.473629F, 0.286912F, 0.175756F},</div>
+<div class="line">      {0.758466F, 0.268705F, 0.108006F, 0.291002F, 0.559732F},</div>
+<div class="line">      {0.632262F, 0.733193F, 0.919653F, 0.165692F, 0.84716F},</div>
+<div class="line">      {0.0107621F, 0.694084F, 0.35781F, 0.793076F, 0.0818898F},</div>
+<div class="line">      {0.17388F, 0.333606F, 0.867638F, 0.969285F, 0.887633F},</div>
+<div class="line">      {0.255376F, 0.180532F, 0.737631F, 0.869954F, 0.875926F},</div>
+<div class="line">      {0.525821F, 0.882517F, 0.224126F, 0.906093F, 0.557676F},</div>
+<div class="line">      {0.516693F, 0.986614F, 0.644313F, 0.00903489F, 0.207868F},</div>
+<div class="line">      {0.00175451F, 0.49772F, 0.436713F, 0.0418148F, 0.63547F},</div>
+<div class="line">      {0.559954F, 0.192099F, 0.0787102F, 0.976933F, 0.552542F},</div>
+<div class="line">      {0.983202F, 0.165426F, 0.136735F, 0.467933F, 0.626612F},</div>
+<div class="line">      {0.520497F, 0.593702F, 0.0155549F, 0.791301F, 0.635127F},</div>
+<div class="line">      {0.934924F, 0.0663795F, 0.513404F, 0.791586F, 0.68594F},</div>
+<div class="line">      {0.977299F, 0.682359F, 0.0689664F, 0.769369F, 0.169862F},</div>
+<div class="line">      {0.681586F, 0.900795F, 0.312534F, 0.854568F, 0.113097F},</div>
+<div class="line">      {0.0783791F, 0.340692F, 0.23686F, 0.5932F, 0.38193F},</div>
+<div class="line">      {0.430041F, 0.401364F, 0.88266F, 0.226286F, 0.514185F},</div>
+<div class="line">      {0.422123F, 0.713778F, 0.813105F, 0.960577F, 0.794308F},</div>
+<div class="line">      {0.0531423F, 0.930818F, 0.913336F, 0.382305F, 0.372521F},</div>
+<div class="line">      {0.91698F, 0.128078F, 0.901849F, 0.0860355F, 0.432365F},</div>
+<div class="line">      {0.749259F, 0.198112F, 0.538301F, 0.739992F, 0.909026F},</div>
+<div class="line">      {0.903781F, 0.206122F, 0.743227F, 0.700662F, 0.784729F},</div>
+<div class="line">      {0.914658F, 0.625943F, 0.697374F, 0.333459F, 0.213769F},</div>
+<div class="line">      {0.313091F, 0.0485961F, 0.625018F, 0.916347F, 0.363119F},</div>
+<div class="line">      {0.455916F, 0.982769F, 0.245987F, 0.555492F, 0.938798F},</div>
+<div class="line">      {0.0737146F, 0.324519F, 0.325405F, 0.677491F, 0.148078F},</div>
+<div class="line">      {0.918677F, 0.537612F, 0.917458F, 0.611973F, 0.965844F},</div>
+<div class="line">      {0.832977F, 0.466222F, 0.528761F, 0.348765F, 0.472975F},</div>
+<div class="line">      {0.784042F, 0.866144F, 0.00524178F, 0.217837F, 0.145246F},</div>
+<div class="line">      {0.308576F, 0.993283F, 0.0244056F, 0.543786F, 0.575841F},</div>
+<div class="line">      {0.285113F, 0.12198F, 0.74075F, 0.834888F, 0.561457F},</div>
+<div class="line">      {0.635992F, 0.590228F, 0.629378F, 0.112457F, 0.78253F}};</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
 <div class="line">    filter.predict(measure.drift_x, measure.drift_y);</div>
 <div class="line">    filter.update(measure.position_x, measure.position_y, measure.variometer);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  assert(std::abs(1 - filter.x()[0] / 0.347191f) &lt; 0.0001f &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[1] / 91.8926f) &lt; 0.0001f &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[2] / 22.9656f) &lt; 0.0001f &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[3] / 20.6146f) &lt; 0.0001f &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - filter.x()[0] / 0.347191F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[1] / 91.8926F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[2] / 22.9656F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[3] / 20.6146F) &lt; 0.0001F &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimated states expected to meet ArduPilot soaring plane &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;implementation at 0.01% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
@@ -325,7 +325,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jun 29 2023 05:02:24 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Jul 1 2023 04:17:26 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
