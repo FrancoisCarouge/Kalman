@@ -101,7 +101,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
     }};
     filter.h(h);
     assert(filter.h() == z4x5);
-    filter.update(0., 0.f, 0, z4);
+    filter.update(0., 0.F, 0, z4);
     assert(filter.h() == i4x5);
   }
 
@@ -114,7 +114,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
     }};
     filter.h(std::move(h));
     assert(filter.h() == i4x5);
-    filter.update(0., 0.f, 0, z4);
+    filter.update(0., 0.F, 0, z4);
     assert(filter.h() == z4x5);
   }
 
