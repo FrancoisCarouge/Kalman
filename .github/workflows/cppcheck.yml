@@ -51,4 +51,6 @@ jobs:
           -I benchmark/include \
           -I include \
           -I linalg/eigen \
+          -I linalg/lazy \
+          -I linalg/naive \
           .
