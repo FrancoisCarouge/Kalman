@@ -49,7 +49,7 @@ namespace {
   auto identity{identity_v<>};
 
   assert(identity == 1.0);
-  assert((std::is_same_v<decltype(identity), double>));
+  static_assert(std::is_same_v<decltype(identity), double>);
 
   return 0;
 }()};

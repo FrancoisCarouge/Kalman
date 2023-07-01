@@ -48,7 +48,7 @@ namespace {
   auto zero{zero_v<>};
 
   assert(zero == 0.0);
-  assert((std::is_same_v<decltype(zero), double>));
+  static_assert(std::is_same_v<decltype(zero), double>);
 
   return 0;
 }()};
