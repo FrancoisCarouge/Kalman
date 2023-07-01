@@ -71,40 +71,14 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   assert(filter.f() == i5x5);
 
   {
-    const auto f{i5x5};
-    filter.f(f);
-    assert(filter.f() == i5x5);
-  }
-
-  {
     const auto f{z5x5};
-    filter.f(std::move(f));
+    filter.f(f);
     assert(filter.f() == z5x5);
   }
 
   {
     const auto f{i5x5};
     filter.f(f);
-    assert(filter.f() == i5x5);
-  }
-
-  {
-    const auto f{z5x5};
-    filter.f(std::move(f));
-    assert(filter.f() == z5x5);
-  }
-
-  {
-    const auto f{
-        []([[maybe_unused]] const kalman::state &x,
-           [[maybe_unused]] const kalman::input &u,
-           [[maybe_unused]] const int &i, [[maybe_unused]] const float &fp,
-           [[maybe_unused]] const double &d) -> kalman::state_transition {
-          return identity_v<matrix<5, 5>>;
-        }};
-    filter.f(f);
-    assert(filter.f() == z5x5);
-    filter.predict(0, 0.F, 0., z3);
     assert(filter.f() == i5x5);
   }
 
@@ -116,10 +90,24 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
            [[maybe_unused]] const double &d) -> kalman::state_transition {
           return zero_v<matrix<5, 5>>;
         }};
-    filter.f(std::move(f));
+    filter.f(f);
     assert(filter.f() == i5x5);
     filter.predict(0, 0.F, 0., z3);
     assert(filter.f() == z5x5);
+  }
+
+  {
+    const auto f{
+        []([[maybe_unused]] const kalman::state &x,
+           [[maybe_unused]] const kalman::input &u,
+           [[maybe_unused]] const int &i, [[maybe_unused]] const float &fp,
+           [[maybe_unused]] const double &d) -> kalman::state_transition {
+          return identity_v<matrix<5, 5>>;
+        }};
+    filter.f(std::move(f));
+    assert(filter.f() == z5x5);
+    filter.predict(0, 0.F, 0., z3);
+    assert(filter.f() == i5x5);
   }
 
   return 0;

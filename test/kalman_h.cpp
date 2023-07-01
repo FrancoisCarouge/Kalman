@@ -58,42 +58,30 @@ namespace {
 
   {
     const auto h{3.};
-    filter.h(std::move(h));
+    filter.h(h);
     assert(filter.h() == 3);
   }
 
   {
-    const auto h{4.};
+    const auto h{
+        []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
+          return 4.;
+        }};
     filter.h(h);
+    assert(filter.h() == 3);
+    filter.update(0.);
     assert(filter.h() == 4);
   }
 
   {
-    const auto h{5.};
-    filter.h(std::move(h));
-    assert(filter.h() == 5);
-  }
-
-  {
     const auto h{
         []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
-          return 6.;
-        }};
-    filter.h(h);
-    assert(filter.h() == 5);
-    filter.update(0.);
-    assert(filter.h() == 6);
-  }
-
-  {
-    const auto h{
-        []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
-          return 7.;
+          return 5.;
         }};
     filter.h(std::move(h));
-    assert(filter.h() == 6);
+    assert(filter.h() == 4);
     filter.update(0.);
-    assert(filter.h() == 7);
+    assert(filter.h() == 5);
   }
 
   return 0;

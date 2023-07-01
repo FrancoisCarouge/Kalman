@@ -69,39 +69,14 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   assert(filter.h() == i4x5);
 
   {
-    const auto h{i4x5};
-    filter.h(h);
-    assert(filter.h() == i4x5);
-  }
-
-  {
     const auto h{z4x5};
-    filter.h(std::move(h));
+    filter.h(h);
     assert(filter.h() == z4x5);
   }
 
   {
     const auto h{i4x5};
     filter.h(h);
-    assert(filter.h() == i4x5);
-  }
-
-  {
-    const auto h{z4x5};
-    filter.h(std::move(h));
-    assert(filter.h() == z4x5);
-  }
-
-  {
-    const auto h{[]([[maybe_unused]] const kalman::state &x,
-                    [[maybe_unused]] const double &d,
-                    [[maybe_unused]] const float &f,
-                    [[maybe_unused]] const int &i) -> kalman::output_model {
-      return identity_v<matrix<4, 5>>;
-    }};
-    filter.h(h);
-    assert(filter.h() == z4x5);
-    filter.update(0., 0.F, 0, z4);
     assert(filter.h() == i4x5);
   }
 
@@ -112,10 +87,23 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
                     [[maybe_unused]] const int &i) -> kalman::output_model {
       return zero_v<matrix<4, 5>>;
     }};
-    filter.h(std::move(h));
+    filter.h(h);
     assert(filter.h() == i4x5);
     filter.update(0., 0.F, 0, z4);
     assert(filter.h() == z4x5);
+  }
+
+  {
+    const auto h{[]([[maybe_unused]] const kalman::state &x,
+                    [[maybe_unused]] const double &d,
+                    [[maybe_unused]] const float &f,
+                    [[maybe_unused]] const int &i) -> kalman::output_model {
+      return identity_v<matrix<4, 5>>;
+    }};
+    filter.h(std::move(h));
+    assert(filter.h() == z4x5);
+    filter.update(0., 0.F, 0, z4);
+    assert(filter.h() == i4x5);
   }
 
   return 0;

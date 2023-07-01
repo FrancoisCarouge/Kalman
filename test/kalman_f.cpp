@@ -58,38 +58,26 @@ namespace {
 
   {
     const auto f{3.};
-    filter.f(std::move(f));
+    filter.f(f);
     assert(filter.f() == 3);
   }
 
   {
-    const auto f{4.};
+    const auto f{[]([[maybe_unused]] const kalman::state &x)
+                     -> kalman::state_transition { return 4.; }};
     filter.f(f);
+    assert(filter.f() == 3);
+    filter.predict();
     assert(filter.f() == 4);
   }
 
   {
-    const auto f{5.};
-    filter.f(std::move(f));
-    assert(filter.f() == 5);
-  }
-
-  {
     const auto f{[]([[maybe_unused]] const kalman::state &x)
-                     -> kalman::state_transition { return 6.; }};
-    filter.f(f);
-    assert(filter.f() == 5);
-    filter.predict();
-    assert(filter.f() == 6);
-  }
-
-  {
-    const auto f{[]([[maybe_unused]] const kalman::state &x)
-                     -> kalman::state_transition { return 7.; }};
+                     -> kalman::state_transition { return 5.; }};
     filter.f(std::move(f));
-    assert(filter.f() == 6);
+    assert(filter.f() == 4);
     filter.predict();
-    assert(filter.f() == 7);
+    assert(filter.f() == 5);
   }
 
   return 0;
