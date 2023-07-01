@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>{<a class="el" href="update__linalg__xx0_8cpp.xhtml">update_linalg_xx0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ab1ab8c595b8ad8d298b8fe6492b51c40">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::Name</a>  ("update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</dt>
 <dd><a class="anchor" id="_todo000002"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">fcarouge::internal::quotient</a>  </dt>
-<dd><a class="anchor" id="_todo000007"></a>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization?  </dd>
+<dd><a class="anchor" id="_todo000008"></a>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization?  </dd>
 <dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000015"></a>Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd"></p>
@@ -165,16 +165,16 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
-<dd><a class="anchor" id="_todo000025"></a>Add measurement post-fit residual by default and example?  </dd>
+<dd><a class="anchor" id="_todo000027"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::genie</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000027"></a>Remove optional wrapper for the <code>empty</code> API support of the <code>std::generator</code> support and simplify the implementation. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000026"></a>Remove optional wrapper for the <code>empty</code> API support of the <code>std::generator</code> support and simplify the implementation. </p>
 <p class="interdd"></p>
 <p class="enddd">Clarify requirements for the mutable nature of the generator? Remove.  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
 <dd><a class="anchor" id="_todo000024"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000026"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000025"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>{<a class="el" href="linalg__addition_8cpp.xhtml">linalg_addition.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml#a58f62760145a6a0839b43901056530bb">fcarouge::test::anonymous_namespace{linalg_addition.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000031"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__assign_8cpp.xhtml">linalg_assign.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__assign_8cpp_03.xhtml#a4c98e308d4ac9d24947134de6c580520">fcarouge::test::anonymous_namespace{linalg_assign.cpp}::test</a>  </dt>
@@ -210,7 +210,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jul 1 2023 19:17:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sat Jul 1 2023 19:55:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
