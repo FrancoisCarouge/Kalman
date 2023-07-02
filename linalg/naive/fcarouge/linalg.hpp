@@ -56,13 +56,13 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
     data[0][0] = element;
   }
 
-  inline constexpr explicit matrix(Type(element)[1])
+  inline constexpr explicit matrix(const Type (&element)[1])
     requires(Row == 1 && Column == 1)
   {
     data[0][0] = element[0];
   }
 
-  inline constexpr explicit matrix(Type(column)[Row])
+  inline constexpr explicit matrix(const Type (&column)[Row])
     requires(Row > 1 && Column == 1)
   {
     for (decltype(Row) i{0}; i < Row; ++i) {
@@ -70,7 +70,7 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
     }
   }
 
-  inline constexpr explicit matrix(Type(row)[Column])
+  inline constexpr explicit matrix(const Type (&row)[Column])
     requires(Row == 1 && Column > 1)
   {
     for (decltype(Column) j{0}; j < Column; ++j) {

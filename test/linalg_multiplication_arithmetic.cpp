@@ -46,8 +46,8 @@ namespace {
 //!
 //! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
-  matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
-  auto r{a * 2.0};
+  const matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
+  const auto r{a * 2.0};
 
   assert(r(0, 0) == 2.0);
   assert(r(0, 1) == 4.0);

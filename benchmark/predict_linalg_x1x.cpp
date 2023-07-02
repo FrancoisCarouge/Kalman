@@ -74,7 +74,7 @@ void bench(::benchmark::State &state) {
           uv[position] = uniformly_distributed(random_generator);
         });
 
-    typename kalman::input u{uv};
+    const typename kalman::input u{uv};
 
     ::benchmark::ClobberMemory();
     const auto start{clock::now()};

@@ -83,7 +83,7 @@ void bench(::benchmark::State &state) {
           zv[position] = uniformly_distributed(random_generator);
         });
 
-    typename kalman::output z{zv};
+    const typename kalman::output z{zv};
 
     ::benchmark::ClobberMemory();
     const auto start{clock::now()};

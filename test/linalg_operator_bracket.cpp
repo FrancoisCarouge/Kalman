@@ -46,7 +46,7 @@ namespace {
 //!
 //! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
-  matrix<> m{42.0};
+  const matrix<> m{42.0};
 
   assert(m(0) == 42.0);
   assert(m(0, 0) == 42.0);

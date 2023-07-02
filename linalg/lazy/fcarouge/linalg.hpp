@@ -163,7 +163,7 @@ struct matrix {
           (co_yield elements_copy, ...);
         }(elements...)} {}
 
-  inline constexpr matrix(Type (&elements)[Row * Column])
+  inline constexpr matrix(const Type (&elements)[Row * Column])
     requires(Row == 1 || Column == 1)
       : genie{make_generator(std::to_array(elements))} {}
 

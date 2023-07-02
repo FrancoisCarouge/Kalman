@@ -46,7 +46,7 @@ namespace {
 //!
 //! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
-  matrix<double, 3, 3> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  const matrix<double, 3, 3> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
   assert(m(0, 0) == 1.0);
   assert(m(0, 1) == 2.0);
