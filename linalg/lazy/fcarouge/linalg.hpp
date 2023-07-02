@@ -165,9 +165,10 @@ struct matrix {
     requires(Row == 1 || Column == 1)
       : genie{make_generator(std::to_array(elements))} {}
 
-  template <auto... Columns>
-  constexpr matrix(const Type (&...rows)[Columns])
-    requires((sizeof...(rows) == Row) && (((Columns == Column) && ... && true)))
+  template <typename... Types, auto... Columns>
+  matrix(const Types (&...rows)[Columns])
+    requires(std::conjunction_v<std::is_same<Type, Types>...> &&
+             ((Columns == Column) && ... && true))
       : genie{[](auto rows_copy) -> std::generator<Type> {
           for (auto &&row : rows_copy) {
             for (auto &&element : row) { // std::ranges::elements_of
@@ -271,10 +272,6 @@ struct matrix {
   auto begin() const { return genie.begin(); }
   auto end() const { return genie.end(); }
 
-  //! @todo Remove optional wrapper for the `empty` API support of the
-  //! `std::generator` support and simplify the implementation.
-  //! @todo Clarify requirements for the mutable nature of the generator?
-  //! Remove.
   mutable generator genie;
 };
 
@@ -298,11 +295,12 @@ matrix(const Type (&)[Row][Column]) -> matrix<Type, Row, Column>;
 template <typename Type, auto Row>
 matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>;
 
-// Fix me. Test me.
 template <typename... Types, auto... Columns>
+  requires(std::conjunction_v<std::is_same<first_t<Types...>, Types>...> &&
+           ((Columns == first_v<Columns>)&&... && true))
 matrix(const Types (&...rows)[Columns])
-    -> matrix<std::common_type_t<Types...>, sizeof...(Columns),
-              (Columns * ... * 1) / sizeof...(Columns)>;
+    -> matrix<std::remove_cvref_t<first_t<Types...>>, sizeof...(Columns),
+              (Columns, ...)>;
 //! @}
 
 template <typename Type, auto Row, auto Column>
