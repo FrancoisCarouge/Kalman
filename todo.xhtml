@@ -158,16 +158,16 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a5215bcddbc15cd25df587f7988334ed8">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::operator=</a>  (kalman &amp;&amp;other) noexcept -&gt; kalman &amp;=delete</dt>
 <dd><a class="anchor" id="_todo000022"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ab2db3b065650ffd42931f010d6781835">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::operator=</a>  (const kalman &amp;other) -&gt; kalman &amp;=delete</dt>
-<dd><a class="anchor" id="_todo000021"></a>Implement and test.  </dd>
+<dd><a class="anchor" id="_todo000020"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::update</a>  (const auto &amp;...arguments)</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000029"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
-<dd><a class="anchor" id="_todo000027"></a>Add measurement post-fit residual by default and example?  </dd>
+<dd><a class="anchor" id="_todo000026"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::genie</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000026"></a>Remove optional wrapper for the <code>empty</code> API support of the <code>std::generator</code> support and simplify the implementation. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000027"></a>Remove optional wrapper for the <code>empty</code> API support of the <code>std::generator</code> support and simplify the implementation. </p>
 <p class="interdd"></p>
 <p class="enddd">Clarify requirements for the mutable nature of the generator? Remove.  </p>
 </dd>
@@ -178,9 +178,9 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dt>{<a class="el" href="linalg__addition_8cpp.xhtml">linalg_addition.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml#a58f62760145a6a0839b43901056530bb">fcarouge::test::anonymous_namespace{linalg_addition.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000031"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__assign_8cpp.xhtml">linalg_assign.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__assign_8cpp_03.xhtml#a4c98e308d4ac9d24947134de6c580520">fcarouge::test::anonymous_namespace{linalg_assign.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000032"></a>Rewrite this test as a property-based test.  </dd>
-<dt>{<a class="el" href="linalg__constructor__1x1_8cpp.xhtml">linalg_constructor_1x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1_8cpp_03.xhtml#ac660c243ef8dba578dc714a0c811a1fe">fcarouge::test::anonymous_namespace{linalg_constructor_1x1.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000033"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__constructor__1x1_8cpp.xhtml">linalg_constructor_1x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1_8cpp_03.xhtml#ac660c243ef8dba578dc714a0c811a1fe">fcarouge::test::anonymous_namespace{linalg_constructor_1x1.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000032"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__1x1__array_8cpp.xhtml">linalg_constructor_1x1_array.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1__array_8cpp_03.xhtml#a6e698ed0a00a63fd8bfc92006e7fb814">fcarouge::test::anonymous_namespace{linalg_constructor_1x1_array.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000034"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__1xn_8cpp.xhtml">linalg_constructor_1xn.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1xn_8cpp_03.xhtml#a1416a80b9dea1d45ca295039a7cc3e85">fcarouge::test::anonymous_namespace{linalg_constructor_1xn.cpp}::test</a>  </dt>
@@ -210,7 +210,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jul 2 2023 17:31:47 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jul 2 2023 17:35:19 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
