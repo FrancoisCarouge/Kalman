@@ -38,6 +38,25 @@ For more information, please refer to <https://unlicense.org> ]]
 
 include(FetchContent)
 
+foreach(BACKEND IN ITEMS "lazy")
+  foreach(TEST "linalg_constructor_initializer_lists_deduction.cpp")
+    get_filename_component(NAME ${TEST} NAME_WE)
+    add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
+    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
+                          PROPERTIES CXX_STANDARD 23)
+    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
+                          PROPERTIES CXX_EXTENSIONS OFF)
+    target_link_libraries(kalman_test_${BACKEND}_${NAME}_driver
+                          PRIVATE kalman kalman_main kalman_linalg_${BACKEND})
+    add_test(kalman_test_${BACKEND}_${NAME}
+             kalman_test_${BACKEND}_${NAME}_driver)
+    add_test(
+      NAME kalman_${BACKEND}_valgrind_${NAME}
+      COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
+              $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
+  endforeach()
+endforeach()
+
 foreach(
   TEST
   "kalman_constructor_default_float_1x1x1.cpp"

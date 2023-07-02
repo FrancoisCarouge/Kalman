@@ -76,6 +76,20 @@ template <typename From> using repack_t = typename repack<From>::type;
 
 template <typename From> inline constexpr auto repack_s{repack<From>::size};
 
+template <typename Type, typename... Types> struct first_type {
+  using type = Type;
+};
+
+template <typename... Types>
+using first_t = typename first_type<Types...>::type;
+
+template <auto Value, auto... Values> struct first_value {
+  static constexpr auto value{Value};
+};
+
+template <auto... Values>
+inline constexpr auto first_v{first_value<Values...>::value};
+
 template <auto Begin, decltype(Begin) End, decltype(Begin) Increment,
           typename Function>
 constexpr void for_constexpr(Function &&function) {
