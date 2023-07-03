@@ -172,9 +172,6 @@ matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>; // column_vector
 //! @name Algebraic Named Values
 //! @{
 //! @brief The identity matrix naive specialization.
-template <typename Type>
-inline constexpr Type identity_v<matrix<Type, 1, 1>>{1.0};
-
 template <typename Type, auto Row, auto Column>
 inline constexpr matrix<Type, Row, Column>
     identity_v<matrix<Type, Row, Column>>{[] {
@@ -195,8 +192,6 @@ inline constexpr matrix<Type, Row, Column>
     }()};
 
 //! @brief The zero matrix naive specialization.
-template <typename Type> inline constexpr Type zero_v<matrix<Type, 1, 1>>{};
-
 template <typename Type, auto Row, auto Column>
 inline constexpr matrix<Type, Row, Column> zero_v<matrix<Type, Row, Column>>{};
 //! @}
