@@ -42,26 +42,26 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the zero matrices values are null.
+//! @test Verifies the assignment operator.
+//!
+//! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
-  auto zero1{zero_v<matrix<double, 2, 2>>};
-  auto zero2{zero1};
-  auto zero3{zero_v<matrix<double, 2, 2>>};
-  matrix<double, 2, 2> zero4{zero2};
-  matrix<double, 2, 2> zero5{zero_v<matrix<double, 2, 2>>};
+  matrix<double, 4, 2> a{{1.0, 2.0}, {3.0, 4.0}, {5.0, 6.0}, {7.0, 8.0}};
+  matrix<double, 2, 3> b{{2.0, 3.0, 4.0}, {5.0, 6.0, 7.0}};
+  auto r{a * b};
 
-  assert(zero3(0, 0) == 0.0);
-  assert(zero3(0, 1) == 0.0);
-  assert(zero3(1, 0) == 0.0);
-  assert(zero3(1, 1) == 0.0);
-  assert(zero4(0, 0) == 0.0);
-  assert(zero4(0, 1) == 0.0);
-  assert(zero4(1, 0) == 0.0);
-  assert(zero4(1, 1) == 0.0);
-  assert(zero5(0, 0) == 0.0);
-  assert(zero5(0, 1) == 0.0);
-  assert(zero5(1, 0) == 0.0);
-  assert(zero5(1, 1) == 0.0);
+  assert(r(0, 0) == 12.0);
+  assert(r(0, 1) == 15.0);
+  assert(r(0, 2) == 18.0);
+  assert(r(1, 0) == 26.0);
+  assert(r(1, 1) == 33.0);
+  assert(r(1, 2) == 40.0);
+  assert(r(2, 0) == 40.0);
+  assert(r(2, 1) == 51.0);
+  assert(r(2, 2) == 62.0);
+  assert(r(3, 0) == 54.0);
+  assert(r(3, 1) == 69.0);
+  assert(r(3, 2) == 84.0);
 
   return 0;
 }()};
