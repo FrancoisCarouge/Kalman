@@ -15,7 +15,5 @@ var naive_2fcarouge_2linalg_8hpp =
     [ "operator-", "naive_2fcarouge_2linalg_8hpp.xhtml#ab7e4a66b8fa71546907279397bb9971a", null ],
     [ "operator-", "naive_2fcarouge_2linalg_8hpp.xhtml#ac5db1b5cabde635b27f85fe3ddc3dcc9", null ],
     [ "operator/", "naive_2fcarouge_2linalg_8hpp.xhtml#ae2c572219d8e2ce56c12424b71489c59", null ],
-    [ "transpose", "naive_2fcarouge_2linalg_8hpp.xhtml#ac922632c2da8269e8396756088ba9a1f", null ],
-    [ "identity_v< matrix< Type, 1, 1 > >", "naive_2fcarouge_2linalg_8hpp.xhtml#ab72aa970a8b67a534e758d252e349066", null ],
-    [ "zero_v< matrix< Type, 1, 1 > >", "naive_2fcarouge_2linalg_8hpp.xhtml#ade515adcc87c3185941859aa4d550b12", null ]
+    [ "transpose", "naive_2fcarouge_2linalg_8hpp.xhtml#ac922632c2da8269e8396756088ba9a1f", null ]
 ];

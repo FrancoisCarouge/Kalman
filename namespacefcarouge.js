@@ -57,13 +57,11 @@ var namespacefcarouge =
     [ "identity_v", "namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d", null ],
     [ "identity_v< Arithmetic >", "namespacefcarouge.xhtml#ad3366ce166772e7a795df711ec8fd4e7", null ],
     [ "identity_v< Matrix >", "namespacefcarouge.xhtml#a86526ddb6bfec8982d096d3d47fae040", null ],
-    [ "identity_v< matrix< Type, 1, 1 > >", "namespacefcarouge.xhtml#ab72aa970a8b67a534e758d252e349066", null ],
     [ "identity_v< matrix< Type, Row, Column > >", "namespacefcarouge.xhtml#a1ea35424b203a1ba2ab287785e36b753", null ],
     [ "make_identity_generator", "namespacefcarouge.xhtml#a3b0c4f263f282cbb330a4ca6b5ad10d9", null ],
     [ "make_zero_generator", "namespacefcarouge.xhtml#a7fe918283834c2c859a7325fc8d3a563", null ],
     [ "zero_v", "namespacefcarouge.xhtml#a02138eddd50d93b33b26d70dfbd80edf", null ],
     [ "zero_v< Arithmetic >", "namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f", null ],
     [ "zero_v< Matrix >", "namespacefcarouge.xhtml#a906ad0e7a837c8935b27497a2e02f2c4", null ],
-    [ "zero_v< matrix< Type, 1, 1 > >", "namespacefcarouge.xhtml#ade515adcc87c3185941859aa4d550b12", null ],
     [ "zero_v< matrix< Type, Row, Column > >", "namespacefcarouge.xhtml#a27e109425619816f11a1c78c3a9e59f6", null ]
 ];
