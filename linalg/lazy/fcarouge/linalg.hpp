@@ -36,14 +36,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_LINALG_LAZY_HPP
-#define FCAROUGE_LINALG_LAZY_HPP
+#ifndef FCAROUGE_LINALG_HPP
+#define FCAROUGE_LINALG_HPP
 
 //! @file
-//! @brief Linear algebra facade for a coroutine-based lazy implementation.
+//! @brief Linear algebra coroutine-based lazy implementation.
 //!
-//! @details Standardizes matrix, vectors, and algebraic values type names for
-//! the library usage.
+//! @details Matrix, vectors, and named algebraic values.
 //!
 //! @note Idea from:
 //! https://gieseanw.wordpress.com/2019/10/20/we-dont-need-no-stinking-expression-templates/
@@ -60,7 +59,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-
 // Semantic? Guarantees? to_generator? std::ranges::to overload? make_generator?
 // Overloads for C-array?
 // Need one copy, avoid any extra?
@@ -323,7 +321,7 @@ auto make_zero_generator{[]() -> std::generator<Type> {
 
 //! @name Algebraic Named Values
 //! @{
-//! @brief The identity matrix.
+//! @brief The identity matrix lazy specialization.
 template <typename Type, auto Row, auto Column>
 auto identity_v<matrix<Type, Row, Column>>{[](auto... args) {
   matrix<Type, Row, Column, true> m{
@@ -335,7 +333,7 @@ auto identity_v<matrix<Type, Row, Column>>{[](auto... args) {
   }
 }};
 
-//! @brief The zero matrix.
+//! @brief The zero matrix lazy specialization.
 template <typename Type, auto Row, auto Column>
 auto zero_v<matrix<Type, Row, Column>>{[](auto... args) {
   matrix<Type, Row, Column, true> m{make_zero_generator<Type, Row, Column>()};
@@ -414,4 +412,4 @@ operator+(matrix<Type, Row, Column> lhs, matrix<Type, Row, Column> rhs) {
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_LINALG_LAZY_HPP
+#endif // FCAROUGE_LINALG_HPP

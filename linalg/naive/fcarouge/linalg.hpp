@@ -39,6 +39,11 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_LINALG_HPP
 #define FCAROUGE_LINALG_HPP
 
+//! @file
+//! @brief Linear algebra array-based naive implementation.
+//!
+//! @details Matrix, vectors, and named algebraic values.
+
 #include "fcarouge/utility.hpp"
 
 #include <initializer_list>
@@ -166,7 +171,7 @@ matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>; // column_vector
 
 //! @name Algebraic Named Values
 //! @{
-//! @brief Identity
+//! @brief The identity matrix naive specialization.
 template <typename Type>
 inline constexpr Type identity_v<matrix<Type, 1, 1>>{1.0};
 
@@ -189,7 +194,7 @@ inline constexpr matrix<Type, Row, Column>
       return result;
     }()};
 
-//! @brief Zero
+//! @brief The zero matrix naive specialization.
 template <typename Type> inline constexpr Type zero_v<matrix<Type, 1, 1>>{};
 
 template <typename Type, auto Row, auto Column>

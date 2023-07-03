@@ -42,10 +42,9 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Linear algebra facade for Eigen3 third party implementation.
 //!
-//! @details Standardizes matrix, vectors, and algebraic values type names for
-//! the library usage.
+//! @details Matrix, vectors, and named algebraic values.
 //!
-//! @note The Eigen3 linear algebra is not constexpr-compatible.
+//! @note The Eigen3 linear algebra is not constexpr-compatible as of July 2023.
 
 #include "fcarouge/utility.hpp"
 
