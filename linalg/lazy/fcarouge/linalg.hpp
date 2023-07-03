@@ -179,6 +179,8 @@ struct matrix {
   inline constexpr matrix(std::generator<Type> other)
       : genie{std::move(other)} {}
 
+  inline constexpr matrix(std::invocable auto other) : genie{other()} {}
+
   [[nodiscard]] inline constexpr std::generator<Type> clone() const {
     std::array<Type, Row * Column> elements; // std::ranges::to
     std::ranges::copy(genie, elements.begin());
