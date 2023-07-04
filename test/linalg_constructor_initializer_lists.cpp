@@ -46,17 +46,20 @@ namespace {
 //!
 //! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
-  matrix<double, 3, 3> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  matrix<int, 4, 3> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {1, 2, 3}};
 
-  assert(m(0, 0) == 1.0);
-  assert(m(0, 1) == 2.0);
-  assert(m(0, 2) == 3.0);
-  assert(m(1, 0) == 4.0);
-  assert(m(1, 1) == 5.0);
-  assert(m(1, 2) == 6.0);
-  assert(m(2, 0) == 7.0);
-  assert(m(2, 1) == 8.0);
-  assert(m(2, 2) == 9.0);
+  assert(m(0, 0) == 1);
+  assert(m(0, 1) == 2);
+  assert(m(0, 2) == 3);
+  assert(m(1, 0) == 4);
+  assert(m(1, 1) == 5);
+  assert(m(1, 2) == 6);
+  assert(m(2, 0) == 7);
+  assert(m(2, 1) == 8);
+  assert(m(2, 2) == 9);
+  assert(m(3, 0) == 1);
+  assert(m(3, 1) == 2);
+  assert(m(3, 2) == 3);
 
   return 0;
 }()};
