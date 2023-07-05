@@ -166,9 +166,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a36b1c08e7faa5e078cd8c56e4acd8a54"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row&gt; </td></tr>
 <tr class="memitem:a36b1c08e7faa5e078cd8c56e4acd8a54"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a36b1c08e7faa5e078cd8c56e4acd8a54">fcarouge::matrix</a> (const Type(&amp;)[Row]) -&gt; matrix&lt; Type, Row, 1 &gt;</td></tr>
 <tr class="separator:a36b1c08e7faa5e078cd8c56e4acd8a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b8af7d40046cbeef79bfaca7078aeaa"><td class="memTemplParams" colspan="2">template&lt;typename... Types, auto... Columns&gt; </td></tr>
-<tr class="memitem:a8b8af7d40046cbeef79bfaca7078aeaa"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a8b8af7d40046cbeef79bfaca7078aeaa">fcarouge::matrix</a> (const Types(&amp;...rows)[Columns]) -&gt; matrix&lt; std::common_type_t&lt; Types... &gt;, sizeof...(Columns),(Columns *... *1)/sizeof...(Columns)&gt;</td></tr>
-<tr class="separator:a8b8af7d40046cbeef79bfaca7078aeaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ff2f7c46a68129e9dece27181dce855"><td class="memTemplParams" colspan="2">template&lt;typename... Types, auto... Columns&gt; <br />
+requires (std::conjunction_v&lt;std::is_same&lt;first_t&lt;Types...&gt;, Types&gt;...&gt; &amp;&amp; ((Columns == first_v&lt;Columns&gt;)&amp;&amp;... &amp;&amp; true))</td></tr>
+<tr class="memitem:a1ff2f7c46a68129e9dece27181dce855"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1ff2f7c46a68129e9dece27181dce855">fcarouge::matrix</a> (const Types(&amp;...rows)[Columns]) -&gt; matrix&lt; std::remove_cvref_t&lt; first_t&lt; Types... &gt; &gt;, sizeof...(Columns),(Columns,...)&gt;</td></tr>
+<tr class="separator:a1ff2f7c46a68129e9dece27181dce855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -201,7 +202,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c1845e5bf011c2136883d0d7188f50e9.xhtml">linalg</a></li><li class="navelem"><a class="el" href="dir_a5865fd9dbf72bad167b68249efe8e33.xhtml">lazy</a></li><li class="navelem"><a class="el" href="dir_0a4f59775a28c8901f3ddbf67298531c.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="lazy_2fcarouge_2linalg_8hpp.xhtml">linalg.hpp</a></li>
-    <li class="footer">Generated on Wed Jul 5 2023 03:52:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Wed Jul 5 2023 03:58:17 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

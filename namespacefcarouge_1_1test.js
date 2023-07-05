@@ -92,6 +92,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{linalg_constructor_initializer_lists.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03.xhtml#ab74cb7ed9098c4f5d7d6a27a709dc13f", null ]
     ] ],
+    [ "anonymous_namespace{linalg_constructor_initializer_lists_deduction.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists__deduction_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists__deduction_8cpp_03.xhtml#a063a72ab4a56a2886f2bb5e65ecbd389", null ]
+    ] ],
     [ "anonymous_namespace{linalg_constructor_nx1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__nx1_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__nx1_8cpp_03.xhtml#a63468faa6b757c422a21a3a10bbefb24", null ]
     ] ],

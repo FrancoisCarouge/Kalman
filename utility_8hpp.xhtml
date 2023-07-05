@@ -131,23 +131,6 @@ Concepts</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Eigen3 algebraic concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Types</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >Tuple-like pack type.</p>
-<p >An alternative to tuple-like types. </p>
-</div></td></tr>
-<tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a> = internal::pack&lt; Types... &gt;</td></tr>
-<tr class="separator:aa5a28afb4550bbcbd55d875351de6e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">fcarouge::empty_pack</a> = internal::empty_pack</td></tr>
-<tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like empty pack type.  <a href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">More...</a><br /></td></tr>
-<tr class="separator:af07a5637ebbb4bd8c0244134151732ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd64ab811e0773f298e29a93f825c992"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , typename Denominator &gt; </td></tr>
-<tr class="memitem:acd64ab811e0773f298e29a93f825c992"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient</a> = internal::quotient&lt; Numerator, Denominator &gt;</td></tr>
-<tr class="memdesc:acd64ab811e0773f298e29a93f825c992"><td class="mdescLeft">&#160;</td><td class="mdescRight">The matrix type satisfying <code>X * Row = Column</code>.  <a href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">More...</a><br /></td></tr>
-<tr class="separator:acd64ab811e0773f298e29a93f825c992"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
@@ -178,6 +161,29 @@ Variables</h2></td></tr>
 <tr class="memitem:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f">fcarouge::zero_v&lt; Arithmetic &gt;</a> {0}</td></tr>
 <tr class="memdesc:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton zero matrix specialization.  <a href="namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f">More...</a><br /></td></tr>
 <tr class="separator:a8cc0f52579fef5ea2023d3927a3b1a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p >Tuple-like pack type.</p>
+<p >An alternative to tuple-like types. </p>
+</td></tr>
+<tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a> = internal::pack&lt; Types... &gt;</td></tr>
+<tr class="separator:aa5a28afb4550bbcbd55d875351de6e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">fcarouge::empty_pack</a> = internal::empty_pack</td></tr>
+<tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like empty pack type.  <a href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">More...</a><br /></td></tr>
+<tr class="separator:af07a5637ebbb4bd8c0244134151732ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6990cf6953bd2fa9b0a96aa36ad56210"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a6990cf6953bd2fa9b0a96aa36ad56210"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210">fcarouge::first_t</a> = internal::first_t&lt; Types... &gt;</td></tr>
+<tr class="memdesc:a6990cf6953bd2fa9b0a96aa36ad56210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first type of the type template parameter pack.  <a href="namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210">More...</a><br /></td></tr>
+<tr class="separator:a6990cf6953bd2fa9b0a96aa36ad56210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd64ab811e0773f298e29a93f825c992"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , typename Denominator &gt; </td></tr>
+<tr class="memitem:acd64ab811e0773f298e29a93f825c992"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient</a> = internal::quotient&lt; Numerator, Denominator &gt;</td></tr>
+<tr class="memdesc:acd64ab811e0773f298e29a93f825c992"><td class="mdescLeft">&#160;</td><td class="mdescRight">The matrix type satisfying <code>X * Row = Column</code>.  <a href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">More...</a><br /></td></tr>
+<tr class="separator:acd64ab811e0773f298e29a93f825c992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplParams" colspan="2">template&lt;auto... Values&gt; </td></tr>
+<tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77">fcarouge::first_v</a> {internal::first_v&lt;Values...&gt;}</td></tr>
+<tr class="memdesc:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first value of the non-type template parameter pack.  <a href="namespacefcarouge.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77">More...</a><br /></td></tr>
+<tr class="separator:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The collection of utilities supporting the library. </p>
@@ -190,7 +196,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="utility_8hpp.xhtml">utility.hpp</a></li>
-    <li class="footer">Generated on Wed Jul 5 2023 03:52:34 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Wed Jul 5 2023 03:58:17 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>

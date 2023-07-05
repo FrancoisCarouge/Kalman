@@ -24,6 +24,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "linalg_constructor_1xn.cpp", "linalg__constructor__1xn_8cpp.xhtml", "linalg__constructor__1xn_8cpp" ],
     [ "linalg_constructor_1xn_array.cpp", "linalg__constructor__1xn__array_8cpp.xhtml", "linalg__constructor__1xn__array_8cpp" ],
     [ "linalg_constructor_initializer_lists.cpp", "linalg__constructor__initializer__lists_8cpp.xhtml", "linalg__constructor__initializer__lists_8cpp" ],
+    [ "linalg_constructor_initializer_lists_deduction.cpp", "linalg__constructor__initializer__lists__deduction_8cpp.xhtml", "linalg__constructor__initializer__lists__deduction_8cpp" ],
     [ "linalg_constructor_nx1.cpp", "linalg__constructor__nx1_8cpp.xhtml", "linalg__constructor__nx1_8cpp" ],
     [ "linalg_constructor_nx1_array.cpp", "linalg__constructor__nx1__array_8cpp.xhtml", "linalg__constructor__nx1__array_8cpp" ],
     [ "linalg_copy.cpp", "linalg__copy_8cpp.xhtml", "linalg__copy_8cpp" ],
