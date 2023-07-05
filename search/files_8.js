@@ -15,8 +15,10 @@ var searchData=
   ['linalg_5fidentity_2ecpp_12',['linalg_identity.cpp',['../linalg__identity_8cpp.xhtml',1,'']]],
   ['linalg_5fidentity_5fdefault_2ecpp_13',['linalg_identity_default.cpp',['../linalg__identity__default_8cpp.xhtml',1,'']]],
   ['linalg_5fmultiplication_5farithmetic_2ecpp_14',['linalg_multiplication_arithmetic.cpp',['../linalg__multiplication__arithmetic_8cpp.xhtml',1,'']]],
-  ['linalg_5foperator_5fbracket_2ecpp_15',['linalg_operator_bracket.cpp',['../linalg__operator__bracket_8cpp.xhtml',1,'']]],
-  ['linalg_5foperator_5fequality_2ecpp_16',['linalg_operator_equality.cpp',['../linalg__operator__equality_8cpp.xhtml',1,'']]],
-  ['linalg_5fzero_2ecpp_17',['linalg_zero.cpp',['../linalg__zero_8cpp.xhtml',1,'']]],
-  ['linalg_5fzero_5fdefault_2ecpp_18',['linalg_zero_default.cpp',['../linalg__zero__default_8cpp.xhtml',1,'']]]
+  ['linalg_5fmultiplication_5frxc_2ecpp_15',['linalg_multiplication_rxc.cpp',['../linalg__multiplication__rxc_8cpp.xhtml',1,'']]],
+  ['linalg_5fmultiplication_5fsxc_2ecpp_16',['linalg_multiplication_sxc.cpp',['../linalg__multiplication__sxc_8cpp.xhtml',1,'']]],
+  ['linalg_5foperator_5fbracket_2ecpp_17',['linalg_operator_bracket.cpp',['../linalg__operator__bracket_8cpp.xhtml',1,'']]],
+  ['linalg_5foperator_5fequality_2ecpp_18',['linalg_operator_equality.cpp',['../linalg__operator__equality_8cpp.xhtml',1,'']]],
+  ['linalg_5fzero_2ecpp_19',['linalg_zero.cpp',['../linalg__zero_8cpp.xhtml',1,'']]],
+  ['linalg_5fzero_5fdefault_2ecpp_20',['linalg_zero_default.cpp',['../linalg__zero__default_8cpp.xhtml',1,'']]]
 ];
