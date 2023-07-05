@@ -133,22 +133,25 @@ $(document).ready(function(){initNavTree('linalg__constructor__initializer__list
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03.xhtml">   44</a></span><span class="keyword">namespace </span>{</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03.xhtml#ab74cb7ed9098c4f5d7d6a27a709dc13f">   48</a></span>[[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03.xhtml#ab74cb7ed9098c4f5d7d6a27a709dc13f">test</a>{[] {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 3, 3&gt;</a> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;int, 4, 3&gt;</a> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {1, 2, 3}};</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  assert(m(0, 0) == 1.0);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  assert(m(0, 1) == 2.0);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  assert(m(0, 2) == 3.0);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  assert(m(1, 0) == 4.0);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  assert(m(1, 1) == 5.0);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  assert(m(1, 2) == 6.0);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  assert(m(2, 0) == 7.0);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  assert(m(2, 1) == 8.0);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  assert(m(2, 2) == 9.0);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}()};</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>} <span class="comment">// namespace</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  assert(m(0, 0) == 1);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  assert(m(0, 1) == 2);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  assert(m(0, 2) == 3);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  assert(m(1, 0) == 4);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  assert(m(1, 1) == 5);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  assert(m(1, 2) == 6);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  assert(m(2, 0) == 7);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  assert(m(2, 1) == 8);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  assert(m(2, 2) == 9);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  assert(m(3, 0) == 1);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  assert(m(3, 1) == 2);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  assert(m(3, 2) == 3);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}()};</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03_xhtml_ab74cb7ed9098c4f5d7d6a27a709dc13f"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03.xhtml#ab74cb7ed9098c4f5d7d6a27a709dc13f">fcarouge::test::anonymous_namespace{linalg_constructor_initializer_lists.cpp}::test</a></div><div class="ttdeci">auto test</div><div class="ttdef"><b>Definition:</b> <a href="linalg__constructor__initializer__lists_8cpp_source.xhtml#l00048">linalg_constructor_initializer_lists.cpp:48</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
 <div class="ttc" id="astructfcarouge_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00114">linalg.hpp:114</a></div></div>
@@ -158,7 +161,7 @@ $(document).ready(function(){initNavTree('linalg__constructor__initializer__list
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.xhtml">test</a></li><li class="navelem"><a class="el" href="linalg__constructor__initializer__lists_8cpp.xhtml">linalg_constructor_initializer_lists.cpp</a></li>
-    <li class="footer">Generated on Mon Jul 3 2023 05:35:12 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Wed Jul 5 2023 01:37:39 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
