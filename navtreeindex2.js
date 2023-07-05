@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml":[8,0,0,0,0],
 "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#a5ffca3bb51df35351a30eb01ea65f9b7":[8,0,0,0,0,1],
 "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#a8b7d9cbc17e56e2d70aeed5d93a6410e":[8,0,0,0,0,0],
 "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x0_8cpp_03.xhtml":[8,0,0,0,1],
@@ -23,16 +24,17 @@ var NAVTREEINDEX2 =
 "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#a4922da14e25c9cddd6f3b451840de62d":[8,0,0,0,6,1],
 "namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ab1ab8c595b8ad8d298b8fe6492b51c40":[8,0,0,0,6,2],
 "namespacefcarouge_1_1internal.xhtml":[8,0,0,1],
-"namespacefcarouge_1_1internal.xhtml#a08c486af5cba5a0b71c8b2b8fd13a1d5":[8,0,0,1,11],
-"namespacefcarouge_1_1internal.xhtml#a24eb1204e458c448bab3a64ba63997d2":[8,0,0,1,13],
+"namespacefcarouge_1_1internal.xhtml#a08c486af5cba5a0b71c8b2b8fd13a1d5":[8,0,0,1,12],
+"namespacefcarouge_1_1internal.xhtml#a24eb1204e458c448bab3a64ba63997d2":[8,0,0,1,14],
 "namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57":[8,0,0,1,8],
 "namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22":[8,0,0,1,7],
-"namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9":[8,0,0,1,12],
+"namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9":[8,0,0,1,13],
 "namespacefcarouge_1_1internal.xhtml#a863fcca945056cfd1b3ffa2a684acfda":[8,0,0,1,5],
 "namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e":[8,0,0,1,9],
 "namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503":[8,0,0,1,3],
 "namespacefcarouge_1_1internal.xhtml#aa0e52f8c40cdb0907d2439baf90741e6":[8,0,0,1,4],
 "namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe":[8,0,0,1,6],
+"namespacefcarouge_1_1internal.xhtml#ab8daeec88614918cebedf93dd0eeb479":[8,0,0,1,11],
 "namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629":[8,0,0,1,10],
 "namespacefcarouge_1_1sample.xhtml":[8,0,0,2],
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml":[8,0,0,2,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "structfcarouge_1_1matrix.xhtml#abea1bee894ce50acc260645ce92a21b8":[10,0,0,1,12],
 "structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b":[8,0,0,5,20],
 "structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b":[10,0,0,1,20],
-"structfcarouge_1_1matrix.xhtml#ac9ccb51a6ae30b457f528898debf4cf5":[8,0,0,5,40],
-"structfcarouge_1_1matrix.xhtml#ac9ccb51a6ae30b457f528898debf4cf5":[10,0,0,1,40],
-"structfcarouge_1_1matrix.xhtml#acac83196782ff7b1616f772d6714d5be":[10,0,0,1,17]
+"structfcarouge_1_1matrix.xhtml#ac9ccb51a6ae30b457f528898debf4cf5":[8,0,0,5,40]
 };

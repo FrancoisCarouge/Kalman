@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['laws_0',['laws',['../_l_i_c_e_n_s_e_8txt.xhtml#ae5f41137d2c741b8ea91bb59a46824ae',1,'LICENSE.txt']]],
-  ['liability_1',['LIABILITY',['../_l_i_c_e_n_s_e_8txt.xhtml#a7950fa72a066177fc05a22a49351ca5e',1,'LICENSE.txt']]]
+  ['kind_0',['KIND',['../_l_i_c_e_n_s_e_8txt.xhtml#a206349c6c29ab1a385b7c7b8d57a2a06',1,'LICENSE.txt']]]
 ];

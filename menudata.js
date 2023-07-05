@@ -29,6 +29,7 @@ var menudata={children:[
 {text:"Namespace List",url:"namespaces.xhtml"},
 {text:"Namespace Members",url:"namespacemembers.xhtml",children:[
 {text:"All",url:"namespacemembers.xhtml",children:[
+{text:"a",url:"namespacemembers.xhtml#index_a"},
 {text:"b",url:"namespacemembers.xhtml#index_b"},
 {text:"c",url:"namespacemembers.xhtml#index_c"},
 {text:"e",url:"namespacemembers.xhtml#index_e"},
@@ -52,6 +53,7 @@ var menudata={children:[
 {text:"o",url:"namespacemembers_func.xhtml#index_o"},
 {text:"t",url:"namespacemembers_func.xhtml#index_t"}]},
 {text:"Variables",url:"namespacemembers_vars.xhtml",children:[
+{text:"a",url:"namespacemembers_vars.xhtml#index_a"},
 {text:"f",url:"namespacemembers_vars.xhtml#index_f"},
 {text:"i",url:"namespacemembers_vars.xhtml#index_i"},
 {text:"m",url:"namespacemembers_vars.xhtml#index_m"},

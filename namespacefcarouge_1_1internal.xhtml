@@ -173,6 +173,8 @@ Variables</h2></td></tr>
 <tr class="memitem:a24eb1204e458c448bab3a64ba63997d2"><td class="memTemplParams" colspan="2">template&lt;typename Dependent &gt; </td></tr>
 <tr class="memitem:a24eb1204e458c448bab3a64ba63997d2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a24eb1204e458c448bab3a64ba63997d2">type_dependent_false</a> {sizeof(Dependent) != sizeof(Dependent)}</td></tr>
 <tr class="separator:a24eb1204e458c448bab3a64ba63997d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8daeec88614918cebedf93dd0eeb479"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ab8daeec88614918cebedf93dd0eeb479">adl_transpose</a></td></tr>
+<tr class="separator:ab8daeec88614918cebedf93dd0eeb479"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Internal implementation details. </p>
@@ -245,7 +247,7 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000008">Todo:</a></b></dt><dd>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00163">163</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00199">199</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -366,6 +368,33 @@ template&lt;typename Result , typename... Arguments&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="ab8daeec88614918cebedf93dd0eeb479" name="ab8daeec88614918cebedf93dd0eeb479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8daeec88614918cebedf93dd0eeb479">&#9670;&nbsp;</a></span>adl_transpose</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto fcarouge::internal::adl_transpose</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">    [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value) { <span class="keywordflow">return</span> <a class="code hl_function" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a>(value); }}</div>
+<div class="ttc" id="anamespacefcarouge_xhtml_ac922632c2da8269e8396756088ba9a1f"><div class="ttname"><a href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">fcarouge::transpose</a></div><div class="ttdeci">constexpr auto transpose(const matrix&lt; Type, Row, Column &gt; &amp;lhs)</div><div class="ttdef"><b>Definition:</b> <a href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00314">linalg.hpp:314</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00113">113</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a08c486af5cba5a0b71c8b2b8fd13a1d5" name="a08c486af5cba5a0b71c8b2b8fd13a1d5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08c486af5cba5a0b71c8b2b8fd13a1d5">&#9670;&nbsp;</a></span>first_v</h2>
 
@@ -450,7 +479,7 @@ template&lt;typename Dependent &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Wed Jul 5 2023 03:58:18 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Wed Jul 5 2023 04:37:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
