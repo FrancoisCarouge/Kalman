@@ -106,6 +106,8 @@ foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
     "linalg_identity_default.cpp"
     "linalg_identity.cpp"
     "linalg_multiplication_arithmetic.cpp"
+    "linalg_multiplication_rxc.cpp"
+    "linalg_multiplication_sxc.cpp"
     "linalg_operator_bracket.cpp"
     "linalg_operator_equality.cpp"
     "linalg_zero_default.cpp"
