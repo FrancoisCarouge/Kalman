@@ -42,9 +42,8 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
                "kf_1x1x1_dog_position.cpp")
   get_filename_component(NAME ${SAMPLE} NAME_WE)
   add_executable(kalman_sample_${NAME}_driver ${SAMPLE})
-  set_target_properties(kalman_sample_${NAME}_driver PROPERTIES CXX_STANDARD 23)
-  set_target_properties(kalman_sample_${NAME}_driver PROPERTIES CXX_EXTENSIONS
-                                                                OFF)
+  set_target_properties(kalman_sample_${NAME}_driver
+                        PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
   target_link_libraries(kalman_sample_${NAME}_driver PRIVATE kalman kalman_main)
   add_test(kalman_sample_${NAME} kalman_sample_${NAME}_driver)
   add_test(
@@ -60,9 +59,7 @@ foreach(BACKEND IN ITEMS "eigen")
     get_filename_component(NAME ${SAMPLE} NAME_WE)
     add_executable(kalman_sample_${BACKEND}_${NAME}_driver ${SAMPLE})
     set_target_properties(kalman_sample_${BACKEND}_${NAME}_driver
-                          PROPERTIES CXX_STANDARD 23)
-    set_target_properties(kalman_sample_${BACKEND}_${NAME}_driver
-                          PROPERTIES CXX_EXTENSIONS OFF)
+                          PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
     target_link_libraries(kalman_sample_${BACKEND}_${NAME}_driver
                           PRIVATE kalman kalman_main kalman_linalg_${BACKEND})
     add_test(kalman_sample_${BACKEND}_${NAME}
