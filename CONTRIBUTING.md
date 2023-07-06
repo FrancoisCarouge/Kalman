@@ -1,6 +1,8 @@
-# Contributing
+# Contributing to Kalman
 
 Thank you for taking the time to contribute!
+
+By submitting a pull request or a patch, you represent that you have the right to license your contribution to the project owners and the community, agree that your contributions are licensed under the project license, and agree to future changes to the licensing.
 
 ## Code of Conduct
 
