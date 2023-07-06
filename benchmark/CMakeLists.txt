@@ -59,10 +59,8 @@ foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
   get_filename_component(NAME ${BENCHMARK} NAME_WE)
   add_executable(kalman_benchmark_${NAME}_driver ${BENCHMARK})
   target_include_directories(kalman_benchmark_${NAME}_driver PRIVATE "include")
-  set_target_properties(kalman_benchmark_${NAME}_driver PROPERTIES CXX_STANDARD
-                                                                   23)
   set_target_properties(kalman_benchmark_${NAME}_driver
-                        PROPERTIES CXX_EXTENSIONS OFF)
+                        PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
   target_link_libraries(
     kalman_benchmark_${NAME}_driver PRIVATE benchmark::benchmark
                                             benchmark::benchmark_main kalman)
@@ -83,10 +81,7 @@ foreach(BACKEND IN ITEMS "eigen")
         PRIVATE "include")
       set_target_properties(
         kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver
-        PROPERTIES CXX_STANDARD 23)
-      set_target_properties(
-        kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver
-        PROPERTIES CXX_EXTENSIONS OFF)
+        PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
       target_link_libraries(
         kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
@@ -112,10 +107,7 @@ foreach(BACKEND IN ITEMS "eigen")
         PRIVATE "include")
       set_target_properties(
         kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
-        PROPERTIES CXX_STANDARD 23)
-      set_target_properties(
-        kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
-        PROPERTIES CXX_EXTENSIONS OFF)
+        PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
       target_link_libraries(
         kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
