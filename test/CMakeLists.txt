@@ -42,8 +42,11 @@ foreach(BACKEND IN ITEMS "lazy")
   foreach(TEST "linalg_constructor_initializer_lists_deduction.cpp")
     get_filename_component(NAME ${TEST} NAME_WE)
     add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
-    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
-                          PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
+    set_target_properties(
+      kalman_test_${BACKEND}_${NAME}_driver
+      PROPERTIES CXX_STANDARD 23
+                 CXX_EXTENSIONS OFF
+                 INTERPROCEDURAL_OPTIMIZATION TRUE)
     target_link_libraries(kalman_test_${BACKEND}_${NAME}_driver
                           PRIVATE kalman kalman_main kalman_linalg_${BACKEND})
     add_test(kalman_test_${BACKEND}_${NAME}
@@ -66,8 +69,11 @@ foreach(
   "kalman_h.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
-  set_target_properties(kalman_test_${NAME}_driver
-                        PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
+  set_target_properties(
+    kalman_test_${NAME}_driver
+    PROPERTIES CXX_STANDARD 23
+               CXX_EXTENSIONS OFF
+               INTERPROCEDURAL_OPTIMIZATION TRUE)
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main)
   add_test(kalman_test_${NAME} kalman_test_${NAME}_driver)
   add_test(
@@ -91,8 +97,11 @@ foreach(BACKEND IN ITEMS "eigen")
     "kalman_h_5x4x3.cpp")
     get_filename_component(NAME ${TEST} NAME_WE)
     add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
-    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
-                          PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
+    set_target_properties(
+      kalman_test_${BACKEND}_${NAME}_driver
+      PROPERTIES CXX_STANDARD 23
+                 CXX_EXTENSIONS OFF
+                 INTERPROCEDURAL_OPTIMIZATION TRUE)
     target_link_libraries(kalman_test_${BACKEND}_${NAME}_driver
                           PRIVATE kalman kalman_main kalman_linalg_${BACKEND})
     add_test(kalman_test_${BACKEND}_${NAME}
@@ -128,8 +137,11 @@ foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
     "linalg_zero.cpp")
     get_filename_component(NAME ${TEST} NAME_WE)
     add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
-    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
-                          PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
+    set_target_properties(
+      kalman_test_${BACKEND}_${NAME}_driver
+      PROPERTIES CXX_STANDARD 23
+                 CXX_EXTENSIONS OFF
+                 INTERPROCEDURAL_OPTIMIZATION TRUE)
     target_link_libraries(kalman_test_${BACKEND}_${NAME}_driver
                           PRIVATE kalman kalman_main kalman_linalg_${BACKEND})
     add_test(kalman_test_${BACKEND}_${NAME}
