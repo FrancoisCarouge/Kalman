@@ -52,12 +52,19 @@ For more information, please refer to <https://unlicense.org> */
 #include <random>
 
 template <typename Numerator, fcarouge::algebraic Denominator>
-constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
-    -> fcarouge::quotient<Numerator, Denominator> {
-  return rhs.transpose()
-      .fullPivHouseholderQr()
-      .solve(lhs.transpose())
-      .transpose();
+constexpr auto
+fcarouge::operator/(const Numerator &lhs, const Denominator &rhs) -> fcarouge::quotient<Numerator, Denominator> {
+  if constexpr (fcarouge::eigen<Denominator>) {
+    return rhs.transpose()
+        .fullPivHouseholderQr()
+        .solve(lhs.transpose())
+        .transpose();
+  } else {
+    assert(false);
+    static_cast<void>(lhs);
+    static_cast<void>(rhs);
+    return {};
+  }
 }
 
 namespace fcarouge::benchmark {

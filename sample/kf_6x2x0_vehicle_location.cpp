@@ -7,10 +7,15 @@
 template <typename Numerator, fcarouge::algebraic Denominator>
 constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
     -> fcarouge::quotient<Numerator, Denominator> {
-  return rhs.transpose()
-      .fullPivHouseholderQr()
-      .solve(lhs.transpose())
-      .transpose();
+  if constexpr (fcarouge::eigen<Denominator>) {
+    return rhs.transpose()
+        .fullPivHouseholderQr()
+        .solve(lhs.transpose())
+        .transpose();
+  } else {
+    assert(false && "TODO");
+    return {};
+  }
 }
 
 namespace fcarouge::sample {
