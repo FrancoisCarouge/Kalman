@@ -29,4 +29,8 @@ jobs:
           -o -iwholename "./support/print" \
           | xargs \
           clang-format-16 --Werror --dry-run --verbose -style=file
-        cmake-format --check CMakeLists.txt
+        find . \
+          -iname "CMakeLists.txt" \
+          -o -iname "*.cmake.in" \
+          | xargs \
+          cmake-format --check

@@ -102,7 +102,6 @@ foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
   endforeach()
 endforeach()
 
-
 foreach(BACKEND IN ITEMS "eigen")
   foreach(
     TEST

@@ -36,4 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-include("${CMAKE_CURRENT_LIST_DIR}/kalman-target.cmake")
+add_library(kalman_linalg_naive INTERFACE)
+target_sources(
+  kalman_linalg_naive INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS" FILES
+                                "fcarouge/linalg.hpp")
+target_link_libraries(kalman_linalg_naive INTERFACE kalman)
