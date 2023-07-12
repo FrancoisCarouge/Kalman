@@ -36,20 +36,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-FetchContent_Declare(
-  eigen
-  GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
-  FIND_PACKAGE_ARGS NAMES Eigen3)
-FetchContent_MakeAvailable(eigen)
-
-add_library(kalman_linalg_eigen INTERFACE)
-target_include_directories(kalman_linalg_eigen INTERFACE "eigen")
-target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman)
-
-add_library(kalman_linalg_lazy INTERFACE)
-target_include_directories(kalman_linalg_lazy INTERFACE "lazy")
-target_link_libraries(kalman_linalg_lazy INTERFACE kalman kalman_generator)
-
-add_library(kalman_linalg_naive INTERFACE)
-target_include_directories(kalman_linalg_naive INTERFACE "naive")
-target_link_libraries(kalman_linalg_naive INTERFACE kalman)
+add_subdirectory("eigen")
+add_subdirectory("lazy")
+add_subdirectory("naive")
