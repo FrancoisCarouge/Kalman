@@ -243,6 +243,12 @@ public:
   //! @complexity Constant.
   inline constexpr kalman() = default;
 
+  inline constexpr kalman([[maybe_unused]] state x, [[maybe_unused]] output z,
+                          [[maybe_unused]] input u,
+                          [[maybe_unused]] const estimate_uncertainty &p) {
+    // TODO?
+  }
+
   //! @brief Copy constructs a filter.
   //!
   //! @details Constructs the filter with the copy of the contents of the
@@ -628,6 +634,12 @@ public:
   template <std::size_t Position> inline constexpr auto update() const;
   //! @}
 };
+
+//! @name Deduction Guides
+//! @{
+template <typename State, typename Output, typename Input>
+kalman(State, Output, Input, const auto &) -> kalman<State, Output, Input>;
+//! @}
 } // namespace fcarouge
 
 #include "internal/kalman.tpp"

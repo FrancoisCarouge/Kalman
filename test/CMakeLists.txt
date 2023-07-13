@@ -104,6 +104,7 @@ foreach(BACKEND IN ITEMS "eigen")
   foreach(
     TEST
     "kalman_assign_move_5x4x3.cpp"
+    "kalman_constructor_declarative_5x4x3.cpp"
     "kalman_constructor_default_1x1x3.cpp"
     "kalman_constructor_default_1x4x1.cpp"
     "kalman_constructor_default_1x4x3.cpp"
