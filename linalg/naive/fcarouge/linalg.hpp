@@ -51,9 +51,24 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 //! @name Algebraic Types
 //! @{
-//! @brief Matrix.
+//! @brief Naive matrix.
+//!
+//! @details An array-of-arrays naive implementation matrix. The implementation
+//! is constexpr compatible.
+//!
+//! @tparam Type The matrix element type.
+//! @tparam Row The number of rows of the matrix.
+//! @tparam Column The number of columns of the matrix.
 template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
   inline constexpr matrix() = default;
+
+  inline constexpr matrix(const matrix &other) = default;
+
+  inline constexpr matrix &operator=(const matrix &other) = default;
+
+  inline constexpr matrix(matrix &&other) = default;
+
+  inline constexpr matrix &operator=(matrix &&other) = default;
 
   inline constexpr explicit(false) matrix(Type element)
     requires(Row == 1 && Column == 1)
@@ -68,7 +83,7 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
   }
 
   inline constexpr explicit matrix(Type(column)[Row])
-    requires(Row > 1 && Column == 1)
+    requires(Row != 1 && Column == 1)
   {
     for (decltype(Row) i{0}; i < Row; ++i) {
       data[i][0] = column[i];
@@ -76,7 +91,7 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
   }
 
   inline constexpr explicit matrix(Type(row)[Column])
-    requires(Row == 1 && Column > 1)
+    requires(Row == 1 && Column != 1)
   {
     for (decltype(Column) j{0}; j < Column; ++j) {
       data[0][j] = row[j];
@@ -84,14 +99,14 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
   }
 
   inline constexpr matrix(const auto &...elements)
-    requires(Row > 1 && Column == 1 && sizeof...(elements) == Row)
+    requires(Row != 1 && Column == 1 && sizeof...(elements) == Row)
   {
     decltype(Row) i{0};
     ([&] { data[i++][0] = elements; }(), ...);
   }
 
   inline constexpr matrix(const auto &...elements)
-    requires(Row == 1 && Column > 1 && sizeof...(elements) == Column)
+    requires(Row == 1 && Column != 1 && sizeof...(elements) == Column)
   {
     decltype(Column) j{0};
     ([&] { data[0][j++] = elements; }(), ...);
@@ -108,42 +123,43 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
     }
   }
 
-  inline constexpr explicit(false) operator Type() const
+  [[nodiscard]] inline constexpr explicit(false) operator Type() const
     requires(Row == 1 && Column == 1)
   {
     return data[0][0];
   }
 
-  inline constexpr const Type &operator[](auto index) const
-    requires(Row > 1 && Column == 1)
+  [[nodiscard]] inline constexpr const Type &operator[](auto index) const
+    requires(Row != 1 && Column == 1)
   {
     return data[index][0];
   }
 
-  inline constexpr const Type &operator[](auto index) const
+  [[nodiscard]] inline constexpr const Type &operator[](auto index) const
     requires(Row == 1)
   {
     return data[0][index];
   }
 
-  inline constexpr const Type &operator()(auto index) const
-    requires(Row > 1 && Column == 1)
+  [[nodiscard]] inline constexpr const Type &operator()(auto index) const
+    requires(Row != 1 && Column == 1)
   {
     return data[index][0];
   }
 
-  inline constexpr const Type &operator()(auto index) const
+  [[nodiscard]] inline constexpr const Type &operator()(auto index) const
     requires(Row == 1)
   {
     return data[0][index];
   }
 
-  inline constexpr const Type &operator()(auto row, auto column) const {
+  [[nodiscard]] inline constexpr const Type &operator()(auto row,
+                                                        auto column) const {
     return data[row][column];
   }
 
   [[nodiscard]] inline constexpr bool operator==(const matrix &other) const
-    requires(Row > 1 || Column > 1)
+    requires(Row != 1 || Column != 1)
   = default;
 
   [[no_unique_address]] Type data[Row][Column]{};
@@ -166,7 +182,14 @@ template <typename Type, auto Row, auto Column>
 matrix(const Type (&)[Row][Column]) -> matrix<Type, Row, Column>;
 
 template <typename Type, auto Row>
-matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>; // column_vector
+matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>;
+
+template <typename... Types, auto... Columns>
+  requires(std::conjunction_v<std::is_same<first_t<Types...>, Types>...> &&
+           ((Columns == first_v<Columns>)&&... && true))
+matrix(const Types (&...rows)[Columns])
+    -> matrix<std::remove_cvref_t<first_t<Types...>>, sizeof...(Columns),
+              (Columns, ...)>;
 //! @}
 
 //! @name Algebraic Named Values

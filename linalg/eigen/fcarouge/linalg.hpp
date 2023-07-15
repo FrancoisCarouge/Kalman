@@ -54,6 +54,12 @@ namespace fcarouge {
 //! @name Algebraic Types
 //! @{
 //! @brief Compile-time sized Eigen3 matrix.
+//!
+//! @details Facade for Eigen3 implementation compatibility.
+//!
+//! @tparam Type The matrix element type.
+//! @tparam Row The number of rows of the matrix.
+//! @tparam Column The number of columns of the matrix.
 template <typename Type = double, auto Row = 1, auto Column = 1>
 using matrix = Eigen::Matrix<Type, Row, Column>;
 
