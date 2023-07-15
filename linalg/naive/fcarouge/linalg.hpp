@@ -70,46 +70,31 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
 
   inline constexpr matrix &operator=(matrix &&other) = default;
 
-  inline constexpr explicit(false) matrix(Type element)
-    requires(Row == 1 && Column == 1)
-  {
-    data[0][0] = element;
-  }
+  inline constexpr matrix(const std::same_as<Type> auto &...elements)
+    requires(Row == 1 && sizeof...(elements) == Column)
+      : data{{elements...}} {}
 
-  inline constexpr explicit matrix(Type(element)[1])
-    requires(Row == 1 && Column == 1)
-  {
-    data[0][0] = element[0];
-  }
-
-  inline constexpr explicit matrix(Type(column)[Row])
-    requires(Row != 1 && Column == 1)
-  {
-    for (decltype(Row) i{0}; i < Row; ++i) {
-      data[i][0] = column[i];
-    }
-  }
-
-  inline constexpr explicit matrix(Type(row)[Column])
-    requires(Row == 1 && Column != 1)
-  {
-    for (decltype(Column) j{0}; j < Column; ++j) {
-      data[0][j] = row[j];
-    }
-  }
-
-  inline constexpr matrix(const auto &...elements)
+  inline constexpr matrix(const std::same_as<Type> auto &...elements)
     requires(Row != 1 && Column == 1 && sizeof...(elements) == Row)
   {
     decltype(Row) i{0};
     ([&] { data[i++][0] = elements; }(), ...);
   }
 
-  inline constexpr matrix(const auto &...elements)
-    requires(Row == 1 && Column != 1 && sizeof...(elements) == Column)
+  inline constexpr explicit matrix(Type (&elements)[Column])
+    requires(Row == 1)
   {
-    decltype(Column) j{0};
-    ([&] { data[0][j++] = elements; }(), ...);
+    for (decltype(Column) j{0}; j < Column; ++j) {
+      data[0][j] = elements[j];
+    }
+  }
+
+  inline constexpr explicit matrix(Type (&elements)[Row])
+    requires(Row != 1 && Column == 1)
+  {
+    for (decltype(Row) i{0}; i < Row; ++i) {
+      data[i][0] = elements[i];
+    }
   }
 
   inline constexpr explicit matrix(
@@ -157,10 +142,6 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
                                                         auto column) const {
     return data[row][column];
   }
-
-  [[nodiscard]] inline constexpr bool operator==(const matrix &other) const
-    requires(Row != 1 || Column != 1)
-  = default;
 
   [[no_unique_address]] Type data[Row][Column]{};
 };
@@ -218,6 +199,20 @@ inline constexpr matrix<Type, Row, Column>
 template <typename Type, auto Row, auto Column>
 inline constexpr matrix<Type, Row, Column> zero_v<matrix<Type, Row, Column>>{};
 //! @}
+
+template <typename Type, auto Row, auto Column>
+[[nodiscard]] inline constexpr bool
+operator==(const matrix<Type, Row, Column> &lhs,
+           const matrix<Type, Row, Column> &rhs) {
+  for (decltype(Row) i{0}; i < Row; ++i) {
+    for (decltype(Column) j{0}; j < Column; ++j) {
+      if (lhs.data[i][j] != rhs.data[i][j]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
 
 template <typename Type, auto Row, auto Column, auto Size>
 [[nodiscard]] inline constexpr auto
