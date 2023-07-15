@@ -88,9 +88,9 @@ inline constexpr auto make_generator(Type element) -> std::generator<Type> {
 //! @details The matrix is a generator. A coroutine range. Lazily generated
 //! elements and computed operations. Commonalities with ranges.
 //!
-//! @tparam Type The linear algebra underlying element type.
-//! @tparam Row The number of rows.
-//! @tparam Column The number of columns.
+//! @tparam Type The matrix element type.
+//! @tparam Row The number of rows of the matrix.
+//! @tparam Column The number of columns of the matrix.
 //! @tparam Copyable Whether the instance is fully lazy or deeply clones itself
 //! on copies. Useful for named values. May not be commonly used.
 //!
@@ -161,7 +161,7 @@ struct matrix {
           (co_yield elements_copy, ...);
         }(elements...)} {}
 
-  inline constexpr matrix(Type (&elements)[Row * Column])
+  inline constexpr explicit matrix(Type (&elements)[Row * Column])
     requires(Row == 1 || Column == 1)
       : genie{make_generator(std::to_array(elements))} {}
 
@@ -211,7 +211,7 @@ struct matrix {
   }
 
   [[nodiscard]] inline constexpr Type operator[](auto index) const
-    requires(Row > 1 && Column == 1)
+    requires(Row != 1 && Column == 1)
   {
     std::array<Type, Row * Column> elements; // std::ranges::to
 
@@ -233,7 +233,7 @@ struct matrix {
   }
 
   [[nodiscard]] inline constexpr Type operator()(auto index) const
-    requires(Row > 1 && Column == 1)
+    requires(Row != 1 && Column == 1)
   {
     std::array<Type, Row * Column> elements; // std::ranges::to
 
