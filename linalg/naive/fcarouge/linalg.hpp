@@ -46,8 +46,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
-#include <initializer_list>
-
 namespace fcarouge {
 //! @name Algebraic Types
 //! @{
@@ -97,15 +95,20 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
     }
   }
 
-  inline constexpr explicit matrix(
-      const std::initializer_list<std::initializer_list<Type>> &rows) {
-    // static_assert
-    for (decltype(Row) i{0}; auto &&elements : rows) {
-      for (decltype(Column) j{0}; auto &&element : elements) {
-        data[i][j++] = element;
-      }
-      ++i;
-    }
+  template <typename... Types, auto... Columns>
+  matrix([[maybe_unused]] const Types (&...rows)[Columns])
+    requires(std::conjunction_v<std::is_same<Type, Types>...> &&
+             ((Columns == Column) && ... && true))
+  {
+    decltype(Row) i{0};
+    (
+        [&]([[maybe_unused]] auto row) {
+          for (decltype(Column) j{0}; j < Column; ++j) {
+            data[i][j] = row[j];
+          }
+          ++i;
+        }(rows),
+        ...);
   }
 
   [[nodiscard]] inline constexpr explicit(false) operator Type() const
@@ -180,16 +183,10 @@ template <typename Type, auto Row, auto Column>
 inline constexpr matrix<Type, Row, Column>
     identity_v<matrix<Type, Row, Column>>{[] {
       matrix<Type, Row, Column> result;
+      auto size{Row < Column ? Row : Column};
 
-      // Combine!
-      if constexpr (Row < Column) {
-        for (decltype(Row) k{0}; k < Row; ++k) {
-          result.data[k][k] = 1.0;
-        }
-      } else {
-        for (decltype(Column) k{0}; k < Column; ++k) {
-          result.data[k][k] = 1.0;
-        }
+      for (decltype(size) k{0}; k < size; ++k) {
+        result.data[k][k] = 1.0;
       }
 
       return result;
