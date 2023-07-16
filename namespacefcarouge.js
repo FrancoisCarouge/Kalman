@@ -54,6 +54,7 @@ var namespacefcarouge =
     [ "operator-", "namespacefcarouge.xhtml#ac5db1b5cabde635b27f85fe3ddc3dcc9", null ],
     [ "operator/", "namespacefcarouge.xhtml#ae2c572219d8e2ce56c12424b71489c59", null ],
     [ "operator/", "namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a", null ],
+    [ "operator==", "namespacefcarouge.xhtml#a74a5e7d9df89058b333264df4676909a", null ],
     [ "operator==", "namespacefcarouge.xhtml#a62fb05e2f569f36e8cac44a90ccbc106", null ],
     [ "operator==", "namespacefcarouge.xhtml#a47d78fa7b2fbab1fdec6f6e30d6b1da0", null ],
     [ "operator==", "namespacefcarouge.xhtml#a84939a609e68330c2689aff14d978311", null ],

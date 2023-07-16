@@ -133,8 +133,8 @@ var NAVTREEINDEX =
 [
 "algorithm_8hpp.xhtml",
 "kalman__constructor__default__5x1x3_8cpp_source.xhtml",
-"namespacefcarouge_1_1benchmark.xhtml#a38b91e941c8745d9bd6f59c93358783e",
-"structfcarouge_1_1matrix.xhtml#aaf48cfde31b36aed22819ec63b357c96"
+"namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d",
+"structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

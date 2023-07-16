@@ -187,6 +187,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a37839500158d123b7bdc6824a025f0bc"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
 <tr class="memitem:a37839500158d123b7bdc6824a025f0bc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a37839500158d123b7bdc6824a025f0bc">operator+</a> (<a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; lhs, <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; rhs)</td></tr>
 <tr class="separator:a37839500158d123b7bdc6824a025f0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74a5e7d9df89058b333264df4676909a"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
+<tr class="memitem:a74a5e7d9df89058b333264df4676909a"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a74a5e7d9df89058b333264df4676909a">operator==</a> (const <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; &amp;lhs, const <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; &amp;rhs)</td></tr>
+<tr class="separator:a74a5e7d9df89058b333264df4676909a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a187a07dcf4d00a975909a9c2a7283b95"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column, auto Size&gt; </td></tr>
 <tr class="memitem:a187a07dcf4d00a975909a9c2a7283b95"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a187a07dcf4d00a975909a9c2a7283b95">operator*</a> (const <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Size &gt; &amp;lhs, const <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Size, Column &gt; &amp;rhs)</td></tr>
 <tr class="separator:a187a07dcf4d00a975909a9c2a7283b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -664,11 +667,11 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00240">240</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  241</span>                                                                            {</div>
-<div class="line"><span class="lineno">  242</span>  <span class="keywordflow">return</span> lhs * rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0];</div>
-<div class="line"><span class="lineno">  243</span>}</div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a24baa2c48b4606232abeab530ec019ce"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">fcarouge::matrix::data</a></div><div class="ttdeci">Type data[Row][Column]</div><div class="ttdef"><b>Definition:</b> <a href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">linalg.hpp:165</a></div></div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00235">235</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  236</span>                                                                            {</div>
+<div class="line"><span class="lineno">  237</span>  <span class="keywordflow">return</span> lhs * rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0];</div>
+<div class="line"><span class="lineno">  238</span>}</div>
+<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a24baa2c48b4606232abeab530ec019ce"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">fcarouge::matrix::data</a></div><div class="ttdeci">Type data[Row][Column]</div><div class="ttdef"><b>Definition:</b> <a href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00146">linalg.hpp:146</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -708,19 +711,19 @@ template&lt;typename Type , auto Column&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00246">246</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  247</span>                                                                           {</div>
-<div class="line"><span class="lineno">  248</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, 1, Column&gt;</a> result;</div>
-<div class="line"><span class="lineno">  249</span> </div>
-<div class="line"><span class="lineno">  250</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">  251</span>    result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][j] = lhs * rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][j];</div>
-<div class="line"><span class="lineno">  252</span>  }</div>
-<div class="line"><span class="lineno">  253</span> </div>
-<div class="line"><span class="lineno">  254</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  255</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00241">241</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  242</span>                                                                           {</div>
+<div class="line"><span class="lineno">  243</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, 1, Column&gt;</a> result;</div>
+<div class="line"><span class="lineno">  244</span> </div>
+<div class="line"><span class="lineno">  245</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  246</span>    result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][j] = lhs * rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][j];</div>
+<div class="line"><span class="lineno">  247</span>  }</div>
+<div class="line"><span class="lineno">  248</span> </div>
+<div class="line"><span class="lineno">  249</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  250</span>}</div>
 <div class="ttc" id="astructfcarouge_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00114">linalg.hpp:114</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00146">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -760,22 +763,22 @@ template&lt;typename Type , auto Row, auto Column, auto Size&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00224">224</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  225</span>                                                 {</div>
-<div class="line"><span class="lineno">  226</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Row, Column&gt;</a> result;</div>
-<div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">  230</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Size) k{0}; k &lt; Size; ++k) {</div>
-<div class="line"><span class="lineno">  231</span>        result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] += lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][k] * rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[k][j];</div>
-<div class="line"><span class="lineno">  232</span>      }</div>
-<div class="line"><span class="lineno">  233</span>    }</div>
-<div class="line"><span class="lineno">  234</span>  }</div>
-<div class="line"><span class="lineno">  235</span> </div>
-<div class="line"><span class="lineno">  236</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  237</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00219">219</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  220</span>                                                 {</div>
+<div class="line"><span class="lineno">  221</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Row, Column&gt;</a> result;</div>
+<div class="line"><span class="lineno">  222</span> </div>
+<div class="line"><span class="lineno">  223</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  225</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Size) k{0}; k &lt; Size; ++k) {</div>
+<div class="line"><span class="lineno">  226</span>        result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] += lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][k] * rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[k][j];</div>
+<div class="line"><span class="lineno">  227</span>      }</div>
+<div class="line"><span class="lineno">  228</span>    }</div>
+<div class="line"><span class="lineno">  229</span>  }</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  232</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00146">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -872,10 +875,10 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00270">270</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  271</span>                                                                   {</div>
-<div class="line"><span class="lineno">  272</span>  <span class="keywordflow">return</span> lhs *= rhs;</div>
-<div class="line"><span class="lineno">  273</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00265">265</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  266</span>                                                                   {</div>
+<div class="line"><span class="lineno">  267</span>  <span class="keywordflow">return</span> lhs *= rhs;</div>
+<div class="line"><span class="lineno">  268</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -979,16 +982,16 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00258">258</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  259</span>                                                       {</div>
-<div class="line"><span class="lineno">  260</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">  261</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">  262</span>      lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] *= rhs;</div>
-<div class="line"><span class="lineno">  263</span>    }</div>
-<div class="line"><span class="lineno">  264</span>  }</div>
-<div class="line"><span class="lineno">  265</span> </div>
-<div class="line"><span class="lineno">  266</span>  <span class="keywordflow">return</span> lhs;</div>
-<div class="line"><span class="lineno">  267</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00253">253</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  254</span>                                                       {</div>
+<div class="line"><span class="lineno">  255</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  256</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  257</span>      lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] *= rhs;</div>
+<div class="line"><span class="lineno">  258</span>    }</div>
+<div class="line"><span class="lineno">  259</span>  }</div>
+<div class="line"><span class="lineno">  260</span> </div>
+<div class="line"><span class="lineno">  261</span>  <span class="keywordflow">return</span> lhs;</div>
+<div class="line"><span class="lineno">  262</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1028,10 +1031,10 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00291">291</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  292</span>                                                                      {</div>
-<div class="line"><span class="lineno">  293</span>  <span class="keywordflow">return</span> lhs + rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0];</div>
-<div class="line"><span class="lineno">  294</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00286">286</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  287</span>                                                                      {</div>
+<div class="line"><span class="lineno">  288</span>  <span class="keywordflow">return</span> lhs + rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0];</div>
+<div class="line"><span class="lineno">  289</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1071,20 +1074,20 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00277">277</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  278</span>                                                {</div>
-<div class="line"><span class="lineno">  279</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Row, Column&gt;</a> result{lhs};</div>
-<div class="line"><span class="lineno">  280</span> </div>
-<div class="line"><span class="lineno">  281</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">  282</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">  283</span>      result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] += rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j];</div>
-<div class="line"><span class="lineno">  284</span>    }</div>
-<div class="line"><span class="lineno">  285</span>  }</div>
-<div class="line"><span class="lineno">  286</span> </div>
-<div class="line"><span class="lineno">  287</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  288</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00272">272</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  273</span>                                                {</div>
+<div class="line"><span class="lineno">  274</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Row, Column&gt;</a> result{lhs};</div>
+<div class="line"><span class="lineno">  275</span> </div>
+<div class="line"><span class="lineno">  276</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  277</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  278</span>      result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] += rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j];</div>
+<div class="line"><span class="lineno">  279</span>    }</div>
+<div class="line"><span class="lineno">  280</span>  }</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  283</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00146">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -1124,10 +1127,10 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00297">297</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  298</span>                                                                   {</div>
-<div class="line"><span class="lineno">  299</span>  <span class="keywordflow">return</span> lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0] + rhs;</div>
-<div class="line"><span class="lineno">  300</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00292">292</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  293</span>                                                                   {</div>
+<div class="line"><span class="lineno">  294</span>  <span class="keywordflow">return</span> lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0] + rhs;</div>
+<div class="line"><span class="lineno">  295</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1277,10 +1280,10 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00318">318</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  319</span>                                                                             {</div>
-<div class="line"><span class="lineno">  320</span>  <span class="keywordflow">return</span> lhs - rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0];</div>
-<div class="line"><span class="lineno">  321</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00313">313</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  314</span>                                                                             {</div>
+<div class="line"><span class="lineno">  315</span>  <span class="keywordflow">return</span> lhs - rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0];</div>
+<div class="line"><span class="lineno">  316</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1320,20 +1323,20 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00304">304</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  305</span>                                                {</div>
-<div class="line"><span class="lineno">  306</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Row, Column&gt;</a> result{lhs};</div>
-<div class="line"><span class="lineno">  307</span> </div>
-<div class="line"><span class="lineno">  308</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">  309</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">  310</span>      result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] -= rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j];</div>
-<div class="line"><span class="lineno">  311</span>    }</div>
-<div class="line"><span class="lineno">  312</span>  }</div>
-<div class="line"><span class="lineno">  313</span> </div>
-<div class="line"><span class="lineno">  314</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  315</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00299">299</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  300</span>                                                {</div>
+<div class="line"><span class="lineno">  301</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Row, Column&gt;</a> result{lhs};</div>
+<div class="line"><span class="lineno">  302</span> </div>
+<div class="line"><span class="lineno">  303</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  305</span>      result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] -= rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j];</div>
+<div class="line"><span class="lineno">  306</span>    }</div>
+<div class="line"><span class="lineno">  307</span>  }</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  310</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00146">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -1373,18 +1376,18 @@ template&lt;typename Type , auto Row&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00324">324</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  325</span>                                                                   {</div>
-<div class="line"><span class="lineno">  326</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Row, 1&gt;</a> result{lhs};</div>
-<div class="line"><span class="lineno">  327</span> </div>
-<div class="line"><span class="lineno">  328</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">  329</span>    result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][0] /= rhs;</div>
-<div class="line"><span class="lineno">  330</span>  }</div>
-<div class="line"><span class="lineno">  331</span> </div>
-<div class="line"><span class="lineno">  332</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  333</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00319">319</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  320</span>                                                                   {</div>
+<div class="line"><span class="lineno">  321</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Row, 1&gt;</a> result{lhs};</div>
+<div class="line"><span class="lineno">  322</span> </div>
+<div class="line"><span class="lineno">  323</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  324</span>    result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][0] /= rhs;</div>
+<div class="line"><span class="lineno">  325</span>  }</div>
+<div class="line"><span class="lineno">  326</span> </div>
+<div class="line"><span class="lineno">  327</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  328</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00146">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -1436,8 +1439,58 @@ template&lt;typename Numerator , algebraic Denominator&gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a74a5e7d9df89058b333264df4676909a" name="a74a5e7d9df89058b333264df4676909a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74a5e7d9df89058b333264df4676909a">&#9670;&nbsp;</a></span>operator==() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , auto Row, auto Column&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool fcarouge::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; Type, Row, Column &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00205">205</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>                                                 {</div>
+<div class="line"><span class="lineno">  207</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  209</span>      <span class="keywordflow">if</span> (lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j] != rhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j]) {</div>
+<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  211</span>      }</div>
+<div class="line"><span class="lineno">  212</span>    }</div>
+<div class="line"><span class="lineno">  213</span>  }</div>
+<div class="line"><span class="lineno">  214</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  215</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a62fb05e2f569f36e8cac44a90ccbc106" name="a62fb05e2f569f36e8cac44a90ccbc106"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62fb05e2f569f36e8cac44a90ccbc106">&#9670;&nbsp;</a></span>operator==() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a62fb05e2f569f36e8cac44a90ccbc106">&#9670;&nbsp;</a></span>operator==() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1472,7 +1525,7 @@ template&lt;std::invocable L&gt; </div>
 </div>
 </div>
 <a id="a47d78fa7b2fbab1fdec6f6e30d6b1da0" name="a47d78fa7b2fbab1fdec6f6e30d6b1da0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47d78fa7b2fbab1fdec6f6e30d6b1da0">&#9670;&nbsp;</a></span>operator==() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d78fa7b2fbab1fdec6f6e30d6b1da0">&#9670;&nbsp;</a></span>operator==() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1507,7 +1560,7 @@ template&lt;std::invocable L, typename T &gt; </div>
 </div>
 </div>
 <a id="a84939a609e68330c2689aff14d978311" name="a84939a609e68330c2689aff14d978311"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84939a609e68330c2689aff14d978311">&#9670;&nbsp;</a></span>operator==() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a84939a609e68330c2689aff14d978311">&#9670;&nbsp;</a></span>operator==() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1596,20 +1649,20 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00337">337</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  337</span>                                                {</div>
-<div class="line"><span class="lineno">  338</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Column, Row&gt;</a> result;</div>
-<div class="line"><span class="lineno">  339</span> </div>
-<div class="line"><span class="lineno">  340</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">  341</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">  342</span>      result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[j][i] = lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j];</div>
-<div class="line"><span class="lineno">  343</span>    }</div>
-<div class="line"><span class="lineno">  344</span>  }</div>
-<div class="line"><span class="lineno">  345</span> </div>
-<div class="line"><span class="lineno">  346</span>  <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  347</span>}</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00332">332</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  332</span>                                                {</div>
+<div class="line"><span class="lineno">  333</span>  <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;Type, Column, Row&gt;</a> result;</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  335</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  336</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  337</span>      result.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[j][i] = lhs.<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][j];</div>
+<div class="line"><span class="lineno">  338</span>    }</div>
+<div class="line"><span class="lineno">  339</span>  }</div>
+<div class="line"><span class="lineno">  340</span> </div>
+<div class="line"><span class="lineno">  341</span>  <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  342</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00146">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -1937,7 +1990,7 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li>
-    <li class="footer">Generated on Sat Jul 15 2023 22:59:14 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
+    <li class="footer">Generated on Sun Jul 16 2023 01:08:22 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
 </body>
