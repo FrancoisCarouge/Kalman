@@ -46,7 +46,7 @@ jobs:
     - name: "Coverage: Results"
       run: lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-12 --rc lcov_branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
     - name: Coveralls
-      uses: coverallsapp/github-action@v2.2.0
+      uses: coverallsapp/github-action@v2.2.1
       with:
         file: coverage.info
         format: lcov
