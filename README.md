@@ -1,6 +1,8 @@
 # Kalman Filter
 
-The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. The filter maintains an estimate of the state and its uncertainty over the sequential estimation process. The filter is named after Rudolf E. Kálmán, who was one of the primary developers of its theory in 1960. Designing a filter is as much art as science. Design the state *X*, *P*, the process *F*, *Q*, the measurement *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*.
+The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians rather than integrating differential equations. The filter predicts estimates by adding Gaussians. The filter maintains an estimate of the state and its uncertainty over the sequential estimation process. The filter is named after Rudolf E. Kálmán, who was one of the primary developers of its theory in 1960.
+
+Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states *X*, *P*, the processes *F*, *Q*, the measurements *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*. Evaluate the performance and iterate.
 
 This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.
 
@@ -196,7 +198,7 @@ class kalman
 
 | Member Type | Dimensions | Definition | Also Known As |
 | --- | --- | --- | --- |
-| `estimate_uncertainty` | x by x | Type of the estimated covariance matrix `p`. | *P*, *Σ* |
+| `estimate_uncertainty` | x by x | Type of the estimated, hidden covariance matrix `p`. | *P*, *Σ* |
 | `gain` | x by z | Type of the gain matrix `k`. | *K*, *L* |
 | `innovation_uncertainty` | z by z | Type of the innovation uncertainty matrix `s`. | *S* |
 | `innovation` | z by 1 | Type of the innovation column vector `y`. | *Y* |
@@ -207,7 +209,7 @@ class kalman
 | `output` | z by 1 | Type of the observation column vector `z`. | *Z*, *Y*, *O* |
 | `process_uncertainty` | x by x | Type of the process noise covariance matrix `q`. | *Q* |
 | `state_transition` | x by x | Type of the state transition matrix `f`. | *F*, *Φ*, *A* |
-| `state` | x by 1 | Type of the state estimate column vector `x`. | *X* |
+| `state` | x by 1 | Type of the state estimate, hidden column vector `x`. | *X* |
 
 ### Member Functions
 
