@@ -33,11 +33,14 @@ jobs:
               matrix.package == 'clang-15' }}
       run: |
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-        sudo apt-get update
+        sudo apt update
+        sudo apt upgrade
         sudo apt install "${{ matrix.package }}"
     - name: "Tool: Clang 16"
       if: ${{ matrix.package == 'clang-16' }}
       run: |
+        sudo apt update
+        sudo apt upgrade
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 16 all
