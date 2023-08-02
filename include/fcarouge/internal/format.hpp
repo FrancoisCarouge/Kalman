@@ -66,7 +66,7 @@ struct std::formatter<
   template <typename OutputIt>
   auto format(const fcarouge::kalman<State, Output, Input, UpdateTypes,
                                      PredictionTypes> &filter,
-              std::basic_format_context<OutputIt, Char> &format_context)
+              std::basic_format_context<OutputIt, Char> &format_context) const
       -> OutputIt {
     format_context.advance_to(
         format_to(format_context.out(), R"({{"f": {}, )", filter.f()));

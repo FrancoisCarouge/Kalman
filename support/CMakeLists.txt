@@ -36,20 +36,26 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-if(WIN32)
-  # Microsoft Windows MSVC CL toolchain supports C++'s standard format library.
-  # Other compilers don't support it yet. TODO: This platform check is not ideal
-  # and should be replaced with a check for the compiler library support.
-else()
-  include(FetchContent)
+include(CheckSourceCompiles)
+include(FetchContent)
 
+add_library(kalman_format INTERFACE)
+
+check_source_compiles(
+  CXX
+  "
+#include <format>
+int main() {}
+"
+  CPP_LIB_FORMAT)
+
+if(NOT CPP_LIB_FORMAT)
   FetchContent_Declare(
     fmt
     GIT_REPOSITORY "https://github.com/fmtlib/fmt"
     FIND_PACKAGE_ARGS NAMES fmt)
   FetchContent_MakeAvailable(fmt)
 
-  add_library(kalman_format INTERFACE)
   target_sources(
     kalman_format
     INTERFACE FILE_SET
@@ -60,25 +66,37 @@ else()
               "format"
               "print")
   target_link_libraries(kalman_format INTERFACE fmt::fmt)
-  install(
-    TARGETS kalman_format
-    EXPORT "kalman-target"
-    FILE_SET "kalman_format_headers"
-    DESTINATION "include/fcarouge")
 endif()
 
-FetchContent_Declare(
-  stdgenerator
-  GIT_REPOSITORY "https://github.com/FrancoisCarouge/generator"
-  FIND_PACKAGE_ARGS NAMES stdgenerator)
-FetchContent_MakeAvailable(stdgenerator)
+install(
+  TARGETS kalman_format
+  EXPORT "kalman-target"
+  FILE_SET "kalman_format_headers"
+  DESTINATION "include/fcarouge")
 
 add_library(kalman_generator INTERFACE)
-target_sources(kalman_generator INTERFACE FILE_SET "kalman_generator_headers"
-                                          TYPE "HEADERS" FILES "generator")
-target_link_libraries(kalman_generator INTERFACE stdgenerator::stdgenerator)
-install(
-  TARGETS kalman_generator
-  EXPORT "kalman-target"
-  FILE_SET "kalman_generator_headers"
-  DESTINATION "include/fcarouge")
+
+check_source_compiles(
+  CXX
+  "
+#include <generator>
+int main() {}
+"
+  CPP_LIB_GENERATOR)
+
+if(NOT CPP_LIB_GENERATOR)
+  FetchContent_Declare(
+    stdgenerator
+    GIT_REPOSITORY "https://github.com/FrancoisCarouge/generator"
+    FIND_PACKAGE_ARGS NAMES stdgenerator)
+  FetchContent_MakeAvailable(stdgenerator)
+
+  target_sources(kalman_generator INTERFACE FILE_SET "kalman_generator_headers"
+                                            TYPE "HEADERS" FILES "generator")
+  target_link_libraries(kalman_generator INTERFACE stdgenerator::stdgenerator)
+  install(
+    TARGETS kalman_generator
+    EXPORT "kalman-target"
+    FILE_SET "kalman_generator_headers"
+    DESTINATION "include/fcarouge")
+endif()
