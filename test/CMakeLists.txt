@@ -38,6 +38,8 @@ For more information, please refer to <https://unlicense.org> ]]
 
 include(FetchContent)
 
+remove_definitions(-DNDEBUG)
+
 foreach(
   TEST
   "kalman_constructor_default_float_1x1x1.cpp"
