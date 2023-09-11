@@ -32,7 +32,7 @@ jobs:
       CXXFLAGS: "${{ matrix.sanitizer.cpp_flags }}"
     steps:
     - name: "Checkout"
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: "Configure"
       env:
         CXX: "g++-12"
