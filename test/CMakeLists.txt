@@ -38,7 +38,7 @@ For more information, please refer to <https://unlicense.org> ]]
 
 include(FetchContent)
 
-remove_definitions(-DNDEBUG)
+remove_definitions("-DNDEBUG")
 
 foreach(
   TEST
