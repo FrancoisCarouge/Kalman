@@ -24,9 +24,9 @@ jobs:
     runs-on: "${{ matrix.os }}"
     steps:
     - name: "Checkout"
-      uses: actions/checkout@v4
+      uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
     - name: "Tool: Microsoft Windows"
-      uses: ilammy/msvc-dev-cmd@v1
+      uses: ilammy/msvc-dev-cmd@cec98b9d092141f74527d0afa6feb2af698cfe89 # v1.12.1
     - name: "Tool: Ubuntu"
       if: ${{ matrix.package == 'g++-12' ||
               matrix.package == 'g++-13' ||
