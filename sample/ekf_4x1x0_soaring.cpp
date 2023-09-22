@@ -1,5 +1,5 @@
-#include "fcarouge/kalman.hpp"
-#include "fcarouge/linalg.hpp"
+import fcarouge.kalman;
+import fcarouge.linalg;
 
 #include <cassert>
 #include <cmath>

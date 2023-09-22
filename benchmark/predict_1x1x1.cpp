@@ -37,7 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "benchmark.hpp"
-#include "fcarouge/kalman.hpp"
+import fcarouge.kalman;
 
 #include <benchmark/benchmark.h>
 

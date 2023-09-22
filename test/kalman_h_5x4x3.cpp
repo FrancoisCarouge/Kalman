@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman.hpp"
-#include "fcarouge/linalg.hpp"
+import fcarouge.kalman;
+import fcarouge.linalg;
 
 #include <cassert>
 
