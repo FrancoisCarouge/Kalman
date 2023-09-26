@@ -8,6 +8,9 @@ on:
   schedule:
   - cron: "0 0 * * *"
 
+permissions:
+  contents: read
+
 jobs:
   build:
     strategy:
@@ -23,6 +26,11 @@ jobs:
     name: "${{ matrix.os }} / ${{ matrix.compiler }} / ${{ matrix.generator }} / ${{ matrix.config }}"
     runs-on: "${{ matrix.os }}"
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
+      with:
+        egress-policy: audit
+
     - name: "Checkout"
       uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
     - name: "Tool: Microsoft Windows"
