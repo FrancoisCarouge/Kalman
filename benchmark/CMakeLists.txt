@@ -65,8 +65,9 @@ foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
                CXX_EXTENSIONS OFF
                INTERPROCEDURAL_OPTIMIZATION TRUE)
   target_link_libraries(
-    kalman_benchmark_${NAME}_driver PRIVATE benchmark::benchmark
-                                            benchmark::benchmark_main kalman)
+    kalman_benchmark_${NAME}_driver
+    PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
+            kalman_options)
   add_test(kalman_benchmark_${NAME} kalman_benchmark_${NAME}_driver
            "--benchmark_out=${NAME}.json")
 endforeach()
@@ -90,7 +91,7 @@ foreach(BACKEND IN ITEMS "eigen" "naive")
       target_link_libraries(
         kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
-                kalman_linalg_${BACKEND})
+                kalman_linalg_${BACKEND} kalman_options)
       add_test(
         kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}
         kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver
@@ -118,7 +119,7 @@ foreach(BACKEND IN ITEMS "eigen")
       target_link_libraries(
         kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
-                kalman_linalg_${BACKEND})
+                kalman_linalg_${BACKEND} kalman_options)
       add_test(
         kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0
         kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
