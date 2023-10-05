@@ -36,32 +36,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-if(WIN32)
-  set(OPTIONS "/EHsc" "/W4")
-else()
-  set(OPTIONS
-      "-fno-check-new"
-      "-fno-common"
-      "-fstrict-aliasing"
-      "-pedantic"
-      "-Wall"
-      "-Wcast-align"
-      "-Wdouble-promotion"
-      "-Wenum-conversion"
-      "-Werror"
-      "-Wextra"
-      "-Wformat-security"
-      "-Wno-long-long"
-      "-Wno-psabi"
-      "-Wno-variadic-macros"
-      "-Wnon-virtual-dtor"
-      "-Wpointer-arith"
-      "-Wshadow"
-      "-Wundef"
-      "-Wunused-local-typedefs"
-      "-Wwrite-strings")
-endif()
-
 add_library(kalman INTERFACE)
 target_sources(
   kalman
@@ -78,7 +52,6 @@ target_sources(
             "fcarouge/internal/utility.hpp"
             "fcarouge/kalman.hpp"
             "fcarouge/utility.hpp")
-target_compile_options(kalman INTERFACE ${OPTIONS})
 target_link_libraries(kalman INTERFACE kalman_format)
 install(
   TARGETS kalman

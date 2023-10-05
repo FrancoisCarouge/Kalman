@@ -29,14 +29,21 @@ jobs:
       uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
       with:
         egress-policy: audit
-
     - name: Checkout repository
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
     - name: Initialize CodeQL
       uses: github/codeql-action/init@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
       with:
         languages: ${{ matrix.language }}
+    - name: "Tool: GCC-13"
+      run: |
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install "g++-13"
     - name: "Configure"
+      env:
+        CXX: "g++-13"
       run: cmake -S . -B "build"
     - name: "Build"
       run: cmake --build "build" --verbose --parallel 4

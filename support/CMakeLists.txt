@@ -36,6 +36,76 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+add_library(kalman_options INTERFACE)
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  target_compile_options(
+    kalman_options
+    INTERFACE "-D_FORTIFY_SOURCE=3"
+              "-D_GLIBCXX_ASSERTIONS"
+              "-fcf-protection=full"
+              "-fno-check-new"
+              "-fno-common"
+              "-fPIE"
+              "-fstack-clash-protection"
+              "-fstack-protector-strong"
+              "-fstrict-aliasing"
+              "-ftrivial-auto-var-init=pattern"
+              "-pedantic"
+              "-Wall"
+              "-Wcast-align"
+              "-Wdouble-promotion"
+              "-Wenum-conversion"
+              "-Werror"
+              "-Wextra"
+              "-Wformat-security"
+              "-Wno-long-long"
+              "-Wno-psabi"
+              "-Wno-variadic-macros"
+              "-Wnon-virtual-dtor"
+              "-Wpointer-arith"
+              "-Wshadow"
+              "-Wundef"
+              "-Wunused-local-typedefs"
+              "-Wwrite-strings")
+  target_link_options(kalman_options INTERFACE "LINKER:-pie"
+                      "LINKER:-z,relro,-z,now")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  target_compile_options(
+    kalman_options
+    INTERFACE "-D_FORTIFY_SOURCE=3"
+              "-D_GLIBCXX_ASSERTIONS"
+              "-fcf-protection=full"
+              "-fno-check-new"
+              "-fno-common"
+              "-fPIE"
+              "-fstack-clash-protection"
+              "-fstack-protector-strong"
+              "-fstrict-aliasing"
+              "-ftrivial-auto-var-init=pattern"
+              "-pedantic"
+              "-Wall"
+              "-Wcast-align"
+              "-Wdouble-promotion"
+              "-Wenum-conversion"
+              "-Werror"
+              "-Wextra"
+              "-Wformat-security"
+              "-Wno-long-long"
+              "-Wno-psabi"
+              "-Wno-variadic-macros"
+              "-Wnon-virtual-dtor"
+              "-Wpointer-arith"
+              "-Wshadow"
+              "-Wundef"
+              "-Wunused-local-typedefs"
+              "-Wwrite-strings")
+  target_link_options(kalman_options INTERFACE "LINKER:-pie"
+                      "LINKER:-z,relro,-z,now")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  target_compile_options(kalman_options INTERFACE "/EHsc" "/W4")
+endif()
+
 include(CheckSourceCompiles)
 include(FetchContent)
 
