@@ -40,9 +40,15 @@ jobs:
         egress-policy: audit
     - name: "Checkout"
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+    - name: "Install"
+      run: |
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install g++-13
     - name: "Configure"
       env:
-        CXX: "g++-12"
+        CXX: "g++-13"
       run: cmake -S . -B "build"
     - name: "Build"
       run: cmake --build "build" --verbose --parallel 4

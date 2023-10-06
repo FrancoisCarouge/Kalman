@@ -170,7 +170,7 @@ matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>;
 
 template <typename... Types, auto... Columns>
   requires(std::conjunction_v<std::is_same<first_t<Types...>, Types>...> &&
-           ((Columns == first_v<Columns>)&&... && true))
+           ((Columns == first_v<Columns>) && ... && true))
 matrix(const Types (&...rows)[Columns])
     -> matrix<std::remove_cvref_t<first_t<Types...>>, sizeof...(Columns),
               (Columns, ...)>;

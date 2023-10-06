@@ -35,12 +35,12 @@ jobs:
       uses: github/codeql-action/init@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
       with:
         languages: ${{ matrix.language }}
-    - name: "Tool: GCC-13"
+    - name: "Install"
       run: |
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt upgrade
-        sudo apt install "g++-13"
+        sudo apt install g++-13
     - name: "Configure"
       env:
         CXX: "g++-13"

@@ -109,41 +109,6 @@ endif()
 include(CheckSourceCompiles)
 include(FetchContent)
 
-add_library(kalman_format INTERFACE)
-
-check_source_compiles(
-  CXX
-  "
-#include <format>
-int main() {}
-"
-  CPP_LIB_FORMAT)
-
-if(NOT CPP_LIB_FORMAT)
-  FetchContent_Declare(
-    fmt
-    GIT_REPOSITORY "https://github.com/fmtlib/fmt"
-    FIND_PACKAGE_ARGS NAMES fmt)
-  FetchContent_MakeAvailable(fmt)
-
-  target_sources(
-    kalman_format
-    INTERFACE FILE_SET
-              "kalman_format_headers"
-              TYPE
-              "HEADERS"
-              FILES
-              "format"
-              "print")
-  target_link_libraries(kalman_format INTERFACE fmt::fmt)
-endif()
-
-install(
-  TARGETS kalman_format
-  EXPORT "kalman-target"
-  FILE_SET "kalman_format_headers"
-  DESTINATION "include/fcarouge")
-
 add_library(kalman_generator INTERFACE)
 
 check_source_compiles(

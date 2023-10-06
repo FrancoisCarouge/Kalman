@@ -17,13 +17,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: "ubuntu-latest", compiler: "clang++-15", generator: "Unix Makefiles", package: "clang-15"  }
-        - { os: "ubuntu-latest", compiler: "clang++-16", generator: "Unix Makefiles", package: "clang-16"  }
-        - { os: "ubuntu-latest", compiler: "g++-12", generator: "Unix Makefiles", package: "g++-12"  }
-        - { os: "ubuntu-latest", compiler: "g++-13", generator: "Unix Makefiles", package: "g++-13"  }
-        - { os: "windows-latest", compiler: "cl", generator: "Ninja", config: "Debug" }
-        - { os: "windows-latest", compiler: "cl", generator: "Ninja", config: "Release" }
-    name: "${{ matrix.os }} / ${{ matrix.compiler }} / ${{ matrix.generator }} / ${{ matrix.config }}"
+        - { os: "ubuntu-latest", cpp: "clang++-17", c: "clang-17", generator: "Unix Makefiles", package: "clang-17"  }
+        - { os: "ubuntu-latest", cpp: "g++-13", c: "gcc-13", generator: "Unix Makefiles", package: "g++-13"  }
+        - { os: "windows-latest", cpp: "cl", c: "cl", generator: "Ninja", config: "Debug" }
+        - { os: "windows-latest", cpp: "cl", c: "cl", generator: "Ninja", config: "Release" }
+    name: "${{ matrix.os }} / ${{ matrix.cpp }} / ${{ matrix.generator }} / ${{ matrix.config }}"
     runs-on: "${{ matrix.os }}"
     steps:
     - name: Harden Runner
@@ -32,28 +30,28 @@ jobs:
         egress-policy: audit
     - name: "Checkout"
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-    - name: "Tool: Microsoft Windows"
+    - name: "Install: MSVC"
       uses: ilammy/msvc-dev-cmd@cec98b9d092141f74527d0afa6feb2af698cfe89 # v1.12.1
-    - name: "Tool: Ubuntu"
-      if: ${{ matrix.package == 'g++-12' ||
-              matrix.package == 'g++-13' ||
-              matrix.package == 'clang-15' }}
+    - name: "Install: GCC"
+      if: ${{ matrix.package == 'g++-13' || matrix.package == 'clang-17' }}
       run: |
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt upgrade
         sudo apt install "${{ matrix.package }}"
-    - name: "Tool: Clang 16"
-      if: ${{ matrix.package == 'clang-16' }}
+    - name: "Install: Clang"
+      if: ${{ matrix.package == 'clang-17' }}
       run: |
         sudo apt update
         sudo apt upgrade
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
-        sudo ./llvm.sh 16 all
+        sudo ./llvm.sh 17 all
+        clang++-17 -v
     - name: "Configure"
       env:
-        CXX: "${{ matrix.compiler }}"
+        CXX: "${{ matrix.cpp }}"
+        CC: "${{ matrix.c }}"
       run: cmake -S . -B "build" -G "${{ matrix.generator }}"
     - name: "Build"
       run: cmake --build "build" --config "${{ matrix.config }}" --verbose --parallel 4
