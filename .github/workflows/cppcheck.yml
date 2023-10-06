@@ -49,8 +49,6 @@ jobs:
           cmake --build "cppcheck/build" --parallel 4
           sudo cmake --install "cppcheck/build" )
     - name: Verify
-      # A number of suppression to workaround CppCheck defects:
-      # - unusedStructMember: https://trac.cppcheck.net/ticket/10699
       run: |
         cppcheck \
           --enable=all \
