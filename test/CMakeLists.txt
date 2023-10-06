@@ -44,7 +44,8 @@ foreach(
   "kalman_format_arguments.cpp"
   "kalman_format_float_1x1x1.cpp"
   "kalman_format.cpp"
-  "kalman_println_1x1x0.cpp")
+  "kalman_println_1x1x0.cpp"
+  "printer_1x1x0.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main
@@ -104,7 +105,8 @@ foreach(BACKEND IN ITEMS "eigen")
     "kalman_f_5x4x3.cpp"
     "kalman_h_5x4x3.cpp"
     "kalman_format_1x4x3.cpp"
-    "kalman_format_5x4x3.cpp")
+    "kalman_format_5x4x3.cpp"
+    "printer_2x3x4.cpp")
     get_filename_component(NAME ${TEST} NAME_WE)
     add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
     target_link_libraries(
