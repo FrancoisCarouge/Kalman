@@ -25,10 +25,10 @@ jobs:
       run: |
         sudo apt update
         sudo apt upgrade
-        pip install cmakelang
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
-        sudo ./llvm.sh 16 all
+        sudo ./llvm.sh 17 all
+        pip install cmakelang
     - name: "Test"
       run: |
         find . \
@@ -39,7 +39,7 @@ jobs:
           -o -iwholename "./support/generator" \
           -o -iwholename "./support/print" \
           | xargs \
-          clang-format-16 --Werror --dry-run --verbose -style=file
+          clang-format-17 --Werror --dry-run --verbose -style=file
         find . \
           -iname "CMakeLists.txt" \
           -o -iname "*.cmake.in" \

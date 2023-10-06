@@ -21,16 +21,16 @@ jobs:
         egress-policy: audit
     - name: Checkout
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-    - name: "Tool: Clang 16"
+    - name: "Install: Clang"
       run: |
         sudo apt update
-        sudo apt upgrade  
+        sudo apt upgrade
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
-        sudo ./llvm.sh 16 all
+        sudo ./llvm.sh 17 all
     - name: "Configure"
       env:
-        CXX: "clang++-16"
+        CXX: "clang++-17"
       run: |
         cmake -S . -B "build" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     - name: Verify
@@ -42,4 +42,4 @@ jobs:
           -type f -path "./source/*.cpp" -o \
           -type f -path "./test/*.cpp"`
         echo $FILES
-        clang-tidy-16 -p "build" $FILES
+        clang-tidy-17 -p "build" $FILES

@@ -52,7 +52,6 @@ target_sources(
             "fcarouge/internal/utility.hpp"
             "fcarouge/kalman.hpp"
             "fcarouge/utility.hpp")
-target_link_libraries(kalman INTERFACE kalman_format)
 install(
   TARGETS kalman
   EXPORT "kalman-target"

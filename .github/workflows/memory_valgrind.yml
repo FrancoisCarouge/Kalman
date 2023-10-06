@@ -21,13 +21,15 @@ jobs:
         egress-policy: audit
     - name: Checkout
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-    - name: Install
+    - name: "Install"
       run: |
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
-        sudo apt install valgrind
+        sudo apt upgrade
+        sudo apt install g++-13 valgrind
     - name: Build
       env:
-        CXX: "g++-12"
+        CXX: "g++-13"
       run: |
         cmake -B "build" .
         cmake --build "build" --parallel 4
