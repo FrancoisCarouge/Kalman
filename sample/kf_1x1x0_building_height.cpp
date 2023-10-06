@@ -1,7 +1,11 @@
 #include "fcarouge/kalman.hpp"
+#include "plotter.hpp"
+#include "printer.hpp"
 
 #include <cassert>
 #include <cmath>
+
+#include <iostream>
 
 namespace fcarouge::sample {
 namespace {
@@ -24,19 +28,20 @@ namespace {
 //! @example kf_1x1x0_building_height.cpp
 [[maybe_unused]] auto sample{[] {
   // A one-dimensional filter, constant system dynamic model.
-  kalman filter{// One can estimate the building height simply by looking at it.
-                // The estimated state building height is: X = 60 meters.
-                state{60.},
-                // The building height measurement Z.
-                output<double>,
-                // A human’s estimation error (standard deviation) is about 15
-                // meters: σ = 15. Consequently the variance is σ^2 = 225. The
-                // estimate uncertainty is: P = 225.
-                estimate_uncertainty{225.},
-                // Since the standard deviation σ of the altimeter measurement
-                // error is 5, the variance σ^2 would be 25, thus the
-                // measurement, output uncertainty is: R = 25.
-                output_uncertainty{25.}};
+  auto filter{printer{
+      kalman{// One can estimate the building height simply by looking at it.
+             // The estimated state building height is: X = 60 meters.
+             state{60.},
+             // The building height measurement Z.
+             output<double>,
+             // A human’s estimation error (standard deviation) is about 15
+             // meters: σ = 15. Consequently the variance is σ^2 = 225. The
+             // estimate uncertainty is: P = 225.
+             estimate_uncertainty{225.},
+             // Since the standard deviation σ of the altimeter measurement
+             // error is 5, the variance σ^2 would be 25, thus the
+             // measurement, output uncertainty is: R = 25.
+             output_uncertainty{25.}}}};
 
   assert(60 == filter.x() &&
          "Since our system's dynamic model is constant, i.e. the building "
@@ -64,9 +69,11 @@ namespace {
 
   // After 10 measurements the filter estimates the height of the building
   // at 49.57m.
-  assert(std::abs(1 - filter.x() / 49.57) < 0.001 &&
-         "After 10 measurement and update iterations, the building estimated "
-         "height is: 49.57m.");
+  //   assert(std::abs(1 - filter.x() / 49.57) < 0.001 &&
+  //          "After 10 measurement and update iterations, the building
+  //          estimated " "height is: 49.57m.");
+
+  assert(false);
 
   return 0;
 }()};

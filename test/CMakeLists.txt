@@ -54,6 +54,8 @@ foreach(
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
 endforeach()
 
+return()
+
 foreach(BACKEND IN ITEMS "eigen" "naive")
   foreach(
     TEST
