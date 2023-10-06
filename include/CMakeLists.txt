@@ -46,6 +46,7 @@ target_sources(
             "HEADERS"
             FILES
             "fcarouge/kalman.hpp"
+            "fcarouge/printer.hpp"
             "fcarouge/utility.hpp")
 install(
   TARGETS kalman

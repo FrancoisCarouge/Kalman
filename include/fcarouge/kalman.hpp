@@ -48,6 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "internal/factory.hpp"
 #include "internal/format.hpp"
+#include "printer.hpp"
 #include "utility.hpp"
 
 #include <concepts>
@@ -131,7 +132,7 @@ namespace fcarouge {
 //! https://arxiv.org/pdf/1905.13002.pdf ? GPU implementation? Parallel
 //! implementation?
 template <typename Filter>
-class kalman final : public internal::conditional_member_types<Filter> {
+class kalman : public internal::conditional_member_types<Filter> {
 private:
   //! @name Private Member Types
   //! @{
