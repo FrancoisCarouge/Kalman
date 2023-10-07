@@ -105,30 +105,30 @@ struct kalman<State, Output, void, pack<UpdateTypes...>,
   //! specialized cases? Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-      [&h = h]([[maybe_unused]] const auto &...arguments) -> output_model {
-        return h;
+      [&hh = h]([[maybe_unused]] const auto &...arguments) -> output_model {
+        return hh;
       }};
   noise_observation_function noise_observation_r{
-      [&r =
+      [&rr =
            r]([[maybe_unused]] const auto &...arguments) -> output_uncertainty {
-        return r;
+        return rr;
       }};
   transition_state_function transition_state_f{
-      [&f = f]([[maybe_unused]] const auto &...arguments) -> state_transition {
-        return f;
+      [&ff = f]([[maybe_unused]] const auto &...arguments) -> state_transition {
+        return ff;
       }};
   noise_process_function noise_process_q{
-      [&q = q]([[maybe_unused]] const auto &...arguments)
-          -> process_uncertainty { return q; }};
+      [&qq = q]([[maybe_unused]] const auto &...arguments)
+          -> process_uncertainty { return qq; }};
   transition_function transition{
-      [&f = f](const state &state_x,
-               [[maybe_unused]] const auto &...arguments) -> state {
-        return f * state_x;
+      [&ff = f](const state &state_x,
+                [[maybe_unused]] const auto &...arguments) -> state {
+        return ff * state_x;
       }};
   observation_function observation{
-      [&h = h](const state &state_x,
-               [[maybe_unused]] const auto &...arguments) -> output {
-        return h * state_x;
+      [&hh = h](const state &state_x,
+                [[maybe_unused]] const auto &...arguments) -> output {
+        return hh * state_x;
       }};
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or
@@ -220,34 +220,34 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
   //! specialized cases? Same question applies to other parameters.
   //! @todo Pass the arguments by universal reference?
   observation_state_function observation_state_h{
-      [&h = h]([[maybe_unused]] const auto &...arguments) -> output_model {
-        return h;
+      [&hh = h]([[maybe_unused]] const auto &...arguments) -> output_model {
+        return hh;
       }};
   noise_observation_function noise_observation_r{
-      [&r =
+      [&rr =
            r]([[maybe_unused]] const auto &...arguments) -> output_uncertainty {
-        return r;
+        return rr;
       }};
   transition_state_function transition_state_f{
-      [&f = f]([[maybe_unused]] const auto &...arguments) -> state_transition {
-        return f;
+      [&ff = f]([[maybe_unused]] const auto &...arguments) -> state_transition {
+        return ff;
       }};
   noise_process_function noise_process_q{
-      [&q = q]([[maybe_unused]] const auto &...arguments)
-          -> process_uncertainty { return q; }};
+      [&qq = q]([[maybe_unused]] const auto &...arguments)
+          -> process_uncertainty { return qq; }};
   transition_control_function transition_control_g{
-      [&g = g]([[maybe_unused]] const auto &...arguments) -> input_control {
-        return g;
+      [&gg = g]([[maybe_unused]] const auto &...arguments) -> input_control {
+        return gg;
       }};
   transition_function transition{
-      [&f = f, &g = g](const state &state_x, const input &input_u,
-                       [[maybe_unused]] const auto &...arguments) -> state {
-        return f * state_x + g * input_u;
+      [&ff = f, &gg = g](const state &state_x, const input &input_u,
+                         [[maybe_unused]] const auto &...arguments) -> state {
+        return ff * state_x + gg * input_u;
       }};
   observation_function observation{
-      [&h = h](const state &state_x,
-               [[maybe_unused]] const auto &...arguments) -> output {
-        return h * state_x;
+      [&hh = h](const state &state_x,
+                [[maybe_unused]] const auto &...arguments) -> output {
+        return hh * state_x;
       }};
 
   //! @todo Do we want to store i - k * h in a temporary result for reuse? Or

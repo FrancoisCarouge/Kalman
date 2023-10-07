@@ -1,12 +1,12 @@
-name: "Pipeline"
+name: 'Pipeline'
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ 'master' ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ 'master' ]
   schedule:
-  - cron: "0 0 * * */5"
+  - cron: '0 0 * * */5'
 
 permissions:
   contents: read
@@ -17,49 +17,50 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: "ubuntu-latest", cpp: "clang++-17", c: "clang-17", generator: "Unix Makefiles", package: "clang-17"  }
-        - { os: "ubuntu-latest", cpp: "g++-13", c: "gcc-13", generator: "Unix Makefiles", package: "g++-13"  }
-        - { os: "windows-latest", cpp: "cl", c: "cl", generator: "Ninja", config: "Debug" }
-        - { os: "windows-latest", cpp: "cl", c: "cl", generator: "Ninja", config: "Release" }
-    name: "${{ matrix.os }} / ${{ matrix.cpp }} / ${{ matrix.generator }} / ${{ matrix.config }}"
-    runs-on: "${{ matrix.os }}"
+        - { os: 'ubuntu-latest', cxx: 'clang++-17', cc: 'clang-17', generator: 'Unix Makefiles', packages: 'clang-17'  }
+        - { os: 'ubuntu-latest', cxx: 'g++-13', cc: 'gcc-13', generator: 'Unix Makefiles', packages: 'g++-13'  }
+        - { os: 'windows-latest', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Debug' }
+        - { os: 'windows-latest', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Release' }
+    name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
+    runs-on: '${{ matrix.os }}'
     steps:
     - name: Harden Runner
       uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
       with:
         egress-policy: audit
-    - name: "Checkout"
+    - name: 'Checkout'
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-    - name: "Install: MSVC"
+    - name: 'Install: MSVC'
       uses: ilammy/msvc-dev-cmd@cec98b9d092141f74527d0afa6feb2af698cfe89 # v1.12.1
-    - name: "Install: GCC"
-      if: ${{ matrix.package == 'g++-13' || matrix.package == 'clang-17' }}
+    - name: 'Install: GCC'
+      if: ${{ matrix.cxx == 'g++-13' }}
       run: |
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt upgrade
-        sudo apt install "${{ matrix.package }}"
-    - name: "Install: Clang"
-      if: ${{ matrix.package == 'clang-17' }}
+        sudo apt install '${{ matrix.packages }}'
+    - name: 'Install: Clang'
+      if: ${{ matrix.cxx == 'clang++-17' }}
       run: |
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt upgrade
+        sudo apt install g++-13
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 17 all
-        clang++-17 -v
-    - name: "Configure"
+    - name: 'Configure'
       env:
-        CXX: "${{ matrix.cpp }}"
-        CC: "${{ matrix.c }}"
-      run: cmake -S . -B "build" -G "${{ matrix.generator }}"
-    - name: "Build"
-      run: cmake --build "build" --config "${{ matrix.config }}" --verbose --parallel 4
-    - name: "Test"
-      run: ctest --test-dir "build" --config "${{ matrix.config }}" --tests-regex "kalman_(test|sample|benchmark)" --verbose --parallel 4
-    - name: "Install"
-      run: cmake --install "build" --config "${{ matrix.config }}" --prefix "install" --verbose
-    - name: "Package"
-      run: cmake --build "build" --config "${{ matrix.config }}" --target "package" --verbose --parallel 4
-    - name: "Package Source"
-      run: cmake --build "build" --config "${{ matrix.config }}" --target "package_source" --verbose --parallel 4
+        CXX: '${{ matrix.cxx }}'
+        CC: '${{ matrix.cc }}'
+      run: cmake -S . -B 'build' -G '${{ matrix.generator }}'
+    - name: 'Build'
+      run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
+    - name: 'Test'
+      run: ctest --test-dir 'build' --config '${{ matrix.config }}' --tests-regex 'kalman_(test|sample|benchmark)' --verbose --parallel 4
+    - name: 'Install'
+      run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
+    - name: 'Package'
+      run: cmake --build 'build' --config '${{ matrix.config }}' --target 'package' --verbose --parallel 4
+    - name: 'Package Source'
+      run: cmake --build 'build' --config '${{ matrix.config }}' --target 'package_source' --verbose --parallel 4

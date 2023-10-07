@@ -1,12 +1,12 @@
-name: "CodeQL"
+name: 'CodeQL'
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ 'master' ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ 'master' ]
   schedule:
-  - cron: "0 0 * * */5"
+  - cron: '0 0 * * */5'
 
 permissions:
   contents: read
@@ -35,19 +35,20 @@ jobs:
       uses: github/codeql-action/init@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
       with:
         languages: ${{ matrix.language }}
-    - name: "Install"
+    - name: 'Install'
       run: |
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt upgrade
         sudo apt install g++-13
-    - name: "Configure"
+    - name: 'Configure'
       env:
-        CXX: "g++-13"
-      run: cmake -S . -B "build"
-    - name: "Build"
-      run: cmake --build "build" --verbose --parallel 4
+        CXX: 'g++-13'
+        CC: 'gcc-13'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@ddccb873888234080b77e9bc2d4764d5ccaaccf9 # v2.21.9
       with:
-        category: "/language:${{matrix.language}}"
+        category: '/language:${{matrix.language}}'

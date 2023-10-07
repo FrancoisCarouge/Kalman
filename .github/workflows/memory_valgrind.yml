@@ -1,4 +1,4 @@
-name: "Test Memory: Valgrind"
+name: 'Test Memory: Valgrind'
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ master ]
   schedule:
-  - cron: "0 0 * * */5"
+  - cron: '0 0 * * */5'
 
 permissions:
   contents: read
@@ -21,7 +21,7 @@ jobs:
         egress-policy: audit
     - name: Checkout
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-    - name: "Install"
+    - name: 'Install'
       run: |
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
@@ -29,8 +29,9 @@ jobs:
         sudo apt install g++-13 valgrind
     - name: Build
       env:
-        CXX: "g++-13"
+        CXX: 'g++-13'
+        CC: 'gcc-13'
       run: |
-        cmake -B "build" .
-        cmake --build "build" --parallel 4
-        ctest --test-dir "build" --tests-regex "kalman_valgrind" --output-on-failure --parallel 4
+        cmake -B 'build' .
+        cmake --build 'build' --parallel 4
+        ctest --test-dir 'build' --tests-regex 'kalman_valgrind' --output-on-failure --parallel 4

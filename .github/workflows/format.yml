@@ -1,12 +1,12 @@
-name: "Format"
+name: 'Format'
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ 'master' ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ 'master' ]
   schedule:
-  - cron: "0 0 * * */5"
+  - cron: '0 0 * * */5'
 
 permissions:
   contents: read
@@ -19,9 +19,9 @@ jobs:
       uses: step-security/harden-runner@8ca2b8b2ece13480cda6dacd3511b49857a23c09 # v2.5.1
       with:
         egress-policy: audit
-    - name: "Checkout"
+    - name: 'Checkout'
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-    - name: "Install"
+    - name: 'Install'
       run: |
         sudo apt update
         sudo apt upgrade
@@ -29,19 +29,19 @@ jobs:
         chmod +x llvm.sh
         sudo ./llvm.sh 17 all
         pip install cmakelang
-    - name: "Test"
+    - name: 'Test'
       run: |
         find . \
-          -iname "*.hpp" \
-          -o -iname "*.tpp" \
-          -o -iname "*.cpp" \
-          -o -iwholename "./support/format" \
-          -o -iwholename "./support/generator" \
-          -o -iwholename "./support/print" \
+          -iname '*.hpp' \
+          -o -iname '*.tpp' \
+          -o -iname '*.cpp' \
+          -o -iwholename './support/format' \
+          -o -iwholename './support/generator' \
+          -o -iwholename './support/print' \
           | xargs \
           clang-format-17 --Werror --dry-run --verbose -style=file
         find . \
-          -iname "CMakeLists.txt" \
-          -o -iname "*.cmake.in" \
+          -iname 'CMakeLists.txt' \
+          -o -iname '*.cmake.in' \
           | xargs \
           cmake-format --check
