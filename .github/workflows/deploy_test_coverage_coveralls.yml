@@ -1,4 +1,4 @@
-name: "Deploy Code Coverage: Coveralls"
+name: 'Deploy Code Coverage: Coveralls'
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ master]
   schedule:
-  - cron: "0 0 * * */5"
+  - cron: '0 0 * * */5'
 
 permissions:
   contents: read
@@ -24,20 +24,22 @@ jobs:
         egress-policy: audit
     - name: Checkout
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-    - name: "Install"
+    - name: 'Install'
       run: |
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt upgrade
         sudo apt install g++-13 lcov
-    - name: "Configure"
+    - name: 'Configure'
       env:
-        CXX: "g++-13"
-        CXXFLAGS: "-O0 -g --coverage -fno-inline -fno-exceptions"
-      run: cmake -S . -B "build"
-    - name: "Build"
-      run: cmake --build "build" --verbose --parallel 4
-    - name: "Coverage: Base"
+        CXX: 'g++-13'
+        CXXFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+        CC: 'gcc-13'
+        CCFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
+    - name: 'Coverage: Base'
       run: |
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --capture --initial --directory . --output-file base.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --remove base.info '*/benchmark/*' --output-file base.info
@@ -47,9 +49,9 @@ jobs:
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --remove base.info '*/test/*' --output-file base.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --remove base.info '/usr/*' --output-file base.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --remove base.info '10' --output-file base.info
-    - name: "Test"
-      run: ctest --test-dir "build"  --tests-regex "kalman_(test|sample|benchmark)" --verbose --parallel 4
-    - name: "Coverage: Test"
+    - name: 'Test'
+      run: ctest --test-dir 'build'  --tests-regex 'kalman_(test|sample|benchmark)' --verbose --parallel 4
+    - name: 'Coverage: Test'
       run: |
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --capture --directory . --output-file test.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --remove test.info '*/benchmark/*' --output-file test.info
@@ -59,7 +61,7 @@ jobs:
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --remove test.info '*/test/*' --output-file test.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --remove test.info '/usr/*' --output-file test.info
         lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --remove test.info '10' --output-file test.info
-    - name: "Coverage: Results"
+    - name: 'Coverage: Results'
       run: lcov --rc lcov_branch_coverage=1 --gcov-tool gcov-13 --rc lcov_branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
     - name: Coveralls
       uses: coverallsapp/github-action@3dfc5567390f6fa9267c0ee9c251e4c8c3f18949 # v2.2.3

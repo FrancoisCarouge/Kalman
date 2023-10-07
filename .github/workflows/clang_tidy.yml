@@ -1,4 +1,4 @@
-name: "ClangTidy"
+name: 'ClangTidy'
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ master ]
   schedule:
-  - cron: "0 0 * * */5"
+  - cron: '0 0 * * */5'
 
 permissions:
   contents: read
@@ -21,25 +21,28 @@ jobs:
         egress-policy: audit
     - name: Checkout
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-    - name: "Install: Clang"
+    - name: 'Install: Clang'
       run: |
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt upgrade
+        sudo apt install g++-13
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 17 all
-    - name: "Configure"
+    - name: 'Configure'
       env:
-        CXX: "clang++-17"
+        CXX: 'clang++-17'
+        CC: 'clang-17'
       run: |
-        cmake -S . -B "build" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        cmake -S . -B 'build' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     - name: Verify
       run: |
         cat build/compile_commands.json
         FILES=`find . \
-          -type f -path "./build/benchmark/*.cpp" -o \
-          -type f -path "./sample/*.cpp" -o \
-          -type f -path "./source/*.cpp" -o \
-          -type f -path "./test/*.cpp"`
+          -type f -path './build/benchmark/*.cpp' -o \
+          -type f -path './sample/*.cpp' -o \
+          -type f -path './source/*.cpp' -o \
+          -type f -path './test/*.cpp'`
         echo $FILES
-        clang-tidy-17 -p "build" $FILES
+        clang-tidy-17 -p 'build' $FILES

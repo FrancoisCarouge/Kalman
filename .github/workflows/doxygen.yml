@@ -1,4 +1,4 @@
-name: "Doxygen"
+name: 'Doxygen'
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ master ]
   schedule:
-  - cron: "0 0 * * */5"
+  - cron: '0 0 * * */5'
 
 permissions:
   contents: read
