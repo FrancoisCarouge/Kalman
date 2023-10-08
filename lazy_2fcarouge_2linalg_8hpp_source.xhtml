@@ -351,8 +351,8 @@ $(document).ready(function(){initNavTree('lazy_2fcarouge_2linalg_8hpp_source.xht
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types, <span class="keyword">auto</span>... Columns&gt;</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>  <span class="keyword">requires</span>(std::conjunction_v&lt;std::is_same&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210">first_t</a>&lt;Types...&gt;, Types&gt;...&gt; &amp;&amp;</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>           ((Columns == first_v&lt;Columns&gt;)&amp;&amp;... &amp;&amp; <span class="keyword">true</span>))</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a1ff2f7c46a68129e9dece27181dce855">  301</a></span><a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix</a>(<span class="keyword">const</span> Types (&amp;...rows)[Columns])</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>           ((Columns == first_v&lt;Columns&gt;) &amp;&amp; ... &amp;&amp; <span class="keyword">true</span>))</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a763a8c5d21cc57bc9a14db9a2a31562c">  301</a></span><a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix</a>(<span class="keyword">const</span> Types (&amp;...rows)[Columns])</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    -&gt; <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt;std::remove_cvref_t&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210">first_t&lt;Types...&gt;</a>&gt;, <span class="keyword">sizeof</span>...(Columns),</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>              (Columns, ...)&gt;;</div>
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
@@ -505,7 +505,7 @@ $(document).ready(function(){initNavTree('lazy_2fcarouge_2linalg_8hpp_source.xht
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c1845e5bf011c2136883d0d7188f50e9.xhtml">linalg</a></li><li class="navelem"><a class="el" href="dir_a5865fd9dbf72bad167b68249efe8e33.xhtml">lazy</a></li><li class="navelem"><a class="el" href="dir_0a4f59775a28c8901f3ddbf67298531c.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="lazy_2fcarouge_2linalg_8hpp.xhtml">linalg.hpp</a></li>
-    <li class="footer">Generated on Sun Oct 8 2023 00:46:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sun Oct 8 2023 21:24:58 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

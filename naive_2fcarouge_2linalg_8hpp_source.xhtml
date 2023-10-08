@@ -249,7 +249,7 @@ $(document).ready(function(){initNavTree('naive_2fcarouge_2linalg_8hpp_source.xh
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types, <span class="keyword">auto</span>... Columns&gt;</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keyword">requires</span>(std::conjunction_v&lt;std::is_same&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210">first_t</a>&lt;Types...&gt;, Types&gt;...&gt; &amp;&amp;</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>           ((Columns == first_v&lt;Columns&gt;)&amp;&amp;... &amp;&amp; <span class="keyword">true</span>))</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>           ((Columns == first_v&lt;Columns&gt;) &amp;&amp; ... &amp;&amp; <span class="keyword">true</span>))</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix</a>(<span class="keyword">const</span> Types (&amp;...rows)[Columns])</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    -&gt; matrix&lt;std::remove_cvref_t&lt;first_t&lt;Types...&gt;&gt;, <span class="keyword">sizeof</span>...(Columns),</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>              (Columns, ...)&gt;;</div>
@@ -452,7 +452,7 @@ $(document).ready(function(){initNavTree('naive_2fcarouge_2linalg_8hpp_source.xh
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c1845e5bf011c2136883d0d7188f50e9.xhtml">linalg</a></li><li class="navelem"><a class="el" href="dir_5c422dffce8b56da66aa5bce35afaadd.xhtml">naive</a></li><li class="navelem"><a class="el" href="dir_24e45c3c0a20829319c2ae855f697b9d.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="naive_2fcarouge_2linalg_8hpp.xhtml">linalg.hpp</a></li>
-    <li class="footer">Generated on Sun Oct 8 2023 00:46:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sun Oct 8 2023 21:24:58 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

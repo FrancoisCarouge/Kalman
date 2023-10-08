@@ -5,7 +5,7 @@ var lazy_2fcarouge_2linalg_8hpp =
     [ "make_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1", null ],
     [ "matrix", "lazy_2fcarouge_2linalg_8hpp.xhtml#a36b1c08e7faa5e078cd8c56e4acd8a54", null ],
     [ "matrix", "lazy_2fcarouge_2linalg_8hpp.xhtml#ac0175c0b371513180978bbdb30909c54", null ],
-    [ "matrix", "lazy_2fcarouge_2linalg_8hpp.xhtml#a1ff2f7c46a68129e9dece27181dce855", null ],
+    [ "matrix", "lazy_2fcarouge_2linalg_8hpp.xhtml#a763a8c5d21cc57bc9a14db9a2a31562c", null ],
     [ "matrix", "lazy_2fcarouge_2linalg_8hpp.xhtml#a4833d152f612bead262723ae23039575", null ],
     [ "operator*", "lazy_2fcarouge_2linalg_8hpp.xhtml#a0647c4efb9c02b9ea365aacec50e4ae0", null ],
     [ "operator*", "lazy_2fcarouge_2linalg_8hpp.xhtml#a5f46009dfa013275132875c5be3ab85c", null ],

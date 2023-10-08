@@ -36,7 +36,7 @@ var namespacefcarouge =
     [ "make_generator", "namespacefcarouge.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1", null ],
     [ "matrix", "namespacefcarouge.xhtml#a36b1c08e7faa5e078cd8c56e4acd8a54", null ],
     [ "matrix", "namespacefcarouge.xhtml#ac0175c0b371513180978bbdb30909c54", null ],
-    [ "matrix", "namespacefcarouge.xhtml#a1ff2f7c46a68129e9dece27181dce855", null ],
+    [ "matrix", "namespacefcarouge.xhtml#a763a8c5d21cc57bc9a14db9a2a31562c", null ],
     [ "matrix", "namespacefcarouge.xhtml#a4833d152f612bead262723ae23039575", null ],
     [ "operator*", "namespacefcarouge.xhtml#a4f016f1b86f66fffb39dd5e6c4dd96ab", null ],
     [ "operator*", "namespacefcarouge.xhtml#a56e2559ee22855fd69532dc43fe038ad", null ],
