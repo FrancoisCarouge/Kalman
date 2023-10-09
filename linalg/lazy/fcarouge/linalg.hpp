@@ -266,7 +266,7 @@ struct matrix {
   }
 
   using generator = std::generator<Type>;
-  using promise_type = typename std::coroutine_traits<generator>::promise_type;
+  using promise_type = std::coroutine_traits<generator>::promise_type;
   // Add other aliases such as iterator or value type?
 
   auto begin() const { return genie.begin(); }

@@ -186,55 +186,54 @@ public:
   //! @name Public Member Types
   //! @{
   //! @brief Type of the state estimate column vector X.
-  using state = typename implementation::state;
+  using state = implementation::state;
 
   //! @brief Type of the observation column vector Z.
   //!
   //! @details Also known as Y or O.
-  using output = typename implementation::output;
+  using output = implementation::output;
 
   //! @brief Type of the control column vector U.
   //!
   //! @todo Conditionally remove this member type when no input is present.
-  using input = typename implementation::input;
+  using input = implementation::input;
 
   //! @brief Type of the estimated correlated variance matrix P.
   //!
   //! @details Also known as Σ.
-  using estimate_uncertainty = typename implementation::estimate_uncertainty;
+  using estimate_uncertainty = implementation::estimate_uncertainty;
 
   //! @brief Type of the process noise correlated variance matrix Q.
-  using process_uncertainty = typename implementation::process_uncertainty;
+  using process_uncertainty = implementation::process_uncertainty;
 
   //! @brief Type of the observation noise correlated variance matrix R.
-  using output_uncertainty = typename implementation::output_uncertainty;
+  using output_uncertainty = implementation::output_uncertainty;
 
   //! @brief Type of the state transition matrix F.
   //!
   //! @details Also known as the fundamental matrix, propagation, Φ, or A.
-  using state_transition = typename implementation::state_transition;
+  using state_transition = implementation::state_transition;
 
   //! @brief Type of the observation transition matrix H.
   //!
   //! @details Also known as the measurement transition matrix or C.
-  using output_model = typename implementation::output_model;
+  using output_model = implementation::output_model;
 
   //! @brief Type of the control transition matrix G.
   //!
   //! @details Also known as B.
   //!
   //! @todo Conditionally remove this member type when no input is present.
-  using input_control = typename implementation::input_control;
+  using input_control = implementation::input_control;
 
   //! @brief Type of the gain matrix K.
-  using gain = typename implementation::gain;
+  using gain = implementation::gain;
 
   //! @brief Type of the innovation column vector Y.
-  using innovation = typename implementation::innovation;
+  using innovation = implementation::innovation;
 
   //! @brief Type of the innovation uncertainty matrix S.
-  using innovation_uncertainty =
-      typename implementation::innovation_uncertainty;
+  using innovation_uncertainty = implementation::innovation_uncertainty;
   //! @}
 
   //! @name Public Member Functions
