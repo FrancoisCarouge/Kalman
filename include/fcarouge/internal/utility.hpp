@@ -72,7 +72,7 @@ struct repack<From<Types...>> {
   static inline constexpr auto size{sizeof...(Types)};
 };
 
-template <typename From> using repack_t = typename repack<From>::type;
+template <typename From> using repack_t = repack<From>::type;
 
 template <typename From> inline constexpr auto repack_s{repack<From>::size};
 
@@ -80,8 +80,7 @@ template <typename Type, typename... Types> struct first_type {
   using type = Type;
 };
 
-template <typename... Types>
-using first_t = typename first_type<Types...>::type;
+template <typename... Types> using first_t = first_type<Types...>::type;
 
 template <auto Value, auto... Values> struct first_value {
   static constexpr auto value{Value};

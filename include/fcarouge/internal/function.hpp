@@ -92,7 +92,7 @@ struct function_traits<Result (Type::*)(Arguments...) const> {
 
 template <typename Callable>
 using function_traits_t =
-    typename function_traits<decltype(&Callable::operator())>::type;
+    function_traits<decltype(&Callable::operator())>::type;
 
 template <typename Callable>
 function(Callable) -> function<function_traits_t<Callable>>;
