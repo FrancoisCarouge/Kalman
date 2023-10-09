@@ -143,17 +143,17 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a863fcca945056cfd1b3ffa2a684acfda"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
-<tr class="memitem:a863fcca945056cfd1b3ffa2a684acfda"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a863fcca945056cfd1b3ffa2a684acfda">function_traits_t</a> = typename function_traits&lt; decltype(&amp;Callable::operator())&gt;::type</td></tr>
-<tr class="separator:a863fcca945056cfd1b3ffa2a684acfda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cca8649211e25b63b720c4d1ec78945"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
+<tr class="memitem:a6cca8649211e25b63b720c4d1ec78945"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a6cca8649211e25b63b720c4d1ec78945">function_traits_t</a> = function_traits&lt; decltype(&amp;Callable::operator())&gt;::type</td></tr>
+<tr class="separator:a6cca8649211e25b63b720c4d1ec78945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a990c3b3d2e7c4889c7f666cc8e82c503"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">empty_pack</a> = pack&lt;&gt;</td></tr>
 <tr class="separator:a990c3b3d2e7c4889c7f666cc8e82c503"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memTemplParams" colspan="2">template&lt;typename From &gt; </td></tr>
-<tr class="memitem:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22">repack_t</a> = typename repack&lt; From &gt;::type</td></tr>
-<tr class="separator:a567d18fbfbf6f8d1543bca57ba706f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0e52f8c40cdb0907d2439baf90741e6"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:aa0e52f8c40cdb0907d2439baf90741e6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#aa0e52f8c40cdb0907d2439baf90741e6">first_t</a> = typename first_type&lt; Types... &gt;::type</td></tr>
-<tr class="separator:aa0e52f8c40cdb0907d2439baf90741e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4cd64c5c6f542f9b5d314b70bf7d8aa"><td class="memTemplParams" colspan="2">template&lt;typename From &gt; </td></tr>
+<tr class="memitem:ac4cd64c5c6f542f9b5d314b70bf7d8aa"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ac4cd64c5c6f542f9b5d314b70bf7d8aa">repack_t</a> = repack&lt; From &gt;::type</td></tr>
+<tr class="separator:ac4cd64c5c6f542f9b5d314b70bf7d8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a84321249de040016ea5d79c016482"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a09a84321249de040016ea5d79c016482"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">first_t</a> = first_type&lt; Types... &gt;::type</td></tr>
+<tr class="separator:a09a84321249de040016ea5d79c016482"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5e5d81297e01a8f865bec3aee32b0fe"><td class="memTemplParams" colspan="2">template&lt;typename Numerator , typename Denominator &gt; </td></tr>
 <tr class="memitem:aa5e5d81297e01a8f865bec3aee32b0fe"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">quotient</a> = std::remove_cvref_t&lt; std::invoke_result_t&lt; deducer, Numerator, Denominator &gt; &gt;</td></tr>
 <tr class="separator:aa5e5d81297e01a8f865bec3aee32b0fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,7 +161,7 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a90ed417b141d4a9d567a4bcfadcd6b6e"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
-<tr class="memitem:a90ed417b141d4a9d567a4bcfadcd6b6e"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a> (Callable) -&gt; function&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a863fcca945056cfd1b3ffa2a684acfda">function_traits_t</a>&lt; Callable &gt; &gt;</td></tr>
+<tr class="memitem:a90ed417b141d4a9d567a4bcfadcd6b6e"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a> (Callable) -&gt; function&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a6cca8649211e25b63b720c4d1ec78945">function_traits_t</a>&lt; Callable &gt; &gt;</td></tr>
 <tr class="separator:a90ed417b141d4a9d567a4bcfadcd6b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6134456168f37df9efe83c31baf5629"><td class="memTemplParams" colspan="2">template&lt;typename Result , typename... Arguments&gt; </td></tr>
 <tr class="memitem:ad6134456168f37df9efe83c31baf5629"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629">function</a> (Result(Arguments...)) -&gt; function&lt; Result(Arguments...)&gt;</td></tr>
@@ -204,8 +204,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa0e52f8c40cdb0907d2439baf90741e6" name="aa0e52f8c40cdb0907d2439baf90741e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0e52f8c40cdb0907d2439baf90741e6">&#9670;&#160;</a></span>first_t</h2>
+<a id="a09a84321249de040016ea5d79c016482" name="a09a84321249de040016ea5d79c016482"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a84321249de040016ea5d79c016482">&#9670;&#160;</a></span>first_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -213,17 +213,17 @@ Variables</h2></td></tr>
 template&lt;typename... Types&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa0e52f8c40cdb0907d2439baf90741e6">fcarouge::internal::first_t</a> = typedef typename first_type&lt;Types...&gt;::type</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">fcarouge::internal::first_t</a> = typedef first_type&lt;Types...&gt;::type</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00084">84</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00083">83</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a863fcca945056cfd1b3ffa2a684acfda" name="a863fcca945056cfd1b3ffa2a684acfda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a863fcca945056cfd1b3ffa2a684acfda">&#9670;&#160;</a></span>function_traits_t</h2>
+<a id="a6cca8649211e25b63b720c4d1ec78945" name="a6cca8649211e25b63b720c4d1ec78945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cca8649211e25b63b720c4d1ec78945">&#9670;&#160;</a></span>function_traits_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,7 +231,7 @@ template&lt;typename... Types&gt; </div>
 template&lt;typename Callable &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#a863fcca945056cfd1b3ffa2a684acfda">fcarouge::internal::function_traits_t</a> = typedef typename function_traits&lt;decltype(&amp;Callable::operator())&gt;::type</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#a6cca8649211e25b63b720c4d1ec78945">fcarouge::internal::function_traits_t</a> = typedef function_traits&lt;decltype(&amp;Callable::operator())&gt;::type</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -253,14 +253,14 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000007">Todo:</a></b></dt><dd>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000008">Todo:</a></b></dt><dd>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00199">199</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00198">198</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a567d18fbfbf6f8d1543bca57ba706f22" name="a567d18fbfbf6f8d1543bca57ba706f22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a567d18fbfbf6f8d1543bca57ba706f22">&#9670;&#160;</a></span>repack_t</h2>
+<a id="ac4cd64c5c6f542f9b5d314b70bf7d8aa" name="ac4cd64c5c6f542f9b5d314b70bf7d8aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4cd64c5c6f542f9b5d314b70bf7d8aa">&#9670;&#160;</a></span>repack_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,7 +268,7 @@ template&lt;typename Numerator , typename Denominator &gt; </div>
 template&lt;typename From &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#a567d18fbfbf6f8d1543bca57ba706f22">fcarouge::internal::repack_t</a> = typedef typename repack&lt;From&gt;::type</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1internal.xhtml#ac4cd64c5c6f542f9b5d314b70bf7d8aa">fcarouge::internal::repack_t</a> = typedef repack&lt;From&gt;::type</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -304,13 +304,13 @@ template&lt;auto Begin, decltype(Begin) End, decltype(Begin) Increment, typename
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00095">95</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>                                                  {</div>
-<div class="line"><span class="lineno">   96</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
-<div class="line"><span class="lineno">   97</span>    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(std::integral_constant&lt;<span class="keyword">decltype</span>(Begin), Begin&gt;());</div>
-<div class="line"><span class="lineno">   98</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(function);</div>
-<div class="line"><span class="lineno">   99</span>  }</div>
-<div class="line"><span class="lineno">  100</span>}</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00094">94</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>                                                  {</div>
+<div class="line"><span class="lineno">   95</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
+<div class="line"><span class="lineno">   96</span>    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(std::integral_constant&lt;<span class="keyword">decltype</span>(Begin), Begin&gt;());</div>
+<div class="line"><span class="lineno">   97</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(function);</div>
+<div class="line"><span class="lineno">   98</span>  }</div>
+<div class="line"><span class="lineno">   99</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90ed417b141d4a9d567a4bcfadcd6b6e"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">fcarouge::internal::function</a></div><div class="ttdeci">function(Callable) -&gt; function&lt; function_traits_t&lt; Callable &gt; &gt;</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>.</p>
@@ -338,14 +338,14 @@ template&lt;typename Callable &gt; </div>
           <td>(</td>
           <td class="paramtype">Callable&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td> -&gt;  function&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a863fcca945056cfd1b3ffa2a684acfda">function_traits_t</a>&lt; Callable &gt; &gt;</td>
+          <td> -&gt;  function&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a6cca8649211e25b63b720c4d1ec78945">function_traits_t</a>&lt; Callable &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="internal_2utility_8hpp_source.xhtml#l00095">for_constexpr()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="internal_2utility_8hpp_source.xhtml#l00094">for_constexpr()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -419,7 +419,7 @@ template&lt;typename Result , typename... Arguments&gt; </div>
 <div class="line">    [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value) { <span class="keywordflow">return</span> <a class="code hl_function" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a>(value); }}</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ac922632c2da8269e8396756088ba9a1f"><div class="ttname"><a href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">fcarouge::transpose</a></div><div class="ttdeci">constexpr auto transpose(const matrix&lt; Type, Row, Column &gt; &amp;lhs)</div><div class="ttdef"><b>Definition:</b> <a href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00329">linalg.hpp:329</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00113">113</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00112">112</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -445,7 +445,7 @@ template&lt;auto... Values&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00091">91</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00090">90</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -497,7 +497,7 @@ template&lt;typename Dependent &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00103">103</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00102">102</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -507,7 +507,7 @@ template&lt;typename Dependent &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></li>
-    <li class="footer">Generated on Mon Oct 9 2023 05:34:51 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Oct 9 2023 05:35:19 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

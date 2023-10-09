@@ -1,7 +1,7 @@
 var structfcarouge_1_1matrix =
 [
     [ "generator", "structfcarouge_1_1matrix.xhtml#aef4e1a401c270d709c1ebaf0a3ea4a91", null ],
-    [ "promise_type", "structfcarouge_1_1matrix.xhtml#adfcf42a6f9989e33aa99acf4e947758d", null ],
+    [ "promise_type", "structfcarouge_1_1matrix.xhtml#a59cdd2df33a514becc638338dad14c89", null ],
     [ "matrix", "structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4", null ],
     [ "matrix", "structfcarouge_1_1matrix.xhtml#ad5662e0df22e0adaa13c6638a429df6b", null ],
     [ "matrix", "structfcarouge_1_1matrix.xhtml#aaf48cfde31b36aed22819ec63b357c96", null ],

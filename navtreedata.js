@@ -72,12 +72,12 @@ var NAVTREE =
       [ "Our Standards", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md5", null ],
       [ "Our Responsibilities", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
       [ "Scope", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
-      [ "Enforcement", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md10", null ],
+      [ "Enforcement", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md9", null ],
       [ "Attribution", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md13", null ]
     ] ],
     [ "Contributing to Kalman", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
       [ "Code of Conduct", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md8", null ],
-      [ "Reporting Bugs", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md9", null ],
+      [ "Reporting Bugs", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md10", null ],
       [ "Requesting Features", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md11", null ],
       [ "Security Policy", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md12", null ]
     ] ],
@@ -134,7 +134,7 @@ var NAVTREEINDEX =
 "algorithm_8hpp.xhtml",
 "kalman__constructor__default__5x1x3_8cpp_source.xhtml",
 "namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d",
-"structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178"
+"structfcarouge_1_1matrix.xhtml#aaf4b255fa2bf4cfaadfd808e6fb5af83"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
