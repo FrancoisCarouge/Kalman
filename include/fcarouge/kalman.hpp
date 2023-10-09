@@ -266,9 +266,7 @@ public:
   //! elements of the filter with.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Implement and test.
-  inline constexpr kalman(kalman &&other) noexcept = delete;
+  inline constexpr kalman(kalman &&other) noexcept = default;
 
   //! @brief Copy assignment operator.
   //!
@@ -300,9 +298,8 @@ public:
   //! i.e. `*this`.
   //!
   //! @complexity Constant.
-  //!
-  //! @todo Implement and test.
-  inline constexpr auto operator=(kalman &&other) noexcept -> kalman & = delete;
+  inline constexpr auto operator=(kalman &&other) noexcept
+      -> kalman & = default;
 
   //! @brief Destructs the Kalman filter.
   //!
