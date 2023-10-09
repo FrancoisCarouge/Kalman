@@ -39,7 +39,7 @@ jobs:
           --enable=all \
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
-          --suppress=unusedFunction:fcarouge/internal/format.hpp \
+          --suppress=unusedFunction:include/fcarouge/internal/format.hpp \
           --verbose \
           -I benchmark/include \
           -I include \
