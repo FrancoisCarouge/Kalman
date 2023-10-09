@@ -103,6 +103,7 @@ endforeach()
 foreach(BACKEND IN ITEMS "eigen")
   foreach(
     TEST
+    "kalman_assign_move_5x4x3.cpp"
     "kalman_constructor_default_1x1x3.cpp"
     "kalman_constructor_default_1x4x1.cpp"
     "kalman_constructor_default_1x4x3.cpp"
@@ -111,6 +112,7 @@ foreach(BACKEND IN ITEMS "eigen")
     "kalman_constructor_default_5x4x0.cpp"
     "kalman_constructor_default_5x4x1.cpp"
     "kalman_constructor_default_5x4x3.cpp"
+    "kalman_constructor_move_5x4x3.cpp"
     "kalman_f_5x4x3.cpp"
     "kalman_h_5x4x3.cpp")
     get_filename_component(NAME ${TEST} NAME_WE)
