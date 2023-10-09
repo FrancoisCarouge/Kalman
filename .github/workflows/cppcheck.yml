@@ -29,21 +29,6 @@ jobs:
           cmake --build 'eigen/build' --parallel 4
           sudo cmake --install 'eigen/build' )
         ( cd /tmp
-          git clone --depth 1 'https://github.com/fmtlib/fmt'
-          cmake -S 'fmt' -B 'fmt/build'
-          cmake --build 'fmt/build' --parallel 4
-          sudo cmake --install 'fmt/build' )
-        ( cd /tmp
-          git clone --depth 1 'https://github.com/kokkos/mdspan'
-          cmake -S 'mdspan' -B 'mdspan/build'
-          cmake --build 'mdspan/build' --parallel 4
-          sudo cmake --install 'mdspan/build' )
-        ( cd /tmp
-          git clone --depth 1 'https://github.com/kokkos/stdblas'
-          cmake -S 'stdblas' -B 'stdblas/build'
-          cmake --build 'stdblas/build' --parallel 4
-          sudo cmake --install 'stdblas/build' )
-        ( cd /tmp
           git clone --depth 1 'https://github.com/danmar/cppcheck'
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
@@ -54,6 +39,7 @@ jobs:
           --enable=all \
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
+          --suppress=unusedFunction:fcarouge/internal/format.hpp \
           --verbose \
           -I benchmark/include \
           -I include \
