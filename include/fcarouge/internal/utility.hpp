@@ -143,6 +143,7 @@ struct transpose final {
 //! @todo Is there a better, simpler, canonical, standard way of doing this type
 //! deduction? For example, by doing it directly from the operation itself?
 //! There could be simplicity and performance benefits?
+//! @todo Really need to fix this and either have it done automatically or moved out. Need to find a better way.
 struct deducer final {
   // Built-in, arithmetic, standard division support.
   template <arithmetic Lhs, arithmetic Rhs>
