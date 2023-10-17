@@ -56,11 +56,9 @@ foreach(
                INTERPROCEDURAL_OPTIMIZATION TRUE)
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main
                                                            kalman_options)
-  add_test(kalman_test_${NAME} kalman_test_${NAME}_driver)
-  add_test(
-    NAME kalman_valgrind_${NAME}
-    COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
-            $<TARGET_FILE:kalman_test_${NAME}_driver>)
+  separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+  add_test(NAME kalman_test_${NAME}
+           COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
 endforeach()
 
 foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
@@ -95,12 +93,10 @@ foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
     target_link_libraries(
       kalman_test_${BACKEND}_${NAME}_driver
       PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-    add_test(kalman_test_${BACKEND}_${NAME}
-             kalman_test_${BACKEND}_${NAME}_driver)
-    add_test(
-      NAME kalman_${BACKEND}_valgrind_${NAME}
-      COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
-              $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
+    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(NAME kalman_test_${BACKEND}_${NAME}
+             COMMAND ${TEST_COMMAND}
+                     $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
   endforeach()
 endforeach()
 
@@ -124,12 +120,10 @@ foreach(BACKEND IN ITEMS "eigen")
     target_link_libraries(
       kalman_test_${BACKEND}_${NAME}_driver
       PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-    add_test(kalman_test_${BACKEND}_${NAME}
-             kalman_test_${BACKEND}_${NAME}_driver)
-    add_test(
-      NAME kalman_${BACKEND}_valgrind_${NAME}
-      COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
-              $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
+    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(NAME kalman_test_${BACKEND}_${NAME}
+             COMMAND ${TEST_COMMAND}
+                     $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
   endforeach()
 endforeach()
 
@@ -142,11 +136,9 @@ foreach(BACKEND IN ITEMS "lazy")
     target_link_libraries(
       kalman_test_${BACKEND}_${NAME}_driver
       PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-    add_test(kalman_test_${BACKEND}_${NAME}
-             kalman_test_${BACKEND}_${NAME}_driver)
-    add_test(
-      NAME kalman_${BACKEND}_valgrind_${NAME}
-      COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
-              $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
+    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(NAME kalman_test_${BACKEND}_${NAME}
+             COMMAND ${TEST_COMMAND}
+                     $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
   endforeach()
 endforeach()

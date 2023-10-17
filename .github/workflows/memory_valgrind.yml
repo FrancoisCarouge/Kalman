@@ -31,7 +31,9 @@ jobs:
       env:
         CXX: 'g++-13'
         CC: 'gcc-13'
-      run: |
-        cmake -B 'build' .
-        cmake --build 'build' --parallel 4
-        ctest --test-dir 'build' --tests-regex 'kalman_valgrind' --output-on-failure --parallel 4
+        COMMAND: 'valgrind --error-exitcode=1 --leak-check=full --track-origins=yes'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
+    - name: 'Test'
+      run: ctest --test-dir 'build' --tests-regex 'kalman' --verbose --parallel 4
