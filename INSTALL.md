@@ -34,7 +34,7 @@ Build and run the tests and samples:
 git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
 cmake -S "kalman" -B "build"
 cmake --build "build" --config "Debug" --parallel
-ctest --test-dir "build" --build-config "Debug" --tests-regex "kalman_(test|sample|benchmark)" --output-on-failure --parallel
+ctest --test-dir "build" --build-config "Debug" --tests-regex "kalman" --output-on-failure --parallel
 ```
 
 ## Benchmarks
