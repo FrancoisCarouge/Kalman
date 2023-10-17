@@ -31,8 +31,6 @@ jobs:
           run_flags: 'UBSAN_OPTIONS=verbosity=2'
     name: '${{ matrix.sanitizer.name }}'
     runs-on: ubuntu-latest
-    env:
-      CXXFLAGS: '${{ matrix.sanitizer.cpp_flags }}'
     steps:
     - name: Harden Runner
       uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
@@ -49,9 +47,11 @@ jobs:
     - name: 'Configure'
       env:
         CXX: 'g++-13'
+        CXXFLAGS: '${{ matrix.sanitizer.cpp_flags }}'
         CC: 'gcc-13'
+        COMMAND: '${{ matrix.sanitizer.run_flags }}'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Test'
-      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --tests-regex 'kalman_(test|sample)' --verbose --parallel 4
+      run: ctest --test-dir 'build' --tests-regex 'kalman_(test|sample)' --verbose --parallel 4
