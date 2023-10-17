@@ -49,11 +49,9 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
                INTERPROCEDURAL_OPTIMIZATION TRUE)
   target_link_libraries(kalman_sample_${NAME}_driver PRIVATE kalman kalman_main
                                                              kalman_options)
-  add_test(kalman_sample_${NAME} kalman_sample_${NAME}_driver)
-  add_test(
-    NAME kalman_valgrind_${NAME}
-    COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
-            $<TARGET_FILE:kalman_sample_${NAME}_driver>)
+  separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+  add_test(NAME kalman_sample_${NAME}
+           COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_sample_${NAME}_driver>)
 endforeach()
 
 foreach(BACKEND IN ITEMS "eigen")
@@ -70,11 +68,9 @@ foreach(BACKEND IN ITEMS "eigen")
     target_link_libraries(
       kalman_sample_${BACKEND}_${NAME}_driver
       PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-    add_test(kalman_sample_${BACKEND}_${NAME}
-             kalman_sample_${BACKEND}_${NAME}_driver)
-    add_test(
-      NAME kalman_valgrind_${BACKEND}_${NAME}
-      COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
-              $<TARGET_FILE:kalman_sample_${BACKEND}_${NAME}_driver>)
+    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(NAME kalman_sample_${BACKEND}_${NAME}
+             COMMAND ${TEST_COMMAND}
+                     $<TARGET_FILE:kalman_sample_${BACKEND}_${NAME}_driver>)
   endforeach()
 endforeach()
