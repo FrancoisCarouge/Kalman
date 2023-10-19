@@ -68,11 +68,10 @@ foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
     kalman_benchmark_${NAME}_driver
     PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
             kalman_options)
-  separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
   add_test(
     NAME kalman_benchmark_${NAME}
-    COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_benchmark_${NAME}_driver>
-            "--benchmark_out=${NAME}.json")
+    COMMAND "$ENV{COMMAND}" "$<TARGET_FILE:kalman_benchmark_${NAME}_driver>"
+            "--benchmark_out=${NAME}.json" COMMAND_EXPAND_LISTS)
 endforeach()
 
 foreach(BACKEND IN ITEMS "eigen" "naive")
@@ -95,14 +94,13 @@ foreach(BACKEND IN ITEMS "eigen" "naive")
         kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
                 kalman_linalg_${BACKEND} kalman_options)
-      separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}
         COMMAND
-          ${TEST_COMMAND}
-          $<TARGET_FILE:kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver>
+          "$ENV{COMMAND}"
+          "$<TARGET_FILE:kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver>"
           "--benchmark_out=predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}.json"
-      )
+          COMMAND_EXPAND_LISTS)
     endforeach()
   endforeach()
 endforeach()
@@ -127,14 +125,13 @@ foreach(BACKEND IN ITEMS "eigen")
         kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
                 kalman_linalg_${BACKEND} kalman_options)
-      separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0
         COMMAND
-          ${TEST_COMMAND}
-          $<TARGET_FILE:kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver>
+          "$ENV{COMMAND}"
+          "$<TARGET_FILE:kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver>"
           "--benchmark_out=update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0.json"
-      )
+          COMMAND_EXPAND_LISTS)
     endforeach()
   endforeach()
 endforeach()

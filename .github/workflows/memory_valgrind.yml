@@ -31,7 +31,7 @@ jobs:
       env:
         CXX: 'g++-13'
         CC: 'gcc-13'
-        COMMAND: 'valgrind --error-exitcode=1 --leak-check=full --track-origins=yes'
+        COMMAND: 'valgrind;--error-exitcode=1;--leak-check=full;--track-origins=yes'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
