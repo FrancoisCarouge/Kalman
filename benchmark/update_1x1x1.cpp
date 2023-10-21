@@ -41,9 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <benchmark/benchmark.h>
 
-#include <algorithm>
-#include <chrono>
-#include <random>
+import std;
 
 namespace fcarouge::benchmark {
 namespace {

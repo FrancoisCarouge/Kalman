@@ -67,7 +67,7 @@ foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
   target_link_libraries(
     kalman_benchmark_${NAME}_driver
     PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
-            kalman_options)
+            kalman_options kalman_std)
   separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
   add_test(
     NAME kalman_benchmark_${NAME}
@@ -94,7 +94,7 @@ foreach(BACKEND IN ITEMS "eigen" "naive")
       target_link_libraries(
         kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
-                kalman_linalg_${BACKEND} kalman_options)
+                kalman_linalg_${BACKEND} kalman_options kalman_std)
       separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_benchmark_predict_${BACKEND}_${STATE_SIZE}x1x${INPUT_SIZE}
@@ -126,7 +126,7 @@ foreach(BACKEND IN ITEMS "eigen")
       target_link_libraries(
         kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
         PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
-                kalman_linalg_${BACKEND} kalman_options)
+                kalman_linalg_${BACKEND} kalman_options kalman_std)
       separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0

@@ -55,7 +55,7 @@ foreach(
                CXX_EXTENSIONS OFF
                INTERPROCEDURAL_OPTIMIZATION TRUE)
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main
-                                                           kalman_options)
+                                                           kalman_options kalman_std)
   separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
   add_test(NAME kalman_test_${NAME}
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
@@ -92,7 +92,7 @@ foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
                  INTERPROCEDURAL_OPTIMIZATION TRUE)
     target_link_libraries(
       kalman_test_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options kalman_std)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(NAME kalman_test_${BACKEND}_${NAME}
              COMMAND ${TEST_COMMAND}
@@ -119,7 +119,7 @@ foreach(BACKEND IN ITEMS "eigen")
                           PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
     target_link_libraries(
       kalman_test_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options kalman_std)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(NAME kalman_test_${BACKEND}_${NAME}
              COMMAND ${TEST_COMMAND}
@@ -135,7 +135,7 @@ foreach(BACKEND IN ITEMS "lazy")
                           PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF)
     target_link_libraries(
       kalman_test_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options kalman_std)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(NAME kalman_test_${BACKEND}_${NAME}
              COMMAND ${TEST_COMMAND}

@@ -41,8 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
-#include <format>
-#include <type_traits>
+import std;
 
 namespace fcarouge {
 template <typename, typename, typename, typename, typename> class kalman;

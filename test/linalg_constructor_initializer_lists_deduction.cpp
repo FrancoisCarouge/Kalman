@@ -40,8 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
-#include <iostream>
-#include <typeinfo>
+import std;
 
 namespace fcarouge::test {
 namespace {
