@@ -46,6 +46,10 @@ For more information, please refer to <https://unlicense.org> */
 //! utilities, and documentation. Only this header file is intended for
 //! inclusion in third party software.
 
+module;
+
+export module fcarouge:kalman;
+
 #include "algorithm.hpp"
 #include "internal/format.hpp"
 #include "internal/kalman.hpp"
@@ -57,7 +61,8 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 #include <utility>
 
-namespace fcarouge {
+
+export namespace fcarouge {
 //! @brief A generic Kalman filter.
 //!
 //! @details The Kalman filter is a Bayesian filter that uses multivariate

@@ -1,4 +1,4 @@
-#include "fcarouge/kalman.hpp"
+import fcarouge.kalman;
 
 #include <cassert>
 #include <cmath>
