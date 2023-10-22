@@ -1,5 +1,10 @@
 var namespacefcarouge_1_1test =
 [
+    [ "anonymous_namespace{kalman_assign_move_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml", [
+      [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a66d364e11009c878b30972e458fa6abb", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a0b93646d5c2a8b6fc0580a77643d1524", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a883c3df8493c8f272bc4854d177eefcd", null ]
+    ] ],
     [ "anonymous_namespace{kalman_constructor_default.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default_8cpp_03.xhtml#a6864d96b5149fb0af422b61e90abda00", null ]
     ] ],
@@ -45,6 +50,11 @@ var namespacefcarouge_1_1test =
     ] ],
     [ "anonymous_namespace{kalman_constructor_default_float_1x1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__float__1x1x1_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__float__1x1x1_8cpp_03.xhtml#ac83ee1fbe9a85bb1d4430307630af835", null ]
+    ] ],
+    [ "anonymous_namespace{kalman_constructor_move_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__move__5x4x3_8cpp_03.xhtml", [
+      [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__move__5x4x3_8cpp_03.xhtml#afe6d5fcae8688058c13c84b928c2226c", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__move__5x4x3_8cpp_03.xhtml#a45e485b1cf55b5bff7fa8334f2443d20", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__move__5x4x3_8cpp_03.xhtml#abe1933616b5236fd7ce6e2af65b06f15", null ]
     ] ],
     [ "anonymous_namespace{kalman_f.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__f_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__f_8cpp_03.xhtml#ac3113b6b0496448a78f03cf44f576e39", null ]

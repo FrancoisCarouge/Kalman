@@ -1,5 +1,6 @@
 var dir_13e138d54eb8818da29c3992edef070a =
 [
+    [ "kalman_assign_move_5x4x3.cpp", "kalman__assign__move__5x4x3_8cpp.xhtml", "kalman__assign__move__5x4x3_8cpp" ],
     [ "kalman_constructor_default.cpp", "kalman__constructor__default_8cpp.xhtml", "kalman__constructor__default_8cpp" ],
     [ "kalman_constructor_default_1x1x3.cpp", "kalman__constructor__default__1x1x3_8cpp.xhtml", "kalman__constructor__default__1x1x3_8cpp" ],
     [ "kalman_constructor_default_1x4x1.cpp", "kalman__constructor__default__1x4x1_8cpp.xhtml", "kalman__constructor__default__1x4x1_8cpp" ],
@@ -10,6 +11,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "kalman_constructor_default_5x4x1.cpp", "kalman__constructor__default__5x4x1_8cpp.xhtml", "kalman__constructor__default__5x4x1_8cpp" ],
     [ "kalman_constructor_default_5x4x3.cpp", "kalman__constructor__default__5x4x3_8cpp.xhtml", "kalman__constructor__default__5x4x3_8cpp" ],
     [ "kalman_constructor_default_float_1x1x1.cpp", "kalman__constructor__default__float__1x1x1_8cpp.xhtml", "kalman__constructor__default__float__1x1x1_8cpp" ],
+    [ "kalman_constructor_move_5x4x3.cpp", "kalman__constructor__move__5x4x3_8cpp.xhtml", "kalman__constructor__move__5x4x3_8cpp" ],
     [ "kalman_f.cpp", "kalman__f_8cpp.xhtml", "kalman__f_8cpp" ],
     [ "kalman_f_5x4x3.cpp", "kalman__f__5x4x3_8cpp.xhtml", "kalman__f__5x4x3_8cpp" ],
     [ "kalman_format.cpp", "kalman__format_8cpp.xhtml", "kalman__format_8cpp" ],

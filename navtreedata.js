@@ -132,9 +132,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithm_8hpp.xhtml",
-"kalman__constructor__default__5x1x3_8cpp_source.xhtml",
-"namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d",
-"structfcarouge_1_1matrix.xhtml#aaf4b255fa2bf4cfaadfd808e6fb5af83"
+"kalman__constructor__default__5x1x1_8cpp_source.xhtml",
+"namespacefcarouge.xhtml#ac13c25e27a85ae315c7996927b7a3c28",
+"structfcarouge_1_1matrix.xhtml#a8faf72ffb586809e220a72311f55e047"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
