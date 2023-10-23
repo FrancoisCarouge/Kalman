@@ -20,7 +20,7 @@ jobs:
       with:
         egress-policy: audit
     - name: Checkout
-      uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
     - name: Doxygen
       uses: mattnotmitt/doxygen-action@411df0c62acb5b96b8a93d93a7bf4b753c47ea05 # v1.9.5
       with:
