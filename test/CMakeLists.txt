@@ -36,8 +36,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-include(FetchContent)
-
 foreach(
   TEST
   "kalman_constructor_default_float_1x1x1.cpp"
