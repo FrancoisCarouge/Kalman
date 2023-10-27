@@ -139,12 +139,10 @@ struct kalman<State, Output, void, pack<UpdateTypes...>,
   //! cases?
   //! @todo Do we want to pass z to `observation()`? What are the use cases?
   //! @todo Use operator `+=` for the state update?
-  template <typename Output0, typename... OutputN>
   inline constexpr void update(const UpdateTypes &...update_pack,
-                               const Output0 &output_z,
-                               const OutputN &...outputs_z) {
+                               const auto &...output_pack_z) {
     update_arguments = {update_pack...};
-    z = output{output_z, outputs_z...};
+    z = output{output_pack_z...};
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
     s = innovation_uncertainty{h * p * t(h) + r};
@@ -257,12 +255,10 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
   //! @todo Do we want to pass z to `observation_state_h()`? What are the use
   //! cases?
   //! @todo Do we want to pass z to `observation()`? What are the use cases?
-  template <typename Output0, typename... OutputN>
   inline constexpr void update(const UpdateTypes &...update_pack,
-                               const Output0 &output_z,
-                               const OutputN &...outputs_z) {
+                               const auto &...output_pack_z) {
     update_arguments = {update_pack...};
-    z = output{output_z, outputs_z...};
+    z = output{output_pack_z...};
     h = observation_state_h(x, update_pack...);
     r = noise_observation_r(x, z, update_pack...);
     s = h * p * t(h) + r;
@@ -280,16 +276,28 @@ struct kalman<State, Output, Input, pack<UpdateTypes...>,
   //! @todo Do we want to pass u to `noise_process_q()`? What are the use cases?
   //! @todo Do we want to pass x, u to `transition_control_g()`? What are the
   //! use cases?
-  template <typename Input0, typename... InputN>
   inline constexpr void predict(const PredictionTypes &...prediction_pack,
-                                const Input0 &input_u,
-                                const InputN &...inputs_u) {
+                                const auto &...input_pack_u)
+    requires(sizeof...(PredictionTypes) > 0)
+  {
     prediction_arguments = {prediction_pack...};
-    u = input{input_u, inputs_u...};
+    u = input{input_pack_u...};
     f = transition_state_f(x, u, prediction_pack...);
     q = noise_process_q(x, prediction_pack...);
     g = transition_control_g(prediction_pack...);
     x = transition(x, u, prediction_pack...);
+    p = estimate_uncertainty{f * p * t(f) + q};
+  }
+
+  //! @todo Collapse the two predict implementations when MSVC supports it.
+  inline constexpr void predict(const auto &...input_pack_u)
+    requires(sizeof...(PredictionTypes) == 0)
+  {
+    u = input{input_pack_u...};
+    f = transition_state_f(x, u);
+    q = noise_process_q(x);
+    g = transition_control_g();
+    x = transition(x, u);
     p = estimate_uncertainty{f * p * t(f) + q};
   }
 };
