@@ -36,6 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+include(FetchContent)
+
 FetchContent_Declare(
   eigen
   GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"

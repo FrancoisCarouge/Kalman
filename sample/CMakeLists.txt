@@ -36,8 +36,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-include(FetchContent)
-
 foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
                "kf_1x1x1_dog_position.cpp")
   get_filename_component(NAME ${SAMPLE} NAME_WE)

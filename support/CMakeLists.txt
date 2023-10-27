@@ -106,6 +106,16 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   target_compile_options(kalman_options INTERFACE "/EHsc" "/W4")
 endif()
 
+add_library(kalman_print INTERFACE)
+target_sources(kalman_print INTERFACE FILE_SET "kalman_print_headers" TYPE
+                                      "HEADERS" FILES "print")
+
+install(
+  TARGETS kalman_print
+  EXPORT "kalman-target"
+  FILE_SET "kalman_print_headers"
+  DESTINATION "include/fcarouge")
+
 include(CheckSourceCompiles)
 include(FetchContent)
 
