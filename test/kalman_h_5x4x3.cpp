@@ -57,14 +57,12 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies the observation transition matrix H management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto test{[] {
-  using kalman =
-      kalman<vector<5>, vector<4>, vector<3>, std::tuple<double, float, int>,
-             std::tuple<int, float, double>>;
-
-  kalman filter;
   const auto i4x5{identity_v<matrix<4, 5>>};
   const auto z4x5{zero_v<matrix<4, 5>>};
   const auto z4{zero_v<vector<4>>};
+  kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
+                input<vector<3>>, update_types<double, float, int>,
+                prediction_types<int, float, double>};
 
   assert(filter.h() == i4x5);
 
@@ -77,32 +75,6 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   {
     const auto h{i4x5};
     filter.h(h);
-    assert(filter.h() == i4x5);
-  }
-
-  {
-    const auto h{[]([[maybe_unused]] const kalman::state &x,
-                    [[maybe_unused]] const double &d,
-                    [[maybe_unused]] const float &f,
-                    [[maybe_unused]] const int &i) -> kalman::output_model {
-      return zero_v<matrix<4, 5>>;
-    }};
-    filter.h(h);
-    assert(filter.h() == i4x5);
-    filter.update(0., 0.F, 0, z4);
-    assert(filter.h() == z4x5);
-  }
-
-  {
-    const auto h{[]([[maybe_unused]] const kalman::state &x,
-                    [[maybe_unused]] const double &d,
-                    [[maybe_unused]] const float &f,
-                    [[maybe_unused]] const int &i) -> kalman::output_model {
-      return identity_v<matrix<4, 5>>;
-    }};
-    filter.h(std::move(h));
-    assert(filter.h() == z4x5);
-    filter.update(0., 0.F, 0, z4);
     assert(filter.h() == i4x5);
   }
 

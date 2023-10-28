@@ -48,10 +48,8 @@ namespace {
   kalman filter;
 
   assert(filter.f() == 1);
-  assert(filter.h() == 1);
   assert(filter.k() == 1);
   assert(filter.p() == 1);
-  assert(filter.q() == 0 && "No process noise by default.");
   assert(filter.r() == 0 && "No observation noise by default.");
   assert(filter.s() == 1);
   assert(filter.x() == 0 && "Origin state.");

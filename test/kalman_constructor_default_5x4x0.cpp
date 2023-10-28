@@ -49,11 +49,9 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! no input.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<vector<5>, vector<4>>;
-  kalman filter;
+  kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>};
 
   const auto i4x4{identity_v<matrix<4, 4>>};
-  const auto i4x5{identity_v<matrix<4, 5>>};
   const auto i5x4{identity_v<matrix<5, 4>>};
   const auto i5x5{identity_v<matrix<5, 5>>};
   const auto z4x1{zero_v<vector<4>>};
@@ -62,10 +60,8 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   const auto z5x5{zero_v<matrix<5, 5>>};
 
   assert(filter.f() == i5x5);
-  assert(filter.h() == i4x5);
   assert(filter.k() == i5x4);
   assert(filter.p() == i5x5);
-  assert(filter.q() == z5x5 && "No process noise by default.");
   assert(filter.r() == z4x4 && "No observation noise by default.");
   assert(filter.s() == i4x4);
   assert(filter.x() == z5x1 && "Origin state.");

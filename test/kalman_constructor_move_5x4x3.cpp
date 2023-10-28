@@ -49,7 +49,6 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies the multi-dimension filter is move-constructible.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<vector<5>, vector<4>, vector<3>>;
   const auto z3x1{zero_v<vector<3>>};
   const auto i4x4{identity_v<matrix<4, 4>>};
   const auto i4x5{identity_v<matrix<4, 5>>};
@@ -60,7 +59,8 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   const auto z4x4{zero_v<matrix<4, 4>>};
   const auto z5x1{zero_v<vector<5>>};
   const auto z5x5{zero_v<matrix<5, 5>>};
-  kalman another_filter;
+  kalman another_filter{state{vector<5>{0.0, 0.0, 0.0, 0.0, 0.0}},
+                        output<vector<4>>, input<vector<3>>};
 
   another_filter.f(z5x5);
 
