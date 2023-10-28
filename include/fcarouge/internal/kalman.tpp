@@ -264,13 +264,9 @@ inline constexpr void kalman<State, Output, Input, UpdateTypes,
                                                  const auto &...values)
   requires(not std::is_same_v<Input, void>)
 {
-  if constexpr (std::is_convertible_v<decltype(value), input_control>) {
-    filter.g = std::move(input_control{value, values...});
-  } else {
-    using transition_control_function = decltype(filter.transition_control_g);
-    filter.transition_control_g =
-        std::move(transition_control_function{value, values...});
-  }
+  using transition_control_function = decltype(filter.transition_control_g);
+  filter.transition_control_g =
+      std::move(transition_control_function{value, values...});
 }
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
