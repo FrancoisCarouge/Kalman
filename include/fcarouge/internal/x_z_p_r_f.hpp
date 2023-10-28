@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,40 +34,51 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-# @todo Add an internal CMakeLists file to simplify and separate this one.
-add_library(kalman INTERFACE)
-target_sources(
-  kalman
-  INTERFACE FILE_SET
-            "kalman_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "fcarouge/algorithm.hpp"
-            "fcarouge/internal/factory.hpp"
-            "fcarouge/internal/format.hpp"
-            "fcarouge/internal/function.hpp"
-            "fcarouge/internal/kalman.tpp"
-            "fcarouge/internal/type.hpp"
-            "fcarouge/internal/utility.hpp"
-            "fcarouge/internal/x_z_p_q_r_us_ps.hpp"
-            "fcarouge/internal/x_z_p_q_r_hh_us_ps.hpp"
-            "fcarouge/internal/x_z_p_qq_rr_f.hpp"
-            "fcarouge/internal/x_z_p_r_f.hpp"
-            "fcarouge/internal/x_z_u_p_q_r_f_g_ps.hpp"
-            "fcarouge/internal/x_z_u_p_q_r_us_ps.hpp"
-            "fcarouge/kalman.hpp"
-            "fcarouge/utility.hpp")
-install(
-  TARGETS kalman
-  EXPORT "kalman-target"
-  FILE_SET "kalman_headers")
+#ifndef FCAROUGE_INTERNAL_X_Z_HPP
+#define FCAROUGE_INTERNAL_X_Z_HPP
 
-# Conditionally provide the namespace alias target which may be an imported
-# target from a package, or an aliased target if built as part of the same
-# buildsystem.
-if(NOT TARGET kalman::kalman)
-  add_library(kalman::kalman ALIAS kalman)
-endif()
+#include "fcarouge/utility.hpp"
+
+namespace fcarouge::internal {
+//! @todo Provide optimized out versions of the filters.
+template <typename State, typename Output> struct x_z_p_r_f {
+  using state = State;
+  using output = Output;
+  using estimate_uncertainty = quotient<state, state>;
+  using output_uncertainty = quotient<output, output>;
+  using state_transition = quotient<state, state>;
+  using gain = quotient<state, output>;
+  using innovation = output;
+  using innovation_uncertainty = output_uncertainty;
+
+  static inline const auto i{identity_v<quotient<state, state>>};
+
+  state x{zero_v<state>};
+  estimate_uncertainty p{identity_v<estimate_uncertainty>};
+  output_uncertainty r{zero_v<output_uncertainty>};
+  state_transition f{identity_v<state_transition>};
+  gain k{identity_v<gain>};
+  innovation y{zero_v<innovation>};
+  innovation_uncertainty s{identity_v<innovation_uncertainty>};
+  output z{zero_v<output>};
+  transpose t{};
+
+  inline constexpr void update(const output &output_z) {
+    z = output_z;
+    s = p + r;
+    k = p / s;
+    y = z - x;
+    x = x + k * y;
+    p = (i - k) * p * t(i - k) + k * r * t(k);
+  }
+
+  inline constexpr void predict() {
+    x = f * x;
+    p = f * p * t(f);
+  }
+};
+} // namespace fcarouge::internal
+
+#endif // FCAROUGE_INTERNAL_X_Z_HPP

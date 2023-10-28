@@ -24,22 +24,20 @@ namespace {
 //! @example kf_1x1x0_building_height.cpp
 [[maybe_unused]] auto sample{[] {
   // A one-dimensional filter, constant system dynamic model.
-  kalman filter;
+  kalman filter{// One can estimate the building height simply by looking at it.
+                // The estimated state building height is: X = 60 meters.
+                state{60.},
+                // The building height measurement Z.
+                output<double>,
+                // A human’s estimation error (standard deviation) is about 15
+                // meters: σ = 15. Consequently the variance is σ^2 = 225. The
+                // estimate uncertainty is: P = 225.
+                estimate_uncertainty{225.},
+                // Since the standard deviation σ of the altimeter measurement
+                // error is 5, the variance σ^2 would be 25, thus the
+                // measurement, output uncertainty is: R = 25.
+                output_uncertainty{25.}};
 
-  // Initialization
-  // One can estimate the building height simply by looking at it. The estimated
-  // building height is: 60 meters.
-  filter.x(60.);
-
-  // Now we shall initialize the estimate uncertainty. A human’s estimation
-  // error (standard deviation) is about 15 meters: σ = 15. Consequently the
-  // variance is 225: σ^2 = 225.
-  filter.p(225.);
-
-  // Prediction
-  // Now, we shall predict the next state based on the initialization values.
-  // Note: The prediction operation needs not be performed since the process
-  // noise covariance Q is null in this example.
   assert(60 == filter.x() &&
          "Since our system's dynamic model is constant, i.e. the building "
          "doesn't change its height: 60 meters.");
@@ -47,12 +45,10 @@ namespace {
          "The extrapolated estimate uncertainty (variance) also doesn't "
          "change: 225");
 
-  // Measure and Update
-  // The first measurement is: z1 = 48.54m. Since the standard deviation σ of
-  // the altimeter measurement error is 5, the variance σ^2 would be 25, thus
-  // the measurement uncertainty is: r1 = 25.
-  filter.r(25.);
-
+  // Now, we shall predict the next state based on the initialization values.
+  // Note: The prediction operation needs not be performed since the process
+  // noise covariance Q is null in this example.
+  // Measure and update: the first measurement is: z1 = 48.54m.
   filter.update(48.54);
 
   // And so on.

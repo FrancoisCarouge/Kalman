@@ -16,6 +16,8 @@ constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
 namespace fcarouge::sample {
 namespace {
 template <auto Size> using vector = column_vector<double, Size>;
+template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
+using state = fcarouge::state<vector<6>>;
 
 //! @brief Estimating the vehicle location.
 //!
@@ -32,71 +34,65 @@ template <auto Size> using vector = column_vector<double, Size>;
 //! X direction with a constant velocity. After traveling 400 meters the vehicle
 //! turns right, with a turning radius of 300 meters. During the turning
 //! maneuver, the vehicle experiences acceleration due to the circular motion
-//! (an angular acceleration). The measurements period: Δt = 1s (constant). The
-//! random acceleration standard deviation: σa = 0.2 m.s^-2.
+//! (an angular acceleration). The measurements period: Δt = 1s (constant).
 //!
 //! @example kf_6x2x0_vehicle_location.cpp
 [[maybe_unused]] auto sample{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
-  using state = vector<6>;
-  using output = vector<2>;
-  using no_input = void;
-  using kalman = kalman<state, output, no_input>;
-
-  kalman filter;
-
-  // Initialization
-  // The state is chosen to be the position, velocity, acceleration in the XY
-  // plane: [px, vx, ax, py, vy, ay]. We don't know the vehicle location; we
-  // will set initial position, velocity and acceleration to 0.
-  filter.x(0., 0., 0., 0., 0., 0.);
-
-  // Since our initial state vector is a guess, we will set a very high estimate
-  // uncertainty. The high estimate uncertainty results in a high Kalman Gain,
-  // giving a high weight to the measurement.
-  filter.p(kalman::estimate_uncertainty{{500., 0., 0., 0., 0., 0.},
-                                        {0., 500., 0., 0., 0., 0.},
-                                        {0., 0., 500., 0., 0., 0.},
-                                        {0., 0., 0., 500., 0., 0.},
-                                        {0., 0., 0., 0., 500., 0.},
-                                        {0., 0., 0., 0., 0., 500.}});
-
-  // Prediction
-  // The process noise matrix Q would be:
-  kalman::process_uncertainty q{
-      {0.25, 0.5, 0.5, 0., 0., 0.}, {0.5, 1., 1., 0., 0., 0.},
-      {0.5, 1., 1., 0., 0., 0.},    {0., 0., 0., 0.25, 0.5, 0.5},
-      {0., 0., 0., 0.5, 1., 1.},    {0., 0., 0., 0.5, 1., 1.}};
-  q *= 0.2 * 0.2;
-  filter.q(q);
-
-  // The state transition matrix F would be:
-  filter.f(kalman::state_transition{{1., 1., 0.5, 0., 0., 0.},
-                                    {0., 1., 1., 0., 0., 0.},
-                                    {0., 0., 1., 0., 0., 0.},
-                                    {0., 0., 0., 1., 1., 0.5},
-                                    {0., 0., 0., 0., 1., 1.},
-                                    {0., 0., 0., 0., 0., 1.}});
+  kalman filter{
+      // The state X is chosen to be the position, velocity, acceleration in the
+      // XY plane: [px, vx, ax, py, vy, ay]. We don't know the vehicle location;
+      // we will set initial position, velocity and acceleration to 0.
+      state{0., 0., 0., 0., 0., 0.},
+      // The vehicle has an onboard location sensor that reports output Z as X
+      // and Y
+      // coordinates of the system.
+      output<vector<2>>,
+      // The estimate uncertainty matrix P.
+      // Since our initial state vector is a guess, we will set a very high
+      // estimate uncertainty. The high estimate uncertainty results in a high
+      // Kalman Gain, giving a high weight to the measurement.
+      estimate_uncertainty{{500., 0., 0., 0., 0., 0.},
+                           {0., 500., 0., 0., 0., 0.},
+                           {0., 0., 500., 0., 0., 0.},
+                           {0., 0., 0., 500., 0., 0.},
+                           {0., 0., 0., 0., 500., 0.},
+                           {0., 0., 0., 0., 0., 500.}},
+      // The process uncertainty noise matrix Q, constant, computed in place,
+      // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
+      process_uncertainty{[]() -> matrix<6, 6> {
+        return 0.2 * 0.2 * matrix<6, 6>{{0.25, 0.5, 0.5, 0., 0., 0.},
+                                        {0.5, 1., 1., 0., 0., 0.},
+                                        {0.5, 1., 1., 0., 0., 0.},
+                                        {0., 0., 0., 0.25, 0.5, 0.5},
+                                        {0., 0., 0., 0.5, 1., 1.},
+                                        {0., 0., 0., 0.5, 1., 1.}};
+      }()},
+      // The output uncertainty matrix R. Assume that the x and y measurements
+      // are uncorrelated, i.e. error in the x coordinate measurement doesn't
+      // depend on the error in the y coordinate measurement. In real-life
+      // applications, the measurement uncertainty can differ between
+      // measurements. In many systems the measurement uncertainty depends on
+      // the measurement SNR (signal-to-noise ratio), angle between sensor (or
+      // sensors) and target, signal frequency and many other parameters.
+      // For the sake of the example simplicity, we will assume a constant
+      // measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error
+      // standard deviation: σxm = σym = 3m. The variance 9.
+      output_uncertainty{{9., 0.}, {0., 9.}},
+      // The output model matrix H. The dimension of zn is 2x1 and the dimension
+      // of xn is 6x1. Therefore the dimension of the observation matrix H shall
+      // be 2x6.
+      output_model{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}},
+      // // The state transition matrix F would be:
+      state_transition{{1., 1., 0.5, 0., 0., 0.},
+                       {0., 1., 1., 0., 0., 0.},
+                       {0., 0., 1., 0., 0., 0.},
+                       {0., 0., 0., 1., 1., 0.5},
+                       {0., 0., 0., 0., 1., 1.},
+                       {0., 0., 0., 0., 0., 1.}}};
 
   // Now we can predict the next state based on the initialization values.
   filter.predict();
-
-  // Measure and Update
-  // The dimension of zn is 2x1 and the dimension of xn is 6x1. Therefore the
-  // dimension of the observation matrix H shall be 2x6.
-  filter.h(
-      kalman::output_model{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}});
-
-  // Assume that the x and y measurements are uncorrelated, i.e. error in the x
-  // coordinate measurement doesn't depend on the error in the y coordinate
-  // measurement. In real-life applications, the measurement uncertainty can
-  // differ between measurements. In many systems the measurement uncertainty
-  // depends on the measurement SNR (signal-to-noise ratio), angle between
-  // sensor (or sensors) and target, signal frequency and many other parameters.
-  // For the sake of the example simplicity, we will assume a constant
-  // measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error
-  // standard deviation: σxm = σym = 3m. The variance 9.
-  filter.r(kalman::output_uncertainty{{9., 0.}, {0., 9.}});
 
   // The measurement values: z1 = [-393.66, 300.4]
   filter.update(-393.66, 300.4);
