@@ -59,9 +59,8 @@ namespace {
   // How do I know the velocity? Magic? Consider it a prediction, or perhaps we
   // have a secondary velocity sensor. Please accept this simplification for
   // now.
-  filter.g(1.);
-
   filter.predict(1.);
+
   filter.update(1.354);
   filter.predict(1.);
   filter.update(1.882);
