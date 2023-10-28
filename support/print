@@ -40,24 +40,17 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_PRINT
 
 // Standard printer compiler support. Some mainstream compilers do not support
-// `std::print` as of May 2023. The support is brought in through the `fmt`
-// library.
+// `std::print` as of October 2023. Poor man's implementation until then.
 
-#include <fmt/core.h>
-
-#include <cstdio>
-#include <string_view>
+#include <format>
+#include <iostream>
 
 namespace std {
-template <typename... Types>
-inline void print(std::string_view format, Types &&...arguments) {
-  fmt::vprint(format, fmt::make_format_args(arguments...));
-}
-
-template <typename... Types>
-inline void print(std::FILE *file, std::string_view format,
-                  Types &&...arguments) {
-  fmt::print(file, format, fmt::make_format_args(arguments...));
+template <typename... Arguments>
+inline void println(std::format_string<Arguments...> format,
+                    Arguments &&...arguments) {
+  std::cout << std::format(format, std::forward<Arguments>(arguments)...)
+            << '\n';
 }
 } // namespace std
 
