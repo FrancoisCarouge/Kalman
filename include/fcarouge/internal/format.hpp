@@ -45,46 +45,40 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 
 namespace fcarouge {
-template <typename, typename, typename, typename, typename> class kalman;
+template <typename> class kalman;
 } // namespace fcarouge
 
-template <typename State, typename Output, typename Input, typename UpdateTypes,
-          typename PredictionTypes, typename Char>
+template <typename Filter, typename Char>
 // It is allowed to add template specializations for any standard library class
 // template to the namespace std only if the declaration depends on at least one
 // program-defined type and the specialization satisfies all requirements for
 // the original template, except where such specializations are prohibited.
 // NOLINTNEXTLINE(cert-dcl58-cpp)
-struct std::formatter<
-    fcarouge::kalman<State, Output, Input, UpdateTypes, PredictionTypes>,
-    Char> {
-  using kalman =
-      fcarouge::kalman<State, Output, Input, UpdateTypes, PredictionTypes>;
-
+struct std::formatter<fcarouge::kalman<Filter>, Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 
   //! @todo P2585 may be useful in simplifying and standardizing the support.
   template <typename OutputIt>
-  auto format(const kalman &filter,
+  auto format(const fcarouge::kalman<Filter> &filter,
               std::basic_format_context<OutputIt, Char> &format_context) const
       -> OutputIt {
 
     format_context.advance_to(
         format_to(format_context.out(), R"({{)", filter.f()));
 
-    if constexpr (fcarouge::internal::has_state_transition_method<kalman>) {
+    if constexpr (fcarouge::has_state_transition<Filter>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("f": {}, )", filter.f()));
     }
 
-    if constexpr (fcarouge::internal::has_input_control_method<kalman>) {
+    if constexpr (fcarouge::has_input_control<Filter>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
 
-    if constexpr (fcarouge::internal::has_output_model_method<kalman>) {
+    if constexpr (fcarouge::has_output_model<Filter>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("h": {}, )", filter.h()));
     }
@@ -92,8 +86,9 @@ struct std::formatter<
     format_context.advance_to(format_to(
         format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
 
-    {
-      constexpr auto end{fcarouge::internal::repack_s<PredictionTypes>};
+    if constexpr (fcarouge::internal::has_prediction_types<Filter>) {
+      constexpr auto end{
+          fcarouge::internal::repack_s<typename Filter::prediction_types>};
       constexpr decltype(end) begin{0};
       constexpr decltype(end) next{1};
       fcarouge::internal::for_constexpr<begin, end, next>(
@@ -104,12 +99,12 @@ struct std::formatter<
           });
     }
 
-    if constexpr (fcarouge::internal::has_output_uncertainty_method<kalman>) {
+    if constexpr (fcarouge::has_process_uncertainty<Filter>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("q": {}, )", filter.q()));
     }
 
-    if constexpr (fcarouge::internal::has_process_uncertainty_method<kalman>) {
+    if constexpr (fcarouge::has_output_uncertainty<Filter>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("r": {}, )", filter.r()));
     }
@@ -119,13 +114,15 @@ struct std::formatter<
 
     //! @todo Generalize out internal method concept when MSVC has better
     //! if-constexpr-requires support.
-    if constexpr (fcarouge::internal::has_input_method<kalman>) {
+    if constexpr (fcarouge::has_input<Filter>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }
 
-    {
-      constexpr auto end{fcarouge::internal::repack_s<UpdateTypes>};
+    //! @todo Inconsistent usage of internal?
+    if constexpr (fcarouge::internal::has_update_types<Filter>) {
+      constexpr auto end{
+          fcarouge::internal::repack_s<typename Filter::update_types>};
       constexpr decltype(end) begin{0};
       constexpr decltype(end) next{1};
       fcarouge::internal::for_constexpr<begin, end, next>(
