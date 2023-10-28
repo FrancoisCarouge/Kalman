@@ -48,9 +48,7 @@ namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure predict, empty benchmark performance.
 void bench(::benchmark::State &benchmark_state) {
-  using kalman = kalman<float, float>;
-
-  kalman filter;
+  kalman filter{state{0.F}, output<float>};
 
   for (auto _ : benchmark_state) {
     ::benchmark::ClobberMemory();

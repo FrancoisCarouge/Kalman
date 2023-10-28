@@ -59,12 +59,13 @@ template <auto Size> using vector = column_vector<float, Size>;
 //! states and inputs with the Eigen linear algebra backend.
 template <auto StateSize, auto InputSize>
 void bench(::benchmark::State &benchmark_state) {
-  using kalman = kalman<vector<StateSize>, float, vector<InputSize>>;
-
-  kalman filter;
+  kalman filter{state{vector<StateSize>{}}, output<float>,
+                input<vector<InputSize>>};
   std::random_device random_device;
   std::mt19937 random_generator{random_device()};
   std::uniform_real_distribution<float> uniformly_distributed;
+
+  using kalman = decltype(filter);
 
   for (auto _ : benchmark_state) {
     float uv[InputSize];
