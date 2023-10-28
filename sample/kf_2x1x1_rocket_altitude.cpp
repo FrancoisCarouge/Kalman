@@ -8,6 +8,11 @@
 namespace fcarouge::sample {
 namespace {
 template <auto Size> using vector = column_vector<double, Size>;
+template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
+using altitude = double;
+using acceleration = double;
+using milliseconds = std::chrono::milliseconds;
+using state = fcarouge::state<vector<2>>;
 
 //! @brief Estimating the rocket altitude.
 //!
@@ -37,65 +42,64 @@ template <auto Size> using vector = column_vector<double, Size>;
 //! Let us assume a rocket boosting vertically with constant acceleration. The
 //! rocket is equipped with an altimeter that provides altitude measurements and
 //! an accelerometer that serves as a control input.
-//! - The measurements period: Δt = 0.25s
+//! - The constant measurements period: Δt = 0.25s
 //! - The rocket acceleration: a= 30 m.s^-2
 //! - The altimeter measurement error standard deviation: σxm = 20m
 //! - The accelerometer measurement error standard deviation: ϵ = 0.1 m.s^-2
 //!
 //! @example kf_2x1x1_rocket_altitude.cpp
 [[maybe_unused]] auto sample{[] {
-  // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
-  using state = vector<2>;
-  using output = double;
-  using input = double;
-  using kalman = kalman<state, output, input, std::tuple<>,
-                        std::tuple<std::chrono::milliseconds>>;
-  kalman filter;
-
-  // Initialization
-  // We don't know the rocket location; we will set initial position and
-  // velocity to 0.
-  filter.x(0., 0.);
-
-  // Since our initial state vector is a guess, we will set a very high estimate
-  // uncertainty. The high estimate uncertainty results in high Kalman gain,
-  // giving a high weight to the measurement.
-  filter.p(kalman::estimate_uncertainty{{500., 0.}, {0., 500.}});
-
-  // Prediction
-  // We will assume a discrete noise model - the noise is different at each time
-  // period, but it is constant between time periods. In our previous example,
-  // we used the system's random variance in acceleration σ^2 as a multiplier of
-  // the process noise matrix. But here, we have an accelerometer that measures
-  // the system random acceleration. The accelerometer error v is much lower
-  // than system's random acceleration, therefore we use ϵ^2 as a multiplier of
-  // the process noise matrix. This makes our estimation uncertainty much lower!
-  filter.q([]([[maybe_unused]] const kalman::state &x,
-              const std::chrono::milliseconds &delta_time) {
-    const auto dt{std::chrono::duration<double>(delta_time).count()};
-    return kalman::process_uncertainty{
-        {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
-        {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};
-  });
-
-  // The state transition matrix F would be:
-  filter.f([]([[maybe_unused]] const kalman::state &x,
-              [[maybe_unused]] const kalman::input &u,
-              const std::chrono::milliseconds &delta_time) {
-    const auto dt{std::chrono::duration<double>(delta_time).count()};
-    return kalman::state_transition{{1., dt}, {0., 1.}};
-  });
-
-  // The control matrix G would be:
-  filter.g([](const std::chrono::milliseconds &delta_time) {
-    const auto dt{std::chrono::duration<double>(delta_time).count()};
-    return kalman::input_control{0.0313, dt};
-  });
+  // A 2x1x1 filter, constant acceleration dynamic model, no control, step
+  // time.
+  kalman filter{
+      // We don't know the rocket location; we will set initial position and
+      // velocity to state X = [0.0, 0.0].
+      state{0., 0.},
+      // The filter estimates the output Z altitude as a double [m].
+      output<altitude>,
+      // The filter receives in the input U accelerometer as a double [m.s^-2].
+      input<acceleration>,
+      // Since our initial state vector is a guess, we will set a very high
+      // estimate uncertainty. The high estimate uncertainty P results in high
+      // Kalman gain, giving a high weight to the measurement.
+      estimate_uncertainty{{500., 0.}, {0., 500.}},
+      // We will assume a discrete noise model - the noise is different at each
+      // time period, but it is constant between time periods. In our previous
+      // example, we used the system's random variance in acceleration σ^2 as a
+      // multiplier of the process noise matrix. But here, we have an
+      // accelerometer that measures the system random acceleration. The
+      // accelerometer error v is much lower than system's random acceleration,
+      // therefore we use ϵ^2 as a multiplier of the process noise matrix. This
+      // makes our estimation uncertainty much lower!
+      process_uncertainty{[]([[maybe_unused]] const vector<2> &x,
+                             const milliseconds &delta_time) {
+        const auto dt{std::chrono::duration<double>(delta_time).count()};
+        return matrix<2, 2>{
+            {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
+            {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};
+      }},
+      // For the sake of the example simplicity, we will assume a constant
+      // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
+      output_uncertainty{400.},
+      // The state transition matrix F would be:
+      state_transition{[]([[maybe_unused]] const vector<2> &x,
+                          [[maybe_unused]] const acceleration &u,
+                          const milliseconds &delta_time) {
+        const auto dt{std::chrono::duration<double>(delta_time).count()};
+        return matrix<2, 2>{{1., dt}, {0., 1.}};
+      }},
+      // The control matrix G would be:
+      input_control{[](const milliseconds &delta_time) {
+        const auto dt{std::chrono::duration<double>(delta_time).count()};
+        return vector<2>{0.0313, dt};
+      }},
+      // The filter prediction uses a delta time [ms] parameter.
+      prediction_types<milliseconds>};
 
   // We also don't know what the rocket acceleration is, but we can assume that
   // it's greater than zero. Let's assume: u0 = g
   const double gravity{-9.8}; // [m.s^-2]
-  const std::chrono::milliseconds delta_time{250};
+  const milliseconds delta_time{250};
   filter.predict(delta_time, -gravity);
 
   assert(std::abs(1 - filter.x()[0] / 0.3) < 0.03 &&
@@ -106,15 +110,6 @@ template <auto Size> using vector = column_vector<double, Size>;
          std::abs(1 - filter.p()(1, 0) / 125) < 0.001 &&
          std::abs(1 - filter.p()(1, 1) / 500) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
-
-  // Measure and Update
-  // The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension
-  // of the observation matrix H will be 1x2.
-  filter.h(kalman::output_model{1., 0.});
-
-  // For the sake of the example simplicity, we will assume a constant
-  // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
-  filter.r(kalman::output_uncertainty{400.});
 
   filter.update(-32.4);
 
@@ -142,14 +137,13 @@ template <auto Size> using vector = column_vector<double, Size>;
   // measurements period: Δt = 250ms. The period is constant but passed as
   // variable for the example. The lambda helper shows how to simplify the
   // filter step call.
-  const auto step{[&filter](double altitude,
-                            std::chrono::milliseconds step_time,
-                            double acceleration) {
-    filter.update(altitude);
-    filter.predict(step_time, acceleration);
+  const auto step{[&filter, &delta_time](altitude measured_altitude,
+                                         acceleration measured_acceleration) {
+    filter.update(measured_altitude);
+    filter.predict(delta_time, measured_acceleration);
   }};
 
-  step(-11.1, delta_time, 40.02 + gravity);
+  step(-11.1, 40.02 + gravity);
 
   assert(std::abs(1 - filter.x()[0] / -12.3) < 0.002 &&
          std::abs(1 - filter.x()[1] / 14.8) < 0.002 &&
@@ -160,33 +154,33 @@ template <auto Size> using vector = column_vector<double, Size>;
          std::abs(1 - filter.p()(1, 1) / 438.8) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
-  step(18., delta_time, 39.97 + gravity);
-  step(22.9, delta_time, 39.81 + gravity);
-  step(19.5, delta_time, 39.75 + gravity);
-  step(28.5, delta_time, 39.6 + gravity);
-  step(46.5, delta_time, 39.77 + gravity);
-  step(68.9, delta_time, 39.83 + gravity);
-  step(48.2, delta_time, 39.73 + gravity);
-  step(56.1, delta_time, 39.87 + gravity);
-  step(90.5, delta_time, 39.81 + gravity);
-  step(104.9, delta_time, 39.92 + gravity);
-  step(140.9, delta_time, 39.78 + gravity);
-  step(148., delta_time, 39.98 + gravity);
-  step(187.6, delta_time, 39.76 + gravity);
-  step(209.2, delta_time, 39.86 + gravity);
-  step(244.6, delta_time, 39.61 + gravity);
-  step(276.4, delta_time, 39.86 + gravity);
-  step(323.5, delta_time, 39.74 + gravity);
-  step(357.3, delta_time, 39.87 + gravity);
-  step(357.4, delta_time, 39.63 + gravity);
-  step(398.3, delta_time, 39.67 + gravity);
-  step(446.7, delta_time, 39.96 + gravity);
-  step(465.1, delta_time, 39.8 + gravity);
-  step(529.4, delta_time, 39.89 + gravity);
-  step(570.4, delta_time, 39.85 + gravity);
-  step(636.8, delta_time, 39.9 + gravity);
-  step(693.3, delta_time, 39.81 + gravity);
-  step(707.3, delta_time, 39.81 + gravity);
+  step(18., 39.97 + gravity);
+  step(22.9, 39.81 + gravity);
+  step(19.5, 39.75 + gravity);
+  step(28.5, 39.6 + gravity);
+  step(46.5, 39.77 + gravity);
+  step(68.9, 39.83 + gravity);
+  step(48.2, 39.73 + gravity);
+  step(56.1, 39.87 + gravity);
+  step(90.5, 39.81 + gravity);
+  step(104.9, 39.92 + gravity);
+  step(140.9, 39.78 + gravity);
+  step(148., 39.98 + gravity);
+  step(187.6, 39.76 + gravity);
+  step(209.2, 39.86 + gravity);
+  step(244.6, 39.61 + gravity);
+  step(276.4, 39.86 + gravity);
+  step(323.5, 39.74 + gravity);
+  step(357.3, 39.87 + gravity);
+  step(357.4, 39.63 + gravity);
+  step(398.3, 39.67 + gravity);
+  step(446.7, 39.96 + gravity);
+  step(465.1, 39.8 + gravity);
+  step(529.4, 39.89 + gravity);
+  step(570.4, 39.85 + gravity);
+  step(636.8, 39.9 + gravity);
+  step(693.3, 39.81 + gravity);
+  step(707.3, 39.81 + gravity);
 
   filter.update(748.5);
 

@@ -27,27 +27,29 @@ namespace {
 //! @example kf_1x1x0_liquid_temperature.cpp
 [[maybe_unused]] auto sample{[] {
   // A one-dimensional filter, constant system dynamic model.
-  kalman filter;
+  kalman filter{
+      // We initialize the Kalman filter and predict the next state (which is
+      // the first state). We don't know what the temperature of the liquid is,
+      // and our guess is: estimated state X = 10°C.
+      state{10.},
+      // The measured liquid temperature Z.
+      output<double>,
+      // Our guess is very imprecise, so we set our initialization estimate
+      // error σ to 100. The estimate uncertainty p of the initialization is the
+      // error variance σ^2: P = p0,0 = 100^2 = 10,000. This variance is very
+      // high. If we initialize with a more meaningful value, we will get faster
+      // Kalman filter convergence.
+      estimate_uncertainty{100 * 100.},
+      // We have an accurate model, thus we set the process uncertainty noise
+      // variance Q to 0.0001.
+      process_uncertainty{0.0001},
+      // Since the measurement error of the thermometer is σ = 0.1, the variance
+      // σ^2 would be 0.01, thus the measurement, output uncertainty is: R = r1
+      // = 0.01. The measurement error (standard deviation) is 0.1 degrees
+      // Celsius.
+      output_uncertainty{0.1 * 0.1}};
 
-  // Initialization
-  // Before the first iteration, we must initialize the Kalman filter and
-  // predict the next state (which is the first state). We don't know what the
-  // temperature of the liquid is, and our guess is 10°C.
-  filter.x(10.);
-
-  // Our guess is very imprecise, so we set our initialization estimate error σ
-  // to 100. The estimate uncertainty of the initialization is the error
-  // variance σ^2: p0,0 = 100^2 = 10,000. This variance is very high. If we
-  // initialize with a more meaningful value, we will get faster Kalman filter
-  // convergence.
-  filter.p(100 * 100.);
-
-  // Prediction
-  // Now, we shall predict the next state based on the initialization values. We
-  // think that we have an accurate model, thus we set the process noise
-  // variance q to 0.0001.
-  filter.q(0.0001);
-
+  // Now, we shall predict the next state based on the initialization values.
   filter.predict();
 
   assert(10 == filter.x() &&
@@ -57,13 +59,7 @@ namespace {
          "The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = "
          "10000 + 0.0001 = 10000.0001.");
 
-  // Measure and Update
-  // The measurement value: z1 = 49.95°C. Since the measurement error is σ =
-  // 0.1, the variance σ^2 would be 0.01, thus the measurement uncertainty is:
-  // r1 = 0.01. The measurement error (standard deviation) is 0.1 degrees
-  // Celsius.
-  filter.r(0.1 * 0.1);
-
+  // The first measurement value: z1 = 49.95°C. Measure and update.
   filter.update(49.95);
 
   assert(std::abs(1 - filter.k() / 0.999999) < 0.0001 &&
