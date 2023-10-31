@@ -16,9 +16,6 @@ constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
 namespace fcarouge::sample {
 namespace {
 template <auto Size> using vector = column_vector<double, Size>;
-using state = vector<6>;
-using output = vector<2>;
-using no_input = void;
 
 //! @brief Estimating the vehicle location.
 //!
@@ -41,6 +38,9 @@ using no_input = void;
 //! @example kf_6x2x0_vehicle_location.cpp
 [[maybe_unused]] auto sample{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
+  using state = vector<6>;
+  using output = vector<2>;
+  using no_input = void;
   using kalman = kalman<state, output, no_input>;
 
   kalman filter;
