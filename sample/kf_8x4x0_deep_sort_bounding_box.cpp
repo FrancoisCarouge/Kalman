@@ -16,9 +16,6 @@ constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
 namespace fcarouge::sample {
 namespace {
 template <auto Size> using vector = column_vector<float, Size>;
-using state = vector<8>;
-using output = vector<4>;
-using no_input = void;
 
 //! @brief Estimating the position of bounding boxes in image space.
 //!
@@ -37,6 +34,9 @@ using no_input = void;
 //! @example kf_8x4x0_deep_sort_bounding_box.cpp
 [[maybe_unused]] auto sample{[] {
   // A 8x4x0 filter, constant velocity, linear.
+  using state = vector<8>;
+  using output = vector<4>;
+  using no_input = void;
   using kalman = kalman<state, output, no_input>;
 
   kalman filter;

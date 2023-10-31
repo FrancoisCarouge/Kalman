@@ -8,9 +8,6 @@
 namespace fcarouge::sample {
 namespace {
 template <auto Size> using vector = column_vector<double, Size>;
-using state = vector<2>;
-using output = double;
-using input = double;
 
 //! @brief Estimating the rocket altitude.
 //!
@@ -48,6 +45,9 @@ using input = double;
 //! @example kf_2x1x1_rocket_altitude.cpp
 [[maybe_unused]] auto sample{[] {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step time.
+  using state = vector<2>;
+  using output = double;
+  using input = double;
   using kalman = kalman<state, output, input, std::tuple<>,
                         std::tuple<std::chrono::milliseconds>>;
   kalman filter;

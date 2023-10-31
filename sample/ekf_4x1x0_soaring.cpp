@@ -7,9 +7,6 @@
 namespace fcarouge::sample {
 namespace {
 template <auto Size> using vector = column_vector<float, Size>;
-using state = vector<4>;
-using output = float;
-using no_input = void;
 
 //! @brief ArduPilot plane soaring.
 //!
@@ -36,6 +33,9 @@ using no_input = void;
 [[maybe_unused]] auto sample{[] {
   // 4x1 extended filter with additional parameter for prediction: driftX [m],
   // driftY [m]. Constant time step.
+  using state = vector<4>;
+  using output = float;
+  using no_input = void;
   using kalman = kalman<state, output, no_input, std::tuple<float, float>,
                         std::tuple<float, float>>;
 
