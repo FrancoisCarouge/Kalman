@@ -151,9 +151,9 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>          <span class="keyword">typename</span>... PredictionTypes&gt;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">struct </span>kalman&lt;State, Output, void, <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;UpdateTypes...&gt;,</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>              <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;PredictionTypes...&gt;&gt; {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a> = State;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a> = Output;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#aa628c1ade77c9a1d33116f327f91aa70">input</a> = empty;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keyword">using </span>state = State;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keyword">using </span>output = Output;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">using </span>input = empty;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">using </span>estimate_uncertainty = quotient&lt;state, state&gt;;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keyword">using </span>process_uncertainty = quotient&lt;state, state&gt;;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keyword">using </span>output_uncertainty = quotient&lt;output, output&gt;;</div>
@@ -161,7 +161,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keyword">using </span>output_model = quotient&lt;output, state&gt;;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">using </span>input_control = empty;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <span class="keyword">using </span>gain = quotient&lt;state, output&gt;;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keyword">using </span>innovation = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keyword">using </span>innovation = output;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keyword">using </span>observation_state_function =</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;output_model(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
@@ -173,15 +173,15 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;process_uncertainty(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keyword">using </span>transition_control_function = empty;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keyword">using </span>transition_function =</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a>(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;state(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keyword">using </span>observation_function =</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a>(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;output(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="keyword">using </span>update_types = std::tuple&lt;UpdateTypes...&gt;;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keyword">using </span>prediction_types = std::tuple&lt;PredictionTypes...&gt;;</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keyword">auto</span> i{identity_v&lt;quotient&lt;state, state&gt;&gt;};</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a> x{zero_v&lt;state&gt;};</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  state x{zero_v&lt;state&gt;};</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  estimate_uncertainty p{identity_v&lt;estimate_uncertainty&gt;};</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  process_uncertainty q{zero_v&lt;process_uncertainty&gt;};</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  output_uncertainty r{zero_v&lt;output_uncertainty&gt;};</div>
@@ -190,7 +190,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  gain k{identity_v&lt;gain&gt;};</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  innovation y{zero_v&lt;innovation&gt;};</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  innovation_uncertainty s{identity_v&lt;innovation_uncertainty&gt;};</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a> z{zero_v&lt;output&gt;};</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  output z{zero_v&lt;output&gt;};</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  update_types update_arguments{};</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  prediction_types prediction_arguments{};</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a> t{};</div>
@@ -212,12 +212,12 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      [&amp;qq = q]([[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...arguments)</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>          -&gt; process_uncertainty { <span class="keywordflow">return</span> qq; }};</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  transition_function transition{</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      [&amp;ff = f](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a> &amp;state_x,</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      [&amp;ff = f](<span class="keyword">const</span> state &amp;state_x,</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...arguments) -&gt; state {</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">return</span> ff * state_x;</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>      }};</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  observation_function observation{</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>      [&amp;hh = h](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a> &amp;state_x,</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>      [&amp;hh = h](<span class="keyword">const</span> state &amp;state_x,</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...arguments) -&gt; output {</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordflow">return</span> hh * state_x;</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      }};</div>
@@ -227,13 +227,13 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                               <span class="keyword">const</span> Output0 &amp;output_z,</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                               <span class="keyword">const</span> OutputN &amp;...outputs_z) {</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    update_arguments = {update_pack...};</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    z = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a>{output_z, outputs_z...};</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    z = output{output_z, outputs_z...};</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    h = observation_state_h(x, update_pack...);</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    r = noise_observation_r(x, z, update_pack...);</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    s = innovation_uncertainty{h * p * t(h) + r};</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    k = p * t(h) / s;</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    y = z - observation(x, update_pack...);</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    x = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a>{x + k * y};</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    x = state{x + k * y};</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  }</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
@@ -250,9 +250,9 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>          <span class="keyword">typename</span>... UpdateTypes, <span class="keyword">typename</span>... PredictionTypes&gt;</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keyword">struct </span>kalman&lt;State, Output, Input, <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;UpdateTypes...&gt;,</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>              <a class="code hl_typedef" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">pack</a>&lt;PredictionTypes...&gt;&gt; {</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a> = State;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a> = Output;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#aa628c1ade77c9a1d33116f327f91aa70">input</a> = Input;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <span class="keyword">using </span>state = State;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="keyword">using </span>output = Output;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="keyword">using </span>input = Input;</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  <span class="keyword">using </span>estimate_uncertainty = quotient&lt;state, state&gt;;</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="keyword">using </span>process_uncertainty = quotient&lt;state, state&gt;;</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="keyword">using </span>output_uncertainty = quotient&lt;output, output&gt;;</div>
@@ -260,7 +260,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  <span class="keyword">using </span>output_model = quotient&lt;output, state&gt;;</div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  <span class="keyword">using </span>input_control = quotient&lt;state, input&gt;;</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  <span class="keyword">using </span>gain = quotient&lt;state, output&gt;;</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  <span class="keyword">using </span>innovation = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a>;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  <span class="keyword">using </span>innovation = output;</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  <span class="keyword">using </span>innovation_uncertainty = output_uncertainty;</div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  <span class="keyword">using </span>observation_state_function =</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;output_model(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
@@ -273,15 +273,15 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  <span class="keyword">using </span>transition_control_function =</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;input_control(<span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  <span class="keyword">using </span>transition_function =</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a>(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> input &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;state(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> input &amp;, <span class="keyword">const</span> PredictionTypes &amp;...)&gt;;</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  <span class="keyword">using </span>observation_function =</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a>(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;output(<span class="keyword">const</span> state &amp;, <span class="keyword">const</span> UpdateTypes &amp;...)&gt;;</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  <span class="keyword">using </span>update_types = std::tuple&lt;UpdateTypes...&gt;;</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="keyword">using </span>prediction_types = std::tuple&lt;PredictionTypes...&gt;;</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keyword">auto</span> i{identity_v&lt;quotient&lt;state, state&gt;&gt;};</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a> x{zero_v&lt;state&gt;};</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  state x{zero_v&lt;state&gt;};</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  estimate_uncertainty p{identity_v&lt;estimate_uncertainty&gt;};</div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  process_uncertainty q{zero_v&lt;process_uncertainty&gt;};</div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  output_uncertainty r{zero_v&lt;output_uncertainty&gt;};</div>
@@ -291,8 +291,8 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  gain k{identity_v&lt;gain&gt;};</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  innovation y{zero_v&lt;innovation&gt;};</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  innovation_uncertainty s{identity_v&lt;innovation_uncertainty&gt;};</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a> z{zero_v&lt;output&gt;};</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#aa628c1ade77c9a1d33116f327f91aa70">input</a> u{zero_v&lt;input&gt;};</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  output z{zero_v&lt;output&gt;};</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  input u{zero_v&lt;input&gt;};</div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>  update_types update_arguments{};</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  prediction_types prediction_arguments{};</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a> t{};</div>
@@ -318,12 +318,12 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordflow">return</span> gg;</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>      }};</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>  transition_function transition{</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>      [&amp;ff = f, &amp;gg = g](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a> &amp;state_x, <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#aa628c1ade77c9a1d33116f327f91aa70">input</a> &amp;input_u,</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>      [&amp;ff = f, &amp;gg = g](<span class="keyword">const</span> state &amp;state_x, <span class="keyword">const</span> input &amp;input_u,</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>                         [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...arguments) -&gt; state {</div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="keywordflow">return</span> ff * state_x + gg * input_u;</div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>      }};</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>  observation_function observation{</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>      [&amp;hh = h](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a> &amp;state_x,</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>      [&amp;hh = h](<span class="keyword">const</span> state &amp;state_x,</div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>                [[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...arguments) -&gt; output {</div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">return</span> hh * state_x;</div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>      }};</div>
@@ -333,13 +333,13 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>                               <span class="keyword">const</span> Output0 &amp;output_z,</div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                               <span class="keyword">const</span> OutputN &amp;...outputs_z) {</div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    update_arguments = {update_pack...};</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    z = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a>{output_z, outputs_z...};</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    z = output{output_z, outputs_z...};</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    h = observation_state_h(x, update_pack...);</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    r = noise_observation_r(x, z, update_pack...);</div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    s = h * p * t(h) + r;</div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    k = p * t(h) / s;</div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    y = z - observation(x, update_pack...);</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    x = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a>{x + k * y};</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    x = state{x + k * y};</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};</div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>  }</div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
@@ -348,7 +348,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                                <span class="keyword">const</span> Input0 &amp;input_u,</div>
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>                                <span class="keyword">const</span> InputN &amp;...inputs_u) {</div>
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    prediction_arguments = {prediction_pack...};</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    u = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#aa628c1ade77c9a1d33116f327f91aa70">input</a>{input_u, inputs_u...};</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    u = input{input_u, inputs_u...};</div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    f = transition_state_f(x, u, prediction_pack...);</div>
 <div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    q = noise_process_q(x, prediction_pack...);</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    g = transition_control_g(prediction_pack...);</div>
@@ -362,9 +362,6 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div class="ttc" id="afunction_8hpp_xhtml"><div class="ttname"><a href="function_8hpp.xhtml">function.hpp</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a></div><div class="ttdoc">Internal implementation details.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90ed417b141d4a9d567a4bcfadcd6b6e"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">fcarouge::internal::function</a></div><div class="ttdeci">function(Callable) -&gt; function&lt; function_traits_t&lt; Callable &gt; &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a7e29df93d84e25987f0c06c89a42b865"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">vector&lt; 4 &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00010">ekf_4x1x0_soaring.cpp:10</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a86794f6437ff542b83abc16de5df6373"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::output</a></div><div class="ttdeci">float output</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00011">ekf_4x1x0_soaring.cpp:11</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03_xhtml_aa628c1ade77c9a1d33116f327f91aa70"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#aa628c1ade77c9a1d33116f327f91aa70">fcarouge::sample::anonymous_namespace{kf_2x1x1_rocket_altitude.cpp}::input</a></div><div class="ttdeci">double input</div><div class="ttdef"><b>Definition:</b> <a href="kf__2x1x1__rocket__altitude_8cpp_source.xhtml#l00013">kf_2x1x1_rocket_altitude.cpp:13</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aa5a28afb4550bbcbd55d875351de6e27"><div class="ttname"><a href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a></div><div class="ttdeci">internal::pack&lt; Types... &gt; pack</div><div class="ttdef"><b>Definition:</b> <a href="utility_8hpp_source.xhtml#l00079">utility.hpp:79</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ac922632c2da8269e8396756088ba9a1f"><div class="ttname"><a href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">fcarouge::transpose</a></div><div class="ttdeci">constexpr auto transpose(const matrix&lt; Type, Row, Column &gt; &amp;lhs)</div><div class="ttdef"><b>Definition:</b> <a href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00329">linalg.hpp:329</a></div></div>
 <div class="ttc" id="autility_8hpp_xhtml"><div class="ttname"><a href="utility_8hpp.xhtml">utility.hpp</a></div><div class="ttdoc">The collection of utilities supporting the library.</div></div>
@@ -374,7 +371,7 @@ $(document).ready(function(){initNavTree('internal_2kalman_8hpp_source.xhtml',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="internal_2kalman_8hpp.xhtml">kalman.hpp</a></li>
-    <li class="footer">Generated on Mon Oct 30 2023 22:37:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Oct 31 2023 22:17:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

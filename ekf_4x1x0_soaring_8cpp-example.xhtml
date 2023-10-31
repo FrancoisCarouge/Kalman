@@ -113,13 +113,13 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = column_vector&lt;float, Size&gt;;</div>
-<div class="line"><span class="keyword">using </span>state = vector&lt;4&gt;;</div>
-<div class="line"><span class="keyword">using </span>output = float;</div>
-<div class="line"><span class="keyword">using </span>no_input = void;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
 <div class="line">  <span class="comment">// driftY [m]. Constant time step.</span></div>
+<div class="line">  <span class="keyword">using </span>state = vector&lt;4&gt;;</div>
+<div class="line">  <span class="keyword">using </span>output = float;</div>
+<div class="line">  <span class="keyword">using </span>no_input = void;</div>
 <div class="line">  <span class="keyword">using </span>kalman = kalman&lt;state, output, no_input, std::tuple&lt;float, float&gt;,</div>
 <div class="line">                        std::tuple&lt;float, float&gt;&gt;;</div>
 <div class="line"> </div>
@@ -329,7 +329,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 30 2023 22:37:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Oct 31 2023 22:17:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

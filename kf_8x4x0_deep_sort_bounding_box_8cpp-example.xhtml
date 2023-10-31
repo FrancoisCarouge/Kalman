@@ -120,12 +120,12 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = column_vector&lt;float, Size&gt;;</div>
-<div class="line"><span class="keyword">using </span>state = vector&lt;8&gt;;</div>
-<div class="line"><span class="keyword">using </span>output = vector&lt;4&gt;;</div>
-<div class="line"><span class="keyword">using </span>no_input = void;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
+<div class="line">  <span class="keyword">using </span>state = vector&lt;8&gt;;</div>
+<div class="line">  <span class="keyword">using </span>output = vector&lt;4&gt;;</div>
+<div class="line">  <span class="keyword">using </span>no_input = void;</div>
 <div class="line">  <span class="keyword">using </span>kalman = kalman&lt;state, output, no_input&gt;;</div>
 <div class="line"> </div>
 <div class="line">  kalman filter;</div>
@@ -247,7 +247,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> velocity_weight{1.F / 160.F};</div>
 <div class="line"> </div>
 <div class="line">  filter.p(<a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{</div>
-<div class="line">      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a>{2 * position_weight * initial_box(3),</div>
+<div class="line">      state{2 * position_weight * initial_box(3),</div>
 <div class="line">            2 * position_weight * initial_box(3), 1e-2F,</div>
 <div class="line">            2 * position_weight * initial_box(3),</div>
 <div class="line">            10 * velocity_weight * initial_box(3),</div>
@@ -272,7 +272,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line"> </div>
 <div class="line">  filter.q([position_weight, velocity_weight](</div>
 <div class="line">               <span class="keyword">const</span> <a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x) -&gt; <a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">kalman::process_uncertainty</a> {</div>
-<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">state</a>{position_weight * x(3),</div>
+<div class="line">    <span class="keywordflow">return</span> state{position_weight * x(3),</div>
 <div class="line">                 position_weight * x(3),</div>
 <div class="line">                 1e-2F,</div>
 <div class="line">                 position_weight * x(3),</div>
@@ -300,7 +300,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">  filter.r([position_weight](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x,</div>
 <div class="line">                             [[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> &amp;z)</div>
 <div class="line">               -&gt; <a id="a7" name="a7"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">kalman::output_uncertainty</a> {</div>
-<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">output</a>{position_weight * x(3), position_weight * x(3), 1e-1F,</div>
+<div class="line">    <span class="keywordflow">return</span> output{position_weight * x(3), position_weight * x(3), 1e-1F,</div>
 <div class="line">                  position_weight * x(3)}</div>
 <div class="line">        .array()</div>
 <div class="line">        .square()</div>
@@ -340,8 +340,6 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a501db5a452ddbfc97e548413bbae138a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">fcarouge::kalman::state_transition</a></div><div class="ttdeci">implementation::state_transition state_transition</div><div class="ttdoc">Type of the state transition matrix F.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00215">kalman.hpp:215</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ab967071c592e9ad25f61b03a4ef7fe6e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ab967071c592e9ad25f61b03a4ef7fe6e">fcarouge::kalman::output_model</a></div><div class="ttdeci">implementation::output_model output_model</div><div class="ttdoc">Type of the observation transition matrix H.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00220">kalman.hpp:220</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a7e29df93d84e25987f0c06c89a42b865"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a7e29df93d84e25987f0c06c89a42b865">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">vector&lt; 4 &gt; state</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00010">ekf_4x1x0_soaring.cpp:10</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a86794f6437ff542b83abc16de5df6373"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a86794f6437ff542b83abc16de5df6373">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::output</a></div><div class="ttdeci">float output</div><div class="ttdef"><b>Definition:</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00011">ekf_4x1x0_soaring.cpp:11</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_acd64ab811e0773f298e29a93f825c992"><div class="ttname"><a href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient</a></div><div class="ttdeci">internal::quotient&lt; Numerator, Denominator &gt; quotient</div><div class="ttdoc">The matrix type satisfying X * Row = Column.</div><div class="ttdef"><b>Definition:</b> <a href="utility_8hpp_source.xhtml#l00099">utility.hpp:99</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ae6a34b26f8067a57bfc5de22cb4b625a"><div class="ttname"><a href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">fcarouge::operator/</a></div><div class="ttdeci">constexpr auto operator/(const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; quotient&lt; Numerator, Denominator &gt;</div><div class="ttdef"><b>Definition:</b> <a href="update__linalg__xx0_8cpp_source.xhtml#l00055">update_linalg_xx0.cpp:55</a></div></div>
@@ -350,7 +348,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 30 2023 22:37:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Oct 31 2023 22:17:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

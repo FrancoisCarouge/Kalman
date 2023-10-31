@@ -119,12 +119,12 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = column_vector&lt;double, Size&gt;;</div>
-<div class="line"><span class="keyword">using </span>state = vector&lt;2&gt;;</div>
-<div class="line"><span class="keyword">using </span>output = double;</div>
-<div class="line"><span class="keyword">using </span>input = double;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// A 2x1x1 filter, constant acceleration dynamic model, no control, step time.</span></div>
+<div class="line">  <span class="keyword">using </span>state = vector&lt;2&gt;;</div>
+<div class="line">  <span class="keyword">using </span>output = double;</div>
+<div class="line">  <span class="keyword">using </span>input = double;</div>
 <div class="line">  <span class="keyword">using </span>kalman = kalman&lt;state, output, input, std::tuple&lt;&gt;,</div>
 <div class="line">                        std::tuple&lt;std::chrono::milliseconds&gt;&gt;;</div>
 <div class="line">  kalman filter;</div>
@@ -313,7 +313,7 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 30 2023 22:37:30 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Oct 31 2023 22:17:41 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
