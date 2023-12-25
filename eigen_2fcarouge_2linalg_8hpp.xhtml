@@ -123,16 +123,28 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algebraic Types</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p >Naive matrix.</p>
-<p >An array-of-arrays naive implementation matrix. The implementation is constexpr compatible.</p>
+<tr><td colspan="2"><div class="groupText"><p >Coroutine lazy matrix.</p>
+<p >The matrix is a generator. A coroutine range. Lazily generated elements and computed operations. Commonalities with ranges.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Type</td><td>The matrix element type. </td></tr>
     <tr><td class="paramname">Row</td><td>The number of rows of the matrix. </td></tr>
     <tr><td class="paramname">Column</td><td>The number of columns of the matrix. </td></tr>
+    <tr><td class="paramname">Copyable</td><td>Whether the instance is fully lazy or deeply clones itself on copies. Useful for named values. May not be commonly used.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Lifetime management with coroutine is tricky. The generators cannot use the lambda captures. The parameters of the lambda can however be copied to guarentee their lifetime for the usage of the generator. This technique is useful for initialization of the generator. </dd>
+<dd>
+A design decision for the composed generator to be mutable, traded off for const member function API. Similar to the mutable mutex member practice. </dd>
+<dd>
+Why genie? Because genies generate on demand.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo:</a></b></dt><dd><p class="startdd">Explore and compare performance. </p>
+<p class="interdd">Explore optimization of heap allocations? </p>
+<p class="interdd">Explore constexpr support? </p>
+<p class="interdd">Explore verification of lazy evaluation? </p>
+<p class="enddd">Remove unecessary empty paramaters when MSVC supports lambda without them. </p>
+</dd></dl>
 </div></td></tr>
 <tr class="memitem:a91e1f8a82696aa85761b7c29666235e6"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, auto Row = 1, auto Column = 1&gt; </td></tr>
 <tr class="memitem:a91e1f8a82696aa85761b7c29666235e6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">fcarouge::matrix</a> = Eigen::Matrix&lt; Type, Row, Column &gt;</td></tr>
@@ -171,7 +183,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c1845e5bf011c2136883d0d7188f50e9.xhtml">linalg</a></li><li class="navelem"><a class="el" href="dir_e6c5ed0f3a4dd8c39ba2a3155e1bbb7c.xhtml">eigen</a></li><li class="navelem"><a class="el" href="dir_171332e70b2c51067b72c12a9b837707.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="eigen_2fcarouge_2linalg_8hpp.xhtml">linalg.hpp</a></li>
-    <li class="footer">Generated on Sun Dec 24 2023 00:49:15 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Dec 25 2023 17:48:24 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
