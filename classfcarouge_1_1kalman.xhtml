@@ -193,9 +193,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adebb582755e6b597f1d4171bbc236cc3"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#adebb582755e6b597f1d4171bbc236cc3">z</a> () const -&gt; const <a class="el" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">output</a> &amp;</td></tr>
 <tr class="memdesc:adebb582755e6b597f1d4171bbc236cc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last observation column vector Z.  <a href="classfcarouge_1_1kalman.xhtml#adebb582755e6b597f1d4171bbc236cc3">More...</a><br /></td></tr>
 <tr class="separator:adebb582755e6b597f1d4171bbc236cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70ea593ac7161ef2e964642050d49574"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a70ea593ac7161ef2e964642050d49574">u</a> () const -&gt; const <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td></tr>
-<tr class="memdesc:a70ea593ac7161ef2e964642050d49574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last control column vector U.  <a href="classfcarouge_1_1kalman.xhtml#a70ea593ac7161ef2e964642050d49574">More...</a><br /></td></tr>
-<tr class="separator:a70ea593ac7161ef2e964642050d49574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8437cc125f8b8b26892287e3d620bd66"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a8437cc125f8b8b26892287e3d620bd66">u</a> () const -&gt; const <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a> &amp;requires(not std::is_same_v&lt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a>, void &gt;)</td></tr>
+<tr class="memdesc:a8437cc125f8b8b26892287e3d620bd66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last control column vector U.  <a href="classfcarouge_1_1kalman.xhtml#a8437cc125f8b8b26892287e3d620bd66">More...</a><br /></td></tr>
+<tr class="separator:a8437cc125f8b8b26892287e3d620bd66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ae3ff5bfaa781f0b64ed8e88d804508"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a> () const -&gt; const <a class="el" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">estimate_uncertainty</a> &amp;</td></tr>
 <tr class="memdesc:a3ae3ff5bfaa781f0b64ed8e88d804508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the estimated covariance matrix P.  <a href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">More...</a><br /></td></tr>
 <tr class="separator:a3ae3ff5bfaa781f0b64ed8e88d804508"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,14 +236,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a44efd1367cbb4d79d814440f3129a326"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a44efd1367cbb4d79d814440f3129a326">h</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
 <tr class="memdesc:a44efd1367cbb4d79d814440f3129a326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the observation transition matrix H.  <a href="classfcarouge_1_1kalman.xhtml#a44efd1367cbb4d79d814440f3129a326">More...</a><br /></td></tr>
 <tr class="separator:a44efd1367cbb4d79d814440f3129a326"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5af98d8612ba9d97ebb12ef8174093d6"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a5af98d8612ba9d97ebb12ef8174093d6">g</a> () const -&gt; const <a class="el" href="classfcarouge_1_1kalman.xhtml#a010511e4b649cc7248ba409784c9733d">input_control</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td></tr>
-<tr class="memdesc:a5af98d8612ba9d97ebb12ef8174093d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the control transition matrix G.  <a href="classfcarouge_1_1kalman.xhtml#a5af98d8612ba9d97ebb12ef8174093d6">More...</a><br /></td></tr>
-<tr class="separator:a5af98d8612ba9d97ebb12ef8174093d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9786c0248f3c6a3976a781144093480"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#af9786c0248f3c6a3976a781144093480">g</a> () -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a010511e4b649cc7248ba409784c9733d">input_control</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td></tr>
-<tr class="separator:af9786c0248f3c6a3976a781144093480"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa20cd8bfecec0929b48b8a47fdb63704"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aa20cd8bfecec0929b48b8a47fdb63704">g</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
-<tr class="memdesc:aa20cd8bfecec0929b48b8a47fdb63704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the control transition matrix G.  <a href="classfcarouge_1_1kalman.xhtml#aa20cd8bfecec0929b48b8a47fdb63704">More...</a><br /></td></tr>
-<tr class="separator:aa20cd8bfecec0929b48b8a47fdb63704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7760a2da6e3327402de2d1e4466daa"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#add7760a2da6e3327402de2d1e4466daa">g</a> () const -&gt; const <a class="el" href="classfcarouge_1_1kalman.xhtml#a010511e4b649cc7248ba409784c9733d">input_control</a> &amp;requires(not std::is_same_v&lt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a>, void &gt;)</td></tr>
+<tr class="memdesc:add7760a2da6e3327402de2d1e4466daa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the control transition matrix G.  <a href="classfcarouge_1_1kalman.xhtml#add7760a2da6e3327402de2d1e4466daa">More...</a><br /></td></tr>
+<tr class="separator:add7760a2da6e3327402de2d1e4466daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7cc150b03b4ce331222e6036236a473"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#af7cc150b03b4ce331222e6036236a473">g</a> () -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a010511e4b649cc7248ba409784c9733d">input_control</a> &amp;requires(not std::is_same_v&lt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a>, void &gt;)</td></tr>
+<tr class="separator:af7cc150b03b4ce331222e6036236a473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af119f4ba620110b526c06e1e1d1e36e2"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#af119f4ba620110b526c06e1e1d1e36e2">g</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
+<tr class="memdesc:af119f4ba620110b526c06e1e1d1e36e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the control transition matrix G.  <a href="classfcarouge_1_1kalman.xhtml#af119f4ba620110b526c06e1e1d1e36e2">More...</a><br /></td></tr>
+<tr class="separator:af119f4ba620110b526c06e1e1d1e36e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e7215ed1fde88e063b1bd59d3c8c6ae"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">k</a> () const -&gt; const <a class="el" href="classfcarouge_1_1kalman.xhtml#add9cb224a0e84df8125f5120e967d3ce">gain</a> &amp;</td></tr>
 <tr class="memdesc:a3e7215ed1fde88e063b1bd59d3c8c6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the gain matrix K.  <a href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">More...</a><br /></td></tr>
 <tr class="separator:a3e7215ed1fde88e063b1bd59d3c8c6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -880,8 +880,8 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 </div>
 </div>
-<a id="af9786c0248f3c6a3976a781144093480" name="af9786c0248f3c6a3976a781144093480"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9786c0248f3c6a3976a781144093480">&#9670;&#160;</a></span>g() <span class="overload">[1/3]</span></h2>
+<a id="af7cc150b03b4ce331222e6036236a473" name="af7cc150b03b4ce331222e6036236a473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7cc150b03b4ce331222e6036236a473">&#9670;&#160;</a></span>g() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -895,7 +895,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
           <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::g </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a010511e4b649cc7248ba409784c9733d">input_control</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a010511e4b649cc7248ba409784c9733d">input_control</a> &amp;requires(not std::is_same_v&lt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a>, void &gt;)</td>
         </tr>
       </table>
   </td>
@@ -907,8 +907,8 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 </div>
 </div>
-<a id="a5af98d8612ba9d97ebb12ef8174093d6" name="a5af98d8612ba9d97ebb12ef8174093d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5af98d8612ba9d97ebb12ef8174093d6">&#9670;&#160;</a></span>g() <span class="overload">[2/3]</span></h2>
+<a id="add7760a2da6e3327402de2d1e4466daa" name="add7760a2da6e3327402de2d1e4466daa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add7760a2da6e3327402de2d1e4466daa">&#9670;&#160;</a></span>g() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -922,7 +922,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
           <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::g </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a010511e4b649cc7248ba409784c9733d">input_control</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a010511e4b649cc7248ba409784c9733d">input_control</a> &amp;requires(not std::is_same_v&lt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a>, void &gt;)</td>
         </tr>
       </table>
   </td>
@@ -939,8 +939,8 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 </div>
 </div>
-<a id="aa20cd8bfecec0929b48b8a47fdb63704" name="aa20cd8bfecec0929b48b8a47fdb63704"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa20cd8bfecec0929b48b8a47fdb63704">&#9670;&#160;</a></span>g() <span class="overload">[3/3]</span></h2>
+<a id="af119f4ba620110b526c06e1e1d1e36e2" name="af119f4ba620110b526c06e1e1d1e36e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af119f4ba620110b526c06e1e1d1e36e2">&#9670;&#160;</a></span>g() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1707,8 +1707,8 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 
 </div>
 </div>
-<a id="a70ea593ac7161ef2e964642050d49574" name="a70ea593ac7161ef2e964642050d49574"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70ea593ac7161ef2e964642050d49574">&#9670;&#160;</a></span>u()</h2>
+<a id="a8437cc125f8b8b26892287e3d620bd66" name="a8437cc125f8b8b26892287e3d620bd66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8437cc125f8b8b26892287e3d620bd66">&#9670;&#160;</a></span>u()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1722,7 +1722,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
           <td class="memname">constexpr auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::u </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a> &amp;requires(not std::is_same_v&lt; Input, void &gt;)</td>
+          <td> const -&gt;  const <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a> &amp;requires(not std::is_same_v&lt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a>, void &gt;)</td>
         </tr>
       </table>
   </td>
@@ -2031,7 +2031,7 @@ template&lt;typename State  = double, typename Output  = double, typename Input 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Fri Dec 29 2023 00:36:42 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Fri Dec 29 2023 04:16:07 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
