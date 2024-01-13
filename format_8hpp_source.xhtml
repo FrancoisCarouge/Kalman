@@ -168,7 +168,7 @@ $(document).ready(function(){initNavTree('format_8hpp_source.xhtml',''); initRes
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    format_context.advance_to(</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        format_to(format_context.out(), R<span class="stringliteral">&quot;({{&quot;f&quot;: {}, )&quot;, filter.f()));</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="stringliteral">    </span><span class="keywordflow">if</span> <span class="keyword">constexpr</span> (not std::is_same_v&lt;Input, void&gt;) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="stringliteral">    </span><span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { filter.g(); }) {</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      format_context.advance_to(</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>          format_to(format_context.out(), R<span class="stringliteral">&quot;(&quot;g&quot;: {}, )&quot;, filter.g()));</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="stringliteral">    }</span></div>
@@ -193,7 +193,7 @@ $(document).ready(function(){initNavTree('format_8hpp_source.xhtml',''); initRes
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="stringliteral">                                        R</span><span class="stringliteral">&quot;(&quot;q&quot;: {}, &quot;r&quot;: {}, &quot;s&quot;: {}, )&quot;,</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="stringliteral">                                        filter.q(), filter.r(), filter.s()));</span></div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="stringliteral">    </span><span class="keywordflow">if</span> <span class="keyword">constexpr</span> (not std::is_same_v&lt;Input, void&gt;) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="stringliteral">    </span><span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> { filter.u(); }) {</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      format_context.advance_to(</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>          format_to(format_context.out(), R<span class="stringliteral">&quot;(&quot;u&quot;: {}, )&quot;, filter.u()));</span></div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="stringliteral">    }</span></div>
@@ -230,7 +230,7 @@ $(document).ready(function(){initNavTree('format_8hpp_source.xhtml',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="format_8hpp.xhtml">format.hpp</a></li>
-    <li class="footer">Generated on Fri Jan 12 2024 00:47:38 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Jan 13 2024 02:44:19 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
