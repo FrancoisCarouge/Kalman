@@ -71,7 +71,7 @@ struct std::formatter<
     format_context.advance_to(
         format_to(format_context.out(), R"({{"f": {}, )", filter.f()));
 
-    if constexpr (not std::is_same_v<Input, void>) {
+    if constexpr (requires { filter.g(); }) {
       format_context.advance_to(
           format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
@@ -96,7 +96,7 @@ struct std::formatter<
                                         R"("q": {}, "r": {}, "s": {}, )",
                                         filter.q(), filter.r(), filter.s()));
 
-    if constexpr (not std::is_same_v<Input, void>) {
+    if constexpr (requires { filter.u(); }) {
       format_context.advance_to(
           format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }
