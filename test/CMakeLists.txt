@@ -44,7 +44,8 @@ foreach(
   "kalman_format_arguments.cpp"
   "kalman_format_float_1x1x1.cpp"
   "kalman_format.cpp"
-  "kalman_h.cpp")
+  "kalman_h.cpp"
+  "kalman_println.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
   set_target_properties(
@@ -52,8 +53,8 @@ foreach(
     PROPERTIES CXX_STANDARD 23
                CXX_EXTENSIONS OFF
                INTERPROCEDURAL_OPTIMIZATION TRUE)
-  target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main
-                                                           kalman_options)
+  target_link_libraries(kalman_test_${NAME}_driver
+                        PRIVATE kalman kalman_main kalman_print kalman_options)
   separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
   add_test(NAME kalman_test_${NAME}
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
