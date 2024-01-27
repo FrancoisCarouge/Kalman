@@ -43,8 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies printing compiles for single-dimension filters without input
-//! control or additional arguments.
+//! @test Verifies printing the default filter compiles.
 [[maybe_unused]] auto test{[] {
   kalman filter;
 
