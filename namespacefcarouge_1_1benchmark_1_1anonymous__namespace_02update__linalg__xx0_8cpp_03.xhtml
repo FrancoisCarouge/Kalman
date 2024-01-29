@@ -108,9 +108,9 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4922da14e25c9cddd6f3b451840de62d"><td class="memTemplParams" colspan="2">template&lt;auto StateSize, auto OutputSize&gt; </td></tr>
-<tr class="memitem:a4922da14e25c9cddd6f3b451840de62d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#a4922da14e25c9cddd6f3b451840de62d">bench</a> (::benchmark::State &amp;state)</td></tr>
-<tr class="separator:a4922da14e25c9cddd6f3b451840de62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad815f323e5a14424caa6a63c1b22f296"><td class="memTemplParams" colspan="2">template&lt;auto StateSize, auto OutputSize&gt; </td></tr>
+<tr class="memitem:ad815f323e5a14424caa6a63c1b22f296"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ad815f323e5a14424caa6a63c1b22f296">bench</a> (::benchmark::State &amp;benchmark_state)</td></tr>
+<tr class="separator:ad815f323e5a14424caa6a63c1b22f296"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1ab8c595b8ad8d298b8fe6492b51c40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ab1ab8c595b8ad8d298b8fe6492b51c40">Name</a> (&quot;update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0&quot;) -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics(&quot;min&quot;, [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics(&quot;max&quot;, [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</td></tr>
 <tr class="separator:ab1ab8c595b8ad8d298b8fe6492b51c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -134,8 +134,8 @@ template&lt;auto Size&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a4922da14e25c9cddd6f3b451840de62d" name="a4922da14e25c9cddd6f3b451840de62d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4922da14e25c9cddd6f3b451840de62d">&#9670;&#160;</a></span>bench()</h2>
+<a id="ad815f323e5a14424caa6a63c1b22f296" name="ad815f323e5a14424caa6a63c1b22f296"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad815f323e5a14424caa6a63c1b22f296">&#9670;&#160;</a></span>bench()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +146,7 @@ template&lt;auto StateSize, auto OutputSize&gt; </div>
           <td class="memname">void fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::bench </td>
           <td>(</td>
           <td class="paramtype">::benchmark::State &amp;&#160;</td>
-          <td class="paramname"><em>state</em></td><td>)</td>
+          <td class="paramname"><em>benchmark_state</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -154,7 +154,7 @@ template&lt;auto StateSize, auto OutputSize&gt; </div>
 <dl class="section user"><dt>Benchmark</dt><dd>Measure the update of the filter for different dimensions of states and outputs with the Eigen linear algebra backend. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="update__linalg__xx0_8cpp_source.xhtml#l00070">70</a> of file <a class="el" href="update__linalg__xx0_8cpp_source.xhtml">update_linalg_xx0.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                                  {</div>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>                                            {</div>
 <div class="line"><span class="lineno">   71</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman&lt;vector&lt;StateSize&gt;</a>, <a class="code hl_typedef" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#a03d8a2cdc17a1b98d47374b8f3e79163">vector&lt;OutputSize&gt;</a>, <span class="keywordtype">void</span>&gt;;</div>
 <div class="line"><span class="lineno">   72</span> </div>
 <div class="line"><span class="lineno">   73</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
@@ -162,7 +162,7 @@ template&lt;auto StateSize, auto OutputSize&gt; </div>
 <div class="line"><span class="lineno">   75</span>  std::mt19937 random_generator{random_device()};</div>
 <div class="line"><span class="lineno">   76</span>  std::uniform_real_distribution&lt;float&gt; uniformly_distributed;</div>
 <div class="line"><span class="lineno">   77</span> </div>
-<div class="line"><span class="lineno">   78</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
+<div class="line"><span class="lineno">   78</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : benchmark_state) {</div>
 <div class="line"><span class="lineno">   79</span>    <span class="keywordtype">float</span> zv[OutputSize];</div>
 <div class="line"><span class="lineno">   80</span> </div>
 <div class="line"><span class="lineno">   81</span>    internal::for_constexpr&lt;0, OutputSize, 1&gt;(</div>
@@ -180,9 +180,10 @@ template&lt;auto StateSize, auto OutputSize&gt; </div>
 <div class="line"><span class="lineno">   93</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   94</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
 <div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>    state.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
-<div class="line"><span class="lineno">   97</span>  }</div>
-<div class="line"><span class="lineno">   98</span>}</div>
+<div class="line"><span class="lineno">   96</span>    benchmark_state.SetIterationTime(</div>
+<div class="line"><span class="lineno">   97</span>        std::chrono::duration&lt;double&gt;{end - start}.count());</div>
+<div class="line"><span class="lineno">   98</span>  }</div>
+<div class="line"><span class="lineno">   99</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00166">kalman.hpp:166</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b72b81b1b5788efc1c21cc9ef9d60a2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">fcarouge::kalman::output</a></div><div class="ttdeci">implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00194">kalman.hpp:194</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af971a3cfb03099d42c99e6a165c56ad5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
@@ -194,7 +195,7 @@ template&lt;auto StateSize, auto OutputSize&gt; </div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03_a4922da14e25c9cddd6f3b451840de62d_cgraph.svg" width="392" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03_ad815f323e5a14424caa6a63c1b22f296_cgraph.svg" width="392" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -225,7 +226,7 @@ template&lt;auto StateSize, auto OutputSize&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml">anonymous_namespace{update_linalg_xx0.cpp}</a></li>
-    <li class="footer">Generated on Mon Jan 29 2024 03:58:42 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Jan 29 2024 05:34:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

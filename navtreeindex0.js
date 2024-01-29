@@ -5,7 +5,7 @@ var NAVTREEINDEX0 =
 "annotated.xhtml":[10,0],
 "baseline_8cpp.xhtml":[11,0,0,1],
 "baseline_8cpp.xhtml#a5ffca3bb51df35351a30eb01ea65f9b7":[11,0,0,1,1],
-"baseline_8cpp.xhtml#a8b7d9cbc17e56e2d70aeed5d93a6410e":[11,0,0,1,0],
+"baseline_8cpp.xhtml#a7e540e82a4b39d860abbc711f590a352":[11,0,0,1,0],
 "baseline_8cpp_source.xhtml":[11,0,0,1],
 "benchmark_8hpp.xhtml":[11,0,0,0,0],
 "benchmark_8hpp.xhtml#a38b91e941c8745d9bd6f59c93358783e":[11,0,0,0,0,0],

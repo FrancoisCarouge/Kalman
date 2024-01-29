@@ -101,14 +101,14 @@ $(document).ready(function(){initNavTree('namespacefcarouge_1_1benchmark_1_1anon
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a453f0ffca8059675ac4b4a114d0f5e73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03.xhtml#a453f0ffca8059675ac4b4a114d0f5e73">bench</a> (::benchmark::State &amp;state)</td></tr>
-<tr class="separator:a453f0ffca8059675ac4b4a114d0f5e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e0e019aa29372429c91fcabc71745c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03.xhtml#a0e0e019aa29372429c91fcabc71745c5">bench</a> (::benchmark::State &amp;benchmark_state)</td></tr>
+<tr class="separator:a0e0e019aa29372429c91fcabc71745c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e85350c5d924ed0a854ed1f8d106f4b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03.xhtml#a8e85350c5d924ed0a854ed1f8d106f4b">Name</a> (&quot;predict_1x1x1&quot;) -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics(&quot;min&quot;, [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics(&quot;max&quot;, [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</td></tr>
 <tr class="separator:a8e85350c5d924ed0a854ed1f8d106f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a453f0ffca8059675ac4b4a114d0f5e73" name="a453f0ffca8059675ac4b4a114d0f5e73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a453f0ffca8059675ac4b4a114d0f5e73">&#9670;&#160;</a></span>bench()</h2>
+<a id="a0e0e019aa29372429c91fcabc71745c5" name="a0e0e019aa29372429c91fcabc71745c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e0e019aa29372429c91fcabc71745c5">&#9670;&#160;</a></span>bench()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,7 +117,7 @@ Functions</h2></td></tr>
           <td class="memname">void fcarouge::benchmark::anonymous_namespace{predict_1x1x1.cpp}::bench </td>
           <td>(</td>
           <td class="paramtype">::benchmark::State &amp;&#160;</td>
-          <td class="paramname"><em>state</em></td><td>)</td>
+          <td class="paramname"><em>benchmark_state</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -125,7 +125,7 @@ Functions</h2></td></tr>
 <dl class="section user"><dt>Benchmark</dt><dd>Measure predict, empty benchmark performance. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="predict__1x1x1_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="predict__1x1x1_8cpp_source.xhtml">predict_1x1x1.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                  {</div>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>                                            {</div>
 <div class="line"><span class="lineno">   52</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman&lt;float, float, float&gt;</a>;</div>
 <div class="line"><span class="lineno">   53</span> </div>
 <div class="line"><span class="lineno">   54</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
@@ -133,7 +133,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   56</span>  std::mt19937 random_generator{random_device()};</div>
 <div class="line"><span class="lineno">   57</span>  std::uniform_real_distribution&lt;float&gt; uniformly_distributed;</div>
 <div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
+<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : benchmark_state) {</div>
 <div class="line"><span class="lineno">   60</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> u{uniformly_distributed(random_generator)};</div>
 <div class="line"><span class="lineno">   61</span> </div>
 <div class="line"><span class="lineno">   62</span>    ::benchmark::ClobberMemory();</div>
@@ -144,9 +144,10 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   67</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   68</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
 <div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>    state.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
-<div class="line"><span class="lineno">   71</span>  }</div>
-<div class="line"><span class="lineno">   72</span>}</div>
+<div class="line"><span class="lineno">   70</span>    benchmark_state.SetIterationTime(</div>
+<div class="line"><span class="lineno">   71</span>        std::chrono::duration&lt;double&gt;{end - start}.count());</div>
+<div class="line"><span class="lineno">   72</span>  }</div>
+<div class="line"><span class="lineno">   73</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00166">kalman.hpp:166</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b72b81b1b5788efc1c21cc9ef9d60a2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">fcarouge::kalman::output</a></div><div class="ttdeci">implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition:</b> <a href="kalman_8hpp_source.xhtml#l00194">kalman.hpp:194</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1a54f32cfaafea2d586a5f7b28898fec"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div></div>
@@ -157,7 +158,7 @@ Functions</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03_a453f0ffca8059675ac4b4a114d0f5e73_cgraph.svg" width="402" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03_a0e0e019aa29372429c91fcabc71745c5_cgraph.svg" width="402" height="66"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -187,7 +188,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03.xhtml">anonymous_namespace{predict_1x1x1.cpp}</a></li>
-    <li class="footer">Generated on Mon Jan 29 2024 03:58:42 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Jan 29 2024 05:34:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

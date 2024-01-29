@@ -101,14 +101,14 @@ $(document).ready(function(){initNavTree('namespacefcarouge_1_1benchmark_1_1anon
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8b7d9cbc17e56e2d70aeed5d93a6410e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#a8b7d9cbc17e56e2d70aeed5d93a6410e">bench</a> (::benchmark::State &amp;state)</td></tr>
-<tr class="separator:a8b7d9cbc17e56e2d70aeed5d93a6410e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e540e82a4b39d860abbc711f590a352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#a7e540e82a4b39d860abbc711f590a352">bench</a> (::benchmark::State &amp;benchmark_state)</td></tr>
+<tr class="separator:a7e540e82a4b39d860abbc711f590a352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ffca3bb51df35351a30eb01ea65f9b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#a5ffca3bb51df35351a30eb01ea65f9b7">Name</a> (&quot;baseline&quot;) -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics(&quot;min&quot;, [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics(&quot;max&quot;, [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</td></tr>
 <tr class="separator:a5ffca3bb51df35351a30eb01ea65f9b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a8b7d9cbc17e56e2d70aeed5d93a6410e" name="a8b7d9cbc17e56e2d70aeed5d93a6410e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b7d9cbc17e56e2d70aeed5d93a6410e">&#9670;&#160;</a></span>bench()</h2>
+<a id="a7e540e82a4b39d860abbc711f590a352" name="a7e540e82a4b39d860abbc711f590a352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e540e82a4b39d860abbc711f590a352">&#9670;&#160;</a></span>bench()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,7 +117,7 @@ Functions</h2></td></tr>
           <td class="memname">void fcarouge::benchmark::anonymous_namespace{baseline.cpp}::bench </td>
           <td>(</td>
           <td class="paramtype">::benchmark::State &amp;&#160;</td>
-          <td class="paramname"><em>state</em></td><td>)</td>
+          <td class="paramname"><em>benchmark_state</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -125,8 +125,8 @@ Functions</h2></td></tr>
 <dl class="section user"><dt>Benchmark</dt><dd>Measure baseline, empty benchmark performance. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="baseline_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="baseline_8cpp_source.xhtml">baseline.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>                                  {</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : state) {</div>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                            {</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : benchmark_state) {</div>
 <div class="line"><span class="lineno">   51</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   52</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
 <div class="line"><span class="lineno">   53</span> </div>
@@ -135,9 +135,10 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   56</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   57</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
 <div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>    state.SetIterationTime(std::chrono::duration&lt;double&gt;{end - start}.count());</div>
-<div class="line"><span class="lineno">   60</span>  }</div>
-<div class="line"><span class="lineno">   61</span>}</div>
+<div class="line"><span class="lineno">   59</span>    benchmark_state.SetIterationTime(</div>
+<div class="line"><span class="lineno">   60</span>        std::chrono::duration&lt;double&gt;{end - start}.count());</div>
+<div class="line"><span class="lineno">   61</span>  }</div>
+<div class="line"><span class="lineno">   62</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="baseline_8cpp_source.xhtml#l00049">bench()</a>.</p>
 
@@ -147,7 +148,7 @@ Functions</h2></td></tr>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03_a8b7d9cbc17e56e2d70aeed5d93a6410e_cgraph.svg" width="179" height="90"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03_a7e540e82a4b39d860abbc711f590a352_cgraph.svg" width="179" height="90"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -155,7 +156,7 @@ Functions</h2></td></tr>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03_a8b7d9cbc17e56e2d70aeed5d93a6410e_icgraph.svg" width="179" height="90"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03_a7e540e82a4b39d860abbc711f590a352_icgraph.svg" width="179" height="90"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -185,7 +186,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml">anonymous_namespace{baseline.cpp}</a></li>
-    <li class="footer">Generated on Mon Jan 29 2024 03:58:42 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Jan 29 2024 05:34:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
