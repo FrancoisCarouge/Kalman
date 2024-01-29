@@ -46,8 +46,8 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure baseline, empty benchmark performance.
-void bench(::benchmark::State &state) {
-  for (auto _ : state) {
+void bench(::benchmark::State &benchmark_state) {
+  for (auto _ : benchmark_state) {
     ::benchmark::ClobberMemory();
     const auto start{clock::now()};
 
@@ -56,7 +56,8 @@ void bench(::benchmark::State &state) {
     ::benchmark::ClobberMemory();
     const auto end{clock::now()};
 
-    state.SetIterationTime(std::chrono::duration<double>{end - start}.count());
+    benchmark_state.SetIterationTime(
+        std::chrono::duration<double>{end - start}.count());
   }
 }
 
