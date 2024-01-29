@@ -58,7 +58,7 @@ template <auto Size> using vector = column_vector<float, Size>;
 //! @benchmark Measure the prediction of the filter for different dimensions of
 //! states and inputs with the Eigen linear algebra backend.
 template <auto StateSize, auto InputSize>
-void bench(::benchmark::State &state) {
+void bench(::benchmark::State &benchmark_state) {
   using kalman = kalman<vector<StateSize>, float, vector<InputSize>>;
 
   kalman filter;
@@ -66,7 +66,7 @@ void bench(::benchmark::State &state) {
   std::mt19937 random_generator{random_device()};
   std::uniform_real_distribution<float> uniformly_distributed;
 
-  for (auto _ : state) {
+  for (auto _ : benchmark_state) {
     float uv[InputSize];
 
     internal::for_constexpr<0, InputSize, 1>(
@@ -84,7 +84,8 @@ void bench(::benchmark::State &state) {
     ::benchmark::ClobberMemory();
     const auto end{clock::now()};
 
-    state.SetIterationTime(std::chrono::duration<double>{end - start}.count());
+    benchmark_state.SetIterationTime(
+        std::chrono::duration<double>{end - start}.count());
   }
 }
 

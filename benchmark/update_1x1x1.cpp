@@ -48,7 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure update, empty benchmark performance.
-void bench(::benchmark::State &state) {
+void bench(::benchmark::State &benchmark_state) {
   using kalman = kalman<float, float, float>;
 
   kalman filter;
@@ -56,7 +56,7 @@ void bench(::benchmark::State &state) {
   std::mt19937 random_generator{random_device()};
   std::uniform_real_distribution<float> uniformly_distributed;
 
-  for (auto _ : state) {
+  for (auto _ : benchmark_state) {
     const typename kalman::output z{uniformly_distributed(random_generator)};
 
     ::benchmark::ClobberMemory();
@@ -67,7 +67,8 @@ void bench(::benchmark::State &state) {
     ::benchmark::ClobberMemory();
     const auto end{clock::now()};
 
-    state.SetIterationTime(std::chrono::duration<double>{end - start}.count());
+    benchmark_state.SetIterationTime(
+        std::chrono::duration<double>{end - start}.count());
   }
 }
 
