@@ -22,7 +22,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
     - name: Doxygen
-      uses: mattnotmitt/doxygen-action@411df0c62acb5b96b8a93d93a7bf4b753c47ea05 # v1.9.5
+      uses: mattnotmitt/doxygen-action@cbe72c8e402e8a3faa1f0b247ef90aa6c8e4ce74 # v1.9.8
       with:
         working-directory: 'documentation'
         doxyfile-path: 'Doxyfile'
