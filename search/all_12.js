@@ -1,11 +1,21 @@
 var searchData=
 [
-  ['s_0',['s',['../classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b',1,'fcarouge::kalman']]],
-  ['sample_1',['sample',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a53cc27ea160c76f1ea37a29541bd98b5',1,'fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::sample()'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height_8cpp_03.xhtml#a3bbe6871b5c27d5c43fb1594d959f73d',1,'fcarouge::sample::anonymous_namespace{kf_1x1x0_building_height.cpp}::sample()'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03.xhtml#aee7886fbdd52abf0585680fdbaf27f7d',1,'fcarouge::sample::anonymous_namespace{kf_1x1x0_liquid_temperature.cpp}::sample()'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__dog__position_8cpp_03.xhtml#ac888bcefb0bef1489b5a574c50a5e455',1,'fcarouge::sample::anonymous_namespace{kf_1x1x1_dog_position.cpp}::sample()'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#a8a72f3aea780587350d7527cfac09b9d',1,'fcarouge::sample::anonymous_namespace{kf_2x1x1_rocket_altitude.cpp}::sample()'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#a01e191b965cbf1142f550229d05c2197',1,'fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::sample()'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a0f2a4b132c87075df61a1491719e116a',1,'fcarouge::sample::anonymous_namespace{kf_8x4x0_deep_sort_bounding_box.cpp}::sample()']]],
-  ['security_20policy_2',['Security Policy',['../md__github_workspace__s_e_c_u_r_i_t_y.xhtml',1,'']]],
-  ['security_2emd_3',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]],
-  ['sell_4',['sell',['../_l_i_c_e_n_s_e_8txt.xhtml#a1511c066117bdf4e4503bbd2d0684b98',1,'LICENSE.txt']]],
-  ['software_5',['software',['../_l_i_c_e_n_s_e_8txt.xhtml#a2d3d4ad21b42c0ca06fd47db4f0d44da',1,'LICENSE.txt']]],
-  ['state_6',['state',['../classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130',1,'fcarouge::kalman']]],
-  ['state_5ftransition_7',['state_transition',['../classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a',1,'fcarouge::kalman']]]
+  ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508',1,'fcarouge::kalman::p() const -&gt; const estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a7376e78189711ae8c1e304b2a7cde703',1,'fcarouge::kalman::p() -&gt; estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a6a61e7dfc8c8de4ef5bcb126417f9d98',1,'fcarouge::kalman::p(const auto &amp;value, const auto &amp;...values)']]],
+  ['pack_1',['pack',['../namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27',1,'fcarouge']]],
+  ['packages_2',['Installation Packages',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#autotoc_md18',1,'']]],
+  ['parameters_3',['Template Parameters',['../index.xhtml#autotoc_md31',1,'']]],
+  ['parse_4',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#ab75415d6c64f84ed42e54ea33b3fd87b',1,'std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;, Char &gt;']]],
+  ['party_20acknowledgement_5',['Third Party Acknowledgement',['../index.xhtml#autotoc_md46',1,'']]],
+  ['performance_6',['Performance',['../index.xhtml#autotoc_md41',1,'']]],
+  ['pledge_7',['Our Pledge',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md8',1,'']]],
+  ['policy_8',['policy',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml',1,'Security Policy'],['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md7',1,'Security Policy']]],
+  ['predict_9',['predict',['../classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103',1,'fcarouge::kalman::predict() const'],['../classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec',1,'fcarouge::kalman::predict(const auto &amp;...arguments)']]],
+  ['predict_5f1x1x0_2ecpp_10',['predict_1x1x0.cpp',['../predict__1x1x0_8cpp.xhtml',1,'']]],
+  ['predict_5f1x1x1_2ecpp_11',['predict_1x1x1.cpp',['../predict__1x1x1_8cpp.xhtml',1,'']]],
+  ['predict_5flinalg_5fx1x_2ecpp_12',['predict_linalg_x1x.cpp',['../predict__linalg__x1x_8cpp.xhtml',1,'']]],
+  ['process_5funcertainty_13',['process_uncertainty',['../classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c',1,'fcarouge::kalman']]],
+  ['projects_14',['Projects',['../index.xhtml#autotoc_md45',1,'']]],
+  ['promise_5ftype_15',['promise_type',['../structfcarouge_1_1matrix.xhtml#a59cdd2df33a514becc638338dad14c89',1,'fcarouge::matrix']]],
+  ['publish_16',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#a1fc07cd1fdadcf7b30357c0b2d236557',1,'LICENSE.txt']]],
+  ['purpose_17',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#aea4c9abf287d8497048a148e21ce763d',1,'LICENSE.txt']]]
 ];

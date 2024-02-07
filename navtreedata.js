@@ -25,75 +25,37 @@
 var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
-    [ "Kalman Filter", "index.xhtml", [
-      [ "Examples", "index.xhtml#autotoc_md22", [
-        [ "1x1 Constant System Dynamic Model Filter", "index.xhtml#autotoc_md23", null ],
-        [ "6x2 Constant Acceleration Dynamic Model Filter", "index.xhtml#autotoc_md24", null ],
-        [ "4x1 Nonlinear Dynamic Model Extended Filter", "index.xhtml#autotoc_md25", null ],
-        [ "Other Examples", "index.xhtml#autotoc_md26", null ]
-      ] ],
-      [ "Installation", "index.xhtml#autotoc_md27", null ],
-      [ "Reference", "index.xhtml#autotoc_md28", [
-        [ "Class kalman", "index.xhtml#autotoc_md29", [
-          [ "Declaration", "index.xhtml#autotoc_md30", null ],
-          [ "Template Parameters", "index.xhtml#autotoc_md31", null ],
-          [ "Member Types", "index.xhtml#autotoc_md32", null ],
-          [ "Member Functions", "index.xhtml#autotoc_md33", [
-            [ "Characteristics", "index.xhtml#autotoc_md34", null ],
-            [ "Modifiers", "index.xhtml#autotoc_md35", null ]
-          ] ]
-        ] ],
-        [ "Format", "index.xhtml#autotoc_md36", null ]
-      ] ],
-      [ "Considerations", "index.xhtml#autotoc_md37", [
-        [ "Motivations", "index.xhtml#autotoc_md38", null ],
-        [ "Selected Tradeoffs", "index.xhtml#autotoc_md39", null ],
-        [ "Lessons Learned", "index.xhtml#autotoc_md40", null ],
-        [ "Performance", "index.xhtml#autotoc_md41", null ]
-      ] ],
-      [ "Resources", "index.xhtml#autotoc_md42", [
-        [ "Definitions", "index.xhtml#autotoc_md43", null ],
-        [ "Articles", "index.xhtml#autotoc_md44", null ],
-        [ "Projects", "index.xhtml#autotoc_md45", null ],
-        [ "Third Party Acknowledgement", "index.xhtml#autotoc_md46", null ],
-        [ "Sponsors", "index.xhtml#autotoc_md47", [
-          [ "Corporations & Institutions", "index.xhtml#autotoc_md48", null ],
-          [ "Individuals", "index.xhtml#autotoc_md49", null ]
-        ] ]
-      ] ],
-      [ "Continuous Integration & Deployment Actions", "index.xhtml#autotoc_md50", null ],
-      [ "License", "index.xhtml#autotoc_md51", null ]
+    [ "Kalman Filter", "index.xhtml", "index" ],
+    [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
+      [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#autotoc_md1", null ]
     ] ],
-    [ "Benchmarks", "md__github_workspace_benchmark__r_e_a_d_m_e.xhtml", [
-      [ "Results", "md__github_workspace_benchmark__r_e_a_d_m_e.xhtml#autotoc_md1", null ]
+    [ "Contributor Covenant Code of Conduct", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
+      [ "Our Pledge", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
+      [ "Our Standards", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md9", null ],
+      [ "Our Responsibilities", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md10", null ],
+      [ "Scope", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md11", null ],
+      [ "Enforcement", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md12", null ],
+      [ "Attribution", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md13", null ]
     ] ],
-    [ "Contributor Covenant Code of Conduct", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml", [
-      [ "Our Pledge", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md3", null ],
-      [ "Our Standards", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md5", null ],
-      [ "Our Responsibilities", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md6", null ],
-      [ "Scope", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md7", null ],
-      [ "Enforcement", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md8", null ],
-      [ "Attribution", "md__github_workspace__c_o_d_e__o_f__c_o_n_d_u_c_t.xhtml#autotoc_md11", null ]
+    [ "Contributing to Kalman", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
+      [ "Code of Conduct", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md4", null ],
+      [ "Reporting Bugs", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md5", null ],
+      [ "Requesting Features", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md6", null ],
+      [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md7", null ]
     ] ],
-    [ "Contributing to Kalman", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
-      [ "Code of Conduct", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md9", null ],
-      [ "Reporting Bugs", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md10", null ],
-      [ "Requesting Features", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md12", null ],
-      [ "Security Policy", "md__github_workspace__c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md13", null ]
-    ] ],
-    [ "Installation", "md__github_workspace__i_n_s_t_a_l_l.xhtml", [
-      [ "Development Build & Run", "md__github_workspace__i_n_s_t_a_l_l.xhtml#autotoc_md15", [
-        [ "Tests & Samples", "md__github_workspace__i_n_s_t_a_l_l.xhtml#autotoc_md16", null ],
-        [ "Benchmarks", "md__github_workspace__i_n_s_t_a_l_l.xhtml#autotoc_md17", null ],
-        [ "Installation Packages", "md__github_workspace__i_n_s_t_a_l_l.xhtml#autotoc_md18", [
-          [ "Linux", "md__github_workspace__i_n_s_t_a_l_l.xhtml#autotoc_md19", null ],
-          [ "Windows", "md__github_workspace__i_n_s_t_a_l_l.xhtml#autotoc_md20", null ]
+    [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
+      [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#autotoc_md15", [
+        [ "Tests & Samples", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#autotoc_md16", null ],
+        [ "Benchmarks", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#autotoc_md17", null ],
+        [ "Installation Packages", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#autotoc_md18", [
+          [ "Linux", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#autotoc_md19", null ],
+          [ "Windows", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#autotoc_md20", null ]
         ] ]
       ] ]
     ] ],
-    [ "Security Policy", "md__github_workspace__s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__github_workspace__s_e_c_u_r_i_t_y.xhtml#autotoc_md53", null ],
-      [ "Reporting a Vulnerability", "md__github_workspace__s_e_c_u_r_i_t_y.xhtml#autotoc_md54", null ]
+    [ "Security Policy", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml", [
+      [ "Supported Versions", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#autotoc_md53", null ],
+      [ "Reporting a Vulnerability", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#autotoc_md54", null ]
     ] ],
     [ "Todo List", "todo.xhtml", null ],
     [ "Test List", "test.xhtml", null ],
@@ -132,9 +94,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "algorithm_8hpp.xhtml",
-"kalman__constructor__default__5x1x3_8cpp.xhtml#ab014392d5339532eccbf32170d56b332",
-"namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca",
-"structfcarouge_1_1matrix.xhtml#aaf4b255fa2bf4cfaadfd808e6fb5af83"
+"kalman__constructor__default__5x4x0_8cpp.xhtml",
+"namespacefcarouge_1_1benchmark.xhtml#a38b91e941c8745d9bd6f59c93358783e",
+"structfcarouge_1_1matrix.xhtml#ab3ac05d0aeb1057133c6432fb10e59ee"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

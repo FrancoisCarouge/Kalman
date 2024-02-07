@@ -1,10 +1,17 @@
 var searchData=
 [
-  ['u_0',['u',['../classfcarouge_1_1kalman.xhtml#a414a719477b1a63aa9660d0e52171a83',1,'fcarouge::kalman']]],
-  ['update_1',['update',['../classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5',1,'fcarouge::kalman::update(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a66aab654dafb41e90cebecf3c9c30b95',1,'fcarouge::kalman::update() const']]],
-  ['update_5f1x1x0_2ecpp_2',['update_1x1x0.cpp',['../update__1x1x0_8cpp.xhtml',1,'']]],
-  ['update_5f1x1x1_2ecpp_3',['update_1x1x1.cpp',['../update__1x1x1_8cpp.xhtml',1,'']]],
-  ['update_5flinalg_5fxx0_2ecpp_4',['update_linalg_xx0.cpp',['../update__linalg__xx0_8cpp.xhtml',1,'']]],
-  ['use_5',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#ad51507654adfa608dfb66f37ab39f622',1,'LICENSE.txt']]],
-  ['utility_2ehpp_6',['utility.hpp',['../internal_2utility_8hpp.xhtml',1,'(Global Namespace)'],['../utility_8hpp.xhtml',1,'(Global Namespace)']]]
+  ['r_0',['r',['../classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9',1,'fcarouge::kalman::r() const -&gt; const output_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a351d56532953fe259bd3dd4072e8ea48',1,'fcarouge::kalman::r() -&gt; output_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a87538d3311670000ad7e5a344941d007',1,'fcarouge::kalman::r(const auto &amp;value, const auto &amp;...values)']]],
+  ['readme_2emd_1',['readme.md',['../_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)'],['../benchmark_2_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)']]],
+  ['reference_2',['Reference',['../index.xhtml#autotoc_md28',1,'']]],
+  ['repack_5fs_3',['repack_s',['../namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9',1,'fcarouge::internal']]],
+  ['repack_5ft_4',['repack_t',['../namespacefcarouge_1_1internal.xhtml#ac4cd64c5c6f542f9b5d314b70bf7d8aa',1,'fcarouge::internal']]],
+  ['reporting_20a_20vulnerability_5',['Reporting a Vulnerability',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#autotoc_md54',1,'']]],
+  ['reporting_20bugs_6',['Reporting Bugs',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md5',1,'']]],
+  ['requesting_20features_7',['Requesting Features',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md6',1,'']]],
+  ['resources_8',['Resources',['../index.xhtml#autotoc_md42',1,'']]],
+  ['responsibilities_9',['Our Responsibilities',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md10',1,'']]],
+  ['results_10',['Results',['../md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#autotoc_md1',1,'']]],
+  ['row_11',['Row',['../structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136',1,'fcarouge::matrix']]],
+  ['row_5fvector_12',['row_vector',['../namespacefcarouge.xhtml#ac13c25e27a85ae315c7996927b7a3c28',1,'fcarouge']]],
+  ['run_13',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#autotoc_md15',1,'']]]
 ];

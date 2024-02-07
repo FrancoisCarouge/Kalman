@@ -2,9 +2,6 @@ var namespacefcarouge =
 [
     [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", "namespacefcarouge_1_1benchmark" ],
     [ "internal", "namespacefcarouge_1_1internal.xhtml", [
-      [ "arithmetic", "conceptfcarouge_1_1internal_1_1arithmetic.xhtml", null ],
-      [ "algebraic", "conceptfcarouge_1_1internal_1_1algebraic.xhtml", null ],
-      [ "eigen", "conceptfcarouge_1_1internal_1_1eigen.xhtml", null ],
       [ "empty_pack", "namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503", null ],
       [ "first_t", "namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482", null ],
       [ "function_traits_t", "namespacefcarouge_1_1internal.xhtml#a6cca8649211e25b63b720c4d1ec78945", null ],

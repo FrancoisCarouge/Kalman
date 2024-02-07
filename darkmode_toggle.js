@@ -57,6 +57,7 @@ class DarkModeToggle extends HTMLElement {
                 const toggleButton = document.createElement('dark-mode-toggle')
                 toggleButton.title = DarkModeToggle.title
                 toggleButton.innerHTML = DarkModeToggle.icon
+                toggleButton.tabIndex = 0;
 
                 function addButton() {
                   var titleArea = document.getElementById("titlearea");
@@ -100,6 +101,19 @@ class DarkModeToggle extends HTMLElement {
                 $(window).resize(function(){
                     addButton();
                 })
+                var inFocus = false;
+                $(document).focusin(function(e) {
+                    inFocus = true;
+                })
+                $(document).focusout(function(e) {
+                    inFocus = false;
+                })
+                $(document).keyup(function(e) {
+                    if (e.keyCode==27 && !inFocus) { // escape key maps to keycode `27`
+                       e.stopPropagation();
+                       DarkModeToggle.userPreference = !DarkModeToggle.userPreference
+                   }
+                })
                 DarkModeToggle.setDarkModeVisibility(DarkModeToggle.darkModeEnabled)
             })
         })
@@ -108,6 +122,7 @@ class DarkModeToggle extends HTMLElement {
     constructor() {
         super();
         this.onclick=this.toggleDarkMode
+        this.onkeypress=function(e){if (e.keyCode==13) { this.toggleDarkMode(); }};
     }
 
     static createCookie(name, value, days) {
