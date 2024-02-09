@@ -52,26 +52,26 @@ template <auto Size> using vector = column_vector<float, Size>;
   const float strength_covariance{0.0049F};
   const float radius_covariance{400};
   const float position_covariance{400};
-  filter.p(kalman::estimate_uncertainty{{strength_covariance, 0, 0, 0},
-                                        {0, radius_covariance, 0, 0},
-                                        {0, 0, position_covariance, 0},
-                                        {0, 0, 0, position_covariance}});
+  filter.p(kalman::estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},
+                                        {0.F, radius_covariance, 0.F, 0.F},
+                                        {0.F, 0.F, position_covariance, 0.F},
+                                        {0.F, 0.F, 0.F, position_covariance}});
 
   // No process dynamics: F = ∂f/∂X = I4 Default.
 
   filter.transition([](const kalman::state &x, const float &drift_x,
                        const float &drift_y) -> kalman::state {
     //! @todo Could make sure that x[1] stays positive, greater than 40.
-    const kalman::state drifts{0, 0, drift_x, drift_y};
+    const kalman::state drifts{0.F, 0.F, drift_x, drift_y};
     return x + drifts;
   });
 
   const float strength_noise{std::pow(0.001F, 2.F)};
   const float distance_noise{std::pow(0.03F, 2.F)};
-  filter.q(kalman::process_uncertainty{{strength_noise, 0, 0, 0},
-                                       {0, distance_noise, 0, 0},
-                                       {0, 0, distance_noise, 0},
-                                       {0, 0, 0, distance_noise}});
+  filter.q(kalman::process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},
+                                       {0.F, distance_noise, 0.F, 0.F},
+                                       {0.F, 0.F, distance_noise, 0.F},
+                                       {0.F, 0.F, 0.F, distance_noise}});
 
   const float measure_noise{std::pow(0.45F, 2.F)};
   filter.r(kalman::output_uncertainty{measure_noise});

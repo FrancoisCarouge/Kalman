@@ -60,7 +60,7 @@ template <auto Size> using vector = column_vector<double, Size>;
   // Since our initial state vector is a guess, we will set a very high estimate
   // uncertainty. The high estimate uncertainty results in high Kalman gain,
   // giving a high weight to the measurement.
-  filter.p(kalman::estimate_uncertainty{{500, 0}, {0, 500}});
+  filter.p(kalman::estimate_uncertainty{{500., 0.}, {0., 500.}});
 
   // Prediction
   // We will assume a discrete noise model - the noise is different at each time
@@ -83,7 +83,7 @@ template <auto Size> using vector = column_vector<double, Size>;
               [[maybe_unused]] const kalman::input &u,
               const std::chrono::milliseconds &delta_time) {
     const auto dt{std::chrono::duration<double>(delta_time).count()};
-    return kalman::state_transition{{1, dt}, {0, 1}};
+    return kalman::state_transition{{1., dt}, {0., 1.}};
   });
 
   // The control matrix G would be:
