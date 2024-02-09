@@ -133,106 +133,106 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="comment">// MOT16 sample, tracker #201.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>[]{{603.5F, 251.5F, 0.187335092348285F, 379},</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                  {599, 241, 0.24390243902439F, 328},</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                                  {599, 239.5F, 0.257234726688103F, 311},</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                  {602.5F, 244, 0.240131578947368F, 304},</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                  {598, 248.5F, 0.272425249169435F, 301},</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                                  {596.5F, 240.5F, 0.283276450511945F, 293},</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                  {601, 227, 0.301587301587302F, 252},</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                  {603.5F, 235.5F, 0.282868525896414F, 251},</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                                  {602, 242.5F, 0.292490118577075F, 253},</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                  {602.5F, 253, 0.218562874251497F, 334},</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                  {593, 254, 0.273291925465838F, 322},</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                                  {603, 264, 0.22360248447205F, 322},</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                                  {600.5F, 278.5F, 0.198966408268734F, 387},</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                  {593, 280, 0.237113402061856F, 388},</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                  {588.5F, 269, 0.267195767195767F, 378},</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                  {579, 260, 0.311111111111111F, 360},</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                  {565.5F, 268.5F, 0.339130434782609F, 345},</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                  {558.5F, 255.5F, 0.366568914956012F, 341},</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                  {544, 268, 0.364705882352941F, 340},</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                  {533, 258.5F, 0.356083086053412F, 337},</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                  {519, 258, 0.353293413173653F, 334},</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                  {511.5F, 252.5F, 0.333333333333333F, 333},</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                  {515.5F, 252.5F, 0.31306990881459F, 329},</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                                  {523.5F, 251, 0.298192771084337F, 332},</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                  {540, 252.5F, 0.318318318318318F, 333},</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                  {574, 262, 0.344827586206897F, 348},</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                  {590.5F, 265, 0.278735632183908F, 348},</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                                  {613, 268, 0.164556962025316F, 316},</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                  {617, 260.5F, 0.161172161172161F, 273},</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                  {615.5F, 261.5F, 0.15210355987055F, 309},</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                  {605.5F, 259, 0.226351351351351F, 296},</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                                  {595.5F, 258.5F, 0.289036544850498F, 301},</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                                  {588, 257.5F, 0.350515463917526F, 291},</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                                  {579.5F, 254, 0.343537414965986F, 294},</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                                  {569.5F, 258.5F, 0.353535353535354F, 297},</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                                  {565.5F, 257, 0.37248322147651F, 298},</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                                  {555, 250, 0.388157894736842F, 304},</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                                  {546.5F, 249, 0.336666666666667F, 300},</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                                  {535, 251, 0.30718954248366F, 306},</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                                  {530, 246, 0.308724832214765F, 298},</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                                  {521, 252, 0.278145695364238F, 302},</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                                  {521.5F, 254.5F, 0.331010452961672F, 287},</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                                  {521, 258.5F, 0.32280701754386F, 285},</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                                  {519.5F, 255, 0.316326530612245F, 294},</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                                  {518.5F, 255, 0.304794520547945F, 292},</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                                  {511, 253, 0.310810810810811F, 296},</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                                  {506, 255, 0.319727891156463F, 294},</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                                  {499, 256, 0.352112676056338F, 284},</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                  {492.5F, 256.5F, 0.349152542372881F, 295},</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                  {489.5F, 257, 0.362068965517241F, 290},</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                  {481, 251.5F, 0.357894736842105F, 285},</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                  {474, 249, 0.324137931034483F, 290},</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                  {466, 250, 0.306122448979592F, 294},</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                                  {461.5F, 248, 0.304794520547945F, 292},</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                                  {450.5F, 248.5F, 0.323843416370107F, 281},</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                                  {442, 260.5F, 0.32280701754386F, 285},</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                                  {437, 255.5F, 0.329824561403509F, 285},</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                                  {427, 251.5F, 0.329896907216495F, 291},</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                                  {419, 251, 0.330985915492958F, 284},</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                                  {411, 251, 0.328671328671329F, 286},</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                                  {411, 251.5F, 0.325259515570934F, 289},</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                                  {410, 249, 0.324137931034483F, 290},</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                                  {407, 247.5F, 0.346020761245675F, 289},</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                                  {398.5F, 248.5F, 0.356890459363958F, 283},</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                                  {393, 249, 0.347222222222222F, 288},</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                                  {390.5F, 246.5F, 0.331058020477816F, 293},</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                                  {387, 246, 0.308724832214765F, 298},</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                                  {379.5F, 244.5F, 0.303754266211604F, 293},</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                                  {370, 255.5F, 0.258899676375404F, 309},</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                                  {372, 252.5F, 0.307167235494881F, 293},</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                                  {368, 254.5F, 0.311418685121107F, 289},</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                                  {365.5F, 251, 0.322916666666667F, 288},</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                                  {360.5F, 250.5F, 0.301694915254237F, 295},</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                                  {353, 251.5F, 0.316151202749141F, 291},</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                                  {349.5F, 248.5F, 0.32404181184669F, 287},</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                                  {343.5F, 246, 0.327464788732394F, 284},</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                                  {334.5F, 251.5F, 0.335689045936396F, 283},</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                                  {328.5F, 249.5F, 0.342960288808664F, 277},</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                                  {321.5F, 256.5F, 0.328621908127208F, 283},</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                                  {321.5F, 259.5F, 0.317073170731707F, 287},</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                                  {319.5F, 252, 0.313380281690141F, 284},</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                                  {317.5F, 247.5F, 0.314487632508834F, 283},</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                                  {314.5F, 248, 0.313380281690141F, 284},</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                                  {318.5F, 255, 0.311188811188811F, 286},</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                                  {324.5F, 252, 0.317857142857143F, 280},</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                                  {328.5F, 249, 0.311188811188811F, 286},</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                                  {330, 248, 0.318840579710145F, 276},</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                                  {334.5F, 245, 0.320143884892086F, 278},</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                                  {342.5F, 248, 0.324817518248175F, 274},</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                                  {348, 247.5F, 0.312727272727273F, 275},</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                                  {349.5F, 245.5F, 0.326007326007326F, 273},</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                                  {350, 250, 0.321167883211679F, 274},</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                                  {350.5F, 252.5F, 0.323636363636364F, 275},</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                                  {356.5F, 249, 0.31294964028777F, 278},</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                                  {356.5F, 245, 0.320143884892086F, 278},</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                                  {357, 245, 0.314285714285714F, 280},</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                                  {361, 246, 0.318840579710145F, 276},</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                                  {364, 251.5F, 0.308771929824561F, 285},</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                                  {368, 252.5F, 0.303886925795053F, 283},</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                                  {369, 250.5F, 0.29757785467128F, 289}};</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>[]{{603.5F, 251.5F, 0.187335092348285F, 379.F},</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                  {599.F, 241.F, 0.24390243902439F, 328.F},</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                                  {599.F, 239.5F, 0.257234726688103F, 311.F},</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                  {602.5F, 244.F, 0.240131578947368F, 304.F},</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                  {598.F, 248.5F, 0.272425249169435F, 301.F},</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                                  {596.5F, 240.5F, 0.283276450511945F, 293.F},</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                  {601.F, 227.F, 0.301587301587302F, 252.F},</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                  {603.5F, 235.5F, 0.282868525896414F, 251.F},</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                                  {602.F, 242.5F, 0.292490118577075F, 253.F},</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                  {602.5F, 253.F, 0.218562874251497F, 334.F},</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                  {593.F, 254.F, 0.273291925465838F, 322.F},</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                                  {603.F, 264.F, 0.22360248447205F, 322.F},</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                                  {600.5F, 278.5F, 0.198966408268734F, 387.F},</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                  {593.F, 280.F, 0.237113402061856F, 388.F},</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                  {588.5F, 269.F, 0.267195767195767F, 378.F},</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                  {579.F, 260.F, 0.311111111111111F, 360.F},</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                  {565.5F, 268.5F, 0.339130434782609F, 345.F},</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                  {558.5F, 255.5F, 0.366568914956012F, 341.F},</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                  {544.F, 268.F, 0.364705882352941F, 340.F},</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                  {533.F, 258.5F, 0.356083086053412F, 337.F},</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                  {519.F, 258.F, 0.353293413173653F, 334.F},</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                  {511.5F, 252.5F, 0.333333333333333F, 333.F},</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                  {515.5F, 252.5F, 0.31306990881459F, 329.F},</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                                  {523.5F, 251.F, 0.298192771084337F, 332.F},</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                  {540.F, 252.5F, 0.318318318318318F, 333.F},</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                  {574.F, 262.F, 0.344827586206897F, 348.F},</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                  {590.5F, 265.F, 0.278735632183908F, 348.F},</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                                  {613.F, 268.F, 0.164556962025316F, 316.F},</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                  {617.F, 260.5F, 0.161172161172161F, 273.F},</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                  {615.5F, 261.5F, 0.15210355987055F, 309.F},</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                  {605.5F, 259.F, 0.226351351351351F, 296.F},</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                                  {595.5F, 258.5F, 0.289036544850498F, 301.F},</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                                  {588.F, 257.5F, 0.350515463917526F, 291.F},</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                                  {579.5F, 254.F, 0.343537414965986F, 294.F},</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                                  {569.5F, 258.5F, 0.353535353535354F, 297.F},</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                                  {565.5F, 257.F, 0.37248322147651F, 298.F},</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                                  {555.F, 250.F, 0.388157894736842F, 304.F},</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                                  {546.5F, 249.F, 0.336666666666667F, 300.F},</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                                  {535.F, 251.F, 0.30718954248366F, 306.F},</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                                  {530.F, 246.F, 0.308724832214765F, 298.F},</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                                  {521.F, 252.F, 0.278145695364238F, 302.F},</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                                  {521.5F, 254.5F, 0.331010452961672F, 287.F},</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                                  {521.F, 258.5F, 0.32280701754386F, 285.F},</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                                  {519.5F, 255.F, 0.316326530612245F, 294.F},</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                                  {518.5F, 255.F, 0.304794520547945F, 292.F},</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                                  {511.F, 253.F, 0.310810810810811F, 296.F},</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                                  {506.F, 255.F, 0.319727891156463F, 294.F},</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                                  {499.F, 256.F, 0.352112676056338F, 284.F},</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                  {492.5F, 256.5F, 0.349152542372881F, 295.F},</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                  {489.5F, 257.F, 0.362068965517241F, 290.F},</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                  {481.F, 251.5F, 0.357894736842105F, 285.F},</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                  {474.F, 249.F, 0.324137931034483F, 290.F},</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                  {466.F, 250.F, 0.306122448979592F, 294.F},</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                                  {461.5F, 248.F, 0.304794520547945F, 292.F},</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                                  {450.5F, 248.5F, 0.323843416370107F, 281.F},</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                                  {442.F, 260.5F, 0.32280701754386F, 285.F},</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                                  {437.F, 255.5F, 0.329824561403509F, 285.F},</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                                  {427.F, 251.5F, 0.329896907216495F, 291.F},</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                                  {419.F, 251.F, 0.330985915492958F, 284.F},</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                                  {411.F, 251.F, 0.328671328671329F, 286.F},</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                                  {411.F, 251.5F, 0.325259515570934F, 289.F},</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                                  {410.F, 249.F, 0.324137931034483F, 290.F},</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                                  {407.F, 247.5F, 0.346020761245675F, 289.F},</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                                  {398.5F, 248.5F, 0.356890459363958F, 283.F},</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                                  {393.F, 249.F, 0.347222222222222F, 288.F},</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                                  {390.5F, 246.5F, 0.331058020477816F, 293.F},</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                                  {387.F, 246.F, 0.308724832214765F, 298.F},</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                                  {379.5F, 244.5F, 0.303754266211604F, 293.F},</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                                  {370.F, 255.5F, 0.258899676375404F, 309.F},</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                                  {372.F, 252.5F, 0.307167235494881F, 293.F},</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                                  {368.F, 254.5F, 0.311418685121107F, 289.F},</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                                  {365.5F, 251.F, 0.322916666666667F, 288.F},</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                                  {360.5F, 250.5F, 0.301694915254237F, 295.F},</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                                  {353.F, 251.5F, 0.316151202749141F, 291.F},</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                                  {349.5F, 248.5F, 0.32404181184669F, 287.F},</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                                  {343.5F, 246.F, 0.327464788732394F, 284.F},</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                                  {334.5F, 251.5F, 0.335689045936396F, 283.F},</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                                  {328.5F, 249.5F, 0.342960288808664F, 277.F},</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                                  {321.5F, 256.5F, 0.328621908127208F, 283.F},</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                                  {321.5F, 259.5F, 0.317073170731707F, 287.F},</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                                  {319.5F, 252.F, 0.313380281690141F, 284.F},</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                                  {317.5F, 247.5F, 0.314487632508834F, 283.F},</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                                  {314.5F, 248.F, 0.313380281690141F, 284.F},</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                                  {318.5F, 255.F, 0.311188811188811F, 286.F},</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                                  {324.5F, 252.F, 0.317857142857143F, 280.F},</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                                  {328.5F, 249.F, 0.311188811188811F, 286.F},</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                                  {330.F, 248.F, 0.318840579710145F, 276.F},</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                                  {334.5F, 245.F, 0.320143884892086F, 278.F},</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                                  {342.5F, 248.F, 0.324817518248175F, 274.F},</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                                  {348.F, 247.5F, 0.312727272727273F, 275.F},</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                                  {349.5F, 245.5F, 0.326007326007326F, 273.F},</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                                  {350.F, 250.F, 0.321167883211679F, 274.F},</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                                  {350.5F, 252.5F, 0.323636363636364F, 275.F},</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                                  {356.5F, 249.F, 0.31294964028777F, 278.F},</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                                  {356.5F, 245.F, 0.320143884892086F, 278.F},</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                                  {357.F, 245.F, 0.314285714285714F, 280.F},</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                                  {361.F, 246.F, 0.318840579710145F, 276.F},</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                                  {364.F, 251.5F, 0.308771929824561F, 285.F},</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                                  {368.F, 252.5F, 0.303886925795053F, 283.F},</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                                  {369.F, 250.5F, 0.29757785467128F, 289.F}};</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  <span class="comment">// Initialization</span></div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <span class="comment">// The filter is initialized at runtime, on bounding box detection, with the</span></div>
@@ -240,8 +240,8 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="comment">// [px, py, pa, ph, vx, vy, va, vh].</span></div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>{605.0F, 248.0F, 0.20481927710843373F,</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                                   332.0F};</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(0), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(1), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(2), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 0, 0,</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>           0, 0);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(0), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(1), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(2), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 0.F,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>           0.F, 0.F, 0.F);</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="comment">// Experimental position and velocity uncertainty standard deviation weights.</span></div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>{1.F / 20.F};</div>
@@ -261,80 +261,81 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="comment">// Constant velocity, linear state transition model. From one image frame to</span></div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  <span class="comment">// the other.</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>{1};</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2e2b3d64520fb7e7476b6b8bbb0352e9">f</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">kalman::state_transition</a>{{1, 0, 0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0, 0, 0},</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                                    {0, 1, 0, 0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0, 0},</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                                    {0, 0, 1, 0, 0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0},</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                                    {0, 0, 0, 1, 0, 0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>},</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                                    {0, 0, 0, 0, 1, 0, 0, 0},</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                                    {0, 0, 0, 0, 0, 1, 0, 0},</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                                    {0, 0, 0, 0, 0, 0, 1, 0},</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                                    {0, 0, 0, 0, 0, 0, 0, 1}});</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a>([<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a>](</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>               <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">kalman::process_uncertainty</a> {</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">return</span> state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                 1e-2F,</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * x(3),</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>{1.F};</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2e2b3d64520fb7e7476b6b8bbb0352e9">f</a>(</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>      <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">kalman::state_transition</a>{{1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F, 0.F, 0.F},</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                               {0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F, 0.F},</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                               {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F},</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                               {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>},</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                               {0.F, 0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F},</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                               {0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F, 0.F},</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                               {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F},</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                               {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F}});</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a>([<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a>](</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>               <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">kalman::process_uncertainty</a> {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">return</span> state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                 1e-2F,</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * x(3),</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                 1e-5F,</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * x(3)}</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        .array()</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        .square()</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        .matrix()</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        .asDiagonal();</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  });</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>();</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="comment">// Measure and Update</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="comment">// Direct linear observation transition model.</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">h</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab967071c592e9ad25f61b03a4ef7fe6e">kalman::output_model</a>{{1, 0, 0, 0, 0, 0, 0, 0},</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                                {0, 1, 0, 0, 0, 0, 0, 0},</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                                {0, 0, 1, 0, 0, 0, 0, 0},</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                                {0, 0, 0, 1, 0, 0, 0, 0}});</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <span class="comment">// Observation, measurement noise covariance.</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">r</a>([<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x,</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                             [[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> &amp;z)</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>               -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">kalman::output_uncertainty</a> {</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordflow">return</span> output{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3), 1e-1F,</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3)}</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        .array()</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        .square()</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        .matrix()</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        .asDiagonal();</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  });</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a> : <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>) {</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a>);</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>();</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>  }</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[0] / 370.932041394761F) &lt; 0.001F &amp;&amp;</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[1] / 251.173174229878F) &lt; 0.001F &amp;&amp;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[2] / 0.314757138075364F) &lt; 0.001F &amp;&amp;</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[3] / 287.859996019444F) &lt; 0.001F &amp;&amp;</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[4] / 1.95865368159518F) &lt; 0.001F &amp;&amp;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[5] / 0.229282868701086F) &lt; 0.001F &amp;&amp;</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>         <span class="comment">// The precision of the velocity appears to saturate early on in the</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>         <span class="comment">// original example. The parameter could be scaled or larger types used</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>         <span class="comment">// to improve comparison accuracy.</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[6] / 2.46138628550094E-06F) &lt; 0.5F &amp;&amp;</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[7] / 0.81402529074969F) &lt; 0.001F &amp;&amp;</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>         <span class="stringliteral">&quot;The estimated states expected to meet Nwojke&#39;s Deep SORT filter&#39;s &quot;</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>         <span class="stringliteral">&quot;MOT16 sample tracker #201 dataset at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>}()};</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * x(3),</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                 1e-5F,</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * x(3)}</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        .array()</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        .square()</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        .matrix()</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        .asDiagonal();</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  });</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="comment">// Measure and Update</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="comment">// Direct linear observation transition model.</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">h</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab967071c592e9ad25f61b03a4ef7fe6e">kalman::output_model</a>{{1.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F},</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                                {0.F, 1.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F},</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                                {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, 0.F, 0.F},</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                                {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, 0.F}});</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  <span class="comment">// Observation, measurement noise covariance.</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">r</a>([<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x,</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                             [[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> &amp;z)</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>               -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">kalman::output_uncertainty</a> {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">return</span> output{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3), 1e-1F,</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3)}</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        .array()</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        .square()</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        .matrix()</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        .asDiagonal();</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>  });</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a> : <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>) {</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a>);</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>();</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  }</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[0] / 370.932041394761F) &lt; 0.001F &amp;&amp;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[1] / 251.173174229878F) &lt; 0.001F &amp;&amp;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[2] / 0.314757138075364F) &lt; 0.001F &amp;&amp;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[3] / 287.859996019444F) &lt; 0.001F &amp;&amp;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[4] / 1.95865368159518F) &lt; 0.001F &amp;&amp;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[5] / 0.229282868701086F) &lt; 0.001F &amp;&amp;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>         <span class="comment">// The precision of the velocity appears to saturate early on in the</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>         <span class="comment">// original example. The parameter could be scaled or larger types used</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>         <span class="comment">// to improve comparison accuracy.</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[6] / 2.46138628550094E-06F) &lt; 0.5F &amp;&amp;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>         std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>()[7] / 0.81402529074969F) &lt; 0.001F &amp;&amp;</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>         <span class="stringliteral">&quot;The estimated states expected to meet Nwojke&#39;s Deep SORT filter&#39;s &quot;</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>         <span class="stringliteral">&quot;MOT16 sample tracker #201 dataset at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>}()};</div>
 </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00166">kalman.hpp:166</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a04da55f7c46559f46cac6da0a5132605"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">fcarouge::kalman::q</a></div><div class="ttdeci">constexpr auto q() const -&gt; const process_uncertainty &amp;</div><div class="ttdoc">Returns the process noise covariance matrix Q.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b72b81b1b5788efc1c21cc9ef9d60a2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">fcarouge::kalman::output</a></div><div class="ttdeci">implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00194">kalman.hpp:194</a></div></div>
@@ -362,7 +363,7 @@ $(document).ready(function(){initNavTree('kf__8x4x0__deep__sort__bounding__box_8
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="kf__8x4x0__deep__sort__bounding__box_8cpp.xhtml">kf_8x4x0_deep_sort_bounding_box.cpp</a></li>
-    <li class="footer">Generated on Fri Feb 9 2024 00:42:06 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Fri Feb 9 2024 07:02:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

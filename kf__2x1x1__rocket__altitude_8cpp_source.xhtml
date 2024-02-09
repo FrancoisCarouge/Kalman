@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('kf__2x1x1__rocket__altitude_8cpp_sourc
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="comment">// uncertainty. The high estimate uncertainty results in high Kalman gain,</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="comment">// giving a high weight to the measurement.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{{500, 0}, {0, 500}});</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>(<a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{{500., 0.}, {0., 500.}});</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="comment">// Prediction</span></div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="comment">// We will assume a discrete noise model - the noise is different at each time</span></div>
@@ -154,7 +154,7 @@ $(document).ready(function(){initNavTree('kf__2x1x1__rocket__altitude_8cpp_sourc
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>              [[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">kalman::input</a> &amp;u,</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>              <span class="keyword">const</span> std::chrono::milliseconds &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>) {</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>{std::chrono::duration&lt;double&gt;(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>).count()};</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">kalman::state_transition</a>{{1, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>}, {0, 1}};</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">kalman::state_transition</a>{{1., <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>}, {0., 1.}};</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  });</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="comment">// The control matrix G would be:</span></div>
@@ -322,7 +322,7 @@ $(document).ready(function(){initNavTree('kf__2x1x1__rocket__altitude_8cpp_sourc
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c29eeb5af533606caea8a09e66794740.xhtml">sample</a></li><li class="navelem"><a class="el" href="kf__2x1x1__rocket__altitude_8cpp.xhtml">kf_2x1x1_rocket_altitude.cpp</a></li>
-    <li class="footer">Generated on Fri Feb 9 2024 00:42:06 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Fri Feb 9 2024 07:02:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

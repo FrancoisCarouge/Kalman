@@ -135,25 +135,25 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_covariance</a>{0.0049F};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">radius_covariance</a>{400};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>{400};</div>
-<div class="line">  filter.p(<a id="a1" name="a1"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_covariance</a>, 0, 0, 0},</div>
-<div class="line">                                        {0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">radius_covariance</a>, 0, 0},</div>
-<div class="line">                                        {0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>, 0},</div>
-<div class="line">                                        {0, 0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>}});</div>
+<div class="line">  filter.p(<a id="a1" name="a1"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_covariance</a>, 0.F, 0.F, 0.F},</div>
+<div class="line">                                        {0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">radius_covariance</a>, 0.F, 0.F},</div>
+<div class="line">                                        {0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>, 0.F},</div>
+<div class="line">                                        {0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// No process dynamics: F = ∂f/∂X = I4 Default.</span></div>
 <div class="line"> </div>
 <div class="line">  filter.transition([](<span class="keyword">const</span> <a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_x</a>,</div>
 <div class="line">                       <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_y</a>) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> {</div>
-<div class="line">    <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drifts</a>{0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_x</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_y</a>};</div>
+<div class="line">    <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drifts</a>{0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_x</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_y</a>};</div>
 <div class="line">    <span class="keywordflow">return</span> x + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drifts</a>;</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_noise</a>{std::pow(0.001F, 2.F)};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>{std::pow(0.03F, 2.F)};</div>
-<div class="line">  filter.q(<a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">kalman::process_uncertainty</a>{{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_noise</a>, 0, 0, 0},</div>
-<div class="line">                                       {0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>, 0, 0},</div>
-<div class="line">                                       {0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>, 0},</div>
-<div class="line">                                       {0, 0, 0, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>}});</div>
+<div class="line">  filter.q(<a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">kalman::process_uncertainty</a>{{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_noise</a>, 0.F, 0.F, 0.F},</div>
+<div class="line">                                       {0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>, 0.F, 0.F},</div>
+<div class="line">                                       {0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>, 0.F},</div>
+<div class="line">                                       {0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure_noise</a>{std::pow(0.45F, 2.F)};</div>
 <div class="line">  filter.r(<a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">kalman::output_uncertainty</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure_noise</a>});</div>
@@ -329,7 +329,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Feb 9 2024 00:42:06 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Fri Feb 9 2024 07:02:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

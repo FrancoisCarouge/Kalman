@@ -166,25 +166,25 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_covariance{0.0049F};</div>
 <div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> radius_covariance{400};</div>
 <div class="line"><span class="lineno">   54</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> position_covariance{400};</div>
-<div class="line"><span class="lineno">   55</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>(kalman::estimate_uncertainty{{strength_covariance, 0, 0, 0},</div>
-<div class="line"><span class="lineno">   56</span>                                        {0, radius_covariance, 0, 0},</div>
-<div class="line"><span class="lineno">   57</span>                                        {0, 0, position_covariance, 0},</div>
-<div class="line"><span class="lineno">   58</span>                                        {0, 0, 0, position_covariance}});</div>
+<div class="line"><span class="lineno">   55</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>(kalman::estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},</div>
+<div class="line"><span class="lineno">   56</span>                                        {0.F, radius_covariance, 0.F, 0.F},</div>
+<div class="line"><span class="lineno">   57</span>                                        {0.F, 0.F, position_covariance, 0.F},</div>
+<div class="line"><span class="lineno">   58</span>                                        {0.F, 0.F, 0.F, position_covariance}});</div>
 <div class="line"><span class="lineno">   59</span> </div>
 <div class="line"><span class="lineno">   60</span>  <span class="comment">// No process dynamics: F = ∂f/∂X = I4 Default.</span></div>
 <div class="line"><span class="lineno">   61</span> </div>
 <div class="line"><span class="lineno">   62</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2ed4b91a17ec129f7ccb8263d5255534">transition</a>([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
 <div class="line"><span class="lineno">   63</span>                       <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; kalman::state {</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keyword">const</span> kalman::state drifts{0, 0, drift_x, drift_y};</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keyword">const</span> kalman::state drifts{0.F, 0.F, drift_x, drift_y};</div>
 <div class="line"><span class="lineno">   66</span>    <span class="keywordflow">return</span> x + drifts;</div>
 <div class="line"><span class="lineno">   67</span>  });</div>
 <div class="line"><span class="lineno">   68</span> </div>
 <div class="line"><span class="lineno">   69</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_noise{std::pow(0.001F, 2.F)};</div>
 <div class="line"><span class="lineno">   70</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> distance_noise{std::pow(0.03F, 2.F)};</div>
-<div class="line"><span class="lineno">   71</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a>(kalman::process_uncertainty{{strength_noise, 0, 0, 0},</div>
-<div class="line"><span class="lineno">   72</span>                                       {0, distance_noise, 0, 0},</div>
-<div class="line"><span class="lineno">   73</span>                                       {0, 0, distance_noise, 0},</div>
-<div class="line"><span class="lineno">   74</span>                                       {0, 0, 0, distance_noise}});</div>
+<div class="line"><span class="lineno">   71</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a>(kalman::process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},</div>
+<div class="line"><span class="lineno">   72</span>                                       {0.F, distance_noise, 0.F, 0.F},</div>
+<div class="line"><span class="lineno">   73</span>                                       {0.F, 0.F, distance_noise, 0.F},</div>
+<div class="line"><span class="lineno">   74</span>                                       {0.F, 0.F, 0.F, distance_noise}});</div>
 <div class="line"><span class="lineno">   75</span> </div>
 <div class="line"><span class="lineno">   76</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> measure_noise{std::pow(0.45F, 2.F)};</div>
 <div class="line"><span class="lineno">   77</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">r</a>(kalman::output_uncertainty{measure_noise});</div>
@@ -364,7 +364,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1sample.xhtml">sample</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml">anonymous_namespace{ekf_4x1x0_soaring.cpp}</a></li>
-    <li class="footer">Generated on Fri Feb 9 2024 00:42:06 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Fri Feb 9 2024 07:02:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

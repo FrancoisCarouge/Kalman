@@ -137,28 +137,29 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
 <div class="line">  <span class="comment">// uncertainty. The high estimate uncertainty results in a high Kalman Gain,</span></div>
 <div class="line">  <span class="comment">// giving a high weight to the measurement.</span></div>
-<div class="line">  filter.p(<a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{{500, 0, 0, 0, 0, 0},</div>
-<div class="line">                                        {0, 500, 0, 0, 0, 0},</div>
-<div class="line">                                        {0, 0, 500, 0, 0, 0},</div>
-<div class="line">                                        {0, 0, 0, 500, 0, 0},</div>
-<div class="line">                                        {0, 0, 0, 0, 500, 0},</div>
-<div class="line">                                        {0, 0, 0, 0, 0, 500}});</div>
+<div class="line">  filter.p(<a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{{500., 0., 0., 0., 0., 0.},</div>
+<div class="line">                                        {0., 500., 0., 0., 0., 0.},</div>
+<div class="line">                                        {0., 0., 500., 0., 0., 0.},</div>
+<div class="line">                                        {0., 0., 0., 500., 0., 0.},</div>
+<div class="line">                                        {0., 0., 0., 0., 500., 0.},</div>
+<div class="line">                                        {0., 0., 0., 0., 0., 500.}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Prediction</span></div>
 <div class="line">  <span class="comment">// The process noise matrix Q would be:</span></div>
 <div class="line">  <a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">kalman::process_uncertainty</a> q{</div>
-<div class="line">      {0.25, 0.5, 0.5, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0}, {0.5, 1, 1, 0, 0, 0},</div>
-<div class="line">      {0, 0, 0, 0.25, 0.5, 0.5}, {0, 0, 0, 0.5, 1, 1}, {0, 0, 0, 0.5, 1, 1}};</div>
+<div class="line">      {0.25, 0.5, 0.5, 0., 0., 0.}, {0.5, 1., 1., 0., 0., 0.},</div>
+<div class="line">      {0.5, 1., 1., 0., 0., 0.},    {0., 0., 0., 0.25, 0.5, 0.5},</div>
+<div class="line">      {0., 0., 0., 0.5, 1., 1.},    {0., 0., 0., 0.5, 1., 1.}};</div>
 <div class="line">  q *= 0.2 * 0.2;</div>
 <div class="line">  filter.q(q);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">  filter.f(<a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">kalman::state_transition</a>{{1, 1, 0.5, 0, 0, 0},</div>
-<div class="line">                                    {0, 1, 1, 0, 0, 0},</div>
-<div class="line">                                    {0, 0, 1, 0, 0, 0},</div>
-<div class="line">                                    {0, 0, 0, 1, 1, 0.5},</div>
-<div class="line">                                    {0, 0, 0, 0, 1, 1},</div>
-<div class="line">                                    {0, 0, 0, 0, 0, 1}});</div>
+<div class="line">  filter.f(<a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">kalman::state_transition</a>{{1., 1., 0.5, 0., 0., 0.},</div>
+<div class="line">                                    {0., 1., 1., 0., 0., 0.},</div>
+<div class="line">                                    {0., 0., 1., 0., 0., 0.},</div>
+<div class="line">                                    {0., 0., 0., 1., 1., 0.5},</div>
+<div class="line">                                    {0., 0., 0., 0., 1., 1.},</div>
+<div class="line">                                    {0., 0., 0., 0., 0., 1.}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
 <div class="line">  filter.predict();</div>
@@ -166,7 +167,8 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <span class="comment">// Measure and Update</span></div>
 <div class="line">  <span class="comment">// The dimension of zn is 2x1 and the dimension of xn is 6x1. Therefore the</span></div>
 <div class="line">  <span class="comment">// dimension of the observation matrix H shall be 2x6.</span></div>
-<div class="line">  filter.h(<a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab967071c592e9ad25f61b03a4ef7fe6e">kalman::output_model</a>{{1, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0}});</div>
+<div class="line">  filter.h(</div>
+<div class="line">      <a id="a5" name="a5"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#ab967071c592e9ad25f61b03a4ef7fe6e">kalman::output_model</a>{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Assume that the x and y measurements are uncorrelated, i.e. error in the x</span></div>
 <div class="line">  <span class="comment">// coordinate measurement doesn&#39;t depend on the error in the y coordinate</span></div>
@@ -177,7 +179,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
 <div class="line">  <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error</span></div>
 <div class="line">  <span class="comment">// standard deviation: σxm = σym = 3m. The variance 9.</span></div>
-<div class="line">  filter.r(<a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">kalman::output_uncertainty</a>{{9, 0}, {0, 9}});</div>
+<div class="line">  filter.r(<a id="a6" name="a6"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">kalman::output_uncertainty</a>{{9., 0.}, {0., 9.}});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The measurement values: z1 = [-393.66, 300.4]</span></div>
 <div class="line">  filter.update(-393.66, 300.4);</div>
@@ -285,7 +287,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Feb 9 2024 00:42:06 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Fri Feb 9 2024 07:02:44 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
