@@ -69,6 +69,13 @@ concept algebraic = internal::algebraic<Type>;
 //! @details A third party Eigen3 algebraic concept.
 template <typename Type>
 concept eigen = internal::eigen<Type>;
+
+//! @brief Filter input support concept.
+//!
+//! @details The filter supports the input related functionality: `input` type
+//! member and `u()` input method.
+template <typename Filter>
+concept has_input = internal::has_input<Filter>;
 //! @}
 
 //! @name Types

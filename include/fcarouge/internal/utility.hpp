@@ -52,6 +52,16 @@ concept algebraic = not arithmetic<Type>;
 template <typename Type>
 concept eigen = requires { typename Type::PlainMatrix; };
 
+template <typename Filter>
+concept has_input_member = requires(Filter filter) { filter.u; };
+
+template <typename Filter>
+concept has_input_method = requires(Filter filter) { filter.u(); };
+
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_input = has_input_member<Filter> || has_input_method<Filter>;
+
 struct empty {
   inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {
     // Constructs from anything for all initializations compatibility.

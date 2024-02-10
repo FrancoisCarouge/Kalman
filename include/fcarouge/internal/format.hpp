@@ -58,14 +58,16 @@ template <typename State, typename Output, typename Input, typename UpdateTypes,
 struct std::formatter<
     fcarouge::kalman<State, Output, Input, UpdateTypes, PredictionTypes>,
     Char> {
+  using kalman =
+      fcarouge::kalman<State, Output, Input, UpdateTypes, PredictionTypes>;
+
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 
   //! @todo P2585 may be useful in simplifying and standardizing the support.
   template <typename OutputIt>
-  auto format(const fcarouge::kalman<State, Output, Input, UpdateTypes,
-                                     PredictionTypes> &filter,
+  auto format(const kalman &filter,
               std::basic_format_context<OutputIt, Char> &format_context) const
       -> OutputIt {
     format_context.advance_to(
@@ -96,7 +98,9 @@ struct std::formatter<
                                         R"("q": {}, "r": {}, "s": {}, )",
                                         filter.q(), filter.r(), filter.s()));
 
-    if constexpr (requires { filter.u(); }) {
+    //! @todo Generalize out internal method concept when MSVC has better
+    //! if-constexpr-requires support.
+    if constexpr (fcarouge::internal::has_input_method<kalman>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }
