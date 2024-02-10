@@ -346,8 +346,8 @@ public:
   //! @return The last control column vector U.
   //!
   //! @complexity Constant.
-  inline constexpr auto u() const
-      -> const input &requires(requires { filter.u; });
+  inline constexpr const auto &u() const
+    requires(has_input<implementation>);
 
   //! @brief Returns the estimated covariance matrix P.
   //!

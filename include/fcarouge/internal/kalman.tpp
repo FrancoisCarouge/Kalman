@@ -77,17 +77,19 @@ kalman<State, Output, Input, UpdateTypes, PredictionTypes>::z() const
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned control column vector U is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] inline constexpr const auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::u() const
-    -> const input &requires(requires { filter.u; }) { return filter.u; }
+  requires(has_input<implementation>)
+{
+  return filter.u;
+}
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-            "discarded.")]] inline constexpr auto kalman<State, Output, Input,
-                                                         UpdateTypes,
-                                                         PredictionTypes>::p()
-    const -> const estimate_uncertainty & {
+            "discarded.")]] inline constexpr auto
+kalman<State, Output, Input, UpdateTypes, PredictionTypes>::p() const
+    -> const estimate_uncertainty & {
   return filter.p;
 }
 
