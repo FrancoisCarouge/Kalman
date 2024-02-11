@@ -1,7 +1,7 @@
 var searchData=
 [
   ['observation_0',['observation',['../classfcarouge_1_1kalman.xhtml#a6324da65597f0e0a91573a31a9aa1465',1,'fcarouge::kalman']]],
-  ['of_20conduct_1',['of conduct',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md10',1,'Code of Conduct'],['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'Contributor Covenant Code of Conduct']]],
+  ['of_20conduct_1',['of conduct',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#autotoc_md4',1,'Code of Conduct'],['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'Contributor Covenant Code of Conduct']]],
   ['operator_28_29_2',['operator()',['../structfcarouge_1_1matrix.xhtml#aa7e9a43560b35148793464e6db205ffd',1,'fcarouge::matrix::operator()(auto index) const'],['../structfcarouge_1_1matrix.xhtml#a267410d17977190209f548b57ec2976c',1,'fcarouge::matrix::operator()(auto index) const'],['../structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f',1,'fcarouge::matrix::operator()(auto row, auto column) const'],['../structfcarouge_1_1matrix.xhtml#a5c7de438f954f681784701e415e15f44',1,'fcarouge::matrix::operator()(auto index) const'],['../structfcarouge_1_1matrix.xhtml#a27105b3bf58c0859a8fc527d9d9e56d3',1,'fcarouge::matrix::operator()(auto index) const'],['../structfcarouge_1_1matrix.xhtml#a274f6d5d7f01fea4439ac6588f3931a2',1,'fcarouge::matrix::operator()(auto row, auto column) const']]],
   ['operator_2a_3',['operator*',['../namespacefcarouge.xhtml#a4f016f1b86f66fffb39dd5e6c4dd96ab',1,'fcarouge::operator*(arithmetic auto lhs, const matrix&lt; Type, 1, 1 &gt; rhs)'],['../namespacefcarouge.xhtml#acd2db4da220479f456ab712130ed255c',1,'fcarouge::operator*(matrix&lt; Type, Row, Column &gt; lhs, arithmetic auto rhs)'],['../namespacefcarouge.xhtml#a56e2559ee22855fd69532dc43fe038ad',1,'fcarouge::operator*(arithmetic auto lhs, matrix&lt; Type, 1, Column &gt; rhs)'],['../namespacefcarouge.xhtml#a187a07dcf4d00a975909a9c2a7283b95',1,'fcarouge::operator*(const matrix&lt; Type, Row, Size &gt; &amp;lhs, const matrix&lt; Type, Size, Column &gt; &amp;rhs)'],['../namespacefcarouge.xhtml#a0647c4efb9c02b9ea365aacec50e4ae0',1,'fcarouge::operator*(matrix&lt; Type, Row, Column &gt; lhs, arithmetic auto rhs)'],['../namespacefcarouge.xhtml#a5f46009dfa013275132875c5be3ab85c',1,'fcarouge::operator*(matrix&lt; Type, Row, Size &gt; lhs, matrix&lt; Type, Size, 1 &gt; rhs)']]],
   ['operator_2a_3d_4',['operator*=',['../namespacefcarouge.xhtml#aa73759a941a3efd3355642460f4687a3',1,'fcarouge']]],
@@ -13,9 +13,9 @@ var searchData=
   ['operator_5b_5d_10',['operator[]',['../structfcarouge_1_1matrix.xhtml#aa75ec1cadd7153f42dd1de9e7c26e8e8',1,'fcarouge::matrix::operator[](auto index) const'],['../structfcarouge_1_1matrix.xhtml#a48534181438acd7b9655acdf51e9d766',1,'fcarouge::matrix::operator[](auto index) const'],['../structfcarouge_1_1matrix.xhtml#acb50b9f741eb141a526e0271ea98d6c2',1,'fcarouge::matrix::operator[](auto index) const']]],
   ['other_20examples_11',['Other Examples',['../index.xhtml#autotoc_md26',1,'']]],
   ['otherwise_12',['OTHERWISE',['../_l_i_c_e_n_s_e_8txt.xhtml#a902074fd32d20298f1fa263eed59f6c8',1,'LICENSE.txt']]],
-  ['our_20pledge_13',['Our Pledge',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md3',1,'']]],
-  ['our_20responsibilities_14',['Our Responsibilities',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md6',1,'']]],
-  ['our_20standards_15',['Our Standards',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md4',1,'']]],
+  ['our_20pledge_13',['Our Pledge',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md8',1,'']]],
+  ['our_20responsibilities_14',['Our Responsibilities',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md10',1,'']]],
+  ['our_20standards_15',['Our Standards',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#autotoc_md9',1,'']]],
   ['output_16',['output',['../classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2',1,'fcarouge::kalman']]],
   ['output_5fmodel_17',['output_model',['../classfcarouge_1_1kalman.xhtml#ab967071c592e9ad25f61b03a4ef7fe6e',1,'fcarouge::kalman']]],
   ['output_5funcertainty_18',['output_uncertainty',['../classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e',1,'fcarouge::kalman']]]
