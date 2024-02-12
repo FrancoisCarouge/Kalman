@@ -483,9 +483,10 @@ public:
   //! @return The control transition matrix G.
   //!
   //! @complexity Constant.
-  inline constexpr auto g() const
-      -> const input_control &requires(requires { filter.g; });
-  inline constexpr auto g() -> input_control &requires(requires { filter.g; });
+  inline constexpr const auto &g() const
+    requires(has_input_control<implementation>);
+  inline constexpr auto &g()
+    requires(has_input_control<implementation>);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -504,7 +505,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values)
-    requires(requires { filter.g; });
+    requires(has_input_control<implementation>);
 
   //! @brief Returns the gain matrix K.
   //!

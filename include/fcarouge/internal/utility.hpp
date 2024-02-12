@@ -62,6 +62,17 @@ concept has_input_method = requires(Filter filter) { filter.u(); };
 template <typename Filter>
 concept has_input = has_input_member<Filter> || has_input_method<Filter>;
 
+template <typename Filter>
+concept has_input_control_member = requires(Filter filter) { filter.g; };
+
+template <typename Filter>
+concept has_input_control_method = requires(Filter filter) { filter.g(); };
+
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_input_control =
+    has_input_control_member<Filter> || has_input_control_method<Filter>;
+
 struct empty {
   inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {
     // Constructs from anything for all initializations compatibility.

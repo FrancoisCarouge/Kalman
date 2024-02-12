@@ -73,7 +73,7 @@ struct std::formatter<
     format_context.advance_to(
         format_to(format_context.out(), R"({{"f": {}, )", filter.f()));
 
-    if constexpr (requires { filter.g(); }) {
+    if constexpr (fcarouge::internal::has_input_control_method<kalman>) {
       format_context.advance_to(
           format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
