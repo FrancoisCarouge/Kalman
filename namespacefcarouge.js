@@ -22,6 +22,7 @@ var namespacefcarouge =
     [ "arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
     [ "algebraic", "conceptfcarouge_1_1algebraic.xhtml", null ],
     [ "eigen", "conceptfcarouge_1_1eigen.xhtml", null ],
+    [ "has_input", "conceptfcarouge_1_1has__input.xhtml", null ],
     [ "column_vector", "namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8", null ],
     [ "empty_pack", "namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca", null ],
     [ "first_t", "namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210", null ],

@@ -43,7 +43,7 @@ var classfcarouge_1_1kalman =
     [ "r", "classfcarouge_1_1kalman.xhtml#a87538d3311670000ad7e5a344941d007", null ],
     [ "s", "classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b", null ],
     [ "transition", "classfcarouge_1_1kalman.xhtml#a2ed4b91a17ec129f7ccb8263d5255534", null ],
-    [ "u", "classfcarouge_1_1kalman.xhtml#a414a719477b1a63aa9660d0e52171a83", null ],
+    [ "u", "classfcarouge_1_1kalman.xhtml#ac5c4d632fd47bf0bab3432ce6aca35ef", null ],
     [ "update", "classfcarouge_1_1kalman.xhtml#a66aab654dafb41e90cebecf3c9c30b95", null ],
     [ "update", "classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5", null ],
     [ "x", "classfcarouge_1_1kalman.xhtml#a7cd68561479354508097867183b8bdef", null ],

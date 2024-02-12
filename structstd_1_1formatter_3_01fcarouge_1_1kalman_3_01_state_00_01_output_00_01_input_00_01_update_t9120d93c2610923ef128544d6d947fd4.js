@@ -1,5 +1,6 @@
 var structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4 =
 [
-    [ "format", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#a6c04c69d96c1770472950ad0cebf1f3e", null ],
+    [ "kalman", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#ae8611cdff25b87be29eea1968cf8be6b", null ],
+    [ "format", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#abd98cfda1f03a74c7e344285e5c0ea23", null ],
     [ "parse", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#ab75415d6c64f84ed42e54ea33b3fd87b", null ]
 ];

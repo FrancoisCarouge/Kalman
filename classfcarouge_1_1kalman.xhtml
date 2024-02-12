@@ -180,7 +180,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
 </div></td></tr>
 <tr class="memitem:ad24bd49bfc9877ef197ab7aec6302282" id="r_ad24bd49bfc9877ef197ab7aec6302282"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">state</a> &amp;</td></tr>
 <tr class="separator:ad24bd49bfc9877ef197ab7aec6302282"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,9 +192,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adebb582755e6b597f1d4171bbc236cc3" id="r_adebb582755e6b597f1d4171bbc236cc3"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#adebb582755e6b597f1d4171bbc236cc3">z</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">output</a> &amp;</td></tr>
 <tr class="memdesc:adebb582755e6b597f1d4171bbc236cc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last observation column vector Z.  <br /></td></tr>
 <tr class="separator:adebb582755e6b597f1d4171bbc236cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a414a719477b1a63aa9660d0e52171a83" id="r_a414a719477b1a63aa9660d0e52171a83"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a414a719477b1a63aa9660d0e52171a83">u</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">requires</a>(</td></tr>
-<tr class="memdesc:a414a719477b1a63aa9660d0e52171a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last control column vector U.  <br /></td></tr>
-<tr class="separator:a414a719477b1a63aa9660d0e52171a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c4d632fd47bf0bab3432ce6aca35ef" id="r_ac5c4d632fd47bf0bab3432ce6aca35ef"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ac5c4d632fd47bf0bab3432ce6aca35ef">u</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a></td></tr>
+<tr class="memdesc:ac5c4d632fd47bf0bab3432ce6aca35ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last control column vector U.  <br /></td></tr>
+<tr class="separator:ac5c4d632fd47bf0bab3432ce6aca35ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ae3ff5bfaa781f0b64ed8e88d804508" id="r_a3ae3ff5bfaa781f0b64ed8e88d804508"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">estimate_uncertainty</a> &amp;</td></tr>
 <tr class="memdesc:a3ae3ff5bfaa781f0b64ed8e88d804508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the estimated covariance matrix P.  <br /></td></tr>
 <tr class="separator:a3ae3ff5bfaa781f0b64ed8e88d804508"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -267,7 +267,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000028">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000030">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 </div></td></tr>
@@ -318,7 +318,7 @@ class fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &g
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This class could be usable in constant expressions if <code>std::function</code> could too. The polymorphic function wrapper was used in place of function pointers to enable default initialization from this class, captured member variables.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo:</a></b></dt><dd><p class="startdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Would it be beneficial to support initialization list for characteristics? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -471,7 +471,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div><div class="memdoc">
 
 <p>Type of the control column vector U. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a4">kf_2x1x1_rocket_altitude.cpp</a>.</dd>
 </dl>
 
@@ -495,7 +495,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Type of the control transition matrix G. </p>
 <p>Also known as B.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo:</a></b></dt><dd>Conditionally remove this member type when no input is present. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a6">kf_2x1x1_rocket_altitude.cpp</a>.</dd>
 </dl>
 
@@ -699,7 +699,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
 
 </div>
 </div>
@@ -1211,7 +1211,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The reference value of this implicit object filter parameter, i.e. <code>*this</code>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
 
 </div>
 </div>
@@ -1718,8 +1718,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="a414a719477b1a63aa9660d0e52171a83" name="a414a719477b1a63aa9660d0e52171a83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a414a719477b1a63aa9660d0e52171a83">&#9670;&#160;</a></span>u()</h2>
+<a id="ac5c4d632fd47bf0bab3432ce6aca35ef" name="ac5c4d632fd47bf0bab3432ce6aca35ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c4d632fd47bf0bab3432ce6aca35ef">&#9670;&#160;</a></span>u()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1730,10 +1730,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::u </td>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::u </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">input</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">requires</a>(</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -1747,11 +1747,6 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>This member function is not present when the filter has no input.</p>
 <dl class="section return"><dt>Returns</dt><dd>The last control column vector U.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00349">349</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  350</span>                                        { <a class="code hl_variable" href="classfcarouge_1_1kalman.xhtml#a445c99c395ca229e44806a3c044e5e13">filter</a>.u; });</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8hpp_source.xhtml#l00182">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::filter</a>.</p>
 
 </div>
 </div>
@@ -1829,7 +1824,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000029">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000031">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -1974,7 +1969,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>Returns the innovation column vector Y. </p>
 <dl class="section return"><dt>Returns</dt><dd>The innovation column vector Y.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000029">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
 
 </div>
 </div>
@@ -2034,7 +2029,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00182">182</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00488">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::g()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00486">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::g()</a>, <a class="el" href="classfcarouge_1_1kalman.xhtml#a53a4e6eb85b0c7e007654fcbcc7b6816">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::g()</a>, and <a class="el" href="kalman_8hpp_source.xhtml#l00349">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::u()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8hpp_source.xhtml#l00488">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::g()</a>, <a class="el" href="kalman_8hpp_source.xhtml#l00486">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::g()</a>, and <a class="el" href="classfcarouge_1_1kalman.xhtml#a53a4e6eb85b0c7e007654fcbcc7b6816">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::g()</a>.</p>
 
 </div>
 </div>
@@ -2048,7 +2043,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a></li>
-    <li class="footer">Generated on Mon Feb 12 2024 05:28:10 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Mon Feb 12 2024 05:33:01 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
