@@ -122,14 +122,14 @@ namespace fcarouge {
 //! @todo Would it be beneficial to support initialization list for
 //! characteristics?
 //! @todo Symmetrization support might be superfluous. How to confirm it is safe
-//! to remove?
+//! to remove? Optional?
 //! @todo Would we want to support smoothers?
 //! @todo How to add or associate constraints on the types and operation to
 //! support compilation and semantics?
 //! @todo Which constructors to support? Consider constructors? CTAD? Guides?
 //! @todo Prepare support for larger dataset recording for graphing, metrics of
 //! large test data to facilitate tuning.
-//! @todo Support filter generator? Integration? Reflection in C++...
+//! @todo Support filter generator from equation? Third party integration?
 //! @todo Compare performance of general filter with its equivalent generated?
 //! @todo Support ranges operator filter?
 //! @todo Support mux pipes https://github.com/joboccara/pipes operator filter?
@@ -140,12 +140,9 @@ namespace fcarouge {
 //! client code.
 //! @todo Should we provide the operator[] for state directly on the filter? Is
 //! the state X always what the user would want?
-//! @todo Consider if a fluent interface would be preferable for
-//! characteristics?
-//! @todo Consider additional characteristics method overloads?
-//! @todo A clear or reset member equivalent may be useful for real-time
-//! re-initializations but to what default?
-//! @todo Expand std::format support with standard arguments and Eigen3 types.
+//! @todo Should a fluent interface be useful in addition to the imperative and
+//! declarative paradigms support?
+//! @todo Expand std::format support with standard arguments and Eigen3 types?
 //! @todo Support, test complex number filters?
 //! @todo Use automatic (Eigen::AutoDiffScalar?), symbolic, numerical solvers to
 //! define the filter characteristics and simplify solving the dynamic system
@@ -159,7 +156,8 @@ namespace fcarouge {
 //! correlated noise sources, with default to null?
 //! @todo Can we implement Temporal Parallelization of Bayesian Smoothers, Simo
 //! Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez,
-//! https://arxiv.org/pdf/1905.13002.pdf ?
+//! https://arxiv.org/pdf/1905.13002.pdf ? GPU implementation? Parallel
+//! implementation?
 template <typename State = double, typename Output = double,
           typename Input = void, typename UpdateTypes = empty_pack,
           typename PredictionTypes = empty_pack>
@@ -258,6 +256,8 @@ public:
 
   //! @brief Move constructs a filter.
   //!
+  //! @warning Some filter types have a known move memory safety defect.
+  //!
   //! @details Move constructor. Constructs the filter with the contents of
   //! the `other` filter using move semantics (i.e. the data in `other`
   //! filter is moved from the other into this filter).
@@ -285,6 +285,8 @@ public:
   inline constexpr auto operator=(const kalman &other) -> kalman & = delete;
 
   //! @brief Move assignment operator.
+  //!
+  //! @warning Some filter types have a known move memory safety defect.
   //!
   //! @details Replaces the contents of the filter with those of the `other`
   //! filter using move semantics (i.e. the data in `other` filter is moved from
