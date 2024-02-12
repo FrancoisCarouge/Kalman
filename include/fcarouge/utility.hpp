@@ -76,6 +76,13 @@ concept eigen = internal::eigen<Type>;
 //! member and `u()` input method.
 template <typename Filter>
 concept has_input = internal::has_input<Filter>;
+
+//! @brief Filter input control support concept.
+//!
+//! @details The filter supports the input control related functionality:
+//! `input_control` type member and `g()` input method.
+template <typename Filter>
+concept has_input_control = internal::has_input_control<Filter>;
 //! @}
 
 //! @name Types

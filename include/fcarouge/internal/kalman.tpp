@@ -241,26 +241,29 @@ kalman<State, Output, Input, UpdateTypes, PredictionTypes>::h(
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] inline constexpr const auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::g() const
-    -> const input_control &requires(requires { filter.g; }) {
-      return filter.g;
-    }
+  requires(has_input_control<implementation>)
+{
+  return filter.g;
+}
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr auto kalman<State, Output, Input,
-                                                         UpdateTypes,
-                                                         PredictionTypes>::g()
-    -> input_control &requires(requires { filter.g; }) { return filter.g; }
+            "discarded.")]] inline constexpr auto &
+kalman<State, Output, Input, UpdateTypes, PredictionTypes>::g()
+  requires(has_input_control<implementation>)
+{
+  return filter.g;
+}
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
-inline constexpr void kalman<State, Output, Input, UpdateTypes,
-                             PredictionTypes>::g(const auto &value,
-                                                 const auto &...values)
-  requires(requires { filter.g; })
+inline constexpr void
+kalman<State, Output, Input, UpdateTypes, PredictionTypes>::g(
+    const auto &value, const auto &...values)
+  requires(has_input_control<implementation>)
 {
   using transition_control_function = decltype(filter.transition_control_g);
   filter.transition_control_g =
