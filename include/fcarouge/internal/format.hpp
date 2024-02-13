@@ -44,6 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <type_traits>
 
+//! @todo Type erase this to support all matching types?
 namespace fcarouge {
 template <typename, typename, typename, typename, typename> class kalman;
 } // namespace fcarouge
