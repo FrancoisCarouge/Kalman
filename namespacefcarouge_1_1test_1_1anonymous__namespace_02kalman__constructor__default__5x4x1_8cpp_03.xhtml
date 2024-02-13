@@ -193,7 +193,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00072">linalg.hpp:72</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000009">Test:</a></b></dt><dd>Verifies default values are initialized for multi-dimension filters, single input edge case. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000011">Test:</a></b></dt><dd>Verifies default values are initialized for multi-dimension filters, single input edge case. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman__constructor__default__5x4x1_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="kalman__constructor__default__5x4x1_8cpp_source.xhtml">kalman_constructor_default_5x4x1.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   51</span>                          {[] {</div>
@@ -211,7 +211,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"><span class="lineno">   63</span>  <span class="keyword">const</span> <span class="keyword">auto</span> z5x5{zero_v&lt;matrix&lt;5, 5&gt;&gt;};</div>
 <div class="line"><span class="lineno">   64</span> </div>
 <div class="line"><span class="lineno">   65</span>  assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a2e2b3d64520fb7e7476b6b8bbb0352e9">f</a>() == i5x5);</div>
-<div class="line"><span class="lineno">   66</span>  assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af725255de2d7dadcfcc4c8714d971234">g</a>() == i5x1);</div>
+<div class="line"><span class="lineno">   66</span>  assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6922273cf420a8f07b6c3d66db51a425">g</a>() == i5x1);</div>
 <div class="line"><span class="lineno">   67</span>  assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">h</a>() == i4x5);</div>
 <div class="line"><span class="lineno">   68</span>  assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">k</a>() == i5x4);</div>
 <div class="line"><span class="lineno">   69</span>  assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>() == i5x5);</div>
@@ -231,12 +231,12 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3ae3ff5bfaa781f0b64ed8e88d804508"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; const estimate_uncertainty &amp;</div><div class="ttdoc">Returns the estimated covariance matrix P.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3e7215ed1fde88e063b1bd59d3c8c6ae"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3e7215ed1fde88e063b1bd59d3c8c6ae">fcarouge::kalman::k</a></div><div class="ttdeci">constexpr auto k() const -&gt; const gain &amp;</div><div class="ttdoc">Returns the gain matrix K.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a41ff321ce607f830c7219340c7b95c54"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">fcarouge::kalman::y</a></div><div class="ttdeci">constexpr auto y() const -&gt; const innovation &amp;</div><div class="ttdoc">Returns the innovation column vector Y.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6922273cf420a8f07b6c3d66db51a425"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6922273cf420a8f07b6c3d66db51a425">fcarouge::kalman::g</a></div><div class="ttdeci">constexpr const auto &amp; g() const</div><div class="ttdoc">Returns the control transition matrix G.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6a32123e7ffbde8a17a60dfee6ff7e1b"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6a32123e7ffbde8a17a60dfee6ff7e1b">fcarouge::kalman::s</a></div><div class="ttdeci">constexpr auto s() const -&gt; const innovation_uncertainty &amp;</div><div class="ttdoc">Returns the innovation uncertainty matrix S.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ac5c4d632fd47bf0bab3432ce6aca35ef"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ac5c4d632fd47bf0bab3432ce6aca35ef">fcarouge::kalman::u</a></div><div class="ttdeci">constexpr const auto &amp; u() const</div><div class="ttdoc">Returns the last control column vector U.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acf923010d2576566b69acf82007924d9"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr auto r() const -&gt; const output_uncertainty &amp;</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad24bd49bfc9877ef197ab7aec6302282"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; const state &amp;</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_adebb582755e6b597f1d4171bbc236cc3"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#adebb582755e6b597f1d4171bbc236cc3">fcarouge::kalman::z</a></div><div class="ttdeci">constexpr auto z() const -&gt; const output &amp;</div><div class="ttdoc">Returns the last observation column vector Z.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af725255de2d7dadcfcc4c8714d971234"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af725255de2d7dadcfcc4c8714d971234">fcarouge::kalman::g</a></div><div class="ttdeci">constexpr auto g() const -&gt; const input_control &amp;requires(</div><div class="ttdoc">Returns the control transition matrix G.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00488">kalman.hpp:488</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afd28eccbb617441b0792ca0f3eadbb58"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afd28eccbb617441b0792ca0f3eadbb58">fcarouge::kalman::h</a></div><div class="ttdeci">constexpr auto h() const -&gt; const output_model &amp;</div><div class="ttdoc">Returns the observation transition matrix H.</div></div>
 </div><!-- fragment -->
 </div>
@@ -247,7 +247,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1test.xhtml">test</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x4x1_8cpp_03.xhtml">anonymous_namespace{kalman_constructor_default_5x4x1.cpp}</a></li>
-    <li class="footer">Generated on Tue Feb 13 2024 01:49:57 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Tue Feb 13 2024 01:51:46 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
