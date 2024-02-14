@@ -60,11 +60,11 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   const auto z4x4{zero_v<matrix<4, 4>>};
   const auto z5x1{zero_v<vector<5>>};
   const auto z5x5{zero_v<matrix<5, 5>>};
-  kalman filter_0;
+  kalman another_filter;
 
-  filter_0.f(z5x5);
+  another_filter.f(z5x5);
 
-  kalman filter{std::move(filter_0)};
+  decltype(another_filter) filter{std::move(another_filter)};
 
   assert(filter.f() == z5x5);
   assert(filter.g() == i5x3);

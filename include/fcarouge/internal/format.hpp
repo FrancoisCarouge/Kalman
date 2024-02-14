@@ -78,9 +78,13 @@ struct std::formatter<
           format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
 
-    format_context.advance_to(format_to(format_context.out(),
-                                        R"("h": {}, "k": {}, "p": {}, )",
-                                        filter.h(), filter.k(), filter.p()));
+    if constexpr (fcarouge::internal::has_output_model_method<kalman>) {
+      format_context.advance_to(
+          format_to(format_context.out(), R"("h": {}, )", filter.h()));
+    }
+
+    format_context.advance_to(format_to(
+        format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
 
     {
       constexpr auto end{fcarouge::internal::repack_s<PredictionTypes>};
