@@ -63,11 +63,11 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   kalman filter;
 
   {
-    kalman filter_0;
+    decltype(filter) another_filter;
 
-    filter_0.f(z5x5);
+    another_filter.f(z5x5);
 
-    filter = std::move(filter_0);
+    filter = std::move(another_filter);
   }
 
   assert(filter.f() == z5x5);

@@ -209,18 +209,20 @@ kalman<State, Output, Input, UpdateTypes, PredictionTypes>::f(
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned observation transition matrix H is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] inline constexpr const auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::h() const
-    -> const output_model & {
+  requires(has_output_model<implementation>)
+{
   return filter.h;
 }
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned observation transition matrix H is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] inline constexpr auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::h()
-    -> output_model & {
+  requires(has_output_model<implementation>)
+{
   return filter.h;
 }
 
@@ -228,7 +230,9 @@ template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::h(
-    const auto &value, const auto &...values) {
+    const auto &value, const auto &...values)
+  requires(has_output_model<implementation>)
+{
   if constexpr (std::is_convertible_v<decltype(value), output_model>) {
     filter.h = std::move(output_model{value, values...});
   } else {

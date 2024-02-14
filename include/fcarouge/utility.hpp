@@ -73,16 +73,23 @@ concept eigen = internal::eigen<Type>;
 //! @brief Filter input support concept.
 //!
 //! @details The filter supports the input related functionality: `input` type
-//! member and `u()` input method.
+//! member and `u()` method.
 template <typename Filter>
 concept has_input = internal::has_input<Filter>;
 
 //! @brief Filter input control support concept.
 //!
 //! @details The filter supports the input control related functionality:
-//! `input_control` type member and `g()` input method.
+//! `input_control` type member and `g()` method.
 template <typename Filter>
 concept has_input_control = internal::has_input_control<Filter>;
+
+//! @brief Filter output model support concept.
+//!
+//! @details The filter supports the output model related functionality:
+//! `output_model` type member and `h()` method.
+template <typename Filter>
+concept has_output_model = internal::has_output_model<Filter>;
 //! @}
 
 //! @name Types

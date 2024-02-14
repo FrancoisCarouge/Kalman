@@ -116,17 +116,13 @@ namespace fcarouge {
 //! pointers to enable default initialization from this class, captured member
 //! variables.
 //!
+//! @todo Make this class usable in constant expressions.
 //! @todo Is this filter restricted to Newton's equations of motion? That is
 //! only a discretized continuous-time kinematic filter? How about non-Newtonian
 //! systems?
-//! @todo Would it be beneficial to support initialization list for
-//! characteristics?
 //! @todo Symmetrization support might be superfluous. How to confirm it is safe
 //! to remove? Optional?
 //! @todo Would we want to support smoothers?
-//! @todo How to add or associate constraints on the types and operation to
-//! support compilation and semantics?
-//! @todo Which constructors to support? Consider constructors? CTAD? Guides?
 //! @todo Prepare support for larger dataset recording for graphing, metrics of
 //! large test data to facilitate tuning.
 //! @todo Support filter generator from equation? Third party integration?
@@ -454,8 +450,10 @@ public:
   //! @return The observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
-  inline constexpr auto h() const -> const output_model &;
-  inline constexpr auto h() -> output_model &;
+  inline constexpr const auto &h() const
+    requires(has_output_model<implementation>);
+  inline constexpr auto &h()
+    requires(has_output_model<implementation>);
 
   //! @brief Sets the observation transition matrix H.
   //!
@@ -476,7 +474,8 @@ public:
   //! observation transition matrix H.
   //!
   //! @complexity Constant.
-  inline constexpr void h(const auto &value, const auto &...values);
+  inline constexpr void h(const auto &value, const auto &...values)
+    requires(has_output_model<implementation>);
 
   //! @brief Returns the control transition matrix G.
   //!
