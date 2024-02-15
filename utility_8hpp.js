@@ -5,6 +5,7 @@ var utility_8hpp =
     [ "fcarouge::eigen", "conceptfcarouge_1_1eigen.xhtml", null ],
     [ "fcarouge::has_input", "conceptfcarouge_1_1has__input.xhtml", null ],
     [ "fcarouge::has_input_control", "conceptfcarouge_1_1has__input__control.xhtml", null ],
+    [ "fcarouge::has_output_model", "conceptfcarouge_1_1has__output__model.xhtml", null ],
     [ "empty_pack", "utility_8hpp.xhtml#af07a5637ebbb4bd8c0244134151732ca", null ],
     [ "first_t", "utility_8hpp.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210", null ],
     [ "pack", "utility_8hpp.xhtml#aa5a28afb4550bbcbd55d875351de6e27", null ],
