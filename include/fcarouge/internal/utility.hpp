@@ -84,6 +84,44 @@ template <typename Filter>
 concept has_output_model =
     has_output_model_member<Filter> || has_output_model_method<Filter>;
 
+// There is only one known way to do conditional member types: partial
+// specialization of class templates.
+template <typename Filter> struct conditional_input {};
+
+template <has_input Filter> struct conditional_input<Filter> {
+  //! @brief Type of the control column vector U.
+  //!
+  //! @details This member type is conditionally present. The presence of the
+  //! member depends on the filter capabilities.
+  using input = Filter::input;
+};
+
+template <typename Filter> struct conditional_input_control {};
+
+template <has_input_control Filter> struct conditional_input_control<Filter> {
+  //! @brief Type of the control transition matrix G.
+  //!
+  //! @details Also known as B. This member type is conditionally present. The
+  //! presence of the member depends on the filter capabilities.
+  using input_control = Filter::input_control;
+};
+
+template <typename Filter> struct conditional_output_model {};
+
+template <has_output_model Filter> struct conditional_output_model<Filter> {
+  //! @brief Type of the observation transition matrix H.
+  //!
+  //! @details Also known as the measurement transition matrix or C.
+  using output_model = Filter::output_model;
+};
+
+// The only way to have a conditional member type is to inherit from a template
+// specialization on the member type.
+template <typename Filter>
+struct conditional_member_types : public conditional_input<Filter>,
+                                  conditional_input_control<Filter>,
+                                  conditional_output_model<Filter> {};
+
 struct empty {
   inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {
     // Constructs from anything for all initializations compatibility.

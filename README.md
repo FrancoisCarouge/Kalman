@@ -202,9 +202,9 @@ class kalman
 | `gain` | x by z | Type of the gain matrix `k`. | *K*, *L* |
 | `innovation_uncertainty` | z by z | Type of the innovation uncertainty matrix `s`. | *S* |
 | `innovation` | z by 1 | Type of the innovation column vector `y`. | *Y* |
-| `input_control` | x by u | Type of the control transition matrix `g`. | *G*, *B* |
-| `input` | u by 1 | Type of the control column vector `u`. | *U* |
-| `output_model` | z by x | Type of the observation transition matrix `h`. | *H*, *C* |
+| `input_control` | x by u | Type of the control transition matrix `g`. This member type is defined only if the filter supports input control. | *G*, *B* |
+| `input` | u by 1 | Type of the control column vector `u`. This member type is defined only if the filter supports input. | *U* |
+| `output_model` | z by x | Type of the observation transition matrix `h`. This member type is defined only if the filter supports output model. | *H*, *C* |
 | `output_uncertainty` | z by z | Type of the observation, measurement noise covariance matrix `r`. | *R* |
 | `output` | z by 1 | Type of the observation column vector `z`. | *Z*, *Y*, *O* |
 | `process_uncertainty` | x by x | Type of the process noise covariance matrix `q`. | *Q* |
@@ -224,14 +224,14 @@ class kalman
 | Characteristic | Definition |
 | --- | --- |
 | `f` | Manages the state transition matrix *F*. Gets the value. Initializes and sets the value. Configures the callable object of expression `state_transition(const state &, const input &, const PredictionTypes &...)` to compute the value. The default value is the identity matrix. |
-| `g` | Manages the control transition matrix *G*. Gets the value. Initializes and sets the value. Configures the callable object of expression `input_control(const PredictionTypes &...)` to compute the value. The default value is the identity matrix. |
-| `h` | Manages the observation transition matrix *H*. Gets the value. Initializes and sets the value. Configures the callable object of expression `output_model(const state &, const UpdateTypes &...)` to compute the value. The default value is the identity matrix. |
+| `g` | Manages the control transition matrix *G*. Gets the value. Initializes and sets the value. Configures the callable object of expression `input_control(const PredictionTypes &...)` to compute the value. The default value is the identity matrix. This member function is defined only if the filter supports input control. |
+| `h` | Manages the observation transition matrix *H*. Gets the value. Initializes and sets the value. Configures the callable object of expression `output_model(const state &, const UpdateTypes &...)` to compute the value. The default value is the identity matrix. This member function is defined only if the filter supports output model. |
 | `k` | Manages the gain matrix *K*. Gets the value last computed during the update. The default value is the identity matrix. |
 | `p` | Manages the estimated covariance matrix *P*. Gets the value. Initializes and sets the value. The default value is the identity matrix. |
 | `q` | Manages the process noise covariance matrix *Q* from the process noise *w* expected value *E[wwᵀ]* and its variance *σ²* found by measuring, tuning, educated guesses of the noise. Gets the value. Initializes and sets the value. Configures the callable object of expression `process_uncertainty(const state &, const PredictionTypes &...)` to compute the value. The default value is the null matrix. |
 | `r` | Manages the observation, measurement noise covariance matrix *R* from the measurement noise *v* expected value *E[vvᵀ]* and its variance *σ²* found by measuring, tuning, educated guesses of the noise. Gets the value. Initializes and sets the value. Configures the callable object of expression `output_uncertainty(const state &, const output &, const UpdateTypes &...)` to compute the value. The default value is the null matrix. |
 | `s` | Manages the innovation uncertainty matrix *S*. Gets the value last computed during the update. The default value is the identity matrix. |
-| `u` | Manages the control column vector *U*. Gets the value last used in prediction. |
+| `u` | Manages the control column vector *U*. Gets the value last used in prediction. This member function is defined only if the filter supports input. |
 | `x` | Manages the state estimate column vector *X*. Gets the value. Initializes and sets the value. The default value is the null column vector. |
 | `y` | Manages the innovation column vector *Y*. Gets the value last computed during the update. The default value is the null column vector. |
 | `z` | Manages the observation column vector *Z*. Gets the value last used during the update. The default value is the null column vector. |

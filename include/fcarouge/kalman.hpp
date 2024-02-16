@@ -157,14 +157,16 @@ namespace fcarouge {
 template <typename State = double, typename Output = double,
           typename Input = void, typename UpdateTypes = empty_pack,
           typename PredictionTypes = empty_pack>
-class kalman final {
+class kalman final : public internal::conditional_member_types<internal::kalman<
+                         State, Output, Input, internal::repack_t<UpdateTypes>,
+                         internal::repack_t<PredictionTypes>>> {
 private:
   //! @name Private Member Types
   //! @{
   //! @brief Implementation details of the filter.
   //!
-  //! @brief The internal implementation unpacks the parameter packs from
-  //! tuple-like types which allows for multiple parameter pack deductions.
+  //! @details The internal implementation, filtering strategies, and presence
+  //! of members vary based on the configured filter.
   using implementation =
       internal::kalman<State, Output, Input, internal::repack_t<UpdateTypes>,
                        internal::repack_t<PredictionTypes>>;
@@ -187,11 +189,6 @@ public:
   //! @details Also known as Y or O.
   using output = implementation::output;
 
-  //! @brief Type of the control column vector U.
-  //!
-  //! @todo Conditionally remove this member type when no input is present.
-  using input = implementation::input;
-
   //! @brief Type of the estimated correlated variance matrix P.
   //!
   //! @details Also known as Σ.
@@ -207,18 +204,6 @@ public:
   //!
   //! @details Also known as the fundamental matrix, propagation, Φ, or A.
   using state_transition = implementation::state_transition;
-
-  //! @brief Type of the observation transition matrix H.
-  //!
-  //! @details Also known as the measurement transition matrix or C.
-  using output_model = implementation::output_model;
-
-  //! @brief Type of the control transition matrix G.
-  //!
-  //! @details Also known as B.
-  //!
-  //! @todo Conditionally remove this member type when no input is present.
-  using input_control = implementation::input_control;
 
   //! @brief Type of the gain matrix K.
   using gain = implementation::gain;
@@ -447,6 +432,9 @@ public:
 
   //! @brief Returns the observation transition matrix H.
   //!
+  //! @details This member function is not present when the filter has no output
+  //! model.
+  //!
   //! @return The observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
@@ -462,7 +450,8 @@ public:
   //! &...)`. For non-linear system, or extended filter, H is the Jacobian of
   //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
   //! contains the derivatives of the state observation function for every
-  //! element j in the state column vector X.
+  //! element j in the state column vector X. This member function is not
+  //! present when the filter has no output model.
   //!
   //! @param value The first copied initializer used to set the copied
   //! observation transition matrix H or the copied target Callable object
@@ -479,7 +468,8 @@ public:
 
   //! @brief Returns the control transition matrix G.
   //!
-  //! @details This member function is not present when the filter has no input.
+  //! @details This member function is not present when the filter has no input
+  //! control.
   //!
   //! @return The control transition matrix G.
   //!
@@ -493,7 +483,7 @@ public:
   //!
   //! @details The control transition matrix G is of type `input_control` and
   //! the function is of the form `input_control(const PredictionTypes &...)`.
-  //! This member function is not present when the filter has no input.
+  //! This member function is not present when the filter has no input control.
   //!
   //! @param value The first copied initializer used to set the copied control
   //! transition matrix G or the copied target Callable object (function object,

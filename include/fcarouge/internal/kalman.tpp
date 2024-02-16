@@ -233,8 +233,13 @@ kalman<State, Output, Input, UpdateTypes, PredictionTypes>::h(
     const auto &value, const auto &...values)
   requires(has_output_model<implementation>)
 {
-  if constexpr (std::is_convertible_v<decltype(value), output_model>) {
-    filter.h = std::move(output_model{value, values...});
+  if constexpr (std::is_convertible_v<
+                    decltype(value),
+                    typename kalman<State, Output, Input, UpdateTypes,
+                                    PredictionTypes>::output_model>) {
+    filter.h = std::move(
+        typename kalman<State, Output, Input, UpdateTypes,
+                        PredictionTypes>::output_model{value, values...});
   } else {
     using observation_state_function = decltype(filter.observation_state_h);
     filter.observation_state_h =
