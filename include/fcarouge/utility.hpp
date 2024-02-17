@@ -49,6 +49,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 //! @name Concepts
 //! @{
+
 //! @brief Arithmetic concept.
 //!
 //! @details Any integer or floating point type.
@@ -94,6 +95,7 @@ concept has_output_model = internal::has_output_model<Filter>;
 
 //! @name Types
 //! @{
+
 //! @brief Tuple-like pack type.
 //!
 //! @details An alternative to tuple-like types.
@@ -122,6 +124,7 @@ using quotient = internal::quotient<Numerator, Denominator>;
 
 //! @name Functions
 //! @{
+
 //! @brief A user-definable algebraic division solution.
 //!
 //! @details Implemented for known libraries. User-definable in other cases.
@@ -135,6 +138,7 @@ constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
 
 //! @name Algebraic Named Values
 //! @{
+
 //! @brief The identity matrix.
 //!
 //! @details User-defined.
