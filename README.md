@@ -6,7 +6,6 @@ Designing a filter is as much art as science, with the following recipe. Model t
 
 This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.
 
-- [Kalman Filter](#kalman-filter)
 - [Examples](#examples)
   - [1x1 Constant System Dynamic Model Filter](#1x1-constant-system-dynamic-model-filter)
   - [6x2 Constant Acceleration Dynamic Model Filter](#6x2-constant-acceleration-dynamic-model-filter)
