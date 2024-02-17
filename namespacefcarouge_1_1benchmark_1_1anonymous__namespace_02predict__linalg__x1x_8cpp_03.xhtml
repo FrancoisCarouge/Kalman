@@ -170,7 +170,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"><span class="lineno">   74</span>          <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">uv</a>[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position</a>] = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">uniformly_distributed</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">random_generator</a>);</div>
 <div class="line"><span class="lineno">   75</span>        });</div>
 <div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>    <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">kalman::input</a> u{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">uv</a>};</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keyword">typename</span> kalman::input u{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">uv</a>};</div>
 <div class="line"><span class="lineno">   78</span> </div>
 <div class="line"><span class="lineno">   79</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   80</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
@@ -184,9 +184,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"><span class="lineno">   88</span>        std::chrono::duration&lt;double&gt;{end - start}.count());</div>
 <div class="line"><span class="lineno">   89</span>  }</div>
 <div class="line"><span class="lineno">   90</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00160">kalman.hpp:160</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00160">kalman.hpp:162</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1a54f32cfaafea2d586a5f7b28898fec"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3eeea4d7d035531a0401395c7f2547e1"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3eeea4d7d035531a0401395c7f2547e1">fcarouge::kalman::input</a></div><div class="ttdeci">implementation::input input</div><div class="ttdoc">Type of the control column vector U.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00193">kalman.hpp:193</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00072">linalg.hpp:72</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::predict()</a>.</p>
@@ -225,7 +224,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></li><li class="navelem"><a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03.xhtml">anonymous_namespace{predict_linalg_x1x.cpp}</a></li>
-    <li class="footer">Generated on Fri Feb 16 2024 00:42:27 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Feb 17 2024 02:23:42 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

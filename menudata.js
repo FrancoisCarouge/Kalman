@@ -74,6 +74,7 @@ var menudata={children:[
 {text:"Classes",url:"annotated.xhtml",children:[
 {text:"Class List",url:"annotated.xhtml"},
 {text:"Class Index",url:"classes.xhtml"},
+{text:"Class Hierarchy",url:"inherits.xhtml"},
 {text:"Class Members",url:"functions.xhtml",children:[
 {text:"All",url:"functions.xhtml",children:[
 {text:"!",url:"functions.xhtml#index__21"},

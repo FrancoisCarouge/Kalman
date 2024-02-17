@@ -297,11 +297,11 @@ Member Types</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>innovation</code>   </td><td class="markdownTableBodyNone">z by 1   </td><td class="markdownTableBodyNone">Type of the innovation column vector <code>y</code>.   </td><td class="markdownTableBodyNone"><em>Y</em>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>input_control</code>   </td><td class="markdownTableBodyNone">x by u   </td><td class="markdownTableBodyNone">Type of the control transition matrix <code>g</code>.   </td><td class="markdownTableBodyNone"><em>G</em>, <em>B</em>    </td></tr>
+<td class="markdownTableBodyNone"><code>input_control</code>   </td><td class="markdownTableBodyNone">x by u   </td><td class="markdownTableBodyNone">Type of the control transition matrix <code>g</code>. This member type is defined only if the filter supports input control.   </td><td class="markdownTableBodyNone"><em>G</em>, <em>B</em>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>input</code>   </td><td class="markdownTableBodyNone">u by 1   </td><td class="markdownTableBodyNone">Type of the control column vector <code>u</code>.   </td><td class="markdownTableBodyNone"><em>U</em>    </td></tr>
+<td class="markdownTableBodyNone"><code>input</code>   </td><td class="markdownTableBodyNone">u by 1   </td><td class="markdownTableBodyNone">Type of the control column vector <code>u</code>. This member type is defined only if the filter supports input.   </td><td class="markdownTableBodyNone"><em>U</em>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>output_model</code>   </td><td class="markdownTableBodyNone">z by x   </td><td class="markdownTableBodyNone">Type of the observation transition matrix <code>h</code>.   </td><td class="markdownTableBodyNone"><em>H</em>, <em>C</em>    </td></tr>
+<td class="markdownTableBodyNone"><code>output_model</code>   </td><td class="markdownTableBodyNone">z by x   </td><td class="markdownTableBodyNone">Type of the observation transition matrix <code>h</code>. This member type is defined only if the filter supports output model.   </td><td class="markdownTableBodyNone"><em>H</em>, <em>C</em>    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>output_uncertainty</code>   </td><td class="markdownTableBodyNone">z by z   </td><td class="markdownTableBodyNone">Type of the observation, measurement noise covariance matrix <code>r</code>.   </td><td class="markdownTableBodyNone"><em>R</em>    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -333,9 +333,9 @@ Characteristics</h4>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>f</code>   </td><td class="markdownTableBodyNone">Manages the state transition matrix <em>F</em>. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>state_transition(const state &amp;, const input &amp;, const PredictionTypes &amp;...)</code> to compute the value. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>g</code>   </td><td class="markdownTableBodyNone">Manages the control transition matrix <em>G</em>. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>input_control(const PredictionTypes &amp;...)</code> to compute the value. The default value is the identity matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>g</code>   </td><td class="markdownTableBodyNone">Manages the control transition matrix <em>G</em>. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>input_control(const PredictionTypes &amp;...)</code> to compute the value. The default value is the identity matrix. This member function is defined only if the filter supports input control.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>h</code>   </td><td class="markdownTableBodyNone">Manages the observation transition matrix <em>H</em>. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>output_model(const state &amp;, const UpdateTypes &amp;...)</code> to compute the value. The default value is the identity matrix.    </td></tr>
+<td class="markdownTableBodyNone"><code>h</code>   </td><td class="markdownTableBodyNone">Manages the observation transition matrix <em>H</em>. Gets the value. Initializes and sets the value. Configures the callable object of expression <code>output_model(const state &amp;, const UpdateTypes &amp;...)</code> to compute the value. The default value is the identity matrix. This member function is defined only if the filter supports output model.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>k</code>   </td><td class="markdownTableBodyNone">Manages the gain matrix <em>K</em>. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -347,7 +347,7 @@ Characteristics</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>s</code>   </td><td class="markdownTableBodyNone">Manages the innovation uncertainty matrix <em>S</em>. Gets the value last computed during the update. The default value is the identity matrix.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>u</code>   </td><td class="markdownTableBodyNone">Manages the control column vector <em>U</em>. Gets the value last used in prediction.    </td></tr>
+<td class="markdownTableBodyNone"><code>u</code>   </td><td class="markdownTableBodyNone">Manages the control column vector <em>U</em>. Gets the value last used in prediction. This member function is defined only if the filter supports input.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>x</code>   </td><td class="markdownTableBodyNone">Manages the state estimate column vector <em>X</em>. Gets the value. Initializes and sets the value. The default value is the null column vector.    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -505,7 +505,7 @@ License</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Feb 16 2024 00:42:27 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Feb 17 2024 02:23:42 for Kalman by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
