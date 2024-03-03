@@ -58,6 +58,9 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
+
+//! @name Types
+//! @{
 //! @brief A generic Kalman filter.
 //!
 //! @details The Kalman filter is a Bayesian filter that uses multivariate
@@ -87,34 +90,9 @@ namespace fcarouge {
 //! require a linear algebra backend. Customization points and type injections
 //! allow for implementation tradeoffs.
 //!
-//! @tparam State The type template parameter of the state column vector x.
-//! State variables can be observed (measured), or hidden variables (inferred).
-//! This is the the mean of the multivariate Gaussian. Defaults to `double`.
-//! @tparam Output The type template parameter of the measurement column vector
-//! z. Defaults to `double`.
-//! @tparam Input The type template parameter of the control u. A `void` input
-//! type can be used for systems with no input control to disable all of the
-//! input control features, the control transition matrix G support, and the
-//! other related computations from the filter. Defaults to `void`.
-//! @tparam UpdateTypes The additional update function parameter types passed in
-//! through a tuple-like parameter type, composing zero or more types.
-//! Parameters such as delta times, variances, or linearized values. The
-//! parameters are propagated to the function objects used to compute the state
-//! observation H and the observation noise R matrices. The parameters are also
-//! propagated to the state observation function object h. Defaults to no
-//! parameter types, the empty pack.
-//! @tparam PredictionTypes The additional prediction function parameter types
-//! passed in through a tuple-like parameter type, composing zero or more types.
-//! Parameters such as delta times, variances, or linearized values. The
-//! parameters are propagated to the function objects used to compute the
-//! process noise Q, the state transition F, and the control transition G
-//! matrices. The parameters are also propagated to the state transition
-//! function object f. Defaults to no parameter types, the empty pack.
-//!
-//! @note This class could be usable in constant expressions if `std::function`
-//! could too. The polymorphic function wrapper was used in place of function
-//! pointers to enable default initialization from this class, captured member
-//! variables.
+//! @tparam Filter Exposition only. The deduced internal filter template
+//! parameter. Class template argument deduction (CTAD) figures out the filter
+//! type based on the declared configuration. See deduction guide.
 //!
 //! @todo Make this class usable in constant expressions.
 //! @todo Is this filter restricted to Newton's equations of motion? That is
@@ -154,12 +132,8 @@ namespace fcarouge {
 //! Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez,
 //! https://arxiv.org/pdf/1905.13002.pdf ? GPU implementation? Parallel
 //! implementation?
-template <typename State = double, typename Output = double,
-          typename Input = void, typename UpdateTypes = empty_pack,
-          typename PredictionTypes = empty_pack>
-class kalman final : public internal::conditional_member_types<internal::kalman<
-                         State, Output, Input, internal::repack_t<UpdateTypes>,
-                         internal::repack_t<PredictionTypes>>> {
+template <typename Filter>
+class kalman final : public internal::conditional_member_types<Filter> {
 private:
   //! @name Private Member Types
   //! @{
@@ -167,16 +141,18 @@ private:
   //! @brief Implementation details of the filter.
   //!
   //! @details The internal implementation, filtering strategies, and presence
-  //! of members vary based on the configured filter.
-  using implementation =
-      internal::kalman<State, Output, Input, internal::repack_t<UpdateTypes>,
-                       internal::repack_t<PredictionTypes>>;
+  //! of members vary based on the constructed, configured, declared, deduced
+  //! filter.
+  using implementation = Filter;
   //! @}
 
   //! @name Private Member Variables
   //! @{
 
   //! @brief Encapsulates the implementation details of the filter.
+  //!
+  //! @details Optionally exposes a variety of members and methods according to
+  //! the selected implementation.
   implementation filter;
   //! @}
 
@@ -221,10 +197,13 @@ public:
   //! @name Public Member Functions
   //! @{
 
-  //! @brief Constructs a Kalman filter without configuration.
+  //! @brief Constructs a Kalman filter from its declared configuration.
+  //!
+  //! @see Deduction guide for details.
   //!
   //! @complexity Constant.
-  inline constexpr kalman() = default;
+  template <typename... Arguments>
+  inline constexpr kalman(Arguments... arguments);
 
   //! @brief Copy constructs a filter.
   //!
@@ -335,7 +314,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr const auto &u() const
-    requires(has_input<implementation>);
+    requires(has_input<Filter>);
 
   //! @brief Returns the estimated covariance matrix P.
   //!
@@ -444,9 +423,9 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr const auto &h() const
-    requires(has_output_model<implementation>);
+    requires(has_output_model<Filter>);
   inline constexpr auto &h()
-    requires(has_output_model<implementation>);
+    requires(has_output_model<Filter>);
 
   //! @brief Sets the observation transition matrix H.
   //!
@@ -469,7 +448,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void h(const auto &value, const auto &...values)
-    requires(has_output_model<implementation>);
+    requires(has_output_model<Filter>);
 
   //! @brief Returns the control transition matrix G.
   //!
@@ -478,11 +457,13 @@ public:
   //!
   //! @return The control transition matrix G.
   //!
+  //! @todo Do we still need the non-const flavor?
+  //!
   //! @complexity Constant.
   inline constexpr const auto &g() const
-    requires(has_input_control<implementation>);
+    requires(has_input_control<Filter>);
   inline constexpr auto &g()
-    requires(has_input_control<implementation>);
+    requires(has_input_control<Filter>);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -501,7 +482,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values)
-    requires(has_input_control<implementation>);
+    requires(has_input_control<Filter>);
 
   //! @brief Returns the gain matrix K.
   //!
@@ -625,6 +606,54 @@ public:
   template <std::size_t Position> inline constexpr auto update() const;
   //! @}
 };
+
+//! @brief State type wrapper for filter declaration support.
+//!
+//! @todo Use alias from internal when Clang supports CTAD for alias?
+using internal::state;
+
+//! @brief Estimate uncertainty type wrapper for filter declaration support.
+using internal::estimate_uncertainty;
+
+//! @brief Output uncertainty type wrapper for filter declaration support.
+using internal::output_uncertainty;
+
+//! @brief Process uncertainty type wrapper for filter declaration support.
+using internal::process_uncertainty;
+
+//! @brief Input type wrapper for filter declaration support.
+using internal::input;
+
+//! @brief Output type wrapper for filter declaration support.
+using internal::output;
+
+//! @brief Output model type wrapper for filter declaration support.
+using internal::output_model;
+
+//! @brief Update types wrapper for filter declaration support.
+using internal::update_types;
+
+//! @brief Prediction types wrapper for filter declaration support.
+using internal::prediction_types;
+
+using internal::state_transition;
+//! @}
+
+//! @name Deduction Guides
+//! @{
+//! @brief Deduces the filter type from its declared configuration.
+//!
+//! @details The configuration arguments passed are used to determine at compile
+//! time the type of fiter to use. The objecive is to select the most performant
+//! filter within the defined configuraton parameters.
+//!
+//! @tparam Arguments The declarations of the filter configuration.
+//!
+//! @todo Should the parameter be named configurations?
+//! @todo Should the configuration examples, supports be documented here?
+template <typename... Arguments>
+kalman(Arguments... arguments) -> kalman<internal::filter_t<Arguments...>>;
+//! @}
 } // namespace fcarouge
 
 #include "internal/kalman.tpp"

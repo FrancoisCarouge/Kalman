@@ -90,8 +90,20 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
   inline constexpr explicit matrix(Type (&elements)[Row])
     requires(Row != 1 && Column == 1)
   {
+    // constexpr for?
     for (decltype(Row) i{0}; i < Row; ++i) {
       data[i][0] = elements[i];
+    }
+  }
+
+  inline constexpr explicit matrix(Type (&elements)[Row * Column])
+    requires(Row != 1 && Column != 1)
+  {
+    // constexpr for?
+    for (decltype(Row) i{0}; i < Row; ++i) {
+      for (decltype(Column) j{0}; j < Row; ++j) {
+        data[i][j] = elements[i * Column + j];
+      }
     }
   }
 
@@ -173,6 +185,7 @@ template <typename... Types, auto... Columns>
            ((Columns == first_v<Columns>) && ... && true))
 matrix(const Types (&...rows)[Columns])
     -> matrix<std::remove_cvref_t<first_t<Types...>>, sizeof...(Columns),
+              // first_v<Columns...>
               (Columns, ...)>;
 //! @}
 

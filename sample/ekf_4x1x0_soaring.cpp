@@ -7,6 +7,7 @@
 namespace fcarouge::sample {
 namespace {
 template <auto Size> using vector = column_vector<float, Size>;
+using state = fcarouge::state<vector<4>>;
 
 //! @brief ArduPilot plane soaring.
 //!
@@ -31,33 +32,35 @@ template <auto Size> using vector = column_vector<float, Size>;
 //!
 //! @todo Add a data set and assert for correctness of results.
 [[maybe_unused]] auto sample{[] {
-  // 4x1 extended filter with additional parameter for prediction: driftX [m],
-  // driftY [m]. Constant time step.
-  using state = vector<4>;
-  using output = float;
-  using no_input = void;
-  using kalman = kalman<state, output, no_input, std::tuple<float, float>,
-                        std::tuple<float, float>>;
-
-  kalman filter;
-
-  // Initialization
   const float trigger_strength{0};
   const float thermal_radius{80};
   const float thermal_position_x{5};
   const float thermal_position_y{0};
-  filter.x(trigger_strength, thermal_radius, thermal_position_x,
-           thermal_position_y);
-
   const float strength_covariance{0.0049F};
   const float radius_covariance{400};
   const float position_covariance{400};
-  filter.p(kalman::estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},
-                                        {0.F, radius_covariance, 0.F, 0.F},
-                                        {0.F, 0.F, position_covariance, 0.F},
-                                        {0.F, 0.F, 0.F, position_covariance}});
+  const float strength_noise{std::pow(0.001F, 2.F)};
+  const float distance_noise{std::pow(0.03F, 2.F)};
+  const float measure_noise{std::pow(0.45F, 2.F)};
 
-  // No process dynamics: F = ∂f/∂X = I4 Default.
+  // 4x1 extended filter with additional parameter for prediction: driftX [m],
+  // driftY [m]. Constant time step.
+  kalman filter{state{trigger_strength, thermal_radius, thermal_position_x,
+                      thermal_position_y},
+                output<float>,
+                estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},
+                                     {0.F, radius_covariance, 0.F, 0.F},
+                                     {0.F, 0.F, position_covariance, 0.F},
+                                     {0.F, 0.F, 0.F, position_covariance}},
+                process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},
+                                    {0.F, distance_noise, 0.F, 0.F},
+                                    {0.F, 0.F, distance_noise, 0.F},
+                                    {0.F, 0.F, 0.F, distance_noise}},
+                output_uncertainty{measure_noise},
+                // No process dynamics: F = ∂f/∂X = I4 Default.
+                update_types<float, float>, prediction_types<float, float>};
+
+  using kalman = decltype(filter);
 
   filter.transition([](const kalman::state &x, const float &drift_x,
                        const float &drift_y) -> kalman::state {
@@ -65,16 +68,6 @@ template <auto Size> using vector = column_vector<float, Size>;
     const kalman::state drifts{0.F, 0.F, drift_x, drift_y};
     return x + drifts;
   });
-
-  const float strength_noise{std::pow(0.001F, 2.F)};
-  const float distance_noise{std::pow(0.03F, 2.F)};
-  filter.q(kalman::process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},
-                                       {0.F, distance_noise, 0.F, 0.F},
-                                       {0.F, 0.F, distance_noise, 0.F},
-                                       {0.F, 0.F, 0.F, distance_noise}});
-
-  const float measure_noise{std::pow(0.45F, 2.F)};
-  filter.r(kalman::output_uncertainty{measure_noise});
 
   // Observation Z: [w] vertical air velocity w at the aircraft’s
   // position w.r.t. the thermal center [m.s^-1].

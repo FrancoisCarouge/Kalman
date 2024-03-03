@@ -34,12 +34,10 @@ template <auto Size> using vector = column_vector<float, Size>;
 //! @example kf_8x4x0_deep_sort_bounding_box.cpp
 [[maybe_unused]] auto sample{[] {
   // A 8x4x0 filter, constant velocity, linear.
-  using state = vector<8>;
-  using output = vector<4>;
-  using no_input = void;
-  using kalman = kalman<state, output, no_input>;
+  kalman filter{state{vector<8>{0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F}},
+                output<vector<4>>};
 
-  kalman filter;
+  using kalman = decltype(filter);
 
   // A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT's
   // MOT16 sample, tracker #201.
@@ -158,12 +156,12 @@ template <auto Size> using vector = column_vector<float, Size>;
   const float velocity_weight{1.F / 160.F};
 
   filter.p(kalman::estimate_uncertainty{
-      state{2 * position_weight * initial_box(3),
-            2 * position_weight * initial_box(3), 1e-2F,
-            2 * position_weight * initial_box(3),
-            10 * velocity_weight * initial_box(3),
-            10 * velocity_weight * initial_box(3), 1e-5F,
-            10 * velocity_weight * initial_box(3)}
+      vector<8>{2 * position_weight * initial_box(3),
+                2 * position_weight * initial_box(3), 1e-2F,
+                2 * position_weight * initial_box(3),
+                10 * velocity_weight * initial_box(3),
+                10 * velocity_weight * initial_box(3), 1e-5F,
+                10 * velocity_weight * initial_box(3)}
           .array()
           .square()
           .matrix()
@@ -184,14 +182,14 @@ template <auto Size> using vector = column_vector<float, Size>;
 
   filter.q([position_weight, velocity_weight](
                const kalman::state &x) -> kalman::process_uncertainty {
-    return state{position_weight * x(3),
-                 position_weight * x(3),
-                 1e-2F,
-                 position_weight * x(3),
-                 velocity_weight * x(3),
-                 velocity_weight * x(3),
-                 1e-5F,
-                 velocity_weight * x(3)}
+    return vector<8>{position_weight * x(3),
+                     position_weight * x(3),
+                     1e-2F,
+                     position_weight * x(3),
+                     velocity_weight * x(3),
+                     velocity_weight * x(3),
+                     1e-5F,
+                     velocity_weight * x(3)}
         .array()
         .square()
         .matrix()
@@ -203,17 +201,17 @@ template <auto Size> using vector = column_vector<float, Size>;
 
   // Measure and Update
   // Direct linear observation transition model.
-  filter.h(kalman::output_model{{1.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F},
-                                {0.F, 1.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F},
-                                {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, 0.F, 0.F},
-                                {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, 0.F}});
+  // filter.h(kalman::output_model{{1.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F},
+  //                               {0.F, 1.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F},
+  //                               {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, 0.F, 0.F},
+  //                               {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, 0.F}});
 
   // Observation, measurement noise covariance.
   filter.r([position_weight](const kalman::state &x,
                              [[maybe_unused]] const kalman::output &z)
                -> kalman::output_uncertainty {
-    return output{position_weight * x(3), position_weight * x(3), 1e-1F,
-                  position_weight * x(3)}
+    return vector<4>{position_weight * x(3), position_weight * x(3), 1e-1F,
+                     position_weight * x(3)}
         .array()
         .square()
         .matrix()

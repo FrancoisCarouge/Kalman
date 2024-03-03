@@ -84,6 +84,13 @@ template <typename Filter>
 concept has_output_model =
     has_output_model_member<Filter> || has_output_model_method<Filter>;
 
+template <typename Filter>
+concept has_prediction_types =
+    requires() { typename Filter::prediction_types; };
+
+template <typename Filter>
+concept has_update_types = requires() { typename Filter::update_types; };
+
 // There is only one known way to do conditional member types: partial
 // specialization of class templates.
 template <typename Filter> struct conditional_input {};
@@ -111,7 +118,8 @@ template <typename Filter> struct conditional_output_model {};
 template <has_output_model Filter> struct conditional_output_model<Filter> {
   //! @brief Type of the observation transition matrix H.
   //!
-  //! @details Also known as the measurement transition matrix or C.
+  //! @details Also known as the measurement transition matrix or C. The
+  //! presence of the member depends on the filter capabilities.
   using output_model = Filter::output_model;
 };
 
@@ -121,12 +129,6 @@ template <typename Filter>
 struct conditional_member_types : public conditional_input<Filter>,
                                   conditional_input_control<Filter>,
                                   conditional_output_model<Filter> {};
-
-struct empty {
-  inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {
-    // Constructs from anything for all initializations compatibility.
-  }
-};
 
 template <typename...> struct pack {};
 
