@@ -47,7 +47,7 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_sample_${NAME}_driver>)
 endforeach()
 
-foreach(BACKEND IN ITEMS "eigen" "naive")
+foreach(BACKEND IN ITEMS "eigen" "eigen_row" "naive")
   foreach(SAMPLE "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp")
     get_filename_component(NAME ${SAMPLE} NAME_WE)
     add_executable(kalman_sample_${BACKEND}_${NAME}_driver ${SAMPLE})
@@ -61,7 +61,7 @@ foreach(BACKEND IN ITEMS "eigen" "naive")
   endforeach()
 endforeach()
 
-foreach(BACKEND IN ITEMS "eigen")
+foreach(BACKEND IN ITEMS "eigen" "eigen_row")
   foreach(SAMPLE "kf_6x2x0_vehicle_location.cpp"
                  "kf_8x4x0_deep_sort_bounding_box.cpp")
     get_filename_component(NAME ${SAMPLE} NAME_WE)

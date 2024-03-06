@@ -72,7 +72,7 @@ for RESULT in ${RESULTS}; do
 done
 
 # Further data presentation as CSV for gnuplot.
-for BACKEND in "eigen"; do
+for BACKEND in "eigen" "eigen_row"; do
   for STATE in {1..32}; do
     for OUTPUT in {1..32}; do
       echo -n "${STATE}, ${OUTPUT}, " >> "/tmp/kalman/update_${BACKEND}.csv"

@@ -54,7 +54,7 @@ foreach(
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
 endforeach()
 
-foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
+foreach(BACKEND IN ITEMS "eigen" "eigen_row" "lazy" "naive")
   foreach(
     TEST
     "linalg_addition.cpp"
@@ -88,7 +88,7 @@ foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
   endforeach()
 endforeach()
 
-foreach(BACKEND IN ITEMS "eigen")
+foreach(BACKEND IN ITEMS "eigen" "eigen_row")
   foreach(
     TEST
     "kalman_assign_move_5x4x3.cpp"

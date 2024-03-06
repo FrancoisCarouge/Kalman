@@ -70,7 +70,7 @@ foreach(BENCHMARK "baseline.cpp" "predict_1x1x0.cpp" "predict_1x1x1.cpp"
             "--benchmark_out=${NAME}.json")
 endforeach()
 
-foreach(BACKEND IN ITEMS "eigen" "naive")
+foreach(BACKEND IN ITEMS "eigen" "eigen_row" "naive")
   foreach(STATE_SIZE RANGE 1 2)
     foreach(INPUT_SIZE RANGE 1 2)
       configure_file(predict_linalg_x1x.cpp
@@ -97,7 +97,7 @@ foreach(BACKEND IN ITEMS "eigen" "naive")
   endforeach()
 endforeach()
 
-foreach(BACKEND IN ITEMS "eigen")
+foreach(BACKEND IN ITEMS "eigen" "eigen_row")
   foreach(STATE_SIZE RANGE 1 2)
     foreach(OUTPUT_SIZE RANGE 1 2)
       configure_file(update_linalg_xx0.cpp
