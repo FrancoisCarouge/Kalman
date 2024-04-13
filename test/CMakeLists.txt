@@ -54,7 +54,7 @@ foreach(
                CXX_EXTENSIONS OFF
                INTERPROCEDURAL_OPTIMIZATION TRUE)
   target_link_libraries(kalman_test_${NAME}_driver
-                        PRIVATE kalman kalman_main kalman_print kalman_options)
+                        PRIVATE kalman kalman_main kalman_options kalman_print)
   separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
   add_test(NAME kalman_test_${NAME}
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
