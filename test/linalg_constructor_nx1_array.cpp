@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the initializer lists constructor.
+//! @test Verifies the array constructor.
 //!
 //! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
