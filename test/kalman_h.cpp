@@ -43,10 +43,10 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the observation transition matrix H management overloads for
-//! the default filter type.
+//! supported filter types.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<>;
   kalman filter;
+  using kalman = decltype(filter);
 
   assert(filter.h() == 1);
 
