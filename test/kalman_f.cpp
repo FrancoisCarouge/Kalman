@@ -45,8 +45,8 @@ namespace {
 //! @test Verifies the state transition matrix F management overloads for
 //! the default filter type.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<>;
   kalman filter;
+  using kalman = decltype(filter);
 
   assert(filter.f() == 1);
 
