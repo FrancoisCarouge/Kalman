@@ -46,6 +46,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
+//! @todo Remove the dependency on `std::initializer_list` if possible?
+#include <initializer_list>
+
 namespace fcarouge {
 //! @name Algebraic Types
 //! @{
@@ -90,25 +93,38 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
   inline constexpr explicit matrix(Type (&elements)[Row])
     requires(Row != 1 && Column == 1)
   {
+    //! @todo Perhaps this is too naive and can be improved?
     for (decltype(Row) i{0}; i < Row; ++i) {
       data[i][0] = elements[i];
     }
   }
 
   template <typename... Types, auto... Columns>
-  matrix([[maybe_unused]] const Types (&...rows)[Columns])
+  matrix(const Types (&...rows)[Columns])
     requires(std::conjunction_v<std::is_same<Type, Types>...> &&
              ((Columns == Column) && ... && true))
   {
     decltype(Row) i{0};
     (
-        [&]([[maybe_unused]] auto row) {
+        [&](const auto &row) {
           for (decltype(Column) j{0}; j < Column; ++j) {
             data[i][j] = row[j];
           }
           ++i;
         }(rows),
         ...);
+  }
+
+  inline constexpr explicit matrix(
+      std::initializer_list<std::initializer_list<Type>> rows) {
+
+    for (decltype(Row) i{0}; const auto &row : rows) {
+      for (decltype(Column) j{0}; const auto &element : row) {
+        data[i][j] = element;
+        ++j;
+      }
+      ++i;
+    }
   }
 
   [[nodiscard]] inline constexpr explicit(false) operator Type() const
@@ -173,6 +189,7 @@ template <typename... Types, auto... Columns>
            ((Columns == first_v<Columns>) && ... && true))
 matrix(const Types (&...rows)[Columns])
     -> matrix<std::remove_cvref_t<first_t<Types...>>, sizeof...(Columns),
+              //! @todo Should this be `first_v<Columns...>` instead?
               (Columns, ...)>;
 //! @}
 
