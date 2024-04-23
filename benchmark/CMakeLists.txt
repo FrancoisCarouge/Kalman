@@ -45,12 +45,18 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES GTest)
 FetchContent_MakeAvailable(google_test)
 
+message(STATUS "VERSION: ${CMAKE_CXX_STANDARD}")
+
+set(CMAKE_CXX_STANDARD 20)
+
 FetchContent_Declare(
   google_benchmark
   GIT_REPOSITORY "https://github.com/google/benchmark"
   GIT_TAG "main"
   FIND_PACKAGE_ARGS NAMES benchmark)
 FetchContent_MakeAvailable(google_benchmark)
+
+message(STATUS "VERSION: ${CMAKE_CXX_STANDARD}")
 
 set(PROCESSOR_AFFINITY TRUE)
 
