@@ -45,10 +45,11 @@ jobs:
         sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         sudo apt update
         sudo apt upgrade
-        sudo apt install g++-13
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 17 all
+        sudo apt install '${{ matrix.packages }}'
+      # sudo apt install g++-13
+      # wget https://apt.llvm.org/llvm.sh
+      # chmod +x llvm.sh
+      # sudo ./llvm.sh 17 all
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
