@@ -106,35 +106,3 @@ foreach(BACKEND IN ITEMS "eigen" "naive")
     endforeach()
   endforeach()
 endforeach()
-
-foreach(BACKEND IN ITEMS "eigen")
-  foreach(STATE_SIZE RANGE 1 2)
-    foreach(OUTPUT_SIZE RANGE 1 2)
-      configure_file(update_linalg_xx0.cpp
-                     update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
-      add_executable(
-        kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
-        update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0.cpp)
-      target_include_directories(
-        kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
-        PRIVATE "include")
-      set_target_properties(
-        kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
-        PROPERTIES CXX_STANDARD 23
-                   CXX_EXTENSIONS OFF
-                   INTERPROCEDURAL_OPTIMIZATION TRUE)
-      target_link_libraries(
-        kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver
-        PRIVATE benchmark::benchmark benchmark::benchmark_main kalman
-                kalman_linalg_${BACKEND} kalman_options)
-      separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-      add_test(
-        NAME kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0
-        COMMAND
-          ${TEST_COMMAND}
-          $<TARGET_FILE:kalman_benchmark_update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0_driver>
-          "--benchmark_out=update_${BACKEND}_${STATE_SIZE}x${OUTPUT_SIZE}x0.json"
-      )
-    endforeach()
-  endforeach()
-endforeach()

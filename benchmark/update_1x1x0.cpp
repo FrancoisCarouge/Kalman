@@ -49,15 +49,14 @@ namespace fcarouge::benchmark {
 namespace {
 //! @benchmark Measure update, empty benchmark performance.
 void bench(::benchmark::State &benchmark_state) {
-  using kalman = kalman<float, float>;
-
-  kalman filter;
+  kalman filter{state{0.F}, output<float>};
   std::random_device random_device;
   std::mt19937 random_generator{random_device()};
   std::uniform_real_distribution<float> uniformly_distributed;
 
   for (auto _ : benchmark_state) {
-    const typename kalman::output z{uniformly_distributed(random_generator)};
+    const typename decltype(filter)::output z{
+        uniformly_distributed(random_generator)};
 
     ::benchmark::ClobberMemory();
     const auto start{clock::now()};
