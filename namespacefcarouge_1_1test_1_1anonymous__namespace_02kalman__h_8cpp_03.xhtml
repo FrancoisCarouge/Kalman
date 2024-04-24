@@ -116,12 +116,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000018">Test:</a></b></dt><dd>Verifies the observation transition matrix H management overloads for the default filter type. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000018">Test:</a></b></dt><dd>Verifies the observation transition matrix H management overloads for supported filter types. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman__h_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="kalman__h_8cpp_source.xhtml">kalman_h.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   47</span>                          {[] {</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">kalman&lt;&gt;</a>;</div>
-<div class="line"><span class="lineno">   49</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
+<div class="line"><span class="lineno">   48</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> = <span class="keyword">decltype</span>(filter);</div>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a204057628097c64e926affd69a530861">h</a>() == 1);</div>
 <div class="line"><span class="lineno">   52</span> </div>
