@@ -21,6 +21,7 @@ var structfcarouge_1_1matrix =
     [ "matrix", "structfcarouge_1_1matrix.xhtml#aaf4b255fa2bf4cfaadfd808e6fb5af83", null ],
     [ "matrix", "structfcarouge_1_1matrix.xhtml#a4e09c0fca4bfad49789dad31102f07d7", null ],
     [ "matrix", "structfcarouge_1_1matrix.xhtml#a9bcb22d925538d8f2a9895364acf765c", null ],
+    [ "matrix", "structfcarouge_1_1matrix.xhtml#ad22e3e64beb6efc1f067401f8e3ded62", null ],
     [ "begin", "structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b", null ],
     [ "clone", "structfcarouge_1_1matrix.xhtml#a3d43f3ebeab72104b65bc49131d293fc", null ],
     [ "end", "structfcarouge_1_1matrix.xhtml#a35e3b25e4af7bfcc97c5bdc3446a4c01", null ],
