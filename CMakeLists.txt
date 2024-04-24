@@ -55,6 +55,7 @@ include(CPack)
 include(CTest)
 include(GNUInstallDirs)
 
+add_subdirectory("benchmark")
 add_subdirectory("cmake")
 add_subdirectory("include")
 add_subdirectory("linalg")
