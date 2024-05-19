@@ -55,12 +55,38 @@ concept eigen = requires { typename Type::PlainMatrix; };
 template <typename Filter>
 concept has_input_member = requires(Filter filter) { filter.u; };
 
+//! @todo Is the _method concept extraneous or incorrect? Explain the
+//! shortcoming?
+
 template <typename Filter>
 concept has_input_method = requires(Filter filter) { filter.u(); };
 
 //! @todo Shorten when MSVC has better if-constexpr-requires support.
 template <typename Filter>
 concept has_input = has_input_member<Filter> || has_input_method<Filter>;
+
+template <typename Filter>
+concept has_process_uncertainty_member = requires(Filter filter) { filter.q; };
+
+template <typename Filter>
+concept has_process_uncertainty_method =
+    requires(Filter filter) { filter.q(); };
+
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_process_uncertainty = has_process_uncertainty_member<Filter> ||
+                                  has_process_uncertainty_method<Filter>;
+
+template <typename Filter>
+concept has_output_uncertainty_member = requires(Filter filter) { filter.r; };
+
+template <typename Filter>
+concept has_output_uncertainty_method = requires(Filter filter) { filter.r(); };
+
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_output_uncertainty = has_output_uncertainty_member<Filter> ||
+                                 has_output_uncertainty_method<Filter>;
 
 template <typename Filter>
 concept has_input_control_member = requires(Filter filter) { filter.g; };
@@ -72,6 +98,17 @@ concept has_input_control_method = requires(Filter filter) { filter.g(); };
 template <typename Filter>
 concept has_input_control =
     has_input_control_member<Filter> || has_input_control_method<Filter>;
+
+template <typename Filter>
+concept has_state_transition_member = requires(Filter filter) { filter.f; };
+
+template <typename Filter>
+concept has_state_transition_method = requires(Filter filter) { filter.f(); };
+
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_state_transition =
+    has_state_transition_member<Filter> || has_state_transition_method<Filter>;
 
 template <typename Filter>
 concept has_output_model_member = requires(Filter filter) { filter.h; };
@@ -111,8 +148,35 @@ template <typename Filter> struct conditional_output_model {};
 template <has_output_model Filter> struct conditional_output_model<Filter> {
   //! @brief Type of the observation transition matrix H.
   //!
-  //! @details Also known as the measurement transition matrix or C.
+  //! @details Also known as the measurement transition matrix or C. The
+  //! presence of the member depends on the filter capabilities.
   using output_model = Filter::output_model;
+};
+
+template <typename Filter> struct conditional_process_uncertainty {};
+
+template <has_process_uncertainty Filter>
+struct conditional_process_uncertainty<Filter> {
+  //! @brief Type of the process noise correlated variance matrix Q.
+  using process_uncertainty = Filter::process_uncertainty;
+};
+
+template <typename Filter> struct conditional_output_uncertainty {};
+
+template <has_output_uncertainty Filter>
+struct conditional_output_uncertainty<Filter> {
+  //! @brief Type of the observation noise correlated variance matrix R.
+  using output_uncertainty = Filter::output_uncertainty;
+};
+
+template <typename Filter> struct conditional_state_transition {};
+
+template <has_state_transition Filter>
+struct conditional_state_transition<Filter> {
+  //! @brief Type of the state transition matrix F.
+  //!
+  //! @details Also known as the fundamental matrix, propagation, Φ, or A.
+  using state_transition = Filter::state_transition;
 };
 
 // The only way to have a conditional member type is to inherit from a template
@@ -120,7 +184,10 @@ template <has_output_model Filter> struct conditional_output_model<Filter> {
 template <typename Filter>
 struct conditional_member_types : public conditional_input<Filter>,
                                   conditional_input_control<Filter>,
-                                  conditional_output_model<Filter> {};
+                                  conditional_output_model<Filter>,
+                                  conditional_process_uncertainty<Filter>,
+                                  conditional_output_uncertainty<Filter>,
+                                  conditional_state_transition<Filter> {};
 
 struct empty {
   inline constexpr explicit empty([[maybe_unused]] auto &&...any) noexcept {

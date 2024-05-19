@@ -167,7 +167,8 @@ private:
   //! @brief Implementation details of the filter.
   //!
   //! @details The internal implementation, filtering strategies, and presence
-  //! of members vary based on the configured filter.
+  //! of members vary based on the constructed, configured, declared, deduced
+  //! filter.
   using implementation =
       internal::kalman<State, Output, Input, internal::repack_t<UpdateTypes>,
                        internal::repack_t<PredictionTypes>>;
@@ -177,6 +178,9 @@ private:
   //! @{
 
   //! @brief Encapsulates the implementation details of the filter.
+  //!
+  //! @details Optionally exposes a variety of members and methods according to
+  //! the selected implementation.
   implementation filter;
   //! @}
 
@@ -196,17 +200,6 @@ public:
   //!
   //! @details Also known as Σ.
   using estimate_uncertainty = implementation::estimate_uncertainty;
-
-  //! @brief Type of the process noise correlated variance matrix Q.
-  using process_uncertainty = implementation::process_uncertainty;
-
-  //! @brief Type of the observation noise correlated variance matrix R.
-  using output_uncertainty = implementation::output_uncertainty;
-
-  //! @brief Type of the state transition matrix F.
-  //!
-  //! @details Also known as the fundamental matrix, propagation, Φ, or A.
-  using state_transition = implementation::state_transition;
 
   //! @brief Type of the gain matrix K.
   using gain = implementation::gain;
@@ -360,8 +353,10 @@ public:
   //! @return The process noise correlated variance matrix Q.
   //!
   //! @complexity Constant.
-  inline constexpr auto q() const -> const process_uncertainty &;
-  inline constexpr auto q() -> process_uncertainty &;
+  inline constexpr const auto &q() const
+    requires(has_process_uncertainty<implementation>);
+  inline constexpr auto &q()
+    requires(has_process_uncertainty<implementation>);
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
@@ -377,7 +372,8 @@ public:
   //! process noise covariance matrix Q.
   //!
   //! @complexity Constant.
-  inline constexpr void q(const auto &value, const auto &...values);
+  inline constexpr void q(const auto &value, const auto &...values)
+    requires(has_process_uncertainty<implementation>);
 
   //! @brief Returns the observation noise covariance
   //! matrix R.
@@ -387,8 +383,10 @@ public:
   //! @return The observation noise correlated variance matrix R.
   //!
   //! @complexity Constant.
-  inline constexpr auto r() const -> const output_uncertainty &;
-  inline constexpr auto r() -> output_uncertainty &;
+  inline constexpr const auto &r() const
+    requires(has_output_uncertainty<implementation>);
+  inline constexpr auto &r()
+    requires(has_output_uncertainty<implementation>);
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
@@ -404,15 +402,18 @@ public:
   //! observation noise covariance matrix R.
   //!
   //! @complexity Constant.
-  inline constexpr void r(const auto &value, const auto &...values);
+  inline constexpr void r(const auto &value, const auto &...values)
+    requires(has_output_uncertainty<implementation>);
 
   //! @brief Returns the state transition matrix F.
   //!
   //! @return The state transition matrix F.
   //!
   //! @complexity Constant.
-  inline constexpr auto f() const -> const state_transition &;
-  inline constexpr auto f() -> state_transition &;
+  inline constexpr const auto &f() const
+    requires(has_state_transition<implementation>);
+  inline constexpr auto &f()
+    requires(has_state_transition<implementation>);
 
   //! @brief Sets the state transition matrix F.
   //!
@@ -433,7 +434,8 @@ public:
   //! state transition matrix F.
   //!
   //! @complexity Constant.
-  inline constexpr void f(const auto &value, const auto &...values);
+  inline constexpr void f(const auto &value, const auto &...values)
+    requires(has_state_transition<implementation>);
 
   //! @brief Returns the observation transition matrix H.
   //!

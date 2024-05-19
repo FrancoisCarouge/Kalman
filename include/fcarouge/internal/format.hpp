@@ -70,8 +70,14 @@ struct std::formatter<
   auto format(const kalman &filter,
               std::basic_format_context<OutputIt, Char> &format_context) const
       -> OutputIt {
+
     format_context.advance_to(
-        format_to(format_context.out(), R"({{"f": {}, )", filter.f()));
+        format_to(format_context.out(), R"({{)", filter.f()));
+
+    if constexpr (fcarouge::internal::has_state_transition_method<kalman>) {
+      format_context.advance_to(
+          format_to(format_context.out(), R"("f": {}, )", filter.f()));
+    }
 
     if constexpr (fcarouge::internal::has_input_control_method<kalman>) {
       format_context.advance_to(
@@ -98,9 +104,18 @@ struct std::formatter<
           });
     }
 
-    format_context.advance_to(format_to(format_context.out(),
-                                        R"("q": {}, "r": {}, "s": {}, )",
-                                        filter.q(), filter.r(), filter.s()));
+    if constexpr (fcarouge::internal::has_output_uncertainty_method<kalman>) {
+      format_context.advance_to(
+          format_to(format_context.out(), R"("q": {}, )", filter.q()));
+    }
+
+    if constexpr (fcarouge::internal::has_process_uncertainty_method<kalman>) {
+      format_context.advance_to(
+          format_to(format_context.out(), R"("r": {}, )", filter.r()));
+    }
+
+    format_context.advance_to(
+        format_to(format_context.out(), R"("s": {}, )", filter.s()));
 
     //! @todo Generalize out internal method concept when MSVC has better
     //! if-constexpr-requires support.

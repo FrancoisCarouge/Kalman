@@ -113,18 +113,20 @@ kalman<State, Output, Input, UpdateTypes, PredictionTypes>::p(
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] inline constexpr const auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::q() const
-    -> const process_uncertainty & {
+  requires(has_process_uncertainty<implementation>)
+{
   return filter.q;
 }
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] inline constexpr auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::q()
-    -> process_uncertainty & {
+  requires(has_process_uncertainty<implementation>)
+{
   return filter.q;
 }
 
@@ -132,9 +134,16 @@ template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::q(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), process_uncertainty>) {
-    filter.q = std::move(process_uncertainty{value, values...});
+    const auto &value, const auto &...values)
+  requires(has_process_uncertainty<implementation>)
+{
+  if constexpr (std::is_convertible_v<
+                    decltype(value),
+                    typename kalman<State, Output, Input, UpdateTypes,
+                                    PredictionTypes>::process_uncertainty>) {
+    filter.q = std::move(typename kalman<State, Output, Input, UpdateTypes,
+                                         PredictionTypes>::process_uncertainty{
+        value, values...});
   } else {
     using noise_process_function = decltype(filter.noise_process_q);
     filter.noise_process_q =
@@ -145,18 +154,20 @@ kalman<State, Output, Input, UpdateTypes, PredictionTypes>::q(
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned observation noise covariance matrix R is "
-            "unexpectedly discarded.")]] inline constexpr auto
+            "unexpectedly discarded.")]] inline constexpr const auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::r() const
-    -> const output_uncertainty & {
+  requires(has_output_uncertainty<implementation>)
+{
   return filter.r;
 }
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned observation noise covariance matrix R is "
-            "unexpectedly discarded.")]] inline constexpr auto
+            "unexpectedly discarded.")]] inline constexpr auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::r()
-    -> output_uncertainty & {
+  requires(has_output_uncertainty<implementation>)
+{
   return filter.r;
 }
 
@@ -164,9 +175,16 @@ template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::r(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), output_uncertainty>) {
-    filter.r = std::move(output_uncertainty{value, values...});
+    const auto &value, const auto &...values)
+  requires(has_output_uncertainty<implementation>)
+{
+  if constexpr (std::is_convertible_v<
+                    decltype(value),
+                    typename kalman<State, Output, Input, UpdateTypes,
+                                    PredictionTypes>::output_uncertainty>) {
+    filter.r = std::move(
+        typename kalman<State, Output, Input, UpdateTypes,
+                        PredictionTypes>::output_uncertainty{value, values...});
   } else {
     using noise_observation_function = decltype(filter.noise_observation_r);
     filter.noise_observation_r =
@@ -177,18 +195,20 @@ kalman<State, Output, Input, UpdateTypes, PredictionTypes>::r(
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned state transition matrix F is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] inline constexpr const auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::f() const
-    -> const state_transition & {
+  requires(has_state_transition<implementation>)
+{
   return filter.f;
 }
 
 template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 [[nodiscard("The returned state transition matrix F is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] inline constexpr auto &
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::f()
-    -> state_transition & {
+  requires(has_state_transition<implementation>)
+{
   return filter.f;
 }
 
@@ -196,9 +216,16 @@ template <typename State, typename Output, typename Input, typename UpdateTypes,
           typename PredictionTypes>
 inline constexpr void
 kalman<State, Output, Input, UpdateTypes, PredictionTypes>::f(
-    const auto &value, const auto &...values) {
-  if constexpr (std::is_convertible_v<decltype(value), state_transition>) {
-    filter.f = std::move(state_transition{value, values...});
+    const auto &value, const auto &...values)
+  requires(has_state_transition<implementation>)
+{
+  if constexpr (std::is_convertible_v<
+                    decltype(value),
+                    typename kalman<State, Output, Input, UpdateTypes,
+                                    PredictionTypes>::state_transition>) {
+    filter.f = std::move(
+        typename kalman<State, Output, Input, UpdateTypes,
+                        PredictionTypes>::state_transition{value, values...});
   } else {
     using transition_state_function = decltype(filter.transition_state_f);
     filter.transition_state_f =

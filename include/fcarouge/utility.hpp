@@ -78,12 +78,33 @@ concept eigen = internal::eigen<Type>;
 template <typename Filter>
 concept has_input = internal::has_input<Filter>;
 
+//! @brief Filter process uncertainty support concept.
+//!
+//! @details The filter supports the process uncertainty related functionality:
+//! `process_uncertainty` type member and `q()` method.
+template <typename Filter>
+concept has_process_uncertainty = internal::has_process_uncertainty<Filter>;
+
+//! @brief Filter output uncertainty support concept.
+//!
+//! @details The filter supports the output uncertainty related functionality:
+//! `output_uncertainty` type member and `r()` method.
+template <typename Filter>
+concept has_output_uncertainty = internal::has_output_uncertainty<Filter>;
+
 //! @brief Filter input control support concept.
 //!
 //! @details The filter supports the input control related functionality:
 //! `input_control` type member and `g()` method.
 template <typename Filter>
 concept has_input_control = internal::has_input_control<Filter>;
+
+//! @brief Filter state transition support concept.
+//!
+//! @details The filter supports the state transition related functionality:
+//! `state_transition` type member and `f()` method.
+template <typename Filter>
+concept has_state_transition = internal::has_state_transition<Filter>;
 
 //! @brief Filter output model support concept.
 //!
