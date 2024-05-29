@@ -144,8 +144,17 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1has__input.xhtml">has_input</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter input support concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1has__process__uncertainty.xhtml">has_process_uncertainty</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter process uncertainty support concept. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1has__output__uncertainty.xhtml">has_output_uncertainty</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter output uncertainty support concept. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1has__input__control.xhtml">has_input_control</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter input control support concept. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1has__state__transition.xhtml">has_state_transition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter state transition support concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1has__output__model.xhtml">has_output_model</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter output model support concept. <br /></td></tr>
@@ -321,7 +330,7 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
 <p>The definitions and implementations of the library intended for public usage. Lowers the name conflict probability in large projects. Use using-declarations or namespace-alias-definition per your project guidelines.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a6f496dc857f8b172efc57e3ba9bfdbf8" name="a6f496dc857f8b172efc57e3ba9bfdbf8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f496dc857f8b172efc57e3ba9bfdbf8">&#9670;&#160;</a></span>column_vector</h2>
@@ -362,7 +371,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>Tuple-like empty pack type. </p>
 <p>A <code>pack</code> type with no composed types. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00107">107</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00128">128</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -382,7 +391,7 @@ template&lt;typename... Types&gt; </div>
 
 <p>Unpack the first type of the type template parameter pack. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00110">110</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00131">131</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -432,7 +441,7 @@ template&lt;typename... Types&gt; </div>
 <p>Tuple-like pack type. </p>
 <p>An alternative to tuple-like types. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00102">102</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00123">123</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -453,7 +462,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>The matrix type satisfying <code>X * Row = Column</code>. </p>
 <p>The resulting type of a matrix division. The resulting matrix type has as many rows as the <code>Row</code> matrix, respectively for columns as the <code>Column</code> matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00122">122</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00143">143</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -1732,8 +1741,8 @@ template&lt;auto... Values&gt; </div>
 
 <p>Unpack the first value of the non-type template parameter pack. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00114">114</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>{internal::first_v&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Values</a>...&gt;};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00135">135</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>{internal::first_v&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Values</a>...&gt;};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1764,9 +1773,9 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>The identity matrix. </p>
 <p>User-defined. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00146">146</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>                                {internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  147</span>    <span class="stringliteral">&quot;Implement the linear algebra identity matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00167">167</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>                                {internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  168</span>    <span class="stringliteral">&quot;Implement the linear algebra identity matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1794,8 +1803,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton identity matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00151">151</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  151</span>{1};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00172">172</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  172</span>{1};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1961,9 +1970,9 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>The zero matrix. </p>
 <p>User-defined. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00157">157</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  157</span>                            {internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  158</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00178">178</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  178</span>                            {internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  179</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1991,8 +2000,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton zero matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00162">162</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  162</span>{0};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00183">183</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  183</span>{0};</div>
 </div><!-- fragment -->
 </div>
 </div>

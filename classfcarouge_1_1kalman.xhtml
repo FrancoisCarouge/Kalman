@@ -130,15 +130,6 @@ Public Types</h2></td></tr>
 <tr class="memitem:a2b9d45277b0216e1f15d64ff9369802e" id="r_a2b9d45277b0216e1f15d64ff9369802e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">estimate_uncertainty</a> = implementation::estimate_uncertainty</td></tr>
 <tr class="memdesc:a2b9d45277b0216e1f15d64ff9369802e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the estimated correlated variance matrix P.  <br /></td></tr>
 <tr class="separator:a2b9d45277b0216e1f15d64ff9369802e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a177b8a8e7c58e34cce71cde1e9a50d0c" id="r_a177b8a8e7c58e34cce71cde1e9a50d0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">process_uncertainty</a> = implementation::process_uncertainty</td></tr>
-<tr class="memdesc:a177b8a8e7c58e34cce71cde1e9a50d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the process noise correlated variance matrix Q.  <br /></td></tr>
-<tr class="separator:a177b8a8e7c58e34cce71cde1e9a50d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37f2c30ae9bd1a62f12b4b3a6e43927e" id="r_a37f2c30ae9bd1a62f12b4b3a6e43927e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">output_uncertainty</a> = implementation::output_uncertainty</td></tr>
-<tr class="memdesc:a37f2c30ae9bd1a62f12b4b3a6e43927e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the observation noise correlated variance matrix R.  <br /></td></tr>
-<tr class="separator:a37f2c30ae9bd1a62f12b4b3a6e43927e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a501db5a452ddbfc97e548413bbae138a" id="r_a501db5a452ddbfc97e548413bbae138a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">state_transition</a> = implementation::state_transition</td></tr>
-<tr class="memdesc:a501db5a452ddbfc97e548413bbae138a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the state transition matrix F.  <br /></td></tr>
-<tr class="separator:a501db5a452ddbfc97e548413bbae138a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add9cb224a0e84df8125f5120e967d3ce" id="r_add9cb224a0e84df8125f5120e967d3ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#add9cb224a0e84df8125f5120e967d3ce">gain</a> = implementation::gain</td></tr>
 <tr class="memdesc:add9cb224a0e84df8125f5120e967d3ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the gain matrix K.  <br /></td></tr>
 <tr class="separator:add9cb224a0e84df8125f5120e967d3ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,30 +184,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6a61e7dfc8c8de4ef5bcb126417f9d98" id="r_a6a61e7dfc8c8de4ef5bcb126417f9d98"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a6a61e7dfc8c8de4ef5bcb126417f9d98">p</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;value, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>)</td></tr>
 <tr class="memdesc:a6a61e7dfc8c8de4ef5bcb126417f9d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the estimated covariance matrix P.  <br /></td></tr>
 <tr class="separator:a6a61e7dfc8c8de4ef5bcb126417f9d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04da55f7c46559f46cac6da0a5132605" id="r_a04da55f7c46559f46cac6da0a5132605"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a04da55f7c46559f46cac6da0a5132605">q</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">process_uncertainty</a> &amp;</td></tr>
-<tr class="memdesc:a04da55f7c46559f46cac6da0a5132605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the process noise covariance matrix Q.  <br /></td></tr>
-<tr class="separator:a04da55f7c46559f46cac6da0a5132605"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb6b142268aa61b73de726f99fef51ea" id="r_adb6b142268aa61b73de726f99fef51ea"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#adb6b142268aa61b73de726f99fef51ea">q</a> () -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">process_uncertainty</a> &amp;</td></tr>
-<tr class="separator:adb6b142268aa61b73de726f99fef51ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81b06eb44c221c9de437574983b57927" id="r_a81b06eb44c221c9de437574983b57927"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a81b06eb44c221c9de437574983b57927">q</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;value, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>)</td></tr>
-<tr class="memdesc:a81b06eb44c221c9de437574983b57927"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the process noise covariance matrix Q.  <br /></td></tr>
-<tr class="separator:a81b06eb44c221c9de437574983b57927"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf923010d2576566b69acf82007924d9" id="r_acf923010d2576566b69acf82007924d9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#acf923010d2576566b69acf82007924d9">r</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">output_uncertainty</a> &amp;</td></tr>
-<tr class="memdesc:acf923010d2576566b69acf82007924d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the observation noise covariance matrix R.  <br /></td></tr>
-<tr class="separator:acf923010d2576566b69acf82007924d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a351d56532953fe259bd3dd4072e8ea48" id="r_a351d56532953fe259bd3dd4072e8ea48"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a351d56532953fe259bd3dd4072e8ea48">r</a> () -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">output_uncertainty</a> &amp;</td></tr>
-<tr class="separator:a351d56532953fe259bd3dd4072e8ea48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87538d3311670000ad7e5a344941d007" id="r_a87538d3311670000ad7e5a344941d007"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a87538d3311670000ad7e5a344941d007">r</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;value, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>)</td></tr>
-<tr class="memdesc:a87538d3311670000ad7e5a344941d007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the observation noise covariance matrix R.  <br /></td></tr>
-<tr class="separator:a87538d3311670000ad7e5a344941d007"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e2b3d64520fb7e7476b6b8bbb0352e9" id="r_a2e2b3d64520fb7e7476b6b8bbb0352e9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a2e2b3d64520fb7e7476b6b8bbb0352e9">f</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">state_transition</a> &amp;</td></tr>
-<tr class="memdesc:a2e2b3d64520fb7e7476b6b8bbb0352e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the state transition matrix F.  <br /></td></tr>
-<tr class="separator:a2e2b3d64520fb7e7476b6b8bbb0352e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a616ce6fad6805a31707c087ded8cef65" id="r_a616ce6fad6805a31707c087ded8cef65"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a616ce6fad6805a31707c087ded8cef65">f</a> () -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">state_transition</a> &amp;</td></tr>
-<tr class="separator:a616ce6fad6805a31707c087ded8cef65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0d923a310051f2d7dcd76a1f26910fd" id="r_ae0d923a310051f2d7dcd76a1f26910fd"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ae0d923a310051f2d7dcd76a1f26910fd">f</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;value, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>)</td></tr>
-<tr class="memdesc:ae0d923a310051f2d7dcd76a1f26910fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the state transition matrix F.  <br /></td></tr>
-<tr class="separator:ae0d923a310051f2d7dcd76a1f26910fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3218ca9d6a77c3aa7d97722f941724b" id="r_ac3218ca9d6a77c3aa7d97722f941724b"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ac3218ca9d6a77c3aa7d97722f941724b">q</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a></td></tr>
+<tr class="memdesc:ac3218ca9d6a77c3aa7d97722f941724b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the process noise covariance matrix Q.  <br /></td></tr>
+<tr class="separator:ac3218ca9d6a77c3aa7d97722f941724b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f87e8774aa7ac934c72ae5244eb99f" id="r_a83f87e8774aa7ac934c72ae5244eb99f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a83f87e8774aa7ac934c72ae5244eb99f">q</a> ()</td></tr>
+<tr class="separator:a83f87e8774aa7ac934c72ae5244eb99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2e03348fc6900e7ebe8851f20812c0c" id="r_ab2e03348fc6900e7ebe8851f20812c0c"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ab2e03348fc6900e7ebe8851f20812c0c">q</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;value, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>)</td></tr>
+<tr class="memdesc:ab2e03348fc6900e7ebe8851f20812c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the process noise covariance matrix Q.  <br /></td></tr>
+<tr class="separator:ab2e03348fc6900e7ebe8851f20812c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef0ccc1ee4db17bc19952be01f02683f" id="r_aef0ccc1ee4db17bc19952be01f02683f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aef0ccc1ee4db17bc19952be01f02683f">r</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a></td></tr>
+<tr class="memdesc:aef0ccc1ee4db17bc19952be01f02683f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the observation noise covariance matrix R.  <br /></td></tr>
+<tr class="separator:aef0ccc1ee4db17bc19952be01f02683f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef0c6083021eb0978da5653489f7c761" id="r_aef0c6083021eb0978da5653489f7c761"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aef0c6083021eb0978da5653489f7c761">r</a> ()</td></tr>
+<tr class="separator:aef0c6083021eb0978da5653489f7c761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab73189b9734580da52e47bf54d15069" id="r_aab73189b9734580da52e47bf54d15069"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aab73189b9734580da52e47bf54d15069">r</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;value, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>)</td></tr>
+<tr class="memdesc:aab73189b9734580da52e47bf54d15069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the observation noise covariance matrix R.  <br /></td></tr>
+<tr class="separator:aab73189b9734580da52e47bf54d15069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb9837e03a19988a2fd8f1abe8e40b49" id="r_aeb9837e03a19988a2fd8f1abe8e40b49"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a></td></tr>
+<tr class="memdesc:aeb9837e03a19988a2fd8f1abe8e40b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the state transition matrix F.  <br /></td></tr>
+<tr class="separator:aeb9837e03a19988a2fd8f1abe8e40b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af952000debe9f8bc022b0ba8cbd707f5" id="r_af952000debe9f8bc022b0ba8cbd707f5"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#af952000debe9f8bc022b0ba8cbd707f5">f</a> ()</td></tr>
+<tr class="separator:af952000debe9f8bc022b0ba8cbd707f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82d35aa1eb042a9afb032f2698f3ab7a" id="r_a82d35aa1eb042a9afb032f2698f3ab7a"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a82d35aa1eb042a9afb032f2698f3ab7a">f</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;value, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>)</td></tr>
+<tr class="memdesc:a82d35aa1eb042a9afb032f2698f3ab7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the state transition matrix F.  <br /></td></tr>
+<tr class="separator:a82d35aa1eb042a9afb032f2698f3ab7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a204057628097c64e926affd69a530861" id="r_a204057628097c64e926affd69a530861"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a204057628097c64e926affd69a530861">h</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a></td></tr>
 <tr class="memdesc:a204057628097c64e926affd69a530861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the observation transition matrix H.  <br /></td></tr>
 <tr class="separator:a204057628097c64e926affd69a530861"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -294,7 +285,7 @@ class fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &g
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This class could be usable in constant expressions if <code>std::function</code> could too. The polymorphic function wrapper was used in place of function pointers to enable default initialization from this class, captured member variables.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -338,7 +329,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a1">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a1">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a2">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a3">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00198">198</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00202">202</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -358,7 +349,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Type of the gain matrix K. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00212">212</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00205">205</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -385,9 +376,9 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div><div class="memdoc">
 
 <p>Implementation details of the filter. </p>
-<p>The internal implementation, filtering strategies, and presence of members vary based on the configured filter. </p>
+<p>The internal implementation, filtering strategies, and presence of members vary based on the constructed, configured, declared, deduced filter. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00171">171</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00172">172</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -407,7 +398,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Type of the innovation column vector Y. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00215">215</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00208">208</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -427,7 +418,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Type of the innovation uncertainty matrix S. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00218">218</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00211">211</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -447,54 +438,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Type of the observation column vector Z. </p>
 <p>Also known as Y or O. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a5">ekf_4x1x0_soaring.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a2">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a3">ekf_4x1x0_soaring.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a2">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00193">193</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a37f2c30ae9bd1a62f12b4b3a6e43927e" name="a37f2c30ae9bd1a62f12b4b3a6e43927e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37f2c30ae9bd1a62f12b4b3a6e43927e">&#9670;&#160;</a></span>output_uncertainty</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>  = double, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>  = double, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>  = void, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>  = empty_pack, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a>  = empty_pack&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::output_uncertainty =  implementation::output_uncertainty</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type of the observation noise correlated variance matrix R. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a4">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a5">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a5">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a7">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00204">204</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a177b8a8e7c58e34cce71cde1e9a50d0c" name="a177b8a8e7c58e34cce71cde1e9a50d0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a177b8a8e7c58e34cce71cde1e9a50d0c">&#9670;&#160;</a></span>process_uncertainty</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>  = double, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>  = double, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>  = void, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>  = empty_pack, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a>  = empty_pack&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::process_uncertainty =  implementation::process_uncertainty</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type of the process noise correlated variance matrix Q. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a3">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a3">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a3">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a6">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00201">201</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00197">197</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -513,33 +460,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div><div class="memdoc">
 
 <p>Type of the state estimate column vector X. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a2">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a2">kf_2x1x1_rocket_altitude.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a5">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a2">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a2">kf_2x1x1_rocket_altitude.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a4">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00188">188</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a501db5a452ddbfc97e548413bbae138a" name="a501db5a452ddbfc97e548413bbae138a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a501db5a452ddbfc97e548413bbae138a">&#9670;&#160;</a></span>state_transition</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>  = double, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>  = double, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>  = void, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>  = empty_pack, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a>  = empty_pack&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::state_transition =  implementation::state_transition</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type of the state transition matrix F. </p>
-<p>Also known as the fundamental matrix, propagation, Φ, or A. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a4">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a4">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a4">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00209">209</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00192">192</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -609,7 +533,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   </dd>
 </dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000028">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
 
 </div>
 </div>
@@ -683,8 +607,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a616ce6fad6805a31707c087ded8cef65" name="a616ce6fad6805a31707c087ded8cef65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a616ce6fad6805a31707c087ded8cef65">&#9670;&#160;</a></span>f() <span class="overload">[1/3]</span></h2>
+<a id="af952000debe9f8bc022b0ba8cbd707f5" name="af952000debe9f8bc022b0ba8cbd707f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af952000debe9f8bc022b0ba8cbd707f5">&#9670;&#160;</a></span>f() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -695,10 +619,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::f </td>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::f </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">state_transition</a> &amp;</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -710,8 +634,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="a2e2b3d64520fb7e7476b6b8bbb0352e9" name="a2e2b3d64520fb7e7476b6b8bbb0352e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e2b3d64520fb7e7476b6b8bbb0352e9">&#9670;&#160;</a></span>f() <span class="overload">[2/3]</span></h2>
+<a id="aeb9837e03a19988a2fd8f1abe8e40b49" name="aeb9837e03a19988a2fd8f1abe8e40b49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb9837e03a19988a2fd8f1abe8e40b49">&#9670;&#160;</a></span>f() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -722,10 +646,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::f </td>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::f </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt;  <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a501db5a452ddbfc97e548413bbae138a">state_transition</a> &amp;</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -741,8 +665,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="ae0d923a310051f2d7dcd76a1f26910fd" name="ae0d923a310051f2d7dcd76a1f26910fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0d923a310051f2d7dcd76a1f26910fd">&#9670;&#160;</a></span>f() <span class="overload">[3/3]</span></h2>
+<a id="a82d35aa1eb042a9afb032f2698f3ab7a" name="a82d35aa1eb042a9afb032f2698f3ab7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82d35aa1eb042a9afb032f2698f3ab7a">&#9670;&#160;</a></span>f() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1110,7 +1034,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The reference value of this implicit object filter parameter, i.e. <code>*this</code>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000029">Todo:</a></b></dt><dd>Implement and test. </dd></dl>
 
 </div>
 </div>
@@ -1334,7 +1258,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000036">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -1349,8 +1273,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="adb6b142268aa61b73de726f99fef51ea" name="adb6b142268aa61b73de726f99fef51ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb6b142268aa61b73de726f99fef51ea">&#9670;&#160;</a></span>q() <span class="overload">[1/3]</span></h2>
+<a id="a83f87e8774aa7ac934c72ae5244eb99f" name="a83f87e8774aa7ac934c72ae5244eb99f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f87e8774aa7ac934c72ae5244eb99f">&#9670;&#160;</a></span>q() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1361,10 +1285,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::q </td>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::q </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">process_uncertainty</a> &amp;</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -1376,8 +1300,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="a04da55f7c46559f46cac6da0a5132605" name="a04da55f7c46559f46cac6da0a5132605"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04da55f7c46559f46cac6da0a5132605">&#9670;&#160;</a></span>q() <span class="overload">[2/3]</span></h2>
+<a id="ac3218ca9d6a77c3aa7d97722f941724b" name="ac3218ca9d6a77c3aa7d97722f941724b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3218ca9d6a77c3aa7d97722f941724b">&#9670;&#160;</a></span>q() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1388,10 +1312,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::q </td>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::q </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt;  <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a177b8a8e7c58e34cce71cde1e9a50d0c">process_uncertainty</a> &amp;</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -1407,8 +1331,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="a81b06eb44c221c9de437574983b57927" name="a81b06eb44c221c9de437574983b57927"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81b06eb44c221c9de437574983b57927">&#9670;&#160;</a></span>q() <span class="overload">[3/3]</span></h2>
+<a id="ab2e03348fc6900e7ebe8851f20812c0c" name="ab2e03348fc6900e7ebe8851f20812c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2e03348fc6900e7ebe8851f20812c0c">&#9670;&#160;</a></span>q() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1455,8 +1379,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="a351d56532953fe259bd3dd4072e8ea48" name="a351d56532953fe259bd3dd4072e8ea48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a351d56532953fe259bd3dd4072e8ea48">&#9670;&#160;</a></span>r() <span class="overload">[1/3]</span></h2>
+<a id="aef0c6083021eb0978da5653489f7c761" name="aef0c6083021eb0978da5653489f7c761"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef0c6083021eb0978da5653489f7c761">&#9670;&#160;</a></span>r() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1467,10 +1391,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::r </td>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::r </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">output_uncertainty</a> &amp;</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -1482,8 +1406,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="acf923010d2576566b69acf82007924d9" name="acf923010d2576566b69acf82007924d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf923010d2576566b69acf82007924d9">&#9670;&#160;</a></span>r() <span class="overload">[2/3]</span></h2>
+<a id="aef0ccc1ee4db17bc19952be01f02683f" name="aef0ccc1ee4db17bc19952be01f02683f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef0ccc1ee4db17bc19952be01f02683f">&#9670;&#160;</a></span>r() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1494,10 +1418,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::r </td>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">State</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Output</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Input</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">UpdateTypes</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">PredictionTypes</a> &gt;::r </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const -&gt;  <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a37f2c30ae9bd1a62f12b4b3a6e43927e">output_uncertainty</a> &amp;</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -1514,8 +1438,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="a87538d3311670000ad7e5a344941d007" name="a87538d3311670000ad7e5a344941d007"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87538d3311670000ad7e5a344941d007">&#9670;&#160;</a></span>r() <span class="overload">[3/3]</span></h2>
+<a id="aab73189b9734580da52e47bf54d15069" name="aab73189b9734580da52e47bf54d15069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab73189b9734580da52e47bf54d15069">&#9670;&#160;</a></span>r() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1736,7 +1660,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000037">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -1807,7 +1731,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000030">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
 
 </div>
 </div>
@@ -1887,7 +1811,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>Returns the innovation column vector Y. </p>
 <dl class="section return"><dt>Returns</dt><dd>The innovation column vector Y.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000031">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
 
 </div>
 </div>
@@ -1946,8 +1870,9 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div><div class="memdoc">
 
 <p>Encapsulates the implementation details of the filter. </p>
+<p>Optionally exposes a variety of members and methods according to the selected implementation. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00180">180</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00184">184</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
