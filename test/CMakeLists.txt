@@ -79,6 +79,7 @@ foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
     "linalg_multiplication_rxc.cpp"
     "linalg_multiplication_sxc.cpp"
     "linalg_operator_bracket.cpp"
+    "linalg_operator_equality_1x1.cpp"
     "linalg_operator_equality.cpp"
     "linalg_zero_default.cpp"
     "linalg_zero.cpp")
