@@ -36,6 +36,18 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+add_library(kalman_utility INTERFACE)
+target_sources(
+  kalman_utility
+  INTERFACE FILE_SET
+            "kalman_utility_headers"
+            TYPE
+            "HEADERS"
+            FILES
+            "printer.hpp"
+            "plotter.hpp")
+target_link_libraries(kalman_utility INTERFACE kalman_print)
+
 foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
                "kf_1x1x1_dog_position.cpp")
   get_filename_component(NAME ${SAMPLE} NAME_WE)
@@ -45,8 +57,9 @@ foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
     PROPERTIES CXX_STANDARD 23
                CXX_EXTENSIONS OFF
                INTERPROCEDURAL_OPTIMIZATION TRUE)
-  target_link_libraries(kalman_sample_${NAME}_driver PRIVATE kalman kalman_main
-                                                             kalman_options)
+  target_link_libraries(
+    kalman_sample_${NAME}_driver PRIVATE kalman kalman_main kalman_options
+                                         kalman_utility)
   separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
   add_test(NAME kalman_sample_${NAME}
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_sample_${NAME}_driver>)
@@ -83,7 +96,8 @@ foreach(BACKEND IN ITEMS "eigen")
                  INTERPROCEDURAL_OPTIMIZATION TRUE)
     target_link_libraries(
       kalman_sample_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options
+              kalman_utility)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(NAME kalman_sample_${BACKEND}_${NAME}
              COMMAND ${TEST_COMMAND}
