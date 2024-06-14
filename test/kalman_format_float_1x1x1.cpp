@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman.hpp"
+import fcarouge.kalman;
 
 #include <cassert>
 #include <format>
