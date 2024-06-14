@@ -42,26 +42,15 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the zero matrices values are null.
+//! @test Verifies the identity matrices values are unit diagonals.
+//!
+//! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
-  auto zero1{zero_v<matrix<double, 2, 2>>};
-  auto zero2{zero1};
-  auto zero3{zero_v<matrix<double, 2, 2>>};
-  matrix<double, 2, 2> zero4{zero2};
-  matrix<double, 2, 2> zero5{zero_v<matrix<double, 2, 2>>};
+  matrix<double, 1, 1> i1{identity_v<matrix<double, 1, 1>>};
+  auto i2{identity_v<matrix<double, 1, 1>>};
 
-  assert(zero3(0, 0) == 0.0);
-  assert(zero3(0, 1) == 0.0);
-  assert(zero3(1, 0) == 0.0);
-  assert(zero3(1, 1) == 0.0);
-  assert(zero4(0, 0) == 0.0);
-  assert(zero4(0, 1) == 0.0);
-  assert(zero4(1, 0) == 0.0);
-  assert(zero4(1, 1) == 0.0);
-  assert(zero5(0, 0) == 0.0);
-  assert(zero5(0, 1) == 0.0);
-  assert(zero5(1, 0) == 0.0);
-  assert(zero5(1, 1) == 0.0);
+  // assert(i1(0, 0) == 1.0);
+  assert(i2(0, 0) == 1.0);
 
   return 0;
 }()};

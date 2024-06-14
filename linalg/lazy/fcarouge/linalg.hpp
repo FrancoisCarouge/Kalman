@@ -49,10 +49,13 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
+// #include <range/v3/range.hpp>
+
 #include <algorithm>
 #include <array>
 #include <concepts>
 #include <coroutine>
+#include <format>
 #include <generator>
 #include <ranges>
 #include <type_traits>
@@ -102,11 +105,13 @@ inline constexpr auto make_generator(Type element) -> std::generator<Type> {
 //! @note A design decision for the composed generator to be mutable, traded
 //! off for const member function API. Similar to the mutable mutex member
 //! practice.
-//! @note Why genie? Because genies generate on demand.
+//! @note Why genie? Because genies generate on demand...
 //!
 //! @todo Explore and compare performance.
 //! @todo Explore optimization of heap allocations?
 //! @todo Explore constexpr support?
+//! @todo Explore an implementation where each element is a generator?
+//! @todo Explore cyclic generator to keep moving forward and not track results?
 //! @todo Explore verification of lazy evaluation?
 //! @todo Remove unecessary empty paramaters when MSVC supports lambda without
 //! them.
@@ -156,7 +161,8 @@ struct matrix {
     return *this;
   }
 
-  inline constexpr explicit matrix(const std::same_as<Type> auto &...elements)
+  inline constexpr explicit(false)
+      matrix(const std::same_as<Type> auto &...elements)
     requires(sizeof...(elements) == Row * Column)
       : genie{[](auto... elements_copy) -> std::generator<Type> {
           (co_yield elements_copy, ...);
@@ -325,8 +331,8 @@ auto make_zero_generator{[]() -> std::generator<Type> {
 //! @{
 
 //! @brief The identity matrix lazy specialization.
-template <typename Type, auto Row, auto Column>
-auto identity_v<matrix<Type, Row, Column>>{[](auto... args) {
+template <typename Type, auto Row, auto Column, bool CopyableOrNot>
+auto identity_v<matrix<Type, Row, Column, CopyableOrNot>>{[](auto... args) {
   matrix<Type, Row, Column, true> m{
       make_identity_generator<Type, Row, Column>()};
   if constexpr (sizeof...(args)) {
@@ -334,18 +340,18 @@ auto identity_v<matrix<Type, Row, Column>>{[](auto... args) {
   } else {
     return m;
   }
-}};
+}()};
 
 //! @brief The zero matrix lazy specialization.
-template <typename Type, auto Row, auto Column>
-auto zero_v<matrix<Type, Row, Column>>{[](auto... args) {
+template <typename Type, auto Row, auto Column, bool CopyableOrNot>
+auto zero_v<matrix<Type, Row, Column, CopyableOrNot>>{[](auto... args) {
   matrix<Type, Row, Column, true> m{make_zero_generator<Type, Row, Column>()};
   if constexpr (sizeof...(args)) {
     return m(args...);
   } else {
     return m;
   }
-}};
+}()};
 
 //! @}
 
@@ -373,9 +379,20 @@ operator==(matrix<Type, Row, Column, CopyableOrNot1> lhs,
   return lhs_elements == rhs_elements;
 }
 
-template <typename Type, auto Row, auto Size>
-[[nodiscard]] inline matrix<Type, Row, 1> operator*(matrix<Type, Row, Size> lhs,
-                                                    matrix<Type, Size, 1> rhs) {
+template <typename Type, auto Row, auto Column>
+[[nodiscard]] inline matrix<Type, Row, Column>
+operator*(matrix<Type, Row, Column> lhs, arithmetic auto rhs) {
+  auto next{lhs.begin()};
+  for (auto k{Row * Column}; k > 0; --k, ++next) {
+    co_yield *next *rhs;
+  }
+}
+
+template <typename Type, auto Row, auto Size, bool CopyableOrNot1,
+          bool CopyableOrNot2>
+[[nodiscard]] inline matrix<Type, Row, 1>
+operator*(matrix<Type, Row, Size, CopyableOrNot1> lhs,
+          matrix<Type, Size, 1, CopyableOrNot2> rhs) {
   // fix me?
   auto next1{lhs.begin()};
   for (decltype(Row) i{0}; i < Row; ++i) {       // chunk_by_rows
@@ -389,14 +406,16 @@ template <typename Type, auto Row, auto Size>
   }
 }
 
-template <typename Type, auto Row, auto Column>
-[[nodiscard]] inline matrix<Type, Row, Column>
-operator*(matrix<Type, Row, Column> lhs, arithmetic auto rhs) {
-  auto next{lhs.begin()};
-  for (auto k{Row * Column}; k > 0; --k, ++next) {
-    co_yield *next *rhs;
-  }
-}
+// //! @todo Implement me.
+// template <typename Type, auto Row, auto Size, auto Column>
+// [[nodiscard]] inline matrix<Type, Row, Column>
+// operator*(matrix<Type, Row, Size> lhs, matrix<Type, Size, Column> rhs) {
+//   static_cast<void>(lhs);
+//   static_cast<void>(rhs);
+//   for (auto k{Row * Column}; k > 0; --k) {
+//     co_yield Type{};
+//   }
+// }
 
 template <typename Type>
 [[nodiscard]] inline matrix<Type, 1, 1> operator+(Type lhs,
@@ -413,6 +432,34 @@ operator+(matrix<Type, Row, Column> lhs, matrix<Type, Row, Column> rhs) {
     co_yield *next1 + *next2;
   }
 }
+
+// //! @todo Implement me.
+// template <typename Type, auto Row, auto Column>
+// [[nodiscard]] inline matrix<Type, Column, Row>
+// transpose(matrix<Type, Row, Column> other) {
+//   static_cast<void>(other);
+//   for (auto k{Row * Column}; k > 0; --k) {
+//     co_yield Type{};
+//   }
+// }
 } // namespace fcarouge
+
+// template <typename Type, auto Row, auto Column, typename Char>
+// struct std::formatter<fcarouge::matrix<Type, Row, Column>, Char>
+//     : public std::formatter<Type, Char> {
+//   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context)
+//   {
+//     return parse_context.begin();
+//   }
+
+//   //! @todo P2585 may be useful in simplifying and standardizing the support.
+//   template <typename OutputIt>
+//   auto format(const fcarouge::matrix<Type, Row, Column> &other,
+//               std::basic_format_context<OutputIt, Char> &format_context)
+//       -> OutputIt {
+
+//     return format_context.out();
+//   }
+// };
 
 #endif // FCAROUGE_LINALG_HPP

@@ -73,11 +73,13 @@ foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
     "linalg_constructor_nx1_array.cpp"
     "linalg_constructor_nx1.cpp"
     "linalg_copy.cpp"
+    "linalg_identity_1x1.cpp"
     "linalg_identity_default.cpp"
     "linalg_identity.cpp"
     "linalg_multiplication_arithmetic.cpp"
     "linalg_multiplication_rxc.cpp"
     "linalg_multiplication_sxc.cpp"
+    # "linalg_multiplication_mxn.cpp"
     "linalg_operator_bracket.cpp"
     "linalg_operator_equality.cpp"
     "linalg_zero_default.cpp"
@@ -141,5 +143,26 @@ foreach(BACKEND IN ITEMS "lazy")
     add_test(NAME kalman_test_${BACKEND}_${NAME}
              COMMAND ${TEST_COMMAND}
                      $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
+  endforeach()
+endforeach()
+
+foreach(BACKEND IN ITEMS "lazy")
+  foreach(TEST "linalg_constructor_default.cpp"
+               # "linalg_transpose.cpp"
+  )
+    get_filename_component(NAME ${TEST} NAME_WE)
+    add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
+    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
+                          PROPERTIES CXX_STANDARD 23)
+    set_target_properties(kalman_test_${BACKEND}_${NAME}_driver
+                          PROPERTIES CXX_EXTENSIONS OFF)
+    target_link_libraries(kalman_test_${BACKEND}_${NAME}_driver
+                          PRIVATE kalman kalman_main kalman_linalg_${BACKEND})
+    add_test(kalman_test_${BACKEND}_${NAME}
+             kalman_test_${BACKEND}_${NAME}_driver)
+    add_test(
+      NAME kalman_${BACKEND}_valgrind_${NAME}
+      COMMAND valgrind --error-exitcode=1 --leak-check=full --track-origins=yes
+              $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
   endforeach()
 endforeach()
