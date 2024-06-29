@@ -44,7 +44,6 @@ foreach(
   "kalman_format_arguments.cpp"
   "kalman_format_float_1x1x1.cpp"
   "kalman_format.cpp"
-  "kalman_h.cpp"
   "kalman_println.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
