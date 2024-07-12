@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>File <a class="el" href="algorithm_8hpp.xhtml">algorithm.hpp</a>  </dt>
 <dd><a class="anchor" id="_todo000003"></a>Implement and test.  </dd>
 <dt>Namespace <a class="el" href="namespacefcarouge.xhtml">fcarouge</a>  </dt>
-<dd><a class="anchor" id="_todo000025"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
+<dd><a class="anchor" id="_todo000026"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
 <dt>{<a class="el" href="predict__linalg__x1x_8cpp.xhtml">predict_linalg_x1x.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03.xhtml#a8052a825ee9cbc95eaac96a14697bee4">fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::Name</a>  ("predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</dt>
 <dd><a class="anchor" id="_todo000001"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
 <dt>{<a class="el" href="update__linalg__xx0_8cpp.xhtml">update_linalg_xx0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ab1ab8c595b8ad8d298b8fe6492b51c40">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::Name</a>  ("update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</dt>
@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>Member <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">fcarouge::internal::quotient</a>  </dt>
 <dd><a class="anchor" id="_todo000022"></a>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization?  </dd>
 <dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000026"></a>Make this class usable in constant expressions. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000025"></a>Make this class usable in constant expressions. </p>
 <p class="interdd"></p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd"></p>
@@ -154,12 +154,12 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ab2db3b065650ffd42931f010d6781835">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::operator=</a>  (const kalman &amp;other) -&gt; kalman &amp;=delete</dt>
 <dd><a class="anchor" id="_todo000029"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::predict</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000036"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000035"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::update</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000037"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000036"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
@@ -191,22 +191,22 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dt>{<a class="el" href="linalg__constructor__1x1_8cpp.xhtml">linalg_constructor_1x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1_8cpp_03.xhtml#ac660c243ef8dba578dc714a0c811a1fe">fcarouge::test::anonymous_namespace{linalg_constructor_1x1.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000040"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__1x1__array_8cpp.xhtml">linalg_constructor_1x1_array.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1__array_8cpp_03.xhtml#a6e698ed0a00a63fd8bfc92006e7fb814">fcarouge::test::anonymous_namespace{linalg_constructor_1x1_array.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000043"></a>Rewrite this test as a property-based test.  </dd>
-<dt>{<a class="el" href="linalg__constructor__1xn_8cpp.xhtml">linalg_constructor_1xn.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1xn_8cpp_03.xhtml#a1416a80b9dea1d45ca295039a7cc3e85">fcarouge::test::anonymous_namespace{linalg_constructor_1xn.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000041"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__constructor__1xn_8cpp.xhtml">linalg_constructor_1xn.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1xn_8cpp_03.xhtml#a1416a80b9dea1d45ca295039a7cc3e85">fcarouge::test::anonymous_namespace{linalg_constructor_1xn.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000043"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__1xn__array_8cpp.xhtml">linalg_constructor_1xn_array.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1xn__array_8cpp_03.xhtml#aff890d6511a139b862acdc6bf80f9ca1">fcarouge::test::anonymous_namespace{linalg_constructor_1xn_array.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000042"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__initializer__lists_8cpp.xhtml">linalg_constructor_initializer_lists.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03.xhtml#ab74cb7ed9098c4f5d7d6a27a709dc13f">fcarouge::test::anonymous_namespace{linalg_constructor_initializer_lists.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000044"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__initializer__lists__deduction_8cpp.xhtml">linalg_constructor_initializer_lists_deduction.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists__deduction_8cpp_03.xhtml#a063a72ab4a56a2886f2bb5e65ecbd389">fcarouge::test::anonymous_namespace{linalg_constructor_initializer_lists_deduction.cpp}::test</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000047"></a>Rewrite this test as a property-based test. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000045"></a>Rewrite this test as a property-based test. </p>
 <p class="interdd"></p>
 <p class="enddd">Static assert the sizes and value type?  </p>
 </dd>
 <dt>{<a class="el" href="linalg__constructor__nx1_8cpp.xhtml">linalg_constructor_nx1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__nx1_8cpp_03.xhtml#a63468faa6b757c422a21a3a10bbefb24">fcarouge::test::anonymous_namespace{linalg_constructor_nx1.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000045"></a>Rewrite this test as a property-based test.  </dd>
-<dt>{<a class="el" href="linalg__constructor__nx1__array_8cpp.xhtml">linalg_constructor_nx1_array.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__nx1__array_8cpp_03.xhtml#a38fe0133bbb5f3553913b83f3ab4afdf">fcarouge::test::anonymous_namespace{linalg_constructor_nx1_array.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000046"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__constructor__nx1__array_8cpp.xhtml">linalg_constructor_nx1_array.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__nx1__array_8cpp_03.xhtml#a38fe0133bbb5f3553913b83f3ab4afdf">fcarouge::test::anonymous_namespace{linalg_constructor_nx1_array.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000047"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__copy_8cpp.xhtml">linalg_copy.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__copy_8cpp_03.xhtml#a0887ab7e5f2d679324ac959b627f5f17">fcarouge::test::anonymous_namespace{linalg_copy.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000048"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__identity_8cpp.xhtml">linalg_identity.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity_8cpp_03.xhtml#a96696a636cb3338b86fec91d6c31c303">fcarouge::test::anonymous_namespace{linalg_identity.cpp}::test</a>  </dt>
