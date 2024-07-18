@@ -45,8 +45,7 @@ namespace {
 //! @test Verifies default values are initialized for single-dimension filters
 //! with input control.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<float, float, float>;
-  kalman filter;
+  kalman filter{state{0.F}, output<float>, input<float>};
 
   assert(filter.f() == 1);
   assert(filter.g() == 1);
