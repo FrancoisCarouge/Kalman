@@ -166,7 +166,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::x</a>  () const -&gt; const state &amp;</dt>
 <dd><a class="anchor" id="_todo000030"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a41ff321ce607f830c7219340c7b95c54">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
-<dd><a class="anchor" id="_todo000034"></a>Add measurement post-fit residual by default and example?  </dd>
+<dd><a class="anchor" id="_todo000033"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Struct <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000027"></a>Explore and compare performance. </p>
 <p class="interdd"></p>
@@ -179,11 +179,11 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <p class="enddd">Remove unecessary empty paramaters when MSVC supports lambda without them.  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#a4e09c0fca4bfad49789dad31102f07d7">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">Type(&amp;elements)</a>[Row])</dt>
-<dd><a class="anchor" id="_todo000032"></a>Perhaps this is too naive and can be improved?  </dd>
+<dd><a class="anchor" id="_todo000034"></a>Perhaps this is too naive and can be improved?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
 <dd><a class="anchor" id="_todo000031"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000033"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000032"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>{<a class="el" href="linalg__addition_8cpp.xhtml">linalg_addition.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml#a58f62760145a6a0839b43901056530bb">fcarouge::test::anonymous_namespace{linalg_addition.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000038"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__assign_8cpp.xhtml">linalg_assign.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__assign_8cpp_03.xhtml#a4c98e308d4ac9d24947134de6c580520">fcarouge::test::anonymous_namespace{linalg_assign.cpp}::test</a>  </dt>
@@ -216,9 +216,9 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <dt>{<a class="el" href="linalg__multiplication__rxc_8cpp.xhtml">linalg_multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#adfa3a8b5be7eb7ee4bc12ebff7d86a8f">fcarouge::test::anonymous_namespace{linalg_multiplication_rxc.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000051"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__multiplication__sxc_8cpp.xhtml">linalg_multiplication_sxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__sxc_8cpp_03.xhtml#aba051f6431b4ca28561b77240e4ec161">fcarouge::test::anonymous_namespace{linalg_multiplication_sxc.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000053"></a>Rewrite this test as a property-based test.  </dd>
-<dt>{<a class="el" href="linalg__operator__bracket_8cpp.xhtml">linalg_operator_bracket.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml#ad8d22e6caa976eab5167898fecb8f55b">fcarouge::test::anonymous_namespace{linalg_operator_bracket.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000052"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__operator__bracket_8cpp.xhtml">linalg_operator_bracket.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml#ad8d22e6caa976eab5167898fecb8f55b">fcarouge::test::anonymous_namespace{linalg_operator_bracket.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000053"></a>Rewrite this test as a property-based test.  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#abd98cfda1f03a74c7e344285e5c0ea23">std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;, Char &gt;::format</a>  (const kalman &amp;filter, std::basic_format_context&lt; OutputIt, Char &gt; &amp;format_context) const -&gt; OutputIt</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000004"></a>P2585 may be useful in simplifying and standardizing the support. </p>
 <p class="enddd"><a class="anchor" id="_todo000005"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
