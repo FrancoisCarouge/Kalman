@@ -133,6 +133,7 @@ if(NOT CPP_LIB_GENERATOR)
   FetchContent_Declare(
     stdgenerator
     GIT_REPOSITORY "https://github.com/FrancoisCarouge/generator"
+    GIT_TAG 59194db2544a1be4dc65ab038183292536a0c53b
     FIND_PACKAGE_ARGS NAMES stdgenerator)
   FetchContent_MakeAvailable(stdgenerator)
 
