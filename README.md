@@ -44,11 +44,12 @@ This library supports various simple and extended filters. The implementation is
 Example from the [building height estimation](https://francoiscarouge.github.io/Kalman/kf_1x1x0_building_height_8cpp-example.xhtml) sample. One estimated state and one observed output filter.
 
 ```cpp
-kalman filter;
-
-filter.x(60.);
-filter.p(225.);
-filter.r(25.);
+  kalman filter{
+    state{60.},
+    output<double>,
+    estimate_uncertainty{225.},
+    output_uncertainty{25.}
+  };
 
 filter.update(48.54);
 ```
@@ -60,35 +61,35 @@ filter.update(48.54);
 Example from the [2-dimension vehicle location, velocity, and acceleration vehicle estimation](https://francoiscarouge.github.io/Kalman/kf_6x2x0_vehicle_location_8cpp-example.xhtml) sample. Six estimated states and two observed outputs filter.
 
 ```cpp
-using kalman = kalman<vector<double, 6>, vector<double, 2>>;
-
-kalman filter;
-
-filter.x(0., 0., 0., 0., 0., 0.);
-filter.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },
-                                       { 0, 500, 0, 0, 0, 0 },
-                                       { 0, 0, 500, 0, 0, 0 },
-                                       { 0, 0, 0, 500, 0, 0 },
-                                       { 0, 0, 0, 0, 500, 0 },
-                                       { 0, 0, 0, 0, 0, 500 } });
-filter.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },
-                                                  { 0.5, 1, 1, 0, 0, 0 },
-                                                  { 0.5, 1, 1, 0, 0, 0 },
-                                                  { 0, 0, 0, 0.25, 0.5, 0.5 },
-                                                  { 0, 0, 0, 0.5, 1, 1 },
-                                                  { 0, 0, 0, 0.5, 1, 1 } });
-filter.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },
-                                   { 0, 1, 1, 0, 0, 0 },
-                                   { 0, 0, 1, 0, 0, 0 },
-                                   { 0, 0, 0, 1, 1, 0.5 },
-                                   { 0, 0, 0, 0, 1, 1 },
-                                   { 0, 0, 0, 0, 0, 1 } });
-filter.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },
-                               { 0, 0, 0, 1, 0, 0 } });
-filter.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });
+  kalman filter{
+    state{0., 0., 0., 0., 0., 0.},
+    output<vector<2>>,
+    estimate_uncertainty{{500., 0., 0., 0., 0., 0.},
+                         {0., 500., 0., 0., 0., 0.},
+                         {0., 0., 500., 0., 0., 0.},
+                         {0., 0., 0., 500., 0., 0.},
+                         {0., 0., 0., 0., 500., 0.},
+                         {0., 0., 0., 0., 0., 500.}},
+    process_uncertainty{[]() -> matrix<6, 6> {
+      return 0.2 * 0.2 * matrix<6, 6>{{0.25, 0.5, 0.5, 0., 0., 0.},
+                                      {0.5, 1., 1., 0., 0., 0.},
+                                      {0.5, 1., 1., 0., 0., 0.},
+                                      {0., 0., 0., 0.25, 0.5, 0.5},
+                                      {0., 0., 0., 0.5, 1., 1.},
+                                      {0., 0., 0., 0.5, 1., 1.}};
+    }()},
+    output_uncertainty{{9., 0.}, {0., 9.}},
+    output_model{{1., 0., 0., 0., 0., 0.},
+                 {0., 0., 0., 1., 0., 0.}},
+    state_transition{{1., 1., 0.5, 0., 0., 0.},
+                     {0., 1., 1., 0., 0., 0.},
+                     {0., 0., 1., 0., 0., 0.},
+                     {0., 0., 0., 1., 1., 0.5},
+                     {0., 0., 0., 0., 1., 1.},
+                     {0., 0., 0., 0., 0., 1.}}};
 
 filter.predict();
-filter.update(-375.93, 301.78);
+filter.update(-393.66, 300.4);
 ```
 
 [full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_vehicle_location.cpp)
@@ -98,43 +99,48 @@ filter.update(-375.93, 301.78);
 Example from the [thermal, current of warm air, strength, radius, and location estimation](https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
 
 ```cpp
-using kalman = kalman<vector<float, 4>, float, void, std::tuple<float, float>,
-                             std::tuple<float, float>>;
-
-kalman filter;
-
-filter.x(1 / 4.06, 80, 0, 0);
-filter.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },
-                                       { 0, 400, 0, 0 },
-                                       { 0, 0, 400, 0 },
-                                       { 0, 0, 0, 400 } });
-filter.transition([](const kalman::state &x, const float &drift_x,
-                     const float &drift_y) -> kalman::state {
-  return x + kalman::state{ 0, 0, -drift_x, -drift_y };
-});
-filter.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },
-                                      { 0, 0.0009, 0, 0 },
-                                      { 0, 0, 0.0009, 0 },
-                                      { 0, 0, 0, 0.0009 } });
-filter.r(0.2025);
-filter.observation([](const kalman::state &x, const float &position_x,
-                      const float &position_y) -> kalman::output {
-  return kalman::output{ x(0) *
-    std::exp(-((x(2) - position_x)*(x(2) - position_x) +
-    (x(3) - position_y) * (x(3) - position_y)) / x(1) * x(1)) };
-filter.h([](const kalman::state &x, const float &position_x,
-            const float &position_y) -> kalman::output_model {
-  const auto exp{ std::exp(-((x(2) - position_x) * (x(2) - position_x) +
-    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) };
-  const kalman::output_model h{
-    exp,
-    2 * x(0) * (((x(2) - position_x) * (x(2) - position_x) +
-    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) * exp,
-    -2 * (x(0) * (x(2) - position_x) / (x(1) * x(1))) * exp,
-    -2 * (x(0) * (x(3) - position_y) / (x(1) * x(1))) * exp
-  };
-  return h;
-});
+  kalman filter{
+    state{trigger_strength, thermal_radius, thermal_position_x,
+          thermal_position_y},
+    output<float>,
+    estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},
+                         {0.F, radius_covariance, 0.F, 0.F},
+                         {0.F, 0.F, position_covariance, 0.F},
+                         {0.F, 0.F, 0.F, position_covariance}},
+    process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},
+                        {0.F, distance_noise, 0.F, 0.F},
+                        {0.F, 0.F, distance_noise, 0.F},
+                        {0.F, 0.F, 0.F, distance_noise}},
+    output_uncertainty{measure_noise},
+    output_model{[](const vector<4> &x, const float &position_x,
+                    const float &position_y) -> matrix<1, 4> {
+      const float expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +
+                                   std::pow(x[3] - position_y, 2.F)) /
+                                 std::pow(x[1], 2.F))};
+      const matrix<1, 4> h{
+          expon,
+          2 * x(0) *
+              ((std::pow(x(2) - position_x, 2.F) +
+                std::pow(x(3) - position_y, 2.F)) /
+               std::pow(x(1), 3.F)) *
+              expon,
+          -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,
+          -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};
+      return h;
+    }},
+    transition{[](const vector<4> &x, const float &drift_x,
+                  const float &drift_y) -> vector<4> {
+      const vector<4> drifts{0.F, 0.F, drift_x, drift_y};
+      return x + drifts;
+    }},
+    observation{[](const vector<4> &x, const float &position_x,
+                   const float &position_y) -> float {
+      return x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +
+                               std::pow(x[3] - position_y, 2.F)) /
+                             std::pow(x[1], 2.F));
+    }},
+    update_types<float, float>,
+    prediction_types<float, float>};
 
 filter.predict(drift_x, drift_y);
 filter.update(position_x, position_y, variometer);
@@ -151,6 +157,8 @@ filter.update(position_x, position_y, variometer);
 
 # Installation
 
+Example of installation commands in Shell:
+
 ```shell
 git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
 cmake -S "kalman" -B "build"
@@ -158,8 +166,17 @@ cmake --build "build" --parallel
 sudo cmake --install "build"
 ```
 
+Another variation for your CMake infrastructure via fetch content:
+
 ```cmake
-find_package(kalman)
+include(FetchContent)
+
+FetchContent_Declare(
+  kalman
+  GIT_REPOSITORY "https://github.com/FrancoisCarouge/kalman"
+  FIND_PACKAGE_ARGS NAMES kalman)
+FetchContent_MakeAvailable(kalman)
+
 target_link_libraries(your_target PRIVATE kalman::kalman)
 ```
 
@@ -174,24 +191,15 @@ Also documented in the [fcarouge/kalman.hpp](https://github.com/FrancoisCarouge/
 ### Declaration
 
 ```cpp
-template <
-  typename State,
-  typename Output,
-  typename Input,
-  typename UpdateTypes,
-  typename PredictionTypes>
-class kalman
+template <typename Filter>
+class kalman final : public internal::conditional_member_types<Filter>
 ```
 
 ### Template Parameters
 
 | Template Parameter | Definition |
 | --- | --- |
-| `State` | The type template parameter of the state column vector *X*. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to `double`. |
-| `Output` | The type template parameter of the measurement column vector *Z*. Defaults to `double`. |
-| `Input` | The type template parameter of the control *U*. A `void` input type can be used for systems with no input control to disable all of the input control features, the control transition matrix *G* support, and the other related computations from the filter. Defaults to `void`. |
-| `UpdateTypes` | The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation *H* and the observation noise *R* matrices. The parameters are also propagated to the state observation function object *H*. Defaults to no parameter types, the empty pack. |
-| `PredictionTypes` | The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise *Q*, the state transition *F*, and the control transition *G* matrices. The parameters are also propagated to the state transition function object *F*. Defaults to no parameter types, the empty pack. |
+| `Filter` | Exposition only. The deduced internal filter template parameter. Class template argument deduction (CTAD) figures out the filter type based on the declared configuration. See deduction guide. |
 
 ### Member Types
 
@@ -210,13 +218,16 @@ class kalman
 | `state_transition` | x by x | Type of the state transition matrix `f`. | *F*, *Φ*, *A* |
 | `state` | x by 1 | Type of the state estimate, hidden column vector `x`. | *X* |
 
+The member types are optionally present according to the filter configuration.
+
 ### Member Functions
 
 | Member Function | Definition |
 | --- | --- |
-| `(constructor)` | Constructs the filter. |
+| `(constructor)` | Constructs the filter. Configures the filter the deduction guides. |
+| `(move constructor)` | Constructs the filter, default. |
+| `(move assignment operator)` | Assigns values to the filter, default. |
 | `(destructor)` | Destructs the filter. |
-| `operator=` | Assigns values to the filter. |
 
 #### Characteristics
 
@@ -237,6 +248,8 @@ class kalman
 | `transition` | Manages the state transition function object *f*. Configures the callable object of expression `state(const state &, const input &, const PredictionTypes &...)` to compute the transition state value. The default value is the equivalent to *f(x) = F * X*. The default function is suitable for linear systems. For extended filters `transition` is a linearization of the state transition while *F* is the Jacobian of the transition function: *F = ∂f/∂X = ∂fj/∂xi* that is each row *i* contains the derivatives of the state transition function for every element *j* in the state column vector *X*. |
 | `observation` | Manages the state observation function object *h*. Configures the callable object of expression `output(const state &, const UpdateTypes &...arguments)` to compute the observation state value. The default value is the equivalent to *h(x) = H * X*. The default function is suitable for linear systems. For extended filters `observation` is a linearization of the state observation while *H* is the Jacobian of the observation function: *H = ∂h/∂X = ∂hj/∂xi* that is each row *i* contains the derivatives of the state observation function for every element *j* in the state vector *X*. |
 
+The characteristics are optionally present according to the filter configuration.
+
 #### Modifiers
 
 | Modifier | Definition |
@@ -252,7 +265,8 @@ A specialization of the standard formatter is provided for the filter. Use `std:
 kalman filter;
 
 std::print("{}", filter);
-// {"f": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0}
+// {"f": 1, "k": 1, "p": 1, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0}
+// The characteristics are optionally present according to the filter configuration.
 ```
 
 # Considerations
