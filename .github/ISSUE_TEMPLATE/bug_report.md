@@ -22,7 +22,7 @@ A clear and concise description of what you expected to happen.
 **Environment (please complete the following information):**
  - OS: [e.g. Ubuntu 18.04]
  - Compiler: [e.g. GCC 12.0]
- - Version: [e.g. 0.3.0]
+ - Version: [e.g. 0.4.0]
  - Commit: [e.g. 1060e580bb05de926872171a52cc7244da5e274a]
 
 **Additional context**
