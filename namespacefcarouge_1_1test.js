@@ -73,9 +73,6 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{kalman_format_float_1x1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__float__1x1x1_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__float__1x1x1_8cpp_03.xhtml#afe274aa6ac63b1cdb8f2ed9a107b403e", null ]
     ] ],
-    [ "anonymous_namespace{kalman_h.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h_8cpp_03.xhtml#a111ec232b0100bd56444807c19d28161", null ]
-    ] ],
     [ "anonymous_namespace{kalman_h_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml#a62a7c4179316c139bec9f340db06342e", null ],
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml#a1256f7c96d140f36c11d9b277307b581", null ],

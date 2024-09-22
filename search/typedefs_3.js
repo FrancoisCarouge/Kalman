@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['gain_0',['gain',['../classfcarouge_1_1kalman.xhtml#add9cb224a0e84df8125f5120e967d3ce',1,'fcarouge::kalman']]],
-  ['generator_1',['generator',['../structfcarouge_1_1matrix.xhtml#aef4e1a401c270d709c1ebaf0a3ea4a91',1,'fcarouge::matrix']]]
+  ['filter_5ft_0',['filter_t',['../namespacefcarouge_1_1internal.xhtml#adafa53269502fa0528cecefc34eb1476',1,'fcarouge::internal']]],
+  ['first_5ft_1',['first_t',['../namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482',1,'fcarouge::internal::first_t'],['../namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210',1,'fcarouge::first_t']]],
+  ['function_5ftraits_5ft_2',['function_traits_t',['../namespacefcarouge_1_1internal.xhtml#a6cca8649211e25b63b720c4d1ec78945',1,'fcarouge::internal']]]
 ];

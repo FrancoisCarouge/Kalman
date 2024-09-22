@@ -1,20 +1,22 @@
 var searchData=
 [
-  ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508',1,'fcarouge::kalman::p() const -&gt; const estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a7376e78189711ae8c1e304b2a7cde703',1,'fcarouge::kalman::p() -&gt; estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#a6a61e7dfc8c8de4ef5bcb126417f9d98',1,'fcarouge::kalman::p(const auto &amp;value, const auto &amp;...values)']]],
+  ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#a1dddc06f55c85190557fc96a8020e723',1,'fcarouge::kalman::p() const -&gt; const estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#ad4123e9a6aee12b5627237b8ec4a2619',1,'fcarouge::kalman::p() -&gt; estimate_uncertainty &amp;'],['../classfcarouge_1_1kalman.xhtml#aa163aabe4065e11faf180e3c10499e0a',1,'fcarouge::kalman::p(const auto &amp;value, const auto &amp;...values)']]],
   ['pack_1',['pack',['../namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27',1,'fcarouge']]],
   ['packages_2',['Installation Packages',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages',1,'']]],
   ['parameters_3',['Template Parameters',['../index.xhtml#template-parameters',1,'']]],
-  ['parse_4',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_state_00_01_output_00_01_input_00_01_update_t9120d93c2610923ef128544d6d947fd4.xhtml#ab75415d6c64f84ed42e54ea33b3fd87b',1,'std::formatter&lt; fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;, Char &gt;']]],
+  ['parse_4',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml#a6f9559bb609c72d82e414e17901fc4eb',1,'std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;']]],
   ['party_20acknowledgement_5',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
   ['performance_6',['Performance',['../index.xhtml#performance',1,'']]],
   ['pledge_7',['Our Pledge',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge',1,'']]],
-  ['policy_8',['policy',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml',1,'Security Policy'],['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy',1,'Security Policy']]],
-  ['predict_9',['predict',['../classfcarouge_1_1kalman.xhtml#a941741a785ec6516ecbe1b60c9334103',1,'fcarouge::kalman::predict() const'],['../classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec',1,'fcarouge::kalman::predict(const auto &amp;...arguments)']]],
+  ['policy_8',['policy',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy',1,'Security Policy'],['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml',1,'Security Policy']]],
+  ['predict_9',['predict',['../classfcarouge_1_1kalman.xhtml#a54714ec34eba3646ef3913388c90d2ea',1,'fcarouge::kalman::predict(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a0c60c21241e8e12d84a3832917fef235',1,'fcarouge::kalman::predict() const']]],
   ['predict_5f1x1x0_2ecpp_10',['predict_1x1x0.cpp',['../predict__1x1x0_8cpp.xhtml',1,'']]],
   ['predict_5f1x1x1_2ecpp_11',['predict_1x1x1.cpp',['../predict__1x1x1_8cpp.xhtml',1,'']]],
   ['predict_5flinalg_5fx1x_2ecpp_12',['predict_linalg_x1x.cpp',['../predict__linalg__x1x_8cpp.xhtml',1,'']]],
-  ['projects_13',['Projects',['../index.xhtml#projects',1,'']]],
-  ['promise_5ftype_14',['promise_type',['../structfcarouge_1_1matrix.xhtml#a59cdd2df33a514becc638338dad14c89',1,'fcarouge::matrix']]],
-  ['publish_15',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#a1fc07cd1fdadcf7b30357c0b2d236557',1,'LICENSE.txt']]],
-  ['purpose_16',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#aea4c9abf287d8497048a148e21ce763d',1,'LICENSE.txt']]]
+  ['prediction_5ftypes_13',['prediction_types',['../namespacefcarouge_1_1internal.xhtml#a2180ad783ec8536386c01c77681ef3bc',1,'fcarouge::internal']]],
+  ['process_5funcertainty_14',['process_uncertainty',['../namespacefcarouge_1_1internal.xhtml#af7a9dc7eaefafaadd185f6e63bab462c',1,'fcarouge::internal::process_uncertainty(std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; process_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;'],['../namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3',1,'fcarouge::internal::process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;']]],
+  ['projects_15',['Projects',['../index.xhtml#projects',1,'']]],
+  ['promise_5ftype_16',['promise_type',['../structfcarouge_1_1matrix.xhtml#a59cdd2df33a514becc638338dad14c89',1,'fcarouge::matrix']]],
+  ['publish_17',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#a1fc07cd1fdadcf7b30357c0b2d236557',1,'LICENSE.txt']]],
+  ['purpose_18',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#aea4c9abf287d8497048a148e21ce763d',1,'LICENSE.txt']]]
 ];

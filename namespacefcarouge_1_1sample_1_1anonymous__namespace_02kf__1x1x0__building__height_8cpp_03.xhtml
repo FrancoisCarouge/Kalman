@@ -120,61 +120,54 @@ Variables</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="kf__1x1x0__building__height_8cpp_source.xhtml#l00025">25</a> of file <a class="el" href="kf__1x1x0__building__height_8cpp_source.xhtml">kf_1x1x0_building_height.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   25</span>                            {[] {</div>
 <div class="line"><span class="lineno">   26</span>  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
-<div class="line"><span class="lineno">   27</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>  <span class="comment">// Initialization</span></div>
-<div class="line"><span class="lineno">   30</span>  <span class="comment">// One can estimate the building height simply by looking at it. The estimated</span></div>
-<div class="line"><span class="lineno">   31</span>  <span class="comment">// building height is: 60 meters.</span></div>
-<div class="line"><span class="lineno">   32</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>(60.);</div>
-<div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>  <span class="comment">// Now we shall initialize the estimate uncertainty. A human’s estimation</span></div>
-<div class="line"><span class="lineno">   35</span>  <span class="comment">// error (standard deviation) is about 15 meters: σ = 15. Consequently the</span></div>
-<div class="line"><span class="lineno">   36</span>  <span class="comment">// variance is 225: σ^2 = 225.</span></div>
-<div class="line"><span class="lineno">   37</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>(225.);</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>  <span class="comment">// Prediction</span></div>
-<div class="line"><span class="lineno">   40</span>  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
-<div class="line"><span class="lineno">   41</span>  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
-<div class="line"><span class="lineno">   42</span>  <span class="comment">// noise covariance Q is null in this example.</span></div>
-<div class="line"><span class="lineno">   43</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(60 == filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>() &amp;&amp;</div>
-<div class="line"><span class="lineno">   44</span>         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
-<div class="line"><span class="lineno">   45</span>         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
-<div class="line"><span class="lineno">   46</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(225 == filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">p</a>() &amp;&amp;</div>
-<div class="line"><span class="lineno">   47</span>         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
-<div class="line"><span class="lineno">   48</span>         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  <span class="comment">// Measure and Update</span></div>
-<div class="line"><span class="lineno">   51</span>  <span class="comment">// The first measurement is: z1 = 48.54m. Since the standard deviation σ of</span></div>
-<div class="line"><span class="lineno">   52</span>  <span class="comment">// the altimeter measurement error is 5, the variance σ^2 would be 25, thus</span></div>
-<div class="line"><span class="lineno">   53</span>  <span class="comment">// the measurement uncertainty is: r1 = 25.</span></div>
-<div class="line"><span class="lineno">   54</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aef0ccc1ee4db17bc19952be01f02683f">r</a>(25.);</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(48.54);</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  <span class="comment">// And so on.</span></div>
-<div class="line"><span class="lineno">   59</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(47.11);</div>
-<div class="line"><span class="lineno">   60</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(55.01);</div>
-<div class="line"><span class="lineno">   61</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(55.15);</div>
-<div class="line"><span class="lineno">   62</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(49.89);</div>
-<div class="line"><span class="lineno">   63</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(40.85);</div>
-<div class="line"><span class="lineno">   64</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(46.72);</div>
-<div class="line"><span class="lineno">   65</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(50.05);</div>
-<div class="line"><span class="lineno">   66</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(51.27);</div>
-<div class="line"><span class="lineno">   67</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(49.95);</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
-<div class="line"><span class="lineno">   70</span>  <span class="comment">// at 49.57m.</span></div>
-<div class="line"><span class="lineno">   71</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">x</a>() / 49.57) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">   72</span>         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
-<div class="line"><span class="lineno">   73</span>         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   76</span>}()};</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00160">kalman.hpp:162</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a3ae3ff5bfaa781f0b64ed8e88d804508"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a3ae3ff5bfaa781f0b64ed8e88d804508">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr auto p() const -&gt; const estimate_uncertainty &amp;</div><div class="ttdoc">Returns the estimated covariance matrix P.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad24bd49bfc9877ef197ab7aec6302282"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr auto x() const -&gt; const state &amp;</div><div class="ttdoc">Returns the state estimate column vector X.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aef0ccc1ee4db17bc19952be01f02683f"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aef0ccc1ee4db17bc19952be01f02683f">fcarouge::kalman::r</a></div><div class="ttdeci">constexpr const auto &amp; r() const</div><div class="ttdoc">Returns the observation noise covariance matrix R.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af971a3cfb03099d42c99e6a165c56ad5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="line"><span class="lineno">   27</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{<span class="comment">// One can estimate the building height simply by looking at it.</span></div>
+<div class="line"><span class="lineno">   28</span>                <span class="comment">// The estimated state building height is: X = 60 meters.</span></div>
+<div class="line"><span class="lineno">   29</span>                state{60.},</div>
+<div class="line"><span class="lineno">   30</span>                <span class="comment">// The building height measurement Z.</span></div>
+<div class="line"><span class="lineno">   31</span>                <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;double&gt;</a>,</div>
+<div class="line"><span class="lineno">   32</span>                <span class="comment">// A human’s estimation error (standard deviation) is about 15</span></div>
+<div class="line"><span class="lineno">   33</span>                <span class="comment">// meters: σ = 15. Consequently the variance is σ^2 = 225. The</span></div>
+<div class="line"><span class="lineno">   34</span>                <span class="comment">// estimate uncertainty is: P = 225.</span></div>
+<div class="line"><span class="lineno">   35</span>                estimate_uncertainty{225.},</div>
+<div class="line"><span class="lineno">   36</span>                <span class="comment">// Since the standard deviation σ of the altimeter measurement</span></div>
+<div class="line"><span class="lineno">   37</span>                <span class="comment">// error is 5, the variance σ^2 would be 25, thus the</span></div>
+<div class="line"><span class="lineno">   38</span>                <span class="comment">// measurement, output uncertainty is: R = 25.</span></div>
+<div class="line"><span class="lineno">   39</span>                output_uncertainty{25.}};</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>  assert(60 == <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x() &amp;&amp;</div>
+<div class="line"><span class="lineno">   42</span>         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
+<div class="line"><span class="lineno">   43</span>         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
+<div class="line"><span class="lineno">   44</span>  assert(225 == <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.p() &amp;&amp;</div>
+<div class="line"><span class="lineno">   45</span>         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
+<div class="line"><span class="lineno">   46</span>         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
+<div class="line"><span class="lineno">   49</span>  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
+<div class="line"><span class="lineno">   50</span>  <span class="comment">// noise covariance Q is null in this example.</span></div>
+<div class="line"><span class="lineno">   51</span>  <span class="comment">// Measure and update: the first measurement is: z1 = 48.54m.</span></div>
+<div class="line"><span class="lineno">   52</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(48.54);</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  <span class="comment">// And so on.</span></div>
+<div class="line"><span class="lineno">   55</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(47.11);</div>
+<div class="line"><span class="lineno">   56</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(55.01);</div>
+<div class="line"><span class="lineno">   57</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(55.15);</div>
+<div class="line"><span class="lineno">   58</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(49.89);</div>
+<div class="line"><span class="lineno">   59</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(40.85);</div>
+<div class="line"><span class="lineno">   60</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(46.72);</div>
+<div class="line"><span class="lineno">   61</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(50.05);</div>
+<div class="line"><span class="lineno">   62</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(51.27);</div>
+<div class="line"><span class="lineno">   63</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(49.95);</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
+<div class="line"><span class="lineno">   66</span>  <span class="comment">// at 49.57m.</span></div>
+<div class="line"><span class="lineno">   67</span>  assert(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x() / 49.57) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">   68</span>         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
+<div class="line"><span class="lineno">   69</span>         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   72</span>}()};</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00136">kalman.hpp:136</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a20aafbaa1ca1e63d87200afec6d43cc9"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr make_filter&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00268">factory.hpp:268</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
 </div><!-- fragment -->
 </div>

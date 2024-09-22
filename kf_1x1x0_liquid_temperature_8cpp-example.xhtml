@@ -109,27 +109,29 @@ $(document).ready(function(){initNavTree('kf_1x1x0_liquid_temperature_8cpp-examp
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line">[[<a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
-<div class="line">  kalman filter;</div>
+<div class="line">  kalman filter{</div>
+<div class="line">      <span class="comment">// We initialize the Kalman filter and predict the next state (which is</span></div>
+<div class="line">      <span class="comment">// the first state). We don&#39;t know what the temperature of the liquid is,</span></div>
+<div class="line">      <span class="comment">// and our guess is: estimated state X = 10°C.</span></div>
+<div class="line">      state{10.},</div>
+<div class="line">      <span class="comment">// The measured liquid temperature Z.</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;double&gt;</a>,</div>
+<div class="line">      <span class="comment">// Our guess is very imprecise, so we set our initialization estimate</span></div>
+<div class="line">      <span class="comment">// error σ to 100. The estimate uncertainty p of the initialization is the</span></div>
+<div class="line">      <span class="comment">// error variance σ^2: P = p0,0 = 100^2 = 10,000. This variance is very</span></div>
+<div class="line">      <span class="comment">// high. If we initialize with a more meaningful value, we will get faster</span></div>
+<div class="line">      <span class="comment">// Kalman filter convergence.</span></div>
+<div class="line">      estimate_uncertainty{100 * 100.},</div>
+<div class="line">      <span class="comment">// We have an accurate model, thus we set the process uncertainty noise</span></div>
+<div class="line">      <span class="comment">// variance Q to 0.0001.</span></div>
+<div class="line">      process_uncertainty{0.0001},</div>
+<div class="line">      <span class="comment">// Since the measurement error of the thermometer is σ = 0.1, the variance</span></div>
+<div class="line">      <span class="comment">// σ^2 would be 0.01, thus the measurement, output uncertainty is: R = r1</span></div>
+<div class="line">      <span class="comment">// = 0.01. The measurement error (standard deviation) is 0.1 degrees</span></div>
+<div class="line">      <span class="comment">// Celsius.</span></div>
+<div class="line">      output_uncertainty{0.1 * 0.1}};</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// Initialization</span></div>
-<div class="line">  <span class="comment">// Before the first iteration, we must initialize the Kalman filter and</span></div>
-<div class="line">  <span class="comment">// predict the next state (which is the first state). We don&#39;t know what the</span></div>
-<div class="line">  <span class="comment">// temperature of the liquid is, and our guess is 10°C.</span></div>
-<div class="line">  filter.x(10.);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Our guess is very imprecise, so we set our initialization estimate error σ</span></div>
-<div class="line">  <span class="comment">// to 100. The estimate uncertainty of the initialization is the error</span></div>
-<div class="line">  <span class="comment">// variance σ^2: p0,0 = 100^2 = 10,000. This variance is very high. If we</span></div>
-<div class="line">  <span class="comment">// initialize with a more meaningful value, we will get faster Kalman filter</span></div>
-<div class="line">  <span class="comment">// convergence.</span></div>
-<div class="line">  filter.p(100 * 100.);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Prediction</span></div>
-<div class="line">  <span class="comment">// Now, we shall predict the next state based on the initialization values. We</span></div>
-<div class="line">  <span class="comment">// think that we have an accurate model, thus we set the process noise</span></div>
-<div class="line">  <span class="comment">// variance q to 0.0001.</span></div>
-<div class="line">  filter.q(0.0001);</div>
-<div class="line"> </div>
+<div class="line">  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
 <div class="line">  filter.predict();</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(10 == filter.x() &amp;&amp;</div>
@@ -139,13 +141,7 @@ $(document).ready(function(){initNavTree('kf_1x1x0_liquid_temperature_8cpp-examp
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;10000 + 0.0001 = 10000.0001.&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// Measure and Update</span></div>
-<div class="line">  <span class="comment">// The measurement value: z1 = 49.95°C. Since the measurement error is σ =</span></div>
-<div class="line">  <span class="comment">// 0.1, the variance σ^2 would be 0.01, thus the measurement uncertainty is:</span></div>
-<div class="line">  <span class="comment">// r1 = 0.01. The measurement error (standard deviation) is 0.1 degrees</span></div>
-<div class="line">  <span class="comment">// Celsius.</span></div>
-<div class="line">  filter.r(0.1 * 0.1);</div>
-<div class="line"> </div>
+<div class="line">  <span class="comment">// The first measurement value: z1 = 49.95°C. Measure and update.</span></div>
 <div class="line">  filter.update(49.95);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.k() / 0.999999) &lt; 0.0001 &amp;&amp;</div>

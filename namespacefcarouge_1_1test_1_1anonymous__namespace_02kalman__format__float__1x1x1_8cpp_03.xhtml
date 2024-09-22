@@ -117,19 +117,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  kalman&lt;float, float, float&gt; filter;</div>
+<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#a6fcefc6a3f548e5225223c8594e62b65">kalman</a> filter{state{0.F}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;float&gt;</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;float&gt;</a>};</div>
 <div class="line"> </div>
-<div class="line">  assert(</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(</div>
 <div class="line">      std::format(<span class="stringliteral">&quot;{}&quot;</span>, filter) ==</div>
 <div class="line">      R<span class="stringliteral">&quot;({&quot;f&quot;: 1, &quot;g&quot;: 1, &quot;h&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;q&quot;: 0, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;u&quot;: 0, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0})&quot;);</span></div>
 <div class="line"><span class="stringliteral"></span> </div>
 <div class="line"><span class="stringliteral">  </span><span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a6fcefc6a3f548e5225223c8594e62b65"><div class="ttname"><a href="namespacefcarouge.xhtml#a6fcefc6a3f548e5225223c8594e62b65">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::filter_t&lt; Arguments... &gt; &gt;</div></div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000017">Test:</a></b></dt><dd>Verifies formatting filters for single-dimension filters with input control without additional arguments. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman__format__float__1x1x1_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="kalman__format__float__1x1x1_8cpp_source.xhtml">kalman_format_float_1x1x1.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   48</span>                          {[] {</div>
-<div class="line"><span class="lineno">   49</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">kalman&lt;float, float, float&gt;</a> filter;</div>
+<div class="line"><span class="lineno">   49</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{0.F}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;float&gt;</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;float&gt;</a>};</div>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(</div>
 <div class="line"><span class="lineno">   52</span>      std::format(<span class="stringliteral">&quot;{}&quot;</span>, filter) ==</div>
@@ -137,7 +139,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   54</span><span class="stringliteral"></span> </div>
 <div class="line"><span class="lineno">   55</span><span class="stringliteral">  </span><span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   56</span>}()};</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00136">kalman.hpp:136</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

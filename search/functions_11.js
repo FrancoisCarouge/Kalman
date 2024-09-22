@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['x_0',['x',['../classfcarouge_1_1kalman.xhtml#ad24bd49bfc9877ef197ab7aec6302282',1,'fcarouge::kalman::x() const -&gt; const state &amp;'],['../classfcarouge_1_1kalman.xhtml#a7cd68561479354508097867183b8bdef',1,'fcarouge::kalman::x() -&gt; state &amp;'],['../classfcarouge_1_1kalman.xhtml#a60e5b44976cbf31ed5b6b85b83571544',1,'fcarouge::kalman::x(const auto &amp;value, const auto &amp;...values)']]]
+  ['u_0',['u',['../classfcarouge_1_1kalman.xhtml#aa708a663249b2edff7954ab797c6f264',1,'fcarouge::kalman']]],
+  ['update_1',['update',['../classfcarouge_1_1kalman.xhtml#a4a85603ea16cb72f7b7fc3bfedaa90bd',1,'fcarouge::kalman::update(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#aa57cbe8460a2b56e9b82de6720485d67',1,'fcarouge::kalman::update() const']]]
 ];

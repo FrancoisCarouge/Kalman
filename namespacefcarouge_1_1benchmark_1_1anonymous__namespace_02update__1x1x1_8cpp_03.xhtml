@@ -134,12 +134,12 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   57</span>  std::uniform_real_distribution&lt;float&gt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">uniformly_distributed</a>;</div>
 <div class="line"><span class="lineno">   58</span> </div>
 <div class="line"><span class="lineno">   59</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">_</a> : <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">benchmark_state</a>) {</div>
-<div class="line"><span class="lineno">   60</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> z{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">uniformly_distributed</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">random_generator</a>)};</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#afbcc61930a7705e961357bf151d8d2cf">kalman::output</a> z{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">uniformly_distributed</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">random_generator</a>)};</div>
 <div class="line"><span class="lineno">   61</span> </div>
 <div class="line"><span class="lineno">   62</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   63</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">start</a>{clock::now()};</div>
 <div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">update</a>(z);</div>
+<div class="line"><span class="lineno">   65</span>    filter.update(z);</div>
 <div class="line"><span class="lineno">   66</span> </div>
 <div class="line"><span class="lineno">   67</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   68</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
@@ -148,20 +148,10 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   71</span>        std::chrono::duration&lt;double&gt;{end - start}.count());</div>
 <div class="line"><span class="lineno">   72</span>  }</div>
 <div class="line"><span class="lineno">   73</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00160">kalman.hpp:162</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b72b81b1b5788efc1c21cc9ef9d60a2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">fcarouge::kalman::output</a></div><div class="ttdeci">implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00197">kalman.hpp:197</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_af971a3cfb03099d42c99e6a165c56ad5"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00136">kalman.hpp:136</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_afbcc61930a7705e961357bf151d8d2cf"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#afbcc61930a7705e961357bf151d8d2cf">fcarouge::kalman::output</a></div><div class="ttdeci">implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00169">kalman.hpp:169</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classfcarouge_1_1kalman.xhtml#af971a3cfb03099d42c99e6a165c56ad5">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::update()</a>.</p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03_aa649b94dc4da4f380d44daa1a664dd51_cgraph.svg" width="400" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
 <a id="a294813eb1865178a5a5d2f8e1c8cfb64" name="a294813eb1865178a5a5d2f8e1c8cfb64"></a>

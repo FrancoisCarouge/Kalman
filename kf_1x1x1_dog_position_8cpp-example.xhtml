@@ -108,36 +108,33 @@ $(document).ready(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xht
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line">[[<a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
-<div class="line">  <span class="keyword">using </span>kalman = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">kalman&lt;double, double, double&gt;</a>;</div>
-<div class="line">  kalman filter;</div>
+<div class="line">  kalman filter{</div>
+<div class="line">      <span class="comment">// This is the dog&#39;s initial position expressed as a Gaussian. The state X</span></div>
+<div class="line">      <span class="comment">// position is 0 meters.</span></div>
+<div class="line">      state{1.},</div>
+<div class="line">      <span class="comment">// The measured output position Z.</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;double&gt;</a>,</div>
+<div class="line">      <span class="comment">// We are predicting that at each time step the dog moves forward one</span></div>
+<div class="line">      <span class="comment">// meter. This is the input U process model - the description of how we</span></div>
+<div class="line">      <span class="comment">// think the dog moves. How do I know the velocity? Magic? Consider it a</span></div>
+<div class="line">      <span class="comment">// prediction, or perhaps we have a secondary velocity sensor. Please</span></div>
+<div class="line">      <span class="comment">// accept this simplification for now.</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;double&gt;</a>,</div>
+<div class="line">      <span class="comment">// The variance to 400 m, which is a standard deviation of 20 meters. You</span></div>
+<div class="line">      <span class="comment">// can think of this as saying &quot;I believe with 99.7% accuracy the position</span></div>
+<div class="line">      <span class="comment">// is 0 plus or minus 60 meters&quot;. This is because with Gaussians ~99.7% of</span></div>
+<div class="line">      <span class="comment">// values fall within of the mean. The estimate uncertainty P:</span></div>
+<div class="line">      estimate_uncertainty{20 * 20.},</div>
+<div class="line">      <span class="comment">// Variance in the dog&#39;s movement. The process variance is how much error</span></div>
+<div class="line">      <span class="comment">// there is in the process model. Dogs rarely do what we expect, and</span></div>
+<div class="line">      <span class="comment">// things like hills or the whiff of a squirrel will change his progress.</span></div>
+<div class="line">      <span class="comment">// The process uncertainty Q:</span></div>
+<div class="line">      process_uncertainty{1.},</div>
+<div class="line">      <span class="comment">// Variance in the sensor. The meaning of sensor variance is how much</span></div>
+<div class="line">      <span class="comment">// variance there is in each measurement. The output uncertainty R:</span></div>
+<div class="line">      output_uncertainty{2.}};</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// Initialization</span></div>
-<div class="line">  <span class="comment">// This is the dog&#39;s initial position expressed as a Gaussian. The position is</span></div>
-<div class="line">  <span class="comment">// 0 meters, and the variance to 400 m, which is a standard deviation of 20</span></div>
-<div class="line">  <span class="comment">// meters. You can think of this as saying &quot;I believe with 99.7% accuracy the</span></div>
-<div class="line">  <span class="comment">// position is 0 plus or minus 60 meters&quot;. This is because with Gaussians</span></div>
-<div class="line">  <span class="comment">// ~99.7% of values fall within of the mean.</span></div>
-<div class="line">  filter.x(1.);</div>
-<div class="line">  filter.p(20 * 20.);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Prediction</span></div>
-<div class="line">  <span class="comment">// Variance in the dog&#39;s movement. The process variance is how much error</span></div>
-<div class="line">  <span class="comment">// there is in the process model. Dogs rarely do what we expect, and things</span></div>
-<div class="line">  <span class="comment">// like hills or the whiff of a squirrel will change his progress.</span></div>
-<div class="line">  filter.q(1.);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Measure and Update</span></div>
-<div class="line">  <span class="comment">// Variance in the sensor. The meaning of sensor variance should be clear - it</span></div>
-<div class="line">  <span class="comment">// is how much variance there is in each measurement.</span></div>
-<div class="line">  filter.r(2.);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// We are predicting that at each time step the dog moves forward one meter.</span></div>
-<div class="line">  <span class="comment">// This is the process model - the description of how we think the dog moves.</span></div>
-<div class="line">  <span class="comment">// How do I know the velocity? Magic? Consider it a prediction, or perhaps we</span></div>
-<div class="line">  <span class="comment">// have a secondary velocity sensor. Please accept this simplification for</span></div>
-<div class="line">  <span class="comment">// now.</span></div>
 <div class="line">  filter.predict(1.);</div>
-<div class="line"> </div>
 <div class="line">  filter.update(1.354);</div>
 <div class="line">  filter.predict(1.);</div>
 <div class="line">  filter.update(1.882);</div>

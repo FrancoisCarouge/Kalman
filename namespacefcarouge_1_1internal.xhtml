@@ -136,7 +136,7 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>deducer</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>empty</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>estimate_uncertainty</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>first_type</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,25 +150,66 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>function_traits&lt; Result(Type::*)(Arguments...) const &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>input_control</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, Input, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>input_t</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>kalman&lt; State, Output, void, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>make_filter</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>not_implemented</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>observation</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>output_model</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>output_t</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>output_uncertainty</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>pack</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>prediction_types_t</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>process_uncertainty</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>repack</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>repack&lt; From&lt; Types... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>state_transition</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transition</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transpose</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>update_types_t</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_q_r_h_f</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_q_r_hh_us_ps</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_q_r_hh_us_ps&lt; State, Output, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_qq_rr_f</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_r_f</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_f_g_ps</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_f_g_ps&lt; State, Output, Input, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_us_ps</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_us_ps&lt; State, Output, Input, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:adafa53269502fa0528cecefc34eb1476" id="r_adafa53269502fa0528cecefc34eb1476"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
+<tr class="memitem:adafa53269502fa0528cecefc34eb1476"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#adafa53269502fa0528cecefc34eb1476">filter_t</a> = std::invoke_result_t&lt; make_filter&lt;&gt;, Arguments... &gt;</td></tr>
+<tr class="separator:adafa53269502fa0528cecefc34eb1476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cca8649211e25b63b720c4d1ec78945" id="r_a6cca8649211e25b63b720c4d1ec78945"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Callable</a> &gt; </td></tr>
 <tr class="memitem:a6cca8649211e25b63b720c4d1ec78945"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a6cca8649211e25b63b720c4d1ec78945">function_traits_t</a> = function_traits&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">decltype</a>(&amp;Callable::operator())&gt;::type</td></tr>
 <tr class="separator:a6cca8649211e25b63b720c4d1ec78945"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,12 +233,75 @@ Functions</h2></td></tr>
 <tr class="memitem:ad6134456168f37df9efe83c31baf5629" id="r_ad6134456168f37df9efe83c31baf5629"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Result</a> , typename... Arguments&gt; </td></tr>
 <tr class="memitem:ad6134456168f37df9efe83c31baf5629"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629">function</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Result</a>(Arguments...)) -&gt; function&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Result</a>(Arguments...)&gt;</td></tr>
 <tr class="separator:ad6134456168f37df9efe83c31baf5629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a040f0f8f1c580c270311aac67e8706e6" id="r_a040f0f8f1c580c270311aac67e8706e6"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </td></tr>
+<tr class="memitem:a040f0f8f1c580c270311aac67e8706e6"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a040f0f8f1c580c270311aac67e8706e6">state</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>) -&gt; state&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt;</td></tr>
+<tr class="separator:a040f0f8f1c580c270311aac67e8706e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7938148885cd3b70a96684aace092a7" id="r_ae7938148885cd3b70a96684aace092a7"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:ae7938148885cd3b70a96684aace092a7"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ae7938148885cd3b70a96684aace092a7">state</a> (Types... elements) -&gt; state&lt; std::remove_cvref_t&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">first_t</a>&lt; Types... &gt; &gt;[sizeof...(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Types</a>)]&gt;</td></tr>
+<tr class="separator:ae7938148885cd3b70a96684aace092a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f2c9f1d6c11710ebe51a102f09e170b" id="r_a8f2c9f1d6c11710ebe51a102f09e170b"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:a8f2c9f1d6c11710ebe51a102f09e170b"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; estimate_uncertainty&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
+<tr class="separator:a8f2c9f1d6c11710ebe51a102f09e170b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7213754d98a49db89e229e2edd49b6e1" id="r_a7213754d98a49db89e229e2edd49b6e1"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:a7213754d98a49db89e229e2edd49b6e1"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a7213754d98a49db89e229e2edd49b6e1">estimate_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;) -&gt; estimate_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td></tr>
+<tr class="separator:a7213754d98a49db89e229e2edd49b6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a665945f3d976759241bf85f4102a2d16" id="r_a665945f3d976759241bf85f4102a2d16"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:a665945f3d976759241bf85f4102a2d16"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; output_uncertainty&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
+<tr class="separator:a665945f3d976759241bf85f4102a2d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd5512d7c57f5fc9d7cccbbc1e4cce1d" id="r_abd5512d7c57f5fc9d7cccbbc1e4cce1d"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:abd5512d7c57f5fc9d7cccbbc1e4cce1d"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#abd5512d7c57f5fc9d7cccbbc1e4cce1d">output_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;) -&gt; output_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td></tr>
+<tr class="separator:abd5512d7c57f5fc9d7cccbbc1e4cce1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88ca8cd4d48af886c2c73835d77a1bf3" id="r_a88ca8cd4d48af886c2c73835d77a1bf3"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:a88ca8cd4d48af886c2c73835d77a1bf3"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; process_uncertainty&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
+<tr class="separator:a88ca8cd4d48af886c2c73835d77a1bf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7a9dc7eaefafaadd185f6e63bab462c" id="r_af7a9dc7eaefafaadd185f6e63bab462c"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:af7a9dc7eaefafaadd185f6e63bab462c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#af7a9dc7eaefafaadd185f6e63bab462c">process_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;) -&gt; process_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td></tr>
+<tr class="separator:af7a9dc7eaefafaadd185f6e63bab462c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af41c59712adaec8d2aac3366133cd381" id="r_af41c59712adaec8d2aac3366133cd381"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:af41c59712adaec8d2aac3366133cd381"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; output_model&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
+<tr class="separator:af41c59712adaec8d2aac3366133cd381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a830115a9f1a070a3d89373b6c31a94bc" id="r_a830115a9f1a070a3d89373b6c31a94bc"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:a830115a9f1a070a3d89373b6c31a94bc"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a830115a9f1a070a3d89373b6c31a94bc">output_model</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;) -&gt; output_model&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td></tr>
+<tr class="separator:a830115a9f1a070a3d89373b6c31a94bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a198bcbdb5521548ddb61317e21ff8f1f" id="r_a198bcbdb5521548ddb61317e21ff8f1f"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:a198bcbdb5521548ddb61317e21ff8f1f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; state_transition&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
+<tr class="separator:a198bcbdb5521548ddb61317e21ff8f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe8ad2f640331f3c717475d3e191e111" id="r_afe8ad2f640331f3c717475d3e191e111"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:afe8ad2f640331f3c717475d3e191e111"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#afe8ad2f640331f3c717475d3e191e111">state_transition</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;) -&gt; state_transition&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td></tr>
+<tr class="separator:afe8ad2f640331f3c717475d3e191e111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab441fe9a9ee342227522822f5245e2a2" id="r_ab441fe9a9ee342227522822f5245e2a2"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:ab441fe9a9ee342227522822f5245e2a2"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2">input_control</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; input_control&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
+<tr class="separator:ab441fe9a9ee342227522822f5245e2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4d0c3652155e31911d9268f2f5c0a89" id="r_ab4d0c3652155e31911d9268f2f5c0a89"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:ab4d0c3652155e31911d9268f2f5c0a89"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ab4d0c3652155e31911d9268f2f5c0a89">input_control</a> (std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;) -&gt; input_control&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td></tr>
+<tr class="separator:ab4d0c3652155e31911d9268f2f5c0a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab650a2bb0de1f418440b1d5cf8903b41" id="r_ab650a2bb0de1f418440b1d5cf8903b41"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:ab650a2bb0de1f418440b1d5cf8903b41"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">transition</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; transition&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
+<tr class="separator:ab650a2bb0de1f418440b1d5cf8903b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79f6e22e40f939028ed33d22111a4f39" id="r_a79f6e22e40f939028ed33d22111a4f39"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
+<tr class="memitem:a79f6e22e40f939028ed33d22111a4f39"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">observation</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; observation&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
+<tr class="separator:a79f6e22e40f939028ed33d22111a4f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c0bbc15a41d76dd2b4b23d8566fba57" id="r_a4c0bbc15a41d76dd2b4b23d8566fba57"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> Begin, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">decltype</a>(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>) End, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">decltype</a>(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>) Increment, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Function</a> &gt; </td></tr>
 <tr class="memitem:a4c0bbc15a41d76dd2b4b23d8566fba57"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57">for_constexpr</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Function</a> &amp;&amp;function)</td></tr>
 <tr class="separator:a4c0bbc15a41d76dd2b4b23d8566fba57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a20aafbaa1ca1e63d87200afec6d43cc9" id="r_a20aafbaa1ca1e63d87200afec6d43cc9"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> Filter &gt; </td></tr>
+<tr class="memitem:a20aafbaa1ca1e63d87200afec6d43cc9"><td class="memTemplItemLeft" align="right" valign="top">constexpr make_filter&lt; Filter &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a> {}</td></tr>
+<tr class="separator:a20aafbaa1ca1e63d87200afec6d43cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a391e9f47fc94ced668f789ad1516f36e" id="r_a391e9f47fc94ced668f789ad1516f36e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </td></tr>
+<tr class="memitem:a391e9f47fc94ced668f789ad1516f36e"><td class="memTemplItemLeft" align="right" valign="top">input_t&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a391e9f47fc94ced668f789ad1516f36e">input</a> {}</td></tr>
+<tr class="separator:a391e9f47fc94ced668f789ad1516f36e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac24c8049c4e106fceffde09c1b168b98" id="r_ac24c8049c4e106fceffde09c1b168b98"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </td></tr>
+<tr class="memitem:ac24c8049c4e106fceffde09c1b168b98"><td class="memTemplItemLeft" align="right" valign="top">output_t&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ac24c8049c4e106fceffde09c1b168b98">output</a> {}</td></tr>
+<tr class="separator:ac24c8049c4e106fceffde09c1b168b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02c6376394f58d7070910521c269ee12" id="r_a02c6376394f58d7070910521c269ee12"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a02c6376394f58d7070910521c269ee12"><td class="memTemplItemLeft" align="right" valign="top">update_types_t&lt; Types... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a02c6376394f58d7070910521c269ee12">update_types</a> {}</td></tr>
+<tr class="separator:a02c6376394f58d7070910521c269ee12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2180ad783ec8536386c01c77681ef3bc" id="r_a2180ad783ec8536386c01c77681ef3bc"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a2180ad783ec8536386c01c77681ef3bc"><td class="memTemplItemLeft" align="right" valign="top">prediction_types_t&lt; Types... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a2180ad783ec8536386c01c77681ef3bc">prediction_types</a> {}</td></tr>
+<tr class="separator:a2180ad783ec8536386c01c77681ef3bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61c7050558e5ccfe40b4c5d1c5c058b9" id="r_a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">From</a> &gt; </td></tr>
 <tr class="memitem:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9">repack_s</a> {repack&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">From</a>&gt;::size}</td></tr>
 <tr class="separator:a61c7050558e5ccfe40b4c5d1c5c058b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,7 +316,8 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Internal implementation details. </p>
-<p>Solely intended for this library usage. Do not rely on these details in your projects. </p>
+<p>Solely intended for this library usage. Do not rely on these details in your projects.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a990c3b3d2e7c4889c7f666cc8e82c503" name="a990c3b3d2e7c4889c7f666cc8e82c503"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a990c3b3d2e7c4889c7f666cc8e82c503">&#9670;&#160;</a></span>empty_pack</h2>
@@ -226,7 +331,25 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00200">200</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00201">201</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adafa53269502fa0528cecefc34eb1476" name="adafa53269502fa0528cecefc34eb1476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adafa53269502fa0528cecefc34eb1476">&#9670;&#160;</a></span>filter_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Arguments&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="namespacefcarouge_1_1internal.xhtml#adafa53269502fa0528cecefc34eb1476">fcarouge::internal::filter_t</a> = <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typedef</a> std::invoke_result_t&lt;make_filter&lt;&gt;, Arguments...&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00271">271</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -244,7 +367,7 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00220">220</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00221">221</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -279,9 +402,9 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo:</a></b></dt><dd>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo:</a></b></dt><dd>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00335">335</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00336">336</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -299,11 +422,78 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00212">212</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00213">213</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a8f2c9f1d6c11710ebe51a102f09e170b" name="a8f2c9f1d6c11710ebe51a102f09e170b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f2c9f1d6c11710ebe51a102f09e170b">&#9670;&#160;</a></span>estimate_uncertainty() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::estimate_uncertainty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  estimate_uncertainty&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#a7213754d98a49db89e229e2edd49b6e1">estimate_uncertainty()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ae7938148885cd3b70a96684aace092a7">state()</a>.</p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a8f2c9f1d6c11710ebe51a102f09e170b_cgraph.svg" width="159" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a8f2c9f1d6c11710ebe51a102f09e170b_icgraph.svg" width="354" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a7213754d98a49db89e229e2edd49b6e1" name="a7213754d98a49db89e229e2edd49b6e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7213754d98a49db89e229e2edd49b6e1">&#9670;&#160;</a></span>estimate_uncertainty() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::estimate_uncertainty </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  estimate_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a7213754d98a49db89e229e2edd49b6e1_cgraph.svg" width="354" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a4c0bbc15a41d76dd2b4b23d8566fba57" name="a4c0bbc15a41d76dd2b4b23d8566fba57"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4c0bbc15a41d76dd2b4b23d8566fba57">&#9670;&#160;</a></span>for_constexpr()</h2>
 
@@ -330,22 +520,22 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00231">231</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  231</span>                                                  {</div>
-<div class="line"><span class="lineno">  232</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a> &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">End</a>) {</div>
-<div class="line"><span class="lineno">  233</span>    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(std::integral_constant&lt;<span class="keyword">decltype</span>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>&gt;());</div>
-<div class="line"><span class="lineno">  234</span>    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">for_constexpr&lt;Begin + Increment, End, Increment&gt;</a>(function);</div>
-<div class="line"><span class="lineno">  235</span>  }</div>
-<div class="line"><span class="lineno">  236</span>}</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00232">232</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  232</span>                                                  {</div>
+<div class="line"><span class="lineno">  233</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a> &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">End</a>) {</div>
+<div class="line"><span class="lineno">  234</span>    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(std::integral_constant&lt;<span class="keyword">decltype</span>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>&gt;());</div>
+<div class="line"><span class="lineno">  235</span>    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">for_constexpr&lt;Begin + Increment, End, Increment&gt;</a>(function);</div>
+<div class="line"><span class="lineno">  236</span>  }</div>
+<div class="line"><span class="lineno">  237</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90ed417b141d4a9d567a4bcfadcd6b6e"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">fcarouge::internal::function</a></div><div class="ttdeci">function(Callable) -&gt; function&lt; function_traits_t&lt; Callable &gt; &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>.</p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a4c0bbc15a41d76dd2b4b23d8566fba57_cgraph.svg" width="298" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -371,19 +561,19 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="internal_2utility_8hpp_source.xhtml#l00231">for_constexpr()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629">function()</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<p class="reference">Referenced by <a class="el" href="internal_2utility_8hpp_source.xhtml#l00232">for_constexpr()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629">function()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a90ed417b141d4a9d567a4bcfadcd6b6e_cgraph.svg" width="131" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a90ed417b141d4a9d567a4bcfadcd6b6e_icgraph.svg" width="298" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -408,12 +598,472 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div><div class="memdoc">
 
 <p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_ad6134456168f37df9efe83c31baf5629_cgraph.svg" width="298" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ab441fe9a9ee342227522822f5245e2a2" name="ab441fe9a9ee342227522822f5245e2a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab441fe9a9ee342227522822f5245e2a2">&#9670;&#160;</a></span>input_control() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::input_control </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  input_control&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2">input_control()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2">input_control()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab4d0c3652155e31911d9268f2f5c0a89">input_control()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#afe8ad2f640331f3c717475d3e191e111">state_transition()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_ab441fe9a9ee342227522822f5245e2a2_cgraph.svg" width="131" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_ab441fe9a9ee342227522822f5245e2a2_icgraph.svg" width="298" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ab4d0c3652155e31911d9268f2f5c0a89" name="ab4d0c3652155e31911d9268f2f5c0a89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4d0c3652155e31911d9268f2f5c0a89">&#9670;&#160;</a></span>input_control() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::input_control </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  input_control&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2">input_control()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">transition()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_ab4d0c3652155e31911d9268f2f5c0a89_cgraph.svg" width="466" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a79f6e22e40f939028ed33d22111a4f39" name="a79f6e22e40f939028ed33d22111a4f39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79f6e22e40f939028ed33d22111a4f39">&#9670;&#160;</a></span>observation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::observation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  observation&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">observation()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">observation()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">transition()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a79f6e22e40f939028ed33d22111a4f39_cgraph.svg" width="131" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a79f6e22e40f939028ed33d22111a4f39_icgraph.svg" width="466" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af41c59712adaec8d2aac3366133cd381" name="af41c59712adaec8d2aac3366133cd381"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af41c59712adaec8d2aac3366133cd381">&#9670;&#160;</a></span>output_model() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::output_model </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  output_model&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#a830115a9f1a070a3d89373b6c31a94bc">output_model()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_af41c59712adaec8d2aac3366133cd381_cgraph.svg" width="131" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_af41c59712adaec8d2aac3366133cd381_icgraph.svg" width="298" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a830115a9f1a070a3d89373b6c31a94bc" name="a830115a9f1a070a3d89373b6c31a94bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a830115a9f1a070a3d89373b6c31a94bc">&#9670;&#160;</a></span>output_model() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::output_model </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  output_model&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a830115a9f1a070a3d89373b6c31a94bc_cgraph.svg" width="298" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a665945f3d976759241bf85f4102a2d16" name="a665945f3d976759241bf85f4102a2d16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a665945f3d976759241bf85f4102a2d16">&#9670;&#160;</a></span>output_uncertainty() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::output_uncertainty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  output_uncertainty&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="namespacefcarouge_1_1internal.xhtml#a7213754d98a49db89e229e2edd49b6e1">estimate_uncertainty()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#abd5512d7c57f5fc9d7cccbbc1e4cce1d">output_uncertainty()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a665945f3d976759241bf85f4102a2d16_cgraph.svg" width="144" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a665945f3d976759241bf85f4102a2d16_icgraph.svg" width="340" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="abd5512d7c57f5fc9d7cccbbc1e4cce1d" name="abd5512d7c57f5fc9d7cccbbc1e4cce1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd5512d7c57f5fc9d7cccbbc1e4cce1d">&#9670;&#160;</a></span>output_uncertainty() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::output_uncertainty </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  output_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty()</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_abd5512d7c57f5fc9d7cccbbc1e4cce1d_cgraph.svg" width="336" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a88ca8cd4d48af886c2c73835d77a1bf3" name="a88ca8cd4d48af886c2c73835d77a1bf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88ca8cd4d48af886c2c73835d77a1bf3">&#9670;&#160;</a></span>process_uncertainty() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::process_uncertainty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  process_uncertainty&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="namespacefcarouge_1_1internal.xhtml#abd5512d7c57f5fc9d7cccbbc1e4cce1d">output_uncertainty()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#af7a9dc7eaefafaadd185f6e63bab462c">process_uncertainty()</a>.</p>
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a88ca8cd4d48af886c2c73835d77a1bf3_cgraph.svg" width="155" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a88ca8cd4d48af886c2c73835d77a1bf3_icgraph.svg" width="346" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af7a9dc7eaefafaadd185f6e63bab462c" name="af7a9dc7eaefafaadd185f6e63bab462c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7a9dc7eaefafaadd185f6e63bab462c">&#9670;&#160;</a></span>process_uncertainty() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::process_uncertainty </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  process_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty()</a>.</p>
+<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_af7a9dc7eaefafaadd185f6e63bab462c_cgraph.svg" width="346" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a040f0f8f1c580c270311aac67e8706e6" name="a040f0f8f1c580c270311aac67e8706e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a040f0f8f1c580c270311aac67e8706e6">&#9670;&#160;</a></span>state() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::state </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  state&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7938148885cd3b70a96684aace092a7" name="ae7938148885cd3b70a96684aace092a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7938148885cd3b70a96684aace092a7">&#9670;&#160;</a></span>state() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Types&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::state </td>
+          <td>(</td>
+          <td class="paramtype">Types...&#160;</td>
+          <td class="paramname"><em>elements</em></td><td>)</td>
+          <td> -&gt;  state&lt; std::remove_cvref_t&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">first_t</a>&lt; Types... &gt; &gt;[sizeof...(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Types</a>)]&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty()</a>.</p>
+<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_ae7938148885cd3b70a96684aace092a7_cgraph.svg" width="326" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a198bcbdb5521548ddb61317e21ff8f1f" name="a198bcbdb5521548ddb61317e21ff8f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a198bcbdb5521548ddb61317e21ff8f1f">&#9670;&#160;</a></span>state_transition() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::state_transition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  state_transition&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="namespacefcarouge_1_1internal.xhtml#a830115a9f1a070a3d89373b6c31a94bc">output_model()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#afe8ad2f640331f3c717475d3e191e111">state_transition()</a>.</p>
+<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-22-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a198bcbdb5521548ddb61317e21ff8f1f_cgraph.svg" width="131" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-23" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-23-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-23-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-23-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_a198bcbdb5521548ddb61317e21ff8f1f_icgraph.svg" width="298" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="afe8ad2f640331f3c717475d3e191e111" name="afe8ad2f640331f3c717475d3e191e111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe8ad2f640331f3c717475d3e191e111">&#9670;&#160;</a></span>state_transition() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::state_transition </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  state_transition&lt; std::initializer_list&lt; std::initializer_list&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2">input_control()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition()</a>.</p>
+<div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-24-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-24-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-24-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_afe8ad2f640331f3c717475d3e191e111_cgraph.svg" width="298" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ab650a2bb0de1f418440b1d5cf8903b41" name="ab650a2bb0de1f418440b1d5cf8903b41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab650a2bb0de1f418440b1d5cf8903b41">&#9670;&#160;</a></span>transition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::internal::transition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> -&gt;  transition&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">observation()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">transition()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab4d0c3652155e31911d9268f2f5c0a89">input_control()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">transition()</a>.</p>
+<div id="dynsection-25" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-25-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-25-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-25-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_ab650a2bb0de1f418440b1d5cf8903b41_cgraph.svg" width="298" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-26-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-26-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-26-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1internal_ab650a2bb0de1f418440b1d5cf8903b41_icgraph.svg" width="298" height="76"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -442,9 +1092,36 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line">    [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value) { <span class="keywordflow">return</span> <a class="code hl_function" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a>(value); }}</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ac922632c2da8269e8396756088ba9a1f"><div class="ttname"><a href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">fcarouge::transpose</a></div><div class="ttdeci">constexpr auto transpose(const matrix&lt; Type, Row, Column &gt; &amp;lhs)</div><div class="ttdef"><b>Definition</b> <a href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00346">linalg.hpp:346</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00249">249</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  249</span>                                   {</div>
-<div class="line"><span class="lineno">  250</span>    [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value) { <span class="keywordflow">return</span> <a class="code hl_function" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a>(value); }};</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00250">250</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  250</span>                                   {</div>
+<div class="line"><span class="lineno">  251</span>    [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value) { <span class="keywordflow">return</span> <a class="code hl_function" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a>(value); }};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a20aafbaa1ca1e63d87200afec6d43cc9" name="a20aafbaa1ca1e63d87200afec6d43cc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20aafbaa1ca1e63d87200afec6d43cc9">&#9670;&#160;</a></span>filter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> Filter &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr make_filter&lt;Filter&gt; fcarouge::internal::filter {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00268">268</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  268</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -470,8 +1147,89 @@ template&lt;auto... Values&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00227">227</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  227</span>{first_value&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Values</a>...&gt;::value};</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00228">228</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  228</span>{first_value&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Values</a>...&gt;::value};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a391e9f47fc94ced668f789ad1516f36e" name="a391e9f47fc94ced668f789ad1516f36e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a391e9f47fc94ced668f789ad1516f36e">&#9670;&#160;</a></span>input</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">input_t&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>&gt; fcarouge::internal::input {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00132">132</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  132</span>{};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac24c8049c4e106fceffde09c1b168b98" name="ac24c8049c4e106fceffde09c1b168b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac24c8049c4e106fceffde09c1b168b98">&#9670;&#160;</a></span>output</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">output_t&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>&gt; fcarouge::internal::output {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00136">136</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>{};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2180ad783ec8536386c01c77681ef3bc" name="a2180ad783ec8536386c01c77681ef3bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2180ad783ec8536386c01c77681ef3bc">&#9670;&#160;</a></span>prediction_types</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Types&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">prediction_types_t&lt;Types...&gt; fcarouge::internal::prediction_types {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00220">220</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  220</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -497,8 +1255,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00214">214</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  214</span>{repack&lt;From&gt;::size};</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00215">215</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  215</span>{repack&lt;From&gt;::size};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -524,8 +1282,35 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00239">239</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  239</span>{<span class="keyword">sizeof</span>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Dependent</a>) != <span class="keyword">sizeof</span>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Dependent</a>)};</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00240">240</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  240</span>{<span class="keyword">sizeof</span>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Dependent</a>) != <span class="keyword">sizeof</span>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Dependent</a>)};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a02c6376394f58d7070910521c269ee12" name="a02c6376394f58d7070910521c269ee12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02c6376394f58d7070910521c269ee12">&#9670;&#160;</a></span>update_types</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Types&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">update_types_t&lt;Types...&gt; fcarouge::internal::update_types {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00215">215</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  215</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

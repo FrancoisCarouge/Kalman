@@ -119,212 +119,200 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">column_vector&lt;float, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::state&lt;vector&lt;8&gt;</a>&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
-<div class="line">  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
-<div class="line">  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>output = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">no_input</a> = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>;</div>
-<div class="line">  <span class="keyword">using </span>kalman = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">kalman&lt;state, output, no_input&gt;</a>;</div>
-<div class="line"> </div>
-<div class="line">  kalman filter;</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
-<div class="line">  <span class="comment">// MOT16 sample, tracker #201.</span></div>
-<div class="line">  <span class="keyword">const</span> <a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>[]{{603.5F, 251.5F, 0.187335092348285F, 379.F},</div>
-<div class="line">                                  {599.F, 241.F, 0.24390243902439F, 328.F},</div>
-<div class="line">                                  {599.F, 239.5F, 0.257234726688103F, 311.F},</div>
-<div class="line">                                  {602.5F, 244.F, 0.240131578947368F, 304.F},</div>
-<div class="line">                                  {598.F, 248.5F, 0.272425249169435F, 301.F},</div>
-<div class="line">                                  {596.5F, 240.5F, 0.283276450511945F, 293.F},</div>
-<div class="line">                                  {601.F, 227.F, 0.301587301587302F, 252.F},</div>
-<div class="line">                                  {603.5F, 235.5F, 0.282868525896414F, 251.F},</div>
-<div class="line">                                  {602.F, 242.5F, 0.292490118577075F, 253.F},</div>
-<div class="line">                                  {602.5F, 253.F, 0.218562874251497F, 334.F},</div>
-<div class="line">                                  {593.F, 254.F, 0.273291925465838F, 322.F},</div>
-<div class="line">                                  {603.F, 264.F, 0.22360248447205F, 322.F},</div>
-<div class="line">                                  {600.5F, 278.5F, 0.198966408268734F, 387.F},</div>
-<div class="line">                                  {593.F, 280.F, 0.237113402061856F, 388.F},</div>
-<div class="line">                                  {588.5F, 269.F, 0.267195767195767F, 378.F},</div>
-<div class="line">                                  {579.F, 260.F, 0.311111111111111F, 360.F},</div>
-<div class="line">                                  {565.5F, 268.5F, 0.339130434782609F, 345.F},</div>
-<div class="line">                                  {558.5F, 255.5F, 0.366568914956012F, 341.F},</div>
-<div class="line">                                  {544.F, 268.F, 0.364705882352941F, 340.F},</div>
-<div class="line">                                  {533.F, 258.5F, 0.356083086053412F, 337.F},</div>
-<div class="line">                                  {519.F, 258.F, 0.353293413173653F, 334.F},</div>
-<div class="line">                                  {511.5F, 252.5F, 0.333333333333333F, 333.F},</div>
-<div class="line">                                  {515.5F, 252.5F, 0.31306990881459F, 329.F},</div>
-<div class="line">                                  {523.5F, 251.F, 0.298192771084337F, 332.F},</div>
-<div class="line">                                  {540.F, 252.5F, 0.318318318318318F, 333.F},</div>
-<div class="line">                                  {574.F, 262.F, 0.344827586206897F, 348.F},</div>
-<div class="line">                                  {590.5F, 265.F, 0.278735632183908F, 348.F},</div>
-<div class="line">                                  {613.F, 268.F, 0.164556962025316F, 316.F},</div>
-<div class="line">                                  {617.F, 260.5F, 0.161172161172161F, 273.F},</div>
-<div class="line">                                  {615.5F, 261.5F, 0.15210355987055F, 309.F},</div>
-<div class="line">                                  {605.5F, 259.F, 0.226351351351351F, 296.F},</div>
-<div class="line">                                  {595.5F, 258.5F, 0.289036544850498F, 301.F},</div>
-<div class="line">                                  {588.F, 257.5F, 0.350515463917526F, 291.F},</div>
-<div class="line">                                  {579.5F, 254.F, 0.343537414965986F, 294.F},</div>
-<div class="line">                                  {569.5F, 258.5F, 0.353535353535354F, 297.F},</div>
-<div class="line">                                  {565.5F, 257.F, 0.37248322147651F, 298.F},</div>
-<div class="line">                                  {555.F, 250.F, 0.388157894736842F, 304.F},</div>
-<div class="line">                                  {546.5F, 249.F, 0.336666666666667F, 300.F},</div>
-<div class="line">                                  {535.F, 251.F, 0.30718954248366F, 306.F},</div>
-<div class="line">                                  {530.F, 246.F, 0.308724832214765F, 298.F},</div>
-<div class="line">                                  {521.F, 252.F, 0.278145695364238F, 302.F},</div>
-<div class="line">                                  {521.5F, 254.5F, 0.331010452961672F, 287.F},</div>
-<div class="line">                                  {521.F, 258.5F, 0.32280701754386F, 285.F},</div>
-<div class="line">                                  {519.5F, 255.F, 0.316326530612245F, 294.F},</div>
-<div class="line">                                  {518.5F, 255.F, 0.304794520547945F, 292.F},</div>
-<div class="line">                                  {511.F, 253.F, 0.310810810810811F, 296.F},</div>
-<div class="line">                                  {506.F, 255.F, 0.319727891156463F, 294.F},</div>
-<div class="line">                                  {499.F, 256.F, 0.352112676056338F, 284.F},</div>
-<div class="line">                                  {492.5F, 256.5F, 0.349152542372881F, 295.F},</div>
-<div class="line">                                  {489.5F, 257.F, 0.362068965517241F, 290.F},</div>
-<div class="line">                                  {481.F, 251.5F, 0.357894736842105F, 285.F},</div>
-<div class="line">                                  {474.F, 249.F, 0.324137931034483F, 290.F},</div>
-<div class="line">                                  {466.F, 250.F, 0.306122448979592F, 294.F},</div>
-<div class="line">                                  {461.5F, 248.F, 0.304794520547945F, 292.F},</div>
-<div class="line">                                  {450.5F, 248.5F, 0.323843416370107F, 281.F},</div>
-<div class="line">                                  {442.F, 260.5F, 0.32280701754386F, 285.F},</div>
-<div class="line">                                  {437.F, 255.5F, 0.329824561403509F, 285.F},</div>
-<div class="line">                                  {427.F, 251.5F, 0.329896907216495F, 291.F},</div>
-<div class="line">                                  {419.F, 251.F, 0.330985915492958F, 284.F},</div>
-<div class="line">                                  {411.F, 251.F, 0.328671328671329F, 286.F},</div>
-<div class="line">                                  {411.F, 251.5F, 0.325259515570934F, 289.F},</div>
-<div class="line">                                  {410.F, 249.F, 0.324137931034483F, 290.F},</div>
-<div class="line">                                  {407.F, 247.5F, 0.346020761245675F, 289.F},</div>
-<div class="line">                                  {398.5F, 248.5F, 0.356890459363958F, 283.F},</div>
-<div class="line">                                  {393.F, 249.F, 0.347222222222222F, 288.F},</div>
-<div class="line">                                  {390.5F, 246.5F, 0.331058020477816F, 293.F},</div>
-<div class="line">                                  {387.F, 246.F, 0.308724832214765F, 298.F},</div>
-<div class="line">                                  {379.5F, 244.5F, 0.303754266211604F, 293.F},</div>
-<div class="line">                                  {370.F, 255.5F, 0.258899676375404F, 309.F},</div>
-<div class="line">                                  {372.F, 252.5F, 0.307167235494881F, 293.F},</div>
-<div class="line">                                  {368.F, 254.5F, 0.311418685121107F, 289.F},</div>
-<div class="line">                                  {365.5F, 251.F, 0.322916666666667F, 288.F},</div>
-<div class="line">                                  {360.5F, 250.5F, 0.301694915254237F, 295.F},</div>
-<div class="line">                                  {353.F, 251.5F, 0.316151202749141F, 291.F},</div>
-<div class="line">                                  {349.5F, 248.5F, 0.32404181184669F, 287.F},</div>
-<div class="line">                                  {343.5F, 246.F, 0.327464788732394F, 284.F},</div>
-<div class="line">                                  {334.5F, 251.5F, 0.335689045936396F, 283.F},</div>
-<div class="line">                                  {328.5F, 249.5F, 0.342960288808664F, 277.F},</div>
-<div class="line">                                  {321.5F, 256.5F, 0.328621908127208F, 283.F},</div>
-<div class="line">                                  {321.5F, 259.5F, 0.317073170731707F, 287.F},</div>
-<div class="line">                                  {319.5F, 252.F, 0.313380281690141F, 284.F},</div>
-<div class="line">                                  {317.5F, 247.5F, 0.314487632508834F, 283.F},</div>
-<div class="line">                                  {314.5F, 248.F, 0.313380281690141F, 284.F},</div>
-<div class="line">                                  {318.5F, 255.F, 0.311188811188811F, 286.F},</div>
-<div class="line">                                  {324.5F, 252.F, 0.317857142857143F, 280.F},</div>
-<div class="line">                                  {328.5F, 249.F, 0.311188811188811F, 286.F},</div>
-<div class="line">                                  {330.F, 248.F, 0.318840579710145F, 276.F},</div>
-<div class="line">                                  {334.5F, 245.F, 0.320143884892086F, 278.F},</div>
-<div class="line">                                  {342.5F, 248.F, 0.324817518248175F, 274.F},</div>
-<div class="line">                                  {348.F, 247.5F, 0.312727272727273F, 275.F},</div>
-<div class="line">                                  {349.5F, 245.5F, 0.326007326007326F, 273.F},</div>
-<div class="line">                                  {350.F, 250.F, 0.321167883211679F, 274.F},</div>
-<div class="line">                                  {350.5F, 252.5F, 0.323636363636364F, 275.F},</div>
-<div class="line">                                  {356.5F, 249.F, 0.31294964028777F, 278.F},</div>
-<div class="line">                                  {356.5F, 245.F, 0.320143884892086F, 278.F},</div>
-<div class="line">                                  {357.F, 245.F, 0.314285714285714F, 280.F},</div>
-<div class="line">                                  {361.F, 246.F, 0.318840579710145F, 276.F},</div>
-<div class="line">                                  {364.F, 251.5F, 0.308771929824561F, 285.F},</div>
-<div class="line">                                  {368.F, 252.5F, 0.303886925795053F, 283.F},</div>
-<div class="line">                                  {369.F, 250.5F, 0.29757785467128F, 289.F}};</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Initialization</span></div>
-<div class="line">  <span class="comment">// The filter is initialized at runtime, on bounding box detection, with the</span></div>
-<div class="line">  <span class="comment">// first observed output. Bounding box position and velocity estimated state:</span></div>
-<div class="line">  <span class="comment">// [px, py, pa, ph, vx, vy, va, vh].</span></div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>{605.0F, 248.0F, 0.20481927710843373F,</div>
-<div class="line">                                   332.0F};</div>
-<div class="line">  filter.x(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(0), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(1), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(2), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 0.F,</div>
-<div class="line">           0.F, 0.F, 0.F);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Experimental position and velocity uncertainty standard deviation weights.</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>{605.0F, 248.0F, 0.20481927710843373F, 332.0F};</div>
+<div class="line">  <span class="comment">// Experimental position and velocity uncertainty standard deviation</span></div>
+<div class="line">  <span class="comment">// weights.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>{1.F / 20.F};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a>{1.F / 160.F};</div>
-<div class="line"> </div>
-<div class="line">  filter.p(<a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{</div>
-<div class="line">      state{2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
-<div class="line">            2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 1e-2F,</div>
-<div class="line">            2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
-<div class="line">            10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
-<div class="line">            10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 1e-5F,</div>
-<div class="line">            10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3)}</div>
-<div class="line">          .array()</div>
-<div class="line">          .square()</div>
-<div class="line">          .matrix()</div>
-<div class="line">          .asDiagonal()});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Constant velocity, linear state transition model. From one image frame to</span></div>
 <div class="line">  <span class="comment">// the other.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>{1.F};</div>
-<div class="line">  filter.f(</div>
-<div class="line">      kalman::state_transition{{1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F, 0.F, 0.F},</div>
-<div class="line">                               {0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F, 0.F},</div>
-<div class="line">                               {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F},</div>
-<div class="line">                               {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>},</div>
-<div class="line">                               {0.F, 0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F},</div>
-<div class="line">                               {0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F, 0.F},</div>
-<div class="line">                               {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F},</div>
-<div class="line">                               {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F}});</div>
 <div class="line"> </div>
-<div class="line">  filter.q([<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a>](</div>
-<div class="line">               <span class="keyword">const</span> <a id="a4" name="a4"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x) -&gt; kalman::process_uncertainty {</div>
-<div class="line">    <span class="keywordflow">return</span> state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
-<div class="line">                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
-<div class="line">                 1e-2F,</div>
-<div class="line">                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
-<div class="line">                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * x(3),</div>
-<div class="line">                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * x(3),</div>
-<div class="line">                 1e-5F,</div>
-<div class="line">                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * x(3)}</div>
-<div class="line">        .array()</div>
-<div class="line">        .square()</div>
-<div class="line">        .matrix()</div>
-<div class="line">        .asDiagonal();</div>
-<div class="line">  });</div>
+<div class="line">  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
+<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#a6fcefc6a3f548e5225223c8594e62b65">kalman</a> <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>{</div>
+<div class="line">      <span class="comment">// The filter is initialized with the first observed output.</span></div>
+<div class="line">      <span class="comment">// Bounding box position and velocity estimated state X: [px,</span></div>
+<div class="line">      <span class="comment">// py, pa, ph, vx, vy, va, vh].</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a3438b27d6a9d886f7b17b64d0a2675d6">state</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(0), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(1), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(2), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 0.F,</div>
+<div class="line">            0.F, 0.F, 0.F},</div>
+<div class="line">      <span class="comment">// The output Z:</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;vector&lt;4&gt;</a>&gt;,</div>
+<div class="line">      <span class="comment">// The estimate uncertainty P:</span></div>
+<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;float, 8, 8&gt;</a>{</div>
+<div class="line">          <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a>{2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
+<div class="line">                    2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 1e-2F,</div>
+<div class="line">                    2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
+<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
+<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 1e-5F,</div>
+<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3)}</div>
+<div class="line">              .array()</div>
+<div class="line">              .square()</div>
+<div class="line">              .matrix()</div>
+<div class="line">              .asDiagonal()}},</div>
+<div class="line">      <span class="comment">// Q</span></div>
+<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a>{[](<span class="keyword">const</span> <span class="comment">/*state?*/</span></div>
+<div class="line">                             <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a> &amp;x) {</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight2</a>{1.F / 20.F};</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight2</a>{1.F / 160.F};</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;float, 8, 8&gt;</a>{</div>
+<div class="line">            <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight2</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight2</a> * x(3), 1e-2F,</div>
+<div class="line">                      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight2</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight2</a> * x(3),</div>
+<div class="line">                      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight2</a> * x(3), 1e-5F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight2</a> * x(3)}</div>
+<div class="line">                .array()</div>
+<div class="line">                .square()</div>
+<div class="line">                .matrix()</div>
+<div class="line">                .asDiagonal()};</div>
+<div class="line">      }},</div>
+<div class="line">      <span class="comment">// R</span></div>
+<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a>{</div>
+<div class="line">          <span class="comment">// Observation, measurement noise covariance.</span></div>
+<div class="line">          [<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>](<span class="keyword">const</span> <span class="comment">/*state?*/</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a> &amp;x,</div>
+<div class="line">                            [[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <span class="comment">/*output?*/</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> &amp;z) {</div>
+<div class="line">            <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;float, 4, 4&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
+<div class="line">                                                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3), 1e-1F,</div>
+<div class="line">                                                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3)}</div>
+<div class="line">                                           .array()</div>
+<div class="line">                                           .square()</div>
+<div class="line">                                           .matrix()</div>
+<div class="line">                                           .asDiagonal()};</div>
+<div class="line">          }},</div>
+<div class="line">      <span class="comment">// The state transition F:</span></div>
+<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition</a>{{1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F, 0.F, 0.F},</div>
+<div class="line">                       {0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F, 0.F},</div>
+<div class="line">                       {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F},</div>
+<div class="line">                       {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>},</div>
+<div class="line">                       {0.F, 0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F},</div>
+<div class="line">                       {0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F, 0.F},</div>
+<div class="line">                       {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F},</div>
+<div class="line">                       {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F}}};</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
+<div class="line">  <span class="comment">// MOT16 sample, tracker #201.</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>[]{{603.5F, 251.5F, 0.187335092348285F, 379.F},</div>
+<div class="line">                             {599.F, 241.F, 0.24390243902439F, 328.F},</div>
+<div class="line">                             {599.F, 239.5F, 0.257234726688103F, 311.F},</div>
+<div class="line">                             {602.5F, 244.F, 0.240131578947368F, 304.F},</div>
+<div class="line">                             {598.F, 248.5F, 0.272425249169435F, 301.F},</div>
+<div class="line">                             {596.5F, 240.5F, 0.283276450511945F, 293.F},</div>
+<div class="line">                             {601.F, 227.F, 0.301587301587302F, 252.F},</div>
+<div class="line">                             {603.5F, 235.5F, 0.282868525896414F, 251.F},</div>
+<div class="line">                             {602.F, 242.5F, 0.292490118577075F, 253.F},</div>
+<div class="line">                             {602.5F, 253.F, 0.218562874251497F, 334.F},</div>
+<div class="line">                             {593.F, 254.F, 0.273291925465838F, 322.F},</div>
+<div class="line">                             {603.F, 264.F, 0.22360248447205F, 322.F},</div>
+<div class="line">                             {600.5F, 278.5F, 0.198966408268734F, 387.F},</div>
+<div class="line">                             {593.F, 280.F, 0.237113402061856F, 388.F},</div>
+<div class="line">                             {588.5F, 269.F, 0.267195767195767F, 378.F},</div>
+<div class="line">                             {579.F, 260.F, 0.311111111111111F, 360.F},</div>
+<div class="line">                             {565.5F, 268.5F, 0.339130434782609F, 345.F},</div>
+<div class="line">                             {558.5F, 255.5F, 0.366568914956012F, 341.F},</div>
+<div class="line">                             {544.F, 268.F, 0.364705882352941F, 340.F},</div>
+<div class="line">                             {533.F, 258.5F, 0.356083086053412F, 337.F},</div>
+<div class="line">                             {519.F, 258.F, 0.353293413173653F, 334.F},</div>
+<div class="line">                             {511.5F, 252.5F, 0.333333333333333F, 333.F},</div>
+<div class="line">                             {515.5F, 252.5F, 0.31306990881459F, 329.F},</div>
+<div class="line">                             {523.5F, 251.F, 0.298192771084337F, 332.F},</div>
+<div class="line">                             {540.F, 252.5F, 0.318318318318318F, 333.F},</div>
+<div class="line">                             {574.F, 262.F, 0.344827586206897F, 348.F},</div>
+<div class="line">                             {590.5F, 265.F, 0.278735632183908F, 348.F},</div>
+<div class="line">                             {613.F, 268.F, 0.164556962025316F, 316.F},</div>
+<div class="line">                             {617.F, 260.5F, 0.161172161172161F, 273.F},</div>
+<div class="line">                             {615.5F, 261.5F, 0.15210355987055F, 309.F},</div>
+<div class="line">                             {605.5F, 259.F, 0.226351351351351F, 296.F},</div>
+<div class="line">                             {595.5F, 258.5F, 0.289036544850498F, 301.F},</div>
+<div class="line">                             {588.F, 257.5F, 0.350515463917526F, 291.F},</div>
+<div class="line">                             {579.5F, 254.F, 0.343537414965986F, 294.F},</div>
+<div class="line">                             {569.5F, 258.5F, 0.353535353535354F, 297.F},</div>
+<div class="line">                             {565.5F, 257.F, 0.37248322147651F, 298.F},</div>
+<div class="line">                             {555.F, 250.F, 0.388157894736842F, 304.F},</div>
+<div class="line">                             {546.5F, 249.F, 0.336666666666667F, 300.F},</div>
+<div class="line">                             {535.F, 251.F, 0.30718954248366F, 306.F},</div>
+<div class="line">                             {530.F, 246.F, 0.308724832214765F, 298.F},</div>
+<div class="line">                             {521.F, 252.F, 0.278145695364238F, 302.F},</div>
+<div class="line">                             {521.5F, 254.5F, 0.331010452961672F, 287.F},</div>
+<div class="line">                             {521.F, 258.5F, 0.32280701754386F, 285.F},</div>
+<div class="line">                             {519.5F, 255.F, 0.316326530612245F, 294.F},</div>
+<div class="line">                             {518.5F, 255.F, 0.304794520547945F, 292.F},</div>
+<div class="line">                             {511.F, 253.F, 0.310810810810811F, 296.F},</div>
+<div class="line">                             {506.F, 255.F, 0.319727891156463F, 294.F},</div>
+<div class="line">                             {499.F, 256.F, 0.352112676056338F, 284.F},</div>
+<div class="line">                             {492.5F, 256.5F, 0.349152542372881F, 295.F},</div>
+<div class="line">                             {489.5F, 257.F, 0.362068965517241F, 290.F},</div>
+<div class="line">                             {481.F, 251.5F, 0.357894736842105F, 285.F},</div>
+<div class="line">                             {474.F, 249.F, 0.324137931034483F, 290.F},</div>
+<div class="line">                             {466.F, 250.F, 0.306122448979592F, 294.F},</div>
+<div class="line">                             {461.5F, 248.F, 0.304794520547945F, 292.F},</div>
+<div class="line">                             {450.5F, 248.5F, 0.323843416370107F, 281.F},</div>
+<div class="line">                             {442.F, 260.5F, 0.32280701754386F, 285.F},</div>
+<div class="line">                             {437.F, 255.5F, 0.329824561403509F, 285.F},</div>
+<div class="line">                             {427.F, 251.5F, 0.329896907216495F, 291.F},</div>
+<div class="line">                             {419.F, 251.F, 0.330985915492958F, 284.F},</div>
+<div class="line">                             {411.F, 251.F, 0.328671328671329F, 286.F},</div>
+<div class="line">                             {411.F, 251.5F, 0.325259515570934F, 289.F},</div>
+<div class="line">                             {410.F, 249.F, 0.324137931034483F, 290.F},</div>
+<div class="line">                             {407.F, 247.5F, 0.346020761245675F, 289.F},</div>
+<div class="line">                             {398.5F, 248.5F, 0.356890459363958F, 283.F},</div>
+<div class="line">                             {393.F, 249.F, 0.347222222222222F, 288.F},</div>
+<div class="line">                             {390.5F, 246.5F, 0.331058020477816F, 293.F},</div>
+<div class="line">                             {387.F, 246.F, 0.308724832214765F, 298.F},</div>
+<div class="line">                             {379.5F, 244.5F, 0.303754266211604F, 293.F},</div>
+<div class="line">                             {370.F, 255.5F, 0.258899676375404F, 309.F},</div>
+<div class="line">                             {372.F, 252.5F, 0.307167235494881F, 293.F},</div>
+<div class="line">                             {368.F, 254.5F, 0.311418685121107F, 289.F},</div>
+<div class="line">                             {365.5F, 251.F, 0.322916666666667F, 288.F},</div>
+<div class="line">                             {360.5F, 250.5F, 0.301694915254237F, 295.F},</div>
+<div class="line">                             {353.F, 251.5F, 0.316151202749141F, 291.F},</div>
+<div class="line">                             {349.5F, 248.5F, 0.32404181184669F, 287.F},</div>
+<div class="line">                             {343.5F, 246.F, 0.327464788732394F, 284.F},</div>
+<div class="line">                             {334.5F, 251.5F, 0.335689045936396F, 283.F},</div>
+<div class="line">                             {328.5F, 249.5F, 0.342960288808664F, 277.F},</div>
+<div class="line">                             {321.5F, 256.5F, 0.328621908127208F, 283.F},</div>
+<div class="line">                             {321.5F, 259.5F, 0.317073170731707F, 287.F},</div>
+<div class="line">                             {319.5F, 252.F, 0.313380281690141F, 284.F},</div>
+<div class="line">                             {317.5F, 247.5F, 0.314487632508834F, 283.F},</div>
+<div class="line">                             {314.5F, 248.F, 0.313380281690141F, 284.F},</div>
+<div class="line">                             {318.5F, 255.F, 0.311188811188811F, 286.F},</div>
+<div class="line">                             {324.5F, 252.F, 0.317857142857143F, 280.F},</div>
+<div class="line">                             {328.5F, 249.F, 0.311188811188811F, 286.F},</div>
+<div class="line">                             {330.F, 248.F, 0.318840579710145F, 276.F},</div>
+<div class="line">                             {334.5F, 245.F, 0.320143884892086F, 278.F},</div>
+<div class="line">                             {342.5F, 248.F, 0.324817518248175F, 274.F},</div>
+<div class="line">                             {348.F, 247.5F, 0.312727272727273F, 275.F},</div>
+<div class="line">                             {349.5F, 245.5F, 0.326007326007326F, 273.F},</div>
+<div class="line">                             {350.F, 250.F, 0.321167883211679F, 274.F},</div>
+<div class="line">                             {350.5F, 252.5F, 0.323636363636364F, 275.F},</div>
+<div class="line">                             {356.5F, 249.F, 0.31294964028777F, 278.F},</div>
+<div class="line">                             {356.5F, 245.F, 0.320143884892086F, 278.F},</div>
+<div class="line">                             {357.F, 245.F, 0.314285714285714F, 280.F},</div>
+<div class="line">                             {361.F, 246.F, 0.318840579710145F, 276.F},</div>
+<div class="line">                             {364.F, 251.5F, 0.308771929824561F, 285.F},</div>
+<div class="line">                             {368.F, 252.5F, 0.303886925795053F, 283.F},</div>
+<div class="line">                             {369.F, 250.5F, 0.29757785467128F, 289.F}};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line">  filter.predict();</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Measure and Update</span></div>
-<div class="line">  <span class="comment">// Direct linear observation transition model.</span></div>
-<div class="line">  filter.h(kalman::output_model{{1.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F},</div>
-<div class="line">                                {0.F, 1.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F},</div>
-<div class="line">                                {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, 0.F, 0.F},</div>
-<div class="line">                                {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, 0.F}});</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Observation, measurement noise covariance.</span></div>
-<div class="line">  filter.r([<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x,</div>
-<div class="line">                             [[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> &amp;z)</div>
-<div class="line">               -&gt; kalman::output_uncertainty {</div>
-<div class="line">    <span class="keywordflow">return</span> output{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3), 1e-1F,</div>
-<div class="line">                  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3)}</div>
-<div class="line">        .array()</div>
-<div class="line">        .square()</div>
-<div class="line">        .matrix()</div>
-<div class="line">        .asDiagonal();</div>
-<div class="line">  });</div>
+<div class="line">  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.predict();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a> : <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>) {</div>
-<div class="line">    filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a>);</div>
-<div class="line">    filter.predict();</div>
+<div class="line">    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a>);</div>
+<div class="line">    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.predict();</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x()[0] / 370.932041394761F) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[1] / 251.173174229878F) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[2] / 0.314757138075364F) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[3] / 287.859996019444F) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[4] / 1.95865368159518F) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[5] / 0.229282868701086F) &lt; 0.001F &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x()[0] / 370.932041394761F) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x()[1] / 251.173174229878F) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x()[2] / 0.314757138075364F) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x()[3] / 287.859996019444F) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x()[4] / 1.95865368159518F) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x()[5] / 0.229282868701086F) &lt; 0.001F &amp;&amp;</div>
 <div class="line">         <span class="comment">// The precision of the velocity appears to saturate early on in the</span></div>
 <div class="line">         <span class="comment">// original example. The parameter could be scaled or larger types used</span></div>
 <div class="line">         <span class="comment">// to improve comparison accuracy.</span></div>
-<div class="line">         std::abs(1 - filter.x()[6] / 2.46138628550094E-06F) &lt; 0.5F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[7] / 0.81402529074969F) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x()[6] / 2.46138628550094E-06F) &lt; 0.5F &amp;&amp;</div>
+<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.x()[7] / 0.81402529074969F) &lt; 0.001F &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimated states expected to meet Nwojke&#39;s Deep SORT filter&#39;s &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;MOT16 sample tracker #201 dataset at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
@@ -332,12 +320,16 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b72b81b1b5788efc1c21cc9ef9d60a2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">fcarouge::kalman::output</a></div><div class="ttdeci">implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00197">kalman.hpp:197</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2b9d45277b0216e1f15d64ff9369802e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00202">kalman.hpp:202</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4b224b3d52a55abf6b98ae60d04a3130"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">fcarouge::kalman::state</a></div><div class="ttdeci">implementation::state state</div><div class="ttdoc">Type of the state estimate column vector X.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00192">kalman.hpp:192</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a198bcbdb5521548ddb61317e21ff8f1f"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">fcarouge::internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a20aafbaa1ca1e63d87200afec6d43cc9"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr make_filter&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00268">factory.hpp:268</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a665945f3d976759241bf85f4102a2d16"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">fcarouge::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a88ca8cd4d48af886c2c73835d77a1bf3"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">fcarouge::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a8f2c9f1d6c11710ebe51a102f09e170b"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">fcarouge::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a3438b27d6a9d886f7b17b64d0a2675d6"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a3438b27d6a9d886f7b17b64d0a2675d6">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00011">ekf_4x1x0_soaring.cpp:11</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a6fcefc6a3f548e5225223c8594e62b65"><div class="ttname"><a href="namespacefcarouge.xhtml#a6fcefc6a3f548e5225223c8594e62b65">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::filter_t&lt; Arguments... &gt; &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ae6a34b26f8067a57bfc5de22cb4b625a"><div class="ttname"><a href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">fcarouge::operator/</a></div><div class="ttdeci">constexpr auto operator/(const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; quotient&lt; Numerator, Denominator &gt;</div><div class="ttdoc">A user-definable algebraic division solution.</div><div class="ttdef"><b>Definition</b> <a href="update__linalg__xx0_8cpp_source.xhtml#l00055">update_linalg_xx0.cpp:55</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

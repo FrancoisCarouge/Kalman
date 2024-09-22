@@ -163,68 +163,60 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000014">Test:</a></b></dt><dd>Verifies the state transition matrix F management overloads for the Eigen filter type. </dd></dl>
+<b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i5x5{identity_v&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">z5x5</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">zero_v&lt;matrix&lt;5, 5&gt;</a>&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;3&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">z3</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">zero_v&lt;vector&lt;3&gt;</a>&gt;};</div>
+<div class="line">  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;5&gt;</a>{0., 0., 0., 0., 0.}}, output&lt;vector&lt;4&gt;&gt;,</div>
+<div class="line">                input&lt;vector&lt;3&gt;&gt;, update_types&lt;double, float, int&gt;,</div>
+<div class="line">                prediction_types&lt;int, float, double&gt;};</div>
+<div class="line"> </div>
+<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f() == i5x5);</div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> f{z5x5};</div>
+<div class="line">    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f(f);</div>
+<div class="line">    assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f() == z5x5);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  {</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> f{i5x5};</div>
+<div class="line">    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f(f);</div>
+<div class="line">    assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f() == i5x5);</div>
+<div class="line">  }</div>
+<div class="line"> </div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}()}</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00136">kalman.hpp:136</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a20aafbaa1ca1e63d87200afec6d43cc9"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr make_filter&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00268">factory.hpp:268</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000015">Test:</a></b></dt><dd>Verifies the state transition matrix F management overloads for the Eigen filter type. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman__f__5x4x3_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="kalman__f__5x4x3_8cpp_source.xhtml">kalman_f_5x4x3.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   60</span>                          {[] {</div>
-<div class="line"><span class="lineno">   61</span>  <span class="keyword">using </span><a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> =</div>
-<div class="line"><span class="lineno">   62</span>      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">kalman&lt;vector&lt;5&gt;</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;3&gt;</a>, std::tuple&lt;double, float, int&gt;,</div>
-<div class="line"><span class="lineno">   63</span>             std::tuple&lt;int, float, double&gt;&gt;;</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter;</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">i5x5</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">identity_v&lt;matrix&lt;5, 5&gt;</a>&gt;};</div>
-<div class="line"><span class="lineno">   68</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">z5x5</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">zero_v&lt;matrix&lt;5, 5&gt;</a>&gt;};</div>
-<div class="line"><span class="lineno">   69</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;3&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">z3</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">zero_v&lt;vector&lt;3&gt;</a>&gt;};</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>  assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>() == i5x5);</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>  {</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{z5x5};</div>
-<div class="line"><span class="lineno">   75</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>(f);</div>
-<div class="line"><span class="lineno">   76</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>() == z5x5);</div>
-<div class="line"><span class="lineno">   77</span>  }</div>
-<div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>  {</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{i5x5};</div>
-<div class="line"><span class="lineno">   81</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>(f);</div>
-<div class="line"><span class="lineno">   82</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>() == i5x5);</div>
-<div class="line"><span class="lineno">   83</span>  }</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>  {</div>
-<div class="line"><span class="lineno">   86</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{</div>
-<div class="line"><span class="lineno">   87</span>        []([[maybe_unused]] <span class="keyword">const</span> kalman::state &amp;x,</div>
-<div class="line"><span class="lineno">   88</span>           [[maybe_unused]] <span class="keyword">const</span> kalman::input &amp;u,</div>
-<div class="line"><span class="lineno">   89</span>           [[maybe_unused]] <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;i, [[maybe_unused]] <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;fp,</div>
-<div class="line"><span class="lineno">   90</span>           [[maybe_unused]] <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;d) -&gt; kalman::state_transition {</div>
-<div class="line"><span class="lineno">   91</span>          <span class="keywordflow">return</span> zero_v&lt;matrix&lt;5, 5&gt;&gt;;</div>
-<div class="line"><span class="lineno">   92</span>        }};</div>
-<div class="line"><span class="lineno">   93</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>(f);</div>
-<div class="line"><span class="lineno">   94</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>() == i5x5);</div>
-<div class="line"><span class="lineno">   95</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>(0, 0.F, 0., z3);</div>
-<div class="line"><span class="lineno">   96</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>() == z5x5);</div>
-<div class="line"><span class="lineno">   97</span>  }</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>  {</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{</div>
-<div class="line"><span class="lineno">  101</span>        []([[maybe_unused]] <span class="keyword">const</span> kalman::state &amp;x,</div>
-<div class="line"><span class="lineno">  102</span>           [[maybe_unused]] <span class="keyword">const</span> kalman::input &amp;u,</div>
-<div class="line"><span class="lineno">  103</span>           [[maybe_unused]] <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;i, [[maybe_unused]] <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;fp,</div>
-<div class="line"><span class="lineno">  104</span>           [[maybe_unused]] <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;d) -&gt; kalman::state_transition {</div>
-<div class="line"><span class="lineno">  105</span>          <span class="keywordflow">return</span> identity_v&lt;matrix&lt;5, 5&gt;&gt;;</div>
-<div class="line"><span class="lineno">  106</span>        }};</div>
-<div class="line"><span class="lineno">  107</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>(std::move(f));</div>
-<div class="line"><span class="lineno">  108</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>() == z5x5);</div>
-<div class="line"><span class="lineno">  109</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>(0, 0.F, 0., z3);</div>
-<div class="line"><span class="lineno">  110</span>    assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">f</a>() == i5x5);</div>
-<div class="line"><span class="lineno">  111</span>  }</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  114</span>}()};</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00160">kalman.hpp:162</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1a54f32cfaafea2d586a5f7b28898fec"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aeb9837e03a19988a2fd8f1abe8e40b49"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aeb9837e03a19988a2fd8f1abe8e40b49">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr const auto &amp; f() const</div><div class="ttdoc">Returns the state transition matrix F.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
+<div class="line"><span class="lineno">   61</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">i5x5</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">identity_v&lt;matrix&lt;5, 5&gt;</a>&gt;};</div>
+<div class="line"><span class="lineno">   62</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">z5x5</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">zero_v&lt;matrix&lt;5, 5&gt;</a>&gt;};</div>
+<div class="line"><span class="lineno">   63</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;3&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">z3</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">zero_v&lt;vector&lt;3&gt;</a>&gt;};</div>
+<div class="line"><span class="lineno">   64</span>  kalman filter{state{vector&lt;5&gt;{0., 0., 0., 0., 0.}}, output&lt;vector&lt;4&gt;&gt;,</div>
+<div class="line"><span class="lineno">   65</span>                input&lt;vector&lt;3&gt;&gt;, update_types&lt;double, float, int&gt;,</div>
+<div class="line"><span class="lineno">   66</span>                prediction_types&lt;int, float, double&gt;};</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f() == i5x5);</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>  {</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{z5x5};</div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f(f);</div>
+<div class="line"><span class="lineno">   73</span>    assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f() == z5x5);</div>
+<div class="line"><span class="lineno">   74</span>  }</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>  {</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keyword">const</span> <span class="keyword">auto</span> f{i5x5};</div>
+<div class="line"><span class="lineno">   78</span>    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f(f);</div>
+<div class="line"><span class="lineno">   79</span>    assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f() == i5x5);</div>
+<div class="line"><span class="lineno">   80</span>  }</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   83</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

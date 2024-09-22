@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <li>a is the actual acceleration of the object (the second derivative of the object position).</li>
 <li>g is the gravitational acceleration constant; g = -9.8 m.s^-2.</li>
 <li>ϵ is the accelerometer measurement error. In this example, we have a control variable u, which is based on the accelerometer measurement. The system state xn is defined by: xn = [ pn vn ] where: pn is the rocket altitude at time n. vn is the rocket velocity at time n. Let us assume a rocket boosting vertically with constant acceleration. The rocket is equipped with an altimeter that provides altitude measurements and an accelerometer that serves as a control input.</li>
-<li>The measurements period: Δt = 0.25s</li>
+<li>The constant measurements period: Δt = 0.25s</li>
 <li>The rocket acceleration: a= 30 m.s^-2</li>
 <li>The altimeter measurement error standard deviation: σxm = 20m</li>
 <li>The accelerometer measurement error standard deviation: ϵ = 0.1 m.s^-2</li>
@@ -118,60 +118,64 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">column_vector&lt;double, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;double, Row, Column&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>altitude = double;</div>
+<div class="line"><span class="keyword">using </span>acceleration = double;</div>
+<div class="line"><span class="keyword">using </span>milliseconds = std::chrono::milliseconds;</div>
+<div class="line"><span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::state&lt;vector&lt;2&gt;</a>&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
-<div class="line">  <span class="comment">// A 2x1x1 filter, constant acceleration dynamic model, no control, step time.</span></div>
-<div class="line">  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;2&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>output = double;</div>
-<div class="line">  <span class="keyword">using </span>input = double;</div>
-<div class="line">  <span class="keyword">using </span>kalman = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">kalman&lt;state, output, input, std::tuple&lt;&gt;</a>,</div>
-<div class="line">                        std::tuple&lt;std::chrono::milliseconds&gt;&gt;;</div>
-<div class="line">  kalman filter;</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Initialization</span></div>
-<div class="line">  <span class="comment">// We don&#39;t know the rocket location; we will set initial position and</span></div>
-<div class="line">  <span class="comment">// velocity to 0.</span></div>
-<div class="line">  filter.x(0., 0.);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Since our initial state vector is a guess, we will set a very high estimate</span></div>
-<div class="line">  <span class="comment">// uncertainty. The high estimate uncertainty results in high Kalman gain,</span></div>
-<div class="line">  <span class="comment">// giving a high weight to the measurement.</span></div>
-<div class="line">  filter.p(<a id="a1" name="a1"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{{500., 0.}, {0., 500.}});</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Prediction</span></div>
-<div class="line">  <span class="comment">// We will assume a discrete noise model - the noise is different at each time</span></div>
-<div class="line">  <span class="comment">// period, but it is constant between time periods. In our previous example,</span></div>
-<div class="line">  <span class="comment">// we used the system&#39;s random variance in acceleration σ^2 as a multiplier of</span></div>
-<div class="line">  <span class="comment">// the process noise matrix. But here, we have an accelerometer that measures</span></div>
-<div class="line">  <span class="comment">// the system random acceleration. The accelerometer error v is much lower</span></div>
-<div class="line">  <span class="comment">// than system&#39;s random acceleration, therefore we use ϵ^2 as a multiplier of</span></div>
-<div class="line">  <span class="comment">// the process noise matrix. This makes our estimation uncertainty much lower!</span></div>
-<div class="line">  filter.q([]([[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x,</div>
-<div class="line">              <span class="keyword">const</span> std::chrono::milliseconds &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>) {</div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>{std::chrono::duration&lt;double&gt;(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>).count()};</div>
-<div class="line">    <span class="keywordflow">return</span> kalman::process_uncertainty{</div>
-<div class="line">        {0.1 * 0.1 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> / 4, 0.1 * 0.1 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> / 2},</div>
-<div class="line">        {0.1 * 0.1 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> / 2, 0.1 * 0.1 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>}};</div>
-<div class="line">  });</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">  filter.f([]([[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x,</div>
-<div class="line">              [[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> kalman::input &amp;u,</div>
-<div class="line">              <span class="keyword">const</span> std::chrono::milliseconds &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>) {</div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>{std::chrono::duration&lt;double&gt;(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>).count()};</div>
-<div class="line">    <span class="keywordflow">return</span> kalman::state_transition{{1., <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>}, {0., 1.}};</div>
-<div class="line">  });</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// The control matrix G would be:</span></div>
-<div class="line">  filter.g([](<span class="keyword">const</span> std::chrono::milliseconds &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>) {</div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>{std::chrono::duration&lt;double&gt;(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>).count()};</div>
-<div class="line">    <span class="keywordflow">return</span> kalman::input_control{0.0313, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>};</div>
-<div class="line">  });</div>
+<div class="line">  <span class="comment">// A 2x1x1 filter, constant acceleration dynamic model, no control, step</span></div>
+<div class="line">  <span class="comment">// time.</span></div>
+<div class="line">  kalman filter{</div>
+<div class="line">      <span class="comment">// We don&#39;t know the rocket location; we will set initial position and</span></div>
+<div class="line">      <span class="comment">// velocity to state X = [0.0, 0.0].</span></div>
+<div class="line">      state{0., 0.},</div>
+<div class="line">      <span class="comment">// The filter estimates the output Z altitude as a double [m].</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;altitude&gt;</a>,</div>
+<div class="line">      <span class="comment">// The filter receives in the input U accelerometer as a double [m.s^-2].</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;acceleration&gt;</a>,</div>
+<div class="line">      <span class="comment">// Since our initial state vector is a guess, we will set a very high</span></div>
+<div class="line">      <span class="comment">// estimate uncertainty. The high estimate uncertainty P results in high</span></div>
+<div class="line">      <span class="comment">// Kalman gain, giving a high weight to the measurement.</span></div>
+<div class="line">      estimate_uncertainty{{500., 0.}, {0., 500.}},</div>
+<div class="line">      <span class="comment">// We will assume a discrete noise model - the noise is different at each</span></div>
+<div class="line">      <span class="comment">// time period, but it is constant between time periods. In our previous</span></div>
+<div class="line">      <span class="comment">// example, we used the system&#39;s random variance in acceleration σ^2 as a</span></div>
+<div class="line">      <span class="comment">// multiplier of the process noise matrix. But here, we have an</span></div>
+<div class="line">      <span class="comment">// accelerometer that measures the system random acceleration. The</span></div>
+<div class="line">      <span class="comment">// accelerometer error v is much lower than system&#39;s random acceleration,</span></div>
+<div class="line">      <span class="comment">// therefore we use ϵ^2 as a multiplier of the process noise matrix. This</span></div>
+<div class="line">      <span class="comment">// makes our estimation uncertainty much lower!</span></div>
+<div class="line">      process_uncertainty{[]([[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;2&gt;</a> &amp;x,</div>
+<div class="line">                             <span class="keyword">const</span> milliseconds &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>) {</div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>{std::chrono::duration&lt;double&gt;(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>).count()};</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;2, 2&gt;</a>{</div>
+<div class="line">            {0.1 * 0.1 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> / 4, 0.1 * 0.1 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> / 2},</div>
+<div class="line">            {0.1 * 0.1 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> / 2, 0.1 * 0.1 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>}};</div>
+<div class="line">      }},</div>
+<div class="line">      <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
+<div class="line">      <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R.</span></div>
+<div class="line">      output_uncertainty{400.},</div>
+<div class="line">      <span class="comment">// The state transition matrix F would be:</span></div>
+<div class="line">      state_transition{[]([[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;2&gt;</a> &amp;x,</div>
+<div class="line">                          [[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> acceleration &amp;u,</div>
+<div class="line">                          <span class="keyword">const</span> milliseconds &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>) {</div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>{std::chrono::duration&lt;double&gt;(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>).count()};</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;2, 2&gt;</a>{{1., <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>}, {0., 1.}};</div>
+<div class="line">      }},</div>
+<div class="line">      <span class="comment">// The control matrix G would be:</span></div>
+<div class="line">      input_control{[](<span class="keyword">const</span> milliseconds &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>) {</div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>{std::chrono::duration&lt;double&gt;(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>).count()};</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;2&gt;</a>{0.0313, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">dt</a>};</div>
+<div class="line">      }},</div>
+<div class="line">      <span class="comment">// The filter prediction uses a delta time [ms] parameter.</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">prediction_types&lt;milliseconds&gt;</a>};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// We also don&#39;t know what the rocket acceleration is, but we can assume that</span></div>
 <div class="line">  <span class="comment">// it&#39;s greater than zero. Let&#39;s assume: u0 = g</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>{-9.8}; <span class="comment">// [m.s^-2]</span></div>
-<div class="line">  <span class="keyword">const</span> std::chrono::milliseconds <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>{250};</div>
+<div class="line">  <span class="keyword">const</span> milliseconds <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>{250};</div>
 <div class="line">  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, -<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x()[0] / 0.3) &lt; 0.03 &amp;&amp;</div>
@@ -182,15 +186,6 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line">         std::abs(1 - filter.p()(1, 0) / 125) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.p()(1, 1) / 500) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Measure and Update</span></div>
-<div class="line">  <span class="comment">// The dimension of zn is 1x1 and the dimension of xn is 2x1, so the dimension</span></div>
-<div class="line">  <span class="comment">// of the observation matrix H will be 1x2.</span></div>
-<div class="line">  filter.h(kalman::output_model{1., 0.});</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
-<div class="line">  <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R.</span></div>
-<div class="line">  filter.r(kalman::output_uncertainty{400.});</div>
 <div class="line"> </div>
 <div class="line">  filter.update(-32.4);</div>
 <div class="line"> </div>
@@ -218,14 +213,13 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line">  <span class="comment">// measurements period: Δt = 250ms. The period is constant but passed as</span></div>
 <div class="line">  <span class="comment">// variable for the example. The lambda helper shows how to simplify the</span></div>
 <div class="line">  <span class="comment">// filter step call.</span></div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>{[&amp;filter](<span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">altitude</a>,</div>
-<div class="line">                            std::chrono::milliseconds <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step_time</a>,</div>
-<div class="line">                            <span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">acceleration</a>) {</div>
-<div class="line">    filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">altitude</a>);</div>
-<div class="line">    filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step_time</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">acceleration</a>);</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>{[&amp;filter, &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>](altitude <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured_altitude</a>,</div>
+<div class="line">                                         acceleration <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured_acceleration</a>) {</div>
+<div class="line">    filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured_altitude</a>);</div>
+<div class="line">    filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured_acceleration</a>);</div>
 <div class="line">  }};</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-11.1, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 40.02 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-11.1, 40.02 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x()[0] / -12.3) &lt; 0.002 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[1] / 14.8) &lt; 0.002 &amp;&amp;</div>
@@ -236,33 +230,33 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line">         std::abs(1 - filter.p()(1, 1) / 438.8) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(18., <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.97 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(22.9, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.81 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(19.5, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.75 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(28.5, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.6 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(46.5, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.77 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(68.9, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.83 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(48.2, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.73 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(56.1, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.87 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(90.5, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.81 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(104.9, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.92 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(140.9, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.78 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(148., <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.98 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(187.6, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.76 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(209.2, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.86 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(244.6, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.61 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(276.4, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.86 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(323.5, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.74 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(357.3, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.87 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(357.4, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.63 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(398.3, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.67 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(446.7, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.96 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(465.1, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.8 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(529.4, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.89 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(570.4, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.85 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(636.8, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.9 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(693.3, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.81 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(707.3, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 39.81 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(18., 39.97 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(22.9, 39.81 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(19.5, 39.75 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(28.5, 39.6 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(46.5, 39.77 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(68.9, 39.83 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(48.2, 39.73 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(56.1, 39.87 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(90.5, 39.81 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(104.9, 39.92 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(140.9, 39.78 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(148., 39.98 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(187.6, 39.76 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(209.2, 39.86 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(244.6, 39.61 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(276.4, 39.86 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(323.5, 39.74 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(357.3, 39.87 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(357.4, 39.63 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(398.3, 39.67 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(446.7, 39.96 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(465.1, 39.8 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(529.4, 39.89 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(570.4, 39.85 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(636.8, 39.9 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(693.3, 39.81 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(707.3, 39.81 + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">gravity</a>);</div>
 <div class="line"> </div>
 <div class="line">  filter.update(748.5);</div>
 <div class="line"> </div>
@@ -297,8 +291,6 @@ $(document).ready(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2b9d45277b0216e1f15d64ff9369802e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00202">kalman.hpp:202</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4b224b3d52a55abf6b98ae60d04a3130"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">fcarouge::kalman::state</a></div><div class="ttdeci">implementation::state state</div><div class="ttdoc">Type of the state estimate column vector X.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00192">kalman.hpp:192</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>

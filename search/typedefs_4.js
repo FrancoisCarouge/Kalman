@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['implementation_0',['implementation',['../classfcarouge_1_1kalman.xhtml#a734003890a08669ed31c02e4740e9f0e',1,'fcarouge::kalman']]],
-  ['innovation_1',['innovation',['../classfcarouge_1_1kalman.xhtml#a0b6fbdcd0163665731af39f6d581bf95',1,'fcarouge::kalman']]],
-  ['innovation_5funcertainty_2',['innovation_uncertainty',['../classfcarouge_1_1kalman.xhtml#accd6760ff4b9d4755b6cd4b37381bd46',1,'fcarouge::kalman']]]
+  ['gain_0',['gain',['../classfcarouge_1_1kalman.xhtml#a6aba742c4afa51ea37b6b28ad2828e30',1,'fcarouge::kalman']]],
+  ['generator_1',['generator',['../structfcarouge_1_1matrix.xhtml#aef4e1a401c270d709c1ebaf0a3ea4a91',1,'fcarouge::matrix']]]
 ];

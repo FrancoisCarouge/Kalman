@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <dd>
 <a href="https://arxiv.org/abs/1802.08215">https://arxiv.org/abs/1802.08215</a></dd></dl>
 <p>The autonomous soaring functionality in ArduPilot allows the plane to respond to rising air current in order to extend endurance and gain altitude with minimal use of the motor. The full technical description is available in S. Tabor, I. Guilliard, A. Kolobov. ArduSoar: an Open-Source Thermalling Controller for Resource-Constrained Autopilots. International Conference on Intelligent Robots and Systems (IROS), 2018. Estimating the parameters of a Wharington et al thermal model state X: [W, R, x, y] with the speed or strength W [m.s^-1] at the center of the thermal of radius R [m] with the center distance x north of the sUAV and y east of the sUAV.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000037">Todo:</a></b></dt><dd>Add a data set and assert for correctness of results. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000041">Todo:</a></b></dt><dd>Add a data set and assert for correctness of results. </dd></dl>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
 <div class="line"> </div>
@@ -112,80 +112,77 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">column_vector&lt;float, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;float, Row, Column&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::state&lt;vector&lt;4&gt;</a>&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
-<div class="line">  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
-<div class="line">  <span class="comment">// driftY [m]. Constant time step.</span></div>
-<div class="line">  <span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a>;</div>
-<div class="line">  <span class="keyword">using </span>output = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">float</a>;</div>
-<div class="line">  <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">no_input</a> = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>;</div>
-<div class="line">  <span class="keyword">using </span>kalman = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">kalman&lt;state, output, no_input, std::tuple&lt;float, float&gt;</a>,</div>
-<div class="line">                        std::tuple&lt;float, float&gt;&gt;;</div>
-<div class="line"> </div>
-<div class="line">  kalman filter;</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// Initialization</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">trigger_strength</a>{0};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_radius</a>{80};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_position_x</a>{5};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_position_y</a>{0};</div>
-<div class="line">  filter.x(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">trigger_strength</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_radius</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_position_x</a>,</div>
-<div class="line">           <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_position_y</a>);</div>
-<div class="line"> </div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_covariance</a>{0.0049F};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">radius_covariance</a>{400};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>{400};</div>
-<div class="line">  filter.p(<a id="a1" name="a1"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">kalman::estimate_uncertainty</a>{{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_covariance</a>, 0.F, 0.F, 0.F},</div>
-<div class="line">                                        {0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">radius_covariance</a>, 0.F, 0.F},</div>
-<div class="line">                                        {0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>, 0.F},</div>
-<div class="line">                                        {0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>}});</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// No process dynamics: F = ∂f/∂X = I4 Default.</span></div>
-<div class="line"> </div>
-<div class="line">  filter.transition([](<span class="keyword">const</span> <a id="a2" name="a2"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_x</a>,</div>
-<div class="line">                       <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_y</a>) -&gt; <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> {</div>
-<div class="line">    <span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drifts</a>{0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_x</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_y</a>};</div>
-<div class="line">    <span class="keywordflow">return</span> x + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drifts</a>;</div>
-<div class="line">  });</div>
-<div class="line"> </div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_noise</a>{std::pow(0.001F, 2.F)};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>{std::pow(0.03F, 2.F)};</div>
-<div class="line">  filter.q(kalman::process_uncertainty{{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_noise</a>, 0.F, 0.F, 0.F},</div>
-<div class="line">                                       {0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>, 0.F, 0.F},</div>
-<div class="line">                                       {0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>, 0.F},</div>
-<div class="line">                                       {0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>}});</div>
-<div class="line"> </div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure_noise</a>{std::pow(0.45F, 2.F)};</div>
-<div class="line">  filter.r(kalman::output_uncertainty{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure_noise</a>});</div>
 <div class="line"> </div>
-<div class="line">  <span class="comment">// Observation Z: [w] vertical air velocity w at the aircraft’s</span></div>
-<div class="line">  <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
-<div class="line">  filter.observation([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>,</div>
-<div class="line">                        <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) -&gt; <a id="a3" name="a3"></a><a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a> {</div>
-<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">kalman::output</a>{x(0) * std::exp(-(std::pow(x[2] - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, 2.F) +</div>
-<div class="line">                                            std::pow(x[3] - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>, 2.F)) /</div>
-<div class="line">                                          std::pow(x[1], 2.F))};</div>
-<div class="line">  });</div>
-<div class="line"> </div>
-<div class="line">  <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
-<div class="line">  filter.h([](<span class="keyword">const</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">kalman::state</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>,</div>
-<div class="line">              <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) -&gt; kalman::output_model {</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>{std::exp(</div>
-<div class="line">        -(std::pow(x[2] - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, 2.F) + std::pow(x[3] - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>, 2.F)) /</div>
-<div class="line">        std::pow(x[1], 2.F))};</div>
-<div class="line"> </div>
-<div class="line">    <span class="keyword">const</span> kalman::output_model h{</div>
-<div class="line">        <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>,</div>
-<div class="line">        2 * x(0) *</div>
-<div class="line">            ((std::pow(x(2) - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, 2.F) +</div>
-<div class="line">              std::pow(x(3) - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>, 2.F)) /</div>
-<div class="line">             std::pow(x(1), 3.F)) *</div>
+<div class="line">  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
+<div class="line">  <span class="comment">// driftY [m]. Constant time step.</span></div>
+<div class="line">  kalman filter{</div>
+<div class="line">      <span class="comment">// The state X:</span></div>
+<div class="line">      state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">trigger_strength</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_radius</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_position_x</a>,</div>
+<div class="line">            <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">thermal_position_y</a>},</div>
+<div class="line">      <span class="comment">// The output Z:</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;float&gt;</a>,</div>
+<div class="line">      <span class="comment">// The estimate uncertainty P:</span></div>
+<div class="line">      estimate_uncertainty{{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_covariance</a>, 0.F, 0.F, 0.F},</div>
+<div class="line">                           {0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">radius_covariance</a>, 0.F, 0.F},</div>
+<div class="line">                           {0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>, 0.F},</div>
+<div class="line">                           {0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_covariance</a>}},</div>
+<div class="line">      <span class="comment">// The process uncertainty Q:</span></div>
+<div class="line">      process_uncertainty{{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">strength_noise</a>, 0.F, 0.F, 0.F},</div>
+<div class="line">                          {0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>, 0.F, 0.F},</div>
+<div class="line">                          {0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>, 0.F},</div>
+<div class="line">                          {0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">distance_noise</a>}},</div>
+<div class="line">      <span class="comment">// The output uncertainty R:</span></div>
+<div class="line">      output_uncertainty{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure_noise</a>},</div>
+<div class="line">      <span class="comment">// No process dynamics: the state transition F = ∂f/∂X = I4</span></div>
+<div class="line">      <span class="comment">// Default. The additional parameters for update.</span></div>
+<div class="line">      <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
+<div class="line">      output_model{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>,</div>
+<div class="line">                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) -&gt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;1, 4&gt;</a> {</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>{std::exp(-(std::pow(x[2] - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, 2.F) +</div>
+<div class="line">                                     std::pow(x[3] - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>, 2.F)) /</div>
+<div class="line">                                   std::pow(x[1], 2.F))};</div>
+<div class="line">        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;1, 4&gt;</a> h{</div>
 <div class="line">            <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>,</div>
-<div class="line">        -2 * (x(0) * (x(2) - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>) / std::pow(x(1), 2.F)) * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>,</div>
-<div class="line">        -2 * (x(0) * (x(3) - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) / std::pow(x(1), 2.F)) * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>};</div>
+<div class="line">            2 * x(0) *</div>
+<div class="line">                ((std::pow(x(2) - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, 2.F) +</div>
+<div class="line">                  std::pow(x(3) - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>, 2.F)) /</div>
+<div class="line">                 std::pow(x(1), 3.F)) *</div>
+<div class="line">                <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>,</div>
+<div class="line">            -2 * (x(0) * (x(2) - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>) / std::pow(x(1), 2.F)) * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>,</div>
+<div class="line">            -2 * (x(0) * (x(3) - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) / std::pow(x(1), 2.F)) * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">expon</a>};</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">return</span> h;</div>
-<div class="line">  });</div>
+<div class="line">        <span class="keywordflow">return</span> h;</div>
+<div class="line">      }},</div>
+<div class="line">      transition{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_x</a>,</div>
+<div class="line">                    <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_y</a>) -&gt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> {</div>
+<div class="line">        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drifts</a>{0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_x</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drift_y</a>};</div>
+<div class="line">        <span class="keywordflow">return</span> x + <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">drifts</a>;</div>
+<div class="line">      }},</div>
+<div class="line">      <span class="comment">// Observation Z: [w] vertical air velocity w at the aircraft’s</span></div>
+<div class="line">      <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
+<div class="line">      observation{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>,</div>
+<div class="line">                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) -&gt; <span class="keywordtype">float</span> {</div>
+<div class="line">        <span class="keywordflow">return</span> x(0) * std::exp(-(std::pow(x[2] - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, 2.F) +</div>
+<div class="line">                                 std::pow(x[3] - <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>, 2.F)) /</div>
+<div class="line">                               std::pow(x[1], 2.F));</div>
+<div class="line">      }},</div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">update_types&lt;float, float&gt;</a>,</div>
+<div class="line">      <span class="comment">// The additional parameters for prediction.</span></div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">prediction_types&lt;float, float&gt;</a>};</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">struct </span>data {</div>
 <div class="line">    <span class="keywordtype">float</span> drift_x;</div>
@@ -315,9 +312,6 @@ $(document).ready(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b72b81b1b5788efc1c21cc9ef9d60a2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b72b81b1b5788efc1c21cc9ef9d60a2">fcarouge::kalman::output</a></div><div class="ttdeci">implementation::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00197">kalman.hpp:197</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a2b9d45277b0216e1f15d64ff9369802e"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a2b9d45277b0216e1f15d64ff9369802e">fcarouge::kalman::estimate_uncertainty</a></div><div class="ttdeci">implementation::estimate_uncertainty estimate_uncertainty</div><div class="ttdoc">Type of the estimated correlated variance matrix P.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00202">kalman.hpp:202</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a4b224b3d52a55abf6b98ae60d04a3130"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a4b224b3d52a55abf6b98ae60d04a3130">fcarouge::kalman::state</a></div><div class="ttdeci">implementation::state state</div><div class="ttdoc">Type of the state estimate column vector X.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00192">kalman.hpp:192</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>

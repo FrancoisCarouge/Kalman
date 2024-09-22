@@ -103,8 +103,8 @@ $(document).ready(function(){initNavTree('kalman_8hpp.xhtml',''); initResizable(
 <p>The Kalman filter class and library top-level header.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="algorithm_8hpp_source.xhtml">algorithm.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="factory_8hpp_source.xhtml">internal/factory.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="format_8hpp_source.xhtml">internal/format.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="internal_2kalman_8hpp_source.xhtml">internal/kalman.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>&quot;</code><br />
 <code>#include &lt;concepts&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('kalman_8hpp.xhtml',''); initResizable(
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="kalman_8hpp__incl.svg" width="100%" height="560"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="kalman_8hpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -131,8 +131,7 @@ $(document).ready(function(){initNavTree('kalman_8hpp.xhtml',''); initResizable(
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A generic Kalman filter.  <a href="classfcarouge_1_1kalman.xhtml#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; Filter &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -140,6 +139,25 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacefcarouge" id="r_namespacefcarouge"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></td></tr>
 <tr class="memdesc:namespacefcarouge"><td class="mdescLeft">&#160;</td><td class="mdescRight">Francois Carouge's projects namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Deduction Guides</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Deduces the filter type from its declared configuration.</p>
+<p>The configuration arguments passed are used to determine at compile time the type of fiter to use. The objecive is to select the most performant filter within the defined configuraton parameters.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Arguments</td><td>The declarations of the filter configuration.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo:</a></b></dt><dd><p class="startdd">Should the parameter be named configurations? </p>
+<p class="enddd">Should the configuration examples, supports be documented here? </p>
+</dd></dl>
+</div></td></tr>
+<tr class="memitem:a6fcefc6a3f548e5225223c8594e62b65" id="r_a6fcefc6a3f548e5225223c8594e62b65"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
+<tr class="memitem:a6fcefc6a3f548e5225223c8594e62b65"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a6fcefc6a3f548e5225223c8594e62b65">fcarouge::kalman</a> (Arguments... <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>) -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#adafa53269502fa0528cecefc34eb1476">internal::filter_t</a>&lt; Arguments... &gt; &gt;</td></tr>
+<tr class="separator:a6fcefc6a3f548e5225223c8594e62b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The Kalman filter class and library top-level header. </p>

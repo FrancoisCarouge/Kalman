@@ -175,7 +175,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"><span class="lineno">   79</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   80</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
 <div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">predict</a>(u);</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.predict(u);</div>
 <div class="line"><span class="lineno">   83</span> </div>
 <div class="line"><span class="lineno">   84</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   85</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
@@ -184,19 +184,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"><span class="lineno">   88</span>        std::chrono::duration&lt;double&gt;{end - start}.count());</div>
 <div class="line"><span class="lineno">   89</span>  }</div>
 <div class="line"><span class="lineno">   90</span>}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00160">kalman.hpp:162</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a1a54f32cfaafea2d586a5f7b28898fec"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00136">kalman.hpp:136</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a20aafbaa1ca1e63d87200afec6d43cc9"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr make_filter&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00268">factory.hpp:268</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00073">linalg.hpp:73</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="classfcarouge_1_1kalman.xhtml#a1a54f32cfaafea2d586a5f7b28898fec">fcarouge::kalman&lt; State, Output, Input, UpdateTypes, PredictionTypes &gt;::predict()</a>.</p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03_afd227c8a2ead320bc47bafa8e88a9d7f_cgraph.svg" width="391" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
 <a id="a8052a825ee9cbc95eaac96a14697bee4" name="a8052a825ee9cbc95eaac96a14697bee4"></a>
