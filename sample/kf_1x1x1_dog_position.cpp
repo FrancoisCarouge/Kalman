@@ -31,36 +31,33 @@ namespace {
 //!
 //! @example kf_1x1x1_dog_position.cpp
 [[maybe_unused]] auto sample{[] {
-  using kalman = kalman<double, double, double>;
-  kalman filter;
+  kalman filter{
+      // This is the dog's initial position expressed as a Gaussian. The state X
+      // position is 0 meters.
+      state{1.},
+      // The measured output position Z.
+      output<double>,
+      // We are predicting that at each time step the dog moves forward one
+      // meter. This is the input U process model - the description of how we
+      // think the dog moves. How do I know the velocity? Magic? Consider it a
+      // prediction, or perhaps we have a secondary velocity sensor. Please
+      // accept this simplification for now.
+      input<double>,
+      // The variance to 400 m, which is a standard deviation of 20 meters. You
+      // can think of this as saying "I believe with 99.7% accuracy the position
+      // is 0 plus or minus 60 meters". This is because with Gaussians ~99.7% of
+      // values fall within of the mean. The estimate uncertainty P:
+      estimate_uncertainty{20 * 20.},
+      // Variance in the dog's movement. The process variance is how much error
+      // there is in the process model. Dogs rarely do what we expect, and
+      // things like hills or the whiff of a squirrel will change his progress.
+      // The process uncertainty Q:
+      process_uncertainty{1.},
+      // Variance in the sensor. The meaning of sensor variance is how much
+      // variance there is in each measurement. The output uncertainty R:
+      output_uncertainty{2.}};
 
-  // Initialization
-  // This is the dog's initial position expressed as a Gaussian. The position is
-  // 0 meters, and the variance to 400 m, which is a standard deviation of 20
-  // meters. You can think of this as saying "I believe with 99.7% accuracy the
-  // position is 0 plus or minus 60 meters". This is because with Gaussians
-  // ~99.7% of values fall within of the mean.
-  filter.x(1.);
-  filter.p(20 * 20.);
-
-  // Prediction
-  // Variance in the dog's movement. The process variance is how much error
-  // there is in the process model. Dogs rarely do what we expect, and things
-  // like hills or the whiff of a squirrel will change his progress.
-  filter.q(1.);
-
-  // Measure and Update
-  // Variance in the sensor. The meaning of sensor variance should be clear - it
-  // is how much variance there is in each measurement.
-  filter.r(2.);
-
-  // We are predicting that at each time step the dog moves forward one meter.
-  // This is the process model - the description of how we think the dog moves.
-  // How do I know the velocity? Magic? Consider it a prediction, or perhaps we
-  // have a secondary velocity sensor. Please accept this simplification for
-  // now.
   filter.predict(1.);
-
   filter.update(1.354);
   filter.predict(1.);
   filter.update(1.882);

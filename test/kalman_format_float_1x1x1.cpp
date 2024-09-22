@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -46,7 +46,7 @@ namespace {
 //! @test Verifies formatting filters for single-dimension filters with input
 //! control without additional arguments.
 [[maybe_unused]] auto test{[] {
-  kalman<float, float, float> filter;
+  kalman filter{state{0.F}, output<float>, input<float>};
 
   assert(
       std::format("{}", filter) ==

@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -44,7 +44,6 @@ foreach(
   "kalman_format_arguments.cpp"
   "kalman_format_float_1x1x1.cpp"
   "kalman_format.cpp"
-  "kalman_h.cpp"
   "kalman_println.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})

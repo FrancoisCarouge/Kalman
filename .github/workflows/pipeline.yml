@@ -25,11 +25,11 @@ jobs:
     runs-on: '${{ matrix.os }}'
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
+      uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
       with:
         egress-policy: audit
     - name: 'Checkout'
-      uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
     - name: 'Install: MSVC'
       uses: ilammy/msvc-dev-cmd@0b201ec74fa43914dc39ae48a89fd1d8cb592756 # v1.13.0
     - name: 'Install: GCC'
@@ -57,10 +57,10 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --config '${{ matrix.config }}' --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Install'
-      run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
+      run: cmake --install 'build' --prefix 'install' --verbose
     - name: 'Package'
-      run: cmake --build 'build' --config '${{ matrix.config }}' --target 'package' --verbose --parallel 4
+      run: cmake --build 'build' --target 'package' --verbose --parallel 4
     - name: 'Package Source'
-      run: cmake --build 'build' --config '${{ matrix.config }}' --target 'package_source' --verbose --parallel 4
+      run: cmake --build 'build' --target 'package_source' --verbose --parallel 4

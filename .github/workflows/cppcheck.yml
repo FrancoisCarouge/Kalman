@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
+      uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
       with:
         egress-policy: audit
     - name: Checkout
-      uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
     - name: Install
       run: |
         ( cd /tmp
@@ -29,7 +29,9 @@ jobs:
           cmake --build 'eigen/build' --parallel 4
           sudo cmake --install 'eigen/build' )
         ( cd /tmp
-          git clone --depth 1 'https://github.com/danmar/cppcheck'
+          git clone https://github.com/danmar/cppcheck.git
+          ( cd cppcheck
+            git checkout fa561e9c242e7ceeb16408ef55e8bcea04fcf46f )
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
           sudo cmake --install 'cppcheck/build' )

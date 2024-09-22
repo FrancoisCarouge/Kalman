@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -36,6 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+# @todo Add an internal CMakeLists file to simplify and separate this one.
 add_library(kalman INTERFACE)
 target_sources(
   kalman
@@ -45,11 +46,18 @@ target_sources(
             "HEADERS"
             FILES
             "fcarouge/algorithm.hpp"
+            "fcarouge/internal/factory.hpp"
             "fcarouge/internal/format.hpp"
             "fcarouge/internal/function.hpp"
-            "fcarouge/internal/kalman.hpp"
             "fcarouge/internal/kalman.tpp"
+            "fcarouge/internal/type.hpp"
             "fcarouge/internal/utility.hpp"
+            "fcarouge/internal/x_z_p_q_r_h_f.hpp"
+            "fcarouge/internal/x_z_p_q_r_hh_us_ps.hpp"
+            "fcarouge/internal/x_z_p_qq_rr_f.hpp"
+            "fcarouge/internal/x_z_p_r_f.hpp"
+            "fcarouge/internal/x_z_u_p_q_r_f_g_ps.hpp"
+            "fcarouge/internal/x_z_u_p_q_r_us_ps.hpp"
             "fcarouge/kalman.hpp"
             "fcarouge/utility.hpp")
 install(

@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -36,55 +36,49 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman.hpp"
+#ifndef FCAROUGE_INTERNAL_X_Z_HPP
+#define FCAROUGE_INTERNAL_X_Z_HPP
 
-#include <cassert>
+#include "fcarouge/utility.hpp"
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the observation transition matrix H management overloads for
-//! supported filter types.
-[[maybe_unused]] auto test{[] {
-  kalman filter;
-  using kalman = decltype(filter);
+namespace fcarouge::internal {
+//! @todo Provide optimized out versions of the filters.
+template <typename State, typename Output> struct x_z_p_r_f {
+  using state = State;
+  using output = Output;
+  using estimate_uncertainty = quotient<state, state>;
+  using output_uncertainty = quotient<output, output>;
+  using state_transition = quotient<state, state>;
+  using gain = quotient<state, output>;
+  using innovation = output;
+  using innovation_uncertainty = output_uncertainty;
 
-  assert(filter.h() == 1);
+  static inline const auto i{identity_v<quotient<state, state>>};
 
-  {
-    const auto h{2.};
-    filter.h(h);
-    assert(filter.h() == 2);
+  state x{zero_v<state>};
+  estimate_uncertainty p{identity_v<estimate_uncertainty>};
+  output_uncertainty r{zero_v<output_uncertainty>};
+  state_transition f{identity_v<state_transition>};
+  gain k{identity_v<gain>};
+  innovation y{zero_v<innovation>};
+  innovation_uncertainty s{identity_v<innovation_uncertainty>};
+  output z{zero_v<output>};
+  transpose t{};
+
+  inline constexpr void update(const output &output_z) {
+    z = output_z;
+    s = p + r;
+    k = p / s;
+    y = z - x;
+    x = x + k * y;
+    p = (i - k) * p * t(i - k) + k * r * t(k);
   }
 
-  {
-    const auto h{3.};
-    filter.h(h);
-    assert(filter.h() == 3);
+  inline constexpr void predict() {
+    x = f * x;
+    p = f * p * t(f);
   }
+};
+} // namespace fcarouge::internal
 
-  {
-    const auto h{
-        []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
-          return 4.;
-        }};
-    filter.h(h);
-    assert(filter.h() == 3);
-    filter.update(0.);
-    assert(filter.h() == 4);
-  }
-
-  {
-    const auto h{
-        []([[maybe_unused]] const kalman::state &x) -> kalman::output_model {
-          return 5.;
-        }};
-    filter.h(std::move(h));
-    assert(filter.h() == 4);
-    filter.update(0.);
-    assert(filter.h() == 5);
-  }
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+#endif // FCAROUGE_INTERNAL_X_Z_HPP

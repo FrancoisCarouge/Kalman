@@ -7,6 +7,8 @@
 namespace fcarouge::sample {
 namespace {
 template <auto Size> using vector = column_vector<float, Size>;
+template <auto Row, auto Column> using matrix = matrix<float, Row, Column>;
+using state = fcarouge::state<vector<4>>;
 
 //! @brief ArduPilot plane soaring.
 //!
@@ -31,79 +33,74 @@ template <auto Size> using vector = column_vector<float, Size>;
 //!
 //! @todo Add a data set and assert for correctness of results.
 [[maybe_unused]] auto sample{[] {
-  // 4x1 extended filter with additional parameter for prediction: driftX [m],
-  // driftY [m]. Constant time step.
-  using state = vector<4>;
-  using output = float;
-  using no_input = void;
-  using kalman = kalman<state, output, no_input, std::tuple<float, float>,
-                        std::tuple<float, float>>;
-
-  kalman filter;
-
-  // Initialization
   const float trigger_strength{0};
   const float thermal_radius{80};
   const float thermal_position_x{5};
   const float thermal_position_y{0};
-  filter.x(trigger_strength, thermal_radius, thermal_position_x,
-           thermal_position_y);
-
   const float strength_covariance{0.0049F};
   const float radius_covariance{400};
   const float position_covariance{400};
-  filter.p(kalman::estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},
-                                        {0.F, radius_covariance, 0.F, 0.F},
-                                        {0.F, 0.F, position_covariance, 0.F},
-                                        {0.F, 0.F, 0.F, position_covariance}});
-
-  // No process dynamics: F = ∂f/∂X = I4 Default.
-
-  filter.transition([](const kalman::state &x, const float &drift_x,
-                       const float &drift_y) -> kalman::state {
-    //! @todo Could make sure that x[1] stays positive, greater than 40.
-    const kalman::state drifts{0.F, 0.F, drift_x, drift_y};
-    return x + drifts;
-  });
-
   const float strength_noise{std::pow(0.001F, 2.F)};
   const float distance_noise{std::pow(0.03F, 2.F)};
-  filter.q(kalman::process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},
-                                       {0.F, distance_noise, 0.F, 0.F},
-                                       {0.F, 0.F, distance_noise, 0.F},
-                                       {0.F, 0.F, 0.F, distance_noise}});
-
   const float measure_noise{std::pow(0.45F, 2.F)};
-  filter.r(kalman::output_uncertainty{measure_noise});
 
-  // Observation Z: [w] vertical air velocity w at the aircraft’s
-  // position w.r.t. the thermal center [m.s^-1].
-  filter.observation([](const kalman::state &x, const float &position_x,
-                        const float &position_y) -> kalman::output {
-    return kalman::output{x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +
-                                            std::pow(x[3] - position_y, 2.F)) /
-                                          std::pow(x[1], 2.F))};
-  });
-
-  // See the ArduSoar paper for the equation for H = ∂h/∂X:
-  filter.h([](const kalman::state &x, const float &position_x,
-              const float &position_y) -> kalman::output_model {
-    const float expon{std::exp(
-        -(std::pow(x[2] - position_x, 2.F) + std::pow(x[3] - position_y, 2.F)) /
-        std::pow(x[1], 2.F))};
-
-    const kalman::output_model h{
-        expon,
-        2 * x(0) *
-            ((std::pow(x(2) - position_x, 2.F) +
-              std::pow(x(3) - position_y, 2.F)) /
-             std::pow(x(1), 3.F)) *
+  // 4x1 extended filter with additional parameter for prediction: driftX [m],
+  // driftY [m]. Constant time step.
+  kalman filter{
+      // The state X:
+      state{trigger_strength, thermal_radius, thermal_position_x,
+            thermal_position_y},
+      // The output Z:
+      output<float>,
+      // The estimate uncertainty P:
+      estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},
+                           {0.F, radius_covariance, 0.F, 0.F},
+                           {0.F, 0.F, position_covariance, 0.F},
+                           {0.F, 0.F, 0.F, position_covariance}},
+      // The process uncertainty Q:
+      process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},
+                          {0.F, distance_noise, 0.F, 0.F},
+                          {0.F, 0.F, distance_noise, 0.F},
+                          {0.F, 0.F, 0.F, distance_noise}},
+      // The output uncertainty R:
+      output_uncertainty{measure_noise},
+      // No process dynamics: the state transition F = ∂f/∂X = I4
+      // Default. The additional parameters for update.
+      // See the ArduSoar paper for the equation for H = ∂h/∂X:
+      output_model{[](const vector<4> &x, const float &position_x,
+                      const float &position_y) -> matrix<1, 4> {
+        const float expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +
+                                     std::pow(x[3] - position_y, 2.F)) /
+                                   std::pow(x[1], 2.F))};
+        const matrix<1, 4> h{
             expon,
-        -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,
-        -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};
+            2 * x(0) *
+                ((std::pow(x(2) - position_x, 2.F) +
+                  std::pow(x(3) - position_y, 2.F)) /
+                 std::pow(x(1), 3.F)) *
+                expon,
+            -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,
+            -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};
 
-    return h;
-  });
+        return h;
+      }},
+      transition{[](const vector<4> &x, const float &drift_x,
+                    const float &drift_y) -> vector<4> {
+        //! @todo Could make sure that x[1] stays positive, greater than 40.
+        const vector<4> drifts{0.F, 0.F, drift_x, drift_y};
+        return x + drifts;
+      }},
+      // Observation Z: [w] vertical air velocity w at the aircraft’s
+      // position w.r.t. the thermal center [m.s^-1].
+      observation{[](const vector<4> &x, const float &position_x,
+                     const float &position_y) -> float {
+        return x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +
+                                 std::pow(x[3] - position_y, 2.F)) /
+                               std::pow(x[1], 2.F));
+      }},
+      update_types<float, float>,
+      // The additional parameters for prediction.
+      prediction_types<float, float>};
 
   struct data {
     float drift_x;

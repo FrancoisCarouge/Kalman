@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -48,8 +48,8 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto test{[] {
-  using kalman = kalman<vector<5>, vector<4>, vector<3>>;
-  kalman filter;
+  kalman filter{state{vector<5>{0.0, 0.0, 0.0, 0.0, 0.0}}, output<vector<4>>,
+                input<vector<3>>};
 
   const auto z3x1{zero_v<vector<3>>};
   const auto i4x4{identity_v<matrix<4, 4>>};

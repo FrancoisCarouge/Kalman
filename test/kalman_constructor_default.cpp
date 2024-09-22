@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -48,10 +48,8 @@ namespace {
   kalman filter;
 
   assert(filter.f() == 1);
-  assert(filter.h() == 1);
   assert(filter.k() == 1);
   assert(filter.p() == 1);
-  assert(filter.q() == 0 && "No process noise by default.");
   assert(filter.r() == 0 && "No observation noise by default.");
   assert(filter.s() == 1);
   assert(filter.x() == 0 && "Origin state.");

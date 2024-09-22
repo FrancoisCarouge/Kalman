@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -46,7 +46,6 @@ namespace {
 //! the default filter type.
 [[maybe_unused]] auto test{[] {
   kalman filter;
-  using kalman = decltype(filter);
 
   assert(filter.f() == 1);
 
@@ -60,24 +59,6 @@ namespace {
     const auto f{3.};
     filter.f(f);
     assert(filter.f() == 3);
-  }
-
-  {
-    const auto f{[]([[maybe_unused]] const kalman::state &x)
-                     -> kalman::state_transition { return 4.; }};
-    filter.f(f);
-    assert(filter.f() == 3);
-    filter.predict();
-    assert(filter.f() == 4);
-  }
-
-  {
-    const auto f{[]([[maybe_unused]] const kalman::state &x)
-                     -> kalman::state_transition { return 5.; }};
-    filter.f(std::move(f));
-    assert(filter.f() == 4);
-    filter.predict();
-    assert(filter.f() == 5);
   }
 
   return 0;

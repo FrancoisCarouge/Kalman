@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.3.0
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -48,9 +48,8 @@ namespace {
 [[maybe_unused]] auto test{[] {
   kalman filter;
 
-  assert(
-      std::format("{}", filter) ==
-      R"({"f": 1, "h": 1, "k": 1, "p": 1, "q": 0, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0})");
+  assert(std::format("{}", filter) ==
+         R"({"f": 1, "k": 1, "p": 1, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0})");
 
   return 0;
 }()};
