@@ -150,91 +150,103 @@ Examples</h1>
 <h2><a class="anchor" id="autotoc_md1x1-constant-system-dynamic-model-filter"></a>
 1x1 Constant System Dynamic Model Filter</h2>
 <p>Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_1x1x0_building_height_8cpp-example.xhtml">building height estimation</a> sample. One estimated state and one observed output filter.</p>
-<div class="fragment"><div class="line">kalman filter;</div>
+<div class="fragment"><div class="line">  kalman filter{</div>
+<div class="line">    state{60.},</div>
+<div class="line">    output&lt;double&gt;,</div>
+<div class="line">    estimate_uncertainty{225.},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a>{25.}</div>
+<div class="line">  };</div>
 <div class="line"> </div>
-<div class="line">filter.x(60.);</div>
-<div class="line">filter.p(225.);</div>
-<div class="line">filter.r(25.);</div>
-<div class="line"> </div>
-<div class="line">filter.update(48.54);</div>
+<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(48.54);</div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a20aafbaa1ca1e63d87200afec6d43cc9"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr make_filter&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00268">factory.hpp:268</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a665945f3d976759241bf85f4102a2d16"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">fcarouge::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md6x2-constant-acceleration-dynamic-model-filter"></a>
 6x2 Constant Acceleration Dynamic Model Filter</h2>
 <p>Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_6x2x0_vehicle_location_8cpp-example.xhtml">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
-<div class="fragment"><div class="line"><span class="keyword">using </span>kalman = kalman&lt;vector&lt;double, 6&gt;, vector&lt;double, 2&gt;&gt;;</div>
-<div class="line"> </div>
-<div class="line">kalman filter;</div>
-<div class="line"> </div>
-<div class="line">filter.x(0., 0., 0., 0., 0., 0.);</div>
-<div class="line">filter.p(kalman::estimate_uncertainty{ { 500, 0, 0, 0, 0, 0 },</div>
-<div class="line">                                       { 0, 500, 0, 0, 0, 0 },</div>
-<div class="line">                                       { 0, 0, 500, 0, 0, 0 },</div>
-<div class="line">                                       { 0, 0, 0, 500, 0, 0 },</div>
-<div class="line">                                       { 0, 0, 0, 0, 500, 0 },</div>
-<div class="line">                                       { 0, 0, 0, 0, 0, 500 } });</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.q(0.2 * 0.2 * kalman::process_uncertainty{ { 0.25, 0.5, 0.5, 0, 0, 0 },</div>
-<div class="line">                                                  { 0.5, 1, 1, 0, 0, 0 },</div>
-<div class="line">                                                  { 0.5, 1, 1, 0, 0, 0 },</div>
-<div class="line">                                                  { 0, 0, 0, 0.25, 0.5, 0.5 },</div>
-<div class="line">                                                  { 0, 0, 0, 0.5, 1, 1 },</div>
-<div class="line">                                                  { 0, 0, 0, 0.5, 1, 1 } });</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.f(kalman::state_transition{ { 1, 1, 0.5, 0, 0, 0 },</div>
-<div class="line">                                   { 0, 1, 1, 0, 0, 0 },</div>
-<div class="line">                                   { 0, 0, 1, 0, 0, 0 },</div>
-<div class="line">                                   { 0, 0, 0, 1, 1, 0.5 },</div>
-<div class="line">                                   { 0, 0, 0, 0, 1, 1 },</div>
-<div class="line">                                   { 0, 0, 0, 0, 0, 1 } });</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.h(kalman::output_model{ { 1, 0, 0, 0, 0, 0 },</div>
-<div class="line">                               { 0, 0, 0, 1, 0, 0 } });</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.r(kalman::output_uncertainty{ { 9, 0 }, { 0, 9 } });</div>
+<div class="fragment"><div class="line">  kalman filter{</div>
+<div class="line">    state{0., 0., 0., 0., 0., 0.},</div>
+<div class="line">    output&lt;vector&lt;2&gt;&gt;,</div>
+<div class="line">    estimate_uncertainty{{500., 0., 0., 0., 0., 0.},</div>
+<div class="line">                         {0., 500., 0., 0., 0., 0.},</div>
+<div class="line">                         {0., 0., 500., 0., 0., 0.},</div>
+<div class="line">                         {0., 0., 0., 500., 0., 0.},</div>
+<div class="line">                         {0., 0., 0., 0., 500., 0.},</div>
+<div class="line">                         {0., 0., 0., 0., 0., 500.}},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a>{[]() -&gt; matrix&lt;6, 6&gt; {</div>
+<div class="line">      <span class="keywordflow">return</span> 0.2 * 0.2 * matrix&lt;6, 6&gt;{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
+<div class="line">                                      {0.5, 1., 1., 0., 0., 0.},</div>
+<div class="line">                                      {0.5, 1., 1., 0., 0., 0.},</div>
+<div class="line">                                      {0., 0., 0., 0.25, 0.5, 0.5},</div>
+<div class="line">                                      {0., 0., 0., 0.5, 1., 1.},</div>
+<div class="line">                                      {0., 0., 0., 0.5, 1., 1.}};</div>
+<div class="line">    }()},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a>{{9., 0.}, {0., 9.}},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model</a>{{1., 0., 0., 0., 0., 0.},</div>
+<div class="line">                 {0., 0., 0., 1., 0., 0.}},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition</a>{{1., 1., 0.5, 0., 0., 0.},</div>
+<div class="line">                     {0., 1., 1., 0., 0., 0.},</div>
+<div class="line">                     {0., 0., 1., 0., 0., 0.},</div>
+<div class="line">                     {0., 0., 0., 1., 1., 0.5},</div>
+<div class="line">                     {0., 0., 0., 0., 1., 1.},</div>
+<div class="line">                     {0., 0., 0., 0., 0., 1.}}};</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.predict();</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(-375.93, 301.78);</div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a20aafbaa1ca1e63d87200afec6d43cc9"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr make_filter&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00268">factory.hpp:268</a></div></div>
+<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(-393.66, 300.4);</div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a198bcbdb5521548ddb61317e21ff8f1f"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">fcarouge::internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a88ca8cd4d48af886c2c73835d77a1bf3"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">fcarouge::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_af41c59712adaec8d2aac3366133cd381"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">fcarouge::internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_vehicle_location.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md4x1-nonlinear-dynamic-model-extended-filter"></a>
 4x1 Nonlinear Dynamic Model Extended Filter</h2>
 <p>Example from the <a href="https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
-<div class="fragment"><div class="line"><span class="keyword">using </span>kalman = kalman&lt;vector&lt;float, 4&gt;, float, void, std::tuple&lt;float, float&gt;,</div>
-<div class="line">                             std::tuple&lt;float, float&gt;&gt;;</div>
-<div class="line"> </div>
-<div class="line">kalman filter;</div>
-<div class="line"> </div>
-<div class="line">filter.x(1 / 4.06, 80, 0, 0);</div>
-<div class="line">filter.p(kalman::estimate_uncertainty{ { 0.0049, 0, 0, 0 },</div>
-<div class="line">                                       { 0, 400, 0, 0 },</div>
-<div class="line">                                       { 0, 0, 400, 0 },</div>
-<div class="line">                                       { 0, 0, 0, 400 } });</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.transition([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
-<div class="line">                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; kalman::state {</div>
-<div class="line">  <span class="keywordflow">return</span> x + kalman::state{ 0, 0, -drift_x, -drift_y };</div>
-<div class="line">});</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.q(kalman::process_uncertainty{ { 0.000001, 0, 0, 0 },</div>
-<div class="line">                                      { 0, 0.0009, 0, 0 },</div>
-<div class="line">                                      { 0, 0, 0.0009, 0 },</div>
-<div class="line">                                      { 0, 0, 0, 0.0009 } });</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.r(0.2025);</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.observation([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line">                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output {</div>
-<div class="line">  <span class="keywordflow">return</span> kalman::output{ x(0) *</div>
-<div class="line">    std::exp(-((x(2) - position_x)*(x(2) - position_x) +</div>
-<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / x(1) * x(1)) };</div>
-<div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.h([](<span class="keyword">const</span> kalman::state &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line">            <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; kalman::output_model {</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> exp{ std::exp(-((x(2) - position_x) * (x(2) - position_x) +</div>
-<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) };</div>
-<div class="line">  <span class="keyword">const</span> kalman::output_model h{</div>
-<div class="line">    exp,</div>
-<div class="line">    2 * x(0) * (((x(2) - position_x) * (x(2) - position_x) +</div>
-<div class="line">    (x(3) - position_y) * (x(3) - position_y)) / (x(1) * x(1))) * exp,</div>
-<div class="line">    -2 * (x(0) * (x(2) - position_x) / (x(1) * x(1))) * exp,</div>
-<div class="line">    -2 * (x(0) * (x(3) - position_y) / (x(1) * x(1))) * exp</div>
-<div class="line">  };</div>
-<div class="line">  <span class="keywordflow">return</span> h;</div>
-<div class="line">});</div>
+<div class="fragment"><div class="line">  kalman filter{</div>
+<div class="line">    state{trigger_strength, thermal_radius, thermal_position_x,</div>
+<div class="line">          thermal_position_y},</div>
+<div class="line">    output&lt;float&gt;,</div>
+<div class="line">    estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},</div>
+<div class="line">                         {0.F, radius_covariance, 0.F, 0.F},</div>
+<div class="line">                         {0.F, 0.F, position_covariance, 0.F},</div>
+<div class="line">                         {0.F, 0.F, 0.F, position_covariance}},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a>{{strength_noise, 0.F, 0.F, 0.F},</div>
+<div class="line">                        {0.F, distance_noise, 0.F, 0.F},</div>
+<div class="line">                        {0.F, 0.F, distance_noise, 0.F},</div>
+<div class="line">                        {0.F, 0.F, 0.F, distance_noise}},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a>{measure_noise},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">                    <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; matrix&lt;1, 4&gt; {</div>
+<div class="line">      <span class="keyword">const</span> <span class="keywordtype">float</span> expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
+<div class="line">                                   std::pow(x[3] - position_y, 2.F)) /</div>
+<div class="line">                                 std::pow(x[1], 2.F))};</div>
+<div class="line">      <span class="keyword">const</span> matrix&lt;1, 4&gt; h{</div>
+<div class="line">          expon,</div>
+<div class="line">          2 * x(0) *</div>
+<div class="line">              ((std::pow(x(2) - position_x, 2.F) +</div>
+<div class="line">                std::pow(x(3) - position_y, 2.F)) /</div>
+<div class="line">               std::pow(x(1), 3.F)) *</div>
+<div class="line">              expon,</div>
+<div class="line">          -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,</div>
+<div class="line">          -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};</div>
+<div class="line">      <span class="keywordflow">return</span> h;</div>
+<div class="line">    }},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">transition</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
+<div class="line">                  <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; vector&lt;4&gt; {</div>
+<div class="line">      <span class="keyword">const</span> vector&lt;4&gt; drifts{0.F, 0.F, drift_x, drift_y};</div>
+<div class="line">      <span class="keywordflow">return</span> x + drifts;</div>
+<div class="line">    }},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">observation</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">                   <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <span class="keywordtype">float</span> {</div>
+<div class="line">      <span class="keywordflow">return</span> x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
+<div class="line">                               std::pow(x[3] - position_y, 2.F)) /</div>
+<div class="line">                             std::pow(x[1], 2.F));</div>
+<div class="line">    }},</div>
+<div class="line">    update_types&lt;float, float&gt;,</div>
+<div class="line">    prediction_types&lt;float, float&gt;};</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.predict(drift_x, drift_y);</div>
 <div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.update(position_x, position_y, variometer);</div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a79f6e22e40f939028ed33d22111a4f39"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">fcarouge::internal::observation</a></div><div class="ttdeci">observation(Element) -&gt; observation&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_ab650a2bb0de1f418440b1d5cf8903b41"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">fcarouge::internal::transition</a></div><div class="ttdeci">transition(Element) -&gt; transition&lt; Element &gt;</div></div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_soaring.cpp">full sample code</a></p>
 <h2><a class="anchor" id="other-examples"></a>
 Other Examples</h2>
@@ -246,11 +258,20 @@ Other Examples</h2>
 </ul>
 <h1><a class="anchor" id="installation-1"></a>
 Installation</h1>
+<p>Example of installation commands in Shell:</p>
 <div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/kalman&quot;</div>
 <div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
 <div class="line">cmake --build &quot;build&quot; --parallel</div>
 <div class="line">sudo cmake --install &quot;build&quot;</div>
-</div><!-- fragment --><div class="fragment"><div class="line">find_package(kalman)</div>
+</div><!-- fragment --><p>Another variation for your CMake infrastructure via fetch content:</p>
+<div class="fragment"><div class="line">include(FetchContent)</div>
+<div class="line"> </div>
+<div class="line">FetchContent_Declare(</div>
+<div class="line">  kalman</div>
+<div class="line">  GIT_REPOSITORY &quot;https://github.com/FrancoisCarouge/kalman&quot;</div>
+<div class="line">  FIND_PACKAGE_ARGS NAMES kalman)</div>
+<div class="line">FetchContent_MakeAvailable(kalman)</div>
+<div class="line"> </div>
 <div class="line">target_link_libraries(your_target PRIVATE kalman::kalman)</div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/INSTALL.md">For more, see installation instructions</a>.</p>
 <h1><a class="anchor" id="reference"></a>
@@ -260,28 +281,15 @@ Class kalman</h2>
 <p>Also documented in the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a> header.</p>
 <h3><a class="anchor" id="declaration"></a>
 Declaration</h3>
-<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;</div>
-<div class="line">  <span class="keyword">typename</span> State,</div>
-<div class="line">  <span class="keyword">typename</span> Output,</div>
-<div class="line">  <span class="keyword">typename</span> Input,</div>
-<div class="line">  <span class="keyword">typename</span> UpdateTypes,</div>
-<div class="line">  <span class="keyword">typename</span> PredictionTypes&gt;</div>
-<div class="line"><span class="keyword">class </span>kalman</div>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Filter&gt;</div>
+<div class="line"><span class="keyword">class </span>kalman final : <span class="keyword">public</span> internal::conditional_member_types&lt;Filter&gt;</div>
 </div><!-- fragment --><h3><a class="anchor" id="template-parameters"></a>
 Template Parameters</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Template Parameter   </th><th class="markdownTableHeadNone">Definition    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>State</code>   </td><td class="markdownTableBodyNone">The type template parameter of the state column vector <em>X</em>. State variables can be observed (measured), or hidden variables (inferred). This is the the mean of the multivariate Gaussian. Defaults to <code>double</code>.    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>Output</code>   </td><td class="markdownTableBodyNone">The type template parameter of the measurement column vector <em>Z</em>. Defaults to <code>double</code>.    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>Input</code>   </td><td class="markdownTableBodyNone">The type template parameter of the control <em>U</em>. A <code>void</code> input type can be used for systems with no input control to disable all of the input control features, the control transition matrix <em>G</em> support, and the other related computations from the filter. Defaults to <code>void</code>.    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>UpdateTypes</code>   </td><td class="markdownTableBodyNone">The additional update function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the state observation <em>H</em> and the observation noise <em>R</em> matrices. The parameters are also propagated to the state observation function object <em>H</em>. Defaults to no parameter types, the empty pack.    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>PredictionTypes</code>   </td><td class="markdownTableBodyNone">The additional prediction function parameter types passed in through a tuple-like parameter type, composing zero or more types. Parameters such as delta times, variances, or linearized values. The parameters are propagated to the function objects used to compute the process noise <em>Q</em>, the state transition <em>F</em>, and the control transition <em>G</em> matrices. The parameters are also propagated to the state transition function object <em>F</em>. Defaults to no parameter types, the empty pack.   </td></tr>
+<td class="markdownTableBodyNone"><code>Filter</code>   </td><td class="markdownTableBodyNone">Exposition only. The deduced internal filter template parameter. Class template argument deduction (CTAD) figures out the filter type based on the declared configuration. See deduction guide.   </td></tr>
 </table>
 <h3><a class="anchor" id="member-types"></a>
 Member Types</h3>
@@ -313,17 +321,20 @@ Member Types</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>state</code>   </td><td class="markdownTableBodyNone">x by 1   </td><td class="markdownTableBodyNone">Type of the state estimate, hidden column vector <code>x</code>.   </td><td class="markdownTableBodyNone"><em>X</em>   </td></tr>
 </table>
+<p>The member types are optionally present according to the filter configuration.</p>
 <h3><a class="anchor" id="member-functions"></a>
 Member Functions</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Member Function   </th><th class="markdownTableHeadNone">Definition    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>(constructor)</code>   </td><td class="markdownTableBodyNone">Constructs the filter.    </td></tr>
+<td class="markdownTableBodyNone"><code>(constructor)</code>   </td><td class="markdownTableBodyNone">Constructs the filter. Configures the filter the deduction guides.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>(destructor)</code>   </td><td class="markdownTableBodyNone">Destructs the filter.    </td></tr>
+<td class="markdownTableBodyNone"><code>(move constructor)</code>   </td><td class="markdownTableBodyNone">Constructs the filter, default.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>operator=</code>   </td><td class="markdownTableBodyNone">Assigns values to the filter.   </td></tr>
+<td class="markdownTableBodyNone"><code>(move assignment operator)</code>   </td><td class="markdownTableBodyNone">Assigns values to the filter, default.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>(destructor)</code>   </td><td class="markdownTableBodyNone">Destructs the filter.   </td></tr>
 </table>
 <h4><a class="anchor" id="characteristics"></a>
 Characteristics</h4>
@@ -359,6 +370,7 @@ Characteristics</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>observation</code>   </td><td class="markdownTableBodyNone">Manages the state observation function object <em>h</em>. Configures the callable object of expression <code>output(const state &amp;, const UpdateTypes &amp;...arguments)</code> to compute the observation state value. The default value is the equivalent to <em>h(x) = H * X</em>. The default function is suitable for linear systems. For extended filters <code>observation</code> is a linearization of the state observation while <em>H</em> is the Jacobian of the observation function: <em>H = ∂h/∂X = ∂hj/∂xi</em> that is each row <em>i</em> contains the derivatives of the state observation function for every element <em>j</em> in the state vector <em>X</em>.   </td></tr>
 </table>
+<p>The characteristics are optionally present according to the filter configuration.</p>
 <h4><a class="anchor" id="modifiers"></a>
 Modifiers</h4>
 <table class="markdownTable">
@@ -375,7 +387,8 @@ Format</h2>
 <div class="fragment"><div class="line">kalman filter;</div>
 <div class="line"> </div>
 <div class="line">std::print(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
-<div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;h&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;q&quot;: 0, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
+<div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
+<div class="line"><span class="comment">// The characteristics are optionally present according to the filter configuration.</span></div>
 </div><!-- fragment --><h1><a class="anchor" id="considerations"></a>
 Considerations</h1>
 <h2><a class="anchor" id="motivations"></a>

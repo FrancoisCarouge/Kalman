@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>File <a class="el" href="algorithm_8hpp.xhtml">algorithm.hpp</a>  </dt>
 <dd><a class="anchor" id="_todo000003"></a>Implement and test.  </dd>
 <dt>Namespace <a class="el" href="namespacefcarouge.xhtml">fcarouge</a>  </dt>
-<dd><a class="anchor" id="_todo000030"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
+<dd><a class="anchor" id="_todo000031"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
 <dt>{<a class="el" href="predict__linalg__x1x_8cpp.xhtml">predict_linalg_x1x.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03.xhtml#a8052a825ee9cbc95eaac96a14697bee4">fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::Name</a>  ("predict_linalg_${STATE_SIZE}x1x${INPUT_SIZE}") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</dt>
 <dd><a class="anchor" id="_todo000001"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
 <dt>{<a class="el" href="update__linalg__xx0_8cpp.xhtml">update_linalg_xx0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ab1ab8c595b8ad8d298b8fe6492b51c40">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::Name</a>  ("update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</dt>
@@ -126,11 +126,11 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ad620ef6cc1c4b6e85bd885e5da2375a2">fcarouge::kalman&lt; Filter &gt;::x</a>  () const -&gt; const state &amp;</dt>
-<dd><a class="anchor" id="_todo000040"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
+<dd><a class="anchor" id="_todo000039"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af5b5c43dcc898eab0391ecc90ff7b328">fcarouge::kalman&lt; Filter &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
 <dd><a class="anchor" id="_todo000043"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Struct <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000031"></a>Explore and compare performance. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000030"></a>Explore and compare performance. </p>
 <p class="interdd"></p>
 <p class="interdd">Explore optimization of heap allocations? </p>
 <p class="interdd"></p>
@@ -140,16 +140,16 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="interdd"></p>
 <p class="enddd">Remove unecessary empty paramaters when MSVC supports lambda without them.  </p>
 </dd>
-<dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#a4e09c0fca4bfad49789dad31102f07d7">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">Type(&amp;elements)</a>[Row])</dt>
-<dd><a class="anchor" id="_todo000038"></a>Perhaps this is too naive and can be improved?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
 <dd><a class="anchor" id="_todo000035"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
+<dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#a4e09c0fca4bfad49789dad31102f07d7">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">Type(&amp;elements)</a>[Row])</dt>
+<dd><a class="anchor" id="_todo000040"></a>Perhaps this is too naive and can be improved?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000039"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000038"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>{<a class="el" href="linalg__addition_8cpp.xhtml">linalg_addition.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml#a58f62760145a6a0839b43901056530bb">fcarouge::test::anonymous_namespace{linalg_addition.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000046"></a>Rewrite this test as a property-based test.  </dd>
-<dt>{<a class="el" href="linalg__assign_8cpp.xhtml">linalg_assign.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__assign_8cpp_03.xhtml#a4c98e308d4ac9d24947134de6c580520">fcarouge::test::anonymous_namespace{linalg_assign.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000047"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__assign_8cpp.xhtml">linalg_assign.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__assign_8cpp_03.xhtml#a4c98e308d4ac9d24947134de6c580520">fcarouge::test::anonymous_namespace{linalg_assign.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000046"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__1x1_8cpp.xhtml">linalg_constructor_1x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1_8cpp_03.xhtml#ac660c243ef8dba578dc714a0c811a1fe">fcarouge::test::anonymous_namespace{linalg_constructor_1x1.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000048"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__1x1__array_8cpp.xhtml">linalg_constructor_1x1_array.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1__array_8cpp_03.xhtml#a6e698ed0a00a63fd8bfc92006e7fb814">fcarouge::test::anonymous_namespace{linalg_constructor_1x1_array.cpp}::test</a>  </dt>
@@ -161,16 +161,16 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>{<a class="el" href="linalg__constructor__initializer__lists_8cpp.xhtml">linalg_constructor_initializer_lists.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists_8cpp_03.xhtml#ab74cb7ed9098c4f5d7d6a27a709dc13f">fcarouge::test::anonymous_namespace{linalg_constructor_initializer_lists.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000052"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__initializer__lists__deduction_8cpp.xhtml">linalg_constructor_initializer_lists_deduction.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__initializer__lists__deduction_8cpp_03.xhtml#a063a72ab4a56a2886f2bb5e65ecbd389">fcarouge::test::anonymous_namespace{linalg_constructor_initializer_lists_deduction.cpp}::test</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000053"></a>Rewrite this test as a property-based test. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000054"></a>Rewrite this test as a property-based test. </p>
 <p class="interdd"></p>
 <p class="enddd">Static assert the sizes and value type?  </p>
 </dd>
 <dt>{<a class="el" href="linalg__constructor__nx1_8cpp.xhtml">linalg_constructor_nx1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__nx1_8cpp_03.xhtml#a63468faa6b757c422a21a3a10bbefb24">fcarouge::test::anonymous_namespace{linalg_constructor_nx1.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000054"></a>Rewrite this test as a property-based test.  </dd>
+<dd><a class="anchor" id="_todo000053"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__constructor__nx1__array_8cpp.xhtml">linalg_constructor_nx1_array.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__nx1__array_8cpp_03.xhtml#a38fe0133bbb5f3553913b83f3ab4afdf">fcarouge::test::anonymous_namespace{linalg_constructor_nx1_array.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000056"></a>Rewrite this test as a property-based test.  </dd>
-<dt>{<a class="el" href="linalg__copy_8cpp.xhtml">linalg_copy.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__copy_8cpp_03.xhtml#a0887ab7e5f2d679324ac959b627f5f17">fcarouge::test::anonymous_namespace{linalg_copy.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000055"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__copy_8cpp.xhtml">linalg_copy.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__copy_8cpp_03.xhtml#a0887ab7e5f2d679324ac959b627f5f17">fcarouge::test::anonymous_namespace{linalg_copy.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000056"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__identity_8cpp.xhtml">linalg_identity.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity_8cpp_03.xhtml#a96696a636cb3338b86fec91d6c31c303">fcarouge::test::anonymous_namespace{linalg_identity.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000057"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__multiplication__arithmetic_8cpp.xhtml">linalg_multiplication_arithmetic.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__arithmetic_8cpp_03.xhtml#ab6163c2a745098b0d1d224d185dbd9ca">fcarouge::test::anonymous_namespace{linalg_multiplication_arithmetic.cpp}::test</a>  </dt>
@@ -182,9 +182,9 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>{<a class="el" href="linalg__operator__bracket_8cpp.xhtml">linalg_operator_bracket.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml#ad8d22e6caa976eab5167898fecb8f55b">fcarouge::test::anonymous_namespace{linalg_operator_bracket.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000061"></a>Rewrite this test as a property-based test.  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml#a4017107a9c64486408758abcdc88bffe">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format</a>  (const <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">fcarouge::kalman&lt; Filter &gt;</a> &amp;filter, std::basic_format_context&lt; OutputIt, Char &gt; &amp;format_context) const -&gt; OutputIt</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000005"></a>P2585 may be useful in simplifying and standardizing the support. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000008"></a>Inconsistent usage of internal? </p>
 <p class="interdd"><a class="anchor" id="_todo000007"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
-<p class="enddd"><a class="anchor" id="_todo000008"></a>Inconsistent usage of internal? </p>
+<p class="enddd"><a class="anchor" id="_todo000005"></a>P2585 may be useful in simplifying and standardizing the support. </p>
 </dd>
 </dl>
 </div></div><!-- contents -->
