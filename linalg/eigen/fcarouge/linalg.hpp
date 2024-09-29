@@ -83,6 +83,12 @@ inline const auto identity_v<Matrix>{Matrix::Identity()};
 //! @brief The zero matrix Eigen specialization.
 template <eigen Matrix> inline const auto zero_v<Matrix>{Matrix::Zero()};
 //! @}
+
+template <typename Type>
+[[nodiscard]] inline bool operator==(const matrix<Type, 1, 1> &lhs,
+                                     const Type &rhs) {
+  return lhs(0, 0) == rhs;
+}
 } // namespace fcarouge
 
 #endif // FCAROUGE_LINALG_HPP
