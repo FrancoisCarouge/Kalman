@@ -35,16 +35,10 @@ jobs:
       uses: github/codeql-action/init@6db8d6351fd0be61f9ed8ebd12ccd35dcec51fea # v3.26.11
       with:
         languages: ${{ matrix.language }}
-    - name: 'Install'
-      run: |
-        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-        sudo apt update
-        sudo apt upgrade
-        sudo apt install g++-13
     - name: 'Configure'
       env:
-        CXX: 'g++-13'
-        CC: 'gcc-13'
+        CXX: 'g++-14'
+        CC: 'gcc-14'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
