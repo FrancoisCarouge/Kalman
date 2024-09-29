@@ -36,6 +36,27 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+include(FetchContent)
+
+FetchContent_Declare(
+  fmt
+  GIT_REPOSITORY "https://github.com/fmtlib/fmt"
+  FIND_PACKAGE_ARGS NAMES fmt)
+FetchContent_MakeAvailable(fmt)
+
+FetchContent_Declare(
+  gsl-lite
+  GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
+  FIND_PACKAGE_ARGS NAMES gsl-lite)
+FetchContent_MakeAvailable(gsl-lite)
+
+set(MP_UNITS_BUILD_CXX_MODULES ON)
+FetchContent_Declare(
+  mp-units
+  GIT_REPOSITORY "https://github.com/mpusz/mp-units"
+  SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
+FetchContent_MakeAvailable(mp-units)
+
 foreach(
   TEST
   "kalman_constructor_default_float_1x1x1.cpp"
@@ -44,7 +65,8 @@ foreach(
   "kalman_format_arguments.cpp"
   "kalman_format_float_1x1x1.cpp"
   "kalman_format.cpp"
-  "kalman_println.cpp")
+  "kalman_println.cpp"
+  "units_kf_1x1x0.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
   target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main
