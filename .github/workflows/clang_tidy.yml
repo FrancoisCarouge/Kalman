@@ -25,8 +25,7 @@ jobs:
       env:
         CXX: 'clang++-18'
         CC: 'clang-18'
-      run: |
-        cmake -S . -B 'build' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+      run: cmake -S . -B 'build' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     - name: Verify
       run: |
         cat build/compile_commands.json
