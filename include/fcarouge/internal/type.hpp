@@ -48,7 +48,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge::internal {
-
 //! @todo Provide the ::type member access and _t shorthand for simplifying
 //! syntax?
 template <typename Type> struct state {
@@ -218,7 +217,6 @@ template <typename... Types> struct prediction_types_t {};
 
 template <typename... Types>
 inline prediction_types_t<Types...> prediction_types{};
-
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_TYPE_HPP

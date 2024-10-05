@@ -42,7 +42,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/utility.hpp"
 
 namespace fcarouge::internal {
-
 template <typename State, typename Output> struct x_z_p_q_r_h_f {
   using state = State;
   using output = Output;
