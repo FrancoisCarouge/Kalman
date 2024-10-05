@@ -37,7 +37,8 @@ jobs:
         egress-policy: audit
     - name: 'Checkout'
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-    - name: 'Install: Clang 20'
+    - name: 'Install: Latest CMake'
+      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
       if: ${{ matrix.cxx == 'clang++-20' }}
       run: sudo apt update && sudo apt install -y clang-20 clang-tools-20
     - name: 'Install: Clang 21'
@@ -46,8 +47,6 @@ jobs:
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 21 all
-    - name: 'Install: Latest CMake'
-      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
