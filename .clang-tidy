@@ -1,6 +1,5 @@
-CheckOptions:
-  - key: misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
-    value: 1
+FormatStyle: 'file'
+WarningsAsErrors: '*'
 Checks: '*,
         -altera-struct-pack-align,
         -altera-unroll-loops,
@@ -34,5 +33,5 @@ Checks: '*,
         -portability-simd-intrinsics,
         -readability-identifier-length,
         -readability-magic-numbers'
-FormatStyle: 'file'
-WarningsAsErrors: '*'
+CheckOptions:
+  modernize-use-std-numbers.DiffThreshold: '0.000001'
