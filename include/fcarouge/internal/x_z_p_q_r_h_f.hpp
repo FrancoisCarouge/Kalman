@@ -68,9 +68,7 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
   output z{zero_v<output>};
   transpose t{};
 
-  template <typename Output0, typename... OutputN>
-  inline constexpr void update(const Output0 &output_z,
-                               const OutputN &...outputs_z) {
+  inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
     s = innovation_uncertainty{h * p * t(h) + r};
     k = p * t(h) / s;

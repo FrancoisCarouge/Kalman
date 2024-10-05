@@ -103,10 +103,8 @@ struct x_z_p_q_r_hh_us_ps<State, Output, pack<UpdateTypes...>,
   prediction_types prediction_arguments{};
   transpose t{};
 
-  template <typename Output0, typename... OutputN>
   inline constexpr void update(const UpdateTypes &...update_pack,
-                               const Output0 &output_z,
-                               const OutputN &...outputs_z) {
+                               const auto &output_z, const auto &...outputs_z) {
     update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
