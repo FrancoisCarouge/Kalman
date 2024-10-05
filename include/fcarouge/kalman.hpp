@@ -58,7 +58,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-
 //! @name Types
 //! @{
 //! @brief A generic Kalman filter.

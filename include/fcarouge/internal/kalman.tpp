@@ -40,7 +40,6 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_INTERNAL_KALMAN_TPP
 
 namespace fcarouge {
-
 template <typename Filter>
 template <typename... Arguments>
 inline constexpr kalman<Filter>::kalman(Arguments... arguments)
