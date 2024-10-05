@@ -36,28 +36,27 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(kalman INTERFACE)
-target_link_libraries(kalman INTERFACE kalman_internal)
+add_library(kalman_internal INTERFACE)
 target_sources(
-  kalman
+  kalman_internal
   INTERFACE FILE_SET
             "kalman_headers"
             TYPE
             "HEADERS"
             FILES
-            "fcarouge/algorithm.hpp"
-            "fcarouge/kalman.hpp"
-            "fcarouge/utility.hpp")
+            "internal/factory.hpp"
+            "internal/format.hpp"
+            "internal/function.hpp"
+            "internal/kalman.tpp"
+            "internal/type.hpp"
+            "internal/utility.hpp"
+            "internal/x_z_p_q_r_h_f.hpp"
+            "internal/x_z_p_q_r_hh_us_ps.hpp"
+            "internal/x_z_p_qq_rr_f.hpp"
+            "internal/x_z_p_r_f.hpp"
+            "internal/x_z_u_p_q_r_f_g_ps.hpp"
+            "internal/x_z_u_p_q_r_us_ps.hpp")
 install(
-  TARGETS kalman
+  TARGETS kalman_internal
   EXPORT "kalman-target"
   FILE_SET "kalman_headers")
-
-# Conditionally provide the namespace alias target which may be an imported
-# target from a package, or an aliased target if built as part of the same
-# buildsystem.
-if(NOT TARGET kalman::kalman)
-  add_library(kalman::kalman ALIAS kalman)
-endif()
-
-add_subdirectory(fcarouge)
