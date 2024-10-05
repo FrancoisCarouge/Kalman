@@ -95,9 +95,7 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, pack<UpdateTypes...>,
   prediction_types prediction_arguments{};
   transpose t{};
 
-  template <typename Output0, typename... OutputN>
-  inline constexpr void update(const Output0 &output_z,
-                               const OutputN &...outputs_z) {
+  inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
     s = h * p * t(h) + r;
     k = p * t(h) / s;
@@ -106,10 +104,8 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, pack<UpdateTypes...>,
     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
   }
 
-  template <typename Input0, typename... InputN>
   inline constexpr void predict(const PredictionTypes &...prediction_pack,
-                                const Input0 &input_u,
-                                const InputN &...inputs_u) {
+                                const auto &input_u, const auto &...inputs_u) {
     prediction_arguments = {prediction_pack...};
     u = input{input_u, inputs_u...};
     f = transition_state_f(x, u, prediction_pack...);
