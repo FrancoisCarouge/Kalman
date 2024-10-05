@@ -60,14 +60,13 @@ using state = fcarouge::state<vector<6>>;
                            {0., 0., 0., 0., 0., 500.}},
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
-      process_uncertainty{[]() -> matrix<6, 6> {
-        return 0.2 * 0.2 * matrix<6, 6>{{0.25, 0.5, 0.5, 0., 0., 0.},
-                                        {0.5, 1., 1., 0., 0., 0.},
-                                        {0.5, 1., 1., 0., 0., 0.},
-                                        {0., 0., 0., 0.25, 0.5, 0.5},
-                                        {0., 0., 0., 0.5, 1., 1.},
-                                        {0., 0., 0., 0.5, 1., 1.}};
-      }()},
+      process_uncertainty{0.2 * 0.2 *
+                          matrix<6, 6>{{0.25, 0.5, 0.5, 0., 0., 0.},
+                                       {0.5, 1., 1., 0., 0., 0.},
+                                       {0.5, 1., 1., 0., 0., 0.},
+                                       {0., 0., 0., 0.25, 0.5, 0.5},
+                                       {0., 0., 0., 0.5, 1., 1.},
+                                       {0., 0., 0., 0.5, 1., 1.}}},
       // The output uncertainty matrix R. Assume that the x and y measurements
       // are uncorrelated, i.e. error in the x coordinate measurement doesn't
       // depend on the error in the y coordinate measurement. In real-life
