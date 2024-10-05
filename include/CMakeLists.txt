@@ -38,12 +38,13 @@ For more information, please refer to <https://unlicense.org> ]]
 
 # @todo Add an internal CMakeLists file to simplify and separate this one.
 add_library(kalman INTERFACE)
+# target_compile_features(kalman_std PRIVATE cxx_std_23)
 target_sources(
   kalman
   INTERFACE FILE_SET
-            "kalman_headers"
+            "kalman_module"
             TYPE
-            "HEADERS"
+            "CXX_MODULES"
             FILES
             "fcarouge/algorithm.hpp"
             "fcarouge/internal/factory.hpp"
@@ -63,7 +64,7 @@ target_sources(
 install(
   TARGETS kalman
   EXPORT "kalman-target"
-  FILE_SET "kalman_headers")
+  FILE_SET "kalman_module")
 
 # Conditionally provide the namespace alias target which may be an imported
 # target from a package, or an aliased target if built as part of the same

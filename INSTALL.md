@@ -19,7 +19,7 @@ target_link_libraries(your_target PRIVATE kalman::kalman)
 In your sources, include the library header and use the filter. See [the samples](https://github.com/FrancoisCarouge/Kalman/tree/master/sample) for more.
 
 ```cpp
-#include "fcarouge/kalman.hpp"
+import fcarouge.kalman;
 
 fcarouge::kalman filter;
 ```
