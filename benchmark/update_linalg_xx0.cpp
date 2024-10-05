@@ -106,7 +106,7 @@ BENCHMARK(bench<${STATE_SIZE}, ${OUTPUT_SIZE}>)
     ->ComputeStatistics("min", [](const auto &results) {
       return std::ranges::min(results);
     }) -> ComputeStatistics("max", [](const auto &results) {
-      return std::ranges::max(results);
-    }) -> UseManualTime() -> DisplayAggregatesOnly(true) -> Repetitions(3);
+  return std::ranges::max(results);
+}) -> UseManualTime() -> DisplayAggregatesOnly(true) -> Repetitions(3);
 } // namespace
 } // namespace fcarouge::benchmark

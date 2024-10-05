@@ -253,8 +253,8 @@ public:
   //! i.e. `*this`.
   //!
   //! @complexity Constant.
-  inline constexpr auto operator=(kalman &&other) noexcept
-      -> kalman & = default;
+  inline constexpr auto
+  operator=(kalman &&other) noexcept -> kalman & = default;
 
   //! @brief Destructs the Kalman filter.
   //!
