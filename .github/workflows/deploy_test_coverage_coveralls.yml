@@ -16,7 +16,7 @@ jobs:
     permissions:
       checks: write # for coverallsapp/github-action to create new checks
       contents: read # for actions/checkout to fetch code
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
     - name: Harden Runner
       uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
