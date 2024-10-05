@@ -144,14 +144,13 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">                           {0., 0., 0., 0., 0., 500.}},</div>
 <div class="line">      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
 <div class="line">      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
-<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a>{[]() -&gt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;6, 6&gt;</a> {</div>
-<div class="line">        <span class="keywordflow">return</span> 0.2 * 0.2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;6, 6&gt;</a>{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
-<div class="line">                                        {0.5, 1., 1., 0., 0., 0.},</div>
-<div class="line">                                        {0.5, 1., 1., 0., 0., 0.},</div>
-<div class="line">                                        {0., 0., 0., 0.25, 0.5, 0.5},</div>
-<div class="line">                                        {0., 0., 0., 0.5, 1., 1.},</div>
-<div class="line">                                        {0., 0., 0., 0.5, 1., 1.}};</div>
-<div class="line">      }()},</div>
+<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a>{0.2 * 0.2 *</div>
+<div class="line">                          <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;6, 6&gt;</a>{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
+<div class="line">                                       {0.5, 1., 1., 0., 0., 0.},</div>
+<div class="line">                                       {0.5, 1., 1., 0., 0., 0.},</div>
+<div class="line">                                       {0., 0., 0., 0.25, 0.5, 0.5},</div>
+<div class="line">                                       {0., 0., 0., 0.5, 1., 1.},</div>
+<div class="line">                                       {0., 0., 0., 0.5, 1., 1.}}},</div>
 <div class="line">      <span class="comment">// The output uncertainty matrix R. Assume that the x and y measurements</span></div>
 <div class="line">      <span class="comment">// are uncorrelated, i.e. error in the x coordinate measurement doesn&#39;t</span></div>
 <div class="line">      <span class="comment">// depend on the error in the y coordinate measurement. In real-life</span></div>
