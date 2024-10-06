@@ -17,8 +17,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-latest', cxx: 'clang++-18', cc: 'clang-18', generator: 'Unix Makefiles', packages: 'clang-18'  }
-        - { os: 'ubuntu-latest', cxx: 'g++-13', cc: 'gcc-13', generator: 'Unix Makefiles', packages: 'g++-13'  }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Unix Makefiles', packages: 'clang-18'  }
+        - { os: 'ubuntu-24.04', cxx: 'g++-13', cc: 'gcc-13', generator: 'Unix Makefiles', packages: 'g++-13'  }
         - { os: 'windows-latest', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Debug' }
         - { os: 'windows-latest', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
@@ -42,10 +42,6 @@ jobs:
     - name: 'Install: Clang'
       if: ${{ matrix.cxx == 'clang++-18' }}
       run: |
-        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-        sudo apt update
-        sudo apt upgrade
-        sudo apt install g++-13
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 18 all

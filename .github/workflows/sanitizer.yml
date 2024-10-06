@@ -30,7 +30,7 @@ jobs:
           cpp_flags: '-g -O0 -fsanitize=undefined'
           run_flags: 'UBSAN_OPTIONS=verbosity=2'
     name: '${{ matrix.sanitizer.name }}'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       CXXFLAGS: '${{ matrix.sanitizer.cpp_flags }}'
     steps:
