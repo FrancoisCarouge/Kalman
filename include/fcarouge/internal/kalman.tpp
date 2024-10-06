@@ -46,17 +46,10 @@ inline constexpr kalman<Filter>::kalman(Arguments... arguments)
     : filter(internal::filter<implementation>(arguments...)) {}
 
 template <typename Filter>
-[[nodiscard("The returned state estimate column vector X is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<Filter>::x() const -> const state & {
-  return filter.x;
-}
-
-template <typename Filter>
-[[nodiscard("The returned state estimate column vector X is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<Filter>::x() -> state & {
-  return filter.x;
+[[nodiscard(
+    "The returned state estimate column vector X is unexpectedly discarded.")]]
+inline constexpr auto &&kalman<Filter>::x(this auto &&self) {
+  return std::forward<decltype(self)>(self).filter.x;
 }
 
 template <typename Filter>
@@ -83,16 +76,9 @@ kalman<Filter>::u() const
 
 template <typename Filter>
 [[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<Filter>::p() const -> const estimate_uncertainty & {
-  return filter.p;
-}
-
-template <typename Filter>
-[[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<Filter>::p() -> estimate_uncertainty & {
-  return filter.p;
+            "discarded.")]] inline constexpr auto &&
+kalman<Filter>::p(this auto &&self) {
+  return std::forward<decltype(self)>(self).filter.p;
 }
 
 template <typename Filter>
@@ -103,20 +89,11 @@ inline constexpr void kalman<Filter>::p(const auto &value,
 
 template <typename Filter>
 [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
-            "discarded.")]] inline constexpr const auto &
-kalman<Filter>::q() const
+            "discarded.")]] inline constexpr auto &&
+kalman<Filter>::q(this auto &&self)
   requires(has_process_uncertainty<Filter>)
 {
-  return filter.q;
-}
-
-template <typename Filter>
-[[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
-            "discarded.")]] inline constexpr auto &
-kalman<Filter>::q()
-  requires(has_process_uncertainty<Filter>)
-{
-  return filter.q;
+  return std::forward<decltype(self)>(self).filter.q;
 }
 
 template <typename Filter>
@@ -137,20 +114,11 @@ inline constexpr void kalman<Filter>::q(const auto &value,
 
 template <typename Filter>
 [[nodiscard("The returned observation noise covariance matrix R is "
-            "unexpectedly discarded.")]] inline constexpr const auto &
-kalman<Filter>::r() const
+            "unexpectedly discarded.")]] inline constexpr auto &&
+kalman<Filter>::r(this auto &&self)
   requires(has_output_uncertainty<Filter>)
 {
-  return filter.r;
-}
-
-template <typename Filter>
-[[nodiscard("The returned observation noise covariance matrix R is "
-            "unexpectedly discarded.")]] inline constexpr auto &
-kalman<Filter>::r()
-  requires(has_output_uncertainty<Filter>)
-{
-  return filter.r;
+  return std::forward<decltype(self)>(self).filter.r;
 }
 
 template <typename Filter>
@@ -170,20 +138,11 @@ inline constexpr void kalman<Filter>::r(const auto &value,
 
 template <typename Filter>
 [[nodiscard("The returned state transition matrix F is unexpectedly "
-            "discarded.")]] inline constexpr const auto &
-kalman<Filter>::f() const
+            "discarded.")]] inline constexpr auto &&
+kalman<Filter>::f(this auto &&self)
   requires(has_state_transition<Filter>)
 {
-  return filter.f;
-}
-
-template <typename Filter>
-[[nodiscard("The returned state transition matrix F is unexpectedly "
-            "discarded.")]] inline constexpr auto &
-kalman<Filter>::f()
-  requires(has_state_transition<Filter>)
-{
-  return filter.f;
+  return std::forward<decltype(self)>(self).filter.f;
 }
 
 template <typename Filter>
@@ -203,20 +162,11 @@ inline constexpr void kalman<Filter>::f(const auto &value,
 
 template <typename Filter>
 [[nodiscard("The returned observation transition matrix H is unexpectedly "
-            "discarded.")]] inline constexpr const auto &
-kalman<Filter>::h() const
+            "discarded.")]] inline constexpr auto &&
+kalman<Filter>::h(this auto &&self)
   requires(has_output_model<Filter>)
 {
-  return filter.h;
-}
-
-template <typename Filter>
-[[nodiscard("The returned observation transition matrix H is unexpectedly "
-            "discarded.")]] inline constexpr auto &
-kalman<Filter>::h()
-  requires(has_output_model<Filter>)
-{
-  return filter.h;
+  return std::forward<decltype(self)>(self).filter.h;
 }
 
 template <typename Filter>
@@ -236,20 +186,11 @@ inline constexpr void kalman<Filter>::h(const auto &value,
 
 template <typename Filter>
 [[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr const auto &
-kalman<Filter>::g() const
+            "discarded.")]] inline constexpr auto &&
+kalman<Filter>::g(this auto &&self)
   requires(has_input_control<Filter>)
 {
-  return filter.g;
-}
-
-template <typename Filter>
-[[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr auto &
-kalman<Filter>::g()
-  requires(has_input_control<Filter>)
-{
-  return filter.g;
+  return std::forward<decltype(self)>(self).filter.g;
 }
 
 template <typename Filter>

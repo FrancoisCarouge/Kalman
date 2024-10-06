@@ -274,8 +274,8 @@ public:
   //!
   //! @todo Collapse cv-ref qualifier-aware member functions per C++23 P0847 to
   //! avoid duplication: `inline constexpr auto & x(this auto&& self)`.
-  inline constexpr auto x() const -> const state &;
-  inline constexpr auto x() -> state &;
+
+  inline constexpr auto &&x(this auto &&self);
 
   //! @brief Sets the state estimate column vector X.
   //!
@@ -309,8 +309,7 @@ public:
   //! @return The estimated correlated variance matrix P.
   //!
   //! @complexity Constant.
-  inline constexpr auto p() const -> const estimate_uncertainty &;
-  inline constexpr auto p() -> estimate_uncertainty &;
+  inline constexpr auto &&p(this auto &&self);
 
   //! @brief Sets the estimated covariance matrix P.
   //!
@@ -327,9 +326,7 @@ public:
   //! @return The process noise correlated variance matrix Q.
   //!
   //! @complexity Constant.
-  inline constexpr const auto &q() const
-    requires(has_process_uncertainty<Filter>);
-  inline constexpr auto &q()
+  inline constexpr auto &&q(this auto &&self)
     requires(has_process_uncertainty<Filter>);
 
   //! @brief Sets the process noise covariance matrix Q.
@@ -357,9 +354,7 @@ public:
   //! @return The observation noise correlated variance matrix R.
   //!
   //! @complexity Constant.
-  inline constexpr const auto &r() const
-    requires(has_output_uncertainty<Filter>);
-  inline constexpr auto &r()
+  inline constexpr auto &&r(this auto &&self)
     requires(has_output_uncertainty<Filter>);
 
   //! @brief Sets the observation noise covariance matrix R.
@@ -384,9 +379,7 @@ public:
   //! @return The state transition matrix F.
   //!
   //! @complexity Constant.
-  inline constexpr const auto &f() const
-    requires(has_state_transition<Filter>);
-  inline constexpr auto &f()
+  inline constexpr auto &&f(this auto &&self)
     requires(has_state_transition<Filter>);
 
   //! @brief Sets the state transition matrix F.
@@ -419,9 +412,7 @@ public:
   //! @return The observation, measurement transition matrix H.
   //!
   //! @complexity Constant.
-  inline constexpr const auto &h() const
-    requires(has_output_model<Filter>);
-  inline constexpr auto &h()
+  inline constexpr auto &&h(this auto &&self)
     requires(has_output_model<Filter>);
 
   //! @brief Sets the observation transition matrix H.
@@ -457,9 +448,7 @@ public:
   //! @todo Do we still need the non-const flavor?
   //!
   //! @complexity Constant.
-  inline constexpr const auto &g() const
-    requires(has_input_control<Filter>);
-  inline constexpr auto &g()
+  inline constexpr auto &&g(this auto &&self)
     requires(has_input_control<Filter>);
 
   //! @brief Sets the control transition matrix G.
