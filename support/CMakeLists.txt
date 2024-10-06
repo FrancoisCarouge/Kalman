@@ -115,33 +115,3 @@ install(
   EXPORT "kalman-target"
   FILE_SET "kalman_print_headers"
   DESTINATION "include/fcarouge")
-
-include(CheckSourceCompiles)
-include(FetchContent)
-
-add_library(kalman_generator INTERFACE)
-
-check_source_compiles(
-  CXX
-  "
-#include <generator>
-int main() {}
-"
-  CPP_LIB_GENERATOR)
-
-if(NOT CPP_LIB_GENERATOR)
-  FetchContent_Declare(
-    stdgenerator
-    GIT_REPOSITORY "https://github.com/FrancoisCarouge/generator"
-    FIND_PACKAGE_ARGS NAMES stdgenerator)
-  FetchContent_MakeAvailable(stdgenerator)
-
-  target_sources(kalman_generator INTERFACE FILE_SET "kalman_generator_headers"
-                                            TYPE "HEADERS" FILES "generator")
-  target_link_libraries(kalman_generator INTERFACE stdgenerator::stdgenerator)
-  install(
-    TARGETS kalman_generator
-    EXPORT "kalman-target"
-    FILE_SET "kalman_generator_headers"
-    DESTINATION "include/fcarouge")
-endif()
