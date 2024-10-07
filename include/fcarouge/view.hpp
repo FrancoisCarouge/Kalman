@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,30 +34,51 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(kalman INTERFACE)
-target_link_libraries(kalman INTERFACE kalman_internal)
-target_sources(
-  kalman
-  INTERFACE FILE_SET
-            "kalman_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "fcarouge/kalman.hpp"
-            "fcarouge/utility.hpp"
-            "fcarouge/view.hpp")
-install(
-  TARGETS kalman
-  EXPORT "kalman-target"
-  FILE_SET "kalman_headers")
+#ifndef FCAROUGE_VIEW_HPP
+#define FCAROUGE_VIEW_HPP
 
-# Conditionally provide the namespace alias target which may be an imported
-# target from a package, or an aliased target if built as part of the same
-# buildsystem.
-if(NOT TARGET kalman::kalman)
-  add_library(kalman::kalman ALIAS kalman)
-endif()
+//! @file
+//! @brief A view interface for the Kalman filter.
+//!
+//! @details Compatibility support for standard ranges.
 
-add_subdirectory(fcarouge)
+#include <functional>
+#include <ranges>
+#include <vector>
+
+namespace fcarouge {
+//! @name Types
+//! @{
+//! @brief ...
+template <typename Filter>
+class view : public std::ranges::view_interface<view<Filter>> {
+public:
+  view(const Filter &filter) {
+    v.push_back([&filter]() { return filter.x(); });
+    v.push_back([&filter]() { return filter.p(); });
+  }
+
+  auto begin() { return v.begin(); }
+  auto begin() const { return v.begin(); }
+  auto cbegin() const { return v.cbegin(); }
+  auto end() { return v.end(); }
+  auto end() const { return v.end(); }
+  auto cend() const { return v.cend(); }
+
+  std::vector<std::function<void()>> v;
+};
+//! @}
+
+// template <typename Filter> auto ranges::begin(Filter &filter) {
+//   return filter.begin();
+// }
+
+// template <typename Filter> auto ranges::end(Filter &filter) {
+//   return filter.end();
+// }
+
+} // namespace fcarouge
+
+#endif // FCAROUGE_VIEW_HPP
