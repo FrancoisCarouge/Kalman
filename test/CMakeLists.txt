@@ -47,8 +47,8 @@ foreach(
   "kalman_println.cpp")
   get_filename_component(NAME ${TEST} NAME_WE)
   add_executable(kalman_test_${NAME}_driver ${TEST})
-  target_link_libraries(kalman_test_${NAME}_driver
-                        PRIVATE kalman kalman_main kalman_options kalman_print)
+  target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main
+                                                           kalman_options)
   separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
   add_test(NAME kalman_test_${NAME}
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
