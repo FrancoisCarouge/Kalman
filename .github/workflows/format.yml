@@ -31,7 +31,6 @@ jobs:
           -o -iname '*.cpp' \
           -o -iwholename './support/format' \
           -o -iwholename './support/generator' \
-          -o -iwholename './support/print' \
           | xargs \
           clang-format-18 --Werror --dry-run --verbose -style=file
         find . \
