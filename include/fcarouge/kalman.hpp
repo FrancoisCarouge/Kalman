@@ -492,34 +492,6 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr auto s() const -> const innovation_uncertainty &;
-
-  //! @brief Sets the extended state transition function f(x).
-  //!
-  //! @param callable The copied target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be called to compute the next state X on
-  //! prediction steps of expression `state(const state &, const input &, const
-  //! PredictionTypes &...)`. The default function `f(x) = F * X` is suitable
-  //! for linear systems. For non-linear system, or extended filter, implement a
-  //! linearization of the transition function f and the state transition F
-  //! matrix is the Jacobian of the state transition function.
-  //!
-  //! @complexity Constant.
-  inline constexpr void transition(const auto &callable);
-
-  //! @brief Sets the extended state observation function h(x).
-  //!
-  //! @param callable The copied target Callable object (function object,
-  //! pointer to function, reference to function, pointer to member function, or
-  //! pointer to data member) that will be called to compute the observation Z
-  //! on update steps of expression `output(const state &, const UpdateTypes
-  //! &...arguments)`. The default function `h(x) = H * X` is suitable for
-  //! linear systems. For non-linear system, or extended filter, the client
-  //! implements a linearization of the observation function hand the state
-  //! observation H matrix is the Jacobian of the state observation function.
-  //!
-  //! @complexity Constant.
-  inline constexpr void observation(const auto &callable);
   //! @}
 
   //! @name Public Filtering Member Functions

@@ -29,9 +29,7 @@ jobs:
           cmake --build 'eigen/build' --parallel 4
           sudo cmake --install 'eigen/build' )
         ( cd /tmp
-          git clone https://github.com/danmar/cppcheck.git
-          ( cd cppcheck
-            git checkout fa561e9c242e7ceeb16408ef55e8bcea04fcf46f )
+          git clone --depth 1 'https://github.com/danmar/cppcheck.git'
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
           sudo cmake --install 'cppcheck/build' )

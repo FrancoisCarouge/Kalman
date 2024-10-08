@@ -225,16 +225,6 @@ kalman<Filter>::s() const -> const innovation_uncertainty & {
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::transition(const auto &callable) {
-  filter.transition = callable;
-}
-
-template <typename Filter>
-inline constexpr void kalman<Filter>::observation(const auto &callable) {
-  filter.observation = callable;
-}
-
-template <typename Filter>
 inline constexpr void kalman<Filter>::update(const auto &...arguments) {
   filter.update(arguments...);
 }
