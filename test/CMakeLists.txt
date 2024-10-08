@@ -54,7 +54,7 @@ foreach(
            COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
 endforeach()
 
-foreach(BACKEND IN ITEMS "eigen" "naive")
+foreach(BACKEND IN ITEMS "eigen" "lazy" "naive")
   foreach(
     TEST
     "linalg_addition.cpp"
@@ -103,6 +103,20 @@ foreach(BACKEND IN ITEMS "eigen")
     "kalman_constructor_move_5x4x3.cpp"
     "kalman_f_5x4x3.cpp"
     "kalman_h_5x4x3.cpp")
+    get_filename_component(NAME ${TEST} NAME_WE)
+    add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
+    target_link_libraries(
+      kalman_test_${BACKEND}_${NAME}_driver
+      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(NAME kalman_test_${BACKEND}_${NAME}
+             COMMAND ${TEST_COMMAND}
+                     $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
+  endforeach()
+endforeach()
+
+foreach(BACKEND IN ITEMS "lazy")
+  foreach(TEST "linalg_constructor_initializer_lists_deduction.cpp")
     get_filename_component(NAME ${TEST} NAME_WE)
     add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
     target_link_libraries(

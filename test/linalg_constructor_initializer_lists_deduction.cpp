@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,8 +34,38 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_subdirectory("eigen")
-add_subdirectory("lazy")
-add_subdirectory("naive")
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+
+#include <iostream>
+#include <typeinfo>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the initializer lists constructor.
+//!
+//! @todo Rewrite this test as a property-based test.
+//! @todo Static assert the sizes and value type?
+[[maybe_unused]] auto test{[] {
+  matrix m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {1, 2, 3}};
+
+  assert(m(0, 0) == 1);
+  assert(m(0, 1) == 2);
+  assert(m(0, 2) == 3);
+  assert(m(1, 0) == 4);
+  assert(m(1, 1) == 5);
+  assert(m(1, 2) == 6);
+  assert(m(2, 0) == 7);
+  assert(m(2, 1) == 8);
+  assert(m(2, 2) == 9);
+  assert(m(3, 0) == 1);
+  assert(m(3, 1) == 2);
+  assert(m(3, 2) == 3);
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
