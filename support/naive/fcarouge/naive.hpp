@@ -46,11 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman_internal/utility.hpp"
 
-#include <concepts>
-#include <cstddef>
-#include <format>
-#include <initializer_list>
-#include <type_traits>
+import std;
 
 namespace fcarouge::naive {
 

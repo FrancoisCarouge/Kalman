@@ -38,6 +38,9 @@ For more information, please refer to <https://unlicense.org> ]]
 
 cmake_minimum_required(VERSION "3.15")
 
+set(CMAKE_CXX_MODULE_STD ON)
+# set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD ON)
+
 project(
   fcarouge-kalman
   DESCRIPTION "Kalman Filter"

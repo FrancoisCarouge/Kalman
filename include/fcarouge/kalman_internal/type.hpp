@@ -41,8 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "utility.hpp"
 
-#include <initializer_list>
-#include <type_traits>
+import std;
 
 namespace fcarouge::kalman_internal {
 //! @todo Provide the ::type member access and _t shorthand for simplifying
