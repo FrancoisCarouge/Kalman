@@ -44,9 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "utility.hpp"
 
-#include <cstddef>
-#include <format>
-#include <tuple>
+import std;
 
 //! @brief Specialization of the standard formatter for the Kalman filters.
 template <fcarouge::kalman_internal::kalman_filter Filter, typename Char>

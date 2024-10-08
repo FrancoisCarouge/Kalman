@@ -38,10 +38,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "benchmark.hpp"
 
-#include <benchmark/benchmark.h>
+import std;
 
-#include <algorithm>
-#include <chrono>
+#include <benchmark/benchmark.h>
 
 namespace fcarouge::benchmark {
 namespace {

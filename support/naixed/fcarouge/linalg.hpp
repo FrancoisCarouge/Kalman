@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/naive.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
-#include <cstddef>
+import std;
 
 namespace fcarouge::kalman_internal {
 //! @brief Specialization of the evaluation type.
