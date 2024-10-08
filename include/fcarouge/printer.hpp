@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Filter decoration support for printing operations.
 
-#include <print>
+import std;
 
 namespace fcarouge {
 namespace decorator {

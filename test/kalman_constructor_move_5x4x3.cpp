@@ -40,7 +40,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <utility>
+
+import std;
 
 namespace fcarouge::test {
 namespace {

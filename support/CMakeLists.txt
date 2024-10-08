@@ -50,7 +50,8 @@ add_library(kalman_options INTERFACE)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   target_compile_options(
     kalman_options
-    INTERFACE "-D_FORTIFY_SOURCE=3"
+    INTERFACE "-stdlib=libc++"
+              "-D_FORTIFY_SOURCE=3"
               "-D_GLIBCXX_ASSERTIONS"
               "-fcf-protection=full"
               "-fno-check-new"
@@ -111,5 +112,11 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_link_options(kalman_options INTERFACE "LINKER:-pie"
                       "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(kalman_options INTERFACE "/EHsc" "/utf-8" "/W4")
+  target_compile_options(
+    kalman_options
+    INTERFACE "/EHsc" "/experimental:module" "/std:c++latest"
+              "/utf-8" "/W4")
 endif()
+
+target_compile_features(kalman_options
+INTERFACE cxx_std_23)

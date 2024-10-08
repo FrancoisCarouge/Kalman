@@ -39,10 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_UTILITY_HPP
 #define FCAROUGE_INTERNAL_UTILITY_HPP
 
-#include <concepts>
-#include <cstddef>
-#include <tuple>
-#include <type_traits>
+import std;
 
 namespace fcarouge::internal {
 //! @todo What should be a better concept of the Kalman filter of this library?

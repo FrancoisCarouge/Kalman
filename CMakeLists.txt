@@ -38,6 +38,9 @@ For more information, please refer to <https://unlicense.org> ]]
 
 cmake_minimum_required(VERSION "3.30")
 
+set(CMAKE_CXX_MODULE_STD ON)
+# set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD ON)
+
 project(
   kalman
   DESCRIPTION "Kalman Filter"
@@ -45,8 +48,8 @@ project(
   LANGUAGES "CXX"
   VERSION "0.4.0")
 
-set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 set(CPACK_PACKAGE_CHECKSUM "SHA512")

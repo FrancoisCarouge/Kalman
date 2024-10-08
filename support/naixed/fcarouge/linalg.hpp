@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/naive.hpp"
 #include "fcarouge/utility.hpp"
 
-#include <cstddef>
+import std;
 
 namespace fcarouge {
 

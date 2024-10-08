@@ -41,7 +41,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/unit.hpp"
 
 #include <cassert>
-#include <format>
+
+import std;
 
 namespace fcarouge::test {
 namespace {

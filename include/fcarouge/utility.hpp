@@ -46,8 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "internal/utility.hpp"
 
-#include <cstddef>
-#include <utility>
+import std;
 
 namespace fcarouge {
 //! @name Concepts

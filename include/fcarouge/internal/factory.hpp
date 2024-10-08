@@ -47,8 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/internal/x_z_u_p_q_r_f_g_ps.hpp"
 #include "fcarouge/internal/x_z_u_p_q_r_us_ps.hpp"
 
-#include <concepts>
-#include <type_traits>
+import std;
 
 namespace fcarouge::internal {
 //! @todo Support arbritary order of configuration parameters?
