@@ -66,6 +66,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-fstrict-aliasing"
               "-ftrivial-auto-var-init=pattern"
               "-pedantic"
+              "-stdlib=libc++"
               "-UNDEBUG"
               "-Wall"
               "-Wcast-align"
@@ -119,6 +120,9 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_link_options(kalman_support_options INTERFACE "LINKER:-pie"
                       "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(kalman_support_options INTERFACE "/EHsc" "/utf-8"
-                                                          "/UNDEBUG" "/W4")
+  target_compile_options(
+    kalman_support_options INTERFACE "/EHsc" "/std:c++latest" "/utf-8"
+                                     "/UNDEBUG" "/W4")
 endif()
+
+target_compile_features(kalman_support_options INTERFACE cxx_std_23)

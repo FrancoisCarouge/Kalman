@@ -21,11 +21,12 @@ jobs:
         - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-21' }
         - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-20' }
         - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-18' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB', packages: 'g++-14' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Release' }
-        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
-        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Release' }
+        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Ninja', cpack_generator: 'DEB', packages: 'g++-14' }
+        - { os: 'ubuntu-24.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Ninja', cpack_generator: 'DEB', packages: 'g++-15' }
+        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', cpack_generator: 'WIX', config: 'Debug' }
+        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', cpack_generator: 'WIX', config: 'Release' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Ninja', cpack_generator: 'WIX', config: 'Debug' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Ninja', cpack_generator: 'WIX', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     permissions:
@@ -37,6 +38,7 @@ jobs:
         egress-policy: audit
     - name: 'Checkout'
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+    - uses: ilammy/msvc-dev-cmd@v1
     - name: 'Install: Clang 20'
       if: ${{ matrix.cxx == 'clang++-20' }}
       run: sudo apt update && sudo apt install -y clang-20 clang-tools-20
@@ -46,15 +48,18 @@ jobs:
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 21 all
+        sudo apt update && sudo apt install libc++-21-dev libc++abi-21-dev
     - name: 'Install: Latest CMake'
       uses: ssrobins/install-cmake@c54bb968401dd4ff9e6c9d697df5b843ee3b783b # v1.0.0
+    - name: 'CMake Version'
+      run: cmake --version
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
         CC: '${{ matrix.cc }}'
-      run: cmake -S . -B 'build' -G '${{ matrix.generator }}'
+      run: cmake -S . -B 'build' -G '${{ matrix.generator }}' -DCMAKE_BUILD_TYPE=${{ matrix.config }}
     - name: 'Build'
-      run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
+      run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 1
     - name: 'Test'
       run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 10 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Install'

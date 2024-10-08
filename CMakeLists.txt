@@ -38,6 +38,17 @@ For more information, please refer to <https://unlicense.org> ]]
 
 cmake_minimum_required(VERSION "3.15")
 
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "d0edc3af-4c50-42ea-a356-e2862fe7a444")
+set(CMAKE_CXX_MODULE_STD ON)
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  add_compile_options(/std:c++latest)
+endif()
+
 project(
   fcarouge-kalman
   DESCRIPTION "Kalman Filter"
@@ -46,9 +57,6 @@ project(
   VERSION "0.5.3")
 
 if(PROJECT_IS_TOP_LEVEL)
-  set(CMAKE_CXX_EXTENSIONS OFF)
-  set(CMAKE_CXX_STANDARD 23)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
   set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
   set(CPACK_PACKAGE_CHECKSUM "SHA512")
   set(CPACK_PACKAGE_CONTACT "francois.carouge@gmail.com")
