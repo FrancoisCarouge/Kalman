@@ -39,7 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman.hpp"
 
 #include <cassert>
-#include <format>
+
+import std;
 
 namespace fcarouge::test {
 namespace {

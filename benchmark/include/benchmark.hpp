@@ -42,8 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Benchmarking support.
 
-#include <chrono>
-#include <type_traits>
+import std;
 
 namespace fcarouge::benchmark {
 //! @brief Type of the platform steady benchmark clock.
