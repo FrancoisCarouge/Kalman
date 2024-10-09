@@ -106,7 +106,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>{<a class="el" href="update__linalg__xx0_8cpp.xhtml">update_linalg_xx0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ab1ab8c595b8ad8d298b8fe6492b51c40">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::Name</a>  ("update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0") -&gt; Unit(::benchmark::kNanosecond) -&gt;ComputeStatistics("min", [](const auto &amp;results) { return std::ranges::min(results);}) -&gt; ComputeStatistics("max", [](const auto &amp;results) { return std::ranges::max(results);}) -&gt; UseManualTime() -&gt; DisplayAggregatesOnly(true) -&gt; Repetitions(3)</dt>
 <dd><a class="anchor" id="_todo000002"></a>Find a way to remove macros or find a different benchmark library that doesn't use macros.  </dd>
 <dt>Namespace <a class="el" href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a>  </dt>
-<dd><a class="anchor" id="_todo000006"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
+<dd><a class="anchor" id="_todo000004"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">fcarouge::internal::quotient</a>  </dt>
 <dd><a class="anchor" id="_todo000026"></a>How to return the <code>emtpy</code> type if the deducer would fail to help avoid specialization?  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a432534ca76e0e7172003a19260841450">fcarouge::kalman&lt; Filter &gt;::g</a>  () const</dt>
@@ -126,7 +126,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#ad620ef6cc1c4b6e85bd885e5da2375a2">fcarouge::kalman&lt; Filter &gt;::x</a>  () const -&gt; const state &amp;</dt>
-<dd><a class="anchor" id="_todo000040"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
+<dd><a class="anchor" id="_todo000039"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af5b5c43dcc898eab0391ecc90ff7b328">fcarouge::kalman&lt; Filter &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
 <dd><a class="anchor" id="_todo000044"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Struct <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;</a>  </dt>
@@ -141,7 +141,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="enddd">Remove unecessary empty paramaters when MSVC supports lambda without them.  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#a4e09c0fca4bfad49789dad31102f07d7">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">Type(&amp;elements)</a>[Row])</dt>
-<dd><a class="anchor" id="_todo000039"></a>Perhaps this is too naive and can be improved?  </dd>
+<dd><a class="anchor" id="_todo000040"></a>Perhaps this is too naive and can be improved?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
 <dd><a class="anchor" id="_todo000036"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
@@ -169,17 +169,17 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <dt>{<a class="el" href="linalg__identity_8cpp.xhtml">linalg_identity.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity_8cpp_03.xhtml#a96696a636cb3338b86fec91d6c31c303">fcarouge::test::anonymous_namespace{linalg_identity.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000057"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__multiplication__arithmetic_8cpp.xhtml">linalg_multiplication_arithmetic.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__arithmetic_8cpp_03.xhtml#ab6163c2a745098b0d1d224d185dbd9ca">fcarouge::test::anonymous_namespace{linalg_multiplication_arithmetic.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000059"></a>Rewrite this test as a property-based test.  </dd>
-<dt>{<a class="el" href="linalg__multiplication__rxc_8cpp.xhtml">linalg_multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#adfa3a8b5be7eb7ee4bc12ebff7d86a8f">fcarouge::test::anonymous_namespace{linalg_multiplication_rxc.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000058"></a>Rewrite this test as a property-based test.  </dd>
+<dt>{<a class="el" href="linalg__multiplication__rxc_8cpp.xhtml">linalg_multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#adfa3a8b5be7eb7ee4bc12ebff7d86a8f">fcarouge::test::anonymous_namespace{linalg_multiplication_rxc.cpp}::test</a>  </dt>
+<dd><a class="anchor" id="_todo000059"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__multiplication__sxc_8cpp.xhtml">linalg_multiplication_sxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__sxc_8cpp_03.xhtml#aba051f6431b4ca28561b77240e4ec161">fcarouge::test::anonymous_namespace{linalg_multiplication_sxc.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000060"></a>Rewrite this test as a property-based test.  </dd>
 <dt>{<a class="el" href="linalg__operator__bracket_8cpp.xhtml">linalg_operator_bracket.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml#ad8d22e6caa976eab5167898fecb8f55b">fcarouge::test::anonymous_namespace{linalg_operator_bracket.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000061"></a>Rewrite this test as a property-based test.  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml#a4017107a9c64486408758abcdc88bffe">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format</a>  (const <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">fcarouge::kalman&lt; Filter &gt;</a> &amp;filter, std::basic_format_context&lt; OutputIt, Char &gt; &amp;format_context) const -&gt; OutputIt</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000007"></a>Inconsistent usage of internal? </p>
-<p class="interdd"><a class="anchor" id="_todo000005"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
-<p class="enddd"><a class="anchor" id="_todo000004"></a>P2585 may be useful in simplifying and standardizing the support. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000008"></a>Inconsistent usage of internal? </p>
+<p class="interdd"><a class="anchor" id="_todo000007"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
+<p class="enddd"><a class="anchor" id="_todo000005"></a>P2585 may be useful in simplifying and standardizing the support. </p>
 </dd>
 </dl>
 </div></div><!-- contents -->
