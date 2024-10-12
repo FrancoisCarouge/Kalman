@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['r_0',['r',['../classfcarouge_1_1kalman.xhtml#a36d08a5fa60383d9944898aa570686f0',1,'fcarouge::kalman::r() const'],['../classfcarouge_1_1kalman.xhtml#a173f3cc3b4b56eb2a4c8d0822b3eebfa',1,'fcarouge::kalman::r()'],['../classfcarouge_1_1kalman.xhtml#af849d9c510f08a3bb8d8299139bb1b48',1,'fcarouge::kalman::r(const auto &amp;value, const auto &amp;...values)']]],
-  ['readme_2emd_1',['readme.md',['../_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)'],['../benchmark_2_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)']]],
+  ['r_0',['r',['../classfcarouge_1_1kalman.xhtml#a115988aa225c4e4ecf8954fbf40de679',1,'fcarouge::kalman::r(this auto &amp;&amp;self)'],['../classfcarouge_1_1kalman.xhtml#af849d9c510f08a3bb8d8299139bb1b48',1,'fcarouge::kalman::r(const auto &amp;value, const auto &amp;...values)']]],
+  ['readme_2emd_1',['readme.md',['../benchmark_2_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)'],['../_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)']]],
   ['reference_2',['Reference',['../index.xhtml#reference',1,'']]],
   ['repack_5fs_3',['repack_s',['../namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9',1,'fcarouge::internal']]],
   ['repack_5ft_4',['repack_t',['../namespacefcarouge_1_1internal.xhtml#ac4cd64c5c6f542f9b5d314b70bf7d8aa',1,'fcarouge::internal']]],
