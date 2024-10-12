@@ -51,11 +51,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/format.hpp"
 #include "utility.hpp"
 
-#include <concepts>
-#include <cstddef>
-#include <functional>
-#include <type_traits>
-#include <utility>
+import std;
 
 namespace fcarouge {
 //! @name Types

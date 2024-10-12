@@ -39,8 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_UTILITY_HPP
 #define FCAROUGE_INTERNAL_UTILITY_HPP
 
-#include <concepts>
-#include <type_traits>
+import std;
 
 namespace fcarouge::internal {
 template <typename Type>
