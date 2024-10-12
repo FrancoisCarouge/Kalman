@@ -217,12 +217,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa5df535983dfb9efe819fbbbcc1f89a6" id="r_aa5df535983dfb9efe819fbbbcc1f89a6"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aa5df535983dfb9efe819fbbbcc1f89a6">s</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> -&gt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml#a3cb17e963f6f0b99f81fa2a64531e544">innovation_uncertainty</a> &amp;</td></tr>
 <tr class="memdesc:aa5df535983dfb9efe819fbbbcc1f89a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the innovation uncertainty matrix S.  <br /></td></tr>
 <tr class="separator:aa5df535983dfb9efe819fbbbcc1f89a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad27a369d72b40d8ea9bceb581a9c260e" id="r_ad27a369d72b40d8ea9bceb581a9c260e"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ad27a369d72b40d8ea9bceb581a9c260e">transition</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">callable</a>)</td></tr>
-<tr class="memdesc:ad27a369d72b40d8ea9bceb581a9c260e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the extended state transition function f(x).  <br /></td></tr>
-<tr class="separator:ad27a369d72b40d8ea9bceb581a9c260e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fdc58037361af604d82285706d9d58c" id="r_a5fdc58037361af604d82285706d9d58c"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a5fdc58037361af604d82285706d9d58c">observation</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">callable</a>)</td></tr>
-<tr class="memdesc:a5fdc58037361af604d82285706d9d58c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the extended state observation function h(x).  <br /></td></tr>
-<tr class="separator:a5fdc58037361af604d82285706d9d58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Filtering Member Functions</div></td></tr>
 <tr class="memitem:a54714ec34eba3646ef3913388c90d2ea" id="r_a54714ec34eba3646ef3913388c90d2ea"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a54714ec34eba3646ef3913388c90d2ea">predict</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>)</td></tr>
 <tr class="memdesc:a54714ec34eba3646ef3913388c90d2ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces estimates of the state variables and uncertainties.  <br /></td></tr>
@@ -712,7 +706,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>Returns the control transition matrix G. </p>
 <p>This member function is not present when the filter has no input control.</p>
 <dl class="section return"><dt>Returns</dt><dd>The control transition matrix G.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000043">Todo:</a></b></dt><dd>Do we still need the non-const flavor?</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000042">Todo:</a></b></dt><dd>Do we still need the non-const flavor?</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
@@ -826,43 +820,6 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Returns the gain matrix K. </p>
 <dl class="section return"><dt>Returns</dt><dd>The gain matrix K.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-</div>
-</div>
-<a id="a5fdc58037361af604d82285706d9d58c" name="a5fdc58037361af604d82285706d9d58c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fdc58037361af604d82285706d9d58c">&#9670;&#160;</a></span>observation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> Filter &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Filter &gt;::observation </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td>
-          <td class="paramname"><em>callable</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sets the extended state observation function h(x). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">callable</td><td>The copied target Callable object (function object, pointer to function, reference to function, pointer to member function, or pointer to data member) that will be called to compute the observation Z on update steps of expression <code>output(const state &amp;, const UpdateTypes &amp;...arguments)</code>. The default function <code>h(x) = H * X</code> is suitable for linear systems. For non-linear system, or extended filter, the client implements a linearization of the observation function hand the state observation H matrix is the Jacobian of the state observation function.</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
@@ -1299,43 +1256,6 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 </div>
 </div>
-<a id="ad27a369d72b40d8ea9bceb581a9c260e" name="ad27a369d72b40d8ea9bceb581a9c260e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad27a369d72b40d8ea9bceb581a9c260e">&#9670;&#160;</a></span>transition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> Filter &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; Filter &gt;::transition </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&#160;</td>
-          <td class="paramname"><em>callable</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sets the extended state transition function f(x). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">callable</td><td>The copied target Callable object (function object, pointer to function, reference to function, pointer to member function, or pointer to data member) that will be called to compute the next state X on prediction steps of expression <code>state(const state &amp;, const input &amp;, const PredictionTypes &amp;...)</code>. The default function <code>f(x) = F * X</code> is suitable for linear systems. For non-linear system, or extended filter, implement a linearization of the transition function f and the state transition F matrix is the Jacobian of the state transition function.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-</div>
-</div>
 <a id="aa708a663249b2edff7954ab797c6f264" name="aa708a663249b2edff7954ab797c6f264"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa708a663249b2edff7954ab797c6f264">&#9670;&#160;</a></span>u()</h2>
 
@@ -1526,7 +1446,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000040">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000039">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
 
 </div>
 </div>
@@ -1558,7 +1478,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>Returns the innovation column vector Y. </p>
 <dl class="section return"><dt>Returns</dt><dd>The innovation column vector Y.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000044">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000043">Todo:</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
 
 </div>
 </div>
