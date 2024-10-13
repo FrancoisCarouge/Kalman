@@ -46,7 +46,6 @@ For more information, please refer to <https://unlicense.org> */
 //! utilities, and documentation. Only this header file is intended for
 //! inclusion in third party software.
 
-#include "algorithm.hpp"
 #include "internal/factory.hpp"
 #include "internal/format.hpp"
 #include "utility.hpp"
