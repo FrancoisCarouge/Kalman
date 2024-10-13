@@ -45,7 +45,6 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
-            "fcarouge/algorithm.hpp"
             "fcarouge/kalman.hpp"
             "fcarouge/utility.hpp")
 install(
