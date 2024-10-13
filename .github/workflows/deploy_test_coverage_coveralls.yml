@@ -25,14 +25,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
     - name: 'Install'
-      run: sudo apt install lcov
+      run: sudo apt install lcov ninja-build
     - name: 'Configure'
       env:
         CXX: 'g++-14'
         CXXFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
         CC: 'gcc-14'
         CCFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
-      run: cmake -S . -B 'build'
+      run: cmake -S . -B 'build' -G 'Ninja'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Coverage: Base'

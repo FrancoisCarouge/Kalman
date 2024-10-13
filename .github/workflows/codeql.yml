@@ -35,11 +35,13 @@ jobs:
       uses: github/codeql-action/init@6db8d6351fd0be61f9ed8ebd12ccd35dcec51fea # v3.26.11
       with:
         languages: ${{ matrix.language }}
+    - name: 'Install Ninja'
+      run: sudo apt install ninja-build
     - name: 'Configure'
       env:
         CXX: 'g++-14'
         CC: 'gcc-14'
-      run: cmake -S . -B 'build'
+      run: cmake -S . -B 'build' -G 'Ninja'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: Perform CodeQL Analysis
