@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['factory_2ehpp_0',['factory.hpp',['../factory_8hpp.xhtml',1,'']]],
-  ['format_2ehpp_1',['format.hpp',['../format_8hpp.xhtml',1,'']]],
-  ['function_2ehpp_2',['function.hpp',['../function_8hpp.xhtml',1,'']]]
+  ['install_2emd_0',['INSTALL.md',['../_i_n_s_t_a_l_l_8md.xhtml',1,'']]]
 ];
