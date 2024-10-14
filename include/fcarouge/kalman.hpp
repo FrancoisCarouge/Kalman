@@ -49,6 +49,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "internal/factory.hpp"
 #include "internal/format.hpp"
 #include "utility.hpp"
+#include "view.hpp"
 
 #include <concepts>
 #include <cstddef>
