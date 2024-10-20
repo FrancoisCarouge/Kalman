@@ -162,6 +162,17 @@ Concepts</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algebraic Types</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Naive matrix.</p>
+<p>An array-of-arrays naive implementation matrix. The implementation is constexpr compatible.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>The matrix element type. </td></tr>
+    <tr><td class="paramname">Row</td><td>The number of rows of the matrix. </td></tr>
+    <tr><td class="paramname">Column</td><td>The number of columns of the matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
 <tr class="memitem:a91e1f8a82696aa85761b7c29666235e6" id="r_a91e1f8a82696aa85761b7c29666235e6"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>  = double, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> Row = 1, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> Column = 1&gt; </td></tr>
 <tr class="memitem:a91e1f8a82696aa85761b7c29666235e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6">matrix</a> = Eigen::Matrix&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>, Row, Column &gt;</td></tr>
 <tr class="memdesc:a91e1f8a82696aa85761b7c29666235e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time sized Eigen3 matrix.  <br /></td></tr>
@@ -287,6 +298,8 @@ Variables</h2></td></tr>
 <tr class="memitem:a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a7fe918283834c2c859a7325fc8d3a563">make_zero_generator</a></td></tr>
 <tr class="separator:a7fe918283834c2c859a7325fc8d3a563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Algebraic Named Values</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>The identity matrix naive specialization. </p>
+</div></td></tr>
 <tr class="memitem:af5d9207021a8118ac46558fd9a453d6d" id="r_af5d9207021a8118ac46558fd9a453d6d"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>  = double&gt; </td></tr>
 <tr class="memitem:af5d9207021a8118ac46558fd9a453d6d"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d">identity_v</a></td></tr>
 <tr class="memdesc:af5d9207021a8118ac46558fd9a453d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The identity matrix.  <br /></td></tr>
@@ -376,7 +389,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
 <p>The definitions and implementations of the library intended for public usage. Lowers the name conflict probability in large projects. Use using-declarations or namespace-alias-definition per your project guidelines.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000030">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000031">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a6f496dc857f8b172efc57e3ba9bfdbf8" name="a6f496dc857f8b172efc57e3ba9bfdbf8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f496dc857f8b172efc57e3ba9bfdbf8">&#9670;&#160;</a></span>column_vector</h2>
