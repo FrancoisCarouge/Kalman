@@ -60,30 +60,31 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
   }
 
   //! @todo P2585 may be useful in simplifying and standardizing the support.
-  template <typename OutputIt>
-  auto format(const fcarouge::kalman<Filter> &filter,
-              std::basic_format_context<OutputIt, Char> &format_context) const
-      -> OutputIt {
+  template <typename OutputIterator>
+  constexpr auto
+  format(const fcarouge::kalman<Filter> &filter,
+         std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator {
 
     format_context.advance_to(
-        format_to(format_context.out(), R"({{)", filter.f()));
+        std::format_to(format_context.out(), R"({{)", filter.f()));
 
     if constexpr (fcarouge::has_state_transition<Filter>) {
       format_context.advance_to(
-          format_to(format_context.out(), R"("f": {}, )", filter.f()));
+          std::format_to(format_context.out(), R"("f": {}, )", filter.f()));
     }
 
     if constexpr (fcarouge::has_input_control<Filter>) {
       format_context.advance_to(
-          format_to(format_context.out(), R"("g": {}, )", filter.g()));
+          std::format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
 
     if constexpr (fcarouge::has_output_model<Filter>) {
       format_context.advance_to(
-          format_to(format_context.out(), R"("h": {}, )", filter.h()));
+          std::format_to(format_context.out(), R"("h": {}, )", filter.h()));
     }
 
-    format_context.advance_to(format_to(
+    format_context.advance_to(std::format_to(
         format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
 
     if constexpr (fcarouge::internal::has_prediction_types<Filter>) {
@@ -93,30 +94,30 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
       constexpr decltype(end) next{1};
       fcarouge::internal::for_constexpr<begin, end, next>(
           [&format_context, &filter](auto position) {
-            format_context.advance_to(
-                format_to(format_context.out(), R"("prediction_{}": {}, )",
-                          position(), filter.template predict<position>()));
+            format_context.advance_to(std::format_to(
+                format_context.out(), R"("prediction_{}": {}, )", position(),
+                filter.template predict<position>()));
           });
     }
 
     if constexpr (fcarouge::has_process_uncertainty<Filter>) {
       format_context.advance_to(
-          format_to(format_context.out(), R"("q": {}, )", filter.q()));
+          std::format_to(format_context.out(), R"("q": {}, )", filter.q()));
     }
 
     if constexpr (fcarouge::has_output_uncertainty<Filter>) {
       format_context.advance_to(
-          format_to(format_context.out(), R"("r": {}, )", filter.r()));
+          std::format_to(format_context.out(), R"("r": {}, )", filter.r()));
     }
 
     format_context.advance_to(
-        format_to(format_context.out(), R"("s": {}, )", filter.s()));
+        std::format_to(format_context.out(), R"("s": {}, )", filter.s()));
 
     //! @todo Generalize out internal method concept when MSVC has better
     //! if-constexpr-requires support.
     if constexpr (fcarouge::has_input<Filter>) {
       format_context.advance_to(
-          format_to(format_context.out(), R"("u": {}, )", filter.u()));
+          std::format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }
 
     //! @todo Inconsistent usage of internal?
@@ -128,14 +129,14 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
       fcarouge::internal::for_constexpr<begin, end, next>(
           [&format_context, &filter](auto position) {
             format_context.advance_to(
-                format_to(format_context.out(), R"("update_{}": {}, )",
-                          position(), filter.template update<position>()));
+                std::format_to(format_context.out(), R"("update_{}": {}, )",
+                               position(), filter.template update<position>()));
           });
     }
 
-    format_context.advance_to(format_to(format_context.out(),
-                                        R"("x": {}, "y": {}, "z": {}}})",
-                                        filter.x(), filter.y(), filter.z()));
+    format_context.advance_to(
+        std::format_to(format_context.out(), R"("x": {}, "y": {}, "z": {}}})",
+                       filter.x(), filter.y(), filter.z()));
 
     return format_context.out();
   }

@@ -43,8 +43,8 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies formatting filters for single-dimension filters with input
-//! control without additional arguments.
+//! @test Verifies formatting single-dimension filters with input control
+//! without additional arguments.
 [[maybe_unused]] auto test{[] {
   kalman filter{state{0.F}, output<float>, input<float>};
 
