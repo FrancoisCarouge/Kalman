@@ -48,6 +48,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
+#include <format>
+#include <sstream>
+
 #include <Eigen/Eigen>
 
 namespace fcarouge {
@@ -84,5 +87,64 @@ inline const auto identity_v<Matrix>{Matrix::Identity()};
 template <eigen Matrix> inline const auto zero_v<Matrix>{Matrix::Zero()};
 //! @}
 } // namespace fcarouge
+
+template <fcarouge::eigen Matrix, typename Char>
+struct std::formatter<Matrix, Char> {
+  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+    return parse_context.begin();
+  }
+
+  template <typename OutputIterator>
+  constexpr auto
+  format(const Matrix &value,
+         std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator {
+    const Eigen::IOFormat output_format{Eigen::StreamPrecision,
+                                        Eigen::DontAlignCols,
+                                        ", ",
+                                        ", ",
+                                        "[",
+                                        "]",
+                                        "",
+                                        "",
+                                        ' '};
+
+    return std::format_to(
+        format_context.out(), "[{}]",
+        (std::stringstream{} << value.format(output_format)).str());
+  }
+
+  template <typename OutputIterator>
+  constexpr auto
+  format(const Matrix &value,
+         std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator
+    requires(Matrix::RowsAtCompileTime == 1 && Matrix::ColsAtCompileTime != 1)
+  {
+    const Eigen::IOFormat output_format{Eigen::StreamPrecision,
+                                        Eigen::DontAlignCols,
+                                        ", ",
+                                        ", ",
+                                        "[",
+                                        "]",
+                                        "",
+                                        "",
+                                        ' '};
+
+    return std::format_to(
+        format_context.out(), "{}",
+        (std::stringstream{} << value.format(output_format)).str());
+  }
+
+  template <typename OutputIterator>
+  constexpr auto
+  format(const Matrix &value,
+         std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator
+    requires(Matrix::RowsAtCompileTime == 1 && Matrix::ColsAtCompileTime == 1)
+  {
+    return std::format_to(format_context.out(), "{}", value.value());
+  }
+};
 
 #endif // FCAROUGE_LINALG_HPP
