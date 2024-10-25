@@ -4,7 +4,7 @@ var searchData=
   ['pack_1',['pack',['../namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27',1,'fcarouge']]],
   ['packages_2',['Installation Packages',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages',1,'']]],
   ['parameters_3',['Template Parameters',['../index.xhtml#template-parameters',1,'']]],
-  ['parse_4',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml#a6f9559bb609c72d82e414e17901fc4eb',1,'std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;']]],
+  ['parse_4',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml#a6f9559bb609c72d82e414e17901fc4eb',1,'std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::parse()'],['../structstd_1_1formatter_3_01_matrix_00_01_char_01_4.xhtml#a195e3278859ab82fcfff41574dfce000',1,'std::formatter&lt; Matrix, Char &gt;::parse()']]],
   ['party_20acknowledgement_5',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
   ['performance_6',['Performance',['../index.xhtml#performance',1,'']]],
   ['pledge_7',['Our Pledge',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge',1,'']]],
