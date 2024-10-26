@@ -38,7 +38,9 @@ For more information, please refer to <https://unlicense.org> ]]
 
 add_subdirectory("eigen")
 add_subdirectory("main")
+add_subdirectory("mp_units")
 add_subdirectory("naive")
+add_subdirectory("physical")
 
 add_library(kalman_options INTERFACE)
 

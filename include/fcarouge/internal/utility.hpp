@@ -270,6 +270,14 @@ struct transposer final {
   [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
     return transpose(value);
   }
+
+  // How to, should we force external type to provide a transposition
+  // implementation if the type needs to, should be transposed?
+  template <typename UnknownType>
+  [[nodiscard]] inline constexpr auto
+  operator()(const UnknownType &value) const {
+    return value;
+  }
 };
 
 struct matrix_deducer;
@@ -287,6 +295,16 @@ struct matrix_deducer final {
     requires(eigen<Lhs> or eigen<Rhs>)
   [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
       typename decltype(lhs * transposer{}(rhs))::PlainMatrix;
+
+  template <template <typename, typename, typename> typename PhysicalMatrix,
+            typename Matrix1, typename RowIndexes1, typename Matrix2,
+            typename RowIndexes2, typename ColumnIndexes>
+    requires(eigen<Matrix1> or eigen<Matrix2>)
+  [[nodiscard]] inline constexpr auto
+  operator()(PhysicalMatrix<Matrix1, RowIndexes1, ColumnIndexes> lhs,
+             PhysicalMatrix<Matrix2, RowIndexes2, ColumnIndexes> rhs) const
+      -> PhysicalMatrix<deduce_matrix<Matrix1, Matrix2>, RowIndexes1,
+                        RowIndexes2>;
 };
 
 using empty_tuple = std::tuple<>;
