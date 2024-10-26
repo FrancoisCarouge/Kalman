@@ -95,15 +95,15 @@ constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
 } // namespace fcarouge
 
 //! @brief Specialization of the standard formatter for the Eigen matrix.
-template <typename Type, auto Row, auto Column, typename Char>
-struct std::formatter<fcarouge::matrix<Type, Row, Column>, Char> {
+template <fcarouge::eigen Matrix, typename Char>
+struct std::formatter<Matrix, Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 
   template <typename OutputIterator>
   constexpr auto
-  format(const fcarouge::matrix<Type, Row, Column> &value,
+  format(const Matrix &value,
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator {
     const Eigen::IOFormat output_format{Eigen::StreamPrecision,
@@ -123,11 +123,10 @@ struct std::formatter<fcarouge::matrix<Type, Row, Column>, Char> {
 
   template <typename OutputIterator>
   constexpr auto
-  format(const fcarouge::matrix<Type, Row, Column> &value,
+  format(const Matrix &value,
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
-    requires(fcarouge::matrix<Type, Row, Column>::RowsAtCompileTime == 1 &&
-             fcarouge::matrix<Type, Row, Column>::ColsAtCompileTime != 1)
+    requires(Matrix::RowsAtCompileTime == 1 && Matrix::ColsAtCompileTime != 1)
   {
     const Eigen::IOFormat output_format{Eigen::StreamPrecision,
                                         Eigen::DontAlignCols,
@@ -146,11 +145,10 @@ struct std::formatter<fcarouge::matrix<Type, Row, Column>, Char> {
 
   template <typename OutputIterator>
   constexpr auto
-  format(const fcarouge::matrix<Type, Row, Column> &value,
+  format(const Matrix &value,
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
-    requires(fcarouge::matrix<Type, Row, Column>::RowsAtCompileTime == 1 &&
-             fcarouge::matrix<Type, Row, Column>::ColsAtCompileTime == 1)
+    requires(Matrix::RowsAtCompileTime == 1 && Matrix::ColsAtCompileTime == 1)
   {
     return std::format_to(format_context.out(), "{}", value.value());
   }

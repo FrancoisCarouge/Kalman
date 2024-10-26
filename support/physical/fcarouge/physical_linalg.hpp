@@ -1,0 +1,504 @@
+/*  __          _      __  __          _   _
+| |/ /    /\   | |    |  \/  |   /\   | \ | |
+| ' /    /  \  | |    | \  / |  /  \  |  \| |
+|  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
+| . \  / ____ \| |____| |  | |/ ____ \| |\  |
+|_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
+
+Kalman Filter
+Version 0.4.0
+https://github.com/FrancoisCarouge/Kalman
+
+SPDX-License-Identifier: Unlicense
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org> */
+
+#ifndef FCAROUGE_PHYSICAL_LINALG_HPP
+#define FCAROUGE_PHYSICAL_LINALG_HPP
+
+//! @file
+//! @brief Physically typed linear algebra implementation.
+//!
+//! @details Matrix, vectors, and named algebraic values.
+//!
+//! @note Idea from:
+//! https://meetingcpp.com/mcpp/slides/2021/Physical-units-for-matrices6397.pdf
+
+#include "fcarouge/utility.hpp"
+
+#include <concepts>
+#include <cstddef>
+#include <format>
+#include <initializer_list>
+#include <tuple>
+
+// Move tuple runtime getter to utility?
+#include <array>
+#include <functional>
+#include <tuple>
+#include <type_traits>
+#include <utility>
+#include <variant>
+
+// template <typename Tuple,
+//           typename Indexes =
+//           std::make_index_sequence<std::tuple_size_v<Tuple>>>
+// struct function_tabulator;
+
+// template <typename Tuple, std::size_t... Indexes>
+// struct function_tabulator<Tuple, std::index_sequence<Indexes...>> {
+//   using function = std::tuple_element_t<0, Tuple> &(*)(Tuple &) noexcept;
+
+//   static constexpr function table[std::tuple_size_v<Tuple>] = {
+//       &std::get<Indexes>...};
+// };
+
+// template <typename Tuple, std::size_t... Indexes>
+// constexpr typename function_tabulator<Tuple,
+//                                       std::index_sequence<Indexes...>>::function
+//     function_tabulator<Tuple, std::index_sequence<Indexes...>>::table
+//         [std::tuple_size_v<Tuple>];
+
+// template <typename Tuple>
+// constexpr std::tuple_element_t<0, std::remove_reference_t<Tuple>> &
+// get(Tuple &&tuple, std::size_t index) {
+//   return function_tabulator<std::remove_reference_t<Tuple>>::table[index](
+//       tuple);
+// }
+
+template <typename Tup, typename R, typename F, std::size_t... Idxs>
+struct tuple_runtime_access_table {
+  using tuple_type = Tup;
+  using return_type = R;
+  using converter_fun = F;
+
+  template <std::size_t N>
+  static return_type access_tuple(tuple_type &&t, converter_fun &f) {
+    return f(std::get<N>(std::forward<Tup>(t)));
+  }
+
+  using accessor_fun_ptr = return_type (*)(tuple_type &&, converter_fun &);
+  const static auto table_size = sizeof...(Idxs);
+
+  constexpr static std::array<accessor_fun_ptr, table_size> lookup_table = {
+      {&access_tuple<Idxs>...}};
+};
+
+template <typename R, typename Tup, typename F, std::size_t... Idxs>
+auto call_access_function(Tup &&t, std::size_t i, F f,
+                          std::index_sequence<Idxs...>) {
+  auto &table = tuple_runtime_access_table<Tup, R, F, Idxs...>::lookup_table;
+  auto *access_function = table[i];
+  return access_function(std::forward<Tup>(t), f);
+}
+
+template <typename Tup> struct common_tuple_access;
+
+template <typename... Ts> struct common_tuple_access<std::tuple<Ts...>> {
+  using type = std::variant<std::reference_wrapper<Ts>...>;
+};
+
+template <typename T1, typename T2>
+struct common_tuple_access<std::pair<T1, T2>> {
+  using type =
+      std::variant<std::reference_wrapper<T1>, std::reference_wrapper<T2>>;
+};
+
+template <typename T, auto N> struct common_tuple_access<std::array<T, N>> {
+  using type = std::variant<std::reference_wrapper<T>>;
+};
+
+template <typename Tup>
+using common_tuple_access_t = typename common_tuple_access<Tup>::type;
+
+template <typename Tup> auto get(Tup &&t, std::size_t i) {
+  // forward?
+  return call_access_function<common_tuple_access_t<Tup>>(
+      std::forward<Tup>(t), i, [](auto &element) { return std::ref(element); },
+      std::make_index_sequence<std::tuple_size_v<Tup>>{});
+}
+
+namespace fcarouge {
+
+//! @name Algebraic Types
+//! @{
+
+//! @brief Physical matrix.
+//!
+//! @details Compose a matrix into a physical matrix. Supports type safety. Unit
+//! safety. Row and column indexes provide each index type.
+//!
+//! @tparam Matrix The underlying linear algebra matrix.
+//! @tparam RowIndexes The packed types of the row indexes.
+//! @tparam ColumnIndexes The packed types of the column indexes.
+//!
+//! @todo Explore various types of indexes: arithmetic, units, frames, etc...
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+class physical_matrix {
+public:
+  inline constexpr physical_matrix() = default;
+
+  inline constexpr physical_matrix(const physical_matrix &other) = default;
+
+  inline constexpr physical_matrix &
+  operator=(const physical_matrix &other) = default;
+
+  inline constexpr physical_matrix(physical_matrix &&other) = default;
+
+  inline constexpr physical_matrix &
+  operator=(physical_matrix &&other) = default;
+
+  // Unsafe?
+  template <typename M, typename R, typename C>
+  inline constexpr physical_matrix &
+  operator=(const physical_matrix<M, R, C> &other) {
+    data = other.data;
+    return *this;
+  }
+
+  // Add move assignement?
+
+  // Unsafe?
+  template <eigen Type>
+  explicit inline constexpr physical_matrix(const Type &other) : data{other} {}
+
+  explicit inline constexpr physical_matrix(const auto &...elements)
+    requires(std::tuple_size_v<ColumnIndexes> == 1 &&
+             sizeof...(elements) == std::tuple_size_v<RowIndexes>)
+  {
+    std::tuple element_pack{elements...}; // Can this tuple be avoided?
+    for_constexpr<0, std::tuple_size_v<RowIndexes>, 1>(
+        [this, &element_pack](auto position) {
+          data[position] = std::tuple_element_t<position, RowIndexes>::convert(
+              std::get<position>(element_pack));
+        });
+  }
+
+  explicit inline constexpr physical_matrix(const auto &...elements)
+    requires(std::tuple_size_v<RowIndexes> == 1 &&
+             std::tuple_size_v<ColumnIndexes> != 1 &&
+             sizeof...(elements) == std::tuple_size_v<ColumnIndexes>)
+  {
+    std::tuple element_pack{elements...}; // Can this tuple be avoided?
+    for_constexpr<0, std::tuple_size_v<ColumnIndexes>, 1>([this, &element_pack](
+                                                              auto position) {
+      data[position] = std::tuple_element_t<position, ColumnIndexes>::convert(
+          std::get<position>(element_pack));
+    });
+  }
+
+  template <typename Type>
+  inline constexpr explicit physical_matrix(
+      std::initializer_list<std::initializer_list<Type>> rows) {
+    for (std::size_t i{0}; const auto &row : rows) {
+      for (std::size_t j{0}; const auto &element : row) {
+        data(i, j) = std::tuple_element_t<0, ColumnIndexes>::convert(element);
+        ++j;
+      }
+      ++i;
+    }
+  }
+
+  template <typename Type>
+  explicit inline constexpr physical_matrix(const Type &other)
+      : data{other.data} {}
+
+  // Implement me.
+  // [[nodiscard]] inline constexpr explicit(false) operator Type() const
+  //   requires(std::tuple_size_v<RowIndexes> == 1 &&
+  //            std::tuple_size_v<ColumnIndexes> == 1)
+  // {
+  //   using type =
+  //       decltype(typename std::tuple_element_t<0, RowIndexes>::type{} *
+  //                typename std::tuple_element_t<0, ColumnIndexes>::type{});
+
+  //   return data[0][0] * fcarouge::identity_v<type>;
+  // }
+
+  [[nodiscard]] inline constexpr auto operator[](auto index) const
+    requires(std::tuple_size_v<RowIndexes> != 1 &&
+             std::tuple_size_v<ColumnIndexes> == 1)
+  {
+    // using type =
+    //     decltype(typename std::tuple_element_t<index, RowIndexes>::type{} *
+    //              typename std::tuple_element_t<0, ColumnIndexes>::type{});
+
+    using i = std::remove_cvref_t<decltype(get(RowIndexes{}, index))>;
+    using j = std::remove_cvref_t<decltype(get(ColumnIndexes{}, 0))>;
+    using type = decltype(typename i::type{} * typename j::type{});
+
+    return data(index, 0) * fcarouge::identity_v<type>;
+    // static_cast<void>(index);
+    // return 0.;
+  }
+
+  // [[nodiscard]] inline constexpr const auto &operator[](auto index) const
+  //   requires(std::tuple_size_v<RowIndexes> == 1)
+  // {
+  //   using type =
+  //       decltype(typename std::tuple_element_t<0, RowIndexes>::type{} *
+  //                typename std::tuple_element_t<index,
+  //                ColumnIndexes>::type{});
+
+  //   return data[0][index] * fcarouge::identity_v<type>;
+  // }
+
+  // [[nodiscard]] inline constexpr const auto &operator()(auto index) const
+  //   requires(std::tuple_size_v<RowIndexes> != 1 &&
+  //            std::tuple_size_v<ColumnIndexes> == 1)
+  // {
+  //   using type =
+  //       decltype(typename std::tuple_element_t<index, RowIndexes>::type{} *
+  //                typename std::tuple_element_t<0, ColumnIndexes>::type{});
+
+  //   return data[index][0] * fcarouge::identity_v<type>;
+  // }
+
+  // [[nodiscard]] inline constexpr const auto &operator()(auto index) const
+  //   requires(std::tuple_size_v<RowIndexes> == 1)
+  // {
+  //   using type =
+  //       decltype(typename std::tuple_element_t<0, RowIndexes>::type{} *
+  //                typename std::tuple_element_t<index,
+  //                ColumnIndexes>::type{});
+
+  //   return data[0][index] * fcarouge::identity_v<type>;
+  // }
+
+  // [[nodiscard]] inline constexpr const auto &operator()(auto row,
+  //                                                       auto column) const {
+  //   using type =
+  //       decltype(typename std::tuple_element_t<row, RowIndexes>::type{} *
+  //                typename std::tuple_element_t<column,
+  //                ColumnIndexes>::type{});
+
+  //   return data[row][column] * fcarouge::identity_v<type>;
+  // }
+
+  Matrix data;
+};
+
+// Is int the right type for promotion rules in all cases? Move to utility?
+struct placeholder_index {
+  using type = int;
+};
+using one_row = std::tuple<placeholder_index>;
+using one_column = std::tuple<placeholder_index>;
+
+//! @brief Column vector.
+template <typename Matrix, typename... RowIndexes>
+using physical_column_vector =
+    physical_matrix<Matrix, std::tuple<RowIndexes...>, one_column>;
+
+//! @brief Row vector.
+template <typename Matrix, typename... ColumnIndexes>
+using physical_row_vector =
+    physical_matrix<Matrix, one_row, std::tuple<ColumnIndexes...>>;
+
+//! @}
+
+//! @name Deduction Guides
+//! @{
+
+//! @}
+
+//! @name Algebraic Named Values
+//! @{
+
+//! @brief The identity matrix physical specialization.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline physical_matrix<Matrix, RowIndexes, ColumnIndexes>
+    identity_v<physical_matrix<Matrix, RowIndexes, ColumnIndexes>>{
+        identity_v<Matrix>};
+
+//! @brief The zero matrix physical specialization.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline physical_matrix<Matrix, RowIndexes, ColumnIndexes>
+    zero_v<physical_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero_v<Matrix>};
+
+//! @}
+
+template <typename Matrix1, typename Matrix2, typename Row, typename Column>
+[[nodiscard]] inline constexpr auto
+operator+(const physical_matrix<Matrix1, Row, Column> &lhs,
+          const physical_matrix<Matrix2, Row, Column> &rhs) {
+  auto result{lhs.data + rhs.data};
+
+  return physical_matrix<decltype(result), Row, Column>{result};
+}
+
+template <typename Matrix1, typename Matrix2, typename Row, typename Column>
+[[nodiscard]] inline constexpr auto
+operator-(const physical_matrix<Matrix1, Row, Column> &lhs,
+          const physical_matrix<Matrix2, Row, Column> &rhs) {
+  auto result{lhs.data - rhs.data};
+
+  return physical_matrix<decltype(result), Row, Column>{result};
+}
+
+template <typename Matrix1, typename Matrix2, typename Row, typename Size,
+          typename Column>
+[[nodiscard]] inline constexpr auto
+operator*(const physical_matrix<Matrix1, Row, Size> &lhs,
+          const physical_matrix<Matrix2, Size, Column> &rhs) {
+  auto result{lhs.data * rhs.data};
+
+  return physical_matrix<decltype(result), Row, Column>{result};
+}
+
+template <typename Scalar, typename Matrix2, typename Row, typename Column>
+[[nodiscard]] inline constexpr auto
+operator*(Scalar lhs, const physical_matrix<Matrix2, Row, Column> &rhs) {
+  auto result{lhs * rhs.data};
+
+  return physical_matrix<decltype(result), Row, Column>{result};
+}
+
+template <typename Matrix1, typename Matrix2, typename Row1, typename Row2,
+          typename Size>
+[[nodiscard]] inline constexpr auto
+operator/(const physical_matrix<Matrix1, Row1, Size> &lhs,
+          const physical_matrix<Matrix2, Row2, Size> &rhs) {
+  auto result{lhs.data / rhs.data};
+
+  return physical_matrix<decltype(result), Row1, Row2>{result};
+}
+
+template <typename Matrix, typename Row, typename Column>
+[[nodiscard]] inline constexpr auto
+transpose(const physical_matrix<Matrix, Row, Column> &lhs) {
+  internal::transposer t;
+  auto result{t(lhs.data)};
+
+  return physical_matrix<decltype(result), Column, Row>{result};
+}
+} // namespace fcarouge
+
+//! @brief Specialization of the standard formatter for the physical linear
+//! algebra matrix.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
+          typename Char>
+struct std::formatter<
+    fcarouge::physical_matrix<Matrix, RowIndexes, ColumnIndexes>, Char> {
+  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+    return parse_context.begin();
+  }
+
+  template <typename OutputIterator>
+  constexpr auto format(
+      const fcarouge::physical_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+      std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator {
+    format_context.advance_to(std::format_to(format_context.out(), "["));
+
+    fcarouge::for_constexpr<0, std::tuple_size_v<RowIndexes>,
+                            1>([&format_context, &value](auto i) {
+      if (i > 0) {
+        format_context.advance_to(std::format_to(format_context.out(), ", "));
+      }
+
+      format_context.advance_to(std::format_to(format_context.out(), "["));
+
+      fcarouge::for_constexpr<0, std::tuple_size_v<ColumnIndexes>,
+                              1>([&format_context, &value, i](auto j) {
+        if (j > 0) {
+          format_context.advance_to(std::format_to(format_context.out(), ", "));
+        }
+
+        using type =
+            // declval?
+            decltype(typename std::tuple_element_t<i, RowIndexes>::type{} *
+                     typename std::tuple_element_t<j, ColumnIndexes>::type{});
+
+        //! @todo What's going on with Eigen needing this int/index cast?
+        auto element{value.data(int{i}, int{j}) * fcarouge::identity_v<type>};
+
+        format_context.advance_to(
+            std::format_to(format_context.out(), "{}", element));
+      });
+
+      format_context.advance_to(std::format_to(format_context.out(), "]"));
+    });
+
+    format_context.advance_to(std::format_to(format_context.out(), "]"));
+
+    return format_context.out();
+  }
+
+  template <typename OutputIterator>
+  constexpr auto format(
+      const fcarouge::physical_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+      std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator
+    requires(std::tuple_size_v<RowIndexes> == 1 &&
+             std::tuple_size_v<ColumnIndexes> != 1)
+  {
+    format_context.advance_to(std::format_to(format_context.out(), "["));
+
+    fcarouge::for_constexpr<0, std::tuple_size_v<ColumnIndexes>, 1>(
+        [&format_context, &value](auto j) {
+          if (j > 0) {
+            format_context.advance_to(
+                std::format_to(format_context.out(), ", "));
+          }
+
+          using type =
+              decltype(typename std::tuple_element_t<0, RowIndexes>::type{} *
+                       typename std::tuple_element_t<j, ColumnIndexes>::type{});
+
+          auto element{value.data(j) * fcarouge::identity_v<type>};
+
+          format_context.advance_to(
+              std::format_to(format_context.out(), "{}", element));
+        });
+
+    format_context.advance_to(std::format_to(format_context.out(), "]"));
+
+    return format_context.out();
+  }
+
+  template <typename OutputIterator>
+  constexpr auto format(
+      const fcarouge::physical_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+      std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator
+    requires(std::tuple_size_v<RowIndexes> == 1 &&
+             std::tuple_size_v<ColumnIndexes> == 1)
+  {
+    using type =
+        decltype(typename std::tuple_element_t<0, RowIndexes>::type{} *
+                 typename std::tuple_element_t<0, ColumnIndexes>::type{});
+
+    auto element{value.data() * fcarouge::identity_v<type>};
+
+    format_context.advance_to(
+        std::format_to(format_context.out(), "{}", element));
+
+    return format_context.out();
+  }
+};
+
+#endif // FCAROUGE_PHYSICAL_LINALG_HPP
