@@ -49,6 +49,12 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 //! @name Concepts
 //! @{
+//! @brief Kalman filter concept.
+//!
+//! @details This library's Kalman filters.
+template <typename Type>
+concept kalman_filter = internal::kalman_filter<Type>;
+
 //! @brief Arithmetic concept.
 //!
 //! @details Any integer or floating point type.
