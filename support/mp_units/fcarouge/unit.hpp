@@ -44,12 +44,45 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Supporting quantities, values, and functions.
 
+#include <mp-units/format.h>
 #include <mp-units/framework/quantity.h>
+#include <mp-units/math.h>
+#include <mp-units/systems/si.h>
 
 namespace fcarouge {
 //! @brief The physical unit quantity.
 template <auto Reference, typename Representation>
 using quantity = mp_units::quantity<Reference, Representation>;
+
+//! @brief The singleton identity matrix specialization.
+template <mp_units::Quantity Type>
+inline constexpr auto identity<Type>{Type::one()};
+
+//! @brief Physical linear algebra matrix unit index type.
+//!
+//! @todo Constraint indexes with a concept: scalar/underlying, type, conversion
+//! members?
+template <auto Reference> struct index {
+  using scalar = double;
+  using type = quantity<Reference, scalar>;
+
+  // Is there a more transparent yet type-safe way to convert?
+  //! @todo While the method is static, would it be better to handle the index
+  //! type properly? Or externalize this conversion?
+  [[nodiscard]] static constexpr auto convert(const auto &value) -> scalar {
+    return value.numerical_value_in(value.unit);
+  }
+};
+
+using mp_units::si::metre;
+using mp_units::si::second;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+
+inline constexpr auto s4{pow<4>(second)};
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP
