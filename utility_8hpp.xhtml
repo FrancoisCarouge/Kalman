@@ -129,7 +129,6 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
 Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1arithmetic.xhtml">fcarouge::arithmetic</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arithmetic concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1algebraic.xhtml">fcarouge::algebraic</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Algebraic concept. <br /></td></tr>
@@ -159,9 +158,11 @@ Concepts</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>A user-definable algebraic division solution.</p>
+<p>Implemented for known libraries. User-definable in other cases. There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
+</div></td></tr>
 <tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a" id="r_ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , algebraic Denominator&gt; </td></tr>
 <tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">fcarouge::operator/</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">rhs</a>) -&gt; <a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">quotient</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt;</td></tr>
-<tr class="memdesc:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A user-definable algebraic division solution.  <br /></td></tr>
 <tr class="separator:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -171,7 +172,6 @@ Variables</h2></td></tr>
 </div></td></tr>
 <tr class="memitem:af5d9207021a8118ac46558fd9a453d6d" id="r_af5d9207021a8118ac46558fd9a453d6d"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>  = double&gt; </td></tr>
 <tr class="memitem:af5d9207021a8118ac46558fd9a453d6d"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d">fcarouge::identity_v</a></td></tr>
-<tr class="memdesc:af5d9207021a8118ac46558fd9a453d6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The identity matrix.  <br /></td></tr>
 <tr class="separator:af5d9207021a8118ac46558fd9a453d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3366ce166772e7a795df711ec8fd4e7" id="r_ad3366ce166772e7a795df711ec8fd4e7"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
 <tr class="memitem:ad3366ce166772e7a795df711ec8fd4e7"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Arithmetic</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ad3366ce166772e7a795df711ec8fd4e7">fcarouge::identity_v&lt; Arithmetic &gt;</a> {1}</td></tr>
@@ -196,7 +196,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000031">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -221,7 +221,6 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 </td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27" id="r_aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a> = internal::pack&lt; Types... &gt;</td></tr>
-<tr class="memdesc:aa5a28afb4550bbcbd55d875351de6e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like pack type.  <br /></td></tr>
 <tr class="separator:aa5a28afb4550bbcbd55d875351de6e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af07a5637ebbb4bd8c0244134151732ca" id="r_af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">fcarouge::empty_pack</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">internal::empty_pack</a></td></tr>
 <tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like empty pack type.  <br /></td></tr>
