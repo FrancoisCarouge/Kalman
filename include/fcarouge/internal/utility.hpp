@@ -270,6 +270,14 @@ struct transposer final {
   [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
     return transpose(value);
   }
+
+  // How to, should we force external type to provide a transposition
+  // implementation if the type needs to, should be transposed?
+  template <typename UnknownType>
+  [[nodiscard]] inline constexpr auto
+  operator()(const UnknownType &value) const {
+    return value;
+  }
 };
 
 struct evaluater final {
@@ -280,6 +288,14 @@ struct evaluater final {
     requires(eigen<Type>)
   [[nodiscard]] inline constexpr auto operator()(Type value) const ->
       typename Type::PlainMatrix;
+
+  template <template <typename, typename, typename> typename PhysicalMatrix,
+            typename Matrix, typename RowIndexes, typename ColumnIndexes>
+    requires(eigen<Matrix>)
+  [[nodiscard]] inline constexpr auto
+  operator()(PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes> value) const
+      -> PhysicalMatrix<typename Matrix::PlainMatrix, RowIndexes,
+                        ColumnIndexes>;
 };
 
 template <typename Type>

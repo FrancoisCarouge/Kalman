@@ -36,52 +36,53 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
-#define FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
+#ifndef FCAROUGE_UNIT_HPP
+#define FCAROUGE_UNIT_HPP
 
-#include "fcarouge/utility.hpp"
+//! @file
+//! @brief Quantities and units facade for mp-units third party implementation.
+//!
+//! @details Supporting quantities, values, and functions.
 
-namespace fcarouge::internal {
-template <typename State, typename Output> struct x_z_p_r_f {
-  using state = State;
-  using output = Output;
-  using estimate_uncertainty = ᴀʙᵀ<state, state>;
-  using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = ᴀʙᵀ<state, state>;
-  using innovation = output;
-  using innovation_uncertainty = output_uncertainty;
+#include <mp-units/format.h>
+#include <mp-units/framework/quantity.h>
+#include <mp-units/math.h>
+#include <mp-units/systems/si.h>
 
-  // This gain is incorrect for algebraic types.
-  using gain =
-      std::remove_cvref_t<decltype(std::declval<estimate_uncertainty>() /
-                                   std::declval<innovation_uncertainty>())>;
+namespace fcarouge {
+//! @brief The physical unit quantity.
+template <auto Reference, typename Representation>
+using quantity = mp_units::quantity<Reference, Representation>;
 
-  static inline const auto i{identity<gain>};
+//! @brief The singleton identity matrix specialization.
+template <mp_units::Quantity Type>
+inline constexpr auto identity<Type>{Type::one()};
 
-  state x{zero<state>};
-  estimate_uncertainty p{identity<estimate_uncertainty>};
-  output_uncertainty r{zero<output_uncertainty>};
-  state_transition f{identity<state_transition>};
-  gain k{identity<gain>};
-  innovation y{zero<innovation>};
-  innovation_uncertainty s{identity<innovation_uncertainty>};
-  output z{zero<output>};
-  transposer t{};
+//! @brief Physical linear algebra matrix unit index type.
+//!
+//! @todo Constraint indexes with a concept: scalar/underlying, type, conversion
+//! members?
+template <auto Reference> struct index {
+  using scalar = double;
+  using type = quantity<Reference, scalar>;
 
-  inline constexpr void update(const output &output_z) {
-    z = output_z;
-    s = p + r;
-    k = p / s;
-    y = z - x;
-    x = x + k * y;
-    p = (i - k) * p * t(i - k) + k * r * t(k);
-  }
-
-  inline constexpr void predict() {
-    x = f * x;
-    p = f * p * t(f);
+  // Is there a more transparent yet type-safe way to convert?
+  //! @todo While the method is static, would it be better to handle the index
+  //! type properly? Or externalize this conversion?
+  [[nodiscard]] static constexpr auto convert(const auto &value) -> scalar {
+    return value.numerical_value_in(value.unit);
   }
 };
-} // namespace fcarouge::internal
 
-#endif // FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
+using mp_units::si::metre;
+using mp_units::si::second;
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+
+inline constexpr auto s4{pow<4>(second)};
+} // namespace fcarouge
+
+#endif // FCAROUGE_UNIT_HPP
