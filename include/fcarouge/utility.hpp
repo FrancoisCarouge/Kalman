@@ -91,6 +91,14 @@ concept has_process_uncertainty = internal::has_process_uncertainty<Filter>;
 template <typename Filter>
 concept has_output_uncertainty = internal::has_output_uncertainty<Filter>;
 
+//! @brief Filter prediction pack support concept.
+//!
+//! @details The filter supports the prediction parameters related
+//! functionality: `prediction_types` type member and parameters for the
+//! `predict()` method.
+template <typename Filter>
+concept has_prediction_types = internal::has_prediction_types<Filter>;
+
 //! @brief Filter input control support concept.
 //!
 //! @details The filter supports the input control related functionality:
@@ -104,6 +112,13 @@ concept has_input_control = internal::has_input_control<Filter>;
 //! `state_transition` type member and `f()` method.
 template <typename Filter>
 concept has_state_transition = internal::has_state_transition<Filter>;
+
+//! @brief Filter update pack support concept.
+//!
+//! @details The filter supports the update parameters related functionality:
+//! `update_types` type member and parameters for the `update()` method.
+template <typename Filter>
+concept has_update_types = internal::has_update_types<Filter>;
 
 //! @brief Filter output model support concept.
 //!

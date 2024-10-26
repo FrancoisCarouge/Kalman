@@ -87,7 +87,7 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
     format_context.advance_to(std::format_to(
         format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
 
-    if constexpr (fcarouge::internal::has_prediction_types<Filter>) {
+    if constexpr (fcarouge::has_prediction_types<Filter>) {
       constexpr auto end{
           fcarouge::internal::repack_s<typename Filter::prediction_types>};
       constexpr decltype(end) begin{0};
@@ -121,7 +121,7 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
     }
 
     //! @todo Inconsistent usage of internal?
-    if constexpr (fcarouge::internal::has_update_types<Filter>) {
+    if constexpr (fcarouge::has_update_types<Filter>) {
       constexpr auto end{
           fcarouge::internal::repack_s<typename Filter::update_types>};
       constexpr decltype(end) begin{0};

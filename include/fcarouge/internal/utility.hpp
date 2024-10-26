@@ -176,6 +176,14 @@ struct conditional_output_uncertainty<Filter> {
   using output_uncertainty = Filter::output_uncertainty;
 };
 
+template <typename Filter> struct conditional_prediction_types {};
+
+template <has_prediction_types Filter>
+struct conditional_prediction_types<Filter> {
+  //! @brief Pack of the prediction parameters.
+  using prediction_types = Filter::prediction_types;
+};
+
 template <typename Filter> struct conditional_state_transition {};
 
 template <has_state_transition Filter>
@@ -186,15 +194,24 @@ struct conditional_state_transition<Filter> {
   using state_transition = Filter::state_transition;
 };
 
+template <typename Filter> struct conditional_update_types {};
+
+template <has_update_types Filter> struct conditional_update_types<Filter> {
+  //! @brief Pack of the update parameters.
+  using update_types = Filter::update_types;
+};
+
 // The only way to have a conditional member type is to inherit from a template
 // specialization on the member type.
 template <typename Filter>
-struct conditional_member_types : public conditional_input<Filter>,
-                                  conditional_input_control<Filter>,
+struct conditional_member_types : public conditional_input_control<Filter>,
+                                  conditional_input<Filter>,
                                   conditional_output_model<Filter>,
-                                  conditional_process_uncertainty<Filter>,
                                   conditional_output_uncertainty<Filter>,
-                                  conditional_state_transition<Filter> {};
+                                  conditional_prediction_types<Filter>,
+                                  conditional_process_uncertainty<Filter>,
+                                  conditional_state_transition<Filter>,
+                                  conditional_update_types<Filter> {};
 
 template <typename...> struct pack {};
 
