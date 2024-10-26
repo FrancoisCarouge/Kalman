@@ -44,6 +44,14 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::internal {
 template <typename Type>
+concept kalman_filter = requires(Type value) {
+  //! @todo What should be a better concept of the Kalman filter of this
+  //! library?
+  typename Type::state;
+  typename Type::output;
+};
+
+template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
 template <typename Type>

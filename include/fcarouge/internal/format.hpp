@@ -44,17 +44,13 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <type_traits>
 
-namespace fcarouge {
-template <typename> class kalman;
-} // namespace fcarouge
-
-template <typename Filter, typename Char>
+template <fcarouge::kalman_filter Filter, typename Char>
 // It is allowed to add template specializations for any standard library class
 // template to the namespace std only if the declaration depends on at least one
 // program-defined type and the specialization satisfies all requirements for
 // the original template, except where such specializations are prohibited.
 // NOLINTNEXTLINE(cert-dcl58-cpp)
-struct std::formatter<fcarouge::kalman<Filter>, Char> {
+struct std::formatter<Filter, Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
@@ -62,24 +58,24 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
   //! @todo P2585 may be useful in simplifying and standardizing the support.
   template <typename OutputIterator>
   constexpr auto
-  format(const fcarouge::kalman<Filter> &filter,
+  format(const Filter &filter,
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator {
 
     format_context.advance_to(
         std::format_to(format_context.out(), R"({{)", filter.f()));
 
-    if constexpr (fcarouge::has_state_transition<Filter>) {
+    if constexpr (fcarouge::internal::has_state_transition_method<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("f": {}, )", filter.f()));
     }
 
-    if constexpr (fcarouge::has_input_control<Filter>) {
+    if constexpr (fcarouge::internal::has_input_control_method<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
 
-    if constexpr (fcarouge::has_output_model<Filter>) {
+    if constexpr (fcarouge::internal::has_output_model_method<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("h": {}, )", filter.h()));
     }
@@ -100,7 +96,7 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
           });
     }
 
-    if constexpr (fcarouge::has_process_uncertainty<Filter>) {
+    if constexpr (fcarouge::internal::has_process_uncertainty_method<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("q": {}, )", filter.q()));
     }
@@ -115,7 +111,7 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
 
     //! @todo Generalize out internal method concept when MSVC has better
     //! if-constexpr-requires support.
-    if constexpr (fcarouge::has_input<Filter>) {
+    if constexpr (fcarouge::internal::has_input_method<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }
