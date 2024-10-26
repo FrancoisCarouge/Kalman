@@ -168,6 +168,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ac922632c2da8269e8396756088ba9a1f"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">fcarouge::transpose</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>, Row, Column &gt; &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>)</td></tr>
 <tr class="separator:ac922632c2da8269e8396756088ba9a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Deduction Guides</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Deduces the filter type from its declared configuration.</p>
+<p>The configuration arguments passed are used to determine at compile time the type of fiter to use. The objecive is to select the most performant filter within the defined configuraton parameters.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Arguments</td><td>The declarations of the filter configuration.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo:</a></b></dt><dd><p class="startdd">Should the parameter be named configurations? </p>
+<p class="enddd">Should the configuration examples, supports be documented here? </p>
+</dd></dl>
+</div></td></tr>
 <tr class="memitem:a4833d152f612bead262723ae23039575" id="r_a4833d152f612bead262723ae23039575"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </td></tr>
 <tr class="memitem:a4833d152f612bead262723ae23039575"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a4833d152f612bead262723ae23039575">fcarouge::matrix</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>) -&gt; <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>, 1, 1 &gt;</td></tr>
 <tr class="separator:a4833d152f612bead262723ae23039575"><td class="memSeparator" colspan="2">&#160;</td></tr>
