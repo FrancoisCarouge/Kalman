@@ -83,7 +83,6 @@ inline constexpr auto make_generator(Type element) -> std::generator<Type> {
 
 //! @name Algebraic Types
 //! @{
-
 //! @brief Coroutine lazy matrix.
 //!
 //! @details The matrix is a generator. A coroutine range. Lazily generated
@@ -283,12 +282,10 @@ using row_vector = matrix<Type, decltype(Column){1}, Column, Copyable>;
 //! @brief Coroutine lazy column vector.
 template <typename Type = double, auto Row = 1, bool Copyable = false>
 using column_vector = matrix<Type, Row, decltype(Row){1}, Copyable>;
-
 //! @}
 
 //! @name Deduction Guides
 //! @{
-
 template <typename Type> matrix(Type) -> matrix<Type, 1, 1>;
 
 template <typename Type, auto Row, auto Column>
@@ -323,7 +320,6 @@ auto make_zero_generator{[]() -> std::generator<Type> {
 
 //! @name Algebraic Named Values
 //! @{
-
 //! @brief The identity matrix lazy specialization.
 template <typename Type, auto Row, auto Column>
 auto identity_v<matrix<Type, Row, Column>>{[](auto... args) {
@@ -346,7 +342,6 @@ auto zero_v<matrix<Type, Row, Column>>{[](auto... args) {
     return m;
   }
 }};
-
 //! @}
 
 template <std::invocable L> bool operator==(L lhs, L rhs) {
