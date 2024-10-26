@@ -135,7 +135,6 @@ class kalman final : public internal::conditional_member_types<Filter> {
 private:
   //! @name Private Member Types
   //! @{
-
   //! @brief Implementation details of the filter.
   //!
   //! @details The internal implementation, filtering strategies, and presence
@@ -146,7 +145,6 @@ private:
 
   //! @name Private Member Variables
   //! @{
-
   //! @brief Encapsulates the implementation details of the filter.
   //!
   //! @details Optionally exposes a variety of members and methods according to
@@ -157,7 +155,6 @@ private:
 public:
   //! @name Public Member Types
   //! @{
-
   //! @brief Type of the state estimate column vector X.
   using state = implementation::state;
 
@@ -183,7 +180,6 @@ public:
 
   //! @name Public Member Functions
   //! @{
-
   //! @brief Constructs a Kalman filter from its declared configuration.
   //!
   //! @see Deduction guide for details.
@@ -262,7 +258,6 @@ public:
 
   //! @name Public Characteristics Member Functions
   //! @{
-
   //! @brief Returns the state estimate column vector X.
   //!
   //! @return The state estimate column vector X.
@@ -495,7 +490,6 @@ public:
 
   //! @name Public Filtering Member Functions
   //! @{
-
   //! @brief Produces estimates of the state variables and uncertainties.
   //!
   //! @details Also known as the propagation step. Implements the total

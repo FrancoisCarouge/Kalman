@@ -56,7 +56,6 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 //! @name Algebraic Types
 //! @{
-
 //! @brief Compile-time sized Eigen3 matrix.
 //!
 //! @details Facade for Eigen3 implementation compatibility.
@@ -78,7 +77,6 @@ using column_vector = Eigen::Vector<Type, Row>;
 
 //! @name Algebraic Named Values
 //! @{
-
 //! @brief The identity matrix Eigen specialization.
 template <eigen Matrix>
 inline const auto identity_v<Matrix>{Matrix::Identity()};
