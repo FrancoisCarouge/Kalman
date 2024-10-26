@@ -118,8 +118,9 @@ $(document).ready(function(){initNavTree('classfcarouge_1_1kalman.xhtml',''); in
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Member Types</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Type of the state estimate column vector X. </p>
+</div></td></tr>
 <tr class="memitem:a690f311e5e38a2d2f5266d05989fb6df" id="r_a690f311e5e38a2d2f5266d05989fb6df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a690f311e5e38a2d2f5266d05989fb6df">state</a> = implementation::state</td></tr>
-<tr class="memdesc:a690f311e5e38a2d2f5266d05989fb6df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the state estimate column vector X.  <br /></td></tr>
 <tr class="separator:a690f311e5e38a2d2f5266d05989fb6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbcc61930a7705e961357bf151d8d2cf" id="r_afbcc61930a7705e961357bf151d8d2cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#afbcc61930a7705e961357bf151d8d2cf">output</a> = implementation::output</td></tr>
 <tr class="memdesc:afbcc61930a7705e961357bf151d8d2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the observation column vector Z.  <br /></td></tr>
@@ -140,9 +141,12 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Member Functions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Constructs a Kalman filter from its declared configuration.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">Deduction</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">guide</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">for</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">details</a>.</dd></dl>
+<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
+</div></td></tr>
 <tr class="memitem:aa298812e1628d6497e98fd1778f10e78" id="r_aa298812e1628d6497e98fd1778f10e78"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
 <tr class="memitem:aa298812e1628d6497e98fd1778f10e78"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#aa298812e1628d6497e98fd1778f10e78">kalman</a> (Arguments... <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>)</td></tr>
-<tr class="memdesc:aa298812e1628d6497e98fd1778f10e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Kalman filter from its declared configuration.  <br /></td></tr>
 <tr class="separator:aa298812e1628d6497e98fd1778f10e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19a22aa0c26048398d2edd106d71d708" id="r_a19a22aa0c26048398d2edd106d71d708"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a19a22aa0c26048398d2edd106d71d708">kalman</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">other</a>)=<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delete</a></td></tr>
 <tr class="memdesc:a19a22aa0c26048398d2edd106d71d708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructs a filter.  <br /></td></tr>
@@ -160,8 +164,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aabfe65228268bb473e8dc412caac073e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the Kalman filter.  <br /></td></tr>
 <tr class="separator:aabfe65228268bb473e8dc412caac073e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Characteristics Member Functions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Returns the state estimate column vector X.</p>
+<dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000038">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
+</div></td></tr>
 <tr class="memitem:a6833f2b35051ed9d7583c9f1580cb468" id="r_a6833f2b35051ed9d7583c9f1580cb468"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a6833f2b35051ed9d7583c9f1580cb468">x</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">this</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;&amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">self</a>)</td></tr>
-<tr class="memdesc:a6833f2b35051ed9d7583c9f1580cb468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the state estimate column vector X.  <br /></td></tr>
 <tr class="separator:a6833f2b35051ed9d7583c9f1580cb468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad71db64c384ae44f762968e1260b5288" id="r_ad71db64c384ae44f762968e1260b5288"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#ad71db64c384ae44f762968e1260b5288">x</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;value, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>)</td></tr>
 <tr class="memdesc:ad71db64c384ae44f762968e1260b5288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the state estimate column vector X.  <br /></td></tr>
@@ -218,8 +227,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa5df535983dfb9efe819fbbbcc1f89a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the innovation uncertainty matrix S.  <br /></td></tr>
 <tr class="separator:aa5df535983dfb9efe819fbbbcc1f89a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Filtering Member Functions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Produces estimates of the state variables and uncertainties.</p>
+<p>Also known as the propagation step. Implements the total probability theorem. Estimate the next state by suming the known probabilities.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arguments</td><td>The prediction and input parameters of the filter, in that order. The arguments need to be compatible with the filter types. The prediction parameters convertible to the <code>PredictionTypes</code> template pack types are passed through for computations of prediction matrices. The control parameter pack types convertible to the <code>Input</code> template type. The prediction types are explicitly defined with the class definition.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000043">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
+</dd></dl>
+</div></td></tr>
 <tr class="memitem:a54714ec34eba3646ef3913388c90d2ea" id="r_a54714ec34eba3646ef3913388c90d2ea"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a54714ec34eba3646ef3913388c90d2ea">predict</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a> &amp;...<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>)</td></tr>
-<tr class="memdesc:a54714ec34eba3646ef3913388c90d2ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces estimates of the state variables and uncertainties.  <br /></td></tr>
 <tr class="separator:a54714ec34eba3646ef3913388c90d2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c60c21241e8e12d84a3832917fef235" id="r_a0c60c21241e8e12d84a3832917fef235"><td class="memTemplParams" colspan="2">template&lt;std::size_t Position&gt; </td></tr>
 <tr class="memitem:a0c60c21241e8e12d84a3832917fef235"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a0c60c21241e8e12d84a3832917fef235">predict</a> () <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a></td></tr>
@@ -236,15 +256,19 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Private Member Types</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Implementation details of the filter.</p>
+<p>The internal implementation, filtering strategies, and presence of members vary based on the constructed, configured, declared, deduced filter. </p>
+</div></td></tr>
 <tr class="memitem:a1468e73e9a67b75333e9083b08591873" id="r_a1468e73e9a67b75333e9083b08591873"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a1468e73e9a67b75333e9083b08591873">implementation</a> = Filter</td></tr>
-<tr class="memdesc:a1468e73e9a67b75333e9083b08591873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation details of the filter.  <br /></td></tr>
 <tr class="separator:a1468e73e9a67b75333e9083b08591873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Private Member Variables</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Encapsulates the implementation details of the filter.</p>
+<p>Optionally exposes a variety of members and methods according to the selected implementation. </p>
+</div></td></tr>
 <tr class="memitem:a8fcf5a5c68fd8a926b336cedeeb49833" id="r_a8fcf5a5c68fd8a926b336cedeeb49833"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfcarouge_1_1kalman.xhtml#a1468e73e9a67b75333e9083b08591873">implementation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfcarouge_1_1kalman.xhtml#a8fcf5a5c68fd8a926b336cedeeb49833">filter</a></td></tr>
-<tr class="memdesc:a8fcf5a5c68fd8a926b336cedeeb49833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encapsulates the implementation details of the filter.  <br /></td></tr>
 <tr class="separator:a8fcf5a5c68fd8a926b336cedeeb49833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -269,7 +293,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>Type of the estimated correlated variance matrix P. </p>
 <p>Also known as Σ. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00172">172</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00169">169</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -289,7 +313,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Type of the gain matrix K. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00175">175</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00172">172</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -315,10 +339,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p>Implementation details of the filter. </p>
-<p>The internal implementation, filtering strategies, and presence of members vary based on the constructed, configured, declared, deduced filter. </p>
-
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00144">144</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00143">143</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -338,7 +359,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Type of the innovation column vector Y. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00178">178</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00175">175</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -358,7 +379,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>Type of the innovation uncertainty matrix S. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00181">181</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00178">178</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -379,7 +400,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>Type of the observation column vector Z. </p>
 <p>Also known as Y or O. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00167">167</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00164">164</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -397,9 +418,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
       </table>
 </div><div class="memdoc">
 
-<p>Type of the state estimate column vector X. </p>
-
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00162">162</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00159">159</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
@@ -431,10 +450,6 @@ template&lt;typename... Arguments&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Constructs a Kalman filter from its declared configuration. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">Deduction</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">guide</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">for</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">details</a>.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
 </div>
@@ -1050,18 +1065,6 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p>Produces estimates of the state variables and uncertainties. </p>
-<p>Also known as the propagation step. Implements the total probability theorem. Estimate the next state by suming the known probabilities.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">arguments</td><td>The prediction and input parameters of the filter, in that order. The arguments need to be compatible with the filter types. The prediction parameters convertible to the <code>PredictionTypes</code> template pack types are passed through for computations of prediction matrices. The control parameter pack types convertible to the <code>Input</code> template type. The prediction types are explicitly defined with the class definition.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000043">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
-<p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
-</dd></dl>
-
 </div>
 </div>
 <a id="a3f948a73fbe510d97c0edd103a2e8496" name="a3f948a73fbe510d97c0edd103a2e8496"></a>
@@ -1362,7 +1365,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000045">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000044">Todo:</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -1441,12 +1444,6 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Returns the state estimate column vector X. </p>
-<dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000038">Todo:</a></b></dt><dd>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>. </dd></dl>
 
 </div>
 </div>
@@ -1536,10 +1533,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p>Encapsulates the implementation details of the filter. </p>
-<p>Optionally exposes a variety of members and methods according to the selected implementation. </p>
-
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00154">154</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00152">152</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
