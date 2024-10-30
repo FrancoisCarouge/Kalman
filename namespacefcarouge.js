@@ -41,6 +41,7 @@ var namespacefcarouge =
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
     [ "matrix", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
+    [ "kalman_filter", "conceptfcarouge_1_1kalman__filter.xhtml", null ],
     [ "arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
     [ "algebraic", "conceptfcarouge_1_1algebraic.xhtml", null ],
     [ "eigen", "conceptfcarouge_1_1eigen.xhtml", null ],

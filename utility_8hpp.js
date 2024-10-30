@@ -1,5 +1,6 @@
 var utility_8hpp =
 [
+    [ "fcarouge::kalman_filter", "conceptfcarouge_1_1kalman__filter.xhtml", null ],
     [ "fcarouge::arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
     [ "fcarouge::algebraic", "conceptfcarouge_1_1algebraic.xhtml", null ],
     [ "fcarouge::eigen", "conceptfcarouge_1_1eigen.xhtml", null ],
