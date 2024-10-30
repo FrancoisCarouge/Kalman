@@ -39,5 +39,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "linalg_operator_bracket.cpp", "linalg__operator__bracket_8cpp.xhtml", "linalg__operator__bracket_8cpp" ],
     [ "linalg_operator_equality.cpp", "linalg__operator__equality_8cpp.xhtml", "linalg__operator__equality_8cpp" ],
     [ "linalg_zero.cpp", "linalg__zero_8cpp.xhtml", "linalg__zero_8cpp" ],
-    [ "linalg_zero_default.cpp", "linalg__zero__default_8cpp.xhtml", "linalg__zero__default_8cpp" ]
+    [ "linalg_zero_default.cpp", "linalg__zero__default_8cpp.xhtml", "linalg__zero__default_8cpp" ],
+    [ "printer_1x1x0.cpp", "printer__1x1x0_8cpp.xhtml", "printer__1x1x0_8cpp" ],
+    [ "printer_2x3x4.cpp", "printer__2x3x4_8cpp.xhtml", "printer__2x3x4_8cpp" ]
 ];

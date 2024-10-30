@@ -28,5 +28,9 @@ var hierarchy =
     ] ],
     [ "std::formatter< Filter, Char >", "structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml", null ],
     [ "std::formatter< Matrix, Char >", "structstd_1_1formatter_3_01_matrix_00_01_char_01_4.xhtml", null ],
-    [ "fcarouge::matrix< Type, Row, Column, Copyable >", "structfcarouge_1_1matrix.xhtml", null ]
+    [ "fcarouge::matrix< Type, Row, Column, Copyable >", "structfcarouge_1_1matrix.xhtml", null ],
+    [ "fcarouge::printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
+    [ "Filter", null, [
+      [ "fcarouge::decorator::printer< Filter >", "classfcarouge_1_1decorator_1_1printer.xhtml", null ]
+    ] ]
 ];

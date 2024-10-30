@@ -34,5 +34,12 @@ var namespacefcarouge_1_1sample =
       [ "state", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a0cff585f7b887f22f7d2a3cd85181625", null ],
       [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a67f8220f916b3e74fa35be4c97823f09", null ],
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__deep__sort__bounding__box_8cpp_03.xhtml#a0f2a4b132c87075df61a1491719e116a", null ]
+    ] ],
+    [ "anonymous_namespace{printer_1x1x0.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02printer__1x1x0_8cpp_03.xhtml", [
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02printer__1x1x0_8cpp_03.xhtml#a02dcf36d5d929569e3c625956dec6396", null ]
+    ] ],
+    [ "anonymous_namespace{printer_2x3x4.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02printer__2x3x4_8cpp_03.xhtml", [
+      [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02printer__2x3x4_8cpp_03.xhtml#ad6796ef28ab07c78abcd86cafd7b6884", null ],
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02printer__2x3x4_8cpp_03.xhtml#a66cd17c2db75800a82ff64e7836a2fcf", null ]
     ] ]
 ];

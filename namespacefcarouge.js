@@ -1,6 +1,7 @@
 var namespacefcarouge =
 [
     [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", "namespacefcarouge_1_1benchmark" ],
+    [ "decorator", "namespacefcarouge_1_1decorator.xhtml", "namespacefcarouge_1_1decorator" ],
     [ "internal", "namespacefcarouge_1_1internal.xhtml", [
       [ "empty_pack", "namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503", null ],
       [ "filter_t", "namespacefcarouge_1_1internal.xhtml#adafa53269502fa0528cecefc34eb1476", null ],
@@ -41,6 +42,7 @@ var namespacefcarouge =
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
     [ "matrix", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
+    [ "printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
     [ "kalman_filter", "conceptfcarouge_1_1kalman__filter.xhtml", null ],
     [ "arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
     [ "algebraic", "conceptfcarouge_1_1algebraic.xhtml", null ],
@@ -87,6 +89,7 @@ var namespacefcarouge =
     [ "operator==", "namespacefcarouge.xhtml#a62fb05e2f569f36e8cac44a90ccbc106", null ],
     [ "operator==", "namespacefcarouge.xhtml#a47d78fa7b2fbab1fdec6f6e30d6b1da0", null ],
     [ "operator==", "namespacefcarouge.xhtml#a84939a609e68330c2689aff14d978311", null ],
+    [ "operator|", "namespacefcarouge.xhtml#abb7d0eaceb29f78f64bff07a52fe5824", null ],
     [ "transpose", "namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f", null ],
     [ "first_v", "namespacefcarouge.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77", null ],
     [ "identity_v", "namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d", null ],
@@ -95,6 +98,7 @@ var namespacefcarouge =
     [ "identity_v< matrix< Type, Row, Column > >", "namespacefcarouge.xhtml#a1ea35424b203a1ba2ab287785e36b753", null ],
     [ "make_identity_generator", "namespacefcarouge.xhtml#a3b0c4f263f282cbb330a4ca6b5ad10d9", null ],
     [ "make_zero_generator", "namespacefcarouge.xhtml#a7fe918283834c2c859a7325fc8d3a563", null ],
+    [ "printer", "namespacefcarouge.xhtml#a44762b6a541e61f07ed2b0477b182829", null ],
     [ "zero_v", "namespacefcarouge.xhtml#a02138eddd50d93b33b26d70dfbd80edf", null ],
     [ "zero_v< Arithmetic >", "namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f", null ],
     [ "zero_v< Matrix >", "namespacefcarouge.xhtml#a906ad0e7a837c8935b27497a2e02f2c4", null ],
