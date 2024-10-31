@@ -43,8 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the initializer lists constructor.
-//!
-//! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
   matrix<int, 4, 3> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {1, 2, 3}};
 

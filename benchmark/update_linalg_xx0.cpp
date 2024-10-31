@@ -98,8 +98,6 @@ void bench(::benchmark::State &benchmark_state) {
   }
 }
 
-//! @todo Find a way to remove macros or find a different benchmark library that
-//! doesn't use macros.
 BENCHMARK(bench<${STATE_SIZE}, ${OUTPUT_SIZE}>)
     ->Name("update_linalg_${STATE_SIZE}x${OUTPUT_SIZE}x0")
     ->Unit(::benchmark::kNanosecond)

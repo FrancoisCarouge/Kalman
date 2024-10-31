@@ -30,8 +30,6 @@ using state = fcarouge::state<vector<4>>;
 //! the sUAV.
 //!
 //! @example ekf_4x1x0_soaring.cpp
-//!
-//! @todo Add a data set and assert for correctness of results.
 [[maybe_unused]] auto sample{[] {
   const float trigger_strength{0};
   const float thermal_radius{80};
@@ -86,7 +84,7 @@ using state = fcarouge::state<vector<4>>;
       }},
       transition{[](const vector<4> &x, const float &drift_x,
                     const float &drift_y) -> vector<4> {
-        //! @todo Could make sure that x[1] stays positive, greater than 40.
+        //! In production, make sure that x[1] stays positive, greater than 40.
         const vector<4> drifts{0.F, 0.F, drift_x, drift_y};
         return x + drifts;
       }},
