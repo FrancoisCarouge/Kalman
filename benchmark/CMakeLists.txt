@@ -42,6 +42,7 @@ FetchContent_Declare(
   google_test
   GIT_REPOSITORY "https://github.com/google/googletest"
   GIT_TAG "main"
+  GIT_SHALLOW TRUE
   FIND_PACKAGE_ARGS NAMES GTest)
 FetchContent_MakeAvailable(google_test)
 
@@ -49,6 +50,7 @@ FetchContent_Declare(
   google_benchmark
   GIT_REPOSITORY "https://github.com/google/benchmark"
   GIT_TAG "main"
+  GIT_SHALLOW TRUE
   FIND_PACKAGE_ARGS NAMES benchmark)
 FetchContent_MakeAvailable(google_benchmark)
 
