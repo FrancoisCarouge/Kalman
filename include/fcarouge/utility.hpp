@@ -64,9 +64,6 @@ concept arithmetic = internal::arithmetic<Type>;
 //! @brief Algebraic concept.
 //!
 //! @details Not an arithmetic type.
-//!
-//! @todo Is the implementation and definition of an algebraic concept poor,
-//! incorrect, or incomplete?
 template <typename Type>
 concept algebraic = internal::algebraic<Type>;
 

@@ -62,7 +62,6 @@ public:
     std::println("{{\"event\": \"x\", \"filter\":{}}}", *this);
   }
 
-  //! @todo Implement the remaining events.
   inline constexpr void p(const auto &value, const auto &...values) {
     Filter::p(value, values...);
     std::println("{{\"event\": \"p\", \"filter\":{}}}", *this);
@@ -80,7 +79,6 @@ public:
 };
 } // namespace decorator
 
-//! @todo Support optional output streams?
 struct printer_decorator {};
 
 inline constexpr printer_decorator printer;

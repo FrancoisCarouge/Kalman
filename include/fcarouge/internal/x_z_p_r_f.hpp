@@ -42,7 +42,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/utility.hpp"
 
 namespace fcarouge::internal {
-//! @todo Provide optimized out versions of the filters.
 template <typename State, typename Output> struct x_z_p_r_f {
   using state = State;
   using output = Output;

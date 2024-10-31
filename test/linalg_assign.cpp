@@ -43,8 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the assignment operator.
-//!
-//! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
   auto m{identity_v<matrix<double, 5, 5>>};
   auto c = m;

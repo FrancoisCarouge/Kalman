@@ -43,8 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the identity matrices values are unit diagonals.
-//!
-//! @todo Rewrite this test as a property-based test.
 [[maybe_unused]] auto test{[] {
   auto identity{identity_v<matrix<double, 3, 3>>};
 
