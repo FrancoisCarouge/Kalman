@@ -277,8 +277,8 @@ inline constexpr auto adl_transpose{
 
 struct transpose final {
   template <arithmetic Arithmetic>
-  [[nodiscard]] inline constexpr auto
-  operator()(const Arithmetic &value) const {
+  [[nodiscard]] static inline constexpr auto
+  operator()(const Arithmetic &value) {
     return value;
   }
 
@@ -286,27 +286,27 @@ struct transpose final {
   //! algebra support?
   template <typename Matrix>
     requires requires(Matrix value) { value.transpose(); }
-  [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
+  [[nodiscard]] static inline constexpr auto operator()(const Matrix &value) {
     return value.transpose();
   }
 
   template <typename Matrix>
-  [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
+  [[nodiscard]] static inline constexpr auto operator()(const Matrix &value) {
     return adl_transpose(value);
   }
 };
 
 struct matrix_deducer final {
   template <typename Lhs, typename Rhs>
-  [[nodiscard]] inline constexpr auto
-  operator()(Lhs lhs, Rhs rhs) const -> decltype(lhs * transpose{}(rhs));
+  [[nodiscard]] static inline constexpr auto
+  operator()(Lhs lhs, Rhs rhs) -> decltype(lhs * transpose{}(rhs));
 
   template <eigen Lhs, arithmetic Rhs>
-  [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
+  [[nodiscard]] static inline constexpr auto operator()(Lhs lhs, Rhs rhs) ->
       typename decltype(lhs * transpose{}(rhs))::PlainMatrix;
 
   template <typename Lhs, eigen Rhs>
-  [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
+  [[nodiscard]] static inline constexpr auto operator()(Lhs lhs, Rhs rhs) ->
       typename decltype(lhs * transpose{}(rhs))::PlainMatrix;
 };
 
