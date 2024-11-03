@@ -74,16 +74,6 @@ using row_vector = Eigen::RowVector<Type, Column>;
 template <typename Type = double, auto Row = 1>
 using column_vector = Eigen::Vector<Type, Row>;
 //! @}
-
-//! @name Algebraic Named Values
-//! @{
-//! @brief The identity matrix Eigen specialization.
-template <eigen Matrix>
-inline const auto identity_v<Matrix>{Matrix::Identity()};
-
-//! @brief The zero matrix Eigen specialization.
-template <eigen Matrix> inline const auto zero_v<Matrix>{Matrix::Zero()};
-//! @}
 } // namespace fcarouge
 
 template <fcarouge::eigen Matrix, typename Char>
