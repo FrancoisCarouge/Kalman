@@ -48,19 +48,19 @@ namespace fcarouge::internal {
 template <typename State, typename Output> struct x_z_p_qq_rr_f {
   using state = State;
   using output = Output;
-  using estimate_uncertainty = quotient<state, state>;
-  using process_uncertainty = quotient<state, state>;
-  using output_uncertainty = quotient<output, output>;
-  using state_transition = quotient<state, state>;
-  using output_model = quotient<output, state>;
-  using gain = quotient<state, output>;
+  using estimate_uncertainty = deduce_matrix<state, state>;
+  using process_uncertainty = deduce_matrix<state, state>;
+  using output_uncertainty = deduce_matrix<output, output>;
+  using state_transition = deduce_matrix<state, state>;
+  using output_model = deduce_matrix<output, state>;
+  using gain = deduce_matrix<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using noise_observation_function =
       function<output_uncertainty(const state &, const output &)>;
   using noise_process_function = function<process_uncertainty(const state &)>;
 
-  static inline const auto i{identity_v<quotient<state, state>>};
+  static inline const auto i{identity_v<deduce_matrix<state, state>>};
 
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};

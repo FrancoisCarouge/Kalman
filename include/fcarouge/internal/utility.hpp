@@ -296,69 +296,23 @@ struct transpose final {
   }
 };
 
-//! @todo The dimensional analysis shows the deduction of matrices gives us the
-//! correctly sized resulting matrix but the correctness of the units have yet
-//! to be proven, nor whether its systematic usage is in fact appropriate.
-//! Hypothesis: units are incorrect, usage may be incorrect, for example
-//! `state_transition` may actually be unit-less. Note the `lhs` column size and
-//! `rhs` row size are the resulting type's column and row sizes, respectively:
-//! Lhs [m by n] and Rhs [o by n] -> Result [m by o].
-//! @todo Is there a better, simpler, canonical, standard way of doing this type
-//! deduction? For example, by doing it directly from the operation itself?
-//! There could be simplicity and performance benefits?
-struct deducer final {
-  // Built-in, arithmetic, standard division support.
-  template <arithmetic Lhs, arithmetic Rhs>
+struct matrix_deducer final {
+  template <typename Lhs, typename Rhs>
   [[nodiscard]] inline constexpr auto
-  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
-
-  // Type-erased matrix first party linear algebra support.
-  template <template <typename, auto, auto> typename Matrix, typename Type,
-            auto M, auto N, auto O>
-    requires(M > 1 || O > 1)
-  [[nodiscard]] inline constexpr auto
-  operator()(const Matrix<Type, M, N> &lhs,
-             const Matrix<Type, O, N> &rhs) const -> Matrix<Type, M, O>;
-
-  template <template <typename, auto, auto> typename Matrix, typename Type,
-            auto N>
-  [[nodiscard]] inline constexpr auto
-  operator()(const Matrix<Type, 1, N> &lhs,
-             const Matrix<Type, 1, N> &rhs) const -> Type;
-
-  template <template <typename, auto, auto> typename Lhs, typename Type, auto M>
-  [[nodiscard]] inline constexpr auto
-  operator()(const Lhs<Type, M, 1> &lhs,
-             arithmetic auto rhs) const -> Lhs<Type, M, 1>;
-
-  //! @todo Coerce type and arithmetic to be the same?
-  template <template <typename, auto, auto> typename Rhs, typename Type, auto O>
-  [[nodiscard]] inline constexpr auto
-  operator()(arithmetic auto lhs,
-             const Rhs<Type, O, 1> &rhs) const -> Rhs<Type, 1, O>;
-
-  // Type-erased Eigen third party linear algebra support.
-  template <eigen Lhs, eigen Rhs>
-  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
-                                                 const Rhs &rhs) const ->
-      typename decltype(lhs * rhs.transpose())::PlainMatrix;
+  operator()(Lhs lhs, Rhs rhs) const -> decltype(lhs * transpose{}(rhs));
 
   template <eigen Lhs, arithmetic Rhs>
-  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
-                                                 const Rhs &rhs) const ->
-      typename Lhs::PlainMatrix;
+  [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
+      typename decltype(lhs * transpose{}(rhs))::PlainMatrix;
 
-  template <arithmetic Lhs, eigen Rhs>
-  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
-                                                 const Rhs &rhs) const ->
-      typename decltype(rhs.transpose())::PlainMatrix;
+  template <typename Lhs, eigen Rhs>
+  [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
+      typename decltype(lhs * transpose{}(rhs))::PlainMatrix;
 };
 
-//! @todo How to return the `emtpy` type if the deducer would fail to help avoid
-//! specialization?
-template <typename Numerator, typename Denominator>
-using quotient =
-    std::remove_cvref_t<std::invoke_result_t<deducer, Numerator, Denominator>>;
+template <typename Lhs, typename Rhs>
+using deduce_matrix =
+    std::remove_cvref_t<std::invoke_result_t<matrix_deducer, Lhs, Rhs>>;
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP

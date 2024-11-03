@@ -56,7 +56,7 @@ namespace fcarouge::internal {
 //! convention insensitive?
 //! @todo Some of these overload should probably be removed to guide the user
 //! towards better initialization practices?
-template <typename Filter = void> struct make_filter {
+template <typename Filter = void> struct filter_deducer {
   template <typename... Arguments>
   inline constexpr auto
   operator()([[maybe_unused]] Arguments... arguments) const
@@ -265,10 +265,10 @@ template <typename Filter = void> struct make_filter {
   }
 };
 
-template <typename Filter> inline constexpr make_filter<Filter> filter{};
+template <typename Filter> inline constexpr filter_deducer<Filter> filter{};
 
 template <typename... Arguments>
-using filter_t = std::invoke_result_t<make_filter<>, Arguments...>;
+using deduce_filter = std::invoke_result_t<filter_deducer<>, Arguments...>;
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_FACTORY_HPP

@@ -614,7 +614,7 @@ using internal::input_control;
 //! @todo Should the parameter be named configurations?
 //! @todo Should the configuration examples, supports be documented here?
 template <typename... Arguments>
-kalman(Arguments... arguments) -> kalman<internal::filter_t<Arguments...>>;
+kalman(Arguments... arguments) -> kalman<internal::deduce_filter<Arguments...>>;
 //! @}
 } // namespace fcarouge
 

@@ -156,7 +156,7 @@ inline constexpr auto first_v{internal::first_v<Values...>};
 //! has as many rows as the `Row` matrix, respectively for columns as the
 //! `Column` matrix.
 template <typename Numerator, typename Denominator>
-using quotient = internal::quotient<Numerator, Denominator>;
+using deduce_matrix = internal::deduce_matrix<Numerator, Denominator>;
 //! @}
 
 //! @name Functions
@@ -169,7 +169,7 @@ using quotient = internal::quotient<Numerator, Denominator>;
 //! is avoided by solving `X * rhs = lhs` for `rhs` through a decomposer.
 template <typename Numerator, algebraic Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
-    -> quotient<Numerator, Denominator>;
+    -> deduce_matrix<Numerator, Denominator>;
 //! @}
 
 //! @name Algebraic Named Values
