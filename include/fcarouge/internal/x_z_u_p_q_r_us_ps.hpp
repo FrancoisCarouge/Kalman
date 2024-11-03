@@ -84,7 +84,7 @@ struct x_z_u_p_q_r_us_ps<State, Output, Input, pack<UpdateTypes...>,
   output z{zero_v<output>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
-  transpose t{};
+  transposer t{};
 
   inline constexpr void update(const UpdateTypes &...update_pack,
                                const auto &output_z, const auto &...outputs_z) {

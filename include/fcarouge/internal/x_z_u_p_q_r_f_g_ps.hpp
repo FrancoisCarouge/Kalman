@@ -93,7 +93,7 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, pack<UpdateTypes...>,
   innovation_uncertainty s{identity_v<innovation_uncertainty>};
   output z{zero_v<output>};
   prediction_types prediction_arguments{};
-  transpose t{};
+  transposer t{};
 
   inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};

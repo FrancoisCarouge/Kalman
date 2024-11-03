@@ -275,7 +275,7 @@ template <typename Type> struct not_implemented {
 inline constexpr auto adl_transpose{
     [](const auto &value) { return transpose(value); }};
 
-struct transpose final {
+struct transposer final {
   template <arithmetic Arithmetic>
   [[nodiscard]] inline constexpr auto
   operator()(const Arithmetic &value) const {
@@ -299,15 +299,15 @@ struct transpose final {
 struct matrix_deducer final {
   template <typename Lhs, typename Rhs>
   [[nodiscard]] inline constexpr auto
-  operator()(Lhs lhs, Rhs rhs) const -> decltype(lhs * transpose{}(rhs));
+  operator()(Lhs lhs, Rhs rhs) const -> decltype(lhs * transposer{}(rhs));
 
   template <eigen Lhs, arithmetic Rhs>
   [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
-      typename decltype(lhs * transpose{}(rhs))::PlainMatrix;
+      typename decltype(lhs * transposer{}(rhs))::PlainMatrix;
 
   template <typename Lhs, eigen Rhs>
   [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
-      typename decltype(lhs * transpose{}(rhs))::PlainMatrix;
+      typename decltype(lhs * transposer{}(rhs))::PlainMatrix;
 };
 
 template <typename Lhs, typename Rhs>
