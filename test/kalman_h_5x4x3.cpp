@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 template <typename Numerator, fcarouge::algebraic Denominator>
 constexpr auto fcarouge::operator/([[maybe_unused]] const Numerator &lhs,
                                    [[maybe_unused]] const Denominator &rhs)
-    -> fcarouge::quotient<Numerator, Denominator> {
+    -> fcarouge::deduce_matrix<Numerator, Denominator> {
   // Definition needed, result not relevant for this test.
   return {};
 }

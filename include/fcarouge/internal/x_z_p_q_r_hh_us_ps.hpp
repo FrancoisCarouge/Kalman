@@ -55,12 +55,12 @@ struct x_z_p_q_r_hh_us_ps<State, Output, pack<UpdateTypes...>,
                           pack<PredictionTypes...>> {
   using state = State;
   using output = Output;
-  using estimate_uncertainty = quotient<state, state>;
-  using process_uncertainty = quotient<state, state>;
-  using output_uncertainty = quotient<output, output>;
-  using state_transition = quotient<state, state>;
-  using output_model = quotient<output, state>;
-  using gain = quotient<state, output>;
+  using estimate_uncertainty = deduce_matrix<state, state>;
+  using process_uncertainty = deduce_matrix<state, state>;
+  using output_uncertainty = deduce_matrix<output, output>;
+  using state_transition = deduce_matrix<state, state>;
+  using output_model = deduce_matrix<output, state>;
+  using gain = deduce_matrix<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
@@ -72,7 +72,7 @@ struct x_z_p_q_r_hh_us_ps<State, Output, pack<UpdateTypes...>,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  static inline const auto i{identity_v<quotient<state, state>>};
+  static inline const auto i{identity_v<deduce_matrix<state, state>>};
 
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};

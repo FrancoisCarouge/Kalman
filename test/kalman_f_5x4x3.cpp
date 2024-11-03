@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 
 template <typename Numerator, fcarouge::algebraic Denominator>
 constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
-    -> fcarouge::quotient<Numerator, Denominator> {
+    -> fcarouge::deduce_matrix<Numerator, Denominator> {
   return rhs.transpose()
       .fullPivHouseholderQr()
       .solve(lhs.transpose())
