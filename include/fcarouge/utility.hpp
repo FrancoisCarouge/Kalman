@@ -185,6 +185,10 @@ inline constexpr Type identity_v{internal::not_implemented<Type>{
 template <arithmetic Arithmetic>
 inline constexpr Arithmetic identity_v<Arithmetic>{1};
 
+template <typename Type>
+  requires requires { Type::Identity(); }
+inline auto identity_v<Type>{Type::Identity()};
+
 //! @brief The zero matrix.
 //!
 //! @details User-defined.
@@ -195,6 +199,10 @@ inline constexpr Type zero_v{internal::not_implemented<Type>{
 //! @brief The singleton zero matrix specialization.
 template <arithmetic Arithmetic>
 inline constexpr Arithmetic zero_v<Arithmetic>{0};
+
+template <typename Type>
+  requires requires { Type::Zero(); }
+inline auto zero_v<Type>{Type::Zero()};
 //! @}
 } // namespace fcarouge
 

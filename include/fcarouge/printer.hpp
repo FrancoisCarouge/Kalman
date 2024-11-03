@@ -88,7 +88,6 @@ inline constexpr auto
 operator|(Filter &&filter, [[maybe_unused]] const printer_decorator decorator) {
   return decorator::printer<Filter>(std::forward<Filter>(filter));
 }
-
 } // namespace fcarouge
 
 #endif // FCAROUGE_PRINTER_HPP
