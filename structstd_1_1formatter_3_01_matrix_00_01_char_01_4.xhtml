@@ -126,7 +126,7 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="conceptfcarouge_1_1eigen.xhtml">fcarouge::eigen</a> Matrix, typename Char&gt;<br />
 struct std::formatter&lt; Matrix, Char &gt;</div>
-<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00090">90</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00080">80</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aa2736e9224d93b2bdaa016dadadcf388" name="aa2736e9224d93b2bdaa016dadadcf388"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa2736e9224d93b2bdaa016dadadcf388">&#9670;&#160;</a></span>format() <span class="overload">[1/3]</span></h2>
@@ -166,22 +166,22 @@ template&lt;typename OutputIterator &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00097">97</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>                        {</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keyword">const</span> Eigen::IOFormat output_format{Eigen::StreamPrecision,</div>
-<div class="line"><span class="lineno">  101</span>                                        Eigen::DontAlignCols,</div>
-<div class="line"><span class="lineno">  102</span>                                        <span class="stringliteral">&quot;, &quot;</span>,</div>
-<div class="line"><span class="lineno">  103</span>                                        <span class="stringliteral">&quot;, &quot;</span>,</div>
-<div class="line"><span class="lineno">  104</span>                                        <span class="stringliteral">&quot;[&quot;</span>,</div>
-<div class="line"><span class="lineno">  105</span>                                        <span class="stringliteral">&quot;]&quot;</span>,</div>
-<div class="line"><span class="lineno">  106</span>                                        <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><span class="lineno">  107</span>                                        <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><span class="lineno">  108</span>                                        <span class="charliteral">&#39; &#39;</span>};</div>
-<div class="line"><span class="lineno">  109</span> </div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> std::format_to(</div>
-<div class="line"><span class="lineno">  111</span>        format_context.out(), <span class="stringliteral">&quot;[{}]&quot;</span>,</div>
-<div class="line"><span class="lineno">  112</span>        (std::stringstream{} &lt;&lt; value.format(output_format)).str());</div>
-<div class="line"><span class="lineno">  113</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00087">87</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   89</span>                        {</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keyword">const</span> Eigen::IOFormat output_format{Eigen::StreamPrecision,</div>
+<div class="line"><span class="lineno">   91</span>                                        Eigen::DontAlignCols,</div>
+<div class="line"><span class="lineno">   92</span>                                        <span class="stringliteral">&quot;, &quot;</span>,</div>
+<div class="line"><span class="lineno">   93</span>                                        <span class="stringliteral">&quot;, &quot;</span>,</div>
+<div class="line"><span class="lineno">   94</span>                                        <span class="stringliteral">&quot;[&quot;</span>,</div>
+<div class="line"><span class="lineno">   95</span>                                        <span class="stringliteral">&quot;]&quot;</span>,</div>
+<div class="line"><span class="lineno">   96</span>                                        <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><span class="lineno">   97</span>                                        <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><span class="lineno">   98</span>                                        <span class="charliteral">&#39; &#39;</span>};</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">return</span> std::format_to(</div>
+<div class="line"><span class="lineno">  101</span>        format_context.out(), <span class="stringliteral">&quot;[{}]&quot;</span>,</div>
+<div class="line"><span class="lineno">  102</span>        (std::stringstream{} &lt;&lt; value.format(output_format)).str());</div>
+<div class="line"><span class="lineno">  103</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -225,22 +225,22 @@ template&lt;typename OutputIterator &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00117">117</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  121</span>  {</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keyword">const</span> Eigen::IOFormat output_format{Eigen::StreamPrecision,</div>
-<div class="line"><span class="lineno">  123</span>                                        Eigen::DontAlignCols,</div>
-<div class="line"><span class="lineno">  124</span>                                        <span class="stringliteral">&quot;, &quot;</span>,</div>
-<div class="line"><span class="lineno">  125</span>                                        <span class="stringliteral">&quot;, &quot;</span>,</div>
-<div class="line"><span class="lineno">  126</span>                                        <span class="stringliteral">&quot;[&quot;</span>,</div>
-<div class="line"><span class="lineno">  127</span>                                        <span class="stringliteral">&quot;]&quot;</span>,</div>
-<div class="line"><span class="lineno">  128</span>                                        <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><span class="lineno">  129</span>                                        <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><span class="lineno">  130</span>                                        <span class="charliteral">&#39; &#39;</span>};</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">return</span> std::format_to(</div>
-<div class="line"><span class="lineno">  133</span>        format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>,</div>
-<div class="line"><span class="lineno">  134</span>        (std::stringstream{} &lt;&lt; value.format(output_format)).str());</div>
-<div class="line"><span class="lineno">  135</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00107">107</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>  {</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keyword">const</span> Eigen::IOFormat output_format{Eigen::StreamPrecision,</div>
+<div class="line"><span class="lineno">  113</span>                                        Eigen::DontAlignCols,</div>
+<div class="line"><span class="lineno">  114</span>                                        <span class="stringliteral">&quot;, &quot;</span>,</div>
+<div class="line"><span class="lineno">  115</span>                                        <span class="stringliteral">&quot;, &quot;</span>,</div>
+<div class="line"><span class="lineno">  116</span>                                        <span class="stringliteral">&quot;[&quot;</span>,</div>
+<div class="line"><span class="lineno">  117</span>                                        <span class="stringliteral">&quot;]&quot;</span>,</div>
+<div class="line"><span class="lineno">  118</span>                                        <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><span class="lineno">  119</span>                                        <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><span class="lineno">  120</span>                                        <span class="charliteral">&#39; &#39;</span>};</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> std::format_to(</div>
+<div class="line"><span class="lineno">  123</span>        format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>,</div>
+<div class="line"><span class="lineno">  124</span>        (std::stringstream{} &lt;&lt; value.format(output_format)).str());</div>
+<div class="line"><span class="lineno">  125</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -284,10 +284,10 @@ template&lt;typename OutputIterator &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00139">139</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  143</span>  {</div>
-<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">return</span> std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.value());</div>
-<div class="line"><span class="lineno">  145</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00129">129</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>  {</div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">return</span> std::format_to(format_context.out(), <span class="stringliteral">&quot;{}&quot;</span>, value.value());</div>
+<div class="line"><span class="lineno">  135</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -317,10 +317,10 @@ template&lt;<a class="el" href="conceptfcarouge_1_1eigen.xhtml">fcarouge::eigen<
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00091">91</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>                                                                           {</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">return</span> parse_context.begin();</div>
-<div class="line"><span class="lineno">   93</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00081">81</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>                                                                           {</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> parse_context.begin();</div>
+<div class="line"><span class="lineno">   83</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -20,6 +20,8 @@ var utility_8hpp =
     [ "first_v", "utility_8hpp.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77", null ],
     [ "identity_v", "utility_8hpp.xhtml#af5d9207021a8118ac46558fd9a453d6d", null ],
     [ "identity_v< Arithmetic >", "utility_8hpp.xhtml#ad3366ce166772e7a795df711ec8fd4e7", null ],
+    [ "identity_v< Type >", "utility_8hpp.xhtml#a1aeae2164ef1d40ef3b91fdef50fa50e", null ],
     [ "zero_v", "utility_8hpp.xhtml#a02138eddd50d93b33b26d70dfbd80edf", null ],
-    [ "zero_v< Arithmetic >", "utility_8hpp.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f", null ]
+    [ "zero_v< Arithmetic >", "utility_8hpp.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f", null ],
+    [ "zero_v< Type >", "utility_8hpp.xhtml#ae5897f024ee9c1f48da53a27be2fe3cd", null ]
 ];
