@@ -62,7 +62,7 @@ template <typename State, typename Output> struct x_z_p_r_f {
   innovation y{zero_v<innovation>};
   innovation_uncertainty s{identity_v<innovation_uncertainty>};
   output z{zero_v<output>};
-  transpose t{};
+  transposer t{};
 
   inline constexpr void update(const output &output_z) {
     z = output_z;
