@@ -268,9 +268,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac922632c2da8269e8396756088ba9a1f"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>, Row, Column &gt; &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>)</td></tr>
 <tr class="separator:ac922632c2da8269e8396756088ba9a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Deduction Guides</div></td></tr>
-<tr class="memitem:a6fcefc6a3f548e5225223c8594e62b65" id="r_a6fcefc6a3f548e5225223c8594e62b65"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
-<tr class="memitem:a6fcefc6a3f548e5225223c8594e62b65"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a6fcefc6a3f548e5225223c8594e62b65">kalman</a> (Arguments... <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>) -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#adafa53269502fa0528cecefc34eb1476">internal::filter_t</a>&lt; Arguments... &gt; &gt;</td></tr>
-<tr class="separator:a6fcefc6a3f548e5225223c8594e62b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4d1dbbab6a8bdcaa50062d0cb879777" id="r_ae4d1dbbab6a8bdcaa50062d0cb879777"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
+<tr class="memitem:ae4d1dbbab6a8bdcaa50062d0cb879777"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a> (Arguments... <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>) -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#af0c315e1078601955b31e5c902650361">internal::deduce_filter</a>&lt; Arguments... &gt; &gt;</td></tr>
+<tr class="separator:ae4d1dbbab6a8bdcaa50062d0cb879777"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4833d152f612bead262723ae23039575" id="r_a4833d152f612bead262723ae23039575"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </td></tr>
 <tr class="memitem:a4833d152f612bead262723ae23039575"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a4833d152f612bead262723ae23039575">matrix</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>) -&gt; <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>, 1, 1 &gt;</td></tr>
 <tr class="separator:a4833d152f612bead262723ae23039575"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -288,9 +288,9 @@ requires (std::conjunction_v&lt;std::is_same&lt;<a class="el" href="namespacefca
 <tr><td colspan="2"><div class="groupText"><p>A user-definable algebraic division solution.</p>
 <p>Implemented for known libraries. User-definable in other cases. There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
 </div></td></tr>
-<tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a" id="r_ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , algebraic Denominator&gt; </td></tr>
-<tr class="memitem:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae6a34b26f8067a57bfc5de22cb4b625a">operator/</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">rhs</a>) -&gt; <a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">quotient</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt;</td></tr>
-<tr class="separator:ae6a34b26f8067a57bfc5de22cb4b625a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15cb0f145fb2a9a65d2b7f72988758e7" id="r_a15cb0f145fb2a9a65d2b7f72988758e7"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , algebraic Denominator&gt; </td></tr>
+<tr class="memitem:a15cb0f145fb2a9a65d2b7f72988758e7"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a15cb0f145fb2a9a65d2b7f72988758e7">operator/</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">rhs</a>) -&gt; <a class="el" href="namespacefcarouge.xhtml#a3fc114a8d3c5a39e7929ea2a06f0536d">deduce_matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt;</td></tr>
+<tr class="separator:a15cb0f145fb2a9a65d2b7f72988758e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -345,7 +345,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -378,10 +378,10 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <tr class="memitem:a6990cf6953bd2fa9b0a96aa36ad56210"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210">first_t</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">internal::first_t</a>&lt; Types... &gt;</td></tr>
 <tr class="memdesc:a6990cf6953bd2fa9b0a96aa36ad56210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first type of the type template parameter pack.  <br /></td></tr>
 <tr class="separator:a6990cf6953bd2fa9b0a96aa36ad56210"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd64ab811e0773f298e29a93f825c992" id="r_acd64ab811e0773f298e29a93f825c992"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt; </td></tr>
-<tr class="memitem:acd64ab811e0773f298e29a93f825c992"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">quotient</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">internal::quotient</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt;</td></tr>
-<tr class="memdesc:acd64ab811e0773f298e29a93f825c992"><td class="mdescLeft">&#160;</td><td class="mdescRight">The matrix type satisfying <code>X * Row = Column</code>.  <br /></td></tr>
-<tr class="separator:acd64ab811e0773f298e29a93f825c992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fc114a8d3c5a39e7929ea2a06f0536d" id="r_a3fc114a8d3c5a39e7929ea2a06f0536d"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt; </td></tr>
+<tr class="memitem:a3fc114a8d3c5a39e7929ea2a06f0536d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a3fc114a8d3c5a39e7929ea2a06f0536d">deduce_matrix</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a2aa71ba2069d17fb0dd4c73490bf3e63">internal::deduce_matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt;</td></tr>
+<tr class="memdesc:a3fc114a8d3c5a39e7929ea2a06f0536d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The matrix type satisfying <code>X * Row = Column</code>.  <br /></td></tr>
+<tr class="separator:a3fc114a8d3c5a39e7929ea2a06f0536d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77" id="r_a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplParams" colspan="2">template&lt;auto... Values&gt; </td></tr>
 <tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77">first_v</a> {internal::first_v&lt;Values...&gt;}</td></tr>
 <tr class="memdesc:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first value of the non-type template parameter pack.  <br /></td></tr>
@@ -390,7 +390,7 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
 <p>The definitions and implementations of the library intended for public usage. Lowers the name conflict probability in large projects. Use using-declarations or namespace-alias-definition per your project guidelines.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000028">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a6f496dc857f8b172efc57e3ba9bfdbf8" name="a6f496dc857f8b172efc57e3ba9bfdbf8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f496dc857f8b172efc57e3ba9bfdbf8">&#9670;&#160;</a></span>column_vector</h2>
@@ -413,6 +413,27 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3fc114a8d3c5a39e7929ea2a06f0536d" name="a3fc114a8d3c5a39e7929ea2a06f0536d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fc114a8d3c5a39e7929ea2a06f0536d">&#9670;&#160;</a></span>deduce_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="namespacefcarouge.xhtml#a3fc114a8d3c5a39e7929ea2a06f0536d">fcarouge::deduce_matrix</a> = <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typedef</a> <a class="el" href="namespacefcarouge_1_1internal.xhtml#a2aa71ba2069d17fb0dd4c73490bf3e63">internal::deduce_matrix</a>&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The matrix type satisfying <code>X * Row = Column</code>. </p>
+<p>The resulting type of a matrix division. The resulting matrix type has as many rows as the <code>Row</code> matrix, respectively for columns as the <code>Column</code> matrix. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00159">159</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -491,27 +512,6 @@ template&lt;typename... Types&gt; </div>
 
 </div>
 </div>
-<a id="acd64ab811e0773f298e29a93f825c992" name="acd64ab811e0773f298e29a93f825c992"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd64ab811e0773f298e29a93f825c992">&#9670;&#160;</a></span>quotient</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">fcarouge::quotient</a> = <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typedef</a> <a class="el" href="namespacefcarouge_1_1internal.xhtml#aa5e5d81297e01a8f865bec3aee32b0fe">internal::quotient</a>&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a>&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The matrix type satisfying <code>X * Row = Column</code>. </p>
-<p>The resulting type of a matrix division. The resulting matrix type has as many rows as the <code>Row</code> matrix, respectively for columns as the <code>Column</code> matrix. </p>
-
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00159">159</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-
-</div>
-</div>
 <a id="ac13c25e27a85ae315c7996927b7a3c28" name="ac13c25e27a85ae315c7996927b7a3c28"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac13c25e27a85ae315c7996927b7a3c28">&#9670;&#160;</a></span>row_vector</h2>
 
@@ -535,8 +535,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6fcefc6a3f548e5225223c8594e62b65" name="a6fcefc6a3f548e5225223c8594e62b65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fcefc6a3f548e5225223c8594e62b65">&#9670;&#160;</a></span>kalman()</h2>
+<a id="ae4d1dbbab6a8bdcaa50062d0cb879777" name="ae4d1dbbab6a8bdcaa50062d0cb879777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4d1dbbab6a8bdcaa50062d0cb879777">&#9670;&#160;</a></span>kalman()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -548,7 +548,7 @@ template&lt;typename... Arguments&gt; </div>
           <td>(</td>
           <td class="paramtype">Arguments...&#160;</td>
           <td class="paramname"><em>arguments</em></td><td>)</td>
-          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#adafa53269502fa0528cecefc34eb1476">internal::filter_t</a>&lt; Arguments... &gt; &gt;</td>
+          <td> -&gt;  <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#af0c315e1078601955b31e5c902650361">internal::deduce_filter</a>&lt; Arguments... &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1482,8 +1482,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ae6a34b26f8067a57bfc5de22cb4b625a" name="ae6a34b26f8067a57bfc5de22cb4b625a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6a34b26f8067a57bfc5de22cb4b625a">&#9670;&#160;</a></span>operator/() <span class="overload">[2/2]</span></h2>
+<a id="a15cb0f145fb2a9a65d2b7f72988758e7" name="a15cb0f145fb2a9a65d2b7f72988758e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15cb0f145fb2a9a65d2b7f72988758e7">&#9670;&#160;</a></span>operator/() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1508,7 +1508,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td> -&gt; <a class="el" href="namespacefcarouge.xhtml#acd64ab811e0773f298e29a93f825c992">quotient</a>&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a>&gt;</td>
+          <td></td><td> -&gt; <a class="el" href="namespacefcarouge.xhtml#a3fc114a8d3c5a39e7929ea2a06f0536d">deduce_matrix</a>&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a>&gt;</td>
         </tr>
       </table>
   </td>
@@ -1521,7 +1521,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="update__linalg__xx0_8cpp_source.xhtml#l00055">55</a> of file <a class="el" href="update__linalg__xx0_8cpp_source.xhtml">update_linalg_xx0.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>                                                {</div>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>                                                     {</div>
 <div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">rhs</a>.transpose()</div>
 <div class="line"><span class="lineno">   58</span>      .fullPivHouseholderQr()</div>
 <div class="line"><span class="lineno">   59</span>      .solve(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>.transpose())</div>

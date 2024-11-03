@@ -144,7 +144,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  <span class="keyword">auto</span> filter{<a class="code hl_function" href="namespacefcarouge.xhtml#a6fcefc6a3f548e5225223c8594e62b65">kalman</a>{state{vector&lt;5&gt;{0., 0., 0., 0., 0.}}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;vector&lt;4&gt;</a>&gt;,</div>
+<div class="line">  <span class="keyword">auto</span> filter{<a class="code hl_function" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a>{state{vector&lt;5&gt;{0., 0., 0., 0., 0.}}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;vector&lt;4&gt;</a>&gt;,</div>
 <div class="line">                     <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;vector&lt;3&gt;</a>&gt;} |</div>
 <div class="line">              <a class="code hl_variable" href="namespacefcarouge.xhtml#a44762b6a541e61f07ed2b0477b182829">printer</a>};</div>
 <div class="line"> </div>
@@ -154,7 +154,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line">}()}</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a44762b6a541e61f07ed2b0477b182829"><div class="ttname"><a href="namespacefcarouge.xhtml#a44762b6a541e61f07ed2b0477b182829">fcarouge::printer</a></div><div class="ttdeci">constexpr printer_decorator printer</div><div class="ttdef"><b>Definition</b> <a href="printer_8hpp_source.xhtml#l00084">printer.hpp:84</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00075">linalg.hpp:75</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a6fcefc6a3f548e5225223c8594e62b65"><div class="ttname"><a href="namespacefcarouge.xhtml#a6fcefc6a3f548e5225223c8594e62b65">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::filter_t&lt; Arguments... &gt; &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_ae4d1dbbab6a8bdcaa50062d0cb879777"><div class="ttname"><a href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::deduce_filter&lt; Arguments... &gt; &gt;</div></div>
 </div><!-- fragment -->
 <p>Verifies the printer adaptor for multi-dimension filters with input control without additional arguments. </p>
 
@@ -164,12 +164,12 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"><span class="lineno">   53</span>                     <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;vector&lt;3&gt;</a>&gt;} |</div>
 <div class="line"><span class="lineno">   54</span>              printer};</div>
 <div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">filter</a>.predict(0., 0., 0.);</div>
+<div class="line"><span class="lineno">   56</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.predict(0., 0., 0.);</div>
 <div class="line"><span class="lineno">   57</span> </div>
 <div class="line"><span class="lineno">   58</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   59</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00135">kalman.hpp:135</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a20aafbaa1ca1e63d87200afec6d43cc9"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a20aafbaa1ca1e63d87200afec6d43cc9">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr make_filter&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00268">factory.hpp:268</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00268">factory.hpp:268</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
