@@ -248,6 +248,6 @@ var NAVTREEINDEX2 =
 "printer__2x3x4_8cpp.xhtml#a66cd17c2db75800a82ff64e7836a2fcf":[11,0,8,41,1],
 "printer__2x3x4_8cpp.xhtml#ad6796ef28ab07c78abcd86cafd7b6884":[11,0,8,41,0],
 "printer__2x3x4_8cpp_source.xhtml":[11,0,8,41],
-"structfcarouge_1_1matrix.xhtml":[10,0,0,2],
-"structfcarouge_1_1matrix.xhtml":[8,0,0,6]
+"structfcarouge_1_1matrix.xhtml":[8,0,0,6],
+"structfcarouge_1_1matrix.xhtml":[10,0,0,2]
 };
