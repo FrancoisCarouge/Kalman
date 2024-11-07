@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6":[8,0,0,24],
 "namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27":[8,0,0,25],
 "namespacefcarouge.xhtml#aa73759a941a3efd3355642460f4687a3":[8,0,0,40],
 "namespacefcarouge.xhtml#ab7e4a66b8fa71546907279397bb9971a":[8,0,0,46],
@@ -13,7 +14,7 @@ var NAVTREEINDEX2 =
 "namespacefcarouge.xhtml#ae167596e2c65ae7024cbc80f5b5d1974":[8,0,0,28],
 "namespacefcarouge.xhtml#ae2c572219d8e2ce56c12424b71489c59":[8,0,0,48],
 "namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777":[8,0,0,27],
-"namespacefcarouge.xhtml#ae5897f024ee9c1f48da53a27be2fe3cd":[8,0,0,67],
+"namespacefcarouge.xhtml#ae5897f024ee9c1f48da53a27be2fe3cd":[8,0,0,68],
 "namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca":[8,0,0,22],
 "namespacefcarouge.xhtml#af5d9207021a8118ac46558fd9a453d6d":[8,0,0,57],
 "namespacefcarouge_1_1benchmark.xhtml":[8,0,0,0],
@@ -52,8 +53,8 @@ var NAVTREEINDEX2 =
 "namespacefcarouge_1_1internal.xhtml#a24eb1204e458c448bab3a64ba63997d2":[8,0,0,2,32],
 "namespacefcarouge_1_1internal.xhtml#a2aa71ba2069d17fb0dd4c73490bf3e63":[8,0,0,2,1],
 "namespacefcarouge_1_1internal.xhtml#a391e9f47fc94ced668f789ad1516f36e":[8,0,0,2,28],
+"namespacefcarouge_1_1internal.xhtml#a3ee4dd65137b3cd13182d3feb5f60a11":[8,0,0,2,5],
 "namespacefcarouge_1_1internal.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57":[8,0,0,2,8],
-"namespacefcarouge_1_1internal.xhtml#a61c7050558e5ccfe40b4c5d1c5c058b9":[8,0,0,2,31],
 "namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16":[8,0,0,2,16],
 "namespacefcarouge_1_1internal.xhtml#a6cca8649211e25b63b720c4d1ec78945":[8,0,0,2,4],
 "namespacefcarouge_1_1internal.xhtml#a7213754d98a49db89e229e2edd49b6e1":[8,0,0,2,7],
@@ -70,7 +71,7 @@ var NAVTREEINDEX2 =
 "namespacefcarouge_1_1internal.xhtml#ab8daeec88614918cebedf93dd0eeb479":[8,0,0,2,25],
 "namespacefcarouge_1_1internal.xhtml#abd5512d7c57f5fc9d7cccbbc1e4cce1d":[8,0,0,2,17],
 "namespacefcarouge_1_1internal.xhtml#ac24c8049c4e106fceffde09c1b168b98":[8,0,0,2,29],
-"namespacefcarouge_1_1internal.xhtml#ac4cd64c5c6f542f9b5d314b70bf7d8aa":[8,0,0,2,5],
+"namespacefcarouge_1_1internal.xhtml#acc1fdb56d90746f239527e42262d81e1":[8,0,0,2,31],
 "namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629":[8,0,0,2,10],
 "namespacefcarouge_1_1internal.xhtml#ae7938148885cd3b70a96684aace092a7":[8,0,0,2,21],
 "namespacefcarouge_1_1internal.xhtml#af0c315e1078601955b31e5c902650361":[8,0,0,2,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "printer__2x3x4_8cpp.xhtml#a66cd17c2db75800a82ff64e7836a2fcf":[11,0,8,41,1],
 "printer__2x3x4_8cpp.xhtml#ad6796ef28ab07c78abcd86cafd7b6884":[11,0,8,41,0],
 "printer__2x3x4_8cpp_source.xhtml":[11,0,8,41],
-"structfcarouge_1_1matrix.xhtml":[8,0,0,6],
-"structfcarouge_1_1matrix.xhtml":[10,0,0,2]
+"structfcarouge_1_1matrix.xhtml":[8,0,0,6]
 };
