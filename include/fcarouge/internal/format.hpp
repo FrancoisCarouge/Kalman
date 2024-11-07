@@ -84,8 +84,7 @@ struct std::formatter<Filter, Char> {
         format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
 
     if constexpr (fcarouge::has_prediction_types<Filter>) {
-      constexpr auto end{
-          fcarouge::internal::repack_s<typename Filter::prediction_types>};
+      constexpr auto end{fcarouge::size<typename Filter::prediction_types>};
       constexpr decltype(end) begin{0};
       constexpr decltype(end) next{1};
       fcarouge::internal::for_constexpr<begin, end, next>(
@@ -118,8 +117,7 @@ struct std::formatter<Filter, Char> {
 
     //! @todo Inconsistent usage of internal?
     if constexpr (fcarouge::has_update_types<Filter>) {
-      constexpr auto end{
-          fcarouge::internal::repack_s<typename Filter::update_types>};
+      constexpr auto end{fcarouge::size<typename Filter::update_types>};
       constexpr decltype(end) begin{0};
       constexpr decltype(end) next{1};
       fcarouge::internal::for_constexpr<begin, end, next>(
