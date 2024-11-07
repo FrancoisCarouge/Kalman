@@ -229,15 +229,15 @@ template <typename Type> struct repack {
   using type = Type;
 };
 
-template <template <typename...> typename From, typename... Types>
-struct repack<From<Types...>> {
+template <template <typename...> typename Pack, typename... Types>
+struct repack<Pack<Types...>> {
   using type = pack<Types...>;
   static inline constexpr auto size{sizeof...(Types)};
 };
 
-template <typename From> using repack_t = repack<From>::type;
+template <typename Pack> using repack_t = repack<Pack>::type;
 
-template <typename From> inline constexpr auto repack_s{repack<From>::size};
+template <typename Pack> inline constexpr auto size{repack<Pack>::size};
 
 template <typename Type, typename... Types> struct first_type {
   using type = Type;

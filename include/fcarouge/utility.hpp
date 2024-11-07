@@ -146,10 +146,6 @@ using empty_pack = internal::empty_pack;
 //! @brief Unpack the first type of the type template parameter pack.
 template <typename... Types> using first_t = internal::first_t<Types...>;
 
-//! @brief Unpack the first value of the non-type template parameter pack.
-template <auto... Values>
-inline constexpr auto first_v{internal::first_v<Values...>};
-
 //! @brief The matrix type satisfying `X * Row = Column`.
 //!
 //! @details The resulting type of a matrix division. The resulting matrix type
@@ -172,8 +168,15 @@ constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
     -> deduce_matrix<Numerator, Denominator>;
 //! @}
 
-//! @name Algebraic Named Values
+//! @name Named Values
 //! @{
+//! @brief Unpack the first value of the non-type template parameter pack.
+template <auto... Values>
+inline constexpr auto first_v{internal::first_v<Values...>};
+
+//! @brief Count of packed types.
+template <typename Pack> inline constexpr auto size{internal::size<Pack>};
+
 //! @brief The identity matrix.
 //!
 //! @details User-defined.
