@@ -182,7 +182,7 @@ Typedefs</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -315,6 +315,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ac922632c2da8269e8396756088ba9a1f"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f">transpose</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>, Row, Column &gt; &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>)</td></tr>
 <tr class="separator:ac922632c2da8269e8396756088ba9a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Deduction Guides</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Deduces the filter type from its declared configuration.</p>
+<p>The configuration arguments passed are used to determine at compile time the type of fiter to use. The objecive is to select the most performant filter within the defined configuraton parameters.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Arguments</td><td>The declarations of the filter configuration.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo:</a></b></dt><dd><p class="startdd">Should the parameter be named configurations? </p>
+<p class="enddd">Should the configuration examples, supports be documented here? </p>
+</dd></dl>
+</div></td></tr>
 <tr class="memitem:ae4d1dbbab6a8bdcaa50062d0cb879777" id="r_ae4d1dbbab6a8bdcaa50062d0cb879777"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
 <tr class="memitem:ae4d1dbbab6a8bdcaa50062d0cb879777"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a> (Arguments... <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>) -&gt; <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#af0c315e1078601955b31e5c902650361">internal::deduce_filter</a>&lt; Arguments... &gt; &gt;</td></tr>
 <tr class="separator:ae4d1dbbab6a8bdcaa50062d0cb879777"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -395,7 +407,7 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
 <p>The definitions and implementations of the library intended for public usage. Lowers the name conflict probability in large projects. Use using-declarations or namespace-alias-definition per your project guidelines.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000024">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a6f496dc857f8b172efc57e3ba9bfdbf8" name="a6f496dc857f8b172efc57e3ba9bfdbf8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f496dc857f8b172efc57e3ba9bfdbf8">&#9670;&#160;</a></span>column_vector</h2>

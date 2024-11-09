@@ -115,15 +115,15 @@ $(document).ready(function(){initNavTree('kf__1x1x0__building__height_8cpp_sourc
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{<span class="comment">// One can estimate the building height simply by looking at it.</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                <span class="comment">// The estimated state building height is: X = 60 meters.</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                state{60.},</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                <span class="comment">// The building height measurement Z.</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                <span class="comment">// The building height measurement Z in meters.</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;double&gt;</a>,</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                <span class="comment">// A human’s estimation error (standard deviation) is about 15</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                <span class="comment">// meters: σ = 15. Consequently the variance is σ^2 = 225. The</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                <span class="comment">// estimate uncertainty is: P = 225.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                <span class="comment">// estimate uncertainty is: P = 225 m^2.</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                estimate_uncertainty{225.},</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                <span class="comment">// Since the standard deviation σ of the altimeter measurement</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                <span class="comment">// error is 5, the variance σ^2 would be 25, thus the</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <span class="comment">// measurement, output uncertainty is: R = 25.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <span class="comment">// measurement, output uncertainty is: R = 25 m^2.</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                output_uncertainty{25.}};</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(60 == filter.x() &amp;&amp;</div>
