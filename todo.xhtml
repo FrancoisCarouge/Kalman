@@ -98,31 +98,31 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Namespace <a class="el" href="namespacefcarouge.xhtml">fcarouge</a>  </dt>
-<dd><a class="anchor" id="_todo000025"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
+<dd><a class="anchor" id="_todo000024"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
 <dt>Namespace <a class="el" href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a>  </dt>
 <dd><a class="anchor" id="_todo000002"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a432c41f9b06ed9b51f84f7a72c06bde3">fcarouge::kalman&lt; Filter &gt;::g</a>  (this auto &amp;&amp;self)</dt>
-<dd><a class="anchor" id="_todo000034"></a>Do we still need the non-const flavor? </dd>
+<dd><a class="anchor" id="_todo000033"></a>Do we still need the non-const flavor? </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a19a22aa0c26048398d2edd106d71d708">fcarouge::kalman&lt; Filter &gt;::kalman</a>  (const kalman &amp;other)=delete</dt>
-<dd><a class="anchor" id="_todo000029"></a>Implement and test.  </dd>
+<dd><a class="anchor" id="_todo000028"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a93e57bf287eff66d4b4f680ce6b22387">fcarouge::kalman&lt; Filter &gt;::operator=</a>  (const kalman &amp;other) -&gt; kalman &amp;=delete</dt>
-<dd><a class="anchor" id="_todo000030"></a>Implement and test.  </dd>
+<dd><a class="anchor" id="_todo000029"></a>Implement and test.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a4a85603ea16cb72f7b7fc3bfedaa90bd">fcarouge::kalman&lt; Filter &gt;::update</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000037"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000036"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af5b5c43dcc898eab0391ecc90ff7b328">fcarouge::kalman&lt; Filter &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
-<dd><a class="anchor" id="_todo000035"></a>Add measurement post-fit residual by default and example?  </dd>
+<dd><a class="anchor" id="_todo000034"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
-<dd><a class="anchor" id="_todo000028"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
+<dd><a class="anchor" id="_todo000027"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#a4e09c0fca4bfad49789dad31102f07d7">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">Type(&amp;elements)</a>[Row])</dt>
-<dd><a class="anchor" id="_todo000033"></a>Perhaps this is too naive and can be improved?  </dd>
+<dd><a class="anchor" id="_todo000032"></a>Perhaps this is too naive and can be improved?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000032"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000031"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml#a887dd3f3f177feadd1ca42785885897f">std::formatter&lt; Filter, Char &gt;::format</a>  (const Filter &amp;filter, std::basic_format_context&lt; OutputIterator, Char &gt; &amp;format_context) const -&gt; OutputIterator</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Inconsistent usage of internal? </p>
-<p class="interdd"><a class="anchor" id="_todo000003"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000005"></a>Inconsistent usage of internal? </p>
+<p class="interdd"><a class="anchor" id="_todo000004"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
 <p class="enddd"><a class="anchor" id="_todo000001"></a>P2585 may be useful in simplifying and standardizing the support. </p>
 </dd>
 </dl>
