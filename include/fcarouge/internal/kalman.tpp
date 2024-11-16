@@ -43,7 +43,7 @@ namespace fcarouge {
 template <typename Filter>
 template <typename... Arguments>
 inline constexpr kalman<Filter>::kalman(Arguments... arguments)
-    : filter{internal::filter<implementation>(arguments...)} {}
+    : filter{internal::filter<Filter>(arguments...)} {}
 
 template <typename Filter>
 [[nodiscard(
