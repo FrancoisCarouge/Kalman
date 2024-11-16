@@ -76,7 +76,8 @@ using column_vector = Eigen::Vector<Type, Row>;
 //! @}
 } // namespace fcarouge
 
-template <fcarouge::eigen Matrix, typename Char>
+template <typename Matrix, typename Char>
+  requires(fcarouge::eigen<Matrix>)
 struct std::formatter<Matrix, Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
