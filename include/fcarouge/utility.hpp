@@ -146,6 +146,9 @@ using empty_pack = internal::empty_pack;
 //! @brief Unpack the first type of the type template parameter pack.
 template <typename... Types> using first_t = internal::first_t<Types...>;
 
+//! @brief Type of the count of the types in the pack.
+template <typename Pack> using size_t = internal::size_t<Pack>;
+
 //! @brief The matrix type satisfying `X * Row = Column`.
 //!
 //! @details The resulting type of a matrix division. The resulting matrix type
@@ -174,7 +177,7 @@ constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
 template <auto... Values>
 inline constexpr auto first_v{internal::first_v<Values...>};
 
-//! @brief Count of packed types.
+//! @brief Count the packed types.
 template <typename Pack> inline constexpr auto size{internal::size<Pack>};
 
 //! @brief The identity matrix.
@@ -192,6 +195,10 @@ template <typename Type>
   requires requires { Type::Identity(); }
 inline auto identity_v<Type>{Type::Identity()};
 
+template <typename Type>
+  requires requires { Type::identity(); }
+inline auto identity_v<Type>{Type::identity()};
+
 //! @brief The zero matrix.
 //!
 //! @details User-defined.
@@ -206,6 +213,10 @@ inline constexpr Arithmetic zero_v<Arithmetic>{0};
 template <typename Type>
   requires requires { Type::Zero(); }
 inline auto zero_v<Type>{Type::Zero()};
+
+template <typename Type>
+  requires requires { Type::zero(); }
+inline auto zero_v<Type>{Type::zero()};
 //! @}
 } // namespace fcarouge
 
