@@ -60,6 +60,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 //! @name Types
 //! @{
+
 //! @brief A generic Kalman filter.
 //!
 //! @details The Kalman filter is a Bayesian filter that uses multivariate
@@ -115,16 +116,11 @@ namespace fcarouge {
 //! client code.
 //! @todo Should we provide the operator[] for state directly on the filter? Is
 //! the state X always what the user would want?
-//! @todo Should a fluent interface be useful in addition to the imperative and
-//! declarative paradigms support?
 //! @todo Expand std::format support with standard arguments and Eigen3 types?
 //! @todo Support, test complex number filters?
 //! @todo Use automatic (Eigen::AutoDiffScalar?), symbolic, numerical solvers to
 //! define the filter characteristics and simplify solving the dynamic system
 //! for non-mathematicians.
-//! @todo Support, use "Taking Static Type-Safety to the Next Level - Physical
-//! Units for Matrices" by Daniel Withopf and record the lesson learned: both
-//! usage and development is harder without compile time units verification.
 //! @todo Should we add back the call operator? How to resolve the
 //! update/predict ordering? And parameter ordering?
 //! @todo Should we support the noise cross covariance `N = E[wvᵀ]` for
@@ -150,6 +146,7 @@ private:
 public:
   //! @name Public Member Types
   //! @{
+
   //! @brief Type of the state estimate column vector X.
   using state = Filter::state;
 
@@ -175,6 +172,7 @@ public:
 
   //! @name Public Member Functions
   //! @{
+
   //! @brief Constructs a Kalman filter from its declared configuration.
   //!
   //! @see Deduction guide for details.
@@ -183,17 +181,7 @@ public:
   template <typename... Arguments>
   inline constexpr kalman(Arguments... arguments);
 
-  //! @brief Copy constructs a filter.
-  //!
-  //! @details Constructs the filter with the copy of the contents of the
-  //! `other` filter.
-  //!
-  //! @param other Another filter to be used as source to initialize the
-  //! elements of the filter with.
-  //!
-  //! @complexity Constant.
-  //!
-  //! @todo Implement and test.
+  //! @brief Copy constructs a filter, not implemented.
   inline constexpr kalman(const kalman &other) = delete;
 
   //! @brief Move constructs a filter.
@@ -210,20 +198,7 @@ public:
   //! @complexity Constant.
   inline constexpr kalman(kalman &&other) noexcept = default;
 
-  //! @brief Copy assignment operator.
-  //!
-  //! @details Destroys or copy-assigns the contents with a copy of the contents
-  //! of the other filter.
-  //!
-  //! @param other Another filter to be used as source to initialize the
-  //! elements of the filter with.
-  //!
-  //! @return The reference value of this implicit object filter parameter,
-  //! i.e. `*this`.
-  //!
-  //! @complexity Constant.
-  //!
-  //! @todo Implement and test.
+  //! @brief Copy assigns a filter, not implemented.
   inline constexpr auto operator=(const kalman &other) -> kalman & = delete;
 
   //! @brief Move assignment operator.
@@ -253,6 +228,7 @@ public:
 
   //! @name Public Characteristics Member Functions
   //! @{
+
   //! @brief Returns the state estimate column vector X.
   //!
   //! @return The state estimate column vector X.
@@ -485,6 +461,7 @@ public:
 
   //! @name Public Filtering Member Functions
   //! @{
+
   //! @brief Produces estimates of the state variables and uncertainties.
   //!
   //! @details Also known as the propagation step. Implements the total
@@ -593,10 +570,12 @@ using internal::state_transition;
 
 //! @brief Input control types wrapper for filter declaration support.
 using internal::input_control;
+
 //! @}
 
 //! @name Deduction Guides
 //! @{
+
 //! @brief Deduces the filter type from its declared configuration.
 //!
 //! @details The configuration arguments passed are used to determine at compile
@@ -609,6 +588,7 @@ using internal::input_control;
 //! @todo Should the configuration examples, supports be documented here?
 template <typename... Arguments>
 kalman(Arguments... arguments) -> kalman<internal::deduce_filter<Arguments...>>;
+
 //! @}
 } // namespace fcarouge
 

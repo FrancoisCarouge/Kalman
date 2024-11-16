@@ -49,6 +49,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 //! @name Concepts
 //! @{
+
 //! @brief Kalman filter concept.
 //!
 //! @details This library's Kalman filters.
@@ -129,10 +130,12 @@ concept has_update_types = internal::has_update_types<Filter>;
 //! `output_model` type member and `h()` method.
 template <typename Filter>
 concept has_output_model = internal::has_output_model<Filter>;
+
 //! @}
 
 //! @name Types
 //! @{
+
 //! @brief Tuple-like pack type.
 //!
 //! @details An alternative to tuple-like types.
@@ -156,10 +159,12 @@ template <typename Pack> using size_t = internal::size_t<Pack>;
 //! `Column` matrix.
 template <typename Numerator, typename Denominator>
 using deduce_matrix = internal::deduce_matrix<Numerator, Denominator>;
+
 //! @}
 
 //! @name Functions
 //! @{
+
 //! @brief A user-definable algebraic division solution.
 //!
 //! @details Implemented for known libraries. User-definable in other cases.
@@ -169,10 +174,12 @@ using deduce_matrix = internal::deduce_matrix<Numerator, Denominator>;
 template <typename Numerator, algebraic Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
     -> deduce_matrix<Numerator, Denominator>;
+
 //! @}
 
 //! @name Named Values
 //! @{
+
 //! @brief Unpack the first value of the non-type template parameter pack.
 template <auto... Values>
 inline constexpr auto first_v{internal::first_v<Values...>};
@@ -217,6 +224,7 @@ inline auto zero_v<Type>{Type::Zero()};
 template <typename Type>
   requires requires { Type::zero(); }
 inline auto zero_v<Type>{Type::zero()};
+
 //! @}
 } // namespace fcarouge
 

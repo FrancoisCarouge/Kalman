@@ -56,6 +56,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 //! @name Algebraic Types
 //! @{
+
 //! @brief Compile-time sized Eigen3 matrix.
 //!
 //! @details Facade for Eigen3 implementation compatibility.
@@ -73,6 +74,7 @@ using row_vector = Eigen::RowVector<Type, Column>;
 //! @brief Compile-time sized Eigen3 column vector.
 template <typename Type = double, auto Row = 1>
 using column_vector = Eigen::Vector<Type, Row>;
+
 //! @}
 } // namespace fcarouge
 
