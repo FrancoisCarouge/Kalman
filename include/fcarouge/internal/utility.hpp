@@ -223,8 +223,6 @@ struct conditional_member_types : public conditional_input_control<Filter>,
 
 template <typename...> struct pack {};
 
-using empty_pack = pack<>;
-
 template <typename Type> struct repack {
   using type = Type;
 };
@@ -257,27 +255,6 @@ template <typename Type> struct not_implemented {
 
   static_assert(missing, "This type is not implemented. See compiler message.");
 };
-
-template <typename Pack> using repack_t = repack<Pack>::type;
-template <typename Pack> using size_t = repack<Pack>::size_t;
-template <typename... Types> using first_t = first_type<Types...>::type;
-
-template <auto Begin, decltype(Begin) End, decltype(Begin) Increment,
-          typename Function>
-constexpr void for_constexpr(Function &&function) {
-  if constexpr (Begin < End) {
-    function(std::integral_constant<decltype(Begin), Begin>());
-    for_constexpr<Begin + Increment, End, Increment>(function);
-  }
-}
-
-template <typename Pack> inline constexpr auto size{repack<Pack>::size};
-
-template <auto... Values>
-inline constexpr auto first_v{first_value<Values...>::value};
-
-inline constexpr auto adl_transpose{
-    [](const auto &value) { return transpose(value); }};
 
 struct transposer final {
   template <arithmetic Arithmetic>
@@ -313,6 +290,28 @@ struct matrix_deducer final {
 template <typename Lhs, typename Rhs>
 using deduce_matrix =
     std::remove_cvref_t<std::invoke_result_t<matrix_deducer, Lhs, Rhs>>;
+
+using empty_pack = pack<>;
+
+template <typename Pack> using repack_t = repack<Pack>::type;
+
+template <typename Pack> using size_t = repack<Pack>::size_t;
+
+template <typename... Types> using first_t = first_type<Types...>::type;
+
+template <auto Begin, decltype(Begin) End, decltype(Begin) Increment,
+          typename Function>
+constexpr void for_constexpr(Function &&function) {
+  if constexpr (Begin < End) {
+    function(std::integral_constant<decltype(Begin), Begin>());
+    for_constexpr<Begin + Increment, End, Increment>(function);
+  }
+}
+
+template <typename Pack> inline constexpr auto size{repack<Pack>::size};
+
+template <auto... Values>
+inline constexpr auto first_v{first_value<Values...>::value};
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP
