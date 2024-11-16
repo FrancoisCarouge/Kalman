@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"kalman__constructor__default__5x1x3_8cpp.xhtml#aa08c33574326588ce0f4bf47006a130c":[11,0,8,6,2],
-"kalman__constructor__default__5x1x3_8cpp.xhtml#ab014392d5339532eccbf32170d56b332":[11,0,8,6,0],
 "kalman__constructor__default__5x1x3_8cpp.xhtml#acba4f81fd7736f7b0fe2944619343e14":[11,0,8,6,1],
 "kalman__constructor__default__5x1x3_8cpp_source.xhtml":[11,0,8,6],
 "kalman__constructor__default__5x4x0_8cpp.xhtml":[11,0,8,7],
@@ -249,5 +247,7 @@ var NAVTREEINDEX1 =
 "namespacefcarouge.xhtml#a84939a609e68330c2689aff14d978311":[8,0,0,54],
 "namespacefcarouge.xhtml#a8b4bd4d4faffe7e3602ee3e2b6717ffd":[8,0,0,65],
 "namespacefcarouge.xhtml#a8cc0f52579fef5ea2023d3927a3b1a7f":[8,0,0,67],
-"namespacefcarouge.xhtml#a9108ead75805595ef37c2f5a3ddc7158":[8,0,0,61]
+"namespacefcarouge.xhtml#a9108ead75805595ef37c2f5a3ddc7158":[8,0,0,61],
+"namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6":[8,0,0,24],
+"namespacefcarouge.xhtml#a91f036e0b0ddd519558a5a9feadb44de":[8,0,0,69]
 };
