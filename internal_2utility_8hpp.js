@@ -6,7 +6,6 @@ var internal_2utility_8hpp =
     [ "repack_t", "internal_2utility_8hpp.xhtml#a3ee4dd65137b3cd13182d3feb5f60a11", null ],
     [ "size_t", "internal_2utility_8hpp.xhtml#a408f0309c3fef167dbee0d974f75bc23", null ],
     [ "for_constexpr", "internal_2utility_8hpp.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57", null ],
-    [ "adl_transpose", "internal_2utility_8hpp.xhtml#ab8daeec88614918cebedf93dd0eeb479", null ],
     [ "first_v", "internal_2utility_8hpp.xhtml#a08c486af5cba5a0b71c8b2b8fd13a1d5", null ],
     [ "size", "internal_2utility_8hpp.xhtml#acc1fdb56d90746f239527e42262d81e1", null ]
 ];
