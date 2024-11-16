@@ -129,6 +129,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
 Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1kalman__filter.xhtml">fcarouge::kalman_filter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kalman filter concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptfcarouge_1_1arithmetic.xhtml">fcarouge::arithmetic</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arithmetic concept. <br /></td></tr>
@@ -167,40 +168,9 @@ Concepts</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Types</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>A generic Kalman filter.</p>
-<p>The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians and predicts estimates by adding Gaussians. Designing a filter is as much art as science. Design the state $X$, $P$, the process $F$, $Q$, the measurement $Z$, $R$, the measurement function $H$, and if the system has control inputs $U$, $G$.</p>
-<p>This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Filter</td><td>Exposition only. The deduced internal filter template parameter. Class template argument deduction (CTAD) figures out the filter type based on the declared configuration. See deduction guide. The internal implementation, filtering strategies, and presence of members vary based on the constructed, configured, declared, or deduced filter.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo:</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
-<p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
-<p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
-<p class="interdd">Would we want to support smoothers? </p>
-<p class="interdd">Prepare support for larger dataset recording for graphing, metrics of large test data to facilitate tuning. </p>
-<p class="interdd">Support filter generator from equation? Third party integration? </p>
-<p class="interdd">Compare performance of general filter with its equivalent generated? </p>
-<p class="interdd">Support ranges operator filter? </p>
-<p class="interdd">Support mux pipes <a href="https://github.com/joboccara/pipes">https://github.com/joboccara/pipes</a> operator filter? </p>
-<p class="interdd">Reproduce Ardupilot's inertial navigation EKF and comparison benchmarks in SITL (software in the loop simulation). </p>
-<p class="interdd">Should we provide the operator[] for the vector characteristics regardless of implementation? And for the matrix ones too? It could simplify client code. </p>
-<p class="interdd">Should we provide the operator[] for state directly on the filter? Is the state X always what the user would want? </p>
-<p class="interdd">Should a fluent interface be useful in addition to the imperative and declarative paradigms support? </p>
-<p class="interdd">Expand std::format support with standard arguments and Eigen3 types? </p>
-<p class="interdd">Support, test complex number filters? </p>
-<p class="interdd">Use automatic (Eigen::AutoDiffScalar?), symbolic, numerical solvers to define the filter characteristics and simplify solving the dynamic system for non-mathematicians. </p>
-<p class="interdd">Support, use "Taking Static Type-Safety to the Next Level - Physical
-Units for Matrices" by Daniel Withopf and record the lesson learned: both usage and development is harder without compile time units verification. </p>
-<p class="interdd">Should we add back the call operator? How to resolve the update/predict ordering? And parameter ordering? </p>
-<p class="interdd">Should we support the noise cross covariance <code>N = E[wvᵀ]</code> for correlated noise sources, with default to null? </p>
-<p class="enddd">Can we implement Temporal Parallelization of Bayesian Smoothers, Simo Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez, <a href="https://arxiv.org/pdf/1905.13002.pdf">https://arxiv.org/pdf/1905.13002.pdf</a> ? GPU implementation? Parallel implementation? </p>
-</dd></dl>
-</div></td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27" id="r_aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:aa5a28afb4550bbcbd55d875351de6e27"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aa5a28afb4550bbcbd55d875351de6e27">fcarouge::pack</a> = internal::pack&lt; Types... &gt;</td></tr>
+<tr class="memdesc:aa5a28afb4550bbcbd55d875351de6e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like pack type.  <br /></td></tr>
 <tr class="separator:aa5a28afb4550bbcbd55d875351de6e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af07a5637ebbb4bd8c0244134151732ca" id="r_af07a5637ebbb4bd8c0244134151732ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca">fcarouge::empty_pack</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">internal::empty_pack</a></td></tr>
 <tr class="memdesc:af07a5637ebbb4bd8c0244134151732ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple-like empty pack type.  <br /></td></tr>
@@ -221,20 +191,17 @@ Units for Matrices" by Daniel Withopf and record the lesson learned: both usage 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>A user-definable algebraic division solution.</p>
-<p>Implemented for known libraries. User-definable in other cases. There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
-</div></td></tr>
 <tr class="memitem:a15cb0f145fb2a9a65d2b7f72988758e7" id="r_a15cb0f145fb2a9a65d2b7f72988758e7"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , algebraic Denominator&gt; </td></tr>
 <tr class="memitem:a15cb0f145fb2a9a65d2b7f72988758e7"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a15cb0f145fb2a9a65d2b7f72988758e7">fcarouge::operator/</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">rhs</a>) -&gt; <a class="el" href="namespacefcarouge.xhtml#a3fc114a8d3c5a39e7929ea2a06f0536d">deduce_matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt;</td></tr>
+<tr class="memdesc:a15cb0f145fb2a9a65d2b7f72988758e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A user-definable algebraic division solution.  <br /></td></tr>
 <tr class="separator:a15cb0f145fb2a9a65d2b7f72988758e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Named Values</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>Unpack the first value of the non-type template parameter pack. </p>
-</div></td></tr>
 <tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77" id="r_a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplParams" colspan="2">template&lt;auto... Values&gt; </td></tr>
 <tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77">fcarouge::first_v</a> {internal::first_v&lt;Values...&gt;}</td></tr>
+<tr class="memdesc:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first value of the non-type template parameter pack.  <br /></td></tr>
 <tr class="separator:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b4bd4d4faffe7e3602ee3e2b6717ffd" id="r_a8b4bd4d4faffe7e3602ee3e2b6717ffd"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Pack</a> &gt; </td></tr>
 <tr class="memitem:a8b4bd4d4faffe7e3602ee3e2b6717ffd"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a8b4bd4d4faffe7e3602ee3e2b6717ffd">fcarouge::size</a> {internal::size&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Pack</a>&gt;}</td></tr>
