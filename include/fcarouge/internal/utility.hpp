@@ -282,8 +282,6 @@ struct transposer final {
     return value;
   }
 
-  //! @todo Remove and always rely on ADL and require implementation in linear
-  //! algebra support?
   template <typename Matrix>
     requires requires(Matrix value) { value.transpose(); }
   [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
@@ -291,8 +289,9 @@ struct transposer final {
   }
 
   template <typename Matrix>
+    requires requires(Matrix value) { transpose(value); }
   [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
-    return adl_transpose(value);
+    return transpose(value);
   }
 };
 
@@ -301,11 +300,8 @@ struct matrix_deducer final {
   [[nodiscard]] inline constexpr auto
   operator()(Lhs lhs, Rhs rhs) const -> decltype(lhs * transposer{}(rhs));
 
-  template <eigen Lhs, arithmetic Rhs>
-  [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
-      typename decltype(lhs * transposer{}(rhs))::PlainMatrix;
-
-  template <typename Lhs, eigen Rhs>
+  template <typename Lhs, typename Rhs>
+    requires(eigen<Lhs> or eigen<Rhs>)
   [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
       typename decltype(lhs * transposer{}(rhs))::PlainMatrix;
 };
