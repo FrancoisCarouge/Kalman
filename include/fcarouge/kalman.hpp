@@ -91,7 +91,9 @@ namespace fcarouge {
 //!
 //! @tparam Filter Exposition only. The deduced internal filter template
 //! parameter. Class template argument deduction (CTAD) figures out the filter
-//! type based on the declared configuration. See deduction guide.
+//! type based on the declared configuration. See deduction guide. The internal
+//! implementation, filtering strategies, and presence of members vary based on
+//! the constructed, configured, declared, or deduced filter.
 //!
 //! @todo Make this class usable in constant expressions.
 //! @todo Is this filter restricted to Newton's equations of motion? That is
@@ -134,49 +136,41 @@ namespace fcarouge {
 template <typename Filter>
 class kalman : public internal::conditional_member_types<Filter> {
 private:
-  //! @name Private Member Types
-  //! @{
-  //! @brief Implementation details of the filter.
-  //!
-  //! @details The internal implementation, filtering strategies, and presence
-  //! of members vary based on the constructed, configured, declared, deduced
-  //! filter.
-  using implementation = Filter;
-  //! @}
-
   //! @name Private Member Variables
   //! @{
+
   //! @brief Encapsulates the implementation details of the filter.
   //!
   //! @details Optionally exposes a variety of members and methods according to
   //! the selected implementation.
-  implementation filter;
+  Filter filter;
+
   //! @}
 
 public:
   //! @name Public Member Types
   //! @{
   //! @brief Type of the state estimate column vector X.
-  using state = implementation::state;
+  using state = Filter::state;
 
   //! @brief Type of the observation column vector Z.
   //!
   //! @details Also known as Y or O.
-  using output = implementation::output;
+  using output = Filter::output;
 
   //! @brief Type of the estimated correlated variance matrix P.
   //!
   //! @details Also known as Σ.
-  using estimate_uncertainty = implementation::estimate_uncertainty;
+  using estimate_uncertainty = Filter::estimate_uncertainty;
 
   //! @brief Type of the gain matrix K.
-  using gain = implementation::gain;
+  using gain = Filter::gain;
 
   //! @brief Type of the innovation column vector Y.
-  using innovation = implementation::innovation;
+  using innovation = Filter::innovation;
 
   //! @brief Type of the innovation uncertainty matrix S.
-  using innovation_uncertainty = implementation::innovation_uncertainty;
+  using innovation_uncertainty = Filter::innovation_uncertainty;
   //! @}
 
   //! @name Public Member Functions
