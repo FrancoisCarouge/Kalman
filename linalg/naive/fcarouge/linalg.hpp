@@ -52,6 +52,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 //! @name Algebraic Types
 //! @{
+
 //! @brief Naive matrix.
 //!
 //! @details An array-of-arrays naive implementation matrix. The implementation
@@ -93,7 +94,6 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
   inline constexpr explicit matrix(Type (&elements)[Row])
     requires(Row != 1 && Column == 1)
   {
-    //! @todo Perhaps this is too naive and can be improved?
     for (decltype(Row) i{0}; i < Row; ++i) {
       data[i][0] = elements[i];
     }
@@ -172,10 +172,12 @@ using row_vector = matrix<Type, decltype(Column){1}, Column>;
 //! @brief Column vector.
 template <typename Type = double, auto Row = 1>
 using column_vector = matrix<Type, Row, decltype(Row){1}>;
+
 //! @}
 
 //! @name Deduction Guides
 //! @{
+
 template <typename Type> matrix(Type) -> matrix<Type, 1, 1>;
 
 template <typename Type, auto Row, auto Column>
@@ -191,10 +193,12 @@ matrix(const Types (&...rows)[Columns])
     -> matrix<std::remove_cvref_t<first_t<Types...>>, sizeof...(Columns),
               //! @todo Should this be `first_v<Columns...>` instead?
               (Columns, ...)>;
+
 //! @}
 
 //! @name Algebraic Named Values
 //! @{
+
 //! @brief The identity matrix naive specialization.
 template <typename Type, auto Row, auto Column>
 inline constexpr matrix<Type, Row, Column>
@@ -212,6 +216,7 @@ inline constexpr matrix<Type, Row, Column>
 //! @brief The zero matrix naive specialization.
 template <typename Type, auto Row, auto Column>
 inline constexpr matrix<Type, Row, Column> zero_v<matrix<Type, Row, Column>>{};
+
 //! @}
 
 template <typename Type, auto Row, auto Column>
