@@ -232,25 +232,35 @@ template <typename Type> struct repack {
 template <template <typename...> typename Pack, typename... Types>
 struct repack<Pack<Types...>> {
   using type = pack<Types...>;
+  using size_t = std::remove_const_t<decltype(sizeof...(Types))>;
+
   static inline constexpr auto size{sizeof...(Types)};
 };
-
-template <typename Pack> using repack_t = repack<Pack>::type;
-
-template <typename Pack> inline constexpr auto size{repack<Pack>::size};
 
 template <typename Type, typename... Types> struct first_type {
   using type = Type;
 };
 
-template <typename... Types> using first_t = first_type<Types...>::type;
-
 template <auto Value, auto... Values> struct first_value {
   static constexpr auto value{Value};
 };
 
-template <auto... Values>
-inline constexpr auto first_v{first_value<Values...>::value};
+template <typename Type> struct not_implemented {
+  template <auto Size>
+  inline constexpr explicit not_implemented(
+      [[maybe_unused]] const char (&message)[Size]) {
+    // The argument message is printed in the compiler error output.
+  }
+
+  static constexpr auto type_dependent_false{sizeof(Type) != sizeof(Type)};
+  static constexpr auto missing{type_dependent_false};
+
+  static_assert(missing, "This type is not implemented. See compiler message.");
+};
+
+template <typename Pack> using repack_t = repack<Pack>::type;
+template <typename Pack> using size_t = repack<Pack>::size_t;
+template <typename... Types> using first_t = first_type<Types...>::type;
 
 template <auto Begin, decltype(Begin) End, decltype(Begin) Increment,
           typename Function>
@@ -261,16 +271,10 @@ constexpr void for_constexpr(Function &&function) {
   }
 }
 
-template <typename Dependent>
-constexpr auto type_dependent_false{sizeof(Dependent) != sizeof(Dependent)};
+template <typename Pack> inline constexpr auto size{repack<Pack>::size};
 
-template <typename Type> struct not_implemented {
-  static constexpr auto none{type_dependent_false<Type>};
-  template <auto Size>
-  inline constexpr explicit not_implemented(
-      [[maybe_unused]] const char (&message)[Size]) {}
-  static_assert(none, "This type is not implemented. See message.");
-};
+template <auto... Values>
+inline constexpr auto first_v{first_value<Values...>::value};
 
 inline constexpr auto adl_transpose{
     [](const auto &value) { return transpose(value); }};
