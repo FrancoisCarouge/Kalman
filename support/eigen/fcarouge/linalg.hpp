@@ -94,8 +94,7 @@ constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
       .transpose();
 }
 
-template <typename Matrix, typename Char>
-  requires(fcarouge::eigen<Matrix>)
+template <fcarouge::eigen Matrix, typename Char>
 struct std::formatter<Matrix, Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
