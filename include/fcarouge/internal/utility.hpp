@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_INTERNAL_UTILITY_HPP
 
 #include <concepts>
+#include <tuple>
 #include <type_traits>
 
 namespace fcarouge::internal {
@@ -221,22 +222,16 @@ struct conditional_member_types : public conditional_input_control<Filter>,
                                   conditional_state_transition<Filter>,
                                   conditional_update_types<Filter> {};
 
-template <typename...> struct pack {};
-
 template <typename Type> struct repack {
   using type = Type;
 };
 
 template <template <typename...> typename Pack, typename... Types>
 struct repack<Pack<Types...>> {
-  using type = pack<Types...>;
+  using type = std::tuple<Types...>;
   using size_t = std::remove_const_t<decltype(sizeof...(Types))>;
 
   static inline constexpr auto size{sizeof...(Types)};
-};
-
-template <typename Type, typename... Types> struct first_type {
-  using type = Type;
 };
 
 template <auto Value, auto... Values> struct first_value {
@@ -291,13 +286,14 @@ template <typename Lhs, typename Rhs>
 using deduce_matrix =
     std::remove_cvref_t<std::invoke_result_t<matrix_deducer, Lhs, Rhs>>;
 
-using empty_pack = pack<>;
+using empty_tuple = std::tuple<>;
 
 template <typename Pack> using repack_t = repack<Pack>::type;
 
 template <typename Pack> using size_t = repack<Pack>::size_t;
 
-template <typename... Types> using first_t = first_type<Types...>::type;
+template <typename... Types>
+using first_t = std::tuple_element_t<0, std::tuple<Types...>>;
 
 template <auto Begin, decltype(Begin) End, decltype(Begin) Increment,
           typename Function>

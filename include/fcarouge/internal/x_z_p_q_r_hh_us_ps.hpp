@@ -51,8 +51,8 @@ struct x_z_p_q_r_hh_us_ps final {};
 
 template <typename State, typename Output, typename... UpdateTypes,
           typename... PredictionTypes>
-struct x_z_p_q_r_hh_us_ps<State, Output, pack<UpdateTypes...>,
-                          pack<PredictionTypes...>> {
+struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
+                          std::tuple<PredictionTypes...>> {
   using state = State;
   using output = Output;
   using estimate_uncertainty = deduce_matrix<state, state>;
