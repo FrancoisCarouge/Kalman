@@ -41,7 +41,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
+#include <cstddef>
 #include <format>
+#include <tuple>
 #include <type_traits>
 
 template <fcarouge::kalman_filter Filter, typename Char>
@@ -84,9 +86,10 @@ struct std::formatter<Filter, Char> {
         format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
 
     if constexpr (fcarouge::has_prediction_types<Filter>) {
-      constexpr auto end{fcarouge::size<typename Filter::prediction_types>};
-      constexpr decltype(end) begin{0};
-      constexpr decltype(end) next{1};
+      constexpr std::size_t end{
+          std::tuple_size_v<typename Filter::prediction_types>};
+      constexpr std::size_t begin{0};
+      constexpr std::size_t next{1};
       fcarouge::internal::for_constexpr<begin, end, next>(
           [&format_context, &filter](auto position) {
             format_context.advance_to(std::format_to(
@@ -117,9 +120,10 @@ struct std::formatter<Filter, Char> {
 
     //! @todo Inconsistent usage of internal?
     if constexpr (fcarouge::has_update_types<Filter>) {
-      constexpr auto end{fcarouge::size<typename Filter::update_types>};
-      constexpr decltype(end) begin{0};
-      constexpr decltype(end) next{1};
+      constexpr std::size_t end{
+          std::tuple_size_v<typename Filter::update_types>};
+      constexpr std::size_t begin{0};
+      constexpr std::size_t next{1};
       fcarouge::internal::for_constexpr<begin, end, next>(
           [&format_context, &filter](auto position) {
             format_context.advance_to(

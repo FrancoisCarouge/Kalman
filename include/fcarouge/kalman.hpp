@@ -490,7 +490,7 @@ public:
   //! argument types.
   //!
   //! @return The prediction argument corresponding to the Nth position of the
-  //! parameter pack of the tuple-like `PredictionTypes` class template type.
+  //! parameter pack of the tuple `PredictionTypes` class template type.
   //!
   //! @complexity Constant.
   template <std::size_t Position> inline constexpr auto predict() const;
@@ -523,7 +523,7 @@ public:
   //! argument types.
   //!
   //! @return The update argument corresponding to the Nth position of the
-  //! parameter pack of the tuple-like `UpdateTypes` class template type.
+  //! parameter pack of the tuple `UpdateTypes` class template type.
   //!
   //! @complexity Constant.
   template <std::size_t Position> inline constexpr auto update() const;

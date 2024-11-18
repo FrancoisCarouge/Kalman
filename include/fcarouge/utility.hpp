@@ -136,21 +136,15 @@ concept has_output_model = internal::has_output_model<Filter>;
 //! @name Types
 //! @{
 
-//! @brief Tuple-like pack type.
+//! @brief Type of the empty tuple.
 //!
-//! @details An alternative to tuple-like types.
-template <typename... Types> using pack = internal::pack<Types...>;
-
-//! @brief Tuple-like empty pack type.
-//!
-//! @details A `pack` type with no composed types.
-using empty_pack = internal::empty_pack;
+//! @details A tuple with no `pack` types.
+using empty_tuple = internal::empty_tuple;
 
 //! @brief Unpack the first type of the type template parameter pack.
+//!
+//! @details Shorthand for `std::tuple_element_t<0, std::tuple<Types...>>`.
 template <typename... Types> using first_t = internal::first_t<Types...>;
-
-//! @brief Type of the count of the types in the pack.
-template <typename Pack> using size_t = internal::size_t<Pack>;
 
 //! @brief The matrix type satisfying `X * Row = Column`.
 //!
@@ -183,9 +177,6 @@ constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
 //! @brief Unpack the first value of the non-type template parameter pack.
 template <auto... Values>
 inline constexpr auto first_v{internal::first_v<Values...>};
-
-//! @brief Count the packed types.
-template <typename Pack> inline constexpr auto size{internal::size<Pack>};
 
 //! @brief The identity matrix.
 //!

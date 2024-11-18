@@ -51,8 +51,8 @@ struct x_z_u_p_q_r_f_g_ps final {};
 
 template <typename State, typename Output, typename Input,
           typename... UpdateTypes, typename... PredictionTypes>
-struct x_z_u_p_q_r_f_g_ps<State, Output, Input, pack<UpdateTypes...>,
-                          pack<PredictionTypes...>> {
+struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
+                          std::tuple<PredictionTypes...>> {
   using state = State;
   using output = Output;
   using input = Input;
