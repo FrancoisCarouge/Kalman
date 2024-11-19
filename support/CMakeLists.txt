@@ -36,6 +36,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+add_subdirectory("eigen")
+add_subdirectory("main")
+add_subdirectory("naive")
+
 add_library(kalman_options INTERFACE)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
