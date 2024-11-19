@@ -29,7 +29,7 @@ jobs:
           -iname '*.hpp' \
           -o -iname '*.tpp' \
           -o -iname '*.cpp' \
-          -o -iwholename './support/generator' \
+          -o -iwholename './support/generator/generator' \
           | xargs \
           clang-format-18 --Werror --dry-run --verbose -style=file
         find . \
