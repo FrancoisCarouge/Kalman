@@ -1,7 +1,7 @@
 var searchData=
 [
   ['ekf_5f4x1x0_5fsoaring_2ecpp_0',['ekf_4x1x0_soaring.cpp',['../ekf__4x1x0__soaring_8cpp.xhtml',1,'']]],
-  ['empty_5fpack_1',['empty_pack',['../namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503',1,'fcarouge::internal::empty_pack'],['../namespacefcarouge.xhtml#af07a5637ebbb4bd8c0244134151732ca',1,'fcarouge::empty_pack']]],
+  ['empty_5ftuple_1',['empty_tuple',['../namespacefcarouge_1_1internal.xhtml#a6414f1d3a6a49ab8e358d9610a1f756f',1,'fcarouge::internal::empty_tuple'],['../namespacefcarouge.xhtml#a745cc8853476d73277a9f3a89de15381',1,'fcarouge::empty_tuple']]],
   ['end_2',['end',['../structfcarouge_1_1matrix.xhtml#a35e3b25e4af7bfcc97c5bdc3446a4c01',1,'fcarouge::matrix']]],
   ['enforcement_3',['Enforcement',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement',1,'']]],
   ['estimate_5funcertainty_4',['estimate_uncertainty',['../classfcarouge_1_1kalman.xhtml#a4d295d2fd3d932f6991e80dd4f91fa90',1,'fcarouge::kalman::estimate_uncertainty'],['../namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b',1,'fcarouge::internal::estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;'],['../namespacefcarouge_1_1internal.xhtml#a7213754d98a49db89e229e2edd49b6e1',1,'fcarouge::internal::estimate_uncertainty(std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; estimate_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;']]],

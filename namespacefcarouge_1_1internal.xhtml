@@ -146,8 +146,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>filter_deducer</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>first_type</b></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>first_value</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>function</b></td></tr>
@@ -174,8 +172,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>output_uncertainty</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>pack</b></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>prediction_types_t</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>process_uncertainty</b></td></tr>
@@ -198,7 +194,7 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_q_r_hh_us_ps</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_q_r_hh_us_ps&lt; State, Output, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_q_r_hh_us_ps&lt; State, Output, std::tuple&lt; UpdateTypes... &gt;, std::tuple&lt; PredictionTypes... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_p_qq_rr_f</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,11 +202,11 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_f_g_ps</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_f_g_ps&lt; State, Output, Input, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_f_g_ps&lt; State, Output, Input, std::tuple&lt; UpdateTypes... &gt;, std::tuple&lt; PredictionTypes... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_us_ps</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_us_ps&lt; State, Output, Input, pack&lt; UpdateTypes... &gt;, pack&lt; PredictionTypes... &gt; &gt;</b></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>x_z_u_p_q_r_us_ps&lt; State, Output, Input, std::tuple&lt; UpdateTypes... &gt;, std::tuple&lt; PredictionTypes... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -224,17 +220,17 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a2aa71ba2069d17fb0dd4c73490bf3e63" id="r_a2aa71ba2069d17fb0dd4c73490bf3e63"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Lhs</a> , <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Rhs</a> &gt; </td></tr>
 <tr class="memitem:a2aa71ba2069d17fb0dd4c73490bf3e63"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a2aa71ba2069d17fb0dd4c73490bf3e63">deduce_matrix</a> = std::remove_cvref_t&lt; std::invoke_result_t&lt; matrix_deducer, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Lhs</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Rhs</a> &gt; &gt;</td></tr>
 <tr class="separator:a2aa71ba2069d17fb0dd4c73490bf3e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a990c3b3d2e7c4889c7f666cc8e82c503" id="r_a990c3b3d2e7c4889c7f666cc8e82c503"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">empty_pack</a> = pack&lt;&gt;</td></tr>
-<tr class="separator:a990c3b3d2e7c4889c7f666cc8e82c503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6414f1d3a6a49ab8e358d9610a1f756f" id="r_a6414f1d3a6a49ab8e358d9610a1f756f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a6414f1d3a6a49ab8e358d9610a1f756f">empty_tuple</a> = std::tuple&lt;&gt;</td></tr>
+<tr class="separator:a6414f1d3a6a49ab8e358d9610a1f756f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ee4dd65137b3cd13182d3feb5f60a11" id="r_a3ee4dd65137b3cd13182d3feb5f60a11"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Pack</a> &gt; </td></tr>
 <tr class="memitem:a3ee4dd65137b3cd13182d3feb5f60a11"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a3ee4dd65137b3cd13182d3feb5f60a11">repack_t</a> = repack&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Pack</a> &gt;::type</td></tr>
 <tr class="separator:a3ee4dd65137b3cd13182d3feb5f60a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a408f0309c3fef167dbee0d974f75bc23" id="r_a408f0309c3fef167dbee0d974f75bc23"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Pack</a> &gt; </td></tr>
 <tr class="memitem:a408f0309c3fef167dbee0d974f75bc23"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a408f0309c3fef167dbee0d974f75bc23">size_t</a> = repack&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Pack</a> &gt;::size_t</td></tr>
 <tr class="separator:a408f0309c3fef167dbee0d974f75bc23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09a84321249de040016ea5d79c016482" id="r_a09a84321249de040016ea5d79c016482"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:a09a84321249de040016ea5d79c016482"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">first_t</a> = first_type&lt; Types... &gt;::type</td></tr>
-<tr class="separator:a09a84321249de040016ea5d79c016482"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16abfbd7977e3b5d3da88319f14d9228" id="r_a16abfbd7977e3b5d3da88319f14d9228"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a16abfbd7977e3b5d3da88319f14d9228"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a16abfbd7977e3b5d3da88319f14d9228">first_t</a> = std::tuple_element_t&lt; 0, std::tuple&lt; Types... &gt; &gt;</td></tr>
+<tr class="separator:a16abfbd7977e3b5d3da88319f14d9228"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -248,7 +244,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a040f0f8f1c580c270311aac67e8706e6"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a040f0f8f1c580c270311aac67e8706e6">state</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>) -&gt; state&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt;</td></tr>
 <tr class="separator:a040f0f8f1c580c270311aac67e8706e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7938148885cd3b70a96684aace092a7" id="r_ae7938148885cd3b70a96684aace092a7"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:ae7938148885cd3b70a96684aace092a7"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ae7938148885cd3b70a96684aace092a7">state</a> (Types... elements) -&gt; state&lt; std::remove_cvref_t&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">first_t</a>&lt; Types... &gt; &gt;[sizeof...(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Types</a>)]&gt;</td></tr>
+<tr class="memitem:ae7938148885cd3b70a96684aace092a7"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ae7938148885cd3b70a96684aace092a7">state</a> (Types... elements) -&gt; state&lt; std::remove_cvref_t&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a16abfbd7977e3b5d3da88319f14d9228">first_t</a>&lt; Types... &gt; &gt;[sizeof...(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Types</a>)]&gt;</td></tr>
 <tr class="separator:ae7938148885cd3b70a96684aace092a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f2c9f1d6c11710ebe51a102f09e170b" id="r_a8f2c9f1d6c11710ebe51a102f09e170b"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt; </td></tr>
 <tr class="memitem:a8f2c9f1d6c11710ebe51a102f09e170b"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a>) -&gt; estimate_uncertainty&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Element</a> &gt;</td></tr>
@@ -323,7 +319,7 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Internal implementation details. </p>
 <p>Solely intended for this library usage. Do not rely on these details in your projects.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000001">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="af0c315e1078601955b31e5c902650361" name="af0c315e1078601955b31e5c902650361"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0c315e1078601955b31e5c902650361">&#9670;&#160;</a></span>deduce_filter</h2>
@@ -339,7 +335,7 @@ template&lt;typename... Arguments&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00271">271</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00273">273</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -357,28 +353,28 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00291">291</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00286">286</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a990c3b3d2e7c4889c7f666cc8e82c503" name="a990c3b3d2e7c4889c7f666cc8e82c503"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a990c3b3d2e7c4889c7f666cc8e82c503">&#9670;&#160;</a></span>empty_pack</h2>
+<a id="a6414f1d3a6a49ab8e358d9610a1f756f" name="a6414f1d3a6a49ab8e358d9610a1f756f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6414f1d3a6a49ab8e358d9610a1f756f">&#9670;&#160;</a></span>empty_tuple</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="namespacefcarouge_1_1internal.xhtml#a990c3b3d2e7c4889c7f666cc8e82c503">fcarouge::internal::empty_pack</a> = <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typedef</a> pack&lt;&gt;</td>
+          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="namespacefcarouge_1_1internal.xhtml#a6414f1d3a6a49ab8e358d9610a1f756f">fcarouge::internal::empty_tuple</a> = <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typedef</a> std::tuple&lt;&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00294">294</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00289">289</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a09a84321249de040016ea5d79c016482" name="a09a84321249de040016ea5d79c016482"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09a84321249de040016ea5d79c016482">&#9670;&#160;</a></span>first_t</h2>
+<a id="a16abfbd7977e3b5d3da88319f14d9228" name="a16abfbd7977e3b5d3da88319f14d9228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16abfbd7977e3b5d3da88319f14d9228">&#9670;&#160;</a></span>first_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -386,12 +382,12 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 template&lt;typename... Types&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">fcarouge::internal::first_t</a> = <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typedef</a> first_type&lt;Types...&gt;::type</td>
+          <td class="memname"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">using</a> <a class="el" href="namespacefcarouge_1_1internal.xhtml#a16abfbd7977e3b5d3da88319f14d9228">fcarouge::internal::first_t</a> = <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typedef</a> std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00300">300</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00296">296</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -427,7 +423,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00296">296</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00291">291</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -445,7 +441,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00298">298</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00293">293</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -543,13 +539,13 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00304">304</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  304</span>                                                  {</div>
-<div class="line"><span class="lineno">  305</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a> &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">End</a>) {</div>
-<div class="line"><span class="lineno">  306</span>    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(std::integral_constant&lt;<span class="keyword">decltype</span>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>&gt;());</div>
-<div class="line"><span class="lineno">  307</span>    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">for_constexpr&lt;Begin + Increment, End, Increment&gt;</a>(function);</div>
-<div class="line"><span class="lineno">  308</span>  }</div>
-<div class="line"><span class="lineno">  309</span>}</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00300">300</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  300</span>                                                  {</div>
+<div class="line"><span class="lineno">  301</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a> &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">End</a>) {</div>
+<div class="line"><span class="lineno">  302</span>    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(std::integral_constant&lt;<span class="keyword">decltype</span>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Begin</a>&gt;());</div>
+<div class="line"><span class="lineno">  303</span>    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">for_constexpr&lt;Begin + Increment, End, Increment&gt;</a>(function);</div>
+<div class="line"><span class="lineno">  304</span>  }</div>
+<div class="line"><span class="lineno">  305</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90ed417b141d4a9d567a4bcfadcd6b6e"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">fcarouge::internal::function</a></div><div class="ttdeci">function(Callable) -&gt; function&lt; function_traits_t&lt; Callable &gt; &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00076">linalg.hpp:76</a></div></div>
 </div><!-- fragment -->
@@ -584,7 +580,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p class="reference">References <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="internal_2utility_8hpp_source.xhtml#l00304">for_constexpr()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629">function()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="internal_2utility_8hpp_source.xhtml#l00300">for_constexpr()</a>, <a class="el" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function()</a>, and <a class="el" href="namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629">function()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -970,7 +966,7 @@ template&lt;typename... Types&gt; </div>
           <td>(</td>
           <td class="paramtype">Types...&#160;</td>
           <td class="paramname"><em>elements</em></td><td>)</td>
-          <td> -&gt;  state&lt; std::remove_cvref_t&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a09a84321249de040016ea5d79c016482">first_t</a>&lt; Types... &gt; &gt;[sizeof...(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Types</a>)]&gt;</td>
+          <td> -&gt;  state&lt; std::remove_cvref_t&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a16abfbd7977e3b5d3da88319f14d9228">first_t</a>&lt; Types... &gt; &gt;[sizeof...(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Types</a>)]&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1114,8 +1110,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00268">268</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  268</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00270">270</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  270</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1141,8 +1137,8 @@ template&lt;auto... Values&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00314">314</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  314</span>{first_value&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Values</a>...&gt;::value};</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00310">310</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  310</span>{first_value&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Values</a>...&gt;::value};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1249,8 +1245,8 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00311">311</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  311</span>{repack&lt;Pack&gt;::size};</div>
+<p class="definition">Definition at line <a class="el" href="internal_2utility_8hpp_source.xhtml#l00307">307</a> of file <a class="el" href="internal_2utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  307</span>{repack&lt;Pack&gt;::size};</div>
 </div><!-- fragment -->
 </div>
 </div>
