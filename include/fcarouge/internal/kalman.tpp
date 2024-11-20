@@ -39,6 +39,10 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_INTERNAL_KALMAN_TPP
 #define FCAROUGE_INTERNAL_KALMAN_TPP
 
+#include <tuple>
+#include <type_traits>
+#include <utility>
+
 namespace fcarouge {
 template <typename Filter>
 template <typename... Arguments>
@@ -230,7 +234,7 @@ inline constexpr void kalman<Filter>::update(const auto &...arguments) {
 }
 
 template <typename InternalFilter>
-template <std::size_t Position>
+template <auto Position>
 [[nodiscard("The returned update argument is unexpectedly "
             "discarded.")]] inline constexpr auto
 kalman<InternalFilter>::update() const {
@@ -243,7 +247,7 @@ inline constexpr void kalman<Filter>::predict(const auto &...arguments) {
 }
 
 template <typename Filter>
-template <std::size_t Position>
+template <auto Position>
 [[nodiscard("The returned prediction argument is unexpectedly "
             "discarded.")]] inline constexpr auto
 kalman<Filter>::predict() const {

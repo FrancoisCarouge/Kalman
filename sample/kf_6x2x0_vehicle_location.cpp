@@ -45,8 +45,7 @@ using state = fcarouge::state<vector<6>>;
       // we will set initial position, velocity and acceleration to 0.
       state{0., 0., 0., 0., 0., 0.},
       // The vehicle has an onboard location sensor that reports output Z as X
-      // and Y
-      // coordinates of the system.
+      // and Y coordinates of the system.
       output<vector<2>>,
       // The estimate uncertainty matrix P.
       // Since our initial state vector is a guess, we will set a very high

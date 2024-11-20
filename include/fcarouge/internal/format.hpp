@@ -44,7 +44,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <cstddef>
 #include <format>
 #include <tuple>
-#include <type_traits>
 
 template <fcarouge::kalman_filter Filter, typename Char>
 // It is allowed to add template specializations for any standard library class

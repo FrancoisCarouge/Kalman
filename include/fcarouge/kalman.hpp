@@ -51,12 +51,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "printer.hpp"
 #include "utility.hpp"
 
-#include <concepts>
-#include <cstddef>
-#include <functional>
-#include <type_traits>
-#include <utility>
-
 namespace fcarouge {
 //! @name Types
 //! @{
@@ -116,7 +110,6 @@ namespace fcarouge {
 //! client code.
 //! @todo Should we provide the operator[] for state directly on the filter? Is
 //! the state X always what the user would want?
-//! @todo Expand std::format support with standard arguments and Eigen3 types?
 //! @todo Support, test complex number filters?
 //! @todo Use automatic (Eigen::AutoDiffScalar?), symbolic, numerical solvers to
 //! define the filter characteristics and simplify solving the dynamic system
@@ -493,7 +486,7 @@ public:
   //! parameter pack of the tuple `PredictionTypes` class template type.
   //!
   //! @complexity Constant.
-  template <std::size_t Position> inline constexpr auto predict() const;
+  template <auto Position> inline constexpr auto predict() const;
 
   //! @brief Updates the estimates with the outcome of a measurement.
   //!
@@ -526,7 +519,7 @@ public:
   //! parameter pack of the tuple `UpdateTypes` class template type.
   //!
   //! @complexity Constant.
-  template <std::size_t Position> inline constexpr auto update() const;
+  template <auto Position> inline constexpr auto update() const;
   //! @}
 };
 

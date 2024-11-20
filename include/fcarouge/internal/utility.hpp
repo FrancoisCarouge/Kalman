@@ -271,6 +271,12 @@ struct transposer final {
   }
 };
 
+struct matrix_deducer;
+
+template <typename Lhs, typename Rhs>
+using deduce_matrix =
+    std::remove_cvref_t<std::invoke_result_t<matrix_deducer, Lhs, Rhs>>;
+
 struct matrix_deducer final {
   template <typename Lhs, typename Rhs>
   [[nodiscard]] inline constexpr auto
@@ -281,10 +287,6 @@ struct matrix_deducer final {
   [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
       typename decltype(lhs * transposer{}(rhs))::PlainMatrix;
 };
-
-template <typename Lhs, typename Rhs>
-using deduce_matrix =
-    std::remove_cvref_t<std::invoke_result_t<matrix_deducer, Lhs, Rhs>>;
 
 using empty_tuple = std::tuple<>;
 

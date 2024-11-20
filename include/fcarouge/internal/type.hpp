@@ -41,11 +41,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
-//! @todo Remove the dependency on `std::initializer_list` if possible?
 #include <initializer_list>
 #include <type_traits>
-
-#include <utility>
 
 namespace fcarouge::internal {
 //! @todo Provide the ::type member access and _t shorthand for simplifying
