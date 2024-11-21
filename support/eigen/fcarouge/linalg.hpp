@@ -78,6 +78,22 @@ using column_vector = Eigen::Vector<Type, Row>;
 //! @}
 } // namespace fcarouge
 
+//! @brief A possible solution to the matrix division.
+//!
+//! @see fcarouge::operator/ declaration.
+//!
+//! @details The householder rank-revealing QR decomposition of a matrix with
+//! full pivoting implementation provides a very prudent pivoting to achieve
+//! optimal numerical stability.
+template <typename Numerator, fcarouge::algebraic Denominator>
+constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
+    -> fcarouge::deduce_matrix<Numerator, Denominator> {
+  return rhs.transpose()
+      .fullPivHouseholderQr()
+      .solve(lhs.transpose())
+      .transpose();
+}
+
 template <typename Matrix, typename Char>
   requires(fcarouge::eigen<Matrix>)
 struct std::formatter<Matrix, Char> {

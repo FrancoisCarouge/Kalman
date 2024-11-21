@@ -161,10 +161,14 @@ using deduce_matrix = internal::deduce_matrix<Numerator, Denominator>;
 
 //! @brief A user-definable algebraic division solution.
 //!
-//! @details Implemented for known libraries. User-definable in other cases.
-//! There exists several ways to find  `X` in  `X = lhs * rhs^-1` for different
-//! tradeoffs. The user provides their implementation. Often, matrix inversion
-//! is avoided by solving `X * rhs = lhs` for `rhs` through a decomposer.
+//! @details Matrix division is a mathematical abuse of terminology. Informally
+//! defined as multiplication by the inverse. Similarly to division by zero in
+//! real numbers, there exists matrices that are not invertible. Remember the
+//! division operation is not commutative. Matrix inversion can be avoided by
+//! solving `X * rhs = lhs` for `rhs` through a decomposer. There exists several
+//! ways to decompose and solve the equation. Implementations trade off
+//! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
+//! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Numerator, algebraic Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
     -> deduce_matrix<Numerator, Denominator>;

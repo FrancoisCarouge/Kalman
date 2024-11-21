@@ -41,15 +41,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
-template <typename Numerator, fcarouge::algebraic Denominator>
-constexpr auto fcarouge::operator/(const Numerator &lhs, const Denominator &rhs)
-    -> fcarouge::deduce_matrix<Numerator, Denominator> {
-  return rhs.transpose()
-      .fullPivHouseholderQr()
-      .solve(lhs.transpose())
-      .transpose();
-}
-
 namespace fcarouge::test {
 namespace {
 template <auto Size> using vector = column_vector<double, Size>;
