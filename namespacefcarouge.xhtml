@@ -368,7 +368,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>Compile-time sized Eigen3 column vector. </p>
 <p>Column vector.</p>
 <p>Coroutine lazy column vector. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a0">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a0">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#a0">kf_1x1x1_dog_position.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a0">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a1">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a1">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a0">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a0">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#a0">kf_1x1x1_dog_position.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a0">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00076">76</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
@@ -1484,17 +1484,18 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </div><div class="memdoc">
 
 <p>A user-definable algebraic division solution. </p>
-<p>Implemented for known libraries. User-definable in other cases. There exists several ways to find <code>X</code> in <code>X = lhs * rhs^-1</code> for different tradeoffs. The user provides their implementation. Often, matrix inversion is avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
-</dl>
+<p>A possible solution to the matrix division.</p>
+<p>Matrix division is a mathematical abuse of terminology. Informally defined as multiplication by the inverse. Similarly to division by zero in real numbers, there exists matrices that are not invertible. Remember the division operation is not commutative. Matrix inversion can be avoided by solving <code>X * rhs = lhs</code> for <code>rhs</code> through a decomposer. There exists several ways to decompose and solve the equation. Implementations trade off numerical stability, triangularity, symmetry, space, time, etc. Dividing an <code>R1 x C</code> matrix by an <code>R2 x C</code> matrix results in an <code>R1 x R2</code> matrix.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacefcarouge.xhtml#a15cb0f145fb2a9a65d2b7f72988758e7" title="A user-definable algebraic division solution.">fcarouge::operator/</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8" title="Compile-time sized Eigen3 column vector.">declaration</a>.</dd></dl>
+<p>The householder rank-revealing QR decomposition of a matrix with full pivoting implementation provides a very prudent pivoting to achieve optimal numerical stability. </p>
 
-<p class="definition">Definition at line <a class="el" href="update__linalg__xx0_8cpp_source.xhtml#l00055">55</a> of file <a class="el" href="update__linalg__xx0_8cpp_source.xhtml">update_linalg_xx0.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>                                                     {</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">rhs</a>.transpose()</div>
-<div class="line"><span class="lineno">   58</span>      .fullPivHouseholderQr()</div>
-<div class="line"><span class="lineno">   59</span>      .solve(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>.transpose())</div>
-<div class="line"><span class="lineno">   60</span>      .transpose();</div>
-<div class="line"><span class="lineno">   61</span>}</div>
+<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00089">89</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   90</span>                                                     {</div>
+<div class="line"><span class="lineno">   91</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">rhs</a>.transpose()</div>
+<div class="line"><span class="lineno">   92</span>      .fullPivHouseholderQr()</div>
+<div class="line"><span class="lineno">   93</span>      .solve(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>.transpose())</div>
+<div class="line"><span class="lineno">   94</span>      .transpose();</div>
+<div class="line"><span class="lineno">   95</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1816,8 +1817,8 @@ template&lt;auto... Values&gt; </div>
 
 <p>Unpack the first value of the non-type template parameter pack. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00179">179</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  179</span>{internal::first_v&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Values</a>...&gt;};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00183">183</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  183</span>{internal::first_v&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Values</a>...&gt;};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1848,9 +1849,9 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>The identity matrix. </p>
 <p>User-defined. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00185">185</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  185</span>                                {internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  186</span>    <span class="stringliteral">&quot;Implement the linear algebra identity matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00189">189</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>                                {internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  190</span>    <span class="stringliteral">&quot;Implement the linear algebra identity matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1878,8 +1879,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton identity matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00190">190</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  190</span>{1};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00194">194</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>{1};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1953,8 +1954,8 @@ requires <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00194">194</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  194</span>{Type::Identity()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00198">198</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  198</span>{Type::Identity()};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2069,9 +2070,9 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <p>The zero matrix. </p>
 <p>User-defined. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00204">204</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  204</span>                            {internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  205</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00208">208</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>                            {internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  209</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2099,8 +2100,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton zero matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00209">209</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  209</span>{0};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00213">213</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  213</span>{0};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2172,8 +2173,8 @@ requires <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00213">213</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  213</span>{Type::Zero()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00217">217</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  217</span>{Type::Zero()};</div>
 </div><!-- fragment -->
 </div>
 </div>

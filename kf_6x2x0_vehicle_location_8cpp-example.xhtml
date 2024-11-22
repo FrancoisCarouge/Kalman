@@ -106,18 +106,9 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Numerator, fcarouge::algebraic Denominator&gt;</div>
-<div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a15cb0f145fb2a9a65d2b7f72988758e7">fcarouge::operator/</a>(<span class="keyword">const</span> Numerator &amp;lhs, <span class="keyword">const</span> Denominator &amp;rhs)</div>
-<div class="line">    -&gt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::deduce_matrix&lt;Numerator, Denominator&gt;</a> {</div>
-<div class="line">  <span class="keywordflow">return</span> rhs.transpose()</div>
-<div class="line">      .fullPivHouseholderQr()</div>
-<div class="line">      .solve(lhs.transpose())</div>
-<div class="line">      .transpose();</div>
-<div class="line">}</div>
-<div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">column_vector&lt;double, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">column_vector&lt;double, Size&gt;</a>;</div>
 <div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;double, Row, Column&gt;</a>;</div>
 <div class="line"><span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::state&lt;vector&lt;6&gt;</a>&gt;;</div>
 <div class="line"> </div>
@@ -135,7 +126,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">      <span class="comment">// Since our initial state vector is a guess, we will set a very high</span></div>
 <div class="line">      <span class="comment">// estimate uncertainty. The high estimate uncertainty results in a high</span></div>
 <div class="line">      <span class="comment">// Kalman Gain, giving a high weight to the measurement.</span></div>
-<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty</a>{{500., 0., 0., 0., 0., 0.},</div>
+<div class="line">      estimate_uncertainty{{500., 0., 0., 0., 0., 0.},</div>
 <div class="line">                           {0., 500., 0., 0., 0., 0.},</div>
 <div class="line">                           {0., 0., 500., 0., 0., 0.},</div>
 <div class="line">                           {0., 0., 0., 500., 0., 0.},</div>
@@ -143,7 +134,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">                           {0., 0., 0., 0., 0., 500.}},</div>
 <div class="line">      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
 <div class="line">      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
-<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a>{0.2 * 0.2 *</div>
+<div class="line">      process_uncertainty{0.2 * 0.2 *</div>
 <div class="line">                          <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;6, 6&gt;</a>{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
 <div class="line">                                       {0.5, 1., 1., 0., 0., 0.},</div>
 <div class="line">                                       {0.5, 1., 1., 0., 0., 0.},</div>
@@ -160,13 +151,13 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">      <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
 <div class="line">      <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error</span></div>
 <div class="line">      <span class="comment">// standard deviation: σxm = σym = 3m. The variance 9.</span></div>
-<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a>{{9., 0.}, {0., 9.}},</div>
+<div class="line">      output_uncertainty{{9., 0.}, {0., 9.}},</div>
 <div class="line">      <span class="comment">// The output model matrix H. The dimension of zn is 2x1 and the dimension</span></div>
 <div class="line">      <span class="comment">// of xn is 6x1. Therefore the dimension of the observation matrix H shall</span></div>
 <div class="line">      <span class="comment">// be 2x6.</span></div>
-<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model</a>{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}},</div>
+<div class="line">      output_model{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}},</div>
 <div class="line">      <span class="comment">// // The state transition matrix F would be:</span></div>
-<div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition</a>{{1., 1., 0.5, 0., 0., 0.},</div>
+<div class="line">      state_transition{{1., 1., 0.5, 0., 0., 0.},</div>
 <div class="line">                       {0., 1., 1., 0., 0., 0.},</div>
 <div class="line">                       {0., 0., 1., 0., 0., 0.},</div>
 <div class="line">                       {0., 0., 0., 1., 1., 0.5},</div>
@@ -174,28 +165,28 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">                       {0., 0., 0., 0., 0., 1.}}};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line">  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.predict();</div>
+<div class="line">  filter.predict();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The measurement values: z1 = [-393.66, 300.4]</span></div>
-<div class="line">  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(-393.66, 300.4);</div>
-<div class="line">  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.predict();</div>
+<div class="line">  filter.update(-393.66, 300.4);</div>
+<div class="line">  filter.predict();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line">  <span class="comment">// measurements period: Δt = 1s (constant, built-in).</span></div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>{[&amp;<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>](<span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, <span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) {</div>
-<div class="line">    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>);</div>
-<div class="line">    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.predict();</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>{[&amp;filter](<span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, <span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) {</div>
+<div class="line">    filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>);</div>
+<div class="line">    filter.predict();</div>
 <div class="line">  }};</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-375.93, 301.78);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-351.04, 295.1);</div>
@@ -232,19 +223,19 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(291.8, 32.99);</div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(299.89, 2.14);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.6% accuracy.&quot;</span>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.p()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.p()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - filter.p()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;At this point, the position uncertainty px = py = 5, which means &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;that the standard deviation of the prediction is square root of 5m.&quot;</span>);</div>
@@ -269,14 +260,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a198bcbdb5521548ddb61317e21ff8f1f"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">fcarouge::internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a665945f3d976759241bf85f4102a2d16"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">fcarouge::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a88ca8cd4d48af886c2c73835d77a1bf3"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">fcarouge::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a8f2c9f1d6c11710ebe51a102f09e170b"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">fcarouge::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00270">factory.hpp:270</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_af41c59712adaec8d2aac3366133cd381"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">fcarouge::internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a15cb0f145fb2a9a65d2b7f72988758e7"><div class="ttname"><a href="namespacefcarouge.xhtml#a15cb0f145fb2a9a65d2b7f72988758e7">fcarouge::operator/</a></div><div class="ttdeci">constexpr auto operator/(const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; deduce_matrix&lt; Numerator, Denominator &gt;</div><div class="ttdoc">A user-definable algebraic division solution.</div><div class="ttdef"><b>Definition</b> <a href="update__linalg__xx0_8cpp_source.xhtml#l00055">update_linalg_xx0.cpp:55</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00076">linalg.hpp:76</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
