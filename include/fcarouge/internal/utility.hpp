@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_INTERNAL_UTILITY_HPP
 
 #include <concepts>
+#include <cstddef>
 #include <tuple>
 #include <type_traits>
 
@@ -297,11 +298,11 @@ template <typename Pack> using size_t = repack<Pack>::size_t;
 template <typename... Types>
 using first_t = std::tuple_element_t<0, std::tuple<Types...>>;
 
-template <auto Begin, decltype(Begin) End, decltype(Begin) Increment,
+template <std::size_t Begin, std::size_t End, std::size_t Increment,
           typename Function>
 constexpr void for_constexpr(Function &&function) {
   if constexpr (Begin < End) {
-    function(std::integral_constant<decltype(Begin), Begin>());
+    function(std::integral_constant<std::size_t, Begin>());
     for_constexpr<Begin + Increment, End, Increment>(function);
   }
 }
