@@ -85,11 +85,8 @@ struct std::formatter<Filter, Char> {
         format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
 
     if constexpr (fcarouge::has_prediction_types<Filter>) {
-      constexpr std::size_t end{
-          std::tuple_size_v<typename Filter::prediction_types>};
-      constexpr std::size_t begin{0};
-      constexpr std::size_t next{1};
-      fcarouge::internal::for_constexpr<begin, end, next>(
+      fcarouge::internal::for_constexpr<
+          0, std::tuple_size_v<typename Filter::prediction_types>, 1>(
           [&format_context, &filter](auto position) {
             format_context.advance_to(std::format_to(
                 format_context.out(), R"("prediction_{}": {}, )", position(),
@@ -119,11 +116,8 @@ struct std::formatter<Filter, Char> {
 
     //! @todo Inconsistent usage of internal?
     if constexpr (fcarouge::has_update_types<Filter>) {
-      constexpr std::size_t end{
-          std::tuple_size_v<typename Filter::update_types>};
-      constexpr std::size_t begin{0};
-      constexpr std::size_t next{1};
-      fcarouge::internal::for_constexpr<begin, end, next>(
+      fcarouge::internal::for_constexpr<
+          0, std::tuple_size_v<typename Filter::update_types>, 1>(
           [&format_context, &filter](auto position) {
             format_context.advance_to(
                 std::format_to(format_context.out(), R"("update_{}": {}, )",
