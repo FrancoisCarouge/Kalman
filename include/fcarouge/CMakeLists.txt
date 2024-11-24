@@ -45,7 +45,6 @@ target_sources(
             "HEADERS"
             FILES
             "internal/factory.hpp"
-            "internal/format.hpp"
             "internal/function.hpp"
             "internal/kalman.tpp"
             "internal/type.hpp"
