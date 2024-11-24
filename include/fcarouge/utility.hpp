@@ -46,6 +46,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "internal/utility.hpp"
 
+#include <cstddef>
+#include <utility>
+
 namespace fcarouge {
 //! @name Concepts
 //! @{
@@ -158,6 +161,16 @@ using deduce_matrix = internal::deduce_matrix<Numerator, Denominator>;
 
 //! @name Functions
 //! @{
+
+//! @brief Compile-time for loop.
+//!
+//! @details Help compilers with non-type template parameters on members.
+template <std::size_t Begin, std::size_t End, std::size_t Increment,
+          typename Function>
+inline constexpr void for_constexpr(Function &&function) {
+  internal::for_constexpr<Begin, End, Increment>(
+      std::forward<Function>(function));
+}
 
 //! @brief A user-definable algebraic division solution.
 //!
