@@ -26,8 +26,8 @@ var hierarchy =
     [ "fcarouge::internal::conditional_update_types< Filter >", null, [
       [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
     ] ],
+    [ "std::formatter< fcarouge::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", null ],
     [ "std::formatter< Filter, Char >", "structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml", null ],
-    [ "std::formatter< Matrix, Char >", "structstd_1_1formatter_3_01_matrix_00_01_char_01_4.xhtml", null ],
     [ "fcarouge::matrix< Type, Row, Column, Copyable >", "structfcarouge_1_1matrix.xhtml", null ],
     [ "fcarouge::printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
     [ "Filter", null, [
