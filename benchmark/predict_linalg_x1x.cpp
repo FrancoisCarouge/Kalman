@@ -69,7 +69,7 @@ void bench(::benchmark::State &benchmark_state) {
   for (auto _ : benchmark_state) {
     float uv[InputSize];
 
-    internal::for_constexpr<0, InputSize, 1>(
+    for_constexpr<0, InputSize, 1>(
         [&uv, &uniformly_distributed, &random_generator](auto position) {
           uv[position] = uniformly_distributed(random_generator);
         });

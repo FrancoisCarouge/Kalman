@@ -300,10 +300,11 @@ using first_t = std::tuple_element_t<0, std::tuple<Types...>>;
 
 template <std::size_t Begin, std::size_t End, std::size_t Increment,
           typename Function>
-constexpr void for_constexpr(Function &&function) {
+inline constexpr void for_constexpr(Function &&function) {
   if constexpr (Begin < End) {
     function(std::integral_constant<std::size_t, Begin>());
-    for_constexpr<Begin + Increment, End, Increment>(function);
+    internal::for_constexpr<Begin + Increment, End, Increment>(
+        std::forward<Function>(function));
   }
 }
 
