@@ -36,8 +36,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_FORMAT_HPP
-#define FCAROUGE_INTERNAL_FORMAT_HPP
+#ifndef FCAROUGE_FORMAT_HPP
+#define FCAROUGE_FORMAT_HPP
+
+//! @file
+//! @brief Formatting support for the Kalman filter.
 
 #include "fcarouge/utility.hpp"
 
@@ -45,6 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <tuple>
 
+//! @brief Specialization of the standard formatter for the Kalman filters.
 template <fcarouge::kalman_filter Filter, typename Char>
 // It is allowed to add template specializations for any standard library class
 // template to the namespace std only if the declaration depends on at least one
@@ -133,4 +137,4 @@ struct std::formatter<Filter, Char> {
   }
 };
 
-#endif // FCAROUGE_INTERNAL_FORMAT_HPP
+#endif // FCAROUGE_FORMAT_HPP

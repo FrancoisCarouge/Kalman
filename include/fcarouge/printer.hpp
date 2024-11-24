@@ -39,10 +39,14 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_PRINTER_HPP
 #define FCAROUGE_PRINTER_HPP
 
+//! @file
+//! @brief Filter decoration support for printing operations.
+
 #include <print>
 
 namespace fcarouge {
 namespace decorator {
+//! @brief Decorates a filter with operation printing.
 template <typename Filter> class printer : public Filter {
 public:
   using Filter::p;

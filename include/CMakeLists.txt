@@ -45,6 +45,7 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
+            "fcarouge/format.hpp"
             "fcarouge/kalman.hpp"
             "fcarouge/printer.hpp"
             "fcarouge/utility.hpp")
