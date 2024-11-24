@@ -100,6 +100,9 @@ $(document).ready(function(){initNavTree('classfcarouge_1_1decorator_1_1printer.
 </div><!--header-->
 <div class="contents">
 
+<p>Decorates a filter with operation printing.  
+ <a href="classfcarouge_1_1decorator_1_1printer.xhtml#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for fcarouge::decorator::printer&lt; Filter &gt;:</div>
@@ -133,8 +136,9 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> Filter&gt;<br />
-class fcarouge::decorator::printer&lt; Filter &gt;</div>
-<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00046">46</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
+class fcarouge::decorator::printer&lt; Filter &gt;</div><p>Decorates a filter with operation printing. </p>
+
+<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00050">50</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a277b4d9609150175995c78513c78d2c2" name="a277b4d9609150175995c78513c78d2c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a277b4d9609150175995c78513c78d2c2">&#9670;&#160;</a></span>printer()</h2>
@@ -162,10 +166,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00051">51</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>      : Filter{std::forward&lt;Filter&gt;(filter)} {</div>
-<div class="line"><span class="lineno">   53</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;construction\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   54</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00055">55</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>      : Filter{std::forward&lt;Filter&gt;(filter)} {</div>
+<div class="line"><span class="lineno">   57</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;construction\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   58</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -194,10 +198,10 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00056">56</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>                              {</div>
-<div class="line"><span class="lineno">   57</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;destruction\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   58</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00060">60</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>                              {</div>
+<div class="line"><span class="lineno">   61</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;destruction\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   62</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -238,11 +242,11 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00065">65</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   65</span>                                                                    {</div>
-<div class="line"><span class="lineno">   66</span>    Filter::p(value, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>...);</div>
-<div class="line"><span class="lineno">   67</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;p\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   68</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00069">69</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>                                                                    {</div>
+<div class="line"><span class="lineno">   70</span>    Filter::p(value, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>...);</div>
+<div class="line"><span class="lineno">   71</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;p\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   72</span>  }</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00076">linalg.hpp:76</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -273,11 +277,11 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00070">70</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                          {</div>
-<div class="line"><span class="lineno">   71</span>    Filter::predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>...);</div>
-<div class="line"><span class="lineno">   72</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;predict\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   73</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00074">74</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   74</span>                                                          {</div>
+<div class="line"><span class="lineno">   75</span>    Filter::predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>...);</div>
+<div class="line"><span class="lineno">   76</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;predict\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   77</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -307,11 +311,11 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   75</span>                                                         {</div>
-<div class="line"><span class="lineno">   76</span>    Filter::update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>...);</div>
-<div class="line"><span class="lineno">   77</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;update\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   78</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00079">79</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>                                                         {</div>
+<div class="line"><span class="lineno">   80</span>    Filter::update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">arguments</a>...);</div>
+<div class="line"><span class="lineno">   81</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;update\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   82</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,11 +355,11 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00060">60</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>                                                                    {</div>
-<div class="line"><span class="lineno">   61</span>    Filter::x(value, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>...);</div>
-<div class="line"><span class="lineno">   62</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;x\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   63</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00064">64</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>                                                                    {</div>
+<div class="line"><span class="lineno">   65</span>    Filter::x(value, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">values</a>...);</div>
+<div class="line"><span class="lineno">   66</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;x\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   67</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
