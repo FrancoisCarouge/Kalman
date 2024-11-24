@@ -60,6 +60,7 @@ var namespacefcarouge =
     [ "first_t", "namespacefcarouge.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210", null ],
     [ "matrix", "namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6", null ],
     [ "row_vector", "namespacefcarouge.xhtml#ac13c25e27a85ae315c7996927b7a3c28", null ],
+    [ "for_constexpr", "namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b", null ],
     [ "kalman", "namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777", null ],
     [ "make_generator", "namespacefcarouge.xhtml#ae167596e2c65ae7024cbc80f5b5d1974", null ],
     [ "make_generator", "namespacefcarouge.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1", null ],

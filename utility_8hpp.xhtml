@@ -103,6 +103,8 @@ $(document).ready(function(){initNavTree('utility_8hpp.xhtml',''); initResizable
 <p>The collection of utilities supporting the library.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="internal_2utility_8hpp_source.xhtml">internal/utility.hpp</a>&quot;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for utility.hpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -183,6 +185,10 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
+<tr class="memitem:a5ad0022b969a210b7261d0158bc1dd7b" id="r_a5ad0022b969a210b7261d0158bc1dd7b"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Function</a> &gt; </td></tr>
+<tr class="memitem:a5ad0022b969a210b7261d0158bc1dd7b"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Function</a> &amp;&amp;function)</td></tr>
+<tr class="memdesc:a5ad0022b969a210b7261d0158bc1dd7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time for loop.  <br /></td></tr>
+<tr class="separator:a5ad0022b969a210b7261d0158bc1dd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15cb0f145fb2a9a65d2b7f72988758e7" id="r_a15cb0f145fb2a9a65d2b7f72988758e7"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> , algebraic Denominator&gt; </td></tr>
 <tr class="memitem:a15cb0f145fb2a9a65d2b7f72988758e7"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a15cb0f145fb2a9a65d2b7f72988758e7">fcarouge::operator/</a> (<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">lhs</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">const</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &amp;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">rhs</a>) -&gt; <a class="el" href="namespacefcarouge.xhtml#a3fc114a8d3c5a39e7929ea2a06f0536d">deduce_matrix</a>&lt; <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Numerator</a>, <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Denominator</a> &gt;</td></tr>
 <tr class="memdesc:a15cb0f145fb2a9a65d2b7f72988758e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A user-definable algebraic division solution.  <br /></td></tr>

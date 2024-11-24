@@ -15,6 +15,7 @@ var utility_8hpp =
     [ "deduce_matrix", "utility_8hpp.xhtml#a3fc114a8d3c5a39e7929ea2a06f0536d", null ],
     [ "empty_tuple", "utility_8hpp.xhtml#a745cc8853476d73277a9f3a89de15381", null ],
     [ "first_t", "utility_8hpp.xhtml#a6990cf6953bd2fa9b0a96aa36ad56210", null ],
+    [ "for_constexpr", "utility_8hpp.xhtml#a5ad0022b969a210b7261d0158bc1dd7b", null ],
     [ "operator/", "utility_8hpp.xhtml#a15cb0f145fb2a9a65d2b7f72988758e7", null ],
     [ "first_v", "utility_8hpp.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77", null ],
     [ "identity_v", "utility_8hpp.xhtml#af5d9207021a8118ac46558fd9a453d6d", null ],
