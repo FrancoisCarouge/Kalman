@@ -48,11 +48,11 @@ template <typename State, typename Output> struct x_z_p_r_f {
   using estimate_uncertainty = deduce_matrix<state, state>;
   using output_uncertainty = deduce_matrix<output, output>;
   using state_transition = deduce_matrix<state, state>;
-  using gain = deduce_matrix<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
+  using gain = deduce_matrix<state, output>;
 
-  static inline const auto i{identity_v<deduce_matrix<state, state>>};
+  static inline const auto i{identity_v<gain>};
 
   state x{zero_v<state>};
   estimate_uncertainty p{identity_v<estimate_uncertainty>};

@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Linear algebra facade for Eigen3 third party implementation.
 //!
-//! @details Matrix, vectors, and named algebraic values.
+//! @details Supporting matrix, vectors, and named algebraic values.
 //!
 //! @note The Eigen3 linear algebra is not constexpr-compatible as of July 2023.
 

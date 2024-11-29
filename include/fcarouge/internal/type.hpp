@@ -48,6 +48,8 @@ namespace fcarouge::internal {
 //! @todo Provide the ::type member access and _t shorthand for simplifying
 //! syntax?
 template <typename Type> struct state {
+  using type = Type;
+
   Type value;
 
   constexpr explicit state(Type v) : value{v} {}
@@ -64,6 +66,8 @@ state(Types... elements)
     -> state<std::remove_cvref_t<first_t<Types...>>[sizeof...(Types)]>;
 
 template <typename Type> struct estimate_uncertainty {
+  using type = Type;
+
   Type value;
 
   template <typename Element>
@@ -84,6 +88,8 @@ estimate_uncertainty(std::initializer_list<std::initializer_list<Element>>)
         std::initializer_list<std::initializer_list<Element>>>;
 
 template <typename Type> struct output_uncertainty {
+  using type = Type;
+
   Type value;
 
   template <typename Element>
@@ -104,6 +110,8 @@ output_uncertainty(std::initializer_list<std::initializer_list<Element>>)
         std::initializer_list<std::initializer_list<Element>>>;
 
 template <typename Type> struct process_uncertainty {
+  using type = Type;
+
   Type value;
 
   template <typename Element>
@@ -123,15 +131,21 @@ process_uncertainty(std::initializer_list<std::initializer_list<Element>>)
     -> process_uncertainty<
         std::initializer_list<std::initializer_list<Element>>>;
 
-template <typename Type> struct input_t {};
+template <typename Type> struct input_t {
+  using type = Type;
+};
 
 template <typename Type> inline input_t<Type> input{};
 
-template <typename Type> struct output_t {};
+template <typename Type> struct output_t {
+  using type = Type;
+};
 
 template <typename Type> inline output_t<Type> output{};
 
 template <typename Type> struct output_model {
+  using type = Type;
+
   Type value;
 
   template <typename Element>
@@ -150,6 +164,8 @@ output_model(std::initializer_list<std::initializer_list<Element>>)
     -> output_model<std::initializer_list<std::initializer_list<Element>>>;
 
 template <typename Type> struct state_transition {
+  using type = Type;
+
   Type value;
 
   template <typename Element>
@@ -169,6 +185,8 @@ state_transition(std::initializer_list<std::initializer_list<Element>>)
     -> state_transition<std::initializer_list<std::initializer_list<Element>>>;
 
 template <typename Type> struct input_control {
+  using type = Type;
+
   Type value;
 
   template <typename Element>
@@ -188,6 +206,8 @@ input_control(std::initializer_list<std::initializer_list<Element>>)
 
 //! @todo Simplify?
 template <typename Type> struct transition {
+  using type = Type;
+
   Type value;
 
   template <typename Element>
@@ -197,6 +217,8 @@ template <typename Type> struct transition {
 template <typename Element> transition(Element) -> transition<Element>;
 
 template <typename Type> struct observation {
+  using type = Type;
+
   Type value;
 
   template <typename Element>
