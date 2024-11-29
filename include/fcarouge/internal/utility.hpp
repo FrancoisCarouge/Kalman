@@ -45,10 +45,9 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 
 namespace fcarouge::internal {
+//! @todo What should be a better concept of the Kalman filter of this library?
 template <typename Type>
 concept kalman_filter = requires(Type value) {
-  //! @todo What should be a better concept of the Kalman filter of this
-  //! library?
   typename Type::state;
   typename Type::output;
 };
@@ -56,8 +55,9 @@ concept kalman_filter = requires(Type value) {
 template <typename Type>
 concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 
+//! @todo What should be a better concept of an algebraic type?
 template <typename Type>
-concept algebraic = not arithmetic<Type>;
+concept algebraic = requires(Type value) { value(0, 0); };
 
 template <typename Type>
 concept eigen = requires { typename Type::PlainMatrix; };
