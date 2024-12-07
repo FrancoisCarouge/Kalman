@@ -51,7 +51,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-fno-check-new"
               "-fno-common"
               "-fPIE"
-              "-fstack-clash-protection"
               "-fstack-protector-strong"
               "-fstrict-aliasing"
               "-ftrivial-auto-var-init=pattern"
@@ -72,8 +71,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-Wundef"
               "-Wunused-local-typedefs"
               "-Wwrite-strings")
-  target_link_options(kalman_options INTERFACE "LINKER:-pie"
-                      "LINKER:-z,relro,-z,now")
+  target_link_options(kalman_options INTERFACE "LINKER:-pie")
+  target_link_libraries(kalman_options INTERFACE "stdc++")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_compile_options(
     kalman_options
