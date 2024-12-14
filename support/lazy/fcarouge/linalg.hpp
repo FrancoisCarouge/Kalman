@@ -298,10 +298,10 @@ template <typename Type, auto Row>
 matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>;
 
 template <typename... Types, auto... Columns>
-  requires(std::conjunction_v<std::is_same<first_t<Types...>, Types>...> &&
+  requires(std::conjunction_v<std::is_same<first<Types...>, Types>...> &&
            ((Columns == first_v<Columns>) && ... && true))
 matrix(const Types (&...rows)[Columns])
-    -> matrix<std::remove_cvref_t<first_t<Types...>>, sizeof...(Columns),
+    -> matrix<std::remove_cvref_t<first<Types...>>, sizeof...(Columns),
               (Columns, ...)>;
 
 //! @}
@@ -327,7 +327,7 @@ auto make_zero_generator{[]() -> std::generator<Type> {
 
 //! @brief The identity matrix lazy specialization.
 template <typename Type, auto Row, auto Column>
-auto identity_v<matrix<Type, Row, Column>>{[](auto... args) {
+auto identity<matrix<Type, Row, Column>>{[](auto... args) {
   matrix<Type, Row, Column, true> m{
       make_identity_generator<Type, Row, Column>()};
   if constexpr (sizeof...(args)) {
@@ -339,7 +339,7 @@ auto identity_v<matrix<Type, Row, Column>>{[](auto... args) {
 
 //! @brief The zero matrix lazy specialization.
 template <typename Type, auto Row, auto Column>
-auto zero_v<matrix<Type, Row, Column>>{[](auto... args) {
+auto zero<matrix<Type, Row, Column>>{[](auto... args) {
   matrix<Type, Row, Column, true> m{make_zero_generator<Type, Row, Column>()};
   if constexpr (sizeof...(args)) {
     return m(args...);

@@ -229,10 +229,6 @@ public:
   //! @complexity Constant.
   //!
   //! @note Overloading the operator dot would have been nice had it existed.
-  //!
-  //! @todo Collapse cv-ref qualifier-aware member functions per C++23 P0847 to
-  //! avoid duplication: `inline constexpr auto & x(this auto&& self)`.
-
   inline constexpr auto &&x(this auto &&self);
 
   //! @brief Sets the state estimate column vector X.

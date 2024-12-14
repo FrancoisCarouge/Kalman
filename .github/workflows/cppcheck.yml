@@ -39,6 +39,7 @@ jobs:
           --enable=all \
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
+          --suppress=preprocessorErrorDirective \
           --suppress=unusedFunction:include/fcarouge/format.hpp \
           --verbose \
           -I benchmark/include \

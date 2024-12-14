@@ -63,7 +63,7 @@ template <typename Type> state(Type) -> state<Type>;
 
 template <typename... Types>
 state(Types... elements)
-    -> state<std::remove_cvref_t<first_t<Types...>>[sizeof...(Types)]>;
+    -> state<std::remove_cvref_t<first<Types...>>[sizeof...(Types)]>;
 
 template <typename Type> struct estimate_uncertainty {
   using type = Type;

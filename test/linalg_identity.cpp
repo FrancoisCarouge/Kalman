@@ -44,17 +44,17 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the identity matrices values are unit diagonals.
 [[maybe_unused]] auto test{[] {
-  auto identity{identity_v<matrix<double, 3, 3>>};
+  auto i{identity<matrix<double, 3, 3>>};
 
-  assert(identity(0, 0) == 1.0);
-  assert(identity(0, 1) == 0.0);
-  assert(identity(0, 2) == 0.0);
-  assert(identity(1, 0) == 0.0);
-  assert(identity(1, 1) == 1.0);
-  assert(identity(1, 2) == 0.0);
-  assert(identity(2, 0) == 0.0);
-  assert(identity(2, 1) == 0.0);
-  assert(identity(2, 2) == 1.0);
+  assert(i(0, 0) == 1.0);
+  assert(i(0, 1) == 0.0);
+  assert(i(0, 2) == 0.0);
+  assert(i(1, 0) == 0.0);
+  assert(i(1, 1) == 1.0);
+  assert(i(1, 2) == 0.0);
+  assert(i(2, 0) == 0.0);
+  assert(i(2, 1) == 0.0);
+  assert(i(2, 2) == 1.0);
 
   return 0;
 }()};

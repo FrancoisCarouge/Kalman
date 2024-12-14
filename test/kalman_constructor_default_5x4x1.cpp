@@ -52,15 +52,15 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   kalman filter{state{vector<5>{0.0, 0.0, 0.0, 0.0, 0.0}}, output<vector<4>>,
                 input<double>};
 
-  const auto i4x4{identity_v<matrix<4, 4>>};
-  const auto i4x5{identity_v<matrix<4, 5>>};
-  const auto i5x1{identity_v<matrix<5, 1>>};
-  const auto i5x4{identity_v<matrix<5, 4>>};
-  const auto i5x5{identity_v<matrix<5, 5>>};
-  const auto z4x1{zero_v<vector<4>>};
-  const auto z4x4{zero_v<matrix<4, 4>>};
-  const auto z5x1{zero_v<vector<5>>};
-  const auto z5x5{zero_v<matrix<5, 5>>};
+  const auto i4x4{identity<matrix<4, 4>>};
+  const auto i4x5{identity<matrix<4, 5>>};
+  const auto i5x1{identity<matrix<5, 1>>};
+  const auto i5x4{identity<matrix<5, 4>>};
+  const auto i5x5{identity<matrix<5, 5>>};
+  const auto z4x1{zero<vector<4>>};
+  const auto z4x4{zero<matrix<4, 4>>};
+  const auto z5x1{zero<vector<5>>};
+  const auto z5x5{zero<matrix<5, 5>>};
 
   assert(filter.f() == i5x5);
   assert(filter.g() == i5x1);

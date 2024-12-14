@@ -55,12 +55,12 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
                           std::tuple<PredictionTypes...>> {
   using state = State;
   using output = Output;
-  using estimate_uncertainty = deduce_matrix<state, state>;
-  using process_uncertainty = deduce_matrix<state, state>;
-  using output_uncertainty = deduce_matrix<output, output>;
-  using state_transition = deduce_matrix<state, state>;
-  using output_model = deduce_matrix<output, state>;
-  using gain = deduce_matrix<state, output>;
+  using estimate_uncertainty = ᴀʙᵀ<state, state>;
+  using process_uncertainty = ᴀʙᵀ<state, state>;
+  using output_uncertainty = ᴀʙᵀ<output, output>;
+  using state_transition = ᴀʙᵀ<state, state>;
+  using output_model = ᴀʙᵀ<output, state>;
+  using gain = ᴀʙᵀ<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =
@@ -72,12 +72,12 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  static inline const auto i{identity_v<deduce_matrix<state, state>>};
+  static inline const auto i{identity<ᴀʙᵀ<state, state>>};
 
-  state x{zero_v<state>};
-  estimate_uncertainty p{identity_v<estimate_uncertainty>};
-  process_uncertainty q{zero_v<process_uncertainty>};
-  output_uncertainty r{zero_v<output_uncertainty>};
+  state x{zero<state>};
+  estimate_uncertainty p{identity<estimate_uncertainty>};
+  process_uncertainty q{zero<process_uncertainty>};
+  output_uncertainty r{zero<output_uncertainty>};
   observation_state_function observation_state_h{
       [&hh = h]([[maybe_unused]] const auto &...arguments) -> output_model {
         return hh;
@@ -93,12 +93,12 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
         return hh * state_x;
       }};
 
-  output_model h{identity_v<output_model>};
-  state_transition f{identity_v<state_transition>};
-  gain k{identity_v<gain>};
-  innovation y{zero_v<innovation>};
-  innovation_uncertainty s{identity_v<innovation_uncertainty>};
-  output z{zero_v<output>};
+  output_model h{identity<output_model>};
+  state_transition f{identity<state_transition>};
+  gain k{identity<gain>};
+  innovation y{zero<innovation>};
+  innovation_uncertainty s{identity<innovation_uncertainty>};
+  output z{zero<output>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
   transposer t{};

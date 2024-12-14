@@ -44,17 +44,17 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the zero matrices values are null.
 [[maybe_unused]] auto test{[] {
-  auto zero{zero_v<matrix<double, 3, 3>>};
+  auto z{zero<matrix<double, 3, 3>>};
 
-  assert(zero(0, 0) == 0.0);
-  assert(zero(0, 1) == 0.0);
-  assert(zero(0, 2) == 0.0);
-  assert(zero(1, 0) == 0.0);
-  assert(zero(1, 1) == 0.0);
-  assert(zero(1, 2) == 0.0);
-  assert(zero(2, 0) == 0.0);
-  assert(zero(2, 1) == 0.0);
-  assert(zero(2, 2) == 0.0);
+  assert(z(0, 0) == 0.0);
+  assert(z(0, 1) == 0.0);
+  assert(z(0, 2) == 0.0);
+  assert(z(1, 0) == 0.0);
+  assert(z(1, 1) == 0.0);
+  assert(z(1, 2) == 0.0);
+  assert(z(2, 0) == 0.0);
+  assert(z(2, 1) == 0.0);
+  assert(z(2, 2) == 0.0);
 
   return 0;
 }()};

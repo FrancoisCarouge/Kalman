@@ -108,7 +108,7 @@ template <typename Filter = void> struct filter_deducer {
              state_transition<StateTransition> f, input_control<InputControl> g,
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
     using kt = x_z_u_p_q_r_f_g_ps<State, Output, Input, empty_tuple,
-                                  repack_t<prediction_types_t<Ps...>>>;
+                                  repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state{x.value},
               typename kt::estimate_uncertainty{p.value},
               typename kt::noise_process_function{q.value},
@@ -125,8 +125,8 @@ template <typename Filter = void> struct filter_deducer {
              [[maybe_unused]] update_types_t<Us...> uts,
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
     using kt =
-        x_z_u_p_q_r_us_ps<State, Output, Input, repack_t<update_types_t<Us...>>,
-                          repack_t<prediction_types_t<Ps...>>>;
+        x_z_u_p_q_r_us_ps<State, Output, Input, repack<update_types_t<Us...>>,
+                          repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state{x.value}};
   }
 
@@ -149,9 +149,8 @@ template <typename Filter = void> struct filter_deducer {
              observation<Observation> hh,
              [[maybe_unused]] update_types_t<Us...> uts,
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
-    using kt =
-        x_z_p_q_r_hh_us_ps<State, Output, repack_t<update_types_t<Us...>>,
-                           repack_t<prediction_types_t<Ps...>>>;
+    using kt = x_z_p_q_r_hh_us_ps<State, Output, repack<update_types_t<Us...>>,
+                                  repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state{x.value},
               typename kt::estimate_uncertainty{p.value},
               typename kt::process_uncertainty{q.value},
@@ -236,8 +235,8 @@ template <typename Filter = void> struct filter_deducer {
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
 
     using kt =
-        x_z_u_p_q_r_us_ps<State, Output, Input, repack_t<update_types_t<Us...>>,
-                          repack_t<prediction_types_t<Ps...>>>;
+        x_z_u_p_q_r_us_ps<State, Output, Input, repack<update_types_t<Us...>>,
+                          repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state{x.value},
               typename kt::estimate_uncertainty{p.value},
               typename kt::process_uncertainty{q.value},

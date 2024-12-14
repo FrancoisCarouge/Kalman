@@ -147,15 +147,11 @@ using empty_tuple = internal::empty_tuple;
 //! @brief Unpack the first type of the type template parameter pack.
 //!
 //! @details Shorthand for `std::tuple_element_t<0, std::tuple<Types...>>`.
-template <typename... Types> using first_t = internal::first_t<Types...>;
+template <typename... Types> using first = internal::first<Types...>;
 
-//! @brief The matrix type satisfying `X * Row = Column`.
-//!
-//! @details The resulting type of a matrix division. The resulting matrix type
-//! has as many rows as the `Row` matrix, respectively for columns as the
-//! `Column` matrix.
+//! @brief The evaluated type of the ABᵀ expression.
 template <typename Numerator, typename Denominator>
-using deduce_matrix = internal::deduce_matrix<Numerator, Denominator>;
+using ᴀʙᵀ = internal::ᴀʙᵀ<Numerator, Denominator>;
 
 //! @}
 
@@ -183,8 +179,8 @@ inline constexpr void for_constexpr(Function &&function) {
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Numerator, algebraic Denominator>
-constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
-    -> deduce_matrix<Numerator, Denominator>;
+constexpr auto operator/(const Numerator &lhs,
+                         const Denominator &rhs) -> ᴀʙᵀ<Numerator, Denominator>;
 
 //! @}
 
@@ -199,39 +195,39 @@ inline constexpr auto first_v{internal::first_v<Values...>};
 //!
 //! @details User-defined.
 template <typename Type = double>
-inline constexpr Type identity_v{internal::not_implemented<Type>{
+inline constexpr Type identity{internal::not_implemented<Type>{
     "Implement the linear algebra identity matrix for this type."}};
 
 //! @brief The singleton identity matrix specialization.
 template <arithmetic Arithmetic>
-inline constexpr Arithmetic identity_v<Arithmetic>{1};
+inline constexpr Arithmetic identity<Arithmetic>{1};
 
 template <typename Type>
   requires requires { Type::Identity(); }
-inline auto identity_v<Type>{Type::Identity()};
+inline auto identity<Type>{Type::Identity()};
 
 template <typename Type>
   requires requires { Type::identity(); }
-inline auto identity_v<Type>{Type::identity()};
+inline auto identity<Type>{Type::identity()};
 
 //! @brief The zero matrix.
 //!
 //! @details User-defined.
 template <typename Type = double>
-inline constexpr Type zero_v{internal::not_implemented<Type>{
+inline constexpr Type zero{internal::not_implemented<Type>{
     "Implement the linear algebra zero matrix for this type."}};
 
 //! @brief The singleton zero matrix specialization.
 template <arithmetic Arithmetic>
-inline constexpr Arithmetic zero_v<Arithmetic>{0};
+inline constexpr Arithmetic zero<Arithmetic>{0};
 
 template <typename Type>
   requires requires { Type::Zero(); }
-inline auto zero_v<Type>{Type::Zero()};
+inline auto zero<Type>{Type::Zero()};
 
 template <typename Type>
   requires requires { Type::zero(); }
-inline auto zero_v<Type>{Type::zero()};
+inline auto zero<Type>{Type::zero()};
 
 //! @}
 } // namespace fcarouge

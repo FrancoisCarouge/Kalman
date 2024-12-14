@@ -44,10 +44,10 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the assignment operator.
 [[maybe_unused]] auto test{[] {
-  auto m{identity_v<matrix<double, 5, 5>>};
+  auto m{identity<matrix<double, 5, 5>>};
   auto c = m;
 
-  assert((c == identity_v<matrix<double, 5, 5>>));
+  assert((c == identity<matrix<double, 5, 5>>));
 
   return 0;
 }()};
