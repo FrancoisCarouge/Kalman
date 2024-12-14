@@ -51,11 +51,11 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 [[maybe_unused]] auto test{[] {
   kalman filter{state{0.0}, output<vector<4>>, input<double>};
 
-  const auto i4x4{identity_v<matrix<4, 4>>};
-  const auto i4x1{identity_v<matrix<4, 1>>};
-  const auto i1x4{identity_v<matrix<1, 4>>};
-  const auto z4x1{zero_v<vector<4>>};
-  const auto z4x4{zero_v<matrix<4, 4>>};
+  const auto i4x4{identity<matrix<4, 4>>};
+  const auto i4x1{identity<matrix<4, 1>>};
+  const auto i1x4{identity<matrix<1, 4>>};
+  const auto z4x1{zero<vector<4>>};
+  const auto z4x4{zero<matrix<4, 4>>};
 
   assert(filter.f() == 1);
   assert(filter.g() == 1);

@@ -223,12 +223,12 @@ struct conditional_member_types : public conditional_input_control<Filter>,
                                   conditional_state_transition<Filter>,
                                   conditional_update_types<Filter> {};
 
-template <typename Type> struct repack {
+template <typename Type> struct repacker {
   using type = Type;
 };
 
 template <template <typename...> typename Pack, typename... Types>
-struct repack<Pack<Types...>> {
+struct repacker<Pack<Types...>> {
   using type = std::tuple<Types...>;
   using size_t = std::remove_const_t<decltype(sizeof...(Types))>;
 
@@ -272,31 +272,37 @@ struct transposer final {
   }
 };
 
-struct matrix_deducer;
+struct evaluater final {
+  template <typename Type>
+  [[nodiscard]] inline constexpr auto operator()(Type value) const -> Type;
+
+  template <typename Type>
+    requires(eigen<Type>)
+  [[nodiscard]] inline constexpr auto operator()(Type value) const ->
+      typename Type::PlainMatrix;
+};
+
+template <typename Type>
+using transpose = decltype(transposer{}(std::declval<Type>()));
 
 template <typename Lhs, typename Rhs>
-using deduce_matrix =
-    std::remove_cvref_t<std::invoke_result_t<matrix_deducer, Lhs, Rhs>>;
+using multiply = decltype(std::declval<Lhs>() * std::declval<Rhs>());
 
-struct matrix_deducer final {
-  template <typename Lhs, typename Rhs>
-  [[nodiscard]] inline constexpr auto
-  operator()(Lhs lhs, Rhs rhs) const -> decltype(lhs * transposer{}(rhs));
+template <typename Type>
+using evaluate =
+    std::remove_cvref_t<decltype(evaluater{}(std::declval<Type>()))>;
 
-  template <typename Lhs, typename Rhs>
-    requires(eigen<Lhs> or eigen<Rhs>)
-  [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
-      typename decltype(lhs * transposer{}(rhs))::PlainMatrix;
-};
+template <typename Lhs, typename Rhs>
+using ᴀʙᵀ = evaluate<multiply<Lhs, transpose<Rhs>>>;
 
 using empty_tuple = std::tuple<>;
 
-template <typename Pack> using repack_t = repack<Pack>::type;
+template <typename Pack> using repack = repacker<Pack>::type;
 
-template <typename Pack> using size_t = repack<Pack>::size_t;
+template <typename Pack> using size_t = repacker<Pack>::size_t;
 
 template <typename... Types>
-using first_t = std::tuple_element_t<0, std::tuple<Types...>>;
+using first = std::tuple_element_t<0, std::tuple<Types...>>;
 
 template <std::size_t Begin, std::size_t End, std::size_t Increment,
           typename Function>
@@ -308,7 +314,7 @@ inline constexpr void for_constexpr(Function &&function) {
   }
 }
 
-template <typename Pack> inline constexpr auto size{repack<Pack>::size};
+template <typename Pack> inline constexpr auto size{repacker<Pack>::size};
 
 template <auto... Values>
 inline constexpr auto first_v{first_value<Values...>::value};

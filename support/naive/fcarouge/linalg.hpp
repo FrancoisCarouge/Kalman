@@ -187,10 +187,10 @@ template <typename Type, auto Row>
 matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>;
 
 template <typename... Types, auto... Columns>
-  requires(std::conjunction_v<std::is_same<first_t<Types...>, Types>...> &&
+  requires(std::conjunction_v<std::is_same<first<Types...>, Types>...> &&
            ((Columns == first_v<Columns>) && ... && true))
 matrix(const Types (&...rows)[Columns])
-    -> matrix<std::remove_cvref_t<first_t<Types...>>, sizeof...(Columns),
+    -> matrix<std::remove_cvref_t<first<Types...>>, sizeof...(Columns),
               //! @todo Should this be `first_v<Columns...>` instead?
               (Columns, ...)>;
 
@@ -201,8 +201,8 @@ matrix(const Types (&...rows)[Columns])
 
 //! @brief The identity matrix naive specialization.
 template <typename Type, auto Row, auto Column>
-inline constexpr matrix<Type, Row, Column>
-    identity_v<matrix<Type, Row, Column>>{[] {
+inline constexpr matrix<Type, Row, Column> identity<matrix<Type, Row, Column>>{
+    [] {
       matrix<Type, Row, Column> result;
       auto size{Row < Column ? Row : Column};
 
@@ -215,7 +215,7 @@ inline constexpr matrix<Type, Row, Column>
 
 //! @brief The zero matrix naive specialization.
 template <typename Type, auto Row, auto Column>
-inline constexpr matrix<Type, Row, Column> zero_v<matrix<Type, Row, Column>>{};
+inline constexpr matrix<Type, Row, Column> zero<matrix<Type, Row, Column>>{};
 
 //! @}
 

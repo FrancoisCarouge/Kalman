@@ -45,27 +45,27 @@ namespace fcarouge::internal {
 template <typename State, typename Output> struct x_z_p_q_r_h_f {
   using state = State;
   using output = Output;
-  using estimate_uncertainty = deduce_matrix<state, state>;
-  using process_uncertainty = deduce_matrix<state, state>;
-  using output_uncertainty = deduce_matrix<output, output>;
-  using state_transition = deduce_matrix<state, state>;
-  using output_model = deduce_matrix<output, state>;
-  using gain = deduce_matrix<state, output>;
+  using estimate_uncertainty = ᴀʙᵀ<state, state>;
+  using process_uncertainty = ᴀʙᵀ<state, state>;
+  using output_uncertainty = ᴀʙᵀ<output, output>;
+  using state_transition = ᴀʙᵀ<state, state>;
+  using output_model = ᴀʙᵀ<output, state>;
+  using gain = ᴀʙᵀ<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
 
-  static inline const auto i{identity_v<deduce_matrix<state, state>>};
+  static inline const auto i{identity<ᴀʙᵀ<state, state>>};
 
-  state x{zero_v<state>};
-  estimate_uncertainty p{identity_v<estimate_uncertainty>};
-  process_uncertainty q{zero_v<process_uncertainty>};
-  output_uncertainty r{zero_v<output_uncertainty>};
-  output_model h{identity_v<output_model>};
-  state_transition f{identity_v<state_transition>};
-  gain k{identity_v<gain>};
-  innovation y{zero_v<innovation>};
-  innovation_uncertainty s{identity_v<innovation_uncertainty>};
-  output z{zero_v<output>};
+  state x{zero<state>};
+  estimate_uncertainty p{identity<estimate_uncertainty>};
+  process_uncertainty q{zero<process_uncertainty>};
+  output_uncertainty r{zero<output_uncertainty>};
+  output_model h{identity<output_model>};
+  state_transition f{identity<state_transition>};
+  gain k{identity<gain>};
+  innovation y{zero<innovation>};
+  innovation_uncertainty s{identity<innovation_uncertainty>};
+  output z{zero<output>};
   transposer t{};
 
   inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
