@@ -57,7 +57,6 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   const auto z4x1{zero<vector<4>>};
   const auto z4x4{zero<matrix<4, 4>>};
   const auto z5x1{zero<vector<5>>};
-  const auto z5x5{zero<matrix<5, 5>>};
 
   assert(filter.f() == i5x5);
   assert(filter.k() == i5x4);
