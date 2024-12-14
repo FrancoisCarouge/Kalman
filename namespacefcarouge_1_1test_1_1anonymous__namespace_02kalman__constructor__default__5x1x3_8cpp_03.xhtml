@@ -167,13 +167,13 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a> filter{state{vector&lt;5&gt;{0.0, 0.0, 0.0, 0.0, 0.0}}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;double&gt;</a>,</div>
 <div class="line">                <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;vector&lt;3&gt;</a>&gt;};</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">z3x1</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">zero_v&lt;vector&lt;3&gt;</a>&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i1x5{identity_v&lt;matrix&lt;1, 5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i5x3{identity_v&lt;matrix&lt;5, 3&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i5x1{identity_v&lt;matrix&lt;5, 1&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i5x5{identity_v&lt;matrix&lt;5, 5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> z5x1{zero_v&lt;vector&lt;5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> z5x5{zero_v&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">z3x1</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">zero&lt;vector&lt;3&gt;</a>&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i1x5{identity&lt;matrix&lt;1, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i5x3{identity&lt;matrix&lt;5, 3&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i5x1{identity&lt;matrix&lt;5, 1&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> i5x5{identity&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> z5x1{zero&lt;vector&lt;5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> z5x5{zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
 <div class="line"> </div>
 <div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.f() == i5x5);</div>
 <div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.g() == i5x3);</div>
@@ -190,7 +190,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00270">factory.hpp:270</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00269">factory.hpp:269</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00076">linalg.hpp:76</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ae4d1dbbab6a8bdcaa50062d0cb879777"><div class="ttname"><a href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 </div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000007">Test:</a></b></dt><dd>Verifies default values are initialized for multi-dimension filters, single output edge case. </dd></dl>
@@ -200,13 +200,13 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line"><span class="lineno">   52</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;5&gt;</a>{0.0, 0.0, 0.0, 0.0, 0.0}}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;double&gt;</a>,</div>
 <div class="line"><span class="lineno">   53</span>                <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;vector&lt;3&gt;</a>&gt;};</div>
 <div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> <span class="keyword">auto</span> z3x1{zero_v&lt;vector&lt;3&gt;&gt;};</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> <span class="keyword">auto</span> i1x5{identity_v&lt;matrix&lt;1, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> <span class="keyword">auto</span> i5x3{identity_v&lt;matrix&lt;5, 3&gt;&gt;};</div>
-<div class="line"><span class="lineno">   58</span>  <span class="keyword">const</span> <span class="keyword">auto</span> i5x1{identity_v&lt;matrix&lt;5, 1&gt;&gt;};</div>
-<div class="line"><span class="lineno">   59</span>  <span class="keyword">const</span> <span class="keyword">auto</span> i5x5{identity_v&lt;matrix&lt;5, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   60</span>  <span class="keyword">const</span> <span class="keyword">auto</span> z5x1{zero_v&lt;vector&lt;5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   61</span>  <span class="keyword">const</span> <span class="keyword">auto</span> z5x5{zero_v&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> <span class="keyword">auto</span> z3x1{zero&lt;vector&lt;3&gt;&gt;};</div>
+<div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> <span class="keyword">auto</span> i1x5{identity&lt;matrix&lt;1, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> <span class="keyword">auto</span> i5x3{identity&lt;matrix&lt;5, 3&gt;&gt;};</div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">const</span> <span class="keyword">auto</span> i5x1{identity&lt;matrix&lt;5, 1&gt;&gt;};</div>
+<div class="line"><span class="lineno">   59</span>  <span class="keyword">const</span> <span class="keyword">auto</span> i5x5{identity&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keyword">const</span> <span class="keyword">auto</span> z5x1{zero&lt;vector&lt;5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   61</span>  <span class="keyword">const</span> <span class="keyword">auto</span> z5x5{zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
 <div class="line"><span class="lineno">   62</span> </div>
 <div class="line"><span class="lineno">   63</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.f() == i5x5);</div>
 <div class="line"><span class="lineno">   64</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.g() == i5x3);</div>

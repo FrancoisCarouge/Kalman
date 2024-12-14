@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Namespace <a class="el" href="namespacefcarouge.xhtml">fcarouge</a>  </dt>
-<dd><a class="anchor" id="_todo000032"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
+<dd><a class="anchor" id="_todo000031"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a>  (Arguments... arguments) -&gt; kalman&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#af0c315e1078601955b31e5c902650361">internal::deduce_filter&lt; Arguments... &gt;</a> &gt;</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000025"></a>Should the parameter be named configurations? </p>
 <p class="interdd"></p>
@@ -140,23 +140,21 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="enddd">Can we implement Temporal Parallelization of Bayesian Smoothers, Simo Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez, <a href="https://arxiv.org/pdf/1905.13002.pdf">https://arxiv.org/pdf/1905.13002.pdf</a> ? GPU implementation? Parallel implementation?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a432c41f9b06ed9b51f84f7a72c06bde3">fcarouge::kalman&lt; Filter &gt;::g</a>  (this auto &amp;&amp;self)</dt>
-<dd><a class="anchor" id="_todo000027"></a>Do we still need the non-const flavor? </dd>
+<dd><a class="anchor" id="_todo000026"></a>Do we still need the non-const flavor? </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a54714ec34eba3646ef3913388c90d2ea">fcarouge::kalman&lt; Filter &gt;::predict</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000029"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000028"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a4a85603ea16cb72f7b7fc3bfedaa90bd">fcarouge::kalman&lt; Filter &gt;::update</a>  (const auto &amp;...arguments)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000030"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000029"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a6833f2b35051ed9d7583c9f1580cb468">fcarouge::kalman&lt; Filter &gt;::x</a>  (this auto &amp;&amp;self)</dt>
-<dd><a class="anchor" id="_todo000026"></a>Collapse cv-ref qualifier-aware member functions per C++23 P0847 to avoid duplication: <code>inline constexpr auto &amp; x(this auto&amp;&amp; self)</code>.  </dd>
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af5b5c43dcc898eab0391ecc90ff7b328">fcarouge::kalman&lt; Filter &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
-<dd><a class="anchor" id="_todo000028"></a>Add measurement post-fit residual by default and example?  </dd>
+<dd><a class="anchor" id="_todo000027"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Struct <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000031"></a>Explore and compare performance. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000030"></a>Explore and compare performance. </p>
 <p class="interdd"></p>
 <p class="interdd">Explore optimization of heap allocations? </p>
 <p class="interdd"></p>
@@ -167,13 +165,13 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="enddd">Remove unecessary empty paramaters when MSVC supports lambda without them.  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
-<dd><a class="anchor" id="_todo000033"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
+<dd><a class="anchor" id="_todo000032"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000034"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000033"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml#a887dd3f3f177feadd1ca42785885897f">std::formatter&lt; Filter, Char &gt;::format</a>  (const Filter &amp;filter, std::basic_format_context&lt; OutputIterator, Char &gt; &amp;format_context) const -&gt; OutputIterator</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000001"></a>P2585 may be useful in simplifying and standardizing the support. </p>
-<p class="interdd"><a class="anchor" id="_todo000003"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
-<p class="enddd"><a class="anchor" id="_todo000004"></a>Inconsistent usage of internal? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>Inconsistent usage of internal? </p>
+<p class="interdd"><a class="anchor" id="_todo000002"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
+<p class="enddd"><a class="anchor" id="_todo000001"></a>P2585 may be useful in simplifying and standardizing the support. </p>
 </dd>
 </dl>
 </div></div><!-- contents -->

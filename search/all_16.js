@@ -9,7 +9,7 @@ var searchData=
   ['todo_20list_6',['Todo List',['../todo.xhtml',1,'']]],
   ['tradeoffs_7',['Selected Tradeoffs',['../index.xhtml#selected-tradeoffs',1,'']]],
   ['transition_8',['transition',['../namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41',1,'fcarouge::internal']]],
-  ['transpose_9',['transpose',['../namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f',1,'fcarouge']]],
+  ['transpose_9',['transpose',['../namespacefcarouge.xhtml#ac922632c2da8269e8396756088ba9a1f',1,'fcarouge::transpose()'],['../namespacefcarouge_1_1internal.xhtml#a415e2d7076de3c51f547e1531fc7c547',1,'fcarouge::internal::transpose']]],
   ['type_2ehpp_10',['type.hpp',['../type_8hpp.xhtml',1,'']]],
   ['types_11',['Member Types',['../index.xhtml#member-types',1,'']]]
 ];

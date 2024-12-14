@@ -46,7 +46,8 @@ var menudata={children:[
 {text:"t",url:"namespacemembers.xhtml#index_t"},
 {text:"u",url:"namespacemembers.xhtml#index_u"},
 {text:"v",url:"namespacemembers.xhtml#index_v"},
-{text:"z",url:"namespacemembers.xhtml#index_z"}]},
+{text:"z",url:"namespacemembers.xhtml#index_z"},
+{text:"ᴀ",url:"namespacemembers.xhtml#index_a0xe1b480"}]},
 {text:"Functions",url:"namespacemembers_func.xhtml",children:[
 {text:"b",url:"namespacemembers_func.xhtml#index_b"},
 {text:"e",url:"namespacemembers_func.xhtml#index_e"},
@@ -78,7 +79,9 @@ var menudata={children:[
 {text:"m",url:"namespacemembers_type.xhtml#index_m"},
 {text:"r",url:"namespacemembers_type.xhtml#index_r"},
 {text:"s",url:"namespacemembers_type.xhtml#index_s"},
-{text:"v",url:"namespacemembers_type.xhtml#index_v"}]}]}]},
+{text:"t",url:"namespacemembers_type.xhtml#index_t"},
+{text:"v",url:"namespacemembers_type.xhtml#index_v"},
+{text:"ᴀ",url:"namespacemembers_type.xhtml#index_a0xe1b480"}]}]}]},
 {text:"Concepts",url:"concepts.xhtml"},
 {text:"Classes",url:"annotated.xhtml",children:[
 {text:"Class List",url:"annotated.xhtml"},
