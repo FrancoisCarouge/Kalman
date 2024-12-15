@@ -28,7 +28,7 @@ This library supports various simple and extended filters. The implementation is
   - [Performance](#performance)
 - [Resources](#resources)
   - [Definitions](#definitions)
-  - [Articles](#articles)
+  - [Related Resources](#related-resources)
   - [Projects](#projects)
   - [Third Party Acknowledgement](#third-party-acknowledgement)
   - [Sponsors](#sponsors)
@@ -289,9 +289,11 @@ In theory there is no difference between theory and practice, while in practice 
 
 Design, development, and testing uncovered unexpected facets of the projects:
 
-- The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full compile-time verification of unit- and index-type safeties for input parameters and characteristics.
+- The filter's state, output, and input column vectors should be strongly typed parameters to allow the filter to participate in full compile-time safeties verification.
 - There exist Kalman filters with hundreds of state variables.
 - The `float` data type has about seven significant digits. Floating point error is a loss of information to account for in design.
+- The units of useful matrices are factorizable, i.e. the unit of an element is expressed as the product of the row and column indexed units. The deduced units result type of a matrix product collapses and folds the inner indexed units merely returning the outer units.
+- Safe physical linear algebra not only includes types and units safety, but also coordinate axes and frames reference.
 
 ## Performance
 
@@ -312,9 +314,7 @@ The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark
 
 Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, MSCKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.
 
-## Articles
-
-Resources to learn about Kalman filters:
+## Related Resources
 
 - [A New Approach to Linear Filtering and Prediction Problems](https://www.cs.unc.edu/~welch/kalman/kalmanPaper.html) by Kalman, Rudolph Emil in Transactions of the ASME - Journal of Basic Engineering, Volume 82, Series D, pp 35-45, 1960 - Transcription by John Lukesh.
 - [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
@@ -322,6 +322,8 @@ Resources to learn about Kalman filters:
 - [How Kalman Filters Work](https://www.anuncommonlab.com/articles/how-kalman-filters-work) by Tucker McClure of An Uncommon Lab.
 - [Wikipedia Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter) by Wikipedia, the free encyclopedia.
 - [Applications of Kalman Filtering in Aerospace 1960 to the Present](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=5466132) by Mohinder S. Grewal and Angus P. Andrews. IEEE 2010.
+- [Taking Static Type-Safety to the Next Level - Physical Units for Matrices](https://www.youtube.com/watch?v=aF3samjRzD4) by Daniel Withopf at CppCon 2022 [[slides](https://meetingcpp.com/mcpp/slides/2021/Physical-units-for-matrices6397.pdf)].
+- [Units Libraries and Autonomous Vehicles: Lessons from the Trenches](https://www.youtube.com/watch?v=5dhFtSu3wCo) by Chip Hogg at CppCon 2021.
 
 ## Projects
 
@@ -347,6 +349,7 @@ The library is designed, developed, and tested with the help of third-party tool
 - [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
 - [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
 - [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
+- [mp-units](https://github.com/mpusz/mp-units) the quantities and units library for C++.
 - [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
 - [Valgrind](https://valgrind.org) to check for correct memory management.
 
