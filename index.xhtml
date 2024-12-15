@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('index.xhtml',''); initResizable(); });
 </li>
 <li><a class="el" href="index.xhtml#resources">Resources</a><ul>
 <li><a class="el" href="index.xhtml#definitions">Definitions</a></li>
-<li><a class="el" href="index.xhtml#articles">Articles</a></li>
+<li><a class="el" href="index.xhtml#related-resources">Related Resources</a></li>
 <li><a class="el" href="index.xhtml#projects">Projects</a></li>
 <li><a class="el" href="index.xhtml#third-party-acknowledgement">Third Party Acknowledgement</a></li>
 <li><a class="el" href="index.xhtml#sponsors">Sponsors</a><ul>
@@ -406,9 +406,11 @@ Selected Tradeoffs</h2>
 Lessons Learned</h2>
 <p>Design, development, and testing uncovered unexpected facets of the projects:</p>
 <ul>
-<li>The filter's state, output, and input column vectors should be type template parameters to allow the filter to participate in full compile-time verification of unit- and index-type safeties for input parameters and characteristics.</li>
+<li>The filter's state, output, and input column vectors should be strongly typed parameters to allow the filter to participate in full compile-time safeties verification.</li>
 <li>There exist Kalman filters with hundreds of state variables.</li>
 <li>The <code>float</code> data type has about seven significant digits. Floating point error is a loss of information to account for in design.</li>
+<li>The units of useful matrices are factorizable, i.e. the unit of an element is expressed as the product of the row and column indexed units. The deduced units result type of a matrix product collapses and folds the inner indexed units merely returning the outer units.</li>
+<li>Safe physical linear algebra not only includes types and units safety, but also coordinate axes and frames reference.</li>
 </ul>
 <h2><a class="anchor" id="performance"></a>
 Performance</h2>
@@ -429,9 +431,8 @@ Definitions</h2>
 <td class="markdownTableBodyNone">UKF   </td><td class="markdownTableBodyNone">The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples sigma points about an estimate working point of the current mean using an Unscented Transformation technique.   </td></tr>
 </table>
 <p>Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, MSCKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.</p>
-<h2><a class="anchor" id="articles"></a>
-Articles</h2>
-<p>Resources to learn about Kalman filters:</p>
+<h2><a class="anchor" id="related-resources"></a>
+Related Resources</h2>
 <ul>
 <li><a href="https://www.cs.unc.edu/~welch/kalman/kalmanPaper.html">A New Approach to Linear Filtering and Prediction Problems</a> by Kalman, Rudolph Emil in Transactions of the ASME - Journal of Basic Engineering, Volume 82, Series D, pp 35-45, 1960 - Transcription by John Lukesh.</li>
 <li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
@@ -439,6 +440,8 @@ Articles</h2>
 <li><a href="https://www.anuncommonlab.com/articles/how-kalman-filters-work">How Kalman Filters Work</a> by Tucker McClure of An Uncommon Lab.</li>
 <li><a href="https://en.wikipedia.org/wiki/Kalman_filter">Wikipedia Kalman filter</a> by Wikipedia, the free encyclopedia.</li>
 <li><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=5466132">Applications of Kalman Filtering in Aerospace 1960 to the Present</a> by Mohinder S. Grewal and Angus P. Andrews. IEEE 2010.</li>
+<li><a href="https://www.youtube.com/watch?v=aF3samjRzD4">Taking Static Type-Safety to the Next Level - Physical Units for Matrices</a> by Daniel Withopf at CppCon 2022 [<a href="https://meetingcpp.com/mcpp/slides/2021/Physical-units-for-matrices6397.pdf">slides</a>].</li>
+<li><a href="https://www.youtube.com/watch?v=5dhFtSu3wCo">Units Libraries and Autonomous Vehicles: Lessons from the Trenches</a> by Chip Hogg at CppCon 2021.</li>
 </ul>
 <h2><a class="anchor" id="projects"></a>
 Projects</h2>
@@ -463,6 +466,7 @@ Third Party Acknowledgement</h2>
 <li><a href="https://gcc.gnu.org">GCC</a> for compilation and code sanitizers.</li>
 <li><a href="https://github.com/google/benchmark">Google Benchmark</a> to implement the benchmarks.</li>
 <li><a href="http://ltp.sourceforge.net/coverage/lcov.php">lcov</a> to process coverage information.</li>
+<li><a href="https://github.com/mpusz/mp-units">mp-units</a> the quantities and units library for C++.</li>
 <li><a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist">MSVC</a> for compilation and code sanitizers.</li>
 <li><a href="https://valgrind.org">Valgrind</a> to check for correct memory management.</li>
 </ul>

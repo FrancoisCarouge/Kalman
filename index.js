@@ -27,7 +27,7 @@ var index =
     ] ],
     [ "Resources", "index.xhtml#resources", [
       [ "Definitions", "index.xhtml#definitions", null ],
-      [ "Articles", "index.xhtml#articles", null ],
+      [ "Related Resources", "index.xhtml#related-resources", null ],
       [ "Projects", "index.xhtml#projects", null ],
       [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
       [ "Sponsors", "index.xhtml#sponsors", [
