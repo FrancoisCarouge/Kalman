@@ -286,14 +286,14 @@ template <typename Type>
 using transpose = decltype(transposer{}(std::declval<Type>()));
 
 template <typename Lhs, typename Rhs>
-using multiply = decltype(std::declval<Lhs>() * std::declval<Rhs>());
+using product = decltype(std::declval<Lhs>() * std::declval<Rhs>());
 
 template <typename Type>
 using evaluate =
     std::remove_cvref_t<decltype(evaluater{}(std::declval<Type>()))>;
 
 template <typename Lhs, typename Rhs>
-using ᴀʙᵀ = evaluate<multiply<Lhs, transpose<Rhs>>>;
+using ᴀʙᵀ = evaluate<product<Lhs, transpose<Rhs>>>;
 
 using empty_tuple = std::tuple<>;
 

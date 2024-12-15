@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_X_Z_HPP
-#define FCAROUGE_INTERNAL_X_Z_HPP
+#ifndef FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
+#define FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
 
 #include "fcarouge/utility.hpp"
 
@@ -80,4 +80,4 @@ template <typename State, typename Output> struct x_z_p_r_f {
 };
 } // namespace fcarouge::internal
 
-#endif // FCAROUGE_INTERNAL_X_Z_HPP
+#endif // FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
