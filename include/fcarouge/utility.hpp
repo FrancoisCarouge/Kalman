@@ -149,6 +149,10 @@ using empty_tuple = internal::empty_tuple;
 //! @details Shorthand for `std::tuple_element_t<0, std::tuple<Types...>>`.
 template <typename... Types> using first = internal::first<Types...>;
 
+//! @brief The deduced result type of the product.
+template <typename Lhs, typename Rhs>
+using product = internal::product<Lhs, Rhs>;
+
 //! @brief The evaluated type of the ABᵀ expression.
 template <typename Numerator, typename Denominator>
 using ᴀʙᵀ = internal::ᴀʙᵀ<Numerator, Denominator>;
