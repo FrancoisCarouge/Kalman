@@ -231,6 +231,11 @@ public:
   //! @note Overloading the operator dot would have been nice had it existed.
   inline constexpr auto &&x(this auto &&self);
 
+  template <auto Index> inline constexpr auto x(this auto &&self) {
+    return std::forward<decltype(self)>(self)
+        .filter.x.template operator()<Index>();
+  }
+
   //! @brief Sets the state estimate column vector X.
   //!
   //! @param value The first copied initializer used to set the state estimate

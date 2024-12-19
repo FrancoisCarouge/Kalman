@@ -62,13 +62,12 @@ inline constexpr auto identity<Type>{Type::one()};
 //!
 //! @todo Constraint indexes with a concept: scalar/underlying, type, conversion
 //! members?
-template <auto Reference> struct index {
+template <auto Reference> struct quantity_index {
   using scalar = double;
   using type = quantity<Reference, scalar>;
 
-  // Is there a more transparent yet type-safe way to convert?
-  //! @todo While the method is static, would it be better to handle the index
-  //! type properly? Or externalize this conversion?
+  //! @todo Can we do without this structure altogether with the help of
+  //! https://mpusz.github.io/mp-units/latest/users_guide/use_cases/interoperability_with_other_libraries/
   [[nodiscard]] static constexpr auto convert(const auto &value) -> scalar {
     return value.numerical_value_in(value.unit);
   }
@@ -82,6 +81,8 @@ using mp_units::si::unit_symbols::s;
 using mp_units::si::unit_symbols::s2;
 using mp_units::si::unit_symbols::s3;
 
+//! @todo: Consider upstreaming named symbols up to pow<6> because that would be
+//! common for constant jerk uncertainties values?
 inline constexpr auto s4{pow<4>(second)};
 } // namespace fcarouge
 

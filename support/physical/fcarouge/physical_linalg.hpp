@@ -43,9 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Physically typed linear algebra implementation.
 //!
 //! @details Matrix, vectors, and named algebraic values.
-//!
-//! @note Idea from:
-//! https://meetingcpp.com/mcpp/slides/2021/Physical-units-for-matrices6397.pdf
 
 #include "fcarouge/utility.hpp"
 
@@ -57,10 +54,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 
-// concept index = requires(index i) {
-
-// };
-
+//! @todo Provide a conformance concept for the index types?
 template <std::size_t Index, typename Indexes>
 using index_t = typename std::tuple_element_t<Index, Indexes>::type;
 
@@ -151,12 +145,13 @@ public:
     }
   }
 
+  //! @todo Is this function safe? Correct?
   template <typename Type>
   explicit inline constexpr physical_matrix(const Type &other)
       : data{other.data} {}
 
-  template <std::size_t Index>
-  [[nodiscard]] inline constexpr auto operator[]() const
+  template <auto Index>
+  inline constexpr auto operator()()
     requires(std::tuple_size_v<RowIndexes> != 1 &&
              std::tuple_size_v<ColumnIndexes> == 1)
   {
@@ -165,14 +160,37 @@ public:
     return data(Index, 0) * identity<type>;
   }
 
-  //! @todo Fix the conversion indexes?
-  template <std::size_t RowIndex, std::size_t ColumnIndex>
-  inline constexpr void operator()(auto element)
+  // Proxy reference in support of indexed type conversion to and from
+  // underlying scalar.
+  template <typename Type> struct reference {
+    Type &value;
+
+    //! @todo Fix the conversion indexes?
+    inline constexpr double operator=(const auto &element) {
+      value = std::tuple_element_t<0, RowIndexes>::convert(element);
+      return 0.;
+    }
+  };
+
+  inline constexpr auto operator[](std::size_t i)
+    requires(std::tuple_size_v<RowIndexes> != 1 &&
+             std::tuple_size_v<ColumnIndexes> == 1)
+  {
+    return reference{data(i, 0)};
+  }
+
+  inline constexpr auto operator[](std::size_t i, std::size_t j)
     requires(std::tuple_size_v<RowIndexes> != 1 &&
              std::tuple_size_v<ColumnIndexes> != 1)
   {
-    data(RowIndex, ColumnIndex) =
-        std::tuple_element_t<0, RowIndexes>::convert(element);
+    return reference{data(i, j)};
+  }
+
+  template <std::size_t Index>
+  [[nodiscard]] inline constexpr auto operator[]() const {
+    using type = element_t<Index, RowIndexes, 0, ColumnIndexes>;
+
+    return data(Index, 0) * identity<type>;
   }
 
   Matrix data;
@@ -195,12 +213,43 @@ template <typename Matrix, typename... ColumnIndexes>
 using physical_row_vector =
     physical_matrix<Matrix, one_row, std::tuple<ColumnIndexes...>>;
 
+//! @brief Specialization of the evaluation type.
+//!
+//! @note Implementation not needed.
+template <template <typename, typename, typename> typename PhysicalMatrix,
+          typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct evaluater<PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] inline constexpr auto operator()() const
+      -> PhysicalMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
+};
+
+//! @brief Specialization of the transposer.
+template <template <typename, typename, typename> typename PhysicalMatrix,
+          typename Matrix, typename RowIndexes, typename ColumnIndexes>
+  requires requires(PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
+    m.data;
+  }
+struct transposer<PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] inline constexpr auto operator()(
+      const PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
+
+    evaluate<Matrix> result{value.data};
+
+    return PhysicalMatrix<evaluate<transpose<Matrix>>, ColumnIndexes,
+                          RowIndexes>{t(result)};
+  }
+};
+
 //! @}
 
 //! @name Algebraic Named Values
 //! @{
 
 //! @brief The identity matrix physical specialization.
+//!
+//! @todo The identity doesn't really make sense for matrices without units?
+//! Unless it's the matrix without units? Even then, the identity matrix is
+//! supposed to be square? What's the name of this thing then?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 inline physical_matrix<Matrix, RowIndexes, ColumnIndexes>
     identity<physical_matrix<Matrix, RowIndexes, ColumnIndexes>>{
@@ -259,15 +308,6 @@ operator/(const physical_matrix<Matrix1, RowIndexes1, ColumnIndexes> &lhs,
   auto result{lhs.data / rhs.data};
 
   return physical_matrix<decltype(result), RowIndexes1, RowIndexes2>{result};
-}
-
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-transpose(const physical_matrix<Matrix, RowIndexes, ColumnIndexes> &lhs) {
-  internal::transposer t;
-  auto result{t(lhs.data)};
-
-  return physical_matrix<decltype(result), ColumnIndexes, RowIndexes>{result};
 }
 } // namespace fcarouge
 
