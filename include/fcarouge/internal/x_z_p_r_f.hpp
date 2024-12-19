@@ -50,7 +50,11 @@ template <typename State, typename Output> struct x_z_p_r_f {
   using state_transition = ᴀʙᵀ<state, state>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
-  using gain = ᴀʙᵀ<state, output>;
+
+  //! @todo Fix me: this gain is incorrect for algebraic types.
+  using gain =
+      std::remove_cvref_t<decltype(std::declval<estimate_uncertainty>() /
+                                   std::declval<innovation_uncertainty>())>;
 
   static inline const auto i{identity<gain>};
 
