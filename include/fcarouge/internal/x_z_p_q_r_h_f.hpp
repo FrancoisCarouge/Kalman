@@ -50,11 +50,11 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
   using output_uncertainty = ᴀʙᵀ<output, output>;
   using state_transition = ᴀʙᵀ<state, state>;
   using output_model = ᴀʙᵀ<output, state>;
+
+  //! @todo Fix me: this gain type is incorrect for physical arithmetic types.
+  using gain = ᴀʙᵀ<state, output>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
-
-  // This gain is incorrect for units.
-  using gain = ᴀʙᵀ<state, output>;
 
   static inline const auto i{identity<ᴀʙᵀ<state, state>>};
 

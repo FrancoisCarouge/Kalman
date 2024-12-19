@@ -43,9 +43,6 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Physically typed linear algebra implementation.
 //!
 //! @details Matrix, vectors, and named algebraic values.
-//!
-//! @note Idea from:
-//! https://meetingcpp.com/mcpp/slides/2021/Physical-units-for-matrices6397.pdf
 
 #include "fcarouge/utility.hpp"
 
@@ -57,10 +54,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 
-// concept index = requires(index i) {
-
-// };
-
+//! @todo Provide a conformance concept for the index types?
 template <std::size_t Index, typename Indexes>
 using index_t = typename std::tuple_element_t<Index, Indexes>::type;
 
@@ -151,12 +145,13 @@ public:
     }
   }
 
+  //! @todo Is this function safe? Correct?
   template <typename Type>
   explicit inline constexpr physical_matrix(const Type &other)
       : data{other.data} {}
 
-  template <std::size_t Index>
-  [[nodiscard]] inline constexpr auto operator[]() const
+  template <auto Index>
+  inline constexpr auto operator()()
     requires(std::tuple_size_v<RowIndexes> != 1 &&
              std::tuple_size_v<ColumnIndexes> == 1)
   {
@@ -165,14 +160,37 @@ public:
     return data(Index, 0) * identity<type>;
   }
 
-  //! @todo Fix the conversion indexes?
-  template <std::size_t RowIndex, std::size_t ColumnIndex>
-  inline constexpr void operator()(auto element)
+  // Proxy reference in support of indexed type conversion to and from
+  // underlying scalar.
+  template <typename Type> struct reference {
+    Type &value;
+
+    //! @todo Fix the conversion indexes?
+    inline constexpr double operator=(const auto &element) {
+      value = std::tuple_element_t<0, RowIndexes>::convert(element);
+      return 0.;
+    }
+  };
+
+  inline constexpr auto operator[](std::size_t i)
+    requires(std::tuple_size_v<RowIndexes> != 1 &&
+             std::tuple_size_v<ColumnIndexes> == 1)
+  {
+    return reference{data(i, 0)};
+  }
+
+  inline constexpr auto operator[](std::size_t i, std::size_t j)
     requires(std::tuple_size_v<RowIndexes> != 1 &&
              std::tuple_size_v<ColumnIndexes> != 1)
   {
-    data(RowIndex, ColumnIndex) =
-        std::tuple_element_t<0, RowIndexes>::convert(element);
+    return reference{data(i, j)};
+  }
+
+  template <std::size_t Index>
+  [[nodiscard]] inline constexpr auto operator[]() const {
+    using type = element_t<Index, RowIndexes, 0, ColumnIndexes>;
+
+    return data(Index, 0) * identity<type>;
   }
 
   Matrix data;
