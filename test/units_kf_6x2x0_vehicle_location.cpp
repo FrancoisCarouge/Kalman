@@ -45,14 +45,9 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-template <auto... Reference>
-using vector = physical_column_vector<
-    column_vector<typename index<first_v<Reference...>>::scalar,
-                  sizeof...(Reference)>,
-    index<Reference>...>;
-
-using state = fcarouge::state<vector<m, m / s, m / s2, m, m / s, m / s2>>;
-using output_t = vector<m, m>;
+using state =
+    fcarouge::state<quantity_vector<m, m / s, m / s2, m, m / s, m / s2>>;
+using output_t = quantity_vector<m, m>;
 using estimate_uncertainty =
     fcarouge::estimate_uncertainty<ᴀʙᵀ<state::type, state::type>>;
 using process_uncertainty =
@@ -64,7 +59,7 @@ using state_transition =
     fcarouge::state_transition<ᴀʙᵀ<state::type, state::type>>;
 
 template <auto... Reference>
-inline auto output{fcarouge::output<vector<Reference...>>};
+inline auto output{fcarouge::output<quantity_vector<Reference...>>};
 
 //! @test Verifies compatibility with the `mp-units` quantities and units
 //! library for C++ in the case of an algebraic 6x2x0 filter estimating the
@@ -78,37 +73,37 @@ inline auto output{fcarouge::output<vector<Reference...>>};
       estimate_uncertainty{500. * identity<estimate_uncertainty::type>},
       process_uncertainty{[]() {
         auto value{identity<process_uncertainty::type>};
-        value.operator()<0, 0>(0.25 * m2);
-        value.operator()<0, 1>(0.5 * m2 / s);
-        value.operator()<0, 2>(0.5 * m2 / s2);
-        value.operator()<1, 0>(0.5 * m2 / s);
-        value.operator()<1, 2>(1 * m2 / s3);
-        value.operator()<2, 0>(0.5 * m2 / s2);
-        value.operator()<2, 1>(1 * m2 / s4);
-        value.operator()<3, 3>(0.25 * m2);
-        value.operator()<3, 4>(0.5 * m2 / s);
-        value.operator()<3, 5>(0.5 * m2 / s2);
-        value.operator()<4, 3>(0.5 * m2 / s);
-        value.operator()<4, 5>(1 * m2 / s3);
-        value.operator()<5, 3>(0.5 * m2 / s2);
-        value.operator()<5, 4>(1 * m2 / s4);
+        value[0, 0] = 0.25 * m2;
+        value[0, 1] = 0.5 * m2 / s;
+        value[0, 2] = 0.5 * m2 / s2;
+        value[1, 0] = 0.5 * m2 / s;
+        value[1, 2] = 1 * m2 / s3;
+        value[2, 0] = 0.5 * m2 / s2;
+        value[2, 1] = 1 * m2 / s4;
+        value[3, 3] = 0.25 * m2;
+        value[3, 4] = 0.5 * m2 / s;
+        value[3, 5] = 0.5 * m2 / s2;
+        value[4, 3] = 0.5 * m2 / s;
+        value[4, 5] = 1 * m2 / s3;
+        value[5, 3] = 0.5 * m2 / s2;
+        value[5, 4] = 1 * m2 / s4;
         return 0.2 * 0.2 * value;
       }()},
       output_uncertainty{{9. * m2, 0. * m2}, {0. * m2, 9. * m2}},
       output_model{[]() {
         auto value{zero<output_model::type>};
-        value.operator()<0, 0>(1. * m2);
-        value.operator()<1, 3>(1. * m2);
+        value[0, 0] = 1. * m2;
+        value[1, 3] = 1. * m2;
         return value;
       }()},
       state_transition{[]() {
         auto value{identity<state_transition::type>};
-        value.operator()<0, 1>(1. * m2 / s);
-        value.operator()<0, 2>(0.5 * m2 / s2);
-        value.operator()<1, 2>(1. * m2 / s3);
-        value.operator()<3, 4>(1. * m2 / s);
-        value.operator()<3, 5>(0.5 * m2 / s2);
-        value.operator()<4, 5>(1. * m2 / s3);
+        value[0, 1] = 1. * m2 / s;
+        value[0, 2] = 0.5 * m2 / s2;
+        value[1, 2] = 1. * m2 / s3;
+        value[3, 4] = 1. * m2 / s;
+        value[3, 5] = 0.5 * m2 / s2;
+        value[4, 5] = 1. * m2 / s3;
         return value;
       }()}};
 
