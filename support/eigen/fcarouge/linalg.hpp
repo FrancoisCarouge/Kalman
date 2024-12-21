@@ -86,7 +86,7 @@ using column_vector = Eigen::Vector<Type, Row>;
 //! optimal numerical stability.
 template <typename Numerator, algebraic Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
-    -> ᴀʙᵀ<Numerator, Denominator> {
+    -> divide<Numerator, Denominator> {
   return rhs.transpose()
       .fullPivHouseholderQr()
       .solve(lhs.transpose())

@@ -154,8 +154,10 @@ template <typename Lhs, typename Rhs>
 using product = internal::product<Lhs, Rhs>;
 
 //! @brief The evaluated type of the ABᵀ expression.
-template <typename Numerator, typename Denominator>
-using ᴀʙᵀ = internal::ᴀʙᵀ<Numerator, Denominator>;
+template <typename Lhs, typename Rhs> using ᴀʙᵀ = internal::ᴀʙᵀ<Lhs, Rhs>;
+
+//! @brief The evaluated type of the divide expression.
+template <typename Lhs, typename Rhs> using divide = internal::divide<Lhs, Rhs>;
 
 //! @}
 
@@ -183,8 +185,8 @@ inline constexpr void for_constexpr(Function &&function) {
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Numerator, algebraic Denominator>
-constexpr auto operator/(const Numerator &lhs,
-                         const Denominator &rhs) -> ᴀʙᵀ<Numerator, Denominator>;
+constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
+    -> divide<Numerator, Denominator>;
 
 //! @}
 
