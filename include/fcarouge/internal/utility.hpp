@@ -59,9 +59,6 @@ concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 template <typename Type>
 concept algebraic = requires(Type value) { value(0, 0); };
 
-template <typename Type>
-concept eigen = requires { typename Type::PlainMatrix; };
-
 template <typename Filter>
 concept has_input_member = requires(Filter filter) { filter.u; };
 
@@ -252,48 +249,8 @@ template <typename Type> struct not_implemented {
   static_assert(missing, "This type is not implemented. See compiler message.");
 };
 
-struct transposer final {
-  template <arithmetic Arithmetic>
-  [[nodiscard]] inline constexpr auto
-  operator()(const Arithmetic &value) const {
-    return value;
-  }
-
-  template <typename Matrix>
-    requires requires(Matrix value) { value.transpose(); }
-  [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
-    return value.transpose();
-  }
-
-  template <typename Matrix>
-    requires requires(Matrix value) { transpose(value); }
-  [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
-    return transpose(value);
-  }
-};
-
-struct evaluater final {
-  template <typename Type>
-  [[nodiscard]] inline constexpr auto operator()(Type value) const -> Type;
-
-  template <typename Type>
-    requires(eigen<Type>)
-  [[nodiscard]] inline constexpr auto operator()(Type value) const ->
-      typename Type::PlainMatrix;
-};
-
-template <typename Type>
-using transpose = decltype(transposer{}(std::declval<Type>()));
-
 template <typename Lhs, typename Rhs>
 using product = decltype(std::declval<Lhs>() * std::declval<Rhs>());
-
-template <typename Type>
-using evaluate =
-    std::remove_cvref_t<decltype(evaluater{}(std::declval<Type>()))>;
-
-template <typename Lhs, typename Rhs>
-using ᴀʙᵀ = evaluate<product<Lhs, transpose<Rhs>>>;
 
 using empty_tuple = std::tuple<>;
 

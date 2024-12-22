@@ -84,7 +84,6 @@ struct x_z_u_p_q_r_us_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   output z{zero<output>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
-  transposer t{};
 
   inline constexpr void update(const UpdateTypes &...update_pack,
                                const auto &output_z, const auto &...outputs_z) {

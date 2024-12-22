@@ -71,12 +71,6 @@ concept arithmetic = internal::arithmetic<Type>;
 template <typename Type>
 concept algebraic = internal::algebraic<Type>;
 
-//! @brief Eigen3 algebraic concept.
-//!
-//! @details A third party Eigen3 algebraic concept.
-template <typename Type>
-concept eigen = internal::eigen<Type>;
-
 //! @brief Filter input support concept.
 //!
 //! @details The filter supports the input related functionality: `input` type
@@ -139,6 +133,39 @@ concept has_output_model = internal::has_output_model<Filter>;
 //! @name Types
 //! @{
 
+//! @brief Linear algebra evaluater override expression lazy evaluation
+//! specialization point.
+//!
+//! @note Implementation not required.
+template <typename Type> struct evaluater;
+
+template <arithmetic Arithmetic> struct evaluater<Arithmetic> {
+  [[nodiscard]] inline constexpr auto operator()() const -> Arithmetic;
+};
+
+//! @brief Evaluater helper type.
+template <typename Type> using evaluate = std::invoke_result_t<evaluater<Type>>;
+
+//! @brief Linear algebra transposer specialization point.
+template <typename Type> struct transposer;
+
+template <arithmetic Arithmetic> struct transposer<Arithmetic> {
+  [[nodiscard]] inline constexpr auto operator()(Arithmetic value) const {
+    return value;
+  }
+};
+
+//! @brief Transposer helper type.
+template <typename Type>
+using transpose = std::invoke_result_t<transposer<Type>, const Type &>;
+
+//! @brief Transpose helper function.
+//!
+//! @details Enable readable linear algebra notation.
+template <typename Type> auto t(const Type &value) {
+  return transposer<Type>{}(value);
+}
+
 //! @brief Type of the empty tuple.
 //!
 //! @details A tuple with no `pack` types.
@@ -154,8 +181,8 @@ template <typename Lhs, typename Rhs>
 using product = internal::product<Lhs, Rhs>;
 
 //! @brief The evaluated type of the ABᵀ expression.
-template <typename Numerator, typename Denominator>
-using ᴀʙᵀ = internal::ᴀʙᵀ<Numerator, Denominator>;
+template <typename Lhs, typename Rhs>
+using ᴀʙᵀ = evaluate<product<Lhs, transpose<Rhs>>>;
 
 //! @}
 
