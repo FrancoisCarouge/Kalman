@@ -54,7 +54,16 @@ For more information, please refer to <https://unlicense.org> */
 #include <Eigen/Eigen>
 
 namespace fcarouge {
-//! @name Algebraic Types
+//! @name Concepts
+//! @{
+
+//! @brief An Eigen3 algebraic concept.
+template <typename Type>
+concept eigen = requires { typename Type::PlainMatrix; };
+
+//! @}
+
+//! @name Types
 //! @{
 
 //! @brief Compile-time sized Eigen3 matrix.
@@ -74,6 +83,21 @@ using row_vector = Eigen::RowVector<Type, Column>;
 //! @brief Compile-time sized Eigen3 column vector.
 template <typename Type = double, auto Row = 1>
 using column_vector = Eigen::Vector<Type, Row>;
+
+//! @brief Specialization of the evaluation type.
+//!
+//! @note Implementation not needed.
+template <eigen Type> struct evaluater<Type> {
+  [[nodiscard]] inline constexpr auto operator()() const ->
+      typename Type::PlainMatrix;
+};
+
+//! @brief Specialization of the transposer.
+template <eigen Type> struct transposer<Type> {
+  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
+    return value.transpose();
+  }
+};
 
 //! @}
 

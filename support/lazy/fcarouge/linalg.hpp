@@ -81,7 +81,7 @@ inline constexpr auto make_generator(Type element) -> std::generator<Type> {
   }(element);
 }
 
-//! @name Algebraic Types
+//! @name Types
 //! @{
 
 //! @brief Coroutine lazy matrix.

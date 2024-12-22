@@ -50,7 +50,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <initializer_list>
 
 namespace fcarouge {
-//! @name Algebraic Types
+//! @name Types
 //! @{
 
 //! @brief Naive matrix.
@@ -172,6 +172,32 @@ using row_vector = matrix<Type, decltype(Column){1}, Column>;
 //! @brief Column vector.
 template <typename Type = double, auto Row = 1>
 using column_vector = matrix<Type, Row, decltype(Row){1}>;
+
+//! @brief Specialization of the evaluation type.
+//!
+//! @note Implementation not needed.
+template <typename Type, auto Row, auto Column>
+struct evaluater<matrix<Type, Row, Column>> {
+  [[nodiscard]] inline constexpr auto
+  operator()() const -> matrix<Type, Row, Column>;
+};
+
+//! @brief Specialization of the transposer.
+template <typename Type, auto Row, auto Column>
+struct transposer<matrix<Type, Row, Column>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const matrix<Type, Row, Column> &value) const {
+    matrix<Type, Column, Row> result;
+
+    for (decltype(Row) i{0}; i < Row; ++i) {
+      for (decltype(Column) j{0}; j < Column; ++j) {
+        result.data[j][i] = value.data[i][j];
+      }
+    }
+
+    return result;
+  }
+};
 
 //! @}
 
@@ -341,20 +367,6 @@ template <typename Type, auto Row>
 
   for (decltype(Row) i{0}; i < Row; ++i) {
     result.data[i][0] /= rhs;
-  }
-
-  return result;
-}
-
-template <typename Type, auto Row, auto Column>
-[[nodiscard]] inline constexpr auto
-transpose(const matrix<Type, Row, Column> &lhs) {
-  matrix<Type, Column, Row> result;
-
-  for (decltype(Row) i{0}; i < Row; ++i) {
-    for (decltype(Column) j{0}; j < Column; ++j) {
-      result.data[j][i] = lhs.data[i][j];
-    }
   }
 
   return result;

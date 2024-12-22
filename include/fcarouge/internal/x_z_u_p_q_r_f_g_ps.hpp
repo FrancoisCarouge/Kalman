@@ -93,7 +93,6 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   innovation_uncertainty s{identity<innovation_uncertainty>};
   output z{zero<output>};
   prediction_types prediction_arguments{};
-  transposer t{};
 
   inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
