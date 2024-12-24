@@ -97,19 +97,18 @@ $(document).ready(function(){initNavTree('conceptfcarouge_1_1eigen.xhtml',''); i
 </div><!--header-->
 <div class="contents">
 
-<p>Eigen3 algebraic concept.  
+<p>An Eigen3 algebraic concept.  
 <a href="conceptfcarouge_1_1eigen.xhtml#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Type&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1eigen.xhtml">fcarouge::eigen</a> =  internal::eigen&lt;Type&gt;</div>
-<div class="ttc" id="aconceptfcarouge_1_1eigen_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div><div class="ttdoc">Eigen3 algebraic concept.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00078">utility.hpp:78</a></div></div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1eigen.xhtml">fcarouge::eigen</a> =  <span class="keyword">requires</span> { <span class="keyword">typename</span> Type::PlainMatrix; }</div>
+<div class="ttc" id="aconceptfcarouge_1_1eigen_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1eigen.xhtml">fcarouge::eigen</a></div><div class="ttdoc">An Eigen3 algebraic concept.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00062">linalg.hpp:62</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Eigen3 algebraic concept. </p>
-<p>A third party Eigen3 algebraic concept. </p>
+<div class="textblock"><p>An Eigen3 algebraic concept. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00078">78</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00062">62</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

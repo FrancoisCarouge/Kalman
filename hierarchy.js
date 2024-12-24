@@ -26,10 +26,18 @@ var hierarchy =
     [ "fcarouge::internal::conditional_update_types< Filter >", null, [
       [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
     ] ],
+    [ "fcarouge::evaluater< Type >", "structfcarouge_1_1evaluater.xhtml", null ],
+    [ "fcarouge::evaluater< Arithmetic >", "structfcarouge_1_1evaluater_3_01_arithmetic_01_4.xhtml", null ],
+    [ "fcarouge::evaluater< matrix< Type, Row, Column > >", "structfcarouge_1_1evaluater_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", null ],
+    [ "fcarouge::evaluater< Type >", "structfcarouge_1_1evaluater_3_01_type_01_4.xhtml", null ],
     [ "std::formatter< fcarouge::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", null ],
     [ "std::formatter< Filter, Char >", "structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml", null ],
     [ "fcarouge::matrix< Type, Row, Column, Copyable >", "structfcarouge_1_1matrix.xhtml", null ],
     [ "fcarouge::printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
+    [ "fcarouge::transposer< Type >", "structfcarouge_1_1transposer.xhtml", null ],
+    [ "fcarouge::transposer< Arithmetic >", "structfcarouge_1_1transposer_3_01_arithmetic_01_4.xhtml", null ],
+    [ "fcarouge::transposer< matrix< Type, Row, Column > >", "structfcarouge_1_1transposer_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", null ],
+    [ "fcarouge::transposer< Type >", "structfcarouge_1_1transposer_3_01_type_01_4.xhtml", null ],
     [ "Filter", null, [
       [ "fcarouge::decorator::printer< Filter >", "classfcarouge_1_1decorator_1_1printer.xhtml", null ]
     ] ]

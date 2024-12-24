@@ -1,6 +1,8 @@
 var naive_2fcarouge_2linalg_8hpp =
 [
     [ "fcarouge::matrix< Type, Row, Column, Copyable >", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
+    [ "fcarouge::evaluater< matrix< Type, Row, Column > >", "structfcarouge_1_1evaluater_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1evaluater_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
+    [ "fcarouge::transposer< matrix< Type, Row, Column > >", "structfcarouge_1_1transposer_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1transposer_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
     [ "matrix", "naive_2fcarouge_2linalg_8hpp.xhtml#a36b1c08e7faa5e078cd8c56e4acd8a54", null ],
     [ "matrix", "naive_2fcarouge_2linalg_8hpp.xhtml#ac0175c0b371513180978bbdb30909c54", null ],
     [ "matrix", "naive_2fcarouge_2linalg_8hpp.xhtml#a9268087b30b9b76ebd787d0d80f75af6", null ],
@@ -16,6 +18,5 @@ var naive_2fcarouge_2linalg_8hpp =
     [ "operator-", "naive_2fcarouge_2linalg_8hpp.xhtml#ab7e4a66b8fa71546907279397bb9971a", null ],
     [ "operator-", "naive_2fcarouge_2linalg_8hpp.xhtml#ac5db1b5cabde635b27f85fe3ddc3dcc9", null ],
     [ "operator/", "naive_2fcarouge_2linalg_8hpp.xhtml#ae2c572219d8e2ce56c12424b71489c59", null ],
-    [ "operator==", "naive_2fcarouge_2linalg_8hpp.xhtml#a74a5e7d9df89058b333264df4676909a", null ],
-    [ "transpose", "naive_2fcarouge_2linalg_8hpp.xhtml#ac922632c2da8269e8396756088ba9a1f", null ]
+    [ "operator==", "naive_2fcarouge_2linalg_8hpp.xhtml#a74a5e7d9df89058b333264df4676909a", null ]
 ];
