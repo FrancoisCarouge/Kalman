@@ -50,7 +50,7 @@ template <typename State, typename Output> struct x_z_p_r_f {
   using state_transition = ᴀʙᵀ<state, state>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
-  using gain = ᴀʙᵀ<state, output>;
+  using gain = evaluate<divide<estimate_uncertainty, innovation_uncertainty>>;
 
   static inline const auto i{identity<gain>};
 

@@ -252,10 +252,23 @@ template <typename Type> struct not_implemented {
   static_assert(missing, "This type is not implemented. See compiler message.");
 };
 
+struct evaluater final {
+  template <typename Type>
+  [[nodiscard]] inline constexpr auto operator()(Type value) const -> Type;
+
+  template <typename Type>
+    requires(eigen<Type>)
+  [[nodiscard]] inline constexpr auto operator()(Type value) const ->
+      typename Type::PlainMatrix;
+};
+
+template <typename Type>
+using evaluate =
+    std::remove_cvref_t<decltype(evaluater{}(std::declval<Type>()))>;
+
 struct transposer final {
   template <arithmetic Arithmetic>
-  [[nodiscard]] inline constexpr auto
-  operator()(const Arithmetic &value) const {
+  [[nodiscard]] inline constexpr auto operator()(Arithmetic value) const {
     return value;
   }
 
@@ -272,28 +285,31 @@ struct transposer final {
   }
 };
 
-struct evaluater final {
-  template <typename Type>
-  [[nodiscard]] inline constexpr auto operator()(Type value) const -> Type;
+template <typename Type>
+using transpose = decltype(transposer{}(std::declval<Type>()));
 
-  template <typename Type>
-    requires(eigen<Type>)
-  [[nodiscard]] inline constexpr auto operator()(Type value) const ->
-      typename Type::PlainMatrix;
+struct inverser final {
+  template <arithmetic Arithmetic>
+  [[nodiscard]] inline constexpr auto operator()(Arithmetic value) const {
+    return 1 / value;
+  }
+
+  template <eigen Matrix>
+  [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const
+      -> evaluate<transpose<Matrix>>;
 };
 
 template <typename Type>
-using transpose = decltype(transposer{}(std::declval<Type>()));
+using inverse = decltype(inverser{}(std::declval<Type>()));
 
 template <typename Lhs, typename Rhs>
 using product = decltype(std::declval<Lhs>() * std::declval<Rhs>());
 
-template <typename Type>
-using evaluate =
-    std::remove_cvref_t<decltype(evaluater{}(std::declval<Type>()))>;
-
 template <typename Lhs, typename Rhs>
 using ᴀʙᵀ = evaluate<product<Lhs, transpose<Rhs>>>;
+
+template <typename Lhs, typename Rhs>
+using divide = evaluate<product<Lhs, inverse<Rhs>>>;
 
 using empty_tuple = std::tuple<>;
 
