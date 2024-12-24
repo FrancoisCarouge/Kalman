@@ -36,6 +36,32 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+foreach(BACKEND IN ITEMS "eigen")
+  foreach(SAMPLE "units_kf_6x2x0_vehicle_location.cpp")
+    get_filename_component(NAME ${SAMPLE} NAME_WE)
+    add_executable(kalman_sample_${BACKEND}_${NAME}_driver ${SAMPLE})
+    target_link_libraries(
+      kalman_sample_${BACKEND}_${NAME}_driver
+      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options
+              kalman_physical_linalg kalman_unit_mp_units)
+    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(NAME kalman_sample_${BACKEND}_${NAME}
+             COMMAND ${TEST_COMMAND}
+                     $<TARGET_FILE:kalman_sample_${BACKEND}_${NAME}_driver>)
+  endforeach()
+endforeach()
+
+foreach(TEST "units_kf_1x1x0_building_height.cpp")
+  get_filename_component(NAME ${TEST} NAME_WE)
+  add_executable(kalman_test_${NAME}_driver ${TEST})
+  target_link_libraries(
+    kalman_test_${NAME}_driver PRIVATE kalman kalman_main kalman_options
+                                       kalman_unit_mp_units)
+  separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+  add_test(NAME kalman_test_${NAME}
+           COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
+endforeach()
+
 foreach(
   TEST
   "kalman_constructor_default_float_1x1x1.cpp"
