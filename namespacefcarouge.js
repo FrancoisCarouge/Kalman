@@ -69,6 +69,7 @@ var namespacefcarouge =
     [ "first", "namespacefcarouge.xhtml#a9dc2d4cec56e34fe6a5f463c0446b854", null ],
     [ "matrix", "namespacefcarouge.xhtml#a91e1f8a82696aa85761b7c29666235e6", null ],
     [ "product", "namespacefcarouge.xhtml#a0e31ac477b2b2b17b27860392feddf1b", null ],
+    [ "quantity", "namespacefcarouge.xhtml#a68f44cff6b06966e230f66c85f2be0d5", null ],
     [ "row_vector", "namespacefcarouge.xhtml#ac13c25e27a85ae315c7996927b7a3c28", null ],
     [ "transpose", "namespacefcarouge.xhtml#a7e146558279d0afceac52095906c3539", null ],
     [ "for_constexpr", "namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b", null ],
