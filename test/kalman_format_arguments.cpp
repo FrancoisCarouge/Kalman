@@ -55,9 +55,23 @@ namespace {
                 update_types<double, double>,
                 prediction_types<double, double, double>};
 
-  assert(
-      std::format("{}", filter) ==
-      R"({"f": 1, "g": 1, "h": 1, "k": 1, "p": 1, "prediction_0": 0, "prediction_1": 0, "prediction_2": 0, "q": 0, "r": 0, "s": 1, "u": 0, "update_0": 0, "update_1": 0, "x": 0, "y": 0, "z": 0})");
+  assert(std::format("{}", filter) == R"({"f": 1,)"
+                                      R"( "g": 1,)"
+                                      R"( "h": 1,)"
+                                      R"( "k": 1,)"
+                                      R"( "p": 1,)"
+                                      R"( "prediction_0": 0,)"
+                                      R"( "prediction_1": 0,)"
+                                      R"( "prediction_2": 0,)"
+                                      R"( "q": 0,)"
+                                      R"( "r": 0,)"
+                                      R"( "s": 1,)"
+                                      R"( "u": 0,)"
+                                      R"( "update_0": 0,)"
+                                      R"( "update_1": 0,)"
+                                      R"( "x": 0,)"
+                                      R"( "y": 0,)"
+                                      R"( "z": 0})");
 
   return 0;
 }()};

@@ -48,8 +48,14 @@ namespace {
 [[maybe_unused]] auto test{[] {
   kalman filter;
 
-  assert(std::format("{}", filter) ==
-         R"({"f": 1, "k": 1, "p": 1, "r": 0, "s": 1, "x": 0, "y": 0, "z": 0})");
+  assert(std::format("{}", filter) == R"({"f": 1,)"
+                                      R"( "k": 1,)"
+                                      R"( "p": 1,)"
+                                      R"( "r": 0,)"
+                                      R"( "s": 1,)"
+                                      R"( "x": 0,)"
+                                      R"( "y": 0,)"
+                                      R"( "z": 0})");
 
   return 0;
 }()};
