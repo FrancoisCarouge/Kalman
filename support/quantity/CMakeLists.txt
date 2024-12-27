@@ -36,36 +36,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-# Add a given test NAME The name of the test file without extension. BACKENDS
-# Optional list of backend to use against the test.
-function(test)
-  set(oneValueArgs NAME)
-  set(multiValueArgs BACKENDS)
-  cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
-                        "${multiValueArgs}")
-
-  if(NOT TEST_BACKENDS)
-    add_executable(kalman_test_${TEST_NAME}_driver "${TEST_NAME}.cpp")
-    target_link_libraries(
-      kalman_test_${TEST_NAME}_driver PRIVATE kalman kalman_main kalman_options
-                                              kalman_unit_mp_units)
-    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(NAME kalman_test_${TEST_NAME}
-             COMMAND ${TEST_COMMAND}
-                     $<TARGET_FILE:kalman_test_${TEST_NAME}_driver>)
-  else()
-    foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-      add_executable(kalman_test_${BACKEND}_${TEST_NAME}_driver
-                     "${TEST_NAME}.cpp")
-      target_link_libraries(
-        kalman_test_${BACKEND}_${TEST_NAME}_driver
-        PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options
-                kalman_unit_mp_units)
-      separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-      add_test(
-        NAME kalman_test_${BACKEND}_${TEST_NAME}
-        COMMAND ${TEST_COMMAND}
-                $<TARGET_FILE:kalman_test_${BACKEND}_${TEST_NAME}_driver>)
-    endforeach()
-  endif()
-endfunction(test)
+add_library(kalman_linalg_quantity INTERFACE)
+target_sources(
+  kalman_linalg_quantity INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
+                                   FILES "fcarouge/linalg.hpp")
+target_link_libraries(
+  kalman_linalg_quantity INTERFACE kalman kalman_linalg_eigen
+                                   kalman_linalg_indexed)

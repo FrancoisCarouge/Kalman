@@ -36,11 +36,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_PHYSICAL_LINALG_HPP
-#define FCAROUGE_PHYSICAL_LINALG_HPP
+#ifndef FCAROUGE_INDEXED_LINALG_HPP
+#define FCAROUGE_INDEXED_LINALG_HPP
 
 //! @file
-//! @brief Physically typed linear algebra implementation.
+//! @brief Index typed linear algebra implementation.
 //!
 //! @details Matrix, vectors, and named algebraic values.
 
@@ -66,9 +66,9 @@ using element_t =
 //! @name Algebraic Types
 //! @{
 
-//! @brief Physical matrix.
+//! @brief Indexed matrix.
 //!
-//! @details Compose a matrix into a physical matrix. Supports type safety. Unit
+//! @details Compose a matrix into a indexed matrix. Supports type safety. Unit
 //! safety. Row and column indexes provide each index type.
 //!
 //! @tparam Matrix The underlying linear algebra matrix.
@@ -77,35 +77,34 @@ using element_t =
 //!
 //! @todo Explore various types of indexes: arithmetic, units, frames, etc...
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-class physical_matrix {
+class indexed_matrix {
 public:
-  inline constexpr physical_matrix() = default;
+  inline constexpr indexed_matrix() = default;
 
-  inline constexpr physical_matrix(const physical_matrix &other) = default;
+  inline constexpr indexed_matrix(const indexed_matrix &other) = default;
 
-  inline constexpr physical_matrix &
-  operator=(const physical_matrix &other) = default;
+  inline constexpr indexed_matrix &
+  operator=(const indexed_matrix &other) = default;
 
-  inline constexpr physical_matrix(physical_matrix &&other) = default;
+  inline constexpr indexed_matrix(indexed_matrix &&other) = default;
 
-  inline constexpr physical_matrix &
-  operator=(physical_matrix &&other) = default;
+  inline constexpr indexed_matrix &operator=(indexed_matrix &&other) = default;
 
   //! @todo Is this function safe? Correct?
   //! @todo Add other move assignement function?
   template <typename M, typename R, typename C>
-  inline constexpr physical_matrix &
-  operator=(const physical_matrix<M, R, C> &other) {
+  inline constexpr indexed_matrix &
+  operator=(const indexed_matrix<M, R, C> &other) {
     data = other.data;
     return *this;
   }
 
-  //! @todo Is this function safe? Correct?
-  template <eigen Type>
-  explicit inline constexpr physical_matrix(const Type &other) : data{other} {}
+  //!@todo Is this function safe? Correct?
+  // template <Matrix Type>
+  explicit inline constexpr indexed_matrix(const Matrix &other) : data{other} {}
 
   //! @todo Can the tuple packing be avoided altogether?
-  explicit inline constexpr physical_matrix(const auto &...elements)
+  explicit inline constexpr indexed_matrix(const auto &...elements)
     requires(std::tuple_size_v<ColumnIndexes> == 1 &&
              sizeof...(elements) == std::tuple_size_v<RowIndexes>)
   {
@@ -118,7 +117,7 @@ public:
   }
 
   //! @todo Can the tuple packing be avoided altogether?
-  explicit inline constexpr physical_matrix(const auto &...elements)
+  explicit inline constexpr indexed_matrix(const auto &...elements)
     requires(std::tuple_size_v<RowIndexes> == 1 &&
              std::tuple_size_v<ColumnIndexes> != 1 &&
              sizeof...(elements) == std::tuple_size_v<ColumnIndexes>)
@@ -134,7 +133,7 @@ public:
   //! @todo Fix the conversion index, perhaps with constexpr loop, and size
   //! verification?
   template <typename Type>
-  inline constexpr explicit physical_matrix(
+  inline constexpr explicit indexed_matrix(
       std::initializer_list<std::initializer_list<Type>> rows) {
     for (std::size_t i{0}; const auto &row : rows) {
       for (std::size_t j{0}; const auto &element : row) {
@@ -147,7 +146,8 @@ public:
 
   //! @todo Is this function safe? Correct?
   template <typename Type>
-  explicit inline constexpr physical_matrix(const Type &other)
+    requires requires(Type value) { value.data; }
+  explicit inline constexpr indexed_matrix(const Type &other)
       : data{other.data} {}
 
   template <auto Index>
@@ -205,38 +205,38 @@ using one_column = std::tuple<placeholder_index>;
 
 //! @brief Column vector.
 template <typename Matrix, typename... RowIndexes>
-using physical_column_vector =
-    physical_matrix<Matrix, std::tuple<RowIndexes...>, one_column>;
+using indexed_column_vector =
+    indexed_matrix<Matrix, std::tuple<RowIndexes...>, one_column>;
 
 //! @brief Row vector.
 template <typename Matrix, typename... ColumnIndexes>
-using physical_row_vector =
-    physical_matrix<Matrix, one_row, std::tuple<ColumnIndexes...>>;
+using indexed_row_vector =
+    indexed_matrix<Matrix, one_row, std::tuple<ColumnIndexes...>>;
 
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
-template <template <typename, typename, typename> typename PhysicalMatrix,
+template <template <typename, typename, typename> typename IndexedMatrix,
           typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct evaluater<PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+struct evaluater<IndexedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()() const
-      -> PhysicalMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
+      -> IndexedMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
 
 //! @brief Specialization of the transposer.
-template <template <typename, typename, typename> typename PhysicalMatrix,
+template <template <typename, typename, typename> typename IndexedMatrix,
           typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires requires(PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
+  requires requires(IndexedMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
     m.data;
   }
-struct transposer<PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+struct transposer<IndexedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()(
-      const PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
+      const IndexedMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
 
     evaluate<Matrix> result{value.data};
 
-    return PhysicalMatrix<evaluate<transpose<Matrix>>, ColumnIndexes,
-                          RowIndexes>{t(result)};
+    return IndexedMatrix<evaluate<transpose<Matrix>>, ColumnIndexes,
+                         RowIndexes>{t(result)};
   }
 };
 
@@ -245,85 +245,85 @@ struct transposer<PhysicalMatrix<Matrix, RowIndexes, ColumnIndexes>> {
 //! @name Algebraic Named Values
 //! @{
 
-//! @brief The identity matrix physical specialization.
+//! @brief The identity matrix indexed specialization.
 //!
 //! @todo The identity doesn't really make sense for matrices without units?
 //! Unless it's the matrix without units? Even then, the identity matrix is
 //! supposed to be square? What's the name of this thing then?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline physical_matrix<Matrix, RowIndexes, ColumnIndexes>
-    identity<physical_matrix<Matrix, RowIndexes, ColumnIndexes>>{
+inline indexed_matrix<Matrix, RowIndexes, ColumnIndexes>
+    identity<indexed_matrix<Matrix, RowIndexes, ColumnIndexes>>{
         identity<Matrix>};
 
-//! @brief The zero matrix physical specialization.
+//! @brief The zero matrix indexed specialization.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline physical_matrix<Matrix, RowIndexes, ColumnIndexes>
-    zero<physical_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
+inline indexed_matrix<Matrix, RowIndexes, ColumnIndexes>
+    zero<indexed_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
 
 //! @}
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
           typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
-operator+(const physical_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
-          const physical_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
+operator+(const indexed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
+          const indexed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
   auto result{lhs.data + rhs.data};
 
-  return physical_matrix<decltype(result), RowIndexes, ColumnIndexes>{result};
+  return indexed_matrix<decltype(result), RowIndexes, ColumnIndexes>{result};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
           typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
-operator-(const physical_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
-          const physical_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
+operator-(const indexed_matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
+          const indexed_matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
   auto result{lhs.data - rhs.data};
 
-  return physical_matrix<decltype(result), RowIndexes, ColumnIndexes>{result};
+  return indexed_matrix<decltype(result), RowIndexes, ColumnIndexes>{result};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
           typename Indexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
-operator*(const physical_matrix<Matrix1, RowIndexes, Indexes> &lhs,
-          const physical_matrix<Matrix2, Indexes, ColumnIndexes> &rhs) {
+operator*(const indexed_matrix<Matrix1, RowIndexes, Indexes> &lhs,
+          const indexed_matrix<Matrix2, Indexes, ColumnIndexes> &rhs) {
   auto result{lhs.data * rhs.data};
 
-  return physical_matrix<decltype(result), RowIndexes, ColumnIndexes>{result};
+  return indexed_matrix<decltype(result), RowIndexes, ColumnIndexes>{result};
 }
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator*(Scalar lhs,
-          const physical_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return physical_matrix<Matrix, RowIndexes, ColumnIndexes>{lhs * rhs.data};
+          const indexed_matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
+  return indexed_matrix<Matrix, RowIndexes, ColumnIndexes>{lhs * rhs.data};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes1,
           typename RowIndexes2, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
-operator/(const physical_matrix<Matrix1, RowIndexes1, ColumnIndexes> &lhs,
-          const physical_matrix<Matrix2, RowIndexes2, ColumnIndexes> &rhs) {
+operator/(const indexed_matrix<Matrix1, RowIndexes1, ColumnIndexes> &lhs,
+          const indexed_matrix<Matrix2, RowIndexes2, ColumnIndexes> &rhs) {
   auto result{lhs.data / rhs.data};
 
-  return physical_matrix<decltype(result), RowIndexes1, RowIndexes2>{result};
+  return indexed_matrix<decltype(result), RowIndexes1, RowIndexes2>{result};
 }
 } // namespace fcarouge
 
-//! @brief Specialization of the standard formatter for the physical linear
+//! @brief Specialization of the standard formatter for the indexed linear
 //! algebra matrix.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes,
           typename Char>
 struct std::formatter<
-    fcarouge::physical_matrix<Matrix, RowIndexes, ColumnIndexes>, Char> {
+    fcarouge::indexed_matrix<Matrix, RowIndexes, ColumnIndexes>, Char> {
   constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 
   template <typename OutputIterator>
   constexpr auto format(
-      const fcarouge::physical_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+      const fcarouge::indexed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
       std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator {
     format_context.advance_to(std::format_to(format_context.out(), "["));
@@ -364,7 +364,7 @@ struct std::formatter<
 
   template <typename OutputIterator>
   constexpr auto format(
-      const fcarouge::physical_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+      const fcarouge::indexed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
       std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
     requires(std::tuple_size_v<RowIndexes> == 1 &&
@@ -394,7 +394,7 @@ struct std::formatter<
 
   template <typename OutputIterator>
   constexpr auto format(
-      const fcarouge::physical_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
+      const fcarouge::indexed_matrix<Matrix, RowIndexes, ColumnIndexes> &value,
       std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
     requires(std::tuple_size_v<RowIndexes> == 1 &&
@@ -411,4 +411,4 @@ struct std::formatter<
   }
 };
 
-#endif // FCAROUGE_PHYSICAL_LINALG_HPP
+#endif // FCAROUGE_INDEXED_LINALG_HPP
