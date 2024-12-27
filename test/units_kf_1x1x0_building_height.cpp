@@ -65,6 +65,9 @@ namespace {
   filter.update(49.95 * m);
 
   assert(abs(1 - filter.x() / (49.57 * m)) < 0.001);
+
+  //! @todo Support floating point formatting precission to make this
+  //! demonstrator readable.
   assert(std::format("{}", filter) == R"({"f": 1 m²,)"
                                       R"( "k": 0.09890109890109894,)"
                                       R"( "p": 2.4725274725274726 m²,)"

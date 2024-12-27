@@ -36,39 +36,44 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_UNIT_HPP
-#define FCAROUGE_UNIT_HPP
+#ifndef FCAROUGE_QUANTITY_LINALG_HPP
+#define FCAROUGE_QUANTITY_LINALG_HPP
 
 //! @file
-//! @brief Quantities and units facade for mp-units third party implementation.
-//!
-//! @details Supporting quantities, values, and functions.
+//! @brief Indexed-based linear algebra with mp-units and Eigen implementations.
 
-#include <mp-units/format.h>
-#include <mp-units/framework/quantity.h>
-#include <mp-units/math.h>
-#include <mp-units/systems/si.h>
+#include "fcarouge/indexed_linalg.hpp"
+#include "fcarouge/linalg.hpp"
+#include "fcarouge/unit.hpp"
 
 namespace fcarouge {
-//! @brief The physical unit quantity.
-template <auto Reference, typename Representation>
-using quantity = mp_units::quantity<Reference, Representation>;
+//! @name Types
+//! @{
 
-//! @brief The singleton identity matrix specialization.
-template <mp_units::Quantity Type>
-inline constexpr auto identity<Type>{Type::one()};
+//! @brief A quantity index based on the mp-units quantity.
+//!
+//! @todo Constraint index types with a concept: scalar/underlying, type,
+//! conversion members?
+template <auto Reference> struct quantity_index {
+  using scalar = double;
+  using type = quantity<Reference, scalar>;
 
-using mp_units::si::metre;
-using mp_units::si::second;
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
+  //! @todo Can we do without this structure altogether with the help of
+  //! https://mpusz.github.io/mp-units/latest/users_guide/use_cases/interoperability_with_other_libraries/
+  //! Or can this definition be more generic?
+  [[nodiscard]] static constexpr auto convert(const auto &value) -> scalar {
+    return value.numerical_value_in(value.unit);
+  }
+};
 
-//! @todo: Consider upstreaming named symbols up to pow<6> because that would be
-//! common for constant jerk uncertainties values?
-inline constexpr auto s4{pow<4>(second)};
+//! @brief Quantity column vector with mp-units and Eigen implementations.
+template <auto... Reference>
+using quantity_vector = indexed_column_vector<
+    column_vector<typename quantity_index<first_v<Reference...>>::scalar,
+                  sizeof...(Reference)>,
+    quantity_index<Reference>...>;
+
+//! @}
 } // namespace fcarouge
 
-#endif // FCAROUGE_UNIT_HPP
+#endif // FCAROUGE_QUANTITY_LINALG_HPP

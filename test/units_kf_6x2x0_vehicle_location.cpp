@@ -37,8 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-#include "fcarouge/linalg.hpp"
-#include "fcarouge/physical_linalg.hpp"
+#include "fcarouge/quantity_linalg.hpp"
 #include "fcarouge/unit.hpp"
 
 #include <cassert>
@@ -46,12 +45,6 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-template <auto... Reference>
-using quantity_vector = physical_column_vector<
-    column_vector<typename quantity_index<first_v<Reference...>>::scalar,
-                  sizeof...(Reference)>,
-    quantity_index<Reference>...>;
-
 using state =
     fcarouge::state<quantity_vector<m, m / s, m / s2, m, m / s, m / s2>>;
 using output_t = quantity_vector<m, m>;
@@ -128,6 +121,8 @@ inline auto output{fcarouge::output<quantity_vector<Reference...>>};
          abs(1 - filter.x<4>() / (-85.9 * m / s)) < 0.001 &&
          abs(1 - filter.x<5>() / (-63.62 * m / s2)) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
+  //! @todo Support floating point formatting precission to make this
+  //! demonstrator readable.
   assert(
       std::format("{}", filter) ==
       R"({"f": [[1 m², 1 m²/s, 0.5 m²/s², 0 m², 0 m²/s, 0 m²/s²], [0 m²/s, 1 m²/s², 1 m²/s³, 0 m²/s, 0 m²/s², 0 m²/s³], [0 m²/s², 0 m²/s³, 1 m²/s⁴, 0 m²/s², 0 m²/s³, 0 m²/s⁴], [0 m², 0 m²/s, 0 m²/s², 1 m², 1 m²/s, 0.5 m²/s²], [0 m²/s, 0 m²/s², 0 m²/s³, 0 m²/s, 1 m²/s², 1 m²/s³], [0 m²/s², 0 m²/s³, 0 m²/s⁴, 0 m²/s², 0 m²/s³, 1 m²/s⁴]],)"

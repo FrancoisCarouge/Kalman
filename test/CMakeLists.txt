@@ -38,8 +38,6 @@ For more information, please refer to <https://unlicense.org> ]]
 
 include(test.cmake)
 
-# test(NAME "units_kf_6x2x0_vehicle_location")
-# test(NAME "units_kf_1x1x0_building_height")
 test(NAME "kalman_assign_move_5x4x3" BACKENDS "eigen")
 test(NAME "kalman_constructor_default_1x1x3" BACKENDS "eigen")
 test(NAME "kalman_constructor_default_1x4x1" BACKENDS "eigen")
@@ -82,3 +80,5 @@ test(NAME "linalg_zero_default" BACKENDS "eigen" "naive")
 test(NAME "linalg_zero" BACKENDS "eigen" "naive")
 test(NAME "printer_1x1x0")
 test(NAME "printer_2x3x4" BACKENDS "eigen")
+test(NAME "units_kf_1x1x0_building_height")
+test(NAME "units_kf_6x2x0_vehicle_location" BACKENDS "quantity")
