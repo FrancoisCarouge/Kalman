@@ -36,85 +36,47 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-foreach(
-  TEST
-  "kalman_constructor_default_float_1x1x1.cpp"
-  "kalman_constructor_default.cpp"
-  "kalman_f.cpp"
-  "kalman_format_arguments.cpp"
-  "kalman_format_float_1x1x1.cpp"
-  "kalman_format.cpp"
-  "kalman_println_1x1x0.cpp"
-  "printer_1x1x0.cpp")
-  get_filename_component(NAME ${TEST} NAME_WE)
-  add_executable(kalman_test_${NAME}_driver ${TEST})
-  target_link_libraries(kalman_test_${NAME}_driver PRIVATE kalman kalman_main
-                                                           kalman_options)
-  separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-  add_test(NAME kalman_test_${NAME}
-           COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${NAME}_driver>)
-endforeach()
+include(test.cmake)
 
-foreach(BACKEND IN ITEMS "eigen" "naive")
-  foreach(
-    TEST
-    "linalg_addition.cpp"
-    "linalg_assign.cpp"
-    "linalg_constructor_1x1_array.cpp"
-    "linalg_constructor_1x1.cpp"
-    "linalg_constructor_1xn_array.cpp"
-    "linalg_constructor_1xn.cpp"
-    "linalg_constructor_initializer_lists.cpp"
-    "linalg_constructor_nx1_array.cpp"
-    "linalg_constructor_nx1.cpp"
-    "linalg_copy.cpp"
-    "linalg_identity_default.cpp"
-    "linalg_identity.cpp"
-    "linalg_multiplication_arithmetic.cpp"
-    "linalg_multiplication_rxc.cpp"
-    "linalg_multiplication_sxc.cpp"
-    "linalg_operator_bracket.cpp"
-    "linalg_operator_equality.cpp"
-    "linalg_zero_default.cpp"
-    "linalg_zero.cpp")
-    get_filename_component(NAME ${TEST} NAME_WE)
-    add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
-    target_link_libraries(
-      kalman_test_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(NAME kalman_test_${BACKEND}_${NAME}
-             COMMAND ${TEST_COMMAND}
-                     $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
-  endforeach()
-endforeach()
-
-foreach(BACKEND IN ITEMS "eigen")
-  foreach(
-    TEST
-    "kalman_assign_move_5x4x3.cpp"
-    "kalman_constructor_default_1x1x3.cpp"
-    "kalman_constructor_default_1x4x1.cpp"
-    "kalman_constructor_default_1x4x3.cpp"
-    "kalman_constructor_default_5x1x1.cpp"
-    "kalman_constructor_default_5x1x3.cpp"
-    "kalman_constructor_default_5x4x0.cpp"
-    "kalman_constructor_default_5x4x1.cpp"
-    "kalman_constructor_default_5x4x3.cpp"
-    "kalman_constructor_move_5x4x3.cpp"
-    "kalman_f_5x4x3.cpp"
-    "kalman_h_5x4x3.cpp"
-    "kalman_format_1x4x3.cpp"
-    "kalman_format_5x4x3.cpp"
-    "printer_2x3x4.cpp")
-    get_filename_component(NAME ${TEST} NAME_WE)
-    add_executable(kalman_test_${BACKEND}_${NAME}_driver ${TEST})
-    target_link_libraries(
-      kalman_test_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(NAME kalman_test_${BACKEND}_${NAME}
-             COMMAND ${TEST_COMMAND}
-                     $<TARGET_FILE:kalman_test_${BACKEND}_${NAME}_driver>)
-  endforeach()
-endforeach()
+test(NAME "kalman_assign_move_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_1x1x3" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_1x4x1" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_1x4x3" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_5x1x1" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_5x1x3" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_5x4x0" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_5x4x1" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_constructor_default_float_1x1x1")
+test(NAME "kalman_constructor_default")
+test(NAME "kalman_constructor_move_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_f_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_f")
+test(NAME "kalman_format_1x4x3" BACKENDS "eigen")
+test(NAME "kalman_format_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_format_arguments")
+test(NAME "kalman_format_float_1x1x1")
+test(NAME "kalman_format")
+test(NAME "kalman_h_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_println_1x1x0")
+test(NAME "linalg_addition" BACKENDS "eigen" "naive")
+test(NAME "linalg_assign" BACKENDS "eigen" "naive")
+test(NAME "linalg_constructor_1x1_array" BACKENDS "eigen" "naive")
+test(NAME "linalg_constructor_1x1" BACKENDS "eigen" "naive")
+test(NAME "linalg_constructor_1xn_array" BACKENDS "eigen" "naive")
+test(NAME "linalg_constructor_1xn" BACKENDS "eigen" "naive")
+test(NAME "linalg_constructor_initializer_lists" BACKENDS "eigen" "naive")
+test(NAME "linalg_constructor_nx1_array" BACKENDS "eigen" "naive")
+test(NAME "linalg_constructor_nx1" BACKENDS "eigen" "naive")
+test(NAME "linalg_copy" BACKENDS "eigen" "naive")
+test(NAME "linalg_identity_default" BACKENDS "eigen" "naive")
+test(NAME "linalg_identity" BACKENDS "eigen" "naive")
+test(NAME "linalg_multiplication_arithmetic" BACKENDS "eigen" "naive")
+test(NAME "linalg_multiplication_rxc" BACKENDS "eigen" "naive")
+test(NAME "linalg_multiplication_sxc" BACKENDS "eigen" "naive")
+test(NAME "linalg_operator_bracket" BACKENDS "eigen" "naive")
+test(NAME "linalg_operator_equality" BACKENDS "eigen" "naive")
+test(NAME "linalg_zero_default" BACKENDS "eigen" "naive")
+test(NAME "linalg_zero" BACKENDS "eigen" "naive")
+test(NAME "printer_1x1x0")
+test(NAME "printer_2x3x4" BACKENDS "eigen")
