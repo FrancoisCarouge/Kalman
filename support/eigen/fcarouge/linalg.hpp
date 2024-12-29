@@ -92,14 +92,13 @@ template <eigen Type> struct evaluater<Type> {
       typename Type::PlainMatrix;
 };
 
-//! @brief Specialization of the transposer.
-template <eigen Type> struct transposer<Type> {
-  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
-    return value.transpose();
-  }
-};
-
 //! @}
+
+template <eigen Lhs, eigen Rhs> struct divider<Lhs, Rhs> {
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs, const Rhs &rhs)
+      const -> matrix<typename Rhs::Scalar, Lhs::RowsAtCompileTime,
+                      Rhs::RowsAtCompileTime>;
+};
 
 //! @brief A possible solution to the matrix division.
 //!
@@ -108,15 +107,28 @@ template <eigen Type> struct transposer<Type> {
 //! @details The householder rank-revealing QR decomposition of a matrix with
 //! full pivoting implementation provides a very prudent pivoting to achieve
 //! optimal numerical stability.
-template <typename Numerator, algebraic Denominator>
+template <typename Lhs, eigen Rhs> struct divider<Lhs, Rhs> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
+};
+} // namespace fcarouge
+
+namespace Eigen {
+//! @brief Eigen matrix solution to division.
+//!
+//! @details Argument-dependent lookup (ADL) used for type definition orgering
+//! dependencies. This demonstrator uses a householder rank-revealing QR
+//! decomposition of a matrix with full pivoting. Other applications could
+//! select a different solver.
+template <fcarouge::eigen Numerator, fcarouge::eigen Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
-    -> ᴀʙᵀ<Numerator, Denominator> {
+    -> fcarouge::divide<Numerator, Denominator> {
   return rhs.transpose()
       .fullPivHouseholderQr()
       .solve(lhs.transpose())
       .transpose();
 }
-} // namespace fcarouge
+} // namespace Eigen
 
 //! @brief Specialization of the standard formatter for the Eigen matrix.
 template <typename Type, auto Row, auto Column, typename Char>

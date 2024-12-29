@@ -133,25 +133,47 @@ concept has_output_model = internal::has_output_model<Filter>;
 //! @name Types
 //! @{
 
+//! @brief Linear algebra divider expression type specialization point.
+//!
+//! @details Matrix division is a mathematical abuse of terminology. Informally
+//! defined as multiplication by the inverse. Similarly to division by zero in
+//! real numbers, there exists matrices that are not invertible. Remember the
+//! division operation is not commutative. Matrix inversion can be avoided by
+//! solving `X * rhs = lhs` for `rhs` through a decomposer. There exists several
+//! ways to decompose and solve the equation. Implementations trade off
+//! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
+//! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
+template <typename Lhs, typename Rhs> struct divider {
+  [[nodiscard]] inline constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
+};
+
+//! @brief Divider helper type.
+template <typename Lhs, typename Rhs>
+using divide =
+    std::invoke_result_t<divider<Lhs, Rhs>, const Lhs &, const Rhs &>;
+
 //! @brief Linear algebra evaluater override expression lazy evaluation
 //! specialization point.
-//!
-//! @note Implementation not required.
-template <typename Type> struct evaluater;
-
-template <arithmetic Arithmetic> struct evaluater<Arithmetic> {
-  [[nodiscard]] inline constexpr auto operator()() const -> Arithmetic;
+template <typename Type> struct evaluater {
+  [[nodiscard]] inline constexpr auto operator()() const -> Type;
 };
 
 //! @brief Evaluater helper type.
 template <typename Type> using evaluate = std::invoke_result_t<evaluater<Type>>;
 
 //! @brief Linear algebra transposer specialization point.
-template <typename Type> struct transposer;
-
-template <arithmetic Arithmetic> struct transposer<Arithmetic> {
-  [[nodiscard]] inline constexpr auto operator()(Arithmetic value) const {
+template <typename Type> struct transposer {
+  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
     return value;
+  }
+};
+
+template <typename Type>
+  requires requires(Type value) { value.transpose(); }
+struct transposer<Type> {
+  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
+    return value.transpose();
   }
 };
 
@@ -198,20 +220,6 @@ inline constexpr void for_constexpr(Function &&function) {
   internal::for_constexpr<Begin, End, Increment>(
       std::forward<Function>(function));
 }
-
-//! @brief A user-definable algebraic division solution.
-//!
-//! @details Matrix division is a mathematical abuse of terminology. Informally
-//! defined as multiplication by the inverse. Similarly to division by zero in
-//! real numbers, there exists matrices that are not invertible. Remember the
-//! division operation is not commutative. Matrix inversion can be avoided by
-//! solving `X * rhs = lhs` for `rhs` through a decomposer. There exists several
-//! ways to decompose and solve the equation. Implementations trade off
-//! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
-//! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
-template <typename Numerator, algebraic Denominator>
-constexpr auto operator/(const Numerator &lhs,
-                         const Denominator &rhs) -> ᴀʙᵀ<Numerator, Denominator>;
 
 //! @}
 
