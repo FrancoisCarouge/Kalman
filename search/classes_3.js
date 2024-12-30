@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['matrix_0',['matrix',['../structfcarouge_1_1matrix.xhtml',1,'fcarouge']]]
+  ['kalman_0',['kalman',['../classfcarouge_1_1kalman.xhtml',1,'fcarouge']]]
 ];

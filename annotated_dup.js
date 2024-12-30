@@ -4,15 +4,15 @@ var annotated_dup =
       [ "decorator", "namespacefcarouge_1_1decorator.xhtml", [
         [ "printer", "classfcarouge_1_1decorator_1_1printer.xhtml", "classfcarouge_1_1decorator_1_1printer" ]
       ] ],
-      [ "evaluater", "structfcarouge_1_1evaluater.xhtml", null ],
-      [ "evaluater< Arithmetic >", "structfcarouge_1_1evaluater_3_01_arithmetic_01_4.xhtml", "structfcarouge_1_1evaluater_3_01_arithmetic_01_4" ],
+      [ "divider", "structfcarouge_1_1divider.xhtml", "structfcarouge_1_1divider" ],
+      [ "divider< Lhs, Rhs >", "structfcarouge_1_1divider_3_01_lhs_00_01_rhs_01_4.xhtml", "structfcarouge_1_1divider_3_01_lhs_00_01_rhs_01_4" ],
+      [ "evaluater", "structfcarouge_1_1evaluater.xhtml", "structfcarouge_1_1evaluater" ],
       [ "evaluater< matrix< Type, Row, Column > >", "structfcarouge_1_1evaluater_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1evaluater_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
       [ "evaluater< Type >", "structfcarouge_1_1evaluater_3_01_type_01_4.xhtml", "structfcarouge_1_1evaluater_3_01_type_01_4" ],
       [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
       [ "matrix", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
       [ "printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
-      [ "transposer", "structfcarouge_1_1transposer.xhtml", null ],
-      [ "transposer< Arithmetic >", "structfcarouge_1_1transposer_3_01_arithmetic_01_4.xhtml", "structfcarouge_1_1transposer_3_01_arithmetic_01_4" ],
+      [ "transposer", "structfcarouge_1_1transposer.xhtml", "structfcarouge_1_1transposer" ],
       [ "transposer< matrix< Type, Row, Column > >", "structfcarouge_1_1transposer_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1transposer_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
       [ "transposer< Type >", "structfcarouge_1_1transposer_3_01_type_01_4.xhtml", "structfcarouge_1_1transposer_3_01_type_01_4" ]
     ] ],

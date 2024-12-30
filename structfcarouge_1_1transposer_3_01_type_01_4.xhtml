@@ -100,10 +100,7 @@ $(document).ready(function(){initNavTree('structfcarouge_1_1transposer_3_01_type
 </div><!--header-->
 <div class="contents">
 
-<p>Specialization of the transposer.  
- <a href="structfcarouge_1_1transposer_3_01_type_01_4.xhtml#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for fcarouge::transposer&lt; Type &gt;:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -118,10 +115,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af6cd3d89314147c2793b10bddd119221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;eigen Type&gt;<br />
-struct fcarouge::transposer&lt; Type &gt;</div><p>Specialization of the transposer. </p>
-
-<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00096">96</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>&gt;<br />
+requires <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">requires</a>(<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> value) { value.transpose(); }<br />
+struct fcarouge::transposer&lt; Type &gt;</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00174">174</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af6cd3d89314147c2793b10bddd119221" name="af6cd3d89314147c2793b10bddd119221"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af6cd3d89314147c2793b10bddd119221">&#9670;&#160;</a></span>operator()()</h2>
@@ -129,7 +126,7 @@ struct fcarouge::transposer&lt; Type &gt;</div><p>Specialization of the transpos
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;eigen Type&gt; </div>
+template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -149,15 +146,15 @@ template&lt;eigen Type&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00097">97</a> of file <a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>                                                                          {</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> value.transpose();</div>
-<div class="line"><span class="lineno">   99</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00175">175</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  175</span>                                                                          {</div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">return</span> value.transpose();</div>
+<div class="line"><span class="lineno">  177</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/github/workspace/support/eigen/fcarouge/<a class="el" href="eigen_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a></li>
+<li>/github/workspace/include/fcarouge/<a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
