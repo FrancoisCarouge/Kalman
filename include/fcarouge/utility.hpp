@@ -159,10 +159,6 @@ template <typename Type> struct evaluater {
   [[nodiscard]] inline constexpr auto operator()() const -> Type;
 };
 
-// template <arithmetic Arithmetic> struct evaluater<Arithmetic> {
-//   [[nodiscard]] inline constexpr auto operator()() const -> Arithmetic;
-// };
-
 //! @brief Evaluater helper type.
 template <typename Type> using evaluate = std::invoke_result_t<evaluater<Type>>;
 
