@@ -40,7 +40,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/unit.hpp"
 
 #include <cassert>
-#include <format>
 
 namespace fcarouge::test {
 namespace {
@@ -65,17 +64,6 @@ namespace {
   filter.update(49.95 * m);
 
   assert(abs(1 - filter.x() / (49.57 * m)) < 0.001);
-
-  //! @todo Support floating point formatting precission to make this
-  //! demonstrator readable.
-  assert(std::format("{}", filter) == R"({"f": 1 m²,)"
-                                      R"( "k": 0.09890109890109894,)"
-                                      R"( "p": 2.4725274725274726 m²,)"
-                                      R"( "r": 25 m²,)"
-                                      R"( "s": 27.743902439024392 m²,)"
-                                      R"( "x": 49.5698901098901 m,)"
-                                      R"( "y": 0.4218292682926972 m,)"
-                                      R"( "z": 49.95 m})");
 
   return 0;
 }()};

@@ -55,20 +55,13 @@ template <auto Reference, typename Representation>
 using quantity = mp_units::quantity<Reference, Representation>;
 
 //! @brief The singleton identity matrix specialization.
+//!
+//! @todo The identity with units is no longer the identity? Review the idea.
 template <mp_units::Quantity Type>
 inline constexpr auto identity<Type>{Type::one()};
 
-using mp_units::si::metre;
-using mp_units::si::second;
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
-
-//! @todo: Consider upstreaming named symbols up to pow<6> because that would be
-//! common for constant jerk uncertainties values?
-inline constexpr auto s4{pow<4>(second)};
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP
