@@ -145,5 +145,8 @@ var namespacefcarouge_1_1test =
     ] ],
     [ "anonymous_namespace{linalg_zero_default.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__zero__default_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__zero__default_8cpp_03.xhtml#a8effb7b0b6fd8a9460aa6174c3a14726", null ]
+    ] ],
+    [ "anonymous_namespace{units_kf_1x1x0_building_height.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__1x1x0__building__height_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__1x1x0__building__height_8cpp_03.xhtml#adeddf5e3df54b7524e0a66606adde5bd", null ]
     ] ]
 ];

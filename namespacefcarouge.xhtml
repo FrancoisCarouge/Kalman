@@ -323,6 +323,7 @@ Variables</h2></td></tr>
 <tr class="memitem:af940cca4b42248e5ef4460d697c2bfb3" id="r_af940cca4b42248e5ef4460d697c2bfb3"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a> &gt; <br />
 requires <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">requires</a> { Type::identity(); }</td></tr>
 <tr class="memitem:af940cca4b42248e5ef4460d697c2bfb3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#af940cca4b42248e5ef4460d697c2bfb3">identity&lt; Type &gt;</a> {Type::Identity()}</td></tr>
+<tr class="memdesc:af940cca4b42248e5ef4460d697c2bfb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton identity matrix specialization.  <br /></td></tr>
 <tr class="separator:af940cca4b42248e5ef4460d697c2bfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef6fb6c8a265d85709b951506123a5f1" id="r_aef6fb6c8a265d85709b951506123a5f1"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">typename</a> <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>  = double&gt; </td></tr>
 <tr class="memitem:aef6fb6c8a265d85709b951506123a5f1"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">Type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero</a></td></tr>
@@ -394,7 +395,7 @@ requires <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
 <p>The definitions and implementations of the library intended for public usage. Lowers the name conflict probability in large projects. Use using-declarations or namespace-alias-definition per your project guidelines.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000031">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo:</a></b></dt><dd>Remove the dependency on <code>std::initializer_list</code> if possible? </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="af8b5e05ad9561b3e6bf4cf60d43761ed" name="af8b5e05ad9561b3e6bf4cf60d43761ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af8b5e05ad9561b3e6bf4cf60d43761ed">&#9670;&#160;</a></span>ᴀʙᵀ</h2>
@@ -585,7 +586,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p>The physical unit quantity. </p>
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00052">52</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00055">55</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 
 </div>
 </div>
@@ -2034,7 +2035,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <div class="line">  matrix&lt;Type, Row, Column, true&gt; m{</div>
 <div class="line">      make_identity_generator&lt;Type, Row, Column&gt;()};</div>
 <div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(args)) {</div>
-<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">m</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">args</a>...);</div>
+<div class="line">    <span class="keywordflow">return</span> m(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">args</a>...);</div>
 <div class="line">  } <span class="keywordflow">else</span> {</div>
 <div class="line">    <span class="keywordflow">return</span> m;</div>
 <div class="line">  }</div>
@@ -2045,7 +2046,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00330">330</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  330</span>                                        {[](<span class="keyword">auto</span>... <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">args</a>) {</div>
-<div class="line"><span class="lineno">  331</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;Type, Row, Column, true&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">m</a>{</div>
+<div class="line"><span class="lineno">  331</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;Type, Row, Column, true&gt;</a> m{</div>
 <div class="line"><span class="lineno">  332</span>      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">make_identity_generator&lt;Type, Row, Column&gt;</a>()};</div>
 <div class="line"><span class="lineno">  333</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(args)) {</div>
 <div class="line"><span class="lineno">  334</span>    <span class="keywordflow">return</span> m(args...);</div>
@@ -2074,10 +2075,13 @@ requires <a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>The singleton identity matrix specialization. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000031">Todo:</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00246">246</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  246</span>{Type::Identity()};</div>
@@ -2254,7 +2258,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 <b>Initial value:</b><div class="fragment"><div class="line">{[](<span class="keyword">auto</span>... args) {</div>
 <div class="line">  matrix&lt;Type, Row, Column, true&gt; m{make_zero_generator&lt;Type, Row, Column&gt;()};</div>
 <div class="line">  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(args)) {</div>
-<div class="line">    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">m</a>(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">args</a>...);</div>
+<div class="line">    <span class="keywordflow">return</span> m(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">args</a>...);</div>
 <div class="line">  } <span class="keywordflow">else</span> {</div>
 <div class="line">    <span class="keywordflow">return</span> m;</div>
 <div class="line">  }</div>
@@ -2265,7 +2269,7 @@ template&lt;<a class="el" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3
 
 <p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00342">342</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  342</span>                                    {[](<span class="keyword">auto</span>... <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">args</a>) {</div>
-<div class="line"><span class="lineno">  343</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;Type, Row, Column, true&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">m</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">make_zero_generator&lt;Type, Row, Column&gt;</a>()};</div>
+<div class="line"><span class="lineno">  343</span>  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;Type, Row, Column, true&gt;</a> m{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">make_zero_generator&lt;Type, Row, Column&gt;</a>()};</div>
 <div class="line"><span class="lineno">  344</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(args)) {</div>
 <div class="line"><span class="lineno">  345</span>    <span class="keywordflow">return</span> m(args...);</div>
 <div class="line"><span class="lineno">  346</span>  } <span class="keywordflow">else</span> {</div>
