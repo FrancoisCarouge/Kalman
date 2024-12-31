@@ -107,19 +107,19 @@ $(document).ready(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xht
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line">[[<a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
+<div class="line">[[<a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  kalman filter{</div>
 <div class="line">      <span class="comment">// This is the dog&#39;s initial position expressed as a Gaussian. The state X</span></div>
 <div class="line">      <span class="comment">// position is 0 meters.</span></div>
 <div class="line">      state{1.},</div>
 <div class="line">      <span class="comment">// The measured output position Z.</span></div>
-<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;double&gt;</a>,</div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">output&lt;double&gt;</a>,</div>
 <div class="line">      <span class="comment">// We are predicting that at each time step the dog moves forward one</span></div>
 <div class="line">      <span class="comment">// meter. This is the input U process model - the description of how we</span></div>
 <div class="line">      <span class="comment">// think the dog moves. How do I know the velocity? Magic? Consider it a</span></div>
 <div class="line">      <span class="comment">// prediction, or perhaps we have a secondary velocity sensor. Please</span></div>
 <div class="line">      <span class="comment">// accept this simplification for now.</span></div>
-<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">input&lt;double&gt;</a>,</div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">input&lt;double&gt;</a>,</div>
 <div class="line">      <span class="comment">// The variance to 400 m, which is a standard deviation of 20 meters. You</span></div>
 <div class="line">      <span class="comment">// can think of this as saying &quot;I believe with 99.7% accuracy the position</span></div>
 <div class="line">      <span class="comment">// is 0 plus or minus 60 meters&quot;. This is because with Gaussians ~99.7% of</span></div>
@@ -155,7 +155,7 @@ $(document).ready(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xht
 <div class="line">  filter.predict(1.);</div>
 <div class="line">  filter.update(14.8);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(</div>
 <div class="line">      std::abs(1 - filter.x() / 15.053) &lt; 0.001 &amp;&amp;</div>
 <div class="line">      <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span></div>
 <div class="line">      <span class="stringliteral">&quot;Here we can see that the variance converges to 2.1623 in 9 steps. This &quot;</span></div>
@@ -167,8 +167,8 @@ $(document).ready(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xht
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a2139da64fccd1f6d987797af8fcdd0ea"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00085">linalg.hpp:85</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

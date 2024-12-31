@@ -108,11 +108,11 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">column_vector&lt;double, Size&gt;</a>;</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;double, Row, Column&gt;</a>;</div>
-<div class="line"><span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::state&lt;vector&lt;6&gt;</a>&gt;;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">column_vector&lt;double, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, Row, Column&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::state&lt;vector&lt;6&gt;</a>&gt;;</div>
 <div class="line"> </div>
-<div class="line">[[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
+<div class="line">[[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
 <div class="line">  kalman filter{</div>
 <div class="line">      <span class="comment">// The state X is chosen to be the position, velocity, acceleration in the</span></div>
@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">      state{0., 0., 0., 0., 0., 0.},</div>
 <div class="line">      <span class="comment">// The vehicle has an onboard location sensor that reports output Z as X</span></div>
 <div class="line">      <span class="comment">// and Y coordinates of the system.</span></div>
-<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;vector&lt;2&gt;</a>&gt;,</div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">output&lt;vector&lt;2&gt;</a>&gt;,</div>
 <div class="line">      <span class="comment">// The estimate uncertainty matrix P.</span></div>
 <div class="line">      <span class="comment">// Since our initial state vector is a guess, we will set a very high</span></div>
 <div class="line">      <span class="comment">// estimate uncertainty. The high estimate uncertainty results in a high</span></div>
@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
 <div class="line">      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
 <div class="line">      process_uncertainty{0.2 * 0.2 *</div>
-<div class="line">                          <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;6, 6&gt;</a>{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
+<div class="line">                          <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;6, 6&gt;</a>{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
 <div class="line">                                       {0.5, 1., 1., 0., 0., 0.},</div>
 <div class="line">                                       {0.5, 1., 1., 0., 0., 0.},</div>
 <div class="line">                                       {0., 0., 0., 0.25, 0.5, 0.5},</div>
@@ -173,15 +173,15 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line">  <span class="comment">// measurements period: Δt = 1s (constant, built-in).</span></div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>{[&amp;filter](<span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, <span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>) {</div>
-<div class="line">    filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_x</a>, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_y</a>);</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>{[&amp;filter](<span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_x</a>, <span class="keywordtype">double</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_y</a>) {</div>
+<div class="line">    filter.update(<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_x</a>, <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_y</a>);</div>
 <div class="line">    filter.predict();</div>
 <div class="line">  }};</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-375.93, 301.78);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-375.93, 301.78);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(std::abs(1 - filter.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
@@ -189,48 +189,48 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">         std::abs(1 - filter.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-351.04, 295.1);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-328.96, 305.19);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-299.35, 301.06);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-273.36, 302.05);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-245.89, 300);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-222.58, 303.57);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-198.03, 296.33);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-174.17, 297.65);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-146.32, 297.41);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-123.72, 299.61);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-103.47, 299.6);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-78.23, 302.39);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-52.63, 295.04);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(-23.34, 300.09);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(25.96, 294.72);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(49.72, 298.61);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(76.94, 294.64);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(95.38, 284.88);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(119.83, 272.82);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(144.01, 264.93);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(161.84, 251.46);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(180.56, 241.27);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(201.42, 222.98);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(222.62, 203.73);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(239.4, 184.1);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(252.51, 166.12);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(266.26, 138.71);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(271.75, 119.71);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(277.4, 100.41);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(294.12, 79.76);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(301.23, 50.62);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(291.8, 32.99);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">step</a>(299.89, 2.14);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-351.04, 295.1);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-328.96, 305.19);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-299.35, 301.06);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-273.36, 302.05);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-245.89, 300);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-222.58, 303.57);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-198.03, 296.33);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-174.17, 297.65);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-146.32, 297.41);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-123.72, 299.61);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-103.47, 299.6);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-78.23, 302.39);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-52.63, 295.04);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(-23.34, 300.09);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(25.96, 294.72);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(49.72, 298.61);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(76.94, 294.64);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(95.38, 284.88);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(119.83, 272.82);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(144.01, 264.93);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(161.84, 251.46);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(180.56, 241.27);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(201.42, 222.98);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(222.62, 203.73);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(239.4, 184.1);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(252.51, 166.12);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(266.26, 138.71);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(271.75, 119.71);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(277.4, 100.41);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(294.12, 79.76);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(301.23, 50.62);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(291.8, 32.99);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">step</a>(299.89, 2.14);</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(std::abs(1 - filter.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.6% accuracy.&quot;</span>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(std::abs(1 - filter.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
@@ -260,8 +260,8 @@ $(document).ready(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a2139da64fccd1f6d987797af8fcdd0ea"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00085">linalg.hpp:85</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

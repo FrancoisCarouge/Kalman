@@ -110,13 +110,13 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line">[[<a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
+<div class="line">[[<a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
 <div class="line">  kalman filter{<span class="comment">// One can estimate the building height simply by looking at it.</span></div>
 <div class="line">                <span class="comment">// The estimated state building height is: X = 60 meters.</span></div>
 <div class="line">                state{60.},</div>
 <div class="line">                <span class="comment">// The building height measurement Z in meters.</span></div>
-<div class="line">                <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;double&gt;</a>,</div>
+<div class="line">                <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">output&lt;double&gt;</a>,</div>
 <div class="line">                <span class="comment">// A human’s estimation error (standard deviation) is about 15</span></div>
 <div class="line">                <span class="comment">// meters: σ = 15. Consequently the variance is σ^2 = 225. The</span></div>
 <div class="line">                <span class="comment">// estimate uncertainty is: P = 225 m^2.</span></div>
@@ -126,10 +126,10 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <div class="line">                <span class="comment">// measurement, output uncertainty is: R = 25 m^2.</span></div>
 <div class="line">                output_uncertainty{25.}};</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(60 == filter.x() &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(60 == filter.x() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(225 == filter.p() &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(225 == filter.p() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"> </div>
@@ -152,7 +152,7 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x() / 49.57) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(std::abs(1 - filter.x() / 49.57) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"> </div>
@@ -161,8 +161,8 @@ $(document).ready(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a2139da64fccd1f6d987797af8fcdd0ea"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00085">linalg.hpp:85</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -109,50 +109,50 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">column_vector&lt;float, Size&gt;</a>;</div>
-<div class="line"><span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::state&lt;vector&lt;8&gt;</a>&gt;;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">column_vector&lt;float, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span>state = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::state&lt;vector&lt;8&gt;</a>&gt;;</div>
 <div class="line"> </div>
-<div class="line">[[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>{605.0F, 248.0F, 0.20481927710843373F, 332.0F};</div>
+<div class="line">[[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">maybe_unused</a>]] <span class="keyword">auto</span> sample{[] {</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">vector&lt;4&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>{605.0F, 248.0F, 0.20481927710843373F, 332.0F};</div>
 <div class="line">  <span class="comment">// Experimental position and velocity uncertainty standard deviation</span></div>
 <div class="line">  <span class="comment">// weights.</span></div>
-<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>{1.F / 20.F};</div>
-<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a>{1.F / 160.F};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight</a>{1.F / 20.F};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">velocity_weight</a>{1.F / 160.F};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Constant velocity, linear state transition model. From one image frame to</span></div>
 <div class="line">  <span class="comment">// the other.</span></div>
-<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>{1.F};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">delta_time</a>{1.F};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
 <div class="line">  kalman filter{</div>
 <div class="line">      <span class="comment">// The filter is initialized with the first observed output.</span></div>
 <div class="line">      <span class="comment">// Bounding box position and velocity estimated state X: [px,</span></div>
 <div class="line">      <span class="comment">// py, pa, ph, vx, vy, va, vh].</span></div>
-<div class="line">      state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(0), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(1), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(2), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 0.F,</div>
+<div class="line">      state{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(0), <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(1), <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(2), <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(3), 0.F,</div>
 <div class="line">            0.F, 0.F, 0.F},</div>
 <div class="line">      <span class="comment">// The output Z:</span></div>
-<div class="line">      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">output&lt;vector&lt;4&gt;</a>&gt;,</div>
+<div class="line">      <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">output&lt;vector&lt;4&gt;</a>&gt;,</div>
 <div class="line">      <span class="comment">// The estimate uncertainty P:</span></div>
-<div class="line">      estimate_uncertainty{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;float, 8, 8&gt;</a>{</div>
-<div class="line">          <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a>{2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
-<div class="line">                    2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 1e-2F,</div>
-<div class="line">                    2 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
-<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3),</div>
-<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3), 1e-5F,</div>
-<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">initial_box</a>(3)}</div>
+<div class="line">      estimate_uncertainty{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;float, 8, 8&gt;</a>{</div>
+<div class="line">          <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">vector&lt;8&gt;</a>{2 * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(3),</div>
+<div class="line">                    2 * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(3), 1e-2F,</div>
+<div class="line">                    2 * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight</a> * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(3),</div>
+<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(3),</div>
+<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(3), 1e-5F,</div>
+<div class="line">                    10 * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">velocity_weight</a> * <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">initial_box</a>(3)}</div>
 <div class="line">              .array()</div>
 <div class="line">              .square()</div>
 <div class="line">              .matrix()</div>
 <div class="line">              .asDiagonal()}},</div>
 <div class="line">      <span class="comment">// Q</span></div>
 <div class="line">      process_uncertainty{[](<span class="keyword">const</span> <span class="comment">/*state?*/</span></div>
-<div class="line">                             <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a> &amp;x) {</div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight2</a>{1.F / 20.F};</div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight2</a>{1.F / 160.F};</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;float, 8, 8&gt;</a>{</div>
-<div class="line">            <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight2</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight2</a> * x(3), 1e-2F,</div>
-<div class="line">                      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight2</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight2</a> * x(3),</div>
-<div class="line">                      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight2</a> * x(3), 1e-5F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">velocity_weight2</a> * x(3)}</div>
+<div class="line">                             <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">vector&lt;8&gt;</a> &amp;x) {</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight2</a>{1.F / 20.F};</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">velocity_weight2</a>{1.F / 160.F};</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;float, 8, 8&gt;</a>{</div>
+<div class="line">            <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">vector&lt;8&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight2</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight2</a> * x(3), 1e-2F,</div>
+<div class="line">                      <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight2</a> * x(3), <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">velocity_weight2</a> * x(3),</div>
+<div class="line">                      <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">velocity_weight2</a> * x(3), 1e-5F, <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">velocity_weight2</a> * x(3)}</div>
 <div class="line">                .array()</div>
 <div class="line">                .square()</div>
 <div class="line">                .matrix()</div>
@@ -161,21 +161,21 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">      <span class="comment">// R</span></div>
 <div class="line">      output_uncertainty{</div>
 <div class="line">          <span class="comment">// Observation, measurement noise covariance.</span></div>
-<div class="line">          [<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a>](<span class="keyword">const</span> <span class="comment">/*state?*/</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;8&gt;</a> &amp;x,</div>
-<div class="line">                            [[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">maybe_unused</a>]] <span class="keyword">const</span> <span class="comment">/*output?*/</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> &amp;z) {</div>
-<div class="line">            <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">matrix&lt;float, 4, 4&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3),</div>
-<div class="line">                                                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3), 1e-1F,</div>
-<div class="line">                                                 <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">position_weight</a> * x(3)}</div>
+<div class="line">          [<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight</a>](<span class="keyword">const</span> <span class="comment">/*state?*/</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">vector&lt;8&gt;</a> &amp;x,</div>
+<div class="line">                            [[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">maybe_unused</a>]] <span class="keyword">const</span> <span class="comment">/*output?*/</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">vector&lt;4&gt;</a> &amp;z) {</div>
+<div class="line">            <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;float, 4, 4&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">vector&lt;4&gt;</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight</a> * x(3),</div>
+<div class="line">                                                 <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight</a> * x(3), 1e-1F,</div>
+<div class="line">                                                 <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">position_weight</a> * x(3)}</div>
 <div class="line">                                           .array()</div>
 <div class="line">                                           .square()</div>
 <div class="line">                                           .matrix()</div>
 <div class="line">                                           .asDiagonal()};</div>
 <div class="line">          }},</div>
 <div class="line">      <span class="comment">// The state transition F:</span></div>
-<div class="line">      state_transition{{1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F, 0.F, 0.F},</div>
-<div class="line">                       {0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F, 0.F},</div>
-<div class="line">                       {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>, 0.F},</div>
-<div class="line">                       {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">delta_time</a>},</div>
+<div class="line">      state_transition{{1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">delta_time</a>, 0.F, 0.F, 0.F},</div>
+<div class="line">                       {0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">delta_time</a>, 0.F, 0.F},</div>
+<div class="line">                       {0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">delta_time</a>, 0.F},</div>
+<div class="line">                       {0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F, <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">delta_time</a>},</div>
 <div class="line">                       {0.F, 0.F, 0.F, 0.F, 1.F, 0.F, 0.F, 0.F},</div>
 <div class="line">                       {0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F, 0.F},</div>
 <div class="line">                       {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F},</div>
@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
 <div class="line">  <span class="comment">// MOT16 sample, tracker #201.</span></div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">vector&lt;4&gt;</a> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>[]{{603.5F, 251.5F, 0.187335092348285F, 379.F},</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">vector&lt;4&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">measured</a>[]{{603.5F, 251.5F, 0.187335092348285F, 379.F},</div>
 <div class="line">                             {599.F, 241.F, 0.24390243902439F, 328.F},</div>
 <div class="line">                             {599.F, 239.5F, 0.257234726688103F, 311.F},</div>
 <div class="line">                             {602.5F, 244.F, 0.240131578947368F, 304.F},</div>
@@ -288,12 +288,12 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">  filter.predict();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a> : <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measured</a>) {</div>
-<div class="line">    filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">measure</a>);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">measure</a> : <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">measured</a>) {</div>
+<div class="line">    filter.update(<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">measure</a>);</div>
 <div class="line">    filter.predict();</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">assert</a>(std::abs(1 - filter.x()[0] / 370.932041394761F) &lt; 0.001F &amp;&amp;</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(std::abs(1 - filter.x()[0] / 370.932041394761F) &lt; 0.001F &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[1] / 251.173174229878F) &lt; 0.001F &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[2] / 0.314757138075364F) &lt; 0.001F &amp;&amp;</div>
 <div class="line">         std::abs(1 - filter.x()[3] / 287.859996019444F) &lt; 0.001F &amp;&amp;</div>
@@ -312,8 +312,8 @@ $(document).ready(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-e
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a2139da64fccd1f6d987797af8fcdd0ea"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a6f496dc857f8b172efc57e3ba9bfdbf8"><div class="ttname"><a href="namespacefcarouge.xhtml#a6f496dc857f8b172efc57e3ba9bfdbf8">fcarouge::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_2fcarouge_2linalg_8hpp_source.xhtml#l00085">linalg.hpp:85</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

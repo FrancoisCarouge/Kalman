@@ -12,6 +12,6 @@ var searchData=
   ['responsibilities_9',['Our Responsibilities',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-responsibilities',1,'']]],
   ['results_10',['Results',['../md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results',1,'']]],
   ['row_11',['Row',['../structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136',1,'fcarouge::matrix']]],
-  ['row_5fvector_12',['row_vector',['../namespacefcarouge.xhtml#ac13c25e27a85ae315c7996927b7a3c28',1,'fcarouge']]],
+  ['row_5fvector_12',['row_vector',['../namespacefcarouge.xhtml#a832272cfa3ca1c5f87e4eb41df0f98e2',1,'fcarouge::row_vector'],['../namespacefcarouge_1_1eigen.xhtml#a232975fcff76043271edb6fc449ce1da',1,'fcarouge::eigen::row_vector']]],
   ['run_13',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]]
 ];

@@ -3,7 +3,7 @@ var searchData=
   ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#ae010e42bcd9a38f9783bfd78922d1665',1,'fcarouge::kalman::p(this auto &amp;&amp;self)'],['../classfcarouge_1_1kalman.xhtml#aa163aabe4065e11faf180e3c10499e0a',1,'fcarouge::kalman::p(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1decorator_1_1printer.xhtml#a6fe6af981ea21adbe4d5f368041f9f15',1,'fcarouge::decorator::printer::p()']]],
   ['packages_1',['Installation Packages',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages',1,'']]],
   ['parameters_2',['Template Parameters',['../index.xhtml#template-parameters',1,'']]],
-  ['parse_3',['parse',['../structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml#a5d2e3ad6c11ee8798426e55c7d88799e',1,'std::formatter&lt; Filter, Char &gt;::parse()'],['../structstd_1_1formatter_3_01fcarouge_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a9a236dabfb55a810a77016d62daf8e0f',1,'std::formatter&lt; fcarouge::matrix&lt; Type, Row, Column &gt;, Char &gt;::parse()']]],
+  ['parse_3',['parse',['../structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml#a5d2e3ad6c11ee8798426e55c7d88799e',1,'std::formatter&lt; Filter, Char &gt;::parse()'],['../structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a1fbc2686d5a57a9d5195a959e9e5526f',1,'std::formatter&lt; fcarouge::eigen::matrix&lt; Type, Row, Column &gt;, Char &gt;::parse()']]],
   ['party_20acknowledgement_4',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
   ['performance_5',['Performance',['../index.xhtml#performance',1,'']]],
   ['pledge_6',['Our Pledge',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge',1,'']]],

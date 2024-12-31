@@ -1,6 +1,9 @@
 var concepts =
 [
     [ "fcarouge", "namespacefcarouge.xhtml", [
+      [ "eigen", "namespacefcarouge_1_1eigen.xhtml", [
+        [ "is_eigen", "conceptfcarouge_1_1eigen_1_1is__eigen.xhtml", null ]
+      ] ],
       [ "kalman_filter", "conceptfcarouge_1_1kalman__filter.xhtml", null ],
       [ "arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
       [ "algebraic", "conceptfcarouge_1_1algebraic.xhtml", null ],
@@ -11,7 +14,6 @@ var concepts =
       [ "has_input_control", "conceptfcarouge_1_1has__input__control.xhtml", null ],
       [ "has_state_transition", "conceptfcarouge_1_1has__state__transition.xhtml", null ],
       [ "has_update_types", "conceptfcarouge_1_1has__update__types.xhtml", null ],
-      [ "has_output_model", "conceptfcarouge_1_1has__output__model.xhtml", null ],
-      [ "eigen", "conceptfcarouge_1_1eigen.xhtml", null ]
+      [ "has_output_model", "conceptfcarouge_1_1has__output__model.xhtml", null ]
     ] ]
 ];
