@@ -53,14 +53,41 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge::indexed {
-
-//! @todo Move to utility.
+//! @brief The type of the element at the given matrix indexes position.
 template <std::size_t RowIndex, typename RowIndexes, std::size_t ColumnIndex,
           typename ColumnIndexes>
 using element = product<std::tuple_element_t<RowIndex, RowIndexes>,
                         std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
 
+//! @brief Every element types of the matrix are the same.
+//!
+//! @details Matrices with uniform types are type safe even with the traditional
+//! operators.
+//!
+//! @note A matrix may be uniform with different row and column indexes.
+//!
+//! @todo There may be a way to write this concepts via two fold expressions.
+template <typename RowIndexes, typename ColumnIndexes>
+concept uniform = []() {
+  bool result{true};
+
+  for_constexpr<0, size<RowIndexes>, 1>([&result](auto i) {
+    for_constexpr<0, size<ColumnIndexes>, 1>([&result, &i](auto j) {
+      result &= std::is_same_v<element<i, RowIndexes, j, ColumnIndexes>,
+                               element<0, RowIndexes, 0, ColumnIndexes>>;
+    });
+  });
+
+  return result;
+}();
+
+//! @brief The index is within the range, inclusive.
+template <std::size_t Index, std::size_t Begin, std::size_t End>
+concept in_range = Begin <= Index && Index <= End;
+
 //! @brief The given row and column indexes form a colum-vector/matrix.
+//!
+//! @todo Shorten by taking in the indexed matrix instead of the two indexes.
 template <typename RowIndexes, typename ColumnIndexes>
 concept column = size<ColumnIndexes> == 1;
 
@@ -77,6 +104,18 @@ concept singleton =
 template <typename Pack1, typename Pack2>
 concept equal_size = size<Pack1> == size<Pack2>;
 
+//! @brief Element traits for conversions.
+template <typename Underlying, typename Type> struct element_traits {
+  [[nodiscard]] static inline constexpr Underlying to_underlying(Type value) {
+    return value;
+  }
+
+  [[nodiscard]] static inline constexpr Type &
+  from_underlying(Underlying &value) {
+    return value;
+  }
+};
+
 //! @name Types
 //! @{
 
@@ -88,8 +127,31 @@ concept equal_size = size<Pack1> == size<Pack2>;
 //! @tparam Matrix The underlying linear algebra matrix.
 //! @tparam RowIndexes The packed types of the row indexes.
 //! @tparam ColumnIndexes The packed types of the column indexes.
+//!
+//! @note Type safety cannot be guaranteed at compilation time without index
+//! safety. The index can either be non-type template parameters or strong types
+//! overloadings. Converting a runtime index to a dependent template type is not
+//! possible. A proxy reference could be used to allow traditional assignment
+//! syntax but the runtime check and extra indirection are not interesting
+//! tradeoffs. A template call operator can be used for getting a type safe
+//! value but impractical syntax for setting. Without index safety, the accepted
+//! tradeoff is a templated index `at<i, j>()` method.
+//!
+//! @note Deduction guides are tricky because a given element type comes from
+//! a row and column index to be deduced.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct matrix {
+  //! @brief The type of the element's underlying storage.
+  //!
+  //! @todo Privatize?
+  using underlying =
+      std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
+
+  //! @brief The type of the element at the given matrix indexes position.
+  template <std::size_t RowIndex, std::size_t ColumnIndex>
+  using element = product<std::tuple_element_t<RowIndex, RowIndexes>,
+                          std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
+
   inline constexpr matrix() = default;
 
   inline constexpr matrix(const matrix &other) = default;
@@ -100,91 +162,159 @@ struct matrix {
 
   inline constexpr matrix &operator=(matrix &&other) = default;
 
+  //! @todo Requires evaluated types of Matrix and OtherMatrix are identical?
   template <typename OtherMatrix>
   inline constexpr matrix(
       const matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
       : data{other.data} {}
 
-  inline constexpr matrix(const auto &other) : data{other} {}
+  //! @todo Can this be removed along the evaluate?
+  inline constexpr matrix(const Matrix &other) : data{other} {}
+
+  //! @todo Fix the array constructors: the parameter type needs to be the
+  //! indexes product.
+  inline constexpr explicit matrix(
+      [[maybe_unused]] const std::tuple_element_t<0, ColumnIndexes> (
+          &elements)[size<ColumnIndexes>])
+    requires uniform<RowIndexes, ColumnIndexes> &&
+             row<RowIndexes, ColumnIndexes>
+      : data{elements} {}
+
+  inline constexpr explicit matrix(
+      [[maybe_unused]] const std::tuple_element_t<0, RowIndexes> (
+          &elements)[size<RowIndexes>])
+    requires uniform<RowIndexes, ColumnIndexes> &&
+             column<RowIndexes, ColumnIndexes> &&
+             (not row<RowIndexes, ColumnIndexes>)
+      : data{elements} {}
+
+  template <typename OtherMatrix>
+    requires singleton<RowIndexes, ColumnIndexes> &&
+             requires(OtherMatrix value) { value.data(0, 0); }
+  explicit inline constexpr matrix(const OtherMatrix &value) {
+    data = value.data;
+  }
 
   template <arithmetic Type>
+    requires singleton<RowIndexes, ColumnIndexes>
+  explicit inline constexpr matrix(const Type &value) {
+    data(0, 0) = element_traits<underlying, Type>::to_underlying(value);
+  }
+
+  //! @todo Verify the list sizes at runtime?
+  template <typename Type>
   inline constexpr explicit matrix(
-      std::initializer_list<std::initializer_list<Type>> rows) {
+      std::initializer_list<std::initializer_list<Type>> rows)
+    requires uniform<RowIndexes, ColumnIndexes>
+  {
     for (std::size_t i{0}; const auto &row : rows) {
       for (std::size_t j{0}; const auto &value : row) {
-        data(i, j) = value;
+        data(i, j) = element_traits<underlying, Type>::to_underlying(value);
         ++j;
       }
       ++i;
     }
   }
 
+  //! @todo Combine the two constructors in ome?
+  //! @todo Verify if the types are the same, or assignable, for nicer error?
+  //! @todo Rewrite with a fold expression over the pack?
   template <typename... Types>
-    requires column<RowIndexes, ColumnIndexes> &&
-             equal_size<RowIndexes, std::tuple<Types...>>
-  inline constexpr matrix(const Types &...values) {
+    requires row<RowIndexes, ColumnIndexes> &&
+             (not column<RowIndexes, ColumnIndexes>) &&
+             equal_size<ColumnIndexes, std::tuple<Types...>>
+  explicit inline constexpr matrix(const Types &...values) {
     std::tuple value_pack{values...};
-    for_constexpr<0, size<RowIndexes>, 1>([this, &value_pack](auto position) {
-      data[position] = std::get<position>(value_pack);
+    for_constexpr<0, size<ColumnIndexes>, 1>([this,
+                                              &value_pack](auto position) {
+      auto value{std::get<position>(value_pack)};
+      using type = std::remove_cvref_t<decltype(value)>;
+      data[position] = element_traits<underlying, type>::to_underlying(value);
     });
   }
 
   template <typename... Types>
-    requires(size<RowIndexes> == 1 && size<ColumnIndexes> != 1 &&
-             sizeof...(Types) == size<ColumnIndexes>)
-  explicit inline constexpr matrix(const Types &...values) {
+    requires column<RowIndexes, ColumnIndexes> &&
+             (not row<RowIndexes, ColumnIndexes>) &&
+             equal_size<RowIndexes, std::tuple<Types...>>
+  inline constexpr matrix(const Types &...values) {
     std::tuple value_pack{values...};
-    for_constexpr<0, size<ColumnIndexes>, 1>(
-        [this, &value_pack](auto position) {
-          data[position] = std::get<position>(value_pack);
-        });
+    for_constexpr<0, size<RowIndexes>, 1>([this, &value_pack](auto position) {
+      auto value{std::get<position>(value_pack)};
+      using type = std::remove_cvref_t<decltype(value)>;
+      data[position] = element_traits<underlying, type>::to_underlying(value);
+    });
   }
 
-  [[nodiscard]] inline constexpr explicit(false)
-  operator element<0, RowIndexes, 0, ColumnIndexes>() const
+  [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
     requires singleton<RowIndexes, ColumnIndexes>
   {
-    return element<0, RowIndexes, 0, ColumnIndexes>{data(0, 0)};
+    return element_traits<underlying, element<0, 0>>::from_underlying(
+        data(0, 0));
   }
 
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
     requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>)
+             (not row<RowIndexes, ColumnIndexes>) &&
+             uniform<RowIndexes, ColumnIndexes>
   {
     return std::forward<decltype(self)>(self).data(index, 0);
   }
 
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
-    requires row<RowIndexes, ColumnIndexes>
+    requires row<RowIndexes, ColumnIndexes> &&
+             uniform<RowIndexes, ColumnIndexes>
   {
     return std::forward<decltype(self)>(self).data(0, index);
   }
 
   [[nodiscard]] inline constexpr auto &&
-  operator[](this auto &&self, std::size_t row, std::size_t column) {
+  operator[](this auto &&self, std::size_t row, std::size_t column)
+    requires uniform<RowIndexes, ColumnIndexes>
+  {
     return std::forward<decltype(self)>(self).data(row, column);
   }
 
   [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
                                                    std::size_t index)
     requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>)
+             (not row<RowIndexes, ColumnIndexes>) &&
+             uniform<RowIndexes, ColumnIndexes>
   {
     return std::forward<decltype(self)>(self).data(index, 0);
   }
 
   [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
                                                    std::size_t index)
-    requires row<RowIndexes, ColumnIndexes>
+    requires row<RowIndexes, ColumnIndexes> &&
+             uniform<RowIndexes, ColumnIndexes>
   {
     return std::forward<decltype(self)>(self).data(0, index);
   }
 
   [[nodiscard]] inline constexpr auto &&
-  operator()(this auto &&self, std::size_t row, std::size_t column) {
+  operator()(this auto &&self, std::size_t row, std::size_t column)
+    requires uniform<RowIndexes, ColumnIndexes>
+  {
     return std::forward<decltype(self)>(self).data(row, column);
+  }
+
+  template <std::size_t Row, std::size_t Column>
+    requires in_range<Row, 0, size<RowIndexes>> &&
+             in_range<Column, 0, size<ColumnIndexes>>
+  [[nodiscard]] inline constexpr element<Row, Column> &at() {
+    return element_traits<underlying, element<Row, Column>>::from_underlying(
+        data(std::size_t{Row}, std::size_t{Column}));
+  }
+
+  template <std::size_t Index>
+    requires column<RowIndexes, ColumnIndexes> &&
+             in_range<Index, 0, size<RowIndexes>>
+  [[nodiscard]] inline constexpr element<Index, 0> &at() {
+    return element_traits<underlying, element<Index, 0>>::from_underlying(
+        data(std::size_t{Index}, 0));
   }
 
   Matrix data;
@@ -202,8 +332,6 @@ using column_vector =
 
 //! @}
 
-//! @todo Add deduction guides.
-
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
           typename ColumnIndexes>
 [[nodiscard]] inline constexpr bool
@@ -217,9 +345,38 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator*(const matrix<Matrix1, RowIndexes, Indexes> &lhs,
           const matrix<Matrix2, Indexes, ColumnIndexes> &rhs) {
-  //! @todo Don't evaluate as much as possible?
   return matrix<evaluate<product<Matrix1, Matrix2>>, RowIndexes, ColumnIndexes>{
       lhs.data * rhs.data};
+}
+
+template <arithmetic Scalar, typename Matrix, typename RowIndexes,
+          typename ColumnIndexes>
+  requires singleton<RowIndexes, ColumnIndexes>
+[[nodiscard]] inline constexpr auto
+operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
+  return element<0, RowIndexes, 0, ColumnIndexes>{lhs * rhs.data(0)};
+}
+
+template <arithmetic Scalar, typename Matrix, typename RowIndexes,
+          typename ColumnIndexes>
+[[nodiscard]] inline constexpr auto
+operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
+  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs * rhs.data};
+}
+
+template <arithmetic Scalar, typename Matrix, typename RowIndexes,
+          typename ColumnIndexes>
+  requires singleton<RowIndexes, ColumnIndexes>
+[[nodiscard]] inline constexpr auto
+operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
+  return element<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) * rhs};
+}
+
+template <arithmetic Scalar, typename Matrix, typename RowIndexes,
+          typename ColumnIndexes>
+[[nodiscard]] inline constexpr auto
+operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
+  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data * rhs};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
@@ -231,7 +388,7 @@ operator+(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
                                                               rhs.data};
 }
 
-template <typename Scalar, typename Matrix, typename RowIndexes,
+template <arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
   requires singleton<RowIndexes, ColumnIndexes>
 [[nodiscard]] inline constexpr auto
@@ -249,43 +406,13 @@ operator-(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
                                                               rhs.data};
 }
 
-template <typename Scalar, typename Matrix, typename RowIndexes,
+template <arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
   requires singleton<RowIndexes, ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator-(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
   //! @todo Don't evaluate? Return the expression?
   return element<0, RowIndexes, 0, ColumnIndexes>{lhs - rhs.data(0)};
-}
-
-template <typename Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires singleton<RowIndexes, ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return element<0, RowIndexes, 0, ColumnIndexes>{lhs * rhs.data(0)};
-}
-
-template <typename Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs * rhs.data};
-}
-
-template <typename Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-  requires singleton<RowIndexes, ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return element<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) * rhs};
-}
-
-template <typename Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data * rhs};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes1,
