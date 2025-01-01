@@ -36,14 +36,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-include(sample.cmake)
-
-sample(NAME "ekf_4x1x0_soaring" BACKENDS "eigen" "naive")
-sample(NAME "kf_1x1x0_building_height")
-sample(NAME "kf_1x1x0_liquid_temperature")
-sample(NAME "kf_1x1x1_dog_position")
-sample(NAME "kf_2x1x1_rocket_altitude" BACKENDS "eigen"
-       # "eigexed"
-       "naive")
-sample(NAME "kf_6x2x0_vehicle_location" BACKENDS "eigen")
-sample(NAME "kf_8x4x0_deep_sort_bounding_box" BACKENDS "eigen")
+add_library(kalman_linalg_eigexed INTERFACE)
+target_sources(
+  kalman_linalg_eigexed INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
+                                  FILES "fcarouge/linalg.hpp")
+target_link_libraries(
+  kalman_linalg_eigexed INTERFACE kalman kalman_linalg_eigen
+                                  kalman_linalg_indexed)

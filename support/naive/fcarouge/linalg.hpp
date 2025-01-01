@@ -145,6 +145,10 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
     return data[0][index];
   }
 
+  [[nodiscard]] inline constexpr const Type &operator[](auto i, auto j) const {
+    return data[i][j];
+  }
+
   [[nodiscard]] inline constexpr const Type &operator()(auto index) const
     requires(Row != 1 && Column == 1)
   {
@@ -178,8 +182,8 @@ using column_vector = matrix<Type, Row, decltype(Row){1}>;
 //! @note Implementation not needed.
 template <typename Type, auto Row, auto Column>
 struct evaluater<matrix<Type, Row, Column>> {
-  [[nodiscard]] inline constexpr auto
-  operator()() const -> matrix<Type, Row, Column>;
+  [[nodiscard]] inline constexpr auto operator()() const
+      -> matrix<Type, Row, Column>;
 };
 
 //! @brief Specialization of the transposer.

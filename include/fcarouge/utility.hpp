@@ -144,8 +144,9 @@ concept has_output_model = internal::has_output_model<Filter>;
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Lhs, typename Rhs> struct divider {
-  [[nodiscard]] inline constexpr auto
-  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs / rhs);
 };
 
 //! @brief Divider helper type.

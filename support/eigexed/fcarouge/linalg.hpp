@@ -36,41 +36,44 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_UNIT_HPP
-#define FCAROUGE_UNIT_HPP
+#ifndef FCAROUGE_LINALG_HPP
+#define FCAROUGE_LINALG_HPP
 
 //! @file
-//! @brief Quantities and units facade for mp-units third party implementation.
-//!
-//! @details Supporting quantities, values, and functions.
+//! @brief Scalar type indexed-based linear algebra with Eigen implementations.
 
-#include <mp-units/format.h>
-#include <mp-units/framework/quantity.h>
-#include <mp-units/math.h>
-#include <mp-units/systems/si.h>
+#include "fcarouge/eigen.hpp"
+#include "fcarouge/indexed_linalg.hpp"
 
 namespace fcarouge {
-//! @brief The physical unit quantity.
-template <auto Reference, typename Representation>
-using quantity = mp_units::quantity<Reference, Representation>;
 
-//! @brief The singleton identity matrix specialization.
+//! @name Types
+//! @{
+
+//! @brief A simple index based on a built-in scalar type.
 //!
-//! @todo The identity with units is no longer the identity? Review the idea.
-template <mp_units::Quantity Type>
-inline constexpr auto identity<Type>{Type::one()};
+//! @todo Contrain the index with a concept, static assert.
+template <typename Type> struct scalar_index {
+  using scalar = Type;
+  using type = Type;
 
-using mp_units::si::metre;
-using mp_units::si::second;
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
+  [[nodiscard]] static constexpr auto convert(const Type &value) -> scalar {
+    return value;
+  }
+};
 
-//! @todo: Consider upstreaming named symbols up to pow<6> because that would be
-//! common for constant jerk uncertainties values?
-inline constexpr auto s4{pow<4>(second)};
+//! @brief Scalar type indexed-based matrix with Eigen implementations.
+template <typename Type = double, auto Row = 1, auto Column = 1>
+using matrix = indexed_matrix<eigen::matrix<Type, Row, Column>,
+                              tuple_n_type<scalar_index<Type>, Row>,
+                              tuple_n_type<scalar_index<Type>, Column>>;
+
+//! @brief Scalar type indexed-based column vector with Eigen implementations.
+template <typename Type = double, auto Row = 1>
+using column_vector = matrix<Type, Row, 1>;
+
+//! @}
+
 } // namespace fcarouge
 
-#endif // FCAROUGE_UNIT_HPP
+#endif // FCAROUGE_LINALG_HPP
