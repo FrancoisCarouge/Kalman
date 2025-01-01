@@ -44,6 +44,7 @@ jobs:
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
           --suppress=preprocessorErrorDirective \
+          --suppress=syntaxError: test/units_kf_6x2x0_vehicle_location.cpp \
           --verbose \
           -I benchmark/include \
           -I include \
@@ -55,4 +56,5 @@ jobs:
           -I support/mp_units \
           -I support/naive \
           -I support/naixed \
+          -I support/quantity \
           .

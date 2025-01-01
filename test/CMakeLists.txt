@@ -229,5 +229,6 @@ test(
   "naive"
   "naixed")
 test(NAME "units_kf_1x1x0_building_height")
+test(NAME "units_kf_6x2x0_vehicle_location" BACKENDS "quantity")
 test(NAME "utility_identity_default")
 test(NAME "utility_zero_default")
