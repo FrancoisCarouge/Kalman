@@ -228,8 +228,11 @@ public:
   //!
   //! @complexity Constant.
   //!
-  //! @note Overloading the operator dot would have been nice had it existed.
+  //! @todo Can we offer a proxy member for the call and bracket operators?
+  //! @todo Do we need to offer by-value versions for proxied types?
   inline constexpr auto &&x(this auto &&self);
+
+  template <auto Index> inline constexpr auto x();
 
   //! @brief Sets the state estimate column vector X.
   //!

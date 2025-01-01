@@ -53,12 +53,28 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge::indexed {
-
-//! @todo Move to utility.
+//! @brief The type of the element at the given matrix indexes position.
 template <std::size_t RowIndex, typename RowIndexes, std::size_t ColumnIndex,
           typename ColumnIndexes>
 using element = product<std::tuple_element_t<RowIndex, RowIndexes>,
                         std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
+
+//! @brief Every element types of the matrix are the same.
+//!
+//! @note A matrix may be uniform with different row and  column indexes.
+template <typename RowIndexes, typename ColumnIndexes>
+concept uniform = []() {
+  bool result{true};
+
+  for_constexpr<0, size<RowIndexes>, 1>([&result](auto i) {
+    for_constexpr<0, size<ColumnIndexes>, 1>([&result, &i](auto j) {
+      result &= std::is_same_v<element<i, RowIndexes, j, ColumnIndexes>,
+                               element<0, RowIndexes, 0, ColumnIndexes>>;
+    });
+  });
+
+  return result;
+}();
 
 //! @brief The given row and column indexes form a colum-vector/matrix.
 template <typename RowIndexes, typename ColumnIndexes>
@@ -90,6 +106,17 @@ concept equal_size = size<Pack1> == size<Pack2>;
 //! @tparam ColumnIndexes The packed types of the column indexes.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct matrix {
+  //! @brief The type of the element's underlying storage.
+  //!
+  //! @todo Privatize?
+  using underlying =
+      std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
+
+  //! @brief The type of the element at the given matrix indexes position.
+  template <std::size_t RowIndex, std::size_t ColumnIndex>
+  using element_t = product<std::tuple_element_t<RowIndex, RowIndexes>,
+                            std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
+
   inline constexpr matrix() = default;
 
   inline constexpr matrix(const matrix &other) = default;
@@ -105,14 +132,22 @@ struct matrix {
       const matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
       : data{other.data} {}
 
+  //! @todo Can this be removed along the evaluate?
   inline constexpr matrix(const auto &other) : data{other} {}
 
-  template <arithmetic Type>
+  //! @todo Verify the list sizes at runtime?
+  template <typename Type>
   inline constexpr explicit matrix(
-      std::initializer_list<std::initializer_list<Type>> rows) {
+      std::initializer_list<std::initializer_list<Type>> rows)
+    requires uniform<RowIndexes, ColumnIndexes>
+  {
     for (std::size_t i{0}; const auto &row : rows) {
       for (std::size_t j{0}; const auto &value : row) {
-        data(i, j) = value;
+        if constexpr (std::same_as<underlying, Type>) {
+          data(i, j) = value;
+        } else {
+          data(i, j) = value.numerical_value_in(value.unit);
+        }
         ++j;
       }
       ++i;
@@ -121,11 +156,18 @@ struct matrix {
 
   template <typename... Types>
     requires column<RowIndexes, ColumnIndexes> &&
+             // Just same? Just assignable 1-to-1?
              equal_size<RowIndexes, std::tuple<Types...>>
-  inline constexpr matrix(const Types &...values) {
-    std::tuple value_pack{values...};
-    for_constexpr<0, size<RowIndexes>, 1>([this, &value_pack](auto position) {
-      data[position] = std::get<position>(value_pack);
+  inline constexpr matrix(const Types &...elements) {
+    std::tuple element_pack{elements...};
+    for_constexpr<0, size<RowIndexes>, 1>([this, &element_pack](auto position) {
+      auto value{std::get<position>(element_pack)};
+      using value_t = std::remove_cvref_t<decltype(value)>;
+      if constexpr (std::same_as<underlying, value_t>) {
+        data[position] = value;
+      } else {
+        data[position] = value.numerical_value_in(value.unit);
+      }
     });
   }
 
@@ -150,41 +192,71 @@ struct matrix {
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
     requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>)
+             (not row<RowIndexes, ColumnIndexes>) &&
+             uniform<RowIndexes, ColumnIndexes>
   {
     return std::forward<decltype(self)>(self).data(index, 0);
   }
 
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
-    requires row<RowIndexes, ColumnIndexes>
+    requires row<RowIndexes, ColumnIndexes> &&
+             uniform<RowIndexes, ColumnIndexes>
   {
     return std::forward<decltype(self)>(self).data(0, index);
   }
 
   [[nodiscard]] inline constexpr auto &&
-  operator[](this auto &&self, std::size_t row, std::size_t column) {
+  operator[](this auto &&self, std::size_t row, std::size_t column)
+    requires uniform<RowIndexes, ColumnIndexes>
+  {
     return std::forward<decltype(self)>(self).data(row, column);
   }
 
   [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
                                                    std::size_t index)
     requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>)
+             (not row<RowIndexes, ColumnIndexes>) &&
+             uniform<RowIndexes, ColumnIndexes>
   {
     return std::forward<decltype(self)>(self).data(index, 0);
   }
 
   [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
                                                    std::size_t index)
-    requires row<RowIndexes, ColumnIndexes>
+    requires row<RowIndexes, ColumnIndexes> &&
+             uniform<RowIndexes, ColumnIndexes>
   {
     return std::forward<decltype(self)>(self).data(0, index);
   }
 
   [[nodiscard]] inline constexpr auto &&
-  operator()(this auto &&self, std::size_t row, std::size_t column) {
+  operator()(this auto &&self, std::size_t row, std::size_t column)
+    requires uniform<RowIndexes, ColumnIndexes>
+  {
     return std::forward<decltype(self)>(self).data(row, column);
+  }
+
+  template <typename Underlying> struct reference {
+    Underlying &data;
+
+    inline constexpr void operator=(const auto &value) {
+      data = value.numerical_value_in(value.unit);
+    }
+  };
+
+  [[nodiscard]] inline constexpr auto operator[](std::size_t row,
+                                                 std::size_t column) {
+    return reference{data(row, column)};
+  }
+
+  template <std::size_t Index>
+  [[nodiscard]] inline constexpr element<Index, RowIndexes, 0, ColumnIndexes>
+  operator()()
+    requires column<RowIndexes, ColumnIndexes>
+  {
+    return {data(std::size_t{Index}, 0),
+            element<Index, RowIndexes, 0, ColumnIndexes>::reference};
   }
 
   Matrix data;

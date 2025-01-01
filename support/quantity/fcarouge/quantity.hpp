@@ -36,41 +36,34 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_UNIT_HPP
-#define FCAROUGE_UNIT_HPP
+#ifndef FCAROUGE_QUANTITY_HPP
+#define FCAROUGE_QUANTITY_HPP
 
 //! @file
-//! @brief Quantities and units facade for mp-units third party implementation.
-//!
-//! @details Supporting quantities, values, and functions.
+//! @brief Indexed-based linear algebra with mp-units with Eigen
+//! implementations.
 
-#include <mp-units/format.h>
-#include <mp-units/framework/quantity.h>
-#include <mp-units/math.h>
-#include <mp-units/systems/si.h>
+#include "fcarouge/indexed.hpp"
+#include "fcarouge/linalg.hpp"
+#include "fcarouge/unit.hpp"
 
 namespace fcarouge {
-//! @brief The physical unit quantity.
-template <auto Reference, typename Representation>
-using quantity = mp_units::quantity<Reference, Representation>;
 
-//! @brief The singleton identity matrix specialization.
-//!
-//! @todo The identity with units is no longer the identity? Review the idea.
-template <mp_units::Quantity Type>
-inline constexpr auto identity<Type>{Type::one()};
+//! @name Types
+//! @{
 
-using mp_units::si::metre;
-using mp_units::si::second;
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
+using scalar = double;
 
-//! @todo: Consider upstreaming named symbols up to pow<6> because that would be
-//! common for constant jerk uncertainties values?
-inline constexpr auto s4{pow<4>(second)};
+template <auto Reference> using quantity_double = quantity<Reference, scalar>;
+
+//! @brief Quantity column vector with mp-units and Eigen implementations.
+template <auto... Reference>
+using quantity_vector =
+    indexed::column_vector<column_vector<scalar, sizeof...(Reference)>,
+                           quantity_double<Reference>...>;
+
+//! @}
+
 } // namespace fcarouge
 
-#endif // FCAROUGE_UNIT_HPP
+#endif // FCAROUGE_QUANTITY_HPP

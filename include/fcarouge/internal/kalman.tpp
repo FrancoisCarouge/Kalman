@@ -57,6 +57,14 @@ inline constexpr auto &&kalman<Filter>::x(this auto &&self) {
 }
 
 template <typename Filter>
+template <auto Index>
+[[nodiscard(
+    "The returned state estimate column vector X is unexpectedly discarded.")]]
+inline constexpr auto kalman<Filter>::x() {
+  return filter.x.template operator()<Index>();
+}
+
+template <typename Filter>
 inline constexpr void kalman<Filter>::x(const auto &value,
                                         const auto &...values) {
   filter.x = std::move(state{value, values...});
