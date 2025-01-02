@@ -227,9 +227,8 @@ template <typename Type> struct repacker {
 template <template <typename...> typename Pack, typename... Types>
 struct repacker<Pack<Types...>> {
   using type = std::tuple<Types...>;
-  using size_t = std::remove_const_t<decltype(sizeof...(Types))>;
 
-  static inline constexpr auto size{sizeof...(Types)};
+  static inline constexpr std::size_t size{sizeof...(Types)};
 };
 
 template <auto Value, auto... Values> struct first_value {
@@ -256,8 +255,6 @@ using empty_tuple = std::tuple<>;
 
 template <typename Pack> using repack = repacker<Pack>::type;
 
-template <typename Pack> using size_t = repacker<Pack>::size_t;
-
 template <typename... Types>
 using first = std::tuple_element_t<0, std::tuple<Types...>>;
 
@@ -275,6 +272,23 @@ template <typename Pack> inline constexpr auto size{repacker<Pack>::size};
 
 template <auto... Values>
 inline constexpr auto first_v{first_value<Values...>::value};
+
+template <typename Type, std::size_t Size> struct tupler {
+  template <typename = std::make_index_sequence<Size>> struct helper;
+
+  template <std::size_t... Indexes>
+  struct helper<std::index_sequence<Indexes...>> {
+    template <std::size_t> using wrap = Type;
+
+    using type = std::tuple<wrap<Indexes>...>;
+  };
+
+  using type = typename helper<>::type;
+};
+
+template <typename Type, std::size_t Size>
+using tuple_n_type = typename tupler<Type, Size>::type;
+
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP
