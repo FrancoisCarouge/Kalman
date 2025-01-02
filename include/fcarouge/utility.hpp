@@ -198,6 +198,10 @@ using empty_tuple = internal::empty_tuple;
 //! @details Shorthand for `std::tuple_element_t<0, std::tuple<Types...>>`.
 template <typename... Types> using first = internal::first<Types...>;
 
+//! @brief An alias for making a tuple of the same type.
+template <typename Type, std::size_t Size>
+using tuple_n_type = internal::tuple_n_type<Type, Size>;
+
 //! @brief The deduced result type of the product.
 template <typename Lhs, typename Rhs>
 using product = internal::product<Lhs, Rhs>;
@@ -225,6 +229,12 @@ inline constexpr void for_constexpr(Function &&function) {
 
 //! @name Named Values
 //! @{
+
+//! @brief Size of tuple-like types.
+//!
+//! @details Convenient short form. In place of `std::tuple_size_v`.
+template <typename Pack>
+inline constexpr std::size_t size{internal::size<Pack>};
 
 //! @brief Unpack the first value of the non-type template parameter pack.
 template <auto... Values>
@@ -269,6 +279,7 @@ template <typename Type>
 inline auto zero<Type>{Type::zero()};
 
 //! @}
+
 } // namespace fcarouge
 
 #endif // FCAROUGE_UTILITY_HPP
