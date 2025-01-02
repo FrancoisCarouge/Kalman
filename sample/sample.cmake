@@ -36,37 +36,38 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-# Add a given test.
+# Add a given sample.
 #
-# * NAME The name of the test file without extension.
-# * BACKENDS Optional list of backends to use against the test.
-function(test)
+# * NAME The name of the sample file without extension.
+# * BACKENDS Optional list of backends to use against the sample.
+function(sample)
   set(oneValueArgs NAME)
   set(multiValueArgs BACKENDS)
-  cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
+  cmake_parse_arguments(PARSE_ARGV 0 SAMPLE "" "${oneValueArgs}"
                         "${multiValueArgs}")
 
-  if(NOT TEST_BACKENDS)
-    add_executable(kalman_test_${TEST_NAME}_driver "${TEST_NAME}.cpp")
+  if(NOT SAMPLE_BACKENDS)
+    add_executable(kalman_sample_${SAMPLE_NAME}_driver "${SAMPLE_NAME}.cpp")
     target_link_libraries(
-      kalman_test_${TEST_NAME}_driver PRIVATE kalman kalman_main kalman_options
-                                              kalman_unit_mp_units)
-    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(NAME kalman_test_${TEST_NAME}
-             COMMAND ${TEST_COMMAND}
-                     $<TARGET_FILE:kalman_test_${TEST_NAME}_driver>)
+      kalman_sample_${SAMPLE_NAME}_driver
+      PRIVATE kalman kalman_main kalman_options kalman_unit_mp_units)
+    separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(NAME kalman_sample_${SAMPLE_NAME}
+             COMMAND ${SAMPLE_COMMAND}
+                     $<TARGET_FILE:kalman_sample_${SAMPLE_NAME}_driver>)
   else()
-    foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-      add_executable(kalman_test_${BACKEND}_${TEST_NAME}_driver
-                     "${TEST_NAME}.cpp")
+    foreach(BACKEND IN ITEMS ${SAMPLE_BACKENDS})
+      add_executable(kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
+                     "${SAMPLE_NAME}.cpp")
       target_link_libraries(
-        kalman_test_${BACKEND}_${TEST_NAME}_driver
-        PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-      separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
+        kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
+        PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options
+                kalman_unit_mp_units)
+      separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
-        NAME kalman_test_${BACKEND}_${TEST_NAME}
-        COMMAND ${TEST_COMMAND}
-                $<TARGET_FILE:kalman_test_${BACKEND}_${TEST_NAME}_driver>)
+        NAME kalman_sample_${BACKEND}_${SAMPLE_NAME}
+        COMMAND ${SAMPLE_COMMAND}
+                $<TARGET_FILE:kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver>)
     endforeach()
   endif()
-endfunction(test)
+endfunction(sample)
