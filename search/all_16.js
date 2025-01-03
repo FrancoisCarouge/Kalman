@@ -14,6 +14,7 @@ var searchData=
   ['transposer_11',['transposer',['../structfcarouge_1_1transposer.xhtml',1,'fcarouge']]],
   ['transposer_3c_20matrix_3c_20type_2c_20row_2c_20column_20_3e_20_3e_12',['transposer&lt; matrix&lt; Type, Row, Column &gt; &gt;',['../structfcarouge_1_1transposer_3_01matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml',1,'fcarouge']]],
   ['transposer_3c_20type_20_3e_13',['transposer&lt; Type &gt;',['../structfcarouge_1_1transposer_3_01_type_01_4.xhtml',1,'fcarouge']]],
-  ['type_2ehpp_14',['type.hpp',['../type_8hpp.xhtml',1,'']]],
-  ['types_15',['Member Types',['../index.xhtml#member-types',1,'']]]
+  ['tuple_5fn_5ftype_14',['tuple_n_type',['../namespacefcarouge_1_1internal.xhtml#ac74ae4ceabfd098b7ebfe674e3dcdfde',1,'fcarouge::internal::tuple_n_type'],['../namespacefcarouge.xhtml#aabfa7a01ae0f5d36985804a1fbe46400',1,'fcarouge::tuple_n_type']]],
+  ['type_2ehpp_15',['type.hpp',['../type_8hpp.xhtml',1,'']]],
+  ['types_16',['Member Types',['../index.xhtml#member-types',1,'']]]
 ];
