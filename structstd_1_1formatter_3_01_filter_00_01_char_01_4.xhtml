@@ -164,8 +164,8 @@ template&lt;typename OutputIterator &gt; </div>
 </table>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000001">Todo:</a></b></dt><dd>P2585 may be useful in simplifying and standardizing the support. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000002">Todo:</a></b></dt><dd>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo:</a></b></dt><dd>Inconsistent usage of internal? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000003">Todo:</a></b></dt><dd>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000004">Todo:</a></b></dt><dd>Inconsistent usage of internal? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="format_8hpp_source.xhtml#l00066">66</a> of file <a class="el" href="format_8hpp_source.xhtml">format.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   68</span>                        {</div>
@@ -193,7 +193,7 @@ template&lt;typename OutputIterator &gt; </div>
 <div class="line"><span class="lineno">   90</span><span class="stringliteral"></span> </div>
 <div class="line"><span class="lineno">   91</span><span class="stringliteral">    </span><span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_concept" href="conceptfcarouge_1_1has__prediction__types.xhtml">fcarouge::has_prediction_types&lt;Filter&gt;</a>) {</div>
 <div class="line"><span class="lineno">   92</span>      <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a>&lt;</div>
-<div class="line"><span class="lineno">   93</span>          0, std::tuple_size_v&lt;typename Filter::prediction_types&gt;, 1&gt;(</div>
+<div class="line"><span class="lineno">   93</span>          0, <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::size&lt;typename Filter::prediction_types&gt;</a>, 1&gt;(</div>
 <div class="line"><span class="lineno">   94</span>          [&amp;format_context, &amp;<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>](<span class="keyword">auto</span> position) {</div>
 <div class="line"><span class="lineno">   95</span>            format_context.advance_to(std::format_to(</div>
 <div class="line"><span class="lineno">   96</span>                format_context.out(), R<span class="stringliteral">&quot;(&quot;prediction_{}&quot;: {}, )&quot;, position(),</span></div>
@@ -220,24 +220,24 @@ template&lt;typename OutputIterator &gt; </div>
 <div class="line"><span class="lineno">  119</span><span class="stringliteral">    }</span></div>
 <div class="line"><span class="lineno">  120</span><span class="stringliteral"></span> </div>
 <div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<a class="code hl_concept" href="conceptfcarouge_1_1has__update__types.xhtml">fcarouge::has_update_types&lt;Filter&gt;</a>) {</div>
-<div class="line"><span class="lineno">  123</span>      <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a>&lt;</div>
-<div class="line"><span class="lineno">  124</span>          0, std::tuple_size_v&lt;typename Filter::update_types&gt;, 1&gt;(</div>
-<div class="line"><span class="lineno">  125</span>          [&amp;format_context, &amp;<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>](<span class="keyword">auto</span> position) {</div>
-<div class="line"><span class="lineno">  126</span>            format_context.advance_to(</div>
-<div class="line"><span class="lineno">  127</span>                std::format_to(format_context.out(), R<span class="stringliteral">&quot;(&quot;update_{}&quot;: {}, )&quot;,</span></div>
-<div class="line"><span class="lineno">  128</span><span class="stringliteral">                               position(), <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.template update&lt;position&gt;()));</span></div>
-<div class="line"><span class="lineno">  129</span><span class="stringliteral">          });</span></div>
-<div class="line"><span class="lineno">  130</span><span class="stringliteral">    }</span></div>
-<div class="line"><span class="lineno">  131</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">  132</span><span class="stringliteral">    format_context.advance_to(</span></div>
-<div class="line"><span class="lineno">  133</span><span class="stringliteral">        std::format_to(format_context.out(), R</span><span class="stringliteral">&quot;(&quot;x&quot;: {}, &quot;y&quot;: {}, &quot;z&quot;: {}}})&quot;,</span></div>
-<div class="line"><span class="lineno">  134</span><span class="stringliteral">                       <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x(), <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.y(), <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.z()));</span></div>
-<div class="line"><span class="lineno">  135</span><span class="stringliteral"></span> </div>
-<div class="line"><span class="lineno">  136</span><span class="stringliteral">    </span><span class="keywordflow">return</span> format_context.out();</div>
-<div class="line"><span class="lineno">  137</span>  }</div>
+<div class="line"><span class="lineno">  123</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::for_constexpr&lt;0, fcarouge::size&lt;typename Filter::update_types&gt;</a>,</div>
+<div class="line"><span class="lineno">  124</span>                              1&gt;([&amp;format_context, &amp;<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">  125</span>        format_context.advance_to(</div>
+<div class="line"><span class="lineno">  126</span>            std::format_to(format_context.out(), R<span class="stringliteral">&quot;(&quot;update_{}&quot;: {}, )&quot;,</span></div>
+<div class="line"><span class="lineno">  127</span><span class="stringliteral">                           position(), <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.template update&lt;position&gt;()));</span></div>
+<div class="line"><span class="lineno">  128</span><span class="stringliteral">      });</span></div>
+<div class="line"><span class="lineno">  129</span><span class="stringliteral">    }</span></div>
+<div class="line"><span class="lineno">  130</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  131</span><span class="stringliteral">    format_context.advance_to(</span></div>
+<div class="line"><span class="lineno">  132</span><span class="stringliteral">        std::format_to(format_context.out(), R</span><span class="stringliteral">&quot;(&quot;x&quot;: {}, &quot;y&quot;: {}, &quot;z&quot;: {}}})&quot;,</span></div>
+<div class="line"><span class="lineno">  133</span><span class="stringliteral">                       <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x(), <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.y(), <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.z()));</span></div>
+<div class="line"><span class="lineno">  134</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  135</span><span class="stringliteral">    </span><span class="keywordflow">return</span> format_context.out();</div>
+<div class="line"><span class="lineno">  136</span>  }</div>
 <div class="ttc" id="aconceptfcarouge_1_1has__output__uncertainty_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1has__output__uncertainty.xhtml">fcarouge::has_output_uncertainty</a></div><div class="ttdoc">Filter output uncertainty support concept.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00093">utility.hpp:93</a></div></div>
 <div class="ttc" id="aconceptfcarouge_1_1has__prediction__types_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1has__prediction__types.xhtml">fcarouge::has_prediction_types</a></div><div class="ttdoc">Filter prediction pack support concept.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00101">utility.hpp:101</a></div></div>
 <div class="ttc" id="aconceptfcarouge_1_1has__update__types_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1has__update__types.xhtml">fcarouge::has_update_types</a></div><div class="ttdoc">Filter update pack support concept.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00122">utility.hpp:122</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a2139da64fccd1f6d987797af8fcdd0ea"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00269">factory.hpp:269</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a5ad0022b969a210b7261d0158bc1dd7b"><div class="ttname"><a href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdoc">Compile-time for loop.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00223">utility.hpp:223</a></div></div>
 </div><!-- fragment -->
