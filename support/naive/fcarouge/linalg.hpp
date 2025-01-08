@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
-//! @todo Remove the dependency on `std::initializer_list` if possible?
+#include <cstddef>
 #include <initializer_list>
 
 namespace fcarouge {
@@ -61,7 +61,8 @@ namespace fcarouge {
 //! @tparam Type The matrix element type.
 //! @tparam Row The number of rows of the matrix.
 //! @tparam Column The number of columns of the matrix.
-template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
+template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
+struct matrix {
   inline constexpr matrix() = default;
 
   inline constexpr matrix(const matrix &other) = default;
@@ -99,7 +100,7 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
     }
   }
 
-  template <typename... Types, auto... Columns>
+  template <typename... Types, std::size_t... Columns>
   matrix(const Types (&...rows)[Columns])
     requires(std::conjunction_v<std::is_same<Type, Types>...> &&
              ((Columns == Column) && ... && true))
@@ -133,32 +134,37 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
     return data[0][0];
   }
 
-  [[nodiscard]] inline constexpr const Type &operator[](auto index) const
+  [[nodiscard]] inline constexpr const Type &operator[](std::size_t index) const
     requires(Row != 1 && Column == 1)
   {
     return data[index][0];
   }
 
-  [[nodiscard]] inline constexpr const Type &operator[](auto index) const
+  [[nodiscard]] inline constexpr const Type &operator[](std::size_t index) const
     requires(Row == 1)
   {
     return data[0][index];
   }
 
-  [[nodiscard]] inline constexpr const Type &operator()(auto index) const
+  [[nodiscard]] inline constexpr const Type &operator[](std::size_t i,
+                                                        std::size_t j) const {
+    return data[i][j];
+  }
+
+  [[nodiscard]] inline constexpr const Type &operator()(std::size_t index) const
     requires(Row != 1 && Column == 1)
   {
     return data[index][0];
   }
 
-  [[nodiscard]] inline constexpr const Type &operator()(auto index) const
+  [[nodiscard]] inline constexpr const Type &operator()(std::size_t index) const
     requires(Row == 1)
   {
     return data[0][index];
   }
 
-  [[nodiscard]] inline constexpr const Type &operator()(auto row,
-                                                        auto column) const {
+  [[nodiscard]] inline constexpr const Type &
+  operator()(std::size_t row, std::size_t column) const {
     return data[row][column];
   }
 
@@ -166,24 +172,24 @@ template <typename Type = double, auto Row = 1, auto Column = 1> struct matrix {
 };
 
 //! @brief Row vector.
-template <typename Type = double, auto Column = 1>
+template <typename Type = double, std::size_t Column = 1>
 using row_vector = matrix<Type, decltype(Column){1}, Column>;
 
 //! @brief Column vector.
-template <typename Type = double, auto Row = 1>
+template <typename Type = double, std::size_t Row = 1>
 using column_vector = matrix<Type, Row, decltype(Row){1}>;
 
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 struct evaluater<matrix<Type, Row, Column>> {
   [[nodiscard]] inline constexpr auto
   operator()() const -> matrix<Type, Row, Column>;
 };
 
 //! @brief Specialization of the transposer.
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 struct transposer<matrix<Type, Row, Column>> {
   [[nodiscard]] inline constexpr auto
   operator()(const matrix<Type, Row, Column> &value) const {
@@ -206,13 +212,13 @@ struct transposer<matrix<Type, Row, Column>> {
 
 template <typename Type> matrix(Type) -> matrix<Type, 1, 1>;
 
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 matrix(const Type (&)[Row][Column]) -> matrix<Type, Row, Column>;
 
-template <typename Type, auto Row>
+template <typename Type, std::size_t Row>
 matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>;
 
-template <typename... Types, auto... Columns>
+template <typename... Types, std::size_t... Columns>
   requires(std::conjunction_v<std::is_same<first<Types...>, Types>...> &&
            ((Columns == first_v<Columns>) && ... && true))
 matrix(const Types (&...rows)[Columns])
@@ -226,11 +232,11 @@ matrix(const Types (&...rows)[Columns])
 //! @{
 
 //! @brief The identity matrix naive specialization.
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 inline constexpr matrix<Type, Row, Column> identity<matrix<Type, Row, Column>>{
     [] {
       matrix<Type, Row, Column> result;
-      auto size{Row < Column ? Row : Column};
+      std::size_t size{Row < Column ? Row : Column};
 
       for (decltype(size) k{0}; k < size; ++k) {
         result.data[k][k] = 1.0;
@@ -240,12 +246,12 @@ inline constexpr matrix<Type, Row, Column> identity<matrix<Type, Row, Column>>{
     }()};
 
 //! @brief The zero matrix naive specialization.
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 inline constexpr matrix<Type, Row, Column> zero<matrix<Type, Row, Column>>{};
 
 //! @}
 
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 [[nodiscard]] inline constexpr bool
 operator==(const matrix<Type, Row, Column> &lhs,
            const matrix<Type, Row, Column> &rhs) {
@@ -259,7 +265,7 @@ operator==(const matrix<Type, Row, Column> &lhs,
   return true;
 }
 
-template <typename Type, auto Row, auto Column, auto Size>
+template <typename Type, std::size_t Row, std::size_t Column, std::size_t Size>
 [[nodiscard]] inline constexpr auto
 operator*(const matrix<Type, Row, Size> &lhs,
           const matrix<Type, Size, Column> &rhs) {
@@ -282,7 +288,7 @@ template <typename Type>
   return lhs * rhs.data[0][0];
 }
 
-template <typename Type, auto Column>
+template <typename Type, std::size_t Column>
 [[nodiscard]] inline constexpr auto operator*(arithmetic auto lhs,
                                               matrix<Type, 1, Column> rhs) {
   matrix<Type, 1, Column> result;
@@ -294,7 +300,7 @@ template <typename Type, auto Column>
   return result;
 }
 
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 inline constexpr auto &operator*=(matrix<Type, Row, Column> &lhs,
                                   arithmetic auto rhs) {
   for (decltype(Row) i{0}; i < Row; ++i) {
@@ -306,13 +312,13 @@ inline constexpr auto &operator*=(matrix<Type, Row, Column> &lhs,
   return lhs;
 }
 
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 [[nodiscard]] inline constexpr auto operator*(matrix<Type, Row, Column> lhs,
                                               arithmetic auto rhs) {
   return lhs *= rhs;
 }
 
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 [[nodiscard]] inline constexpr auto
 operator+(const matrix<Type, Row, Column> &lhs,
           const matrix<Type, Row, Column> &rhs) {
@@ -339,7 +345,7 @@ template <typename Type>
   return lhs.data[0][0] + rhs;
 }
 
-template <typename Type, auto Row, auto Column>
+template <typename Type, std::size_t Row, std::size_t Column>
 [[nodiscard]] inline constexpr auto
 operator-(const matrix<Type, Row, Column> &lhs,
           const matrix<Type, Row, Column> &rhs) {
@@ -360,7 +366,7 @@ template <typename Type>
   return lhs - rhs.data[0][0];
 }
 
-template <typename Type, auto Row>
+template <typename Type, std::size_t Row>
 [[nodiscard]] inline constexpr auto operator/(const matrix<Type, Row, 1> &lhs,
                                               arithmetic auto rhs) {
   matrix<Type, Row, 1> result{lhs};
