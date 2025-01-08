@@ -42,10 +42,10 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the assignment operator.
+//! @test Verifies the scalar multiplication operator.
 [[maybe_unused]] auto test{[] {
   matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
-  auto r{a * 2.0};
+  matrix<double, 2, 2> r{a * 2.0};
 
   assert(r(0, 0) == 2.0);
   assert(r(0, 1) == 4.0);

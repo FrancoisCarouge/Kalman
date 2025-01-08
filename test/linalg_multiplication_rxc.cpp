@@ -42,11 +42,13 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the assignment operator.
+//! @test Verifies the row by column multiplication operator.
+//!
+//! @todo Should this edge case decay to the underlying type?
 [[maybe_unused]] auto test{[] {
   matrix<double, 1, 2> a{1.0, 2.0};
   matrix<double, 2, 1> b{3.0, 4.0};
-  auto r{a * b};
+  matrix<double, 1, 1> r{a * b};
 
   assert(r(0, 0) == 11.0);
 
