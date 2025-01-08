@@ -193,7 +193,7 @@ requires (std::conjunction_v&lt;std::is_same&lt;<a class="el" href="namespacefca
 <tr class="separator:aaf4b255fa2bf4cfaadfd808e6fb5af83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e09c0fca4bfad49789dad31102f07d7" id="r_a4e09c0fca4bfad49789dad31102f07d7"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a4e09c0fca4bfad49789dad31102f07d7">matrix</a> (<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>(&amp;elements)[<a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>])</td></tr>
 <tr class="separator:a4e09c0fca4bfad49789dad31102f07d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bcb22d925538d8f2a9895364acf765c" id="r_a9bcb22d925538d8f2a9895364acf765c"><td class="memTemplParams" colspan="2">template&lt;typename... Types, auto... Columns&gt; <br />
+<tr class="memitem:a9bcb22d925538d8f2a9895364acf765c" id="r_a9bcb22d925538d8f2a9895364acf765c"><td class="memTemplParams" colspan="2">template&lt;typename... Types, std::size_t... Columns&gt; <br />
 requires (std::conjunction_v&lt;std::is_same&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Types</a>&gt;...&gt; &amp;&amp; ((<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Columns</a> == <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>) &amp;&amp; ... &amp;&amp; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">true</a>))</td></tr>
 <tr class="memitem:a9bcb22d925538d8f2a9895364acf765c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a9bcb22d925538d8f2a9895364acf765c">matrix</a> (<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Types</a>(&amp;...<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">rows</a>)[<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Columns</a>])</td></tr>
 <tr class="separator:a9bcb22d925538d8f2a9895364acf765c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,16 +201,18 @@ requires (std::conjunction_v&lt;std::is_same&lt;<a class="el" href="namespacefca
 <tr class="separator:ad22e3e64beb6efc1f067401f8e3ded62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8faf72ffb586809e220a72311f55e047" id="r_a8faf72ffb586809e220a72311f55e047"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a8faf72ffb586809e220a72311f55e047">explicit</a> (<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">false</a>) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">operator</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>() <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
 <tr class="separator:a8faf72ffb586809e220a72311f55e047"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa75ec1cadd7153f42dd1de9e7c26e8e8" id="r_aa75ec1cadd7153f42dd1de9e7c26e8e8"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#aa75ec1cadd7153f42dd1de9e7c26e8e8">operator[]</a> (<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> index) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
-<tr class="separator:aa75ec1cadd7153f42dd1de9e7c26e8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48534181438acd7b9655acdf51e9d766" id="r_a48534181438acd7b9655acdf51e9d766"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a48534181438acd7b9655acdf51e9d766">operator[]</a> (<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> index) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
-<tr class="separator:a48534181438acd7b9655acdf51e9d766"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c7de438f954f681784701e415e15f44" id="r_a5c7de438f954f681784701e415e15f44"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a5c7de438f954f681784701e415e15f44">operator()</a> (<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> index) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
-<tr class="separator:a5c7de438f954f681784701e415e15f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27105b3bf58c0859a8fc527d9d9e56d3" id="r_a27105b3bf58c0859a8fc527d9d9e56d3"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a27105b3bf58c0859a8fc527d9d9e56d3">operator()</a> (<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> index) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
-<tr class="separator:a27105b3bf58c0859a8fc527d9d9e56d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a274f6d5d7f01fea4439ac6588f3931a2" id="r_a274f6d5d7f01fea4439ac6588f3931a2"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a274f6d5d7f01fea4439ac6588f3931a2">operator()</a> (<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">column</a>) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
-<tr class="separator:a274f6d5d7f01fea4439ac6588f3931a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99eb58d234d0270067bddd2c8023dcd7" id="r_a99eb58d234d0270067bddd2c8023dcd7"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a99eb58d234d0270067bddd2c8023dcd7">operator[]</a> (std::size_t index) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
+<tr class="separator:a99eb58d234d0270067bddd2c8023dcd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac82c763cf820294dbefabae45f2d5c62" id="r_ac82c763cf820294dbefabae45f2d5c62"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#ac82c763cf820294dbefabae45f2d5c62">operator[]</a> (std::size_t index) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
+<tr class="separator:ac82c763cf820294dbefabae45f2d5c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2be286ddb7a5dc44598620ec195d6159" id="r_a2be286ddb7a5dc44598620ec195d6159"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a2be286ddb7a5dc44598620ec195d6159">operator[]</a> (std::size_t i, std::size_t <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
+<tr class="separator:a2be286ddb7a5dc44598620ec195d6159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d983f86885415b64f4fe4f1ee8cc834" id="r_a7d983f86885415b64f4fe4f1ee8cc834"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a7d983f86885415b64f4fe4f1ee8cc834">operator()</a> (std::size_t index) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
+<tr class="separator:a7d983f86885415b64f4fe4f1ee8cc834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a749d13bdad7684cf3643bddf85956104" id="r_a749d13bdad7684cf3643bddf85956104"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a749d13bdad7684cf3643bddf85956104">operator()</a> (std::size_t index) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
+<tr class="separator:a749d13bdad7684cf3643bddf85956104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62283b20cf199b43935c56f7b0efca21" id="r_a62283b20cf199b43935c56f7b0efca21"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml#a62283b20cf199b43935c56f7b0efca21">operator()</a> (std::size_t <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>, std::size_t <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">column</a>) <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a></td></tr>
+<tr class="separator:a62283b20cf199b43935c56f7b0efca21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -321,7 +323,7 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo:</a></b></dt><dd>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo:</a></b></dt><dd>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00118">118</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  119</span>      : <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">genie</a>{[]() -&gt; std::generator&lt;Type&gt; {</div>
@@ -771,9 +773,9 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>      : <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>{{elements...}} {}</div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a24baa2c48b4606232abeab530ec019ce"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">fcarouge::matrix::data</a></div><div class="ttdeci">Type data[Row][Column]</div><div class="ttdef"><b>Definition</b> <a href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">linalg.hpp:165</a></div></div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00076">76</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>      : <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>{{elements...}} {}</div>
+<div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a24baa2c48b4606232abeab530ec019ce"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">fcarouge::matrix::data</a></div><div class="ttdeci">Type data[Row][Column]</div><div class="ttdef"><b>Definition</b> <a href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">linalg.hpp:171</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -803,13 +805,13 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00079">79</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   81</span>  {</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>) i{0};</div>
-<div class="line"><span class="lineno">   83</span>    ([&amp;] { <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i++][0] = elements; }(), ...);</div>
-<div class="line"><span class="lineno">   84</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00080">80</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>  {</div>
+<div class="line"><span class="lineno">   83</span>    <span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>) i{0};</div>
+<div class="line"><span class="lineno">   84</span>    ([&amp;] { <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i++][0] = elements; }(), ...);</div>
+<div class="line"><span class="lineno">   85</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Row</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Row</a>.</p>
 
 </div>
 </div>
@@ -839,14 +841,14 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00086">86</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>  {</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>) <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>{0}; <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a> &lt; <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>; ++<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>) {</div>
-<div class="line"><span class="lineno">   90</span>      <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>] = elements[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>];</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
-<div class="line"><span class="lineno">   92</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00087">87</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   89</span>  {</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>) <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>{0}; <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a> &lt; <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>; ++<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>) {</div>
+<div class="line"><span class="lineno">   91</span>      <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>] = elements[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>];</div>
+<div class="line"><span class="lineno">   92</span>    }</div>
+<div class="line"><span class="lineno">   93</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Column</a>, and <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Column</a>, and <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -876,14 +878,14 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00094">94</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   96</span>  {</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>) i{0}; i &lt; <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>; ++i) {</div>
-<div class="line"><span class="lineno">   98</span>      <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][0] = elements[i];</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00095">95</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>  {</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>) i{0}; i &lt; <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>; ++i) {</div>
+<div class="line"><span class="lineno">   99</span>      <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][0] = elements[i];</div>
+<div class="line"><span class="lineno">  100</span>    }</div>
+<div class="line"><span class="lineno">  101</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Row</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Row</a>.</p>
 
 </div>
 </div>
@@ -895,7 +897,7 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 <div class="memtemplate">
 template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>  = double, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Row = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Column = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">bool</a> Copyable = false&gt; </div>
 <div class="memtemplate">
-template&lt;typename... Types, auto... Columns&gt; <br />
+template&lt;typename... Types, std::size_t... Columns&gt; <br />
 requires (std::conjunction_v&lt;std::is_same&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Types</a>&gt;...&gt; &amp;&amp; ((<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Columns</a> == <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>) &amp;&amp; ... &amp;&amp; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">true</a>))</div>
 <table class="mlabels">
   <tr>
@@ -916,20 +918,20 @@ requires (std::conjunction_v&lt;std::is_same&lt;<a class="el" href="namespacefca
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00103">103</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>  {</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>) i{0};</div>
-<div class="line"><span class="lineno">  108</span>    (</div>
-<div class="line"><span class="lineno">  109</span>        [&amp;](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>) {</div>
-<div class="line"><span class="lineno">  110</span>          <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>) <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>{0}; <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a> &lt; <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>; ++<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>) {</div>
-<div class="line"><span class="lineno">  111</span>            <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>] = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>];</div>
-<div class="line"><span class="lineno">  112</span>          }</div>
-<div class="line"><span class="lineno">  113</span>          ++i;</div>
-<div class="line"><span class="lineno">  114</span>        }(<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">rows</a>),</div>
-<div class="line"><span class="lineno">  115</span>        ...);</div>
-<div class="line"><span class="lineno">  116</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00104">104</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  107</span>  {</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>) i{0};</div>
+<div class="line"><span class="lineno">  109</span>    (</div>
+<div class="line"><span class="lineno">  110</span>        [&amp;](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>) {</div>
+<div class="line"><span class="lineno">  111</span>          <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>) <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>{0}; <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a> &lt; <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>; ++<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>) {</div>
+<div class="line"><span class="lineno">  112</span>            <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>] = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>];</div>
+<div class="line"><span class="lineno">  113</span>          }</div>
+<div class="line"><span class="lineno">  114</span>          ++i;</div>
+<div class="line"><span class="lineno">  115</span>        }(<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">rows</a>),</div>
+<div class="line"><span class="lineno">  116</span>        ...);</div>
+<div class="line"><span class="lineno">  117</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Column</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Row</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Column</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Row</a>.</p>
 
 </div>
 </div>
@@ -959,19 +961,19 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00118">118</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>                                                           {</div>
-<div class="line"><span class="lineno">  120</span> </div>
-<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>) i{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a> : <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">rows</a>) {</div>
-<div class="line"><span class="lineno">  122</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>) <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">element</a> : <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>) {</div>
-<div class="line"><span class="lineno">  123</span>        <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>] = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">element</a>;</div>
-<div class="line"><span class="lineno">  124</span>        ++<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>;</div>
-<div class="line"><span class="lineno">  125</span>      }</div>
-<div class="line"><span class="lineno">  126</span>      ++i;</div>
-<div class="line"><span class="lineno">  127</span>    }</div>
-<div class="line"><span class="lineno">  128</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00119">119</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                           {</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>) i{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a> : <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">rows</a>) {</div>
+<div class="line"><span class="lineno">  123</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(<a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>) <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">element</a> : <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>) {</div>
+<div class="line"><span class="lineno">  124</span>        <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>] = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">element</a>;</div>
+<div class="line"><span class="lineno">  125</span>        ++<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>;</div>
+<div class="line"><span class="lineno">  126</span>      }</div>
+<div class="line"><span class="lineno">  127</span>      ++i;</div>
+<div class="line"><span class="lineno">  128</span>    }</div>
+<div class="line"><span class="lineno">  129</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Column</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Row</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Column</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::Row</a>.</p>
 
 </div>
 </div>
@@ -1236,12 +1238,12 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00130">130</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  132</span>  {</div>
-<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0];</div>
-<div class="line"><span class="lineno">  134</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00131">131</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>  {</div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][0];</div>
+<div class="line"><span class="lineno">  135</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -1339,78 +1341,8 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 
 </div>
 </div>
-<a id="a5c7de438f954f681784701e415e15f44" name="a5c7de438f954f681784701e415e15f44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c7de438f954f681784701e415e15f44">&#9670;&#160;</a></span>operator()() <span class="overload">[3/6]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>  = double, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Row = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Column = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">bool</a> Copyable = false&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp; <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a>&lt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Copyable</a> &gt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">::operator</a>() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a>&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00148">148</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  150</span>  {</div>
-<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[index][0];</div>
-<div class="line"><span class="lineno">  152</span>  }</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
-
-</div>
-</div>
-<a id="a27105b3bf58c0859a8fc527d9d9e56d3" name="a27105b3bf58c0859a8fc527d9d9e56d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27105b3bf58c0859a8fc527d9d9e56d3">&#9670;&#160;</a></span>operator()() <span class="overload">[4/6]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>  = double, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Row = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Column = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">bool</a> Copyable = false&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp; <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a>&lt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Copyable</a> &gt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">::operator</a>() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a>&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00154">154</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  156</span>  {</div>
-<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][index];</div>
-<div class="line"><span class="lineno">  158</span>  }</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
-
-</div>
-</div>
 <a id="affe6fae4cb1cfbfb7a46b135e835361f" name="affe6fae4cb1cfbfb7a46b135e835361f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affe6fae4cb1cfbfb7a46b135e835361f">&#9670;&#160;</a></span>operator()() <span class="overload">[5/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#affe6fae4cb1cfbfb7a46b135e835361f">&#9670;&#160;</a></span>operator()() <span class="overload">[3/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1444,7 +1376,7 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo:</a></b></dt><dd>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo:</a></b></dt><dd>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00260">260</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  260</span>                                                                              {</div>
@@ -1467,8 +1399,8 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 
 </div>
 </div>
-<a id="a274f6d5d7f01fea4439ac6588f3931a2" name="a274f6d5d7f01fea4439ac6588f3931a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a274f6d5d7f01fea4439ac6588f3931a2">&#9670;&#160;</a></span>operator()() <span class="overload">[6/6]</span></h2>
+<a id="a7d983f86885415b64f4fe4f1ee8cc834" name="a7d983f86885415b64f4fe4f1ee8cc834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d983f86885415b64f4fe4f1ee8cc834">&#9670;&#160;</a></span>operator()() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1481,13 +1413,83 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
         <tr>
           <td class="memname">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp; <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a>&lt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Copyable</a> &gt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">::operator</a>() </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a>&#160;</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00154">154</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>  {</div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[index][0];</div>
+<div class="line"><span class="lineno">  158</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+
+</div>
+</div>
+<a id="a749d13bdad7684cf3643bddf85956104" name="a749d13bdad7684cf3643bddf85956104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a749d13bdad7684cf3643bddf85956104">&#9670;&#160;</a></span>operator()() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>  = double, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Row = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Column = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">bool</a> Copyable = false&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp; <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a>&lt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Copyable</a> &gt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00160">160</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  162</span>  {</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][index];</div>
+<div class="line"><span class="lineno">  164</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+
+</div>
+</div>
+<a id="a62283b20cf199b43935c56f7b0efca21" name="a62283b20cf199b43935c56f7b0efca21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62283b20cf199b43935c56f7b0efca21">&#9670;&#160;</a></span>operator()() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>  = double, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Row = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Column = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">bool</a> Copyable = false&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp; <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a>&lt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Copyable</a> &gt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">::operator</a>() </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>row</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a>&#160;</td>
+          <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>column</em>&#160;</td>
         </tr>
         <tr>
@@ -1503,12 +1505,12 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00160">160</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  161</span>                                                                           {</div>
-<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">column</a>];</div>
-<div class="line"><span class="lineno">  163</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00167">167</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>                                                    {</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">row</a>][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">column</a>];</div>
+<div class="line"><span class="lineno">  169</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -1723,7 +1725,7 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </div>
 </div>
 <a id="acb50b9f741eb141a526e0271ea98d6c2" name="acb50b9f741eb141a526e0271ea98d6c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb50b9f741eb141a526e0271ea98d6c2">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acb50b9f741eb141a526e0271ea98d6c2">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1769,8 +1771,8 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 
 </div>
 </div>
-<a id="aa75ec1cadd7153f42dd1de9e7c26e8e8" name="aa75ec1cadd7153f42dd1de9e7c26e8e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa75ec1cadd7153f42dd1de9e7c26e8e8">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/3]</span></h2>
+<a id="a2be286ddb7a5dc44598620ec195d6159" name="a2be286ddb7a5dc44598620ec195d6159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2be286ddb7a5dc44598620ec195d6159">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1783,9 +1785,19 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
         <tr>
           <td class="memname">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp; <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a>&lt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Copyable</a> &gt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">::operator</a>[] </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a>&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -1795,17 +1807,17 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00136">136</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  138</span>  {</div>
-<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[index][0];</div>
-<div class="line"><span class="lineno">  140</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00149">149</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>                                                                           {</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[i][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>];</div>
+<div class="line"><span class="lineno">  152</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
-<a id="a48534181438acd7b9655acdf51e9d766" name="a48534181438acd7b9655acdf51e9d766"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48534181438acd7b9655acdf51e9d766">&#9670;&#160;</a></span>operator[]() <span class="overload">[3/3]</span></h2>
+<a id="a99eb58d234d0270067bddd2c8023dcd7" name="a99eb58d234d0270067bddd2c8023dcd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99eb58d234d0270067bddd2c8023dcd7">&#9670;&#160;</a></span>operator[]() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1818,7 +1830,7 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
         <tr>
           <td class="memname">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp; <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a>&lt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Copyable</a> &gt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">::operator</a>[] </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a>&#160;</td>
+          <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1830,12 +1842,47 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00142">142</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>  {</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][index];</div>
-<div class="line"><span class="lineno">  146</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00137">137</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  139</span>  {</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[index][0];</div>
+<div class="line"><span class="lineno">  141</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
+
+</div>
+</div>
+<a id="ac82c763cf820294dbefabae45f2d5c62" name="ac82c763cf820294dbefabae45f2d5c62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac82c763cf820294dbefabae45f2d5c62">&#9670;&#160;</a></span>operator[]() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>  = double, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Row = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Column = 1, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">bool</a> Copyable = false&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">const</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> &amp; <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a>&lt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136">Row</a>, <a class="el" href="structfcarouge_1_1matrix.xhtml#ab24112c8116a37f1feff0dbbe6ac9178">Column</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Copyable</a> &gt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">::operator</a>[] </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00143">143</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  145</span>  {</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce">data</a>[0][index];</div>
+<div class="line"><span class="lineno">  147</span>  }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -1856,7 +1903,7 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 
 <p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">196</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00118">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00103">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00118">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, and <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00086">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00118">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00104">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00119">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, and <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00087">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>.</p>
 
 </div>
 </div>
@@ -1874,10 +1921,10 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00165">165</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  165</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00171">171</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  171</span>{};</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00130">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::explicit()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00079">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00103">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00118">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00086">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00094">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00148">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00160">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()()</a>, and <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00136">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator[]()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00131">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::explicit()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00080">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00104">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00119">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00087">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00095">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00154">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00167">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00149">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator[]()</a>, and <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00137">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator[]()</a>.</p>
 
 </div>
 </div>
@@ -1923,7 +1970,7 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 
 <p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00196">196</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00118">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00079">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00103">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00118">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, and <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00094">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00118">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00080">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00104">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00119">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>, and <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00095">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix()</a>.</p>
 
 </div>
 </div>

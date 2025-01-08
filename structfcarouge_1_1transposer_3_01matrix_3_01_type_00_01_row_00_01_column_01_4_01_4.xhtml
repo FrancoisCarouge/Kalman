@@ -118,10 +118,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abd359ef8e87967a95fbebbd7ccb6fa03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Row, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Column&gt;<br />
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a>, std::size_t Row, std::size_t Column&gt;<br />
 struct fcarouge::transposer&lt; matrix&lt; Type, Row, Column &gt; &gt;</div><p>Specialization of the transposer. </p>
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00187">187</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00193">193</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="abd359ef8e87967a95fbebbd7ccb6fa03" name="abd359ef8e87967a95fbebbd7ccb6fa03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abd359ef8e87967a95fbebbd7ccb6fa03">&#9670;&#160;</a></span>operator()()</h2>
@@ -129,7 +129,7 @@ struct fcarouge::transposer&lt; matrix&lt; Type, Row, Column &gt; &gt;</div><p>S
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> , <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Row, <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">auto</a> Column&gt; </div>
+template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">typename</a> <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">Type</a> , std::size_t Row, std::size_t Column&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -149,18 +149,18 @@ template&lt;<a class="el" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00189">189</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  189</span>                                                           {</div>
-<div class="line"><span class="lineno">  190</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;Type, Column, Row&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">result</a>;</div>
-<div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">  193</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>{0}; <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a> &lt; Column; ++<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>) {</div>
-<div class="line"><span class="lineno">  194</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">result</a>.data[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>][i] = value.data[i][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>];</div>
-<div class="line"><span class="lineno">  195</span>      }</div>
-<div class="line"><span class="lineno">  196</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml#l00195">195</a> of file <a class="el" href="naive_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>                                                           {</div>
+<div class="line"><span class="lineno">  196</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;Type, Column, Row&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">result</a>;</div>
 <div class="line"><span class="lineno">  197</span> </div>
-<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">result</a>;</div>
-<div class="line"><span class="lineno">  199</span>  }</div>
+<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  199</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>{0}; <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a> &lt; Column; ++<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>) {</div>
+<div class="line"><span class="lineno">  200</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">result</a>.data[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>][i] = value.data[i][<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">j</a>];</div>
+<div class="line"><span class="lineno">  201</span>      }</div>
+<div class="line"><span class="lineno">  202</span>    }</div>
+<div class="line"><span class="lineno">  203</span> </div>
+<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">result</a>;</div>
+<div class="line"><span class="lineno">  205</span>  }</div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a2139da64fccd1f6d987797af8fcdd0ea"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 </div><!-- fragment -->
 </div>

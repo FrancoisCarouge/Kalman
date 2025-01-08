@@ -97,8 +97,6 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Namespace <a class="el" href="namespacefcarouge.xhtml">fcarouge</a>  </dt>
-<dd><a class="anchor" id="_todo000032"></a>Remove the dependency on <code>std::initializer_list</code> if possible?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#af940cca4b42248e5ef4460d697c2bfb3">fcarouge::identity&lt; Type &gt;</a>  </dt>
 <dd><a class="anchor" id="_todo000031"></a>The identity with units is no longer the identity? Review the idea.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a>  (Arguments... arguments) -&gt; kalman&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#af0c315e1078601955b31e5c902650361">internal::deduce_filter&lt; Arguments... &gt;</a> &gt;</dt>
@@ -167,15 +165,15 @@ $(document).ready(function(){initNavTree('todo.xhtml',''); initResizable(); });
 <p class="enddd">Remove unecessary empty paramaters when MSVC supports lambda without them.  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
-<dd><a class="anchor" id="_todo000033"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
+<dd><a class="anchor" id="_todo000032"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000034"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000033"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>{<a class="el" href="linalg__multiplication__rxc_8cpp.xhtml">linalg_multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#adfa3a8b5be7eb7ee4bc12ebff7d86a8f">fcarouge::test::anonymous_namespace{linalg_multiplication_rxc.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000035"></a>Should this edge case decay to the underlying type?  </dd>
+<dd><a class="anchor" id="_todo000034"></a>Should this edge case decay to the underlying type?  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml#a887dd3f3f177feadd1ca42785885897f">std::formatter&lt; Filter, Char &gt;::format</a>  (const Filter &amp;filter, std::basic_format_context&lt; OutputIterator, Char &gt; &amp;format_context) const -&gt; OutputIterator</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000003"></a>Inconsistent usage of internal? </p>
-<p class="interdd"><a class="anchor" id="_todo000002"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
-<p class="enddd"><a class="anchor" id="_todo000001"></a>P2585 may be useful in simplifying and standardizing the support. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000001"></a>P2585 may be useful in simplifying and standardizing the support. </p>
+<p class="interdd"><a class="anchor" id="_todo000003"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
+<p class="enddd"><a class="anchor" id="_todo000004"></a>Inconsistent usage of internal? </p>
 </dd>
 </dl>
 </div></div><!-- contents -->
