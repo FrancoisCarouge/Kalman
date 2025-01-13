@@ -42,6 +42,8 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 #include <format>
 
+#include <print> //////////////////////////////////////////////////////////////
+
 namespace fcarouge::test {
 namespace {
 template <auto Size> using vector = column_vector<double, Size>;
@@ -50,6 +52,8 @@ template <auto Size> using vector = column_vector<double, Size>;
 //! additional arguments.
 [[maybe_unused]] auto test{[] {
   kalman filter{state{vector<1>{0.}}, output<vector<4>>, input<vector<3>>};
+
+  std::println("{}", filter); /////////////////////////////////////////////////
 
   assert(std::format("{}", filter) ==
          R"({"f": 1,)"

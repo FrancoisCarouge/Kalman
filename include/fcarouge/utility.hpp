@@ -249,15 +249,15 @@ inline constexpr Type identity{internal::not_implemented<Type>{
 
 //! @brief The singleton identity matrix specialization.
 template <arithmetic Arithmetic>
-inline constexpr Arithmetic identity<Arithmetic>{1};
+inline constexpr auto identity<Arithmetic>{Arithmetic{1}};
 
 template <typename Type>
   requires requires { Type::Identity(); }
-inline auto identity<Type>{Type::Identity()};
+inline evaluate<Type> identity<Type>{evaluate<Type>{evaluate<Type>::Identity()}};
 
 template <typename Type>
   requires requires { Type::identity(); }
-inline auto identity<Type>{Type::identity()};
+inline evaluate<Type> identity<Type>{evaluate<Type>{evaluate<Type>::identity()}};
 
 //! @brief The zero matrix.
 //!
@@ -268,15 +268,15 @@ inline constexpr Type zero{internal::not_implemented<Type>{
 
 //! @brief The singleton zero matrix specialization.
 template <arithmetic Arithmetic>
-inline constexpr Arithmetic zero<Arithmetic>{0};
+inline constexpr auto zero<Arithmetic>{Arithmetic{0}};
 
 template <typename Type>
   requires requires { Type::Zero(); }
-inline auto zero<Type>{Type::Zero()};
+inline evaluate<Type> zero<Type>{evaluate<Type>{evaluate<Type>::Zero()}};
 
 template <typename Type>
   requires requires { Type::zero(); }
-inline auto zero<Type>{Type::zero()};
+inline evaluate<Type> zero<Type>{evaluate<Type>{evaluate<Type>::zero()}};
 
 //! @}
 
