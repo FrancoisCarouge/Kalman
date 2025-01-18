@@ -43,7 +43,7 @@ jobs:
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '*/test/*' --output-file base.info
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '/usr/*' --output-file base.info
     - name: 'Test'
-      run: ctest --test-dir 'build' --timeout 10 --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --timeout 100 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Coverage: Test'
       run: |
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --capture --directory . --output-file test.info

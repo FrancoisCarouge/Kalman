@@ -37,6 +37,9 @@ jobs:
         egress-policy: audit
     - name: 'Checkout'
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+    - name: 'Install: Gnuplot'
+      if: ${{ matrix.os == 'ubuntu-24.04' }}
+      run: sudo apt update && sudo apt install -y gnuplot
     - name: 'Install: Clang 20'
       if: ${{ matrix.cxx == 'clang++-20' }}
       run: sudo apt update && sudo apt install -y clang-20 clang-tools-20
@@ -48,6 +51,11 @@ jobs:
         sudo ./llvm.sh 21 all
     - name: 'Install: Latest CMake'
       uses: ssrobins/install-cmake@c54bb968401dd4ff9e6c9d697df5b843ee3b783b # v1.0.0
+    - name: 'Virtual Display'
+      run: | 
+        xvfb :1 -screen 0 1600x1200x16 &
+      env:
+        DISPLAY: ':1.0'
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
@@ -56,7 +64,7 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 10 --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 100 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Install'
       run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
     - name: 'Package'
