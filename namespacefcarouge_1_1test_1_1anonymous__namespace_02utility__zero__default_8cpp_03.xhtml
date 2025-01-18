@@ -117,7 +117,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  <span class="keyword">auto</span> z{zero&lt;&gt;};</div>
+<div class="line">  [[maybe_unused]] <span class="keyword">auto</span> z{zero&lt;&gt;};</div>
 <div class="line"> </div>
 <div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(z == 0.0);</div>
 <div class="line">  <span class="keyword">static_assert</span>(std::is_same_v&lt;<span class="keyword">decltype</span>(z), <span class="keywordtype">double</span>&gt;);</div>
@@ -129,7 +129,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="utility__zero__default_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="utility__zero__default_8cpp_source.xhtml">utility_zero_default.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   47</span>                          {[] {</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">auto</span> z{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">zero&lt;&gt;</a>};</div>
+<div class="line"><span class="lineno">   48</span>  [[<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">maybe_unused</a>]] <span class="keyword">auto</span> z{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">zero&lt;&gt;</a>};</div>
 <div class="line"><span class="lineno">   49</span> </div>
 <div class="line"><span class="lineno">   50</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">assert</a>(z == 0.0);</div>
 <div class="line"><span class="lineno">   51</span>  <span class="keyword">static_assert</span>(std::is_same_v&lt;<span class="keyword">decltype</span>(z), <span class="keywordtype">double</span>&gt;);</div>
