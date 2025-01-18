@@ -44,7 +44,7 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --timeout 2 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Install'
       run: cmake --install 'build' --prefix 'install' --verbose
     - name: 'Package'

@@ -36,4 +36,4 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --timeout 5 --tests-regex 'kalman' --verbose --parallel 4
