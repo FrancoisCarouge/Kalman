@@ -9,5 +9,7 @@ var searchData=
   ['update_5flinalg_5fxx0_2ecpp_6',['update_linalg_xx0.cpp',['../update__linalg__xx0_8cpp.xhtml',1,'']]],
   ['update_5ftypes_7',['update_types',['../namespacefcarouge_1_1internal.xhtml#a02c6376394f58d7070910521c269ee12',1,'fcarouge::internal']]],
   ['use_8',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#ad51507654adfa608dfb66f37ab39f622',1,'LICENSE.txt']]],
-  ['utility_2ehpp_9',['utility.hpp',['../internal_2utility_8hpp.xhtml',1,'(Global Namespace)'],['../utility_8hpp.xhtml',1,'(Global Namespace)']]]
+  ['utility_2ehpp_9',['utility.hpp',['../internal_2utility_8hpp.xhtml',1,'(Global Namespace)'],['../utility_8hpp.xhtml',1,'(Global Namespace)']]],
+  ['utility_5fidentity_5fdefault_2ecpp_10',['utility_identity_default.cpp',['../utility__identity__default_8cpp.xhtml',1,'']]],
+  ['utility_5fzero_5fdefault_2ecpp_11',['utility_zero_default.cpp',['../utility__zero__default_8cpp.xhtml',1,'']]]
 ];
