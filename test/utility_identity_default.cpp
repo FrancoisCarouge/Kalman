@@ -36,19 +36,20 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#include "fcarouge/utility.hpp"
 
 #include <cassert>
 #include <type_traits>
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the 1x1 zero matrix deduced default value is a null double.
+//! @test Verifies the 1x1 identity matrix deduced default value is a unit
+//! double.
 [[maybe_unused]] auto test{[] {
-  auto z{zero<>};
+  auto i{identity<>};
 
-  assert(z == 0.0);
-  static_assert(std::is_same_v<decltype(z), double>);
+  assert(i == 1.0);
+  static_assert(std::is_same_v<decltype(i), double>);
 
   return 0;
 }()};
