@@ -39,13 +39,6 @@ For more information, please refer to <https://unlicense.org> ]]
 include(FetchContent)
 
 FetchContent_Declare(
-  fmt
-  GIT_REPOSITORY "https://github.com/fmtlib/fmt"
-  GIT_SHALLOW TRUE
-  FIND_PACKAGE_ARGS NAMES fmt)
-FetchContent_MakeAvailable(fmt)
-
-FetchContent_Declare(
   gsl-lite
   GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
   GIT_SHALLOW TRUE
