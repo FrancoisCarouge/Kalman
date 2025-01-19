@@ -50,13 +50,13 @@ namespace {
   assert(filter.f() == 1);
 
   {
-    const auto f{2.};
+    const double f{2.};
     filter.f(f);
     assert(filter.f() == 2);
   }
 
   {
-    const auto f{3.};
+    const double f{3.};
     filter.f(f);
     assert(filter.f() == 3);
   }
