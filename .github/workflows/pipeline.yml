@@ -23,8 +23,8 @@ jobs:
         include:
         - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Unix Makefiles', packages: 'clang-18'  }
         - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', packages: 'g++-14'  }
-        - { os: 'windows-latest', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Debug' }
-        - { os: 'windows-latest', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Release' }
+        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Debug' }
+        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     steps:
@@ -44,10 +44,8 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --timeout 2 --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 2 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Install'
-      run: cmake --install 'build' --prefix 'install' --verbose
+      run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
     - name: 'Package'
       run: cmake --build 'build' --target 'package' --verbose --parallel 4
-    - name: 'Package Source'
-      run: cmake --build 'build' --target 'package_source' --verbose --parallel 4
