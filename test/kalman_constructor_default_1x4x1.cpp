@@ -49,13 +49,12 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single state and input edge case.
 [[maybe_unused]] auto test{[] {
+  const matrix<4, 4> i4x4{identity<matrix<4, 4>>};
+  const matrix<4, 1> i4x1{identity<matrix<4, 1>>};
+  const matrix<1, 4> i1x4{identity<matrix<1, 4>>};
+  const vector<4> z4x1{zero<vector<4>>};
+  const matrix<4, 4> z4x4{zero<matrix<4, 4>>};
   kalman filter{state{0.0}, output<vector<4>>, input<double>};
-
-  const auto i4x4{identity<matrix<4, 4>>};
-  const auto i4x1{identity<matrix<4, 1>>};
-  const auto i1x4{identity<matrix<1, 4>>};
-  const auto z4x1{zero<vector<4>>};
-  const auto z4x4{zero<matrix<4, 4>>};
 
   assert(filter.f() == 1);
   assert(filter.g() == 1);

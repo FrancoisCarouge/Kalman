@@ -49,14 +49,13 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! no input.
 [[maybe_unused]] auto test{[] {
+  const matrix<4, 4> i4x4{identity<matrix<4, 4>>};
+  const matrix<5, 4> i5x4{identity<matrix<5, 4>>};
+  const matrix<5, 5> i5x5{identity<matrix<5, 5>>};
+  const vector<4> z4x1{zero<vector<4>>};
+  const matrix<4, 4> z4x4{zero<matrix<4, 4>>};
+  const vector<5> z5x1{zero<vector<5>>};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>};
-
-  const auto i4x4{identity<matrix<4, 4>>};
-  const auto i5x4{identity<matrix<5, 4>>};
-  const auto i5x5{identity<matrix<5, 5>>};
-  const auto z4x1{zero<vector<4>>};
-  const auto z4x4{zero<matrix<4, 4>>};
-  const auto z5x1{zero<vector<5>>};
 
   assert(filter.f() == i5x5);
   assert(filter.k() == i5x4);
