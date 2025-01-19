@@ -51,7 +51,6 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 [[maybe_unused]] auto test{[] {
   const auto i5x5{identity<matrix<5, 5>>};
   const auto z5x5{zero<matrix<5, 5>>};
-  const vector<3> z3{zero<vector<3>>};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>, update_types<double, float, int>,
                 prediction_types<int, float, double>};
