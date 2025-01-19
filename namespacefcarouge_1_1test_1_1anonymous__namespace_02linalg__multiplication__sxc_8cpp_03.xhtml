@@ -117,9 +117,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  matrix&lt;double, 2, 2&gt; a{{1.0, 2.0}, {3.0, 4.0}};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 2, 1&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">b</a>{3.0, 4.0};</div>
-<div class="line">  <span class="keyword">auto</span> r{a * b};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;double, 2, 2&gt; a{{1.0, 2.0}, {3.0, 4.0}};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 2, 1&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">b</a>{3.0, 4.0};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;double, 2, 1&gt; r{a * b};</div>
 <div class="line"> </div>
 <div class="line">  assert(r(0, 0) == 11.0);</div>
 <div class="line">  assert(r(1, 0) == 25.0);</div>
@@ -131,9 +131,9 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="linalg__multiplication__sxc_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="linalg__multiplication__sxc_8cpp_source.xhtml">linalg_multiplication_sxc.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   46</span>                          {[] {</div>
-<div class="line"><span class="lineno">   47</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 2, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">a</a>{{1.0, 2.0}, {3.0, 4.0}};</div>
-<div class="line"><span class="lineno">   48</span>  matrix&lt;double, 2, 1&gt; b{3.0, 4.0};</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keyword">auto</span> r{a * b};</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 2, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">a</a>{{1.0, 2.0}, {3.0, 4.0}};</div>
+<div class="line"><span class="lineno">   48</span>  <span class="keyword">const</span> matrix&lt;double, 2, 1&gt; b{3.0, 4.0};</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> matrix&lt;double, 2, 1&gt; r{a * b};</div>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>  assert(r(0, 0) == 11.0);</div>
 <div class="line"><span class="lineno">   52</span>  assert(r(1, 0) == 25.0);</div>
