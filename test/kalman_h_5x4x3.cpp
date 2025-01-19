@@ -49,8 +49,8 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies the observation transition matrix H management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto test{[] {
-  const auto i4x5{identity<matrix<4, 5>>};
-  const auto z4x5{zero<matrix<4, 5>>};
+  const matrix<4, 5> i4x5{identity<matrix<4, 5>>};
+  const matrix<4, 5> z4x5{zero<matrix<4, 5>>};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>, update_types<double, float, int>,
                 prediction_types<int, float, double>};
@@ -58,13 +58,13 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   assert(filter.h() == i4x5);
 
   {
-    const auto h{z4x5};
+    const matrix<4, 5> h{z4x5};
     filter.h(h);
     assert(filter.h() == z4x5);
   }
 
   {
-    const auto h{i4x5};
+    const matrix<4, 5> h{i4x5};
     filter.h(h);
     assert(filter.h() == i4x5);
   }

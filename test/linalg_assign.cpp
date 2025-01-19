@@ -44,8 +44,8 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the assignment operator.
 [[maybe_unused]] auto test{[] {
-  auto m{identity<matrix<double, 5, 5>>};
-  auto c = m;
+  const matrix<double, 5, 5> m{identity<matrix<double, 5, 5>>};
+  const matrix<double, 5, 5> c = m;
 
   assert((c == identity<matrix<double, 5, 5>>));
 

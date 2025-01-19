@@ -44,7 +44,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the zero matrices values are null.
 [[maybe_unused]] auto test{[] {
-  auto z{zero<matrix<double, 3, 3>>};
+  const matrix<double, 3, 3> z{zero<matrix<double, 3, 3>>};
 
   assert(z(0, 0) == 0.0);
   assert(z(0, 1) == 0.0);
