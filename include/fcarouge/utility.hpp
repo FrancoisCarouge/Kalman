@@ -253,11 +253,11 @@ inline constexpr Arithmetic identity<Arithmetic>{1};
 
 template <typename Type>
   requires requires { Type::Identity(); }
-inline auto identity<Type>{Type::Identity()};
+inline Type identity<Type>{Type::Identity()};
 
 template <typename Type>
   requires requires { Type::identity(); }
-inline auto identity<Type>{Type::identity()};
+inline Type identity<Type>{Type::identity()};
 
 //! @brief The zero matrix.
 //!
@@ -272,11 +272,11 @@ inline constexpr Arithmetic zero<Arithmetic>{0};
 
 template <typename Type>
   requires requires { Type::Zero(); }
-inline auto zero<Type>{Type::Zero()};
+inline Type zero<Type>{Type::Zero()};
 
 template <typename Type>
   requires requires { Type::zero(); }
-inline auto zero<Type>{Type::zero()};
+inline Type zero<Type>{Type::zero()};
 
 //! @}
 
