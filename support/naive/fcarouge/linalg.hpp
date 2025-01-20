@@ -84,7 +84,7 @@ struct matrix {
     ([&] { data[i++][0] = elements; }(), ...);
   }
 
-  inline constexpr explicit matrix(Type (&elements)[Column])
+  inline constexpr explicit matrix(const Type (&elements)[Column])
     requires(Row == 1)
   {
     for (decltype(Column) j{0}; j < Column; ++j) {
@@ -92,7 +92,7 @@ struct matrix {
     }
   }
 
-  inline constexpr explicit matrix(Type (&elements)[Row])
+  inline constexpr explicit matrix(const Type (&elements)[Row])
     requires(Row != 1 && Column == 1)
   {
     for (decltype(Row) i{0}; i < Row; ++i) {

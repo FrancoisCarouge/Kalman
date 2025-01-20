@@ -45,10 +45,10 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the 1x1 zero matrix deduced default value is a null double.
 [[maybe_unused]] auto test{[] {
-  [[maybe_unused]] auto z{zero<>};
+  [[maybe_unused]] const auto z{zero<>};
 
   assert(z == 0.0);
-  static_assert(std::is_same_v<decltype(z), double>);
+  static_assert(std::is_same_v<decltype(z), const double>);
 
   return 0;
 }()};
