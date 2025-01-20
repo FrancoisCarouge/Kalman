@@ -46,10 +46,10 @@ namespace {
 //! @test Verifies the 1x1 identity matrix deduced default value is a unit
 //! double.
 [[maybe_unused]] auto test{[] {
-  [[maybe_unused]] auto i{identity<>};
+  [[maybe_unused]] const auto i{identity<>};
 
   assert(i == 1.0);
-  static_assert(std::is_same_v<decltype(i), double>);
+  static_assert(std::is_same_v<decltype(i), const double>);
 
   return 0;
 }()};

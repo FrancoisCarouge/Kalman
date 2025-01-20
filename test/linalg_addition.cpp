@@ -44,10 +44,10 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the addition operator.
 [[maybe_unused]] auto test{[] {
-  matrix<double, 1, 2> a{1.0, 2.0};
-  matrix<double, 1, 2> b{3.0, 4.0};
-  matrix<double, 1, 2> c{4.0, 6.0};
-  matrix<double, 1, 2> r{a + b + c};
+  const matrix<double, 1, 2> a{1.0, 2.0};
+  const matrix<double, 1, 2> b{3.0, 4.0};
+  const matrix<double, 1, 2> c{4.0, 6.0};
+  const matrix<double, 1, 2> r{a + b + c};
 
   assert(r(0, 0) == 8.0);
   assert(r(0, 1) == 12.0);
