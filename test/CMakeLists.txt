@@ -38,46 +38,165 @@ For more information, please refer to <https://unlicense.org> ]]
 
 include(test.cmake)
 
-test(NAME "kalman_assign_move_5x4x3" BACKENDS "eigen")
-test(NAME "kalman_constructor_default_1x1x3" BACKENDS "eigen")
-test(NAME "kalman_constructor_default_1x4x1" BACKENDS "eigen")
-test(NAME "kalman_constructor_default_1x4x3" BACKENDS "eigen")
-test(NAME "kalman_constructor_default_5x1x1" BACKENDS "eigen")
-test(NAME "kalman_constructor_default_5x1x3" BACKENDS "eigen")
-test(NAME "kalman_constructor_default_5x4x0" BACKENDS "eigen")
-test(NAME "kalman_constructor_default_5x4x1" BACKENDS "eigen")
-test(NAME "kalman_constructor_default_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_assign_move_5x4x3" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_constructor_default_1x1x3" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_constructor_default_1x4x1" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_constructor_default_1x4x3" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_constructor_default_5x1x1" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_constructor_default_5x1x3" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_constructor_default_5x4x0" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_constructor_default_5x4x1" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_constructor_default_5x4x3" BACKENDS "eigen" "eigexed")
 test(NAME "kalman_constructor_default_float_1x1x1")
 test(NAME "kalman_constructor_default")
-test(NAME "kalman_constructor_move_5x4x3" BACKENDS "eigen")
-test(NAME "kalman_f_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_constructor_move_5x4x3" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_f_5x4x3" BACKENDS "eigen" "eigexed")
 test(NAME "kalman_f")
-test(NAME "kalman_format_1x4x3" BACKENDS "eigen")
-test(NAME "kalman_format_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_format_1x4x3" BACKENDS "eigen" "eigexed")
+test(NAME "kalman_format_5x4x3" BACKENDS "eigen" "eigexed")
 test(NAME "kalman_format_arguments")
 test(NAME "kalman_format_float_1x1x1")
 test(NAME "kalman_format")
-test(NAME "kalman_h_5x4x3" BACKENDS "eigen")
+test(NAME "kalman_h_5x4x3" BACKENDS "eigen" "eigexed")
 test(NAME "kalman_println_1x1x0")
-test(NAME "linalg_addition" BACKENDS "eigen" "naive")
-test(NAME "linalg_assign" BACKENDS "eigen" "naive")
-test(NAME "linalg_constructor_1x1_array" BACKENDS "eigen" "naive")
-test(NAME "linalg_constructor_1x1" BACKENDS "eigen" "naive")
-test(NAME "linalg_constructor_1xn_array" BACKENDS "eigen" "naive")
-test(NAME "linalg_constructor_1xn" BACKENDS "eigen" "naive")
-test(NAME "linalg_constructor_initializer_lists" BACKENDS "eigen" "naive")
-test(NAME "linalg_constructor_nx1_array" BACKENDS "eigen" "naive")
-test(NAME "linalg_constructor_nx1" BACKENDS "eigen" "naive")
-test(NAME "linalg_copy" BACKENDS "eigen" "naive")
-test(NAME "linalg_identity" BACKENDS "eigen" "naive")
-test(NAME "linalg_multiplication_arithmetic" BACKENDS "eigen" "naive")
-test(NAME "linalg_multiplication_rxc" BACKENDS "eigen" "naive")
-test(NAME "linalg_multiplication_sxc" BACKENDS "eigen" "naive")
-test(NAME "linalg_operator_bracket" BACKENDS "eigen" "naive")
-test(NAME "linalg_operator_equality" BACKENDS "eigen" "naive")
-test(NAME "linalg_zero" BACKENDS "eigen" "naive")
+test(
+  NAME
+  "linalg_addition"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_assign"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_constructor_1x1_array"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_constructor_1x1"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_constructor_1xn_array"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_constructor_1xn"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_constructor_initializer_lists"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_constructor_nx1_array"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_constructor_nx1"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_copy"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_identity"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_multiplication_arithmetic"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_multiplication_rxc"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_multiplication_sxc"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_operator_bracket"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_operator_equality"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
+test(
+  NAME
+  "linalg_zero"
+  BACKENDS
+  "eigen"
+  "eigexed"
+  "naive"
+  "naixed")
 test(NAME "printer_1x1x0")
-test(NAME "printer_2x3x4" BACKENDS "eigen")
+test(NAME "printer_2x3x4" BACKENDS "eigen" "eigexed")
 test(NAME "units_kf_1x1x0_building_height")
 test(NAME "utility_identity_default")
 test(NAME "utility_zero_default")
