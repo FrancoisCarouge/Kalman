@@ -117,10 +117,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  matrix&lt;double, 1, 2&gt; a{1.0, 2.0};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">b</a>{3.0, 4.0};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">c</a>{4.0, 6.0};</div>
-<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> r{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">a</a> + <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">b</a> + <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">c</a>};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;double, 1, 2&gt; a{1.0, 2.0};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">b</a>{3.0, 4.0};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">c</a>{4.0, 6.0};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> r{<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">a</a> + <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">b</a> + <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">c</a>};</div>
 <div class="line"> </div>
 <div class="line">  assert(r(0, 0) == 8.0);</div>
 <div class="line">  assert(r(0, 1) == 12.0);</div>
@@ -132,10 +132,10 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="linalg__addition_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="linalg__addition_8cpp_source.xhtml">linalg_addition.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   46</span>                          {[] {</div>
-<div class="line"><span class="lineno">   47</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">a</a>{1.0, 2.0};</div>
-<div class="line"><span class="lineno">   48</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">b</a>{3.0, 4.0};</div>
-<div class="line"><span class="lineno">   49</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">c</a>{4.0, 6.0};</div>
-<div class="line"><span class="lineno">   50</span>  matrix&lt;double, 1, 2&gt; r{a + b + c};</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">a</a>{1.0, 2.0};</div>
+<div class="line"><span class="lineno">   48</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">b</a>{3.0, 4.0};</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">matrix&lt;double, 1, 2&gt;</a> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a2139da64fccd1f6d987797af8fcdd0ea">c</a>{4.0, 6.0};</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">const</span> matrix&lt;double, 1, 2&gt; r{a + b + c};</div>
 <div class="line"><span class="lineno">   51</span> </div>
 <div class="line"><span class="lineno">   52</span>  assert(r(0, 0) == 8.0);</div>
 <div class="line"><span class="lineno">   53</span>  assert(r(0, 1) == 12.0);</div>
