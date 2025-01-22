@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data_0',['data',['../structfcarouge_1_1matrix.xhtml#a24baa2c48b4606232abeab530ec019ce',1,'fcarouge::matrix']]],
+  ['data_0',['data',['../structfcarouge_1_1naive_1_1matrix.xhtml#a15e1f8de54dbe4186bf17501a9ac073b',1,'fcarouge::naive::matrix']]],
   ['declaration_1',['Declaration',['../index.xhtml#declaration',1,'']]],
   ['deduce_5ffilter_2',['deduce_filter',['../namespacefcarouge_1_1internal.xhtml#af0c315e1078601955b31e5c902650361',1,'fcarouge::internal']]],
   ['definitions_3',['Definitions',['../index.xhtml#definitions',1,'']]],

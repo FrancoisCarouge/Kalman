@@ -1,8 +1,8 @@
 var lazy_2fcarouge_2linalg_8hpp =
 [
     [ "fcarouge::matrix< Type, Row, Column, Copyable >", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
-    [ "column_vector", "lazy_2fcarouge_2linalg_8hpp.xhtml#aa1a4829b80dd5422938b8d442b59b0bd", null ],
-    [ "row_vector", "lazy_2fcarouge_2linalg_8hpp.xhtml#a832272cfa3ca1c5f87e4eb41df0f98e2", null ],
+    [ "column_vector", "lazy_2fcarouge_2linalg_8hpp.xhtml#a402475b009cce458d573ed51c42c14af", null ],
+    [ "row_vector", "lazy_2fcarouge_2linalg_8hpp.xhtml#a95d4f34b82273995f5dbca8ea88271cd", null ],
     [ "make_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#ae167596e2c65ae7024cbc80f5b5d1974", null ],
     [ "make_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1", null ],
     [ "matrix", "lazy_2fcarouge_2linalg_8hpp.xhtml#a36b1c08e7faa5e078cd8c56e4acd8a54", null ],
@@ -16,8 +16,8 @@ var lazy_2fcarouge_2linalg_8hpp =
     [ "operator==", "lazy_2fcarouge_2linalg_8hpp.xhtml#a62fb05e2f569f36e8cac44a90ccbc106", null ],
     [ "operator==", "lazy_2fcarouge_2linalg_8hpp.xhtml#a47d78fa7b2fbab1fdec6f6e30d6b1da0", null ],
     [ "operator==", "lazy_2fcarouge_2linalg_8hpp.xhtml#a84939a609e68330c2689aff14d978311", null ],
-    [ "identity< matrix< Type, Row, Column > >", "lazy_2fcarouge_2linalg_8hpp.xhtml#a676a8185ce10d01c6659f6e44b8240dd", null ],
+    [ "identity< matrix< Type, Row, Column > >", "lazy_2fcarouge_2linalg_8hpp.xhtml#aa12d176b9a5533210dd230e7f719c4fb", null ],
     [ "make_identity_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#a3b0c4f263f282cbb330a4ca6b5ad10d9", null ],
     [ "make_zero_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#a7fe918283834c2c859a7325fc8d3a563", null ],
-    [ "zero< matrix< Type, Row, Column > >", "lazy_2fcarouge_2linalg_8hpp.xhtml#a8d2e052602c5754c21278d53194b57e0", null ]
+    [ "zero< matrix< Type, Row, Column > >", "lazy_2fcarouge_2linalg_8hpp.xhtml#a9b8d7e56d105ac30c247bc5c8960b18b", null ]
 ];
