@@ -81,6 +81,12 @@ public:
 
   inline constexpr matrix &operator=(matrix &&other) = default;
 
+  template <typename OtherMatrix>
+  inline constexpr matrix(
+      const matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
+      : data{other.data} {}
+
+  //! @todo Constrain me more?
   inline constexpr matrix(const auto &other) : data{other} {}
 
   template <typename Type>
@@ -146,12 +152,12 @@ public:
     return data(row, column);
   }
 
-  [[nodiscard]] inline constexpr const auto &operator[](std::size_t row,
-                                                        std::size_t column) const {
+  [[nodiscard]] inline constexpr const auto &
+  operator[](std::size_t row, std::size_t column) const {
     return data(row, column);
   }
 
-  [[nodiscard]] inline constexpr auto &operator()(std::size_t index) 
+  [[nodiscard]] inline constexpr auto &operator()(std::size_t index)
     requires(size<RowIndexes> != 1 && size<ColumnIndexes> == 1)
   {
     return data(index, 0);
@@ -175,8 +181,8 @@ public:
     return data(0, index);
   }
 
-  [[nodiscard]] inline constexpr auto &
-  operator()(std::size_t row, std::size_t column) {
+  [[nodiscard]] inline constexpr auto &operator()(std::size_t row,
+                                                  std::size_t column) {
     return data(row, column);
   }
 
@@ -209,10 +215,11 @@ using indexed_column_vector =
 
 //! @}
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typename Matrix1, typename Matrix2, typename RowIndexes,
+          typename ColumnIndexes>
 [[nodiscard]] inline constexpr bool
-operator==(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-           const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
+operator==(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
+           const matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
   return lhs.data == rhs.data;
 }
 
@@ -409,13 +416,13 @@ struct transposer<IndexedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
 //! Unless it's the matrix without units? Even then, the identity matrix is
 //! supposed to be square? What's the name of this thing then?
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline indexed::matrix<Matrix, RowIndexes, ColumnIndexes>
+inline indexed::matrix<decltype(identity<Matrix>), RowIndexes, ColumnIndexes>
     identity<indexed::matrix<Matrix, RowIndexes, ColumnIndexes>>{
         identity<Matrix>};
 
 //! @brief The zero matrix indexed specialization.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline indexed::matrix<Matrix, RowIndexes, ColumnIndexes>
+inline indexed::matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
     zero<indexed::matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
 
 //! @}
