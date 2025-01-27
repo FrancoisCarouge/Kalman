@@ -42,9 +42,9 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/utility.hpp"
 
 namespace fcarouge::internal {
-template <typename State, typename Output> struct x_z_p_r_f {
+template <typename State> struct x_z_p_r_f {
   using state = State;
-  using output = Output;
+  using output = State;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
   using state_transition = ᴀʙᵀ<state, state>;

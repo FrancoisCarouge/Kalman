@@ -66,19 +66,31 @@ template <typename Filter = void> struct filter_deducer {
                   "This requested filter configuration is not yet supported. "
                   "Please, submit a pull request or feature request.");
 
-    return x_z_p_r_f<double, double>{};
+    return x_z_p_r_f<double>{};
   }
 
   //! @todo Rename, clean the concet: undeduced?
-  inline constexpr auto operator()() const -> x_z_p_r_f<double, double>
+  inline constexpr auto operator()() const -> x_z_p_r_f<double>
     requires(std::same_as<Filter, void>);
 
   inline constexpr auto operator()() const { return Filter{}; }
 
+  template <typename State>
+  inline constexpr auto operator()(state<State> x) const {
+    return x_z_p_r_f<State>{x.value};
+  }
+
+  template <typename State, typename Output>
+    requires std::same_as<State, Output>
+  inline constexpr auto operator()(state<State> x,
+                                   [[maybe_unused]] output_t<Output> z) const {
+    return x_z_p_r_f<State>{x.value};
+  }
+
   template <typename State, typename Output>
   inline constexpr auto operator()(state<State> x,
                                    [[maybe_unused]] output_t<Output> z) const {
-    return x_z_p_r_f<State, Output>{x.value};
+    return x_z_p_q_r_h_f<State, Output>{x.value};
   }
 
   template <typename State, typename Output, typename Input>
@@ -181,11 +193,24 @@ template <typename Filter = void> struct filter_deducer {
 
   template <typename State, typename Output, typename EstimateUncertainty,
             typename OutputUncertainty>
+    requires std::same_as<State, Output>
   inline constexpr auto
   operator()(state<State> x, [[maybe_unused]] output_t<Output> z,
              estimate_uncertainty<EstimateUncertainty> p,
              output_uncertainty<OutputUncertainty> r) const {
-    using kt = x_z_p_r_f<State, Output>;
+    using kt = x_z_p_r_f<State>;
+    return kt{typename kt::state{x.value},
+              typename kt::estimate_uncertainty{p.value},
+              typename kt::output_uncertainty{r.value}};
+  }
+
+  template <typename State, typename Output, typename EstimateUncertainty,
+            typename OutputUncertainty>
+  inline constexpr auto
+  operator()(state<State> x, [[maybe_unused]] output_t<Output> z,
+             estimate_uncertainty<EstimateUncertainty> p,
+             output_uncertainty<OutputUncertainty> r) const {
+    using kt = x_z_p_q_r_h_f<State, Output>;
     return kt{typename kt::state{x.value},
               typename kt::estimate_uncertainty{p.value},
               typename kt::output_uncertainty{r.value}};
