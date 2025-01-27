@@ -181,7 +181,7 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Type = double, std::size_t Row = 1, std::size_t Column = 1&gt;<br />
 struct fcarouge::naive::matrix&lt; Type, Row, Column &gt;</div><p>Naive matrix. </p>
-<p>An array-of-arrays naive implementation matrix. The implementation is constexpr compatible.</p>
+<p>An array-of-arrays naive implementation matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Type</td><td>The matrix element type. </td></tr>
@@ -191,7 +191,7 @@ struct fcarouge::naive::matrix&lt; Type, Row, Column &gt;</div><p>Naive matrix. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00065">65</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00067">67</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad72d07aa359b43dea01b2e0b47a0c7b1" name="ad72d07aa359b43dea01b2e0b47a0c7b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad72d07aa359b43dea01b2e0b47a0c7b1">&#9670;&#160;</a></span>matrix() <span class="overload">[1/9]</span></h2>
@@ -299,9 +299,9 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00076">76</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>      : <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>{{elements...}} {}</div>
-<div class="ttc" id="astructfcarouge_1_1naive_1_1matrix_xhtml_a15e1f8de54dbe4186bf17501a9ac073b"><div class="ttname"><a href="#a15e1f8de54dbe4186bf17501a9ac073b">fcarouge::naive::matrix::data</a></div><div class="ttdeci">Type data[Row][Column]</div><div class="ttdef"><b>Definition</b> <a href="naive_8hpp_source.xhtml#l00206">naive.hpp:206</a></div></div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00078">78</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>      : <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>{{elements...}} {}</div>
+<div class="ttc" id="astructfcarouge_1_1naive_1_1matrix_xhtml_a15e1f8de54dbe4186bf17501a9ac073b"><div class="ttname"><a href="#a15e1f8de54dbe4186bf17501a9ac073b">fcarouge::naive::matrix::data</a></div><div class="ttdeci">Type data[Row][Column]</div><div class="ttdef"><b>Definition</b> <a href="naive_8hpp_source.xhtml#l00208">naive.hpp:208</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -330,11 +330,11 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00080">80</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>  {</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keyword">decltype</span>(Row) i{0};</div>
-<div class="line"><span class="lineno">   84</span>    ([&amp;] { <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i++][0] = elements; }(), ...);</div>
-<div class="line"><span class="lineno">   85</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00082">82</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>  {</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keyword">decltype</span>(Row) i{0};</div>
+<div class="line"><span class="lineno">   86</span>    ([&amp;] { <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i++][0] = elements; }(), ...);</div>
+<div class="line"><span class="lineno">   87</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -363,12 +363,12 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00087">87</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   89</span>  {</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">   91</span>      <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][j] = elements[j];</div>
-<div class="line"><span class="lineno">   92</span>    }</div>
-<div class="line"><span class="lineno">   93</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00089">89</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>  {</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">   93</span>      <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][j] = elements[j];</div>
+<div class="line"><span class="lineno">   94</span>    }</div>
+<div class="line"><span class="lineno">   95</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -397,12 +397,12 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00095">95</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>  {</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">   99</span>      <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i][0] = elements[i];</div>
-<div class="line"><span class="lineno">  100</span>    }</div>
-<div class="line"><span class="lineno">  101</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00097">97</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>  {</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  101</span>      <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i][0] = elements[i];</div>
+<div class="line"><span class="lineno">  102</span>    }</div>
+<div class="line"><span class="lineno">  103</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -434,18 +434,18 @@ requires (std::conjunction_v&lt;std::is_same&lt;Type, Types&gt;...&gt; &amp;&amp
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00104">104</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  107</span>  {</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keyword">decltype</span>(Row) i{0};</div>
-<div class="line"><span class="lineno">  109</span>    (</div>
-<div class="line"><span class="lineno">  110</span>        [&amp;](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;row) {</div>
-<div class="line"><span class="lineno">  111</span>          <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">  112</span>            <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i][j] = row[j];</div>
-<div class="line"><span class="lineno">  113</span>          }</div>
-<div class="line"><span class="lineno">  114</span>          ++i;</div>
-<div class="line"><span class="lineno">  115</span>        }(rows),</div>
-<div class="line"><span class="lineno">  116</span>        ...);</div>
-<div class="line"><span class="lineno">  117</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00106">106</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>  {</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keyword">decltype</span>(Row) i{0};</div>
+<div class="line"><span class="lineno">  111</span>    (</div>
+<div class="line"><span class="lineno">  112</span>        [&amp;](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;row) {</div>
+<div class="line"><span class="lineno">  113</span>          <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  114</span>            <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i][j] = row[j];</div>
+<div class="line"><span class="lineno">  115</span>          }</div>
+<div class="line"><span class="lineno">  116</span>          ++i;</div>
+<div class="line"><span class="lineno">  117</span>        }(rows),</div>
+<div class="line"><span class="lineno">  118</span>        ...);</div>
+<div class="line"><span class="lineno">  119</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -474,17 +474,17 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00119">119</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>                                                           {</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : rows) {</div>
-<div class="line"><span class="lineno">  123</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : row) {</div>
-<div class="line"><span class="lineno">  124</span>        <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i][j] = element;</div>
-<div class="line"><span class="lineno">  125</span>        ++j;</div>
-<div class="line"><span class="lineno">  126</span>      }</div>
-<div class="line"><span class="lineno">  127</span>      ++i;</div>
-<div class="line"><span class="lineno">  128</span>    }</div>
-<div class="line"><span class="lineno">  129</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00121">121</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  122</span>                                                           {</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : rows) {</div>
+<div class="line"><span class="lineno">  125</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : row) {</div>
+<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i][j] = element;</div>
+<div class="line"><span class="lineno">  127</span>        ++j;</div>
+<div class="line"><span class="lineno">  128</span>      }</div>
+<div class="line"><span class="lineno">  129</span>      ++i;</div>
+<div class="line"><span class="lineno">  130</span>    }</div>
+<div class="line"><span class="lineno">  131</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -514,10 +514,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00131">131</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  133</span>  {</div>
-<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][0];</div>
-<div class="line"><span class="lineno">  135</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00133">133</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  135</span>  {</div>
+<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][0];</div>
+<div class="line"><span class="lineno">  137</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -546,10 +546,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00172">172</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  174</span>  {</div>
-<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[index][0];</div>
-<div class="line"><span class="lineno">  176</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00174">174</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>  {</div>
+<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[index][0];</div>
+<div class="line"><span class="lineno">  178</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -578,10 +578,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00184">184</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  186</span>  {</div>
-<div class="line"><span class="lineno">  187</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][index];</div>
-<div class="line"><span class="lineno">  188</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00186">186</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  188</span>  {</div>
+<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][index];</div>
+<div class="line"><span class="lineno">  190</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -610,10 +610,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00178">178</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  180</span>  {</div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[index][0];</div>
-<div class="line"><span class="lineno">  182</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00180">180</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  182</span>  {</div>
+<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[index][0];</div>
+<div class="line"><span class="lineno">  184</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -642,10 +642,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00190">190</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  192</span>  {</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][index];</div>
-<div class="line"><span class="lineno">  194</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00192">192</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>  {</div>
+<div class="line"><span class="lineno">  195</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][index];</div>
+<div class="line"><span class="lineno">  196</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -678,10 +678,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00196">196</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  197</span>                                                                    {</div>
-<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[row][column];</div>
-<div class="line"><span class="lineno">  199</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00198">198</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  199</span>                                                                    {</div>
+<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[row][column];</div>
+<div class="line"><span class="lineno">  201</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -714,10 +714,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00202">202</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  202</span>                                                    {</div>
-<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[row][column];</div>
-<div class="line"><span class="lineno">  204</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00204">204</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  204</span>                                                    {</div>
+<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[row][column];</div>
+<div class="line"><span class="lineno">  206</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -801,10 +801,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo</a></b></dt><dd>Shorten with self deduced this? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00138">138</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>  {</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[index][0];</div>
-<div class="line"><span class="lineno">  142</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00140">140</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  142</span>  {</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[index][0];</div>
+<div class="line"><span class="lineno">  144</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -833,10 +833,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00150">150</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  152</span>  {</div>
-<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][index];</div>
-<div class="line"><span class="lineno">  154</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00152">152</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  154</span>  {</div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][index];</div>
+<div class="line"><span class="lineno">  156</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -865,10 +865,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00144">144</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  146</span>  {</div>
-<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[index][0];</div>
-<div class="line"><span class="lineno">  148</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00146">146</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>  {</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[index][0];</div>
+<div class="line"><span class="lineno">  150</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -897,10 +897,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00156">156</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  158</span>  {</div>
-<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][index];</div>
-<div class="line"><span class="lineno">  160</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00158">158</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>  {</div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[0][index];</div>
+<div class="line"><span class="lineno">  162</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -933,10 +933,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00162">162</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  163</span>                                                                    {</div>
-<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[row][column];</div>
-<div class="line"><span class="lineno">  165</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00164">164</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  165</span>                                                                    {</div>
+<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[row][column];</div>
+<div class="line"><span class="lineno">  167</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -969,10 +969,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00168">168</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  168</span>                                                    {</div>
-<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[row][column];</div>
-<div class="line"><span class="lineno">  170</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00170">170</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>                                                    {</div>
+<div class="line"><span class="lineno">  171</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[row][column];</div>
+<div class="line"><span class="lineno">  172</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -991,10 +991,10 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00206">206</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  206</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00208">208</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>{};</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="naive_8hpp_source.xhtml#l00382">fcarouge::transposer&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;::operator()()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00272">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00278">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00256">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00290">fcarouge::naive::operator*=()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00323">fcarouge::naive::operator+()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00309">fcarouge::naive::operator+()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00329">fcarouge::naive::operator+()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00350">fcarouge::naive::operator-()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00336">fcarouge::naive::operator-()</a>, and <a class="el" href="naive_8hpp_source.xhtml#l00242">fcarouge::naive::operator==()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="naive_8hpp_source.xhtml#l00384">fcarouge::transposer&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;::operator()()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00274">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00280">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00258">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00292">fcarouge::naive::operator*=()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00325">fcarouge::naive::operator+()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00311">fcarouge::naive::operator+()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00331">fcarouge::naive::operator+()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00352">fcarouge::naive::operator-()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00338">fcarouge::naive::operator-()</a>, and <a class="el" href="naive_8hpp_source.xhtml#l00244">fcarouge::naive::operator==()</a>.</p>
 
 </div>
 </div>
