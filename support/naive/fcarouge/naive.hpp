@@ -46,17 +46,19 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
+#include <concepts>
 #include <cstddef>
 #include <initializer_list>
+#include <type_traits>
 
 namespace fcarouge::naive {
+
 //! @name Types
 //! @{
 
 //! @brief Naive matrix.
 //!
-//! @details An array-of-arrays naive implementation matrix. The implementation
-//! is constexpr compatible.
+//! @details An array-of-arrays naive implementation matrix.
 //!
 //! @tparam Type The matrix element type.
 //! @tparam Row The number of rows of the matrix.
