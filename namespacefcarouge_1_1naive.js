@@ -1,8 +1,8 @@
 var namespacefcarouge_1_1naive =
 [
     [ "matrix", "structfcarouge_1_1naive_1_1matrix.xhtml", "structfcarouge_1_1naive_1_1matrix" ],
-    [ "column_vector", "namespacefcarouge_1_1naive.xhtml#a6f7f3e66f9110aa3eb36dcf1186c07b1", null ],
-    [ "row_vector", "namespacefcarouge_1_1naive.xhtml#a9c70fd2b4a9ca8379563fc1490a1dc1c", null ],
+    [ "column_vector", "namespacefcarouge_1_1naive.xhtml#ae078e6caac276f13970f820f50ddfbf5", null ],
+    [ "row_vector", "namespacefcarouge_1_1naive.xhtml#aa2b34d718a98460e93766c9c2920d791", null ],
     [ "matrix", "namespacefcarouge_1_1naive.xhtml#a3dd6fd753d3d4255f650342f70b48d79", null ],
     [ "matrix", "namespacefcarouge_1_1naive.xhtml#aad966fe573d30f86782cb4c4f8631766", null ],
     [ "matrix", "namespacefcarouge_1_1naive.xhtml#a1f52379c1f1f8d0adb96be17a767a541", null ],

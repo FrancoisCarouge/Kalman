@@ -25,5 +25,5 @@ var searchData=
   ['linalg_5foperator_5fequality_2ecpp_22',['linalg_operator_equality.cpp',['../linalg__operator__equality_8cpp.xhtml',1,'']]],
   ['linalg_5fzero_2ecpp_23',['linalg_zero.cpp',['../linalg__zero_8cpp.xhtml',1,'']]],
   ['linux_24',['Linux',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux',1,'']]],
-  ['list_25',['list',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]]
+  ['list_25',['List',['../test.xhtml',1,'Test List'],['../todo.xhtml',1,'Todo List']]]
 ];

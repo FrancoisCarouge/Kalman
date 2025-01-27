@@ -13,7 +13,7 @@ var searchData=
   ['input_10',['input',['../namespacefcarouge_1_1internal.xhtml#a391e9f47fc94ced668f789ad1516f36e',1,'fcarouge::internal']]],
   ['input_5fcontrol_11',['input_control',['../namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2',1,'fcarouge::internal::input_control(Element) -&gt; input_control&lt; Element &gt;'],['../namespacefcarouge_1_1internal.xhtml#ab4d0c3652155e31911d9268f2f5c0a89',1,'fcarouge::internal::input_control(std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; input_control&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;']]],
   ['install_2emd_12',['INSTALL.md',['../_i_n_s_t_a_l_l_8md.xhtml',1,'']]],
-  ['installation_13',['installation',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',1,'Installation'],['../index.xhtml#installation-1',1,'Installation']]],
+  ['installation_13',['Installation',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',1,'Installation'],['../index.xhtml#installation-1',1,'Installation']]],
   ['installation_20packages_14',['Installation Packages',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages',1,'']]],
   ['institutions_15',['Corporations &amp; Institutions',['../index.xhtml#corporations--institutions',1,'']]],
   ['integration_20deployment_20actions_16',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],

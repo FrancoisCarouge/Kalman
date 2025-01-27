@@ -1,8 +1,8 @@
 var lazy_2fcarouge_2linalg_8hpp =
 [
     [ "fcarouge::matrix< Type, Row, Column, Copyable >", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
-    [ "column_vector", "lazy_2fcarouge_2linalg_8hpp.xhtml#a402475b009cce458d573ed51c42c14af", null ],
-    [ "row_vector", "lazy_2fcarouge_2linalg_8hpp.xhtml#a95d4f34b82273995f5dbca8ea88271cd", null ],
+    [ "column_vector", "lazy_2fcarouge_2linalg_8hpp.xhtml#ab7360341744c0361cff7a72efe014fd8", null ],
+    [ "row_vector", "lazy_2fcarouge_2linalg_8hpp.xhtml#a7426c99fa5df210b90d63cd32c0b04f4", null ],
     [ "make_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#ae167596e2c65ae7024cbc80f5b5d1974", null ],
     [ "make_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#a34cda4cdb141fdaa3b43f3973585e4b1", null ],
     [ "matrix", "lazy_2fcarouge_2linalg_8hpp.xhtml#a36b1c08e7faa5e078cd8c56e4acd8a54", null ],
