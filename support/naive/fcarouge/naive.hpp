@@ -48,6 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <concepts>
 #include <cstddef>
+#include <format>
 #include <initializer_list>
 #include <type_traits>
 
@@ -82,14 +83,14 @@ struct matrix {
   inline constexpr matrix(const std::same_as<Type> auto &...elements)
     requires(Row != 1 && Column == 1 && sizeof...(elements) == Row)
   {
-    decltype(Row) i{0};
+    std::size_t i{0};
     ([&] { data[i++][0] = elements; }(), ...);
   }
 
   inline constexpr explicit matrix(const Type (&elements)[Column])
     requires(Row == 1)
   {
-    for (decltype(Column) j{0}; j < Column; ++j) {
+    for (std::size_t j{0}; j < Column; ++j) {
       data[0][j] = elements[j];
     }
   }
@@ -97,7 +98,7 @@ struct matrix {
   inline constexpr explicit matrix(const Type (&elements)[Row])
     requires(Row != 1 && Column == 1)
   {
-    for (decltype(Row) i{0}; i < Row; ++i) {
+    for (std::size_t i{0}; i < Row; ++i) {
       data[i][0] = elements[i];
     }
   }
@@ -107,10 +108,10 @@ struct matrix {
     requires(std::conjunction_v<std::is_same<Type, Types>...> &&
              ((Columns == Column) && ... && true))
   {
-    decltype(Row) i{0};
+    std::size_t i{0};
     (
         [&](const auto &row) {
-          for (decltype(Column) j{0}; j < Column; ++j) {
+          for (std::size_t j{0}; j < Column; ++j) {
             data[i][j] = row[j];
           }
           ++i;
@@ -121,8 +122,8 @@ struct matrix {
   inline constexpr explicit matrix(
       std::initializer_list<std::initializer_list<Type>> rows) {
 
-    for (decltype(Row) i{0}; const auto &row : rows) {
-      for (decltype(Column) j{0}; const auto &element : row) {
+    for (std::size_t i{0}; const auto &row : rows) {
+      for (std::size_t j{0}; const auto &element : row) {
         data[i][j] = element;
         ++j;
       }
@@ -210,11 +211,11 @@ struct matrix {
 
 //! @brief Row vector.
 template <typename Type = double, std::size_t Column = 1>
-using row_vector = matrix<Type, decltype(Column){1}, Column>;
+using row_vector = matrix<Type, std::size_t{1}, Column>;
 
 //! @brief Column vector.
 template <typename Type = double, std::size_t Row = 1>
-using column_vector = matrix<Type, Row, decltype(Row){1}>;
+using column_vector = matrix<Type, Row, std::size_t{1}>;
 
 //! @}
 
@@ -243,8 +244,8 @@ template <typename Type, std::size_t Row, std::size_t Column>
 [[nodiscard]] inline constexpr bool
 operator==(const matrix<Type, Row, Column> &lhs,
            const matrix<Type, Row, Column> &rhs) {
-  for (decltype(Row) i{0}; i < Row; ++i) {
-    for (decltype(Column) j{0}; j < Column; ++j) {
+  for (std::size_t i{0}; i < Row; ++i) {
+    for (std::size_t j{0}; j < Column; ++j) {
       if (lhs.data[i][j] != rhs.data[i][j]) {
         return false;
       }
@@ -259,9 +260,9 @@ operator*(const matrix<Type, Row, Size> &lhs,
           const matrix<Type, Size, Column> &rhs) {
   matrix<Type, Row, Column> result;
 
-  for (decltype(Row) i{0}; i < Row; ++i) {
-    for (decltype(Column) j{0}; j < Column; ++j) {
-      for (decltype(Size) k{0}; k < Size; ++k) {
+  for (std::size_t i{0}; i < Row; ++i) {
+    for (std::size_t j{0}; j < Column; ++j) {
+      for (std::size_t k{0}; k < Size; ++k) {
         result.data[i][j] += lhs.data[i][k] * rhs.data[k][j];
       }
     }
@@ -281,7 +282,7 @@ template <typename Type, std::size_t Column>
                                               matrix<Type, 1, Column> rhs) {
   matrix<Type, 1, Column> result;
 
-  for (decltype(Column) j{0}; j < Column; ++j) {
+  for (std::size_t j{0}; j < Column; ++j) {
     result.data[0][j] = lhs * rhs.data[0][j];
   }
 
@@ -291,8 +292,8 @@ template <typename Type, std::size_t Column>
 template <typename Type, std::size_t Row, std::size_t Column>
 inline constexpr auto &operator*=(matrix<Type, Row, Column> &lhs,
                                   arithmetic auto rhs) {
-  for (decltype(Row) i{0}; i < Row; ++i) {
-    for (decltype(Column) j{0}; j < Column; ++j) {
+  for (std::size_t i{0}; i < Row; ++i) {
+    for (std::size_t j{0}; j < Column; ++j) {
       lhs.data[i][j] *= rhs;
     }
   }
@@ -312,8 +313,8 @@ operator+(const matrix<Type, Row, Column> &lhs,
           const matrix<Type, Row, Column> &rhs) {
   matrix<Type, Row, Column> result{lhs};
 
-  for (decltype(Row) i{0}; i < Row; ++i) {
-    for (decltype(Column) j{0}; j < Column; ++j) {
+  for (std::size_t i{0}; i < Row; ++i) {
+    for (std::size_t j{0}; j < Column; ++j) {
       result.data[i][j] += rhs.data[i][j];
     }
   }
@@ -339,8 +340,8 @@ operator-(const matrix<Type, Row, Column> &lhs,
           const matrix<Type, Row, Column> &rhs) {
   matrix<Type, Row, Column> result{lhs};
 
-  for (decltype(Row) i{0}; i < Row; ++i) {
-    for (decltype(Column) j{0}; j < Column; ++j) {
+  for (std::size_t i{0}; i < Row; ++i) {
+    for (std::size_t j{0}; j < Column; ++j) {
       result.data[i][j] -= rhs.data[i][j];
     }
   }
@@ -359,13 +360,89 @@ template <typename Type, std::size_t Row>
                                               arithmetic auto rhs) {
   matrix<Type, Row, 1> result{lhs};
 
-  for (decltype(Row) i{0}; i < Row; ++i) {
+  for (std::size_t i{0}; i < Row; ++i) {
     result.data[i][0] /= rhs;
   }
 
   return result;
 }
 } // namespace fcarouge::naive
+
+//! @brief Specialization of the standard formatter for the naive linear
+//! algebra matrix.
+template <typename Type, std::size_t Row, std::size_t Column, typename Char>
+struct std::formatter<fcarouge::naive::matrix<Type, Row, Column>, Char> {
+  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+    return parse_context.begin();
+  }
+
+  template <typename OutputIterator>
+  constexpr auto
+  format(const fcarouge::naive::matrix<Type, Row, Column> &value,
+         std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator {
+    format_context.advance_to(std::format_to(format_context.out(), "["));
+
+    for (std::size_t i{0}; i < Row; ++i) {
+      if (i > 0) {
+        format_context.advance_to(std::format_to(format_context.out(), ", "));
+      }
+
+      format_context.advance_to(std::format_to(format_context.out(), "["));
+
+      for (std::size_t j{0}; j < Column; ++j) {
+        if (j > 0) {
+          format_context.advance_to(std::format_to(format_context.out(), ", "));
+        }
+
+        format_context.advance_to(
+            std::format_to(format_context.out(), "{}", value.data[i][j]));
+      }
+
+      format_context.advance_to(std::format_to(format_context.out(), "]"));
+    }
+
+    format_context.advance_to(std::format_to(format_context.out(), "]"));
+
+    return format_context.out();
+  }
+
+  template <typename OutputIterator>
+  constexpr auto
+  format(const fcarouge::naive::matrix<Type, Row, Column> &value,
+         std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator
+    requires(Row == 1 && Column != 1)
+  {
+    format_context.advance_to(std::format_to(format_context.out(), "["));
+
+    for (std::size_t j{0}; j < Column; ++j) {
+      if (j > 0) {
+        format_context.advance_to(std::format_to(format_context.out(), ", "));
+      }
+
+      format_context.advance_to(
+          std::format_to(format_context.out(), "{}", value.data[0][j]));
+    }
+
+    format_context.advance_to(std::format_to(format_context.out(), "]"));
+
+    return format_context.out();
+  }
+
+  template <typename OutputIterator>
+  constexpr auto
+  format(const fcarouge::naive::matrix<Type, Row, Column> &value,
+         std::basic_format_context<OutputIterator, Char> &format_context) const
+      -> OutputIterator
+    requires(Row == 1 && Column == 1)
+  {
+    format_context.advance_to(
+        std::format_to(format_context.out(), "{}", value.data[0][0]));
+
+    return format_context.out();
+  }
+};
 
 namespace fcarouge {
 //! @brief Specialization of the evaluation type.
@@ -384,8 +461,8 @@ struct transposer<naive::matrix<Type, Row, Column>> {
   operator()(const naive::matrix<Type, Row, Column> &value) const {
     naive::matrix<Type, Column, Row> result;
 
-    for (decltype(Row) i{0}; i < Row; ++i) {
-      for (decltype(Column) j{0}; j < Column; ++j) {
+    for (std::size_t i{0}; i < Row; ++i) {
+      for (std::size_t j{0}; j < Column; ++j) {
         result.data[j][i] = value.data[i][j];
       }
     }
@@ -404,7 +481,7 @@ inline constexpr naive::matrix<Type, Row, Column>
       naive::matrix<Type, Row, Column> result;
       std::size_t size{Row < Column ? Row : Column};
 
-      for (decltype(size) k{0}; k < size; ++k) {
+      for (std::size_t k{0}; k < size; ++k) {
         result.data[k][k] = 1.0;
       }
 
