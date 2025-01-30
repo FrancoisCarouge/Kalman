@@ -128,7 +128,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Type, std::size_t Row, std::size_t Column&gt;<br />
 struct fcarouge::transposer&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;</div><p>Specialization of the transposer. </p>
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00382">382</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00459">459</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aed0fdb1fce22cde941d75b7801c1cc9f" name="aed0fdb1fce22cde941d75b7801c1cc9f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aed0fdb1fce22cde941d75b7801c1cc9f">&#9670;&#160;</a></span>operator()()</h2>
@@ -155,21 +155,21 @@ template&lt;typename Type , std::size_t Row, std::size_t Column&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00384">384</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  384</span>                                                                {</div>
-<div class="line"><span class="lineno">  385</span>    <a class="code hl_function" href="namespacefcarouge_1_1naive.xhtml#aff1bd6f0e05a981c1c88bc489992293f">naive::matrix&lt;Type, Column, Row&gt;</a> result;</div>
-<div class="line"><span class="lineno">  386</span> </div>
-<div class="line"><span class="lineno">  387</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {</div>
-<div class="line"><span class="lineno">  388</span>      <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Column) j{0}; j &lt; Column; ++j) {</div>
-<div class="line"><span class="lineno">  389</span>        result.data[j][i] = value.data[i][j];</div>
-<div class="line"><span class="lineno">  390</span>      }</div>
-<div class="line"><span class="lineno">  391</span>    }</div>
-<div class="line"><span class="lineno">  392</span> </div>
-<div class="line"><span class="lineno">  393</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  394</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00461">461</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  461</span>                                                                {</div>
+<div class="line"><span class="lineno">  462</span>    <a class="code hl_function" href="namespacefcarouge_1_1naive.xhtml#aff1bd6f0e05a981c1c88bc489992293f">naive::matrix&lt;Type, Column, Row&gt;</a> result;</div>
+<div class="line"><span class="lineno">  463</span> </div>
+<div class="line"><span class="lineno">  464</span>    <span class="keywordflow">for</span> (std::size_t i{0}; i &lt; Row; ++i) {</div>
+<div class="line"><span class="lineno">  465</span>      <span class="keywordflow">for</span> (std::size_t j{0}; j &lt; Column; ++j) {</div>
+<div class="line"><span class="lineno">  466</span>        result.data[j][i] = value.data[i][j];</div>
+<div class="line"><span class="lineno">  467</span>      }</div>
+<div class="line"><span class="lineno">  468</span>    }</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  471</span>  }</div>
 <div class="ttc" id="anamespacefcarouge_1_1naive_xhtml_aff1bd6f0e05a981c1c88bc489992293f"><div class="ttname"><a href="namespacefcarouge_1_1naive.xhtml#aff1bd6f0e05a981c1c88bc489992293f">fcarouge::naive::matrix</a></div><div class="ttdeci">matrix(Type) -&gt; matrix&lt; Type, 1, 1 &gt;</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="naive_8hpp_source.xhtml#l00208">fcarouge::naive::matrix&lt; Type, Row, Column &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="naive_8hpp_source.xhtml#l00209">fcarouge::naive::matrix&lt; Type, Row, Column &gt;::data</a>.</p>
 
 </div>
 </div>

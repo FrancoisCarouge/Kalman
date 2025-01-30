@@ -21,6 +21,7 @@ var annotated_dup =
     ] ],
     [ "std", null, [
       [ "formatter< fcarouge::eigen::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4" ],
+      [ "formatter< fcarouge::naive::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4" ],
       [ "formatter< Filter, Char >", "structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01_filter_00_01_char_01_4" ]
     ] ]
 ];

@@ -1,10 +1,11 @@
 var naive_8hpp =
 [
     [ "fcarouge::naive::matrix< Type, Row, Column >", "structfcarouge_1_1naive_1_1matrix.xhtml", "structfcarouge_1_1naive_1_1matrix" ],
+    [ "std::formatter< fcarouge::naive::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4" ],
     [ "fcarouge::evaluater< naive::matrix< Type, Row, Column > >", "structfcarouge_1_1evaluater_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1evaluater_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
     [ "fcarouge::transposer< naive::matrix< Type, Row, Column > >", "structfcarouge_1_1transposer_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1transposer_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
-    [ "column_vector", "naive_8hpp.xhtml#ae078e6caac276f13970f820f50ddfbf5", null ],
-    [ "row_vector", "naive_8hpp.xhtml#aa2b34d718a98460e93766c9c2920d791", null ],
+    [ "column_vector", "naive_8hpp.xhtml#aad8a9ec48bbef5d13122ed6b389ef969", null ],
+    [ "row_vector", "naive_8hpp.xhtml#a653b2773460ca94d5e356f3eefade70d", null ],
     [ "matrix", "naive_8hpp.xhtml#a3dd6fd753d3d4255f650342f70b48d79", null ],
     [ "matrix", "naive_8hpp.xhtml#aad966fe573d30f86782cb4c4f8631766", null ],
     [ "matrix", "naive_8hpp.xhtml#a1f52379c1f1f8d0adb96be17a767a541", null ],

@@ -119,6 +119,15 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{linalg_copy.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__copy_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__copy_8cpp_03.xhtml#a0887ab7e5f2d679324ac959b627f5f17", null ]
     ] ],
+    [ "anonymous_namespace{linalg_format_1xn.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__format__1xn_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__format__1xn_8cpp_03.xhtml#a89ab978d256eab5ce1a9a7ffe28f03df", null ]
+    ] ],
+    [ "anonymous_namespace{linalg_format_mx1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__format__mx1_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__format__mx1_8cpp_03.xhtml#a20912c7d7821c02f3c36e660f217d234", null ]
+    ] ],
+    [ "anonymous_namespace{linalg_format_mxn.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__format__mxn_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__format__mxn_8cpp_03.xhtml#a69389129a2e068e1ad1843a4ae8a2314", null ]
+    ] ],
     [ "anonymous_namespace{linalg_identity.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__identity_8cpp_03.xhtml#a96696a636cb3338b86fec91d6c31c303", null ]
     ] ],

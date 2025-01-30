@@ -113,6 +113,7 @@ $(function(){initNavTree('naive_8hpp.xhtml',''); initResizable(true); });
 <div class="textblock"><code>#include &quot;<a class="el" href="utility_8hpp_source.xhtml">fcarouge/utility.hpp</a>&quot;</code><br />
 <code>#include &lt;concepts&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;format&gt;</code><br />
 <code>#include &lt;initializer_list&gt;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -120,7 +121,7 @@ $(function(){initNavTree('naive_8hpp.xhtml',''); initResizable(true); });
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="naive_8hpp__incl.svg" width="499" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="naive_8hpp__incl.svg" width="582" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -136,6 +137,9 @@ $(function(){initNavTree('naive_8hpp.xhtml',''); initResizable(true); });
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1naive_1_1matrix.xhtml">fcarouge::naive::matrix&lt; Type, Row, Column &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Naive matrix.  <a href="structfcarouge_1_1naive_1_1matrix.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml">std::formatter&lt; fcarouge::naive::matrix&lt; Type, Row, Column &gt;, Char &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the standard formatter for the naive linear algebra matrix.  <a href="structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1evaluater_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml">fcarouge::evaluater&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the evaluation type.  <a href="structfcarouge_1_1evaluater_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml#details">More...</a><br /></td></tr>
@@ -155,14 +159,14 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Types</div></td></tr>
-<tr class="memitem:aa2b34d718a98460e93766c9c2920d791" id="r_aa2b34d718a98460e93766c9c2920d791"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Column = 1&gt; </td></tr>
-<tr class="memitem:aa2b34d718a98460e93766c9c2920d791"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1naive.xhtml#aa2b34d718a98460e93766c9c2920d791">fcarouge::naive::row_vector</a> = <a class="el" href="structfcarouge_1_1naive_1_1matrix.xhtml">matrix</a>&lt;Type, decltype(Column){1}, Column&gt;</td></tr>
-<tr class="memdesc:aa2b34d718a98460e93766c9c2920d791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row vector.  <br /></td></tr>
-<tr class="separator:aa2b34d718a98460e93766c9c2920d791"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae078e6caac276f13970f820f50ddfbf5" id="r_ae078e6caac276f13970f820f50ddfbf5"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Row = 1&gt; </td></tr>
-<tr class="memitem:ae078e6caac276f13970f820f50ddfbf5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1naive.xhtml#ae078e6caac276f13970f820f50ddfbf5">fcarouge::naive::column_vector</a> = <a class="el" href="structfcarouge_1_1naive_1_1matrix.xhtml">matrix</a>&lt;Type, Row, decltype(Row){1}&gt;</td></tr>
-<tr class="memdesc:ae078e6caac276f13970f820f50ddfbf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column vector.  <br /></td></tr>
-<tr class="separator:ae078e6caac276f13970f820f50ddfbf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a653b2773460ca94d5e356f3eefade70d" id="r_a653b2773460ca94d5e356f3eefade70d"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Column = 1&gt; </td></tr>
+<tr class="memitem:a653b2773460ca94d5e356f3eefade70d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1naive.xhtml#a653b2773460ca94d5e356f3eefade70d">fcarouge::naive::row_vector</a> = <a class="el" href="structfcarouge_1_1naive_1_1matrix.xhtml">matrix</a>&lt;Type, std::size_t{1}, Column&gt;</td></tr>
+<tr class="memdesc:a653b2773460ca94d5e356f3eefade70d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row vector.  <br /></td></tr>
+<tr class="separator:a653b2773460ca94d5e356f3eefade70d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad8a9ec48bbef5d13122ed6b389ef969" id="r_aad8a9ec48bbef5d13122ed6b389ef969"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Row = 1&gt; </td></tr>
+<tr class="memitem:aad8a9ec48bbef5d13122ed6b389ef969"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1naive.xhtml#aad8a9ec48bbef5d13122ed6b389ef969">fcarouge::naive::column_vector</a> = <a class="el" href="structfcarouge_1_1naive_1_1matrix.xhtml">matrix</a>&lt;Type, Row, std::size_t{1}&gt;</td></tr>
+<tr class="memdesc:aad8a9ec48bbef5d13122ed6b389ef969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column vector.  <br /></td></tr>
+<tr class="separator:aad8a9ec48bbef5d13122ed6b389ef969"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
