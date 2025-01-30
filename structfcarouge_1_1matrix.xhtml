@@ -210,7 +210,7 @@ struct fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;</div><p>Coroutine l
 A design decision for the composed generator to be mutable, traded off for const member function API. Similar to the mutable mutex member practice. </dd>
 <dd>
 Why genie? Because genies generate on demand.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000030">Todo</a></b></dt><dd><p class="startdd">Explore and compare performance. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo</a></b></dt><dd><p class="startdd">Explore and compare performance. </p>
 <p class="interdd">Explore optimization of heap allocations? </p>
 <p class="interdd">Explore constexpr support? </p>
 <p class="interdd">Explore verification of lazy evaluation? </p>
@@ -280,7 +280,7 @@ template&lt;typename Type  = double, auto Row = 1, auto Column = 1, bool Copyabl
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo</a></b></dt><dd>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000035">Todo</a></b></dt><dd>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00118">118</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  119</span>      : <a class="code hl_variable" href="#a345b32af8d533e28e162b7757e23d2ec">genie</a>{[]() -&gt; std::generator&lt;Type&gt; {</div>
@@ -655,7 +655,7 @@ template&lt;typename Type  = double, auto Row = 1, auto Column = 1, bool Copyabl
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1matrix_ac6248dacd7be4fb05540b8ab2956cb7b_icgraph.svg" width="558" height="431"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1matrix_ac6248dacd7be4fb05540b8ab2956cb7b_icgraph.svg" width="340" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -710,7 +710,7 @@ template&lt;typename Type  = double, auto Row = 1, auto Column = 1, bool Copyabl
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1matrix_a3d43f3ebeab72104b65bc49131d293fc_icgraph.svg" width="596" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1matrix_a3d43f3ebeab72104b65bc49131d293fc_icgraph.svg" width="382" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -981,7 +981,7 @@ template&lt;typename Type  = double, auto Row = 1, auto Column = 1, bool Copyabl
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo</a></b></dt><dd>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000037">Todo</a></b></dt><dd>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00260">260</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  260</span>                                                                              {</div>

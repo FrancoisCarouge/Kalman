@@ -1,7 +1,7 @@
 var searchData=
 [
   ['license_2etxt_0',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
-  ['linalg_2ehpp_1',['linalg.hpp',['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../lazy_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../naive_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]],
+  ['linalg_2ehpp_1',['linalg.hpp',['../eigen_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../eigexed_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../lazy_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../naive_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)'],['../naixed_2fcarouge_2linalg_8hpp.xhtml',1,'(Global Namespace)']]],
   ['linalg_5faddition_2ecpp_2',['linalg_addition.cpp',['../linalg__addition_8cpp.xhtml',1,'']]],
   ['linalg_5fassign_2ecpp_3',['linalg_assign.cpp',['../linalg__assign_8cpp.xhtml',1,'']]],
   ['linalg_5fconstructor_5f1x1_2ecpp_4',['linalg_constructor_1x1.cpp',['../linalg__constructor__1x1_8cpp.xhtml',1,'']]],

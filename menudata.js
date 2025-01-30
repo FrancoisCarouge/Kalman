@@ -77,6 +77,7 @@ var menudata={children:[
 {text:"d",url:"namespacemembers_type.xhtml#index_d"},
 {text:"e",url:"namespacemembers_type.xhtml#index_e"},
 {text:"f",url:"namespacemembers_type.xhtml#index_f"},
+{text:"i",url:"namespacemembers_type.xhtml#index_i"},
 {text:"m",url:"namespacemembers_type.xhtml#index_m"},
 {text:"p",url:"namespacemembers_type.xhtml#index_p"},
 {text:"q",url:"namespacemembers_type.xhtml#index_q"},

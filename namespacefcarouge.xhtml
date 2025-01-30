@@ -124,6 +124,8 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1eigen.xhtml">eigen</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1indexed.xhtml">indexed</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml">internal</a></td></tr>
 <tr class="memdesc:namespacefcarouge_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal implementation details. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,6 +149,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1evaluater.xhtml">evaluater</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear algebra evaluater override expression lazy evaluation specialization point.  <a href="structfcarouge_1_1evaluater.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1evaluater_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml">evaluater&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the evaluation type.  <a href="structfcarouge_1_1evaluater_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1evaluater_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml">evaluater&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the evaluation type.  <a href="structfcarouge_1_1evaluater_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,6 +168,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1transposer.xhtml">transposer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear algebra transposer specialization point.  <a href="structfcarouge_1_1transposer.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1transposer_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml">transposer&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the transposer.  <a href="structfcarouge_1_1transposer_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1transposer_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml">transposer&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the transposer.  <a href="structfcarouge_1_1transposer_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml#details">More...</a><br /></td></tr>
@@ -355,14 +363,18 @@ requires requires { Type::zero(); }</td></tr>
 <tr class="memitem:a855afd89defaf8feeb606e34b303dd97"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a855afd89defaf8feeb606e34b303dd97">ᴀʙᵀ</a> = <a class="el" href="#acd5b06c86fbc7f4790315e50578d4e13">evaluate</a>&lt;<a class="el" href="#ae572d5a48afe03765d8e55617ea78689">product</a>&lt;Lhs, <a class="el" href="#a63023be73bdc7d43cd7053035230ae34">transpose</a>&lt;Rhs&gt;&gt;&gt;</td></tr>
 <tr class="memdesc:a855afd89defaf8feeb606e34b303dd97"><td class="mdescLeft">&#160;</td><td class="mdescRight">The evaluated type of the ABᵀ expression.  <br /></td></tr>
 <tr class="separator:a855afd89defaf8feeb606e34b303dd97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d51e9ff898a41560f1cd0963356f04c" id="r_a7d51e9ff898a41560f1cd0963356f04c"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1&gt; </td></tr>
+<tr class="memitem:a7d51e9ff898a41560f1cd0963356f04c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7d51e9ff898a41560f1cd0963356f04c">matrix</a></td></tr>
+<tr class="memdesc:a7d51e9ff898a41560f1cd0963356f04c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar type indexed-based matrix with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
+<tr class="separator:a7d51e9ff898a41560f1cd0963356f04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad06bb441aa2dcec149c52de0c297a967" id="r_ad06bb441aa2dcec149c52de0c297a967"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Row = 1&gt; </td></tr>
+<tr class="memitem:ad06bb441aa2dcec149c52de0c297a967"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ad06bb441aa2dcec149c52de0c297a967">column_vector</a> = <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt;Type, Row, 1&gt;</td></tr>
+<tr class="memdesc:ad06bb441aa2dcec149c52de0c297a967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar type indexed-based column vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
+<tr class="separator:ad06bb441aa2dcec149c52de0c297a967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7426c99fa5df210b90d63cd32c0b04f4" id="r_a7426c99fa5df210b90d63cd32c0b04f4"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, auto Column = 1, bool Copyable = false&gt; </td></tr>
 <tr class="memitem:a7426c99fa5df210b90d63cd32c0b04f4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7426c99fa5df210b90d63cd32c0b04f4">row_vector</a> = <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt;Type, decltype(Column){1}, Column, Copyable&gt;</td></tr>
 <tr class="memdesc:a7426c99fa5df210b90d63cd32c0b04f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine lazy row vector.  <br /></td></tr>
 <tr class="separator:a7426c99fa5df210b90d63cd32c0b04f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7360341744c0361cff7a72efe014fd8" id="r_ab7360341744c0361cff7a72efe014fd8"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, auto Row = 1, bool Copyable = false&gt; </td></tr>
-<tr class="memitem:ab7360341744c0361cff7a72efe014fd8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab7360341744c0361cff7a72efe014fd8">column_vector</a> = <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt;Type, Row, decltype(Row){1}, Copyable&gt;</td></tr>
-<tr class="memdesc:ab7360341744c0361cff7a72efe014fd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine lazy column vector.  <br /></td></tr>
-<tr class="separator:ab7360341744c0361cff7a72efe014fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d1b555b919a51d9ef29849f6e86b48a" id="r_a5d1b555b919a51d9ef29849f6e86b48a"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a5d1b555b919a51d9ef29849f6e86b48a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5d1b555b919a51d9ef29849f6e86b48a">t</a> (const Type &amp;value)</td></tr>
 <tr class="memdesc:a5d1b555b919a51d9ef29849f6e86b48a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose helper function.  <br /></td></tr>
@@ -392,25 +404,26 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 
 </div>
 </div>
-<a id="ab7360341744c0361cff7a72efe014fd8" name="ab7360341744c0361cff7a72efe014fd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7360341744c0361cff7a72efe014fd8">&#9670;&#160;</a></span>column_vector</h2>
+<a id="ad06bb441aa2dcec149c52de0c297a967" name="ad06bb441aa2dcec149c52de0c297a967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad06bb441aa2dcec149c52de0c297a967">&#9670;&#160;</a></span>column_vector</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type  = double, auto Row = 1, bool Copyable = false&gt; </div>
+template&lt;typename Type  = double, std::size_t Row = 1&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::column_vector</a> = <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt;Type, Row, decltype(Row){1}, Copyable&gt;</td>
+          <td class="memname">using <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::column_vector</a> = <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt;Type, Row, 1&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Scalar type indexed-based column vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
+<p>Scalar type indexed-based column vector with naive implementations.</p>
 <p>Coroutine lazy column vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00285">285</a> of file <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  285</span>{1}, Copyable&gt;;</div>
-</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml#l00064">64</a> of file <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a2b9209137b760e121bcfe9bac7dcacc0" name="a2b9209137b760e121bcfe9bac7dcacc0"></a>
@@ -492,6 +505,30 @@ template&lt;typename... Types&gt; </div>
 <p>Shorthand for <code>std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</code>. </p>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00199">199</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7d51e9ff898a41560f1cd0963356f04c" name="a7d51e9ff898a41560f1cd0963356f04c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d51e9ff898a41560f1cd0963356f04c">&#9670;&#160;</a></span>matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::matrix</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    indexed::matrix&lt;eigen::matrix&lt;Type, Row, Column&gt;, tuple_n_type&lt;Type, Row&gt;,</div>
+<div class="line">                    tuple_n_type&lt;Type, Column&gt;&gt;</div>
+</div><!-- fragment -->
+<p>Scalar type indexed-based matrix with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
+<p>Scalar type indexed-based matrix with naive implementations. </p>
+
+<p class="definition">Definition at line <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml#l00058">58</a> of file <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
 </div>
 </div>
@@ -633,7 +670,7 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="internal_2utility_8hpp_source.xhtml#l00263">fcarouge::internal::for_constexpr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="predict__linalg__x1x_8cpp_source.xhtml#l00061">fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::bench()</a>, <a class="el" href="update__linalg__xx0_8cpp_source.xhtml#l00061">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::bench()</a>, and <a class="el" href="format_8hpp_source.xhtml#l00066">std::formatter&lt; Filter, Char &gt;::format()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="predict__linalg__x1x_8cpp_source.xhtml#l00061">fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::bench()</a>, <a class="el" href="update__linalg__xx0_8cpp_source.xhtml#l00061">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::bench()</a>, <a class="el" href="format_8hpp_source.xhtml#l00066">std::formatter&lt; Filter, Char &gt;::format()</a>, and <a class="el" href="indexed__linalg_8hpp_source.xhtml#l00102">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -646,7 +683,7 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a5ad0022b969a210b7261d0158bc1dd7b_icgraph.svg" width="382" height="242"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a5ad0022b969a210b7261d0158bc1dd7b_icgraph.svg" width="382" height="307"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -725,7 +762,7 @@ template&lt;std::ranges::range Range&gt; </div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_ae167596e2c65ae7024cbc80f5b5d1974_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_ae167596e2c65ae7024cbc80f5b5d1974_icgraph.svg" width="624" height="356"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -879,13 +916,13 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 <div class="line"><span class="lineno">  400</span>}</div>
 <div class="ttc" id="astructfcarouge_1_1matrix_xhtml_ac6248dacd7be4fb05540b8ab2956cb7b"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">fcarouge::matrix::begin</a></div><div class="ttdeci">auto begin() const</div><div class="ttdef"><b>Definition</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">linalg.hpp:273</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00378">operator*()</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
 <div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a0647c4efb9c02b9ea365aacec50e4ae0_cgraph.svg" width="100%" height="373"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a0647c4efb9c02b9ea365aacec50e4ae0_cgraph.svg" width="338" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -935,22 +972,13 @@ template&lt;typename Type , auto Row, auto Size&gt; </div>
 <div class="line"><span class="lineno">  391</span>}</div>
 <div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a3d43f3ebeab72104b65bc49131d293fc"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a3d43f3ebeab72104b65bc49131d293fc">fcarouge::matrix::clone</a></div><div class="ttdeci">constexpr std::generator&lt; Type &gt; clone() const</div><div class="ttdef"><b>Definition</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00186">linalg.hpp:186</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00186">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::clone()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00378">operator*()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="naive_8hpp_source.xhtml#l00275">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00281">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00259">fcarouge::naive::operator*()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00305">fcarouge::naive::operator*()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00395">operator*()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00378">operator*()</a>.</p>
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00186">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::clone()</a>.</p>
 <div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a5f46009dfa013275132875c5be3ab85c_cgraph.svg" width="556" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a5f46009dfa013275132875c5be3ab85c_icgraph.svg" width="355" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -993,13 +1021,13 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 <div class="line"><span class="lineno">  415</span>  }</div>
 <div class="line"><span class="lineno">  416</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00403">operator+()</a>.</p>
-<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
+<div id="dynsection-5" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a37839500158d123b7bdc6824a025f0bc_cgraph.svg" width="522" height="75"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a37839500158d123b7bdc6824a025f0bc_cgraph.svg" width="340" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1038,22 +1066,13 @@ template&lt;typename Type &gt; </div>
 <div class="line"><span class="lineno">  405</span>  <span class="keyword">co_yield</span> lhs + *rhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b">begin</a>();</div>
 <div class="line"><span class="lineno">  406</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00403">operator+()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="naive_8hpp_source.xhtml#l00326">fcarouge::naive::operator+()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00312">fcarouge::naive::operator+()</a>, <a class="el" href="naive_8hpp_source.xhtml#l00332">fcarouge::naive::operator+()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00410">operator+()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00403">operator+()</a>.</p>
-<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>.</p>
+<div id="dynsection-6" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a214880fe1dfe8701212c14c9ece44013_cgraph.svg" width="340" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a214880fe1dfe8701212c14c9ece44013_icgraph.svg" width="360" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a214880fe1dfe8701212c14c9ece44013_cgraph.svg" width="340" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1084,24 +1103,6 @@ template&lt;std::invocable L&gt; </div>
 <div class="line"><span class="lineno">  354</span>  <span class="keywordflow">return</span> lhs() == rhs();</div>
 <div class="line"><span class="lineno">  355</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00353">operator==()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="naive_8hpp_source.xhtml#l00245">fcarouge::naive::operator==()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00353">operator==()</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00357">operator==()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00364">operator==()</a>.</p>
-<div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a62fb05e2f569f36e8cac44a90ccbc106_cgraph.svg" width="151" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-10" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a62fb05e2f569f36e8cac44a90ccbc106_icgraph.svg" width="376" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
 <a id="a47d78fa7b2fbab1fdec6f6e30d6b1da0" name="a47d78fa7b2fbab1fdec6f6e30d6b1da0"></a>
@@ -1130,15 +1131,6 @@ template&lt;std::invocable L, typename T &gt; </div>
 <div class="line"><span class="lineno">  358</span>  <span class="keywordflow">return</span> lhs() == rhs;</div>
 <div class="line"><span class="lineno">  359</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00353">operator==()</a>.</p>
-<div id="dynsection-11" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a47d78fa7b2fbab1fdec6f6e30d6b1da0_cgraph.svg" width="340" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
 <a id="a84939a609e68330c2689aff14d978311" name="a84939a609e68330c2689aff14d978311"></a>
@@ -1185,13 +1177,13 @@ template&lt;typename Type , auto Row, auto Column, bool CopyableOrNot1, bool Cop
 <div class="ttc" id="anamespacefcarouge_xhtml_ae167596e2c65ae7024cbc80f5b5d1974"><div class="ttname"><a href="#ae167596e2c65ae7024cbc80f5b5d1974">fcarouge::make_generator</a></div><div class="ttdeci">constexpr std::generator&lt; typename Range::value_type &gt; make_generator(Range elements)</div><div class="ttdef"><b>Definition</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00067">linalg.hpp:67</a></div></div>
 <div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a345b32af8d533e28e162b7757e23d2ec"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a345b32af8d533e28e162b7757e23d2ec">fcarouge::matrix::genie</a></div><div class="ttdeci">generator genie</div><div class="ttdef"><b>Definition</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00276">linalg.hpp:276</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00276">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::genie</a>, <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00067">make_generator()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00353">operator==()</a>.</p>
-<div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+<p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00276">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::genie</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00067">make_generator()</a>.</p>
+<div id="dynsection-7" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a84939a609e68330c2689aff14d978311_cgraph.svg" width="370" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a84939a609e68330c2689aff14d978311_cgraph.svg" width="370" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1259,6 +1251,15 @@ template&lt;typename Type &gt; </div>
 <div class="line"><span class="lineno">  189</span>}</div>
 <div class="ttc" id="astructfcarouge_1_1transposer_xhtml"><div class="ttname"><a href="structfcarouge_1_1transposer.xhtml">fcarouge::transposer</a></div><div class="ttdoc">Linear algebra transposer specialization point.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00166">utility.hpp:166</a></div></div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="indexed__linalg_8hpp_source.xhtml#l00383">fcarouge::transposer&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;::operator()()</a>.</p>
+<div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_a5d1b555b919a51d9ef29849f6e86b48a_icgraph.svg" width="332" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -1416,7 +1417,7 @@ requires requires { Type::identity(); }</div>
 </div><div class="memdoc">
 
 <p>The singleton identity matrix specialization. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000031">Todo</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00256">256</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  256</span>{Type::Identity()};</div>

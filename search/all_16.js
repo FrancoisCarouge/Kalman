@@ -12,9 +12,10 @@ var searchData=
   ['transition_9',['transition',['../namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41',1,'fcarouge::internal']]],
   ['transpose_10',['transpose',['../namespacefcarouge.xhtml#a63023be73bdc7d43cd7053035230ae34',1,'fcarouge']]],
   ['transposer_11',['transposer',['../structfcarouge_1_1transposer.xhtml',1,'fcarouge']]],
-  ['transposer_3c_20naive_3a_3amatrix_3c_20type_2c_20row_2c_20column_20_3e_20_3e_12',['transposer&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;',['../structfcarouge_1_1transposer_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml',1,'fcarouge']]],
-  ['transposer_3c_20type_20_3e_13',['transposer&lt; Type &gt;',['../structfcarouge_1_1transposer_3_01_type_01_4.xhtml',1,'fcarouge']]],
-  ['tuple_5fn_5ftype_14',['tuple_n_type',['../namespacefcarouge_1_1internal.xhtml#a2d608d28c8cff822a3dfaf1daeb0b15e',1,'fcarouge::internal::tuple_n_type'],['../namespacefcarouge.xhtml#a0c5e16e2c726f4a91a88f3563be340b7',1,'fcarouge::tuple_n_type']]],
-  ['type_2ehpp_15',['type.hpp',['../type_8hpp.xhtml',1,'']]],
-  ['types_16',['Member Types',['../index.xhtml#member-types',1,'']]]
+  ['transposer_3c_20indexedmatrix_3c_20matrix_2c_20rowindexes_2c_20columnindexes_20_3e_20_3e_12',['transposer&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;',['../structfcarouge_1_1transposer_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml',1,'fcarouge']]],
+  ['transposer_3c_20naive_3a_3amatrix_3c_20type_2c_20row_2c_20column_20_3e_20_3e_13',['transposer&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;',['../structfcarouge_1_1transposer_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml',1,'fcarouge']]],
+  ['transposer_3c_20type_20_3e_14',['transposer&lt; Type &gt;',['../structfcarouge_1_1transposer_3_01_type_01_4.xhtml',1,'fcarouge']]],
+  ['tuple_5fn_5ftype_15',['tuple_n_type',['../namespacefcarouge_1_1internal.xhtml#a2d608d28c8cff822a3dfaf1daeb0b15e',1,'fcarouge::internal::tuple_n_type'],['../namespacefcarouge.xhtml#a0c5e16e2c726f4a91a88f3563be340b7',1,'fcarouge::tuple_n_type']]],
+  ['type_2ehpp_16',['type.hpp',['../type_8hpp.xhtml',1,'']]],
+  ['types_17',['Member Types',['../index.xhtml#member-types',1,'']]]
 ];
