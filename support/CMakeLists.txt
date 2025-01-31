@@ -38,8 +38,8 @@ For more information, please refer to <https://unlicense.org> ]]
 
 add_subdirectory("eigen")
 add_subdirectory("eigexed")
-add_subdirectory("main")
 add_subdirectory("indexed")
+add_subdirectory("main")
 add_subdirectory("mp_units")
 add_subdirectory("naive")
 add_subdirectory("naixed")
