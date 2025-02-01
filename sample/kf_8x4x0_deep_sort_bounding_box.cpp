@@ -45,43 +45,45 @@ using state = fcarouge::state<vector<8>>;
       // The output Z:
       output<vector<4>>,
       // The estimate uncertainty P:
-      estimate_uncertainty{matrix<float, 8, 8>{
-          vector<8>{2 * position_weight * initial_box(3),
-                    2 * position_weight * initial_box(3), 1e-2F,
-                    2 * position_weight * initial_box(3),
-                    10 * velocity_weight * initial_box(3),
-                    10 * velocity_weight * initial_box(3), 1e-5F,
-                    10 * velocity_weight * initial_box(3)}
-              .array()
-              .square()
-              .matrix()
-              .asDiagonal()}},
+      estimate_uncertainty{
+          [&position_weight, &velocity_weight, &initial_box]() {
+            matrix<float, 8, 8> value{zero<matrix<float, 8, 8>>};
+            value(0, 0) = std::pow(2.F * position_weight * initial_box(3), 2);
+            value(1, 1) = std::pow(2.F * position_weight * initial_box(3), 2);
+            value(2, 2) = std::pow(1e-2F, 2);
+            value(3, 3) = std::pow(2.F * position_weight * initial_box(3), 2);
+            value(4, 4) = std::pow(10.F * velocity_weight * initial_box(3), 2);
+            value(5, 5) = std::pow(10.F * velocity_weight * initial_box(3), 2);
+            value(6, 6) = std::pow(1e-5F, 2);
+            value(7, 7) = std::pow(10.F * velocity_weight * initial_box(3), 2);
+            return value;
+          }()},
       // Q
-      process_uncertainty{[](const /*state?*/
-                             vector<8> &x) {
-        const float position_weight2{1.F / 20.F};
-        const float velocity_weight2{1.F / 160.F};
-        return matrix<float, 8, 8>{
-            vector<8>{position_weight2 * x(3), position_weight2 * x(3), 1e-2F,
-                      position_weight2 * x(3), velocity_weight2 * x(3),
-                      velocity_weight2 * x(3), 1e-5F, velocity_weight2 * x(3)}
-                .array()
-                .square()
-                .matrix()
-                .asDiagonal()};
+      process_uncertainty{[](const state::type &x) {
+        const float weight_position{1.F / 20.F};
+        const float weight_velocity{1.F / 160.F};
+        matrix<float, 8, 8> value{zero<matrix<float, 8, 8>>};
+        value(0, 0) = std::pow(weight_position * x(3), 2);
+        value(1, 1) = std::pow(weight_position * x(3), 2);
+        value(2, 2) = std::pow(1e-2F, 2);
+        value(3, 3) = std::pow(weight_position * x(3), 2);
+        value(4, 4) = std::pow(weight_velocity * x(3), 2);
+        value(5, 5) = std::pow(weight_velocity * x(3), 2);
+        value(6, 6) = std::pow(1e-5F, 2);
+        value(7, 7) = std::pow(weight_velocity * x(3), 2);
+        return value;
       }},
       // R
       output_uncertainty{
           // Observation, measurement noise covariance.
-          [position_weight](const /*state?*/ vector<8> &x,
-                            [[maybe_unused]] const /*output?*/ vector<4> &z) {
-            return matrix<float, 4, 4>{vector<4>{position_weight * x(3),
-                                                 position_weight * x(3), 1e-1F,
-                                                 position_weight * x(3)}
-                                           .array()
-                                           .square()
-                                           .matrix()
-                                           .asDiagonal()};
+          [](const state::type &x, [[maybe_unused]] const vector<4> &z) {
+            const float weight_position{1.F / 20.F};
+            matrix<float, 4, 4> value{zero<matrix<float, 4, 4>>};
+            value(0, 0) = std::pow(weight_position * x(3), 2);
+            value(1, 1) = std::pow(weight_position * x(3), 2);
+            value(2, 2) = std::pow(1e-1F, 2);
+            value(3, 3) = std::pow(weight_position * x(3), 2);
+            return value;
           }},
       // The state transition F:
       state_transition{{1.F, 0.F, 0.F, 0.F, delta_time, 0.F, 0.F, 0.F},

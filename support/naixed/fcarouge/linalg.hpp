@@ -61,7 +61,7 @@ using matrix =
 
 //! @brief Scalar type indexed-based column vector with naive implementations.
 template <typename Type = double, std::size_t Row = 1>
-using column_vector = naive::matrix<Type, Row, 1>;
+using column_vector = matrix<Type, Row, 1>;
 
 //! @}
 
