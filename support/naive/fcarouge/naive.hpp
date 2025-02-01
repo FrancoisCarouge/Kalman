@@ -121,7 +121,6 @@ struct matrix {
 
   inline constexpr explicit matrix(
       std::initializer_list<std::initializer_list<Type>> rows) {
-
     for (std::size_t i{0}; const auto &row : rows) {
       for (std::size_t j{0}; const auto &element : row) {
         data[i][j] = element;

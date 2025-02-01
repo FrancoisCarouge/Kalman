@@ -54,6 +54,12 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::indexed {
 
+//! @todo Move to utility.
+template <std::size_t RowIndex, typename RowIndexes, std::size_t ColumnIndex,
+          typename ColumnIndexes>
+using element_t = product<std::tuple_element_t<RowIndex, RowIndexes>,
+                          std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
+
 //! @name Types
 //! @{
 
@@ -84,7 +90,7 @@ struct matrix {
 
   inline constexpr matrix(const auto &other) : data{other} {}
 
-  template <typename Type>
+  template <arithmetic Type>
   inline constexpr explicit matrix(
       std::initializer_list<std::initializer_list<Type>> rows) {
     for (std::size_t i{0}; const auto &row : rows) {
@@ -99,7 +105,7 @@ struct matrix {
   template <typename... Types>
     requires(size<ColumnIndexes> == 1 && size<RowIndexes> != 1 &&
              sizeof...(Types) == size<RowIndexes>)
-  explicit inline constexpr matrix(const Types &...elements) {
+  inline constexpr matrix(const Types &...elements) {
     std::tuple element_pack{elements...};
     for_constexpr<0, size<RowIndexes>, 1>([this, &element_pack](auto position) {
       data[position] = std::get<position>(element_pack);
@@ -115,6 +121,13 @@ struct matrix {
         [this, &element_pack](auto position) {
           data[position] = std::get<position>(element_pack);
         });
+  }
+
+  [[nodiscard]] inline constexpr explicit(false)
+  operator element_t<0, RowIndexes, 0, ColumnIndexes>() const
+    requires(size<ColumnIndexes> == 1 && size<RowIndexes> == 1)
+  {
+    return element_t<0, RowIndexes, 0, ColumnIndexes>{data(0, 0)};
   }
 
   //! @todo Shorten with self deduced this?
@@ -216,39 +229,54 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator*(const matrix<Matrix1, RowIndexes, Indexes> &lhs,
           const matrix<Matrix2, Indexes, ColumnIndexes> &rhs) {
+  //! @todo Don't evaluate as much as possible?
   return matrix<evaluate<product<Matrix1, Matrix2>>, RowIndexes, ColumnIndexes>{
       lhs.data * rhs.data};
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typename Matrix1, typename Matrix2, typename RowIndexes,
+          typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
-operator+(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data +
-                                                             rhs.data};
+operator+(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
+          const matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
+  return matrix<evaluate<Matrix1>, RowIndexes, ColumnIndexes>{lhs.data +
+                                                              rhs.data};
 }
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
+  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
 [[nodiscard]] inline constexpr auto
 operator+(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data + rhs};
+  //! @todo Return element.
+  //! @todo Scalar will become Index with constraints.
+  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) + rhs};
 }
 
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <typename Matrix1, typename Matrix2, typename RowIndexes,
+          typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
-operator-(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs,
-          const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data -
-                                                             rhs.data};
+operator-(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
+          const matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
+  return matrix<evaluate<Matrix1>, RowIndexes, ColumnIndexes>{lhs.data -
+                                                              rhs.data};
 }
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
+  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
 [[nodiscard]] inline constexpr auto
 operator-(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  //! @todo Return scalar?
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs - rhs.data};
+  //! @todo Don't evaluate? Return the expression?
+  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs - rhs.data(0)};
+}
+
+template <typename Scalar, typename Matrix, typename RowIndexes,
+          typename ColumnIndexes>
+  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
+[[nodiscard]] inline constexpr auto
+operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
+  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs * rhs.data(0)};
 }
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
@@ -256,6 +284,14 @@ template <typename Scalar, typename Matrix, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
   return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs * rhs.data};
+}
+
+template <typename Scalar, typename Matrix, typename RowIndexes,
+          typename ColumnIndexes>
+  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
+[[nodiscard]] inline constexpr auto
+operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
+  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) * rhs};
 }
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
@@ -279,6 +315,14 @@ template <fcarouge::arithmetic Scalar, typename Matrix, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator/(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
   return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data / rhs};
+}
+
+template <fcarouge::arithmetic Scalar, typename Matrix, typename RowIndexes,
+          typename ColumnIndexes>
+  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
+[[nodiscard]] inline constexpr auto
+operator/(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
+  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) / rhs};
 }
 } // namespace fcarouge::indexed
 
