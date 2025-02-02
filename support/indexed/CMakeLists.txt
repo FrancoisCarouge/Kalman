@@ -1,4 +1,4 @@
-/*  __          _      __  __          _   _
+#[[ __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,23 +34,10 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> */
+For more information, please refer to <https://unlicense.org> ]]
 
-#include "fcarouge/linalg.hpp"
-
-#include <cassert>
-#include <type_traits>
-
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the 1x1 zero matrix deduced default value is a null double.
-[[maybe_unused]] auto test{[] {
-  auto zero{zero_v<>};
-
-  assert(zero == 0.0);
-  static_assert(std::is_same_v<decltype(zero), double>);
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+add_library(kalman_linalg_indexed INTERFACE)
+target_sources(
+  kalman_linalg_indexed INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES
+                                  "fcarouge/indexed_linalg.hpp")
+target_link_libraries(kalman_linalg_indexed INTERFACE kalman)

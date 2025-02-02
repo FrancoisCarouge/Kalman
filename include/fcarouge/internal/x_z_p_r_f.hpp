@@ -36,33 +36,32 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_X_Z_HPP
-#define FCAROUGE_INTERNAL_X_Z_HPP
+#ifndef FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
+#define FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
 
 #include "fcarouge/utility.hpp"
 
 namespace fcarouge::internal {
-template <typename State, typename Output> struct x_z_p_r_f {
+template <typename State> struct x_z_p_r_f {
   using state = State;
-  using output = Output;
-  using estimate_uncertainty = deduce_matrix<state, state>;
-  using output_uncertainty = deduce_matrix<output, output>;
-  using state_transition = deduce_matrix<state, state>;
+  using output = State;
+  using estimate_uncertainty = ᴀʙᵀ<state, state>;
+  using output_uncertainty = ᴀʙᵀ<output, output>;
+  using state_transition = ᴀʙᵀ<state, state>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
-  using gain = deduce_matrix<state, output>;
+  using gain = evaluate<divide<estimate_uncertainty, innovation_uncertainty>>;
 
-  static inline const auto i{identity_v<gain>};
+  static inline const auto i{identity<gain>};
 
-  state x{zero_v<state>};
-  estimate_uncertainty p{identity_v<estimate_uncertainty>};
-  output_uncertainty r{zero_v<output_uncertainty>};
-  state_transition f{identity_v<state_transition>};
-  gain k{identity_v<gain>};
-  innovation y{zero_v<innovation>};
-  innovation_uncertainty s{identity_v<innovation_uncertainty>};
-  output z{zero_v<output>};
-  transposer t{};
+  state x{zero<state>};
+  estimate_uncertainty p{identity<estimate_uncertainty>};
+  output_uncertainty r{zero<output_uncertainty>};
+  state_transition f{identity<state_transition>};
+  gain k{identity<gain>};
+  innovation y{zero<innovation>};
+  innovation_uncertainty s{identity<innovation_uncertainty>};
+  output z{zero<output>};
 
   inline constexpr void update(const output &output_z) {
     z = output_z;
@@ -80,4 +79,4 @@ template <typename State, typename Output> struct x_z_p_r_f {
 };
 } // namespace fcarouge::internal
 
-#endif // FCAROUGE_INTERNAL_X_Z_HPP
+#endif // FCAROUGE_INTERNAL_X_Z_P_R_F_HPP

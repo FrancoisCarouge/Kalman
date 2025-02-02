@@ -66,19 +66,31 @@ template <typename Filter = void> struct filter_deducer {
                   "This requested filter configuration is not yet supported. "
                   "Please, submit a pull request or feature request.");
 
-    return x_z_p_r_f<double, double>{};
+    return x_z_p_r_f<double>{};
   }
 
   //! @todo Rename, clean the concet: undeduced?
-  inline constexpr auto operator()() const -> x_z_p_r_f<double, double>
+  inline constexpr auto operator()() const -> x_z_p_r_f<double>
     requires(std::same_as<Filter, void>);
 
   inline constexpr auto operator()() const { return Filter{}; }
 
+  template <typename State>
+  inline constexpr auto operator()(state<State> x) const {
+    return x_z_p_r_f<State>{x.value};
+  }
+
+  template <typename State, typename Output>
+    requires std::same_as<State, Output>
+  inline constexpr auto operator()(state<State> x,
+                                   [[maybe_unused]] output_t<Output> z) const {
+    return x_z_p_r_f<State>{x.value};
+  }
+
   template <typename State, typename Output>
   inline constexpr auto operator()(state<State> x,
                                    [[maybe_unused]] output_t<Output> z) const {
-    return x_z_p_r_f<State, Output>{x.value};
+    return x_z_p_q_r_h_f<State, Output>{x.value};
   }
 
   template <typename State, typename Output, typename Input>
@@ -108,7 +120,7 @@ template <typename Filter = void> struct filter_deducer {
              state_transition<StateTransition> f, input_control<InputControl> g,
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
     using kt = x_z_u_p_q_r_f_g_ps<State, Output, Input, empty_tuple,
-                                  repack_t<prediction_types_t<Ps...>>>;
+                                  repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state{x.value},
               typename kt::estimate_uncertainty{p.value},
               typename kt::noise_process_function{q.value},
@@ -125,8 +137,8 @@ template <typename Filter = void> struct filter_deducer {
              [[maybe_unused]] update_types_t<Us...> uts,
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
     using kt =
-        x_z_u_p_q_r_us_ps<State, Output, Input, repack_t<update_types_t<Us...>>,
-                          repack_t<prediction_types_t<Ps...>>>;
+        x_z_u_p_q_r_us_ps<State, Output, Input, repack<update_types_t<Us...>>,
+                          repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state{x.value}};
   }
 
@@ -149,9 +161,8 @@ template <typename Filter = void> struct filter_deducer {
              observation<Observation> hh,
              [[maybe_unused]] update_types_t<Us...> uts,
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
-    using kt =
-        x_z_p_q_r_hh_us_ps<State, Output, repack_t<update_types_t<Us...>>,
-                           repack_t<prediction_types_t<Ps...>>>;
+    using kt = x_z_p_q_r_hh_us_ps<State, Output, repack<update_types_t<Us...>>,
+                                  repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state{x.value},
               typename kt::estimate_uncertainty{p.value},
               typename kt::process_uncertainty{q.value},
@@ -182,11 +193,24 @@ template <typename Filter = void> struct filter_deducer {
 
   template <typename State, typename Output, typename EstimateUncertainty,
             typename OutputUncertainty>
+    requires std::same_as<State, Output>
   inline constexpr auto
   operator()(state<State> x, [[maybe_unused]] output_t<Output> z,
              estimate_uncertainty<EstimateUncertainty> p,
              output_uncertainty<OutputUncertainty> r) const {
-    using kt = x_z_p_r_f<State, Output>;
+    using kt = x_z_p_r_f<State>;
+    return kt{typename kt::state{x.value},
+              typename kt::estimate_uncertainty{p.value},
+              typename kt::output_uncertainty{r.value}};
+  }
+
+  template <typename State, typename Output, typename EstimateUncertainty,
+            typename OutputUncertainty>
+  inline constexpr auto
+  operator()(state<State> x, [[maybe_unused]] output_t<Output> z,
+             estimate_uncertainty<EstimateUncertainty> p,
+             output_uncertainty<OutputUncertainty> r) const {
+    using kt = x_z_p_q_r_h_f<State, Output>;
     return kt{typename kt::state{x.value},
               typename kt::estimate_uncertainty{p.value},
               typename kt::output_uncertainty{r.value}};
@@ -236,8 +260,8 @@ template <typename Filter = void> struct filter_deducer {
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
 
     using kt =
-        x_z_u_p_q_r_us_ps<State, Output, Input, repack_t<update_types_t<Us...>>,
-                          repack_t<prediction_types_t<Ps...>>>;
+        x_z_u_p_q_r_us_ps<State, Output, Input, repack<update_types_t<Us...>>,
+                          repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state{x.value},
               typename kt::estimate_uncertainty{p.value},
               typename kt::process_uncertainty{q.value},

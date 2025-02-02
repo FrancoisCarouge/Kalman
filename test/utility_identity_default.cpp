@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/linalg.hpp"
+#include "fcarouge/utility.hpp"
 
 #include <cassert>
 #include <type_traits>
@@ -46,10 +46,10 @@ namespace {
 //! @test Verifies the 1x1 identity matrix deduced default value is a unit
 //! double.
 [[maybe_unused]] auto test{[] {
-  auto identity{identity_v<>};
+  [[maybe_unused]] const auto i{identity<>};
 
-  assert(identity == 1.0);
-  static_assert(std::is_same_v<decltype(identity), double>);
+  assert(i == 1.0);
+  static_assert(std::is_same_v<decltype(i), const double>);
 
   return 0;
 }()};

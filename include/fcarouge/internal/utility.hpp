@@ -59,9 +59,6 @@ concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 template <typename Type>
 concept algebraic = requires(Type value) { value(0, 0); };
 
-template <typename Type>
-concept eigen = requires { typename Type::PlainMatrix; };
-
 template <typename Filter>
 concept has_input_member = requires(Filter filter) { filter.u; };
 
@@ -223,16 +220,15 @@ struct conditional_member_types : public conditional_input_control<Filter>,
                                   conditional_state_transition<Filter>,
                                   conditional_update_types<Filter> {};
 
-template <typename Type> struct repack {
+template <typename Type> struct repacker {
   using type = Type;
 };
 
 template <template <typename...> typename Pack, typename... Types>
-struct repack<Pack<Types...>> {
+struct repacker<Pack<Types...>> {
   using type = std::tuple<Types...>;
-  using size_t = std::remove_const_t<decltype(sizeof...(Types))>;
 
-  static inline constexpr auto size{sizeof...(Types)};
+  static inline constexpr std::size_t size{sizeof...(Types)};
 };
 
 template <auto Value, auto... Values> struct first_value {
@@ -252,51 +248,15 @@ template <typename Type> struct not_implemented {
   static_assert(missing, "This type is not implemented. See compiler message.");
 };
 
-struct transposer final {
-  template <arithmetic Arithmetic>
-  [[nodiscard]] inline constexpr auto
-  operator()(const Arithmetic &value) const {
-    return value;
-  }
-
-  template <typename Matrix>
-    requires requires(Matrix value) { value.transpose(); }
-  [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
-    return value.transpose();
-  }
-
-  template <typename Matrix>
-    requires requires(Matrix value) { transpose(value); }
-  [[nodiscard]] inline constexpr auto operator()(const Matrix &value) const {
-    return transpose(value);
-  }
-};
-
-struct matrix_deducer;
-
 template <typename Lhs, typename Rhs>
-using deduce_matrix =
-    std::remove_cvref_t<std::invoke_result_t<matrix_deducer, Lhs, Rhs>>;
-
-struct matrix_deducer final {
-  template <typename Lhs, typename Rhs>
-  [[nodiscard]] inline constexpr auto
-  operator()(Lhs lhs, Rhs rhs) const -> decltype(lhs * transposer{}(rhs));
-
-  template <typename Lhs, typename Rhs>
-    requires(eigen<Lhs> or eigen<Rhs>)
-  [[nodiscard]] inline constexpr auto operator()(Lhs lhs, Rhs rhs) const ->
-      typename decltype(lhs * transposer{}(rhs))::PlainMatrix;
-};
+using product = decltype(std::declval<Lhs>() * std::declval<Rhs>());
 
 using empty_tuple = std::tuple<>;
 
-template <typename Pack> using repack_t = repack<Pack>::type;
-
-template <typename Pack> using size_t = repack<Pack>::size_t;
+template <typename Pack> using repack = repacker<Pack>::type;
 
 template <typename... Types>
-using first_t = std::tuple_element_t<0, std::tuple<Types...>>;
+using first = std::tuple_element_t<0, std::tuple<Types...>>;
 
 template <std::size_t Begin, std::size_t End, std::size_t Increment,
           typename Function>
@@ -308,10 +268,27 @@ inline constexpr void for_constexpr(Function &&function) {
   }
 }
 
-template <typename Pack> inline constexpr auto size{repack<Pack>::size};
+template <typename Pack> inline constexpr auto size{repacker<Pack>::size};
 
 template <auto... Values>
 inline constexpr auto first_v{first_value<Values...>::value};
+
+template <typename Type, std::size_t Size> struct tupler {
+  template <typename = std::make_index_sequence<Size>> struct helper;
+
+  template <std::size_t... Indexes>
+  struct helper<std::index_sequence<Indexes...>> {
+    template <std::size_t> using wrap = Type;
+
+    using type = std::tuple<wrap<Indexes>...>;
+  };
+
+  using type = typename helper<>::type;
+};
+
+template <typename Type, std::size_t Size>
+using tuple_n_type = typename tupler<Type, Size>::type;
+
 } // namespace fcarouge::internal
 
 #endif // FCAROUGE_INTERNAL_UTILITY_HPP

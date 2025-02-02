@@ -229,10 +229,6 @@ public:
   //! @complexity Constant.
   //!
   //! @note Overloading the operator dot would have been nice had it existed.
-  //!
-  //! @todo Collapse cv-ref qualifier-aware member functions per C++23 P0847 to
-  //! avoid duplication: `inline constexpr auto & x(this auto&& self)`.
-
   inline constexpr auto &&x(this auto &&self);
 
   //! @brief Sets the state estimate column vector X.
@@ -537,11 +533,17 @@ using internal::output_uncertainty;
 //! @brief Process uncertainty type wrapper for filter declaration support.
 using internal::process_uncertainty;
 
-//! @brief Input type wrapper for filter declaration support.
+//! @brief Input value wrapper for filter declaration support.
 using internal::input;
 
-//! @brief Output type wrapper for filter declaration support.
+//! @brief Input type wrapper for filter declaration support.
+using internal::input_t;
+
+//! @brief Output value wrapper for filter declaration support.
 using internal::output;
+
+//! @brief Output type wrapper for filter declaration support.
+using internal::output_t;
 
 //! @brief Output model type wrapper for filter declaration support.
 using internal::output_model;

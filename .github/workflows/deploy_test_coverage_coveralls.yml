@@ -11,6 +11,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     permissions:
@@ -19,7 +23,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+      uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
       with:
         egress-policy: audit
     - name: Checkout
@@ -43,7 +47,7 @@ jobs:
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/test/*' --output-file base.info
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '/usr/*' --output-file base.info
     - name: 'Test'
-      run: ctest --test-dir 'build' --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --timeout 2 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Coverage: Test'
       run: |
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --directory . --output-file test.info

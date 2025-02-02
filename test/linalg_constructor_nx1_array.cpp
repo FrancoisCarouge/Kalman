@@ -44,8 +44,8 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the array constructor.
 [[maybe_unused]] auto test{[] {
-  double a[3]{42.0, 43.0, 44.0};
-  matrix<double, 3, 1> m{a};
+  const double a[3]{42.0, 43.0, 44.0};
+  const matrix<double, 3, 1> m{a};
 
   assert(m(0, 0) == 42.0);
   assert(m(1, 0) == 43.0);

@@ -11,22 +11,26 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     strategy:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-24.04', cxx: 'clang++-19', cc: 'clang-19', generator: 'Unix Makefiles', packages: 'clang-19' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Unix Makefiles', packages: 'clang-18' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', packages: 'g++-14' }
-        - { os: 'windows-latest', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Debug' }
-        - { os: 'windows-latest', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Release' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-19', cc: 'clang-19', generator: 'Unix Makefiles', packages: 'clang-19'  }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Unix Makefiles', packages: 'clang-18'  }
+        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', packages: 'g++-14'  }
+        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Debug' }
+        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+      uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
       with:
         egress-policy: audit
     - name: 'Checkout'
@@ -41,10 +45,8 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 2 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Install'
-      run: cmake --install 'build' --prefix 'install' --verbose
+      run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
     - name: 'Package'
       run: cmake --build 'build' --target 'package' --verbose --parallel 4
-    - name: 'Package Source'
-      run: cmake --build 'build' --target 'package_source' --verbose --parallel 4

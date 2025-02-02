@@ -47,6 +47,12 @@ FetchContent_MakeAvailable(eigen)
 
 add_library(kalman_linalg_eigen INTERFACE)
 target_sources(
-  kalman_linalg_eigen INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS" FILES
-                                "fcarouge/linalg.hpp")
+  kalman_linalg_eigen
+  INTERFACE FILE_SET
+            "linalg_headers"
+            TYPE
+            "HEADERS"
+            FILES
+            "fcarouge/eigen.hpp"
+            "fcarouge/linalg.hpp")
 target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman)

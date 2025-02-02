@@ -44,7 +44,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the 1x1 matrix bracket operator.
 [[maybe_unused]] auto test{[] {
-  matrix<> m{42.0};
+  const matrix<> m{42.0};
 
   assert(m(0) == 42.0);
   assert(m(0, 0) == 42.0);

@@ -71,12 +71,6 @@ concept arithmetic = internal::arithmetic<Type>;
 template <typename Type>
 concept algebraic = internal::algebraic<Type>;
 
-//! @brief Eigen3 algebraic concept.
-//!
-//! @details A third party Eigen3 algebraic concept.
-template <typename Type>
-concept eigen = internal::eigen<Type>;
-
 //! @brief Filter input support concept.
 //!
 //! @details The filter supports the input related functionality: `input` type
@@ -139,6 +133,61 @@ concept has_output_model = internal::has_output_model<Filter>;
 //! @name Types
 //! @{
 
+//! @brief Linear algebra divider expression type specialization point.
+//!
+//! @details Matrix division is a mathematical abuse of terminology. Informally
+//! defined as multiplication by the inverse. Similarly to division by zero in
+//! real numbers, there exists matrices that are not invertible. Remember the
+//! division operation is not commutative. Matrix inversion can be avoided by
+//! solving `X * rhs = lhs` for `rhs` through a decomposer. There exists several
+//! ways to decompose and solve the equation. Implementations trade off
+//! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
+//! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
+template <typename Lhs, typename Rhs> struct divider {
+  [[nodiscard]] inline constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
+};
+
+//! @brief Divider helper type.
+template <typename Lhs, typename Rhs>
+using divide =
+    std::invoke_result_t<divider<Lhs, Rhs>, const Lhs &, const Rhs &>;
+
+//! @brief Linear algebra evaluater override expression lazy evaluation
+//! specialization point.
+template <typename Type> struct evaluater {
+  [[nodiscard]] inline constexpr auto operator()() const -> Type;
+};
+
+//! @brief Evaluater helper type.
+template <typename Type> using evaluate = std::invoke_result_t<evaluater<Type>>;
+
+//! @brief Linear algebra transposer specialization point.
+template <typename Type> struct transposer {
+  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
+    return value;
+  }
+};
+
+template <typename Type>
+  requires requires(Type value) { value.transpose(); }
+struct transposer<Type> {
+  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
+    return value.transpose();
+  }
+};
+
+//! @brief Transposer helper type.
+template <typename Type>
+using transpose = std::invoke_result_t<transposer<Type>, const Type &>;
+
+//! @brief Transpose helper function.
+//!
+//! @details Enable readable linear algebra notation.
+template <typename Type> auto t(const Type &value) {
+  return transposer<Type>{}(value);
+}
+
 //! @brief Type of the empty tuple.
 //!
 //! @details A tuple with no `pack` types.
@@ -147,15 +196,19 @@ using empty_tuple = internal::empty_tuple;
 //! @brief Unpack the first type of the type template parameter pack.
 //!
 //! @details Shorthand for `std::tuple_element_t<0, std::tuple<Types...>>`.
-template <typename... Types> using first_t = internal::first_t<Types...>;
+template <typename... Types> using first = internal::first<Types...>;
 
-//! @brief The matrix type satisfying `X * Row = Column`.
-//!
-//! @details The resulting type of a matrix division. The resulting matrix type
-//! has as many rows as the `Row` matrix, respectively for columns as the
-//! `Column` matrix.
-template <typename Numerator, typename Denominator>
-using deduce_matrix = internal::deduce_matrix<Numerator, Denominator>;
+//! @brief An alias for making a tuple of the same type.
+template <typename Type, std::size_t Size>
+using tuple_n_type = internal::tuple_n_type<Type, Size>;
+
+//! @brief The deduced result type of the product.
+template <typename Lhs, typename Rhs>
+using product = internal::product<Lhs, Rhs>;
+
+//! @brief The evaluated type of the ABᵀ expression.
+template <typename Lhs, typename Rhs>
+using ᴀʙᵀ = evaluate<product<Lhs, transpose<Rhs>>>;
 
 //! @}
 
@@ -172,24 +225,16 @@ inline constexpr void for_constexpr(Function &&function) {
       std::forward<Function>(function));
 }
 
-//! @brief A user-definable algebraic division solution.
-//!
-//! @details Matrix division is a mathematical abuse of terminology. Informally
-//! defined as multiplication by the inverse. Similarly to division by zero in
-//! real numbers, there exists matrices that are not invertible. Remember the
-//! division operation is not commutative. Matrix inversion can be avoided by
-//! solving `X * rhs = lhs` for `rhs` through a decomposer. There exists several
-//! ways to decompose and solve the equation. Implementations trade off
-//! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
-//! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
-template <typename Numerator, algebraic Denominator>
-constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
-    -> deduce_matrix<Numerator, Denominator>;
-
 //! @}
 
 //! @name Named Values
 //! @{
+
+//! @brief Size of tuple-like types.
+//!
+//! @details Convenient short form. In place of `std::tuple_size_v`.
+template <typename Pack>
+inline constexpr std::size_t size{internal::size<Pack>};
 
 //! @brief Unpack the first value of the non-type template parameter pack.
 template <auto... Values>
@@ -199,41 +244,42 @@ inline constexpr auto first_v{internal::first_v<Values...>};
 //!
 //! @details User-defined.
 template <typename Type = double>
-inline constexpr Type identity_v{internal::not_implemented<Type>{
+inline constexpr Type identity{internal::not_implemented<Type>{
     "Implement the linear algebra identity matrix for this type."}};
 
 //! @brief The singleton identity matrix specialization.
 template <arithmetic Arithmetic>
-inline constexpr Arithmetic identity_v<Arithmetic>{1};
+inline constexpr Arithmetic identity<Arithmetic>{1};
 
 template <typename Type>
   requires requires { Type::Identity(); }
-inline auto identity_v<Type>{Type::Identity()};
+inline auto identity<Type>{Type::Identity()};
 
 template <typename Type>
   requires requires { Type::identity(); }
-inline auto identity_v<Type>{Type::identity()};
+inline auto identity<Type>{Type::identity()};
 
 //! @brief The zero matrix.
 //!
 //! @details User-defined.
 template <typename Type = double>
-inline constexpr Type zero_v{internal::not_implemented<Type>{
+inline constexpr Type zero{internal::not_implemented<Type>{
     "Implement the linear algebra zero matrix for this type."}};
 
 //! @brief The singleton zero matrix specialization.
 template <arithmetic Arithmetic>
-inline constexpr Arithmetic zero_v<Arithmetic>{0};
+inline constexpr Arithmetic zero<Arithmetic>{0};
 
 template <typename Type>
   requires requires { Type::Zero(); }
-inline auto zero_v<Type>{Type::Zero()};
+inline auto zero<Type>{Type::Zero()};
 
 template <typename Type>
   requires requires { Type::zero(); }
-inline auto zero_v<Type>{Type::zero()};
+inline auto zero<Type>{Type::zero()};
 
 //! @}
+
 } // namespace fcarouge
 
 #endif // FCAROUGE_UTILITY_HPP

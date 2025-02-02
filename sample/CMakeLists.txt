@@ -36,42 +36,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-foreach(SAMPLE "kf_1x1x0_building_height.cpp" "kf_1x1x0_liquid_temperature.cpp"
-               "kf_1x1x1_dog_position.cpp")
-  get_filename_component(NAME ${SAMPLE} NAME_WE)
-  add_executable(kalman_sample_${NAME}_driver ${SAMPLE})
-  target_link_libraries(kalman_sample_${NAME}_driver PRIVATE kalman kalman_main
-                                                             kalman_options)
-  separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-  add_test(NAME kalman_sample_${NAME}
-           COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_sample_${NAME}_driver>)
-endforeach()
+include(sample.cmake)
 
-foreach(BACKEND IN ITEMS "eigen" "naive")
-  foreach(SAMPLE "ekf_4x1x0_soaring.cpp" "kf_2x1x1_rocket_altitude.cpp")
-    get_filename_component(NAME ${SAMPLE} NAME_WE)
-    add_executable(kalman_sample_${BACKEND}_${NAME}_driver ${SAMPLE})
-    target_link_libraries(
-      kalman_sample_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(NAME kalman_sample_${BACKEND}_${NAME}
-             COMMAND ${TEST_COMMAND}
-                     $<TARGET_FILE:kalman_sample_${BACKEND}_${NAME}_driver>)
-  endforeach()
-endforeach()
-
-foreach(BACKEND IN ITEMS "eigen")
-  foreach(SAMPLE "kf_6x2x0_vehicle_location.cpp"
-                 "kf_8x4x0_deep_sort_bounding_box.cpp")
-    get_filename_component(NAME ${SAMPLE} NAME_WE)
-    add_executable(kalman_sample_${BACKEND}_${NAME}_driver ${SAMPLE})
-    target_link_libraries(
-      kalman_sample_${BACKEND}_${NAME}_driver
-      PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
-    separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
-    add_test(NAME kalman_sample_${BACKEND}_${NAME}
-             COMMAND ${TEST_COMMAND}
-                     $<TARGET_FILE:kalman_sample_${BACKEND}_${NAME}_driver>)
-  endforeach()
-endforeach()
+sample(NAME "ekf_4x1x0_soaring" BACKENDS "eigen" "naive")
+sample(NAME "kf_1x1x0_building_height")
+sample(NAME "kf_1x1x0_liquid_temperature")
+sample(NAME "kf_1x1x1_dog_position")
+sample(NAME "kf_2x1x1_rocket_altitude" BACKENDS "eigen" "naive")
+sample(NAME "kf_6x2x0_vehicle_location" BACKENDS "eigen")
+sample(NAME "kf_8x4x0_deep_sort_bounding_box" BACKENDS "eigen")

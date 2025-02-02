@@ -37,8 +37,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 add_subdirectory("eigen")
+add_subdirectory("eigexed")
+add_subdirectory("indexed")
 add_subdirectory("main")
+add_subdirectory("mp_units")
 add_subdirectory("naive")
+add_subdirectory("naixed")
 
 add_library(kalman_options INTERFACE)
 
@@ -106,5 +110,5 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_link_options(kalman_options INTERFACE "LINKER:-pie"
                       "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(kalman_options INTERFACE "/EHsc" "/W4")
+  target_compile_options(kalman_options INTERFACE "/EHsc" "/W4" "/utf-8")
 endif()

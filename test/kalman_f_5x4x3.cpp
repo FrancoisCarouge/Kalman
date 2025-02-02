@@ -49,9 +49,8 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
 [[maybe_unused]] auto test{[] {
-  const auto i5x5{identity_v<matrix<5, 5>>};
-  const auto z5x5{zero_v<matrix<5, 5>>};
-  const vector<3> z3{zero_v<vector<3>>};
+  const matrix<5, 5> i5x5{identity<matrix<5, 5>>};
+  const matrix<5, 5> z5x5{zero<matrix<5, 5>>};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>, update_types<double, float, int>,
                 prediction_types<int, float, double>};
@@ -59,13 +58,13 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
   assert(filter.f() == i5x5);
 
   {
-    const auto f{z5x5};
+    const matrix<5, 5> f{z5x5};
     filter.f(f);
     assert(filter.f() == z5x5);
   }
 
   {
-    const auto f{i5x5};
+    const matrix<5, 5> f{i5x5};
     filter.f(f);
     assert(filter.f() == i5x5);
   }
