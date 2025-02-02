@@ -140,43 +140,45 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">      <span class="comment">// The output Z:</span></div>
 <div class="line">      output&lt;vector&lt;4&gt;&gt;,</div>
 <div class="line">      <span class="comment">// The estimate uncertainty P:</span></div>
-<div class="line">      estimate_uncertainty{<a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 8, 8&gt;</a>{</div>
-<div class="line">          vector&lt;8&gt;{2 * position_weight * initial_box(3),</div>
-<div class="line">                    2 * position_weight * initial_box(3), 1e-2F,</div>
-<div class="line">                    2 * position_weight * initial_box(3),</div>
-<div class="line">                    10 * velocity_weight * initial_box(3),</div>
-<div class="line">                    10 * velocity_weight * initial_box(3), 1e-5F,</div>
-<div class="line">                    10 * velocity_weight * initial_box(3)}</div>
-<div class="line">              .array()</div>
-<div class="line">              .square()</div>
-<div class="line">              .matrix()</div>
-<div class="line">              .asDiagonal()}},</div>
+<div class="line">      estimate_uncertainty{</div>
+<div class="line">          [&amp;position_weight, &amp;velocity_weight, &amp;initial_box]() {</div>
+<div class="line">            <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 8, 8&gt;</a> value{<a id="a3" name="a3"></a><a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;matrix&lt;float, 8, 8&gt;</a>&gt;};</div>
+<div class="line">            value(0, 0) = std::pow(2.F * position_weight * initial_box(3), 2);</div>
+<div class="line">            value(1, 1) = std::pow(2.F * position_weight * initial_box(3), 2);</div>
+<div class="line">            value(2, 2) = std::pow(1e-2F, 2);</div>
+<div class="line">            value(3, 3) = std::pow(2.F * position_weight * initial_box(3), 2);</div>
+<div class="line">            value(4, 4) = std::pow(10.F * velocity_weight * initial_box(3), 2);</div>
+<div class="line">            value(5, 5) = std::pow(10.F * velocity_weight * initial_box(3), 2);</div>
+<div class="line">            value(6, 6) = std::pow(1e-5F, 2);</div>
+<div class="line">            value(7, 7) = std::pow(10.F * velocity_weight * initial_box(3), 2);</div>
+<div class="line">            <span class="keywordflow">return</span> value;</div>
+<div class="line">          }()},</div>
 <div class="line">      <span class="comment">// Q</span></div>
-<div class="line">      process_uncertainty{[](<span class="keyword">const</span> <span class="comment">/*state?*/</span></div>
-<div class="line">                             vector&lt;8&gt; &amp;x) {</div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> position_weight2{1.F / 20.F};</div>
-<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> velocity_weight2{1.F / 160.F};</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 8, 8&gt;</a>{</div>
-<div class="line">            vector&lt;8&gt;{position_weight2 * x(3), position_weight2 * x(3), 1e-2F,</div>
-<div class="line">                      position_weight2 * x(3), velocity_weight2 * x(3),</div>
-<div class="line">                      velocity_weight2 * x(3), 1e-5F, velocity_weight2 * x(3)}</div>
-<div class="line">                .array()</div>
-<div class="line">                .square()</div>
-<div class="line">                .matrix()</div>
-<div class="line">                .asDiagonal()};</div>
+<div class="line">      process_uncertainty{[](<span class="keyword">const</span> state::type &amp;x) {</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> weight_position{1.F / 20.F};</div>
+<div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> weight_velocity{1.F / 160.F};</div>
+<div class="line">        <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 8, 8&gt;</a> value{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;matrix&lt;float, 8, 8&gt;</a>&gt;};</div>
+<div class="line">        value(0, 0) = std::pow(weight_position * x(3), 2);</div>
+<div class="line">        value(1, 1) = std::pow(weight_position * x(3), 2);</div>
+<div class="line">        value(2, 2) = std::pow(1e-2F, 2);</div>
+<div class="line">        value(3, 3) = std::pow(weight_position * x(3), 2);</div>
+<div class="line">        value(4, 4) = std::pow(weight_velocity * x(3), 2);</div>
+<div class="line">        value(5, 5) = std::pow(weight_velocity * x(3), 2);</div>
+<div class="line">        value(6, 6) = std::pow(1e-5F, 2);</div>
+<div class="line">        value(7, 7) = std::pow(weight_velocity * x(3), 2);</div>
+<div class="line">        <span class="keywordflow">return</span> value;</div>
 <div class="line">      }},</div>
 <div class="line">      <span class="comment">// R</span></div>
 <div class="line">      output_uncertainty{</div>
 <div class="line">          <span class="comment">// Observation, measurement noise covariance.</span></div>
-<div class="line">          [position_weight](<span class="keyword">const</span> <span class="comment">/*state?*/</span> vector&lt;8&gt; &amp;x,</div>
-<div class="line">                            [[maybe_unused]] <span class="keyword">const</span> <span class="comment">/*output?*/</span> vector&lt;4&gt; &amp;z) {</div>
-<div class="line">            <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 4, 4&gt;</a>{vector&lt;4&gt;{position_weight * x(3),</div>
-<div class="line">                                                 position_weight * x(3), 1e-1F,</div>
-<div class="line">                                                 position_weight * x(3)}</div>
-<div class="line">                                           .array()</div>
-<div class="line">                                           .square()</div>
-<div class="line">                                           .matrix()</div>
-<div class="line">                                           .asDiagonal()};</div>
+<div class="line">          [](<span class="keyword">const</span> state::type &amp;x, [[maybe_unused]] <span class="keyword">const</span> vector&lt;4&gt; &amp;z) {</div>
+<div class="line">            <span class="keyword">const</span> <span class="keywordtype">float</span> weight_position{1.F / 20.F};</div>
+<div class="line">            <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 4, 4&gt;</a> value{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;matrix&lt;float, 4, 4&gt;</a>&gt;};</div>
+<div class="line">            value(0, 0) = std::pow(weight_position * x(3), 2);</div>
+<div class="line">            value(1, 1) = std::pow(weight_position * x(3), 2);</div>
+<div class="line">            value(2, 2) = std::pow(1e-1F, 2);</div>
+<div class="line">            value(3, 3) = std::pow(weight_position * x(3), 2);</div>
+<div class="line">            <span class="keywordflow">return</span> value;</div>
 <div class="line">          }},</div>
 <div class="line">      <span class="comment">// The state transition F:</span></div>
 <div class="line">      state_transition{{1.F, 0.F, 0.F, 0.F, delta_time, 0.F, 0.F, 0.F},</div>
@@ -323,6 +325,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ae4d1dbbab6a8bdcaa50062d0cb879777"><div class="ttname"><a href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_aef6fb6c8a265d85709b951506123a5f1"><div class="ttname"><a href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">fcarouge::zero</a></div><div class="ttdeci">constexpr Type zero</div><div class="ttdoc">The zero matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00266">utility.hpp:266</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

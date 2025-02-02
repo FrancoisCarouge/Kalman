@@ -8,6 +8,8 @@ var structfcarouge_1_1indexed_1_1matrix =
     [ "matrix", "structfcarouge_1_1indexed_1_1matrix.xhtml#a6571729cf099af1e9d21641f23aa7a69", null ],
     [ "matrix", "structfcarouge_1_1indexed_1_1matrix.xhtml#a051d3e4dba78958f5605ce5c920dbf91", null ],
     [ "matrix", "structfcarouge_1_1indexed_1_1matrix.xhtml#ace7c7708cfec414fff6191c84c265e1e", null ],
+    [ "ColumnIndexes", "structfcarouge_1_1indexed_1_1matrix.xhtml#a7f084192d67c6e48c4b832fb94860128", null ],
+    [ "explicit", "structfcarouge_1_1indexed_1_1matrix.xhtml#adbf69ba017e75f3f94998a1b77dbba20", null ],
     [ "operator()", "structfcarouge_1_1indexed_1_1matrix.xhtml#a63ea03b5ecb9b014b95427944b77c1d1", null ],
     [ "operator()", "structfcarouge_1_1indexed_1_1matrix.xhtml#aee7a32584c3f36fa4f56c24eb524ebe8", null ],
     [ "operator()", "structfcarouge_1_1indexed_1_1matrix.xhtml#ac186899ef9fa1dbaa9fb75387e20f9b4", null ],
@@ -22,5 +24,6 @@ var structfcarouge_1_1indexed_1_1matrix =
     [ "operator[]", "structfcarouge_1_1indexed_1_1matrix.xhtml#a9c9c4f7e62dfc384abe5432958b864e0", null ],
     [ "operator[]", "structfcarouge_1_1indexed_1_1matrix.xhtml#abdb04b0a42b226a638a7fdbca70eddb8", null ],
     [ "operator[]", "structfcarouge_1_1indexed_1_1matrix.xhtml#a97614de28771cc2f71b84f5c397294a1", null ],
-    [ "data", "structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209", null ]
+    [ "data", "structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209", null ],
+    [ "RowIndexes", "structfcarouge_1_1indexed_1_1matrix.xhtml#a30d5f40ae1b6ce6d145494b0a8f459c3", null ]
 ];
