@@ -46,6 +46,7 @@ sample(
   "eigexed"
   "naive"
   "naixed")
+sample(NAME "kf_1x1x0_building_height")
 sample(NAME "kf_1x1x0_liquid_temperature")
 sample(NAME "kf_1x1x1_dog_position")
 sample(
