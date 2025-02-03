@@ -204,12 +204,12 @@ struct matrix {
 
 //! @brief Row vector.
 template <typename Matrix, typename... ColumnIndexes>
-using indexed_row_vector =
+using row_vector =
     matrix<Matrix, std::tuple<int>, std::tuple<ColumnIndexes...>>;
 
 //! @brief Column vector.
 template <typename Matrix, typename... RowIndexes>
-using indexed_column_vector =
+using column_vector =
     matrix<Matrix, std::tuple<RowIndexes...>, std::tuple<int>>;
 
 //! @}
