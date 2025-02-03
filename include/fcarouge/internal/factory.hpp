@@ -77,20 +77,20 @@ template <typename Filter = void> struct filter_deducer {
 
   template <typename State>
   inline constexpr auto operator()(state<State> x) const {
-    return x_z_p_r_f<State>{x.value};
+    return x_z_p_r_f<State>(x.value);
   }
 
   template <typename State, typename Output>
     requires std::same_as<State, Output>
   inline constexpr auto operator()(state<State> x,
                                    [[maybe_unused]] output_t<Output> z) const {
-    return x_z_p_r_f<State>{x.value};
+    return x_z_p_r_f<State>(x.value);
   }
 
   template <typename State, typename Output>
   inline constexpr auto operator()(state<State> x,
                                    [[maybe_unused]] output_t<Output> z) const {
-    return x_z_p_q_r_h_f<State, Output>{x.value};
+    return x_z_p_q_r_h_f<State, Output>(x.value);
   }
 
   template <typename State, typename Output, typename Input>
@@ -99,7 +99,7 @@ template <typename Filter = void> struct filter_deducer {
                                    [[maybe_unused]] input_t<Input> u) const {
     using kt =
         x_z_u_p_q_r_us_ps<State, Output, Input, empty_tuple, empty_tuple>;
-    return kt{typename kt::state{x.value}};
+    return kt{typename kt::state(x.value)};
   }
 
   template <typename State, typename Output, typename Input,
@@ -121,12 +121,12 @@ template <typename Filter = void> struct filter_deducer {
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
     using kt = x_z_u_p_q_r_f_g_ps<State, Output, Input, empty_tuple,
                                   repack<prediction_types_t<Ps...>>>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::noise_process_function{q.value},
-              typename kt::output_uncertainty{r.value},
-              typename kt::transition_state_function{f.value},
-              typename kt::transition_control_function{g.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::noise_process_function(q.value),
+              typename kt::output_uncertainty(r.value),
+              typename kt::transition_state_function(f.value),
+              typename kt::transition_control_function(g.value)};
   }
 
   template <typename State, typename Output, typename Input, typename... Us,
@@ -139,7 +139,7 @@ template <typename Filter = void> struct filter_deducer {
     using kt =
         x_z_u_p_q_r_us_ps<State, Output, Input, repack<update_types_t<Us...>>,
                           repack<prediction_types_t<Ps...>>>;
-    return kt{typename kt::state{x.value}};
+    return kt{typename kt::state(x.value)};
   }
 
   template <typename State, typename Output, typename EstimateUncertainty,
@@ -163,13 +163,13 @@ template <typename Filter = void> struct filter_deducer {
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
     using kt = x_z_p_q_r_hh_us_ps<State, Output, repack<update_types_t<Us...>>,
                                   repack<prediction_types_t<Ps...>>>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::process_uncertainty{q.value},
-              typename kt::output_uncertainty{r.value},
-              typename kt::observation_state_function{h.value},
-              typename kt::transition_function{ff.value},
-              typename kt::observation_function{hh.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::process_uncertainty(q.value),
+              typename kt::output_uncertainty(r.value),
+              typename kt::observation_state_function(h.value),
+              typename kt::transition_function(ff.value),
+              typename kt::observation_function(hh.value)};
   }
 
   template <typename State, typename Output, typename EstimateUncertainty,
@@ -183,12 +183,12 @@ template <typename Filter = void> struct filter_deducer {
                                    output_model<OutputModel> h,
                                    state_transition<StateTransition> f) const {
     using kt = x_z_p_q_r_h_f<State, Output>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::process_uncertainty{q.value},
-              typename kt::output_uncertainty{r.value},
-              typename kt::output_model{h.value},
-              typename kt::state_transition{f.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::process_uncertainty(q.value),
+              typename kt::output_uncertainty(r.value),
+              typename kt::output_model(h.value),
+              typename kt::state_transition(f.value)};
   }
 
   template <typename State, typename Output, typename EstimateUncertainty,
@@ -199,9 +199,9 @@ template <typename Filter = void> struct filter_deducer {
              estimate_uncertainty<EstimateUncertainty> p,
              output_uncertainty<OutputUncertainty> r) const {
     using kt = x_z_p_r_f<State>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::output_uncertainty{r.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::output_uncertainty(r.value)};
   }
 
   template <typename State, typename Output, typename EstimateUncertainty,
@@ -211,9 +211,9 @@ template <typename Filter = void> struct filter_deducer {
              estimate_uncertainty<EstimateUncertainty> p,
              output_uncertainty<OutputUncertainty> r) const {
     using kt = x_z_p_q_r_h_f<State, Output>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::output_uncertainty{r.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::output_uncertainty(r.value)};
   }
 
   template <typename State, typename Output, typename EstimateUncertainty,
@@ -224,10 +224,10 @@ template <typename Filter = void> struct filter_deducer {
              process_uncertainty<ProcessUncertainty> q,
              output_uncertainty<OutputUncertainty> r) const {
     using kt = x_z_p_q_r_h_f<State, Output>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::process_uncertainty{q.value},
-              typename kt::output_uncertainty{r.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::process_uncertainty(q.value),
+              typename kt::output_uncertainty(r.value)};
   }
 
   template <typename State, typename Output, typename Input,
@@ -241,10 +241,10 @@ template <typename Filter = void> struct filter_deducer {
              output_uncertainty<OutputUncertainty> r) const {
     using kt =
         x_z_u_p_q_r_us_ps<State, Output, Input, empty_tuple, empty_tuple>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::process_uncertainty{q.value},
-              typename kt::output_uncertainty{r.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::process_uncertainty(q.value),
+              typename kt::output_uncertainty(r.value)};
   }
 
   template <typename State, typename Output, typename Input,
@@ -262,10 +262,10 @@ template <typename Filter = void> struct filter_deducer {
     using kt =
         x_z_u_p_q_r_us_ps<State, Output, Input, repack<update_types_t<Us...>>,
                           repack<prediction_types_t<Ps...>>>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::process_uncertainty{q.value},
-              typename kt::output_uncertainty{r.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::process_uncertainty(q.value),
+              typename kt::output_uncertainty(r.value)};
   }
 
   template <typename State, typename Output, typename EstimateUncertainty,
@@ -283,11 +283,11 @@ template <typename Filter = void> struct filter_deducer {
                                    output_uncertainty<OutputUncertainty> r,
                                    state_transition<StateTransition> f) const {
     using kt = x_z_p_qq_rr_f<State, Output>;
-    return kt{typename kt::state{x.value},
-              typename kt::estimate_uncertainty{p.value},
-              typename kt::noise_process_function{q.value},
-              typename kt::noise_observation_function{r.value},
-              typename kt::state_transition{f.value}};
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::noise_process_function(q.value),
+              typename kt::noise_observation_function(r.value),
+              typename kt::state_transition(f.value)};
   }
 };
 
