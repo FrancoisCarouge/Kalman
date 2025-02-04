@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INDEXED_LINALG_HPP
-#define FCAROUGE_INDEXED_LINALG_HPP
+#ifndef FCAROUGE_INDEXED_HPP
+#define FCAROUGE_INDEXED_HPP
 
 //! @file
 //! @brief Index typed linear algebra implementation.
@@ -147,77 +147,44 @@ struct matrix {
     return element<0, RowIndexes, 0, ColumnIndexes>{data(0, 0)};
   }
 
-  //! @todo Shorten with self deduced this?
-  [[nodiscard]] inline constexpr auto &operator[](std::size_t index)
+  [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
+                                                   std::size_t index)
     requires column<RowIndexes, ColumnIndexes> &&
              (not row<RowIndexes, ColumnIndexes>)
   {
-    return data(index, 0);
+    return std::forward<decltype(self)>(self).data(index, 0);
   }
 
-  [[nodiscard]] inline constexpr const auto &operator[](std::size_t index) const
+  [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
+                                                   std::size_t index)
+    requires row<RowIndexes, ColumnIndexes>
+  {
+    return std::forward<decltype(self)>(self).data(0, index);
+  }
+
+  [[nodiscard]] inline constexpr auto &&
+  operator[](this auto &&self, std::size_t row, std::size_t column) {
+    return std::forward<decltype(self)>(self).data(row, column);
+  }
+
+  [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
+                                                   std::size_t index)
     requires column<RowIndexes, ColumnIndexes> &&
              (not row<RowIndexes, ColumnIndexes>)
   {
-    return data(index, 0);
+    return std::forward<decltype(self)>(self).data(index, 0);
   }
 
-  [[nodiscard]] inline constexpr auto &operator[](std::size_t index)
+  [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
+                                                   std::size_t index)
     requires row<RowIndexes, ColumnIndexes>
   {
-    return data(0, index);
+    return std::forward<decltype(self)>(self).data(0, index);
   }
 
-  [[nodiscard]] inline constexpr const auto &operator[](std::size_t index) const
-    requires row<RowIndexes, ColumnIndexes>
-  {
-    return data(0, index);
-  }
-
-  [[nodiscard]] inline constexpr auto &operator[](std::size_t row,
-                                                  std::size_t column) {
-    return data(row, column);
-  }
-
-  [[nodiscard]] inline constexpr const auto &
-  operator[](std::size_t row, std::size_t column) const {
-    return data(row, column);
-  }
-
-  [[nodiscard]] inline constexpr auto &operator()(std::size_t index)
-    requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>)
-  {
-    return data(index, 0);
-  }
-
-  [[nodiscard]] inline constexpr const auto &operator()(std::size_t index) const
-    requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>)
-  {
-    return data(index, 0);
-  }
-
-  [[nodiscard]] inline constexpr auto &operator()(std::size_t index)
-    requires row<RowIndexes, ColumnIndexes>
-  {
-    return data(0, index);
-  }
-
-  [[nodiscard]] inline constexpr const auto &operator()(std::size_t index) const
-    requires row<RowIndexes, ColumnIndexes>
-  {
-    return data(0, index);
-  }
-
-  [[nodiscard]] inline constexpr auto &operator()(std::size_t row,
-                                                  std::size_t column) {
-    return data(row, column);
-  }
-
-  [[nodiscard]] inline constexpr const auto &
-  operator()(std::size_t row, std::size_t column) const {
-    return data(row, column);
+  [[nodiscard]] inline constexpr auto &&
+  operator()(this auto &&self, std::size_t row, std::size_t column) {
+    return std::forward<decltype(self)>(self).data(row, column);
   }
 
   Matrix data;
@@ -471,4 +438,4 @@ inline indexed::matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
 
 } // namespace fcarouge
 
-#endif // FCAROUGE_INDEXED_LINALG_HPP
+#endif // FCAROUGE_INDEXED_HPP
