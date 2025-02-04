@@ -136,73 +136,42 @@ struct matrix {
     return data[0][0];
   }
 
-  //! @todo Shorten with self deduced this?
-  [[nodiscard]] inline constexpr Type &operator[](std::size_t index)
+  [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
+                                                   std::size_t index)
     requires(Row != 1 && Column == 1)
   {
-    return data[index][0];
+    return std::forward<decltype(self)>(self).data[index][0];
   }
 
-  [[nodiscard]] inline constexpr const Type &operator[](std::size_t index) const
+  [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
+                                                   std::size_t index)
+    requires(Row == 1)
+  {
+    return std::forward<decltype(self)>(self).data[0][index];
+  }
+
+  [[nodiscard]] inline constexpr Type &&
+  operator[](this auto &&self, std::size_t row, std::size_t column) {
+    return std::forward<decltype(self)>(self).data[row][column];
+  }
+
+  [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
+                                                   std::size_t index)
     requires(Row != 1 && Column == 1)
   {
-    return data[index][0];
+    return std::forward<decltype(self)>(self).data[index][0];
   }
 
-  [[nodiscard]] inline constexpr Type &operator[](std::size_t index)
+  [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
+                                                   std::size_t index)
     requires(Row == 1)
   {
-    return data[0][index];
+    return std::forward<decltype(self)>(self).data[0][index];
   }
 
-  [[nodiscard]] inline constexpr const Type &operator[](std::size_t index) const
-    requires(Row == 1)
-  {
-    return data[0][index];
-  }
-
-  [[nodiscard]] inline constexpr Type &operator[](std::size_t row,
-                                                  std::size_t column) {
-    return data[row][column];
-  }
-
-  [[nodiscard]] inline constexpr const Type &
-  operator[](std::size_t row, std::size_t column) const {
-    return data[row][column];
-  }
-
-  [[nodiscard]] inline constexpr Type &operator()(std::size_t index)
-    requires(Row != 1 && Column == 1)
-  {
-    return data[index][0];
-  }
-
-  [[nodiscard]] inline constexpr const Type &operator()(std::size_t index) const
-    requires(Row != 1 && Column == 1)
-  {
-    return data[index][0];
-  }
-
-  [[nodiscard]] inline constexpr Type &operator()(std::size_t index)
-    requires(Row == 1)
-  {
-    return data[0][index];
-  }
-
-  [[nodiscard]] inline constexpr const Type &operator()(std::size_t index) const
-    requires(Row == 1)
-  {
-    return data[0][index];
-  }
-
-  [[nodiscard]] inline constexpr Type &operator()(std::size_t row,
-                                                  std::size_t column) {
-    return data[row][column];
-  }
-
-  [[nodiscard]] inline constexpr const Type &
-  operator()(std::size_t row, std::size_t column) const {
-    return data[row][column];
+  [[nodiscard]] inline constexpr auto &&
+  operator()(this auto &&self, std::size_t row, std::size_t column) {
+    return std::forward<decltype(self)>(self).data[row][column];
   }
 
   [[no_unique_address]] Type data[Row][Column]{};
