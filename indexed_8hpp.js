@@ -1,4 +1,4 @@
-var indexed__linalg_8hpp =
+var indexed_8hpp =
 [
     [ "fcarouge::indexed::matrix< Matrix, RowIndexes, ColumnIndexes >", "structfcarouge_1_1indexed_1_1matrix.xhtml", "structfcarouge_1_1indexed_1_1matrix" ],
     [ "std::formatter< fcarouge::indexed::matrix< Matrix, RowIndexes, ColumnIndexes >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c" ],
@@ -8,20 +8,20 @@ var indexed__linalg_8hpp =
     [ "fcarouge::indexed::row", "conceptfcarouge_1_1indexed_1_1row.xhtml", null ],
     [ "fcarouge::indexed::singleton", "conceptfcarouge_1_1indexed_1_1singleton.xhtml", null ],
     [ "fcarouge::indexed::equal_size", "conceptfcarouge_1_1indexed_1_1equal__size.xhtml", null ],
-    [ "column_vector", "indexed__linalg_8hpp.xhtml#a011e38c672db274168c0803a84ff586f", null ],
-    [ "element", "indexed__linalg_8hpp.xhtml#a2f189c0e6996a3a73eab75bf5004f901", null ],
-    [ "row_vector", "indexed__linalg_8hpp.xhtml#a8d7247e277a36773484a43caa8cc3f9f", null ],
-    [ "operator*", "indexed__linalg_8hpp.xhtml#a93d5e627c492a6b1f3a00988d0d4e90f", null ],
-    [ "operator*", "indexed__linalg_8hpp.xhtml#ac0551e9efa1af2b91988881bebf4eaca", null ],
-    [ "operator*", "indexed__linalg_8hpp.xhtml#aa8199abf2d777c2e4657fe578f730b81", null ],
-    [ "operator*", "indexed__linalg_8hpp.xhtml#aef305169085b268910fe6e8259a7a05b", null ],
-    [ "operator*", "indexed__linalg_8hpp.xhtml#af2491a79b6a321f5f8890f3b1f8f0377", null ],
-    [ "operator+", "indexed__linalg_8hpp.xhtml#ad4751c812149f0f3e2b4ba1a713b3fcb", null ],
-    [ "operator+", "indexed__linalg_8hpp.xhtml#a3c37385157c36fd9b3ec3727334e043e", null ],
-    [ "operator-", "indexed__linalg_8hpp.xhtml#a3e05e1bd31102e3c7d4cfb83f1461f55", null ],
-    [ "operator-", "indexed__linalg_8hpp.xhtml#a2ff9c5d70eb4cb90d4648b0d5ab5da60", null ],
-    [ "operator/", "indexed__linalg_8hpp.xhtml#addd8a1c7956caebecaa0fd4e92a3c7f4", null ],
-    [ "operator/", "indexed__linalg_8hpp.xhtml#a594985140b9f334a9ae8a69edc4faaf1", null ],
-    [ "operator/", "indexed__linalg_8hpp.xhtml#a9e6b0c78471624650df2c8d1c084b78b", null ],
-    [ "operator==", "indexed__linalg_8hpp.xhtml#ad2615f4227ab85ccb64b2be969b3a887", null ]
+    [ "column_vector", "indexed_8hpp.xhtml#a011e38c672db274168c0803a84ff586f", null ],
+    [ "element", "indexed_8hpp.xhtml#a2f189c0e6996a3a73eab75bf5004f901", null ],
+    [ "row_vector", "indexed_8hpp.xhtml#a8d7247e277a36773484a43caa8cc3f9f", null ],
+    [ "operator*", "indexed_8hpp.xhtml#a93d5e627c492a6b1f3a00988d0d4e90f", null ],
+    [ "operator*", "indexed_8hpp.xhtml#ac0551e9efa1af2b91988881bebf4eaca", null ],
+    [ "operator*", "indexed_8hpp.xhtml#aa8199abf2d777c2e4657fe578f730b81", null ],
+    [ "operator*", "indexed_8hpp.xhtml#aef305169085b268910fe6e8259a7a05b", null ],
+    [ "operator*", "indexed_8hpp.xhtml#af2491a79b6a321f5f8890f3b1f8f0377", null ],
+    [ "operator+", "indexed_8hpp.xhtml#ad4751c812149f0f3e2b4ba1a713b3fcb", null ],
+    [ "operator+", "indexed_8hpp.xhtml#a3c37385157c36fd9b3ec3727334e043e", null ],
+    [ "operator-", "indexed_8hpp.xhtml#a3e05e1bd31102e3c7d4cfb83f1461f55", null ],
+    [ "operator-", "indexed_8hpp.xhtml#a2ff9c5d70eb4cb90d4648b0d5ab5da60", null ],
+    [ "operator/", "indexed_8hpp.xhtml#addd8a1c7956caebecaa0fd4e92a3c7f4", null ],
+    [ "operator/", "indexed_8hpp.xhtml#a594985140b9f334a9ae8a69edc4faaf1", null ],
+    [ "operator/", "indexed_8hpp.xhtml#a9e6b0c78471624650df2c8d1c084b78b", null ],
+    [ "operator==", "indexed_8hpp.xhtml#ad2615f4227ab85ccb64b2be969b3a887", null ]
 ];

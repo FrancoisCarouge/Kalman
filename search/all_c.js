@@ -6,7 +6,7 @@ var searchData=
   ['identity_3c_20matrix_3c_20type_2c_20row_2c_20column_20_3e_20_3e_3',['identity&lt; matrix&lt; Type, Row, Column &gt; &gt;',['../namespacefcarouge.xhtml#aa12d176b9a5533210dd230e7f719c4fb',1,'fcarouge']]],
   ['identity_3c_20type_20_3e_4',['identity&lt; Type &gt;',['../namespacefcarouge.xhtml#af940cca4b42248e5ef4460d697c2bfb3',1,'fcarouge']]],
   ['implied_5',['IMPLIED',['../_l_i_c_e_n_s_e_8txt.xhtml#aed478e71399bc66b419c46df050165fa',1,'LICENSE.txt']]],
-  ['indexed_5flinalg_2ehpp_6',['indexed_linalg.hpp',['../indexed__linalg_8hpp.xhtml',1,'']]],
+  ['indexed_2ehpp_6',['indexed.hpp',['../indexed_8hpp.xhtml',1,'']]],
   ['individuals_7',['Individuals',['../index.xhtml#individuals',1,'']]],
   ['information_8',['information',['../_l_i_c_e_n_s_e_8txt.xhtml#aa14a3597be64f1a541c572857c9e80d3',1,'LICENSE.txt']]],
   ['innovation_9',['innovation',['../classfcarouge_1_1kalman.xhtml#a008ea306efec20b4270b64d5c7cc8684',1,'fcarouge::kalman']]],
