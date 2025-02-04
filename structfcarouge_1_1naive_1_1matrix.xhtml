@@ -477,13 +477,14 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 <p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00122">122</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  123</span>                                                           {</div>
 <div class="line"><span class="lineno">  124</span>    <span class="keywordflow">for</span> (std::size_t i{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : rows) {</div>
-<div class="line"><span class="lineno">  125</span>      <span class="keywordflow">for</span> (std::size_t j{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;element : row) {</div>
-<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i][j] = element;</div>
+<div class="line"><span class="lineno">  125</span>      <span class="keywordflow">for</span> (std::size_t j{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">element</a> : row) {</div>
+<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="#a15e1f8de54dbe4186bf17501a9ac073b">data</a>[i][j] = <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">element</a>;</div>
 <div class="line"><span class="lineno">  127</span>        ++j;</div>
 <div class="line"><span class="lineno">  128</span>      }</div>
 <div class="line"><span class="lineno">  129</span>      ++i;</div>
 <div class="line"><span class="lineno">  130</span>    }</div>
 <div class="line"><span class="lineno">  131</span>  }</div>
+<div class="ttc" id="anamespacefcarouge_1_1indexed_xhtml_a2f189c0e6996a3a73eab75bf5004f901"><div class="ttname"><a href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">fcarouge::indexed::element</a></div><div class="ttdeci">product&lt; std::tuple_element_t&lt; RowIndex, RowIndexes &gt;, std::tuple_element_t&lt; ColumnIndex, ColumnIndexes &gt; &gt; element</div><div class="ttdef"><b>Definition</b> <a href="indexed__linalg_8hpp_source.xhtml#l00060">indexed_linalg.hpp:60</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -798,7 +799,7 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000043">Todo</a></b></dt><dd>Shorten with self deduced this? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000041">Todo</a></b></dt><dd>Shorten with self deduced this? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="naive_8hpp_source.xhtml#l00140">140</a> of file <a class="el" href="naive_8hpp_source.xhtml">naive.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  142</span>  {</div>

@@ -4,6 +4,12 @@ var concepts =
       [ "eigen", "namespacefcarouge_1_1eigen.xhtml", [
         [ "is_eigen", "conceptfcarouge_1_1eigen_1_1is__eigen.xhtml", null ]
       ] ],
+      [ "indexed", "namespacefcarouge_1_1indexed.xhtml", [
+        [ "column", "conceptfcarouge_1_1indexed_1_1column.xhtml", null ],
+        [ "row", "conceptfcarouge_1_1indexed_1_1row.xhtml", null ],
+        [ "singleton", "conceptfcarouge_1_1indexed_1_1singleton.xhtml", null ],
+        [ "equal_size", "conceptfcarouge_1_1indexed_1_1equal__size.xhtml", null ]
+      ] ],
       [ "kalman_filter", "conceptfcarouge_1_1kalman__filter.xhtml", null ],
       [ "arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
       [ "algebraic", "conceptfcarouge_1_1algebraic.xhtml", null ],
