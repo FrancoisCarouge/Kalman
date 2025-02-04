@@ -39,5 +39,5 @@ For more information, please refer to <https://unlicense.org> ]]
 add_library(kalman_linalg_indexed INTERFACE)
 target_sources(
   kalman_linalg_indexed INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES
-                                  "fcarouge/indexed_linalg.hpp")
+                                  "fcarouge/indexed.hpp")
 target_link_libraries(kalman_linalg_indexed INTERFACE kalman)

@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Scalar type indexed-based linear algebra with naive implementation.
 
-#include "fcarouge/indexed_linalg.hpp"
+#include "fcarouge/indexed.hpp"
 #include "fcarouge/naive.hpp"
 #include "fcarouge/utility.hpp"
 

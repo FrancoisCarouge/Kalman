@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Scalar type indexed-based linear algebra with Eigen implementation.
 
 #include "fcarouge/eigen.hpp"
-#include "fcarouge/indexed_linalg.hpp"
+#include "fcarouge/indexed.hpp"
 #include "fcarouge/utility.hpp"
 
 #include <cstddef>
