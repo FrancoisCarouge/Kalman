@@ -108,12 +108,10 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <dd><a class="anchor" id="_todo000035"></a>The identity with units is no longer the identity? Review the idea.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">fcarouge::indexed::element</a>  </dt>
 <dd><a class="anchor" id="_todo000030"></a>Move to utility.  </dd>
-<dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#abb97e1062ec3d96b04bf28ddaaa16c26">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::operator[]</a>  (std::size_t index)</dt>
-<dd><a class="anchor" id="_todo000038"></a>Shorten with self deduced this?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#aa8199abf2d777c2e4657fe578f730b81">fcarouge::indexed::operator*</a>  (const matrix&lt; Matrix1, RowIndexes, Indexes &gt; &amp;lhs, const matrix&lt; Matrix2, Indexes, ColumnIndexes &gt; &amp;rhs)</dt>
 <dd><a class="anchor" id="_todo000032"></a>Don't evaluate as much as possible?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#ad4751c812149f0f3e2b4ba1a713b3fcb">fcarouge::indexed::operator+</a>  (const matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &amp;lhs, Scalar rhs)</dt>
-<dd><a class="anchor" id="_todo000033"></a>Scalar will become Index with constraints.  </dd>
+<dd><a class="anchor" id="_todo000034"></a>Scalar will become Index with constraints.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a2ff9c5d70eb4cb90d4648b0d5ab5da60">fcarouge::indexed::operator-</a>  (Scalar lhs, const matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &amp;rhs)</dt>
 <dd><a class="anchor" id="_todo000036"></a>Don't evaluate? Return the expression?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#ad2615f4227ab85ccb64b2be969b3a887">fcarouge::indexed::operator==</a>  (const matrix&lt; Matrix1, RowIndexes, ColumnIndexes &gt; &amp;lhs, const matrix&lt; Matrix2, RowIndexes, ColumnIndexes &gt; &amp;rhs)</dt>
@@ -173,7 +171,7 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af5b5c43dcc898eab0391ecc90ff7b328">fcarouge::kalman&lt; Filter &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
 <dd><a class="anchor" id="_todo000027"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Struct <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000034"></a>Explore and compare performance. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000033"></a>Explore and compare performance. </p>
 <p class="interdd"></p>
 <p class="interdd">Explore optimization of heap allocations? </p>
 <p class="interdd"></p>
@@ -186,15 +184,13 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
 <dd><a class="anchor" id="_todo000037"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000039"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
-<dt>Member <a class="el" href="structfcarouge_1_1naive_1_1matrix.xhtml#a41bae6c6820acd8d582d70cb0acf281d">fcarouge::naive::matrix&lt; Type, Row, Column &gt;::operator[]</a>  (std::size_t index)</dt>
-<dd><a class="anchor" id="_todo000041"></a>Shorten with self deduced this?  </dd>
+<dd><a class="anchor" id="_todo000038"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>{<a class="el" href="linalg__multiplication__rxc_8cpp.xhtml">linalg_multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#adfa3a8b5be7eb7ee4bc12ebff7d86a8f">fcarouge::test::anonymous_namespace{linalg_multiplication_rxc.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_todo000042"></a>Should this edge case decay to the underlying type?  </dd>
+<dd><a class="anchor" id="_todo000040"></a>Should this edge case decay to the underlying type?  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml#a887dd3f3f177feadd1ca42785885897f">std::formatter&lt; Filter, Char &gt;::format</a>  (const Filter &amp;filter, std::basic_format_context&lt; OutputIterator, Char &gt; &amp;format_context) const -&gt; OutputIterator</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000001"></a>P2585 may be useful in simplifying and standardizing the support. </p>
-<p class="interdd"><a class="anchor" id="_todo000003"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
-<p class="enddd"><a class="anchor" id="_todo000004"></a>Inconsistent usage of internal? </p>
+<p class="interdd"><a class="anchor" id="_todo000002"></a>Generalize out internal method concept when MSVC has better if-constexpr-requires support. </p>
+<p class="enddd"><a class="anchor" id="_todo000003"></a>Inconsistent usage of internal? </p>
 </dd>
 </dl>
 </div></div><!-- contents -->
