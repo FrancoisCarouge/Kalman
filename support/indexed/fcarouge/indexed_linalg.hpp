@@ -57,8 +57,25 @@ namespace fcarouge::indexed {
 //! @todo Move to utility.
 template <std::size_t RowIndex, typename RowIndexes, std::size_t ColumnIndex,
           typename ColumnIndexes>
-using element_t = product<std::tuple_element_t<RowIndex, RowIndexes>,
-                          std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
+using element = product<std::tuple_element_t<RowIndex, RowIndexes>,
+                        std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
+
+//! @brief The given row and column indexes form a colum-vector/matrix.
+template <typename RowIndexes, typename ColumnIndexes>
+concept column = size<ColumnIndexes> == 1;
+
+//! @brief The given row and column indexes form a row-vector/matrix.
+template <typename RowIndexes, typename ColumnIndexes>
+concept row = size<RowIndexes> == 1;
+
+//! @brief The given row and column indexes form a singleton matrix.
+template <typename RowIndexes, typename ColumnIndexes>
+concept singleton =
+    column<RowIndexes, ColumnIndexes> && row<RowIndexes, ColumnIndexes>;
+
+//! @brief The packs have the same count of types.
+template <typename Pack1, typename Pack2>
+concept equal_size = size<Pack1> == size<Pack2>;
 
 //! @name Types
 //! @{
@@ -94,8 +111,8 @@ struct matrix {
   inline constexpr explicit matrix(
       std::initializer_list<std::initializer_list<Type>> rows) {
     for (std::size_t i{0}; const auto &row : rows) {
-      for (std::size_t j{0}; const auto &element : row) {
-        data(i, j) = element;
+      for (std::size_t j{0}; const auto &value : row) {
+        data(i, j) = value;
         ++j;
       }
       ++i;
@@ -103,54 +120,56 @@ struct matrix {
   }
 
   template <typename... Types>
-    requires(size<ColumnIndexes> == 1 && size<RowIndexes> != 1 &&
-             sizeof...(Types) == size<RowIndexes>)
-  inline constexpr matrix(const Types &...elements) {
-    std::tuple element_pack{elements...};
-    for_constexpr<0, size<RowIndexes>, 1>([this, &element_pack](auto position) {
-      data[position] = std::get<position>(element_pack);
+    requires column<RowIndexes, ColumnIndexes> &&
+             equal_size<RowIndexes, std::tuple<Types...>>
+  inline constexpr matrix(const Types &...values) {
+    std::tuple value_pack{values...};
+    for_constexpr<0, size<RowIndexes>, 1>([this, &value_pack](auto position) {
+      data[position] = std::get<position>(value_pack);
     });
   }
 
   template <typename... Types>
     requires(size<RowIndexes> == 1 && size<ColumnIndexes> != 1 &&
              sizeof...(Types) == size<ColumnIndexes>)
-  explicit inline constexpr matrix(const Types &...elements) {
-    std::tuple element_pack{elements...};
+  explicit inline constexpr matrix(const Types &...values) {
+    std::tuple value_pack{values...};
     for_constexpr<0, size<ColumnIndexes>, 1>(
-        [this, &element_pack](auto position) {
-          data[position] = std::get<position>(element_pack);
+        [this, &value_pack](auto position) {
+          data[position] = std::get<position>(value_pack);
         });
   }
 
   [[nodiscard]] inline constexpr explicit(false)
-  operator element_t<0, RowIndexes, 0, ColumnIndexes>() const
-    requires(size<ColumnIndexes> == 1 && size<RowIndexes> == 1)
+  operator element<0, RowIndexes, 0, ColumnIndexes>() const
+    requires singleton<RowIndexes, ColumnIndexes>
   {
-    return element_t<0, RowIndexes, 0, ColumnIndexes>{data(0, 0)};
+    return element<0, RowIndexes, 0, ColumnIndexes>{data(0, 0)};
   }
 
   //! @todo Shorten with self deduced this?
   [[nodiscard]] inline constexpr auto &operator[](std::size_t index)
-    requires(size<RowIndexes> != 1 && size<ColumnIndexes> == 1)
+    requires column<RowIndexes, ColumnIndexes> &&
+             (not row<RowIndexes, ColumnIndexes>)
   {
     return data(index, 0);
   }
 
   [[nodiscard]] inline constexpr const auto &operator[](std::size_t index) const
-    requires(size<RowIndexes> != 1 && size<ColumnIndexes> == 1)
+    requires column<RowIndexes, ColumnIndexes> &&
+             (not row<RowIndexes, ColumnIndexes>)
   {
     return data(index, 0);
   }
 
   [[nodiscard]] inline constexpr auto &operator[](std::size_t index)
-    requires(size<RowIndexes> == 1)
+    requires row<RowIndexes, ColumnIndexes>
   {
     return data(0, index);
   }
 
   [[nodiscard]] inline constexpr const auto &operator[](std::size_t index) const
-    requires(size<RowIndexes> == 1)
+    requires row<RowIndexes, ColumnIndexes>
   {
     return data(0, index);
   }
@@ -166,25 +185,27 @@ struct matrix {
   }
 
   [[nodiscard]] inline constexpr auto &operator()(std::size_t index)
-    requires(size<RowIndexes> != 1 && size<ColumnIndexes> == 1)
+    requires column<RowIndexes, ColumnIndexes> &&
+             (not row<RowIndexes, ColumnIndexes>)
   {
     return data(index, 0);
   }
 
   [[nodiscard]] inline constexpr const auto &operator()(std::size_t index) const
-    requires(size<RowIndexes> != 1 && size<ColumnIndexes> == 1)
+    requires column<RowIndexes, ColumnIndexes> &&
+             (not row<RowIndexes, ColumnIndexes>)
   {
     return data(index, 0);
   }
 
   [[nodiscard]] inline constexpr auto &operator()(std::size_t index)
-    requires(size<RowIndexes> == 1)
+    requires row<RowIndexes, ColumnIndexes>
   {
     return data(0, index);
   }
 
   [[nodiscard]] inline constexpr const auto &operator()(std::size_t index) const
-    requires(size<RowIndexes> == 1)
+    requires row<RowIndexes, ColumnIndexes>
   {
     return data(0, index);
   }
@@ -245,12 +266,11 @@ operator+(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
+  requires singleton<RowIndexes, ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator+(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  //! @todo Return element.
   //! @todo Scalar will become Index with constraints.
-  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) + rhs};
+  return element<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) + rhs};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
@@ -264,19 +284,19 @@ operator-(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
+  requires singleton<RowIndexes, ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator-(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
   //! @todo Don't evaluate? Return the expression?
-  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs - rhs.data(0)};
+  return element<0, RowIndexes, 0, ColumnIndexes>{lhs - rhs.data(0)};
 }
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
+  requires singleton<RowIndexes, ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs * rhs.data(0)};
+  return element<0, RowIndexes, 0, ColumnIndexes>{lhs * rhs.data(0)};
 }
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
@@ -288,10 +308,10 @@ operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
+  requires singleton<RowIndexes, ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) * rhs};
+  return element<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) * rhs};
 }
 
 template <typename Scalar, typename Matrix, typename RowIndexes,
@@ -319,10 +339,10 @@ operator/(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
 
 template <fcarouge::arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires(size<RowIndexes> == 1 && size<ColumnIndexes> == 1)
+  requires singleton<RowIndexes, ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator/(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return element_t<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) / rhs};
+  return element<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) / rhs};
 }
 } // namespace fcarouge::indexed
 
@@ -372,8 +392,7 @@ struct std::formatter<
       const fcarouge::indexed::matrix<Matrix, RowIndexes, ColumnIndexes> &value,
       std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
-    requires(fcarouge::size<RowIndexes> == 1 &&
-             fcarouge::size<ColumnIndexes> != 1)
+    requires fcarouge::indexed::row<RowIndexes, ColumnIndexes>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
@@ -396,8 +415,7 @@ struct std::formatter<
       const fcarouge::indexed::matrix<Matrix, RowIndexes, ColumnIndexes> &value,
       std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
-    requires(fcarouge::size<RowIndexes> == 1 &&
-             fcarouge::size<ColumnIndexes> == 1)
+    requires fcarouge::indexed::singleton<RowIndexes, ColumnIndexes>
   {
     format_context.advance_to(
         std::format_to(format_context.out(), "{}", value.data(0, 0)));
