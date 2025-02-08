@@ -49,7 +49,7 @@ namespace {
 //!
 //! @details See the sample for details.
 [[maybe_unused]] auto test{[] {
-  kalman filter{state{60. * m}, output<quantity<m, double>>,
+  kalman filter{state{60. * m}, output<quantity<double, m>>,
                 estimate_uncertainty{225. * m2}, output_uncertainty{25. * m2}};
 
   filter.update(48.54 * m);
