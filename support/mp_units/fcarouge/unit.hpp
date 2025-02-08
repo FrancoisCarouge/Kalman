@@ -51,14 +51,15 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge {
 //! @brief The physical unit quantity.
-template <auto Reference, typename Representation>
+template <typename Representation, auto Reference>
 using quantity = mp_units::quantity<Reference, Representation>;
 
 //! @brief The singleton identity matrix specialization.
 //!
 //! @todo The identity with units is no longer the identity? Review the idea.
-template <mp_units::Quantity Type>
-inline constexpr auto identity<Type>{Type::one()};
+template <typename Representation, auto Reference>
+inline constexpr quantity<Representation, Reference>
+    identity<quantity<Representation, Reference>>{1., Reference};
 
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
