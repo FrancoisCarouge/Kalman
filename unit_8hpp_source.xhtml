@@ -151,20 +151,23 @@ $(function(){initNavTree('unit_8hpp_source.xhtml',''); initResizable(true); });
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &lt;mp-units/systems/si.h&gt;</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge.xhtml">fcarouge</a> {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">template</span> &lt;auto Reference, <span class="keyword">typename</span> Representation&gt;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Representation, auto Reference&gt;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">   55</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a> = mp_units::quantity&lt;Reference, Representation&gt;;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span> &lt;mp_units::Quantity Type&gt;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge.xhtml#af940cca4b42248e5ef4460d697c2bfb3">identity&lt;Type&gt;</a>{Type::one()};</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">using </span>mp_units::si::unit_symbols::m;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">using </span>mp_units::si::unit_symbols::m2;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>} <span class="comment">// namespace fcarouge</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_UNIT_HPP</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Representation, auto Reference&gt;</div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="};">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#ab770e1c523d5ae430bb4bbb2199f76d4">   61</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity&lt;Representation, Reference&gt;</a></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_variable" href="namespacefcarouge.xhtml#ab1c0921e3b3af3a11420cfe30e308aa7">identity&lt;quantity&lt;Representation, Reference&gt;</a>&gt;{1., Reference};</div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">using </span>mp_units::si::unit_symbols::m;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">using </span>mp_units::si::unit_symbols::m2;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>} <span class="comment">// namespace fcarouge</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_UNIT_HPP</span></div>
 <div class="ttc" id="anamespacefcarouge_xhtml"><div class="ttname"><a href="namespacefcarouge.xhtml">fcarouge</a></div><div class="ttdoc">Francois Carouge's projects namespace.</div><div class="ttdef"><b>Definition</b> <a href="baseline_8cpp_source.xhtml#l00046">baseline.cpp:46</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a9ee3eae5e0b0f9c6c415167c9b0ebe53"><div class="ttname"><a href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">fcarouge::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; Reference, Representation &gt; quantity</div><div class="ttdoc">The physical unit quantity.</div><div class="ttdef"><b>Definition</b> <a href="#l00055">unit.hpp:55</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_af940cca4b42248e5ef4460d697c2bfb3"><div class="ttname"><a href="namespacefcarouge.xhtml#af940cca4b42248e5ef4460d697c2bfb3">fcarouge::identity&lt; Type &gt;</a></div><div class="ttdeci">auto identity&lt; Type &gt;</div><div class="ttdoc">The singleton identity matrix specialization.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00256">utility.hpp:256</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_ab1c0921e3b3af3a11420cfe30e308aa7"><div class="ttname"><a href="namespacefcarouge.xhtml#ab1c0921e3b3af3a11420cfe30e308aa7">fcarouge::identity</a></div><div class="ttdeci">constexpr Type identity</div><div class="ttdoc">The identity matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00247">utility.hpp:247</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

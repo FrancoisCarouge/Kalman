@@ -216,7 +216,7 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a9ee3eae5e0b0f9c6c415167c9b0ebe53" id="r_a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memTemplParams" colspan="2">template&lt;auto Reference, typename Representation &gt; </td></tr>
+<tr class="memitem:a9ee3eae5e0b0f9c6c415167c9b0ebe53" id="r_a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memTemplParams" colspan="2">template&lt;typename Representation , auto Reference&gt; </td></tr>
 <tr class="memitem:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a> = mp_units::quantity&lt;Reference, Representation&gt;</td></tr>
 <tr class="memdesc:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="mdescLeft">&#160;</td><td class="mdescRight">The physical unit quantity.  <br /></td></tr>
 <tr class="separator:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -287,6 +287,10 @@ Variables</h2></td></tr>
 <tr class="memitem:a7fe918283834c2c859a7325fc8d3a563" id="r_a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
 <tr class="memitem:a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7fe918283834c2c859a7325fc8d3a563">make_zero_generator</a></td></tr>
 <tr class="separator:a7fe918283834c2c859a7325fc8d3a563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab770e1c523d5ae430bb4bbb2199f76d4" id="r_ab770e1c523d5ae430bb4bbb2199f76d4"><td class="memTemplParams" colspan="2">template&lt;typename Representation , auto Reference&gt; </td></tr>
+<tr class="memitem:ab770e1c523d5ae430bb4bbb2199f76d4"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a>&lt; Representation, Reference &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab770e1c523d5ae430bb4bbb2199f76d4">identity&lt; quantity&lt; Representation, Reference &gt; &gt;</a> {1., Reference}</td></tr>
+<tr class="memdesc:ab770e1c523d5ae430bb4bbb2199f76d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton identity matrix specialization.  <br /></td></tr>
+<tr class="separator:ab770e1c523d5ae430bb4bbb2199f76d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Named Values</div></td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903" id="r_ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac4cffefdda8c01a267ce2700c6acb903">size</a> {internal::size&lt;Pack&gt;}</td></tr>
@@ -307,7 +311,6 @@ Variables</h2></td></tr>
 <tr class="memitem:af940cca4b42248e5ef4460d697c2bfb3" id="r_af940cca4b42248e5ef4460d697c2bfb3"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
 requires requires { Type::identity(); }</td></tr>
 <tr class="memitem:af940cca4b42248e5ef4460d697c2bfb3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af940cca4b42248e5ef4460d697c2bfb3">identity&lt; Type &gt;</a> {Type::Identity()}</td></tr>
-<tr class="memdesc:af940cca4b42248e5ef4460d697c2bfb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton identity matrix specialization.  <br /></td></tr>
 <tr class="separator:af940cca4b42248e5ef4460d697c2bfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef6fb6c8a265d85709b951506123a5f1" id="r_aef6fb6c8a265d85709b951506123a5f1"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
 <tr class="memitem:aef6fb6c8a265d85709b951506123a5f1"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aef6fb6c8a265d85709b951506123a5f1">zero</a></td></tr>
@@ -558,7 +561,7 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;auto Reference, typename Representation &gt; </div>
+template&lt;typename Representation , auto Reference&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">fcarouge::quantity</a> = mp_units::quantity&lt;Reference, Representation&gt;</td>
@@ -1394,6 +1397,36 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ab770e1c523d5ae430bb4bbb2199f76d4" name="ab770e1c523d5ae430bb4bbb2199f76d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab770e1c523d5ae430bb4bbb2199f76d4">&#9670;&#160;</a></span>identity&lt; quantity&lt; Representation, Reference &gt; &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Representation , auto Reference&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a>&lt;Representation, Reference&gt; <a class="el" href="#ab1c0921e3b3af3a11420cfe30e308aa7">fcarouge::identity</a>&lt; <a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a>&lt; Representation, Reference &gt; &gt; {1., Reference}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The singleton identity matrix specialization. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000035">Todo</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{1., Reference};</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="af940cca4b42248e5ef4460d697c2bfb3" name="af940cca4b42248e5ef4460d697c2bfb3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af940cca4b42248e5ef4460d697c2bfb3">&#9670;&#160;</a></span>identity&lt; Type &gt;</h2>
 
@@ -1412,13 +1445,10 @@ requires requires { Type::identity(); }</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>The singleton identity matrix specialization. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000035">Todo</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00256">256</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  256</span>{Type::Identity()};</div>

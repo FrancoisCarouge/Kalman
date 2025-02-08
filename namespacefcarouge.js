@@ -99,6 +99,7 @@ var namespacefcarouge =
     [ "identity", "namespacefcarouge.xhtml#ab1c0921e3b3af3a11420cfe30e308aa7", null ],
     [ "identity< Arithmetic >", "namespacefcarouge.xhtml#a7b6de8f96a4b6483d91d1e73683a02d1", null ],
     [ "identity< matrix< Type, Row, Column > >", "namespacefcarouge.xhtml#aa12d176b9a5533210dd230e7f719c4fb", null ],
+    [ "identity< quantity< Representation, Reference > >", "namespacefcarouge.xhtml#ab770e1c523d5ae430bb4bbb2199f76d4", null ],
     [ "identity< Type >", "namespacefcarouge.xhtml#af940cca4b42248e5ef4460d697c2bfb3", null ],
     [ "make_identity_generator", "namespacefcarouge.xhtml#a3b0c4f263f282cbb330a4ca6b5ad10d9", null ],
     [ "make_zero_generator", "namespacefcarouge.xhtml#a7fe918283834c2c859a7325fc8d3a563", null ],
