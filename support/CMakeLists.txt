@@ -110,5 +110,5 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_link_options(kalman_options INTERFACE "LINKER:-pie"
                       "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(kalman_options INTERFACE "/EHsc" "/W4" "/utf-8")
+  target_compile_options(kalman_options INTERFACE "/EHsc" "/utf-8" "/W4")
 endif()
