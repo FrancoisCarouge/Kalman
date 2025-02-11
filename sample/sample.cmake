@@ -61,8 +61,7 @@ function(sample)
                      "${SAMPLE_NAME}.cpp")
       target_link_libraries(
         kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
-        PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options
-                kalman_unit_mp_units)
+        PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
       separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_sample_${BACKEND}_${SAMPLE_NAME}
