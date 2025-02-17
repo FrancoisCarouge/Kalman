@@ -208,7 +208,7 @@ using product = internal::product<Lhs, Rhs>;
 
 //! @brief The evaluated type of the ABᵀ expression.
 template <typename Lhs, typename Rhs>
-using ᴀʙᵀ = evaluate<product<Lhs, transpose<Rhs>>>;
+using ᴀʙᵀ = evaluate<product<Lhs, evaluate<transpose<Rhs>>>>;
 
 //! @}
 
