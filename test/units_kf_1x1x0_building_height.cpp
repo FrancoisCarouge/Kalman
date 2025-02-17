@@ -65,6 +65,8 @@ namespace {
 
   assert(abs(1 - filter.x() / (49.57 * m)) < 0.001);
 
+  //! @todo Add format verification.
+
   return 0;
 }()};
 } // namespace
