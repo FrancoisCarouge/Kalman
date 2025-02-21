@@ -21,6 +21,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
+        - { os: 'ubuntu-24.04', cxx: 'clang++-19', cc: 'clang-19', generator: 'Unix Makefiles', packages: 'clang-19'  }
         - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Unix Makefiles', packages: 'clang-18'  }
         - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', packages: 'g++-14'  }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Debug' }
