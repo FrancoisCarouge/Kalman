@@ -63,6 +63,13 @@ inline constexpr quantity<Representation, Reference>
 
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+
+//! @todo: Consider upstreaming named symbols up to pow<8> because that would be
+//! common for constant jerk uncertainties values?
+inline constexpr auto s4{pow<4>(s)};
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP
