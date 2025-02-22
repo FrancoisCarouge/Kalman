@@ -291,6 +291,8 @@ Variables</h2></td></tr>
 <tr class="memitem:ab770e1c523d5ae430bb4bbb2199f76d4"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a>&lt; Representation, Reference &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab770e1c523d5ae430bb4bbb2199f76d4">identity&lt; quantity&lt; Representation, Reference &gt; &gt;</a> {1., Reference}</td></tr>
 <tr class="memdesc:ab770e1c523d5ae430bb4bbb2199f76d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton identity matrix specialization.  <br /></td></tr>
 <tr class="separator:ab770e1c523d5ae430bb4bbb2199f76d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aadf374ff49533297b0971d8a66b436" id="r_a0aadf374ff49533297b0971d8a66b436"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0aadf374ff49533297b0971d8a66b436">s4</a> {pow&lt;4&gt;(s)}</td></tr>
+<tr class="separator:a0aadf374ff49533297b0971d8a66b436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Named Values</div></td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903" id="r_ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac4cffefdda8c01a267ce2700c6acb903">size</a> {internal::size&lt;Pack&gt;}</td></tr>
@@ -1537,6 +1539,32 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00088">88</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
 
+</div>
+</div>
+<a id="a0aadf374ff49533297b0971d8a66b436" name="a0aadf374ff49533297b0971d8a66b436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aadf374ff49533297b0971d8a66b436">&#9670;&#160;</a></span>s4</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::s4 {pow&lt;4&gt;(s)}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000037">Todo</a></b></dt><dd>: Consider upstreaming named symbols up to pow&lt;8&gt; because that would be common for constant jerk uncertainties values? </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00072">72</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{pow&lt;4&gt;(s)};</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac4cffefdda8c01a267ce2700c6acb903" name="ac4cffefdda8c01a267ce2700c6acb903"></a>

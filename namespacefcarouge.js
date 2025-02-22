@@ -104,6 +104,7 @@ var namespacefcarouge =
     [ "make_identity_generator", "namespacefcarouge.xhtml#a3b0c4f263f282cbb330a4ca6b5ad10d9", null ],
     [ "make_zero_generator", "namespacefcarouge.xhtml#a7fe918283834c2c859a7325fc8d3a563", null ],
     [ "printer", "namespacefcarouge.xhtml#a44762b6a541e61f07ed2b0477b182829", null ],
+    [ "s4", "namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436", null ],
     [ "size", "namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903", null ],
     [ "zero", "namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1", null ],
     [ "zero< Arithmetic >", "namespacefcarouge.xhtml#a5567c841761bdb7aac049796d4c43580", null ],

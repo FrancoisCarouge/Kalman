@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"structfcarouge_1_1naive_1_1matrix.xhtml#a550d2e2f94551475a2edf67de9db9b33":[10,0,0,2,0,3],
 "structfcarouge_1_1naive_1_1matrix.xhtml#a5ae095d8bfbb8bc9be23d6c1cc09cbea":[8,0,1,5,0,14],
 "structfcarouge_1_1naive_1_1matrix.xhtml#a5ae095d8bfbb8bc9be23d6c1cc09cbea":[10,0,0,2,0,14],
 "structfcarouge_1_1naive_1_1matrix.xhtml#a7ac056edb5c0976f1c2f03a6d9934120":[8,0,1,5,0,16],
@@ -87,6 +88,7 @@ var NAVTREEINDEX4 =
 "type_8hpp.xhtml#afe8ad2f640331f3c717475d3e191e111":[11,0,2,0,0,2,14],
 "type_8hpp_source.xhtml":[11,0,2,0,0,2],
 "unit_8hpp.xhtml":[11,0,5,5,0,0],
+"unit_8hpp.xhtml#a0aadf374ff49533297b0971d8a66b436":[11,0,5,5,0,0,2],
 "unit_8hpp.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53":[11,0,5,5,0,0,0],
 "unit_8hpp.xhtml#ab770e1c523d5ae430bb4bbb2199f76d4":[11,0,5,5,0,0,1],
 "unit_8hpp_source.xhtml":[11,0,5,5,0,0],
