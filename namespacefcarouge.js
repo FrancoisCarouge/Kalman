@@ -66,7 +66,7 @@ var namespacefcarouge =
     [ "has_state_transition", "conceptfcarouge_1_1has__state__transition.xhtml", null ],
     [ "has_update_types", "conceptfcarouge_1_1has__update__types.xhtml", null ],
     [ "has_output_model", "conceptfcarouge_1_1has__output__model.xhtml", null ],
-    [ "ᴀʙᵀ", "namespacefcarouge.xhtml#a855afd89defaf8feeb606e34b303dd97", null ],
+    [ "ᴀʙᵀ", "namespacefcarouge.xhtml#aec3bfab0842e1f83b5f1493062848140", null ],
     [ "column_vector", "namespacefcarouge.xhtml#ad06bb441aa2dcec149c52de0c297a967", null ],
     [ "divide", "namespacefcarouge.xhtml#a2b9209137b760e121bcfe9bac7dcacc0", null ],
     [ "empty_tuple", "namespacefcarouge.xhtml#a463eb0fdde0b3d3ea64b5a16fa95b253", null ],

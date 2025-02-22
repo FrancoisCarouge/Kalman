@@ -362,10 +362,10 @@ requires requires { Type::zero(); }</td></tr>
 <tr class="memitem:ae572d5a48afe03765d8e55617ea78689"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae572d5a48afe03765d8e55617ea78689">product</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a521b8803424c884bda00ab81bb651455">internal::product</a>&lt;Lhs, Rhs&gt;</td></tr>
 <tr class="memdesc:ae572d5a48afe03765d8e55617ea78689"><td class="mdescLeft">&#160;</td><td class="mdescRight">The deduced result type of the product.  <br /></td></tr>
 <tr class="separator:ae572d5a48afe03765d8e55617ea78689"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a855afd89defaf8feeb606e34b303dd97" id="r_a855afd89defaf8feeb606e34b303dd97"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
-<tr class="memitem:a855afd89defaf8feeb606e34b303dd97"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a855afd89defaf8feeb606e34b303dd97">ᴀʙᵀ</a> = <a class="el" href="#acd5b06c86fbc7f4790315e50578d4e13">evaluate</a>&lt;<a class="el" href="#ae572d5a48afe03765d8e55617ea78689">product</a>&lt;Lhs, <a class="el" href="#a63023be73bdc7d43cd7053035230ae34">transpose</a>&lt;Rhs&gt;&gt;&gt;</td></tr>
-<tr class="memdesc:a855afd89defaf8feeb606e34b303dd97"><td class="mdescLeft">&#160;</td><td class="mdescRight">The evaluated type of the ABᵀ expression.  <br /></td></tr>
-<tr class="separator:a855afd89defaf8feeb606e34b303dd97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec3bfab0842e1f83b5f1493062848140" id="r_aec3bfab0842e1f83b5f1493062848140"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:aec3bfab0842e1f83b5f1493062848140"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aec3bfab0842e1f83b5f1493062848140">ᴀʙᵀ</a> = <a class="el" href="#acd5b06c86fbc7f4790315e50578d4e13">evaluate</a>&lt;<a class="el" href="#ae572d5a48afe03765d8e55617ea78689">product</a>&lt;Lhs, <a class="el" href="#acd5b06c86fbc7f4790315e50578d4e13">evaluate</a>&lt;<a class="el" href="#a63023be73bdc7d43cd7053035230ae34">transpose</a>&lt;Rhs&gt;&gt;&gt;&gt;</td></tr>
+<tr class="memdesc:aec3bfab0842e1f83b5f1493062848140"><td class="mdescLeft">&#160;</td><td class="mdescRight">The evaluated type of the ABᵀ expression.  <br /></td></tr>
+<tr class="separator:aec3bfab0842e1f83b5f1493062848140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d51e9ff898a41560f1cd0963356f04c" id="r_a7d51e9ff898a41560f1cd0963356f04c"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1&gt; </td></tr>
 <tr class="memitem:a7d51e9ff898a41560f1cd0963356f04c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7d51e9ff898a41560f1cd0963356f04c">matrix</a></td></tr>
 <tr class="memdesc:a7d51e9ff898a41560f1cd0963356f04c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar type indexed-based matrix with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
@@ -387,8 +387,8 @@ requires requires { Type::zero(); }</td></tr>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
 <p>The definitions and implementations of the library intended for public usage. Lowers the name conflict probability in large projects. Use using-declarations or namespace-alias-definition per your project guidelines. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a855afd89defaf8feeb606e34b303dd97" name="a855afd89defaf8feeb606e34b303dd97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a855afd89defaf8feeb606e34b303dd97">&#9670;&#160;</a></span>ᴀʙᵀ</h2>
+<a id="aec3bfab0842e1f83b5f1493062848140" name="aec3bfab0842e1f83b5f1493062848140"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec3bfab0842e1f83b5f1493062848140">&#9670;&#160;</a></span>ᴀʙᵀ</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -396,7 +396,7 @@ requires requires { Type::zero(); }</td></tr>
 template&lt;typename Lhs , typename Rhs &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a855afd89defaf8feeb606e34b303dd97">fcarouge::ᴀʙᵀ</a> = <a class="el" href="#acd5b06c86fbc7f4790315e50578d4e13">evaluate</a>&lt;<a class="el" href="#ae572d5a48afe03765d8e55617ea78689">product</a>&lt;Lhs, <a class="el" href="#a63023be73bdc7d43cd7053035230ae34">transpose</a>&lt;Rhs&gt;&gt;&gt;</td>
+          <td class="memname">using <a class="el" href="#aec3bfab0842e1f83b5f1493062848140">fcarouge::ᴀʙᵀ</a> = <a class="el" href="#acd5b06c86fbc7f4790315e50578d4e13">evaluate</a>&lt;<a class="el" href="#ae572d5a48afe03765d8e55617ea78689">product</a>&lt;Lhs, <a class="el" href="#acd5b06c86fbc7f4790315e50578d4e13">evaluate</a>&lt;<a class="el" href="#a63023be73bdc7d43cd7053035230ae34">transpose</a>&lt;Rhs&gt;&gt;&gt;&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1420,7 +1420,7 @@ template&lt;typename Representation , auto Reference&gt; </div>
 </div><div class="memdoc">
 
 <p>The singleton identity matrix specialization. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000036">Todo</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   62</span>{1., Reference};</div>
