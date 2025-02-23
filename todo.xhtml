@@ -105,15 +105,15 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#ab770e1c523d5ae430bb4bbb2199f76d4">fcarouge::identity&lt; quantity&lt; Representation, Reference &gt; &gt;</a>  </dt>
-<dd><a class="anchor" id="_todo000036"></a>The identity with units is no longer the identity? Review the idea.  </dd>
+<dd><a class="anchor" id="_todo000035"></a>The identity with units is no longer the identity? Review the idea.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">fcarouge::indexed::element</a>  </dt>
 <dd><a class="anchor" id="_todo000030"></a>Move to utility.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#aa8199abf2d777c2e4657fe578f730b81">fcarouge::indexed::operator*</a>  (const matrix&lt; Matrix1, RowIndexes, Indexes &gt; &amp;lhs, const matrix&lt; Matrix2, Indexes, ColumnIndexes &gt; &amp;rhs)</dt>
-<dd><a class="anchor" id="_todo000032"></a>Don't evaluate as much as possible?  </dd>
+<dd><a class="anchor" id="_todo000033"></a>Don't evaluate as much as possible?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#ad4751c812149f0f3e2b4ba1a713b3fcb">fcarouge::indexed::operator+</a>  (const matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &amp;lhs, Scalar rhs)</dt>
-<dd><a class="anchor" id="_todo000033"></a>Scalar will become Index with constraints.  </dd>
+<dd><a class="anchor" id="_todo000034"></a>Scalar will become Index with constraints.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a2ff9c5d70eb4cb90d4648b0d5ab5da60">fcarouge::indexed::operator-</a>  (Scalar lhs, const matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &amp;rhs)</dt>
-<dd><a class="anchor" id="_todo000035"></a>Don't evaluate? Return the expression?  </dd>
+<dd><a class="anchor" id="_todo000037"></a>Don't evaluate? Return the expression?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#ad2615f4227ab85ccb64b2be969b3a887">fcarouge::indexed::operator==</a>  (const matrix&lt; Matrix1, RowIndexes, ColumnIndexes &gt; &amp;lhs, const matrix&lt; Matrix2, RowIndexes, ColumnIndexes &gt; &amp;rhs)</dt>
 <dd><a class="anchor" id="_todo000031"></a>Add deduction guides.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a>  (Arguments... arguments) -&gt; kalman&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a0005e5cf17f05f289eaf8a5bc9ffeda5">internal::deduce_filter&lt; Arguments... &gt;</a> &gt;</dt>
@@ -171,7 +171,7 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af5b5c43dcc898eab0391ecc90ff7b328">fcarouge::kalman&lt; Filter &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
 <dd><a class="anchor" id="_todo000027"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Struct <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000034"></a>Explore and compare performance. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000032"></a>Explore and compare performance. </p>
 <p class="interdd"></p>
 <p class="interdd">Explore optimization of heap allocations? </p>
 <p class="interdd"></p>
@@ -184,9 +184,9 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
 <dd><a class="anchor" id="_todo000038"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000040"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000039"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a>  </dt>
-<dd><a class="anchor" id="_todo000037"></a>: Consider upstreaming named symbols up to pow&lt;8&gt; because that would be common for constant jerk uncertainties values?  </dd>
+<dd><a class="anchor" id="_todo000036"></a>: Consider upstreaming named symbols up to pow&lt;8&gt; because that would be common for constant jerk uncertainties values?  </dd>
 <dt>{<a class="el" href="linalg__multiplication__rxc_8cpp.xhtml">linalg_multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#adfa3a8b5be7eb7ee4bc12ebff7d86a8f">fcarouge::test::anonymous_namespace{linalg_multiplication_rxc.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000041"></a>Should this edge case decay to the underlying type?  </dd>
 <dt>Member <a class="el" href="structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml#a887dd3f3f177feadd1ca42785885897f">std::formatter&lt; Filter, Char &gt;::format</a>  (const Filter &amp;filter, std::basic_format_context&lt; OutputIterator, Char &gt; &amp;format_context) const -&gt; OutputIterator</dt>
