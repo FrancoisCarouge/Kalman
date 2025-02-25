@@ -1,6 +1,10 @@
 var namespacefcarouge_1_1indexed =
 [
+    [ "element_traits", "structfcarouge_1_1indexed_1_1element__traits.xhtml", "structfcarouge_1_1indexed_1_1element__traits" ],
+    [ "element_traits< Representation, quantity< Representation, Reference > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4" ],
     [ "matrix", "structfcarouge_1_1indexed_1_1matrix.xhtml", "structfcarouge_1_1indexed_1_1matrix" ],
+    [ "uniform", "conceptfcarouge_1_1indexed_1_1uniform.xhtml", null ],
+    [ "in_range", "conceptfcarouge_1_1indexed_1_1in__range.xhtml", null ],
     [ "column", "conceptfcarouge_1_1indexed_1_1column.xhtml", null ],
     [ "row", "conceptfcarouge_1_1indexed_1_1row.xhtml", null ],
     [ "singleton", "conceptfcarouge_1_1indexed_1_1singleton.xhtml", null ],

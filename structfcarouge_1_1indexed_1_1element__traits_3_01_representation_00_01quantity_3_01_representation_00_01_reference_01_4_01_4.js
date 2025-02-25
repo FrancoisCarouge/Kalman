@@ -1,0 +1,5 @@
+var structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4 =
+[
+    [ "from_underlying", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4.xhtml#a7e91b6752a45a73c3755476b39b13f61", null ],
+    [ "to_underlying", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4.xhtml#ad98a47d6cda32f89903fead3637f2931", null ]
+];

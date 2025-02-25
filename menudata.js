@@ -78,6 +78,7 @@ var menudata={children:[
 {text:"e",url:"namespacemembers_type.xhtml#index_e"},
 {text:"f",url:"namespacemembers_type.xhtml#index_f"},
 {text:"m",url:"namespacemembers_type.xhtml#index_m"},
+{text:"o",url:"namespacemembers_type.xhtml#index_o"},
 {text:"p",url:"namespacemembers_type.xhtml#index_p"},
 {text:"q",url:"namespacemembers_type.xhtml#index_q"},
 {text:"r",url:"namespacemembers_type.xhtml#index_r"},
@@ -93,6 +94,7 @@ var menudata={children:[
 {text:"Class Members",url:"functions.xhtml",children:[
 {text:"All",url:"functions.xhtml",children:[
 {text:"!",url:"functions.xhtml#index__21"},
+{text:"a",url:"functions.xhtml#index_a"},
 {text:"b",url:"functions.xhtml#index_b"},
 {text:"c",url:"functions.xhtml#index_c"},
 {text:"d",url:"functions.xhtml#index_d"},
@@ -108,6 +110,7 @@ var menudata={children:[
 {text:"q",url:"functions.xhtml#index_q"},
 {text:"r",url:"functions.xhtml#index_r"},
 {text:"s",url:"functions.xhtml#index_s"},
+{text:"t",url:"functions.xhtml#index_t"},
 {text:"u",url:"functions.xhtml#index_u"},
 {text:"x",url:"functions.xhtml#index_x"},
 {text:"y",url:"functions.xhtml#index_y"},
@@ -115,6 +118,7 @@ var menudata={children:[
 {text:"~",url:"functions.xhtml#index__7E"}]},
 {text:"Functions",url:"functions_func.xhtml",children:[
 {text:"!",url:"functions_func.xhtml#index__21"},
+{text:"a",url:"functions_func.xhtml#index_a"},
 {text:"b",url:"functions_func.xhtml#index_b"},
 {text:"c",url:"functions_func.xhtml#index_c"},
 {text:"e",url:"functions_func.xhtml#index_e"},
@@ -128,6 +132,7 @@ var menudata={children:[
 {text:"q",url:"functions_func.xhtml#index_q"},
 {text:"r",url:"functions_func.xhtml#index_r"},
 {text:"s",url:"functions_func.xhtml#index_s"},
+{text:"t",url:"functions_func.xhtml#index_t"},
 {text:"u",url:"functions_func.xhtml#index_u"},
 {text:"x",url:"functions_func.xhtml#index_x"},
 {text:"y",url:"functions_func.xhtml#index_y"},

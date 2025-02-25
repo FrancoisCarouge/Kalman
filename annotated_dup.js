@@ -5,6 +5,8 @@ var annotated_dup =
         [ "printer", "classfcarouge_1_1decorator_1_1printer.xhtml", "classfcarouge_1_1decorator_1_1printer" ]
       ] ],
       [ "indexed", "namespacefcarouge_1_1indexed.xhtml", [
+        [ "element_traits", "structfcarouge_1_1indexed_1_1element__traits.xhtml", "structfcarouge_1_1indexed_1_1element__traits" ],
+        [ "element_traits< Representation, quantity< Representation, Reference > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4" ],
         [ "matrix", "structfcarouge_1_1indexed_1_1matrix.xhtml", "structfcarouge_1_1indexed_1_1matrix" ]
       ] ],
       [ "naive", "namespacefcarouge_1_1naive.xhtml", [
