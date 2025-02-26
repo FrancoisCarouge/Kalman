@@ -53,11 +53,17 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge::indexed {
+
+//! @brief The underlying storage type of the matrix's elements.
+template <typename Matrix>
+using underlying_t =
+    std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
+
 //! @brief The type of the element at the given matrix indexes position.
-template <std::size_t RowIndex, typename RowIndexes, std::size_t ColumnIndex,
-          typename ColumnIndexes>
-using element = product<std::tuple_element_t<RowIndex, RowIndexes>,
-                        std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
+template <typename Matrix, std::size_t RowIndex, std::size_t ColumnIndex>
+using element =
+    product<std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
+            std::tuple_element_t<ColumnIndex, typename Matrix::column_indexes>>;
 
 //! @brief Every element types of the matrix are the same.
 //!
@@ -67,14 +73,13 @@ using element = product<std::tuple_element_t<RowIndex, RowIndexes>,
 //! @note A matrix may be uniform with different row and column indexes.
 //!
 //! @todo There may be a way to write this concepts via two fold expressions.
-template <typename RowIndexes, typename ColumnIndexes>
+template <typename Matrix>
 concept uniform = []() {
   bool result{true};
 
-  for_constexpr<0, size<RowIndexes>, 1>([&result](auto i) {
-    for_constexpr<0, size<ColumnIndexes>, 1>([&result, &i](auto j) {
-      result &= std::is_same_v<element<i, RowIndexes, j, ColumnIndexes>,
-                               element<0, RowIndexes, 0, ColumnIndexes>>;
+  for_constexpr<0, Matrix::rows, 1>([&result](auto i) {
+    for_constexpr<0, Matrix::columns, 1>([&result, &i](auto j) {
+      result &= std::is_same_v<element<Matrix, i, j>, element<Matrix, 0, 0>>;
     });
   });
 
@@ -85,24 +90,25 @@ concept uniform = []() {
 template <std::size_t Index, std::size_t Begin, std::size_t End>
 concept in_range = Begin <= Index && Index <= End;
 
-//! @brief The given row and column indexes form a colum-vector/matrix.
-//!
-//! @todo Shorten by taking in the indexed matrix instead of the two indexes.
-template <typename RowIndexes, typename ColumnIndexes>
-concept column = size<ColumnIndexes> == 1;
+//! @brief The given matrix is a single column.
+template <typename Matrix>
+concept column = Matrix::columns == 1;
 
-//! @brief The given row and column indexes form a row-vector/matrix.
-template <typename RowIndexes, typename ColumnIndexes>
-concept row = size<RowIndexes> == 1;
+//! @brief The matrix is a single row.
+template <typename Matrix>
+concept row = Matrix::rows == 1;
+
+//! @brief The given matrix is a single dimension, that is a row or a column.
+template <typename Matrix>
+concept one_dimension = column<Matrix> || row<Matrix>;
 
 //! @brief The given row and column indexes form a singleton matrix.
-template <typename RowIndexes, typename ColumnIndexes>
-concept singleton =
-    column<RowIndexes, ColumnIndexes> && row<RowIndexes, ColumnIndexes>;
+template <typename Matrix>
+concept singleton = column<Matrix> && row<Matrix>;
 
 //! @brief The packs have the same count of types.
 template <typename Pack1, typename Pack2>
-concept equal_size = size<Pack1> == size<Pack2>;
+concept same_size = size<Pack1> == size<Pack2>;
 
 //! @brief Element traits for conversions.
 template <typename Underlying, typename Type> struct element_traits {
@@ -139,18 +145,28 @@ template <typename Underlying, typename Type> struct element_traits {
 //!
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+template <algebraic Matrix, typename RowIndexes, typename ColumnIndexes>
 struct matrix {
   //! @brief The type of the element's underlying storage.
   //!
   //! @todo Privatize?
-  using underlying =
-      std::remove_cvref_t<decltype(std::declval<Matrix>()(0, 0))>;
+  using underlying = underlying_t<Matrix>;
+
+  //! @brief The tuple with the row components of the indexes.
+  using row_indexes = RowIndexes;
+
+  //! @brief The tuple with the column components of the indexes.
+  using column_indexes = ColumnIndexes;
+
+  //! @brief The count of rows.
+  inline constexpr static std::size_t rows{size<row_indexes>};
+
+  //! @brief The count of rows.
+  inline constexpr static std::size_t columns{size<column_indexes>};
 
   //! @brief The type of the element at the given matrix indexes position.
   template <std::size_t RowIndex, std::size_t ColumnIndex>
-  using element = product<std::tuple_element_t<RowIndex, RowIndexes>,
-                          std::tuple_element_t<ColumnIndex, ColumnIndexes>>;
+  using element = element<matrix, RowIndex, ColumnIndex>;
 
   inline constexpr matrix() = default;
 
@@ -163,40 +179,21 @@ struct matrix {
   inline constexpr matrix &operator=(matrix &&other) = default;
 
   //! @todo Requires evaluated types of Matrix and OtherMatrix are identical?
-  template <typename OtherMatrix>
+  template <algebraic OtherMatrix>
   inline constexpr matrix(
       const matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
       : data{other.data} {}
 
   //! @todo Can this be removed along the evaluate?
-  inline constexpr matrix(const Matrix &other) : data{other} {}
-
-  //! @todo Fix the array constructors: the parameter type needs to be the
-  //! indexes product.
-  inline constexpr explicit matrix(
-      [[maybe_unused]] const std::tuple_element_t<0, ColumnIndexes> (
-          &elements)[size<ColumnIndexes>])
-    requires uniform<RowIndexes, ColumnIndexes> &&
-             row<RowIndexes, ColumnIndexes>
-      : data{elements} {}
+  explicit inline constexpr matrix(const Matrix &other) : data{other} {}
 
   inline constexpr explicit matrix(
-      [[maybe_unused]] const std::tuple_element_t<0, RowIndexes> (
-          &elements)[size<RowIndexes>])
-    requires uniform<RowIndexes, ColumnIndexes> &&
-             column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>)
+      const element<0, 0> (&elements)[size<RowIndexes> * size<ColumnIndexes>])
+    requires uniform<matrix> && one_dimension<matrix>
       : data{elements} {}
-
-  template <typename OtherMatrix>
-    requires singleton<RowIndexes, ColumnIndexes> &&
-             requires(OtherMatrix value) { value.data(0, 0); }
-  explicit inline constexpr matrix(const OtherMatrix &value) {
-    data = value.data;
-  }
 
   template <arithmetic Type>
-    requires singleton<RowIndexes, ColumnIndexes>
+    requires singleton<matrix>
   explicit inline constexpr matrix(const Type &value) {
     data(0, 0) = element_traits<underlying, Type>::to_underlying(value);
   }
@@ -204,10 +201,10 @@ struct matrix {
   //! @todo Verify the list sizes at runtime?
   template <typename Type>
   inline constexpr explicit matrix(
-      std::initializer_list<std::initializer_list<Type>> rows)
-    requires uniform<RowIndexes, ColumnIndexes>
+      std::initializer_list<std::initializer_list<Type>> row_list)
+    requires uniform<matrix>
   {
-    for (std::size_t i{0}; const auto &row : rows) {
+    for (std::size_t i{0}; const auto &row : row_list) {
       for (std::size_t j{0}; const auto &value : row) {
         data(i, j) = element_traits<underlying, Type>::to_underlying(value);
         ++j;
@@ -220,9 +217,8 @@ struct matrix {
   //! @todo Verify if the types are the same, or assignable, for nicer error?
   //! @todo Rewrite with a fold expression over the pack?
   template <typename... Types>
-    requires row<RowIndexes, ColumnIndexes> &&
-             (not column<RowIndexes, ColumnIndexes>) &&
-             equal_size<ColumnIndexes, std::tuple<Types...>>
+    requires row<matrix> && (not column<matrix>) &&
+             same_size<ColumnIndexes, std::tuple<Types...>>
   explicit inline constexpr matrix(const Types &...values) {
     std::tuple value_pack{values...};
     for_constexpr<0, size<ColumnIndexes>, 1>([this,
@@ -234,9 +230,8 @@ struct matrix {
   }
 
   template <typename... Types>
-    requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>) &&
-             equal_size<RowIndexes, std::tuple<Types...>>
+    requires column<matrix> &&
+             (not row<matrix>) && same_size<RowIndexes, std::tuple<Types...>>
   inline constexpr matrix(const Types &...values) {
     std::tuple value_pack{values...};
     for_constexpr<0, size<RowIndexes>, 1>([this, &value_pack](auto position) {
@@ -247,7 +242,7 @@ struct matrix {
   }
 
   [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
-    requires singleton<RowIndexes, ColumnIndexes>
+    requires singleton<matrix>
   {
     return element_traits<underlying, element<0, 0>>::from_underlying(
         data(0, 0));
@@ -255,48 +250,28 @@ struct matrix {
 
   [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
                                                    std::size_t index)
-    requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>) &&
-             uniform<RowIndexes, ColumnIndexes>
+    requires uniform<matrix> && one_dimension<matrix>
   {
-    return std::forward<decltype(self)>(self).data(index, 0);
-  }
-
-  [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
-                                                   std::size_t index)
-    requires row<RowIndexes, ColumnIndexes> &&
-             uniform<RowIndexes, ColumnIndexes>
-  {
-    return std::forward<decltype(self)>(self).data(0, index);
+    return std::forward<decltype(self)>(self).data(index);
   }
 
   [[nodiscard]] inline constexpr auto &&
   operator[](this auto &&self, std::size_t row, std::size_t column)
-    requires uniform<RowIndexes, ColumnIndexes>
+    requires uniform<matrix>
   {
     return std::forward<decltype(self)>(self).data(row, column);
   }
 
   [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
                                                    std::size_t index)
-    requires column<RowIndexes, ColumnIndexes> &&
-             (not row<RowIndexes, ColumnIndexes>) &&
-             uniform<RowIndexes, ColumnIndexes>
+    requires uniform<matrix> && one_dimension<matrix>
   {
-    return std::forward<decltype(self)>(self).data(index, 0);
-  }
-
-  [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
-                                                   std::size_t index)
-    requires row<RowIndexes, ColumnIndexes> &&
-             uniform<RowIndexes, ColumnIndexes>
-  {
-    return std::forward<decltype(self)>(self).data(0, index);
+    return std::forward<decltype(self)>(self).data(index);
   }
 
   [[nodiscard]] inline constexpr auto &&
   operator()(this auto &&self, std::size_t row, std::size_t column)
-    requires uniform<RowIndexes, ColumnIndexes>
+    requires uniform<matrix>
   {
     return std::forward<decltype(self)>(self).data(row, column);
   }
@@ -310,11 +285,10 @@ struct matrix {
   }
 
   template <std::size_t Index>
-    requires column<RowIndexes, ColumnIndexes> &&
-             in_range<Index, 0, size<RowIndexes>>
+    requires column<matrix> && in_range<Index, 0, size<RowIndexes>>
   [[nodiscard]] inline constexpr element<Index, 0> &at() {
     return element_traits<underlying, element<Index, 0>>::from_underlying(
-        data(std::size_t{Index}, 0));
+        data(std::size_t{Index}));
   }
 
   Matrix data;
@@ -351,10 +325,9 @@ operator*(const matrix<Matrix1, RowIndexes, Indexes> &lhs,
 
 template <arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires singleton<RowIndexes, ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return element<0, RowIndexes, 0, ColumnIndexes>{lhs * rhs.data(0)};
+  requires singleton<Matrix>
+[[nodiscard]] inline constexpr auto operator*(Scalar lhs, const Matrix &rhs) {
+  return element<Matrix, 0, 0>{lhs * rhs.data(0)};
 }
 
 template <arithmetic Scalar, typename Matrix, typename RowIndexes,
@@ -366,10 +339,10 @@ operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
 
 template <arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires singleton<RowIndexes, ColumnIndexes>
+  requires singleton<Matrix>
 [[nodiscard]] inline constexpr auto
 operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return element<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) * rhs};
+  return element<Matrix, 0, 0>{lhs.data(0) * rhs};
 }
 
 template <arithmetic Scalar, typename Matrix, typename RowIndexes,
@@ -390,11 +363,10 @@ operator+(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
 
 template <arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires singleton<RowIndexes, ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator+(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
+  requires singleton<Matrix>
+[[nodiscard]] inline constexpr auto operator+(const Matrix &lhs, Scalar rhs) {
   //! @todo Scalar will become Index with constraints.
-  return element<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) + rhs};
+  return element<Matrix, 0, 0>{lhs.data(0) + rhs};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
@@ -408,11 +380,9 @@ operator-(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
 
 template <arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires singleton<RowIndexes, ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator-(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  //! @todo Don't evaluate? Return the expression?
-  return element<0, RowIndexes, 0, ColumnIndexes>{lhs - rhs.data(0)};
+  requires singleton<Matrix>
+[[nodiscard]] inline constexpr auto operator-(Scalar lhs, const Matrix &rhs) {
+  return element<Matrix, 0, 0>{lhs - rhs.data(0)};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes1,
@@ -433,10 +403,9 @@ operator/(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
 
 template <fcarouge::arithmetic Scalar, typename Matrix, typename RowIndexes,
           typename ColumnIndexes>
-  requires singleton<RowIndexes, ColumnIndexes>
-[[nodiscard]] inline constexpr auto
-operator/(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return element<0, RowIndexes, 0, ColumnIndexes>{lhs.data(0) / rhs};
+  requires singleton<Matrix>
+[[nodiscard]] inline constexpr auto operator/(const Matrix &lhs, Scalar rhs) {
+  return element<Matrix, 0, 0>{lhs.data(0) / rhs};
 }
 } // namespace fcarouge::indexed
 
@@ -486,7 +455,8 @@ struct std::formatter<
       const fcarouge::indexed::matrix<Matrix, RowIndexes, ColumnIndexes> &value,
       std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
-    requires fcarouge::indexed::row<RowIndexes, ColumnIndexes>
+    requires fcarouge::indexed::row<
+        fcarouge::indexed::matrix<Matrix, RowIndexes, ColumnIndexes>>
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
@@ -509,7 +479,8 @@ struct std::formatter<
       const fcarouge::indexed::matrix<Matrix, RowIndexes, ColumnIndexes> &value,
       std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator
-    requires fcarouge::indexed::singleton<RowIndexes, ColumnIndexes>
+    requires fcarouge::indexed::singleton<
+        fcarouge::indexed::matrix<Matrix, RowIndexes, ColumnIndexes>>
   {
     format_context.advance_to(
         std::format_to(format_context.out(), "{}", value.data(0, 0)));
