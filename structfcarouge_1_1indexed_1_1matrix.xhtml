@@ -104,6 +104,7 @@ $(function(){initNavTree('structfcarouge_1_1indexed_1_1matrix.xhtml',''); initRe
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structfcarouge_1_1indexed_1_1matrix-members.xhtml">List of all members</a>  </div>
   <div class="headertitle"><div class="title">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; Struct Template Reference</div></div>
 </div><!--header-->
@@ -123,13 +124,19 @@ $(function(){initNavTree('structfcarouge_1_1indexed_1_1matrix.xhtml',''); initRe
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ac4fe70f72b6c5b01124418fda6209253" id="r_ac4fe70f72b6c5b01124418fda6209253"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4fe70f72b6c5b01124418fda6209253">underlying</a></td></tr>
-<tr class="memdesc:ac4fe70f72b6c5b01124418fda6209253"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element's underlying storage.  <br /></td></tr>
-<tr class="separator:ac4fe70f72b6c5b01124418fda6209253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae653674ca7890f27508815fa347c9668" id="r_ae653674ca7890f27508815fa347c9668"><td class="memTemplParams" colspan="2">template&lt;std::size_t RowIndex, std::size_t ColumnIndex&gt; </td></tr>
-<tr class="memitem:ae653674ca7890f27508815fa347c9668"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae653674ca7890f27508815fa347c9668">element</a></td></tr>
-<tr class="memdesc:ae653674ca7890f27508815fa347c9668"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the given matrix indexes position.  <br /></td></tr>
-<tr class="separator:ae653674ca7890f27508815fa347c9668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b3caabb83f1e4b36f87627af89bd702" id="r_a8b3caabb83f1e4b36f87627af89bd702"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b3caabb83f1e4b36f87627af89bd702">underlying</a> = <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a3dedee0afdc6e0f5295c316569484956">underlying_t</a>&lt;Matrix&gt;</td></tr>
+<tr class="memdesc:a8b3caabb83f1e4b36f87627af89bd702"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element's underlying storage.  <br /></td></tr>
+<tr class="separator:a8b3caabb83f1e4b36f87627af89bd702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10bf8982f5711ee8ace2dc6348194cf8" id="r_a10bf8982f5711ee8ace2dc6348194cf8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10bf8982f5711ee8ace2dc6348194cf8">row_indexes</a> = RowIndexes</td></tr>
+<tr class="memdesc:a10bf8982f5711ee8ace2dc6348194cf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tuple with the row components of the indexes.  <br /></td></tr>
+<tr class="separator:a10bf8982f5711ee8ace2dc6348194cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac45899f5688c7cbb2345d74c36cf566" id="r_aac45899f5688c7cbb2345d74c36cf566"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac45899f5688c7cbb2345d74c36cf566">column_indexes</a> = ColumnIndexes</td></tr>
+<tr class="memdesc:aac45899f5688c7cbb2345d74c36cf566"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tuple with the column components of the indexes.  <br /></td></tr>
+<tr class="separator:aac45899f5688c7cbb2345d74c36cf566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5037e1095055c87efa8fe9ec5e5519f" id="r_aa5037e1095055c87efa8fe9ec5e5519f"><td class="memTemplParams" colspan="2">template&lt;std::size_t RowIndex, std::size_t ColumnIndex&gt; </td></tr>
+<tr class="memitem:aa5037e1095055c87efa8fe9ec5e5519f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a> = <a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>, RowIndex, ColumnIndex&gt;</td></tr>
+<tr class="memdesc:aa5037e1095055c87efa8fe9ec5e5519f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the given matrix indexes position.  <br /></td></tr>
+<tr class="separator:aa5037e1095055c87efa8fe9ec5e5519f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -143,67 +150,64 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac7b238d94c643c5ee749fae955e43d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6c56fa45f43cde7a8d49e854602b230" id="r_aa6c56fa45f43cde7a8d49e854602b230"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6c56fa45f43cde7a8d49e854602b230">operator=</a> (<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a> &amp;&amp;other)=default</td></tr>
 <tr class="separator:aa6c56fa45f43cde7a8d49e854602b230"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada3b2d2d61f670a3829f07ac05ceb810" id="r_ada3b2d2d61f670a3829f07ac05ceb810"><td class="memTemplParams" colspan="2">template&lt;typename OtherMatrix &gt; </td></tr>
+<tr class="memitem:ada3b2d2d61f670a3829f07ac05ceb810" id="r_ada3b2d2d61f670a3829f07ac05ceb810"><td class="memTemplParams" colspan="2">template&lt;algebraic OtherMatrix&gt; </td></tr>
 <tr class="memitem:ada3b2d2d61f670a3829f07ac05ceb810"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ada3b2d2d61f670a3829f07ac05ceb810">matrix</a> (const <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&lt; OtherMatrix, RowIndexes, ColumnIndexes &gt; &amp;other)</td></tr>
 <tr class="separator:ada3b2d2d61f670a3829f07ac05ceb810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05f1a2a28da177120bf5b3b2d7d2e2a8" id="r_a05f1a2a28da177120bf5b3b2d7d2e2a8"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05f1a2a28da177120bf5b3b2d7d2e2a8">matrix</a> (const Matrix &amp;other)</td></tr>
 <tr class="separator:a05f1a2a28da177120bf5b3b2d7d2e2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04181f915d415aeb488a96dbf5b313d5" id="r_a04181f915d415aeb488a96dbf5b313d5"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04181f915d415aeb488a96dbf5b313d5">matrix</a> (const std::tuple_element_t&lt; 0, ColumnIndexes &gt;(&amp;elements)[<a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt; ColumnIndexes &gt;])</td></tr>
-<tr class="separator:a04181f915d415aeb488a96dbf5b313d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb3bb371cdbb6b9b5a26d92de0788f4d" id="r_afb3bb371cdbb6b9b5a26d92de0788f4d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb3bb371cdbb6b9b5a26d92de0788f4d">matrix</a> (const std::tuple_element_t&lt; 0, RowIndexes &gt;(&amp;elements)[<a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt; RowIndexes &gt;])</td></tr>
-<tr class="separator:afb3bb371cdbb6b9b5a26d92de0788f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4901f1895efe491a0ff59d7e2deb7bd2" id="r_a4901f1895efe491a0ff59d7e2deb7bd2"><td class="memTemplParams" colspan="2">template&lt;typename OtherMatrix &gt; <br />
-requires singleton&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; requires(OtherMatrix value) { value.data(0, 0); }</td></tr>
-<tr class="memitem:a4901f1895efe491a0ff59d7e2deb7bd2"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4901f1895efe491a0ff59d7e2deb7bd2">matrix</a> (const OtherMatrix &amp;value)</td></tr>
-<tr class="separator:a4901f1895efe491a0ff59d7e2deb7bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3b3e5dce07b486575687a84da4db84a" id="r_ae3b3e5dce07b486575687a84da4db84a"><td class="memTemplParams" colspan="2">template&lt;arithmetic Type&gt; <br />
-requires singleton&lt;RowIndexes, ColumnIndexes&gt;</td></tr>
-<tr class="memitem:ae3b3e5dce07b486575687a84da4db84a"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae3b3e5dce07b486575687a84da4db84a">matrix</a> (const Type &amp;value)</td></tr>
-<tr class="separator:ae3b3e5dce07b486575687a84da4db84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5521826aede4edded92c57c364ec1ca3" id="r_a5521826aede4edded92c57c364ec1ca3"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
-requires uniform&lt;RowIndexes, ColumnIndexes&gt;</td></tr>
-<tr class="memitem:a5521826aede4edded92c57c364ec1ca3"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5521826aede4edded92c57c364ec1ca3">matrix</a> (std::initializer_list&lt; std::initializer_list&lt; Type &gt; &gt; rows)</td></tr>
-<tr class="separator:a5521826aede4edded92c57c364ec1ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbf1b9511f5057781ce891906f36ad3a" id="r_afbf1b9511f5057781ce891906f36ad3a"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; <br />
-requires row&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; (not column&lt;RowIndexes, ColumnIndexes&gt;) &amp;&amp; equal_size&lt;ColumnIndexes, std::tuple&lt;Types...&gt;&gt;</td></tr>
-<tr class="memitem:afbf1b9511f5057781ce891906f36ad3a"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#afbf1b9511f5057781ce891906f36ad3a">matrix</a> (const Types &amp;...values)</td></tr>
-<tr class="separator:afbf1b9511f5057781ce891906f36ad3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeadaae4300bfd9f1922be14460ef2653" id="r_aeadaae4300bfd9f1922be14460ef2653"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; <br />
-requires column&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; (not row&lt;RowIndexes, ColumnIndexes&gt;) &amp;&amp; equal_size&lt;RowIndexes, std::tuple&lt;Types...&gt;&gt;</td></tr>
-<tr class="memitem:aeadaae4300bfd9f1922be14460ef2653"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aeadaae4300bfd9f1922be14460ef2653">matrix</a> (const Types &amp;...values)</td></tr>
-<tr class="separator:aeadaae4300bfd9f1922be14460ef2653"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe443c568bb91e261cbe83018a65947d" id="r_afe443c568bb91e261cbe83018a65947d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe443c568bb91e261cbe83018a65947d">explicit</a> (false) operator <a class="el" href="#ae653674ca7890f27508815fa347c9668">element</a>&lt; 0</td></tr>
+<tr class="memitem:af645722a1c742b96d711956fc7d30b5a" id="r_af645722a1c742b96d711956fc7d30b5a"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af645722a1c742b96d711956fc7d30b5a">matrix</a> (const <a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt; 0, 0 &gt;(&amp;elements)[<a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt; RowIndexes &gt; *<a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt; ColumnIndexes &gt;])</td></tr>
+<tr class="separator:af645722a1c742b96d711956fc7d30b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44bddf3783dd97f849f83e9b975fbffc" id="r_a44bddf3783dd97f849f83e9b975fbffc"><td class="memTemplParams" colspan="2">template&lt;arithmetic Type&gt; <br />
+requires singleton&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt;</td></tr>
+<tr class="memitem:a44bddf3783dd97f849f83e9b975fbffc"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a44bddf3783dd97f849f83e9b975fbffc">matrix</a> (const Type &amp;value)</td></tr>
+<tr class="separator:a44bddf3783dd97f849f83e9b975fbffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036724133c861d73b44fc8115aff2a94" id="r_a036724133c861d73b44fc8115aff2a94"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
+requires uniform&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt;</td></tr>
+<tr class="memitem:a036724133c861d73b44fc8115aff2a94"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a036724133c861d73b44fc8115aff2a94">matrix</a> (std::initializer_list&lt; std::initializer_list&lt; Type &gt; &gt; row_list)</td></tr>
+<tr class="separator:a036724133c861d73b44fc8115aff2a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585593c99406c287069fd5722e98a4b3" id="r_a585593c99406c287069fd5722e98a4b3"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; <br />
+requires row&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt; &amp;&amp; (not column&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt;) &amp;&amp; same_size&lt;ColumnIndexes, std::tuple&lt;Types...&gt;&gt;</td></tr>
+<tr class="memitem:a585593c99406c287069fd5722e98a4b3"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a585593c99406c287069fd5722e98a4b3">matrix</a> (const Types &amp;...values)</td></tr>
+<tr class="separator:a585593c99406c287069fd5722e98a4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c2c2d3895fcd49eb21b2854ea58229" id="r_ae6c2c2d3895fcd49eb21b2854ea58229"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; <br />
+requires column&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt; &amp;&amp; (not row&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt;) &amp;&amp; same_size&lt;RowIndexes, std::tuple&lt;Types...&gt;&gt;</td></tr>
+<tr class="memitem:ae6c2c2d3895fcd49eb21b2854ea58229"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae6c2c2d3895fcd49eb21b2854ea58229">matrix</a> (const Types &amp;...values)</td></tr>
+<tr class="separator:ae6c2c2d3895fcd49eb21b2854ea58229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe443c568bb91e261cbe83018a65947d" id="r_afe443c568bb91e261cbe83018a65947d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe443c568bb91e261cbe83018a65947d">explicit</a> (false) operator <a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt; 0</td></tr>
 <tr class="separator:afe443c568bb91e261cbe83018a65947d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af907644c90d6e24cbafb294f872f1f6e" id="r_af907644c90d6e24cbafb294f872f1f6e"><td class="memItemLeft" align="right" valign="top">constexpr &amp;constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af907644c90d6e24cbafb294f872f1f6e">operator[]</a> (this auto &amp;&amp;self, std::size_t index) column&lt; RowIndexes</td></tr>
-<tr class="separator:af907644c90d6e24cbafb294f872f1f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27404e05a772acebce348c1fd1aa0047" id="r_a27404e05a772acebce348c1fd1aa0047"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27404e05a772acebce348c1fd1aa0047">operator[]</a> (this auto &amp;&amp;self, std::size_t index)</td></tr>
-<tr class="separator:a27404e05a772acebce348c1fd1aa0047"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0dfbb539682f0cedde5b97ee76fb034" id="r_ad0dfbb539682f0cedde5b97ee76fb034"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0dfbb539682f0cedde5b97ee76fb034">operator[]</a> (this auto &amp;&amp;self, std::size_t row, std::size_t column)</td></tr>
-<tr class="separator:ad0dfbb539682f0cedde5b97ee76fb034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b2c79039f766fcf8a232365a6bc4d57" id="r_a3b2c79039f766fcf8a232365a6bc4d57"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b2c79039f766fcf8a232365a6bc4d57">operator()</a> (this auto &amp;&amp;self, std::size_t index)</td></tr>
-<tr class="separator:a3b2c79039f766fcf8a232365a6bc4d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28a40366c05b915caa9dd7ae5d9a4bd1" id="r_a28a40366c05b915caa9dd7ae5d9a4bd1"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28a40366c05b915caa9dd7ae5d9a4bd1">operator()</a> (this auto &amp;&amp;self, std::size_t index)</td></tr>
-<tr class="separator:a28a40366c05b915caa9dd7ae5d9a4bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af379683792fb4a1d4bd421874e55a104" id="r_af379683792fb4a1d4bd421874e55a104"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af379683792fb4a1d4bd421874e55a104">operator()</a> (this auto &amp;&amp;self, std::size_t row, std::size_t column)</td></tr>
-<tr class="separator:af379683792fb4a1d4bd421874e55a104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa45b4efc013359081fa287fabf03aecd" id="r_aa45b4efc013359081fa287fabf03aecd"><td class="memItemLeft" align="right" valign="top">constexpr &amp;constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa45b4efc013359081fa287fabf03aecd">operator[]</a> (this auto &amp;&amp;self, std::size_t index) uniform&lt; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a> &gt; &amp;&amp;one_dimension&lt; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a> &gt;</td></tr>
+<tr class="separator:aa45b4efc013359081fa287fabf03aecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1386e65537f53ebc77017aa0ed8190c5" id="r_a1386e65537f53ebc77017aa0ed8190c5"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1386e65537f53ebc77017aa0ed8190c5">operator[]</a> (this auto &amp;&amp;self, std::size_t row, std::size_t column)</td></tr>
+<tr class="separator:a1386e65537f53ebc77017aa0ed8190c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a47084485ea26bc81e356110e4d2be2" id="r_a7a47084485ea26bc81e356110e4d2be2"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a47084485ea26bc81e356110e4d2be2">operator()</a> (this auto &amp;&amp;self, std::size_t index)</td></tr>
+<tr class="separator:a7a47084485ea26bc81e356110e4d2be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af566217829c395858d9c6d5f8951307b" id="r_af566217829c395858d9c6d5f8951307b"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af566217829c395858d9c6d5f8951307b">operator()</a> (this auto &amp;&amp;self, std::size_t row, std::size_t column)</td></tr>
+<tr class="separator:af566217829c395858d9c6d5f8951307b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49ab5a637798a9152c84be57c765600c" id="r_a49ab5a637798a9152c84be57c765600c"><td class="memTemplParams" colspan="2">template&lt;std::size_t Row, std::size_t Column&gt; <br />
 requires in_range&lt;Row, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;RowIndexes&gt;&gt; &amp;&amp; in_range&lt;Column, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;ColumnIndexes&gt;&gt;</td></tr>
-<tr class="memitem:a49ab5a637798a9152c84be57c765600c"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#ae653674ca7890f27508815fa347c9668">element</a>&lt; Row, Column &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a49ab5a637798a9152c84be57c765600c">at</a> ()</td></tr>
+<tr class="memitem:a49ab5a637798a9152c84be57c765600c"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt; Row, Column &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a49ab5a637798a9152c84be57c765600c">at</a> ()</td></tr>
 <tr class="separator:a49ab5a637798a9152c84be57c765600c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab40f44141c0cfb4c483eef88970d4a7" id="r_aab40f44141c0cfb4c483eef88970d4a7"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index&gt; <br />
-requires column&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; in_range&lt;Index, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;RowIndexes&gt;&gt;</td></tr>
-<tr class="memitem:aab40f44141c0cfb4c483eef88970d4a7"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#ae653674ca7890f27508815fa347c9668">element</a>&lt; Index, 0 &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aab40f44141c0cfb4c483eef88970d4a7">at</a> ()</td></tr>
-<tr class="separator:aab40f44141c0cfb4c483eef88970d4a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4441ce6df2b3b6bce5a7f0f3f3bcdd9b" id="r_a4441ce6df2b3b6bce5a7f0f3f3bcdd9b"><td class="memTemplParams" colspan="2">template&lt;std::size_t Index&gt; <br />
+requires column&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt; &amp;&amp; in_range&lt;Index, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;RowIndexes&gt;&gt;</td></tr>
+<tr class="memitem:a4441ce6df2b3b6bce5a7f0f3f3bcdd9b"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt; Index, 0 &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4441ce6df2b3b6bce5a7f0f3f3bcdd9b">at</a> ()</td></tr>
+<tr class="separator:a4441ce6df2b3b6bce5a7f0f3f3bcdd9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a5df098f15861d0aeae99dac28fec7a4a" id="r_a5df098f15861d0aeae99dac28fec7a4a"><td class="memItemLeft" align="right" valign="top">constexpr &amp;constexpr auto ColumnIndexes &amp;&amp;not row&lt; RowIndexes, ColumnIndexes &gt; &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5df098f15861d0aeae99dac28fec7a4a">uniform&lt; RowIndexes, ColumnIndexes &gt;</a></td></tr>
-<tr class="separator:a5df098f15861d0aeae99dac28fec7a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe3f85237b8320e3ee8bf0de633f2209" id="r_afe3f85237b8320e3ee8bf0de633f2209"><td class="memItemLeft" align="right" valign="top">Matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a></td></tr>
 <tr class="separator:afe3f85237b8320e3ee8bf0de633f2209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:af54a6f995c8a6849a6955472939f2fc2" id="r_af54a6f995c8a6849a6955472939f2fc2"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af54a6f995c8a6849a6955472939f2fc2">rows</a> {<a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;<a class="el" href="#a10bf8982f5711ee8ace2dc6348194cf8">row_indexes</a>&gt;}</td></tr>
+<tr class="memdesc:af54a6f995c8a6849a6955472939f2fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of rows.  <br /></td></tr>
+<tr class="separator:af54a6f995c8a6849a6955472939f2fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6c96a982783c79d0ce8c94c9bb4fb7b" id="r_ac6c96a982783c79d0ce8c94c9bb4fb7b"><td class="memItemLeft" align="right" valign="top">static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6c96a982783c79d0ce8c94c9bb4fb7b">columns</a> {<a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;<a class="el" href="#aac45899f5688c7cbb2345d74c36cf566">column_indexes</a>&gt;}</td></tr>
+<tr class="memdesc:ac6c96a982783c79d0ce8c94c9bb4fb7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of rows.  <br /></td></tr>
+<tr class="separator:ac6c96a982783c79d0ce8c94c9bb4fb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename Matrix, typename RowIndexes, typename ColumnIndexes&gt;<br />
+<div class="textblock"><div class="compoundTemplParams">template&lt;algebraic Matrix, typename RowIndexes, typename ColumnIndexes&gt;<br />
 struct fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;</div><p>Indexed matrix. </p>
 <p>Compose a linear algebra backend matrix into an indexed matrix. Row and column indexes provide each element's index type.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -218,64 +222,99 @@ struct fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;</div
 <dd>
 Deduction guides are tricky because a given element type comes from a row and column index to be deduced. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00143">143</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00149">149</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="ae653674ca7890f27508815fa347c9668" name="ae653674ca7890f27508815fa347c9668"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae653674ca7890f27508815fa347c9668">&#9670;&#160;</a></span>element</h2>
+<a id="aac45899f5688c7cbb2345d74c36cf566" name="aac45899f5688c7cbb2345d74c36cf566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac45899f5688c7cbb2345d74c36cf566">&#9670;&#160;</a></span>column_indexes</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::column_indexes = ColumnIndexes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The tuple with the column components of the indexes. </p>
+
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00159">159</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa5037e1095055c87efa8fe9ec5e5519f" name="aa5037e1095055c87efa8fe9ec5e5519f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5037e1095055c87efa8fe9ec5e5519f">&#9670;&#160;</a></span>element</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
 template&lt;std::size_t RowIndex, std::size_t ColumnIndex&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::element</td>
+          <td class="memname">using <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::element = <a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>, RowIndex, ColumnIndex&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> <a class="code hl_typedef" href="namespacefcarouge.xhtml#ae572d5a48afe03765d8e55617ea78689">product&lt;std::tuple_element_t&lt;RowIndex, RowIndexes&gt;</a>,</div>
-<div class="line">                          std::tuple_element_t&lt;ColumnIndex, ColumnIndexes&gt;&gt;</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_ae572d5a48afe03765d8e55617ea78689"><div class="ttname"><a href="namespacefcarouge.xhtml#ae572d5a48afe03765d8e55617ea78689">fcarouge::product</a></div><div class="ttdeci">internal::product&lt; Lhs, Rhs &gt; product</div><div class="ttdoc">The deduced result type of the product.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00207">utility.hpp:207</a></div></div>
-</div><!-- fragment -->
+
 <p>The type of the element at the given matrix indexes position. </p>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00152">152</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00169">169</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac4fe70f72b6c5b01124418fda6209253" name="ac4fe70f72b6c5b01124418fda6209253"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4fe70f72b6c5b01124418fda6209253">&#9670;&#160;</a></span>underlying</h2>
+<a id="a10bf8982f5711ee8ace2dc6348194cf8" name="a10bf8982f5711ee8ace2dc6348194cf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10bf8982f5711ee8ace2dc6348194cf8">&#9670;&#160;</a></span>row_indexes</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::underlying</td>
+          <td class="memname">using <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::row_indexes = RowIndexes</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">      std::remove_cvref_t&lt;decltype(std::declval&lt;Matrix&gt;()(0, 0))&gt;</div>
-</div><!-- fragment -->
-<p>The type of the element's underlying storage. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000037">Todo</a></b></dt><dd>Privatize? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00147">147</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p>The tuple with the row components of the indexes. </p>
+
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00156">156</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8b3caabb83f1e4b36f87627af89bd702" name="a8b3caabb83f1e4b36f87627af89bd702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b3caabb83f1e4b36f87627af89bd702">&#9670;&#160;</a></span>underlying</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::underlying = <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a3dedee0afdc6e0f5295c316569484956">underlying_t</a>&lt;Matrix&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type of the element's underlying storage. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000035">Todo</a></b></dt><dd>Privatize? </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00153">153</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a961babc884168f5958d6a41a67e6cd9c" name="a961babc884168f5958d6a41a67e6cd9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a961babc884168f5958d6a41a67e6cd9c">&#9670;&#160;</a></span>matrix() <span class="overload">[1/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a961babc884168f5958d6a41a67e6cd9c">&#9670;&#160;</a></span>matrix() <span class="overload">[1/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -297,12 +336,12 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="adb2b9757a13fe56845b8341c97d4120b" name="adb2b9757a13fe56845b8341c97d4120b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb2b9757a13fe56845b8341c97d4120b">&#9670;&#160;</a></span>matrix() <span class="overload">[2/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adb2b9757a13fe56845b8341c97d4120b">&#9670;&#160;</a></span>matrix() <span class="overload">[2/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -324,12 +363,12 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="ac7b238d94c643c5ee749fae955e43d41" name="ac7b238d94c643c5ee749fae955e43d41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7b238d94c643c5ee749fae955e43d41">&#9670;&#160;</a></span>matrix() <span class="overload">[3/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7b238d94c643c5ee749fae955e43d41">&#9670;&#160;</a></span>matrix() <span class="overload">[3/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -351,14 +390,14 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </div>
 </div>
 <a id="ada3b2d2d61f670a3829f07ac05ceb810" name="ada3b2d2d61f670a3829f07ac05ceb810"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada3b2d2d61f670a3829f07ac05ceb810">&#9670;&#160;</a></span>matrix() <span class="overload">[4/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ada3b2d2d61f670a3829f07ac05ceb810">&#9670;&#160;</a></span>matrix() <span class="overload">[4/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
-template&lt;typename OtherMatrix &gt; </div>
+template&lt;algebraic OtherMatrix&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -376,21 +415,21 @@ template&lt;typename OtherMatrix &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000039">Todo</a></b></dt><dd>Requires evaluated types of Matrix and OtherMatrix are identical? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000037">Todo</a></b></dt><dd>Requires evaluated types of Matrix and OtherMatrix are identical? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00167">167</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  169</span>      : <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{other.data} {}</div>
-<div class="ttc" id="astructfcarouge_1_1indexed_1_1matrix_xhtml_afe3f85237b8320e3ee8bf0de633f2209"><div class="ttname"><a href="#afe3f85237b8320e3ee8bf0de633f2209">fcarouge::indexed::matrix::data</a></div><div class="ttdeci">Matrix data</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00320">indexed.hpp:320</a></div></div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00183">183</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  185</span>      : <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{other.data} {}</div>
+<div class="ttc" id="astructfcarouge_1_1indexed_1_1matrix_xhtml_afe3f85237b8320e3ee8bf0de633f2209"><div class="ttname"><a href="#afe3f85237b8320e3ee8bf0de633f2209">fcarouge::indexed::matrix::data</a></div><div class="ttdeci">Matrix data</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00294">indexed.hpp:294</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a05f1a2a28da177120bf5b3b2d7d2e2a8" name="a05f1a2a28da177120bf5b3b2d7d2e2a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05f1a2a28da177120bf5b3b2d7d2e2a8">&#9670;&#160;</a></span>matrix() <span class="overload">[5/12]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f1a2a28da177120bf5b3b2d7d2e2a8">&#9670;&#160;</a></span>matrix() <span class="overload">[5/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -404,55 +443,24 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000040">Todo</a></b></dt><dd>Can this be removed along the evaluate? </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00172">172</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  172</span>: <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{other} {}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a04181f915d415aeb488a96dbf5b313d5" name="a04181f915d415aeb488a96dbf5b313d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04181f915d415aeb488a96dbf5b313d5">&#9670;&#160;</a></span>matrix() <span class="overload">[6/12]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix </td>
-          <td>(</td>
-          <td class="paramtype">const std::tuple_element_t&lt; 0, ColumnIndexes &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span>( &amp;elements)[size&lt; ColumnIndexes &gt;]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000041">Todo</a></b></dt><dd>Fix the array constructors: the parameter type needs to be the indexes product. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000038">Todo</a></b></dt><dd>Can this be removed along the evaluate? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00176">176</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  181</span>      : <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{elements} {}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00188">188</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  188</span>: <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{other} {}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="afb3bb371cdbb6b9b5a26d92de0788f4d" name="afb3bb371cdbb6b9b5a26d92de0788f4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb3bb371cdbb6b9b5a26d92de0788f4d">&#9670;&#160;</a></span>matrix() <span class="overload">[7/12]</span></h2>
+<a id="af645722a1c742b96d711956fc7d30b5a" name="af645722a1c742b96d711956fc7d30b5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af645722a1c742b96d711956fc7d30b5a">&#9670;&#160;</a></span>matrix() <span class="overload">[6/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -460,7 +468,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
         <tr>
           <td class="memname"><a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix </td>
           <td>(</td>
-          <td class="paramtype">const std::tuple_element_t&lt; 0, RowIndexes &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span>( &amp;elements)[size&lt; RowIndexes &gt;]</td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt; 0, 0 &gt;(&amp;)</td>          <td class="paramname"><span class="paramname"><em>elements</em></span>[size&lt; RowIndexes &gt; *size&lt; ColumnIndexes &gt;]</td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -471,58 +479,21 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00183">183</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  189</span>      : <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{elements} {}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00190">190</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  193</span>      : <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{elements} {}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a4901f1895efe491a0ff59d7e2deb7bd2" name="a4901f1895efe491a0ff59d7e2deb7bd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4901f1895efe491a0ff59d7e2deb7bd2">&#9670;&#160;</a></span>matrix() <span class="overload">[8/12]</span></h2>
+<a id="a44bddf3783dd97f849f83e9b975fbffc" name="a44bddf3783dd97f849f83e9b975fbffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44bddf3783dd97f849f83e9b975fbffc">&#9670;&#160;</a></span>matrix() <span class="overload">[7/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<div class="memtemplate">
-template&lt;typename OtherMatrix &gt; <br />
-requires singleton&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; requires(OtherMatrix value) { value.data(0, 0); }</div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix </td>
-          <td>(</td>
-          <td class="paramtype">const OtherMatrix &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00194">194</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  194</span>                                                             {</div>
-<div class="line"><span class="lineno">  195</span>    <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a> = value.data;</div>
-<div class="line"><span class="lineno">  196</span>  }</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
-
-</div>
-</div>
-<a id="ae3b3e5dce07b486575687a84da4db84a" name="ae3b3e5dce07b486575687a84da4db84a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3b3e5dce07b486575687a84da4db84a">&#9670;&#160;</a></span>matrix() <span class="overload">[9/12]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
 template&lt;arithmetic Type&gt; <br />
-requires singleton&lt;RowIndexes, ColumnIndexes&gt;</div>
+requires singleton&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt;</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -541,33 +512,33 @@ requires singleton&lt;RowIndexes, ColumnIndexes&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00200">200</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  200</span>                                                      {</div>
-<div class="line"><span class="lineno">  201</span>    <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>(0, 0) = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, Type&gt;::to_underlying</a>(value);</div>
-<div class="line"><span class="lineno">  202</span>  }</div>
-<div class="ttc" id="astructfcarouge_1_1indexed_1_1element__traits_xhtml_a8d479a35602790f3dff1ac6975b58748"><div class="ttname"><a href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">fcarouge::indexed::element_traits::to_underlying</a></div><div class="ttdeci">static constexpr Underlying to_underlying(Type value)</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00109">indexed.hpp:109</a></div></div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00197">197</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  197</span>                                                      {</div>
+<div class="line"><span class="lineno">  198</span>    <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>(0, 0) = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, Type&gt;::to_underlying</a>(value);</div>
+<div class="line"><span class="lineno">  199</span>  }</div>
+<div class="ttc" id="astructfcarouge_1_1indexed_1_1element__traits_xhtml_a8d479a35602790f3dff1ac6975b58748"><div class="ttname"><a href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">fcarouge::indexed::element_traits::to_underlying</a></div><div class="ttdeci">static constexpr Underlying to_underlying(Type value)</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00115">indexed.hpp:115</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00109">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
 <div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1indexed_1_1matrix_ae3b3e5dce07b486575687a84da4db84a_cgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1indexed_1_1matrix_a44bddf3783dd97f849f83e9b975fbffc_cgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a5521826aede4edded92c57c364ec1ca3" name="a5521826aede4edded92c57c364ec1ca3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5521826aede4edded92c57c364ec1ca3">&#9670;&#160;</a></span>matrix() <span class="overload">[10/12]</span></h2>
+<a id="a036724133c861d73b44fc8115aff2a94" name="a036724133c861d73b44fc8115aff2a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036724133c861d73b44fc8115aff2a94">&#9670;&#160;</a></span>matrix() <span class="overload">[8/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
 template&lt;typename Type &gt; <br />
-requires uniform&lt;RowIndexes, ColumnIndexes&gt;</div>
+requires uniform&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt;</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -575,7 +546,7 @@ requires uniform&lt;RowIndexes, ColumnIndexes&gt;</div>
         <tr>
           <td class="memname"><a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix </td>
           <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; Type &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>rows</em></span></td><td>)</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; Type &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em>row_list</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -585,40 +556,40 @@ requires uniform&lt;RowIndexes, ColumnIndexes&gt;</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000042">Todo</a></b></dt><dd>Verify the list sizes at runtime? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000039">Todo</a></b></dt><dd>Verify the list sizes at runtime? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00206">206</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  209</span>  {</div>
-<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">for</span> (std::size_t i{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : rows) {</div>
-<div class="line"><span class="lineno">  211</span>      <span class="keywordflow">for</span> (std::size_t j{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;value : row) {</div>
-<div class="line"><span class="lineno">  212</span>        <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>(i, j) = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, Type&gt;::to_underlying</a>(value);</div>
-<div class="line"><span class="lineno">  213</span>        ++j;</div>
-<div class="line"><span class="lineno">  214</span>      }</div>
-<div class="line"><span class="lineno">  215</span>      ++i;</div>
-<div class="line"><span class="lineno">  216</span>    }</div>
-<div class="line"><span class="lineno">  217</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00203">203</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>  {</div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">for</span> (std::size_t i{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;row : row_list) {</div>
+<div class="line"><span class="lineno">  208</span>      <span class="keywordflow">for</span> (std::size_t j{0}; <span class="keyword">const</span> <span class="keyword">auto</span> &amp;value : row) {</div>
+<div class="line"><span class="lineno">  209</span>        <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>(i, j) = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, Type&gt;::to_underlying</a>(value);</div>
+<div class="line"><span class="lineno">  210</span>        ++j;</div>
+<div class="line"><span class="lineno">  211</span>      }</div>
+<div class="line"><span class="lineno">  212</span>      ++i;</div>
+<div class="line"><span class="lineno">  213</span>    }</div>
+<div class="line"><span class="lineno">  214</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00109">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
 <div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1indexed_1_1matrix_a5521826aede4edded92c57c364ec1ca3_cgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1indexed_1_1matrix_a036724133c861d73b44fc8115aff2a94_cgraph.svg" width="372" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="afbf1b9511f5057781ce891906f36ad3a" name="afbf1b9511f5057781ce891906f36ad3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbf1b9511f5057781ce891906f36ad3a">&#9670;&#160;</a></span>matrix() <span class="overload">[11/12]</span></h2>
+<a id="a585593c99406c287069fd5722e98a4b3" name="a585593c99406c287069fd5722e98a4b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a585593c99406c287069fd5722e98a4b3">&#9670;&#160;</a></span>matrix() <span class="overload">[9/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
 template&lt;typename... Types&gt; <br />
-requires row&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; (not column&lt;RowIndexes, ColumnIndexes&gt;) &amp;&amp; equal_size&lt;ColumnIndexes, std::tuple&lt;Types...&gt;&gt;</div>
+requires row&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt; &amp;&amp; (not column&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt;) &amp;&amp; same_size&lt;ColumnIndexes, std::tuple&lt;Types...&gt;&gt;</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -636,44 +607,44 @@ requires row&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; (not column&lt;RowIndex
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000043">Todo</a></b></dt><dd><p class="startdd">Combine the two constructors in ome? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000040">Todo</a></b></dt><dd><p class="startdd">Combine the two constructors in ome? </p>
 <p class="interdd">Verify if the types are the same, or assignable, for nicer error? </p>
 <p class="enddd">Rewrite with a fold expression over the pack? </p>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00226">226</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  226</span>                                                           {</div>
-<div class="line"><span class="lineno">  227</span>    std::tuple value_pack{values...};</div>
-<div class="line"><span class="lineno">  228</span>    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;ColumnIndexes&gt;</a>, 1&gt;([<span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">  229</span>                                              &amp;value_pack](<span class="keyword">auto</span> position) {</div>
-<div class="line"><span class="lineno">  230</span>      <span class="keyword">auto</span> value{std::get&lt;position&gt;(value_pack)};</div>
-<div class="line"><span class="lineno">  231</span>      <span class="keyword">using </span>type = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
-<div class="line"><span class="lineno">  232</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[position] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
-<div class="line"><span class="lineno">  233</span>    });</div>
-<div class="line"><span class="lineno">  234</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00222">222</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  222</span>                                                           {</div>
+<div class="line"><span class="lineno">  223</span>    std::tuple value_pack{values...};</div>
+<div class="line"><span class="lineno">  224</span>    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;ColumnIndexes&gt;</a>, 1&gt;([<span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">  225</span>                                              &amp;value_pack](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">  226</span>      <span class="keyword">auto</span> value{std::get&lt;position&gt;(value_pack)};</div>
+<div class="line"><span class="lineno">  227</span>      <span class="keyword">using </span>type = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
+<div class="line"><span class="lineno">  228</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[position] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
+<div class="line"><span class="lineno">  229</span>    });</div>
+<div class="line"><span class="lineno">  230</span>  }</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a5ad0022b969a210b7261d0158bc1dd7b"><div class="ttname"><a href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdoc">Compile-time for loop.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00223">utility.hpp:223</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00223">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00109">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00223">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
 <div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1indexed_1_1matrix_afbf1b9511f5057781ce891906f36ad3a_cgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1indexed_1_1matrix_a585593c99406c287069fd5722e98a4b3_cgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="aeadaae4300bfd9f1922be14460ef2653" name="aeadaae4300bfd9f1922be14460ef2653"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeadaae4300bfd9f1922be14460ef2653">&#9670;&#160;</a></span>matrix() <span class="overload">[12/12]</span></h2>
+<a id="ae6c2c2d3895fcd49eb21b2854ea58229" name="ae6c2c2d3895fcd49eb21b2854ea58229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6c2c2d3895fcd49eb21b2854ea58229">&#9670;&#160;</a></span>matrix() <span class="overload">[10/10]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
 template&lt;typename... Types&gt; <br />
-requires column&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; (not row&lt;RowIndexes, ColumnIndexes&gt;) &amp;&amp; equal_size&lt;RowIndexes, std::tuple&lt;Types...&gt;&gt;</div>
+requires column&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt; &amp;&amp; (not row&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt;) &amp;&amp; same_size&lt;RowIndexes, std::tuple&lt;Types...&gt;&gt;</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -692,23 +663,23 @@ requires column&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; (not row&lt;RowIndex
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00240">240</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  240</span>                                                  {</div>
-<div class="line"><span class="lineno">  241</span>    std::tuple value_pack{values...};</div>
-<div class="line"><span class="lineno">  242</span>    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;RowIndexes&gt;</a>, 1&gt;([<span class="keyword">this</span>, &amp;value_pack](<span class="keyword">auto</span> position) {</div>
-<div class="line"><span class="lineno">  243</span>      <span class="keyword">auto</span> value{std::get&lt;position&gt;(value_pack)};</div>
-<div class="line"><span class="lineno">  244</span>      <span class="keyword">using </span>type = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
-<div class="line"><span class="lineno">  245</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[position] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
-<div class="line"><span class="lineno">  246</span>    });</div>
-<div class="line"><span class="lineno">  247</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00235">235</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>                                                  {</div>
+<div class="line"><span class="lineno">  236</span>    std::tuple value_pack{values...};</div>
+<div class="line"><span class="lineno">  237</span>    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;RowIndexes&gt;</a>, 1&gt;([<span class="keyword">this</span>, &amp;value_pack](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">  238</span>      <span class="keyword">auto</span> value{std::get&lt;position&gt;(value_pack)};</div>
+<div class="line"><span class="lineno">  239</span>      <span class="keyword">using </span>type = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
+<div class="line"><span class="lineno">  240</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[position] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
+<div class="line"><span class="lineno">  241</span>    });</div>
+<div class="line"><span class="lineno">  242</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00223">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00109">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00223">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
 <div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1indexed_1_1matrix_aeadaae4300bfd9f1922be14460ef2653_cgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structfcarouge_1_1indexed_1_1matrix_ae6c2c2d3895fcd49eb21b2854ea58229_cgraph.svg" width="100%" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -720,7 +691,7 @@ requires column&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; (not row&lt;RowIndex
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
 template&lt;std::size_t Row, std::size_t Column&gt; <br />
 requires in_range&lt;Row, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;RowIndexes&gt;&gt; &amp;&amp; in_range&lt;Column, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;ColumnIndexes&gt;&gt;</div>
@@ -729,7 +700,7 @@ requires in_range&lt;Row, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffe
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#ae653674ca7890f27508815fa347c9668">element</a>&lt; Row, Column &gt; &amp; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
+          <td class="memname"><a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt; Row, Column &gt; &amp; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -742,32 +713,32 @@ requires in_range&lt;Row, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffe
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00307">307</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  307</span>                                                            {</div>
-<div class="line"><span class="lineno">  308</span>    <span class="keywordflow">return</span> element_traits&lt;underlying, element&lt;Row, Column&gt;&gt;::from_underlying(</div>
-<div class="line"><span class="lineno">  309</span>        <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>(std::size_t{Row}, std::size_t{Column}));</div>
-<div class="line"><span class="lineno">  310</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00282">282</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  282</span>                                                            {</div>
+<div class="line"><span class="lineno">  283</span>    <span class="keywordflow">return</span> element_traits&lt;underlying, element&lt;Row, Column&gt;&gt;::from_underlying(</div>
+<div class="line"><span class="lineno">  284</span>        <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>(std::size_t{Row}, std::size_t{Column}));</div>
+<div class="line"><span class="lineno">  285</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
-<a id="aab40f44141c0cfb4c483eef88970d4a7" name="aab40f44141c0cfb4c483eef88970d4a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab40f44141c0cfb4c483eef88970d4a7">&#9670;&#160;</a></span>at() <span class="overload">[2/2]</span></h2>
+<a id="a4441ce6df2b3b6bce5a7f0f3f3bcdd9b" name="a4441ce6df2b3b6bce5a7f0f3f3bcdd9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4441ce6df2b3b6bce5a7f0f3f3bcdd9b">&#9670;&#160;</a></span>at() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <div class="memtemplate">
 template&lt;std::size_t Index&gt; <br />
-requires column&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; in_range&lt;Index, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;RowIndexes&gt;&gt;</div>
+requires column&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix</a>&gt; &amp;&amp; in_range&lt;Index, 0, <a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;RowIndexes&gt;&gt;</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#ae653674ca7890f27508815fa347c9668">element</a>&lt; Index, 0 &gt; &amp; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
+          <td class="memname"><a class="el" href="#aa5037e1095055c87efa8fe9ec5e5519f">element</a>&lt; Index, 0 &gt; &amp; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -780,13 +751,13 @@ requires column&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; in_range&lt;Index, 0
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00315">315</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  315</span>                                                         {</div>
-<div class="line"><span class="lineno">  316</span>    <span class="keywordflow">return</span> element_traits&lt;underlying, element&lt;Index, 0&gt;&gt;::from_underlying(</div>
-<div class="line"><span class="lineno">  317</span>        <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>(std::size_t{Index}, 0));</div>
-<div class="line"><span class="lineno">  318</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00289">289</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  289</span>                                                         {</div>
+<div class="line"><span class="lineno">  290</span>    <span class="keywordflow">return</span> element_traits&lt;underlying, element&lt;Index, 0&gt;&gt;::from_underlying(</div>
+<div class="line"><span class="lineno">  291</span>        <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>(std::size_t{Index}));</div>
+<div class="line"><span class="lineno">  292</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -796,7 +767,7 @@ requires column&lt;RowIndexes, ColumnIndexes&gt; &amp;&amp; in_range&lt;Index, 0
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -815,17 +786,17 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
-<a id="a3b2c79039f766fcf8a232365a6bc4d57" name="a3b2c79039f766fcf8a232365a6bc4d57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b2c79039f766fcf8a232365a6bc4d57">&#9670;&#160;</a></span>operator()() <span class="overload">[1/3]</span></h2>
+<a id="a7a47084485ea26bc81e356110e4d2be2" name="a7a47084485ea26bc81e356110e4d2be2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a47084485ea26bc81e356110e4d2be2">&#9670;&#160;</a></span>operator()() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -848,56 +819,20 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00280">280</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  285</span>  {</div>
-<div class="line"><span class="lineno">  286</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(index, 0);</div>
-<div class="line"><span class="lineno">  287</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00265">265</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  268</span>  {</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(index);</div>
+<div class="line"><span class="lineno">  270</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a28a40366c05b915caa9dd7ae5d9a4bd1" name="a28a40366c05b915caa9dd7ae5d9a4bd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28a40366c05b915caa9dd7ae5d9a4bd1">&#9670;&#160;</a></span>operator()() <span class="overload">[2/3]</span></h2>
+<a id="af566217829c395858d9c6d5f8951307b" name="af566217829c395858d9c6d5f8951307b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af566217829c395858d9c6d5f8951307b">&#9670;&#160;</a></span>operator()() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00289">289</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  293</span>  {</div>
-<div class="line"><span class="lineno">  294</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(0, index);</div>
-<div class="line"><span class="lineno">  295</span>  }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="af379683792fb4a1d4bd421874e55a104" name="af379683792fb4a1d4bd421874e55a104"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af379683792fb4a1d4bd421874e55a104">&#9670;&#160;</a></span>operator()() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -925,10 +860,10 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00298">298</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  300</span>  {</div>
-<div class="line"><span class="lineno">  301</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(row, column);</div>
-<div class="line"><span class="lineno">  302</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00273">273</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  275</span>  {</div>
+<div class="line"><span class="lineno">  276</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(row, column);</div>
+<div class="line"><span class="lineno">  277</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -938,7 +873,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -965,7 +900,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -986,49 +921,13 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 
 </div>
 </div>
-<a id="a27404e05a772acebce348c1fd1aa0047" name="a27404e05a772acebce348c1fd1aa0047"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27404e05a772acebce348c1fd1aa0047">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/3]</span></h2>
+<a id="aa45b4efc013359081fa287fabf03aecd" name="aa45b4efc013359081fa287fabf03aecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa45b4efc013359081fa287fabf03aecd">&#9670;&#160;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::operator[] </td>
-          <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00265">265</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  269</span>  {</div>
-<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(0, index);</div>
-<div class="line"><span class="lineno">  271</span>  }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="af907644c90d6e24cbafb294f872f1f6e" name="af907644c90d6e24cbafb294f872f1f6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af907644c90d6e24cbafb294f872f1f6e">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1041,7 +940,7 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;) &amp;&amp;</td>
         </tr>
       </table>
   </td>
@@ -1051,15 +950,20 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00251">251</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  254</span>  {</div>
+<div class="line"><span class="lineno">  255</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(index);</div>
+<div class="line"><span class="lineno">  256</span>  }</div>
+</div><!-- fragment -->
 </div>
 </div>
-<a id="ad0dfbb539682f0cedde5b97ee76fb034" name="ad0dfbb539682f0cedde5b97ee76fb034"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0dfbb539682f0cedde5b97ee76fb034">&#9670;&#160;</a></span>operator[]() <span class="overload">[3/3]</span></h2>
+<a id="a1386e65537f53ebc77017aa0ed8190c5" name="a1386e65537f53ebc77017aa0ed8190c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1386e65537f53ebc77017aa0ed8190c5">&#9670;&#160;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1087,21 +991,51 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00274">274</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  276</span>  {</div>
-<div class="line"><span class="lineno">  277</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(row, column);</div>
-<div class="line"><span class="lineno">  278</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00259">259</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  261</span>  {</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(row, column);</div>
+<div class="line"><span class="lineno">  263</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac6c96a982783c79d0ce8c94c9bb4fb7b" name="ac6c96a982783c79d0ce8c94c9bb4fb7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6c96a982783c79d0ce8c94c9bb4fb7b">&#9670;&#160;</a></span>columns</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::columns {<a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;<a class="el" href="#aac45899f5688c7cbb2345d74c36cf566">column_indexes</a>&gt;}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The count of rows. </p>
+
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00165">165</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  165</span>{<a class="code hl_variable" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size&lt;column_indexes&gt;</a>};</div>
+<div class="ttc" id="anamespacefcarouge_xhtml_ac4cffefdda8c01a267ce2700c6acb903"><div class="ttname"><a href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">fcarouge::size</a></div><div class="ttdeci">constexpr std::size_t size</div><div class="ttdoc">Size of tuple-like types.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00237">utility.hpp:237</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="afe3f85237b8320e3ee8bf0de633f2209" name="afe3f85237b8320e3ee8bf0de633f2209"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe3f85237b8320e3ee8bf0de633f2209">&#9670;&#160;</a></span>data</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">Matrix <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</td>
@@ -1109,30 +1043,39 @@ template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; 
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00320">320</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00294">294</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="indexed_8hpp_source.xhtml#l00307">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at()</a>, <a class="el" href="#afe443c568bb91e261cbe83018a65947d">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00194">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00200">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00226">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00206">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00371">fcarouge::indexed::operator*()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00346">fcarouge::indexed::operator*()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00356">fcarouge::indexed::operator*()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00395">fcarouge::indexed::operator+()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00385">fcarouge::indexed::operator+()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00403">fcarouge::indexed::operator-()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00413">fcarouge::indexed::operator-()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00430">fcarouge::indexed::operator/()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00421">fcarouge::indexed::operator/()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00338">fcarouge::indexed::operator==()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="indexed_8hpp_source.xhtml#l00282">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::at()</a>, <a class="el" href="#afe443c568bb91e261cbe83018a65947d">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::explicit()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00197">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00222">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00203">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00344">fcarouge::indexed::operator*()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00320">fcarouge::indexed::operator*()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00336">fcarouge::indexed::operator*()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00358">fcarouge::indexed::operator+()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00375">fcarouge::indexed::operator-()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00400">fcarouge::indexed::operator/()</a>, <a class="el" href="indexed_8hpp_source.xhtml#l00391">fcarouge::indexed::operator/()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00312">fcarouge::indexed::operator==()</a>.</p>
 
 </div>
 </div>
-<a id="a5df098f15861d0aeae99dac28fec7a4a" name="a5df098f15861d0aeae99dac28fec7a4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5df098f15861d0aeae99dac28fec7a4a">&#9670;&#160;</a></span>uniform&lt; RowIndexes, ColumnIndexes &gt;</h2>
+<a id="af54a6f995c8a6849a6955472939f2fc2" name="af54a6f995c8a6849a6955472939f2fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af54a6f995c8a6849a6955472939f2fc2">&#9670;&#160;</a></span>rows</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Matrix , typename RowIndexes , typename ColumnIndexes &gt; </div>
+template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">&amp;constexpr auto ColumnIndexes&amp;&amp; not row&lt;RowIndexes, ColumnIndexes&gt;&amp;&amp; <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::uniform&lt; RowIndexes, ColumnIndexes &gt;</td>
+          <td class="memname">std::size_t <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a>&lt; Matrix, RowIndexes, ColumnIndexes &gt;::rows {<a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size</a>&lt;<a class="el" href="#a10bf8982f5711ee8ace2dc6348194cf8">row_indexes</a>&gt;}</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> std::forward&lt;decltype(self)&gt;(self).data(index, 0)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00259">259</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 
+<p>The count of rows. </p>
+
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00162">162</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  162</span>{<a class="code hl_variable" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size&lt;row_indexes&gt;</a>};</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>

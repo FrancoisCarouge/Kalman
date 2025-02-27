@@ -129,7 +129,7 @@ Public Member Functions</h2></td></tr>
 requires requires(IndexedMatrix&lt;Matrix, RowIndexes, ColumnIndexes&gt; m) { m.data; }<br />
 struct fcarouge::transposer&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;</div><p>Specialization of the transposer. </p>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00538">538</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00509">509</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6a30615c98ddf9e6c7b9fb292fe94b10" name="a6a30615c98ddf9e6c7b9fb292fe94b10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a30615c98ddf9e6c7b9fb292fe94b10">&#9670;&#160;</a></span>operator()()</h2>
@@ -156,11 +156,11 @@ template&lt;template&lt; typename, typename, typename &gt; typename IndexedMatri
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00539">539</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  540</span>                                                                           {</div>
-<div class="line"><span class="lineno">  541</span>    <span class="keywordflow">return</span> IndexedMatrix&lt;evaluate&lt;transpose&lt;Matrix&gt;&gt;, ColumnIndexes,</div>
-<div class="line"><span class="lineno">  542</span>                         RowIndexes&gt;{<a class="code hl_function" href="namespacefcarouge.xhtml#a5d1b555b919a51d9ef29849f6e86b48a">t</a>(value.data)};</div>
-<div class="line"><span class="lineno">  543</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00510">510</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  511</span>                                                                           {</div>
+<div class="line"><span class="lineno">  512</span>    <span class="keywordflow">return</span> IndexedMatrix&lt;evaluate&lt;transpose&lt;Matrix&gt;&gt;, ColumnIndexes,</div>
+<div class="line"><span class="lineno">  513</span>                         RowIndexes&gt;{<a class="code hl_function" href="namespacefcarouge.xhtml#a5d1b555b919a51d9ef29849f6e86b48a">t</a>(value.data)};</div>
+<div class="line"><span class="lineno">  514</span>  }</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a5d1b555b919a51d9ef29849f6e86b48a"><div class="ttname"><a href="namespacefcarouge.xhtml#a5d1b555b919a51d9ef29849f6e86b48a">fcarouge::t</a></div><div class="ttdeci">auto t(const Type &amp;value)</div><div class="ttdoc">Transpose helper function.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00187">utility.hpp:187</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00187">fcarouge::t()</a>.</p>

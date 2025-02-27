@@ -109,21 +109,20 @@ $(function(){initNavTree('conceptfcarouge_1_1indexed_1_1uniform.xhtml',''); init
 
 <p><code>#include &lt;<a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
-<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> RowIndexes, <span class="keyword">typename</span> ColumnIndexes&gt;</div>
+<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Matrix&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1indexed_1_1uniform.xhtml">fcarouge::indexed::uniform</a> =  []() {</div>
 <div class="line">  <span class="keywordtype">bool</span> result{<span class="keyword">true</span>};</div>
 <div class="line"> </div>
-<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;RowIndexes&gt;</a>, 1&gt;([&amp;result](<span class="keyword">auto</span> i) {</div>
-<div class="line">    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;ColumnIndexes&gt;</a>, 1&gt;([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
-<div class="line">      result &amp;= std::is_same_v&lt;element&lt;i, RowIndexes, j, ColumnIndexes&gt;,</div>
-<div class="line">                               <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">element&lt;0, RowIndexes, 0, ColumnIndexes&gt;</a>&gt;;</div>
+<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, Matrix::rows, 1&gt;</a>([&amp;result](<span class="keyword">auto</span> i) {</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, Matrix::columns, 1&gt;</a>([&amp;result, &amp;i](<span class="keyword">auto</span> j) {</div>
+<div class="line">      result &amp;= std::is_same_v&lt;element&lt;Matrix, i, j&gt;, <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>&gt;;</div>
 <div class="line">    });</div>
 <div class="line">  });</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> result;</div>
 <div class="line">}()</div>
-<div class="ttc" id="aconceptfcarouge_1_1indexed_1_1uniform_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1indexed_1_1uniform.xhtml">fcarouge::indexed::uniform</a></div><div class="ttdoc">Every element types of the matrix are the same.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00071">indexed.hpp:71</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1indexed_xhtml_a2f189c0e6996a3a73eab75bf5004f901"><div class="ttname"><a href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">fcarouge::indexed::element</a></div><div class="ttdeci">product&lt; std::tuple_element_t&lt; RowIndex, RowIndexes &gt;, std::tuple_element_t&lt; ColumnIndex, ColumnIndexes &gt; &gt; element</div><div class="ttdoc">The type of the element at the given matrix indexes position.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00059">indexed.hpp:59</a></div></div>
+<div class="ttc" id="aconceptfcarouge_1_1indexed_1_1uniform_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1indexed_1_1uniform.xhtml">fcarouge::indexed::uniform</a></div><div class="ttdoc">Every element types of the matrix are the same.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00077">indexed.hpp:77</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1indexed_xhtml_a0a85d05cb03c2d137111049dcff27575"><div class="ttname"><a href="namespacefcarouge_1_1indexed.xhtml#a0a85d05cb03c2d137111049dcff27575">fcarouge::indexed::element</a></div><div class="ttdeci">product&lt; std::tuple_element_t&lt; RowIndex, typename Matrix::row_indexes &gt;, std::tuple_element_t&lt; ColumnIndex, typename Matrix::column_indexes &gt; &gt; element</div><div class="ttdoc">The type of the element at the given matrix indexes position.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00064">indexed.hpp:64</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a5ad0022b969a210b7261d0158bc1dd7b"><div class="ttname"><a href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdoc">Compile-time for loop.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00223">utility.hpp:223</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Every element types of the matrix are the same. </p>
@@ -131,7 +130,7 @@ $(function(){initNavTree('conceptfcarouge_1_1indexed_1_1uniform.xhtml',''); init
 <dl class="section note"><dt>Note</dt><dd>A matrix may be uniform with different row and column indexes.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000030">Todo</a></b></dt><dd>There may be a way to write this concepts via two fold expressions. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00071">71</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00077">77</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

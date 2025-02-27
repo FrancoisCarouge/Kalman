@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"indexed_8hpp.xhtml#ad89eef981c285367c92f3f05ebe763e1":[11,0,5,2,0,0,25],
+"indexed_8hpp.xhtml#addd8a1c7956caebecaa0fd4e92a3c7f4":[11,0,5,2,0,0,26],
+"indexed_8hpp.xhtml#af2491a79b6a321f5f8890f3b1f8f0377":[11,0,5,2,0,0,20],
 "indexed_8hpp_source.xhtml":[11,0,5,2,0,0],
 "internal_2utility_8hpp.xhtml":[11,0,2,0,0,3],
 "internal_2utility_8hpp.xhtml#a08c486af5cba5a0b71c8b2b8fd13a1d5":[11,0,2,0,0,3,6],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml":[1],
 "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results":[1,0],
 "naive_2fcarouge_2linalg_8hpp.xhtml":[11,0,5,6,0,0],
-"naive_2fcarouge_2linalg_8hpp_source.xhtml":[11,0,5,6,0,0],
-"naive_8hpp.xhtml":[11,0,5,6,0,1],
-"naive_8hpp.xhtml#a0a3703f14d9ac27e5b62eaa37509bb66":[11,0,5,6,0,1,19],
-"naive_8hpp.xhtml#a115d99c67c06a512a5f8edf90b79fc51":[11,0,5,6,0,1,10]
+"naive_2fcarouge_2linalg_8hpp_source.xhtml":[11,0,5,6,0,0]
 };

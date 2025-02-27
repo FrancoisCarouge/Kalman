@@ -1,8 +1,8 @@
 var searchData=
 [
   ['u_0',['u',['../classfcarouge_1_1kalman.xhtml#aa708a663249b2edff7954ab797c6f264',1,'fcarouge::kalman']]],
-  ['underlying_1',['underlying',['../structfcarouge_1_1indexed_1_1matrix.xhtml#ac4fe70f72b6c5b01124418fda6209253',1,'fcarouge::indexed::matrix']]],
-  ['uniform_3c_20rowindexes_2c_20columnindexes_20_3e_2',['uniform&lt; RowIndexes, ColumnIndexes &gt;',['../structfcarouge_1_1indexed_1_1matrix.xhtml#a5df098f15861d0aeae99dac28fec7a4a',1,'fcarouge::indexed::matrix']]],
+  ['underlying_1',['underlying',['../structfcarouge_1_1indexed_1_1matrix.xhtml#a8b3caabb83f1e4b36f87627af89bd702',1,'fcarouge::indexed::matrix']]],
+  ['underlying_5ft_2',['underlying_t',['../namespacefcarouge_1_1indexed.xhtml#a3dedee0afdc6e0f5295c316569484956',1,'fcarouge::indexed']]],
   ['unit_2ehpp_3',['unit.hpp',['../unit_8hpp.xhtml',1,'']]],
   ['units_5fkf_5f1x1x0_5fbuilding_5fheight_2ecpp_4',['units_kf_1x1x0_building_height.cpp',['../units__kf__1x1x0__building__height_8cpp.xhtml',1,'']]],
   ['units_5fkf_5f6x2x0_5fvehicle_5flocation_2ecpp_5',['units_kf_6x2x0_vehicle_location.cpp',['../units__kf__6x2x0__vehicle__location_8cpp.xhtml',1,'']]],

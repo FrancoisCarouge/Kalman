@@ -661,7 +661,7 @@ template&lt;typename Representation , auto... References&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 </div><!-- fragment -->
 <p>Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000046">Todo</a></b></dt><dd>Consider renaming to column_vector by providing a composable namespace. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000043">Todo</a></b></dt><dd>Consider renaming to column_vector by providing a composable namespace. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a0">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a0">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
@@ -706,7 +706,7 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="internal_2utility_8hpp_source.xhtml#l00263">fcarouge::internal::for_constexpr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="predict__linalg__x1x_8cpp_source.xhtml#l00061">fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::bench()</a>, <a class="el" href="update__linalg__xx0_8cpp_source.xhtml#l00061">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::bench()</a>, <a class="el" href="format_8hpp_source.xhtml#l00066">std::formatter&lt; Filter, Char &gt;::format()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00226">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="predict__linalg__x1x_8cpp_source.xhtml#l00061">fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::bench()</a>, <a class="el" href="update__linalg__xx0_8cpp_source.xhtml#l00061">fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::bench()</a>, <a class="el" href="format_8hpp_source.xhtml#l00066">std::formatter&lt; Filter, Char &gt;::format()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00222">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -999,14 +999,14 @@ template&lt;typename Type , auto Row, auto Size&gt; </div>
 <div class="line"><span class="lineno">  382</span>  <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Row) i{0}; i &lt; Row; ++i) {       <span class="comment">// chunk_by_rows</span></div>
 <div class="line"><span class="lineno">  383</span>    matrix&lt;Type, Size, 1&gt; rhs_copy{rhs.<a class="code hl_function" href="structfcarouge_1_1matrix.xhtml#a3d43f3ebeab72104b65bc49131d293fc">clone</a>()}; <span class="comment">// repeat_n</span></div>
 <div class="line"><span class="lineno">  384</span>    <span class="keyword">auto</span> next2{rhs_copy.begin()};</div>
-<div class="line"><span class="lineno">  385</span>    Type <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">element</a>{}; <span class="comment">// inner_product?</span></div>
+<div class="line"><span class="lineno">  385</span>    Type <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a0a85d05cb03c2d137111049dcff27575">element</a>{}; <span class="comment">// inner_product?</span></div>
 <div class="line"><span class="lineno">  386</span>    <span class="keywordflow">for</span> (<span class="keyword">decltype</span>(Size) k{0}; k &lt; Size; ++k, ++next1, ++next2) {</div>
-<div class="line"><span class="lineno">  387</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">element</a> += *next1 * *next2;</div>
+<div class="line"><span class="lineno">  387</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a0a85d05cb03c2d137111049dcff27575">element</a> += *next1 * *next2;</div>
 <div class="line"><span class="lineno">  388</span>    }</div>
-<div class="line"><span class="lineno">  389</span>    <span class="keyword">co_yield</span> <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">element</a>;</div>
+<div class="line"><span class="lineno">  389</span>    <span class="keyword">co_yield</span> <a class="code hl_typedef" href="namespacefcarouge_1_1indexed.xhtml#a0a85d05cb03c2d137111049dcff27575">element</a>;</div>
 <div class="line"><span class="lineno">  390</span>  }</div>
 <div class="line"><span class="lineno">  391</span>}</div>
-<div class="ttc" id="anamespacefcarouge_1_1indexed_xhtml_a2f189c0e6996a3a73eab75bf5004f901"><div class="ttname"><a href="namespacefcarouge_1_1indexed.xhtml#a2f189c0e6996a3a73eab75bf5004f901">fcarouge::indexed::element</a></div><div class="ttdeci">product&lt; std::tuple_element_t&lt; RowIndex, RowIndexes &gt;, std::tuple_element_t&lt; ColumnIndex, ColumnIndexes &gt; &gt; element</div><div class="ttdoc">The type of the element at the given matrix indexes position.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00059">indexed.hpp:59</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1indexed_xhtml_a0a85d05cb03c2d137111049dcff27575"><div class="ttname"><a href="namespacefcarouge_1_1indexed.xhtml#a0a85d05cb03c2d137111049dcff27575">fcarouge::indexed::element</a></div><div class="ttdeci">product&lt; std::tuple_element_t&lt; RowIndex, typename Matrix::row_indexes &gt;, std::tuple_element_t&lt; ColumnIndex, typename Matrix::column_indexes &gt; &gt; element</div><div class="ttdoc">The type of the element at the given matrix indexes position.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00064">indexed.hpp:64</a></div></div>
 <div class="ttc" id="astructfcarouge_1_1matrix_xhtml_a3d43f3ebeab72104b65bc49131d293fc"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml#a3d43f3ebeab72104b65bc49131d293fc">fcarouge::matrix::clone</a></div><div class="ttdeci">constexpr std::generator&lt; Type &gt; clone() const</div><div class="ttdef"><b>Definition</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00186">linalg.hpp:186</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00273">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::begin()</a>, and <a class="el" href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00186">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::clone()</a>.</p>
@@ -1288,7 +1288,7 @@ template&lt;typename Type &gt; </div>
 <div class="line"><span class="lineno">  189</span>}</div>
 <div class="ttc" id="astructfcarouge_1_1transposer_xhtml"><div class="ttname"><a href="structfcarouge_1_1transposer.xhtml">fcarouge::transposer</a></div><div class="ttdoc">Linear algebra transposer specialization point.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00166">utility.hpp:166</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="indexed_8hpp_source.xhtml#l00539">fcarouge::transposer&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;::operator()()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="indexed_8hpp_source.xhtml#l00510">fcarouge::transposer&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;::operator()()</a>.</p>
 <div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -1453,7 +1453,7 @@ template&lt;typename Representation , auto Reference&gt; </div>
 </div><div class="memdoc">
 
 <p>The singleton identity matrix specialization. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo</a></b></dt><dd>The identity with units is no longer the identity? Review the idea. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   62</span>{1., Reference};</div>
@@ -1591,7 +1591,7 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo</a></b></dt><dd>: Consider upstreaming named symbols up to pow&lt;8&gt; because that would be common for constant jerk uncertainties values? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo</a></b></dt><dd>: Consider upstreaming named symbols up to pow&lt;8&gt; because that would be common for constant jerk uncertainties values? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00072">72</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   72</span>{pow&lt;4&gt;(s)};</div>

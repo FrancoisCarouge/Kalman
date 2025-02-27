@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"structfcarouge_1_1matrix.xhtml#a8839e855b616e74c73a88c4ce4a396ef":[8,0,1,15,5],
+"structfcarouge_1_1matrix.xhtml#a8839e855b616e74c73a88c4ce4a396ef":[10,0,0,10,5],
 "structfcarouge_1_1matrix.xhtml#a8faf72ffb586809e220a72311f55e047":[8,0,1,15,18],
 "structfcarouge_1_1matrix.xhtml#a8faf72ffb586809e220a72311f55e047":[10,0,0,10,18],
 "structfcarouge_1_1matrix.xhtml#a93634d9b719e38f5737ee6df3d90e2a4":[8,0,1,15,22],
@@ -102,8 +104,8 @@ var NAVTREEINDEX4 =
 "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#ad8f463206d7871eef9caa4fed6e30695":[10,0,1,0,1],
 "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml":[10,0,1,1],
 "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#a22ccf9a43345e00fa844932355833178":[10,0,1,1,3],
-"structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#aa4edc699c4483015c46b9e2a9cd821f0":[10,0,1,1,1],
-"structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#ab5754a9fc4a194058bc1fd9feff059e8":[10,0,1,1,2],
+"structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#a9a31d41c03e56ba27575cd7360345b84":[10,0,1,1,1],
+"structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#af9500d390210412601b33802f39e8d3b":[10,0,1,1,2],
 "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#afe0524a0509e8ae2a48c06d3e944c3ae":[10,0,1,1,0],
 "structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml":[10,0,1,2],
 "structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a25d2571e9680c1d0b865db3ae7b7db0c":[10,0,1,2,0],

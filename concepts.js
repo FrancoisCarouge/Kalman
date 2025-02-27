@@ -9,8 +9,9 @@ var concepts =
         [ "in_range", "conceptfcarouge_1_1indexed_1_1in__range.xhtml", null ],
         [ "column", "conceptfcarouge_1_1indexed_1_1column.xhtml", null ],
         [ "row", "conceptfcarouge_1_1indexed_1_1row.xhtml", null ],
+        [ "one_dimension", "conceptfcarouge_1_1indexed_1_1one__dimension.xhtml", null ],
         [ "singleton", "conceptfcarouge_1_1indexed_1_1singleton.xhtml", null ],
-        [ "equal_size", "conceptfcarouge_1_1indexed_1_1equal__size.xhtml", null ]
+        [ "same_size", "conceptfcarouge_1_1indexed_1_1same__size.xhtml", null ]
       ] ],
       [ "kalman_filter", "conceptfcarouge_1_1kalman__filter.xhtml", null ],
       [ "arithmetic", "conceptfcarouge_1_1arithmetic.xhtml", null ],
