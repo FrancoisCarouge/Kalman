@@ -147,8 +147,7 @@ template <typename Underlying, typename Type> struct element_traits {
 //! a row and column index to be deduced.
 template <algebraic Matrix, typename RowIndexes, typename ColumnIndexes>
 struct matrix {
-  //! @todo Privatize this section.
-public:
+private:
   //! @name Private Member Types
   //! @{
 
