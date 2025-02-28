@@ -230,7 +230,7 @@ template&lt;typename Matrix , typename... RowIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Column vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00304">304</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00335">335</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 
 </div>
 </div>
@@ -275,7 +275,7 @@ template&lt;typename Matrix , typename... ColumnIndexes&gt; </div>
 </div><!-- fragment -->
 <p>Row vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00299">299</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00330">330</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 
 </div>
 </div>
@@ -332,14 +332,14 @@ requires singleton&lt;Matrix&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00344">344</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  344</span>                                                                            {</div>
-<div class="line"><span class="lineno">  345</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>(0) * rhs};</div>
-<div class="line"><span class="lineno">  346</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00375">375</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  375</span>                                                                            {</div>
+<div class="line"><span class="lineno">  376</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>(0) * rhs};</div>
+<div class="line"><span class="lineno">  377</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1indexed_xhtml_a0a85d05cb03c2d137111049dcff27575"><div class="ttname"><a href="#a0a85d05cb03c2d137111049dcff27575">fcarouge::indexed::element</a></div><div class="ttdeci">product&lt; std::tuple_element_t&lt; RowIndex, typename Matrix::row_indexes &gt;, std::tuple_element_t&lt; ColumnIndex, typename Matrix::column_indexes &gt; &gt; element</div><div class="ttdoc">The type of the element at the given matrix indexes position.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00064">indexed.hpp:64</a></div></div>
-<div class="ttc" id="astructfcarouge_1_1indexed_1_1matrix_xhtml_afe3f85237b8320e3ee8bf0de633f2209"><div class="ttname"><a href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">fcarouge::indexed::matrix::data</a></div><div class="ttdeci">Matrix data</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00294">indexed.hpp:294</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1indexed_1_1matrix_xhtml_afe3f85237b8320e3ee8bf0de633f2209"><div class="ttname"><a href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">fcarouge::indexed::matrix::data</a></div><div class="ttdeci">Matrix data</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00171">indexed.hpp:171</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -372,13 +372,13 @@ template&lt;arithmetic Scalar, typename Matrix , typename RowIndexes , typename 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00351">351</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  351</span>                                                                            {</div>
-<div class="line"><span class="lineno">  352</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> * rhs};</div>
-<div class="line"><span class="lineno">  353</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00382">382</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  382</span>                                                                            {</div>
+<div class="line"><span class="lineno">  383</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> * rhs};</div>
+<div class="line"><span class="lineno">  384</span>}</div>
 <div class="ttc" id="astructfcarouge_1_1indexed_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a></div><div class="ttdoc">Indexed matrix.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00149">indexed.hpp:149</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -411,13 +411,13 @@ template&lt;typename Matrix1 , typename Matrix2 , typename RowIndexes , typename
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00320">320</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  321</span>                                                              {</div>
-<div class="line"><span class="lineno">  322</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;product&lt;Matrix1, Matrix2&gt;</a>&gt;, RowIndexes, ColumnIndexes&gt;{</div>
-<div class="line"><span class="lineno">  323</span>      lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> * rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
-<div class="line"><span class="lineno">  324</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00351">351</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  352</span>                                                              {</div>
+<div class="line"><span class="lineno">  353</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;product&lt;Matrix1, Matrix2&gt;</a>&gt;, RowIndexes, ColumnIndexes&gt;{</div>
+<div class="line"><span class="lineno">  354</span>      lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> * rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
+<div class="line"><span class="lineno">  355</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -451,10 +451,10 @@ requires singleton&lt;Matrix&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00329">329</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  329</span>                                                                             {</div>
-<div class="line"><span class="lineno">  330</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs * rhs.data(0)};</div>
-<div class="line"><span class="lineno">  331</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00360">360</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  360</span>                                                                             {</div>
+<div class="line"><span class="lineno">  361</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs * rhs.data(0)};</div>
+<div class="line"><span class="lineno">  362</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -487,12 +487,12 @@ template&lt;arithmetic Scalar, typename Matrix , typename RowIndexes , typename 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00336">336</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  336</span>                                                                            {</div>
-<div class="line"><span class="lineno">  337</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs * rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
-<div class="line"><span class="lineno">  338</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00367">367</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  367</span>                                                                            {</div>
+<div class="line"><span class="lineno">  368</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs * rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
+<div class="line"><span class="lineno">  369</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -527,10 +527,10 @@ requires singleton&lt;Matrix&gt;</div>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo</a></b></dt><dd>Scalar will become Index with constraints. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00367">367</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  367</span>                                                                             {</div>
-<div class="line"><span class="lineno">  369</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs.data(0) + rhs};</div>
-<div class="line"><span class="lineno">  370</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00398">398</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  398</span>                                                                             {</div>
+<div class="line"><span class="lineno">  400</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs.data(0) + rhs};</div>
+<div class="line"><span class="lineno">  401</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -563,13 +563,13 @@ template&lt;typename Matrix1 , typename Matrix2 , typename RowIndexes , typename
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00358">358</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  359</span>                                                                 {</div>
-<div class="line"><span class="lineno">  360</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix1&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> +</div>
-<div class="line"><span class="lineno">  361</span>                                                              rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
-<div class="line"><span class="lineno">  362</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00389">389</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  390</span>                                                                 {</div>
+<div class="line"><span class="lineno">  391</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix1&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> +</div>
+<div class="line"><span class="lineno">  392</span>                                                              rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
+<div class="line"><span class="lineno">  393</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -602,13 +602,13 @@ template&lt;typename Matrix1 , typename Matrix2 , typename RowIndexes , typename
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00375">375</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  376</span>                                                                 {</div>
-<div class="line"><span class="lineno">  377</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix1&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> -</div>
-<div class="line"><span class="lineno">  378</span>                                                              rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
-<div class="line"><span class="lineno">  379</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00406">406</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  407</span>                                                                 {</div>
+<div class="line"><span class="lineno">  408</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix1&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> -</div>
+<div class="line"><span class="lineno">  409</span>                                                              rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
+<div class="line"><span class="lineno">  410</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -642,10 +642,10 @@ requires singleton&lt;Matrix&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00384">384</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  384</span>                                                                             {</div>
-<div class="line"><span class="lineno">  385</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs - rhs.data(0)};</div>
-<div class="line"><span class="lineno">  386</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00415">415</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  415</span>                                                                             {</div>
+<div class="line"><span class="lineno">  416</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs - rhs.data(0)};</div>
+<div class="line"><span class="lineno">  417</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -679,10 +679,10 @@ requires singleton&lt;Matrix&gt;</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00407">407</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  407</span>                                                                             {</div>
-<div class="line"><span class="lineno">  408</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs.data(0) / rhs};</div>
-<div class="line"><span class="lineno">  409</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00438">438</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  438</span>                                                                             {</div>
+<div class="line"><span class="lineno">  439</span>  <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a0a85d05cb03c2d137111049dcff27575">element&lt;Matrix, 0, 0&gt;</a>{lhs.data(0) / rhs};</div>
+<div class="line"><span class="lineno">  440</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -715,12 +715,12 @@ template&lt;<a class="el" href="conceptfcarouge_1_1arithmetic.xhtml">fcarouge::a
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00400">400</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  400</span>                                                                            {</div>
-<div class="line"><span class="lineno">  401</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> / rhs};</div>
-<div class="line"><span class="lineno">  402</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00431">431</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  431</span>                                                                            {</div>
+<div class="line"><span class="lineno">  432</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;Matrix&gt;</a>, RowIndexes, ColumnIndexes&gt;{lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> / rhs};</div>
+<div class="line"><span class="lineno">  433</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -753,13 +753,13 @@ template&lt;typename Matrix1 , typename Matrix2 , typename RowIndexes1 , typenam
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00391">391</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  392</span>                                                                  {</div>
-<div class="line"><span class="lineno">  393</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;divide&lt;Matrix1, Matrix2&gt;</a>&gt;, RowIndexes1, RowIndexes2&gt;{</div>
-<div class="line"><span class="lineno">  394</span>      lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> / rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
-<div class="line"><span class="lineno">  395</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00422">422</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  423</span>                                                                  {</div>
+<div class="line"><span class="lineno">  424</span>  <span class="keywordflow">return</span> <a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">matrix&lt;evaluate&lt;divide&lt;Matrix1, Matrix2&gt;</a>&gt;, RowIndexes1, RowIndexes2&gt;{</div>
+<div class="line"><span class="lineno">  425</span>      lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> / rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>};</div>
+<div class="line"><span class="lineno">  426</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
@@ -792,12 +792,12 @@ template&lt;typename Matrix1 , typename Matrix2 , typename RowIndexes , typename
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00312">312</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  313</span>                                                                  {</div>
-<div class="line"><span class="lineno">  314</span>  <span class="keywordflow">return</span> lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> == rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>;</div>
-<div class="line"><span class="lineno">  315</span>}</div>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00343">343</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  344</span>                                                                  {</div>
+<div class="line"><span class="lineno">  345</span>  <span class="keywordflow">return</span> lhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a> == rhs.<a class="code hl_variable" href="structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209">data</a>;</div>
+<div class="line"><span class="lineno">  346</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00294">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>.</p>
 
 </div>
 </div>
