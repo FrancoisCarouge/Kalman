@@ -147,10 +147,34 @@ template <typename Underlying, typename Type> struct element_traits {
 //! a row and column index to be deduced.
 template <algebraic Matrix, typename RowIndexes, typename ColumnIndexes>
 struct matrix {
+  //! @todo Privatize this section.
+public:
+  //! @name Private Member Types
+  //! @{
+
   //! @brief The type of the element's underlying storage.
-  //!
-  //! @todo Privatize?
   using underlying = underlying_t<Matrix>;
+
+  //! @}
+
+  //! @name Private Member Functions
+  //! @{
+
+  //! @todo Can this be removed altogether?
+  explicit inline constexpr matrix(const Matrix &other) : data{other} {}
+
+  //! @}
+
+  //! @name Private Member Variables
+  //! @{
+
+  Matrix data;
+
+  //! @}
+
+public:
+  //! @name Public Member Types
+  //! @{
 
   //! @brief The tuple with the row components of the indexes.
   using row_indexes = RowIndexes;
@@ -158,15 +182,25 @@ struct matrix {
   //! @brief The tuple with the column components of the indexes.
   using column_indexes = ColumnIndexes;
 
+  //! @brief The type of the element at the given matrix indexes position.
+  template <std::size_t RowIndex, std::size_t ColumnIndex>
+  using element = element<matrix, RowIndex, ColumnIndex>;
+
+  //! @}
+
+  //! @name Public Member Variables
+  //! @{
+
   //! @brief The count of rows.
   inline constexpr static std::size_t rows{size<row_indexes>};
 
   //! @brief The count of rows.
   inline constexpr static std::size_t columns{size<column_indexes>};
 
-  //! @brief The type of the element at the given matrix indexes position.
-  template <std::size_t RowIndex, std::size_t ColumnIndex>
-  using element = element<matrix, RowIndex, ColumnIndex>;
+  //! @}
+
+  //! @name Public Member Functions
+  //! @{
 
   inline constexpr matrix() = default;
 
@@ -183,9 +217,6 @@ struct matrix {
   inline constexpr matrix(
       const matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
       : data{other.data} {}
-
-  //! @todo Can this be removed along the evaluate?
-  explicit inline constexpr matrix(const Matrix &other) : data{other} {}
 
   inline constexpr explicit matrix(
       const element<0, 0> (&elements)[size<RowIndexes> * size<ColumnIndexes>])
@@ -291,7 +322,7 @@ struct matrix {
         data(std::size_t{Index}));
   }
 
-  Matrix data;
+  //! @}
 };
 
 //! @brief Row vector.
