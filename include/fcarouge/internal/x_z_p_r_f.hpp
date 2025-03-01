@@ -48,7 +48,9 @@ template <typename State> struct x_z_p_r_f {
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
   using state_transition = ᴀʙᵀ<state, state>;
-  using innovation = output;
+  // Propagate this fix to all filters with the function object.
+  using innovation =
+      evaluate<decltype(std::declval<State>() - std::declval<State>())>;
   using innovation_uncertainty = output_uncertainty;
   using gain = evaluate<quotient<estimate_uncertainty, innovation_uncertainty>>;
 
