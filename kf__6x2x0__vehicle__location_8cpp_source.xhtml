@@ -103,175 +103,213 @@ $(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_source.xhtml',''); i
   <div class="headertitle"><div class="title">kf_6x2x0_vehicle_location.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="kf__6x2x0__vehicle__location_8cpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml">    8</a></span><span class="keyword">namespace </span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#aa38805e75687479176d6d94a36b7af8f">    9</a></span><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#aa38805e75687479176d6d94a36b7af8f">vector</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, Size&gt;</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">   10</a></span><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">matrix</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">matrix&lt;double, Row, Column&gt;</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ace0c48a28f18fabf524e789857f3e1bb">   11</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ace0c48a28f18fabf524e789857f3e1bb">state</a> = fcarouge::state&lt;vector&lt;6&gt;&gt;;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#a01e191b965cbf1142f550229d05c2197">   31</a></span>[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      <span class="comment">// The state X is chosen to be the position, velocity, acceleration in the</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      <span class="comment">// XY plane: [px, vx, ax, py, vy, ay]. We don&#39;t know the vehicle location;</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>      <span class="comment">// we will set initial position, velocity and acceleration to 0.</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ace0c48a28f18fabf524e789857f3e1bb">state</a>{0., 0., 0., 0., 0., 0.},</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      <span class="comment">// The vehicle has an onboard location sensor that reports output Z as X</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      <span class="comment">// and Y coordinates of the system.</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>      output&lt;vector&lt;2&gt;&gt;,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      <span class="comment">// The estimate uncertainty matrix P.</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      <span class="comment">// Since our initial state vector is a guess, we will set a very high</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      <span class="comment">// estimate uncertainty. The high estimate uncertainty results in a high</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      <span class="comment">// Kalman Gain, giving a high weight to the measurement.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      estimate_uncertainty{{500., 0., 0., 0., 0., 0.},</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                           {0., 500., 0., 0., 0., 0.},</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                           {0., 0., 500., 0., 0., 0.},</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                           {0., 0., 0., 500., 0., 0.},</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                           {0., 0., 0., 0., 500., 0.},</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                           {0., 0., 0., 0., 0., 500.}},</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      process_uncertainty{0.2 * 0.2 *</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                          <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">matrix&lt;6, 6&gt;</a>{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                       {0.5, 1., 1., 0., 0., 0.},</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                       {0.5, 1., 1., 0., 0., 0.},</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                                       {0., 0., 0., 0.25, 0.5, 0.5},</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                                       {0., 0., 0., 0.5, 1., 1.},</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                       {0., 0., 0., 0.5, 1., 1.}}},</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      <span class="comment">// The output uncertainty matrix R. Assume that the x and y measurements</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>      <span class="comment">// are uncorrelated, i.e. error in the x coordinate measurement doesn&#39;t</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      <span class="comment">// depend on the error in the y coordinate measurement. In real-life</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      <span class="comment">// applications, the measurement uncertainty can differ between</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      <span class="comment">// measurements. In many systems the measurement uncertainty depends on</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      <span class="comment">// the measurement SNR (signal-to-noise ratio), angle between sensor (or</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>      <span class="comment">// sensors) and target, signal frequency and many other parameters.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      <span class="comment">// standard deviation: σxm = σym = 3m. The variance 9.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      output_uncertainty{{9., 0.}, {0., 9.}},</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>      <span class="comment">// The output model matrix H. The dimension of zn is 2x1 and the dimension</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      <span class="comment">// of xn is 6x1. Therefore the dimension of the observation matrix H shall</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      <span class="comment">// be 2x6.</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      output_model{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}},</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      <span class="comment">// // The state transition matrix F would be:</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      state_transition{{1., 1., 0.5, 0., 0., 0.},</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                       {0., 1., 1., 0., 0., 0.},</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                       {0., 0., 1., 0., 0., 0.},</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                       {0., 0., 0., 1., 1., 0.5},</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                       {0., 0., 0., 0., 1., 1.},</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                       {0., 0., 0., 0., 0., 1.}}};</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  filter.predict();</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <span class="comment">// The measurement values: z1 = [-393.66, 300.4]</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  filter.update(-393.66, 300.4);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  filter.predict();</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <span class="comment">// measurements period: Δt = 1s (constant, built-in).</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](<span class="keywordtype">double</span> position_x, <span class="keywordtype">double</span> position_y) {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    filter.update(position_x, position_y);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    filter.predict();</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  }};</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  step(-375.93, 301.78);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  assert(std::abs(1 - filter.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>         std::abs(1 - filter.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>         std::abs(1 - filter.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>         std::abs(1 - filter.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>         std::abs(1 - filter.x()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>         std::abs(1 - filter.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  step(-351.04, 295.1);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  step(-328.96, 305.19);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  step(-299.35, 301.06);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  step(-273.36, 302.05);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  step(-245.89, 300);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  step(-222.58, 303.57);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  step(-198.03, 296.33);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  step(-174.17, 297.65);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  step(-146.32, 297.41);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  step(-123.72, 299.61);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  step(-103.47, 299.6);</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  step(-78.23, 302.39);</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  step(-52.63, 295.04);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  step(-23.34, 300.09);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  step(25.96, 294.72);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  step(49.72, 298.61);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  step(76.94, 294.64);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  step(95.38, 284.88);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  step(119.83, 272.82);</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  step(144.01, 264.93);</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  step(161.84, 251.46);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  step(180.56, 241.27);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  step(201.42, 222.98);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  step(222.62, 203.73);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  step(239.4, 184.1);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  step(252.51, 166.12);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>  step(266.26, 138.71);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  step(271.75, 119.71);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  step(277.4, 100.41);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  step(294.12, 79.76);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  step(301.23, 50.62);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  step(291.8, 32.99);</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  step(299.89, 2.14);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  assert(std::abs(1 - filter.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>         std::abs(1 - filter.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>         std::abs(1 - filter.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>         std::abs(1 - filter.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>         std::abs(1 - filter.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>         std::abs(1 - filter.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>         <span class="stringliteral">&quot;The state estimates expected at 0.6% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  assert(std::abs(1 - filter.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>         std::abs(1 - filter.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>         std::abs(1 - filter.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>         std::abs(1 - filter.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>         std::abs(1 - filter.p()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>         std::abs(1 - filter.p()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>         <span class="stringliteral">&quot;At this point, the position uncertainty px = py = 5, which means &quot;</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>         <span class="stringliteral">&quot;that the standard deviation of the prediction is square root of 5m.&quot;</span>);</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  <span class="comment">// As you can see, the Kalman Filter tracks the vehicle quite well. However,</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="comment">// when the vehicle starts the turning maneuver, the estimates are not so</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <span class="comment">// accurate. After a while, the Kalman Filter accuracy improves. While the</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="comment">// vehicle travels along the straight line, the acceleration is constant and</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="comment">// equal to zero. However, during the turn maneuver, the vehicle experiences</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  <span class="comment">// acceleration due to the circular motion - the angular acceleration.</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  <span class="comment">// Although the angular acceleration is constant, the angular acceleration</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="comment">// projection on the x and y axes is not constant, therefore ax and ay are not</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  <span class="comment">// constant. Our Kalman Filter is designed for a constant acceleration model.</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  <span class="comment">// Nevertheless, it succeeds in tracking maneuvering vehicle due to a properly</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  <span class="comment">// chosen σa parameter. I would like to encourage the readers to implement</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  <span class="comment">// this example in software and see how different values of σa of R influence</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  <span class="comment">// the actual Kalman Filter accuracy, Kalman Gain convergence, and estimation</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="comment">// uncertainty.</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>}()};</div>
+<a href="kf__6x2x0__vehicle__location_8cpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*  __          _      __  __          _   _</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">|  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">| . \  / ____ \| |____| |  | |/ ____ \| |\  |</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">|_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"></span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">Kalman Filter</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">Version 0.4.0</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">https://github.com/FrancoisCarouge/Kalman</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"></span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">SPDX-License-Identifier: Unlicense</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"></span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">This is free and unencumbered software released into the public domain.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"></span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">Anyone is free to copy, modify, publish, use, compile, sell, or</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">distribute this software, either in source code form or as a compiled</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">binary, for any purpose, commercial or non-commercial, and by any</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">means.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"></span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">In jurisdictions that recognize copyright laws, the author or authors</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">of this software dedicate any and all copyright interest in the</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">software to the public domain. We make this dedication for the benefit</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">of the public at large and to the detriment of our heirs and</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">successors. We intend this dedication to be an overt act of</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">relinquishment in perpetuity of all present and future rights to this</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">software under copyright law.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"></span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">OTHER DEALINGS IN THE SOFTWARE.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml">   46</a></span><span class="keyword">namespace </span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#aa38805e75687479176d6d94a36b7af8f">   47</a></span><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#aa38805e75687479176d6d94a36b7af8f">vector</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, Size&gt;</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">   48</a></span><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">matrix</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">matrix&lt;double, Row, Column&gt;</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ace0c48a28f18fabf524e789857f3e1bb">   49</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ace0c48a28f18fabf524e789857f3e1bb">state</a> = fcarouge::state&lt;vector&lt;6&gt;&gt;;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="};">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#a01e191b965cbf1142f550229d05c2197">   69</a></span>[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      <span class="comment">// The state X is chosen to be the position, velocity, acceleration in the</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      <span class="comment">// XY plane: [px, vx, ax, py, vy, ay]. We don&#39;t know the vehicle location;</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      <span class="comment">// we will set initial position, velocity and acceleration to 0.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ace0c48a28f18fabf524e789857f3e1bb">state</a>{0., 0., 0., 0., 0., 0.},</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      <span class="comment">// The vehicle has an onboard location sensor that reports output Z as X</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      <span class="comment">// and Y coordinates of the system.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      output&lt;vector&lt;2&gt;&gt;,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>      <span class="comment">// The estimate uncertainty matrix P.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>      <span class="comment">// Since our initial state vector is a guess, we will set a very high</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>      <span class="comment">// estimate uncertainty. The high estimate uncertainty results in a high</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>      <span class="comment">// Kalman Gain, giving a high weight to the measurement.</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>      estimate_uncertainty{{500., 0., 0., 0., 0., 0.},</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                           {0., 500., 0., 0., 0., 0.},</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                           {0., 0., 500., 0., 0., 0.},</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                           {0., 0., 0., 500., 0., 0.},</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                           {0., 0., 0., 0., 500., 0.},</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                           {0., 0., 0., 0., 0., 500.}},</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      process_uncertainty{0.2 * 0.2 *</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                          <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">matrix&lt;6, 6&gt;</a>{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                                       {0.5, 1., 1., 0., 0., 0.},</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                       {0.5, 1., 1., 0., 0., 0.},</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                                       {0., 0., 0., 0.25, 0.5, 0.5},</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                       {0., 0., 0., 0.5, 1., 1.},</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                                       {0., 0., 0., 0.5, 1., 1.}}},</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>      <span class="comment">// The output uncertainty matrix R. Assume that the x and y measurements</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>      <span class="comment">// are uncorrelated, i.e. error in the x coordinate measurement doesn&#39;t</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      <span class="comment">// depend on the error in the y coordinate measurement. In real-life</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="comment">// applications, the measurement uncertainty can differ between</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>      <span class="comment">// measurements. In many systems the measurement uncertainty depends on</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>      <span class="comment">// the measurement SNR (signal-to-noise ratio), angle between sensor (or</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      <span class="comment">// sensors) and target, signal frequency and many other parameters.</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      <span class="comment">// For the sake of the example simplicity, we will assume a constant</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R The measurement error</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>      <span class="comment">// standard deviation: σxm = σym = 3m. The variance 9.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>      output_uncertainty{{9., 0.}, {0., 9.}},</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>      <span class="comment">// The output model matrix H. The dimension of zn is 2x1 and the dimension</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>      <span class="comment">// of xn is 6x1. Therefore the dimension of the observation matrix H shall</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      <span class="comment">// be 2x6.</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      output_model{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}},</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      <span class="comment">// // The state transition matrix F would be:</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      state_transition{{1., 1., 0.5, 0., 0., 0.},</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                       {0., 1., 1., 0., 0., 0.},</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                       {0., 0., 1., 0., 0., 0.},</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                       {0., 0., 0., 1., 1., 0.5},</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                       {0., 0., 0., 0., 1., 1.},</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                       {0., 0., 0., 0., 0., 1.}}};</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  filter.predict();</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="comment">// The measurement values: z1 = [-393.66, 300.4]</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  filter.update(-393.66, 300.4);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  filter.predict();</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="comment">// measurements period: Δt = 1s (constant, built-in).</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](<span class="keywordtype">double</span> position_x, <span class="keywordtype">double</span> position_y) {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    filter.update(position_x, position_y);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    filter.predict();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  }};</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  step(-375.93, 301.78);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  assert(std::abs(1 - filter.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>         std::abs(1 - filter.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>         std::abs(1 - filter.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>         std::abs(1 - filter.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>         std::abs(1 - filter.x()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>         std::abs(1 - filter.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  step(-351.04, 295.1);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  step(-328.96, 305.19);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  step(-299.35, 301.06);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  step(-273.36, 302.05);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  step(-245.89, 300);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  step(-222.58, 303.57);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  step(-198.03, 296.33);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  step(-174.17, 297.65);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  step(-146.32, 297.41);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  step(-123.72, 299.61);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  step(-103.47, 299.6);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  step(-78.23, 302.39);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  step(-52.63, 295.04);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  step(-23.34, 300.09);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  step(25.96, 294.72);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  step(49.72, 298.61);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  step(76.94, 294.64);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  step(95.38, 284.88);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  step(119.83, 272.82);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  step(144.01, 264.93);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  step(161.84, 251.46);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  step(180.56, 241.27);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  step(201.42, 222.98);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  step(222.62, 203.73);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  step(239.4, 184.1);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  step(252.51, 166.12);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  step(266.26, 138.71);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  step(271.75, 119.71);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  step(277.4, 100.41);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  step(294.12, 79.76);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  step(301.23, 50.62);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  step(291.8, 32.99);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  step(299.89, 2.14);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  assert(std::abs(1 - filter.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>         std::abs(1 - filter.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>         std::abs(1 - filter.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>         std::abs(1 - filter.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>         std::abs(1 - filter.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>         std::abs(1 - filter.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>         <span class="stringliteral">&quot;The state estimates expected at 0.6% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  assert(std::abs(1 - filter.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>         std::abs(1 - filter.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>         std::abs(1 - filter.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>         std::abs(1 - filter.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>         std::abs(1 - filter.p()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>         std::abs(1 - filter.p()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>         <span class="stringliteral">&quot;At this point, the position uncertainty px = py = 5, which means &quot;</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>         <span class="stringliteral">&quot;that the standard deviation of the prediction is square root of 5m.&quot;</span>);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="comment">// As you can see, the Kalman Filter tracks the vehicle quite well. However,</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <span class="comment">// when the vehicle starts the turning maneuver, the estimates are not so</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="comment">// accurate. After a while, the Kalman Filter accuracy improves. While the</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="comment">// vehicle travels along the straight line, the acceleration is constant and</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="comment">// equal to zero. However, during the turn maneuver, the vehicle experiences</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment">// acceleration due to the circular motion - the angular acceleration.</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  <span class="comment">// Although the angular acceleration is constant, the angular acceleration</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  <span class="comment">// projection on the x and y axes is not constant, therefore ax and ay are not</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>  <span class="comment">// constant. Our Kalman Filter is designed for a constant acceleration model.</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  <span class="comment">// Nevertheless, it succeeds in tracking maneuvering vehicle due to a properly</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <span class="comment">// chosen σa parameter. I would like to encourage the readers to implement</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>  <span class="comment">// this example in software and see how different values of σa of R influence</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  <span class="comment">// the actual Kalman Filter accuracy, Kalman Gain convergence, and estimation</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  <span class="comment">// uncertainty.</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>}()};</div>
 </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00126">kalman.hpp:126</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_aa38805e75687479176d6d94a36b7af8f"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#aa38805e75687479176d6d94a36b7af8f">fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; double, Size &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="#l00009">kf_6x2x0_vehicle_location.cpp:9</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_ace0c48a28f18fabf524e789857f3e1bb"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ace0c48a28f18fabf524e789857f3e1bb">fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 6 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="#l00011">kf_6x2x0_vehicle_location.cpp:11</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_ae89f8d2e054cc8c3d42dfc17138946df"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; double, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="#l00010">kf_6x2x0_vehicle_location.cpp:10</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_aa38805e75687479176d6d94a36b7af8f"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#aa38805e75687479176d6d94a36b7af8f">fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; double, Size &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="#l00047">kf_6x2x0_vehicle_location.cpp:47</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_ace0c48a28f18fabf524e789857f3e1bb"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ace0c48a28f18fabf524e789857f3e1bb">fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 6 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="#l00049">kf_6x2x0_vehicle_location.cpp:49</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03_xhtml_ae89f8d2e054cc8c3d42dfc17138946df"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__vehicle__location_8cpp_03.xhtml#ae89f8d2e054cc8c3d42dfc17138946df">fcarouge::sample::anonymous_namespace{kf_6x2x0_vehicle_location.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; double, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="#l00048">kf_6x2x0_vehicle_location.cpp:48</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -138,7 +138,7 @@ template&lt;auto Row, auto Column&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00010">10</a> of file <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml">ekf_4x1x0_soaring.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml">ekf_4x1x0_soaring.cpp</a>.</p>
 
 </div>
 </div>
@@ -154,7 +154,7 @@ template&lt;auto Row, auto Column&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00011">11</a> of file <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml">ekf_4x1x0_soaring.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml">ekf_4x1x0_soaring.cpp</a>.</p>
 
 </div>
 </div>
@@ -172,7 +172,7 @@ template&lt;auto Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00009">9</a> of file <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml">ekf_4x1x0_soaring.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml">ekf_4x1x0_soaring.cpp</a>.</p>
 
 </div>
 </div>
@@ -189,206 +189,206 @@ template&lt;auto Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00033">33</a> of file <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml">ekf_4x1x0_soaring.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>                            {[] {</div>
-<div class="line"><span class="lineno">   34</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> trigger_strength{0};</div>
-<div class="line"><span class="lineno">   35</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_radius{80};</div>
-<div class="line"><span class="lineno">   36</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_x{5};</div>
-<div class="line"><span class="lineno">   37</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_y{0};</div>
-<div class="line"><span class="lineno">   38</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_covariance{0.0049F};</div>
-<div class="line"><span class="lineno">   39</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> radius_covariance{400};</div>
-<div class="line"><span class="lineno">   40</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> position_covariance{400};</div>
-<div class="line"><span class="lineno">   41</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_noise{std::pow(0.001F, 2.F)};</div>
-<div class="line"><span class="lineno">   42</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> distance_noise{std::pow(0.03F, 2.F)};</div>
-<div class="line"><span class="lineno">   43</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> measure_noise{std::pow(0.45F, 2.F)};</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
-<div class="line"><span class="lineno">   46</span>  <span class="comment">// driftY [m]. Constant time step.</span></div>
-<div class="line"><span class="lineno">   47</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a> <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>{</div>
-<div class="line"><span class="lineno">   48</span>      <span class="comment">// The state X:</span></div>
-<div class="line"><span class="lineno">   49</span>      <a class="code hl_typedef" href="#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{trigger_strength, thermal_radius, thermal_position_x,</div>
-<div class="line"><span class="lineno">   50</span>            thermal_position_y},</div>
-<div class="line"><span class="lineno">   51</span>      <span class="comment">// The output Z:</span></div>
-<div class="line"><span class="lineno">   52</span>      output&lt;float&gt;,</div>
-<div class="line"><span class="lineno">   53</span>      <span class="comment">// The estimate uncertainty P:</span></div>
-<div class="line"><span class="lineno">   54</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a4786c9c942ce573eb42946d9521336b6">estimate_uncertainty</a>{{strength_covariance, 0.F, 0.F, 0.F},</div>
-<div class="line"><span class="lineno">   55</span>                           {0.F, radius_covariance, 0.F, 0.F},</div>
-<div class="line"><span class="lineno">   56</span>                           {0.F, 0.F, position_covariance, 0.F},</div>
-<div class="line"><span class="lineno">   57</span>                           {0.F, 0.F, 0.F, position_covariance}},</div>
-<div class="line"><span class="lineno">   58</span>      <span class="comment">// The process uncertainty Q:</span></div>
-<div class="line"><span class="lineno">   59</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a44f435bfb3dedba6891ab45c8e752359">process_uncertainty</a>{{strength_noise, 0.F, 0.F, 0.F},</div>
-<div class="line"><span class="lineno">   60</span>                          {0.F, distance_noise, 0.F, 0.F},</div>
-<div class="line"><span class="lineno">   61</span>                          {0.F, 0.F, distance_noise, 0.F},</div>
-<div class="line"><span class="lineno">   62</span>                          {0.F, 0.F, 0.F, distance_noise}},</div>
-<div class="line"><span class="lineno">   63</span>      <span class="comment">// The output uncertainty R:</span></div>
-<div class="line"><span class="lineno">   64</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a915c591f44f6439290d10ad0d34fea3d">output_uncertainty</a>{measure_noise},</div>
-<div class="line"><span class="lineno">   65</span>      <span class="comment">// No process dynamics: the state transition F = ∂f/∂X = I4</span></div>
-<div class="line"><span class="lineno">   66</span>      <span class="comment">// Default. The additional parameters for update.</span></div>
-<div class="line"><span class="lineno">   67</span>      <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
-<div class="line"><span class="lineno">   68</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a86818567662c54daf153188e861ef845">output_model</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line"><span class="lineno">   69</span>                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; matrix&lt;1, 4&gt; {</div>
-<div class="line"><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
-<div class="line"><span class="lineno">   71</span>                                     std::pow(x[3] - position_y, 2.F)) /</div>
-<div class="line"><span class="lineno">   72</span>                                   std::pow(x[1], 2.F))};</div>
-<div class="line"><span class="lineno">   73</span>        <span class="keyword">const</span> matrix&lt;1, 4&gt; h{</div>
-<div class="line"><span class="lineno">   74</span>            expon,</div>
-<div class="line"><span class="lineno">   75</span>            2 * x(0) *</div>
-<div class="line"><span class="lineno">   76</span>                ((std::pow(x(2) - position_x, 2.F) +</div>
-<div class="line"><span class="lineno">   77</span>                  std::pow(x(3) - position_y, 2.F)) /</div>
-<div class="line"><span class="lineno">   78</span>                 std::pow(x(1), 3.F)) *</div>
-<div class="line"><span class="lineno">   79</span>                expon,</div>
-<div class="line"><span class="lineno">   80</span>            -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,</div>
-<div class="line"><span class="lineno">   81</span>            -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};</div>
+<p class="definition">Definition at line <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00071">71</a> of file <a class="el" href="ekf__4x1x0__soaring_8cpp_source.xhtml">ekf_4x1x0_soaring.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>                            {[] {</div>
+<div class="line"><span class="lineno">   72</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> trigger_strength{0};</div>
+<div class="line"><span class="lineno">   73</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_radius{80};</div>
+<div class="line"><span class="lineno">   74</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_x{5};</div>
+<div class="line"><span class="lineno">   75</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_y{0};</div>
+<div class="line"><span class="lineno">   76</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_covariance{0.0049F};</div>
+<div class="line"><span class="lineno">   77</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> radius_covariance{400};</div>
+<div class="line"><span class="lineno">   78</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> position_covariance{400};</div>
+<div class="line"><span class="lineno">   79</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_noise{std::pow(0.001F, 2.F)};</div>
+<div class="line"><span class="lineno">   80</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> distance_noise{std::pow(0.03F, 2.F)};</div>
+<div class="line"><span class="lineno">   81</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> measure_noise{std::pow(0.45F, 2.F)};</div>
 <div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">return</span> h;</div>
-<div class="line"><span class="lineno">   84</span>      }},</div>
-<div class="line"><span class="lineno">   85</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">transition</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
-<div class="line"><span class="lineno">   86</span>                    <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; vector&lt;4&gt; {</div>
-<div class="line"><span class="lineno">   88</span>        <span class="keyword">const</span> vector&lt;4&gt; drifts{0.F, 0.F, drift_x, drift_y};</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> x + drifts;</div>
-<div class="line"><span class="lineno">   90</span>      }},</div>
-<div class="line"><span class="lineno">   91</span>      <span class="comment">// Observation Z: [w] vertical air velocity w at the aircraft’s</span></div>
-<div class="line"><span class="lineno">   92</span>      <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
-<div class="line"><span class="lineno">   93</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">observation</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line"><span class="lineno">   94</span>                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <span class="keywordtype">float</span> {</div>
-<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">return</span> x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
-<div class="line"><span class="lineno">   96</span>                                 std::pow(x[3] - position_y, 2.F)) /</div>
-<div class="line"><span class="lineno">   97</span>                               std::pow(x[1], 2.F));</div>
-<div class="line"><span class="lineno">   98</span>      }},</div>
-<div class="line"><span class="lineno">   99</span>      update_types&lt;float, float&gt;,</div>
-<div class="line"><span class="lineno">  100</span>      <span class="comment">// The additional parameters for prediction.</span></div>
-<div class="line"><span class="lineno">  101</span>      prediction_types&lt;float, float&gt;};</div>
-<div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>  <span class="keyword">struct </span>data {</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordtype">float</span> drift_x;</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordtype">float</span> drift_y;</div>
-<div class="line"><span class="lineno">  106</span>    <span class="keywordtype">float</span> position_x;</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordtype">float</span> position_y;</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordtype">float</span> variometer;</div>
-<div class="line"><span class="lineno">  109</span>  };</div>
-<div class="line"><span class="lineno">  110</span> </div>
-<div class="line"><span class="lineno">  111</span>  <span class="comment">// A hundred randomly generated data point.</span></div>
-<div class="line"><span class="lineno">  112</span>  <span class="keyword">constexpr</span> data measured[]{</div>
-<div class="line"><span class="lineno">  113</span>      {0.0756891F, 0.749786F, 0.878827F, 0.806808F, 0.155487F},</div>
-<div class="line"><span class="lineno">  114</span>      {0.506366F, 0.261469F, 0.886986F, 0.332883F, 0.434406F},</div>
-<div class="line"><span class="lineno">  115</span>      {0.249769F, 0.242154F, 0.616454F, 0.672545F, 0.24927F},</div>
-<div class="line"><span class="lineno">  116</span>      {0.358587F, 0.556206F, 0.909985F, 0.370336F, 0.553264F},</div>
-<div class="line"><span class="lineno">  117</span>      {0.370579F, 0.368003F, 0.491917F, 0.635429F, 0.73594F},</div>
-<div class="line"><span class="lineno">  118</span>      {0.82946F, 0.0221123F, 0.461047F, 0.940697F, 0.987409F},</div>
-<div class="line"><span class="lineno">  119</span>      {0.462132F, 0.708865F, 0.941915F, 0.122432F, 0.911597F},</div>
-<div class="line"><span class="lineno">  120</span>      {0.888334F, 0.542419F, 0.773781F, 0.116075F, 0.917592F},</div>
-<div class="line"><span class="lineno">  121</span>      {0.229376F, 0.174244F, 0.972009F, 0.509611F, 0.37637F},</div>
-<div class="line"><span class="lineno">  122</span>      {0.887738F, 0.707866F, 0.90959F, 0.430274F, 0.242523F},</div>
-<div class="line"><span class="lineno">  123</span>      {0.40713F, 0.0696747F, 0.456659F, 0.979656F, 0.11167F},</div>
-<div class="line"><span class="lineno">  124</span>      {0.77115F, 0.183994F, 0.944587F, 0.467626F, 0.0219546F},</div>
-<div class="line"><span class="lineno">  125</span>      {0.137442F, 0.316077F, 0.660742F, 0.828009F, 0.852228F},</div>
-<div class="line"><span class="lineno">  126</span>      {0.128113F, 0.0757587F, 0.742959F, 0.360531F, 0.3932F},</div>
-<div class="line"><span class="lineno">  127</span>      {0.161107F, 0.709262F, 0.690847F, 0.161165F, 0.237205F},</div>
-<div class="line"><span class="lineno">  128</span>      {0.664184F, 0.658516F, 0.972067F, 0.465567F, 0.807259F},</div>
-<div class="line"><span class="lineno">  129</span>      {0.669789F, 0.236436F, 0.341701F, 0.430546F, 0.229097F},</div>
-<div class="line"><span class="lineno">  130</span>      {0.159471F, 0.122824F, 0.975034F, 0.833685F, 0.78011F},</div>
-<div class="line"><span class="lineno">  131</span>      {0.284848F, 0.917524F, 0.358084F, 0.82927F, 0.0983398F},</div>
-<div class="line"><span class="lineno">  132</span>      {0.209027F, 0.573124F, 0.428336F, 0.106116F, 0.17974F},</div>
-<div class="line"><span class="lineno">  133</span>      {0.861987F, 0.110099F, 0.0994602F, 0.208052F, 0.0545667F},</div>
-<div class="line"><span class="lineno">  134</span>      {0.483002F, 0.707016F, 0.189368F, 0.0626376F, 0.992816F},</div>
-<div class="line"><span class="lineno">  135</span>      {0.588928F, 0.644143F, 0.763512F, 0.444366F, 0.251652F},</div>
-<div class="line"><span class="lineno">  136</span>      {0.419946F, 0.338175F, 0.286543F, 0.97232F, 0.908061F},</div>
-<div class="line"><span class="lineno">  137</span>      {0.0625373F, 0.855109F, 0.763831F, 0.622934F, 0.364608F},</div>
-<div class="line"><span class="lineno">  138</span>      {0.55833F, 0.505803F, 0.600797F, 0.342724F, 0.735087F},</div>
-<div class="line"><span class="lineno">  139</span>      {0.664873F, 0.224638F, 0.385409F, 0.892807F, 0.695F},</div>
-<div class="line"><span class="lineno">  140</span>      {0.255295F, 0.0264766F, 0.229274F, 0.723291F, 0.552242F},</div>
-<div class="line"><span class="lineno">  141</span>      {0.412129F, 0.856404F, 0.395075F, 0.261842F, 0.947885F},</div>
-<div class="line"><span class="lineno">  142</span>      {0.468212F, 0.849367F, 0.00615251F, 0.842904F, 0.700869F},</div>
-<div class="line"><span class="lineno">  143</span>      {0.311582F, 0.293401F, 0.299637F, 0.567025F, 0.659598F},</div>
-<div class="line"><span class="lineno">  144</span>      {0.695464F, 0.941376F, 0.21219F, 0.27813F, 0.289406F},</div>
-<div class="line"><span class="lineno">  145</span>      {0.000397467F, 0.301337F, 0.71608F, 0.296278F, 0.718923F},</div>
-<div class="line"><span class="lineno">  146</span>      {0.36314F, 0.263077F, 0.193163F, 0.295399F, 0.0523569F},</div>
-<div class="line"><span class="lineno">  147</span>      {0.128381F, 0.572157F, 0.971297F, 0.516492F, 0.921166F},</div>
-<div class="line"><span class="lineno">  148</span>      {0.596215F, 0.909239F, 0.133898F, 0.506903F, 0.0335569F},</div>
-<div class="line"><span class="lineno">  149</span>      {0.444556F, 0.997721F, 0.348369F, 0.644847F, 0.80885F},</div>
-<div class="line"><span class="lineno">  150</span>      {0.891465F, 0.0797467F, 0.85753F, 0.369457F, 0.418543F},</div>
-<div class="line"><span class="lineno">  151</span>      {0.861948F, 0.520583F, 0.900797F, 0.153884F, 0.080031F},</div>
-<div class="line"><span class="lineno">  152</span>      {0.169696F, 0.981169F, 0.406729F, 0.292696F, 0.831505F},</div>
-<div class="line"><span class="lineno">  153</span>      {0.172591F, 0.349291F, 0.782213F, 0.534652F, 0.214628F},</div>
-<div class="line"><span class="lineno">  154</span>      {0.875081F, 0.746097F, 0.0806311F, 0.15685F, 0.357471F},</div>
-<div class="line"><span class="lineno">  155</span>      {0.519389F, 0.007303F, 0.18117F, 0.370993F, 0.427305F},</div>
-<div class="line"><span class="lineno">  156</span>      {0.961372F, 0.218945F, 0.486608F, 0.618755F, 0.168813F},</div>
-<div class="line"><span class="lineno">  157</span>      {0.537862F, 0.451312F, 0.384422F, 0.540216F, 0.525636F},</div>
-<div class="line"><span class="lineno">  158</span>      {0.494387F, 0.162124F, 0.0136825F, 0.127037F, 0.803511F},</div>
-<div class="line"><span class="lineno">  159</span>      {0.409087F, 0.991167F, 0.276877F, 0.188698F, 0.155701F},</div>
-<div class="line"><span class="lineno">  160</span>      {0.851474F, 0.54778F, 0.133586F, 0.37391F, 0.137362F},</div>
-<div class="line"><span class="lineno">  161</span>      {0.0148137F, 0.97396F, 0.945259F, 0.297432F, 0.260494F},</div>
-<div class="line"><span class="lineno">  162</span>      {0.906864F, 0.13484F, 0.214258F, 0.924681F, 0.618572F},</div>
-<div class="line"><span class="lineno">  163</span>      {0.141742F, 0.563986F, 0.502602F, 0.416297F, 0.97038F},</div>
-<div class="line"><span class="lineno">  164</span>      {0.698555F, 0.406929F, 0.558199F, 0.875364F, 0.736008F},</div>
-<div class="line"><span class="lineno">  165</span>      {0.175105F, 0.270328F, 0.332957F, 0.145101F, 0.765857F},</div>
-<div class="line"><span class="lineno">  166</span>      {0.68083F, 0.125673F, 0.922594F, 0.831683F, 0.457214F},</div>
-<div class="line"><span class="lineno">  167</span>      {0.520728F, 0.26214F, 0.458674F, 0.306454F, 0.783164F},</div>
-<div class="line"><span class="lineno">  168</span>      {0.780442F, 0.472245F, 0.125185F, 0.460146F, 0.0847598F},</div>
-<div class="line"><span class="lineno">  169</span>      {0.360083F, 0.0686402F, 0.328997F, 0.799852F, 0.818809F},</div>
-<div class="line"><span class="lineno">  170</span>      {0.71546F, 0.717884F, 0.253842F, 0.812915F, 0.0141433F},</div>
-<div class="line"><span class="lineno">  171</span>      {0.441185F, 0.171204F, 0.0432966F, 0.739241F, 0.448679F},</div>
-<div class="line"><span class="lineno">  172</span>      {0.399117F, 0.148854F, 0.743042F, 0.0230124F, 0.378786F},</div>
-<div class="line"><span class="lineno">  173</span>      {0.841239F, 0.292533F, 0.391296F, 0.734326F, 0.0597166F},</div>
-<div class="line"><span class="lineno">  174</span>      {0.350847F, 0.519149F, 0.808508F, 0.113644F, 0.673261F},</div>
-<div class="line"><span class="lineno">  175</span>      {0.229909F, 0.814871F, 0.118688F, 0.612729F, 0.354682F},</div>
-<div class="line"><span class="lineno">  176</span>      {0.734755F, 0.675693F, 0.646155F, 0.0296504F, 0.405621F},</div>
-<div class="line"><span class="lineno">  177</span>      {0.121731F, 0.231111F, 0.47879F, 0.733299F, 0.270893F},</div>
-<div class="line"><span class="lineno">  178</span>      {0.732981F, 0.813999F, 0.597652F, 0.455436F, 0.691262F},</div>
-<div class="line"><span class="lineno">  179</span>      {0.10297F, 0.534613F, 0.553605F, 0.777385F, 0.553588F},</div>
-<div class="line"><span class="lineno">  180</span>      {0.441429F, 0.974205F, 0.120671F, 0.279931F, 0.624484F},</div>
-<div class="line"><span class="lineno">  181</span>      {0.531836F, 0.697762F, 0.274009F, 0.827927F, 0.741129F},</div>
-<div class="line"><span class="lineno">  182</span>      {0.745307F, 0.085542F, 0.473629F, 0.286912F, 0.175756F},</div>
-<div class="line"><span class="lineno">  183</span>      {0.758466F, 0.268705F, 0.108006F, 0.291002F, 0.559732F},</div>
-<div class="line"><span class="lineno">  184</span>      {0.632262F, 0.733193F, 0.919653F, 0.165692F, 0.84716F},</div>
-<div class="line"><span class="lineno">  185</span>      {0.0107621F, 0.694084F, 0.35781F, 0.793076F, 0.0818898F},</div>
-<div class="line"><span class="lineno">  186</span>      {0.17388F, 0.333606F, 0.867638F, 0.969285F, 0.887633F},</div>
-<div class="line"><span class="lineno">  187</span>      {0.255376F, 0.180532F, 0.737631F, 0.869954F, 0.875926F},</div>
-<div class="line"><span class="lineno">  188</span>      {0.525821F, 0.882517F, 0.224126F, 0.906093F, 0.557676F},</div>
-<div class="line"><span class="lineno">  189</span>      {0.516693F, 0.986614F, 0.644313F, 0.00903489F, 0.207868F},</div>
-<div class="line"><span class="lineno">  190</span>      {0.00175451F, 0.49772F, 0.436713F, 0.0418148F, 0.63547F},</div>
-<div class="line"><span class="lineno">  191</span>      {0.559954F, 0.192099F, 0.0787102F, 0.976933F, 0.552542F},</div>
-<div class="line"><span class="lineno">  192</span>      {0.983202F, 0.165426F, 0.136735F, 0.467933F, 0.626612F},</div>
-<div class="line"><span class="lineno">  193</span>      {0.520497F, 0.593702F, 0.0155549F, 0.791301F, 0.635127F},</div>
-<div class="line"><span class="lineno">  194</span>      {0.934924F, 0.0663795F, 0.513404F, 0.791586F, 0.68594F},</div>
-<div class="line"><span class="lineno">  195</span>      {0.977299F, 0.682359F, 0.0689664F, 0.769369F, 0.169862F},</div>
-<div class="line"><span class="lineno">  196</span>      {0.681586F, 0.900795F, 0.312534F, 0.854568F, 0.113097F},</div>
-<div class="line"><span class="lineno">  197</span>      {0.0783791F, 0.340692F, 0.23686F, 0.5932F, 0.38193F},</div>
-<div class="line"><span class="lineno">  198</span>      {0.430041F, 0.401364F, 0.88266F, 0.226286F, 0.514185F},</div>
-<div class="line"><span class="lineno">  199</span>      {0.422123F, 0.713778F, 0.813105F, 0.960577F, 0.794308F},</div>
-<div class="line"><span class="lineno">  200</span>      {0.0531423F, 0.930818F, 0.913336F, 0.382305F, 0.372521F},</div>
-<div class="line"><span class="lineno">  201</span>      {0.91698F, 0.128078F, 0.901849F, 0.0860355F, 0.432365F},</div>
-<div class="line"><span class="lineno">  202</span>      {0.749259F, 0.198112F, 0.538301F, 0.739992F, 0.909026F},</div>
-<div class="line"><span class="lineno">  203</span>      {0.903781F, 0.206122F, 0.743227F, 0.700662F, 0.784729F},</div>
-<div class="line"><span class="lineno">  204</span>      {0.914658F, 0.625943F, 0.697374F, 0.333459F, 0.213769F},</div>
-<div class="line"><span class="lineno">  205</span>      {0.313091F, 0.0485961F, 0.625018F, 0.916347F, 0.363119F},</div>
-<div class="line"><span class="lineno">  206</span>      {0.455916F, 0.982769F, 0.245987F, 0.555492F, 0.938798F},</div>
-<div class="line"><span class="lineno">  207</span>      {0.0737146F, 0.324519F, 0.325405F, 0.677491F, 0.148078F},</div>
-<div class="line"><span class="lineno">  208</span>      {0.918677F, 0.537612F, 0.917458F, 0.611973F, 0.965844F},</div>
-<div class="line"><span class="lineno">  209</span>      {0.832977F, 0.466222F, 0.528761F, 0.348765F, 0.472975F},</div>
-<div class="line"><span class="lineno">  210</span>      {0.784042F, 0.866144F, 0.00524178F, 0.217837F, 0.145246F},</div>
-<div class="line"><span class="lineno">  211</span>      {0.308576F, 0.993283F, 0.0244056F, 0.543786F, 0.575841F},</div>
-<div class="line"><span class="lineno">  212</span>      {0.285113F, 0.12198F, 0.74075F, 0.834888F, 0.561457F},</div>
-<div class="line"><span class="lineno">  213</span>      {0.635992F, 0.590228F, 0.629378F, 0.112457F, 0.78253F}};</div>
-<div class="line"><span class="lineno">  214</span> </div>
-<div class="line"><span class="lineno">  215</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
-<div class="line"><span class="lineno">  216</span>    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.predict(measure.drift_x, measure.drift_y);</div>
-<div class="line"><span class="lineno">  217</span>    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(measure.position_x, measure.position_y, measure.variometer);</div>
-<div class="line"><span class="lineno">  218</span>  }</div>
-<div class="line"><span class="lineno">  219</span> </div>
-<div class="line"><span class="lineno">  220</span>  assert(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[0] / 0.347191F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line"><span class="lineno">  221</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[1] / 91.8926F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line"><span class="lineno">  222</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[2] / 22.9656F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line"><span class="lineno">  223</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[3] / 20.6146F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line"><span class="lineno">  224</span>         <span class="stringliteral">&quot;The estimated states expected to meet ArduPilot soaring plane &quot;</span></div>
-<div class="line"><span class="lineno">  225</span>         <span class="stringliteral">&quot;implementation at 0.01% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  226</span> </div>
-<div class="line"><span class="lineno">  227</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  228</span>}()};</div>
+<div class="line"><span class="lineno">   83</span>  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
+<div class="line"><span class="lineno">   84</span>  <span class="comment">// driftY [m]. Constant time step.</span></div>
+<div class="line"><span class="lineno">   85</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a> <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>{</div>
+<div class="line"><span class="lineno">   86</span>      <span class="comment">// The state X:</span></div>
+<div class="line"><span class="lineno">   87</span>      <a class="code hl_typedef" href="#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{trigger_strength, thermal_radius, thermal_position_x,</div>
+<div class="line"><span class="lineno">   88</span>            thermal_position_y},</div>
+<div class="line"><span class="lineno">   89</span>      <span class="comment">// The output Z:</span></div>
+<div class="line"><span class="lineno">   90</span>      output&lt;float&gt;,</div>
+<div class="line"><span class="lineno">   91</span>      <span class="comment">// The estimate uncertainty P:</span></div>
+<div class="line"><span class="lineno">   92</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a4786c9c942ce573eb42946d9521336b6">estimate_uncertainty</a>{{strength_covariance, 0.F, 0.F, 0.F},</div>
+<div class="line"><span class="lineno">   93</span>                           {0.F, radius_covariance, 0.F, 0.F},</div>
+<div class="line"><span class="lineno">   94</span>                           {0.F, 0.F, position_covariance, 0.F},</div>
+<div class="line"><span class="lineno">   95</span>                           {0.F, 0.F, 0.F, position_covariance}},</div>
+<div class="line"><span class="lineno">   96</span>      <span class="comment">// The process uncertainty Q:</span></div>
+<div class="line"><span class="lineno">   97</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a44f435bfb3dedba6891ab45c8e752359">process_uncertainty</a>{{strength_noise, 0.F, 0.F, 0.F},</div>
+<div class="line"><span class="lineno">   98</span>                          {0.F, distance_noise, 0.F, 0.F},</div>
+<div class="line"><span class="lineno">   99</span>                          {0.F, 0.F, distance_noise, 0.F},</div>
+<div class="line"><span class="lineno">  100</span>                          {0.F, 0.F, 0.F, distance_noise}},</div>
+<div class="line"><span class="lineno">  101</span>      <span class="comment">// The output uncertainty R:</span></div>
+<div class="line"><span class="lineno">  102</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a915c591f44f6439290d10ad0d34fea3d">output_uncertainty</a>{measure_noise},</div>
+<div class="line"><span class="lineno">  103</span>      <span class="comment">// No process dynamics: the state transition F = ∂f/∂X = I4</span></div>
+<div class="line"><span class="lineno">  104</span>      <span class="comment">// Default. The additional parameters for update.</span></div>
+<div class="line"><span class="lineno">  105</span>      <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
+<div class="line"><span class="lineno">  106</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a86818567662c54daf153188e861ef845">output_model</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line"><span class="lineno">  107</span>                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; matrix&lt;1, 4&gt; {</div>
+<div class="line"><span class="lineno">  108</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
+<div class="line"><span class="lineno">  109</span>                                     std::pow(x[3] - position_y, 2.F)) /</div>
+<div class="line"><span class="lineno">  110</span>                                   std::pow(x[1], 2.F))};</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keyword">const</span> matrix&lt;1, 4&gt; h{</div>
+<div class="line"><span class="lineno">  112</span>            expon,</div>
+<div class="line"><span class="lineno">  113</span>            2 * x(0) *</div>
+<div class="line"><span class="lineno">  114</span>                ((std::pow(x(2) - position_x, 2.F) +</div>
+<div class="line"><span class="lineno">  115</span>                  std::pow(x(3) - position_y, 2.F)) /</div>
+<div class="line"><span class="lineno">  116</span>                 std::pow(x(1), 3.F)) *</div>
+<div class="line"><span class="lineno">  117</span>                expon,</div>
+<div class="line"><span class="lineno">  118</span>            -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,</div>
+<div class="line"><span class="lineno">  119</span>            -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">return</span> h;</div>
+<div class="line"><span class="lineno">  122</span>      }},</div>
+<div class="line"><span class="lineno">  123</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">transition</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
+<div class="line"><span class="lineno">  124</span>                    <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; vector&lt;4&gt; {</div>
+<div class="line"><span class="lineno">  126</span>        <span class="keyword">const</span> vector&lt;4&gt; drifts{0.F, 0.F, drift_x, drift_y};</div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">return</span> x + drifts;</div>
+<div class="line"><span class="lineno">  128</span>      }},</div>
+<div class="line"><span class="lineno">  129</span>      <span class="comment">// Observation Z: [w] vertical air velocity w at the aircraft’s</span></div>
+<div class="line"><span class="lineno">  130</span>      <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
+<div class="line"><span class="lineno">  131</span>      <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">observation</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line"><span class="lineno">  132</span>                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <span class="keywordtype">float</span> {</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
+<div class="line"><span class="lineno">  134</span>                                 std::pow(x[3] - position_y, 2.F)) /</div>
+<div class="line"><span class="lineno">  135</span>                               std::pow(x[1], 2.F));</div>
+<div class="line"><span class="lineno">  136</span>      }},</div>
+<div class="line"><span class="lineno">  137</span>      update_types&lt;float, float&gt;,</div>
+<div class="line"><span class="lineno">  138</span>      <span class="comment">// The additional parameters for prediction.</span></div>
+<div class="line"><span class="lineno">  139</span>      prediction_types&lt;float, float&gt;};</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>  <span class="keyword">struct </span>data {</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keywordtype">float</span> drift_x;</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordtype">float</span> drift_y;</div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordtype">float</span> position_x;</div>
+<div class="line"><span class="lineno">  145</span>    <span class="keywordtype">float</span> position_y;</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordtype">float</span> variometer;</div>
+<div class="line"><span class="lineno">  147</span>  };</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>  <span class="comment">// A hundred randomly generated data point.</span></div>
+<div class="line"><span class="lineno">  150</span>  <span class="keyword">constexpr</span> data measured[]{</div>
+<div class="line"><span class="lineno">  151</span>      {0.0756891F, 0.749786F, 0.878827F, 0.806808F, 0.155487F},</div>
+<div class="line"><span class="lineno">  152</span>      {0.506366F, 0.261469F, 0.886986F, 0.332883F, 0.434406F},</div>
+<div class="line"><span class="lineno">  153</span>      {0.249769F, 0.242154F, 0.616454F, 0.672545F, 0.24927F},</div>
+<div class="line"><span class="lineno">  154</span>      {0.358587F, 0.556206F, 0.909985F, 0.370336F, 0.553264F},</div>
+<div class="line"><span class="lineno">  155</span>      {0.370579F, 0.368003F, 0.491917F, 0.635429F, 0.73594F},</div>
+<div class="line"><span class="lineno">  156</span>      {0.82946F, 0.0221123F, 0.461047F, 0.940697F, 0.987409F},</div>
+<div class="line"><span class="lineno">  157</span>      {0.462132F, 0.708865F, 0.941915F, 0.122432F, 0.911597F},</div>
+<div class="line"><span class="lineno">  158</span>      {0.888334F, 0.542419F, 0.773781F, 0.116075F, 0.917592F},</div>
+<div class="line"><span class="lineno">  159</span>      {0.229376F, 0.174244F, 0.972009F, 0.509611F, 0.37637F},</div>
+<div class="line"><span class="lineno">  160</span>      {0.887738F, 0.707866F, 0.90959F, 0.430274F, 0.242523F},</div>
+<div class="line"><span class="lineno">  161</span>      {0.40713F, 0.0696747F, 0.456659F, 0.979656F, 0.11167F},</div>
+<div class="line"><span class="lineno">  162</span>      {0.77115F, 0.183994F, 0.944587F, 0.467626F, 0.0219546F},</div>
+<div class="line"><span class="lineno">  163</span>      {0.137442F, 0.316077F, 0.660742F, 0.828009F, 0.852228F},</div>
+<div class="line"><span class="lineno">  164</span>      {0.128113F, 0.0757587F, 0.742959F, 0.360531F, 0.3932F},</div>
+<div class="line"><span class="lineno">  165</span>      {0.161107F, 0.709262F, 0.690847F, 0.161165F, 0.237205F},</div>
+<div class="line"><span class="lineno">  166</span>      {0.664184F, 0.658516F, 0.972067F, 0.465567F, 0.807259F},</div>
+<div class="line"><span class="lineno">  167</span>      {0.669789F, 0.236436F, 0.341701F, 0.430546F, 0.229097F},</div>
+<div class="line"><span class="lineno">  168</span>      {0.159471F, 0.122824F, 0.975034F, 0.833685F, 0.78011F},</div>
+<div class="line"><span class="lineno">  169</span>      {0.284848F, 0.917524F, 0.358084F, 0.82927F, 0.0983398F},</div>
+<div class="line"><span class="lineno">  170</span>      {0.209027F, 0.573124F, 0.428336F, 0.106116F, 0.17974F},</div>
+<div class="line"><span class="lineno">  171</span>      {0.861987F, 0.110099F, 0.0994602F, 0.208052F, 0.0545667F},</div>
+<div class="line"><span class="lineno">  172</span>      {0.483002F, 0.707016F, 0.189368F, 0.0626376F, 0.992816F},</div>
+<div class="line"><span class="lineno">  173</span>      {0.588928F, 0.644143F, 0.763512F, 0.444366F, 0.251652F},</div>
+<div class="line"><span class="lineno">  174</span>      {0.419946F, 0.338175F, 0.286543F, 0.97232F, 0.908061F},</div>
+<div class="line"><span class="lineno">  175</span>      {0.0625373F, 0.855109F, 0.763831F, 0.622934F, 0.364608F},</div>
+<div class="line"><span class="lineno">  176</span>      {0.55833F, 0.505803F, 0.600797F, 0.342724F, 0.735087F},</div>
+<div class="line"><span class="lineno">  177</span>      {0.664873F, 0.224638F, 0.385409F, 0.892807F, 0.695F},</div>
+<div class="line"><span class="lineno">  178</span>      {0.255295F, 0.0264766F, 0.229274F, 0.723291F, 0.552242F},</div>
+<div class="line"><span class="lineno">  179</span>      {0.412129F, 0.856404F, 0.395075F, 0.261842F, 0.947885F},</div>
+<div class="line"><span class="lineno">  180</span>      {0.468212F, 0.849367F, 0.00615251F, 0.842904F, 0.700869F},</div>
+<div class="line"><span class="lineno">  181</span>      {0.311582F, 0.293401F, 0.299637F, 0.567025F, 0.659598F},</div>
+<div class="line"><span class="lineno">  182</span>      {0.695464F, 0.941376F, 0.21219F, 0.27813F, 0.289406F},</div>
+<div class="line"><span class="lineno">  183</span>      {0.000397467F, 0.301337F, 0.71608F, 0.296278F, 0.718923F},</div>
+<div class="line"><span class="lineno">  184</span>      {0.36314F, 0.263077F, 0.193163F, 0.295399F, 0.0523569F},</div>
+<div class="line"><span class="lineno">  185</span>      {0.128381F, 0.572157F, 0.971297F, 0.516492F, 0.921166F},</div>
+<div class="line"><span class="lineno">  186</span>      {0.596215F, 0.909239F, 0.133898F, 0.506903F, 0.0335569F},</div>
+<div class="line"><span class="lineno">  187</span>      {0.444556F, 0.997721F, 0.348369F, 0.644847F, 0.80885F},</div>
+<div class="line"><span class="lineno">  188</span>      {0.891465F, 0.0797467F, 0.85753F, 0.369457F, 0.418543F},</div>
+<div class="line"><span class="lineno">  189</span>      {0.861948F, 0.520583F, 0.900797F, 0.153884F, 0.080031F},</div>
+<div class="line"><span class="lineno">  190</span>      {0.169696F, 0.981169F, 0.406729F, 0.292696F, 0.831505F},</div>
+<div class="line"><span class="lineno">  191</span>      {0.172591F, 0.349291F, 0.782213F, 0.534652F, 0.214628F},</div>
+<div class="line"><span class="lineno">  192</span>      {0.875081F, 0.746097F, 0.0806311F, 0.15685F, 0.357471F},</div>
+<div class="line"><span class="lineno">  193</span>      {0.519389F, 0.007303F, 0.18117F, 0.370993F, 0.427305F},</div>
+<div class="line"><span class="lineno">  194</span>      {0.961372F, 0.218945F, 0.486608F, 0.618755F, 0.168813F},</div>
+<div class="line"><span class="lineno">  195</span>      {0.537862F, 0.451312F, 0.384422F, 0.540216F, 0.525636F},</div>
+<div class="line"><span class="lineno">  196</span>      {0.494387F, 0.162124F, 0.0136825F, 0.127037F, 0.803511F},</div>
+<div class="line"><span class="lineno">  197</span>      {0.409087F, 0.991167F, 0.276877F, 0.188698F, 0.155701F},</div>
+<div class="line"><span class="lineno">  198</span>      {0.851474F, 0.54778F, 0.133586F, 0.37391F, 0.137362F},</div>
+<div class="line"><span class="lineno">  199</span>      {0.0148137F, 0.97396F, 0.945259F, 0.297432F, 0.260494F},</div>
+<div class="line"><span class="lineno">  200</span>      {0.906864F, 0.13484F, 0.214258F, 0.924681F, 0.618572F},</div>
+<div class="line"><span class="lineno">  201</span>      {0.141742F, 0.563986F, 0.502602F, 0.416297F, 0.97038F},</div>
+<div class="line"><span class="lineno">  202</span>      {0.698555F, 0.406929F, 0.558199F, 0.875364F, 0.736008F},</div>
+<div class="line"><span class="lineno">  203</span>      {0.175105F, 0.270328F, 0.332957F, 0.145101F, 0.765857F},</div>
+<div class="line"><span class="lineno">  204</span>      {0.68083F, 0.125673F, 0.922594F, 0.831683F, 0.457214F},</div>
+<div class="line"><span class="lineno">  205</span>      {0.520728F, 0.26214F, 0.458674F, 0.306454F, 0.783164F},</div>
+<div class="line"><span class="lineno">  206</span>      {0.780442F, 0.472245F, 0.125185F, 0.460146F, 0.0847598F},</div>
+<div class="line"><span class="lineno">  207</span>      {0.360083F, 0.0686402F, 0.328997F, 0.799852F, 0.818809F},</div>
+<div class="line"><span class="lineno">  208</span>      {0.71546F, 0.717884F, 0.253842F, 0.812915F, 0.0141433F},</div>
+<div class="line"><span class="lineno">  209</span>      {0.441185F, 0.171204F, 0.0432966F, 0.739241F, 0.448679F},</div>
+<div class="line"><span class="lineno">  210</span>      {0.399117F, 0.148854F, 0.743042F, 0.0230124F, 0.378786F},</div>
+<div class="line"><span class="lineno">  211</span>      {0.841239F, 0.292533F, 0.391296F, 0.734326F, 0.0597166F},</div>
+<div class="line"><span class="lineno">  212</span>      {0.350847F, 0.519149F, 0.808508F, 0.113644F, 0.673261F},</div>
+<div class="line"><span class="lineno">  213</span>      {0.229909F, 0.814871F, 0.118688F, 0.612729F, 0.354682F},</div>
+<div class="line"><span class="lineno">  214</span>      {0.734755F, 0.675693F, 0.646155F, 0.0296504F, 0.405621F},</div>
+<div class="line"><span class="lineno">  215</span>      {0.121731F, 0.231111F, 0.47879F, 0.733299F, 0.270893F},</div>
+<div class="line"><span class="lineno">  216</span>      {0.732981F, 0.813999F, 0.597652F, 0.455436F, 0.691262F},</div>
+<div class="line"><span class="lineno">  217</span>      {0.10297F, 0.534613F, 0.553605F, 0.777385F, 0.553588F},</div>
+<div class="line"><span class="lineno">  218</span>      {0.441429F, 0.974205F, 0.120671F, 0.279931F, 0.624484F},</div>
+<div class="line"><span class="lineno">  219</span>      {0.531836F, 0.697762F, 0.274009F, 0.827927F, 0.741129F},</div>
+<div class="line"><span class="lineno">  220</span>      {0.745307F, 0.085542F, 0.473629F, 0.286912F, 0.175756F},</div>
+<div class="line"><span class="lineno">  221</span>      {0.758466F, 0.268705F, 0.108006F, 0.291002F, 0.559732F},</div>
+<div class="line"><span class="lineno">  222</span>      {0.632262F, 0.733193F, 0.919653F, 0.165692F, 0.84716F},</div>
+<div class="line"><span class="lineno">  223</span>      {0.0107621F, 0.694084F, 0.35781F, 0.793076F, 0.0818898F},</div>
+<div class="line"><span class="lineno">  224</span>      {0.17388F, 0.333606F, 0.867638F, 0.969285F, 0.887633F},</div>
+<div class="line"><span class="lineno">  225</span>      {0.255376F, 0.180532F, 0.737631F, 0.869954F, 0.875926F},</div>
+<div class="line"><span class="lineno">  226</span>      {0.525821F, 0.882517F, 0.224126F, 0.906093F, 0.557676F},</div>
+<div class="line"><span class="lineno">  227</span>      {0.516693F, 0.986614F, 0.644313F, 0.00903489F, 0.207868F},</div>
+<div class="line"><span class="lineno">  228</span>      {0.00175451F, 0.49772F, 0.436713F, 0.0418148F, 0.63547F},</div>
+<div class="line"><span class="lineno">  229</span>      {0.559954F, 0.192099F, 0.0787102F, 0.976933F, 0.552542F},</div>
+<div class="line"><span class="lineno">  230</span>      {0.983202F, 0.165426F, 0.136735F, 0.467933F, 0.626612F},</div>
+<div class="line"><span class="lineno">  231</span>      {0.520497F, 0.593702F, 0.0155549F, 0.791301F, 0.635127F},</div>
+<div class="line"><span class="lineno">  232</span>      {0.934924F, 0.0663795F, 0.513404F, 0.791586F, 0.68594F},</div>
+<div class="line"><span class="lineno">  233</span>      {0.977299F, 0.682359F, 0.0689664F, 0.769369F, 0.169862F},</div>
+<div class="line"><span class="lineno">  234</span>      {0.681586F, 0.900795F, 0.312534F, 0.854568F, 0.113097F},</div>
+<div class="line"><span class="lineno">  235</span>      {0.0783791F, 0.340692F, 0.23686F, 0.5932F, 0.38193F},</div>
+<div class="line"><span class="lineno">  236</span>      {0.430041F, 0.401364F, 0.88266F, 0.226286F, 0.514185F},</div>
+<div class="line"><span class="lineno">  237</span>      {0.422123F, 0.713778F, 0.813105F, 0.960577F, 0.794308F},</div>
+<div class="line"><span class="lineno">  238</span>      {0.0531423F, 0.930818F, 0.913336F, 0.382305F, 0.372521F},</div>
+<div class="line"><span class="lineno">  239</span>      {0.91698F, 0.128078F, 0.901849F, 0.0860355F, 0.432365F},</div>
+<div class="line"><span class="lineno">  240</span>      {0.749259F, 0.198112F, 0.538301F, 0.739992F, 0.909026F},</div>
+<div class="line"><span class="lineno">  241</span>      {0.903781F, 0.206122F, 0.743227F, 0.700662F, 0.784729F},</div>
+<div class="line"><span class="lineno">  242</span>      {0.914658F, 0.625943F, 0.697374F, 0.333459F, 0.213769F},</div>
+<div class="line"><span class="lineno">  243</span>      {0.313091F, 0.0485961F, 0.625018F, 0.916347F, 0.363119F},</div>
+<div class="line"><span class="lineno">  244</span>      {0.455916F, 0.982769F, 0.245987F, 0.555492F, 0.938798F},</div>
+<div class="line"><span class="lineno">  245</span>      {0.0737146F, 0.324519F, 0.325405F, 0.677491F, 0.148078F},</div>
+<div class="line"><span class="lineno">  246</span>      {0.918677F, 0.537612F, 0.917458F, 0.611973F, 0.965844F},</div>
+<div class="line"><span class="lineno">  247</span>      {0.832977F, 0.466222F, 0.528761F, 0.348765F, 0.472975F},</div>
+<div class="line"><span class="lineno">  248</span>      {0.784042F, 0.866144F, 0.00524178F, 0.217837F, 0.145246F},</div>
+<div class="line"><span class="lineno">  249</span>      {0.308576F, 0.993283F, 0.0244056F, 0.543786F, 0.575841F},</div>
+<div class="line"><span class="lineno">  250</span>      {0.285113F, 0.12198F, 0.74075F, 0.834888F, 0.561457F},</div>
+<div class="line"><span class="lineno">  251</span>      {0.635992F, 0.590228F, 0.629378F, 0.112457F, 0.78253F}};</div>
+<div class="line"><span class="lineno">  252</span> </div>
+<div class="line"><span class="lineno">  253</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
+<div class="line"><span class="lineno">  254</span>    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.predict(measure.drift_x, measure.drift_y);</div>
+<div class="line"><span class="lineno">  255</span>    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(measure.position_x, measure.position_y, measure.variometer);</div>
+<div class="line"><span class="lineno">  256</span>  }</div>
+<div class="line"><span class="lineno">  257</span> </div>
+<div class="line"><span class="lineno">  258</span>  assert(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[0] / 0.347191F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line"><span class="lineno">  259</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[1] / 91.8926F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line"><span class="lineno">  260</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[2] / 22.9656F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line"><span class="lineno">  261</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x()[3] / 20.6146F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line"><span class="lineno">  262</span>         <span class="stringliteral">&quot;The estimated states expected to meet ArduPilot soaring plane &quot;</span></div>
+<div class="line"><span class="lineno">  263</span>         <span class="stringliteral">&quot;implementation at 0.01% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  266</span>}()};</div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a79f6e22e40f939028ed33d22111a4f39"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">fcarouge::internal::observation</a></div><div class="ttdeci">observation(Element) -&gt; observation&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00294">factory.hpp:294</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_ab650a2bb0de1f418440b1d5cf8903b41"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">fcarouge::internal::transition</a></div><div class="ttdeci">transition(Element) -&gt; transition&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a867b1b89cfdc342f083c792f87cb4d2c"><div class="ttname"><a href="#a867b1b89cfdc342f083c792f87cb4d2c">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00011">ekf_4x1x0_soaring.cpp:11</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a867b1b89cfdc342f083c792f87cb4d2c"><div class="ttname"><a href="#a867b1b89cfdc342f083c792f87cb4d2c">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00049">ekf_4x1x0_soaring.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03_xhtml_a44f435bfb3dedba6891ab45c8e752359"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a44f435bfb3dedba6891ab45c8e752359">fcarouge::test::anonymous_namespace{units_kf_6x2x0_vehicle_location.cpp}::process_uncertainty</a></div><div class="ttdeci">fcarouge::process_uncertainty&lt; ᴀʙᵀ&lt; state::type, state::type &gt; &gt; process_uncertainty</div><div class="ttdef"><b>Definition</b> <a href="units__kf__6x2x0__vehicle__location_8cpp_source.xhtml#l00054">units_kf_6x2x0_vehicle_location.cpp:54</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03_xhtml_a4786c9c942ce573eb42946d9521336b6"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a4786c9c942ce573eb42946d9521336b6">fcarouge::test::anonymous_namespace{units_kf_6x2x0_vehicle_location.cpp}::estimate_uncertainty</a></div><div class="ttdeci">fcarouge::estimate_uncertainty&lt; ᴀʙᵀ&lt; state::type, state::type &gt; &gt; estimate_uncertainty</div><div class="ttdef"><b>Definition</b> <a href="units__kf__6x2x0__vehicle__location_8cpp_source.xhtml#l00052">units_kf_6x2x0_vehicle_location.cpp:52</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03_xhtml_a86818567662c54daf153188e861ef845"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02units__kf__6x2x0__vehicle__location_8cpp_03.xhtml#a86818567662c54daf153188e861ef845">fcarouge::test::anonymous_namespace{units_kf_6x2x0_vehicle_location.cpp}::output_model</a></div><div class="ttdeci">fcarouge::output_model&lt; ᴀʙᵀ&lt; output_t, state::type &gt; &gt; output_model</div><div class="ttdef"><b>Definition</b> <a href="units__kf__6x2x0__vehicle__location_8cpp_source.xhtml#l00058">units_kf_6x2x0_vehicle_location.cpp:58</a></div></div>

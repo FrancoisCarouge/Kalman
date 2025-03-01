@@ -107,7 +107,45 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example.xhtml',''); ini
 <p>Estimating the vehicle location.</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from KalmanFilter.NET copyright Alex Becker.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://www.kalmanfilter.net/multiExamples.html#ex9">https://www.kalmanfilter.net/multiExamples.html#ex9</a></dd></dl>
 <p>In this example, we would like to estimate the location of the vehicle in the XY plane. The vehicle has an onboard location sensor that reports X and Y coordinates of the system. We assume constant acceleration dynamics. In this example we don't have a control variable u since we don't have control input. Let us assume a vehicle moving in a straight line in the X direction with a constant velocity. After traveling 400 meters the vehicle turns right, with a turning radius of 300 meters. During the turning maneuver, the vehicle experiences acceleration due to the circular motion (an angular acceleration). The measurements period: Δt = 1s (constant).</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
+<div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
+<div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
+<div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
+<div class="line"><span class="comment">|  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span></div>
+<div class="line"><span class="comment">| . \  / ____ \| |____| |  | |/ ____ \| |\  |</span></div>
+<div class="line"><span class="comment">|_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Kalman Filter</span></div>
+<div class="line"><span class="comment">Version 0.4.0</span></div>
+<div class="line"><span class="comment">https://github.com/FrancoisCarouge/Kalman</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">SPDX-License-Identifier: Unlicense</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">This is free and unencumbered software released into the public domain.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Anyone is free to copy, modify, publish, use, compile, sell, or</span></div>
+<div class="line"><span class="comment">distribute this software, either in source code form or as a compiled</span></div>
+<div class="line"><span class="comment">binary, for any purpose, commercial or non-commercial, and by any</span></div>
+<div class="line"><span class="comment">means.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">In jurisdictions that recognize copyright laws, the author or authors</span></div>
+<div class="line"><span class="comment">of this software dedicate any and all copyright interest in the</span></div>
+<div class="line"><span class="comment">software to the public domain. We make this dedication for the benefit</span></div>
+<div class="line"><span class="comment">of the public at large and to the detriment of our heirs and</span></div>
+<div class="line"><span class="comment">successors. We intend this dedication to be an overt act of</span></div>
+<div class="line"><span class="comment">relinquishment in perpetuity of all present and future rights to this</span></div>
+<div class="line"><span class="comment">software under copyright law.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span></div>
+<div class="line"><span class="comment">EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span></div>
+<div class="line"><span class="comment">MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</span></div>
+<div class="line"><span class="comment">IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR</span></div>
+<div class="line"><span class="comment">OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,</span></div>
+<div class="line"><span class="comment">ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span></div>
+<div class="line"><span class="comment">OTHER DEALINGS IN THE SOFTWARE.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>

@@ -103,226 +103,264 @@ $(function(){initNavTree('ekf__4x1x0__soaring_8cpp_source.xhtml',''); initResiza
   <div class="headertitle"><div class="title">ekf_4x1x0_soaring.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="ekf__4x1x0__soaring_8cpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml">    8</a></span><span class="keyword">namespace </span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">    9</a></span><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;float, Size&gt;</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">   10</a></span><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">matrix</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">matrix&lt;float, Row, Column&gt;</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">   11</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a> = fcarouge::state&lt;vector&lt;4&gt;&gt;;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a53cc27ea160c76f1ea37a29541bd98b5">   33</a></span>[[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a53cc27ea160c76f1ea37a29541bd98b5">sample</a>{[] {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> trigger_strength{0};</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_radius{80};</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_x{5};</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_y{0};</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_covariance{0.0049F};</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> radius_covariance{400};</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> position_covariance{400};</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_noise{std::pow(0.001F, 2.F)};</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> distance_noise{std::pow(0.03F, 2.F)};</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> measure_noise{std::pow(0.45F, 2.F)};</div>
+<a href="ekf__4x1x0__soaring_8cpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*  __          _      __  __          _   _</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">|  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">| . \  / ____ \| |____| |  | |/ ____ \| |\  |</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">|_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"></span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">Kalman Filter</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">Version 0.4.0</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">https://github.com/FrancoisCarouge/Kalman</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"></span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">SPDX-License-Identifier: Unlicense</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"></span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">This is free and unencumbered software released into the public domain.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"></span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">Anyone is free to copy, modify, publish, use, compile, sell, or</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">distribute this software, either in source code form or as a compiled</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">binary, for any purpose, commercial or non-commercial, and by any</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">means.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"></span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">In jurisdictions that recognize copyright laws, the author or authors</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">of this software dedicate any and all copyright interest in the</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">software to the public domain. We make this dedication for the benefit</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">of the public at large and to the detriment of our heirs and</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">successors. We intend this dedication to be an overt act of</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">relinquishment in perpetuity of all present and future rights to this</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">software under copyright law.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"></span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">OTHER DEALINGS IN THE SOFTWARE.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="comment">// driftY [m]. Constant time step.</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>      <span class="comment">// The state X:</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{trigger_strength, thermal_radius, thermal_position_x,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            thermal_position_y},</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      <span class="comment">// The output Z:</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      output&lt;float&gt;,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      <span class="comment">// The estimate uncertainty P:</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                           {0.F, radius_covariance, 0.F, 0.F},</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                           {0.F, 0.F, position_covariance, 0.F},</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                           {0.F, 0.F, 0.F, position_covariance}},</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>      <span class="comment">// The process uncertainty Q:</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>      process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                          {0.F, distance_noise, 0.F, 0.F},</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                          {0.F, 0.F, distance_noise, 0.F},</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                          {0.F, 0.F, 0.F, distance_noise}},</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      <span class="comment">// The output uncertainty R:</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      output_uncertainty{measure_noise},</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      <span class="comment">// No process dynamics: the state transition F = ∂f/∂X = I4</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>      <span class="comment">// Default. The additional parameters for update.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>      output_model{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">matrix&lt;1, 4&gt;</a> {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                     std::pow(x[3] - position_y, 2.F)) /</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                   std::pow(x[1], 2.F))};</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">matrix&lt;1, 4&gt;</a> h{</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            expon,</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            2 * x(0) *</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                ((std::pow(x(2) - position_x, 2.F) +</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                  std::pow(x(3) - position_y, 2.F)) /</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                 std::pow(x(1), 3.F)) *</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                expon,</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml">   46</a></span><span class="keyword">namespace </span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">   47</a></span><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;float, Size&gt;</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">   48</a></span><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">matrix</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">matrix&lt;float, Row, Column&gt;</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">   49</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a> = fcarouge::state&lt;vector&lt;4&gt;&gt;;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00071" data-start="{" data-end="};">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a53cc27ea160c76f1ea37a29541bd98b5">   71</a></span>[[maybe_unused]] <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a53cc27ea160c76f1ea37a29541bd98b5">sample</a>{[] {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> trigger_strength{0};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_radius{80};</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_x{5};</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_y{0};</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_covariance{0.0049F};</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> radius_covariance{400};</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> position_covariance{400};</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> strength_noise{std::pow(0.001F, 2.F)};</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> distance_noise{std::pow(0.03F, 2.F)};</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keyword">const</span> <span class="keywordtype">float</span> measure_noise{std::pow(0.45F, 2.F)};</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">return</span> h;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      }},</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>      transition{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> drifts{0.F, 0.F, drift_x, drift_y};</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">return</span> x + drifts;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      }},</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      <span class="comment">// Observation Z: [w] vertical air velocity w at the aircraft’s</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>      <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>      observation{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <span class="keywordtype">float</span> {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">return</span> x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                                 std::pow(x[3] - position_y, 2.F)) /</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                               std::pow(x[1], 2.F));</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>      }},</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>      update_types&lt;float, float&gt;,</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      <span class="comment">// The additional parameters for prediction.</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      prediction_types&lt;float, float&gt;};</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="keyword">struct </span>data {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">float</span> drift_x;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">float</span> drift_y;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">float</span> position_x;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">float</span> position_y;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">float</span> variometer;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  };</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="comment">// A hundred randomly generated data point.</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="keyword">constexpr</span> data measured[]{</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      {0.0756891F, 0.749786F, 0.878827F, 0.806808F, 0.155487F},</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      {0.506366F, 0.261469F, 0.886986F, 0.332883F, 0.434406F},</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      {0.249769F, 0.242154F, 0.616454F, 0.672545F, 0.24927F},</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>      {0.358587F, 0.556206F, 0.909985F, 0.370336F, 0.553264F},</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>      {0.370579F, 0.368003F, 0.491917F, 0.635429F, 0.73594F},</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      {0.82946F, 0.0221123F, 0.461047F, 0.940697F, 0.987409F},</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>      {0.462132F, 0.708865F, 0.941915F, 0.122432F, 0.911597F},</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>      {0.888334F, 0.542419F, 0.773781F, 0.116075F, 0.917592F},</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      {0.229376F, 0.174244F, 0.972009F, 0.509611F, 0.37637F},</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      {0.887738F, 0.707866F, 0.90959F, 0.430274F, 0.242523F},</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      {0.40713F, 0.0696747F, 0.456659F, 0.979656F, 0.11167F},</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      {0.77115F, 0.183994F, 0.944587F, 0.467626F, 0.0219546F},</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>      {0.137442F, 0.316077F, 0.660742F, 0.828009F, 0.852228F},</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>      {0.128113F, 0.0757587F, 0.742959F, 0.360531F, 0.3932F},</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>      {0.161107F, 0.709262F, 0.690847F, 0.161165F, 0.237205F},</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>      {0.664184F, 0.658516F, 0.972067F, 0.465567F, 0.807259F},</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>      {0.669789F, 0.236436F, 0.341701F, 0.430546F, 0.229097F},</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>      {0.159471F, 0.122824F, 0.975034F, 0.833685F, 0.78011F},</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      {0.284848F, 0.917524F, 0.358084F, 0.82927F, 0.0983398F},</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      {0.209027F, 0.573124F, 0.428336F, 0.106116F, 0.17974F},</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      {0.861987F, 0.110099F, 0.0994602F, 0.208052F, 0.0545667F},</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>      {0.483002F, 0.707016F, 0.189368F, 0.0626376F, 0.992816F},</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>      {0.588928F, 0.644143F, 0.763512F, 0.444366F, 0.251652F},</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>      {0.419946F, 0.338175F, 0.286543F, 0.97232F, 0.908061F},</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      {0.0625373F, 0.855109F, 0.763831F, 0.622934F, 0.364608F},</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      {0.55833F, 0.505803F, 0.600797F, 0.342724F, 0.735087F},</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      {0.664873F, 0.224638F, 0.385409F, 0.892807F, 0.695F},</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>      {0.255295F, 0.0264766F, 0.229274F, 0.723291F, 0.552242F},</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>      {0.412129F, 0.856404F, 0.395075F, 0.261842F, 0.947885F},</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>      {0.468212F, 0.849367F, 0.00615251F, 0.842904F, 0.700869F},</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>      {0.311582F, 0.293401F, 0.299637F, 0.567025F, 0.659598F},</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>      {0.695464F, 0.941376F, 0.21219F, 0.27813F, 0.289406F},</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>      {0.000397467F, 0.301337F, 0.71608F, 0.296278F, 0.718923F},</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>      {0.36314F, 0.263077F, 0.193163F, 0.295399F, 0.0523569F},</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>      {0.128381F, 0.572157F, 0.971297F, 0.516492F, 0.921166F},</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>      {0.596215F, 0.909239F, 0.133898F, 0.506903F, 0.0335569F},</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>      {0.444556F, 0.997721F, 0.348369F, 0.644847F, 0.80885F},</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>      {0.891465F, 0.0797467F, 0.85753F, 0.369457F, 0.418543F},</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      {0.861948F, 0.520583F, 0.900797F, 0.153884F, 0.080031F},</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>      {0.169696F, 0.981169F, 0.406729F, 0.292696F, 0.831505F},</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>      {0.172591F, 0.349291F, 0.782213F, 0.534652F, 0.214628F},</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>      {0.875081F, 0.746097F, 0.0806311F, 0.15685F, 0.357471F},</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      {0.519389F, 0.007303F, 0.18117F, 0.370993F, 0.427305F},</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      {0.961372F, 0.218945F, 0.486608F, 0.618755F, 0.168813F},</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      {0.537862F, 0.451312F, 0.384422F, 0.540216F, 0.525636F},</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      {0.494387F, 0.162124F, 0.0136825F, 0.127037F, 0.803511F},</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      {0.409087F, 0.991167F, 0.276877F, 0.188698F, 0.155701F},</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      {0.851474F, 0.54778F, 0.133586F, 0.37391F, 0.137362F},</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      {0.0148137F, 0.97396F, 0.945259F, 0.297432F, 0.260494F},</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      {0.906864F, 0.13484F, 0.214258F, 0.924681F, 0.618572F},</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>      {0.141742F, 0.563986F, 0.502602F, 0.416297F, 0.97038F},</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      {0.698555F, 0.406929F, 0.558199F, 0.875364F, 0.736008F},</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>      {0.175105F, 0.270328F, 0.332957F, 0.145101F, 0.765857F},</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>      {0.68083F, 0.125673F, 0.922594F, 0.831683F, 0.457214F},</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>      {0.520728F, 0.26214F, 0.458674F, 0.306454F, 0.783164F},</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      {0.780442F, 0.472245F, 0.125185F, 0.460146F, 0.0847598F},</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>      {0.360083F, 0.0686402F, 0.328997F, 0.799852F, 0.818809F},</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>      {0.71546F, 0.717884F, 0.253842F, 0.812915F, 0.0141433F},</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      {0.441185F, 0.171204F, 0.0432966F, 0.739241F, 0.448679F},</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>      {0.399117F, 0.148854F, 0.743042F, 0.0230124F, 0.378786F},</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>      {0.841239F, 0.292533F, 0.391296F, 0.734326F, 0.0597166F},</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>      {0.350847F, 0.519149F, 0.808508F, 0.113644F, 0.673261F},</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>      {0.229909F, 0.814871F, 0.118688F, 0.612729F, 0.354682F},</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>      {0.734755F, 0.675693F, 0.646155F, 0.0296504F, 0.405621F},</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>      {0.121731F, 0.231111F, 0.47879F, 0.733299F, 0.270893F},</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>      {0.732981F, 0.813999F, 0.597652F, 0.455436F, 0.691262F},</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>      {0.10297F, 0.534613F, 0.553605F, 0.777385F, 0.553588F},</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>      {0.441429F, 0.974205F, 0.120671F, 0.279931F, 0.624484F},</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>      {0.531836F, 0.697762F, 0.274009F, 0.827927F, 0.741129F},</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>      {0.745307F, 0.085542F, 0.473629F, 0.286912F, 0.175756F},</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>      {0.758466F, 0.268705F, 0.108006F, 0.291002F, 0.559732F},</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>      {0.632262F, 0.733193F, 0.919653F, 0.165692F, 0.84716F},</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>      {0.0107621F, 0.694084F, 0.35781F, 0.793076F, 0.0818898F},</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>      {0.17388F, 0.333606F, 0.867638F, 0.969285F, 0.887633F},</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>      {0.255376F, 0.180532F, 0.737631F, 0.869954F, 0.875926F},</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>      {0.525821F, 0.882517F, 0.224126F, 0.906093F, 0.557676F},</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>      {0.516693F, 0.986614F, 0.644313F, 0.00903489F, 0.207868F},</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>      {0.00175451F, 0.49772F, 0.436713F, 0.0418148F, 0.63547F},</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>      {0.559954F, 0.192099F, 0.0787102F, 0.976933F, 0.552542F},</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>      {0.983202F, 0.165426F, 0.136735F, 0.467933F, 0.626612F},</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>      {0.520497F, 0.593702F, 0.0155549F, 0.791301F, 0.635127F},</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>      {0.934924F, 0.0663795F, 0.513404F, 0.791586F, 0.68594F},</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>      {0.977299F, 0.682359F, 0.0689664F, 0.769369F, 0.169862F},</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>      {0.681586F, 0.900795F, 0.312534F, 0.854568F, 0.113097F},</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>      {0.0783791F, 0.340692F, 0.23686F, 0.5932F, 0.38193F},</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>      {0.430041F, 0.401364F, 0.88266F, 0.226286F, 0.514185F},</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>      {0.422123F, 0.713778F, 0.813105F, 0.960577F, 0.794308F},</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>      {0.0531423F, 0.930818F, 0.913336F, 0.382305F, 0.372521F},</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>      {0.91698F, 0.128078F, 0.901849F, 0.0860355F, 0.432365F},</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>      {0.749259F, 0.198112F, 0.538301F, 0.739992F, 0.909026F},</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>      {0.903781F, 0.206122F, 0.743227F, 0.700662F, 0.784729F},</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>      {0.914658F, 0.625943F, 0.697374F, 0.333459F, 0.213769F},</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>      {0.313091F, 0.0485961F, 0.625018F, 0.916347F, 0.363119F},</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>      {0.455916F, 0.982769F, 0.245987F, 0.555492F, 0.938798F},</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>      {0.0737146F, 0.324519F, 0.325405F, 0.677491F, 0.148078F},</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>      {0.918677F, 0.537612F, 0.917458F, 0.611973F, 0.965844F},</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>      {0.832977F, 0.466222F, 0.528761F, 0.348765F, 0.472975F},</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>      {0.784042F, 0.866144F, 0.00524178F, 0.217837F, 0.145246F},</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>      {0.308576F, 0.993283F, 0.0244056F, 0.543786F, 0.575841F},</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>      {0.285113F, 0.12198F, 0.74075F, 0.834888F, 0.561457F},</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>      {0.635992F, 0.590228F, 0.629378F, 0.112457F, 0.78253F}};</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    filter.predict(measure.drift_x, measure.drift_y);</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    filter.update(measure.position_x, measure.position_y, measure.variometer);</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>  }</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>  assert(std::abs(1 - filter.x()[0] / 0.347191F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>         std::abs(1 - filter.x()[1] / 91.8926F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>         std::abs(1 - filter.x()[2] / 22.9656F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>         std::abs(1 - filter.x()[3] / 20.6146F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>         <span class="stringliteral">&quot;The estimated states expected to meet ArduPilot soaring plane &quot;</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>         <span class="stringliteral">&quot;implementation at 0.01% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>}()};</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="comment">// driftY [m]. Constant time step.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>      <span class="comment">// The state X:</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{trigger_strength, thermal_radius, thermal_position_x,</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            thermal_position_y},</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      <span class="comment">// The output Z:</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      output&lt;float&gt;,</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      <span class="comment">// The estimate uncertainty P:</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>      estimate_uncertainty{{strength_covariance, 0.F, 0.F, 0.F},</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                           {0.F, radius_covariance, 0.F, 0.F},</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                           {0.F, 0.F, position_covariance, 0.F},</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                           {0.F, 0.F, 0.F, position_covariance}},</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>      <span class="comment">// The process uncertainty Q:</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      process_uncertainty{{strength_noise, 0.F, 0.F, 0.F},</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                          {0.F, distance_noise, 0.F, 0.F},</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                          {0.F, 0.F, distance_noise, 0.F},</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                          {0.F, 0.F, 0.F, distance_noise}},</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="comment">// The output uncertainty R:</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>      output_uncertainty{measure_noise},</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>      <span class="comment">// No process dynamics: the state transition F = ∂f/∂X = I4</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      <span class="comment">// Default. The additional parameters for update.</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      output_model{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">matrix&lt;1, 4&gt;</a> {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                                     std::pow(x[3] - position_y, 2.F)) /</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                                   std::pow(x[1], 2.F))};</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">matrix&lt;1, 4&gt;</a> h{</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            expon,</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            2 * x(0) *</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                ((std::pow(x(2) - position_x, 2.F) +</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                  std::pow(x(3) - position_y, 2.F)) /</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                 std::pow(x(1), 3.F)) *</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                expon,</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            -2 * (x(0) * (x(2) - position_x) / std::pow(x(1), 2.F)) * expon,</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            -2 * (x(0) * (x(3) - position_y) / std::pow(x(1), 2.F)) * expon};</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">return</span> h;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      }},</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      transition{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_x,</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                    <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;drift_y) -&gt; <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> drifts{0.F, 0.F, drift_x, drift_y};</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keywordflow">return</span> x + drifts;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>      }},</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>      <span class="comment">// Observation Z: [w] vertical air velocity w at the aircraft’s</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>      <span class="comment">// position w.r.t. the thermal center [m.s^-1].</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      observation{[](<span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">vector&lt;4&gt;</a> &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                     <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <span class="keywordtype">float</span> {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordflow">return</span> x(0) * std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                                 std::pow(x[3] - position_y, 2.F)) /</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                               std::pow(x[1], 2.F));</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>      }},</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      update_types&lt;float, float&gt;,</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      <span class="comment">// The additional parameters for prediction.</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      prediction_types&lt;float, float&gt;};</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="keyword">struct </span>data {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordtype">float</span> drift_x;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">float</span> drift_y;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">float</span> position_x;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">float</span> position_y;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordtype">float</span> variometer;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  };</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  <span class="comment">// A hundred randomly generated data point.</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="keyword">constexpr</span> data measured[]{</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      {0.0756891F, 0.749786F, 0.878827F, 0.806808F, 0.155487F},</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>      {0.506366F, 0.261469F, 0.886986F, 0.332883F, 0.434406F},</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>      {0.249769F, 0.242154F, 0.616454F, 0.672545F, 0.24927F},</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>      {0.358587F, 0.556206F, 0.909985F, 0.370336F, 0.553264F},</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      {0.370579F, 0.368003F, 0.491917F, 0.635429F, 0.73594F},</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      {0.82946F, 0.0221123F, 0.461047F, 0.940697F, 0.987409F},</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      {0.462132F, 0.708865F, 0.941915F, 0.122432F, 0.911597F},</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      {0.888334F, 0.542419F, 0.773781F, 0.116075F, 0.917592F},</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      {0.229376F, 0.174244F, 0.972009F, 0.509611F, 0.37637F},</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      {0.887738F, 0.707866F, 0.90959F, 0.430274F, 0.242523F},</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      {0.40713F, 0.0696747F, 0.456659F, 0.979656F, 0.11167F},</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      {0.77115F, 0.183994F, 0.944587F, 0.467626F, 0.0219546F},</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>      {0.137442F, 0.316077F, 0.660742F, 0.828009F, 0.852228F},</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      {0.128113F, 0.0757587F, 0.742959F, 0.360531F, 0.3932F},</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>      {0.161107F, 0.709262F, 0.690847F, 0.161165F, 0.237205F},</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>      {0.664184F, 0.658516F, 0.972067F, 0.465567F, 0.807259F},</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>      {0.669789F, 0.236436F, 0.341701F, 0.430546F, 0.229097F},</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      {0.159471F, 0.122824F, 0.975034F, 0.833685F, 0.78011F},</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>      {0.284848F, 0.917524F, 0.358084F, 0.82927F, 0.0983398F},</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>      {0.209027F, 0.573124F, 0.428336F, 0.106116F, 0.17974F},</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      {0.861987F, 0.110099F, 0.0994602F, 0.208052F, 0.0545667F},</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>      {0.483002F, 0.707016F, 0.189368F, 0.0626376F, 0.992816F},</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>      {0.588928F, 0.644143F, 0.763512F, 0.444366F, 0.251652F},</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>      {0.419946F, 0.338175F, 0.286543F, 0.97232F, 0.908061F},</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>      {0.0625373F, 0.855109F, 0.763831F, 0.622934F, 0.364608F},</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>      {0.55833F, 0.505803F, 0.600797F, 0.342724F, 0.735087F},</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>      {0.664873F, 0.224638F, 0.385409F, 0.892807F, 0.695F},</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>      {0.255295F, 0.0264766F, 0.229274F, 0.723291F, 0.552242F},</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>      {0.412129F, 0.856404F, 0.395075F, 0.261842F, 0.947885F},</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>      {0.468212F, 0.849367F, 0.00615251F, 0.842904F, 0.700869F},</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>      {0.311582F, 0.293401F, 0.299637F, 0.567025F, 0.659598F},</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>      {0.695464F, 0.941376F, 0.21219F, 0.27813F, 0.289406F},</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>      {0.000397467F, 0.301337F, 0.71608F, 0.296278F, 0.718923F},</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>      {0.36314F, 0.263077F, 0.193163F, 0.295399F, 0.0523569F},</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>      {0.128381F, 0.572157F, 0.971297F, 0.516492F, 0.921166F},</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>      {0.596215F, 0.909239F, 0.133898F, 0.506903F, 0.0335569F},</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>      {0.444556F, 0.997721F, 0.348369F, 0.644847F, 0.80885F},</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>      {0.891465F, 0.0797467F, 0.85753F, 0.369457F, 0.418543F},</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>      {0.861948F, 0.520583F, 0.900797F, 0.153884F, 0.080031F},</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>      {0.169696F, 0.981169F, 0.406729F, 0.292696F, 0.831505F},</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>      {0.172591F, 0.349291F, 0.782213F, 0.534652F, 0.214628F},</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>      {0.875081F, 0.746097F, 0.0806311F, 0.15685F, 0.357471F},</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>      {0.519389F, 0.007303F, 0.18117F, 0.370993F, 0.427305F},</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>      {0.961372F, 0.218945F, 0.486608F, 0.618755F, 0.168813F},</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>      {0.537862F, 0.451312F, 0.384422F, 0.540216F, 0.525636F},</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>      {0.494387F, 0.162124F, 0.0136825F, 0.127037F, 0.803511F},</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>      {0.409087F, 0.991167F, 0.276877F, 0.188698F, 0.155701F},</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>      {0.851474F, 0.54778F, 0.133586F, 0.37391F, 0.137362F},</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>      {0.0148137F, 0.97396F, 0.945259F, 0.297432F, 0.260494F},</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>      {0.906864F, 0.13484F, 0.214258F, 0.924681F, 0.618572F},</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>      {0.141742F, 0.563986F, 0.502602F, 0.416297F, 0.97038F},</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>      {0.698555F, 0.406929F, 0.558199F, 0.875364F, 0.736008F},</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>      {0.175105F, 0.270328F, 0.332957F, 0.145101F, 0.765857F},</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>      {0.68083F, 0.125673F, 0.922594F, 0.831683F, 0.457214F},</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>      {0.520728F, 0.26214F, 0.458674F, 0.306454F, 0.783164F},</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>      {0.780442F, 0.472245F, 0.125185F, 0.460146F, 0.0847598F},</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>      {0.360083F, 0.0686402F, 0.328997F, 0.799852F, 0.818809F},</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>      {0.71546F, 0.717884F, 0.253842F, 0.812915F, 0.0141433F},</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>      {0.441185F, 0.171204F, 0.0432966F, 0.739241F, 0.448679F},</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>      {0.399117F, 0.148854F, 0.743042F, 0.0230124F, 0.378786F},</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>      {0.841239F, 0.292533F, 0.391296F, 0.734326F, 0.0597166F},</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>      {0.350847F, 0.519149F, 0.808508F, 0.113644F, 0.673261F},</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>      {0.229909F, 0.814871F, 0.118688F, 0.612729F, 0.354682F},</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>      {0.734755F, 0.675693F, 0.646155F, 0.0296504F, 0.405621F},</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>      {0.121731F, 0.231111F, 0.47879F, 0.733299F, 0.270893F},</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>      {0.732981F, 0.813999F, 0.597652F, 0.455436F, 0.691262F},</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>      {0.10297F, 0.534613F, 0.553605F, 0.777385F, 0.553588F},</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>      {0.441429F, 0.974205F, 0.120671F, 0.279931F, 0.624484F},</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>      {0.531836F, 0.697762F, 0.274009F, 0.827927F, 0.741129F},</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>      {0.745307F, 0.085542F, 0.473629F, 0.286912F, 0.175756F},</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>      {0.758466F, 0.268705F, 0.108006F, 0.291002F, 0.559732F},</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>      {0.632262F, 0.733193F, 0.919653F, 0.165692F, 0.84716F},</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>      {0.0107621F, 0.694084F, 0.35781F, 0.793076F, 0.0818898F},</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>      {0.17388F, 0.333606F, 0.867638F, 0.969285F, 0.887633F},</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>      {0.255376F, 0.180532F, 0.737631F, 0.869954F, 0.875926F},</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>      {0.525821F, 0.882517F, 0.224126F, 0.906093F, 0.557676F},</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>      {0.516693F, 0.986614F, 0.644313F, 0.00903489F, 0.207868F},</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>      {0.00175451F, 0.49772F, 0.436713F, 0.0418148F, 0.63547F},</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>      {0.559954F, 0.192099F, 0.0787102F, 0.976933F, 0.552542F},</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>      {0.983202F, 0.165426F, 0.136735F, 0.467933F, 0.626612F},</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>      {0.520497F, 0.593702F, 0.0155549F, 0.791301F, 0.635127F},</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>      {0.934924F, 0.0663795F, 0.513404F, 0.791586F, 0.68594F},</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>      {0.977299F, 0.682359F, 0.0689664F, 0.769369F, 0.169862F},</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>      {0.681586F, 0.900795F, 0.312534F, 0.854568F, 0.113097F},</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>      {0.0783791F, 0.340692F, 0.23686F, 0.5932F, 0.38193F},</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>      {0.430041F, 0.401364F, 0.88266F, 0.226286F, 0.514185F},</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>      {0.422123F, 0.713778F, 0.813105F, 0.960577F, 0.794308F},</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>      {0.0531423F, 0.930818F, 0.913336F, 0.382305F, 0.372521F},</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>      {0.91698F, 0.128078F, 0.901849F, 0.0860355F, 0.432365F},</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>      {0.749259F, 0.198112F, 0.538301F, 0.739992F, 0.909026F},</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>      {0.903781F, 0.206122F, 0.743227F, 0.700662F, 0.784729F},</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>      {0.914658F, 0.625943F, 0.697374F, 0.333459F, 0.213769F},</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>      {0.313091F, 0.0485961F, 0.625018F, 0.916347F, 0.363119F},</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>      {0.455916F, 0.982769F, 0.245987F, 0.555492F, 0.938798F},</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>      {0.0737146F, 0.324519F, 0.325405F, 0.677491F, 0.148078F},</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>      {0.918677F, 0.537612F, 0.917458F, 0.611973F, 0.965844F},</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>      {0.832977F, 0.466222F, 0.528761F, 0.348765F, 0.472975F},</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>      {0.784042F, 0.866144F, 0.00524178F, 0.217837F, 0.145246F},</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>      {0.308576F, 0.993283F, 0.0244056F, 0.543786F, 0.575841F},</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>      {0.285113F, 0.12198F, 0.74075F, 0.834888F, 0.561457F},</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>      {0.635992F, 0.590228F, 0.629378F, 0.112457F, 0.78253F}};</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    filter.predict(measure.drift_x, measure.drift_y);</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    filter.update(measure.position_x, measure.position_y, measure.variometer);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>  }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>  assert(std::abs(1 - filter.x()[0] / 0.347191F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>         std::abs(1 - filter.x()[1] / 91.8926F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>         std::abs(1 - filter.x()[2] / 22.9656F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>         std::abs(1 - filter.x()[3] / 20.6146F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>         <span class="stringliteral">&quot;The estimated states expected to meet ArduPilot soaring plane &quot;</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>         <span class="stringliteral">&quot;implementation at 0.01% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>}()};</div>
 </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00126">kalman.hpp:126</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a53cc27ea160c76f1ea37a29541bd98b5"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a53cc27ea160c76f1ea37a29541bd98b5">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::sample</a></div><div class="ttdeci">auto sample</div><div class="ttdef"><b>Definition</b> <a href="#l00033">ekf_4x1x0_soaring.cpp:33</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a867b1b89cfdc342f083c792f87cb4d2c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="#l00011">ekf_4x1x0_soaring.cpp:11</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a8aa7f189a767e4fc3c46c3818650cadf"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; float, Size &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="#l00009">ekf_4x1x0_soaring.cpp:9</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_aa95b57dca9e27abef81c7f038247af2e"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; float, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="#l00010">ekf_4x1x0_soaring.cpp:10</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a53cc27ea160c76f1ea37a29541bd98b5"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a53cc27ea160c76f1ea37a29541bd98b5">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::sample</a></div><div class="ttdeci">auto sample</div><div class="ttdef"><b>Definition</b> <a href="#l00071">ekf_4x1x0_soaring.cpp:71</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a867b1b89cfdc342f083c792f87cb4d2c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="#l00049">ekf_4x1x0_soaring.cpp:49</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a8aa7f189a767e4fc3c46c3818650cadf"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a8aa7f189a767e4fc3c46c3818650cadf">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; float, Size &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="#l00047">ekf_4x1x0_soaring.cpp:47</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_aa95b57dca9e27abef81c7f038247af2e"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#aa95b57dca9e27abef81c7f038247af2e">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; float, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="#l00048">ekf_4x1x0_soaring.cpp:48</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

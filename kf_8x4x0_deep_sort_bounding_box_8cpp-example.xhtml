@@ -108,7 +108,45 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/nwojke/deep_sort">https://github.com/nwojke/deep_sort</a></dd></dl>
 <p>In this example, we would like to estimate the bounding box center position <code>x</code>, <code>y</code>, aspect ratio <code>a</code>, height <code>h</code>, and their respective velocities in image space. The filter models constant velocity dynamics. The prediction and observation models are linear.</p>
 <dl class="section note"><dt>Note</dt><dd>For information, the original sample appears to saturate the velocity precision early on.</dd></dl>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
+<div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
+<div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
+<div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
+<div class="line"><span class="comment">|  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span></div>
+<div class="line"><span class="comment">| . \  / ____ \| |____| |  | |/ ____ \| |\  |</span></div>
+<div class="line"><span class="comment">|_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Kalman Filter</span></div>
+<div class="line"><span class="comment">Version 0.4.0</span></div>
+<div class="line"><span class="comment">https://github.com/FrancoisCarouge/Kalman</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">SPDX-License-Identifier: Unlicense</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">This is free and unencumbered software released into the public domain.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Anyone is free to copy, modify, publish, use, compile, sell, or</span></div>
+<div class="line"><span class="comment">distribute this software, either in source code form or as a compiled</span></div>
+<div class="line"><span class="comment">binary, for any purpose, commercial or non-commercial, and by any</span></div>
+<div class="line"><span class="comment">means.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">In jurisdictions that recognize copyright laws, the author or authors</span></div>
+<div class="line"><span class="comment">of this software dedicate any and all copyright interest in the</span></div>
+<div class="line"><span class="comment">software to the public domain. We make this dedication for the benefit</span></div>
+<div class="line"><span class="comment">of the public at large and to the detriment of our heirs and</span></div>
+<div class="line"><span class="comment">successors. We intend this dedication to be an overt act of</span></div>
+<div class="line"><span class="comment">relinquishment in perpetuity of all present and future rights to this</span></div>
+<div class="line"><span class="comment">software under copyright law.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span></div>
+<div class="line"><span class="comment">EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span></div>
+<div class="line"><span class="comment">MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</span></div>
+<div class="line"><span class="comment">IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR</span></div>
+<div class="line"><span class="comment">OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,</span></div>
+<div class="line"><span class="comment">ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span></div>
+<div class="line"><span class="comment">OTHER DEALINGS IN THE SOFTWARE.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
