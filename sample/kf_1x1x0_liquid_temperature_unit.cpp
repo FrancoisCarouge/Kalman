@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/unit.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -47,8 +48,12 @@ namespace {
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
 //! Becker.
+//! @copyright This example also transcribes Mateusz Pusz's mp-units Kalman
+//! filter sample.
 //!
 //! @see https://www.kalmanfilter.net/kalman1d.html#ex6
+//! @see
+//! https://github.com/mpusz/mp-units/blob/master/example/kalman_filter/kalman_filter-example_6.cpp
 //!
 //! @details We would like to estimate the temperature of the liquid in a tank.
 //! We assume that at steady state the liquid temperature is constant. However,
@@ -62,73 +67,73 @@ namespace {
 //! 49.967°C, 50.1°C, 50.106°C, 49.992°C, 49.819°C, 49.933°C, 50.007°C,
 //! 50.023°C, and 49.99°C.
 //!
-//! @example kf_1x1x0_liquid_temperature.cpp
+//! @example kf_1x1x0_liquid_temperature_unit.cpp
 [[maybe_unused]] auto sample{[] {
   // A one-dimensional filter, constant system dynamic model.
   kalman filter{
       // We initialize the Kalman filter and predict the next state (which is
       // the first state). We don't know what the temperature of the liquid is,
       // and our guess is: estimated state X = 10°C.
-      state{10.},
+      state{temperature{delta<deg_C>{10.}}},
       // The measured liquid temperature Z.
-      output<double>,
+      output<temperature>,
       // Our guess is very imprecise, so we set our initialization estimate
       // error σ to 100. The estimate uncertainty p of the initialization is the
       // error variance σ^2: P = p0,0 = 100^2 = 10,000. This variance is very
       // high. If we initialize with a more meaningful value, we will get faster
       // Kalman filter convergence.
-      estimate_uncertainty{10'000.},
+      estimate_uncertainty{10'000. * deg_C2},
       // We have an accurate model, thus we set the process uncertainty noise
       // variance Q to 0.0001.
-      process_uncertainty{0.000'1},
+      process_uncertainty{0.000'1 * deg_C2},
       // Since the measurement error of the thermometer is σ = 0.1, the variance
       // σ^2 would be 0.01, thus the measurement, output uncertainty is: R = r1
       // = 0.01. The measurement error (standard deviation) is 0.1 degrees
       // Celsius.
-      output_uncertainty{0.01}};
+      output_uncertainty{0.01 * deg_C2}};
 
   // Now, we shall predict the next state based on the initialization values.
   filter.predict();
 
-  assert(10 == filter.x() &&
+  assert(temperature{10 * deg_C} == filter.x() &&
          "Since our model has constant dynamics, the predicted estimate is "
          "equal to the current estimate: x^1,0 = 10°C.");
-  assert(10'000.000'1 == filter.p() &&
+  assert(10'000.000'1 * deg_C2 == filter.p() &&
          "The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = "
-         "10000 + 0.0001 = 10000.0001.");
+         "10'000 + 0.000'1 = 10'000.000'1.");
 
   // The first measurement value: z1 = 49.95°C. Measure and update.
-  filter.update(49.95);
+  filter.update(temperature{49.95 * deg_C});
 
-  assert(std::abs(1 - filter.k() / 0.999'999) < 0.0001 &&
+  assert(abs(1 - filter.k() / 0.999'999) < 0.000'1 &&
          "The gain expected at 0.01% accuracy.");
 
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 5s (constant).
-  const auto step{[&filter](double temperature) {
+  const auto step{[&filter](temperature output_z) {
     filter.predict();
     filter.update(temperature);
   }};
 
-  step(49.967);
-  step(50.1);
-  step(50.106);
-  step(49.992);
-  step(49.819);
-  step(49.933);
-  step(50.007);
-  step(50.023);
-  step(49.99);
+  step(temperature{49.967 * deg_C});
+  step(temperature{50.1 * deg_C});
+  step(temperature{50.106 * deg_C});
+  step(temperature{49.992 * deg_C});
+  step(temperature{49.819 * deg_C});
+  step(temperature{49.933 * deg_C});
+  step(temperature{50.007 * deg_C});
+  step(temperature{50.023 * deg_C});
+  step(temperature{49.99 * deg_C});
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
-  assert(std::abs(1 - filter.p() / 0.0013) < 0.05 &&
+  assert(abs(1 - filter.p() / 0.001'3) < 0.05 &&
          "The estimate uncertainty expected at 5% accuracy."
          "The estimate uncertainty is 0.0013, i.e. the estimate error standard "
          "deviation is: 0.036°C.");
-  assert(std::abs(1 - filter.x() / 49.988) < 0.001 &&
+  assert(abs(1 - filter.x() / temperature{49.988 * deg_C}) < 0.001 &&
          "The state estimates expected at 0.1% accuracy."
          "The filter estimates the liquid temperature at 49.988°C.");
-  assert(std::abs(1 - filter.k() / 0.126'5) < 0.001 &&
+  assert(abs(1 - filter.k() / 0.126'5) < 0.001 &&
          "The gain expected at 0.1% accuracy.");
 
   // So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.
