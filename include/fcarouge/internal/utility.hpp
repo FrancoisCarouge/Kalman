@@ -248,9 +248,6 @@ template <typename Type> struct not_implemented {
   static_assert(missing, "This type is not implemented. See compiler message.");
 };
 
-template <typename Lhs, typename Rhs>
-using product = decltype(std::declval<Lhs>() * std::declval<Rhs>());
-
 using empty_tuple = std::tuple<>;
 
 template <typename Pack> using repack = repacker<Pack>::type;
