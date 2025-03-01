@@ -83,7 +83,10 @@ namespace {
   assert(height{60. * m} == filter.x() &&
          "Since our system's dynamic model is constant, i.e. the building "
          "doesn't change its height: 60 meters.");
-  assert(225. * m2 == filter.p() &&
+
+  using uncertainty = product<height, height>;
+
+  assert(uncertainty{225. * m2} == filter.p() &&
          "The extrapolated estimate uncertainty (variance) also doesn't "
          "change: 225");
 
@@ -106,7 +109,7 @@ namespace {
 
   // After 10 measurements the filter estimates the height of the building
   // at 49.57m.
-  assert(abs(1 - filter.x() / height{49.57 * m}) < 0.001 &&
+  assert(height{49.569 * m} < filter.x() && filter.x() < height{49.571 * m} &&
          "After 10 measurement and update iterations, the building estimated "
          "height is: 49.57m.");
 
