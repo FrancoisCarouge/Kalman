@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/utility.hpp"
 #include "function.hpp"
 
-#include <tuple>
+import std;
 
 namespace fcarouge::internal {
 // Helper template to support multiple pack deduction.

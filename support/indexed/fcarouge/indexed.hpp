@@ -46,11 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
-#include <concepts>
-#include <cstddef>
-#include <format>
-#include <initializer_list>
-#include <tuple>
+import std;
 
 namespace fcarouge::indexed {
 

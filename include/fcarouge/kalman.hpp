@@ -51,6 +51,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "printer.hpp"
 #include "utility.hpp"
 
+import std;
+
 namespace fcarouge {
 //! @name Types
 //! @{

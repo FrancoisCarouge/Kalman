@@ -48,8 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/utility.hpp"
 
-#include <format>
-#include <sstream>
+import std;
 
 #include <Eigen/Eigen>
 
