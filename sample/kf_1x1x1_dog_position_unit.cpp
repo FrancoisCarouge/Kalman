@@ -37,9 +37,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/unit.hpp"
 
 #include <cassert>
-#include <cmath>
 
 namespace fcarouge::sample {
 namespace {
@@ -67,58 +67,57 @@ namespace {
 //! overshoot by a little than a lot. Perhaps we can also model this with a
 //! Gaussian.
 //!
-//! @example kf_1x1x1_dog_position.cpp
+//! @example kf_1x1x1_dog_position_unit.cpp
 [[maybe_unused]] auto sample{[] {
   kalman filter{
       // This is the dog's initial position expressed as a Gaussian. The state X
       // position is 0 meters.
-      state{0.},
+      state{position{1. * m}},
       // The measured output position Z.
-      output<double>,
+      output<position>,
       // We are predicting that at each time step the dog moves forward one
       // meter. This is the input U process model - the description of how we
       // think the dog moves. How do I know the velocity? Magic? Consider it a
       // prediction, or perhaps we have a secondary velocity sensor. Please
       // accept this simplification for now.
-      input<double>,
+      input<position>,
       // The variance to 400 m, which is a standard deviation of 20 meters. You
       // can think of this as saying "I believe with 99.7% accuracy the position
       // is 0 plus or minus 60 meters". This is because with Gaussians ~99.7% of
       // values fall within of the mean. The estimate uncertainty P:
-      estimate_uncertainty{20 * 20.},
+      estimate_uncertainty{20. * m2},
       // Variance in the dog's movement. The process variance is how much error
       // there is in the process model. Dogs rarely do what we expect, and
       // things like hills or the whiff of a squirrel will change his progress.
       // The process uncertainty Q:
-      process_uncertainty{1.},
+      process_uncertainty{1. * m2},
       // Variance in the sensor. The meaning of sensor variance is how much
       // variance there is in each measurement. The output uncertainty R:
-      output_uncertainty{2.}};
+      output_uncertainty{2. * m2}};
 
-  filter.predict(1.);
-  filter.update(1.354);
-  filter.predict(2.352);
-  filter.update(1.882);
-  filter.predict(3.070);
-  filter.update(4.341);
-  filter.predict(4.736);
-  filter.update(7.156);
-  filter.predict(6.960);
-  filter.update(6.939);
-  filter.predict(7.949);
-  filter.update(6.844);
-  filter.predict(8.396);
-  filter.update(9.847);
-  filter.predict(10.122);
-  filter.update(12.553);
-  filter.predict(12.338);
-  filter.update(16.273);
-  filter.predict(15.305);
-  filter.update(14.8);
+  filter.predict(position{1. * m});
+  filter.update(position{1.354 * m});
+  filter.predict(position{2.352 * m});
+  filter.update(position{1.882 * m});
+  filter.predict(position{3.070 * m});
+  filter.update(position{4.341 * m});
+  filter.predict(position{4.736 * m});
+  filter.update(position{7.156 * m});
+  filter.predict(position{6.960 * m});
+  filter.update(position{6.939 * m});
+  filter.predict(position{7.949 * m});
+  filter.update(position{6.844 * m});
+  filter.predict(position{8.396 * m});
+  filter.update(position{9.847 * m});
+  filter.predict(position{10.122 * m});
+  filter.update(position{12.553 * m});
+  filter.predict(position{12.338 * m});
+  filter.update(position{16.273 * m});
+  filter.predict(position{15.305 * m});
+  filter.update(position{14.8 * m});
 
   assert(
-      std::abs(1 - filter.x() / 15.053) < 0.001 &&
-      "The state estimates expected at 0.1% accuracy."
+      position{15.052 * m} < filter.x() && filter.x() < position{15.054 * m} &&
       "Here we can see that the variance converges to 2.1623 in 9 steps. This "
       "means that we have become very confident in our position estimate. It "
       "is equal to meters. Contrast this to the sensor's meters.");

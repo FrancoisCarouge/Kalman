@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,31 +34,46 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(kalman_internal INTERFACE)
-target_sources(
-  kalman_internal
-  INTERFACE FILE_SET
-            "kalman_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "internal/factory.hpp"
-            "internal/function.hpp"
-            "internal/kalman.tpp"
-            "internal/type.hpp"
-            "internal/utility.hpp"
-            "internal/x_z_p_q_r_h_f.hpp"
-            "internal/x_z_p_q_r_hh_us_ps.hpp"
-            "internal/x_z_p_q_r.hpp"
-            "internal/x_z_p_qq_rr_f.hpp"
-            "internal/x_z_p_r_f.hpp"
-            "internal/x_z_p_r.hpp"
-            "internal/x_z_u_p_q_r_f_g_ps.hpp"
-            "internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
-            "internal/x_z_u_p_q_r.hpp")
-install(
-  TARGETS kalman_internal
-  EXPORT "kalman-target"
-  FILE_SET "kalman_headers")
+#ifndef FCAROUGE_INTERNAL_X_Z_P_Q_R_HPP
+#define FCAROUGE_INTERNAL_X_Z_P_Q_R_HPP
+
+#include "fcarouge/utility.hpp"
+
+namespace fcarouge::internal {
+template <typename Type> struct x_z_p_q_r {
+  using state = Type;
+  using output = Type;
+  using estimate_uncertainty = ᴀʙᵀ<state, state>;
+  using process_uncertainty = ᴀʙᵀ<state, state>;
+  using output_uncertainty = ᴀʙᵀ<output, output>;
+  using gain = ᴀʙᵀ<state, output>;
+  using innovation = evaluate<difference<output, state>>;
+  using innovation_uncertainty = output_uncertainty;
+
+  static inline const auto i{one<gain>};
+
+  state x{zero<state>};
+  estimate_uncertainty p{one<estimate_uncertainty>};
+  process_uncertainty q{zero<process_uncertainty>};
+  output_uncertainty r{zero<output_uncertainty>};
+  gain k{one<gain>};
+  innovation y{zero<innovation>};
+  innovation_uncertainty s{one<innovation_uncertainty>};
+  output z{zero<output>};
+
+  inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
+    z = output{output_z, outputs_z...};
+    s = innovation_uncertainty{p + r};
+    k = p / s;
+    y = z - x;
+    x = state{x + k * y};
+    p = estimate_uncertainty{(i - k) * p * t(i - k) + k * r * t(k)};
+  }
+
+  inline constexpr void predict() { p = estimate_uncertainty{p + q}; }
+};
+} // namespace fcarouge::internal
+
+#endif // FCAROUGE_INTERNAL_X_Z_P_Q_R_HPP
