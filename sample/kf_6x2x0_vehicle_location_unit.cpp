@@ -44,23 +44,10 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-template <auto... References>
-using vector = fcarouge::vector<double, References...>;
-using state = fcarouge::state<vector<m, m / s, m / s2, m, m / s, m / s2>>;
-using output_t = vector<m, m>;
-using estimate_uncertainty =
-    fcarouge::estimate_uncertainty<ᴀʙᵀ<state::type, state::type>>;
-using process_uncertainty =
-    fcarouge::process_uncertainty<ᴀʙᵀ<state::type, state::type>>;
-using output_uncertainty =
-    fcarouge::output_uncertainty<ᴀʙᵀ<output_t, output_t>>;
-using output_model = fcarouge::output_model<ᴀʙᵀ<output_t, state::type>>;
-using state_transition =
-    fcarouge::state_transition<ᴀʙᵀ<state::type, state::type>>;
-
-template <auto... Reference>
-inline fcarouge::output_t<vector<Reference...>> output{
-    fcarouge::output<vector<Reference...>>};
+template <typename... Types> using vector = column_vector<double, Types...>;
+using state_t =
+    vector<position, velocity, acceleration, position, velocity, acceleration>;
+using output_t = vector<position, position>;
 
 //! @brief Estimating the vehicle location.
 //!
@@ -86,19 +73,22 @@ inline fcarouge::output_t<vector<Reference...>> output{
       // The state X is chosen to be the position, velocity, acceleration in the
       // XY plane: [px, vx, ax, py, vy, ay]. We don't know the vehicle location;
       // we will set initial position, velocity and acceleration to 0.
-      state{0. * m, 0. * m / s, 0. * m / s2, 0. * m, 0. * m / s, 0. * m / s2},
+      state{state_t{position{0. * m}, velocity{0. * m / s},
+                    acceleration{0. * m / s2}, position{0. * m},
+                    velocity{0. * m / s}, acceleration{0. * m / s2}}},
       // The vehicle has an onboard location sensor that reports output Z as X
       // and Y coordinates of the system.
-      output<m, m>,
+      output<output_t>,
       // The estimate uncertainty matrix P.
       // Since our initial state vector is a guess, we will set a very high
       // estimate uncertainty. The high estimate uncertainty results in a high
       // Kalman Gain, giving a high weight to the measurement.
-      estimate_uncertainty{500. * one<estimate_uncertainty::type>},
+      estimate_uncertainty{500. * one<ᴀʙᵀ<state_t, state_t>>},
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
       process_uncertainty{[]() {
-        process_uncertainty::type value{one<process_uncertainty::type>};
+        using process_uncertainty_t = ᴀʙᵀ<state_t, state_t>;
+        process_uncertainty_t value{one<process_uncertainty_t>};
         value.at<0, 0>() = 0.25 * m2;
         value.at<0, 1>() = 0.5 * m2 / s;
         value.at<0, 2>() = 0.5 * m2 / s2;
@@ -130,14 +120,16 @@ inline fcarouge::output_t<vector<Reference...>> output{
       // of xn is 6x1. Therefore the dimension of the observation matrix H shall
       // be 2x6.
       output_model{[]() {
-        output_model::type value{zero<output_model::type>};
+        using output_model_t = evaluate<quotient<output_t, state_t>>;
+        output_model_t value{zero<output_model_t>};
         value.at<0, 0>() = 1. * m2;
         value.at<1, 3>() = 1. * m2;
         return value;
       }()},
       // The state transition matrix F would be:
       state_transition{[]() {
-        state_transition::type value{one<state_transition::type>};
+        using state_transition_t = evaluate<quotient<state_t, state_t>>;
+        state_transition_t value{one<state_transition_t>};
         value.at<0, 1>() = 1. * m2 / s;
         value.at<0, 2>() = 0.5 * m2 / s2;
         value.at<1, 2>() = 1. * m2 / s3;
@@ -157,12 +149,18 @@ inline fcarouge::output_t<vector<Reference...>> output{
   filter.predict();
 
   // Verify the example estimated state at 0.1% accuracy.
-  assert(abs(1 - filter.x().at<0>() / (-277.8 * m)) < 0.001 &&
-         abs(1 - filter.x().at<1>() / (148.3 * m / s)) < 0.001 &&
-         abs(1 - filter.x().at<2>() / (94.5 * m / s2)) < 0.001 &&
-         abs(1 - filter.x().at<3>() / (249.8 * m)) < 0.001 &&
-         abs(1 - filter.x().at<4>() / (-85.9 * m / s)) < 0.001 &&
-         abs(1 - filter.x().at<5>() / (-63.62 * m / s2)) < 0.001 &&
+  assert(position{-277.8 * m} < filter.x().at<0>() &&
+         filter.x().at<0>() < position{-277.7 * m} &&
+         velocity{148.3 * m / s} < filter.x().at<1>() &&
+         filter.x().at<1>() < velocity{148.4 * m / s} &&
+         acceleration{94.5 * m / s2} < filter.x().at<2>() &&
+         filter.x().at<2>() < acceleration{94.56 * m / s2} &&
+         position{249.7 * m} < filter.x().at<3>() &&
+         filter.x().at<3>() < position{249.8 * m} &&
+         velocity{-86.0 * m / s} < filter.x().at<4>() &&
+         filter.x().at<4>() < velocity{-85.9 * m / s} &&
+         acceleration{-63.65 * m / s2} < filter.x().at<5>() &&
+         filter.x().at<5>() < acceleration{-63.64 * m / s2} &&
          "The state estimates expected at 0.1% accuracy.");
 
   //! @todo Add format verification.

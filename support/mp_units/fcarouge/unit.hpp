@@ -52,15 +52,6 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
-//! @brief The physical unit quantity.
-template <typename Representation, auto Reference>
-using quantity = mp_units::quantity<Reference, Representation>;
-
-//! @brief The singleton one matrix specialization.
-template <typename Representation, auto Reference>
-inline constexpr quantity<Representation, Reference>
-    one<quantity<Representation, Reference>>{1., Reference};
-
 using mp_units::delta;
 using mp_units::point;
 using mp_units::si::unit_symbols::deg_C;
@@ -70,15 +61,37 @@ using mp_units::si::unit_symbols::s;
 using mp_units::si::unit_symbols::s2;
 using mp_units::si::unit_symbols::s3;
 
-//! @todo: Consider upstreaming named symbols up to pow<8> because that would be
-//! common for constant jerk uncertainties values?
 inline constexpr auto s4{pow<4>(s)};
 inline constexpr auto deg_C2{pow<2>(deg_C)};
 
-//! @todo Height should be a quantity_point, not a (relative?) quantity?
-//! How to deduce filter types? The multiply operator does not make sense for a
-//! quantity_point. Deducing the types is not quite correct?
-using height = mp_units::quantity<mp_units::isq::height[m]>;
+using height = mp_units::quantity_point<mp_units::isq::height[m]>;
+using position = mp_units::quantity_point<mp_units::isq::length[m]>;
+using velocity = mp_units::quantity_point<mp_units::isq::velocity[m / s]>;
+using acceleration =
+    mp_units::quantity_point<mp_units::isq::acceleration[m / s2]>;
+using temperature =
+    mp_units::quantity_point<mp_units::isq::Celsius_temperature[deg_C]>;
+
+template <auto Reference1, auto Reference2>
+struct multiplies<mp_units::quantity_point<Reference1>,
+                  mp_units::quantity_point<Reference2>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity_point<Reference1> &lhs,
+             const mp_units::quantity_point<Reference2> &rhs) const
+      -> mp_units::quantity<Reference1 * Reference2>;
+};
+
+template <typename Representation, auto Reference>
+inline constexpr mp_units::quantity<Reference, Representation>
+    one<mp_units::quantity<Reference, Representation>>{1., Reference};
+
+template <auto Reference>
+inline mp_units::quantity_point<Reference>
+    one<mp_units::quantity_point<Reference>>{point<Reference>(1.)};
+
+template <auto Reference>
+inline mp_units::quantity_point<Reference>
+    zero<mp_units::quantity_point<Reference>>{point<Reference>(0.)};
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP

@@ -52,29 +52,61 @@ namespace fcarouge {
 //! @name Types
 //! @{
 
-template <typename Representation, auto Reference>
+template <auto Reference, auto OriginPoint, typename Representation>
+struct indexed::element_traits<
+    Representation,
+    mp_units::quantity_point<Reference, OriginPoint, Representation>> {
+  [[nodiscard]] static inline constexpr Representation to_underlying(
+      const mp_units::quantity_point<Reference, OriginPoint, Representation>
+          &value) {
+    return value.quantity_from(OriginPoint).numerical_value_in(value.unit);
+  }
+
+  [[nodiscard]] static inline constexpr mp_units::quantity_point<
+      Reference, OriginPoint, Representation> &
+  from_underlying(Representation &value) {
+    return reinterpret_cast<
+        mp_units::quantity_point<Reference, OriginPoint, Representation> &>(
+        value);
+  }
+};
+
+template <auto Reference, typename Representation>
 struct indexed::element_traits<Representation,
-                               quantity<Representation, Reference>> {
+                               mp_units::quantity<Reference, Representation>> {
   [[nodiscard]] static inline constexpr Representation
-  to_underlying(const quantity<Representation, Reference> &value) {
+  to_underlying(const mp_units::quantity<Reference, Representation> &value) {
     return value.numerical_value_in(value.unit);
   }
 
-  //! @todo Is there a safer conversion from underlying to quantity in mp-units?
-  [[nodiscard]] static inline constexpr quantity<Representation, Reference> &
+  [[nodiscard]] static inline constexpr mp_units::quantity<Reference,
+                                                           Representation> &
   from_underlying(Representation &value) {
-    return reinterpret_cast<quantity<Representation, Reference> &>(value);
+    return reinterpret_cast<mp_units::quantity<Reference, Representation> &>(
+        value);
   }
 };
 
 //! @brief Quantity column vector with mp-units and Eigen implementations.
-//!
-//! @todo Consider renaming to column_vector by providing a composable
-//! namespace.
-template <typename Representation, auto... References>
-using vector = indexed::column_vector<
-    eigen::column_vector<Representation, sizeof...(References)>,
-    quantity<Representation, References>...>;
+template <typename Representation, typename... Types>
+using column_vector = indexed::column_vector<
+    eigen::column_vector<Representation, sizeof...(Types)>, Types...>;
+
+//! @brief Multiplies specialization type for uncertainty type deduction.
+template <auto Reference>
+struct multiplies<mp_units::quantity_point<Reference>, int> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity_point<Reference> &lhs,
+             int rhs) const -> mp_units::quantity_point<Reference>;
+};
+
+//! @brief Multiplies specialization type for uncertainty type deduction.
+template <auto Reference>
+struct multiplies<int, mp_units::quantity_point<Reference>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(int lhs, const mp_units::quantity_point<Reference> &rhs) const
+      -> mp_units::quantity_point<Reference>;
+};
 
 //! @}
 
