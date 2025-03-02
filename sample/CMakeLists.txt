@@ -38,6 +38,8 @@ For more information, please refer to <https://unlicense.org> ]]
 
 include(sample.cmake)
 
+# TODO: Shorten functions by removing NAME.
+sample(NAME "ab_gold_weight_unit")
 sample(
   NAME
   "ekf_4x1x0_soaring"
@@ -46,6 +48,7 @@ sample(
   "eigexed"
   "naive"
   "naixed")
+sample(NAME "kf_1x1x0_building_height_unit")
 sample(NAME "kf_1x1x0_building_height")
 sample(NAME "kf_1x1x0_liquid_temperature")
 sample(NAME "kf_1x1x1_dog_position")
@@ -57,5 +60,6 @@ sample(
   "eigexed"
   "naive"
   "naixed")
+sample(NAME "kf_6x2x0_vehicle_location_unit" BACKENDS "quantity")
 sample(NAME "kf_6x2x0_vehicle_location" BACKENDS "eigen" "eigexed")
 sample(NAME "kf_8x4x0_deep_sort_bounding_box" BACKENDS "eigen" "eigexed")

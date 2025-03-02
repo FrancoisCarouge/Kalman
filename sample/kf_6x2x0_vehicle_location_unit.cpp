@@ -63,12 +63,26 @@ template <auto... Reference>
 inline fcarouge::output_t<vector<Reference...>> output{
     fcarouge::output<vector<Reference...>>};
 
-//! @test Verifies compatibility with the `mp-units` quantities and units
-//! library for C++ in the case of an algebraic 6x2x0 filter estimating the
-//! vehicle location.
+//! @brief Estimating the vehicle location.
 //!
-//! @details See the sample for details.
-[[maybe_unused]] auto test{[] {
+//! @copyright This example is transcribed from KalmanFilter.NET copyright Alex
+//! Becker.
+//!
+//! @see https://www.kalmanfilter.net/multiExamples.html#ex9
+//!
+//! @details In this example, we would like to estimate the location of the
+//! vehicle in the XY plane. The vehicle has an onboard location sensor that
+//! reports X and Y coordinates of the system. We assume constant acceleration
+//! dynamics. In this example we don't have a control variable u since we don't
+//! have control input. Let us assume a vehicle moving in a straight line in the
+//! X direction with a constant velocity. After traveling 400 meters the vehicle
+//! turns right, with a turning radius of 300 meters. During the turning
+//! maneuver, the vehicle experiences acceleration due to the circular motion
+//! (an angular acceleration). The measurements period: Δt = 1s (constant).
+//!
+//! @example kf_6x2x0_vehicle_location_unit.cpp
+[[maybe_unused]] auto sample{[] {
+  // A 6x2x0 filter, constant acceleration dynamic model, no control.
   kalman filter{
       state{0. * m, 0. * m / s, 0. * m / s2, 0. * m, 0. * m / s, 0. * m / s2},
       output<m, m>,

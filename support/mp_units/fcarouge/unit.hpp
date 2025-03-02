@@ -50,6 +50,16 @@ For more information, please refer to <https://unlicense.org> */
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+
+//! @todo: Consider upstreaming named symbols up to pow<8> because that would be
+//! common for constant jerk uncertainties values?
+inline constexpr auto s4{pow<4>(s)};
+
 //! @brief The physical unit quantity.
 template <typename Representation, auto Reference>
 using quantity = mp_units::quantity<Reference, Representation>;
@@ -61,15 +71,11 @@ template <typename Representation, auto Reference>
 inline constexpr quantity<Representation, Reference>
     identity<quantity<Representation, Reference>>{1., Reference};
 
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
+//! @todo Height should be a quantity_point. Not a relative quantity.
+//! How to deduce filter types? The multiply operator does not make sense for a
+//! quantity_point. Deducing the types is not quite correct.
+using height = mp_units::quantity<mp_units::isq::height[m]>;
 
-//! @todo: Consider upstreaming named symbols up to pow<8> because that would be
-//! common for constant jerk uncertainties values?
-inline constexpr auto s4{pow<4>(s)};
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP
