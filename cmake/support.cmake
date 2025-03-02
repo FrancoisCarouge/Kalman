@@ -36,12 +36,45 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+# Add a given sample.
+#
+# * NAME The name of the sample file without extension.
+# * BACKENDS Optional list of backends to use against the sample.
+function(sample SAMPLE_NAME)
+  set(multiValueArgs BACKENDS)
+  cmake_parse_arguments(PARSE_ARGV 0 SAMPLE "" "${oneValueArgs}"
+                        "${multiValueArgs}")
+
+  if(NOT SAMPLE_BACKENDS)
+    add_executable(kalman_sample_${SAMPLE_NAME}_driver "${SAMPLE_NAME}.cpp")
+    target_link_libraries(
+      kalman_sample_${SAMPLE_NAME}_driver
+      PRIVATE kalman kalman_main kalman_options kalman_unit_mp_units)
+    separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
+    add_test(NAME kalman_sample_${SAMPLE_NAME}
+             COMMAND ${SAMPLE_COMMAND}
+                     $<TARGET_FILE:kalman_sample_${SAMPLE_NAME}_driver>)
+  else()
+    foreach(BACKEND IN ITEMS ${SAMPLE_BACKENDS})
+      add_executable(kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
+                     "${SAMPLE_NAME}.cpp")
+      target_link_libraries(
+        kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
+        PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+      separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
+      add_test(
+        NAME kalman_sample_${BACKEND}_${SAMPLE_NAME}
+        COMMAND ${SAMPLE_COMMAND}
+                $<TARGET_FILE:kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver>)
+    endforeach()
+  endif()
+endfunction(sample)
+
 # Add a given test.
 #
 # * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
-function(test)
-  set(oneValueArgs NAME)
+function(test TEST_NAME)
   set(multiValueArgs BACKENDS)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
