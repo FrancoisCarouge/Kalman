@@ -59,6 +59,8 @@ include(CPack)
 include(CTest)
 include(GNUInstallDirs)
 
+include(cmake/support.cmake)
+
 add_subdirectory("cmake")
 add_subdirectory("include")
 add_subdirectory("pkgconfig")
