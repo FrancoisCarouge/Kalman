@@ -70,6 +70,11 @@ using mp_units::si::unit_symbols::s3;
 //! @todo: Consider upstreaming named symbols up to pow<8> because that would be
 //! common for constant jerk uncertainties values?
 inline constexpr auto s4{pow<4>(s)};
+
+//! @todo Height should be a quantity_point, not a (relative?) quantity?
+//! How to deduce filter types? The multiply operator does not make sense for a
+//! quantity_point. Deducing the types is not quite correct?
+using height = mp_units::quantity<mp_units::isq::height[m]>;
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP

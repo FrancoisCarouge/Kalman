@@ -37,9 +37,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 sample("ekf_4x1x0_soaring" BACKENDS "eigen" "eigexed" "naive" "naixed")
+sample("kf_1x1x0_building_height_unit")
 sample("kf_1x1x0_building_height")
 sample("kf_1x1x0_liquid_temperature")
 sample("kf_1x1x1_dog_position")
 sample("kf_2x1x1_rocket_altitude" BACKENDS "eigen" "eigexed" "naive" "naixed")
+sample("kf_6x2x0_vehicle_location_unit" BACKENDS "quantity")
 sample("kf_6x2x0_vehicle_location" BACKENDS "eigen" "eigexed")
 sample("kf_8x4x0_deep_sort_bounding_box" BACKENDS "eigen" "eigexed")

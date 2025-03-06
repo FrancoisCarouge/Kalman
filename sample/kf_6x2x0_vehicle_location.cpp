@@ -110,7 +110,7 @@ using state = fcarouge::state<vector<6>>;
       // of xn is 6x1. Therefore the dimension of the observation matrix H shall
       // be 2x6.
       output_model{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}},
-      // // The state transition matrix F would be:
+      // The state transition matrix F would be:
       state_transition{{1., 1., 0.5, 0., 0., 0.},
                        {0., 1., 1., 0., 0., 0.},
                        {0., 0., 1., 0., 0., 0.},
@@ -121,7 +121,7 @@ using state = fcarouge::state<vector<6>>;
   // Now we can predict the next state based on the initialization values.
   filter.predict();
 
-  // The measurement values: z1 = [-393.66, 300.4]
+  // The measurement values: z1 = [-393.66 m, 300.4 m]
   filter.update(-393.66, 300.4);
   filter.predict();
 
