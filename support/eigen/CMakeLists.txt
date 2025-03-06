@@ -41,7 +41,8 @@ include(FetchContent)
 FetchContent_Declare(
   eigen
   GIT_REPOSITORY "https://gitlab.com/libeigen/eigen"
-  GIT_SHALLOW TRUE
+  # GIT_SHALLOW TRUE
+  GIT_TAG 9a86214039dd4c477c6308e734843c01b8c87e3c
   FIND_PACKAGE_ARGS NAMES Eigen3)
 FetchContent_MakeAvailable(eigen)
 
