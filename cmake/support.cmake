@@ -56,6 +56,12 @@ function(sample SAMPLE_NAME)
                      $<TARGET_FILE:kalman_sample_${SAMPLE_NAME}_driver>)
   else()
     foreach(BACKEND IN ITEMS ${SAMPLE_BACKENDS})
+      if((CMAKE_CXX_COMPILER_ID STREQUAL "MSVC") AND (BACKEND STREQUAL
+                                                      "quantity"))
+        message(STATUS "${SAMPLE_NAME} not yet compatible with MSVC/mp-units.")
+        continue()
+      endif()
+
       add_executable(kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
                      "${SAMPLE_NAME}.cpp")
       target_link_libraries(
