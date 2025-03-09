@@ -199,7 +199,7 @@ $(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_source.xhtml',''); i
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>      <span class="comment">// of xn is 6x1. Therefore the dimension of the observation matrix H shall</span></div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      <span class="comment">// be 2x6.</span></div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      output_model{{1., 0., 0., 0., 0., 0.}, {0., 0., 0., 1., 0., 0.}},</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      <span class="comment">// // The state transition matrix F would be:</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      <span class="comment">// The state transition matrix F would be:</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      state_transition{{1., 1., 0.5, 0., 0., 0.},</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                       {0., 1., 1., 0., 0., 0.},</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                       {0., 0., 1., 0., 0., 0.},</div>
@@ -210,7 +210,7 @@ $(function(){initNavTree('kf__6x2x0__vehicle__location_8cpp_source.xhtml',''); i
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  filter.predict();</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="comment">// The measurement values: z1 = [-393.66, 300.4]</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="comment">// The measurement values: z1 = [-393.66 m, 300.4 m]</span></div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  filter.update(-393.66, 300.4);</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  filter.predict();</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>

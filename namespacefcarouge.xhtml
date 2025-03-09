@@ -220,6 +220,8 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a> = mp_units::quantity&lt;Reference, Representation&gt;</td></tr>
 <tr class="memdesc:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="mdescLeft">&#160;</td><td class="mdescRight">The physical unit quantity.  <br /></td></tr>
 <tr class="separator:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b124da26de87a5e94ff3b815915769f" id="r_a9b124da26de87a5e94ff3b815915769f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b124da26de87a5e94ff3b815915769f">height</a> = mp_units::quantity&lt;mp_units::isq::height[m]&gt;</td></tr>
+<tr class="separator:a9b124da26de87a5e94ff3b815915769f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -517,6 +519,25 @@ template&lt;typename... Types&gt; </div>
 
 </div>
 </div>
+<a id="a9b124da26de87a5e94ff3b815915769f" name="a9b124da26de87a5e94ff3b815915769f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b124da26de87a5e94ff3b815915769f">&#9670;&#160;</a></span>height</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a9b124da26de87a5e94ff3b815915769f">fcarouge::height</a> = mp_units::quantity&lt;mp_units::isq::height[m]&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo</a></b></dt><dd>Height should be a quantity_point, not a (relative?) quantity? How to deduce filter types? The multiply operator does not make sense for a quantity_point. Deducing the types is not quite correct? </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a1">kf_1x1x0_building_height_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00077">77</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a7d51e9ff898a41560f1cd0963356f04c" name="a7d51e9ff898a41560f1cd0963356f04c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7d51e9ff898a41560f1cd0963356f04c">&#9670;&#160;</a></span>matrix</h2>
 
@@ -661,8 +682,8 @@ template&lt;typename Representation , auto... References&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 </div><!-- fragment -->
 <p>Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000043">Todo</a></b></dt><dd>Consider renaming to column_vector by providing a composable namespace. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a0">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a0">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000044">Todo</a></b></dt><dd>Consider renaming to column_vector by providing a composable namespace. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a0">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a0">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="quantity_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="quantity_8hpp_source.xhtml">quantity.hpp</a>.</p>
@@ -752,7 +773,7 @@ template&lt;typename... Arguments&gt; </div>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo</a></b></dt><dd><p class="startdd">Should the parameter be named configurations? </p>
 <p class="enddd">Should the configuration examples, supports be documented here? </p>
 </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a3">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a0">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#a0">kf_1x1x1_dog_position.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a3">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a3">kf_6x2x0_vehicle_location.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a2">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a3">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a0">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a0">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#a0">kf_1x1x1_dog_position.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a3">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a3">kf_6x2x0_vehicle_location.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a2">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a2">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
 </div>
@@ -1355,6 +1376,8 @@ template&lt;typename Type  = double&gt; </div>
 </div><!-- fragment -->
 <p>The identity matrix. </p>
 <p>User-defined. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a3">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00247">247</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  247</span>                              {internal::not_implemented&lt;Type&gt;{</div>
@@ -1656,7 +1679,7 @@ template&lt;typename Type  = double&gt; </div>
 </div><!-- fragment -->
 <p>The zero matrix. </p>
 <p>User-defined. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a4">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a4">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a4">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00266">266</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>

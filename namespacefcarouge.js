@@ -72,6 +72,7 @@ var namespacefcarouge =
     [ "empty_tuple", "namespacefcarouge.xhtml#a463eb0fdde0b3d3ea64b5a16fa95b253", null ],
     [ "evaluate", "namespacefcarouge.xhtml#acd5b06c86fbc7f4790315e50578d4e13", null ],
     [ "first", "namespacefcarouge.xhtml#a88ffaddfc70067199a9f22246b9d7220", null ],
+    [ "height", "namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f", null ],
     [ "matrix", "namespacefcarouge.xhtml#a7d51e9ff898a41560f1cd0963356f04c", null ],
     [ "product", "namespacefcarouge.xhtml#ae572d5a48afe03765d8e55617ea78689", null ],
     [ "quantity", "namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53", null ],

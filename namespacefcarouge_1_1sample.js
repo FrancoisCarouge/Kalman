@@ -9,6 +9,9 @@ var namespacefcarouge_1_1sample =
     [ "anonymous_namespace{kf_1x1x0_building_height.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height_8cpp_03.xhtml", [
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height_8cpp_03.xhtml#a3bbe6871b5c27d5c43fb1594d959f73d", null ]
     ] ],
+    [ "anonymous_namespace{kf_1x1x0_building_height_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height__unit_8cpp_03.xhtml", [
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height__unit_8cpp_03.xhtml#a308bb26bd458858a125c750757d311f0", null ]
+    ] ],
     [ "anonymous_namespace{kf_1x1x0_liquid_temperature.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03.xhtml", [
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03.xhtml#aee7886fbdd52abf0585680fdbaf27f7d", null ]
     ] ],

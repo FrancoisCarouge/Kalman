@@ -43,8 +43,6 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "linalg_zero.cpp", "linalg__zero_8cpp.xhtml", "linalg__zero_8cpp" ],
     [ "printer_1x1x0.cpp", "printer__1x1x0_8cpp.xhtml", "printer__1x1x0_8cpp" ],
     [ "printer_2x3x4.cpp", "printer__2x3x4_8cpp.xhtml", "printer__2x3x4_8cpp" ],
-    [ "units_kf_1x1x0_building_height.cpp", "units__kf__1x1x0__building__height_8cpp.xhtml", "units__kf__1x1x0__building__height_8cpp" ],
-    [ "units_kf_6x2x0_vehicle_location.cpp", "units__kf__6x2x0__vehicle__location_8cpp.xhtml", "units__kf__6x2x0__vehicle__location_8cpp" ],
     [ "utility_identity_default.cpp", "utility__identity__default_8cpp.xhtml", "utility__identity__default_8cpp" ],
     [ "utility_zero_default.cpp", "utility__zero__default_8cpp.xhtml", "utility__zero__default_8cpp" ]
 ];
