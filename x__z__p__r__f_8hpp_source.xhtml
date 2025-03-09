@@ -168,8 +168,8 @@ $(function(){initNavTree('x__z__p__r__f_8hpp_source.xhtml',''); initResizable(tr
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  innovation_uncertainty s{<a class="code hl_variable" href="namespacefcarouge.xhtml#ab1c0921e3b3af3a11420cfe30e308aa7">identity&lt;innovation_uncertainty&gt;</a>};</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  output z{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;output&gt;</a>};</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> update(<span class="keyword">const</span> output &amp;output_z) {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    z = output_z;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> update(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output_z, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...outputs_z) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    z = output{output_z, outputs_z...};</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    s = p + r;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    k = p / s;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    y = z - x;</div>
