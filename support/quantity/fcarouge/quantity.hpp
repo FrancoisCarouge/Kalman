@@ -42,6 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Indexed-based linear algebra with mp-units with Eigen
 //! implementations.
+//! @todo Expose this header as a linealg.hpp variation.
 
 #include "fcarouge/indexed.hpp"
 #include "fcarouge/linalg.hpp"
