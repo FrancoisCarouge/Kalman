@@ -77,15 +77,15 @@ namespace {
       // error variance σ^2: P = p0,0 = 100^2 = 10,000. This variance is very
       // high. If we initialize with a more meaningful value, we will get faster
       // Kalman filter convergence.
-      estimate_uncertainty{100 * 100.},
+      estimate_uncertainty{10'000.},
       // We have an accurate model, thus we set the process uncertainty noise
       // variance Q to 0.0001.
-      process_uncertainty{0.0001},
+      process_uncertainty{0.000'1},
       // Since the measurement error of the thermometer is σ = 0.1, the variance
       // σ^2 would be 0.01, thus the measurement, output uncertainty is: R = r1
       // = 0.01. The measurement error (standard deviation) is 0.1 degrees
       // Celsius.
-      output_uncertainty{0.1 * 0.1}};
+      output_uncertainty{0.01}};
 
   // Now, we shall predict the next state based on the initialization values.
   filter.predict();
@@ -93,14 +93,14 @@ namespace {
   assert(10 == filter.x() &&
          "Since our model has constant dynamics, the predicted estimate is "
          "equal to the current estimate: x^1,0 = 10°C.");
-  assert(10000.0001 == filter.p() &&
+  assert(10'000.000'1 == filter.p() &&
          "The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = "
          "10000 + 0.0001 = 10000.0001.");
 
   // The first measurement value: z1 = 49.95°C. Measure and update.
   filter.update(49.95);
 
-  assert(std::abs(1 - filter.k() / 0.999999) < 0.0001 &&
+  assert(std::abs(1 - filter.k() / 0.999'999) < 0.0001 &&
          "The gain expected at 0.01% accuracy.");
 
   // And so on, run a step of the filter, predicting and updating, every
@@ -121,14 +121,14 @@ namespace {
   step(49.99);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
-  assert(std::abs(1 - filter.p() / 0.0013) < 0.05 &&
+  assert(std::abs(1 - filter.p() / 0.001'3) < 0.05 &&
          "The estimate uncertainty expected at 5% accuracy."
          "The estimate uncertainty is 0.0013, i.e. the estimate error standard "
          "deviation is: 0.036°C.");
   assert(std::abs(1 - filter.x() / 49.988) < 0.001 &&
          "The state estimates expected at 0.1% accuracy."
          "The filter estimates the liquid temperature at 49.988°C.");
-  assert(std::abs(1 - filter.k() / 0.1265) < 0.001 &&
+  assert(std::abs(1 - filter.k() / 0.126'5) < 0.001 &&
          "The gain expected at 0.1% accuracy.");
 
   // So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.
