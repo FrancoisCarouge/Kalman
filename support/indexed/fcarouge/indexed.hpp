@@ -548,15 +548,10 @@ struct transposer<IndexedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
 //! @name Algebraic Named Values
 //! @{
 
-//! @brief The identity matrix indexed specialization.
-//!
-//! @todo The identity doesn't really make sense for matrices with units?
-//! Unless it's the matrix without units? Even then, the identity matrix is
-//! supposed to be square? What's the name of this thing then?
+//! @brief The one matrix indexed specialization.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline indexed::matrix<decltype(identity<Matrix>), RowIndexes, ColumnIndexes>
-    identity<indexed::matrix<Matrix, RowIndexes, ColumnIndexes>>{
-        identity<Matrix>};
+inline indexed::matrix<decltype(one<Matrix>), RowIndexes, ColumnIndexes>
+    one<indexed::matrix<Matrix, RowIndexes, ColumnIndexes>>{one<Matrix>};
 
 //! @brief The zero matrix indexed specialization.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>

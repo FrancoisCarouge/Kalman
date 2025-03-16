@@ -54,12 +54,10 @@ namespace fcarouge {
 template <typename Representation, auto Reference>
 using quantity = mp_units::quantity<Reference, Representation>;
 
-//! @brief The singleton identity matrix specialization.
-//!
-//! @todo The identity with units is no longer the identity? Review the idea.
+//! @brief The singleton one matrix specialization.
 template <typename Representation, auto Reference>
 inline constexpr quantity<Representation, Reference>
-    identity<quantity<Representation, Reference>>{1., Reference};
+    one<quantity<Representation, Reference>>{1., Reference};
 
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
