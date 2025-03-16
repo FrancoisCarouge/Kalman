@@ -95,11 +95,11 @@ inline fcarouge::output_t<vector<Reference...>> output{
       // Since our initial state vector is a guess, we will set a very high
       // estimate uncertainty. The high estimate uncertainty results in a high
       // Kalman Gain, giving a high weight to the measurement.
-      estimate_uncertainty{500. * identity<estimate_uncertainty::type>},
+      estimate_uncertainty{500. * one<estimate_uncertainty::type>},
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
       process_uncertainty{[]() {
-        process_uncertainty::type value{identity<process_uncertainty::type>};
+        process_uncertainty::type value{one<process_uncertainty::type>};
         value.at<0, 0>() = 0.25 * m2;
         value.at<0, 1>() = 0.5 * m2 / s;
         value.at<0, 2>() = 0.5 * m2 / s2;
@@ -138,7 +138,7 @@ inline fcarouge::output_t<vector<Reference...>> output{
       }()},
       // The state transition matrix F would be:
       state_transition{[]() {
-        state_transition::type value{identity<state_transition::type>};
+        state_transition::type value{one<state_transition::type>};
         value.at<0, 1>() = 1. * m2 / s;
         value.at<0, 2>() = 0.5 * m2 / s2;
         value.at<1, 2>() = 1. * m2 / s3;

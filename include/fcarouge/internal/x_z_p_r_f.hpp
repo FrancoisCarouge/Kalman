@@ -52,15 +52,15 @@ template <typename State> struct x_z_p_r_f {
   using innovation_uncertainty = output_uncertainty;
   using gain = evaluate<divide<estimate_uncertainty, innovation_uncertainty>>;
 
-  static inline const auto i{identity<gain>};
+  static inline const auto i{one<gain>};
 
   state x{zero<state>};
-  estimate_uncertainty p{identity<estimate_uncertainty>};
+  estimate_uncertainty p{one<estimate_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  state_transition f{identity<state_transition>};
-  gain k{identity<gain>};
+  state_transition f{one<state_transition>};
+  gain k{one<gain>};
   innovation y{zero<innovation>};
-  innovation_uncertainty s{identity<innovation_uncertainty>};
+  innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
 
   inline constexpr void update(const auto &output_z, const auto &...outputs_z) {

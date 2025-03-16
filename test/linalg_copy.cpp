@@ -44,10 +44,10 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the copy constructor.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 5, 5> m{identity<matrix<double, 5, 5>>};
+  const matrix<double, 5, 5> m{one<matrix<double, 5, 5>>};
   const matrix<double, 5, 5> c{m};
 
-  assert((c == identity<matrix<double, 5, 5>>));
+  assert((c == one<matrix<double, 5, 5>>));
 
   return 0;
 }()};

@@ -442,10 +442,10 @@ struct transposer<naive::matrix<Type, Row, Column>> {
 //! @name Algebraic Named Values
 //! @{
 
-//! @brief The identity matrix naive specialization.
+//! @brief The one matrix naive specialization.
 template <typename Type, std::size_t Row, std::size_t Column>
 inline constexpr naive::matrix<Type, Row, Column>
-    identity<naive::matrix<Type, Row, Column>>{[] {
+    one<naive::matrix<Type, Row, Column>>{[] {
       naive::matrix<Type, Row, Column> result;
       std::size_t size{Row < Column ? Row : Column};
 

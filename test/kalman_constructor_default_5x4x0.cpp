@@ -49,9 +49,9 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! no input.
 [[maybe_unused]] auto test{[] {
-  const matrix<4, 4> i4x4{identity<matrix<4, 4>>};
-  const matrix<5, 4> i5x4{identity<matrix<5, 4>>};
-  const matrix<5, 5> i5x5{identity<matrix<5, 5>>};
+  const matrix<4, 4> i4x4{one<matrix<4, 4>>};
+  const matrix<5, 4> i5x4{one<matrix<5, 4>>};
+  const matrix<5, 5> i5x5{one<matrix<5, 5>>};
   const vector<4> z4x1{zero<vector<4>>};
   const matrix<4, 4> z4x4{zero<matrix<4, 4>>};
   const vector<5> z5x1{zero<vector<5>>};

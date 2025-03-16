@@ -45,7 +45,7 @@ namespace {
 //! @test Verifies the equality operator.
 [[maybe_unused]] auto test{[] {
   const matrix<double, 5, 5> m{zero<matrix<double, 5, 5>>};
-  const matrix<double, 5, 5> i{identity<matrix<double, 5, 5>>};
+  const matrix<double, 5, 5> i{one<matrix<double, 5, 5>>};
   const matrix<double, 5, 5> z{zero<matrix<double, 5, 5>>};
 
   assert(m == z);
