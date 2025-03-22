@@ -307,7 +307,7 @@ matrix(const Types (&...rows)[Columns])
 //! @}
 
 template <typename Type, auto Row, auto Column>
-auto make_identity_generator{[]() -> std::generator<Type> {
+auto make_one_generator{[]() -> std::generator<Type> {
   for (decltype(Row) i{0}; i < Row; ++i) {
     for (decltype(Column) j{0}; j < Column; ++j) {
       co_yield i == j;
@@ -325,11 +325,10 @@ auto make_zero_generator{[]() -> std::generator<Type> {
 //! @name Algebraic Named Values
 //! @{
 
-//! @brief The identity matrix lazy specialization.
+//! @brief The one matrix lazy specialization.
 template <typename Type, auto Row, auto Column>
-auto identity<matrix<Type, Row, Column>>{[](auto... args) {
-  matrix<Type, Row, Column, true> m{
-      make_identity_generator<Type, Row, Column>()};
+auto one<matrix<Type, Row, Column>>{[](auto... args) {
+  matrix<Type, Row, Column, true> m{make_one_generator<Type, Row, Column>()};
   if constexpr (sizeof...(args)) {
     return m(args...);
   } else {

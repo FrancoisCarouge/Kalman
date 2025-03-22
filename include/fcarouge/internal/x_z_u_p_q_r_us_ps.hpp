@@ -68,19 +68,19 @@ struct x_z_u_p_q_r_us_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
 
-  static inline const auto i{identity<ᴀʙᵀ<state, state>>};
+  static inline const auto i{one<ᴀʙᵀ<state, state>>};
 
   state x{zero<state>};
-  estimate_uncertainty p{identity<estimate_uncertainty>};
+  estimate_uncertainty p{one<estimate_uncertainty>};
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
   input u{zero<input>};
-  output_model h{identity<output_model>};
-  state_transition f{identity<state_transition>};
-  input_control g{identity<input_control>};
-  gain k{identity<gain>};
+  output_model h{one<output_model>};
+  state_transition f{one<state_transition>};
+  input_control g{one<input_control>};
+  gain k{one<gain>};
   innovation y{zero<innovation>};
-  innovation_uncertainty s{identity<innovation_uncertainty>};
+  innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};

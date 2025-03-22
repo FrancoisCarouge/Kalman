@@ -49,7 +49,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies default values are initialized for multi-dimension filters.
 [[maybe_unused]] auto test{[] {
   const vector<3> z3x1{zero<vector<3>>};
-  const matrix<1, 3> i1x3{identity<matrix<1, 3>>};
+  const matrix<1, 3> i1x3{one<matrix<1, 3>>};
   kalman filter{state{0.0}, output<double>, input<vector<3>>};
 
   assert(filter.f() == 1);

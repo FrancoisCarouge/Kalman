@@ -60,20 +60,20 @@ template <typename State, typename Output> struct x_z_p_qq_rr_f {
       function<output_uncertainty(const state &, const output &)>;
   using noise_process_function = function<process_uncertainty(const state &)>;
 
-  static inline const auto i{identity<ᴀʙᵀ<state, state>>};
+  static inline const auto i{one<ᴀʙᵀ<state, state>>};
 
   state x{zero<state>};
-  estimate_uncertainty p{identity<estimate_uncertainty>};
+  estimate_uncertainty p{one<estimate_uncertainty>};
   noise_process_function noise_process_q;
   noise_observation_function noise_observation_r;
-  state_transition f{identity<state_transition>};
+  state_transition f{one<state_transition>};
 
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  output_model h{identity<output_model>};
-  gain k{identity<gain>};
+  output_model h{one<output_model>};
+  gain k{one<gain>};
   innovation y{zero<innovation>};
-  innovation_uncertainty s{identity<innovation_uncertainty>};
+  innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
 
   inline constexpr void update(const auto &output_z, const auto &...outputs_z) {

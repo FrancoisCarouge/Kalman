@@ -240,24 +240,25 @@ inline constexpr std::size_t size{internal::size<Pack>};
 template <auto... Values>
 inline constexpr auto first_v{internal::first_v<Values...>};
 
-//! @brief The identity matrix.
+//! @brief The one matrix.
 //!
-//! @details User-defined.
+//! @details User-defined matrix with all its diagonal elements equal
+//! to ones, and zeroes everywhere else. This matrix is also known as the
+//! identity matrix for square matrices of non-quantity scalar types.
 template <typename Type = double>
-inline constexpr Type identity{internal::not_implemented<Type>{
-    "Implement the linear algebra identity matrix for this type."}};
+inline constexpr Type one{internal::not_implemented<Type>{
+    "Implement the linear algebra one-diagonal matrix for this type."}};
 
-//! @brief The singleton identity matrix specialization.
-template <arithmetic Arithmetic>
-inline constexpr Arithmetic identity<Arithmetic>{1};
+//! @brief The singleton one matrix specialization.
+template <arithmetic Arithmetic> inline constexpr Arithmetic one<Arithmetic>{1};
 
 template <typename Type>
   requires requires { Type::Identity(); }
-inline auto identity<Type>{Type::Identity()};
+inline auto one<Type>{Type::Identity()};
 
 template <typename Type>
   requires requires { Type::identity(); }
-inline auto identity<Type>{Type::identity()};
+inline auto one<Type>{Type::identity()};
 
 //! @brief The zero matrix.
 //!
