@@ -186,11 +186,11 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line">      <span class="comment">// Since our initial state vector is a guess, we will set a very high</span></div>
 <div class="line">      <span class="comment">// estimate uncertainty. The high estimate uncertainty results in a high</span></div>
 <div class="line">      <span class="comment">// Kalman Gain, giving a high weight to the measurement.</span></div>
-<div class="line">      estimate_uncertainty{500. * <a id="a3" name="a3"></a><a class="code hl_variable" href="namespacefcarouge.xhtml#ab1c0921e3b3af3a11420cfe30e308aa7">identity&lt;estimate_uncertainty::type&gt;</a>},</div>
+<div class="line">      estimate_uncertainty{500. * <a id="a3" name="a3"></a><a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;estimate_uncertainty::type&gt;</a>},</div>
 <div class="line">      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
 <div class="line">      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
 <div class="line">      process_uncertainty{[]() {</div>
-<div class="line">        process_uncertainty::type value{<a class="code hl_variable" href="namespacefcarouge.xhtml#ab1c0921e3b3af3a11420cfe30e308aa7">identity&lt;process_uncertainty::type&gt;</a>};</div>
+<div class="line">        process_uncertainty::type value{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;process_uncertainty::type&gt;</a>};</div>
 <div class="line">        value.at&lt;0, 0&gt;() = 0.25 * m2;</div>
 <div class="line">        value.at&lt;0, 1&gt;() = 0.5 * m2 / s;</div>
 <div class="line">        value.at&lt;0, 2&gt;() = 0.5 * m2 / s2;</div>
@@ -229,7 +229,7 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line">      }()},</div>
 <div class="line">      <span class="comment">// The state transition matrix F would be:</span></div>
 <div class="line">      state_transition{[]() {</div>
-<div class="line">        state_transition::type value{<a class="code hl_variable" href="namespacefcarouge.xhtml#ab1c0921e3b3af3a11420cfe30e308aa7">identity&lt;state_transition::type&gt;</a>};</div>
+<div class="line">        state_transition::type value{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;state_transition::type&gt;</a>};</div>
 <div class="line">        value.at&lt;0, 1&gt;() = 1. * m2 / s;</div>
 <div class="line">        value.at&lt;0, 2&gt;() = 0.5 * m2 / s2;</div>
 <div class="line">        value.at&lt;1, 2&gt;() = 1. * m2 / s3;</div>
@@ -265,9 +265,9 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a7a5eee105e8b1e887741720d3de13a41"><div class="ttname"><a href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">fcarouge::vector</a></div><div class="ttdeci">indexed::column_vector&lt; column_vector&lt; Representation, sizeof...(References)&gt;, quantity&lt; Representation, References &gt;... &gt; vector</div><div class="ttdoc">Quantity column vector with mp-units and Eigen implementations.</div><div class="ttdef"><b>Definition</b> <a href="quantity_8hpp_source.xhtml#l00075">quantity.hpp:75</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_ab1c0921e3b3af3a11420cfe30e308aa7"><div class="ttname"><a href="namespacefcarouge.xhtml#ab1c0921e3b3af3a11420cfe30e308aa7">fcarouge::identity</a></div><div class="ttdeci">constexpr Type identity</div><div class="ttdoc">The identity matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00247">utility.hpp:247</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a8887e952722c60720253e416166a9233"><div class="ttname"><a href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">fcarouge::one</a></div><div class="ttdeci">constexpr Type one</div><div class="ttdoc">The one matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00249">utility.hpp:249</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ae4d1dbbab6a8bdcaa50062d0cb879777"><div class="ttname"><a href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aef6fb6c8a265d85709b951506123a5f1"><div class="ttname"><a href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">fcarouge::zero</a></div><div class="ttdeci">constexpr Type zero</div><div class="ttdoc">The zero matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00266">utility.hpp:266</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_aef6fb6c8a265d85709b951506123a5f1"><div class="ttname"><a href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">fcarouge::zero</a></div><div class="ttdeci">constexpr Type zero</div><div class="ttdoc">The zero matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00267">utility.hpp:267</a></div></div>
 <div class="ttc" id="aquantity_8hpp_xhtml"><div class="ttname"><a href="quantity_8hpp.xhtml">quantity.hpp</a></div><div class="ttdoc">Indexed-based linear algebra with mp-units with Eigen implementations.</div></div>
 <div class="ttc" id="astructfcarouge_1_1indexed_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a></div><div class="ttdoc">Indexed matrix.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00149">indexed.hpp:149</a></div></div>
 <div class="ttc" id="aunit_8hpp_xhtml"><div class="ttname"><a href="unit_8hpp.xhtml">unit.hpp</a></div><div class="ttdoc">Quantities and units facade for mp-units third party implementation.</div></div>

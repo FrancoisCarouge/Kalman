@@ -333,11 +333,11 @@ template&lt;auto... Reference&gt; </div>
 <div class="line"><span class="lineno">   95</span>      <span class="comment">// Since our initial state vector is a guess, we will set a very high</span></div>
 <div class="line"><span class="lineno">   96</span>      <span class="comment">// estimate uncertainty. The high estimate uncertainty results in a high</span></div>
 <div class="line"><span class="lineno">   97</span>      <span class="comment">// Kalman Gain, giving a high weight to the measurement.</span></div>
-<div class="line"><span class="lineno">   98</span>      estimate_uncertainty{500. * identity&lt;estimate_uncertainty::type&gt;},</div>
+<div class="line"><span class="lineno">   98</span>      estimate_uncertainty{500. * one&lt;estimate_uncertainty::type&gt;},</div>
 <div class="line"><span class="lineno">   99</span>      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
 <div class="line"><span class="lineno">  100</span>      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
 <div class="line"><span class="lineno">  101</span>      process_uncertainty{[]() {</div>
-<div class="line"><span class="lineno">  102</span>        process_uncertainty::type value{identity&lt;process_uncertainty::type&gt;};</div>
+<div class="line"><span class="lineno">  102</span>        process_uncertainty::type value{one&lt;process_uncertainty::type&gt;};</div>
 <div class="line"><span class="lineno">  103</span>        value.at&lt;0, 0&gt;() = 0.25 * m2;</div>
 <div class="line"><span class="lineno">  104</span>        value.at&lt;0, 1&gt;() = 0.5 * m2 / s;</div>
 <div class="line"><span class="lineno">  105</span>        value.at&lt;0, 2&gt;() = 0.5 * m2 / s2;</div>
@@ -376,7 +376,7 @@ template&lt;auto... Reference&gt; </div>
 <div class="line"><span class="lineno">  138</span>      }()},</div>
 <div class="line"><span class="lineno">  139</span>      <span class="comment">// The state transition matrix F would be:</span></div>
 <div class="line"><span class="lineno">  140</span>      <a class="code hl_typedef" href="#a3d271406538a46ddde4e6b3f3ee54867">state_transition</a>{[]() {</div>
-<div class="line"><span class="lineno">  141</span>        state_transition::type value{identity&lt;state_transition::type&gt;};</div>
+<div class="line"><span class="lineno">  141</span>        state_transition::type value{one&lt;state_transition::type&gt;};</div>
 <div class="line"><span class="lineno">  142</span>        value.at&lt;0, 1&gt;() = 1. * m2 / s;</div>
 <div class="line"><span class="lineno">  143</span>        value.at&lt;0, 2&gt;() = 0.5 * m2 / s2;</div>
 <div class="line"><span class="lineno">  144</span>        value.at&lt;1, 2&gt;() = 1. * m2 / s3;</div>

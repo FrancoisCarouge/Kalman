@@ -15,8 +15,8 @@ var lazy_2fcarouge_2linalg_8hpp =
     [ "operator==", "lazy_2fcarouge_2linalg_8hpp.xhtml#a62fb05e2f569f36e8cac44a90ccbc106", null ],
     [ "operator==", "lazy_2fcarouge_2linalg_8hpp.xhtml#a47d78fa7b2fbab1fdec6f6e30d6b1da0", null ],
     [ "operator==", "lazy_2fcarouge_2linalg_8hpp.xhtml#a84939a609e68330c2689aff14d978311", null ],
-    [ "identity< matrix< Type, Row, Column > >", "lazy_2fcarouge_2linalg_8hpp.xhtml#aa12d176b9a5533210dd230e7f719c4fb", null ],
-    [ "make_identity_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#a3b0c4f263f282cbb330a4ca6b5ad10d9", null ],
+    [ "make_one_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#a4a557163de917941ab5d3f973845e847", null ],
     [ "make_zero_generator", "lazy_2fcarouge_2linalg_8hpp.xhtml#a7fe918283834c2c859a7325fc8d3a563", null ],
+    [ "one< matrix< Type, Row, Column > >", "lazy_2fcarouge_2linalg_8hpp.xhtml#a1c46caaf8e14f460b314c80eadf8a11b", null ],
     [ "zero< matrix< Type, Row, Column > >", "lazy_2fcarouge_2linalg_8hpp.xhtml#a9b8d7e56d105ac30c247bc5c8960b18b", null ]
 ];

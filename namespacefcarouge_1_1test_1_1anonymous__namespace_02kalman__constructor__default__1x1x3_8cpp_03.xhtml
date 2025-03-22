@@ -172,7 +172,7 @@ template&lt;auto Size&gt; </div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
 <div class="line">  <span class="keyword">const</span> vector&lt;3&gt; z3x1{zero&lt;vector&lt;3&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="#ac1a3f69a18c49868fe031bf77774fd4f">matrix&lt;1, 3&gt;</a> i1x3{identity&lt;matrix&lt;1, 3&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="#ac1a3f69a18c49868fe031bf77774fd4f">matrix&lt;1, 3&gt;</a> i1x3{one&lt;matrix&lt;1, 3&gt;&gt;};</div>
 <div class="line">  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{0.0}, output&lt;double&gt;, input&lt;vector&lt;3&gt;&gt;};</div>
 <div class="line"> </div>
 <div class="line">  assert(filter.f() == 1);</div>
@@ -197,7 +197,7 @@ template&lt;auto Size&gt; </div>
 <p class="definition">Definition at line <a class="el" href="kalman__constructor__default__1x1x3_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="kalman__constructor__default__1x1x3_8cpp_source.xhtml">kalman_constructor_default_1x1x3.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   50</span>                          {[] {</div>
 <div class="line"><span class="lineno">   51</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#ab3eb8106d73581428ed897656ad5cc2b">vector&lt;3&gt;</a> z3x1{zero&lt;vector&lt;3&gt;&gt;};</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;1, 3&gt;</a> i1x3{identity&lt;matrix&lt;1, 3&gt;&gt;};</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;1, 3&gt;</a> i1x3{one&lt;matrix&lt;1, 3&gt;&gt;};</div>
 <div class="line"><span class="lineno">   53</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{0.0}, output&lt;double&gt;, input&lt;vector&lt;3&gt;&gt;};</div>
 <div class="line"><span class="lineno">   54</span> </div>
 <div class="line"><span class="lineno">   55</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.f() == 1);</div>
