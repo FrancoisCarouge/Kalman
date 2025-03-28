@@ -97,9 +97,10 @@ template <eigen::is_eigen Type> struct evaluater<Type> {
 
 //! @brief Specialization of the division type.
 template <eigen::is_eigen Lhs, eigen::is_eigen Rhs> struct divider<Lhs, Rhs> {
-  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs, const Rhs &rhs)
-      const -> eigen::matrix<typename Rhs::Scalar, Lhs::RowsAtCompileTime,
-                             Rhs::RowsAtCompileTime>;
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> eigen::matrix<typename Rhs::Scalar, Lhs::RowsAtCompileTime,
+                       Rhs::RowsAtCompileTime>;
 };
 } // namespace fcarouge
 

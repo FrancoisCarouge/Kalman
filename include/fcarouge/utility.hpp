@@ -202,9 +202,18 @@ template <typename... Types> using first = internal::first<Types...>;
 template <typename Type, std::size_t Size>
 using tuple_n_type = internal::tuple_n_type<Type, Size>;
 
-//! @brief The deduced result type of the product.
+//! @brief Type multiplier expression type specialization point.
+template <typename Lhs, typename Rhs> struct multiplier {
+  [[nodiscard]] inline constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
+};
+
+//! @brief Helper type to deduce the result type of the product.
+//!
+//! @todo Should this be named `multiply` for consistency?
 template <typename Lhs, typename Rhs>
-using product = internal::product<Lhs, Rhs>;
+using product =
+    std::invoke_result_t<multiplier<Lhs, Rhs>, const Lhs &, const Rhs &>;
 
 //! @brief The evaluated type of the ABᵀ expression.
 template <typename Lhs, typename Rhs>
