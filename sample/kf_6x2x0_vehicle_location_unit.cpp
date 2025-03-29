@@ -166,8 +166,8 @@ inline fcarouge::output_t<vector<Reference...>> output{
          abs(1 - filter.x().at<5>() / (-63.62 * m / s2)) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
 
-  //! @todo Add format verification.
   //! @todo Complete the example from the original data.
+  //! @todo Add format printing, verification.
 
   return 0;
 }()};

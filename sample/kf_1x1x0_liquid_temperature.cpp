@@ -136,6 +136,8 @@ namespace {
   // one-dimensional Kalman filter. Although the system dynamics include a
   // random process noise, the Kalman filter can provide good estimation.
 
+  //! @todo Add format printing, verification.
+
   return 0;
 }()};
 } // namespace

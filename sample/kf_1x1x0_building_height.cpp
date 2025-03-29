@@ -106,6 +106,8 @@ namespace {
          "After 10 measurement and update iterations, the building estimated "
          "height is: 49.57m.");
 
+  //! @todo Add format printing, verification.
+
   return 0;
 }()};
 } // namespace

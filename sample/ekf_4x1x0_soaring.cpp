@@ -262,6 +262,8 @@ using state = fcarouge::state<vector<4>>;
          "The estimated states expected to meet ArduPilot soaring plane "
          "implementation at 0.01% accuracy.");
 
+  //! @todo Add format printing, verification.
+
   return 0;
 }()};
 } // namespace

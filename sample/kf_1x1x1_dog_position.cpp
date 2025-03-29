@@ -123,6 +123,8 @@ namespace {
       "means that we have become very confident in our position estimate. It "
       "is equal to meters. Contrast this to the sensor's meters.");
 
+  //! @todo Add format printing, verification.
+
   return 0;
 }()};
 } // namespace
