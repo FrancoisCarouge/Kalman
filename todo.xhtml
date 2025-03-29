@@ -111,7 +111,7 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#a05f1a2a28da177120bf5b3b2d7d2e2a8">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</a>  (const Matrix &amp;other)</dt>
 <dd><a class="anchor" id="_todo000037"></a>Can this be removed altogether?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#ada3b2d2d61f670a3829f07ac05ceb810">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</a>  (const matrix&lt; OtherMatrix, RowIndexes, ColumnIndexes &gt; &amp;other)</dt>
-<dd><a class="anchor" id="_todo000038"></a>Requires evaluated types of Matrix and OtherMatrix are identical?  </dd>
+<dd><a class="anchor" id="_todo000039"></a>Requires evaluated types of Matrix and OtherMatrix are identical?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#a036724133c861d73b44fc8115aff2a94">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</a>  (std::initializer_list&lt; std::initializer_list&lt; Type &gt; &gt; row_list)</dt>
 <dd><a class="anchor" id="_todo000040"></a>Verify the list sizes at runtime?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#a585593c99406c287069fd5722e98a4b3">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</a>  (const Types &amp;...values)</dt>
@@ -122,7 +122,7 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <p class="enddd">Rewrite with a fold expression over the pack?  </p>
 </dd>
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a5e01dbaa54a254ec31802e232d5839b8">fcarouge::indexed::operator+</a>  (const Matrix &amp;lhs, Scalar rhs)</dt>
-<dd><a class="anchor" id="_todo000034"></a>Scalar will become Index with constraints.  </dd>
+<dd><a class="anchor" id="_todo000035"></a>Scalar will become Index with constraints.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a>  (Arguments... arguments) -&gt; kalman&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a0005e5cf17f05f289eaf8a5bc9ffeda5">internal::deduce_filter&lt; Arguments... &gt;</a> &gt;</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000025"></a>Should the parameter be named configurations? </p>
 <p class="interdd"></p>
@@ -189,9 +189,9 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <p class="enddd">Remove unecessary empty paramaters when MSVC supports lambda without them.  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
-<dd><a class="anchor" id="_todo000035"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
+<dd><a class="anchor" id="_todo000034"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000039"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000038"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a>  </dt>
 <dd><a class="anchor" id="_todo000032"></a>: Consider upstreaming named symbols up to pow&lt;8&gt; because that would be common for constant jerk uncertainties values?  </dd>
 <dt>{<a class="el" href="linalg__multiplication__rxc_8cpp.xhtml">linalg_multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#adfa3a8b5be7eb7ee4bc12ebff7d86a8f">fcarouge::test::anonymous_namespace{linalg_multiplication_rxc.cpp}::test</a>  </dt>

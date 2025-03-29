@@ -107,52 +107,6 @@ $(function(){initNavTree('index.xhtml',''); initResizable(true); });
 <p>The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians rather than integrating differential equations. The filter predicts estimates by adding Gaussians. The filter maintains an estimate of the state and its uncertainty over the sequential estimation process. The filter is named after Rudolf E. Kálmán, who was one of the primary developers of its theory in 1960.</p>
 <p>Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states <em>X</em>, <em>P</em>, the processes <em>F</em>, <em>Q</em>, the measurements <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>. Evaluate the performance and iterate.</p>
 <p>This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
-<ul>
-<li><a class="el" href="#examples">Examples</a><ul>
-<li><a class="el" href="#autotoc_md1x1-constant-system-dynamic-model-filter">1x1 Constant System Dynamic Model Filter</a></li>
-<li><a class="el" href="#autotoc_md6x2-constant-acceleration-dynamic-model-filter">6x2 Constant Acceleration Dynamic Model Filter</a></li>
-<li><a class="el" href="#autotoc_md4x1-nonlinear-dynamic-model-extended-filter">4x1 Nonlinear Dynamic Model Extended Filter</a></li>
-<li><a class="el" href="#other-examples">Other Examples</a></li>
-</ul>
-</li>
-<li><a class="el" href="md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation">Installation</a></li>
-<li><a class="el" href="#reference">Reference</a><ul>
-<li><a class="el" href="#class-kalman">Class kalman</a><ul>
-<li><a class="el" href="#declaration">Declaration</a></li>
-<li><a class="el" href="#template-parameters">Template Parameters</a></li>
-<li><a class="el" href="#member-types">Member Types</a></li>
-<li><a class="el" href="#member-functions">Member Functions</a><ul>
-<li><a class="el" href="#characteristics">Characteristics</a></li>
-<li><a class="el" href="#modifiers">Modifiers</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="el" href="#format">Format</a></li>
-</ul>
-</li>
-<li><a class="el" href="#considerations">Considerations</a><ul>
-<li><a class="el" href="#motivations">Motivations</a></li>
-<li><a class="el" href="#selected-tradeoffs">Selected Tradeoffs</a></li>
-<li><a class="el" href="#lessons-learned">Lessons Learned</a></li>
-<li><a class="el" href="#performance">Performance</a></li>
-</ul>
-</li>
-<li><a class="el" href="#resources">Resources</a><ul>
-<li><a class="el" href="#definitions">Definitions</a></li>
-<li><a class="el" href="#related-resources">Related Resources</a></li>
-<li><a class="el" href="#projects">Projects</a></li>
-<li><a class="el" href="#third-party-acknowledgement">Third Party Acknowledgement</a></li>
-<li><a class="el" href="#sponsors">Sponsors</a><ul>
-<li><a class="el" href="#corporations--institutions">Corporations &amp; Institutions</a></li>
-<li><a class="el" href="#individuals">Individuals</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="el" href="#continuous-integration--deployment-actions">Continuous Integration &amp; Deployment Actions</a></li>
-<li><a class="el" href="#license">License</a></li>
-</ul>
 <h1><a class="anchor" id="examples"></a>
 Examples</h1>
 <h2><a class="anchor" id="autotoc_md1x1-constant-system-dynamic-model-filter"></a>
