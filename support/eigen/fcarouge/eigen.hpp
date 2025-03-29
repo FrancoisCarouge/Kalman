@@ -90,13 +90,13 @@ using column_vector = Eigen::Vector<Type, Row>;
 
 namespace fcarouge {
 //! @brief Specialization of the evaluation type.
-template <eigen::is_eigen Type> struct evaluater<Type> {
+template <eigen::is_eigen Type> struct evaluates<Type> {
   [[nodiscard]] inline constexpr auto operator()() const ->
       typename Type::PlainMatrix;
 };
 
 //! @brief Specialization of the division type.
-template <eigen::is_eigen Lhs, eigen::is_eigen Rhs> struct divider<Lhs, Rhs> {
+template <eigen::is_eigen Lhs, eigen::is_eigen Rhs> struct divides<Lhs, Rhs> {
   [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs, const Rhs &rhs)
       const -> eigen::matrix<typename Rhs::Scalar, Lhs::RowsAtCompileTime,
                              Rhs::RowsAtCompileTime>;
@@ -113,7 +113,7 @@ namespace Eigen {
 template <fcarouge::eigen::is_eigen Numerator,
           fcarouge::eigen::is_eigen Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
-    -> fcarouge::divide<Numerator, Denominator> {
+    -> fcarouge::quotient<Numerator, Denominator> {
   return rhs.transpose()
       .fullPivHouseholderQr()
       .solve(lhs.transpose())

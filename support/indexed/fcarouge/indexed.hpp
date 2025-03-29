@@ -421,7 +421,7 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes1,
 [[nodiscard]] inline constexpr auto
 operator/(const matrix<Matrix1, RowIndexes1, ColumnIndexes> &lhs,
           const matrix<Matrix2, RowIndexes2, ColumnIndexes> &rhs) {
-  return matrix<evaluate<divide<Matrix1, Matrix2>>, RowIndexes1, RowIndexes2>{
+  return matrix<evaluate<quotient<Matrix1, Matrix2>>, RowIndexes1, RowIndexes2>{
       lhs.data / rhs.data};
 }
 
@@ -526,18 +526,18 @@ namespace fcarouge {
 //! @note Implementation not needed.
 template <template <typename, typename, typename> typename IndexedMatrix,
           typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct evaluater<IndexedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+struct evaluates<IndexedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()() const
       -> IndexedMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
 
-//! @brief Specialization of the transposer.
+//! @brief Specialization of the transposes.
 template <template <typename, typename, typename> typename IndexedMatrix,
           typename Matrix, typename RowIndexes, typename ColumnIndexes>
   requires requires(IndexedMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
     m.data;
   }
-struct transposer<IndexedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+struct transposes<IndexedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()(
       const IndexedMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
     return IndexedMatrix<evaluate<transpose<Matrix>>, ColumnIndexes,

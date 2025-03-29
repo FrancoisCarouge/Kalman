@@ -133,7 +133,7 @@ concept has_output_model = internal::has_output_model<Filter>;
 //! @name Types
 //! @{
 
-//! @brief Linear algebra divider expression type specialization point.
+//! @brief Linear algebra divides expression type specialization point.
 //!
 //! @details Matrix division is a mathematical abuse of terminology. Informally
 //! defined as multiplication by the inverse. Similarly to division by zero in
@@ -143,27 +143,27 @@ concept has_output_model = internal::has_output_model<Filter>;
 //! ways to decompose and solve the equation. Implementations trade off
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
-template <typename Lhs, typename Rhs> struct divider {
+template <typename Lhs, typename Rhs> struct divides {
   [[nodiscard]] inline constexpr auto
   operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
 };
 
 //! @brief Divider helper type.
 template <typename Lhs, typename Rhs>
-using divide =
-    std::invoke_result_t<divider<Lhs, Rhs>, const Lhs &, const Rhs &>;
+using quotient =
+    std::invoke_result_t<divides<Lhs, Rhs>, const Lhs &, const Rhs &>;
 
-//! @brief Linear algebra evaluater override expression lazy evaluation
+//! @brief Linear algebra evaluates override expression lazy evaluation
 //! specialization point.
-template <typename Type> struct evaluater {
+template <typename Type> struct evaluates {
   [[nodiscard]] inline constexpr auto operator()() const -> Type;
 };
 
 //! @brief Evaluater helper type.
-template <typename Type> using evaluate = std::invoke_result_t<evaluater<Type>>;
+template <typename Type> using evaluate = std::invoke_result_t<evaluates<Type>>;
 
-//! @brief Linear algebra transposer specialization point.
-template <typename Type> struct transposer {
+//! @brief Linear algebra transposes specialization point.
+template <typename Type> struct transposes {
   [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
     return value;
   }
@@ -171,7 +171,7 @@ template <typename Type> struct transposer {
 
 template <typename Type>
   requires requires(Type value) { value.transpose(); }
-struct transposer<Type> {
+struct transposes<Type> {
   [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
     return value.transpose();
   }
@@ -179,13 +179,13 @@ struct transposer<Type> {
 
 //! @brief Transposer helper type.
 template <typename Type>
-using transpose = std::invoke_result_t<transposer<Type>, const Type &>;
+using transpose = std::invoke_result_t<transposes<Type>, const Type &>;
 
 //! @brief Transpose helper function.
 //!
 //! @details Enable readable linear algebra notation.
 template <typename Type> auto t(const Type &value) {
-  return transposer<Type>{}(value);
+  return transposes<Type>{}(value);
 }
 
 //! @brief Type of the empty tuple.
@@ -202,9 +202,16 @@ template <typename... Types> using first = internal::first<Types...>;
 template <typename Type, std::size_t Size>
 using tuple_n_type = internal::tuple_n_type<Type, Size>;
 
-//! @brief The deduced result type of the product.
+//! @brief Type multiplies expression type specialization point.
+template <typename Lhs, typename Rhs> struct multiplies {
+  [[nodiscard]] inline constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
+};
+
+//! @brief Helper type to deduce the result type of the product.
 template <typename Lhs, typename Rhs>
-using product = internal::product<Lhs, Rhs>;
+using product =
+    std::invoke_result_t<multiplies<Lhs, Rhs>, const Lhs &, const Rhs &>;
 
 //! @brief The evaluated type of the ABᵀ expression.
 template <typename Lhs, typename Rhs>

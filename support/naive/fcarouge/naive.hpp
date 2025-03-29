@@ -417,14 +417,14 @@ namespace fcarouge {
 //!
 //! @note Implementation not needed.
 template <typename Type, std::size_t Row, std::size_t Column>
-struct evaluater<naive::matrix<Type, Row, Column>> {
+struct evaluates<naive::matrix<Type, Row, Column>> {
   [[nodiscard]] inline constexpr auto
   operator()() const -> naive::matrix<Type, Row, Column>;
 };
 
-//! @brief Specialization of the transposer.
+//! @brief Specialization of the transposes.
 template <typename Type, std::size_t Row, std::size_t Column>
-struct transposer<naive::matrix<Type, Row, Column>> {
+struct transposes<naive::matrix<Type, Row, Column>> {
   [[nodiscard]] inline constexpr auto
   operator()(const naive::matrix<Type, Row, Column> &value) const {
     naive::matrix<Type, Column, Row> result;
