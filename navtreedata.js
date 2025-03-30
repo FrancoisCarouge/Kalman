@@ -96,9 +96,9 @@ var NAVTREEINDEX =
 [
 "annotated.xhtml",
 "indexed_8hpp.xhtml#ad89eef981c285367c92f3f05ebe763e1",
-"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x1x3_8cpp_03.xhtml#aa08c33574326588ce0f4bf47006a130c",
-"structfcarouge_1_1matrix.xhtml#a21b64d2811192433795b124e140bbca2"
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x4x0_8cpp_03.xhtml",
+"structfcarouge_1_1matrix.xhtml#a267410d17977190209f548b57ec2976c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

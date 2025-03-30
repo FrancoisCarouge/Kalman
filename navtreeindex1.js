@@ -5,14 +5,13 @@ var NAVTREEINDEX1 =
 "indexed_8hpp.xhtml#af2491a79b6a321f5f8890f3b1f8f0377":[11,0,5,2,0,0,20],
 "indexed_8hpp_source.xhtml":[11,0,5,2,0,0],
 "internal_2utility_8hpp.xhtml":[11,0,2,0,0,3],
-"internal_2utility_8hpp.xhtml#a08c486af5cba5a0b71c8b2b8fd13a1d5":[11,0,2,0,0,3,6],
-"internal_2utility_8hpp.xhtml#a2d608d28c8cff822a3dfaf1daeb0b15e":[11,0,2,0,0,3,4],
-"internal_2utility_8hpp.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57":[11,0,2,0,0,3,5],
-"internal_2utility_8hpp.xhtml#a521b8803424c884bda00ab81bb651455":[11,0,2,0,0,3,2],
+"internal_2utility_8hpp.xhtml#a08c486af5cba5a0b71c8b2b8fd13a1d5":[11,0,2,0,0,3,5],
+"internal_2utility_8hpp.xhtml#a2d608d28c8cff822a3dfaf1daeb0b15e":[11,0,2,0,0,3,3],
+"internal_2utility_8hpp.xhtml#a4c0bbc15a41d76dd2b4b23d8566fba57":[11,0,2,0,0,3,4],
 "internal_2utility_8hpp.xhtml#a9b7b21596c593512e73cd0298ff05c47":[11,0,2,0,0,3,1],
 "internal_2utility_8hpp.xhtml#aba5eb00c20ad829026fe88a48785307d":[11,0,2,0,0,3,0],
-"internal_2utility_8hpp.xhtml#ac5b5280ce4415cabffdbb67a0db92af3":[11,0,2,0,0,3,3],
-"internal_2utility_8hpp.xhtml#acc1fdb56d90746f239527e42262d81e1":[11,0,2,0,0,3,7],
+"internal_2utility_8hpp.xhtml#ac5b5280ce4415cabffdbb67a0db92af3":[11,0,2,0,0,3,2],
+"internal_2utility_8hpp.xhtml#acc1fdb56d90746f239527e42262d81e1":[11,0,2,0,0,3,6],
 "internal_2utility_8hpp_source.xhtml":[11,0,2,0,0,3],
 "kalman_8hpp.xhtml":[11,0,2,0,2],
 "kalman_8hpp.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777":[11,0,2,0,2,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards":[2,1],
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope":[2,3],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml":[3],
-"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct":[3,0]
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct":[3,0],
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs":[3,1]
 };
