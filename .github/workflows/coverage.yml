@@ -1,0 +1,68 @@
+name: 'Coverage'
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master]
+  schedule:
+  - cron: '0 0 * * */5'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    - name: 'Install'
+      run: sudo apt update && sudo apt install lcov
+    - name: 'Configure'
+      env:
+        CXX: 'g++-14'
+        CXXFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+        CC: 'gcc-14'
+        CCFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
+    - name: 'Coverage: Base'
+      run: |
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --initial --directory . --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/build/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/sample/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/test/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '/usr/*' --output-file base.info
+    - name: 'Test'
+      run: ctest --test-dir 'build' --timeout 2 --tests-regex 'kalman' --verbose --parallel 4
+    - name: 'Coverage: Test'
+      run: |
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --directory . --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/build/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/sample/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/test/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '/usr/*' --output-file test.info
+    - name: 'Coverage: Results'
+      id: coverage-results
+      run: |
+        echo 'text<<EOF' >> $GITHUB_OUTPUT
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info | tail -n 4 | (echo -n "```" && cat) >> $GITHUB_OUTPUT
+        echo 'EOF' >> $GITHUB_OUTPUT
+    - name: 'Pull Request Comment'
+      uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2.8.2
+      with:
+        message: ${{ steps.coverage-results.outputs.text }}
