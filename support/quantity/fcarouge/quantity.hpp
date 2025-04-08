@@ -42,6 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Indexed-based linear algebra with mp-units with Eigen
 //! implementations.
+//! @todo Expose this header as a linealg.hpp variation.
 
 #include "fcarouge/indexed.hpp"
 #include "fcarouge/linalg.hpp"
@@ -71,6 +72,7 @@ struct indexed::element_traits<Representation,
 //!
 //! @todo Consider renaming to column_vector by providing a composable
 //! namespace.
+//! @todo This vector abstraction may need to be a quantity_point.
 template <typename Representation, auto... References>
 using vector =
     indexed::column_vector<column_vector<Representation, sizeof...(References)>,

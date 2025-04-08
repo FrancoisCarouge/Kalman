@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> ]]
 sample("ekf_4x1x0_soaring" BACKENDS "eigen" "eigexed" "naive" "naixed")
 sample("kf_1x1x0_building_height_unit")
 sample("kf_1x1x0_building_height")
+sample("kf_1x1x0_liquid_temperature_unit")
 sample("kf_1x1x0_liquid_temperature")
 sample("kf_1x1x1_dog_position")
 sample("kf_2x1x1_rocket_altitude" BACKENDS "eigen" "eigexed" "naive" "naixed")

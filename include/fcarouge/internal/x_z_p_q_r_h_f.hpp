@@ -48,10 +48,12 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = ᴀʙᵀ<state, state>;
-  using output_model = ᴀʙᵀ<output, state>;
+  using state_transition = evaluate<quotient<state, state>>;
+  using output_model = evaluate<quotient<output, state>>;
   using gain = ᴀʙᵀ<state, output>;
-  using innovation = output;
+  // Propagate this fix to all filters with the function object.
+  using innovation =
+      evaluate<decltype(std::declval<Output>() - std::declval<Output>())>;
   using innovation_uncertainty = output_uncertainty;
 
   static inline const auto i{one<ᴀʙᵀ<state, state>>};
@@ -70,7 +72,7 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
   inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
     s = innovation_uncertainty{h * p * t(h) + r};
-    k = p * t(h) / s;
+    k = gain{p * t(h) / s};
     y = z - h * x;
     x = state{x + k * y};
     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
