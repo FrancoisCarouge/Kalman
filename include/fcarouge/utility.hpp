@@ -213,6 +213,17 @@ template <typename Lhs, typename Rhs>
 using product =
     std::invoke_result_t<multiplies<Lhs, Rhs>, const Lhs &, const Rhs &>;
 
+//! @brief Type minus, subtraction expression type specialization point.
+template <typename Lhs, typename Rhs> struct minus {
+  [[nodiscard]] inline constexpr auto
+  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs - rhs);
+};
+
+//! @brief Helper type to deduce the result type of the minus, subtraction.
+template <typename Lhs, typename Rhs>
+using difference =
+    std::invoke_result_t<minus<Lhs, Rhs>, const Lhs &, const Rhs &>;
+
 //! @brief The evaluated type of the ABᵀ expression.
 template <typename Lhs, typename Rhs>
 using ᴀʙᵀ = evaluate<product<Lhs, evaluate<transpose<Rhs>>>>;

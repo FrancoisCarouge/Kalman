@@ -51,7 +51,7 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
   using state_transition = ᴀʙᵀ<state, state>;
   using output_model = ᴀʙᵀ<output, state>;
   using gain = ᴀʙᵀ<state, output>;
-  using innovation = output;
+  using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
 
   static inline const auto i{one<ᴀʙᵀ<state, state>>};
