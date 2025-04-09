@@ -41,6 +41,7 @@ var hierarchy =
     [ "fcarouge::indexed::matrix< Matrix, RowIndexes, ColumnIndexes >", "structfcarouge_1_1indexed_1_1matrix.xhtml", null ],
     [ "fcarouge::matrix< Type, Row, Column, Copyable >", "structfcarouge_1_1matrix.xhtml", null ],
     [ "fcarouge::naive::matrix< Type, Row, Column >", "structfcarouge_1_1naive_1_1matrix.xhtml", null ],
+    [ "fcarouge::minus< Lhs, Rhs >", "structfcarouge_1_1minus.xhtml", null ],
     [ "fcarouge::multiplies< Lhs, Rhs >", "structfcarouge_1_1multiplies.xhtml", null ],
     [ "fcarouge::printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
     [ "fcarouge::transposes< Type >", "structfcarouge_1_1transposes.xhtml", null ],

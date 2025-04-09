@@ -164,6 +164,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine lazy matrix.  <a href="structfcarouge_1_1matrix.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1minus.xhtml">minus</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type minus, subtraction expression type specialization point.  <a href="structfcarouge_1_1minus.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1multiplies.xhtml">multiplies</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type multiplies expression type specialization point.  <a href="structfcarouge_1_1multiplies.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -369,6 +372,10 @@ requires requires { Type::zero(); }</td></tr>
 <tr class="memitem:a26e349ac2062d99cb0962705f1f93657"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a26e349ac2062d99cb0962705f1f93657">product</a></td></tr>
 <tr class="memdesc:a26e349ac2062d99cb0962705f1f93657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the product.  <br /></td></tr>
 <tr class="separator:a26e349ac2062d99cb0962705f1f93657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dbf59cfc0dc0e18d5cee189c7f35d41" id="r_a8dbf59cfc0dc0e18d5cee189c7f35d41"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:a8dbf59cfc0dc0e18d5cee189c7f35d41"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8dbf59cfc0dc0e18d5cee189c7f35d41">difference</a></td></tr>
+<tr class="memdesc:a8dbf59cfc0dc0e18d5cee189c7f35d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the minus, subtraction.  <br /></td></tr>
+<tr class="separator:a8dbf59cfc0dc0e18d5cee189c7f35d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec3bfab0842e1f83b5f1493062848140" id="r_aec3bfab0842e1f83b5f1493062848140"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
 <tr class="memitem:aec3bfab0842e1f83b5f1493062848140"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aec3bfab0842e1f83b5f1493062848140">ᴀʙᵀ</a> = <a class="el" href="#a972eb30c6ed1a0e253d8539e87e15908">evaluate</a>&lt;<a class="el" href="#a26e349ac2062d99cb0962705f1f93657">product</a>&lt;Lhs, <a class="el" href="#a972eb30c6ed1a0e253d8539e87e15908">evaluate</a>&lt;<a class="el" href="#a06ed7a99de8c150ba47d98be11bf795d">transpose</a>&lt;Rhs&gt;&gt;&gt;&gt;</td></tr>
 <tr class="memdesc:aec3bfab0842e1f83b5f1493062848140"><td class="mdescLeft">&#160;</td><td class="mdescRight">The evaluated type of the ABᵀ expression.  <br /></td></tr>
@@ -414,7 +421,7 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 
 <p>The evaluated type of the ABᵀ expression. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00218">218</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00229">229</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -437,6 +444,28 @@ template&lt;typename Type  = double, std::size_t Row = 1&gt; </div>
 <p>Coroutine lazy column vector. </p>
 
 <p class="definition">Definition at line <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml#l00064">64</a> of file <a class="el" href="eigexed_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8dbf59cfc0dc0e18d5cee189c7f35d41" name="a8dbf59cfc0dc0e18d5cee189c7f35d41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dbf59cfc0dc0e18d5cee189c7f35d41">&#9670;&#160;</a></span>difference</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Lhs , typename Rhs &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a8dbf59cfc0dc0e18d5cee189c7f35d41">fcarouge::difference</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    std::invoke_result_t&lt;minus&lt;Lhs, Rhs&gt;, <span class="keyword">const</span> Lhs &amp;, <span class="keyword">const</span> Rhs &amp;&gt;</div>
+</div><!-- fragment -->
+<p>Helper type to deduce the result type of the minus, subtraction. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00224">224</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -724,11 +753,11 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 <p>Compile-time for loop. </p>
 <p>Help compilers with non-type template parameters on members. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00230">230</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  230</span>                                                         {</div>
-<div class="line"><span class="lineno">  231</span>  internal::for_constexpr&lt;Begin, End, Increment&gt;(</div>
-<div class="line"><span class="lineno">  232</span>      std::forward&lt;Function&gt;(function));</div>
-<div class="line"><span class="lineno">  233</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00241">241</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  241</span>                                                         {</div>
+<div class="line"><span class="lineno">  242</span>  internal::for_constexpr&lt;Begin, End, Increment&gt;(</div>
+<div class="line"><span class="lineno">  243</span>      std::forward&lt;Function&gt;(function));</div>
+<div class="line"><span class="lineno">  244</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="internal_2utility_8hpp_source.xhtml#l00260">fcarouge::internal::for_constexpr()</a>.</p>
 
@@ -1350,8 +1379,8 @@ template&lt;auto... Values&gt; </div>
 
 <p>Unpack the first value of the non-type template parameter pack. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00248">248</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  248</span>{internal::first_v&lt;Values...&gt;};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00259">259</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  259</span>{internal::first_v&lt;Values...&gt;};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1444,9 +1473,9 @@ template&lt;typename Type  = double&gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a3">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00256">256</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  256</span>                         {internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  257</span>    <span class="stringliteral">&quot;Implement the linear algebra one-diagonal matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00267">267</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  267</span>                         {internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  268</span>    <span class="stringliteral">&quot;Implement the linear algebra one-diagonal matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1474,8 +1503,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton one matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00260">260</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  260</span>{1};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00271">271</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  271</span>{1};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1568,8 +1597,8 @@ requires requires { Type::identity(); }</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00264">264</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  264</span>{Type::Identity()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00275">275</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  275</span>{Type::Identity()};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1648,8 +1677,8 @@ template&lt;typename Pack &gt; </div>
 <p>Size of tuple-like types. </p>
 <p>Convenient short form. In place of <code>std::tuple_size_v</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00244">244</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  244</span>{internal::size&lt;Pack&gt;};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00255">255</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  255</span>{internal::size&lt;Pack&gt;};</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00066">std::formatter&lt; Filter, Char &gt;::format()</a>.</p>
 
@@ -1684,9 +1713,9 @@ template&lt;typename Type  = double&gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a4">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a4">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00274">274</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  274</span>                          {internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  275</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00285">285</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  285</span>                          {internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  286</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1714,8 +1743,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton zero matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00279">279</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  279</span>{0};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00290">290</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  290</span>{0};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1778,8 +1807,8 @@ requires requires { Type::zero(); }</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00283">283</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  283</span>{Type::Zero()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00294">294</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  294</span>{Type::Zero()};</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -20,6 +20,7 @@ var annotated_dup =
       [ "evaluates< Type >", "structfcarouge_1_1evaluates_3_01_type_01_4.xhtml", "structfcarouge_1_1evaluates_3_01_type_01_4" ],
       [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
       [ "matrix", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
+      [ "minus", "structfcarouge_1_1minus.xhtml", "structfcarouge_1_1minus" ],
       [ "multiplies", "structfcarouge_1_1multiplies.xhtml", "structfcarouge_1_1multiplies" ],
       [ "printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
       [ "transposes", "structfcarouge_1_1transposes.xhtml", "structfcarouge_1_1transposes" ],

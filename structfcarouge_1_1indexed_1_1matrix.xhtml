@@ -452,7 +452,7 @@ template&lt;algebraic OtherMatrix&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000039">Todo</a></b></dt><dd>Requires evaluated types of Matrix and OtherMatrix are identical? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000038">Todo</a></b></dt><dd>Requires evaluated types of Matrix and OtherMatrix are identical? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00217">217</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  219</span>      : <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{other.data} {}</div>
@@ -561,7 +561,7 @@ requires uniform&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtm
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000040">Todo</a></b></dt><dd>Verify the list sizes at runtime? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000039">Todo</a></b></dt><dd>Verify the list sizes at runtime? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00234">234</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  237</span>  {</div>
@@ -612,7 +612,7 @@ requires row&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">m
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000041">Todo</a></b></dt><dd><p class="startdd">Combine the two constructors in ome? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000040">Todo</a></b></dt><dd><p class="startdd">Combine the two constructors in ome? </p>
 <p class="interdd">Verify if the types are the same, or assignable, for nicer error? </p>
 <p class="enddd">Rewrite with a fold expression over the pack? </p>
 </dd></dl>
@@ -627,9 +627,9 @@ requires row&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">m
 <div class="line"><span class="lineno">  259</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[position] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
 <div class="line"><span class="lineno">  260</span>    });</div>
 <div class="line"><span class="lineno">  261</span>  }</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a5ad0022b969a210b7261d0158bc1dd7b"><div class="ttname"><a href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdoc">Compile-time for loop.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00230">utility.hpp:230</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a5ad0022b969a210b7261d0158bc1dd7b"><div class="ttname"><a href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdoc">Compile-time for loop.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00241">utility.hpp:241</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00230">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00241">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
 <div id="dynsection-3" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -678,7 +678,7 @@ requires column&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml
 <div class="line"><span class="lineno">  272</span>    });</div>
 <div class="line"><span class="lineno">  273</span>  }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00230">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
+<p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00241">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
 <div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -1030,7 +1030,7 @@ template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; 
 
 <p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00198">198</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  198</span>{<a class="code hl_variable" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size&lt;column_indexes&gt;</a>};</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_ac4cffefdda8c01a267ce2700c6acb903"><div class="ttname"><a href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">fcarouge::size</a></div><div class="ttdeci">constexpr std::size_t size</div><div class="ttdoc">Size of tuple-like types.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00244">utility.hpp:244</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_ac4cffefdda8c01a267ce2700c6acb903"><div class="ttname"><a href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">fcarouge::size</a></div><div class="ttdeci">constexpr std::size_t size</div><div class="ttdoc">Size of tuple-like types.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00255">utility.hpp:255</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

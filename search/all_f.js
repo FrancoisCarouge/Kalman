@@ -10,10 +10,11 @@ var searchData=
   ['member_20types_7',['Member Types',['../index.xhtml#member-types',1,'']]],
   ['merchantability_8',['MERCHANTABILITY',['../_l_i_c_e_n_s_e_8txt.xhtml#ae500a561df0df2b955062801cf14b51e',1,'LICENSE.txt']]],
   ['milliseconds_9',['milliseconds',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#abf9ddf2209d93af4f9238fd48f134976',1,'fcarouge::sample::anonymous_namespace{kf_2x1x1_rocket_altitude.cpp}']]],
-  ['model_20extended_20filter_10',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]],
-  ['model_20filter_11',['Model Filter',['../index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter',1,'1x1 Constant System Dynamic Model Filter'],['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'6x2 Constant Acceleration Dynamic Model Filter']]],
-  ['modifiers_12',['Modifiers',['../index.xhtml#modifiers',1,'']]],
-  ['modify_13',['modify',['../_l_i_c_e_n_s_e_8txt.xhtml#ab211d3cae85d1f657e0517e9184e50a6',1,'LICENSE.txt']]],
-  ['motivations_14',['Motivations',['../index.xhtml#motivations',1,'']]],
-  ['multiplies_15',['multiplies',['../structfcarouge_1_1multiplies.xhtml',1,'fcarouge']]]
+  ['minus_10',['minus',['../structfcarouge_1_1minus.xhtml',1,'fcarouge']]],
+  ['model_20extended_20filter_11',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]],
+  ['model_20filter_12',['Model Filter',['../index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter',1,'1x1 Constant System Dynamic Model Filter'],['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'6x2 Constant Acceleration Dynamic Model Filter']]],
+  ['modifiers_13',['Modifiers',['../index.xhtml#modifiers',1,'']]],
+  ['modify_14',['modify',['../_l_i_c_e_n_s_e_8txt.xhtml#ab211d3cae85d1f657e0517e9184e50a6',1,'LICENSE.txt']]],
+  ['motivations_15',['Motivations',['../index.xhtml#motivations',1,'']]],
+  ['multiplies_16',['multiplies',['../structfcarouge_1_1multiplies.xhtml',1,'fcarouge']]]
 ];
