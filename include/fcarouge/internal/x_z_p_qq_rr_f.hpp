@@ -54,7 +54,7 @@ template <typename State, typename Output> struct x_z_p_qq_rr_f {
   using state_transition = ᴀʙᵀ<state, state>;
   using output_model = ᴀʙᵀ<output, state>;
   using gain = ᴀʙᵀ<state, output>;
-  using innovation = output;
+  using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
   using noise_observation_function =
       function<output_uncertainty(const state &, const output &)>;

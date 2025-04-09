@@ -63,7 +63,7 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   using output_model = ᴀʙᵀ<output, state>;
   using input_control = ᴀʙᵀ<state, input>;
   using gain = ᴀʙᵀ<state, output>;
-  using innovation = output;
+  using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
   using transition_state_function = function<state_transition(
       const state &, const input &, const PredictionTypes &...)>;
