@@ -36,33 +36,40 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman.hpp"
+#ifndef FCAROUGE_INTERNAL_X_Z_P_R_HPP
+#define FCAROUGE_INTERNAL_X_Z_P_R_HPP
 
-#include <cassert>
+#include "fcarouge/utility.hpp"
 
-namespace fcarouge::test {
-namespace {
-//! @test Verifies the state transition matrix F management overloads for
-//! the default filter type.
-[[maybe_unused]] auto test{[] {
-  kalman filter{state{0.}, output<double>, estimate_uncertainty{0.},
-                output_uncertainty{0.}, state_transition{1.}};
+namespace fcarouge::internal {
+template <typename State> struct x_z_p_r {
+  using state = State;
+  using output = State;
+  using estimate_uncertainty = ᴀʙᵀ<state, state>;
+  using output_uncertainty = ᴀʙᵀ<output, output>;
+  using innovation = output;
+  using innovation_uncertainty = output_uncertainty;
+  using gain = evaluate<quotient<estimate_uncertainty, innovation_uncertainty>>;
 
-  assert(filter.f() == 1);
+  static inline const auto i{one<gain>};
 
-  {
-    const double f{2.};
-    filter.f(f);
-    assert(filter.f() == 2);
+  state x{zero<state>};
+  estimate_uncertainty p{one<estimate_uncertainty>};
+  output_uncertainty r{zero<output_uncertainty>};
+  gain k{one<gain>};
+  innovation y{zero<innovation>};
+  innovation_uncertainty s{one<innovation_uncertainty>};
+  output z{zero<output>};
+
+  inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
+    z = output{output_z, outputs_z...};
+    s = p + r;
+    k = p / s;
+    y = z - x;
+    x = x + k * y;
+    p = (i - k) * p * t(i - k) + k * r * t(k);
   }
+};
+} // namespace fcarouge::internal
 
-  {
-    const double f{3.};
-    filter.f(f);
-    assert(filter.f() == 3);
-  }
-
-  return 0;
-}()};
-} // namespace
-} // namespace fcarouge::test
+#endif // FCAROUGE_INTERNAL_X_Z_P_R_HPP
