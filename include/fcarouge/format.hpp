@@ -67,8 +67,7 @@ struct std::formatter<Filter, Char> {
          std::basic_format_context<OutputIterator, Char> &format_context) const
       -> OutputIterator {
 
-    format_context.advance_to(
-        std::format_to(format_context.out(), R"({{)", filter.f()));
+    format_context.advance_to(std::format_to(format_context.out(), R"({{)"));
 
     if constexpr (fcarouge::internal::has_state_transition_method<Filter>) {
       format_context.advance_to(
