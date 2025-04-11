@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_X_Z_U_Q_R_US_PS_HPP
-#define FCAROUGE_INTERNAL_X_Z_U_Q_R_US_PS_HPP
+#ifndef FCAROUGE_INTERNAL_X_Z_U_P_Q_R_HPP
+#define FCAROUGE_INTERNAL_X_Z_U_P_Q_R_HPP
 
 #include "fcarouge/utility.hpp"
 #include "function.hpp"
@@ -45,28 +45,16 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 namespace fcarouge::internal {
-// Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename, typename>
-struct x_z_u_p_q_r_us_ps final {};
-
-template <typename State, typename Output, typename Input,
-          typename... UpdateTypes, typename... PredictionTypes>
-struct x_z_u_p_q_r_us_ps<State, Output, Input, std::tuple<UpdateTypes...>,
-                         std::tuple<PredictionTypes...>> {
-  using state = State;
-  using output = Output;
-  using input = Input;
+template <typename Type> struct x_z_u_p_q_r {
+  using state = Type;
+  using output = Type;
+  using input = Type;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = ᴀʙᵀ<state, state>;
-  using output_model = ᴀʙᵀ<output, state>;
-  using input_control = ᴀʙᵀ<state, input>;
   using gain = ᴀʙᵀ<state, output>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
-  using update_types = std::tuple<UpdateTypes...>;
-  using prediction_types = std::tuple<PredictionTypes...>;
 
   static inline const auto i{one<ᴀʙᵀ<state, state>>};
 
@@ -75,36 +63,26 @@ struct x_z_u_p_q_r_us_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
   input u{zero<input>};
-  output_model h{one<output_model>};
-  state_transition f{one<state_transition>};
-  input_control g{one<input_control>};
   gain k{one<gain>};
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
-  update_types update_arguments{};
-  prediction_types prediction_arguments{};
 
-  inline constexpr void update(const UpdateTypes &...update_pack,
-                               const auto &output_z, const auto &...outputs_z) {
-    update_arguments = {update_pack...};
+  inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
-    s = h * p * t(h) + r;
-    k = p * t(h) / s;
-    y = z - h * x;
+    s = p + r;
+    k = p / s;
+    y = z - x;
     x = x + k * y;
-    p = (i - k * h) * p * t(i - k * h) + k * r * t(k);
+    p = (i - k) * p * t(i - k) + k * r * t(k);
   }
 
-  //! @todo Add convertible requirements on input and output packs?
-  inline constexpr void predict(const PredictionTypes &...prediction_pack,
-                                const auto &input_u, const auto &...inputs_u) {
-    prediction_arguments = {prediction_pack...};
+  inline constexpr void predict(const auto &input_u, const auto &...inputs_u) {
     u = input{input_u, inputs_u...};
-    x = f * x + g * u;
-    p = f * p * t(f) + q;
+    x = x + u;
+    p = p + q;
   }
 };
 } // namespace fcarouge::internal
 
-#endif // FCAROUGE_INTERNAL_X_Z_U_Q_R_US_PS_HPP
+#endif // FCAROUGE_INTERNAL_X_Z_U_P_Q_R_HPP
