@@ -47,7 +47,6 @@ namespace {
 [[maybe_unused]] auto test{[] {
   kalman filter;
 
-  assert(filter.f() == 1);
   assert(filter.k() == 1);
   assert(filter.p() == 1);
   assert(filter.r() == 0 && "No observation noise by default.");
