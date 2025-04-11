@@ -53,8 +53,10 @@ target_sources(
             "internal/x_z_p_q_r_hh_us_ps.hpp"
             "internal/x_z_p_qq_rr_f.hpp"
             "internal/x_z_p_r_f.hpp"
+            "internal/x_z_p_r.hpp"
             "internal/x_z_u_p_q_r_f_g_ps.hpp"
-            "internal/x_z_u_p_q_r_us_ps.hpp")
+            "internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
+            "internal/x_z_u_p_q_r.hpp")
 install(
   TARGETS kalman_internal
   EXPORT "kalman-target"
