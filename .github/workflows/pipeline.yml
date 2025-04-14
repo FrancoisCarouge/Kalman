@@ -23,8 +23,8 @@ jobs:
         include:
         - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Unix Makefiles', packages: 'clang-18'  }
         - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', packages: 'g++-14'  }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Debug' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Release' }
+        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', config: 'Debug' }
+        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     steps:
@@ -34,8 +34,6 @@ jobs:
         egress-policy: audit
     - name: 'Checkout'
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-    - name: 'Install: MSVC'
-      uses: ilammy/msvc-dev-cmd@0b201ec74fa43914dc39ae48a89fd1d8cb592756 # v1.13.0
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
@@ -48,4 +46,4 @@ jobs:
     - name: 'Install'
       run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
     - name: 'Package'
-      run: cmake --build 'build' --target 'package' --verbose --parallel 4
+      run: cmake --build 'build' --target 'package' --config '${{ matrix.config }}' --verbose --parallel 4
