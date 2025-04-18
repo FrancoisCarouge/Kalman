@@ -46,7 +46,7 @@ namespace {
 //! @brief Estimating the position of a dog.
 //!
 //! @copyright This example is transcribed from Kalman and Bayesian Filters in
-//! Python copyright Roger Labbe
+//! Python copyright Roger Labbe.
 //!
 //! @see
 //! https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/04-One-Dimensional-Kalman-Filters.ipynb
@@ -72,7 +72,7 @@ namespace {
   kalman filter{
       // This is the dog's initial position expressed as a Gaussian. The state X
       // position is 0 meters.
-      state{1.},
+      state{0.},
       // The measured output position Z.
       output<double>,
       // We are predicting that at each time step the dog moves forward one
