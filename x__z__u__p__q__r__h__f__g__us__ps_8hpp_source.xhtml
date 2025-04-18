@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: /github/workspace/include/fcarouge/internal/x_z_u_p_q_r_us_ps.hpp Source File</title>
+<title>Kalman: /github/workspace/include/fcarouge/internal/x_z_u_p_q_r_h_f_g_us_ps.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('x__z__u__p__q__r__us__ps_8hpp_source.xhtml',''); initResizable(true); });
+$(function(){initNavTree('x__z__u__p__q__r__h__f__g__us__ps_8hpp_source.xhtml',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -100,10 +100,10 @@ $(function(){initNavTree('x__z__u__p__q__r__us__ps_8hpp_source.xhtml',''); initR
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">x_z_u_p_q_r_us_ps.hpp</div></div>
+  <div class="headertitle"><div class="title">x_z_u_p_q_r_h_f_g_us_ps.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="x__z__u__p__q__r__us__ps_8hpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*  __          _      __  __          _   _</span></div>
+<a href="x__z__u__p__q__r__h__f__g__us__ps_8hpp.xhtml">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">|  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span></div>
@@ -141,8 +141,8 @@ $(function(){initNavTree('x__z__u__p__q__r__us__ps_8hpp_source.xhtml',''); initR
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifndef FCAROUGE_INTERNAL_X_Z_U_Q_R_US_PS_HPP</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define FCAROUGE_INTERNAL_X_Z_U_Q_R_US_PS_HPP</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifndef FCAROUGE_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define FCAROUGE_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &quot;<a class="code" href="utility_8hpp.xhtml">fcarouge/utility.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="function_8hpp.xhtml">function.hpp</a>&quot;</span></div>
@@ -152,12 +152,12 @@ $(function(){initNavTree('x__z__u__p__q__r__us__ps_8hpp_source.xhtml',''); initR
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a> {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Helper template to support multiple pack deduction.</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>, <span class="keyword">typename</span>&gt;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">struct </span>x_z_u_p_q_r_us_ps final {};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">struct </span>x_z_u_p_q_r_h_f_g_us_ps final {};</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> State, <span class="keyword">typename</span> Output, <span class="keyword">typename</span> Input,</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>          <span class="keyword">typename</span>... UpdateTypes, <span class="keyword">typename</span>... PredictionTypes&gt;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">struct </span>x_z_u_p_q_r_us_ps&lt;State, Output, Input, std::tuple&lt;UpdateTypes...&gt;,</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                         std::tuple&lt;PredictionTypes...&gt;&gt; {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">struct </span>x_z_u_p_q_r_h_f_g_us_ps&lt;State, Output, Input, std::tuple&lt;UpdateTypes...&gt;,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                               std::tuple&lt;PredictionTypes...&gt;&gt; {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keyword">using </span><a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a040f0f8f1c580c270311aac67e8706e6">state</a> = State;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keyword">using </span>output = Output;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keyword">using </span>input = Input;</div>
@@ -179,10 +179,10 @@ $(function(){initNavTree('x__z__u__p__q__r__us__ps_8hpp_source.xhtml',''); initR
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">estimate_uncertainty</a> p{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;estimate_uncertainty&gt;</a>};</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a> q{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;process_uncertainty&gt;</a>};</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a> r{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;output_uncertainty&gt;</a>};</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  input u{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;input&gt;</a>};</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model</a> h{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;output_model&gt;</a>};</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition</a> f{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;state_transition&gt;</a>};</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2">input_control</a> g{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;input_control&gt;</a>};</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model</a> h{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;output_model&gt;</a>};</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition</a> f{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;state_transition&gt;</a>};</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2">input_control</a> g{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;input_control&gt;</a>};</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  input u{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;input&gt;</a>};</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  gain k{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;gain&gt;</a>};</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  innovation y{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;innovation&gt;</a>};</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  innovation_uncertainty s{<a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;innovation_uncertainty&gt;</a>};</div>
@@ -211,7 +211,7 @@ $(function(){initNavTree('x__z__u__p__q__r__us__ps_8hpp_source.xhtml',''); initR
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>};</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>} <span class="comment">// namespace fcarouge::internal</span></div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_X_Z_U_Q_R_US_PS_HPP</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP</span></div>
 <div class="ttc" id="afunction_8hpp_xhtml"><div class="ttname"><a href="function_8hpp.xhtml">function.hpp</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a></div><div class="ttdoc">Internal implementation details.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a040f0f8f1c580c270311aac67e8706e6"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a040f0f8f1c580c270311aac67e8706e6">fcarouge::internal::state</a></div><div class="ttdeci">state(Type) -&gt; state&lt; Type &gt;</div></div>
@@ -232,7 +232,7 @@ $(function(){initNavTree('x__z__u__p__q__r__us__ps_8hpp_source.xhtml',''); initR
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="x__z__u__p__q__r__us__ps_8hpp.xhtml">x_z_u_p_q_r_us_ps.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="x__z__u__p__q__r__h__f__g__us__ps_8hpp.xhtml">x_z_u_p_q_r_h_f_g_us_ps.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
