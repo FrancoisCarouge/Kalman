@@ -104,7 +104,7 @@ $(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xhtml',''); initRes
 </div><!--header-->
 <div class="contents">
 <p>Estimating the position of a dog.</p>
-<p>Estimating the position of a dog.</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from Kalman and Bayesian Filters in Python copyright Roger Labbe</dd></dl>
+<p>Estimating the position of a dog.</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from Kalman and Bayesian Filters in Python copyright Roger Labbe.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/04-One-Dimensional-Kalman-Filters.ipynb">https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/04-One-Dimensional-Kalman-Filters.ipynb</a></dd></dl>
 <p>Assume that in our latest hackathon someone created an RFID tracker that provides a reasonably accurate position of the dog. The sensor returns the distance of the dog from the left end of the hallway in meters. So, 23.4 would mean the dog is 23.4 meters from the left end of the hallway. The sensor is not perfect. A reading of 23.4 could correspond to the dog being at 23.7, or 23.0. However, it is very unlikely to correspond to a position of 47.6. Testing during the hackathon confirmed this result - the sensor is 'reasonably' accurate, and while it had errors, the errors are small. Furthermore, the errors seemed to be evenly distributed on both sides of the true position; a position of 23 m would equally likely be measured as 22.9 or 23.1. Perhaps we can model this with a Gaussian. We predict that the dog is moving. This prediction is not perfect. Sometimes our prediction will overshoot, sometimes it will undershoot. We are more likely to undershoot or overshoot by a little than a lot. Perhaps we can also model this with a Gaussian.</p>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
@@ -156,7 +156,7 @@ $(function(){initNavTree('kf_1x1x1_dog_position_8cpp-example.xhtml',''); initRes
 <div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// This is the dog&#39;s initial position expressed as a Gaussian. The state X</span></div>
 <div class="line">      <span class="comment">// position is 0 meters.</span></div>
-<div class="line">      state{1.},</div>
+<div class="line">      state{0.},</div>
 <div class="line">      <span class="comment">// The measured output position Z.</span></div>
 <div class="line">      output&lt;double&gt;,</div>
 <div class="line">      <span class="comment">// We are predicting that at each time step the dog moves forward one</span></div>
