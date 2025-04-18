@@ -97,23 +97,23 @@ namespace {
 
   filter.predict(1.);
   filter.update(1.354);
-  filter.predict(1.);
+  filter.predict(2.352);
   filter.update(1.882);
-  filter.predict(1.);
+  filter.predict(3.070);
   filter.update(4.341);
-  filter.predict(1.);
+  filter.predict(4.736);
   filter.update(7.156);
-  filter.predict(1.);
+  filter.predict(6.960);
   filter.update(6.939);
-  filter.predict(1.);
+  filter.predict(7.949);
   filter.update(6.844);
-  filter.predict(1.);
+  filter.predict(8.396);
   filter.update(9.847);
-  filter.predict(1.);
+  filter.predict(10.122);
   filter.update(12.553);
-  filter.predict(1.);
+  filter.predict(12.338);
   filter.update(16.273);
-  filter.predict(1.);
+  filter.predict(15.305);
   filter.update(14.8);
 
   assert(
