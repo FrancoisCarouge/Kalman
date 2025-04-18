@@ -47,7 +47,7 @@ template <typename Type> struct x_z_p_r {
   using output = Type;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using innovation = output;
+  using innovation = evaluate<difference<output, state>>;
   using innovation_uncertainty = output_uncertainty;
   using gain = evaluate<quotient<estimate_uncertainty, innovation_uncertainty>>;
 
