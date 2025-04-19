@@ -51,6 +51,7 @@ target_sources(
             "internal/utility.hpp"
             "internal/x_z_p_q_r_h_f.hpp"
             "internal/x_z_p_q_r_hh_us_ps.hpp"
+            "internal/x_z_p_q_r.hpp"
             "internal/x_z_p_qq_rr_f.hpp"
             "internal/x_z_p_r_f.hpp"
             "internal/x_z_p_r.hpp"

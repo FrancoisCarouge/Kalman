@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_INTERNAL_FACTORY_HPP
 
 #include "fcarouge/internal/type.hpp"
+#include "fcarouge/internal/x_z_p_q_r.hpp"
 #include "fcarouge/internal/x_z_p_q_r_h_f.hpp"
 #include "fcarouge/internal/x_z_p_q_r_hh_us_ps.hpp"
 #include "fcarouge/internal/x_z_p_qq_rr_f.hpp"
@@ -232,14 +233,14 @@ template <typename Filter = void> struct filter_deducer {
               typename kt::output_uncertainty(r.value)};
   }
 
-  template <typename State, typename Output, typename EstimateUncertainty,
+  template <typename Type, typename EstimateUncertainty,
             typename OutputUncertainty, typename ProcessUncertainty>
   inline constexpr auto
-  operator()(state<State> x, [[maybe_unused]] output_t<Output> z,
+  operator()(state<Type> x, [[maybe_unused]] output_t<Type> z,
              estimate_uncertainty<EstimateUncertainty> p,
              process_uncertainty<ProcessUncertainty> q,
              output_uncertainty<OutputUncertainty> r) const {
-    using kt = x_z_p_q_r_h_f<State, Output>;
+    using kt = x_z_p_q_r<Type>;
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
               typename kt::process_uncertainty(q.value),

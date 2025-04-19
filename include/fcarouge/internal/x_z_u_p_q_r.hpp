@@ -56,7 +56,7 @@ template <typename Type> struct x_z_u_p_q_r {
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
 
-  static inline const auto i{one<ᴀʙᵀ<state, state>>};
+  static inline const auto i{one<gain>};
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
