@@ -137,9 +137,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1evaluates_3_01_type_01_4.xhtml">fcarouge::evaluates&lt; Type &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the evaluation type.  <a href="structfcarouge_1_1evaluates_3_01_type_01_4.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1divides_3_01_lhs_00_01_rhs_01_4.xhtml">fcarouge::divides&lt; Lhs, Rhs &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the division type.  <a href="structfcarouge_1_1divides_3_01_lhs_00_01_rhs_01_4.xhtml#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml">std::formatter&lt; fcarouge::eigen::matrix&lt; Type, Row, Column &gt;, Char &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the standard formatter for the <a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix.  <a href="structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,10 +175,10 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aae903d4ea20f98ba2dfd6e75e9f3f018" id="r_aae903d4ea20f98ba2dfd6e75e9f3f018"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fcarouge::eigen::is_eigen</a> Numerator, <a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fcarouge::eigen::is_eigen</a> Denominator&gt; </td></tr>
-<tr class="memitem:aae903d4ea20f98ba2dfd6e75e9f3f018"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_eigen.xhtml#aae903d4ea20f98ba2dfd6e75e9f3f018">Eigen::operator/</a> (const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; <a class="el" href="namespacefcarouge.xhtml#aa0e360c3c4b209b1ab2141f8376c3bae">fcarouge::quotient</a>&lt; Numerator, Denominator &gt;</td></tr>
-<tr class="memdesc:aae903d4ea20f98ba2dfd6e75e9f3f018"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division.  <br /></td></tr>
-<tr class="separator:aae903d4ea20f98ba2dfd6e75e9f3f018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a055f2c87b739a645dfb6edba76d1379e" id="r_a055f2c87b739a645dfb6edba76d1379e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fcarouge::eigen::is_eigen</a> Numerator, <a class="el" href="conceptfcarouge_1_1eigen_1_1is__eigen.xhtml">fcarouge::eigen::is_eigen</a> Denominator&gt; </td></tr>
+<tr class="memitem:a055f2c87b739a645dfb6edba76d1379e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_eigen.xhtml#a055f2c87b739a645dfb6edba76d1379e">Eigen::operator/</a> (const Numerator &amp;lhs, const Denominator &amp;rhs) -&gt; <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a>&lt; typename Denominator::Scalar, Numerator::RowsAtCompileTime, Denominator::RowsAtCompileTime &gt;</td></tr>
+<tr class="memdesc:a055f2c87b739a645dfb6edba76d1379e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_eigen.xhtml">Eigen</a> matrix solution to division.  <br /></td></tr>
+<tr class="separator:a055f2c87b739a645dfb6edba76d1379e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Linear algebra facade for Eigen3 third party implementation. </p>

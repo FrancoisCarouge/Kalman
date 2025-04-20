@@ -27,7 +27,6 @@ var hierarchy =
       [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
     ] ],
     [ "fcarouge::divides< Lhs, Rhs >", "structfcarouge_1_1divides.xhtml", null ],
-    [ "fcarouge::divides< Lhs, Rhs >", "structfcarouge_1_1divides_3_01_lhs_00_01_rhs_01_4.xhtml", null ],
     [ "fcarouge::indexed::element_traits< Underlying, Type >", "structfcarouge_1_1indexed_1_1element__traits.xhtml", null ],
     [ "fcarouge::indexed::element_traits< Representation, quantity< Representation, Reference > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4.xhtml", null ],
     [ "fcarouge::evaluates< Type >", "structfcarouge_1_1evaluates.xhtml", null ],

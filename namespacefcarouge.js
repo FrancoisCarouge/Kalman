@@ -42,7 +42,6 @@ var namespacefcarouge =
     [ "sample", "namespacefcarouge_1_1sample.xhtml", "namespacefcarouge_1_1sample" ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "divides", "structfcarouge_1_1divides.xhtml", "structfcarouge_1_1divides" ],
-    [ "divides< Lhs, Rhs >", "structfcarouge_1_1divides_3_01_lhs_00_01_rhs_01_4.xhtml", "structfcarouge_1_1divides_3_01_lhs_00_01_rhs_01_4" ],
     [ "evaluates", "structfcarouge_1_1evaluates.xhtml", "structfcarouge_1_1evaluates" ],
     [ "evaluates< IndexedMatrix< Matrix, RowIndexes, ColumnIndexes > >", "structfcarouge_1_1evaluates_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml", "structfcarouge_1_1evaluates_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4" ],
     [ "evaluates< naive::matrix< Type, Row, Column > >", "structfcarouge_1_1evaluates_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1evaluates_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
