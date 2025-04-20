@@ -94,13 +94,6 @@ template <eigen::is_eigen Type> struct evaluates<Type> {
   [[nodiscard]] inline constexpr auto operator()() const ->
       typename Type::PlainMatrix;
 };
-
-//! @brief Specialization of the division type.
-template <eigen::is_eigen Lhs, eigen::is_eigen Rhs> struct divides<Lhs, Rhs> {
-  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs, const Rhs &rhs)
-      const -> eigen::matrix<typename Rhs::Scalar, Lhs::RowsAtCompileTime,
-                             Rhs::RowsAtCompileTime>;
-};
 } // namespace fcarouge
 
 namespace Eigen {
@@ -113,7 +106,9 @@ namespace Eigen {
 template <fcarouge::eigen::is_eigen Numerator,
           fcarouge::eigen::is_eigen Denominator>
 constexpr auto operator/(const Numerator &lhs, const Denominator &rhs)
-    -> fcarouge::quotient<Numerator, Denominator> {
+    -> fcarouge::eigen::matrix<typename Denominator::Scalar,
+                               Numerator::RowsAtCompileTime,
+                               Denominator::RowsAtCompileTime> {
   return rhs.transpose()
       .fullPivHouseholderQr()
       .solve(lhs.transpose())
