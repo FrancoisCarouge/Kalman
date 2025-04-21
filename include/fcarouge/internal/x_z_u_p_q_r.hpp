@@ -79,7 +79,7 @@ template <typename Type> struct x_z_u_p_q_r {
 
   inline constexpr void predict(const auto &input_u, const auto &...inputs_u) {
     u = input{input_u, inputs_u...};
-    x = x + u;
+    x = u;
     p = p + q;
   }
 };
