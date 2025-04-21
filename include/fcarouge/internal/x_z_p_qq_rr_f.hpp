@@ -53,12 +53,14 @@ template <typename State, typename Output> struct x_z_p_qq_rr_f {
   using output_uncertainty = ᴀʙᵀ<output, output>;
   using state_transition = ᴀʙᵀ<state, state>;
   using output_model = ᴀʙᵀ<output, state>;
-  using gain = ᴀʙᵀ<state, output>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
   using noise_observation_function =
       function<output_uncertainty(const state &, const output &)>;
   using noise_process_function = function<process_uncertainty(const state &)>;
+  using gain =
+      evaluate<quotient<product<estimate_uncertainty, transpose<output_model>>,
+                        innovation_uncertainty>>;
 
   static inline const auto i{one<ᴀʙᵀ<state, state>>};
 
