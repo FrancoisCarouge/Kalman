@@ -46,7 +46,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <mp-units/format.h>
 #include <mp-units/framework/quantity.h>
+#include <mp-units/framework/quantity_point.h>
 #include <mp-units/math.h>
+#include <mp-units/systems/isq/thermodynamics.h>
 #include <mp-units/systems/si.h>
 
 namespace fcarouge {
@@ -59,6 +61,9 @@ template <typename Representation, auto Reference>
 inline constexpr quantity<Representation, Reference>
     one<quantity<Representation, Reference>>{1., Reference};
 
+using mp_units::delta;
+using mp_units::point;
+using mp_units::si::unit_symbols::deg_C;
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
 using mp_units::si::unit_symbols::s;
@@ -68,6 +73,7 @@ using mp_units::si::unit_symbols::s3;
 //! @todo: Consider upstreaming named symbols up to pow<8> because that would be
 //! common for constant jerk uncertainties values?
 inline constexpr auto s4{pow<4>(s)};
+inline constexpr auto deg_C2{pow<2>(deg_C)};
 
 //! @todo Height should be a quantity_point, not a (relative?) quantity?
 //! How to deduce filter types? The multiply operator does not make sense for a
