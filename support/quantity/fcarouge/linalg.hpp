@@ -43,8 +43,8 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Indexed-based linear algebra with mp-units with Eigen
 //! implementations.
 
+#include "fcarouge/eigen.hpp"
 #include "fcarouge/indexed.hpp"
-#include "fcarouge/linalg.hpp"
 #include "fcarouge/unit.hpp"
 
 namespace fcarouge {
@@ -72,9 +72,9 @@ struct indexed::element_traits<Representation,
 //! @todo Consider renaming to column_vector by providing a composable
 //! namespace.
 template <typename Representation, auto... References>
-using vector =
-    indexed::column_vector<column_vector<Representation, sizeof...(References)>,
-                           quantity<Representation, References>...>;
+using vector = indexed::column_vector<
+    eigen::column_vector<Representation, sizeof...(References)>,
+    quantity<Representation, References>...>;
 
 //! @}
 

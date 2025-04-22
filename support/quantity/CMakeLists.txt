@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> ]]
 add_library(kalman_linalg_quantity INTERFACE)
 target_sources(
   kalman_linalg_quantity INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
-                                   FILES "fcarouge/quantity.hpp")
+                                   FILES "fcarouge/linalg.hpp")
 target_link_libraries(
   kalman_linalg_quantity INTERFACE kalman kalman_linalg_eigen
                                    kalman_linalg_indexed kalman_unit_mp_units)
