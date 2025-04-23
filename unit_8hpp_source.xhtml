@@ -147,36 +147,43 @@ $(function(){initNavTree('unit_8hpp_source.xhtml',''); initResizable(true); });
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &lt;mp-units/format.h&gt;</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &lt;mp-units/framework/quantity.h&gt;</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &lt;mp-units/math.h&gt;</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &lt;mp-units/systems/si.h&gt;</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge.xhtml">fcarouge</a> {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Representation, auto Reference&gt;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">   55</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a> = mp_units::quantity&lt;Reference, Representation&gt;;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Representation, auto Reference&gt;</div>
-<div class="foldopen" id="foldopen00059" data-start="{" data-end="};">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#acb2574eac3a0b29969e999a5c55ab538">   59</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity&lt;Representation, Reference&gt;</a></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;quantity&lt;Representation, Reference&gt;</a>&gt;{1., Reference};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &lt;mp-units/framework/quantity_point.h&gt;</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &lt;mp-units/math.h&gt;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &lt;mp-units/systems/isq/thermodynamics.h&gt;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &lt;mp-units/systems/si.h&gt;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge.xhtml">fcarouge</a> {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Representation, auto Reference&gt;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">   57</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a> = mp_units::quantity&lt;Reference, Representation&gt;;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Representation, auto Reference&gt;</div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="};">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#acb2574eac3a0b29969e999a5c55ab538">   61</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity&lt;Representation, Reference&gt;</a></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_variable" href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">one&lt;quantity&lt;Representation, Reference&gt;</a>&gt;{1., Reference};</div>
 </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">using </span>mp_units::si::unit_symbols::m;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">using </span>mp_units::si::unit_symbols::m2;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">using </span>mp_units::si::unit_symbols::s;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">using </span>mp_units::si::unit_symbols::s2;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">using </span>mp_units::si::unit_symbols::s3;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">   70</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">s4</a>{pow&lt;4&gt;(s)};</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f">   75</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f">height</a> = mp_units::quantity&lt;mp_units::isq::height[m]&gt;;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>} <span class="comment">// namespace fcarouge</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">using </span>mp_units::delta;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">using </span>mp_units::point;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">using </span>mp_units::si::unit_symbols::deg_C;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">using </span>mp_units::si::unit_symbols::m;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">using </span>mp_units::si::unit_symbols::m2;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">using </span>mp_units::si::unit_symbols::s;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">using </span>mp_units::si::unit_symbols::s2;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">using </span>mp_units::si::unit_symbols::s3;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">   75</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">s4</a>{pow&lt;4&gt;(s)};</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775">   76</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775">deg_C2</a>{pow&lt;2&gt;(deg_C)};</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_UNIT_HPP</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f">   81</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f">height</a> = mp_units::quantity&lt;mp_units::isq::height[m]&gt;;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>} <span class="comment">// namespace fcarouge</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_UNIT_HPP</span></div>
 <div class="ttc" id="anamespacefcarouge_xhtml"><div class="ttname"><a href="namespacefcarouge.xhtml">fcarouge</a></div><div class="ttdoc">Francois Carouge's projects namespace.</div><div class="ttdef"><b>Definition</b> <a href="baseline_8cpp_source.xhtml#l00046">baseline.cpp:46</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a0aadf374ff49533297b0971d8a66b436"><div class="ttname"><a href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a></div><div class="ttdeci">constexpr auto s4</div><div class="ttdef"><b>Definition</b> <a href="#l00070">unit.hpp:70</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a0aadf374ff49533297b0971d8a66b436"><div class="ttname"><a href="namespacefcarouge.xhtml#a0aadf374ff49533297b0971d8a66b436">fcarouge::s4</a></div><div class="ttdeci">constexpr auto s4</div><div class="ttdef"><b>Definition</b> <a href="#l00075">unit.hpp:75</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a5a8a206bd21b1225ecfea4798c26d775"><div class="ttname"><a href="namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775">fcarouge::deg_C2</a></div><div class="ttdeci">constexpr auto deg_C2</div><div class="ttdef"><b>Definition</b> <a href="#l00076">unit.hpp:76</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a8887e952722c60720253e416166a9233"><div class="ttname"><a href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">fcarouge::one</a></div><div class="ttdeci">constexpr Type one</div><div class="ttdoc">The one matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00267">utility.hpp:267</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a9b124da26de87a5e94ff3b815915769f"><div class="ttname"><a href="namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f">fcarouge::height</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::height[m]&gt; height</div><div class="ttdef"><b>Definition</b> <a href="#l00075">unit.hpp:75</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a9ee3eae5e0b0f9c6c415167c9b0ebe53"><div class="ttname"><a href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">fcarouge::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; Reference, Representation &gt; quantity</div><div class="ttdoc">The physical unit quantity.</div><div class="ttdef"><b>Definition</b> <a href="#l00055">unit.hpp:55</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a9b124da26de87a5e94ff3b815915769f"><div class="ttname"><a href="namespacefcarouge.xhtml#a9b124da26de87a5e94ff3b815915769f">fcarouge::height</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::height[m]&gt; height</div><div class="ttdef"><b>Definition</b> <a href="#l00081">unit.hpp:81</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a9ee3eae5e0b0f9c6c415167c9b0ebe53"><div class="ttname"><a href="namespacefcarouge.xhtml#a9ee3eae5e0b0f9c6c415167c9b0ebe53">fcarouge::quantity</a></div><div class="ttdeci">mp_units::quantity&lt; Reference, Representation &gt; quantity</div><div class="ttdoc">The physical unit quantity.</div><div class="ttdef"><b>Definition</b> <a href="#l00057">unit.hpp:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

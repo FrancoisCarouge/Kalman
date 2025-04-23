@@ -98,6 +98,7 @@ var namespacefcarouge =
     [ "operator==", "namespacefcarouge.xhtml#a84939a609e68330c2689aff14d978311", null ],
     [ "operator|", "namespacefcarouge.xhtml#abb7d0eaceb29f78f64bff07a52fe5824", null ],
     [ "t", "namespacefcarouge.xhtml#a5d1b555b919a51d9ef29849f6e86b48a", null ],
+    [ "deg_C2", "namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775", null ],
     [ "first_v", "namespacefcarouge.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77", null ],
     [ "make_one_generator", "namespacefcarouge.xhtml#a4a557163de917941ab5d3f973845e847", null ],
     [ "make_zero_generator", "namespacefcarouge.xhtml#a7fe918283834c2c859a7325fc8d3a563", null ],

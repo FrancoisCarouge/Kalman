@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['data_0',['data',['../structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209',1,'fcarouge::indexed::matrix::data'],['../structfcarouge_1_1naive_1_1matrix.xhtml#a15e1f8de54dbe4186bf17501a9ac073b',1,'fcarouge::naive::matrix::data']]]
+  ['data_0',['data',['../structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209',1,'fcarouge::indexed::matrix::data'],['../structfcarouge_1_1naive_1_1matrix.xhtml#a15e1f8de54dbe4186bf17501a9ac073b',1,'fcarouge::naive::matrix::data']]],
+  ['deg_5fc2_1',['deg_C2',['../namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775',1,'fcarouge']]]
 ];

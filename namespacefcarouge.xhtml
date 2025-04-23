@@ -298,6 +298,8 @@ Variables</h2></td></tr>
 <tr class="separator:acb2574eac3a0b29969e999a5c55ab538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aadf374ff49533297b0971d8a66b436" id="r_a0aadf374ff49533297b0971d8a66b436"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0aadf374ff49533297b0971d8a66b436">s4</a> {pow&lt;4&gt;(s)}</td></tr>
 <tr class="separator:a0aadf374ff49533297b0971d8a66b436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a8a206bd21b1225ecfea4798c26d775" id="r_a5a8a206bd21b1225ecfea4798c26d775"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a8a206bd21b1225ecfea4798c26d775">deg_C2</a> {pow&lt;2&gt;(deg_C)}</td></tr>
+<tr class="separator:a5a8a206bd21b1225ecfea4798c26d775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Named Values</div></td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903" id="r_ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac4cffefdda8c01a267ce2700c6acb903">size</a> {internal::size&lt;Pack&gt;}</td></tr>
@@ -541,7 +543,7 @@ template&lt;typename... Types&gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a1">kf_1x1x0_building_height_unit.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00081">81</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 
 </div>
 </div>
@@ -607,7 +609,7 @@ template&lt;typename Representation , auto Reference&gt; </div>
 
 <p>The physical unit quantity. </p>
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00055">55</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00057">57</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 
 </div>
 </div>
@@ -1351,6 +1353,31 @@ template&lt;typename Type &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a5a8a206bd21b1225ecfea4798c26d775" name="a5a8a206bd21b1225ecfea4798c26d775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a8a206bd21b1225ecfea4798c26d775">&#9670;&#160;</a></span>deg_C2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::deg_C2 {pow&lt;2&gt;(deg_C)}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00076">76</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>{pow&lt;2&gt;(deg_C)};</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a1e0d4e00e05e1ca7701aa8dfc9681d77" name="a1e0d4e00e05e1ca7701aa8dfc9681d77"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1e0d4e00e05e1ca7701aa8dfc9681d77">&#9670;&#160;</a></span>first_v</h2>
 
@@ -1565,8 +1592,8 @@ template&lt;typename Representation , auto Reference&gt; </div>
 
 <p>The singleton one matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00059">59</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>{1., Reference};</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{1., Reference};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1643,8 +1670,8 @@ requires requires { Type::identity(); }</div>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo</a></b></dt><dd>: Consider upstreaming named symbols up to pow&lt;8&gt; because that would be common for constant jerk uncertainties values? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00070">70</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>{pow&lt;4&gt;(s)};</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>{pow&lt;4&gt;(s)};</div>
 </div><!-- fragment -->
 </div>
 </div>
