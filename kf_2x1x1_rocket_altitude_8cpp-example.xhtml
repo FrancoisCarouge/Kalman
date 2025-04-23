@@ -162,7 +162,7 @@ $(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.xhtml',''); init
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector</a> = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector</a> = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, Size&gt;</a>;</div>
 <div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span><a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, Row, Column&gt;</a>;</div>
 <div class="line"><span class="keyword">using </span>altitude = double;</div>
 <div class="line"><span class="keyword">using </span>acceleration = double;</div>
@@ -192,7 +192,7 @@ $(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.xhtml',''); init
 <div class="line">      <span class="comment">// accelerometer error v is much lower than system&#39;s random acceleration,</span></div>
 <div class="line">      <span class="comment">// therefore we use ϵ^2 as a multiplier of the process noise matrix. This</span></div>
 <div class="line">      <span class="comment">// makes our estimation uncertainty much lower!</span></div>
-<div class="line">      process_uncertainty{[]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector&lt;2&gt;</a> &amp;x,</div>
+<div class="line">      process_uncertainty{[]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector&lt;2&gt;</a> &amp;x,</div>
 <div class="line">                             <span class="keyword">const</span> milliseconds &amp;delta_time) {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> dt{std::chrono::duration&lt;double&gt;(delta_time).count()};</div>
 <div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;2, 2&gt;</a>{</div>
@@ -203,7 +203,7 @@ $(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.xhtml',''); init
 <div class="line">      <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R.</span></div>
 <div class="line">      output_uncertainty{400.},</div>
 <div class="line">      <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">      state_transition{[]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector&lt;2&gt;</a> &amp;x,</div>
+<div class="line">      state_transition{[]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector&lt;2&gt;</a> &amp;x,</div>
 <div class="line">                          [[maybe_unused]] <span class="keyword">const</span> acceleration &amp;u,</div>
 <div class="line">                          <span class="keyword">const</span> milliseconds &amp;delta_time) {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> dt{std::chrono::duration&lt;double&gt;(delta_time).count()};</div>
@@ -212,7 +212,7 @@ $(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.xhtml',''); init
 <div class="line">      <span class="comment">// The control matrix G would be:</span></div>
 <div class="line">      input_control{[](<span class="keyword">const</span> milliseconds &amp;delta_time) {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> dt{std::chrono::duration&lt;double&gt;(delta_time).count()};</div>
-<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector&lt;2&gt;</a>{0.0313, dt};</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector&lt;2&gt;</a>{0.0313, dt};</div>
 <div class="line">      }},</div>
 <div class="line">      <span class="comment">// The filter prediction uses a delta time [ms] parameter.</span></div>
 <div class="line">      prediction_types&lt;milliseconds&gt;};</div>
@@ -340,7 +340,7 @@ $(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.xhtml',''); init
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00077">eigen.hpp:77</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7a5eee105e8b1e887741720d3de13a41"><div class="ttname"><a href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">fcarouge::vector</a></div><div class="ttdeci">indexed::column_vector&lt; column_vector&lt; Representation, sizeof...(References)&gt;, quantity&lt; Representation, References &gt;... &gt; vector</div><div class="ttdoc">Quantity column vector with mp-units and Eigen implementations.</div><div class="ttdef"><b>Definition</b> <a href="quantity_8hpp_source.xhtml#l00075">quantity.hpp:75</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a114d55e3a7dce30d5e08ba1805d700cb"><div class="ttname"><a href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">fcarouge::vector</a></div><div class="ttdeci">indexed::column_vector&lt; eigen::column_vector&lt; Representation, sizeof...(References)&gt;, quantity&lt; Representation, References &gt;... &gt; vector</div><div class="ttdoc">Quantity column vector with mp-units and Eigen implementations.</div><div class="ttdef"><b>Definition</b> <a href="quantity_2fcarouge_2linalg_8hpp_source.xhtml#l00075">linalg.hpp:75</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ae4d1dbbab6a8bdcaa50062d0cb879777"><div class="ttname"><a href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

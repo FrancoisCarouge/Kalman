@@ -146,8 +146,7 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line"><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="quantity_8hpp.xhtml">fcarouge/quantity.hpp</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="unit_8hpp.xhtml">fcarouge/unit.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;format&gt;</span></div>
@@ -155,9 +154,9 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">auto</span>... References&gt;</div>
-<div class="line"><span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector</a> = <a id="_a1" name="_a1"></a><a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::vector</a>&lt;double, References...&gt;;</div>
-<div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector</a>&lt;m, m / s, m / s2, m, m / s, m / s2&gt;&gt;;</div>
-<div class="line"><span class="keyword">using </span>output_t = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector&lt;m, m&gt;</a>;</div>
+<div class="line"><span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector</a> = <a id="_a1" name="_a1"></a><a class="code hl_struct" href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::vector</a>&lt;double, References...&gt;;</div>
+<div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector</a>&lt;m, m / s, m / s2, m, m / s, m / s2&gt;&gt;;</div>
+<div class="line"><span class="keyword">using </span>output_t = <a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector&lt;m, m&gt;</a>;</div>
 <div class="line"><span class="keyword">using </span>estimate_uncertainty =</div>
 <div class="line">    fcarouge::estimate_uncertainty&lt;ᴀʙᵀ&lt;state::type, state::type&gt;&gt;;</div>
 <div class="line"><span class="keyword">using </span>process_uncertainty =</div>
@@ -169,8 +168,8 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line">    fcarouge::state_transition&lt;ᴀʙᵀ&lt;state::type, state::type&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">auto</span>... Reference&gt;</div>
-<div class="line"><span class="keyword">inline</span> fcarouge::output_t&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector</a>&lt;Reference...&gt;&gt; output{</div>
-<div class="line">    fcarouge::output&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">vector</a>&lt;Reference...&gt;&gt;};</div>
+<div class="line"><span class="keyword">inline</span> fcarouge::output_t&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector</a>&lt;Reference...&gt;&gt; output{</div>
+<div class="line">    fcarouge::output&lt;<a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector</a>&lt;Reference...&gt;&gt;};</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
@@ -264,13 +263,11 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line">} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7a5eee105e8b1e887741720d3de13a41"><div class="ttname"><a href="namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41">fcarouge::vector</a></div><div class="ttdeci">indexed::column_vector&lt; column_vector&lt; Representation, sizeof...(References)&gt;, quantity&lt; Representation, References &gt;... &gt; vector</div><div class="ttdoc">Quantity column vector with mp-units and Eigen implementations.</div><div class="ttdef"><b>Definition</b> <a href="quantity_8hpp_source.xhtml#l00075">quantity.hpp:75</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a114d55e3a7dce30d5e08ba1805d700cb"><div class="ttname"><a href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">fcarouge::vector</a></div><div class="ttdeci">indexed::column_vector&lt; eigen::column_vector&lt; Representation, sizeof...(References)&gt;, quantity&lt; Representation, References &gt;... &gt; vector</div><div class="ttdoc">Quantity column vector with mp-units and Eigen implementations.</div><div class="ttdef"><b>Definition</b> <a href="quantity_2fcarouge_2linalg_8hpp_source.xhtml#l00075">linalg.hpp:75</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a8887e952722c60720253e416166a9233"><div class="ttname"><a href="namespacefcarouge.xhtml#a8887e952722c60720253e416166a9233">fcarouge::one</a></div><div class="ttdeci">constexpr Type one</div><div class="ttdoc">The one matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00267">utility.hpp:267</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ae4d1dbbab6a8bdcaa50062d0cb879777"><div class="ttname"><a href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aef6fb6c8a265d85709b951506123a5f1"><div class="ttname"><a href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">fcarouge::zero</a></div><div class="ttdeci">constexpr Type zero</div><div class="ttdoc">The zero matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00285">utility.hpp:285</a></div></div>
-<div class="ttc" id="aquantity_8hpp_xhtml"><div class="ttname"><a href="quantity_8hpp.xhtml">quantity.hpp</a></div><div class="ttdoc">Indexed-based linear algebra with mp-units with Eigen implementations.</div></div>
 <div class="ttc" id="astructfcarouge_1_1indexed_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1indexed_1_1matrix.xhtml">fcarouge::indexed::matrix</a></div><div class="ttdoc">Indexed matrix.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00149">indexed.hpp:149</a></div></div>
-<div class="ttc" id="aunit_8hpp_xhtml"><div class="ttname"><a href="unit_8hpp.xhtml">unit.hpp</a></div><div class="ttdoc">Quantities and units facade for mp-units third party implementation.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

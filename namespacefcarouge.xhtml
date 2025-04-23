@@ -389,10 +389,10 @@ requires requires { Type::zero(); }</td></tr>
 <tr class="memitem:a7426c99fa5df210b90d63cd32c0b04f4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7426c99fa5df210b90d63cd32c0b04f4">row_vector</a> = <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt;Type, decltype(Column){1}, Column, Copyable&gt;</td></tr>
 <tr class="memdesc:a7426c99fa5df210b90d63cd32c0b04f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine lazy row vector.  <br /></td></tr>
 <tr class="separator:a7426c99fa5df210b90d63cd32c0b04f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a5eee105e8b1e887741720d3de13a41" id="r_a7a5eee105e8b1e887741720d3de13a41"><td class="memTemplParams" colspan="2">template&lt;typename Representation , auto... References&gt; </td></tr>
-<tr class="memitem:a7a5eee105e8b1e887741720d3de13a41"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7a5eee105e8b1e887741720d3de13a41">vector</a></td></tr>
-<tr class="memdesc:a7a5eee105e8b1e887741720d3de13a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
-<tr class="separator:a7a5eee105e8b1e887741720d3de13a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a114d55e3a7dce30d5e08ba1805d700cb" id="r_a114d55e3a7dce30d5e08ba1805d700cb"><td class="memTemplParams" colspan="2">template&lt;typename Representation , auto... References&gt; </td></tr>
+<tr class="memitem:a114d55e3a7dce30d5e08ba1805d700cb"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a114d55e3a7dce30d5e08ba1805d700cb">vector</a></td></tr>
+<tr class="memdesc:a114d55e3a7dce30d5e08ba1805d700cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
+<tr class="separator:a114d55e3a7dce30d5e08ba1805d700cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d1b555b919a51d9ef29849f6e86b48a" id="r_a5d1b555b919a51d9ef29849f6e86b48a"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a5d1b555b919a51d9ef29849f6e86b48a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5d1b555b919a51d9ef29849f6e86b48a">t</a> (const Type &amp;value)</td></tr>
 <tr class="memdesc:a5d1b555b919a51d9ef29849f6e86b48a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose helper function.  <br /></td></tr>
@@ -694,8 +694,8 @@ template&lt;typename Type , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a id="a7a5eee105e8b1e887741720d3de13a41" name="a7a5eee105e8b1e887741720d3de13a41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a5eee105e8b1e887741720d3de13a41">&#9670;&#160;</a></span>vector</h2>
+<a id="a114d55e3a7dce30d5e08ba1805d700cb" name="a114d55e3a7dce30d5e08ba1805d700cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a114d55e3a7dce30d5e08ba1805d700cb">&#9670;&#160;</a></span>vector</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -703,21 +703,20 @@ template&lt;typename Type , std::size_t Size&gt; </div>
 template&lt;typename Representation , auto... References&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a7a5eee105e8b1e887741720d3de13a41">fcarouge::vector</a></td>
+          <td class="memname">using <a class="el" href="#a114d55e3a7dce30d5e08ba1805d700cb">fcarouge::vector</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    indexed::column_vector&lt;<a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector</a>&lt;Representation, <span class="keyword">sizeof</span>...(References)&gt;,</div>
-<div class="line">                           quantity&lt;Representation, References&gt;...&gt;</div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
+<b>Initial value:</b><div class="fragment"><div class="line"> indexed::column_vector&lt;</div>
+<div class="line">    eigen::column_vector&lt;Representation, <span class="keyword">sizeof</span>...(References)&gt;,</div>
+<div class="line">    quantity&lt;Representation, References&gt;...&gt;</div>
 </div><!-- fragment -->
 <p>Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000042">Todo</a></b></dt><dd>Consider renaming to column_vector by providing a composable namespace. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a0">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a0">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="quantity_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="quantity_8hpp_source.xhtml">quantity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="quantity_2fcarouge_2linalg_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="quantity_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
 
 </div>
 </div>

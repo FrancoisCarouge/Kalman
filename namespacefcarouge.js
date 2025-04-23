@@ -80,7 +80,7 @@ var namespacefcarouge =
     [ "row_vector", "namespacefcarouge.xhtml#a7426c99fa5df210b90d63cd32c0b04f4", null ],
     [ "transpose", "namespacefcarouge.xhtml#a06ed7a99de8c150ba47d98be11bf795d", null ],
     [ "tuple_n_type", "namespacefcarouge.xhtml#a0c5e16e2c726f4a91a88f3563be340b7", null ],
-    [ "vector", "namespacefcarouge.xhtml#a7a5eee105e8b1e887741720d3de13a41", null ],
+    [ "vector", "namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb", null ],
     [ "for_constexpr", "namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b", null ],
     [ "kalman", "namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777", null ],
     [ "make_generator", "namespacefcarouge.xhtml#ae167596e2c65ae7024cbc80f5b5d1974", null ],
