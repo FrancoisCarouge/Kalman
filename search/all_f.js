@@ -16,5 +16,8 @@ var searchData=
   ['modifiers_13',['Modifiers',['../index.xhtml#modifiers',1,'']]],
   ['modify_14',['modify',['../_l_i_c_e_n_s_e_8txt.xhtml#ab211d3cae85d1f657e0517e9184e50a6',1,'LICENSE.txt']]],
   ['motivations_15',['Motivations',['../index.xhtml#motivations',1,'']]],
-  ['multiplies_16',['multiplies',['../structfcarouge_1_1multiplies.xhtml',1,'fcarouge']]]
+  ['multiplies_16',['multiplies',['../structfcarouge_1_1multiplies.xhtml',1,'fcarouge']]],
+  ['multiplies_3c_20int_2c_20mp_5funits_3a_3aquantity_5fpoint_3c_20reference_20_3e_20_3e_17',['multiplies&lt; int, mp_units::quantity_point&lt; Reference &gt; &gt;',['../structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4.xhtml',1,'fcarouge']]],
+  ['multiplies_3c_20mp_5funits_3a_3aquantity_5fpoint_3c_20reference_20_3e_2c_20int_20_3e_18',['multiplies&lt; mp_units::quantity_point&lt; Reference &gt;, int &gt;',['../structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4.xhtml',1,'fcarouge']]],
+  ['multiplies_3c_20mp_5funits_3a_3aquantity_5fpoint_3c_20reference1_20_3e_2c_20mp_5funits_3a_3aquantity_5fpoint_3c_20reference2_20_3e_20_3e_19',['multiplies&lt; mp_units::quantity_point&lt; Reference1 &gt;, mp_units::quantity_point&lt; Reference2 &gt; &gt;',['../structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference1_01_4_00_01mp__unitc3778cb8b7e6a51fa048f5b3eef0b348.xhtml',1,'fcarouge']]]
 ];

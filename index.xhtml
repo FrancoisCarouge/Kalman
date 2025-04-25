@@ -116,12 +116,12 @@ Examples</h1>
 <div class="line">    state{60.},</div>
 <div class="line">    output&lt;double&gt;,</div>
 <div class="line">    estimate_uncertainty{225.},</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a0e8571d2ddad32819a0f011898e493de">output_uncertainty</a>{25.}</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a>{25.}</div>
 <div class="line">  };</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(48.54);</div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a665945f3d976759241bf85f4102a2d16"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">fcarouge::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00355">factory.hpp:355</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03_xhtml_a0e8571d2ddad32819a0f011898e493de"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a0e8571d2ddad32819a0f011898e493de">fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::output_uncertainty</a></div><div class="ttdeci">fcarouge::output_uncertainty&lt; ᴀʙᵀ&lt; output_t, output_t &gt; &gt; output_uncertainty</div><div class="ttdef"><b>Definition</b> <a href="kf__6x2x0__vehicle__location__unit_8cpp_source.xhtml#l00055">kf_6x2x0_vehicle_location_unit.cpp:55</a></div></div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md6x2-constant-acceleration-dynamic-model-filter"></a>
 6x2 Constant Acceleration Dynamic Model Filter</h2>
@@ -135,17 +135,17 @@ Examples</h1>
 <div class="line">                         {0., 0., 0., 500., 0., 0.},</div>
 <div class="line">                         {0., 0., 0., 0., 500., 0.},</div>
 <div class="line">                         {0., 0., 0., 0., 0., 500.}},</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ab46557ef0fd2e5e9792c3f900caee10d">process_uncertainty</a>{0.2 * 0.2 *</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a>{0.2 * 0.2 *</div>
 <div class="line">                        matrix&lt;6, 6&gt;{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
 <div class="line">                                      {0.5, 1., 1., 0., 0., 0.},</div>
 <div class="line">                                      {0.5, 1., 1., 0., 0., 0.},</div>
 <div class="line">                                      {0., 0., 0., 0.25, 0.5, 0.5},</div>
 <div class="line">                                      {0., 0., 0., 0.5, 1., 1.},</div>
 <div class="line">                                      {0., 0., 0., 0.5, 1., 1.}}},</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a0e8571d2ddad32819a0f011898e493de">output_uncertainty</a>{{9., 0.}, {0., 9.}},</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ad1e4ac6d2a5bc23704ab7ae15312f36e">output_model</a>{{1., 0., 0., 0., 0., 0.},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a>{{9., 0.}, {0., 9.}},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model</a>{{1., 0., 0., 0., 0., 0.},</div>
 <div class="line">                 {0., 0., 0., 1., 0., 0.}},</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a3d271406538a46ddde4e6b3f3ee54867">state_transition</a>{{1., 1., 0.5, 0., 0., 0.},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">state_transition</a>{{1., 1., 0.5, 0., 0., 0.},</div>
 <div class="line">                     {0., 1., 1., 0., 0., 0.},</div>
 <div class="line">                     {0., 0., 1., 0., 0., 0.},</div>
 <div class="line">                     {0., 0., 0., 1., 1., 0.5},</div>
@@ -154,9 +154,9 @@ Examples</h1>
 <div class="line"> </div>
 <div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.predict();</div>
 <div class="line"><a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(-393.66, 300.4);</div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03_xhtml_a3d271406538a46ddde4e6b3f3ee54867"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a3d271406538a46ddde4e6b3f3ee54867">fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::state_transition</a></div><div class="ttdeci">fcarouge::state_transition&lt; ᴀʙᵀ&lt; state::type, state::type &gt; &gt; state_transition</div><div class="ttdef"><b>Definition</b> <a href="kf__6x2x0__vehicle__location__unit_8cpp_source.xhtml#l00058">kf_6x2x0_vehicle_location_unit.cpp:58</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03_xhtml_ab46557ef0fd2e5e9792c3f900caee10d"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ab46557ef0fd2e5e9792c3f900caee10d">fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::process_uncertainty</a></div><div class="ttdeci">fcarouge::process_uncertainty&lt; ᴀʙᵀ&lt; state::type, state::type &gt; &gt; process_uncertainty</div><div class="ttdef"><b>Definition</b> <a href="kf__6x2x0__vehicle__location__unit_8cpp_source.xhtml#l00053">kf_6x2x0_vehicle_location_unit.cpp:53</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03_xhtml_ad1e4ac6d2a5bc23704ab7ae15312f36e"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ad1e4ac6d2a5bc23704ab7ae15312f36e">fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::output_model</a></div><div class="ttdeci">fcarouge::output_model&lt; ᴀʙᵀ&lt; output_t, state::type &gt; &gt; output_model</div><div class="ttdef"><b>Definition</b> <a href="kf__6x2x0__vehicle__location__unit_8cpp_source.xhtml#l00057">kf_6x2x0_vehicle_location_unit.cpp:57</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a198bcbdb5521548ddb61317e21ff8f1f"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">fcarouge::internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a88ca8cd4d48af886c2c73835d77a1bf3"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">fcarouge::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_af41c59712adaec8d2aac3366133cd381"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">fcarouge::internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_vehicle_location.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md4x1-nonlinear-dynamic-model-extended-filter"></a>
 4x1 Nonlinear Dynamic Model Extended Filter</h2>
@@ -169,12 +169,12 @@ Examples</h1>
 <div class="line">                         {0.F, radius_covariance, 0.F, 0.F},</div>
 <div class="line">                         {0.F, 0.F, position_covariance, 0.F},</div>
 <div class="line">                         {0.F, 0.F, 0.F, position_covariance}},</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ab46557ef0fd2e5e9792c3f900caee10d">process_uncertainty</a>{{strength_noise, 0.F, 0.F, 0.F},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">process_uncertainty</a>{{strength_noise, 0.F, 0.F, 0.F},</div>
 <div class="line">                        {0.F, distance_noise, 0.F, 0.F},</div>
 <div class="line">                        {0.F, 0.F, distance_noise, 0.F},</div>
 <div class="line">                        {0.F, 0.F, 0.F, distance_noise}},</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a0e8571d2ddad32819a0f011898e493de">output_uncertainty</a>{measure_noise},</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ad1e4ac6d2a5bc23704ab7ae15312f36e">output_model</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">output_uncertainty</a>{measure_noise},</div>
+<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">output_model</a>{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
 <div class="line">                    <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; matrix&lt;1, 4&gt; {</div>
 <div class="line">      <span class="keyword">const</span> <span class="keywordtype">float</span> expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
 <div class="line">                                   std::pow(x[3] - position_y, 2.F)) /</div>

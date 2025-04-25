@@ -90,15 +90,9 @@ var namespacefcarouge_1_1test =
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__println__1x1x0_8cpp_03.xhtml#a19658fc6820d46e2c632c66dd002b390", null ]
     ] ],
     [ "anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml", [
-      [ "estimate_uncertainty", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#aaaec5e49432bca340aa1fdec234ad6f4", null ],
-      [ "output_model", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ad1e4ac6d2a5bc23704ab7ae15312f36e", null ],
-      [ "output_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a1c3d321d0cbc5b1dc6cc06d538583ffb", null ],
-      [ "output_uncertainty", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a0e8571d2ddad32819a0f011898e493de", null ],
-      [ "process_uncertainty", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ab46557ef0fd2e5e9792c3f900caee10d", null ],
-      [ "state", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a199ef7853dd69ee21e4f9d61fc6f3cda", null ],
-      [ "state_transition", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a3d271406538a46ddde4e6b3f3ee54867", null ],
-      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#ad52f25e4f994888d2def4fcd3944eecd", null ],
-      [ "output", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a1dc9bb7e116b509044cbf404b9bca320", null ],
+      [ "output_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#af632052e3b2e1aa295ff0e08509eb1a4", null ],
+      [ "state_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#afc3d65220cc665fecfdda3c578142021", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#af8847aa1d9d81f29d46aceb140d5aa60", null ],
       [ "sample", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a0f3e87ddbdd244bac3460f45a1cdf4fc", null ]
     ] ],
     [ "anonymous_namespace{linalg_addition.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml", [

@@ -1,5 +1,7 @@
 var quantity_2fcarouge_2linalg_8hpp =
 [
-    [ "fcarouge::indexed::element_traits< Representation, quantity< Representation, Reference > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4" ],
-    [ "vector", "quantity_2fcarouge_2linalg_8hpp.xhtml#a114d55e3a7dce30d5e08ba1805d700cb", null ]
+    [ "fcarouge::indexed::element_traits< Representation, mp_units::quantity_point< Reference, OriginPoint, Representation > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163" ],
+    [ "fcarouge::indexed::element_traits< Representation, mp_units::quantity< Reference, Representation > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384" ],
+    [ "fcarouge::multiplies< mp_units::quantity_point< Reference >, int >", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4.xhtml", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4" ],
+    [ "fcarouge::multiplies< int, mp_units::quantity_point< Reference > >", "structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4.xhtml", "structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4" ]
 ];

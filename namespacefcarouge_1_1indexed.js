@@ -1,7 +1,8 @@
 var namespacefcarouge_1_1indexed =
 [
     [ "element_traits", "structfcarouge_1_1indexed_1_1element__traits.xhtml", "structfcarouge_1_1indexed_1_1element__traits" ],
-    [ "element_traits< Representation, quantity< Representation, Reference > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4" ],
+    [ "element_traits< Representation, mp_units::quantity< Reference, Representation > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384" ],
+    [ "element_traits< Representation, mp_units::quantity_point< Reference, OriginPoint, Representation > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163" ],
     [ "matrix", "structfcarouge_1_1indexed_1_1matrix.xhtml", "structfcarouge_1_1indexed_1_1matrix" ],
     [ "uniform", "conceptfcarouge_1_1indexed_1_1uniform.xhtml", null ],
     [ "in_range", "conceptfcarouge_1_1indexed_1_1in__range.xhtml", null ],

@@ -167,6 +167,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1multiplies.xhtml">multiplies</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type multiplies expression type specialization point.  <a href="structfcarouge_1_1multiplies.xhtml#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4.xhtml">multiplies&lt; int, mp_units::quantity_point&lt; Reference &gt; &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies specialization type for uncertainty type deduction.  <a href="structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4.xhtml">multiplies&lt; mp_units::quantity_point&lt; Reference &gt;, int &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies specialization type for uncertainty type deduction.  <a href="structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference1_01_4_00_01mp__unitc3778cb8b7e6a51fa048f5b3eef0b348.xhtml">multiplies&lt; mp_units::quantity_point&lt; Reference1 &gt;, mp_units::quantity_point&lt; Reference2 &gt; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1printer__decorator.xhtml">printer_decorator</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1transposes.xhtml">transposes</a></td></tr>
@@ -219,12 +227,16 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a9ee3eae5e0b0f9c6c415167c9b0ebe53" id="r_a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memTemplParams" colspan="2">template&lt;typename Representation , auto Reference&gt; </td></tr>
-<tr class="memitem:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a> = mp_units::quantity&lt;Reference, Representation&gt;</td></tr>
-<tr class="memdesc:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="mdescLeft">&#160;</td><td class="mdescRight">The physical unit quantity.  <br /></td></tr>
-<tr class="separator:a9ee3eae5e0b0f9c6c415167c9b0ebe53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b124da26de87a5e94ff3b815915769f" id="r_a9b124da26de87a5e94ff3b815915769f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b124da26de87a5e94ff3b815915769f">height</a> = mp_units::quantity&lt;mp_units::isq::height[m]&gt;</td></tr>
-<tr class="separator:a9b124da26de87a5e94ff3b815915769f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66bc0b3b05af74a53388c91b4dfde9e9" id="r_a66bc0b3b05af74a53388c91b4dfde9e9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66bc0b3b05af74a53388c91b4dfde9e9">height</a> = mp_units::quantity_point&lt;mp_units::isq::height[m]&gt;</td></tr>
+<tr class="separator:a66bc0b3b05af74a53388c91b4dfde9e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0480c6f84be0a01264da3eb984c103e1" id="r_a0480c6f84be0a01264da3eb984c103e1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0480c6f84be0a01264da3eb984c103e1">position</a> = mp_units::quantity_point&lt;mp_units::isq::length[m]&gt;</td></tr>
+<tr class="separator:a0480c6f84be0a01264da3eb984c103e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7062d0a510937d0a2201f1167b6066cc" id="r_a7062d0a510937d0a2201f1167b6066cc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7062d0a510937d0a2201f1167b6066cc">velocity</a> = mp_units::quantity_point&lt;mp_units::isq::velocity[m / s]&gt;</td></tr>
+<tr class="separator:a7062d0a510937d0a2201f1167b6066cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bf1207d66f4f99f4c7175ac6a65dfd4" id="r_a3bf1207d66f4f99f4c7175ac6a65dfd4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bf1207d66f4f99f4c7175ac6a65dfd4">acceleration</a></td></tr>
+<tr class="separator:a3bf1207d66f4f99f4c7175ac6a65dfd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a1efa10d3f0e4480b2ed1745c672aa1" id="r_a1a1efa10d3f0e4480b2ed1745c672aa1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a></td></tr>
+<tr class="separator:a1a1efa10d3f0e4480b2ed1745c672aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -292,10 +304,6 @@ Variables</h2></td></tr>
 <tr class="memitem:a7fe918283834c2c859a7325fc8d3a563" id="r_a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplParams" colspan="2">template&lt;typename Type , auto Row, auto Column&gt; </td></tr>
 <tr class="memitem:a7fe918283834c2c859a7325fc8d3a563"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7fe918283834c2c859a7325fc8d3a563">make_zero_generator</a></td></tr>
 <tr class="separator:a7fe918283834c2c859a7325fc8d3a563"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb2574eac3a0b29969e999a5c55ab538" id="r_acb2574eac3a0b29969e999a5c55ab538"><td class="memTemplParams" colspan="2">template&lt;typename Representation , auto Reference&gt; </td></tr>
-<tr class="memitem:acb2574eac3a0b29969e999a5c55ab538"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a>&lt; Representation, Reference &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#acb2574eac3a0b29969e999a5c55ab538">one&lt; quantity&lt; Representation, Reference &gt; &gt;</a> {1., Reference}</td></tr>
-<tr class="memdesc:acb2574eac3a0b29969e999a5c55ab538"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton one matrix specialization.  <br /></td></tr>
-<tr class="separator:acb2574eac3a0b29969e999a5c55ab538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aadf374ff49533297b0971d8a66b436" id="r_a0aadf374ff49533297b0971d8a66b436"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0aadf374ff49533297b0971d8a66b436">s4</a> {pow&lt;4&gt;(s)}</td></tr>
 <tr class="separator:a0aadf374ff49533297b0971d8a66b436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a8a206bd21b1225ecfea4798c26d775" id="r_a5a8a206bd21b1225ecfea4798c26d775"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a8a206bd21b1225ecfea4798c26d775">deg_C2</a> {pow&lt;2&gt;(deg_C)}</td></tr>
@@ -391,10 +399,6 @@ requires requires { Type::zero(); }</td></tr>
 <tr class="memitem:a7426c99fa5df210b90d63cd32c0b04f4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7426c99fa5df210b90d63cd32c0b04f4">row_vector</a> = <a class="el" href="structfcarouge_1_1matrix.xhtml">matrix</a>&lt;Type, decltype(Column){1}, Column, Copyable&gt;</td></tr>
 <tr class="memdesc:a7426c99fa5df210b90d63cd32c0b04f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine lazy row vector.  <br /></td></tr>
 <tr class="separator:a7426c99fa5df210b90d63cd32c0b04f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a114d55e3a7dce30d5e08ba1805d700cb" id="r_a114d55e3a7dce30d5e08ba1805d700cb"><td class="memTemplParams" colspan="2">template&lt;typename Representation , auto... References&gt; </td></tr>
-<tr class="memitem:a114d55e3a7dce30d5e08ba1805d700cb"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a114d55e3a7dce30d5e08ba1805d700cb">vector</a></td></tr>
-<tr class="memdesc:a114d55e3a7dce30d5e08ba1805d700cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.  <br /></td></tr>
-<tr class="separator:a114d55e3a7dce30d5e08ba1805d700cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d1b555b919a51d9ef29849f6e86b48a" id="r_a5d1b555b919a51d9ef29849f6e86b48a"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a5d1b555b919a51d9ef29849f6e86b48a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5d1b555b919a51d9ef29849f6e86b48a">t</a> (const Type &amp;value)</td></tr>
 <tr class="memdesc:a5d1b555b919a51d9ef29849f6e86b48a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose helper function.  <br /></td></tr>
@@ -419,8 +423,30 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 </div><div class="memdoc">
 
 <p>The evaluated type of the ABᵀ expression. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a6">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00229">229</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3bf1207d66f4f99f4c7175ac6a65dfd4" name="a3bf1207d66f4f99f4c7175ac6a65dfd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bf1207d66f4f99f4c7175ac6a65dfd4">&#9670;&#160;</a></span>acceleration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a3bf1207d66f4f99f4c7175ac6a65dfd4">fcarouge::acceleration</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    mp_units::quantity_point&lt;mp_units::isq::acceleration[m / s2]&gt;</div>
+</div><!-- fragment --><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a2">kf_2x1x1_rocket_altitude.cpp</a>, and <a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a4">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00070">70</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 
 </div>
 </div>
@@ -439,6 +465,7 @@ template&lt;typename Type  = double, std::size_t Row = 1&gt; </div>
 </div><div class="memdoc">
 
 <p>Scalar type indexed-based column vector with <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
+<p>Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations.</p>
 <p>Scalar type indexed-based column vector with naive implementations.</p>
 <p>Coroutine lazy column vector. </p>
 
@@ -502,6 +529,8 @@ template&lt;typename Type &gt; </div>
 </div><div class="memdoc">
 
 <p>Evaluater helper type. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a7">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00163">163</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
@@ -528,22 +557,21 @@ template&lt;typename... Types&gt; </div>
 
 </div>
 </div>
-<a id="a9b124da26de87a5e94ff3b815915769f" name="a9b124da26de87a5e94ff3b815915769f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b124da26de87a5e94ff3b815915769f">&#9670;&#160;</a></span>height</h2>
+<a id="a66bc0b3b05af74a53388c91b4dfde9e9" name="a66bc0b3b05af74a53388c91b4dfde9e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66bc0b3b05af74a53388c91b4dfde9e9">&#9670;&#160;</a></span>height</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a9b124da26de87a5e94ff3b815915769f">fcarouge::height</a> = mp_units::quantity&lt;mp_units::isq::height[m]&gt;</td>
+          <td class="memname">using <a class="el" href="#a66bc0b3b05af74a53388c91b4dfde9e9">fcarouge::height</a> = mp_units::quantity_point&lt;mp_units::isq::height[m]&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo</a></b></dt><dd>Height should be a quantity_point, not a (relative?) quantity? How to deduce filter types? The multiply operator does not make sense for a quantity_point. Deducing the types is not quite correct? </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a1">kf_1x1x0_building_height_unit.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00081">81</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00067">67</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 
 </div>
 </div>
@@ -571,6 +599,24 @@ template&lt;typename Type  = double, std::size_t Row = 1, std::size_t Column = 1
 
 </div>
 </div>
+<a id="a0480c6f84be0a01264da3eb984c103e1" name="a0480c6f84be0a01264da3eb984c103e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0480c6f84be0a01264da3eb984c103e1">&#9670;&#160;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a0480c6f84be0a01264da3eb984c103e1">fcarouge::position</a> = mp_units::quantity_point&lt;mp_units::isq::length[m]&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x1_dog_position_unit_8cpp-example.xhtml#a1">kf_1x1x1_dog_position_unit.cpp</a>, and <a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a2">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00068">68</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a26e349ac2062d99cb0962705f1f93657" name="a26e349ac2062d99cb0962705f1f93657"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26e349ac2062d99cb0962705f1f93657">&#9670;&#160;</a></span>product</h2>
 
@@ -588,28 +634,10 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 <div class="line">    std::invoke_result_t&lt;multiplies&lt;Lhs, Rhs&gt;, <span class="keyword">const</span> Lhs &amp;, <span class="keyword">const</span> Rhs &amp;&gt;</div>
 </div><!-- fragment -->
 <p>Helper type to deduce the result type of the product. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a2">kf_1x1x0_building_height_unit.cpp</a>.</dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00213">213</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a9ee3eae5e0b0f9c6c415167c9b0ebe53" name="a9ee3eae5e0b0f9c6c415167c9b0ebe53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">&#9670;&#160;</a></span>quantity</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Representation , auto Reference&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">fcarouge::quantity</a> = mp_units::quantity&lt;Reference, Representation&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The physical unit quantity. </p>
-
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00057">57</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 
 </div>
 </div>
@@ -656,6 +684,26 @@ template&lt;typename Type  = double, auto Column = 1, bool Copyable = false&gt; 
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a1a1efa10d3f0e4480b2ed1745c672aa1" name="a1a1efa10d3f0e4480b2ed1745c672aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a1efa10d3f0e4480b2ed1745c672aa1">&#9670;&#160;</a></span>temperature</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a1a1efa10d3f0e4480b2ed1745c672aa1">fcarouge::temperature</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    mp_units::quantity_point&lt;mp_units::isq::Celsius_temperature[deg_C]&gt;</div>
+</div><!-- fragment --><dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature.cpp</a>, and <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00072">72</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a06ed7a99de8c150ba47d98be11bf795d" name="a06ed7a99de8c150ba47d98be11bf795d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a06ed7a99de8c150ba47d98be11bf795d">&#9670;&#160;</a></span>transpose</h2>
 
@@ -696,29 +744,21 @@ template&lt;typename Type , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a id="a114d55e3a7dce30d5e08ba1805d700cb" name="a114d55e3a7dce30d5e08ba1805d700cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a114d55e3a7dce30d5e08ba1805d700cb">&#9670;&#160;</a></span>vector</h2>
+<a id="a7062d0a510937d0a2201f1167b6066cc" name="a7062d0a510937d0a2201f1167b6066cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7062d0a510937d0a2201f1167b6066cc">&#9670;&#160;</a></span>velocity</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;typename Representation , auto... References&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a114d55e3a7dce30d5e08ba1805d700cb">fcarouge::vector</a></td>
+          <td class="memname">using <a class="el" href="#a7062d0a510937d0a2201f1167b6066cc">fcarouge::velocity</a> = mp_units::quantity_point&lt;mp_units::isq::velocity[m / s]&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> indexed::column_vector&lt;</div>
-<div class="line">    eigen::column_vector&lt;Representation, <span class="keyword">sizeof</span>...(References)&gt;,</div>
-<div class="line">    quantity&lt;Representation, References&gt;...&gt;</div>
-</div><!-- fragment -->
-<p>Quantity column vector with mp-units and <a class="el" href="namespace_eigen.xhtml">Eigen</a> implementations. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000042">Todo</a></b></dt><dd>Consider renaming to column_vector by providing a composable namespace. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a0">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a0">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a0">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a3">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="quantity_2fcarouge_2linalg_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="quantity_2fcarouge_2linalg_8hpp_source.xhtml">linalg.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00069">69</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
 
 </div>
 </div>
@@ -805,7 +845,7 @@ template&lt;typename... Arguments&gt; </div>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo</a></b></dt><dd><p class="startdd">Should the parameter be named configurations? </p>
 <p class="enddd">Should the configuration examples, supports be documented here? </p>
 </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a3">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a0">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a0">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#a0">kf_1x1x1_dog_position.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a3">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a3">kf_6x2x0_vehicle_location.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a2">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a2">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_soaring_8cpp-example.xhtml#a2">ekf_4x1x0_soaring.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a0">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a0">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_dog_position_8cpp-example.xhtml#a0">kf_1x1x1_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_dog_position_unit_8cpp-example.xhtml#a0">kf_1x1x1_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x1_rocket_altitude_8cpp-example.xhtml#a3">kf_2x1x1_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_8cpp-example.xhtml#a2">kf_6x2x0_vehicle_location.cpp</a>, <a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a1">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a1">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
 </div>
@@ -1372,9 +1412,11 @@ template&lt;typename Type &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a2">kf_1x1x0_liquid_temperature_unit.cpp</a>.</dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00076">76</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>{pow&lt;2&gt;(deg_C)};</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00065">65</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{pow&lt;2&gt;(deg_C)};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1493,7 +1535,7 @@ template&lt;typename Type  = double&gt; </div>
 </div><!-- fragment -->
 <p>The one matrix. </p>
 <p>User-defined matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This matrix is also known as the identity matrix for square matrices of non-quantity scalar types. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a3">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a5">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00267">267</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
@@ -1568,35 +1610,6 @@ template&lt;typename Type , auto Row, auto Column&gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="acb2574eac3a0b29969e999a5c55ab538" name="acb2574eac3a0b29969e999a5c55ab538"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb2574eac3a0b29969e999a5c55ab538">&#9670;&#160;</a></span>one&lt; quantity&lt; Representation, Reference &gt; &gt;</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Representation , auto Reference&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a>&lt;Representation, Reference&gt; <a class="el" href="#a8887e952722c60720253e416166a9233">fcarouge::one</a>&lt; <a class="el" href="#a9ee3eae5e0b0f9c6c415167c9b0ebe53">quantity</a>&lt; Representation, Reference &gt; &gt; {1., Reference}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The singleton one matrix specialization. </p>
-
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00061">61</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{1., Reference};</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="af1e24dabeb646745f490f0aa51f690b5" name="af1e24dabeb646745f490f0aa51f690b5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af1e24dabeb646745f490f0aa51f690b5">&#9670;&#160;</a></span>one&lt; Type &gt;</h2>
 
@@ -1668,10 +1681,9 @@ requires requires { Type::identity(); }</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000032">Todo</a></b></dt><dd>: Consider upstreaming named symbols up to pow&lt;8&gt; because that would be common for constant jerk uncertainties values? </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00075">75</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   75</span>{pow&lt;4&gt;(s)};</div>
+<p class="definition">Definition at line <a class="el" href="unit_8hpp_source.xhtml#l00064">64</a> of file <a class="el" href="unit_8hpp_source.xhtml">unit.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>{pow&lt;4&gt;(s)};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1733,7 +1745,7 @@ template&lt;typename Type  = double&gt; </div>
 </div><!-- fragment -->
 <p>The zero matrix. </p>
 <p>User-defined. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a4">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a4">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a8">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a3">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00285">285</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>

@@ -15,8 +15,14 @@ var namespacefcarouge_1_1sample =
     [ "anonymous_namespace{kf_1x1x0_liquid_temperature.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03.xhtml", [
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature_8cpp_03.xhtml#aee7886fbdd52abf0585680fdbaf27f7d", null ]
     ] ],
+    [ "anonymous_namespace{kf_1x1x0_liquid_temperature_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature__unit_8cpp_03.xhtml", [
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__liquid__temperature__unit_8cpp_03.xhtml#af8d2158ea9128742027d135c9a7a7ec4", null ]
+    ] ],
     [ "anonymous_namespace{kf_1x1x1_dog_position.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__dog__position_8cpp_03.xhtml", [
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__dog__position_8cpp_03.xhtml#ac888bcefb0bef1489b5a574c50a5e455", null ]
+    ] ],
+    [ "anonymous_namespace{kf_1x1x1_dog_position_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__dog__position__unit_8cpp_03.xhtml", [
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__dog__position__unit_8cpp_03.xhtml#a9ea881050d1f8379aaf4773a32151f2a", null ]
     ] ],
     [ "anonymous_namespace{kf_2x1x1_rocket_altitude.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml", [
       [ "acceleration", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#ae5283deebaa0a27e883752f003e5d55e", null ],

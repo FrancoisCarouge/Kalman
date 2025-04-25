@@ -154,11 +154,11 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span><a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector</a> = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;float, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;float, Size&gt;</a>;</div>
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;8&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector&lt;4&gt;</a> initial_box{605.0F, 248.0F, 0.20481927710843373F, 332.0F};</div>
+<div class="line">  <span class="keyword">const</span> vector&lt;4&gt; initial_box{605.0F, 248.0F, 0.20481927710843373F, 332.0F};</div>
 <div class="line">  <span class="comment">// Experimental position and velocity uncertainty standard deviation</span></div>
 <div class="line">  <span class="comment">// weights.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> position_weight{1.F / 20.F};</div>
@@ -169,7 +169,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> delta_time{1.F};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
-<div class="line">  <a id="a2" name="a2"></a><a class="code hl_function" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a> filter{</div>
+<div class="line">  <a id="a1" name="a1"></a><a class="code hl_function" href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The filter is initialized with the first observed output.</span></div>
 <div class="line">      <span class="comment">// Bounding box position and velocity estimated state X: [px,</span></div>
 <div class="line">      <span class="comment">// py, pa, ph, vx, vy, va, vh].</span></div>
@@ -180,7 +180,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">      <span class="comment">// The estimate uncertainty P:</span></div>
 <div class="line">      estimate_uncertainty{</div>
 <div class="line">          [&amp;position_weight, &amp;velocity_weight, &amp;initial_box]() {</div>
-<div class="line">            <a id="a3" name="a3"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 8, 8&gt;</a> value{<a id="a4" name="a4"></a><a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;matrix&lt;float, 8, 8&gt;</a>&gt;};</div>
+<div class="line">            <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 8, 8&gt;</a> value{<a id="a3" name="a3"></a><a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;matrix&lt;float, 8, 8&gt;</a>&gt;};</div>
 <div class="line">            value(0, 0) = std::powf(2.F * position_weight * initial_box(3), 2);</div>
 <div class="line">            value(1, 1) = std::powf(2.F * position_weight * initial_box(3), 2);</div>
 <div class="line">            value(2, 2) = std::powf(1e-2F, 2);</div>
@@ -209,7 +209,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">      <span class="comment">// R</span></div>
 <div class="line">      output_uncertainty{</div>
 <div class="line">          <span class="comment">// Observation, measurement noise covariance.</span></div>
-<div class="line">          [](<span class="keyword">const</span> state::type &amp;x, [[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector&lt;4&gt;</a> &amp;z) {</div>
+<div class="line">          [](<span class="keyword">const</span> state::type &amp;x, [[maybe_unused]] <span class="keyword">const</span> vector&lt;4&gt; &amp;z) {</div>
 <div class="line">            <span class="keyword">const</span> <span class="keywordtype">float</span> weight_position{1.F / 20.F};</div>
 <div class="line">            <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 4, 4&gt;</a> value{<a class="code hl_variable" href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">zero&lt;matrix&lt;float, 4, 4&gt;</a>&gt;};</div>
 <div class="line">            value(0, 0) = std::powf(weight_position * x(3), 2);</div>
@@ -230,7 +230,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT&#39;s</span></div>
 <div class="line">  <span class="comment">// MOT16 sample, tracker #201.</span></div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">vector&lt;4&gt;</a> measured[]{{603.5F, 251.5F, 0.187335092348285F, 379.F},</div>
+<div class="line">  <span class="keyword">const</span> vector&lt;4&gt; measured[]{{603.5F, 251.5F, 0.187335092348285F, 379.F},</div>
 <div class="line">                             {599.F, 241.F, 0.24390243902439F, 328.F},</div>
 <div class="line">                             {599.F, 239.5F, 0.257234726688103F, 311.F},</div>
 <div class="line">                             {602.5F, 244.F, 0.240131578947368F, 304.F},</div>
@@ -362,7 +362,6 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00077">eigen.hpp:77</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a114d55e3a7dce30d5e08ba1805d700cb"><div class="ttname"><a href="namespacefcarouge.xhtml#a114d55e3a7dce30d5e08ba1805d700cb">fcarouge::vector</a></div><div class="ttdeci">indexed::column_vector&lt; eigen::column_vector&lt; Representation, sizeof...(References)&gt;, quantity&lt; Representation, References &gt;... &gt; vector</div><div class="ttdoc">Quantity column vector with mp-units and Eigen implementations.</div><div class="ttdef"><b>Definition</b> <a href="quantity_2fcarouge_2linalg_8hpp_source.xhtml#l00075">linalg.hpp:75</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_ae4d1dbbab6a8bdcaa50062d0cb879777"><div class="ttname"><a href="namespacefcarouge.xhtml#ae4d1dbbab6a8bdcaa50062d0cb879777">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aef6fb6c8a265d85709b951506123a5f1"><div class="ttname"><a href="namespacefcarouge.xhtml#aef6fb6c8a265d85709b951506123a5f1">fcarouge::zero</a></div><div class="ttdeci">constexpr Type zero</div><div class="ttdoc">The zero matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00285">utility.hpp:285</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->

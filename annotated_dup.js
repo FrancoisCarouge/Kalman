@@ -6,7 +6,8 @@ var annotated_dup =
       ] ],
       [ "indexed", "namespacefcarouge_1_1indexed.xhtml", [
         [ "element_traits", "structfcarouge_1_1indexed_1_1element__traits.xhtml", "structfcarouge_1_1indexed_1_1element__traits" ],
-        [ "element_traits< Representation, quantity< Representation, Reference > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01quantity_3_01_representation_00_01_reference_01_4_01_4" ],
+        [ "element_traits< Representation, mp_units::quantity< Reference, Representation > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384" ],
+        [ "element_traits< Representation, mp_units::quantity_point< Reference, OriginPoint, Representation > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163" ],
         [ "matrix", "structfcarouge_1_1indexed_1_1matrix.xhtml", "structfcarouge_1_1indexed_1_1matrix" ]
       ] ],
       [ "naive", "namespacefcarouge_1_1naive.xhtml", [
@@ -21,6 +22,9 @@ var annotated_dup =
       [ "matrix", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
       [ "minus", "structfcarouge_1_1minus.xhtml", "structfcarouge_1_1minus" ],
       [ "multiplies", "structfcarouge_1_1multiplies.xhtml", "structfcarouge_1_1multiplies" ],
+      [ "multiplies< int, mp_units::quantity_point< Reference > >", "structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4.xhtml", "structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4" ],
+      [ "multiplies< mp_units::quantity_point< Reference >, int >", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4.xhtml", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4" ],
+      [ "multiplies< mp_units::quantity_point< Reference1 >, mp_units::quantity_point< Reference2 > >", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference1_01_4_00_01mp__unitc3778cb8b7e6a51fa048f5b3eef0b348.xhtml", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference1_01_4_00_01mp__unitc3778cb8b7e6a51fa048f5b3eef0b348" ],
       [ "printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
       [ "transposes", "structfcarouge_1_1transposes.xhtml", "structfcarouge_1_1transposes" ],
       [ "transposes< IndexedMatrix< Matrix, RowIndexes, ColumnIndexes > >", "structfcarouge_1_1transposes_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml", "structfcarouge_1_1transposes_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4" ],

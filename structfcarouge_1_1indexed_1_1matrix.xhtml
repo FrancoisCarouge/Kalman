@@ -121,7 +121,7 @@ $(function(){initNavTree('structfcarouge_1_1indexed_1_1matrix.xhtml',''); initRe
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Private Member Types</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000036">Todo</a></b></dt><dd>Privatize this section. </dd></dl>
+<tr><td colspan="2"><div class="groupText"><dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000034">Todo</a></b></dt><dd>Privatize this section. </dd></dl>
 </div></td></tr>
 <tr class="memitem:a8b3caabb83f1e4b36f87627af89bd702" id="r_a8b3caabb83f1e4b36f87627af89bd702"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b3caabb83f1e4b36f87627af89bd702">underlying</a> = <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a3dedee0afdc6e0f5295c316569484956">underlying_t</a>&lt;Matrix&gt;</td></tr>
 <tr class="memdesc:a8b3caabb83f1e4b36f87627af89bd702"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element's underlying storage.  <br /></td></tr>
@@ -225,8 +225,6 @@ struct fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;</div
 <dl class="section note"><dt>Note</dt><dd>Type safety cannot be guaranteed at compilation time without index safety. The index can either be non-type template parameters or strong types overloadings. Converting a runtime index to a dependent template type is not possible. A proxy reference could be used to allow traditional assignment syntax but the runtime check and extra indirection are not interesting tradeoffs. A template call operator can be used for getting a type safe value but impractical syntax for setting. Without index safety, the accepted tradeoff is a templated index <code>at&lt;i, j&gt;()</code> method.</dd>
 <dd>
 Deduction guides are tricky because a given element type comes from a row and column index to be deduced. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#_a1">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
-</dl>
 
 <p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00149">149</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
@@ -337,7 +335,7 @@ template&lt;algebraic Matrix, typename RowIndexes , typename ColumnIndexes &gt; 
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000037">Todo</a></b></dt><dd>Can this be removed altogether? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000035">Todo</a></b></dt><dd>Can this be removed altogether? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00164">164</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  164</span>: <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{other} {}</div>
@@ -452,7 +450,7 @@ template&lt;algebraic OtherMatrix&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000038">Todo</a></b></dt><dd>Requires evaluated types of Matrix and OtherMatrix are identical? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000036">Todo</a></b></dt><dd>Requires evaluated types of Matrix and OtherMatrix are identical? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00217">217</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  219</span>      : <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>{other.data} {}</div>
@@ -561,7 +559,7 @@ requires uniform&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtm
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000039">Todo</a></b></dt><dd>Verify the list sizes at runtime? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000037">Todo</a></b></dt><dd>Verify the list sizes at runtime? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00234">234</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  237</span>  {</div>
@@ -612,7 +610,7 @@ requires row&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">m
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000040">Todo</a></b></dt><dd><p class="startdd">Combine the two constructors in ome? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000039">Todo</a></b></dt><dd><p class="startdd">Combine the two constructors in ome? </p>
 <p class="interdd">Verify if the types are the same, or assignable, for nicer error? </p>
 <p class="enddd">Rewrite with a fold expression over the pack? </p>
 </dd></dl>
@@ -621,12 +619,13 @@ requires row&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml">m
 <div class="fragment"><div class="line"><span class="lineno">  253</span>                                                           {</div>
 <div class="line"><span class="lineno">  254</span>    std::tuple value_pack{values...};</div>
 <div class="line"><span class="lineno">  255</span>    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;ColumnIndexes&gt;</a>, 1&gt;([<span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">  256</span>                                              &amp;value_pack](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">  256</span>                                              &amp;value_pack](<span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>) {</div>
 <div class="line"><span class="lineno">  257</span>      <span class="keyword">auto</span> value{std::get&lt;position&gt;(value_pack)};</div>
 <div class="line"><span class="lineno">  258</span>      <span class="keyword">using </span>type = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
-<div class="line"><span class="lineno">  259</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[position] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
+<div class="line"><span class="lineno">  259</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
 <div class="line"><span class="lineno">  260</span>    });</div>
 <div class="line"><span class="lineno">  261</span>  }</div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a0480c6f84be0a01264da3eb984c103e1"><div class="ttname"><a href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00068">unit.hpp:68</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a5ad0022b969a210b7261d0158bc1dd7b"><div class="ttname"><a href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a></div><div class="ttdeci">constexpr void for_constexpr(Function &amp;&amp;function)</div><div class="ttdoc">Compile-time for loop.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00241">utility.hpp:241</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="indexed_8hpp_source.xhtml#l00171">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::data</a>, <a class="el" href="utility_8hpp_source.xhtml#l00241">fcarouge::for_constexpr()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00115">fcarouge::indexed::element_traits&lt; Underlying, Type &gt;::to_underlying()</a>.</p>
@@ -671,10 +670,10 @@ requires column&lt;<a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml
 <p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00266">266</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  266</span>                                                  {</div>
 <div class="line"><span class="lineno">  267</span>    std::tuple value_pack{values...};</div>
-<div class="line"><span class="lineno">  268</span>    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;RowIndexes&gt;</a>, 1&gt;([<span class="keyword">this</span>, &amp;value_pack](<span class="keyword">auto</span> position) {</div>
+<div class="line"><span class="lineno">  268</span>    <a class="code hl_function" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">for_constexpr&lt;0, size&lt;RowIndexes&gt;</a>, 1&gt;([<span class="keyword">this</span>, &amp;value_pack](<span class="keyword">auto</span> <a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>) {</div>
 <div class="line"><span class="lineno">  269</span>      <span class="keyword">auto</span> value{std::get&lt;position&gt;(value_pack)};</div>
 <div class="line"><span class="lineno">  270</span>      <span class="keyword">using </span>type = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(value)&gt;;</div>
-<div class="line"><span class="lineno">  271</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[position] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
+<div class="line"><span class="lineno">  271</span>      <a class="code hl_variable" href="#afe3f85237b8320e3ee8bf0de633f2209">data</a>[<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>] = <a class="code hl_function" href="structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748">element_traits&lt;underlying, type&gt;::to_underlying</a>(value);</div>
 <div class="line"><span class="lineno">  272</span>    });</div>
 <div class="line"><span class="lineno">  273</span>  }</div>
 </div><!-- fragment -->
