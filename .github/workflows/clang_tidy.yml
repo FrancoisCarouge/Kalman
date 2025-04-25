@@ -32,11 +32,9 @@ jobs:
       run: cmake -S . -B 'build' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     - name: Verify
       run: |
-        cat build/compile_commands.json
         FILES=`find . \
           -type f -path './build/benchmark/*.cpp' -o \
           -type f -path './sample/*.cpp' -o \
           -type f -path './source/*.cpp' -o \
           -type f -path './test/*.cpp'`
-        echo $FILES
-        clang-tidy-18 -p 'build' $FILES
+        run-clang-tidy -j 4 -p 'build' $FILES
