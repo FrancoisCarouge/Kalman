@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"indexed_8hpp.xhtml#ad2615f4227ab85ccb64b2be969b3a887":[12,0,5,2,0,0,28],
 "indexed_8hpp.xhtml#ad89eef981c285367c92f3f05ebe763e1":[12,0,5,2,0,0,25],
 "indexed_8hpp.xhtml#addd8a1c7956caebecaa0fd4e92a3c7f4":[12,0,5,2,0,0,26],
 "indexed_8hpp.xhtml#af2491a79b6a321f5f8890f3b1f8f0377":[12,0,5,2,0,0,20],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge":[2,0],
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-responsibilities":[2,2],
 "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards":[2,1],
-"md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope":[2,3]
+"md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope":[2,3],
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml":[3]
 };

@@ -1,6 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"structfcarouge_1_1matrix.xhtml#a0aadf69ca0a98d1b54977289924aa7f2":[9,0,1,14,11],
 "structfcarouge_1_1matrix.xhtml#a0aadf69ca0a98d1b54977289924aa7f2":[11,0,0,9,11],
 "structfcarouge_1_1matrix.xhtml#a21b64d2811192433795b124e140bbca2":[9,0,1,14,17],
 "structfcarouge_1_1matrix.xhtml#a21b64d2811192433795b124e140bbca2":[11,0,0,9,17],
@@ -187,6 +186,7 @@ var NAVTREEINDEX4 =
 "unit_8hpp.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9":[12,0,5,5,0,0,2],
 "unit_8hpp.xhtml#a7062d0a510937d0a2201f1167b6066cc":[12,0,5,5,0,0,5],
 "unit_8hpp_source.xhtml":[12,0,5,5,0,0],
+"unit_test_coverage.xhtml":[4],
 "update__1x1x0_8cpp.xhtml":[12,0,0,5],
 "update__1x1x0_8cpp.xhtml#a3ece9fd283151057141732e961b12b48":[12,0,0,5,1],
 "update__1x1x0_8cpp.xhtml#ac37125d800f776ae7a27ff62838449ee":[12,0,0,5,0],
