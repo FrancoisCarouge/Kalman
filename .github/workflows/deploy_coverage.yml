@@ -62,7 +62,7 @@ jobs:
       run: |
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
     - name: 'Coverage: Web Results'
-      run: genhtml coverage.info -o coverage
+      run: genhtml --frames --show-details --title "FrancoisCarouge/Kalman" --legend coverage.info -o coverage
     - name: Deploy
       uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
       with:
@@ -71,10 +71,5 @@ jobs:
         destination_dir: ./coverage
 
 # Consider adding:
-# --frames
-# --show-details
-# --title
-# --keep-descriptions
-# --prefix
-# --legend
+# --html-prolog
 # More... and configuration file?
