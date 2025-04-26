@@ -1,0 +1,833 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/Kalman - build/_deps/mp-units-src/src/core/include/mp-units/framework/quantity.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../../../../index.html" target="_parent">top level</a> - <a href="index.html" target="_parent">build/_deps/mp-units-src/src/core/include/mp-units/framework</a> - quantity.h<span style="font-size: 80%;"> (source / <a href="quantity.h.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/Kalman</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">46</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-04-26 21:31:14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">95</td>
+            <td class="headerCovTableEntry">95</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+                  <tr><td><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // The MIT License (MIT)</span>
+<span id="L2"><span class="lineNum">       2</span>              : //</span>
+<span id="L3"><span class="lineNum">       3</span>              : // Copyright (c) 2018 Mateusz Pusz</span>
+<span id="L4"><span class="lineNum">       4</span>              : //</span>
+<span id="L5"><span class="lineNum">       5</span>              : // Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span id="L6"><span class="lineNum">       6</span>              : // of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span id="L7"><span class="lineNum">       7</span>              : // in the Software without restriction, including without limitation the rights</span>
+<span id="L8"><span class="lineNum">       8</span>              : // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span id="L9"><span class="lineNum">       9</span>              : // copies of the Software, and to permit persons to whom the Software is</span>
+<span id="L10"><span class="lineNum">      10</span>              : // furnished to do so, subject to the following conditions:</span>
+<span id="L11"><span class="lineNum">      11</span>              : //</span>
+<span id="L12"><span class="lineNum">      12</span>              : // The above copyright notice and this permission notice shall be included in all</span>
+<span id="L13"><span class="lineNum">      13</span>              : // copies or substantial portions of the Software.</span>
+<span id="L14"><span class="lineNum">      14</span>              : //</span>
+<span id="L15"><span class="lineNum">      15</span>              : // THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span id="L16"><span class="lineNum">      16</span>              : // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span id="L17"><span class="lineNum">      17</span>              : // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span id="L18"><span class="lineNum">      18</span>              : // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span id="L19"><span class="lineNum">      19</span>              : // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span id="L20"><span class="lineNum">      20</span>              : // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span id="L21"><span class="lineNum">      21</span>              : // SOFTWARE.</span>
+<span id="L22"><span class="lineNum">      22</span>              : </span>
+<span id="L23"><span class="lineNum">      23</span>              : #pragma once</span>
+<span id="L24"><span class="lineNum">      24</span>              : </span>
+<span id="L25"><span class="lineNum">      25</span>              : // IWYU pragma: private, include &lt;mp-units/framework.h&gt;</span>
+<span id="L26"><span class="lineNum">      26</span>              : #include &lt;mp-units/bits/hacks.h&gt;</span>
+<span id="L27"><span class="lineNum">      27</span>              : #include &lt;mp-units/bits/module_macros.h&gt;</span>
+<span id="L28"><span class="lineNum">      28</span>              : #include &lt;mp-units/bits/sudo_cast.h&gt;</span>
+<span id="L29"><span class="lineNum">      29</span>              : #include &lt;mp-units/compat_macros.h&gt;</span>
+<span id="L30"><span class="lineNum">      30</span>              : #include &lt;mp-units/framework/customization_points.h&gt;</span>
+<span id="L31"><span class="lineNum">      31</span>              : #include &lt;mp-units/framework/dimension_concepts.h&gt;</span>
+<span id="L32"><span class="lineNum">      32</span>              : #include &lt;mp-units/framework/quantity_concepts.h&gt;</span>
+<span id="L33"><span class="lineNum">      33</span>              : #include &lt;mp-units/framework/quantity_spec_concepts.h&gt;</span>
+<span id="L34"><span class="lineNum">      34</span>              : #include &lt;mp-units/framework/reference.h&gt;</span>
+<span id="L35"><span class="lineNum">      35</span>              : #include &lt;mp-units/framework/reference_concepts.h&gt;</span>
+<span id="L36"><span class="lineNum">      36</span>              : #include &lt;mp-units/framework/representation_concepts.h&gt;</span>
+<span id="L37"><span class="lineNum">      37</span>              : #include &lt;mp-units/framework/unit_concepts.h&gt;</span>
+<span id="L38"><span class="lineNum">      38</span>              : #include &lt;mp-units/framework/value_cast.h&gt;</span>
+<span id="L39"><span class="lineNum">      39</span>              : </span>
+<span id="L40"><span class="lineNum">      40</span>              : #ifndef MP_UNITS_IN_MODULE_INTERFACE</span>
+<span id="L41"><span class="lineNum">      41</span>              : #include &lt;mp-units/ext/contracts.h&gt;</span>
+<span id="L42"><span class="lineNum">      42</span>              : #ifdef MP_UNITS_IMPORT_STD</span>
+<span id="L43"><span class="lineNum">      43</span>              : import std;</span>
+<span id="L44"><span class="lineNum">      44</span>              : #else</span>
+<span id="L45"><span class="lineNum">      45</span>              : #include &lt;compare&gt;  // IWYU pragma: export</span>
+<span id="L46"><span class="lineNum">      46</span>              : #include &lt;limits&gt;</span>
+<span id="L47"><span class="lineNum">      47</span>              : #include &lt;utility&gt;</span>
+<span id="L48"><span class="lineNum">      48</span>              : #endif</span>
+<span id="L49"><span class="lineNum">      49</span>              : #endif</span>
+<span id="L50"><span class="lineNum">      50</span>              : </span>
+<span id="L51"><span class="lineNum">      51</span>              : namespace mp_units {</span>
+<span id="L52"><span class="lineNum">      52</span>              : </span>
+<span id="L53"><span class="lineNum">      53</span>              : namespace detail {</span>
+<span id="L54"><span class="lineNum">      54</span>              : </span>
+<span id="L55"><span class="lineNum">      55</span>              : template&lt;Unit UFrom, Unit UTo&gt;</span>
+<span id="L56"><span class="lineNum">      56</span>              : [[nodiscard]] consteval bool integral_conversion_factor(UFrom from, UTo to)</span>
+<span id="L57"><span class="lineNum">      57</span>              : {</span>
+<span id="L58"><span class="lineNum">      58</span>              :   if constexpr (is_same_v&lt;UFrom, UTo&gt;)</span>
+<span id="L59"><span class="lineNum">      59</span>              :     return true;</span>
+<span id="L60"><span class="lineNum">      60</span>              :   else</span>
+<span id="L61"><span class="lineNum">      61</span>              :     return is_integral(get_canonical_unit(from).mag / get_canonical_unit(to).mag);</span>
+<span id="L62"><span class="lineNum">      62</span>              : }</span>
+<span id="L63"><span class="lineNum">      63</span>              : </span>
+<span id="L64"><span class="lineNum">      64</span>              : template&lt;typename FromRep, typename ToRep, auto FromUnit, auto ToUnit&gt;</span>
+<span id="L65"><span class="lineNum">      65</span>              : concept ValuePreservingTo =</span>
+<span id="L66"><span class="lineNum">      66</span>              :   Unit&lt;MP_UNITS_REMOVE_CONST(decltype(FromUnit))&gt; &amp;&amp; Unit&lt;MP_UNITS_REMOVE_CONST(decltype(ToUnit))&gt; &amp;&amp;</span>
+<span id="L67"><span class="lineNum">      67</span>              :   std::assignable_from&lt;ToRep&amp;, FromRep&gt; &amp;&amp;</span>
+<span id="L68"><span class="lineNum">      68</span>              :   (treat_as_floating_point&lt;ToRep&gt; ||</span>
+<span id="L69"><span class="lineNum">      69</span>              :    (!treat_as_floating_point&lt;std::remove_cvref_t&lt;FromRep&gt;&gt; &amp;&amp; integral_conversion_factor(FromUnit, ToUnit) &amp;&amp;</span>
+<span id="L70"><span class="lineNum">      70</span>              :     !overflows_non_zero_values&lt;ToRep&gt;(FromUnit, ToUnit)));</span>
+<span id="L71"><span class="lineNum">      71</span>              : </span>
+<span id="L72"><span class="lineNum">      72</span>              : template&lt;typename FromRep, typename ToRep, auto QS&gt;</span>
+<span id="L73"><span class="lineNum">      73</span>              : concept RepresentationValuePreservingTo =</span>
+<span id="L74"><span class="lineNum">      74</span>              :   QuantitySpec&lt;MP_UNITS_REMOVE_CONST(decltype(QS))&gt; &amp;&amp; RepresentationOf&lt;std::remove_cvref_t&lt;FromRep&gt;, QS&gt; &amp;&amp;</span>
+<span id="L75"><span class="lineNum">      75</span>              :   ValuePreservingTo&lt;FromRep, ToRep, one, one&gt;;</span>
+<span id="L76"><span class="lineNum">      76</span>              : </span>
+<span id="L77"><span class="lineNum">      77</span>              : template&lt;typename FromRep, typename ToRep&gt;</span>
+<span id="L78"><span class="lineNum">      78</span>              : concept ScalarRepresentationValuePreservingTo =</span>
+<span id="L79"><span class="lineNum">      79</span>              :   ScalarRepresentation&lt;std::remove_cvref_t&lt;FromRep&gt;&gt; &amp;&amp; ValuePreservingTo&lt;FromRep, ToRep, one, one&gt;;</span>
+<span id="L80"><span class="lineNum">      80</span>              : </span>
+<span id="L81"><span class="lineNum">      81</span>              : template&lt;typename QFrom, typename QTo&gt;</span>
+<span id="L82"><span class="lineNum">      82</span>              : concept QuantityConvertibleTo =</span>
+<span id="L83"><span class="lineNum">      83</span>              :   Quantity&lt;QFrom&gt; &amp;&amp; Quantity&lt;QTo&gt; &amp;&amp; implicitly_convertible(QFrom::quantity_spec, QTo::quantity_spec) &amp;&amp;</span>
+<span id="L84"><span class="lineNum">      84</span>              :   (interconvertible(QFrom::unit, QTo::unit)) &amp;&amp;</span>
+<span id="L85"><span class="lineNum">      85</span>              :   ValuePreservingTo&lt;typename QFrom::rep, typename QTo::rep, QFrom::unit, QTo::unit&gt; &amp;&amp;</span>
+<span id="L86"><span class="lineNum">      86</span>              :   // TODO consider providing constraints of sudo_cast here rather than testing if it can be called (its return type is</span>
+<span id="L87"><span class="lineNum">      87</span>              :   // deduced thus the function is evaluated here and may emit truncating conversion or other warnings)</span>
+<span id="L88"><span class="lineNum">      88</span>              :   requires(QFrom q) { sudo_cast&lt;QTo&gt;(q); };</span>
+<span id="L89"><span class="lineNum">      89</span>              : </span>
+<span id="L90"><span class="lineNum">      90</span>              : template&lt;auto QS, typename Func, typename T, typename U&gt;</span>
+<span id="L91"><span class="lineNum">      91</span>              : concept InvokeResultOf = QuantitySpec&lt;MP_UNITS_REMOVE_CONST(decltype(QS))&gt; &amp;&amp; std::regular_invocable&lt;Func, T, U&gt; &amp;&amp;</span>
+<span id="L92"><span class="lineNum">      92</span>              :                          RepresentationOf&lt;std::invoke_result_t&lt;Func, T, U&gt;, QS&gt;;</span>
+<span id="L93"><span class="lineNum">      93</span>              : </span>
+<span id="L94"><span class="lineNum">      94</span>              : template&lt;typename Func, typename Q1, typename Q2,</span>
+<span id="L95"><span class="lineNum">      95</span>              :          auto QS = std::invoke_result_t&lt;Func, MP_UNITS_NONCONST_TYPE(Q1::quantity_spec),</span>
+<span id="L96"><span class="lineNum">      96</span>              :                                         MP_UNITS_NONCONST_TYPE(Q2::quantity_spec)&gt;{}&gt;</span>
+<span id="L97"><span class="lineNum">      97</span>              : concept InvocableQuantities = QuantitySpec&lt;MP_UNITS_REMOVE_CONST(decltype(QS))&gt; &amp;&amp; Quantity&lt;Q1&gt; &amp;&amp; Quantity&lt;Q2&gt; &amp;&amp;</span>
+<span id="L98"><span class="lineNum">      98</span>              :                               InvokeResultOf&lt;QS, Func, typename Q1::rep, typename Q2::rep&gt;;</span>
+<span id="L99"><span class="lineNum">      99</span>              : </span>
+<span id="L100"><span class="lineNum">     100</span>              : // TODO remove the following when clang diagnostics improve</span>
+<span id="L101"><span class="lineNum">     101</span>              : // https://github.com/llvm/llvm-project/issues/96660</span>
+<span id="L102"><span class="lineNum">     102</span>              : template&lt;auto R1, auto R2&gt;</span>
+<span id="L103"><span class="lineNum">     103</span>              : concept HaveCommonReferenceImpl = requires { get_common_reference(R1, R2); };</span>
+<span id="L104"><span class="lineNum">     104</span>              : </span>
+<span id="L105"><span class="lineNum">     105</span>              : template&lt;auto R1, auto R2&gt;</span>
+<span id="L106"><span class="lineNum">     106</span>              : concept HaveCommonReference = HaveCommonReferenceImpl&lt;R1, R2&gt;;</span>
+<span id="L107"><span class="lineNum">     107</span>              : </span>
+<span id="L108"><span class="lineNum">     108</span>              : template&lt;typename Func, Quantity Q1, Quantity Q2&gt;</span>
+<span id="L109"><span class="lineNum">     109</span>              : using common_quantity_for = quantity&lt;get_common_reference(Q1::reference, Q2::reference),</span>
+<span id="L110"><span class="lineNum">     110</span>              :                                      std::invoke_result_t&lt;Func, typename Q1::rep, typename Q2::rep&gt;&gt;;</span>
+<span id="L111"><span class="lineNum">     111</span>              : </span>
+<span id="L112"><span class="lineNum">     112</span>              : template&lt;typename Rep, Unit U1, Unit U2&gt;</span>
+<span id="L113"><span class="lineNum">     113</span>              : [[nodiscard]] consteval bool overflows_non_zero_common_values(U1 u1, U2 u2)</span>
+<span id="L114"><span class="lineNum">     114</span>              : {</span>
+<span id="L115"><span class="lineNum">     115</span>              :   constexpr Unit auto cu = get_common_unit(U1{}, U2{});</span>
+<span id="L116"><span class="lineNum">     116</span>              :   return overflows_non_zero_values&lt;Rep&gt;(u1, cu) || overflows_non_zero_values&lt;Rep&gt;(u2, cu);</span>
+<span id="L117"><span class="lineNum">     117</span>              : }</span>
+<span id="L118"><span class="lineNum">     118</span>              : </span>
+<span id="L119"><span class="lineNum">     119</span>              : template&lt;typename Func, typename Q1, typename Q2&gt;</span>
+<span id="L120"><span class="lineNum">     120</span>              : concept CommonlyInvocableQuantities =</span>
+<span id="L121"><span class="lineNum">     121</span>              :   Quantity&lt;Q1&gt; &amp;&amp; Quantity&lt;Q2&gt; &amp;&amp; HaveCommonReference&lt;Q1::reference, Q2::reference&gt; &amp;&amp;</span>
+<span id="L122"><span class="lineNum">     122</span>              :   std::convertible_to&lt;Q1, common_quantity_for&lt;Func, Q1, Q2&gt;&gt; &amp;&amp;</span>
+<span id="L123"><span class="lineNum">     123</span>              :   std::convertible_to&lt;Q2, common_quantity_for&lt;Func, Q1, Q2&gt;&gt; &amp;&amp;</span>
+<span id="L124"><span class="lineNum">     124</span>              :   InvocableQuantities&lt;Func, Q1, Q2, get_common_quantity_spec(Q1::quantity_spec, Q2::quantity_spec)&gt; &amp;&amp;</span>
+<span id="L125"><span class="lineNum">     125</span>              :   (!overflows_non_zero_common_values&lt;std::invoke_result_t&lt;Func, typename Q1::rep, typename Q2::rep&gt;&gt;(Q1::unit,</span>
+<span id="L126"><span class="lineNum">     126</span>              :                                                                                                      Q2::unit));</span>
+<span id="L127"><span class="lineNum">     127</span>              : </span>
+<span id="L128"><span class="lineNum">     128</span>              : template&lt;auto R1, auto R2, typename Rep1, typename Rep2&gt;</span>
+<span id="L129"><span class="lineNum">     129</span>              : concept SameValueAs = (equivalent(get_unit(R1), get_unit(R2))) &amp;&amp; std::convertible_to&lt;Rep1, Rep2&gt;;</span>
+<span id="L130"><span class="lineNum">     130</span>              : </span>
+<span id="L131"><span class="lineNum">     131</span>              : template&lt;typename T&gt;</span>
+<span id="L132"><span class="lineNum">     132</span>              : using quantity_like_type = quantity&lt;quantity_like_traits&lt;T&gt;::reference, typename quantity_like_traits&lt;T&gt;::rep&gt;;</span>
+<span id="L133"><span class="lineNum">     133</span>              : </span>
+<span id="L134"><span class="lineNum">     134</span>              : template&lt;typename T, typename U, typename TT = std::remove_reference_t&lt;T&gt;&gt;</span>
+<span id="L135"><span class="lineNum">     135</span>              : concept Mutable = (!std::is_const_v&lt;TT&gt;) &amp;&amp; std::derived_from&lt;TT, U&gt;;</span>
+<span id="L136"><span class="lineNum">     136</span>              : </span>
+<span id="L137"><span class="lineNum">     137</span>              : template&lt;auto R&gt;</span>
+<span id="L138"><span class="lineNum">     138</span>              : concept ConvertibleWithNumber =</span>
+<span id="L139"><span class="lineNum">     139</span>              :   Reference&lt;MP_UNITS_REMOVE_CONST(decltype(R))&gt; &amp;&amp; (implicitly_convertible(get_quantity_spec(R), dimensionless)) &amp;&amp;</span>
+<span id="L140"><span class="lineNum">     140</span>              :   (equivalent(get_unit(R), one));</span>
+<span id="L141"><span class="lineNum">     141</span>              : </span>
+<span id="L142"><span class="lineNum">     142</span>              : }  // namespace detail</span>
+<span id="L143"><span class="lineNum">     143</span>              : </span>
+<span id="L144"><span class="lineNum">     144</span>              : MP_UNITS_EXPORT_BEGIN</span>
+<span id="L145"><span class="lineNum">     145</span>              : </span>
+<span id="L146"><span class="lineNum">     146</span>              : /**</span>
+<span id="L147"><span class="lineNum">     147</span>              :  * @brief A quantity</span>
+<span id="L148"><span class="lineNum">     148</span>              :  *</span>
+<span id="L149"><span class="lineNum">     149</span>              :  * Property of a phenomenon, body, or substance, where the property has a magnitude that can be</span>
+<span id="L150"><span class="lineNum">     150</span>              :  * expressed by means of a number and a reference.</span>
+<span id="L151"><span class="lineNum">     151</span>              :  *</span>
+<span id="L152"><span class="lineNum">     152</span>              :  * @tparam R a reference of the quantity providing all information about quantity properties</span>
+<span id="L153"><span class="lineNum">     153</span>              :  * @tparam Rep a type to be used to represent values of a quantity</span>
+<span id="L154"><span class="lineNum">     154</span>              :  */</span>
+<span id="L155"><span class="lineNum">     155</span>              : template&lt;Reference auto R, RepresentationOf&lt;get_quantity_spec(R)&gt; Rep = double&gt;</span>
+<span id="L156"><span class="lineNum">     156</span>              : class quantity {</span>
+<span id="L157"><span class="lineNum">     157</span>              : public:</span>
+<span id="L158"><span class="lineNum">     158</span>              :   Rep numerical_value_is_an_implementation_detail_;  ///&lt; needs to be public for a structural type</span>
+<span id="L159"><span class="lineNum">     159</span>              : </span>
+<span id="L160"><span class="lineNum">     160</span>              :   // member types and values</span>
+<span id="L161"><span class="lineNum">     161</span>              :   static constexpr Reference auto reference = R;</span>
+<span id="L162"><span class="lineNum">     162</span>              :   static constexpr QuantitySpec auto quantity_spec = get_quantity_spec(reference);</span>
+<span id="L163"><span class="lineNum">     163</span>              :   static constexpr Dimension auto dimension = quantity_spec.dimension;</span>
+<span id="L164"><span class="lineNum">     164</span>              :   static constexpr Unit auto unit = get_unit(reference);</span>
+<span id="L165"><span class="lineNum">     165</span>              :   using rep = Rep;</span>
+<span id="L166"><span class="lineNum">     166</span>              : </span>
+<span id="L167"><span class="lineNum">     167</span>              :   // static member functions</span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC tlaBgGNC">          30 :   [[nodiscard]] static constexpr quantity zero() noexcept</span></span>
+<span id="L169"><span class="lineNum">     169</span>              :     requires requires { representation_values&lt;rep&gt;::zero(); }</span>
+<span id="L170"><span class="lineNum">     170</span>              :   {</span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">          30 :     return {representation_values&lt;rep&gt;::zero(), R};</span></span>
+<span id="L172"><span class="lineNum">     172</span>              :   }</span>
+<span id="L173"><span class="lineNum">     173</span>              : </span>
+<span id="L174"><span class="lineNum">     174</span>              :   [[nodiscard]] static constexpr quantity min() noexcept</span>
+<span id="L175"><span class="lineNum">     175</span>              :     requires requires { representation_values&lt;rep&gt;::min(); }</span>
+<span id="L176"><span class="lineNum">     176</span>              :   {</span>
+<span id="L177"><span class="lineNum">     177</span>              :     return {representation_values&lt;rep&gt;::min(), R};</span>
+<span id="L178"><span class="lineNum">     178</span>              :   }</span>
+<span id="L179"><span class="lineNum">     179</span>              : </span>
+<span id="L180"><span class="lineNum">     180</span>              :   [[nodiscard]] static constexpr quantity max() noexcept</span>
+<span id="L181"><span class="lineNum">     181</span>              :     requires requires { representation_values&lt;rep&gt;::max(); }</span>
+<span id="L182"><span class="lineNum">     182</span>              :   {</span>
+<span id="L183"><span class="lineNum">     183</span>              :     return {representation_values&lt;rep&gt;::max(), R};</span>
+<span id="L184"><span class="lineNum">     184</span>              :   }</span>
+<span id="L185"><span class="lineNum">     185</span>              : </span>
+<span id="L186"><span class="lineNum">     186</span>              :   // construction, assignment, destruction</span>
+<span id="L187"><span class="lineNum">     187</span>              :   quantity() = default;</span>
+<span id="L188"><span class="lineNum">     188</span>              :   quantity(const quantity&amp;) = default;</span>
+<span id="L189"><span class="lineNum">     189</span>              :   quantity(quantity&amp;&amp;) = default;</span>
+<span id="L190"><span class="lineNum">     190</span>              :   ~quantity() = default;</span>
+<span id="L191"><span class="lineNum">     191</span>              : </span>
+<span id="L192"><span class="lineNum">     192</span>              :   template&lt;typename FwdValue, Reference R2&gt;</span>
+<span id="L193"><span class="lineNum">     193</span>              :     requires detail::SameValueAs&lt;R2{}, R, std::remove_cvref_t&lt;FwdValue&gt;, Rep&gt;</span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaGNC">         654 :   constexpr quantity(FwdValue&amp;&amp; val, R2) : numerical_value_is_an_implementation_detail_(std::forward&lt;FwdValue&gt;(val))</span></span>
+<span id="L195"><span class="lineNum">     195</span>              :   {</span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         654 :   }</span></span>
+<span id="L197"><span class="lineNum">     197</span>              : </span>
+<span id="L198"><span class="lineNum">     198</span>              :   template&lt;typename FwdValue, Reference R2, typename Value = std::remove_cvref_t&lt;FwdValue&gt;&gt;</span>
+<span id="L199"><span class="lineNum">     199</span>              :     requires(!detail::SameValueAs&lt;R2{}, R, Value, Rep&gt;) &amp;&amp;</span>
+<span id="L200"><span class="lineNum">     200</span>              :             detail::QuantityConvertibleTo&lt;quantity&lt;R2{}, Value&gt;, quantity&gt;</span>
+<span id="L201"><span class="lineNum">     201</span>              :   constexpr quantity(FwdValue&amp;&amp; val, R2) : quantity(quantity&lt;R2{}, Value&gt;{std::forward&lt;FwdValue&gt;(val), R2{}})</span>
+<span id="L202"><span class="lineNum">     202</span>              :   {</span>
+<span id="L203"><span class="lineNum">     203</span>              :   }</span>
+<span id="L204"><span class="lineNum">     204</span>              : </span>
+<span id="L205"><span class="lineNum">     205</span>              :   template&lt;detail::RepresentationValuePreservingTo&lt;Rep, quantity_spec&gt; FwdValue&gt;</span>
+<span id="L206"><span class="lineNum">     206</span>              :     requires detail::ConvertibleWithNumber&lt;reference&gt;</span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :   constexpr explicit(false) quantity(FwdValue&amp;&amp; val) :</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           1 :       numerical_value_is_an_implementation_detail_(std::forward&lt;FwdValue&gt;(val))</span></span>
+<span id="L209"><span class="lineNum">     209</span>              :   {</span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           1 :   }</span></span>
+<span id="L211"><span class="lineNum">     211</span>              : </span>
+<span id="L212"><span class="lineNum">     212</span>              :   template&lt;detail::QuantityConvertibleTo&lt;quantity&gt; Q&gt;</span>
+<span id="L213"><span class="lineNum">     213</span>              :   // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)</span>
+<span id="L214"><span class="lineNum">     214</span> <span class="tlaGNC">         104 :   constexpr explicit(!std::convertible_to&lt;typename Q::rep, Rep&gt;) quantity(const Q&amp; q) :</span></span>
+<span id="L215"><span class="lineNum">     215</span> <span class="tlaGNC">         104 :       quantity(detail::sudo_cast&lt;quantity&gt;(q))</span></span>
+<span id="L216"><span class="lineNum">     216</span>              :   {</span>
+<span id="L217"><span class="lineNum">     217</span> <span class="tlaGNC">         104 :   }</span></span>
+<span id="L218"><span class="lineNum">     218</span>              : </span>
+<span id="L219"><span class="lineNum">     219</span>              :   template&lt;QuantityLike Q&gt;</span>
+<span id="L220"><span class="lineNum">     220</span>              :     requires detail::QuantityConvertibleTo&lt;detail::quantity_like_type&lt;Q&gt;, quantity&gt;</span>
+<span id="L221"><span class="lineNum">     221</span>              :   constexpr explicit(quantity_like_traits&lt;Q&gt;::explicit_import ||</span>
+<span id="L222"><span class="lineNum">     222</span>              :                      // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)</span>
+<span id="L223"><span class="lineNum">     223</span>              :                      !std::convertible_to&lt;typename quantity_like_traits&lt;Q&gt;::rep, Rep&gt;) quantity(const Q&amp; q) :</span>
+<span id="L224"><span class="lineNum">     224</span>              :       quantity(::mp_units::quantity{quantity_like_traits&lt;Q&gt;::to_numerical_value(q), quantity_like_traits&lt;Q&gt;::reference})</span>
+<span id="L225"><span class="lineNum">     225</span>              :   {</span>
+<span id="L226"><span class="lineNum">     226</span>              :   }</span>
+<span id="L227"><span class="lineNum">     227</span>              : </span>
+<span id="L228"><span class="lineNum">     228</span>              :   quantity&amp; operator=(const quantity&amp;) = default;</span>
+<span id="L229"><span class="lineNum">     229</span>              :   quantity&amp; operator=(quantity&amp;&amp;) = default;</span>
+<span id="L230"><span class="lineNum">     230</span>              : </span>
+<span id="L231"><span class="lineNum">     231</span>              :   template&lt;detail::RepresentationValuePreservingTo&lt;Rep, quantity_spec&gt; FwdValue&gt;</span>
+<span id="L232"><span class="lineNum">     232</span>              :     requires detail::ConvertibleWithNumber&lt;reference&gt;</span>
+<span id="L233"><span class="lineNum">     233</span>              :   constexpr quantity&amp; operator=(FwdValue&amp;&amp; val)</span>
+<span id="L234"><span class="lineNum">     234</span>              :   {</span>
+<span id="L235"><span class="lineNum">     235</span>              :     numerical_value_is_an_implementation_detail_ = std::forward&lt;FwdValue&gt;(val);</span>
+<span id="L236"><span class="lineNum">     236</span>              :     return *this;</span>
+<span id="L237"><span class="lineNum">     237</span>              :   }</span>
+<span id="L238"><span class="lineNum">     238</span>              : </span>
+<span id="L239"><span class="lineNum">     239</span>              :   // unit conversions</span>
+<span id="L240"><span class="lineNum">     240</span>              :   template&lt;detail::UnitCompatibleWith&lt;unit, quantity_spec&gt; ToU&gt;</span>
+<span id="L241"><span class="lineNum">     241</span>              :     requires detail::QuantityConvertibleTo&lt;quantity, quantity&lt;detail::make_reference(quantity_spec, ToU{}), Rep&gt;&gt;</span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC">          14 :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto in(ToU) const</span></span>
+<span id="L243"><span class="lineNum">     243</span>              :   {</span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">          14 :     return quantity&lt;detail::make_reference(quantity_spec, ToU{}), Rep&gt;{*this};</span></span>
+<span id="L245"><span class="lineNum">     245</span>              :   }</span>
+<span id="L246"><span class="lineNum">     246</span>              : </span>
+<span id="L247"><span class="lineNum">     247</span>              :   template&lt;RepresentationOf&lt;quantity_spec&gt; ToRep&gt;</span>
+<span id="L248"><span class="lineNum">     248</span>              :     requires detail::QuantityConvertibleTo&lt;quantity, quantity&lt;reference, ToRep&gt;&gt;</span>
+<span id="L249"><span class="lineNum">     249</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto in() const</span>
+<span id="L250"><span class="lineNum">     250</span>              :   {</span>
+<span id="L251"><span class="lineNum">     251</span>              :     return quantity&lt;reference, ToRep&gt;{*this};</span>
+<span id="L252"><span class="lineNum">     252</span>              :   }</span>
+<span id="L253"><span class="lineNum">     253</span>              : </span>
+<span id="L254"><span class="lineNum">     254</span>              :   template&lt;RepresentationOf&lt;quantity_spec&gt; ToRep, detail::UnitCompatibleWith&lt;unit, quantity_spec&gt; ToU&gt;</span>
+<span id="L255"><span class="lineNum">     255</span>              :     requires detail::QuantityConvertibleTo&lt;quantity, quantity&lt;detail::make_reference(quantity_spec, ToU{}), ToRep&gt;&gt;</span>
+<span id="L256"><span class="lineNum">     256</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto in(ToU) const</span>
+<span id="L257"><span class="lineNum">     257</span>              :   {</span>
+<span id="L258"><span class="lineNum">     258</span>              :     return quantity&lt;detail::make_reference(quantity_spec, ToU{}), ToRep&gt;{*this};</span>
+<span id="L259"><span class="lineNum">     259</span>              :   }</span>
+<span id="L260"><span class="lineNum">     260</span>              : </span>
+<span id="L261"><span class="lineNum">     261</span>              :   template&lt;detail::UnitCompatibleWith&lt;unit, quantity_spec&gt; ToU&gt;</span>
+<span id="L262"><span class="lineNum">     262</span>              :     requires requires(const quantity q) { value_cast&lt;ToU{}&gt;(q); }</span>
+<span id="L263"><span class="lineNum">     263</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto force_in(ToU) const</span>
+<span id="L264"><span class="lineNum">     264</span>              :   {</span>
+<span id="L265"><span class="lineNum">     265</span>              :     return value_cast&lt;ToU{}&gt;(*this);</span>
+<span id="L266"><span class="lineNum">     266</span>              :   }</span>
+<span id="L267"><span class="lineNum">     267</span>              : </span>
+<span id="L268"><span class="lineNum">     268</span>              :   template&lt;RepresentationOf&lt;quantity_spec&gt; ToRep&gt;</span>
+<span id="L269"><span class="lineNum">     269</span>              :     requires requires(const quantity q) { value_cast&lt;ToRep&gt;(q); }</span>
+<span id="L270"><span class="lineNum">     270</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto force_in() const</span>
+<span id="L271"><span class="lineNum">     271</span>              :   {</span>
+<span id="L272"><span class="lineNum">     272</span>              :     return value_cast&lt;ToRep&gt;(*this);</span>
+<span id="L273"><span class="lineNum">     273</span>              :   }</span>
+<span id="L274"><span class="lineNum">     274</span>              : </span>
+<span id="L275"><span class="lineNum">     275</span>              :   template&lt;RepresentationOf&lt;quantity_spec&gt; ToRep, detail::UnitCompatibleWith&lt;unit, quantity_spec&gt; ToU&gt;</span>
+<span id="L276"><span class="lineNum">     276</span>              :     requires requires(const quantity q) { value_cast&lt;ToU{}, ToRep&gt;(q); }</span>
+<span id="L277"><span class="lineNum">     277</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto force_in(ToU) const</span>
+<span id="L278"><span class="lineNum">     278</span>              :   {</span>
+<span id="L279"><span class="lineNum">     279</span>              :     return value_cast&lt;ToU{}, ToRep&gt;(*this);</span>
+<span id="L280"><span class="lineNum">     280</span>              :   }</span>
+<span id="L281"><span class="lineNum">     281</span>              : </span>
+<span id="L282"><span class="lineNum">     282</span>              :   // data access</span>
+<span id="L283"><span class="lineNum">     283</span>              :   template&lt;Unit U&gt;</span>
+<span id="L284"><span class="lineNum">     284</span>              :     requires(equivalent(U{}, unit))</span>
+<span id="L285"><span class="lineNum">     285</span>              :   [[nodiscard]] constexpr rep&amp; numerical_value_ref_in(U) &amp; noexcept</span>
+<span id="L286"><span class="lineNum">     286</span>              :   {</span>
+<span id="L287"><span class="lineNum">     287</span>              :     return numerical_value_is_an_implementation_detail_;</span>
+<span id="L288"><span class="lineNum">     288</span>              :   }</span>
+<span id="L289"><span class="lineNum">     289</span>              : </span>
+<span id="L290"><span class="lineNum">     290</span>              :   template&lt;Unit U&gt;</span>
+<span id="L291"><span class="lineNum">     291</span>              :     requires(equivalent(U{}, unit))</span>
+<span id="L292"><span class="lineNum">     292</span> <span class="tlaGNC">         875 :   [[nodiscard]] constexpr const rep&amp; numerical_value_ref_in(U) const&amp; noexcept</span></span>
+<span id="L293"><span class="lineNum">     293</span>              :   {</span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaGNC">         875 :     return numerical_value_is_an_implementation_detail_;</span></span>
+<span id="L295"><span class="lineNum">     295</span>              :   }</span>
+<span id="L296"><span class="lineNum">     296</span>              : </span>
+<span id="L297"><span class="lineNum">     297</span>              :   template&lt;Unit U&gt;</span>
+<span id="L298"><span class="lineNum">     298</span>              :     requires(equivalent(U{}, unit))</span>
+<span id="L299"><span class="lineNum">     299</span>              :   constexpr const rep&amp;&amp; numerical_value_ref_in(U) const&amp;&amp; noexcept</span>
+<span id="L300"><span class="lineNum">     300</span>              : #if __cpp_deleted_function</span>
+<span id="L301"><span class="lineNum">     301</span>              :     = delete(&quot;Can't form a reference to a temporary&quot;);</span>
+<span id="L302"><span class="lineNum">     302</span>              : #else</span>
+<span id="L303"><span class="lineNum">     303</span>              :     = delete;</span>
+<span id="L304"><span class="lineNum">     304</span>              : #endif</span>
+<span id="L305"><span class="lineNum">     305</span>              : </span>
+<span id="L306"><span class="lineNum">     306</span>              :   template&lt;detail::UnitCompatibleWith&lt;unit, quantity_spec&gt; U&gt;</span>
+<span id="L307"><span class="lineNum">     307</span>              :     requires detail::QuantityConvertibleTo&lt;quantity, quantity&lt;detail::make_reference(quantity_spec, U{}), Rep&gt;&gt;</span>
+<span id="L308"><span class="lineNum">     308</span> <span class="tlaGNC">          14 :   [[nodiscard]] constexpr rep numerical_value_in(U) const noexcept</span></span>
+<span id="L309"><span class="lineNum">     309</span>              :   {</span>
+<span id="L310"><span class="lineNum">     310</span> <span class="tlaGNC">          14 :     return (*this).in(U{}).numerical_value_is_an_implementation_detail_;</span></span>
+<span id="L311"><span class="lineNum">     311</span>              :   }</span>
+<span id="L312"><span class="lineNum">     312</span>              : </span>
+<span id="L313"><span class="lineNum">     313</span>              :   template&lt;detail::UnitCompatibleWith&lt;unit, quantity_spec&gt; U&gt;</span>
+<span id="L314"><span class="lineNum">     314</span>              :     requires requires(const quantity q) { value_cast&lt;U{}&gt;(q); }</span>
+<span id="L315"><span class="lineNum">     315</span>              :   [[nodiscard]] constexpr rep force_numerical_value_in(U) const noexcept</span>
+<span id="L316"><span class="lineNum">     316</span>              :   {</span>
+<span id="L317"><span class="lineNum">     317</span>              :     return (*this).force_in(U{}).numerical_value_is_an_implementation_detail_;</span>
+<span id="L318"><span class="lineNum">     318</span>              :   }</span>
+<span id="L319"><span class="lineNum">     319</span>              : </span>
+<span id="L320"><span class="lineNum">     320</span>              :   // conversion operators</span>
+<span id="L321"><span class="lineNum">     321</span>              :   template&lt;typename V_, std::constructible_from&lt;Rep&gt; Value = std::remove_cvref_t&lt;V_&gt;&gt;</span>
+<span id="L322"><span class="lineNum">     322</span>              :     requires detail::ConvertibleWithNumber&lt;reference&gt;</span>
+<span id="L323"><span class="lineNum">     323</span>              :   [[nodiscard]] explicit operator V_() const&amp; noexcept</span>
+<span id="L324"><span class="lineNum">     324</span>              :   {</span>
+<span id="L325"><span class="lineNum">     325</span>              :     return numerical_value_is_an_implementation_detail_;</span>
+<span id="L326"><span class="lineNum">     326</span>              :   }</span>
+<span id="L327"><span class="lineNum">     327</span>              : </span>
+<span id="L328"><span class="lineNum">     328</span>              :   template&lt;typename Q_, QuantityLike Q = std::remove_cvref_t&lt;Q_&gt;&gt;</span>
+<span id="L329"><span class="lineNum">     329</span>              :     requires detail::QuantityConvertibleTo&lt;quantity, detail::quantity_like_type&lt;Q&gt;&gt;</span>
+<span id="L330"><span class="lineNum">     330</span>              :   [[nodiscard]] explicit(quantity_like_traits&lt;Q&gt;::explicit_export ||</span>
+<span id="L331"><span class="lineNum">     331</span>              :                          !std::convertible_to&lt;Rep, typename quantity_like_traits&lt;Q&gt;::rep&gt;) constexpr</span>
+<span id="L332"><span class="lineNum">     332</span>              :   // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)</span>
+<span id="L333"><span class="lineNum">     333</span>              :   operator Q_() const</span>
+<span id="L334"><span class="lineNum">     334</span>              :     noexcept(noexcept(quantity_like_traits&lt;Q&gt;::from_numerical_value(numerical_value_is_an_implementation_detail_)) &amp;&amp;</span>
+<span id="L335"><span class="lineNum">     335</span>              :              std::is_nothrow_copy_constructible_v&lt;rep&gt;)</span>
+<span id="L336"><span class="lineNum">     336</span>              :   {</span>
+<span id="L337"><span class="lineNum">     337</span>              :     return quantity_like_traits&lt;Q&gt;::from_numerical_value(</span>
+<span id="L338"><span class="lineNum">     338</span>              :       numerical_value_in(get_unit(quantity_like_traits&lt;Q&gt;::reference)));</span>
+<span id="L339"><span class="lineNum">     339</span>              :   }</span>
+<span id="L340"><span class="lineNum">     340</span>              : </span>
+<span id="L341"><span class="lineNum">     341</span>              :   // member unary operators</span>
+<span id="L342"><span class="lineNum">     342</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto operator+() const</span>
+<span id="L343"><span class="lineNum">     343</span>              :     requires requires(const rep v) {</span>
+<span id="L344"><span class="lineNum">     344</span>              :       { +v } -&gt; std::common_with&lt;rep&gt;;</span>
+<span id="L345"><span class="lineNum">     345</span>              :     }</span>
+<span id="L346"><span class="lineNum">     346</span>              :   {</span>
+<span id="L347"><span class="lineNum">     347</span>              :     return ::mp_units::quantity{+numerical_value_is_an_implementation_detail_, reference};</span>
+<span id="L348"><span class="lineNum">     348</span>              :   }</span>
+<span id="L349"><span class="lineNum">     349</span>              : </span>
+<span id="L350"><span class="lineNum">     350</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto operator-() const</span>
+<span id="L351"><span class="lineNum">     351</span>              :     requires requires(const rep v) {</span>
+<span id="L352"><span class="lineNum">     352</span>              :       { -v } -&gt; std::common_with&lt;rep&gt;;</span>
+<span id="L353"><span class="lineNum">     353</span>              :     }</span>
+<span id="L354"><span class="lineNum">     354</span>              :   {</span>
+<span id="L355"><span class="lineNum">     355</span>              :     return ::mp_units::quantity{-numerical_value_is_an_implementation_detail_, reference};</span>
+<span id="L356"><span class="lineNum">     356</span>              :   }</span>
+<span id="L357"><span class="lineNum">     357</span>              : </span>
+<span id="L358"><span class="lineNum">     358</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q&gt;</span>
+<span id="L359"><span class="lineNum">     359</span>              :   friend constexpr decltype(auto) operator++(Q&amp;&amp; q)</span>
+<span id="L360"><span class="lineNum">     360</span>              :     requires requires(rep&amp; v) {</span>
+<span id="L361"><span class="lineNum">     361</span>              :       { ++v } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L362"><span class="lineNum">     362</span>              :     }</span>
+<span id="L363"><span class="lineNum">     363</span>              :   {</span>
+<span id="L364"><span class="lineNum">     364</span>              :     ++q.numerical_value_is_an_implementation_detail_;</span>
+<span id="L365"><span class="lineNum">     365</span>              :     return std::forward&lt;Q&gt;(q);</span>
+<span id="L366"><span class="lineNum">     366</span>              :   }</span>
+<span id="L367"><span class="lineNum">     367</span>              : </span>
+<span id="L368"><span class="lineNum">     368</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto operator++(int)</span>
+<span id="L369"><span class="lineNum">     369</span>              :     requires requires(rep&amp; v) {</span>
+<span id="L370"><span class="lineNum">     370</span>              :       { v++ } -&gt; std::common_with&lt;rep&gt;;</span>
+<span id="L371"><span class="lineNum">     371</span>              :     }</span>
+<span id="L372"><span class="lineNum">     372</span>              :   {</span>
+<span id="L373"><span class="lineNum">     373</span>              :     return ::mp_units::quantity{numerical_value_is_an_implementation_detail_++, reference};</span>
+<span id="L374"><span class="lineNum">     374</span>              :   }</span>
+<span id="L375"><span class="lineNum">     375</span>              : </span>
+<span id="L376"><span class="lineNum">     376</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q&gt;</span>
+<span id="L377"><span class="lineNum">     377</span>              :   friend constexpr decltype(auto) operator--(Q&amp;&amp; q)</span>
+<span id="L378"><span class="lineNum">     378</span>              :     requires requires(rep&amp; v) {</span>
+<span id="L379"><span class="lineNum">     379</span>              :       { --v } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L380"><span class="lineNum">     380</span>              :     }</span>
+<span id="L381"><span class="lineNum">     381</span>              :   {</span>
+<span id="L382"><span class="lineNum">     382</span>              :     --q.numerical_value_is_an_implementation_detail_;</span>
+<span id="L383"><span class="lineNum">     383</span>              :     return std::forward&lt;Q&gt;(q);</span>
+<span id="L384"><span class="lineNum">     384</span>              :   }</span>
+<span id="L385"><span class="lineNum">     385</span>              : </span>
+<span id="L386"><span class="lineNum">     386</span>              :   [[nodiscard]] constexpr QuantityOf&lt;quantity_spec&gt; auto operator--(int)</span>
+<span id="L387"><span class="lineNum">     387</span>              :     requires requires(rep&amp; v) {</span>
+<span id="L388"><span class="lineNum">     388</span>              :       { v-- } -&gt; std::common_with&lt;rep&gt;;</span>
+<span id="L389"><span class="lineNum">     389</span>              :     }</span>
+<span id="L390"><span class="lineNum">     390</span>              :   {</span>
+<span id="L391"><span class="lineNum">     391</span>              :     return ::mp_units::quantity{numerical_value_is_an_implementation_detail_--, reference};</span>
+<span id="L392"><span class="lineNum">     392</span>              :   }</span>
+<span id="L393"><span class="lineNum">     393</span>              : </span>
+<span id="L394"><span class="lineNum">     394</span>              :   // compound assignment operators</span>
+<span id="L395"><span class="lineNum">     395</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L396"><span class="lineNum">     396</span>              :     requires detail::QuantityConvertibleTo&lt;quantity&lt;R2, Rep2&gt;, quantity&gt; &amp;&amp; requires(rep&amp; a, const Rep2 b) {</span>
+<span id="L397"><span class="lineNum">     397</span>              :       { a += b } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L398"><span class="lineNum">     398</span>              :     }</span>
+<span id="L399"><span class="lineNum">     399</span>              :   friend constexpr decltype(auto) operator+=(Q&amp;&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span>
+<span id="L400"><span class="lineNum">     400</span>              :   {</span>
+<span id="L401"><span class="lineNum">     401</span>              :     if constexpr (equivalent(unit, get_unit(R2)))</span>
+<span id="L402"><span class="lineNum">     402</span>              :       lhs.numerical_value_is_an_implementation_detail_ += rhs.numerical_value_is_an_implementation_detail_;</span>
+<span id="L403"><span class="lineNum">     403</span>              :     else</span>
+<span id="L404"><span class="lineNum">     404</span>              :       lhs.numerical_value_is_an_implementation_detail_ += rhs.in(lhs.unit).numerical_value_is_an_implementation_detail_;</span>
+<span id="L405"><span class="lineNum">     405</span>              :     return std::forward&lt;Q&gt;(lhs);</span>
+<span id="L406"><span class="lineNum">     406</span>              :   }</span>
+<span id="L407"><span class="lineNum">     407</span>              : </span>
+<span id="L408"><span class="lineNum">     408</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L409"><span class="lineNum">     409</span>              :     requires detail::QuantityConvertibleTo&lt;quantity&lt;R2, Rep2&gt;, quantity&gt; &amp;&amp; requires(rep&amp; a, const Rep2 b) {</span>
+<span id="L410"><span class="lineNum">     410</span>              :       { a -= b } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L411"><span class="lineNum">     411</span>              :     }</span>
+<span id="L412"><span class="lineNum">     412</span>              :   friend constexpr decltype(auto) operator-=(Q&amp;&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span>
+<span id="L413"><span class="lineNum">     413</span>              :   {</span>
+<span id="L414"><span class="lineNum">     414</span>              :     if constexpr (equivalent(unit, get_unit(R2)))</span>
+<span id="L415"><span class="lineNum">     415</span>              :       lhs.numerical_value_is_an_implementation_detail_ -= rhs.numerical_value_is_an_implementation_detail_;</span>
+<span id="L416"><span class="lineNum">     416</span>              :     else</span>
+<span id="L417"><span class="lineNum">     417</span>              :       lhs.numerical_value_is_an_implementation_detail_ -= rhs.in(lhs.unit).numerical_value_is_an_implementation_detail_;</span>
+<span id="L418"><span class="lineNum">     418</span>              :     return std::forward&lt;Q&gt;(lhs);</span>
+<span id="L419"><span class="lineNum">     419</span>              :   }</span>
+<span id="L420"><span class="lineNum">     420</span>              : </span>
+<span id="L421"><span class="lineNum">     421</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L422"><span class="lineNum">     422</span>              :     requires detail::QuantityConvertibleTo&lt;quantity&lt;R2, Rep2&gt;, quantity&gt; &amp;&amp; (!treat_as_floating_point&lt;rep&gt;) &amp;&amp;</span>
+<span id="L423"><span class="lineNum">     423</span>              :              requires(rep&amp; a, const Rep2 b) {</span>
+<span id="L424"><span class="lineNum">     424</span>              :                { a %= b } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L425"><span class="lineNum">     425</span>              :              }</span>
+<span id="L426"><span class="lineNum">     426</span>              :   friend constexpr decltype(auto) operator%=(Q&amp;&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span>
+<span id="L427"><span class="lineNum">     427</span>              : </span>
+<span id="L428"><span class="lineNum">     428</span>              :   {</span>
+<span id="L429"><span class="lineNum">     429</span>              :     MP_UNITS_EXPECTS_DEBUG(is_neq_zero(rhs));</span>
+<span id="L430"><span class="lineNum">     430</span>              :     if constexpr (equivalent(unit, get_unit(R2)))</span>
+<span id="L431"><span class="lineNum">     431</span>              :       lhs.numerical_value_is_an_implementation_detail_ %= rhs.numerical_value_is_an_implementation_detail_;</span>
+<span id="L432"><span class="lineNum">     432</span>              :     else</span>
+<span id="L433"><span class="lineNum">     433</span>              :       lhs.numerical_value_is_an_implementation_detail_ %= rhs.in(lhs.unit).numerical_value_is_an_implementation_detail_;</span>
+<span id="L434"><span class="lineNum">     434</span>              :     return std::forward&lt;Q&gt;(lhs);</span>
+<span id="L435"><span class="lineNum">     435</span>              :   }</span>
+<span id="L436"><span class="lineNum">     436</span>              : </span>
+<span id="L437"><span class="lineNum">     437</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q, detail::ScalarRepresentationValuePreservingTo&lt;Rep&gt; Value&gt;</span>
+<span id="L438"><span class="lineNum">     438</span>              :     requires(!Quantity&lt;Value&gt;) &amp;&amp; requires(rep&amp; a, const Value b) {</span>
+<span id="L439"><span class="lineNum">     439</span>              :       { a *= b } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L440"><span class="lineNum">     440</span>              :     }</span>
+<span id="L441"><span class="lineNum">     441</span>              :   friend constexpr decltype(auto) operator*=(Q&amp;&amp; lhs, const Value&amp; val)</span>
+<span id="L442"><span class="lineNum">     442</span>              :   {</span>
+<span id="L443"><span class="lineNum">     443</span>              :     lhs.numerical_value_is_an_implementation_detail_ *= val;</span>
+<span id="L444"><span class="lineNum">     444</span>              :     return std::forward&lt;Q&gt;(lhs);</span>
+<span id="L445"><span class="lineNum">     445</span>              :   }</span>
+<span id="L446"><span class="lineNum">     446</span>              : </span>
+<span id="L447"><span class="lineNum">     447</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q1, QuantityOf&lt;dimensionless&gt; Q2&gt;</span>
+<span id="L448"><span class="lineNum">     448</span>              :     requires detail::ConvertibleWithNumber&lt;Q2::reference&gt; &amp;&amp;</span>
+<span id="L449"><span class="lineNum">     449</span>              :              detail::ScalarRepresentationValuePreservingTo&lt;typename Q2::rep, Rep&gt; &amp;&amp; requires(rep&amp; a, const Q2::rep b) {</span>
+<span id="L450"><span class="lineNum">     450</span>              :                { a *= b } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L451"><span class="lineNum">     451</span>              :              }</span>
+<span id="L452"><span class="lineNum">     452</span>              :   friend constexpr decltype(auto) operator*=(Q1&amp;&amp; lhs, const Q2&amp; rhs)</span>
+<span id="L453"><span class="lineNum">     453</span>              :   {</span>
+<span id="L454"><span class="lineNum">     454</span>              :     return std::forward&lt;Q1&gt;(lhs) *= rhs.numerical_value_is_an_implementation_detail_;</span>
+<span id="L455"><span class="lineNum">     455</span>              :   }</span>
+<span id="L456"><span class="lineNum">     456</span>              : </span>
+<span id="L457"><span class="lineNum">     457</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q, detail::ScalarRepresentationValuePreservingTo&lt;Rep&gt; Value&gt;</span>
+<span id="L458"><span class="lineNum">     458</span>              :     requires(!Quantity&lt;Value&gt;) &amp;&amp; requires(rep&amp; a, const Value b) {</span>
+<span id="L459"><span class="lineNum">     459</span>              :       { a /= b } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L460"><span class="lineNum">     460</span>              :     }</span>
+<span id="L461"><span class="lineNum">     461</span>              :   friend constexpr decltype(auto) operator/=(Q&amp;&amp; lhs, const Value&amp; val)</span>
+<span id="L462"><span class="lineNum">     462</span>              :   {</span>
+<span id="L463"><span class="lineNum">     463</span>              :     MP_UNITS_EXPECTS_DEBUG(val != representation_values&lt;Value&gt;::zero());</span>
+<span id="L464"><span class="lineNum">     464</span>              :     lhs.numerical_value_is_an_implementation_detail_ /= val;</span>
+<span id="L465"><span class="lineNum">     465</span>              :     return std::forward&lt;Q&gt;(lhs);</span>
+<span id="L466"><span class="lineNum">     466</span>              :   }</span>
+<span id="L467"><span class="lineNum">     467</span>              : </span>
+<span id="L468"><span class="lineNum">     468</span>              :   template&lt;detail::Mutable&lt;quantity&gt; Q1, QuantityOf&lt;dimensionless&gt; Q2&gt;</span>
+<span id="L469"><span class="lineNum">     469</span>              :     requires detail::ConvertibleWithNumber&lt;Q2::reference&gt; &amp;&amp;</span>
+<span id="L470"><span class="lineNum">     470</span>              :              detail::ScalarRepresentationValuePreservingTo&lt;typename Q2::rep, Rep&gt; &amp;&amp; requires(rep&amp; a, const Q2::rep b) {</span>
+<span id="L471"><span class="lineNum">     471</span>              :                { a /= b } -&gt; std::same_as&lt;rep&amp;&gt;;</span>
+<span id="L472"><span class="lineNum">     472</span>              :              }</span>
+<span id="L473"><span class="lineNum">     473</span>              :   friend constexpr decltype(auto) operator/=(Q1&amp;&amp; lhs, const Q2&amp; rhs)</span>
+<span id="L474"><span class="lineNum">     474</span>              :   {</span>
+<span id="L475"><span class="lineNum">     475</span>              :     return std::forward&lt;Q1&gt;(lhs) /= rhs.numerical_value_is_an_implementation_detail_;</span>
+<span id="L476"><span class="lineNum">     476</span>              :   }</span>
+<span id="L477"><span class="lineNum">     477</span>              : </span>
+<span id="L478"><span class="lineNum">     478</span>              :   // binary operators on quantities</span>
+<span id="L479"><span class="lineNum">     479</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L480"><span class="lineNum">     480</span>              :     requires detail::CommonlyInvocableQuantities&lt;std::plus&lt;&gt;, quantity, quantity&lt;R2, Rep2&gt;&gt;</span>
+<span id="L481"><span class="lineNum">     481</span> <span class="tlaGNC">         110 :   [[nodiscard]] friend constexpr Quantity auto operator+(const Q&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span></span>
+<span id="L482"><span class="lineNum">     482</span>              :   {</span>
+<span id="L483"><span class="lineNum">     483</span>              :     using ret = detail::common_quantity_for&lt;std::plus&lt;&gt;, quantity, quantity&lt;R2, Rep2&gt;&gt;;</span>
+<span id="L484"><span class="lineNum">     484</span> <span class="tlaGNC">         110 :     const ret ret_lhs(lhs);</span></span>
+<span id="L485"><span class="lineNum">     485</span> <span class="tlaGNC">         110 :     const ret ret_rhs(rhs);</span></span>
+<span id="L486"><span class="lineNum">     486</span> <span class="tlaGNC">         110 :     return ::mp_units::quantity{ret_lhs.numerical_value_ref_in(ret::unit) + ret_rhs.numerical_value_ref_in(ret::unit),</span></span>
+<span id="L487"><span class="lineNum">     487</span> <span class="tlaGNC">         110 :                                 ret::reference};</span></span>
+<span id="L488"><span class="lineNum">     488</span>              :   }</span>
+<span id="L489"><span class="lineNum">     489</span>              : </span>
+<span id="L490"><span class="lineNum">     490</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, RepresentationOf&lt;quantity_spec&gt; Value&gt;</span>
+<span id="L491"><span class="lineNum">     491</span>              :     requires detail::ConvertibleWithNumber&lt;Q::reference&gt; &amp;&amp;</span>
+<span id="L492"><span class="lineNum">     492</span>              :              detail::InvokeResultOf&lt;quantity_spec, std::plus&lt;&gt;, Rep, const Value&amp;&gt;</span>
+<span id="L493"><span class="lineNum">     493</span>              :   [[nodiscard]] friend constexpr Quantity auto operator+(const Q&amp; lhs, const Value&amp; rhs)</span>
+<span id="L494"><span class="lineNum">     494</span>              :   {</span>
+<span id="L495"><span class="lineNum">     495</span>              :     return lhs + ::mp_units::quantity{rhs};</span>
+<span id="L496"><span class="lineNum">     496</span>              :   }</span>
+<span id="L497"><span class="lineNum">     497</span>              : </span>
+<span id="L498"><span class="lineNum">     498</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, RepresentationOf&lt;quantity_spec&gt; Value&gt;</span>
+<span id="L499"><span class="lineNum">     499</span>              :     requires detail::ConvertibleWithNumber&lt;Q::reference&gt; &amp;&amp;</span>
+<span id="L500"><span class="lineNum">     500</span>              :              detail::InvokeResultOf&lt;quantity_spec, std::plus&lt;&gt;, Rep, const Value&amp;&gt;</span>
+<span id="L501"><span class="lineNum">     501</span>              :   [[nodiscard]] friend constexpr Quantity auto operator+(const Value&amp; lhs, const Q&amp; rhs)</span>
+<span id="L502"><span class="lineNum">     502</span>              :   {</span>
+<span id="L503"><span class="lineNum">     503</span>              :     return ::mp_units::quantity{lhs} + rhs;</span>
+<span id="L504"><span class="lineNum">     504</span>              :   }</span>
+<span id="L505"><span class="lineNum">     505</span>              : </span>
+<span id="L506"><span class="lineNum">     506</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L507"><span class="lineNum">     507</span>              :     requires detail::CommonlyInvocableQuantities&lt;std::minus&lt;&gt;, quantity, quantity&lt;R2, Rep2&gt;&gt;</span>
+<span id="L508"><span class="lineNum">     508</span> <span class="tlaGNC">          91 :   [[nodiscard]] friend constexpr Quantity auto operator-(const Q&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span></span>
+<span id="L509"><span class="lineNum">     509</span>              :   {</span>
+<span id="L510"><span class="lineNum">     510</span>              :     using ret = detail::common_quantity_for&lt;std::minus&lt;&gt;, quantity, quantity&lt;R2, Rep2&gt;&gt;;</span>
+<span id="L511"><span class="lineNum">     511</span> <span class="tlaGNC">          91 :     const ret ret_lhs(lhs);</span></span>
+<span id="L512"><span class="lineNum">     512</span> <span class="tlaGNC">          91 :     const ret ret_rhs(rhs);</span></span>
+<span id="L513"><span class="lineNum">     513</span> <span class="tlaGNC">          91 :     return ::mp_units::quantity{ret_lhs.numerical_value_ref_in(ret::unit) - ret_rhs.numerical_value_ref_in(ret::unit),</span></span>
+<span id="L514"><span class="lineNum">     514</span> <span class="tlaGNC">          91 :                                 ret::reference};</span></span>
+<span id="L515"><span class="lineNum">     515</span>              :   }</span>
+<span id="L516"><span class="lineNum">     516</span>              : </span>
+<span id="L517"><span class="lineNum">     517</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, RepresentationOf&lt;quantity_spec&gt; Value&gt;</span>
+<span id="L518"><span class="lineNum">     518</span>              :     requires detail::ConvertibleWithNumber&lt;Q::reference&gt; &amp;&amp;</span>
+<span id="L519"><span class="lineNum">     519</span>              :              detail::InvokeResultOf&lt;quantity_spec, std::minus&lt;&gt;, Rep, const Value&amp;&gt;</span>
+<span id="L520"><span class="lineNum">     520</span>              :   [[nodiscard]] friend constexpr Quantity auto operator-(const Q&amp; lhs, const Value&amp; rhs)</span>
+<span id="L521"><span class="lineNum">     521</span>              :   {</span>
+<span id="L522"><span class="lineNum">     522</span>              :     return lhs - ::mp_units::quantity{rhs};</span>
+<span id="L523"><span class="lineNum">     523</span>              :   }</span>
+<span id="L524"><span class="lineNum">     524</span>              : </span>
+<span id="L525"><span class="lineNum">     525</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, RepresentationOf&lt;quantity_spec&gt; Value&gt;</span>
+<span id="L526"><span class="lineNum">     526</span>              :     requires detail::ConvertibleWithNumber&lt;Q::reference&gt; &amp;&amp;</span>
+<span id="L527"><span class="lineNum">     527</span>              :              detail::InvokeResultOf&lt;quantity_spec, std::minus&lt;&gt;, Rep, const Value&amp;&gt;</span>
+<span id="L528"><span class="lineNum">     528</span> <span class="tlaGNC">           1 :   [[nodiscard]] friend constexpr Quantity auto operator-(const Value&amp; lhs, const Q&amp; rhs)</span></span>
+<span id="L529"><span class="lineNum">     529</span>              :   {</span>
+<span id="L530"><span class="lineNum">     530</span> <span class="tlaGNC">           1 :     return ::mp_units::quantity{lhs} - rhs;</span></span>
+<span id="L531"><span class="lineNum">     531</span>              :   }</span>
+<span id="L532"><span class="lineNum">     532</span>              : </span>
+<span id="L533"><span class="lineNum">     533</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L534"><span class="lineNum">     534</span>              :     requires(!treat_as_floating_point&lt;Rep&gt;) &amp;&amp; (!treat_as_floating_point&lt;Rep2&gt;) &amp;&amp;</span>
+<span id="L535"><span class="lineNum">     535</span>              :             detail::CommonlyInvocableQuantities&lt;std::modulus&lt;&gt;, quantity, quantity&lt;R2, Rep2&gt;&gt;</span>
+<span id="L536"><span class="lineNum">     536</span>              :   [[nodiscard]] friend constexpr Quantity auto operator%(const Q&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span>
+<span id="L537"><span class="lineNum">     537</span>              :   {</span>
+<span id="L538"><span class="lineNum">     538</span>              :     MP_UNITS_EXPECTS_DEBUG(is_neq_zero(rhs));</span>
+<span id="L539"><span class="lineNum">     539</span>              :     using ret = detail::common_quantity_for&lt;std::modulus&lt;&gt;, quantity, quantity&lt;R2, Rep2&gt;&gt;;</span>
+<span id="L540"><span class="lineNum">     540</span>              :     const ret ret_lhs(lhs);</span>
+<span id="L541"><span class="lineNum">     541</span>              :     const ret ret_rhs(rhs);</span>
+<span id="L542"><span class="lineNum">     542</span>              :     return ::mp_units::quantity{ret_lhs.numerical_value_ref_in(ret::unit) % ret_rhs.numerical_value_ref_in(ret::unit),</span>
+<span id="L543"><span class="lineNum">     543</span>              :                                 ret::reference};</span>
+<span id="L544"><span class="lineNum">     544</span>              :   }</span>
+<span id="L545"><span class="lineNum">     545</span>              : </span>
+<span id="L546"><span class="lineNum">     546</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, RepresentationOf&lt;quantity_spec&gt; Value&gt;</span>
+<span id="L547"><span class="lineNum">     547</span>              :     requires detail::ConvertibleWithNumber&lt;Q::reference&gt; &amp;&amp;</span>
+<span id="L548"><span class="lineNum">     548</span>              :              detail::InvokeResultOf&lt;quantity_spec, std::modulus&lt;&gt;, Rep, const Value&amp;&gt;</span>
+<span id="L549"><span class="lineNum">     549</span>              :   [[nodiscard]] friend constexpr Quantity auto operator%(const Q&amp; lhs, const Value&amp; rhs)</span>
+<span id="L550"><span class="lineNum">     550</span>              :   {</span>
+<span id="L551"><span class="lineNum">     551</span>              :     return lhs % ::mp_units::quantity{rhs};</span>
+<span id="L552"><span class="lineNum">     552</span>              :   }</span>
+<span id="L553"><span class="lineNum">     553</span>              : </span>
+<span id="L554"><span class="lineNum">     554</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, RepresentationOf&lt;quantity_spec&gt; Value&gt;</span>
+<span id="L555"><span class="lineNum">     555</span>              :     requires detail::ConvertibleWithNumber&lt;Q::reference&gt; &amp;&amp;</span>
+<span id="L556"><span class="lineNum">     556</span>              :              detail::InvokeResultOf&lt;quantity_spec, std::modulus&lt;&gt;, Rep, const Value&amp;&gt;</span>
+<span id="L557"><span class="lineNum">     557</span>              :   [[nodiscard]] friend constexpr Quantity auto operator%(const Value&amp; lhs, const Q&amp; rhs)</span>
+<span id="L558"><span class="lineNum">     558</span>              :   {</span>
+<span id="L559"><span class="lineNum">     559</span>              :     return ::mp_units::quantity{lhs} % rhs;</span>
+<span id="L560"><span class="lineNum">     560</span>              :   }</span>
+<span id="L561"><span class="lineNum">     561</span>              : </span>
+<span id="L562"><span class="lineNum">     562</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L563"><span class="lineNum">     563</span>              :     requires detail::InvocableQuantities&lt;std::multiplies&lt;&gt;, quantity, quantity&lt;R2, Rep2&gt;&gt;</span>
+<span id="L564"><span class="lineNum">     564</span> <span class="tlaGNC">         150 :   [[nodiscard]] friend constexpr Quantity auto operator*(const Q&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span></span>
+<span id="L565"><span class="lineNum">     565</span>              :   {</span>
+<span id="L566"><span class="lineNum">     566</span> <span class="tlaGNC">         150 :     return ::mp_units::quantity{lhs.numerical_value_ref_in(unit) * rhs.numerical_value_ref_in(rhs.unit), R * R2};</span></span>
+<span id="L567"><span class="lineNum">     567</span>              :   }</span>
+<span id="L568"><span class="lineNum">     568</span>              : </span>
+<span id="L569"><span class="lineNum">     569</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, typename Value&gt;</span>
+<span id="L570"><span class="lineNum">     570</span>              :     requires(!Quantity&lt;Value&gt;) &amp;&amp;</span>
+<span id="L571"><span class="lineNum">     571</span>              :             (!Reference&lt;Value&gt;) &amp;&amp; detail::InvokeResultOf&lt;quantity_spec, std::multiplies&lt;&gt;, Rep, const Value&amp;&gt;</span>
+<span id="L572"><span class="lineNum">     572</span>              :   [[nodiscard]] friend constexpr QuantityOf&lt;quantity_spec&gt; auto operator*(const Q&amp; q, const Value&amp; val)</span>
+<span id="L573"><span class="lineNum">     573</span>              :   {</span>
+<span id="L574"><span class="lineNum">     574</span>              :     return ::mp_units::quantity{q.numerical_value_ref_in(unit) * val, R};</span>
+<span id="L575"><span class="lineNum">     575</span>              :   }</span>
+<span id="L576"><span class="lineNum">     576</span>              : </span>
+<span id="L577"><span class="lineNum">     577</span>              :   template&lt;typename Value, std::derived_from&lt;quantity&gt; Q&gt;</span>
+<span id="L578"><span class="lineNum">     578</span>              :     requires(!Quantity&lt;Value&gt;) &amp;&amp;</span>
+<span id="L579"><span class="lineNum">     579</span>              :             (!Reference&lt;Value&gt;) &amp;&amp; detail::InvokeResultOf&lt;quantity_spec, std::multiplies&lt;&gt;, const Value&amp;, Rep&gt;</span>
+<span id="L580"><span class="lineNum">     580</span>              :   [[nodiscard]] friend constexpr QuantityOf&lt;quantity_spec&gt; auto operator*(const Value&amp; val, const Q&amp; q)</span>
+<span id="L581"><span class="lineNum">     581</span>              :   {</span>
+<span id="L582"><span class="lineNum">     582</span>              :     return ::mp_units::quantity{val * q.numerical_value_ref_in(unit), R};</span>
+<span id="L583"><span class="lineNum">     583</span>              :   }</span>
+<span id="L584"><span class="lineNum">     584</span>              : </span>
+<span id="L585"><span class="lineNum">     585</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L586"><span class="lineNum">     586</span>              :     requires detail::InvocableQuantities&lt;std::divides&lt;&gt;, quantity, quantity&lt;R2, Rep2&gt;&gt;</span>
+<span id="L587"><span class="lineNum">     587</span> <span class="tlaGNC">          30 :   [[nodiscard]] friend constexpr Quantity auto operator/(const Q&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span></span>
+<span id="L588"><span class="lineNum">     588</span>              :   {</span>
+<span id="L589"><span class="lineNum">     589</span> <span class="tlaGNC">          30 :     MP_UNITS_EXPECTS_DEBUG(is_neq_zero(rhs));</span></span>
+<span id="L590"><span class="lineNum">     590</span> <span class="tlaGNC">          30 :     return ::mp_units::quantity{lhs.numerical_value_ref_in(unit) / rhs.numerical_value_ref_in(rhs.unit), R / R2};</span></span>
+<span id="L591"><span class="lineNum">     591</span>              :   }</span>
+<span id="L592"><span class="lineNum">     592</span>              : </span>
+<span id="L593"><span class="lineNum">     593</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, typename Value&gt;</span>
+<span id="L594"><span class="lineNum">     594</span>              :     requires(!Quantity&lt;Value&gt;) &amp;&amp;</span>
+<span id="L595"><span class="lineNum">     595</span>              :             (!Reference&lt;Value&gt;) &amp;&amp; detail::InvokeResultOf&lt;quantity_spec, std::divides&lt;&gt;, Rep, const Value&amp;&gt;</span>
+<span id="L596"><span class="lineNum">     596</span> <span class="tlaGNC">           1 :   [[nodiscard]] friend constexpr QuantityOf&lt;quantity_spec&gt; auto operator/(const Q&amp; q, const Value&amp; val)</span></span>
+<span id="L597"><span class="lineNum">     597</span>              :   {</span>
+<span id="L598"><span class="lineNum">     598</span> <span class="tlaGNC">           1 :     MP_UNITS_EXPECTS_DEBUG(val != representation_values&lt;Value&gt;::zero());</span></span>
+<span id="L599"><span class="lineNum">     599</span> <span class="tlaGNC">           1 :     return ::mp_units::quantity{q.numerical_value_ref_in(unit) / val, R};</span></span>
+<span id="L600"><span class="lineNum">     600</span>              :   }</span>
+<span id="L601"><span class="lineNum">     601</span>              : </span>
+<span id="L602"><span class="lineNum">     602</span>              :   template&lt;typename Value, std::derived_from&lt;quantity&gt; Q&gt;</span>
+<span id="L603"><span class="lineNum">     603</span>              :     requires(!Quantity&lt;Value&gt;) &amp;&amp;</span>
+<span id="L604"><span class="lineNum">     604</span>              :             (!Reference&lt;Value&gt;) &amp;&amp; detail::InvokeResultOf&lt;quantity_spec, std::divides&lt;&gt;, const Value&amp;, Rep&gt;</span>
+<span id="L605"><span class="lineNum">     605</span>              :   [[nodiscard]] friend constexpr Quantity auto operator/(const Value&amp; val, const Q&amp; q)</span>
+<span id="L606"><span class="lineNum">     606</span>              :   {</span>
+<span id="L607"><span class="lineNum">     607</span>              :     MP_UNITS_EXPECTS_DEBUG(is_neq_zero(q));</span>
+<span id="L608"><span class="lineNum">     608</span>              :     return ::mp_units::quantity{val / q.numerical_value_ref_in(unit), one / R};</span>
+<span id="L609"><span class="lineNum">     609</span>              :   }</span>
+<span id="L610"><span class="lineNum">     610</span>              : </span>
+<span id="L611"><span class="lineNum">     611</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L612"><span class="lineNum">     612</span>              :     requires requires { typename std::common_type_t&lt;quantity, quantity&lt;R2, Rep2&gt;&gt;; } &amp;&amp;</span>
+<span id="L613"><span class="lineNum">     613</span>              :              std::equality_comparable&lt;typename std::common_type_t&lt;quantity, quantity&lt;R2, Rep2&gt;&gt;::rep&gt;</span>
+<span id="L614"><span class="lineNum">     614</span> <span class="tlaGNC">          34 :   [[nodiscard]] friend constexpr bool operator==(const Q&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span></span>
+<span id="L615"><span class="lineNum">     615</span>              :   {</span>
+<span id="L616"><span class="lineNum">     616</span>              :     using ct = std::common_type_t&lt;quantity, quantity&lt;R2, Rep2&gt;&gt;;</span>
+<span id="L617"><span class="lineNum">     617</span> <span class="tlaGNC">          34 :     const ct ct_lhs(lhs);</span></span>
+<span id="L618"><span class="lineNum">     618</span> <span class="tlaGNC">          34 :     const ct ct_rhs(rhs);</span></span>
+<span id="L619"><span class="lineNum">     619</span> <span class="tlaGNC">          34 :     return ct_lhs.numerical_value_ref_in(ct::unit) == ct_rhs.numerical_value_ref_in(ct::unit);</span></span>
+<span id="L620"><span class="lineNum">     620</span>              :   }</span>
+<span id="L621"><span class="lineNum">     621</span>              : </span>
+<span id="L622"><span class="lineNum">     622</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, RepresentationOf&lt;quantity_spec&gt; Value&gt;</span>
+<span id="L623"><span class="lineNum">     623</span>              :     requires detail::ConvertibleWithNumber&lt;Q::reference&gt; &amp;&amp; std::equality_comparable_with&lt;Rep, Value&gt;</span>
+<span id="L624"><span class="lineNum">     624</span>              :   [[nodiscard]] friend constexpr bool operator==(const Q&amp; lhs, const Value&amp; rhs)</span>
+<span id="L625"><span class="lineNum">     625</span>              :   {</span>
+<span id="L626"><span class="lineNum">     626</span>              :     return lhs.numerical_value_ref_in(unit) == rhs;</span>
+<span id="L627"><span class="lineNum">     627</span>              :   }</span>
+<span id="L628"><span class="lineNum">     628</span>              : </span>
+<span id="L629"><span class="lineNum">     629</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, auto R2, typename Rep2&gt;</span>
+<span id="L630"><span class="lineNum">     630</span>              :     requires requires { typename std::common_type_t&lt;quantity, quantity&lt;R2, Rep2&gt;&gt;; } &amp;&amp;</span>
+<span id="L631"><span class="lineNum">     631</span>              :              std::three_way_comparable&lt;typename std::common_type_t&lt;quantity, quantity&lt;R2, Rep2&gt;&gt;::rep&gt;</span>
+<span id="L632"><span class="lineNum">     632</span> <span class="tlaGNC">          20 :   [[nodiscard]] friend constexpr auto operator&lt;=&gt;(const Q&amp; lhs, const quantity&lt;R2, Rep2&gt;&amp; rhs)</span></span>
+<span id="L633"><span class="lineNum">     633</span>              :   {</span>
+<span id="L634"><span class="lineNum">     634</span>              :     using ct = std::common_type_t&lt;quantity, quantity&lt;R2, Rep2&gt;&gt;;</span>
+<span id="L635"><span class="lineNum">     635</span> <span class="tlaGNC">          20 :     const ct ct_lhs(lhs);</span></span>
+<span id="L636"><span class="lineNum">     636</span> <span class="tlaGNC">          20 :     const ct ct_rhs(rhs);</span></span>
+<span id="L637"><span class="lineNum">     637</span> <span class="tlaGNC">          20 :     return ct_lhs.numerical_value_ref_in(ct::unit) &lt;=&gt; ct_rhs.numerical_value_ref_in(ct::unit);</span></span>
+<span id="L638"><span class="lineNum">     638</span>              :   }</span>
+<span id="L639"><span class="lineNum">     639</span>              : </span>
+<span id="L640"><span class="lineNum">     640</span>              :   template&lt;std::derived_from&lt;quantity&gt; Q, RepresentationOf&lt;quantity_spec&gt; Value&gt;</span>
+<span id="L641"><span class="lineNum">     641</span>              :     requires detail::ConvertibleWithNumber&lt;Q::reference&gt; &amp;&amp; std::three_way_comparable_with&lt;Rep, Value&gt;</span>
+<span id="L642"><span class="lineNum">     642</span> <span class="tlaGNC">           3 :   [[nodiscard]] friend constexpr auto operator&lt;=&gt;(const Q&amp; lhs, const Value&amp; rhs)</span></span>
+<span id="L643"><span class="lineNum">     643</span>              :   {</span>
+<span id="L644"><span class="lineNum">     644</span> <span class="tlaGNC">           3 :     return lhs.numerical_value_ref_in(unit) &lt;=&gt; rhs;</span></span>
+<span id="L645"><span class="lineNum">     645</span>              :   }</span>
+<span id="L646"><span class="lineNum">     646</span>              : };</span>
+<span id="L647"><span class="lineNum">     647</span>              : </span>
+<span id="L648"><span class="lineNum">     648</span>              : // CTAD</span>
+<span id="L649"><span class="lineNum">     649</span>              : template&lt;Reference R, RepresentationOf&lt;get_quantity_spec(R{})&gt; Value&gt;</span>
+<span id="L650"><span class="lineNum">     650</span>              : quantity(Value v, R) -&gt; quantity&lt;R{}, Value&gt;;</span>
+<span id="L651"><span class="lineNum">     651</span>              : </span>
+<span id="L652"><span class="lineNum">     652</span>              : #if MP_UNITS_COMP_GCC == 14</span>
+<span id="L653"><span class="lineNum">     653</span>              : template&lt;detail::SomeRepresentation Value&gt;</span>
+<span id="L654"><span class="lineNum">     654</span>              : #else</span>
+<span id="L655"><span class="lineNum">     655</span>              : template&lt;RepresentationOf&lt;get_quantity_spec(one)&gt; Value&gt;</span>
+<span id="L656"><span class="lineNum">     656</span>              : #endif</span>
+<span id="L657"><span class="lineNum">     657</span>              : explicit(false) quantity(Value) -&gt; quantity&lt;one, Value&gt;;</span>
+<span id="L658"><span class="lineNum">     658</span>              : </span>
+<span id="L659"><span class="lineNum">     659</span>              : template&lt;QuantityLike Q&gt;</span>
+<span id="L660"><span class="lineNum">     660</span>              : explicit(quantity_like_traits&lt;Q&gt;::explicit_import) quantity(Q)</span>
+<span id="L661"><span class="lineNum">     661</span>              :   -&gt; quantity&lt;quantity_like_traits&lt;Q&gt;::reference, typename quantity_like_traits&lt;Q&gt;::rep&gt;;</span>
+<span id="L662"><span class="lineNum">     662</span>              : </span>
+<span id="L663"><span class="lineNum">     663</span>              : MP_UNITS_EXPORT_END</span>
+<span id="L664"><span class="lineNum">     664</span>              : </span>
+<span id="L665"><span class="lineNum">     665</span>              : }  // namespace mp_units</span>
+<span id="L666"><span class="lineNum">     666</span>              : </span>
+<span id="L667"><span class="lineNum">     667</span>              : template&lt;mp_units::Quantity Q1, mp_units::Quantity Q2&gt;</span>
+<span id="L668"><span class="lineNum">     668</span>              :   requires requires {</span>
+<span id="L669"><span class="lineNum">     669</span>              :     { mp_units::get_common_reference(Q1::reference, Q2::reference) } -&gt; mp_units::Reference;</span>
+<span id="L670"><span class="lineNum">     670</span>              :     typename std::common_type_t&lt;typename Q1::rep, typename Q2::rep&gt;;</span>
+<span id="L671"><span class="lineNum">     671</span>              :     requires(</span>
+<span id="L672"><span class="lineNum">     672</span>              :       !overflows_non_zero_common_values&lt;std::common_type_t&lt;typename Q1::rep, typename Q2::rep&gt;&gt;(Q1::unit, Q2::unit));</span>
+<span id="L673"><span class="lineNum">     673</span>              :     requires mp_units::RepresentationOf&lt;std::common_type_t&lt;typename Q1::rep, typename Q2::rep&gt;,</span>
+<span id="L674"><span class="lineNum">     674</span>              :                                         mp_units::get_common_quantity_spec(Q1::quantity_spec, Q2::quantity_spec)&gt;;</span>
+<span id="L675"><span class="lineNum">     675</span>              :   }</span>
+<span id="L676"><span class="lineNum">     676</span>              : struct std::common_type&lt;Q1, Q2&gt; {</span>
+<span id="L677"><span class="lineNum">     677</span>              :   using type = mp_units::quantity&lt;mp_units::get_common_reference(Q1::reference, Q2::reference),</span>
+<span id="L678"><span class="lineNum">     678</span>              :                                   std::common_type_t&lt;typename Q1::rep, typename Q2::rep&gt;&gt;;</span>
+<span id="L679"><span class="lineNum">     679</span>              : };</span>
+<span id="L680"><span class="lineNum">     680</span>              : </span>
+<span id="L681"><span class="lineNum">     681</span>              : template&lt;mp_units::Quantity Q, mp_units::RepresentationOf&lt;Q::quantity_spec&gt; Value&gt;</span>
+<span id="L682"><span class="lineNum">     682</span>              :   requires(Q::unit == mp_units::one) &amp;&amp;</span>
+<span id="L683"><span class="lineNum">     683</span>              :           requires { typename mp_units::quantity&lt;Q::reference, std::common_type_t&lt;typename Q::rep, Value&gt;&gt;; }</span>
+<span id="L684"><span class="lineNum">     684</span>              : struct std::common_type&lt;Q, Value&gt; {</span>
+<span id="L685"><span class="lineNum">     685</span>              :   using type = mp_units::quantity&lt;Q::reference, std::common_type_t&lt;typename Q::rep, Value&gt;&gt;;</span>
+<span id="L686"><span class="lineNum">     686</span>              : };</span>
+<span id="L687"><span class="lineNum">     687</span>              : </span>
+<span id="L688"><span class="lineNum">     688</span>              : template&lt;mp_units::Quantity Q, mp_units::RepresentationOf&lt;Q::quantity_spec&gt; Value&gt;</span>
+<span id="L689"><span class="lineNum">     689</span>              :   requires requires { typename std::common_type&lt;Q, Value&gt;; }</span>
+<span id="L690"><span class="lineNum">     690</span>              : struct std::common_type&lt;Value, Q&gt; : std::common_type&lt;Q, Value&gt; {};</span>
+<span id="L691"><span class="lineNum">     691</span>              : </span>
+<span id="L692"><span class="lineNum">     692</span>              : template&lt;auto R, typename Rep&gt;</span>
+<span id="L693"><span class="lineNum">     693</span>              :   requires std::numeric_limits&lt;Rep&gt;::is_specialized</span>
+<span id="L694"><span class="lineNum">     694</span>              : class std::numeric_limits&lt;mp_units::quantity&lt;R, Rep&gt;&gt; : public std::numeric_limits&lt;Rep&gt; {</span>
+<span id="L695"><span class="lineNum">     695</span>              : public:</span>
+<span id="L696"><span class="lineNum">     696</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; min() noexcept</span>
+<span id="L697"><span class="lineNum">     697</span>              :     requires requires { mp_units::quantity&lt;R, Rep&gt;::min(); }</span>
+<span id="L698"><span class="lineNum">     698</span>              :   {</span>
+<span id="L699"><span class="lineNum">     699</span>              :     return mp_units::quantity&lt;R, Rep&gt;::min();</span>
+<span id="L700"><span class="lineNum">     700</span>              :   }</span>
+<span id="L701"><span class="lineNum">     701</span>              : </span>
+<span id="L702"><span class="lineNum">     702</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; max() noexcept</span>
+<span id="L703"><span class="lineNum">     703</span>              :     requires requires { mp_units::quantity&lt;R, Rep&gt;::max(); }</span>
+<span id="L704"><span class="lineNum">     704</span>              :   {</span>
+<span id="L705"><span class="lineNum">     705</span>              :     return mp_units::quantity&lt;R, Rep&gt;::max();</span>
+<span id="L706"><span class="lineNum">     706</span>              :   }</span>
+<span id="L707"><span class="lineNum">     707</span>              : </span>
+<span id="L708"><span class="lineNum">     708</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; lowest() noexcept</span>
+<span id="L709"><span class="lineNum">     709</span>              :     requires requires { std::numeric_limits&lt;Rep&gt;::lowest(); }</span>
+<span id="L710"><span class="lineNum">     710</span>              :   {</span>
+<span id="L711"><span class="lineNum">     711</span>              :     return {std::numeric_limits&lt;Rep&gt;::lowest(), R};</span>
+<span id="L712"><span class="lineNum">     712</span>              :   }</span>
+<span id="L713"><span class="lineNum">     713</span>              : </span>
+<span id="L714"><span class="lineNum">     714</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; epsilon() noexcept</span>
+<span id="L715"><span class="lineNum">     715</span>              :     requires requires { std::numeric_limits&lt;Rep&gt;::epsilon(); }</span>
+<span id="L716"><span class="lineNum">     716</span>              :   {</span>
+<span id="L717"><span class="lineNum">     717</span>              :     return {std::numeric_limits&lt;Rep&gt;::epsilon(), R};</span>
+<span id="L718"><span class="lineNum">     718</span>              :   }</span>
+<span id="L719"><span class="lineNum">     719</span>              : </span>
+<span id="L720"><span class="lineNum">     720</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; round_error() noexcept</span>
+<span id="L721"><span class="lineNum">     721</span>              :     requires requires { std::numeric_limits&lt;Rep&gt;::round_error(); }</span>
+<span id="L722"><span class="lineNum">     722</span>              :   {</span>
+<span id="L723"><span class="lineNum">     723</span>              :     return {std::numeric_limits&lt;Rep&gt;::round_error(), R};</span>
+<span id="L724"><span class="lineNum">     724</span>              :   }</span>
+<span id="L725"><span class="lineNum">     725</span>              : </span>
+<span id="L726"><span class="lineNum">     726</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; infinity() noexcept</span>
+<span id="L727"><span class="lineNum">     727</span>              :     requires requires { std::numeric_limits&lt;Rep&gt;::infinity(); }</span>
+<span id="L728"><span class="lineNum">     728</span>              :   {</span>
+<span id="L729"><span class="lineNum">     729</span>              :     return {std::numeric_limits&lt;Rep&gt;::infinity(), R};</span>
+<span id="L730"><span class="lineNum">     730</span>              :   }</span>
+<span id="L731"><span class="lineNum">     731</span>              : </span>
+<span id="L732"><span class="lineNum">     732</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; quiet_NaN() noexcept</span>
+<span id="L733"><span class="lineNum">     733</span>              :     requires requires { std::numeric_limits&lt;Rep&gt;::quiet_NaN(); }</span>
+<span id="L734"><span class="lineNum">     734</span>              :   {</span>
+<span id="L735"><span class="lineNum">     735</span>              :     return {std::numeric_limits&lt;Rep&gt;::quiet_NaN(), R};</span>
+<span id="L736"><span class="lineNum">     736</span>              :   }</span>
+<span id="L737"><span class="lineNum">     737</span>              : </span>
+<span id="L738"><span class="lineNum">     738</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; signaling_NaN() noexcept</span>
+<span id="L739"><span class="lineNum">     739</span>              :     requires requires { std::numeric_limits&lt;Rep&gt;::signaling_NaN(); }</span>
+<span id="L740"><span class="lineNum">     740</span>              :   {</span>
+<span id="L741"><span class="lineNum">     741</span>              :     return {std::numeric_limits&lt;Rep&gt;::signaling_NaN(), R};</span>
+<span id="L742"><span class="lineNum">     742</span>              :   }</span>
+<span id="L743"><span class="lineNum">     743</span>              : </span>
+<span id="L744"><span class="lineNum">     744</span>              :   static constexpr mp_units::quantity&lt;R, Rep&gt; denorm_min() noexcept</span>
+<span id="L745"><span class="lineNum">     745</span>              :     requires requires { std::numeric_limits&lt;Rep&gt;::denorm_min(); }</span>
+<span id="L746"><span class="lineNum">     746</span>              :   {</span>
+<span id="L747"><span class="lineNum">     747</span>              :     return {std::numeric_limits&lt;Rep&gt;::denorm_min(), R};</span>
+<span id="L748"><span class="lineNum">     748</span>              :   }</span>
+<span id="L749"><span class="lineNum">     749</span>              : };</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

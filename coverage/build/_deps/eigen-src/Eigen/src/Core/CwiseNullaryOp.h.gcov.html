@@ -1,0 +1,1061 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/Kalman - build/_deps/eigen-src/Eigen/src/Core/CwiseNullaryOp.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../../index.html" target="_parent">top level</a> - <a href="index.html" target="_parent">build/_deps/eigen-src/Eigen/src/Core</a> - CwiseNullaryOp.h<span style="font-size: 80%;"> (source / <a href="CwiseNullaryOp.h.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/Kalman</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">18</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-04-26 21:31:14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryMed">86.3&nbsp;%</td>
+            <td class="headerCovTableEntry">300</td>
+            <td class="headerCovTableEntry">259</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+                  <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // This file is part of Eigen, a lightweight C++ template library</span>
+<span id="L2"><span class="lineNum">       2</span>              : // for linear algebra.</span>
+<span id="L3"><span class="lineNum">       3</span>              : //</span>
+<span id="L4"><span class="lineNum">       4</span>              : // Copyright (C) 2008-2010 Gael Guennebaud &lt;gael.guennebaud@inria.fr&gt;</span>
+<span id="L5"><span class="lineNum">       5</span>              : //</span>
+<span id="L6"><span class="lineNum">       6</span>              : // This Source Code Form is subject to the terms of the Mozilla</span>
+<span id="L7"><span class="lineNum">       7</span>              : // Public License v. 2.0. If a copy of the MPL was not distributed</span>
+<span id="L8"><span class="lineNum">       8</span>              : // with this file, You can obtain one at http://mozilla.org/MPL/2.0/.</span>
+<span id="L9"><span class="lineNum">       9</span>              : </span>
+<span id="L10"><span class="lineNum">      10</span>              : #ifndef EIGEN_CWISE_NULLARY_OP_H</span>
+<span id="L11"><span class="lineNum">      11</span>              : #define EIGEN_CWISE_NULLARY_OP_H</span>
+<span id="L12"><span class="lineNum">      12</span>              : </span>
+<span id="L13"><span class="lineNum">      13</span>              : // IWYU pragma: private</span>
+<span id="L14"><span class="lineNum">      14</span>              : #include &quot;./InternalHeaderCheck.h&quot;</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span>              : namespace Eigen {</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              : namespace internal {</span>
+<span id="L19"><span class="lineNum">      19</span>              : template &lt;typename NullaryOp, typename PlainObjectType&gt;</span>
+<span id="L20"><span class="lineNum">      20</span>              : struct traits&lt;CwiseNullaryOp&lt;NullaryOp, PlainObjectType&gt; &gt; : traits&lt;PlainObjectType&gt; {</span>
+<span id="L21"><span class="lineNum">      21</span>              :   enum { Flags = traits&lt;PlainObjectType&gt;::Flags &amp; RowMajorBit };</span>
+<span id="L22"><span class="lineNum">      22</span>              : };</span>
+<span id="L23"><span class="lineNum">      23</span>              : </span>
+<span id="L24"><span class="lineNum">      24</span>              : }  // namespace internal</span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span>              : /** \class CwiseNullaryOp</span>
+<span id="L27"><span class="lineNum">      27</span>              :   * \ingroup Core_Module</span>
+<span id="L28"><span class="lineNum">      28</span>              :   *</span>
+<span id="L29"><span class="lineNum">      29</span>              :   * \brief Generic expression of a matrix where all coefficients are defined by a functor</span>
+<span id="L30"><span class="lineNum">      30</span>              :   *</span>
+<span id="L31"><span class="lineNum">      31</span>              :   * \tparam NullaryOp template functor implementing the operator</span>
+<span id="L32"><span class="lineNum">      32</span>              :   * \tparam PlainObjectType the underlying plain matrix/array type</span>
+<span id="L33"><span class="lineNum">      33</span>              :   *</span>
+<span id="L34"><span class="lineNum">      34</span>              :   * This class represents an expression of a generic nullary operator.</span>
+<span id="L35"><span class="lineNum">      35</span>              :   * It is the return type of the Ones(), Zero(), Constant(), Identity() and Random() methods,</span>
+<span id="L36"><span class="lineNum">      36</span>              :   * and most of the time this is the only way it is used.</span>
+<span id="L37"><span class="lineNum">      37</span>              :   *</span>
+<span id="L38"><span class="lineNum">      38</span>              :   * However, if you want to write a function returning such an expression, you</span>
+<span id="L39"><span class="lineNum">      39</span>              :   * will need to use this class.</span>
+<span id="L40"><span class="lineNum">      40</span>              :   *</span>
+<span id="L41"><span class="lineNum">      41</span>              :   * The functor NullaryOp must expose one of the following method:</span>
+<span id="L42"><span class="lineNum">      42</span>              :     &lt;table class=&quot;manual&quot;&gt;</span>
+<span id="L43"><span class="lineNum">      43</span>              :     &lt;tr            &gt;&lt;td&gt;\c operator()() &lt;/td&gt;&lt;td&gt;if the procedural generation does not depend on the coefficient entries</span>
+<span id="L44"><span class="lineNum">      44</span>              :   (e.g., random numbers)&lt;/td&gt;&lt;/tr&gt; &lt;tr class=&quot;alt&quot;&gt;&lt;td&gt;\c operator()(Index i)&lt;/td&gt;&lt;td&gt;if the procedural generation makes</span>
+<span id="L45"><span class="lineNum">      45</span>              :   sense for vectors only and that it depends on the coefficient index \c i (e.g., linspace) &lt;/td&gt;&lt;/tr&gt; &lt;tr &gt;&lt;td&gt;\c</span>
+<span id="L46"><span class="lineNum">      46</span>              :   operator()(Index i,Index j)&lt;/td&gt;&lt;td&gt;if the procedural generation depends on the matrix coordinates \c i, \c j (e.g.,</span>
+<span id="L47"><span class="lineNum">      47</span>              :   to generate a checkerboard with 0 and 1)&lt;/td&gt;&lt;/tr&gt;</span>
+<span id="L48"><span class="lineNum">      48</span>              :     &lt;/table&gt;</span>
+<span id="L49"><span class="lineNum">      49</span>              :   * It is also possible to expose the last two operators if the generation makes sense for matrices but can be optimized</span>
+<span id="L50"><span class="lineNum">      50</span>              :   for vectors.</span>
+<span id="L51"><span class="lineNum">      51</span>              :   *</span>
+<span id="L52"><span class="lineNum">      52</span>              :   * See DenseBase::NullaryExpr(Index,const CustomNullaryOp&amp;) for an example binding</span>
+<span id="L53"><span class="lineNum">      53</span>              :   * C++11 random number generators.</span>
+<span id="L54"><span class="lineNum">      54</span>              :   *</span>
+<span id="L55"><span class="lineNum">      55</span>              :   * A nullary expression can also be used to implement custom sophisticated matrix manipulations</span>
+<span id="L56"><span class="lineNum">      56</span>              :   * that cannot be covered by the existing set of natively supported matrix manipulations.</span>
+<span id="L57"><span class="lineNum">      57</span>              :   * See this \ref TopicCustomizing_NullaryExpr &quot;page&quot; for some examples and additional explanations</span>
+<span id="L58"><span class="lineNum">      58</span>              :   * on the behavior of CwiseNullaryOp.</span>
+<span id="L59"><span class="lineNum">      59</span>              :   *</span>
+<span id="L60"><span class="lineNum">      60</span>              :   * \sa class CwiseUnaryOp, class CwiseBinaryOp, DenseBase::NullaryExpr</span>
+<span id="L61"><span class="lineNum">      61</span>              :   */</span>
+<span id="L62"><span class="lineNum">      62</span>              : template &lt;typename NullaryOp, typename PlainObjectType&gt;</span>
+<span id="L63"><span class="lineNum">      63</span>              : class CwiseNullaryOp : public internal::dense_xpr_base&lt;CwiseNullaryOp&lt;NullaryOp, PlainObjectType&gt; &gt;::type,</span>
+<span id="L64"><span class="lineNum">      64</span>              :                        internal::no_assignment_operator {</span>
+<span id="L65"><span class="lineNum">      65</span>              :  public:</span>
+<span id="L66"><span class="lineNum">      66</span>              :   typedef typename internal::dense_xpr_base&lt;CwiseNullaryOp&gt;::type Base;</span>
+<span id="L67"><span class="lineNum">      67</span>              :   EIGEN_DENSE_PUBLIC_INTERFACE(CwiseNullaryOp)</span>
+<span id="L68"><span class="lineNum">      68</span>              : </span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC tlaBgGNC">        2633 :   EIGEN_DEVICE_FUNC CwiseNullaryOp(Index rows, Index cols, const NullaryOp&amp; func = NullaryOp())</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">        2633 :       : m_rows(rows), m_cols(cols), m_functor(func) {</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        2633 :     eigen_assert(rows &gt;= 0 &amp;&amp; (RowsAtCompileTime == Dynamic || RowsAtCompileTime == rows) &amp;&amp; cols &gt;= 0 &amp;&amp;</span></span>
+<span id="L72"><span class="lineNum">      72</span>              :                  (ColsAtCompileTime == Dynamic || ColsAtCompileTime == cols));</span>
+<span id="L73"><span class="lineNum">      73</span> <span class="tlaGNC">        2633 :   }</span></span>
+<span id="L74"><span class="lineNum">      74</span>              :   EIGEN_DEVICE_FUNC CwiseNullaryOp(Index size, const NullaryOp&amp; func = NullaryOp())</span>
+<span id="L75"><span class="lineNum">      75</span>              :       : CwiseNullaryOp(RowsAtCompileTime == 1 ? 1 : size, RowsAtCompileTime == 1 ? size : 1, func) {</span>
+<span id="L76"><span class="lineNum">      76</span>              :     EIGEN_STATIC_ASSERT(CwiseNullaryOp::IsVectorAtCompileTime, YOU_TRIED_CALLING_A_VECTOR_METHOD_ON_A_MATRIX);</span>
+<span id="L77"><span class="lineNum">      77</span>              :   }</span>
+<span id="L78"><span class="lineNum">      78</span>              : </span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">        7545 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE EIGEN_CONSTEXPR Index rows() const { return m_rows.value(); }</span></span>
+<span id="L80"><span class="lineNum">      80</span> <span class="tlaGNC">        6513 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE EIGEN_CONSTEXPR Index cols() const { return m_cols.value(); }</span></span>
+<span id="L81"><span class="lineNum">      81</span>              : </span>
+<span id="L82"><span class="lineNum">      82</span>              :   /** \returns the functor representing the nullary operation */</span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaGNC">        3697 :   EIGEN_DEVICE_FUNC const NullaryOp&amp; functor() const { return m_functor; }</span></span>
+<span id="L84"><span class="lineNum">      84</span>              : </span>
+<span id="L85"><span class="lineNum">      85</span>              :  protected:</span>
+<span id="L86"><span class="lineNum">      86</span>              :   const internal::variable_if_dynamic&lt;Index, RowsAtCompileTime&gt; m_rows;</span>
+<span id="L87"><span class="lineNum">      87</span>              :   const internal::variable_if_dynamic&lt;Index, ColsAtCompileTime&gt; m_cols;</span>
+<span id="L88"><span class="lineNum">      88</span>              :   const NullaryOp m_functor;</span>
+<span id="L89"><span class="lineNum">      89</span>              : };</span>
+<span id="L90"><span class="lineNum">      90</span>              : </span>
+<span id="L91"><span class="lineNum">      91</span>              : /** \returns an expression of a matrix defined by a custom functor \a func</span>
+<span id="L92"><span class="lineNum">      92</span>              :  *</span>
+<span id="L93"><span class="lineNum">      93</span>              :  * The parameters \a rows and \a cols are the number of rows and of columns of</span>
+<span id="L94"><span class="lineNum">      94</span>              :  * the returned matrix. Must be compatible with this MatrixBase type.</span>
+<span id="L95"><span class="lineNum">      95</span>              :  *</span>
+<span id="L96"><span class="lineNum">      96</span>              :  * This variant is meant to be used for dynamic-size matrix types. For fixed-size types,</span>
+<span id="L97"><span class="lineNum">      97</span>              :  * it is redundant to pass \a rows and \a cols as arguments, so Zero() should be used</span>
+<span id="L98"><span class="lineNum">      98</span>              :  * instead.</span>
+<span id="L99"><span class="lineNum">      99</span>              :  *</span>
+<span id="L100"><span class="lineNum">     100</span>              :  * The template parameter \a CustomNullaryOp is the type of the functor.</span>
+<span id="L101"><span class="lineNum">     101</span>              :  *</span>
+<span id="L102"><span class="lineNum">     102</span>              :  * \sa class CwiseNullaryOp</span>
+<span id="L103"><span class="lineNum">     103</span>              :  */</span>
+<span id="L104"><span class="lineNum">     104</span>              : template &lt;typename Derived&gt;</span>
+<span id="L105"><span class="lineNum">     105</span>              : template &lt;typename CustomNullaryOp&gt;</span>
+<span id="L106"><span class="lineNum">     106</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE</span>
+<span id="L107"><span class="lineNum">     107</span>              : #ifndef EIGEN_PARSED_BY_DOXYGEN</span>
+<span id="L108"><span class="lineNum">     108</span>              :     const CwiseNullaryOp&lt;CustomNullaryOp, typename DenseBase&lt;Derived&gt;::PlainObject&gt;</span>
+<span id="L109"><span class="lineNum">     109</span>              : #else</span>
+<span id="L110"><span class="lineNum">     110</span>              :     const CwiseNullaryOp&lt;CustomNullaryOp, PlainObject&gt;</span>
+<span id="L111"><span class="lineNum">     111</span>              : #endif</span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">         709 :     DenseBase&lt;Derived&gt;::NullaryExpr(Index rows, Index cols, const CustomNullaryOp&amp; func) {</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">         709 :   return CwiseNullaryOp&lt;CustomNullaryOp, PlainObject&gt;(rows, cols, func);</span></span>
+<span id="L114"><span class="lineNum">     114</span>              : }</span>
+<span id="L115"><span class="lineNum">     115</span>              : </span>
+<span id="L116"><span class="lineNum">     116</span>              : /** \returns an expression of a matrix defined by a custom functor \a func</span>
+<span id="L117"><span class="lineNum">     117</span>              :  *</span>
+<span id="L118"><span class="lineNum">     118</span>              :  * The parameter \a size is the size of the returned vector.</span>
+<span id="L119"><span class="lineNum">     119</span>              :  * Must be compatible with this MatrixBase type.</span>
+<span id="L120"><span class="lineNum">     120</span>              :  *</span>
+<span id="L121"><span class="lineNum">     121</span>              :  * \only_for_vectors</span>
+<span id="L122"><span class="lineNum">     122</span>              :  *</span>
+<span id="L123"><span class="lineNum">     123</span>              :  * This variant is meant to be used for dynamic-size vector types. For fixed-size types,</span>
+<span id="L124"><span class="lineNum">     124</span>              :  * it is redundant to pass \a size as argument, so Zero() should be used</span>
+<span id="L125"><span class="lineNum">     125</span>              :  * instead.</span>
+<span id="L126"><span class="lineNum">     126</span>              :  *</span>
+<span id="L127"><span class="lineNum">     127</span>              :  * The template parameter \a CustomNullaryOp is the type of the functor.</span>
+<span id="L128"><span class="lineNum">     128</span>              :  *</span>
+<span id="L129"><span class="lineNum">     129</span>              :  * Here is an example with C++11 random generators: \include random_cpp11.cpp</span>
+<span id="L130"><span class="lineNum">     130</span>              :  * Output: \verbinclude random_cpp11.out</span>
+<span id="L131"><span class="lineNum">     131</span>              :  *</span>
+<span id="L132"><span class="lineNum">     132</span>              :  * \sa class CwiseNullaryOp</span>
+<span id="L133"><span class="lineNum">     133</span>              :  */</span>
+<span id="L134"><span class="lineNum">     134</span>              : template &lt;typename Derived&gt;</span>
+<span id="L135"><span class="lineNum">     135</span>              : template &lt;typename CustomNullaryOp&gt;</span>
+<span id="L136"><span class="lineNum">     136</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE</span>
+<span id="L137"><span class="lineNum">     137</span>              : #ifndef EIGEN_PARSED_BY_DOXYGEN</span>
+<span id="L138"><span class="lineNum">     138</span>              :     const CwiseNullaryOp&lt;CustomNullaryOp, typename DenseBase&lt;Derived&gt;::PlainObject&gt;</span>
+<span id="L139"><span class="lineNum">     139</span>              : #else</span>
+<span id="L140"><span class="lineNum">     140</span>              :     const CwiseNullaryOp&lt;CustomNullaryOp, PlainObject&gt;</span>
+<span id="L141"><span class="lineNum">     141</span>              : #endif</span>
+<span id="L142"><span class="lineNum">     142</span>              :     DenseBase&lt;Derived&gt;::NullaryExpr(Index size, const CustomNullaryOp&amp; func) {</span>
+<span id="L143"><span class="lineNum">     143</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L144"><span class="lineNum">     144</span>              :   if (RowsAtCompileTime == 1)</span>
+<span id="L145"><span class="lineNum">     145</span>              :     return CwiseNullaryOp&lt;CustomNullaryOp, PlainObject&gt;(1, size, func);</span>
+<span id="L146"><span class="lineNum">     146</span>              :   else</span>
+<span id="L147"><span class="lineNum">     147</span>              :     return CwiseNullaryOp&lt;CustomNullaryOp, PlainObject&gt;(size, 1, func);</span>
+<span id="L148"><span class="lineNum">     148</span>              : }</span>
+<span id="L149"><span class="lineNum">     149</span>              : </span>
+<span id="L150"><span class="lineNum">     150</span>              : /** \returns an expression of a matrix defined by a custom functor \a func</span>
+<span id="L151"><span class="lineNum">     151</span>              :  *</span>
+<span id="L152"><span class="lineNum">     152</span>              :  * This variant is only for fixed-size DenseBase types. For dynamic-size types, you</span>
+<span id="L153"><span class="lineNum">     153</span>              :  * need to use the variants taking size arguments.</span>
+<span id="L154"><span class="lineNum">     154</span>              :  *</span>
+<span id="L155"><span class="lineNum">     155</span>              :  * The template parameter \a CustomNullaryOp is the type of the functor.</span>
+<span id="L156"><span class="lineNum">     156</span>              :  *</span>
+<span id="L157"><span class="lineNum">     157</span>              :  * \sa class CwiseNullaryOp</span>
+<span id="L158"><span class="lineNum">     158</span>              :  */</span>
+<span id="L159"><span class="lineNum">     159</span>              : template &lt;typename Derived&gt;</span>
+<span id="L160"><span class="lineNum">     160</span>              : template &lt;typename CustomNullaryOp&gt;</span>
+<span id="L161"><span class="lineNum">     161</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE</span>
+<span id="L162"><span class="lineNum">     162</span>              : #ifndef EIGEN_PARSED_BY_DOXYGEN</span>
+<span id="L163"><span class="lineNum">     163</span>              :     const CwiseNullaryOp&lt;CustomNullaryOp, typename DenseBase&lt;Derived&gt;::PlainObject&gt;</span>
+<span id="L164"><span class="lineNum">     164</span>              : #else</span>
+<span id="L165"><span class="lineNum">     165</span>              :     const CwiseNullaryOp&lt;CustomNullaryOp, PlainObject&gt;</span>
+<span id="L166"><span class="lineNum">     166</span>              : #endif</span>
+<span id="L167"><span class="lineNum">     167</span>              :     DenseBase&lt;Derived&gt;::NullaryExpr(const CustomNullaryOp&amp; func) {</span>
+<span id="L168"><span class="lineNum">     168</span>              :   return CwiseNullaryOp&lt;CustomNullaryOp, PlainObject&gt;(RowsAtCompileTime, ColsAtCompileTime, func);</span>
+<span id="L169"><span class="lineNum">     169</span>              : }</span>
+<span id="L170"><span class="lineNum">     170</span>              : </span>
+<span id="L171"><span class="lineNum">     171</span>              : /** \returns an expression of a constant matrix of value \a value</span>
+<span id="L172"><span class="lineNum">     172</span>              :  *</span>
+<span id="L173"><span class="lineNum">     173</span>              :  * The parameters \a rows and \a cols are the number of rows and of columns of</span>
+<span id="L174"><span class="lineNum">     174</span>              :  * the returned matrix. Must be compatible with this DenseBase type.</span>
+<span id="L175"><span class="lineNum">     175</span>              :  *</span>
+<span id="L176"><span class="lineNum">     176</span>              :  * This variant is meant to be used for dynamic-size matrix types. For fixed-size types,</span>
+<span id="L177"><span class="lineNum">     177</span>              :  * it is redundant to pass \a rows and \a cols as arguments, so Zero() should be used</span>
+<span id="L178"><span class="lineNum">     178</span>              :  * instead.</span>
+<span id="L179"><span class="lineNum">     179</span>              :  *</span>
+<span id="L180"><span class="lineNum">     180</span>              :  * The template parameter \a CustomNullaryOp is the type of the functor.</span>
+<span id="L181"><span class="lineNum">     181</span>              :  *</span>
+<span id="L182"><span class="lineNum">     182</span>              :  * \sa class CwiseNullaryOp</span>
+<span id="L183"><span class="lineNum">     183</span>              :  */</span>
+<span id="L184"><span class="lineNum">     184</span>              : template &lt;typename Derived&gt;</span>
+<span id="L185"><span class="lineNum">     185</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ConstantReturnType</span>
+<span id="L186"><span class="lineNum">     186</span> <span class="tlaGNC">         544 : DenseBase&lt;Derived&gt;::Constant(Index rows, Index cols, const Scalar&amp; value) {</span></span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">         544 :   return DenseBase&lt;Derived&gt;::NullaryExpr(rows, cols, internal::scalar_constant_op&lt;Scalar&gt;(value));</span></span>
+<span id="L188"><span class="lineNum">     188</span>              : }</span>
+<span id="L189"><span class="lineNum">     189</span>              : </span>
+<span id="L190"><span class="lineNum">     190</span>              : /** \returns an expression of a constant matrix of value \a value</span>
+<span id="L191"><span class="lineNum">     191</span>              :  *</span>
+<span id="L192"><span class="lineNum">     192</span>              :  * The parameter \a size is the size of the returned vector.</span>
+<span id="L193"><span class="lineNum">     193</span>              :  * Must be compatible with this DenseBase type.</span>
+<span id="L194"><span class="lineNum">     194</span>              :  *</span>
+<span id="L195"><span class="lineNum">     195</span>              :  * \only_for_vectors</span>
+<span id="L196"><span class="lineNum">     196</span>              :  *</span>
+<span id="L197"><span class="lineNum">     197</span>              :  * This variant is meant to be used for dynamic-size vector types. For fixed-size types,</span>
+<span id="L198"><span class="lineNum">     198</span>              :  * it is redundant to pass \a size as argument, so Zero() should be used</span>
+<span id="L199"><span class="lineNum">     199</span>              :  * instead.</span>
+<span id="L200"><span class="lineNum">     200</span>              :  *</span>
+<span id="L201"><span class="lineNum">     201</span>              :  * The template parameter \a CustomNullaryOp is the type of the functor.</span>
+<span id="L202"><span class="lineNum">     202</span>              :  *</span>
+<span id="L203"><span class="lineNum">     203</span>              :  * \sa class CwiseNullaryOp</span>
+<span id="L204"><span class="lineNum">     204</span>              :  */</span>
+<span id="L205"><span class="lineNum">     205</span>              : template &lt;typename Derived&gt;</span>
+<span id="L206"><span class="lineNum">     206</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ConstantReturnType</span>
+<span id="L207"><span class="lineNum">     207</span>              : DenseBase&lt;Derived&gt;::Constant(Index size, const Scalar&amp; value) {</span>
+<span id="L208"><span class="lineNum">     208</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(size, internal::scalar_constant_op&lt;Scalar&gt;(value));</span>
+<span id="L209"><span class="lineNum">     209</span>              : }</span>
+<span id="L210"><span class="lineNum">     210</span>              : </span>
+<span id="L211"><span class="lineNum">     211</span>              : /** \returns an expression of a constant matrix of value \a value</span>
+<span id="L212"><span class="lineNum">     212</span>              :  *</span>
+<span id="L213"><span class="lineNum">     213</span>              :  * This variant is only for fixed-size DenseBase types. For dynamic-size types, you</span>
+<span id="L214"><span class="lineNum">     214</span>              :  * need to use the variants taking size arguments.</span>
+<span id="L215"><span class="lineNum">     215</span>              :  *</span>
+<span id="L216"><span class="lineNum">     216</span>              :  * The template parameter \a CustomNullaryOp is the type of the functor.</span>
+<span id="L217"><span class="lineNum">     217</span>              :  *</span>
+<span id="L218"><span class="lineNum">     218</span>              :  * \sa class CwiseNullaryOp</span>
+<span id="L219"><span class="lineNum">     219</span>              :  */</span>
+<span id="L220"><span class="lineNum">     220</span>              : template &lt;typename Derived&gt;</span>
+<span id="L221"><span class="lineNum">     221</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ConstantReturnType</span>
+<span id="L222"><span class="lineNum">     222</span>              : DenseBase&lt;Derived&gt;::Constant(const Scalar&amp; value) {</span>
+<span id="L223"><span class="lineNum">     223</span>              :   EIGEN_STATIC_ASSERT_FIXED_SIZE(Derived)</span>
+<span id="L224"><span class="lineNum">     224</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(RowsAtCompileTime, ColsAtCompileTime,</span>
+<span id="L225"><span class="lineNum">     225</span>              :                                          internal::scalar_constant_op&lt;Scalar&gt;(value));</span>
+<span id="L226"><span class="lineNum">     226</span>              : }</span>
+<span id="L227"><span class="lineNum">     227</span>              : </span>
+<span id="L228"><span class="lineNum">     228</span>              : /** \deprecated because of accuracy loss. In Eigen 3.3, it is an alias for LinSpaced(Index,const Scalar&amp;,const Scalar&amp;)</span>
+<span id="L229"><span class="lineNum">     229</span>              :  *</span>
+<span id="L230"><span class="lineNum">     230</span>              :  * \only_for_vectors</span>
+<span id="L231"><span class="lineNum">     231</span>              :  *</span>
+<span id="L232"><span class="lineNum">     232</span>              :  * Example: \include DenseBase_LinSpaced_seq_deprecated.cpp</span>
+<span id="L233"><span class="lineNum">     233</span>              :  * Output: \verbinclude DenseBase_LinSpaced_seq_deprecated.out</span>
+<span id="L234"><span class="lineNum">     234</span>              :  *</span>
+<span id="L235"><span class="lineNum">     235</span>              :  * \sa LinSpaced(Index,const Scalar&amp;, const Scalar&amp;), setLinSpaced(Index,const Scalar&amp;,const Scalar&amp;)</span>
+<span id="L236"><span class="lineNum">     236</span>              :  */</span>
+<span id="L237"><span class="lineNum">     237</span>              : template &lt;typename Derived&gt;</span>
+<span id="L238"><span class="lineNum">     238</span>              : EIGEN_DEPRECATED EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;</span>
+<span id="L239"><span class="lineNum">     239</span>              :     Derived&gt;::RandomAccessLinSpacedReturnType</span>
+<span id="L240"><span class="lineNum">     240</span>              : DenseBase&lt;Derived&gt;::LinSpaced(Sequential_t, Index size, const Scalar&amp; low, const Scalar&amp; high) {</span>
+<span id="L241"><span class="lineNum">     241</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L242"><span class="lineNum">     242</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(size, internal::linspaced_op&lt;Scalar&gt;(low, high, size));</span>
+<span id="L243"><span class="lineNum">     243</span>              : }</span>
+<span id="L244"><span class="lineNum">     244</span>              : </span>
+<span id="L245"><span class="lineNum">     245</span>              : /** \deprecated because of accuracy loss. In Eigen 3.3, it is an alias for LinSpaced(const Scalar&amp;,const Scalar&amp;)</span>
+<span id="L246"><span class="lineNum">     246</span>              :  *</span>
+<span id="L247"><span class="lineNum">     247</span>              :  * \sa LinSpaced(const Scalar&amp;, const Scalar&amp;)</span>
+<span id="L248"><span class="lineNum">     248</span>              :  */</span>
+<span id="L249"><span class="lineNum">     249</span>              : template &lt;typename Derived&gt;</span>
+<span id="L250"><span class="lineNum">     250</span>              : EIGEN_DEPRECATED EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;</span>
+<span id="L251"><span class="lineNum">     251</span>              :     Derived&gt;::RandomAccessLinSpacedReturnType</span>
+<span id="L252"><span class="lineNum">     252</span>              : DenseBase&lt;Derived&gt;::LinSpaced(Sequential_t, const Scalar&amp; low, const Scalar&amp; high) {</span>
+<span id="L253"><span class="lineNum">     253</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L254"><span class="lineNum">     254</span>              :   EIGEN_STATIC_ASSERT_FIXED_SIZE(Derived)</span>
+<span id="L255"><span class="lineNum">     255</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(Derived::SizeAtCompileTime,</span>
+<span id="L256"><span class="lineNum">     256</span>              :                                          internal::linspaced_op&lt;Scalar&gt;(low, high, Derived::SizeAtCompileTime));</span>
+<span id="L257"><span class="lineNum">     257</span>              : }</span>
+<span id="L258"><span class="lineNum">     258</span>              : </span>
+<span id="L259"><span class="lineNum">     259</span>              : /**</span>
+<span id="L260"><span class="lineNum">     260</span>              :  * \brief Sets a linearly spaced vector.</span>
+<span id="L261"><span class="lineNum">     261</span>              :  *</span>
+<span id="L262"><span class="lineNum">     262</span>              :  * The function generates 'size' equally spaced values in the closed interval [low,high].</span>
+<span id="L263"><span class="lineNum">     263</span>              :  * When size is set to 1, a vector of length 1 containing 'high' is returned.</span>
+<span id="L264"><span class="lineNum">     264</span>              :  *</span>
+<span id="L265"><span class="lineNum">     265</span>              :  * \only_for_vectors</span>
+<span id="L266"><span class="lineNum">     266</span>              :  *</span>
+<span id="L267"><span class="lineNum">     267</span>              :  * Example: \include DenseBase_LinSpaced.cpp</span>
+<span id="L268"><span class="lineNum">     268</span>              :  * Output: \verbinclude DenseBase_LinSpaced.out</span>
+<span id="L269"><span class="lineNum">     269</span>              :  *</span>
+<span id="L270"><span class="lineNum">     270</span>              :  * For integer scalar types, an even spacing is possible if and only if the length of the range,</span>
+<span id="L271"><span class="lineNum">     271</span>              :  * i.e., \c high-low is a scalar multiple of \c size-1, or if \c size is a scalar multiple of the</span>
+<span id="L272"><span class="lineNum">     272</span>              :  * number of values \c high-low+1 (meaning each value can be repeated the same number of time).</span>
+<span id="L273"><span class="lineNum">     273</span>              :  * If one of these two considions is not satisfied, then \c high is lowered to the largest value</span>
+<span id="L274"><span class="lineNum">     274</span>              :  * satisfying one of this constraint.</span>
+<span id="L275"><span class="lineNum">     275</span>              :  * Here are some examples:</span>
+<span id="L276"><span class="lineNum">     276</span>              :  *</span>
+<span id="L277"><span class="lineNum">     277</span>              :  * Example: \include DenseBase_LinSpacedInt.cpp</span>
+<span id="L278"><span class="lineNum">     278</span>              :  * Output: \verbinclude DenseBase_LinSpacedInt.out</span>
+<span id="L279"><span class="lineNum">     279</span>              :  *</span>
+<span id="L280"><span class="lineNum">     280</span>              :  * \sa setLinSpaced(Index,const Scalar&amp;,const Scalar&amp;), CwiseNullaryOp</span>
+<span id="L281"><span class="lineNum">     281</span>              :  */</span>
+<span id="L282"><span class="lineNum">     282</span>              : template &lt;typename Derived&gt;</span>
+<span id="L283"><span class="lineNum">     283</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::RandomAccessLinSpacedReturnType</span>
+<span id="L284"><span class="lineNum">     284</span>              : DenseBase&lt;Derived&gt;::LinSpaced(Index size, const Scalar&amp; low, const Scalar&amp; high) {</span>
+<span id="L285"><span class="lineNum">     285</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L286"><span class="lineNum">     286</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(size, internal::linspaced_op&lt;Scalar&gt;(low, high, size));</span>
+<span id="L287"><span class="lineNum">     287</span>              : }</span>
+<span id="L288"><span class="lineNum">     288</span>              : </span>
+<span id="L289"><span class="lineNum">     289</span>              : /**</span>
+<span id="L290"><span class="lineNum">     290</span>              :  * \copydoc DenseBase::LinSpaced(Index, const DenseBase::Scalar&amp;, const DenseBase::Scalar&amp;)</span>
+<span id="L291"><span class="lineNum">     291</span>              :  * Special version for fixed size types which does not require the size parameter.</span>
+<span id="L292"><span class="lineNum">     292</span>              :  */</span>
+<span id="L293"><span class="lineNum">     293</span>              : template &lt;typename Derived&gt;</span>
+<span id="L294"><span class="lineNum">     294</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::RandomAccessLinSpacedReturnType</span>
+<span id="L295"><span class="lineNum">     295</span>              : DenseBase&lt;Derived&gt;::LinSpaced(const Scalar&amp; low, const Scalar&amp; high) {</span>
+<span id="L296"><span class="lineNum">     296</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L297"><span class="lineNum">     297</span>              :   EIGEN_STATIC_ASSERT_FIXED_SIZE(Derived)</span>
+<span id="L298"><span class="lineNum">     298</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(Derived::SizeAtCompileTime,</span>
+<span id="L299"><span class="lineNum">     299</span>              :                                          internal::linspaced_op&lt;Scalar&gt;(low, high, Derived::SizeAtCompileTime));</span>
+<span id="L300"><span class="lineNum">     300</span>              : }</span>
+<span id="L301"><span class="lineNum">     301</span>              : </span>
+<span id="L302"><span class="lineNum">     302</span>              : template &lt;typename Derived&gt;</span>
+<span id="L303"><span class="lineNum">     303</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::RandomAccessEqualSpacedReturnType</span>
+<span id="L304"><span class="lineNum">     304</span>              : DenseBase&lt;Derived&gt;::EqualSpaced(Index size, const Scalar&amp; low, const Scalar&amp; step) {</span>
+<span id="L305"><span class="lineNum">     305</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L306"><span class="lineNum">     306</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(size, internal::equalspaced_op&lt;Scalar&gt;(low, step));</span>
+<span id="L307"><span class="lineNum">     307</span>              : }</span>
+<span id="L308"><span class="lineNum">     308</span>              : </span>
+<span id="L309"><span class="lineNum">     309</span>              : template &lt;typename Derived&gt;</span>
+<span id="L310"><span class="lineNum">     310</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::RandomAccessEqualSpacedReturnType</span>
+<span id="L311"><span class="lineNum">     311</span>              : DenseBase&lt;Derived&gt;::EqualSpaced(const Scalar&amp; low, const Scalar&amp; step) {</span>
+<span id="L312"><span class="lineNum">     312</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L313"><span class="lineNum">     313</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(Derived::SizeAtCompileTime, internal::equalspaced_op&lt;Scalar&gt;(low, step));</span>
+<span id="L314"><span class="lineNum">     314</span>              : }</span>
+<span id="L315"><span class="lineNum">     315</span>              : </span>
+<span id="L316"><span class="lineNum">     316</span>              : /** \returns true if all coefficients in this matrix are approximately equal to \a val, to within precision \a prec */</span>
+<span id="L317"><span class="lineNum">     317</span>              : template &lt;typename Derived&gt;</span>
+<span id="L318"><span class="lineNum">     318</span>              : EIGEN_DEVICE_FUNC bool DenseBase&lt;Derived&gt;::isApproxToConstant(const Scalar&amp; val, const RealScalar&amp; prec) const {</span>
+<span id="L319"><span class="lineNum">     319</span>              :   typename internal::nested_eval&lt;Derived, 1&gt;::type self(derived());</span>
+<span id="L320"><span class="lineNum">     320</span>              :   for (Index j = 0; j &lt; cols(); ++j)</span>
+<span id="L321"><span class="lineNum">     321</span>              :     for (Index i = 0; i &lt; rows(); ++i)</span>
+<span id="L322"><span class="lineNum">     322</span>              :       if (!internal::isApprox(self.coeff(i, j), val, prec)) return false;</span>
+<span id="L323"><span class="lineNum">     323</span>              :   return true;</span>
+<span id="L324"><span class="lineNum">     324</span>              : }</span>
+<span id="L325"><span class="lineNum">     325</span>              : </span>
+<span id="L326"><span class="lineNum">     326</span>              : /** This is just an alias for isApproxToConstant().</span>
+<span id="L327"><span class="lineNum">     327</span>              :  *</span>
+<span id="L328"><span class="lineNum">     328</span>              :  * \returns true if all coefficients in this matrix are approximately equal to \a value, to within precision \a prec */</span>
+<span id="L329"><span class="lineNum">     329</span>              : template &lt;typename Derived&gt;</span>
+<span id="L330"><span class="lineNum">     330</span>              : EIGEN_DEVICE_FUNC bool DenseBase&lt;Derived&gt;::isConstant(const Scalar&amp; val, const RealScalar&amp; prec) const {</span>
+<span id="L331"><span class="lineNum">     331</span>              :   return isApproxToConstant(val, prec);</span>
+<span id="L332"><span class="lineNum">     332</span>              : }</span>
+<span id="L333"><span class="lineNum">     333</span>              : </span>
+<span id="L334"><span class="lineNum">     334</span>              : /** Alias for setConstant(): sets all coefficients in this expression to \a val.</span>
+<span id="L335"><span class="lineNum">     335</span>              :  *</span>
+<span id="L336"><span class="lineNum">     336</span>              :  * \sa setConstant(), Constant(), class CwiseNullaryOp</span>
+<span id="L337"><span class="lineNum">     337</span>              :  */</span>
+<span id="L338"><span class="lineNum">     338</span>              : template &lt;typename Derived&gt;</span>
+<span id="L339"><span class="lineNum">     339</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE void DenseBase&lt;Derived&gt;::fill(const Scalar&amp; val) {</span>
+<span id="L340"><span class="lineNum">     340</span>              :   setConstant(val);</span>
+<span id="L341"><span class="lineNum">     341</span>              : }</span>
+<span id="L342"><span class="lineNum">     342</span>              : </span>
+<span id="L343"><span class="lineNum">     343</span>              : /** Sets all coefficients in this expression to value \a val.</span>
+<span id="L344"><span class="lineNum">     344</span>              :  *</span>
+<span id="L345"><span class="lineNum">     345</span>              :  * \sa fill(), setConstant(Index,const Scalar&amp;), setConstant(Index,Index,const Scalar&amp;), setZero(), setOnes(),</span>
+<span id="L346"><span class="lineNum">     346</span>              :  * Constant(), class CwiseNullaryOp, setZero(), setOnes()</span>
+<span id="L347"><span class="lineNum">     347</span>              :  */</span>
+<span id="L348"><span class="lineNum">     348</span>              : template &lt;typename Derived&gt;</span>
+<span id="L349"><span class="lineNum">     349</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; DenseBase&lt;Derived&gt;::setConstant(const Scalar&amp; val) {</span>
+<span id="L350"><span class="lineNum">     350</span>              :   internal::eigen_fill_impl&lt;Derived&gt;::run(derived(), val);</span>
+<span id="L351"><span class="lineNum">     351</span>              :   return derived();</span>
+<span id="L352"><span class="lineNum">     352</span>              : }</span>
+<span id="L353"><span class="lineNum">     353</span>              : </span>
+<span id="L354"><span class="lineNum">     354</span>              : /** Resizes to the given \a size, and sets all coefficients in this expression to the given value \a val.</span>
+<span id="L355"><span class="lineNum">     355</span>              :  *</span>
+<span id="L356"><span class="lineNum">     356</span>              :  * \only_for_vectors</span>
+<span id="L357"><span class="lineNum">     357</span>              :  *</span>
+<span id="L358"><span class="lineNum">     358</span>              :  * Example: \include Matrix_setConstant_int.cpp</span>
+<span id="L359"><span class="lineNum">     359</span>              :  * Output: \verbinclude Matrix_setConstant_int.out</span>
+<span id="L360"><span class="lineNum">     360</span>              :  *</span>
+<span id="L361"><span class="lineNum">     361</span>              :  * \sa MatrixBase::setConstant(const Scalar&amp;), setConstant(Index,Index,const Scalar&amp;), class CwiseNullaryOp,</span>
+<span id="L362"><span class="lineNum">     362</span>              :  * MatrixBase::Constant(const Scalar&amp;)</span>
+<span id="L363"><span class="lineNum">     363</span>              :  */</span>
+<span id="L364"><span class="lineNum">     364</span>              : template &lt;typename Derived&gt;</span>
+<span id="L365"><span class="lineNum">     365</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setConstant(Index size, const Scalar&amp; val) {</span>
+<span id="L366"><span class="lineNum">     366</span>              :   resize(size);</span>
+<span id="L367"><span class="lineNum">     367</span>              :   return setConstant(val);</span>
+<span id="L368"><span class="lineNum">     368</span>              : }</span>
+<span id="L369"><span class="lineNum">     369</span>              : </span>
+<span id="L370"><span class="lineNum">     370</span>              : /** Resizes to the given size, and sets all coefficients in this expression to the given value \a val.</span>
+<span id="L371"><span class="lineNum">     371</span>              :  *</span>
+<span id="L372"><span class="lineNum">     372</span>              :  * \param rows the new number of rows</span>
+<span id="L373"><span class="lineNum">     373</span>              :  * \param cols the new number of columns</span>
+<span id="L374"><span class="lineNum">     374</span>              :  * \param val the value to which all coefficients are set</span>
+<span id="L375"><span class="lineNum">     375</span>              :  *</span>
+<span id="L376"><span class="lineNum">     376</span>              :  * Example: \include Matrix_setConstant_int_int.cpp</span>
+<span id="L377"><span class="lineNum">     377</span>              :  * Output: \verbinclude Matrix_setConstant_int_int.out</span>
+<span id="L378"><span class="lineNum">     378</span>              :  *</span>
+<span id="L379"><span class="lineNum">     379</span>              :  * \sa MatrixBase::setConstant(const Scalar&amp;), setConstant(Index,const Scalar&amp;), class CwiseNullaryOp,</span>
+<span id="L380"><span class="lineNum">     380</span>              :  * MatrixBase::Constant(const Scalar&amp;)</span>
+<span id="L381"><span class="lineNum">     381</span>              :  */</span>
+<span id="L382"><span class="lineNum">     382</span>              : template &lt;typename Derived&gt;</span>
+<span id="L383"><span class="lineNum">     383</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setConstant(Index rows, Index cols,</span>
+<span id="L384"><span class="lineNum">     384</span>              :                                                                                      const Scalar&amp; val) {</span>
+<span id="L385"><span class="lineNum">     385</span>              :   resize(rows, cols);</span>
+<span id="L386"><span class="lineNum">     386</span>              :   return setConstant(val);</span>
+<span id="L387"><span class="lineNum">     387</span>              : }</span>
+<span id="L388"><span class="lineNum">     388</span>              : </span>
+<span id="L389"><span class="lineNum">     389</span>              : /** Resizes to the given size, changing only the number of columns, and sets all</span>
+<span id="L390"><span class="lineNum">     390</span>              :  * coefficients in this expression to the given value \a val. For the parameter</span>
+<span id="L391"><span class="lineNum">     391</span>              :  * of type NoChange_t, just pass the special value \c NoChange.</span>
+<span id="L392"><span class="lineNum">     392</span>              :  *</span>
+<span id="L393"><span class="lineNum">     393</span>              :  * \sa MatrixBase::setConstant(const Scalar&amp;), setConstant(Index,const Scalar&amp;), class CwiseNullaryOp,</span>
+<span id="L394"><span class="lineNum">     394</span>              :  * MatrixBase::Constant(const Scalar&amp;)</span>
+<span id="L395"><span class="lineNum">     395</span>              :  */</span>
+<span id="L396"><span class="lineNum">     396</span>              : template &lt;typename Derived&gt;</span>
+<span id="L397"><span class="lineNum">     397</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setConstant(NoChange_t, Index cols,</span>
+<span id="L398"><span class="lineNum">     398</span>              :                                                                                      const Scalar&amp; val) {</span>
+<span id="L399"><span class="lineNum">     399</span>              :   return setConstant(rows(), cols, val);</span>
+<span id="L400"><span class="lineNum">     400</span>              : }</span>
+<span id="L401"><span class="lineNum">     401</span>              : </span>
+<span id="L402"><span class="lineNum">     402</span>              : /** Resizes to the given size, changing only the number of rows, and sets all</span>
+<span id="L403"><span class="lineNum">     403</span>              :  * coefficients in this expression to the given value \a val. For the parameter</span>
+<span id="L404"><span class="lineNum">     404</span>              :  * of type NoChange_t, just pass the special value \c NoChange.</span>
+<span id="L405"><span class="lineNum">     405</span>              :  *</span>
+<span id="L406"><span class="lineNum">     406</span>              :  * \sa MatrixBase::setConstant(const Scalar&amp;), setConstant(Index,const Scalar&amp;), class CwiseNullaryOp,</span>
+<span id="L407"><span class="lineNum">     407</span>              :  * MatrixBase::Constant(const Scalar&amp;)</span>
+<span id="L408"><span class="lineNum">     408</span>              :  */</span>
+<span id="L409"><span class="lineNum">     409</span>              : template &lt;typename Derived&gt;</span>
+<span id="L410"><span class="lineNum">     410</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setConstant(Index rows, NoChange_t,</span>
+<span id="L411"><span class="lineNum">     411</span>              :                                                                                      const Scalar&amp; val) {</span>
+<span id="L412"><span class="lineNum">     412</span>              :   return setConstant(rows, cols(), val);</span>
+<span id="L413"><span class="lineNum">     413</span>              : }</span>
+<span id="L414"><span class="lineNum">     414</span>              : </span>
+<span id="L415"><span class="lineNum">     415</span>              : /**</span>
+<span id="L416"><span class="lineNum">     416</span>              :  * \brief Sets a linearly spaced vector.</span>
+<span id="L417"><span class="lineNum">     417</span>              :  *</span>
+<span id="L418"><span class="lineNum">     418</span>              :  * The function generates 'size' equally spaced values in the closed interval [low,high].</span>
+<span id="L419"><span class="lineNum">     419</span>              :  * When size is set to 1, a vector of length 1 containing 'high' is returned.</span>
+<span id="L420"><span class="lineNum">     420</span>              :  *</span>
+<span id="L421"><span class="lineNum">     421</span>              :  * \only_for_vectors</span>
+<span id="L422"><span class="lineNum">     422</span>              :  *</span>
+<span id="L423"><span class="lineNum">     423</span>              :  * Example: \include DenseBase_setLinSpaced.cpp</span>
+<span id="L424"><span class="lineNum">     424</span>              :  * Output: \verbinclude DenseBase_setLinSpaced.out</span>
+<span id="L425"><span class="lineNum">     425</span>              :  *</span>
+<span id="L426"><span class="lineNum">     426</span>              :  * For integer scalar types, do not miss the explanations on the definition</span>
+<span id="L427"><span class="lineNum">     427</span>              :  * of \link LinSpaced(Index,const Scalar&amp;,const Scalar&amp;) even spacing \endlink.</span>
+<span id="L428"><span class="lineNum">     428</span>              :  *</span>
+<span id="L429"><span class="lineNum">     429</span>              :  * \sa LinSpaced(Index,const Scalar&amp;,const Scalar&amp;), CwiseNullaryOp</span>
+<span id="L430"><span class="lineNum">     430</span>              :  */</span>
+<span id="L431"><span class="lineNum">     431</span>              : template &lt;typename Derived&gt;</span>
+<span id="L432"><span class="lineNum">     432</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; DenseBase&lt;Derived&gt;::setLinSpaced(Index newSize, const Scalar&amp; low,</span>
+<span id="L433"><span class="lineNum">     433</span>              :                                                                                 const Scalar&amp; high) {</span>
+<span id="L434"><span class="lineNum">     434</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L435"><span class="lineNum">     435</span>              :   return derived() = Derived::NullaryExpr(newSize, internal::linspaced_op&lt;Scalar&gt;(low, high, newSize));</span>
+<span id="L436"><span class="lineNum">     436</span>              : }</span>
+<span id="L437"><span class="lineNum">     437</span>              : </span>
+<span id="L438"><span class="lineNum">     438</span>              : /**</span>
+<span id="L439"><span class="lineNum">     439</span>              :  * \brief Sets a linearly spaced vector.</span>
+<span id="L440"><span class="lineNum">     440</span>              :  *</span>
+<span id="L441"><span class="lineNum">     441</span>              :  * The function fills \c *this with equally spaced values in the closed interval [low,high].</span>
+<span id="L442"><span class="lineNum">     442</span>              :  * When size is set to 1, a vector of length 1 containing 'high' is returned.</span>
+<span id="L443"><span class="lineNum">     443</span>              :  *</span>
+<span id="L444"><span class="lineNum">     444</span>              :  * \only_for_vectors</span>
+<span id="L445"><span class="lineNum">     445</span>              :  *</span>
+<span id="L446"><span class="lineNum">     446</span>              :  * For integer scalar types, do not miss the explanations on the definition</span>
+<span id="L447"><span class="lineNum">     447</span>              :  * of \link LinSpaced(Index,const Scalar&amp;,const Scalar&amp;) even spacing \endlink.</span>
+<span id="L448"><span class="lineNum">     448</span>              :  *</span>
+<span id="L449"><span class="lineNum">     449</span>              :  * \sa LinSpaced(Index,const Scalar&amp;,const Scalar&amp;), setLinSpaced(Index, const Scalar&amp;, const Scalar&amp;), CwiseNullaryOp</span>
+<span id="L450"><span class="lineNum">     450</span>              :  */</span>
+<span id="L451"><span class="lineNum">     451</span>              : template &lt;typename Derived&gt;</span>
+<span id="L452"><span class="lineNum">     452</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; DenseBase&lt;Derived&gt;::setLinSpaced(const Scalar&amp; low, const Scalar&amp; high) {</span>
+<span id="L453"><span class="lineNum">     453</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L454"><span class="lineNum">     454</span>              :   return setLinSpaced(size(), low, high);</span>
+<span id="L455"><span class="lineNum">     455</span>              : }</span>
+<span id="L456"><span class="lineNum">     456</span>              : </span>
+<span id="L457"><span class="lineNum">     457</span>              : template &lt;typename Derived&gt;</span>
+<span id="L458"><span class="lineNum">     458</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; DenseBase&lt;Derived&gt;::setEqualSpaced(Index newSize, const Scalar&amp; low,</span>
+<span id="L459"><span class="lineNum">     459</span>              :                                                                                   const Scalar&amp; step) {</span>
+<span id="L460"><span class="lineNum">     460</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L461"><span class="lineNum">     461</span>              :   return derived() = Derived::NullaryExpr(newSize, internal::equalspaced_op&lt;Scalar&gt;(low, step));</span>
+<span id="L462"><span class="lineNum">     462</span>              : }</span>
+<span id="L463"><span class="lineNum">     463</span>              : template &lt;typename Derived&gt;</span>
+<span id="L464"><span class="lineNum">     464</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; DenseBase&lt;Derived&gt;::setEqualSpaced(const Scalar&amp; low,</span>
+<span id="L465"><span class="lineNum">     465</span>              :                                                                                   const Scalar&amp; step) {</span>
+<span id="L466"><span class="lineNum">     466</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L467"><span class="lineNum">     467</span>              :   return setEqualSpaced(size(), low, step);</span>
+<span id="L468"><span class="lineNum">     468</span>              : }</span>
+<span id="L469"><span class="lineNum">     469</span>              : </span>
+<span id="L470"><span class="lineNum">     470</span>              : // zero:</span>
+<span id="L471"><span class="lineNum">     471</span>              : </span>
+<span id="L472"><span class="lineNum">     472</span>              : /** \returns an expression of a zero matrix.</span>
+<span id="L473"><span class="lineNum">     473</span>              :  *</span>
+<span id="L474"><span class="lineNum">     474</span>              :  * The parameters \a rows and \a cols are the number of rows and of columns of</span>
+<span id="L475"><span class="lineNum">     475</span>              :  * the returned matrix. Must be compatible with this MatrixBase type.</span>
+<span id="L476"><span class="lineNum">     476</span>              :  *</span>
+<span id="L477"><span class="lineNum">     477</span>              :  * This variant is meant to be used for dynamic-size matrix types. For fixed-size types,</span>
+<span id="L478"><span class="lineNum">     478</span>              :  * it is redundant to pass \a rows and \a cols as arguments, so Zero() should be used</span>
+<span id="L479"><span class="lineNum">     479</span>              :  * instead.</span>
+<span id="L480"><span class="lineNum">     480</span>              :  *</span>
+<span id="L481"><span class="lineNum">     481</span>              :  * Example: \include MatrixBase_zero_int_int.cpp</span>
+<span id="L482"><span class="lineNum">     482</span>              :  * Output: \verbinclude MatrixBase_zero_int_int.out</span>
+<span id="L483"><span class="lineNum">     483</span>              :  *</span>
+<span id="L484"><span class="lineNum">     484</span>              :  * \sa Zero(), Zero(Index)</span>
+<span id="L485"><span class="lineNum">     485</span>              :  */</span>
+<span id="L486"><span class="lineNum">     486</span>              : template &lt;typename Derived&gt;</span>
+<span id="L487"><span class="lineNum">     487</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ZeroReturnType DenseBase&lt;Derived&gt;::Zero(</span>
+<span id="L488"><span class="lineNum">     488</span>              :     Index rows, Index cols) {</span>
+<span id="L489"><span class="lineNum">     489</span>              :   return ZeroReturnType(rows, cols);</span>
+<span id="L490"><span class="lineNum">     490</span>              : }</span>
+<span id="L491"><span class="lineNum">     491</span>              : </span>
+<span id="L492"><span class="lineNum">     492</span>              : /** \returns an expression of a zero vector.</span>
+<span id="L493"><span class="lineNum">     493</span>              :  *</span>
+<span id="L494"><span class="lineNum">     494</span>              :  * The parameter \a size is the size of the returned vector.</span>
+<span id="L495"><span class="lineNum">     495</span>              :  * Must be compatible with this MatrixBase type.</span>
+<span id="L496"><span class="lineNum">     496</span>              :  *</span>
+<span id="L497"><span class="lineNum">     497</span>              :  * \only_for_vectors</span>
+<span id="L498"><span class="lineNum">     498</span>              :  *</span>
+<span id="L499"><span class="lineNum">     499</span>              :  * This variant is meant to be used for dynamic-size vector types. For fixed-size types,</span>
+<span id="L500"><span class="lineNum">     500</span>              :  * it is redundant to pass \a size as argument, so Zero() should be used</span>
+<span id="L501"><span class="lineNum">     501</span>              :  * instead.</span>
+<span id="L502"><span class="lineNum">     502</span>              :  *</span>
+<span id="L503"><span class="lineNum">     503</span>              :  * Example: \include MatrixBase_zero_int.cpp</span>
+<span id="L504"><span class="lineNum">     504</span>              :  * Output: \verbinclude MatrixBase_zero_int.out</span>
+<span id="L505"><span class="lineNum">     505</span>              :  *</span>
+<span id="L506"><span class="lineNum">     506</span>              :  * \sa Zero(), Zero(Index,Index)</span>
+<span id="L507"><span class="lineNum">     507</span>              :  */</span>
+<span id="L508"><span class="lineNum">     508</span>              : template &lt;typename Derived&gt;</span>
+<span id="L509"><span class="lineNum">     509</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ZeroReturnType DenseBase&lt;Derived&gt;::Zero(</span>
+<span id="L510"><span class="lineNum">     510</span>              :     Index size) {</span>
+<span id="L511"><span class="lineNum">     511</span>              :   return ZeroReturnType(size);</span>
+<span id="L512"><span class="lineNum">     512</span>              : }</span>
+<span id="L513"><span class="lineNum">     513</span>              : </span>
+<span id="L514"><span class="lineNum">     514</span>              : /** \returns an expression of a fixed-size zero matrix or vector.</span>
+<span id="L515"><span class="lineNum">     515</span>              :  *</span>
+<span id="L516"><span class="lineNum">     516</span>              :  * This variant is only for fixed-size MatrixBase types. For dynamic-size types, you</span>
+<span id="L517"><span class="lineNum">     517</span>              :  * need to use the variants taking size arguments.</span>
+<span id="L518"><span class="lineNum">     518</span>              :  *</span>
+<span id="L519"><span class="lineNum">     519</span>              :  * Example: \include MatrixBase_zero.cpp</span>
+<span id="L520"><span class="lineNum">     520</span>              :  * Output: \verbinclude MatrixBase_zero.out</span>
+<span id="L521"><span class="lineNum">     521</span>              :  *</span>
+<span id="L522"><span class="lineNum">     522</span>              :  * \sa Zero(Index), Zero(Index,Index)</span>
+<span id="L523"><span class="lineNum">     523</span>              :  */</span>
+<span id="L524"><span class="lineNum">     524</span>              : template &lt;typename Derived&gt;</span>
+<span id="L525"><span class="lineNum">     525</span> <span class="tlaGNC">         126 : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ZeroReturnType DenseBase&lt;Derived&gt;::Zero() {</span></span>
+<span id="L526"><span class="lineNum">     526</span> <span class="tlaGNC">         126 :   return ZeroReturnType(RowsAtCompileTime, ColsAtCompileTime);</span></span>
+<span id="L527"><span class="lineNum">     527</span>              : }</span>
+<span id="L528"><span class="lineNum">     528</span>              : </span>
+<span id="L529"><span class="lineNum">     529</span>              : /** \returns true if *this is approximately equal to the zero matrix,</span>
+<span id="L530"><span class="lineNum">     530</span>              :  *          within the precision given by \a prec.</span>
+<span id="L531"><span class="lineNum">     531</span>              :  *</span>
+<span id="L532"><span class="lineNum">     532</span>              :  * Example: \include MatrixBase_isZero.cpp</span>
+<span id="L533"><span class="lineNum">     533</span>              :  * Output: \verbinclude MatrixBase_isZero.out</span>
+<span id="L534"><span class="lineNum">     534</span>              :  *</span>
+<span id="L535"><span class="lineNum">     535</span>              :  * \sa class CwiseNullaryOp, Zero()</span>
+<span id="L536"><span class="lineNum">     536</span>              :  */</span>
+<span id="L537"><span class="lineNum">     537</span>              : template &lt;typename Derived&gt;</span>
+<span id="L538"><span class="lineNum">     538</span>              : EIGEN_DEVICE_FUNC bool DenseBase&lt;Derived&gt;::isZero(const RealScalar&amp; prec) const {</span>
+<span id="L539"><span class="lineNum">     539</span>              :   typename internal::nested_eval&lt;Derived, 1&gt;::type self(derived());</span>
+<span id="L540"><span class="lineNum">     540</span>              :   for (Index j = 0; j &lt; cols(); ++j)</span>
+<span id="L541"><span class="lineNum">     541</span>              :     for (Index i = 0; i &lt; rows(); ++i)</span>
+<span id="L542"><span class="lineNum">     542</span>              :       if (!internal::isMuchSmallerThan(self.coeff(i, j), static_cast&lt;Scalar&gt;(1), prec)) return false;</span>
+<span id="L543"><span class="lineNum">     543</span>              :   return true;</span>
+<span id="L544"><span class="lineNum">     544</span>              : }</span>
+<span id="L545"><span class="lineNum">     545</span>              : </span>
+<span id="L546"><span class="lineNum">     546</span>              : /** Sets all coefficients in this expression to zero.</span>
+<span id="L547"><span class="lineNum">     547</span>              :  *</span>
+<span id="L548"><span class="lineNum">     548</span>              :  * Example: \include MatrixBase_setZero.cpp</span>
+<span id="L549"><span class="lineNum">     549</span>              :  * Output: \verbinclude MatrixBase_setZero.out</span>
+<span id="L550"><span class="lineNum">     550</span>              :  *</span>
+<span id="L551"><span class="lineNum">     551</span>              :  * \sa class CwiseNullaryOp, Zero()</span>
+<span id="L552"><span class="lineNum">     552</span>              :  */</span>
+<span id="L553"><span class="lineNum">     553</span>              : template &lt;typename Derived&gt;</span>
+<span id="L554"><span class="lineNum">     554</span> <span class="tlaGNC">        2750 : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; DenseBase&lt;Derived&gt;::setZero() {</span></span>
+<span id="L555"><span class="lineNum">     555</span> <span class="tlaGNC">        2750 :   internal::eigen_zero_impl&lt;Derived&gt;::run(derived());</span></span>
+<span id="L556"><span class="lineNum">     556</span> <span class="tlaGNC">        2750 :   return derived();</span></span>
+<span id="L557"><span class="lineNum">     557</span>              : }</span>
+<span id="L558"><span class="lineNum">     558</span>              : </span>
+<span id="L559"><span class="lineNum">     559</span>              : /** Resizes to the given \a size, and sets all coefficients in this expression to zero.</span>
+<span id="L560"><span class="lineNum">     560</span>              :  *</span>
+<span id="L561"><span class="lineNum">     561</span>              :  * \only_for_vectors</span>
+<span id="L562"><span class="lineNum">     562</span>              :  *</span>
+<span id="L563"><span class="lineNum">     563</span>              :  * Example: \include Matrix_setZero_int.cpp</span>
+<span id="L564"><span class="lineNum">     564</span>              :  * Output: \verbinclude Matrix_setZero_int.out</span>
+<span id="L565"><span class="lineNum">     565</span>              :  *</span>
+<span id="L566"><span class="lineNum">     566</span>              :  * \sa DenseBase::setZero(), setZero(Index,Index), class CwiseNullaryOp, DenseBase::Zero()</span>
+<span id="L567"><span class="lineNum">     567</span>              :  */</span>
+<span id="L568"><span class="lineNum">     568</span>              : template &lt;typename Derived&gt;</span>
+<span id="L569"><span class="lineNum">     569</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setZero(Index newSize) {</span>
+<span id="L570"><span class="lineNum">     570</span>              :   resize(newSize);</span>
+<span id="L571"><span class="lineNum">     571</span>              :   return setZero();</span>
+<span id="L572"><span class="lineNum">     572</span>              : }</span>
+<span id="L573"><span class="lineNum">     573</span>              : </span>
+<span id="L574"><span class="lineNum">     574</span>              : /** Resizes to the given size, and sets all coefficients in this expression to zero.</span>
+<span id="L575"><span class="lineNum">     575</span>              :  *</span>
+<span id="L576"><span class="lineNum">     576</span>              :  * \param rows the new number of rows</span>
+<span id="L577"><span class="lineNum">     577</span>              :  * \param cols the new number of columns</span>
+<span id="L578"><span class="lineNum">     578</span>              :  *</span>
+<span id="L579"><span class="lineNum">     579</span>              :  * Example: \include Matrix_setZero_int_int.cpp</span>
+<span id="L580"><span class="lineNum">     580</span>              :  * Output: \verbinclude Matrix_setZero_int_int.out</span>
+<span id="L581"><span class="lineNum">     581</span>              :  *</span>
+<span id="L582"><span class="lineNum">     582</span>              :  * \sa DenseBase::setZero(), setZero(Index), class CwiseNullaryOp, DenseBase::Zero()</span>
+<span id="L583"><span class="lineNum">     583</span>              :  */</span>
+<span id="L584"><span class="lineNum">     584</span>              : template &lt;typename Derived&gt;</span>
+<span id="L585"><span class="lineNum">     585</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setZero(Index rows, Index cols) {</span>
+<span id="L586"><span class="lineNum">     586</span>              :   resize(rows, cols);</span>
+<span id="L587"><span class="lineNum">     587</span>              :   return setZero();</span>
+<span id="L588"><span class="lineNum">     588</span>              : }</span>
+<span id="L589"><span class="lineNum">     589</span>              : </span>
+<span id="L590"><span class="lineNum">     590</span>              : /** Resizes to the given size, changing only the number of columns, and sets all</span>
+<span id="L591"><span class="lineNum">     591</span>              :  * coefficients in this expression to zero. For the parameter of type NoChange_t,</span>
+<span id="L592"><span class="lineNum">     592</span>              :  * just pass the special value \c NoChange.</span>
+<span id="L593"><span class="lineNum">     593</span>              :  *</span>
+<span id="L594"><span class="lineNum">     594</span>              :  * \sa DenseBase::setZero(), setZero(Index), setZero(Index, Index), setZero(Index, NoChange_t), class CwiseNullaryOp,</span>
+<span id="L595"><span class="lineNum">     595</span>              :  * DenseBase::Zero()</span>
+<span id="L596"><span class="lineNum">     596</span>              :  */</span>
+<span id="L597"><span class="lineNum">     597</span>              : template &lt;typename Derived&gt;</span>
+<span id="L598"><span class="lineNum">     598</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setZero(NoChange_t, Index cols) {</span>
+<span id="L599"><span class="lineNum">     599</span>              :   return setZero(rows(), cols);</span>
+<span id="L600"><span class="lineNum">     600</span>              : }</span>
+<span id="L601"><span class="lineNum">     601</span>              : </span>
+<span id="L602"><span class="lineNum">     602</span>              : /** Resizes to the given size, changing only the number of rows, and sets all</span>
+<span id="L603"><span class="lineNum">     603</span>              :  * coefficients in this expression to zero. For the parameter of type NoChange_t,</span>
+<span id="L604"><span class="lineNum">     604</span>              :  * just pass the special value \c NoChange.</span>
+<span id="L605"><span class="lineNum">     605</span>              :  *</span>
+<span id="L606"><span class="lineNum">     606</span>              :  * \sa DenseBase::setZero(), setZero(Index), setZero(Index, Index), setZero(NoChange_t, Index), class CwiseNullaryOp,</span>
+<span id="L607"><span class="lineNum">     607</span>              :  * DenseBase::Zero()</span>
+<span id="L608"><span class="lineNum">     608</span>              :  */</span>
+<span id="L609"><span class="lineNum">     609</span>              : template &lt;typename Derived&gt;</span>
+<span id="L610"><span class="lineNum">     610</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setZero(Index rows, NoChange_t) {</span>
+<span id="L611"><span class="lineNum">     611</span>              :   return setZero(rows, cols());</span>
+<span id="L612"><span class="lineNum">     612</span>              : }</span>
+<span id="L613"><span class="lineNum">     613</span>              : </span>
+<span id="L614"><span class="lineNum">     614</span>              : // ones:</span>
+<span id="L615"><span class="lineNum">     615</span>              : </span>
+<span id="L616"><span class="lineNum">     616</span>              : /** \returns an expression of a matrix where all coefficients equal one.</span>
+<span id="L617"><span class="lineNum">     617</span>              :  *</span>
+<span id="L618"><span class="lineNum">     618</span>              :  * The parameters \a rows and \a cols are the number of rows and of columns of</span>
+<span id="L619"><span class="lineNum">     619</span>              :  * the returned matrix. Must be compatible with this MatrixBase type.</span>
+<span id="L620"><span class="lineNum">     620</span>              :  *</span>
+<span id="L621"><span class="lineNum">     621</span>              :  * This variant is meant to be used for dynamic-size matrix types. For fixed-size types,</span>
+<span id="L622"><span class="lineNum">     622</span>              :  * it is redundant to pass \a rows and \a cols as arguments, so Ones() should be used</span>
+<span id="L623"><span class="lineNum">     623</span>              :  * instead.</span>
+<span id="L624"><span class="lineNum">     624</span>              :  *</span>
+<span id="L625"><span class="lineNum">     625</span>              :  * Example: \include MatrixBase_ones_int_int.cpp</span>
+<span id="L626"><span class="lineNum">     626</span>              :  * Output: \verbinclude MatrixBase_ones_int_int.out</span>
+<span id="L627"><span class="lineNum">     627</span>              :  *</span>
+<span id="L628"><span class="lineNum">     628</span>              :  * \sa Ones(), Ones(Index), isOnes(), class Ones</span>
+<span id="L629"><span class="lineNum">     629</span>              :  */</span>
+<span id="L630"><span class="lineNum">     630</span>              : template &lt;typename Derived&gt;</span>
+<span id="L631"><span class="lineNum">     631</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ConstantReturnType DenseBase&lt;Derived&gt;::Ones(</span>
+<span id="L632"><span class="lineNum">     632</span>              :     Index rows, Index cols) {</span>
+<span id="L633"><span class="lineNum">     633</span>              :   return Constant(rows, cols, Scalar(1));</span>
+<span id="L634"><span class="lineNum">     634</span>              : }</span>
+<span id="L635"><span class="lineNum">     635</span>              : </span>
+<span id="L636"><span class="lineNum">     636</span>              : /** \returns an expression of a vector where all coefficients equal one.</span>
+<span id="L637"><span class="lineNum">     637</span>              :  *</span>
+<span id="L638"><span class="lineNum">     638</span>              :  * The parameter \a newSize is the size of the returned vector.</span>
+<span id="L639"><span class="lineNum">     639</span>              :  * Must be compatible with this MatrixBase type.</span>
+<span id="L640"><span class="lineNum">     640</span>              :  *</span>
+<span id="L641"><span class="lineNum">     641</span>              :  * \only_for_vectors</span>
+<span id="L642"><span class="lineNum">     642</span>              :  *</span>
+<span id="L643"><span class="lineNum">     643</span>              :  * This variant is meant to be used for dynamic-size vector types. For fixed-size types,</span>
+<span id="L644"><span class="lineNum">     644</span>              :  * it is redundant to pass \a size as argument, so Ones() should be used</span>
+<span id="L645"><span class="lineNum">     645</span>              :  * instead.</span>
+<span id="L646"><span class="lineNum">     646</span>              :  *</span>
+<span id="L647"><span class="lineNum">     647</span>              :  * Example: \include MatrixBase_ones_int.cpp</span>
+<span id="L648"><span class="lineNum">     648</span>              :  * Output: \verbinclude MatrixBase_ones_int.out</span>
+<span id="L649"><span class="lineNum">     649</span>              :  *</span>
+<span id="L650"><span class="lineNum">     650</span>              :  * \sa Ones(), Ones(Index,Index), isOnes(), class Ones</span>
+<span id="L651"><span class="lineNum">     651</span>              :  */</span>
+<span id="L652"><span class="lineNum">     652</span>              : template &lt;typename Derived&gt;</span>
+<span id="L653"><span class="lineNum">     653</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ConstantReturnType DenseBase&lt;Derived&gt;::Ones(</span>
+<span id="L654"><span class="lineNum">     654</span>              :     Index newSize) {</span>
+<span id="L655"><span class="lineNum">     655</span>              :   return Constant(newSize, Scalar(1));</span>
+<span id="L656"><span class="lineNum">     656</span>              : }</span>
+<span id="L657"><span class="lineNum">     657</span>              : </span>
+<span id="L658"><span class="lineNum">     658</span>              : /** \returns an expression of a fixed-size matrix or vector where all coefficients equal one.</span>
+<span id="L659"><span class="lineNum">     659</span>              :  *</span>
+<span id="L660"><span class="lineNum">     660</span>              :  * This variant is only for fixed-size MatrixBase types. For dynamic-size types, you</span>
+<span id="L661"><span class="lineNum">     661</span>              :  * need to use the variants taking size arguments.</span>
+<span id="L662"><span class="lineNum">     662</span>              :  *</span>
+<span id="L663"><span class="lineNum">     663</span>              :  * Example: \include MatrixBase_ones.cpp</span>
+<span id="L664"><span class="lineNum">     664</span>              :  * Output: \verbinclude MatrixBase_ones.out</span>
+<span id="L665"><span class="lineNum">     665</span>              :  *</span>
+<span id="L666"><span class="lineNum">     666</span>              :  * \sa Ones(Index), Ones(Index,Index), isOnes(), class Ones</span>
+<span id="L667"><span class="lineNum">     667</span>              :  */</span>
+<span id="L668"><span class="lineNum">     668</span>              : template &lt;typename Derived&gt;</span>
+<span id="L669"><span class="lineNum">     669</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename DenseBase&lt;Derived&gt;::ConstantReturnType DenseBase&lt;Derived&gt;::Ones() {</span>
+<span id="L670"><span class="lineNum">     670</span>              :   return Constant(Scalar(1));</span>
+<span id="L671"><span class="lineNum">     671</span>              : }</span>
+<span id="L672"><span class="lineNum">     672</span>              : </span>
+<span id="L673"><span class="lineNum">     673</span>              : /** \returns true if *this is approximately equal to the matrix where all coefficients</span>
+<span id="L674"><span class="lineNum">     674</span>              :  *          are equal to 1, within the precision given by \a prec.</span>
+<span id="L675"><span class="lineNum">     675</span>              :  *</span>
+<span id="L676"><span class="lineNum">     676</span>              :  * Example: \include MatrixBase_isOnes.cpp</span>
+<span id="L677"><span class="lineNum">     677</span>              :  * Output: \verbinclude MatrixBase_isOnes.out</span>
+<span id="L678"><span class="lineNum">     678</span>              :  *</span>
+<span id="L679"><span class="lineNum">     679</span>              :  * \sa class CwiseNullaryOp, Ones()</span>
+<span id="L680"><span class="lineNum">     680</span>              :  */</span>
+<span id="L681"><span class="lineNum">     681</span>              : template &lt;typename Derived&gt;</span>
+<span id="L682"><span class="lineNum">     682</span>              : EIGEN_DEVICE_FUNC bool DenseBase&lt;Derived&gt;::isOnes(const RealScalar&amp; prec) const {</span>
+<span id="L683"><span class="lineNum">     683</span>              :   return isApproxToConstant(Scalar(1), prec);</span>
+<span id="L684"><span class="lineNum">     684</span>              : }</span>
+<span id="L685"><span class="lineNum">     685</span>              : </span>
+<span id="L686"><span class="lineNum">     686</span>              : /** Sets all coefficients in this expression to one.</span>
+<span id="L687"><span class="lineNum">     687</span>              :  *</span>
+<span id="L688"><span class="lineNum">     688</span>              :  * Example: \include MatrixBase_setOnes.cpp</span>
+<span id="L689"><span class="lineNum">     689</span>              :  * Output: \verbinclude MatrixBase_setOnes.out</span>
+<span id="L690"><span class="lineNum">     690</span>              :  *</span>
+<span id="L691"><span class="lineNum">     691</span>              :  * \sa class CwiseNullaryOp, Ones()</span>
+<span id="L692"><span class="lineNum">     692</span>              :  */</span>
+<span id="L693"><span class="lineNum">     693</span>              : template &lt;typename Derived&gt;</span>
+<span id="L694"><span class="lineNum">     694</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; DenseBase&lt;Derived&gt;::setOnes() {</span>
+<span id="L695"><span class="lineNum">     695</span>              :   return setConstant(Scalar(1));</span>
+<span id="L696"><span class="lineNum">     696</span>              : }</span>
+<span id="L697"><span class="lineNum">     697</span>              : </span>
+<span id="L698"><span class="lineNum">     698</span>              : /** Resizes to the given \a newSize, and sets all coefficients in this expression to one.</span>
+<span id="L699"><span class="lineNum">     699</span>              :  *</span>
+<span id="L700"><span class="lineNum">     700</span>              :  * \only_for_vectors</span>
+<span id="L701"><span class="lineNum">     701</span>              :  *</span>
+<span id="L702"><span class="lineNum">     702</span>              :  * Example: \include Matrix_setOnes_int.cpp</span>
+<span id="L703"><span class="lineNum">     703</span>              :  * Output: \verbinclude Matrix_setOnes_int.out</span>
+<span id="L704"><span class="lineNum">     704</span>              :  *</span>
+<span id="L705"><span class="lineNum">     705</span>              :  * \sa MatrixBase::setOnes(), setOnes(Index,Index), class CwiseNullaryOp, MatrixBase::Ones()</span>
+<span id="L706"><span class="lineNum">     706</span>              :  */</span>
+<span id="L707"><span class="lineNum">     707</span>              : template &lt;typename Derived&gt;</span>
+<span id="L708"><span class="lineNum">     708</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setOnes(Index newSize) {</span>
+<span id="L709"><span class="lineNum">     709</span>              :   resize(newSize);</span>
+<span id="L710"><span class="lineNum">     710</span>              :   return setConstant(Scalar(1));</span>
+<span id="L711"><span class="lineNum">     711</span>              : }</span>
+<span id="L712"><span class="lineNum">     712</span>              : </span>
+<span id="L713"><span class="lineNum">     713</span>              : /** Resizes to the given size, and sets all coefficients in this expression to one.</span>
+<span id="L714"><span class="lineNum">     714</span>              :  *</span>
+<span id="L715"><span class="lineNum">     715</span>              :  * \param rows the new number of rows</span>
+<span id="L716"><span class="lineNum">     716</span>              :  * \param cols the new number of columns</span>
+<span id="L717"><span class="lineNum">     717</span>              :  *</span>
+<span id="L718"><span class="lineNum">     718</span>              :  * Example: \include Matrix_setOnes_int_int.cpp</span>
+<span id="L719"><span class="lineNum">     719</span>              :  * Output: \verbinclude Matrix_setOnes_int_int.out</span>
+<span id="L720"><span class="lineNum">     720</span>              :  *</span>
+<span id="L721"><span class="lineNum">     721</span>              :  * \sa MatrixBase::setOnes(), setOnes(Index), class CwiseNullaryOp, MatrixBase::Ones()</span>
+<span id="L722"><span class="lineNum">     722</span>              :  */</span>
+<span id="L723"><span class="lineNum">     723</span>              : template &lt;typename Derived&gt;</span>
+<span id="L724"><span class="lineNum">     724</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setOnes(Index rows, Index cols) {</span>
+<span id="L725"><span class="lineNum">     725</span>              :   resize(rows, cols);</span>
+<span id="L726"><span class="lineNum">     726</span>              :   return setConstant(Scalar(1));</span>
+<span id="L727"><span class="lineNum">     727</span>              : }</span>
+<span id="L728"><span class="lineNum">     728</span>              : </span>
+<span id="L729"><span class="lineNum">     729</span>              : /** Resizes to the given size, changing only the number of rows, and sets all</span>
+<span id="L730"><span class="lineNum">     730</span>              :  * coefficients in this expression to one. For the parameter of type NoChange_t,</span>
+<span id="L731"><span class="lineNum">     731</span>              :  * just pass the special value \c NoChange.</span>
+<span id="L732"><span class="lineNum">     732</span>              :  *</span>
+<span id="L733"><span class="lineNum">     733</span>              :  * \sa MatrixBase::setOnes(), setOnes(Index), setOnes(Index, Index), setOnes(NoChange_t, Index), class CwiseNullaryOp,</span>
+<span id="L734"><span class="lineNum">     734</span>              :  * MatrixBase::Ones()</span>
+<span id="L735"><span class="lineNum">     735</span>              :  */</span>
+<span id="L736"><span class="lineNum">     736</span>              : template &lt;typename Derived&gt;</span>
+<span id="L737"><span class="lineNum">     737</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setOnes(Index rows, NoChange_t) {</span>
+<span id="L738"><span class="lineNum">     738</span>              :   return setOnes(rows, cols());</span>
+<span id="L739"><span class="lineNum">     739</span>              : }</span>
+<span id="L740"><span class="lineNum">     740</span>              : </span>
+<span id="L741"><span class="lineNum">     741</span>              : /** Resizes to the given size, changing only the number of columns, and sets all</span>
+<span id="L742"><span class="lineNum">     742</span>              :  * coefficients in this expression to one. For the parameter of type NoChange_t,</span>
+<span id="L743"><span class="lineNum">     743</span>              :  * just pass the special value \c NoChange.</span>
+<span id="L744"><span class="lineNum">     744</span>              :  *</span>
+<span id="L745"><span class="lineNum">     745</span>              :  * \sa MatrixBase::setOnes(), setOnes(Index), setOnes(Index, Index), setOnes(Index, NoChange_t) class CwiseNullaryOp,</span>
+<span id="L746"><span class="lineNum">     746</span>              :  * MatrixBase::Ones()</span>
+<span id="L747"><span class="lineNum">     747</span>              :  */</span>
+<span id="L748"><span class="lineNum">     748</span>              : template &lt;typename Derived&gt;</span>
+<span id="L749"><span class="lineNum">     749</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; PlainObjectBase&lt;Derived&gt;::setOnes(NoChange_t, Index cols) {</span>
+<span id="L750"><span class="lineNum">     750</span>              :   return setOnes(rows(), cols);</span>
+<span id="L751"><span class="lineNum">     751</span>              : }</span>
+<span id="L752"><span class="lineNum">     752</span>              : </span>
+<span id="L753"><span class="lineNum">     753</span>              : // Identity:</span>
+<span id="L754"><span class="lineNum">     754</span>              : </span>
+<span id="L755"><span class="lineNum">     755</span>              : /** \returns an expression of the identity matrix (not necessarily square).</span>
+<span id="L756"><span class="lineNum">     756</span>              :  *</span>
+<span id="L757"><span class="lineNum">     757</span>              :  * The parameters \a rows and \a cols are the number of rows and of columns of</span>
+<span id="L758"><span class="lineNum">     758</span>              :  * the returned matrix. Must be compatible with this MatrixBase type.</span>
+<span id="L759"><span class="lineNum">     759</span>              :  *</span>
+<span id="L760"><span class="lineNum">     760</span>              :  * This variant is meant to be used for dynamic-size matrix types. For fixed-size types,</span>
+<span id="L761"><span class="lineNum">     761</span>              :  * it is redundant to pass \a rows and \a cols as arguments, so Identity() should be used</span>
+<span id="L762"><span class="lineNum">     762</span>              :  * instead.</span>
+<span id="L763"><span class="lineNum">     763</span>              :  *</span>
+<span id="L764"><span class="lineNum">     764</span>              :  * Example: \include MatrixBase_identity_int_int.cpp</span>
+<span id="L765"><span class="lineNum">     765</span>              :  * Output: \verbinclude MatrixBase_identity_int_int.out</span>
+<span id="L766"><span class="lineNum">     766</span>              :  *</span>
+<span id="L767"><span class="lineNum">     767</span>              :  * \sa Identity(), setIdentity(), isIdentity()</span>
+<span id="L768"><span class="lineNum">     768</span>              :  */</span>
+<span id="L769"><span class="lineNum">     769</span>              : template &lt;typename Derived&gt;</span>
+<span id="L770"><span class="lineNum">     770</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename MatrixBase&lt;Derived&gt;::IdentityReturnType</span>
+<span id="L771"><span class="lineNum">     771</span>              : MatrixBase&lt;Derived&gt;::Identity(Index rows, Index cols) {</span>
+<span id="L772"><span class="lineNum">     772</span>              :   return DenseBase&lt;Derived&gt;::NullaryExpr(rows, cols, internal::scalar_identity_op&lt;Scalar&gt;());</span>
+<span id="L773"><span class="lineNum">     773</span>              : }</span>
+<span id="L774"><span class="lineNum">     774</span>              : </span>
+<span id="L775"><span class="lineNum">     775</span>              : /** \returns an expression of the identity matrix (not necessarily square).</span>
+<span id="L776"><span class="lineNum">     776</span>              :  *</span>
+<span id="L777"><span class="lineNum">     777</span>              :  * This variant is only for fixed-size MatrixBase types. For dynamic-size types, you</span>
+<span id="L778"><span class="lineNum">     778</span>              :  * need to use the variant taking size arguments.</span>
+<span id="L779"><span class="lineNum">     779</span>              :  *</span>
+<span id="L780"><span class="lineNum">     780</span>              :  * Example: \include MatrixBase_identity.cpp</span>
+<span id="L781"><span class="lineNum">     781</span>              :  * Output: \verbinclude MatrixBase_identity.out</span>
+<span id="L782"><span class="lineNum">     782</span>              :  *</span>
+<span id="L783"><span class="lineNum">     783</span>              :  * \sa Identity(Index,Index), setIdentity(), isIdentity()</span>
+<span id="L784"><span class="lineNum">     784</span>              :  */</span>
+<span id="L785"><span class="lineNum">     785</span>              : template &lt;typename Derived&gt;</span>
+<span id="L786"><span class="lineNum">     786</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename MatrixBase&lt;Derived&gt;::IdentityReturnType</span>
+<span id="L787"><span class="lineNum">     787</span> <span class="tlaGNC">         165 : MatrixBase&lt;Derived&gt;::Identity() {</span></span>
+<span id="L788"><span class="lineNum">     788</span>              :   EIGEN_STATIC_ASSERT_FIXED_SIZE(Derived)</span>
+<span id="L789"><span class="lineNum">     789</span> <span class="tlaGNC">         165 :   return MatrixBase&lt;Derived&gt;::NullaryExpr(RowsAtCompileTime, ColsAtCompileTime, internal::scalar_identity_op&lt;Scalar&gt;());</span></span>
+<span id="L790"><span class="lineNum">     790</span>              : }</span>
+<span id="L791"><span class="lineNum">     791</span>              : </span>
+<span id="L792"><span class="lineNum">     792</span>              : /** \returns true if *this is approximately equal to the identity matrix</span>
+<span id="L793"><span class="lineNum">     793</span>              :  *          (not necessarily square),</span>
+<span id="L794"><span class="lineNum">     794</span>              :  *          within the precision given by \a prec.</span>
+<span id="L795"><span class="lineNum">     795</span>              :  *</span>
+<span id="L796"><span class="lineNum">     796</span>              :  * Example: \include MatrixBase_isIdentity.cpp</span>
+<span id="L797"><span class="lineNum">     797</span>              :  * Output: \verbinclude MatrixBase_isIdentity.out</span>
+<span id="L798"><span class="lineNum">     798</span>              :  *</span>
+<span id="L799"><span class="lineNum">     799</span>              :  * \sa class CwiseNullaryOp, Identity(), Identity(Index,Index), setIdentity()</span>
+<span id="L800"><span class="lineNum">     800</span>              :  */</span>
+<span id="L801"><span class="lineNum">     801</span>              : template &lt;typename Derived&gt;</span>
+<span id="L802"><span class="lineNum">     802</span>              : bool MatrixBase&lt;Derived&gt;::isIdentity(const RealScalar&amp; prec) const {</span>
+<span id="L803"><span class="lineNum">     803</span>              :   typename internal::nested_eval&lt;Derived, 1&gt;::type self(derived());</span>
+<span id="L804"><span class="lineNum">     804</span>              :   for (Index j = 0; j &lt; cols(); ++j) {</span>
+<span id="L805"><span class="lineNum">     805</span>              :     for (Index i = 0; i &lt; rows(); ++i) {</span>
+<span id="L806"><span class="lineNum">     806</span>              :       if (i == j) {</span>
+<span id="L807"><span class="lineNum">     807</span>              :         if (!internal::isApprox(self.coeff(i, j), static_cast&lt;Scalar&gt;(1), prec)) return false;</span>
+<span id="L808"><span class="lineNum">     808</span>              :       } else {</span>
+<span id="L809"><span class="lineNum">     809</span>              :         if (!internal::isMuchSmallerThan(self.coeff(i, j), static_cast&lt;RealScalar&gt;(1), prec)) return false;</span>
+<span id="L810"><span class="lineNum">     810</span>              :       }</span>
+<span id="L811"><span class="lineNum">     811</span>              :     }</span>
+<span id="L812"><span class="lineNum">     812</span>              :   }</span>
+<span id="L813"><span class="lineNum">     813</span>              :   return true;</span>
+<span id="L814"><span class="lineNum">     814</span>              : }</span>
+<span id="L815"><span class="lineNum">     815</span>              : </span>
+<span id="L816"><span class="lineNum">     816</span>              : namespace internal {</span>
+<span id="L817"><span class="lineNum">     817</span>              : </span>
+<span id="L818"><span class="lineNum">     818</span>              : template &lt;typename Derived, bool Big = (Derived::SizeAtCompileTime &gt;= 16)&gt;</span>
+<span id="L819"><span class="lineNum">     819</span>              : struct setIdentity_impl {</span>
+<span id="L820"><span class="lineNum">     820</span>              :   EIGEN_DEVICE_FUNC static EIGEN_STRONG_INLINE Derived&amp; run(Derived&amp; m) {</span>
+<span id="L821"><span class="lineNum">     821</span>              :     return m = Derived::Identity(m.rows(), m.cols());</span>
+<span id="L822"><span class="lineNum">     822</span>              :   }</span>
+<span id="L823"><span class="lineNum">     823</span>              : };</span>
+<span id="L824"><span class="lineNum">     824</span>              : </span>
+<span id="L825"><span class="lineNum">     825</span>              : template &lt;typename Derived&gt;</span>
+<span id="L826"><span class="lineNum">     826</span>              : struct setIdentity_impl&lt;Derived, true&gt; {</span>
+<span id="L827"><span class="lineNum">     827</span>              :   EIGEN_DEVICE_FUNC static EIGEN_STRONG_INLINE Derived&amp; run(Derived&amp; m) {</span>
+<span id="L828"><span class="lineNum">     828</span>              :     m.setZero();</span>
+<span id="L829"><span class="lineNum">     829</span>              :     const Index size = numext::mini(m.rows(), m.cols());</span>
+<span id="L830"><span class="lineNum">     830</span>              :     for (Index i = 0; i &lt; size; ++i) m.coeffRef(i, i) = typename Derived::Scalar(1);</span>
+<span id="L831"><span class="lineNum">     831</span>              :     return m;</span>
+<span id="L832"><span class="lineNum">     832</span>              :   }</span>
+<span id="L833"><span class="lineNum">     833</span>              : };</span>
+<span id="L834"><span class="lineNum">     834</span>              : </span>
+<span id="L835"><span class="lineNum">     835</span>              : }  // end namespace internal</span>
+<span id="L836"><span class="lineNum">     836</span>              : </span>
+<span id="L837"><span class="lineNum">     837</span>              : /** Writes the identity expression (not necessarily square) into *this.</span>
+<span id="L838"><span class="lineNum">     838</span>              :  *</span>
+<span id="L839"><span class="lineNum">     839</span>              :  * Example: \include MatrixBase_setIdentity.cpp</span>
+<span id="L840"><span class="lineNum">     840</span>              :  * Output: \verbinclude MatrixBase_setIdentity.out</span>
+<span id="L841"><span class="lineNum">     841</span>              :  *</span>
+<span id="L842"><span class="lineNum">     842</span>              :  * \sa class CwiseNullaryOp, Identity(), Identity(Index,Index), isIdentity()</span>
+<span id="L843"><span class="lineNum">     843</span>              :  */</span>
+<span id="L844"><span class="lineNum">     844</span>              : template &lt;typename Derived&gt;</span>
+<span id="L845"><span class="lineNum">     845</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; MatrixBase&lt;Derived&gt;::setIdentity() {</span>
+<span id="L846"><span class="lineNum">     846</span>              :   return internal::setIdentity_impl&lt;Derived&gt;::run(derived());</span>
+<span id="L847"><span class="lineNum">     847</span>              : }</span>
+<span id="L848"><span class="lineNum">     848</span>              : </span>
+<span id="L849"><span class="lineNum">     849</span>              : /** \brief Resizes to the given size, and writes the identity expression (not necessarily square) into *this.</span>
+<span id="L850"><span class="lineNum">     850</span>              :  *</span>
+<span id="L851"><span class="lineNum">     851</span>              :  * \param rows the new number of rows</span>
+<span id="L852"><span class="lineNum">     852</span>              :  * \param cols the new number of columns</span>
+<span id="L853"><span class="lineNum">     853</span>              :  *</span>
+<span id="L854"><span class="lineNum">     854</span>              :  * Example: \include Matrix_setIdentity_int_int.cpp</span>
+<span id="L855"><span class="lineNum">     855</span>              :  * Output: \verbinclude Matrix_setIdentity_int_int.out</span>
+<span id="L856"><span class="lineNum">     856</span>              :  *</span>
+<span id="L857"><span class="lineNum">     857</span>              :  * \sa MatrixBase::setIdentity(), class CwiseNullaryOp, MatrixBase::Identity()</span>
+<span id="L858"><span class="lineNum">     858</span>              :  */</span>
+<span id="L859"><span class="lineNum">     859</span>              : template &lt;typename Derived&gt;</span>
+<span id="L860"><span class="lineNum">     860</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; MatrixBase&lt;Derived&gt;::setIdentity(Index rows, Index cols) {</span>
+<span id="L861"><span class="lineNum">     861</span>              :   derived().resize(rows, cols);</span>
+<span id="L862"><span class="lineNum">     862</span>              :   return setIdentity();</span>
+<span id="L863"><span class="lineNum">     863</span>              : }</span>
+<span id="L864"><span class="lineNum">     864</span>              : </span>
+<span id="L865"><span class="lineNum">     865</span>              : /** \returns an expression of the i-th unit (basis) vector.</span>
+<span id="L866"><span class="lineNum">     866</span>              :  *</span>
+<span id="L867"><span class="lineNum">     867</span>              :  * \only_for_vectors</span>
+<span id="L868"><span class="lineNum">     868</span>              :  *</span>
+<span id="L869"><span class="lineNum">     869</span>              :  * \sa MatrixBase::Unit(Index), MatrixBase::UnitX(), MatrixBase::UnitY(), MatrixBase::UnitZ(), MatrixBase::UnitW()</span>
+<span id="L870"><span class="lineNum">     870</span>              :  */</span>
+<span id="L871"><span class="lineNum">     871</span>              : template &lt;typename Derived&gt;</span>
+<span id="L872"><span class="lineNum">     872</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename MatrixBase&lt;Derived&gt;::BasisReturnType MatrixBase&lt;Derived&gt;::Unit(</span>
+<span id="L873"><span class="lineNum">     873</span>              :     Index newSize, Index i) {</span>
+<span id="L874"><span class="lineNum">     874</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L875"><span class="lineNum">     875</span>              :   return BasisReturnType(SquareMatrixType::Identity(newSize, newSize), i);</span>
+<span id="L876"><span class="lineNum">     876</span>              : }</span>
+<span id="L877"><span class="lineNum">     877</span>              : </span>
+<span id="L878"><span class="lineNum">     878</span>              : /** \returns an expression of the i-th unit (basis) vector.</span>
+<span id="L879"><span class="lineNum">     879</span>              :  *</span>
+<span id="L880"><span class="lineNum">     880</span>              :  * \only_for_vectors</span>
+<span id="L881"><span class="lineNum">     881</span>              :  *</span>
+<span id="L882"><span class="lineNum">     882</span>              :  * This variant is for fixed-size vector only.</span>
+<span id="L883"><span class="lineNum">     883</span>              :  *</span>
+<span id="L884"><span class="lineNum">     884</span>              :  * \sa MatrixBase::Unit(Index,Index), MatrixBase::UnitX(), MatrixBase::UnitY(), MatrixBase::UnitZ(), MatrixBase::UnitW()</span>
+<span id="L885"><span class="lineNum">     885</span>              :  */</span>
+<span id="L886"><span class="lineNum">     886</span>              : template &lt;typename Derived&gt;</span>
+<span id="L887"><span class="lineNum">     887</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename MatrixBase&lt;Derived&gt;::BasisReturnType MatrixBase&lt;Derived&gt;::Unit(</span>
+<span id="L888"><span class="lineNum">     888</span>              :     Index i) {</span>
+<span id="L889"><span class="lineNum">     889</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived)</span>
+<span id="L890"><span class="lineNum">     890</span>              :   return BasisReturnType(SquareMatrixType::Identity(), i);</span>
+<span id="L891"><span class="lineNum">     891</span>              : }</span>
+<span id="L892"><span class="lineNum">     892</span>              : </span>
+<span id="L893"><span class="lineNum">     893</span>              : /** \returns an expression of the X axis unit vector (1{,0}^*)</span>
+<span id="L894"><span class="lineNum">     894</span>              :  *</span>
+<span id="L895"><span class="lineNum">     895</span>              :  * \only_for_vectors</span>
+<span id="L896"><span class="lineNum">     896</span>              :  *</span>
+<span id="L897"><span class="lineNum">     897</span>              :  * \sa MatrixBase::Unit(Index,Index), MatrixBase::Unit(Index), MatrixBase::UnitY(), MatrixBase::UnitZ(),</span>
+<span id="L898"><span class="lineNum">     898</span>              :  * MatrixBase::UnitW()</span>
+<span id="L899"><span class="lineNum">     899</span>              :  */</span>
+<span id="L900"><span class="lineNum">     900</span>              : template &lt;typename Derived&gt;</span>
+<span id="L901"><span class="lineNum">     901</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename MatrixBase&lt;Derived&gt;::BasisReturnType MatrixBase&lt;Derived&gt;::UnitX() {</span>
+<span id="L902"><span class="lineNum">     902</span>              :   return Derived::Unit(0);</span>
+<span id="L903"><span class="lineNum">     903</span>              : }</span>
+<span id="L904"><span class="lineNum">     904</span>              : </span>
+<span id="L905"><span class="lineNum">     905</span>              : /** \returns an expression of the Y axis unit vector (0,1{,0}^*)</span>
+<span id="L906"><span class="lineNum">     906</span>              :  *</span>
+<span id="L907"><span class="lineNum">     907</span>              :  * \only_for_vectors</span>
+<span id="L908"><span class="lineNum">     908</span>              :  *</span>
+<span id="L909"><span class="lineNum">     909</span>              :  * \sa MatrixBase::Unit(Index,Index), MatrixBase::Unit(Index), MatrixBase::UnitY(), MatrixBase::UnitZ(),</span>
+<span id="L910"><span class="lineNum">     910</span>              :  * MatrixBase::UnitW()</span>
+<span id="L911"><span class="lineNum">     911</span>              :  */</span>
+<span id="L912"><span class="lineNum">     912</span>              : template &lt;typename Derived&gt;</span>
+<span id="L913"><span class="lineNum">     913</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename MatrixBase&lt;Derived&gt;::BasisReturnType MatrixBase&lt;Derived&gt;::UnitY() {</span>
+<span id="L914"><span class="lineNum">     914</span>              :   return Derived::Unit(1);</span>
+<span id="L915"><span class="lineNum">     915</span>              : }</span>
+<span id="L916"><span class="lineNum">     916</span>              : </span>
+<span id="L917"><span class="lineNum">     917</span>              : /** \returns an expression of the Z axis unit vector (0,0,1{,0}^*)</span>
+<span id="L918"><span class="lineNum">     918</span>              :  *</span>
+<span id="L919"><span class="lineNum">     919</span>              :  * \only_for_vectors</span>
+<span id="L920"><span class="lineNum">     920</span>              :  *</span>
+<span id="L921"><span class="lineNum">     921</span>              :  * \sa MatrixBase::Unit(Index,Index), MatrixBase::Unit(Index), MatrixBase::UnitY(), MatrixBase::UnitZ(),</span>
+<span id="L922"><span class="lineNum">     922</span>              :  * MatrixBase::UnitW()</span>
+<span id="L923"><span class="lineNum">     923</span>              :  */</span>
+<span id="L924"><span class="lineNum">     924</span>              : template &lt;typename Derived&gt;</span>
+<span id="L925"><span class="lineNum">     925</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename MatrixBase&lt;Derived&gt;::BasisReturnType MatrixBase&lt;Derived&gt;::UnitZ() {</span>
+<span id="L926"><span class="lineNum">     926</span>              :   return Derived::Unit(2);</span>
+<span id="L927"><span class="lineNum">     927</span>              : }</span>
+<span id="L928"><span class="lineNum">     928</span>              : </span>
+<span id="L929"><span class="lineNum">     929</span>              : /** \returns an expression of the W axis unit vector (0,0,0,1)</span>
+<span id="L930"><span class="lineNum">     930</span>              :  *</span>
+<span id="L931"><span class="lineNum">     931</span>              :  * \only_for_vectors</span>
+<span id="L932"><span class="lineNum">     932</span>              :  *</span>
+<span id="L933"><span class="lineNum">     933</span>              :  * \sa MatrixBase::Unit(Index,Index), MatrixBase::Unit(Index), MatrixBase::UnitY(), MatrixBase::UnitZ(),</span>
+<span id="L934"><span class="lineNum">     934</span>              :  * MatrixBase::UnitW()</span>
+<span id="L935"><span class="lineNum">     935</span>              :  */</span>
+<span id="L936"><span class="lineNum">     936</span>              : template &lt;typename Derived&gt;</span>
+<span id="L937"><span class="lineNum">     937</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const typename MatrixBase&lt;Derived&gt;::BasisReturnType MatrixBase&lt;Derived&gt;::UnitW() {</span>
+<span id="L938"><span class="lineNum">     938</span>              :   return Derived::Unit(3);</span>
+<span id="L939"><span class="lineNum">     939</span>              : }</span>
+<span id="L940"><span class="lineNum">     940</span>              : </span>
+<span id="L941"><span class="lineNum">     941</span>              : /** \brief Set the coefficients of \c *this to the i-th unit (basis) vector</span>
+<span id="L942"><span class="lineNum">     942</span>              :  *</span>
+<span id="L943"><span class="lineNum">     943</span>              :  * \param i index of the unique coefficient to be set to 1</span>
+<span id="L944"><span class="lineNum">     944</span>              :  *</span>
+<span id="L945"><span class="lineNum">     945</span>              :  * \only_for_vectors</span>
+<span id="L946"><span class="lineNum">     946</span>              :  *</span>
+<span id="L947"><span class="lineNum">     947</span>              :  * \sa MatrixBase::setIdentity(), class CwiseNullaryOp, MatrixBase::Unit(Index,Index)</span>
+<span id="L948"><span class="lineNum">     948</span>              :  */</span>
+<span id="L949"><span class="lineNum">     949</span>              : template &lt;typename Derived&gt;</span>
+<span id="L950"><span class="lineNum">     950</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; MatrixBase&lt;Derived&gt;::setUnit(Index i) {</span>
+<span id="L951"><span class="lineNum">     951</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived);</span>
+<span id="L952"><span class="lineNum">     952</span>              :   eigen_assert(i &lt; size());</span>
+<span id="L953"><span class="lineNum">     953</span>              :   derived().setZero();</span>
+<span id="L954"><span class="lineNum">     954</span>              :   derived().coeffRef(i) = Scalar(1);</span>
+<span id="L955"><span class="lineNum">     955</span>              :   return derived();</span>
+<span id="L956"><span class="lineNum">     956</span>              : }</span>
+<span id="L957"><span class="lineNum">     957</span>              : </span>
+<span id="L958"><span class="lineNum">     958</span>              : /** \brief Resizes to the given \a newSize, and writes the i-th unit (basis) vector into *this.</span>
+<span id="L959"><span class="lineNum">     959</span>              :  *</span>
+<span id="L960"><span class="lineNum">     960</span>              :  * \param newSize the new size of the vector</span>
+<span id="L961"><span class="lineNum">     961</span>              :  * \param i index of the unique coefficient to be set to 1</span>
+<span id="L962"><span class="lineNum">     962</span>              :  *</span>
+<span id="L963"><span class="lineNum">     963</span>              :  * \only_for_vectors</span>
+<span id="L964"><span class="lineNum">     964</span>              :  *</span>
+<span id="L965"><span class="lineNum">     965</span>              :  * \sa MatrixBase::setIdentity(), class CwiseNullaryOp, MatrixBase::Unit(Index,Index)</span>
+<span id="L966"><span class="lineNum">     966</span>              :  */</span>
+<span id="L967"><span class="lineNum">     967</span>              : template &lt;typename Derived&gt;</span>
+<span id="L968"><span class="lineNum">     968</span>              : EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Derived&amp; MatrixBase&lt;Derived&gt;::setUnit(Index newSize, Index i) {</span>
+<span id="L969"><span class="lineNum">     969</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Derived);</span>
+<span id="L970"><span class="lineNum">     970</span>              :   eigen_assert(i &lt; newSize);</span>
+<span id="L971"><span class="lineNum">     971</span>              :   derived().resize(newSize);</span>
+<span id="L972"><span class="lineNum">     972</span>              :   return setUnit(i);</span>
+<span id="L973"><span class="lineNum">     973</span>              : }</span>
+<span id="L974"><span class="lineNum">     974</span>              : </span>
+<span id="L975"><span class="lineNum">     975</span>              : }  // end namespace Eigen</span>
+<span id="L976"><span class="lineNum">     976</span>              : </span>
+<span id="L977"><span class="lineNum">     977</span>              : #endif  // EIGEN_CWISE_NULLARY_OP_H</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

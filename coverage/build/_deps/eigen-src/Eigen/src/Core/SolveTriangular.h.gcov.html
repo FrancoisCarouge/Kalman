@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/Kalman - build/_deps/eigen-src/Eigen/src/Core/SolveTriangular.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../../index.html" target="_parent">top level</a> - <a href="index.html" target="_parent">build/_deps/eigen-src/Eigen/src/Core</a> - SolveTriangular.h<span style="font-size: 80%;"> (source / <a href="SolveTriangular.h.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/Kalman</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">93.8&nbsp;%</td>
+            <td class="headerCovTableEntry">16</td>
+            <td class="headerCovTableEntry">15</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-04-26 21:31:14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">8</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+                  <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // This file is part of Eigen, a lightweight C++ template library</span>
+<span id="L2"><span class="lineNum">       2</span>              : // for linear algebra.</span>
+<span id="L3"><span class="lineNum">       3</span>              : //</span>
+<span id="L4"><span class="lineNum">       4</span>              : // Copyright (C) 2008-2009 Gael Guennebaud &lt;gael.guennebaud@inria.fr&gt;</span>
+<span id="L5"><span class="lineNum">       5</span>              : //</span>
+<span id="L6"><span class="lineNum">       6</span>              : // This Source Code Form is subject to the terms of the Mozilla</span>
+<span id="L7"><span class="lineNum">       7</span>              : // Public License v. 2.0. If a copy of the MPL was not distributed</span>
+<span id="L8"><span class="lineNum">       8</span>              : // with this file, You can obtain one at http://mozilla.org/MPL/2.0/.</span>
+<span id="L9"><span class="lineNum">       9</span>              : </span>
+<span id="L10"><span class="lineNum">      10</span>              : #ifndef EIGEN_SOLVETRIANGULAR_H</span>
+<span id="L11"><span class="lineNum">      11</span>              : #define EIGEN_SOLVETRIANGULAR_H</span>
+<span id="L12"><span class="lineNum">      12</span>              : </span>
+<span id="L13"><span class="lineNum">      13</span>              : // IWYU pragma: private</span>
+<span id="L14"><span class="lineNum">      14</span>              : #include &quot;./InternalHeaderCheck.h&quot;</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span>              : namespace Eigen {</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              : namespace internal {</span>
+<span id="L19"><span class="lineNum">      19</span>              : </span>
+<span id="L20"><span class="lineNum">      20</span>              : // Forward declarations:</span>
+<span id="L21"><span class="lineNum">      21</span>              : // The following two routines are implemented in the products/TriangularSolver*.h files</span>
+<span id="L22"><span class="lineNum">      22</span>              : template &lt;typename LhsScalar, typename RhsScalar, typename Index, int Side, int Mode, bool Conjugate, int StorageOrder&gt;</span>
+<span id="L23"><span class="lineNum">      23</span>              : struct triangular_solve_vector;</span>
+<span id="L24"><span class="lineNum">      24</span>              : </span>
+<span id="L25"><span class="lineNum">      25</span>              : template &lt;typename Scalar, typename Index, int Side, int Mode, bool Conjugate, int TriStorageOrder,</span>
+<span id="L26"><span class="lineNum">      26</span>              :           int OtherStorageOrder, int OtherInnerStride&gt;</span>
+<span id="L27"><span class="lineNum">      27</span>              : struct triangular_solve_matrix;</span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span>              : // small helper struct extracting some traits on the underlying solver operation</span>
+<span id="L30"><span class="lineNum">      30</span>              : template &lt;typename Lhs, typename Rhs, int Side&gt;</span>
+<span id="L31"><span class="lineNum">      31</span>              : class trsolve_traits {</span>
+<span id="L32"><span class="lineNum">      32</span>              :  private:</span>
+<span id="L33"><span class="lineNum">      33</span>              :   enum { RhsIsVectorAtCompileTime = (Side == OnTheLeft ? Rhs::ColsAtCompileTime : Rhs::RowsAtCompileTime) == 1 };</span>
+<span id="L34"><span class="lineNum">      34</span>              : </span>
+<span id="L35"><span class="lineNum">      35</span>              :  public:</span>
+<span id="L36"><span class="lineNum">      36</span>              :   enum {</span>
+<span id="L37"><span class="lineNum">      37</span>              :     Unrolling = (RhsIsVectorAtCompileTime &amp;&amp; Rhs::SizeAtCompileTime != Dynamic &amp;&amp; Rhs::SizeAtCompileTime &lt;= 8)</span>
+<span id="L38"><span class="lineNum">      38</span>              :                     ? CompleteUnrolling</span>
+<span id="L39"><span class="lineNum">      39</span>              :                     : NoUnrolling,</span>
+<span id="L40"><span class="lineNum">      40</span>              :     RhsVectors = RhsIsVectorAtCompileTime ? 1 : Dynamic</span>
+<span id="L41"><span class="lineNum">      41</span>              :   };</span>
+<span id="L42"><span class="lineNum">      42</span>              : };</span>
+<span id="L43"><span class="lineNum">      43</span>              : </span>
+<span id="L44"><span class="lineNum">      44</span>              : template &lt;typename Lhs, typename Rhs,</span>
+<span id="L45"><span class="lineNum">      45</span>              :           int Side,  // can be OnTheLeft/OnTheRight</span>
+<span id="L46"><span class="lineNum">      46</span>              :           int Mode,  // can be Upper/Lower | UnitDiag</span>
+<span id="L47"><span class="lineNum">      47</span>              :           int Unrolling = trsolve_traits&lt;Lhs, Rhs, Side&gt;::Unrolling,</span>
+<span id="L48"><span class="lineNum">      48</span>              :           int RhsVectors = trsolve_traits&lt;Lhs, Rhs, Side&gt;::RhsVectors&gt;</span>
+<span id="L49"><span class="lineNum">      49</span>              : struct triangular_solver_selector;</span>
+<span id="L50"><span class="lineNum">      50</span>              : </span>
+<span id="L51"><span class="lineNum">      51</span>              : template &lt;typename Lhs, typename Rhs, int Side, int Mode&gt;</span>
+<span id="L52"><span class="lineNum">      52</span>              : struct triangular_solver_selector&lt;Lhs, Rhs, Side, Mode, NoUnrolling, 1&gt; {</span>
+<span id="L53"><span class="lineNum">      53</span>              :   typedef typename Lhs::Scalar LhsScalar;</span>
+<span id="L54"><span class="lineNum">      54</span>              :   typedef typename Rhs::Scalar RhsScalar;</span>
+<span id="L55"><span class="lineNum">      55</span>              :   typedef blas_traits&lt;Lhs&gt; LhsProductTraits;</span>
+<span id="L56"><span class="lineNum">      56</span>              :   typedef typename LhsProductTraits::ExtractType ActualLhsType;</span>
+<span id="L57"><span class="lineNum">      57</span>              :   typedef Map&lt;Matrix&lt;RhsScalar, Dynamic, 1&gt;, Aligned&gt; MappedRhs;</span>
+<span id="L58"><span class="lineNum">      58</span>              :   static EIGEN_DEVICE_FUNC void run(const Lhs&amp; lhs, Rhs&amp; rhs) {</span>
+<span id="L59"><span class="lineNum">      59</span>              :     ActualLhsType actualLhs = LhsProductTraits::extract(lhs);</span>
+<span id="L60"><span class="lineNum">      60</span>              : </span>
+<span id="L61"><span class="lineNum">      61</span>              :     // FIXME find a way to allow an inner stride if packet_traits&lt;Scalar&gt;::size==1</span>
+<span id="L62"><span class="lineNum">      62</span>              : </span>
+<span id="L63"><span class="lineNum">      63</span>              :     bool useRhsDirectly = Rhs::InnerStrideAtCompileTime == 1 || rhs.innerStride() == 1;</span>
+<span id="L64"><span class="lineNum">      64</span>              : </span>
+<span id="L65"><span class="lineNum">      65</span>              :     ei_declare_aligned_stack_constructed_variable(RhsScalar, actualRhs, rhs.size(), (useRhsDirectly ? rhs.data() : 0));</span>
+<span id="L66"><span class="lineNum">      66</span>              : </span>
+<span id="L67"><span class="lineNum">      67</span>              :     if (!useRhsDirectly) MappedRhs(actualRhs, rhs.size()) = rhs;</span>
+<span id="L68"><span class="lineNum">      68</span>              : </span>
+<span id="L69"><span class="lineNum">      69</span>              :     triangular_solve_vector&lt;LhsScalar, RhsScalar, Index, Side, Mode, LhsProductTraits::NeedToConjugate,</span>
+<span id="L70"><span class="lineNum">      70</span>              :                             (int(Lhs::Flags) &amp; RowMajorBit) ? RowMajor : ColMajor&gt;::run(actualLhs.cols(),</span>
+<span id="L71"><span class="lineNum">      71</span>              :                                                                                         actualLhs.data(),</span>
+<span id="L72"><span class="lineNum">      72</span>              :                                                                                         actualLhs.outerStride(),</span>
+<span id="L73"><span class="lineNum">      73</span>              :                                                                                         actualRhs);</span>
+<span id="L74"><span class="lineNum">      74</span>              : </span>
+<span id="L75"><span class="lineNum">      75</span>              :     if (!useRhsDirectly) rhs = MappedRhs(actualRhs, rhs.size());</span>
+<span id="L76"><span class="lineNum">      76</span>              :   }</span>
+<span id="L77"><span class="lineNum">      77</span>              : };</span>
+<span id="L78"><span class="lineNum">      78</span>              : </span>
+<span id="L79"><span class="lineNum">      79</span>              : // the rhs is a matrix</span>
+<span id="L80"><span class="lineNum">      80</span>              : template &lt;typename Lhs, typename Rhs, int Side, int Mode&gt;</span>
+<span id="L81"><span class="lineNum">      81</span>              : struct triangular_solver_selector&lt;Lhs, Rhs, Side, Mode, NoUnrolling, Dynamic&gt; {</span>
+<span id="L82"><span class="lineNum">      82</span>              :   typedef typename Rhs::Scalar Scalar;</span>
+<span id="L83"><span class="lineNum">      83</span>              :   typedef blas_traits&lt;Lhs&gt; LhsProductTraits;</span>
+<span id="L84"><span class="lineNum">      84</span>              :   typedef typename LhsProductTraits::DirectLinearAccessType ActualLhsType;</span>
+<span id="L85"><span class="lineNum">      85</span>              : </span>
+<span id="L86"><span class="lineNum">      86</span> <span class="tlaGNC tlaBgGNC">         272 :   static EIGEN_DEVICE_FUNC void run(const Lhs&amp; lhs, Rhs&amp; rhs) {</span></span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaGNC">         272 :     add_const_on_value_type_t&lt;ActualLhsType&gt; actualLhs = LhsProductTraits::extract(lhs);</span></span>
+<span id="L88"><span class="lineNum">      88</span>              : </span>
+<span id="L89"><span class="lineNum">      89</span> <span class="tlaGNC">         272 :     const Index size = lhs.rows();</span></span>
+<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">         272 :     const Index othersize = Side == OnTheLeft ? rhs.cols() : rhs.rows();</span></span>
+<span id="L91"><span class="lineNum">      91</span>              : </span>
+<span id="L92"><span class="lineNum">      92</span>              :     typedef internal::gemm_blocking_space&lt;(Rhs::Flags &amp; RowMajorBit) ? RowMajor : ColMajor, Scalar, Scalar,</span>
+<span id="L93"><span class="lineNum">      93</span>              :                                           Rhs::MaxRowsAtCompileTime, Rhs::MaxColsAtCompileTime,</span>
+<span id="L94"><span class="lineNum">      94</span>              :                                           Lhs::MaxRowsAtCompileTime, 4&gt;</span>
+<span id="L95"><span class="lineNum">      95</span>              :         BlockingType;</span>
+<span id="L96"><span class="lineNum">      96</span>              : </span>
+<span id="L97"><span class="lineNum">      97</span>              :     // Nothing to solve.</span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">         272 :     if (actualLhs.size() == 0 || rhs.size() == 0) {</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaUNC tlaBgUNC">           0 :       return;</span></span>
+<span id="L100"><span class="lineNum">     100</span>              :     }</span>
+<span id="L101"><span class="lineNum">     101</span>              : </span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC tlaBgGNC">         272 :     BlockingType blocking(rhs.rows(), rhs.cols(), size, 1, false);</span></span>
+<span id="L103"><span class="lineNum">     103</span>              : </span>
+<span id="L104"><span class="lineNum">     104</span>              :     triangular_solve_matrix&lt;Scalar, Index, Side, Mode, LhsProductTraits::NeedToConjugate,</span>
+<span id="L105"><span class="lineNum">     105</span>              :                             (int(Lhs::Flags) &amp; RowMajorBit) ? RowMajor : ColMajor,</span>
+<span id="L106"><span class="lineNum">     106</span>              :                             (Rhs::Flags &amp; RowMajorBit) ? RowMajor : ColMajor,</span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">         544 :                             Rhs::InnerStrideAtCompileTime&gt;::run(size, othersize, &amp;actualLhs.coeffRef(0, 0),</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">         272 :                                                                 actualLhs.outerStride(), &amp;rhs.coeffRef(0, 0),</span></span>
+<span id="L109"><span class="lineNum">     109</span>              :                                                                 rhs.innerStride(), rhs.outerStride(), blocking);</span>
+<span id="L110"><span class="lineNum">     110</span>              :   }</span>
+<span id="L111"><span class="lineNum">     111</span>              : };</span>
+<span id="L112"><span class="lineNum">     112</span>              : </span>
+<span id="L113"><span class="lineNum">     113</span>              : /***************************************************************************</span>
+<span id="L114"><span class="lineNum">     114</span>              :  * meta-unrolling implementation</span>
+<span id="L115"><span class="lineNum">     115</span>              :  ***************************************************************************/</span>
+<span id="L116"><span class="lineNum">     116</span>              : </span>
+<span id="L117"><span class="lineNum">     117</span>              : template &lt;typename Lhs, typename Rhs, int Mode, int LoopIndex, int Size, bool Stop = LoopIndex == Size&gt;</span>
+<span id="L118"><span class="lineNum">     118</span>              : struct triangular_solver_unroller;</span>
+<span id="L119"><span class="lineNum">     119</span>              : </span>
+<span id="L120"><span class="lineNum">     120</span>              : template &lt;typename Lhs, typename Rhs, int Mode, int LoopIndex, int Size&gt;</span>
+<span id="L121"><span class="lineNum">     121</span>              : struct triangular_solver_unroller&lt;Lhs, Rhs, Mode, LoopIndex, Size, false&gt; {</span>
+<span id="L122"><span class="lineNum">     122</span>              :   enum {</span>
+<span id="L123"><span class="lineNum">     123</span>              :     IsLower = ((Mode &amp; Lower) == Lower),</span>
+<span id="L124"><span class="lineNum">     124</span>              :     DiagIndex = IsLower ? LoopIndex : Size - LoopIndex - 1,</span>
+<span id="L125"><span class="lineNum">     125</span>              :     StartIndex = IsLower ? 0 : DiagIndex + 1</span>
+<span id="L126"><span class="lineNum">     126</span>              :   };</span>
+<span id="L127"><span class="lineNum">     127</span>              :   static EIGEN_DEVICE_FUNC void run(const Lhs&amp; lhs, Rhs&amp; rhs) {</span>
+<span id="L128"><span class="lineNum">     128</span>              :     if (LoopIndex &gt; 0)</span>
+<span id="L129"><span class="lineNum">     129</span>              :       rhs.coeffRef(DiagIndex) -= lhs.row(DiagIndex)</span>
+<span id="L130"><span class="lineNum">     130</span>              :                                      .template segment&lt;LoopIndex&gt;(StartIndex)</span>
+<span id="L131"><span class="lineNum">     131</span>              :                                      .transpose()</span>
+<span id="L132"><span class="lineNum">     132</span>              :                                      .cwiseProduct(rhs.template segment&lt;LoopIndex&gt;(StartIndex))</span>
+<span id="L133"><span class="lineNum">     133</span>              :                                      .sum();</span>
+<span id="L134"><span class="lineNum">     134</span>              : </span>
+<span id="L135"><span class="lineNum">     135</span>              :     if (!(Mode &amp; UnitDiag)) rhs.coeffRef(DiagIndex) /= lhs.coeff(DiagIndex, DiagIndex);</span>
+<span id="L136"><span class="lineNum">     136</span>              : </span>
+<span id="L137"><span class="lineNum">     137</span>              :     triangular_solver_unroller&lt;Lhs, Rhs, Mode, LoopIndex + 1, Size&gt;::run(lhs, rhs);</span>
+<span id="L138"><span class="lineNum">     138</span>              :   }</span>
+<span id="L139"><span class="lineNum">     139</span>              : };</span>
+<span id="L140"><span class="lineNum">     140</span>              : </span>
+<span id="L141"><span class="lineNum">     141</span>              : template &lt;typename Lhs, typename Rhs, int Mode, int LoopIndex, int Size&gt;</span>
+<span id="L142"><span class="lineNum">     142</span>              : struct triangular_solver_unroller&lt;Lhs, Rhs, Mode, LoopIndex, Size, true&gt; {</span>
+<span id="L143"><span class="lineNum">     143</span>              :   static EIGEN_DEVICE_FUNC void run(const Lhs&amp;, Rhs&amp;) {}</span>
+<span id="L144"><span class="lineNum">     144</span>              : };</span>
+<span id="L145"><span class="lineNum">     145</span>              : </span>
+<span id="L146"><span class="lineNum">     146</span>              : template &lt;typename Lhs, typename Rhs, int Mode&gt;</span>
+<span id="L147"><span class="lineNum">     147</span>              : struct triangular_solver_selector&lt;Lhs, Rhs, OnTheLeft, Mode, CompleteUnrolling, 1&gt; {</span>
+<span id="L148"><span class="lineNum">     148</span>              :   static EIGEN_DEVICE_FUNC void run(const Lhs&amp; lhs, Rhs&amp; rhs) {</span>
+<span id="L149"><span class="lineNum">     149</span>              :     triangular_solver_unroller&lt;Lhs, Rhs, Mode, 0, Rhs::SizeAtCompileTime&gt;::run(lhs, rhs);</span>
+<span id="L150"><span class="lineNum">     150</span>              :   }</span>
+<span id="L151"><span class="lineNum">     151</span>              : };</span>
+<span id="L152"><span class="lineNum">     152</span>              : </span>
+<span id="L153"><span class="lineNum">     153</span>              : template &lt;typename Lhs, typename Rhs, int Mode&gt;</span>
+<span id="L154"><span class="lineNum">     154</span>              : struct triangular_solver_selector&lt;Lhs, Rhs, OnTheRight, Mode, CompleteUnrolling, 1&gt; {</span>
+<span id="L155"><span class="lineNum">     155</span>              :   static EIGEN_DEVICE_FUNC void run(const Lhs&amp; lhs, Rhs&amp; rhs) {</span>
+<span id="L156"><span class="lineNum">     156</span>              :     Transpose&lt;const Lhs&gt; trLhs(lhs);</span>
+<span id="L157"><span class="lineNum">     157</span>              :     Transpose&lt;Rhs&gt; trRhs(rhs);</span>
+<span id="L158"><span class="lineNum">     158</span>              : </span>
+<span id="L159"><span class="lineNum">     159</span>              :     triangular_solver_unroller&lt;Transpose&lt;const Lhs&gt;, Transpose&lt;Rhs&gt;,</span>
+<span id="L160"><span class="lineNum">     160</span>              :                                ((Mode &amp; Upper) == Upper ? Lower : Upper) | (Mode &amp; UnitDiag), 0,</span>
+<span id="L161"><span class="lineNum">     161</span>              :                                Rhs::SizeAtCompileTime&gt;::run(trLhs, trRhs);</span>
+<span id="L162"><span class="lineNum">     162</span>              :   }</span>
+<span id="L163"><span class="lineNum">     163</span>              : };</span>
+<span id="L164"><span class="lineNum">     164</span>              : </span>
+<span id="L165"><span class="lineNum">     165</span>              : }  // end namespace internal</span>
+<span id="L166"><span class="lineNum">     166</span>              : </span>
+<span id="L167"><span class="lineNum">     167</span>              : /***************************************************************************</span>
+<span id="L168"><span class="lineNum">     168</span>              :  * TriangularView methods</span>
+<span id="L169"><span class="lineNum">     169</span>              :  ***************************************************************************/</span>
+<span id="L170"><span class="lineNum">     170</span>              : </span>
+<span id="L171"><span class="lineNum">     171</span>              : #ifndef EIGEN_PARSED_BY_DOXYGEN</span>
+<span id="L172"><span class="lineNum">     172</span>              : template &lt;typename MatrixType, unsigned int Mode&gt;</span>
+<span id="L173"><span class="lineNum">     173</span>              : template &lt;int Side, typename OtherDerived&gt;</span>
+<span id="L174"><span class="lineNum">     174</span> <span class="tlaGNC">         272 : EIGEN_DEVICE_FUNC void TriangularViewImpl&lt;MatrixType, Mode, Dense&gt;::solveInPlace(</span></span>
+<span id="L175"><span class="lineNum">     175</span>              :     const MatrixBase&lt;OtherDerived&gt;&amp; _other) const {</span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">         272 :   OtherDerived&amp; other = _other.const_cast_derived();</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">         272 :   eigen_assert(derived().cols() == derived().rows() &amp;&amp; ((Side == OnTheLeft &amp;&amp; derived().cols() == other.rows()) ||</span></span>
+<span id="L178"><span class="lineNum">     178</span>              :                                                         (Side == OnTheRight &amp;&amp; derived().cols() == other.cols())));</span>
+<span id="L179"><span class="lineNum">     179</span>              :   eigen_assert((!(int(Mode) &amp; int(ZeroDiag))) &amp;&amp; bool(int(Mode) &amp; (int(Upper) | int(Lower))));</span>
+<span id="L180"><span class="lineNum">     180</span>              :   // If solving for a 0x0 matrix, nothing to do, simply return.</span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">         272 :   if (derived().cols() == 0) return;</span></span>
+<span id="L182"><span class="lineNum">     182</span>              : </span>
+<span id="L183"><span class="lineNum">     183</span>              :   enum {</span>
+<span id="L184"><span class="lineNum">     184</span>              :     copy = (internal::traits&lt;OtherDerived&gt;::Flags &amp; RowMajorBit) &amp;&amp; OtherDerived::IsVectorAtCompileTime &amp;&amp;</span>
+<span id="L185"><span class="lineNum">     185</span>              :            OtherDerived::SizeAtCompileTime != 1</span>
+<span id="L186"><span class="lineNum">     186</span>              :   };</span>
+<span id="L187"><span class="lineNum">     187</span>              :   typedef std::conditional_t&lt;copy, typename internal::plain_matrix_type_column_major&lt;OtherDerived&gt;::type, OtherDerived&amp;&gt;</span>
+<span id="L188"><span class="lineNum">     188</span>              :       OtherCopy;</span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">         272 :   OtherCopy otherCopy(other);</span></span>
+<span id="L190"><span class="lineNum">     190</span>              : </span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaGNC">         272 :   internal::triangular_solver_selector&lt;MatrixType, std::remove_reference_t&lt;OtherCopy&gt;, Side, Mode&gt;::run(</span></span>
+<span id="L192"><span class="lineNum">     192</span> <span class="tlaGNC">         272 :       derived().nestedExpression(), otherCopy);</span></span>
+<span id="L193"><span class="lineNum">     193</span>              : </span>
+<span id="L194"><span class="lineNum">     194</span>              :   if (copy) other = otherCopy;</span>
+<span id="L195"><span class="lineNum">     195</span>              : }</span>
+<span id="L196"><span class="lineNum">     196</span>              : </span>
+<span id="L197"><span class="lineNum">     197</span>              : template &lt;typename Derived, unsigned int Mode&gt;</span>
+<span id="L198"><span class="lineNum">     198</span>              : template &lt;int Side, typename Other&gt;</span>
+<span id="L199"><span class="lineNum">     199</span>              : const internal::triangular_solve_retval&lt;Side, TriangularView&lt;Derived, Mode&gt;, Other&gt;</span>
+<span id="L200"><span class="lineNum">     200</span>              : TriangularViewImpl&lt;Derived, Mode, Dense&gt;::solve(const MatrixBase&lt;Other&gt;&amp; other) const {</span>
+<span id="L201"><span class="lineNum">     201</span>              :   return internal::triangular_solve_retval&lt;Side, TriangularViewType, Other&gt;(derived(), other.derived());</span>
+<span id="L202"><span class="lineNum">     202</span>              : }</span>
+<span id="L203"><span class="lineNum">     203</span>              : #endif</span>
+<span id="L204"><span class="lineNum">     204</span>              : </span>
+<span id="L205"><span class="lineNum">     205</span>              : namespace internal {</span>
+<span id="L206"><span class="lineNum">     206</span>              : </span>
+<span id="L207"><span class="lineNum">     207</span>              : template &lt;int Side, typename TriangularType, typename Rhs&gt;</span>
+<span id="L208"><span class="lineNum">     208</span>              : struct traits&lt;triangular_solve_retval&lt;Side, TriangularType, Rhs&gt; &gt; {</span>
+<span id="L209"><span class="lineNum">     209</span>              :   typedef typename internal::plain_matrix_type_column_major&lt;Rhs&gt;::type ReturnType;</span>
+<span id="L210"><span class="lineNum">     210</span>              : };</span>
+<span id="L211"><span class="lineNum">     211</span>              : </span>
+<span id="L212"><span class="lineNum">     212</span>              : template &lt;int Side, typename TriangularType, typename Rhs&gt;</span>
+<span id="L213"><span class="lineNum">     213</span>              : struct triangular_solve_retval : public ReturnByValue&lt;triangular_solve_retval&lt;Side, TriangularType, Rhs&gt; &gt; {</span>
+<span id="L214"><span class="lineNum">     214</span>              :   typedef remove_all_t&lt;typename Rhs::Nested&gt; RhsNestedCleaned;</span>
+<span id="L215"><span class="lineNum">     215</span>              :   typedef ReturnByValue&lt;triangular_solve_retval&gt; Base;</span>
+<span id="L216"><span class="lineNum">     216</span>              : </span>
+<span id="L217"><span class="lineNum">     217</span>              :   triangular_solve_retval(const TriangularType&amp; tri, const Rhs&amp; rhs) : m_triangularMatrix(tri), m_rhs(rhs) {}</span>
+<span id="L218"><span class="lineNum">     218</span>              : </span>
+<span id="L219"><span class="lineNum">     219</span>              :   inline EIGEN_CONSTEXPR Index rows() const EIGEN_NOEXCEPT { return m_rhs.rows(); }</span>
+<span id="L220"><span class="lineNum">     220</span>              :   inline EIGEN_CONSTEXPR Index cols() const EIGEN_NOEXCEPT { return m_rhs.cols(); }</span>
+<span id="L221"><span class="lineNum">     221</span>              : </span>
+<span id="L222"><span class="lineNum">     222</span>              :   template &lt;typename Dest&gt;</span>
+<span id="L223"><span class="lineNum">     223</span>              :   inline void evalTo(Dest&amp; dst) const {</span>
+<span id="L224"><span class="lineNum">     224</span>              :     if (!is_same_dense(dst, m_rhs)) dst = m_rhs;</span>
+<span id="L225"><span class="lineNum">     225</span>              :     m_triangularMatrix.template solveInPlace&lt;Side&gt;(dst);</span>
+<span id="L226"><span class="lineNum">     226</span>              :   }</span>
+<span id="L227"><span class="lineNum">     227</span>              : </span>
+<span id="L228"><span class="lineNum">     228</span>              :  protected:</span>
+<span id="L229"><span class="lineNum">     229</span>              :   const TriangularType&amp; m_triangularMatrix;</span>
+<span id="L230"><span class="lineNum">     230</span>              :   typename Rhs::Nested m_rhs;</span>
+<span id="L231"><span class="lineNum">     231</span>              : };</span>
+<span id="L232"><span class="lineNum">     232</span>              : </span>
+<span id="L233"><span class="lineNum">     233</span>              : }  // namespace internal</span>
+<span id="L234"><span class="lineNum">     234</span>              : </span>
+<span id="L235"><span class="lineNum">     235</span>              : }  // end namespace Eigen</span>
+<span id="L236"><span class="lineNum">     236</span>              : </span>
+<span id="L237"><span class="lineNum">     237</span>              : #endif  // EIGEN_SOLVETRIANGULAR_H</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

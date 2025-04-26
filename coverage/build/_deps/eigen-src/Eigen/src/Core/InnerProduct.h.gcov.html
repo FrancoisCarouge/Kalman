@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/Kalman - build/_deps/eigen-src/Eigen/src/Core/InnerProduct.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../../index.html" target="_parent">top level</a> - <a href="index.html" target="_parent">build/_deps/eigen-src/Eigen/src/Core</a> - InnerProduct.h<span style="font-size: 80%;"> (source / <a href="InnerProduct.h.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/Kalman</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">51.5&nbsp;%</td>
+            <td class="headerCovTableEntry">68</td>
+            <td class="headerCovTableEntry">35</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-04-26 21:31:14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryLo">11.5&nbsp;%</td>
+            <td class="headerCovTableEntry">244</td>
+            <td class="headerCovTableEntry">28</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+                  <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // This file is part of Eigen, a lightweight C++ template library</span>
+<span id="L2"><span class="lineNum">       2</span>              : // for linear algebra.</span>
+<span id="L3"><span class="lineNum">       3</span>              : //</span>
+<span id="L4"><span class="lineNum">       4</span>              : // Copyright (C) 2024 Charlie Schlosser &lt;cs.schlosser@gmail.com&gt;</span>
+<span id="L5"><span class="lineNum">       5</span>              : //</span>
+<span id="L6"><span class="lineNum">       6</span>              : // This Source Code Form is subject to the terms of the Mozilla</span>
+<span id="L7"><span class="lineNum">       7</span>              : // Public License v. 2.0. If a copy of the MPL was not distributed</span>
+<span id="L8"><span class="lineNum">       8</span>              : // with this file, You can obtain one at http://mozilla.org/MPL/2.0/.</span>
+<span id="L9"><span class="lineNum">       9</span>              : </span>
+<span id="L10"><span class="lineNum">      10</span>              : #ifndef EIGEN_INNER_PRODUCT_EVAL_H</span>
+<span id="L11"><span class="lineNum">      11</span>              : #define EIGEN_INNER_PRODUCT_EVAL_H</span>
+<span id="L12"><span class="lineNum">      12</span>              : </span>
+<span id="L13"><span class="lineNum">      13</span>              : // IWYU pragma: private</span>
+<span id="L14"><span class="lineNum">      14</span>              : #include &quot;./InternalHeaderCheck.h&quot;</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span>              : namespace Eigen {</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              : namespace internal {</span>
+<span id="L19"><span class="lineNum">      19</span>              : </span>
+<span id="L20"><span class="lineNum">      20</span>              : // recursively searches for the largest simd type that does not exceed Size, or the smallest if no such type exists</span>
+<span id="L21"><span class="lineNum">      21</span>              : template &lt;typename Scalar, int Size, typename Packet = typename packet_traits&lt;Scalar&gt;::type,</span>
+<span id="L22"><span class="lineNum">      22</span>              :           bool Stop =</span>
+<span id="L23"><span class="lineNum">      23</span>              :               (unpacket_traits&lt;Packet&gt;::size &lt;= Size) || is_same&lt;Packet, typename unpacket_traits&lt;Packet&gt;::half&gt;::value&gt;</span>
+<span id="L24"><span class="lineNum">      24</span>              : struct find_inner_product_packet_helper;</span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span>              : template &lt;typename Scalar, int Size, typename Packet&gt;</span>
+<span id="L27"><span class="lineNum">      27</span>              : struct find_inner_product_packet_helper&lt;Scalar, Size, Packet, false&gt; {</span>
+<span id="L28"><span class="lineNum">      28</span>              :   using type = typename find_inner_product_packet_helper&lt;Scalar, Size, typename unpacket_traits&lt;Packet&gt;::half&gt;::type;</span>
+<span id="L29"><span class="lineNum">      29</span>              : };</span>
+<span id="L30"><span class="lineNum">      30</span>              : </span>
+<span id="L31"><span class="lineNum">      31</span>              : template &lt;typename Scalar, int Size, typename Packet&gt;</span>
+<span id="L32"><span class="lineNum">      32</span>              : struct find_inner_product_packet_helper&lt;Scalar, Size, Packet, true&gt; {</span>
+<span id="L33"><span class="lineNum">      33</span>              :   using type = Packet;</span>
+<span id="L34"><span class="lineNum">      34</span>              : };</span>
+<span id="L35"><span class="lineNum">      35</span>              : </span>
+<span id="L36"><span class="lineNum">      36</span>              : template &lt;typename Scalar, int Size&gt;</span>
+<span id="L37"><span class="lineNum">      37</span>              : struct find_inner_product_packet : find_inner_product_packet_helper&lt;Scalar, Size&gt; {};</span>
+<span id="L38"><span class="lineNum">      38</span>              : </span>
+<span id="L39"><span class="lineNum">      39</span>              : template &lt;typename Scalar&gt;</span>
+<span id="L40"><span class="lineNum">      40</span>              : struct find_inner_product_packet&lt;Scalar, Dynamic&gt; {</span>
+<span id="L41"><span class="lineNum">      41</span>              :   using type = typename packet_traits&lt;Scalar&gt;::type;</span>
+<span id="L42"><span class="lineNum">      42</span>              : };</span>
+<span id="L43"><span class="lineNum">      43</span>              : </span>
+<span id="L44"><span class="lineNum">      44</span>              : template &lt;typename Lhs, typename Rhs&gt;</span>
+<span id="L45"><span class="lineNum">      45</span>              : struct inner_product_assert {</span>
+<span id="L46"><span class="lineNum">      46</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Lhs)</span>
+<span id="L47"><span class="lineNum">      47</span>              :   EIGEN_STATIC_ASSERT_VECTOR_ONLY(Rhs)</span>
+<span id="L48"><span class="lineNum">      48</span>              :   EIGEN_STATIC_ASSERT_SAME_VECTOR_SIZE(Lhs, Rhs)</span>
+<span id="L49"><span class="lineNum">      49</span>              : #ifndef EIGEN_NO_DEBUG</span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC tlaBgGNC">         324 :   static EIGEN_DEVICE_FUNC void run(const Lhs&amp; lhs, const Rhs&amp; rhs) {</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">         131 :     eigen_assert((lhs.size() == rhs.size()) &amp;&amp; &quot;Inner product: lhs and rhs vectors must have same size&quot;);</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">         324 :   }</span></span>
+<span id="L53"><span class="lineNum">      53</span>              : #else</span>
+<span id="L54"><span class="lineNum">      54</span>              :   static EIGEN_DEVICE_FUNC void run(const Lhs&amp;, const Rhs&amp;) {}</span>
+<span id="L55"><span class="lineNum">      55</span>              : #endif</span>
+<span id="L56"><span class="lineNum">      56</span>              : };</span>
+<span id="L57"><span class="lineNum">      57</span>              : </span>
+<span id="L58"><span class="lineNum">      58</span>              : template &lt;typename Func, typename Lhs, typename Rhs&gt;</span>
+<span id="L59"><span class="lineNum">      59</span>              : struct inner_product_evaluator {</span>
+<span id="L60"><span class="lineNum">      60</span>              :   static constexpr int LhsFlags = evaluator&lt;Lhs&gt;::Flags;</span>
+<span id="L61"><span class="lineNum">      61</span>              :   static constexpr int RhsFlags = evaluator&lt;Rhs&gt;::Flags;</span>
+<span id="L62"><span class="lineNum">      62</span>              :   static constexpr int SizeAtCompileTime = size_prefer_fixed(Lhs::SizeAtCompileTime, Rhs::SizeAtCompileTime);</span>
+<span id="L63"><span class="lineNum">      63</span>              :   static constexpr int MaxSizeAtCompileTime =</span>
+<span id="L64"><span class="lineNum">      64</span>              :       min_size_prefer_fixed(Lhs::MaxSizeAtCompileTime, Rhs::MaxSizeAtCompileTime);</span>
+<span id="L65"><span class="lineNum">      65</span>              :   static constexpr int LhsAlignment = evaluator&lt;Lhs&gt;::Alignment;</span>
+<span id="L66"><span class="lineNum">      66</span>              :   static constexpr int RhsAlignment = evaluator&lt;Rhs&gt;::Alignment;</span>
+<span id="L67"><span class="lineNum">      67</span>              : </span>
+<span id="L68"><span class="lineNum">      68</span>              :   using Scalar = typename Func::result_type;</span>
+<span id="L69"><span class="lineNum">      69</span>              :   using Packet = typename find_inner_product_packet&lt;Scalar, SizeAtCompileTime&gt;::type;</span>
+<span id="L70"><span class="lineNum">      70</span>              : </span>
+<span id="L71"><span class="lineNum">      71</span>              :   static constexpr bool Vectorize =</span>
+<span id="L72"><span class="lineNum">      72</span>              :       bool(LhsFlags &amp; RhsFlags &amp; PacketAccessBit) &amp;&amp; Func::PacketAccess &amp;&amp;</span>
+<span id="L73"><span class="lineNum">      73</span>              :       ((MaxSizeAtCompileTime == Dynamic) || (unpacket_traits&lt;Packet&gt;::size &lt;= MaxSizeAtCompileTime));</span>
+<span id="L74"><span class="lineNum">      74</span>              : </span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">         324 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE explicit inner_product_evaluator(const Lhs&amp; lhs, const Rhs&amp; rhs,</span></span>
+<span id="L76"><span class="lineNum">      76</span>              :                                                                          Func func = Func())</span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">         324 :       : m_func(func), m_lhs(lhs), m_rhs(rhs), m_size(lhs.size()) {</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">         324 :     inner_product_assert&lt;Lhs, Rhs&gt;::run(lhs, rhs);</span></span>
+<span id="L79"><span class="lineNum">      79</span> <span class="tlaGNC">         324 :   }</span></span>
+<span id="L80"><span class="lineNum">      80</span>              : </span>
+<span id="L81"><span class="lineNum">      81</span> <span class="tlaGNC">         324 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Index size() const { return m_size.value(); }</span></span>
+<span id="L82"><span class="lineNum">      82</span>              : </span>
+<span id="L83"><span class="lineNum">      83</span> <span class="tlaUNC tlaBgUNC">           0 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Scalar coeff(Index index) const {</span></span>
+<span id="L84"><span class="lineNum">      84</span> <span class="tlaUNC">           0 :     return m_func.coeff(m_lhs.coeff(index), m_rhs.coeff(index));</span></span>
+<span id="L85"><span class="lineNum">      85</span>              :   }</span>
+<span id="L86"><span class="lineNum">      86</span>              : </span>
+<span id="L87"><span class="lineNum">      87</span> <span class="tlaUNC">           0 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Scalar coeff(const Scalar&amp; value, Index index) const {</span></span>
+<span id="L88"><span class="lineNum">      88</span> <span class="tlaUNC">           0 :     return m_func.coeff(value, m_lhs.coeff(index), m_rhs.coeff(index));</span></span>
+<span id="L89"><span class="lineNum">      89</span>              :   }</span>
+<span id="L90"><span class="lineNum">      90</span>              : </span>
+<span id="L91"><span class="lineNum">      91</span>              :   template &lt;typename PacketType, int LhsMode = LhsAlignment, int RhsMode = RhsAlignment&gt;</span>
+<span id="L92"><span class="lineNum">      92</span> <span class="tlaGNC tlaBgGNC">         324 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE PacketType packet(Index index) const {</span></span>
+<span id="L93"><span class="lineNum">      93</span> <span class="tlaGNC">         324 :     return m_func.packet(m_lhs.template packet&lt;LhsMode, PacketType&gt;(index),</span></span>
+<span id="L94"><span class="lineNum">      94</span> <span class="tlaGNC">         648 :                          m_rhs.template packet&lt;RhsMode, PacketType&gt;(index));</span></span>
+<span id="L95"><span class="lineNum">      95</span>              :   }</span>
+<span id="L96"><span class="lineNum">      96</span>              : </span>
+<span id="L97"><span class="lineNum">      97</span>              :   template &lt;typename PacketType, int LhsMode = LhsAlignment, int RhsMode = RhsAlignment&gt;</span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaUNC tlaBgUNC">           0 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE PacketType packet(const PacketType&amp; value, Index index) const {</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaUNC">           0 :     return m_func.packet(value, m_lhs.template packet&lt;LhsMode, PacketType&gt;(index),</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaUNC">           0 :                          m_rhs.template packet&lt;RhsMode, PacketType&gt;(index));</span></span>
+<span id="L101"><span class="lineNum">     101</span>              :   }</span>
+<span id="L102"><span class="lineNum">     102</span>              : </span>
+<span id="L103"><span class="lineNum">     103</span>              :   const Func m_func;</span>
+<span id="L104"><span class="lineNum">     104</span>              :   const evaluator&lt;Lhs&gt; m_lhs;</span>
+<span id="L105"><span class="lineNum">     105</span>              :   const evaluator&lt;Rhs&gt; m_rhs;</span>
+<span id="L106"><span class="lineNum">     106</span>              :   const variable_if_dynamic&lt;Index, SizeAtCompileTime&gt; m_size;</span>
+<span id="L107"><span class="lineNum">     107</span>              : };</span>
+<span id="L108"><span class="lineNum">     108</span>              : </span>
+<span id="L109"><span class="lineNum">     109</span>              : template &lt;typename Evaluator, bool Vectorize = Evaluator::Vectorize&gt;</span>
+<span id="L110"><span class="lineNum">     110</span>              : struct inner_product_impl;</span>
+<span id="L111"><span class="lineNum">     111</span>              : </span>
+<span id="L112"><span class="lineNum">     112</span>              : // scalar loop</span>
+<span id="L113"><span class="lineNum">     113</span>              : template &lt;typename Evaluator&gt;</span>
+<span id="L114"><span class="lineNum">     114</span>              : struct inner_product_impl&lt;Evaluator, false&gt; {</span>
+<span id="L115"><span class="lineNum">     115</span>              :   using Scalar = typename Evaluator::Scalar;</span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaUNC">           0 :   static EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Scalar run(const Evaluator&amp; eval) {</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaUNC">           0 :     const Index size = eval.size();</span></span>
+<span id="L118"><span class="lineNum">     118</span> <span class="tlaUNC">           0 :     if (size == 0) return Scalar(0);</span></span>
+<span id="L119"><span class="lineNum">     119</span>              : </span>
+<span id="L120"><span class="lineNum">     120</span> <span class="tlaUNC">           0 :     Scalar result = eval.coeff(0);</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaUNC">           0 :     for (Index k = 1; k &lt; size; k++) {</span></span>
+<span id="L122"><span class="lineNum">     122</span> <span class="tlaUNC">           0 :       result = eval.coeff(result, k);</span></span>
+<span id="L123"><span class="lineNum">     123</span>              :     }</span>
+<span id="L124"><span class="lineNum">     124</span>              : </span>
+<span id="L125"><span class="lineNum">     125</span> <span class="tlaUNC">           0 :     return result;</span></span>
+<span id="L126"><span class="lineNum">     126</span>              :   }</span>
+<span id="L127"><span class="lineNum">     127</span>              : };</span>
+<span id="L128"><span class="lineNum">     128</span>              : </span>
+<span id="L129"><span class="lineNum">     129</span>              : // vector loop</span>
+<span id="L130"><span class="lineNum">     130</span>              : template &lt;typename Evaluator&gt;</span>
+<span id="L131"><span class="lineNum">     131</span>              : struct inner_product_impl&lt;Evaluator, true&gt; {</span>
+<span id="L132"><span class="lineNum">     132</span>              :   using UnsignedIndex = std::make_unsigned_t&lt;Index&gt;;</span>
+<span id="L133"><span class="lineNum">     133</span>              :   using Scalar = typename Evaluator::Scalar;</span>
+<span id="L134"><span class="lineNum">     134</span>              :   using Packet = typename Evaluator::Packet;</span>
+<span id="L135"><span class="lineNum">     135</span>              :   static constexpr int PacketSize = unpacket_traits&lt;Packet&gt;::size;</span>
+<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC tlaBgGNC">         324 :   static EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Scalar run(const Evaluator&amp; eval) {</span></span>
+<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">         324 :     const UnsignedIndex size = static_cast&lt;UnsignedIndex&gt;(eval.size());</span></span>
+<span id="L138"><span class="lineNum">     138</span> <span class="tlaGNC">         324 :     if (size &lt; PacketSize) return inner_product_impl&lt;Evaluator, false&gt;::run(eval);</span></span>
+<span id="L139"><span class="lineNum">     139</span>              : </span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">         324 :     const UnsignedIndex packetEnd = numext::round_down(size, PacketSize);</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">         324 :     const UnsignedIndex quadEnd = numext::round_down(size, 4 * PacketSize);</span></span>
+<span id="L142"><span class="lineNum">     142</span> <span class="tlaGNC">         324 :     const UnsignedIndex numPackets = size / PacketSize;</span></span>
+<span id="L143"><span class="lineNum">     143</span> <span class="tlaGNC">         324 :     const UnsignedIndex numRemPackets = (packetEnd - quadEnd) / PacketSize;</span></span>
+<span id="L144"><span class="lineNum">     144</span>              : </span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">         324 :     Packet presult0, presult1, presult2, presult3;</span></span>
+<span id="L146"><span class="lineNum">     146</span>              : </span>
+<span id="L147"><span class="lineNum">     147</span> <span class="tlaGNC">         324 :     presult0 = eval.template packet&lt;Packet&gt;(0 * PacketSize);</span></span>
+<span id="L148"><span class="lineNum">     148</span> <span class="tlaGNC">         324 :     if (numPackets &gt;= 2) presult1 = eval.template packet&lt;Packet&gt;(1 * PacketSize);</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">         324 :     if (numPackets &gt;= 3) presult2 = eval.template packet&lt;Packet&gt;(2 * PacketSize);</span></span>
+<span id="L150"><span class="lineNum">     150</span> <span class="tlaGNC">         324 :     if (numPackets &gt;= 4) {</span></span>
+<span id="L151"><span class="lineNum">     151</span> <span class="tlaUNC tlaBgUNC">           0 :       presult3 = eval.template packet&lt;Packet&gt;(3 * PacketSize);</span></span>
+<span id="L152"><span class="lineNum">     152</span>              : </span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaUNC">           0 :       for (UnsignedIndex k = 4 * PacketSize; k &lt; quadEnd; k += 4 * PacketSize) {</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaUNC">           0 :         presult0 = eval.packet(presult0, k + 0 * PacketSize);</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaUNC">           0 :         presult1 = eval.packet(presult1, k + 1 * PacketSize);</span></span>
+<span id="L156"><span class="lineNum">     156</span> <span class="tlaUNC">           0 :         presult2 = eval.packet(presult2, k + 2 * PacketSize);</span></span>
+<span id="L157"><span class="lineNum">     157</span> <span class="tlaUNC">           0 :         presult3 = eval.packet(presult3, k + 3 * PacketSize);</span></span>
+<span id="L158"><span class="lineNum">     158</span>              :       }</span>
+<span id="L159"><span class="lineNum">     159</span>              : </span>
+<span id="L160"><span class="lineNum">     160</span> <span class="tlaUNC">           0 :       if (numRemPackets &gt;= 1) presult0 = eval.packet(presult0, quadEnd + 0 * PacketSize);</span></span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaUNC">           0 :       if (numRemPackets &gt;= 2) presult1 = eval.packet(presult1, quadEnd + 1 * PacketSize);</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaUNC">           0 :       if (numRemPackets == 3) presult2 = eval.packet(presult2, quadEnd + 2 * PacketSize);</span></span>
+<span id="L163"><span class="lineNum">     163</span>              : </span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaUNC">           0 :       presult2 = padd(presult2, presult3);</span></span>
+<span id="L165"><span class="lineNum">     165</span>              :     }</span>
+<span id="L166"><span class="lineNum">     166</span>              : </span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC tlaBgGNC">         324 :     if (numPackets &gt;= 3) presult1 = padd(presult1, presult2);</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">         324 :     if (numPackets &gt;= 2) presult0 = padd(presult0, presult1);</span></span>
+<span id="L169"><span class="lineNum">     169</span>              : </span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">         324 :     Scalar result = predux(presult0);</span></span>
+<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">         324 :     for (UnsignedIndex k = packetEnd; k &lt; size; k++) {</span></span>
+<span id="L172"><span class="lineNum">     172</span> <span class="tlaUNC tlaBgUNC">           0 :       result = eval.coeff(result, k);</span></span>
+<span id="L173"><span class="lineNum">     173</span>              :     }</span>
+<span id="L174"><span class="lineNum">     174</span>              : </span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC tlaBgGNC">         324 :     return result;</span></span>
+<span id="L176"><span class="lineNum">     176</span>              :   }</span>
+<span id="L177"><span class="lineNum">     177</span>              : };</span>
+<span id="L178"><span class="lineNum">     178</span>              : </span>
+<span id="L179"><span class="lineNum">     179</span>              : template &lt;typename Scalar, bool Conj&gt;</span>
+<span id="L180"><span class="lineNum">     180</span>              : struct conditional_conj;</span>
+<span id="L181"><span class="lineNum">     181</span>              : </span>
+<span id="L182"><span class="lineNum">     182</span>              : template &lt;typename Scalar&gt;</span>
+<span id="L183"><span class="lineNum">     183</span>              : struct conditional_conj&lt;Scalar, true&gt; {</span>
+<span id="L184"><span class="lineNum">     184</span> <span class="tlaUNC tlaBgUNC">           0 :   static EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Scalar coeff(const Scalar&amp; a) { return numext::conj(a); }</span></span>
+<span id="L185"><span class="lineNum">     185</span>              :   template &lt;typename Packet&gt;</span>
+<span id="L186"><span class="lineNum">     186</span>              :   static EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Packet packet(const Packet&amp; a) {</span>
+<span id="L187"><span class="lineNum">     187</span>              :     return pconj(a);</span>
+<span id="L188"><span class="lineNum">     188</span>              :   }</span>
+<span id="L189"><span class="lineNum">     189</span>              : };</span>
+<span id="L190"><span class="lineNum">     190</span>              : </span>
+<span id="L191"><span class="lineNum">     191</span>              : template &lt;typename Scalar&gt;</span>
+<span id="L192"><span class="lineNum">     192</span>              : struct conditional_conj&lt;Scalar, false&gt; {</span>
+<span id="L193"><span class="lineNum">     193</span> <span class="tlaUNC">           0 :   static EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Scalar coeff(const Scalar&amp; a) { return a; }</span></span>
+<span id="L194"><span class="lineNum">     194</span>              :   template &lt;typename Packet&gt;</span>
+<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC tlaBgGNC">         324 :   static EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Packet packet(const Packet&amp; a) {</span></span>
+<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">         324 :     return a;</span></span>
+<span id="L197"><span class="lineNum">     197</span>              :   }</span>
+<span id="L198"><span class="lineNum">     198</span>              : };</span>
+<span id="L199"><span class="lineNum">     199</span>              : </span>
+<span id="L200"><span class="lineNum">     200</span>              : template &lt;typename LhsScalar, typename RhsScalar, bool Conj&gt;</span>
+<span id="L201"><span class="lineNum">     201</span>              : struct scalar_inner_product_op {</span>
+<span id="L202"><span class="lineNum">     202</span>              :   using result_type = typename ScalarBinaryOpTraits&lt;LhsScalar, RhsScalar&gt;::ReturnType;</span>
+<span id="L203"><span class="lineNum">     203</span>              :   using conj_helper = conditional_conj&lt;LhsScalar, Conj&gt;;</span>
+<span id="L204"><span class="lineNum">     204</span>              :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE result_type coeff(const LhsScalar&amp; a, const RhsScalar&amp; b) const {</span>
+<span id="L205"><span class="lineNum">     205</span>              :     return (conj_helper::coeff(a) * b);</span>
+<span id="L206"><span class="lineNum">     206</span>              :   }</span>
+<span id="L207"><span class="lineNum">     207</span>              :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE result_type coeff(const result_type&amp; accum, const LhsScalar&amp; a,</span>
+<span id="L208"><span class="lineNum">     208</span>              :                                                           const RhsScalar&amp; b) const {</span>
+<span id="L209"><span class="lineNum">     209</span>              :     return (conj_helper::coeff(a) * b) + accum;</span>
+<span id="L210"><span class="lineNum">     210</span>              :   }</span>
+<span id="L211"><span class="lineNum">     211</span>              :   static constexpr bool PacketAccess = false;</span>
+<span id="L212"><span class="lineNum">     212</span>              : };</span>
+<span id="L213"><span class="lineNum">     213</span>              : </span>
+<span id="L214"><span class="lineNum">     214</span>              : template &lt;typename Scalar, bool Conj&gt;</span>
+<span id="L215"><span class="lineNum">     215</span>              : struct scalar_inner_product_op&lt;Scalar, Scalar, Conj&gt; {</span>
+<span id="L216"><span class="lineNum">     216</span>              :   using result_type = Scalar;</span>
+<span id="L217"><span class="lineNum">     217</span>              :   using conj_helper = conditional_conj&lt;Scalar, Conj&gt;;</span>
+<span id="L218"><span class="lineNum">     218</span> <span class="tlaUNC tlaBgUNC">           0 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Scalar coeff(const Scalar&amp; a, const Scalar&amp; b) const {</span></span>
+<span id="L219"><span class="lineNum">     219</span> <span class="tlaUNC">           0 :     return pmul(conj_helper::coeff(a), b);</span></span>
+<span id="L220"><span class="lineNum">     220</span>              :   }</span>
+<span id="L221"><span class="lineNum">     221</span> <span class="tlaUNC">           0 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Scalar coeff(const Scalar&amp; accum, const Scalar&amp; a, const Scalar&amp; b) const {</span></span>
+<span id="L222"><span class="lineNum">     222</span> <span class="tlaUNC">           0 :     return pmadd(conj_helper::coeff(a), b, accum);</span></span>
+<span id="L223"><span class="lineNum">     223</span>              :   }</span>
+<span id="L224"><span class="lineNum">     224</span>              :   template &lt;typename Packet&gt;</span>
+<span id="L225"><span class="lineNum">     225</span> <span class="tlaGNC tlaBgGNC">         324 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Packet packet(const Packet&amp; a, const Packet&amp; b) const {</span></span>
+<span id="L226"><span class="lineNum">     226</span> <span class="tlaGNC">         324 :     return pmul(conj_helper::packet(a), b);</span></span>
+<span id="L227"><span class="lineNum">     227</span>              :   }</span>
+<span id="L228"><span class="lineNum">     228</span>              :   template &lt;typename Packet&gt;</span>
+<span id="L229"><span class="lineNum">     229</span> <span class="tlaUNC tlaBgUNC">           0 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE Packet packet(const Packet&amp; accum, const Packet&amp; a, const Packet&amp; b) const {</span></span>
+<span id="L230"><span class="lineNum">     230</span> <span class="tlaUNC">           0 :     return pmadd(conj_helper::packet(a), b, accum);</span></span>
+<span id="L231"><span class="lineNum">     231</span>              :   }</span>
+<span id="L232"><span class="lineNum">     232</span>              :   static constexpr bool PacketAccess = packet_traits&lt;Scalar&gt;::HasMul &amp;&amp; packet_traits&lt;Scalar&gt;::HasAdd;</span>
+<span id="L233"><span class="lineNum">     233</span>              : };</span>
+<span id="L234"><span class="lineNum">     234</span>              : </span>
+<span id="L235"><span class="lineNum">     235</span>              : template &lt;typename Lhs, typename Rhs, bool Conj&gt;</span>
+<span id="L236"><span class="lineNum">     236</span>              : struct default_inner_product_impl {</span>
+<span id="L237"><span class="lineNum">     237</span>              :   using LhsScalar = typename traits&lt;Lhs&gt;::Scalar;</span>
+<span id="L238"><span class="lineNum">     238</span>              :   using RhsScalar = typename traits&lt;Rhs&gt;::Scalar;</span>
+<span id="L239"><span class="lineNum">     239</span>              :   using Op = scalar_inner_product_op&lt;LhsScalar, RhsScalar, Conj&gt;;</span>
+<span id="L240"><span class="lineNum">     240</span>              :   using Evaluator = inner_product_evaluator&lt;Op, Lhs, Rhs&gt;;</span>
+<span id="L241"><span class="lineNum">     241</span>              :   using result_type = typename Evaluator::Scalar;</span>
+<span id="L242"><span class="lineNum">     242</span> <span class="tlaGNC tlaBgGNC">         324 :   static EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE result_type run(const MatrixBase&lt;Lhs&gt;&amp; a, const MatrixBase&lt;Rhs&gt;&amp; b) {</span></span>
+<span id="L243"><span class="lineNum">     243</span> <span class="tlaGNC">         324 :     Evaluator eval(a.derived(), b.derived(), Op());</span></span>
+<span id="L244"><span class="lineNum">     244</span> <span class="tlaGNC">         324 :     return inner_product_impl&lt;Evaluator&gt;::run(eval);</span></span>
+<span id="L245"><span class="lineNum">     245</span>              :   }</span>
+<span id="L246"><span class="lineNum">     246</span>              : };</span>
+<span id="L247"><span class="lineNum">     247</span>              : </span>
+<span id="L248"><span class="lineNum">     248</span>              : template &lt;typename Lhs, typename Rhs&gt;</span>
+<span id="L249"><span class="lineNum">     249</span>              : struct dot_impl : default_inner_product_impl&lt;Lhs, Rhs, true&gt; {};</span>
+<span id="L250"><span class="lineNum">     250</span>              : </span>
+<span id="L251"><span class="lineNum">     251</span>              : }  // namespace internal</span>
+<span id="L252"><span class="lineNum">     252</span>              : }  // namespace Eigen</span>
+<span id="L253"><span class="lineNum">     253</span>              : </span>
+<span id="L254"><span class="lineNum">     254</span>              : #endif  // EIGEN_INNER_PRODUCT_EVAL_H</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

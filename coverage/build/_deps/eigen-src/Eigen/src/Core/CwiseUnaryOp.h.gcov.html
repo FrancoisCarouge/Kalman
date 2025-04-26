@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/Kalman - build/_deps/eigen-src/Eigen/src/Core/CwiseUnaryOp.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../../../../../../index.html" target="_parent">top level</a> - <a href="index.html" target="_parent">build/_deps/eigen-src/Eigen/src/Core</a> - CwiseUnaryOp.h<span style="font-size: 80%;"> (source / <a href="CwiseUnaryOp.h.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/Kalman</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">7</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-04-26 21:31:14</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">20</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+                  <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : // This file is part of Eigen, a lightweight C++ template library</span>
+<span id="L2"><span class="lineNum">       2</span>              : // for linear algebra.</span>
+<span id="L3"><span class="lineNum">       3</span>              : //</span>
+<span id="L4"><span class="lineNum">       4</span>              : // Copyright (C) 2008-2014 Gael Guennebaud &lt;gael.guennebaud@inria.fr&gt;</span>
+<span id="L5"><span class="lineNum">       5</span>              : // Copyright (C) 2006-2008 Benoit Jacob &lt;jacob.benoit.1@gmail.com&gt;</span>
+<span id="L6"><span class="lineNum">       6</span>              : //</span>
+<span id="L7"><span class="lineNum">       7</span>              : // This Source Code Form is subject to the terms of the Mozilla</span>
+<span id="L8"><span class="lineNum">       8</span>              : // Public License v. 2.0. If a copy of the MPL was not distributed</span>
+<span id="L9"><span class="lineNum">       9</span>              : // with this file, You can obtain one at http://mozilla.org/MPL/2.0/.</span>
+<span id="L10"><span class="lineNum">      10</span>              : </span>
+<span id="L11"><span class="lineNum">      11</span>              : #ifndef EIGEN_CWISE_UNARY_OP_H</span>
+<span id="L12"><span class="lineNum">      12</span>              : #define EIGEN_CWISE_UNARY_OP_H</span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span>              : // IWYU pragma: private</span>
+<span id="L15"><span class="lineNum">      15</span>              : #include &quot;./InternalHeaderCheck.h&quot;</span>
+<span id="L16"><span class="lineNum">      16</span>              : </span>
+<span id="L17"><span class="lineNum">      17</span>              : namespace Eigen {</span>
+<span id="L18"><span class="lineNum">      18</span>              : </span>
+<span id="L19"><span class="lineNum">      19</span>              : namespace internal {</span>
+<span id="L20"><span class="lineNum">      20</span>              : template &lt;typename UnaryOp, typename XprType&gt;</span>
+<span id="L21"><span class="lineNum">      21</span>              : struct traits&lt;CwiseUnaryOp&lt;UnaryOp, XprType&gt; &gt; : traits&lt;XprType&gt; {</span>
+<span id="L22"><span class="lineNum">      22</span>              :   typedef typename result_of&lt;UnaryOp(const typename XprType::Scalar&amp;)&gt;::type Scalar;</span>
+<span id="L23"><span class="lineNum">      23</span>              :   typedef typename XprType::Nested XprTypeNested;</span>
+<span id="L24"><span class="lineNum">      24</span>              :   typedef std::remove_reference_t&lt;XprTypeNested&gt; XprTypeNested_;</span>
+<span id="L25"><span class="lineNum">      25</span>              :   enum { Flags = XprTypeNested_::Flags &amp; RowMajorBit };</span>
+<span id="L26"><span class="lineNum">      26</span>              : };</span>
+<span id="L27"><span class="lineNum">      27</span>              : }  // namespace internal</span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span>              : template &lt;typename UnaryOp, typename XprType, typename StorageKind&gt;</span>
+<span id="L30"><span class="lineNum">      30</span>              : class CwiseUnaryOpImpl;</span>
+<span id="L31"><span class="lineNum">      31</span>              : </span>
+<span id="L32"><span class="lineNum">      32</span>              : /** \class CwiseUnaryOp</span>
+<span id="L33"><span class="lineNum">      33</span>              :  * \ingroup Core_Module</span>
+<span id="L34"><span class="lineNum">      34</span>              :  *</span>
+<span id="L35"><span class="lineNum">      35</span>              :  * \brief Generic expression where a coefficient-wise unary operator is applied to an expression</span>
+<span id="L36"><span class="lineNum">      36</span>              :  *</span>
+<span id="L37"><span class="lineNum">      37</span>              :  * \tparam UnaryOp template functor implementing the operator</span>
+<span id="L38"><span class="lineNum">      38</span>              :  * \tparam XprType the type of the expression to which we are applying the unary operator</span>
+<span id="L39"><span class="lineNum">      39</span>              :  *</span>
+<span id="L40"><span class="lineNum">      40</span>              :  * This class represents an expression where a unary operator is applied to an expression.</span>
+<span id="L41"><span class="lineNum">      41</span>              :  * It is the return type of all operations taking exactly 1 input expression, regardless of the</span>
+<span id="L42"><span class="lineNum">      42</span>              :  * presence of other inputs such as scalars. For example, the operator* in the expression 3*matrix</span>
+<span id="L43"><span class="lineNum">      43</span>              :  * is considered unary, because only the right-hand side is an expression, and its</span>
+<span id="L44"><span class="lineNum">      44</span>              :  * return type is a specialization of CwiseUnaryOp.</span>
+<span id="L45"><span class="lineNum">      45</span>              :  *</span>
+<span id="L46"><span class="lineNum">      46</span>              :  * Most of the time, this is the only way that it is used, so you typically don't have to name</span>
+<span id="L47"><span class="lineNum">      47</span>              :  * CwiseUnaryOp types explicitly.</span>
+<span id="L48"><span class="lineNum">      48</span>              :  *</span>
+<span id="L49"><span class="lineNum">      49</span>              :  * \sa MatrixBase::unaryExpr(const CustomUnaryOp &amp;) const, class CwiseBinaryOp, class CwiseNullaryOp</span>
+<span id="L50"><span class="lineNum">      50</span>              :  */</span>
+<span id="L51"><span class="lineNum">      51</span>              : template &lt;typename UnaryOp, typename XprType&gt;</span>
+<span id="L52"><span class="lineNum">      52</span>              : class CwiseUnaryOp : public CwiseUnaryOpImpl&lt;UnaryOp, XprType, typename internal::traits&lt;XprType&gt;::StorageKind&gt;,</span>
+<span id="L53"><span class="lineNum">      53</span>              :                      internal::no_assignment_operator {</span>
+<span id="L54"><span class="lineNum">      54</span>              :  public:</span>
+<span id="L55"><span class="lineNum">      55</span>              :   typedef typename CwiseUnaryOpImpl&lt;UnaryOp, XprType, typename internal::traits&lt;XprType&gt;::StorageKind&gt;::Base Base;</span>
+<span id="L56"><span class="lineNum">      56</span>              :   EIGEN_GENERIC_PUBLIC_INTERFACE(CwiseUnaryOp)</span>
+<span id="L57"><span class="lineNum">      57</span>              :   typedef typename internal::ref_selector&lt;XprType&gt;::type XprTypeNested;</span>
+<span id="L58"><span class="lineNum">      58</span>              :   typedef internal::remove_all_t&lt;XprType&gt; NestedExpression;</span>
+<span id="L59"><span class="lineNum">      59</span>              : </span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC tlaBgGNC">        1616 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE explicit CwiseUnaryOp(const XprType&amp; xpr, const UnaryOp&amp; func = UnaryOp())</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">        1616 :       : m_xpr(xpr), m_functor(func) {}</span></span>
+<span id="L62"><span class="lineNum">      62</span>              : </span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">        5176 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE EIGEN_CONSTEXPR Index rows() const EIGEN_NOEXCEPT { return m_xpr.rows(); }</span></span>
+<span id="L64"><span class="lineNum">      64</span> <span class="tlaGNC">        5176 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE EIGEN_CONSTEXPR Index cols() const EIGEN_NOEXCEPT { return m_xpr.cols(); }</span></span>
+<span id="L65"><span class="lineNum">      65</span>              : </span>
+<span id="L66"><span class="lineNum">      66</span>              :   /** \returns the functor representing the unary operation */</span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">        1616 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const UnaryOp&amp; functor() const { return m_functor; }</span></span>
+<span id="L68"><span class="lineNum">      68</span>              : </span>
+<span id="L69"><span class="lineNum">      69</span>              :   /** \returns the nested expression */</span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">        1616 :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE const internal::remove_all_t&lt;XprTypeNested&gt;&amp; nestedExpression() const {</span></span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC">        1616 :     return m_xpr;</span></span>
+<span id="L72"><span class="lineNum">      72</span>              :   }</span>
+<span id="L73"><span class="lineNum">      73</span>              : </span>
+<span id="L74"><span class="lineNum">      74</span>              :   /** \returns the nested expression */</span>
+<span id="L75"><span class="lineNum">      75</span>              :   EIGEN_DEVICE_FUNC EIGEN_STRONG_INLINE internal::remove_all_t&lt;XprTypeNested&gt;&amp; nestedExpression() { return m_xpr; }</span>
+<span id="L76"><span class="lineNum">      76</span>              : </span>
+<span id="L77"><span class="lineNum">      77</span>              :  protected:</span>
+<span id="L78"><span class="lineNum">      78</span>              :   XprTypeNested m_xpr;</span>
+<span id="L79"><span class="lineNum">      79</span>              :   const UnaryOp m_functor;</span>
+<span id="L80"><span class="lineNum">      80</span>              : };</span>
+<span id="L81"><span class="lineNum">      81</span>              : </span>
+<span id="L82"><span class="lineNum">      82</span>              : // Generic API dispatcher</span>
+<span id="L83"><span class="lineNum">      83</span>              : template &lt;typename UnaryOp, typename XprType, typename StorageKind&gt;</span>
+<span id="L84"><span class="lineNum">      84</span>              : class CwiseUnaryOpImpl : public internal::generic_xpr_base&lt;CwiseUnaryOp&lt;UnaryOp, XprType&gt; &gt;::type {</span>
+<span id="L85"><span class="lineNum">      85</span>              :  public:</span>
+<span id="L86"><span class="lineNum">      86</span>              :   typedef typename internal::generic_xpr_base&lt;CwiseUnaryOp&lt;UnaryOp, XprType&gt; &gt;::type Base;</span>
+<span id="L87"><span class="lineNum">      87</span>              : };</span>
+<span id="L88"><span class="lineNum">      88</span>              : </span>
+<span id="L89"><span class="lineNum">      89</span>              : }  // end namespace Eigen</span>
+<span id="L90"><span class="lineNum">      90</span>              : </span>
+<span id="L91"><span class="lineNum">      91</span>              : #endif  // EIGEN_CWISE_UNARY_OP_H</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
