@@ -53,23 +53,19 @@ jobs:
     - name: 'Coverage: Test'
       run: |
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --directory . --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/build/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/sample/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/test/*' --output-file test.info
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '/usr/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/build/*' --output-file test.info
+# lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/sample/*' --output-file test.info
+# lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/test/*' --output-file test.info
     - name: 'Coverage: Results'
       id: coverage-results
       run: |
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
     - name: 'Coverage: Web Results'
-      run: genhtml --frames --show-details --title "FrancoisCarouge/Kalman" --legend coverage.info -o coverage
+      run: genhtml --branch-coverage --show-details --title "FrancoisCarouge/Kalman" --css-file documentation/doxygen-awesome.css --legend coverage.info -o coverage
     - name: Deploy
       uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./coverage
         destination_dir: ./coverage
-
-# Consider adding:
-# --html-prolog
-# More... and configuration file?
