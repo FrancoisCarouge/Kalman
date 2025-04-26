@@ -43,6 +43,7 @@ var NAVTREE =
       [ "Requesting Features", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
       [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ]
     ] ],
+    [ "Test Code Coverage", "_unit.xhtml", null ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
         [ "Tests & Samples", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests--samples", null ],
@@ -94,10 +95,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.xhtml",
-"indexed_8hpp.xhtml#ad89eef981c285367c92f3f05ebe763e1",
-"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__1x4x3_8cpp_03.xhtml#ad3afcef609ed46ea99186a0993001888",
+"_unit.xhtml",
+"indexed_8hpp.xhtml#ad2615f4227ab85ccb64b2be969b3a887",
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__1x4x3_8cpp_03.xhtml#a8cd4be1224b8ff4966cb69a4f7ca3d5b",
 "structfcarouge_1_1matrix.xhtml#a0aadf69ca0a98d1b54977289924aa7f2"
 ];
 
