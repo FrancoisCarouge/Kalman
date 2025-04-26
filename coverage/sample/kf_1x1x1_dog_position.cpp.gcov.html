@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/Kalman - sample/kf_1x1x1_dog_position.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" target="_parent">top level</a> - <a href="index.html" target="_parent">sample</a> - kf_1x1x1_dog_position.cpp<span style="font-size: 80%;"> (source / <a href="kf_1x1x1_dog_position.cpp.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/Kalman</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">24</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2025-04-26 22:10:21</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /*  __          _      __  __          _   _</span>
+<span id="L2"><span class="lineNum">       2</span>              : | |/ /    /\   | |    |  \/  |   /\   | \ | |</span>
+<span id="L3"><span class="lineNum">       3</span>              : | ' /    /  \  | |    | \  / |  /  \  |  \| |</span>
+<span id="L4"><span class="lineNum">       4</span>              : |  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span>
+<span id="L5"><span class="lineNum">       5</span>              : | . \  / ____ \| |____| |  | |/ ____ \| |\  |</span>
+<span id="L6"><span class="lineNum">       6</span>              : |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|</span>
+<span id="L7"><span class="lineNum">       7</span>              : </span>
+<span id="L8"><span class="lineNum">       8</span>              : Kalman Filter</span>
+<span id="L9"><span class="lineNum">       9</span>              : Version 0.5.0</span>
+<span id="L10"><span class="lineNum">      10</span>              : https://github.com/FrancoisCarouge/Kalman</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              : SPDX-License-Identifier: Unlicense</span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span>              : This is free and unencumbered software released into the public domain.</span>
+<span id="L15"><span class="lineNum">      15</span>              : </span>
+<span id="L16"><span class="lineNum">      16</span>              : Anyone is free to copy, modify, publish, use, compile, sell, or</span>
+<span id="L17"><span class="lineNum">      17</span>              : distribute this software, either in source code form or as a compiled</span>
+<span id="L18"><span class="lineNum">      18</span>              : binary, for any purpose, commercial or non-commercial, and by any</span>
+<span id="L19"><span class="lineNum">      19</span>              : means.</span>
+<span id="L20"><span class="lineNum">      20</span>              : </span>
+<span id="L21"><span class="lineNum">      21</span>              : In jurisdictions that recognize copyright laws, the author or authors</span>
+<span id="L22"><span class="lineNum">      22</span>              : of this software dedicate any and all copyright interest in the</span>
+<span id="L23"><span class="lineNum">      23</span>              : software to the public domain. We make this dedication for the benefit</span>
+<span id="L24"><span class="lineNum">      24</span>              : of the public at large and to the detriment of our heirs and</span>
+<span id="L25"><span class="lineNum">      25</span>              : successors. We intend this dedication to be an overt act of</span>
+<span id="L26"><span class="lineNum">      26</span>              : relinquishment in perpetuity of all present and future rights to this</span>
+<span id="L27"><span class="lineNum">      27</span>              : software under copyright law.</span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span>              : THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span>
+<span id="L30"><span class="lineNum">      30</span>              : EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span>
+<span id="L31"><span class="lineNum">      31</span>              : MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</span>
+<span id="L32"><span class="lineNum">      32</span>              : IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR</span>
+<span id="L33"><span class="lineNum">      33</span>              : OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,</span>
+<span id="L34"><span class="lineNum">      34</span>              : ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span>
+<span id="L35"><span class="lineNum">      35</span>              : OTHER DEALINGS IN THE SOFTWARE.</span>
+<span id="L36"><span class="lineNum">      36</span>              : </span>
+<span id="L37"><span class="lineNum">      37</span>              : For more information, please refer to &lt;https://unlicense.org&gt; */</span>
+<span id="L38"><span class="lineNum">      38</span>              : </span>
+<span id="L39"><span class="lineNum">      39</span>              : #include &quot;fcarouge/kalman.hpp&quot;</span>
+<span id="L40"><span class="lineNum">      40</span>              : </span>
+<span id="L41"><span class="lineNum">      41</span>              : #include &lt;cassert&gt;</span>
+<span id="L42"><span class="lineNum">      42</span>              : #include &lt;cmath&gt;</span>
+<span id="L43"><span class="lineNum">      43</span>              : </span>
+<span id="L44"><span class="lineNum">      44</span>              : namespace fcarouge::sample {</span>
+<span id="L45"><span class="lineNum">      45</span>              : namespace {</span>
+<span id="L46"><span class="lineNum">      46</span>              : //! @brief Estimating the position of a dog.</span>
+<span id="L47"><span class="lineNum">      47</span>              : //!</span>
+<span id="L48"><span class="lineNum">      48</span>              : //! @copyright This example is transcribed from Kalman and Bayesian Filters in</span>
+<span id="L49"><span class="lineNum">      49</span>              : //! Python copyright Roger Labbe.</span>
+<span id="L50"><span class="lineNum">      50</span>              : //!</span>
+<span id="L51"><span class="lineNum">      51</span>              : //! @see</span>
+<span id="L52"><span class="lineNum">      52</span>              : //! https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/04-One-Dimensional-Kalman-Filters.ipynb</span>
+<span id="L53"><span class="lineNum">      53</span>              : //!</span>
+<span id="L54"><span class="lineNum">      54</span>              : //! @details Assume that in our latest hackathon someone created an RFID tracker</span>
+<span id="L55"><span class="lineNum">      55</span>              : //! that provides a reasonably accurate position of the dog. The sensor returns</span>
+<span id="L56"><span class="lineNum">      56</span>              : //! the distance of the dog from the left end of the hallway in meters. So, 23.4</span>
+<span id="L57"><span class="lineNum">      57</span>              : //! would mean the dog is 23.4 meters from the left end of the hallway. The</span>
+<span id="L58"><span class="lineNum">      58</span>              : //! sensor is not perfect. A reading of 23.4 could correspond to the dog being</span>
+<span id="L59"><span class="lineNum">      59</span>              : //! at 23.7, or 23.0. However, it is very unlikely to correspond to a position</span>
+<span id="L60"><span class="lineNum">      60</span>              : //! of 47.6. Testing during the hackathon confirmed this result - the sensor is</span>
+<span id="L61"><span class="lineNum">      61</span>              : //! 'reasonably' accurate, and while it had errors, the errors are small.</span>
+<span id="L62"><span class="lineNum">      62</span>              : //! Furthermore, the errors seemed to be evenly distributed on both sides of the</span>
+<span id="L63"><span class="lineNum">      63</span>              : //! true position; a position of 23 m would equally likely be measured as 22.9</span>
+<span id="L64"><span class="lineNum">      64</span>              : //! or 23.1. Perhaps we can model this with a Gaussian. We predict that the dog</span>
+<span id="L65"><span class="lineNum">      65</span>              : //! is moving. This prediction is not perfect. Sometimes our prediction will</span>
+<span id="L66"><span class="lineNum">      66</span>              : //! overshoot, sometimes it will undershoot. We are more likely to undershoot or</span>
+<span id="L67"><span class="lineNum">      67</span>              : //! overshoot by a little than a lot. Perhaps we can also model this with a</span>
+<span id="L68"><span class="lineNum">      68</span>              : //! Gaussian.</span>
+<span id="L69"><span class="lineNum">      69</span>              : //!</span>
+<span id="L70"><span class="lineNum">      70</span>              : //! @example kf_1x1x1_dog_position.cpp</span>
+<span id="L71"><span class="lineNum">      71</span> <span class="tlaGNC tlaBgGNC">           1 : [[maybe_unused]] auto sample{[] {</span></span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">           1 :   kalman filter{</span></span>
+<span id="L73"><span class="lineNum">      73</span>              :       // This is the dog's initial position expressed as a Gaussian. The state X</span>
+<span id="L74"><span class="lineNum">      74</span>              :       // position is 0 meters.</span>
+<span id="L75"><span class="lineNum">      75</span>              :       state{0.},</span>
+<span id="L76"><span class="lineNum">      76</span>              :       // The measured output position Z.</span>
+<span id="L77"><span class="lineNum">      77</span>              :       output&lt;double&gt;,</span>
+<span id="L78"><span class="lineNum">      78</span>              :       // We are predicting that at each time step the dog moves forward one</span>
+<span id="L79"><span class="lineNum">      79</span>              :       // meter. This is the input U process model - the description of how we</span>
+<span id="L80"><span class="lineNum">      80</span>              :       // think the dog moves. How do I know the velocity? Magic? Consider it a</span>
+<span id="L81"><span class="lineNum">      81</span>              :       // prediction, or perhaps we have a secondary velocity sensor. Please</span>
+<span id="L82"><span class="lineNum">      82</span>              :       // accept this simplification for now.</span>
+<span id="L83"><span class="lineNum">      83</span>              :       input&lt;double&gt;,</span>
+<span id="L84"><span class="lineNum">      84</span>              :       // The variance to 400 m, which is a standard deviation of 20 meters. You</span>
+<span id="L85"><span class="lineNum">      85</span>              :       // can think of this as saying &quot;I believe with 99.7% accuracy the position</span>
+<span id="L86"><span class="lineNum">      86</span>              :       // is 0 plus or minus 60 meters&quot;. This is because with Gaussians ~99.7% of</span>
+<span id="L87"><span class="lineNum">      87</span>              :       // values fall within of the mean. The estimate uncertainty P:</span>
+<span id="L88"><span class="lineNum">      88</span>              :       estimate_uncertainty{20 * 20.},</span>
+<span id="L89"><span class="lineNum">      89</span>              :       // Variance in the dog's movement. The process variance is how much error</span>
+<span id="L90"><span class="lineNum">      90</span>              :       // there is in the process model. Dogs rarely do what we expect, and</span>
+<span id="L91"><span class="lineNum">      91</span>              :       // things like hills or the whiff of a squirrel will change his progress.</span>
+<span id="L92"><span class="lineNum">      92</span>              :       // The process uncertainty Q:</span>
+<span id="L93"><span class="lineNum">      93</span>              :       process_uncertainty{1.},</span>
+<span id="L94"><span class="lineNum">      94</span>              :       // Variance in the sensor. The meaning of sensor variance is how much</span>
+<span id="L95"><span class="lineNum">      95</span>              :       // variance there is in each measurement. The output uncertainty R:</span>
+<span id="L96"><span class="lineNum">      96</span>              :       output_uncertainty{2.}};</span>
+<span id="L97"><span class="lineNum">      97</span>              : </span>
+<span id="L98"><span class="lineNum">      98</span> <span class="tlaGNC">           1 :   filter.predict(1.);</span></span>
+<span id="L99"><span class="lineNum">      99</span> <span class="tlaGNC">           1 :   filter.update(1.354);</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">           1 :   filter.predict(2.352);</span></span>
+<span id="L101"><span class="lineNum">     101</span> <span class="tlaGNC">           1 :   filter.update(1.882);</span></span>
+<span id="L102"><span class="lineNum">     102</span> <span class="tlaGNC">           1 :   filter.predict(3.070);</span></span>
+<span id="L103"><span class="lineNum">     103</span> <span class="tlaGNC">           1 :   filter.update(4.341);</span></span>
+<span id="L104"><span class="lineNum">     104</span> <span class="tlaGNC">           1 :   filter.predict(4.736);</span></span>
+<span id="L105"><span class="lineNum">     105</span> <span class="tlaGNC">           1 :   filter.update(7.156);</span></span>
+<span id="L106"><span class="lineNum">     106</span> <span class="tlaGNC">           1 :   filter.predict(6.960);</span></span>
+<span id="L107"><span class="lineNum">     107</span> <span class="tlaGNC">           1 :   filter.update(6.939);</span></span>
+<span id="L108"><span class="lineNum">     108</span> <span class="tlaGNC">           1 :   filter.predict(7.949);</span></span>
+<span id="L109"><span class="lineNum">     109</span> <span class="tlaGNC">           1 :   filter.update(6.844);</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">           1 :   filter.predict(8.396);</span></span>
+<span id="L111"><span class="lineNum">     111</span> <span class="tlaGNC">           1 :   filter.update(9.847);</span></span>
+<span id="L112"><span class="lineNum">     112</span> <span class="tlaGNC">           1 :   filter.predict(10.122);</span></span>
+<span id="L113"><span class="lineNum">     113</span> <span class="tlaGNC">           1 :   filter.update(12.553);</span></span>
+<span id="L114"><span class="lineNum">     114</span> <span class="tlaGNC">           1 :   filter.predict(12.338);</span></span>
+<span id="L115"><span class="lineNum">     115</span> <span class="tlaGNC">           1 :   filter.update(16.273);</span></span>
+<span id="L116"><span class="lineNum">     116</span> <span class="tlaGNC">           1 :   filter.predict(15.305);</span></span>
+<span id="L117"><span class="lineNum">     117</span> <span class="tlaGNC">           1 :   filter.update(14.8);</span></span>
+<span id="L118"><span class="lineNum">     118</span>              : </span>
+<span id="L119"><span class="lineNum">     119</span> <span class="tlaGNC">           1 :   assert(</span></span>
+<span id="L120"><span class="lineNum">     120</span>              :       std::abs(1 - filter.x() / 15.053) &lt; 0.001 &amp;&amp;</span>
+<span id="L121"><span class="lineNum">     121</span>              :       &quot;The state estimates expected at 0.1% accuracy.&quot;</span>
+<span id="L122"><span class="lineNum">     122</span>              :       &quot;Here we can see that the variance converges to 2.1623 in 9 steps. This &quot;</span>
+<span id="L123"><span class="lineNum">     123</span>              :       &quot;means that we have become very confident in our position estimate. It &quot;</span>
+<span id="L124"><span class="lineNum">     124</span>              :       &quot;is equal to meters. Contrast this to the sensor's meters.&quot;);</span>
+<span id="L125"><span class="lineNum">     125</span>              : </span>
+<span id="L126"><span class="lineNum">     126</span> <span class="tlaGNC">           1 :   return 0;</span></span>
+<span id="L127"><span class="lineNum">     127</span>              : }()};</span>
+<span id="L128"><span class="lineNum">     128</span>              : } // namespace</span>
+<span id="L129"><span class="lineNum">     129</span>              : } // namespace fcarouge::sample</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
