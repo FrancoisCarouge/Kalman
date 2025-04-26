@@ -64,3 +64,4 @@ jobs:
       with:
         message: ${{ steps.coverage-results.outputs.text }}
         preformatted: true
+        refresh-message-position: true
