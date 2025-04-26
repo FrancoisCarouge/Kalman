@@ -60,7 +60,7 @@ jobs:
       id: coverage-results
       run: |
         echo 'text<<EOF' >> $GITHUB_OUTPUT
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info | tail -n 4 | (echo -n "```" && cat) >> $GITHUB_OUTPUT
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info | tail -n 4 >> $GITHUB_OUTPUT
         echo 'EOF' >> $GITHUB_OUTPUT
     - name: 'Pull Request Comment'
       uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2.8.2
