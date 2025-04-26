@@ -5,8 +5,6 @@ on:
   schedule:
   - cron: '0 0 * * */5'
 
-permissions: read-all
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -16,8 +14,9 @@ jobs:
     name: 'Scorecard Analysis'
     runs-on: ubuntu-24.04
     permissions:
-      security-events: write
+      contents: read
       id-token: write
+      security-events: write
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@c6295a65d1254861815972266d5933fd6e532bdf # v2.11.1

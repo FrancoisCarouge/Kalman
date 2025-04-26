@@ -14,9 +14,6 @@ on:
 #   schedule:
 #   - cron: '0 0 * * */5'
 
-permissions:
-  contents: read
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -24,8 +21,7 @@ concurrency:
 jobs:
   build:
     permissions:
-      checks: write
-      contents: read
+      contents: write # for peaceiris/actions-gh-pages to push pages branch
     runs-on: ubuntu-24.04
     steps:
     - name: Harden Runner
@@ -65,13 +61,14 @@ jobs:
       id: coverage-results
       run: |
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
-    - name: 'Coverage: '
+    - name: 'Coverage: Web Results'
       run: genhtml coverage.info -o coverage
-    # - name: Deploy
-    #   uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./documentation/html
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./coverage
+        destination_dir: ./coverage
 
 # Consider adding:
 # --frames
