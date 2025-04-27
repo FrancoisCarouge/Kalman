@@ -53,10 +53,10 @@ jobs:
     - name: 'Coverage: Test'
       run: |
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --directory . --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '/usr/*' --output-file test.info
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/build/*' --output-file test.info
-# lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/sample/*' --output-file test.info
-# lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/test/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/sample/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/test/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '/usr/*' --output-file test.info
     - name: 'Coverage: Results'
       id: coverage-results
       run: |
