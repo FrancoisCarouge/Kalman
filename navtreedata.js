@@ -43,7 +43,6 @@ var NAVTREE =
       [ "Requesting Features", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
       [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ]
     ] ],
-    [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
         [ "Tests & Samples", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests--samples", null ],
