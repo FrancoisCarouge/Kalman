@@ -365,7 +365,9 @@ Thanks everyone!
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8933/badge)](https://www.bestpractices.dev/projects/8933)
 <br>
 <br>
-[![Deploy Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml)
+[![Deploy Unit Test Code Coverage](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml)
+<br>
+[![Deploy Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/index.xhtml)
 <br>
 <br>
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
