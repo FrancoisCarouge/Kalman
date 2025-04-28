@@ -6,14 +6,15 @@ on:
   schedule:
   - cron: '0 0 * * */5'
 
+permissions:
+  contents: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
-    permissions:
-      contents: write # for peaceiris/actions-gh-pages to push pages branch
     runs-on: ubuntu-24.04
     steps:
     - name: Harden Runner

@@ -8,16 +8,17 @@ on:
   schedule:
   - cron: '0 0 * * */5'
 
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
-    permissions:
-      checks: write
-      contents: read
-      pull-requests: write
     runs-on: ubuntu-24.04
     steps:
     - name: Harden Runner
