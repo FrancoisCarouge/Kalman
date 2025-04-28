@@ -8,6 +8,9 @@ on:
   schedule:
   - cron: '0 0 * * */5'
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -24,8 +27,6 @@ jobs:
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Ninja', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
-    permissions:
-      contents: read
     steps:
     - name: Harden Runner
       uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0

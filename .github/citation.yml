@@ -5,6 +5,9 @@ on:
     paths:
       - CITATION.cff
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -13,8 +16,6 @@ jobs:
   validate:
     name: Validate Citation
     runs-on: ubuntu-24.04
-    permissions:
-      contents: read
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
