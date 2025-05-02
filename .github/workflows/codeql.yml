@@ -8,11 +8,6 @@ on:
   schedule:
   - cron: '0 0 * * */5'
 
-permissions:
-  actions: read
-  contents: read
-  security-events: write
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -21,6 +16,10 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-24.04' }}
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
     strategy:
       fail-fast: false
