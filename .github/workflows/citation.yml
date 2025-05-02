@@ -2,8 +2,11 @@ name: 'Citation'
 
 on:
   push:
-    paths:
-      - CITATION.cff
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+  - cron: '0 0 * * */5'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
