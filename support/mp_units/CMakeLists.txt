@@ -59,5 +59,5 @@ add_library(kalman_unit_mp_units INTERFACE)
 target_sources(
   kalman_unit_mp_units INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES
                                  "fcarouge/unit.hpp")
-target_link_libraries(kalman_unit_mp_units INTERFACE kalman_options
+target_link_libraries(kalman_unit_mp_units INTERFACE kalman_support_options
                                                      mp-units::mp-units)

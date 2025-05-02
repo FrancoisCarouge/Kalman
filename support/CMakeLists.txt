@@ -45,11 +45,11 @@ add_subdirectory("naive")
 add_subdirectory("naixed")
 add_subdirectory("quantity")
 
-add_library(kalman_options INTERFACE)
+add_library(kalman_support_options INTERFACE)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   target_compile_options(
-    kalman_options
+    kalman_support_options
     INTERFACE "-D_FORTIFY_SOURCE=3"
               "-D_GLIBCXX_ASSERTIONS"
               "-fcf-protection=full"
@@ -60,6 +60,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-fstrict-aliasing"
               "-ftrivial-auto-var-init=pattern"
               "-pedantic"
+              "-UNDEBUG"
               "-Wall"
               "-Wcast-align"
               "-Wdouble-promotion"
@@ -76,11 +77,11 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
               "-Wundef"
               "-Wunused-local-typedefs"
               "-Wwrite-strings")
-  target_link_options(kalman_options INTERFACE "LINKER:-pie")
-  target_link_libraries(kalman_options INTERFACE "stdc++")
+  target_link_options(kalman_support_options INTERFACE "LINKER:-pie")
+  target_link_libraries(kalman_support_options INTERFACE "stdc++")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_compile_options(
-    kalman_options
+    kalman_support_options
     INTERFACE "-D_FORTIFY_SOURCE=3"
               "-D_GLIBCXX_ASSERTIONS"
               "-fcf-protection=full"
@@ -92,6 +93,7 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
               "-fstrict-aliasing"
               "-ftrivial-auto-var-init=pattern"
               "-pedantic"
+              "-UNDEBUG"
               "-Wall"
               "-Wcast-align"
               "-Wdouble-promotion"
@@ -108,8 +110,9 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
               "-Wundef"
               "-Wunused-local-typedefs"
               "-Wwrite-strings")
-  target_link_options(kalman_options INTERFACE "LINKER:-pie"
+  target_link_options(kalman_support_options INTERFACE "LINKER:-pie"
                       "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(kalman_options INTERFACE "/EHsc" "/utf-8" "/W4")
+  target_compile_options(kalman_support_options INTERFACE "/EHsc" "/utf-8"
+                                                          "/UNDEBUG" "/W4")
 endif()

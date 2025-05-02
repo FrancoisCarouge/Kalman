@@ -54,7 +54,7 @@ function(sample SAMPLE_NAME)
     add_executable(kalman_sample_${SAMPLE_NAME}_driver "${SAMPLE_NAME}.cpp")
     target_link_libraries(
       kalman_sample_${SAMPLE_NAME}_driver
-      PRIVATE kalman kalman_main kalman_options kalman_unit_mp_units)
+      PRIVATE kalman kalman_main kalman_support_options kalman_unit_mp_units)
     separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(NAME kalman_sample_${SAMPLE_NAME}
              COMMAND ${SAMPLE_COMMAND}
@@ -71,7 +71,8 @@ function(sample SAMPLE_NAME)
                      "${SAMPLE_NAME}.cpp")
       target_link_libraries(
         kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
-        PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+        PRIVATE kalman kalman_main kalman_linalg_${BACKEND}
+                kalman_support_options)
       separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_sample_${BACKEND}_${SAMPLE_NAME}
@@ -93,8 +94,8 @@ function(test TEST_NAME)
   if(NOT TEST_BACKENDS)
     add_executable(kalman_test_${TEST_NAME}_driver "${TEST_NAME}.cpp")
     target_link_libraries(
-      kalman_test_${TEST_NAME}_driver PRIVATE kalman kalman_main kalman_options
-                                              kalman_unit_mp_units)
+      kalman_test_${TEST_NAME}_driver
+      PRIVATE kalman kalman_main kalman_support_options kalman_unit_mp_units)
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(NAME kalman_test_${TEST_NAME}
              COMMAND ${TEST_COMMAND}
@@ -111,7 +112,8 @@ function(test TEST_NAME)
                      "${TEST_NAME}.cpp")
       target_link_libraries(
         kalman_test_${BACKEND}_${TEST_NAME}_driver
-        PRIVATE kalman kalman_main kalman_linalg_${BACKEND} kalman_options)
+        PRIVATE kalman kalman_main kalman_linalg_${BACKEND}
+                kalman_support_options)
       separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_test_${BACKEND}_${TEST_NAME}
