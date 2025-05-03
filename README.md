@@ -145,7 +145,7 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES kalman)
 FetchContent_MakeAvailable(kalman)
 
-target_link_libraries(your_target PRIVATE kalman::kalman)
+target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)
 ```
 
 [For more, see installation instructions](https://github.com/FrancoisCarouge/Kalman/tree/master/INSTALL.md).
