@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.5.0
+Version 0.5.1
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -43,7 +43,7 @@ project(
   DESCRIPTION "Kalman Filter"
   HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
   LANGUAGES "CXX"
-  VERSION "0.5.0")
+  VERSION "0.5.1")
 
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 23)
