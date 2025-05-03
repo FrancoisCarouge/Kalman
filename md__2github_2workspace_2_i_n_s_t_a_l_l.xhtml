@@ -111,7 +111,7 @@ $(function(){initNavTree('md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',''); ini
 <div class="line">sudo cmake --install &quot;build&quot;</div>
 </div><!-- fragment --><p>The standard shared CMake configuration file provides the library target to use in your own target:</p>
 <div class="fragment"><div class="line">find_package(kalman)</div>
-<div class="line">target_link_libraries(your_target PRIVATE kalman::kalman)</div>
+<div class="line">target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)</div>
 </div><!-- fragment --><p>In your sources, include the library header and use the filter. See <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample">the samples</a> for more.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"> </div>
