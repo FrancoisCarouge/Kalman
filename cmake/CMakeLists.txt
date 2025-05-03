@@ -37,18 +37,19 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 configure_package_config_file(
-  "kalman-config.cmake.in" "kalman-config.cmake"
-  INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake"
+  "fcarouge-kalman-config.cmake.in" "fcarouge-kalman-config.cmake"
+  INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-kalman/cmake"
   NO_SET_AND_CHECK_MACRO NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
 write_basic_package_version_file(
-  "kalman-config-version.cmake" COMPATIBILITY SameMajorVersion ARCH_INDEPENDENT)
+  "fcarouge-kalman-config-version.cmake" COMPATIBILITY SameMajorVersion
+                                                       ARCH_INDEPENDENT)
 
 install(
-  EXPORT "kalman-target"
-  NAMESPACE "kalman::"
-  DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
+  EXPORT "fcarouge-kalman-target"
+  NAMESPACE "fcarouge-kalman::"
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-kalman/cmake")
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kalman-config.cmake"
-              "${CMAKE_CURRENT_BINARY_DIR}/kalman-config-version.cmake"
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/kalman/cmake")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-kalman-config.cmake"
+              "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-kalman-config-version.cmake"
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-kalman/cmake")

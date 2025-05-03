@@ -13,7 +13,7 @@ The standard shared CMake configuration file provides the library target to use 
 
 ```cmake
 find_package(kalman)
-target_link_libraries(your_target PRIVATE kalman::kalman)
+target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)
 ```
 
 In your sources, include the library header and use the filter. See [the samples](https://github.com/FrancoisCarouge/Kalman/tree/master/sample) for more.

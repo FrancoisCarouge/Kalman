@@ -37,7 +37,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 add_library(kalman INTERFACE)
-target_link_libraries(kalman INTERFACE kalman_internal)
 target_sources(
   kalman
   INTERFACE FILE_SET
@@ -46,19 +45,31 @@ target_sources(
             "HEADERS"
             FILES
             "fcarouge/format.hpp"
+            "fcarouge/internal/factory.hpp"
+            "fcarouge/internal/function.hpp"
+            "fcarouge/internal/kalman.tpp"
+            "fcarouge/internal/type.hpp"
+            "fcarouge/internal/utility.hpp"
+            "fcarouge/internal/x_z_p_q_r_h_f.hpp"
+            "fcarouge/internal/x_z_p_q_r_hh_us_ps.hpp"
+            "fcarouge/internal/x_z_p_q_r.hpp"
+            "fcarouge/internal/x_z_p_qq_rr_f.hpp"
+            "fcarouge/internal/x_z_p_r_f.hpp"
+            "fcarouge/internal/x_z_p_r.hpp"
+            "fcarouge/internal/x_z_u_p_q_r_f_g_ps.hpp"
+            "fcarouge/internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
+            "fcarouge/internal/x_z_u_p_q_r.hpp"
             "fcarouge/kalman.hpp"
             "fcarouge/printer.hpp"
             "fcarouge/utility.hpp")
 install(
   TARGETS kalman
-  EXPORT "kalman-target"
+  EXPORT "fcarouge-kalman-target"
   FILE_SET "kalman_headers")
 
 # Conditionally provide the namespace alias target which may be an imported
 # target from a package, or an aliased target if built as part of the same
 # buildsystem.
-if(NOT TARGET kalman::kalman)
-  add_library(kalman::kalman ALIAS kalman)
+if(NOT TARGET fcarouge-kalman::kalman)
+  add_library(fcarouge-kalman::kalman ALIAS kalman)
 endif()
-
-add_subdirectory(fcarouge)
