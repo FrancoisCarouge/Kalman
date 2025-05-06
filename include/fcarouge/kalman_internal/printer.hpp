@@ -49,6 +49,10 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 namespace decorator {
 //! @brief Decorates a filter with operation printing.
+//!
+//! @todo Explain, review the inheritance.
+//! @todo Review, change the namespace in the context of multiple projects
+//! sharing the top-level namespace.
 template <typename Filter> class printer : public Filter {
 public:
   using Filter::p;

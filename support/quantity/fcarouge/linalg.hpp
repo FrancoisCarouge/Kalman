@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 //! implementations.
 
 #include "fcarouge/eigen.hpp"
-#include "fcarouge/indexed.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 #include "fcarouge/unit.hpp"
 
 namespace fcarouge {
@@ -53,7 +53,7 @@ namespace fcarouge {
 //! @{
 
 template <auto Reference, auto OriginPoint, typename Representation>
-struct indexed::element_traits<
+struct element_traits<
     Representation,
     mp_units::quantity_point<Reference, OriginPoint, Representation>> {
   [[nodiscard]] static inline constexpr Representation to_underlying(
@@ -72,8 +72,8 @@ struct indexed::element_traits<
 };
 
 template <auto Reference, typename Representation>
-struct indexed::element_traits<Representation,
-                               mp_units::quantity<Reference, Representation>> {
+struct element_traits<Representation,
+                      mp_units::quantity<Reference, Representation>> {
   [[nodiscard]] static inline constexpr Representation
   to_underlying(const mp_units::quantity<Reference, Representation> &value) {
     return value.numerical_value_in(value.unit);
@@ -89,8 +89,9 @@ struct indexed::element_traits<Representation,
 
 //! @brief Quantity column vector with mp-units and Eigen implementations.
 template <typename Representation, typename... Types>
-using column_vector = indexed::column_vector<
-    eigen::column_vector<Representation, sizeof...(Types)>, Types...>;
+using column_vector =
+    typed_column_vector<eigen::column_vector<Representation, sizeof...(Types)>,
+                        Types...>;
 
 namespace kalman_internal {
 //! @brief Multiplies specialization type for uncertainty type deduction.

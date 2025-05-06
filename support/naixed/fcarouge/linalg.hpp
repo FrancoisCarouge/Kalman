@@ -42,9 +42,9 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Scalar type indexed-based linear algebra with naive implementation.
 
-#include "fcarouge/indexed.hpp"
 #include "fcarouge/kalman_internal/utility.hpp"
 #include "fcarouge/naive.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cstddef>
 
@@ -53,9 +53,10 @@ namespace fcarouge {
 //! @name Types
 //! @{
 
+// NOT NEEDED?
 //! @brief Scalar type indexed-based matrix with naive implementations.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix = indexed::matrix<naive::matrix<Type, Row, Column>,
+using matrix = typed_matrix<naive::matrix<Type, Row, Column>,
                                kalman_internal::tuple_n_type<Type, Row>,
                                kalman_internal::tuple_n_type<Type, Column>>;
 
