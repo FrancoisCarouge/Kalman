@@ -9,7 +9,7 @@ var searchData=
   ['security_2emd_6',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]],
   ['selected_20tradeoffs_7',['Selected Tradeoffs',['../index.xhtml#selected-tradeoffs',1,'']]],
   ['sell_8',['sell',['../_l_i_c_e_n_s_e_8txt.xhtml#a1511c066117bdf4e4503bbd2d0684b98',1,'LICENSE.txt']]],
-  ['size_9',['size',['../namespacefcarouge_1_1kalman__internal.xhtml#a6124372e90d64265057a98b5fa4efde1',1,'fcarouge::kalman_internal::size'],['../namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903',1,'fcarouge::size']]],
+  ['size_9',['size',['../namespacefcarouge_1_1kalman__internal.xhtml#a185d15024c6842a0f6faad97ce898221',1,'fcarouge::kalman_internal']]],
   ['software_10',['software',['../_l_i_c_e_n_s_e_8txt.xhtml#a2d3d4ad21b42c0ca06fd47db4f0d44da',1,'LICENSE.txt']]],
   ['sponsors_11',['Sponsors',['../index.xhtml#sponsors',1,'']]],
   ['standards_12',['Our Standards',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards',1,'']]],

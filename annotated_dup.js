@@ -13,23 +13,9 @@ var annotated_dup =
       [ "naive", "namespacefcarouge_1_1naive.xhtml", [
         [ "matrix", "structfcarouge_1_1naive_1_1matrix.xhtml", "structfcarouge_1_1naive_1_1matrix" ]
       ] ],
-      [ "divides", "structfcarouge_1_1divides.xhtml", "structfcarouge_1_1divides" ],
-      [ "evaluates", "structfcarouge_1_1evaluates.xhtml", "structfcarouge_1_1evaluates" ],
-      [ "evaluates< IndexedMatrix< Matrix, RowIndexes, ColumnIndexes > >", "structfcarouge_1_1evaluates_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml", "structfcarouge_1_1evaluates_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4" ],
-      [ "evaluates< naive::matrix< Type, Row, Column > >", "structfcarouge_1_1evaluates_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1evaluates_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
-      [ "evaluates< Type >", "structfcarouge_1_1evaluates_3_01_type_01_4.xhtml", "structfcarouge_1_1evaluates_3_01_type_01_4" ],
       [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
       [ "matrix", "structfcarouge_1_1matrix.xhtml", "structfcarouge_1_1matrix" ],
-      [ "minus", "structfcarouge_1_1minus.xhtml", "structfcarouge_1_1minus" ],
-      [ "multiplies", "structfcarouge_1_1multiplies.xhtml", "structfcarouge_1_1multiplies" ],
-      [ "multiplies< int, mp_units::quantity_point< Reference > >", "structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4.xhtml", "structfcarouge_1_1multiplies_3_01int_00_01mp__units_1_1quantity__point_3_01_reference_01_4_01_4" ],
-      [ "multiplies< mp_units::quantity_point< Reference >, int >", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4.xhtml", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference_01_4_00_01int_01_4" ],
-      [ "multiplies< mp_units::quantity_point< Reference1 >, mp_units::quantity_point< Reference2 > >", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference1_01_4_00_01mp__unitc3778cb8b7e6a51fa048f5b3eef0b348.xhtml", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference1_01_4_00_01mp__unitc3778cb8b7e6a51fa048f5b3eef0b348" ],
-      [ "printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
-      [ "transposes", "structfcarouge_1_1transposes.xhtml", "structfcarouge_1_1transposes" ],
-      [ "transposes< IndexedMatrix< Matrix, RowIndexes, ColumnIndexes > >", "structfcarouge_1_1transposes_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml", "structfcarouge_1_1transposes_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4" ],
-      [ "transposes< naive::matrix< Type, Row, Column > >", "structfcarouge_1_1transposes_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml", "structfcarouge_1_1transposes_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4" ],
-      [ "transposes< Type >", "structfcarouge_1_1transposes_3_01_type_01_4.xhtml", "structfcarouge_1_1transposes_3_01_type_01_4" ]
+      [ "printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ]
     ] ],
     [ "std", null, [
       [ "formatter< fcarouge::eigen::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4" ],

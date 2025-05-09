@@ -110,13 +110,14 @@ $(function(){initNavTree('conceptfcarouge_1_1indexed_1_1same__size.xhtml',''); i
 <p><code>#include &lt;<a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Pack1, <span class="keyword">typename</span> Pack2&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1indexed_1_1same__size.xhtml">fcarouge::indexed::same_size</a> =  <a class="code hl_variable" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size&lt;Pack1&gt;</a> == <a class="code hl_variable" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">size&lt;Pack2&gt;</a></div>
-<div class="ttc" id="aconceptfcarouge_1_1indexed_1_1same__size_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1indexed_1_1same__size.xhtml">fcarouge::indexed::same_size</a></div><div class="ttdoc">The packs have the same count of types.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00111">indexed.hpp:111</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_ac4cffefdda8c01a267ce2700c6acb903"><div class="ttname"><a href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">fcarouge::size</a></div><div class="ttdeci">constexpr std::size_t size</div><div class="ttdoc">Size of tuple-like types.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00497">utility.hpp:497</a></div></div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1indexed_1_1same__size.xhtml">fcarouge::indexed::same_size</a> = </div>
+<div class="line">    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a185d15024c6842a0f6faad97ce898221">kalman_internal::size&lt;Pack1&gt;</a> == <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a185d15024c6842a0f6faad97ce898221">kalman_internal::size&lt;Pack2&gt;</a></div>
+<div class="ttc" id="aconceptfcarouge_1_1indexed_1_1same__size_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1indexed_1_1same__size.xhtml">fcarouge::indexed::same_size</a></div><div class="ttdoc">The packs have the same count of types.</div><div class="ttdef"><b>Definition</b> <a href="indexed_8hpp_source.xhtml#l00112">indexed.hpp:112</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a185d15024c6842a0f6faad97ce898221"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a185d15024c6842a0f6faad97ce898221">fcarouge::kalman_internal::size</a></div><div class="ttdeci">constexpr std::size_t size</div><div class="ttdoc">Size of tuple-like types.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00425">utility.hpp:425</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The packs have the same count of types. </p>
 
-<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00111">111</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="indexed_8hpp_source.xhtml#l00112">112</a> of file <a class="el" href="indexed_8hpp_source.xhtml">indexed.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

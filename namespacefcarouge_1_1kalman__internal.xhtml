@@ -149,7 +149,22 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>conditional_update_types&lt; Filter &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>divides</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear algebra divides expression type specialization point. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>estimate_uncertainty</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>evaluates</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear algebra evaluates override expression lazy evaluation specialization point. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>evaluates&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the evaluation type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>evaluates&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the evaluation type. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>evaluates&lt; Type &gt;</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the evaluation type. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>filter_deducer</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,6 +181,20 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>input_control</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>input_t</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>minus</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type minus, subtraction expression type specialization point. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>multiplies</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type multiplies expression type specialization point. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>multiplies&lt; int, mp_units::quantity_point&lt; Reference &gt; &gt;</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies specialization type for uncertainty type deduction. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>multiplies&lt; mp_units::quantity_point&lt; Reference &gt;, int &gt;</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies specialization type for uncertainty type deduction. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>multiplies&lt; mp_units::quantity_point&lt; Reference1 &gt;, mp_units::quantity_point&lt; Reference2 &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>not_implemented</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,6 +219,17 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>state_transition</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transition</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transposes</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear algebra transposes specialization point. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transposes&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the transposes. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transposes&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of the transposes. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transposes&lt; Type &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>tupler</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,17 +268,6 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a6eb535a104d766973001e6cd7b1f758b" id="r_a6eb535a104d766973001e6cd7b1f758b"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
 <tr class="memitem:a6eb535a104d766973001e6cd7b1f758b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6eb535a104d766973001e6cd7b1f758b">function_traits_t</a></td></tr>
 <tr class="separator:a6eb535a104d766973001e6cd7b1f758b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07fc27e05c31227e1a2cbb18f40437ee" id="r_a07fc27e05c31227e1a2cbb18f40437ee"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07fc27e05c31227e1a2cbb18f40437ee">empty_tuple</a> = std::tuple&lt;&gt;</td></tr>
-<tr class="separator:a07fc27e05c31227e1a2cbb18f40437ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1a9ffab51e79feaa4cc54fbad7bff1e" id="r_aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
-<tr class="memitem:aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa1a9ffab51e79feaa4cc54fbad7bff1e">repack</a> = repacker&lt;Pack&gt;::type</td></tr>
-<tr class="separator:aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66f34e6d5c7f8322c4d5f63051e20139" id="r_a66f34e6d5c7f8322c4d5f63051e20139"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:a66f34e6d5c7f8322c4d5f63051e20139"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a66f34e6d5c7f8322c4d5f63051e20139">first</a> = std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</td></tr>
-<tr class="separator:a66f34e6d5c7f8322c4d5f63051e20139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6050c2c2ac7054eaffa8e5c58dab7bd4" id="r_a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
-<tr class="memitem:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6050c2c2ac7054eaffa8e5c58dab7bd4">tuple_n_type</a> = typename tupler&lt;Type, Size&gt;::type</td></tr>
-<tr class="separator:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -296,8 +325,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a053f2aaec0f20812632149fae25162fd" id="r_a053f2aaec0f20812632149fae25162fd"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
 <tr class="memitem:a053f2aaec0f20812632149fae25162fd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a053f2aaec0f20812632149fae25162fd">observation</a> (Element) -&gt; observation&lt; Element &gt;</td></tr>
 <tr class="separator:a053f2aaec0f20812632149fae25162fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
 <tr class="memitem:a6baba1af637abe5f76f3b5184d0ff3c6" id="r_a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </td></tr>
 <tr class="memitem:a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6baba1af637abe5f76f3b5184d0ff3c6">for_constexpr</a> (Function &amp;&amp;function)</td></tr>
+<tr class="memdesc:a6baba1af637abe5f76f3b5184d0ff3c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time for loop.  <br /></td></tr>
 <tr class="separator:a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -317,17 +348,108 @@ Variables</h2></td></tr>
 <tr class="memitem:a4ed98641f1ed8202ab40e3e13884203a" id="r_a4ed98641f1ed8202ab40e3e13884203a"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:a4ed98641f1ed8202ab40e3e13884203a"><td class="memTemplItemLeft" align="right" valign="top">prediction_types_t&lt; Types... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4ed98641f1ed8202ab40e3e13884203a">prediction_types</a> {}</td></tr>
 <tr class="separator:a4ed98641f1ed8202ab40e3e13884203a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6124372e90d64265057a98b5fa4efde1" id="r_a6124372e90d64265057a98b5fa4efde1"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
-<tr class="memitem:a6124372e90d64265057a98b5fa4efde1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6124372e90d64265057a98b5fa4efde1">size</a> {repacker&lt;Pack&gt;::size}</td></tr>
-<tr class="separator:a6124372e90d64265057a98b5fa4efde1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
+<tr class="memitem:a0f6af3a28e58f1b5e727aa85543951a0" id="r_a0f6af3a28e58f1b5e727aa85543951a0"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:a0f6af3a28e58f1b5e727aa85543951a0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0f6af3a28e58f1b5e727aa85543951a0">quotient</a></td></tr>
+<tr class="memdesc:a0f6af3a28e58f1b5e727aa85543951a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divider helper type.  <br /></td></tr>
+<tr class="separator:a0f6af3a28e58f1b5e727aa85543951a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa2c30dc7bf1f7626c078eaed358625" id="r_a1fa2c30dc7bf1f7626c078eaed358625"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a1fa2c30dc7bf1f7626c078eaed358625"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1fa2c30dc7bf1f7626c078eaed358625">evaluate</a> = std::invoke_result_t&lt;evaluates&lt;Type&gt;&gt;</td></tr>
+<tr class="memdesc:a1fa2c30dc7bf1f7626c078eaed358625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluater helper type.  <br /></td></tr>
+<tr class="separator:a1fa2c30dc7bf1f7626c078eaed358625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c947c78364703fa3847944dd073a837" id="r_a0c947c78364703fa3847944dd073a837"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a0c947c78364703fa3847944dd073a837"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0c947c78364703fa3847944dd073a837">transpose</a> = std::invoke_result_t&lt;transposes&lt;Type&gt;, const Type &amp;&gt;</td></tr>
+<tr class="memdesc:a0c947c78364703fa3847944dd073a837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transposer helper type.  <br /></td></tr>
+<tr class="separator:a0c947c78364703fa3847944dd073a837"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66f34e6d5c7f8322c4d5f63051e20139" id="r_a66f34e6d5c7f8322c4d5f63051e20139"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a66f34e6d5c7f8322c4d5f63051e20139"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a66f34e6d5c7f8322c4d5f63051e20139">first</a> = std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</td></tr>
+<tr class="memdesc:a66f34e6d5c7f8322c4d5f63051e20139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first type of the type template parameter pack.  <br /></td></tr>
+<tr class="separator:a66f34e6d5c7f8322c4d5f63051e20139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6050c2c2ac7054eaffa8e5c58dab7bd4" id="r_a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
+<tr class="memitem:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6050c2c2ac7054eaffa8e5c58dab7bd4">tuple_n_type</a> = typename tupler&lt;Type, Size&gt;::type</td></tr>
+<tr class="memdesc:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alias for making a tuple of the same type.  <br /></td></tr>
+<tr class="separator:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4991c6dc9486cc2d13f83ba121053169" id="r_a4991c6dc9486cc2d13f83ba121053169"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:a4991c6dc9486cc2d13f83ba121053169"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4991c6dc9486cc2d13f83ba121053169">product</a></td></tr>
+<tr class="memdesc:a4991c6dc9486cc2d13f83ba121053169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the product.  <br /></td></tr>
+<tr class="separator:a4991c6dc9486cc2d13f83ba121053169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf401bd223c24f1406587dd5fd2dc2cf" id="r_aaf401bd223c24f1406587dd5fd2dc2cf"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:aaf401bd223c24f1406587dd5fd2dc2cf"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aaf401bd223c24f1406587dd5fd2dc2cf">difference</a></td></tr>
+<tr class="memdesc:aaf401bd223c24f1406587dd5fd2dc2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the minus, subtraction.  <br /></td></tr>
+<tr class="separator:aaf401bd223c24f1406587dd5fd2dc2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a734eaffd024f86157a790692f947357d" id="r_a734eaffd024f86157a790692f947357d"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:a734eaffd024f86157a790692f947357d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a734eaffd024f86157a790692f947357d">ᴀʙᵀ</a> = <a class="el" href="#a1fa2c30dc7bf1f7626c078eaed358625">evaluate</a>&lt;<a class="el" href="#a4991c6dc9486cc2d13f83ba121053169">product</a>&lt;Lhs, <a class="el" href="#a1fa2c30dc7bf1f7626c078eaed358625">evaluate</a>&lt;<a class="el" href="#a0c947c78364703fa3847944dd073a837">transpose</a>&lt;Rhs&gt;&gt;&gt;&gt;</td></tr>
+<tr class="memdesc:a734eaffd024f86157a790692f947357d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The evaluated type of the ABᵀ expression.  <br /></td></tr>
+<tr class="separator:a734eaffd024f86157a790692f947357d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb17489172dd8b3802d97fdd17f9d91b" id="r_acb17489172dd8b3802d97fdd17f9d91b"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:acb17489172dd8b3802d97fdd17f9d91b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#acb17489172dd8b3802d97fdd17f9d91b">t</a> (const Type &amp;value)</td></tr>
+<tr class="memdesc:acb17489172dd8b3802d97fdd17f9d91b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose helper function.  <br /></td></tr>
+<tr class="separator:acb17489172dd8b3802d97fdd17f9d91b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Named Values</h2></td></tr>
+<tr class="memitem:aa1a9ffab51e79feaa4cc54fbad7bff1e" id="r_aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
+<tr class="memitem:aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa1a9ffab51e79feaa4cc54fbad7bff1e">repack</a> = repacker&lt;Pack&gt;::type</td></tr>
+<tr class="separator:aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a185d15024c6842a0f6faad97ce898221" id="r_a185d15024c6842a0f6faad97ce898221"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
+<tr class="memitem:a185d15024c6842a0f6faad97ce898221"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a185d15024c6842a0f6faad97ce898221">size</a> {repacker&lt;Pack&gt;::size}</td></tr>
+<tr class="memdesc:a185d15024c6842a0f6faad97ce898221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of tuple-like types.  <br /></td></tr>
+<tr class="separator:a185d15024c6842a0f6faad97ce898221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad9be752b238d15bfc4ea67b30660cc7" id="r_aad9be752b238d15bfc4ea67b30660cc7"><td class="memTemplParams" colspan="2">template&lt;auto... Values&gt; </td></tr>
 <tr class="memitem:aad9be752b238d15bfc4ea67b30660cc7"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aad9be752b238d15bfc4ea67b30660cc7">first_v</a> {first_value&lt;Values...&gt;::value}</td></tr>
+<tr class="memdesc:aad9be752b238d15bfc4ea67b30660cc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first value of the non-type template parameter pack.  <br /></td></tr>
 <tr class="separator:aad9be752b238d15bfc4ea67b30660cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23cbb93293154cb6105cfd41f2b12981" id="r_a23cbb93293154cb6105cfd41f2b12981"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
+<tr class="memitem:a23cbb93293154cb6105cfd41f2b12981"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a23cbb93293154cb6105cfd41f2b12981">one</a></td></tr>
+<tr class="memdesc:a23cbb93293154cb6105cfd41f2b12981"><td class="mdescLeft">&#160;</td><td class="mdescRight">The one matrix.  <br /></td></tr>
+<tr class="separator:a23cbb93293154cb6105cfd41f2b12981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14ae57622afd6d94821c036808416946" id="r_a14ae57622afd6d94821c036808416946"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:a14ae57622afd6d94821c036808416946"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a14ae57622afd6d94821c036808416946">one&lt; Arithmetic &gt;</a> {1}</td></tr>
+<tr class="memdesc:a14ae57622afd6d94821c036808416946"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton one matrix specialization.  <br /></td></tr>
+<tr class="separator:a14ae57622afd6d94821c036808416946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae07f10e473ecf773b1a30ae5abebd4d2" id="r_ae07f10e473ecf773b1a30ae5abebd4d2"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
+requires requires { Type::identity(); }</td></tr>
+<tr class="memitem:ae07f10e473ecf773b1a30ae5abebd4d2"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae07f10e473ecf773b1a30ae5abebd4d2">one&lt; Type &gt;</a> {Type::Identity()}</td></tr>
+<tr class="separator:ae07f10e473ecf773b1a30ae5abebd4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fac2d4e13a574cdc956a2d940374e62" id="r_a4fac2d4e13a574cdc956a2d940374e62"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
+<tr class="memitem:a4fac2d4e13a574cdc956a2d940374e62"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4fac2d4e13a574cdc956a2d940374e62">zero</a></td></tr>
+<tr class="memdesc:a4fac2d4e13a574cdc956a2d940374e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <br /></td></tr>
+<tr class="separator:a4fac2d4e13a574cdc956a2d940374e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a179ed9419a40e13a92eaa0f3d980d088" id="r_a179ed9419a40e13a92eaa0f3d980d088"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:a179ed9419a40e13a92eaa0f3d980d088"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a179ed9419a40e13a92eaa0f3d980d088">zero&lt; Arithmetic &gt;</a> {0}</td></tr>
+<tr class="memdesc:a179ed9419a40e13a92eaa0f3d980d088"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton zero matrix specialization.  <br /></td></tr>
+<tr class="separator:a179ed9419a40e13a92eaa0f3d980d088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b0970be43a070dde9d1b773c58cb58a" id="r_a2b0970be43a070dde9d1b773c58cb58a"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
+requires requires { Type::zero(); }</td></tr>
+<tr class="memitem:a2b0970be43a070dde9d1b773c58cb58a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2b0970be43a070dde9d1b773c58cb58a">zero&lt; Type &gt;</a> {Type::Zero()}</td></tr>
+<tr class="separator:a2b0970be43a070dde9d1b773c58cb58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Internal implementation details. </p>
 <p>Solely intended for this library usage. Do not rely on these details in your projects. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a734eaffd024f86157a790692f947357d" name="a734eaffd024f86157a790692f947357d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a734eaffd024f86157a790692f947357d">&#9670;&#160;</a></span>ᴀʙᵀ</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Lhs , typename Rhs &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a734eaffd024f86157a790692f947357d">fcarouge::kalman_internal::ᴀʙᵀ</a> = <a class="el" href="#a1fa2c30dc7bf1f7626c078eaed358625">evaluate</a>&lt;<a class="el" href="#a4991c6dc9486cc2d13f83ba121053169">product</a>&lt;Lhs, <a class="el" href="#a1fa2c30dc7bf1f7626c078eaed358625">evaluate</a>&lt;<a class="el" href="#a0c947c78364703fa3847944dd073a837">transpose</a>&lt;Rhs&gt;&gt;&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The evaluated type of the ABᵀ expression. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a6">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00298">298</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a083c7633e41b94b1c0cf980cd4a51d74" name="a083c7633e41b94b1c0cf980cd4a51d74"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a083c7633e41b94b1c0cf980cd4a51d74">&#9670;&#160;</a></span>deduce_filter</h2>
 
@@ -342,23 +464,51 @@ template&lt;typename... Arguments&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00358">358</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00359">359</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a07fc27e05c31227e1a2cbb18f40437ee" name="a07fc27e05c31227e1a2cbb18f40437ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07fc27e05c31227e1a2cbb18f40437ee">&#9670;&#160;</a></span>empty_tuple</h2>
+<a id="aaf401bd223c24f1406587dd5fd2dc2cf" name="aaf401bd223c24f1406587dd5fd2dc2cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf401bd223c24f1406587dd5fd2dc2cf">&#9670;&#160;</a></span>difference</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename Lhs , typename Rhs &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a07fc27e05c31227e1a2cbb18f40437ee">fcarouge::kalman_internal::empty_tuple</a> = std::tuple&lt;&gt;</td>
+          <td class="memname">using <a class="el" href="#aaf401bd223c24f1406587dd5fd2dc2cf">fcarouge::kalman_internal::difference</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    std::invoke_result_t&lt;minus&lt;Lhs, Rhs&gt;, <span class="keyword">const</span> Lhs &amp;, <span class="keyword">const</span> Rhs &amp;&gt;</div>
+</div><!-- fragment -->
+<p>Helper type to deduce the result type of the minus, subtraction. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00293">293</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1fa2c30dc7bf1f7626c078eaed358625" name="a1fa2c30dc7bf1f7626c078eaed358625"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa2c30dc7bf1f7626c078eaed358625">&#9670;&#160;</a></span>evaluate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a1fa2c30dc7bf1f7626c078eaed358625">fcarouge::kalman_internal::evaluate</a> = std::invoke_result_t&lt;evaluates&lt;Type&gt;&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00252">252</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p>Evaluater helper type. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a7">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00223">223</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -376,7 +526,10 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00257">257</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p>Unpack the first type of the type template parameter pack. </p>
+<p>Shorthand for <code>std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00255">255</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -400,6 +553,54 @@ template&lt;typename Callable &gt; </div>
 
 </div>
 </div>
+<a id="a4991c6dc9486cc2d13f83ba121053169" name="a4991c6dc9486cc2d13f83ba121053169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4991c6dc9486cc2d13f83ba121053169">&#9670;&#160;</a></span>product</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Lhs , typename Rhs &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a4991c6dc9486cc2d13f83ba121053169">fcarouge::kalman_internal::product</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    std::invoke_result_t&lt;multiplies&lt;Lhs, Rhs&gt;, <span class="keyword">const</span> Lhs &amp;, <span class="keyword">const</span> Rhs &amp;&gt;</div>
+</div><!-- fragment -->
+<p>Helper type to deduce the result type of the product. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a2">kf_1x1x0_building_height_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00282">282</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0f6af3a28e58f1b5e727aa85543951a0" name="a0f6af3a28e58f1b5e727aa85543951a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f6af3a28e58f1b5e727aa85543951a0">&#9670;&#160;</a></span>quotient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Lhs , typename Rhs &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a0f6af3a28e58f1b5e727aa85543951a0">fcarouge::kalman_internal::quotient</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    std::invoke_result_t&lt;divides&lt;Lhs, Rhs&gt;, <span class="keyword">const</span> Lhs &amp;, <span class="keyword">const</span> Rhs &amp;&gt;</div>
+</div><!-- fragment -->
+<p>Divider helper type. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a8">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00213">213</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aa1a9ffab51e79feaa4cc54fbad7bff1e" name="aa1a9ffab51e79feaa4cc54fbad7bff1e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1a9ffab51e79feaa4cc54fbad7bff1e">&#9670;&#160;</a></span>repack</h2>
 
@@ -414,7 +615,27 @@ template&lt;typename Pack &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00254">254</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00419">419</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0c947c78364703fa3847944dd073a837" name="a0c947c78364703fa3847944dd073a837"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c947c78364703fa3847944dd073a837">&#9670;&#160;</a></span>transpose</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a0c947c78364703fa3847944dd073a837">fcarouge::kalman_internal::transpose</a> = std::invoke_result_t&lt;transposes&lt;Type&gt;, const Type &amp;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transposer helper type. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00242">242</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -432,7 +653,9 @@ template&lt;typename Type , std::size_t Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00288">288</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p>An alias for making a tuple of the same type. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00272">272</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -500,18 +723,21 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00261">261</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  261</span>                                                         {</div>
-<div class="line"><span class="lineno">  262</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
-<div class="line"><span class="lineno">  263</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;());</div>
-<div class="line"><span class="lineno">  264</span>    kalman_internal::for_constexpr&lt;Begin + Increment, End, Increment&gt;(</div>
-<div class="line"><span class="lineno">  265</span>        std::forward&lt;Function&gt;(function));</div>
-<div class="line"><span class="lineno">  266</span>  }</div>
-<div class="line"><span class="lineno">  267</span>}</div>
-</div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00261">for_constexpr()</a>, and <a class="el" href="#aae3a67a49bba50976bb2b701fcc42a1e">function()</a>.</p>
+<p>Compile-time for loop. </p>
+<p>Help compilers with non-type template parameters on members. </p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00483">fcarouge::for_constexpr()</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00261">for_constexpr()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00395">395</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  395</span>                                                         {</div>
+<div class="line"><span class="lineno">  396</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
+<div class="line"><span class="lineno">  397</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;());</div>
+<div class="line"><span class="lineno">  398</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(</div>
+<div class="line"><span class="lineno">  399</span>        std::forward&lt;Function&gt;(function));</div>
+<div class="line"><span class="lineno">  400</span>  }</div>
+<div class="line"><span class="lineno">  401</span>}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00395">for_constexpr()</a>, and <a class="el" href="#aae3a67a49bba50976bb2b701fcc42a1e">function()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00395">for_constexpr()</a>, <a class="el" href="format_8hpp_source.xhtml#l00066">std::formatter&lt; Filter, Char &gt;::format()</a>, and <a class="el" href="indexed_8hpp_source.xhtml#l00258">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -524,7 +750,7 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1kalman__internal_a6baba1af637abe5f76f3b5184d0ff3c6_icgraph.svg" width="598" height="307"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1kalman__internal_a6baba1af637abe5f76f3b5184d0ff3c6_icgraph.svg" width="368" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -546,13 +772,13 @@ template&lt;typename Callable &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00261">for_constexpr()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00395">for_constexpr()</a>.</p>
 <div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1kalman__internal_aae3a67a49bba50976bb2b701fcc42a1e_icgraph.svg" width="100%" height="530"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1kalman__internal_aae3a67a49bba50976bb2b701fcc42a1e_icgraph.svg" width="586" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -823,6 +1049,33 @@ template&lt;typename Element &gt; </div>
 
 </div>
 </div>
+<a id="acb17489172dd8b3802d97fdd17f9d91b" name="acb17489172dd8b3802d97fdd17f9d91b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb17489172dd8b3802d97fdd17f9d91b">&#9670;&#160;</a></span>t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::kalman_internal::t </td>
+          <td>(</td>
+          <td class="paramtype">const Type &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transpose helper function. </p>
+<p>Enable readable linear algebra notation. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00247">247</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  247</span>                                                   {</div>
+<div class="line"><span class="lineno">  248</span>  <span class="keywordflow">return</span> transposes&lt;Type&gt;{}(value);</div>
+<div class="line"><span class="lineno">  249</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a22b52e1829f5b9cee3e159cf7ec7e00a" name="a22b52e1829f5b9cee3e159cf7ec7e00a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a22b52e1829f5b9cee3e159cf7ec7e00a">&#9670;&#160;</a></span>transition()</h2>
 
@@ -865,8 +1118,8 @@ template&lt;typename Filter &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00355">355</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  355</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00356">356</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  356</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -892,8 +1145,10 @@ template&lt;auto... Values&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00272">272</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  272</span>{first_value&lt;Values...&gt;::value};</div>
+<p>Unpack the first value of the non-type template parameter pack. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00433">433</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  433</span>{first_value&lt;Values...&gt;::value};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -921,6 +1176,98 @@ template&lt;typename Type &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00138">138</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  138</span>{};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a23cbb93293154cb6105cfd41f2b12981" name="a23cbb93293154cb6105cfd41f2b12981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23cbb93293154cb6105cfd41f2b12981">&#9670;&#160;</a></span>one</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type  = double&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Type fcarouge::kalman_internal::one</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{not_implemented&lt;Type&gt;{</div>
+<div class="line">    <span class="stringliteral">&quot;Implement the linear algebra one-diagonal matrix for this type.&quot;</span>}}</div>
+</div><!-- fragment -->
+<p>The one matrix. </p>
+<p>User-defined matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This matrix is also known as the identity matrix for square matrices of non-quantity scalar types. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a5">kf_6x2x0_vehicle_location_unit.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00454">454</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  454</span>                         {not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  455</span>    <span class="stringliteral">&quot;Implement the linear algebra one-diagonal matrix for this type.&quot;</span>}};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a14ae57622afd6d94821c036808416946" name="a14ae57622afd6d94821c036808416946"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14ae57622afd6d94821c036808416946">&#9670;&#160;</a></span>one&lt; Arithmetic &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;arithmetic Arithmetic&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Arithmetic <a class="el" href="#a23cbb93293154cb6105cfd41f2b12981">fcarouge::kalman_internal::one</a>&lt; Arithmetic &gt; {1}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The singleton one matrix specialization. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00458">458</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  458</span>{1};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae07f10e473ecf773b1a30ae5abebd4d2" name="ae07f10e473ecf773b1a30ae5abebd4d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae07f10e473ecf773b1a30ae5abebd4d2">&#9670;&#160;</a></span>one&lt; Type &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type &gt; <br />
+requires requires { Type::identity(); }</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="#a23cbb93293154cb6105cfd41f2b12981">fcarouge::kalman_internal::one</a>&lt; Type &gt; {Type::Identity()}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00462">462</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  462</span>{Type::Identity()};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -978,8 +1325,8 @@ template&lt;typename... Types&gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a6124372e90d64265057a98b5fa4efde1" name="a6124372e90d64265057a98b5fa4efde1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6124372e90d64265057a98b5fa4efde1">&#9670;&#160;</a></span>size</h2>
+<a id="a185d15024c6842a0f6faad97ce898221" name="a185d15024c6842a0f6faad97ce898221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a185d15024c6842a0f6faad97ce898221">&#9670;&#160;</a></span>size</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -990,7 +1337,7 @@ template&lt;typename Pack &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto fcarouge::kalman_internal::size {repacker&lt;Pack&gt;::size}</td>
+          <td class="memname">std::size_t fcarouge::kalman_internal::size {repacker&lt;Pack&gt;::size}</td>
         </tr>
       </table>
   </td>
@@ -1000,9 +1347,14 @@ template&lt;typename Pack &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00269">269</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  269</span>{repacker&lt;Pack&gt;::size};</div>
+<p>Size of tuple-like types. </p>
+<p>Convenient short form. In place of <code>std::tuple_size_v</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00425">425</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  425</span>{repacker&lt;Pack&gt;::size};</div>
 </div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00066">std::formatter&lt; Filter, Char &gt;::format()</a>.</p>
+
 </div>
 </div>
 <a id="a7589b17e9e7dfb26beb8df5fba5f9442" name="a7589b17e9e7dfb26beb8df5fba5f9442"></a>
@@ -1029,6 +1381,98 @@ template&lt;typename... Types&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00233">233</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  233</span>{};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4fac2d4e13a574cdc956a2d940374e62" name="a4fac2d4e13a574cdc956a2d940374e62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fac2d4e13a574cdc956a2d940374e62">&#9670;&#160;</a></span>zero</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type  = double&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Type fcarouge::kalman_internal::zero</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{kalman_internal::not_implemented&lt;Type&gt;{</div>
+<div class="line">    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}}</div>
+</div><!-- fragment -->
+<p>The zero matrix. </p>
+<p>User-defined. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml#a9">kf_6x2x0_vehicle_location_unit.cpp</a>, and <a class="el" href="kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml#a3">kf_8x4x0_deep_sort_bounding_box.cpp</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00472">472</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  472</span>                          {kalman_internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  473</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a179ed9419a40e13a92eaa0f3d980d088" name="a179ed9419a40e13a92eaa0f3d980d088"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a179ed9419a40e13a92eaa0f3d980d088">&#9670;&#160;</a></span>zero&lt; Arithmetic &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;arithmetic Arithmetic&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Arithmetic <a class="el" href="#a4fac2d4e13a574cdc956a2d940374e62">fcarouge::kalman_internal::zero</a>&lt; Arithmetic &gt; {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The singleton zero matrix specialization. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00477">477</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  477</span>{0};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2b0970be43a070dde9d1b773c58cb58a" name="a2b0970be43a070dde9d1b773c58cb58a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b0970be43a070dde9d1b773c58cb58a">&#9670;&#160;</a></span>zero&lt; Type &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type &gt; <br />
+requires requires { Type::zero(); }</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="#a4fac2d4e13a574cdc956a2d940374e62">fcarouge::kalman_internal::zero</a>&lt; Type &gt; {Type::Zero()}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00481">481</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  481</span>{Type::Zero()};</div>
 </div><!-- fragment -->
 </div>
 </div>

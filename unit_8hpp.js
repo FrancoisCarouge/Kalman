@@ -1,6 +1,5 @@
 var unit_8hpp =
 [
-    [ "fcarouge::multiplies< mp_units::quantity_point< Reference1 >, mp_units::quantity_point< Reference2 > >", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference1_01_4_00_01mp__unitc3778cb8b7e6a51fa048f5b3eef0b348.xhtml", "structfcarouge_1_1multiplies_3_01mp__units_1_1quantity__point_3_01_reference1_01_4_00_01mp__unitc3778cb8b7e6a51fa048f5b3eef0b348" ],
     [ "acceleration", "unit_8hpp.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4", null ],
     [ "height", "unit_8hpp.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9", null ],
     [ "position", "unit_8hpp.xhtml#a0480c6f84be0a01264da3eb984c103e1", null ],

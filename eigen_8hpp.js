@@ -1,6 +1,5 @@
 var eigen_8hpp =
 [
-    [ "fcarouge::evaluates< Type >", "structfcarouge_1_1evaluates_3_01_type_01_4.xhtml", "structfcarouge_1_1evaluates_3_01_type_01_4" ],
     [ "std::formatter< fcarouge::eigen::matrix< Type, Row, Column >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4" ],
     [ "fcarouge::eigen::is_eigen", "conceptfcarouge_1_1eigen_1_1is__eigen.xhtml", null ],
     [ "column_vector", "eigen_8hpp.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c", null ],

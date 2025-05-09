@@ -7,9 +7,8 @@ var searchData=
   ['deg_5fc2_4',['deg_C2',['../namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775',1,'fcarouge']]],
   ['deployment_20actions_5',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],
   ['development_20build_20run_6',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
-  ['difference_7',['difference',['../namespacefcarouge.xhtml#a8dbf59cfc0dc0e18d5cee189c7f35d41',1,'fcarouge']]],
-  ['divides_8',['divides',['../structfcarouge_1_1divides.xhtml',1,'fcarouge']]],
-  ['documentation_2edox_9',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
-  ['dynamic_20model_20extended_20filter_10',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]],
-  ['dynamic_20model_20filter_11',['Dynamic Model Filter',['../index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter',1,'1x1 Constant System Dynamic Model Filter'],['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'6x2 Constant Acceleration Dynamic Model Filter']]]
+  ['difference_7',['difference',['../namespacefcarouge_1_1kalman__internal.xhtml#aaf401bd223c24f1406587dd5fd2dc2cf',1,'fcarouge::kalman_internal']]],
+  ['documentation_2edox_8',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
+  ['dynamic_20model_20extended_20filter_9',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]],
+  ['dynamic_20model_20filter_10',['Dynamic Model Filter',['../index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter',1,'1x1 Constant System Dynamic Model Filter'],['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'6x2 Constant Acceleration Dynamic Model Filter']]]
 ];

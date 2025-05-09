@@ -124,9 +124,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;double, 5, 5&gt; m{zero&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> i{one&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> z{zero&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;double, 5, 5&gt; m{kalman_internal::zero&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> i{kalman_internal::one&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> z{kalman_internal::zero&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
 <div class="line"> </div>
 <div class="line">  assert(m == z);</div>
 <div class="line">  assert(m != i);</div>
@@ -138,9 +138,9 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="linalg__operator__equality_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="linalg__operator__equality_8cpp_source.xhtml">linalg_operator_equality.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   46</span>                          {[] {</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> m{zero&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> i{one&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> z{zero&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> m{kalman_internal::zero&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   48</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> i{kalman_internal::one&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 5, 5&gt;</a> z{kalman_internal::zero&lt;matrix&lt;double, 5, 5&gt;&gt;};</div>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>  assert(m == z);</div>
 <div class="line"><span class="lineno">   52</span>  assert(m != i);</div>

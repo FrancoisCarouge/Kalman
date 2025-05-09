@@ -171,15 +171,15 @@ template&lt;auto Size&gt; </div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;4, 4&gt; i4x4{one&lt;matrix&lt;4, 4&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="#ac8d2d336a335a96e3dc70a4ae9465aca">matrix&lt;4, 5&gt;</a> i4x5{one&lt;matrix&lt;4, 5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;5, 1&gt;</a> i5x1{one&lt;matrix&lt;5, 1&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;5, 4&gt;</a> i5x4{one&lt;matrix&lt;5, 4&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{one&lt;matrix&lt;5, 5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> vector&lt;4&gt; z4x1{zero&lt;vector&lt;4&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;4, 4&gt; z4x4{zero&lt;matrix&lt;4, 4&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> vector&lt;5&gt; z5x1{zero&lt;vector&lt;5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;4, 4&gt; i4x4{kalman_internal::one&lt;matrix&lt;4, 4&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="#ac8d2d336a335a96e3dc70a4ae9465aca">matrix&lt;4, 5&gt;</a> i4x5{kalman_internal::one&lt;matrix&lt;4, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;5, 1&gt;</a> i5x1{kalman_internal::one&lt;matrix&lt;5, 1&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;5, 4&gt;</a> i5x4{kalman_internal::one&lt;matrix&lt;5, 4&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{kalman_internal::one&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> vector&lt;4&gt; z4x1{kalman_internal::zero&lt;vector&lt;4&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;4, 4&gt; z4x4{kalman_internal::zero&lt;matrix&lt;4, 4&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> vector&lt;5&gt; z5x1{kalman_internal::zero&lt;vector&lt;5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{kalman_internal::zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
 <div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{vector&lt;5&gt;{0.0, 0.0, 0.0, 0.0, 0.0}}, output&lt;vector&lt;4&gt;&gt;,</div>
 <div class="line">                input&lt;double&gt;};</div>
 <div class="line"> </div>
@@ -198,7 +198,7 @@ template&lt;auto Size&gt; </div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00355">factory.hpp:355</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00356">factory.hpp:356</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a867b1b89cfdc342f083c792f87cb4d2c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00049">ekf_4x1x0_soaring.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__5x4x1_8cpp_03_xhtml_ac8d2d336a335a96e3dc70a4ae9465aca"><div class="ttname"><a href="#ac8d2d336a335a96e3dc70a4ae9465aca">fcarouge::test::anonymous_namespace{kalman_constructor_default_5x4x1.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; double, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="kalman__constructor__default__5x4x1_8cpp_source.xhtml#l00047">kalman_constructor_default_5x4x1.cpp:47</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
@@ -207,15 +207,15 @@ template&lt;auto Size&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="kalman__constructor__default__5x4x1_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="kalman__constructor__default__5x4x1_8cpp_source.xhtml">kalman_constructor_default_5x4x1.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   51</span>                          {[] {</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#ac8d2d336a335a96e3dc70a4ae9465aca">matrix&lt;4, 4&gt;</a> i4x4{one&lt;matrix&lt;4, 4&gt;&gt;};</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;4, 5&gt;</a> i4x5{one&lt;matrix&lt;4, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   54</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;5, 1&gt;</a> i5x1{one&lt;matrix&lt;5, 1&gt;&gt;};</div>
-<div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> matrix&lt;5, 4&gt; i5x4{one&lt;matrix&lt;5, 4&gt;&gt;};</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{one&lt;matrix&lt;5, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> vector&lt;4&gt; z4x1{zero&lt;vector&lt;4&gt;&gt;};</div>
-<div class="line"><span class="lineno">   58</span>  <span class="keyword">const</span> matrix&lt;4, 4&gt; z4x4{zero&lt;matrix&lt;4, 4&gt;&gt;};</div>
-<div class="line"><span class="lineno">   59</span>  <span class="keyword">const</span> vector&lt;5&gt; z5x1{zero&lt;vector&lt;5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   60</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#ac8d2d336a335a96e3dc70a4ae9465aca">matrix&lt;4, 4&gt;</a> i4x4{kalman_internal::one&lt;matrix&lt;4, 4&gt;&gt;};</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;4, 5&gt;</a> i4x5{kalman_internal::one&lt;matrix&lt;4, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;5, 1&gt;</a> i5x1{kalman_internal::one&lt;matrix&lt;5, 1&gt;&gt;};</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> matrix&lt;5, 4&gt; i5x4{kalman_internal::one&lt;matrix&lt;5, 4&gt;&gt;};</div>
+<div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{kalman_internal::one&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> vector&lt;4&gt; z4x1{kalman_internal::zero&lt;vector&lt;4&gt;&gt;};</div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">const</span> matrix&lt;4, 4&gt; z4x4{kalman_internal::zero&lt;matrix&lt;4, 4&gt;&gt;};</div>
+<div class="line"><span class="lineno">   59</span>  <span class="keyword">const</span> vector&lt;5&gt; z5x1{kalman_internal::zero&lt;vector&lt;5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   60</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{kalman_internal::zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
 <div class="line"><span class="lineno">   61</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{vector&lt;5&gt;{0.0, 0.0, 0.0, 0.0, 0.0}}, output&lt;vector&lt;4&gt;&gt;,</div>
 <div class="line"><span class="lineno">   62</span>                input&lt;double&gt;};</div>
 <div class="line"><span class="lineno">   63</span> </div>

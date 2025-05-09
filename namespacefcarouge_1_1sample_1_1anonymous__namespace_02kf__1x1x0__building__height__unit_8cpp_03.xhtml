@@ -145,7 +145,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   84</span>         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line"><span class="lineno">   85</span>         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
 <div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>  <span class="keyword">using </span>uncertainty = product&lt;height, height&gt;;</div>
+<div class="line"><span class="lineno">   87</span>  <span class="keyword">using </span>uncertainty = kalman_internal::product&lt;height, height&gt;;</div>
 <div class="line"><span class="lineno">   88</span> </div>
 <div class="line"><span class="lineno">   89</span>  assert(uncertainty{225. * m2} == <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p() &amp;&amp;</div>
 <div class="line"><span class="lineno">   90</span>         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
@@ -178,7 +178,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  118</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  119</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00355">factory.hpp:355</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00356">factory.hpp:356</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a66bc0b3b05af74a53388c91b4dfde9e9"><div class="ttname"><a href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">fcarouge::height</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::height[m]&gt; height</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00067">unit.hpp:67</a></div></div>
 </div><!-- fragment -->
 </div>
