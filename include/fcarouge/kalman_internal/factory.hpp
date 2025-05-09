@@ -36,24 +36,24 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_FACTORY_HPP
-#define FCAROUGE_INTERNAL_FACTORY_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_FACTORY_HPP
+#define FCAROUGE_KALMAN_INTERNAL_FACTORY_HPP
 
-#include "fcarouge/internal/type.hpp"
-#include "fcarouge/internal/x_z_p_q_r.hpp"
-#include "fcarouge/internal/x_z_p_q_r_h_f.hpp"
-#include "fcarouge/internal/x_z_p_q_r_hh_us_ps.hpp"
-#include "fcarouge/internal/x_z_p_qq_rr_f.hpp"
-#include "fcarouge/internal/x_z_p_r.hpp"
-#include "fcarouge/internal/x_z_p_r_f.hpp"
-#include "fcarouge/internal/x_z_u_p_q_r.hpp"
-#include "fcarouge/internal/x_z_u_p_q_r_f_g_ps.hpp"
-#include "fcarouge/internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
+#include "fcarouge/kalman_internal/type.hpp"
+#include "fcarouge/kalman_internal/x_z_p_q_r.hpp"
+#include "fcarouge/kalman_internal/x_z_p_q_r_h_f.hpp"
+#include "fcarouge/kalman_internal/x_z_p_q_r_hh_us_ps.hpp"
+#include "fcarouge/kalman_internal/x_z_p_qq_rr_f.hpp"
+#include "fcarouge/kalman_internal/x_z_p_r.hpp"
+#include "fcarouge/kalman_internal/x_z_p_r_f.hpp"
+#include "fcarouge/kalman_internal/x_z_u_p_q_r.hpp"
+#include "fcarouge/kalman_internal/x_z_u_p_q_r_f_g_ps.hpp"
+#include "fcarouge/kalman_internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
 
 #include <concepts>
 #include <type_traits>
 
-namespace fcarouge::internal {
+namespace fcarouge::kalman_internal {
 //! @todo Support arbritary order of configuration parameters?
 //! @todo Support user defined types by type name reflection? Case, naming
 //! convention insensitive?
@@ -356,6 +356,6 @@ template <typename Filter> inline constexpr filter_deducer<Filter> filter{};
 
 template <typename... Arguments>
 using deduce_filter = std::invoke_result_t<filter_deducer<>, Arguments...>;
-} // namespace fcarouge::internal
+} // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_INTERNAL_FACTORY_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_FACTORY_HPP

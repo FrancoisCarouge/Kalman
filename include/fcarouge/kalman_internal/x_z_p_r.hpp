@@ -36,17 +36,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_X_Z_P_Q_R_HPP
-#define FCAROUGE_INTERNAL_X_Z_P_Q_R_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_R_HPP
+#define FCAROUGE_KALMAN_INTERNAL_X_Z_P_R_HPP
 
 #include "fcarouge/utility.hpp"
 
-namespace fcarouge::internal {
-template <typename Type> struct x_z_p_q_r {
+namespace fcarouge::kalman_internal {
+template <typename Type> struct x_z_p_r {
   using state = Type;
   using output = Type;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
-  using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
   using innovation = evaluate<difference<output, state>>;
   using innovation_uncertainty = output_uncertainty;
@@ -56,7 +55,6 @@ template <typename Type> struct x_z_p_q_r {
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
-  process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
   gain k{one<gain>};
   innovation y{zero<innovation>};
@@ -65,15 +63,13 @@ template <typename Type> struct x_z_p_q_r {
 
   inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
-    s = innovation_uncertainty{p + r};
+    s = p + r;
     k = p / s;
     y = z - x;
-    x = state{x + k * y};
-    p = estimate_uncertainty{(i - k) * p * t(i - k) + k * r * t(k)};
+    x = x + k * y;
+    p = (i - k) * p * t(i - k) + k * r * t(k);
   }
-
-  inline constexpr void predict() { p = estimate_uncertainty{p + q}; }
 };
-} // namespace fcarouge::internal
+} // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_INTERNAL_X_Z_P_Q_R_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_P_R_HPP

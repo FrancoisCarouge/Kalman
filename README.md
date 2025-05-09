@@ -160,7 +160,7 @@ Also documented in the [fcarouge/kalman.hpp](https://github.com/FrancoisCarouge/
 
 ```cpp
 template <typename Filter>
-class kalman final : public internal::conditional_member_types<Filter>
+class kalman final : public kalman_internal::conditional_member_types<Filter>
 ```
 
 ### Template Parameters

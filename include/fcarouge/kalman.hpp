@@ -47,7 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 //! inclusion in third party software.
 
 #include "format.hpp"
-#include "internal/factory.hpp"
+#include "kalman_internal/factory.hpp"
 #include "printer.hpp"
 #include "utility.hpp"
 
@@ -123,7 +123,7 @@ namespace fcarouge {
 //! https://arxiv.org/pdf/1905.13002.pdf ? GPU implementation? Parallel
 //! implementation?
 template <typename Filter>
-class kalman : public internal::conditional_member_types<Filter> {
+class kalman : public kalman_internal::conditional_member_types<Filter> {
 private:
   //! @name Private Member Variables
   //! @{
@@ -522,49 +522,49 @@ public:
 //! @brief State type wrapper for filter declaration support.
 //!
 //! @todo Use alias from internal when Clang supports CTAD for alias?
-using internal::state;
+using kalman_internal::state;
 
 //! @brief Estimate uncertainty type wrapper for filter declaration support.
-using internal::estimate_uncertainty;
+using kalman_internal::estimate_uncertainty;
 
 //! @brief Output uncertainty type wrapper for filter declaration support.
-using internal::output_uncertainty;
+using kalman_internal::output_uncertainty;
 
 //! @brief Process uncertainty type wrapper for filter declaration support.
-using internal::process_uncertainty;
+using kalman_internal::process_uncertainty;
 
 //! @brief Input value wrapper for filter declaration support.
-using internal::input;
+using kalman_internal::input;
 
 //! @brief Input type wrapper for filter declaration support.
-using internal::input_t;
+using kalman_internal::input_t;
 
 //! @brief Output value wrapper for filter declaration support.
-using internal::output;
+using kalman_internal::output;
 
 //! @brief Output type wrapper for filter declaration support.
-using internal::output_t;
+using kalman_internal::output_t;
 
 //! @brief Output model type wrapper for filter declaration support.
-using internal::output_model;
+using kalman_internal::output_model;
 
 //! @brief Transition function type wrapper for filter declaration support.
-using internal::transition;
+using kalman_internal::transition;
 
 //! @brief Observation function type wrapper for filter declaration support.
-using internal::observation;
+using kalman_internal::observation;
 
 //! @brief Update types wrapper for filter declaration support.
-using internal::update_types;
+using kalman_internal::update_types;
 
 //! @brief Prediction types wrapper for filter declaration support.
-using internal::prediction_types;
+using kalman_internal::prediction_types;
 
 //! @brief State transition types wrapper for filter declaration support.
-using internal::state_transition;
+using kalman_internal::state_transition;
 
 //! @brief Input control types wrapper for filter declaration support.
-using internal::input_control;
+using kalman_internal::input_control;
 
 //! @}
 
@@ -582,11 +582,12 @@ using internal::input_control;
 //! @todo Should the parameter be named configurations?
 //! @todo Should the configuration examples, supports be documented here?
 template <typename... Arguments>
-kalman(Arguments... arguments) -> kalman<internal::deduce_filter<Arguments...>>;
+kalman(Arguments... arguments)
+    -> kalman<kalman_internal::deduce_filter<Arguments...>>;
 
 //! @}
 } // namespace fcarouge
 
-#include "internal/kalman.tpp"
+#include "kalman_internal/kalman.tpp"
 
 #endif // FCAROUGE_KALMAN_HPP

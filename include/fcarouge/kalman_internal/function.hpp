@@ -36,12 +36,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_FUNCTION_HPP
-#define FCAROUGE_INTERNAL_FUNCTION_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_FUNCTION_HPP
+#define FCAROUGE_KALMAN_INTERNAL_FUNCTION_HPP
 
 #include <memory>
 
-namespace fcarouge::internal {
+namespace fcarouge::kalman_internal {
 // Compile-time `std::function` partial drop-in.
 template <typename Undefined> class function;
 
@@ -99,6 +99,6 @@ function(Callable) -> function<function_traits_t<Callable>>;
 
 template <typename Result, typename... Arguments>
 function(Result(Arguments...)) -> function<Result(Arguments...)>;
-} // namespace fcarouge::internal
+} // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_INTERNAL_FUNCTION_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_FUNCTION_HPP
