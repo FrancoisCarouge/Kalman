@@ -36,8 +36,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-include(FetchContent)
-
 FetchContent_Declare(
   gsl-lite
   GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
