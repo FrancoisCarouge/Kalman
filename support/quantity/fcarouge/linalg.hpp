@@ -92,6 +92,7 @@ template <typename Representation, typename... Types>
 using column_vector = indexed::column_vector<
     eigen::column_vector<Representation, sizeof...(Types)>, Types...>;
 
+namespace kalman_internal {
 //! @brief Multiplies specialization type for uncertainty type deduction.
 template <auto Reference>
 struct multiplies<mp_units::quantity_point<Reference>, int> {
@@ -110,6 +111,7 @@ struct multiplies<int, mp_units::quantity_point<Reference>> {
 
 //! @}
 
+} // namespace kalman_internal
 } // namespace fcarouge
 
 #endif // FCAROUGE_QUANTITY_HPP

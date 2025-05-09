@@ -88,13 +88,13 @@ using column_vector = Eigen::Vector<Type, Row>;
 
 } // namespace fcarouge::eigen
 
-namespace fcarouge {
+namespace fcarouge::kalman_internal {
 //! @brief Specialization of the evaluation type.
 template <eigen::is_eigen Type> struct evaluates<Type> {
   [[nodiscard]] inline constexpr auto operator()() const ->
       typename Type::PlainMatrix;
 };
-} // namespace fcarouge
+} // namespace fcarouge::kalman_internal
 
 namespace Eigen {
 //! @brief Eigen matrix solution to division.

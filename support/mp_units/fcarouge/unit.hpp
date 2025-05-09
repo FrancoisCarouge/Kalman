@@ -72,6 +72,7 @@ using acceleration =
 using temperature =
     mp_units::quantity_point<mp_units::isq::Celsius_temperature[deg_C]>;
 
+namespace kalman_internal {
 template <auto Reference1, auto Reference2>
 struct multiplies<mp_units::quantity_point<Reference1>,
                   mp_units::quantity_point<Reference2>> {
@@ -92,6 +93,7 @@ inline mp_units::quantity_point<Reference>
 template <auto Reference>
 inline mp_units::quantity_point<Reference>
     zero<mp_units::quantity_point<Reference>>{point<Reference>(0.)};
+} // namespace kalman_internal
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP

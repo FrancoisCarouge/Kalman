@@ -199,10 +199,12 @@ template <typename Type, std::size_t Row>
 matrix(const Type (&)[Row]) -> matrix<Type, Row, 1>;
 
 template <typename... Types, std::size_t... Columns>
-  requires(std::conjunction_v<std::is_same<first<Types...>, Types>...> &&
-           ((Columns == first_v<Columns>) && ... && true))
+  requires(std::conjunction_v<
+               std::is_same<kalman_internal::first<Types...>, Types>...> &&
+           ((Columns == kalman_internal::first_v<Columns>) && ... && true))
 matrix(const Types (&...rows)[Columns])
-    -> matrix<std::remove_cvref_t<first<Types...>>, sizeof...(Columns),
+    -> matrix<std::remove_cvref_t<kalman_internal::first<Types...>>,
+              sizeof...(Columns),
               //! @todo Should this be `first_v<Columns...>` instead?
               (Columns, ...)>;
 
@@ -240,14 +242,14 @@ operator*(const matrix<Type, Row, Size> &lhs,
 }
 
 template <typename Type>
-[[nodiscard]] inline constexpr auto operator*(arithmetic auto lhs,
-                                              const matrix<Type, 1, 1> rhs) {
+[[nodiscard]] inline constexpr auto
+operator*(kalman_internal::arithmetic auto lhs, const matrix<Type, 1, 1> rhs) {
   return lhs * rhs.data[0][0];
 }
 
 template <typename Type, std::size_t Column>
-[[nodiscard]] inline constexpr auto operator*(arithmetic auto lhs,
-                                              matrix<Type, 1, Column> rhs) {
+[[nodiscard]] inline constexpr auto
+operator*(kalman_internal::arithmetic auto lhs, matrix<Type, 1, Column> rhs) {
   matrix<Type, 1, Column> result;
 
   for (std::size_t j{0}; j < Column; ++j) {
@@ -259,7 +261,7 @@ template <typename Type, std::size_t Column>
 
 template <typename Type, std::size_t Row, std::size_t Column>
 inline constexpr auto &operator*=(matrix<Type, Row, Column> &lhs,
-                                  arithmetic auto rhs) {
+                                  kalman_internal::arithmetic auto rhs) {
   for (std::size_t i{0}; i < Row; ++i) {
     for (std::size_t j{0}; j < Column; ++j) {
       lhs.data[i][j] *= rhs;
@@ -270,8 +272,8 @@ inline constexpr auto &operator*=(matrix<Type, Row, Column> &lhs,
 }
 
 template <typename Type, std::size_t Row, std::size_t Column>
-[[nodiscard]] inline constexpr auto operator*(matrix<Type, Row, Column> lhs,
-                                              arithmetic auto rhs) {
+[[nodiscard]] inline constexpr auto
+operator*(matrix<Type, Row, Column> lhs, kalman_internal::arithmetic auto rhs) {
   return lhs *= rhs;
 }
 
@@ -291,14 +293,14 @@ operator+(const matrix<Type, Row, Column> &lhs,
 }
 
 template <typename Type>
-[[nodiscard]] inline constexpr auto operator+(arithmetic auto lhs,
-                                              matrix<Type, 1, 1> rhs) {
+[[nodiscard]] inline constexpr auto
+operator+(kalman_internal::arithmetic auto lhs, matrix<Type, 1, 1> rhs) {
   return lhs + rhs.data[0][0];
 }
 
 template <typename Type>
-[[nodiscard]] inline constexpr auto operator+(matrix<Type, 1, 1> lhs,
-                                              arithmetic auto rhs) {
+[[nodiscard]] inline constexpr auto
+operator+(matrix<Type, 1, 1> lhs, kalman_internal::arithmetic auto rhs) {
   return lhs.data[0][0] + rhs;
 }
 
@@ -318,14 +320,15 @@ operator-(const matrix<Type, Row, Column> &lhs,
 }
 
 template <typename Type>
-[[nodiscard]] inline constexpr auto operator-(arithmetic auto lhs,
-                                              const matrix<Type, 1, 1> &rhs) {
+[[nodiscard]] inline constexpr auto
+operator-(kalman_internal::arithmetic auto lhs, const matrix<Type, 1, 1> &rhs) {
   return lhs - rhs.data[0][0];
 }
 
 template <typename Type, std::size_t Row>
-[[nodiscard]] inline constexpr auto operator/(const matrix<Type, Row, 1> &lhs,
-                                              arithmetic auto rhs) {
+[[nodiscard]] inline constexpr auto
+operator/(const matrix<Type, Row, 1> &lhs,
+          kalman_internal::arithmetic auto rhs) {
   matrix<Type, Row, 1> result{lhs};
 
   for (std::size_t i{0}; i < Row; ++i) {
@@ -412,7 +415,7 @@ struct std::formatter<fcarouge::naive::matrix<Type, Row, Column>, Char> {
   }
 };
 
-namespace fcarouge {
+namespace fcarouge::kalman_internal {
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
@@ -463,6 +466,6 @@ inline constexpr naive::matrix<Type, Row, Column>
 
 //! @}
 
-} // namespace fcarouge
+} // namespace fcarouge::kalman_internal
 
 #endif // FCAROUGE_NAIVE_HPP

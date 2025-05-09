@@ -44,7 +44,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the identity matrices values are unit diagonals.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 3, 3> i{one<matrix<double, 3, 3>>};
+  const matrix<double, 3, 3> i{kalman_internal::one<matrix<double, 3, 3>>};
 
   assert(i(0, 0) == 1.0);
   assert(i(0, 1) == 0.0);
