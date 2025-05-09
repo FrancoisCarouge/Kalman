@@ -261,7 +261,7 @@ class fcarouge::kalman&lt; Filter &gt;</div><p>A generic Kalman filter. </p>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000012">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000013">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -679,7 +679,7 @@ template&lt;typename Filter &gt; </div>
 <p>Returns the control transition matrix G. </p>
 <p>This member function is not present when the filter has no input control.</p>
 <dl class="section return"><dt>Returns</dt><dd>The control transition matrix G.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000025">Todo</a></b></dt><dd>Do we still need the non-const flavor?</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo</a></b></dt><dd>Do we still need the non-const flavor?</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
@@ -1002,7 +1002,7 @@ template&lt;typename Filter &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000028">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -1289,7 +1289,7 @@ template&lt;typename Filter &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000028">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000029">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -1396,7 +1396,7 @@ template&lt;typename Filter &gt; </div>
 <p>Returns the innovation column vector Y. </p>
 <dl class="section return"><dt>Returns</dt><dd>The innovation column vector Y.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
 
 </div>
 </div>
