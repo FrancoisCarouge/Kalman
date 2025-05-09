@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> ]]
 cmake_minimum_required(VERSION "3.30")
 
 project(
-  kalman
+  fcarouge-kalman
   DESCRIPTION "Kalman Filter"
   HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
   LANGUAGES "CXX"

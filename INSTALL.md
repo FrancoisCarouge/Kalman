@@ -12,7 +12,7 @@ sudo cmake --install "build"
 The standard shared CMake configuration file provides the library target to use in your own target:
 
 ```cmake
-find_package(kalman)
+find_package(fcarouge-kalman)
 target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)
 ```
 

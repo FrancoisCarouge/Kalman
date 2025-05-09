@@ -140,10 +140,10 @@ Another variation for your CMake infrastructure via fetch content:
 include(FetchContent)
 
 FetchContent_Declare(
-  kalman
+  fcarouge-kalman
   GIT_REPOSITORY "https://github.com/FrancoisCarouge/kalman"
-  FIND_PACKAGE_ARGS NAMES kalman)
-FetchContent_MakeAvailable(kalman)
+  FIND_PACKAGE_ARGS NAMES fcarouge-kalman)
+FetchContent_MakeAvailable(fcarouge-kalman)
 
 target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)
 ```
