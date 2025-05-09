@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_INTERNAL_TYPE_HPP
 #define FCAROUGE_KALMAN_INTERNAL_TYPE_HPP
 
-#include "fcarouge/utility.hpp"
+#include "utility.hpp"
 
 #include <initializer_list>
 #include <type_traits>

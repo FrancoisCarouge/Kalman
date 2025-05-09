@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/eigen.hpp"
 #include "fcarouge/indexed.hpp"
-#include "fcarouge/utility.hpp"
+#include "fcarouge/kalman_internal/utility.hpp"
 
 #include <cstddef>
 

@@ -61,8 +61,7 @@ target_sources(
             "fcarouge/kalman_internal/x_z_u_p_q_r_f_g_ps.hpp"
             "fcarouge/kalman_internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
             "fcarouge/kalman_internal/x_z_u_p_q_r.hpp"
-            "fcarouge/kalman.hpp"
-            "fcarouge/utility.hpp")
+            "fcarouge/kalman.hpp")
 install(
   TARGETS kalman
   EXPORT "fcarouge-kalman-target"

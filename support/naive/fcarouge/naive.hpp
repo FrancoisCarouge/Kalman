@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Matrix, vectors, and named algebraic values.
 
-#include "fcarouge/utility.hpp"
+#include "fcarouge/kalman_internal/utility.hpp"
 
 #include <concepts>
 #include <cstddef>

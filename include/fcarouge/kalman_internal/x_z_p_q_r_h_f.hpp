@@ -39,7 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_H_F_HPP
 #define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_H_F_HPP
 
-#include "fcarouge/utility.hpp"
+#include "utility.hpp"
 
 namespace fcarouge::kalman_internal {
 template <typename State, typename Output> struct x_z_p_q_r_h_f {
