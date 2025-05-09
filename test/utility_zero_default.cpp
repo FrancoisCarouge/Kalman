@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/utility.hpp"
+#include "fcarouge/kalman_internal/utility.hpp"
 
 #include <cassert>
 #include <type_traits>

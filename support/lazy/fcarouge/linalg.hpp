@@ -47,7 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @note Idea from:
 //! https://gieseanw.wordpress.com/2019/10/20/we-dont-need-no-stinking-expression-templates/
 
-#include "fcarouge/utility.hpp"
+#include "fcarouge/kalman_internal/utility.hpp"
 
 #include <algorithm>
 #include <array>

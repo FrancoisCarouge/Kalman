@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @note The Eigen3 linear algebra is not constexpr-compatible as of July 2023.
 
-#include "fcarouge/utility.hpp"
+#include "fcarouge/kalman_internal/utility.hpp"
 
 #include <format>
 #include <sstream>

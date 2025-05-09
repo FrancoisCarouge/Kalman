@@ -39,8 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
 #define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
 
-#include "fcarouge/utility.hpp"
 #include "function.hpp"
+#include "utility.hpp"
 
 #include <tuple>
 

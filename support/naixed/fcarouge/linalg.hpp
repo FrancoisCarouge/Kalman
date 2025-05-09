@@ -43,8 +43,8 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Scalar type indexed-based linear algebra with naive implementation.
 
 #include "fcarouge/indexed.hpp"
+#include "fcarouge/kalman_internal/utility.hpp"
 #include "fcarouge/naive.hpp"
-#include "fcarouge/utility.hpp"
 
 #include <cstddef>
 

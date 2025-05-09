@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Formatting support for the Kalman filter.
 
-#include "fcarouge/utility.hpp"
+#include "utility.hpp"
 
 #include <cstddef>
 #include <format>
