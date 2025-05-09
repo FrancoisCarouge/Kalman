@@ -36,11 +36,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_PRINTER_HPP
-#define FCAROUGE_PRINTER_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_PRINTER_HPP
+#define FCAROUGE_KALMAN_INTERNAL_PRINTER_HPP
 
 //! @file
 //! @brief Filter decoration support for printing operations.
+//!
+//! @todo Make this internal utility public and fix the namespace and name.
 
 #include <print>
 
@@ -94,4 +96,4 @@ operator|(Filter &&filter, [[maybe_unused]] const printer_decorator decorator) {
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_PRINTER_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_PRINTER_HPP
