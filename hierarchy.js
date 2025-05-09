@@ -2,7 +2,7 @@ var hierarchy =
 [
     [ "fcarouge::kalman_internal::conditional_input< Filter >", null, [
       [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, [
-        [ "fcarouge::kalman< Filter >", "classfcarouge_1_1kalman.xhtml", null ]
+        [ "fcarouge::kalman< typename >", "classfcarouge_1_1kalman.xhtml", null ]
       ] ]
     ] ],
     [ "fcarouge::kalman_internal::conditional_input_control< Filter >", null, [

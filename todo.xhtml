@@ -105,13 +105,13 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#a05f1a2a28da177120bf5b3b2d7d2e2a8">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</a>  (const Matrix &amp;other)</dt>
-<dd><a class="anchor" id="_todo000036"></a>Can this be removed altogether?  </dd>
+<dd><a class="anchor" id="_todo000035"></a>Can this be removed altogether?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#ada3b2d2d61f670a3829f07ac05ceb810">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</a>  (const matrix&lt; OtherMatrix, RowIndexes, ColumnIndexes &gt; &amp;other)</dt>
-<dd><a class="anchor" id="_todo000038"></a>Requires evaluated types of Matrix and OtherMatrix are identical?  </dd>
+<dd><a class="anchor" id="_todo000037"></a>Requires evaluated types of Matrix and OtherMatrix are identical?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#a036724133c861d73b44fc8115aff2a94">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</a>  (std::initializer_list&lt; std::initializer_list&lt; Type &gt; &gt; row_list)</dt>
-<dd><a class="anchor" id="_todo000039"></a>Verify the list sizes at runtime?  </dd>
+<dd><a class="anchor" id="_todo000038"></a>Verify the list sizes at runtime?  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1indexed_1_1matrix.xhtml#a585593c99406c287069fd5722e98a4b3">fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;::matrix</a>  (const Types &amp;...values)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000040"></a>Combine the two constructors in ome? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000039"></a>Combine the two constructors in ome? </p>
 <p class="interdd"></p>
 <p class="interdd">Verify if the types are the same, or assignable, for nicer error? </p>
 <p class="interdd"></p>
@@ -120,12 +120,12 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <dt>Member <a class="el" href="namespacefcarouge_1_1indexed.xhtml#a5e01dbaa54a254ec31802e232d5839b8">fcarouge::indexed::operator+</a>  (const Matrix &amp;lhs, Scalar rhs)</dt>
 <dd><a class="anchor" id="_todo000033"></a>Scalar will become Index with constraints.  </dd>
 <dt>Member <a class="el" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a>  (Arguments... arguments) -&gt; kalman&lt; <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a083c7633e41b94b1c0cf980cd4a51d74">kalman_internal::deduce_filter&lt; Arguments... &gt;</a> &gt;</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000023"></a>Should the parameter be named configurations? </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000021"></a>Should the parameter be named configurations? </p>
 <p class="interdd"></p>
 <p class="enddd">Should the configuration examples, supports be documented here?  </p>
 </dd>
-<dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; Filter &gt;</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000013"></a>Make this class usable in constant expressions. </p>
+<dt>Class <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman&lt; typename &gt;</a>  </dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000012"></a>Make this class usable in constant expressions. </p>
 <p class="interdd"></p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd"></p>
@@ -159,19 +159,19 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <p class="interdd"></p>
 <p class="enddd">Can we implement Temporal Parallelization of Bayesian Smoothers, Simo Sarkka, Senior Member, IEEE, Angel F. Garc ıa-Fernandez, <a href="https://arxiv.org/pdf/1905.13002.pdf">https://arxiv.org/pdf/1905.13002.pdf</a> ? GPU implementation? Parallel implementation?  </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a432c41f9b06ed9b51f84f7a72c06bde3">fcarouge::kalman&lt; Filter &gt;::g</a>  (this auto &amp;&amp;self)</dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a5a4d886af548eb3bd999716a228c3343">fcarouge::kalman&lt; typename &gt;::g</a>  (this auto &amp;&amp;self)</dt>
 <dd><a class="anchor" id="_todo000026"></a>Do we still need the non-const flavor? </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a54714ec34eba3646ef3913388c90d2ea">fcarouge::kalman&lt; Filter &gt;::predict</a>  (const auto &amp;...arguments)</dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">fcarouge::kalman&lt; typename &gt;::predict</a>  (const auto &amp;...arguments)</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000028"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a4a85603ea16cb72f7b7fc3bfedaa90bd">fcarouge::kalman&lt; Filter &gt;::update</a>  (const auto &amp;...arguments)</dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">fcarouge::kalman&lt; typename &gt;::update</a>  (const auto &amp;...arguments)</dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000029"></a>Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="interdd"></p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity?  </p>
 </dd>
-<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#af5b5c43dcc898eab0391ecc90ff7b328">fcarouge::kalman&lt; Filter &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
+<dt>Member <a class="el" href="classfcarouge_1_1kalman.xhtml#a30132ff04946a157b124952f22b72199">fcarouge::kalman&lt; typename &gt;::y</a>  () const -&gt; const innovation &amp;</dt>
 <dd><a class="anchor" id="_todo000027"></a>Add measurement post-fit residual by default and example?  </dd>
 <dt>Struct <a class="el" href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_todo000032"></a>Explore and compare performance. </p>
@@ -185,9 +185,9 @@ $(function(){initNavTree('todo.xhtml',''); initResizable(true); });
 <p class="enddd">Remove unecessary empty paramaters when MSVC supports lambda without them.  </p>
 </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#af86ce6ac51113a4d4659d9d132cb43f4">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::matrix</a>  ()</dt>
-<dd><a class="anchor" id="_todo000034"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
+<dd><a class="anchor" id="_todo000036"></a>Report the ICE for generator construction in member declaration. Use constructor's initializer list for now.  </dd>
 <dt>Member <a class="el" href="structfcarouge_1_1matrix.xhtml#affe6fae4cb1cfbfb7a46b135e835361f">fcarouge::matrix&lt; Type, Row, Column, Copyable &gt;::operator()</a>  (auto row, auto column) const</dt>
-<dd><a class="anchor" id="_todo000037"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
+<dd><a class="anchor" id="_todo000040"></a>Don't evaluate unless needed. How to do? Some kind of recursive genie recomposer?  </dd>
 <dt>{<a class="el" href="linalg__multiplication__rxc_8cpp.xhtml">linalg_multiplication_rxc.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#adfa3a8b5be7eb7ee4bc12ebff7d86a8f">fcarouge::test::anonymous_namespace{linalg_multiplication_rxc.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_todo000041"></a>Should this edge case decay to the underlying type?  </dd>
 <dt>File <a class="el" href="printer_8hpp.xhtml">printer.hpp</a>  </dt>
