@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_FORMAT_HPP
-#define FCAROUGE_FORMAT_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_FORMAT_HPP
+#define FCAROUGE_KALMAN_INTERNAL_FORMAT_HPP
 
 //! @file
 //! @brief Formatting support for the Kalman filter.
@@ -137,4 +137,4 @@ struct std::formatter<Filter, Char> {
   }
 };
 
-#endif // FCAROUGE_FORMAT_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_FORMAT_HPP
