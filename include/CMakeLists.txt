@@ -48,6 +48,7 @@ target_sources(
             "fcarouge/kalman_internal/format.hpp"
             "fcarouge/kalman_internal/function.hpp"
             "fcarouge/kalman_internal/kalman.tpp"
+            "fcarouge/kalman_internal/printer.hpp"
             "fcarouge/kalman_internal/type.hpp"
             "fcarouge/kalman_internal/utility.hpp"
             "fcarouge/kalman_internal/x_z_p_q_r_h_f.hpp"
@@ -60,7 +61,6 @@ target_sources(
             "fcarouge/kalman_internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
             "fcarouge/kalman_internal/x_z_u_p_q_r.hpp"
             "fcarouge/kalman.hpp"
-            "fcarouge/printer.hpp"
             "fcarouge/utility.hpp")
 install(
   TARGETS kalman

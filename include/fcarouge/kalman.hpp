@@ -48,7 +48,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "kalman_internal/factory.hpp"
 #include "kalman_internal/format.hpp"
-#include "printer.hpp"
+#include "kalman_internal/printer.hpp"
 #include "utility.hpp"
 
 namespace fcarouge {
