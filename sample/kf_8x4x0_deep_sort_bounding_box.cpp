@@ -83,24 +83,24 @@ using state = fcarouge::state<vector<8>>;
       // The output Z:
       output<vector<4>>,
       // The estimate uncertainty P:
-      estimate_uncertainty{
-          [&position_weight, &velocity_weight, &initial_box]() {
-            matrix<float, 8, 8> value{zero<matrix<float, 8, 8>>};
-            value(0, 0) = std::powf(2.F * position_weight * initial_box(3), 2);
-            value(1, 1) = std::powf(2.F * position_weight * initial_box(3), 2);
-            value(2, 2) = std::powf(1e-2F, 2);
-            value(3, 3) = std::powf(2.F * position_weight * initial_box(3), 2);
-            value(4, 4) = std::powf(10.F * velocity_weight * initial_box(3), 2);
-            value(5, 5) = std::powf(10.F * velocity_weight * initial_box(3), 2);
-            value(6, 6) = std::powf(1e-5F, 2);
-            value(7, 7) = std::powf(10.F * velocity_weight * initial_box(3), 2);
-            return value;
-          }()},
+      estimate_uncertainty{[&position_weight, &velocity_weight,
+                            &initial_box]() {
+        matrix<float, 8, 8> value{kalman_internal::zero<matrix<float, 8, 8>>};
+        value(0, 0) = std::powf(2.F * position_weight * initial_box(3), 2);
+        value(1, 1) = std::powf(2.F * position_weight * initial_box(3), 2);
+        value(2, 2) = std::powf(1e-2F, 2);
+        value(3, 3) = std::powf(2.F * position_weight * initial_box(3), 2);
+        value(4, 4) = std::powf(10.F * velocity_weight * initial_box(3), 2);
+        value(5, 5) = std::powf(10.F * velocity_weight * initial_box(3), 2);
+        value(6, 6) = std::powf(1e-5F, 2);
+        value(7, 7) = std::powf(10.F * velocity_weight * initial_box(3), 2);
+        return value;
+      }()},
       // Q
       process_uncertainty{[](const state::type &x) {
         const float weight_position{1.F / 20.F};
         const float weight_velocity{1.F / 160.F};
-        matrix<float, 8, 8> value{zero<matrix<float, 8, 8>>};
+        matrix<float, 8, 8> value{kalman_internal::zero<matrix<float, 8, 8>>};
         value(0, 0) = std::powf(weight_position * x(3), 2);
         value(1, 1) = std::powf(weight_position * x(3), 2);
         value(2, 2) = std::powf(1e-2F, 2);
@@ -116,7 +116,8 @@ using state = fcarouge::state<vector<8>>;
           // Observation, measurement noise covariance.
           [](const state::type &x, [[maybe_unused]] const vector<4> &z) {
             const float weight_position{1.F / 20.F};
-            matrix<float, 4, 4> value{zero<matrix<float, 4, 4>>};
+            matrix<float, 4, 4> value{
+                kalman_internal::zero<matrix<float, 4, 4>>};
             value(0, 0) = std::powf(weight_position * x(3), 2);
             value(1, 1) = std::powf(weight_position * x(3), 2);
             value(2, 2) = std::powf(1e-1F, 2);

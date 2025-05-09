@@ -73,7 +73,7 @@ template <typename Filter>
 [[nodiscard("The returned control column vector U is unexpectedly "
             "discarded.")]] inline constexpr const auto &
 kalman<Filter>::u() const
-  requires(has_input<Filter>)
+  requires(kalman_internal::has_input<Filter>)
 {
   return filter.u;
 }
@@ -95,7 +95,7 @@ template <typename Filter>
 [[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
             "discarded.")]] inline constexpr auto &&
 kalman<Filter>::q(this auto &&self)
-  requires(has_process_uncertainty<Filter>)
+  requires(kalman_internal::has_process_uncertainty<Filter>)
 {
   return std::forward<decltype(self)>(self).filter.q;
 }
@@ -103,7 +103,7 @@ kalman<Filter>::q(this auto &&self)
 template <typename Filter>
 inline constexpr void kalman<Filter>::q(const auto &value,
                                         const auto &...values)
-  requires(has_process_uncertainty<Filter>)
+  requires(kalman_internal::has_process_uncertainty<Filter>)
 {
   if constexpr (std::is_convertible_v<decltype(value),
                                       typename Filter::process_uncertainty>) {
@@ -120,7 +120,7 @@ template <typename Filter>
 [[nodiscard("The returned observation noise covariance matrix R is "
             "unexpectedly discarded.")]] inline constexpr auto &&
 kalman<Filter>::r(this auto &&self)
-  requires(has_output_uncertainty<Filter>)
+  requires(kalman_internal::has_output_uncertainty<Filter>)
 {
   return std::forward<decltype(self)>(self).filter.r;
 }
@@ -128,7 +128,7 @@ kalman<Filter>::r(this auto &&self)
 template <typename Filter>
 inline constexpr void kalman<Filter>::r(const auto &value,
                                         const auto &...values)
-  requires(has_output_uncertainty<Filter>)
+  requires(kalman_internal::has_output_uncertainty<Filter>)
 {
   if constexpr (std::is_convertible_v<decltype(value),
                                       typename Filter::output_uncertainty>) {
@@ -144,7 +144,7 @@ template <typename Filter>
 [[nodiscard("The returned state transition matrix F is unexpectedly "
             "discarded.")]] inline constexpr auto &&
 kalman<Filter>::f(this auto &&self)
-  requires(has_state_transition<Filter>)
+  requires(kalman_internal::has_state_transition<Filter>)
 {
   return std::forward<decltype(self)>(self).filter.f;
 }
@@ -152,7 +152,7 @@ kalman<Filter>::f(this auto &&self)
 template <typename Filter>
 inline constexpr void kalman<Filter>::f(const auto &value,
                                         const auto &...values)
-  requires(has_state_transition<Filter>)
+  requires(kalman_internal::has_state_transition<Filter>)
 {
   if constexpr (std::is_convertible_v<decltype(value),
                                       typename Filter::state_transition>) {
@@ -168,7 +168,7 @@ template <typename Filter>
 [[nodiscard("The returned observation transition matrix H is unexpectedly "
             "discarded.")]] inline constexpr auto &&
 kalman<Filter>::h(this auto &&self)
-  requires(has_output_model<Filter>)
+  requires(kalman_internal::has_output_model<Filter>)
 {
   return std::forward<decltype(self)>(self).filter.h;
 }
@@ -176,7 +176,7 @@ kalman<Filter>::h(this auto &&self)
 template <typename Filter>
 inline constexpr void kalman<Filter>::h(const auto &value,
                                         const auto &...values)
-  requires(has_output_model<Filter>)
+  requires(kalman_internal::has_output_model<Filter>)
 {
   if constexpr (std::is_convertible_v<decltype(value),
                                       typename Filter::output_model>) {
@@ -192,7 +192,7 @@ template <typename Filter>
 [[nodiscard("The returned control transition matrix G is unexpectedly "
             "discarded.")]] inline constexpr auto &&
 kalman<Filter>::g(this auto &&self)
-  requires(has_input_control<Filter>)
+  requires(kalman_internal::has_input_control<Filter>)
 {
   return std::forward<decltype(self)>(self).filter.g;
 }
@@ -200,7 +200,7 @@ kalman<Filter>::g(this auto &&self)
 template <typename Filter>
 inline constexpr void kalman<Filter>::g(const auto &value,
                                         const auto &...values)
-  requires(has_input_control<Filter>)
+  requires(kalman_internal::has_input_control<Filter>)
 {
   using transition_control_function = decltype(filter.transition_control_g);
   filter.transition_control_g =

@@ -49,16 +49,16 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies the multi-dimension filter is move-assignable.
 [[maybe_unused]] auto test{[] {
-  const vector<3> z3x1{zero<vector<3>>};
-  const matrix<4, 4> i4x4{one<matrix<4, 4>>};
-  const matrix<4, 5> i4x5{one<matrix<4, 5>>};
-  const matrix<5, 3> i5x3{one<matrix<5, 3>>};
-  const matrix<5, 4> i5x4{one<matrix<5, 4>>};
-  const matrix<5, 5> i5x5{one<matrix<5, 5>>};
-  const vector<4> z4x1{zero<vector<4>>};
-  const matrix<4, 4> z4x4{zero<matrix<4, 4>>};
-  const vector<5> z5x1{zero<vector<5>>};
-  const matrix<5, 5> z5x5{zero<matrix<5, 5>>};
+  const vector<3> z3x1{kalman_internal::zero<vector<3>>};
+  const matrix<4, 4> i4x4{kalman_internal::one<matrix<4, 4>>};
+  const matrix<4, 5> i4x5{kalman_internal::one<matrix<4, 5>>};
+  const matrix<5, 3> i5x3{kalman_internal::one<matrix<5, 3>>};
+  const matrix<5, 4> i5x4{kalman_internal::one<matrix<5, 4>>};
+  const matrix<5, 5> i5x5{kalman_internal::one<matrix<5, 5>>};
+  const vector<4> z4x1{kalman_internal::zero<vector<4>>};
+  const matrix<4, 4> z4x4{kalman_internal::zero<matrix<4, 4>>};
+  const vector<5> z5x1{kalman_internal::zero<vector<5>>};
+  const matrix<5, 5> z5x5{kalman_internal::zero<matrix<5, 5>>};
   kalman filter{state{vector<5>{0.0, 0.0, 0.0, 0.0, 0.0}}, output<vector<4>>,
                 input<vector<3>>};
   {

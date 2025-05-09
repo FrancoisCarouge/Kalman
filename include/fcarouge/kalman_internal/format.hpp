@@ -49,7 +49,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 
 //! @brief Specialization of the standard formatter for the Kalman filters.
-template <fcarouge::kalman_filter Filter, typename Char>
+template <fcarouge::kalman_internal::kalman_filter Filter, typename Char>
 // It is allowed to add template specializations for any standard library class
 // template to the namespace std only if the declaration depends on at least one
 // program-defined type and the specialization satisfies all requirements for
@@ -88,14 +88,14 @@ struct std::formatter<Filter, Char> {
     format_context.advance_to(std::format_to(
         format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
 
-    if constexpr (fcarouge::has_prediction_types<Filter>) {
-      fcarouge::for_constexpr<
-          0, fcarouge::size<typename Filter::prediction_types>, 1>(
-          [&format_context, &filter](auto position) {
-            format_context.advance_to(std::format_to(
-                format_context.out(), R"("prediction_{}": {}, )", position(),
-                filter.template predict<position>()));
-          });
+    if constexpr (fcarouge::kalman_internal::has_prediction_types<Filter>) {
+      fcarouge::kalman_internal::for_constexpr<
+          0, fcarouge::kalman_internal::size<typename Filter::prediction_types>,
+          1>([&format_context, &filter](auto position) {
+        format_context.advance_to(
+            std::format_to(format_context.out(), R"("prediction_{}": {}, )",
+                           position(), filter.template predict<position>()));
+      });
     }
 
     if constexpr (fcarouge::kalman_internal::has_process_uncertainty_method<
@@ -104,7 +104,7 @@ struct std::formatter<Filter, Char> {
           std::format_to(format_context.out(), R"("q": {}, )", filter.q()));
     }
 
-    if constexpr (fcarouge::has_output_uncertainty<Filter>) {
+    if constexpr (fcarouge::kalman_internal::has_output_uncertainty<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("r": {}, )", filter.r()));
     }
@@ -120,13 +120,14 @@ struct std::formatter<Filter, Char> {
     }
 
     //! @todo Inconsistent usage of internal?
-    if constexpr (fcarouge::has_update_types<Filter>) {
-      fcarouge::for_constexpr<0, fcarouge::size<typename Filter::update_types>,
-                              1>([&format_context, &filter](auto position) {
-        format_context.advance_to(
-            std::format_to(format_context.out(), R"("update_{}": {}, )",
-                           position(), filter.template update<position>()));
-      });
+    if constexpr (fcarouge::kalman_internal::has_update_types<Filter>) {
+      fcarouge::kalman_internal::for_constexpr<
+          0, fcarouge::kalman_internal::size<typename Filter::update_types>, 1>(
+          [&format_context, &filter](auto position) {
+            format_context.advance_to(
+                std::format_to(format_context.out(), R"("update_{}": {}, )",
+                               position(), filter.template update<position>()));
+          });
     }
 
     format_context.advance_to(

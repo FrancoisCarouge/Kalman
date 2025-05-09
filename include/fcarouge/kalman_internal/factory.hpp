@@ -51,6 +51,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "x_z_u_p_q_r_h_f_g_us_ps.hpp"
 
 #include <concepts>
+#include <tuple>
 #include <type_traits>
 
 namespace fcarouge::kalman_internal {
@@ -100,8 +101,8 @@ template <typename Filter = void> struct filter_deducer {
   inline constexpr auto operator()(state<State> x,
                                    [[maybe_unused]] output_t<Output> z,
                                    [[maybe_unused]] input_t<Input> u) const {
-    using kt =
-        x_z_u_p_q_r_h_f_g_us_ps<State, Output, Input, empty_tuple, empty_tuple>;
+    using kt = x_z_u_p_q_r_h_f_g_us_ps<State, Output, Input, std::tuple<>,
+                                       std::tuple<>>;
     return kt{typename kt::state(x.value)};
   }
 
@@ -122,7 +123,7 @@ template <typename Filter = void> struct filter_deducer {
              output_uncertainty<OutputUncertainty> r,
              state_transition<StateTransition> f, input_control<InputControl> g,
              [[maybe_unused]] prediction_types_t<Ps...> pts) const {
-    using kt = x_z_u_p_q_r_f_g_ps<State, Output, Input, empty_tuple,
+    using kt = x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<>,
                                   repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
@@ -256,8 +257,8 @@ template <typename Filter = void> struct filter_deducer {
              estimate_uncertainty<EstimateUncertainty> p,
              process_uncertainty<ProcessUncertainty> q,
              output_uncertainty<OutputUncertainty> r) const {
-    using kt =
-        x_z_u_p_q_r_h_f_g_us_ps<State, Output, Input, empty_tuple, empty_tuple>;
+    using kt = x_z_u_p_q_r_h_f_g_us_ps<State, Output, Input, std::tuple<>,
+                                       std::tuple<>>;
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
               typename kt::process_uncertainty(q.value),

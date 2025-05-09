@@ -84,7 +84,7 @@ namespace {
          "Since our system's dynamic model is constant, i.e. the building "
          "doesn't change its height: 60 meters.");
 
-  using uncertainty = product<height, height>;
+  using uncertainty = kalman_internal::product<height, height>;
 
   assert(uncertainty{225. * m2} == filter.p() &&
          "The extrapolated estimate uncertainty (variance) also doesn't "

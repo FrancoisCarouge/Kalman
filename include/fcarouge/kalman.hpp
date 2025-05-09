@@ -257,7 +257,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr const auto &u() const
-    requires(has_input<Filter>);
+    requires(kalman_internal::has_input<Filter>);
 
   //! @brief Returns the estimated covariance matrix P.
   //!
@@ -282,7 +282,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr auto &&q(this auto &&self)
-    requires(has_process_uncertainty<Filter>);
+    requires(kalman_internal::has_process_uncertainty<Filter>);
 
   //! @brief Sets the process noise covariance matrix Q.
   //!
@@ -299,7 +299,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void q(const auto &value, const auto &...values)
-    requires(has_process_uncertainty<Filter>);
+    requires(kalman_internal::has_process_uncertainty<Filter>);
 
   //! @brief Returns the observation noise covariance
   //! matrix R.
@@ -310,7 +310,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr auto &&r(this auto &&self)
-    requires(has_output_uncertainty<Filter>);
+    requires(kalman_internal::has_output_uncertainty<Filter>);
 
   //! @brief Sets the observation noise covariance matrix R.
   //!
@@ -327,7 +327,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void r(const auto &value, const auto &...values)
-    requires(has_output_uncertainty<Filter>);
+    requires(kalman_internal::has_output_uncertainty<Filter>);
 
   //! @brief Returns the state transition matrix F.
   //!
@@ -335,7 +335,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr auto &&f(this auto &&self)
-    requires(has_state_transition<Filter>);
+    requires(kalman_internal::has_state_transition<Filter>);
 
   //! @brief Sets the state transition matrix F.
   //!
@@ -357,7 +357,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void f(const auto &value, const auto &...values)
-    requires(has_state_transition<Filter>);
+    requires(kalman_internal::has_state_transition<Filter>);
 
   //! @brief Returns the observation transition matrix H.
   //!
@@ -368,7 +368,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr auto &&h(this auto &&self)
-    requires(has_output_model<Filter>);
+    requires(kalman_internal::has_output_model<Filter>);
 
   //! @brief Sets the observation transition matrix H.
   //!
@@ -391,7 +391,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void h(const auto &value, const auto &...values)
-    requires(has_output_model<Filter>);
+    requires(kalman_internal::has_output_model<Filter>);
 
   //! @brief Returns the control transition matrix G.
   //!
@@ -404,7 +404,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr auto &&g(this auto &&self)
-    requires(has_input_control<Filter>);
+    requires(kalman_internal::has_input_control<Filter>);
 
   //! @brief Sets the control transition matrix G.
   //!
@@ -423,7 +423,7 @@ public:
   //!
   //! @complexity Constant.
   inline constexpr void g(const auto &value, const auto &...values)
-    requires(has_input_control<Filter>);
+    requires(kalman_internal::has_input_control<Filter>);
 
   //! @brief Returns the gain matrix K.
   //!

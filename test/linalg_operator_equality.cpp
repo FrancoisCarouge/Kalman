@@ -44,9 +44,9 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the equality operator.
 [[maybe_unused]] auto test{[] {
-  const matrix<double, 5, 5> m{zero<matrix<double, 5, 5>>};
-  const matrix<double, 5, 5> i{one<matrix<double, 5, 5>>};
-  const matrix<double, 5, 5> z{zero<matrix<double, 5, 5>>};
+  const matrix<double, 5, 5> m{kalman_internal::zero<matrix<double, 5, 5>>};
+  const matrix<double, 5, 5> i{kalman_internal::one<matrix<double, 5, 5>>};
+  const matrix<double, 5, 5> z{kalman_internal::zero<matrix<double, 5, 5>>};
 
   assert(m == z);
   assert(m != i);

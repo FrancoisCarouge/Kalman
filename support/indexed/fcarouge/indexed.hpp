@@ -61,9 +61,9 @@ using underlying_t =
 
 //! @brief The type of the element at the given matrix indexes position.
 template <typename Matrix, std::size_t RowIndex, std::size_t ColumnIndex>
-using element =
-    product<std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
-            std::tuple_element_t<ColumnIndex, typename Matrix::column_indexes>>;
+using element = kalman_internal::product<
+    std::tuple_element_t<RowIndex, typename Matrix::row_indexes>,
+    std::tuple_element_t<ColumnIndex, typename Matrix::column_indexes>>;
 
 //! @brief Every element types of the matrix are the same.
 //!
@@ -77,8 +77,9 @@ template <typename Matrix>
 concept uniform = []() {
   bool result{true};
 
-  for_constexpr<0, Matrix::rows, 1>([&result](auto i) {
-    for_constexpr<0, Matrix::columns, 1>([&result, &i](auto j) {
+  kalman_internal::for_constexpr<0, Matrix::rows, 1>([&result](auto i) {
+    kalman_internal::for_constexpr<0, Matrix::columns, 1>([&result,
+                                                           &i](auto j) {
       result &= std::is_same_v<element<Matrix, i, j>, element<Matrix, 0, 0>>;
     });
   });
@@ -108,7 +109,8 @@ concept singleton = column<Matrix> && row<Matrix>;
 
 //! @brief The packs have the same count of types.
 template <typename Pack1, typename Pack2>
-concept same_size = size<Pack1> == size<Pack2>;
+concept same_size =
+    kalman_internal::size<Pack1> == kalman_internal::size<Pack2>;
 
 //! @brief Element traits for conversions.
 template <typename Underlying, typename Type> struct element_traits {
@@ -145,7 +147,8 @@ template <typename Underlying, typename Type> struct element_traits {
 //!
 //! @note Deduction guides are tricky because a given element type comes from
 //! a row and column index to be deduced.
-template <algebraic Matrix, typename RowIndexes, typename ColumnIndexes>
+template <kalman_internal::algebraic Matrix, typename RowIndexes,
+          typename ColumnIndexes>
 struct matrix {
   //! @todo Privatize this section.
 public:
@@ -192,10 +195,11 @@ public:
   //! @{
 
   //! @brief The count of rows.
-  inline constexpr static std::size_t rows{size<row_indexes>};
+  inline constexpr static std::size_t rows{kalman_internal::size<row_indexes>};
 
   //! @brief The count of rows.
-  inline constexpr static std::size_t columns{size<column_indexes>};
+  inline constexpr static std::size_t columns{
+      kalman_internal::size<column_indexes>};
 
   //! @}
 
@@ -213,17 +217,18 @@ public:
   inline constexpr matrix &operator=(matrix &&other) = default;
 
   //! @todo Requires evaluated types of Matrix and OtherMatrix are identical?
-  template <algebraic OtherMatrix>
+  template <kalman_internal::algebraic OtherMatrix>
   inline constexpr matrix(
       const matrix<OtherMatrix, RowIndexes, ColumnIndexes> &other)
       : data{other.data} {}
 
   inline constexpr explicit matrix(
-      const element<0, 0> (&elements)[size<RowIndexes> * size<ColumnIndexes>])
+      const element<0, 0> (&elements)[kalman_internal::size<RowIndexes> *
+                                      kalman_internal::size<ColumnIndexes>])
     requires uniform<matrix> && one_dimension<matrix>
       : data{elements} {}
 
-  template <arithmetic Type>
+  template <kalman_internal::arithmetic Type>
     requires singleton<matrix>
   explicit inline constexpr matrix(const Type &value) {
     data(0, 0) = element_traits<underlying, Type>::to_underlying(value);
@@ -252,12 +257,13 @@ public:
              same_size<ColumnIndexes, std::tuple<Types...>>
   explicit inline constexpr matrix(const Types &...values) {
     std::tuple value_pack{values...};
-    for_constexpr<0, size<ColumnIndexes>, 1>([this,
-                                              &value_pack](auto position) {
-      auto value{std::get<position>(value_pack)};
-      using type = std::remove_cvref_t<decltype(value)>;
-      data[position] = element_traits<underlying, type>::to_underlying(value);
-    });
+    kalman_internal::for_constexpr<0, kalman_internal::size<ColumnIndexes>, 1>(
+        [this, &value_pack](auto position) {
+          auto value{std::get<position>(value_pack)};
+          using type = std::remove_cvref_t<decltype(value)>;
+          data[position] =
+              element_traits<underlying, type>::to_underlying(value);
+        });
   }
 
   template <typename... Types>
@@ -265,11 +271,13 @@ public:
              (not row<matrix>) && same_size<RowIndexes, std::tuple<Types...>>
   inline constexpr matrix(const Types &...values) {
     std::tuple value_pack{values...};
-    for_constexpr<0, size<RowIndexes>, 1>([this, &value_pack](auto position) {
-      auto value{std::get<position>(value_pack)};
-      using type = std::remove_cvref_t<decltype(value)>;
-      data[position] = element_traits<underlying, type>::to_underlying(value);
-    });
+    kalman_internal::for_constexpr<0, kalman_internal::size<RowIndexes>, 1>(
+        [this, &value_pack](auto position) {
+          auto value{std::get<position>(value_pack)};
+          using type = std::remove_cvref_t<decltype(value)>;
+          data[position] =
+              element_traits<underlying, type>::to_underlying(value);
+        });
   }
 
   [[nodiscard]] inline constexpr explicit(false) operator element<0, 0> &()
@@ -308,15 +316,16 @@ public:
   }
 
   template <std::size_t Row, std::size_t Column>
-    requires in_range<Row, 0, size<RowIndexes>> &&
-             in_range<Column, 0, size<ColumnIndexes>>
+    requires in_range<Row, 0, kalman_internal::size<RowIndexes>> &&
+             in_range<Column, 0, kalman_internal::size<ColumnIndexes>>
   [[nodiscard]] inline constexpr element<Row, Column> &at() {
     return element_traits<underlying, element<Row, Column>>::from_underlying(
         data(std::size_t{Row}, std::size_t{Column}));
   }
 
   template <std::size_t Index>
-    requires column<matrix> && in_range<Index, 0, size<RowIndexes>>
+    requires column<matrix> &&
+             in_range<Index, 0, kalman_internal::size<RowIndexes>>
   [[nodiscard]] inline constexpr element<Index, 0> &at() {
     return element_traits<underlying, element<Index, 0>>::from_underlying(
         data(std::size_t{Index}));
@@ -350,37 +359,40 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator*(const matrix<Matrix1, RowIndexes, Indexes> &lhs,
           const matrix<Matrix2, Indexes, ColumnIndexes> &rhs) {
-  return matrix<evaluate<product<Matrix1, Matrix2>>, RowIndexes, ColumnIndexes>{
-      lhs.data * rhs.data};
+  return matrix<
+      kalman_internal::evaluate<kalman_internal::product<Matrix1, Matrix2>>,
+      RowIndexes, ColumnIndexes>{lhs.data * rhs.data};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <kalman_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
   requires singleton<Matrix>
 [[nodiscard]] inline constexpr auto operator*(Scalar lhs, const Matrix &rhs) {
   return element<Matrix, 0, 0>{lhs * rhs.data(0)};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <kalman_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator*(Scalar lhs, const matrix<Matrix, RowIndexes, ColumnIndexes> &rhs) {
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs * rhs.data};
+  return matrix<kalman_internal::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
+      lhs * rhs.data};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <kalman_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
   requires singleton<Matrix>
 [[nodiscard]] inline constexpr auto
 operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
   return element<Matrix, 0, 0>{lhs.data(0) * rhs};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <kalman_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator*(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data * rhs};
+  return matrix<kalman_internal::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
+      lhs.data * rhs};
 }
 
 template <typename Matrix1, typename Matrix2, typename RowIndexes,
@@ -388,12 +400,12 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator+(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
           const matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return matrix<evaluate<Matrix1>, RowIndexes, ColumnIndexes>{lhs.data +
-                                                              rhs.data};
+  return matrix<kalman_internal::evaluate<Matrix1>, RowIndexes, ColumnIndexes>{
+      lhs.data + rhs.data};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <kalman_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
   requires singleton<Matrix>
 [[nodiscard]] inline constexpr auto operator+(const Matrix &lhs, Scalar rhs) {
   //! @todo Scalar will become Index with constraints.
@@ -405,12 +417,12 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes,
 [[nodiscard]] inline constexpr auto
 operator-(const matrix<Matrix1, RowIndexes, ColumnIndexes> &lhs,
           const matrix<Matrix2, RowIndexes, ColumnIndexes> &rhs) {
-  return matrix<evaluate<Matrix1>, RowIndexes, ColumnIndexes>{lhs.data -
-                                                              rhs.data};
+  return matrix<kalman_internal::evaluate<Matrix1>, RowIndexes, ColumnIndexes>{
+      lhs.data - rhs.data};
 }
 
-template <arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <kalman_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
   requires singleton<Matrix>
 [[nodiscard]] inline constexpr auto operator-(Scalar lhs, const Matrix &rhs) {
   return element<Matrix, 0, 0>{lhs - rhs.data(0)};
@@ -421,19 +433,21 @@ template <typename Matrix1, typename Matrix2, typename RowIndexes1,
 [[nodiscard]] inline constexpr auto
 operator/(const matrix<Matrix1, RowIndexes1, ColumnIndexes> &lhs,
           const matrix<Matrix2, RowIndexes2, ColumnIndexes> &rhs) {
-  return matrix<evaluate<quotient<Matrix1, Matrix2>>, RowIndexes1, RowIndexes2>{
-      lhs.data / rhs.data};
+  return matrix<
+      kalman_internal::evaluate<kalman_internal::quotient<Matrix1, Matrix2>>,
+      RowIndexes1, RowIndexes2>{lhs.data / rhs.data};
 }
 
-template <fcarouge::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <kalman_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
 [[nodiscard]] inline constexpr auto
 operator/(const matrix<Matrix, RowIndexes, ColumnIndexes> &lhs, Scalar rhs) {
-  return matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>{lhs.data / rhs};
+  return matrix<kalman_internal::evaluate<Matrix>, RowIndexes, ColumnIndexes>{
+      lhs.data / rhs};
 }
 
-template <fcarouge::arithmetic Scalar, typename Matrix, typename RowIndexes,
-          typename ColumnIndexes>
+template <kalman_internal::arithmetic Scalar, typename Matrix,
+          typename RowIndexes, typename ColumnIndexes>
   requires singleton<Matrix>
 [[nodiscard]] inline constexpr auto operator/(const Matrix &lhs, Scalar rhs) {
   return element<Matrix, 0, 0>{lhs.data(0) / rhs};
@@ -457,14 +471,16 @@ struct std::formatter<
       -> OutputIterator {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
-    for (std::size_t i{0}; i < fcarouge::size<RowIndexes>; ++i) {
+    for (std::size_t i{0}; i < fcarouge::kalman_internal::size<RowIndexes>;
+         ++i) {
       if (i > 0) {
         format_context.advance_to(std::format_to(format_context.out(), ", "));
       }
 
       format_context.advance_to(std::format_to(format_context.out(), "["));
 
-      for (std::size_t j{0}; j < fcarouge::size<ColumnIndexes>; ++j) {
+      for (std::size_t j{0}; j < fcarouge::kalman_internal::size<ColumnIndexes>;
+           ++j) {
         if (j > 0) {
           format_context.advance_to(std::format_to(format_context.out(), ", "));
         }
@@ -491,7 +507,8 @@ struct std::formatter<
   {
     format_context.advance_to(std::format_to(format_context.out(), "["));
 
-    for (std::size_t j{0}; j < fcarouge::size<ColumnIndexes>; ++j) {
+    for (std::size_t j{0}; j < fcarouge::kalman_internal::size<ColumnIndexes>;
+         ++j) {
       if (j > 0) {
         format_context.advance_to(std::format_to(format_context.out(), ", "));
       }
@@ -520,7 +537,7 @@ struct std::formatter<
   }
 };
 
-namespace fcarouge {
+namespace fcarouge::kalman_internal {
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
@@ -560,6 +577,6 @@ inline indexed::matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
 
 //! @}
 
-} // namespace fcarouge
+} // namespace fcarouge::kalman_internal
 
 #endif // FCAROUGE_INDEXED_HPP

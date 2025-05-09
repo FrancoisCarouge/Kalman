@@ -83,12 +83,14 @@ using output_t = vector<position, position>;
       // Since our initial state vector is a guess, we will set a very high
       // estimate uncertainty. The high estimate uncertainty results in a high
       // Kalman Gain, giving a high weight to the measurement.
-      estimate_uncertainty{500. * one<ᴀʙᵀ<state_t, state_t>>},
+      estimate_uncertainty{
+          500. * kalman_internal::one<kalman_internal::ᴀʙᵀ<state_t, state_t>>},
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
       process_uncertainty{[]() {
-        using process_uncertainty_t = ᴀʙᵀ<state_t, state_t>;
-        process_uncertainty_t value{one<process_uncertainty_t>};
+        using process_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+        process_uncertainty_t value{
+            kalman_internal::one<process_uncertainty_t>};
         value.at<0, 0>() = 0.25 * m2;
         value.at<0, 1>() = 0.5 * m2 / s;
         value.at<0, 2>() = 0.5 * m2 / s2;
@@ -120,16 +122,18 @@ using output_t = vector<position, position>;
       // of xn is 6x1. Therefore the dimension of the observation matrix H shall
       // be 2x6.
       output_model{[]() {
-        using output_model_t = evaluate<quotient<output_t, state_t>>;
-        output_model_t value{zero<output_model_t>};
+        using output_model_t = kalman_internal::evaluate<
+            kalman_internal::quotient<output_t, state_t>>;
+        output_model_t value{kalman_internal::zero<output_model_t>};
         value.at<0, 0>() = 1. * m2;
         value.at<1, 3>() = 1. * m2;
         return value;
       }()},
       // The state transition matrix F would be:
       state_transition{[]() {
-        using state_transition_t = evaluate<quotient<state_t, state_t>>;
-        state_transition_t value{one<state_transition_t>};
+        using state_transition_t = kalman_internal::evaluate<
+            kalman_internal::quotient<state_t, state_t>>;
+        state_transition_t value{kalman_internal::one<state_transition_t>};
         value.at<0, 1>() = 1. * m2 / s;
         value.at<0, 2>() = 0.5 * m2 / s2;
         value.at<1, 2>() = 1. * m2 / s3;
