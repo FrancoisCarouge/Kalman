@@ -44,6 +44,7 @@ target_sources(
             TYPE
             "HEADERS"
             FILES
+            "fcarouge/kalman_forward.hpp"
             "fcarouge/kalman_internal/factory.hpp"
             "fcarouge/kalman_internal/format.hpp"
             "fcarouge/kalman_internal/function.hpp"

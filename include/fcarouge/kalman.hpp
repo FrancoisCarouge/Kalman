@@ -46,6 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 //! utilities, and documentation. Only this header file is intended for
 //! inclusion in third party software.
 
+#include "kalman_forward.hpp"
 #include "kalman_internal/factory.hpp"
 #include "kalman_internal/format.hpp"
 #include "kalman_internal/printer.hpp"
