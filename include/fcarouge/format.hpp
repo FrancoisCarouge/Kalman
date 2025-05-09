@@ -69,17 +69,18 @@ struct std::formatter<Filter, Char> {
 
     format_context.advance_to(std::format_to(format_context.out(), R"({{)"));
 
-    if constexpr (fcarouge::internal::has_state_transition_method<Filter>) {
+    if constexpr (fcarouge::kalman_internal::has_state_transition_method<
+                      Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("f": {}, )", filter.f()));
     }
 
-    if constexpr (fcarouge::internal::has_input_control_method<Filter>) {
+    if constexpr (fcarouge::kalman_internal::has_input_control_method<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
 
-    if constexpr (fcarouge::internal::has_output_model_method<Filter>) {
+    if constexpr (fcarouge::kalman_internal::has_output_model_method<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("h": {}, )", filter.h()));
     }
@@ -97,7 +98,8 @@ struct std::formatter<Filter, Char> {
           });
     }
 
-    if constexpr (fcarouge::internal::has_process_uncertainty_method<Filter>) {
+    if constexpr (fcarouge::kalman_internal::has_process_uncertainty_method<
+                      Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("q": {}, )", filter.q()));
     }
@@ -112,7 +114,7 @@ struct std::formatter<Filter, Char> {
 
     //! @todo Generalize out internal method concept when MSVC has better
     //! if-constexpr-requires support.
-    if constexpr (fcarouge::internal::has_input_method<Filter>) {
+    if constexpr (fcarouge::kalman_internal::has_input_method<Filter>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }

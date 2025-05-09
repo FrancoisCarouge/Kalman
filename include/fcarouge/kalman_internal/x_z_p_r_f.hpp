@@ -36,12 +36,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
-#define FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_R_F_HPP
+#define FCAROUGE_KALMAN_INTERNAL_X_Z_P_R_F_HPP
 
 #include "fcarouge/utility.hpp"
 
-namespace fcarouge::internal {
+namespace fcarouge::kalman_internal {
 template <typename State> struct x_z_p_r_f {
   using state = State;
   using output = State;
@@ -77,6 +77,6 @@ template <typename State> struct x_z_p_r_f {
     p = f * p * t(f);
   }
 };
-} // namespace fcarouge::internal
+} // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_INTERNAL_X_Z_P_R_F_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_P_R_F_HPP

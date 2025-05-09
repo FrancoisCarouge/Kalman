@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_KALMAN_TPP
-#define FCAROUGE_INTERNAL_KALMAN_TPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_KALMAN_TPP
+#define FCAROUGE_KALMAN_INTERNAL_KALMAN_TPP
 
 #include <tuple>
 #include <type_traits>
@@ -47,7 +47,7 @@ namespace fcarouge {
 template <typename Filter>
 template <typename... Arguments>
 inline constexpr kalman<Filter>::kalman(Arguments... arguments)
-    : filter{internal::filter<Filter>(arguments...)} {}
+    : filter{kalman_internal::filter<Filter>(arguments...)} {}
 
 template <typename Filter>
 [[nodiscard(
@@ -255,4 +255,4 @@ kalman<Filter>::predict() const {
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_INTERNAL_KALMAN_TPP
+#endif // FCAROUGE_KALMAN_INTERNAL_KALMAN_TPP

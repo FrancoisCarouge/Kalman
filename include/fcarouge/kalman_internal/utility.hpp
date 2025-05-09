@@ -36,15 +36,15 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_UTILITY_HPP
-#define FCAROUGE_INTERNAL_UTILITY_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_UTILITY_HPP
+#define FCAROUGE_KALMAN_INTERNAL_UTILITY_HPP
 
 #include <concepts>
 #include <cstddef>
 #include <tuple>
 #include <type_traits>
 
-namespace fcarouge::internal {
+namespace fcarouge::kalman_internal {
 //! @todo What should be a better concept of the Kalman filter of this library?
 template <typename Type>
 concept kalman_filter = requires(Type value) {
@@ -260,7 +260,7 @@ template <std::size_t Begin, std::size_t End, std::size_t Increment,
 inline constexpr void for_constexpr(Function &&function) {
   if constexpr (Begin < End) {
     function(std::integral_constant<std::size_t, Begin>());
-    internal::for_constexpr<Begin + Increment, End, Increment>(
+    kalman_internal::for_constexpr<Begin + Increment, End, Increment>(
         std::forward<Function>(function));
   }
 }
@@ -286,6 +286,6 @@ template <typename Type, std::size_t Size> struct tupler {
 template <typename Type, std::size_t Size>
 using tuple_n_type = typename tupler<Type, Size>::type;
 
-} // namespace fcarouge::internal
+} // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_INTERNAL_UTILITY_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_UTILITY_HPP

@@ -36,34 +36,33 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_X_Z_P_Q_R_H_F_HPP
-#define FCAROUGE_INTERNAL_X_Z_P_Q_R_H_F_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
+#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
 
 #include "fcarouge/utility.hpp"
+#include "function.hpp"
 
-namespace fcarouge::internal {
-template <typename State, typename Output> struct x_z_p_q_r_h_f {
-  using state = State;
-  using output = Output;
+#include <tuple>
+
+namespace fcarouge::kalman_internal {
+template <typename Type> struct x_z_u_p_q_r {
+  using state = Type;
+  using output = Type;
+  using input = Type;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = evaluate<quotient<state, state>>;
-  using output_model = ᴀʙᵀ<output, state>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
-  using gain =
-      evaluate<quotient<product<estimate_uncertainty, transpose<output_model>>,
-                        innovation_uncertainty>>;
+  using gain = evaluate<quotient<estimate_uncertainty, innovation_uncertainty>>;
 
-  static inline const auto i{one<ᴀʙᵀ<state, state>>};
+  static inline const auto i{one<gain>};
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  output_model h{one<output_model>};
-  state_transition f{one<state_transition>};
+  input u{zero<input>};
   gain k{one<gain>};
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
@@ -71,18 +70,19 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
 
   inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
-    s = innovation_uncertainty{h * p * t(h) + r};
-    k = p * t(h) / s;
-    y = z - h * x;
-    x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    s = p + r;
+    k = p / s;
+    y = z - x;
+    x = x + k * y;
+    p = (i - k) * p * t(i - k) + k * r * t(k);
   }
 
-  inline constexpr void predict() {
-    x = f * x;
-    p = estimate_uncertainty{f * p * t(f) + q};
+  inline constexpr void predict(const auto &input_u, const auto &...inputs_u) {
+    u = input{input_u, inputs_u...};
+    x = u;
+    p = p + q;
   }
 };
-} // namespace fcarouge::internal
+} // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_INTERNAL_X_Z_P_Q_R_H_F_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP

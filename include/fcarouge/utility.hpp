@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Definitions and documentation of supporting concepts and types.
 
-#include "internal/utility.hpp"
+#include "kalman_internal/utility.hpp"
 
 #include <cstddef>
 #include <utility>
@@ -57,40 +57,42 @@ namespace fcarouge {
 //!
 //! @details This library's Kalman filters.
 template <typename Type>
-concept kalman_filter = internal::kalman_filter<Type>;
+concept kalman_filter = kalman_internal::kalman_filter<Type>;
 
 //! @brief Arithmetic concept.
 //!
 //! @details Any integer or floating point type.
 template <typename Type>
-concept arithmetic = internal::arithmetic<Type>;
+concept arithmetic = kalman_internal::arithmetic<Type>;
 
 //! @brief Algebraic concept.
 //!
 //! @details Not an arithmetic type.
 template <typename Type>
-concept algebraic = internal::algebraic<Type>;
+concept algebraic = kalman_internal::algebraic<Type>;
 
 //! @brief Filter input support concept.
 //!
 //! @details The filter supports the input related functionality: `input` type
 //! member and `u()` method.
 template <typename Filter>
-concept has_input = internal::has_input<Filter>;
+concept has_input = kalman_internal::has_input<Filter>;
 
 //! @brief Filter process uncertainty support concept.
 //!
 //! @details The filter supports the process uncertainty related functionality:
 //! `process_uncertainty` type member and `q()` method.
 template <typename Filter>
-concept has_process_uncertainty = internal::has_process_uncertainty<Filter>;
+concept has_process_uncertainty =
+    kalman_internal::has_process_uncertainty<Filter>;
 
 //! @brief Filter output uncertainty support concept.
 //!
 //! @details The filter supports the output uncertainty related functionality:
 //! `output_uncertainty` type member and `r()` method.
 template <typename Filter>
-concept has_output_uncertainty = internal::has_output_uncertainty<Filter>;
+concept has_output_uncertainty =
+    kalman_internal::has_output_uncertainty<Filter>;
 
 //! @brief Filter prediction pack support concept.
 //!
@@ -98,35 +100,35 @@ concept has_output_uncertainty = internal::has_output_uncertainty<Filter>;
 //! functionality: `prediction_types` type member and parameters for the
 //! `predict()` method.
 template <typename Filter>
-concept has_prediction_types = internal::has_prediction_types<Filter>;
+concept has_prediction_types = kalman_internal::has_prediction_types<Filter>;
 
 //! @brief Filter input control support concept.
 //!
 //! @details The filter supports the input control related functionality:
 //! `input_control` type member and `g()` method.
 template <typename Filter>
-concept has_input_control = internal::has_input_control<Filter>;
+concept has_input_control = kalman_internal::has_input_control<Filter>;
 
 //! @brief Filter state transition support concept.
 //!
 //! @details The filter supports the state transition related functionality:
 //! `state_transition` type member and `f()` method.
 template <typename Filter>
-concept has_state_transition = internal::has_state_transition<Filter>;
+concept has_state_transition = kalman_internal::has_state_transition<Filter>;
 
 //! @brief Filter update pack support concept.
 //!
 //! @details The filter supports the update parameters related functionality:
 //! `update_types` type member and parameters for the `update()` method.
 template <typename Filter>
-concept has_update_types = internal::has_update_types<Filter>;
+concept has_update_types = kalman_internal::has_update_types<Filter>;
 
 //! @brief Filter output model support concept.
 //!
 //! @details The filter supports the output model related functionality:
 //! `output_model` type member and `h()` method.
 template <typename Filter>
-concept has_output_model = internal::has_output_model<Filter>;
+concept has_output_model = kalman_internal::has_output_model<Filter>;
 
 //! @}
 
@@ -191,16 +193,16 @@ template <typename Type> auto t(const Type &value) {
 //! @brief Type of the empty tuple.
 //!
 //! @details A tuple with no `pack` types.
-using empty_tuple = internal::empty_tuple;
+using empty_tuple = kalman_internal::empty_tuple;
 
 //! @brief Unpack the first type of the type template parameter pack.
 //!
 //! @details Shorthand for `std::tuple_element_t<0, std::tuple<Types...>>`.
-template <typename... Types> using first = internal::first<Types...>;
+template <typename... Types> using first = kalman_internal::first<Types...>;
 
 //! @brief An alias for making a tuple of the same type.
 template <typename Type, std::size_t Size>
-using tuple_n_type = internal::tuple_n_type<Type, Size>;
+using tuple_n_type = kalman_internal::tuple_n_type<Type, Size>;
 
 //! @brief Type multiplies expression type specialization point.
 template <typename Lhs, typename Rhs> struct multiplies {
@@ -239,7 +241,7 @@ using ᴀʙᵀ = evaluate<product<Lhs, evaluate<transpose<Rhs>>>>;
 template <std::size_t Begin, std::size_t End, std::size_t Increment,
           typename Function>
 inline constexpr void for_constexpr(Function &&function) {
-  internal::for_constexpr<Begin, End, Increment>(
+  kalman_internal::for_constexpr<Begin, End, Increment>(
       std::forward<Function>(function));
 }
 
@@ -252,11 +254,11 @@ inline constexpr void for_constexpr(Function &&function) {
 //!
 //! @details Convenient short form. In place of `std::tuple_size_v`.
 template <typename Pack>
-inline constexpr std::size_t size{internal::size<Pack>};
+inline constexpr std::size_t size{kalman_internal::size<Pack>};
 
 //! @brief Unpack the first value of the non-type template parameter pack.
 template <auto... Values>
-inline constexpr auto first_v{internal::first_v<Values...>};
+inline constexpr auto first_v{kalman_internal::first_v<Values...>};
 
 //! @brief The one matrix.
 //!
@@ -264,7 +266,7 @@ inline constexpr auto first_v{internal::first_v<Values...>};
 //! to ones, and zeroes everywhere else. This matrix is also known as the
 //! identity matrix for square matrices of non-quantity scalar types.
 template <typename Type = double>
-inline constexpr Type one{internal::not_implemented<Type>{
+inline constexpr Type one{kalman_internal::not_implemented<Type>{
     "Implement the linear algebra one-diagonal matrix for this type."}};
 
 //! @brief The singleton one matrix specialization.
@@ -282,7 +284,7 @@ inline auto one<Type>{Type::identity()};
 //!
 //! @details User-defined.
 template <typename Type = double>
-inline constexpr Type zero{internal::not_implemented<Type>{
+inline constexpr Type zero{kalman_internal::not_implemented<Type>{
     "Implement the linear algebra zero matrix for this type."}};
 
 //! @brief The singleton zero matrix specialization.

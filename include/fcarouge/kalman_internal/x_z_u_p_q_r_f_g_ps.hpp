@@ -36,15 +36,15 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
-#define FCAROUGE_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
+#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
 
 #include "fcarouge/utility.hpp"
 #include "function.hpp"
 
 #include <tuple>
 
-namespace fcarouge::internal {
+namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
 template <typename, typename, typename, typename, typename>
 struct x_z_u_p_q_r_f_g_ps final {};
@@ -116,6 +116,6 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
     p = estimate_uncertainty{f * p * t(f) + q};
   }
 };
-} // namespace fcarouge::internal
+} // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
