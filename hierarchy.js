@@ -1,30 +1,30 @@
 var hierarchy =
 [
-    [ "fcarouge::internal::conditional_input< Filter >", null, [
-      [ "fcarouge::internal::conditional_member_types< Filter >", null, [
+    [ "fcarouge::kalman_internal::conditional_input< Filter >", null, [
+      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, [
         [ "fcarouge::kalman< Filter >", "classfcarouge_1_1kalman.xhtml", null ]
       ] ]
     ] ],
-    [ "fcarouge::internal::conditional_input_control< Filter >", null, [
-      [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_internal::conditional_input_control< Filter >", null, [
+      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::internal::conditional_output_model< Filter >", null, [
-      [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_internal::conditional_output_model< Filter >", null, [
+      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::internal::conditional_output_uncertainty< Filter >", null, [
-      [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_internal::conditional_output_uncertainty< Filter >", null, [
+      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::internal::conditional_prediction_types< Filter >", null, [
-      [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_internal::conditional_prediction_types< Filter >", null, [
+      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::internal::conditional_process_uncertainty< Filter >", null, [
-      [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_internal::conditional_process_uncertainty< Filter >", null, [
+      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::internal::conditional_state_transition< Filter >", null, [
-      [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_internal::conditional_state_transition< Filter >", null, [
+      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::internal::conditional_update_types< Filter >", null, [
-      [ "fcarouge::internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_internal::conditional_update_types< Filter >", null, [
+      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
     [ "fcarouge::divides< Lhs, Rhs >", "structfcarouge_1_1divides.xhtml", null ],
     [ "fcarouge::indexed::element_traits< Underlying, Type >", "structfcarouge_1_1indexed_1_1element__traits.xhtml", null ],

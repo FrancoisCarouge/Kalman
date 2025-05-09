@@ -181,7 +181,7 @@ template&lt;auto StateSize, auto InputSize&gt; </div>
 <div class="line"><span class="lineno">   79</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   80</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
 <div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>    <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.predict(u);</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict(u);</div>
 <div class="line"><span class="lineno">   83</span> </div>
 <div class="line"><span class="lineno">   84</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><span class="lineno">   85</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end{clock::now()};</div>
@@ -192,10 +192,10 @@ template&lt;auto StateSize, auto InputSize&gt; </div>
 <div class="line"><span class="lineno">   90</span>}</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00126">kalman.hpp:126</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03_xhtml_af51164b0f273b1c30d3ff438e5765333"><div class="ttname"><a href="#af51164b0f273b1c30d3ff438e5765333">fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; float, Size &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="predict__linalg__x1x_8cpp_source.xhtml#l00056">predict_linalg_x1x.cpp:56</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00355">factory.hpp:355</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00355">factory.hpp:355</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a0480c6f84be0a01264da3eb984c103e1"><div class="ttname"><a href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00068">unit.hpp:68</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00241">fcarouge::for_constexpr()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00243">fcarouge::for_constexpr()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">

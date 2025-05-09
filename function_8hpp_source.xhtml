@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: /github/workspace/include/fcarouge/internal/function.hpp Source File</title>
+<title>Kalman: /github/workspace/include/fcarouge/kalman_internal/function.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -141,23 +141,23 @@ $(function(){initNavTree('function_8hpp_source.xhtml',''); initResizable(true); 
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifndef FCAROUGE_INTERNAL_FUNCTION_HPP</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define FCAROUGE_INTERNAL_FUNCTION_HPP</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifndef FCAROUGE_KALMAN_INTERNAL_FUNCTION_HPP</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define FCAROUGE_KALMAN_INTERNAL_FUNCTION_HPP</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1kalman__internal.xhtml">fcarouge::kalman_internal</a> {</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Compile-time `std::function` partial drop-in.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Undefined&gt; <span class="keyword">class </span><a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Undefined&gt; <span class="keyword">class </span><a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#aae3a67a49bba50976bb2b701fcc42a1e">function</a>;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Result, <span class="keyword">typename</span>... Arguments&gt;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">class </span><a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>&lt;Result(Arguments...)&gt; {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">class </span><a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#aae3a67a49bba50976bb2b701fcc42a1e">function</a>&lt;Result(Arguments...)&gt; {</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">constexpr</span> <span class="keyword">explicit</span> <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(Callable callee)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">constexpr</span> <span class="keyword">explicit</span> <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#aae3a67a49bba50976bb2b701fcc42a1e">function</a>(Callable callee)</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      : storage{std::make_unique&lt;implementation&lt;Callable&gt;&gt;(callee)} {}</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt; <a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a> &amp;operator=(Callable &amp;&amp;callee) {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt; <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#aae3a67a49bba50976bb2b701fcc42a1e">function</a> &amp;operator=(Callable &amp;&amp;callee) {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    storage = std::make_unique&lt;implementation&lt;Callable&gt;&gt;(callee);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  }</div>
@@ -195,26 +195,26 @@ $(function(){initNavTree('function_8hpp_source.xhtml',''); initResizable(true); 
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1internal.xhtml#a99984353681a4a83c0a5faef0e324e2a">   94</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1internal.xhtml#a99984353681a4a83c0a5faef0e324e2a">function_traits_t</a> =</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1kalman__internal.xhtml#a6eb535a104d766973001e6cd7b1f758b">   94</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a6eb535a104d766973001e6cd7b1f758b">function_traits_t</a> =</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    function_traits&lt;<span class="keyword">decltype</span>(&amp;Callable::operator())&gt;::type;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">   98</a></span><a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(Callable) -&gt; function&lt;function_traits_t&lt;Callable&gt;&gt;;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1kalman__internal.xhtml#aae3a67a49bba50976bb2b701fcc42a1e">   98</a></span><a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#aae3a67a49bba50976bb2b701fcc42a1e">function</a>(Callable) -&gt; function&lt;function_traits_t&lt;Callable&gt;&gt;;</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Result, <span class="keyword">typename</span>... Arguments&gt;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1internal.xhtml#ad6134456168f37df9efe83c31baf5629">  101</a></span><a class="code hl_function" href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">function</a>(Result(Arguments...)) -&gt; function&lt;Result(Arguments...)&gt;;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>} <span class="comment">// namespace fcarouge::internal</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1kalman__internal.xhtml#a46020ed3a3c430a828e6c96cb2ecc5b3">  101</a></span><a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#aae3a67a49bba50976bb2b701fcc42a1e">function</a>(Result(Arguments...)) -&gt; function&lt;Result(Arguments...)&gt;;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>} <span class="comment">// namespace fcarouge::kalman_internal</span></div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_INTERNAL_FUNCTION_HPP</span></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a></div><div class="ttdoc">Internal implementation details.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90ed417b141d4a9d567a4bcfadcd6b6e"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90ed417b141d4a9d567a4bcfadcd6b6e">fcarouge::internal::function</a></div><div class="ttdeci">function(Callable) -&gt; function&lt; function_traits_t&lt; Callable &gt; &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a99984353681a4a83c0a5faef0e324e2a"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a99984353681a4a83c0a5faef0e324e2a">fcarouge::internal::function_traits_t</a></div><div class="ttdeci">function_traits&lt; decltype(&amp;Callable::operator())&gt;::type function_traits_t</div><div class="ttdef"><b>Definition</b> <a href="#l00094">function.hpp:94</a></div></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_INTERNAL_FUNCTION_HPP</span></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml">fcarouge::kalman_internal</a></div><div class="ttdoc">Internal implementation details.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a6eb535a104d766973001e6cd7b1f758b"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a6eb535a104d766973001e6cd7b1f758b">fcarouge::kalman_internal::function_traits_t</a></div><div class="ttdeci">function_traits&lt; decltype(&amp;Callable::operator())&gt;::type function_traits_t</div><div class="ttdef"><b>Definition</b> <a href="#l00094">function.hpp:94</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_aae3a67a49bba50976bb2b701fcc42a1e"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#aae3a67a49bba50976bb2b701fcc42a1e">fcarouge::kalman_internal::function</a></div><div class="ttdeci">function(Callable) -&gt; function&lt; function_traits_t&lt; Callable &gt; &gt;</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="function_8hpp.xhtml">function.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_5c3532884164bb88b0a2e2abaff977cb.xhtml">kalman_internal</a></li><li class="navelem"><a class="el" href="function_8hpp.xhtml">function.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

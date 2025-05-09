@@ -12,13 +12,13 @@ var searchData=
   ['to_5funderlying_9',['to_underlying',['../structfcarouge_1_1indexed_1_1element__traits.xhtml#a8d479a35602790f3dff1ac6975b58748',1,'fcarouge::indexed::element_traits::to_underlying()'],['../structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163.xhtml#abd6e504a35b6dc46d40b1c76e681d878',1,'fcarouge::indexed::element_traits&lt; Representation, mp_units::quantity_point&lt; Reference, OriginPoint, Representation &gt; &gt;::to_underlying()'],['../structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384.xhtml#a2d576e12eb9cf4ea74ed30b705385afe',1,'fcarouge::indexed::element_traits&lt; Representation, mp_units::quantity&lt; Reference, Representation &gt; &gt;::to_underlying()']]],
   ['todo_20list_10',['Todo List',['../todo.xhtml',1,'']]],
   ['tradeoffs_11',['Selected Tradeoffs',['../index.xhtml#selected-tradeoffs',1,'']]],
-  ['transition_12',['transition',['../namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41',1,'fcarouge::internal']]],
+  ['transition_12',['transition',['../namespacefcarouge_1_1kalman__internal.xhtml#a22b52e1829f5b9cee3e159cf7ec7e00a',1,'fcarouge::kalman_internal']]],
   ['transpose_13',['transpose',['../namespacefcarouge.xhtml#a06ed7a99de8c150ba47d98be11bf795d',1,'fcarouge']]],
   ['transposes_14',['transposes',['../structfcarouge_1_1transposes.xhtml',1,'fcarouge']]],
   ['transposes_3c_20indexedmatrix_3c_20matrix_2c_20rowindexes_2c_20columnindexes_20_3e_20_3e_15',['transposes&lt; IndexedMatrix&lt; Matrix, RowIndexes, ColumnIndexes &gt; &gt;',['../structfcarouge_1_1transposes_3_01_indexed_matrix_3_01_matrix_00_01_row_indexes_00_01_column_indexes_01_4_01_4.xhtml',1,'fcarouge']]],
   ['transposes_3c_20naive_3a_3amatrix_3c_20type_2c_20row_2c_20column_20_3e_20_3e_16',['transposes&lt; naive::matrix&lt; Type, Row, Column &gt; &gt;',['../structfcarouge_1_1transposes_3_01naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_01_4.xhtml',1,'fcarouge']]],
   ['transposes_3c_20type_20_3e_17',['transposes&lt; Type &gt;',['../structfcarouge_1_1transposes_3_01_type_01_4.xhtml',1,'fcarouge']]],
-  ['tuple_5fn_5ftype_18',['tuple_n_type',['../namespacefcarouge_1_1internal.xhtml#a2d608d28c8cff822a3dfaf1daeb0b15e',1,'fcarouge::internal::tuple_n_type'],['../namespacefcarouge.xhtml#a0c5e16e2c726f4a91a88f3563be340b7',1,'fcarouge::tuple_n_type']]],
+  ['tuple_5fn_5ftype_18',['tuple_n_type',['../namespacefcarouge_1_1kalman__internal.xhtml#a6050c2c2ac7054eaffa8e5c58dab7bd4',1,'fcarouge::kalman_internal::tuple_n_type'],['../namespacefcarouge.xhtml#a507f2bec715f9eb51f61172ca3fbc997',1,'fcarouge::tuple_n_type']]],
   ['type_2ehpp_19',['type.hpp',['../type_8hpp.xhtml',1,'']]],
   ['types_20',['Member Types',['../index.xhtml#member-types',1,'']]]
 ];

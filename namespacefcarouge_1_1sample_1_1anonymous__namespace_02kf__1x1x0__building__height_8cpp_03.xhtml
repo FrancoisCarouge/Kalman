@@ -141,10 +141,10 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   76</span>                <span class="comment">// measurement, output uncertainty is: R = 25 m^2.</span></div>
 <div class="line"><span class="lineno">   77</span>                output_uncertainty{25.}};</div>
 <div class="line"><span class="lineno">   78</span> </div>
-<div class="line"><span class="lineno">   79</span>  assert(60 == <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x() &amp;&amp;</div>
+<div class="line"><span class="lineno">   79</span>  assert(60 == <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x() &amp;&amp;</div>
 <div class="line"><span class="lineno">   80</span>         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line"><span class="lineno">   81</span>         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
-<div class="line"><span class="lineno">   82</span>  assert(225 == <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.p() &amp;&amp;</div>
+<div class="line"><span class="lineno">   82</span>  assert(225 == <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p() &amp;&amp;</div>
 <div class="line"><span class="lineno">   83</span>         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line"><span class="lineno">   84</span>         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"><span class="lineno">   85</span> </div>
@@ -152,29 +152,29 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   87</span>  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
 <div class="line"><span class="lineno">   88</span>  <span class="comment">// noise covariance Q is null in this example.</span></div>
 <div class="line"><span class="lineno">   89</span>  <span class="comment">// Measure and update: the first measurement is: z1 = 48.54m.</span></div>
-<div class="line"><span class="lineno">   90</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(48.54);</div>
+<div class="line"><span class="lineno">   90</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(48.54);</div>
 <div class="line"><span class="lineno">   91</span> </div>
 <div class="line"><span class="lineno">   92</span>  <span class="comment">// And so on.</span></div>
-<div class="line"><span class="lineno">   93</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(47.11);</div>
-<div class="line"><span class="lineno">   94</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(55.01);</div>
-<div class="line"><span class="lineno">   95</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(55.15);</div>
-<div class="line"><span class="lineno">   96</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(49.89);</div>
-<div class="line"><span class="lineno">   97</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(40.85);</div>
-<div class="line"><span class="lineno">   98</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(46.72);</div>
-<div class="line"><span class="lineno">   99</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(50.05);</div>
-<div class="line"><span class="lineno">  100</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(51.27);</div>
-<div class="line"><span class="lineno">  101</span>  <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.update(49.95);</div>
+<div class="line"><span class="lineno">   93</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(47.11);</div>
+<div class="line"><span class="lineno">   94</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(55.01);</div>
+<div class="line"><span class="lineno">   95</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(55.15);</div>
+<div class="line"><span class="lineno">   96</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(49.89);</div>
+<div class="line"><span class="lineno">   97</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(40.85);</div>
+<div class="line"><span class="lineno">   98</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(46.72);</div>
+<div class="line"><span class="lineno">   99</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(50.05);</div>
+<div class="line"><span class="lineno">  100</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(51.27);</div>
+<div class="line"><span class="lineno">  101</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(49.95);</div>
 <div class="line"><span class="lineno">  102</span> </div>
 <div class="line"><span class="lineno">  103</span>  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line"><span class="lineno">  104</span>  <span class="comment">// at 49.57m.</span></div>
-<div class="line"><span class="lineno">  105</span>  assert(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">filter</a>.x() / 49.57) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  105</span>  assert(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x() / 49.57) &lt; 0.001 &amp;&amp;</div>
 <div class="line"><span class="lineno">  106</span>         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line"><span class="lineno">  107</span>         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"><span class="lineno">  108</span> </div>
 <div class="line"><span class="lineno">  109</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  110</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00126">kalman.hpp:126</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1internal_xhtml_a90e8b68cdd277f22bfc4b4c678b5c8b8"><div class="ttname"><a href="namespacefcarouge_1_1internal.xhtml#a90e8b68cdd277f22bfc4b4c678b5c8b8">fcarouge::internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00355">factory.hpp:355</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00355">factory.hpp:355</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

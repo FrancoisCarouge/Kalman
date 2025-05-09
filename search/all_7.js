@@ -2,7 +2,7 @@ var searchData=
 [
   ['data_0',['data',['../structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209',1,'fcarouge::indexed::matrix::data'],['../structfcarouge_1_1naive_1_1matrix.xhtml#a15e1f8de54dbe4186bf17501a9ac073b',1,'fcarouge::naive::matrix::data']]],
   ['declaration_1',['Declaration',['../index.xhtml#declaration',1,'']]],
-  ['deduce_5ffilter_2',['deduce_filter',['../namespacefcarouge_1_1internal.xhtml#a0005e5cf17f05f289eaf8a5bc9ffeda5',1,'fcarouge::internal']]],
+  ['deduce_5ffilter_2',['deduce_filter',['../namespacefcarouge_1_1kalman__internal.xhtml#a083c7633e41b94b1c0cf980cd4a51d74',1,'fcarouge::kalman_internal']]],
   ['definitions_3',['Definitions',['../index.xhtml#definitions',1,'']]],
   ['deg_5fc2_4',['deg_C2',['../namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775',1,'fcarouge']]],
   ['deployment_20actions_5',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],

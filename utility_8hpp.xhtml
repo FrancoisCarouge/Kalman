@@ -110,7 +110,7 @@ $(function(){initNavTree('utility_8hpp.xhtml',''); initResizable(true); });
 
 <p>The collection of utilities supporting the library.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="internal_2utility_8hpp_source.xhtml">internal/utility.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="kalman__internal_2utility_8hpp_source.xhtml">kalman_internal/utility.hpp</a>&quot;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -204,11 +204,11 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Named Values</div></td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903" id="r_ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
-<tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">fcarouge::size</a> {internal::size&lt;Pack&gt;}</td></tr>
+<tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">fcarouge::size</a> {kalman_internal::size&lt;Pack&gt;}</td></tr>
 <tr class="memdesc:ac4cffefdda8c01a267ce2700c6acb903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of tuple-like types.  <br /></td></tr>
 <tr class="separator:ac4cffefdda8c01a267ce2700c6acb903"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77" id="r_a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplParams" colspan="2">template&lt;auto... Values&gt; </td></tr>
-<tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77">fcarouge::first_v</a> {internal::first_v&lt;Values...&gt;}</td></tr>
+<tr class="memitem:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a1e0d4e00e05e1ca7701aa8dfc9681d77">fcarouge::first_v</a> {kalman_internal::first_v&lt;Values...&gt;}</td></tr>
 <tr class="memdesc:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first value of the non-type template parameter pack.  <br /></td></tr>
 <tr class="separator:a1e0d4e00e05e1ca7701aa8dfc9681d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8887e952722c60720253e416166a9233" id="r_a8887e952722c60720253e416166a9233"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
@@ -249,17 +249,17 @@ requires requires { Type::zero(); }</td></tr>
 <tr class="memitem:a06ed7a99de8c150ba47d98be11bf795d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a06ed7a99de8c150ba47d98be11bf795d">fcarouge::transpose</a> = std::invoke_result_t&lt;<a class="el" href="structfcarouge_1_1transposes.xhtml">transposes</a>&lt;Type&gt;, const Type &amp;&gt;</td></tr>
 <tr class="memdesc:a06ed7a99de8c150ba47d98be11bf795d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transposer helper type.  <br /></td></tr>
 <tr class="separator:a06ed7a99de8c150ba47d98be11bf795d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a463eb0fdde0b3d3ea64b5a16fa95b253" id="r_a463eb0fdde0b3d3ea64b5a16fa95b253"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a463eb0fdde0b3d3ea64b5a16fa95b253">fcarouge::empty_tuple</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#aba5eb00c20ad829026fe88a48785307d">internal::empty_tuple</a></td></tr>
-<tr class="memdesc:a463eb0fdde0b3d3ea64b5a16fa95b253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the empty tuple.  <br /></td></tr>
-<tr class="separator:a463eb0fdde0b3d3ea64b5a16fa95b253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88ffaddfc70067199a9f22246b9d7220" id="r_a88ffaddfc70067199a9f22246b9d7220"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:a88ffaddfc70067199a9f22246b9d7220"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a88ffaddfc70067199a9f22246b9d7220">fcarouge::first</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a9b7b21596c593512e73cd0298ff05c47">internal::first</a>&lt;Types...&gt;</td></tr>
-<tr class="memdesc:a88ffaddfc70067199a9f22246b9d7220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first type of the type template parameter pack.  <br /></td></tr>
-<tr class="separator:a88ffaddfc70067199a9f22246b9d7220"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c5e16e2c726f4a91a88f3563be340b7" id="r_a0c5e16e2c726f4a91a88f3563be340b7"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
-<tr class="memitem:a0c5e16e2c726f4a91a88f3563be340b7"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a0c5e16e2c726f4a91a88f3563be340b7">fcarouge::tuple_n_type</a> = <a class="el" href="namespacefcarouge_1_1internal.xhtml#a2d608d28c8cff822a3dfaf1daeb0b15e">internal::tuple_n_type</a>&lt;Type, Size&gt;</td></tr>
-<tr class="memdesc:a0c5e16e2c726f4a91a88f3563be340b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alias for making a tuple of the same type.  <br /></td></tr>
-<tr class="separator:a0c5e16e2c726f4a91a88f3563be340b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65f3b3f6c8585f8fa1a66b73611a0f80" id="r_a65f3b3f6c8585f8fa1a66b73611a0f80"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a65f3b3f6c8585f8fa1a66b73611a0f80">fcarouge::empty_tuple</a> = <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a07fc27e05c31227e1a2cbb18f40437ee">kalman_internal::empty_tuple</a></td></tr>
+<tr class="memdesc:a65f3b3f6c8585f8fa1a66b73611a0f80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the empty tuple.  <br /></td></tr>
+<tr class="separator:a65f3b3f6c8585f8fa1a66b73611a0f80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6cd29f601f05a5f692380821fa33488" id="r_ae6cd29f601f05a5f692380821fa33488"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:ae6cd29f601f05a5f692380821fa33488"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ae6cd29f601f05a5f692380821fa33488">fcarouge::first</a> = <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a66f34e6d5c7f8322c4d5f63051e20139">kalman_internal::first</a>&lt;Types...&gt;</td></tr>
+<tr class="memdesc:ae6cd29f601f05a5f692380821fa33488"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first type of the type template parameter pack.  <br /></td></tr>
+<tr class="separator:ae6cd29f601f05a5f692380821fa33488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a507f2bec715f9eb51f61172ca3fbc997" id="r_a507f2bec715f9eb51f61172ca3fbc997"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
+<tr class="memitem:a507f2bec715f9eb51f61172ca3fbc997"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a507f2bec715f9eb51f61172ca3fbc997">fcarouge::tuple_n_type</a> = <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a6050c2c2ac7054eaffa8e5c58dab7bd4">kalman_internal::tuple_n_type</a>&lt;Type, Size&gt;</td></tr>
+<tr class="memdesc:a507f2bec715f9eb51f61172ca3fbc997"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alias for making a tuple of the same type.  <br /></td></tr>
+<tr class="separator:a507f2bec715f9eb51f61172ca3fbc997"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26e349ac2062d99cb0962705f1f93657" id="r_a26e349ac2062d99cb0962705f1f93657"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
 <tr class="memitem:a26e349ac2062d99cb0962705f1f93657"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a26e349ac2062d99cb0962705f1f93657">fcarouge::product</a></td></tr>
 <tr class="memdesc:a26e349ac2062d99cb0962705f1f93657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the product.  <br /></td></tr>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: /github/workspace/include/fcarouge/internal/type.hpp File Reference</title>
+<title>Kalman: /github/workspace/include/fcarouge/kalman_internal/type.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -115,14 +115,14 @@ $(function(){initNavTree('type_8hpp.xhtml',''); initResizable(true); });
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="type_8hpp__incl.svg" width="447" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="type_8hpp__incl.svg" width="482" height="288"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="type_8hpp__dep__incl.svg" width="100%" height="549"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="type_8hpp__dep__incl.svg" width="100%" height="572"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div>
 <p><a href="type_8hpp_source.xhtml">Go to the source code of this file.</a></p>
@@ -132,82 +132,82 @@ Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></td></tr>
 <tr class="memdesc:namespacefcarouge"><td class="mdescLeft">&#160;</td><td class="mdescRight">Francois Carouge's projects namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml">fcarouge::internal</a></td></tr>
-<tr class="memdesc:namespacefcarouge_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal implementation details. <br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml">fcarouge::kalman_internal</a></td></tr>
+<tr class="memdesc:namespacefcarouge_1_1kalman__internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal implementation details. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a040f0f8f1c580c270311aac67e8706e6" id="r_a040f0f8f1c580c270311aac67e8706e6"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a040f0f8f1c580c270311aac67e8706e6"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a040f0f8f1c580c270311aac67e8706e6">fcarouge::internal::state</a> (Type) -&gt; state&lt; Type &gt;</td></tr>
-<tr class="separator:a040f0f8f1c580c270311aac67e8706e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab813a4faf91fc71b236215078cc26fc8" id="r_ab813a4faf91fc71b236215078cc26fc8"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:ab813a4faf91fc71b236215078cc26fc8"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ab813a4faf91fc71b236215078cc26fc8">fcarouge::internal::state</a> (Types... elements) -&gt; state&lt; std::remove_cvref_t&lt; <a class="el" href="namespacefcarouge_1_1internal.xhtml#a9b7b21596c593512e73cd0298ff05c47">first</a>&lt; Types... &gt; &gt;[sizeof...(Types)]&gt;</td></tr>
-<tr class="separator:ab813a4faf91fc71b236215078cc26fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f2c9f1d6c11710ebe51a102f09e170b" id="r_a8f2c9f1d6c11710ebe51a102f09e170b"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a8f2c9f1d6c11710ebe51a102f09e170b"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a8f2c9f1d6c11710ebe51a102f09e170b">fcarouge::internal::estimate_uncertainty</a> (Element) -&gt; estimate_uncertainty&lt; Element &gt;</td></tr>
-<tr class="separator:a8f2c9f1d6c11710ebe51a102f09e170b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7213754d98a49db89e229e2edd49b6e1" id="r_a7213754d98a49db89e229e2edd49b6e1"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a7213754d98a49db89e229e2edd49b6e1"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a7213754d98a49db89e229e2edd49b6e1">fcarouge::internal::estimate_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; estimate_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:a7213754d98a49db89e229e2edd49b6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a665945f3d976759241bf85f4102a2d16" id="r_a665945f3d976759241bf85f4102a2d16"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a665945f3d976759241bf85f4102a2d16"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a665945f3d976759241bf85f4102a2d16">fcarouge::internal::output_uncertainty</a> (Element) -&gt; output_uncertainty&lt; Element &gt;</td></tr>
-<tr class="separator:a665945f3d976759241bf85f4102a2d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd5512d7c57f5fc9d7cccbbc1e4cce1d" id="r_abd5512d7c57f5fc9d7cccbbc1e4cce1d"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:abd5512d7c57f5fc9d7cccbbc1e4cce1d"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#abd5512d7c57f5fc9d7cccbbc1e4cce1d">fcarouge::internal::output_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; output_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:abd5512d7c57f5fc9d7cccbbc1e4cce1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88ca8cd4d48af886c2c73835d77a1bf3" id="r_a88ca8cd4d48af886c2c73835d77a1bf3"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a88ca8cd4d48af886c2c73835d77a1bf3"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a88ca8cd4d48af886c2c73835d77a1bf3">fcarouge::internal::process_uncertainty</a> (Element) -&gt; process_uncertainty&lt; Element &gt;</td></tr>
-<tr class="separator:a88ca8cd4d48af886c2c73835d77a1bf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7a9dc7eaefafaadd185f6e63bab462c" id="r_af7a9dc7eaefafaadd185f6e63bab462c"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:af7a9dc7eaefafaadd185f6e63bab462c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#af7a9dc7eaefafaadd185f6e63bab462c">fcarouge::internal::process_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; process_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:af7a9dc7eaefafaadd185f6e63bab462c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af41c59712adaec8d2aac3366133cd381" id="r_af41c59712adaec8d2aac3366133cd381"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:af41c59712adaec8d2aac3366133cd381"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#af41c59712adaec8d2aac3366133cd381">fcarouge::internal::output_model</a> (Element) -&gt; output_model&lt; Element &gt;</td></tr>
-<tr class="separator:af41c59712adaec8d2aac3366133cd381"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a830115a9f1a070a3d89373b6c31a94bc" id="r_a830115a9f1a070a3d89373b6c31a94bc"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a830115a9f1a070a3d89373b6c31a94bc"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a830115a9f1a070a3d89373b6c31a94bc">fcarouge::internal::output_model</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; output_model&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:a830115a9f1a070a3d89373b6c31a94bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a198bcbdb5521548ddb61317e21ff8f1f" id="r_a198bcbdb5521548ddb61317e21ff8f1f"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a198bcbdb5521548ddb61317e21ff8f1f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a198bcbdb5521548ddb61317e21ff8f1f">fcarouge::internal::state_transition</a> (Element) -&gt; state_transition&lt; Element &gt;</td></tr>
-<tr class="separator:a198bcbdb5521548ddb61317e21ff8f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe8ad2f640331f3c717475d3e191e111" id="r_afe8ad2f640331f3c717475d3e191e111"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:afe8ad2f640331f3c717475d3e191e111"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#afe8ad2f640331f3c717475d3e191e111">fcarouge::internal::state_transition</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; state_transition&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:afe8ad2f640331f3c717475d3e191e111"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab441fe9a9ee342227522822f5245e2a2" id="r_ab441fe9a9ee342227522822f5245e2a2"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:ab441fe9a9ee342227522822f5245e2a2"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ab441fe9a9ee342227522822f5245e2a2">fcarouge::internal::input_control</a> (Element) -&gt; input_control&lt; Element &gt;</td></tr>
-<tr class="separator:ab441fe9a9ee342227522822f5245e2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4d0c3652155e31911d9268f2f5c0a89" id="r_ab4d0c3652155e31911d9268f2f5c0a89"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:ab4d0c3652155e31911d9268f2f5c0a89"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ab4d0c3652155e31911d9268f2f5c0a89">fcarouge::internal::input_control</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; input_control&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:ab4d0c3652155e31911d9268f2f5c0a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab650a2bb0de1f418440b1d5cf8903b41" id="r_ab650a2bb0de1f418440b1d5cf8903b41"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:ab650a2bb0de1f418440b1d5cf8903b41"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ab650a2bb0de1f418440b1d5cf8903b41">fcarouge::internal::transition</a> (Element) -&gt; transition&lt; Element &gt;</td></tr>
-<tr class="separator:ab650a2bb0de1f418440b1d5cf8903b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79f6e22e40f939028ed33d22111a4f39" id="r_a79f6e22e40f939028ed33d22111a4f39"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a79f6e22e40f939028ed33d22111a4f39"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a79f6e22e40f939028ed33d22111a4f39">fcarouge::internal::observation</a> (Element) -&gt; observation&lt; Element &gt;</td></tr>
-<tr class="separator:a79f6e22e40f939028ed33d22111a4f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaee731a1056be491235cf4d2eb38f28" id="r_aeaee731a1056be491235cf4d2eb38f28"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:aeaee731a1056be491235cf4d2eb38f28"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#aeaee731a1056be491235cf4d2eb38f28">fcarouge::kalman_internal::state</a> (Type) -&gt; state&lt; Type &gt;</td></tr>
+<tr class="separator:aeaee731a1056be491235cf4d2eb38f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7abb071c20982067891831210e766a87" id="r_a7abb071c20982067891831210e766a87"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a7abb071c20982067891831210e766a87"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a7abb071c20982067891831210e766a87">fcarouge::kalman_internal::state</a> (Types... elements) -&gt; state&lt; std::remove_cvref_t&lt; <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a66f34e6d5c7f8322c4d5f63051e20139">first</a>&lt; Types... &gt; &gt;[sizeof...(Types)]&gt;</td></tr>
+<tr class="separator:a7abb071c20982067891831210e766a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad944fff1255f0b88385d27ab351af75f" id="r_ad944fff1255f0b88385d27ab351af75f"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:ad944fff1255f0b88385d27ab351af75f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#ad944fff1255f0b88385d27ab351af75f">fcarouge::kalman_internal::estimate_uncertainty</a> (Element) -&gt; estimate_uncertainty&lt; Element &gt;</td></tr>
+<tr class="separator:ad944fff1255f0b88385d27ab351af75f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab62b02aa1c1f21ec568391f1c078bc70" id="r_ab62b02aa1c1f21ec568391f1c078bc70"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:ab62b02aa1c1f21ec568391f1c078bc70"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#ab62b02aa1c1f21ec568391f1c078bc70">fcarouge::kalman_internal::estimate_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; estimate_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
+<tr class="separator:ab62b02aa1c1f21ec568391f1c078bc70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0d4cb88e21450951fd7dc06f745f71b" id="r_ae0d4cb88e21450951fd7dc06f745f71b"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:ae0d4cb88e21450951fd7dc06f745f71b"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">fcarouge::kalman_internal::output_uncertainty</a> (Element) -&gt; output_uncertainty&lt; Element &gt;</td></tr>
+<tr class="separator:ae0d4cb88e21450951fd7dc06f745f71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae989c614bbf3f2ea5212a80dc2d5f93f" id="r_ae989c614bbf3f2ea5212a80dc2d5f93f"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:ae989c614bbf3f2ea5212a80dc2d5f93f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#ae989c614bbf3f2ea5212a80dc2d5f93f">fcarouge::kalman_internal::output_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; output_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
+<tr class="separator:ae989c614bbf3f2ea5212a80dc2d5f93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a9cf33472fe67bd423c384ef492c25" id="r_ac6a9cf33472fe67bd423c384ef492c25"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:ac6a9cf33472fe67bd423c384ef492c25"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#ac6a9cf33472fe67bd423c384ef492c25">fcarouge::kalman_internal::process_uncertainty</a> (Element) -&gt; process_uncertainty&lt; Element &gt;</td></tr>
+<tr class="separator:ac6a9cf33472fe67bd423c384ef492c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f1c468db7cb2316fdf3b15ca5bb1deb" id="r_a4f1c468db7cb2316fdf3b15ca5bb1deb"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:a4f1c468db7cb2316fdf3b15ca5bb1deb"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a4f1c468db7cb2316fdf3b15ca5bb1deb">fcarouge::kalman_internal::process_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; process_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
+<tr class="separator:a4f1c468db7cb2316fdf3b15ca5bb1deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cde5a9f3fe3a8d4f14ea136c15227dd" id="r_a5cde5a9f3fe3a8d4f14ea136c15227dd"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:a5cde5a9f3fe3a8d4f14ea136c15227dd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a5cde5a9f3fe3a8d4f14ea136c15227dd">fcarouge::kalman_internal::output_model</a> (Element) -&gt; output_model&lt; Element &gt;</td></tr>
+<tr class="separator:a5cde5a9f3fe3a8d4f14ea136c15227dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7dde1c81f65ed97509cde0c8c7e896e" id="r_aa7dde1c81f65ed97509cde0c8c7e896e"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:aa7dde1c81f65ed97509cde0c8c7e896e"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#aa7dde1c81f65ed97509cde0c8c7e896e">fcarouge::kalman_internal::output_model</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; output_model&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
+<tr class="separator:aa7dde1c81f65ed97509cde0c8c7e896e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1a1ab117704e8837bb031d8c597826c" id="r_ac1a1ab117704e8837bb031d8c597826c"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:ac1a1ab117704e8837bb031d8c597826c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#ac1a1ab117704e8837bb031d8c597826c">fcarouge::kalman_internal::state_transition</a> (Element) -&gt; state_transition&lt; Element &gt;</td></tr>
+<tr class="separator:ac1a1ab117704e8837bb031d8c597826c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a9f3fadd77b821228364eae6dbdee2b" id="r_a4a9f3fadd77b821228364eae6dbdee2b"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:a4a9f3fadd77b821228364eae6dbdee2b"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a4a9f3fadd77b821228364eae6dbdee2b">fcarouge::kalman_internal::state_transition</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; state_transition&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
+<tr class="separator:a4a9f3fadd77b821228364eae6dbdee2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fdb5b3b4fc087c9c7913bc64708ec66" id="r_a6fdb5b3b4fc087c9c7913bc64708ec66"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:a6fdb5b3b4fc087c9c7913bc64708ec66"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a6fdb5b3b4fc087c9c7913bc64708ec66">fcarouge::kalman_internal::input_control</a> (Element) -&gt; input_control&lt; Element &gt;</td></tr>
+<tr class="separator:a6fdb5b3b4fc087c9c7913bc64708ec66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4055b9f72b35c7063dca9be5bfbe0af" id="r_ad4055b9f72b35c7063dca9be5bfbe0af"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:ad4055b9f72b35c7063dca9be5bfbe0af"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#ad4055b9f72b35c7063dca9be5bfbe0af">fcarouge::kalman_internal::input_control</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; input_control&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
+<tr class="separator:ad4055b9f72b35c7063dca9be5bfbe0af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22b52e1829f5b9cee3e159cf7ec7e00a" id="r_a22b52e1829f5b9cee3e159cf7ec7e00a"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:a22b52e1829f5b9cee3e159cf7ec7e00a"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a22b52e1829f5b9cee3e159cf7ec7e00a">fcarouge::kalman_internal::transition</a> (Element) -&gt; transition&lt; Element &gt;</td></tr>
+<tr class="separator:a22b52e1829f5b9cee3e159cf7ec7e00a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a053f2aaec0f20812632149fae25162fd" id="r_a053f2aaec0f20812632149fae25162fd"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
+<tr class="memitem:a053f2aaec0f20812632149fae25162fd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a053f2aaec0f20812632149fae25162fd">fcarouge::kalman_internal::observation</a> (Element) -&gt; observation&lt; Element &gt;</td></tr>
+<tr class="separator:a053f2aaec0f20812632149fae25162fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a391e9f47fc94ced668f789ad1516f36e" id="r_a391e9f47fc94ced668f789ad1516f36e"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a391e9f47fc94ced668f789ad1516f36e"><td class="memTemplItemLeft" align="right" valign="top">input_t&lt; Type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a391e9f47fc94ced668f789ad1516f36e">fcarouge::internal::input</a> {}</td></tr>
-<tr class="separator:a391e9f47fc94ced668f789ad1516f36e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac24c8049c4e106fceffde09c1b168b98" id="r_ac24c8049c4e106fceffde09c1b168b98"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:ac24c8049c4e106fceffde09c1b168b98"><td class="memTemplItemLeft" align="right" valign="top">output_t&lt; Type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#ac24c8049c4e106fceffde09c1b168b98">fcarouge::internal::output</a> {}</td></tr>
-<tr class="separator:ac24c8049c4e106fceffde09c1b168b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02c6376394f58d7070910521c269ee12" id="r_a02c6376394f58d7070910521c269ee12"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:a02c6376394f58d7070910521c269ee12"><td class="memTemplItemLeft" align="right" valign="top">update_types_t&lt; Types... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a02c6376394f58d7070910521c269ee12">fcarouge::internal::update_types</a> {}</td></tr>
-<tr class="separator:a02c6376394f58d7070910521c269ee12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2180ad783ec8536386c01c77681ef3bc" id="r_a2180ad783ec8536386c01c77681ef3bc"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:a2180ad783ec8536386c01c77681ef3bc"><td class="memTemplItemLeft" align="right" valign="top">prediction_types_t&lt; Types... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1internal.xhtml#a2180ad783ec8536386c01c77681ef3bc">fcarouge::internal::prediction_types</a> {}</td></tr>
-<tr class="separator:a2180ad783ec8536386c01c77681ef3bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab14d21f3e63487db138032fd68fafa1" id="r_aab14d21f3e63487db138032fd68fafa1"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:aab14d21f3e63487db138032fd68fafa1"><td class="memTemplItemLeft" align="right" valign="top">input_t&lt; Type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#aab14d21f3e63487db138032fd68fafa1">fcarouge::kalman_internal::input</a> {}</td></tr>
+<tr class="separator:aab14d21f3e63487db138032fd68fafa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb20220c7177353ccce4b967bbbee8b1" id="r_adb20220c7177353ccce4b967bbbee8b1"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:adb20220c7177353ccce4b967bbbee8b1"><td class="memTemplItemLeft" align="right" valign="top">output_t&lt; Type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#adb20220c7177353ccce4b967bbbee8b1">fcarouge::kalman_internal::output</a> {}</td></tr>
+<tr class="separator:adb20220c7177353ccce4b967bbbee8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7589b17e9e7dfb26beb8df5fba5f9442" id="r_a7589b17e9e7dfb26beb8df5fba5f9442"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a7589b17e9e7dfb26beb8df5fba5f9442"><td class="memTemplItemLeft" align="right" valign="top">update_types_t&lt; Types... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a7589b17e9e7dfb26beb8df5fba5f9442">fcarouge::kalman_internal::update_types</a> {}</td></tr>
+<tr class="separator:a7589b17e9e7dfb26beb8df5fba5f9442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ed98641f1ed8202ab40e3e13884203a" id="r_a4ed98641f1ed8202ab40e3e13884203a"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a4ed98641f1ed8202ab40e3e13884203a"><td class="memTemplItemLeft" align="right" valign="top">prediction_types_t&lt; Types... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a4ed98641f1ed8202ab40e3e13884203a">fcarouge::kalman_internal::prediction_types</a> {}</td></tr>
+<tr class="separator:a4ed98641f1ed8202ab40e3e13884203a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_378fe1080454d2b2e5da42d8158af554.xhtml">internal</a></li><li class="navelem"><a class="el" href="type_8hpp.xhtml">type.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_5c3532884164bb88b0a2e2abaff977cb.xhtml">kalman_internal</a></li><li class="navelem"><a class="el" href="type_8hpp.xhtml">type.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

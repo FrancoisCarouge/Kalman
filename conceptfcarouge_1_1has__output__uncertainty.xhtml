@@ -110,13 +110,14 @@ $(function(){initNavTree('conceptfcarouge_1_1has__output__uncertainty.xhtml','')
 <p><code>#include &lt;<a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Filter&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1has__output__uncertainty.xhtml">fcarouge::has_output_uncertainty</a> =  internal::has_output_uncertainty&lt;Filter&gt;</div>
-<div class="ttc" id="aconceptfcarouge_1_1has__output__uncertainty_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1has__output__uncertainty.xhtml">fcarouge::has_output_uncertainty</a></div><div class="ttdoc">Filter output uncertainty support concept.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00093">utility.hpp:93</a></div></div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptfcarouge_1_1has__output__uncertainty.xhtml">fcarouge::has_output_uncertainty</a> = </div>
+<div class="line">    kalman_internal::has_output_uncertainty&lt;Filter&gt;</div>
+<div class="ttc" id="aconceptfcarouge_1_1has__output__uncertainty_xhtml"><div class="ttname"><a href="conceptfcarouge_1_1has__output__uncertainty.xhtml">fcarouge::has_output_uncertainty</a></div><div class="ttdoc">Filter output uncertainty support concept.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00094">utility.hpp:94</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Filter output uncertainty support concept. </p>
 <p>The filter supports the output uncertainty related functionality: <code>output_uncertainty</code> type member and <code>r()</code> method. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00093">93</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00094">94</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
