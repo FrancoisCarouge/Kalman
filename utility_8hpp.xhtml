@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: /github/workspace/include/fcarouge/utility.hpp File Reference</title>
+<title>Kalman: /github/workspace/include/fcarouge/kalman_internal/utility.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -103,22 +103,24 @@ $(function(){initNavTree('utility_8hpp.xhtml',''); initResizable(true); });
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#concepts">Concepts</a>  </div>
+<a href="#concepts">Concepts</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">utility.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>The collection of utilities supporting the library.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="kalman__internal_2utility_8hpp_source.xhtml">kalman_internal/utility.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;concepts&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for utility.hpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="utility_8hpp__incl.svg" width="352" height="199"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="utility_8hpp__incl.svg" width="428" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -154,6 +156,9 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></td></tr>
 <tr class="memdesc:namespacefcarouge"><td class="mdescLeft">&#160;</td><td class="mdescRight">Francois Carouge's projects namespace. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml">fcarouge::kalman_internal</a></td></tr>
+<tr class="memdesc:namespacefcarouge_1_1kalman__internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal implementation details. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
@@ -192,8 +197,25 @@ Concepts</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter output model support concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a07fc27e05c31227e1a2cbb18f40437ee" id="r_a07fc27e05c31227e1a2cbb18f40437ee"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a07fc27e05c31227e1a2cbb18f40437ee">fcarouge::kalman_internal::empty_tuple</a> = std::tuple&lt;&gt;</td></tr>
+<tr class="separator:a07fc27e05c31227e1a2cbb18f40437ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a9ffab51e79feaa4cc54fbad7bff1e" id="r_aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
+<tr class="memitem:aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#aa1a9ffab51e79feaa4cc54fbad7bff1e">fcarouge::kalman_internal::repack</a> = repacker&lt;Pack&gt;::type</td></tr>
+<tr class="separator:aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66f34e6d5c7f8322c4d5f63051e20139" id="r_a66f34e6d5c7f8322c4d5f63051e20139"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a66f34e6d5c7f8322c4d5f63051e20139"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a66f34e6d5c7f8322c4d5f63051e20139">fcarouge::kalman_internal::first</a> = std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</td></tr>
+<tr class="separator:a66f34e6d5c7f8322c4d5f63051e20139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6050c2c2ac7054eaffa8e5c58dab7bd4" id="r_a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
+<tr class="memitem:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a6050c2c2ac7054eaffa8e5c58dab7bd4">fcarouge::kalman_internal::tuple_n_type</a> = typename tupler&lt;Type, Size&gt;::type</td></tr>
+<tr class="separator:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a6baba1af637abe5f76f3b5184d0ff3c6" id="r_a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </td></tr>
+<tr class="memitem:a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a6baba1af637abe5f76f3b5184d0ff3c6">fcarouge::kalman_internal::for_constexpr</a> (Function &amp;&amp;function)</td></tr>
+<tr class="separator:a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
 <tr class="memitem:a5ad0022b969a210b7261d0158bc1dd7b" id="r_a5ad0022b969a210b7261d0158bc1dd7b"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </td></tr>
 <tr class="memitem:a5ad0022b969a210b7261d0158bc1dd7b"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#a5ad0022b969a210b7261d0158bc1dd7b">fcarouge::for_constexpr</a> (Function &amp;&amp;function)</td></tr>
@@ -202,6 +224,12 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a6124372e90d64265057a98b5fa4efde1" id="r_a6124372e90d64265057a98b5fa4efde1"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
+<tr class="memitem:a6124372e90d64265057a98b5fa4efde1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a6124372e90d64265057a98b5fa4efde1">fcarouge::kalman_internal::size</a> {repacker&lt;Pack&gt;::size}</td></tr>
+<tr class="separator:a6124372e90d64265057a98b5fa4efde1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad9be752b238d15bfc4ea67b30660cc7" id="r_aad9be752b238d15bfc4ea67b30660cc7"><td class="memTemplParams" colspan="2">template&lt;auto... Values&gt; </td></tr>
+<tr class="memitem:aad9be752b238d15bfc4ea67b30660cc7"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#aad9be752b238d15bfc4ea67b30660cc7">fcarouge::kalman_internal::first_v</a> {first_value&lt;Values...&gt;::value}</td></tr>
+<tr class="separator:aad9be752b238d15bfc4ea67b30660cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Named Values</div></td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903" id="r_ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
 <tr class="memitem:ac4cffefdda8c01a267ce2700c6acb903"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml#ac4cffefdda8c01a267ce2700c6acb903">fcarouge::size</a> {kalman_internal::size&lt;Pack&gt;}</td></tr>
@@ -277,17 +305,12 @@ requires requires { Type::zero(); }</td></tr>
 <tr class="memdesc:a5d1b555b919a51d9ef29849f6e86b48a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose helper function.  <br /></td></tr>
 <tr class="separator:a5d1b555b919a51d9ef29849f6e86b48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The collection of utilities supporting the library. </p>
-<p>Definitions and documentation of supporting concepts and types. </p>
-
-<p class="definition">Definition in file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-</div></div><!-- contents -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="utility_8hpp.xhtml">utility.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_5c3532884164bb88b0a2e2abaff977cb.xhtml">kalman_internal</a></li><li class="navelem"><a class="el" href="utility_8hpp.xhtml">utility.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

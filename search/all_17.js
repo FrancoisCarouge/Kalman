@@ -11,7 +11,7 @@ var searchData=
   ['update_5flinalg_5fxx0_2ecpp_8',['update_linalg_xx0.cpp',['../update__linalg__xx0_8cpp.xhtml',1,'']]],
   ['update_5ftypes_9',['update_types',['../namespacefcarouge_1_1kalman__internal.xhtml#a7589b17e9e7dfb26beb8df5fba5f9442',1,'fcarouge::kalman_internal']]],
   ['use_10',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#ad51507654adfa608dfb66f37ab39f622',1,'LICENSE.txt']]],
-  ['utility_2ehpp_11',['utility.hpp',['../kalman__internal_2utility_8hpp.xhtml',1,'(Global Namespace)'],['../utility_8hpp.xhtml',1,'(Global Namespace)']]],
+  ['utility_2ehpp_11',['utility.hpp',['../utility_8hpp.xhtml',1,'']]],
   ['utility_5fidentity_5fdefault_2ecpp_12',['utility_identity_default.cpp',['../utility__identity__default_8cpp.xhtml',1,'']]],
   ['utility_5fzero_5fdefault_2ecpp_13',['utility_zero_default.cpp',['../utility__zero__default_8cpp.xhtml',1,'']]]
 ];
