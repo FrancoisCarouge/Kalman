@@ -43,8 +43,8 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Scalar type indexed-based linear algebra with Eigen implementation.
 
 #include "fcarouge/eigen.hpp"
-#include "fcarouge/indexed.hpp"
 #include "fcarouge/kalman_internal/utility.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cstddef>
 
@@ -53,9 +53,10 @@ namespace fcarouge {
 //! @name Types
 //! @{
 
+// NOT NEEDED?
 //! @brief Scalar type indexed-based matrix with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix = indexed::matrix<eigen::matrix<Type, Row, Column>,
+using matrix = typed_matrix<eigen::matrix<Type, Row, Column>,
                                kalman_internal::tuple_n_type<Type, Row>,
                                kalman_internal::tuple_n_type<Type, Column>>;
 

@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("ekf_4x1x0_soaring" BACKENDS "eigen" "eigexed" "naive" "naixed")
+# sample("ekf_4x1x0_soaring" BACKENDS "eigen" "eigexed" "naive" "naixed")
 sample("kf_1x1x0_building_height_unit")
 sample("kf_1x1x0_building_height")
 sample("kf_1x1x0_liquid_temperature_unit")
