@@ -43,10 +43,60 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Scalar type indexed-based linear algebra with Eigen implementation.
 
 #include "fcarouge/eigen.hpp"
-#include "fcarouge/indexed.hpp"
 #include "fcarouge/kalman_internal/utility.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cstddef>
+
+namespace fcarouge::kalman_internal {
+//! @brief Specialization of the evaluation type.
+//!
+//! @note Implementation not needed.
+template <template <typename, typename, typename> typename TypedMatrix,
+          typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct evaluates<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] inline constexpr auto operator()() const
+      -> TypedMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
+};
+
+//! @brief Specialization of the transposes.
+template <template <typename, typename, typename> typename TypedMatrix,
+          typename Matrix, typename RowIndexes, typename ColumnIndexes>
+  requires requires(TypedMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
+    m.data;
+  }
+struct transposes<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] inline constexpr auto operator()(
+      const TypedMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
+    return TypedMatrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
+        t(value.data)};
+  }
+};
+
+//! @name Algebraic Named Values
+//! @{
+
+//! @brief The one matrix indexed specialization.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline typed_matrix<decltype(one<Matrix>), RowIndexes, ColumnIndexes>
+    one<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{one<Matrix>};
+
+//! @brief The zero matrix indexed specialization.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
+    zero<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
+
+//! @}
+
+} // namespace fcarouge::kalman_internal
+
+namespace fcarouge::typed_linear_algebra_internal {
+//! @brief Specialization of the evaluation type.
+template <eigen::is_eigen Type> struct evaluates<Type> {
+  [[nodiscard]] inline constexpr auto operator()() const ->
+      typename Type::PlainMatrix;
+};
+} // namespace fcarouge::typed_linear_algebra_internal
 
 namespace fcarouge {
 
@@ -55,9 +105,9 @@ namespace fcarouge {
 
 //! @brief Scalar type indexed-based matrix with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix = indexed::matrix<eigen::matrix<Type, Row, Column>,
-                               kalman_internal::tuple_n_type<Type, Row>,
-                               kalman_internal::tuple_n_type<Type, Column>>;
+using matrix = typed_matrix<eigen::matrix<Type, Row, Column>,
+                            kalman_internal::tuple_n_type<Type, Row>,
+                            kalman_internal::tuple_n_type<Type, Column>>;
 
 //! @brief Scalar type indexed-based column vector with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1>
