@@ -38,6 +38,13 @@ For more information, please refer to <https://unlicense.org> ]]
 
 add_library(kalman_linalg_indexed INTERFACE)
 target_sources(
-  kalman_linalg_indexed INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES
-                                  "fcarouge/indexed.hpp")
-target_link_libraries(kalman_linalg_indexed INTERFACE kalman)
+  kalman_linalg_indexed
+  INTERFACE FILE_SET
+            "unit_headers"
+            TYPE
+            "HEADERS"
+            FILES
+            "fcarouge/typed_linear_algebra_internal/utility.hpp"
+            "fcarouge/typed_linear_algebra.hpp")
+target_link_libraries(kalman_linalg_indexed INTERFACE kalman
+                                                      kalman_linalg_eigen)

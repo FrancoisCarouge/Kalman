@@ -44,8 +44,58 @@ For more information, please refer to <https://unlicense.org> */
 //! implementations.
 
 #include "fcarouge/eigen.hpp"
-#include "fcarouge/indexed.hpp"
+#include "fcarouge/typed_linear_algebra.hpp"
 #include "fcarouge/unit.hpp"
+
+namespace fcarouge::kalman_internal {
+//! @brief Specialization of the evaluation type.
+//!
+//! @note Implementation not needed.
+template <template <typename, typename, typename> typename TypedMatrix,
+          typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct evaluates<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] inline constexpr auto operator()() const
+      -> TypedMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
+};
+
+//! @brief Specialization of the transposes.
+template <template <typename, typename, typename> typename TypedMatrix,
+          typename Matrix, typename RowIndexes, typename ColumnIndexes>
+  requires requires(TypedMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
+    m.data;
+  }
+struct transposes<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] inline constexpr auto operator()(
+      const TypedMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
+    return TypedMatrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
+        t(value.data)};
+  }
+};
+
+//! @name Algebraic Named Values
+//! @{
+
+//! @brief The one matrix indexed specialization.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline typed_matrix<decltype(one<Matrix>), RowIndexes, ColumnIndexes>
+    one<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{one<Matrix>};
+
+//! @brief The zero matrix indexed specialization.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
+    zero<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
+
+//! @}
+
+} // namespace fcarouge::kalman_internal
+
+namespace fcarouge::typed_linear_algebra_internal {
+//! @brief Specialization of the evaluation type.
+template <eigen::is_eigen Type> struct evaluates<Type> {
+  [[nodiscard]] inline constexpr auto operator()() const ->
+      typename Type::PlainMatrix;
+};
+} // namespace fcarouge::typed_linear_algebra_internal
 
 namespace fcarouge {
 
@@ -53,7 +103,7 @@ namespace fcarouge {
 //! @{
 
 template <auto Reference, auto OriginPoint, typename Representation>
-struct indexed::element_traits<
+struct typed_linear_algebra_internal::element_traits<
     Representation,
     mp_units::quantity_point<Reference, OriginPoint, Representation>> {
   [[nodiscard]] static inline constexpr Representation to_underlying(
@@ -72,8 +122,8 @@ struct indexed::element_traits<
 };
 
 template <auto Reference, typename Representation>
-struct indexed::element_traits<Representation,
-                               mp_units::quantity<Reference, Representation>> {
+struct typed_linear_algebra_internal::element_traits<
+    Representation, mp_units::quantity<Reference, Representation>> {
   [[nodiscard]] static inline constexpr Representation
   to_underlying(const mp_units::quantity<Reference, Representation> &value) {
     return value.numerical_value_in(value.unit);
@@ -89,8 +139,9 @@ struct indexed::element_traits<Representation,
 
 //! @brief Quantity column vector with mp-units and Eigen implementations.
 template <typename Representation, typename... Types>
-using column_vector = indexed::column_vector<
-    eigen::column_vector<Representation, sizeof...(Types)>, Types...>;
+using column_vector =
+    typed_column_vector<eigen::column_vector<Representation, sizeof...(Types)>,
+                        Types...>;
 
 namespace kalman_internal {
 //! @brief Multiplies specialization type for uncertainty type deduction.
@@ -112,6 +163,34 @@ struct multiplies<int, mp_units::quantity_point<Reference>> {
 //! @}
 
 } // namespace kalman_internal
+
+namespace typed_linear_algebra_internal {
+//! @brief Multiplies specialization type for uncertainty type deduction.
+template <auto Reference>
+struct multiplies<mp_units::quantity_point<Reference>, int> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity_point<Reference> &lhs,
+             int rhs) const -> mp_units::quantity_point<Reference>;
+};
+
+//! @brief Multiplies specialization type for uncertainty type deduction.
+template <auto Reference>
+struct multiplies<int, mp_units::quantity_point<Reference>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(int lhs, const mp_units::quantity_point<Reference> &rhs) const
+      -> mp_units::quantity_point<Reference>;
+};
+
+template <auto Reference1, auto Reference2>
+struct multiplies<mp_units::quantity_point<Reference1>,
+                  mp_units::quantity_point<Reference2>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity_point<Reference1> &lhs,
+             const mp_units::quantity_point<Reference2> &rhs) const
+      -> mp_units::quantity<Reference1 * Reference2>;
+};
+
+} // namespace typed_linear_algebra_internal
 } // namespace fcarouge
 
 #endif // FCAROUGE_QUANTITY_HPP
