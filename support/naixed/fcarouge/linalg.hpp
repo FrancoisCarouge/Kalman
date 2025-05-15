@@ -57,8 +57,8 @@ namespace fcarouge {
 //! @brief Scalar type indexed-based matrix with naive implementations.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 using matrix = typed_matrix<naive::matrix<Type, Row, Column>,
-                               kalman_internal::tuple_n_type<Type, Row>,
-                               kalman_internal::tuple_n_type<Type, Column>>;
+                            kalman_internal::tuple_n_type<Type, Row>,
+                            kalman_internal::tuple_n_type<Type, Column>>;
 
 //! @brief Scalar type indexed-based column vector with naive implementations.
 template <typename Type = double, std::size_t Row = 1>

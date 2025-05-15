@@ -39,8 +39,8 @@ For more information, please refer to <https://unlicense.org> ]]
 FetchContent_Declare(
   fcarouge-typed-linear-algebra
   GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  GIT_SHALLOW TRUE
-  # GIT_TAG cmake-project
+  # GIT_SHALLOW TRUE
+  GIT_TAG cmake-project
   FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
 FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
 
