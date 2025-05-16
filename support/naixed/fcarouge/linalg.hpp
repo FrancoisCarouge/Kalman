@@ -52,23 +52,18 @@ namespace fcarouge::kalman_internal {
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
-template <template <typename, typename, typename> typename TypedMatrix,
-          typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct evaluates<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct evaluates<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()() const
-      -> TypedMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
+      -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
 
 //! @brief Specialization of the transposes.
-template <template <typename, typename, typename> typename TypedMatrix,
-          typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires requires(TypedMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
-    m.data;
-  }
-struct transposes<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()(
-      const TypedMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
-    return TypedMatrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
+      const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
+    return typed_matrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
         t(value.data)};
   }
 };
@@ -92,20 +87,13 @@ inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
 
 namespace fcarouge {
 
-//! @name Types
-//! @{
-
-//! @brief Scalar type indexed-based matrix with naive implementations.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 using matrix = typed_matrix<naive::matrix<Type, Row, Column>,
                             kalman_internal::tuple_n_type<Type, Row>,
                             kalman_internal::tuple_n_type<Type, Column>>;
 
-//! @brief Scalar type indexed-based column vector with naive implementations.
 template <typename Type = double, std::size_t Row = 1>
 using column_vector = matrix<Type, Row, 1>;
-
-//! @}
 
 } // namespace fcarouge
 

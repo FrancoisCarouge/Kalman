@@ -52,23 +52,18 @@ namespace fcarouge::kalman_internal {
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
-template <template <typename, typename, typename> typename TypedMatrix,
-          typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct evaluates<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct evaluates<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()() const
-      -> TypedMatrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
+      -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
 
 //! @brief Specialization of the transposes.
-template <template <typename, typename, typename> typename TypedMatrix,
-          typename Matrix, typename RowIndexes, typename ColumnIndexes>
-  requires requires(TypedMatrix<Matrix, RowIndexes, ColumnIndexes> m) {
-    m.data;
-  }
-struct transposes<TypedMatrix<Matrix, RowIndexes, ColumnIndexes>> {
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()(
-      const TypedMatrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
-    return TypedMatrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
+      const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
+    return typed_matrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
         t(value.data)};
   }
 };
