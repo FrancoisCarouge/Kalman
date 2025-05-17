@@ -47,7 +47,77 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/typed_linear_algebra.hpp"
 #include "fcarouge/unit.hpp"
 
-namespace fcarouge::kalman_internal {
+namespace fcarouge::typed_linear_algebra_internal {
+//! @brief Specialization of the evaluation type.
+template <eigen::is_eigen Type> struct evaluates<Type> {
+  [[nodiscard]] inline constexpr auto operator()() const ->
+      typename Type::PlainMatrix;
+};
+
+template <auto Reference, auto OriginPoint, typename Representation>
+struct element_traits<
+    Representation,
+    mp_units::quantity_point<Reference, OriginPoint, Representation>> {
+  [[nodiscard]] static inline constexpr Representation to_underlying(
+      const mp_units::quantity_point<Reference, OriginPoint, Representation>
+          &value) {
+    return value.quantity_from(OriginPoint).numerical_value_in(value.unit);
+  }
+
+  [[nodiscard]] static inline constexpr mp_units::quantity_point<
+      Reference, OriginPoint, Representation> &
+  from_underlying(Representation &value) {
+    return reinterpret_cast<
+        mp_units::quantity_point<Reference, OriginPoint, Representation> &>(
+        value);
+  }
+};
+
+template <auto Reference, typename Representation>
+struct element_traits<Representation,
+                      mp_units::quantity<Reference, Representation>> {
+  [[nodiscard]] static inline constexpr Representation
+  to_underlying(const mp_units::quantity<Reference, Representation> &value) {
+    return value.numerical_value_in(value.unit);
+  }
+
+  [[nodiscard]] static inline constexpr mp_units::quantity<Reference,
+                                                           Representation> &
+  from_underlying(Representation &value) {
+    return reinterpret_cast<mp_units::quantity<Reference, Representation> &>(
+        value);
+  }
+};
+
+//! @brief Multiplies specialization type for uncertainty type deduction.
+template <auto Reference>
+struct multiplies<mp_units::quantity_point<Reference>, int> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity_point<Reference> &lhs,
+             int rhs) const -> mp_units::quantity_point<Reference>;
+};
+
+//! @brief Multiplies specialization type for uncertainty type deduction.
+template <auto Reference>
+struct multiplies<int, mp_units::quantity_point<Reference>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(int lhs, const mp_units::quantity_point<Reference> &rhs) const
+      -> mp_units::quantity_point<Reference>;
+};
+
+template <auto Reference1, auto Reference2>
+struct multiplies<mp_units::quantity_point<Reference1>,
+                  mp_units::quantity_point<Reference2>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity_point<Reference1> &lhs,
+             const mp_units::quantity_point<Reference2> &rhs) const
+      -> mp_units::quantity<Reference1 * Reference2>;
+};
+} // namespace fcarouge::typed_linear_algebra_internal
+
+namespace fcarouge {
+namespace kalman_internal {
+
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
@@ -81,56 +151,7 @@ inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
     zero<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
 
 //! @}
-
-} // namespace fcarouge::kalman_internal
-
-namespace fcarouge::typed_linear_algebra_internal {
-//! @brief Specialization of the evaluation type.
-template <eigen::is_eigen Type> struct evaluates<Type> {
-  [[nodiscard]] inline constexpr auto operator()() const ->
-      typename Type::PlainMatrix;
-};
-} // namespace fcarouge::typed_linear_algebra_internal
-
-namespace fcarouge {
-
-//! @name Types
-//! @{
-
-template <auto Reference, auto OriginPoint, typename Representation>
-struct typed_linear_algebra_internal::element_traits<
-    Representation,
-    mp_units::quantity_point<Reference, OriginPoint, Representation>> {
-  [[nodiscard]] static inline constexpr Representation to_underlying(
-      const mp_units::quantity_point<Reference, OriginPoint, Representation>
-          &value) {
-    return value.quantity_from(OriginPoint).numerical_value_in(value.unit);
-  }
-
-  [[nodiscard]] static inline constexpr mp_units::quantity_point<
-      Reference, OriginPoint, Representation> &
-  from_underlying(Representation &value) {
-    return reinterpret_cast<
-        mp_units::quantity_point<Reference, OriginPoint, Representation> &>(
-        value);
-  }
-};
-
-template <auto Reference, typename Representation>
-struct typed_linear_algebra_internal::element_traits<
-    Representation, mp_units::quantity<Reference, Representation>> {
-  [[nodiscard]] static inline constexpr Representation
-  to_underlying(const mp_units::quantity<Reference, Representation> &value) {
-    return value.numerical_value_in(value.unit);
-  }
-
-  [[nodiscard]] static inline constexpr mp_units::quantity<Reference,
-                                                           Representation> &
-  from_underlying(Representation &value) {
-    return reinterpret_cast<mp_units::quantity<Reference, Representation> &>(
-        value);
-  }
-};
+} // namespace kalman_internal
 
 //! @brief Quantity column vector with mp-units and Eigen implementations.
 template <typename Representation, typename... Types>
@@ -159,33 +180,6 @@ struct multiplies<int, mp_units::quantity_point<Reference>> {
 
 } // namespace kalman_internal
 
-namespace typed_linear_algebra_internal {
-//! @brief Multiplies specialization type for uncertainty type deduction.
-template <auto Reference>
-struct multiplies<mp_units::quantity_point<Reference>, int> {
-  [[nodiscard]] inline constexpr auto
-  operator()(const mp_units::quantity_point<Reference> &lhs,
-             int rhs) const -> mp_units::quantity_point<Reference>;
-};
-
-//! @brief Multiplies specialization type for uncertainty type deduction.
-template <auto Reference>
-struct multiplies<int, mp_units::quantity_point<Reference>> {
-  [[nodiscard]] inline constexpr auto
-  operator()(int lhs, const mp_units::quantity_point<Reference> &rhs) const
-      -> mp_units::quantity_point<Reference>;
-};
-
-template <auto Reference1, auto Reference2>
-struct multiplies<mp_units::quantity_point<Reference1>,
-                  mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] inline constexpr auto
-  operator()(const mp_units::quantity_point<Reference1> &lhs,
-             const mp_units::quantity_point<Reference2> &rhs) const
-      -> mp_units::quantity<Reference1 * Reference2>;
-};
-
-} // namespace typed_linear_algebra_internal
 } // namespace fcarouge
 
 #endif // FCAROUGE_QUANTITY_HPP
