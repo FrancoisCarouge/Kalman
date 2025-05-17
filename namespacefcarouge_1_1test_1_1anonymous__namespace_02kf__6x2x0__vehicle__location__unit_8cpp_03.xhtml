@@ -110,11 +110,11 @@ $(function(){initNavTree('namespacefcarouge_1_1test_1_1anonymous__namespace_02kf
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:af8847aa1d9d81f29d46aceb140d5aa60" id="r_af8847aa1d9d81f29d46aceb140d5aa60"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:af8847aa1d9d81f29d46aceb140d5aa60"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af8847aa1d9d81f29d46aceb140d5aa60">vector</a> = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector</a>&lt;double, Types...&gt;</td></tr>
+<tr class="memitem:af8847aa1d9d81f29d46aceb140d5aa60"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af8847aa1d9d81f29d46aceb140d5aa60">vector</a> = column_vector&lt;double, Types...&gt;</td></tr>
 <tr class="separator:af8847aa1d9d81f29d46aceb140d5aa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc3d65220cc665fecfdda3c578142021" id="r_afc3d65220cc665fecfdda3c578142021"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc3d65220cc665fecfdda3c578142021">state_t</a></td></tr>
 <tr class="separator:afc3d65220cc665fecfdda3c578142021"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af632052e3b2e1aa295ff0e08509eb1a4" id="r_af632052e3b2e1aa295ff0e08509eb1a4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af632052e3b2e1aa295ff0e08509eb1a4">output_t</a> = <a class="el" href="#af8847aa1d9d81f29d46aceb140d5aa60">vector</a>&lt;<a class="el" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>, <a class="el" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>&gt;</td></tr>
+<tr class="memitem:af632052e3b2e1aa295ff0e08509eb1a4" id="r_af632052e3b2e1aa295ff0e08509eb1a4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af632052e3b2e1aa295ff0e08509eb1a4">output_t</a> = <a class="el" href="#af8847aa1d9d81f29d46aceb140d5aa60">vector</a>&lt;position, position&gt;</td></tr>
 <tr class="separator:af632052e3b2e1aa295ff0e08509eb1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -130,7 +130,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::output_t = <a class="el" href="#af8847aa1d9d81f29d46aceb140d5aa60">vector</a>&lt;<a class="el" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>, <a class="el" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>&gt;</td>
+          <td class="memname">using fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::output_t = <a class="el" href="#af8847aa1d9d81f29d46aceb140d5aa60">vector</a>&lt;position, position&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -166,7 +166,7 @@ Variables</h2></td></tr>
 template&lt;typename... Types&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::vector = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector</a>&lt;double, Types...&gt;</td>
+          <td class="memname">using fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::vector = column_vector&lt;double, Types...&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -195,9 +195,9 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">   73</span>      <span class="comment">// The state X is chosen to be the position, velocity, acceleration in the</span></div>
 <div class="line"><span class="lineno">   74</span>      <span class="comment">// XY plane: [px, vx, ax, py, vy, ay]. We don&#39;t know the vehicle location;</span></div>
 <div class="line"><span class="lineno">   75</span>      <span class="comment">// we will set initial position, velocity and acceleration to 0.</span></div>
-<div class="line"><span class="lineno">   76</span>      state{<a class="code hl_typedef" href="#afc3d65220cc665fecfdda3c578142021">state_t</a>{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{0. * m}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">velocity</a>{0. * m / s},</div>
-<div class="line"><span class="lineno">   77</span>                    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">acceleration</a>{0. * m / s2}, position{0. * m},</div>
-<div class="line"><span class="lineno">   78</span>                    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">velocity</a>{0. * m / s}, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#ae5283deebaa0a27e883752f003e5d55e">acceleration</a>{0. * m / s2}}},</div>
+<div class="line"><span class="lineno">   76</span>      state{<a class="code hl_typedef" href="#afc3d65220cc665fecfdda3c578142021">state_t</a>{position{0. * m}, velocity{0. * m / s},</div>
+<div class="line"><span class="lineno">   77</span>                    acceleration{0. * m / s2}, position{0. * m},</div>
+<div class="line"><span class="lineno">   78</span>                    velocity{0. * m / s}, <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#ae5283deebaa0a27e883752f003e5d55e">acceleration</a>{0. * m / s2}}},</div>
 <div class="line"><span class="lineno">   79</span>      <span class="comment">// The vehicle has an onboard location sensor that reports output Z as X</span></div>
 <div class="line"><span class="lineno">   80</span>      <span class="comment">// and Y coordinates of the system.</span></div>
 <div class="line"><span class="lineno">   81</span>      output&lt;output_t&gt;,</div>
@@ -301,9 +301,6 @@ template&lt;typename... Types&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ae0d4cb88e21450951fd7dc06f745f71b"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">fcarouge::kalman_internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03_xhtml_ae5283deebaa0a27e883752f003e5d55e"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#ae5283deebaa0a27e883752f003e5d55e">fcarouge::sample::anonymous_namespace{kf_2x1x1_rocket_altitude.cpp}::acceleration</a></div><div class="ttdeci">double acceleration</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x1__rocket__altitude_8cpp_source.xhtml#l00051">kf_2x1x1_rocket_altitude.cpp:51</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03_xhtml_afc3d65220cc665fecfdda3c578142021"><div class="ttname"><a href="#afc3d65220cc665fecfdda3c578142021">fcarouge::test::anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}::state_t</a></div><div class="ttdeci">vector&lt; position, velocity, acceleration, position, velocity, acceleration &gt; state_t</div><div class="ttdef"><b>Definition</b> <a href="kf__6x2x0__vehicle__location__unit_8cpp_source.xhtml#l00048">kf_6x2x0_vehicle_location_unit.cpp:48</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a0480c6f84be0a01264da3eb984c103e1"><div class="ttname"><a href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00068">unit.hpp:68</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a3bf1207d66f4f99f4c7175ac6a65dfd4"><div class="ttname"><a href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">fcarouge::acceleration</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::acceleration[m/s2]&gt; acceleration</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00070">unit.hpp:70</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7062d0a510937d0a2201f1167b6066cc"><div class="ttname"><a href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">fcarouge::velocity</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::velocity[m/s]&gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00069">unit.hpp:69</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

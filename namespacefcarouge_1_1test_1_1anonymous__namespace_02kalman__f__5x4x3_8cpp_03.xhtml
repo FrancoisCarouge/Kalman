@@ -110,7 +110,7 @@ $(function(){initNavTree('namespacefcarouge_1_1test_1_1anonymous__namespace_02ka
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a2d8d5c456b98fb29cc272ead2071552f" id="r_a2d8d5c456b98fb29cc272ead2071552f"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
-<tr class="memitem:a2d8d5c456b98fb29cc272ead2071552f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2d8d5c456b98fb29cc272ead2071552f">vector</a> = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector</a>&lt;double, Size&gt;</td></tr>
+<tr class="memitem:a2d8d5c456b98fb29cc272ead2071552f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2d8d5c456b98fb29cc272ead2071552f">vector</a> = column_vector&lt;double, Size&gt;</td></tr>
 <tr class="separator:a2d8d5c456b98fb29cc272ead2071552f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3d335ff99c0808102a7b4e60ce3f7aa" id="r_ab3d335ff99c0808102a7b4e60ce3f7aa"><td class="memTemplParams" colspan="2">template&lt;auto Row, auto Column&gt; </td></tr>
 <tr class="memitem:ab3d335ff99c0808102a7b4e60ce3f7aa"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab3d335ff99c0808102a7b4e60ce3f7aa">matrix</a> = <a class="el" href="#ab3d335ff99c0808102a7b4e60ce3f7aa">matrix</a>&lt;double, Row, Column&gt;</td></tr>
@@ -149,7 +149,7 @@ template&lt;auto Row, auto Column&gt; </div>
 template&lt;auto Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{kalman_f_5x4x3.cpp}::vector = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector</a>&lt;double, Size&gt;</td>
+          <td class="memname">using fcarouge::test::anonymous_namespace{kalman_f_5x4x3.cpp}::vector = column_vector&lt;double, Size&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -196,12 +196,12 @@ template&lt;auto Size&gt; </div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00356">factory.hpp:356</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__f__5x4x3_8cpp_03_xhtml_ab3d335ff99c0808102a7b4e60ce3f7aa"><div class="ttname"><a href="#ab3d335ff99c0808102a7b4e60ce3f7aa">fcarouge::test::anonymous_namespace{kalman_f_5x4x3.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; double, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="kalman__f__5x4x3_8cpp_source.xhtml#l00047">kalman_f_5x4x3.cpp:47</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000014">Test</a></b></dt><dd>Verifies the state transition matrix F management overloads for the <a class="el" href="namespace_eigen.xhtml">Eigen</a> filter type. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000014">Test</a></b></dt><dd>Verifies the state transition matrix F management overloads for the Eigen filter type. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman__f__5x4x3_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="kalman__f__5x4x3_8cpp_source.xhtml">kalman_f_5x4x3.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   51</span>                          {[] {</div>
 <div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#ab3d335ff99c0808102a7b4e60ce3f7aa">matrix&lt;5, 5&gt;</a> i5x5{kalman_internal::one&lt;matrix&lt;5, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;5, 5&gt;</a> z5x5{kalman_internal::zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{kalman_internal::zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
 <div class="line"><span class="lineno">   54</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{vector&lt;5&gt;{0., 0., 0., 0., 0.}}, output&lt;vector&lt;4&gt;&gt;,</div>
 <div class="line"><span class="lineno">   55</span>                input&lt;vector&lt;3&gt;&gt;, update_types&lt;double, float, int&gt;,</div>
 <div class="line"><span class="lineno">   56</span>                prediction_types&lt;int, float, double&gt;};</div>
@@ -222,7 +222,6 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">   71</span> </div>
 <div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   73</span>}()};</div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a></div><div class="ttdoc">Coroutine lazy matrix.</div><div class="ttdef"><b>Definition</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00115">linalg.hpp:115</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

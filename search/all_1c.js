@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['z_0',['z',['../classfcarouge_1_1kalman.xhtml#a312b412a4daea783ac99ac133098cb3e',1,'fcarouge::kalman']]],
-  ['zero_1',['zero',['../namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62',1,'fcarouge::kalman_internal']]],
-  ['zero_3c_20arithmetic_20_3e_2',['zero&lt; Arithmetic &gt;',['../namespacefcarouge_1_1kalman__internal.xhtml#a179ed9419a40e13a92eaa0f3d980d088',1,'fcarouge::kalman_internal']]],
-  ['zero_3c_20matrix_3c_20type_2c_20row_2c_20column_20_3e_20_3e_3',['zero&lt; matrix&lt; Type, Row, Column &gt; &gt;',['../namespacefcarouge.xhtml#a9b8d7e56d105ac30c247bc5c8960b18b',1,'fcarouge']]],
-  ['zero_3c_20type_20_3e_4',['zero&lt; Type &gt;',['../namespacefcarouge_1_1kalman__internal.xhtml#a2b0970be43a070dde9d1b773c58cb58a',1,'fcarouge::kalman_internal']]]
+  ['_7ekalman_0',['~kalman',['../classfcarouge_1_1kalman.xhtml#aefb20ca92a3ba1b0d82ea7d3edf54fe4',1,'fcarouge::kalman']]],
+  ['_7eprinter_1',['~printer',['../classfcarouge_1_1decorator_1_1printer.xhtml#a2b85d01463eef9876553245f0be6550c',1,'fcarouge::decorator::printer']]]
 ];

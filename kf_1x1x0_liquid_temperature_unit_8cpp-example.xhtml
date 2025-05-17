@@ -150,7 +150,7 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line"><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="unit_8hpp.xhtml">fcarouge/unit.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;fcarouge/unit.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"> </div>
@@ -162,7 +162,7 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">      <span class="comment">// We initialize the Kalman filter and predict the next state (which is</span></div>
 <div class="line">      <span class="comment">// the first state). We don&#39;t know what the temperature of the liquid is,</span></div>
 <div class="line">      <span class="comment">// and our guess is: estimated state X = 10°C.</span></div>
-<div class="line">      state{<a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(10.)}},</div>
+<div class="line">      state{temperature{point&lt;deg_C&gt;(10.)}},</div>
 <div class="line">      <span class="comment">// The measured liquid temperature Z.</span></div>
 <div class="line">      output&lt;temperature&gt;,</div>
 <div class="line">      <span class="comment">// Our guess is very imprecise, so we set our initialization estimate</span></div>
@@ -183,43 +183,43 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
 <div class="line">  filter.predict();</div>
 <div class="line"> </div>
-<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(10.)} == filter.x() &amp;&amp;</div>
+<div class="line">  assert(temperature{point&lt;deg_C&gt;(10.)} == filter.x() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;Since our model has constant dynamics, the predicted estimate is &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;equal to the current estimate: x^1,0 = 10°C.&quot;</span>);</div>
-<div class="line">  assert(10&#39;000.000&#39;1 * <a id="a2" name="a2"></a><a class="code hl_variable" href="namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775">deg_C2</a> == filter.p() &amp;&amp;</div>
+<div class="line">  assert(10&#39;000.000&#39;1 * deg_C2 == filter.p() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;10&#39;000 + 0.000&#39;1 = 10&#39;000.000&#39;1.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The first measurement value: z1 = 49.95°C. Measure and update.</span></div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(49.95)});</div>
+<div class="line">  filter.update(temperature{point&lt;deg_C&gt;(49.95)});</div>
 <div class="line"> </div>
 <div class="line">  assert(abs(1 - filter.k() / 0.999&#39;999) &lt; 0.000&#39;1 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The gain expected at 0.01% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line">  <span class="comment">// measurements period: Δt = 5s (constant).</span></div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a> output_z) {</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](temperature output_z) {</div>
 <div class="line">    filter.predict();</div>
 <div class="line">    filter.update(output_z);</div>
 <div class="line">  }};</div>
 <div class="line"> </div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(49.967)});</div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(50.1)});</div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(50.106)});</div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(49.992)});</div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(49.819)});</div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(49.933)});</div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(50.007)});</div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(50.023)});</div>
-<div class="line">  step(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(49.99)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(49.967)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(50.1)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(50.106)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(49.992)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(49.819)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(49.933)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(50.007)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(50.023)});</div>
+<div class="line">  step(temperature{point&lt;deg_C&gt;(49.99)});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The estimate uncertainty quickly goes down, after 10 measurements:</span></div>
-<div class="line">  assert(0.001&#39;2 * <a class="code hl_variable" href="namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775">deg_C2</a> &lt; filter.p() &amp;&amp; filter.p() &lt; 0.001&#39;3 * <a class="code hl_variable" href="namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775">deg_C2</a> &amp;&amp;</div>
+<div class="line">  assert(0.001&#39;2 * deg_C2 &lt; filter.p() &amp;&amp; filter.p() &lt; 0.001&#39;3 * deg_C2 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 5% accuracy.&quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty is 0.0013, i.e. the estimate error standard &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;deviation is: 0.036°C.&quot;</span>);</div>
-<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(49.98)} &lt; filter.x() &amp;&amp;</div>
-<div class="line">         filter.x() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(49.99)} &amp;&amp;</div>
+<div class="line">  assert(temperature{point&lt;deg_C&gt;(49.98)} &lt; filter.x() &amp;&amp;</div>
+<div class="line">         filter.x() &lt; temperature{point&lt;deg_C&gt;(49.99)} &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;The filter estimates the liquid temperature at 49.988°C.&quot;</span>);</div>
 <div class="line">  assert(0.126&#39;4 &lt; filter.k() &amp;&amp; filter.k() &lt; 0.126&#39;5 &amp;&amp;</div>
@@ -236,10 +236,7 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a1a1efa10d3f0e4480b2ed1745c672aa1"><div class="ttname"><a href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">fcarouge::temperature</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::Celsius_temperature[deg_C]&gt; temperature</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00072">unit.hpp:72</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a5a8a206bd21b1225ecfea4798c26d775"><div class="ttname"><a href="namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775">fcarouge::deg_C2</a></div><div class="ttdeci">constexpr auto deg_C2</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00065">unit.hpp:65</a></div></div>
-<div class="ttc" id="aunit_8hpp_xhtml"><div class="ttname"><a href="unit_8hpp.xhtml">unit.hpp</a></div><div class="ttdoc">Quantities and units facade for mp-units third party implementation.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

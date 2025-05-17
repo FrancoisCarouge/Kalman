@@ -138,11 +138,11 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000040">Test</a></b></dt><dd>Verifies the zero matrices values are null. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000041">Test</a></b></dt><dd>Verifies the zero matrices values are null. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="linalg__zero_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="linalg__zero_8cpp_source.xhtml">linalg_zero.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   46</span>                          {[] {</div>
-<div class="line"><span class="lineno">   47</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;double, 3, 3&gt;</a> z{kalman_internal::zero&lt;matrix&lt;double, 3, 3&gt;&gt;};</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keyword">const</span> matrix&lt;double, 3, 3&gt; z{kalman_internal::zero&lt;matrix&lt;double, 3, 3&gt;&gt;};</div>
 <div class="line"><span class="lineno">   48</span> </div>
 <div class="line"><span class="lineno">   49</span>  assert(z(0, 0) == 0.0);</div>
 <div class="line"><span class="lineno">   50</span>  assert(z(0, 1) == 0.0);</div>
@@ -156,7 +156,6 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   58</span> </div>
 <div class="line"><span class="lineno">   59</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   60</span>}()};</div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a></div><div class="ttdoc">Coroutine lazy matrix.</div><div class="ttdef"><b>Definition</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00115">linalg.hpp:115</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

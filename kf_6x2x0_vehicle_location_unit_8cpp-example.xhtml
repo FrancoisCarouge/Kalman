@@ -153,20 +153,20 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector</a>&lt;double, Types...&gt;;</div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types&gt; <span class="keyword">using </span>vector = column_vector&lt;double, Types...&gt;;</div>
 <div class="line"><span class="keyword">using </span>state_t =</div>
 <div class="line">    vector&lt;position, velocity, acceleration, position, velocity, acceleration&gt;;</div>
 <div class="line"><span class="keyword">using </span>output_t = vector&lt;position, position&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
-<div class="line">  <a id="a1" name="a1"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X is chosen to be the position, velocity, acceleration in the</span></div>
 <div class="line">      <span class="comment">// XY plane: [px, vx, ax, py, vy, ay]. We don&#39;t know the vehicle location;</span></div>
 <div class="line">      <span class="comment">// we will set initial position, velocity and acceleration to 0.</span></div>
-<div class="line">      state{state_t{<a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{0. * m}, <a id="a3" name="a3"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">velocity</a>{0. * m / s},</div>
-<div class="line">                    <a id="a4" name="a4"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">acceleration</a>{0. * m / s2}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{0. * m},</div>
-<div class="line">                    <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">velocity</a>{0. * m / s}, <a class="code hl_typedef" href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">acceleration</a>{0. * m / s2}}},</div>
+<div class="line">      state{state_t{position{0. * m}, velocity{0. * m / s},</div>
+<div class="line">                    acceleration{0. * m / s2}, position{0. * m},</div>
+<div class="line">                    velocity{0. * m / s}, acceleration{0. * m / s2}}},</div>
 <div class="line">      <span class="comment">// The vehicle has an onboard location sensor that reports output Z as X</span></div>
 <div class="line">      <span class="comment">// and Y coordinates of the system.</span></div>
 <div class="line">      output&lt;output_t&gt;,</div>
@@ -175,11 +175,11 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line">      <span class="comment">// estimate uncertainty. The high estimate uncertainty results in a high</span></div>
 <div class="line">      <span class="comment">// Kalman Gain, giving a high weight to the measurement.</span></div>
 <div class="line">      estimate_uncertainty{</div>
-<div class="line">          500. * <a id="a5" name="a5"></a><a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a23cbb93293154cb6105cfd41f2b12981">kalman_internal::one&lt;kalman_internal::ᴀʙᵀ&lt;state_t, state_t&gt;</a>&gt;},</div>
+<div class="line">          500. * <a id="a1" name="a1"></a><a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a23cbb93293154cb6105cfd41f2b12981">kalman_internal::one&lt;kalman_internal::ᴀʙᵀ&lt;state_t, state_t&gt;</a>&gt;},</div>
 <div class="line">      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
 <div class="line">      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
 <div class="line">      process_uncertainty{[]() {</div>
-<div class="line">        <span class="keyword">using </span>process_uncertainty_t = <a id="a6" name="a6"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d">kalman_internal::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
+<div class="line">        <span class="keyword">using </span>process_uncertainty_t = <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d">kalman_internal::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
 <div class="line">        process_uncertainty_t value{</div>
 <div class="line">            <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a23cbb93293154cb6105cfd41f2b12981">kalman_internal::one&lt;process_uncertainty_t&gt;</a>};</div>
 <div class="line">        value.at&lt;0, 0&gt;() = 0.25 * m2;</div>
@@ -213,9 +213,9 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line">      <span class="comment">// of xn is 6x1. Therefore the dimension of the observation matrix H shall</span></div>
 <div class="line">      <span class="comment">// be 2x6.</span></div>
 <div class="line">      output_model{[]() {</div>
-<div class="line">        <span class="keyword">using </span>output_model_t = <a id="a7" name="a7"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">kalman_internal::evaluate</a>&lt;</div>
-<div class="line">            <a id="a8" name="a8"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0">kalman_internal::quotient&lt;output_t, state_t&gt;</a>&gt;;</div>
-<div class="line">        output_model_t value{<a id="a9" name="a9"></a><a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">kalman_internal::zero&lt;output_model_t&gt;</a>};</div>
+<div class="line">        <span class="keyword">using </span>output_model_t = <a id="a3" name="a3"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">kalman_internal::evaluate</a>&lt;</div>
+<div class="line">            <a id="a4" name="a4"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0">kalman_internal::quotient&lt;output_t, state_t&gt;</a>&gt;;</div>
+<div class="line">        output_model_t value{<a id="a5" name="a5"></a><a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">kalman_internal::zero&lt;output_model_t&gt;</a>};</div>
 <div class="line">        value.at&lt;0, 0&gt;() = 1. * m2;</div>
 <div class="line">        value.at&lt;1, 3&gt;() = 1. * m2;</div>
 <div class="line">        <span class="keywordflow">return</span> value;</div>
@@ -244,18 +244,18 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line">  filter.predict();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
-<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{-277.8 * m} &lt; filter.x().at&lt;0&gt;() &amp;&amp;</div>
-<div class="line">         filter.x().at&lt;0&gt;() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{-277.7 * m} &amp;&amp;</div>
-<div class="line">         <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">velocity</a>{148.3 * m / s} &lt; filter.x().at&lt;1&gt;() &amp;&amp;</div>
-<div class="line">         filter.x().at&lt;1&gt;() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">velocity</a>{148.4 * m / s} &amp;&amp;</div>
-<div class="line">         <a class="code hl_typedef" href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">acceleration</a>{94.5 * m / s2} &lt; filter.x().at&lt;2&gt;() &amp;&amp;</div>
-<div class="line">         filter.x().at&lt;2&gt;() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">acceleration</a>{94.56 * m / s2} &amp;&amp;</div>
-<div class="line">         <a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{249.7 * m} &lt; filter.x().at&lt;3&gt;() &amp;&amp;</div>
-<div class="line">         filter.x().at&lt;3&gt;() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{249.8 * m} &amp;&amp;</div>
-<div class="line">         <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">velocity</a>{-86.0 * m / s} &lt; filter.x().at&lt;4&gt;() &amp;&amp;</div>
-<div class="line">         filter.x().at&lt;4&gt;() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">velocity</a>{-85.9 * m / s} &amp;&amp;</div>
-<div class="line">         <a class="code hl_typedef" href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">acceleration</a>{-63.65 * m / s2} &lt; filter.x().at&lt;5&gt;() &amp;&amp;</div>
-<div class="line">         filter.x().at&lt;5&gt;() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">acceleration</a>{-63.64 * m / s2} &amp;&amp;</div>
+<div class="line">  assert(position{-277.8 * m} &lt; filter.x().at&lt;0&gt;() &amp;&amp;</div>
+<div class="line">         filter.x().at&lt;0&gt;() &lt; position{-277.7 * m} &amp;&amp;</div>
+<div class="line">         velocity{148.3 * m / s} &lt; filter.x().at&lt;1&gt;() &amp;&amp;</div>
+<div class="line">         filter.x().at&lt;1&gt;() &lt; velocity{148.4 * m / s} &amp;&amp;</div>
+<div class="line">         acceleration{94.5 * m / s2} &lt; filter.x().at&lt;2&gt;() &amp;&amp;</div>
+<div class="line">         filter.x().at&lt;2&gt;() &lt; acceleration{94.56 * m / s2} &amp;&amp;</div>
+<div class="line">         position{249.7 * m} &lt; filter.x().at&lt;3&gt;() &amp;&amp;</div>
+<div class="line">         filter.x().at&lt;3&gt;() &lt; position{249.8 * m} &amp;&amp;</div>
+<div class="line">         velocity{-86.0 * m / s} &lt; filter.x().at&lt;4&gt;() &amp;&amp;</div>
+<div class="line">         filter.x().at&lt;4&gt;() &lt; velocity{-85.9 * m / s} &amp;&amp;</div>
+<div class="line">         acceleration{-63.65 * m / s2} &lt; filter.x().at&lt;5&gt;() &amp;&amp;</div>
+<div class="line">         filter.x().at&lt;5&gt;() &lt; acceleration{-63.64 * m / s2} &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line"> </div>
@@ -264,17 +264,13 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_unit_8cpp-example.xhtml','')
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a0f6af3a28e58f1b5e727aa85543951a0"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0">fcarouge::kalman_internal::quotient</a></div><div class="ttdeci">std::invoke_result_t&lt; divides&lt; Lhs, Rhs &gt;, const Lhs &amp;, const Rhs &amp; &gt; quotient</div><div class="ttdoc">Divider helper type.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00213">utility.hpp:213</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a1fa2c30dc7bf1f7626c078eaed358625"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">fcarouge::kalman_internal::evaluate</a></div><div class="ttdeci">std::invoke_result_t&lt; evaluates&lt; Type &gt; &gt; evaluate</div><div class="ttdoc">Evaluater helper type.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00223">utility.hpp:223</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a23cbb93293154cb6105cfd41f2b12981"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a23cbb93293154cb6105cfd41f2b12981">fcarouge::kalman_internal::one</a></div><div class="ttdeci">constexpr Type one</div><div class="ttdoc">The one matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00454">utility.hpp:454</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a4fac2d4e13a574cdc956a2d940374e62"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">fcarouge::kalman_internal::zero</a></div><div class="ttdeci">constexpr Type zero</div><div class="ttdoc">The zero matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00472">utility.hpp:472</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a734eaffd024f86157a790692f947357d"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d">fcarouge::kalman_internal::ᴀʙᵀ</a></div><div class="ttdeci">evaluate&lt; product&lt; Lhs, evaluate&lt; transpose&lt; Rhs &gt; &gt; &gt; &gt; ᴀʙᵀ</div><div class="ttdoc">The evaluated type of the ABᵀ expression.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00298">utility.hpp:298</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a0480c6f84be0a01264da3eb984c103e1"><div class="ttname"><a href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00068">unit.hpp:68</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a3bf1207d66f4f99f4c7175ac6a65dfd4"><div class="ttname"><a href="namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4">fcarouge::acceleration</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::acceleration[m/s2]&gt; acceleration</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00070">unit.hpp:70</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a7062d0a510937d0a2201f1167b6066cc"><div class="ttname"><a href="namespacefcarouge.xhtml#a7062d0a510937d0a2201f1167b6066cc">fcarouge::velocity</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::velocity[m/s]&gt; velocity</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00069">unit.hpp:69</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

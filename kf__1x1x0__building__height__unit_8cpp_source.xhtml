@@ -142,7 +142,7 @@ $(function(){initNavTree('kf__1x1x0__building__height__unit_8cpp_source.xhtml','
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;<a class="code" href="unit_8hpp.xhtml">fcarouge/unit.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;fcarouge/unit.hpp&quot;</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
@@ -154,7 +154,7 @@ $(function(){initNavTree('kf__1x1x0__building__height__unit_8cpp_source.xhtml','
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{<span class="comment">// One can estimate the building height simply by looking at it.</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                <span class="comment">// The estimated state building height is: X = 60 meters.</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{60. * m}},</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                state{height{60. * m}},</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                <span class="comment">// The building height measurement Z in meters.</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                output&lt;height&gt;,</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                <span class="comment">// A human’s estimation error (standard deviation) is about 15</span></div>
@@ -166,7 +166,7 @@ $(function(){initNavTree('kf__1x1x0__building__height__unit_8cpp_source.xhtml','
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                <span class="comment">// measurement, output uncertainty is: R = 25 m^2.</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                output_uncertainty{25. * m2}};</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  assert(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{60. * m} == filter.x() &amp;&amp;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  assert(height{60. * m} == filter.x() &amp;&amp;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
@@ -180,22 +180,22 @@ $(function(){initNavTree('kf__1x1x0__building__height__unit_8cpp_source.xhtml','
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="comment">// noise covariance Q is null in this example.</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="comment">// Measure and update: the first measurement is: z1 = 48.54m.</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{48.54 * m});</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  filter.update(height{48.54 * m});</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <span class="comment">// And so on.</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{47.11 * m});</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{55.01 * m});</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{55.15 * m});</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{49.89 * m});</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{40.85 * m});</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{46.72 * m});</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{50.05 * m});</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{51.27 * m});</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{49.95 * m});</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  filter.update(height{47.11 * m});</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  filter.update(height{55.01 * m});</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  filter.update(height{55.15 * m});</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  filter.update(height{49.89 * m});</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  filter.update(height{40.85 * m});</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  filter.update(height{46.72 * m});</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  filter.update(height{50.05 * m});</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  filter.update(height{51.27 * m});</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  filter.update(height{49.95 * m});</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="comment">// at 49.57m.</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  assert(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{49.569 * m} &lt; filter.x() &amp;&amp; filter.x() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{49.571 * m} &amp;&amp;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  assert(height{49.569 * m} &lt; filter.x() &amp;&amp; filter.x() &lt; height{49.571 * m} &amp;&amp;</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
@@ -210,8 +210,6 @@ $(function(){initNavTree('kf__1x1x0__building__height__unit_8cpp_source.xhtml','
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a4991c6dc9486cc2d13f83ba121053169"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169">fcarouge::kalman_internal::product</a></div><div class="ttdeci">std::invoke_result_t&lt; multiplies&lt; Lhs, Rhs &gt;, const Lhs &amp;, const Rhs &amp; &gt; product</div><div class="ttdoc">Helper type to deduce the result type of the product.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00282">utility.hpp:282</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a66bc0b3b05af74a53388c91b4dfde9e9"><div class="ttname"><a href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">fcarouge::height</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::height[m]&gt; height</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00067">unit.hpp:67</a></div></div>
-<div class="ttc" id="aunit_8hpp_xhtml"><div class="ttname"><a href="unit_8hpp.xhtml">unit.hpp</a></div><div class="ttdoc">Quantities and units facade for mp-units third party implementation.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

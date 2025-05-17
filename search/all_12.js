@@ -1,28 +1,5 @@
 var searchData=
 [
-  ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#a5102dd3dbf4836a875237a5bdbdaa14e',1,'fcarouge::kalman::p(this auto &amp;&amp;self)'],['../classfcarouge_1_1kalman.xhtml#a46a728a8f930061118c518fe05209204',1,'fcarouge::kalman::p(const auto &amp;value, const auto &amp;...values)'],['../classfcarouge_1_1decorator_1_1printer.xhtml#a6fe6af981ea21adbe4d5f368041f9f15',1,'fcarouge::decorator::printer::p()']]],
-  ['packages_1',['Installation Packages',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages',1,'']]],
-  ['parameters_2',['Template Parameters',['../index.xhtml#template-parameters',1,'']]],
-  ['parse_3',['parse',['../structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml#a5d2e3ad6c11ee8798426e55c7d88799e',1,'std::formatter&lt; Filter, Char &gt;::parse()'],['../structstd_1_1formatter_3_01fcarouge_1_1eigen_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a1fbc2686d5a57a9d5195a959e9e5526f',1,'std::formatter&lt; fcarouge::eigen::matrix&lt; Type, Row, Column &gt;, Char &gt;::parse()'],['../structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#a22ccf9a43345e00fa844932355833178',1,'std::formatter&lt; fcarouge::indexed::matrix&lt; Matrix, RowIndexes, ColumnIndexes &gt;, Char &gt;::parse()'],['../structstd_1_1formatter_3_01fcarouge_1_1naive_1_1matrix_3_01_type_00_01_row_00_01_column_01_4_00_01_char_01_4.xhtml#a3f43d59851026f1233f8c4f21c8caecb',1,'std::formatter&lt; fcarouge::naive::matrix&lt; Type, Row, Column &gt;, Char &gt;::parse()']]],
-  ['party_20acknowledgement_4',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
-  ['performance_5',['Performance',['../index.xhtml#performance',1,'']]],
-  ['pledge_6',['Our Pledge',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge',1,'']]],
-  ['policy_7',['Policy',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml',1,'Security Policy'],['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy',1,'Security Policy']]],
-  ['position_8',['position',['../namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1',1,'fcarouge']]],
-  ['predict_9',['predict',['../classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a',1,'fcarouge::kalman::predict(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a85ffdc102439da5653543ad51291406e',1,'fcarouge::kalman::predict() const'],['../classfcarouge_1_1decorator_1_1printer.xhtml#ad9b94f5d4c1d6e9bc62e558e621b4a29',1,'fcarouge::decorator::printer::predict()']]],
-  ['predict_5f1x1x0_2ecpp_10',['predict_1x1x0.cpp',['../predict__1x1x0_8cpp.xhtml',1,'']]],
-  ['predict_5f1x1x1_2ecpp_11',['predict_1x1x1.cpp',['../predict__1x1x1_8cpp.xhtml',1,'']]],
-  ['predict_5flinalg_5fx1x_2ecpp_12',['predict_linalg_x1x.cpp',['../predict__linalg__x1x_8cpp.xhtml',1,'']]],
-  ['prediction_5ftypes_13',['prediction_types',['../namespacefcarouge_1_1kalman__internal.xhtml#a4ed98641f1ed8202ab40e3e13884203a',1,'fcarouge::kalman_internal']]],
-  ['printer_14',['printer',['../classfcarouge_1_1decorator_1_1printer.xhtml',1,'fcarouge::decorator::printer&lt; Filter &gt;'],['../classfcarouge_1_1decorator_1_1printer.xhtml#a277b4d9609150175995c78513c78d2c2',1,'fcarouge::decorator::printer::printer()'],['../namespacefcarouge.xhtml#a44762b6a541e61f07ed2b0477b182829',1,'fcarouge::printer']]],
-  ['printer_2ehpp_15',['printer.hpp',['../printer_8hpp.xhtml',1,'']]],
-  ['printer_5f1x1x0_2ecpp_16',['printer_1x1x0.cpp',['../printer__1x1x0_8cpp.xhtml',1,'']]],
-  ['printer_5f2x3x4_2ecpp_17',['printer_2x3x4.cpp',['../printer__2x3x4_8cpp.xhtml',1,'']]],
-  ['printer_5fdecorator_18',['printer_decorator',['../structfcarouge_1_1printer__decorator.xhtml',1,'fcarouge']]],
-  ['process_5funcertainty_19',['process_uncertainty',['../namespacefcarouge_1_1kalman__internal.xhtml#ac6a9cf33472fe67bd423c384ef492c25',1,'fcarouge::kalman_internal::process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;'],['../namespacefcarouge_1_1kalman__internal.xhtml#a4f1c468db7cb2316fdf3b15ca5bb1deb',1,'fcarouge::kalman_internal::process_uncertainty(std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; process_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;']]],
-  ['product_20',['product',['../namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169',1,'fcarouge::kalman_internal']]],
-  ['projects_21',['Projects',['../index.xhtml#projects',1,'']]],
-  ['promise_5ftype_22',['promise_type',['../structfcarouge_1_1matrix.xhtml#a59cdd2df33a514becc638338dad14c89',1,'fcarouge::matrix']]],
-  ['publish_23',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#a1fc07cd1fdadcf7b30357c0b2d236557',1,'LICENSE.txt']]],
-  ['purpose_24',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#aea4c9abf287d8497048a148e21ce763d',1,'LICENSE.txt']]]
+  ['q_0',['q',['../classfcarouge_1_1kalman.xhtml#a662b0dab257e92058dca7be556b2aa47',1,'fcarouge::kalman::q(this auto &amp;&amp;self)'],['../classfcarouge_1_1kalman.xhtml#a7e4c1f5cbeb922f810774bbaf27e09e0',1,'fcarouge::kalman::q(const auto &amp;value, const auto &amp;...values)']]],
+  ['quotient_1',['quotient',['../namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0',1,'fcarouge::kalman_internal']]]
 ];

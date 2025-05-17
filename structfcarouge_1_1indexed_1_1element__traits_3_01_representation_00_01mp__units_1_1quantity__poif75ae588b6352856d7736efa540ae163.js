@@ -1,5 +1,0 @@
-var structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163 =
-[
-    [ "from_underlying", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163.xhtml#af6d4d98c53ff3b0c12dde1cc909f183b", null ],
-    [ "to_underlying", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163.xhtml#abd6e504a35b6dc46d40b1c76e681d878", null ]
-];

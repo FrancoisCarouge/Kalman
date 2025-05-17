@@ -153,13 +153,13 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example.xhtml',''); ini
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;double, Size&gt;</a>;</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;double, Row, Column&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = column_vector&lt;double, Size&gt;;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = matrix&lt;double, Row, Column&gt;;</div>
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;6&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
-<div class="line">  <a id="a2" name="a2"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X is chosen to be the position, velocity, acceleration in the</span></div>
 <div class="line">      <span class="comment">// XY plane: [px, vx, ax, py, vy, ay]. We don&#39;t know the vehicle location;</span></div>
 <div class="line">      <span class="comment">// we will set initial position, velocity and acceleration to 0.</span></div>
@@ -180,7 +180,7 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example.xhtml',''); ini
 <div class="line">      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
 <div class="line">      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
 <div class="line">      process_uncertainty{0.2 * 0.2 *</div>
-<div class="line">                          <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;6, 6&gt;</a>{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
+<div class="line">                          matrix&lt;6, 6&gt;{{0.25, 0.5, 0.5, 0., 0., 0.},</div>
 <div class="line">                                       {0.5, 1., 1., 0., 0., 0.},</div>
 <div class="line">                                       {0.5, 1., 1., 0., 0., 0.},</div>
 <div class="line">                                       {0., 0., 0., 0.25, 0.5, 0.5},</div>
@@ -305,8 +305,6 @@ $(function(){initNavTree('kf_6x2x0_vehicle_location_8cpp-example.xhtml',''); ini
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00077">eigen.hpp:77</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 </div><!-- fragment --> </div><!-- contents -->

@@ -131,7 +131,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   73</span>      <span class="comment">// We initialize the Kalman filter and predict the next state (which is</span></div>
 <div class="line"><span class="lineno">   74</span>      <span class="comment">// the first state). We don&#39;t know what the temperature of the liquid is,</span></div>
 <div class="line"><span class="lineno">   75</span>      <span class="comment">// and our guess is: estimated state X = 10°C.</span></div>
-<div class="line"><span class="lineno">   76</span>      state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a>{point&lt;deg_C&gt;(10.)}},</div>
+<div class="line"><span class="lineno">   76</span>      state{temperature{point&lt;deg_C&gt;(10.)}},</div>
 <div class="line"><span class="lineno">   77</span>      <span class="comment">// The measured liquid temperature Z.</span></div>
 <div class="line"><span class="lineno">   78</span>      output&lt;temperature&gt;,</div>
 <div class="line"><span class="lineno">   79</span>      <span class="comment">// Our guess is very imprecise, so we set our initialization estimate</span></div>
@@ -167,7 +167,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  109</span> </div>
 <div class="line"><span class="lineno">  110</span>  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line"><span class="lineno">  111</span>  <span class="comment">// measurements period: Δt = 5s (constant).</span></div>
-<div class="line"><span class="lineno">  112</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>](<a class="code hl_typedef" href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">temperature</a> output_z) {</div>
+<div class="line"><span class="lineno">  112</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>](temperature output_z) {</div>
 <div class="line"><span class="lineno">  113</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
 <div class="line"><span class="lineno">  114</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(output_z);</div>
 <div class="line"><span class="lineno">  115</span>  }};</div>
@@ -204,7 +204,6 @@ Variables</h2></td></tr>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00356">factory.hpp:356</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ae0d4cb88e21450951fd7dc06f745f71b"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">fcarouge::kalman_internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a1a1efa10d3f0e4480b2ed1745c672aa1"><div class="ttname"><a href="namespacefcarouge.xhtml#a1a1efa10d3f0e4480b2ed1745c672aa1">fcarouge::temperature</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::Celsius_temperature[deg_C]&gt; temperature</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00072">unit.hpp:72</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -110,7 +110,7 @@ $(function(){initNavTree('namespacefcarouge_1_1test_1_1anonymous__namespace_02ka
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a82feacd7e2e6fb4e5c7d890661b21927" id="r_a82feacd7e2e6fb4e5c7d890661b21927"><td class="memTemplParams" colspan="2">template&lt;auto Size&gt; </td></tr>
-<tr class="memitem:a82feacd7e2e6fb4e5c7d890661b21927"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a82feacd7e2e6fb4e5c7d890661b21927">vector</a> = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector</a>&lt;double, Size&gt;</td></tr>
+<tr class="memitem:a82feacd7e2e6fb4e5c7d890661b21927"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a82feacd7e2e6fb4e5c7d890661b21927">vector</a> = column_vector&lt;double, Size&gt;</td></tr>
 <tr class="separator:a82feacd7e2e6fb4e5c7d890661b21927"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09cd7dc782d95d477ebed2654e98fb58" id="r_a09cd7dc782d95d477ebed2654e98fb58"><td class="memTemplParams" colspan="2">template&lt;auto Row, auto Column&gt; </td></tr>
 <tr class="memitem:a09cd7dc782d95d477ebed2654e98fb58"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a09cd7dc782d95d477ebed2654e98fb58">matrix</a> = <a class="el" href="#a09cd7dc782d95d477ebed2654e98fb58">matrix</a>&lt;double, Row, Column&gt;</td></tr>
@@ -149,7 +149,7 @@ template&lt;auto Row, auto Column&gt; </div>
 template&lt;auto Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{kalman_constructor_move_5x4x3.cpp}::vector = <a class="el" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector</a>&lt;double, Size&gt;</td>
+          <td class="memname">using fcarouge::test::anonymous_namespace{kalman_constructor_move_5x4x3.cpp}::vector = column_vector&lt;double, Size&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -170,13 +170,13 @@ template&lt;auto Size&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000013">Test</a></b></dt><dd>Verifies the multi-dimension filter is move-constructible. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000012">Test</a></b></dt><dd>Verifies the multi-dimension filter is move-constructible. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman__constructor__move__5x4x3_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="kalman__constructor__move__5x4x3_8cpp_source.xhtml">kalman_constructor_move_5x4x3.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   51</span>                          {[] {</div>
 <div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#a82feacd7e2e6fb4e5c7d890661b21927">vector&lt;3&gt;</a> z3x1{kalman_internal::zero&lt;vector&lt;3&gt;&gt;};</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;4, 4&gt;</a> i4x4{kalman_internal::one&lt;matrix&lt;4, 4&gt;&gt;};</div>
-<div class="line"><span class="lineno">   54</span>  <span class="keyword">const</span> <a class="code hl_struct" href="structfcarouge_1_1matrix.xhtml">matrix&lt;4, 5&gt;</a> i4x5{kalman_internal::one&lt;matrix&lt;4, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> matrix&lt;4, 4&gt; i4x4{kalman_internal::one&lt;matrix&lt;4, 4&gt;&gt;};</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keyword">const</span> matrix&lt;4, 5&gt; i4x5{kalman_internal::one&lt;matrix&lt;4, 5&gt;&gt;};</div>
 <div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> matrix&lt;5, 3&gt; i5x3{kalman_internal::one&lt;matrix&lt;5, 3&gt;&gt;};</div>
 <div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> matrix&lt;5, 4&gt; i5x4{kalman_internal::one&lt;matrix&lt;5, 4&gt;&gt;};</div>
 <div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{kalman_internal::one&lt;matrix&lt;5, 5&gt;&gt;};</div>
@@ -210,7 +210,6 @@ template&lt;auto Size&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a867b1b89cfdc342f083c792f87cb4d2c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00049">ekf_4x1x0_soaring.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__move__5x4x3_8cpp_03_xhtml_a82feacd7e2e6fb4e5c7d890661b21927"><div class="ttname"><a href="#a82feacd7e2e6fb4e5c7d890661b21927">fcarouge::test::anonymous_namespace{kalman_constructor_move_5x4x3.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; double, Size &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="kalman__constructor__move__5x4x3_8cpp_source.xhtml#l00047">kalman_constructor_move_5x4x3.cpp:47</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-<div class="ttc" id="astructfcarouge_1_1matrix_xhtml"><div class="ttname"><a href="structfcarouge_1_1matrix.xhtml">fcarouge::matrix</a></div><div class="ttdoc">Coroutine lazy matrix.</div><div class="ttdef"><b>Definition</b> <a href="lazy_2fcarouge_2linalg_8hpp_source.xhtml#l00115">linalg.hpp:115</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

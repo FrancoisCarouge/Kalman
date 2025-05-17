@@ -153,7 +153,7 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line"><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="unit_8hpp.xhtml">fcarouge/unit.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;fcarouge/unit.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"> </div>
@@ -163,7 +163,7 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
 <div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{<span class="comment">// One can estimate the building height simply by looking at it.</span></div>
 <div class="line">                <span class="comment">// The estimated state building height is: X = 60 meters.</span></div>
-<div class="line">                state{<a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{60. * m}},</div>
+<div class="line">                state{height{60. * m}},</div>
 <div class="line">                <span class="comment">// The building height measurement Z in meters.</span></div>
 <div class="line">                output&lt;height&gt;,</div>
 <div class="line">                <span class="comment">// A human’s estimation error (standard deviation) is about 15</span></div>
@@ -175,11 +175,11 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">                <span class="comment">// measurement, output uncertainty is: R = 25 m^2.</span></div>
 <div class="line">                output_uncertainty{25. * m2}};</div>
 <div class="line"> </div>
-<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{60. * m} == filter.x() &amp;&amp;</div>
+<div class="line">  assert(height{60. * m} == filter.x() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">using </span>uncertainty = <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169">kalman_internal::product&lt;height, height&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>uncertainty = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169">kalman_internal::product&lt;height, height&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line">  assert(uncertainty{225. * m2} == filter.p() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
@@ -189,22 +189,22 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
 <div class="line">  <span class="comment">// noise covariance Q is null in this example.</span></div>
 <div class="line">  <span class="comment">// Measure and update: the first measurement is: z1 = 48.54m.</span></div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{48.54 * m});</div>
+<div class="line">  filter.update(height{48.54 * m});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on.</span></div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{47.11 * m});</div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{55.01 * m});</div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{55.15 * m});</div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{49.89 * m});</div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{40.85 * m});</div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{46.72 * m});</div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{50.05 * m});</div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{51.27 * m});</div>
-<div class="line">  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{49.95 * m});</div>
+<div class="line">  filter.update(height{47.11 * m});</div>
+<div class="line">  filter.update(height{55.01 * m});</div>
+<div class="line">  filter.update(height{55.15 * m});</div>
+<div class="line">  filter.update(height{49.89 * m});</div>
+<div class="line">  filter.update(height{40.85 * m});</div>
+<div class="line">  filter.update(height{46.72 * m});</div>
+<div class="line">  filter.update(height{50.05 * m});</div>
+<div class="line">  filter.update(height{51.27 * m});</div>
+<div class="line">  filter.update(height{49.95 * m});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
-<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{49.569 * m} &lt; filter.x() &amp;&amp; filter.x() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">height</a>{49.571 * m} &amp;&amp;</div>
+<div class="line">  assert(height{49.569 * m} &lt; filter.x() &amp;&amp; filter.x() &lt; height{49.571 * m} &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"> </div>
@@ -217,8 +217,6 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a4991c6dc9486cc2d13f83ba121053169"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169">fcarouge::kalman_internal::product</a></div><div class="ttdeci">std::invoke_result_t&lt; multiplies&lt; Lhs, Rhs &gt;, const Lhs &amp;, const Rhs &amp; &gt; product</div><div class="ttdoc">Helper type to deduce the result type of the product.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00282">utility.hpp:282</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a66bc0b3b05af74a53388c91b4dfde9e9"><div class="ttname"><a href="namespacefcarouge.xhtml#a66bc0b3b05af74a53388c91b4dfde9e9">fcarouge::height</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::height[m]&gt; height</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00067">unit.hpp:67</a></div></div>
-<div class="ttc" id="aunit_8hpp_xhtml"><div class="ttname"><a href="unit_8hpp.xhtml">unit.hpp</a></div><div class="ttdoc">Quantities and units facade for mp-units third party implementation.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

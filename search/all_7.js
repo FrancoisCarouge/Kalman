@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['data_0',['data',['../structfcarouge_1_1indexed_1_1matrix.xhtml#afe3f85237b8320e3ee8bf0de633f2209',1,'fcarouge::indexed::matrix::data'],['../structfcarouge_1_1naive_1_1matrix.xhtml#a15e1f8de54dbe4186bf17501a9ac073b',1,'fcarouge::naive::matrix::data']]],
-  ['declaration_1',['Declaration',['../index.xhtml#declaration',1,'']]],
-  ['deduce_5ffilter_2',['deduce_filter',['../namespacefcarouge_1_1kalman__internal.xhtml#a083c7633e41b94b1c0cf980cd4a51d74',1,'fcarouge::kalman_internal']]],
-  ['definitions_3',['Definitions',['../index.xhtml#definitions',1,'']]],
-  ['deg_5fc2_4',['deg_C2',['../namespacefcarouge.xhtml#a5a8a206bd21b1225ecfea4798c26d775',1,'fcarouge']]],
-  ['deployment_20actions_5',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],
-  ['development_20build_20run_6',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
-  ['difference_7',['difference',['../namespacefcarouge_1_1kalman__internal.xhtml#aaf401bd223c24f1406587dd5fd2dc2cf',1,'fcarouge::kalman_internal']]],
-  ['documentation_2edox_8',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
-  ['dynamic_20model_20extended_20filter_9',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]],
-  ['dynamic_20model_20filter_10',['Dynamic Model Filter',['../index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter',1,'1x1 Constant System Dynamic Model Filter'],['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'6x2 Constant Acceleration Dynamic Model Filter']]]
+  ['ekf_5f4x1x0_5fsoaring_2ecpp_0',['ekf_4x1x0_soaring.cpp',['../ekf__4x1x0__soaring_8cpp.xhtml',1,'']]],
+  ['enforcement_1',['Enforcement',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement',1,'']]],
+  ['estimate_5funcertainty_2',['estimate_uncertainty',['../classfcarouge_1_1kalman.xhtml#ae87a5a1e49435e1a4fc9cbb21c2b5f7e',1,'fcarouge::kalman::estimate_uncertainty'],['../namespacefcarouge_1_1kalman__internal.xhtml#ad944fff1255f0b88385d27ab351af75f',1,'fcarouge::kalman_internal::estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;'],['../namespacefcarouge_1_1kalman__internal.xhtml#ab62b02aa1c1f21ec568391f1c078bc70',1,'fcarouge::kalman_internal::estimate_uncertainty(std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; estimate_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;']]],
+  ['evaluate_3',['evaluate',['../namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625',1,'fcarouge::kalman_internal']]],
+  ['examples_4',['Examples',['../index.xhtml#examples',1,'Examples'],['../index.xhtml#other-examples',1,'Other Examples']]],
+  ['extended_20filter_5',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]]
 ];

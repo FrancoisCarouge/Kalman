@@ -1,5 +1,0 @@
-var quantity_2fcarouge_2linalg_8hpp =
-[
-    [ "fcarouge::indexed::element_traits< Representation, mp_units::quantity_point< Reference, OriginPoint, Representation > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity__poif75ae588b6352856d7736efa540ae163" ],
-    [ "fcarouge::indexed::element_traits< Representation, mp_units::quantity< Reference, Representation > >", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384.xhtml", "structfcarouge_1_1indexed_1_1element__traits_3_01_representation_00_01mp__units_1_1quantity_3_01edffcc01e123c19f7ca1348bf8a7b384" ]
-];

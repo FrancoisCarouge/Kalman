@@ -142,7 +142,7 @@ $(function(){initNavTree('kf__1x1x1__dog__position__unit_8cpp_source.xhtml','');
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;<a class="code" href="unit_8hpp.xhtml">fcarouge/unit.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;fcarouge/unit.hpp&quot;</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
@@ -154,7 +154,7 @@ $(function(){initNavTree('kf__1x1x1__dog__position__unit_8cpp_source.xhtml','');
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      <span class="comment">// This is the dog&#39;s initial position expressed as a Gaussian. The state X</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      <span class="comment">// position is 0 meters.</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      state{<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{1. * m}},</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      state{position{1. * m}},</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      <span class="comment">// The measured output position Z.</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      output&lt;position&gt;,</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      <span class="comment">// We are predicting that at each time step the dog moves forward one</span></div>
@@ -177,29 +177,29 @@ $(function(){initNavTree('kf__1x1x1__dog__position__unit_8cpp_source.xhtml','');
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>      <span class="comment">// variance there is in each measurement. The output uncertainty R:</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>      output_uncertainty{2. * m2}};</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{1. * m});</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{1.354 * m});</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{2.352 * m});</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{1.882 * m});</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{3.070 * m});</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{4.341 * m});</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{4.736 * m});</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{7.156 * m});</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{6.960 * m});</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{6.939 * m});</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{7.949 * m});</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{6.844 * m});</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{8.396 * m});</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{9.847 * m});</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{10.122 * m});</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{12.553 * m});</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{12.338 * m});</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{16.273 * m});</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  filter.predict(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{15.305 * m});</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  filter.update(<a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{14.8 * m});</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  filter.predict(position{1. * m});</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  filter.update(position{1.354 * m});</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  filter.predict(position{2.352 * m});</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  filter.update(position{1.882 * m});</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  filter.predict(position{3.070 * m});</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  filter.update(position{4.341 * m});</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  filter.predict(position{4.736 * m});</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  filter.update(position{7.156 * m});</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  filter.predict(position{6.960 * m});</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  filter.update(position{6.939 * m});</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  filter.predict(position{7.949 * m});</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  filter.update(position{6.844 * m});</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  filter.predict(position{8.396 * m});</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  filter.update(position{9.847 * m});</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  filter.predict(position{10.122 * m});</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  filter.update(position{12.553 * m});</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  filter.predict(position{12.338 * m});</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  filter.update(position{16.273 * m});</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  filter.predict(position{15.305 * m});</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  filter.update(position{14.8 * m});</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  assert(</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>      <a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{15.052 * m} &lt; filter.x() &amp;&amp; filter.x() &lt; <a class="code hl_typedef" href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">position</a>{15.054 * m} &amp;&amp;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>      position{15.052 * m} &lt; filter.x() &amp;&amp; filter.x() &lt; position{15.054 * m} &amp;&amp;</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      <span class="stringliteral">&quot;Here we can see that the variance converges to 2.1623 in 9 steps. This &quot;</span></div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      <span class="stringliteral">&quot;means that we have become very confident in our position estimate. It &quot;</span></div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      <span class="stringliteral">&quot;is equal to meters. Contrast this to the sensor&#39;s meters.&quot;</span>);</div>
@@ -213,8 +213,6 @@ $(function(){initNavTree('kf__1x1x1__dog__position__unit_8cpp_source.xhtml','');
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a0480c6f84be0a01264da3eb984c103e1"><div class="ttname"><a href="namespacefcarouge.xhtml#a0480c6f84be0a01264da3eb984c103e1">fcarouge::position</a></div><div class="ttdeci">mp_units::quantity_point&lt; mp_units::isq::length[m]&gt; position</div><div class="ttdef"><b>Definition</b> <a href="unit_8hpp_source.xhtml#l00068">unit.hpp:68</a></div></div>
-<div class="ttc" id="aunit_8hpp_xhtml"><div class="ttname"><a href="unit_8hpp.xhtml">unit.hpp</a></div><div class="ttdoc">Quantities and units facade for mp-units third party implementation.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,11 +1,25 @@
 var searchData=
 [
-  ['baseline_2ecpp_0',['baseline.cpp',['../baseline_8cpp.xhtml',1,'']]],
-  ['begin_1',['begin',['../structfcarouge_1_1matrix.xhtml#ac6248dacd7be4fb05540b8ab2956cb7b',1,'fcarouge::matrix']]],
-  ['bench_2',['bench',['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#a7e540e82a4b39d860abbc711f590a352',1,'fcarouge::benchmark::anonymous_namespace{baseline.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x0_8cpp_03.xhtml#a62e67dcd96681a1385eb16866a19c5e2',1,'fcarouge::benchmark::anonymous_namespace{predict_1x1x0.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03.xhtml#a0e0e019aa29372429c91fcabc71745c5',1,'fcarouge::benchmark::anonymous_namespace{predict_1x1x1.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03.xhtml#afd227c8a2ead320bc47bafa8e88a9d7f',1,'fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x0_8cpp_03.xhtml#ac37125d800f776ae7a27ff62838449ee',1,'fcarouge::benchmark::anonymous_namespace{update_1x1x0.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03.xhtml#aa649b94dc4da4f380d44daa1a664dd51',1,'fcarouge::benchmark::anonymous_namespace{update_1x1x1.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ad815f323e5a14424caa6a63c1b22f296',1,'fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::bench()']]],
-  ['benchmark_2ehpp_3',['benchmark.hpp',['../benchmark_8hpp.xhtml',1,'']]],
-  ['benchmarks_4',['Benchmarks',['../md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml',1,'Benchmarks'],['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#benchmarks-1',1,'Benchmarks']]],
-  ['binary_5',['binary',['../_l_i_c_e_n_s_e_8txt.xhtml#a316dfca4e7b4aa2cad1874b0365cfb70',1,'LICENSE.txt']]],
-  ['bugs_6',['Reporting Bugs',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs',1,'']]],
-  ['build_20run_7',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]]
+  ['characteristics_0',['Characteristics',['../index.xhtml#characteristics',1,'']]],
+  ['claim_1',['CLAIM',['../_l_i_c_e_n_s_e_8txt.xhtml#a2efa432530a21c8767d44823821494b4',1,'LICENSE.txt']]],
+  ['class_20kalman_2',['Class kalman',['../index.xhtml#class-kalman',1,'']]],
+  ['clock_3',['clock',['../namespacefcarouge_1_1benchmark.xhtml#a8810c50a0c826e45d57e49b40ddb6a0c',1,'fcarouge::benchmark']]],
+  ['cmakelists_2etxt_4',['CMakeLists.txt',['../benchmark_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../cmake_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../include_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../pkgconfig_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../sample_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)'],['../test_2_c_make_lists_8txt.xhtml',1,'(Global Namespace)']]],
+  ['code_20coverage_5',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
+  ['code_20of_20conduct_6',['Code of Conduct',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct',1,'Code of Conduct'],['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'Contributor Covenant Code of Conduct']]],
+  ['code_5fof_5fconduct_2emd_7',['CODE_OF_CONDUCT.md',['../_c_o_d_e___o_f___c_o_n_d_u_c_t_8md.xhtml',1,'']]],
+  ['commercial_8',['commercial',['../_l_i_c_e_n_s_e_8txt.xhtml#a8a72397ef7cebf6f70a90c7ed5043cf9',1,'LICENSE.txt']]],
+  ['compile_9',['compile',['../_l_i_c_e_n_s_e_8txt.xhtml#ab8232384be1b77279069ac95acf90138',1,'LICENSE.txt']]],
+  ['conduct_10',['Conduct',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct',1,'Code of Conduct'],['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'Contributor Covenant Code of Conduct']]],
+  ['considerations_11',['Considerations',['../index.xhtml#considerations',1,'']]],
+  ['constant_20acceleration_20dynamic_20model_20filter_12',['6x2 Constant Acceleration Dynamic Model Filter',['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'']]],
+  ['constant_20system_20dynamic_20model_20filter_13',['1x1 Constant System Dynamic Model Filter',['../index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter',1,'']]],
+  ['continuous_20integration_20deployment_20actions_14',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],
+  ['contract_15',['CONTRACT',['../_l_i_c_e_n_s_e_8txt.xhtml#ac521f05f55eb7b6a0198735e7c9749e4',1,'LICENSE.txt']]],
+  ['contributing_20to_20kalman_16',['Contributing to Kalman',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
+  ['contributing_2emd_17',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.xhtml',1,'']]],
+  ['contributor_20covenant_20code_20of_20conduct_18',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
+  ['corporations_20institutions_19',['Corporations &amp; Institutions',['../index.xhtml#corporations--institutions',1,'']]],
+  ['covenant_20code_20of_20conduct_20',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
+  ['coverage_21',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]]
 ];

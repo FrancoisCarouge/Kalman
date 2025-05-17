@@ -155,8 +155,8 @@ $(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',''); initResizab
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;float, Size&gt;</a>;</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span><a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix</a> = <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, Row, Column&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = column_vector&lt;float, Size&gt;;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = matrix&lt;float, Row, Column&gt;;</div>
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;4&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
@@ -173,7 +173,7 @@ $(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',''); initResizab
 <div class="line"> </div>
 <div class="line">  <span class="comment">// 4x1 extended filter with additional parameter for prediction: driftX [m],</span></div>
 <div class="line">  <span class="comment">// driftY [m]. Constant time step.</span></div>
-<div class="line">  <a id="a2" name="a2"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X:</span></div>
 <div class="line">      state{trigger_strength, thermal_radius, thermal_position_x,</div>
 <div class="line">            thermal_position_y},</div>
@@ -195,11 +195,11 @@ $(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',''); initResizab
 <div class="line">      <span class="comment">// Default. The additional parameters for update.</span></div>
 <div class="line">      <span class="comment">// See the ArduSoar paper for the equation for H = ∂h/∂X:</span></div>
 <div class="line">      output_model{[](<span class="keyword">const</span> vector&lt;4&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_x,</div>
-<div class="line">                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;1, 4&gt;</a> {</div>
+<div class="line">                      <span class="keyword">const</span> <span class="keywordtype">float</span> &amp;position_y) -&gt; matrix&lt;1, 4&gt; {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> expon{std::exp(-(std::pow(x[2] - position_x, 2.F) +</div>
 <div class="line">                                     std::pow(x[3] - position_y, 2.F)) /</div>
 <div class="line">                                   std::pow(x[1], 2.F))};</div>
-<div class="line">        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;1, 4&gt;</a> h{</div>
+<div class="line">        <span class="keyword">const</span> matrix&lt;1, 4&gt; h{</div>
 <div class="line">            expon,</div>
 <div class="line">            2 * x(0) *</div>
 <div class="line">                ((std::pow(x(2) - position_x, 2.F) +</div>
@@ -357,8 +357,6 @@ $(function(){initNavTree('ekf_4x1x0_soaring_8cpp-example.xhtml',''); initResizab
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00077">eigen.hpp:77</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 </div><!-- fragment --> </div><!-- contents -->

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['row_0',['Row',['../structfcarouge_1_1matrix.xhtml#a0a995e0b4a122d37f327be9b065d8136',1,'fcarouge::matrix']]],
-  ['rows_1',['rows',['../structfcarouge_1_1indexed_1_1matrix.xhtml#af54a6f995c8a6849a6955472939f2fc2',1,'fcarouge::indexed::matrix']]]
+  ['update_5ftypes_0',['update_types',['../namespacefcarouge_1_1kalman__internal.xhtml#a7589b17e9e7dfb26beb8df5fba5f9442',1,'fcarouge::kalman_internal']]],
+  ['use_1',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#ad51507654adfa608dfb66f37ab39f622',1,'LICENSE.txt']]]
 ];

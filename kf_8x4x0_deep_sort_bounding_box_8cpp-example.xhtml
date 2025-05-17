@@ -154,7 +154,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
-<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">column_vector&lt;float, Size&gt;</a>;</div>
+<div class="line"><span class="keyword">template</span> &lt;auto Size&gt; <span class="keyword">using </span>vector = column_vector&lt;float, Size&gt;;</div>
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;8&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
@@ -169,7 +169,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> delta_time{1.F};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
-<div class="line">  <a id="a1" name="a1"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The filter is initialized with the first observed output.</span></div>
 <div class="line">      <span class="comment">// Bounding box position and velocity estimated state X: [px,</span></div>
 <div class="line">      <span class="comment">// py, pa, ph, vx, vy, va, vh].</span></div>
@@ -180,7 +180,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">      <span class="comment">// The estimate uncertainty P:</span></div>
 <div class="line">      estimate_uncertainty{[&amp;position_weight, &amp;velocity_weight,</div>
 <div class="line">                            &amp;initial_box]() {</div>
-<div class="line">        <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 8, 8&gt;</a> value{<a id="a3" name="a3"></a><a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">kalman_internal::zero&lt;matrix&lt;float, 8, 8&gt;</a>&gt;};</div>
+<div class="line">        matrix&lt;float, 8, 8&gt; value{<a id="a1" name="a1"></a><a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">kalman_internal::zero&lt;matrix&lt;float, 8, 8&gt;</a>&gt;};</div>
 <div class="line">        value(0, 0) = std::powf(2.F * position_weight * initial_box(3), 2);</div>
 <div class="line">        value(1, 1) = std::powf(2.F * position_weight * initial_box(3), 2);</div>
 <div class="line">        value(2, 2) = std::powf(1e-2F, 2);</div>
@@ -195,7 +195,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">      process_uncertainty{[](<span class="keyword">const</span> state::type &amp;x) {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> weight_position{1.F / 20.F};</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> weight_velocity{1.F / 160.F};</div>
-<div class="line">        <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 8, 8&gt;</a> value{<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">kalman_internal::zero&lt;matrix&lt;float, 8, 8&gt;</a>&gt;};</div>
+<div class="line">        matrix&lt;float, 8, 8&gt; value{<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">kalman_internal::zero&lt;matrix&lt;float, 8, 8&gt;</a>&gt;};</div>
 <div class="line">        value(0, 0) = std::powf(weight_position * x(3), 2);</div>
 <div class="line">        value(1, 1) = std::powf(weight_position * x(3), 2);</div>
 <div class="line">        value(2, 2) = std::powf(1e-2F, 2);</div>
@@ -211,7 +211,7 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">          <span class="comment">// Observation, measurement noise covariance.</span></div>
 <div class="line">          [](<span class="keyword">const</span> state::type &amp;x, [[maybe_unused]] <span class="keyword">const</span> vector&lt;4&gt; &amp;z) {</div>
 <div class="line">            <span class="keyword">const</span> <span class="keywordtype">float</span> weight_position{1.F / 20.F};</div>
-<div class="line">            <a class="code hl_typedef" href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">matrix&lt;float, 4, 4&gt;</a> value{</div>
+<div class="line">            matrix&lt;float, 4, 4&gt; value{</div>
 <div class="line">                <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">kalman_internal::zero&lt;matrix&lt;float, 4, 4&gt;</a>&gt;};</div>
 <div class="line">            value(0, 0) = std::powf(weight_position * x(3), 2);</div>
 <div class="line">            value(1, 1) = std::powf(weight_position * x(3), 2);</div>
@@ -360,8 +360,6 @@ $(function(){initNavTree('kf_8x4x0_deep_sort_bounding_box_8cpp-example.xhtml',''
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a01e78c3f356b744543b2f25797bcfa84"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a01e78c3f356b744543b2f25797bcfa84">fcarouge::eigen::matrix</a></div><div class="ttdeci">Eigen::Matrix&lt; Type, Row, Column &gt; matrix</div><div class="ttdoc">Compile-time sized Eigen3 matrix.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00077">eigen.hpp:77</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1eigen_xhtml_a3aae575a4aa6b608a99d02f58b0fc86c"><div class="ttname"><a href="namespacefcarouge_1_1eigen.xhtml#a3aae575a4aa6b608a99d02f58b0fc86c">fcarouge::eigen::column_vector</a></div><div class="ttdeci">Eigen::Vector&lt; Type, Row &gt; column_vector</div><div class="ttdoc">Compile-time sized Eigen3 column vector.</div><div class="ttdef"><b>Definition</b> <a href="eigen_8hpp_source.xhtml#l00085">eigen.hpp:85</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a4fac2d4e13a574cdc956a2d940374e62"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">fcarouge::kalman_internal::zero</a></div><div class="ttdeci">constexpr Type zero</div><div class="ttdoc">The zero matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00472">utility.hpp:472</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>

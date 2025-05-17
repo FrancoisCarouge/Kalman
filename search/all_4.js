@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['a_20vulnerability_0',['Reporting a Vulnerability',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability',1,'']]],
-  ['acceleration_1',['acceleration',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#ae5283deebaa0a27e883752f003e5d55e',1,'fcarouge::sample::anonymous_namespace{kf_2x1x1_rocket_altitude.cpp}::acceleration'],['../namespacefcarouge.xhtml#a3bf1207d66f4f99f4c7175ac6a65dfd4',1,'fcarouge::acceleration']]],
-  ['acceleration_20dynamic_20model_20filter_2',['6x2 Constant Acceleration Dynamic Model Filter',['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'']]],
-  ['acknowledgement_3',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
-  ['actions_4',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],
-  ['altitude_5',['altitude',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__rocket__altitude_8cpp_03.xhtml#a457455bb30add3297b7e2a0ac9a18bc1',1,'fcarouge::sample::anonymous_namespace{kf_2x1x1_rocket_altitude.cpp}']]],
-  ['at_6',['at',['../structfcarouge_1_1indexed_1_1matrix.xhtml#aa987ecc78d523318128c178db115128a',1,'fcarouge::indexed::matrix::at()'],['../structfcarouge_1_1indexed_1_1matrix.xhtml#a0c3a1388b29319a8c11171dbe04bdd62',1,'fcarouge::indexed::matrix::at()']]],
-  ['attribution_7',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
+  ['baseline_2ecpp_0',['baseline.cpp',['../baseline_8cpp.xhtml',1,'']]],
+  ['bench_1',['bench',['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02baseline_8cpp_03.xhtml#a7e540e82a4b39d860abbc711f590a352',1,'fcarouge::benchmark::anonymous_namespace{baseline.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x0_8cpp_03.xhtml#a62e67dcd96681a1385eb16866a19c5e2',1,'fcarouge::benchmark::anonymous_namespace{predict_1x1x0.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__1x1x1_8cpp_03.xhtml#a0e0e019aa29372429c91fcabc71745c5',1,'fcarouge::benchmark::anonymous_namespace{predict_1x1x1.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02predict__linalg__x1x_8cpp_03.xhtml#afd227c8a2ead320bc47bafa8e88a9d7f',1,'fcarouge::benchmark::anonymous_namespace{predict_linalg_x1x.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x0_8cpp_03.xhtml#ac37125d800f776ae7a27ff62838449ee',1,'fcarouge::benchmark::anonymous_namespace{update_1x1x0.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__1x1x1_8cpp_03.xhtml#aa649b94dc4da4f380d44daa1a664dd51',1,'fcarouge::benchmark::anonymous_namespace{update_1x1x1.cpp}::bench()'],['../namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02update__linalg__xx0_8cpp_03.xhtml#ad815f323e5a14424caa6a63c1b22f296',1,'fcarouge::benchmark::anonymous_namespace{update_linalg_xx0.cpp}::bench()']]],
+  ['benchmark_2ehpp_2',['benchmark.hpp',['../benchmark_8hpp.xhtml',1,'']]],
+  ['benchmarks_3',['Benchmarks',['../md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml',1,'Benchmarks'],['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#benchmarks-1',1,'Benchmarks']]],
+  ['binary_4',['binary',['../_l_i_c_e_n_s_e_8txt.xhtml#a316dfca4e7b4aa2cad1874b0365cfb70',1,'LICENSE.txt']]],
+  ['bugs_5',['Reporting Bugs',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs',1,'']]],
+  ['build_20run_6',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]]
 ];

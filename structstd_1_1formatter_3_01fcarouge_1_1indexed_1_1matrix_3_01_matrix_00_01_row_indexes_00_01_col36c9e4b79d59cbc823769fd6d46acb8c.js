@@ -1,7 +1,0 @@
-var structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c =
-[
-    [ "format", "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#afe0524a0509e8ae2a48c06d3e944c3ae", null ],
-    [ "format", "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#a9a31d41c03e56ba27575cd7360345b84", null ],
-    [ "format", "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#af9500d390210412601b33802f39e8d3b", null ],
-    [ "parse", "structstd_1_1formatter_3_01fcarouge_1_1indexed_1_1matrix_3_01_matrix_00_01_row_indexes_00_01_col36c9e4b79d59cbc823769fd6d46acb8c.xhtml#a22ccf9a43345e00fa844932355833178", null ]
-];
