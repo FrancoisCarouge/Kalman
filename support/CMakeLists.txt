@@ -36,6 +36,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+if(NOT BUILD_TESTING)
+  return()
+endif()
+
 add_subdirectory("eigen")
 add_subdirectory("eigexed")
 add_subdirectory("main")
