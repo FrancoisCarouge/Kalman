@@ -36,6 +36,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+if(NOT BUILD_TESTING)
+  return()
+endif()
+
 sample("ekf_4x1x0_soaring" BACKENDS "eigen" "eigexed" "naive" "naixed")
 sample("kf_1x1x0_building_height_unit")
 sample("kf_1x1x0_building_height")
