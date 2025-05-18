@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.5.1
+Version 0.5.2
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
