@@ -59,7 +59,8 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
   using state_transition = ᴀʙᵀ<state, state>;
-  using output_model = ᴀʙᵀ<output, state>;
+  // using output_model = ᴀʙᵀ<output, state>;
+  using output_model = evaluate<quotient<output, state>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function =

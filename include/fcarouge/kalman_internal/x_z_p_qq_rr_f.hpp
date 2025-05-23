@@ -52,7 +52,7 @@ template <typename State, typename Output> struct x_z_p_qq_rr_f {
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
   using state_transition = ᴀʙᵀ<state, state>;
-  using output_model = ᴀʙᵀ<output, state>;
+  using output_model = evaluate<quotient<output, state>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
   using noise_observation_function =
