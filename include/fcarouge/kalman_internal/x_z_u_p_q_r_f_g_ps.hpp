@@ -59,9 +59,9 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = ᴀʙᵀ<state, state>;
-  using output_model = ᴀʙᵀ<output, state>;
-  using input_control = ᴀʙᵀ<state, input>;
+  using state_transition = evaluate<quotient<state, state>>;
+  using output_model = evaluate<quotient<output, state>>;
+  using input_control = evaluate<quotient<state, input>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
   using transition_state_function = function<state_transition(
@@ -72,9 +72,7 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
       function<input_control(const PredictionTypes &...)>;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
-  using gain =
-      evaluate<quotient<product<estimate_uncertainty, transpose<output_model>>,
-                        innovation_uncertainty>>;
+  using gain = evaluate<quotient<state, innovation>>;
 
   static inline const auto i{one<evaluate<product<gain, output_model>>>};
 

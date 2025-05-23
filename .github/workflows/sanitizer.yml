@@ -51,4 +51,4 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Test'
-      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 10 --tests-regex 'kalman_(test|sample)' --verbose --parallel 4
+      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 10 --tests-regex 'kalman_(test|sample)' --verbose --parallel 1
