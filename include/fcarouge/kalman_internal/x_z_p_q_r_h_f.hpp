@@ -52,11 +52,13 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
   using output_model = evaluate<quotient<output, state>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
+  // using gain = evaluate<quotient<state, innovation>>;
   using gain =
       evaluate<quotient<product<estimate_uncertainty, transpose<output_model>>,
                         innovation_uncertainty>>;
 
-  static inline const auto i{one<ᴀʙᵀ<state, state>>};
+  static inline const auto i{one<evaluate<product<gain, output_model>>>};
+  // static inline const auto i{one<ᴀʙᵀ<state, state>>};
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
