@@ -85,14 +85,6 @@ inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
 
 } // namespace fcarouge::kalman_internal
 
-namespace fcarouge::typed_linear_algebra_internal {
-//! @brief Specialization of the evaluation type.
-template <eigen::is_eigen Type> struct evaluates<Type> {
-  [[nodiscard]] inline constexpr auto operator()() const ->
-      typename Type::PlainMatrix;
-};
-} // namespace fcarouge::typed_linear_algebra_internal
-
 namespace fcarouge {
 
 //! @name Types
