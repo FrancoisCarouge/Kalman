@@ -61,11 +61,10 @@ struct std::formatter<Filter, Char> {
   }
 
   //! @todo P2585 may be useful in simplifying and standardizing the support.
-  template <typename OutputIterator>
+  template <typename FormatContext>
   constexpr auto
   format(const Filter &filter,
-         std::basic_format_context<OutputIterator, Char> &format_context) const
-      -> OutputIterator {
+         FormatContext &format_context) const -> FormatContext::iterator {
 
     format_context.advance_to(std::format_to(format_context.out(), R"({{)"));
 
