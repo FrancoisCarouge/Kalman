@@ -421,8 +421,8 @@ namespace fcarouge::kalman_internal {
 //! @note Implementation not needed.
 template <typename Type, std::size_t Row, std::size_t Column>
 struct evaluates<naive::matrix<Type, Row, Column>> {
-  [[nodiscard]] inline constexpr auto
-  operator()() const -> naive::matrix<Type, Row, Column>;
+  [[nodiscard]] inline constexpr auto operator()() const
+      -> naive::matrix<Type, Row, Column>;
 };
 
 //! @brief Specialization of the transposes.

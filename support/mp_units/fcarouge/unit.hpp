@@ -44,7 +44,6 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Supporting quantities, values, and functions.
 
-#include <mp-units/format.h>
 #include <mp-units/framework/quantity.h>
 #include <mp-units/framework/quantity_point.h>
 #include <mp-units/math.h>
