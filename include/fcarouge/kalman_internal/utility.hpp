@@ -204,8 +204,9 @@ concept has_output_model =
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Lhs, typename Rhs> struct divides {
-  [[nodiscard]] inline constexpr auto
-  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs / rhs);
 };
 
 //! @brief Divider helper type.
@@ -273,8 +274,9 @@ using tuple_n_type = typename tupler<Type, Size>::type;
 
 //! @brief Type multiplies expression type specialization point.
 template <typename Lhs, typename Rhs> struct multiplies {
-  [[nodiscard]] inline constexpr auto
-  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs * rhs);
 };
 
 //! @brief Helper type to deduce the result type of the product.
@@ -284,8 +286,9 @@ using product =
 
 //! @brief Type minus, subtraction expression type specialization point.
 template <typename Lhs, typename Rhs> struct minus {
-  [[nodiscard]] inline constexpr auto
-  operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs - rhs);
+  [[nodiscard]] inline constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) const
+      -> decltype(lhs - rhs);
 };
 
 //! @brief Helper type to deduce the result type of the minus, subtraction.

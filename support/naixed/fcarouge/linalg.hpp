@@ -64,7 +64,7 @@ struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()(
       const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
     return typed_matrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
-        t(value.data)};
+        t(value.data())};
   }
 };
 
