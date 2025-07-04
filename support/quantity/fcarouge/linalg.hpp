@@ -47,48 +47,44 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/typed_linear_algebra.hpp"
 #include "fcarouge/unit.hpp"
 
-namespace fcarouge::typed_linear_algebra_internal {
-//! @brief Specialization of the evaluation type.
-template <eigen::is_eigen Type> struct evaluates<Type> {
-  [[nodiscard]] inline constexpr auto operator()() const ->
-      typename Type::PlainMatrix;
-};
-
-template <auto Reference, auto OriginPoint, typename Representation>
-struct element_traits<
-    Representation,
-    mp_units::quantity_point<Reference, OriginPoint, Representation>> {
-  [[nodiscard]] static inline constexpr Representation to_underlying(
-      const mp_units::quantity_point<Reference, OriginPoint, Representation>
-          &value) {
-    return value.quantity_from(OriginPoint).numerical_value_in(value.unit);
-  }
-
-  [[nodiscard]] static inline constexpr mp_units::quantity_point<
-      Reference, OriginPoint, Representation> &
-  from_underlying(Representation &value) {
-    return reinterpret_cast<
-        mp_units::quantity_point<Reference, OriginPoint, Representation> &>(
-        value);
-  }
-};
-
-template <auto Reference, typename Representation>
-struct element_traits<Representation,
-                      mp_units::quantity<Reference, Representation>> {
-  [[nodiscard]] static inline constexpr Representation
-  to_underlying(const mp_units::quantity<Reference, Representation> &value) {
+namespace fcarouge {
+template <typename To, mp_units::Quantity From>
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
     return value.numerical_value_in(value.unit);
   }
+};
 
-  [[nodiscard]] static inline constexpr mp_units::quantity<Reference,
-                                                           Representation> &
-  from_underlying(Representation &value) {
-    return reinterpret_cast<mp_units::quantity<Reference, Representation> &>(
-        value);
+template <mp_units::Quantity To, typename From>
+struct element_caster<To &, From &> {
+  [[nodiscard]] inline constexpr To &operator()(From &value) const {
+    return reinterpret_cast<To &>(value);
   }
 };
 
+template <typename To, mp_units::QuantityPoint From>
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+    return value.quantity_from_zero().numerical_value_in(value.unit);
+  }
+};
+
+template <mp_units::QuantityPoint To, typename From>
+struct element_caster<To, From> {
+  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+    return {value * To::unit, mp_units::default_point_origin(To::unit)};
+  }
+};
+
+template <mp_units::QuantityPoint To, typename From>
+struct element_caster<To &, From &> {
+  [[nodiscard]] inline constexpr To &operator()(From &value) const {
+    return reinterpret_cast<To &>(value);
+  }
+};
+} // namespace fcarouge
+
+namespace fcarouge::typed_linear_algebra_internal {
 //! @brief Multiplies specialization type for uncertainty type deduction.
 template <auto Reference>
 struct multiplies<mp_units::quantity_point<Reference>, int> {
@@ -113,6 +109,43 @@ struct multiplies<mp_units::quantity_point<Reference1>,
              const mp_units::quantity_point<Reference2> &rhs) const
       -> mp_units::quantity<Reference1 * Reference2>;
 };
+
+template <auto Reference1, auto Reference2>
+struct multiplies<mp_units::quantity<Reference1>,
+                  mp_units::quantity_point<Reference2>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity<Reference1> &lhs,
+             const mp_units::quantity_point<Reference2> &rhs) const
+      -> mp_units::quantity_point<Reference1 * Reference2>;
+};
+
+template <auto Reference1, auto Reference2>
+struct divides<mp_units::quantity_point<Reference1>,
+               mp_units::quantity_point<Reference2>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity_point<Reference1> &lhs,
+             const mp_units::quantity_point<Reference2> &rhs) const
+      -> mp_units::quantity<Reference1 / Reference2>;
+};
+
+template <auto Reference1, auto Reference2>
+struct divides<mp_units::quantity<Reference1>,
+               mp_units::quantity_point<Reference2>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity<Reference1> &lhs,
+             const mp_units::quantity_point<Reference2> &rhs) const
+      -> mp_units::quantity_point<Reference1 / Reference2>;
+};
+
+template <auto Reference1, auto Reference2>
+struct divides<mp_units::quantity_point<Reference1>,
+               mp_units::quantity<Reference2>> {
+  [[nodiscard]] inline constexpr auto
+  operator()(const mp_units::quantity_point<Reference1> &lhs,
+             const mp_units::quantity<Reference2> &rhs) const
+      -> mp_units::quantity_point<Reference1 / Reference2>;
+};
+
 } // namespace fcarouge::typed_linear_algebra_internal
 
 namespace fcarouge {
@@ -133,7 +166,7 @@ struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] inline constexpr auto operator()(
       const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
     return typed_matrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
-        t(value.data)};
+        t(value.data())};
   }
 };
 

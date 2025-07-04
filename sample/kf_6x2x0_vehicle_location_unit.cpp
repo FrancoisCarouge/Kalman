@@ -83,29 +83,43 @@ using output_t = vector<position, position>;
       // Since our initial state vector is a guess, we will set a very high
       // estimate uncertainty. The high estimate uncertainty results in a high
       // Kalman Gain, giving a high weight to the measurement.
-      estimate_uncertainty{
-          500. * kalman_internal::one<kalman_internal::ᴀʙᵀ<state_t, state_t>>},
+      estimate_uncertainty{[]() {
+        using estimate_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+        estimate_uncertainty_t value{
+            kalman_internal::one<estimate_uncertainty_t>};
+        value.at<0, 0>() = 500. * m2;
+        value.at<1, 1>() = 500. * m2 / s2;
+        value.at<2, 2>() = 500. * m2 / s4;
+        value.at<3, 3>() = 500. * m2;
+        value.at<4, 4>() = 500. * m2 / s2;
+        value.at<5, 5>() = 500. * m2 / s4;
+        return value;
+      }()},
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
       process_uncertainty{[]() {
         using process_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
         process_uncertainty_t value{
             kalman_internal::one<process_uncertainty_t>};
-        value.at<0, 0>() = 0.25 * m2;
-        value.at<0, 1>() = 0.5 * m2 / s;
-        value.at<0, 2>() = 0.5 * m2 / s2;
-        value.at<1, 0>() = 0.5 * m2 / s;
-        value.at<1, 2>() = 1. * m2 / s3;
-        value.at<2, 0>() = 0.5 * m2 / s2;
-        value.at<2, 1>() = 1. * m2 / s3;
-        value.at<3, 3>() = 0.25 * m2;
-        value.at<3, 4>() = 0.5 * m2 / s;
-        value.at<3, 5>() = 0.5 * m2 / s2;
-        value.at<4, 3>() = 0.5 * m2 / s;
-        value.at<4, 5>() = 1. * m2 / s3;
-        value.at<5, 3>() = 0.5 * m2 / s2;
-        value.at<5, 4>() = 1. * m2 / s3;
-        return 0.2 * 0.2 * value;
+        value.at<0, 0>() = 0.2 * 0.2 * 0.25 * m2;
+        value.at<0, 1>() = 0.2 * 0.2 * 0.5 * m2 / s;
+        value.at<0, 2>() = 0.2 * 0.2 * 0.5 * m2 / s2;
+        value.at<1, 0>() = 0.2 * 0.2 * 0.5 * m2 / s;
+        value.at<1, 1>() = 0.2 * 0.2 * m2 / s2;
+        value.at<1, 2>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<2, 0>() = 0.2 * 0.2 * 0.5 * m2 / s2;
+        value.at<2, 1>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<2, 2>() = 0.2 * 0.2 * m2 / s4;
+        value.at<3, 3>() = 0.2 * 0.2 * 0.25 * m2;
+        value.at<3, 4>() = 0.2 * 0.2 * 0.5 * m2 / s;
+        value.at<3, 5>() = 0.2 * 0.2 * 0.5 * m2 / s2;
+        value.at<4, 3>() = 0.2 * 0.2 * 0.5 * m2 / s;
+        value.at<4, 4>() = 0.2 * 0.2 * m2 / s2;
+        value.at<4, 5>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<5, 3>() = 0.2 * 0.2 * 0.5 * m2 / s2;
+        value.at<5, 4>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<5, 5>() = 0.2 * 0.2 * m2 / s4;
+        return value;
       }()},
       // The output uncertainty matrix R. Assume that the x and y measurements
       // are uncorrelated, i.e. error in the x coordinate measurement doesn't
@@ -125,8 +139,8 @@ using output_t = vector<position, position>;
         using output_model_t = kalman_internal::evaluate<
             kalman_internal::quotient<output_t, state_t>>;
         output_model_t value{kalman_internal::zero<output_model_t>};
-        value.at<0, 0>() = 1. * m2;
-        value.at<1, 3>() = 1. * m2;
+        value.at<0, 0>() = 1.;
+        value.at<1, 3>() = 1.;
         return value;
       }()},
       // The state transition matrix F would be:
@@ -134,12 +148,12 @@ using output_t = vector<position, position>;
         using state_transition_t = kalman_internal::evaluate<
             kalman_internal::quotient<state_t, state_t>>;
         state_transition_t value{kalman_internal::one<state_transition_t>};
-        value.at<0, 1>() = 1. * m2 / s;
-        value.at<0, 2>() = 0.5 * m2 / s2;
-        value.at<1, 2>() = 1. * m2 / s3;
-        value.at<3, 4>() = 1. * m2 / s;
-        value.at<3, 5>() = 0.5 * m2 / s2;
-        value.at<4, 5>() = 1. * m2 / s3;
+        value.at<0, 1>() = 1. * s;
+        value.at<0, 2>() = 0.5 * s2;
+        value.at<1, 2>() = 1. * s;
+        value.at<3, 4>() = 1. * s;
+        value.at<3, 5>() = 0.5 * s2;
+        value.at<4, 5>() = 1. * s;
         return value;
       }()}};
 
