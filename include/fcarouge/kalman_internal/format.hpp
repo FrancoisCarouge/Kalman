@@ -65,7 +65,6 @@ struct std::formatter<Filter, Char> {
   constexpr auto
   format(const Filter &filter,
          FormatContext &format_context) const -> FormatContext::iterator {
-
     format_context.advance_to(std::format_to(format_context.out(), R"({{)"));
 
     if constexpr (fcarouge::kalman_internal::has_state_transition_method<

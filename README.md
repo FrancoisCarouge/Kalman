@@ -192,7 +192,7 @@ The member types are optionally present according to the filter configuration.
 
 | Member Function | Definition |
 | --- | --- |
-| `(constructor)` | Constructs the filter. Configures the filter the deduction guides. |
+| `(constructor)` | Constructs a Kalman filter from its declared configuration. |
 | `(move constructor)` | Constructs the filter, default. |
 | `(move assignment operator)` | Assigns values to the filter, default. |
 | `(destructor)` | Destructs the filter. |
