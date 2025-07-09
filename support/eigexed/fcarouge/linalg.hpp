@@ -48,7 +48,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cstddef>
 
-namespace fcarouge::kalman_internal {
+namespace fcarouge {
+namespace kalman_internal {
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
@@ -83,17 +84,7 @@ inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
 
 //! @}
 
-} // namespace fcarouge::kalman_internal
-
-namespace fcarouge::typed_linear_algebra_internal {
-//! @brief Specialization of the evaluation type.
-template <eigen::is_eigen Type> struct evaluates<Type> {
-  [[nodiscard]] inline constexpr auto operator()() const ->
-      typename Type::PlainMatrix;
-};
-} // namespace fcarouge::typed_linear_algebra_internal
-
-namespace fcarouge {
+} // namespace kalman_internal
 
 //! @name Types
 //! @{
