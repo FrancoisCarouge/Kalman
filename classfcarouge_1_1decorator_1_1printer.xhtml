@@ -174,7 +174,7 @@ template&lt;typename Filter &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00057">57</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   58</span>      : Filter{std::forward&lt;Filter&gt;(filter)} {</div>
-<div class="line"><span class="lineno">   59</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;construction\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   59</span>    std::println(R<span class="stringliteral">&quot;({{&quot;event&quot;: &quot;construction&quot;, &quot;filter&quot;:{}}})&quot;, *</span><span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">   60</span>  }</div>
 </div><!-- fragment -->
 </div>
@@ -206,7 +206,7 @@ template&lt;typename Filter &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00062">62</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   62</span>                              {</div>
-<div class="line"><span class="lineno">   63</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;destruction\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   63</span>    std::println(R<span class="stringliteral">&quot;({{&quot;event&quot;: &quot;destruction&quot;, &quot;filter&quot;:{}}})&quot;, *</span><span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">   64</span>  }</div>
 </div><!-- fragment -->
 </div>
@@ -244,7 +244,7 @@ template&lt;typename Filter &gt; </div>
 <p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00071">71</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   71</span>                                                                    {</div>
 <div class="line"><span class="lineno">   72</span>    Filter::p(value, values...);</div>
-<div class="line"><span class="lineno">   73</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;p\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   73</span>    std::println(R<span class="stringliteral">&quot;({{&quot;event&quot;: &quot;p&quot;, &quot;filter&quot;:{}}})&quot;, *</span><span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">   74</span>  }</div>
 </div><!-- fragment -->
 </div>
@@ -277,7 +277,7 @@ template&lt;typename Filter &gt; </div>
 <p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00076">76</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   76</span>                                                          {</div>
 <div class="line"><span class="lineno">   77</span>    Filter::predict(arguments...);</div>
-<div class="line"><span class="lineno">   78</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;predict\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   78</span>    std::println(R<span class="stringliteral">&quot;({{&quot;event&quot;: &quot;predict&quot;, &quot;filter&quot;:{}}})&quot;, *</span><span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">   79</span>  }</div>
 </div><!-- fragment -->
 </div>
@@ -310,7 +310,7 @@ template&lt;typename Filter &gt; </div>
 <p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00081">81</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   81</span>                                                         {</div>
 <div class="line"><span class="lineno">   82</span>    Filter::update(arguments...);</div>
-<div class="line"><span class="lineno">   83</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;update\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   83</span>    std::println(R<span class="stringliteral">&quot;({{&quot;event&quot;: &quot;update&quot;, &quot;filter&quot;:{}}})&quot;, *</span><span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">   84</span>  }</div>
 </div><!-- fragment -->
 </div>
@@ -347,7 +347,7 @@ template&lt;typename Filter &gt; </div>
 <p class="definition">Definition at line <a class="el" href="printer_8hpp_source.xhtml#l00066">66</a> of file <a class="el" href="printer_8hpp_source.xhtml">printer.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   66</span>                                                                    {</div>
 <div class="line"><span class="lineno">   67</span>    Filter::x(value, values...);</div>
-<div class="line"><span class="lineno">   68</span>    std::println(<span class="stringliteral">&quot;{{\&quot;event\&quot;: \&quot;x\&quot;, \&quot;filter\&quot;:{}}}&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   68</span>    std::println(R<span class="stringliteral">&quot;({{&quot;event&quot;: &quot;x&quot;, &quot;filter&quot;:{}}})&quot;, *</span><span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">   69</span>  }</div>
 </div><!-- fragment -->
 </div>
