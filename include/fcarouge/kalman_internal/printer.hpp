@@ -56,31 +56,31 @@ public:
 
   inline constexpr explicit printer([[maybe_unused]] Filter &&filter)
       : Filter{std::forward<Filter>(filter)} {
-    std::println("{{\"event\": \"construction\", \"filter\":{}}}", *this);
+    std::println(R"({{"event": "construction", "filter":{}}})", *this);
   }
 
   inline constexpr ~printer() {
-    std::println("{{\"event\": \"destruction\", \"filter\":{}}}", *this);
+    std::println(R"({{"event": "destruction", "filter":{}}})", *this);
   }
 
   inline constexpr void x(const auto &value, const auto &...values) {
     Filter::x(value, values...);
-    std::println("{{\"event\": \"x\", \"filter\":{}}}", *this);
+    std::println(R"({{"event": "x", "filter":{}}})", *this);
   }
 
   inline constexpr void p(const auto &value, const auto &...values) {
     Filter::p(value, values...);
-    std::println("{{\"event\": \"p\", \"filter\":{}}}", *this);
+    std::println(R"({{"event": "p", "filter":{}}})", *this);
   }
 
   inline constexpr void predict(const auto &...arguments) {
     Filter::predict(arguments...);
-    std::println("{{\"event\": \"predict\", \"filter\":{}}}", *this);
+    std::println(R"({{"event": "predict", "filter":{}}})", *this);
   }
 
   inline constexpr void update(const auto &...arguments) {
     Filter::update(arguments...);
-    std::println("{{\"event\": \"update\", \"filter\":{}}}", *this);
+    std::println(R"({{"event": "update", "filter":{}}})", *this);
   }
 };
 } // namespace decorator
