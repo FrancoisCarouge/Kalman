@@ -279,9 +279,10 @@ The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark
 | --- | --- |
 | EKF | The Extended Kalman Filter is the nonlinear version of the Kalman filter. Useful for nonlinear dynamics systems. This filter linearizes the model about an estimate working point of the current mean and covariance. |
 | ESKF | The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states. 
+| MSCKF | The Multi-State Constraint Kalman Filter is an EKF-based approach that leverages constraints between multiple and varied measurements to improve pose estimation accuracy and robustness. |
 | UKF | The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples sigma points about an estimate working point of the current mean using an Unscented Transformation technique. |
 
-Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, MSCKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.
+Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.
 
 ## Related Resources
 
