@@ -36,13 +36,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-FetchContent_Declare(
-  fcarouge-typed-linear-algebra
-  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  GIT_TAG "7fd54b8ce13e11fab6876868f6d6c674d9b6f127"
-  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
-FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
-
 add_library(kalman_linalg_quantity INTERFACE)
 target_sources(
   kalman_linalg_quantity INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
