@@ -36,10 +36,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(kalman_linalg_eigexed INTERFACE)
-target_sources(
-  kalman_linalg_eigexed INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
-                                  FILES "fcarouge/linalg.hpp")
-target_link_libraries(
-  kalman_linalg_eigexed INTERFACE kalman kalman_linalg_eigen
-                                  fcarouge-typed-linear-algebra::linalg)
+FetchContent_Declare(
+  fcarouge-typed-linear-algebra
+  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
+  GIT_TAG "c1ed4bd8fd4d1642b0b9d58f8cdcd57131e841d6"
+  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
+FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
