@@ -39,6 +39,6 @@ For more information, please refer to <https://unlicense.org> ]]
 FetchContent_Declare(
   fcarouge-typed-linear-algebra
   GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  GIT_TAG "c1ed4bd8fd4d1642b0b9d58f8cdcd57131e841d6"
+  GIT_TAG "85ef5bc1836ceefeba353f730003f4819202f416"
   FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
 FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
