@@ -47,9 +47,10 @@ template <typename State> struct x_z_p_r_f {
   using output = State;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = ᴀʙᵀ<state, state>;
+  using state_transition = evaluate<quotient<state, state>>;
   using innovation = evaluate<difference<output, state>>;
   using innovation_uncertainty = output_uncertainty;
+  // using gain = evaluate<quotient<state, innovation>>;
   using gain = evaluate<quotient<estimate_uncertainty, innovation_uncertainty>>;
 
   static inline const auto i{one<gain>};
