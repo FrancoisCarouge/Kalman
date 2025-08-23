@@ -59,7 +59,7 @@ inline constexpr auto &&kalman<Filter>::x(this auto &&self) {
 template <typename Filter>
 inline constexpr void kalman<Filter>::x(const auto &value,
                                         const auto &...values) {
-  filter.x = std::move(state{value, values...});
+  filter.x = state{value, values...};
 }
 
 template <typename Filter>
@@ -88,7 +88,7 @@ kalman<Filter>::p(this auto &&self) {
 template <typename Filter>
 inline constexpr void kalman<Filter>::p(const auto &value,
                                         const auto &...values) {
-  filter.p = std::move(estimate_uncertainty{value, values...});
+  filter.p = estimate_uncertainty{value, values...};
 }
 
 template <typename Filter>
@@ -107,12 +107,10 @@ inline constexpr void kalman<Filter>::q(const auto &value,
 {
   if constexpr (std::is_convertible_v<decltype(value),
                                       typename Filter::process_uncertainty>) {
-    filter.q =
-        std::move(typename Filter::process_uncertainty{value, values...});
+    filter.q = typename Filter::process_uncertainty{value, values...};
   } else {
     using noise_process_function = decltype(filter.noise_process_q);
-    filter.noise_process_q =
-        std::move(noise_process_function{value, values...});
+    filter.noise_process_q = noise_process_function{value, values...};
   }
 }
 
@@ -132,11 +130,10 @@ inline constexpr void kalman<Filter>::r(const auto &value,
 {
   if constexpr (std::is_convertible_v<decltype(value),
                                       typename Filter::output_uncertainty>) {
-    filter.r = std::move(typename Filter::output_uncertainty{value, values...});
+    filter.r = typename Filter::output_uncertainty{value, values...};
   } else {
     using noise_observation_function = decltype(filter.noise_observation_r);
-    filter.noise_observation_r =
-        std::move(noise_observation_function{value, values...});
+    filter.noise_observation_r = noise_observation_function{value, values...};
   }
 }
 
@@ -156,11 +153,10 @@ inline constexpr void kalman<Filter>::f(const auto &value,
 {
   if constexpr (std::is_convertible_v<decltype(value),
                                       typename Filter::state_transition>) {
-    filter.f = std::move(typename Filter::state_transition{value, values...});
+    filter.f = typename Filter::state_transition{value, values...};
   } else {
     using transition_state_function = decltype(filter.transition_state_f);
-    filter.transition_state_f =
-        std::move(transition_state_function{value, values...});
+    filter.transition_state_f = transition_state_function{value, values...};
   }
 }
 
@@ -180,11 +176,10 @@ inline constexpr void kalman<Filter>::h(const auto &value,
 {
   if constexpr (std::is_convertible_v<decltype(value),
                                       typename Filter::output_model>) {
-    filter.h = std::move(typename Filter::output_model{value, values...});
+    filter.h = typename Filter::output_model{value, values...};
   } else {
     using observation_state_function = decltype(filter.observation_state_h);
-    filter.observation_state_h =
-        std::move(observation_state_function{value, values...});
+    filter.observation_state_h = observation_state_function{value, values...};
   }
 }
 
@@ -203,8 +198,7 @@ inline constexpr void kalman<Filter>::g(const auto &value,
   requires(kalman_internal::has_input_control<Filter>)
 {
   using transition_control_function = decltype(filter.transition_control_g);
-  filter.transition_control_g =
-      std::move(transition_control_function{value, values...});
+  filter.transition_control_g = transition_control_function{value, values...};
 }
 
 template <typename Filter>
