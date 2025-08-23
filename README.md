@@ -403,15 +403,3 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org>
-
-WIP DEV NOTES
-
-* domaine public pas possible depuis la France?
-* évite de prendre des float par référence constante. Ici c'est dans des lambdas inlinées, mais sur du vrai code, c'est de la premature pessimisation?
-* std::pow(whatever, 2) est un faux ami. Je suis tombé sur des cas dernièrement où le compilo ne savait pas l'optimiser. On a std::norm() (dans complex) qui fera mieux le boulot -- https://godbolt.org/z/ET9dMjdro
-* constexpr implique déjà inline
-* Quitte à surcharger l'écriture, je vais préférer des [[nodiscard]] -- que je te vois utiliser sur les définitions des fonctions et non des déclarations. Etrange. Je ne savais pas que ça pouvait faire son boulot, c'est parce que c'est du template inliné? Ca allège les interfaces c'est vrai, après je trouve ça contre-intuitif. Ca me fait penser à la déclaration des paramètres par défaut au niveau des définitions de fonctions. Faut que j'y réfléchisse -- pour mes codes.
-* Je suis dubitatif quant à déplacer des choses qui appartiennent à des hiérarchies. Je suis globalement arrivé à la même conclusion que pour la copie: ça va foirer quelque part.
-* filter.p = std::move(estimate_uncertainty{value, values...}); Le move me semble  inutile.  C'est déjà une rvalue. Sonar il râle d'ailleurs là dessus.
-* https://github.com/FrancoisCarouge/Kalman/blob/master/include/fcarouge/kalman_internal/x_z_u_p_q_r_h_f_g_us_ps.hpp#L94 le compilo n'est pas autorisé à factoriser p * t(h) sur des flottants, sauf fast-math.  -> il doit traiter les calculs dans l'ordre, et selon comment est définie  t()  il pourrait ne pas voir que c'est une fonction pure -- je doute que l'on soit dans des cas de fonctions à état
-* Soumettre projet au JOSS si c'est un projet de recherche: https://joss.theoj.org/
