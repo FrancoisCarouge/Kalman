@@ -101,23 +101,24 @@ using output_t = vector<position, position>;
         using process_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
         process_uncertainty_t value{
             kalman_internal::one<process_uncertainty_t>};
+        // THIS CAN BE SIMPLIFIED NOW.
         value.at<0, 0>() = 0.2 * 0.2 * 0.25 * m2;
         value.at<0, 1>() = 0.2 * 0.2 * 0.5 * m2 / s;
         value.at<0, 2>() = 0.2 * 0.2 * 0.5 * m2 / s2;
         value.at<1, 0>() = 0.2 * 0.2 * 0.5 * m2 / s;
         value.at<1, 1>() = 0.2 * 0.2 * m2 / s2;
-        value.at<1, 2>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<1, 2>() = 0.2 * 0.2 * m2 / s3;
         value.at<2, 0>() = 0.2 * 0.2 * 0.5 * m2 / s2;
-        value.at<2, 1>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<2, 1>() = 0.2 * 0.2 * m2 / s3;
         value.at<2, 2>() = 0.2 * 0.2 * m2 / s4;
         value.at<3, 3>() = 0.2 * 0.2 * 0.25 * m2;
         value.at<3, 4>() = 0.2 * 0.2 * 0.5 * m2 / s;
         value.at<3, 5>() = 0.2 * 0.2 * 0.5 * m2 / s2;
         value.at<4, 3>() = 0.2 * 0.2 * 0.5 * m2 / s;
         value.at<4, 4>() = 0.2 * 0.2 * m2 / s2;
-        value.at<4, 5>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<4, 5>() = 0.2 * 0.2 * m2 / s3;
         value.at<5, 3>() = 0.2 * 0.2 * 0.5 * m2 / s2;
-        value.at<5, 4>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<5, 4>() = 0.2 * 0.2 * m2 / s3;
         value.at<5, 5>() = 0.2 * 0.2 * m2 / s4;
         return value;
       }()},
