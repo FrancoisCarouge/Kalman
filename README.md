@@ -416,3 +416,13 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org>
+
+# Work In Progress
+
+* domaine public pas possible depuis la France?
+* évite de prendre des float par référence constante. Ici c'est dans des lambdas inlinées, mais sur du vrai code, c'est de la premature pessimisation?
+* std::pow(whatever, 2) est un faux ami. Je suis tombé sur des cas dernièrement où le compilo ne savait pas l'optimiser. On a std::norm() (dans complex) qui fera mieux le boulot -- https://godbolt.org/z/ET9dMjdro
+* constexpr implique déjà inline
+* Je suis dubitatif quant à déplacer des choses qui appartiennent à des hiérarchies. Je suis globalement arrivé à la même conclusion que pour la copie: ça va foirer quelque part.
+* https://github.com/FrancoisCarouge/Kalman/blob/master/include/fcarouge/kalman_internal/x_z_u_p_q_r_h_f_g_us_ps.hpp#L94 le compilo n'est pas autorisé à factoriser p * t(h) sur des flottants, sauf fast-math.  -> il doit traiter les calculs dans l'ordre, et selon comment est définie  t()  il pourrait ne pas voir que c'est une fonction pure -- je doute que l'on soit dans des cas de fonctions à état
+* Soumettre projet au JOSS si c'est un projet de recherche: https://joss.theoj.org/
