@@ -42,4 +42,4 @@ target_sources(
                                  "fcarouge/linalg.hpp")
 target_link_libraries(
   kalman_linalg_naixed INTERFACE kalman kalman_linalg_naive
-                                 fcarouge-typed-linear-algebra::linalg)
+                                 fcarouge-typed-linear-algebra::tlinalg)
