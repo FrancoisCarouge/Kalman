@@ -43,4 +43,4 @@ target_sources(
 target_link_libraries(
   kalman_linalg_quantity
   INTERFACE kalman kalman_linalg_eigen kalman_unit_mp_units
-            fcarouge-typed-linear-algebra::linalg)
+            fcarouge-typed-linear-algebra::tlinalg)
