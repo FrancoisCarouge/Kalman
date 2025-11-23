@@ -47,6 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <cctype>
 #include <ranges>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace fcarouge {

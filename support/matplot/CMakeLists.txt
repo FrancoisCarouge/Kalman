@@ -54,5 +54,7 @@ target_sources(kalman_plot INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
                                      FILES "fcarouge/plot.hpp")
 target_link_libraries(kalman_plot INTERFACE matplot)
 
-# @todo Upstream fixes.
-target_compile_options(matplot INTERFACE "-Wno-shadow")
+if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  # @todo Upstream fixes.
+  target_compile_options(matplot INTERFACE "-Wno-shadow")
+endif()
