@@ -162,6 +162,7 @@ public:
 
   //! @brief Type of the innovation uncertainty matrix S.
   using innovation_uncertainty = Filter::innovation_uncertainty;
+
   //! @}
 
   //! @name Public Member Functions
@@ -175,8 +176,17 @@ public:
   template <typename... Arguments>
   inline constexpr kalman(Arguments... arguments);
 
-  //! @brief Copy constructs a filter, not implemented.
-  inline constexpr kalman(const kalman &other) = delete;
+  //! @brief Copy constructs a filter.
+  //!
+  //! @details Copy constructor. Constructs the filter with the contents of
+  //! the `other` filter using copy semantics (i.e. the data in `other`
+  //! filter is copied from the other into this filter).
+  //!
+  //! @param other Another filter to be used as source to initialize the
+  //! elements of the filter with.
+  //!
+  //! @complexity Constant.
+  inline constexpr kalman(const kalman &other) = default;
 
   //! @brief Move constructs a filter.
   //!
@@ -192,8 +202,20 @@ public:
   //! @complexity Constant.
   inline constexpr kalman(kalman &&other) noexcept = default;
 
-  //! @brief Copy assigns a filter, not implemented.
-  inline constexpr auto operator=(const kalman &other) -> kalman & = delete;
+  //! @brief Copy assignment operator.
+  //!
+  //! @details Replaces the contents of the filter with those of the `other`
+  //! filter using copy semantics (i.e. the data in `other` filter is copied
+  //! from the other into this filter).
+  //!
+  //! @param other Another filter to be used as source to initialize the
+  //! elements of the filter with.
+  //!
+  //! @return The reference value of this implicit object filter parameter,
+  //! i.e. `*this`.
+  //!
+  //! @complexity Constant.
+  inline constexpr auto operator=(const kalman &other) -> kalman & = default;
 
   //! @brief Move assignment operator.
   //!
