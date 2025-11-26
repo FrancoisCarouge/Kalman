@@ -1,6 +1,8 @@
 var dir_13e138d54eb8818da29c3992edef070a =
 [
+    [ "kalman_assign_copy_5x4x3.cpp", "kalman__assign__copy__5x4x3_8cpp.xhtml", "kalman__assign__copy__5x4x3_8cpp" ],
     [ "kalman_assign_move_5x4x3.cpp", "kalman__assign__move__5x4x3_8cpp.xhtml", "kalman__assign__move__5x4x3_8cpp" ],
+    [ "kalman_constructor_copy_5x4x3.cpp", "kalman__constructor__copy__5x4x3_8cpp.xhtml", "kalman__constructor__copy__5x4x3_8cpp" ],
     [ "kalman_constructor_default.cpp", "kalman__constructor__default_8cpp.xhtml", "kalman__constructor__default_8cpp" ],
     [ "kalman_constructor_default_1x1x3.cpp", "kalman__constructor__default__1x1x3_8cpp.xhtml", "kalman__constructor__default__1x1x3_8cpp" ],
     [ "kalman_constructor_default_1x4x1.cpp", "kalman__constructor__default__1x4x1_8cpp.xhtml", "kalman__constructor__default__1x4x1_8cpp" ],

@@ -1,9 +1,19 @@
 var namespacefcarouge_1_1test =
 [
+    [ "anonymous_namespace{kalman_assign_copy_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__copy__5x4x3_8cpp_03.xhtml", [
+      [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__copy__5x4x3_8cpp_03.xhtml#a2d6523429ca02344977d95068a1035e7", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__copy__5x4x3_8cpp_03.xhtml#a2e953757597d9f3ceb4dce4e1856e884", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__copy__5x4x3_8cpp_03.xhtml#a47a98a052becd119a64a60542d68f7c1", null ]
+    ] ],
     [ "anonymous_namespace{kalman_assign_move_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a45e7064334c3bcd1e0850d695afec701", null ],
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a75dca0f45509383a3c74b0f4e3c303d3", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a883c3df8493c8f272bc4854d177eefcd", null ]
+    ] ],
+    [ "anonymous_namespace{kalman_constructor_copy_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__5x4x3_8cpp_03.xhtml", [
+      [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__5x4x3_8cpp_03.xhtml#ada187883ca52b034d2273ef0e755a001", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__5x4x3_8cpp_03.xhtml#a925b03df33c75162d06b36eedf923374", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__5x4x3_8cpp_03.xhtml#a2706782d852a46bfd682e7e8f3ed7eb7", null ]
     ] ],
     [ "anonymous_namespace{kalman_constructor_default.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default_8cpp_03.xhtml#a6864d96b5149fb0af422b61e90abda00", null ]
