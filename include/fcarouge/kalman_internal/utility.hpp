@@ -640,6 +640,11 @@ template <typename Type>
   requires requires { Type::zero(); }
 inline auto zero<Type>{Type::zero()};
 
+template <typename Callable> struct scope_exit {
+  Callable callable;
+  inline constexpr ~scope_exit() { callable(); }
+};
+
 //! @}
 
 } // namespace fcarouge::kalman_internal
