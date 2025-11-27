@@ -42,8 +42,7 @@ jobs:
           --enable=all \
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
-          --suppress=preprocessorErrorDirective \
-          --suppress=syntaxError: test/units_kf_6x2x0_vehicle_location.cpp \
+          --suppress=unhandledChar \
           --verbose \
           -I benchmark/include \
           -I include \

@@ -50,16 +50,13 @@ inline constexpr kalman<Filter>::kalman(Arguments... arguments)
     : filter{kalman_internal::filter<Filter>(arguments...)} {}
 
 template <typename Filter>
-[[nodiscard(
-    "The returned state estimate column vector X is unexpectedly discarded.")]]
-inline constexpr auto &&kalman<Filter>::x(this auto &&self) {
+inline constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
+                                                  const auto &...values) {
+  if constexpr (sizeof...(values)) {
+    self.filter.x = state{values...};
+  }
+  //! @todo A conditional no_discard woud be nice here.
   return std::forward<decltype(self)>(self).filter.x;
-}
-
-template <typename Filter>
-inline constexpr void kalman<Filter>::x(const auto &value,
-                                        const auto &...values) {
-  filter.x = state{value, values...};
 }
 
 template <typename Filter>
@@ -79,147 +76,124 @@ kalman<Filter>::u() const
 }
 
 template <typename Filter>
-[[nodiscard("The returned estimated covariance matrix P is unexpectedly "
-            "discarded.")]] inline constexpr auto &&
-kalman<Filter>::p(this auto &&self) {
+inline constexpr decltype(auto) kalman<Filter>::p(this auto &&self,
+                                                  const auto &...values) {
+  if constexpr (sizeof...(values)) {
+    self.filter.p = state{values...};
+  }
   return std::forward<decltype(self)>(self).filter.p;
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::p(const auto &value,
-                                        const auto &...values) {
-  filter.p = estimate_uncertainty{value, values...};
-}
-
-template <typename Filter>
-[[nodiscard("The returned process noise covariance matrix Q is unexpectedly "
-            "discarded.")]] inline constexpr auto &&
-kalman<Filter>::q(this auto &&self)
+inline constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
+                                                  const auto &...values)
   requires(kalman_internal::has_process_uncertainty<Filter>)
 {
+  if constexpr (sizeof...(values)) {
+    if constexpr (std::is_convertible_v<decltype(values)...,
+                                        typename Filter::process_uncertainty>) {
+      self.filter.q = typename Filter::process_uncertainty{values...};
+    } else {
+      using noise_process_function = decltype(filter.noise_process_q);
+      self.filter.noise_process_q = noise_process_function{values...};
+    }
+  }
   return std::forward<decltype(self)>(self).filter.q;
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::q(const auto &value,
-                                        const auto &...values)
-  requires(kalman_internal::has_process_uncertainty<Filter>)
-{
-  if constexpr (std::is_convertible_v<decltype(value),
-                                      typename Filter::process_uncertainty>) {
-    filter.q = typename Filter::process_uncertainty{value, values...};
-  } else {
-    using noise_process_function = decltype(filter.noise_process_q);
-    filter.noise_process_q = noise_process_function{value, values...};
-  }
-}
-
-template <typename Filter>
-[[nodiscard("The returned observation noise covariance matrix R is "
-            "unexpectedly discarded.")]] inline constexpr auto &&
-kalman<Filter>::r(this auto &&self)
+inline constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
+                                                  const auto &...values)
   requires(kalman_internal::has_output_uncertainty<Filter>)
 {
+  if constexpr (sizeof...(values)) {
+    if constexpr (std::is_convertible_v<decltype(values)...,
+                                        typename Filter::output_uncertainty>) {
+      self.filter.r = typename Filter::output_uncertainty{values...};
+    } else {
+      using noise_observation_function = decltype(filter.noise_observation_r);
+      self.filter.noise_observation_r = noise_observation_function{values...};
+    }
+  }
   return std::forward<decltype(self)>(self).filter.r;
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::r(const auto &value,
-                                        const auto &...values)
-  requires(kalman_internal::has_output_uncertainty<Filter>)
-{
-  if constexpr (std::is_convertible_v<decltype(value),
-                                      typename Filter::output_uncertainty>) {
-    filter.r = typename Filter::output_uncertainty{value, values...};
-  } else {
-    using noise_observation_function = decltype(filter.noise_observation_r);
-    filter.noise_observation_r = noise_observation_function{value, values...};
-  }
-}
-
-template <typename Filter>
-[[nodiscard("The returned state transition matrix F is unexpectedly "
-            "discarded.")]] inline constexpr auto &&
-kalman<Filter>::f(this auto &&self)
+inline constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
+                                                  const auto &...values)
   requires(kalman_internal::has_state_transition<Filter>)
 {
+  if constexpr (sizeof...(values)) {
+    if constexpr (std::is_convertible_v<decltype(values)...,
+                                        typename Filter::state_transition>) {
+      self.filter.f = typename Filter::state_transition{values...};
+    } else {
+      using transition_state_function = decltype(filter.transition_state_f);
+      self.filter.transition_state_f = transition_state_function{values...};
+    }
+  }
   return std::forward<decltype(self)>(self).filter.f;
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::f(const auto &value,
-                                        const auto &...values)
-  requires(kalman_internal::has_state_transition<Filter>)
-{
-  if constexpr (std::is_convertible_v<decltype(value),
-                                      typename Filter::state_transition>) {
-    filter.f = typename Filter::state_transition{value, values...};
-  } else {
-    using transition_state_function = decltype(filter.transition_state_f);
-    filter.transition_state_f = transition_state_function{value, values...};
-  }
-}
-
-template <typename Filter>
-[[nodiscard("The returned observation transition matrix H is unexpectedly "
-            "discarded.")]] inline constexpr auto &&
-kalman<Filter>::h(this auto &&self)
+inline constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
+                                                  const auto &...values)
   requires(kalman_internal::has_output_model<Filter>)
 {
+  if constexpr (sizeof...(values)) {
+    if constexpr (std::is_convertible_v<decltype(values)...,
+                                        typename Filter::output_model>) {
+      self.filter.h = typename Filter::output_model{values...};
+    } else {
+      using observation_state_function = decltype(filter.observation_state_h);
+      self.filter.observation_state_h = observation_state_function{values...};
+    }
+  }
   return std::forward<decltype(self)>(self).filter.h;
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::h(const auto &value,
-                                        const auto &...values)
-  requires(kalman_internal::has_output_model<Filter>)
-{
-  if constexpr (std::is_convertible_v<decltype(value),
-                                      typename Filter::output_model>) {
-    filter.h = typename Filter::output_model{value, values...};
-  } else {
-    using observation_state_function = decltype(filter.observation_state_h);
-    filter.observation_state_h = observation_state_function{value, values...};
-  }
-}
-
-template <typename Filter>
-[[nodiscard("The returned control transition matrix G is unexpectedly "
-            "discarded.")]] inline constexpr auto &&
-kalman<Filter>::g(this auto &&self)
+inline constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
+                                                  const auto &...values)
   requires(kalman_internal::has_input_control<Filter>)
 {
+  if constexpr (sizeof...(values)) {
+    if constexpr (std::is_convertible_v<decltype(values)...,
+                                        typename Filter::input_control>) {
+      self.filter.g = typename Filter::input_control{values...};
+    } else {
+      using transition_control_function = decltype(filter.transition_control_g);
+      self.filter.transition_control_g = transition_control_function{values...};
+    }
+  }
   return std::forward<decltype(self)>(self).filter.g;
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::g(const auto &value,
-                                        const auto &...values)
-  requires(kalman_internal::has_input_control<Filter>)
-{
-  using transition_control_function = decltype(filter.transition_control_g);
-  filter.transition_control_g = transition_control_function{value, values...};
+inline constexpr decltype(auto) kalman<Filter>::k(this auto &&self,
+                                                  const auto &...values) {
+  if constexpr (sizeof...(values)) {
+    self.filter.k = state{values...};
+  }
+  return std::forward<decltype(self)>(self).filter.k;
 }
 
 template <typename Filter>
-[[nodiscard("The returned gain matrix K is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<Filter>::k() const -> const gain & {
-  return filter.k;
+inline constexpr decltype(auto) kalman<Filter>::y(this auto &&self,
+                                                  const auto &...values) {
+  if constexpr (sizeof...(values)) {
+    self.filter.y = state{values...};
+  }
+  return std::forward<decltype(self)>(self).filter.y;
 }
 
 template <typename Filter>
-[[nodiscard("The returned innovation column vector Y is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<Filter>::y() const -> const innovation & {
-  return filter.y;
-}
-
-template <typename Filter>
-[[nodiscard("The returned innovation uncertainty matrix S is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<Filter>::s() const -> const innovation_uncertainty & {
-  return filter.s;
+inline constexpr decltype(auto) kalman<Filter>::s(this auto &&self,
+                                                  const auto &...values) {
+  if constexpr (sizeof...(values)) {
+    self.filter.s = state{values...};
+  }
+  return std::forward<decltype(self)>(self).filter.s;
 }
 
 template <typename Filter>
