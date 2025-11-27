@@ -51,7 +51,7 @@ template <auto Size> using vector = column_vector<double, Size>;
 [[maybe_unused]] auto sample{[] {
   auto filter{kalman{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                      input<vector<3>>} |
-              printer};
+              print};
 
   filter.predict(0., 0., 0.);
 

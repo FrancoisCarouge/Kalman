@@ -49,7 +49,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "kalman_forward.hpp"
 #include "kalman_internal/factory.hpp"
 #include "kalman_internal/format.hpp"
-#include "kalman_internal/printer.hpp"
+#include "kalman_internal/print.hpp"
 #include "kalman_internal/utility.hpp"
 
 namespace fcarouge {
@@ -495,6 +495,19 @@ kalman(Arguments... arguments)
     -> kalman<kalman_internal::deduce_filter<Arguments...>>;
 
 //! @}
+
+//! @name Decorators
+//! @{
+
+//! @brief Filter decorator to print activities to the standard output.
+//!
+//! @details Pipe decorator to filter declaration to print out its activities:
+//! construction, destruction, updates, predictions, and characteristic changes.
+//! Prints with default formatting. Takes no parameters.
+inline constexpr printer print;
+
+//! @}
+
 } // namespace fcarouge
 
 #include "kalman_internal/kalman.tpp"

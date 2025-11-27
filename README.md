@@ -235,6 +235,18 @@ std::println("{}", filter);
 // The characteristics are optionally present according to the filter configuration.
 ```
 
+## Decorators
+
+Pipe one or more decorators to the filter declaration to attach additional responsibilities.
+
+```cpp
+auto filter{kalman{...} | print};
+```
+
+| Decorator | Definition |
+| --- | --- |
+| `print` | Print filter activities to the standard output. |
+
 # Considerations
 
 ## Motivations

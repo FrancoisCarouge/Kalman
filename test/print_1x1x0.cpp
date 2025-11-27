@@ -47,7 +47,7 @@ namespace {
 [[maybe_unused]] auto sample{[] {
   auto filter{kalman{state{60.}, output<double>, estimate_uncertainty{225.},
                      output_uncertainty{25.}} |
-              printer};
+              print};
 
   filter.update(48.54);
   filter.update(47.11);

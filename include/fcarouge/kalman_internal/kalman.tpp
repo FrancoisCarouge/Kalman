@@ -55,7 +55,7 @@ inline constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
   requires(kalman_internal::has_state<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    self.filter.x = state{values...};
+    self.filter.x = typename Filter::state{values...};
   }
   //! @todo A conditional no_discard woud be nice here.
   return std::forward<decltype(self)>(self).filter.x;
@@ -67,7 +67,7 @@ inline constexpr decltype(auto) kalman<Filter>::z(this auto &&self,
   requires(kalman_internal::has_output<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    self.filter.z = state{values...};
+    self.filter.z = typename Filter::output{values...};
   }
   return std::forward<decltype(self)>(self).filter.z;
 }
@@ -78,7 +78,7 @@ inline constexpr decltype(auto) kalman<Filter>::u(this auto &&self,
   requires(kalman_internal::has_input<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    self.filter.u = state{values...};
+    self.filter.u = typename Filter::input{values...};
   }
   return std::forward<decltype(self)>(self).filter.u;
 }
@@ -89,7 +89,7 @@ inline constexpr decltype(auto) kalman<Filter>::p(this auto &&self,
   requires(kalman_internal::has_estimate_uncertainty<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    self.filter.p = state{values...};
+    self.filter.p = typename Filter::estimate_uncertainty{values...};
   }
   return std::forward<decltype(self)>(self).filter.p;
 }
@@ -185,7 +185,7 @@ inline constexpr decltype(auto) kalman<Filter>::k(this auto &&self,
   requires(kalman_internal::has_gain<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    self.filter.k = state{values...};
+    self.filter.k = typename Filter::gain{values...};
   }
   return std::forward<decltype(self)>(self).filter.k;
 }
@@ -196,7 +196,7 @@ inline constexpr decltype(auto) kalman<Filter>::y(this auto &&self,
   requires(kalman_internal::has_innovation<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    self.filter.y = state{values...};
+    self.filter.y = typename Filter::innovation{values...};
   }
   return std::forward<decltype(self)>(self).filter.y;
 }
@@ -207,22 +207,9 @@ inline constexpr decltype(auto) kalman<Filter>::s(this auto &&self,
   requires(kalman_internal::has_innovation_uncertainty<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    self.filter.s = state{values...};
+    self.filter.s = typename Filter::innovation_uncertainty{values...};
   }
   return std::forward<decltype(self)>(self).filter.s;
-}
-
-template <typename Filter>
-inline constexpr void kalman<Filter>::update(const auto &...arguments) {
-  filter.update(arguments...);
-}
-
-template <typename InternalFilter>
-template <auto Position>
-[[nodiscard("The returned update argument is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<InternalFilter>::update() const {
-  return std::get<Position>(filter.update_arguments);
 }
 
 template <typename Filter>
@@ -236,6 +223,19 @@ template <auto Position>
             "discarded.")]] inline constexpr auto
 kalman<Filter>::predict() const {
   return std::get<Position>(filter.prediction_arguments);
+}
+
+template <typename Filter>
+inline constexpr void kalman<Filter>::update(const auto &...arguments) {
+  filter.update(arguments...);
+}
+
+template <typename InternalFilter>
+template <auto Position>
+[[nodiscard("The returned update argument is unexpectedly "
+            "discarded.")]] inline constexpr auto
+kalman<InternalFilter>::update() const {
+  return std::get<Position>(filter.update_arguments);
 }
 } // namespace fcarouge
 
