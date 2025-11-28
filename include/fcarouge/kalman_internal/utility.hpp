@@ -75,6 +75,40 @@ template <typename Type>
 concept algebraic = requires(Type value) { value(0, 0); };
 
 template <typename Filter>
+concept has_state_member = requires(Filter filter) { filter.x; };
+
+//! @todo Is the _method concept extraneous or incorrect? Explain the
+//! shortcoming?
+template <typename Filter>
+concept has_state_method = requires(Filter filter) { filter.x(); };
+
+//! @brief Filter state support concept.
+//!
+//! @details The filter supports the state related functionality: `state` type
+//! member and `x()` method.
+//!
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_state = has_state_member<Filter> || has_state_method<Filter>;
+
+template <typename Filter>
+concept has_output_member = requires(Filter filter) { filter.z; };
+
+//! @todo Is the _method concept extraneous or incorrect? Explain the
+//! shortcoming?
+template <typename Filter>
+concept has_output_method = requires(Filter filter) { filter.z(); };
+
+//! @brief Filter output support concept.
+//!
+//! @details The filter supports the output related functionality: `output` type
+//! member and `z()` method.
+//!
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_output = has_output_member<Filter> || has_output_method<Filter>;
+
+template <typename Filter>
 concept has_input_member = requires(Filter filter) { filter.u; };
 
 //! @todo Is the _method concept extraneous or incorrect? Explain the
@@ -90,6 +124,23 @@ concept has_input_method = requires(Filter filter) { filter.u(); };
 //! @todo Shorten when MSVC has better if-constexpr-requires support.
 template <typename Filter>
 concept has_input = has_input_member<Filter> || has_input_method<Filter>;
+
+template <typename Filter>
+concept has_estimate_uncertainty_member = requires(Filter filter) { filter.p; };
+
+template <typename Filter>
+concept has_estimate_uncertainty_method =
+    requires(Filter filter) { filter.p(); };
+
+//! @brief Filter estimate uncertainty support concept.
+//!
+//! @details The filter supports the estimate uncertainty related functionality:
+//! `estimate_uncertainty` type member and `p()` method.
+//!
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_estimate_uncertainty = has_estimate_uncertainty_member<Filter> ||
+                                   has_estimate_uncertainty_method<Filter>;
 
 template <typename Filter>
 concept has_process_uncertainty_member = requires(Filter filter) { filter.q; };
@@ -187,6 +238,56 @@ concept has_output_model_method = requires(Filter filter) { filter.h(); };
 template <typename Filter>
 concept has_output_model =
     has_output_model_member<Filter> || has_output_model_method<Filter>;
+
+template <typename Filter>
+concept has_gain_member = requires(Filter filter) { filter.k; };
+
+template <typename Filter>
+concept has_gain_method = requires(Filter filter) { filter.k(); };
+
+//! @brief Filter gain support concept.
+//!
+//! @details The filter supports the output model related functionality:
+//! `gain` type member and `k()` method.
+//!
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_gain = has_gain_member<Filter> || has_gain_method<Filter>;
+
+template <typename Filter>
+concept has_innovation_member = requires(Filter filter) { filter.y; };
+
+template <typename Filter>
+concept has_innovation_method = requires(Filter filter) { filter.y(); };
+
+//! @brief Filter innovation support concept.
+//!
+//! @details The filter supports the innovation related functionality:
+//! `innovation` type member and `y()` method.
+//!
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_innovation =
+    has_innovation_member<Filter> || has_innovation_method<Filter>;
+
+template <typename Filter>
+concept has_innovation_uncertainty_member =
+    requires(Filter filter) { filter.s; };
+
+template <typename Filter>
+concept has_innovation_uncertainty_method =
+    requires(Filter filter) { filter.s(); };
+
+//! @brief Filter innovation uncertainty support concept.
+//!
+//! @details The filter supports the innovation uncertainty related
+//! functionality: `innovation_uncertainty` type member and `s()` method.
+//!
+//! @todo Shorten when MSVC has better if-constexpr-requires support.
+template <typename Filter>
+concept has_innovation_uncertainty =
+    has_innovation_uncertainty_member<Filter> ||
+    has_innovation_uncertainty_method<Filter>;
 
 //! @}
 
@@ -370,17 +471,72 @@ template <has_update_types Filter> struct conditional_update_types<Filter> {
   using update_types = Filter::update_types;
 };
 
+template <typename Filter> struct conditional_gain {};
+
+template <has_gain Filter> struct conditional_gain<Filter> {
+  //! @brief Type of the gain matrix K.
+  using gain = Filter::gain;
+};
+
+template <typename Filter> struct conditional_innovation {};
+
+template <has_innovation Filter> struct conditional_innovation<Filter> {
+  //! @brief Type of the innovation column vector Y.
+  using innovation = Filter::innovation;
+};
+
+template <typename Filter> struct conditional_innovation_uncertainty {};
+
+template <has_innovation_uncertainty Filter>
+struct conditional_innovation_uncertainty<Filter> {
+  //! @brief Type of the innovation uncertainty matrix S.
+  using innovation_uncertainty = Filter::innovation_uncertainty;
+};
+
+template <typename Filter> struct conditional_estimate_uncertainty {};
+
+template <has_estimate_uncertainty Filter>
+struct conditional_estimate_uncertainty<Filter> {
+  //! @brief Type of the estimated correlated variance matrix P.
+  //!
+  //! @details Also known as Σ.
+  using estimate_uncertainty = Filter::estimate_uncertainty;
+};
+
+template <typename Filter> struct conditional_output {};
+
+template <has_output Filter> struct conditional_output<Filter> {
+  //! @brief Type of the observation column vector Z.
+  //!
+  //! @details Also known as Y or O.
+  using output = Filter::output;
+};
+
+template <typename Filter> struct conditional_state {};
+
+template <has_state Filter> struct conditional_state<Filter> {
+  //! @brief Type of the state estimate column vector X.
+  using state = Filter::state;
+};
+
 // The only way to have a conditional member type is to inherit from a template
 // specialization on the member type.
 template <typename Filter>
-struct conditional_member_types : public conditional_input_control<Filter>,
-                                  conditional_input<Filter>,
-                                  conditional_output_model<Filter>,
-                                  conditional_output_uncertainty<Filter>,
-                                  conditional_prediction_types<Filter>,
-                                  conditional_process_uncertainty<Filter>,
-                                  conditional_state_transition<Filter>,
-                                  conditional_update_types<Filter> {};
+struct conditional_member_types
+    : public conditional_estimate_uncertainty<Filter>,
+      conditional_gain<Filter>,
+      conditional_innovation_uncertainty<Filter>,
+      conditional_innovation<Filter>,
+      conditional_input_control<Filter>,
+      conditional_input<Filter>,
+      conditional_state<Filter>,
+      conditional_output_model<Filter>,
+      conditional_output_uncertainty<Filter>,
+      conditional_output<Filter>,
+      conditional_prediction_types<Filter>,
+      conditional_process_uncertainty<Filter>,
+      conditional_state_transition<Filter>,
+      conditional_update_types<Filter> {};
 
 //! @}
 

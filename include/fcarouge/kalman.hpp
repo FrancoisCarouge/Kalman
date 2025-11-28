@@ -138,33 +138,6 @@ private:
   //! @}
 
 public:
-  //! @name Public Member Types
-  //! @{
-
-  //! @brief Type of the state estimate column vector X.
-  using state = Filter::state;
-
-  //! @brief Type of the observation column vector Z.
-  //!
-  //! @details Also known as Y or O.
-  using output = Filter::output;
-
-  //! @brief Type of the estimated correlated variance matrix P.
-  //!
-  //! @details Also known as Σ.
-  using estimate_uncertainty = Filter::estimate_uncertainty;
-
-  //! @brief Type of the gain matrix K.
-  using gain = Filter::gain;
-
-  //! @brief Type of the innovation column vector Y.
-  using innovation = Filter::innovation;
-
-  //! @brief Type of the innovation uncertainty matrix S.
-  using innovation_uncertainty = Filter::innovation_uncertainty;
-
-  //! @}
-
   //! @name Public Member Functions
   //! @{
 
@@ -252,7 +225,8 @@ public:
   //! column vector X characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) x(this auto &&self, const auto &...values);
+  inline constexpr decltype(auto) x(this auto &&self, const auto &...values)
+    requires(kalman_internal::has_state<Filter>);
 
   //! @brief Read, write the observation column vector Z.
   //!
@@ -261,7 +235,8 @@ public:
   //! column vector Z characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) z(this auto &&self, const auto &...values);
+  inline constexpr decltype(auto) z(this auto &&self, const auto &...values)
+    requires(kalman_internal::has_output<Filter>);
 
   //! @brief Read, write the control column vector U.
   //!
@@ -280,7 +255,8 @@ public:
   //! covariance matrix P characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) p(this auto &&self, const auto &...values);
+  inline constexpr decltype(auto) p(this auto &&self, const auto &...values)
+    requires(kalman_internal::has_estimate_uncertainty<Filter>);
 
   //! @brief Read, write the process noise covariance matrix or function Q.
   //!
@@ -356,7 +332,8 @@ public:
   //! characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) k(this auto &&self, const auto &...values);
+  inline constexpr decltype(auto) k(this auto &&self, const auto &...values)
+    requires(kalman_internal::has_gain<Filter>);
 
   //! @brief Read, write the innovation column vector Y.
   //!
@@ -365,7 +342,8 @@ public:
   //! column vector Y characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) y(this auto &&self, const auto &...values);
+  inline constexpr decltype(auto) y(this auto &&self, const auto &...values)
+    requires(kalman_internal::has_innovation<Filter>);
 
   //! @brief Read, write the innovation uncertainty matrix S.
   //!
@@ -374,7 +352,8 @@ public:
   //! uncertainty matrix S characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) s(this auto &&self, const auto &...values);
+  inline constexpr decltype(auto) s(this auto &&self, const auto &...values)
+    requires(kalman_internal::has_innovation_uncertainty<Filter>);
 
   //! @}
 
