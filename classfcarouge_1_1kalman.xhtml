@@ -173,12 +173,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac82c987c6e2e94cf656b05f8aceecca6" id="r_ac82c987c6e2e94cf656b05f8aceecca6"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac82c987c6e2e94cf656b05f8aceecca6">x</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
 <tr class="memdesc:ac82c987c6e2e94cf656b05f8aceecca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the estimated state column vector X.  <br /></td></tr>
 <tr class="separator:ac82c987c6e2e94cf656b05f8aceecca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a312b412a4daea783ac99ac133098cb3e" id="r_a312b412a4daea783ac99ac133098cb3e"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a312b412a4daea783ac99ac133098cb3e">z</a> () const -&gt; const <a class="el" href="#aad7e65669d2beee5b8c75cca22dcf178">output</a> &amp;</td></tr>
-<tr class="memdesc:a312b412a4daea783ac99ac133098cb3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last observation column vector Z.  <br /></td></tr>
-<tr class="separator:a312b412a4daea783ac99ac133098cb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05e93c6b25bfb23c43d9f03a271be55b" id="r_a05e93c6b25bfb23c43d9f03a271be55b"><td class="memItemLeft" align="right" valign="top">constexpr const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05e93c6b25bfb23c43d9f03a271be55b">u</a> () const</td></tr>
-<tr class="memdesc:a05e93c6b25bfb23c43d9f03a271be55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last control column vector U.  <br /></td></tr>
-<tr class="separator:a05e93c6b25bfb23c43d9f03a271be55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98fd6be792ec3f9a0a38d275006d406b" id="r_a98fd6be792ec3f9a0a38d275006d406b"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98fd6be792ec3f9a0a38d275006d406b">z</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a98fd6be792ec3f9a0a38d275006d406b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the observation column vector Z.  <br /></td></tr>
+<tr class="separator:a98fd6be792ec3f9a0a38d275006d406b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39502e666ec9b275dff79cab8d80cc0a" id="r_a39502e666ec9b275dff79cab8d80cc0a"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39502e666ec9b275dff79cab8d80cc0a">u</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a39502e666ec9b275dff79cab8d80cc0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the control column vector U.  <br /></td></tr>
+<tr class="separator:a39502e666ec9b275dff79cab8d80cc0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecc9c72ead191c87d0ad2d28111ccb40" id="r_aecc9c72ead191c87d0ad2d28111ccb40"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecc9c72ead191c87d0ad2d28111ccb40">p</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
 <tr class="memdesc:aecc9c72ead191c87d0ad2d28111ccb40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the estimated covariance matrix P.  <br /></td></tr>
 <tr class="separator:aecc9c72ead191c87d0ad2d28111ccb40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1009,8 +1009,8 @@ template&lt;typename &gt; </div>
 
 </div>
 </div>
-<a id="a05e93c6b25bfb23c43d9f03a271be55b" name="a05e93c6b25bfb23c43d9f03a271be55b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05e93c6b25bfb23c43d9f03a271be55b">&#9670;&#160;</a></span>u()</h2>
+<a id="a39502e666ec9b275dff79cab8d80cc0a" name="a39502e666ec9b275dff79cab8d80cc0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39502e666ec9b275dff79cab8d80cc0a">&#9670;&#160;</a></span>u()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1021,10 +1021,14 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const auto &amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::u </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::u </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto &amp;...</td>          <td class="paramname"><span class="paramname"><em>values</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1034,9 +1038,14 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the last control column vector U. </p>
-<p>This member function is not present when the filter has no input.</p>
-<dl class="section return"><dt>Returns</dt><dd>The last control column vector U.</dd></dl>
+<p>Read, write the control column vector U. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the control column vector U characteristic.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
@@ -1202,8 +1211,8 @@ template&lt;typename &gt; </div>
 
 </div>
 </div>
-<a id="a312b412a4daea783ac99ac133098cb3e" name="a312b412a4daea783ac99ac133098cb3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a312b412a4daea783ac99ac133098cb3e">&#9670;&#160;</a></span>z()</h2>
+<a id="a98fd6be792ec3f9a0a38d275006d406b" name="a98fd6be792ec3f9a0a38d275006d406b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98fd6be792ec3f9a0a38d275006d406b">&#9670;&#160;</a></span>z()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1214,10 +1223,14 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::z </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::z </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const -&gt;  const <a class="el" href="#aad7e65669d2beee5b8c75cca22dcf178">output</a> &amp;</td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto &amp;...</td>          <td class="paramname"><span class="paramname"><em>values</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1227,8 +1240,14 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the last observation column vector Z. </p>
-<dl class="section return"><dt>Returns</dt><dd>The last observation column vector Z.</dd></dl>
+<p>Read, write the observation column vector Z. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation column vector Z characteristic.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
