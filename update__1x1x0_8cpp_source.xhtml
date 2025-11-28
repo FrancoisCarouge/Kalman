@@ -163,7 +163,7 @@ $(function(){initNavTree('update__1x1x0_8cpp_source.xhtml',''); initResizable(tr
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  std::uniform_real_distribution&lt;float&gt; uniformly_distributed;</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> _ : benchmark_state) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="code hl_typedef" href="classfcarouge_1_1kalman.xhtml#aad7e65669d2beee5b8c75cca22dcf178">kalman::output</a> z{uniformly_distributed(random_generator)};</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">const</span> <span class="keyword">typename</span> kalman::output z{uniformly_distributed(random_generator)};</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    ::benchmark::ClobberMemory();</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start{clock::now()};</div>
@@ -192,7 +192,6 @@ $(function(){initNavTree('update__1x1x0_8cpp_source.xhtml',''); initResizable(tr
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>} <span class="comment">// namespace fcarouge::benchmark</span></div>
 <div class="ttc" id="abenchmark_8hpp_xhtml"><div class="ttname"><a href="benchmark_8hpp.xhtml">benchmark.hpp</a></div><div class="ttdoc">Benchmarking support.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aad7e65669d2beee5b8c75cca22dcf178"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aad7e65669d2beee5b8c75cca22dcf178">fcarouge::kalman::output</a></div><div class="ttdeci">Filter::output output</div><div class="ttdoc">Type of the observation column vector Z.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00150">kalman.hpp:150</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1benchmark_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1benchmark.xhtml">fcarouge::benchmark</a></div><div class="ttdoc">Benchmark implementation.</div><div class="ttdef"><b>Definition</b> <a href="baseline_8cpp_source.xhtml#l00046">baseline.cpp:46</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
