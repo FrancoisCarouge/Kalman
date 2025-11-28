@@ -45,8 +45,5 @@ var hierarchy =
       [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
     [ "std::formatter< Filter, Char >", "structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml", null ],
-    [ "fcarouge::printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
-    [ "Filter", null, [
-      [ "fcarouge::decorator::printer< Filter >", "classfcarouge_1_1decorator_1_1printer.xhtml", null ]
-    ] ]
+    [ "fcarouge::printer", "structfcarouge_1_1printer.xhtml", null ]
 ];

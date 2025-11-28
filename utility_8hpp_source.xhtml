@@ -568,10 +568,15 @@ $(function(){initNavTree('utility_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>  <span class="keyword">requires</span> <span class="keyword">requires</span> { Type::zero(); }</div>
 <div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span><span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a2b0970be43a070dde9d1b773c58cb58a">zero&lt;Type&gt;</a>{Type::zero()};</div>
 <div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span> </div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span> </div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>} <span class="comment">// namespace fcarouge::kalman_internal</span></div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span> </div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_INTERNAL_UTILITY_HPP</span></div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Callable&gt; <span class="keyword">struct </span>scope_exit {</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>  Callable callable;</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> ~scope_exit() { callable(); }</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>};</div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span> </div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span> </div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>} <span class="comment">// namespace fcarouge::kalman_internal</span></div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span> </div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_INTERNAL_UTILITY_HPP</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml">fcarouge::kalman_internal</a></div><div class="ttdoc">Internal implementation details.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a0c947c78364703fa3847944dd073a837"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a0c947c78364703fa3847944dd073a837">fcarouge::kalman_internal::transpose</a></div><div class="ttdeci">std::invoke_result_t&lt; transposes&lt; Type &gt;, const Type &amp; &gt; transpose</div><div class="ttdoc">Transposer helper type.</div><div class="ttdef"><b>Definition</b> <a href="#l00343">utility.hpp:343</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a0f6af3a28e58f1b5e727aa85543951a0"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0">fcarouge::kalman_internal::quotient</a></div><div class="ttdeci">std::invoke_result_t&lt; divides&lt; Lhs, Rhs &gt;, const Lhs &amp;, const Rhs &amp; &gt; quotient</div><div class="ttdoc">Divider helper type.</div><div class="ttdef"><b>Definition</b> <a href="#l00314">utility.hpp:314</a></div></div>

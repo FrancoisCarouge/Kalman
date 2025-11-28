@@ -148,7 +148,7 @@ $(function(){initNavTree('kalman_8hpp_source.xhtml',''); initResizable(true); })
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;<a class="code" href="kalman__forward_8hpp.xhtml">kalman_forward.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &quot;<a class="code" href="factory_8hpp.xhtml">kalman_internal/factory.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &quot;<a class="code" href="format_8hpp.xhtml">kalman_internal/format.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &quot;<a class="code" href="printer_8hpp.xhtml">kalman_internal/printer.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &quot;<a class="code" href="print_8hpp.xhtml">kalman_internal/print.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#include &quot;<a class="code" href="utility_8hpp.xhtml">kalman_internal/utility.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge.xhtml">fcarouge</a> {</div>
@@ -260,11 +260,16 @@ $(function(){initNavTree('kalman_8hpp_source.xhtml',''); initResizable(true); })
 <div class="line"><a id="l00494" name="l00494"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">  494</a></span><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a>(Arguments... arguments)</div>
 <div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>    -&gt; <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a>&lt;<a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a083c7633e41b94b1c0cf980cd4a51d74">kalman_internal::deduce_filter</a>&lt;Arguments...&gt;&gt;;</div>
 <div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span> </div>
-<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>} <span class="comment">// namespace fcarouge</span></div>
-<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span> </div>
-<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span><span class="preprocessor">#include &quot;kalman_internal/kalman.tpp&quot;</span></div>
+<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span> </div>
 <div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span> </div>
-<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_HPP</span></div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno"><a class="line" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">  507</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structfcarouge_1_1printer.xhtml">printer</a> <a class="code hl_variable" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>;</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span> </div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span> </div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>} <span class="comment">// namespace fcarouge</span></div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span> </div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span><span class="preprocessor">#include &quot;kalman_internal/kalman.tpp&quot;</span></div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span> </div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_HPP</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0c2291a1d9bd4cc169f91e9b10399b38"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0c2291a1d9bd4cc169f91e9b10399b38">fcarouge::kalman::kalman</a></div><div class="ttdeci">constexpr kalman(kalman &amp;&amp;other) noexcept=default</div><div class="ttdoc">Move constructs a filter.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a26f8830ac8d109d2685b187bca02e4f8"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a26f8830ac8d109d2685b187bca02e4f8">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr auto update() const</div><div class="ttdoc">Returns the Nth update argument.</div></div>
@@ -299,7 +304,9 @@ $(function(){initNavTree('kalman_8hpp_source.xhtml',''); initResizable(true); })
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_adb20220c7177353ccce4b967bbbee8b1"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#adb20220c7177353ccce4b967bbbee8b1">fcarouge::kalman_internal::output</a></div><div class="ttdeci">output_t&lt; Type &gt; output</div><div class="ttdef"><b>Definition</b> <a href="type_8hpp_source.xhtml#l00144">type.hpp:144</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml"><div class="ttname"><a href="namespacefcarouge.xhtml">fcarouge</a></div><div class="ttdoc">Francois Carouge's projects namespace.</div><div class="ttdef"><b>Definition</b> <a href="baseline_8cpp_source.xhtml#l00046">baseline.cpp:46</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-<div class="ttc" id="aprinter_8hpp_xhtml"><div class="ttname"><a href="printer_8hpp.xhtml">printer.hpp</a></div><div class="ttdoc">Filter decoration support for printing operations.</div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_a5c3a03f73432710ac636a3a5f7e9e8e2"><div class="ttname"><a href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">fcarouge::print</a></div><div class="ttdeci">constexpr printer print</div><div class="ttdoc">Filter decorator to print activities to the standard output.</div><div class="ttdef"><b>Definition</b> <a href="#l00507">kalman.hpp:507</a></div></div>
+<div class="ttc" id="aprint_8hpp_xhtml"><div class="ttname"><a href="print_8hpp.xhtml">print.hpp</a></div></div>
+<div class="ttc" id="astructfcarouge_1_1printer_xhtml"><div class="ttname"><a href="structfcarouge_1_1printer.xhtml">fcarouge::printer</a></div><div class="ttdef"><b>Definition</b> <a href="print_8hpp_source.xhtml#l00280">print.hpp:280</a></div></div>
 <div class="ttc" id="autility_8hpp_xhtml"><div class="ttname"><a href="utility_8hpp.xhtml">utility.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

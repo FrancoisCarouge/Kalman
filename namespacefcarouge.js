@@ -1,7 +1,6 @@
 var namespacefcarouge =
 [
     [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", "namespacefcarouge_1_1benchmark" ],
-    [ "decorator", "namespacefcarouge_1_1decorator.xhtml", "namespacefcarouge_1_1decorator" ],
     [ "kalman_internal", "namespacefcarouge_1_1kalman__internal.xhtml", [
       [ "ᴀʙᵀ", "namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d", null ],
       [ "deduce_filter", "namespacefcarouge_1_1kalman__internal.xhtml#a083c7633e41b94b1c0cf980cd4a51d74", null ],
@@ -51,8 +50,8 @@ var namespacefcarouge =
     [ "sample", "namespacefcarouge_1_1sample.xhtml", "namespacefcarouge_1_1sample" ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
     [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
-    [ "printer_decorator", "structfcarouge_1_1printer__decorator.xhtml", null ],
+    [ "printer", "structfcarouge_1_1printer.xhtml", null ],
     [ "kalman", "namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5", null ],
-    [ "operator|", "namespacefcarouge.xhtml#abb7d0eaceb29f78f64bff07a52fe5824", null ],
-    [ "printer", "namespacefcarouge.xhtml#a44762b6a541e61f07ed2b0477b182829", null ]
+    [ "operator|", "namespacefcarouge.xhtml#aadc278093fb5d97220ab056200a13f03", null ],
+    [ "print", "namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2", null ]
 ];

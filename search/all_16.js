@@ -2,7 +2,7 @@ var searchData=
 [
   ['u_0',['u',['../classfcarouge_1_1kalman.xhtml#a39502e666ec9b275dff79cab8d80cc0a',1,'fcarouge::kalman']]],
   ['unit_20test_20code_20coverage_1',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
-  ['update_2',['update',['../classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98',1,'fcarouge::kalman::update(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a26f8830ac8d109d2685b187bca02e4f8',1,'fcarouge::kalman::update() const'],['../classfcarouge_1_1decorator_1_1printer.xhtml#a2b5ef1e958a5109d666a31d667caafdf',1,'fcarouge::decorator::printer::update()']]],
+  ['update_2',['update',['../classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98',1,'fcarouge::kalman::update(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a26f8830ac8d109d2685b187bca02e4f8',1,'fcarouge::kalman::update() const']]],
   ['update_5f1x1x0_2ecpp_3',['update_1x1x0.cpp',['../update__1x1x0_8cpp.xhtml',1,'']]],
   ['update_5f1x1x1_2ecpp_4',['update_1x1x1.cpp',['../update__1x1x1_8cpp.xhtml',1,'']]],
   ['update_5flinalg_5fxx0_2ecpp_5',['update_linalg_xx0.cpp',['../update__linalg__xx0_8cpp.xhtml',1,'']]],

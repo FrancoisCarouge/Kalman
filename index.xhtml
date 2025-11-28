@@ -346,7 +346,17 @@ Format</h2>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
 <div class="line"><span class="comment">// The characteristics are optionally present according to the filter configuration.</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="considerations"></a>
+</div><!-- fragment --><h2><a class="anchor" id="decorators"></a>
+Decorators</h2>
+<p>Pipe one or more decorators to the filter declaration to attach additional responsibilities.</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> filter{kalman{...} | print};</div>
+</div><!-- fragment --><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Decorator   </th><th class="markdownTableHeadNone">Definition    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>print</code>   </td><td class="markdownTableBodyNone">Print filter activities to the standard output.   </td></tr>
+</table>
+<h1><a class="anchor" id="considerations"></a>
 Considerations</h1>
 <h2><a class="anchor" id="motivations"></a>
 Motivations</h2>

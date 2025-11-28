@@ -89,21 +89,7 @@ var menudata={children:[
 {text:"Class Index",url:"classes.xhtml"},
 {text:"Class Hierarchy",url:"inherits.xhtml"},
 {text:"Class Members",url:"functions.xhtml",children:[
-{text:"All",url:"functions.xhtml",children:[
-{text:"f",url:"functions.xhtml#index_f"},
-{text:"g",url:"functions.xhtml#index_g"},
-{text:"h",url:"functions.xhtml#index_h"},
-{text:"k",url:"functions.xhtml#index_k"},
-{text:"o",url:"functions.xhtml#index_o"},
-{text:"p",url:"functions.xhtml#index_p"},
-{text:"q",url:"functions.xhtml#index_q"},
-{text:"r",url:"functions.xhtml#index_r"},
-{text:"s",url:"functions.xhtml#index_s"},
-{text:"u",url:"functions.xhtml#index_u"},
-{text:"x",url:"functions.xhtml#index_x"},
-{text:"y",url:"functions.xhtml#index_y"},
-{text:"z",url:"functions.xhtml#index_z"},
-{text:"~",url:"functions.xhtml#index__7E"}]},
+{text:"All",url:"functions.xhtml"},
 {text:"Functions",url:"functions_func.xhtml"},
 {text:"Variables",url:"functions_vars.xhtml"}]}]},
 {text:"Files",url:"files.xhtml",children:[

@@ -17,7 +17,8 @@ var index =
           [ "Modifiers", "index.xhtml#modifiers", null ]
         ] ]
       ] ],
-      [ "Format", "index.xhtml#format", null ]
+      [ "Format", "index.xhtml#format", null ],
+      [ "Decorators", "index.xhtml#decorators", null ]
     ] ],
     [ "Considerations", "index.xhtml#considerations", [
       [ "Motivations", "index.xhtml#motivations", null ],
