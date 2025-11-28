@@ -254,21 +254,23 @@ public:
   //! @complexity Constant.
   inline constexpr decltype(auto) x(this auto &&self, const auto &...values);
 
-  //! @brief Returns the last observation column vector Z.
+  //! @brief Read, write the observation column vector Z.
   //!
-  //! @return The last observation column vector Z.
+  //! @param self Explicit object parameter. Internal implementation detail.
+  //! @param values The optional copied initializers to set the observation
+  //! column vector Z characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr auto z() const -> const output &;
+  inline constexpr decltype(auto) z(this auto &&self, const auto &...values);
 
-  //! @brief Returns the last control column vector U.
+  //! @brief Read, write the control column vector U.
   //!
-  //! @details This member function is not present when the filter has no input.
-  //!
-  //! @return The last control column vector U.
+  //! @param self Explicit object parameter. Internal implementation detail.
+  //! @param values The optional copied initializers to set the control column
+  //! vector U characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr const auto &u() const
+  inline constexpr decltype(auto) u(this auto &&self, const auto &...values)
     requires(kalman_internal::has_input<Filter>);
 
   //! @brief Read, write the estimated covariance matrix P.

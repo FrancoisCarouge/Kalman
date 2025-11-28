@@ -60,19 +60,23 @@ inline constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
 }
 
 template <typename Filter>
-[[nodiscard("The returned observation column vector Z is unexpectedly "
-            "discarded.")]] inline constexpr auto
-kalman<Filter>::z() const -> const output & {
-  return filter.z;
+inline constexpr decltype(auto) kalman<Filter>::z(this auto &&self,
+                                                  const auto &...values) {
+  if constexpr (sizeof...(values)) {
+    self.filter.z = state{values...};
+  }
+  return std::forward<decltype(self)>(self).filter.z;
 }
 
 template <typename Filter>
-[[nodiscard("The returned control column vector U is unexpectedly "
-            "discarded.")]] inline constexpr const auto &
-kalman<Filter>::u() const
+inline constexpr decltype(auto) kalman<Filter>::u(this auto &&self,
+                                                  const auto &...values)
   requires(kalman_internal::has_input<Filter>)
 {
-  return filter.u;
+  if constexpr (sizeof...(values)) {
+    self.filter.u = state{values...};
+  }
+  return std::forward<decltype(self)>(self).filter.u;
 }
 
 template <typename Filter>
