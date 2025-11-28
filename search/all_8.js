@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['f_0',['f',['../classfcarouge_1_1kalman.xhtml#a502853f8a2aa38332ae0d4cb4da1552e',1,'fcarouge::kalman::f(this auto &amp;&amp;self)'],['../classfcarouge_1_1kalman.xhtml#a6989ed060c21fae9d2d88e66044e0b63',1,'fcarouge::kalman::f(const auto &amp;value, const auto &amp;...values)']]],
+  ['f_0',['f',['../classfcarouge_1_1kalman.xhtml#ae5b8d7b910747e12e2b0bd9e3ffd7f01',1,'fcarouge::kalman']]],
   ['factory_2ehpp_1',['factory.hpp',['../factory_8hpp.xhtml',1,'']]],
   ['fcarouge_2',['fcarouge',['../namespacefcarouge.xhtml',1,'']]],
   ['fcarouge_3a_3abenchmark_3',['benchmark',['../namespacefcarouge_1_1benchmark.xhtml',1,'fcarouge']]],

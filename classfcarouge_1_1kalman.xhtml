@@ -170,63 +170,42 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aefb20ca92a3ba1b0d82ea7d3edf54fe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the Kalman filter.  <br /></td></tr>
 <tr class="separator:aefb20ca92a3ba1b0d82ea7d3edf54fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Characteristics Member Functions</div></td></tr>
-<tr class="memitem:a48643610426e32895a22c1dd9dffadc6" id="r_a48643610426e32895a22c1dd9dffadc6"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48643610426e32895a22c1dd9dffadc6">x</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a48643610426e32895a22c1dd9dffadc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the state estimate column vector X.  <br /></td></tr>
-<tr class="separator:a48643610426e32895a22c1dd9dffadc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae139e8878673c1209049e14204682a7" id="r_aae139e8878673c1209049e14204682a7"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae139e8878673c1209049e14204682a7">x</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
-<tr class="memdesc:aae139e8878673c1209049e14204682a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the state estimate column vector X.  <br /></td></tr>
-<tr class="separator:aae139e8878673c1209049e14204682a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac82c987c6e2e94cf656b05f8aceecca6" id="r_ac82c987c6e2e94cf656b05f8aceecca6"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac82c987c6e2e94cf656b05f8aceecca6">x</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:ac82c987c6e2e94cf656b05f8aceecca6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the estimated state column vector X.  <br /></td></tr>
+<tr class="separator:ac82c987c6e2e94cf656b05f8aceecca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a312b412a4daea783ac99ac133098cb3e" id="r_a312b412a4daea783ac99ac133098cb3e"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a312b412a4daea783ac99ac133098cb3e">z</a> () const -&gt; const <a class="el" href="#aad7e65669d2beee5b8c75cca22dcf178">output</a> &amp;</td></tr>
 <tr class="memdesc:a312b412a4daea783ac99ac133098cb3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last observation column vector Z.  <br /></td></tr>
 <tr class="separator:a312b412a4daea783ac99ac133098cb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05e93c6b25bfb23c43d9f03a271be55b" id="r_a05e93c6b25bfb23c43d9f03a271be55b"><td class="memItemLeft" align="right" valign="top">constexpr const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05e93c6b25bfb23c43d9f03a271be55b">u</a> () const</td></tr>
 <tr class="memdesc:a05e93c6b25bfb23c43d9f03a271be55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the last control column vector U.  <br /></td></tr>
 <tr class="separator:a05e93c6b25bfb23c43d9f03a271be55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5102dd3dbf4836a875237a5bdbdaa14e" id="r_a5102dd3dbf4836a875237a5bdbdaa14e"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5102dd3dbf4836a875237a5bdbdaa14e">p</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a5102dd3dbf4836a875237a5bdbdaa14e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the estimated covariance matrix P.  <br /></td></tr>
-<tr class="separator:a5102dd3dbf4836a875237a5bdbdaa14e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46a728a8f930061118c518fe05209204" id="r_a46a728a8f930061118c518fe05209204"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46a728a8f930061118c518fe05209204">p</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
-<tr class="memdesc:a46a728a8f930061118c518fe05209204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the estimated covariance matrix P.  <br /></td></tr>
-<tr class="separator:a46a728a8f930061118c518fe05209204"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a662b0dab257e92058dca7be556b2aa47" id="r_a662b0dab257e92058dca7be556b2aa47"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a662b0dab257e92058dca7be556b2aa47">q</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a662b0dab257e92058dca7be556b2aa47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the process noise covariance matrix Q.  <br /></td></tr>
-<tr class="separator:a662b0dab257e92058dca7be556b2aa47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e4c1f5cbeb922f810774bbaf27e09e0" id="r_a7e4c1f5cbeb922f810774bbaf27e09e0"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e4c1f5cbeb922f810774bbaf27e09e0">q</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
-<tr class="memdesc:a7e4c1f5cbeb922f810774bbaf27e09e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the process noise covariance matrix Q.  <br /></td></tr>
-<tr class="separator:a7e4c1f5cbeb922f810774bbaf27e09e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a881fb047ba1b82c71ad8c615c65b0f91" id="r_a881fb047ba1b82c71ad8c615c65b0f91"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a881fb047ba1b82c71ad8c615c65b0f91">r</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a881fb047ba1b82c71ad8c615c65b0f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the observation noise covariance matrix R.  <br /></td></tr>
-<tr class="separator:a881fb047ba1b82c71ad8c615c65b0f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a188dd45f482146a9feb4fdc1270df977" id="r_a188dd45f482146a9feb4fdc1270df977"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a188dd45f482146a9feb4fdc1270df977">r</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
-<tr class="memdesc:a188dd45f482146a9feb4fdc1270df977"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the observation noise covariance matrix R.  <br /></td></tr>
-<tr class="separator:a188dd45f482146a9feb4fdc1270df977"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a502853f8a2aa38332ae0d4cb4da1552e" id="r_a502853f8a2aa38332ae0d4cb4da1552e"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a502853f8a2aa38332ae0d4cb4da1552e">f</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a502853f8a2aa38332ae0d4cb4da1552e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the state transition matrix F.  <br /></td></tr>
-<tr class="separator:a502853f8a2aa38332ae0d4cb4da1552e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6989ed060c21fae9d2d88e66044e0b63" id="r_a6989ed060c21fae9d2d88e66044e0b63"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6989ed060c21fae9d2d88e66044e0b63">f</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
-<tr class="memdesc:a6989ed060c21fae9d2d88e66044e0b63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the state transition matrix F.  <br /></td></tr>
-<tr class="separator:a6989ed060c21fae9d2d88e66044e0b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a310f3a507cbd4285a6565003d7f1aba9" id="r_a310f3a507cbd4285a6565003d7f1aba9"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a310f3a507cbd4285a6565003d7f1aba9">h</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a310f3a507cbd4285a6565003d7f1aba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the observation transition matrix H.  <br /></td></tr>
-<tr class="separator:a310f3a507cbd4285a6565003d7f1aba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ce15519a6eee3ae6c379979b918263e" id="r_a4ce15519a6eee3ae6c379979b918263e"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ce15519a6eee3ae6c379979b918263e">h</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
-<tr class="memdesc:a4ce15519a6eee3ae6c379979b918263e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the observation transition matrix H.  <br /></td></tr>
-<tr class="separator:a4ce15519a6eee3ae6c379979b918263e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a755207f357345537cba72802ec150b22" id="r_a755207f357345537cba72802ec150b22"><td class="memItemLeft" align="right" valign="top">constexpr auto &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a755207f357345537cba72802ec150b22">g</a> (this auto &amp;&amp;self)</td></tr>
-<tr class="memdesc:a755207f357345537cba72802ec150b22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the control transition matrix G.  <br /></td></tr>
-<tr class="separator:a755207f357345537cba72802ec150b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff17763675d40bdfc5e90852d3c19301" id="r_aff17763675d40bdfc5e90852d3c19301"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff17763675d40bdfc5e90852d3c19301">g</a> (const auto &amp;value, const auto &amp;...values)</td></tr>
-<tr class="memdesc:aff17763675d40bdfc5e90852d3c19301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the control transition matrix G.  <br /></td></tr>
-<tr class="separator:aff17763675d40bdfc5e90852d3c19301"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c2ac4a80492202e453720c9b007bcf3" id="r_a6c2ac4a80492202e453720c9b007bcf3"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c2ac4a80492202e453720c9b007bcf3">k</a> () const -&gt; const <a class="el" href="#adfda3faf240fa5676ccfe52663f5774d">gain</a> &amp;</td></tr>
-<tr class="memdesc:a6c2ac4a80492202e453720c9b007bcf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the gain matrix K.  <br /></td></tr>
-<tr class="separator:a6c2ac4a80492202e453720c9b007bcf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30132ff04946a157b124952f22b72199" id="r_a30132ff04946a157b124952f22b72199"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30132ff04946a157b124952f22b72199">y</a> () const -&gt; const <a class="el" href="#aafeb53b38d7fd8fe564d7837214664ed">innovation</a> &amp;</td></tr>
-<tr class="memdesc:a30132ff04946a157b124952f22b72199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the innovation column vector Y.  <br /></td></tr>
-<tr class="separator:a30132ff04946a157b124952f22b72199"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad141e2888cae3d352178d6ebb9833f3f" id="r_ad141e2888cae3d352178d6ebb9833f3f"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad141e2888cae3d352178d6ebb9833f3f">s</a> () const -&gt; const <a class="el" href="#a0b63966076ddf4625e0d167cec379a13">innovation_uncertainty</a> &amp;</td></tr>
-<tr class="memdesc:ad141e2888cae3d352178d6ebb9833f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the innovation uncertainty matrix S.  <br /></td></tr>
-<tr class="separator:ad141e2888cae3d352178d6ebb9833f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecc9c72ead191c87d0ad2d28111ccb40" id="r_aecc9c72ead191c87d0ad2d28111ccb40"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecc9c72ead191c87d0ad2d28111ccb40">p</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:aecc9c72ead191c87d0ad2d28111ccb40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the estimated covariance matrix P.  <br /></td></tr>
+<tr class="separator:aecc9c72ead191c87d0ad2d28111ccb40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56e6cb7cd0947e7fd667b355b6d1bc62" id="r_a56e6cb7cd0947e7fd667b355b6d1bc62"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56e6cb7cd0947e7fd667b355b6d1bc62">q</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a56e6cb7cd0947e7fd667b355b6d1bc62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the process noise covariance matrix or function Q.  <br /></td></tr>
+<tr class="separator:a56e6cb7cd0947e7fd667b355b6d1bc62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af50f7dd74a3403b1654b288dc503e78c" id="r_af50f7dd74a3403b1654b288dc503e78c"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af50f7dd74a3403b1654b288dc503e78c">r</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:af50f7dd74a3403b1654b288dc503e78c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the observation noise covariance matrix R.  <br /></td></tr>
+<tr class="separator:af50f7dd74a3403b1654b288dc503e78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5b8d7b910747e12e2b0bd9e3ffd7f01" id="r_ae5b8d7b910747e12e2b0bd9e3ffd7f01"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5b8d7b910747e12e2b0bd9e3ffd7f01">f</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:ae5b8d7b910747e12e2b0bd9e3ffd7f01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the state transition matrix F.  <br /></td></tr>
+<tr class="separator:ae5b8d7b910747e12e2b0bd9e3ffd7f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a620f13a8d1e6d7d682ef490a20ea1056" id="r_a620f13a8d1e6d7d682ef490a20ea1056"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a620f13a8d1e6d7d682ef490a20ea1056">h</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a620f13a8d1e6d7d682ef490a20ea1056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the observation transition matrix H.  <br /></td></tr>
+<tr class="separator:a620f13a8d1e6d7d682ef490a20ea1056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a448582dd24cd3ba5ebb86689c1cb5567" id="r_a448582dd24cd3ba5ebb86689c1cb5567"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a448582dd24cd3ba5ebb86689c1cb5567">g</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a448582dd24cd3ba5ebb86689c1cb5567"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the control transition matrix G.  <br /></td></tr>
+<tr class="separator:a448582dd24cd3ba5ebb86689c1cb5567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a344a76ccec0eb7ac74ef033d8b2c65e2" id="r_a344a76ccec0eb7ac74ef033d8b2c65e2"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a344a76ccec0eb7ac74ef033d8b2c65e2">k</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a344a76ccec0eb7ac74ef033d8b2c65e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the gain matrix K.  <br /></td></tr>
+<tr class="separator:a344a76ccec0eb7ac74ef033d8b2c65e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7aeae464691e9827a539c9c5189151" id="r_aab7aeae464691e9827a539c9c5189151"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab7aeae464691e9827a539c9c5189151">y</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:aab7aeae464691e9827a539c9c5189151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the innovation column vector Y.  <br /></td></tr>
+<tr class="separator:aab7aeae464691e9827a539c9c5189151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53db7329290f88128cce81f0d7d90fd6" id="r_a53db7329290f88128cce81f0d7d90fd6"><td class="memItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53db7329290f88128cce81f0d7d90fd6">s</a> (this auto &amp;&amp;self, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a53db7329290f88128cce81f0d7d90fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the innovation uncertainty matrix S.  <br /></td></tr>
+<tr class="separator:a53db7329290f88128cce81f0d7d90fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Filtering Member Functions</div></td></tr>
 <tr class="memitem:aa64cb12fb86876fb5bf74555b8b67f5a" id="r_aa64cb12fb86876fb5bf74555b8b67f5a"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a> (const auto &amp;...arguments)</td></tr>
 <tr class="memdesc:aa64cb12fb86876fb5bf74555b8b67f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces estimates of the state variables and uncertainties.  <br /></td></tr>
@@ -544,8 +523,8 @@ template&lt;typename &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6989ed060c21fae9d2d88e66044e0b63" name="a6989ed060c21fae9d2d88e66044e0b63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6989ed060c21fae9d2d88e66044e0b63">&#9670;&#160;</a></span>f() <span class="overload">[1/2]</span></h2>
+<a id="ae5b8d7b910747e12e2b0bd9e3ffd7f01" name="ae5b8d7b910747e12e2b0bd9e3ffd7f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5b8d7b910747e12e2b0bd9e3ffd7f01">&#9670;&#160;</a></span>f()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -556,9 +535,9 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::f </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::f </td>
           <td>(</td>
-          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -573,12 +552,11 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the state transition matrix F. </p>
-<p>The state transition matrix F is of type <code>state_transition</code> and the function is of the form <code>state_transition(const state &amp;, const input ! &amp;, const PredictionTypes &amp;...)</code>. For non-linear system, or extended filter, F is the Jacobian of the state transition function: <code>F = ∂f/∂X = ! ∂fj/∂xi</code> that is each row i contains the derivatives of the state transition function for every element j in the state column vector X.</p>
+<p>Read, write the state transition matrix F. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The first copied initializer used to set the copied state transition matrix F or the copied target Callable object (function object, pointer to function, reference to function, pointer to member function, or pointer to data member) that will be bound to the prediction arguments and called by the filter to compute the state transition matrix F function on prediction steps. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional second and other copied initializers to set the state transition matrix F.</td></tr>
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the state transition matrix F characteristic. The characteristic may also be a callable of the form <code>state_transition(const state &amp;, const input ! &amp;, const PredictionTypes &amp;...)</code>. For non-linear system, or extended filter, F is the Jacobian of the state transition function: <code>F = ∂f/∂X = ! ∂fj/∂xi</code> that is each row i contains the derivatives of the state transition function for every element j in the state column vector X.</td></tr>
   </table>
   </dd>
 </dl>
@@ -586,8 +564,8 @@ template&lt;typename &gt; </div>
 
 </div>
 </div>
-<a id="a502853f8a2aa38332ae0d4cb4da1552e" name="a502853f8a2aa38332ae0d4cb4da1552e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a502853f8a2aa38332ae0d4cb4da1552e">&#9670;&#160;</a></span>f() <span class="overload">[2/2]</span></h2>
+<a id="a448582dd24cd3ba5ebb86689c1cb5567" name="a448582dd24cd3ba5ebb86689c1cb5567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a448582dd24cd3ba5ebb86689c1cb5567">&#9670;&#160;</a></span>g()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -598,40 +576,9 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::f </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::g </td>
           <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the state transition matrix F. </p>
-<dl class="section return"><dt>Returns</dt><dd>The state transition matrix F.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-</div>
-</div>
-<a id="aff17763675d40bdfc5e90852d3c19301" name="aff17763675d40bdfc5e90852d3c19301"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff17763675d40bdfc5e90852d3c19301">&#9670;&#160;</a></span>g() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::g </td>
-          <td>(</td>
-          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -646,12 +593,11 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the control transition matrix G. </p>
-<p>The control transition matrix G is of type <code>input_control</code> and the function is of the form <code>input_control(const PredictionTypes &amp;...)</code>. This member function is not present when the filter has no input control.</p>
+<p>Read, write the control transition matrix G. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The first copied initializer used to set the copied control transition matrix G or the copied target Callable object (function object, pointer to function, reference to function, pointer to member function, or pointer to data member) that will be bound to the prediction arguments and called by the filter to compute the control transition matrix G on prediction steps. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional second and other copied initializers to set the control transition matrix G.</td></tr>
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the control transition matrix G. characteristic. The characteristic may also be a callable of the form <code>input_control(const PredictionTypes &amp;...)</code>. This member function is not present when the filter has no input control.</td></tr>
   </table>
   </dd>
 </dl>
@@ -659,8 +605,8 @@ template&lt;typename &gt; </div>
 
 </div>
 </div>
-<a id="a755207f357345537cba72802ec150b22" name="a755207f357345537cba72802ec150b22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a755207f357345537cba72802ec150b22">&#9670;&#160;</a></span>g() <span class="overload">[2/2]</span></h2>
+<a id="a620f13a8d1e6d7d682ef490a20ea1056" name="a620f13a8d1e6d7d682ef490a20ea1056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a620f13a8d1e6d7d682ef490a20ea1056">&#9670;&#160;</a></span>h()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -671,42 +617,9 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::g </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::h </td>
           <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the control transition matrix G. </p>
-<p>This member function is not present when the filter has no input control.</p>
-<dl class="section return"><dt>Returns</dt><dd>The control transition matrix G.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo</a></b></dt><dd>Do we still need the non-const flavor?</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-</div>
-</div>
-<a id="a4ce15519a6eee3ae6c379979b918263e" name="a4ce15519a6eee3ae6c379979b918263e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ce15519a6eee3ae6c379979b918263e">&#9670;&#160;</a></span>h() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::h </td>
-          <td>(</td>
-          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -721,12 +634,11 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the observation transition matrix H. </p>
-<p>The observation transition matrix H is of type <code>output_model</code> and the function is of the form <code>output_model(const state &amp;, const UpdateTypes ! &amp;...)</code>. For non-linear system, or extended filter, H is the Jacobian of the state observation function: <code>H = ∂h/∂X = ∂hj/∂xi</code> that is each row i contains the derivatives of the state observation function for every element j in the state column vector X. This member function is not present when the filter has no output model.</p>
+<p>Read, write the observation transition matrix H. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The first copied initializer used to set the copied observation transition matrix H or the copied target Callable object (function object, pointer to function, reference to function, pointer to member function, or pointer to data member) that will be bound to the prediction arguments and called by the filter to compute the observation, measurement transition matrix H on update steps. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional second and other copied initializers to set the observation transition matrix H.</td></tr>
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation transition matrix H characteristic. The characteristic may also be a callable of the form <code>output_model(const state &amp;, const UpdateTypes ! &amp;...)</code>. For non-linear system, or extended filter, H is the Jacobian of the state observation function: <code>H = ∂h/∂X = ∂hj/∂xi</code> that is each row i contains the derivatives of the state observation function for every element j in the state column vector X. This member function is not present when the filter has no output model.</td></tr>
   </table>
   </dd>
 </dl>
@@ -734,8 +646,8 @@ template&lt;typename &gt; </div>
 
 </div>
 </div>
-<a id="a310f3a507cbd4285a6565003d7f1aba9" name="a310f3a507cbd4285a6565003d7f1aba9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a310f3a507cbd4285a6565003d7f1aba9">&#9670;&#160;</a></span>h() <span class="overload">[2/2]</span></h2>
+<a id="a344a76ccec0eb7ac74ef033d8b2c65e2" name="a344a76ccec0eb7ac74ef033d8b2c65e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a344a76ccec0eb7ac74ef033d8b2c65e2">&#9670;&#160;</a></span>k()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -746,10 +658,14 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::h </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::k </td>
           <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const auto &amp;...</td>          <td class="paramname"><span class="paramname"><em>values</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -759,40 +675,14 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the observation transition matrix H. </p>
-<p>This member function is not present when the filter has no output model.</p>
-<dl class="section return"><dt>Returns</dt><dd>The observation, measurement transition matrix H.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-</div>
-</div>
-<a id="a6c2ac4a80492202e453720c9b007bcf3" name="a6c2ac4a80492202e453720c9b007bcf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c2ac4a80492202e453720c9b007bcf3">&#9670;&#160;</a></span>k()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::k </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const -&gt;  const <a class="el" href="#adfda3faf240fa5676ccfe52663f5774d">gain</a> &amp;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the gain matrix K. </p>
-<dl class="section return"><dt>Returns</dt><dd>The gain matrix K.</dd></dl>
+<p>Read, write the gain matrix K. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the gain matrix K characteristic.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
@@ -874,8 +764,8 @@ template&lt;typename &gt; </div>
 
 </div>
 </div>
-<a id="a46a728a8f930061118c518fe05209204" name="a46a728a8f930061118c518fe05209204"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46a728a8f930061118c518fe05209204">&#9670;&#160;</a></span>p() <span class="overload">[1/2]</span></h2>
+<a id="aecc9c72ead191c87d0ad2d28111ccb40" name="aecc9c72ead191c87d0ad2d28111ccb40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecc9c72ead191c87d0ad2d28111ccb40">&#9670;&#160;</a></span>p()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -886,9 +776,9 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::p </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::p </td>
           <td>(</td>
-          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -903,45 +793,14 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the estimated covariance matrix P. </p>
+<p>Read, write the estimated covariance matrix P. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The first copied initializer used to set the estimated covariance matrix P. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional second and other copied initializers to set the estimated covariance matrix P.</td></tr>
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the estimated covariance matrix P characteristic.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-</div>
-</div>
-<a id="a5102dd3dbf4836a875237a5bdbdaa14e" name="a5102dd3dbf4836a875237a5bdbdaa14e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5102dd3dbf4836a875237a5bdbdaa14e">&#9670;&#160;</a></span>p() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::p </td>
-          <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the estimated covariance matrix P. </p>
-<dl class="section return"><dt>Returns</dt><dd>The estimated correlated variance matrix P.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
@@ -1019,14 +878,14 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000028">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
 </div>
 </div>
-<a id="a7e4c1f5cbeb922f810774bbaf27e09e0" name="a7e4c1f5cbeb922f810774bbaf27e09e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e4c1f5cbeb922f810774bbaf27e09e0">&#9670;&#160;</a></span>q() <span class="overload">[1/2]</span></h2>
+<a id="a56e6cb7cd0947e7fd667b355b6d1bc62" name="a56e6cb7cd0947e7fd667b355b6d1bc62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56e6cb7cd0947e7fd667b355b6d1bc62">&#9670;&#160;</a></span>q()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1037,9 +896,9 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::q </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::q </td>
           <td>(</td>
-          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1054,20 +913,21 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the process noise covariance matrix Q. </p>
+<p>Read, write the process noise covariance matrix or function Q. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The first copied initializer used to set the process noise covariance matrix Q is of type <code>process_uncertainty</code> and the function is of the form <code>process_uncertainty(const state &amp;, const PredictionTypes ! &amp;...)</code>. The copied process noise covariance matrix Q or the copied target Callable object (function object, pointer to function, reference to function, pointer to member function, or pointer to data member) that will be bound to the prediction arguments and called by the filter to compute the process noise covariance matrix Q on prediction steps. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional second and other copied initializers to set the process noise covariance matrix Q.</td></tr>
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the process noise covariance matrix Q characteristic. The characteristic may also be a callable of the form <code>process_uncertainty(const state &amp;, const ! PredictionTypes &amp;...)</code>. <pre class="fragment">  \par Complexity
+  Constant. 
+</pre> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
 </div>
-<a id="a662b0dab257e92058dca7be556b2aa47" name="a662b0dab257e92058dca7be556b2aa47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a662b0dab257e92058dca7be556b2aa47">&#9670;&#160;</a></span>q() <span class="overload">[2/2]</span></h2>
+<a id="af50f7dd74a3403b1654b288dc503e78c" name="af50f7dd74a3403b1654b288dc503e78c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af50f7dd74a3403b1654b288dc503e78c">&#9670;&#160;</a></span>r()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1078,40 +938,9 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::q </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::r </td>
           <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the process noise covariance matrix Q. </p>
-<dl class="section return"><dt>Returns</dt><dd>The process noise correlated variance matrix Q.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-</div>
-</div>
-<a id="a188dd45f482146a9feb4fdc1270df977" name="a188dd45f482146a9feb4fdc1270df977"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a188dd45f482146a9feb4fdc1270df977">&#9670;&#160;</a></span>r() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::r </td>
-          <td>(</td>
-          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1126,20 +955,21 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the observation noise covariance matrix R. </p>
+<p>Read, write the observation noise covariance matrix R. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The first copied initializer used to set the observation noise covariance matrix R is of type <code>output_uncertainty</code> and the function is of the form <code>output_uncertainty(const state &amp;, const output &amp;, const ! UpdateTypes &amp;...)</code>. The copied observation noise covariance matrix R or the copied target Callable object (function object, pointer to function, reference to function, pointer to member function, or pointer to data member) that will be called by the filter to compute the observation noise covariance matrix R on prediction steps. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional second and other copied initializers to set the observation noise covariance matrix R.</td></tr>
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation noise covariance matrix R characteristic. The characteristic may also be a callable of the form <code>output_uncertainty(const state &amp;, const output &amp;, ! const UpdateTypes &amp;...)</code>. <pre class="fragment">  \par Complexity
+  Constant. 
+</pre> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
 </div>
-<a id="a881fb047ba1b82c71ad8c615c65b0f91" name="a881fb047ba1b82c71ad8c615c65b0f91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a881fb047ba1b82c71ad8c615c65b0f91">&#9670;&#160;</a></span>r() <span class="overload">[2/2]</span></h2>
+<a id="a53db7329290f88128cce81f0d7d90fd6" name="a53db7329290f88128cce81f0d7d90fd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53db7329290f88128cce81f0d7d90fd6">&#9670;&#160;</a></span>s()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1150,10 +980,14 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::r </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::s </td>
           <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const auto &amp;...</td>          <td class="paramname"><span class="paramname"><em>values</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1163,40 +997,14 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the observation noise covariance matrix R. </p>
-<p>The variance there is in each measurement.</p>
-<dl class="section return"><dt>Returns</dt><dd>The observation noise correlated variance matrix R.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
-
-</div>
-</div>
-<a id="ad141e2888cae3d352178d6ebb9833f3f" name="ad141e2888cae3d352178d6ebb9833f3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad141e2888cae3d352178d6ebb9833f3f">&#9670;&#160;</a></span>s()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::s </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const -&gt;  const <a class="el" href="#a0b63966076ddf4625e0d167cec379a13">innovation_uncertainty</a> &amp;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the innovation uncertainty matrix S. </p>
-<dl class="section return"><dt>Returns</dt><dd>The innovation uncertainty matrix S.</dd></dl>
+<p>Read, write the innovation uncertainty matrix S. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the innovation uncertainty matrix S characteristic.</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
@@ -1306,14 +1114,14 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000029">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
 </div>
 </div>
-<a id="aae139e8878673c1209049e14204682a7" name="aae139e8878673c1209049e14204682a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae139e8878673c1209049e14204682a7">&#9670;&#160;</a></span>x() <span class="overload">[1/2]</span></h2>
+<a id="ac82c987c6e2e94cf656b05f8aceecca6" name="ac82c987c6e2e94cf656b05f8aceecca6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac82c987c6e2e94cf656b05f8aceecca6">&#9670;&#160;</a></span>x()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1324,9 +1132,9 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::x </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::x </td>
           <td>(</td>
-          <td class="paramtype">const auto &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1341,11 +1149,11 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sets the state estimate column vector X. </p>
+<p>Read, write the estimated state column vector X. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The first copied initializer used to set the state estimate column vector X. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional second and other copied initializers to set the state estimate column vector X.</td></tr>
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the estimated state column vector X characteristic.</td></tr>
   </table>
   </dd>
 </dl>
@@ -1353,8 +1161,8 @@ template&lt;typename &gt; </div>
 
 </div>
 </div>
-<a id="a48643610426e32895a22c1dd9dffadc6" name="a48643610426e32895a22c1dd9dffadc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48643610426e32895a22c1dd9dffadc6">&#9670;&#160;</a></span>x() <span class="overload">[2/2]</span></h2>
+<a id="aab7aeae464691e9827a539c9c5189151" name="aab7aeae464691e9827a539c9c5189151"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7aeae464691e9827a539c9c5189151">&#9670;&#160;</a></span>y()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1365,10 +1173,14 @@ template&lt;typename &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto &amp;&amp; <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::x </td>
+          <td class="memname">decltype(auto) <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::y </td>
           <td>(</td>
-          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td class="paramtype">this auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const auto &amp;...</td>          <td class="paramname"><span class="paramname"><em>values</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1378,42 +1190,15 @@ template&lt;typename &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the state estimate column vector X. </p>
-<dl class="section return"><dt>Returns</dt><dd>The state estimate column vector X.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Overloading the operator dot would have been nice had it existed. </dd></dl>
-
-</div>
-</div>
-<a id="a30132ff04946a157b124952f22b72199" name="a30132ff04946a157b124952f22b72199"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30132ff04946a157b124952f22b72199">&#9670;&#160;</a></span>y()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto <a class="el" href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a>&lt; typename &gt;::y </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const -&gt;  const <a class="el" href="#aafeb53b38d7fd8fe564d7837214664ed">innovation</a> &amp;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the innovation column vector Y. </p>
-<dl class="section return"><dt>Returns</dt><dd>The innovation column vector Y.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo</a></b></dt><dd>Add measurement post-fit residual by default and example? </dd></dl>
+<p>Read, write the innovation column vector Y. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the innovation column vector Y characteristic.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 </div>
 </div>
