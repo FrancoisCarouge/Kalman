@@ -83,8 +83,16 @@ struct std::formatter<Filter, Char> {
           std::format_to(format_context.out(), R"("h": {}, )", filter.h()));
     }
 
-    format_context.advance_to(std::format_to(
-        format_context.out(), R"("k": {}, "p": {}, )", filter.k(), filter.p()));
+    if constexpr (fcarouge::kalman_internal::has_gain_method<Filter>) {
+      format_context.advance_to(
+          std::format_to(format_context.out(), R"("k": {}, )", filter.k()));
+    }
+
+    if constexpr (fcarouge::kalman_internal::has_estimate_uncertainty_method<
+                      Filter>) {
+      format_context.advance_to(
+          std::format_to(format_context.out(), R"("p": {}, )", filter.p()));
+    }
 
     if constexpr (fcarouge::kalman_internal::has_prediction_types<Filter>) {
       fcarouge::kalman_internal::for_constexpr<
@@ -107,8 +115,11 @@ struct std::formatter<Filter, Char> {
           std::format_to(format_context.out(), R"("r": {}, )", filter.r()));
     }
 
-    format_context.advance_to(
-        std::format_to(format_context.out(), R"("s": {}, )", filter.s()));
+    if constexpr (fcarouge::kalman_internal::has_innovation_uncertainty_method<
+                      Filter>) {
+      format_context.advance_to(
+          std::format_to(format_context.out(), R"("s": {}, )", filter.s()));
+    }
 
     //! @todo Generalize out internal method concept when MSVC has better
     //! if-constexpr-requires support.
@@ -128,9 +139,22 @@ struct std::formatter<Filter, Char> {
           });
     }
 
-    format_context.advance_to(
-        std::format_to(format_context.out(), R"("x": {}, "y": {}, "z": {}}})",
-                       filter.x(), filter.y(), filter.z()));
+    if constexpr (fcarouge::kalman_internal::has_state_method<Filter>) {
+      format_context.advance_to(
+          std::format_to(format_context.out(), R"("x": {}, )", filter.x()));
+    }
+
+    if constexpr (fcarouge::kalman_internal::has_innovation_method<Filter>) {
+      format_context.advance_to(
+          std::format_to(format_context.out(), R"("y": {}, )", filter.y()));
+    }
+
+    if constexpr (fcarouge::kalman_internal::has_output_method<Filter>) {
+      format_context.advance_to(
+          std::format_to(format_context.out(), R"("z": {})", filter.z()));
+    }
+
+    format_context.advance_to(std::format_to(format_context.out(), R"(}})"));
 
     return format_context.out();
   }
