@@ -102,8 +102,8 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
-  inline constexpr void update(const UpdateTypes &...update_pack,
-                               const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const UpdateTypes &...update_pack, const auto &output_z,
+                        const auto &...outputs_z) {
     update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);
@@ -114,7 +114,7 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
   }
 
-  inline constexpr void predict(const PredictionTypes &...prediction_pack) {
+  constexpr void predict(const PredictionTypes &...prediction_pack) {
     prediction_arguments = {prediction_pack...};
     x = transition(x, prediction_pack...);
     p = estimate_uncertainty{f * p * t(f) + q};

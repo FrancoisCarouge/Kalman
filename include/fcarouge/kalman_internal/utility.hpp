@@ -305,7 +305,7 @@ concept has_innovation_uncertainty =
 //! numerical stability, triangularity, symmetry, space, time, etc. Dividing an
 //! `R1 x C` matrix by an `R2 x C` matrix results in an `R1 x R2` matrix.
 template <typename Lhs, typename Rhs> struct divides {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs / rhs);
 };
 
@@ -317,7 +317,7 @@ using quotient =
 //! @brief Linear algebra evaluates override expression lazy evaluation
 //! specialization point.
 template <typename Type> struct evaluates {
-  [[nodiscard]] inline constexpr auto operator()() const -> Type;
+  [[nodiscard]] constexpr auto operator()() const -> Type;
 };
 
 //! @brief Evaluater helper type.
@@ -325,7 +325,7 @@ template <typename Type> using evaluate = std::invoke_result_t<evaluates<Type>>;
 
 //! @brief Linear algebra transposes specialization point.
 template <typename Type> struct transposes {
-  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
+  [[nodiscard]] constexpr auto operator()(const Type &value) const {
     return value;
   }
 };
@@ -333,7 +333,7 @@ template <typename Type> struct transposes {
 template <typename Type>
   requires requires(Type value) { value.transpose(); }
 struct transposes<Type> {
-  [[nodiscard]] inline constexpr auto operator()(const Type &value) const {
+  [[nodiscard]] constexpr auto operator()(const Type &value) const {
     return value.transpose();
   }
 };
@@ -374,7 +374,7 @@ using tuple_n_type = typename tupler<Type, Size>::type;
 
 //! @brief Type multiplies expression type specialization point.
 template <typename Lhs, typename Rhs> struct multiplies {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs * rhs);
 };
 
@@ -385,7 +385,7 @@ using product =
 
 //! @brief Type minus, subtraction expression type specialization point.
 template <typename Lhs, typename Rhs> struct minus {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const Lhs &lhs, const Rhs &rhs) const -> decltype(lhs - rhs);
 };
 
@@ -548,7 +548,7 @@ struct conditional_member_types
 //! @details Help compilers with non-type template parameters on members.
 template <std::size_t Begin, std::size_t End, std::size_t Increment,
           typename Function>
-inline constexpr void for_constexpr(Function &&function) {
+constexpr void for_constexpr(Function &&function) {
   if constexpr (Begin < End) {
     function(std::integral_constant<std::size_t, Begin>());
     for_constexpr<Begin + Increment, End, Increment>(
@@ -590,7 +590,7 @@ inline constexpr auto first_v{first_value<Values...>::value};
 
 template <typename Type> struct not_implemented {
   template <auto Size>
-  inline constexpr explicit not_implemented(
+  constexpr explicit not_implemented(
       [[maybe_unused]] const char (&message)[Size]) {
     // The argument message is printed in the compiler error output.
   }
@@ -642,7 +642,7 @@ inline auto zero<Type>{Type::zero()};
 
 template <typename Callable> struct scope_exit {
   Callable callable;
-  inline constexpr ~scope_exit() { callable(); }
+  constexpr ~scope_exit() { callable(); }
 };
 
 //! @}

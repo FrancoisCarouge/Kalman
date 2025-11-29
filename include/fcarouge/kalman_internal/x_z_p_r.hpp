@@ -61,7 +61,7 @@ template <typename Type> struct x_z_p_r {
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
 
-  inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
     s = p + r;
     k = p / s;
