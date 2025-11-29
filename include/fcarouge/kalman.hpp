@@ -146,8 +146,7 @@ public:
   //! @see Deduction guide for details.
   //!
   //! @complexity Constant.
-  template <typename... Arguments>
-  inline constexpr kalman(Arguments... arguments);
+  template <typename... Arguments> constexpr kalman(Arguments... arguments);
 
   //! @brief Copy constructs a filter.
   //!
@@ -159,7 +158,7 @@ public:
   //! elements of the filter with.
   //!
   //! @complexity Constant.
-  inline constexpr kalman(const kalman &other) = default;
+  constexpr kalman(const kalman &other) = default;
 
   //! @brief Move constructs a filter.
   //!
@@ -173,7 +172,7 @@ public:
   //! elements of the filter with.
   //!
   //! @complexity Constant.
-  inline constexpr kalman(kalman &&other) noexcept = default;
+  constexpr kalman(kalman &&other) noexcept = default;
 
   //! @brief Copy assignment operator.
   //!
@@ -188,7 +187,7 @@ public:
   //! i.e. `*this`.
   //!
   //! @complexity Constant.
-  inline constexpr auto operator=(const kalman &other) -> kalman & = default;
+  constexpr auto operator=(const kalman &other) -> kalman & = default;
 
   //! @brief Move assignment operator.
   //!
@@ -206,13 +205,12 @@ public:
   //! i.e. `*this`.
   //!
   //! @complexity Constant.
-  inline constexpr auto
-  operator=(kalman &&other) noexcept -> kalman & = default;
+  constexpr auto operator=(kalman &&other) noexcept -> kalman & = default;
 
   //! @brief Destructs the Kalman filter.
   //!
   //! @complexity Constant.
-  inline constexpr ~kalman() = default;
+  constexpr ~kalman() = default;
   //! @}
 
   //! @name Public Characteristics Member Functions
@@ -225,7 +223,7 @@ public:
   //! column vector X characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) x(this auto &&self, const auto &...values)
+  constexpr decltype(auto) x(this auto &&self, const auto &...values)
     requires(kalman_internal::has_state<Filter>);
 
   //! @brief Read, write the observation column vector Z.
@@ -235,7 +233,7 @@ public:
   //! column vector Z characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) z(this auto &&self, const auto &...values)
+  constexpr decltype(auto) z(this auto &&self, const auto &...values)
     requires(kalman_internal::has_output<Filter>);
 
   //! @brief Read, write the control column vector U.
@@ -245,7 +243,7 @@ public:
   //! vector U characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) u(this auto &&self, const auto &...values)
+  constexpr decltype(auto) u(this auto &&self, const auto &...values)
     requires(kalman_internal::has_input<Filter>);
 
   //! @brief Read, write the estimated covariance matrix P.
@@ -255,7 +253,7 @@ public:
   //! covariance matrix P characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) p(this auto &&self, const auto &...values)
+  constexpr decltype(auto) p(this auto &&self, const auto &...values)
     requires(kalman_internal::has_estimate_uncertainty<Filter>);
 
   //! @brief Read, write the process noise covariance matrix or function Q.
@@ -267,7 +265,7 @@ public:
   //! PredictionTypes &...)`.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) q(this auto &&self, const auto &...values)
+  constexpr decltype(auto) q(this auto &&self, const auto &...values)
     requires(kalman_internal::has_process_uncertainty<Filter>);
 
   //! @brief Read, write the observation noise covariance matrix R.
@@ -279,7 +277,7 @@ public:
   //! const UpdateTypes &...)`.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) r(this auto &&self, const auto &...values)
+  constexpr decltype(auto) r(this auto &&self, const auto &...values)
     requires(kalman_internal::has_output_uncertainty<Filter>);
 
   //! @brief Read, write the state transition matrix F.
@@ -294,7 +292,7 @@ public:
   //! transition function for every element j in the state column vector X.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) f(this auto &&self, const auto &...values)
+  constexpr decltype(auto) f(this auto &&self, const auto &...values)
     requires(kalman_internal::has_state_transition<Filter>);
 
   //! @brief Read, write the observation transition matrix H.
@@ -310,7 +308,7 @@ public:
   //! present when the filter has no output model.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) h(this auto &&self, const auto &...values)
+  constexpr decltype(auto) h(this auto &&self, const auto &...values)
     requires(kalman_internal::has_output_model<Filter>);
 
   //! @brief Read, write the control transition matrix G.
@@ -322,7 +320,7 @@ public:
   //! This member function is not present when the filter has no input control.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) g(this auto &&self, const auto &...values)
+  constexpr decltype(auto) g(this auto &&self, const auto &...values)
     requires(kalman_internal::has_input_control<Filter>);
 
   //! @brief Read, write the gain matrix K.
@@ -332,7 +330,7 @@ public:
   //! characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) k(this auto &&self, const auto &...values)
+  constexpr decltype(auto) k(this auto &&self, const auto &...values)
     requires(kalman_internal::has_gain<Filter>);
 
   //! @brief Read, write the innovation column vector Y.
@@ -342,7 +340,7 @@ public:
   //! column vector Y characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) y(this auto &&self, const auto &...values)
+  constexpr decltype(auto) y(this auto &&self, const auto &...values)
     requires(kalman_internal::has_innovation<Filter>);
 
   //! @brief Read, write the innovation uncertainty matrix S.
@@ -352,7 +350,7 @@ public:
   //! uncertainty matrix S characteristic.
   //!
   //! @complexity Constant.
-  inline constexpr decltype(auto) s(this auto &&self, const auto &...values)
+  constexpr decltype(auto) s(this auto &&self, const auto &...values)
     requires(kalman_internal::has_innovation_uncertainty<Filter>);
 
   //! @}
@@ -378,7 +376,7 @@ public:
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Can the parameter pack of `PredictionTypes` be explicit in the
   //! method declaration for user clarity?
-  inline constexpr void predict(const auto &...arguments);
+  constexpr void predict(const auto &...arguments);
 
   //! @brief Returns the Nth prediction argument.
   //!
@@ -391,7 +389,7 @@ public:
   //! parameter pack of the tuple `PredictionTypes` class template type.
   //!
   //! @complexity Constant.
-  template <auto Position> inline constexpr auto predict() const;
+  template <auto Position> constexpr auto predict() const;
 
   //! @brief Updates the estimates with the outcome of a measurement.
   //!
@@ -411,7 +409,7 @@ public:
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Can the parameter pack of `UpdateTypes` be explicit in the method
   //! declaration for user clarity?
-  inline constexpr void update(const auto &...arguments);
+  constexpr void update(const auto &...arguments);
 
   //! @brief Returns the Nth update argument.
   //!
@@ -424,7 +422,7 @@ public:
   //! parameter pack of the tuple `UpdateTypes` class template type.
   //!
   //! @complexity Constant.
-  template <auto Position> inline constexpr auto update() const;
+  template <auto Position> constexpr auto update() const;
   //! @}
 };
 

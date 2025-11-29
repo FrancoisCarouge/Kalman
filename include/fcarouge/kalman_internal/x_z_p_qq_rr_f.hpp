@@ -76,7 +76,7 @@ template <typename State, typename Output> struct x_z_p_qq_rr_f {
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
 
-  inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
     r = noise_observation_r(x, z);
     s = innovation_uncertainty{h * p * t(h) + r};
@@ -86,7 +86,7 @@ template <typename State, typename Output> struct x_z_p_qq_rr_f {
     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
   }
 
-  inline constexpr void predict() {
+  constexpr void predict() {
     q = noise_process_q(x);
     x = f * x;
     p = estimate_uncertainty{f * p * t(f) + q};

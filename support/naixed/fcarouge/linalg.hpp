@@ -54,14 +54,14 @@ namespace fcarouge::kalman_internal {
 //! @note Implementation not needed.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct evaluates<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] inline constexpr auto operator()() const
+  [[nodiscard]] constexpr auto operator()() const
       -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
 
 //! @brief Specialization of the transposes.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] inline constexpr auto operator()(
+  [[nodiscard]] constexpr auto operator()(
       const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
     return typed_matrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
         t(value.data())};

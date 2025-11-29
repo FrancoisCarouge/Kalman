@@ -46,12 +46,12 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 template <typename Filter>
 template <typename... Arguments>
-inline constexpr kalman<Filter>::kalman(Arguments... arguments)
+constexpr kalman<Filter>::kalman(Arguments... arguments)
     : filter{kalman_internal::filter<Filter>(arguments...)} {}
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_state<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -62,8 +62,8 @@ inline constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::z(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::z(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_output<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -73,8 +73,8 @@ inline constexpr decltype(auto) kalman<Filter>::z(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::u(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::u(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_input<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -84,8 +84,8 @@ inline constexpr decltype(auto) kalman<Filter>::u(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::p(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::p(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_estimate_uncertainty<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -95,8 +95,8 @@ inline constexpr decltype(auto) kalman<Filter>::p(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_process_uncertainty<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -112,8 +112,8 @@ inline constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_output_uncertainty<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -129,8 +129,8 @@ inline constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_state_transition<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -146,8 +146,8 @@ inline constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_output_model<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -163,8 +163,8 @@ inline constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_input_control<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -180,8 +180,8 @@ inline constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::k(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::k(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_gain<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -191,8 +191,8 @@ inline constexpr decltype(auto) kalman<Filter>::k(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::y(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::y(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_innovation<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -202,8 +202,8 @@ inline constexpr decltype(auto) kalman<Filter>::y(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) kalman<Filter>::s(this auto &&self,
-                                                  const auto &...values)
+constexpr decltype(auto) kalman<Filter>::s(this auto &&self,
+                                           const auto &...values)
   requires(kalman_internal::has_innovation_uncertainty<Filter>)
 {
   if constexpr (sizeof...(values)) {
@@ -213,27 +213,27 @@ inline constexpr decltype(auto) kalman<Filter>::s(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::predict(const auto &...arguments) {
+constexpr void kalman<Filter>::predict(const auto &...arguments) {
   filter.predict(arguments...);
 }
 
 template <typename Filter>
 template <auto Position>
 [[nodiscard("The returned prediction argument is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] constexpr auto
 kalman<Filter>::predict() const {
   return std::get<Position>(filter.prediction_arguments);
 }
 
 template <typename Filter>
-inline constexpr void kalman<Filter>::update(const auto &...arguments) {
+constexpr void kalman<Filter>::update(const auto &...arguments) {
   filter.update(arguments...);
 }
 
 template <typename InternalFilter>
 template <auto Position>
 [[nodiscard("The returned update argument is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] constexpr auto
 kalman<InternalFilter>::update() const {
   return std::get<Position>(filter.update_arguments);
 }

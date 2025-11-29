@@ -50,42 +50,42 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
-  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+  [[nodiscard]] constexpr To operator()(const From &value) const {
     return value.numerical_value_in(value.unit);
   }
 };
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
-  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+  [[nodiscard]] constexpr To operator()(const From &value) const {
     return value * To::reference;
   }
 };
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] inline constexpr To &operator()(From &value) const {
+  [[nodiscard]] constexpr To &operator()(From &value) const {
     return reinterpret_cast<To &>(value);
   }
 };
 
 template <typename To, mp_units::QuantityPoint From>
 struct element_caster<To, From> {
-  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+  [[nodiscard]] constexpr To operator()(const From &value) const {
     return value.quantity_from_zero().numerical_value_in(value.unit);
   }
 };
 
 template <mp_units::QuantityPoint To, typename From>
 struct element_caster<To, From> {
-  [[nodiscard]] inline constexpr To operator()(const From &value) const {
+  [[nodiscard]] constexpr To operator()(const From &value) const {
     return {value * To::unit, mp_units::default_point_origin(To::unit)};
   }
 };
 
 template <mp_units::QuantityPoint To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] inline constexpr To &operator()(From &value) const {
+  [[nodiscard]] constexpr To &operator()(From &value) const {
     return reinterpret_cast<To &>(value);
   }
 };
@@ -95,7 +95,7 @@ namespace fcarouge::typed_linear_algebra_internal {
 //! @brief Multiplies specialization type for uncertainty type deduction.
 template <auto Reference>
 struct multiplies<mp_units::quantity_point<Reference>, int> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const mp_units::quantity_point<Reference> &lhs,
              int rhs) const -> mp_units::quantity_point<Reference>;
 };
@@ -103,7 +103,7 @@ struct multiplies<mp_units::quantity_point<Reference>, int> {
 //! @brief Multiplies specialization type for uncertainty type deduction.
 template <auto Reference>
 struct multiplies<int, mp_units::quantity_point<Reference>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(int lhs, const mp_units::quantity_point<Reference> &rhs) const
       -> mp_units::quantity_point<Reference>;
 };
@@ -111,7 +111,7 @@ struct multiplies<int, mp_units::quantity_point<Reference>> {
 template <auto Reference1, auto Reference2>
 struct multiplies<mp_units::quantity_point<Reference1>,
                   mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const mp_units::quantity_point<Reference1> &lhs,
              const mp_units::quantity_point<Reference2> &rhs) const
       -> mp_units::quantity<Reference1 * Reference2>;
@@ -120,7 +120,7 @@ struct multiplies<mp_units::quantity_point<Reference1>,
 template <auto Reference1, auto Reference2>
 struct multiplies<mp_units::quantity<Reference1>,
                   mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const mp_units::quantity<Reference1> &lhs,
              const mp_units::quantity_point<Reference2> &rhs) const
       -> mp_units::quantity_point<Reference1 * Reference2>;
@@ -129,7 +129,7 @@ struct multiplies<mp_units::quantity<Reference1>,
 template <auto Reference1, auto Reference2>
 struct divides<mp_units::quantity_point<Reference1>,
                mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const mp_units::quantity_point<Reference1> &lhs,
              const mp_units::quantity_point<Reference2> &rhs) const
       -> mp_units::quantity<Reference1 / Reference2>;
@@ -138,7 +138,7 @@ struct divides<mp_units::quantity_point<Reference1>,
 template <auto Reference1, auto Reference2>
 struct divides<mp_units::quantity<Reference1>,
                mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const mp_units::quantity<Reference1> &lhs,
              const mp_units::quantity_point<Reference2> &rhs) const
       -> mp_units::quantity_point<Reference1 / Reference2>;
@@ -147,7 +147,7 @@ struct divides<mp_units::quantity<Reference1>,
 template <auto Reference1, auto Reference2>
 struct divides<mp_units::quantity_point<Reference1>,
                mp_units::quantity<Reference2>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const mp_units::quantity_point<Reference1> &lhs,
              const mp_units::quantity<Reference2> &rhs) const
       -> mp_units::quantity_point<Reference1 / Reference2>;
@@ -163,14 +163,14 @@ namespace kalman_internal {
 //! @note Implementation not needed.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct evaluates<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] inline constexpr auto operator()() const
+  [[nodiscard]] constexpr auto operator()() const
       -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
 
 //! @brief Specialization of the transposes.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] inline constexpr auto operator()(
+  [[nodiscard]] constexpr auto operator()(
       const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) const {
     return typed_matrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
         t(value.data())};
@@ -203,7 +203,7 @@ namespace kalman_internal {
 //! @brief Multiplies specialization type for uncertainty type deduction.
 template <auto Reference>
 struct multiplies<mp_units::quantity_point<Reference>, int> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const mp_units::quantity_point<Reference> &lhs,
              int rhs) const -> mp_units::quantity_point<Reference>;
 };
@@ -211,7 +211,7 @@ struct multiplies<mp_units::quantity_point<Reference>, int> {
 //! @brief Multiplies specialization type for uncertainty type deduction.
 template <auto Reference>
 struct multiplies<int, mp_units::quantity_point<Reference>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(int lhs, const mp_units::quantity_point<Reference> &rhs) const
       -> mp_units::quantity_point<Reference>;
 };

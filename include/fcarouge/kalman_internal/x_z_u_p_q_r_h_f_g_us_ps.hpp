@@ -85,8 +85,8 @@ struct x_z_u_p_q_r_h_f_g_us_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
-  inline constexpr void update(const UpdateTypes &...update_pack,
-                               const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const UpdateTypes &...update_pack, const auto &output_z,
+                        const auto &...outputs_z) {
     update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};
     s = h * p * t(h) + r;
@@ -97,8 +97,8 @@ struct x_z_u_p_q_r_h_f_g_us_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   }
 
   //! @todo Add convertible requirements on input and output packs?
-  inline constexpr void predict(const PredictionTypes &...prediction_pack,
-                                const auto &input_u, const auto &...inputs_u) {
+  constexpr void predict(const PredictionTypes &...prediction_pack,
+                         const auto &input_u, const auto &...inputs_u) {
     prediction_arguments = {prediction_pack...};
     u = input{input_u, inputs_u...};
     x = f * x + g * u;

@@ -48,53 +48,53 @@ namespace fcarouge {
 namespace kalman_internal {
 template <typename Filter> class printer : public Filter {
 public:
-  inline constexpr explicit printer(Filter &&filter);
-  inline constexpr ~printer();
-  inline constexpr decltype(auto) x(this auto &&self, const auto &...values)
+  constexpr explicit printer(Filter &&filter);
+  constexpr ~printer();
+  constexpr decltype(auto) x(this auto &&self, const auto &...values)
     requires(kalman_internal::has_state<Filter>);
-  inline constexpr decltype(auto) z(this auto &&self, const auto &...values)
+  constexpr decltype(auto) z(this auto &&self, const auto &...values)
     requires(kalman_internal::has_output<Filter>);
-  inline constexpr decltype(auto) u(this auto &&self, const auto &...values)
+  constexpr decltype(auto) u(this auto &&self, const auto &...values)
     requires(kalman_internal::has_input<Filter>);
-  inline constexpr decltype(auto) p(this auto &&self, const auto &...values)
+  constexpr decltype(auto) p(this auto &&self, const auto &...values)
     requires(kalman_internal::has_estimate_uncertainty<Filter>);
-  inline constexpr decltype(auto) q(this auto &&self, const auto &...values)
+  constexpr decltype(auto) q(this auto &&self, const auto &...values)
     requires(kalman_internal::has_process_uncertainty<Filter>);
-  inline constexpr decltype(auto) r(this auto &&self, const auto &...values)
+  constexpr decltype(auto) r(this auto &&self, const auto &...values)
     requires(kalman_internal::has_output_uncertainty<Filter>);
-  inline constexpr decltype(auto) f(this auto &&self, const auto &...values)
+  constexpr decltype(auto) f(this auto &&self, const auto &...values)
     requires(kalman_internal::has_state_transition<Filter>);
-  inline constexpr decltype(auto) h(this auto &&self, const auto &...values)
+  constexpr decltype(auto) h(this auto &&self, const auto &...values)
     requires(kalman_internal::has_output_model<Filter>);
-  inline constexpr decltype(auto) g(this auto &&self, const auto &...values)
+  constexpr decltype(auto) g(this auto &&self, const auto &...values)
     requires(kalman_internal::has_input_control<Filter>);
-  inline constexpr decltype(auto) k(this auto &&self, const auto &...values)
+  constexpr decltype(auto) k(this auto &&self, const auto &...values)
     requires(kalman_internal::has_gain<Filter>);
-  inline constexpr decltype(auto) y(this auto &&self, const auto &...values)
+  constexpr decltype(auto) y(this auto &&self, const auto &...values)
     requires(kalman_internal::has_innovation<Filter>);
-  inline constexpr decltype(auto) s(this auto &&self, const auto &...values)
+  constexpr decltype(auto) s(this auto &&self, const auto &...values)
     requires(kalman_internal::has_innovation_uncertainty<Filter>);
-  inline constexpr void predict(const auto &...arguments);
-  template <auto Position> inline constexpr auto predict() const;
-  inline constexpr void update(const auto &...arguments);
-  template <auto Position> inline constexpr auto update() const;
+  constexpr void predict(const auto &...arguments);
+  template <auto Position> constexpr auto predict() const;
+  constexpr void update(const auto &...arguments);
+  template <auto Position> constexpr auto update() const;
 };
 
 template <typename Filter>
-inline constexpr printer<Filter>::printer(Filter &&filter)
+constexpr printer<Filter>::printer(Filter &&filter)
     : Filter{std::forward<Filter>(filter)} {
   const Filter &base{*this};
   std::println(R"({{"event": "construction", "filter":{}}})", base);
 }
 
-template <typename Filter> inline constexpr printer<Filter>::~printer() {
+template <typename Filter> constexpr printer<Filter>::~printer() {
   const Filter &base{*this};
   std::println(R"({{"event": "destruction", "filter":{}}})", base);
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::x(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::x(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_state<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -106,8 +106,8 @@ inline constexpr decltype(auto) printer<Filter>::x(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::z(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::z(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_output<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -119,8 +119,8 @@ inline constexpr decltype(auto) printer<Filter>::z(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::u(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::u(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_input<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -132,8 +132,8 @@ inline constexpr decltype(auto) printer<Filter>::u(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::p(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::p(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_estimate_uncertainty<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -145,8 +145,8 @@ inline constexpr decltype(auto) printer<Filter>::p(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::q(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::q(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_process_uncertainty<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -158,8 +158,8 @@ inline constexpr decltype(auto) printer<Filter>::q(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::r(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::r(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_output_uncertainty<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -171,8 +171,8 @@ inline constexpr decltype(auto) printer<Filter>::r(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::f(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::f(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_state_transition<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -184,8 +184,8 @@ inline constexpr decltype(auto) printer<Filter>::f(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::h(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::h(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_output_model<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -197,8 +197,8 @@ inline constexpr decltype(auto) printer<Filter>::h(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::g(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::g(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_input_control<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -210,8 +210,8 @@ inline constexpr decltype(auto) printer<Filter>::g(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::k(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::k(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_gain<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -223,8 +223,8 @@ inline constexpr decltype(auto) printer<Filter>::k(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::y(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::y(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_innovation<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -236,8 +236,8 @@ inline constexpr decltype(auto) printer<Filter>::y(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr decltype(auto) printer<Filter>::s(this auto &&self,
-                                                   const auto &...values)
+constexpr decltype(auto) printer<Filter>::s(this auto &&self,
+                                            const auto &...values)
   requires(kalman_internal::has_innovation_uncertainty<Filter>)
 {
   kalman_internal::scope_exit on_exit{[&self] {
@@ -249,7 +249,7 @@ inline constexpr decltype(auto) printer<Filter>::s(this auto &&self,
 }
 
 template <typename Filter>
-inline constexpr void printer<Filter>::predict(const auto &...arguments) {
+constexpr void printer<Filter>::predict(const auto &...arguments) {
   Filter::predict(arguments...);
 
   const Filter &base{*this};
@@ -259,7 +259,7 @@ inline constexpr void printer<Filter>::predict(const auto &...arguments) {
 template <typename Filter>
 template <auto Position>
 [[nodiscard("The returned prediction argument is unexpectedly "
-            "discarded.")]] inline constexpr auto
+            "discarded.")]] constexpr auto
 printer<Filter>::predict() const {
   const Filter &base{*this};
   std::println(R"({{"event": "predict_{}", "filter":{}}})", Position, base);
@@ -268,7 +268,7 @@ printer<Filter>::predict() const {
 }
 
 template <typename Filter>
-inline constexpr void printer<Filter>::update(const auto &...arguments) {
+constexpr void printer<Filter>::update(const auto &...arguments) {
   Filter::update(arguments...);
 
   const Filter &base{*this};
@@ -280,8 +280,8 @@ inline constexpr void printer<Filter>::update(const auto &...arguments) {
 struct printer {};
 
 template <typename Filter>
-inline constexpr auto operator|(Filter &&filter,
-                                [[maybe_unused]] const printer &decorator) {
+constexpr auto operator|(Filter &&filter,
+                         [[maybe_unused]] const printer &decorator) {
   return kalman_internal::printer<Filter>(std::forward<Filter>(filter));
 }
 } // namespace fcarouge

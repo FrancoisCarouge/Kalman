@@ -63,7 +63,7 @@ namespace fcarouge {
 // Overloads for C-array?
 // Need one copy, avoid any extra?
 template <std::ranges::range Range>
-inline constexpr std::generator<typename Range::value_type>
+constexpr std::generator<typename Range::value_type>
 make_generator(Range elements) {
   return [](auto elements_copy)
              -> std::generator<typename decltype(elements)::value_type> {
@@ -75,7 +75,7 @@ make_generator(Range elements) {
 
 // Need one copy, avoid any extra?
 template <typename Type>
-inline constexpr auto make_generator(Type element) -> std::generator<Type> {
+constexpr auto make_generator(Type element) -> std::generator<Type> {
   return [](Type element_copy) -> std::generator<Type> {
     co_yield element_copy;
   }(element);
@@ -115,54 +115,52 @@ template <typename Type = double, auto Row = 1, auto Column = 1,
 struct matrix {
   //! @todo Report the ICE for generator construction in member declaration. Use
   //! constructor's initializer list for now.
-  inline constexpr matrix()
+  constexpr matrix()
       : genie{[]() -> std::generator<Type> {
           for (auto k{Row * Column}; k > 0; --k) { // repeat(Type{}) | take(R*C)
             co_yield {};
           }
         }()} {}
 
-  inline constexpr matrix(const matrix<Type, Row, Column, false> &other)
+  constexpr matrix(const matrix<Type, Row, Column, false> &other)
       : genie{std::move(other.genie)} {}
 
-  inline constexpr matrix(const matrix<Type, Row, Column, true> &other)
+  constexpr matrix(const matrix<Type, Row, Column, true> &other)
       : genie{other.clone()} {}
 
-  inline constexpr matrix &
-  operator=(const matrix<Type, Row, Column, false> &other) {
+  constexpr matrix &operator=(const matrix<Type, Row, Column, false> &other) {
     genie = std::move(other.genie);
     return *this;
   }
 
-  inline constexpr matrix &
-  operator=(const matrix<Type, Row, Column, true> &other) {
+  constexpr matrix &operator=(const matrix<Type, Row, Column, true> &other) {
     genie = other.clone();
     return *this;
   }
 
-  inline constexpr matrix(matrix<Type, Row, Column, false> &&other)
+  constexpr matrix(matrix<Type, Row, Column, false> &&other)
       : genie{std::move(other.genie)} {}
 
-  inline constexpr matrix(matrix<Type, Row, Column, true> &&other)
+  constexpr matrix(matrix<Type, Row, Column, true> &&other)
       : genie{other.clone()} {}
 
-  inline constexpr matrix &operator=(matrix<Type, Row, Column, false> &&other) {
+  constexpr matrix &operator=(matrix<Type, Row, Column, false> &&other) {
     genie = std::move(other.genie);
     return *this;
   }
 
-  inline constexpr matrix &operator=(matrix<Type, Row, Column, true> &&other) {
+  constexpr matrix &operator=(matrix<Type, Row, Column, true> &&other) {
     genie = other.clone();
     return *this;
   }
 
-  inline constexpr explicit matrix(const std::same_as<Type> auto &...elements)
+  constexpr explicit matrix(const std::same_as<Type> auto &...elements)
     requires(sizeof...(elements) == Row * Column)
       : genie{[](auto... elements_copy) -> std::generator<Type> {
           (co_yield elements_copy, ...);
         }(elements...)} {}
 
-  inline constexpr explicit matrix(Type (&elements)[Row * Column])
+  constexpr explicit matrix(Type (&elements)[Row * Column])
     requires(Row == 1 || Column == 1)
       : genie{make_generator(std::to_array(elements))} {}
 
@@ -178,12 +176,11 @@ struct matrix {
           }
         }(std::to_array({std::to_array(rows)...}))} {}
 
-  inline constexpr matrix(std::generator<Type> other)
-      : genie{std::move(other)} {}
+  constexpr matrix(std::generator<Type> other) : genie{std::move(other)} {}
 
-  inline constexpr matrix(std::invocable auto other) : genie{other()} {}
+  constexpr matrix(std::invocable auto other) : genie{other()} {}
 
-  [[nodiscard]] inline constexpr std::generator<Type> clone() const {
+  [[nodiscard]] constexpr std::generator<Type> clone() const {
     std::array<Type, Row * Column> elements; // std::ranges::to
     std::ranges::copy(genie, elements.begin());
 
@@ -192,12 +189,12 @@ struct matrix {
     return make_generator(elements);
   }
 
-  [[nodiscard]] inline constexpr explicit(false)
+  [[nodiscard]] constexpr explicit(false)
   operator matrix<Type, Row, Column, !Copyable>() const {
     return clone();
   }
 
-  [[nodiscard]] inline constexpr explicit(false) operator Type() const
+  [[nodiscard]] constexpr explicit(false) operator Type() const
     requires(Row == 1 && Column == 1)
   {
     Type element{*genie.begin()};
@@ -207,11 +204,11 @@ struct matrix {
     return element;
   }
 
-  [[nodiscard]] inline explicit(false) operator std::generator<Type>() const {
+  [[nodiscard]] explicit(false) operator std::generator<Type>() const {
     co_yield std::ranges::elements_of(genie);
   }
 
-  [[nodiscard]] inline constexpr Type operator[](auto index) const
+  [[nodiscard]] constexpr Type operator[](auto index) const
     requires(Row != 1 && Column == 1)
   {
     std::array<Type, Row * Column> elements; // std::ranges::to
@@ -222,7 +219,7 @@ struct matrix {
     return elements[index];
   }
 
-  [[nodiscard]] inline constexpr Type operator[](auto index) const
+  [[nodiscard]] constexpr Type operator[](auto index) const
     requires(Row == 1)
   {
     std::array<Type, Row * Column> elements; // std::ranges::to
@@ -233,7 +230,7 @@ struct matrix {
     return elements[index];
   }
 
-  [[nodiscard]] inline constexpr Type operator()(auto index) const
+  [[nodiscard]] constexpr Type operator()(auto index) const
     requires(Row != 1 && Column == 1)
   {
     std::array<Type, Row * Column> elements; // std::ranges::to
@@ -244,7 +241,7 @@ struct matrix {
     return elements[index];
   }
 
-  [[nodiscard]] inline constexpr Type operator()(auto index) const
+  [[nodiscard]] constexpr Type operator()(auto index) const
     requires(Row == 1)
   {
     std::array<Type, Row * Column> elements; // std::ranges::to
@@ -257,7 +254,7 @@ struct matrix {
 
   //! @todo Don't evaluate unless needed. How to do? Some kind of recursive
   //! genie recomposer?
-  [[nodiscard]] inline constexpr Type operator()(auto row, auto column) const {
+  [[nodiscard]] constexpr Type operator()(auto row, auto column) const {
     std::array<Type, Row * Column> elements; // std::ranges::to
 
     std::ranges::copy(genie, elements.begin());
@@ -359,7 +356,7 @@ template <std::invocable L, typename T> bool operator==(L lhs, T rhs) {
 
 template <typename Type, auto Row, auto Column, bool CopyableOrNot1,
           bool CopyableOrNot2>
-[[nodiscard]] inline constexpr bool
+[[nodiscard]] constexpr bool
 operator==(matrix<Type, Row, Column, CopyableOrNot1> lhs,
            matrix<Type, Row, Column, CopyableOrNot2> rhs) {
   std::array<Type, Row * Column> lhs_elements; // std::ranges::to
@@ -374,8 +371,8 @@ operator==(matrix<Type, Row, Column, CopyableOrNot1> lhs,
 }
 
 template <typename Type, auto Row, auto Size>
-[[nodiscard]] inline matrix<Type, Row, 1> operator*(matrix<Type, Row, Size> lhs,
-                                                    matrix<Type, Size, 1> rhs) {
+[[nodiscard]] matrix<Type, Row, 1> operator*(matrix<Type, Row, Size> lhs,
+                                             matrix<Type, Size, 1> rhs) {
   // fix me?
   auto next1{lhs.begin()};
   for (decltype(Row) i{0}; i < Row; ++i) {       // chunk_by_rows
@@ -390,8 +387,8 @@ template <typename Type, auto Row, auto Size>
 }
 
 template <typename Type, auto Row, auto Column>
-[[nodiscard]] inline matrix<Type, Row, Column>
-operator*(matrix<Type, Row, Column> lhs, arithmetic auto rhs) {
+[[nodiscard]] matrix<Type, Row, Column> operator*(matrix<Type, Row, Column> lhs,
+                                                  arithmetic auto rhs) {
   auto next{lhs.begin()};
   for (auto k{Row * Column}; k > 0; --k, ++next) {
     co_yield *next *rhs;
@@ -399,13 +396,12 @@ operator*(matrix<Type, Row, Column> lhs, arithmetic auto rhs) {
 }
 
 template <typename Type>
-[[nodiscard]] inline matrix<Type, 1, 1> operator+(Type lhs,
-                                                  matrix<Type, 1, 1> rhs) {
+[[nodiscard]] matrix<Type, 1, 1> operator+(Type lhs, matrix<Type, 1, 1> rhs) {
   co_yield lhs + *rhs.begin();
 }
 
 template <typename Type, auto Row, auto Column>
-[[nodiscard]] inline matrix<Type, Row, Column>
+[[nodiscard]] matrix<Type, Row, Column>
 operator+(matrix<Type, Row, Column> lhs, matrix<Type, Row, Column> rhs) {
   auto next1{lhs.begin()};
   auto next2{rhs.begin()};

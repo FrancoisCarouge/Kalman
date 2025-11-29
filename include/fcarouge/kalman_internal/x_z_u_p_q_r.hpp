@@ -68,7 +68,7 @@ template <typename Type> struct x_z_u_p_q_r {
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
 
-  inline constexpr void update(const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
     s = p + r;
     k = p / s;
@@ -77,7 +77,7 @@ template <typename Type> struct x_z_u_p_q_r {
     p = (i - k) * p * t(i - k) + k * r * t(k);
   }
 
-  inline constexpr void predict(const auto &input_u, const auto &...inputs_u) {
+  constexpr void predict(const auto &input_u, const auto &...inputs_u) {
     u = input{input_u, inputs_u...};
     x = u;
     p = p + q;

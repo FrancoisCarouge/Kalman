@@ -66,28 +66,28 @@ namespace fcarouge::naive {
 //! @tparam Column The number of columns of the matrix.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 struct matrix {
-  inline constexpr matrix() = default;
+  constexpr matrix() = default;
 
-  inline constexpr matrix(const matrix &other) = default;
+  constexpr matrix(const matrix &other) = default;
 
-  inline constexpr matrix &operator=(const matrix &other) = default;
+  constexpr matrix &operator=(const matrix &other) = default;
 
-  inline constexpr matrix(matrix &&other) = default;
+  constexpr matrix(matrix &&other) = default;
 
-  inline constexpr matrix &operator=(matrix &&other) = default;
+  constexpr matrix &operator=(matrix &&other) = default;
 
-  inline constexpr matrix(const std::same_as<Type> auto &...elements)
+  constexpr matrix(const std::same_as<Type> auto &...elements)
     requires(Row == 1 && sizeof...(elements) == Column)
       : data{{elements...}} {}
 
-  inline constexpr matrix(const std::same_as<Type> auto &...elements)
+  constexpr matrix(const std::same_as<Type> auto &...elements)
     requires(Row != 1 && Column == 1 && sizeof...(elements) == Row)
   {
     std::size_t i{0};
     ([&] { data[i++][0] = elements; }(), ...);
   }
 
-  inline constexpr explicit matrix(const Type (&elements)[Column])
+  constexpr explicit matrix(const Type (&elements)[Column])
     requires(Row == 1)
   {
     for (std::size_t j{0}; j < Column; ++j) {
@@ -95,7 +95,7 @@ struct matrix {
     }
   }
 
-  inline constexpr explicit matrix(const Type (&elements)[Row])
+  constexpr explicit matrix(const Type (&elements)[Row])
     requires(Row != 1 && Column == 1)
   {
     for (std::size_t i{0}; i < Row; ++i) {
@@ -119,7 +119,7 @@ struct matrix {
         ...);
   }
 
-  inline constexpr explicit matrix(
+  constexpr explicit matrix(
       std::initializer_list<std::initializer_list<Type>> rows) {
     for (std::size_t i{0}; const auto &row : rows) {
       for (std::size_t j{0}; const auto &element : row) {
@@ -130,47 +130,43 @@ struct matrix {
     }
   }
 
-  [[nodiscard]] inline constexpr explicit(false) operator Type() const
+  [[nodiscard]] constexpr explicit(false) operator Type() const
     requires(Row == 1 && Column == 1)
   {
     return data[0][0];
   }
 
-  [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
-                                                   std::size_t index)
+  [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
     requires(Row != 1 && Column == 1)
   {
     return std::forward<decltype(self)>(self).data[index][0];
   }
 
-  [[nodiscard]] inline constexpr auto &&operator[](this auto &&self,
-                                                   std::size_t index)
+  [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
     requires(Row == 1)
   {
     return std::forward<decltype(self)>(self).data[0][index];
   }
 
-  [[nodiscard]] inline constexpr Type &&
-  operator[](this auto &&self, std::size_t row, std::size_t column) {
+  [[nodiscard]] constexpr Type &&operator[](this auto &&self, std::size_t row,
+                                            std::size_t column) {
     return std::forward<decltype(self)>(self).data[row][column];
   }
 
-  [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
-                                                   std::size_t index)
+  [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
     requires(Row != 1 && Column == 1)
   {
     return std::forward<decltype(self)>(self).data[index][0];
   }
 
-  [[nodiscard]] inline constexpr auto &&operator()(this auto &&self,
-                                                   std::size_t index)
+  [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
     requires(Row == 1)
   {
     return std::forward<decltype(self)>(self).data[0][index];
   }
 
-  [[nodiscard]] inline constexpr auto &&
-  operator()(this auto &&self, std::size_t row, std::size_t column) {
+  [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t row,
+                                            std::size_t column) {
     return std::forward<decltype(self)>(self).data[row][column];
   }
 
@@ -211,9 +207,8 @@ matrix(const Types (&...rows)[Columns])
 //! @}
 
 template <typename Type, std::size_t Row, std::size_t Column>
-[[nodiscard]] inline constexpr bool
-operator==(const matrix<Type, Row, Column> &lhs,
-           const matrix<Type, Row, Column> &rhs) {
+[[nodiscard]] constexpr bool operator==(const matrix<Type, Row, Column> &lhs,
+                                        const matrix<Type, Row, Column> &rhs) {
   for (std::size_t i{0}; i < Row; ++i) {
     for (std::size_t j{0}; j < Column; ++j) {
       if (lhs.data[i][j] != rhs.data[i][j]) {
@@ -225,9 +220,8 @@ operator==(const matrix<Type, Row, Column> &lhs,
 }
 
 template <typename Type, std::size_t Row, std::size_t Column, std::size_t Size>
-[[nodiscard]] inline constexpr auto
-operator*(const matrix<Type, Row, Size> &lhs,
-          const matrix<Type, Size, Column> &rhs) {
+[[nodiscard]] constexpr auto operator*(const matrix<Type, Row, Size> &lhs,
+                                       const matrix<Type, Size, Column> &rhs) {
   matrix<Type, Row, Column> result;
 
   for (std::size_t i{0}; i < Row; ++i) {
@@ -242,14 +236,14 @@ operator*(const matrix<Type, Row, Size> &lhs,
 }
 
 template <typename Type>
-[[nodiscard]] inline constexpr auto
-operator*(kalman_internal::arithmetic auto lhs, const matrix<Type, 1, 1> rhs) {
+[[nodiscard]] constexpr auto operator*(kalman_internal::arithmetic auto lhs,
+                                       const matrix<Type, 1, 1> rhs) {
   return lhs * rhs.data[0][0];
 }
 
 template <typename Type, std::size_t Column>
-[[nodiscard]] inline constexpr auto
-operator*(kalman_internal::arithmetic auto lhs, matrix<Type, 1, Column> rhs) {
+[[nodiscard]] constexpr auto operator*(kalman_internal::arithmetic auto lhs,
+                                       matrix<Type, 1, Column> rhs) {
   matrix<Type, 1, Column> result;
 
   for (std::size_t j{0}; j < Column; ++j) {
@@ -260,8 +254,8 @@ operator*(kalman_internal::arithmetic auto lhs, matrix<Type, 1, Column> rhs) {
 }
 
 template <typename Type, std::size_t Row, std::size_t Column>
-inline constexpr auto &operator*=(matrix<Type, Row, Column> &lhs,
-                                  kalman_internal::arithmetic auto rhs) {
+constexpr auto &operator*=(matrix<Type, Row, Column> &lhs,
+                           kalman_internal::arithmetic auto rhs) {
   for (std::size_t i{0}; i < Row; ++i) {
     for (std::size_t j{0}; j < Column; ++j) {
       lhs.data[i][j] *= rhs;
@@ -272,15 +266,14 @@ inline constexpr auto &operator*=(matrix<Type, Row, Column> &lhs,
 }
 
 template <typename Type, std::size_t Row, std::size_t Column>
-[[nodiscard]] inline constexpr auto
-operator*(matrix<Type, Row, Column> lhs, kalman_internal::arithmetic auto rhs) {
+[[nodiscard]] constexpr auto operator*(matrix<Type, Row, Column> lhs,
+                                       kalman_internal::arithmetic auto rhs) {
   return lhs *= rhs;
 }
 
 template <typename Type, std::size_t Row, std::size_t Column>
-[[nodiscard]] inline constexpr auto
-operator+(const matrix<Type, Row, Column> &lhs,
-          const matrix<Type, Row, Column> &rhs) {
+[[nodiscard]] constexpr auto operator+(const matrix<Type, Row, Column> &lhs,
+                                       const matrix<Type, Row, Column> &rhs) {
   matrix<Type, Row, Column> result{lhs};
 
   for (std::size_t i{0}; i < Row; ++i) {
@@ -293,21 +286,20 @@ operator+(const matrix<Type, Row, Column> &lhs,
 }
 
 template <typename Type>
-[[nodiscard]] inline constexpr auto
-operator+(kalman_internal::arithmetic auto lhs, matrix<Type, 1, 1> rhs) {
+[[nodiscard]] constexpr auto operator+(kalman_internal::arithmetic auto lhs,
+                                       matrix<Type, 1, 1> rhs) {
   return lhs + rhs.data[0][0];
 }
 
 template <typename Type>
-[[nodiscard]] inline constexpr auto
-operator+(matrix<Type, 1, 1> lhs, kalman_internal::arithmetic auto rhs) {
+[[nodiscard]] constexpr auto operator+(matrix<Type, 1, 1> lhs,
+                                       kalman_internal::arithmetic auto rhs) {
   return lhs.data[0][0] + rhs;
 }
 
 template <typename Type, std::size_t Row, std::size_t Column>
-[[nodiscard]] inline constexpr auto
-operator-(const matrix<Type, Row, Column> &lhs,
-          const matrix<Type, Row, Column> &rhs) {
+[[nodiscard]] constexpr auto operator-(const matrix<Type, Row, Column> &lhs,
+                                       const matrix<Type, Row, Column> &rhs) {
   matrix<Type, Row, Column> result{lhs};
 
   for (std::size_t i{0}; i < Row; ++i) {
@@ -320,15 +312,14 @@ operator-(const matrix<Type, Row, Column> &lhs,
 }
 
 template <typename Type>
-[[nodiscard]] inline constexpr auto
-operator-(kalman_internal::arithmetic auto lhs, const matrix<Type, 1, 1> &rhs) {
+[[nodiscard]] constexpr auto operator-(kalman_internal::arithmetic auto lhs,
+                                       const matrix<Type, 1, 1> &rhs) {
   return lhs - rhs.data[0][0];
 }
 
 template <typename Type, std::size_t Row>
-[[nodiscard]] inline constexpr auto
-operator/(const matrix<Type, Row, 1> &lhs,
-          kalman_internal::arithmetic auto rhs) {
+[[nodiscard]] constexpr auto operator/(const matrix<Type, Row, 1> &lhs,
+                                       kalman_internal::arithmetic auto rhs) {
   matrix<Type, Row, 1> result{lhs};
 
   for (std::size_t i{0}; i < Row; ++i) {
@@ -421,14 +412,14 @@ namespace fcarouge::kalman_internal {
 //! @note Implementation not needed.
 template <typename Type, std::size_t Row, std::size_t Column>
 struct evaluates<naive::matrix<Type, Row, Column>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()() const -> naive::matrix<Type, Row, Column>;
 };
 
 //! @brief Specialization of the transposes.
 template <typename Type, std::size_t Row, std::size_t Column>
 struct transposes<naive::matrix<Type, Row, Column>> {
-  [[nodiscard]] inline constexpr auto
+  [[nodiscard]] constexpr auto
   operator()(const naive::matrix<Type, Row, Column> &value) const {
     naive::matrix<Type, Column, Row> result;
 
