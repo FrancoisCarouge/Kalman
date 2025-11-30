@@ -168,7 +168,7 @@ $(function(){initNavTree('x__z__p__r__f_8hpp_source.xhtml',''); initResizable(tr
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  innovation_uncertainty s{<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a23cbb93293154cb6105cfd41f2b12981">one&lt;innovation_uncertainty&gt;</a>};</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  output z{<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">zero&lt;output&gt;</a>};</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> update(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output_z, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...outputs_z) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keyword">constexpr</span> <span class="keywordtype">void</span> update(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output_z, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...outputs_z) {</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    z = output{output_z, outputs_z...};</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    s = p + r;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    k = p / s;</div>
@@ -177,7 +177,7 @@ $(function(){initNavTree('x__z__p__r__f_8hpp_source.xhtml',''); initResizable(tr
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    p = (i - k) * p * <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#acb17489172dd8b3802d97fdd17f9d91b">t</a>(i - k) + k * r * <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#acb17489172dd8b3802d97fdd17f9d91b">t</a>(k);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  }</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> predict() {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keyword">constexpr</span> <span class="keywordtype">void</span> predict() {</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    x = f * x;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    p = f * p * <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#acb17489172dd8b3802d97fdd17f9d91b">t</a>(f);</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  }</div>

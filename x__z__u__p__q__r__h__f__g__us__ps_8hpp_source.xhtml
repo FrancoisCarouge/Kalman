@@ -190,8 +190,8 @@ $(function(){initNavTree('x__z__u__p__q__r__h__f__g__us__ps_8hpp_source.xhtml','
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  update_types update_arguments{};</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  prediction_types prediction_arguments{};</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> update(<span class="keyword">const</span> UpdateTypes &amp;...update_pack,</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                               <span class="keyword">const</span> <span class="keyword">auto</span> &amp;output_z, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...outputs_z) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  <span class="keyword">constexpr</span> <span class="keywordtype">void</span> update(<span class="keyword">const</span> UpdateTypes &amp;...update_pack, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;output_z,</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...outputs_z) {</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    update_arguments = {update_pack...};</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    z = output{output_z, outputs_z...};</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    s = h * p * <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#acb17489172dd8b3802d97fdd17f9d91b">t</a>(h) + r;</div>
@@ -201,8 +201,8 @@ $(function(){initNavTree('x__z__u__p__q__r__h__f__g__us__ps_8hpp_source.xhtml','
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    p = (i - k * h) * p * <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#acb17489172dd8b3802d97fdd17f9d91b">t</a>(i - k * h) + k * r * <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#acb17489172dd8b3802d97fdd17f9d91b">t</a>(k);</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  }</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keywordtype">void</span> predict(<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack,</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;input_u, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...inputs_u) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keyword">constexpr</span> <span class="keywordtype">void</span> predict(<span class="keyword">const</span> PredictionTypes &amp;...prediction_pack,</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                         <span class="keyword">const</span> <span class="keyword">auto</span> &amp;input_u, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...inputs_u) {</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    prediction_arguments = {prediction_pack...};</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    u = input{input_u, inputs_u...};</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    x = f * x + g * u;</div>
