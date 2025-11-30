@@ -52,6 +52,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "kalman_internal/print.hpp"
 #include "kalman_internal/utility.hpp"
 
+import std;
+
 namespace fcarouge {
 //! @name Types
 //! @{

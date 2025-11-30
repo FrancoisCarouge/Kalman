@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman_internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
-#include <cstddef>
+import std;
 
 namespace fcarouge {
 namespace kalman_internal {
