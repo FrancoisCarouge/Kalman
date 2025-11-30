@@ -274,7 +274,6 @@ constexpr void printer<Filter>::update(const auto &...arguments) {
   const Filter &base{*this};
   std::println(R"({{"event": "update", "filter":{}}})", base);
 }
-
 } // namespace kalman_internal
 
 struct printer {};
