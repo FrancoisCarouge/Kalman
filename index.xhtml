@@ -402,9 +402,11 @@ Definitions</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">MSCKF   </td><td class="markdownTableBodyNone">The Multi-State Constraint Kalman Filter is an EKF-based approach that leverages constraints between multiple and varied measurements to improve pose estimation accuracy and robustness.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">UKF   </td><td class="markdownTableBodyNone">The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples sigma points about an estimate working point of the current mean using an Unscented Transformation technique.   </td></tr>
+<td class="markdownTableBodyNone">SR-UKF   </td><td class="markdownTableBodyNone">The Square-Root Unscented Kalman Filter handles non-linearity with covariance factorization of the unscented transformations (sigma points) to maintain numerical stability.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">UKF   </td><td class="markdownTableBodyNone">The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples unscented transformations (sigma points) about an estimate working point of the current mean using an Unscented Transformation technique.   </td></tr>
 </table>
-<p>Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.</p>
+<p>Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, QSR-UKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.</p>
 <h2><a class="anchor" id="related-resources"></a>
 Related Resources</h2>
 <ul>
