@@ -58,4 +58,4 @@ jobs:
     - name: 'Install'
       run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
     - name: 'Package'
-      run: cmake --build 'build' --target 'package' --verbose --parallel 4
+      run: cmake --build 'build' --target 'package' --config '${{ matrix.config }}' --verbose --parallel 4
