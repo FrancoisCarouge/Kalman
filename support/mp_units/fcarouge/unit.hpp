@@ -74,9 +74,9 @@ namespace kalman_internal {
 template <auto Reference1, auto Reference2>
 struct multiplies<mp_units::quantity_point<Reference1>,
                   mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] constexpr auto
+  [[nodiscard]] static constexpr auto
   operator()(const mp_units::quantity_point<Reference1> &lhs,
-             const mp_units::quantity_point<Reference2> &rhs) const
+             const mp_units::quantity_point<Reference2> &rhs)
       -> mp_units::quantity<Reference1 * Reference2>;
 };
 
