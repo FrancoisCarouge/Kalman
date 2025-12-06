@@ -85,8 +85,7 @@ using output_t = vector<position, position>;
       // Kalman Gain, giving a high weight to the measurement.
       estimate_uncertainty{[]() {
         using estimate_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
-        estimate_uncertainty_t value{
-            kalman_internal::one<estimate_uncertainty_t>};
+        estimate_uncertainty_t value;
         value.at<0, 0>() = 500. * m2;
         value.at<1, 1>() = 500. * m2 / s2;
         value.at<2, 2>() = 500. * m2 / s4;
@@ -99,25 +98,24 @@ using output_t = vector<position, position>;
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
       process_uncertainty{[]() {
         using process_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
-        process_uncertainty_t value{
-            kalman_internal::one<process_uncertainty_t>};
+        process_uncertainty_t value;
         value.at<0, 0>() = 0.2 * 0.2 * 0.25 * m2;
         value.at<0, 1>() = 0.2 * 0.2 * 0.5 * m2 / s;
         value.at<0, 2>() = 0.2 * 0.2 * 0.5 * m2 / s2;
         value.at<1, 0>() = 0.2 * 0.2 * 0.5 * m2 / s;
         value.at<1, 1>() = 0.2 * 0.2 * m2 / s2;
-        value.at<1, 2>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<1, 2>() = 0.2 * 0.2 * m2 / s3;
         value.at<2, 0>() = 0.2 * 0.2 * 0.5 * m2 / s2;
-        value.at<2, 1>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<2, 1>() = 0.2 * 0.2 * m2 / s3;
         value.at<2, 2>() = 0.2 * 0.2 * m2 / s4;
         value.at<3, 3>() = 0.2 * 0.2 * 0.25 * m2;
         value.at<3, 4>() = 0.2 * 0.2 * 0.5 * m2 / s;
         value.at<3, 5>() = 0.2 * 0.2 * 0.5 * m2 / s2;
         value.at<4, 3>() = 0.2 * 0.2 * 0.5 * m2 / s;
         value.at<4, 4>() = 0.2 * 0.2 * m2 / s2;
-        value.at<4, 5>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<4, 5>() = 0.2 * 0.2 * m2 / s3;
         value.at<5, 3>() = 0.2 * 0.2 * 0.5 * m2 / s2;
-        value.at<5, 4>() = 0.2 * 0.2 * 1. * m2 / s3;
+        value.at<5, 4>() = 0.2 * 0.2 * m2 / s3;
         value.at<5, 5>() = 0.2 * 0.2 * m2 / s4;
         return value;
       }()},
@@ -138,7 +136,7 @@ using output_t = vector<position, position>;
       output_model{[]() {
         using output_model_t = kalman_internal::evaluate<
             kalman_internal::quotient<output_t, state_t>>;
-        output_model_t value{kalman_internal::zero<output_model_t>};
+        output_model_t value;
         value.at<0, 0>() = 1.;
         value.at<1, 3>() = 1.;
         return value;
@@ -147,13 +145,19 @@ using output_t = vector<position, position>;
       state_transition{[]() {
         using state_transition_t = kalman_internal::evaluate<
             kalman_internal::quotient<state_t, state_t>>;
-        state_transition_t value{kalman_internal::one<state_transition_t>};
+        state_transition_t value;
+        value.at<0, 0>() = 1.;
         value.at<0, 1>() = 1. * s;
         value.at<0, 2>() = 0.5 * s2;
+        value.at<1, 1>() = 1.;
         value.at<1, 2>() = 1. * s;
+        value.at<2, 2>() = 1.;
+        value.at<3, 3>() = 1.;
         value.at<3, 4>() = 1. * s;
         value.at<3, 5>() = 0.5 * s2;
+        value.at<4, 4>() = 1.;
         value.at<4, 5>() = 1. * s;
+        value.at<5, 5>() = 1.;
         return value;
       }()}};
 
