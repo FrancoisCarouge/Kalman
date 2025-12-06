@@ -279,8 +279,8 @@ constexpr void printer<Filter>::update(const auto &...arguments) {
 struct printer {};
 
 template <typename Filter>
-constexpr auto operator|(Filter &&filter,
-                         [[maybe_unused]] const printer &decorator) {
+[[nodiscard]] constexpr auto
+operator|(Filter &&filter, [[maybe_unused]] const printer &decorator) {
   return kalman_internal::printer<Filter>(std::forward<Filter>(filter));
 }
 } // namespace fcarouge
