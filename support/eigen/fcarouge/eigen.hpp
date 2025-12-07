@@ -51,6 +51,23 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <sstream>
 
+// WIP
+// //////////////////////////////////////////////////////////////////////////
+// 1. Link your application to NVBLAS: You must link your application against
+// the nvblas library. Ensure it appears before your standard CPU BLAS library
+// in the linker command line to ensure its symbols are used first.
+
+// 2. Configure NVBLAS: You need an ASCII configuration file to specify which
+// GPUs to use and other settings. The library parses this file when loaded.
+
+// 3. Define EIGEN_USE_BLAS: In your C++ code, define EIGEN_USE_BLAS before
+// including any Eigen headers to enable Eigen's use of external BLAS functions.
+
+// Configure Eigen to use BLAS external functions.
+// TODO: Move to CMake?
+#define EIGEN_USE_BLAS
+#define EIGEN_USE_OPENBLAS_BFLOAT16 false
+
 #include <Eigen/Eigen>
 
 namespace fcarouge::eigen {
