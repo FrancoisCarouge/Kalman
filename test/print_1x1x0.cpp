@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::sample {
 namespace {
 //! @brief Verifies the printer adaptor for single-dimension filters.
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] auto test{[] {
   auto filter{kalman{state{60.}, output<double>, estimate_uncertainty{225.},
                      output_uncertainty{25.}} |
               print};
