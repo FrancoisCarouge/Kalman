@@ -1,4 +1,4 @@
 var print__1x1x0_8cpp =
 [
-    [ "sample", "print__1x1x0_8cpp.xhtml#a65887ae3c0f08418147a8133db9df734", null ]
+    [ "test", "print__1x1x0_8cpp.xhtml#a357edb8a7dc343f2059923dd288ab68e", null ]
 ];
