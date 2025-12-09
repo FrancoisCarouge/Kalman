@@ -89,3 +89,5 @@ test("print_1x1x0")
 test("print_2x3x4" BACKENDS "eigen" "eigexed")
 test("utility_identity_default")
 test("utility_zero_default")
+
+test("wip" BACKENDS "stdlinax")

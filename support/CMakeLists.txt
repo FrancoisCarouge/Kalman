@@ -47,6 +47,8 @@ add_subdirectory("mp_units")
 add_subdirectory("naive")
 add_subdirectory("naixed")
 add_subdirectory("quantity")
+add_subdirectory("std_linalg")
+add_subdirectory("std_linax")
 add_subdirectory("typed")
 
 add_library(kalman_support_options INTERFACE)

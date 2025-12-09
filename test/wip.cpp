@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,11 +34,28 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-FetchContent_Declare(
-  fcarouge-typed-linear-algebra
-  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  GIT_TAG "std-linalg"
-  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
-FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
+#include "fcarouge/kalman.hpp"
+#include "fcarouge/linalg.hpp"
+
+#include <cassert>
+#include <mdspan>
+#include <print>
+#include <vector>
+
+namespace fcarouge::test {
+namespace {
+//! @test WIP
+[[maybe_unused]] auto test{[] {
+  constexpr std::extents<std::size_t, 3, 1> e3x1;
+  std::vector<double> v0{e3x1.extent(0)};
+  std::mdspan s0{v0.data(), e3x1};
+  column_vector<double, 3> cv0{s0};
+
+  kalman filter{state{cv0}, output<double>, input<double>};
+
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test
