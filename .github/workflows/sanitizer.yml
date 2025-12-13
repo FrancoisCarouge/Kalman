@@ -42,7 +42,14 @@ jobs:
       with:
         egress-policy: audit
     - name: 'Checkout'
-      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+    - name: 'Install: Gnuplot'
+      run: sudo apt update && sudo apt install -y gnuplot
+    - name: 'Virtual Display'
+      run: | 
+        xvfb :1 -screen 0 1600x1200x16 &
+      env:
+        DISPLAY: ':1.0'
     - name: 'Configure'
       env:
         CXX: 'g++-14'
@@ -51,4 +58,4 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Test'
-      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 10 --tests-regex 'kalman_(test|sample)' --verbose --parallel 4
+      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 100 --tests-regex 'kalman_(test|sample)' --verbose --parallel 4
