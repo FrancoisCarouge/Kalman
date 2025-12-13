@@ -49,14 +49,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman_internal/utility.hpp"
 
-#include <algorithm>
-#include <array>
-#include <concepts>
-#include <coroutine>
-#include <generator>
-#include <ranges>
-#include <type_traits>
-#include <utility>
+import std;
 
 namespace fcarouge {
 // Semantic? Guarantees? to_generator? std::ranges::to overload? make_generator?

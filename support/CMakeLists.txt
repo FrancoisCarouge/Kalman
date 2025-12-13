@@ -120,3 +120,5 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   target_compile_options(kalman_support_options INTERFACE "/EHsc" "/utf-8"
                                                           "/UNDEBUG" "/W4")
 endif()
+
+target_compile_features(kalman_support_options INTERFACE cxx_std_23)

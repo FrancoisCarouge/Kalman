@@ -39,7 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman_internal/utility.hpp"
 
 #include <cassert>
-#include <type_traits>
+
+import std;
 
 namespace fcarouge::test {
 namespace {

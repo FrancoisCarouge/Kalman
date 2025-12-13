@@ -43,13 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <benchmark/benchmark.h>
 
-#include <algorithm>
-#include <chrono>
-#include <cmath>
-#include <cstddef>
-#include <cstdint>
-#include <cstring>
-#include <random>
+import std;
 
 namespace fcarouge::benchmark {
 namespace {
