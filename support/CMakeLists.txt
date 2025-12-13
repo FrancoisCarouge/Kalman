@@ -57,6 +57,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     INTERFACE "-D_FORTIFY_SOURCE=3"
               "-D_GLIBCXX_ASSERTIONS"
               "-fcf-protection=full"
+              "-fno-builtin-std-forward_like"
               "-fno-check-new"
               "-fno-common"
               "-fPIE"
