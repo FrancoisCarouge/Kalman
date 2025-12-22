@@ -66,6 +66,8 @@ namespace fcarouge::naive {
 //! @tparam Column The number of columns of the matrix.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 struct matrix {
+  using underlying = Type;
+
   constexpr matrix() = default;
 
   constexpr matrix(const matrix &other) = default;
@@ -136,38 +138,66 @@ struct matrix {
     return data[0][0];
   }
 
-  [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
+  [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
+                                                    std::size_t index)
     requires(Row != 1 && Column == 1)
   {
-    return std::forward<decltype(self)>(self).data[index][0];
+    using self_t = std::remove_reference_t<decltype(self)>;
+    using type =
+        std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+    return std::forward_like<type>(self.data[index][0]);
   }
 
-  [[nodiscard]] constexpr auto &&operator[](this auto &&self, std::size_t index)
+  [[nodiscard]] constexpr decltype(auto) operator[](this auto &&self,
+                                                    std::size_t index)
     requires(Row == 1)
   {
-    return std::forward<decltype(self)>(self).data[0][index];
+    using self_t = std::remove_reference_t<decltype(self)>;
+    using type =
+        std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+    return std::forward_like<type>(self.data[0][index]);
   }
 
-  [[nodiscard]] constexpr Type &&operator[](this auto &&self, std::size_t row,
-                                            std::size_t column) {
-    return std::forward<decltype(self)>(self).data[row][column];
+  [[nodiscard]] constexpr decltype(auto)
+  operator[](this auto &&self, std::size_t row, std::size_t column) {
+    using self_t = std::remove_reference_t<decltype(self)>;
+    using type =
+        std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+    return std::forward_like<type>(self.data[row][column]);
   }
 
-  [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
+  [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
+                                                    std::size_t index)
     requires(Row != 1 && Column == 1)
   {
-    return std::forward<decltype(self)>(self).data[index][0];
+    using self_t = std::remove_reference_t<decltype(self)>;
+    using type =
+        std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+    return std::forward_like<type>(self.data[index][0]);
   }
 
-  [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t index)
+  [[nodiscard]] constexpr decltype(auto) operator()(this auto &&self,
+                                                    std::size_t index)
     requires(Row == 1)
   {
-    return std::forward<decltype(self)>(self).data[0][index];
+    using self_t = std::remove_reference_t<decltype(self)>;
+    using type =
+        std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+    return std::forward_like<type>(self.data[0][index]);
   }
 
-  [[nodiscard]] constexpr auto &&operator()(this auto &&self, std::size_t row,
-                                            std::size_t column) {
-    return std::forward<decltype(self)>(self).data[row][column];
+  [[nodiscard]] constexpr decltype(auto)
+  operator()(this auto &&self, std::size_t row, std::size_t column) {
+    using self_t = std::remove_reference_t<decltype(self)>;
+    using type =
+        std::conditional_t<std::is_const_v<self_t>, underlying, underlying &>;
+
+    return std::forward_like<type>(self.data[row][column]);
   }
 
   [[no_unique_address]] Type data[Row][Column]{};
