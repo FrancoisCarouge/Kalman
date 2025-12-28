@@ -122,7 +122,7 @@ filter.update(position_x, position_y, variometer);
 - 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_dog_position.cpp).
 - 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_rocket_altitude.cpp).
 - 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_deep_sort_bounding_box.cpp).
-- [Apollo guidance, navigation, and control](sample/apollo.cpp).
+- 6x4 extended filter [3-dimension position and velocity of the NASA Apollo lunar module abort guidance system](sample/ekf_6x4x0_apollo.cpp) for spacecraft rendezvous approaching the command/service module.
 
 # Installation
 
@@ -202,7 +202,7 @@ The member types are optionally present according to the filter configuration.
 
 | Characteristic | Definition |
 | --- | --- |
-| `f` | Manages the state transition matrix *F*. Gets or sets the value. Configures the callable object of expression `state_transition(const state &, const input &, const PredictionTypes &...)` MISSING RETURN PROTOTYPE to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
+| `f` | Manages the state transition matrix *F*. Gets or sets the value. Configures the callable object of expression `state_transition(const state &, const input &, const PredictionTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
 | `g` | Manages the control transition matrix *G*. Gets or sets the value. Configures the callable object of expression `input_control(const PredictionTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports input control. |
 | `h` | Manages the observation transition matrix *H*. Gets or sets the value. Configures the callable object of expression `output_model(const state &, const UpdateTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports output model. |
 | `k` | Manages the gain matrix *K*. Gets the value last computed during the update. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
