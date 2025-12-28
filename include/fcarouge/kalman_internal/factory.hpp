@@ -182,12 +182,10 @@ template <typename Filter = void> struct filter_deducer {
             typename ProcessUncertainty, typename OutputUncertainty,
             typename OutputModel, typename StateTransition,
             typename Observation, typename... Ps>
-  //! @todo Simplify the require clause?
     requires requires() {
-      requires std::invocable<OutputModel, State //, Us...
-                              >;
+      requires std::invocable<OutputModel, State>;
       requires std::invocable<StateTransition, State, Ps...>;
-      requires std::invocable<Observation, State>; // NO PS IN OTHER?
+      requires std::invocable<Observation, State>;
     }
   [[nodiscard]] static constexpr auto
   operator()(state<State> x, [[maybe_unused]] output_t<Output> z,
