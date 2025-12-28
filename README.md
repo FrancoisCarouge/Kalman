@@ -202,7 +202,7 @@ The member types are optionally present according to the filter configuration.
 
 | Characteristic | Definition |
 | --- | --- |
-| `f` | Manages the state transition matrix *F*. Gets or sets the value. Configures the callable object of expression `state_transition(const state &, const input &, const PredictionTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
+| `f` | Manages the state transition matrix *F*. Gets or sets the value. Configures the callable object of expression `state_transition(const state &, const input &, const PredictionTypes &...)` MISSING RETURN PROTOTYPE to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
 | `g` | Manages the control transition matrix *G*. Gets or sets the value. Configures the callable object of expression `input_control(const PredictionTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports input control. |
 | `h` | Manages the observation transition matrix *H*. Gets or sets the value. Configures the callable object of expression `output_model(const state &, const UpdateTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports output model. |
 | `k` | Manages the gain matrix *K*. Gets the value last computed during the update. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |

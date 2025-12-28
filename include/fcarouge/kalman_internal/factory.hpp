@@ -42,7 +42,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "type.hpp"
 #include "x_z_p_q_r.hpp"
 #include "x_z_p_q_r_h_f.hpp"
-#include "x_z_p_q_r_hh_us_ps.hpp"
+#include "x_z_p_q_r_hh_f_us_ps.hpp"
+#include "x_z_p_q_r_hh_ff_us_ps.hpp"
 #include "x_z_p_qq_rr_f.hpp"
 #include "x_z_p_r.hpp"
 #include "x_z_p_r_f.hpp"
@@ -165,8 +166,9 @@ template <typename Filter = void> struct filter_deducer {
              observation<Observation> hh,
              [[maybe_unused]] update_types_t<Us...> uts,
              [[maybe_unused]] prediction_types_t<Ps...> pts) {
-    using kt = x_z_p_q_r_hh_us_ps<State, Output, repack<update_types_t<Us...>>,
-                                  repack<prediction_types_t<Ps...>>>;
+    using kt =
+        x_z_p_q_r_hh_f_us_ps<State, Output, repack<update_types_t<Us...>>,
+                             repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
               typename kt::process_uncertainty(q.value),
@@ -174,6 +176,36 @@ template <typename Filter = void> struct filter_deducer {
               typename kt::observation_state_function(h.value),
               typename kt::transition_function(ff.value),
               typename kt::observation_function(hh.value)};
+  }
+
+  template <typename State, typename Output, typename EstimateUncertainty,
+            typename ProcessUncertainty, typename OutputUncertainty,
+            typename OutputModel, typename StateTransition,
+            typename Observation, typename... Ps>
+  //! @todo Simplify the require clause?
+    requires requires() {
+      requires std::invocable<OutputModel, State //, Us...
+                              >;
+      requires std::invocable<StateTransition, State, Ps...>;
+      requires std::invocable<Observation, State>; // NO PS IN OTHER?
+    }
+  [[nodiscard]] static constexpr auto
+  operator()(state<State> x, [[maybe_unused]] output_t<Output> z,
+             estimate_uncertainty<EstimateUncertainty> p,
+             process_uncertainty<ProcessUncertainty> q,
+             output_uncertainty<OutputUncertainty> r,
+             output_model<OutputModel> hh, state_transition<StateTransition> ff,
+             observation<Observation> obs,
+             [[maybe_unused]] prediction_types_t<Ps...> pts) {
+    using kt =
+        x_z_p_q_r_hh_ff_us_ps<State, Output, repack<prediction_types_t<Ps...>>>;
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::process_uncertainty(q.value),
+              typename kt::output_uncertainty(r.value),
+              typename kt::observation_state_function(hh.value),
+              typename kt::transition_state_function(ff.value),
+              typename kt::observation_function(obs.value)};
   }
 
   template <typename State, typename Output, typename EstimateUncertainty,

@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_US_PS_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_US_PS_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_US_PS_HPP
+#define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_US_PS_HPP
 
 #include "function.hpp"
 #include "utility.hpp"
@@ -46,13 +46,10 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename>
-struct x_z_p_q_r_hh_us_ps final {};
+template <typename, typename, typename> struct x_z_p_q_r_hh_ff_us_ps final {};
 
-template <typename State, typename Output, typename... UpdateTypes,
-          typename... PredictionTypes>
-struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
-                          std::tuple<PredictionTypes...>> {
+template <typename State, typename Output, typename... PredictionTypes>
+struct x_z_p_q_r_hh_ff_us_ps<State, Output, std::tuple<PredictionTypes...>> {
   using state = State;
   using output = Output;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -62,13 +59,12 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
   using output_model = evaluate<quotient<output, state>>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
-  using observation_state_function =
-      function<output_model(const state &, const UpdateTypes &...)>;
+  using observation_state_function = function<output_model(const state &)>;
+  using transition_state_function =
+      function<state_transition(const state &, const PredictionTypes &...)>;
   using transition_function =
       function<state(const state &, const PredictionTypes &...)>;
-  using observation_function =
-      function<output(const state &, const UpdateTypes &...)>;
-  using update_types = std::tuple<UpdateTypes...>;
+  using observation_function = function<output(const state &)>;
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
 
@@ -82,15 +78,19 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
       [&hh = h]([[maybe_unused]] const auto &...arguments) -> output_model {
         return hh;
       }};
-  transition_function transition{
-      [&ff = f](const state &state_x,
-                [[maybe_unused]] const auto &...arguments) -> state {
-        return ff * state_x;
+  transition_state_function transition_state_f{
+      [&ff = f]([[maybe_unused]] const auto &...arguments) -> state_transition {
+        return ff;
       }};
   observation_function observation{
       [&hh = h](const state &state_x,
                 [[maybe_unused]] const auto &...arguments) -> output {
         return hh * state_x;
+      }};
+  transition_function transition{
+      [&ff = f](const state &state_x,
+                [[maybe_unused]] const auto &...arguments) -> state {
+        return ff * state_x;
       }};
 
   output_model h{one<output_model>};
@@ -99,27 +99,25 @@ struct x_z_p_q_r_hh_us_ps<State, Output, std::tuple<UpdateTypes...>,
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
-  update_types update_arguments{};
   prediction_types prediction_arguments{};
 
-  constexpr void update(const UpdateTypes &...update_pack, const auto &output_z,
-                        const auto &...outputs_z) {
-    update_arguments = {update_pack...};
+  constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
-    h = observation_state_h(x, update_pack...);
+    h = observation_state_h(x);
     s = innovation_uncertainty{h * p * t(h) + r};
     k = p * t(h) / s;
-    y = z - observation(x, update_pack...);
+    y = z - observation(x);
     x = state{x + k * y};
     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
   }
 
   constexpr void predict(const PredictionTypes &...prediction_pack) {
     prediction_arguments = {prediction_pack...};
+    f = transition_state_f(x, prediction_pack...);
     x = transition(x, prediction_pack...);
     p = estimate_uncertainty{f * p * t(f) + q};
   }
 };
 } // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_US_PS_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_US_PS_HPP
