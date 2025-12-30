@@ -47,8 +47,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "x_z_p_r.hpp"
 #include "x_z_p_r_f.hpp"
 #include "x_z_u_p_q_r.hpp"
-#include "x_z_u_p_q_r_f_g_ps.hpp"
 #include "x_z_u_p_q_r_h_f_g_us_ps.hpp"
+#include "x_z_u_p_qq_r_ff_gg_ps.hpp"
 
 #include <concepts>
 #include <tuple>
@@ -123,8 +123,8 @@ template <typename Filter = void> struct filter_deducer {
              output_uncertainty<OutputUncertainty> r,
              state_transition<StateTransition> f, input_control<InputControl> g,
              [[maybe_unused]] prediction_types_t<Ps...> pts) {
-    using kt = x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<>,
-                                  repack<prediction_types_t<Ps...>>>;
+    using kt = x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<>,
+                                     repack<prediction_types_t<Ps...>>>;
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
               typename kt::noise_process_function(q.value),
@@ -154,7 +154,7 @@ template <typename Filter = void> struct filter_deducer {
     requires requires() {
       requires std::invocable<OutputModel, State, Us...>;
       requires std::invocable<Transition, State, Ps...>;
-      requires std::invocable<Observation, State, Ps...>;
+      requires std::invocable<Observation, State, Us...>;
     }
   [[nodiscard]] static constexpr auto
   operator()(state<State> x, [[maybe_unused]] output_t<Output> z,

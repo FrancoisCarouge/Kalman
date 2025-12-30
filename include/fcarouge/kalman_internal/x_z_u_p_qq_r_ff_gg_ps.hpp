@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
+#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
 
 #include "function.hpp"
 #include "utility.hpp"
@@ -47,12 +47,12 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
 template <typename, typename, typename, typename, typename>
-struct x_z_u_p_q_r_f_g_ps final {};
+struct x_z_u_p_qq_r_ff_gg_ps final {};
 
 template <typename State, typename Output, typename Input,
           typename... UpdateTypes, typename... PredictionTypes>
-struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
-                          std::tuple<PredictionTypes...>> {
+struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
+                             std::tuple<PredictionTypes...>> {
   using state = State;
   using output = Output;
   using input = Input;
@@ -78,10 +78,18 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
-  noise_process_function noise_process_q;
+  noise_process_function noise_process_q{
+      [&qq = q]([[maybe_unused]] const auto &...arguments)
+          -> process_uncertainty { return qq; }};
   output_uncertainty r{zero<output_uncertainty>};
-  transition_state_function transition_state_f;
-  transition_control_function transition_control_g;
+  transition_state_function transition_state_f{
+      [&ff = f]([[maybe_unused]] const auto &...arguments) -> state_transition {
+        return ff;
+      }};
+  transition_control_function transition_control_g{
+      [&gg = g]([[maybe_unused]] const auto &...arguments) -> input_control {
+        return gg;
+      }};
 
   process_uncertainty q{zero<process_uncertainty>};
   input u{zero<input>};
@@ -116,4 +124,4 @@ struct x_z_u_p_q_r_f_g_ps<State, Output, Input, std::tuple<UpdateTypes...>,
 };
 } // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_F_G_PS_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
