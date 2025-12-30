@@ -152,8 +152,8 @@ $(function(){initNavTree('factory_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &quot;<a class="code" href="x__z__p__r_8hpp.xhtml">x_z_p_r.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &quot;<a class="code" href="x__z__p__r__f_8hpp.xhtml">x_z_p_r_f.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;<a class="code" href="x__z__u__p__q__r_8hpp.xhtml">x_z_u_p_q_r.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &quot;<a class="code" href="x__z__u__p__q__r__f__g__ps_8hpp.xhtml">x_z_u_p_q_r_f_g_ps.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &quot;<a class="code" href="x__z__u__p__q__r__h__f__g__us__ps_8hpp.xhtml">x_z_u_p_q_r_h_f_g_us_ps.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &quot;<a class="code" href="x__z__u__p__q__r__h__f__g__us__ps_8hpp.xhtml">x_z_u_p_q_r_h_f_g_us_ps.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &quot;<a class="code" href="x__z__u__p__qq__r__ff__gg__ps_8hpp.xhtml">x_z_u_p_qq_r_ff_gg_ps.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#include &lt;concepts&gt;</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
@@ -220,8 +220,8 @@ $(function(){initNavTree('factory_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>             <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">output_uncertainty&lt;OutputUncertainty&gt;</a> r,</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>             <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#ac1a1ab117704e8837bb031d8c597826c">state_transition&lt;StateTransition&gt;</a> f, <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#a6fdb5b3b4fc087c9c7913bc64708ec66">input_control&lt;InputControl&gt;</a> g,</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>             [[maybe_unused]] prediction_types_t&lt;Ps...&gt; pts) {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">using </span>kt = x_z_u_p_q_r_f_g_ps&lt;State, Output, Input, std::tuple&lt;&gt;,</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                                  <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#aa1a9ffab51e79feaa4cc54fbad7bff1e">repack</a>&lt;prediction_types_t&lt;Ps...&gt;&gt;&gt;;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">using </span>kt = x_z_u_p_qq_r_ff_gg_ps&lt;State, Output, Input, std::tuple&lt;&gt;,</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                                     <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#aa1a9ffab51e79feaa4cc54fbad7bff1e">repack</a>&lt;prediction_types_t&lt;Ps...&gt;&gt;&gt;;</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">return</span> kt{<span class="keyword">typename</span> kt::state(x.value),</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>              <span class="keyword">typename</span> kt::estimate_uncertainty(p.value),</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>              <span class="keyword">typename</span> kt::noise_process_function(q.value),</div>
@@ -250,7 +250,7 @@ $(function(){initNavTree('factory_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">requires</span> <span class="keyword">requires</span>() {</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      <span class="keyword">requires</span> std::invocable&lt;OutputModel, State, Us...&gt;;</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      <span class="keyword">requires</span> std::invocable&lt;Transition, State, Ps...&gt;;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      <span class="keyword">requires</span> std::invocable&lt;Observation, State, Ps...&gt;;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      <span class="keyword">requires</span> std::invocable&lt;Observation, State, Us...&gt;;</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  [[nodiscard]] <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  operator()(<a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#aeaee731a1056be491235cf4d2eb38f28">state&lt;State&gt;</a> x, [[maybe_unused]] output_t&lt;Output&gt; z,</div>
@@ -475,8 +475,8 @@ $(function(){initNavTree('factory_8hpp_source.xhtml',''); initResizable(true); }
 <div class="ttc" id="ax__z__p__r_8hpp_xhtml"><div class="ttname"><a href="x__z__p__r_8hpp.xhtml">x_z_p_r.hpp</a></div></div>
 <div class="ttc" id="ax__z__p__r__f_8hpp_xhtml"><div class="ttname"><a href="x__z__p__r__f_8hpp.xhtml">x_z_p_r_f.hpp</a></div></div>
 <div class="ttc" id="ax__z__u__p__q__r_8hpp_xhtml"><div class="ttname"><a href="x__z__u__p__q__r_8hpp.xhtml">x_z_u_p_q_r.hpp</a></div></div>
-<div class="ttc" id="ax__z__u__p__q__r__f__g__ps_8hpp_xhtml"><div class="ttname"><a href="x__z__u__p__q__r__f__g__ps_8hpp.xhtml">x_z_u_p_q_r_f_g_ps.hpp</a></div></div>
 <div class="ttc" id="ax__z__u__p__q__r__h__f__g__us__ps_8hpp_xhtml"><div class="ttname"><a href="x__z__u__p__q__r__h__f__g__us__ps_8hpp.xhtml">x_z_u_p_q_r_h_f_g_us_ps.hpp</a></div></div>
+<div class="ttc" id="ax__z__u__p__qq__r__ff__gg__ps_8hpp_xhtml"><div class="ttname"><a href="x__z__u__p__qq__r__ff__gg__ps_8hpp.xhtml">x_z_u_p_qq_r_ff_gg_ps.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
