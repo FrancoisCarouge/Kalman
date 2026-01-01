@@ -1,6 +1,7 @@
 var examples =
 [
     [ "ekf_4x1x0_soaring.cpp", "ekf_4x1x0_soaring_8cpp-example.xhtml", null ],
+    [ "ekf_6x4x0_apollo.cpp", "ekf_6x4x0_apollo_8cpp-example.xhtml", null ],
     [ "kf_1x1x0_building_height.cpp", "kf_1x1x0_building_height_8cpp-example.xhtml", null ],
     [ "kf_1x1x0_building_height_unit.cpp", "kf_1x1x0_building_height_unit_8cpp-example.xhtml", null ],
     [ "kf_1x1x0_liquid_temperature.cpp", "kf_1x1x0_liquid_temperature_8cpp-example.xhtml", null ],

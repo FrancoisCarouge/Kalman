@@ -61,6 +61,7 @@ var menudata={children:[
 {text:"s",url:"namespacemembers_func.xhtml#index_s"},
 {text:"t",url:"namespacemembers_func.xhtml#index_t"}]},
 {text:"Variables",url:"namespacemembers_vars.xhtml",children:[
+{text:"a",url:"namespacemembers_vars.xhtml#index_a"},
 {text:"f",url:"namespacemembers_vars.xhtml#index_f"},
 {text:"i",url:"namespacemembers_vars.xhtml#index_i"},
 {text:"o",url:"namespacemembers_vars.xhtml#index_o"},
