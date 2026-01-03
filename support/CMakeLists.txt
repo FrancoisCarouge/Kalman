@@ -41,7 +41,7 @@ if(NOT BUILD_TESTING)
 endif()
 
 add_subdirectory("eigen")
-add_subdirectory("eigexed")
+add_subdirectory("eigen_typed")
 add_subdirectory("main")
 add_subdirectory("mp_units")
 add_subdirectory("naive")
