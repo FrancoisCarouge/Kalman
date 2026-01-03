@@ -36,39 +36,35 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-cmake_minimum_required(VERSION "3.15")
+FetchContent_Declare(
+  nanobench
+  GIT_REPOSITORY "https://github.com/martinus/nanobench.git"
+  GIT_SHALLOW TRUE
+  FIND_PACKAGE_ARGS NAMES nanobench)
+FetchContent_MakeAvailable(nanobench)
 
-project(
-  fcarouge-kalman
-  DESCRIPTION "Kalman Filter"
-  HOMEPAGE_URL "https://github.com/FrancoisCarouge/Kalman"
-  LANGUAGES "CXX"
-  VERSION "0.5.3")
+foreach(STATE_SIZE RANGE 1 2)
+  foreach(IO_SIZE RANGE 1 2)
+    configure_file("predict.cpp" "predict_${STATE_SIZE}x1x${IO_SIZE}.cpp")
+    add_executable(kalman_benchmark_predict_${STATE_SIZE}x1x${IO_SIZE}_driver
+                   "predict_${STATE_SIZE}x1x${IO_SIZE}.cpp")
+    target_link_libraries(
+      kalman_benchmark_predict_${STATE_SIZE}x1x${IO_SIZE}_driver
+      PRIVATE kalman kalman_main nanobench::nanobench kalman_linalg_eigen)
 
-if(PROJECT_IS_TOP_LEVEL)
-  set(CMAKE_CXX_EXTENSIONS OFF)
-  set(CMAKE_CXX_STANDARD 23)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
-  set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
-  set(CPACK_PACKAGE_CHECKSUM "SHA512")
-  set(CPACK_PACKAGE_CONTACT "francois.carouge@gmail.com")
-  set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md")
-  set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE.txt")
-  set(CPACK_SOURCE_GENERATOR "TBZ2")
+    configure_file("update.cpp" "update_${STATE_SIZE}x${IO_SIZE}x1.cpp")
+    add_executable(kalman_benchmark_update_${STATE_SIZE}x${IO_SIZE}x1_driver
+                   "update_${STATE_SIZE}x${IO_SIZE}x1.cpp")
+    target_link_libraries(
+      kalman_benchmark_update_${STATE_SIZE}x${IO_SIZE}x1_driver
+      PRIVATE kalman kalman_main nanobench::nanobench kalman_linalg_eigen)
+  endforeach()
+endforeach()
 
-  include(CPack)
-  include(CTest)
-  include(FetchContent)
-  include(GNUInstallDirs)
-
-  include(support/support.cmake)
-
-  add_subdirectory("benchmark")
-  add_subdirectory("pkgconfig")
-  add_subdirectory("sample")
-  add_subdirectory("support")
-  add_subdirectory("test")
-endif()
-
-add_subdirectory("cmake")
-add_subdirectory("include")
+configure_file("plot.cpp" "plot.cpp")
+add_executable(kalman_benchmark_plot_driver "plot.cpp")
+target_link_libraries(kalman_benchmark_plot_driver PRIVATE kalman_main)
+add_test(
+  NAME kalman_benchmark_plot_driver
+  COMMAND kalman_benchmark_plot_driver "${CMAKE_SOURCE_DIR}/benchmark"
+  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/benchmark/${CMAKE_BUILD_TYPE}")
