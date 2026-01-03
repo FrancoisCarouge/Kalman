@@ -50,7 +50,7 @@ jobs:
         CC: '${{ matrix.cc }}'
       run: cmake -S . -B 'build' -G '${{ matrix.generator }}'
     - name: 'Build'
-      run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
+      run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 1
     - name: 'Test'
       run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 10 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Install'
