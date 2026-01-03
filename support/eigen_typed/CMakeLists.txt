@@ -36,10 +36,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-add_library(kalman_linalg_eigexed INTERFACE)
+add_library(kalman_linalg_eigen_typed INTERFACE)
 target_sources(
-  kalman_linalg_eigexed INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
-                                  FILES "fcarouge/linalg.hpp")
+  kalman_linalg_eigen_typed INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
+                                      FILES "fcarouge/linalg.hpp")
 target_link_libraries(
-  kalman_linalg_eigexed INTERFACE kalman kalman_linalg_eigen
-                                  fcarouge-typed-linear-algebra::tlinalg)
+  kalman_linalg_eigen_typed INTERFACE kalman kalman_linalg_eigen
+                                      fcarouge-typed-linear-algebra::tlinalg)
