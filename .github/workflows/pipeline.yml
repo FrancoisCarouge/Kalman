@@ -24,6 +24,8 @@ jobs:
         - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', packages: 'g++-14' }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', config: 'Debug' }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', config: 'Release' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', config: 'Debug' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     permissions:
@@ -44,6 +46,14 @@ jobs:
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 21 all
+    - name: 'CMake'
+      run: |
+        cmake --version
+    - name: Install latest CMake
+      uses: ssrobins/install-cmake@v1
+    - name: 'CMake'
+      run: |
+        cmake --version
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
