@@ -44,6 +44,8 @@ jobs:
         wget https://apt.llvm.org/llvm.sh
         chmod +x llvm.sh
         sudo ./llvm.sh 21 all
+    - name: 'Install: Latest CMake'
+      uses: ssrobins/install-cmake@v1
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
