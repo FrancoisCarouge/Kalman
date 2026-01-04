@@ -17,7 +17,7 @@ Plot the results on Linux:
 
 # Results
 
-Run on Microsoft Windows 10 on native x64 with Visual Studio 2022 compiler 19.33 in release mode.
+Ran on Microsoft Windows 11 on native x64 with Visual Studio 2022 compiler 19.?? in release mode.
 
 ![Eigen Update](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg)
 ![Eigen Predict](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_predict.svg)

@@ -62,6 +62,7 @@ if(PROJECT_IS_TOP_LEVEL)
 
   include(support/support.cmake)
 
+  add_subdirectory("benchmark")
   add_subdirectory("pkgconfig")
   add_subdirectory("sample")
   add_subdirectory("support")
