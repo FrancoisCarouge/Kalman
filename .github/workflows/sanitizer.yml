@@ -44,7 +44,7 @@ jobs:
     - name: 'Checkout'
       uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
     - name: 'Install: Latest CMake'
-      uses: ssrobins/install-cmake@v1
+      uses: ssrobins/install-cmake@c54bb968401dd4ff9e6c9d697df5b843ee3b783b # v1.0.0
     - name: 'Configure'
       env:
         CXX: 'g++-14'
