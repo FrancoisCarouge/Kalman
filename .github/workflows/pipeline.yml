@@ -22,8 +22,8 @@ jobs:
         - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', packages: 'clang-20' }
         - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', packages: 'clang-18' }
         - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', packages: 'g++-14' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', config: 'Debug' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', config: 'Release' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', config: 'Debug' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     permissions:
