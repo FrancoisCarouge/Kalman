@@ -33,15 +33,15 @@ jobs:
     - name: 'Configure'
       env:
         CXX: 'g++-14'
-        CXXFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+        CXXFLAGS: '-O0 -g --coverage -fno-inline'
         CC: 'gcc-14'
-        CCFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+        CCFLAGS: '-O0 -g --coverage -fno-inline'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Coverage: Base'
       run: |
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --initial --directory . --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --initial --directory . --output-file base.info --ignore-errors mismatch
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/build/*' --output-file base.info
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/sample/*' --output-file base.info
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/test/*' --output-file base.info

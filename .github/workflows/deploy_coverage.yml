@@ -29,9 +29,9 @@ jobs:
     - name: 'Configure'
       env:
         CXX: 'g++-14'
-        CXXFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+        CXXFLAGS: '-O0 -g --coverage -fno-inline'
         CC: 'gcc-14'
-        CCFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+        CCFLAGS: '-O0 -g --coverage -fno-inline'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
