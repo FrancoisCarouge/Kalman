@@ -43,6 +43,7 @@ endif()
 add_subdirectory("eigen")
 add_subdirectory("eigen_typed")
 add_subdirectory("main")
+add_subdirectory("matplot")
 add_subdirectory("mp_units")
 add_subdirectory("naive")
 add_subdirectory("naixed")
@@ -92,6 +93,7 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
               "-fcf-protection=full"
               "-fno-check-new"
               "-fno-common"
+              "-fno-exceptions"
               "-fPIE"
               "-fstack-clash-protection"
               "-fstack-protector-strong"
