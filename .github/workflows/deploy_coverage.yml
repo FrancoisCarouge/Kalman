@@ -29,32 +29,32 @@ jobs:
     - name: 'Configure'
       env:
         CXX: 'g++-14'
-        CXXFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+        CXXFLAGS: '-O0 -g --coverage -fno-inline'
         CC: 'gcc-14'
-        CCFLAGS: '-O0 -g --coverage -fno-inline -fno-exceptions'
+        CCFLAGS: '-O0 -g --coverage -fno-inline'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Coverage: Base'
       run: |
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --initial --directory . --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/build/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/sample/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '*/test/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove base.info '/usr/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --capture --initial --directory . --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '*/build/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '*/sample/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '*/test/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '/usr/*' --output-file base.info
     - name: 'Test'
       run: ctest --test-dir 'build' --timeout 10 --tests-regex 'kalman' --verbose --parallel 4
     - name: 'Coverage: Test'
       run: |
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --capture --directory . --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/build/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/sample/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '*/test/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --remove test.info '/usr/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --capture --directory . --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '*/build/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '*/sample/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '*/test/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '/usr/*' --output-file test.info
     - name: 'Coverage: Results'
       id: coverage-results
       run: |
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info
     - name: 'Coverage: Web Results'
       run: genhtml --branch-coverage --show-details --title "FrancoisCarouge/Kalman" --legend coverage.info -o coverage
     - name: Deploy
