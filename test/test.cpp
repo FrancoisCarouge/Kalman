@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -6,7 +6,7 @@
 |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|
 
 Kalman Filter
-Version 0.5.3
+Version 0.4.0
 https://github.com/FrancoisCarouge/Kalman
 
 SPDX-License-Identifier: Unlicense
@@ -34,25 +34,20 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-FetchContent_Declare(
-  gsl-lite
-  GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
-  GIT_SHALLOW TRUE
-  FIND_PACKAGE_ARGS NAMES gsl-lite)
-FetchContent_MakeAvailable(gsl-lite)
+#include <mp-units/framework/quantity.h>
+#include <mp-units/systems/si.h>
 
-FetchContent_Declare(
-  mp-units
-  GIT_REPOSITORY "https://github.com/mpusz/mp-units"
-  GIT_SHALLOW TRUE
-  SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
-FetchContent_MakeAvailable(mp-units)
+using namespace mp_units;
+using namespace mp_units::si::unit_symbols;
 
-add_library(kalman_unit_mp_units INTERFACE)
-target_sources(
-  kalman_unit_mp_units INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES
-                                 "fcarouge/unit.hpp")
-target_link_libraries(kalman_unit_mp_units INTERFACE kalman_support_options
-                                                     mp-units::mp-units)
+struct s {
+  template <auto I>
+  using e =
+      decltype(std::tuple_element_t<I, std::tuple<quantity<m, double>>>{} *
+               double{});
+
+  // https://cpplang.slack.com/archives/C7A9LJ4KH/p1739857422469579
+  operator e<0>();
+};
