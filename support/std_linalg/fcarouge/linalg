@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,11 +34,19 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-FetchContent_Declare(
-  fcarouge-typed-linear-algebra
-  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  GIT_TAG "std-linalg"
-  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
-FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
+#ifndef FCAROUGE_LINALG
+#define FCAROUGE_LINALG
+
+//! @todo Remove this by supporting square brackets.
+#define MDSPAN_USE_PAREN_OPERATOR 1
+
+#include <experimental/linalg>
+
+namespace std {
+namespace linalg =
+    MDSPAN_IMPL_STANDARD_NAMESPACE::MDSPAN_IMPL_PROPOSED_NAMESPACE::linalg;
+}
+
+#endif // FCAROUGE_LINALG

@@ -181,6 +181,7 @@ struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
 //! @{
 
 //! @brief The one matrix indexed specialization.
+// THIS AND OTHER NON-SENSICAL ONES SHOULD NOT EXIST
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 inline typed_matrix<decltype(one<Matrix>), RowIndexes, ColumnIndexes>
     one<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{one<Matrix>};

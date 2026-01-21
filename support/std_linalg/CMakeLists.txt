@@ -37,8 +37,48 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 FetchContent_Declare(
-  fcarouge-typed-linear-algebra
-  GIT_REPOSITORY "https://github.com/FrancoisCarouge/TypedLinearAlgebra"
-  GIT_TAG "std-linalg"
-  FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
-FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
+  mdspan
+  GIT_REPOSITORY "https://github.com/kokkos/mdspan.git"
+  GIT_TAG "stable"
+  FIND_PACKAGE_ARGS NAMES mdspan)
+FetchContent_MakeAvailable(mdspan)
+
+# @todo Fix Kokkos' mdspan upstream.
+add_library(std::mdspan ALIAS mdspan)
+
+FetchContent_Declare(
+  linalg
+  GIT_REPOSITORY "https://github.com/kokkos/stdBLAS.git"
+  GIT_TAG "main"
+  FIND_PACKAGE_ARGS NAMES linalg)
+FetchContent_MakeAvailable(linalg)
+
+add_library(kalman_linalg_stdlinalg INTERFACE)
+target_sources(
+  kalman_linalg_stdlinalg
+  INTERFACE FILE_SET
+            "kalman_linalg_headers"
+            TYPE
+            "HEADERS"
+            FILES
+            "fcarouge/linalg"
+            "fcarouge/mdspan")
+target_include_directories(kalman_linalg_stdlinalg INTERFACE "fcarouge")
+target_link_libraries(kalman_linalg_stdlinalg INTERFACE linalg)
+
+# @todo Fix Kokkos' linalg upstream.
+target_include_directories(
+  kalman_linalg_stdlinalg INTERFACE ${linalg_BINARY_DIR}/include/experimental
+                                    ${linalg_SOURCE_DIR}/include/experimental)
+
+# @todo Fix Kokkos' linalg upstream.
+if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  target_compile_options(
+    kalman_linalg_stdlinalg INTERFACE "-Wno-unused-local-typedefs"
+                                      "-Wno-shadow" "-Wno-unused-parameter")
+endif()
+
+target_compile_definitions(
+  kalman_linalg_stdlinalg
+  INTERFACE "MDSPAN_IMPL_STANDARD_NAMESPACE=Kokkos"
+            "MDSPAN_IMPL_PROPOSED_NAMESPACE=experimental")
