@@ -37,7 +37,7 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 800,600
+set terminal svg enhanced background rgb "white" size 1600,1200
 set datafile separator ","
 set title "{/:Bold Eigen Predict Float Group Benchmark}\n"
 set output "predict.svg"
@@ -55,10 +55,10 @@ set xrange [ 0.1 : 32.9 ]
 set yrange [ 0.1 : 32.9 ]
 set xtics 1
 set ytics 1
-set view 60,330,1.125,1.125
+set view 50,320,1,1
 show view
 set pm3d
 set hidden3d
 set key noautotitle
 
-splot "predict.csv" using 1:2:3 with lines
+splot "predict.csv" using 1:2:($3 * 1000000000) with lines
