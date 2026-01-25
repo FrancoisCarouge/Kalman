@@ -6,18 +6,8 @@ Build and run the benchmarks on all platforms:
 git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
 cmake -S "kalman" -B "build"
 cmake --build "build" --config "Release" --parallel
-ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark"
+ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark" --parallel 1
 ```
-
-Can we get VS18 20256 working?
-
-```shell
-Remove-Item build -Force -Recurse
-cmake -S "kalman" -B "build" -G "Visual Studio 17 2022"
-cmake --build "build" --config "Release" --parallel 36
-ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark" --verbose
-```
-
 
 Plot the results on Linux:
 

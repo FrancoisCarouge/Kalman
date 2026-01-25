@@ -78,12 +78,9 @@ auto input_control{fcarouge::input_control{
 
 constexpr std::size_t state_size{${STATE_SIZE}};
 constexpr std::size_t output_size{${IO_SIZE}};
-constexpr std::size_t input_size{1};
+constexpr std::size_t input_size{${IO_SIZE}};
 
-//! @test Verifies the copy constructor.
-//!
-//! Notes:
-//! Make things work 0 states?
+//! @benchmark Measures the estimates update.
 [[maybe_unused]] auto benchmark{[] {
   kalman filter{state<state_size>,                     // X
                 output<vector<output_size>>,           // Z
@@ -97,18 +94,37 @@ constexpr std::size_t input_size{1};
                 update_types<>,
                 prediction_types<>};
 
-  std::ofstream results{"${CMAKE_SOURCE_DIR}/benchmark/update.csv",
-                        std::ios::app};
+  {
+    std::ofstream results{"${CMAKE_SOURCE_DIR}/benchmark/update.csv",
+                          std::ios::app};
+    results << "# State Size, Output Size, Elapsed Time (s)" << std::endl;
 
-  std::string csv{std::format("{{{{#result}}}}{:05d}, {:05d}, "
-                              "{{{{minimum(elapsed)}}}}{{{{/result}}}}\n",
-                              state_size, input_size)};
+    std::string csv{std::format("{{{{#result}}}}{:05d}, {:05d}, "
+                                "{{{{minimum(elapsed)}}}}{{{{/result}}}}\n",
+                                state_size, output_size)};
 
-  ankerl::nanobench::Bench()
-      .output(nullptr)
-      .name("update")
-      .run([&]() { filter.update(vector<output_size>{}); })
-      .render(csv.c_str(), results);
+    ankerl::nanobench::Bench()
+        .output(nullptr)
+        .name("update")
+        .run([&]() { filter.update(vector<output_size>{}); })
+        .render(csv.c_str(), results);
+  }
+
+  {
+    std::ofstream results{"${CMAKE_SOURCE_DIR}/benchmark/predict.csv",
+                          std::ios::app};
+    results << "# State Size, Input Size, Elapsed Time (s)" << std::endl;
+
+    std::string csv{std::format("{{{{#result}}}}{:05d}, {:05d}, "
+                                "{{{{minimum(elapsed)}}}}{{{{/result}}}}\n",
+                                state_size, input_size)};
+
+    ankerl::nanobench::Bench()
+        .output(nullptr)
+        .name("predict")
+        .run([&]() { filter.predict(vector<input_size>{}); })
+        .render(csv.c_str(), results);
+  }
 
   return 0;
 }()};

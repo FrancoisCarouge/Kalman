@@ -43,20 +43,17 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES nanobench)
 FetchContent_MakeAvailable(nanobench)
 
-foreach(STATE_SIZE RANGE 1 2)
-  foreach(IO_SIZE RANGE 1 2)
-    configure_file("predict.cpp" "predict_${STATE_SIZE}x1x${IO_SIZE}.cpp")
-    add_executable(kalman_benchmark_predict_${STATE_SIZE}x1x${IO_SIZE}_driver
-                   "predict_${STATE_SIZE}x1x${IO_SIZE}.cpp")
-    target_link_libraries(
-      kalman_benchmark_predict_${STATE_SIZE}x1x${IO_SIZE}_driver
-      PRIVATE kalman kalman_main nanobench::nanobench kalman_linalg_eigen)
+# set(SIZES 1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32)
+set(SIZES 1;2)
 
-    configure_file("update.cpp" "update_${STATE_SIZE}x${IO_SIZE}x1.cpp")
-    add_executable(kalman_benchmark_update_${STATE_SIZE}x${IO_SIZE}x1_driver
-                   "update_${STATE_SIZE}x${IO_SIZE}x1.cpp")
+foreach(STATE_SIZE IN ITEMS ${SIZES})
+  foreach(IO_SIZE IN ITEMS ${SIZES})
+    configure_file("benchmark.cpp"
+                   "benchmark_${STATE_SIZE}x${IO_SIZE}x${IO_SIZE}.cpp")
+    add_executable(kalman_benchmark_${STATE_SIZE}x${IO_SIZE}x${IO_SIZE}_driver
+                   "benchmark_${STATE_SIZE}x${IO_SIZE}x${IO_SIZE}.cpp")
     target_link_libraries(
-      kalman_benchmark_update_${STATE_SIZE}x${IO_SIZE}x1_driver
+      kalman_benchmark_${STATE_SIZE}x${IO_SIZE}x${IO_SIZE}_driver
       PRIVATE kalman kalman_main nanobench::nanobench kalman_linalg_eigen)
   endforeach()
 endforeach()
@@ -67,4 +64,4 @@ target_link_libraries(kalman_benchmark_plot_driver PRIVATE kalman_main)
 add_test(
   NAME kalman_benchmark_plot_driver
   COMMAND kalman_benchmark_plot_driver "${CMAKE_SOURCE_DIR}/benchmark"
-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/benchmark/${CMAKE_BUILD_TYPE}")
+  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/benchmark/$<CONFIG>")

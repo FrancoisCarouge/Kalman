@@ -64,14 +64,14 @@ int main(int argument_count, char **argument_value) {
     return EXIT_FAILURE;
   }
 
-  for (const auto &entry :
-       std::filesystem::directory_iterator(std::filesystem::current_path())) {
+  const auto cwd{std::filesystem::current_path()};
+  std::println("Current working directory: {}", cwd.string());
+  for (const auto &entry : std::filesystem::directory_iterator(cwd)) {
     std::string filename{entry.path().filename().string()};
-    if (entry.is_regular_file() &&
-        (filename.starts_with("kalman_benchmark_predict") ||
-         filename.starts_with("kalman_benchmark_update"))) {
-      // std::string command{"./" + filename};
-      if (int status{std::system(("./" + filename).c_str())}; status != 0) {
+    if (entry.is_regular_file() && (filename.starts_with("kalman_benchmark"))) {
+      std::println("Running: {}...", filename);
+      std::cout.flush();
+      if (int status{std::system((".\\" + filename).c_str())}; status != 0) {
         std::println("Program: {} failed with code: {}", filename, status);
       }
     }
