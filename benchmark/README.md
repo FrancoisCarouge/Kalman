@@ -6,7 +6,7 @@ Build and run the benchmarks on all platforms:
 git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
 cmake -S "kalman" -B "build"
 cmake --build "build" --config "Release" --parallel
-ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark"
+ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark" --parallel 1
 ```
 
 Plot the results on Linux:
@@ -17,7 +17,7 @@ Plot the results on Linux:
 
 # Results
 
-Run on Microsoft Windows 10 on native x64 with Visual Studio 2022 compiler 19.33 in release mode.
+Run on Microsoft Windows 11 on native x64 with Visual Studio 2022 compiler 19.44 in release mode.
 
 ![Eigen Update](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg)
 ![Eigen Predict](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_predict.svg)
