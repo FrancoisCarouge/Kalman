@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/plot.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -62,19 +63,21 @@ namespace {
 //! @example kf_1x1x0_building_height.cpp
 [[maybe_unused]] auto sample{[] {
   // A one-dimensional filter, constant system dynamic model.
-  kalman filter{// One can estimate the building height simply by looking at it.
-                // The estimated state building height is: X = 60 meters.
-                state{60.},
-                // The building height measurement Z in meters.
-                output<double>,
-                // A human’s estimation error (standard deviation) is about 15
-                // meters: σ = 15. Consequently the variance is σ^2 = 225. The
-                // estimate uncertainty is: P = 225 m^2.
-                estimate_uncertainty{225.},
-                // Since the standard deviation σ of the altimeter measurement
-                // error is 5, the variance σ^2 would be 25, thus the
-                // measurement, output uncertainty is: R = 25 m^2.
-                output_uncertainty{25.}};
+  auto filter{
+      kalman{// One can estimate the building height simply by looking at it.
+             // The estimated state building height is: X = 60 meters.
+             state{60.},
+             // The building height measurement Z in meters.
+             output<double>,
+             // A human’s estimation error (standard deviation) is about 15
+             // meters: σ = 15. Consequently the variance is σ^2 = 225. The
+             // estimate uncertainty is: P = 225 m^2.
+             estimate_uncertainty{225.},
+             // Since the standard deviation σ of the altimeter measurement
+             // error is 5, the variance σ^2 would be 25, thus the
+             // measurement, output uncertainty is: R = 25 m^2.
+             output_uncertainty{25.}} |
+      plot("Building Height")};
 
   assert(60 == filter.x() &&
          "Since our system's dynamic model is constant, i.e. the building "

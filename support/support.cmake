@@ -54,7 +54,8 @@ function(sample SAMPLE_NAME)
     add_executable(kalman_sample_${SAMPLE_NAME}_driver "${SAMPLE_NAME}.cpp")
     target_link_libraries(
       kalman_sample_${SAMPLE_NAME}_driver
-      PRIVATE kalman kalman_main kalman_support_options kalman_unit_mp_units)
+      PRIVATE kalman kalman_main kalman_support_options kalman_plot
+              kalman_unit_mp_units)
     separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(NAME kalman_sample_${SAMPLE_NAME}
              COMMAND ${SAMPLE_COMMAND}
@@ -72,7 +73,7 @@ function(sample SAMPLE_NAME)
       target_link_libraries(
         kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
         PRIVATE kalman kalman_main kalman_linalg_${BACKEND}
-                kalman_support_options)
+                kalman_support_options kalman_plot)
       separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_sample_${BACKEND}_${SAMPLE_NAME}

@@ -45,6 +45,13 @@ jobs:
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: 'Install: Latest CMake'
       uses: ssrobins/install-cmake@c54bb968401dd4ff9e6c9d697df5b843ee3b783b # v1.0.0
+    - name: 'Install: Gnuplot'
+      run: sudo apt update && sudo apt install -y gnuplot
+    - name: 'Virtual Display'
+      run: | 
+        xvfb :1 -screen 0 1600x1200x16 &
+      env:
+        DISPLAY: ':1.0'
     - name: 'Configure'
       env:
         CXX: 'g++-14'
@@ -53,4 +60,4 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Test'
-      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 10 --tests-regex 'kalman_(test|sample)' --verbose --parallel 4
+      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 100 --tests-regex 'kalman_(test|sample)' --verbose --parallel 4
