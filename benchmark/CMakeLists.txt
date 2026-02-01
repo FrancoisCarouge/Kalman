@@ -43,25 +43,40 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES nanobench)
 FetchContent_MakeAvailable(nanobench)
 
-# set(SIZES 1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32)
 set(SIZES 1;2)
+set(BENCHES time;size)
+set(REPRESENTATIONS float;double)
 
-foreach(STATE_SIZE IN ITEMS ${SIZES})
-  foreach(IO_SIZE IN ITEMS ${SIZES})
-    configure_file("benchmark.cpp"
-                   "benchmark_${STATE_SIZE}x${IO_SIZE}x${IO_SIZE}.cpp")
-    add_executable(kalman_benchmark_${STATE_SIZE}x${IO_SIZE}x${IO_SIZE}_driver
-                   "benchmark_${STATE_SIZE}x${IO_SIZE}x${IO_SIZE}.cpp")
-    target_link_libraries(
-      kalman_benchmark_${STATE_SIZE}x${IO_SIZE}x${IO_SIZE}_driver
-      PRIVATE kalman kalman_main nanobench::nanobench kalman_linalg_eigen)
+foreach(BENCH IN ITEMS ${BENCHES})
+  foreach(REPRESENTATION IN ITEMS ${REPRESENTATIONS})
+    configure_file(
+      "${BENCH}.plt"
+      "${CMAKE_BINARY_DIR}/benchmark/Release/${BENCH}_${REPRESENTATION}.plt")
+    foreach(STATE_SIZE IN ITEMS ${SIZES})
+      foreach(OUTPUT_SIZE IN ITEMS ${SIZES})
+        foreach(INPUT_SIZE IN ITEMS ${SIZES})
+          configure_file(
+            "${BENCH}.cpp"
+            "${BENCH}_${REPRESENTATION}_${STATE_SIZE}x${OUTPUT_SIZE}x${INPUT_SIZE}.cpp"
+          )
+          add_executable(
+            kalman_benchmark_${BENCH}_${REPRESENTATION}_${STATE_SIZE}x${OUTPUT_SIZE}x${INPUT_SIZE}_driver
+            "${BENCH}_${REPRESENTATION}_${STATE_SIZE}x${OUTPUT_SIZE}x${INPUT_SIZE}.cpp"
+          )
+          target_link_libraries(
+            kalman_benchmark_${BENCH}_${REPRESENTATION}_${STATE_SIZE}x${OUTPUT_SIZE}x${INPUT_SIZE}_driver
+            PRIVATE kalman kalman_main kalman_support_options
+                    nanobench::nanobench kalman_linalg_eigen)
+        endforeach()
+      endforeach()
+    endforeach()
   endforeach()
 endforeach()
 
-configure_file("plot.cpp" "plot.cpp")
-add_executable(kalman_benchmark_plot_driver "plot.cpp")
-target_link_libraries(kalman_benchmark_plot_driver PRIVATE kalman_main)
+add_executable(kalman_benchmarks_driver "driver.cpp")
+target_link_libraries(kalman_benchmarks_driver PRIVATE kalman_main
+                                                       kalman_support_options)
 add_test(
-  NAME kalman_benchmark_plot_driver
-  COMMAND kalman_benchmark_plot_driver "${CMAKE_SOURCE_DIR}/benchmark"
-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/benchmark/$<CONFIG>")
+  NAME kalman_benchmarks_driver
+  COMMAND kalman_benchmarks_driver "${CMAKE_SOURCE_DIR}/benchmark"
+  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/benchmark/Release")

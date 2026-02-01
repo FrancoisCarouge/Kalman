@@ -39,14 +39,15 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
 
-#include <nanobench.h>
-
+#include <format>
 #include <fstream>
+#include <iostream>
+#include <print>
 
 namespace fcarouge::benchmark {
 namespace {
 
-using representation = float;
+using representation = ${REPRESENTATION};
 
 template <auto Size> using vector = column_vector<representation, Size>;
 
@@ -77,10 +78,10 @@ auto input_control{fcarouge::input_control{
     kalman_internal::ᴀʙᵀ<vector<StateSize>, vector<InputSize>>{}}};
 
 constexpr std::size_t state_size{${STATE_SIZE}};
-constexpr std::size_t output_size{${IO_SIZE}};
-constexpr std::size_t input_size{${IO_SIZE}};
+constexpr std::size_t output_size{${OUTPUT_SIZE}};
+constexpr std::size_t input_size{${INPUT_SIZE}};
 
-//! @benchmark Measures the estimates update.
+//! @benchmark ...
 [[maybe_unused]] auto benchmark{[] {
   kalman filter{state<state_size>,                     // X
                 output<vector<output_size>>,           // Z
@@ -94,37 +95,13 @@ constexpr std::size_t input_size{${IO_SIZE}};
                 update_types<>,
                 prediction_types<>};
 
-  {
-    std::ofstream results{"${CMAKE_SOURCE_DIR}/benchmark/update.csv",
-                          std::ios::app};
-    results << "# State Size, Output Size, Elapsed Time (s)" << std::endl;
-
-    std::string csv{std::format("{{{{#result}}}}{:05d}, {:05d}, "
-                                "{{{{minimum(elapsed)}}}}{{{{/result}}}}\n",
-                                state_size, output_size)};
-
-    ankerl::nanobench::Bench()
-        .output(nullptr)
-        .name("update")
-        .run([&]() { filter.update(vector<output_size>{}); })
-        .render(csv.c_str(), results);
-  }
-
-  {
-    std::ofstream results{"${CMAKE_SOURCE_DIR}/benchmark/predict.csv",
-                          std::ios::app};
-    results << "# State Size, Input Size, Elapsed Time (s)" << std::endl;
-
-    std::string csv{std::format("{{{{#result}}}}{:05d}, {:05d}, "
-                                "{{{{minimum(elapsed)}}}}{{{{/result}}}}\n",
-                                state_size, input_size)};
-
-    ankerl::nanobench::Bench()
-        .output(nullptr)
-        .name("predict")
-        .run([&]() { filter.predict(vector<input_size>{}); })
-        .render(csv.c_str(), results);
-  }
+  std::ofstream results{"${CMAKE_SOURCE_DIR}/benchmark/size.csv",
+                        std::ios::app};
+  std::println(
+      results,
+      "# State Size, Output Size, Input Size, Representation, Size (byte)");
+  std::println(results, "{:03d}, {:03d}, {:03d}, ${REPRESENTATION}, {}",
+               state_size, output_size, input_size, sizeof(filter));
 
   return 0;
 }()};
