@@ -4,15 +4,10 @@ Build and run the benchmarks on all platforms:
 
 ```shell
 git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
-cmake -S "kalman" -B "build"
-cmake --build "build" --config "Release" --parallel
-ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark" --parallel 1
-```
-
-Plot the results on Linux:
-
-```shell
-./kalman/benchmark/script/plot.sh
+Remove-Item -Path build -Force -Recurse
+cmake -S "kalman" -B "build" -G "Visual Studio 17 2022"
+cmake --build "build" --config "Release" --parallel 20
+ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmarks_driver" --verbose --parallel 1 --repeat-until-fail 10
 ```
 
 # Results

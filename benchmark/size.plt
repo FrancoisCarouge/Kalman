@@ -37,28 +37,3 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 1600,1200
-set datafile separator ","
-set title "{/:Bold Eigen Update Float Group Benchmark}\n"
-set output "update.svg"
-set timestamp
-set grid
-set grid ztics
-set xlabel "State (count)"
-set ylabel "Output (count)"
-set zlabel "Time (ns)"
-set zlabel rotate by 90
-set dgrid3d 32,32
-show dgrid3d
-set ticslevel 0
-set xrange [ 0.1 : 32.9 ]
-set yrange [ 0.1 : 32.9 ]
-set xtics 1
-set ytics 1
-set view 50,320,1,1
-show view
-set pm3d
-set hidden3d
-set key noautotitle
-
-splot "update.csv" using 1:2:($3 * 1000000000) with lines
