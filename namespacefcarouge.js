@@ -1,6 +1,6 @@
 var namespacefcarouge =
 [
-    [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", "namespacefcarouge_1_1benchmark" ],
+    [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", null ],
     [ "kalman_internal", "namespacefcarouge_1_1kalman__internal.xhtml", [
       [ "ᴀʙᵀ", "namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d", null ],
       [ "deduce_filter", "namespacefcarouge_1_1kalman__internal.xhtml#a083c7633e41b94b1c0cf980cd4a51d74", null ],

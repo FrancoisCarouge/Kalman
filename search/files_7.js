@@ -1,24 +1,6 @@
 var searchData=
 [
-  ['license_2etxt_0',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]],
-  ['linalg_5faddition_2ecpp_1',['linalg_addition.cpp',['../linalg__addition_8cpp.xhtml',1,'']]],
-  ['linalg_5fassign_2ecpp_2',['linalg_assign.cpp',['../linalg__assign_8cpp.xhtml',1,'']]],
-  ['linalg_5fconstructor_5f1x1_2ecpp_3',['linalg_constructor_1x1.cpp',['../linalg__constructor__1x1_8cpp.xhtml',1,'']]],
-  ['linalg_5fconstructor_5f1x1_5farray_2ecpp_4',['linalg_constructor_1x1_array.cpp',['../linalg__constructor__1x1__array_8cpp.xhtml',1,'']]],
-  ['linalg_5fconstructor_5f1xn_2ecpp_5',['linalg_constructor_1xn.cpp',['../linalg__constructor__1xn_8cpp.xhtml',1,'']]],
-  ['linalg_5fconstructor_5f1xn_5farray_2ecpp_6',['linalg_constructor_1xn_array.cpp',['../linalg__constructor__1xn__array_8cpp.xhtml',1,'']]],
-  ['linalg_5fconstructor_5finitializer_5flists_2ecpp_7',['linalg_constructor_initializer_lists.cpp',['../linalg__constructor__initializer__lists_8cpp.xhtml',1,'']]],
-  ['linalg_5fconstructor_5fnx1_2ecpp_8',['linalg_constructor_nx1.cpp',['../linalg__constructor__nx1_8cpp.xhtml',1,'']]],
-  ['linalg_5fconstructor_5fnx1_5farray_2ecpp_9',['linalg_constructor_nx1_array.cpp',['../linalg__constructor__nx1__array_8cpp.xhtml',1,'']]],
-  ['linalg_5fcopy_2ecpp_10',['linalg_copy.cpp',['../linalg__copy_8cpp.xhtml',1,'']]],
-  ['linalg_5fformat_5f1xn_2ecpp_11',['linalg_format_1xn.cpp',['../linalg__format__1xn_8cpp.xhtml',1,'']]],
-  ['linalg_5fformat_5fmx1_2ecpp_12',['linalg_format_mx1.cpp',['../linalg__format__mx1_8cpp.xhtml',1,'']]],
-  ['linalg_5fformat_5fmxn_2ecpp_13',['linalg_format_mxn.cpp',['../linalg__format__mxn_8cpp.xhtml',1,'']]],
-  ['linalg_5fidentity_2ecpp_14',['linalg_identity.cpp',['../linalg__identity_8cpp.xhtml',1,'']]],
-  ['linalg_5fmultiplication_5farithmetic_2ecpp_15',['linalg_multiplication_arithmetic.cpp',['../linalg__multiplication__arithmetic_8cpp.xhtml',1,'']]],
-  ['linalg_5fmultiplication_5frxc_2ecpp_16',['linalg_multiplication_rxc.cpp',['../linalg__multiplication__rxc_8cpp.xhtml',1,'']]],
-  ['linalg_5fmultiplication_5fsxc_2ecpp_17',['linalg_multiplication_sxc.cpp',['../linalg__multiplication__sxc_8cpp.xhtml',1,'']]],
-  ['linalg_5foperator_5fbracket_2ecpp_18',['linalg_operator_bracket.cpp',['../linalg__operator__bracket_8cpp.xhtml',1,'']]],
-  ['linalg_5foperator_5fequality_2ecpp_19',['linalg_operator_equality.cpp',['../linalg__operator__equality_8cpp.xhtml',1,'']]],
-  ['linalg_5fzero_2ecpp_20',['linalg_zero.cpp',['../linalg__zero_8cpp.xhtml',1,'']]]
+  ['print_2ehpp_0',['print.hpp',['../print_8hpp.xhtml',1,'']]],
+  ['print_5f1x1x0_2ecpp_1',['print_1x1x0.cpp',['../print__1x1x0_8cpp.xhtml',1,'']]],
+  ['print_5f2x3x4_2ecpp_2',['print_2x3x4.cpp',['../print__2x3x4_8cpp.xhtml',1,'']]]
 ];

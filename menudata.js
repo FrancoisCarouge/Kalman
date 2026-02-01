@@ -30,15 +30,12 @@ var menudata={children:[
 {text:"Namespace Members",url:"namespacemembers.xhtml",children:[
 {text:"All",url:"namespacemembers.xhtml",children:[
 {text:"a",url:"namespacemembers.xhtml#index_a"},
-{text:"b",url:"namespacemembers.xhtml#index_b"},
-{text:"c",url:"namespacemembers.xhtml#index_c"},
 {text:"d",url:"namespacemembers.xhtml#index_d"},
 {text:"e",url:"namespacemembers.xhtml#index_e"},
 {text:"f",url:"namespacemembers.xhtml#index_f"},
 {text:"i",url:"namespacemembers.xhtml#index_i"},
 {text:"k",url:"namespacemembers.xhtml#index_k"},
 {text:"m",url:"namespacemembers.xhtml#index_m"},
-{text:"n",url:"namespacemembers.xhtml#index_n"},
 {text:"o",url:"namespacemembers.xhtml#index_o"},
 {text:"p",url:"namespacemembers.xhtml#index_p"},
 {text:"q",url:"namespacemembers.xhtml#index_q"},
@@ -49,17 +46,7 @@ var menudata={children:[
 {text:"v",url:"namespacemembers.xhtml#index_v"},
 {text:"z",url:"namespacemembers.xhtml#index_z"},
 {text:"ᴀ",url:"namespacemembers.xhtml#index_a0xe1b480"}]},
-{text:"Functions",url:"namespacemembers_func.xhtml",children:[
-{text:"b",url:"namespacemembers_func.xhtml#index_b"},
-{text:"e",url:"namespacemembers_func.xhtml#index_e"},
-{text:"f",url:"namespacemembers_func.xhtml#index_f"},
-{text:"i",url:"namespacemembers_func.xhtml#index_i"},
-{text:"k",url:"namespacemembers_func.xhtml#index_k"},
-{text:"n",url:"namespacemembers_func.xhtml#index_n"},
-{text:"o",url:"namespacemembers_func.xhtml#index_o"},
-{text:"p",url:"namespacemembers_func.xhtml#index_p"},
-{text:"s",url:"namespacemembers_func.xhtml#index_s"},
-{text:"t",url:"namespacemembers_func.xhtml#index_t"}]},
+{text:"Functions",url:"namespacemembers_func.xhtml"},
 {text:"Variables",url:"namespacemembers_vars.xhtml",children:[
 {text:"a",url:"namespacemembers_vars.xhtml#index_a"},
 {text:"f",url:"namespacemembers_vars.xhtml#index_f"},
@@ -72,7 +59,6 @@ var menudata={children:[
 {text:"z",url:"namespacemembers_vars.xhtml#index_z"}]},
 {text:"Typedefs",url:"namespacemembers_type.xhtml",children:[
 {text:"a",url:"namespacemembers_type.xhtml#index_a"},
-{text:"c",url:"namespacemembers_type.xhtml#index_c"},
 {text:"d",url:"namespacemembers_type.xhtml#index_d"},
 {text:"e",url:"namespacemembers_type.xhtml#index_e"},
 {text:"f",url:"namespacemembers_type.xhtml#index_f"},
