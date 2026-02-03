@@ -37,98 +37,74 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include <algorithm>
+#include <charconv>
+#include <cmath>
+#include <cstddef>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <print>
+#include <sstream>
 #include <string>
 #include <system_error>
 #include <vector>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <iomanip>
-#include <charconv>
-#include <cmath>
-
-static bool looks_scientific(const std::string& s)
-{
-    return s.find("e-") != std::string::npos;
-}
-
-static std::string to_natural(const std::string& scientificStr)
-{
-    // 1. Convert the input string to a double
-    double value;
-    try {
-        value = std::stod(scientificStr);
-    } catch (const std::out_of_range& oor) {
-        // Handle potential errors (e.g., number too large/small)
-        return "Error: Value out of range";
-    } catch (const std::invalid_argument& ia) {
-        // Handle potential errors (e.g., invalid input string)
-        return "Error: Invalid argument";
-    }
-
-    // 2. Format the double into a natural notation string using ostringstream
-    std::ostringstream oss;
-    oss << ' ' << std::fixed // Use fixed-point notation (prevents scientific notation)
-        << std::setprecision(std::numeric_limits<double>::max_digits10) // Set maximum precision for double
-        << value;
-
-    std::string naturalStr = oss.str();
-
-    // 3. Optional: Remove trailing zeros and the decimal point if it becomes an integer
-    // Find the position of the decimal point
-    size_t decimalPos = naturalStr.find('.');
-    if (decimalPos != std::string::npos) {
-        // Erase trailing zeros
-        naturalStr.erase(naturalStr.find_last_not_of('0') + 1, std::string::npos);
-        // If the last character is now a decimal point, remove that as well
-        if (naturalStr.back() == '.') {
-            naturalStr.pop_back();
-        }
-    }
-
-    return naturalStr;
-}
-
-void convert_scientific_to_natural(std::vector<std::string>& lines)
-{
-    for (auto& line : lines) {
-        std::stringstream ss(line);
-        std::string field;
-        std::string result;
-        bool first = true;
-
-        while (std::getline(ss, field, ',')) {
-            if (!first) {
-                result += ',';
-            }
-            first = false;
-
-            if (looks_scientific(field))
-            {
-                result += to_natural(field);
-            }
-            else
-            {
-                result += field;
-            }
-        }
-
-        line = std::move(result);
-    }
-}
-
 
 namespace {
+bool is_scientific_number(const std::string &s) {
+  return s.find("e-") != std::string::npos;
+}
+
+std::string to_natural(const std::string &scientific_number) {
+  double value{std::stod(scientific_number)};
+  std::ostringstream oss;
+  oss << std::fixed
+      << std::setprecision(std::numeric_limits<double>::max_digits10) << value;
+
+  std::string natural_number{oss.str()};
+  std::size_t decimalPos{natural_number.find('.')};
+  if (decimalPos != std::string::npos) {
+    natural_number.erase(natural_number.find_last_not_of('0') + 1,
+                         std::string::npos);
+    if (natural_number.back() == '.') {
+      natural_number.pop_back();
+    }
+  }
+
+  return natural_number;
+}
+
+void convert_scientific_to_natural(std::vector<std::string> &lines) {
+  for (auto &line : lines) {
+    std::stringstream ss(line);
+    std::string field;
+    std::string result;
+    bool first{true};
+
+    while (std::getline(ss, field, ',')) {
+      if (!first) {
+        result += ',';
+      }
+      first = false;
+
+      if (is_scientific_number(field)) {
+        result += ' ';
+        result += to_natural(field);
+      } else {
+        result += field;
+      }
+    }
+
+    line = result;
+  }
+}
+
 // Key of the line based on the first two comma-separated value fields.
 std::string_view key_of(std::string_view line, std::size_t field_count) {
   std::size_t position{std::string_view::npos};
 
-  for (int i{0}; i < field_count; ++i) {
+  for (std::size_t i{0}; i < field_count; ++i) {
     std::size_t next_field{line.find(", ", ++position)};
 
     if (next_field == std::string_view::npos) {
@@ -166,7 +142,7 @@ void write(const std::filesystem::path &file_path,
   }
 }
 
-std::vector<std::string> read(const std::filesystem::path & file_path) {
+std::vector<std::string> read(const std::filesystem::path &file_path) {
   std::println("Processing: '{}'...", file_path.string());
 
   std::ifstream input(file_path);
@@ -220,10 +196,10 @@ int main(int argument_count, char **argument_value) {
     std::ranges::sort(lines);
 
     // Deduplicate the results.
-    const auto [first, last]{std::ranges::unique(lines,
-                         [](const std::string &lhs, const std::string &rhs) {
-                           return key_of(lhs, 5) == key_of(rhs, 5);
-                         })};
+    const auto [first, last]{std::ranges::unique(
+        lines, [](const std::string &lhs, const std::string &rhs) {
+          return key_of(lhs, 5) == key_of(rhs, 5);
+        })};
     lines.erase(first, last);
 
     write(file_path, lines);
@@ -235,10 +211,10 @@ int main(int argument_count, char **argument_value) {
     std::ranges::sort(lines);
 
     // Deduplicate the results.
-    const auto [first, last]{std::ranges::unique(lines,
-                         [](const std::string &lhs, const std::string &rhs) {
-                           return key_of(lhs, 4) == key_of(rhs, 4);
-                         })};
+    const auto [first, last]{std::ranges::unique(
+        lines, [](const std::string &lhs, const std::string &rhs) {
+          return key_of(lhs, 4) == key_of(rhs, 4);
+        })};
     lines.erase(first, last);
 
     write(file_path, lines);

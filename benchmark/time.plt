@@ -37,10 +37,10 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 1600,1200
+set terminal png enhanced background rgb "white" size 1600,1200
 set datafile separator ","
 set title "{/:Bold KALMAN FILTER PREDICTION TIME}\n{Backend: Eigen}\n{Representation:${REPRESENTATION}}\n{State x Output}" offset 20,0
-set output "time_predict_${REPRESENTATION}_state_output.svg"
+set output "time_predict_${REPRESENTATION}_state_output.png"
 set timestamp
 set grid
 set grid ztics
@@ -59,10 +59,10 @@ set boxdepth 1
 splot "time.csv" using 1:2:(((strcol(4) eq "predict") && (strcol(5) eq "${REPRESENTATION}"))?($6 * 1000000000):1/0) with boxes lc palette
 unset output
 
-set terminal svg enhanced background rgb "white" size 1600,1200
+set terminal png enhanced background rgb "white" size 1600,1200
 set datafile separator ","
 set title "{/:Bold Eigen Predict ${REPRESENTATION} State x Input Benchmark}\n"
-set output "time_predict_${REPRESENTATION}_state_input.svg"
+set output "time_predict_${REPRESENTATION}_state_input.png"
 set timestamp
 set grid
 set grid ztics
@@ -81,10 +81,10 @@ set boxdepth 1
 splot "time.csv" using 1:3:(((strcol(4) eq "predict") && (strcol(5) eq "${REPRESENTATION}"))?($6 * 1000000000):1/0) with boxes lc palette
 unset output
 
-set terminal svg enhanced background rgb "white" size 1600,1200
+set terminal png enhanced background rgb "white" size 1600,1200
 set datafile separator ","
 set title "{/:Bold Eigen Update ${REPRESENTATION} State x Output Benchmark}\n"
-set output "time_update_${REPRESENTATION}_state_output.svg"
+set output "time_update_${REPRESENTATION}_state_output.png"
 set timestamp
 set grid
 set grid ztics
@@ -103,10 +103,10 @@ set boxdepth 1
 splot "time.csv" using 1:2:(((strcol(4) eq "update") && (strcol(5) eq "${REPRESENTATION}"))?($6 * 1000000000):1/0) with boxes lc palette
 unset output
 
-set terminal svg enhanced background rgb "white" size 1600,1200
+set terminal png enhanced background rgb "white" size 1600,1200
 set datafile separator ","
 set title "{/:Bold Eigen Update ${REPRESENTATION} State x Input Benchmark}\n"
-set output "time_update_${REPRESENTATION}_state_input.svg"
+set output "time_update_${REPRESENTATION}_state_input.png"
 set timestamp
 set grid
 set grid ztics

@@ -43,7 +43,7 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES nanobench)
 FetchContent_MakeAvailable(nanobench)
 
-set(SIZES 1;2;3;4;5;6;7;8)
+set(SIZES 1;2)
 set(BENCHES time;size)
 set(REPRESENTATIONS float;double)
 
@@ -65,7 +65,8 @@ foreach(BENCH IN ITEMS ${BENCHES})
           )
           target_link_libraries(
             kalman_benchmark_${BENCH}_${REPRESENTATION}_${STATE_SIZE}x${OUTPUT_SIZE}x${INPUT_SIZE}_driver
-            PRIVATE kalman kalman_main kalman_support_options nanobench::nanobench kalman_linalg_eigen)
+            PRIVATE kalman kalman_main kalman_support_options
+                    nanobench::nanobench kalman_linalg_eigen)
         endforeach()
       endforeach()
     endforeach()
@@ -73,9 +74,8 @@ foreach(BENCH IN ITEMS ${BENCHES})
 endforeach()
 
 add_executable(kalman_benchmarks_driver "driver.cpp")
-target_link_libraries(
-  kalman_benchmarks_driver
-  PRIVATE kalman_main kalman_support_options)
+target_link_libraries(kalman_benchmarks_driver PRIVATE kalman_main
+                                                       kalman_support_options)
 add_test(
   NAME kalman_benchmarks_driver
   COMMAND kalman_benchmarks_driver "${CMAKE_SOURCE_DIR}/benchmark"
