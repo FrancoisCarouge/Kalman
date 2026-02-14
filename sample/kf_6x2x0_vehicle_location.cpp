@@ -143,6 +143,7 @@ using state = fcarouge::state<vector<6>>;
          std::abs(1 - filter.x()[5] / -63.6) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
 
+  // TODO: Move sim out.
   step(-351.04, 295.1);
   step(-328.96, 305.19);
   step(-299.35, 301.06);

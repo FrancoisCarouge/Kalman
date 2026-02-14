@@ -134,6 +134,7 @@ using state = fcarouge::state<vector<8>>;
                        {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F, 0.F},
                        {0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 0.F, 1.F}}};
 
+  // TODO: Move sim out.
   // A hundred bounding box output measurements `(x, y, a, h)` from Deep SORT's
   // MOT16 sample, tracker #201.
   const vector<4> measured[]{{603.5F, 251.5F, 0.187335092348285F, 379.F},
