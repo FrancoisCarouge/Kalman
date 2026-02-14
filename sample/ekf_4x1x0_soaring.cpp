@@ -138,6 +138,7 @@ using state = fcarouge::state<vector<4>>;
       // The additional parameters for prediction.
       prediction_types<float, float>};
 
+  // MOVE SIMULATION OUT?
   struct data {
     float drift_x;
     float drift_y;
