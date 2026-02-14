@@ -59,9 +59,9 @@ target_sources(
             "fcarouge/kalman_internal/x_z_p_qq_rr_f.hpp"
             "fcarouge/kalman_internal/x_z_p_r_f.hpp"
             "fcarouge/kalman_internal/x_z_p_r.hpp"
-            "fcarouge/kalman_internal/x_z_u_p_qq_r_ff_gg_ps.hpp"
             "fcarouge/kalman_internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
             "fcarouge/kalman_internal/x_z_u_p_q_r.hpp"
+            "fcarouge/kalman_internal/x_z_u_p_qq_r_ff_gg_ps.hpp"
             "fcarouge/kalman.hpp")
 install(
   TARGETS kalman

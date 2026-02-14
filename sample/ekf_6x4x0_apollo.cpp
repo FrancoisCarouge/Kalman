@@ -68,7 +68,7 @@ using state = fcarouge::state<vector<6>>;
 //! shaft angle (beta), trunnion elevation angle (theta).
 //!
 //! @example ekf_6x4x0_apollo.cpp
-[[maybe_unused]] auto apollo{[] {
+[[maybe_unused]] auto sample{[] {
   kalman filter{
       // The six estimated states X initialization under the simulated scenario:
       // the lunar module is 30km away, approaching at 100 m/s relative to
@@ -79,7 +79,7 @@ using state = fcarouge::state<vector<6>>;
       // The measurement definition Z for the Rendezvous Radar: range (r),
       // range rate (r_dot), shaft angle (beta), trunnion angle (theta).
       output<vector<4>>,
-      // The estimate uncertainty P is a high initial uncertainty in position
+      // The initial estimate uncertainty P is a high uncertainty in position
       // before radar lock. The velocity is somewhat known.
       estimate_uncertainty{{1000., 0., 0., 0., 0., 0.},
                            {0., 1000., 0., 0., 0., 0.},
