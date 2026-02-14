@@ -39,6 +39,7 @@ jobs:
     - name: Verify
       run: |
         cppcheck \
+          --check-level=exhaustive \
           --enable=all \
           --error-exitcode=1 \
           --suppress=missingIncludeSystem \
