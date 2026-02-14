@@ -157,7 +157,7 @@ $(function(){initNavTree('ekf_6x4x0_apollo_8cpp-example.xhtml',''); initResizabl
 <div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = matrix&lt;double, Row, Column&gt;;</div>
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;6&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">[[maybe_unused]] <span class="keyword">auto</span> apollo{[] {</div>
+<div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The six estimated states X initialization under the simulated scenario:</span></div>
 <div class="line">      <span class="comment">// the lunar module is 30km away, approaching at 100 m/s relative to</span></div>
@@ -168,7 +168,7 @@ $(function(){initNavTree('ekf_6x4x0_apollo_8cpp-example.xhtml',''); initResizabl
 <div class="line">      <span class="comment">// The measurement definition Z for the Rendezvous Radar: range (r),</span></div>
 <div class="line">      <span class="comment">// range rate (r_dot), shaft angle (beta), trunnion angle (theta).</span></div>
 <div class="line">      output&lt;vector&lt;4&gt;&gt;,</div>
-<div class="line">      <span class="comment">// The estimate uncertainty P is a high initial uncertainty in position</span></div>
+<div class="line">      <span class="comment">// The initial estimate uncertainty P is a high uncertainty in position</span></div>
 <div class="line">      <span class="comment">// before radar lock. The velocity is somewhat known.</span></div>
 <div class="line">      estimate_uncertainty{{1000., 0., 0., 0., 0., 0.},</div>
 <div class="line">                           {0., 1000., 0., 0., 0., 0.},</div>
