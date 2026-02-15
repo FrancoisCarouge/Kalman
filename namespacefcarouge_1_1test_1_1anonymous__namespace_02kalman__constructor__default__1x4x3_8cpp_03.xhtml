@@ -178,24 +178,23 @@ template&lt;auto Size&gt; </div>
 <div class="line">  <span class="keyword">const</span> matrix&lt;1, 4&gt; i1x4{kalman_internal::one&lt;matrix&lt;1, 4&gt;&gt;};</div>
 <div class="line">  <span class="keyword">const</span> vector&lt;4&gt; z4x1{kalman_internal::zero&lt;vector&lt;4&gt;&gt;};</div>
 <div class="line">  <span class="keyword">const</span> matrix&lt;4, 4&gt; z4x4{kalman_internal::zero&lt;matrix&lt;4, 4&gt;&gt;};</div>
-<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{0.0}, output&lt;vector&lt;4&gt;&gt;, input&lt;vector&lt;3&gt;&gt;};</div>
+<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{0.0}, output&lt;vector&lt;4&gt;&gt;, input&lt;vector&lt;3&gt;&gt;};</div>
 <div class="line"> </div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.f() == 1);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.g() == i1x3);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.h() == i4x1);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.k() == i1x4);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p() == 1);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.r() == z4x4 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.s() == i4x4);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.u() == z3x1 &amp;&amp; <span class="stringliteral">&quot;No initial control.&quot;</span>);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.y() == z4x1);</div>
-<div class="line">  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.z() == z4x1);</div>
+<div class="line">  assert(filter.f() == 1);</div>
+<div class="line">  assert(filter.g() == i1x3);</div>
+<div class="line">  assert(filter.h() == i4x1);</div>
+<div class="line">  assert(filter.k() == i1x4);</div>
+<div class="line">  assert(filter.p() == 1);</div>
+<div class="line">  assert(filter.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
+<div class="line">  assert(filter.r() == z4x4 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
+<div class="line">  assert(filter.s() == i4x4);</div>
+<div class="line">  assert(filter.u() == z3x1 &amp;&amp; <span class="stringliteral">&quot;No initial control.&quot;</span>);</div>
+<div class="line">  assert(filter.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
+<div class="line">  assert(filter.y() == z4x1);</div>
+<div class="line">  assert(filter.z() == z4x1);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00385">factory.hpp:385</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03_xhtml_a867b1b89cfdc342f083c792f87cb4d2c"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">fcarouge::sample::anonymous_namespace{ekf_4x1x0_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__soaring_8cpp_source.xhtml#l00049">ekf_4x1x0_soaring.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default__1x4x3_8cpp_03_xhtml_ad3afcef609ed46ea99186a0993001888"><div class="ttname"><a href="#ad3afcef609ed46ea99186a0993001888">fcarouge::test::anonymous_namespace{kalman_constructor_default_1x4x3.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; double, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="kalman__constructor__default__1x4x3_8cpp_source.xhtml#l00047">kalman_constructor_default_1x4x3.cpp:47</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
@@ -210,20 +209,20 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> matrix&lt;1, 4&gt; i1x4{kalman_internal::one&lt;matrix&lt;1, 4&gt;&gt;};</div>
 <div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> vector&lt;4&gt; z4x1{kalman_internal::zero&lt;vector&lt;4&gt;&gt;};</div>
 <div class="line"><span class="lineno">   58</span>  <span class="keyword">const</span> matrix&lt;4, 4&gt; z4x4{kalman_internal::zero&lt;matrix&lt;4, 4&gt;&gt;};</div>
-<div class="line"><span class="lineno">   59</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{0.0}, output&lt;vector&lt;4&gt;&gt;, input&lt;vector&lt;3&gt;&gt;};</div>
+<div class="line"><span class="lineno">   59</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__soaring_8cpp_03.xhtml#a867b1b89cfdc342f083c792f87cb4d2c">state</a>{0.0}, output&lt;vector&lt;4&gt;&gt;, input&lt;vector&lt;3&gt;&gt;};</div>
 <div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.f() == 1);</div>
-<div class="line"><span class="lineno">   62</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.g() == i1x3);</div>
-<div class="line"><span class="lineno">   63</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.h() == i4x1);</div>
-<div class="line"><span class="lineno">   64</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.k() == i1x4);</div>
-<div class="line"><span class="lineno">   65</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p() == 1);</div>
-<div class="line"><span class="lineno">   66</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
-<div class="line"><span class="lineno">   67</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.r() == z4x4 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
-<div class="line"><span class="lineno">   68</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.s() == i4x4);</div>
-<div class="line"><span class="lineno">   69</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.u() == z3x1 &amp;&amp; <span class="stringliteral">&quot;No initial control.&quot;</span>);</div>
-<div class="line"><span class="lineno">   70</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
-<div class="line"><span class="lineno">   71</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.y() == z4x1);</div>
-<div class="line"><span class="lineno">   72</span>  assert(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.z() == z4x1);</div>
+<div class="line"><span class="lineno">   61</span>  assert(filter.f() == 1);</div>
+<div class="line"><span class="lineno">   62</span>  assert(filter.g() == i1x3);</div>
+<div class="line"><span class="lineno">   63</span>  assert(filter.h() == i4x1);</div>
+<div class="line"><span class="lineno">   64</span>  assert(filter.k() == i1x4);</div>
+<div class="line"><span class="lineno">   65</span>  assert(filter.p() == 1);</div>
+<div class="line"><span class="lineno">   66</span>  assert(filter.q() == 0 &amp;&amp; <span class="stringliteral">&quot;No process noise by default.&quot;</span>);</div>
+<div class="line"><span class="lineno">   67</span>  assert(filter.r() == z4x4 &amp;&amp; <span class="stringliteral">&quot;No observation noise by default.&quot;</span>);</div>
+<div class="line"><span class="lineno">   68</span>  assert(filter.s() == i4x4);</div>
+<div class="line"><span class="lineno">   69</span>  assert(filter.u() == z3x1 &amp;&amp; <span class="stringliteral">&quot;No initial control.&quot;</span>);</div>
+<div class="line"><span class="lineno">   70</span>  assert(filter.x() == 0 &amp;&amp; <span class="stringliteral">&quot;Origin state.&quot;</span>);</div>
+<div class="line"><span class="lineno">   71</span>  assert(filter.y() == z4x1);</div>
+<div class="line"><span class="lineno">   72</span>  assert(filter.z() == z4x1);</div>
 <div class="line"><span class="lineno">   73</span> </div>
 <div class="line"><span class="lineno">   74</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   75</span>}()};</div>

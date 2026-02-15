@@ -150,26 +150,26 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   92</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">output_uncertainty</a>{delta&lt;deg_C2&gt;(0.01)}};</div>
 <div class="line"><span class="lineno">   93</span> </div>
 <div class="line"><span class="lineno">   94</span>  <span class="comment">// Now, we shall predict the next state based on the initialization values.</span></div>
-<div class="line"><span class="lineno">   95</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
+<div class="line"><span class="lineno">   95</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a>();</div>
 <div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>  assert(temperature{point&lt;deg_C&gt;(10.)} == <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x() &amp;&amp;</div>
+<div class="line"><span class="lineno">   97</span>  assert(temperature{point&lt;deg_C&gt;(10.)} == filter.x() &amp;&amp;</div>
 <div class="line"><span class="lineno">   98</span>         <span class="stringliteral">&quot;Since our model has constant dynamics, the predicted estimate is &quot;</span></div>
 <div class="line"><span class="lineno">   99</span>         <span class="stringliteral">&quot;equal to the current estimate: x^1,0 = 10°C.&quot;</span>);</div>
-<div class="line"><span class="lineno">  100</span>  assert(10&#39;000.000&#39;1 * deg_C2 == <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p() &amp;&amp;</div>
+<div class="line"><span class="lineno">  100</span>  assert(10&#39;000.000&#39;1 * deg_C2 == filter.p() &amp;&amp;</div>
 <div class="line"><span class="lineno">  101</span>         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance): p1,0 = p0,0 + q = &quot;</span></div>
 <div class="line"><span class="lineno">  102</span>         <span class="stringliteral">&quot;10&#39;000 + 0.000&#39;1 = 10&#39;000.000&#39;1.&quot;</span>);</div>
 <div class="line"><span class="lineno">  103</span> </div>
 <div class="line"><span class="lineno">  104</span>  <span class="comment">// The first measurement value: z1 = 49.95°C. Measure and update.</span></div>
-<div class="line"><span class="lineno">  105</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(temperature{point&lt;deg_C&gt;(49.95)});</div>
+<div class="line"><span class="lineno">  105</span>  filter.update(temperature{point&lt;deg_C&gt;(49.95)});</div>
 <div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>  assert(abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.k() / 0.999&#39;999) &lt; 0.000&#39;1 &amp;&amp;</div>
+<div class="line"><span class="lineno">  107</span>  assert(abs(1 - filter.k() / 0.999&#39;999) &lt; 0.000&#39;1 &amp;&amp;</div>
 <div class="line"><span class="lineno">  108</span>         <span class="stringliteral">&quot;The gain expected at 0.01% accuracy.&quot;</span>);</div>
 <div class="line"><span class="lineno">  109</span> </div>
 <div class="line"><span class="lineno">  110</span>  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line"><span class="lineno">  111</span>  <span class="comment">// measurements period: Δt = 5s (constant).</span></div>
-<div class="line"><span class="lineno">  112</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>](temperature output_z) {</div>
-<div class="line"><span class="lineno">  113</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
-<div class="line"><span class="lineno">  114</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(output_z);</div>
+<div class="line"><span class="lineno">  112</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](temperature output_z) {</div>
+<div class="line"><span class="lineno">  113</span>    filter.predict();</div>
+<div class="line"><span class="lineno">  114</span>    filter.update(output_z);</div>
 <div class="line"><span class="lineno">  115</span>  }};</div>
 <div class="line"><span class="lineno">  116</span> </div>
 <div class="line"><span class="lineno">  117</span>  step(temperature{point&lt;deg_C&gt;(49.967)});</div>
@@ -183,15 +183,15 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  125</span>  step(temperature{point&lt;deg_C&gt;(49.99)});</div>
 <div class="line"><span class="lineno">  126</span> </div>
 <div class="line"><span class="lineno">  127</span>  <span class="comment">// The estimate uncertainty quickly goes down, after 10 measurements:</span></div>
-<div class="line"><span class="lineno">  128</span>  assert(0.001&#39;2 * deg_C2 &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p() &amp;&amp; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p() &lt; 0.001&#39;3 * deg_C2 &amp;&amp;</div>
+<div class="line"><span class="lineno">  128</span>  assert(0.001&#39;2 * deg_C2 &lt; filter.p() &amp;&amp; filter.p() &lt; 0.001&#39;3 * deg_C2 &amp;&amp;</div>
 <div class="line"><span class="lineno">  129</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 5% accuracy.&quot;</span></div>
 <div class="line"><span class="lineno">  130</span>         <span class="stringliteral">&quot;The estimate uncertainty is 0.0013, i.e. the estimate error standard &quot;</span></div>
 <div class="line"><span class="lineno">  131</span>         <span class="stringliteral">&quot;deviation is: 0.036°C.&quot;</span>);</div>
-<div class="line"><span class="lineno">  132</span>  assert(temperature{point&lt;deg_C&gt;(49.98)} &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x() &amp;&amp;</div>
-<div class="line"><span class="lineno">  133</span>         <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x() &lt; temperature{point&lt;deg_C&gt;(49.99)} &amp;&amp;</div>
+<div class="line"><span class="lineno">  132</span>  assert(temperature{point&lt;deg_C&gt;(49.98)} &lt; filter.x() &amp;&amp;</div>
+<div class="line"><span class="lineno">  133</span>         filter.x() &lt; temperature{point&lt;deg_C&gt;(49.99)} &amp;&amp;</div>
 <div class="line"><span class="lineno">  134</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span></div>
 <div class="line"><span class="lineno">  135</span>         <span class="stringliteral">&quot;The filter estimates the liquid temperature at 49.988°C.&quot;</span>);</div>
-<div class="line"><span class="lineno">  136</span>  assert(0.126&#39;4 &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.k() &amp;&amp; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.k() &lt; 0.126&#39;5 &amp;&amp;</div>
+<div class="line"><span class="lineno">  136</span>  assert(0.126&#39;4 &lt; filter.k() &amp;&amp; filter.k() &lt; 0.126&#39;5 &amp;&amp;</div>
 <div class="line"><span class="lineno">  137</span>         <span class="stringliteral">&quot;The gain expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><span class="lineno">  138</span> </div>
 <div class="line"><span class="lineno">  139</span>  <span class="comment">// So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.</span></div>
@@ -202,7 +202,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  144</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  145</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00385">factory.hpp:385</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa64cb12fb86876fb5bf74555b8b67f5a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ae0d4cb88e21450951fd7dc06f745f71b"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">fcarouge::kalman_internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
 </div><!-- fragment -->
 </div>

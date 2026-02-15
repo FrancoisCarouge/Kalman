@@ -298,13 +298,13 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  176</span>  <span class="comment">// per second. Fake data decreasing range by 100m each second, with slight</span></div>
 <div class="line"><span class="lineno">  177</span>  <span class="comment">// angle offsets.</span></div>
 <div class="line"><span class="lineno">  178</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; 10; ++k) {</div>
-<div class="line"><span class="lineno">  179</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict(1.);</div>
+<div class="line"><span class="lineno">  179</span>    filter.predict(1.);</div>
 <div class="line"><span class="lineno">  180</span>    <span class="keywordtype">double</span> true_range{30000. - (100. * (k + 1))};</div>
-<div class="line"><span class="lineno">  181</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(true_range, -100., 0.03, 0.01);</div>
+<div class="line"><span class="lineno">  181</span>    filter.update(true_range, -100., 0.03, 0.01);</div>
 <div class="line"><span class="lineno">  182</span>  }</div>
 <div class="line"><span class="lineno">  183</span> </div>
-<div class="line"><span class="lineno">  184</span>  <span class="keywordtype">double</span> range{vector&lt;3&gt;{<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().template head&lt;3&gt;()}.norm()};</div>
-<div class="line"><span class="lineno">  185</span>  <span class="keywordtype">double</span> velocity{<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[3]};</div>
+<div class="line"><span class="lineno">  184</span>  <span class="keywordtype">double</span> range{vector&lt;3&gt;{filter.x().template head&lt;3&gt;()}.norm()};</div>
+<div class="line"><span class="lineno">  185</span>  <span class="keywordtype">double</span> velocity{filter.x()[3]};</div>
 <div class="line"><span class="lineno">  186</span> </div>
 <div class="line"><span class="lineno">  187</span>  assert(std::abs(1 - range / 29&#39;001.861&#39;093&#39;990) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
 <div class="line"><span class="lineno">  188</span>         std::abs(1 - velocity / -99.574&#39;527&#39;631&#39;012) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
@@ -315,7 +315,6 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  193</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a053f2aaec0f20812632149fae25162fd"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a053f2aaec0f20812632149fae25162fd">fcarouge::kalman_internal::observation</a></div><div class="ttdeci">observation(Element) -&gt; observation&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00385">factory.hpp:385</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5cde5a9f3fe3a8d4f14ea136c15227dd"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5cde5a9f3fe3a8d4f14ea136c15227dd">fcarouge::kalman_internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac1a1ab117704e8837bb031d8c597826c"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac1a1ab117704e8837bb031d8c597826c">fcarouge::kalman_internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac6a9cf33472fe67bd423c384ef492c25"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac6a9cf33472fe67bd423c384ef492c25">fcarouge::kalman_internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>

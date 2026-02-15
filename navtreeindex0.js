@@ -2,8 +2,8 @@ var NAVTREEINDEX0 =
 {
 "annotated.xhtml":[10,0],
 "classes.xhtml":[10,1],
-"classfcarouge_1_1kalman.xhtml":[9,0,0,4],
 "classfcarouge_1_1kalman.xhtml":[10,0,0,0],
+"classfcarouge_1_1kalman.xhtml":[9,0,0,4],
 "classfcarouge_1_1kalman.xhtml#a0c2291a1d9bd4cc169f91e9b10399b38":[9,0,0,4,2],
 "classfcarouge_1_1kalman.xhtml#a0c2291a1d9bd4cc169f91e9b10399b38":[10,0,0,0,2],
 "classfcarouge_1_1kalman.xhtml#a26f8830ac8d109d2685b187bca02e4f8":[9,0,0,4,17],
@@ -75,7 +75,7 @@ var NAVTREEINDEX0 =
 "examples.xhtml":[12],
 "factory_8hpp.xhtml":[11,0,2,0,0,0],
 "factory_8hpp.xhtml#a083c7633e41b94b1c0cf980cd4a51d74":[11,0,2,0,0,0,0],
-"factory_8hpp.xhtml#a5514c5591cc1a7635a3179439d68be98":[11,0,2,0,0,0,1],
+"factory_8hpp.xhtml#a67be5c50a8d320ce7a2e4ffbacb7edac":[11,0,2,0,0,0,1],
 "factory_8hpp_source.xhtml":[11,0,2,0,0,0],
 "files.xhtml":[11,0],
 "format_8hpp.xhtml":[11,0,2,0,0,1],

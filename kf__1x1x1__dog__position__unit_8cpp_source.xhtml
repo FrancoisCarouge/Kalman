@@ -177,7 +177,7 @@ $(function(){initNavTree('kf__1x1x1__dog__position__unit_8cpp_source.xhtml','');
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>      <span class="comment">// variance there is in each measurement. The output uncertainty R:</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>      output_uncertainty{2. * m2}};</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  filter.predict(position{1. * m});</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a>(position{1. * m});</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  filter.update(position{1.354 * m});</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  filter.predict(position{2.352 * m});</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  filter.update(position{1.882 * m});</div>
@@ -211,6 +211,7 @@ $(function(){initNavTree('kf__1x1x1__dog__position__unit_8cpp_source.xhtml','');
 </div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa64cb12fb86876fb5bf74555b8b67f5a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 </div><!-- fragment --></div><!-- contents -->

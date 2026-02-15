@@ -33,7 +33,7 @@ var namespacefcarouge =
       [ "state_transition", "namespacefcarouge_1_1kalman__internal.xhtml#a4a9f3fadd77b821228364eae6dbdee2b", null ],
       [ "t", "namespacefcarouge_1_1kalman__internal.xhtml#acb17489172dd8b3802d97fdd17f9d91b", null ],
       [ "transition", "namespacefcarouge_1_1kalman__internal.xhtml#a22b52e1829f5b9cee3e159cf7ec7e00a", null ],
-      [ "filter", "namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98", null ],
+      [ "deducer", "namespacefcarouge_1_1kalman__internal.xhtml#a67be5c50a8d320ce7a2e4ffbacb7edac", null ],
       [ "first_v", "namespacefcarouge_1_1kalman__internal.xhtml#aad9be752b238d15bfc4ea67b30660cc7", null ],
       [ "input", "namespacefcarouge_1_1kalman__internal.xhtml#aab14d21f3e63487db138032fd68fafa1", null ],
       [ "one", "namespacefcarouge_1_1kalman__internal.xhtml#a23cbb93293154cb6105cfd41f2b12981", null ],

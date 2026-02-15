@@ -243,28 +243,28 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  119</span>                       {0., 0., 0., 0., 0., 1.}}};</div>
 <div class="line"><span class="lineno">  120</span> </div>
 <div class="line"><span class="lineno">  121</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line"><span class="lineno">  122</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
+<div class="line"><span class="lineno">  122</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a>();</div>
 <div class="line"><span class="lineno">  123</span> </div>
 <div class="line"><span class="lineno">  124</span>  <span class="comment">// The measurement values: z1 = [-393.66 m, 300.4 m]</span></div>
-<div class="line"><span class="lineno">  125</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(-393.66, 300.4);</div>
-<div class="line"><span class="lineno">  126</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
+<div class="line"><span class="lineno">  125</span>  filter.update(-393.66, 300.4);</div>
+<div class="line"><span class="lineno">  126</span>  filter.predict();</div>
 <div class="line"><span class="lineno">  127</span> </div>
 <div class="line"><span class="lineno">  128</span>  <span class="comment">// And so on, run a step of the filter, predicting and updating, every</span></div>
 <div class="line"><span class="lineno">  129</span>  <span class="comment">// measurements period: Δt = 1s (constant, built-in).</span></div>
-<div class="line"><span class="lineno">  130</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>](<span class="keywordtype">double</span> position_x, <span class="keywordtype">double</span> position_y) {</div>
-<div class="line"><span class="lineno">  131</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(position_x, position_y);</div>
-<div class="line"><span class="lineno">  132</span>    <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
+<div class="line"><span class="lineno">  130</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](<span class="keywordtype">double</span> position_x, <span class="keywordtype">double</span> position_y) {</div>
+<div class="line"><span class="lineno">  131</span>    filter.update(position_x, position_y);</div>
+<div class="line"><span class="lineno">  132</span>    filter.predict();</div>
 <div class="line"><span class="lineno">  133</span>  }};</div>
 <div class="line"><span class="lineno">  134</span> </div>
 <div class="line"><span class="lineno">  135</span>  step(-375.93, 301.78);</div>
 <div class="line"><span class="lineno">  136</span> </div>
 <div class="line"><span class="lineno">  137</span>  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
-<div class="line"><span class="lineno">  138</span>  assert(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  139</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  140</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  141</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  142</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  143</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  138</span>  assert(std::abs(1 - filter.x()[0] / -277.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  139</span>         std::abs(1 - filter.x()[1] / 148.3) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  140</span>         std::abs(1 - filter.x()[2] / 94.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  141</span>         std::abs(1 - filter.x()[3] / 249.8) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  142</span>         std::abs(1 - filter.x()[4] / -85.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  143</span>         std::abs(1 - filter.x()[5] / -63.6) &lt; 0.001 &amp;&amp;</div>
 <div class="line"><span class="lineno">  144</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><span class="lineno">  145</span> </div>
 <div class="line"><span class="lineno">  146</span>  step(-351.04, 295.1);</div>
@@ -301,19 +301,19 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  177</span>  step(291.8, 32.99);</div>
 <div class="line"><span class="lineno">  178</span>  step(299.89, 2.14);</div>
 <div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>  assert(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><span class="lineno">  181</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><span class="lineno">  182</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><span class="lineno">  183</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><span class="lineno">  184</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
-<div class="line"><span class="lineno">  185</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><span class="lineno">  180</span>  assert(std::abs(1 - filter.x()[0] / 298.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><span class="lineno">  181</span>         std::abs(1 - filter.x()[1] / -1.65) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><span class="lineno">  182</span>         std::abs(1 - filter.x()[2] / -1.9) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><span class="lineno">  183</span>         std::abs(1 - filter.x()[3] / -22.5) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><span class="lineno">  184</span>         std::abs(1 - filter.x()[4] / -26.1) &lt; 0.006 &amp;&amp;</div>
+<div class="line"><span class="lineno">  185</span>         std::abs(1 - filter.x()[5] / -0.64) &lt; 0.006 &amp;&amp;</div>
 <div class="line"><span class="lineno">  186</span>         <span class="stringliteral">&quot;The state estimates expected at 0.6% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  187</span>  assert(std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  188</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  189</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  190</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  191</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  192</span>         std::abs(1 - <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.p()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  187</span>  assert(std::abs(1 - filter.p()(0, 0) / 11.25) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  188</span>         std::abs(1 - filter.p()(0, 1) / 4.5) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  189</span>         std::abs(1 - filter.p()(0, 2) / 0.9) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  190</span>         std::abs(1 - filter.p()(1, 1) / 2.4) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  191</span>         std::abs(1 - filter.p()(2, 2) / 0.2) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  192</span>         std::abs(1 - filter.p()(3, 3) / 11.25) &lt; 0.001 &amp;&amp;</div>
 <div class="line"><span class="lineno">  193</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span></div>
 <div class="line"><span class="lineno">  194</span>         <span class="stringliteral">&quot;At this point, the position uncertainty px = py = 5, which means &quot;</span></div>
 <div class="line"><span class="lineno">  195</span>         <span class="stringliteral">&quot;that the standard deviation of the prediction is square root of 5m.&quot;</span>);</div>
@@ -336,7 +336,7 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  212</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  213</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00385">factory.hpp:385</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa64cb12fb86876fb5bf74555b8b67f5a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5cde5a9f3fe3a8d4f14ea136c15227dd"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5cde5a9f3fe3a8d4f14ea136c15227dd">fcarouge::kalman_internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac1a1ab117704e8837bb031d8c597826c"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac1a1ab117704e8837bb031d8c597826c">fcarouge::kalman_internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac6a9cf33472fe67bd423c384ef492c25"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac6a9cf33472fe67bd423c384ef492c25">fcarouge::kalman_internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>

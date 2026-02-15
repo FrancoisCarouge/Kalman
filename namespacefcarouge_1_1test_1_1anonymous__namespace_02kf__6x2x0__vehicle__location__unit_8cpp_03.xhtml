@@ -284,34 +284,34 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  162</span>      }()}};</div>
 <div class="line"><span class="lineno">  163</span> </div>
 <div class="line"><span class="lineno">  164</span>  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line"><span class="lineno">  165</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
+<div class="line"><span class="lineno">  165</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a>();</div>
 <div class="line"><span class="lineno">  166</span> </div>
 <div class="line"><span class="lineno">  167</span>  <span class="comment">// The measurement values: z1 = [-393.66 m, 300.4 m]</span></div>
-<div class="line"><span class="lineno">  168</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(-393.66 * m, 300.4 * m);</div>
-<div class="line"><span class="lineno">  169</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
-<div class="line"><span class="lineno">  170</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.update(-375.93 * m, 301.78 * m);</div>
-<div class="line"><span class="lineno">  171</span>  <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.predict();</div>
+<div class="line"><span class="lineno">  168</span>  filter.update(-393.66 * m, 300.4 * m);</div>
+<div class="line"><span class="lineno">  169</span>  filter.predict();</div>
+<div class="line"><span class="lineno">  170</span>  filter.update(-375.93 * m, 301.78 * m);</div>
+<div class="line"><span class="lineno">  171</span>  filter.predict();</div>
 <div class="line"><span class="lineno">  172</span> </div>
 <div class="line"><span class="lineno">  173</span>  <span class="comment">// Verify the example estimated state at 0.1% accuracy.</span></div>
-<div class="line"><span class="lineno">  174</span>  assert(position{-277.8 * m} &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;0&gt;() &amp;&amp;</div>
-<div class="line"><span class="lineno">  175</span>         <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;0&gt;() &lt; position{-277.7 * m} &amp;&amp;</div>
-<div class="line"><span class="lineno">  176</span>         velocity{148.3 * m / s} &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;1&gt;() &amp;&amp;</div>
-<div class="line"><span class="lineno">  177</span>         <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;1&gt;() &lt; velocity{148.4 * m / s} &amp;&amp;</div>
-<div class="line"><span class="lineno">  178</span>         acceleration{94.5 * m / s2} &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;2&gt;() &amp;&amp;</div>
-<div class="line"><span class="lineno">  179</span>         <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;2&gt;() &lt; acceleration{94.56 * m / s2} &amp;&amp;</div>
-<div class="line"><span class="lineno">  180</span>         position{249.7 * m} &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;3&gt;() &amp;&amp;</div>
-<div class="line"><span class="lineno">  181</span>         <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;3&gt;() &lt; position{249.8 * m} &amp;&amp;</div>
-<div class="line"><span class="lineno">  182</span>         velocity{-86.0 * m / s} &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;4&gt;() &amp;&amp;</div>
-<div class="line"><span class="lineno">  183</span>         <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;4&gt;() &lt; velocity{-85.9 * m / s} &amp;&amp;</div>
-<div class="line"><span class="lineno">  184</span>         acceleration{-63.65 * m / s2} &lt; <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;5&gt;() &amp;&amp;</div>
-<div class="line"><span class="lineno">  185</span>         <a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>.x().at&lt;5&gt;() &lt; acceleration{-63.64 * m / s2} &amp;&amp;</div>
+<div class="line"><span class="lineno">  174</span>  assert(position{-277.8 * m} &lt; filter.x().at&lt;0&gt;() &amp;&amp;</div>
+<div class="line"><span class="lineno">  175</span>         filter.x().at&lt;0&gt;() &lt; position{-277.7 * m} &amp;&amp;</div>
+<div class="line"><span class="lineno">  176</span>         velocity{148.3 * m / s} &lt; filter.x().at&lt;1&gt;() &amp;&amp;</div>
+<div class="line"><span class="lineno">  177</span>         filter.x().at&lt;1&gt;() &lt; velocity{148.4 * m / s} &amp;&amp;</div>
+<div class="line"><span class="lineno">  178</span>         acceleration{94.5 * m / s2} &lt; filter.x().at&lt;2&gt;() &amp;&amp;</div>
+<div class="line"><span class="lineno">  179</span>         filter.x().at&lt;2&gt;() &lt; acceleration{94.56 * m / s2} &amp;&amp;</div>
+<div class="line"><span class="lineno">  180</span>         position{249.7 * m} &lt; filter.x().at&lt;3&gt;() &amp;&amp;</div>
+<div class="line"><span class="lineno">  181</span>         filter.x().at&lt;3&gt;() &lt; position{249.8 * m} &amp;&amp;</div>
+<div class="line"><span class="lineno">  182</span>         velocity{-86.0 * m / s} &lt; filter.x().at&lt;4&gt;() &amp;&amp;</div>
+<div class="line"><span class="lineno">  183</span>         filter.x().at&lt;4&gt;() &lt; velocity{-85.9 * m / s} &amp;&amp;</div>
+<div class="line"><span class="lineno">  184</span>         acceleration{-63.65 * m / s2} &lt; filter.x().at&lt;5&gt;() &amp;&amp;</div>
+<div class="line"><span class="lineno">  185</span>         filter.x().at&lt;5&gt;() &lt; acceleration{-63.64 * m / s2} &amp;&amp;</div>
 <div class="line"><span class="lineno">  186</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><span class="lineno">  187</span> </div>
 <div class="line"><span class="lineno">  190</span> </div>
 <div class="line"><span class="lineno">  191</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  192</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00385">factory.hpp:385</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa64cb12fb86876fb5bf74555b8b67f5a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5cde5a9f3fe3a8d4f14ea136c15227dd"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5cde5a9f3fe3a8d4f14ea136c15227dd">fcarouge::kalman_internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac1a1ab117704e8837bb031d8c597826c"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac1a1ab117704e8837bb031d8c597826c">fcarouge::kalman_internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac6a9cf33472fe67bd423c384ef492c25"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac6a9cf33472fe67bd423c384ef492c25">fcarouge::kalman_internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>

@@ -68,7 +68,7 @@ var searchData=
   ['fcarouge_3a_3atest_3a_3aanonymous_5fnamespace_7butility_5fzero_5fdefault_2ecpp_7d_65',['anonymous_namespace{utility_zero_default.cpp}',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02utility__zero__default_8cpp_03.xhtml',1,'fcarouge::test']]],
   ['features_66',['Requesting Features',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features',1,'']]],
   ['filter_67',['Filter',['../index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter',1,'1x1 Constant System Dynamic Model Filter'],['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'4x1 Nonlinear Dynamic Model Extended Filter'],['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'6x2 Constant Acceleration Dynamic Model Filter'],['../index.xhtml',1,'Kalman Filter']]],
-  ['filter_68',['filter',['../classfcarouge_1_1kalman.xhtml#ac639e5ff752f6598318aa36d93526ea5',1,'fcarouge::kalman::filter'],['../namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98',1,'fcarouge::kalman_internal::filter']]],
+  ['filter_68',['filter',['../classfcarouge_1_1kalman.xhtml#ac639e5ff752f6598318aa36d93526ea5',1,'fcarouge::kalman']]],
   ['first_69',['first',['../namespacefcarouge_1_1kalman__internal.xhtml#a66f34e6d5c7f8322c4d5f63051e20139',1,'fcarouge::kalman_internal']]],
   ['first_5fv_70',['first_v',['../namespacefcarouge_1_1kalman__internal.xhtml#aad9be752b238d15bfc4ea67b30660cc7',1,'fcarouge::kalman_internal']]],
   ['for_5fconstexpr_71',['for_constexpr',['../namespacefcarouge_1_1kalman__internal.xhtml#a6baba1af637abe5f76f3b5184d0ff3c6',1,'fcarouge::kalman_internal']]],

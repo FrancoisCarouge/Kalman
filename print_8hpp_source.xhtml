@@ -153,7 +153,7 @@ $(function(){initNavTree('print_8hpp_source.xhtml',''); initResizable(true); });
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">namespace </span>kalman_internal {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Filter&gt; <span class="keyword">class </span>printer : <span class="keyword">public</span> Filter {</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keyword">constexpr</span> <span class="keyword">explicit</span> printer(Filter &amp;&amp;<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keyword">constexpr</span> <span class="keyword">explicit</span> printer(Filter &amp;&amp;filter);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">constexpr</span> ~printer();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keyword">constexpr</span> <span class="keyword">decltype</span>(<span class="keyword">auto</span>) x(<span class="keyword">this</span> <span class="keyword">auto</span> &amp;&amp;self, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;...values)</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">requires</span>(kalman_internal::has_state&lt;Filter&gt;);</div>
@@ -186,8 +186,8 @@ $(function(){initNavTree('print_8hpp_source.xhtml',''); initResizable(true); });
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>};</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Filter&gt;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">constexpr</span> printer&lt;Filter&gt;::printer(Filter &amp;&amp;<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>)</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    : Filter{std::forward&lt;Filter&gt;(<a class="code hl_variable" href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">filter</a>)} {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">constexpr</span> printer&lt;Filter&gt;::printer(Filter &amp;&amp;filter)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    : Filter{std::forward&lt;Filter&gt;(filter)} {</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  <span class="keyword">const</span> Filter &amp;base{*<span class="keyword">this</span>};</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  std::println(R<span class="stringliteral">&quot;({{&quot;event&quot;: &quot;construction&quot;, &quot;filter&quot;:{}}})&quot;, base);</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="stringliteral">}</span></div>
@@ -393,7 +393,6 @@ $(function(){initNavTree('print_8hpp_source.xhtml',''); initResizable(true); });
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>} <span class="comment">// namespace fcarouge</span></div>
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span><span class="preprocessor">#endif </span><span class="comment">// FCAROUGE_KALMAN_INTERNAL_PRINT_HPP</span></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5514c5591cc1a7635a3179439d68be98"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5514c5591cc1a7635a3179439d68be98">fcarouge::kalman_internal::filter</a></div><div class="ttdeci">constexpr filter_deducer&lt; Filter &gt; filter</div><div class="ttdef"><b>Definition</b> <a href="factory_8hpp_source.xhtml#l00385">factory.hpp:385</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml"><div class="ttname"><a href="namespacefcarouge.xhtml">fcarouge</a></div><div class="ttdoc">Francois Carouge's projects namespace.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aadc278093fb5d97220ab056200a13f03"><div class="ttname"><a href="namespacefcarouge.xhtml#aadc278093fb5d97220ab056200a13f03">fcarouge::operator|</a></div><div class="ttdeci">constexpr auto operator|(Filter &amp;&amp;filter, const printer &amp;decorator)</div><div class="ttdef"><b>Definition</b> <a href="#l00283">print.hpp:283</a></div></div>
 <div class="ttc" id="astructfcarouge_1_1printer_xhtml"><div class="ttname"><a href="structfcarouge_1_1printer.xhtml">fcarouge::printer</a></div><div class="ttdef"><b>Definition</b> <a href="#l00279">print.hpp:279</a></div></div>

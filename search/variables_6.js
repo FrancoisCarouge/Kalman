@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['merchantability_0',['MERCHANTABILITY',['../_l_i_c_e_n_s_e_8txt.xhtml#ae500a561df0df2b955062801cf14b51e',1,'LICENSE.txt']]],
-  ['modify_1',['modify',['../_l_i_c_e_n_s_e_8txt.xhtml#ab211d3cae85d1f657e0517e9184e50a6',1,'LICENSE.txt']]]
+  ['laws_0',['laws',['../_l_i_c_e_n_s_e_8txt.xhtml#ad0fed7f837cea469b695486650edcf96',1,'LICENSE.txt']]],
+  ['liability_1',['LIABILITY',['../_l_i_c_e_n_s_e_8txt.xhtml#a0ff220a6e5d60993639b6acbd3c28197',1,'LICENSE.txt']]]
 ];
