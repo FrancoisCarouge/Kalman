@@ -75,6 +75,7 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
   static inline const auto i{one<evaluate<product<gain, output_model>>>};
 
   state x{zero<state>};
+  output z{zero<output>};
   estimate_uncertainty p{one<estimate_uncertainty>};
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
@@ -98,7 +99,6 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
   gain k{one<gain>};
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
-  output z{zero<output>};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 

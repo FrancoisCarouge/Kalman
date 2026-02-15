@@ -47,7 +47,7 @@ namespace fcarouge {
 template <typename Filter>
 template <typename... Arguments>
 constexpr kalman<Filter>::kalman(Arguments... arguments)
-    : filter{kalman_internal::deducer<Filter>(arguments...)} {}
+    : filter{{arguments.value...}} {}
 
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::x(this auto &&self,

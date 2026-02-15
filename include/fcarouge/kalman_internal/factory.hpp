@@ -62,18 +62,164 @@ namespace fcarouge::kalman_internal {
 //! @todo Some of these overload should probably be removed to guide the user
 //! towards better initialization practices?
 template <typename Filter = void> struct filter_deducer {
-  template <typename... Arguments>
+  // template <typename... Arguments>
+  // [[nodiscard]] static constexpr auto
+  // operator()([[maybe_unused]] Arguments... arguments)
+  //   requires(std::same_as<Filter, void>)
+  // {
+  //   static_assert(false,
+  //                 "This requested filter configuration is not yet supported.
+  //                 " "Please, submit a pull request or feature request.");
+
+  //   return x_z_p_r<double>{};
+  // }
+
+  // template <typename... Arguments>
+  // [[nodiscard]] static constexpr auto
+  // operator()([[maybe_unused]] Arguments... arguments)
+  // // requires(not std::same_as<Filter, void>)
+  // {
+  //   using type =
+  //       std::invoke_result_t<decltype(&filter_deducer::deduce),
+  //       Arguments...>;
+  //   return type{arguments...};
+  // }
+
+  [[nodiscard]] static constexpr auto operator()() -> x_z_p_r<double>;
+
+  template <typename X>
+  [[nodiscard]] static constexpr auto operator()(state<X>) -> x_z_p_r<X>;
+
+  template <typename X>
+  [[nodiscard]] static constexpr auto operator()(state<X>,
+                                                 output_t<X>) -> x_z_p_r<X>;
+
+  template <typename X, typename Z>
   [[nodiscard]] static constexpr auto
-  operator()([[maybe_unused]] Arguments... arguments)
-    requires(std::same_as<Filter, void>)
-  {
-    static_assert(false,
-                  "This requested filter configuration is not yet supported. "
-                  "Please, submit a pull request or feature request.");
+  operator()(state<X>, output_t<Z>) -> x_z_p_q_r_h_f<X, Z>;
 
-    return x_z_p_r<double>{};
-  }
+  template <typename X, typename Z, typename U>
+  [[nodiscard]] static constexpr auto operator()(state<X>, output_t<Z>,
+                                                 input_t<U> u)
+      -> x_z_u_p_q_r_h_f_g_us_ps<X, Z, U, std::tuple<>, std::tuple<>>;
 
+  template <typename X, typename Z, typename U, typename P, typename Q,
+            typename R, typename F, typename G, typename... Ps>
+    requires requires(Q q) { requires std::invocable<Q, X, Ps...>; }
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, input_t<U>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>, state_transition<F>,
+             input_control<G>, prediction_types_t<Ps...>)
+      -> x_z_u_p_qq_r_ff_gg_ps<X, Z, U, std::tuple<>,
+                               repack<prediction_types_t<Ps...>>>;
+
+  template <typename X, typename Z, typename U, typename... Us, typename... Ps>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, input_t<U>, update_types_t<Us...>,
+             prediction_types_t<Ps...>)
+      -> x_z_u_p_q_r_h_f_g_us_ps<X, Z, U, repack<update_types_t<Us...>>,
+                                 repack<prediction_types_t<Ps...>>>;
+
+  template <typename X, typename Z, typename P, typename Q, typename R,
+            typename H, typename T, typename O, typename... Us, typename... Ps>
+    requires requires() {
+      requires std::invocable<H, X, Us...>;
+      requires std::invocable<T, X, Ps...>;
+      requires std::invocable<O, X, Us...>;
+    }
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>, output_model<H>,
+             transition<T>, observation<O>, update_types_t<Us...>,
+             prediction_types_t<Ps...>)
+      -> x_z_p_q_r_hh_f_us_ps<X, Z, repack<update_types_t<Us...>>,
+                              repack<prediction_types_t<Ps...>>>;
+
+  template <typename X, typename Z, typename P, typename Q, typename R,
+            typename H, typename F, typename O, typename... Ps>
+    requires requires() {
+      requires std::invocable<H, X>;
+      requires std::invocable<F, X, Ps...>;
+      requires std::invocable<O, X>;
+    }
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>, output_model<H>,
+             state_transition<F>, observation<O>, prediction_types_t<Ps...>)
+      -> x_z_p_q_r_hh_ff_us_ps<X, Z, repack<prediction_types_t<Ps...>>>;
+
+  template <typename X, typename Z, typename P, typename Q, typename R,
+            typename H, typename F>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>, output_model<H>,
+             state_transition<F>) -> x_z_p_q_r_h_f<X, Z>;
+
+  template <typename X, typename Z, typename P, typename R>
+    requires std::same_as<X, Z>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, estimate_uncertainty<P>,
+             output_uncertainty<R>) -> x_z_p_r<X>;
+
+  template <typename X, typename Z, typename P, typename R, typename F>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, estimate_uncertainty<P>,
+             output_uncertainty<R>, state_transition<F>) -> x_z_p_r_f<X>;
+
+  template <typename X, typename Z, typename P, typename R>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, estimate_uncertainty<P>,
+             output_uncertainty<R>) -> x_z_p_q_r_h_f<X, Z>;
+
+  template <typename X, typename P, typename R, typename Q>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<X>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>) -> x_z_p_q_r<X>;
+
+  template <typename X, typename Z, typename U, typename P, typename Q,
+            typename R>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, input_t<U>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>)
+      -> x_z_u_p_q_r_h_f_g_us_ps<X, Z, U, std::tuple<>, std::tuple<>>;
+
+  template <typename X, typename Z, typename U, typename P, typename R,
+            typename Q, typename... Us, typename... Ps>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, input_t<U>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>,
+             update_types_t<Us...>, prediction_types_t<Ps...>)
+      -> x_z_u_p_q_r_h_f_g_us_ps<X, Z, U, repack<update_types_t<Us...>>,
+                                 repack<prediction_types_t<Ps...>>>;
+
+  template <typename X, typename P, typename Q, typename R>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<X>, input_t<X>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>) -> x_z_u_p_q_r<X>;
+
+  template <typename X, typename Z, typename U, typename P, typename Q,
+            typename R, typename H, typename F, typename G, typename... Us,
+            typename... Ps>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, input_t<U>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>, output_model<H>,
+             state_transition<F>, input_control<G>, update_types_t<Us...>,
+             prediction_types_t<Ps...>)
+      -> x_z_u_p_q_r_h_f_g_us_ps<X, Z, U, repack<update_types_t<Us...>>,
+                                 repack<prediction_types_t<Ps...>>>;
+
+  template <typename X, typename Z, typename P, typename Q, typename R,
+            typename F>
+    requires requires(Q q, R r) {
+      requires std::invocable<Q, X>;
+      requires std::invocable<R, X, Z>;
+    }
+  [[nodiscard]] static constexpr auto
+  operator()(state<X>, output_t<Z>, estimate_uncertainty<P>,
+             process_uncertainty<Q>, output_uncertainty<R>,
+             state_transition<F>) -> x_z_p_qq_rr_f<X, Z>;
+
+  /*
   //! @todo Rename, clean the concet: undeduced?
   [[nodiscard]] static constexpr auto operator()() -> x_z_p_r<double>
     requires(std::same_as<Filter, void>);
@@ -330,9 +476,10 @@ template <typename Filter = void> struct filter_deducer {
               typename kt::noise_observation_function(r.value),
               typename kt::state_transition(f.value)};
   }
+  */
 };
 
-template <typename Filter> inline constexpr filter_deducer<Filter> deducer{};
+// template <typename Filter> inline constexpr filter_deducer<Filter> deducer{};
 
 template <typename... Arguments>
 using deduce_filter = std::invoke_result_t<filter_deducer<>, Arguments...>;

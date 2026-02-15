@@ -133,12 +133,16 @@ process_uncertainty(std::initializer_list<std::initializer_list<Element>>)
 
 template <typename Type> struct input_t {
   using type = Type;
+
+  Type value;
 };
 
 template <typename Type> inline input_t<Type> input{};
 
 template <typename Type> struct output_t {
   using type = Type;
+
+  Type value;
 };
 
 template <typename Type> inline output_t<Type> output{};
@@ -228,11 +232,15 @@ template <typename Type> struct observation {
 template <typename Element> observation(Element) -> observation<Element>;
 
 //! @todo Better name not ending by *_types?
-template <typename... Types> struct update_types_t {};
+template <typename... Types> struct update_types_t {
+  std::tuple<Types...> value;
+};
 
 template <typename... Types> inline update_types_t<Types...> update_types{};
 
-template <typename... Types> struct prediction_types_t {};
+template <typename... Types> struct prediction_types_t {
+  std::tuple<Types...> value;
+};
 
 template <typename... Types>
 inline prediction_types_t<Types...> prediction_types{};
