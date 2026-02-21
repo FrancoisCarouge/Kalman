@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "x_z_p_q_r.hpp"
 #include "x_z_p_q_r_h_f.hpp"
 #include "x_z_p_q_r_hh_f_us_ps.hpp"
-#include "x_z_p_q_r_hh_ff_us_ps.hpp"
+#include "x_z_p_q_r_hh_ff_ps.hpp"
 #include "x_z_p_qq_rr_f.hpp"
 #include "x_z_p_r.hpp"
 #include "x_z_p_r_f.hpp"
@@ -174,7 +174,7 @@ template <typename Filter = void> struct filter_deducer {
              output_uncertainty<R> r, output_model<H> hh,
              state_transition<F> ff, observation<O> obs,
              [[maybe_unused]] prediction_types_t<Ps...> pts) {
-    using kt = x_z_p_q_r_hh_ff_us_ps<X, Z, repack<prediction_types_t<Ps...>>>;
+    using kt = x_z_p_q_r_hh_ff_ps<X, Z, repack<prediction_types_t<Ps...>>>;
 
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),

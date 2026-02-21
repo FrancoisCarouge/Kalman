@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_US_PS_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_US_PS_HPP
+#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_PS_HPP
+#define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_PS_HPP
 
 #include "function.hpp"
 #include "utility.hpp"
@@ -46,10 +46,10 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
-template <typename, typename, typename> struct x_z_p_q_r_hh_ff_us_ps final {};
+template <typename, typename, typename> struct x_z_p_q_r_hh_ff_ps final {};
 
 template <typename State, typename Output, typename... PredictionTypes>
-struct x_z_p_q_r_hh_ff_us_ps<State, Output, std::tuple<PredictionTypes...>> {
+struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>> {
   using state = State;
   using output = Output;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -120,4 +120,4 @@ struct x_z_p_q_r_hh_ff_us_ps<State, Output, std::tuple<PredictionTypes...>> {
 };
 } // namespace fcarouge::kalman_internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_US_PS_HPP
+#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_PS_HPP
