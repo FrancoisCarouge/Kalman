@@ -54,7 +54,7 @@ target_sources(
             "fcarouge/kalman_internal/utility.hpp"
             "fcarouge/kalman_internal/x_z_p_q_r_h_f.hpp"
             "fcarouge/kalman_internal/x_z_p_q_r_hh_f_us_ps.hpp"
-            "fcarouge/kalman_internal/x_z_p_q_r_hh_ff_us_ps.hpp"
+            "fcarouge/kalman_internal/x_z_p_q_r_hh_ff_ps.hpp"
             "fcarouge/kalman_internal/x_z_p_q_r.hpp"
             "fcarouge/kalman_internal/x_z_p_qq_rr_f.hpp"
             "fcarouge/kalman_internal/x_z_p_r_f.hpp"
