@@ -143,15 +143,14 @@ using state = fcarouge::state<vector<6>>;
         return h;
       }},
       // The state transition matrix F:
-      state_transition{
-          []([[maybe_unused]] const vector<6> &x, const double &dt) {
-            return matrix<6, 6>{{1., 0., 0., dt, 0., 0.}, //
-                                {0., 1., 0., 0., dt, 0.}, //
-                                {0., 0., 1., 0., 0., dt}, //
-                                {0., 0., 0., 1., 0., 0.}, //
-                                {0., 0., 0., 0., 1., 0.}, //
-                                {0., 0., 0., 0., 0., 1.}};
-          }},
+      state_transition{[](const double &dt) {
+        return matrix<6, 6>{{1., 0., 0., dt, 0., 0.}, //
+                            {0., 1., 0., 0., dt, 0.}, //
+                            {0., 0., 1., 0., 0., dt}, //
+                            {0., 0., 0., 1., 0., 0.}, //
+                            {0., 0., 0., 0., 1., 0.}, //
+                            {0., 0., 0., 0., 0., 1.}};
+      }},
       // The observation estimation Z:
       observation{[](const vector<6> &x) {
         const auto &[rx, ry, rz, vx, vy, vz]{x};

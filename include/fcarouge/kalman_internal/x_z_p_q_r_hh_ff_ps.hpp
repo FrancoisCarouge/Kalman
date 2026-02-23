@@ -61,7 +61,7 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>> {
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function = function<output_model(const state &)>;
   using transition_state_function =
-      function<state_transition(const state &, const PredictionTypes &...)>;
+      function<state_transition(const PredictionTypes &...)>;
   using transition_function =
       function<state(const state &, const PredictionTypes &...)>;
   using observation_function = function<output(const state &)>;
@@ -113,7 +113,7 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>> {
 
   constexpr void predict(const PredictionTypes &...prediction_pack) {
     prediction_arguments = {prediction_pack...};
-    f = transition_state_f(x, prediction_pack...);
+    f = transition_state_f(prediction_pack...);
     x = transition(x, prediction_pack...);
     p = estimate_uncertainty{f * p * t(f) + q};
   }

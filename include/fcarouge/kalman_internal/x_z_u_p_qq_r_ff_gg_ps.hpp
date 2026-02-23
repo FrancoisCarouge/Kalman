@@ -64,8 +64,8 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   using input_control = evaluate<quotient<state, input>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
-  using transition_state_function = function<state_transition(
-      const state &, const input &, const PredictionTypes &...)>;
+  using transition_state_function =
+      function<state_transition(const input &, const PredictionTypes &...)>;
   using noise_process_function =
       function<process_uncertainty(const state &, const PredictionTypes &...)>;
   using transition_control_function =
@@ -115,7 +115,7 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
                          const auto &input_u, const auto &...inputs_u) {
     prediction_arguments = {prediction_pack...};
     u = input{input_u, inputs_u...};
-    f = transition_state_f(x, u, prediction_pack...);
+    f = transition_state_f(u, prediction_pack...);
     q = noise_process_q(x, prediction_pack...);
     g = transition_control_g(prediction_pack...);
     x = f * x + g * u;

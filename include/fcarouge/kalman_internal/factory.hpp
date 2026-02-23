@@ -165,7 +165,7 @@ template <typename Filter = void> struct filter_deducer {
             typename H, typename F, typename O, typename... Ps>
     requires requires() {
       requires std::invocable<H, X>;
-      requires std::invocable<F, X, Ps...>;
+      requires std::invocable<F, Ps...>;
       requires std::invocable<O, X>;
     }
   [[nodiscard]] static constexpr auto
