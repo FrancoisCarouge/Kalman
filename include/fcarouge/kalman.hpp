@@ -285,11 +285,11 @@ public:
   //! @param self Explicit object parameter. Internal implementation detail.
   //! @param values The optional copied initializers to set the state transition
   //! matrix F characteristic. The characteristic may also be a callable of the
-  //! form `state_transition(const state &, const input
-  //! &, const PredictionTypes &...)`. For non-linear system, or extended
-  //! filter, F is the Jacobian of the state transition function: `F = ∂f/∂X =
-  //! ∂fj/∂xi` that is each row i contains the derivatives of the state
-  //! transition function for every element j in the state column vector X.
+  //! form `state_transition(const input &, const PredictionTypes &...)`. For
+  //! non-linear system, or extended filter, F is the Jacobian of the state
+  //! transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the
+  //! derivatives of the state transition function for every element j in the
+  //! state column vector X.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) f(this auto &&self, const auto &...values)

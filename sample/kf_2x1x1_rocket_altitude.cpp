@@ -120,8 +120,7 @@ using state = fcarouge::state<vector<2>>;
       // measurement uncertainty: R1 = R2...Rn-1 = Rn = R.
       output_uncertainty{400.},
       // The state transition matrix F would be:
-      state_transition{[]([[maybe_unused]] const vector<2> &x,
-                          [[maybe_unused]] const acceleration &u,
+      state_transition{[]([[maybe_unused]] const acceleration &u,
                           const milliseconds &delta_time) {
         const auto dt{std::chrono::duration<double>(delta_time).count()};
         return matrix<2, 2>{{1., dt}, {0., 1.}};

@@ -93,7 +93,6 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
               "-fcf-protection=full"
               "-fno-check-new"
               "-fno-common"
-              "-fno-exceptions"
               "-fPIE"
               "-fstack-clash-protection"
               "-fstack-protector-strong"
