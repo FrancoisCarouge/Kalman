@@ -270,7 +270,7 @@ $(function(){initNavTree('factory_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            <span class="keyword">typename</span> H, <span class="keyword">typename</span> F, <span class="keyword">typename</span> O, <span class="keyword">typename</span>... Ps&gt;</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keyword">requires</span> <span class="keyword">requires</span>() {</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>      <span class="keyword">requires</span> std::invocable&lt;H, X&gt;;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      <span class="keyword">requires</span> std::invocable&lt;F, X, Ps...&gt;;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      <span class="keyword">requires</span> std::invocable&lt;F, Ps...&gt;;</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>      <span class="keyword">requires</span> std::invocable&lt;O, X&gt;;</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  [[nodiscard]] <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span></div>

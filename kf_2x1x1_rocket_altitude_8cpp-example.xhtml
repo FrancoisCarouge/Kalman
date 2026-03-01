@@ -203,8 +203,7 @@ $(function(){initNavTree('kf_2x1x1_rocket_altitude_8cpp-example.xhtml',''); init
 <div class="line">      <span class="comment">// measurement uncertainty: R1 = R2...Rn-1 = Rn = R.</span></div>
 <div class="line">      output_uncertainty{400.},</div>
 <div class="line">      <span class="comment">// The state transition matrix F would be:</span></div>
-<div class="line">      state_transition{[]([[maybe_unused]] <span class="keyword">const</span> vector&lt;2&gt; &amp;x,</div>
-<div class="line">                          [[maybe_unused]] <span class="keyword">const</span> acceleration &amp;u,</div>
+<div class="line">      state_transition{[]([[maybe_unused]] <span class="keyword">const</span> acceleration &amp;u,</div>
 <div class="line">                          <span class="keyword">const</span> milliseconds &amp;delta_time) {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> dt{std::chrono::duration&lt;double&gt;(delta_time).count()};</div>
 <div class="line">        <span class="keywordflow">return</span> matrix&lt;2, 2&gt;{{1., dt}, {0., 1.}};</div>

@@ -232,15 +232,14 @@ $(function(){initNavTree('ekf_6x4x0_apollo_8cpp-example.xhtml',''); initResizabl
 <div class="line">        <span class="keywordflow">return</span> h;</div>
 <div class="line">      }},</div>
 <div class="line">      <span class="comment">// The state transition matrix F:</span></div>
-<div class="line">      state_transition{</div>
-<div class="line">          []([[maybe_unused]] <span class="keyword">const</span> vector&lt;6&gt; &amp;x, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;dt) {</div>
-<div class="line">            <span class="keywordflow">return</span> matrix&lt;6, 6&gt;{{1., 0., 0., dt, 0., 0.}, <span class="comment">//</span></div>
-<div class="line">                                {0., 1., 0., 0., dt, 0.}, <span class="comment">//</span></div>
-<div class="line">                                {0., 0., 1., 0., 0., dt}, <span class="comment">//</span></div>
-<div class="line">                                {0., 0., 0., 1., 0., 0.}, <span class="comment">//</span></div>
-<div class="line">                                {0., 0., 0., 0., 1., 0.}, <span class="comment">//</span></div>
-<div class="line">                                {0., 0., 0., 0., 0., 1.}};</div>
-<div class="line">          }},</div>
+<div class="line">      state_transition{[](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;dt) {</div>
+<div class="line">        <span class="keywordflow">return</span> matrix&lt;6, 6&gt;{{1., 0., 0., dt, 0., 0.}, <span class="comment">//</span></div>
+<div class="line">                            {0., 1., 0., 0., dt, 0.}, <span class="comment">//</span></div>
+<div class="line">                            {0., 0., 1., 0., 0., dt}, <span class="comment">//</span></div>
+<div class="line">                            {0., 0., 0., 1., 0., 0.}, <span class="comment">//</span></div>
+<div class="line">                            {0., 0., 0., 0., 1., 0.}, <span class="comment">//</span></div>
+<div class="line">                            {0., 0., 0., 0., 0., 1.}};</div>
+<div class="line">      }},</div>
 <div class="line">      <span class="comment">// The observation estimation Z:</span></div>
 <div class="line">      observation{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[rx, ry, rz, vx, vy, vz]{x};</div>

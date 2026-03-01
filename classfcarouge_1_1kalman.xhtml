@@ -218,7 +218,7 @@ class fcarouge::kalman&lt; typename &gt;</div><p>A generic Kalman filter. </p>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -411,7 +411,7 @@ template&lt;typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional copied initializers to set the state transition matrix F characteristic. The characteristic may also be a callable of the form <code>state_transition(const state &amp;, const input ! &amp;, const PredictionTypes &amp;...)</code>. For non-linear system, or extended filter, F is the Jacobian of the state transition function: <code>F = ∂f/∂X = ! ∂fj/∂xi</code> that is each row i contains the derivatives of the state transition function for every element j in the state column vector X.</td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the state transition matrix F characteristic. The characteristic may also be a callable of the form <code>state_transition(const input &amp;, const PredictionTypes &amp;...)</code>. For non-linear system, or extended filter, F is the Jacobian of the state transition function: <code>F = ∂f/∂X = ∂fj/∂xi</code> that is each row i contains the derivatives of the state transition function for every element j in the state column vector X.</td></tr>
   </table>
   </dd>
 </dl>
