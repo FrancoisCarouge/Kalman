@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_QUANTITY_HPP
-#define FCAROUGE_QUANTITY_HPP
+#ifndef FCAROUGE_LINALG_HPP
+#define FCAROUGE_LINALG_HPP
 
 //! @file
 //! @brief Indexed-based linear algebra with mp-units with Eigen
@@ -219,7 +219,6 @@ struct multiplies<int, mp_units::quantity_point<Reference>> {
 //! @}
 
 } // namespace kalman_internal
-
 } // namespace fcarouge
 
-#endif // FCAROUGE_QUANTITY_HPP
+#endif // FCAROUGE_LINALG_HPP
