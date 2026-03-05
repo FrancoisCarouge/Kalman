@@ -2,9 +2,9 @@ name: 'Coverage'
 
 on:
   push:
-    branches: [ master ]
+    branches: [ 'master' ]
   pull_request:
-    branches: [ master]
+    branches: [ 'master' ]
   schedule:
   - cron: '0 0 * * */5'
 
@@ -16,9 +16,7 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     permissions:
-      checks: write
       contents: read
-      pull-requests: write
     steps:
     - name: Harden Runner
       uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
@@ -56,14 +54,13 @@ jobs:
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '*/test/*' --output-file test.info
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '/usr/*' --output-file test.info
     - name: 'Coverage: Results'
-      id: coverage-results
       run: |
-        echo 'text<<EOF' >> $GITHUB_OUTPUT
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --rc branch_coverage=1 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info | tail -n 4 >> $GITHUB_OUTPUT
-        echo 'EOF' >> $GITHUB_OUTPUT
-    - name: 'Pull Request Comment'
-      uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2.8.2
+        echo "${{ github.event.pull_request.number }}" > pull_request_id.txt
+        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info | tail -n 4 > coverage.txt
+    - name: 'Coverage: Artifacts'
+      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
       with:
-        message: ${{ steps.coverage-results.outputs.text }}
-        preformatted: true
-        refresh-message-position: true
+        name: coverage-artifact
+        path: |
+          pull_request_id.txt
+          coverage.txt
