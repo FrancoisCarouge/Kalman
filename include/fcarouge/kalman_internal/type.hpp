@@ -39,6 +39,42 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_INTERNAL_TYPE_HPP
 #define FCAROUGE_KALMAN_INTERNAL_TYPE_HPP
 
+#include <algorithm>
+#include <compare>
+#include <cstddef>
+#include <string_view>
+
+template <std::size_t N> struct fixed_string {
+  char value[N];
+
+  // Deduction constructor from string literal
+  consteval fixed_string(const char (&str)[N]) noexcept {
+    std::copy_n(str, N, value);
+  }
+
+  // Size excluding null terminator
+  [[nodiscard]] consteval std::size_t size() const noexcept { return N - 1; }
+
+  [[nodiscard]] consteval const char *data() const noexcept { return value; }
+
+  [[nodiscard]] consteval char operator[](std::size_t i) const noexcept {
+    return value[i];
+  }
+
+  // Implicit conversion to string_view
+  [[nodiscard]] constexpr operator std::string_view() const noexcept {
+    return {value, N - 1};
+  }
+
+  // Comparison (required for structural type usability)
+  auto operator<=>(const fixed_string &) const = default;
+};
+
+// CTAD guide
+template <std::size_t N> fixed_string(const char (&)[N]) -> fixed_string<N>;
+
+template <std::size_t N> using name = fixed_string<N>;
+
 #include "utility.hpp"
 
 #include <initializer_list>
@@ -236,6 +272,24 @@ template <typename... Types> struct prediction_types_t {};
 
 template <typename... Types>
 inline prediction_types_t<Types...> prediction_types{};
+
+template <fixed_string Name, typename R, typename H, typename O>
+struct update_model {
+  // static constexpr auto name = Name;
+  R r;
+  H h;
+  O o;
+
+  template <std::size_t N>
+  update_model([[maybe_unused]] fixed_string<N> n, output_uncertainty<R> rr,
+               output_model<H> hh, observation<O> oo)
+      : r{rr.value}, h{hh.value}, o{oo.value} {}
+};
+
+template <std::size_t N, typename R, typename H, typename O>
+update_model(fixed_string<N> n, output_uncertainty<R>, output_model<H>,
+             observation<O>) -> update_model<n, R, H, O>;
+
 } // namespace fcarouge::kalman_internal
 
 #endif // FCAROUGE_KALMAN_INTERNAL_TYPE_HPP

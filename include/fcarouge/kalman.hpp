@@ -473,6 +473,9 @@ using kalman_internal::state_transition;
 //! @brief Input control types wrapper for filter declaration support.
 using kalman_internal::input_control;
 
+//! @brief Update model types wrapper for filter declaration support.
+using kalman_internal::update_model;
+
 //! @}
 
 //! @name Deduction Guides

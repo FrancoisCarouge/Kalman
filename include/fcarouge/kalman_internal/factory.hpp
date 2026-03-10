@@ -50,6 +50,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "x_z_u_p_q_r.hpp"
 #include "x_z_u_p_q_r_h_f_g_us_ps.hpp"
 #include "x_z_u_p_qq_r_ff_gg_ps.hpp"
+#include "x_z_u_p_qq_r_hh_ff_ps.hpp"
 
 #include <concepts>
 #include <tuple>
@@ -334,6 +335,34 @@ template <typename Filter = void> struct filter_deducer {
               typename kt::noise_process_function(q.value),
               typename kt::noise_observation_function(r.value),
               typename kt::state_transition(f.value)};
+  }
+
+  template <typename X, typename Z, typename U, typename P, typename Q,
+            fixed_string N1, typename R1, typename H1, typename O1,
+            fixed_string N2, typename R2, typename H2, typename O2, typename F,
+            typename T, typename... Ps>
+    requires requires() {
+      requires std::invocable<Q, X, Ps...>;
+      // requires std::invocable<H, X>;
+      requires std::invocable<F, X, U, Ps...>;
+      requires std::invocable<T, X, U, Ps...>;
+    }
+  [[nodiscard]] static constexpr auto operator()(
+      state<X> x, [[maybe_unused]] output_t<Z> z, [[maybe_unused]] input_t<U> u,
+      estimate_uncertainty<P> p, process_uncertainty<Q> q,
+      [[maybe_unused]] update_model<N1, R1, H1, O1> u1,
+      [[maybe_unused]] update_model<N2, R2, H2, O2> u2, state_transition<F> f,
+      transition<T> t, [[maybe_unused]] prediction_types_t<Ps...> pts) {
+    using kt =
+        x_z_u_p_qq_r_hh_ff_ps<X, Z, U, repack<prediction_types_t<Ps...>>>;
+
+    return kt{typename kt::state(x.value),
+              typename kt::estimate_uncertainty(p.value),
+              typename kt::noise_process_function(q.value),
+              // u1
+              // u2
+              typename kt::transition_state_function(f.value),
+              typename kt::transition_function(t.value)};
   }
 };
 
