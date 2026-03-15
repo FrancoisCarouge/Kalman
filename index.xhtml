@@ -124,7 +124,7 @@ Examples</h1>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md6x2-constant-acceleration-dynamic-model-filter"></a>
 6x2 Constant Acceleration Dynamic Model Filter</h2>
-<p>Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_6x2x0_vehicle_location_8cpp-example.xhtml">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
+<p>Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
 <div class="fragment"><div class="line">  kalman filter{</div>
 <div class="line">    state{0., 0., 0., 0., 0., 0.},</div>
 <div class="line">    output&lt;vector&lt;2&gt;&gt;,</div>
@@ -156,10 +156,10 @@ Examples</h1>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a5cde5a9f3fe3a8d4f14ea136c15227dd"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a5cde5a9f3fe3a8d4f14ea136c15227dd">fcarouge::kalman_internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac1a1ab117704e8837bb031d8c597826c"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac1a1ab117704e8837bb031d8c597826c">fcarouge::kalman_internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac6a9cf33472fe67bd423c384ef492c25"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac6a9cf33472fe67bd423c384ef492c25">fcarouge::kalman_internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
-</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_vehicle_location.cpp">full sample code</a></p>
+</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position.cpp">full sample code</a></p>
 <h2><a class="anchor" id="autotoc_md4x1-nonlinear-dynamic-model-extended-filter"></a>
 4x1 Nonlinear Dynamic Model Extended Filter</h2>
-<p>Example from the <a href="https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
+<p>Example from the <a href="https://francoiscarouge.github.io/Kalman/ekf_4x1x0_thermal_soaring_8cpp-example.xhtml">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
 <div class="fragment"><div class="line">  kalman filter{</div>
 <div class="line">    state{trigger_strength, thermal_radius, thermal_position_x,</div>
 <div class="line">          thermal_position_y},</div>
@@ -207,15 +207,15 @@ Examples</h1>
 <div class="line">filter.update(position_x, position_y, variometer);</div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a053f2aaec0f20812632149fae25162fd"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a053f2aaec0f20812632149fae25162fd">fcarouge::kalman_internal::observation</a></div><div class="ttdeci">observation(Element) -&gt; observation&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a22b52e1829f5b9cee3e159cf7ec7e00a"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a22b52e1829f5b9cee3e159cf7ec7e00a">fcarouge::kalman_internal::transition</a></div><div class="ttdeci">transition(Element) -&gt; transition&lt; Element &gt;</div></div>
-</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_soaring.cpp">full sample code</a></p>
+</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_thermal_soaring.cpp">full sample code</a></p>
 <h2><a class="anchor" id="other-examples"></a>
 Other Examples</h2>
 <ul>
 <li>1x1 constant system dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">temperature of a liquid in a tank</a>.</li>
-<li>1x1x1 constant velocity dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_dog_position.cpp">1-dimension position of a dog</a>.</li>
-<li>2x1x1 constant acceleration dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_rocket_altitude.cpp">1-dimension position and velocity of a rocket altitude</a>.</li>
-<li>8x4 constant velocity dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_deep_sort_bounding_box.cpp">2-dimension position and velocity of the center, aspect ratio, and height of a bounding box</a>.</li>
-<li>6x4 extended filter <a href="sample/ekf_6x4x0_apollo.cpp">3-dimension position and velocity of the NASA Apollo lunar module abort guidance system</a> for spacecraft rendezvous approaching the command/service module.</li>
+<li>1x1x1 constant velocity dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_1d_dog_position.cpp">1-dimension position of a dog</a>.</li>
+<li>2x1x1 constant acceleration dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_1d_rocket_altitude.cpp">1-dimension position and velocity of a rocket altitude</a>.</li>
+<li>8x4 constant velocity dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box.cpp">2-dimension position and velocity of the center, aspect ratio, and height of a bounding box</a>.</li>
+<li>6x4 extended filter <a href="sample/ekf_6x4x0_3d_apollo_position.cpp">3-dimension position and velocity of the NASA Apollo lunar module abort guidance system</a> for spacecraft rendezvous approaching the command/service module.</li>
 </ul>
 <h1><a class="anchor" id="installation-1"></a>
 Installation</h1>

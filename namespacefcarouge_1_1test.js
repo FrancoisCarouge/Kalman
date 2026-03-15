@@ -99,11 +99,11 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{kalman_println_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__println__1x1x0_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__println__1x1x0_8cpp_03.xhtml#a19658fc6820d46e2c632c66dd002b390", null ]
     ] ],
-    [ "anonymous_namespace{kf_6x2x0_vehicle_location_unit.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml", [
-      [ "output_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#af632052e3b2e1aa295ff0e08509eb1a4", null ],
-      [ "state_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#afc3d65220cc665fecfdda3c578142021", null ],
-      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#af8847aa1d9d81f29d46aceb140d5aa60", null ],
-      [ "sample", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__vehicle__location__unit_8cpp_03.xhtml#a0f3e87ddbdd244bac3460f45a1cdf4fc", null ]
+    [ "anonymous_namespace{kf_6x2x0_2d_vehicle_position_unit.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml", [
+      [ "output_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a8d2431f30194b5c0da04325e414510c8", null ],
+      [ "state_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#abf4c9e07abbf90248159f6a31544499f", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a69d46014bf93a5641882f5ee05080f43", null ],
+      [ "sample", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a81f14bdec88dbb5ebf545939267f01d2", null ]
     ] ],
     [ "anonymous_namespace{linalg_addition.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml#a58f62760145a6a0839b43901056530bb", null ]
