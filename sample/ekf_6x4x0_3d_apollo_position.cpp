@@ -67,7 +67,7 @@ using state = fcarouge::state<vector<6>>;
 //! information. Four measurements are used: range (r), range rate (r_dot),
 //! shaft angle (beta), trunnion elevation angle (theta).
 //!
-//! @example ekf_6x4x0_apollo.cpp
+//! @example ekf_6x4x0_3d_apollo_position.cpp
 [[maybe_unused]] auto sample{[] {
   kalman filter{
       // The six estimated states X initialization under the simulated scenario:

@@ -65,7 +65,7 @@ using state = fcarouge::state<vector<6>>;
 //! maneuver, the vehicle experiences acceleration due to the circular motion
 //! (an angular acceleration). The measurements period: Δt = 1s (constant).
 //!
-//! @example kf_6x2x0_vehicle_location.cpp
+//! @example kf_6x2x0_2d_vehicle_position.cpp
 [[maybe_unused]] auto sample{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   kalman filter{
