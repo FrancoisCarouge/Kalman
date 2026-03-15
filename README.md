@@ -27,7 +27,7 @@ filter.update(48.54);
 
 ## 6x2 Constant Acceleration Dynamic Model Filter
 
-Example from the [2-dimension vehicle location, velocity, and acceleration vehicle estimation](https://francoiscarouge.github.io/Kalman/kf_6x2x0_vehicle_location_8cpp-example.xhtml) sample. Six estimated states and two observed outputs filter.
+Example from the [2-dimension vehicle location, velocity, and acceleration vehicle estimation](https://francoiscarouge.github.io/Kalman/kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml) sample. Six estimated states and two observed outputs filter.
 
 ```cpp
   kalman filter{
@@ -60,11 +60,11 @@ filter.predict();
 filter.update(-393.66, 300.4);
 ```
 
-[full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_vehicle_location.cpp)
+[full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position.cpp)
 
 ## 4x1 Nonlinear Dynamic Model Extended Filter
 
-Example from the [thermal, current of warm air, strength, radius, and location estimation](https://francoiscarouge.github.io/Kalman/ekf_4x1x0_soaring_8cpp-example.xhtml) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
+Example from the [thermal, current of warm air, strength, radius, and location estimation](https://francoiscarouge.github.io/Kalman/ekf_4x1x0_thermal_soaring_8cpp-example.xhtml) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
 
 ```cpp
   kalman filter{
@@ -114,15 +114,15 @@ filter.predict(drift_x, drift_y);
 filter.update(position_x, position_y, variometer);
 ```
 
-[full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_soaring.cpp)
+[full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_thermal_soaring.cpp)
 
 ## Other Examples
 
 - 1x1 constant system dynamic model filter of the [temperature of a liquid in a tank](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp).
-- 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_dog_position.cpp).
-- 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_rocket_altitude.cpp).
-- 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_deep_sort_bounding_box.cpp).
-- 6x4 extended filter [3-dimension position and velocity of the NASA Apollo lunar module abort guidance system](sample/ekf_6x4x0_apollo.cpp) for spacecraft rendezvous approaching the command/service module.
+- 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_1d_dog_position.cpp).
+- 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_1d_rocket_altitude.cpp).
+- 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box.cpp).
+- 6x4 extended filter [3-dimension position and velocity of the NASA Apollo lunar module abort guidance system](sample/ekf_6x4x0_3d_apollo_position.cpp) for spacecraft rendezvous approaching the command/service module.
 
 # Installation
 

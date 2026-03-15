@@ -61,7 +61,7 @@ using state = fcarouge::state<vector<8>>;
 //! @note For information, the original sample appears to saturate the velocity
 //! precision early on.
 //!
-//! @example kf_8x4x0_deep_sort_bounding_box.cpp
+//! @example kf_8x4x0_2d_bounding_box.cpp
 [[maybe_unused]] auto sample{[] {
   const vector<4> initial_box{605.0F, 248.0F, 0.20481927710843373F, 332.0F};
   // Experimental position and velocity uncertainty standard deviation

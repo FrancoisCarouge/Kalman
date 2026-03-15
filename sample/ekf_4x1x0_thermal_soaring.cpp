@@ -67,7 +67,7 @@ using state = fcarouge::state<vector<4>>;
 //! of radius R [m] with the center distance x north of the sUAV and y east of
 //! the sUAV.
 //!
-//! @example ekf_4x1x0_soaring.cpp
+//! @example ekf_4x1x0_thermal_soaring.cpp
 [[maybe_unused]] auto sample{[] {
   const float trigger_strength{0};
   const float thermal_radius{80};
