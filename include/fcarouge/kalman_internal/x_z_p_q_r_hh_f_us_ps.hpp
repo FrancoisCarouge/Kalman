@@ -42,7 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "function.hpp"
 #include "utility.hpp"
 
-#include <tuple>
+import std;
 
 namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
