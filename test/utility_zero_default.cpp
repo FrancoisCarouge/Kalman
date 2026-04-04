@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the 1x1 zero matrix deduced default value is a null double.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   [[maybe_unused]] const auto z{kalman_internal::zero<>};
 
   assert(z == 0.0);

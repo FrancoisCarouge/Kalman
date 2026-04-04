@@ -48,7 +48,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies the state transition matrix F management overloads for
 //! the Eigen filter type.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<5, 5> i5x5{kalman_internal::one<matrix<5, 5>>};
   const matrix<5, 5> z5x5{kalman_internal::zero<matrix<5, 5>>};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,

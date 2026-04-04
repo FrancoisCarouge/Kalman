@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the addition operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 1, 2> a{1.0, 2.0};
   const matrix<double, 1, 2> b{3.0, 4.0};
   const matrix<double, 1, 2> c{4.0, 6.0};

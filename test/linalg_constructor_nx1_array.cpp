@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the array constructor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const double a[3]{42.0, 43.0, 44.0};
   const matrix<double, 3, 1> m{a};
 

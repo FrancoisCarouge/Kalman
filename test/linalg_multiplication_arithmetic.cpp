@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the scalar multiplication operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
   const matrix<double, 2, 2> r{a * 2.0};
 

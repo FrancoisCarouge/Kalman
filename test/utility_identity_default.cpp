@@ -45,7 +45,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the 1x1 identity matrix deduced default value is a unit
 //! double.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   [[maybe_unused]] const auto i{kalman_internal::one<>};
 
   assert(i == 1.0);

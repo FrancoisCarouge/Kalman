@@ -68,7 +68,7 @@ namespace {
 //! Gaussian.
 //!
 //! @example kf_1x1x1_1d_dog_position_unit.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] {
   kalman filter{
       // This is the dog's initial position expressed as a Gaussian. The state X
       // position is 0 meters.

@@ -44,7 +44,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the state transition matrix F management overloads for
 //! the default filter type.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   kalman filter{state{0.}, output<double>, estimate_uncertainty{0.},
                 output_uncertainty{0.}, state_transition{1.}};
 

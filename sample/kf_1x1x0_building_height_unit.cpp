@@ -64,7 +64,7 @@ namespace {
 //! @image html ./sample/image/kf_1x1x0_building_height.svg
 //!
 //! @example kf_1x1x0_building_height_unit.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] {
   // A one-dimensional filter, constant system dynamic model.
   kalman filter{// One can estimate the building height simply by looking at it.
                 // The estimated state building height is: X = 60 meters.

@@ -44,7 +44,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies default values are initialized for single-dimension filters
 //! without input control.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   kalman filter;
 
   assert(filter.k() == 1);

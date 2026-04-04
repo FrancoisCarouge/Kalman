@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the zero matrices values are null.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 3, 3> z{kalman_internal::zero<matrix<double, 3, 3>>};
 
   assert(z(0, 0) == 0.0);
