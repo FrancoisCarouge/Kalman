@@ -159,7 +159,7 @@ $(function(){initNavTree('ekf_4x1x0_thermal_soaring_8cpp-example.xhtml',''); ini
 <div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = matrix&lt;float, Row, Column&gt;;</div>
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;4&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">[[maybe_unused]] <span class="keyword">auto</span> sample{[] {</div>
+<div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] {</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> trigger_strength{0};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_radius{80};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_x{5};</div>
