@@ -48,7 +48,7 @@ template <auto Size> using vector = column_vector<double, Size>;
 
 //! @test Verifies formatting multi-dimension filters with input control without
 //! additional arguments.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   kalman filter{state{vector<1>{0.}}, output<vector<4>>, input<vector<3>>};
 
   assert(std::format("{}", filter) ==

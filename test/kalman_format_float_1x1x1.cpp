@@ -45,7 +45,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies formatting single-dimension filters with input control
 //! without additional arguments.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   kalman filter{state{0.F}, output<float>, input<float>};
 
   assert(std::format("{}", filter) == R"({"f": 1,)"

@@ -68,7 +68,7 @@ using state = fcarouge::state<vector<6>>;
 //! shaft angle (beta), trunnion elevation angle (theta).
 //!
 //! @example ekf_6x4x0_3d_apollo_position.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] {
   kalman filter{
       // The six estimated states X initialization under the simulated scenario:
       // the lunar module is 30km away, approaching at 100 m/s relative to

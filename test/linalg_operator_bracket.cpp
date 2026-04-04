@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the 1x1 matrix bracket operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<> m{42.0};
 
   assert(m(0) == 42.0);

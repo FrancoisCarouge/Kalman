@@ -68,7 +68,7 @@ using state = fcarouge::state<vector<4>>;
 //! the sUAV.
 //!
 //! @example ekf_4x1x0_thermal_soaring.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] {
   const float trigger_strength{0};
   const float thermal_radius{80};
   const float thermal_position_x{5};

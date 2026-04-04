@@ -45,7 +45,7 @@ namespace {
 //! @test Verifies the row by column multiplication operator.
 //!
 //! @todo Should this edge case decay to the underlying type?
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<double, 1, 2> a{1.0, 2.0};
   const matrix<double, 2, 1> b{3.0, 4.0};
   const matrix<double, 1, 1> r{a * b};

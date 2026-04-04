@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies printing the default filter compiles.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   kalman filter;
 
   std::println("{}", filter);

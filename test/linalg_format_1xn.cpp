@@ -44,7 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the initializer lists constructor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<int, 1, 3> m{{1, 2, 3}};
 
   assert(std::format("{}", m) == "[1, 2, 3]");

@@ -66,7 +66,7 @@ using state = fcarouge::state<vector<6>>;
 //! (an angular acceleration). The measurements period: Δt = 1s (constant).
 //!
 //! @example kf_6x2x0_2d_vehicle_position.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   kalman filter{
       // The state X is chosen to be the position, velocity, acceleration in the

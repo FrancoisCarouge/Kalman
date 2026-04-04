@@ -48,7 +48,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies default values are initialized for multi-dimension filters,
 //! single output and input edge case.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] {
   const matrix<1, 5> i1x5{kalman_internal::one<matrix<1, 5>>};
   const matrix<5, 1> i5x1{kalman_internal::one<matrix<5, 1>>};
   const matrix<5, 5> i5x5{kalman_internal::one<matrix<5, 5>>};
