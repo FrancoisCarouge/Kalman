@@ -45,8 +45,6 @@ add_subdirectory("eigen_typed")
 add_subdirectory("main")
 add_subdirectory("matplot")
 add_subdirectory("mp_units")
-add_subdirectory("naive")
-add_subdirectory("naixed")
 add_subdirectory("quantity")
 add_subdirectory("typed")
 
