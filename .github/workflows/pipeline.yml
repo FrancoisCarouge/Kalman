@@ -18,10 +18,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-21' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-20' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB', packages: 'clang-18' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB', packages: 'g++-14' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
+        - { os: 'ubuntu-24.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
         - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Release' }
         - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
@@ -37,6 +38,12 @@ jobs:
         egress-policy: audit
     - name: 'Checkout'
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+    - name: 'Install: GCC 15'
+      if: ${{ matrix.cxx == 'g++-15' }}
+      run: |
+        sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+        sudo apt update
+        sudo apt install -y gcc-15 g++-15
     - name: 'Install: Clang 20'
       if: ${{ matrix.cxx == 'clang++-20' }}
       run: sudo apt update && sudo apt install -y clang-20 clang-tools-20
