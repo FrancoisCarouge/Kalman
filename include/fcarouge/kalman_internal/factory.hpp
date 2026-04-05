@@ -176,13 +176,13 @@ template <typename Filter = void> struct filter_deducer {
              [[maybe_unused]] prediction_types_t<Ps...> pts) {
     using kt = x_z_p_q_r_hh_ff_ps<X, Z, repack<prediction_types_t<Ps...>>>;
 
-    return kt{typename kt::state(x.value),
+    return kt(typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
               typename kt::process_uncertainty(q.value),
               typename kt::output_uncertainty(r.value),
               typename kt::observation_state_function(hh.value),
               typename kt::transition_state_function(ff.value),
-              typename kt::observation_function(obs.value)};
+              typename kt::observation_function(obs.value));
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
