@@ -180,11 +180,11 @@ using state = fcarouge::state<vector<6>>;
     filter.update(true_range, -100., 0.03, 0.01);
   }
 
-  double range{vector<3>{filter.x().template head<3>()}.norm()};
-  double velocity{filter.x()[3]};
+  double range_r{vector<3>{filter.x().template head<3>()}.norm()};
+  double velocity_x{filter.x()[3]};
 
-  assert(std::abs(1 - range / 29'001.861'093'990) < 0.000'000'001 &&
-         std::abs(1 - velocity / -99.574'527'631'012) < 0.000'000'001 &&
+  assert(std::abs(1 - range_r / 29'001.861'093'990) < 0.000'000'001 &&
+         std::abs(1 - velocity_x / -99.574'527'631'012) < 0.000'000'001 &&
          "After simulating 10 seconds, the estimated range is 29,001.86 meters "
          "and an estimated closing velocity of 99.57 m/s.");
 
