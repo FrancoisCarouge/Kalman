@@ -269,11 +269,11 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <div class="line">    filter.update(true_range, -100., 0.03, 0.01);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordtype">double</span> range{vector&lt;3&gt;{filter.x().template head&lt;3&gt;()}.norm()};</div>
-<div class="line">  <span class="keywordtype">double</span> velocity{filter.x()[3]};</div>
+<div class="line">  <span class="keywordtype">double</span> range_r{vector&lt;3&gt;{filter.x().template head&lt;3&gt;()}.norm()};</div>
+<div class="line">  <span class="keywordtype">double</span> velocity_x{filter.x()[3]};</div>
 <div class="line"> </div>
-<div class="line">  assert(std::abs(1 - range / 29&#39;001.861&#39;093&#39;990) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - velocity / -99.574&#39;527&#39;631&#39;012) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - range_r / 29&#39;001.861&#39;093&#39;990) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - velocity_x / -99.574&#39;527&#39;631&#39;012) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After simulating 10 seconds, the estimated range is 29,001.86 meters &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;and an estimated closing velocity of 99.57 m/s.&quot;</span>);</div>
 <div class="line"> </div>

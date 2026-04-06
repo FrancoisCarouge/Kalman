@@ -267,11 +267,11 @@ $(function(){initNavTree('ekf__6x4x0__3d__apollo__position_8cpp_source.xhtml',''
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    filter.update(true_range, -100., 0.03, 0.01);</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  }</div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <span class="keywordtype">double</span> range{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__6x4x0__3d__apollo__position_8cpp_03.xhtml#a16287893598f7ef3195e63b87f7e1b43">vector&lt;3&gt;</a>{filter.x().template head&lt;3&gt;()}.norm()};</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  <span class="keywordtype">double</span> velocity{filter.x()[3]};</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <span class="keywordtype">double</span> range_r{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__6x4x0__3d__apollo__position_8cpp_03.xhtml#a16287893598f7ef3195e63b87f7e1b43">vector&lt;3&gt;</a>{filter.x().template head&lt;3&gt;()}.norm()};</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  <span class="keywordtype">double</span> velocity_x{filter.x()[3]};</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  assert(std::abs(1 - range / 29&#39;001.861&#39;093&#39;990) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>         std::abs(1 - velocity / -99.574&#39;527&#39;631&#39;012) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  assert(std::abs(1 - range_r / 29&#39;001.861&#39;093&#39;990) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>         std::abs(1 - velocity_x / -99.574&#39;527&#39;631&#39;012) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>         <span class="stringliteral">&quot;After simulating 10 seconds, the estimated range is 29,001.86 meters &quot;</span></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>         <span class="stringliteral">&quot;and an estimated closing velocity of 99.57 m/s.&quot;</span>);</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
