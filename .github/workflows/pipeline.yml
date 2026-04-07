@@ -23,10 +23,8 @@ jobs:
         - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB' }
         - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
         - { os: 'ubuntu-24.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Release' }
-        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
-        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Release' }
+        - { os: 'windows-2025-vs2026', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Debug' }
+        - { os: 'windows-2025-vs2026', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Release' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     permissions:
