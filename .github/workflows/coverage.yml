@@ -58,7 +58,7 @@ jobs:
         echo "${{ github.event.pull_request.number }}" > pull_request_id.txt
         lcov --rc branch_coverage=1 --gcov-tool gcov-14 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info | tail -n 4 > coverage.txt
     - name: 'Coverage: Artifacts'
-      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
       with:
         name: coverage-artifact
         path: |
