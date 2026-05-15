@@ -46,11 +46,6 @@ function(sample SAMPLE_NAME)
                         "${multiValueArgs}")
 
   if(NOT SAMPLE_BACKENDS)
-    if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-      message(STATUS "${SAMPLE_NAME} not yet compatible with MSVC/mp-units.")
-      return()
-    endif()
-
     add_executable(kalman_sample_${SAMPLE_NAME}_driver "${SAMPLE_NAME}.cpp")
     target_link_libraries(
       kalman_sample_${SAMPLE_NAME}_driver
@@ -61,12 +56,6 @@ function(sample SAMPLE_NAME)
                      $<TARGET_FILE:kalman_sample_${SAMPLE_NAME}_driver>)
   else()
     foreach(BACKEND IN ITEMS ${SAMPLE_BACKENDS})
-      if((CMAKE_CXX_COMPILER_ID STREQUAL "MSVC") AND (BACKEND STREQUAL
-                                                      "quantity"))
-        message(STATUS "${SAMPLE_NAME} not yet compatible with MSVC/mp-units.")
-        continue()
-      endif()
-
       add_executable(kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
                      "${SAMPLE_NAME}.cpp")
       target_link_libraries(
@@ -102,12 +91,6 @@ function(test TEST_NAME)
                      $<TARGET_FILE:kalman_test_${TEST_NAME}_driver>)
   else()
     foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-      if((CMAKE_CXX_COMPILER_ID STREQUAL "MSVC") AND (BACKEND STREQUAL
-                                                      "quantity"))
-        message(STATUS "${TEST_NAME} not yet compatible with MSVC/mp-units.")
-        continue()
-      endif()
-
       add_executable(kalman_test_${BACKEND}_${TEST_NAME}_driver
                      "${TEST_NAME}.cpp")
       target_link_libraries(

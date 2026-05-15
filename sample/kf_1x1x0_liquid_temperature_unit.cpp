@@ -90,7 +90,7 @@ namespace {
       // = 0.01. The measurement error (standard deviation) is 0.1 degrees
       // Celsius.
       output_uncertainty{delta<deg_C2>(0.01)}};
-
+/*
   // Now, we shall predict the next state based on the initialization values.
   filter.predict();
 
@@ -140,7 +140,7 @@ namespace {
   // In this example we've measured a liquid temperature using the
   // one-dimensional Kalman filter. Although the system dynamics include
   // a random process noise, the Kalman filter can provide good estimation.
-
+*/
   return 0;
 }()};
 } // namespace
