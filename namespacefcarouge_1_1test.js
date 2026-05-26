@@ -111,12 +111,6 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{linalg_assign.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__assign_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__assign_8cpp_03.xhtml#a8dfcf827be4d893813251fc5585236e0", null ]
     ] ],
-    [ "anonymous_namespace{linalg_constructor_1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1_8cpp_03.xhtml#ad43f1c3067c659c5ad69366ed7c38c62", null ]
-    ] ],
-    [ "anonymous_namespace{linalg_constructor_1x1_array.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1__array_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1x1__array_8cpp_03.xhtml#aaa9fa83579dc23dee1ec21522fa2a7b4", null ]
-    ] ],
     [ "anonymous_namespace{linalg_constructor_1xn.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1xn_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__constructor__1xn_8cpp_03.xhtml#a61cf3d97f5b0d3fa846f99863c86f1de", null ]
     ] ],
@@ -150,14 +144,8 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{linalg_multiplication_arithmetic.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__arithmetic_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__arithmetic_8cpp_03.xhtml#a162f5d7b64f74c3f0bcb9026904ea961", null ]
     ] ],
-    [ "anonymous_namespace{linalg_multiplication_rxc.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__rxc_8cpp_03.xhtml#a2d1f54a9131dec4f7dde131e75154dfc", null ]
-    ] ],
     [ "anonymous_namespace{linalg_multiplication_sxc.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__sxc_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__multiplication__sxc_8cpp_03.xhtml#a33e6a829d0e61578cf86a0c0078f5945", null ]
-    ] ],
-    [ "anonymous_namespace{linalg_operator_bracket.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__bracket_8cpp_03.xhtml#a4d6bbed86ed370e2fa9d7c8ea8a95653", null ]
     ] ],
     [ "anonymous_namespace{linalg_operator_equality.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__equality_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__operator__equality_8cpp_03.xhtml#aa6175cfa7b69950a1a2afca1aa4f1f61", null ]
