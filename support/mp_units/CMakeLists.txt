@@ -43,6 +43,11 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES gsl-lite)
 FetchContent_MakeAvailable(gsl-lite)
 
+set(MP_UNITS_LIB_FORMAT_SUPPORTED ON)
+set(MP_UNITS_API_FREESTANDING OFF)
+set(MP_UNITS_API_STD_FORMAT ON)
+set(MP_UNITS_BUILD_INSTALL OFF)
+
 FetchContent_Declare(
   mp-units
   GIT_REPOSITORY "https://github.com/mpusz/mp-units"
