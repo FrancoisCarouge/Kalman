@@ -4,7 +4,7 @@ The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recur
 
 Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states *X*, *P*, the processes *F*, *Q*, the measurements *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*. Evaluate the performance and iterate.
 
-This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.
+This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. The filters are defined by using a declarative syntax. A standard formatter specialization is included for representation of the filter states and characteristics. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend and may reach tens of thousands of states. Filters may run, alone or batched, on specialized hardware, CPU, GPU. Customization points and type injections allow for implementation tradeoffs.
 
 # Examples
 
@@ -151,6 +151,10 @@ target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)
 
 [For more, see installation instructions](https://github.com/FrancoisCarouge/Kalman/tree/master/INSTALL.md).
 
+# Hardware Acceleration
+
+By default the filters run on the CPU without a particular execution policy. Some linear algebra backends can be configured to run on alternative hardware (e.g. GPU) or more exotic hardware accelerators (e.g. FPGA). Always measure the performance, latency and throughput of the application to determine where best run the filter. The performance cross-over point may be in the thousand(s) of states or batched filters. The crossover points may depend on: CPU calculation time, SIMD support, cache efficiency, selected matrix inversion, PCIe transfer time, GPU calculation time, and more.
+
 # Reference
 
 ## Class kalman
@@ -290,13 +294,26 @@ The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark
 
 | Term | Definition |
 | --- | --- |
+| AEnKF | The Alternate regular Ensemble Kalman Filter ... |
+| CEnKF | The Cholesky regular Ensemble Kalman Filter ... |
+| CGKF | The Conjugate Gradient Kalman Filter ... |
+| CGVKF | The Conjugate Gradient Variational Kalman Filter ... |
+| DRKF | The Dimension Reduction Kalman Filter ... |
+| EnKF | The Ensemble Kalman Filter ... |
 | EKF | The Extended Kalman Filter is the nonlinear version of the Kalman filter. Useful for nonlinear dynamics systems. This filter linearizes the model about an estimate working point of the current mean and covariance. |
 | ESKF | The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states. 
+| ESTKF | The Error-Subspace Transform Kalman Filter ... |
+| ETKF | Ensemble Transform Kalman Filter ... |
+| IF | The Information Filter ... |
 | MSCKF | The Multi-State Constraint Kalman Filter is an EKF-based approach that leverages constraints between multiple and varied measurements to improve pose estimation accuracy and robustness. |
+| OSKF | The One Step Kalman Filter ... |
+| REnKF | The Regular Ensemble Kalman Filter ... |
+| SpecKF | The Spectral Kalman Filter ... |
+| SR-EnKF | The Square-Root Ensemble Kalman Filter ... |
 | SR-UKF | The Square-Root Unscented Kalman Filter handles non-linearity with covariance factorization of the unscented transformations (sigma points) to maintain numerical stability. |
 | UKF | The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples unscented transformations (sigma points) about an estimate working point of the current mean using an Unscented Transformation technique. |
 
-Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, QSR-UKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.
+Further terms should be defined and demonstrated for completeness: CKF, consistency test, covariance inflation, denoising, EKF-IMM, EnKF, Euler-KF, fading memory, finite/fixed memory, forward/backward, FKF, IEKF, Joseph, KF, linearized, MEKF, MRP-EKF, MRP-UKF, QSR-UKF, SKF, sliding window, smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.
 
 ## Related Resources
 

@@ -53,4 +53,27 @@ target_sources(
             FILES
             "fcarouge/eigen.hpp"
             "fcarouge/linalg.hpp")
-target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman)
+
+# Eigen only, on CPU:
+
+# target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman)
+
+# Eigen with BLAS, on CPU:
+
+# SHOULD I USE BLAS OR OPENBLAS?
+
+# target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman blas)
+
+# Eigen with NVBLAS, possibly on GPU:
+
+target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman
+                                                    openblas nvblas)
+target_link_directories(kalman_linalg_eigen INTERFACE "/usr/local/cuda/lib64")
+
+# configure_file("${CMAKE_CURRENT_SOURCE_DIR}/nvblas.conf"
+# "${CMAKE_BINARY_DIR}/test/nvblas.conf" COPYONLY)
+
+# What is the gpumatrix library? Experimental?
+
+# Why is linking alone insuficient?
+# LD_PRELOAD=/usr/local/cuda/lib64/libnvblas.so
