@@ -48,112 +48,63 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/unit.hpp"
 
 namespace fcarouge {
+// Teach the typed linear algebra library how to convert underlying scalar types
+// to and from mp-units' types.
 template <typename To, mp_units::Quantity From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr To operator()(const From &value) {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
+    using representation = typename std::remove_cvref_t<From>::rep;
+
+    static_assert(std::same_as<representation, std::remove_cvref_t<To>>,
+                  "The underlying storage type must be identical to the "
+                  "quantity representation type to guarantee the conversion is "
+                  "explicitely decided by the end-user.");
+
     return value.numerical_value_in(value.unit);
   }
 };
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr To operator()(const From &value) {
+  [[nodiscard]] static constexpr auto operator()(From value) -> To {
+    using representation = typename std::remove_cvref_t<To>::rep;
+
+    static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
+                  "The underlying storage type must be identical to the "
+                  "quantity representation type to guarantee the conversion is "
+                  "explicitely decided by the end-user.");
+
     return value * To::reference;
   }
 };
 
 template <mp_units::Quantity To, typename From>
 struct element_caster<To &, From &> {
-  [[nodiscard]] static constexpr To &operator()(From &value) {
-    return reinterpret_cast<To &>(value);
+  // A quantity reference cannot be safely materialized out of a representation
+  // reference. It would be undefined behavior even if the size, padding,
+  // alignment, aliasing are controlled. Therefore the best we can do is to
+  // return a constant quantity value to inform the end-user lvalue reference
+  // assignment cannot be supported.
+  [[nodiscard]] static constexpr auto operator()(From value) -> const To {
+    using representation = typename std::remove_cvref_t<To>::rep;
+
+    static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
+                  "The underlying storage type must be identical to the "
+                  "quantity representation type to guarantee the conversion is "
+                  "explicitely decided by the end-user.");
+
+    return value * To::reference;
   }
 };
 
-template <typename To, mp_units::QuantityPoint From>
+template <typename To, mp_units::Reference From>
 struct element_caster<To, From> {
-  [[nodiscard]] static constexpr To operator()(const From &value) {
-    return value.quantity_from_zero().numerical_value_in(value.unit);
-  }
-};
-
-template <mp_units::QuantityPoint To, typename From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr To operator()(const From &value) {
-    return {value * To::unit, mp_units::default_point_origin(To::unit)};
-  }
-};
-
-template <mp_units::QuantityPoint To, typename From>
-struct element_caster<To &, From &> {
-  [[nodiscard]] static constexpr To &operator()(From &value) {
-    return reinterpret_cast<To &>(value);
+  [[nodiscard]] static constexpr auto
+  operator()([[maybe_unused]] From value) -> To {
+    return 1.;
   }
 };
 } // namespace fcarouge
-
-namespace fcarouge::typed_linear_algebra_internal {
-//! @brief Multiplies specialization type for uncertainty type deduction.
-template <auto Reference>
-struct multiplies<mp_units::quantity_point<Reference>, int> {
-  [[nodiscard]] static constexpr auto
-  operator()(const mp_units::quantity_point<Reference> &lhs,
-             int rhs) -> mp_units::quantity_point<Reference>;
-};
-
-//! @brief Multiplies specialization type for uncertainty type deduction.
-template <auto Reference>
-struct multiplies<int, mp_units::quantity_point<Reference>> {
-  [[nodiscard]] static constexpr auto
-  operator()(int lhs, const mp_units::quantity_point<Reference> &rhs)
-      -> mp_units::quantity_point<Reference>;
-};
-
-template <auto Reference1, auto Reference2>
-struct multiplies<mp_units::quantity_point<Reference1>,
-                  mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] static constexpr auto
-  operator()(const mp_units::quantity_point<Reference1> &lhs,
-             const mp_units::quantity_point<Reference2> &rhs)
-      -> mp_units::quantity<Reference1 * Reference2>;
-};
-
-template <auto Reference1, auto Reference2>
-struct multiplies<mp_units::quantity<Reference1>,
-                  mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] static constexpr auto
-  operator()(const mp_units::quantity<Reference1> &lhs,
-             const mp_units::quantity_point<Reference2> &rhs)
-      -> mp_units::quantity_point<Reference1 * Reference2>;
-};
-
-template <auto Reference1, auto Reference2>
-struct divides<mp_units::quantity_point<Reference1>,
-               mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] static constexpr auto
-  operator()(const mp_units::quantity_point<Reference1> &lhs,
-             const mp_units::quantity_point<Reference2> &rhs)
-      -> mp_units::quantity<Reference1 / Reference2>;
-};
-
-template <auto Reference1, auto Reference2>
-struct divides<mp_units::quantity<Reference1>,
-               mp_units::quantity_point<Reference2>> {
-  [[nodiscard]] static constexpr auto
-  operator()(const mp_units::quantity<Reference1> &lhs,
-             const mp_units::quantity_point<Reference2> &rhs)
-      -> mp_units::quantity_point<Reference1 / Reference2>;
-};
-
-template <auto Reference1, auto Reference2>
-struct divides<mp_units::quantity_point<Reference1>,
-               mp_units::quantity<Reference2>> {
-  [[nodiscard]] static constexpr auto
-  operator()(const mp_units::quantity_point<Reference1> &lhs,
-             const mp_units::quantity<Reference2> &rhs)
-      -> mp_units::quantity_point<Reference1 / Reference2>;
-};
-
-} // namespace fcarouge::typed_linear_algebra_internal
 
 namespace fcarouge {
 namespace kalman_internal {
@@ -198,28 +149,6 @@ template <typename Representation, typename... Types>
 using column_vector =
     typed_column_vector<eigen::column_vector<Representation, sizeof...(Types)>,
                         Types...>;
-
-namespace kalman_internal {
-//! @brief Multiplies specialization type for uncertainty type deduction.
-template <auto Reference>
-struct multiplies<mp_units::quantity_point<Reference>, int> {
-  [[nodiscard]] static constexpr auto
-  operator()(const mp_units::quantity_point<Reference> &lhs,
-             int rhs) -> mp_units::quantity_point<Reference>;
-};
-
-//! @brief Multiplies specialization type for uncertainty type deduction.
-template <auto Reference>
-struct multiplies<int, mp_units::quantity_point<Reference>> {
-  [[nodiscard]] static constexpr auto
-  operator()(int lhs, const mp_units::quantity_point<Reference> &rhs)
-      -> mp_units::quantity_point<Reference>;
-};
-
-//! @}
-
-} // namespace kalman_internal
-
 } // namespace fcarouge
 
 #endif // FCAROUGE_QUANTITY_HPP
