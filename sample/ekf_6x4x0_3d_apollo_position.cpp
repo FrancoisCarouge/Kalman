@@ -81,25 +81,25 @@ using state = fcarouge::state<vector<6>>;
       output<vector<4>>,
       // The initial estimate uncertainty P is a high uncertainty in position
       // before radar lock. The velocity is somewhat known.
-      estimate_uncertainty{{1000., 0., 0., 0., 0., 0.},
-                           {0., 1000., 0., 0., 0., 0.},
-                           {0., 0., 1000., 0., 0., 0.},
-                           {0., 0., 0., 100., 0., 0.},
-                           {0., 0., 0., 0., 100., 0.},
-                           {0., 0., 0., 0., 0., 100.}},
+      estimate_uncertainty{matrix<6, 6>{{1000., 0., 0., 0., 0., 0.},
+                                        {0., 1000., 0., 0., 0., 0.},
+                                        {0., 0., 1000., 0., 0., 0.},
+                                        {0., 0., 0., 100., 0., 0.},
+                                        {0., 0., 0., 0., 100., 0.},
+                                        {0., 0., 0., 0., 0., 100.}}},
       // The process uncertainty Q is a small accelerometer noise/drift.
-      process_uncertainty{{0.01, 0., 0., 0., 0., 0.},
-                          {0., 0.01, 0., 0., 0., 0.},
-                          {0., 0., 0.01, 0., 0., 0.},
-                          {0., 0., 0., 0.01, 0., 0.},
-                          {0., 0., 0., 0., 0.01, 0.},
-                          {0., 0., 0., 0., 0., 0.01}},
+      process_uncertainty{matrix<6, 6>{{0.01, 0., 0., 0., 0., 0.},
+                                       {0., 0.01, 0., 0., 0., 0.},
+                                       {0., 0., 0.01, 0., 0., 0.},
+                                       {0., 0., 0., 0.01, 0., 0.},
+                                       {0., 0., 0., 0., 0.01, 0.},
+                                       {0., 0., 0., 0., 0., 0.01}}},
       // The output uncertainty R is the radar specifications.
       // Range error: ~30m, Rate error: ~0.5m/s, Angles error: ~0.005 rad.
-      output_uncertainty{{30. * 30., 0., 0., 0.},
-                         {0., 0.5 * 0.5, 0., 0.},
-                         {0., 0., 0.005 * 0.005, 0.},
-                         {0., 0., 0., 0.005 * 0.005}},
+      output_uncertainty{matrix<4, 4>{{30. * 30., 0., 0., 0.},
+                                      {0., 0.5 * 0.5, 0., 0.},
+                                      {0., 0., 0.005 * 0.005, 0.},
+                                      {0., 0., 0., 0.005 * 0.005}}},
       // The output model H is the Jacobian, linearization around the current
       // state. Complex derivation omitted for brevity, using a simplified
       // approximation.
