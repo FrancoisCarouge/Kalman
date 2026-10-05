@@ -49,17 +49,6 @@ namespace fcarouge::kalman_internal {
 //! @name Concepts
 //! @{
 
-//! @brief Kalman filter concept.
-//!
-//! @details This library's Kalman filters.
-//!
-//! @todo What should be a better concept of the Kalman filter of this library?
-template <typename Type>
-concept kalman_filter = requires(Type value) {
-  typename Type::state;
-  typename Type::output;
-};
-
 //! @brief Arithmetic concept.
 //!
 //! @details Any integer or floating point type.
