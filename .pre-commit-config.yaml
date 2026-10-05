@@ -33,7 +33,7 @@ repos:
   hooks:
   - id: clang-format
     types_or: []
-    files: (\.(cpp|hpp|tpp)|^support/generator/generator)$
+    files: \.(cpp|hpp|tpp)$
 - repo: local
   hooks:
   - id: cmakefmt

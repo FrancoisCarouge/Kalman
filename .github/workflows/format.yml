@@ -31,8 +31,7 @@ jobs:
         find . \( \
           -iname '*.hpp' \
           -o -iname '*.cpp' \
-          -o -iname '*.tpp' \
-          -o -iwholename './support/generator/generator' \) \
+          -o -iname '*.tpp' \) \
           -print0 \
           | xargs -0 \
           clang-format-22 --Werror --dry-run --verbose -style=file
