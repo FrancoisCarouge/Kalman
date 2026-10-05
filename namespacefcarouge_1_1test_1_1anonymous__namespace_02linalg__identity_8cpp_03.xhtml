@@ -123,7 +123,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
+<b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="keyword">const</span> matrix&lt;double, 3, 3&gt; i{kalman_internal::one&lt;matrix&lt;double, 3, 3&gt;&gt;};</div>
 <div class="line"> </div>
 <div class="line">  assert(i(0, 0) == 1.0);</div>
@@ -138,10 +138,10 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000036">Test</a></b></dt><dd>Verifies the identity matrices values are unit diagonals. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000035">Test</a></b></dt><dd>Verifies the identity matrices values are unit diagonals. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="linalg__identity_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="linalg__identity_8cpp_source.xhtml">linalg_identity.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                                {[] {</div>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><span class="lineno">   47</span>  <span class="keyword">const</span> matrix&lt;double, 3, 3&gt; i{kalman_internal::one&lt;matrix&lt;double, 3, 3&gt;&gt;};</div>
 <div class="line"><span class="lineno">   48</span> </div>
 <div class="line"><span class="lineno">   49</span>  assert(i(0, 0) == 1.0);</div>

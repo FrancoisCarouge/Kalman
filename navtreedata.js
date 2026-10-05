@@ -26,8 +26,58 @@ var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
     [ "Kalman Filter", "index.xhtml", "index" ],
+    [ "AGENTS.md", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml", [
+      [ "AI agent conduct", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
+      [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ],
+      [ "Architecture", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture", [
+        [ "The named-parameter, deduced-filter pattern", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#the-named-parameter-deduced-filter-pattern", null ],
+        [ "Linear algebra backends", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#linear-algebra-backends", null ],
+        [ "Test/sample generation (support/support.cmake)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake", null ],
+        [ "Decorators", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#decorators", null ],
+        [ "Other directories", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories", null ]
+      ] ],
+      [ "Recipe: supporting a new filter configuration", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-supporting-a-new-filter-configuration", null ],
+      [ "Completion checklist", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#completion-checklist", null ],
+      [ "Conventions", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions", null ]
+    ] ],
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
       [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
+    ] ],
+    [ "Changelog", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml", [
+      [ "0.5.3 - 2026-03-16", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
+        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed", null ],
+        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build", null ],
+        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed", null ]
+      ] ],
+      [ "0.5.2 - 2025-05-19", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-1", null ],
+        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1", null ]
+      ] ],
+      [ "0.5.1 - 2025-05-02", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02", [
+        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-1", null ]
+      ] ],
+      [ "0.5.0 - 2025-05-02", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md050---2025-05-02", [
+        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-2", null ]
+      ] ],
+      [ "0.4.0 - 2025-02-28", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-2", null ],
+        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-3", null ],
+        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1", null ],
+        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-2", null ]
+      ] ],
+      [ "0.3.0 - 2024-09-16", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-3", null ],
+        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-4", null ],
+        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-2", null ]
+      ] ],
+      [ "0.2.0 - 2023-08-07", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-4", null ],
+        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-3", null ]
+      ] ],
+      [ "0.1.0 - 2022-11-25", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25", [
+        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-5", null ]
+      ] ]
     ] ],
     [ "Contributor Covenant Code of Conduct", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
       [ "Our Pledge", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge", null ],
@@ -41,8 +91,12 @@ var NAVTREE =
       [ "Code of Conduct", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct", null ],
       [ "Reporting Bugs", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs", null ],
       [ "Requesting Features", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
-      [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ]
+      [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ],
+      [ "Questions & Ideas", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas", null ],
+      [ "Pre-commit Hooks", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks", null ],
+      [ "Pull Request Merge Checklist", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
     ] ],
+    [ "Contributors", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
     [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
@@ -94,7 +148,7 @@ var NAVTREEINDEX =
 [
 "annotated.xhtml",
 "kf__1x1x0__liquid__temperature__unit_8cpp_source.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__move__5x4x3_8cpp_03.xhtml#a09cd7dc782d95d477ebed2654e98fb58"
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a45e7064334c3bcd1e0850d695afec701"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

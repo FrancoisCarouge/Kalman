@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['a_20vulnerability_0',['Reporting a Vulnerability',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability',1,'']]],
-  ['acceleration_1',['acceleration',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__1d__rocket__altitude_8cpp_03.xhtml#a762f30f1ee6f756078f227826ef28195',1,'fcarouge::sample::anonymous_namespace{kf_2x1x1_1d_rocket_altitude.cpp}']]],
-  ['acceleration_20dynamic_20model_20filter_2',['6x2 Constant Acceleration Dynamic Model Filter',['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'']]],
-  ['acknowledgement_3',['Third Party Acknowledgement',['../index.xhtml#third-party-acknowledgement',1,'']]],
-  ['actions_4',['Continuous Integration &amp; Deployment Actions',['../index.xhtml#continuous-integration--deployment-actions',1,'']]],
-  ['altitude_5',['altitude',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__1d__rocket__altitude_8cpp_03.xhtml#af9e4dad49bcf450e77b5a3d46876a375',1,'fcarouge::sample::anonymous_namespace{kf_2x1x1_1d_rocket_altitude.cpp}']]],
-  ['attribution_6',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
+  ['3_200_200_203_200_20a_202024_2009_2016_0',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.2.0...0.3.0&quot; &gt;0.3.0&lt;/a&gt; - 2024-09-16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16',1,'']]],
+  ['3_200_200_204_200_200_204_200_20a_202025_2002_2028_1',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.3.0...0.4.0&quot; &gt;0.4.0&lt;/a&gt; - 2025-02-28',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28',1,'']]],
+  ['3_200_205_203_20a_202026_2003_2016_2',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3&quot; &gt;0.5.3&lt;/a&gt; - 2026-03-16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16',1,'']]],
+  ['3_200_20a_202024_2009_2016_3',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.2.0...0.3.0&quot; &gt;0.3.0&lt;/a&gt; - 2024-09-16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16',1,'']]],
+  ['3_20a_202026_2003_2016_4',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3&quot; &gt;0.5.3&lt;/a&gt; - 2026-03-16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16',1,'']]]
 ];

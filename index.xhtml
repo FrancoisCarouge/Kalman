@@ -104,6 +104,7 @@ $(function(){initNavTree('index.xhtml',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2_r_e_a_d_m_e"></a></p>
+<p><a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg" alt="Pipeline" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg" alt="Sanitizer" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg" alt="Format" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg" alt="ClangTidy" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg" alt="CppCheck" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml/badge.svg" alt="Valgrind" style="pointer-events: none;" class="inline"/></a> <a href="https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen" alt="Public Domain" class="inline"/></a> <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield" alt="License Scan" style="pointer-events: none;" class="inline"/></a> <a href="https://www.bestpractices.dev/projects/8933"><img src="https://www.bestpractices.dev/projects/8933/badge" alt="OpenSSF Best Practices" class="inline"/></a> <a href="https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg" alt="Deploy Unit Test Code Coverage" style="pointer-events: none;" class="inline"/></a> <a href="https://francoiscarouge.github.io/Kalman/index.xhtml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg" alt="Deploy Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen" alt="Sponsor" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/discussions"><img src="https://img.shields.io/github/discussions/FrancoisCarouge/Kalman" alt="Discussions" class="inline"/></a></p>
 <p>The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians rather than integrating differential equations. The filter predicts estimates by adding Gaussians. The filter maintains an estimate of the state and its uncertainty over the sequential estimation process. The filter is named after Rudolf E. Kálmán, who was one of the primary developers of its theory in 1960.</p>
 <p>Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states <em>X</em>, <em>P</em>, the processes <em>F</em>, <em>Q</em>, the measurements <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>. Evaluate the performance and iterate.</p>
 <p>This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
@@ -346,7 +347,7 @@ Format</h2>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
 <div class="line"><span class="comment">// The characteristics are optionally present according to the filter configuration.</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="decorators"></a>
+</div><!-- fragment --><h2><a class="anchor" id="decorators-1"></a>
 Decorators</h2>
 <p>Pipe one or more decorators to the filter declaration to attach additional responsibilities.</p>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> filter{kalman{...} | print};</div>
@@ -433,19 +434,33 @@ Third Party Acknowledgement</h2>
 <ul>
 <li><a href="https://github.com/peaceiris/actions-gh-pages">actions-gh-pages</a> to upload the documentation to GitHub pages.</li>
 <li><a href="https://clang.llvm.org">Clang</a> for compilation and code sanitizers.</li>
+<li><a href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a> for code formatting.</li>
+<li><a href="https://clang.llvm.org/extra/clang-tidy/">clang-tidy</a> for static analysis.</li>
 <li><a href="https://cmake.org">CMake</a> for build automation.</li>
-<li><a href="https://pypi.org/project/cmakelang">cmakelang</a> for pretty CMake list files.</li>
+<li><a href="https://cmakefmt.dev">cmakefmt</a> for pretty CMake list files.</li>
 <li><a href="https://cppcheck.sourceforge.io">cppcheck</a> for static analysis.</li>
 <li><a href="https://doxygen.nl">Doxygen</a> for documentation generation.</li>
 <li><a href="https://github.com/jothepro/doxygen-awesome-css">Doxygen Awesome</a> for pretty documentation.</li>
 <li><a href="https://eigen.tuxfamily.org/">Eigen</a> for linear algebra.</li>
 <li><a href="https://gcc.gnu.org">GCC</a> for compilation and code sanitizers.</li>
+<li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> for secret scanning.</li>
 <li><a href="https://github.com/google/benchmark">Google Benchmark</a> to implement the benchmarks.</li>
+<li><a href="https://github.com/gsl-lite/gsl-lite">gsl-lite</a> for guidelines support library.</li>
 <li><a href="http://ltp.sourceforge.net/coverage/lcov.php">lcov</a> to process coverage information.</li>
+<li><a href="https://github.com/alandefreitas/matplotplusplus">Matplot++</a> for plotting.</li>
 <li><a href="https://github.com/mpusz/mp-units">mp-units</a> the quantities and units library for C++.</li>
 <li><a href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist">MSVC</a> for compilation and code sanitizers.</li>
+<li><a href="https://pre-commit.com">pre-commit</a> for repository hygiene hooks.</li>
+<li><a href="https://github.com/FrancoisCarouge/TypedLinearAlgebra">TypedLinearAlgebra</a> for typed linear algebra.</li>
 <li><a href="https://valgrind.org">Valgrind</a> to check for correct memory management.</li>
 </ul>
+<h2><a class="anchor" id="contributors-1"></a>
+Contributors</h2>
+<p>Thank you to everyone who has contributed code, tests, or documentation!</p>
+<ul>
+<li><a href="https://github.com/FrancoisCarouge">François Carouge</a> — creator and maintainer.</li>
+</ul>
+<p>See <a href="https://github.com/FrancoisCarouge/Kalman/blob/master/CONTRIBUTORS.md">CONTRIBUTORS.md</a> for the full, credited list, <a href="https://github.com/FrancoisCarouge/Kalman/blob/master/CHANGELOG.md">CHANGELOG.md</a> for notable changes, and <a href="https://github.com/FrancoisCarouge/Kalman/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> to join.</p>
 <h2><a class="anchor" id="sponsors"></a>
 Sponsors</h2>
 <p>Become a sponsor today! Support this project with coffee and infrastructure!</p>
@@ -457,27 +472,6 @@ Corporations &amp; Institutions</h3>
 Individuals</h3>
 <p><em>Your name and link here!</em></p>
 <p>Thanks everyone!</p>
-<h1><a class="anchor" id="continuous-integration--deployment-actions"></a>
-Continuous Integration &amp; Deployment Actions</h1>
-<p><a href="https://github.com/FrancoisCarouge/Kalman"><img src="https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen" alt="Code Repository" class="inline"/></a> <br  />
- <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg" alt="Pipeline" style="pointer-events: none;" class="inline"/></a> <br  />
- <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg" alt="Sanitizer" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg" alt="Format" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg" alt="ClangTidy" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg" alt="CppCheck" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml/badge.svg" alt="Valgrind" style="pointer-events: none;" class="inline"/></a> <br  />
- <br  />
- <a href="https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen" alt="Public Domain" class="inline"/></a> <br  />
- <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield" alt="License Scan" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://www.bestpractices.dev/projects/8933"><img src="https://www.bestpractices.dev/projects/8933/badge" alt="OpenSSF Best Practices" class="inline"/></a> <br  />
- <br  />
- <a href="https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg" alt="Deploy Unit Test Code Coverage" style="pointer-events: none;" class="inline"/></a> <br  />
- <a href="https://francoiscarouge.github.io/Kalman/index.xhtml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg" alt="Deploy Doxygen" style="pointer-events: none;" class="inline"/></a> <br  />
- <br  />
- <a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen" alt="Sponsor" class="inline"/></a></p>
 <h1><a class="anchor" id="license"></a>
 License</h1>
 <p><img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" alt="" align="right" class="inline"/></p>

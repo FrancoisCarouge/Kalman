@@ -159,7 +159,7 @@ $(function(){initNavTree('ekf_4x1x0_thermal_soaring_8cpp-example.xhtml',''); ini
 <div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = matrix&lt;float, Row, Column&gt;;</div>
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;4&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] {</div>
+<div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> trigger_strength{0};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_radius{80};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_x{5};</div>
@@ -237,118 +237,521 @@ $(function(){initNavTree('ekf_4x1x0_thermal_soaring_8cpp-example.xhtml',''); ini
 <div class="line">  };</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A hundred randomly generated data point.</span></div>
-<div class="line">  <span class="keyword">constexpr</span> data measured[]{</div>
-<div class="line">      {0.0756891F, 0.749786F, 0.878827F, 0.806808F, 0.155487F},</div>
-<div class="line">      {0.506366F, 0.261469F, 0.886986F, 0.332883F, 0.434406F},</div>
-<div class="line">      {0.249769F, 0.242154F, 0.616454F, 0.672545F, 0.24927F},</div>
-<div class="line">      {0.358587F, 0.556206F, 0.909985F, 0.370336F, 0.553264F},</div>
-<div class="line">      {0.370579F, 0.368003F, 0.491917F, 0.635429F, 0.73594F},</div>
-<div class="line">      {0.82946F, 0.0221123F, 0.461047F, 0.940697F, 0.987409F},</div>
-<div class="line">      {0.462132F, 0.708865F, 0.941915F, 0.122432F, 0.911597F},</div>
-<div class="line">      {0.888334F, 0.542419F, 0.773781F, 0.116075F, 0.917592F},</div>
-<div class="line">      {0.229376F, 0.174244F, 0.972009F, 0.509611F, 0.37637F},</div>
-<div class="line">      {0.887738F, 0.707866F, 0.90959F, 0.430274F, 0.242523F},</div>
-<div class="line">      {0.40713F, 0.0696747F, 0.456659F, 0.979656F, 0.11167F},</div>
-<div class="line">      {0.77115F, 0.183994F, 0.944587F, 0.467626F, 0.0219546F},</div>
-<div class="line">      {0.137442F, 0.316077F, 0.660742F, 0.828009F, 0.852228F},</div>
-<div class="line">      {0.128113F, 0.0757587F, 0.742959F, 0.360531F, 0.3932F},</div>
-<div class="line">      {0.161107F, 0.709262F, 0.690847F, 0.161165F, 0.237205F},</div>
-<div class="line">      {0.664184F, 0.658516F, 0.972067F, 0.465567F, 0.807259F},</div>
-<div class="line">      {0.669789F, 0.236436F, 0.341701F, 0.430546F, 0.229097F},</div>
-<div class="line">      {0.159471F, 0.122824F, 0.975034F, 0.833685F, 0.78011F},</div>
-<div class="line">      {0.284848F, 0.917524F, 0.358084F, 0.82927F, 0.0983398F},</div>
-<div class="line">      {0.209027F, 0.573124F, 0.428336F, 0.106116F, 0.17974F},</div>
-<div class="line">      {0.861987F, 0.110099F, 0.0994602F, 0.208052F, 0.0545667F},</div>
-<div class="line">      {0.483002F, 0.707016F, 0.189368F, 0.0626376F, 0.992816F},</div>
-<div class="line">      {0.588928F, 0.644143F, 0.763512F, 0.444366F, 0.251652F},</div>
-<div class="line">      {0.419946F, 0.338175F, 0.286543F, 0.97232F, 0.908061F},</div>
-<div class="line">      {0.0625373F, 0.855109F, 0.763831F, 0.622934F, 0.364608F},</div>
-<div class="line">      {0.55833F, 0.505803F, 0.600797F, 0.342724F, 0.735087F},</div>
-<div class="line">      {0.664873F, 0.224638F, 0.385409F, 0.892807F, 0.695F},</div>
-<div class="line">      {0.255295F, 0.0264766F, 0.229274F, 0.723291F, 0.552242F},</div>
-<div class="line">      {0.412129F, 0.856404F, 0.395075F, 0.261842F, 0.947885F},</div>
-<div class="line">      {0.468212F, 0.849367F, 0.00615251F, 0.842904F, 0.700869F},</div>
-<div class="line">      {0.311582F, 0.293401F, 0.299637F, 0.567025F, 0.659598F},</div>
-<div class="line">      {0.695464F, 0.941376F, 0.21219F, 0.27813F, 0.289406F},</div>
-<div class="line">      {0.000397467F, 0.301337F, 0.71608F, 0.296278F, 0.718923F},</div>
-<div class="line">      {0.36314F, 0.263077F, 0.193163F, 0.295399F, 0.0523569F},</div>
-<div class="line">      {0.128381F, 0.572157F, 0.971297F, 0.516492F, 0.921166F},</div>
-<div class="line">      {0.596215F, 0.909239F, 0.133898F, 0.506903F, 0.0335569F},</div>
-<div class="line">      {0.444556F, 0.997721F, 0.348369F, 0.644847F, 0.80885F},</div>
-<div class="line">      {0.891465F, 0.0797467F, 0.85753F, 0.369457F, 0.418543F},</div>
-<div class="line">      {0.861948F, 0.520583F, 0.900797F, 0.153884F, 0.080031F},</div>
-<div class="line">      {0.169696F, 0.981169F, 0.406729F, 0.292696F, 0.831505F},</div>
-<div class="line">      {0.172591F, 0.349291F, 0.782213F, 0.534652F, 0.214628F},</div>
-<div class="line">      {0.875081F, 0.746097F, 0.0806311F, 0.15685F, 0.357471F},</div>
-<div class="line">      {0.519389F, 0.007303F, 0.18117F, 0.370993F, 0.427305F},</div>
-<div class="line">      {0.961372F, 0.218945F, 0.486608F, 0.618755F, 0.168813F},</div>
-<div class="line">      {0.537862F, 0.451312F, 0.384422F, 0.540216F, 0.525636F},</div>
-<div class="line">      {0.494387F, 0.162124F, 0.0136825F, 0.127037F, 0.803511F},</div>
-<div class="line">      {0.409087F, 0.991167F, 0.276877F, 0.188698F, 0.155701F},</div>
-<div class="line">      {0.851474F, 0.54778F, 0.133586F, 0.37391F, 0.137362F},</div>
-<div class="line">      {0.0148137F, 0.97396F, 0.945259F, 0.297432F, 0.260494F},</div>
-<div class="line">      {0.906864F, 0.13484F, 0.214258F, 0.924681F, 0.618572F},</div>
-<div class="line">      {0.141742F, 0.563986F, 0.502602F, 0.416297F, 0.97038F},</div>
-<div class="line">      {0.698555F, 0.406929F, 0.558199F, 0.875364F, 0.736008F},</div>
-<div class="line">      {0.175105F, 0.270328F, 0.332957F, 0.145101F, 0.765857F},</div>
-<div class="line">      {0.68083F, 0.125673F, 0.922594F, 0.831683F, 0.457214F},</div>
-<div class="line">      {0.520728F, 0.26214F, 0.458674F, 0.306454F, 0.783164F},</div>
-<div class="line">      {0.780442F, 0.472245F, 0.125185F, 0.460146F, 0.0847598F},</div>
-<div class="line">      {0.360083F, 0.0686402F, 0.328997F, 0.799852F, 0.818809F},</div>
-<div class="line">      {0.71546F, 0.717884F, 0.253842F, 0.812915F, 0.0141433F},</div>
-<div class="line">      {0.441185F, 0.171204F, 0.0432966F, 0.739241F, 0.448679F},</div>
-<div class="line">      {0.399117F, 0.148854F, 0.743042F, 0.0230124F, 0.378786F},</div>
-<div class="line">      {0.841239F, 0.292533F, 0.391296F, 0.734326F, 0.0597166F},</div>
-<div class="line">      {0.350847F, 0.519149F, 0.808508F, 0.113644F, 0.673261F},</div>
-<div class="line">      {0.229909F, 0.814871F, 0.118688F, 0.612729F, 0.354682F},</div>
-<div class="line">      {0.734755F, 0.675693F, 0.646155F, 0.0296504F, 0.405621F},</div>
-<div class="line">      {0.121731F, 0.231111F, 0.47879F, 0.733299F, 0.270893F},</div>
-<div class="line">      {0.732981F, 0.813999F, 0.597652F, 0.455436F, 0.691262F},</div>
-<div class="line">      {0.10297F, 0.534613F, 0.553605F, 0.777385F, 0.553588F},</div>
-<div class="line">      {0.441429F, 0.974205F, 0.120671F, 0.279931F, 0.624484F},</div>
-<div class="line">      {0.531836F, 0.697762F, 0.274009F, 0.827927F, 0.741129F},</div>
-<div class="line">      {0.745307F, 0.085542F, 0.473629F, 0.286912F, 0.175756F},</div>
-<div class="line">      {0.758466F, 0.268705F, 0.108006F, 0.291002F, 0.559732F},</div>
-<div class="line">      {0.632262F, 0.733193F, 0.919653F, 0.165692F, 0.84716F},</div>
-<div class="line">      {0.0107621F, 0.694084F, 0.35781F, 0.793076F, 0.0818898F},</div>
-<div class="line">      {0.17388F, 0.333606F, 0.867638F, 0.969285F, 0.887633F},</div>
-<div class="line">      {0.255376F, 0.180532F, 0.737631F, 0.869954F, 0.875926F},</div>
-<div class="line">      {0.525821F, 0.882517F, 0.224126F, 0.906093F, 0.557676F},</div>
-<div class="line">      {0.516693F, 0.986614F, 0.644313F, 0.00903489F, 0.207868F},</div>
-<div class="line">      {0.00175451F, 0.49772F, 0.436713F, 0.0418148F, 0.63547F},</div>
-<div class="line">      {0.559954F, 0.192099F, 0.0787102F, 0.976933F, 0.552542F},</div>
-<div class="line">      {0.983202F, 0.165426F, 0.136735F, 0.467933F, 0.626612F},</div>
-<div class="line">      {0.520497F, 0.593702F, 0.0155549F, 0.791301F, 0.635127F},</div>
-<div class="line">      {0.934924F, 0.0663795F, 0.513404F, 0.791586F, 0.68594F},</div>
-<div class="line">      {0.977299F, 0.682359F, 0.0689664F, 0.769369F, 0.169862F},</div>
-<div class="line">      {0.681586F, 0.900795F, 0.312534F, 0.854568F, 0.113097F},</div>
-<div class="line">      {0.0783791F, 0.340692F, 0.23686F, 0.5932F, 0.38193F},</div>
-<div class="line">      {0.430041F, 0.401364F, 0.88266F, 0.226286F, 0.514185F},</div>
-<div class="line">      {0.422123F, 0.713778F, 0.813105F, 0.960577F, 0.794308F},</div>
-<div class="line">      {0.0531423F, 0.930818F, 0.913336F, 0.382305F, 0.372521F},</div>
-<div class="line">      {0.91698F, 0.128078F, 0.901849F, 0.0860355F, 0.432365F},</div>
-<div class="line">      {0.749259F, 0.198112F, 0.538301F, 0.739992F, 0.909026F},</div>
-<div class="line">      {0.903781F, 0.206122F, 0.743227F, 0.700662F, 0.784729F},</div>
-<div class="line">      {0.914658F, 0.625943F, 0.697374F, 0.333459F, 0.213769F},</div>
-<div class="line">      {0.313091F, 0.0485961F, 0.625018F, 0.916347F, 0.363119F},</div>
-<div class="line">      {0.455916F, 0.982769F, 0.245987F, 0.555492F, 0.938798F},</div>
-<div class="line">      {0.0737146F, 0.324519F, 0.325405F, 0.677491F, 0.148078F},</div>
-<div class="line">      {0.918677F, 0.537612F, 0.917458F, 0.611973F, 0.965844F},</div>
-<div class="line">      {0.832977F, 0.466222F, 0.528761F, 0.348765F, 0.472975F},</div>
-<div class="line">      {0.784042F, 0.866144F, 0.00524178F, 0.217837F, 0.145246F},</div>
-<div class="line">      {0.308576F, 0.993283F, 0.0244056F, 0.543786F, 0.575841F},</div>
-<div class="line">      {0.285113F, 0.12198F, 0.74075F, 0.834888F, 0.561457F},</div>
-<div class="line">      {0.635992F, 0.590228F, 0.629378F, 0.112457F, 0.78253F}};</div>
+<div class="line">  <span class="keyword">constexpr</span> data measured[]{{.drift_x = 0.0756891F,</div>
+<div class="line">                             .drift_y = 0.749786F,</div>
+<div class="line">                             .position_x = 0.878827F,</div>
+<div class="line">                             .position_y = 0.806808F,</div>
+<div class="line">                             .variometer = 0.155487F},</div>
+<div class="line">                            {.drift_x = 0.506366F,</div>
+<div class="line">                             .drift_y = 0.261469F,</div>
+<div class="line">                             .position_x = 0.886986F,</div>
+<div class="line">                             .position_y = 0.332883F,</div>
+<div class="line">                             .variometer = 0.434406F},</div>
+<div class="line">                            {.drift_x = 0.249769F,</div>
+<div class="line">                             .drift_y = 0.242154F,</div>
+<div class="line">                             .position_x = 0.616454F,</div>
+<div class="line">                             .position_y = 0.672545F,</div>
+<div class="line">                             .variometer = 0.24927F},</div>
+<div class="line">                            {.drift_x = 0.358587F,</div>
+<div class="line">                             .drift_y = 0.556206F,</div>
+<div class="line">                             .position_x = 0.909985F,</div>
+<div class="line">                             .position_y = 0.370336F,</div>
+<div class="line">                             .variometer = 0.553264F},</div>
+<div class="line">                            {.drift_x = 0.370579F,</div>
+<div class="line">                             .drift_y = 0.368003F,</div>
+<div class="line">                             .position_x = 0.491917F,</div>
+<div class="line">                             .position_y = 0.635429F,</div>
+<div class="line">                             .variometer = 0.73594F},</div>
+<div class="line">                            {.drift_x = 0.82946F,</div>
+<div class="line">                             .drift_y = 0.0221123F,</div>
+<div class="line">                             .position_x = 0.461047F,</div>
+<div class="line">                             .position_y = 0.940697F,</div>
+<div class="line">                             .variometer = 0.987409F},</div>
+<div class="line">                            {.drift_x = 0.462132F,</div>
+<div class="line">                             .drift_y = 0.708865F,</div>
+<div class="line">                             .position_x = 0.941915F,</div>
+<div class="line">                             .position_y = 0.122432F,</div>
+<div class="line">                             .variometer = 0.911597F},</div>
+<div class="line">                            {.drift_x = 0.888334F,</div>
+<div class="line">                             .drift_y = 0.542419F,</div>
+<div class="line">                             .position_x = 0.773781F,</div>
+<div class="line">                             .position_y = 0.116075F,</div>
+<div class="line">                             .variometer = 0.917592F},</div>
+<div class="line">                            {.drift_x = 0.229376F,</div>
+<div class="line">                             .drift_y = 0.174244F,</div>
+<div class="line">                             .position_x = 0.972009F,</div>
+<div class="line">                             .position_y = 0.509611F,</div>
+<div class="line">                             .variometer = 0.37637F},</div>
+<div class="line">                            {.drift_x = 0.887738F,</div>
+<div class="line">                             .drift_y = 0.707866F,</div>
+<div class="line">                             .position_x = 0.90959F,</div>
+<div class="line">                             .position_y = 0.430274F,</div>
+<div class="line">                             .variometer = 0.242523F},</div>
+<div class="line">                            {.drift_x = 0.40713F,</div>
+<div class="line">                             .drift_y = 0.0696747F,</div>
+<div class="line">                             .position_x = 0.456659F,</div>
+<div class="line">                             .position_y = 0.979656F,</div>
+<div class="line">                             .variometer = 0.11167F},</div>
+<div class="line">                            {.drift_x = 0.77115F,</div>
+<div class="line">                             .drift_y = 0.183994F,</div>
+<div class="line">                             .position_x = 0.944587F,</div>
+<div class="line">                             .position_y = 0.467626F,</div>
+<div class="line">                             .variometer = 0.0219546F},</div>
+<div class="line">                            {.drift_x = 0.137442F,</div>
+<div class="line">                             .drift_y = 0.316077F,</div>
+<div class="line">                             .position_x = 0.660742F,</div>
+<div class="line">                             .position_y = 0.828009F,</div>
+<div class="line">                             .variometer = 0.852228F},</div>
+<div class="line">                            {.drift_x = 0.128113F,</div>
+<div class="line">                             .drift_y = 0.0757587F,</div>
+<div class="line">                             .position_x = 0.742959F,</div>
+<div class="line">                             .position_y = 0.360531F,</div>
+<div class="line">                             .variometer = 0.3932F},</div>
+<div class="line">                            {.drift_x = 0.161107F,</div>
+<div class="line">                             .drift_y = 0.709262F,</div>
+<div class="line">                             .position_x = 0.690847F,</div>
+<div class="line">                             .position_y = 0.161165F,</div>
+<div class="line">                             .variometer = 0.237205F},</div>
+<div class="line">                            {.drift_x = 0.664184F,</div>
+<div class="line">                             .drift_y = 0.658516F,</div>
+<div class="line">                             .position_x = 0.972067F,</div>
+<div class="line">                             .position_y = 0.465567F,</div>
+<div class="line">                             .variometer = 0.807259F},</div>
+<div class="line">                            {.drift_x = 0.669789F,</div>
+<div class="line">                             .drift_y = 0.236436F,</div>
+<div class="line">                             .position_x = 0.341701F,</div>
+<div class="line">                             .position_y = 0.430546F,</div>
+<div class="line">                             .variometer = 0.229097F},</div>
+<div class="line">                            {.drift_x = 0.159471F,</div>
+<div class="line">                             .drift_y = 0.122824F,</div>
+<div class="line">                             .position_x = 0.975034F,</div>
+<div class="line">                             .position_y = 0.833685F,</div>
+<div class="line">                             .variometer = 0.78011F},</div>
+<div class="line">                            {.drift_x = 0.284848F,</div>
+<div class="line">                             .drift_y = 0.917524F,</div>
+<div class="line">                             .position_x = 0.358084F,</div>
+<div class="line">                             .position_y = 0.82927F,</div>
+<div class="line">                             .variometer = 0.0983398F},</div>
+<div class="line">                            {.drift_x = 0.209027F,</div>
+<div class="line">                             .drift_y = 0.573124F,</div>
+<div class="line">                             .position_x = 0.428336F,</div>
+<div class="line">                             .position_y = 0.106116F,</div>
+<div class="line">                             .variometer = 0.17974F},</div>
+<div class="line">                            {.drift_x = 0.861987F,</div>
+<div class="line">                             .drift_y = 0.110099F,</div>
+<div class="line">                             .position_x = 0.0994602F,</div>
+<div class="line">                             .position_y = 0.208052F,</div>
+<div class="line">                             .variometer = 0.0545667F},</div>
+<div class="line">                            {.drift_x = 0.483002F,</div>
+<div class="line">                             .drift_y = 0.707016F,</div>
+<div class="line">                             .position_x = 0.189368F,</div>
+<div class="line">                             .position_y = 0.0626376F,</div>
+<div class="line">                             .variometer = 0.992816F},</div>
+<div class="line">                            {.drift_x = 0.588928F,</div>
+<div class="line">                             .drift_y = 0.644143F,</div>
+<div class="line">                             .position_x = 0.763512F,</div>
+<div class="line">                             .position_y = 0.444366F,</div>
+<div class="line">                             .variometer = 0.251652F},</div>
+<div class="line">                            {.drift_x = 0.419946F,</div>
+<div class="line">                             .drift_y = 0.338175F,</div>
+<div class="line">                             .position_x = 0.286543F,</div>
+<div class="line">                             .position_y = 0.97232F,</div>
+<div class="line">                             .variometer = 0.908061F},</div>
+<div class="line">                            {.drift_x = 0.0625373F,</div>
+<div class="line">                             .drift_y = 0.855109F,</div>
+<div class="line">                             .position_x = 0.763831F,</div>
+<div class="line">                             .position_y = 0.622934F,</div>
+<div class="line">                             .variometer = 0.364608F},</div>
+<div class="line">                            {.drift_x = 0.55833F,</div>
+<div class="line">                             .drift_y = 0.505803F,</div>
+<div class="line">                             .position_x = 0.600797F,</div>
+<div class="line">                             .position_y = 0.342724F,</div>
+<div class="line">                             .variometer = 0.735087F},</div>
+<div class="line">                            {.drift_x = 0.664873F,</div>
+<div class="line">                             .drift_y = 0.224638F,</div>
+<div class="line">                             .position_x = 0.385409F,</div>
+<div class="line">                             .position_y = 0.892807F,</div>
+<div class="line">                             .variometer = 0.695F},</div>
+<div class="line">                            {.drift_x = 0.255295F,</div>
+<div class="line">                             .drift_y = 0.0264766F,</div>
+<div class="line">                             .position_x = 0.229274F,</div>
+<div class="line">                             .position_y = 0.723291F,</div>
+<div class="line">                             .variometer = 0.552242F},</div>
+<div class="line">                            {.drift_x = 0.412129F,</div>
+<div class="line">                             .drift_y = 0.856404F,</div>
+<div class="line">                             .position_x = 0.395075F,</div>
+<div class="line">                             .position_y = 0.261842F,</div>
+<div class="line">                             .variometer = 0.947885F},</div>
+<div class="line">                            {.drift_x = 0.468212F,</div>
+<div class="line">                             .drift_y = 0.849367F,</div>
+<div class="line">                             .position_x = 0.00615251F,</div>
+<div class="line">                             .position_y = 0.842904F,</div>
+<div class="line">                             .variometer = 0.700869F},</div>
+<div class="line">                            {.drift_x = 0.311582F,</div>
+<div class="line">                             .drift_y = 0.293401F,</div>
+<div class="line">                             .position_x = 0.299637F,</div>
+<div class="line">                             .position_y = 0.567025F,</div>
+<div class="line">                             .variometer = 0.659598F},</div>
+<div class="line">                            {.drift_x = 0.695464F,</div>
+<div class="line">                             .drift_y = 0.941376F,</div>
+<div class="line">                             .position_x = 0.21219F,</div>
+<div class="line">                             .position_y = 0.27813F,</div>
+<div class="line">                             .variometer = 0.289406F},</div>
+<div class="line">                            {.drift_x = 0.000397467F,</div>
+<div class="line">                             .drift_y = 0.301337F,</div>
+<div class="line">                             .position_x = 0.71608F,</div>
+<div class="line">                             .position_y = 0.296278F,</div>
+<div class="line">                             .variometer = 0.718923F},</div>
+<div class="line">                            {.drift_x = 0.36314F,</div>
+<div class="line">                             .drift_y = 0.263077F,</div>
+<div class="line">                             .position_x = 0.193163F,</div>
+<div class="line">                             .position_y = 0.295399F,</div>
+<div class="line">                             .variometer = 0.0523569F},</div>
+<div class="line">                            {.drift_x = 0.128381F,</div>
+<div class="line">                             .drift_y = 0.572157F,</div>
+<div class="line">                             .position_x = 0.971297F,</div>
+<div class="line">                             .position_y = 0.516492F,</div>
+<div class="line">                             .variometer = 0.921166F},</div>
+<div class="line">                            {.drift_x = 0.596215F,</div>
+<div class="line">                             .drift_y = 0.909239F,</div>
+<div class="line">                             .position_x = 0.133898F,</div>
+<div class="line">                             .position_y = 0.506903F,</div>
+<div class="line">                             .variometer = 0.0335569F},</div>
+<div class="line">                            {.drift_x = 0.444556F,</div>
+<div class="line">                             .drift_y = 0.997721F,</div>
+<div class="line">                             .position_x = 0.348369F,</div>
+<div class="line">                             .position_y = 0.644847F,</div>
+<div class="line">                             .variometer = 0.80885F},</div>
+<div class="line">                            {.drift_x = 0.891465F,</div>
+<div class="line">                             .drift_y = 0.0797467F,</div>
+<div class="line">                             .position_x = 0.85753F,</div>
+<div class="line">                             .position_y = 0.369457F,</div>
+<div class="line">                             .variometer = 0.418543F},</div>
+<div class="line">                            {.drift_x = 0.861948F,</div>
+<div class="line">                             .drift_y = 0.520583F,</div>
+<div class="line">                             .position_x = 0.900797F,</div>
+<div class="line">                             .position_y = 0.153884F,</div>
+<div class="line">                             .variometer = 0.080031F},</div>
+<div class="line">                            {.drift_x = 0.169696F,</div>
+<div class="line">                             .drift_y = 0.981169F,</div>
+<div class="line">                             .position_x = 0.406729F,</div>
+<div class="line">                             .position_y = 0.292696F,</div>
+<div class="line">                             .variometer = 0.831505F},</div>
+<div class="line">                            {.drift_x = 0.172591F,</div>
+<div class="line">                             .drift_y = 0.349291F,</div>
+<div class="line">                             .position_x = 0.782213F,</div>
+<div class="line">                             .position_y = 0.534652F,</div>
+<div class="line">                             .variometer = 0.214628F},</div>
+<div class="line">                            {.drift_x = 0.875081F,</div>
+<div class="line">                             .drift_y = 0.746097F,</div>
+<div class="line">                             .position_x = 0.0806311F,</div>
+<div class="line">                             .position_y = 0.15685F,</div>
+<div class="line">                             .variometer = 0.357471F},</div>
+<div class="line">                            {.drift_x = 0.519389F,</div>
+<div class="line">                             .drift_y = 0.007303F,</div>
+<div class="line">                             .position_x = 0.18117F,</div>
+<div class="line">                             .position_y = 0.370993F,</div>
+<div class="line">                             .variometer = 0.427305F},</div>
+<div class="line">                            {.drift_x = 0.961372F,</div>
+<div class="line">                             .drift_y = 0.218945F,</div>
+<div class="line">                             .position_x = 0.486608F,</div>
+<div class="line">                             .position_y = 0.618755F,</div>
+<div class="line">                             .variometer = 0.168813F},</div>
+<div class="line">                            {.drift_x = 0.537862F,</div>
+<div class="line">                             .drift_y = 0.451312F,</div>
+<div class="line">                             .position_x = 0.384422F,</div>
+<div class="line">                             .position_y = 0.540216F,</div>
+<div class="line">                             .variometer = 0.525636F},</div>
+<div class="line">                            {.drift_x = 0.494387F,</div>
+<div class="line">                             .drift_y = 0.162124F,</div>
+<div class="line">                             .position_x = 0.0136825F,</div>
+<div class="line">                             .position_y = 0.127037F,</div>
+<div class="line">                             .variometer = 0.803511F},</div>
+<div class="line">                            {.drift_x = 0.409087F,</div>
+<div class="line">                             .drift_y = 0.991167F,</div>
+<div class="line">                             .position_x = 0.276877F,</div>
+<div class="line">                             .position_y = 0.188698F,</div>
+<div class="line">                             .variometer = 0.155701F},</div>
+<div class="line">                            {.drift_x = 0.851474F,</div>
+<div class="line">                             .drift_y = 0.54778F,</div>
+<div class="line">                             .position_x = 0.133586F,</div>
+<div class="line">                             .position_y = 0.37391F,</div>
+<div class="line">                             .variometer = 0.137362F},</div>
+<div class="line">                            {.drift_x = 0.0148137F,</div>
+<div class="line">                             .drift_y = 0.97396F,</div>
+<div class="line">                             .position_x = 0.945259F,</div>
+<div class="line">                             .position_y = 0.297432F,</div>
+<div class="line">                             .variometer = 0.260494F},</div>
+<div class="line">                            {.drift_x = 0.906864F,</div>
+<div class="line">                             .drift_y = 0.13484F,</div>
+<div class="line">                             .position_x = 0.214258F,</div>
+<div class="line">                             .position_y = 0.924681F,</div>
+<div class="line">                             .variometer = 0.618572F},</div>
+<div class="line">                            {.drift_x = 0.141742F,</div>
+<div class="line">                             .drift_y = 0.563986F,</div>
+<div class="line">                             .position_x = 0.502602F,</div>
+<div class="line">                             .position_y = 0.416297F,</div>
+<div class="line">                             .variometer = 0.97038F},</div>
+<div class="line">                            {.drift_x = 0.698555F,</div>
+<div class="line">                             .drift_y = 0.406929F,</div>
+<div class="line">                             .position_x = 0.558199F,</div>
+<div class="line">                             .position_y = 0.875364F,</div>
+<div class="line">                             .variometer = 0.736008F},</div>
+<div class="line">                            {.drift_x = 0.175105F,</div>
+<div class="line">                             .drift_y = 0.270328F,</div>
+<div class="line">                             .position_x = 0.332957F,</div>
+<div class="line">                             .position_y = 0.145101F,</div>
+<div class="line">                             .variometer = 0.765857F},</div>
+<div class="line">                            {.drift_x = 0.68083F,</div>
+<div class="line">                             .drift_y = 0.125673F,</div>
+<div class="line">                             .position_x = 0.922594F,</div>
+<div class="line">                             .position_y = 0.831683F,</div>
+<div class="line">                             .variometer = 0.457214F},</div>
+<div class="line">                            {.drift_x = 0.520728F,</div>
+<div class="line">                             .drift_y = 0.26214F,</div>
+<div class="line">                             .position_x = 0.458674F,</div>
+<div class="line">                             .position_y = 0.306454F,</div>
+<div class="line">                             .variometer = 0.783164F},</div>
+<div class="line">                            {.drift_x = 0.780442F,</div>
+<div class="line">                             .drift_y = 0.472245F,</div>
+<div class="line">                             .position_x = 0.125185F,</div>
+<div class="line">                             .position_y = 0.460146F,</div>
+<div class="line">                             .variometer = 0.0847598F},</div>
+<div class="line">                            {.drift_x = 0.360083F,</div>
+<div class="line">                             .drift_y = 0.0686402F,</div>
+<div class="line">                             .position_x = 0.328997F,</div>
+<div class="line">                             .position_y = 0.799852F,</div>
+<div class="line">                             .variometer = 0.818809F},</div>
+<div class="line">                            {.drift_x = 0.71546F,</div>
+<div class="line">                             .drift_y = 0.717884F,</div>
+<div class="line">                             .position_x = 0.253842F,</div>
+<div class="line">                             .position_y = 0.812915F,</div>
+<div class="line">                             .variometer = 0.0141433F},</div>
+<div class="line">                            {.drift_x = 0.441185F,</div>
+<div class="line">                             .drift_y = 0.171204F,</div>
+<div class="line">                             .position_x = 0.0432966F,</div>
+<div class="line">                             .position_y = 0.739241F,</div>
+<div class="line">                             .variometer = 0.448679F},</div>
+<div class="line">                            {.drift_x = 0.399117F,</div>
+<div class="line">                             .drift_y = 0.148854F,</div>
+<div class="line">                             .position_x = 0.743042F,</div>
+<div class="line">                             .position_y = 0.0230124F,</div>
+<div class="line">                             .variometer = 0.378786F},</div>
+<div class="line">                            {.drift_x = 0.841239F,</div>
+<div class="line">                             .drift_y = 0.292533F,</div>
+<div class="line">                             .position_x = 0.391296F,</div>
+<div class="line">                             .position_y = 0.734326F,</div>
+<div class="line">                             .variometer = 0.0597166F},</div>
+<div class="line">                            {.drift_x = 0.350847F,</div>
+<div class="line">                             .drift_y = 0.519149F,</div>
+<div class="line">                             .position_x = 0.808508F,</div>
+<div class="line">                             .position_y = 0.113644F,</div>
+<div class="line">                             .variometer = 0.673261F},</div>
+<div class="line">                            {.drift_x = 0.229909F,</div>
+<div class="line">                             .drift_y = 0.814871F,</div>
+<div class="line">                             .position_x = 0.118688F,</div>
+<div class="line">                             .position_y = 0.612729F,</div>
+<div class="line">                             .variometer = 0.354682F},</div>
+<div class="line">                            {.drift_x = 0.734755F,</div>
+<div class="line">                             .drift_y = 0.675693F,</div>
+<div class="line">                             .position_x = 0.646155F,</div>
+<div class="line">                             .position_y = 0.0296504F,</div>
+<div class="line">                             .variometer = 0.405621F},</div>
+<div class="line">                            {.drift_x = 0.121731F,</div>
+<div class="line">                             .drift_y = 0.231111F,</div>
+<div class="line">                             .position_x = 0.47879F,</div>
+<div class="line">                             .position_y = 0.733299F,</div>
+<div class="line">                             .variometer = 0.270893F},</div>
+<div class="line">                            {.drift_x = 0.732981F,</div>
+<div class="line">                             .drift_y = 0.813999F,</div>
+<div class="line">                             .position_x = 0.597652F,</div>
+<div class="line">                             .position_y = 0.455436F,</div>
+<div class="line">                             .variometer = 0.691262F},</div>
+<div class="line">                            {.drift_x = 0.10297F,</div>
+<div class="line">                             .drift_y = 0.534613F,</div>
+<div class="line">                             .position_x = 0.553605F,</div>
+<div class="line">                             .position_y = 0.777385F,</div>
+<div class="line">                             .variometer = 0.553588F},</div>
+<div class="line">                            {.drift_x = 0.441429F,</div>
+<div class="line">                             .drift_y = 0.974205F,</div>
+<div class="line">                             .position_x = 0.120671F,</div>
+<div class="line">                             .position_y = 0.279931F,</div>
+<div class="line">                             .variometer = 0.624484F},</div>
+<div class="line">                            {.drift_x = 0.531836F,</div>
+<div class="line">                             .drift_y = 0.697762F,</div>
+<div class="line">                             .position_x = 0.274009F,</div>
+<div class="line">                             .position_y = 0.827927F,</div>
+<div class="line">                             .variometer = 0.741129F},</div>
+<div class="line">                            {.drift_x = 0.745307F,</div>
+<div class="line">                             .drift_y = 0.085542F,</div>
+<div class="line">                             .position_x = 0.473629F,</div>
+<div class="line">                             .position_y = 0.286912F,</div>
+<div class="line">                             .variometer = 0.175756F},</div>
+<div class="line">                            {.drift_x = 0.758466F,</div>
+<div class="line">                             .drift_y = 0.268705F,</div>
+<div class="line">                             .position_x = 0.108006F,</div>
+<div class="line">                             .position_y = 0.291002F,</div>
+<div class="line">                             .variometer = 0.559732F},</div>
+<div class="line">                            {.drift_x = 0.632262F,</div>
+<div class="line">                             .drift_y = 0.733193F,</div>
+<div class="line">                             .position_x = 0.919653F,</div>
+<div class="line">                             .position_y = 0.165692F,</div>
+<div class="line">                             .variometer = 0.84716F},</div>
+<div class="line">                            {.drift_x = 0.0107621F,</div>
+<div class="line">                             .drift_y = 0.694084F,</div>
+<div class="line">                             .position_x = 0.35781F,</div>
+<div class="line">                             .position_y = 0.793076F,</div>
+<div class="line">                             .variometer = 0.0818898F},</div>
+<div class="line">                            {.drift_x = 0.17388F,</div>
+<div class="line">                             .drift_y = 0.333606F,</div>
+<div class="line">                             .position_x = 0.867638F,</div>
+<div class="line">                             .position_y = 0.969285F,</div>
+<div class="line">                             .variometer = 0.887633F},</div>
+<div class="line">                            {.drift_x = 0.255376F,</div>
+<div class="line">                             .drift_y = 0.180532F,</div>
+<div class="line">                             .position_x = 0.737631F,</div>
+<div class="line">                             .position_y = 0.869954F,</div>
+<div class="line">                             .variometer = 0.875926F},</div>
+<div class="line">                            {.drift_x = 0.525821F,</div>
+<div class="line">                             .drift_y = 0.882517F,</div>
+<div class="line">                             .position_x = 0.224126F,</div>
+<div class="line">                             .position_y = 0.906093F,</div>
+<div class="line">                             .variometer = 0.557676F},</div>
+<div class="line">                            {.drift_x = 0.516693F,</div>
+<div class="line">                             .drift_y = 0.986614F,</div>
+<div class="line">                             .position_x = 0.644313F,</div>
+<div class="line">                             .position_y = 0.00903489F,</div>
+<div class="line">                             .variometer = 0.207868F},</div>
+<div class="line">                            {.drift_x = 0.00175451F,</div>
+<div class="line">                             .drift_y = 0.49772F,</div>
+<div class="line">                             .position_x = 0.436713F,</div>
+<div class="line">                             .position_y = 0.0418148F,</div>
+<div class="line">                             .variometer = 0.63547F},</div>
+<div class="line">                            {.drift_x = 0.559954F,</div>
+<div class="line">                             .drift_y = 0.192099F,</div>
+<div class="line">                             .position_x = 0.0787102F,</div>
+<div class="line">                             .position_y = 0.976933F,</div>
+<div class="line">                             .variometer = 0.552542F},</div>
+<div class="line">                            {.drift_x = 0.983202F,</div>
+<div class="line">                             .drift_y = 0.165426F,</div>
+<div class="line">                             .position_x = 0.136735F,</div>
+<div class="line">                             .position_y = 0.467933F,</div>
+<div class="line">                             .variometer = 0.626612F},</div>
+<div class="line">                            {.drift_x = 0.520497F,</div>
+<div class="line">                             .drift_y = 0.593702F,</div>
+<div class="line">                             .position_x = 0.0155549F,</div>
+<div class="line">                             .position_y = 0.791301F,</div>
+<div class="line">                             .variometer = 0.635127F},</div>
+<div class="line">                            {.drift_x = 0.934924F,</div>
+<div class="line">                             .drift_y = 0.0663795F,</div>
+<div class="line">                             .position_x = 0.513404F,</div>
+<div class="line">                             .position_y = 0.791586F,</div>
+<div class="line">                             .variometer = 0.68594F},</div>
+<div class="line">                            {.drift_x = 0.977299F,</div>
+<div class="line">                             .drift_y = 0.682359F,</div>
+<div class="line">                             .position_x = 0.0689664F,</div>
+<div class="line">                             .position_y = 0.769369F,</div>
+<div class="line">                             .variometer = 0.169862F},</div>
+<div class="line">                            {.drift_x = 0.681586F,</div>
+<div class="line">                             .drift_y = 0.900795F,</div>
+<div class="line">                             .position_x = 0.312534F,</div>
+<div class="line">                             .position_y = 0.854568F,</div>
+<div class="line">                             .variometer = 0.113097F},</div>
+<div class="line">                            {.drift_x = 0.0783791F,</div>
+<div class="line">                             .drift_y = 0.340692F,</div>
+<div class="line">                             .position_x = 0.23686F,</div>
+<div class="line">                             .position_y = 0.5932F,</div>
+<div class="line">                             .variometer = 0.38193F},</div>
+<div class="line">                            {.drift_x = 0.430041F,</div>
+<div class="line">                             .drift_y = 0.401364F,</div>
+<div class="line">                             .position_x = 0.88266F,</div>
+<div class="line">                             .position_y = 0.226286F,</div>
+<div class="line">                             .variometer = 0.514185F},</div>
+<div class="line">                            {.drift_x = 0.422123F,</div>
+<div class="line">                             .drift_y = 0.713778F,</div>
+<div class="line">                             .position_x = 0.813105F,</div>
+<div class="line">                             .position_y = 0.960577F,</div>
+<div class="line">                             .variometer = 0.794308F},</div>
+<div class="line">                            {.drift_x = 0.0531423F,</div>
+<div class="line">                             .drift_y = 0.930818F,</div>
+<div class="line">                             .position_x = 0.913336F,</div>
+<div class="line">                             .position_y = 0.382305F,</div>
+<div class="line">                             .variometer = 0.372521F},</div>
+<div class="line">                            {.drift_x = 0.91698F,</div>
+<div class="line">                             .drift_y = 0.128078F,</div>
+<div class="line">                             .position_x = 0.901849F,</div>
+<div class="line">                             .position_y = 0.0860355F,</div>
+<div class="line">                             .variometer = 0.432365F},</div>
+<div class="line">                            {.drift_x = 0.749259F,</div>
+<div class="line">                             .drift_y = 0.198112F,</div>
+<div class="line">                             .position_x = 0.538301F,</div>
+<div class="line">                             .position_y = 0.739992F,</div>
+<div class="line">                             .variometer = 0.909026F},</div>
+<div class="line">                            {.drift_x = 0.903781F,</div>
+<div class="line">                             .drift_y = 0.206122F,</div>
+<div class="line">                             .position_x = 0.743227F,</div>
+<div class="line">                             .position_y = 0.700662F,</div>
+<div class="line">                             .variometer = 0.784729F},</div>
+<div class="line">                            {.drift_x = 0.914658F,</div>
+<div class="line">                             .drift_y = 0.625943F,</div>
+<div class="line">                             .position_x = 0.697374F,</div>
+<div class="line">                             .position_y = 0.333459F,</div>
+<div class="line">                             .variometer = 0.213769F},</div>
+<div class="line">                            {.drift_x = 0.313091F,</div>
+<div class="line">                             .drift_y = 0.0485961F,</div>
+<div class="line">                             .position_x = 0.625018F,</div>
+<div class="line">                             .position_y = 0.916347F,</div>
+<div class="line">                             .variometer = 0.363119F},</div>
+<div class="line">                            {.drift_x = 0.455916F,</div>
+<div class="line">                             .drift_y = 0.982769F,</div>
+<div class="line">                             .position_x = 0.245987F,</div>
+<div class="line">                             .position_y = 0.555492F,</div>
+<div class="line">                             .variometer = 0.938798F},</div>
+<div class="line">                            {.drift_x = 0.0737146F,</div>
+<div class="line">                             .drift_y = 0.324519F,</div>
+<div class="line">                             .position_x = 0.325405F,</div>
+<div class="line">                             .position_y = 0.677491F,</div>
+<div class="line">                             .variometer = 0.148078F},</div>
+<div class="line">                            {.drift_x = 0.918677F,</div>
+<div class="line">                             .drift_y = 0.537612F,</div>
+<div class="line">                             .position_x = 0.917458F,</div>
+<div class="line">                             .position_y = 0.611973F,</div>
+<div class="line">                             .variometer = 0.965844F},</div>
+<div class="line">                            {.drift_x = 0.832977F,</div>
+<div class="line">                             .drift_y = 0.466222F,</div>
+<div class="line">                             .position_x = 0.528761F,</div>
+<div class="line">                             .position_y = 0.348765F,</div>
+<div class="line">                             .variometer = 0.472975F},</div>
+<div class="line">                            {.drift_x = 0.784042F,</div>
+<div class="line">                             .drift_y = 0.866144F,</div>
+<div class="line">                             .position_x = 0.00524178F,</div>
+<div class="line">                             .position_y = 0.217837F,</div>
+<div class="line">                             .variometer = 0.145246F},</div>
+<div class="line">                            {.drift_x = 0.308576F,</div>
+<div class="line">                             .drift_y = 0.993283F,</div>
+<div class="line">                             .position_x = 0.0244056F,</div>
+<div class="line">                             .position_y = 0.543786F,</div>
+<div class="line">                             .variometer = 0.575841F},</div>
+<div class="line">                            {.drift_x = 0.285113F,</div>
+<div class="line">                             .drift_y = 0.12198F,</div>
+<div class="line">                             .position_x = 0.74075F,</div>
+<div class="line">                             .position_y = 0.834888F,</div>
+<div class="line">                             .variometer = 0.561457F},</div>
+<div class="line">                            {.drift_x = 0.635992F,</div>
+<div class="line">                             .drift_y = 0.590228F,</div>
+<div class="line">                             .position_x = 0.629378F,</div>
+<div class="line">                             .position_y = 0.112457F,</div>
+<div class="line">                             .variometer = 0.78253F}};</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
 <div class="line">    filter.predict(measure.drift_x, measure.drift_y);</div>
 <div class="line">    filter.update(measure.position_x, measure.position_y, measure.variometer);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  assert(std::abs(1 - filter.x()[0] / 0.347191F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[1] / 91.8926F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[2] / 22.9656F) &lt; 0.0001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - filter.x()[3] / 20.6146F) &lt; 0.0001F &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - (filter.x()[0] / 0.347191F)) &lt; 0.0001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[1] / 91.8926F)) &lt; 0.0001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[2] / 22.9656F)) &lt; 0.0001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[3] / 20.6146F)) &lt; 0.0001F &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimated states expected to meet ArduPilot soaring plane &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;implementation at 0.01% accuracy.&quot;</span>);</div>
 <div class="line"> </div>

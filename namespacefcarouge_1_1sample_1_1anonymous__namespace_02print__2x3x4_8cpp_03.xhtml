@@ -134,7 +134,7 @@ template&lt;auto Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="print__2x3x4_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="print__2x3x4_8cpp_source.xhtml">print_2x3x4.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="print__2x3x4_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="print__2x3x4_8cpp_source.xhtml">print_2x3x4.cpp</a>.</p>
 
 </div>
 </div>
@@ -150,7 +150,7 @@ template&lt;auto Size&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{[] {</div>
+<b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="keyword">auto</span> filter{<a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a>{state{vector&lt;5&gt;{0., 0., 0., 0., 0.}}, output&lt;vector&lt;4&gt;&gt;,</div>
 <div class="line">                     input&lt;vector&lt;3&gt;&gt;} |</div>
 <div class="line">              <a class="code hl_variable" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>};</div>
@@ -164,18 +164,18 @@ template&lt;auto Size&gt; </div>
 </div><!-- fragment -->
 <p>Verifies the printer adaptor for multi-dimension filters with input control without additional arguments. </p>
 
-<p class="definition">Definition at line <a class="el" href="print__2x3x4_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="print__2x3x4_8cpp_source.xhtml">print_2x3x4.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                {[] {</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keyword">auto</span> filter{<a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a>{state{<a class="code hl_typedef" href="#a56fb1edea600b8b9290cf983c911a2e3">vector&lt;5&gt;</a>{0., 0., 0., 0., 0.}}, output&lt;vector&lt;4&gt;&gt;,</div>
-<div class="line"><span class="lineno">   53</span>                     input&lt;vector&lt;3&gt;&gt;} |</div>
-<div class="line"><span class="lineno">   54</span>              print};</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>  filter.predict(0., 0., 0.);</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   59</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="print__2x3x4_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="print__2x3x4_8cpp_source.xhtml">print_2x3x4.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keyword">auto</span> filter{<a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a>{state{<a class="code hl_typedef" href="#a56fb1edea600b8b9290cf983c911a2e3">vector&lt;5&gt;</a>{0., 0., 0., 0., 0.}}, output&lt;vector&lt;4&gt;&gt;,</div>
+<div class="line"><span class="lineno">   52</span>                     input&lt;vector&lt;3&gt;&gt;} |</div>
+<div class="line"><span class="lineno">   53</span>              print};</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>  filter.predict(0., 0., 0.);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   58</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02print__2x3x4_8cpp_03_xhtml_a56fb1edea600b8b9290cf983c911a2e3"><div class="ttname"><a href="#a56fb1edea600b8b9290cf983c911a2e3">fcarouge::sample::anonymous_namespace{print_2x3x4.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; double, Size &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="print__2x3x4_8cpp_source.xhtml#l00047">print_2x3x4.cpp:47</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02print__2x3x4_8cpp_03_xhtml_a56fb1edea600b8b9290cf983c911a2e3"><div class="ttname"><a href="#a56fb1edea600b8b9290cf983c911a2e3">fcarouge::sample::anonymous_namespace{print_2x3x4.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; double, Size &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="print__2x3x4_8cpp_source.xhtml#l00046">print_2x3x4.cpp:46</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

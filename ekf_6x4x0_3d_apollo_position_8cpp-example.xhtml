@@ -157,7 +157,7 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <div class="line"><span class="keyword">template</span> &lt;auto Row, auto Column&gt; <span class="keyword">using </span>matrix = matrix&lt;double, Row, Column&gt;;</div>
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;6&gt;&gt;;</div>
 <div class="line"> </div>
-<div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] {</div>
+<div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The six estimated states X initialization under the simulated scenario:</span></div>
 <div class="line">      <span class="comment">// the lunar module is 30km away, approaching at 100 m/s relative to</span></div>
@@ -192,9 +192,9 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <div class="line">      <span class="comment">// The output model H is the Jacobian, linearization around the current</span></div>
 <div class="line">      <span class="comment">// state. Complex derivation omitted for brevity, using a simplified</span></div>
 <div class="line">      <span class="comment">// approximation.</span></div>
-<div class="line">      output_model{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) {</div>
+<div class="line">      output_model{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) -&gt; <span class="keyword">auto</span> {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[rx, ry, rz, vx, vy, vz]{x};</div>
-<div class="line">        <span class="keywordtype">double</span> range{std::sqrt(rx * rx + ry * ry + rz * rz)};</div>
+<div class="line">        <span class="keywordtype">double</span> range{std::sqrt((rx * rx) + (ry * ry) + (rz * rz))};</div>
 <div class="line">        <span class="comment">// For production, guard against divide by zero range, if the spacecraft</span></div>
 <div class="line">        <span class="comment">// are touching.</span></div>
 <div class="line">        <span class="keywordtype">double</span> range_rate{(rx * vx + ry * vy + rz * vz) / range};</div>
@@ -217,14 +217,14 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <div class="line"> </div>
 <div class="line">        <span class="comment">// For the shaft/azimuth: the derivative of atan2.</span></div>
 <div class="line">        <span class="comment">// d(Shaft) / d(State)</span></div>
-<div class="line">        <span class="keywordtype">double</span> r2_xy{rx * rx + ry * ry};</div>
+<div class="line">        <span class="keywordtype">double</span> r2_xy{(rx * rx) + (ry * ry)};</div>
 <div class="line">        <span class="comment">// For production, guard against divide by zero.</span></div>
 <div class="line">        h[2, 0] = -ry / r2_xy;</div>
 <div class="line">        h[2, 1] = rx / r2_xy;</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// For the trunnion/elevation: the derivative of asin(z/r):</span></div>
 <div class="line">        <span class="comment">// d(z/r)/dState * sqrt(1-(z/r)^2). d(Trunnion) / d(State)</span></div>
-<div class="line">        <span class="keywordtype">double</span> term{std::sqrt(1 - (rz * rz) / (range * range))};</div>
+<div class="line">        <span class="keywordtype">double</span> term{std::sqrt(1 - ((rz * rz) / (range * range)))};</div>
 <div class="line">        h[3, 0] = (-rz * rx) / (range * range * range * term);</div>
 <div class="line">        h[3, 1] = (-rz * ry) / (range * range * range * term);</div>
 <div class="line">        h[3, 2] = (range * range - rz * rz) / (range * range * range * term);</div>
@@ -232,7 +232,7 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <div class="line">        <span class="keywordflow">return</span> h;</div>
 <div class="line">      }},</div>
 <div class="line">      <span class="comment">// The state transition matrix F:</span></div>
-<div class="line">      state_transition{[](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;dt) {</div>
+<div class="line">      state_transition{[](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;dt) -&gt; <span class="keyword">auto</span> {</div>
 <div class="line">        <span class="keywordflow">return</span> matrix&lt;6, 6&gt;{{1., 0., 0., dt, 0., 0.}, <span class="comment">//</span></div>
 <div class="line">                            {0., 1., 0., 0., dt, 0.}, <span class="comment">//</span></div>
 <div class="line">                            {0., 0., 1., 0., 0., dt}, <span class="comment">//</span></div>
@@ -241,9 +241,9 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <div class="line">                            {0., 0., 0., 0., 0., 1.}};</div>
 <div class="line">      }},</div>
 <div class="line">      <span class="comment">// The observation estimation Z:</span></div>
-<div class="line">      observation{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) {</div>
+<div class="line">      observation{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) -&gt; <span class="keyword">auto</span> {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[rx, ry, rz, vx, vy, vz]{x};</div>
-<div class="line">        <span class="keywordtype">double</span> range{std::sqrt(rx * rx + ry * ry + rz * rz)};</div>
+<div class="line">        <span class="keywordtype">double</span> range{std::sqrt((rx * rx) + (ry * ry) + (rz * rz))};</div>
 <div class="line">        <span class="comment">// For production, guard against divide by zero.</span></div>
 <div class="line">        <span class="keywordtype">double</span> range_rate{(rx * vx + ry * vy + rz * vz) / range};</div>
 <div class="line">        <span class="comment">// The shaft angle in the xy plane usually, or defined by radar gimbal</span></div>
@@ -272,8 +272,8 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <div class="line">  <span class="keywordtype">double</span> range_r{vector&lt;3&gt;{filter.x().template head&lt;3&gt;()}.norm()};</div>
 <div class="line">  <span class="keywordtype">double</span> velocity_x{filter.x()[3]};</div>
 <div class="line"> </div>
-<div class="line">  assert(std::abs(1 - range_r / 29&#39;001.861&#39;093&#39;990) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
-<div class="line">         std::abs(1 - velocity_x / -99.574&#39;527&#39;631&#39;012) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - (range_r / 29&#39;001.861&#39;093&#39;990)) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
+<div class="line">         std::abs(1 - (velocity_x / -99.574&#39;527&#39;631&#39;012)) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After simulating 10 seconds, the estimated range is 29,001.86 meters &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;and an estimated closing velocity of 99.57 m/s.&quot;</span>);</div>
 <div class="line"> </div>

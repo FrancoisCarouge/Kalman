@@ -1,4 +1,13 @@
 var searchData=
 [
-  ['4x1_20nonlinear_20dynamic_20model_20extended_20filter_0',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]]
+  ['1_200_200_201_200_20a_202022_2011_2025_0',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/releases/tag/0.1.0&quot; &gt;0.1.0&lt;/a&gt; - 2022-11-25',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25',1,'']]],
+  ['1_200_200_202_200_200_202_200_20a_202023_2008_2007_1',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.1.0...0.2.0&quot; &gt;0.2.0&lt;/a&gt; - 2023-08-07',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07',1,'']]],
+  ['1_200_205_201_20a_202025_2005_2002_2',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.0...0.5.1&quot; &gt;0.5.1&lt;/a&gt; - 2025-05-02',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02',1,'']]],
+  ['1_200_205_202_200_205_202_20a_202025_2005_2019_3',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2&quot; &gt;0.5.2&lt;/a&gt; - 2025-05-19',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19',1,'']]],
+  ['1_200_20a_202022_2011_2025_4',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/releases/tag/0.1.0&quot; &gt;0.1.0&lt;/a&gt; - 2022-11-25',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25',1,'']]],
+  ['1_20a_202025_2005_2002_5',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.0...0.5.1&quot; &gt;0.5.1&lt;/a&gt; - 2025-05-02',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02',1,'']]],
+  ['11_2025_6',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/releases/tag/0.1.0&quot; &gt;0.1.0&lt;/a&gt; - 2022-11-25',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25',1,'']]],
+  ['16_7',['16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16',1,'&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.2.0...0.3.0&quot; &gt;0.3.0&lt;/a&gt; - 2024-09-16'],['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16',1,'&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3&quot; &gt;0.5.3&lt;/a&gt; - 2026-03-16']]],
+  ['19_8',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2&quot; &gt;0.5.2&lt;/a&gt; - 2025-05-19',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19',1,'']]],
+  ['1x1_20constant_20system_20dynamic_20model_20filter_9',['1x1 Constant System Dynamic Model Filter',['../index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter',1,'']]]
 ];

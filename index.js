@@ -18,7 +18,7 @@ var index =
         ] ]
       ] ],
       [ "Format", "index.xhtml#format", null ],
-      [ "Decorators", "index.xhtml#decorators", null ]
+      [ "Decorators", "index.xhtml#decorators-1", null ]
     ] ],
     [ "Considerations", "index.xhtml#considerations", [
       [ "Motivations", "index.xhtml#motivations", null ],
@@ -31,11 +31,11 @@ var index =
       [ "Related Resources", "index.xhtml#related-resources", null ],
       [ "Projects", "index.xhtml#projects", null ],
       [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
+      [ "Contributors", "index.xhtml#contributors-1", null ],
       [ "Sponsors", "index.xhtml#sponsors", [
         [ "Corporations & Institutions", "index.xhtml#corporations--institutions", null ],
         [ "Individuals", "index.xhtml#individuals", null ]
       ] ]
     ] ],
-    [ "Continuous Integration & Deployment Actions", "index.xhtml#continuous-integration--deployment-actions", null ],
     [ "License", "index.xhtml#license", null ]
 ];
