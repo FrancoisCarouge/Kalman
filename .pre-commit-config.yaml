@@ -69,10 +69,6 @@ repos:
     language: pygrep
     entry: NOLINT
     files: \.(cpp|hpp|tpp)$
-    # The constrained `std::formatter` partial specialization over the
-    # `kalman_filter` concept trips `cert-dcl58-cpp`: its sole suppression,
-    # pending a specialization over a program-defined template.
-    exclude: ^include/fcarouge/kalman_internal/format\.hpp$
   - id: commit-message-tag
     name: commit message starts with a lowercase [tag]
     language: pygrep
