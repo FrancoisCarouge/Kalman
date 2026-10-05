@@ -56,15 +56,16 @@ template <fcarouge::kalman_internal::kalman_filter Filter, typename Char>
 // the original template, except where such specializations are prohibited.
 // NOLINTNEXTLINE(cert-dcl58-cpp)
 struct std::formatter<Filter, Char> {
-  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+  static constexpr auto
+  parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 
   //! @todo P2585 may be useful in simplifying and standardizing the support.
   template <typename FormatContext>
-  constexpr auto
-  format(const Filter &filter,
-         FormatContext &format_context) const -> FormatContext::iterator {
+  constexpr auto format(const Filter &filter,
+                        FormatContext &format_context) const
+      -> FormatContext::iterator {
     format_context.advance_to(std::format_to(format_context.out(), R"({{)"));
 
     if constexpr (fcarouge::kalman_internal::has_state_transition_method<

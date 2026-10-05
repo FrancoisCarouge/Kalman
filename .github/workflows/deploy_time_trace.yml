@@ -1,0 +1,46 @@
+name: 'Deploy Time Trace'
+
+on:
+  workflow_run:
+    workflows: ['Deploy / Doxygen']
+    types:
+      - completed
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: lukka/get-cmake@fffaaafeea488556c2c12dad60690008bc1caacb # v4.4.2
+    - name: 'Configure'
+      env:
+        CXX: 'clang++-21'
+        CXXFLAGS: '-O0 -g -ftime-trace'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
+    - name: 'Retain Traces'
+      run: |
+        rm -rf 'build/_deps'
+        find 'build' -type f ! -name '*.cpp.json' -delete
+        find 'build' ! -type f ! -type d -delete
+        mapfile -d '' files < <(find build -type f -print0); for file in "${files[@]}"; do mv "$file" "$(dirname "$file")/../.."; done
+        find 'build' -type d -empty -delete
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
+        destination_dir: ./time_trace

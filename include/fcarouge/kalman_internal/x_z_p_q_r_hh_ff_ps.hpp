@@ -43,6 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "utility.hpp"
 
 #include <tuple>
+#include <utility>
 
 namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
@@ -67,6 +68,28 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>> {
   using observation_function = function<output(const state &)>;
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
+
+  //! @brief Construct the filter from its supplied characteristics.
+  //!
+  //! @details The remaining members keep their default member initializers.
+  //!
+  //! @note The constructor works around an MSVC 19.51 (Visual Studio 2026)
+  //! regression: the aggregate initialization of this structure is rejected
+  //! when a defaulted member initializer refers to another member, here the
+  //! default `transition` capturing `f`. Visual Studio 2022, Clang, and GCC
+  //! accept the aggregate form.
+  constexpr x_z_p_q_r_hh_ff_ps(state state_x,
+                               estimate_uncertainty uncertainty_p,
+                               process_uncertainty uncertainty_q,
+                               output_uncertainty uncertainty_r,
+                               observation_state_function observation_state,
+                               transition_state_function transition_state,
+                               observation_function observation_z)
+      : x{std::move(state_x)}, p{std::move(uncertainty_p)},
+        q{std::move(uncertainty_q)}, r{std::move(uncertainty_r)},
+        observation_state_h{std::move(observation_state)},
+        transition_state_f{std::move(transition_state)},
+        observation{std::move(observation_z)} {}
 
   static inline const auto i{one<evaluate<product<gain, output_model>>>};
 

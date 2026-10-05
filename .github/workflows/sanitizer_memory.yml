@@ -1,0 +1,93 @@
+name: 'Sanitizer / Memory'
+
+on:
+  push:
+    branches: [ 'master' ]
+  pull_request:
+    branches: [ 'master' ]
+  schedule:
+  - cron: '0 0 * * */5'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: read
+    env:
+      CXXFLAGS: '-fsanitize=memory -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer -fno-optimize-sibling-calls'
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+      with:
+        egress-policy: audit
+    - name: 'Checkout'
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: lukka/get-cmake@fffaaafeea488556c2c12dad60690008bc1caacb # v4.4.2
+    # The Memory sanitizer needs the entire program - including the C++
+    # standard library - built with MSan instrumentation, or libc++'s own
+    # internal state trips false "use-of-uninitialized-value" reports. No
+    # distro or apt.llvm.org ships an instrumented libc++, so it is built
+    # from source here, once, and cached; see
+    # https://github.com/google/sanitizers/wiki/MemorySanitizerLibcxxHowTo.
+    - name: 'Compute: Clang version key'
+      id: 'clang-version'
+      run: echo "hash=$(clang++-21 --version | sha256sum | cut -d ' ' -f 1)" >> "${GITHUB_OUTPUT}"
+    - name: 'Cache: Memory-sanitizer-instrumented libc++'
+      id: 'cache-msan-libcxx'
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: '~/msan-libcxx'
+        # Bump the trailing "v1" (and the llvmorg tag cloned below) together
+        # whenever the CI-installed clang++-21 moves to a new LLVM release;
+        # the clang version hash alone only catches apt.llvm.org respinning
+        # the *same* release, not a version bump.
+        key: 'msan-libcxx-${{ runner.os }}-${{ steps.clang-version.outputs.hash }}-v1'
+    - name: 'Build: Memory-sanitizer-instrumented libc++'
+      if: steps.cache-msan-libcxx.outputs.cache-hit != 'true'
+      # CXXFLAGS/CFLAGS must NOT carry the job's -fsanitize=memory into this
+      # bootstrap configure: runtimes/CMakeLists.txt probes compiler flags
+      # (e.g. -fno-exceptions) by compiling+linking a trivial program, and
+      # -fsanitize=memory combined with its --unwindlib=none probe always
+      # fails to link at this stage - a documented upstream limitation
+      # (see the LLVM_USE_SANITIZER TODO in runtimes/CMakeLists.txt) - which
+      # cascades into "Compiler doesn't support generation of unwind
+      # tables..." from libunwind. The Generic-msan.cmake cache already
+      # turns on the right instrumentation for the runtimes build itself.
+      env:
+        CXXFLAGS: ''
+        CFLAGS: ''
+      run: |
+        git clone --filter=blob:none --sparse --depth 1 --branch llvmorg-21.1.8 \
+          https://github.com/llvm/llvm-project.git '${{ runner.temp }}/llvm-project'
+        git -C '${{ runner.temp }}/llvm-project' sparse-checkout set \
+          llvm libcxx libcxxabi libunwind runtimes cmake third-party libc
+        cmake -S '${{ runner.temp }}/llvm-project/runtimes' -B '${{ runner.temp }}/msan-libcxx-build' \
+          -DLLVM_ENABLE_RUNTIMES='libcxx;libcxxabi;libunwind' \
+          -C '${{ runner.temp }}/llvm-project/libcxx/cmake/caches/Generic-msan.cmake' \
+          -DCMAKE_C_COMPILER='clang-21' -DCMAKE_CXX_COMPILER='clang++-21' \
+          -DCMAKE_BUILD_TYPE='Release' \
+          -DLIBCXX_INCLUDE_TESTS=OFF -DLIBCXXABI_INCLUDE_TESTS=OFF \
+          -DCMAKE_INSTALL_PREFIX="${HOME}/msan-libcxx"
+        cmake --build '${{ runner.temp }}/msan-libcxx-build' --parallel 4
+        cmake --install '${{ runner.temp }}/msan-libcxx-build'
+    - name: 'Configure: Point at instrumented libc++'
+      run: |
+        {
+          echo "CXXFLAGS=${CXXFLAGS} -stdlib=libc++ -nostdinc++ -isystem ${HOME}/msan-libcxx/include/c++/v1 -Wno-unused-command-line-argument"
+          echo "LDFLAGS=-fsanitize=memory -stdlib=libc++ -L${HOME}/msan-libcxx/lib -Wl,-rpath,${HOME}/msan-libcxx/lib -lc++abi"
+          echo "LD_LIBRARY_PATH=${HOME}/msan-libcxx/lib"
+        } >> "${GITHUB_ENV}"
+    - name: 'Configure'
+      env:
+        CXX: 'clang++-21'
+        CC: 'clang-21'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
+    - name: 'Test'
+      run: MSAN_OPTIONS=verbosity=1:abort_on_error=1 ctest --test-dir 'build' --timeout 30 --verbose --parallel 1

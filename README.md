@@ -1,5 +1,20 @@
 # Kalman Filter
 
+[![Pipeline](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml)
+[![Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml)
+[![Format](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml)
+[![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
+[![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
+[![Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml)
+[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml)
+[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt)
+[![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8933/badge)](https://www.bestpractices.dev/projects/8933)
+[![Deploy Unit Test Code Coverage](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml)
+[![Deploy Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/index.xhtml)
+[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
+[![Discussions](https://img.shields.io/github/discussions/FrancoisCarouge/Kalman)](https://github.com/FrancoisCarouge/Kalman/discussions)
+
 The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians rather than integrating differential equations. The filter predicts estimates by adding Gaussians. The filter maintains an estimate of the state and its uncertainty over the sequential estimation process. The filter is named after Rudolf E. Kálmán, who was one of the primary developers of its theory in 1960.
 
 Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states *X*, *P*, the processes *F*, *Q*, the measurements *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*. Evaluate the performance and iterate.
@@ -291,7 +306,7 @@ The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark
 | Term | Definition |
 | --- | --- |
 | EKF | The Extended Kalman Filter is the nonlinear version of the Kalman filter. Useful for nonlinear dynamics systems. This filter linearizes the model about an estimate working point of the current mean and covariance. |
-| ESKF | The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states. 
+| ESKF | The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states.
 | MSCKF | The Multi-State Constraint Kalman Filter is an EKF-based approach that leverages constraints between multiple and varied measurements to improve pose estimation accuracy and robustness. |
 | SR-UKF | The Square-Root Unscented Kalman Filter handles non-linearity with covariance factorization of the unscented transformations (sigma points) to maintain numerical stability. |
 | UKF | The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples unscented transformations (sigma points) about an estimate working point of the current mean using an Unscented Transformation technique. |
@@ -324,18 +339,33 @@ The library is designed, developed, and tested with the help of third-party tool
 
 - [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
 - [Clang](https://clang.llvm.org) for compilation and code sanitizers.
+- [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for code formatting.
+- [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) for static analysis.
 - [CMake](https://cmake.org) for build automation.
-- [cmakelang](https://pypi.org/project/cmakelang) for pretty CMake list files.
+- [cmakefmt](https://cmakefmt.dev) for pretty CMake list files.
 - [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
 - [Doxygen](https://doxygen.nl) for documentation generation.
 - [Doxygen Awesome](https://github.com/jothepro/doxygen-awesome-css) for pretty documentation.
 - [Eigen](https://eigen.tuxfamily.org/) for linear algebra.
 - [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
+- [gitleaks](https://github.com/gitleaks/gitleaks) for secret scanning.
 - [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
+- [gsl-lite](https://github.com/gsl-lite/gsl-lite) for guidelines support library.
 - [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
+- [Matplot++](https://github.com/alandefreitas/matplotplusplus) for plotting.
 - [mp-units](https://github.com/mpusz/mp-units) the quantities and units library for C++.
 - [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
+- [pre-commit](https://pre-commit.com) for repository hygiene hooks.
+- [TypedLinearAlgebra](https://github.com/FrancoisCarouge/TypedLinearAlgebra) for typed linear algebra.
 - [Valgrind](https://valgrind.org) to check for correct memory management.
+
+## Contributors
+
+Thank you to everyone who has contributed code, tests, or documentation!
+
+- [François Carouge](https://github.com/FrancoisCarouge) — creator and maintainer.
+
+See [CONTRIBUTORS.md](https://github.com/FrancoisCarouge/Kalman/blob/master/CONTRIBUTORS.md) for the full, credited list, [CHANGELOG.md](https://github.com/FrancoisCarouge/Kalman/blob/master/CHANGELOG.md) for notable changes, and [CONTRIBUTING.md](https://github.com/FrancoisCarouge/Kalman/blob/master/CONTRIBUTING.md) to join.
 
 ## Sponsors
 
@@ -352,41 +382,6 @@ Become a sponsor today! Support this project with coffee and infrastructure!
 *Your name and link here!*
 
 Thanks everyone!
-
-# Continuous Integration & Deployment Actions
-
-[![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
-<br>
-<br>
-[![Pipeline](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml)
-<br>
-<br>
-[![Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml)
-<br>
-[![Format](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml)
-<br>
-[![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
-<br>
-[![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
-<br>
-[![Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml)
-<br>
-[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml)
-<br>
-<br>
-[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt)
-<br>
-[![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
-<br>
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8933/badge)](https://www.bestpractices.dev/projects/8933)
-<br>
-<br>
-[![Deploy Unit Test Code Coverage](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml)
-<br>
-[![Deploy Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/index.xhtml)
-<br>
-<br>
-[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
 
 # License
 

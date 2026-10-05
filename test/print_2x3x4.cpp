@@ -40,7 +40,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <cmath>
 
 namespace fcarouge::sample {
 namespace {
@@ -48,7 +47,7 @@ template <auto Size> using vector = column_vector<double, Size>;
 
 //! @brief Verifies the printer adaptor for multi-dimension filters with input
 //! control without additional arguments.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   auto filter{kalman{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                      input<vector<3>>} |
               print};

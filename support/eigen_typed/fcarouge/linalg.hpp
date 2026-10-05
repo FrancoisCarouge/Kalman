@@ -55,8 +55,8 @@ namespace kalman_internal {
 //! @note Implementation not needed.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct evaluates<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] static constexpr auto
-  operator()() -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
+  [[nodiscard]] static constexpr auto operator()()
+      -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
 
 //! @brief Specialization of the transposes.

@@ -1,0 +1,18 @@
+format:
+  command_case: unchanged
+
+commands:
+  sample:
+    pargs: 1
+    kwargs:
+      BACKENDS:
+        nargs: "+"
+  test:
+    pargs: 1
+    kwargs:
+      BACKENDS:
+        nargs: "+"
+  amalgamate:
+    pargs: 2
+  amalgamate_get_inlined:
+    pargs: 2

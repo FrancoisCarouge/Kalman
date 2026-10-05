@@ -40,7 +40,6 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
-#include <utility>
 
 namespace fcarouge::test {
 namespace {
@@ -48,7 +47,7 @@ template <auto Size> using vector = column_vector<double, Size>;
 template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies the multi-dimension filter is copy-assignable.
-[[maybe_unused]] const auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   const vector<3> z3x1{kalman_internal::zero<vector<3>>};
   const matrix<4, 4> i4x4{kalman_internal::one<matrix<4, 4>>};
   const matrix<4, 5> i4x5{kalman_internal::one<matrix<4, 5>>};

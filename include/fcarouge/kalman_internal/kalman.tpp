@@ -57,7 +57,7 @@ constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
   if constexpr (sizeof...(values)) {
     self.filter.x = typename Filter::state{values...};
   }
-  //! @todo A conditional no_discard woud be nice here.
+  //! @todo A conditional no_discard would be nice here.
   return std::forward<decltype(self)>(self).filter.x;
 }
 

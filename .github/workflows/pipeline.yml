@@ -18,52 +18,37 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { os: 'ubuntu-24.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-24.04', cxx: 'clang++-18', cc: 'clang-18', generator: 'Ninja', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
-        - { os: 'ubuntu-24.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Debug' }
-        - { os: 'windows-2022', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 17 2022', cpack_generator: 'WIX', config: 'Release' }
+        - { os: 'ubuntu-26.04', cxx: 'clang++-20', cc: 'clang-20', generator: 'Ninja', cpack_generator: 'DEB', build_dir: 'build' }
+        - { os: 'ubuntu-26.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB', build_dir: 'build' }
+        - { os: 'ubuntu-26.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB', build_dir: 'build' }
+        - { os: 'ubuntu-26.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB', build_dir: 'build' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Debug', build_dir: 'D:\b' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Release', build_dir: 'D:\b' }
+        - { os: 'macos-26', cxx: 'clang++', cc: 'clang', generator: 'Ninja', cpack_generator: 'productbuild', build_dir: 'build' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
     permissions:
       contents: read
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
       with:
         egress-policy: audit
     - name: 'Checkout'
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-    - name: 'Install: GCC 15'
-      if: ${{ matrix.cxx == 'g++-15' }}
-      run: |
-        sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-        sudo apt update
-        sudo apt install -y gcc-15 g++-15
-    - name: 'Install: Clang 20'
-      if: ${{ matrix.cxx == 'clang++-20' }}
-      run: sudo apt update && sudo apt install -y clang-20 clang-tools-20
-    - name: 'Install: Clang 21'
-      if: ${{ matrix.cxx == 'clang++-21' }}
-      run: |
-        wget https://apt.llvm.org/llvm.sh
-        chmod +x llvm.sh
-        sudo ./llvm.sh 21 all
     - name: 'Install: Latest CMake'
-      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+      uses: lukka/get-cmake@fffaaafeea488556c2c12dad60690008bc1caacb # v4.4.2
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
         CC: '${{ matrix.cc }}'
-      run: cmake -S . -B 'build' -G '${{ matrix.generator }}'
+      run: cmake -S . -B '${{ matrix.build_dir }}' -G '${{ matrix.generator }}'
     - name: 'Build'
-      run: cmake --build 'build' --config '${{ matrix.config }}' --verbose --parallel 4
+      run: cmake --build '${{ matrix.build_dir }}' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
-      run: ctest --test-dir 'build' --build-config '${{ matrix.config }}' --timeout 10 --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir '${{ matrix.build_dir }}' --build-config '${{ matrix.config }}' --timeout 60 --verbose --parallel 4
     - name: 'Install'
-      run: cmake --install 'build' --config '${{ matrix.config }}' --prefix 'install' --verbose
+      run: cmake --install '${{ matrix.build_dir }}' --config '${{ matrix.config }}' --prefix 'install' --verbose
     - name: 'Package'
-      working-directory: ./build
+      working-directory: '${{ matrix.build_dir }}'
       run: cpack -G '${{ matrix.cpack_generator }}' --verbose
