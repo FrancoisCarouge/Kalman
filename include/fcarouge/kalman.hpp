@@ -481,8 +481,8 @@ using kalman_internal::input_control;
 //! @brief Deduces the filter type from its declared configuration.
 //!
 //! @details The configuration arguments passed are used to determine at compile
-//! time the type of fiter to use. The objecive is to select the most performant
-//! filter within the defined configuraton parameters.
+//! time the type of filter to use. The objective is to select the most
+//! performant filter within the defined configuration parameters.
 //!
 //! @tparam Arguments The declarations of the filter configuration.
 //!

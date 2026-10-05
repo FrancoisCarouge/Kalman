@@ -97,7 +97,7 @@ constexpr auto make_generator(Type element) -> std::generator<Type> {
 //!
 //! @note Lifetime management with coroutine is tricky. The generators cannot
 //! use the lambda captures. The parameters of the lambda can however be copied
-//! to guarentee their lifetime for the usage of the generator. This technique
+//! to guarantee their lifetime for the usage of the generator. This technique
 //! is useful for initialization of the generator.
 //! @note A design decision for the composed generator to be mutable, traded
 //! off for const member function API. Similar to the mutable mutex member
@@ -108,7 +108,7 @@ constexpr auto make_generator(Type element) -> std::generator<Type> {
 //! @todo Explore optimization of heap allocations?
 //! @todo Explore constexpr support?
 //! @todo Explore verification of lazy evaluation?
-//! @todo Remove unecessary empty paramaters when MSVC supports lambda without
+//! @todo Remove unnecessary empty parameters when MSVC supports lambda without
 //! them.
 template <typename Type = double, auto Row = 1, auto Column = 1,
           bool Copyable = false>

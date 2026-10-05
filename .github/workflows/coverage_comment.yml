@@ -23,11 +23,13 @@ jobs:
         id: read-data
         run: |
           PR_NUMBER=$(cat pull_request_id.txt)
-          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "coverage<<$EOF" >> $GITHUB_OUTPUT
-          cat coverage.txt >> $GITHUB_OUTPUT
-          echo "$EOF" >> $GITHUB_OUTPUT
+          {
+            echo "pr_number=$PR_NUMBER"
+            echo "coverage<<$EOF"
+            cat coverage.txt
+            echo "$EOF"
+          } >> "$GITHUB_OUTPUT"
       - name: 'Coverage: Comment'
         if: steps.read-data.outputs.pr_number != ''
         uses: mshick/add-pr-comment@ec328af66588ab8f77cdeb2c264f14aba45bbf59 # v3.12.0

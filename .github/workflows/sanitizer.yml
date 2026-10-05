@@ -19,38 +19,59 @@ jobs:
       matrix:
         sanitizer:
         - name: 'Address'
-          cpp_flags: '-g -O0 -fsanitize=address'
-          run_flags: 'ASAN_OPTIONS=verbosity=1:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1'
+          cpp_flags: '-fsanitize=address -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          ld_flags: ''
+          run_flags: 'ASAN_OPTIONS=verbosity=1:abort_on_error=1:strict_string_checks=1:detect_stack_use_after_return=1:check_initialization_order=1:strict_init_order=1'
+        - name: 'Control Flow Integrity'
+          cpp_flags: '-fsanitize=cfi -fno-sanitize-trap=cfi -flto=thin -fvisibility=hidden -O1 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          ld_flags: '-fuse-ld=lld'
+          run_flags: 'UBSAN_OPTIONS=verbosity=1:abort_on_error=1'
+        - name: 'Integer'
+          cpp_flags: '-fsanitize=integer,implicit-conversion,nullability -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          ld_flags: ''
+          run_flags: 'UBSAN_OPTIONS=verbosity=1:abort_on_error=1'
         - name: 'Leak'
-          cpp_flags: '-g -O0 -fsanitize=leak'
-          run_flags: 'LSAN_OPTIONS=verbosity=1'
+          cpp_flags: '-fsanitize=leak -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          ld_flags: ''
+          run_flags: 'LSAN_OPTIONS=verbosity=1:abort_on_error=1'
         - name: 'Thread'
-          cpp_flags: '-g -O0 -fsanitize=thread'
-          run_flags: 'TSAN_OPTIONS=verbosity=1'
+          cpp_flags: '-fsanitize=thread -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          ld_flags: ''
+          run_flags: 'TSAN_OPTIONS=verbosity=1:abort_on_error=1'
+        - name: 'Type'
+          cpp_flags: '-fsanitize=type -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer -fno-optimize-sibling-calls'
+          ld_flags: ''
+          run_flags: 'TYSAN_OPTIONS=verbosity=1:abort_on_error=1:print_stacktrace=1'
         - name: 'Undefined'
-          cpp_flags: '-g -O0 -fsanitize=undefined'
-          run_flags: 'UBSAN_OPTIONS=verbosity=1'
+          cpp_flags: '-fsanitize=undefined -O0 -g -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          ld_flags: ''
+          run_flags: 'UBSAN_OPTIONS=verbosity=1:abort_on_error=1'
     name: '${{ matrix.sanitizer.name }}'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
     env:
       CXXFLAGS: '${{ matrix.sanitizer.cpp_flags }}'
+      LDFLAGS: '${{ matrix.sanitizer.ld_flags }}'
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
       with:
         egress-policy: audit
     - name: 'Checkout'
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: 'Install: Latest CMake'
-      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+      uses: lukka/get-cmake@fffaaafeea488556c2c12dad60690008bc1caacb # v4.4.2
+    - name: 'Install: LLD'
+      run: |
+        sudo apt update
+        sudo apt install -y "lld-21"
     - name: 'Configure'
       env:
-        CXX: 'g++-14'
-        CC: 'gcc-14'
+        CXX: 'clang++-21'
+        CC: 'clang-21'
       run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Test'
-      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 10 --tests-regex 'kalman_(test|sample)' --verbose --parallel 4
+      run: ${{ matrix.sanitizer.run_flags }} ctest --test-dir 'build' --timeout 30 --verbose --parallel 1

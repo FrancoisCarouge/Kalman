@@ -165,7 +165,8 @@ auto get(const DenseCoeffsBase<Derived, ReadOnlyAccessors> &base) {
 //! @brief Specialization of the standard formatter for the Eigen matrix.
 template <typename Type, auto Row, auto Column, typename Char>
 struct std::formatter<fcarouge::eigen::matrix<Type, Row, Column>, Char> {
-  constexpr auto parse(std::basic_format_parse_context<Char> &parse_context) {
+  static constexpr auto
+  parse(std::basic_format_parse_context<Char> &parse_context) {
     return parse_context.begin();
   }
 

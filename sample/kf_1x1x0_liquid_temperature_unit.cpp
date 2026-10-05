@@ -67,7 +67,7 @@ namespace {
 //! 50.023°C, and 49.99°C.
 //!
 //! @example kf_1x1x0_liquid_temperature_unit.cpp
-[[maybe_unused]] const auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
   // A one-dimensional filter, constant system dynamic model.
   kalman filter{
       // We initialize the Kalman filter and predict the next state (which is
@@ -109,7 +109,7 @@ namespace {
 
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 5s (constant).
-  const auto step{[&filter](temperature output_z) {
+  const auto step{[&filter](temperature output_z) -> void {
     filter.predict();
     filter.update(output_z);
   }};

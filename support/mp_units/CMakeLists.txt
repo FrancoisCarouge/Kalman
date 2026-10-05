@@ -40,6 +40,7 @@ FetchContent_Declare(
   gsl-lite
   GIT_REPOSITORY "https://github.com/gsl-lite/gsl-lite"
   GIT_SHALLOW TRUE
+  SYSTEM
   FIND_PACKAGE_ARGS NAMES gsl-lite)
 FetchContent_MakeAvailable(gsl-lite)
 
@@ -52,15 +53,22 @@ FetchContent_Declare(
   mp-units
   GIT_REPOSITORY "https://github.com/mpusz/mp-units"
   GIT_SHALLOW TRUE
-  SOURCE_SUBDIR "src" FIND_PACKAGE_ARGS NAMES mp-units)
+  SYSTEM
+  SOURCE_SUBDIR "src"
+  FIND_PACKAGE_ARGS NAMES mp-units)
 FetchContent_MakeAvailable(mp-units)
 
-target_compile_options(mp-units INTERFACE $<IF:$<CXX_COMPILER_ID:MSVC>, ,
+target_compile_options(
+  mp-units
+  INTERFACE
+    $<IF:$<CXX_COMPILER_ID:MSVC>, /wd4875,
                                           -Wno-double-promotion -Wno-undef>)
 
 add_library(kalman_unit_mp_units INTERFACE)
 target_sources(
-  kalman_unit_mp_units INTERFACE FILE_SET "unit_headers" TYPE "HEADERS" FILES
-                                 "fcarouge/unit.hpp")
-target_link_libraries(kalman_unit_mp_units INTERFACE kalman_support_options
-                                                     mp-units::mp-units)
+  kalman_unit_mp_units
+  INTERFACE
+  FILE_SET "unit_headers" TYPE "HEADERS" FILES "fcarouge/unit.hpp")
+target_link_libraries(
+  kalman_unit_mp_units
+  INTERFACE kalman_support_options mp-units::mp-units)
