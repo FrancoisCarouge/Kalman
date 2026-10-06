@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 
@@ -48,6 +49,7 @@ template <auto Size> using vector = column_vector<double, Size>;
 //! @brief Verifies the printer adaptor for multi-dimension filters with input
 //! control without additional arguments.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   auto filter{kalman{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                      input<vector<3>>} |
               print};

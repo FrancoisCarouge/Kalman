@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -69,6 +70,7 @@ using state = fcarouge::state<vector<6>>;
 //!
 //! @example ekf_6x4x0_3d_apollo_position.cpp
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   kalman filter{
       // The six estimated states X initialization under the simulated scenario:
       // the lunar module is 30km away, approaching at 100 m/s relative to

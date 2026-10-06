@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -45,6 +46,7 @@ namespace fcarouge::sample {
 namespace {
 //! @brief Verifies the printer adaptor for single-dimension filters.
 [[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   auto filter{kalman{state{60.}, output<double>, estimate_uncertainty{225.},
                      output_uncertainty{25.}} |
               print};

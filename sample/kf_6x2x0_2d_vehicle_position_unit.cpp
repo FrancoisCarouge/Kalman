@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 
@@ -67,6 +68,7 @@ using output_t = vector<position, position>;
 //!
 //! @example kf_6x2x0_2d_vehicle_position_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   kalman filter{
       // The state X is chosen to be the position, velocity, acceleration in the

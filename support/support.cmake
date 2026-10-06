@@ -107,7 +107,7 @@ endfunction(sample)
 #
 # * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
-function(test TEST_NAME)
+function(pass TEST_NAME)
   set(multiValueArgs BACKENDS)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
@@ -147,4 +147,4 @@ function(test TEST_NAME)
           $<TARGET_FILE:kalman_test_${BACKEND}_${TEST_NAME}_driver>)
     endforeach()
   endif()
-endfunction(test)
+endfunction(pass)
