@@ -78,7 +78,8 @@ var menudata={children:[
 {text:"Class Members",url:"functions.xhtml",children:[
 {text:"All",url:"functions.xhtml"},
 {text:"Functions",url:"functions_func.xhtml"},
-{text:"Variables",url:"functions_vars.xhtml"}]}]},
+{text:"Variables",url:"functions_vars.xhtml"},
+{text:"Typedefs",url:"functions_type.xhtml"}]}]},
 {text:"Files",url:"files.xhtml",children:[
 {text:"File List",url:"files.xhtml"},
 {text:"File Members",url:"globals.xhtml",children:[

@@ -44,6 +44,7 @@ var hierarchy =
     [ "fcarouge::kalman_internal::conditional_update_types< Filter >", null, [
       [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "std::formatter< Filter, Char >", "structstd_1_1formatter_3_01_filter_00_01_char_01_4.xhtml", null ],
-    [ "fcarouge::printer", "structfcarouge_1_1printer.xhtml", null ]
+    [ "std::formatter< fcarouge::kalman< Filter >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml", null ],
+    [ "fcarouge::printer", "structfcarouge_1_1printer.xhtml", null ],
+    [ "fcarouge::test::anonymous_namespace{kalman_format_unrelated.cpp}::unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02kalman__format__unrelated_8cpp_03_1_1unrelated.xhtml", null ]
 ];

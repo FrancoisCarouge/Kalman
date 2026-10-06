@@ -91,6 +91,10 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{kalman_format_float_1x1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__float__1x1x1_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__float__1x1x1_8cpp_03.xhtml#aa80ac97472209e6c17c5fa90a87b54db", null ]
     ] ],
+    [ "anonymous_namespace{kalman_format_printer.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__printer_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__printer_8cpp_03.xhtml#a51edff5f635e80a57eff0fa65045f0d4", null ]
+    ] ],
+    [ "anonymous_namespace{kalman_format_unrelated.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__unrelated_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__unrelated_8cpp_03" ],
     [ "anonymous_namespace{kalman_h_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml#a829a6952ae09efae2d45ff955b8f4239", null ],
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml#ad6334fdd23ed6e6601cb2f288aca152d", null ],

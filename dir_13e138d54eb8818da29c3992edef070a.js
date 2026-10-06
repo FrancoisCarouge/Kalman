@@ -21,6 +21,8 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "kalman_format_5x4x3.cpp", "kalman__format__5x4x3_8cpp.xhtml", "kalman__format__5x4x3_8cpp" ],
     [ "kalman_format_arguments.cpp", "kalman__format__arguments_8cpp.xhtml", "kalman__format__arguments_8cpp" ],
     [ "kalman_format_float_1x1x1.cpp", "kalman__format__float__1x1x1_8cpp.xhtml", "kalman__format__float__1x1x1_8cpp" ],
+    [ "kalman_format_printer.cpp", "kalman__format__printer_8cpp.xhtml", "kalman__format__printer_8cpp" ],
+    [ "kalman_format_unrelated.cpp", "kalman__format__unrelated_8cpp.xhtml", "kalman__format__unrelated_8cpp" ],
     [ "kalman_h_5x4x3.cpp", "kalman__h__5x4x3_8cpp.xhtml", "kalman__h__5x4x3_8cpp" ],
     [ "kalman_println_1x1x0.cpp", "kalman__println__1x1x0_8cpp.xhtml", "kalman__println__1x1x0_8cpp" ],
     [ "linalg_addition.cpp", "linalg__addition_8cpp.xhtml", "linalg__addition_8cpp" ],

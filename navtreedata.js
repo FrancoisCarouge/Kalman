@@ -130,7 +130,8 @@ var NAVTREE =
       [ "Class Members", "functions.xhtml", [
         [ "All", "functions.xhtml", null ],
         [ "Functions", "functions_func.xhtml", null ],
-        [ "Variables", "functions_vars.xhtml", null ]
+        [ "Variables", "functions_vars.xhtml", null ],
+        [ "Typedefs", "functions_type.xhtml", null ]
       ] ]
     ] ],
     [ "Files", "files.xhtml", [
@@ -147,8 +148,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"kf__1x1x0__liquid__temperature__unit_8cpp_source.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a45e7064334c3bcd1e0850d695afec701"
+"kf__1x1x0__building__height__unit_8cpp_source.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__copy__5x4x3_8cpp_03.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
