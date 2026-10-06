@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: Kalman Filter</title>
+<title>Kalman: François Carouge / Kalman</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -100,31 +100,83 @@ $(function(){initNavTree('index.xhtml',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Kalman Filter </div></div>
+  <div class="headertitle"><div class="title">François Carouge / Kalman </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2_r_e_a_d_m_e"></a></p>
-<p><a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg" alt="Pipeline" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg" alt="Sanitizer" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg" alt="Format" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg" alt="ClangTidy" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg" alt="CppCheck" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml/badge.svg" alt="Valgrind" style="pointer-events: none;" class="inline"/></a> <a href="https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen" alt="Public Domain" class="inline"/></a> <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield" alt="License Scan" style="pointer-events: none;" class="inline"/></a> <a href="https://www.bestpractices.dev/projects/8933"><img src="https://www.bestpractices.dev/projects/8933/badge" alt="OpenSSF Best Practices" class="inline"/></a> <a href="https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg" alt="Deploy Unit Test Code Coverage" style="pointer-events: none;" class="inline"/></a> <a href="https://francoiscarouge.github.io/Kalman/index.xhtml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg" alt="Deploy Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen" alt="Sponsor" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/discussions"><img src="https://img.shields.io/github/discussions/FrancoisCarouge/Kalman" alt="Discussions" class="inline"/></a></p>
 <p>The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians rather than integrating differential equations. The filter predicts estimates by adding Gaussians. The filter maintains an estimate of the state and its uncertainty over the sequential estimation process. The filter is named after Rudolf E. Kálmán, who was one of the primary developers of its theory in 1960.</p>
-<p>Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states <em>X</em>, <em>P</em>, the processes <em>F</em>, <em>Q</em>, the measurements <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>. Evaluate the performance and iterate.</p>
 <p>This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.</p>
-<h1><a class="anchor" id="examples"></a>
-Examples</h1>
-<h2><a class="anchor" id="autotoc_md1x1-constant-system-dynamic-model-filter"></a>
-1x1 Constant System Dynamic Model Filter</h2>
-<p>Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_1x1x0_building_height_8cpp-example.xhtml">building height estimation</a> sample. One estimated state and one observed output filter.</p>
-<div class="fragment"><div class="line">  kalman filter{</div>
-<div class="line">    state{60.},</div>
-<div class="line">    output&lt;double&gt;,</div>
-<div class="line">    estimate_uncertainty{225.},</div>
-<div class="line">    <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">output_uncertainty</a>{25.}</div>
-<div class="line">  };</div>
+<div class="fragment"><div class="line">kalman filter{state{60.}, output&lt;double&gt;,</div>
+<div class="line">              estimate_uncertainty{225.}, <a class="code hl_function" href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">output_uncertainty</a>{25.}};</div>
 <div class="line"> </div>
 <div class="line">filter.update(48.54);</div>
+<div class="line"> </div>
+<div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// {&quot;k&quot;: 0.9, &quot;p&quot;: 22.5, &quot;r&quot;: 25, &quot;s&quot;: 250, &quot;x&quot;: 49.686, &quot;y&quot;: -11.46, &quot;z&quot;: 48.54}</span></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ae0d4cb88e21450951fd7dc06f745f71b"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ae0d4cb88e21450951fd7dc06f745f71b">fcarouge::kalman_internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
-</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">full sample code</a></p>
-<h2><a class="anchor" id="autotoc_md6x2-constant-acceleration-dynamic-model-filter"></a>
-6x2 Constant Acceleration Dynamic Model Filter</h2>
+</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg" alt="Pipeline" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg" alt="Sanitizer" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg" alt="Format" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg" alt="ClangTidy" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg" alt="CppCheck" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg" alt="Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml/badge.svg" alt="Valgrind" style="pointer-events: none;" class="inline"/></a> <a href="https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen" alt="Public Domain" class="inline"/></a> <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield" alt="License Scan" style="pointer-events: none;" class="inline"/></a> <a href="https://www.bestpractices.dev/projects/8933"><img src="https://www.bestpractices.dev/projects/8933/badge" alt="OpenSSF Best Practices" class="inline"/></a> <a href="https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg" alt="Deploy Unit Test Code Coverage" style="pointer-events: none;" class="inline"/></a> <a href="https://francoiscarouge.github.io/Kalman/index.xhtml"><img src="https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg" alt="Deploy Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="http://paypal.me/francoiscarouge"><img src="https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen" alt="Sponsor" class="inline"/></a> <a href="https://github.com/FrancoisCarouge/Kalman/discussions"><img src="https://img.shields.io/github/discussions/FrancoisCarouge/Kalman" alt="Discussions" class="inline"/></a></p>
+<h1><a class="anchor" id="installation--usage"></a>
+Installation &amp; Usage</h1>
+<p>See <a href="https://github.com/FrancoisCarouge/Kalman/blob/master/INSTALL.md">INSTALL.md</a> for installation instructions.</p>
+<h1><a class="anchor" id="reference"></a>
+Reference</h1>
+<h2><a class="anchor" id="cmake"></a>
+CMake</h2>
+<p>Link against the CMake target <code>fcarouge-kalman::kalman</code>.</p>
+<h2><a class="anchor" id="include"></a>
+Include</h2>
+<p>Include the library header in your sources:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
+<div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
+</div><!-- fragment --><p>For forward declarations only, include instead:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman__forward_8hpp.xhtml">fcarouge/kalman_forward.hpp</a>&quot;</span></div>
+<div class="ttc" id="akalman__forward_8hpp_xhtml"><div class="ttname"><a href="kalman__forward_8hpp.xhtml">kalman_forward.hpp</a></div><div class="ttdoc">Authoritative forward declaration header.</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="namespace"></a>
+Namespace</h2>
+<p>The public API lives in the <code>fcarouge</code> namespace. Import it with a using-declaration or namespace alias as your project's style prefers.</p>
+<h2><a class="anchor" id="linear-algebra-backends-1"></a>
+Linear Algebra Backends</h2>
+<p>Filters with <code>state x output x input</code> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Add a backend for higher dimension filters:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Integration   </th><th class="markdownTableHeadNone">Example Backend    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Built-in Types   </td><td class="markdownTableBodyNone">No backend needed.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Eigen   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen">Example backend: <code>support/eigen</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Eigen + TypedLinearAlgebra   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen_typed">Example backend: <code>support/eigen_typed</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Eigen + TypedLinearAlgebra + mp-units   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/support/quantity">Example backend: <code>support/quantity</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">mp-units   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units">Example backend: <code>support/mp_units</code></a>.   </td></tr>
+</table>
+<h2><a class="anchor" id="samples"></a>
+Samples</h2>
+<p>Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states <em>X</em>, <em>P</em>, the processes <em>F</em>, <em>Q</em>, the measurements <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>. Evaluate the performance and iterate.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Filter   </th><th class="markdownTableHeadNone">Sample    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1x1x0 constant system dynamic model filter of the building height.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">Usage example: <code>sample/kf_1x1x0_building_height.cpp</code></a>, <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height_unit.cpp">with units: <code>sample/kf_1x1x0_building_height_unit.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1x1x0 constant system dynamic model filter of the temperature of a liquid in a tank.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_liquid_temperature.cpp">Usage example: <code>sample/kf_1x1x0_liquid_temperature.cpp</code></a>, <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_liquid_temperature_unit.cpp">with units: <code>sample/kf_1x1x0_liquid_temperature_unit.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1x1x1 constant velocity dynamic model filter of the 1-dimension position of a dog.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_1d_dog_position.cpp">Usage example: <code>sample/kf_1x1x1_1d_dog_position.cpp</code></a>, <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_1d_dog_position_unit.cpp">with units: <code>sample/kf_1x1x1_1d_dog_position_unit.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">2x1x1 constant acceleration dynamic model filter of the 1-dimension position and velocity of a rocket altitude.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_1d_rocket_altitude.cpp">Usage example: <code>sample/kf_2x1x1_1d_rocket_altitude.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">4x1x0 nonlinear dynamic model extended filter of the thermal, current of warm air, strength, radius, and location.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_thermal_soaring.cpp">Usage example: <code>sample/ekf_4x1x0_thermal_soaring.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">6x2x0 constant acceleration dynamic model filter of the 2-dimension vehicle location, velocity, and acceleration.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position.cpp">Usage example: <code>sample/kf_6x2x0_2d_vehicle_position.cpp</code></a>, <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position_unit.cpp">with units: <code>sample/kf_6x2x0_2d_vehicle_position_unit.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">6x4x0 extended filter of the 3-dimension position and velocity of the NASA Apollo lunar module abort guidance system for spacecraft rendezvous approaching the command/service module.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_6x4x0_3d_apollo_position.cpp">Usage example: <code>sample/ekf_6x4x0_3d_apollo_position.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">8x4x0 constant velocity dynamic model filter of the 2-dimension position and velocity of the center, aspect ratio, and height of a bounding box.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box.cpp">Usage example: <code>sample/kf_8x4x0_2d_bounding_box.cpp</code></a>.   </td></tr>
+</table>
+<h3><a class="anchor" id="autotoc_md6x2-constant-acceleration-dynamic-model-filter"></a>
+6x2 Constant Acceleration Dynamic Model Filter</h3>
 <p>Example from the <a href="https://francoiscarouge.github.io/Kalman/kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml">2-dimension vehicle location, velocity, and acceleration vehicle estimation</a> sample. Six estimated states and two observed outputs filter.</p>
 <div class="fragment"><div class="line">  kalman filter{</div>
 <div class="line">    state{0., 0., 0., 0., 0., 0.},</div>
@@ -158,8 +210,8 @@ Examples</h1>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac1a1ab117704e8837bb031d8c597826c"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac1a1ab117704e8837bb031d8c597826c">fcarouge::kalman_internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_ac6a9cf33472fe67bd423c384ef492c25"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#ac6a9cf33472fe67bd423c384ef492c25">fcarouge::kalman_internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position.cpp">full sample code</a></p>
-<h2><a class="anchor" id="autotoc_md4x1-nonlinear-dynamic-model-extended-filter"></a>
-4x1 Nonlinear Dynamic Model Extended Filter</h2>
+<h3><a class="anchor" id="autotoc_md4x1-nonlinear-dynamic-model-extended-filter"></a>
+4x1 Nonlinear Dynamic Model Extended Filter</h3>
 <p>Example from the <a href="https://francoiscarouge.github.io/Kalman/ekf_4x1x0_thermal_soaring_8cpp-example.xhtml">thermal, current of warm air, strength, radius, and location estimation</a> sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.</p>
 <div class="fragment"><div class="line">  kalman filter{</div>
 <div class="line">    state{trigger_strength, thermal_radius, thermal_position_x,</div>
@@ -209,37 +261,8 @@ Examples</h1>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a053f2aaec0f20812632149fae25162fd"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a053f2aaec0f20812632149fae25162fd">fcarouge::kalman_internal::observation</a></div><div class="ttdeci">observation(Element) -&gt; observation&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a22b52e1829f5b9cee3e159cf7ec7e00a"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a22b52e1829f5b9cee3e159cf7ec7e00a">fcarouge::kalman_internal::transition</a></div><div class="ttdeci">transition(Element) -&gt; transition&lt; Element &gt;</div></div>
 </div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_thermal_soaring.cpp">full sample code</a></p>
-<h2><a class="anchor" id="other-examples"></a>
-Other Examples</h2>
-<ul>
-<li>1x1 constant system dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp">temperature of a liquid in a tank</a>.</li>
-<li>1x1x1 constant velocity dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_1d_dog_position.cpp">1-dimension position of a dog</a>.</li>
-<li>2x1x1 constant acceleration dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_1d_rocket_altitude.cpp">1-dimension position and velocity of a rocket altitude</a>.</li>
-<li>8x4 constant velocity dynamic model filter of the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box.cpp">2-dimension position and velocity of the center, aspect ratio, and height of a bounding box</a>.</li>
-<li>6x4 extended filter <a href="sample/ekf_6x4x0_3d_apollo_position.cpp">3-dimension position and velocity of the NASA Apollo lunar module abort guidance system</a> for spacecraft rendezvous approaching the command/service module.</li>
-</ul>
-<h1><a class="anchor" id="installation-1"></a>
-Installation</h1>
-<p>Example of installation commands in Shell:</p>
-<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/kalman&quot;</div>
-<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
-<div class="line">cmake --build &quot;build&quot; --parallel</div>
-<div class="line">sudo cmake --install &quot;build&quot;</div>
-</div><!-- fragment --><p>Another variation for your CMake infrastructure via fetch content:</p>
-<div class="fragment"><div class="line">include(FetchContent)</div>
-<div class="line"> </div>
-<div class="line">FetchContent_Declare(</div>
-<div class="line">  fcarouge-kalman</div>
-<div class="line">  GIT_REPOSITORY &quot;https://github.com/FrancoisCarouge/kalman&quot;</div>
-<div class="line">  FIND_PACKAGE_ARGS NAMES fcarouge-kalman)</div>
-<div class="line">FetchContent_MakeAvailable(fcarouge-kalman)</div>
-<div class="line"> </div>
-<div class="line">target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)</div>
-</div><!-- fragment --><p><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/INSTALL.md">For more, see installation instructions</a>.</p>
-<h1><a class="anchor" id="reference"></a>
-Reference</h1>
 <h2><a class="anchor" id="class-kalman"></a>
-Class kalman</h2>
+Class Kalman</h2>
 <p>Also documented in the <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/include/fcarouge/kalman.hpp">fcarouge/kalman.hpp</a> header.</p>
 <h3><a class="anchor" id="declaration"></a>
 Declaration</h3>
@@ -357,8 +380,8 @@ Decorators</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>print</code>   </td><td class="markdownTableBodyNone">Print filter activities to the standard output.   </td></tr>
 </table>
-<h1><a class="anchor" id="considerations"></a>
-Considerations</h1>
+<h1><a class="anchor" id="more"></a>
+More</h1>
 <h2><a class="anchor" id="motivations"></a>
 Motivations</h2>
 <p>Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.</p>
@@ -389,8 +412,6 @@ Lessons Learned</h2>
 Performance</h2>
 <p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark">benchmarks</a> share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>
 <p><img src="https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg" alt="Eigen Update" style="pointer-events: none;" class="inline"/> <img src="https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float.svg" alt="Float" style="pointer-events: none;" class="inline"/></p>
-<h1><a class="anchor" id="resources"></a>
-Resources</h1>
 <h2><a class="anchor" id="definitions"></a>
 Definitions</h2>
 <table class="markdownTable">
@@ -408,8 +429,15 @@ Definitions</h2>
 <td class="markdownTableBodyNone">UKF   </td><td class="markdownTableBodyNone">The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples unscented transformations (sigma points) about an estimate working point of the current mean using an Unscented Transformation technique.   </td></tr>
 </table>
 <p>Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, QSR-UKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.</p>
-<h2><a class="anchor" id="related-resources"></a>
-Related Resources</h2>
+<h2><a class="anchor" id="projects"></a>
+Projects</h2>
+<p>The library is used in projects:</p>
+<ul>
+<li><a href="https://github.com/FrancoisCarouge/GstKalman">GstKalman</a>: A GStreamer Kalman filter video plugin.</li>
+</ul>
+<p><em>Your project link here!</em></p>
+<h2><a class="anchor" id="resources"></a>
+Resources</h2>
 <ul>
 <li><a href="https://www.cs.unc.edu/~welch/kalman/kalmanPaper.html">A New Approach to Linear Filtering and Prediction Problems</a> by Kalman, Rudolph Emil in Transactions of the ASME - Journal of Basic Engineering, Volume 82, Series D, pp 35-45, 1960 - Transcription by John Lukesh.</li>
 <li><a href="https://www.kalmanfilter.net">KalmanFilter.NET</a> by Alex Becker.</li>
@@ -421,13 +449,6 @@ Related Resources</h2>
 <li><a href="https://www.youtube.com/watch?v=5dhFtSu3wCo">Units Libraries and Autonomous Vehicles: Lessons from the Trenches</a> by Chip Hogg at CppCon 2021.</li>
 <li><a href="https://archive.org/details/R649Volume1">R-649: The Apollo Rendezvous Navigation Filter Theory, Description and Performance, Volume 1 of 2</a> by Eugene S. Muller, Jr., and Peter M. Kachmar.</li>
 </ul>
-<h2><a class="anchor" id="projects"></a>
-Projects</h2>
-<p>The library is used in projects:</p>
-<ul>
-<li><a href="https://github.com/FrancoisCarouge/GstKalman">GstKalman</a>: A GStreamer Kalman filter video plugin.</li>
-</ul>
-<p><em>Your project link here!</em></p>
 <h2><a class="anchor" id="third-party-acknowledgement"></a>
 Third Party Acknowledgement</h2>
 <p>The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:</p>

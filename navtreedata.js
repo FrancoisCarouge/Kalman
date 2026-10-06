@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
-    [ "Kalman Filter", "index.xhtml", "index" ],
+    [ "François Carouge / Kalman", "index.xhtml", "index" ],
     [ "AGENTS.md", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml", [
       [ "AI agent conduct", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
       [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ],
@@ -148,8 +148,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.xhtml",
-"kf__1x1x0__building__height__unit_8cpp_source.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__copy__5x4x3_8cpp_03.xhtml"
+"kf__1x1x0__building__height__unit_8cpp.xhtml#a09f5fcceb6199fd993ada8069df344d7",
+"namespacefcarouge_1_1test.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

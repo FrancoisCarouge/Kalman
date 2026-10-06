@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filter_0',['Kalman Filter',['../index.xhtml',1,'']]]
+  ['françois_20carouge_20kalman_0',['François Carouge / Kalman',['../index.xhtml',1,'']]]
 ];

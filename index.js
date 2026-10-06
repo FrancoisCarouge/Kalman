@@ -1,14 +1,16 @@
 var index =
 [
-    [ "Examples", "index.xhtml#examples", [
-      [ "1x1 Constant System Dynamic Model Filter", "index.xhtml#autotoc_md1x1-constant-system-dynamic-model-filter", null ],
-      [ "6x2 Constant Acceleration Dynamic Model Filter", "index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter", null ],
-      [ "4x1 Nonlinear Dynamic Model Extended Filter", "index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter", null ],
-      [ "Other Examples", "index.xhtml#other-examples", null ]
-    ] ],
-    [ "Installation", "index.xhtml#installation-1", null ],
+    [ "Installation & Usage", "index.xhtml#installation--usage", null ],
     [ "Reference", "index.xhtml#reference", [
-      [ "Class kalman", "index.xhtml#class-kalman", [
+      [ "CMake", "index.xhtml#cmake", null ],
+      [ "Include", "index.xhtml#include", null ],
+      [ "Namespace", "index.xhtml#namespace", null ],
+      [ "Linear Algebra Backends", "index.xhtml#linear-algebra-backends-1", null ],
+      [ "Samples", "index.xhtml#samples", [
+        [ "6x2 Constant Acceleration Dynamic Model Filter", "index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter", null ],
+        [ "4x1 Nonlinear Dynamic Model Extended Filter", "index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter", null ]
+      ] ],
+      [ "Class Kalman", "index.xhtml#class-kalman", [
         [ "Declaration", "index.xhtml#declaration", null ],
         [ "Template Parameters", "index.xhtml#template-parameters", null ],
         [ "Member Types", "index.xhtml#member-types", null ],
@@ -20,16 +22,14 @@ var index =
       [ "Format", "index.xhtml#format", null ],
       [ "Decorators", "index.xhtml#decorators-1", null ]
     ] ],
-    [ "Considerations", "index.xhtml#considerations", [
+    [ "More", "index.xhtml#more", [
       [ "Motivations", "index.xhtml#motivations", null ],
       [ "Selected Tradeoffs", "index.xhtml#selected-tradeoffs", null ],
       [ "Lessons Learned", "index.xhtml#lessons-learned", null ],
-      [ "Performance", "index.xhtml#performance", null ]
-    ] ],
-    [ "Resources", "index.xhtml#resources", [
+      [ "Performance", "index.xhtml#performance", null ],
       [ "Definitions", "index.xhtml#definitions", null ],
-      [ "Related Resources", "index.xhtml#related-resources", null ],
       [ "Projects", "index.xhtml#projects", null ],
+      [ "Resources", "index.xhtml#resources", null ],
       [ "Third Party Acknowledgement", "index.xhtml#third-party-acknowledgement", null ],
       [ "Contributors", "index.xhtml#contributors-1", null ],
       [ "Sponsors", "index.xhtml#sponsors", [
