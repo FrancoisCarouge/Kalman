@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <chrono>
@@ -87,6 +88,7 @@ using state = fcarouge::state<vector<2>>;
 //!
 //! @example kf_2x1x1_1d_rocket_altitude.cpp
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step
   // time.
   kalman filter{

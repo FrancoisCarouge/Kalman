@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -63,6 +64,7 @@ using state = fcarouge::state<vector<8>>;
 //!
 //! @example kf_8x4x0_2d_bounding_box.cpp
 [[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   const vector<4> initial_box{605.0F, 248.0F, 0.20481927710843373F, 332.0F};
   // Experimental position and velocity uncertainty standard deviation
   // weights.

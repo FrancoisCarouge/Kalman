@@ -31,6 +31,7 @@ jobs:
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
           sudo cmake --install 'cppcheck/build' )
+    # cppcheck cannot evaluate the `__has_feature` compiler built-in.
     - name: Verify
       run: |
         cppcheck \
@@ -50,4 +51,5 @@ jobs:
           -I support/main \
           -I support/mp_units \
           -I support/quantity \
+          -U__has_feature \
           .
