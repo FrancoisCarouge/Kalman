@@ -162,8 +162,6 @@ public:
 
   //! @brief Move constructs a filter.
   //!
-  //! @warning Some filter types have a known move memory safety defect.
-  //!
   //! @details Move constructor. Constructs the filter with the contents of
   //! the `other` filter using move semantics (i.e. the data in `other`
   //! filter is moved from the other into this filter).
@@ -190,8 +188,6 @@ public:
   constexpr auto operator=(const kalman &other) -> kalman & = default;
 
   //! @brief Move assignment operator.
-  //!
-  //! @warning Some filter types have a known move memory safety defect.
   //!
   //! @details Replaces the contents of the filter with those of the `other`
   //! filter using move semantics (i.e. the data in `other` filter is moved from
@@ -262,7 +258,7 @@ public:
   //! @param values The optional copied initializers to set the process noise
   //! covariance matrix Q characteristic. The characteristic may also be a
   //! callable of the form `process_uncertainty(const state &, const
-  //! PredictionTypes &...)`.
+  //! PredictionTypes &...)`, of the type configured at construction.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) q(this auto &&self, const auto &...values)
@@ -274,7 +270,7 @@ public:
   //! @param values The optional copied initializers to set the observation
   //! noise covariance matrix R characteristic. The characteristic may also be a
   //! callable of the form `output_uncertainty(const state &, const output &,
-  //! const UpdateTypes &...)`.
+  //! const UpdateTypes &...)`, of the type configured at construction.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) r(this auto &&self, const auto &...values)
@@ -285,11 +281,12 @@ public:
   //! @param self Explicit object parameter. Internal implementation detail.
   //! @param values The optional copied initializers to set the state transition
   //! matrix F characteristic. The characteristic may also be a callable of the
-  //! form `state_transition(const input &, const PredictionTypes &...)`. For
-  //! non-linear system, or extended filter, F is the Jacobian of the state
-  //! transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the
-  //! derivatives of the state transition function for every element j in the
-  //! state column vector X.
+  //! form `state_transition(const input &, const PredictionTypes &...)`, of the
+  //! type configured at construction. For non-linear system, or extended
+  //! filter, F is the Jacobian of the state transition function:
+  //! `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the derivatives of the
+  //! state transition function for every element j in the state column vector
+  //! X.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) f(this auto &&self, const auto &...values)
@@ -301,11 +298,12 @@ public:
   //! @param values The optional copied initializers to set the observation
   //! transition matrix H characteristic. The characteristic may also be a
   //! callable of the form `output_model(const state &, const UpdateTypes
-  //! &...)`. For non-linear system, or extended filter, H is the Jacobian of
-  //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
-  //! contains the derivatives of the state observation function for every
-  //! element j in the state column vector X. This member function is not
-  //! present when the filter has no output model.
+  //! &...)`, of the type configured at construction. For non-linear system, or
+  //! extended filter, H is the Jacobian of the state observation function:
+  //! `H = ∂h/∂X = ∂hj/∂xi` that is each row i contains the derivatives of the
+  //! state observation function for every element j in the state column vector
+  //! X. This member function is not present when the filter has no output
+  //! model.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) h(this auto &&self, const auto &...values)
@@ -316,8 +314,9 @@ public:
   //! @param self Explicit object parameter. Internal implementation detail.
   //! @param values The optional copied initializers to set the control
   //! transition matrix G. characteristic. The characteristic may also be a
-  //! callable of the form `input_control(const PredictionTypes &...)`.
-  //! This member function is not present when the filter has no input control.
+  //! callable of the form `input_control(const PredictionTypes &...)`, of the
+  //! type configured at construction. This member function is not present when
+  //! the filter has no input control.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) g(this auto &&self, const auto &...values)

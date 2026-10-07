@@ -38,7 +38,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
-#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -70,7 +69,6 @@ using state = fcarouge::state<vector<4>>;
 //!
 //! @example ekf_4x1x0_thermal_soaring.cpp
 [[maybe_unused]] const auto sample{[] -> int {
-  const not_realtime opt_out;
   const float trigger_strength{0};
   const float thermal_radius{80};
   const float thermal_position_x{5};

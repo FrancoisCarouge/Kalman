@@ -36,52 +36,40 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
+#include "fcarouge/kalman.hpp"
 
-#include "utility.hpp"
+#include <cassert>
 
-#include <tuple>
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the observation transition callable management overloads
+//! with a capturing callable: the characteristic is replaced in place, without
+//! allocation.
+[[maybe_unused]] const auto test{[] -> int {
+  const auto make_output_model{[](double factor) -> auto {
+    return [factor]([[maybe_unused]] const double &x,
+                    const double &scale) -> double { return factor * scale; };
+  }};
+  kalman filter{state{1.},
+                output<double>,
+                estimate_uncertainty{1.},
+                process_uncertainty{0.},
+                output_uncertainty{1.},
+                output_model{make_output_model(1.)},
+                transition{[](const double &x) -> double { return x; }},
+                observation{[](const double &x,
+                               [[maybe_unused]] const double &scale) -> double {
+                  return x;
+                }},
+                update_types<double>,
+                prediction_types<>};
 
-namespace fcarouge::kalman_internal {
-template <typename Type> struct x_z_u_p_q_r {
-  using state = Type;
-  using output = Type;
-  using input = Type;
-  using estimate_uncertainty = ᴀʙᵀ<state, state>;
-  using process_uncertainty = ᴀʙᵀ<state, state>;
-  using output_uncertainty = ᴀʙᵀ<output, output>;
-  using innovation = evaluate<difference<output, output>>;
-  using innovation_uncertainty = output_uncertainty;
-  using gain = evaluate<quotient<state, innovation>>;
+  filter.h(make_output_model(2.));
+  filter.update(3., 1.);
 
-  static inline const auto i{one<gain>};
+  assert(filter.h() == 6.);
 
-  state x{zero<state>};
-  estimate_uncertainty p{one<estimate_uncertainty>};
-  process_uncertainty q{zero<process_uncertainty>};
-  output_uncertainty r{zero<output_uncertainty>};
-  input u{zero<input>};
-  gain k{one<gain>};
-  innovation y{zero<innovation>};
-  innovation_uncertainty s{one<innovation_uncertainty>};
-  output z{zero<output>};
-
-  constexpr void update(const auto &output_z, const auto &...outputs_z) {
-    z = output{output_z, outputs_z...};
-    s = p + r;
-    k = p / s;
-    y = z - x;
-    x = x + k * y;
-    p = (i - k) * p * t(i - k) + k * r * t(k);
-  }
-
-  constexpr void predict(const auto &input_u, const auto &...inputs_u) {
-    u = input{input_u, inputs_u...};
-    x = u;
-    p = p + q;
-  }
-};
-} // namespace fcarouge::kalman_internal
-
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

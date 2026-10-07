@@ -39,13 +39,14 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_QQ_RR_F_HPP
 #define FCAROUGE_KALMAN_INTERNAL_X_Z_P_QQ_RR_F_HPP
 
-#include "function.hpp"
 #include "utility.hpp"
 
 #include <tuple>
 
 namespace fcarouge::kalman_internal {
-template <typename State, typename Output> struct x_z_p_qq_rr_f {
+template <typename State, typename Output, typename NoiseProcess,
+          typename NoiseObservation>
+struct x_z_p_qq_rr_f {
   using state = State;
   using output = Output;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -55,9 +56,8 @@ template <typename State, typename Output> struct x_z_p_qq_rr_f {
   using output_model = evaluate<quotient<output, state>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
-  using noise_observation_function =
-      function<output_uncertainty(const state &, const output &)>;
-  using noise_process_function = function<process_uncertainty(const state &)>;
+  using noise_observation_function = NoiseObservation;
+  using noise_process_function = NoiseProcess;
   using gain = evaluate<quotient<state, innovation>>;
 
   static inline const auto i{one<evaluate<product<gain, output_model>>>};

@@ -48,7 +48,6 @@ target_sources(
     "fcarouge/kalman_forward.hpp"
     "fcarouge/kalman_internal/factory.hpp"
     "fcarouge/kalman_internal/format.hpp"
-    "fcarouge/kalman_internal/function.hpp"
     "fcarouge/kalman_internal/kalman.tpp"
     "fcarouge/kalman_internal/print.hpp"
     "fcarouge/kalman_internal/type.hpp"
