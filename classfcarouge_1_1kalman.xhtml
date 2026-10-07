@@ -218,7 +218,7 @@ class fcarouge::kalman&lt; typename &gt;</div><p>A generic Kalman filter. </p>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000006">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -335,7 +335,6 @@ template&lt;typename &gt; </div>
 </div><div class="memdoc">
 
 <p>Move constructs a filter. </p>
-<dl class="section warning"><dt>Warning</dt><dd>Some filter types have a known move memory safety defect.</dd></dl>
 <p>Move constructor. Constructs the filter with the contents of the <code>other</code> filter using move semantics (i.e. the data in <code>other</code> filter is moved from the other into this filter).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -411,7 +410,7 @@ template&lt;typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional copied initializers to set the state transition matrix F characteristic. The characteristic may also be a callable of the form <code>state_transition(const input &amp;, const PredictionTypes &amp;...)</code>. For non-linear system, or extended filter, F is the Jacobian of the state transition function: <code>F = ∂f/∂X = ∂fj/∂xi</code> that is each row i contains the derivatives of the state transition function for every element j in the state column vector X.</td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the state transition matrix F characteristic. The characteristic may also be a callable of the form <code>state_transition(const input &amp;, const PredictionTypes &amp;...)</code>, of the type configured at construction. For non-linear system, or extended filter, F is the Jacobian of the state transition function: <code>F = ∂f/∂X = ∂fj/∂xi</code> that is each row i contains the derivatives of the state transition function for every element j in the state column vector X.</td></tr>
   </table>
   </dd>
 </dl>
@@ -452,7 +451,7 @@ template&lt;typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional copied initializers to set the control transition matrix G. characteristic. The characteristic may also be a callable of the form <code>input_control(const PredictionTypes &amp;...)</code>. This member function is not present when the filter has no input control.</td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the control transition matrix G. characteristic. The characteristic may also be a callable of the form <code>input_control(const PredictionTypes &amp;...)</code>, of the type configured at construction. This member function is not present when the filter has no input control.</td></tr>
   </table>
   </dd>
 </dl>
@@ -493,7 +492,7 @@ template&lt;typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation transition matrix H characteristic. The characteristic may also be a callable of the form <code>output_model(const state &amp;, const UpdateTypes ! &amp;...)</code>. For non-linear system, or extended filter, H is the Jacobian of the state observation function: <code>H = ∂h/∂X = ∂hj/∂xi</code> that is each row i contains the derivatives of the state observation function for every element j in the state column vector X. This member function is not present when the filter has no output model.</td></tr>
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation transition matrix H characteristic. The characteristic may also be a callable of the form <code>output_model(const state &amp;, const UpdateTypes ! &amp;...)</code>, of the type configured at construction. For non-linear system, or extended filter, H is the Jacobian of the state observation function: <code>H = ∂h/∂X = ∂hj/∂xi</code> that is each row i contains the derivatives of the state observation function for every element j in the state column vector X. This member function is not present when the filter has no output model.</td></tr>
   </table>
   </dd>
 </dl>
@@ -606,7 +605,6 @@ template&lt;typename &gt; </div>
 </div><div class="memdoc">
 
 <p>Move assignment operator. </p>
-<dl class="section warning"><dt>Warning</dt><dd>Some filter types have a known move memory safety defect.</dd></dl>
 <p>Replaces the contents of the filter with those of the <code>other</code> filter using move semantics (i.e. the data in <code>other</code> filter is moved from the other into this filter). The other filter is in a valid but unspecified state afterwards.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -733,7 +731,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 
@@ -772,7 +770,7 @@ template&lt;typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional copied initializers to set the process noise covariance matrix Q characteristic. The characteristic may also be a callable of the form <code>process_uncertainty(const state &amp;, const ! PredictionTypes &amp;...)</code>. <pre class="fragment">  \par Complexity
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the process noise covariance matrix Q characteristic. The characteristic may also be a callable of the form <code>process_uncertainty(const state &amp;, const ! PredictionTypes &amp;...)</code>, of the type configured at construction. <pre class="fragment">  \par Complexity
   Constant. 
 </pre> </td></tr>
   </table>
@@ -814,7 +812,7 @@ template&lt;typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation noise covariance matrix R characteristic. The characteristic may also be a callable of the form <code>output_uncertainty(const state &amp;, const output &amp;, ! const UpdateTypes &amp;...)</code>. <pre class="fragment">  \par Complexity
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation noise covariance matrix R characteristic. The characteristic may also be a callable of the form <code>output_uncertainty(const state &amp;, const output &amp;, ! const UpdateTypes &amp;...)</code>, of the type configured at construction. <pre class="fragment">  \par Complexity
   Constant. 
 </pre> </td></tr>
   </table>
@@ -978,7 +976,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000028">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 

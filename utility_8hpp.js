@@ -9,6 +9,7 @@ var utility_8hpp =
     [ "repack", "utility_8hpp.xhtml#aa1a9ffab51e79feaa4cc54fbad7bff1e", null ],
     [ "transpose", "utility_8hpp.xhtml#a0c947c78364703fa3847944dd073a837", null ],
     [ "tuple_n_type", "utility_8hpp.xhtml#a6050c2c2ac7054eaffa8e5c58dab7bd4", null ],
+    [ "assign", "utility_8hpp.xhtml#add20b656f92ead93f45ac8cd04bc0720", null ],
     [ "for_constexpr", "utility_8hpp.xhtml#a6baba1af637abe5f76f3b5184d0ff3c6", null ],
     [ "t", "utility_8hpp.xhtml#acb17489172dd8b3802d97fdd17f9d91b", null ],
     [ "first_v", "utility_8hpp.xhtml#aad9be752b238d15bfc4ea67b30660cc7", null ],

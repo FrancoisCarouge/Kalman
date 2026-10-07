@@ -10,10 +10,16 @@ var namespacefcarouge_1_1test =
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a75dca0f45509383a3c74b0f4e3c303d3", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__5x4x3_8cpp_03.xhtml#a0c48920db8d2026c7752b248df4d3199", null ]
     ] ],
+    [ "anonymous_namespace{kalman_assign_move_callable_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__callable__1x1x0_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__assign__move__callable__1x1x0_8cpp_03.xhtml#ac5f6501dc1580f0ea318bd260f791385", null ]
+    ] ],
     [ "anonymous_namespace{kalman_constructor_copy_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__5x4x3_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__5x4x3_8cpp_03.xhtml#ada187883ca52b034d2273ef0e755a001", null ],
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__5x4x3_8cpp_03.xhtml#a925b03df33c75162d06b36eedf923374", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__5x4x3_8cpp_03.xhtml#a6019b6a8f20eb58bfaf5817914d45499", null ]
+    ] ],
+    [ "anonymous_namespace{kalman_constructor_copy_callable_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__callable__1x1x0_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__copy__callable__1x1x0_8cpp_03.xhtml#a0ca64e3c7a95d80f0553bd41f21fe48c", null ]
     ] ],
     [ "anonymous_namespace{kalman_constructor_default.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__constructor__default_8cpp_03.xhtml#a1c56656283f3bd86ed411f287acdc838", null ]
@@ -74,6 +80,9 @@ var namespacefcarouge_1_1test =
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__f__5x4x3_8cpp_03.xhtml#a2d8d5c456b98fb29cc272ead2071552f", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__f__5x4x3_8cpp_03.xhtml#abb34a772ef96220f7cca4c3f56a90e04", null ]
     ] ],
+    [ "anonymous_namespace{kalman_f_g_callable_1x1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__f__g__callable__1x1x1_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__f__g__callable__1x1x1_8cpp_03.xhtml#a331e7ddf6d91ae132081620895cf4d56", null ]
+    ] ],
     [ "anonymous_namespace{kalman_format.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format_8cpp_03.xhtml#a3000ef910af5390f921c643cb26edad6", null ]
     ] ],
@@ -100,8 +109,14 @@ var namespacefcarouge_1_1test =
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml#ad6334fdd23ed6e6601cb2f288aca152d", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__5x4x3_8cpp_03.xhtml#a8b9c128c4aad532480c9a7888d66ba0d", null ]
     ] ],
+    [ "anonymous_namespace{kalman_h_callable_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__callable__1x1x0_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__h__callable__1x1x0_8cpp_03.xhtml#a993858f7ffa007fe9635e72d4332929e", null ]
+    ] ],
     [ "anonymous_namespace{kalman_println_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__println__1x1x0_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__println__1x1x0_8cpp_03.xhtml#a439ad5aa0f4c8633297b2cd11f222672", null ]
+    ] ],
+    [ "anonymous_namespace{kalman_q_r_callable_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__q__r__callable__1x1x0_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__q__r__callable__1x1x0_8cpp_03.xhtml#ac96c06da13591ba5d0b6fd63727d73c2", null ]
     ] ],
     [ "anonymous_namespace{kf_6x2x0_2d_vehicle_position_unit.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml", [
       [ "output_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a8d2431f30194b5c0da04325e414510c8", null ],

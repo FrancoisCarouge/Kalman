@@ -4,7 +4,7 @@ var indexSectionsWithContent =
   1: "fkpu",
   2: "f",
   3: "acdefiklprstux",
-  4: "efghikopqrstuxyz~",
+  4: "aefghikopqrstuxyz~",
   5: "bcdfiklmopstuz",
   6: "adefmopqrstvᴀ",
   7: "abcfiklmopstu"

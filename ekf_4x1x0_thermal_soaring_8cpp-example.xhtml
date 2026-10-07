@@ -149,7 +149,6 @@ $(function(){initNavTree('ekf_4x1x0_thermal_soaring_8cpp-example.xhtml',''); ini
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;fcarouge/realtime.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
@@ -161,7 +160,6 @@ $(function(){initNavTree('ekf_4x1x0_thermal_soaring_8cpp-example.xhtml',''); ini
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;4&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <span class="keyword">const</span> not_realtime opt_out;</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> trigger_strength{0};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_radius{80};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> thermal_position_x{5};</div>
