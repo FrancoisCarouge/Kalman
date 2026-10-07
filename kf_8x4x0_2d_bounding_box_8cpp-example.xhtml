@@ -148,6 +148,7 @@ $(function(){initNavTree('kf_8x4x0_2d_bounding_box_8cpp-example.xhtml',''); init
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;fcarouge/realtime.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cmath&gt;</span></div>
@@ -158,6 +159,7 @@ $(function(){initNavTree('kf_8x4x0_2d_bounding_box_8cpp-example.xhtml',''); init
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;8&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">const</span> not_realtime opt_out;</div>
 <div class="line">  <span class="keyword">const</span> vector&lt;4&gt; initial_box{605.0F, 248.0F, 0.20481927710843373F, 332.0F};</div>
 <div class="line">  <span class="comment">// Experimental position and velocity uncertainty standard deviation</span></div>
 <div class="line">  <span class="comment">// weights.</span></div>

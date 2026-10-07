@@ -125,6 +125,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">const</span> not_realtime opt_out;</div>
 <div class="line">  <span class="keyword">auto</span> filter{<a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a>{state{60.}, output&lt;double&gt;, estimate_uncertainty{225.},</div>
 <div class="line">                     output_uncertainty{25.}} |</div>
 <div class="line">              print};</div>
@@ -150,29 +151,30 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 <p>Verifies the printer adaptor for single-dimension filters. </p>
 
-<p class="definition">Definition at line <a class="el" href="print__1x1x0_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="print__1x1x0_8cpp_source.xhtml">print_1x1x0.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">auto</span> filter{<a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a>{state{60.}, output&lt;double&gt;, estimate_uncertainty{225.},</div>
-<div class="line"><span class="lineno">   49</span>                     output_uncertainty{25.}} |</div>
-<div class="line"><span class="lineno">   50</span>              <a class="code hl_variable" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>};</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  filter.update(48.54);</div>
-<div class="line"><span class="lineno">   53</span>  filter.update(47.11);</div>
-<div class="line"><span class="lineno">   54</span>  filter.update(55.01);</div>
-<div class="line"><span class="lineno">   55</span>  filter.update(55.15);</div>
-<div class="line"><span class="lineno">   56</span>  filter.update(49.89);</div>
-<div class="line"><span class="lineno">   57</span>  filter.update(40.85);</div>
-<div class="line"><span class="lineno">   58</span>  filter.update(46.72);</div>
-<div class="line"><span class="lineno">   59</span>  filter.update(50.05);</div>
-<div class="line"><span class="lineno">   60</span>  filter.update(51.27);</div>
-<div class="line"><span class="lineno">   61</span>  filter.update(49.95);</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>  assert(std::abs(1 - (filter.x() / 49.57)) &lt; 0.001 &amp;&amp;</div>
-<div class="line"><span class="lineno">   64</span>         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
-<div class="line"><span class="lineno">   65</span>         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   68</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="print__1x1x0_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="print__1x1x0_8cpp_source.xhtml">print_1x1x0.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> not_realtime opt_out;</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">auto</span> filter{<a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a>{state{60.}, output&lt;double&gt;, estimate_uncertainty{225.},</div>
+<div class="line"><span class="lineno">   51</span>                     output_uncertainty{25.}} |</div>
+<div class="line"><span class="lineno">   52</span>              <a class="code hl_variable" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>};</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  filter.update(48.54);</div>
+<div class="line"><span class="lineno">   55</span>  filter.update(47.11);</div>
+<div class="line"><span class="lineno">   56</span>  filter.update(55.01);</div>
+<div class="line"><span class="lineno">   57</span>  filter.update(55.15);</div>
+<div class="line"><span class="lineno">   58</span>  filter.update(49.89);</div>
+<div class="line"><span class="lineno">   59</span>  filter.update(40.85);</div>
+<div class="line"><span class="lineno">   60</span>  filter.update(46.72);</div>
+<div class="line"><span class="lineno">   61</span>  filter.update(50.05);</div>
+<div class="line"><span class="lineno">   62</span>  filter.update(51.27);</div>
+<div class="line"><span class="lineno">   63</span>  filter.update(49.95);</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>  assert(std::abs(1 - (filter.x() / 49.57)) &lt; 0.001 &amp;&amp;</div>
+<div class="line"><span class="lineno">   66</span>         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
+<div class="line"><span class="lineno">   67</span>         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   70</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_a5c3a03f73432710ac636a3a5f7e9e8e2"><div class="ttname"><a href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">fcarouge::print</a></div><div class="ttdeci">constexpr printer print</div><div class="ttdoc">Filter decorator to print activities to the standard output.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00505">kalman.hpp:505</a></div></div>
 </div><!-- fragment -->

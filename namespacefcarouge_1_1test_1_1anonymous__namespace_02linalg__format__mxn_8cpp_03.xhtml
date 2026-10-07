@@ -124,22 +124,24 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">const</span> not_realtime opt_out;</div>
 <div class="line">  <span class="keyword">const</span> matrix&lt;int, 3, 3&gt; m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};</div>
 <div class="line"> </div>
 <div class="line">  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, m) == <span class="stringliteral">&quot;[[1, 2, 3], [4, 5, 6], [7, 8, 9]]&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000035">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000037">Test</a></b></dt><dd>Verifies the initializer lists constructor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="linalg__format__mxn_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="linalg__format__mxn_8cpp_source.xhtml">linalg_format_mxn.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keyword">const</span> matrix&lt;int, 3, 3&gt; m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, m) == <span class="stringliteral">&quot;[[1, 2, 3], [4, 5, 6], [7, 8, 9]]&quot;</span>);</div>
+<p class="definition">Definition at line <a class="el" href="linalg__format__mxn_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="linalg__format__mxn_8cpp_source.xhtml">linalg_format_mxn.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> not_realtime opt_out;</div>
+<div class="line"><span class="lineno">   50</span>  <span class="keyword">const</span> matrix&lt;int, 3, 3&gt; m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};</div>
 <div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   53</span>}()};</div>
+<div class="line"><span class="lineno">   52</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, m) == <span class="stringliteral">&quot;[[1, 2, 3], [4, 5, 6], [7, 8, 9]]&quot;</span>);</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   55</span>}()};</div>
 </div><!-- fragment -->
 </div>
 </div>

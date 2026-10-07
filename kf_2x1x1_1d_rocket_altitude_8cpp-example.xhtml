@@ -155,6 +155,7 @@ $(function(){initNavTree('kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml',''); i
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;fcarouge/linalg.hpp&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;fcarouge/realtime.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;chrono&gt;</span></div>
@@ -170,6 +171,7 @@ $(function(){initNavTree('kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml',''); i
 <div class="line"><span class="keyword">using </span>state = fcarouge::state&lt;vector&lt;2&gt;&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">  <span class="keyword">const</span> not_realtime opt_out;</div>
 <div class="line">  <span class="comment">// A 2x1x1 filter, constant acceleration dynamic model, no control, step</span></div>
 <div class="line">  <span class="comment">// time.</span></div>
 <div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{</div>
