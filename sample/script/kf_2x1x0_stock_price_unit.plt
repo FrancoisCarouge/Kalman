@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/gnuplot
 #  _  __          _      __  __          _   _
 # | |/ /    /\   | |    |  \/  |   /\   | \ | |
 # | ' /    /  \  | |    | \  / |  /  \  |  \| |
@@ -37,18 +37,26 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set -e
+set terminal svg enhanced background rgb "white" size 720,720
+set datafile separator ","
+set output "kalman/sample/image/kf_2x1x0_stock_price_unit.svg"
+set timestamp
+set xlabel "Trading Day"
+set grid ytics
+set key bmargin center horizontal
 
-rm -rf /tmp/kalman
-mkdir /tmp/kalman
+set multiplot layout 2,1
 
-RESULTS=`find "kalman/sample/result" -iname "*.json"`
-for RESULT in ${RESULTS}; do
-  NAME=$(basename ${RESULT} .json)
-  jq --raw-output '.[] | [.[]] | @csv' ${RESULT} > /tmp/kalman/${NAME}.csv
-done
+set title "{/:Bold Sample 2x1x0 Stock Price}\nNext Day Forecast"
+set ylabel "Closing Price ($)"
+set yrange [86:108]
+plot "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using ($1 + 1):($5 - $6):($5 + $6) with filledcurves fillcolor rgb "#dddddd" fillstyle solid noborder title "Forecast ±1σ", \
+  "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using ($1 + 1):5 with lines linewidth 3 title "Forecast", \
+  "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using 1:3 with lines linewidth 3 title "Estimated Level", \
+  "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using 1:2 with points pointtype 7 title "Measured Closing Price"
 
-PLOTS=`find "kalman/sample/script" -iname "*.plt"`
-for PLOT in ${PLOTS}; do
-  gnuplot ${PLOT}
-done
+set title "{/:Bold Sample 2x1x0 Stock Price}\nTrend"
+set ylabel "Slope ($/day)"
+set yrange [*:*]
+plot "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using 1:4 with linespoints linewidth 3 pointtype 5 title "Estimated Slope", \
+  0 with lines linewidth 1 linecolor "black" notitle
