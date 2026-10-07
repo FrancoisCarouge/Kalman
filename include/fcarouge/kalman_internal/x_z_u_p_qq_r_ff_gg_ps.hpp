@@ -39,20 +39,23 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
 #define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
 
-#include "function.hpp"
 #include "utility.hpp"
 
 #include <tuple>
 
 namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename, typename>
+template <typename, typename, typename, typename, typename, typename, typename,
+          typename>
 struct x_z_u_p_qq_r_ff_gg_ps final {};
 
 template <typename State, typename Output, typename Input,
-          typename... UpdateTypes, typename... PredictionTypes>
+          typename... UpdateTypes, typename... PredictionTypes,
+          typename NoiseProcess, typename TransitionState,
+          typename TransitionControl>
 struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
-                             std::tuple<PredictionTypes...>> {
+                             std::tuple<PredictionTypes...>, NoiseProcess,
+                             TransitionState, TransitionControl> {
   using state = State;
   using output = Output;
   using input = Input;
@@ -64,12 +67,9 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   using input_control = evaluate<quotient<state, input>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
-  using transition_state_function =
-      function<state_transition(const input &, const PredictionTypes &...)>;
-  using noise_process_function =
-      function<process_uncertainty(const state &, const PredictionTypes &...)>;
-  using transition_control_function =
-      function<input_control(const PredictionTypes &...)>;
+  using transition_state_function = TransitionState;
+  using noise_process_function = NoiseProcess;
+  using transition_control_function = TransitionControl;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
@@ -78,18 +78,10 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
-  noise_process_function noise_process_q{
-      [&qq = q]([[maybe_unused]] const auto &...arguments)
-          -> process_uncertainty { return qq; }};
+  noise_process_function noise_process_q;
   output_uncertainty r{zero<output_uncertainty>};
-  transition_state_function transition_state_f{
-      [&ff = f]([[maybe_unused]] const auto &...arguments) -> state_transition {
-        return ff;
-      }};
-  transition_control_function transition_control_g{
-      [&gg = g]([[maybe_unused]] const auto &...arguments) -> input_control {
-        return gg;
-      }};
+  transition_state_function transition_state_f;
+  transition_control_function transition_control_g;
 
   process_uncertainty q{zero<process_uncertainty>};
   input u{zero<input>};

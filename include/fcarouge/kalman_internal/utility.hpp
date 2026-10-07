@@ -41,6 +41,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <concepts>
 #include <cstddef>
+#include <memory>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -542,6 +543,28 @@ constexpr void for_constexpr(Function &&function) {
     function(std::integral_constant<std::size_t, Begin>());
     for_constexpr<Begin + Increment, End, Increment>(
         std::forward<Function>(function));
+  }
+}
+
+//! @brief Assigns a callable characteristic from its copied initializers.
+//!
+//! @details The closure type of a lambda expression with captures has a
+//! deleted copy assignment operator: such a callable is replaced in place
+//! instead. The replacement is constructed before the destruction of the
+//! assigned callable, and its non-throwing move construction never leaves the
+//! characteristic destroyed. Neither form allocates.
+template <typename Callable>
+constexpr void assign(Callable &callable, const auto &...values) {
+  if constexpr (std::is_move_assignable_v<Callable>) {
+    callable = Callable{values...};
+  } else {
+    static_assert(std::is_nothrow_move_constructible_v<Callable>,
+                  "The callable characteristic must be move assignable or "
+                  "non-throwing move constructible to be replaced.");
+
+    Callable replacement{values...};
+    std::destroy_at(&callable);
+    std::construct_at(&callable, std::move(replacement));
   }
 }
 

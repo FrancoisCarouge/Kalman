@@ -113,8 +113,9 @@ template <typename Filter = void> struct filter_deducer {
              process_uncertainty<Q> q, output_uncertainty<R> r,
              state_transition<F> f, input_control<G> g,
              [[maybe_unused]] prediction_types_t<Ps...> pts) {
-    using kt = x_z_u_p_qq_r_ff_gg_ps<X, Z, U, std::tuple<>,
-                                     repack<prediction_types_t<Ps...>>>;
+    using kt =
+        x_z_u_p_qq_r_ff_gg_ps<X, Z, U, std::tuple<>,
+                              repack<prediction_types_t<Ps...>>, Q, F, G>;
 
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
@@ -150,7 +151,7 @@ template <typename Filter = void> struct filter_deducer {
              observation<O> hh, [[maybe_unused]] update_types_t<Us...> uts,
              [[maybe_unused]] prediction_types_t<Ps...> pts) {
     using kt = x_z_p_q_r_hh_f_us_ps<X, Z, repack<update_types_t<Us...>>,
-                                    repack<prediction_types_t<Ps...>>>;
+                                    repack<prediction_types_t<Ps...>>, H, T, O>;
 
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
@@ -174,7 +175,8 @@ template <typename Filter = void> struct filter_deducer {
              output_uncertainty<R> r, output_model<H> hh,
              state_transition<F> ff, observation<O> obs,
              [[maybe_unused]] prediction_types_t<Ps...> pts) {
-    using kt = x_z_p_q_r_hh_ff_ps<X, Z, repack<prediction_types_t<Ps...>>>;
+    using kt =
+        x_z_p_q_r_hh_ff_ps<X, Z, repack<prediction_types_t<Ps...>>, H, F, O>;
 
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),
@@ -327,7 +329,7 @@ template <typename Filter = void> struct filter_deducer {
   operator()(state<X> x, [[maybe_unused]] output_t<Z> z,
              estimate_uncertainty<P> p, process_uncertainty<Q> q,
              output_uncertainty<R> r, state_transition<F> f) {
-    using kt = x_z_p_qq_rr_f<X, Z>;
+    using kt = x_z_p_qq_rr_f<X, Z, Q, R>;
 
     return kt{typename kt::state(x.value),
               typename kt::estimate_uncertainty(p.value),

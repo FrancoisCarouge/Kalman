@@ -36,52 +36,45 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
+#include "fcarouge/kalman.hpp"
 
-#include "utility.hpp"
+#include <cassert>
 
-#include <tuple>
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the copy construction of a filter configured with capturing
+//! callable characteristics: the copy and its source evolve independently.
+[[maybe_unused]] const auto test{[] -> int {
+  const double process_variance{0.5};
+  const double output_variance{2.};
+  kalman source{
+      state{1.},
+      output<double>,
+      estimate_uncertainty{1.},
+      process_uncertainty{[process_variance]([[maybe_unused]] const double &x)
+                              -> double { return process_variance; }},
+      output_uncertainty{[output_variance]([[maybe_unused]] const double &x,
+                                           [[maybe_unused]] const double &z)
+                             -> double { return output_variance; }},
+      state_transition{2.}};
 
-namespace fcarouge::kalman_internal {
-template <typename Type> struct x_z_u_p_q_r {
-  using state = Type;
-  using output = Type;
-  using input = Type;
-  using estimate_uncertainty = ᴀʙᵀ<state, state>;
-  using process_uncertainty = ᴀʙᵀ<state, state>;
-  using output_uncertainty = ᴀʙᵀ<output, output>;
-  using innovation = evaluate<difference<output, output>>;
-  using innovation_uncertainty = output_uncertainty;
-  using gain = evaluate<quotient<state, innovation>>;
+  decltype(source) copy{source};
 
-  static inline const auto i{one<gain>};
+  copy.predict();
+  copy.update(5.);
 
-  state x{zero<state>};
-  estimate_uncertainty p{one<estimate_uncertainty>};
-  process_uncertainty q{zero<process_uncertainty>};
-  output_uncertainty r{zero<output_uncertainty>};
-  input u{zero<input>};
-  gain k{one<gain>};
-  innovation y{zero<innovation>};
-  innovation_uncertainty s{one<innovation_uncertainty>};
-  output z{zero<output>};
+  assert(source.x() == 1.);
+  assert(source.p() == 1.);
+  assert(copy.q() == process_variance);
+  assert(copy.r() == output_variance);
+  assert(copy.x() != 1.);
 
-  constexpr void update(const auto &output_z, const auto &...outputs_z) {
-    z = output{output_z, outputs_z...};
-    s = p + r;
-    k = p / s;
-    y = z - x;
-    x = x + k * y;
-    p = (i - k) * p * t(i - k) + k * r * t(k);
-  }
+  source.predict();
 
-  constexpr void predict(const auto &input_u, const auto &...inputs_u) {
-    u = input{input_u, inputs_u...};
-    x = u;
-    p = p + q;
-  }
-};
-} // namespace fcarouge::kalman_internal
+  assert(source.x() == 2.);
+  assert(source.q() == process_variance);
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
+  return 0;
+}()};
+} // namespace
+} // namespace fcarouge::test

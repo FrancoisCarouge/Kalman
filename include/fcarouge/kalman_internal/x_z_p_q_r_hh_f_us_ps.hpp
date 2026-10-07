@@ -39,20 +39,21 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_F_US_PS_HPP
 #define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_F_US_PS_HPP
 
-#include "function.hpp"
 #include "utility.hpp"
 
 #include <tuple>
 
 namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename>
+template <typename, typename, typename, typename, typename, typename, typename>
 struct x_z_p_q_r_hh_f_us_ps final {};
 
 template <typename State, typename Output, typename... UpdateTypes,
-          typename... PredictionTypes>
+          typename... PredictionTypes, typename ObservationState,
+          typename Transition, typename Observation>
 struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
-                            std::tuple<PredictionTypes...>> {
+                            std::tuple<PredictionTypes...>, ObservationState,
+                            Transition, Observation> {
   using state = State;
   using output = Output;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -62,12 +63,9 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
   using output_model = evaluate<quotient<output, state>>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
-  using observation_state_function =
-      function<output_model(const state &, const UpdateTypes &...)>;
-  using transition_function =
-      function<state(const state &, const PredictionTypes &...)>;
-  using observation_function =
-      function<output(const state &, const UpdateTypes &...)>;
+  using observation_state_function = ObservationState;
+  using transition_function = Transition;
+  using observation_function = Observation;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
@@ -78,20 +76,9 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
   estimate_uncertainty p{one<estimate_uncertainty>};
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  observation_state_function observation_state_h{
-      [&hh = h]([[maybe_unused]] const auto &...arguments) -> output_model {
-        return hh;
-      }};
-  transition_function transition{
-      [&ff = f](const state &state_x,
-                [[maybe_unused]] const auto &...arguments) -> state {
-        return ff * state_x;
-      }};
-  observation_function observation{
-      [&hh = h](const state &state_x,
-                [[maybe_unused]] const auto &...arguments) -> output {
-        return hh * state_x;
-      }};
+  observation_state_function observation_state_h;
+  transition_function transition;
+  observation_function observation;
 
   output_model h{one<output_model>};
   state_transition f{one<state_transition>};

@@ -39,18 +39,20 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_PS_HPP
 #define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_PS_HPP
 
-#include "function.hpp"
 #include "utility.hpp"
 
 #include <tuple>
-#include <utility>
 
 namespace fcarouge::kalman_internal {
 // Helper template to support multiple pack deduction.
-template <typename, typename, typename> struct x_z_p_q_r_hh_ff_ps final {};
+template <typename, typename, typename, typename, typename, typename>
+struct x_z_p_q_r_hh_ff_ps final {};
 
-template <typename State, typename Output, typename... PredictionTypes>
-struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>> {
+template <typename State, typename Output, typename... PredictionTypes,
+          typename ObservationState, typename TransitionState,
+          typename Observation>
+struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>,
+                          ObservationState, TransitionState, Observation> {
   using state = State;
   using output = Output;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -60,36 +62,11 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>> {
   using output_model = evaluate<quotient<output, state>>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
-  using observation_state_function = function<output_model(const state &)>;
-  using transition_state_function =
-      function<state_transition(const PredictionTypes &...)>;
-  using transition_function =
-      function<state(const state &, const PredictionTypes &...)>;
-  using observation_function = function<output(const state &)>;
+  using observation_state_function = ObservationState;
+  using transition_state_function = TransitionState;
+  using observation_function = Observation;
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
-
-  //! @brief Construct the filter from its supplied characteristics.
-  //!
-  //! @details The remaining members keep their default member initializers.
-  //!
-  //! @note The constructor works around an MSVC 19.51 (Visual Studio 2026)
-  //! regression: the aggregate initialization of this structure is rejected
-  //! when a defaulted member initializer refers to another member, here the
-  //! default `transition` capturing `f`. Visual Studio 2022, Clang, and GCC
-  //! accept the aggregate form.
-  constexpr x_z_p_q_r_hh_ff_ps(state state_x,
-                               estimate_uncertainty uncertainty_p,
-                               process_uncertainty uncertainty_q,
-                               output_uncertainty uncertainty_r,
-                               observation_state_function observation_state,
-                               transition_state_function transition_state,
-                               observation_function observation_z)
-      : x{std::move(state_x)}, p{std::move(uncertainty_p)},
-        q{std::move(uncertainty_q)}, r{std::move(uncertainty_r)},
-        observation_state_h{std::move(observation_state)},
-        transition_state_f{std::move(transition_state)},
-        observation{std::move(observation_z)} {}
 
   static inline const auto i{one<evaluate<product<gain, output_model>>>};
 
@@ -97,24 +74,9 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>> {
   estimate_uncertainty p{one<estimate_uncertainty>};
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  observation_state_function observation_state_h{
-      [&hh = h]([[maybe_unused]] const auto &...arguments) -> output_model {
-        return hh;
-      }};
-  transition_state_function transition_state_f{
-      [&ff = f]([[maybe_unused]] const auto &...arguments) -> state_transition {
-        return ff;
-      }};
-  observation_function observation{
-      [&hh = h](const state &state_x,
-                [[maybe_unused]] const auto &...arguments) -> output {
-        return hh * state_x;
-      }};
-  transition_function transition{
-      [&ff = f](const state &state_x,
-                [[maybe_unused]] const auto &...arguments) -> state {
-        return ff * state_x;
-      }};
+  observation_state_function observation_state_h;
+  transition_state_function transition_state_f;
+  observation_function observation;
 
   output_model h{one<output_model>};
   state_transition f{one<state_transition>};
@@ -137,7 +99,7 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>> {
   constexpr void predict(const PredictionTypes &...prediction_pack) {
     prediction_arguments = {prediction_pack...};
     f = transition_state_f(prediction_pack...);
-    x = transition(x, prediction_pack...);
+    x = f * x;
     p = estimate_uncertainty{f * p * t(f) + q};
   }
 };

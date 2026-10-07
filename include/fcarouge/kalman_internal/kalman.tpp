@@ -104,8 +104,7 @@ constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
                                         typename Filter::process_uncertainty>) {
       self.filter.q = typename Filter::process_uncertainty{values...};
     } else {
-      using noise_process_function = decltype(filter.noise_process_q);
-      self.filter.noise_process_q = noise_process_function{values...};
+      kalman_internal::assign(self.filter.noise_process_q, values...);
     }
   }
   return std::forward<decltype(self)>(self).filter.q;
@@ -121,8 +120,7 @@ constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
                                         typename Filter::output_uncertainty>) {
       self.filter.r = typename Filter::output_uncertainty{values...};
     } else {
-      using noise_observation_function = decltype(filter.noise_observation_r);
-      self.filter.noise_observation_r = noise_observation_function{values...};
+      kalman_internal::assign(self.filter.noise_observation_r, values...);
     }
   }
   return std::forward<decltype(self)>(self).filter.r;
@@ -138,8 +136,7 @@ constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
                                         typename Filter::state_transition>) {
       self.filter.f = typename Filter::state_transition{values...};
     } else {
-      using transition_state_function = decltype(filter.transition_state_f);
-      self.filter.transition_state_f = transition_state_function{values...};
+      kalman_internal::assign(self.filter.transition_state_f, values...);
     }
   }
   return std::forward<decltype(self)>(self).filter.f;
@@ -155,8 +152,7 @@ constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
                                         typename Filter::output_model>) {
       self.filter.h = typename Filter::output_model{values...};
     } else {
-      using observation_state_function = decltype(filter.observation_state_h);
-      self.filter.observation_state_h = observation_state_function{values...};
+      kalman_internal::assign(self.filter.observation_state_h, values...);
     }
   }
   return std::forward<decltype(self)>(self).filter.h;
@@ -172,8 +168,7 @@ constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
                                         typename Filter::input_control>) {
       self.filter.g = typename Filter::input_control{values...};
     } else {
-      using transition_control_function = decltype(filter.transition_control_g);
-      self.filter.transition_control_g = transition_control_function{values...};
+      kalman_internal::assign(self.filter.transition_control_g, values...);
     }
   }
   return std::forward<decltype(self)>(self).filter.g;
