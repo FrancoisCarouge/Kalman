@@ -85,7 +85,7 @@ using output_t = vector<position, position>;
       // estimate uncertainty. The high estimate uncertainty results in a high
       // Kalman Gain, giving a high weight to the measurement.
       estimate_uncertainty{[]() -> auto {
-        using estimate_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+        using estimate_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
         estimate_uncertainty_t value;
         value.at<0, 0>(500. * m2);
         value.at<1, 1>(500. * m2 / s2);
@@ -98,7 +98,7 @@ using output_t = vector<position, position>;
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
       process_uncertainty{[]() -> auto {
-        using process_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+        using process_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
         process_uncertainty_t value;
         value.at<0, 0>(0.2 * 0.2 * 0.25 * m2);
         value.at<0, 1>(0.2 * 0.2 * 0.5 * m2 / s);
@@ -135,8 +135,7 @@ using output_t = vector<position, position>;
       // of xn is 6x1. Therefore the dimension of the observation matrix H shall
       // be 2x6.
       output_model{[]() -> auto {
-        using output_model_t = kalman_internal::evaluate<
-            kalman_internal::quotient<output_t, state_t>>;
+        using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
         output_model_t value;
         value.at<0, 0>(1.);
         value.at<1, 3>(1.);
@@ -144,8 +143,7 @@ using output_t = vector<position, position>;
       }()},
       // The state transition matrix F would be:
       state_transition{[]() -> auto {
-        using state_transition_t = kalman_internal::evaluate<
-            kalman_internal::quotient<state_t, state_t>>;
+        using state_transition_t = kf::evaluate<kf::quotient<state_t, state_t>>;
         state_transition_t value;
         value.at<0, 0>(1.);
         value.at<0, 1>(1. * s);

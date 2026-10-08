@@ -44,7 +44,8 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the zero matrices values are null.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<double, 3, 3> z{kalman_internal::zero<matrix<double, 3, 3>>};
+  const matrix<double, 3, 3> z{
+      kalman_filter::internal::zero<matrix<double, 3, 3>>};
 
   assert(z(0, 0) == 0.0);
   assert(z(0, 1) == 0.0);

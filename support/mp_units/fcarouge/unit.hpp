@@ -84,7 +84,7 @@ using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
 using temperature = mp_units::quantity_point<deg_C>;
 using price = mp_units::quantity<USD>;
 
-namespace kalman_internal {
+namespace kalman_filter::internal {
 template <auto Reference1, auto Reference2>
 struct multiplies<mp_units::quantity_point<Reference1>,
                   mp_units::quantity_point<Reference2>> {
@@ -105,7 +105,7 @@ inline mp_units::quantity_point<Reference>
 template <auto Reference>
 inline mp_units::quantity_point<Reference>
     zero<mp_units::quantity_point<Reference>>{point<Reference>(0.)};
-} // namespace kalman_internal
+} // namespace kalman_filter::internal
 } // namespace fcarouge
 
 #endif // FCAROUGE_UNIT_HPP

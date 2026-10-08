@@ -36,22 +36,19 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_R_F_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_R_F_HPP
 
 #include "utility.hpp"
 
-#include <tuple>
-
-namespace fcarouge::kalman_internal {
-template <typename Type> struct x_z_u_p_q_r {
-  using state = Type;
-  using output = Type;
-  using input = Type;
+namespace fcarouge::kalman_filter::internal {
+template <typename State> struct x_z_p_r_f {
+  using state = State;
+  using output = State;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
-  using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using innovation = evaluate<difference<output, output>>;
+  using state_transition = evaluate<quotient<state, state>>;
+  using innovation = evaluate<difference<output, state>>;
   using innovation_uncertainty = output_uncertainty;
   using gain = evaluate<quotient<state, innovation>>;
 
@@ -59,9 +56,8 @@ template <typename Type> struct x_z_u_p_q_r {
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
-  process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  input u{zero<input>};
+  state_transition f{one<state_transition>};
   gain k{one<gain>};
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
@@ -76,12 +72,11 @@ template <typename Type> struct x_z_u_p_q_r {
     p = (i - k) * p * t(i - k) + k * r * t(k);
   }
 
-  constexpr void predict(const auto &input_u, const auto &...inputs_u) {
-    u = input{input_u, inputs_u...};
-    x = u;
-    p = p + q;
+  constexpr void predict() {
+    x = f * x;
+    p = f * p * t(f);
   }
 };
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_R_F_HPP

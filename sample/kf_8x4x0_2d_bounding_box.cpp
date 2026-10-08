@@ -87,7 +87,7 @@ using state = fcarouge::state<vector<8>>;
       // The estimate uncertainty P:
       estimate_uncertainty{[&position_weight, &velocity_weight,
                             &initial_box]() -> matrix<float, 8, 8> {
-        matrix<float, 8, 8> value{kalman_internal::zero<matrix<float, 8, 8>>};
+        matrix<float, 8, 8> value{kf::zero<matrix<float, 8, 8>>};
         value(0, 0) = std::powf(2.F * position_weight * initial_box(3), 2);
         value(1, 1) = std::powf(2.F * position_weight * initial_box(3), 2);
         value(2, 2) = std::powf(1e-2F, 2);
@@ -102,7 +102,7 @@ using state = fcarouge::state<vector<8>>;
       process_uncertainty{[](const state::type &x) -> matrix<float, 8, 8> {
         const float weight_position{1.F / 20.F};
         const float weight_velocity{1.F / 160.F};
-        matrix<float, 8, 8> value{kalman_internal::zero<matrix<float, 8, 8>>};
+        matrix<float, 8, 8> value{kf::zero<matrix<float, 8, 8>>};
         value(0, 0) = std::powf(weight_position * x(3), 2);
         value(1, 1) = std::powf(weight_position * x(3), 2);
         value(2, 2) = std::powf(1e-2F, 2);
@@ -119,8 +119,7 @@ using state = fcarouge::state<vector<8>>;
           [](const state::type &x,
              [[maybe_unused]] const vector<4> &z) -> matrix<float, 4, 4> {
             const float weight_position{1.F / 20.F};
-            matrix<float, 4, 4> value{
-                kalman_internal::zero<matrix<float, 4, 4>>};
+            matrix<float, 4, 4> value{kf::zero<matrix<float, 4, 4>>};
             value(0, 0) = std::powf(weight_position * x(3), 2);
             value(1, 1) = std::powf(weight_position * x(3), 2);
             value(2, 2) = std::powf(1e-1F, 2);

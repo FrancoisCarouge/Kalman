@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#include "fcarouge/kalman_internal/utility.hpp"
+#include "fcarouge/kalman_filter/internal/utility.hpp"
 
 #include <cassert>
 #include <type_traits>
@@ -45,7 +45,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the 1x1 zero matrix deduced default value is a null double.
 [[maybe_unused]] const auto test{[] -> int {
-  [[maybe_unused]] const auto z{kalman_internal::zero<>};
+  [[maybe_unused]] const auto z{kalman_filter::internal::zero<>};
 
   assert(z == 0.0);
   static_assert(std::is_same_v<decltype(z), const double>);

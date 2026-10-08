@@ -45,11 +45,11 @@ ctest --test-dir build --parallel --verbose
 
 ### The named-parameter, deduced-filter pattern
 
-`fcarouge::kalman<Filter>` (`include/fcarouge/kalman.hpp`) is a thin public wrapper around an internal, compile-time-deduced `Filter` implementation type. Users never name `Filter` themselves — they construct `kalman{...}` with a set of tagged, named arguments (`state{}`, `output<T>`, `input<T>`, `estimate_uncertainty{}`, `process_uncertainty{}`, `output_uncertainty{}`, `output_model{}`, `state_transition{}`, `input_control{}`, `transition{}`, `observation{}`, `update_types<...>`, `prediction_types<...>`, defined in `kalman_internal/type.hpp`), and class template argument deduction resolves the concrete type. `include/fcarouge/kalman_forward.hpp` is the authoritative forward declaration header.
+`fcarouge::kalman<Filter>` (`include/fcarouge/kalman.hpp`) is a thin public wrapper around an internal, compile-time-deduced `Filter` implementation type. Users never name `Filter` themselves — they construct `kalman{...}` with a set of tagged, named arguments (`state{}`, `output<T>`, `input<T>`, `estimate_uncertainty{}`, `process_uncertainty{}`, `output_uncertainty{}`, `output_model{}`, `state_transition{}`, `input_control{}`, `transition{}`, `observation{}`, `update_types<...>`, `prediction_types<...>`, defined in `kalman_filter/internal/type.hpp`), and class template argument deduction resolves the concrete type. `include/fcarouge/kalman_forward.hpp` is the authoritative forward declaration header.
 
-The resolution machinery lives in `kalman_internal/factory.hpp`: `filter_deducer<void>::operator()` is overloaded — one overload per supported combination of named arguments — and each overload picks one of the internal filter implementation structs and forwards the converted arguments to its constructor. `deduce_filter<Arguments...>` is the alias that performs this resolution for the `kalman` class template's deduction guide.
+The resolution machinery lives in `kalman_filter/internal/factory.hpp`: `filter_deducer<void>::operator()` is overloaded — one overload per supported combination of named arguments — and each overload picks one of the internal filter implementation structs and forwards the converted arguments to its constructor. `deduce_filter<Arguments...>` is the alias that performs this resolution for the `kalman` class template's deduction guide.
 
-The internal implementation structs are named after the characteristics they carry, one header each under `include/fcarouge/kalman_internal/`:
+The internal implementation structs are named after the characteristics they carry, one header each under `include/fcarouge/kalman_filter/internal/`:
 
 - `x_z_p_r` — minimal filter: state, output, estimate uncertainty, output uncertainty.
 - `x_z_p_r_f` — adds a state transition `F`.
@@ -59,7 +59,7 @@ The internal implementation structs are named after the characteristics they car
 - `x_z_u_p_q_r_h_f_g_us_ps` — full filter with control input `U`, input control `G`, and extra update/prediction argument packs (`Us...`, `Ps...`).
 - `x_z_p_qq_rr_f`, `x_z_p_q_r_hh_f_us_ps`, `x_z_p_q_r_hh_ff_ps`, `x_z_u_p_qq_r_ff_gg_ps` — variants where a doubled letter (`qq`, `rr`, `hh`, `ff`, `gg`) marks a characteristic that is a callable (a function of the state and the extra arguments) rather than a fixed matrix, for gain-scheduling, linear parameter varying (LPV), and extended-filter use cases. Callables are stored by value, their types trailing template parameters of the struct deduced by the factory: no type erasure, no allocation, and a member initializer must never capture a sibling member, which would dangle once the filter is copied or moved.
 
-Each struct implements its own `update`/`predict` equations and stores its characteristics; `kalman_internal/kalman.tpp` defines the public `kalman<Filter>` members, which forward to the deduced struct. `kalman_internal::conditional_member_types<Filter>` (the `kalman` base class) exposes member types conditionally, based on what the deduced `Filter` actually supports — so the public API surface of a given `kalman` instantiation varies with how it was configured. Characteristic presence is probed through the `has_*` concepts in `kalman_internal/utility.hpp`.
+Each struct implements its own `update`/`predict` equations and stores its characteristics; `kalman_filter/internal/kalman.tpp` defines the public `kalman<Filter>` members, which forward to the deduced struct. `kalman_filter::internal::conditional_member_types<Filter>` (the `kalman` base class) exposes member types conditionally, based on what the deduced `Filter` actually supports — so the public API surface of a given `kalman` instantiation varies with how it was configured. Characteristic presence is probed through the `has_*` concepts in `kalman_filter/internal/utility.hpp`.
 
 ### Linear algebra backends
 
@@ -91,7 +91,7 @@ File naming: `<subject>_<feature>[_<state>x<output>x<input>].cpp`, where the dim
 
 ### Decorators
 
-Filters compose with pipe-style decorators, e.g. `kalman{...} | print`, to attach cross-cutting behavior (printing filter activity) without modifying the filter type itself — see `kalman_internal/print.hpp`. A `std::formatter` specialization (`kalman_internal/format.hpp`) prints whichever characteristics a filter has.
+Filters compose with pipe-style decorators, e.g. `kalman{...} | print`, to attach cross-cutting behavior (printing filter activity) without modifying the filter type itself — see `kalman_filter/internal/print.hpp`. A `std::formatter` specialization (`kalman_filter/internal/format.hpp`) prints whichever characteristics a filter has.
 
 ### Other directories
 
@@ -103,7 +103,7 @@ Filters compose with pipe-style decorators, e.g. `kalman{...} | print`, to attac
 ## Recipe: supporting a new filter configuration
 
 1. **Proposal.** Describe the named-argument combination, the characteristics it implies, and which internal struct it maps to; agree on it first (see AI agent conduct).
-2. **Internal struct.** Reuse an existing `x_...hpp` struct when its characteristics fit. Otherwise create `include/fcarouge/kalman_internal/x_<characteristics>.hpp`: verbatim Unlicense SPDX block, include guard `FCAROUGE_KALMAN_INTERNAL_X_<CHARACTERISTICS>_HPP`, `namespace fcarouge::kalman_internal`, named per the letter convention above, modeled on the closest existing struct: its member types, characteristics, and `update`/`predict` equations.
+2. **Internal struct.** Reuse an existing `x_...hpp` struct when its characteristics fit. Otherwise create `include/fcarouge/kalman_filter/internal/x_<characteristics>.hpp`: verbatim Unlicense SPDX block, include guard `FCAROUGE_KALMAN_FILTER_INTERNAL_X_<CHARACTERISTICS>_HPP`, `namespace fcarouge::kalman_filter::internal`, named per the letter convention above, modeled on the closest existing struct: its member types, characteristics, and `update`/`predict` equations.
 3. **Deduction.** Add the `filter_deducer` overload in `factory.hpp` that converts the named arguments and constructs the struct. Keep overloads unambiguous: a new overload must not tie with an existing one for any argument combination already supported.
 4. **Install.** List any new header in the `FILE_SET` of `include/CMakeLists.txt`, or it is not installed; nothing checks this list.
 5. **Public surface.** If the configuration exposes a new characteristic, extend `conditional_member_types`, the `has_*` concepts, the `std::formatter`, and the README "Member Types"/"Characteristics" tables together.
@@ -125,12 +125,12 @@ Before declaring any change complete:
 
 ## Conventions
 
-- Header-only library: keep the public API under `include/fcarouge/` (`kalman.hpp`, `kalman_forward.hpp`); implementation details belong in `kalman_internal/` and are not part of the public surface.
-- Internal implementation details live in `namespace fcarouge::kalman_internal` — the single internal namespace, mirroring the `include/fcarouge/kalman_internal/` directory, and excluded from Doxygen (`EXCLUDE_SYMBOLS`). Never introduce a parallel internal namespace.
+- Header-only library: keep the public API under `include/fcarouge/` (`kalman.hpp`, `kalman_forward.hpp`); implementation details belong in `kalman_filter/internal/` and are not part of the public surface.
+- Internal implementation details live in `namespace fcarouge::kalman_filter::internal` — the single internal namespace, mirroring the `include/fcarouge/kalman_filter/internal/` directory, and excluded from Doxygen (`EXCLUDE_SYMBOLS`). Never introduce `fcarouge::internal`, `fcarouge::kalman_internal`, or any other parallel internal namespace. The outer name cannot be `kalman`: a namespace may not share its name with the `fcarouge::kalman` class template in the same scope. Refer to internal entities through the `kf` alias (`kf::has_state<Filter>`, `kf::one<matrix>`) — an unqualified `internal::` does not resolve from `fcarouge` scope. Spell out `kalman_filter::internal` only where the alias cannot be used: reopening the namespace, headers of `kalman_filter/internal/` and backend headers of `support/` that do not include `kalman.hpp`, and the alias declaration itself, declared once in `kalman.hpp` and never re-aliased.
 - Every source/CMake file carries the Unlicense SPDX header block — copy it verbatim (version/URL match the root `CMakeLists.txt`) into any new file.
 - Consumers `find_package` the `fcarouge-kalman` package and link against its namespaced `kalman` target (see INSTALL.md).
 - The author writes precise, terminology-careful `@note`/`@todo`/`@warning` Doxygen comments explaining design rationale directly in headers — match that register when editing docs/comments rather than simplifying.
-- Public documentation states the contract and its rationale, not the implementation: what the function means, what it accepts or rejects and why, never which internal struct or helper computes it. Implementation notes belong in `kalman_internal` or in a plain `//` comment at the code they explain.
+- Public documentation states the contract and its rationale, not the implementation: what the function means, what it accepts or rejects and why, never which internal struct or helper computes it. Implementation notes belong in `kalman_filter::internal` or in a plain `//` comment at the code they explain.
 - Blank lines separate groups of statements, not individual statements: includes of the same origin; using-declarations and type aliases; constant declarations; the construction of related objects; a run of updates or predictions; a run of checks.
 - Commit messages follow `[tag] short imperative description` — a lowercase bracketed tag naming the area touched (`[filter]`, `[test]`, `[sample]`, `[cicd]`, `[cmake]`, `[documentation]`, `[support]`, `[linalg]`, ...; `git log --oneline` has the established vocabulary). Match it rather than inventing `Category: ...` or `type(scope):` styles; the `commit-message-tag` hook enforces it.
 - PR/issue bodies and other GitHub-rendered Markdown use hard line breaks — a newline in the middle of a paragraph renders as `<br>`, so wrapped prose arrives as a ragged column. Write one paragraph per line there.

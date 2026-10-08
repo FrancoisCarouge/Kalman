@@ -47,8 +47,7 @@ template <typename... Types> using vector = column_vector<double, Types...>;
 using ratio = mp_units::quantity<mp_units::one>;
 using state_t = vector<ratio, price>;
 using output_t = vector<price>;
-using output_model_t =
-    kalman_internal::evaluate<kalman_internal::quotient<output_t, state_t>>;
+using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
 
 //! @brief Estimating the pairs trading hedge ratio.
 //!
@@ -87,11 +86,11 @@ using output_model_t =
       // As in the reference, the initial estimate uncertainty P is null: the
       // first closing prices do not update the state, after which the process
       // uncertainty accumulates.
-      estimate_uncertainty{kalman_internal::ᴀʙᵀ<state_t, state_t>{}},
+      estimate_uncertainty{kf::ᴀʙᵀ<state_t, state_t>{}},
       // The process uncertainty Q: Vw = δ / (1 - δ) with δ = 0.0001, for the
       // dimensionless hedge ratio and for the intercept in dollars.
       process_uncertainty{[]() -> auto {
-        using process_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+        using process_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
         const double delta{0.0001};
         process_uncertainty_t value;
         value.at<0, 0>(delta / (1. - delta) * mp_units::one);

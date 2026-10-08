@@ -34,5 +34,5 @@ Checks: '*,
         -readability-magic-numbers,
         -zircon-*'
 CheckOptions:
-  misc-include-cleaner.IgnoreHeaders: 'mp-units/.*;Eigen/.*;matplot/.*;fcarouge/eigen\.hpp;fcarouge/linalg\.hpp;fcarouge/plot\.hpp;fcarouge/unit\.hpp;fcarouge/typed_linear_algebra.*;fcarouge/kalman_internal/.*'
+  misc-include-cleaner.IgnoreHeaders: 'mp-units/.*;Eigen/.*;matplot/.*;fcarouge/eigen\.hpp;fcarouge/linalg\.hpp;fcarouge/plot\.hpp;fcarouge/unit\.hpp;fcarouge/typed_linear_algebra.*;fcarouge/kalman_filter/internal/.*'
   modernize-use-std-numbers.DiffThreshold: '0.000001'

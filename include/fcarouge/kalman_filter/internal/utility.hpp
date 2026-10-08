@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_UTILITY_HPP
-#define FCAROUGE_KALMAN_INTERNAL_UTILITY_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_UTILITY_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_UTILITY_HPP
 
 #include <concepts>
 #include <cstddef>
@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <type_traits>
 #include <utility>
 
-namespace fcarouge::kalman_internal {
+namespace fcarouge::kalman_filter::internal {
 //! @name Concepts
 //! @{
 
@@ -637,7 +637,7 @@ inline auto one<Type>{Type::identity()};
 //!
 //! @details User-defined.
 template <typename Type = double>
-inline constexpr Type zero{kalman_internal::not_implemented<Type>{
+inline constexpr Type zero{kalman_filter::internal::not_implemented<Type>{
     "Implement the linear algebra zero matrix for this type."}};
 
 //! @brief The singleton zero matrix specialization.
@@ -659,6 +659,6 @@ template <typename Callable> struct scope_exit {
 
 //! @}
 
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_UTILITY_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_UTILITY_HPP

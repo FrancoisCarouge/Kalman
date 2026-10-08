@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_FORMAT_HPP
-#define FCAROUGE_KALMAN_INTERNAL_FORMAT_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_FORMAT_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_FORMAT_HPP
 
 //! @file
 //! @brief Formatting support for the Kalman filter.
@@ -67,36 +67,41 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
 
     format_context.advance_to(std::format_to(format_context.out(), R"({{)"));
 
-    if constexpr (fcarouge::kalman_internal::has_state_transition_method<
-                      kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::
+                      has_state_transition_method<kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("f": {}, )", filter.f()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_input_control_method<kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::has_input_control_method<
+                      kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("g": {}, )", filter.g()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_output_model_method<kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::has_output_model_method<
+                      kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("h": {}, )", filter.h()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_gain_method<kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::has_gain_method<kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("k": {}, )", filter.k()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_estimate_uncertainty_method<
-                      kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::
+                      has_estimate_uncertainty_method<kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("p": {}, )", filter.p()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_prediction_types<kalman>) {
-      fcarouge::kalman_internal::for_constexpr<
-          0, fcarouge::kalman_internal::size<typename kalman::prediction_types>,
+    if constexpr (fcarouge::kalman_filter::internal::has_prediction_types<
+                      kalman>) {
+      fcarouge::kalman_filter::internal::for_constexpr<
+          0,
+          fcarouge::kalman_filter::internal::size<
+              typename kalman::prediction_types>,
           1>([&format_context, &filter](auto position) {
         format_context.advance_to(
             std::format_to(format_context.out(), R"("prediction_{}": {}, )",
@@ -104,52 +109,57 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
       });
     }
 
-    if constexpr (fcarouge::kalman_internal::has_process_uncertainty_method<
-                      kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::
+                      has_process_uncertainty_method<kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("q": {}, )", filter.q()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_output_uncertainty<kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::has_output_uncertainty<
+                      kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("r": {}, )", filter.r()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_innovation_uncertainty_method<
-                      kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::
+                      has_innovation_uncertainty_method<kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("s": {}, )", filter.s()));
     }
 
     //! @todo Generalize out internal method concept when MSVC has better
     //! if-constexpr-requires support.
-    if constexpr (fcarouge::kalman_internal::has_input_method<kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::has_input_method<kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("u": {}, )", filter.u()));
     }
 
     //! @todo Inconsistent usage of internal?
-    if constexpr (fcarouge::kalman_internal::has_update_types<kalman>) {
-      fcarouge::kalman_internal::for_constexpr<
-          0, fcarouge::kalman_internal::size<typename kalman::update_types>, 1>(
-          [&format_context, &filter](auto position) {
-            format_context.advance_to(
-                std::format_to(format_context.out(), R"("update_{}": {}, )",
-                               position(), filter.template update<position>()));
-          });
+    if constexpr (fcarouge::kalman_filter::internal::has_update_types<kalman>) {
+      fcarouge::kalman_filter::internal::for_constexpr<
+          0,
+          fcarouge::kalman_filter::internal::size<
+              typename kalman::update_types>,
+          1>([&format_context, &filter](auto position) {
+        format_context.advance_to(
+            std::format_to(format_context.out(), R"("update_{}": {}, )",
+                           position(), filter.template update<position>()));
+      });
     }
 
-    if constexpr (fcarouge::kalman_internal::has_state_method<kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::has_state_method<kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("x": {}, )", filter.x()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_innovation_method<kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::has_innovation_method<
+                      kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("y": {}, )", filter.y()));
     }
 
-    if constexpr (fcarouge::kalman_internal::has_output_method<kalman>) {
+    if constexpr (fcarouge::kalman_filter::internal::has_output_method<
+                      kalman>) {
       format_context.advance_to(
           std::format_to(format_context.out(), R"("z": {})", filter.z()));
     }
@@ -164,7 +174,7 @@ struct std::formatter<fcarouge::kalman<Filter>, Char> {
 //!
 //! @details A decorated filter is formatted as the filter it decorates.
 template <typename Filter, typename Char>
-struct std::formatter<fcarouge::kalman_internal::printer<Filter>, Char>
+struct std::formatter<fcarouge::kalman_filter::internal::printer<Filter>, Char>
     : std::formatter<Filter, Char> {};
 
-#endif // FCAROUGE_KALMAN_INTERNAL_FORMAT_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_FORMAT_HPP

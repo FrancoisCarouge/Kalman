@@ -36,74 +36,52 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_Q_R_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_Q_R_HPP
 
 #include "utility.hpp"
 
 #include <tuple>
 
-namespace fcarouge::kalman_internal {
-// Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename, typename>
-struct x_z_u_p_q_r_h_f_g_us_ps final {};
-
-template <typename State, typename Output, typename Input,
-          typename... UpdateTypes, typename... PredictionTypes>
-struct x_z_u_p_q_r_h_f_g_us_ps<State, Output, Input, std::tuple<UpdateTypes...>,
-                               std::tuple<PredictionTypes...>> {
-  using state = State;
-  using output = Output;
-  using input = Input;
+namespace fcarouge::kalman_filter::internal {
+template <typename Type> struct x_z_u_p_q_r {
+  using state = Type;
+  using output = Type;
+  using input = Type;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = evaluate<quotient<state, state>>;
-  using output_model = evaluate<quotient<output, state>>;
-  using input_control = evaluate<quotient<state, input>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
-  using update_types = std::tuple<UpdateTypes...>;
-  using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
 
-  static inline const auto i{one<evaluate<product<gain, output_model>>>};
+  static inline const auto i{one<gain>};
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  output_model h{one<output_model>};
-  state_transition f{one<state_transition>};
-  input_control g{one<input_control>};
   input u{zero<input>};
   gain k{one<gain>};
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
-  update_types update_arguments{};
-  prediction_types prediction_arguments{};
 
-  constexpr void update(const UpdateTypes &...update_pack, const auto &output_z,
-                        const auto &...outputs_z) {
-    update_arguments = {update_pack...};
+  constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
-    s = h * p * t(h) + r;
-    k = p * t(h) / s;
-    y = z - h * x;
+    s = p + r;
+    k = p / s;
+    y = z - x;
     x = x + k * y;
-    p = (i - k * h) * p * t(i - k * h) + k * r * t(k);
+    p = (i - k) * p * t(i - k) + k * r * t(k);
   }
 
-  //! @todo Add convertible requirements on input and output packs?
-  constexpr void predict(const PredictionTypes &...prediction_pack,
-                         const auto &input_u, const auto &...inputs_u) {
-    prediction_arguments = {prediction_pack...};
+  constexpr void predict(const auto &input_u, const auto &...inputs_u) {
     u = input{input_u, inputs_u...};
-    x = f * x + g * u;
-    p = f * p * t(f) + q;
+    x = u;
+    p = p + q;
   }
 };
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_Q_R_HPP

@@ -36,23 +36,17 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_PS_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_PS_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_QQ_RR_F_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_QQ_RR_F_HPP
 
 #include "utility.hpp"
 
 #include <tuple>
 
-namespace fcarouge::kalman_internal {
-// Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename, typename, typename>
-struct x_z_p_q_r_hh_ff_ps final {};
-
-template <typename State, typename Output, typename... PredictionTypes,
-          typename ObservationState, typename TransitionState,
-          typename Observation>
-struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>,
-                          ObservationState, TransitionState, Observation> {
+namespace fcarouge::kalman_filter::internal {
+template <typename State, typename Output, typename NoiseProcess,
+          typename NoiseObservation>
+struct x_z_p_qq_rr_f {
   using state = State;
   using output = Output;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -60,49 +54,44 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>,
   using output_uncertainty = ᴀʙᵀ<output, output>;
   using state_transition = evaluate<quotient<state, state>>;
   using output_model = evaluate<quotient<output, state>>;
-  using innovation = output;
+  using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
-  using observation_state_function = ObservationState;
-  using transition_state_function = TransitionState;
-  using observation_function = Observation;
-  using prediction_types = std::tuple<PredictionTypes...>;
+  using noise_observation_function = NoiseObservation;
+  using noise_process_function = NoiseProcess;
   using gain = evaluate<quotient<state, innovation>>;
 
   static inline const auto i{one<evaluate<product<gain, output_model>>>};
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
+  noise_process_function noise_process_q;
+  noise_observation_function noise_observation_r;
+  state_transition f{one<state_transition>};
+
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  observation_state_function observation_state_h;
-  transition_state_function transition_state_f;
-  observation_function observation;
-
   output_model h{one<output_model>};
-  state_transition f{one<state_transition>};
   gain k{one<gain>};
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
-  prediction_types prediction_arguments{};
 
   constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
-    h = observation_state_h(x);
+    r = noise_observation_r(x, z);
     s = innovation_uncertainty{h * p * t(h) + r};
     k = p * t(h) / s;
-    y = z - observation(x);
+    y = z - h * x;
     x = state{x + k * y};
     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
   }
 
-  constexpr void predict(const PredictionTypes &...prediction_pack) {
-    prediction_arguments = {prediction_pack...};
-    f = transition_state_f(prediction_pack...);
+  constexpr void predict() {
+    q = noise_process_q(x);
     x = f * x;
     p = estimate_uncertainty{f * p * t(f) + q};
   }
 };
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_HH_FF_PS_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_QQ_RR_F_HPP

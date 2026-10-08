@@ -107,7 +107,7 @@ struct element_caster<To, From> {
 } // namespace fcarouge
 
 namespace fcarouge {
-namespace kalman_internal {
+namespace kalman_filter::internal {
 
 //! @brief Specialization of the evaluation type.
 //!
@@ -142,7 +142,7 @@ inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
     zero<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
 
 //! @}
-} // namespace kalman_internal
+} // namespace kalman_filter::internal
 
 //! @brief Quantity column vector with mp-units and Eigen implementations.
 template <typename Representation, typename... Types>
