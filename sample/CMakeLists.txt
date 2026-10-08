@@ -42,6 +42,7 @@ endif()
 
 sample("ekf_4x1x0_thermal_soaring" BACKENDS "eigen" "eigen_typed")
 sample("ekf_6x4x0_3d_apollo_position" BACKENDS "eigen")
+sample("eskf_2x1x0_1d_vehicle_position" BACKENDS "eigen" "eigen_typed")
 sample("kf_1x1x0_building_height_unit")
 sample("kf_1x1x0_building_height")
 sample("kf_1x1x0_liquid_temperature_unit")
