@@ -1,0 +1,40 @@
+name: 'Valgrind / Memory'
+
+on:
+  push:
+    branches: [ 'master' ]
+  pull_request:
+    branches: [ 'master' ]
+  schedule:
+  - cron: '0 0 * * */5'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: read
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: lukka/get-cmake@fffaaafeea488556c2c12dad60690008bc1caacb # v4.4.2
+    - name: 'Install'
+      run: sudo apt update && sudo apt install valgrind
+    - name: 'Configure'
+      env:
+        CXX: 'g++-15'
+        CC: 'gcc-15'
+        COMMAND: 'valgrind --error-exitcode=1 --leak-check=full --track-origins=yes'
+      run: cmake -S . -B 'build'
+    - name: 'Build'
+      run: cmake --build 'build' --verbose --parallel 4
+    - name: 'Test'
+      run: ctest --test-dir 'build' --timeout 60 --verbose --parallel 4

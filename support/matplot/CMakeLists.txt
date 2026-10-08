@@ -44,10 +44,13 @@ FetchContent_Declare(
   matplot
   GIT_REPOSITORY "https://github.com/alandefreitas/matplotplusplus"
   GIT_SHALLOW TRUE
+  SYSTEM
   FIND_PACKAGE_ARGS NAMES matplot)
 FetchContent_MakeAvailable(matplot)
 
 add_library(kalman_plot INTERFACE)
-target_sources(kalman_plot INTERFACE FILE_SET "linalg_headers" TYPE "HEADERS"
-                                     FILES "fcarouge/plot.hpp")
+target_sources(
+  kalman_plot
+  INTERFACE
+  FILE_SET "linalg_headers" TYPE "HEADERS" FILES "fcarouge/plot.hpp")
 target_link_libraries(kalman_plot INTERFACE matplot)

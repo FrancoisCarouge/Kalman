@@ -48,9 +48,9 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies the observation transition matrix H management overloads for
 //! the Eigen filter type.
-[[maybe_unused]] auto test{[] {
-  const matrix<4, 5> i4x5{kalman_internal::one<matrix<4, 5>>};
-  const matrix<4, 5> z4x5{kalman_internal::zero<matrix<4, 5>>};
+[[maybe_unused]] const auto test{[] -> int {
+  const matrix<4, 5> i4x5{kf::one<matrix<4, 5>>};
+  const matrix<4, 5> z4x5{kf::zero<matrix<4, 5>>};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>, update_types<double, float, int>,
                 prediction_types<int, float, double>};

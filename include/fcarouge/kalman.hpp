@@ -46,13 +46,15 @@ For more information, please refer to <https://unlicense.org> */
 //! utilities, and documentation. Only this header file is intended for
 //! inclusion in third party software.
 
+#include "kalman_filter/internal/factory.hpp"
+#include "kalman_filter/internal/format.hpp"
+#include "kalman_filter/internal/print.hpp"
+#include "kalman_filter/internal/utility.hpp"
 #include "kalman_forward.hpp"
-#include "kalman_internal/factory.hpp"
-#include "kalman_internal/format.hpp"
-#include "kalman_internal/print.hpp"
-#include "kalman_internal/utility.hpp"
 
 namespace fcarouge {
+namespace kf = kalman_filter::internal;
+
 //! @name Types
 //! @{
 
@@ -124,7 +126,7 @@ namespace fcarouge {
 //! https://arxiv.org/pdf/1905.13002.pdf ? GPU implementation? Parallel
 //! implementation?
 template <typename Filter>
-class kalman : public kalman_internal::conditional_member_types<Filter> {
+class kalman : public kf::conditional_member_types<Filter> {
 private:
   //! @name Private Member Variables
   //! @{
@@ -162,8 +164,6 @@ public:
 
   //! @brief Move constructs a filter.
   //!
-  //! @warning Some filter types have a known move memory safety defect.
-  //!
   //! @details Move constructor. Constructs the filter with the contents of
   //! the `other` filter using move semantics (i.e. the data in `other`
   //! filter is moved from the other into this filter).
@@ -190,8 +190,6 @@ public:
   constexpr auto operator=(const kalman &other) -> kalman & = default;
 
   //! @brief Move assignment operator.
-  //!
-  //! @warning Some filter types have a known move memory safety defect.
   //!
   //! @details Replaces the contents of the filter with those of the `other`
   //! filter using move semantics (i.e. the data in `other` filter is moved from
@@ -224,7 +222,7 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) x(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_state<Filter>);
+    requires(kf::has_state<Filter>);
 
   //! @brief Read, write the observation column vector Z.
   //!
@@ -234,7 +232,7 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) z(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_output<Filter>);
+    requires(kf::has_output<Filter>);
 
   //! @brief Read, write the control column vector U.
   //!
@@ -244,7 +242,7 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) u(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_input<Filter>);
+    requires(kf::has_input<Filter>);
 
   //! @brief Read, write the estimated covariance matrix P.
   //!
@@ -254,7 +252,7 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) p(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_estimate_uncertainty<Filter>);
+    requires(kf::has_estimate_uncertainty<Filter>);
 
   //! @brief Read, write the process noise covariance matrix or function Q.
   //!
@@ -262,11 +260,11 @@ public:
   //! @param values The optional copied initializers to set the process noise
   //! covariance matrix Q characteristic. The characteristic may also be a
   //! callable of the form `process_uncertainty(const state &, const
-  //! PredictionTypes &...)`.
+  //! PredictionTypes &...)`, of the type configured at construction.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) q(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_process_uncertainty<Filter>);
+    requires(kf::has_process_uncertainty<Filter>);
 
   //! @brief Read, write the observation noise covariance matrix R.
   //!
@@ -274,26 +272,27 @@ public:
   //! @param values The optional copied initializers to set the observation
   //! noise covariance matrix R characteristic. The characteristic may also be a
   //! callable of the form `output_uncertainty(const state &, const output &,
-  //! const UpdateTypes &...)`.
+  //! const UpdateTypes &...)`, of the type configured at construction.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) r(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_output_uncertainty<Filter>);
+    requires(kf::has_output_uncertainty<Filter>);
 
   //! @brief Read, write the state transition matrix F.
   //!
   //! @param self Explicit object parameter. Internal implementation detail.
   //! @param values The optional copied initializers to set the state transition
   //! matrix F characteristic. The characteristic may also be a callable of the
-  //! form `state_transition(const input &, const PredictionTypes &...)`. For
-  //! non-linear system, or extended filter, F is the Jacobian of the state
-  //! transition function: `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the
-  //! derivatives of the state transition function for every element j in the
-  //! state column vector X.
+  //! form `state_transition(const input &, const PredictionTypes &...)`, of the
+  //! type configured at construction. For non-linear system, or extended
+  //! filter, F is the Jacobian of the state transition function:
+  //! `F = ∂f/∂X = ∂fj/∂xi` that is each row i contains the derivatives of the
+  //! state transition function for every element j in the state column vector
+  //! X.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) f(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_state_transition<Filter>);
+    requires(kf::has_state_transition<Filter>);
 
   //! @brief Read, write the observation transition matrix H.
   //!
@@ -301,27 +300,29 @@ public:
   //! @param values The optional copied initializers to set the observation
   //! transition matrix H characteristic. The characteristic may also be a
   //! callable of the form `output_model(const state &, const UpdateTypes
-  //! &...)`. For non-linear system, or extended filter, H is the Jacobian of
-  //! the state observation function: `H = ∂h/∂X = ∂hj/∂xi` that is each row i
-  //! contains the derivatives of the state observation function for every
-  //! element j in the state column vector X. This member function is not
-  //! present when the filter has no output model.
+  //! &...)`, of the type configured at construction. For non-linear system, or
+  //! extended filter, H is the Jacobian of the state observation function:
+  //! `H = ∂h/∂X = ∂hj/∂xi` that is each row i contains the derivatives of the
+  //! state observation function for every element j in the state column vector
+  //! X. This member function is not present when the filter has no output
+  //! model.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) h(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_output_model<Filter>);
+    requires(kf::has_output_model<Filter>);
 
   //! @brief Read, write the control transition matrix G.
   //!
   //! @param self Explicit object parameter. Internal implementation detail.
   //! @param values The optional copied initializers to set the control
   //! transition matrix G. characteristic. The characteristic may also be a
-  //! callable of the form `input_control(const PredictionTypes &...)`.
-  //! This member function is not present when the filter has no input control.
+  //! callable of the form `input_control(const PredictionTypes &...)`, of the
+  //! type configured at construction. This member function is not present when
+  //! the filter has no input control.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) g(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_input_control<Filter>);
+    requires(kf::has_input_control<Filter>);
 
   //! @brief Read, write the gain matrix K.
   //!
@@ -331,7 +332,7 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) k(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_gain<Filter>);
+    requires(kf::has_gain<Filter>);
 
   //! @brief Read, write the innovation column vector Y.
   //!
@@ -341,7 +342,7 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) y(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_innovation<Filter>);
+    requires(kf::has_innovation<Filter>);
 
   //! @brief Read, write the innovation uncertainty matrix S.
   //!
@@ -351,7 +352,7 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) s(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_innovation_uncertainty<Filter>);
+    requires(kf::has_innovation_uncertainty<Filter>);
 
   //! @}
 
@@ -429,49 +430,49 @@ public:
 //! @brief State type wrapper for filter declaration support.
 //!
 //! @todo Use alias from internal when Clang supports CTAD for alias?
-using kalman_internal::state;
+using kf::state;
 
 //! @brief Estimate uncertainty type wrapper for filter declaration support.
-using kalman_internal::estimate_uncertainty;
+using kf::estimate_uncertainty;
 
 //! @brief Output uncertainty type wrapper for filter declaration support.
-using kalman_internal::output_uncertainty;
+using kf::output_uncertainty;
 
 //! @brief Process uncertainty type wrapper for filter declaration support.
-using kalman_internal::process_uncertainty;
+using kf::process_uncertainty;
 
 //! @brief Input value wrapper for filter declaration support.
-using kalman_internal::input;
+using kf::input;
 
 //! @brief Input type wrapper for filter declaration support.
-using kalman_internal::input_t;
+using kf::input_t;
 
 //! @brief Output value wrapper for filter declaration support.
-using kalman_internal::output;
+using kf::output;
 
 //! @brief Output type wrapper for filter declaration support.
-using kalman_internal::output_t;
+using kf::output_t;
 
 //! @brief Output model type wrapper for filter declaration support.
-using kalman_internal::output_model;
+using kf::output_model;
 
 //! @brief Transition function type wrapper for filter declaration support.
-using kalman_internal::transition;
+using kf::transition;
 
 //! @brief Observation function type wrapper for filter declaration support.
-using kalman_internal::observation;
+using kf::observation;
 
 //! @brief Update types wrapper for filter declaration support.
-using kalman_internal::update_types;
+using kf::update_types;
 
 //! @brief Prediction types wrapper for filter declaration support.
-using kalman_internal::prediction_types;
+using kf::prediction_types;
 
 //! @brief State transition types wrapper for filter declaration support.
-using kalman_internal::state_transition;
+using kf::state_transition;
 
 //! @brief Input control types wrapper for filter declaration support.
-using kalman_internal::input_control;
+using kf::input_control;
 
 //! @}
 
@@ -481,16 +482,15 @@ using kalman_internal::input_control;
 //! @brief Deduces the filter type from its declared configuration.
 //!
 //! @details The configuration arguments passed are used to determine at compile
-//! time the type of fiter to use. The objecive is to select the most performant
-//! filter within the defined configuraton parameters.
+//! time the type of filter to use. The objective is to select the most
+//! performant filter within the defined configuration parameters.
 //!
 //! @tparam Arguments The declarations of the filter configuration.
 //!
 //! @todo Should the parameter be named configurations?
 //! @todo Should the configuration examples, supports be documented here?
 template <typename... Arguments>
-kalman(Arguments... arguments)
-    -> kalman<kalman_internal::deduce_filter<Arguments...>>;
+kalman(Arguments... arguments) -> kalman<kf::deduce_filter<Arguments...>>;
 
 //! @}
 
@@ -508,6 +508,6 @@ inline constexpr printer print;
 
 } // namespace fcarouge
 
-#include "kalman_internal/kalman.tpp"
+#include "kalman_filter/internal/kalman.tpp"
 
 #endif // FCAROUGE_KALMAN_HPP

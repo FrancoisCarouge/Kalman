@@ -86,7 +86,7 @@ using state = fcarouge::state<vector<2>>;
 //! - The accelerometer measurement error standard deviation: ϵ = 0.1 m.s^-2
 //!
 //! @example kf_2x1x1_1d_rocket_altitude.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step
   // time.
   kalman filter{
@@ -110,7 +110,7 @@ using state = fcarouge::state<vector<2>>;
       // therefore we use ϵ^2 as a multiplier of the process noise matrix. This
       // makes our estimation uncertainty much lower!
       process_uncertainty{[]([[maybe_unused]] const vector<2> &x,
-                             const milliseconds &delta_time) {
+                             const milliseconds &delta_time) -> matrix<2, 2> {
         const auto dt{std::chrono::duration<double>(delta_time).count()};
         return matrix<2, 2>{
             {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
@@ -121,12 +121,12 @@ using state = fcarouge::state<vector<2>>;
       output_uncertainty{400.},
       // The state transition matrix F would be:
       state_transition{[]([[maybe_unused]] const acceleration &u,
-                          const milliseconds &delta_time) {
+                          const milliseconds &delta_time) -> matrix<2, 2> {
         const auto dt{std::chrono::duration<double>(delta_time).count()};
         return matrix<2, 2>{{1., dt}, {0., 1.}};
       }},
       // The control matrix G would be:
-      input_control{[](const milliseconds &delta_time) {
+      input_control{[](const milliseconds &delta_time) -> vector<2> {
         const auto dt{std::chrono::duration<double>(delta_time).count()};
         return vector<2>{0.0313, dt};
       }},
@@ -139,56 +139,57 @@ using state = fcarouge::state<vector<2>>;
   const milliseconds delta_time{250};
   filter.predict(delta_time, -gravity);
 
-  assert(std::abs(1 - filter.x()[0] / 0.3) < 0.03 &&
-         std::abs(1 - filter.x()[1] / 2.45) < 0.03 &&
+  assert(std::abs(1 - (filter.x()[0] / 0.3)) < 0.03 &&
+         std::abs(1 - (filter.x()[1] / 2.45)) < 0.03 &&
          "The state estimates expected at 3% accuracy.");
-  assert(std::abs(1 - filter.p()(0, 0) / 531.25) < 0.001 &&
-         std::abs(1 - filter.p()(0, 1) / 125) < 0.001 &&
-         std::abs(1 - filter.p()(1, 0) / 125) < 0.001 &&
-         std::abs(1 - filter.p()(1, 1) / 500) < 0.001 &&
+  assert(std::abs(1 - (filter.p()(0, 0) / 531.25)) < 0.001 &&
+         std::abs(1 - (filter.p()(0, 1) / 125)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 0) / 125)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 1) / 500)) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
   filter.update(-32.4);
 
-  assert(std::abs(1 - filter.x()[0] / -18.35) < 0.001 &&
-         std::abs(1 - filter.x()[1] / -1.94) < 0.001 &&
+  assert(std::abs(1 - (filter.x()[0] / -18.35)) < 0.001 &&
+         std::abs(1 - (filter.x()[1] / -1.94)) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
-  assert(std::abs(1 - filter.p()(0, 0) / 228.2) < 0.001 &&
-         std::abs(1 - filter.p()(0, 1) / 53.7) < 0.001 &&
-         std::abs(1 - filter.p()(1, 0) / 53.7) < 0.001 &&
-         std::abs(1 - filter.p()(1, 1) / 483.2) < 0.001 &&
+  assert(std::abs(1 - (filter.p()(0, 0) / 228.2)) < 0.001 &&
+         std::abs(1 - (filter.p()(0, 1) / 53.7)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 0) / 53.7)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 1) / 483.2)) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
   filter.predict(delta_time, 39.72 + gravity);
 
-  assert(std::abs(1 - filter.x()[0] / -17.9) < 0.001 &&
-         std::abs(1 - filter.x()[1] / 5.54) < 0.001 &&
+  assert(std::abs(1 - (filter.x()[0] / -17.9)) < 0.001 &&
+         std::abs(1 - (filter.x()[1] / 5.54)) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
-  assert(std::abs(1 - filter.p()(0, 0) / 285.2) < 0.001 &&
-         std::abs(1 - filter.p()(0, 1) / 174.5) < 0.001 &&
-         std::abs(1 - filter.p()(1, 0) / 174.5) < 0.001 &&
-         std::abs(1 - filter.p()(1, 1) / 483.2) < 0.001 &&
+  assert(std::abs(1 - (filter.p()(0, 0) / 285.2)) < 0.001 &&
+         std::abs(1 - (filter.p()(0, 1) / 174.5)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 0) / 174.5)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 1) / 483.2)) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
   // And so on, run a step of the filter, updating and predicting, every
   // measurements period: Δt = 250ms. The period is constant but passed as
   // variable for the example. The lambda helper shows how to simplify the
   // filter step call.
-  const auto step{[&filter, &delta_time](altitude measured_altitude,
-                                         acceleration measured_acceleration) {
-    filter.update(measured_altitude);
-    filter.predict(delta_time, measured_acceleration);
-  }};
+  const auto step{
+      [&filter, &delta_time](altitude measured_altitude,
+                             acceleration measured_acceleration) -> void {
+        filter.update(measured_altitude);
+        filter.predict(delta_time, measured_acceleration);
+      }};
 
   step(-11.1, 40.02 + gravity);
 
-  assert(std::abs(1 - filter.x()[0] / -12.3) < 0.002 &&
-         std::abs(1 - filter.x()[1] / 14.8) < 0.002 &&
+  assert(std::abs(1 - (filter.x()[0] / -12.3)) < 0.002 &&
+         std::abs(1 - (filter.x()[1] / 14.8)) < 0.002 &&
          "The state estimates expected at 0.2% accuracy.");
-  assert(std::abs(1 - filter.p()(0, 0) / 244.9) < 0.001 &&
-         std::abs(1 - filter.p()(0, 1) / 211.6) < 0.001 &&
-         std::abs(1 - filter.p()(1, 0) / 211.6) < 0.001 &&
-         std::abs(1 - filter.p()(1, 1) / 438.8) < 0.001 &&
+  assert(std::abs(1 - (filter.p()(0, 0) / 244.9)) < 0.001 &&
+         std::abs(1 - (filter.p()(0, 1) / 211.6)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 0) / 211.6)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 1) / 438.8)) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy.");
 
   step(18., 39.97 + gravity);
@@ -223,7 +224,7 @@ using state = fcarouge::state<vector<2>>;
 
   // The Kalman gain for altitude converged to 0.12, which means that the
   // estimation weight is much higher than the measurement weight.
-  assert(std::abs(1 - filter.p()(0, 0) / 49.3) < 0.001 &&
+  assert(std::abs(1 - (filter.p()(0, 0) / 49.3)) < 0.001 &&
          "At this point, the altitude uncertainty px = 49.3, which means that "
          "the standard deviation of the prediction is square root of 49.3: "
          "7.02m (remember that the standard deviation of the measurement is "
@@ -239,13 +240,13 @@ using state = fcarouge::state<vector<2>>;
   // cause acceleration changes, but if we had, the control input
   // (accelerometer) would update the state extrapolation equation.
 
-  assert(std::abs(1 - filter.x()[0] / 831.5) < 0.001 &&
-         std::abs(1 - filter.x()[1] / 222.94) < 0.001 &&
+  assert(std::abs(1 - (filter.x()[0] / 831.5)) < 0.001 &&
+         std::abs(1 - (filter.x()[1] / 222.94)) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
-  assert(std::abs(1 - filter.p()(0, 0) / 54.3) < 0.01 &&
-         std::abs(1 - filter.p()(0, 1) / 10.4) < 0.01 &&
-         std::abs(1 - filter.p()(1, 0) / 10.4) < 0.01 &&
-         std::abs(1 - filter.p()(1, 1) / 2.6) < 0.01 &&
+  assert(std::abs(1 - (filter.p()(0, 0) / 54.3)) < 0.01 &&
+         std::abs(1 - (filter.p()(0, 1) / 10.4)) < 0.01 &&
+         std::abs(1 - (filter.p()(1, 0) / 10.4)) < 0.01 &&
+         std::abs(1 - (filter.p()(1, 1) / 2.6)) < 0.01 &&
          "The estimate uncertainty expected at 1% accuracy.");
 
   return 0;

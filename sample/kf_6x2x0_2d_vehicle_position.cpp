@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -66,7 +67,8 @@ using state = fcarouge::state<vector<6>>;
 //! (an angular acceleration). The measurements period: Δt = 1s (constant).
 //!
 //! @example kf_6x2x0_2d_vehicle_position.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   kalman filter{
       // The state X is chosen to be the position, velocity, acceleration in the
@@ -127,7 +129,7 @@ using state = fcarouge::state<vector<6>>;
 
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 1s (constant, built-in).
-  const auto step{[&filter](double position_x, double position_y) {
+  const auto step{[&filter](double position_x, double position_y) -> void {
     filter.update(position_x, position_y);
     filter.predict();
   }};
@@ -135,12 +137,12 @@ using state = fcarouge::state<vector<6>>;
   step(-375.93, 301.78);
 
   // Verify the example estimated state at 0.1% accuracy.
-  assert(std::abs(1 - filter.x()[0] / -277.8) < 0.001 &&
-         std::abs(1 - filter.x()[1] / 148.3) < 0.001 &&
-         std::abs(1 - filter.x()[2] / 94.5) < 0.001 &&
-         std::abs(1 - filter.x()[3] / 249.8) < 0.001 &&
-         std::abs(1 - filter.x()[4] / -85.9) < 0.001 &&
-         std::abs(1 - filter.x()[5] / -63.6) < 0.001 &&
+  assert(std::abs(1 - (filter.x()[0] / -277.8)) < 0.001 &&
+         std::abs(1 - (filter.x()[1] / 148.3)) < 0.001 &&
+         std::abs(1 - (filter.x()[2] / 94.5)) < 0.001 &&
+         std::abs(1 - (filter.x()[3] / 249.8)) < 0.001 &&
+         std::abs(1 - (filter.x()[4] / -85.9)) < 0.001 &&
+         std::abs(1 - (filter.x()[5] / -63.6)) < 0.001 &&
          "The state estimates expected at 0.1% accuracy.");
 
   step(-351.04, 295.1);
@@ -177,19 +179,19 @@ using state = fcarouge::state<vector<6>>;
   step(291.8, 32.99);
   step(299.89, 2.14);
 
-  assert(std::abs(1 - filter.x()[0] / 298.5) < 0.006 &&
-         std::abs(1 - filter.x()[1] / -1.65) < 0.006 &&
-         std::abs(1 - filter.x()[2] / -1.9) < 0.006 &&
-         std::abs(1 - filter.x()[3] / -22.5) < 0.006 &&
-         std::abs(1 - filter.x()[4] / -26.1) < 0.006 &&
-         std::abs(1 - filter.x()[5] / -0.64) < 0.006 &&
+  assert(std::abs(1 - (filter.x()[0] / 298.5)) < 0.006 &&
+         std::abs(1 - (filter.x()[1] / -1.65)) < 0.006 &&
+         std::abs(1 - (filter.x()[2] / -1.9)) < 0.006 &&
+         std::abs(1 - (filter.x()[3] / -22.5)) < 0.006 &&
+         std::abs(1 - (filter.x()[4] / -26.1)) < 0.006 &&
+         std::abs(1 - (filter.x()[5] / -0.64)) < 0.006 &&
          "The state estimates expected at 0.6% accuracy.");
-  assert(std::abs(1 - filter.p()(0, 0) / 11.25) < 0.001 &&
-         std::abs(1 - filter.p()(0, 1) / 4.5) < 0.001 &&
-         std::abs(1 - filter.p()(0, 2) / 0.9) < 0.001 &&
-         std::abs(1 - filter.p()(1, 1) / 2.4) < 0.001 &&
-         std::abs(1 - filter.p()(2, 2) / 0.2) < 0.001 &&
-         std::abs(1 - filter.p()(3, 3) / 11.25) < 0.001 &&
+  assert(std::abs(1 - (filter.p()(0, 0) / 11.25)) < 0.001 &&
+         std::abs(1 - (filter.p()(0, 1) / 4.5)) < 0.001 &&
+         std::abs(1 - (filter.p()(0, 2) / 0.9)) < 0.001 &&
+         std::abs(1 - (filter.p()(1, 1) / 2.4)) < 0.001 &&
+         std::abs(1 - (filter.p()(2, 2) / 0.2)) < 0.001 &&
+         std::abs(1 - (filter.p()(3, 3) / 11.25)) < 0.001 &&
          "The estimate uncertainty expected at 0.1% accuracy."
          "At this point, the position uncertainty px = py = 5, which means "
          "that the standard deviation of the prediction is square root of 5m.");

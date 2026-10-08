@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -44,7 +45,8 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::sample {
 namespace {
 //! @brief Verifies the printer adaptor for single-dimension filters.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   auto filter{kalman{state{60.}, output<double>, estimate_uncertainty{225.},
                      output_uncertainty{25.}} |
               print};
@@ -60,7 +62,7 @@ namespace {
   filter.update(51.27);
   filter.update(49.95);
 
-  assert(std::abs(1 - filter.x() / 49.57) < 0.001 &&
+  assert(std::abs(1 - (filter.x() / 49.57)) < 0.001 &&
          "After 10 measurement and update iterations, the building estimated "
          "height is: 49.57m.");
 

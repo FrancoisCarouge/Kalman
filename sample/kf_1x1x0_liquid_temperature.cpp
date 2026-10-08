@@ -63,7 +63,7 @@ namespace {
 //! 50.023°C, and 49.99°C.
 //!
 //! @example kf_1x1x0_liquid_temperature.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
   // A one-dimensional filter, constant system dynamic model.
   kalman filter{
       // We initialize the Kalman filter and predict the next state (which is
@@ -100,12 +100,12 @@ namespace {
   // The first measurement value: z1 = 49.95°C. Measure and update.
   filter.update(49.95);
 
-  assert(std::abs(1 - filter.k() / 0.999'999) < 0.0001 &&
+  assert(std::abs(1 - (filter.k() / 0.999'999)) < 0.0001 &&
          "The gain expected at 0.01% accuracy.");
 
   // And so on, run a step of the filter, predicting and updating, every
   // measurements period: Δt = 5s (constant).
-  const auto step{[&filter](double temperature) {
+  const auto step{[&filter](double temperature) -> void {
     filter.predict();
     filter.update(temperature);
   }};
@@ -121,14 +121,14 @@ namespace {
   step(49.99);
 
   // The estimate uncertainty quickly goes down, after 10 measurements:
-  assert(std::abs(1 - filter.p() / 0.001'3) < 0.05 &&
+  assert(std::abs(1 - (filter.p() / 0.001'3)) < 0.05 &&
          "The estimate uncertainty expected at 5% accuracy."
          "The estimate uncertainty is 0.0013, i.e. the estimate error standard "
          "deviation is: 0.036°C.");
-  assert(std::abs(1 - filter.x() / 49.988) < 0.001 &&
+  assert(std::abs(1 - (filter.x() / 49.988)) < 0.001 &&
          "The state estimates expected at 0.1% accuracy."
          "The filter estimates the liquid temperature at 49.988°C.");
-  assert(std::abs(1 - filter.k() / 0.126'5) < 0.001 &&
+  assert(std::abs(1 - (filter.k() / 0.126'5)) < 0.001 &&
          "The gain expected at 0.1% accuracy.");
 
   // So we can say that the liquid temperature estimate is: 49.988 ± 0.036°C.

@@ -43,11 +43,12 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the copy constructor.
-[[maybe_unused]] auto test{[] {
-  const matrix<double, 5, 5> m{kalman_internal::one<matrix<double, 5, 5>>};
+[[maybe_unused]] const auto test{[] -> int {
+  const matrix<double, 5, 5> m{
+      kalman_filter::internal::one<matrix<double, 5, 5>>};
   const matrix<double, 5, 5> c{m};
 
-  assert((c == kalman_internal::one<matrix<double, 5, 5>>));
+  assert((c == kalman_filter::internal::one<matrix<double, 5, 5>>));
 
   return 0;
 }()};

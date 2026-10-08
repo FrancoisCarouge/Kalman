@@ -41,7 +41,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 #include <cmath>
-#include <random>
 
 namespace fcarouge::sample {
 namespace {
@@ -49,111 +48,205 @@ template <auto Size> using vector = column_vector<double, Size>;
 template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 using state = fcarouge::state<vector<2>>;
 
-//! @brief Estimating a 1D vehicle position.
+//! @brief Estimating a 1D vehicle position with an error-state filter.
 //!
-//! @details Estimate the position of a one-dimension vehicle using an
-//! Error-State Kalman Filter (ESKF). The filter estimates the error state:
-//! delta position and delta velocity. In this simplified example, the step
-//! period is fixed at 10Hz. The filter models a constant velocity process with
-//! the built-in period.
+//! @details Estimate the position and velocity of a one-dimension vehicle
+//! using an Error-State Kalman Filter (ESKF), also known as an indirect Kalman
+//! filter. The nominal state, the best-guess position and velocity, is
+//! integrated outside of the filter from a noisy inertial measurement unit
+//! (IMU) accelerometer at 10Hz. The nominal state drifts as the accelerometer
+//! noise accumulates. The filter does not estimate the position and velocity
+//! but their errors: the difference between the true and nominal states. A
+//! global navigation satellite system (GNSS) receiver measures the position at
+//! the same rate. At each step, the error-state uncertainty is propagated, the
+//! GNSS measurement corrects the error estimate, the estimated error is
+//! injected into the nominal state, and the error state is reset to zero. The
+//! error-state dynamics are linear and remain close to the zero origin, where
+//! the linearization is the most accurate, even when the nominal dynamics are
+//! nonlinear. The vehicle starts at 2 m.s^-1 and its true acceleration is
+//! sin(t) m.s^-2. The sensor measurements are simulated over 10 seconds.
 //!
 //! @example eskf_2x1x0_1d_vehicle_position.cpp
-[[maybe_unused]] auto sample{[] {
-  // The best-guess, nominal state based on estimation and IMU integration is
-  // externally tracked.
-  double nominal_p{0.0};
-  double nominal_v{0.0};
-
-  // A built-in constant 10Hz step.
+[[maybe_unused]] const auto sample{[] -> int {
+  // The constant 10Hz step period [s].
   const double dt{0.1};
+  // The accelerometer noise variance [m2.s^-4].
+  const double acceleration_variance{0.1};
+  // The GNSS position noise variance [m2].
+  const double position_variance{0.5};
 
   kalman filter{
-      // The estimated error states X are the error in 1D position and in 1D
-      // velocity: [delta_p, delta_v]. We start with no, zero error deltas: 0 m,
-      // 0 m/s.
+      // The estimated error state X is the error in position [m] and in
+      // velocity [m.s^-1]: [δp, δv]. The nominal state is initialized at the
+      // best guess, the errors are thus initially zero.
       state{0., 0.},
-
-      // The measurement Z is the 1D GNSS position.
-      // WHY WOULD THIS BE CALLED THE RESIDUAL?
+      // The output Z is the observed position error [m]: the GNSS position
+      // measurement minus the nominal position. The filter observes the error
+      // state, not the position itself.
       output<double>,
-
-      // The initial estimate uncertainty P is a default uncertainty of 1 m2 for
-      // position and 1 m2/s2 in velocity.
+      // The initial estimate uncertainty P of 1 m2 in position and 1 m2.s^-2 in
+      // velocity.
       estimate_uncertainty{{1., 0.}, //
                            {0., 1.}},
-
-      // The process uncertainty Q is a small acceleration noise variance.
-      process_uncertainty{{0., 0.}, //
-                          {0., 0. * dt * dt}},
-
-      // The output uncertainty R is the GPS sensor noise variance.
-      output_uncertainty{0.5},
-
-      // The output model H shows the direct observation of the position error
-      // delta_p.
-      output_model{1., 0.},
-
-      // The state transition matrix F:
+      // The process uncertainty Q is the accelerometer noise integrated over
+      // the step period, entering the velocity error and, through it, the
+      // position error: Q = σa² G Gᵀ with G = [dt²/2, dt].
+      process_uncertainty{{acceleration_variance * dt * dt * dt * dt / 4,
+                           acceleration_variance * dt * dt * dt / 2},
+                          {acceleration_variance * dt * dt * dt / 2,
+                           acceleration_variance * dt * dt}},
+      // The output uncertainty R is the GNSS noise variance.
+      output_uncertainty{position_variance},
+      // The output model H: the GNSS directly observes the position error.
+      output_model{{1., 0.}},
+      // The error-state transition F: the position error grows with the
+      // velocity error over the step period.
       state_transition{{1., dt}, //
-                       {0., 1.}}
+                       {0., 1.}}};
 
+  // The nominal state, the best-guess estimate from the accelerometer
+  // integration and the error injection, is tracked outside of the filter.
+  double nominal_position{0.};
+  double nominal_velocity{0.};
+
+  // The simulated sensors measurements at each step: the accelerometer
+  // acceleration [m.s^-2] and the GNSS position [m].
+  struct measure {
+    double acceleration;
+    double position;
   };
+  constexpr measure measured[]{{.acceleration = 0.054, .position = 0.078},
+                               {.acceleration = 0.163, .position = 0.899},
+                               {.acceleration = 0.255, .position = -0.452},
+                               {.acceleration = 0.495, .position = 0.626},
+                               {.acceleration = 0.411, .position = 1.109},
+                               {.acceleration = 0.638, .position = 2.067},
+                               {.acceleration = 0.852, .position = 1.546},
+                               {.acceleration = 0.484, .position = 0.981},
+                               {.acceleration = 0.861, .position = 2.863},
+                               {.acceleration = 0.855, .position = 2.107},
+                               {.acceleration = 1.059, .position = 1.409},
+                               {.acceleration = 0.833, .position = 3.047},
+                               {.acceleration = 1.24, .position = 2.803},
+                               {.acceleration = 1.105, .position = 3.432},
+                               {.acceleration = 1.245, .position = 2.762},
+                               {.acceleration = 1.179, .position = 2.781},
+                               {.acceleration = 0.163, .position = 3.736},
+                               {.acceleration = 0.684, .position = 5.107},
+                               {.acceleration = 1.156, .position = 3.958},
+                               {.acceleration = 1.177, .position = 4.453},
+                               {.acceleration = 0.836, .position = 5.304},
+                               {.acceleration = 0.845, .position = 6.449},
+                               {.acceleration = 0.948, .position = 6.484},
+                               {.acceleration = 0.881, .position = 6.949},
+                               {.acceleration = 0.4, .position = 6.483},
+                               {.acceleration = 0.367, .position = 7.729},
+                               {.acceleration = 0.348, .position = 9.418},
+                               {.acceleration = 0.076, .position = 7.383},
+                               {.acceleration = 0.482, .position = 9.563},
+                               {.acceleration = 0.301, .position = 9.547},
+                               {.acceleration = 0.493, .position = 9.289},
+                               {.acceleration = -0.508, .position = 9.379},
+                               {.acceleration = 0.144, .position = 9.133},
+                               {.acceleration = -0.245, .position = 10.73},
+                               {.acceleration = -0.451, .position = 11.456},
+                               {.acceleration = -0.259, .position = 12.975},
+                               {.acceleration = -0.334, .position = 11.287},
+                               {.acceleration = -0.79, .position = 11.509},
+                               {.acceleration = -0.387, .position = 12.069},
+                               {.acceleration = -0.779, .position = 13.365},
+                               {.acceleration = -1.047, .position = 12.985},
+                               {.acceleration = -1.454, .position = 12.776},
+                               {.acceleration = -1.096, .position = 14.175},
+                               {.acceleration = -0.574, .position = 14.199},
+                               {.acceleration = -0.895, .position = 14.651},
+                               {.acceleration = -0.651, .position = 15.475},
+                               {.acceleration = -0.913, .position = 14.43},
+                               {.acceleration = -0.71, .position = 15.706},
+                               {.acceleration = -0.594, .position = 15.696},
+                               {.acceleration = -0.341, .position = 15.735},
+                               {.acceleration = -0.422, .position = 16.332},
+                               {.acceleration = -1.047, .position = 15.706},
+                               {.acceleration = -0.88, .position = 17.755},
+                               {.acceleration = -0.515, .position = 17.472},
+                               {.acceleration = -1.457, .position = 17.717},
+                               {.acceleration = -0.455, .position = 17.048},
+                               {.acceleration = -0.749, .position = 17.652},
+                               {.acceleration = 0.081, .position = 17.119},
+                               {.acceleration = -0.509, .position = 19.035},
+                               {.acceleration = -0.421, .position = 18.018},
+                               {.acceleration = -0.151, .position = 17.6},
+                               {.acceleration = -0.014, .position = 17.823},
+                               {.acceleration = 0.297, .position = 18.88},
+                               {.acceleration = 0.839, .position = 19.277},
+                               {.acceleration = 0.647, .position = 18.359},
+                               {.acceleration = 0.273, .position = 19.714},
+                               {.acceleration = 0.957, .position = 18.506},
+                               {.acceleration = 0.807, .position = 20.326},
+                               {.acceleration = 1.063, .position = 20.63},
+                               {.acceleration = 0.673, .position = 19.982},
+                               {.acceleration = 0.334, .position = 20.72},
+                               {.acceleration = 0.733, .position = 22.25},
+                               {.acceleration = 0.657, .position = 21.295},
+                               {.acceleration = 0.403, .position = 21.045},
+                               {.acceleration = 1.021, .position = 22.173},
+                               {.acceleration = 1.426, .position = 21.834},
+                               {.acceleration = 0.635, .position = 22.473},
+                               {.acceleration = 1.162, .position = 22.792},
+                               {.acceleration = 0.777, .position = 23.55},
+                               {.acceleration = 1.017, .position = 23.558},
+                               {.acceleration = 1.373, .position = 23.818},
+                               {.acceleration = 1.031, .position = 25.243},
+                               {.acceleration = 0.979, .position = 23.855},
+                               {.acceleration = 0.89, .position = 25.464},
+                               {.acceleration = 0.836, .position = 25.143},
+                               {.acceleration = 1.113, .position = 24.781},
+                               {.acceleration = 0.117, .position = 25.73},
+                               {.acceleration = 0.658, .position = 25.469},
+                               {.acceleration = 0.776, .position = 26.715},
+                               {.acceleration = 0.097, .position = 27.043},
+                               {.acceleration = 0.257, .position = 26.022},
+                               {.acceleration = 0.366, .position = 27.437},
+                               {.acceleration = -0.111, .position = 28.237},
+                               {.acceleration = 0.179, .position = 27.859},
+                               {.acceleration = 0.051, .position = 29.385},
+                               {.acceleration = -0.4, .position = 29.335},
+                               {.acceleration = -0.271, .position = 31.064},
+                               {.acceleration = -0.955, .position = 30.346},
+                               {.acceleration = -0.554, .position = 30.172},
+                               {.acceleration = 0.057, .position = 30.621}};
 
-  // 3. Simulation environment setup
-  std::mt19937 generator{42};
-  std::normal_distribution<double> noise_accel(0.0, std::sqrt(0.1));
-  std::normal_distribution<double> noise_gps(0.0, std::sqrt(0.5));
+  for (const auto &[acceleration, position] : measured) {
+    // The nominal state is propagated from the noisy accelerometer.
+    nominal_position += (nominal_velocity * dt) + (acceleration * dt * dt / 2);
+    nominal_velocity += acceleration * dt;
 
-  double true_p{0.0};
-  double true_v{2.0}; // Vehicle moving at a constant true velocity
-
-  std::println("Measured Acceleration, Measure GPS");
-
-  // 4. Simulation loop
-  for (int i = 0; i < 100; ++i) {
-    // --- A. Simulate the "True" physical world ---
-    double true_a = 0.0; // Assume constant velocity for truth
-    double meas_a = true_a + noise_accel(generator); // Noisy IMU accelerometer
-
-    true_p += true_v * dt + 0.5 * true_a * dt * dt;
-    true_v += true_a * dt;
-
-    // --- B. Predict Nominal State (IMU Integration) ---
-    nominal_p += nominal_v * dt + 0.5 * meas_a * dt * dt;
-    nominal_v += meas_a * dt;
-
-    // --- C. Predict Error State Covariance ---
-    // The actual error states are 0 right now, but we must propagate the
-    // uncertainty
+    // The error state is zero after each reset: the prediction propagates
+    // the error-state uncertainty only.
     filter.predict();
 
-    // --- D. Update with GPS measurement ---
-    double meas_gps = true_p + noise_gps(generator);
+    // The filter is updated with the observed position error.
+    filter.update(position - nominal_position);
 
-    std::println("{}, {}", meas_a, meas_gps);
+    // The estimated error is injected into the nominal state.
+    nominal_position += filter.x()[0];
+    nominal_velocity += filter.x()[1];
 
-    // The observation fed to the ESKF is the residual: z - nominal_p
-    double residual = meas_gps - nominal_p;
-    filter.update(residual);
-
-    // --- E. Inject Error State into Nominal State ---
-    auto error_state = filter.x();
-    nominal_p += error_state(0);
-    nominal_v += error_state(1);
-
-    // --- F. Reset Error State ---
-    // In an ESKF, the estimated error is transferred to the nominal state.
-    // The error states must be explicitly reset to zero for the next iteration.
-    filter.x(state{0.0, 0.0});
+    // The error state is reset to zero since the error is now carried by the
+    // nominal state. The covariance reset Jacobian is the identity for this
+    // additive error, the estimate uncertainty is unchanged.
+    filter.x(0., 0.);
   }
 
-  // 5. Verification
-  // The estimated nominal position should converge to the true position.
-  assert(std::abs(nominal_p - true_p) < 1.0 &&
-         "ESKF estimation failed to converge.");
-
-  std::println("Final estimated position: {}", nominal_p);
-  std::println("Final estimated velocity: {}", nominal_v);
+  // The nominal state, corrected by the filter, tracks the true state of
+  // 30.63 m and 3.81 m.s^-1 within about three standard deviations of the
+  // estimate uncertainty. Without the GNSS corrections, the integrated
+  // accelerometer noise would drift away unbounded.
+  assert(std::abs(nominal_position - 30.627) <
+             3 * std::sqrt(filter.p()(0, 0)) &&
+         std::abs(nominal_velocity - 3.810) < 3 * std::sqrt(filter.p()(1, 1)) &&
+         "The nominal state expected within three standard deviations of the "
+         "true state.");
 
   return 0;
 }()};

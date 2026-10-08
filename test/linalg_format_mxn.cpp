@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -44,7 +45,8 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the initializer lists constructor.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   const matrix<int, 3, 3> m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
   assert(std::format("{}", m) == "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]");

@@ -13,29 +13,36 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-24.04
+  "Shard":
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [ 0, 1, 2, 3, 4, 5 ]
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
       with:
         egress-policy: audit
     - name: Checkout
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: 'Install: Latest CMake'
-      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
+      uses: lukka/get-cmake@fffaaafeea488556c2c12dad60690008bc1caacb # v4.4.2
     - name: 'Configure'
       env:
-        CXX: 'clang++-18'
-        CC: 'clang-18'
+        CXX: 'clang++-20'
+        CC: 'clang-20'
       run: cmake -S . -B 'build' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     - name: Verify
       run: |
-        FILES=`find . \
-          -type f -path './build/benchmark/*.cpp' -o \
-          -type f -path './sample/*.cpp' -o \
-          -type f -path './source/*.cpp' -o \
-          -type f -path './test/*.cpp'`
-        run-clang-tidy -j 4 -p 'build' $FILES
+        FILES=$(find . \
+          -type f \( \
+            -path './benchmark/*.cpp' -o \
+            -path './sample/*.cpp' -o \
+            -path './support/*.cpp' -o \
+            -path './test/*.cpp' \) \
+            ! -name '*_fail.cpp' | sort)
+        mapfile -t SHARD_FILES < <(echo "$FILES" | awk "NR % ${{ strategy.job-total }} == ${{ strategy.job-index }}")
+        run-clang-tidy -j 4 -p 'build' "${SHARD_FILES[@]}"

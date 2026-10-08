@@ -14,45 +14,42 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
       with:
         egress-policy: audit
     - name: Checkout
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Install
       run: |
-        ( cd /tmp
-          git clone --depth 1 'https://gitlab.com/libeigen/eigen'
-          cmake -S 'eigen' -B 'eigen/build'
-          cmake --build 'eigen/build' --parallel 4
-          sudo cmake --install 'eigen/build' )
         ( cd /tmp
           git clone --depth 1 'https://github.com/danmar/cppcheck.git'
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
           sudo cmake --install 'cppcheck/build' )
+    # cppcheck cannot evaluate the `__has_feature` compiler built-in.
     - name: Verify
       run: |
         cppcheck \
           --check-level=exhaustive \
           --enable=all \
           --error-exitcode=1 \
+          --suppress=internalAstError:support/eigen/fcarouge/eigen.hpp \
           --suppress=missingIncludeSystem \
           --suppress=unhandledChar \
+          --suppress=unmatchedSuppression \
+          --suppress=unusedFunction \
           --verbose \
-          -I benchmark/include \
+          -i build \
           -I include \
           -I support/eigen \
           -I support/eigen_typed \
-          -I support/generator \
-          -I support/lazy \
+          -I support/main \
           -I support/mp_units \
-          -I support/naive \
-          -I support/naixed \
           -I support/quantity \
+          -U__has_feature \
           .

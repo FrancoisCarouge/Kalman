@@ -43,20 +43,20 @@ For more information, please refer to <https://unlicense.org> */
 //! @brief Scalar type indexed-based linear algebra with Eigen implementation.
 
 #include "fcarouge/eigen.hpp"
-#include "fcarouge/kalman_internal/utility.hpp"
+#include "fcarouge/kalman_filter/internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cstddef>
 
 namespace fcarouge {
-namespace kalman_internal {
+namespace kalman_filter::internal {
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct evaluates<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] static constexpr auto
-  operator()() -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
+  [[nodiscard]] static constexpr auto operator()()
+      -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
 };
 
 //! @brief Specialization of the transposes.
@@ -84,16 +84,17 @@ inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
 
 //! @}
 
-} // namespace kalman_internal
+} // namespace kalman_filter::internal
 
 //! @name Types
 //! @{
 
 //! @brief Scalar type indexed-based matrix with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
-using matrix = typed_matrix<eigen::matrix<Type, Row, Column>,
-                            kalman_internal::tuple_n_type<Type, Row>,
-                            kalman_internal::tuple_n_type<Type, Column>>;
+using matrix =
+    typed_matrix<eigen::matrix<Type, Row, Column>,
+                 kalman_filter::internal::tuple_n_type<Type, Row>,
+                 kalman_filter::internal::tuple_n_type<Type, Column>>;
 
 //! @brief Scalar type indexed-based column vector with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1>

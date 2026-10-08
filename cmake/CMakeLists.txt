@@ -41,17 +41,20 @@ include(CMakePackageConfigHelpers)
 configure_package_config_file(
   "fcarouge-kalman-config.cmake.in" "fcarouge-kalman-config.cmake"
   INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-kalman/cmake"
-  NO_SET_AND_CHECK_MACRO NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+  NO_SET_AND_CHECK_MACRO
+  NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
 write_basic_package_version_file(
-  "fcarouge-kalman-config-version.cmake" COMPATIBILITY SameMajorVersion
-                                                       ARCH_INDEPENDENT)
+  "fcarouge-kalman-config-version.cmake"
+  COMPATIBILITY SameMajorVersion
+  ARCH_INDEPENDENT)
 
 install(
   EXPORT "fcarouge-kalman-target"
   NAMESPACE "fcarouge-kalman::"
   DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-kalman/cmake")
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-kalman-config.cmake"
-              "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-kalman-config-version.cmake"
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-kalman/cmake")
+install(
+  FILES "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-kalman-config.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-kalman-config-version.cmake"
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/fcarouge-kalman/cmake")

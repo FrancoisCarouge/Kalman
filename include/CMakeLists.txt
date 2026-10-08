@@ -39,30 +39,30 @@ For more information, please refer to <https://unlicense.org> ]]
 add_library(kalman INTERFACE)
 target_sources(
   kalman
-  INTERFACE FILE_SET
-            "kalman_headers"
-            TYPE
-            "HEADERS"
-            FILES
-            "fcarouge/kalman_forward.hpp"
-            "fcarouge/kalman_internal/factory.hpp"
-            "fcarouge/kalman_internal/format.hpp"
-            "fcarouge/kalman_internal/function.hpp"
-            "fcarouge/kalman_internal/kalman.tpp"
-            "fcarouge/kalman_internal/print.hpp"
-            "fcarouge/kalman_internal/type.hpp"
-            "fcarouge/kalman_internal/utility.hpp"
-            "fcarouge/kalman_internal/x_z_p_q_r_h_f.hpp"
-            "fcarouge/kalman_internal/x_z_p_q_r_hh_f_us_ps.hpp"
-            "fcarouge/kalman_internal/x_z_p_q_r_hh_ff_ps.hpp"
-            "fcarouge/kalman_internal/x_z_p_q_r.hpp"
-            "fcarouge/kalman_internal/x_z_p_qq_rr_f.hpp"
-            "fcarouge/kalman_internal/x_z_p_r_f.hpp"
-            "fcarouge/kalman_internal/x_z_p_r.hpp"
-            "fcarouge/kalman_internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
-            "fcarouge/kalman_internal/x_z_u_p_q_r.hpp"
-            "fcarouge/kalman_internal/x_z_u_p_qq_r_ff_gg_ps.hpp"
-            "fcarouge/kalman.hpp")
+  INTERFACE
+  FILE_SET
+    "kalman_headers"
+    TYPE
+    "HEADERS"
+    FILES
+    "fcarouge/kalman_forward.hpp"
+    "fcarouge/kalman_filter/internal/factory.hpp"
+    "fcarouge/kalman_filter/internal/format.hpp"
+    "fcarouge/kalman_filter/internal/kalman.tpp"
+    "fcarouge/kalman_filter/internal/print.hpp"
+    "fcarouge/kalman_filter/internal/type.hpp"
+    "fcarouge/kalman_filter/internal/utility.hpp"
+    "fcarouge/kalman_filter/internal/x_z_p_q_r_h_f.hpp"
+    "fcarouge/kalman_filter/internal/x_z_p_q_r_hh_f_us_ps.hpp"
+    "fcarouge/kalman_filter/internal/x_z_p_q_r_hh_ff_ps.hpp"
+    "fcarouge/kalman_filter/internal/x_z_p_q_r.hpp"
+    "fcarouge/kalman_filter/internal/x_z_p_qq_rr_f.hpp"
+    "fcarouge/kalman_filter/internal/x_z_p_r_f.hpp"
+    "fcarouge/kalman_filter/internal/x_z_p_r.hpp"
+    "fcarouge/kalman_filter/internal/x_z_u_p_q_r_h_f_g_us_ps.hpp"
+    "fcarouge/kalman_filter/internal/x_z_u_p_q_r.hpp"
+    "fcarouge/kalman_filter/internal/x_z_u_p_qq_r_ff_gg_ps.hpp"
+    "fcarouge/kalman.hpp")
 install(
   TARGETS kalman
   EXPORT "fcarouge-kalman-target"

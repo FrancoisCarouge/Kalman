@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -62,7 +63,8 @@ using state = fcarouge::state<vector<8>>;
 //! precision early on.
 //!
 //! @example kf_8x4x0_2d_bounding_box.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   const vector<4> initial_box{605.0F, 248.0F, 0.20481927710843373F, 332.0F};
   // Experimental position and velocity uncertainty standard deviation
   // weights.
@@ -84,8 +86,8 @@ using state = fcarouge::state<vector<8>>;
       output<vector<4>>,
       // The estimate uncertainty P:
       estimate_uncertainty{[&position_weight, &velocity_weight,
-                            &initial_box]() {
-        matrix<float, 8, 8> value{kalman_internal::zero<matrix<float, 8, 8>>};
+                            &initial_box]() -> matrix<float, 8, 8> {
+        matrix<float, 8, 8> value{kf::zero<matrix<float, 8, 8>>};
         value(0, 0) = std::powf(2.F * position_weight * initial_box(3), 2);
         value(1, 1) = std::powf(2.F * position_weight * initial_box(3), 2);
         value(2, 2) = std::powf(1e-2F, 2);
@@ -97,10 +99,10 @@ using state = fcarouge::state<vector<8>>;
         return value;
       }()},
       // Q
-      process_uncertainty{[](const state::type &x) {
+      process_uncertainty{[](const state::type &x) -> matrix<float, 8, 8> {
         const float weight_position{1.F / 20.F};
         const float weight_velocity{1.F / 160.F};
-        matrix<float, 8, 8> value{kalman_internal::zero<matrix<float, 8, 8>>};
+        matrix<float, 8, 8> value{kf::zero<matrix<float, 8, 8>>};
         value(0, 0) = std::powf(weight_position * x(3), 2);
         value(1, 1) = std::powf(weight_position * x(3), 2);
         value(2, 2) = std::powf(1e-2F, 2);
@@ -114,10 +116,10 @@ using state = fcarouge::state<vector<8>>;
       // R
       output_uncertainty{
           // Observation, measurement noise covariance.
-          [](const state::type &x, [[maybe_unused]] const vector<4> &z) {
+          [](const state::type &x,
+             [[maybe_unused]] const vector<4> &z) -> matrix<float, 4, 4> {
             const float weight_position{1.F / 20.F};
-            matrix<float, 4, 4> value{
-                kalman_internal::zero<matrix<float, 4, 4>>};
+            matrix<float, 4, 4> value{kf::zero<matrix<float, 4, 4>>};
             value(0, 0) = std::powf(weight_position * x(3), 2);
             value(1, 1) = std::powf(weight_position * x(3), 2);
             value(2, 2) = std::powf(1e-1F, 2);
@@ -246,17 +248,17 @@ using state = fcarouge::state<vector<8>>;
     filter.predict();
   }
 
-  assert(std::abs(1 - filter.x()[0] / 370.932041394761F) < 0.001F &&
-         std::abs(1 - filter.x()[1] / 251.173174229878F) < 0.001F &&
-         std::abs(1 - filter.x()[2] / 0.314757138075364F) < 0.001F &&
-         std::abs(1 - filter.x()[3] / 287.859996019444F) < 0.001F &&
-         std::abs(1 - filter.x()[4] / 1.95865368159518F) < 0.001F &&
-         std::abs(1 - filter.x()[5] / 0.229282868701086F) < 0.001F &&
+  assert(std::abs(1 - (filter.x()[0] / 370.932041394761F)) < 0.001F &&
+         std::abs(1 - (filter.x()[1] / 251.173174229878F)) < 0.001F &&
+         std::abs(1 - (filter.x()[2] / 0.314757138075364F)) < 0.001F &&
+         std::abs(1 - (filter.x()[3] / 287.859996019444F)) < 0.001F &&
+         std::abs(1 - (filter.x()[4] / 1.95865368159518F)) < 0.001F &&
+         std::abs(1 - (filter.x()[5] / 0.229282868701086F)) < 0.001F &&
          // The precision of the velocity appears to saturate early on in the
          // original example. The parameter could be scaled or larger types used
          // to improve comparison accuracy.
-         std::abs(1 - filter.x()[6] / 2.46138628550094E-06F) < 0.5F &&
-         std::abs(1 - filter.x()[7] / 0.81402529074969F) < 0.001F &&
+         std::abs(1 - (filter.x()[6] / 2.46138628550094E-06F)) < 0.5F &&
+         std::abs(1 - (filter.x()[7] / 0.81402529074969F)) < 0.001F &&
          "The estimated states expected to meet Nwojke's Deep SORT filter's "
          "MOT16 sample tracker #201 dataset at 0.1% accuracy.");
 

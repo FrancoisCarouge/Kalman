@@ -37,5 +37,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 configure_file("fcarouge-kalman.pc.in" "fcarouge-kalman.pc" @ONLY)
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-kalman.pc"
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig")
+install(
+  FILES "${CMAKE_CURRENT_BINARY_DIR}/fcarouge-kalman.pc"
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig")

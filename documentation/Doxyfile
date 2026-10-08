@@ -181,7 +181,7 @@ RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = */support/*
-EXCLUDE_SYMBOLS        = *::kalman_internal::*
+EXCLUDE_SYMBOLS        = *::kalman_filter::internal::*
 EXAMPLE_PATH           = ../sample
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO
@@ -352,7 +352,10 @@ EXPAND_ONLY_PREDEF     = YES
 SEARCH_INCLUDES        = YES
 INCLUDE_PATH           =
 INCLUDE_FILE_PATTERNS  =
-PREDEFINED             =
+PREDEFINED             = explicit(x)=explicit \
+                         and=&& \
+                         or=|| \
+                         not=!
 EXPAND_AS_DEFINED      =
 SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------

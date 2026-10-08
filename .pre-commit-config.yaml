@@ -1,18 +1,77 @@
+minimum_pre_commit_version: '3.2.0'
+default_install_hook_types: [pre-commit, commit-msg]
+default_stages: [pre-commit]
+exclude: ^documentation/(html/|doxygen-awesome.*\.css)
 repos:
+- repo: meta
+  hooks:
+  - id: check-hooks-apply
+  - id: check-useless-excludes
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # v6.0.0
+  hooks:
+  - id: check-added-large-files
+  - id: check-case-conflict
+  - id: check-illegal-windows-names
+  - id: check-merge-conflict
+  - id: check-shebang-scripts-are-executable
+  - id: check-vcs-permalinks
+  - id: check-yaml
+  - id: destroyed-symlinks
+  - id: end-of-file-fixer
+  - id: fix-byte-order-marker
+  - id: forbid-submodules
+  - id: mixed-line-ending
+    args: [--fix=lf]
+  - id: trailing-whitespace
 - repo: https://github.com/gitleaks/gitleaks
-  rev: v8.16.3
+  rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e # v8.30.1
   hooks:
   - id: gitleaks
-- repo: https://github.com/jumanjihouse/pre-commit-hooks
-  rev: 3.0.0
+- repo: https://github.com/pre-commit/mirrors-clang-format
+  rev: f4d7745e17a28aad7eed2f4874ca8d1568c11c4c # v22.1.8
   hooks:
-  - id: shellcheck
-- repo: https://github.com/pocc/pre-commit-hooks
-  rev: v1.3.5
+  - id: clang-format
+    types_or: []
+    files: \.(cpp|hpp|tpp)$
+- repo: local
   hooks:
-  - id: cpplint
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
+  - id: cmakefmt
+    name: cmakefmt
+    entry: cmakefmt --check
+    language: system
+    files: (^|/)(CMakeLists\.txt|.*\.cmake|.*\.cmake\.in)$
+- repo: https://github.com/codespell-project/codespell
+  rev: 57b21406f092110c18776e39b0bda50d37c945c8 # v2.4.3
   hooks:
-  - id: end-of-file-fixer
-  - id: trailing-whitespace
+  - id: codespell
+    args: ['--ignore-words-list=ags,sitl']
+- repo: https://github.com/python-jsonschema/check-jsonschema
+  rev: 0494aa7fa1314e98913a41227d8f0a515b2c1049 # 0.38.2
+  hooks:
+  - id: check-citation-file-format
+  - id: check-dependabot
+  - id: check-github-workflows
+- repo: https://github.com/rhysd/actionlint
+  rev: 914e7df21a07ef503a81201c76d2b11c789d3fca # v1.7.12
+  hooks:
+  - id: actionlint
+- repo: local
+  hooks:
+  - id: spdx-license-identifier
+    name: SPDX Unlicense header present
+    language: pygrep
+    entry: 'SPDX-License-Identifier: Unlicense'
+    args: [--negate]
+    files: (\.(cpp|hpp|tpp|cmake)|CMakeLists\.txt|\.cmake\.in)$
+  - id: no-nolint
+    name: no NOLINT suppressions
+    language: pygrep
+    entry: NOLINT
+    files: \.(cpp|hpp|tpp)$
+  - id: commit-message-tag
+    name: commit message starts with a lowercase [tag]
+    language: pygrep
+    entry: '\A(?!\[[a-z0-9_-]+\] \S|Merge |Revert |fixup! |squash! |amend! )'
+    args: [--multiline]
+    stages: [commit-msg]

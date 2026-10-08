@@ -45,10 +45,7 @@ mkdir /tmp/kalman
 RESULTS=`find "kalman/sample/result" -iname "*.json"`
 for RESULT in ${RESULTS}; do
   NAME=$(basename ${RESULT} .json)
-  jq --compact-output '.[]' ${RESULT} > /tmp/kalman/${NAME}.json
-  sed -E 's#\{(.*)\}#\1#' /tmp/kalman/${NAME}.json |
-  sed -E 's#"##g' |
-  sed -E 's#[a-z]:##g' > /tmp/kalman/${NAME}.csv
+  jq --raw-output '.[] | [.[]] | @csv' ${RESULT} > /tmp/kalman/${NAME}.csv
 done
 
 PLOTS=`find "kalman/sample/script" -iname "*.plt"`

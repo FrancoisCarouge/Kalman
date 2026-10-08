@@ -14,51 +14,51 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+      uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
       with:
         egress-policy: audit
     - name: Checkout
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: lukka/get-cmake@fffaaafeea488556c2c12dad60690008bc1caacb # v4.4.2
     - name: 'Install'
       run: sudo apt update && sudo apt install lcov
-    - name: 'Install: Latest CMake'
-      uses: ssrobins/install-cmake@da13ba26f50a41d3b03cfe8ca7265903f04a8932 # v1.0.0
     - name: 'Configure'
       env:
-        CXX: 'g++-14'
+        CXX: 'g++-15'
         CXXFLAGS: '-O0 -g --coverage -fno-inline'
-        CC: 'gcc-14'
+        CC: 'gcc-15'
         CCFLAGS: '-O0 -g --coverage -fno-inline'
-      run: cmake -S . -B 'build'
+      run: cmake -S . -B 'build' -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Coverage: Base'
       run: |
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --capture --initial --directory . --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '*/build/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '*/sample/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '*/test/*' --output-file base.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove base.info '/usr/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --capture --initial --directory . --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '*/build/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '*/sample/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '*/test/*' --output-file base.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove base.info '/usr/*' --output-file base.info
     - name: 'Test'
-      run: ctest --test-dir 'build' --timeout 10 --tests-regex 'kalman' --verbose --parallel 4
+      run: ctest --test-dir 'build' --timeout 30 --verbose --parallel 4
     - name: 'Coverage: Test'
       run: |
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --capture --directory . --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '*/build/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '*/sample/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '*/test/*' --output-file test.info
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --ignore-errors mismatch --remove test.info '/usr/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --capture --directory . --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '*/build/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '*/sample/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '*/test/*' --output-file test.info
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --ignore-errors mismatch,inconsistent --remove test.info '/usr/*' --output-file test.info
     - name: 'Coverage: Results'
       run: |
         echo "${{ github.event.pull_request.number }}" > pull_request_id.txt
-        lcov --rc branch_coverage=1 --gcov-tool gcov-14 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info | tail -n 4 > coverage.txt
+        lcov --rc branch_coverage=1 --gcov-tool gcov-15 --add-tracefile base.info --add-tracefile test.info --output-file coverage.info | tail -n 4 > coverage.txt
     - name: 'Coverage: Artifacts'
-      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
       with:
         name: coverage-artifact
         path: |

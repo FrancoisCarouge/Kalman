@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <format>
@@ -45,7 +46,8 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies formatting single-dimension filters with input control
 //! without additional arguments.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
+  const not_realtime opt_out;
   kalman filter{state{0.F}, output<float>, input<float>};
 
   assert(std::format("{}", filter) == R"({"f": 1,)"

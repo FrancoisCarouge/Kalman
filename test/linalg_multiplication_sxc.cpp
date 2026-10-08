@@ -43,13 +43,13 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the assignment operator.
-[[maybe_unused]] auto test{[] {
+[[maybe_unused]] const auto test{[] -> int {
   const matrix<double, 2, 2> a{{1.0, 2.0}, {3.0, 4.0}};
   const matrix<double, 2, 1> b{3.0, 4.0};
   const matrix<double, 2, 1> r{a * b};
 
-  assert(r(0, 0) == 11.0);
-  assert(r(1, 0) == 25.0);
+  assert(r(0) == 11.0);
+  assert(r(1) == 25.0);
 
   return 0;
 }()};

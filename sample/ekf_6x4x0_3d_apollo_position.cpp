@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -68,7 +69,8 @@ using state = fcarouge::state<vector<6>>;
 //! shaft angle (beta), trunnion elevation angle (theta).
 //!
 //! @example ekf_6x4x0_3d_apollo_position.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   kalman filter{
       // The six estimated states X initialization under the simulated scenario:
       // the lunar module is 30km away, approaching at 100 m/s relative to
@@ -103,9 +105,9 @@ using state = fcarouge::state<vector<6>>;
       // The output model H is the Jacobian, linearization around the current
       // state. Complex derivation omitted for brevity, using a simplified
       // approximation.
-      output_model{[](const vector<6> &x) {
+      output_model{[](const vector<6> &x) -> auto {
         const auto &[rx, ry, rz, vx, vy, vz]{x};
-        double range{std::sqrt(rx * rx + ry * ry + rz * rz)};
+        double range{std::sqrt((rx * rx) + (ry * ry) + (rz * rz))};
         // For production, guard against divide by zero range, if the spacecraft
         // are touching.
         double range_rate{(rx * vx + ry * vy + rz * vz) / range};
@@ -128,14 +130,14 @@ using state = fcarouge::state<vector<6>>;
 
         // For the shaft/azimuth: the derivative of atan2.
         // d(Shaft) / d(State)
-        double r2_xy{rx * rx + ry * ry};
+        double r2_xy{(rx * rx) + (ry * ry)};
         // For production, guard against divide by zero.
         h[2, 0] = -ry / r2_xy;
         h[2, 1] = rx / r2_xy;
 
         // For the trunnion/elevation: the derivative of asin(z/r):
         // d(z/r)/dState * sqrt(1-(z/r)^2). d(Trunnion) / d(State)
-        double term{std::sqrt(1 - (rz * rz) / (range * range))};
+        double term{std::sqrt(1 - ((rz * rz) / (range * range)))};
         h[3, 0] = (-rz * rx) / (range * range * range * term);
         h[3, 1] = (-rz * ry) / (range * range * range * term);
         h[3, 2] = (range * range - rz * rz) / (range * range * range * term);
@@ -143,7 +145,7 @@ using state = fcarouge::state<vector<6>>;
         return h;
       }},
       // The state transition matrix F:
-      state_transition{[](const double &dt) {
+      state_transition{[](const double &dt) -> auto {
         return matrix<6, 6>{{1., 0., 0., dt, 0., 0.}, //
                             {0., 1., 0., 0., dt, 0.}, //
                             {0., 0., 1., 0., 0., dt}, //
@@ -152,9 +154,9 @@ using state = fcarouge::state<vector<6>>;
                             {0., 0., 0., 0., 0., 1.}};
       }},
       // The observation estimation Z:
-      observation{[](const vector<6> &x) {
+      observation{[](const vector<6> &x) -> auto {
         const auto &[rx, ry, rz, vx, vy, vz]{x};
-        double range{std::sqrt(rx * rx + ry * ry + rz * rz)};
+        double range{std::sqrt((rx * rx) + (ry * ry) + (rz * rz))};
         // For production, guard against divide by zero.
         double range_rate{(rx * vx + ry * vy + rz * vz) / range};
         // The shaft angle in the xy plane usually, or defined by radar gimbal
@@ -180,11 +182,11 @@ using state = fcarouge::state<vector<6>>;
     filter.update(true_range, -100., 0.03, 0.01);
   }
 
-  double range{vector<3>{filter.x().template head<3>()}.norm()};
-  double velocity{filter.x()[3]};
+  double range_r{vector<3>{filter.x().template head<3>()}.norm()};
+  double velocity_x{filter.x()[3]};
 
-  assert(std::abs(1 - range / 29'001.861'093'990) < 0.000'000'001 &&
-         std::abs(1 - velocity / -99.574'527'631'012) < 0.000'000'001 &&
+  assert(std::abs(1 - (range_r / 29'001.861'093'990)) < 0.000'000'001 &&
+         std::abs(1 - (velocity_x / -99.574'527'631'012)) < 0.000'000'001 &&
          "After simulating 10 seconds, the estimated range is 29,001.86 meters "
          "and an estimated closing velocity of 99.57 m/s.");
 

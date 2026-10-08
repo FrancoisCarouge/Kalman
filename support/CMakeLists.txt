@@ -36,6 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+add_subdirectory("amalgamate")
+
 if(NOT BUILD_TESTING)
   return()
 endif()
@@ -45,8 +47,6 @@ add_subdirectory("eigen_typed")
 add_subdirectory("main")
 add_subdirectory("matplot")
 add_subdirectory("mp_units")
-add_subdirectory("naive")
-add_subdirectory("naixed")
 add_subdirectory("quantity")
 add_subdirectory("typed")
 
@@ -55,70 +55,93 @@ add_library(kalman_support_options INTERFACE)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   target_compile_options(
     kalman_support_options
-    INTERFACE "-D_FORTIFY_SOURCE=3"
-              "-D_GLIBCXX_ASSERTIONS"
-              "-fcf-protection=full"
-              "-fno-builtin-std-forward_like"
-              "-fno-check-new"
-              "-fno-common"
-              "-fPIE"
-              "-fstack-protector-strong"
-              "-fstrict-aliasing"
-              "-ftrivial-auto-var-init=pattern"
-              "-pedantic"
-              "-UNDEBUG"
-              "-Wall"
-              "-Wcast-align"
-              "-Wdouble-promotion"
-              "-Wenum-conversion"
-              "-Werror"
-              "-Wextra"
-              "-Wformat-security"
-              "-Wno-long-long"
-              "-Wno-psabi"
-              "-Wno-variadic-macros"
-              "-Wnon-virtual-dtor"
-              "-Wpointer-arith"
-              "-Wshadow"
-              "-Wundef"
-              "-Wunused-local-typedefs"
-              "-Wwrite-strings")
+    INTERFACE
+      "-D_FORTIFY_SOURCE=3"
+      "-D_GLIBCXX_ASSERTIONS"
+      "-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST"
+      "-fcf-protection=full"
+      "-fconstexpr-backtrace-limit=0"
+      "-fdiagnostics-absolute-paths"
+      "-fdiagnostics-show-template-tree"
+      "-fmacro-backtrace-limit=0"
+      "-fno-builtin-std-forward_like"
+      "-fno-check-new"
+      "-fno-common"
+      "-fno-elide-type"
+      "-fPIE"
+      "-fstack-protector-strong"
+      "-fstrict-aliasing"
+      "-ftemplate-backtrace-limit=0"
+      "-ftrivial-auto-var-init=pattern"
+      "-pedantic"
+      "-UNDEBUG"
+      "-Wall"
+      "-Wcast-align"
+      "-Wdouble-promotion"
+      "-Wenum-conversion"
+      "-Werror"
+      "-Wextra"
+      "-Wformat-security"
+      "-Wno-long-long"
+      "-Wno-psabi"
+      "-Wno-variadic-macros"
+      "-Wnon-virtual-dtor"
+      "-Wpointer-arith"
+      "-Wshadow"
+      "-Wstrict-aliasing=1"
+      "-Wundef"
+      "-Wunused-local-typedefs"
+      "-Wwrite-strings")
   target_link_options(kalman_support_options INTERFACE "LINKER:-pie")
-  target_link_libraries(kalman_support_options INTERFACE "stdc++")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_compile_options(
     kalman_support_options
-    INTERFACE "-D_FORTIFY_SOURCE=3"
-              "-D_GLIBCXX_ASSERTIONS"
-              "-fcf-protection=full"
-              "-fno-check-new"
-              "-fno-common"
-              "-fPIE"
-              "-fstack-clash-protection"
-              "-fstack-protector-strong"
-              "-fstrict-aliasing"
-              "-ftrivial-auto-var-init=pattern"
-              "-pedantic"
-              "-UNDEBUG"
-              "-Wall"
-              "-Wcast-align"
-              "-Wdouble-promotion"
-              "-Wenum-conversion"
-              "-Werror"
-              "-Wextra"
-              "-Wformat-security"
-              "-Wno-long-long"
-              "-Wno-psabi"
-              "-Wno-variadic-macros"
-              "-Wnon-virtual-dtor"
-              "-Wpointer-arith"
-              "-Wshadow"
-              "-Wundef"
-              "-Wunused-local-typedefs"
-              "-Wwrite-strings")
-  target_link_options(kalman_support_options INTERFACE "LINKER:-pie"
-                      "LINKER:-z,relro,-z,now")
+    INTERFACE
+      "-D_FORTIFY_SOURCE=3"
+      "-D_GLIBCXX_ASSERTIONS"
+      "-fcf-protection=full"
+      "-fconcepts-diagnostics-depth=4"
+      "-fdiagnostics-show-template-tree"
+      "-fno-check-new"
+      "-fno-common"
+      "-fno-elide-type"
+      "-fPIE"
+      "-fstack-clash-protection"
+      "-fstack-protector-strong"
+      "-fstrict-aliasing"
+      "-ftemplate-backtrace-limit=0"
+      "-ftrivial-auto-var-init=pattern"
+      "-pedantic"
+      "-UNDEBUG"
+      "-Wall"
+      "-Wcast-align"
+      "-Wdouble-promotion"
+      "-Wenum-conversion"
+      "-Werror"
+      "-Wextra"
+      "-Wformat-security"
+      "-Wno-long-long"
+      "-Wno-psabi"
+      "-Wno-variadic-macros"
+      "-Wnon-virtual-dtor"
+      "-Wpointer-arith"
+      "-Wshadow"
+      "-Wstrict-aliasing=1"
+      "-Wundef"
+      "-Wunused-local-typedefs"
+      "-Wwrite-strings")
+  target_link_options(
+    kalman_support_options
+    INTERFACE "LINKER:-pie" "LINKER:-z,relro,-z,now")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(kalman_support_options INTERFACE "/EHsc" "/utf-8"
-                                                          "/UNDEBUG" "/W4")
+  target_compile_options(
+    kalman_support_options
+    INTERFACE
+      "/diagnostics:caret"
+      "/EHsc"
+      "/FC"
+      "/std:c++latest"
+      "/UNDEBUG"
+      "/utf-8"
+      "/W4")
 endif()

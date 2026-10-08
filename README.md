@@ -1,31 +1,94 @@
-# Kalman Filter
+## François Carouge / Kalman
 
 The Kalman filter is a Bayesian filter that uses multivariate Gaussians, a recursive state estimator, a linear quadratic estimator (LQE), and an Infinite Impulse Response (IIR) filter. It is a control theory tool applicable to signal estimation, sensor fusion, or data assimilation problems. The filter is applicable for unimodal and uncorrelated uncertainties. The filter assumes white noise, propagation and measurement functions are differentiable, and that the uncertainty stays centered on the state estimate. The filter is the optimal linear filter under assumptions. The filter updates estimates by multiplying Gaussians rather than integrating differential equations. The filter predicts estimates by adding Gaussians. The filter maintains an estimate of the state and its uncertainty over the sequential estimation process. The filter is named after Rudolf E. Kálmán, who was one of the primary developers of its theory in 1960.
 
-Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states *X*, *P*, the processes *F*, *Q*, the measurements *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*. Evaluate the performance and iterate.
-
 This library supports various simple and extended filters. The implementation is independent from linear algebra backends. Arbitrary parameters can be added to the prediction and update stages to participate in gain-scheduling or linear parameter varying (LPV) systems. The default filter type is a generalized, customizable, and extended filter. The default type parameters implement a one-state, one-output, and double-precision floating-point type filter. The default update equation uses the Joseph form. Examples illustrate various usages and implementation tradeoffs. A standard formatter specialization is included for representation of the filter states. Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters require a linear algebra backend. Customization points and type injections allow for implementation tradeoffs.
 
-# Examples
-
-## 1x1 Constant System Dynamic Model Filter
-
-Example from the [building height estimation](https://francoiscarouge.github.io/Kalman/kf_1x1x0_building_height_8cpp-example.xhtml) sample. One estimated state and one observed output filter.
-
 ```cpp
-  kalman filter{
-    state{60.},
-    output<double>,
-    estimate_uncertainty{225.},
-    output_uncertainty{25.}
-  };
+kalman filter{state{60.}, output<double>,
+              estimate_uncertainty{225.}, output_uncertainty{25.}};
 
 filter.update(48.54);
+
+std::println("{}", filter);
+
+// {"k": 0.9, "p": 22.5, "r": 25, "s": 250, "x": 49.686, "y": -11.46, "z": 48.54}
 ```
 
-[full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp)
+[![Pipeline](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml)
+[![Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml)
+[![Format](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml)
+[![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
+[![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
+[![Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml)
+[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/valgrind_memory.yml)
+[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt)
+[![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8933/badge)](https://www.bestpractices.dev/projects/8933)
+[![Deploy Unit Test Code Coverage](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml)
+[![Deploy Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/index.xhtml)
+[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
+[![Discussions](https://img.shields.io/github/discussions/FrancoisCarouge/Kalman)](https://github.com/FrancoisCarouge/Kalman/discussions)
 
-## 6x2 Constant Acceleration Dynamic Model Filter
+## Installation & Usage
+
+See [INSTALL.md](https://github.com/FrancoisCarouge/Kalman/blob/master/INSTALL.md) for installation instructions.
+
+## Reference
+
+### CMake
+
+Link against the CMake target `fcarouge-kalman::kalman`.
+
+### Include
+
+Include the library header in your sources:
+
+```cpp
+#include "fcarouge/kalman.hpp"
+```
+
+For forward declarations only, include instead:
+
+```cpp
+#include "fcarouge/kalman_forward.hpp"
+```
+
+### Namespace
+
+The public API lives in the `fcarouge` namespace. Import it with a using-declaration or namespace alias as your project's style prefers.
+
+### Linear Algebra Backends
+
+Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Add a backend for higher dimension filters:
+
+| Integration | Example Backend |
+| --- | --- |
+| Built-in Types | No backend needed. |
+| Eigen | [Example backend: `support/eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen). |
+| Eigen + TypedLinearAlgebra | [Example backend: `support/eigen_typed`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen_typed). |
+| Eigen + TypedLinearAlgebra + mp-units | [Example backend: `support/quantity`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/quantity). |
+| mp-units | [Example backend: `support/mp_units`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units). |
+
+### Samples
+
+Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states *X*, *P*, the processes *F*, *Q*, the measurements *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*. Evaluate the performance and iterate.
+
+| Filter | Sample |
+| --- | --- |
+| 1x1x0 constant system dynamic model filter of the building height. | [Usage example: `sample/kf_1x1x0_building_height.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp), [with units: `sample/kf_1x1x0_building_height_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height_unit.cpp). |
+| 1x1x0 constant system dynamic model filter of the temperature of a liquid in a tank. | [Usage example: `sample/kf_1x1x0_liquid_temperature.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_liquid_temperature.cpp), [with units: `sample/kf_1x1x0_liquid_temperature_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_liquid_temperature_unit.cpp). |
+| 1x1x1 constant velocity dynamic model filter of the 1-dimension position of a dog. | [Usage example: `sample/kf_1x1x1_1d_dog_position.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_1d_dog_position.cpp), [with units: `sample/kf_1x1x1_1d_dog_position_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_1d_dog_position_unit.cpp). |
+| 2x1x0 dynamic linear regression filter of the pairs trading hedge ratio and intercept of two stocks, with a daily output model, for mean reversion trading. | [Usage example with units: `sample/kf_2x1x0_pairs_hedge_ratio_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x0_pairs_hedge_ratio_unit.cpp). |
+| 2x1x0 local linear trend structural time series model filter of the short-term forecast of a daily stock closing price. | [Usage example with units: `sample/kf_2x1x0_stock_price_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x0_stock_price_unit.cpp). |
+| 2x1x0 error-state filter of the 1-dimension position and velocity errors of a vehicle, with an externally integrated accelerometer nominal state corrected by a global navigation satellite system position. | [Usage example: `sample/eskf_2x1x0_1d_vehicle_position.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/eskf_2x1x0_1d_vehicle_position.cpp). |
+| 2x1x1 constant acceleration dynamic model filter of the 1-dimension position and velocity of a rocket altitude. | [Usage example: `sample/kf_2x1x1_1d_rocket_altitude.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_1d_rocket_altitude.cpp). |
+| 4x1x0 nonlinear dynamic model extended filter of the thermal, current of warm air, strength, radius, and location. | [Usage example: `sample/ekf_4x1x0_thermal_soaring.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_thermal_soaring.cpp). |
+| 6x2x0 constant acceleration dynamic model filter of the 2-dimension vehicle location, velocity, and acceleration. | [Usage example: `sample/kf_6x2x0_2d_vehicle_position.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position.cpp), [with units: `sample/kf_6x2x0_2d_vehicle_position_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position_unit.cpp). |
+| 6x4x0 extended filter of the 3-dimension position and velocity of the NASA Apollo lunar module abort guidance system for spacecraft rendezvous approaching the command/service module. | [Usage example: `sample/ekf_6x4x0_3d_apollo_position.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_6x4x0_3d_apollo_position.cpp). |
+| 8x4x0 constant velocity dynamic model filter of the 2-dimension position and velocity of the center, aspect ratio, and height of a bounding box. | [Usage example: `sample/kf_8x4x0_2d_bounding_box.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box.cpp). |
+
+#### 6x2 Constant Acceleration Dynamic Model Filter
 
 Example from the [2-dimension vehicle location, velocity, and acceleration vehicle estimation](https://francoiscarouge.github.io/Kalman/kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml) sample. Six estimated states and two observed outputs filter.
 
@@ -62,7 +125,7 @@ filter.update(-393.66, 300.4);
 
 [full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position.cpp)
 
-## 4x1 Nonlinear Dynamic Model Extended Filter
+#### 4x1 Nonlinear Dynamic Model Extended Filter
 
 Example from the [thermal, current of warm air, strength, radius, and location estimation](https://francoiscarouge.github.io/Kalman/ekf_4x1x0_thermal_soaring_8cpp-example.xhtml) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
 
@@ -116,61 +179,24 @@ filter.update(position_x, position_y, variometer);
 
 [full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_thermal_soaring.cpp)
 
-## Other Examples
-
-- 1x1 constant system dynamic model filter of the [temperature of a liquid in a tank](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x0_building_height.cpp).
-- 1x1x1 constant velocity dynamic model filter of the [1-dimension position of a dog](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_1x1x1_1d_dog_position.cpp).
-- 2x1x1 constant acceleration dynamic model filter of the [1-dimension position and velocity of a rocket altitude](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_2x1x1_1d_rocket_altitude.cpp).
-- 8x4 constant velocity dynamic model filter of the [2-dimension position and velocity of the center, aspect ratio, and height of a bounding box](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box.cpp).
-- 6x4 extended filter [3-dimension position and velocity of the NASA Apollo lunar module abort guidance system](sample/ekf_6x4x0_3d_apollo_position.cpp) for spacecraft rendezvous approaching the command/service module.
-
-# Installation
-
-Example of installation commands in Shell:
-
-```shell
-git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
-cmake -S "kalman" -B "build"
-cmake --build "build" --parallel
-sudo cmake --install "build"
-```
-
-Another variation for your CMake infrastructure via fetch content:
-
-```cmake
-include(FetchContent)
-
-FetchContent_Declare(
-  fcarouge-kalman
-  GIT_REPOSITORY "https://github.com/FrancoisCarouge/kalman"
-  FIND_PACKAGE_ARGS NAMES fcarouge-kalman)
-FetchContent_MakeAvailable(fcarouge-kalman)
-
-target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)
-```
-
-[For more, see installation instructions](https://github.com/FrancoisCarouge/Kalman/tree/master/INSTALL.md).
-
-# Reference
-
-## Class kalman
+### Class Kalman
 
 Also documented in the [fcarouge/kalman.hpp](https://github.com/FrancoisCarouge/Kalman/tree/master/include/fcarouge/kalman.hpp) header.
 
-### Declaration
+#### Declaration
 
 ```cpp
 template <typename Filter>
-class kalman final : public kalman_internal::conditional_member_types<Filter>
+class kalman final : public kf::conditional_member_types<Filter>
 ```
 
-### Template Parameters
+#### Template Parameters
 
 | Template Parameter | Definition |
 | --- | --- |
 | `Filter` | Exposition only. The deduced internal filter template parameter. Class template argument deduction (CTAD) figures out the filter type based on the declared configuration. See deduction guide. |
 
-### Member Types
+#### Member Types
 
 | Member Type | Dimensions | Definition | Also Known As |
 | --- | --- | --- | --- |
@@ -189,7 +215,7 @@ class kalman final : public kalman_internal::conditional_member_types<Filter>
 
 The member types are optionally present according to the filter configuration.
 
-### Member Functions
+#### Member Functions
 
 | Member Function | Definition |
 | --- | --- |
@@ -198,17 +224,17 @@ The member types are optionally present according to the filter configuration.
 | `(move assignment operator)` | Assigns values to the filter, default. |
 | `(destructor)` | Destructs the filter. |
 
-#### Characteristics
+##### Characteristics
 
 | Characteristic | Definition |
 | --- | --- |
-| `f` | Manages the state transition matrix *F*. Gets or sets the value. Configures the callable object of expression `state_transition(const input &, const PredictionTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
-| `g` | Manages the control transition matrix *G*. Gets or sets the value. Configures the callable object of expression `input_control(const PredictionTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports input control. |
-| `h` | Manages the observation transition matrix *H*. Gets or sets the value. Configures the callable object of expression `output_model(const state &, const UpdateTypes &...)` to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports output model. |
+| `f` | Manages the state transition matrix *F*. Gets or sets the value. Configures the callable object of expression `state_transition(const input &, const PredictionTypes &...)`, of the type configured at construction, to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
+| `g` | Manages the control transition matrix *G*. Gets or sets the value. Configures the callable object of expression `input_control(const PredictionTypes &...)`, of the type configured at construction, to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports input control. |
+| `h` | Manages the observation transition matrix *H*. Gets or sets the value. Configures the callable object of expression `output_model(const state &, const UpdateTypes &...)`, of the type configured at construction, to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports output model. |
 | `k` | Manages the gain matrix *K*. Gets the value last computed during the update. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
 | `p` | Manages the estimated covariance matrix *P*. Gets or sets the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
-| `q` | Manages the process noise covariance matrix *Q* from the process noise *w* expected value *E[wwᵀ]* and its variance *σ²* found by measuring, tuning, educated guesses of the noise. Gets or sets the value. Configures the callable object of expression `process_uncertainty(const state &, const PredictionTypes &...)` to compute the value. The default value is the null matrix. |
-| `r` | Manages the observation, measurement noise covariance matrix *R* from the measurement noise *v* expected value *E[vvᵀ]* and its variance *σ²* found by measuring, tuning, educated guesses of the noise. Gets or sets the value. Configures the callable object of expression `output_uncertainty(const state &, const output &, const UpdateTypes &...)` to compute the value. The default value is the null matrix. |
+| `q` | Manages the process noise covariance matrix *Q* from the process noise *w* expected value *E[wwᵀ]* and its variance *σ²* found by measuring, tuning, educated guesses of the noise. Gets or sets the value. Configures the callable object of expression `process_uncertainty(const state &, const PredictionTypes &...)`, of the type configured at construction, to compute the value. The default value is the null matrix. |
+| `r` | Manages the observation, measurement noise covariance matrix *R* from the measurement noise *v* expected value *E[vvᵀ]* and its variance *σ²* found by measuring, tuning, educated guesses of the noise. Gets or sets the value. Configures the callable object of expression `output_uncertainty(const state &, const output &, const UpdateTypes &...)`, of the type configured at construction, to compute the value. The default value is the null matrix. |
 | `s` | Manages the innovation uncertainty matrix *S*. Gets the value last computed during the update. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. |
 | `u` | Manages the control column vector *U*. Gets the value last used in prediction. This member function is defined only if the filter supports input. |
 | `x` | Manages the state estimate column vector *X*. Gets or sets the value. The default value is the null column vector. |
@@ -217,14 +243,14 @@ The member types are optionally present according to the filter configuration.
 
 The characteristics are optionally present according to the filter configuration.
 
-#### Modifiers
+##### Modifiers
 
 | Modifier | Definition |
 | --- | --- |
 | `predict` | Produces estimates of the state variables and uncertainties. |
 | `update` | Updates the estimates with the outcome of a measurement. |
 
-## Format
+### Format
 
 A specialization of the standard formatter is provided for the filter. Use `std::format` to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.
 
@@ -236,7 +262,7 @@ std::println("{}", filter);
 // The characteristics are optionally present according to the filter configuration.
 ```
 
-## Decorators
+### Decorators
 
 Pipe one or more decorators to the filter declaration to attach additional responsibilities.
 
@@ -248,9 +274,9 @@ auto filter{kalman{...} | print};
 | --- | --- |
 | `print` | Print filter activities to the standard output. |
 
-# Considerations
+## More
 
-## Motivations
+### Motivations
 
 Kalman filters can be difficult to learn, use, and implement. Users often need fair algebra, domain, and software knowledge. Inadequacy leads to incorrectness, underperformance, and a big ball of mud.
 
@@ -259,15 +285,16 @@ This package explores what could be a Kalman filter implementation a la standard
 - Separation of the mathematical concepts and linear algebra implementation.
 - Generalization and specialization of modern language and library support.
 
-## Selected Tradeoffs
+### Selected Tradeoffs
 
 In theory there is no difference between theory and practice, while in practice there is. The following engineering tradeoffs have been selected for this library implementation:
 
 - Update and prediction additional arguments are stored in the filter at the costs of memory and performance for the benefits of consistent data access and records.
 - The default floating point data type for the filter is `double` with about 16 significant digits to reduce loss of information compared to `float`.
 - The ergonomics and precision of the default filter takes precedence over performance.
+- Callable characteristics are stored by value, their types part of the deduced filter type, without type erasure, for real-time compatibility: constructing, copying, or reconfiguring a filter does not allocate memory, and the callables may be inlined. The costs are a filter type specific to its callables, a callable characteristic replaced only by a callable of the same type, and filter assignment available only for assignable callables, which a lambda expression with captures is not. Configuring a function pointer or a `std::function` restores the replacement by any compatible callable, at the cost of an indirection, and of allocations for `std::function`.
 
-## Lessons Learned
+### Lessons Learned
 
 Design, development, and testing uncovered unexpected facets of the projects:
 
@@ -277,28 +304,34 @@ Design, development, and testing uncovered unexpected facets of the projects:
 - The units of useful matrices are factorizable, i.e. the unit of an element is expressed as the product of the row and column indexed units. The deduced units result type of a matrix product collapses and folds the inner indexed units merely returning the outer units.
 - Safe physical linear algebra not only includes types and units safety, but also coordinate axes and frames reference.
 
-## Performance
+### Performance
 
 The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
 
 ![Eigen Update](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg)
 ![Float](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float.svg)
 
-# Resources
-
-## Definitions
+### Definitions
 
 | Term | Definition |
 | --- | --- |
 | EKF | The Extended Kalman Filter is the nonlinear version of the Kalman filter. Useful for nonlinear dynamics systems. This filter linearizes the model about an estimate working point of the current mean and covariance. |
-| ESKF | The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states. 
+| ESKF | The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states.
 | MSCKF | The Multi-State Constraint Kalman Filter is an EKF-based approach that leverages constraints between multiple and varied measurements to improve pose estimation accuracy and robustness. |
 | SR-UKF | The Square-Root Unscented Kalman Filter handles non-linearity with covariance factorization of the unscented transformations (sigma points) to maintain numerical stability. |
 | UKF | The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples unscented transformations (sigma points) about an estimate working point of the current mean using an Unscented Transformation technique. |
 
 Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, QSR-UKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.
 
-## Related Resources
+### Projects
+
+The library is used in projects:
+
+- [GstKalman](https://github.com/FrancoisCarouge/GstKalman): A GStreamer Kalman filter video plugin.
+
+*Your project link here!*
+
+### Resources
 
 - [A New Approach to Linear Filtering and Prediction Problems](https://www.cs.unc.edu/~welch/kalman/kalmanPaper.html) by Kalman, Rudolph Emil in Transactions of the ASME - Journal of Basic Engineering, Volume 82, Series D, pp 35-45, 1960 - Transcription by John Lukesh.
 - [KalmanFilter.NET](https://www.kalmanfilter.net) by Alex Becker.
@@ -310,85 +343,58 @@ Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM,
 - [Units Libraries and Autonomous Vehicles: Lessons from the Trenches](https://www.youtube.com/watch?v=5dhFtSu3wCo) by Chip Hogg at CppCon 2021.
 - [R-649: The Apollo Rendezvous Navigation Filter Theory, Description and Performance, Volume 1 of 2](https://archive.org/details/R649Volume1) by Eugene S. Muller, Jr., and Peter M. Kachmar.
 
-## Projects
-
-The library is used in projects:
-
-- [GstKalman](https://github.com/FrancoisCarouge/GstKalman): A GStreamer Kalman filter video plugin.
-
-*Your project link here!*
-
-## Third Party Acknowledgement
+### Third Party Acknowledgement
 
 The library is designed, developed, and tested with the help of third-party tools and services acknowledged and thanked here:
 
 - [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) to upload the documentation to GitHub pages.
 - [Clang](https://clang.llvm.org) for compilation and code sanitizers.
+- [clang-format](https://clang.llvm.org/docs/ClangFormat.html) for code formatting.
+- [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) for static analysis.
 - [CMake](https://cmake.org) for build automation.
-- [cmakelang](https://pypi.org/project/cmakelang) for pretty CMake list files.
+- [cmakefmt](https://cmakefmt.dev) for pretty CMake list files.
 - [cppcheck](https://cppcheck.sourceforge.io) for static analysis.
 - [Doxygen](https://doxygen.nl) for documentation generation.
 - [Doxygen Awesome](https://github.com/jothepro/doxygen-awesome-css) for pretty documentation.
 - [Eigen](https://eigen.tuxfamily.org/) for linear algebra.
 - [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
+- [gitleaks](https://github.com/gitleaks/gitleaks) for secret scanning.
 - [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
+- [gsl-lite](https://github.com/gsl-lite/gsl-lite) for guidelines support library.
 - [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
+- [Matplot++](https://github.com/alandefreitas/matplotplusplus) for plotting.
 - [mp-units](https://github.com/mpusz/mp-units) the quantities and units library for C++.
 - [MSVC](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist) for compilation and code sanitizers.
+- [pre-commit](https://pre-commit.com) for repository hygiene hooks.
+- [TypedLinearAlgebra](https://github.com/FrancoisCarouge/TypedLinearAlgebra) for typed linear algebra.
 - [Valgrind](https://valgrind.org) to check for correct memory management.
 
-## Sponsors
+### Contributors
+
+Thank you to everyone who has contributed code, tests, or documentation!
+
+- [François Carouge](https://github.com/FrancoisCarouge) — creator and maintainer.
+
+See [CONTRIBUTORS.md](https://github.com/FrancoisCarouge/Kalman/blob/master/CONTRIBUTORS.md) for the full, credited list, [CHANGELOG.md](https://github.com/FrancoisCarouge/Kalman/blob/master/CHANGELOG.md) for notable changes, and [CONTRIBUTING.md](https://github.com/FrancoisCarouge/Kalman/blob/master/CONTRIBUTING.md) to join.
+
+### Sponsors
 
 Become a sponsor today! Support this project with coffee and infrastructure!
 
 [![Sponsor](https://img.shields.io/badge/Support-Sponsor-brightgreen)](http://paypal.me/francoiscarouge)
 
-### Corporations & Institutions
+#### Corporations & Institutions
 
 *Your group logo and link here!*
 
-### Individuals
+#### Individuals
 
 *Your name and link here!*
 
 Thanks everyone!
 
-# Continuous Integration & Deployment Actions
 
-[![Code Repository](https://img.shields.io/badge/Repository-GitHub%20%F0%9F%94%97-brightgreen)](https://github.com/FrancoisCarouge/Kalman)
-<br>
-<br>
-[![Pipeline](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml)
-<br>
-<br>
-[![Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml)
-<br>
-[![Format](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml)
-<br>
-[![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
-<br>
-[![CppCheck](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/cppcheck.yml)
-<br>
-[![Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/doxygen.yml)
-<br>
-[![Valgrind](https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/memory_valgrind.yml)
-<br>
-<br>
-[![Public Domain](https://img.shields.io/badge/License-Public%20Domain%20%F0%9F%94%97-brightgreen)](https://raw.githubusercontent.com/francoiscarouge/Kalman/master/LICENSE.txt)
-<br>
-[![License Scan](https://app.fossa.com/api/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FFrancoisCarouge%2FKalman?ref=badge_shield)
-<br>
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8933/badge)](https://www.bestpractices.dev/projects/8933)
-<br>
-<br>
-[![Deploy Unit Test Code Coverage](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_coverage.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/unit_test_coverage.xhtml)
-<br>
-[![Deploy Doxygen](https://github.com/FrancoisCarouge/Kalman/actions/workflows/deploy_doxygen.yml/badge.svg)](https://francoiscarouge.github.io/Kalman/index.xhtml)
-<br>
-<br>
-[![Sponsor](https://img.shields.io/badge/Support-Sponsor%20%F0%9F%94%97-brightgreen)](http://paypal.me/francoiscarouge)
-
-# License
+## License
 
 <img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
 

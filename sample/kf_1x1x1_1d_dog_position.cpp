@@ -68,7 +68,7 @@ namespace {
 //! Gaussian.
 //!
 //! @example kf_1x1x1_1d_dog_position.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
   kalman filter{
       // This is the dog's initial position expressed as a Gaussian. The state X
       // position is 0 meters.
@@ -117,7 +117,7 @@ namespace {
   filter.update(14.8);
 
   assert(
-      std::abs(1 - filter.x() / 15.053) < 0.001 &&
+      std::abs(1 - (filter.x() / 15.053)) < 0.001 &&
       "The state estimates expected at 0.1% accuracy."
       "Here we can see that the variance converges to 2.1623 in 9 steps. This "
       "means that we have become very confident in our position estimate. It "

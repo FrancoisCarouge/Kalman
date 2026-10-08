@@ -38,9 +38,9 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <cassert>
-#include <format>
 
 namespace fcarouge::test {
 namespace {
@@ -67,7 +67,8 @@ using output_t = vector<position, position>;
 //! (an angular acceleration). The measurements period: Δt = 1s (constant).
 //!
 //! @example kf_6x2x0_2d_vehicle_position_unit.cpp
-[[maybe_unused]] auto sample{[] {
+[[maybe_unused]] const auto sample{[] -> int {
+  const not_realtime opt_out;
   // A 6x2x0 filter, constant acceleration dynamic model, no control.
   kalman filter{
       // The state X is chosen to be the position, velocity, acceleration in the
@@ -83,40 +84,40 @@ using output_t = vector<position, position>;
       // Since our initial state vector is a guess, we will set a very high
       // estimate uncertainty. The high estimate uncertainty results in a high
       // Kalman Gain, giving a high weight to the measurement.
-      estimate_uncertainty{[]() {
-        using estimate_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+      estimate_uncertainty{[]() -> auto {
+        using estimate_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
         estimate_uncertainty_t value;
-        value.at<0, 0>() = 500. * m2;
-        value.at<1, 1>() = 500. * m2 / s2;
-        value.at<2, 2>() = 500. * m2 / s4;
-        value.at<3, 3>() = 500. * m2;
-        value.at<4, 4>() = 500. * m2 / s2;
-        value.at<5, 5>() = 500. * m2 / s4;
+        value.at<0, 0>(500. * m2);
+        value.at<1, 1>(500. * m2 / s2);
+        value.at<2, 2>(500. * m2 / s4);
+        value.at<3, 3>(500. * m2);
+        value.at<4, 4>(500. * m2 / s2);
+        value.at<5, 5>(500. * m2 / s4);
         return value;
       }()},
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
-      process_uncertainty{[]() {
-        using process_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+      process_uncertainty{[]() -> auto {
+        using process_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
         process_uncertainty_t value;
-        value.at<0, 0>() = 0.2 * 0.2 * 0.25 * m2;
-        value.at<0, 1>() = 0.2 * 0.2 * 0.5 * m2 / s;
-        value.at<0, 2>() = 0.2 * 0.2 * 0.5 * m2 / s2;
-        value.at<1, 0>() = 0.2 * 0.2 * 0.5 * m2 / s;
-        value.at<1, 1>() = 0.2 * 0.2 * m2 / s2;
-        value.at<1, 2>() = 0.2 * 0.2 * m2 / s3;
-        value.at<2, 0>() = 0.2 * 0.2 * 0.5 * m2 / s2;
-        value.at<2, 1>() = 0.2 * 0.2 * m2 / s3;
-        value.at<2, 2>() = 0.2 * 0.2 * m2 / s4;
-        value.at<3, 3>() = 0.2 * 0.2 * 0.25 * m2;
-        value.at<3, 4>() = 0.2 * 0.2 * 0.5 * m2 / s;
-        value.at<3, 5>() = 0.2 * 0.2 * 0.5 * m2 / s2;
-        value.at<4, 3>() = 0.2 * 0.2 * 0.5 * m2 / s;
-        value.at<4, 4>() = 0.2 * 0.2 * m2 / s2;
-        value.at<4, 5>() = 0.2 * 0.2 * m2 / s3;
-        value.at<5, 3>() = 0.2 * 0.2 * 0.5 * m2 / s2;
-        value.at<5, 4>() = 0.2 * 0.2 * m2 / s3;
-        value.at<5, 5>() = 0.2 * 0.2 * m2 / s4;
+        value.at<0, 0>(0.2 * 0.2 * 0.25 * m2);
+        value.at<0, 1>(0.2 * 0.2 * 0.5 * m2 / s);
+        value.at<0, 2>(0.2 * 0.2 * 0.5 * m2 / s2);
+        value.at<1, 0>(0.2 * 0.2 * 0.5 * m2 / s);
+        value.at<1, 1>(0.2 * 0.2 * m2 / s2);
+        value.at<1, 2>(0.2 * 0.2 * m2 / s3);
+        value.at<2, 0>(0.2 * 0.2 * 0.5 * m2 / s2);
+        value.at<2, 1>(0.2 * 0.2 * m2 / s3);
+        value.at<2, 2>(0.2 * 0.2 * m2 / s4);
+        value.at<3, 3>(0.2 * 0.2 * 0.25 * m2);
+        value.at<3, 4>(0.2 * 0.2 * 0.5 * m2 / s);
+        value.at<3, 5>(0.2 * 0.2 * 0.5 * m2 / s2);
+        value.at<4, 3>(0.2 * 0.2 * 0.5 * m2 / s);
+        value.at<4, 4>(0.2 * 0.2 * m2 / s2);
+        value.at<4, 5>(0.2 * 0.2 * m2 / s3);
+        value.at<5, 3>(0.2 * 0.2 * 0.5 * m2 / s2);
+        value.at<5, 4>(0.2 * 0.2 * m2 / s3);
+        value.at<5, 5>(0.2 * 0.2 * m2 / s4);
         return value;
       }()},
       // The output uncertainty matrix R. Assume that the x and y measurements
@@ -133,31 +134,29 @@ using output_t = vector<position, position>;
       // The output model matrix H. The dimension of zn is 2x1 and the dimension
       // of xn is 6x1. Therefore the dimension of the observation matrix H shall
       // be 2x6.
-      output_model{[]() {
-        using output_model_t = kalman_internal::evaluate<
-            kalman_internal::quotient<output_t, state_t>>;
+      output_model{[]() -> auto {
+        using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
         output_model_t value;
-        value.at<0, 0>() = 1.;
-        value.at<1, 3>() = 1.;
+        value.at<0, 0>(1.);
+        value.at<1, 3>(1.);
         return value;
       }()},
       // The state transition matrix F would be:
-      state_transition{[]() {
-        using state_transition_t = kalman_internal::evaluate<
-            kalman_internal::quotient<state_t, state_t>>;
+      state_transition{[]() -> auto {
+        using state_transition_t = kf::evaluate<kf::quotient<state_t, state_t>>;
         state_transition_t value;
-        value.at<0, 0>() = 1.;
-        value.at<0, 1>() = 1. * s;
-        value.at<0, 2>() = 0.5 * s2;
-        value.at<1, 1>() = 1.;
-        value.at<1, 2>() = 1. * s;
-        value.at<2, 2>() = 1.;
-        value.at<3, 3>() = 1.;
-        value.at<3, 4>() = 1. * s;
-        value.at<3, 5>() = 0.5 * s2;
-        value.at<4, 4>() = 1.;
-        value.at<4, 5>() = 1. * s;
-        value.at<5, 5>() = 1.;
+        value.at<0, 0>(1.);
+        value.at<0, 1>(1. * s);
+        value.at<0, 2>(0.5 * s2);
+        value.at<1, 1>(1.);
+        value.at<1, 2>(1. * s);
+        value.at<2, 2>(1.);
+        value.at<3, 3>(1.);
+        value.at<3, 4>(1. * s);
+        value.at<3, 5>(0.5 * s2);
+        value.at<4, 4>(1.);
+        value.at<4, 5>(1. * s);
+        value.at<5, 5>(1.);
         return value;
       }()}};
 
