@@ -55,7 +55,14 @@ For more information, please refer to <https://unlicense.org> */
 //! @details Supporting benchmarking code and tools supporting verifications and
 //! evaluations of the library.
 
-//! @namespace fcarouge::kalman_internal
+//! @namespace fcarouge::kalman_filter
+//!
+//! @brief Kalman filter library namespace.
+//!
+//! @details Scopes the library's implementation details apart from the
+//! public definitions of the `fcarouge` namespace.
+
+//! @namespace fcarouge::kalman_filter::internal
 //!
 //! @brief Internal implementation details.
 //!

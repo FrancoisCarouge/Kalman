@@ -89,7 +89,7 @@ using output_t = vector<price>;
       // model. The first closing price then sets the level and the second one
       // sets the slope.
       estimate_uncertainty{[]() -> auto {
-        using estimate_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+        using estimate_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
         estimate_uncertainty_t value;
         value.at<0, 0>(1000. * USD2);
         value.at<1, 1>(1000. * USD2 / d / d);
@@ -98,7 +98,7 @@ using output_t = vector<price>;
       // The process uncertainty Q holds the variances of the level and slope
       // disturbances: σξ^2 = 0.25 $^2 and σζ^2 = 0.01 $^2/d^2.
       process_uncertainty{[]() -> auto {
-        using process_uncertainty_t = kalman_internal::ᴀʙᵀ<state_t, state_t>;
+        using process_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
         process_uncertainty_t value;
         value.at<0, 0>(0.25 * USD2);
         value.at<1, 1>(0.01 * USD2 / d / d);
@@ -109,16 +109,14 @@ using output_t = vector<price>;
       output_uncertainty{1. * USD2},
       // The output model H observes the level only.
       output_model{[]() -> auto {
-        using output_model_t = kalman_internal::evaluate<
-            kalman_internal::quotient<output_t, state_t>>;
+        using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
         output_model_t value;
         value.at<0>(1.);
         return value;
       }()},
       // The state transition F adds the slope over one day to the level.
       state_transition{[]() -> auto {
-        using state_transition_t = kalman_internal::evaluate<
-            kalman_internal::quotient<state_t, state_t>>;
+        using state_transition_t = kf::evaluate<kf::quotient<state_t, state_t>>;
         state_transition_t value;
         value.at<0, 0>(1.);
         value.at<0, 1>(1. * d);

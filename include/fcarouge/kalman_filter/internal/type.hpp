@@ -36,15 +36,15 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_TYPE_HPP
-#define FCAROUGE_KALMAN_INTERNAL_TYPE_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_TYPE_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_TYPE_HPP
 
 #include "utility.hpp"
 
 #include <initializer_list>
 #include <type_traits>
 
-namespace fcarouge::kalman_internal {
+namespace fcarouge::kalman_filter::internal {
 //! @todo Provide the ::type member access and _t shorthand for simplifying
 //! syntax?
 template <typename Type> struct state {
@@ -236,6 +236,6 @@ template <typename... Types> struct prediction_types_t {};
 
 template <typename... Types>
 inline prediction_types_t<Types...> prediction_types{};
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_TYPE_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_TYPE_HPP

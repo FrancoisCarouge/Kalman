@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_PRINT_HPP
-#define FCAROUGE_KALMAN_INTERNAL_PRINT_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_PRINT_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_PRINT_HPP
 
 #include "utility.hpp"
 
@@ -45,35 +45,35 @@ For more information, please refer to <https://unlicense.org> */
 #include <utility>
 
 namespace fcarouge {
-namespace kalman_internal {
+namespace kalman_filter::internal {
 template <typename Filter> class printer : public Filter {
 public:
   constexpr explicit printer(Filter &&filter);
   constexpr ~printer();
   constexpr decltype(auto) x(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_state<Filter>);
+    requires(kalman_filter::internal::has_state<Filter>);
   constexpr decltype(auto) z(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_output<Filter>);
+    requires(kalman_filter::internal::has_output<Filter>);
   constexpr decltype(auto) u(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_input<Filter>);
+    requires(kalman_filter::internal::has_input<Filter>);
   constexpr decltype(auto) p(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_estimate_uncertainty<Filter>);
+    requires(kalman_filter::internal::has_estimate_uncertainty<Filter>);
   constexpr decltype(auto) q(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_process_uncertainty<Filter>);
+    requires(kalman_filter::internal::has_process_uncertainty<Filter>);
   constexpr decltype(auto) r(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_output_uncertainty<Filter>);
+    requires(kalman_filter::internal::has_output_uncertainty<Filter>);
   constexpr decltype(auto) f(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_state_transition<Filter>);
+    requires(kalman_filter::internal::has_state_transition<Filter>);
   constexpr decltype(auto) h(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_output_model<Filter>);
+    requires(kalman_filter::internal::has_output_model<Filter>);
   constexpr decltype(auto) g(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_input_control<Filter>);
+    requires(kalman_filter::internal::has_input_control<Filter>);
   constexpr decltype(auto) k(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_gain<Filter>);
+    requires(kalman_filter::internal::has_gain<Filter>);
   constexpr decltype(auto) y(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_innovation<Filter>);
+    requires(kalman_filter::internal::has_innovation<Filter>);
   constexpr decltype(auto) s(this auto &&self, const auto &...values)
-    requires(kalman_internal::has_innovation_uncertainty<Filter>);
+    requires(kalman_filter::internal::has_innovation_uncertainty<Filter>);
   constexpr void predict(const auto &...arguments);
   template <auto Position> constexpr auto predict() const;
   constexpr void update(const auto &...arguments);
@@ -95,9 +95,9 @@ template <typename Filter> constexpr printer<Filter>::~printer() {
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::x(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_state<Filter>)
+  requires(kalman_filter::internal::has_state<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "x", "filter":{}}})", base);
   }};
@@ -108,9 +108,9 @@ constexpr decltype(auto) printer<Filter>::x(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::z(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_output<Filter>)
+  requires(kalman_filter::internal::has_output<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "z", "filter":{}}})", base);
   }};
@@ -121,9 +121,9 @@ constexpr decltype(auto) printer<Filter>::z(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::u(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_input<Filter>)
+  requires(kalman_filter::internal::has_input<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "u", "filter":{}}})", base);
   }};
@@ -134,9 +134,9 @@ constexpr decltype(auto) printer<Filter>::u(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::p(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_estimate_uncertainty<Filter>)
+  requires(kalman_filter::internal::has_estimate_uncertainty<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "p", "filter":{}}})", base);
   }};
@@ -147,9 +147,9 @@ constexpr decltype(auto) printer<Filter>::p(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::q(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_process_uncertainty<Filter>)
+  requires(kalman_filter::internal::has_process_uncertainty<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "q", "filter":{}}})", base);
   }};
@@ -160,9 +160,9 @@ constexpr decltype(auto) printer<Filter>::q(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::r(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_output_uncertainty<Filter>)
+  requires(kalman_filter::internal::has_output_uncertainty<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "r", "filter":{}}})", base);
   }};
@@ -173,9 +173,9 @@ constexpr decltype(auto) printer<Filter>::r(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::f(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_state_transition<Filter>)
+  requires(kalman_filter::internal::has_state_transition<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "f", "filter":{}}})", base);
   }};
@@ -186,9 +186,9 @@ constexpr decltype(auto) printer<Filter>::f(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::h(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_output_model<Filter>)
+  requires(kalman_filter::internal::has_output_model<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "h", "filter":{}}})", base);
   }};
@@ -199,9 +199,9 @@ constexpr decltype(auto) printer<Filter>::h(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::g(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_input_control<Filter>)
+  requires(kalman_filter::internal::has_input_control<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "g", "filter":{}}})", base);
   }};
@@ -212,9 +212,9 @@ constexpr decltype(auto) printer<Filter>::g(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::k(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_gain<Filter>)
+  requires(kalman_filter::internal::has_gain<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "k", "filter":{}}})", base);
   }};
@@ -225,9 +225,9 @@ constexpr decltype(auto) printer<Filter>::k(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::y(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_innovation<Filter>)
+  requires(kalman_filter::internal::has_innovation<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "y", "filter":{}}})", base);
   }};
@@ -238,9 +238,9 @@ constexpr decltype(auto) printer<Filter>::y(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) printer<Filter>::s(this auto &&self,
                                             const auto &...values)
-  requires(kalman_internal::has_innovation_uncertainty<Filter>)
+  requires(kalman_filter::internal::has_innovation_uncertainty<Filter>)
 {
-  kalman_internal::scope_exit on_exit{[&self] {
+  kalman_filter::internal::scope_exit on_exit{[&self] {
     const Filter &base{self};
     std::println(R"({{"event": "s", "filter":{}}})", base);
   }};
@@ -274,15 +274,15 @@ constexpr void printer<Filter>::update(const auto &...arguments) {
   const Filter &base{*this};
   std::println(R"({{"event": "update", "filter":{}}})", base);
 }
-} // namespace kalman_internal
+} // namespace kalman_filter::internal
 
 struct printer {};
 
 template <typename Filter>
 [[nodiscard]] constexpr auto
 operator|(Filter &&filter, [[maybe_unused]] const printer &decorator) {
-  return kalman_internal::printer<Filter>(std::forward<Filter>(filter));
+  return kalman_filter::internal::printer<Filter>(std::forward<Filter>(filter));
 }
 } // namespace fcarouge
 
-#endif // FCAROUGE_KALMAN_INTERNAL_PRINT_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_PRINT_HPP

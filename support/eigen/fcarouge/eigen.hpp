@@ -46,7 +46,7 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @note The Eigen3 linear algebra is not constexpr-compatible as of July 2023.
 
-#include "fcarouge/kalman_internal/utility.hpp"
+#include "fcarouge/kalman_filter/internal/utility.hpp"
 
 #include <concepts>
 #include <cstddef>
@@ -100,13 +100,13 @@ using column_vector = Eigen::Vector<Type, Row>;
 
 } // namespace fcarouge::eigen
 
-namespace fcarouge::kalman_internal {
+namespace fcarouge::kalman_filter::internal {
 //! @brief Specialization of the evaluation type.
 template <eigen::is_eigen Type> struct evaluates<Type> {
   [[nodiscard]] static constexpr auto operator()() ->
       typename Type::PlainMatrix;
 };
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
 namespace Eigen {
 //! @brief Eigen matrix solution to division.

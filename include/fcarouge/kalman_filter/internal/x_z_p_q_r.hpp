@@ -36,32 +36,28 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_H_F_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_H_F_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_Q_R_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_Q_R_HPP
 
 #include "utility.hpp"
 
-namespace fcarouge::kalman_internal {
-template <typename State, typename Output> struct x_z_p_q_r_h_f {
-  using state = State;
-  using output = Output;
+namespace fcarouge::kalman_filter::internal {
+template <typename Type> struct x_z_p_q_r {
+  using state = Type;
+  using output = Type;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = evaluate<quotient<state, state>>;
-  using output_model = evaluate<quotient<output, state>>;
-  using innovation = evaluate<difference<output, output>>;
+  using innovation = evaluate<difference<output, state>>;
   using innovation_uncertainty = output_uncertainty;
-  using gain = evaluate<quotient<state, innovation>>;
+  using gain = evaluate<quotient<estimate_uncertainty, innovation_uncertainty>>;
 
-  static inline const auto i{one<evaluate<product<gain, output_model>>>};
+  static inline const auto i{one<gain>};
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
   process_uncertainty q{zero<process_uncertainty>};
   output_uncertainty r{zero<output_uncertainty>};
-  output_model h{one<output_model>};
-  state_transition f{one<state_transition>};
   gain k{one<gain>};
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
@@ -69,18 +65,15 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
 
   constexpr void update(const auto &output_z, const auto &...outputs_z) {
     z = output{output_z, outputs_z...};
-    s = innovation_uncertainty{h * p * t(h) + r};
-    k = p * t(h) / s;
-    y = z - h * x;
+    s = innovation_uncertainty{p + r};
+    k = p / s;
+    y = z - x;
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    p = estimate_uncertainty{(i - k) * p * t(i - k) + k * r * t(k)};
   }
 
-  constexpr void predict() {
-    x = f * x;
-    p = estimate_uncertainty{f * p * t(f) + q};
-  }
+  constexpr void predict() { p = estimate_uncertainty{p + q}; }
 };
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_P_Q_R_H_F_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_Q_R_HPP

@@ -36,8 +36,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_FACTORY_HPP
-#define FCAROUGE_KALMAN_INTERNAL_FACTORY_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_FACTORY_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_FACTORY_HPP
 
 #include "type.hpp"
 #include "x_z_p_q_r.hpp"
@@ -55,7 +55,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <tuple>
 #include <type_traits>
 
-namespace fcarouge::kalman_internal {
+namespace fcarouge::kalman_filter::internal {
 // The filter deducer helps in selecting the filter type from the parameters
 // declared by the caller. The filter deducer also helps in passing through or
 // ignoring values for the filter construction. Finally the deducer helps in
@@ -343,6 +343,6 @@ template <typename Filter> inline constexpr filter_deducer<Filter> deducer{};
 
 template <typename... Arguments>
 using deduce_filter = std::invoke_result_t<filter_deducer<>, Arguments...>;
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_FACTORY_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_FACTORY_HPP

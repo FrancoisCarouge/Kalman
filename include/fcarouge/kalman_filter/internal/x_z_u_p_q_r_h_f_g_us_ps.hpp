@@ -36,26 +36,22 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
-#define FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
+#ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP
+#define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP
 
 #include "utility.hpp"
 
 #include <tuple>
 
-namespace fcarouge::kalman_internal {
+namespace fcarouge::kalman_filter::internal {
 // Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename, typename, typename, typename,
-          typename>
-struct x_z_u_p_qq_r_ff_gg_ps final {};
+template <typename, typename, typename, typename, typename>
+struct x_z_u_p_q_r_h_f_g_us_ps final {};
 
 template <typename State, typename Output, typename Input,
-          typename... UpdateTypes, typename... PredictionTypes,
-          typename NoiseProcess, typename TransitionState,
-          typename TransitionControl>
-struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
-                             std::tuple<PredictionTypes...>, NoiseProcess,
-                             TransitionState, TransitionControl> {
+          typename... UpdateTypes, typename... PredictionTypes>
+struct x_z_u_p_q_r_h_f_g_us_ps<State, Output, Input, std::tuple<UpdateTypes...>,
+                               std::tuple<PredictionTypes...>> {
   using state = State;
   using output = Output;
   using input = Input;
@@ -67,9 +63,6 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   using input_control = evaluate<quotient<state, input>>;
   using innovation = evaluate<difference<output, output>>;
   using innovation_uncertainty = output_uncertainty;
-  using transition_state_function = TransitionState;
-  using noise_process_function = NoiseProcess;
-  using transition_control_function = TransitionControl;
   using update_types = std::tuple<UpdateTypes...>;
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
@@ -78,42 +71,39 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
 
   state x{zero<state>};
   estimate_uncertainty p{one<estimate_uncertainty>};
-  noise_process_function noise_process_q;
-  output_uncertainty r{zero<output_uncertainty>};
-  transition_state_function transition_state_f;
-  transition_control_function transition_control_g;
-
   process_uncertainty q{zero<process_uncertainty>};
-  input u{zero<input>};
+  output_uncertainty r{zero<output_uncertainty>};
   output_model h{one<output_model>};
   state_transition f{one<state_transition>};
   input_control g{one<input_control>};
+  input u{zero<input>};
   gain k{one<gain>};
   innovation y{zero<innovation>};
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
+  update_types update_arguments{};
   prediction_types prediction_arguments{};
 
-  constexpr void update(const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const UpdateTypes &...update_pack, const auto &output_z,
+                        const auto &...outputs_z) {
+    update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};
     s = h * p * t(h) + r;
     k = p * t(h) / s;
     y = z - h * x;
-    x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    x = x + k * y;
+    p = (i - k * h) * p * t(i - k * h) + k * r * t(k);
   }
 
+  //! @todo Add convertible requirements on input and output packs?
   constexpr void predict(const PredictionTypes &...prediction_pack,
                          const auto &input_u, const auto &...inputs_u) {
     prediction_arguments = {prediction_pack...};
     u = input{input_u, inputs_u...};
-    f = transition_state_f(u, prediction_pack...);
-    q = noise_process_q(x, prediction_pack...);
-    g = transition_control_g(prediction_pack...);
     x = f * x + g * u;
-    p = estimate_uncertainty{f * p * t(f) + q};
+    p = f * p * t(f) + q;
   }
 };
-} // namespace fcarouge::kalman_internal
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_KALMAN_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
+#endif // FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_Q_R_H_F_G_US_PS_HPP
