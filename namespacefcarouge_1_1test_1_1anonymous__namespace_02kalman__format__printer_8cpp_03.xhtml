@@ -125,7 +125,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="keyword">const</span> not_realtime opt_out;</div>
-<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> filter{<a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a>{} | <a class="code hl_variable" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>};</div>
+<div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> filter{<a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a>{} | <a class="code hl_variable" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>};</div>
 <div class="line"> </div>
 <div class="line">  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, filter) == R<span class="stringliteral">&quot;({&quot;k&quot;: 1,)&quot;</span></div>
 <div class="line"><span class="stringliteral">                                      R</span><span class="stringliteral">&quot;( &quot;p&quot;: 1,)&quot;</span></div>
@@ -137,9 +137,9 @@ Variables</h2></td></tr>
 <div class="line"><span class="stringliteral"></span> </div>
 <div class="line"><span class="stringliteral">  </span><span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a5c3a03f73432710ac636a3a5f7e9e8e2"><div class="ttname"><a href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">fcarouge::print</a></div><div class="ttdeci">constexpr printer print</div><div class="ttdoc">Filter decorator to print activities to the standard output.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00504">kalman.hpp:504</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000025">Test</a></b></dt><dd>Verifies formatting decorated filters as the filters they decorate. </dd></dl>
+<div class="ttc" id="anamespacefcarouge_xhtml_a5c3a03f73432710ac636a3a5f7e9e8e2"><div class="ttname"><a href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">fcarouge::print</a></div><div class="ttdeci">constexpr printer print</div><div class="ttdoc">Filter decorator to print activities to the standard output.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00505">kalman.hpp:505</a></div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000027">Test</a></b></dt><dd>Verifies formatting decorated filters as the filters they decorate. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman__format__printer_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="kalman__format__printer_8cpp_source.xhtml">kalman_format_printer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   48</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>

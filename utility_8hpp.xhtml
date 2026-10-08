@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Kalman: /github/workspace/include/fcarouge/kalman_internal/utility.hpp File Reference</title>
+<title>Kalman: /github/workspace/include/fcarouge/kalman_filter/internal/utility.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -133,103 +133,106 @@ Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge.xhtml">fcarouge</a></td></tr>
 <tr class="memdesc:namespacefcarouge"><td class="mdescLeft">&#160;</td><td class="mdescRight">Francois Carouge's projects namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml">fcarouge::kalman_internal</a></td></tr>
-<tr class="memdesc:namespacefcarouge_1_1kalman__internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal implementation details. <br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter.xhtml">fcarouge::kalman_filter</a></td></tr>
+<tr class="memdesc:namespacefcarouge_1_1kalman__filter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kalman filter library namespace. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml">fcarouge::kalman_filter::internal</a></td></tr>
+<tr class="memdesc:namespacefcarouge_1_1kalman__filter_1_1internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal implementation details. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Functions</div></td></tr>
-<tr class="memitem:a6baba1af637abe5f76f3b5184d0ff3c6" id="r_a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </td></tr>
-<tr class="memitem:a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a6baba1af637abe5f76f3b5184d0ff3c6">fcarouge::kalman_internal::for_constexpr</a> (Function &amp;&amp;function)</td></tr>
-<tr class="memdesc:a6baba1af637abe5f76f3b5184d0ff3c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time for loop.  <br /></td></tr>
-<tr class="separator:a6baba1af637abe5f76f3b5184d0ff3c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add20b656f92ead93f45ac8cd04bc0720" id="r_add20b656f92ead93f45ac8cd04bc0720"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
-<tr class="memitem:add20b656f92ead93f45ac8cd04bc0720"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#add20b656f92ead93f45ac8cd04bc0720">fcarouge::kalman_internal::assign</a> (Callable &amp;callable, const auto &amp;...values)</td></tr>
-<tr class="memdesc:add20b656f92ead93f45ac8cd04bc0720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a callable characteristic from its copied initializers.  <br /></td></tr>
-<tr class="separator:add20b656f92ead93f45ac8cd04bc0720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab58c8954326f0d1f628c70168168bafe" id="r_ab58c8954326f0d1f628c70168168bafe"><td class="memTemplParams" colspan="2">template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename Function &gt; </td></tr>
+<tr class="memitem:ab58c8954326f0d1f628c70168168bafe"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab58c8954326f0d1f628c70168168bafe">fcarouge::kalman_filter::internal::for_constexpr</a> (Function &amp;&amp;function)</td></tr>
+<tr class="memdesc:ab58c8954326f0d1f628c70168168bafe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile-time for loop.  <br /></td></tr>
+<tr class="separator:ab58c8954326f0d1f628c70168168bafe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a854ecb970f13c91bf8706f26368fecac" id="r_a854ecb970f13c91bf8706f26368fecac"><td class="memTemplParams" colspan="2">template&lt;typename Callable &gt; </td></tr>
+<tr class="memitem:a854ecb970f13c91bf8706f26368fecac"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a854ecb970f13c91bf8706f26368fecac">fcarouge::kalman_filter::internal::assign</a> (Callable &amp;callable, const auto &amp;...values)</td></tr>
+<tr class="memdesc:a854ecb970f13c91bf8706f26368fecac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a callable characteristic from its copied initializers.  <br /></td></tr>
+<tr class="separator:a854ecb970f13c91bf8706f26368fecac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
-<tr class="memitem:a0f6af3a28e58f1b5e727aa85543951a0" id="r_a0f6af3a28e58f1b5e727aa85543951a0"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
-<tr class="memitem:a0f6af3a28e58f1b5e727aa85543951a0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0">fcarouge::kalman_internal::quotient</a></td></tr>
-<tr class="memdesc:a0f6af3a28e58f1b5e727aa85543951a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divider helper type.  <br /></td></tr>
-<tr class="separator:a0f6af3a28e58f1b5e727aa85543951a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fa2c30dc7bf1f7626c078eaed358625" id="r_a1fa2c30dc7bf1f7626c078eaed358625"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a1fa2c30dc7bf1f7626c078eaed358625"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">fcarouge::kalman_internal::evaluate</a> = std::invoke_result_t&lt;evaluates&lt;Type&gt;&gt;</td></tr>
-<tr class="memdesc:a1fa2c30dc7bf1f7626c078eaed358625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluator helper type.  <br /></td></tr>
-<tr class="separator:a1fa2c30dc7bf1f7626c078eaed358625"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c947c78364703fa3847944dd073a837" id="r_a0c947c78364703fa3847944dd073a837"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:a0c947c78364703fa3847944dd073a837"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a0c947c78364703fa3847944dd073a837">fcarouge::kalman_internal::transpose</a> = std::invoke_result_t&lt;transposes&lt;Type&gt;, const Type &amp;&gt;</td></tr>
-<tr class="memdesc:a0c947c78364703fa3847944dd073a837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transposer helper type.  <br /></td></tr>
-<tr class="separator:a0c947c78364703fa3847944dd073a837"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66f34e6d5c7f8322c4d5f63051e20139" id="r_a66f34e6d5c7f8322c4d5f63051e20139"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:a66f34e6d5c7f8322c4d5f63051e20139"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a66f34e6d5c7f8322c4d5f63051e20139">fcarouge::kalman_internal::first</a> = std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</td></tr>
-<tr class="memdesc:a66f34e6d5c7f8322c4d5f63051e20139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first type of the type template parameter pack.  <br /></td></tr>
-<tr class="separator:a66f34e6d5c7f8322c4d5f63051e20139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6050c2c2ac7054eaffa8e5c58dab7bd4" id="r_a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
-<tr class="memitem:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a6050c2c2ac7054eaffa8e5c58dab7bd4">fcarouge::kalman_internal::tuple_n_type</a> = typename tupler&lt;Type, Size&gt;::type</td></tr>
-<tr class="memdesc:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alias for making a tuple of the same type.  <br /></td></tr>
-<tr class="separator:a6050c2c2ac7054eaffa8e5c58dab7bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4991c6dc9486cc2d13f83ba121053169" id="r_a4991c6dc9486cc2d13f83ba121053169"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
-<tr class="memitem:a4991c6dc9486cc2d13f83ba121053169"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169">fcarouge::kalman_internal::product</a></td></tr>
-<tr class="memdesc:a4991c6dc9486cc2d13f83ba121053169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the product.  <br /></td></tr>
-<tr class="separator:a4991c6dc9486cc2d13f83ba121053169"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf401bd223c24f1406587dd5fd2dc2cf" id="r_aaf401bd223c24f1406587dd5fd2dc2cf"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
-<tr class="memitem:aaf401bd223c24f1406587dd5fd2dc2cf"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#aaf401bd223c24f1406587dd5fd2dc2cf">fcarouge::kalman_internal::difference</a></td></tr>
-<tr class="memdesc:aaf401bd223c24f1406587dd5fd2dc2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the minus, subtraction.  <br /></td></tr>
-<tr class="separator:aaf401bd223c24f1406587dd5fd2dc2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a734eaffd024f86157a790692f947357d" id="r_a734eaffd024f86157a790692f947357d"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
-<tr class="memitem:a734eaffd024f86157a790692f947357d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d">fcarouge::kalman_internal::ᴀʙᵀ</a> = <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">evaluate</a>&lt;<a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169">product</a>&lt;Lhs, <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">evaluate</a>&lt;<a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a0c947c78364703fa3847944dd073a837">transpose</a>&lt;Rhs&gt;&gt;&gt;&gt;</td></tr>
-<tr class="memdesc:a734eaffd024f86157a790692f947357d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The evaluated type of the ABᵀ expression.  <br /></td></tr>
-<tr class="separator:a734eaffd024f86157a790692f947357d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb17489172dd8b3802d97fdd17f9d91b" id="r_acb17489172dd8b3802d97fdd17f9d91b"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:acb17489172dd8b3802d97fdd17f9d91b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#acb17489172dd8b3802d97fdd17f9d91b">fcarouge::kalman_internal::t</a> (const Type &amp;value)</td></tr>
-<tr class="memdesc:acb17489172dd8b3802d97fdd17f9d91b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose helper function.  <br /></td></tr>
-<tr class="separator:acb17489172dd8b3802d97fdd17f9d91b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94790d4b89c5a5d249be974718936ed0" id="r_a94790d4b89c5a5d249be974718936ed0"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:a94790d4b89c5a5d249be974718936ed0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a94790d4b89c5a5d249be974718936ed0">fcarouge::kalman_filter::internal::quotient</a></td></tr>
+<tr class="memdesc:a94790d4b89c5a5d249be974718936ed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divider helper type.  <br /></td></tr>
+<tr class="separator:a94790d4b89c5a5d249be974718936ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1" id="r_a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">fcarouge::kalman_filter::internal::evaluate</a> = std::invoke_result_t&lt;evaluates&lt;Type&gt;&gt;</td></tr>
+<tr class="memdesc:a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluator helper type.  <br /></td></tr>
+<tr class="separator:a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ff65e9992d94d903483ab4a9867edc" id="r_ac5ff65e9992d94d903483ab4a9867edc"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:ac5ff65e9992d94d903483ab4a9867edc"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ac5ff65e9992d94d903483ab4a9867edc">fcarouge::kalman_filter::internal::transpose</a> = std::invoke_result_t&lt;transposes&lt;Type&gt;, const Type &amp;&gt;</td></tr>
+<tr class="memdesc:ac5ff65e9992d94d903483ab4a9867edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transposer helper type.  <br /></td></tr>
+<tr class="separator:ac5ff65e9992d94d903483ab4a9867edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2b6810c4189d21e1b02b444593f109b" id="r_ad2b6810c4189d21e1b02b444593f109b"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:ad2b6810c4189d21e1b02b444593f109b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ad2b6810c4189d21e1b02b444593f109b">fcarouge::kalman_filter::internal::first</a> = std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</td></tr>
+<tr class="memdesc:ad2b6810c4189d21e1b02b444593f109b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first type of the type template parameter pack.  <br /></td></tr>
+<tr class="separator:ad2b6810c4189d21e1b02b444593f109b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9a28dd1d4eb342043833d76b69a2442" id="r_ac9a28dd1d4eb342043833d76b69a2442"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Size&gt; </td></tr>
+<tr class="memitem:ac9a28dd1d4eb342043833d76b69a2442"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ac9a28dd1d4eb342043833d76b69a2442">fcarouge::kalman_filter::internal::tuple_n_type</a> = typename tupler&lt;Type, Size&gt;::type</td></tr>
+<tr class="memdesc:ac9a28dd1d4eb342043833d76b69a2442"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alias for making a tuple of the same type.  <br /></td></tr>
+<tr class="separator:ac9a28dd1d4eb342043833d76b69a2442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aace31b5acda2497b46bccfae1d652655" id="r_aace31b5acda2497b46bccfae1d652655"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:aace31b5acda2497b46bccfae1d652655"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aace31b5acda2497b46bccfae1d652655">fcarouge::kalman_filter::internal::product</a></td></tr>
+<tr class="memdesc:aace31b5acda2497b46bccfae1d652655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the product.  <br /></td></tr>
+<tr class="separator:aace31b5acda2497b46bccfae1d652655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb532535d3f2d2bc0833a388a94b498" id="r_aaeb532535d3f2d2bc0833a388a94b498"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:aaeb532535d3f2d2bc0833a388a94b498"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aaeb532535d3f2d2bc0833a388a94b498">fcarouge::kalman_filter::internal::difference</a></td></tr>
+<tr class="memdesc:aaeb532535d3f2d2bc0833a388a94b498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper type to deduce the result type of the minus, subtraction.  <br /></td></tr>
+<tr class="separator:aaeb532535d3f2d2bc0833a388a94b498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec7df08ad8c0036e32481d4455b493b4" id="r_aec7df08ad8c0036e32481d4455b493b4"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
+<tr class="memitem:aec7df08ad8c0036e32481d4455b493b4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">fcarouge::kalman_filter::internal::ᴀʙᵀ</a> = <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">evaluate</a>&lt;<a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aace31b5acda2497b46bccfae1d652655">product</a>&lt;Lhs, <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">evaluate</a>&lt;<a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ac5ff65e9992d94d903483ab4a9867edc">transpose</a>&lt;Rhs&gt;&gt;&gt;&gt;</td></tr>
+<tr class="memdesc:aec7df08ad8c0036e32481d4455b493b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The evaluated type of the ABᵀ expression.  <br /></td></tr>
+<tr class="separator:aec7df08ad8c0036e32481d4455b493b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925c175b775d38db6815bab6301d3d07" id="r_a925c175b775d38db6815bab6301d3d07"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a925c175b775d38db6815bab6301d3d07"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a925c175b775d38db6815bab6301d3d07">fcarouge::kalman_filter::internal::t</a> (const Type &amp;value)</td></tr>
+<tr class="memdesc:a925c175b775d38db6815bab6301d3d07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose helper function.  <br /></td></tr>
+<tr class="separator:a925c175b775d38db6815bab6301d3d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Named Values</h2></td></tr>
-<tr class="memitem:aa1a9ffab51e79feaa4cc54fbad7bff1e" id="r_aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
-<tr class="memitem:aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#aa1a9ffab51e79feaa4cc54fbad7bff1e">fcarouge::kalman_internal::repack</a> = repacker&lt;Pack&gt;::type</td></tr>
-<tr class="separator:aa1a9ffab51e79feaa4cc54fbad7bff1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a185d15024c6842a0f6faad97ce898221" id="r_a185d15024c6842a0f6faad97ce898221"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
-<tr class="memitem:a185d15024c6842a0f6faad97ce898221"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a185d15024c6842a0f6faad97ce898221">fcarouge::kalman_internal::size</a> {repacker&lt;Pack&gt;::size}</td></tr>
-<tr class="memdesc:a185d15024c6842a0f6faad97ce898221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of tuple-like types.  <br /></td></tr>
-<tr class="separator:a185d15024c6842a0f6faad97ce898221"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad9be752b238d15bfc4ea67b30660cc7" id="r_aad9be752b238d15bfc4ea67b30660cc7"><td class="memTemplParams" colspan="2">template&lt;auto... Values&gt; </td></tr>
-<tr class="memitem:aad9be752b238d15bfc4ea67b30660cc7"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#aad9be752b238d15bfc4ea67b30660cc7">fcarouge::kalman_internal::first_v</a> {first_value&lt;Values...&gt;::value}</td></tr>
-<tr class="memdesc:aad9be752b238d15bfc4ea67b30660cc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first value of the non-type template parameter pack.  <br /></td></tr>
-<tr class="separator:aad9be752b238d15bfc4ea67b30660cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23cbb93293154cb6105cfd41f2b12981" id="r_a23cbb93293154cb6105cfd41f2b12981"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
-<tr class="memitem:a23cbb93293154cb6105cfd41f2b12981"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a23cbb93293154cb6105cfd41f2b12981">fcarouge::kalman_internal::one</a></td></tr>
-<tr class="memdesc:a23cbb93293154cb6105cfd41f2b12981"><td class="mdescLeft">&#160;</td><td class="mdescRight">The one matrix.  <br /></td></tr>
-<tr class="separator:a23cbb93293154cb6105cfd41f2b12981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14ae57622afd6d94821c036808416946" id="r_a14ae57622afd6d94821c036808416946"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
-<tr class="memitem:a14ae57622afd6d94821c036808416946"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a14ae57622afd6d94821c036808416946">fcarouge::kalman_internal::one&lt; Arithmetic &gt;</a> {1}</td></tr>
-<tr class="memdesc:a14ae57622afd6d94821c036808416946"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton one matrix specialization.  <br /></td></tr>
-<tr class="separator:a14ae57622afd6d94821c036808416946"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae07f10e473ecf773b1a30ae5abebd4d2" id="r_ae07f10e473ecf773b1a30ae5abebd4d2"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
+<tr class="memitem:a651b7b063d496faeaad8f0894b151f1c" id="r_a651b7b063d496faeaad8f0894b151f1c"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
+<tr class="memitem:a651b7b063d496faeaad8f0894b151f1c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a651b7b063d496faeaad8f0894b151f1c">fcarouge::kalman_filter::internal::repack</a> = repacker&lt;Pack&gt;::type</td></tr>
+<tr class="separator:a651b7b063d496faeaad8f0894b151f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a783f8eab232a31dd5eb09dbb0c4f8ef3" id="r_a783f8eab232a31dd5eb09dbb0c4f8ef3"><td class="memTemplParams" colspan="2">template&lt;typename Pack &gt; </td></tr>
+<tr class="memitem:a783f8eab232a31dd5eb09dbb0c4f8ef3"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a783f8eab232a31dd5eb09dbb0c4f8ef3">fcarouge::kalman_filter::internal::size</a> {repacker&lt;Pack&gt;::size}</td></tr>
+<tr class="memdesc:a783f8eab232a31dd5eb09dbb0c4f8ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of tuple-like types.  <br /></td></tr>
+<tr class="separator:a783f8eab232a31dd5eb09dbb0c4f8ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01271fc54dbb6537b67ca8b3fb534d35" id="r_a01271fc54dbb6537b67ca8b3fb534d35"><td class="memTemplParams" colspan="2">template&lt;auto... Values&gt; </td></tr>
+<tr class="memitem:a01271fc54dbb6537b67ca8b3fb534d35"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a01271fc54dbb6537b67ca8b3fb534d35">fcarouge::kalman_filter::internal::first_v</a> {first_value&lt;Values...&gt;::value}</td></tr>
+<tr class="memdesc:a01271fc54dbb6537b67ca8b3fb534d35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack the first value of the non-type template parameter pack.  <br /></td></tr>
+<tr class="separator:a01271fc54dbb6537b67ca8b3fb534d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93649f95540d0d56f2fd9a4c97f5e670" id="r_a93649f95540d0d56f2fd9a4c97f5e670"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
+<tr class="memitem:a93649f95540d0d56f2fd9a4c97f5e670"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a93649f95540d0d56f2fd9a4c97f5e670">fcarouge::kalman_filter::internal::one</a></td></tr>
+<tr class="memdesc:a93649f95540d0d56f2fd9a4c97f5e670"><td class="mdescLeft">&#160;</td><td class="mdescRight">The one matrix.  <br /></td></tr>
+<tr class="separator:a93649f95540d0d56f2fd9a4c97f5e670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2b577a08caad06156e77360e0b6ce26" id="r_ae2b577a08caad06156e77360e0b6ce26"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:ae2b577a08caad06156e77360e0b6ce26"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ae2b577a08caad06156e77360e0b6ce26">fcarouge::kalman_filter::internal::one&lt; Arithmetic &gt;</a> {1}</td></tr>
+<tr class="memdesc:ae2b577a08caad06156e77360e0b6ce26"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton one matrix specialization.  <br /></td></tr>
+<tr class="separator:ae2b577a08caad06156e77360e0b6ce26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0116380aa1c6c954ece26f0a8abb244" id="r_af0116380aa1c6c954ece26f0a8abb244"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
 requires requires { Type::identity(); }</td></tr>
-<tr class="memitem:ae07f10e473ecf773b1a30ae5abebd4d2"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#ae07f10e473ecf773b1a30ae5abebd4d2">fcarouge::kalman_internal::one&lt; Type &gt;</a> {Type::Identity()}</td></tr>
-<tr class="separator:ae07f10e473ecf773b1a30ae5abebd4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fac2d4e13a574cdc956a2d940374e62" id="r_a4fac2d4e13a574cdc956a2d940374e62"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
-<tr class="memitem:a4fac2d4e13a574cdc956a2d940374e62"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a4fac2d4e13a574cdc956a2d940374e62">fcarouge::kalman_internal::zero</a></td></tr>
-<tr class="memdesc:a4fac2d4e13a574cdc956a2d940374e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <br /></td></tr>
-<tr class="separator:a4fac2d4e13a574cdc956a2d940374e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a179ed9419a40e13a92eaa0f3d980d088" id="r_a179ed9419a40e13a92eaa0f3d980d088"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
-<tr class="memitem:a179ed9419a40e13a92eaa0f3d980d088"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a179ed9419a40e13a92eaa0f3d980d088">fcarouge::kalman_internal::zero&lt; Arithmetic &gt;</a> {0}</td></tr>
-<tr class="memdesc:a179ed9419a40e13a92eaa0f3d980d088"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton zero matrix specialization.  <br /></td></tr>
-<tr class="separator:a179ed9419a40e13a92eaa0f3d980d088"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b0970be43a070dde9d1b773c58cb58a" id="r_a2b0970be43a070dde9d1b773c58cb58a"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
+<tr class="memitem:af0116380aa1c6c954ece26f0a8abb244"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#af0116380aa1c6c954ece26f0a8abb244">fcarouge::kalman_filter::internal::one&lt; Type &gt;</a> {Type::Identity()}</td></tr>
+<tr class="separator:af0116380aa1c6c954ece26f0a8abb244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc45346aaa4066d7154772759722f97a" id="r_acc45346aaa4066d7154772759722f97a"><td class="memTemplParams" colspan="2">template&lt;typename Type  = double&gt; </td></tr>
+<tr class="memitem:acc45346aaa4066d7154772759722f97a"><td class="memTemplItemLeft" align="right" valign="top">constexpr Type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#acc45346aaa4066d7154772759722f97a">fcarouge::kalman_filter::internal::zero</a></td></tr>
+<tr class="memdesc:acc45346aaa4066d7154772759722f97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix.  <br /></td></tr>
+<tr class="separator:acc45346aaa4066d7154772759722f97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df90113051211fbf2793aadbdfd7e72" id="r_a5df90113051211fbf2793aadbdfd7e72"><td class="memTemplParams" colspan="2">template&lt;arithmetic Arithmetic&gt; </td></tr>
+<tr class="memitem:a5df90113051211fbf2793aadbdfd7e72"><td class="memTemplItemLeft" align="right" valign="top">constexpr Arithmetic&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a5df90113051211fbf2793aadbdfd7e72">fcarouge::kalman_filter::internal::zero&lt; Arithmetic &gt;</a> {0}</td></tr>
+<tr class="memdesc:a5df90113051211fbf2793aadbdfd7e72"><td class="mdescLeft">&#160;</td><td class="mdescRight">The singleton zero matrix specialization.  <br /></td></tr>
+<tr class="separator:a5df90113051211fbf2793aadbdfd7e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf880a63b0a1e54a030a83611c16fe82" id="r_aaf880a63b0a1e54a030a83611c16fe82"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; <br />
 requires requires { Type::zero(); }</td></tr>
-<tr class="memitem:a2b0970be43a070dde9d1b773c58cb58a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a2b0970be43a070dde9d1b773c58cb58a">fcarouge::kalman_internal::zero&lt; Type &gt;</a> {Type::Zero()}</td></tr>
-<tr class="separator:a2b0970be43a070dde9d1b773c58cb58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf880a63b0a1e54a030a83611c16fe82"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aaf880a63b0a1e54a030a83611c16fe82">fcarouge::kalman_filter::internal::zero&lt; Type &gt;</a> {Type::Zero()}</td></tr>
+<tr class="separator:aaf880a63b0a1e54a030a83611c16fe82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_5c3532884164bb88b0a2e2abaff977cb.xhtml">kalman_internal</a></li><li class="navelem"><a class="el" href="utility_8hpp.xhtml">utility.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.xhtml">include</a></li><li class="navelem"><a class="el" href="dir_533ca38e4d6dcb24d3c950d504c67ecf.xhtml">fcarouge</a></li><li class="navelem"><a class="el" href="dir_3f6677a392a750330c3fd039c26d5d21.xhtml">kalman_filter</a></li><li class="navelem"><a class="el" href="dir_d5384b9eb69731f991f969bae863d0d5.xhtml">internal</a></li><li class="navelem"><a class="el" href="utility_8hpp.xhtml">utility.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

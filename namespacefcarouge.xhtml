@@ -116,8 +116,8 @@ Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1benchmark.xhtml">benchmark</a></td></tr>
 <tr class="memdesc:namespacefcarouge_1_1benchmark"><td class="mdescLeft">&#160;</td><td class="mdescRight">Benchmark implementation. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml">kalman_internal</a></td></tr>
-<tr class="memdesc:namespacefcarouge_1_1kalman__internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal implementation details. <br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter.xhtml">kalman_filter</a></td></tr>
+<tr class="memdesc:namespacefcarouge_1_1kalman__filter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kalman filter library namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sample.xhtml">sample</a></td></tr>
 <tr class="memdesc:namespacefcarouge_1_1sample"><td class="mdescLeft">&#160;</td><td class="mdescRight">Examples, tutorials, demonstrators of the library. <br /></td></tr>
@@ -140,10 +140,10 @@ Functions</h2></td></tr>
 <tr class="memitem:aadc278093fb5d97220ab056200a13f03"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aadc278093fb5d97220ab056200a13f03">operator|</a> (Filter &amp;&amp;filter, const <a class="el" href="structfcarouge_1_1printer.xhtml">printer</a> &amp;decorator)</td></tr>
 <tr class="separator:aadc278093fb5d97220ab056200a13f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Deduction Guides</div></td></tr>
-<tr class="memitem:a4a3bd37a96fd242e89867316396afcd5" id="r_a4a3bd37a96fd242e89867316396afcd5"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
-<tr class="memitem:a4a3bd37a96fd242e89867316396afcd5"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4a3bd37a96fd242e89867316396afcd5">kalman</a> (Arguments... arguments) -&gt; kalman&lt; <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a083c7633e41b94b1c0cf980cd4a51d74">kalman_internal::deduce_filter</a>&lt; Arguments... &gt; &gt;</td></tr>
-<tr class="memdesc:a4a3bd37a96fd242e89867316396afcd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduces the filter type from its declared configuration.  <br /></td></tr>
-<tr class="separator:a4a3bd37a96fd242e89867316396afcd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff94d4d68501e292b973188436fadba6" id="r_aff94d4d68501e292b973188436fadba6"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
+<tr class="memitem:aff94d4d68501e292b973188436fadba6"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aff94d4d68501e292b973188436fadba6">kalman</a> (Arguments... arguments) -&gt; kalman&lt; <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a58dee957377e4be8ecba7d0674b5ca18">kf::deduce_filter</a>&lt; Arguments... &gt; &gt;</td></tr>
+<tr class="memdesc:aff94d4d68501e292b973188436fadba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduces the filter type from its declared configuration.  <br /></td></tr>
+<tr class="separator:aff94d4d68501e292b973188436fadba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -156,8 +156,8 @@ Variables</h2></td></tr>
 <div class="textblock"><p>Francois Carouge's projects namespace. </p>
 <p>The definitions and implementations of the library intended for public usage. Lowers the name conflict probability in large projects. Use using-declarations or namespace-alias-definition per your project guidelines. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a4a3bd37a96fd242e89867316396afcd5" name="a4a3bd37a96fd242e89867316396afcd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a3bd37a96fd242e89867316396afcd5">&#9670;&#160;</a></span>kalman()</h2>
+<a id="aff94d4d68501e292b973188436fadba6" name="aff94d4d68501e292b973188436fadba6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff94d4d68501e292b973188436fadba6">&#9670;&#160;</a></span>kalman()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,7 +168,7 @@ template&lt;typename... Arguments&gt; </div>
           <td class="memname">fcarouge::kalman </td>
           <td>(</td>
           <td class="paramtype">Arguments...</td>          <td class="paramname"><span class="paramname"><em>arguments</em></span></td><td>)</td>
-          <td> -&gt;  kalman&lt; <a class="el" href="namespacefcarouge_1_1kalman__internal.xhtml#a083c7633e41b94b1c0cf980cd4a51d74">kalman_internal::deduce_filter</a>&lt; Arguments... &gt; &gt;</td>
+          <td> -&gt;  kalman&lt; <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a58dee957377e4be8ecba7d0674b5ca18">kf::deduce_filter</a>&lt; Arguments... &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -181,7 +181,7 @@ template&lt;typename... Arguments&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000008">Todo</a></b></dt><dd><p class="startdd">Should the parameter be named configurations? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000006">Todo</a></b></dt><dd><p class="startdd">Should the parameter be named configurations? </p>
 <p class="enddd">Should the configuration examples, supports be documented here? </p>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_thermal_soaring_8cpp-example.xhtml#a0">ekf_4x1x0_thermal_soaring.cpp</a>, <a class="el" href="ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml#a0">ekf_6x4x0_3d_apollo_position.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a0">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a0">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a0">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_8cpp-example.xhtml#a0">kf_1x1x1_1d_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml#a0">kf_1x1x1_1d_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a1">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a0">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a0">kf_2x1x1_1d_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a0">kf_6x2x0_2d_vehicle_position.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a0">kf_6x2x0_2d_vehicle_position_unit.cpp</a>, and <a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a0">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
@@ -220,7 +220,7 @@ template&lt;typename Filter &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="print_8hpp_source.xhtml#l00283">283</a> of file <a class="el" href="print_8hpp_source.xhtml">print.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  283</span>                                                                      {</div>
-<div class="line"><span class="lineno">  284</span>  <span class="keywordflow">return</span> kalman_internal::printer&lt;Filter&gt;(std::forward&lt;Filter&gt;(filter));</div>
+<div class="line"><span class="lineno">  284</span>  <span class="keywordflow">return</span> kalman_filter::internal::printer&lt;Filter&gt;(std::forward&lt;Filter&gt;(filter));</div>
 <div class="line"><span class="lineno">  285</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="print_8hpp_source.xhtml#l00283">operator|()</a>.</p>
@@ -267,7 +267,7 @@ template&lt;typename Filter &gt; </div>
 <p>Filter decorator to print activities to the standard output. </p>
 <p>Pipe decorator to filter declaration to print out its activities: construction, destruction, updates, predictions, and characteristic changes. Prints with default formatting. Takes no parameters. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00504">504</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00505">505</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>

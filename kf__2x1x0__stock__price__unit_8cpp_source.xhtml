@@ -169,7 +169,7 @@ $(function(){initNavTree('kf__2x1x0__stock__price__unit_8cpp_source.xhtml',''); 
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      <span class="comment">// model. The first closing price then sets the level and the second one</span></div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      <span class="comment">// sets the slope.</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      estimate_uncertainty{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keyword">using </span>estimate_uncertainty_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d">kalman_internal::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keyword">using </span>estimate_uncertainty_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        estimate_uncertainty_t value;</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        value.at&lt;0, 0&gt;(1000. * USD2);</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        value.at&lt;1, 1&gt;(1000. * USD2 / d / d);</div>
@@ -178,7 +178,7 @@ $(function(){initNavTree('kf__2x1x0__stock__price__unit_8cpp_source.xhtml',''); 
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>      <span class="comment">// The process uncertainty Q holds the variances of the level and slope</span></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>      <span class="comment">// disturbances: σξ^2 = 0.25 $^2 and σζ^2 = 0.01 $^2/d^2.</span></div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      process_uncertainty{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">using </span>process_uncertainty_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d">kalman_internal::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">using </span>process_uncertainty_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        process_uncertainty_t value;</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        value.at&lt;0, 0&gt;(0.25 * USD2);</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        value.at&lt;1, 1&gt;(0.01 * USD2 / d / d);</div>
@@ -189,121 +189,118 @@ $(function(){initNavTree('kf__2x1x0__stock__price__unit_8cpp_source.xhtml',''); 
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>      output_uncertainty{1. * USD2},</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>      <span class="comment">// The output model H observes the level only.</span></div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      output_model{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keyword">using </span>output_model_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">kalman_internal::evaluate</a>&lt;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0">kalman_internal::quotient&lt;output_t, state_t&gt;</a>&gt;;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        output_model_t value;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        value.at&lt;0&gt;(1.);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">return</span> value;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>      }()},</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      <span class="comment">// The state transition F adds the slope over one day to the level.</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>      state_transition{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keyword">using </span>state_transition_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">kalman_internal::evaluate</a>&lt;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0">kalman_internal::quotient&lt;state_t, state_t&gt;</a>&gt;;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        state_transition_t value;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        value.at&lt;0, 0&gt;(1.);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        value.at&lt;0, 1&gt;(1. * d);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        value.at&lt;1, 1&gt;(1.);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">return</span> value;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>      }()}};</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="comment">// Verifies a value at the relative accuracy of its expectation.</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keyword">const</span> <span class="keyword">auto</span> near{</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;expected, <span class="keywordtype">double</span> accuracy) -&gt; <span class="keywordtype">bool</span> {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">return</span> abs(value - expected) &lt; accuracy * abs(expected);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      }};</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  <span class="comment">// Run a step of the filter, updating with the closing price of the day and</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  <span class="comment">// predicting the closing price of the next day, every trading day.</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](price close) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    filter.update(close);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    filter.predict();</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  }};</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keyword">using </span>output_model_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;output_t, state_t&gt;</a>&gt;;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        output_model_t value;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        value.at&lt;0&gt;(1.);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">return</span> value;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>      }()},</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>      <span class="comment">// The state transition F adds the slope over one day to the level.</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      state_transition{[]() -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keyword">using </span>state_transition_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;state_t, state_t&gt;</a>&gt;;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        state_transition_t value;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        value.at&lt;0, 0&gt;(1.);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        value.at&lt;0, 1&gt;(1. * d);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        value.at&lt;1, 1&gt;(1.);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">return</span> value;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>      }()}};</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="comment">// Verifies a value at the relative accuracy of its expectation.</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  <span class="keyword">const</span> <span class="keyword">auto</span> near{</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>      [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;expected, <span class="keywordtype">double</span> accuracy) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">return</span> abs(value - expected) &lt; accuracy * abs(expected);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      }};</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>  <span class="comment">// Run a step of the filter, updating with the closing price of the day and</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>  <span class="comment">// predicting the closing price of the next day, every trading day.</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](price close) -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    filter.update(close);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    filter.predict();</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  }};</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  step(100.87 * USD);</div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  step(100.87 * USD);</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  <span class="comment">// The first closing price sets the level, the slope remains unknown.</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  assert(near(filter.x().at&lt;0&gt;(), 100.77 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>         abs(filter.x().at&lt;1&gt;()) &lt; 0.001 * USD / d &amp;&amp;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  step(100.45 * USD);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  step(99.86 * USD);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  assert(near(filter.x().at&lt;0&gt;(), 99.447 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>         near(filter.x().at&lt;1&gt;(), -0.4545 * USD / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  assert(near(filter.p().at&lt;0, 0&gt;(), 2.7337 * USD2, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>         near(filter.p().at&lt;0, 1&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>         near(filter.p().at&lt;1, 0&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>         near(filter.p().at&lt;1, 1&gt;(), 0.64686 * USD2 / d / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  step(99.32 * USD);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  step(100.53 * USD);</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  step(101.14 * USD);</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  step(98.63 * USD);</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  step(99.31 * USD);</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  step(103.04 * USD);</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  step(96.89 * USD);</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  step(99.94 * USD);</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  step(102.41 * USD);</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  step(101.85 * USD);</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  step(101.11 * USD);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  step(100.59 * USD);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  step(102.15 * USD);</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  step(99.28 * USD);</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  step(102.62 * USD);</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  step(101.88 * USD);</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  step(102.56 * USD);</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  step(103.11 * USD);</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  step(101.83 * USD);</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  step(103.25 * USD);</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  step(101.97 * USD);</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  step(101.6 * USD);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  step(101.6 * USD);</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  step(100.14 * USD);</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  step(102.23 * USD);</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  step(100.59 * USD);</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  step(100.6 * USD);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  step(98.47 * USD);</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  step(98.38 * USD);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  step(99.53 * USD);</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  step(98.56 * USD);</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  step(96.41 * USD);</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  step(95.41 * USD);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  step(94.07 * USD);</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  step(94.43 * USD);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>  step(91.81 * USD);</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  step(91.91 * USD);</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="comment">// The price turned down: the filter estimates a negative trend and forecasts</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="comment">// the next closing price below the last one, at 91.17$. The forecast</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  <span class="comment">// uncertainty of the closing price is the level uncertainty plus the</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>  <span class="comment">// transient fluctuations: σ = √(0.948 + 1) ≈ 1.40$.</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>  assert(near(filter.x().at&lt;0&gt;(), 91.172 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>         near(filter.x().at&lt;1&gt;(), -0.78336 * USD / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  assert(near(filter.p().at&lt;0, 0&gt;(), 0.94782 * USD2, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>         near(filter.p().at&lt;0, 1&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>         near(filter.p().at&lt;1, 0&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>         near(filter.p().at&lt;1, 1&gt;(), 0.077913 * USD2 / d / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>  assert(near(filter.k().at&lt;0&gt;(), 0.48661 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>         near(filter.k().at&lt;1&gt;(), 0.071652 / d, 0.001) &amp;&amp;</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>         <span class="stringliteral">&quot;The steady-state gain weighs the closing price about as much as the &quot;</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>         <span class="stringliteral">&quot;forecast.&quot;</span>);</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>}()};</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  <span class="comment">// The first closing price sets the level, the slope remains unknown.</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  assert(near(filter.x().at&lt;0&gt;(), 100.77 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>         abs(filter.x().at&lt;1&gt;()) &lt; 0.001 * USD / d &amp;&amp;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  step(100.45 * USD);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  step(99.86 * USD);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  assert(near(filter.x().at&lt;0&gt;(), 99.447 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>         near(filter.x().at&lt;1&gt;(), -0.4545 * USD / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  assert(near(filter.p().at&lt;0, 0&gt;(), 2.7337 * USD2, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>         near(filter.p().at&lt;0, 1&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>         near(filter.p().at&lt;1, 0&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>         near(filter.p().at&lt;1, 1&gt;(), 0.64686 * USD2 / d / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  step(99.32 * USD);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  step(100.53 * USD);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  step(101.14 * USD);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  step(98.63 * USD);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  step(99.31 * USD);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  step(103.04 * USD);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  step(96.89 * USD);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  step(99.94 * USD);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>  step(102.41 * USD);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>  step(101.85 * USD);</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  step(101.11 * USD);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  step(100.59 * USD);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>  step(102.15 * USD);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  step(99.28 * USD);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  step(102.62 * USD);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  step(101.88 * USD);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  step(102.56 * USD);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  step(103.11 * USD);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>  step(101.83 * USD);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>  step(103.25 * USD);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  step(101.97 * USD);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  step(101.6 * USD);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>  step(101.6 * USD);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>  step(100.14 * USD);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  step(102.23 * USD);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  step(100.59 * USD);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  step(100.6 * USD);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  step(98.47 * USD);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>  step(98.38 * USD);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  step(99.53 * USD);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>  step(98.56 * USD);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  step(96.41 * USD);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>  step(95.41 * USD);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>  step(94.07 * USD);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>  step(94.43 * USD);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>  step(91.81 * USD);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  step(91.91 * USD);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>  <span class="comment">// The price turned down: the filter estimates a negative trend and forecasts</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>  <span class="comment">// the next closing price below the last one, at 91.17$. The forecast</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>  <span class="comment">// uncertainty of the closing price is the level uncertainty plus the</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  <span class="comment">// transient fluctuations: σ = √(0.948 + 1) ≈ 1.40$.</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>  assert(near(filter.x().at&lt;0&gt;(), 91.172 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>         near(filter.x().at&lt;1&gt;(), -0.78336 * USD / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  assert(near(filter.p().at&lt;0, 0&gt;(), 0.94782 * USD2, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>         near(filter.p().at&lt;0, 1&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>         near(filter.p().at&lt;1, 0&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>         near(filter.p().at&lt;1, 1&gt;(), 0.077913 * USD2 / d / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>  assert(near(filter.k().at&lt;0&gt;(), 0.48661 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>         near(filter.k().at&lt;1&gt;(), 0.071652 / d, 0.001) &amp;&amp;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>         <span class="stringliteral">&quot;The steady-state gain weighs the closing price about as much as the &quot;</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>         <span class="stringliteral">&quot;forecast.&quot;</span>);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>}()};</div>
 </div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a0f6af3a28e58f1b5e727aa85543951a0"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a0f6af3a28e58f1b5e727aa85543951a0">fcarouge::kalman_internal::quotient</a></div><div class="ttdeci">std::invoke_result_t&lt; divides&lt; Lhs, Rhs &gt;, const Lhs &amp;, const Rhs &amp; &gt; quotient</div><div class="ttdoc">Divider helper type.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00304">utility.hpp:304</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a1fa2c30dc7bf1f7626c078eaed358625"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a1fa2c30dc7bf1f7626c078eaed358625">fcarouge::kalman_internal::evaluate</a></div><div class="ttdeci">std::invoke_result_t&lt; evaluates&lt; Type &gt; &gt; evaluate</div><div class="ttdoc">Evaluator helper type.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00314">utility.hpp:314</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a734eaffd024f86157a790692f947357d"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a734eaffd024f86157a790692f947357d">fcarouge::kalman_internal::ᴀʙᵀ</a></div><div class="ttdeci">evaluate&lt; product&lt; Lhs, evaluate&lt; transpose&lt; Rhs &gt; &gt; &gt; &gt; ᴀʙᵀ</div><div class="ttdoc">The evaluated type of the ABᵀ expression.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00389">utility.hpp:389</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">fcarouge::kalman_filter::internal::evaluate</a></div><div class="ttdeci">std::invoke_result_t&lt; evaluates&lt; Type &gt; &gt; evaluate</div><div class="ttdoc">Evaluator helper type.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00314">utility.hpp:314</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_aec7df08ad8c0036e32481d4455b493b4"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">fcarouge::kalman_filter::internal::ᴀʙᵀ</a></div><div class="ttdeci">evaluate&lt; product&lt; Lhs, evaluate&lt; transpose&lt; Rhs &gt; &gt; &gt; &gt; ᴀʙᵀ</div><div class="ttdoc">The evaluated type of the ABᵀ expression.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00389">utility.hpp:389</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_xhtml_a2ead4356d36ec68f934aefb898f030b0"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a2ead4356d36ec68f934aefb898f030b0">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::price_slope</a></div><div class="ttdeci">mp_units::quantity&lt; USD/d &gt; price_slope</div><div class="ttdef"><b>Definition</b> <a href="#l00047">kf_2x1x0_stock_price_unit.cpp:47</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_xhtml_a64e12eedf5f118198041f66dcf30dc15"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a64e12eedf5f118198041f66dcf30dc15">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::output_t</a></div><div class="ttdeci">vector&lt; price &gt; output_t</div><div class="ttdef"><b>Definition</b> <a href="#l00049">kf_2x1x0_stock_price_unit.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_xhtml_aabf83d5b59010c1ee6d41c6f8b771211"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aabf83d5b59010c1ee6d41c6f8b771211">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::vector</a></div><div class="ttdeci">column_vector&lt; double, Types... &gt; vector</div><div class="ttdef"><b>Definition</b> <a href="#l00046">kf_2x1x0_stock_price_unit.cpp:46</a></div></div>

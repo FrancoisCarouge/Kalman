@@ -1,48 +1,48 @@
 var hierarchy =
 [
-    [ "fcarouge::kalman_internal::conditional_estimate_uncertainty< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, [
+    [ "fcarouge::kalman_filter::internal::conditional_estimate_uncertainty< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, [
         [ "fcarouge::kalman< typename >", "classfcarouge_1_1kalman.xhtml", null ]
       ] ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_gain< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_gain< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_innovation< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_innovation< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_innovation_uncertainty< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_innovation_uncertainty< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_input< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_input< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_input_control< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_input_control< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_output< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_output< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_output_model< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_output_model< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_output_uncertainty< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_output_uncertainty< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_prediction_types< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_prediction_types< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_process_uncertainty< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_process_uncertainty< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_state< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_state< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_state_transition< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_state_transition< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
-    [ "fcarouge::kalman_internal::conditional_update_types< Filter >", null, [
-      [ "fcarouge::kalman_internal::conditional_member_types< Filter >", null, null ]
+    [ "fcarouge::kalman_filter::internal::conditional_update_types< Filter >", null, [
+      [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
     [ "std::formatter< fcarouge::kalman< Filter >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml", null ],
     [ "fcarouge::printer", "structfcarouge_1_1printer.xhtml", null ],

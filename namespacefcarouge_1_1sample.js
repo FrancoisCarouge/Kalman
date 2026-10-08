@@ -31,7 +31,7 @@ var namespacefcarouge_1_1sample =
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__1d__dog__position__unit_8cpp_03.xhtml#a92ea389b98f243709fadb6d1c2fd7048", null ]
     ] ],
     [ "anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml", [
-      [ "output_model_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ad2b41a29d48f3f26292cc6f2b784d359", null ],
+      [ "output_model_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ae034e0de08b0a51e30c6a7cabd70dabd", null ],
       [ "output_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a8d4f93d79cc53939a06bea22aa026418", null ],
       [ "ratio", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#aaa6583ffeddac2f3aca9208dafe0c06a", null ],
       [ "state_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a352669a205b5c40bbb6b82ca25034ddd", null ],

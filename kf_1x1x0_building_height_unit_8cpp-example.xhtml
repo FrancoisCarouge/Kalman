@@ -161,7 +161,7 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="comment">// A one-dimensional filter, constant system dynamic model.</span></div>
-<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">kalman</a> filter{<span class="comment">// One can estimate the building height simply by looking at it.</span></div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{<span class="comment">// One can estimate the building height simply by looking at it.</span></div>
 <div class="line">                <span class="comment">// The estimated state building height is: X = 60 meters.</span></div>
 <div class="line">                state{height{60. * m}},</div>
 <div class="line">                <span class="comment">// The building height measurement Z in meters.</span></div>
@@ -179,7 +179,7 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">using </span>uncertainty = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169">kalman_internal::product&lt;height, height&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>uncertainty = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aace31b5acda2497b46bccfae1d652655">kf::product&lt;height, height&gt;</a>;</div>
 <div class="line"> </div>
 <div class="line">  assert(uncertainty{225. * m2} == filter.p() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
@@ -214,9 +214,9 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__internal_xhtml_a4991c6dc9486cc2d13f83ba121053169"><div class="ttname"><a href="namespacefcarouge_1_1kalman__internal.xhtml#a4991c6dc9486cc2d13f83ba121053169">fcarouge::kalman_internal::product</a></div><div class="ttdeci">std::invoke_result_t&lt; multiplies&lt; Lhs, Rhs &gt;, const Lhs &amp;, const Rhs &amp; &gt; product</div><div class="ttdoc">Helper type to deduce the result type of the product.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00373">utility.hpp:373</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_aace31b5acda2497b46bccfae1d652655"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aace31b5acda2497b46bccfae1d652655">fcarouge::kalman_filter::internal::product</a></div><div class="ttdeci">std::invoke_result_t&lt; multiplies&lt; Lhs, Rhs &gt;, const Lhs &amp;, const Rhs &amp; &gt; product</div><div class="ttdoc">Helper type to deduce the result type of the product.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00373">utility.hpp:373</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a4a3bd37a96fd242e89867316396afcd5"><div class="ttname"><a href="namespacefcarouge.xhtml#a4a3bd37a96fd242e89867316396afcd5">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kalman_internal::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
