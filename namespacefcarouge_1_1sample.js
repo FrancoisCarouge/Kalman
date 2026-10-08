@@ -30,6 +30,21 @@ var namespacefcarouge_1_1sample =
     [ "anonymous_namespace{kf_1x1x1_1d_dog_position_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__1d__dog__position__unit_8cpp_03.xhtml", [
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__1d__dog__position__unit_8cpp_03.xhtml#a92ea389b98f243709fadb6d1c2fd7048", null ]
     ] ],
+    [ "anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml", [
+      [ "output_model_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ad2b41a29d48f3f26292cc6f2b784d359", null ],
+      [ "output_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a8d4f93d79cc53939a06bea22aa026418", null ],
+      [ "ratio", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#aaa6583ffeddac2f3aca9208dafe0c06a", null ],
+      [ "state_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a352669a205b5c40bbb6b82ca25034ddd", null ],
+      [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9a79b019c4fc93133871fc59055b3fcd", null ],
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a4113a8ce9a0c4b272ca791e4fb917070", null ]
+    ] ],
+    [ "anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml", [
+      [ "output_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a64e12eedf5f118198041f66dcf30dc15", null ],
+      [ "price_slope", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a2ead4356d36ec68f934aefb898f030b0", null ],
+      [ "state_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#ae954946a9d672546e08408f707de82e5", null ],
+      [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aabf83d5b59010c1ee6d41c6f8b771211", null ],
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a4ae1f36cbdffd9bfb09ce267dc662d13", null ]
+    ] ],
     [ "anonymous_namespace{kf_2x1x1_1d_rocket_altitude.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__1d__rocket__altitude_8cpp_03.xhtml", [
       [ "acceleration", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__1d__rocket__altitude_8cpp_03.xhtml#a762f30f1ee6f756078f227826ef28195", null ],
       [ "altitude", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x1__1d__rocket__altitude_8cpp_03.xhtml#af9e4dad49bcf450e77b5a3d46876a375", null ],

@@ -8,6 +8,8 @@ var examples =
     [ "kf_1x1x0_liquid_temperature_unit.cpp", "kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml", null ],
     [ "kf_1x1x1_1d_dog_position.cpp", "kf_1x1x1_1d_dog_position_8cpp-example.xhtml", null ],
     [ "kf_1x1x1_1d_dog_position_unit.cpp", "kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml", null ],
+    [ "kf_2x1x0_pairs_hedge_ratio_unit.cpp", "kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml", null ],
+    [ "kf_2x1x0_stock_price_unit.cpp", "kf_2x1x0_stock_price_unit_8cpp-example.xhtml", null ],
     [ "kf_2x1x1_1d_rocket_altitude.cpp", "kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml", null ],
     [ "kf_6x2x0_2d_vehicle_position.cpp", "kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml", null ],
     [ "kf_6x2x0_2d_vehicle_position_unit.cpp", "kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml", null ],
