@@ -36,55 +36,22 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_UNIT_HPP
-#define FCAROUGE_UNIT_HPP
+#ifndef FCAROUGE_MP_UNITS_HPP
+#define FCAROUGE_MP_UNITS_HPP
 
 //! @file
 //! @brief Quantities and units facade for mp-units third party implementation.
 //!
-//! @details Supporting quantities, values, and functions.
+//! @details Supporting quantities, values, and functions. The units, quantity
+//! specifications, and quantity aliases are declared where needed, by each
+//! sample.
 
-#include <mp-units/compat_macros.h>
-#include <mp-units/framework/dimension.h>
 #include <mp-units/framework/quantity.h>
 #include <mp-units/framework/quantity_point.h>
 #include <mp-units/math.h>
-#include <mp-units/systems/isq/thermodynamics.h>
 #include <mp-units/systems/si.h>
 
-namespace fcarouge {
-using mp_units::delta;
-using mp_units::point;
-using mp_units::si::unit_symbols::d;
-using mp_units::si::unit_symbols::deg_C;
-using mp_units::si::unit_symbols::m;
-using mp_units::si::unit_symbols::m2;
-using mp_units::si::unit_symbols::s;
-using mp_units::si::unit_symbols::s2;
-using mp_units::si::unit_symbols::s3;
-
-//! @brief The currency, not a physical quantity, is a base dimension of its
-//! own: a price never converts to nor compares with a physical quantity.
-inline constexpr struct dim_currency final : mp_units::base_dimension<"$"> {
-} dim_currency;
-QUANTITY_SPEC(currency, dim_currency);
-inline constexpr struct us_dollar final
-    : mp_units::named_unit<"USD", mp_units::kind_of<currency>> {
-} us_dollar;
-inline constexpr auto USD{us_dollar};
-
-inline constexpr auto s4{pow<4>(s)};
-inline constexpr auto deg_C2{pow<2>(deg_C)};
-inline constexpr auto USD2{pow<2>(USD)};
-
-using height = mp_units::quantity<mp_units::isq::height[m]>;
-using position = mp_units::quantity<mp_units::isq::length[m]>;
-using velocity = mp_units::quantity<mp_units::isq::velocity[m / s]>;
-using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
-using temperature = mp_units::quantity_point<deg_C>;
-using price = mp_units::quantity<USD>;
-
-namespace kalman_filter::internal {
+namespace fcarouge::kalman_filter::internal {
 template <auto Reference1, auto Reference2>
 struct multiplies<mp_units::quantity_point<Reference1>,
                   mp_units::quantity_point<Reference2>> {
@@ -100,12 +67,11 @@ inline constexpr mp_units::quantity<Reference, Representation>
 
 template <auto Reference>
 inline mp_units::quantity_point<Reference>
-    one<mp_units::quantity_point<Reference>>{point<Reference>(1.)};
+    one<mp_units::quantity_point<Reference>>{mp_units::point<Reference>(1.)};
 
 template <auto Reference>
 inline mp_units::quantity_point<Reference>
-    zero<mp_units::quantity_point<Reference>>{point<Reference>(0.)};
-} // namespace kalman_filter::internal
-} // namespace fcarouge
+    zero<mp_units::quantity_point<Reference>>{mp_units::point<Reference>(0.)};
+} // namespace fcarouge::kalman_filter::internal
 
-#endif // FCAROUGE_UNIT_HPP
+#endif // FCAROUGE_MP_UNITS_HPP

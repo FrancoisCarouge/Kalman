@@ -37,12 +37,16 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-#include "fcarouge/unit.hpp"
+#include "fcarouge/mp_units.hpp"
 
 #include <cassert>
 
 namespace fcarouge::sample {
 namespace {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using position = mp_units::quantity<mp_units::isq::length[m]>;
+
 //! @brief Estimating the position of a dog.
 //!
 //! @copyright This example is transcribed from Kalman and Bayesian Filters in

@@ -37,12 +37,18 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-#include "fcarouge/unit.hpp"
+#include "fcarouge/mp_units.hpp"
 
 #include <cassert>
 
+#include <mp-units/systems/isq/space_and_time.h>
+
 namespace fcarouge::sample {
 namespace {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using height = mp_units::quantity<mp_units::isq::height[m]>;
+
 //! @brief Estimating the height of a building.
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex

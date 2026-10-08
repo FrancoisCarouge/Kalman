@@ -42,8 +42,21 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
+#include <mp-units/systems/isq/space_and_time.h>
+
 namespace fcarouge::test {
 namespace {
+using mp_units::si::unit_symbols::m;
+using mp_units::si::unit_symbols::m2;
+using mp_units::si::unit_symbols::s;
+using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
+using position = mp_units::quantity<mp_units::isq::length[m]>;
+using velocity = mp_units::quantity<mp_units::isq::velocity[m / s]>;
+using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
+
+constexpr auto s4{pow<4>(s)};
+
 template <typename... Types> using vector = column_vector<double, Types...>;
 using state_t =
     vector<position, velocity, acceleration, position, velocity, acceleration>;
