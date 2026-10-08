@@ -41,8 +41,23 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
+#include <mp-units/compat_macros.h>
+#include <mp-units/framework/dimension.h>
+
 namespace fcarouge::sample {
 namespace {
+//! @brief The currency, not a physical quantity, is a base dimension of its
+//! own: a price never converts to nor compares with a physical quantity.
+constexpr struct dim_currency final : mp_units::base_dimension<"$"> {
+} dim_currency;
+QUANTITY_SPEC(currency, dim_currency);
+constexpr struct us_dollar final
+    : mp_units::named_unit<"USD", mp_units::kind_of<currency>> {
+} us_dollar;
+constexpr auto USD{us_dollar};
+constexpr auto USD2{pow<2>(USD)};
+
+using price = mp_units::quantity<USD>;
 template <typename... Types> using vector = column_vector<double, Types...>;
 using ratio = mp_units::quantity<mp_units::one>;
 using state_t = vector<ratio, price>;

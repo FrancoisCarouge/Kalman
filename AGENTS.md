@@ -68,7 +68,7 @@ The library core is backend-independent: `include/` never includes a backend. 1x
 - `eigen` — Eigen3-backed `kalman_linalg_eigen`; also defines `fcarouge/eigen.hpp`.
 - `eigen_typed` — Eigen plus TypedLinearAlgebra for compile-time element type safety (`kalman_linalg_eigen_typed`).
 - `quantity` — mp-units physical quantities on top of typed Eigen (`kalman_linalg_quantity`).
-- `mp_units` — the mp-units dependency and `fcarouge/unit.hpp`, linked by every backend-less test and sample (`kalman_unit_mp_units`).
+- `mp_units` — the mp-units dependency and `fcarouge/mp_units.hpp`, linked by every backend-less test and sample (`kalman_unit_mp_units`).
 - `typed` — the TypedLinearAlgebra dependency.
 - `matplot` — Matplot++ plotting (`kalman_plot`).
 - `main` — shared `main()` driver linked into every test and sample executable (`kalman_main`), carrying the `kalman_realtime` object: the real-time verification entry (`realtime.cpp`) and its `not_realtime` opt-out token (`fcarouge/realtime.hpp`).

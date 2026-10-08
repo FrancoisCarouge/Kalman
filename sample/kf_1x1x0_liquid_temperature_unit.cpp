@@ -37,12 +37,19 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-#include "fcarouge/unit.hpp"
+#include "fcarouge/mp_units.hpp"
 
 #include <cassert>
 
 namespace fcarouge::sample {
 namespace {
+using mp_units::delta;
+using mp_units::point;
+using mp_units::si::unit_symbols::deg_C;
+using temperature = mp_units::quantity_point<deg_C>;
+
+constexpr auto deg_C2{pow<2>(deg_C)};
+
 //! @brief Estimating the temperature of the liquid in a tank.
 //!
 //! @copyright This example is transcribed from KalmanFilter.NET copyright Alex

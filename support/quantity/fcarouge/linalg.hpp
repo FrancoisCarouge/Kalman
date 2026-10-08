@@ -44,8 +44,8 @@ For more information, please refer to <https://unlicense.org> */
 //! implementations.
 
 #include "fcarouge/eigen.hpp"
+#include "fcarouge/mp_units.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
-#include "fcarouge/unit.hpp"
 
 namespace fcarouge {
 // Teach the typed linear algebra library how to convert underlying scalar types
