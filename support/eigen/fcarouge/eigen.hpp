@@ -48,12 +48,8 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman_filter/internal/utility.hpp"
 
-#include <concepts>
-#include <cstddef>
 #include <format>
 #include <sstream>
-#include <tuple>
-#include <type_traits>
 
 #include <Eigen/Eigen>
 
@@ -64,14 +60,6 @@ namespace fcarouge::eigen {
 //! @brief An Eigen3 algebraic concept.
 template <typename Type>
 concept is_eigen = requires { typename Type::PlainMatrix; };
-
-template <typename Type>
-concept derived_from_eigen_base =
-    std::derived_from<Type, Eigen::EigenBase<Type>>;
-
-template <typename Type>
-concept statically_sized =
-    Type::RowsAtCompileTime > 0 && Type::ColsAtCompileTime > 0;
 
 //! @}
 
@@ -87,10 +75,6 @@ concept statically_sized =
 //! @tparam Column The number of columns of the matrix.
 template <typename Type = double, auto Row = 1, auto Column = 1>
 using matrix = Eigen::Matrix<Type, Row, Column>;
-
-//! @brief Compile-time sized Eigen3 row vector.
-template <typename Type = double, auto Column = 1>
-using row_vector = Eigen::RowVector<Type, Column>;
 
 //! @brief Compile-time sized Eigen3 column vector.
 template <typename Type = double, auto Row = 1>
@@ -142,23 +126,6 @@ constexpr auto operator/(const typename Denominator::Scalar &lhs,
       .fullPivHouseholderQr()
       .solve(fcarouge::eigen::matrix<typename Denominator::Scalar, 1, 1>{lhs})
       .transpose();
-}
-
-//! @brief Get function ADL overload of Eigen types for structured bindings.
-//!
-//! @todo How should structured bindings be done over a matrix with more than
-//! one dimension? The layout policy may be a solution to consider.
-template <std::size_t Index, typename Derived>
-auto &get(DenseCoeffsBase<Derived, WriteAccessors> &base) {
-  return base.coeffRef(Index / Derived::ColsAtCompileTime,
-                       Index % Derived::ColsAtCompileTime);
-}
-
-//! @brief Get function ADL overload of Eigen types for structured bindings.
-template <std::size_t Index, typename Derived>
-auto get(const DenseCoeffsBase<Derived, ReadOnlyAccessors> &base) {
-  return base.coeff(Index / Derived::ColsAtCompileTime,
-                    Index % Derived::ColsAtCompileTime);
 }
 } // namespace Eigen
 
@@ -225,23 +192,6 @@ struct std::formatter<fcarouge::eigen::matrix<Type, Row, Column>, Char> {
   {
     return std::format_to(format_context.out(), "{}", value.value());
   }
-};
-
-//! @brief Tuple size specialization of Eigen types for structured bindings.
-template <typename Type>
-  requires fcarouge::eigen::derived_from_eigen_base<Type> &&
-           fcarouge::eigen::statically_sized<Type>
-struct std::tuple_size<Type>
-    : std::integral_constant<std::size_t, Type::RowsAtCompileTime *
-                                              Type::ColsAtCompileTime> {};
-
-//! @brief Tuple element specialization of Eigen types for structured bindings.
-template <std::size_t Index, typename Type>
-  requires fcarouge::eigen::derived_from_eigen_base<Type> &&
-           fcarouge::eigen::statically_sized<Type> &&
-           (Index < std::tuple_size_v<Type>)
-struct std::tuple_element<Index, Type> {
-  using type = typename Type::Scalar;
 };
 
 #endif // FCAROUGE_EIGEN_HPP
