@@ -39,29 +39,24 @@
 
 set terminal svg enhanced background rgb "white" size 720,1080
 set datafile separator ","
-set output "kalman/sample/image/kf_2x1x0_pairs_hedge_ratio_unit.svg"
+set output "kalman/sample/kf_1x1x0_building_height/kf_1x1x0_building_height.svg"
 set timestamp
-set xlabel "Trading Day"
+set ylabel "Height (m)"
+set xlabel "Measurement Step"
 set grid ytics
+set xtics 1
 set key bmargin center horizontal
 
 set multiplot layout 3,1
 
-set title "{/:Bold Sample 2x1x0 Pairs Hedge Ratio}\nClosing Prices"
-set ylabel "Closing Price ($)"
-plot "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:3 with linespoints linewidth 3 pointtype 5 title "Dependent Stock", \
-  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:2 with linespoints linewidth 3 pointtype 5 title "Independent Stock"
+set title "{/:Bold Sample 1x1x0 Building Height}\nStates"
+plot "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):10 with linespoints linewidth 3 pointtype 5 title "Measurement Output Z", \
+  "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):8 with linespoints linewidth 3 pointtype 5 title "Estimated State X", \
+  50 with lines linewidth 3 title "True State"
 
-set title "{/:Bold Sample 2x1x0 Pairs Hedge Ratio}\nHedge Ratio"
-set ylabel "Hedge Ratio β"
-set yrange [1.15:1.45]
-plot "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:4 with linespoints linewidth 3 pointtype 5 title "Estimated Hedge Ratio", \
-  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:8 with lines linewidth 3 title "Simulated Hedge Ratio"
+set title "{/:Bold Sample 1x1x0 Building Height}\nUncertainties"
+plot "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):6 with linespoints linewidth 3 pointtype 5 title "Measurement Uncertainty R", \
+  "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):4 with linespoints linewidth 3 pointtype 5 title "Estimation Uncertainty P"
 
-set title "{/:Bold Sample 2x1x0 Pairs Hedge Ratio}\nSpread and Entry Signals"
-set ylabel "Spread e ($)"
-set yrange [-0.7:0.7]
-plot "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:(-$7):7 with filledcurves fillcolor rgb "#dddddd" fillstyle solid noborder title "±√S", \
-  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:6 with lines linewidth 3 title "Spread", \
-  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:($6 < -$7 ? $6 : NaN) with points pointtype 9 pointsize 1.5 title "Long Entry", \
-  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:($6 > $7 ? $6 : NaN) with points pointtype 11 pointsize 1.5 title "Short Entry"
+set title "{/:Bold Sample 1x1x0 Building Height}\nGain"
+plot "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):3 with linespoints linewidth 3 pointtype 5 title "Gain K"

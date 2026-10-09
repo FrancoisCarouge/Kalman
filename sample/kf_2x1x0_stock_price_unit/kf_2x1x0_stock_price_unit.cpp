@@ -89,7 +89,7 @@ using output_t = vector<price>;
 //! closing prices are simulated from the model with σε = 1$, σξ = 0.5$, and
 //! σζ = 0.1$ per day. Not trading advice.
 //!
-//! @image html ./sample/image/kf_2x1x0_stock_price_unit.svg
+//! @image html kf_2x1x0_stock_price_unit.svg
 //!
 //! @example kf_2x1x0_stock_price_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {

@@ -36,21 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-if(NOT BUILD_TESTING)
-  return()
-endif()
-
-add_subdirectory("ekf_4x1x0_thermal_soaring")
-add_subdirectory("ekf_6x4x0_3d_apollo_position")
-add_subdirectory("kf_1x1x0_building_height")
-add_subdirectory("kf_1x1x0_building_height_unit")
-add_subdirectory("kf_1x1x0_liquid_temperature")
-add_subdirectory("kf_1x1x0_liquid_temperature_unit")
-add_subdirectory("kf_1x1x1_1d_dog_position")
-add_subdirectory("kf_1x1x1_1d_dog_position_unit")
-add_subdirectory("kf_2x1x0_pairs_hedge_ratio_unit")
-add_subdirectory("kf_2x1x0_stock_price_unit")
-add_subdirectory("kf_2x1x1_1d_rocket_altitude")
-add_subdirectory("kf_6x2x0_2d_vehicle_position")
-add_subdirectory("kf_6x2x0_2d_vehicle_position_unit")
-add_subdirectory("kf_8x4x0_2d_bounding_box")
+sample("kf_6x2x0_2d_vehicle_position" BACKENDS "eigen" "eigen_typed")

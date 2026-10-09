@@ -1,4 +1,4 @@
-#!/usr/bin/gnuplot
+#!/bin/bash
 #  _  __          _      __  __          _   _
 # | |/ /    /\   | |    |  \/  |   /\   | \ | |
 # | ' /    /  \  | |    | \  / |  /  \  |  \| |
@@ -37,26 +37,18 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 720,1080
-set datafile separator ","
-set output "kalman/sample/image/kf_1x1x0_building_height.svg"
-set timestamp
-set ylabel "Height (m)"
-set xlabel "Measurement Step"
-set grid ytics
-set xtics 1
-set key bmargin center horizontal
+set -e
 
-set multiplot layout 3,1
+rm -rf /tmp/kalman
+mkdir /tmp/kalman
 
-set title "{/:Bold Sample 1x1x0 Building Height}\nStates"
-plot "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):10 with linespoints linewidth 3 pointtype 5 title "Measurement Output Z", \
-  "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):8 with linespoints linewidth 3 pointtype 5 title "Estimated State X", \
-  50 with lines linewidth 3 title "True State"
+RESULTS=`find "kalman/sample" -name "result.json"`
+for RESULT in ${RESULTS}; do
+  NAME=$(basename $(dirname ${RESULT}))
+  jq --raw-output '.[] | [.[]] | @csv' ${RESULT} > /tmp/kalman/${NAME}.csv
+done
 
-set title "{/:Bold Sample 1x1x0 Building Height}\nUncertainties"
-plot "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):6 with linespoints linewidth 3 pointtype 5 title "Measurement Uncertainty R", \
-  "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):4 with linespoints linewidth 3 pointtype 5 title "Estimation Uncertainty P"
-
-set title "{/:Bold Sample 1x1x0 Building Height}\nGain"
-plot "/tmp/kalman/kf_1x1x0_building_height.csv" using ($0):3 with linespoints linewidth 3 pointtype 5 title "Gain K"
+PLOTS=`find "kalman/sample" -iname "*.plt"`
+for PLOT in ${PLOTS}; do
+  gnuplot ${PLOT}
+done

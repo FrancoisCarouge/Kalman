@@ -37,26 +37,31 @@
 
 # For more information, please refer to <https://unlicense.org>
 
-set terminal svg enhanced background rgb "white" size 720,720
+set terminal svg enhanced background rgb "white" size 720,1080
 set datafile separator ","
-set output "kalman/sample/image/kf_2x1x0_stock_price_unit.svg"
+set output "kalman/sample/kf_2x1x0_pairs_hedge_ratio_unit/kf_2x1x0_pairs_hedge_ratio_unit.svg"
 set timestamp
 set xlabel "Trading Day"
 set grid ytics
 set key bmargin center horizontal
 
-set multiplot layout 2,1
+set multiplot layout 3,1
 
-set title "{/:Bold Sample 2x1x0 Stock Price}\nNext Day Forecast"
+set title "{/:Bold Sample 2x1x0 Pairs Hedge Ratio}\nClosing Prices"
 set ylabel "Closing Price ($)"
-set yrange [86:108]
-plot "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using ($1 + 1):($5 - $6):($5 + $6) with filledcurves fillcolor rgb "#dddddd" fillstyle solid noborder title "Forecast ±1σ", \
-  "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using ($1 + 1):5 with lines linewidth 3 title "Forecast", \
-  "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using 1:3 with lines linewidth 3 title "Estimated Level", \
-  "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using 1:2 with points pointtype 7 title "Measured Closing Price"
+plot "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:3 with linespoints linewidth 3 pointtype 5 title "Dependent Stock", \
+  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:2 with linespoints linewidth 3 pointtype 5 title "Independent Stock"
 
-set title "{/:Bold Sample 2x1x0 Stock Price}\nTrend"
-set ylabel "Slope ($/day)"
-set yrange [*:*]
-plot "/tmp/kalman/kf_2x1x0_stock_price_unit.csv" using 1:4 with linespoints linewidth 3 pointtype 5 title "Estimated Slope", \
-  0 with lines linewidth 1 linecolor "black" notitle
+set title "{/:Bold Sample 2x1x0 Pairs Hedge Ratio}\nHedge Ratio"
+set ylabel "Hedge Ratio β"
+set yrange [1.15:1.45]
+plot "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:4 with linespoints linewidth 3 pointtype 5 title "Estimated Hedge Ratio", \
+  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:8 with lines linewidth 3 title "Simulated Hedge Ratio"
+
+set title "{/:Bold Sample 2x1x0 Pairs Hedge Ratio}\nSpread and Entry Signals"
+set ylabel "Spread e ($)"
+set yrange [-0.7:0.7]
+plot "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:(-$7):7 with filledcurves fillcolor rgb "#dddddd" fillstyle solid noborder title "±√S", \
+  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:6 with lines linewidth 3 title "Spread", \
+  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:($6 < -$7 ? $6 : NaN) with points pointtype 9 pointsize 1.5 title "Long Entry", \
+  "/tmp/kalman/kf_2x1x0_pairs_hedge_ratio_unit.csv" using 1:($6 > $7 ? $6 : NaN) with points pointtype 11 pointsize 1.5 title "Short Entry"
