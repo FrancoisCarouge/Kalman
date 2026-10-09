@@ -159,8 +159,23 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;mp-units/compat_macros.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;mp-units/framework/dimension.h&gt;</span></div>
+<div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
+<div class="line"><span class="keyword">using </span>mp_units::si::unit_symbols::d;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>dim_currency final : mp_units::base_dimension&lt;&quot;$&quot;&gt; {</div>
+<div class="line">} dim_currency;</div>
+<div class="line">QUANTITY_SPEC(currency, dim_currency);</div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>us_dollar final</div>
+<div class="line">    : mp_units::named_unit&lt;&quot;USD&quot;, mp_units::kind_of&lt;currency&gt;&gt; {</div>
+<div class="line">} us_dollar;</div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> USD{us_dollar};</div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> USD2{pow&lt;2&gt;(USD)};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using </span>price = mp_units::quantity&lt;USD&gt;;</div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types&gt; <span class="keyword">using </span>vector = column_vector&lt;double, Types...&gt;;</div>
 <div class="line"><span class="keyword">using </span>price_slope = mp_units::quantity&lt;USD / d&gt;;</div>
 <div class="line"><span class="keyword">using </span>state_t = vector&lt;price, price_slope&gt;;</div>

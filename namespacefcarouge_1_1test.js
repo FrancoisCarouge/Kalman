@@ -119,9 +119,13 @@ var namespacefcarouge_1_1test =
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__q__r__callable__1x1x0_8cpp_03.xhtml#ac96c06da13591ba5d0b6fd63727d73c2", null ]
     ] ],
     [ "anonymous_namespace{kf_6x2x0_2d_vehicle_position_unit.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml", [
+      [ "acceleration", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#ac82800710de67030d77951c245463a1e", null ],
       [ "output_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a8d2431f30194b5c0da04325e414510c8", null ],
+      [ "position", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#ab423e1418bfc21544979e6647b717276", null ],
       [ "state_t", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#abf4c9e07abbf90248159f6a31544499f", null ],
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a69d46014bf93a5641882f5ee05080f43", null ],
+      [ "velocity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a75c47ac5bbd1264b60773f5744107976", null ],
+      [ "s4", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a1ae1176dccb626eb97e9a1d5f650edda", null ],
       [ "sample", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#add477cb70d27955747e0445ddbe8a705", null ]
     ] ],
     [ "anonymous_namespace{linalg_addition.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02linalg__addition_8cpp_03.xhtml", [

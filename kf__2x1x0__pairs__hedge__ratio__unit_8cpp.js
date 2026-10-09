@@ -1,9 +1,17 @@
 var kf__2x1x0__pairs__hedge__ratio__unit_8cpp =
 [
+    [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1dim__currency.xhtml", null ],
+    [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::us_dollar", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml", null ],
     [ "output_model_t", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#ae034e0de08b0a51e30c6a7cabd70dabd", null ],
     [ "output_t", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a8d4f93d79cc53939a06bea22aa026418", null ],
+    [ "price", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a4885e68d5f78955bf63fefcd4cb9dc4d", null ],
     [ "ratio", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#aaa6583ffeddac2f3aca9208dafe0c06a", null ],
     [ "state_t", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a352669a205b5c40bbb6b82ca25034ddd", null ],
     [ "vector", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a9a79b019c4fc93133871fc59055b3fcd", null ],
-    [ "sample", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a4113a8ce9a0c4b272ca791e4fb917070", null ]
+    [ "QUANTITY_SPEC", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a4e9f6d3f8d38636e06c58f838058a3c9", null ],
+    [ "dim_currency", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#ab8764efbaa4d4f2f1b040411fb3b5320", null ],
+    [ "sample", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a4113a8ce9a0c4b272ca791e4fb917070", null ],
+    [ "us_dollar", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a16461e7d7a5b65dd8c6fb6baf9ef0677", null ],
+    [ "USD", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#af561b46fb32a7f9cbb038f0e1c61c350", null ],
+    [ "USD2", "kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml#a9eba0412ce80b21d27f609212b4a5eeb", null ]
 ];

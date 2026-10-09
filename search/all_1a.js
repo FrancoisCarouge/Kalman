@@ -5,9 +5,12 @@ var searchData=
   ['unrelated_2',['unrelated',['../structfcarouge_1_1test_1_1anonymous__namespace_02kalman__format__unrelated_8cpp_03_1_1unrelated.xhtml',1,'fcarouge::test::anonymous_namespace{kalman_format_unrelated.cpp}']]],
   ['update_3',['update',['../classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98',1,'fcarouge::kalman::update(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a26f8830ac8d109d2685b187bca02e4f8',1,'fcarouge::kalman::update() const']]],
   ['update_5ftypes_4',['update_types',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aaaeba5a63d49843ca7b33a85a91ca041',1,'fcarouge::kalman_filter::internal']]],
-  ['usage_5',['Installation &amp; Usage',['../index.xhtml#installation--usage',1,'']]],
-  ['use_6',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#ad51507654adfa608dfb66f37ab39f622',1,'LICENSE.txt']]],
-  ['utility_2ehpp_7',['utility.hpp',['../utility_8hpp.xhtml',1,'']]],
-  ['utility_5fidentity_5fdefault_2ecpp_8',['utility_identity_default.cpp',['../utility__identity__default_8cpp.xhtml',1,'']]],
-  ['utility_5fzero_5fdefault_2ecpp_9',['utility_zero_default.cpp',['../utility__zero__default_8cpp.xhtml',1,'']]]
+  ['us_5fdollar_5',['us_dollar',['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::us_dollar'],['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a16461e7d7a5b65dd8c6fb6baf9ef0677',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::us_dollar'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a676bc9f79c26574f36517994d2f42c33',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar']]],
+  ['usage_6',['Installation &amp; Usage',['../index.xhtml#installation--usage',1,'']]],
+  ['usd_7',['USD',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#af561b46fb32a7f9cbb038f0e1c61c350',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::USD'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a19962552a964346dd868c6b2440dba53',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::USD']]],
+  ['usd2_8',['USD2',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9eba0412ce80b21d27f609212b4a5eeb',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::USD2'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a0cb545cef087a1ae5f84edaaa3e753f2',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::USD2']]],
+  ['use_9',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#ad51507654adfa608dfb66f37ab39f622',1,'LICENSE.txt']]],
+  ['utility_2ehpp_10',['utility.hpp',['../utility_8hpp.xhtml',1,'']]],
+  ['utility_5fidentity_5fdefault_2ecpp_11',['utility_identity_default.cpp',['../utility__identity__default_8cpp.xhtml',1,'']]],
+  ['utility_5fzero_5fdefault_2ecpp_12',['utility_zero_default.cpp',['../utility__zero__default_8cpp.xhtml',1,'']]]
 ];

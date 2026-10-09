@@ -1,5 +1,8 @@
 var searchData=
 [
   ['update_5ftypes_0',['update_types',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aaaeba5a63d49843ca7b33a85a91ca041',1,'fcarouge::kalman_filter::internal']]],
-  ['use_1',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#ad51507654adfa608dfb66f37ab39f622',1,'LICENSE.txt']]]
+  ['us_5fdollar_1',['us_dollar',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a16461e7d7a5b65dd8c6fb6baf9ef0677',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::us_dollar'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a676bc9f79c26574f36517994d2f42c33',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar']]],
+  ['usd_2',['USD',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#af561b46fb32a7f9cbb038f0e1c61c350',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::USD'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a19962552a964346dd868c6b2440dba53',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::USD']]],
+  ['usd2_3',['USD2',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9eba0412ce80b21d27f609212b4a5eeb',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::USD2'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a0cb545cef087a1ae5f84edaaa3e753f2',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::USD2']]],
+  ['use_4',['use',['../_l_i_c_e_n_s_e_8txt.xhtml#ad51507654adfa608dfb66f37ab39f622',1,'LICENSE.txt']]]
 ];

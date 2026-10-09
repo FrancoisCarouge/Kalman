@@ -101,26 +101,51 @@ $(function(){initNavTree('namespacefcarouge_1_1sample_1_1anonymous__namespace_02
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp} Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml">dim_currency</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The currency, not a physical quantity, is a base dimension of its own: a price never converts to nor compares with a physical quantity.  <a href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml">us_dollar</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:aa5216a64e49528f9f743f2c222104a81" id="r_aa5216a64e49528f9f743f2c222104a81"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5216a64e49528f9f743f2c222104a81">price</a> = mp_units::quantity&lt;<a class="el" href="#a19962552a964346dd868c6b2440dba53">USD</a>&gt;</td></tr>
+<tr class="separator:aa5216a64e49528f9f743f2c222104a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabf83d5b59010c1ee6d41c6f8b771211" id="r_aabf83d5b59010c1ee6d41c6f8b771211"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:aabf83d5b59010c1ee6d41c6f8b771211"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a> = column_vector&lt;double, Types...&gt;</td></tr>
 <tr class="separator:aabf83d5b59010c1ee6d41c6f8b771211"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ead4356d36ec68f934aefb898f030b0" id="r_a2ead4356d36ec68f934aefb898f030b0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ead4356d36ec68f934aefb898f030b0">price_slope</a> = mp_units::quantity&lt;USD / d&gt;</td></tr>
+<tr class="memitem:a2ead4356d36ec68f934aefb898f030b0" id="r_a2ead4356d36ec68f934aefb898f030b0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ead4356d36ec68f934aefb898f030b0">price_slope</a> = mp_units::quantity&lt;<a class="el" href="#a19962552a964346dd868c6b2440dba53">USD</a> / d&gt;</td></tr>
 <tr class="separator:a2ead4356d36ec68f934aefb898f030b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae954946a9d672546e08408f707de82e5" id="r_ae954946a9d672546e08408f707de82e5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae954946a9d672546e08408f707de82e5">state_t</a> = <a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;price, <a class="el" href="#a2ead4356d36ec68f934aefb898f030b0">price_slope</a>&gt;</td></tr>
+<tr class="memitem:ae954946a9d672546e08408f707de82e5" id="r_ae954946a9d672546e08408f707de82e5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae954946a9d672546e08408f707de82e5">state_t</a> = <a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;<a class="el" href="#aa5216a64e49528f9f743f2c222104a81">price</a>, <a class="el" href="#a2ead4356d36ec68f934aefb898f030b0">price_slope</a>&gt;</td></tr>
 <tr class="separator:ae954946a9d672546e08408f707de82e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64e12eedf5f118198041f66dcf30dc15" id="r_a64e12eedf5f118198041f66dcf30dc15"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64e12eedf5f118198041f66dcf30dc15">output_t</a> = <a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;price&gt;</td></tr>
+<tr class="memitem:a64e12eedf5f118198041f66dcf30dc15" id="r_a64e12eedf5f118198041f66dcf30dc15"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64e12eedf5f118198041f66dcf30dc15">output_t</a> = <a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;<a class="el" href="#aa5216a64e49528f9f743f2c222104a81">price</a>&gt;</td></tr>
 <tr class="separator:a64e12eedf5f118198041f66dcf30dc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a18ca64b0dfaccf2a7c77d4a75aab3e93" id="r_a18ca64b0dfaccf2a7c77d4a75aab3e93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18ca64b0dfaccf2a7c77d4a75aab3e93">QUANTITY_SPEC</a> (currency, <a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml">dim_currency</a>)</td></tr>
+<tr class="separator:a18ca64b0dfaccf2a7c77d4a75aab3e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a21632fb99c18787e5da29e018ce9690f" id="r_a21632fb99c18787e5da29e018ce9690f"><td class="memItemLeft" align="right" valign="top">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21632fb99c18787e5da29e018ce9690f">dim_currency</a></td></tr>
+<tr class="separator:a21632fb99c18787e5da29e018ce9690f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a676bc9f79c26574f36517994d2f42c33" id="r_a676bc9f79c26574f36517994d2f42c33"><td class="memItemLeft" align="right" valign="top">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a676bc9f79c26574f36517994d2f42c33">us_dollar</a></td></tr>
+<tr class="separator:a676bc9f79c26574f36517994d2f42c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19962552a964346dd868c6b2440dba53" id="r_a19962552a964346dd868c6b2440dba53"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19962552a964346dd868c6b2440dba53">USD</a> {<a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml">us_dollar</a>}</td></tr>
+<tr class="separator:a19962552a964346dd868c6b2440dba53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cb545cef087a1ae5f84edaaa3e753f2" id="r_a0cb545cef087a1ae5f84edaaa3e753f2"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cb545cef087a1ae5f84edaaa3e753f2">USD2</a> {pow&lt;2&gt;(<a class="el" href="#a19962552a964346dd868c6b2440dba53">USD</a>)}</td></tr>
+<tr class="separator:a0cb545cef087a1ae5f84edaaa3e753f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ae1f36cbdffd9bfb09ce267dc662d13" id="r_a4ae1f36cbdffd9bfb09ce267dc662d13"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ae1f36cbdffd9bfb09ce267dc662d13">sample</a></td></tr>
 <tr class="separator:a4ae1f36cbdffd9bfb09ce267dc662d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -132,12 +157,28 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::output_t = <a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;price&gt;</td>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::output_t = <a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;<a class="el" href="#aa5216a64e49528f9f743f2c222104a81">price</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00066">66</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa5216a64e49528f9f743f2c222104a81" name="aa5216a64e49528f9f743f2c222104a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5216a64e49528f9f743f2c222104a81">&#9670;&#160;</a></span>price</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::price = mp_units::quantity&lt;<a class="el" href="#a19962552a964346dd868c6b2440dba53">USD</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00062">62</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
 
 </div>
 </div>
@@ -148,12 +189,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::price_slope = mp_units::quantity&lt;USD / d&gt;</td>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::price_slope = mp_units::quantity&lt;<a class="el" href="#a19962552a964346dd868c6b2440dba53">USD</a> / d&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00064">64</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
 
 </div>
 </div>
@@ -164,12 +205,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::state_t = <a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;price, <a class="el" href="#a2ead4356d36ec68f934aefb898f030b0">price_slope</a>&gt;</td>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::state_t = <a class="el" href="#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;<a class="el" href="#aa5216a64e49528f9f743f2c222104a81">price</a>, <a class="el" href="#a2ead4356d36ec68f934aefb898f030b0">price_slope</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00065">65</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
 
 </div>
 </div>
@@ -187,11 +228,47 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00046">46</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00063">63</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a18ca64b0dfaccf2a7c77d4a75aab3e93" name="a18ca64b0dfaccf2a7c77d4a75aab3e93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18ca64b0dfaccf2a7c77d4a75aab3e93">&#9670;&#160;</a></span>QUANTITY_SPEC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::QUANTITY_SPEC </td>
+          <td>(</td>
+          <td class="paramtype">currency</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml">dim_currency</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a21632fb99c18787e5da29e018ce9690f" name="a21632fb99c18787e5da29e018ce9690f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21632fb99c18787e5da29e018ce9690f">&#9670;&#160;</a></span>dim_currency</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4ae1f36cbdffd9bfb09ce267dc662d13" name="a4ae1f36cbdffd9bfb09ce267dc662d13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ae1f36cbdffd9bfb09ce267dc662d13">&#9670;&#160;</a></span>sample</h2>
 
@@ -204,153 +281,221 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00078">78</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   79</span>  <span class="comment">// A 2x1x0 filter, local linear trend dynamic model, no control, constant</span></div>
-<div class="line"><span class="lineno">   80</span>  <span class="comment">// daily time step.</span></div>
-<div class="line"><span class="lineno">   81</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
-<div class="line"><span class="lineno">   82</span>      <span class="comment">// The state X is chosen to be the price level and slope: [μ, ν]. We don&#39;t</span></div>
-<div class="line"><span class="lineno">   83</span>      <span class="comment">// know the stock price; we will set the initial level and slope to 0.</span></div>
-<div class="line"><span class="lineno">   84</span>      state{<a class="code hl_typedef" href="#ae954946a9d672546e08408f707de82e5">state_t</a>{price{0. * USD}, price_slope{0. * USD / d}}},</div>
-<div class="line"><span class="lineno">   85</span>      <span class="comment">// The filter observes the output Z closing price [$].</span></div>
-<div class="line"><span class="lineno">   86</span>      output&lt;output_t&gt;,</div>
-<div class="line"><span class="lineno">   87</span>      <span class="comment">// Since our initial state is a guess, we will set a very high estimate</span></div>
-<div class="line"><span class="lineno">   88</span>      <span class="comment">// uncertainty, an approximation of the diffuse initialization of the</span></div>
-<div class="line"><span class="lineno">   89</span>      <span class="comment">// model. The first closing price then sets the level and the second one</span></div>
-<div class="line"><span class="lineno">   90</span>      <span class="comment">// sets the slope.</span></div>
-<div class="line"><span class="lineno">   91</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><span class="lineno">   92</span>        <span class="keyword">using </span>estimate_uncertainty_t = kf::ᴀʙᵀ&lt;state_t, state_t&gt;;</div>
-<div class="line"><span class="lineno">   93</span>        estimate_uncertainty_t value;</div>
-<div class="line"><span class="lineno">   94</span>        value.at&lt;0, 0&gt;(1000. * USD2);</div>
-<div class="line"><span class="lineno">   95</span>        value.at&lt;1, 1&gt;(1000. * USD2 / d / d);</div>
-<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">   97</span>      }()},</div>
-<div class="line"><span class="lineno">   98</span>      <span class="comment">// The process uncertainty Q holds the variances of the level and slope</span></div>
-<div class="line"><span class="lineno">   99</span>      <span class="comment">// disturbances: σξ^2 = 0.25 $^2 and σζ^2 = 0.01 $^2/d^2.</span></div>
-<div class="line"><span class="lineno">  100</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><span class="lineno">  101</span>        <span class="keyword">using </span>process_uncertainty_t = kf::ᴀʙᵀ&lt;state_t, state_t&gt;;</div>
-<div class="line"><span class="lineno">  102</span>        process_uncertainty_t value;</div>
-<div class="line"><span class="lineno">  103</span>        value.at&lt;0, 0&gt;(0.25 * USD2);</div>
-<div class="line"><span class="lineno">  104</span>        value.at&lt;1, 1&gt;(0.01 * USD2 / d / d);</div>
-<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">  106</span>      }()},</div>
-<div class="line"><span class="lineno">  107</span>      <span class="comment">// The output uncertainty R is the variance of the transient fluctuations</span></div>
-<div class="line"><span class="lineno">  108</span>      <span class="comment">// of the closing price around its level: σε^2 = 1 $^2.</span></div>
-<div class="line"><span class="lineno">  109</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a>{1. * USD2},</div>
-<div class="line"><span class="lineno">  110</span>      <span class="comment">// The output model H observes the level only.</span></div>
-<div class="line"><span class="lineno">  111</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272">output_model</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><span class="lineno">  112</span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ae034e0de08b0a51e30c6a7cabd70dabd">output_model_t</a> = kf::evaluate&lt;kf::quotient&lt;output_t, state_t&gt;&gt;;</div>
-<div class="line"><span class="lineno">  113</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ae034e0de08b0a51e30c6a7cabd70dabd">output_model_t</a> value;</div>
-<div class="line"><span class="lineno">  114</span>        value.at&lt;0&gt;(1.);</div>
-<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">  116</span>      }()},</div>
-<div class="line"><span class="lineno">  117</span>      <span class="comment">// The state transition F adds the slope over one day to the level.</span></div>
-<div class="line"><span class="lineno">  118</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb">state_transition</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keyword">using </span>state_transition_t = kf::evaluate&lt;kf::quotient&lt;state_t, state_t&gt;&gt;;</div>
-<div class="line"><span class="lineno">  120</span>        state_transition_t value;</div>
-<div class="line"><span class="lineno">  121</span>        value.at&lt;0, 0&gt;(1.);</div>
-<div class="line"><span class="lineno">  122</span>        value.at&lt;0, 1&gt;(1. * d);</div>
-<div class="line"><span class="lineno">  123</span>        value.at&lt;1, 1&gt;(1.);</div>
-<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">return</span> value;</div>
-<div class="line"><span class="lineno">  125</span>      }()}};</div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>  <span class="comment">// Verifies a value at the relative accuracy of its expectation.</span></div>
-<div class="line"><span class="lineno">  128</span>  <span class="keyword">const</span> <span class="keyword">auto</span> near{</div>
-<div class="line"><span class="lineno">  129</span>      [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;expected, <span class="keywordtype">double</span> accuracy) -&gt; <span class="keywordtype">bool</span> {</div>
-<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">return</span> abs(value - expected) &lt; accuracy * abs(expected);</div>
-<div class="line"><span class="lineno">  131</span>      }};</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>  <span class="comment">// Run a step of the filter, updating with the closing price of the day and</span></div>
-<div class="line"><span class="lineno">  134</span>  <span class="comment">// predicting the closing price of the next day, every trading day.</span></div>
-<div class="line"><span class="lineno">  135</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](price close) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line"><span class="lineno">  136</span>    filter.update(close);</div>
-<div class="line"><span class="lineno">  137</span>    filter.predict();</div>
-<div class="line"><span class="lineno">  138</span>  }};</div>
-<div class="line"><span class="lineno">  139</span> </div>
-<div class="line"><span class="lineno">  140</span>  step(100.87 * USD);</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>  <span class="comment">// The first closing price sets the level, the slope remains unknown.</span></div>
-<div class="line"><span class="lineno">  143</span>  assert(near(filter.x().at&lt;0&gt;(), 100.77 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  144</span>         abs(filter.x().at&lt;1&gt;()) &lt; 0.001 * USD / d &amp;&amp;</div>
-<div class="line"><span class="lineno">  145</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>  step(100.45 * USD);</div>
-<div class="line"><span class="lineno">  148</span>  step(99.86 * USD);</div>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00095">95</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   96</span>  <span class="comment">// A 2x1x0 filter, local linear trend dynamic model, no control, constant</span></div>
+<div class="line"><span class="lineno">   97</span>  <span class="comment">// daily time step.</span></div>
+<div class="line"><span class="lineno">   98</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
+<div class="line"><span class="lineno">   99</span>      <span class="comment">// The state X is chosen to be the price level and slope: [μ, ν]. We don&#39;t</span></div>
+<div class="line"><span class="lineno">  100</span>      <span class="comment">// know the stock price; we will set the initial level and slope to 0.</span></div>
+<div class="line"><span class="lineno">  101</span>      state{<a class="code hl_typedef" href="#ae954946a9d672546e08408f707de82e5">state_t</a>{<a class="code hl_typedef" href="#aa5216a64e49528f9f743f2c222104a81">price</a>{0. * USD}, price_slope{0. * USD / d}}},</div>
+<div class="line"><span class="lineno">  102</span>      <span class="comment">// The filter observes the output Z closing price [$].</span></div>
+<div class="line"><span class="lineno">  103</span>      output&lt;output_t&gt;,</div>
+<div class="line"><span class="lineno">  104</span>      <span class="comment">// Since our initial state is a guess, we will set a very high estimate</span></div>
+<div class="line"><span class="lineno">  105</span>      <span class="comment">// uncertainty, an approximation of the diffuse initialization of the</span></div>
+<div class="line"><span class="lineno">  106</span>      <span class="comment">// model. The first closing price then sets the level and the second one</span></div>
+<div class="line"><span class="lineno">  107</span>      <span class="comment">// sets the slope.</span></div>
+<div class="line"><span class="lineno">  108</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  109</span>        <span class="keyword">using </span>estimate_uncertainty_t = kf::ᴀʙᵀ&lt;state_t, state_t&gt;;</div>
+<div class="line"><span class="lineno">  110</span>        estimate_uncertainty_t value;</div>
+<div class="line"><span class="lineno">  111</span>        value.at&lt;0, 0&gt;(1000. * <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a>);</div>
+<div class="line"><span class="lineno">  112</span>        value.at&lt;1, 1&gt;(1000. * <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a> / d / d);</div>
+<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">return</span> value;</div>
+<div class="line"><span class="lineno">  114</span>      }()},</div>
+<div class="line"><span class="lineno">  115</span>      <span class="comment">// The process uncertainty Q holds the variances of the level and slope</span></div>
+<div class="line"><span class="lineno">  116</span>      <span class="comment">// disturbances: σξ^2 = 0.25 $^2 and σζ^2 = 0.01 $^2/d^2.</span></div>
+<div class="line"><span class="lineno">  117</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  118</span>        <span class="keyword">using </span>process_uncertainty_t = kf::ᴀʙᵀ&lt;state_t, state_t&gt;;</div>
+<div class="line"><span class="lineno">  119</span>        process_uncertainty_t value;</div>
+<div class="line"><span class="lineno">  120</span>        value.at&lt;0, 0&gt;(0.25 * <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a>);</div>
+<div class="line"><span class="lineno">  121</span>        value.at&lt;1, 1&gt;(0.01 * <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a> / d / d);</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">return</span> value;</div>
+<div class="line"><span class="lineno">  123</span>      }()},</div>
+<div class="line"><span class="lineno">  124</span>      <span class="comment">// The output uncertainty R is the variance of the transient fluctuations</span></div>
+<div class="line"><span class="lineno">  125</span>      <span class="comment">// of the closing price around its level: σε^2 = 1 $^2.</span></div>
+<div class="line"><span class="lineno">  126</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a>{1. * <a class="code hl_variable" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a>},</div>
+<div class="line"><span class="lineno">  127</span>      <span class="comment">// The output model H observes the level only.</span></div>
+<div class="line"><span class="lineno">  128</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272">output_model</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  129</span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ae034e0de08b0a51e30c6a7cabd70dabd">output_model_t</a> = kf::evaluate&lt;kf::quotient&lt;output_t, state_t&gt;&gt;;</div>
+<div class="line"><span class="lineno">  130</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ae034e0de08b0a51e30c6a7cabd70dabd">output_model_t</a> value;</div>
+<div class="line"><span class="lineno">  131</span>        value.at&lt;0&gt;(1.);</div>
+<div class="line"><span class="lineno">  132</span>        <span class="keywordflow">return</span> value;</div>
+<div class="line"><span class="lineno">  133</span>      }()},</div>
+<div class="line"><span class="lineno">  134</span>      <span class="comment">// The state transition F adds the slope over one day to the level.</span></div>
+<div class="line"><span class="lineno">  135</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb">state_transition</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  136</span>        <span class="keyword">using </span>state_transition_t = kf::evaluate&lt;kf::quotient&lt;state_t, state_t&gt;&gt;;</div>
+<div class="line"><span class="lineno">  137</span>        state_transition_t value;</div>
+<div class="line"><span class="lineno">  138</span>        value.at&lt;0, 0&gt;(1.);</div>
+<div class="line"><span class="lineno">  139</span>        value.at&lt;0, 1&gt;(1. * d);</div>
+<div class="line"><span class="lineno">  140</span>        value.at&lt;1, 1&gt;(1.);</div>
+<div class="line"><span class="lineno">  141</span>        <span class="keywordflow">return</span> value;</div>
+<div class="line"><span class="lineno">  142</span>      }()}};</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>  <span class="comment">// Verifies a value at the relative accuracy of its expectation.</span></div>
+<div class="line"><span class="lineno">  145</span>  <span class="keyword">const</span> <span class="keyword">auto</span> near{</div>
+<div class="line"><span class="lineno">  146</span>      [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;value, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;expected, <span class="keywordtype">double</span> accuracy) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">return</span> abs(value - expected) &lt; accuracy * abs(expected);</div>
+<div class="line"><span class="lineno">  148</span>      }};</div>
 <div class="line"><span class="lineno">  149</span> </div>
-<div class="line"><span class="lineno">  150</span>  assert(near(filter.x().at&lt;0&gt;(), 99.447 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  151</span>         near(filter.x().at&lt;1&gt;(), -0.4545 * USD / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  152</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  153</span>  assert(near(filter.p().at&lt;0, 0&gt;(), 2.7337 * USD2, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  154</span>         near(filter.p().at&lt;0, 1&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  155</span>         near(filter.p().at&lt;1, 0&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  156</span>         near(filter.p().at&lt;1, 1&gt;(), 0.64686 * USD2 / d / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  157</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  150</span>  <span class="comment">// Run a step of the filter, updating with the closing price of the day and</span></div>
+<div class="line"><span class="lineno">  151</span>  <span class="comment">// predicting the closing price of the next day, every trading day.</span></div>
+<div class="line"><span class="lineno">  152</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> close) -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><span class="lineno">  153</span>    filter.update(close);</div>
+<div class="line"><span class="lineno">  154</span>    filter.predict();</div>
+<div class="line"><span class="lineno">  155</span>  }};</div>
+<div class="line"><span class="lineno">  156</span> </div>
+<div class="line"><span class="lineno">  157</span>  step(100.87 * USD);</div>
 <div class="line"><span class="lineno">  158</span> </div>
-<div class="line"><span class="lineno">  159</span>  step(99.32 * USD);</div>
-<div class="line"><span class="lineno">  160</span>  step(100.53 * USD);</div>
-<div class="line"><span class="lineno">  161</span>  step(101.14 * USD);</div>
-<div class="line"><span class="lineno">  162</span>  step(98.63 * USD);</div>
-<div class="line"><span class="lineno">  163</span>  step(99.31 * USD);</div>
-<div class="line"><span class="lineno">  164</span>  step(103.04 * USD);</div>
-<div class="line"><span class="lineno">  165</span>  step(96.89 * USD);</div>
-<div class="line"><span class="lineno">  166</span>  step(99.94 * USD);</div>
-<div class="line"><span class="lineno">  167</span>  step(102.41 * USD);</div>
-<div class="line"><span class="lineno">  168</span>  step(101.85 * USD);</div>
-<div class="line"><span class="lineno">  169</span>  step(101.11 * USD);</div>
-<div class="line"><span class="lineno">  170</span>  step(100.59 * USD);</div>
-<div class="line"><span class="lineno">  171</span>  step(102.15 * USD);</div>
-<div class="line"><span class="lineno">  172</span>  step(99.28 * USD);</div>
-<div class="line"><span class="lineno">  173</span>  step(102.62 * USD);</div>
-<div class="line"><span class="lineno">  174</span>  step(101.88 * USD);</div>
-<div class="line"><span class="lineno">  175</span>  step(102.56 * USD);</div>
-<div class="line"><span class="lineno">  176</span>  step(103.11 * USD);</div>
-<div class="line"><span class="lineno">  177</span>  step(101.83 * USD);</div>
-<div class="line"><span class="lineno">  178</span>  step(103.25 * USD);</div>
-<div class="line"><span class="lineno">  179</span>  step(101.97 * USD);</div>
-<div class="line"><span class="lineno">  180</span>  step(101.6 * USD);</div>
-<div class="line"><span class="lineno">  181</span>  step(101.6 * USD);</div>
-<div class="line"><span class="lineno">  182</span>  step(100.14 * USD);</div>
-<div class="line"><span class="lineno">  183</span>  step(102.23 * USD);</div>
-<div class="line"><span class="lineno">  184</span>  step(100.59 * USD);</div>
-<div class="line"><span class="lineno">  185</span>  step(100.6 * USD);</div>
-<div class="line"><span class="lineno">  186</span>  step(98.47 * USD);</div>
-<div class="line"><span class="lineno">  187</span>  step(98.38 * USD);</div>
-<div class="line"><span class="lineno">  188</span>  step(99.53 * USD);</div>
-<div class="line"><span class="lineno">  189</span>  step(98.56 * USD);</div>
-<div class="line"><span class="lineno">  190</span>  step(96.41 * USD);</div>
-<div class="line"><span class="lineno">  191</span>  step(95.41 * USD);</div>
-<div class="line"><span class="lineno">  192</span>  step(94.07 * USD);</div>
-<div class="line"><span class="lineno">  193</span>  step(94.43 * USD);</div>
-<div class="line"><span class="lineno">  194</span>  step(91.81 * USD);</div>
-<div class="line"><span class="lineno">  195</span>  step(91.91 * USD);</div>
-<div class="line"><span class="lineno">  196</span> </div>
-<div class="line"><span class="lineno">  197</span>  <span class="comment">// The price turned down: the filter estimates a negative trend and forecasts</span></div>
-<div class="line"><span class="lineno">  198</span>  <span class="comment">// the next closing price below the last one, at 91.17$. The forecast</span></div>
-<div class="line"><span class="lineno">  199</span>  <span class="comment">// uncertainty of the closing price is the level uncertainty plus the</span></div>
-<div class="line"><span class="lineno">  200</span>  <span class="comment">// transient fluctuations: σ = √(0.948 + 1) ≈ 1.40$.</span></div>
-<div class="line"><span class="lineno">  201</span>  assert(near(filter.x().at&lt;0&gt;(), 91.172 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  202</span>         near(filter.x().at&lt;1&gt;(), -0.78336 * USD / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  203</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  204</span>  assert(near(filter.p().at&lt;0, 0&gt;(), 0.94782 * USD2, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  205</span>         near(filter.p().at&lt;0, 1&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  206</span>         near(filter.p().at&lt;1, 0&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  207</span>         near(filter.p().at&lt;1, 1&gt;(), 0.077913 * USD2 / d / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  208</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  209</span>  assert(near(filter.k().at&lt;0&gt;(), 0.48661 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  210</span>         near(filter.k().at&lt;1&gt;(), 0.071652 / d, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  211</span>         <span class="stringliteral">&quot;The steady-state gain weighs the closing price about as much as the &quot;</span></div>
-<div class="line"><span class="lineno">  212</span>         <span class="stringliteral">&quot;forecast.&quot;</span>);</div>
+<div class="line"><span class="lineno">  159</span>  <span class="comment">// The first closing price sets the level, the slope remains unknown.</span></div>
+<div class="line"><span class="lineno">  160</span>  assert(near(filter.x().at&lt;0&gt;(), 100.77 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  161</span>         abs(filter.x().at&lt;1&gt;()) &lt; 0.001 * USD / d &amp;&amp;</div>
+<div class="line"><span class="lineno">  162</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>  step(100.45 * USD);</div>
+<div class="line"><span class="lineno">  165</span>  step(99.86 * USD);</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>  assert(near(filter.x().at&lt;0&gt;(), 99.447 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  168</span>         near(filter.x().at&lt;1&gt;(), -0.4545 * USD / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  169</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  170</span>  assert(near(filter.p().at&lt;0, 0&gt;(), 2.7337 * USD2, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  171</span>         near(filter.p().at&lt;0, 1&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  172</span>         near(filter.p().at&lt;1, 0&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  173</span>         near(filter.p().at&lt;1, 1&gt;(), 0.64686 * USD2 / d / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  174</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>  step(99.32 * USD);</div>
+<div class="line"><span class="lineno">  177</span>  step(100.53 * USD);</div>
+<div class="line"><span class="lineno">  178</span>  step(101.14 * USD);</div>
+<div class="line"><span class="lineno">  179</span>  step(98.63 * USD);</div>
+<div class="line"><span class="lineno">  180</span>  step(99.31 * USD);</div>
+<div class="line"><span class="lineno">  181</span>  step(103.04 * USD);</div>
+<div class="line"><span class="lineno">  182</span>  step(96.89 * USD);</div>
+<div class="line"><span class="lineno">  183</span>  step(99.94 * USD);</div>
+<div class="line"><span class="lineno">  184</span>  step(102.41 * USD);</div>
+<div class="line"><span class="lineno">  185</span>  step(101.85 * USD);</div>
+<div class="line"><span class="lineno">  186</span>  step(101.11 * USD);</div>
+<div class="line"><span class="lineno">  187</span>  step(100.59 * USD);</div>
+<div class="line"><span class="lineno">  188</span>  step(102.15 * USD);</div>
+<div class="line"><span class="lineno">  189</span>  step(99.28 * USD);</div>
+<div class="line"><span class="lineno">  190</span>  step(102.62 * USD);</div>
+<div class="line"><span class="lineno">  191</span>  step(101.88 * USD);</div>
+<div class="line"><span class="lineno">  192</span>  step(102.56 * USD);</div>
+<div class="line"><span class="lineno">  193</span>  step(103.11 * USD);</div>
+<div class="line"><span class="lineno">  194</span>  step(101.83 * USD);</div>
+<div class="line"><span class="lineno">  195</span>  step(103.25 * USD);</div>
+<div class="line"><span class="lineno">  196</span>  step(101.97 * USD);</div>
+<div class="line"><span class="lineno">  197</span>  step(101.6 * USD);</div>
+<div class="line"><span class="lineno">  198</span>  step(101.6 * USD);</div>
+<div class="line"><span class="lineno">  199</span>  step(100.14 * USD);</div>
+<div class="line"><span class="lineno">  200</span>  step(102.23 * USD);</div>
+<div class="line"><span class="lineno">  201</span>  step(100.59 * USD);</div>
+<div class="line"><span class="lineno">  202</span>  step(100.6 * USD);</div>
+<div class="line"><span class="lineno">  203</span>  step(98.47 * USD);</div>
+<div class="line"><span class="lineno">  204</span>  step(98.38 * USD);</div>
+<div class="line"><span class="lineno">  205</span>  step(99.53 * USD);</div>
+<div class="line"><span class="lineno">  206</span>  step(98.56 * USD);</div>
+<div class="line"><span class="lineno">  207</span>  step(96.41 * USD);</div>
+<div class="line"><span class="lineno">  208</span>  step(95.41 * USD);</div>
+<div class="line"><span class="lineno">  209</span>  step(94.07 * USD);</div>
+<div class="line"><span class="lineno">  210</span>  step(94.43 * USD);</div>
+<div class="line"><span class="lineno">  211</span>  step(91.81 * USD);</div>
+<div class="line"><span class="lineno">  212</span>  step(91.91 * USD);</div>
 <div class="line"><span class="lineno">  213</span> </div>
-<div class="line"><span class="lineno">  214</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  215</span>}()};</div>
+<div class="line"><span class="lineno">  214</span>  <span class="comment">// The price turned down: the filter estimates a negative trend and forecasts</span></div>
+<div class="line"><span class="lineno">  215</span>  <span class="comment">// the next closing price below the last one, at 91.17$. The forecast</span></div>
+<div class="line"><span class="lineno">  216</span>  <span class="comment">// uncertainty of the closing price is the level uncertainty plus the</span></div>
+<div class="line"><span class="lineno">  217</span>  <span class="comment">// transient fluctuations: σ = √(0.948 + 1) ≈ 1.40$.</span></div>
+<div class="line"><span class="lineno">  218</span>  assert(near(filter.x().at&lt;0&gt;(), 91.172 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  219</span>         near(filter.x().at&lt;1&gt;(), -0.78336 * USD / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  220</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  221</span>  assert(near(filter.p().at&lt;0, 0&gt;(), 0.94782 * USD2, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  222</span>         near(filter.p().at&lt;0, 1&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  223</span>         near(filter.p().at&lt;1, 0&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  224</span>         near(filter.p().at&lt;1, 1&gt;(), 0.077913 * USD2 / d / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  225</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  226</span>  assert(near(filter.k().at&lt;0&gt;(), 0.48661 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  227</span>         near(filter.k().at&lt;1&gt;(), 0.071652 / d, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  228</span>         <span class="stringliteral">&quot;The steady-state gain weighs the closing price about as much as the &quot;</span></div>
+<div class="line"><span class="lineno">  229</span>         <span class="stringliteral">&quot;forecast.&quot;</span>);</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  232</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a183c70977c497ac30a3201051576e4ac"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">fcarouge::kalman_filter::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a19478b612027f688fd2d3ed290827afb"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb">fcarouge::kalman_filter::internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a35a41ff99d9716fe5b0757e207df8e43"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">fcarouge::kalman_filter::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a67e72364f755af0934a50f5fce6dd778"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">fcarouge::kalman_filter::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a7806c4db6cb0477ea35494bc9015d272"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272">fcarouge::kalman_filter::internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_ae034e0de08b0a51e30c6a7cabd70dabd"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ae034e0de08b0a51e30c6a7cabd70dabd">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::output_model_t</a></div><div class="ttdeci">kf::evaluate&lt; kf::quotient&lt; output_t, state_t &gt; &gt; output_model_t</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00050">kf_2x1x0_pairs_hedge_ratio_unit.cpp:50</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_xhtml_ae954946a9d672546e08408f707de82e5"><div class="ttname"><a href="#ae954946a9d672546e08408f707de82e5">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::state_t</a></div><div class="ttdeci">vector&lt; price, price_slope &gt; state_t</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00048">kf_2x1x0_stock_price_unit.cpp:48</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a4885e68d5f78955bf63fefcd4cb9dc4d"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a4885e68d5f78955bf63fefcd4cb9dc4d">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::price</a></div><div class="ttdeci">mp_units::quantity&lt; USD &gt; price</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00060">kf_2x1x0_pairs_hedge_ratio_unit.cpp:60</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a9eba0412ce80b21d27f609212b4a5eeb"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a9eba0412ce80b21d27f609212b4a5eeb">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::USD2</a></div><div class="ttdeci">constexpr auto USD2</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00058">kf_2x1x0_pairs_hedge_ratio_unit.cpp:58</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_ae034e0de08b0a51e30c6a7cabd70dabd"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ae034e0de08b0a51e30c6a7cabd70dabd">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::output_model_t</a></div><div class="ttdeci">kf::evaluate&lt; kf::quotient&lt; output_t, state_t &gt; &gt; output_model_t</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00065">kf_2x1x0_pairs_hedge_ratio_unit.cpp:65</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_xhtml_aa5216a64e49528f9f743f2c222104a81"><div class="ttname"><a href="#aa5216a64e49528f9f743f2c222104a81">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::price</a></div><div class="ttdeci">mp_units::quantity&lt; USD &gt; price</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00062">kf_2x1x0_stock_price_unit.cpp:62</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_xhtml_ae954946a9d672546e08408f707de82e5"><div class="ttname"><a href="#ae954946a9d672546e08408f707de82e5">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::state_t</a></div><div class="ttdeci">vector&lt; price, price_slope &gt; state_t</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00065">kf_2x1x0_stock_price_unit.cpp:65</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a676bc9f79c26574f36517994d2f42c33" name="a676bc9f79c26574f36517994d2f42c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a676bc9f79c26574f36517994d2f42c33">&#9670;&#160;</a></span>us_dollar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19962552a964346dd868c6b2440dba53" name="a19962552a964346dd868c6b2440dba53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19962552a964346dd868c6b2440dba53">&#9670;&#160;</a></span>USD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::USD {<a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml">us_dollar</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00059">59</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{<a class="code hl_struct" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml">us_dollar</a>};</div>
+<div class="ttc" id="astructfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar_xhtml"><div class="ttname"><a href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar</a></div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00056">kf_2x1x0_stock_price_unit.cpp:57</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0cb545cef087a1ae5f84edaaa3e753f2" name="a0cb545cef087a1ae5f84edaaa3e753f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cb545cef087a1ae5f84edaaa3e753f2">&#9670;&#160;</a></span>USD2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::USD2 {pow&lt;2&gt;(<a class="el" href="#a19962552a964346dd868c6b2440dba53">USD</a>)}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="kf__2x1x0__stock__price__unit_8cpp_source.xhtml">kf_2x1x0_stock_price_unit.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>{pow&lt;2&gt;(USD)};</div>
 </div><!-- fragment -->
 </div>
 </div>

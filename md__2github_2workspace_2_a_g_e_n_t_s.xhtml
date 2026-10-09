@@ -163,7 +163,7 @@ Linear algebra backends</h2>
 <li><code>eigen</code> — Eigen3-backed <code>kalman_linalg_eigen</code>; also defines <code>fcarouge/eigen.hpp</code>.</li>
 <li><code>eigen_typed</code> — Eigen plus TypedLinearAlgebra for compile-time element type safety (<code>kalman_linalg_eigen_typed</code>).</li>
 <li><code>quantity</code> — mp-units physical quantities on top of typed Eigen (<code>kalman_linalg_quantity</code>).</li>
-<li><code>mp_units</code> — the mp-units dependency and <code>fcarouge/unit.hpp</code>, linked by every backend-less test and sample (<code>kalman_unit_mp_units</code>).</li>
+<li><code>mp_units</code> — the mp-units dependency and <code>fcarouge/mp_units.hpp</code>, linked by every backend-less test and sample (<code>kalman_unit_mp_units</code>).</li>
 <li><code>typed</code> — the TypedLinearAlgebra dependency.</li>
 <li><code>matplot</code> — Matplot++ plotting (<code>kalman_plot</code>).</li>
 <li><code>main</code> — shared <code>main()</code> driver linked into every test and sample executable (<code>kalman_main</code>), carrying the <code>kalman_realtime</code> object: the real-time verification entry (<code>realtime.cpp</code>) and its <code>not_realtime</code> opt-out token (<code>fcarouge/realtime.hpp</code>).</li>

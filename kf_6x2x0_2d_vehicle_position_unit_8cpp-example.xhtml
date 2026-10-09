@@ -151,8 +151,21 @@ $(function(){initNavTree('kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml',
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;mp-units/systems/isq/space_and_time.h&gt;</span></div>
+<div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
+<div class="line"><span class="keyword">using </span>mp_units::si::unit_symbols::m;</div>
+<div class="line"><span class="keyword">using </span>mp_units::si::unit_symbols::m2;</div>
+<div class="line"><span class="keyword">using </span>mp_units::si::unit_symbols::s;</div>
+<div class="line"><span class="keyword">using </span>mp_units::si::unit_symbols::s2;</div>
+<div class="line"><span class="keyword">using </span>mp_units::si::unit_symbols::s3;</div>
+<div class="line"><span class="keyword">using </span>position = mp_units::quantity&lt;mp_units::isq::length[m]&gt;;</div>
+<div class="line"><span class="keyword">using </span>velocity = mp_units::quantity&lt;mp_units::isq::velocity[m / s]&gt;;</div>
+<div class="line"><span class="keyword">using </span>acceleration = mp_units::quantity&lt;mp_units::isq::acceleration[m / s2]&gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> s4{pow&lt;4&gt;(s)};</div>
+<div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types&gt; <span class="keyword">using </span>vector = column_vector&lt;double, Types...&gt;;</div>
 <div class="line"><span class="keyword">using </span>state_t =</div>
 <div class="line">    vector&lt;position, velocity, acceleration, position, velocity, acceleration&gt;;</div>

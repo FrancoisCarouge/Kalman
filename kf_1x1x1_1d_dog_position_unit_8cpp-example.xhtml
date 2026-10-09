@@ -146,12 +146,16 @@ $(function(){initNavTree('kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml','');
 <div class="line"><span class="comment">For more information, please refer to &lt;https://unlicense.org&gt; */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="kalman_8hpp.xhtml">fcarouge/kalman.hpp</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;fcarouge/unit.hpp&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;fcarouge/mp_units.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
+<div class="line"><span class="keyword">using </span>mp_units::si::unit_symbols::m;</div>
+<div class="line"><span class="keyword">using </span>mp_units::si::unit_symbols::m2;</div>
+<div class="line"><span class="keyword">using </span>position = mp_units::quantity&lt;mp_units::isq::length[m]&gt;;</div>
+<div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// This is the dog&#39;s initial position expressed as a Gaussian. The state X</span></div>
