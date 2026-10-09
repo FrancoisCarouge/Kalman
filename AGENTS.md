@@ -89,6 +89,8 @@ Test files are minimal: `#include "fcarouge/kalman.hpp"` (and `fcarouge/linalg.h
 
 File naming: `<subject>_<feature>[_<state>x<output>x<input>].cpp`, where the dimension triple is the filter's state, output, and input sizes (`5x4x3`, `1x1x0` for no input) and a `_unit` suffix marks the mp-units flavor of a sample.
 
+Each sample lives in its own `sample/<name>/` directory, named per the convention above: a `CMakeLists.txt` holding its single `sample("<name>" ...)` line (listed by an `add_subdirectory` in `sample/CMakeLists.txt`), the `<name>.cpp` source, and, when the sample is plotted, its `result.json` filter activity, the `<name>.plt` gnuplot script, and the `<name>.svg` plot it renders, embedded with `@image html <name>.svg`. Sample files carry the sample name rather than a shared generic one because Doxygen resolves examples and copies images into its output by file name, where same-named files collide. From the parent workspace, `./kalman/sample/plot.sh` regenerates every plot from its `result.json`.
+
 ### Decorators
 
 Filters compose with pipe-style decorators, e.g. `kalman{...} | print`, to attach cross-cutting behavior (printing filter activity) without modifying the filter type itself — see `kalman_filter/internal/print.hpp`. A `std::formatter` specialization (`kalman_filter/internal/format.hpp`) prints whichever characteristics a filter has.
@@ -108,7 +110,7 @@ Filters compose with pipe-style decorators, e.g. `kalman{...} | print`, to attac
 4. **Install.** List any new header in the `FILE_SET` of `include/CMakeLists.txt`, or it is not installed; nothing checks this list.
 5. **Public surface.** If the configuration exposes a new characteristic, extend `conditional_member_types`, the `has_*` concepts, the `std::formatter`, and the README "Member Types"/"Characteristics" tables together.
 6. **Tests.** Add `test/<name>.cpp` files and `pass(...)` lines (alphabetical) in `test/CMakeLists.txt`, with `BACKENDS "eigen" "eigen_typed"` for anything above 1x1. Assert the deduced types (`static_assert(std::same_as<...>)`) as well as the values.
-7. **Sample** (optional): a `sample/<name>.cpp` wired with a `sample(...)` line, if the configuration is user-facing and illustrative.
+7. **Sample** (optional): a `sample/<name>/<name>.cpp` with its `sample/<name>/CMakeLists.txt` `sample(...)` line and an `add_subdirectory` (alphabetical) in `sample/CMakeLists.txt`, if the configuration is user-facing and illustrative.
 8. **Verify.** `cmake --build build --parallel && ctest --test-dir build --parallel`; single test: `ctest --test-dir build -R kalman_test_<backend>_<name> --output-on-failure`. Keep `clang-format-22 --Werror` / `clang-tidy '*'` clean and Doxygen warning-free.
 
 ## Completion checklist
