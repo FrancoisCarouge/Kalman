@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['security_2emd_0',['SECURITY.md',['../_s_e_c_u_r_i_t_y_8md.xhtml',1,'']]]
+  ['license_2etxt_0',['LICENSE.txt',['../_l_i_c_e_n_s_e_8txt.xhtml',1,'']]]
 ];

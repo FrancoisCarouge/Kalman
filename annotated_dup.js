@@ -12,8 +12,8 @@ var annotated_dup =
         ] ]
       ] ],
       [ "test", "namespacefcarouge_1_1test.xhtml", [
-        [ "anonymous_namespace{kalman_format_unrelated.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman__format__unrelated_8cpp_03.xhtml", [
-          [ "unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02kalman__format__unrelated_8cpp_03_1_1unrelated.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02kalman__format__unrelated_8cpp_03_1_1unrelated" ]
+        [ "anonymous_namespace{unrelated.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03.xhtml", [
+          [ "unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated" ]
         ] ]
       ] ],
       [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
