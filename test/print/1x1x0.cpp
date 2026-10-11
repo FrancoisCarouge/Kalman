@@ -42,9 +42,9 @@ For more information, please refer to <https://unlicense.org> */
 #include <cassert>
 #include <cmath>
 
-namespace fcarouge::sample {
+namespace fcarouge::test {
 namespace {
-//! @brief Verifies the printer adaptor for single-dimension filters.
+//! @test Verifies the printer decorator for single-dimension filters.
 [[maybe_unused]] const auto test{[] -> int {
   const not_realtime opt_out;
   auto filter{kalman{state{60.}, output<double>, estimate_uncertainty{225.},
@@ -69,4 +69,4 @@ namespace {
   return 0;
 }()};
 } // namespace
-} // namespace fcarouge::sample
+} // namespace fcarouge::test

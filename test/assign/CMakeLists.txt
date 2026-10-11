@@ -36,6 +36,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+build("traits_1x1x0")
+pass("capturing_callable_1x1x0")
+pass("copy_1x1x0")
 pass("copy_5x4x3" BACKENDS "eigen" "eigen_typed")
 pass("move_5x4x3" BACKENDS "eigen" "eigen_typed")
 pass("move_callable_1x1x0")
