@@ -105,6 +105,9 @@ endfunction(sample)
 
 # Add a given test.
 #
+# The test is named after the directory it is declared in, its feature, and its
+# file name.
+#
 # * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
 function(pass TEST_NAME)
@@ -112,39 +115,42 @@ function(pass TEST_NAME)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
 
+  get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
+
   if(NOT TEST_BACKENDS)
-    add_executable(kalman_test_${TEST_NAME}_driver "${TEST_NAME}.cpp")
+    add_executable(kalman_${CALLER}_${TEST_NAME}_pass_driver "${TEST_NAME}.cpp")
     target_link_libraries(
-      kalman_test_${TEST_NAME}_driver
+      kalman_${CALLER}_${TEST_NAME}_pass_driver
       PRIVATE kalman kalman_main kalman_support_options kalman_unit_mp_units)
     if(IPO_SUPPORTED)
       set_target_properties(
-        kalman_test_${TEST_NAME}_driver
+        kalman_${CALLER}_${TEST_NAME}_pass_driver
         PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
     endif()
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
-      NAME kalman_test_${TEST_NAME}
-      COMMAND ${TEST_COMMAND} $<TARGET_FILE:kalman_test_${TEST_NAME}_driver>)
+      NAME kalman_${CALLER}_${TEST_NAME}_pass
+      COMMAND
+        ${TEST_COMMAND} $<TARGET_FILE:kalman_${CALLER}_${TEST_NAME}_pass_driver>)
   else()
     foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-      add_executable(kalman_test_${BACKEND}_${TEST_NAME}_driver
+      add_executable(kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver
                      "${TEST_NAME}.cpp")
       target_link_libraries(
-        kalman_test_${BACKEND}_${TEST_NAME}_driver
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver
         PRIVATE
           kalman kalman_main kalman_linalg_${BACKEND} kalman_support_options)
       if(IPO_SUPPORTED)
         set_target_properties(
-          kalman_test_${BACKEND}_${TEST_NAME}_driver
+          kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver
           PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
       endif()
       separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
-        NAME kalman_test_${BACKEND}_${TEST_NAME}
+        NAME kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass
         COMMAND
           ${TEST_COMMAND}
-          $<TARGET_FILE:kalman_test_${BACKEND}_${TEST_NAME}_driver>)
+          $<TARGET_FILE:kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver>)
     endforeach()
   endif()
 endfunction(pass)
