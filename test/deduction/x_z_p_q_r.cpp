@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,6 +34,20 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-pass("default")
+#include "fcarouge/kalman.hpp"
+
+#include <concepts>
+
+namespace fcarouge::test {
+namespace {
+//! @test Verifies the declaration deducing the filter with a process
+//! uncertainty and a same type output.
+static_assert(
+    std::same_as<decltype(kalman{
+                     state{0.}, output<double>, estimate_uncertainty{1.},
+                     process_uncertainty{1.}, output_uncertainty{1.}}),
+                 kalman<kf::x_z_p_q_r<double>>>);
+} // namespace
+} // namespace fcarouge::test

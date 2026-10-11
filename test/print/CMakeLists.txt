@@ -37,4 +37,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("1x1x0")
-pass("2x3x4" BACKENDS "eigen" "eigen_typed")
+pass("5x4x3" BACKENDS "eigen" "eigen_typed")
+pass("arguments")
+pass("characteristics_1x1x1")

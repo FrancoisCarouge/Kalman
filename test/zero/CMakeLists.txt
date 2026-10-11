@@ -36,4 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+build("arithmetic")
+fail("unimplemented_fail")
+pass("5x4" BACKENDS "eigen" "eigen_typed")
 pass("default")

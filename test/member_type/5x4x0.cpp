@@ -38,25 +38,28 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
-#include "fcarouge/realtime.hpp"
 
-#include <cassert>
+#include <concepts>
 
-namespace fcarouge::sample {
+namespace fcarouge::test {
 namespace {
 template <auto Size> using vector = column_vector<double, Size>;
+template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
-//! @brief Verifies the printer adaptor for multi-dimension filters with input
-//! control without additional arguments.
-[[maybe_unused]] const auto test{[] -> int {
-  const not_realtime opt_out;
-  auto filter{kalman{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
-                     input<vector<3>>} |
-              print};
+//! @test Verifies the member types of the multi-dimension filter without input
+//! are the vectors and matrices of the dimensions of its state and output.
+using filter =
+    decltype(kalman{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>});
 
-  filter.predict(0., 0., 0.);
-
-  return 0;
-}()};
+static_assert(std::same_as<filter::estimate_uncertainty, matrix<5, 5>>);
+static_assert(std::same_as<filter::gain, matrix<5, 4>>);
+static_assert(std::same_as<filter::innovation, vector<4>>);
+static_assert(std::same_as<filter::innovation_uncertainty, matrix<4, 4>>);
+static_assert(std::same_as<filter::output, vector<4>>);
+static_assert(std::same_as<filter::output_model, matrix<4, 5>>);
+static_assert(std::same_as<filter::output_uncertainty, matrix<4, 4>>);
+static_assert(std::same_as<filter::process_uncertainty, matrix<5, 5>>);
+static_assert(std::same_as<filter::state, vector<5>>);
+static_assert(std::same_as<filter::state_transition, matrix<5, 5>>);
 } // namespace
-} // namespace fcarouge::sample
+} // namespace fcarouge::test

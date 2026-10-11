@@ -103,10 +103,11 @@ function(sample SAMPLE_NAME)
   endif()
 endfunction(sample)
 
-# Add a given test.
+# Add a given run-time test.
 #
-# The test is named after the directory it is declared in, its feature, and its
-# file name.
+# The test passes when its file compiles, links, and runs to completion: its
+# verifications are assertions. The test is named after the directory it is
+# declared in, its feature, and its file name.
 #
 # * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
@@ -154,3 +155,134 @@ function(pass TEST_NAME)
     endforeach()
   endif()
 endfunction(pass)
+
+# Add a given compile-time-only test.
+#
+# The test passes when its file compiles: its verifications are static
+# assertions. No executable is linked nor run. The test is named after the
+# directory it is declared in, its feature, and its file name.
+#
+# * NAME The name of the test file without extension.
+# * BACKENDS Optional list of backends to use against the test.
+function(build TEST_NAME)
+  set(multiValueArgs BACKENDS)
+  cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
+                        "${multiValueArgs}")
+
+  get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
+
+  if(NOT TEST_BACKENDS)
+    add_library(
+      kalman_${CALLER}_${TEST_NAME}_build_driver
+      OBJECT "${TEST_NAME}.cpp")
+    target_link_libraries(
+      kalman_${CALLER}_${TEST_NAME}_build_driver
+      PRIVATE kalman kalman_support_options kalman_unit_mp_units)
+    set_target_properties(
+      kalman_${CALLER}_${TEST_NAME}_build_driver
+      PROPERTIES EXCLUDE_FROM_ALL TRUE)
+    add_test(
+      NAME kalman_${CALLER}_${TEST_NAME}_pass
+      COMMAND
+        ${CMAKE_COMMAND}
+        --build
+        ${CMAKE_BINARY_DIR}
+        --config
+        $<CONFIG>
+        --target
+        kalman_${CALLER}_${TEST_NAME}_build_driver)
+    set_tests_properties(
+      kalman_${CALLER}_${TEST_NAME}_pass
+      PROPERTIES RESOURCE_LOCK "kalman_build_tree")
+  else()
+    foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
+      add_library(
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_build_driver
+        OBJECT "${TEST_NAME}.cpp")
+      target_link_libraries(
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_build_driver
+        PRIVATE kalman kalman_linalg_${BACKEND} kalman_support_options)
+      set_target_properties(
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_build_driver
+        PROPERTIES EXCLUDE_FROM_ALL TRUE)
+      add_test(
+        NAME kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass
+        COMMAND
+          ${CMAKE_COMMAND}
+          --build
+          ${CMAKE_BINARY_DIR}
+          --config
+          $<CONFIG>
+          --target
+          kalman_${BACKEND}_${CALLER}_${TEST_NAME}_build_driver)
+      set_tests_properties(
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass
+        PROPERTIES RESOURCE_LOCK "kalman_build_tree")
+    endforeach()
+  endif()
+endfunction(build)
+
+# Add a given compile-fail test.
+#
+# The test passes when its file fails to compile. By convention, the file name
+# ends in `_fail`, and the valid form of the rejected line is kept in an
+# `// Intended:` comment above it. The test is named after the directory it is
+# declared in, its feature, and its file name.
+#
+# * NAME The name of the test file without extension.
+# * BACKENDS Optional list of backends to use against the test.
+function(fail TEST_NAME)
+  set(multiValueArgs BACKENDS)
+  cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
+                        "${multiValueArgs}")
+
+  get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
+
+  if(NOT TEST_BACKENDS)
+    add_library(kalman_${CALLER}_${TEST_NAME}_driver OBJECT "${TEST_NAME}.cpp")
+    target_link_libraries(
+      kalman_${CALLER}_${TEST_NAME}_driver
+      PRIVATE kalman kalman_support_options kalman_unit_mp_units)
+    set_target_properties(
+      kalman_${CALLER}_${TEST_NAME}_driver
+      PROPERTIES EXCLUDE_FROM_ALL TRUE)
+    add_test(
+      NAME kalman_${CALLER}_${TEST_NAME}
+      COMMAND
+        ${CMAKE_COMMAND}
+        --build
+        ${CMAKE_BINARY_DIR}
+        --config
+        $<CONFIG>
+        --target
+        kalman_${CALLER}_${TEST_NAME}_driver)
+    set_tests_properties(
+      kalman_${CALLER}_${TEST_NAME}
+      PROPERTIES RESOURCE_LOCK "kalman_build_tree" WILL_FAIL TRUE)
+  else()
+    foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
+      add_library(
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+        OBJECT "${TEST_NAME}.cpp")
+      target_link_libraries(
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+        PRIVATE kalman kalman_linalg_${BACKEND} kalman_support_options)
+      set_target_properties(
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+        PROPERTIES EXCLUDE_FROM_ALL TRUE)
+      add_test(
+        NAME kalman_${BACKEND}_${CALLER}_${TEST_NAME}
+        COMMAND
+          ${CMAKE_COMMAND}
+          --build
+          ${CMAKE_BINARY_DIR}
+          --config
+          $<CONFIG>
+          --target
+          kalman_${BACKEND}_${CALLER}_${TEST_NAME}_driver)
+      set_tests_properties(
+        kalman_${BACKEND}_${CALLER}_${TEST_NAME}
+        PROPERTIES RESOURCE_LOCK "kalman_build_tree" WILL_FAIL TRUE)
+    endforeach()
+  endif()
+endfunction(fail)

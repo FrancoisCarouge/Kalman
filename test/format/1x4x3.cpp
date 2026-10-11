@@ -47,8 +47,8 @@ namespace fcarouge::test {
 namespace {
 template <auto Size> using vector = column_vector<double, Size>;
 
-//! @test Verifies formatting multi-dimension filters with input control without
-//! additional arguments.
+//! @test Verifies formatting multi-dimension filters with a single-dimension
+//! state, with input control without additional arguments.
 [[maybe_unused]] const auto test{[] -> int {
   const not_realtime opt_out;
   kalman filter{state{vector<1>{0.}}, output<vector<4>>, input<vector<3>>};
