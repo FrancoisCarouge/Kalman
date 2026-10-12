@@ -295,13 +295,17 @@ In theory there is no difference between theory and practice, while in practice 
 
 ### Lessons Learned
 
-Design, development, and testing uncovered unexpected facets of the projects:
+The filter's state, output, and input column vectors should be strongly typed parameters to allow the filter to participate in full compile-time safeties verification.
 
-- The filter's state, output, and input column vectors should be strongly typed parameters to allow the filter to participate in full compile-time safeties verification.
-- There exist Kalman filters with hundreds of state variables.
-- The `float` data type has about seven significant digits. Floating point error is a loss of information to account for in design.
-- The units of useful matrices are factorizable, i.e. the unit of an element is expressed as the product of the row and column indexed units. The deduced units result type of a matrix product collapses and folds the inner indexed units merely returning the outer units.
-- Safe physical linear algebra not only includes types and units safety, but also coordinate axes and frames reference.
+There exist Kalman filters with hundreds of state variables.
+
+The `float` data type has about seven significant digits. Floating point error is a loss of information to account for in design.
+
+The units of useful matrices are factorizable, i.e. the unit of an element is expressed as the product of the row and column indexed units. The deduced units result type of a matrix product collapses and folds the inner indexed units merely returning the outer units.
+
+Safe physical linear algebra not only includes types and units safety, but also coordinate axes and frames reference.
+
+**A specialized filter is an optimization of the general equations, not a new model.** A filter declared without a characteristic is the general filter as-if that characteristic were at its default value, with the unused algebra removed. The meaning of a prediction or an update is a property of the model alone, never of how the filter is declared. Each specialized filter should be tested to agree with the general filter.
 
 ### Performance
 
