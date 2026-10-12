@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['unrelated_0',['unrelated',['../structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml',1,'fcarouge::test::anonymous_namespace{unrelated.cpp}']]],
-  ['us_5fdollar_1',['us_dollar',['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::us_dollar'],['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar']]]
+  ['measurement_0',['measurement',['../structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1measurement.xhtml',1,'fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_f_us_ps.cpp}::measurement'],['../structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1measurement.xhtml',1,'fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_ps.cpp}::measurement']]],
+  ['model_1',['model',['../structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1model.xhtml',1,'fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_f_us_ps.cpp}::model'],['../structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1model.xhtml',1,'fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_ps.cpp}::model']]]
 ];

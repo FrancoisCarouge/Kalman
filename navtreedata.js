@@ -117,12 +117,13 @@ var NAVTREE =
     [ "Namespaces", "namespaces.xhtml", [
       [ "Namespace List", "namespaces.xhtml", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.xhtml", [
-        [ "All", "namespacemembers.xhtml", null ],
+        [ "All", "namespacemembers.xhtml", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.xhtml", null ],
         [ "Variables", "namespacemembers_vars.xhtml", null ],
         [ "Typedefs", "namespacemembers_type.xhtml", null ]
       ] ]
     ] ],
+    [ "Concepts", "concepts.xhtml", "concepts" ],
     [ "Classes", "annotated.xhtml", [
       [ "Class List", "annotated.xhtml", "annotated_dup" ],
       [ "Class Index", "classes.xhtml", null ],
@@ -147,9 +148,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"1x4x3_8cpp.xhtml",
-"kalman_8hpp_source.xhtml",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a4e9f6d3f8d38636e06c58f838058a3c9"
+"1x1_8cpp.xhtml",
+"f_21x1x0_8cpp.xhtml#a5e425f16a4e42fe54936affa36a6c3ec",
+"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02f__1x1x0_8cpp_03.xhtml#a593e5c25d822075057090a0996f93574",
+"structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml#af4824a221366737e6f49919bcb3db003"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

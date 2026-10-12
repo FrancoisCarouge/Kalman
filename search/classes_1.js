@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['formatter_3c_20fcarouge_3a_3akalman_3c_20filter_20_3e_2c_20char_20_3e_0',['formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml',1,'std']]]
+  ['dim_5fcurrency_0',['dim_currency',['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1dim__currency.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::dim_currency'],['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency']]]
 ];

@@ -131,7 +131,7 @@ Variables</h2></td></tr>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> make_control{[](<span class="keywordtype">double</span> factor) -&gt; <span class="keyword">auto</span> {</div>
 <div class="line">    <span class="keywordflow">return</span> [factor] -&gt; <span class="keywordtype">double</span> { <span class="keywordflow">return</span> factor; };</div>
 <div class="line">  }};</div>
-<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
+<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>{</div>
 <div class="line">      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{1.},</div>
 <div class="line">      output&lt;double&gt;,</div>
 <div class="line">      input&lt;double&gt;,</div>
@@ -143,26 +143,32 @@ Variables</h2></td></tr>
 <div class="line">      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a788d65d976b6a412caf88748f782dfa7">input_control</a>{make_control(1.)},</div>
 <div class="line">      prediction_types&lt;&gt;};</div>
 <div class="line"> </div>
-<div class="line">  filter.f(make_transition(3.));</div>
-<div class="line">  filter.g(make_control(2.));</div>
-<div class="line">  filter.predict(1.);</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>(make_transition(3.));</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">g</a>(make_control(2.));</div>
+<div class="line">  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a>(1.);</div>
 <div class="line"> </div>
-<div class="line">  assert(filter.f() == 3.);</div>
-<div class="line">  assert(filter.g() == 2.);</div>
-<div class="line">  assert(filter.x() == 5.);</div>
+<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>() == 3.);</div>
+<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">g</a>() == 2.);</div>
+<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() == 5.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6537fee737c00b1a2239b41c74d8e49f"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr decltype(auto) f(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the state transition matrix F.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a67c2ff496b806ff41c531c7e692b6897"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa64cb12fb86876fb5bf74555b8b67f5a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ae86b502b20da0124f73eeef7c2646f18"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">fcarouge::kalman::g</a></div><div class="ttdeci">constexpr decltype(auto) g(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the control transition matrix G.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a183c70977c497ac30a3201051576e4ac"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">fcarouge::kalman_filter::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a19478b612027f688fd2d3ed290827afb"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb">fcarouge::kalman_filter::internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a35a41ff99d9716fe5b0757e207df8e43"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">fcarouge::kalman_filter::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a67e72364f755af0934a50f5fce6dd778"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">fcarouge::kalman_filter::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a788d65d976b6a412caf88748f782dfa7"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a788d65d976b6a412caf88748f782dfa7">fcarouge::kalman_filter::internal::input_control</a></div><div class="ttdeci">input_control(Element) -&gt; input_control&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03_xhtml_a531900581ead210eade89bdd8c34ca00"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">fcarouge::sample::anonymous_namespace{ekf_4x1x0_thermal_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__thermal__soaring_8cpp_source.xhtml#l00049">ekf_4x1x0_thermal_soaring.cpp:49</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03_xhtml_a3586a94458c3596c1f63221fc330e325"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">fcarouge::test::anonymous_namespace{traits_1x1x0.cpp}::filter</a></div><div class="ttdeci">decltype(kalman{}) filter</div><div class="ttdef"><b>Definition</b> <a href="assign_2traits__1x1x0_8cpp_source.xhtml#l00046">traits_1x1x0.cpp:46</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000019">Test</a></b></dt><dd>Verifies the state transition and control transition callables management overloads with capturing callables: the characteristics are replaced in place, without allocation. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000041">Test</a></b></dt><dd>Verifies the state transition and control transition callables management overloads with capturing callables: the characteristics are replaced in place, without allocation. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000081">Test</a></b></dt><dd>Verifies the prediction of the filter with callable state transition, process uncertainty, and input control: each is computed from its arguments, the prediction arguments ahead of the input. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="callable__1x1x1_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="callable__1x1x1_8cpp_source.xhtml">callable_1x1x1.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="f__g_2callable__1x1x1_8cpp_source.xhtml#l00048">48</a> of file <a class="el" href="f__g_2callable__1x1x1_8cpp_source.xhtml">callable_1x1x1.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   48</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><span class="lineno">   49</span>  <span class="keyword">const</span> <span class="keyword">auto</span> make_transition{[](<span class="keywordtype">double</span> factor) -&gt; <span class="keyword">auto</span> {</div>
 <div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span></div>
@@ -171,7 +177,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> <span class="keyword">auto</span> make_control{[](<span class="keywordtype">double</span> factor) -&gt; <span class="keyword">auto</span> {</div>
 <div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> [factor] -&gt; <span class="keywordtype">double</span> { <span class="keywordflow">return</span> factor; };</div>
 <div class="line"><span class="lineno">   55</span>  }};</div>
-<div class="line"><span class="lineno">   56</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
+<div class="line"><span class="lineno">   56</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>{</div>
 <div class="line"><span class="lineno">   57</span>      <a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{1.},</div>
 <div class="line"><span class="lineno">   58</span>      output&lt;double&gt;,</div>
 <div class="line"><span class="lineno">   59</span>      input&lt;double&gt;,</div>
@@ -183,13 +189,13 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   65</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a788d65d976b6a412caf88748f782dfa7">input_control</a>{make_control(1.)},</div>
 <div class="line"><span class="lineno">   66</span>      prediction_types&lt;&gt;};</div>
 <div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>  filter.f(make_transition(3.));</div>
-<div class="line"><span class="lineno">   69</span>  filter.g(make_control(2.));</div>
-<div class="line"><span class="lineno">   70</span>  filter.predict(1.);</div>
+<div class="line"><span class="lineno">   68</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>(make_transition(3.));</div>
+<div class="line"><span class="lineno">   69</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">g</a>(make_control(2.));</div>
+<div class="line"><span class="lineno">   70</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a>(1.);</div>
 <div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>  assert(filter.f() == 3.);</div>
-<div class="line"><span class="lineno">   73</span>  assert(filter.g() == 2.);</div>
-<div class="line"><span class="lineno">   74</span>  assert(filter.x() == 5.);</div>
+<div class="line"><span class="lineno">   72</span>  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>() == 3.);</div>
+<div class="line"><span class="lineno">   73</span>  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">g</a>() == 2.);</div>
+<div class="line"><span class="lineno">   74</span>  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() == 5.);</div>
 <div class="line"><span class="lineno">   75</span> </div>
 <div class="line"><span class="lineno">   76</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   77</span>}()};</div>

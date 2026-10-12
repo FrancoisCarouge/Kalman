@@ -164,13 +164,13 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   86</span>                <span class="comment">// measurement, output uncertainty is: R = 25 m^2.</span></div>
 <div class="line"><span class="lineno">   87</span>                output_uncertainty{25. * m2}};</div>
 <div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>  assert(height{60. * m} == filter.x() &amp;&amp;</div>
+<div class="line"><span class="lineno">   89</span>  assert(height{60. * m} == <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() &amp;&amp;</div>
 <div class="line"><span class="lineno">   90</span>         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line"><span class="lineno">   91</span>         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
 <div class="line"><span class="lineno">   92</span> </div>
 <div class="line"><span class="lineno">   93</span>  <span class="keyword">using </span>uncertainty = kf::product&lt;height, height&gt;;</div>
 <div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>  assert(uncertainty{225. * m2} == filter.p() &amp;&amp;</div>
+<div class="line"><span class="lineno">   95</span>  assert(uncertainty{225. * m2} == <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aec5735b71ca858573da2f4b9341abf6a">p</a>() &amp;&amp;</div>
 <div class="line"><span class="lineno">   96</span>         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line"><span class="lineno">   97</span>         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"><span class="lineno">   98</span> </div>
@@ -178,22 +178,22 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  100</span>  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
 <div class="line"><span class="lineno">  101</span>  <span class="comment">// noise covariance Q is null in this example.</span></div>
 <div class="line"><span class="lineno">  102</span>  <span class="comment">// Measure and update: the first measurement is: z1 = 48.54m.</span></div>
-<div class="line"><span class="lineno">  103</span>  filter.update(height{48.54 * m});</div>
+<div class="line"><span class="lineno">  103</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{48.54 * m});</div>
 <div class="line"><span class="lineno">  104</span> </div>
 <div class="line"><span class="lineno">  105</span>  <span class="comment">// And so on.</span></div>
-<div class="line"><span class="lineno">  106</span>  filter.update(height{47.11 * m});</div>
-<div class="line"><span class="lineno">  107</span>  filter.update(height{55.01 * m});</div>
-<div class="line"><span class="lineno">  108</span>  filter.update(height{55.15 * m});</div>
-<div class="line"><span class="lineno">  109</span>  filter.update(height{49.89 * m});</div>
-<div class="line"><span class="lineno">  110</span>  filter.update(height{40.85 * m});</div>
-<div class="line"><span class="lineno">  111</span>  filter.update(height{46.72 * m});</div>
-<div class="line"><span class="lineno">  112</span>  filter.update(height{50.05 * m});</div>
-<div class="line"><span class="lineno">  113</span>  filter.update(height{51.27 * m});</div>
-<div class="line"><span class="lineno">  114</span>  filter.update(height{49.95 * m});</div>
+<div class="line"><span class="lineno">  106</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{47.11 * m});</div>
+<div class="line"><span class="lineno">  107</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{55.01 * m});</div>
+<div class="line"><span class="lineno">  108</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{55.15 * m});</div>
+<div class="line"><span class="lineno">  109</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{49.89 * m});</div>
+<div class="line"><span class="lineno">  110</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{40.85 * m});</div>
+<div class="line"><span class="lineno">  111</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{46.72 * m});</div>
+<div class="line"><span class="lineno">  112</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{50.05 * m});</div>
+<div class="line"><span class="lineno">  113</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{51.27 * m});</div>
+<div class="line"><span class="lineno">  114</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{49.95 * m});</div>
 <div class="line"><span class="lineno">  115</span> </div>
 <div class="line"><span class="lineno">  116</span>  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line"><span class="lineno">  117</span>  <span class="comment">// at 49.57m.</span></div>
-<div class="line"><span class="lineno">  118</span>  assert(height{49.569 * m} &lt; filter.x() &amp;&amp; filter.x() &lt; height{49.571 * m} &amp;&amp;</div>
+<div class="line"><span class="lineno">  118</span>  assert(height{49.569 * m} &lt; <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() &amp;&amp; <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() &lt; height{49.571 * m} &amp;&amp;</div>
 <div class="line"><span class="lineno">  119</span>         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line"><span class="lineno">  120</span>         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"><span class="lineno">  121</span> </div>
@@ -201,7 +201,11 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">  124</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  125</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a5a9f5770f213ef92663c25c1db743f98"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a67c2ff496b806ff41c531c7e692b6897"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aec5735b71ca858573da2f4b9341abf6a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aec5735b71ca858573da2f4b9341abf6a">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height__unit_8cpp_03_xhtml_afcc7ca67dd61581005ebed25feed91d5"><div class="ttname"><a href="#afcc7ca67dd61581005ebed25feed91d5">fcarouge::sample::anonymous_namespace{kf_1x1x0_building_height_unit.cpp}::height</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::isq::height[m]&gt; height</div><div class="ttdef"><b>Definition</b> <a href="kf__1x1x0__building__height__unit_8cpp_source.xhtml#l00050">kf_1x1x0_building_height_unit.cpp:50</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03_xhtml_a3586a94458c3596c1f63221fc330e325"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">fcarouge::test::anonymous_namespace{traits_1x1x0.cpp}::filter</a></div><div class="ttdeci">decltype(kalman{}) filter</div><div class="ttdef"><b>Definition</b> <a href="assign_2traits__1x1x0_8cpp_source.xhtml#l00046">traits_1x1x0.cpp:46</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

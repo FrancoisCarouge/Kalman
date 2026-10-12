@@ -1,12 +1,5 @@
 var namespacefcarouge_1_1sample =
 [
-    [ "anonymous_namespace{1x1x0.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_021x1x0_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1sample_1_1anonymous__namespace_021x1x0_8cpp_03.xhtml#ac1ceb642d339eac0ab68ed98e0ae3f86", null ]
-    ] ],
-    [ "anonymous_namespace{2x3x4.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_022x3x4_8cpp_03.xhtml", [
-      [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_022x3x4_8cpp_03.xhtml#a84038b5dc29dc210407ed14d0cb1c213", null ],
-      [ "test", "namespacefcarouge_1_1sample_1_1anonymous__namespace_022x3x4_8cpp_03.xhtml#a69e2cc445b5135cf144c08dbc0a3c0f6", null ]
-    ] ],
     [ "anonymous_namespace{ekf_4x1x0_thermal_soaring.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a5ca9ce44a5f1c5bd75a8040df0f9f0ff", null ],
       [ "state", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00", null ],

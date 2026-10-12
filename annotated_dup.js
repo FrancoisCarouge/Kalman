@@ -12,8 +12,30 @@ var annotated_dup =
         ] ]
       ] ],
       [ "test", "namespacefcarouge_1_1test.xhtml", [
+        [ "anonymous_namespace{unimplemented_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03.xhtml", [
+          [ "unknown", "structfcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03_1_1unknown.xhtml", null ]
+        ] ],
         [ "anonymous_namespace{unrelated.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03.xhtml", [
           [ "unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated" ]
+        ] ],
+        [ "anonymous_namespace{x_z_p_q_r_hh_f_us_ps.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03.xhtml", [
+          [ "measurement", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1measurement.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1measurement" ],
+          [ "model", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1model.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1model" ],
+          [ "propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1propagation.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1propagation" ]
+        ] ],
+        [ "anonymous_namespace{x_z_p_q_r_hh_ff_ps.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03.xhtml", [
+          [ "measurement", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1measurement.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1measurement" ],
+          [ "model", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1model.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1model" ],
+          [ "propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1propagation.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1propagation" ]
+        ] ],
+        [ "anonymous_namespace{x_z_p_qq_rr_f.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03.xhtml", [
+          [ "output_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03_1_1output__noise.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03_1_1output__noise" ],
+          [ "process_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03_1_1process__noise.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03_1_1process__noise" ]
+        ] ],
+        [ "anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03.xhtml", [
+          [ "control", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1control.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1control" ],
+          [ "process_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1process__noise.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1process__noise" ],
+          [ "propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1propagation.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1propagation" ]
         ] ]
       ] ],
       [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],

@@ -181,13 +181,13 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">                <span class="comment">// measurement, output uncertainty is: R = 25 m^2.</span></div>
 <div class="line">                output_uncertainty{25. * m2}};</div>
 <div class="line"> </div>
-<div class="line">  assert(height{60. * m} == filter.x() &amp;&amp;</div>
+<div class="line">  assert(height{60. * m} == filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">using </span>uncertainty = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aace31b5acda2497b46bccfae1d652655">kf::product&lt;height, height&gt;</a>;</div>
+<div class="line">  <span class="keyword">using </span>uncertainty = <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aace31b5acda2497b46bccfae1d652655">kf::product&lt;height, height&gt;</a>;</div>
 <div class="line"> </div>
-<div class="line">  assert(uncertainty{225. * m2} == filter.p() &amp;&amp;</div>
+<div class="line">  assert(uncertainty{225. * m2} == filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aec5735b71ca858573da2f4b9341abf6a">p</a>() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"> </div>
@@ -195,22 +195,22 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
 <div class="line">  <span class="comment">// noise covariance Q is null in this example.</span></div>
 <div class="line">  <span class="comment">// Measure and update: the first measurement is: z1 = 48.54m.</span></div>
-<div class="line">  filter.update(height{48.54 * m});</div>
+<div class="line">  filter.<a id="a4" name="a4"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{48.54 * m});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on.</span></div>
-<div class="line">  filter.update(height{47.11 * m});</div>
-<div class="line">  filter.update(height{55.01 * m});</div>
-<div class="line">  filter.update(height{55.15 * m});</div>
-<div class="line">  filter.update(height{49.89 * m});</div>
-<div class="line">  filter.update(height{40.85 * m});</div>
-<div class="line">  filter.update(height{46.72 * m});</div>
-<div class="line">  filter.update(height{50.05 * m});</div>
-<div class="line">  filter.update(height{51.27 * m});</div>
-<div class="line">  filter.update(height{49.95 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{47.11 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{55.01 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{55.15 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{49.89 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{40.85 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{46.72 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{50.05 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{51.27 * m});</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(height{49.95 * m});</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
-<div class="line">  assert(height{49.569 * m} &lt; filter.x() &amp;&amp; filter.x() &lt; height{49.571 * m} &amp;&amp;</div>
+<div class="line">  assert(height{49.569 * m} &lt; filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() &amp;&amp; filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() &lt; height{49.571 * m} &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"> </div>
@@ -219,6 +219,9 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a5a9f5770f213ef92663c25c1db743f98"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a67c2ff496b806ff41c531c7e692b6897"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aec5735b71ca858573da2f4b9341abf6a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aec5735b71ca858573da2f4b9341abf6a">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_aace31b5acda2497b46bccfae1d652655"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aace31b5acda2497b46bccfae1d652655">fcarouge::kalman_filter::internal::product</a></div><div class="ttdeci">std::invoke_result_t&lt; multiplies&lt; Lhs, Rhs &gt;, const Lhs &amp;, const Rhs &amp; &gt; product</div><div class="ttdoc">Helper type to deduce the result type of the product.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00373">utility.hpp:373</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
