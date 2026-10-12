@@ -47,6 +47,8 @@ ctest --test-dir build --parallel --verbose
 
 `fcarouge::kalman<Filter>` (`include/fcarouge/kalman.hpp`) is a thin public wrapper around an internal, compile-time-deduced `Filter` implementation type. Users never name `Filter` themselves — they construct `kalman{...}` with a set of tagged, named arguments (`state{}`, `output<T>`, `input<T>`, `estimate_uncertainty{}`, `process_uncertainty{}`, `output_uncertainty{}`, `output_model{}`, `state_transition{}`, `input_control{}`, `transition{}`, `observation{}`, `update_types<...>`, `prediction_types<...>`, defined in `kalman_filter/internal/type.hpp`), and class template argument deduction resolves the concrete type. `include/fcarouge/kalman_forward.hpp` is the authoritative forward declaration header.
 
+A named argument owns the value it holds: it is a regular type its user may store in a variable or a data member, return from a function, and pass to the filter declaration later. Never hold a view in one (`std::initializer_list`, `std::span`, a reference, a pointer): a braced list of rows is held by the owning `row_list` and converted to the filter's member type by the factory's `convert`.
+
 The resolution machinery lives in `kalman_filter/internal/factory.hpp`: `filter_deducer<void>::operator()` is overloaded — one overload per supported combination of named arguments — and each overload picks one of the internal filter implementation structs and forwards the converted arguments to its constructor. `deduce_filter<Arguments...>` is the alias that performs this resolution for the `kalman` class template's deduction guide.
 
 The internal implementation structs are named after the characteristics they carry, one header each under `include/fcarouge/kalman_filter/internal/`:
@@ -136,7 +138,7 @@ Before declaring any change complete:
 - Touched `.hpp`/`.tpp`/`.cpp` pass `clang-format-22 --Werror -i -style=file`; touched `CMakeLists.txt`/`*.cmake`/`*.cmake.in` pass `cmakefmt --check`.
 - `run-clang-tidy-21 -p build path/to/file.cpp` is clean, with no new `NOLINT`.
 - New behavior has a test; a bug fix has a regression test that fails without the fix when practical.
-- `README.md` and the relevant `@brief`/`@details`/`@see`/`@todo` Doxygen are updated alongside the code they describe; `CHANGELOG.md`'s `[Unreleased]` section records user-visible changes.
+- `README.md` and the relevant `@brief`/`@details`/`@see`/`@todo` Doxygen are updated alongside the code they describe.
 - `cmake --build build --parallel && ctest --test-dir build --parallel` passes, with the specific new/changed test names re-run via `-R` first.
 - `pre-commit run -a` passes.
 

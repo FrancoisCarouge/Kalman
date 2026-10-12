@@ -41,10 +41,50 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "utility.hpp"
 
+#include <array>
+#include <cstddef>
 #include <initializer_list>
+#include <tuple>
 #include <type_traits>
 
 namespace fcarouge::kalman_filter::internal {
+// Owns the elements of a characteristic declared from a braced list of rows,
+// each row a braced list of elements. The declaration is not held as a list of
+// lists: a `std::initializer_list` refers to a backing array which does not
+// outlive the full-expression of the declaration, so a declared characteristic
+// stored in a variable, a data member, or returned from a function would
+// dangle. The numbers of rows and columns are part of the type: rows of
+// different sizes are rejected at compile-time.
+template <typename Element, std::size_t Rows, std::size_t Columns>
+struct row_list {
+  std::array<std::array<Element, Columns>, Rows> elements;
+
+  template <std::size_t... Sizes>
+  constexpr explicit row_list(const Element (&...rows)[Sizes])
+      : elements{{std::to_array(rows)...}} {}
+
+  // Converts to a type constructible from a list of lists, the support
+  // expected from a linear algebra backend matrix. One recursion per row, each
+  // holding the list of that row, so that every list outlives the construction.
+  template <typename Type, typename... Lists>
+  [[nodiscard]] constexpr auto to(const Lists &...lists) const -> Type {
+    if constexpr (sizeof...(Lists) < Rows) {
+      return std::apply(
+          [&](const auto &...row) -> Type {
+            const std::initializer_list<Element> list{row...};
+
+            return to<Type>(lists..., list);
+          },
+          elements[sizeof...(Lists)]);
+    } else {
+      const std::initializer_list<std::initializer_list<Element>> list{
+          lists...};
+
+      return Type(list);
+    }
+  }
+};
+
 //! @todo Provide the ::type member access and _t shorthand for simplifying
 //! syntax?
 template <typename Type> struct state {
@@ -70,10 +110,10 @@ template <typename Type> struct estimate_uncertainty {
 
   Type value;
 
-  template <typename Element>
-  constexpr explicit estimate_uncertainty(
-      std::initializer_list<std::initializer_list<Element>> p)
-      : value(p) {}
+  template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  constexpr explicit estimate_uncertainty(const Element (&row)[Columns],
+                                          const Element (&...rows)[Sizes])
+      : value(row, rows...) {}
 
   template <typename Element>
   constexpr explicit estimate_uncertainty(Element p) : value{p} {}
@@ -82,20 +122,21 @@ template <typename Type> struct estimate_uncertainty {
 template <typename Element>
 estimate_uncertainty(Element) -> estimate_uncertainty<Element>;
 
-template <typename Element>
-estimate_uncertainty(std::initializer_list<std::initializer_list<Element>>)
-    -> estimate_uncertainty<
-        std::initializer_list<std::initializer_list<Element>>>;
+template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  requires((Sizes == Columns) && ...)
+estimate_uncertainty(const Element (&row)[Columns],
+                     const Element (&...rows)[Sizes])
+    -> estimate_uncertainty<row_list<Element, 1 + sizeof...(Sizes), Columns>>;
 
 template <typename Type> struct output_uncertainty {
   using type = Type;
 
   Type value;
 
-  template <typename Element>
-  constexpr explicit output_uncertainty(
-      std::initializer_list<std::initializer_list<Element>> r)
-      : value(r) {}
+  template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  constexpr explicit output_uncertainty(const Element (&row)[Columns],
+                                        const Element (&...rows)[Sizes])
+      : value(row, rows...) {}
 
   template <typename Element>
   constexpr explicit output_uncertainty(Element r) : value{r} {}
@@ -104,20 +145,21 @@ template <typename Type> struct output_uncertainty {
 template <typename Element>
 output_uncertainty(Element) -> output_uncertainty<Element>;
 
-template <typename Element>
-output_uncertainty(std::initializer_list<std::initializer_list<Element>>)
-    -> output_uncertainty<
-        std::initializer_list<std::initializer_list<Element>>>;
+template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  requires((Sizes == Columns) && ...)
+output_uncertainty(const Element (&row)[Columns],
+                   const Element (&...rows)[Sizes])
+    -> output_uncertainty<row_list<Element, 1 + sizeof...(Sizes), Columns>>;
 
 template <typename Type> struct process_uncertainty {
   using type = Type;
 
   Type value;
 
-  template <typename Element>
-  constexpr explicit process_uncertainty(
-      std::initializer_list<std::initializer_list<Element>> q)
-      : value(q) {}
+  template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  constexpr explicit process_uncertainty(const Element (&row)[Columns],
+                                         const Element (&...rows)[Sizes])
+      : value(row, rows...) {}
 
   template <typename Element>
   constexpr explicit process_uncertainty(Element q) : value{q} {}
@@ -126,10 +168,11 @@ template <typename Type> struct process_uncertainty {
 template <typename Element>
 process_uncertainty(Element) -> process_uncertainty<Element>;
 
-template <typename Element>
-process_uncertainty(std::initializer_list<std::initializer_list<Element>>)
-    -> process_uncertainty<
-        std::initializer_list<std::initializer_list<Element>>>;
+template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  requires((Sizes == Columns) && ...)
+process_uncertainty(const Element (&row)[Columns],
+                    const Element (&...rows)[Sizes])
+    -> process_uncertainty<row_list<Element, 1 + sizeof...(Sizes), Columns>>;
 
 template <typename Type> struct input_t {
   using type = Type;
@@ -148,10 +191,10 @@ template <typename Type> struct output_model {
 
   Type value;
 
-  template <typename Element>
-  constexpr explicit output_model(
-      std::initializer_list<std::initializer_list<Element>> h)
-      : value(h) {}
+  template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  constexpr explicit output_model(const Element (&row)[Columns],
+                                  const Element (&...rows)[Sizes])
+      : value(row, rows...) {}
 
   template <typename Element>
   constexpr explicit output_model(Element h) : value{h} {}
@@ -159,19 +202,20 @@ template <typename Type> struct output_model {
 
 template <typename Element> output_model(Element) -> output_model<Element>;
 
-template <typename Element>
-output_model(std::initializer_list<std::initializer_list<Element>>)
-    -> output_model<std::initializer_list<std::initializer_list<Element>>>;
+template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  requires((Sizes == Columns) && ...)
+output_model(const Element (&row)[Columns], const Element (&...rows)[Sizes])
+    -> output_model<row_list<Element, 1 + sizeof...(Sizes), Columns>>;
 
 template <typename Type> struct state_transition {
   using type = Type;
 
   Type value;
 
-  template <typename Element>
-  constexpr explicit state_transition(
-      std::initializer_list<std::initializer_list<Element>> f)
-      : value(f) {}
+  template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  constexpr explicit state_transition(const Element (&row)[Columns],
+                                      const Element (&...rows)[Sizes])
+      : value(row, rows...) {}
 
   template <typename Element>
   constexpr explicit state_transition(Element f) : value{f} {}
@@ -180,19 +224,20 @@ template <typename Type> struct state_transition {
 template <typename Element>
 state_transition(Element) -> state_transition<Element>;
 
-template <typename Element>
-state_transition(std::initializer_list<std::initializer_list<Element>>)
-    -> state_transition<std::initializer_list<std::initializer_list<Element>>>;
+template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  requires((Sizes == Columns) && ...)
+state_transition(const Element (&row)[Columns], const Element (&...rows)[Sizes])
+    -> state_transition<row_list<Element, 1 + sizeof...(Sizes), Columns>>;
 
 template <typename Type> struct input_control {
   using type = Type;
 
   Type value;
 
-  template <typename Element>
-  constexpr explicit input_control(
-      std::initializer_list<std::initializer_list<Element>> g)
-      : value(g) {}
+  template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  constexpr explicit input_control(const Element (&row)[Columns],
+                                   const Element (&...rows)[Sizes])
+      : value(row, rows...) {}
 
   template <typename Element>
   constexpr explicit input_control(Element g) : value{g} {}
@@ -200,9 +245,10 @@ template <typename Type> struct input_control {
 
 template <typename Element> input_control(Element) -> input_control<Element>;
 
-template <typename Element>
-input_control(std::initializer_list<std::initializer_list<Element>>)
-    -> input_control<std::initializer_list<std::initializer_list<Element>>>;
+template <typename Element, std::size_t Columns, std::size_t... Sizes>
+  requires((Sizes == Columns) && ...)
+input_control(const Element (&row)[Columns], const Element (&...rows)[Sizes])
+    -> input_control<row_list<Element, 1 + sizeof...(Sizes), Columns>>;
 
 //! @todo Simplify?
 template <typename Type> struct transition {
