@@ -76,7 +76,7 @@ using position = mp_units::quantity<mp_units::isq::length[m]>;
   kalman filter{
       // This is the dog's initial position expressed as a Gaussian. The state X
       // position is 0 meters.
-      state{position{1. * m}},
+      state{position{0. * m}},
       // The measured output position Z.
       output<position>,
       // We are predicting that at each time step the dog moves forward one
@@ -101,23 +101,23 @@ using position = mp_units::quantity<mp_units::isq::length[m]>;
 
   filter.predict(position{1. * m});
   filter.update(position{1.354 * m});
-  filter.predict(position{2.352 * m});
+  filter.predict(position{1. * m});
   filter.update(position{1.882 * m});
-  filter.predict(position{3.070 * m});
+  filter.predict(position{1. * m});
   filter.update(position{4.341 * m});
-  filter.predict(position{4.736 * m});
+  filter.predict(position{1. * m});
   filter.update(position{7.156 * m});
-  filter.predict(position{6.960 * m});
+  filter.predict(position{1. * m});
   filter.update(position{6.939 * m});
-  filter.predict(position{7.949 * m});
+  filter.predict(position{1. * m});
   filter.update(position{6.844 * m});
-  filter.predict(position{8.396 * m});
+  filter.predict(position{1. * m});
   filter.update(position{9.847 * m});
-  filter.predict(position{10.122 * m});
+  filter.predict(position{1. * m});
   filter.update(position{12.553 * m});
-  filter.predict(position{12.338 * m});
+  filter.predict(position{1. * m});
   filter.update(position{16.273 * m});
-  filter.predict(position{15.305 * m});
+  filter.predict(position{1. * m});
   filter.update(position{14.8 * m});
 
   assert(
