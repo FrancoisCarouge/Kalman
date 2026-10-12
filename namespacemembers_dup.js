@@ -1,9 +1,11 @@
 var namespacemembers_dup =
 [
     [ "a", "namespacemembers.xhtml", null ],
+    [ "c", "namespacemembers_c.xhtml", null ],
     [ "d", "namespacemembers_d.xhtml", null ],
     [ "e", "namespacemembers_e.xhtml", null ],
     [ "f", "namespacemembers_f.xhtml", null ],
+    [ "g", "namespacemembers_g.xhtml", null ],
     [ "h", "namespacemembers_h.xhtml", null ],
     [ "i", "namespacemembers_i.xhtml", null ],
     [ "k", "namespacemembers_k.xhtml", null ],

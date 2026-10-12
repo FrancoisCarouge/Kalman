@@ -30,9 +30,11 @@ var menudata={children:[
 {text:"Namespace Members",url:"namespacemembers.xhtml",children:[
 {text:"All",url:"namespacemembers.xhtml",children:[
 {text:"a",url:"namespacemembers.xhtml#index_a"},
+{text:"c",url:"namespacemembers_c.xhtml#index_c"},
 {text:"d",url:"namespacemembers_d.xhtml#index_d"},
 {text:"e",url:"namespacemembers_e.xhtml#index_e"},
 {text:"f",url:"namespacemembers_f.xhtml#index_f"},
+{text:"g",url:"namespacemembers_g.xhtml#index_g"},
 {text:"h",url:"namespacemembers_h.xhtml#index_h"},
 {text:"i",url:"namespacemembers_i.xhtml#index_i"},
 {text:"k",url:"namespacemembers_k.xhtml#index_k"},
@@ -51,9 +53,13 @@ var menudata={children:[
 {text:"Variables",url:"namespacemembers_vars.xhtml",children:[
 {text:"d",url:"namespacemembers_vars.xhtml#index_d"},
 {text:"f",url:"namespacemembers_vars.xhtml#index_f"},
+{text:"g",url:"namespacemembers_vars.xhtml#index_g"},
+{text:"h",url:"namespacemembers_vars.xhtml#index_h"},
 {text:"i",url:"namespacemembers_vars.xhtml#index_i"},
 {text:"o",url:"namespacemembers_vars.xhtml#index_o"},
 {text:"p",url:"namespacemembers_vars.xhtml#index_p"},
+{text:"q",url:"namespacemembers_vars.xhtml#index_q"},
+{text:"r",url:"namespacemembers_vars.xhtml#index_r"},
 {text:"s",url:"namespacemembers_vars.xhtml#index_s"},
 {text:"t",url:"namespacemembers_vars.xhtml#index_t"},
 {text:"u",url:"namespacemembers_vars.xhtml#index_u"},

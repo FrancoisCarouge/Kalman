@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['prediction_5ftypes_0',['prediction_types',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a707e960d17d3197e85cbdc4b8be06aa1',1,'fcarouge::kalman_filter::internal']]],
-  ['print_1',['print',['../namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2',1,'fcarouge']]],
-  ['publish_2',['publish',['../_l_i_c_e_n_s_e_8txt.xhtml#a1fc07cd1fdadcf7b30357c0b2d236557',1,'LICENSE.txt']]],
-  ['purpose_3',['purpose',['../_l_i_c_e_n_s_e_8txt.xhtml#ade1d07e8c2d412faa51f2c82ff28df76',1,'LICENSE.txt']]]
+  ['merchantability_0',['MERCHANTABILITY',['../_l_i_c_e_n_s_e_8txt.xhtml#a8f20688f7a2c8750d03793f8c37a2385',1,'LICENSE.txt']]],
+  ['modify_1',['modify',['../_l_i_c_e_n_s_e_8txt.xhtml#ab211d3cae85d1f657e0517e9184e50a6',1,'LICENSE.txt']]]
 ];

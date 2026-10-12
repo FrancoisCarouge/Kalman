@@ -15,7 +15,11 @@ var dir_38eb1dc5b1c36523e6cf628b0c17f528 =
     [ "default_5x4x3.cpp", "default__5x4x3_8cpp.xhtml", "default__5x4x3_8cpp" ],
     [ "default_float_1x1x1.cpp", "default__float__1x1x1_8cpp.xhtml", "default__float__1x1x1_8cpp" ],
     [ "move_5x4x3.cpp", "constructor_2move__5x4x3_8cpp.xhtml", null ],
+    [ "rows.cpp", "rows_8cpp.xhtml", "rows_8cpp" ],
+    [ "rows_fail.cpp", "rows__fail_8cpp.xhtml", "rows__fail_8cpp" ],
     [ "state_1x1x0.cpp", "state__1x1x0_8cpp.xhtml", "state__1x1x0_8cpp" ],
+    [ "stored_2x1x0.cpp", "stored__2x1x0_8cpp.xhtml", "stored__2x1x0_8cpp" ],
+    [ "stored_2x2x1.cpp", "stored__2x2x1_8cpp.xhtml", "stored__2x2x1_8cpp" ],
     [ "traits_1x1x0.cpp", "constructor_2traits__1x1x0_8cpp.xhtml", null ],
     [ "traits_5x4x3.cpp", "traits__5x4x3_8cpp.xhtml", "traits__5x4x3_8cpp" ],
     [ "uncertainties_1x1x0.cpp", "uncertainties__1x1x0_8cpp.xhtml", "uncertainties__1x1x0_8cpp" ]

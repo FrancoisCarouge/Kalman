@@ -215,6 +215,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>repacker&lt; Pack&lt; Types... &gt; &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>row_list</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>scope_exit</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
@@ -269,6 +271,12 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ac399b3f6f82574402664f0dc5683f3c7" id="r_ac399b3f6f82574402664f0dc5683f3c7"><td class="memTemplParams" colspan="2">template&lt;typename To , typename From &gt; </td></tr>
+<tr class="memitem:ac399b3f6f82574402664f0dc5683f3c7"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac399b3f6f82574402664f0dc5683f3c7">convert</a> (const From &amp;value) -&gt; To</td></tr>
+<tr class="separator:ac399b3f6f82574402664f0dc5683f3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae693b4cd2c7defc575ff59765977810d" id="r_ae693b4cd2c7defc575ff59765977810d"><td class="memTemplParams" colspan="2">template&lt;typename To , typename Element , std::size_t Rows, std::size_t Columns&gt; </td></tr>
+<tr class="memitem:ae693b4cd2c7defc575ff59765977810d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae693b4cd2c7defc575ff59765977810d">convert</a> (const row_list&lt; Element, Rows, Columns &gt; &amp;value) -&gt; To</td></tr>
+<tr class="separator:ae693b4cd2c7defc575ff59765977810d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37536dd9550790894dd0aaf5ce4f7a42" id="r_a37536dd9550790894dd0aaf5ce4f7a42"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
 <tr class="memitem:a37536dd9550790894dd0aaf5ce4f7a42"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a37536dd9550790894dd0aaf5ce4f7a42">state</a> (Type) -&gt; state&lt; Type &gt;</td></tr>
 <tr class="separator:a37536dd9550790894dd0aaf5ce4f7a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -278,39 +286,45 @@ Functions</h2></td></tr>
 <tr class="memitem:a67e72364f755af0934a50f5fce6dd778" id="r_a67e72364f755af0934a50f5fce6dd778"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
 <tr class="memitem:a67e72364f755af0934a50f5fce6dd778"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a> (Element) -&gt; estimate_uncertainty&lt; Element &gt;</td></tr>
 <tr class="separator:a67e72364f755af0934a50f5fce6dd778"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10a842eff0ae78711762bb5745c2e7ce" id="r_a10a842eff0ae78711762bb5745c2e7ce"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a10a842eff0ae78711762bb5745c2e7ce"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a10a842eff0ae78711762bb5745c2e7ce">estimate_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; estimate_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:a10a842eff0ae78711762bb5745c2e7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a626060d9ae2238162bde5a22618152b0" id="r_a626060d9ae2238162bde5a22618152b0"><td class="memTemplParams" colspan="2">template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</td></tr>
+<tr class="memitem:a626060d9ae2238162bde5a22618152b0"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a626060d9ae2238162bde5a22618152b0">estimate_uncertainty</a> (const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; estimate_uncertainty&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td></tr>
+<tr class="separator:a626060d9ae2238162bde5a22618152b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a183c70977c497ac30a3201051576e4ac" id="r_a183c70977c497ac30a3201051576e4ac"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
 <tr class="memitem:a183c70977c497ac30a3201051576e4ac"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a> (Element) -&gt; output_uncertainty&lt; Element &gt;</td></tr>
 <tr class="separator:a183c70977c497ac30a3201051576e4ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5b447571d472d2d46203c1c185bd03c" id="r_aa5b447571d472d2d46203c1c185bd03c"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:aa5b447571d472d2d46203c1c185bd03c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa5b447571d472d2d46203c1c185bd03c">output_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; output_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:aa5b447571d472d2d46203c1c185bd03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac828ddd73c4e1d54640923ce85266bbc" id="r_ac828ddd73c4e1d54640923ce85266bbc"><td class="memTemplParams" colspan="2">template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</td></tr>
+<tr class="memitem:ac828ddd73c4e1d54640923ce85266bbc"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac828ddd73c4e1d54640923ce85266bbc">output_uncertainty</a> (const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; output_uncertainty&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td></tr>
+<tr class="separator:ac828ddd73c4e1d54640923ce85266bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35a41ff99d9716fe5b0757e207df8e43" id="r_a35a41ff99d9716fe5b0757e207df8e43"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
 <tr class="memitem:a35a41ff99d9716fe5b0757e207df8e43"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a> (Element) -&gt; process_uncertainty&lt; Element &gt;</td></tr>
 <tr class="separator:a35a41ff99d9716fe5b0757e207df8e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a026abb6f405fa07a852f6128d57e9670" id="r_a026abb6f405fa07a852f6128d57e9670"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:a026abb6f405fa07a852f6128d57e9670"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a026abb6f405fa07a852f6128d57e9670">process_uncertainty</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; process_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:a026abb6f405fa07a852f6128d57e9670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9757ee5f02786f560732088d70912272" id="r_a9757ee5f02786f560732088d70912272"><td class="memTemplParams" colspan="2">template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</td></tr>
+<tr class="memitem:a9757ee5f02786f560732088d70912272"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9757ee5f02786f560732088d70912272">process_uncertainty</a> (const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; process_uncertainty&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td></tr>
+<tr class="separator:a9757ee5f02786f560732088d70912272"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7806c4db6cb0477ea35494bc9015d272" id="r_a7806c4db6cb0477ea35494bc9015d272"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
 <tr class="memitem:a7806c4db6cb0477ea35494bc9015d272"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7806c4db6cb0477ea35494bc9015d272">output_model</a> (Element) -&gt; output_model&lt; Element &gt;</td></tr>
 <tr class="separator:a7806c4db6cb0477ea35494bc9015d272"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4023cf43dde2d1fb7e8b00f6a3f78d8" id="r_ae4023cf43dde2d1fb7e8b00f6a3f78d8"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:ae4023cf43dde2d1fb7e8b00f6a3f78d8"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae4023cf43dde2d1fb7e8b00f6a3f78d8">output_model</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; output_model&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:ae4023cf43dde2d1fb7e8b00f6a3f78d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf3957e1818ee6020e4299dc4d5cbccb" id="r_aaf3957e1818ee6020e4299dc4d5cbccb"><td class="memTemplParams" colspan="2">template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</td></tr>
+<tr class="memitem:aaf3957e1818ee6020e4299dc4d5cbccb"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aaf3957e1818ee6020e4299dc4d5cbccb">output_model</a> (const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; output_model&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td></tr>
+<tr class="separator:aaf3957e1818ee6020e4299dc4d5cbccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19478b612027f688fd2d3ed290827afb" id="r_a19478b612027f688fd2d3ed290827afb"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
 <tr class="memitem:a19478b612027f688fd2d3ed290827afb"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a19478b612027f688fd2d3ed290827afb">state_transition</a> (Element) -&gt; state_transition&lt; Element &gt;</td></tr>
 <tr class="separator:a19478b612027f688fd2d3ed290827afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf9a5a25c4e7c354279379db1109efb2" id="r_acf9a5a25c4e7c354279379db1109efb2"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:acf9a5a25c4e7c354279379db1109efb2"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#acf9a5a25c4e7c354279379db1109efb2">state_transition</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; state_transition&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:acf9a5a25c4e7c354279379db1109efb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d3c952306d887b3d3d54f42b09952b4" id="r_a0d3c952306d887b3d3d54f42b09952b4"><td class="memTemplParams" colspan="2">template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</td></tr>
+<tr class="memitem:a0d3c952306d887b3d3d54f42b09952b4"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0d3c952306d887b3d3d54f42b09952b4">state_transition</a> (const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; state_transition&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td></tr>
+<tr class="separator:a0d3c952306d887b3d3d54f42b09952b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a788d65d976b6a412caf88748f782dfa7" id="r_a788d65d976b6a412caf88748f782dfa7"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
 <tr class="memitem:a788d65d976b6a412caf88748f782dfa7"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a788d65d976b6a412caf88748f782dfa7">input_control</a> (Element) -&gt; input_control&lt; Element &gt;</td></tr>
 <tr class="separator:a788d65d976b6a412caf88748f782dfa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca21caf76998713ab2e96b8fd5ab2123" id="r_aca21caf76998713ab2e96b8fd5ab2123"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
-<tr class="memitem:aca21caf76998713ab2e96b8fd5ab2123"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aca21caf76998713ab2e96b8fd5ab2123">input_control</a> (std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;) -&gt; input_control&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td></tr>
-<tr class="separator:aca21caf76998713ab2e96b8fd5ab2123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d16c88e2bf4d10e77a72f6d73586f2a" id="r_a0d16c88e2bf4d10e77a72f6d73586f2a"><td class="memTemplParams" colspan="2">template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</td></tr>
+<tr class="memitem:a0d16c88e2bf4d10e77a72f6d73586f2a"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0d16c88e2bf4d10e77a72f6d73586f2a">input_control</a> (const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; input_control&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td></tr>
+<tr class="separator:a0d16c88e2bf4d10e77a72f6d73586f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2a243dbef2d7378b11510473d5ac039" id="r_ab2a243dbef2d7378b11510473d5ac039"><td class="memTemplParams" colspan="2">template&lt;typename Element &gt; </td></tr>
 <tr class="memitem:ab2a243dbef2d7378b11510473d5ac039"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab2a243dbef2d7378b11510473d5ac039">transition</a> (Element) -&gt; transition&lt; Element &gt;</td></tr>
 <tr class="separator:ab2a243dbef2d7378b11510473d5ac039"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -460,7 +474,7 @@ template&lt;typename... Arguments&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00345">345</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00358">358</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -683,8 +697,96 @@ template&lt;typename Callable &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ac399b3f6f82574402664f0dc5683f3c7" name="ac399b3f6f82574402664f0dc5683f3c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac399b3f6f82574402664f0dc5683f3c7">&#9670;&#160;</a></span>convert() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename To , typename From &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::kalman_filter::internal::convert </td>
+          <td>(</td>
+          <td class="paramtype">const From &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td> -&gt; To </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00062">62</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>                                                              {</div>
+<div class="line"><span class="lineno">   63</span>  <span class="keywordflow">return</span> To(value);</div>
+<div class="line"><span class="lineno">   64</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae693b4cd2c7defc575ff59765977810d" name="ae693b4cd2c7defc575ff59765977810d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae693b4cd2c7defc575ff59765977810d">&#9670;&#160;</a></span>convert() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename To , typename Element , std::size_t Rows, std::size_t Columns&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::kalman_filter::internal::convert </td>
+          <td>(</td>
+          <td class="paramtype">const row_list&lt; Element, Rows, Columns &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td> -&gt; To </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00068">68</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>                                                             {</div>
+<div class="line"><span class="lineno">   69</span>  <span class="keywordflow">return</span> value.template to&lt;To&gt;();</div>
+<div class="line"><span class="lineno">   70</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a626060d9ae2238162bde5a22618152b0" name="a626060d9ae2238162bde5a22618152b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a626060d9ae2238162bde5a22618152b0">&#9670;&#160;</a></span>estimate_uncertainty() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::kalman_filter::internal::estimate_uncertainty </td>
+          <td>(</td>
+          <td class="paramtype">const Element(&amp;)</td>          <td class="paramname"><span class="paramname"><em>row</em></span>[Columns], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const </td>          <td class="paramname"><span class="paramname"><em>Element</em></span>(&amp;...rows)[Sizes]&#160;) -&gt;  estimate_uncertainty&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a67e72364f755af0934a50f5fce6dd778" name="a67e72364f755af0934a50f5fce6dd778"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67e72364f755af0934a50f5fce6dd778">&#9670;&#160;</a></span>estimate_uncertainty() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a67e72364f755af0934a50f5fce6dd778">&#9670;&#160;</a></span>estimate_uncertainty() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -696,25 +798,6 @@ template&lt;typename Element &gt; </div>
           <td>(</td>
           <td class="paramtype">Element</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> -&gt;  estimate_uncertainty&lt; Element &gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a10a842eff0ae78711762bb5745c2e7ce" name="a10a842eff0ae78711762bb5745c2e7ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10a842eff0ae78711762bb5745c2e7ce">&#9670;&#160;</a></span>estimate_uncertainty() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Element &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">fcarouge::kalman_filter::internal::estimate_uncertainty </td>
-          <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt;  estimate_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -778,8 +861,32 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 
 </div>
 </div>
+<a id="a0d16c88e2bf4d10e77a72f6d73586f2a" name="a0d16c88e2bf4d10e77a72f6d73586f2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d16c88e2bf4d10e77a72f6d73586f2a">&#9670;&#160;</a></span>input_control() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::kalman_filter::internal::input_control </td>
+          <td>(</td>
+          <td class="paramtype">const Element(&amp;)</td>          <td class="paramname"><span class="paramname"><em>row</em></span>[Columns], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const </td>          <td class="paramname"><span class="paramname"><em>Element</em></span>(&amp;...rows)[Sizes]&#160;) -&gt;  input_control&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a788d65d976b6a412caf88748f782dfa7" name="a788d65d976b6a412caf88748f782dfa7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a788d65d976b6a412caf88748f782dfa7">&#9670;&#160;</a></span>input_control() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a788d65d976b6a412caf88748f782dfa7">&#9670;&#160;</a></span>input_control() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -791,25 +898,6 @@ template&lt;typename Element &gt; </div>
           <td>(</td>
           <td class="paramtype">Element</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> -&gt;  input_control&lt; Element &gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aca21caf76998713ab2e96b8fd5ab2123" name="aca21caf76998713ab2e96b8fd5ab2123"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca21caf76998713ab2e96b8fd5ab2123">&#9670;&#160;</a></span>input_control() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Element &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">fcarouge::kalman_filter::internal::input_control </td>
-          <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt;  input_control&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -835,8 +923,32 @@ template&lt;typename Element &gt; </div>
 
 </div>
 </div>
+<a id="aaf3957e1818ee6020e4299dc4d5cbccb" name="aaf3957e1818ee6020e4299dc4d5cbccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf3957e1818ee6020e4299dc4d5cbccb">&#9670;&#160;</a></span>output_model() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::kalman_filter::internal::output_model </td>
+          <td>(</td>
+          <td class="paramtype">const Element(&amp;)</td>          <td class="paramname"><span class="paramname"><em>row</em></span>[Columns], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const </td>          <td class="paramname"><span class="paramname"><em>Element</em></span>(&amp;...rows)[Sizes]&#160;) -&gt;  output_model&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7806c4db6cb0477ea35494bc9015d272" name="a7806c4db6cb0477ea35494bc9015d272"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7806c4db6cb0477ea35494bc9015d272">&#9670;&#160;</a></span>output_model() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7806c4db6cb0477ea35494bc9015d272">&#9670;&#160;</a></span>output_model() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -854,19 +966,24 @@ template&lt;typename Element &gt; </div>
 
 </div>
 </div>
-<a id="ae4023cf43dde2d1fb7e8b00f6a3f78d8" name="ae4023cf43dde2d1fb7e8b00f6a3f78d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4023cf43dde2d1fb7e8b00f6a3f78d8">&#9670;&#160;</a></span>output_model() <span class="overload">[2/2]</span></h2>
+<a id="ac828ddd73c4e1d54640923ce85266bbc" name="ac828ddd73c4e1d54640923ce85266bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac828ddd73c4e1d54640923ce85266bbc">&#9670;&#160;</a></span>output_uncertainty() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Element &gt; </div>
+template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</div>
       <table class="memname">
         <tr>
-          <td class="memname">fcarouge::kalman_filter::internal::output_model </td>
+          <td class="memname">fcarouge::kalman_filter::internal::output_uncertainty </td>
           <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt;  output_model&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td>
+          <td class="paramtype">const Element(&amp;)</td>          <td class="paramname"><span class="paramname"><em>row</em></span>[Columns], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const </td>          <td class="paramname"><span class="paramname"><em>Element</em></span>(&amp;...rows)[Sizes]&#160;) -&gt;  output_uncertainty&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -874,7 +991,7 @@ template&lt;typename Element &gt; </div>
 </div>
 </div>
 <a id="a183c70977c497ac30a3201051576e4ac" name="a183c70977c497ac30a3201051576e4ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a183c70977c497ac30a3201051576e4ac">&#9670;&#160;</a></span>output_uncertainty() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a183c70977c497ac30a3201051576e4ac">&#9670;&#160;</a></span>output_uncertainty() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -892,19 +1009,24 @@ template&lt;typename Element &gt; </div>
 
 </div>
 </div>
-<a id="aa5b447571d472d2d46203c1c185bd03c" name="aa5b447571d472d2d46203c1c185bd03c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5b447571d472d2d46203c1c185bd03c">&#9670;&#160;</a></span>output_uncertainty() <span class="overload">[2/2]</span></h2>
+<a id="a9757ee5f02786f560732088d70912272" name="a9757ee5f02786f560732088d70912272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9757ee5f02786f560732088d70912272">&#9670;&#160;</a></span>process_uncertainty() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Element &gt; </div>
+template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</div>
       <table class="memname">
         <tr>
-          <td class="memname">fcarouge::kalman_filter::internal::output_uncertainty </td>
+          <td class="memname">fcarouge::kalman_filter::internal::process_uncertainty </td>
           <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt;  output_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td>
+          <td class="paramtype">const Element(&amp;)</td>          <td class="paramname"><span class="paramname"><em>row</em></span>[Columns], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const </td>          <td class="paramname"><span class="paramname"><em>Element</em></span>(&amp;...rows)[Sizes]&#160;) -&gt;  process_uncertainty&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -912,7 +1034,7 @@ template&lt;typename Element &gt; </div>
 </div>
 </div>
 <a id="a35a41ff99d9716fe5b0757e207df8e43" name="a35a41ff99d9716fe5b0757e207df8e43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35a41ff99d9716fe5b0757e207df8e43">&#9670;&#160;</a></span>process_uncertainty() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a41ff99d9716fe5b0757e207df8e43">&#9670;&#160;</a></span>process_uncertainty() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -924,25 +1046,6 @@ template&lt;typename Element &gt; </div>
           <td>(</td>
           <td class="paramtype">Element</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> -&gt;  process_uncertainty&lt; Element &gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a026abb6f405fa07a852f6128d57e9670" name="a026abb6f405fa07a852f6128d57e9670"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a026abb6f405fa07a852f6128d57e9670">&#9670;&#160;</a></span>process_uncertainty() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Element &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">fcarouge::kalman_filter::internal::process_uncertainty </td>
-          <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt;  process_uncertainty&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -987,8 +1090,32 @@ template&lt;typename... Types&gt; </div>
 
 </div>
 </div>
+<a id="a0d3c952306d887b3d3d54f42b09952b4" name="a0d3c952306d887b3d3d54f42b09952b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d3c952306d887b3d3d54f42b09952b4">&#9670;&#160;</a></span>state_transition() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , std::size_t Columns, std::size_t... Sizes&gt; <br />
+requires ((Sizes == Columns) &amp;&amp; ...)</div>
+      <table class="memname">
+        <tr>
+          <td class="memname">fcarouge::kalman_filter::internal::state_transition </td>
+          <td>(</td>
+          <td class="paramtype">const Element(&amp;)</td>          <td class="paramname"><span class="paramname"><em>row</em></span>[Columns], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const </td>          <td class="paramname"><span class="paramname"><em>Element</em></span>(&amp;...rows)[Sizes]&#160;) -&gt;  state_transition&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a19478b612027f688fd2d3ed290827afb" name="a19478b612027f688fd2d3ed290827afb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19478b612027f688fd2d3ed290827afb">&#9670;&#160;</a></span>state_transition() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a19478b612027f688fd2d3ed290827afb">&#9670;&#160;</a></span>state_transition() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1000,25 +1127,6 @@ template&lt;typename Element &gt; </div>
           <td>(</td>
           <td class="paramtype">Element</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> -&gt;  state_transition&lt; Element &gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="acf9a5a25c4e7c354279379db1109efb2" name="acf9a5a25c4e7c354279379db1109efb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf9a5a25c4e7c354279379db1109efb2">&#9670;&#160;</a></span>state_transition() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Element &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">fcarouge::kalman_filter::internal::state_transition </td>
-          <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt;  state_transition&lt; std::initializer_list&lt; std::initializer_list&lt; Element &gt; &gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1094,8 +1202,8 @@ template&lt;typename Filter &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00342">342</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  342</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00355">355</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  355</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1150,8 +1258,8 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00138">138</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  138</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00181">181</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  181</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1267,8 +1375,8 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00144">144</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00187">187</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  187</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1294,8 +1402,8 @@ template&lt;typename... Types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00238">238</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  238</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00284">284</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  284</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1353,8 +1461,8 @@ template&lt;typename... Types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00233">233</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  233</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00279">279</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  279</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

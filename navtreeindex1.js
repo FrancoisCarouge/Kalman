@@ -17,7 +17,9 @@ var NAVTREEINDEX1 =
 "f__g_2callable__1x1x1_8cpp_source.xhtml":[15,0,5,4,0],
 "factory_8hpp.xhtml":[15,0,2,0,0,0,0],
 "factory_8hpp.xhtml#a58dee957377e4be8ecba7d0674b5ca18":[15,0,2,0,0,0,0,0],
-"factory_8hpp.xhtml#a614975b5427a01c25a3b4a2a1a40ff55":[15,0,2,0,0,0,0,1],
+"factory_8hpp.xhtml#a614975b5427a01c25a3b4a2a1a40ff55":[15,0,2,0,0,0,0,3],
+"factory_8hpp.xhtml#ac399b3f6f82574402664f0dc5683f3c7":[15,0,2,0,0,0,0,1],
+"factory_8hpp.xhtml#ae693b4cd2c7defc575ff59765977810d":[15,0,2,0,0,0,0,2],
 "factory_8hpp_source.xhtml":[15,0,2,0,0,0,0],
 "files.xhtml":[15,0],
 "float__1x1x1_8cpp.xhtml":[15,0,5,5,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml":[5],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct":[5,0],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks":[5,5],
-"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist":[5,6],
-"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas":[5,4],
-"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs":[5,1]
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist":[5,6]
 };
