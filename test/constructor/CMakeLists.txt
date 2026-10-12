@@ -36,8 +36,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+build("rows")
 build("traits_1x1x0")
 build("traits_5x4x3" BACKENDS "eigen" "eigen_typed")
+fail("rows_fail")
 pass("characteristics_1x1x1")
 pass("characteristics_2x1x0" BACKENDS "eigen" "eigen_typed")
 pass("copy_5x4x3" BACKENDS "eigen" "eigen_typed")
@@ -54,4 +56,6 @@ pass("default_5x4x3" BACKENDS "eigen" "eigen_typed")
 pass("default_float_1x1x1")
 pass("move_5x4x3" BACKENDS "eigen" "eigen_typed")
 pass("state_1x1x0")
+pass("stored_2x1x0" BACKENDS "eigen" "eigen_typed")
+pass("stored_2x2x1" BACKENDS "eigen" "eigen_typed")
 pass("uncertainties_1x1x0")
