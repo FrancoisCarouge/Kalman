@@ -1303,7 +1303,7 @@ template <typename Type> struct x_z_u_p_q_r {
 
   constexpr void predict(const auto &input_u, const auto &...inputs_u) {
     u = input{input_u, inputs_u...};
-    x = u;
+    x = x + u;
     p = p + q;
   }
 };
@@ -2484,7 +2484,13 @@ public:
   //!
   //! @details Also known as the propagation step. Implements the total
   //! probability theorem. Estimate the next state by suming the known
-  //! probabilities.
+  //! probabilities. The prior state always participates in the prediction: the
+  //! state is propagated through the state transition, and the input, if any,
+  //! contributes through the input control, as in X = F.X + G.U. A
+  //! characteristic the filter does not declare takes its default value, the
+  //! identity for F and G. The meaning of the prediction is therefore a
+  //! property of the process model alone: it depends neither on whether the
+  //! input type equals the state type, nor on which uncertainties are declared.
   //!
   //! @param arguments The prediction and input parameters of
   //! the filter, in that order. The arguments need to be compatible with the
