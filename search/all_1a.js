@@ -1,7 +1,7 @@
 var searchData=
 [
   ['u_0',['u',['../classfcarouge_1_1kalman.xhtml#acfdaff86b4a0b1ef40caf18ce8739a41',1,'fcarouge::kalman']]],
-  ['u_5f1x1x1_2ecpp_1',['u_1x1x1.cpp',['../u__1x1x1_8cpp.xhtml',1,'']]],
+  ['u_5f1x1x1_2ecpp_1',['u_1x1x1.cpp',['../predict_2u__1x1x1_8cpp.xhtml',1,'(Global Namespace)'],['../update_2u__1x1x1_8cpp.xhtml',1,'(Global Namespace)']]],
   ['uncertainties_5f1x1x0_2ecpp_2',['uncertainties_1x1x0.cpp',['../uncertainties__1x1x0_8cpp.xhtml',1,'']]],
   ['unimplemented_5ffail_2ecpp_3',['unimplemented_fail.cpp',['../one_2unimplemented__fail_8cpp.xhtml',1,'(Global Namespace)'],['../zero_2unimplemented__fail_8cpp.xhtml',1,'(Global Namespace)']]],
   ['unit_20test_20code_20coverage_4',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],

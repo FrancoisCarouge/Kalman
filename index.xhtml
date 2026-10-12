@@ -408,14 +408,12 @@ Selected Tradeoffs</h2>
 </ul>
 <h2><a class="anchor" id="lessons-learned"></a>
 Lessons Learned</h2>
-<p>Design, development, and testing uncovered unexpected facets of the projects:</p>
-<ul>
-<li>The filter's state, output, and input column vectors should be strongly typed parameters to allow the filter to participate in full compile-time safeties verification.</li>
-<li>There exist Kalman filters with hundreds of state variables.</li>
-<li>The <code>float</code> data type has about seven significant digits. Floating point error is a loss of information to account for in design.</li>
-<li>The units of useful matrices are factorizable, i.e. the unit of an element is expressed as the product of the row and column indexed units. The deduced units result type of a matrix product collapses and folds the inner indexed units merely returning the outer units.</li>
-<li>Safe physical linear algebra not only includes types and units safety, but also coordinate axes and frames reference.</li>
-</ul>
+<p>The filter's state, output, and input column vectors should be strongly typed parameters to allow the filter to participate in full compile-time safeties verification.</p>
+<p>There exist Kalman filters with hundreds of state variables.</p>
+<p>The <code>float</code> data type has about seven significant digits. Floating point error is a loss of information to account for in design.</p>
+<p>The units of useful matrices are factorizable, i.e. the unit of an element is expressed as the product of the row and column indexed units. The deduced units result type of a matrix product collapses and folds the inner indexed units merely returning the outer units.</p>
+<p>Safe physical linear algebra not only includes types and units safety, but also coordinate axes and frames reference.</p>
+<p><b>A specialized filter is an optimization of the general equations, not a new model.</b> A filter declared without a characteristic is the general filter as-if that characteristic were at its default value, with the unused algebra removed. The meaning of a prediction or an update is a property of the model alone, never of how the filter is declared. Each specialized filter should be tested to agree with the general filter.</p>
 <h2><a class="anchor" id="performance"></a>
 Performance</h2>
 <p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark">benchmarks</a> share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>

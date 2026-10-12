@@ -150,7 +150,7 @@ The named-parameter, deduced-filter pattern</h2>
 <li><code>x_z_p_r</code> — minimal filter: state, output, estimate uncertainty, output uncertainty.</li>
 <li><code>x_z_p_r_f</code> — adds a state transition <code>F</code>.</li>
 <li><code>x_z_p_q_r</code> — adds process uncertainty <code>Q</code>.</li>
-<li><code>x_z_u_p_q_r</code> — adds a control input <code>U</code>.</li>
+<li><code>x_z_u_p_q_r</code> — adds a control input <code>U</code>, added to the state: the general prediction with identity <code>F</code> and <code>G</code>.</li>
 <li><code>x_z_p_q_r_h_f</code> — adds observation/output model <code>H</code> and state transition <code>F</code>.</li>
 <li><code>x_z_u_p_q_r_h_f_g_us_ps</code> — full filter with control input <code>U</code>, input control <code>G</code>, and extra update/prediction argument packs (<code>Us...</code>, <code>Ps...</code>).</li>
 <li><code>x_z_p_qq_rr_f</code>, <code>x_z_p_q_r_hh_f_us_ps</code>, <code>x_z_p_q_r_hh_ff_ps</code>, <code>x_z_u_p_qq_r_ff_gg_ps</code> — variants where a doubled letter (<code>qq</code>, <code>rr</code>, <code>hh</code>, <code>ff</code>, <code>gg</code>) marks a characteristic that is a callable (a function of the state and the extra arguments) rather than a fixed matrix, for gain-scheduling, linear parameter varying (LPV), and extended-filter use cases. Callables are stored by value, their types trailing template parameters of the struct deduced by the factory: no type erasure, no allocation, and a member initializer must never capture a sibling member, which would dangle once the filter is copied or moved.</li>
