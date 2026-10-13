@@ -128,8 +128,11 @@ var NAVTREEINDEX0 =
 "constructor_2copy__5x4x3_8cpp_source.xhtml":[15,0,5,1,2],
 "constructor_2move__5x4x3_8cpp.xhtml":[15,0,5,1,14],
 "constructor_2move__5x4x3_8cpp_source.xhtml":[15,0,5,1,14],
-"constructor_2traits__1x1x0_8cpp.xhtml":[15,0,5,1,20],
-"constructor_2traits__1x1x0_8cpp_source.xhtml":[15,0,5,1,20],
+"constructor_2output__type__1x1x0_8cpp.xhtml":[15,0,5,1,15],
+"constructor_2output__type__1x1x0_8cpp.xhtml#a8a6fc1572e03bddb18a2dc58c600675e":[15,0,5,1,15,0],
+"constructor_2output__type__1x1x0_8cpp_source.xhtml":[15,0,5,1,15],
+"constructor_2traits__1x1x0_8cpp.xhtml":[15,0,5,1,21],
+"constructor_2traits__1x1x0_8cpp_source.xhtml":[15,0,5,1,21],
 "copy__1x1x0_8cpp.xhtml":[15,0,5,0,1],
 "copy__1x1x0_8cpp.xhtml#ae699737ad47182072248ed68749283fd":[15,0,5,0,1,0],
 "copy__1x1x0_8cpp_source.xhtml":[15,0,5,0,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "ekf__4x1x0__thermal__soaring_8cpp.xhtml#ad10c3847526ae930bb2e36e97faf02b1":[15,0,4,0,0,2],
 "ekf__4x1x0__thermal__soaring_8cpp_source.xhtml":[15,0,4,0,0],
 "ekf__6x4x0__3d__apollo__position_8cpp.xhtml":[15,0,4,1,0],
-"ekf__6x4x0__3d__apollo__position_8cpp.xhtml#a16287893598f7ef3195e63b87f7e1b43":[15,0,4,1,0,2],
-"ekf__6x4x0__3d__apollo__position_8cpp.xhtml#a2e07ca0fedd077b098b1aad4513c1b68":[15,0,4,1,0,3],
-"ekf__6x4x0__3d__apollo__position_8cpp.xhtml#a3eef84b620201605062dc26c00053e29":[15,0,4,1,0,1],
-"ekf__6x4x0__3d__apollo__position_8cpp.xhtml#ab83dd70f43d9db02af0243b882564dd0":[15,0,4,1,0,0]
+"ekf__6x4x0__3d__apollo__position_8cpp.xhtml#a16287893598f7ef3195e63b87f7e1b43":[15,0,4,1,0,2]
 };

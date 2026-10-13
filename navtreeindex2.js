@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct":[5,0],
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks":[5,5],
+"md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist":[5,6],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas":[5,4],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs":[5,1],
 "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features":[5,2],
@@ -31,6 +34,9 @@ var NAVTREEINDEX2 =
 "member__type_2arguments_8cpp.xhtml":[15,0,5,9,5],
 "member__type_2arguments_8cpp.xhtml#ac8756e32df667a3790ddc83b5c2d6979":[15,0,5,9,5,0],
 "member__type_2arguments_8cpp_source.xhtml":[15,0,5,9,5],
+"member__type_2output__type__1x1x0_8cpp.xhtml":[15,0,5,9,6],
+"member__type_2output__type__1x1x0_8cpp.xhtml#ab0811b16980fd62fdf01ccb2cbcafadf":[15,0,5,9,6,0],
+"member__type_2output__type__1x1x0_8cpp_source.xhtml":[15,0,5,9,6],
 "move__callable__1x1x0_8cpp.xhtml":[15,0,5,0,4],
 "move__callable__1x1x0_8cpp.xhtml#af5e7bb5efd7dd887b893da55f7bfa172":[15,0,5,0,4,0],
 "move__callable__1x1x0_8cpp_source.xhtml":[15,0,5,0,4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX2 =
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x1x3_8cpp_03.xhtml":[12,0,0,3,31],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x1x3_8cpp_03.xhtml#a0b2cb0381f3f5812c62cb5b82af399a2":[12,0,0,3,31,1],
 "namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x1x3_8cpp_03.xhtml#a4c4131fd692f00119bfe8a4d4cac2021":[12,0,0,3,31,2],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x1x3_8cpp_03.xhtml#a545b625b80e176db5925d773799e5263":[12,0,0,3,31,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x0_8cpp_03.xhtml":[12,0,0,3,32],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x0_8cpp_03.xhtml#a0f0069ab7855b00243336dbd6df3a1b9":[12,0,0,3,32,2],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x0_8cpp_03.xhtml#adb41e59cadaea42cd2463d24bc92d069":[12,0,0,3,32,0],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x0_8cpp_03.xhtml#af93226f0e956f17215764394ac55eeec":[12,0,0,3,32,1],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x1_8cpp_03.xhtml":[12,0,0,3,33],
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x1_8cpp_03.xhtml#a0d16aec43916c7b6c9bb936aa3c26063":[12,0,0,3,33,2]
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x1x3_8cpp_03.xhtml#a545b625b80e176db5925d773799e5263":[12,0,0,3,31,0]
 };
