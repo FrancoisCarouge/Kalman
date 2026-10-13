@@ -230,6 +230,7 @@ template <typename Filter = void> struct filter_deducer {
   }
 
   template <typename X, typename Z, typename P, typename R, typename F>
+    requires std::same_as<X, Z>
   [[nodiscard]] static constexpr auto
   operator()(state<X> x, [[maybe_unused]] output_t<Z> z,
              estimate_uncertainty<P> p, output_uncertainty<R> r,
@@ -248,9 +249,24 @@ template <typename Filter = void> struct filter_deducer {
              estimate_uncertainty<P> p, output_uncertainty<R> r) {
     using kt = x_z_p_q_r_h_f<X, Z>;
 
-    return kt{typename kt::state(x.value),
-              internal::convert<typename kt::estimate_uncertainty>(p.value),
-              internal::convert<typename kt::output_uncertainty>(r.value)};
+    return kt{.x = typename kt::state(x.value),
+              .p =
+                  internal::convert<typename kt::estimate_uncertainty>(p.value),
+              .r = internal::convert<typename kt::output_uncertainty>(r.value)};
+  }
+
+  template <typename X, typename Z, typename P, typename R, typename F>
+  [[nodiscard]] static constexpr auto
+  operator()(state<X> x, [[maybe_unused]] output_t<Z> z,
+             estimate_uncertainty<P> p, output_uncertainty<R> r,
+             state_transition<F> f) {
+    using kt = x_z_p_q_r_h_f<X, Z>;
+
+    return kt{.x = typename kt::state(x.value),
+              .p =
+                  internal::convert<typename kt::estimate_uncertainty>(p.value),
+              .r = internal::convert<typename kt::output_uncertainty>(r.value),
+              .f = internal::convert<typename kt::state_transition>(f.value)};
   }
 
   template <typename X, typename P, typename R, typename Q>

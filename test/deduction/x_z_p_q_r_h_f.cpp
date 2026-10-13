@@ -43,14 +43,20 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the declarations deducing the filter with an output model and
-//! a state transition: distinct type output, with or without uncertainties, and
-//! fully declared characteristics.
+//! a state transition: distinct type output, with or without uncertainties,
+//! with a state transition and without process uncertainty, and fully declared
+//! characteristics.
 static_assert(std::same_as<decltype(kalman{state{0.}, output<float>}),
                            kalman<kf::x_z_p_q_r_h_f<double, float>>>);
 static_assert(std::same_as<decltype(kalman{state{0.}, output<float>,
                                            estimate_uncertainty{1.},
                                            output_uncertainty{1.F}}),
                            kalman<kf::x_z_p_q_r_h_f<double, float>>>);
+static_assert(
+    std::same_as<decltype(kalman{
+                     state{0.}, output<float>, estimate_uncertainty{1.},
+                     output_uncertainty{1.F}, state_transition{1.}}),
+                 kalman<kf::x_z_p_q_r_h_f<double, float>>>);
 static_assert(
     std::same_as<decltype(kalman{
                      state{0.}, output<double>, estimate_uncertainty{1.},
