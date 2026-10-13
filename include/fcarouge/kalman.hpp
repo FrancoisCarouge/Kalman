@@ -52,6 +52,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "kalman_filter/internal/utility.hpp"
 #include "kalman_forward.hpp"
 
+#include <concepts>
+
 namespace fcarouge {
 namespace kf = kalman_filter::internal;
 
@@ -145,10 +147,17 @@ public:
 
   //! @brief Constructs a Kalman filter from its declared configuration.
   //!
+  //! @details Participates in overload resolution only if the arguments
+  //! declare the configuration of this filter type.
+  //!
   //! @see Deduction guide for details.
   //!
   //! @complexity Constant.
-  template <typename... Arguments> constexpr kalman(Arguments... arguments);
+  template <typename... Arguments>
+    requires requires(Arguments... declarations) {
+      { kf::deducer<Filter>(declarations...) } -> std::same_as<Filter>;
+    }
+  constexpr kalman(Arguments... arguments);
 
   //! @brief Copy constructs a filter.
   //!
@@ -383,7 +392,11 @@ public:
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Can the parameter pack of `PredictionTypes` be explicit in the
   //! method declaration for user clarity?
-  constexpr void predict(const auto &...arguments);
+  //! @todo Constrain the compatibility of the argument types.
+  constexpr void predict(const auto &...arguments)
+    requires requires(Filter &implementation) {
+      implementation.predict(arguments...);
+    };
 
   //! @brief Returns the Nth prediction argument.
   //!
@@ -416,7 +429,11 @@ public:
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Can the parameter pack of `UpdateTypes` be explicit in the method
   //! declaration for user clarity?
-  constexpr void update(const auto &...arguments);
+  //! @todo Constrain the compatibility of the argument types.
+  constexpr void update(const auto &...arguments)
+    requires requires(Filter &implementation) {
+      implementation.update(arguments...);
+    };
 
   //! @brief Returns the Nth update argument.
   //!
