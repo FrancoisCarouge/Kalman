@@ -128,7 +128,7 @@ Variables</h2></td></tr>
 <div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{state{0.}, output&lt;double&gt;, estimate_uncertainty{4.},</div>
 <div class="line">                output_uncertainty{4.}};</div>
 <div class="line"> </div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(10.);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(10.);</div>
 <div class="line"> </div>
 <div class="line">  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, filter) == R<span class="stringliteral">&quot;({&quot;k&quot;: 0.5,)&quot;</span></div>
 <div class="line"><span class="stringliteral">                                      R</span><span class="stringliteral">&quot;( &quot;p&quot;: 2,)&quot;</span></div>
@@ -140,9 +140,9 @@ Variables</h2></td></tr>
 <div class="line"><span class="stringliteral"></span> </div>
 <div class="line"><span class="stringliteral">  </span><span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a5a9f5770f213ef92663c25c1db743f98"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000055">Test</a></b></dt><dd>Verifies formatting the characteristics of a single-dimension filter after an update. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000056">Test</a></b></dt><dd>Verifies formatting the characteristics of a single-dimension filter after an update. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="updated__1x1x0_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="updated__1x1x0_8cpp_source.xhtml">updated_1x1x0.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   49</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
@@ -150,7 +150,7 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   51</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{0.}, output&lt;double&gt;, estimate_uncertainty{4.},</div>
 <div class="line"><span class="lineno">   52</span>                output_uncertainty{4.}};</div>
 <div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(10.);</div>
+<div class="line"><span class="lineno">   54</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(10.);</div>
 <div class="line"><span class="lineno">   55</span> </div>
 <div class="line"><span class="lineno">   56</span>  assert(std::format(<span class="stringliteral">&quot;{}&quot;</span>, filter) == R<span class="stringliteral">&quot;({&quot;k&quot;: 0.5,)&quot;</span></div>
 <div class="line"><span class="lineno">   57</span><span class="stringliteral">                                      R</span><span class="stringliteral">&quot;( &quot;p&quot;: 2,)&quot;</span></div>

@@ -1,5 +1,6 @@
 var dir_38eb1dc5b1c36523e6cf628b0c17f528 =
 [
+    [ "arguments_1x1x0.cpp", "arguments__1x1x0_8cpp.xhtml", null ],
     [ "characteristics_1x1x1.cpp", "constructor_2characteristics__1x1x1_8cpp.xhtml", "constructor_2characteristics__1x1x1_8cpp" ],
     [ "characteristics_2x1x0.cpp", "characteristics__2x1x0_8cpp.xhtml", "characteristics__2x1x0_8cpp" ],
     [ "copy_5x4x3.cpp", "constructor_2copy__5x4x3_8cpp.xhtml", null ],

@@ -182,18 +182,18 @@ $(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.xhtml',''); init
 <div class="line">  <span class="comment">// Note: The prediction operation needs not be performed since the process</span></div>
 <div class="line">  <span class="comment">// noise covariance Q is null in this example.</span></div>
 <div class="line">  <span class="comment">// Measure and update: the first measurement is: z1 = 48.54m.</span></div>
-<div class="line">  filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(48.54);</div>
+<div class="line">  filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(48.54);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on.</span></div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(47.11);</div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(55.01);</div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(55.15);</div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(49.89);</div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(40.85);</div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(46.72);</div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(50.05);</div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(51.27);</div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(49.95);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(47.11);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(55.01);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(55.15);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(49.89);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(40.85);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(46.72);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(50.05);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(51.27);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(49.95);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
@@ -205,8 +205,8 @@ $(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.xhtml',''); init
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a5a9f5770f213ef92663c25c1db743f98"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a67c2ff496b806ff41c531c7e692b6897"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aec5735b71ca858573da2f4b9341abf6a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aec5735b71ca858573da2f4b9341abf6a">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>

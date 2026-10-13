@@ -335,12 +335,12 @@ $(function(){initNavTree('kf_8x4x0_2d_bounding_box_8cpp-example.xhtml',''); init
 <div class="line">                             {369.F, 250.5F, 0.29757785467128F, 289.F}};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line">  filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a>();</div>
+<div class="line">  filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
-<div class="line">    filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">update</a>(measure);</div>
-<div class="line">    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a>();</div>
+<div class="line">    filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(measure);</div>
+<div class="line">    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
 <div class="line">  }</div>
 <div class="line"> </div>
 <div class="line">  assert(std::abs(1 - (filter.<a id="a4" name="a4"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>()[0] / 370.932041394761F)) &lt; 0.001F &amp;&amp;</div>
@@ -361,9 +361,9 @@ $(function(){initNavTree('kf_8x4x0_2d_bounding_box_8cpp-example.xhtml',''); init
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a5a9f5770f213ef92663c25c1db743f98"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a5a9f5770f213ef92663c25c1db743f98">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a67c2ff496b806ff41c531c7e692b6897"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aa64cb12fb86876fb5bf74555b8b67f5a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aa64cb12fb86876fb5bf74555b8b67f5a">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a72be5e8e9f3959187ca4ee7906d7e03d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_acc45346aaa4066d7154772759722f97a"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#acc45346aaa4066d7154772759722f97a">fcarouge::kalman_filter::internal::zero</a></div><div class="ttdeci">constexpr Type zero</div><div class="ttdoc">The zero matrix.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00640">utility.hpp:640</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>

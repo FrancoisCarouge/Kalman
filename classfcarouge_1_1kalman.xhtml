@@ -128,10 +128,11 @@ $(function(){initNavTree('classfcarouge_1_1kalman.xhtml',''); initResizable(true
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Member Functions</div></td></tr>
-<tr class="memitem:a414b735bdd80f9ca5120d6abe6284fe8" id="r_a414b735bdd80f9ca5120d6abe6284fe8"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
-<tr class="memitem:a414b735bdd80f9ca5120d6abe6284fe8"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a414b735bdd80f9ca5120d6abe6284fe8">kalman</a> (Arguments... arguments)</td></tr>
-<tr class="memdesc:a414b735bdd80f9ca5120d6abe6284fe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Kalman filter from its declared configuration.  <br /></td></tr>
-<tr class="separator:a414b735bdd80f9ca5120d6abe6284fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97302af7221f8e1f224002863f32f2d3" id="r_a97302af7221f8e1f224002863f32f2d3"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; <br />
+requires requires(Arguments... declarations) { { <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a614975b5427a01c25a3b4a2a1a40ff55">kf::deducer</a>&lt;Filter&gt;(declarations...) } -&gt; std::same_as&lt;Filter&gt;; }</td></tr>
+<tr class="memitem:a97302af7221f8e1f224002863f32f2d3"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a97302af7221f8e1f224002863f32f2d3">kalman</a> (Arguments... arguments)</td></tr>
+<tr class="memdesc:a97302af7221f8e1f224002863f32f2d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Kalman filter from its declared configuration.  <br /></td></tr>
+<tr class="separator:a97302af7221f8e1f224002863f32f2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a413e9589c51e5234e547106382dd6afd" id="r_a413e9589c51e5234e547106382dd6afd"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a413e9589c51e5234e547106382dd6afd">kalman</a> (const <a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a> &amp;other)=default</td></tr>
 <tr class="memdesc:a413e9589c51e5234e547106382dd6afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructs a filter.  <br /></td></tr>
 <tr class="separator:a413e9589c51e5234e547106382dd6afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,16 +186,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a407b266ff00c212c929a82c766966eec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read, write the innovation uncertainty matrix S.  <br /></td></tr>
 <tr class="separator:a407b266ff00c212c929a82c766966eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Public Filtering Member Functions</div></td></tr>
-<tr class="memitem:aa64cb12fb86876fb5bf74555b8b67f5a" id="r_aa64cb12fb86876fb5bf74555b8b67f5a"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa64cb12fb86876fb5bf74555b8b67f5a">predict</a> (const auto &amp;...arguments)</td></tr>
-<tr class="memdesc:aa64cb12fb86876fb5bf74555b8b67f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces estimates of the state variables and uncertainties.  <br /></td></tr>
-<tr class="separator:aa64cb12fb86876fb5bf74555b8b67f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72be5e8e9f3959187ca4ee7906d7e03d" id="r_a72be5e8e9f3959187ca4ee7906d7e03d"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a> (const auto &amp;...arguments)</td></tr>
+<tr class="memdesc:a72be5e8e9f3959187ca4ee7906d7e03d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces estimates of the state variables and uncertainties.  <br /></td></tr>
+<tr class="separator:a72be5e8e9f3959187ca4ee7906d7e03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85ffdc102439da5653543ad51291406e" id="r_a85ffdc102439da5653543ad51291406e"><td class="memTemplParams" colspan="2">template&lt;auto Position&gt; </td></tr>
 <tr class="memitem:a85ffdc102439da5653543ad51291406e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a85ffdc102439da5653543ad51291406e">predict</a> () const</td></tr>
 <tr class="memdesc:a85ffdc102439da5653543ad51291406e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Nth prediction argument.  <br /></td></tr>
 <tr class="separator:a85ffdc102439da5653543ad51291406e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a9f5770f213ef92663c25c1db743f98" id="r_a5a9f5770f213ef92663c25c1db743f98"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a9f5770f213ef92663c25c1db743f98">update</a> (const auto &amp;...arguments)</td></tr>
-<tr class="memdesc:a5a9f5770f213ef92663c25c1db743f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the estimates with the outcome of a measurement.  <br /></td></tr>
-<tr class="separator:a5a9f5770f213ef92663c25c1db743f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad173b50a3c8510c5a393d265085458be" id="r_ad173b50a3c8510c5a393d265085458be"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad173b50a3c8510c5a393d265085458be">update</a> (const auto &amp;...arguments)</td></tr>
+<tr class="memdesc:ad173b50a3c8510c5a393d265085458be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the estimates with the outcome of a measurement.  <br /></td></tr>
+<tr class="separator:ad173b50a3c8510c5a393d265085458be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26f8830ac8d109d2685b187bca02e4f8" id="r_a26f8830ac8d109d2685b187bca02e4f8"><td class="memTemplParams" colspan="2">template&lt;auto Position&gt; </td></tr>
 <tr class="memitem:a26f8830ac8d109d2685b187bca02e4f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a26f8830ac8d109d2685b187bca02e4f8">update</a> () const</td></tr>
 <tr class="memdesc:a26f8830ac8d109d2685b187bca02e4f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Nth update argument.  <br /></td></tr>
@@ -239,15 +240,16 @@ class fcarouge::kalman&lt; typename &gt;</div><p>A generic Kalman filter. </p>
 
 <p class="definition">Definition at line <a class="el" href="kalman__forward_8hpp_source.xhtml#l00049">49</a> of file <a class="el" href="kalman__forward_8hpp_source.xhtml">kalman_forward.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a414b735bdd80f9ca5120d6abe6284fe8" name="a414b735bdd80f9ca5120d6abe6284fe8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a414b735bdd80f9ca5120d6abe6284fe8">&#9670;&#160;</a></span>kalman() <span class="overload">[1/3]</span></h2>
+<a id="a97302af7221f8e1f224002863f32f2d3" name="a97302af7221f8e1f224002863f32f2d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97302af7221f8e1f224002863f32f2d3">&#9670;&#160;</a></span>kalman() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename &gt; </div>
 <div class="memtemplate">
-template&lt;typename... Arguments&gt; </div>
+template&lt;typename... Arguments&gt; <br />
+requires requires(Arguments... declarations) { { <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a614975b5427a01c25a3b4a2a1a40ff55">kf::deducer</a>&lt;Filter&gt;(declarations...) } -&gt; std::same_as&lt;Filter&gt;; }</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -267,6 +269,7 @@ template&lt;typename... Arguments&gt; </div>
 </div><div class="memdoc">
 
 <p>Constructs a Kalman filter from its declared configuration. </p>
+<p>Participates in overload resolution only if the arguments declare the configuration of this filter type.</p>
 <dl class="section see"><dt>See also</dt><dd>Deduction guide for details.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
@@ -747,8 +750,8 @@ template&lt;auto Position&gt; </div>
 
 </div>
 </div>
-<a id="aa64cb12fb86876fb5bf74555b8b67f5a" name="aa64cb12fb86876fb5bf74555b8b67f5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa64cb12fb86876fb5bf74555b8b67f5a">&#9670;&#160;</a></span>predict() <span class="overload">[2/2]</span></h2>
+<a id="a72be5e8e9f3959187ca4ee7906d7e03d" name="a72be5e8e9f3959187ca4ee7906d7e03d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72be5e8e9f3959187ca4ee7906d7e03d">&#9670;&#160;</a></span>predict() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -781,7 +784,8 @@ template&lt;typename &gt; </div>
   </dd>
 </dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
-<p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
+<p class="interdd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
+<p class="enddd">Constrain the compatibility of the argument types. </p>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_thermal_soaring_8cpp-example.xhtml#a1">ekf_4x1x0_thermal_soaring.cpp</a>, <a class="el" href="ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml#a1">ekf_6x4x0_3d_apollo_position.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_8cpp-example.xhtml#a1">kf_1x1x1_1d_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml#a1">kf_1x1x1_1d_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a5">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a4">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a1">kf_2x1x1_1d_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a1">kf_6x2x0_2d_vehicle_position.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a3">kf_6x2x0_2d_vehicle_position_unit.cpp</a>, and <a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a2">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
 </dl>
@@ -1032,8 +1036,8 @@ template&lt;auto Position&gt; </div>
 
 </div>
 </div>
-<a id="a5a9f5770f213ef92663c25c1db743f98" name="a5a9f5770f213ef92663c25c1db743f98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a9f5770f213ef92663c25c1db743f98">&#9670;&#160;</a></span>update() <span class="overload">[2/2]</span></h2>
+<a id="ad173b50a3c8510c5a393d265085458be" name="ad173b50a3c8510c5a393d265085458be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad173b50a3c8510c5a393d265085458be">&#9670;&#160;</a></span>update() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1066,7 +1070,8 @@ template&lt;typename &gt; </div>
   </dd>
 </dl>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000027">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
-<p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
+<p class="interdd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
+<p class="enddd">Constrain the compatibility of the argument types. </p>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_thermal_soaring_8cpp-example.xhtml#a2">ekf_4x1x0_thermal_soaring.cpp</a>, <a class="el" href="ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml#a2">ekf_6x4x0_3d_apollo_position.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a3">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a4">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a4">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a4">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_8cpp-example.xhtml#a2">kf_1x1x1_1d_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml#a2">kf_1x1x1_1d_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a3">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a3">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a4">kf_2x1x1_1d_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a2">kf_6x2x0_2d_vehicle_position.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a4">kf_6x2x0_2d_vehicle_position_unit.cpp</a>, and <a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a3">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
 </dl>
@@ -1253,7 +1258,7 @@ template&lt;typename &gt; </div>
 <p>Encapsulates the implementation details of the filter. </p>
 <p>Optionally exposes a variety of members and methods according to the selected implementation. </p>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00138">138</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00140">140</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>
