@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_KALMAN_TPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_KALMAN_TPP
 
+#include <concepts>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -46,6 +47,9 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge {
 template <typename Filter>
 template <typename... Arguments>
+  requires requires(Arguments... declarations) {
+    { kf::deducer<Filter>(declarations...) } -> std::same_as<Filter>;
+  }
 constexpr kalman<Filter>::kalman(Arguments... arguments)
     : filter{kf::deducer<Filter>(arguments...)} {}
 
@@ -208,7 +212,11 @@ constexpr decltype(auto) kalman<Filter>::s(this auto &&self,
 }
 
 template <typename Filter>
-constexpr void kalman<Filter>::predict(const auto &...arguments) {
+constexpr void kalman<Filter>::predict(const auto &...arguments)
+  requires requires(Filter &implementation) {
+    implementation.predict(arguments...);
+  }
+{
   filter.predict(arguments...);
 }
 
@@ -221,7 +229,11 @@ kalman<Filter>::predict() const {
 }
 
 template <typename Filter>
-constexpr void kalman<Filter>::update(const auto &...arguments) {
+constexpr void kalman<Filter>::update(const auto &...arguments)
+  requires requires(Filter &implementation) {
+    implementation.update(arguments...);
+  }
+{
   filter.update(arguments...);
 }
 

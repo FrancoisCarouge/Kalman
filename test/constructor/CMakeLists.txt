@@ -36,6 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+build("arguments_1x1x0")
 build("rows")
 build("traits_1x1x0")
 build("traits_5x4x3" BACKENDS "eigen" "eigen_typed")
