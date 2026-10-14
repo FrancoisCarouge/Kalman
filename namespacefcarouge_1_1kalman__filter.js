@@ -2,7 +2,7 @@ var namespacefcarouge_1_1kalman__filter =
 [
     [ "internal", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml", [
       [ "ᴀʙᵀ", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4", null ],
-      [ "deduce_filter", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a58dee957377e4be8ecba7d0674b5ca18", null ],
+      [ "deduce_filter", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a5b14ce16dd5afa4a71e9c788cc92ae14", null ],
       [ "difference", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aaeb532535d3f2d2bc0833a388a94b498", null ],
       [ "evaluate", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1", null ],
       [ "first", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ad2b6810c4189d21e1b02b444593f109b", null ],

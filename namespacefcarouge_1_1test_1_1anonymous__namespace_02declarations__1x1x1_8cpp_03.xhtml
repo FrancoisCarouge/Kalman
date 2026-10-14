@@ -124,71 +124,50 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> same_types{state{1.},</div>
-<div class="line">                    output&lt;double&gt;,</div>
-<div class="line">                    input&lt;double&gt;,</div>
-<div class="line">                    estimate_uncertainty{1.},</div>
-<div class="line">                    process_uncertainty{0.},</div>
-<div class="line">                    output_uncertainty{1.}};</div>
-<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> other_input_type{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{1.},</div>
-<div class="line">                          output&lt;double&gt;,</div>
-<div class="line">                          input&lt;float&gt;,</div>
-<div class="line">                          <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{1.},</div>
-<div class="line">                          <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a>{0.},</div>
-<div class="line">                          <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a>{1.}};</div>
+<div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> uncertainties{state{1.},</div>
+<div class="line">                       output&lt;double&gt;,</div>
+<div class="line">                       input&lt;double&gt;,</div>
+<div class="line">                       estimate_uncertainty{1.},</div>
+<div class="line">                       process_uncertainty{0.},</div>
+<div class="line">                       output_uncertainty{1.}};</div>
 <div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> no_uncertainties{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{1.}, output&lt;double&gt;, input&lt;double&gt;};</div>
 <div class="line"> </div>
-<div class="line">  same_types.predict(2.);</div>
-<div class="line">  other_input_type.predict(2.F);</div>
+<div class="line">  uncertainties.predict(2.);</div>
 <div class="line">  no_uncertainties.predict(2.);</div>
 <div class="line"> </div>
-<div class="line">  assert(same_types.x() == 3.);</div>
-<div class="line">  assert(other_input_type.x() == 3.);</div>
+<div class="line">  assert(uncertainties.x() == 3.);</div>
 <div class="line">  assert(no_uncertainties.x() == 3.);</div>
 <div class="line"> </div>
-<div class="line">  assert(same_types.p() == 1.);</div>
-<div class="line">  assert(other_input_type.p() == 1.);</div>
+<div class="line">  assert(uncertainties.p() == 1.);</div>
 <div class="line">  assert(no_uncertainties.p() == 1.);</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a183c70977c497ac30a3201051576e4ac"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">fcarouge::kalman_filter::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a35a41ff99d9716fe5b0757e207df8e43"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">fcarouge::kalman_filter::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a67e72364f755af0934a50f5fce6dd778"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">fcarouge::kalman_filter::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03_xhtml_a531900581ead210eade89bdd8c34ca00"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">fcarouge::sample::anonymous_namespace{ekf_4x1x0_thermal_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__thermal__soaring_8cpp_source.xhtml#l00049">ekf_4x1x0_thermal_soaring.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000092">Test</a></b></dt><dd>Verifies the prediction is independent of the declaration: the same one-state, one-output, one-input filter predicts the same state from the same prior and the same input, whether or not the input type equals the state type, and whether or not the uncertainties are declared. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000095">Test</a></b></dt><dd>Verifies the prediction is independent of the declaration: the same one-state, one-output, one-input filter predicts the same state from the same prior and the same input, whether or not the uncertainties are declared. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="declarations__1x1x1_8cpp_source.xhtml#l00049">49</a> of file <a class="el" href="declarations__1x1x1_8cpp_source.xhtml">declarations_1x1x1.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   49</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   50</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> same_types{state{1.},</div>
-<div class="line"><span class="lineno">   51</span>                    output&lt;double&gt;,</div>
-<div class="line"><span class="lineno">   52</span>                    input&lt;double&gt;,</div>
-<div class="line"><span class="lineno">   53</span>                    estimate_uncertainty{1.},</div>
-<div class="line"><span class="lineno">   54</span>                    process_uncertainty{0.},</div>
-<div class="line"><span class="lineno">   55</span>                    output_uncertainty{1.}};</div>
-<div class="line"><span class="lineno">   56</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> other_input_type{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{1.},</div>
-<div class="line"><span class="lineno">   57</span>                          output&lt;double&gt;,</div>
-<div class="line"><span class="lineno">   58</span>                          input&lt;float&gt;,</div>
-<div class="line"><span class="lineno">   59</span>                          <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{1.},</div>
-<div class="line"><span class="lineno">   60</span>                          <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a>{0.},</div>
-<div class="line"><span class="lineno">   61</span>                          <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a>{1.}};</div>
-<div class="line"><span class="lineno">   62</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> no_uncertainties{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{1.}, output&lt;double&gt;, input&lt;double&gt;};</div>
+<div class="line"><span class="lineno">   50</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> uncertainties{state{1.},</div>
+<div class="line"><span class="lineno">   51</span>                       output&lt;double&gt;,</div>
+<div class="line"><span class="lineno">   52</span>                       input&lt;double&gt;,</div>
+<div class="line"><span class="lineno">   53</span>                       estimate_uncertainty{1.},</div>
+<div class="line"><span class="lineno">   54</span>                       process_uncertainty{0.},</div>
+<div class="line"><span class="lineno">   55</span>                       output_uncertainty{1.}};</div>
+<div class="line"><span class="lineno">   56</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> no_uncertainties{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{1.}, output&lt;double&gt;, input&lt;double&gt;};</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>  uncertainties.predict(2.);</div>
+<div class="line"><span class="lineno">   59</span>  no_uncertainties.predict(2.);</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>  assert(uncertainties.x() == 3.);</div>
+<div class="line"><span class="lineno">   62</span>  assert(no_uncertainties.x() == 3.);</div>
 <div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>  same_types.predict(2.);</div>
-<div class="line"><span class="lineno">   65</span>  other_input_type.predict(2.F);</div>
-<div class="line"><span class="lineno">   66</span>  no_uncertainties.predict(2.);</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>  assert(same_types.x() == 3.);</div>
-<div class="line"><span class="lineno">   69</span>  assert(other_input_type.x() == 3.);</div>
-<div class="line"><span class="lineno">   70</span>  assert(no_uncertainties.x() == 3.);</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>  assert(same_types.p() == 1.);</div>
-<div class="line"><span class="lineno">   73</span>  assert(other_input_type.p() == 1.);</div>
-<div class="line"><span class="lineno">   74</span>  assert(no_uncertainties.p() == 1.);</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   77</span>}()};</div>
+<div class="line"><span class="lineno">   64</span>  assert(uncertainties.p() == 1.);</div>
+<div class="line"><span class="lineno">   65</span>  assert(no_uncertainties.p() == 1.);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   68</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 </div><!-- fragment -->
 </div>

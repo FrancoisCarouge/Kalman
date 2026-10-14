@@ -115,6 +115,10 @@ $(function(){initNavTree('namespacefcarouge_1_1kalman__filter_1_1internal.xhtml'
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>arithmetic_of</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>arithmetic_of&lt; Argument &gt;</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>conditional_estimate_uncertainty</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>conditional_estimate_uncertainty&lt; Filter &gt;</b></td></tr>
@@ -182,6 +186,8 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear algebra evaluates override expression lazy evaluation specialization point. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>filter_deducer</b></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>filter_deduction</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>first_value</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -265,9 +271,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a58dee957377e4be8ecba7d0674b5ca18" id="r_a58dee957377e4be8ecba7d0674b5ca18"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
-<tr class="memitem:a58dee957377e4be8ecba7d0674b5ca18"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a58dee957377e4be8ecba7d0674b5ca18">deduce_filter</a> = std::invoke_result_t&lt;filter_deducer&lt;&gt;, Arguments...&gt;</td></tr>
-<tr class="separator:a58dee957377e4be8ecba7d0674b5ca18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b14ce16dd5afa4a71e9c788cc92ae14" id="r_a5b14ce16dd5afa4a71e9c788cc92ae14"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
+<tr class="memitem:a5b14ce16dd5afa4a71e9c788cc92ae14"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a5b14ce16dd5afa4a71e9c788cc92ae14">deduce_filter</a> = filter_deduction&lt;Arguments...&gt;::type</td></tr>
+<tr class="separator:a5b14ce16dd5afa4a71e9c788cc92ae14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -460,8 +466,8 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 
 </div>
 </div>
-<a id="a58dee957377e4be8ecba7d0674b5ca18" name="a58dee957377e4be8ecba7d0674b5ca18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58dee957377e4be8ecba7d0674b5ca18">&#9670;&#160;</a></span>deduce_filter</h2>
+<a id="a5b14ce16dd5afa4a71e9c788cc92ae14" name="a5b14ce16dd5afa4a71e9c788cc92ae14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b14ce16dd5afa4a71e9c788cc92ae14">&#9670;&#160;</a></span>deduce_filter</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,12 +475,12 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 template&lt;typename... Arguments&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a58dee957377e4be8ecba7d0674b5ca18">fcarouge::kalman_filter::internal::deduce_filter</a> = std::invoke_result_t&lt;filter_deducer&lt;&gt;, Arguments...&gt;</td>
+          <td class="memname">using <a class="el" href="#a5b14ce16dd5afa4a71e9c788cc92ae14">fcarouge::kalman_filter::internal::deduce_filter</a> = filter_deduction&lt;Arguments...&gt;::type</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00374">374</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00397">397</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
 
 </div>
 </div>
