@@ -64,6 +64,18 @@ concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 template <typename Type>
 concept algebraic = requires(Type value) { value(0, 0); };
 
+//! @brief The values initialize a characteristic of the type, as opposed to
+//! its callable.
+//!
+//! @details A single value initializes the characteristic by implicit
+//! conversion, and not by construction: a backend matrix may be explicitly
+//! constructible from any type, a callable included. Several values initialize
+//! the characteristic from its elements, by list-initialization.
+template <typename Type, typename... Values>
+concept initializes =
+    (sizeof...(Values) == 1 && (std::is_convertible_v<Values, Type> && ...)) ||
+    (sizeof...(Values) > 1 && requires(Values... values) { Type{values...}; });
+
 template <typename Filter>
 concept has_state_member = requires(Filter filter) { filter.x; };
 
