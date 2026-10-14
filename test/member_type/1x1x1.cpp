@@ -43,23 +43,23 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the member types of the general filter are deduced from
-//! distinct state, output, and input arithmetic types.
-using filter = decltype(kalman{state{0.}, output<float>, input<int>});
+//! @test Verifies the member types of the general filter are deduced from its
+//! declared arithmetic type.
+using filter = decltype(kalman{state{0.F}, output<float>, input<float>});
 
-static_assert(std::same_as<filter::estimate_uncertainty, double>);
-static_assert(std::same_as<filter::gain, double>);
+static_assert(std::same_as<filter::estimate_uncertainty, float>);
+static_assert(std::same_as<filter::gain, float>);
 static_assert(std::same_as<filter::innovation, float>);
 static_assert(std::same_as<filter::innovation_uncertainty, float>);
-static_assert(std::same_as<filter::input, int>);
-static_assert(std::same_as<filter::input_control, double>);
+static_assert(std::same_as<filter::input, float>);
+static_assert(std::same_as<filter::input_control, float>);
 static_assert(std::same_as<filter::output, float>);
-static_assert(std::same_as<filter::output_model, double>);
+static_assert(std::same_as<filter::output_model, float>);
 static_assert(std::same_as<filter::output_uncertainty, float>);
 static_assert(std::same_as<filter::prediction_types, std::tuple<>>);
-static_assert(std::same_as<filter::process_uncertainty, double>);
-static_assert(std::same_as<filter::state, double>);
-static_assert(std::same_as<filter::state_transition, double>);
+static_assert(std::same_as<filter::process_uncertainty, float>);
+static_assert(std::same_as<filter::state, float>);
+static_assert(std::same_as<filter::state_transition, float>);
 static_assert(std::same_as<filter::update_types, std::tuple<>>);
 } // namespace
 } // namespace fcarouge::test

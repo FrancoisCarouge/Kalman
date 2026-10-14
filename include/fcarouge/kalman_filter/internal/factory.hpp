@@ -370,8 +370,31 @@ template <typename Filter = void> struct filter_deducer {
 
 template <typename Filter> inline constexpr filter_deducer<Filter> deducer{};
 
+// The arithmetic type of a declaration, void otherwise.
+template <typename Argument> struct arithmetic_of : std::type_identity<void> {};
+
+template <typename Argument>
+  requires arithmetic<typename Argument::type>
+struct arithmetic_of<Argument> : std::type_identity<typename Argument::type> {};
+
+template <typename Type, typename... Types>
+concept agrees = ((std::same_as<Type, void> || std::same_as<Types, void> ||
+                   std::same_as<Type, Types>) &&
+                  ...);
+
+template <typename... Types>
+concept agree = (agrees<Types, Types...> && ...);
+
+// Rejects mixed arithmetic types, which would narrow in the filter equations.
+template <typename... Arguments> struct filter_deduction {
+  static_assert(agree<typename arithmetic_of<Arguments>::type...>,
+                "Declare the filter with a single arithmetic type.");
+
+  using type = std::invoke_result_t<filter_deducer<>, Arguments...>;
+};
+
 template <typename... Arguments>
-using deduce_filter = std::invoke_result_t<filter_deducer<>, Arguments...>;
+using deduce_filter = filter_deduction<Arguments...>::type;
 } // namespace fcarouge::kalman_filter::internal
 
 #endif // FCAROUGE_KALMAN_FILTER_INTERNAL_FACTORY_HPP

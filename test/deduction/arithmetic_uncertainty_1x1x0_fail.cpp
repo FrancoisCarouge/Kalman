@@ -38,23 +38,17 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 
-#include <concepts>
-
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the member types of the filter declared with a state
-//! transition and without process uncertainty follow the declared output type
-//! when different from the state type.
-using filter =
-    decltype(kalman{state{0.}, output<float>, estimate_uncertainty{1.},
-                    output_uncertainty{1.F}, state_transition{1.}});
+//! @test Verifies a declaration mixing arithmetic types is rejected: an
+//! estimate uncertainty type wider than the state and output type.
+[[maybe_unused]] const auto test{[] -> int {
+  // Intended: kalman filter{state{0.F}, output<float>,
+  // estimate_uncertainty{1.F}, output_uncertainty{1.F}};
+  kalman filter{state{0.F}, output<float>, estimate_uncertainty{1.},
+                output_uncertainty{1.F}};
 
-static_assert(std::same_as<filter::state, double>);
-static_assert(std::same_as<filter::output, float>);
-static_assert(std::same_as<filter::estimate_uncertainty, double>);
-static_assert(std::same_as<filter::output_uncertainty, float>);
-static_assert(std::same_as<filter::innovation, float>);
-static_assert(std::same_as<filter::innovation_uncertainty, float>);
-static_assert(std::same_as<filter::state_transition, double>);
+  return 0;
+}()};
 } // namespace
 } // namespace fcarouge::test

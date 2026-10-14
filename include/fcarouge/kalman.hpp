@@ -506,7 +506,9 @@ using kf::input_control;
 //!
 //! @details The configuration arguments passed are used to determine at compile
 //! time the type of filter to use. The objective is to select the most
-//! performant filter within the defined configuration parameters.
+//! performant filter within the defined configuration parameters. Declare the
+//! configuration with a single scalar representation to avoid narrowing in the
+//! filter equations: mixed built-in arithmetic types are rejected.
 //!
 //! @tparam Arguments The declarations of the filter configuration.
 //!
