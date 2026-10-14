@@ -42,6 +42,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "utility.hpp"
 
 #include <print>
+#include <type_traits>
 #include <utility>
 
 namespace fcarouge {
@@ -289,7 +290,11 @@ printer<Filter>::update() const {
 
 struct printer {};
 
+//! @note The decorated filter is a prvalue or an xvalue: an lvalue operand
+//! deduces a reference type that the printer cannot derive from, and is
+//! rejected at the pipe expression rather than in the class template.
 template <typename Filter>
+  requires(std::is_class_v<Filter>)
 [[nodiscard]] constexpr auto
 operator|(Filter &&filter, [[maybe_unused]] const printer &decorator) {
   return kalman_filter::internal::printer<Filter>(std::forward<Filter>(filter));
