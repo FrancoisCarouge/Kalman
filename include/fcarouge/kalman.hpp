@@ -527,6 +527,10 @@ kalman(Arguments... arguments) -> kalman<kf::deduce_filter<Arguments...>>;
 //! @details Pipe decorator to filter declaration to print out its activities:
 //! construction, destruction, updates, predictions, and characteristic changes.
 //! Prints with default formatting. Takes no parameters.
+//!
+//! @note The decorator takes ownership of the decorated filter: decorate the
+//! filter declaration, or an explicitly moved filter. An lvalue filter operand,
+//! `const` or not, is rejected.
 inline constexpr printer print;
 
 //! @}

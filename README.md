@@ -263,7 +263,7 @@ std::println("{}", filter);
 
 ### Decorators
 
-Pipe one or more decorators to the filter declaration to attach additional responsibilities.
+Pipe one or more decorators to the filter declaration to attach additional responsibilities. A decorator takes ownership of the filter: decorate an existing filter by moving it, `std::move(filter) | print`.
 
 ```cpp
 auto filter{kalman{...} | print};
