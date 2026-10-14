@@ -44,33 +44,24 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the prediction is independent of the declaration: the same
 //! one-state, one-output, one-input filter predicts the same state from the
-//! same prior and the same input, whether or not the input type equals the
-//! state type, and whether or not the uncertainties are declared.
+//! same prior and the same input, whether or not the uncertainties are
+//! declared.
 [[maybe_unused]] const auto test{[] -> int {
-  kalman same_types{state{1.},
-                    output<double>,
-                    input<double>,
-                    estimate_uncertainty{1.},
-                    process_uncertainty{0.},
-                    output_uncertainty{1.}};
-  kalman other_input_type{state{1.},
-                          output<double>,
-                          input<float>,
-                          estimate_uncertainty{1.},
-                          process_uncertainty{0.},
-                          output_uncertainty{1.}};
+  kalman uncertainties{state{1.},
+                       output<double>,
+                       input<double>,
+                       estimate_uncertainty{1.},
+                       process_uncertainty{0.},
+                       output_uncertainty{1.}};
   kalman no_uncertainties{state{1.}, output<double>, input<double>};
 
-  same_types.predict(2.);
-  other_input_type.predict(2.F);
+  uncertainties.predict(2.);
   no_uncertainties.predict(2.);
 
-  assert(same_types.x() == 3.);
-  assert(other_input_type.x() == 3.);
+  assert(uncertainties.x() == 3.);
   assert(no_uncertainties.x() == 3.);
 
-  assert(same_types.p() == 1.);
-  assert(other_input_type.p() == 1.);
+  assert(uncertainties.p() == 1.);
   assert(no_uncertainties.p() == 1.);
 
   return 0;

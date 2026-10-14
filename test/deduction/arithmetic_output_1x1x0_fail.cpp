@@ -38,33 +38,13 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 
-#include <cassert>
-
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the declared uncertainties and state transition initialize
-//! their own characteristics of the single-dimension filters with an output
-//! type different from their state type: the undeclared process uncertainty
-//! and output model keep their default values.
+//! @test Verifies a declaration mixing arithmetic types is rejected: an output
+//! type different from the state type.
 [[maybe_unused]] const auto test{[] -> int {
-  kalman filter{state{5.}, output<float>, estimate_uncertainty{2.},
-                output_uncertainty{4.F}};
-  kalman another_filter{state{6.}, output<float>, estimate_uncertainty{2.},
-                        output_uncertainty{4.F}, state_transition{3.}};
-
-  assert(filter.x() == 5.);
-  assert(filter.p() == 2.);
-  assert(filter.q() == 0.);
-  assert(filter.r() == 4.F);
-  assert(filter.h() == 1.);
-  assert(filter.f() == 1.);
-
-  assert(another_filter.x() == 6.);
-  assert(another_filter.p() == 2.);
-  assert(another_filter.q() == 0.);
-  assert(another_filter.r() == 4.F);
-  assert(another_filter.h() == 1.);
-  assert(another_filter.f() == 3.);
+  // Intended: kalman filter{state{0.}, output<double>};
+  kalman filter{state{0.}, output<float>};
 
   return 0;
 }()};

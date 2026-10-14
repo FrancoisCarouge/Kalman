@@ -46,6 +46,9 @@ concept has_h = requires(Filter filter) { filter.h(); };
 //! @test Verifies the observation transition matrix H member function is absent
 //! from a filter without output model, present otherwise.
 static_assert(not has_h<decltype(kalman{})>);
-static_assert(has_h<decltype(kalman{state{0.}, output<float>})>);
+static_assert(
+    has_h<decltype(kalman{state{0.}, output<double>, estimate_uncertainty{1.},
+                          process_uncertainty{0.}, output_uncertainty{1.},
+                          output_model{1.}, state_transition{1.}})>);
 } // namespace
 } // namespace fcarouge::test

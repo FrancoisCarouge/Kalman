@@ -37,24 +37,29 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
+#include "fcarouge/linalg.hpp"
 
 #include <concepts>
 #include <tuple>
 
 namespace fcarouge::test {
 namespace {
+template <auto Size> using vector = column_vector<double, Size>;
+
 //! @test Verifies the declarations deducing the general filter: input,
 //! uncertainties, models, and update and prediction types.
 static_assert(
     std::same_as<decltype(kalman{state{0.}, output<double>, input<double>}),
                  kalman<kf::x_z_u_p_q_r_h_f_g_us_ps<
                      double, double, double, std::tuple<>, std::tuple<>>>>);
-static_assert(std::same_as<
-              decltype(kalman{state{0.}, output<double>, input<float>,
-                              estimate_uncertainty{1.}, process_uncertainty{1.},
-                              output_uncertainty{1.}}),
-              kalman<kf::x_z_u_p_q_r_h_f_g_us_ps<double, double, float,
-                                                 std::tuple<>, std::tuple<>>>>);
+static_assert(
+    std::same_as<
+        decltype(kalman{state{vector<2>{0., 0.}}, output<double>, input<double>,
+                        estimate_uncertainty{{1., 0.}, {0., 1.}},
+                        process_uncertainty{{1., 0.}, {0., 1.}},
+                        output_uncertainty{1.}}),
+        kalman<kf::x_z_u_p_q_r_h_f_g_us_ps<vector<2>, double, double,
+                                           std::tuple<>, std::tuple<>>>>);
 static_assert(
     std::same_as<
         decltype(kalman{state{0.}, output<double>, input<double>,
