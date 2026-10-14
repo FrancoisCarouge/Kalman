@@ -104,8 +104,8 @@ constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
   requires(kf::has_process_uncertainty<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    if constexpr (std::is_convertible_v<decltype(values)...,
-                                        typename Filter::process_uncertainty>) {
+    if constexpr (kf::initializes<typename Filter::process_uncertainty,
+                                  decltype(values)...>) {
       self.filter.q = typename Filter::process_uncertainty{values...};
     } else {
       kf::assign(self.filter.noise_process_q, values...);
@@ -120,8 +120,8 @@ constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
   requires(kf::has_output_uncertainty<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    if constexpr (std::is_convertible_v<decltype(values)...,
-                                        typename Filter::output_uncertainty>) {
+    if constexpr (kf::initializes<typename Filter::output_uncertainty,
+                                  decltype(values)...>) {
       self.filter.r = typename Filter::output_uncertainty{values...};
     } else {
       kf::assign(self.filter.noise_observation_r, values...);
@@ -136,8 +136,8 @@ constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
   requires(kf::has_state_transition<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    if constexpr (std::is_convertible_v<decltype(values)...,
-                                        typename Filter::state_transition>) {
+    if constexpr (kf::initializes<typename Filter::state_transition,
+                                  decltype(values)...>) {
       self.filter.f = typename Filter::state_transition{values...};
     } else {
       kf::assign(self.filter.transition_state_f, values...);
@@ -152,8 +152,8 @@ constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
   requires(kf::has_output_model<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    if constexpr (std::is_convertible_v<decltype(values)...,
-                                        typename Filter::output_model>) {
+    if constexpr (kf::initializes<typename Filter::output_model,
+                                  decltype(values)...>) {
       self.filter.h = typename Filter::output_model{values...};
     } else {
       kf::assign(self.filter.observation_state_h, values...);
@@ -168,8 +168,8 @@ constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
   requires(kf::has_input_control<Filter>)
 {
   if constexpr (sizeof...(values)) {
-    if constexpr (std::is_convertible_v<decltype(values)...,
-                                        typename Filter::input_control>) {
+    if constexpr (kf::initializes<typename Filter::input_control,
+                                  decltype(values)...>) {
       self.filter.g = typename Filter::input_control{values...};
     } else {
       kf::assign(self.filter.transition_control_g, values...);
