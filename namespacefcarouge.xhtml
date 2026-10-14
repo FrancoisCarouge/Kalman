@@ -136,9 +136,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aadc278093fb5d97220ab056200a13f03" id="r_aadc278093fb5d97220ab056200a13f03"><td class="memTemplParams" colspan="2">template&lt;typename Filter &gt; </td></tr>
-<tr class="memitem:aadc278093fb5d97220ab056200a13f03"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aadc278093fb5d97220ab056200a13f03">operator|</a> (Filter &amp;&amp;filter, const <a class="el" href="structfcarouge_1_1printer.xhtml">printer</a> &amp;decorator)</td></tr>
-<tr class="separator:aadc278093fb5d97220ab056200a13f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b7f4a51f8bfc9eba14bf43ce456719" id="r_aa9b7f4a51f8bfc9eba14bf43ce456719"><td class="memTemplParams" colspan="2">template&lt;typename Filter &gt; <br />
+requires (std::is_class_v&lt;Filter&gt;)</td></tr>
+<tr class="memitem:aa9b7f4a51f8bfc9eba14bf43ce456719"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa9b7f4a51f8bfc9eba14bf43ce456719">operator|</a> (Filter &amp;&amp;filter, const <a class="el" href="structfcarouge_1_1printer.xhtml">printer</a> &amp;decorator)</td></tr>
+<tr class="separator:aa9b7f4a51f8bfc9eba14bf43ce456719"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Deduction Guides</div></td></tr>
 <tr class="memitem:aff94d4d68501e292b973188436fadba6" id="r_aff94d4d68501e292b973188436fadba6"><td class="memTemplParams" colspan="2">template&lt;typename... Arguments&gt; </td></tr>
 <tr class="memitem:aff94d4d68501e292b973188436fadba6"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aff94d4d68501e292b973188436fadba6">kalman</a> (Arguments... arguments) -&gt; kalman&lt; <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a5b14ce16dd5afa4a71e9c788cc92ae14">kf::deduce_filter</a>&lt; Arguments... &gt; &gt;</td></tr>
@@ -189,13 +190,14 @@ template&lt;typename... Arguments&gt; </div>
 
 </div>
 </div>
-<a id="aadc278093fb5d97220ab056200a13f03" name="aadc278093fb5d97220ab056200a13f03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadc278093fb5d97220ab056200a13f03">&#9670;&#160;</a></span>operator|()</h2>
+<a id="aa9b7f4a51f8bfc9eba14bf43ce456719" name="aa9b7f4a51f8bfc9eba14bf43ce456719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9b7f4a51f8bfc9eba14bf43ce456719">&#9670;&#160;</a></span>operator|()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Filter &gt; </div>
+template&lt;typename Filter &gt; <br />
+requires (std::is_class_v&lt;Filter&gt;)</div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -217,30 +219,13 @@ template&lt;typename Filter &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section note"><dt>Note</dt><dd>The decorated filter is a prvalue or an xvalue: an lvalue operand deduces a reference type that the printer cannot derive from, and is rejected at the pipe expression rather than in the class template. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="print_8hpp_source.xhtml#l00294">294</a> of file <a class="el" href="print_8hpp_source.xhtml">print.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  294</span>                                                                      {</div>
-<div class="line"><span class="lineno">  295</span>  <span class="keywordflow">return</span> kalman_filter::internal::printer&lt;Filter&gt;(std::forward&lt;Filter&gt;(filter));</div>
-<div class="line"><span class="lineno">  296</span>}</div>
+<p class="definition">Definition at line <a class="el" href="print_8hpp_source.xhtml#l00299">299</a> of file <a class="el" href="print_8hpp_source.xhtml">print.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  299</span>                                                                      {</div>
+<div class="line"><span class="lineno">  300</span>  <span class="keywordflow">return</span> kalman_filter::internal::printer&lt;Filter&gt;(std::forward&lt;Filter&gt;(filter));</div>
+<div class="line"><span class="lineno">  301</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="print_8hpp_source.xhtml#l00294">operator|()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="print_8hpp_source.xhtml#l00294">operator|()</a>.</p>
-<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_aadc278093fb5d97220ab056200a13f03_cgraph.svg" width="139" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_aadc278093fb5d97220ab056200a13f03_icgraph.svg" width="139" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -265,9 +250,10 @@ template&lt;typename Filter &gt; </div>
 </div><div class="memdoc">
 
 <p>Filter decorator to print activities to the standard output. </p>
-<p>Pipe decorator to filter declaration to print out its activities: construction, destruction, updates, predictions, and characteristic changes. Prints with default formatting. Takes no parameters. </p>
+<p>Pipe decorator to filter declaration to print out its activities: construction, destruction, updates, predictions, and characteristic changes. Prints with default formatting. Takes no parameters.</p>
+<dl class="section note"><dt>Note</dt><dd>The decorator takes ownership of the decorated filter: decorate the filter declaration, or an explicitly moved filter. An lvalue filter operand, <code>const</code> or not, is rejected. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00530">530</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8hpp_source.xhtml#l00534">534</a> of file <a class="el" href="kalman_8hpp_source.xhtml">kalman.hpp</a>.</p>
 
 </div>
 </div>

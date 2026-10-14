@@ -2,6 +2,7 @@ var index =
 [
     [ "Installation & Usage", "index.xhtml#installation--usage", null ],
     [ "Reference", "index.xhtml#reference", [
+      [ "Layers", "index.xhtml#layers", null ],
       [ "CMake", "index.xhtml#cmake", null ],
       [ "Include", "index.xhtml#include", null ],
       [ "Namespace", "index.xhtml#namespace", null ],

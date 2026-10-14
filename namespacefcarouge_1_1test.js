@@ -215,6 +215,7 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{rows_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rows__fail_8cpp_03.xhtml", [
       [ "p0", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rows__fail_8cpp_03.xhtml#a0626ebdfda8253d6ca9199d6a247f73f", null ]
     ] ],
+    [ "anonymous_namespace{rvalue_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rvalue__1x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rvalue__1x1x0_8cpp_03" ],
     [ "anonymous_namespace{state_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02state__1x1x0_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02state__1x1x0_8cpp_03.xhtml#a2a274811e87ac2c54f434e0d400c2af3", null ]
     ] ],

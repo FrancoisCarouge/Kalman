@@ -19,6 +19,9 @@ var concepts =
           [ "has_q", "conceptfcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03_1_1has__q.xhtml", null ],
           [ "has_u", "conceptfcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03_1_1has__u.xhtml", null ],
           [ "has_update", "conceptfcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03_1_1has__update.xhtml", null ]
+        ] ],
+        [ "anonymous_namespace{rvalue_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rvalue__1x1x0_8cpp_03.xhtml", [
+          [ "printable", "conceptfcarouge_1_1test_1_1anonymous__namespace_02rvalue__1x1x0_8cpp_03_1_1printable.xhtml", null ]
         ] ]
       ] ]
     ] ]

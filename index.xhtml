@@ -123,6 +123,10 @@ Installation &amp; Usage</h1>
 <p>See <a href="https://github.com/FrancoisCarouge/Kalman/blob/master/INSTALL.md">INSTALL.md</a> for installation instructions.</p>
 <h1><a class="anchor" id="reference"></a>
 Reference</h1>
+<h2><a class="anchor" id="layers"></a>
+Layers</h2>
+<p><img src="https://francoiscarouge.github.io/Kalman/kalman/layers.svg" alt="Where Kalman sits in the technical stack: below the application, composing an optionally typed linear algebra backend and adapting strong element types." style="pointer-events: none;" class="inline"/></p>
+<p>The library is the state estimation layer between the application and an established linear algebra backend.</p>
 <h2><a class="anchor" id="cmake"></a>
 CMake</h2>
 <p>Link against the CMake target <code>fcarouge-kalman::kalman</code>.</p>
@@ -379,7 +383,7 @@ Format</h2>
 <div class="line"><span class="comment">// The characteristics are optionally present according to the filter configuration.</span></div>
 </div><!-- fragment --><h2><a class="anchor" id="decorators-1"></a>
 Decorators</h2>
-<p>Pipe one or more decorators to the filter declaration to attach additional responsibilities.</p>
+<p>Pipe one or more decorators to the filter declaration to attach additional responsibilities. A decorator takes ownership of the filter: decorate an existing filter by moving it, <code>std::move(filter) | print</code>.</p>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> filter{kalman{...} | print};</div>
 </div><!-- fragment --><table class="markdownTable">
 <tr class="markdownTableHead">
