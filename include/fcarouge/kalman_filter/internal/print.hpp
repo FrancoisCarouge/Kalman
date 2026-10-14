@@ -274,6 +274,17 @@ constexpr void printer<Filter>::update(const auto &...arguments) {
   const Filter &base{*this};
   std::println(R"({{"event": "update", "filter":{}}})", base);
 }
+
+template <typename Filter>
+template <auto Position>
+[[nodiscard("The returned update argument is unexpectedly "
+            "discarded.")]] constexpr auto
+printer<Filter>::update() const {
+  const Filter &base{*this};
+  std::println(R"({{"event": "update_{}", "filter":{}}})", Position, base);
+
+  return Filter::template update<Position>();
+}
 } // namespace kalman_filter::internal
 
 struct printer {};
