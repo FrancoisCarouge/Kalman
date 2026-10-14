@@ -36,6 +36,12 @@ See [INSTALL.md](https://github.com/FrancoisCarouge/Kalman/blob/master/INSTALL.m
 
 ## Reference
 
+### Layers
+
+![Where Kalman sits in the technical stack: below the application, composing an optionally typed linear algebra backend and adapting strong element types.](https://francoiscarouge.github.io/Kalman/kalman/layers.svg)
+
+The library is the state estimation layer between the application and an established linear algebra backend.
+
 ### CMake
 
 Link against the CMake target `fcarouge-kalman::kalman`.
