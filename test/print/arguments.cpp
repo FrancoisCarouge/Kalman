@@ -43,18 +43,23 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @test Verifies the printer decorator forwards the prediction arguments
-//! access to the filter it decorates.
+//! @test Verifies the printer decorator forwards the prediction and update
+//! arguments access to the filter it decorates.
 [[maybe_unused]] const auto test{[] -> int {
   const not_realtime opt_out;
-  auto filter{kalman{state{0.}, output<double>, input<double>, update_types<>,
-                     prediction_types<int, double>} |
+  auto filter{kalman{state{0.}, output<double>, input<double>,
+                     update_types<int, double>, prediction_types<int, double>} |
               print};
 
   filter.predict(1, 2., 3.);
 
   assert(filter.predict<0>() == 1);
   assert(filter.predict<1>() == 2.);
+
+  filter.update(4, 5., 6.);
+
+  assert(filter.update<0>() == 4);
+  assert(filter.update<1>() == 5.);
 
   return 0;
 }()};
