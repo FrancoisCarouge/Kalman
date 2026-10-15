@@ -21,6 +21,16 @@ Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilo
 - ArduPilot's 24-state EKF needs sequential scalar updates, inhibited states, the innovation and its uncertainty readable before the correction (gating, rejection), a replaceable covariance prediction, and post-update steps (symmetrization, variance limits). A two-stage update, innovation then correction, would cover most. (F7)
 - The `one<>` and `zero<>` variables cost code and RAM besides defect 10 of `BUG.md`: 4072 bytes of code for a 4-state filter on Cortex-M4, against 1040 bytes for the hand-written one it replaced. (F21)
 
+## Missing functionality: ArduPilot filters as samples
+
+Filters of ArduPilot that cannot be written as a library filter, only beside it, each a candidate sample: a target for the features it lacks and a regression test once they exist. ArduPilot is GPL 3: a sample is to be written from the filter's published model, not from ArduPilot's source. (F40)
+
+- **Terrain offset estimator**, the smallest. One state, the terrain height in m. A rangefinder observation in m and two optical flow observations in rad/s update it in turn, each gated on its innovation test ratio before the correction; after each correction the state is clamped below the vehicle and the variance floored. Lacks: several output types on one filter, a step between the innovation and the correction, a hook after the correction.
+- **Gimbal attitude EKF.** Nine error states: angle error in rad, velocity in m/s, delta angle bias in rad. The quaternion is kept outside the filter and the angle error is reset into it after each fusion. Velocity components in m/s and a heading in rad are fused one scalar at a time. Lacks: error-state reset, scalar updates of different output types; a 9-state update takes 4152 bytes of stack in single precision on Cortex-M7.
+- **24-state navigation EKF.** Scalar fusions of eleven kinds of observations: airspeed, sideslip, drag, magnetic field, declination, yaw, velocity, position, body velocity, optical flow, range beacon. Gains are masked per inhibited state and the active state count changes. Innovation gating, a variance-only mode for diagnostics, covariance clamping and symmetrization after each fusion, and a generated sparse covariance prediction. Lacks: all of the above, besides the stack and time of a 24-state dense update.
+
+The filters the library does host would make samples too, as embedded examples with units, besides the thermal EKF of `sample/ekf_4x1x0_thermal_soaring`: a 2-state position and velocity filter per axis, a 3-state airspeed scale calibration, a bank of five 3-state yaw EKFs, a 2-state height above ground filter.
+
 ## Usability
 
 - A configuration without initial `P`, `Q`, `R`, set later, fails with "This requested filter configuration is not yet supported" without listing the accepted configurations. (F23)
