@@ -12,6 +12,14 @@ var annotated_dup =
         ] ]
       ] ],
       [ "test", "namespacefcarouge_1_1test.xhtml", [
+        [ "anonymous_namespace{absent_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03.xhtml", [
+          [ "nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03_1_1nothing.xhtml", null ]
+        ] ],
+        [ "anonymous_namespace{set_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml", [
+          [ "nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1nothing.xhtml", null ],
+          [ "output_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise" ],
+          [ "process_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1process__noise.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1process__noise" ]
+        ] ],
         [ "anonymous_namespace{unimplemented_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03.xhtml", [
           [ "unknown", "structfcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03_1_1unknown.xhtml", null ]
         ] ],

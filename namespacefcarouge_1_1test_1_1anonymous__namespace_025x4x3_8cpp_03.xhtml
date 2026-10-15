@@ -138,7 +138,7 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line"> <span class="keyword">decltype</span>(<a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a>{state{vector&lt;5&gt;{0., 0., 0., 0., 0.}},</div>
 <div class="line">                               output&lt;vector&lt;4&gt;&gt;, input&lt;vector&lt;3&gt;&gt;})</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000076">Test</a></b></dt><dd>Verifies the member types of the multi-dimension general filter are the vectors and matrices of the dimensions of its state, output, and input. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000075">Test</a></b></dt><dd>Verifies the member types of the multi-dimension general filter are the vectors and matrices of the dimensions of its state, output, and input. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="member__type_25x4x3_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="member__type_25x4x3_8cpp_source.xhtml">5x4x3.cpp</a>.</p>
 
@@ -199,42 +199,42 @@ template&lt;auto Size&gt; </div>
 <div class="line">                input&lt;vector&lt;3&gt;&gt;, update_types&lt;double, float, int&gt;,</div>
 <div class="line">                prediction_types&lt;int, float, double&gt;};</div>
 <div class="line"> </div>
-<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>() == i5x5);</div>
+<div class="line">  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>() == i5x5);</div>
 <div class="line"> </div>
 <div class="line">  {</div>
 <div class="line">    <span class="keyword">const</span> matrix&lt;5, 5&gt; f{z5x5};</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>(f);</div>
-<div class="line">    assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>() == z5x5);</div>
+<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>(f);</div>
+<div class="line">    assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>() == z5x5);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
 <div class="line">  {</div>
 <div class="line">    <span class="keyword">const</span> matrix&lt;5, 5&gt; f{i5x5};</div>
-<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>(f);</div>
-<div class="line">    assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>() == i5x5);</div>
+<div class="line">    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>(f);</div>
+<div class="line">    assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>() == i5x5);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a6537fee737c00b1a2239b41c74d8e49f"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr decltype(auto) f(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the state transition matrix F.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a60806b6346064771119b87c097ad7a42"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr decltype(auto) f(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the state transition matrix F.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_025x4x3_8cpp_03_xhtml_a3a762bbffed5b2964a7e0ea59d55b346"><div class="ttname"><a href="#a3a762bbffed5b2964a7e0ea59d55b346">fcarouge::test::anonymous_namespace{5x4x3.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; double, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="f_25x4x3_8cpp_source.xhtml#l00047">5x4x3.cpp:47</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03_xhtml_a3586a94458c3596c1f63221fc330e325"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">fcarouge::test::anonymous_namespace{traits_1x1x0.cpp}::filter</a></div><div class="ttdeci">decltype(kalman{}) filter</div><div class="ttdef"><b>Definition</b> <a href="assign_2traits__1x1x0_8cpp_source.xhtml#l00046">traits_1x1x0.cpp:46</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000049">Test</a></b></dt><dd>Verifies the state transition matrix F management overloads for the Eigen filter type. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000048">Test</a></b></dt><dd>Verifies the state transition matrix F management overloads for the Eigen filter type. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000053">Test</a></b></dt><dd>Verifies formatting multi-dimension filters with input control without additional arguments. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000062">Test</a></b></dt><dd>Verifies the control transition matrix G management overloads for multi-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000063">Test</a></b></dt><dd>Verifies the control transition matrix G management overloads for multi-dimension filters. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000066">Test</a></b></dt><dd>Verifies the observation transition matrix H management overloads for the Eigen filter type. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000071">Test</a></b></dt><dd>Verifies the gain matrix K management overloads for multi-dimension filters. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000084">Test</a></b></dt><dd>Verifies the estimated covariance matrix P management overloads for multi-dimension filters. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000088">Test</a></b></dt><dd>Verifies the prediction of the default multi-dimension filter: the input set from its element values adds to the state through the default input control, the estimate uncertainty is kept. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000105">Test</a></b></dt><dd>Verifies the printer decorator for multi-dimension filters with input control without additional arguments. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000110">Test</a></b></dt><dd>Verifies the process noise covariance matrix Q management overloads for multi-dimension filters. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000115">Test</a></b></dt><dd>Verifies the observation noise covariance matrix R management overloads for multi-dimension filters. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000118">Test</a></b></dt><dd>Verifies the innovation uncertainty matrix S management overloads for multi-dimension filters. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000121">Test</a></b></dt><dd>Verifies the control column vector U management overloads for multi-dimension filters. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000127">Test</a></b></dt><dd>Verifies the update of the default multi-dimension filter: without output noise the observed states are the output, their uncertainty vanishes, the unobserved state and its uncertainty are kept. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000141">Test</a></b></dt><dd>Verifies the estimated state column vector X management overloads for multi-dimension filters. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000144">Test</a></b></dt><dd>Verifies the innovation column vector Y management overloads for multi-dimension filters. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000146">Test</a></b></dt><dd>Verifies the observation column vector Z management overloads for multi-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000113">Test</a></b></dt><dd>Verifies the process noise covariance matrix Q management overloads for multi-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000118">Test</a></b></dt><dd>Verifies the observation noise covariance matrix R management overloads for multi-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000120">Test</a></b></dt><dd>Verifies the innovation uncertainty matrix S management overloads for multi-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000124">Test</a></b></dt><dd>Verifies the control column vector U management overloads for multi-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000130">Test</a></b></dt><dd>Verifies the update of the default multi-dimension filter: without output noise the observed states are the output, their uncertainty vanishes, the unobserved state and its uncertainty are kept. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000145">Test</a></b></dt><dd>Verifies the estimated state column vector X management overloads for multi-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000149">Test</a></b></dt><dd>Verifies the innovation column vector Y management overloads for multi-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000151">Test</a></b></dt><dd>Verifies the observation column vector Z management overloads for multi-dimension filters. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="f_25x4x3_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="f_25x4x3_8cpp_source.xhtml">5x4x3.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   51</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
@@ -244,18 +244,18 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">   55</span>                input&lt;vector&lt;3&gt;&gt;, update_types&lt;double, float, int&gt;,</div>
 <div class="line"><span class="lineno">   56</span>                prediction_types&lt;int, float, double&gt;};</div>
 <div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>() == i5x5);</div>
+<div class="line"><span class="lineno">   58</span>  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>() == i5x5);</div>
 <div class="line"><span class="lineno">   59</span> </div>
 <div class="line"><span class="lineno">   60</span>  {</div>
 <div class="line"><span class="lineno">   61</span>    <span class="keyword">const</span> matrix&lt;5, 5&gt; f{z5x5};</div>
-<div class="line"><span class="lineno">   62</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>(f);</div>
-<div class="line"><span class="lineno">   63</span>    assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>() == z5x5);</div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>(f);</div>
+<div class="line"><span class="lineno">   63</span>    assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>() == z5x5);</div>
 <div class="line"><span class="lineno">   64</span>  }</div>
 <div class="line"><span class="lineno">   65</span> </div>
 <div class="line"><span class="lineno">   66</span>  {</div>
 <div class="line"><span class="lineno">   67</span>    <span class="keyword">const</span> matrix&lt;5, 5&gt; f{i5x5};</div>
-<div class="line"><span class="lineno">   68</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>(f);</div>
-<div class="line"><span class="lineno">   69</span>    assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a6537fee737c00b1a2239b41c74d8e49f">f</a>() == i5x5);</div>
+<div class="line"><span class="lineno">   68</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>(f);</div>
+<div class="line"><span class="lineno">   69</span>    assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a60806b6346064771119b87c097ad7a42">f</a>() == i5x5);</div>
 <div class="line"><span class="lineno">   70</span>  }</div>
 <div class="line"><span class="lineno">   71</span> </div>
 <div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> 0;</div>

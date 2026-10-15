@@ -171,10 +171,10 @@ $(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.xhtml',''); init
 <div class="line">                <span class="comment">// measurement, output uncertainty is: R = 25 m^2.</span></div>
 <div class="line">                output_uncertainty{25.}};</div>
 <div class="line"> </div>
-<div class="line">  assert(60 == filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() &amp;&amp;</div>
+<div class="line">  assert(60 == filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;Since our system&#39;s dynamic model is constant, i.e. the building &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;doesn&#39;t change its height: 60 meters.&quot;</span>);</div>
-<div class="line">  assert(225 == filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aec5735b71ca858573da2f4b9341abf6a">p</a>() &amp;&amp;</div>
+<div class="line">  assert(225 == filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>() &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The extrapolated estimate uncertainty (variance) also doesn&#39;t &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;change: 225&quot;</span>);</div>
 <div class="line"> </div>
@@ -197,7 +197,7 @@ $(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.xhtml',''); init
 <div class="line"> </div>
 <div class="line">  <span class="comment">// After 10 measurements the filter estimates the height of the building</span></div>
 <div class="line">  <span class="comment">// at 49.57m.</span></div>
-<div class="line">  assert(std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">x</a>() / 49.57)) &lt; 0.001 &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>() / 49.57)) &lt; 0.001 &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;After 10 measurement and update iterations, the building estimated &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;height is: 49.57m.&quot;</span>);</div>
 <div class="line"> </div>
@@ -205,9 +205,9 @@ $(function(){initNavTree('kf_1x1x0_building_height_8cpp-example.xhtml',''); init
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a67c2ff496b806ff41c531c7e692b6897"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a67c2ff496b806ff41c531c7e692b6897">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a94686c386c44f80cc386c067d726833d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aec5735b71ca858573da2f4b9341abf6a"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aec5735b71ca858573da2f4b9341abf6a">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>

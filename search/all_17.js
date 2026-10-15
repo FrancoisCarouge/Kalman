@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r_0',['r',['../classfcarouge_1_1kalman.xhtml#ad38e1712bdbd10b9e27233bd8d2ac76a',1,'fcarouge::kalman']]],
+  ['r_0',['r',['../classfcarouge_1_1kalman.xhtml#a93c679f6c896469a4b7a79f150cb9252',1,'fcarouge::kalman']]],
   ['r0_1',['r0',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02rows_8cpp_03.xhtml#ab7a54a16ea8f4daa088e30ac50371357',1,'fcarouge::test::anonymous_namespace{rows.cpp}']]],
   ['ratio_2',['ratio',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#aaa6583ffeddac2f3aca9208dafe0c06a',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}']]],
   ['readme_2emd_3',['README.md',['../benchmark_2_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)'],['../_r_e_a_d_m_e_8md.xhtml',1,'(Global Namespace)']]],

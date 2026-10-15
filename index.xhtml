@@ -362,7 +362,7 @@ Characteristics</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>z</code>   </td><td class="markdownTableBodyNone">Manages the observation column vector <em>Z</em>. Gets the value last used during the update. The default value is the null column vector.   </td></tr>
 </table>
-<p>The characteristics are optionally present according to the filter configuration.</p>
+<p>The characteristics are optionally present according to the filter configuration. A characteristic is set from values that direct-list-initialize it, without narrowing, through a modifiable filter, or replaced by a callable of its configured type.</p>
 <h4><a class="anchor" id="modifiers"></a>
 Modifiers</h4>
 <table class="markdownTable">
@@ -373,6 +373,7 @@ Modifiers</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>update</code>   </td><td class="markdownTableBodyNone">Updates the estimates with the outcome of a measurement.   </td></tr>
 </table>
+<p>The prediction and the update take the arguments of their declared types followed by values that direct-list-initialize the input and the output, respectively.</p>
 <h2><a class="anchor" id="format"></a>
 Format</h2>
 <p>A specialization of the standard formatter is provided for the filter. Use <code>std::format</code> to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.</p>

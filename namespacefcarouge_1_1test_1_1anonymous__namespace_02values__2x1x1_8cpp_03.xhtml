@@ -152,23 +152,23 @@ template&lt;auto Size&gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{state{vector&lt;2&gt;{0., 0.}}, output&lt;double&gt;, input&lt;double&gt;};</div>
 <div class="line"> </div>
-<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">g</a>(1., 2.);</div>
+<div class="line">  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a0b6d0ab42c1219029d2b97c623427cf2">g</a>(1., 2.);</div>
 <div class="line"> </div>
-<div class="line">  assert((filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">g</a>() == vector&lt;2&gt;{1., 2.}));</div>
+<div class="line">  assert((filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a0b6d0ab42c1219029d2b97c623427cf2">g</a>() == vector&lt;2&gt;{1., 2.}));</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ae86b502b20da0124f73eeef7c2646f18"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">fcarouge::kalman::g</a></div><div class="ttdeci">constexpr decltype(auto) g(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the control transition matrix G.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a0b6d0ab42c1219029d2b97c623427cf2"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a0b6d0ab42c1219029d2b97c623427cf2">fcarouge::kalman::g</a></div><div class="ttdeci">constexpr decltype(auto) g(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the control transition matrix G.</div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000065">Test</a></b></dt><dd>Verifies the control transition matrix G is set from its element values. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000064">Test</a></b></dt><dd>Verifies the control transition matrix G is set from its element values. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="values__2x1x1_8cpp_source.xhtml#l00050">50</a> of file <a class="el" href="values__2x1x1_8cpp_source.xhtml">values_2x1x1.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   50</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line"><span class="lineno">   51</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{<a class="code hl_typedef" href="#a476cfb511ab1292ec27a2fbd24972c11">vector&lt;2&gt;</a>{0., 0.}}, output&lt;double&gt;, input&lt;double&gt;};</div>
 <div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">g</a>(1., 2.);</div>
+<div class="line"><span class="lineno">   53</span>  filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a0b6d0ab42c1219029d2b97c623427cf2">g</a>(1., 2.);</div>
 <div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>  assert((filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ae86b502b20da0124f73eeef7c2646f18">g</a>() == vector&lt;2&gt;{1., 2.}));</div>
+<div class="line"><span class="lineno">   55</span>  assert((filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a0b6d0ab42c1219029d2b97c623427cf2">g</a>() == vector&lt;2&gt;{1., 2.}));</div>
 <div class="line"><span class="lineno">   56</span> </div>
 <div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   58</span>}()};</div>

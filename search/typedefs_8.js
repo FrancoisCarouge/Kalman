@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['quotient_0',['quotient',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a94790d4b89c5a5d249be974718936ed0',1,'fcarouge::kalman_filter::internal']]]
+  ['position_0',['position',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__1d__dog__position__unit_8cpp_03.xhtml#a9cb9a54f2030ceb2fd730575b911f44d',1,'fcarouge::sample::anonymous_namespace{kf_1x1x1_1d_dog_position_unit.cpp}::position'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#ab423e1418bfc21544979e6647b717276',1,'fcarouge::test::anonymous_namespace{kf_6x2x0_2d_vehicle_position_unit.cpp}::position']]],
+  ['price_1',['price',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a4885e68d5f78955bf63fefcd4cb9dc4d',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::price'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aa5216a64e49528f9f743f2c222104a81',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::price']]],
+  ['price_5fslope_2',['price_slope',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a2ead4356d36ec68f934aefb898f030b0',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}']]],
+  ['product_3',['product',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aace31b5acda2497b46bccfae1d652655',1,'fcarouge::kalman_filter::internal']]]
 ];
