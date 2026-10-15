@@ -76,7 +76,10 @@ struct x_z_p_qq_rr_f {
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
 
-  constexpr void update(const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const auto &output_z, const auto &...outputs_z)
+    requires(
+        list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
+  {
     z = output{output_z, outputs_z...};
     r = noise_observation_r(x, z);
     s = innovation_uncertainty{h * p * t(h) + r};

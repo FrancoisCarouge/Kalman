@@ -70,11 +70,61 @@ concept algebraic = requires(Type value) { value(0, 0); };
 //! @details A single value initializes the characteristic by implicit
 //! conversion, and not by construction: a backend matrix may be explicitly
 //! constructible from any type, a callable included. Several values initialize
-//! the characteristic from its elements, by list-initialization.
+//! the characteristic from its elements, by list-initialization. Either way,
+//! the values direct-list-initialize the characteristic, without narrowing.
 template <typename Type, typename... Values>
 concept initializes =
-    (sizeof...(Values) == 1 && (std::is_convertible_v<Values, Type> && ...)) ||
-    (sizeof...(Values) > 1 && requires(Values... values) { Type{values...}; });
+    (sizeof...(Values) > 1 || (sizeof...(Values) == 1 &&
+                               (std::is_convertible_v<Values, Type> && ...))) &&
+    requires(Values... values) { Type{values...}; };
+
+//! @brief The values direct-list-initialize the type.
+//!
+//! @details Explicit constructors participate, narrowing conversions do not:
+//! the expression the filter evaluates to store the values.
+template <typename Type, typename... Values>
+concept list_initializes =
+    sizeof...(Values) > 0 && requires(Values... values) { Type{values...}; };
+
+//! @brief The object, a reference to it, is not constant.
+template <typename Object>
+concept modifiable = not std::is_const_v<std::remove_reference_t<Object>>;
+
+//! @brief The values, if any, set a characteristic of the type through the
+//! object.
+//!
+//! @details A read takes no values. A write needs a modifiable object.
+template <typename Object, typename Type, typename... Values>
+concept sets = sizeof...(Values) == 0 ||
+               (modifiable<Object> && list_initializes<Type, Values...>);
+
+//! @brief The values set a characteristic of the type, as opposed to its
+//! callable, through the modifiable object.
+template <typename Object, typename Type, typename... Values>
+concept sets_value = modifiable<Object> && initializes<Type, Values...>;
+
+//! @brief The values replace a callable characteristic through the modifiable
+//! object.
+//!
+//! @details Name the callable type in a separate alternative of the
+//! constraint: for a characteristic without a callable, the substitution fails
+//! for this concept alone, and not for the alternatives it is combined with.
+template <typename Object, typename Callable, typename... Values>
+concept replaces =
+    sizeof...(Values) > 0 &&
+    modifiable<Object> &&requires(Values... values) { Callable{values...}; };
+
+//! @brief The filter holds the prediction argument at the position.
+template <typename Filter, std::size_t Position>
+concept has_prediction_argument = requires(Filter filter) {
+  requires Position < std::tuple_size_v<decltype(filter.prediction_arguments)>;
+};
+
+//! @brief The filter holds the update argument at the position.
+template <typename Filter, std::size_t Position>
+concept has_update_argument = requires(Filter filter) {
+  requires Position < std::tuple_size_v<decltype(filter.update_arguments)>;
+};
 
 template <typename Filter>
 concept has_state_member = requires(Filter filter) { filter.x; };

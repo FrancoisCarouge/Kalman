@@ -90,7 +90,10 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
   prediction_types prediction_arguments{};
 
   constexpr void update(const UpdateTypes &...update_pack, const auto &output_z,
-                        const auto &...outputs_z) {
+                        const auto &...outputs_z)
+    requires(
+        list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
+  {
     update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);

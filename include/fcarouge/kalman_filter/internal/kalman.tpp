@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_KALMAN_TPP
 
 #include <concepts>
+#include <cstddef>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -56,7 +57,9 @@ constexpr kalman<Filter>::kalman(Arguments... arguments)
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_state<Filter>)
+  requires(
+      kf::has_state<Filter> &&
+      kf::sets<decltype(self), typename Filter::state, decltype(values)...>)
 {
   if constexpr (sizeof...(values)) {
     self.filter.x = typename Filter::state{values...};
@@ -68,7 +71,9 @@ constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::z(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_output<Filter>)
+  requires(
+      kf::has_output<Filter> &&
+      kf::sets<decltype(self), typename Filter::output, decltype(values)...>)
 {
   if constexpr (sizeof...(values)) {
     self.filter.z = typename Filter::output{values...};
@@ -79,7 +84,9 @@ constexpr decltype(auto) kalman<Filter>::z(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::u(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_input<Filter>)
+  requires(
+      kf::has_input<Filter> &&
+      kf::sets<decltype(self), typename Filter::input, decltype(values)...>)
 {
   if constexpr (sizeof...(values)) {
     self.filter.u = typename Filter::input{values...};
@@ -90,7 +97,9 @@ constexpr decltype(auto) kalman<Filter>::u(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::p(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_estimate_uncertainty<Filter>)
+  requires(kf::has_estimate_uncertainty<Filter> &&
+           kf::sets<decltype(self), typename Filter::estimate_uncertainty,
+                    decltype(values)...>)
 {
   if constexpr (sizeof...(values)) {
     self.filter.p = typename Filter::estimate_uncertainty{values...};
@@ -101,7 +110,12 @@ constexpr decltype(auto) kalman<Filter>::p(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_process_uncertainty<Filter>)
+  requires(kf::has_process_uncertainty<Filter> &&
+           (sizeof...(values) == 0 ||
+            kf::sets_value<decltype(self), typename Filter::process_uncertainty,
+                           decltype(values)...> ||
+            kf::replaces<decltype(self), decltype(Filter::noise_process_q),
+                         decltype(values)...>))
 {
   if constexpr (sizeof...(values)) {
     if constexpr (kf::initializes<typename Filter::process_uncertainty,
@@ -117,7 +131,12 @@ constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_output_uncertainty<Filter>)
+  requires(kf::has_output_uncertainty<Filter> &&
+           (sizeof...(values) == 0 ||
+            kf::sets_value<decltype(self), typename Filter::output_uncertainty,
+                           decltype(values)...> ||
+            kf::replaces<decltype(self), decltype(Filter::noise_observation_r),
+                         decltype(values)...>))
 {
   if constexpr (sizeof...(values)) {
     if constexpr (kf::initializes<typename Filter::output_uncertainty,
@@ -133,7 +152,12 @@ constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_state_transition<Filter>)
+  requires(kf::has_state_transition<Filter> &&
+           (sizeof...(values) == 0 ||
+            kf::sets_value<decltype(self), typename Filter::state_transition,
+                           decltype(values)...> ||
+            kf::replaces<decltype(self), decltype(Filter::transition_state_f),
+                         decltype(values)...>))
 {
   if constexpr (sizeof...(values)) {
     if constexpr (kf::initializes<typename Filter::state_transition,
@@ -149,7 +173,12 @@ constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_output_model<Filter>)
+  requires(kf::has_output_model<Filter> &&
+           (sizeof...(values) == 0 ||
+            kf::sets_value<decltype(self), typename Filter::output_model,
+                           decltype(values)...> ||
+            kf::replaces<decltype(self), decltype(Filter::observation_state_h),
+                         decltype(values)...>))
 {
   if constexpr (sizeof...(values)) {
     if constexpr (kf::initializes<typename Filter::output_model,
@@ -165,7 +194,12 @@ constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_input_control<Filter>)
+  requires(kf::has_input_control<Filter> &&
+           (sizeof...(values) == 0 ||
+            kf::sets_value<decltype(self), typename Filter::input_control,
+                           decltype(values)...> ||
+            kf::replaces<decltype(self), decltype(Filter::transition_control_g),
+                         decltype(values)...>))
 {
   if constexpr (sizeof...(values)) {
     if constexpr (kf::initializes<typename Filter::input_control,
@@ -181,7 +215,8 @@ constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::k(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_gain<Filter>)
+  requires(kf::has_gain<Filter> &&
+           kf::sets<decltype(self), typename Filter::gain, decltype(values)...>)
 {
   if constexpr (sizeof...(values)) {
     self.filter.k = typename Filter::gain{values...};
@@ -192,7 +227,9 @@ constexpr decltype(auto) kalman<Filter>::k(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::y(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_innovation<Filter>)
+  requires(kf::has_innovation<Filter> &&
+           kf::sets<decltype(self), typename Filter::innovation,
+                    decltype(values)...>)
 {
   if constexpr (sizeof...(values)) {
     self.filter.y = typename Filter::innovation{values...};
@@ -203,7 +240,9 @@ constexpr decltype(auto) kalman<Filter>::y(this auto &&self,
 template <typename Filter>
 constexpr decltype(auto) kalman<Filter>::s(this auto &&self,
                                            const auto &...values)
-  requires(kf::has_innovation_uncertainty<Filter>)
+  requires(kf::has_innovation_uncertainty<Filter> &&
+           kf::sets<decltype(self), typename Filter::innovation_uncertainty,
+                    decltype(values)...>)
 {
   if constexpr (sizeof...(values)) {
     self.filter.s = typename Filter::innovation_uncertainty{values...};
@@ -221,7 +260,8 @@ constexpr void kalman<Filter>::predict(const auto &...arguments)
 }
 
 template <typename Filter>
-template <auto Position>
+template <std::size_t Position>
+  requires(kf::has_prediction_argument<Filter, Position>)
 [[nodiscard("The returned prediction argument is unexpectedly "
             "discarded.")]] constexpr auto
 kalman<Filter>::predict() const {
@@ -237,11 +277,12 @@ constexpr void kalman<Filter>::update(const auto &...arguments)
   filter.update(arguments...);
 }
 
-template <typename InternalFilter>
-template <auto Position>
+template <typename Filter>
+template <std::size_t Position>
+  requires(kf::has_update_argument<Filter, Position>)
 [[nodiscard("The returned update argument is unexpectedly "
             "discarded.")]] constexpr auto
-kalman<InternalFilter>::update() const {
+kalman<Filter>::update() const {
   return std::get<Position>(filter.update_arguments);
 }
 } // namespace fcarouge

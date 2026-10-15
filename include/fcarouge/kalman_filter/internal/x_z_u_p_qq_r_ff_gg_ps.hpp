@@ -94,7 +94,10 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   output z{zero<output>};
   prediction_types prediction_arguments{};
 
-  constexpr void update(const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const auto &output_z, const auto &...outputs_z)
+    requires(
+        list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
+  {
     z = output{output_z, outputs_z...};
     s = h * p * t(h) + r;
     k = p * t(h) / s;
@@ -104,7 +107,9 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   }
 
   constexpr void predict(const PredictionTypes &...prediction_pack,
-                         const auto &input_u, const auto &...inputs_u) {
+                         const auto &input_u, const auto &...inputs_u)
+    requires(list_initializes<input, decltype(input_u), decltype(inputs_u)...>)
+  {
     prediction_arguments = {prediction_pack...};
     u = input{input_u, inputs_u...};
     f = transition_state_f(u, prediction_pack...);
