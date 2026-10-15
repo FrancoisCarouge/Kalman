@@ -45,9 +45,12 @@ concept has_predict = requires(Filter filter, Arguments... arguments) {
   filter.predict(arguments...);
 };
 
+struct nothing {};
+
 //! @test Verifies the prediction member function is absent from the minimal
-//! filter, there is no process to predict, and from a filter called with an
-//! unsupported number of arguments, present otherwise.
+//! filter, there is no process to predict, from a filter called with an
+//! unsupported number of arguments, or with values that do not initialize the
+//! input without narrowing, present otherwise.
 static_assert(not has_predict<decltype(kalman{})>);
 static_assert(not has_predict<decltype(kalman{}), int, int, int>);
 static_assert(has_predict<decltype(kalman{
@@ -62,6 +65,17 @@ static_assert(
     has_predict<decltype(kalman{state{0.}, output<double>, input<double>}),
                 double>);
 static_assert(
+    not has_predict<decltype(kalman{state{0.}, output<double>, input<double>}),
+                    const char *>);
+static_assert(
+    not has_predict<decltype(kalman{state{0.}, output<double>, input<double>}),
+                    nothing>);
+static_assert(not has_predict<
+              decltype(kalman{state{0.}, output<double>, input<double>}), int>);
+static_assert(
+    not has_predict<decltype(kalman{state{0.}, output<double>, input<double>}),
+                    double, double>);
+static_assert(
     not has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
                                     update_types<>, prediction_types<double>}),
                     double>);
@@ -69,5 +83,9 @@ static_assert(
     has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
                                 update_types<>, prediction_types<double>}),
                 double, double>);
+static_assert(
+    not has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
+                                    update_types<>, prediction_types<double>}),
+                    nothing, double>);
 } // namespace
 } // namespace fcarouge::test

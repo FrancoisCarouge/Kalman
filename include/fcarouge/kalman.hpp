@@ -53,6 +53,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "kalman_forward.hpp"
 
 #include <concepts>
+#include <cstddef>
 
 namespace fcarouge {
 namespace kf = kalman_filter::internal;
@@ -88,6 +89,17 @@ namespace kf = kalman_filter::internal;
 //! 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters
 //! require a linear algebra backend. Customization points and type injections
 //! allow for implementation tradeoffs.
+//!
+//! A member function participates in overload resolution only when the filter
+//! accepts its arguments, so that generic code may test a call in a
+//! `requires`-expression rather than meet a compilation error. A
+//! characteristic is set from values that direct-list-initialize it, without
+//! narrowing, through a modifiable filter; a callable characteristic may also
+//! be replaced by a callable of its configured type. The prediction and the
+//! update take the arguments of their declared types followed by values that
+//! direct-list-initialize the input and the output, respectively. A backend
+//! whose constructors accept arguments they cannot use is outside this
+//! guarantee: its errors are reported when the call is compiled.
 //!
 //! @tparam Filter Exposition only. The deduced internal filter template
 //! parameter. Class template argument deduction (CTAD) figures out the filter
@@ -231,7 +243,9 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) x(this auto &&self, const auto &...values)
-    requires(kf::has_state<Filter>);
+    requires(
+        kf::has_state<Filter> &&
+        kf::sets<decltype(self), typename Filter::state, decltype(values)...>);
 
   //! @brief Read, write the observation column vector Z.
   //!
@@ -241,7 +255,9 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) z(this auto &&self, const auto &...values)
-    requires(kf::has_output<Filter>);
+    requires(
+        kf::has_output<Filter> &&
+        kf::sets<decltype(self), typename Filter::output, decltype(values)...>);
 
   //! @brief Read, write the control column vector U.
   //!
@@ -251,7 +267,9 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) u(this auto &&self, const auto &...values)
-    requires(kf::has_input<Filter>);
+    requires(
+        kf::has_input<Filter> &&
+        kf::sets<decltype(self), typename Filter::input, decltype(values)...>);
 
   //! @brief Read, write the estimated covariance matrix P.
   //!
@@ -261,7 +279,9 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) p(this auto &&self, const auto &...values)
-    requires(kf::has_estimate_uncertainty<Filter>);
+    requires(kf::has_estimate_uncertainty<Filter> &&
+             kf::sets<decltype(self), typename Filter::estimate_uncertainty,
+                      decltype(values)...>);
 
   //! @brief Read, write the process noise covariance matrix or function Q.
   //!
@@ -273,7 +293,13 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) q(this auto &&self, const auto &...values)
-    requires(kf::has_process_uncertainty<Filter>);
+    requires(
+        kf::has_process_uncertainty<Filter> &&
+        (sizeof...(values) == 0 ||
+         kf::sets_value<decltype(self), typename Filter::process_uncertainty,
+                        decltype(values)...> ||
+         kf::replaces<decltype(self), decltype(Filter::noise_process_q),
+                      decltype(values)...>));
 
   //! @brief Read, write the observation noise covariance matrix R.
   //!
@@ -285,7 +311,13 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) r(this auto &&self, const auto &...values)
-    requires(kf::has_output_uncertainty<Filter>);
+    requires(
+        kf::has_output_uncertainty<Filter> &&
+        (sizeof...(values) == 0 ||
+         kf::sets_value<decltype(self), typename Filter::output_uncertainty,
+                        decltype(values)...> ||
+         kf::replaces<decltype(self), decltype(Filter::noise_observation_r),
+                      decltype(values)...>));
 
   //! @brief Read, write the state transition matrix F.
   //!
@@ -301,7 +333,12 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) f(this auto &&self, const auto &...values)
-    requires(kf::has_state_transition<Filter>);
+    requires(kf::has_state_transition<Filter> &&
+             (sizeof...(values) == 0 ||
+              kf::sets_value<decltype(self), typename Filter::state_transition,
+                             decltype(values)...> ||
+              kf::replaces<decltype(self), decltype(Filter::transition_state_f),
+                           decltype(values)...>));
 
   //! @brief Read, write the observation transition matrix H.
   //!
@@ -318,7 +355,13 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) h(this auto &&self, const auto &...values)
-    requires(kf::has_output_model<Filter>);
+    requires(
+        kf::has_output_model<Filter> &&
+        (sizeof...(values) == 0 ||
+         kf::sets_value<decltype(self), typename Filter::output_model,
+                        decltype(values)...> ||
+         kf::replaces<decltype(self), decltype(Filter::observation_state_h),
+                      decltype(values)...>));
 
   //! @brief Read, write the control transition matrix G.
   //!
@@ -331,7 +374,13 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) g(this auto &&self, const auto &...values)
-    requires(kf::has_input_control<Filter>);
+    requires(
+        kf::has_input_control<Filter> &&
+        (sizeof...(values) == 0 ||
+         kf::sets_value<decltype(self), typename Filter::input_control,
+                        decltype(values)...> ||
+         kf::replaces<decltype(self), decltype(Filter::transition_control_g),
+                      decltype(values)...>));
 
   //! @brief Read, write the gain matrix K.
   //!
@@ -341,7 +390,9 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) k(this auto &&self, const auto &...values)
-    requires(kf::has_gain<Filter>);
+    requires(
+        kf::has_gain<Filter> &&
+        kf::sets<decltype(self), typename Filter::gain, decltype(values)...>);
 
   //! @brief Read, write the innovation column vector Y.
   //!
@@ -351,7 +402,9 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) y(this auto &&self, const auto &...values)
-    requires(kf::has_innovation<Filter>);
+    requires(kf::has_innovation<Filter> &&
+             kf::sets<decltype(self), typename Filter::innovation,
+                      decltype(values)...>);
 
   //! @brief Read, write the innovation uncertainty matrix S.
   //!
@@ -361,7 +414,9 @@ public:
   //!
   //! @complexity Constant.
   constexpr decltype(auto) s(this auto &&self, const auto &...values)
-    requires(kf::has_innovation_uncertainty<Filter>);
+    requires(kf::has_innovation_uncertainty<Filter> &&
+             kf::sets<decltype(self), typename Filter::innovation_uncertainty,
+                      decltype(values)...>);
 
   //! @}
 
@@ -392,7 +447,6 @@ public:
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Can the parameter pack of `PredictionTypes` be explicit in the
   //! method declaration for user clarity?
-  //! @todo Constrain the compatibility of the argument types.
   constexpr void predict(const auto &...arguments)
     requires requires(Filter &implementation) {
       implementation.predict(arguments...);
@@ -402,14 +456,17 @@ public:
   //!
   //! @details Convenience access to the last used prediction arguments.
   //!
-  //! @tparam The non-type template parameter index position of the prediction
-  //! argument types.
+  //! @tparam Position The index of the prediction argument in the
+  //! `PredictionTypes` pack. The member function is not present when the filter
+  //! has no prediction arguments, or when the position is out of range.
   //!
   //! @return The prediction argument corresponding to the Nth position of the
   //! parameter pack of the tuple `PredictionTypes` class template type.
   //!
   //! @complexity Constant.
-  template <auto Position> constexpr auto predict() const;
+  template <std::size_t Position>
+    requires(kf::has_prediction_argument<Filter, Position>)
+  constexpr auto predict() const;
 
   //! @brief Updates the estimates with the outcome of a measurement.
   //!
@@ -429,7 +486,6 @@ public:
   //! Or fluent interface? Would be compatible with an ES-EKF implementation?
   //! @todo Can the parameter pack of `UpdateTypes` be explicit in the method
   //! declaration for user clarity?
-  //! @todo Constrain the compatibility of the argument types.
   constexpr void update(const auto &...arguments)
     requires requires(Filter &implementation) {
       implementation.update(arguments...);
@@ -439,14 +495,17 @@ public:
   //!
   //! @details Convenience access to the last used update arguments.
   //!
-  //! @tparam The non-type template parameter index position of the update
-  //! argument types.
+  //! @tparam Position The index of the update argument in the
+  //! `UpdateTypes` pack. The member function is not present when the filter
+  //! has no update arguments, or when the position is out of range.
   //!
   //! @return The update argument corresponding to the Nth position of the
   //! parameter pack of the tuple `UpdateTypes` class template type.
   //!
   //! @complexity Constant.
-  template <auto Position> constexpr auto update() const;
+  template <std::size_t Position>
+    requires(kf::has_update_argument<Filter, Position>)
+  constexpr auto update() const;
   //! @}
 };
 

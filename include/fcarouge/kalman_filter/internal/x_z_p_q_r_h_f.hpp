@@ -67,7 +67,10 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
   innovation_uncertainty s{one<innovation_uncertainty>};
   output z{zero<output>};
 
-  constexpr void update(const auto &output_z, const auto &...outputs_z) {
+  constexpr void update(const auto &output_z, const auto &...outputs_z)
+    requires(
+        list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
+  {
     z = output{output_z, outputs_z...};
     s = innovation_uncertainty{h * p * t(h) + r};
     k = p * t(h) / s;

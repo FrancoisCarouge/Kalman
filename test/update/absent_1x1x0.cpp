@@ -45,11 +45,18 @@ concept has_update = requires(Filter filter, Arguments... arguments) {
   filter.update(arguments...);
 };
 
+struct nothing {};
+
 //! @test Verifies the update member function is absent from a filter called
-//! without an output, or without its declared update arguments, present
-//! otherwise.
+//! without an output, without its declared update arguments, or with values
+//! that do not initialize the output without narrowing, present otherwise.
 static_assert(not has_update<decltype(kalman{})>);
 static_assert(has_update<decltype(kalman{}), double>);
+static_assert(has_update<decltype(kalman{}), float>);
+static_assert(not has_update<decltype(kalman{}), const char *>);
+static_assert(not has_update<decltype(kalman{}), nothing>);
+static_assert(not has_update<decltype(kalman{}), int>);
+static_assert(not has_update<decltype(kalman{}), double, double>);
 static_assert(
     not has_update<decltype(kalman{state{0.}, output<double>, input<double>,
                                    update_types<double>, prediction_types<>}),
@@ -58,5 +65,13 @@ static_assert(
     has_update<decltype(kalman{state{0.}, output<double>, input<double>,
                                update_types<double>, prediction_types<>}),
                double, double>);
+static_assert(
+    not has_update<decltype(kalman{state{0.}, output<double>, input<double>,
+                                   update_types<double>, prediction_types<>}),
+                   nothing, double>);
+static_assert(
+    not has_update<decltype(kalman{state{0.}, output<double>, input<double>,
+                                   update_types<double>, prediction_types<>}),
+                   double, nothing>);
 } // namespace
 } // namespace fcarouge::test

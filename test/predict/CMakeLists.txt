@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 build("absent_1x1x0")
+build("position_1x1x0")
 fail("absent_1x1x0_fail")
 fail("arguments_fail")
 fail("input_1x1x1_fail")
