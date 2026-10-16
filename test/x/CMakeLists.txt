@@ -37,6 +37,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 build("set_1x1x0")
+build("set_2x1x0" BACKENDS "eigen" "eigen_typed")
+build("set_unit_2x1x0" BACKENDS "quantity")
 pass("1x1x1")
 pass("5x4x3" BACKENDS "eigen" "eigen_typed")
 pass("values_5x4x0" BACKENDS "eigen" "eigen_typed")
