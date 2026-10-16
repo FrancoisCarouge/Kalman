@@ -44,3 +44,30 @@ The filters the library does host would make samples too, as embedded examples w
 
 - `support/typed/CMakeLists.txt` fetches TypedLinearAlgebra without `GIT_TAG`: every build takes its default branch at that moment, and no Kalman version names a compatible TypedLinearAlgebra version. (F12)
 - The headers declare 0.5.4 and the latest tag is `0.5.3`, from 2026-03-16. A consumer pinning a tag gets seven months old code. (F9, F11)
+
+## Proposals from the ArduPilot integration
+
+Options for the owner to decide, not implemented: each touches the named-argument vocabulary or the filter configurations. The samples on branches `sample-terrain`, `sample-beacon` and `sample-gimbal` show the workarounds each would remove.
+
+**Consistency test before the correction (F7).** All three samples recompute the innovation and its uncertainty outside the filter to reject an observation.
+
+- A. A two-stage update: `filter.innovate(arguments...)` computes and stores `y` and `s`, readable through the existing accessors, then `filter.correct()` applies them, or the next `innovate` discards them.
+- B. A named `consistency{callable(y, s) -> bool}` declaration argument: `update()` skips the correction when it returns false, and records the outcome.
+- C. `update()` returning the innovation and its uncertainty with a flag, the correction applied only by a separate call. Closest to ArduPilot's code, most verbose for simple filters.
+
+**Constraint after the correction.** The terrain sample keeps the terrain below the vehicle, the gimbal sample moves its errors into the nominal values and zeroes them.
+
+- A. A named `constraint{callable(x, p)}` declaration argument applied at the end of `update()`: one hook for clamps, symmetrization and error-state resets.
+- B. Leave it to the caller through `x()` and `p()`, and document the pattern in a sample, as now.
+
+**Covariance correction form (F8, F37, F38).** The Joseph form is the only one; ArduPilot uses `P - K H P` with symmetrization and, in the beacon alignment, a correction limited to the variances.
+
+- A. A named `covariance_correction<joseph | simple | simple_symmetric>` declaration tag.
+- B. A callable `covariance_correction{callable(p, k, h, r) -> p}` for any form, the limited one included.
+
+**Configurations (F23).** No configuration combines a state transition F computed from prediction arguments with an output model H computed from update arguments (an `hh_ff_us_ps` filter); the gimbal sample sets F before each prediction instead. Supporting the combination, or deducing configurations from the present characteristics rather than an enumerated list, would cover it.
+
+**Several output types (F40).** The terrain and gimbal samples observe one state with sensors of different units and are therefore untyped.
+
+- A. `output<Z1, Z2, ...>` with `update<Zi>(arguments...)` selecting the observation, each with its own R, H and h.
+- B. One filter per observation type sharing a state and covariance by reference: no new vocabulary, but shared mutable state.
