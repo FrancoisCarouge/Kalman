@@ -49,8 +49,8 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies the process noise covariance matrix Q management overloads
 //! for multi-dimension filters.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<5, 5> ones{kf::one<matrix<5, 5>>};
-  const matrix<5, 5> zeros{kf::zero<matrix<5, 5>>};
+  const matrix<5, 5> ones{kf::make_one<matrix<5, 5>>()};
+  const matrix<5, 5> zeros{kf::make_zero<matrix<5, 5>>()};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>};
 

@@ -74,30 +74,30 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
 
-  static inline const auto i{one<evaluate<product<gain, output_model>>>};
-
-  state x{zero<state>};
-  estimate_uncertainty p{one<estimate_uncertainty>};
+  state x{make_zero<state>()};
+  estimate_uncertainty p{make_one<estimate_uncertainty>()};
   noise_process_function noise_process_q;
-  output_uncertainty r{zero<output_uncertainty>};
+  output_uncertainty r{make_zero<output_uncertainty>()};
   transition_state_function transition_state_f;
   transition_control_function transition_control_g;
 
-  process_uncertainty q{zero<process_uncertainty>};
-  input u{zero<input>};
-  output_model h{one<output_model>};
-  state_transition f{one<state_transition>};
-  input_control g{one<input_control>};
-  gain k{one<gain>};
-  innovation y{zero<innovation>};
-  innovation_uncertainty s{one<innovation_uncertainty>};
-  output z{zero<output>};
+  process_uncertainty q{make_zero<process_uncertainty>()};
+  input u{make_zero<input>()};
+  output_model h{make_one<output_model>()};
+  state_transition f{make_one<state_transition>()};
+  input_control g{make_one<input_control>()};
+  gain k{make_one<gain>()};
+  innovation y{make_zero<innovation>()};
+  innovation_uncertainty s{make_one<innovation_uncertainty>()};
+  output z{make_zero<output>()};
   prediction_types prediction_arguments{};
 
   constexpr void update(const auto &output_z, const auto &...outputs_z)
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
+    const auto i{make_one<evaluate<product<gain, output_model>>>()};
+
     z = output{output_z, outputs_z...};
     s = h * p * t(h) + r;
     k = p * t(h) / s;

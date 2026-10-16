@@ -47,7 +47,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 
 //! @test Verifies the rectangular zero matrix has zeros everywhere.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<5, 4> value{kalman_filter::internal::zero<matrix<5, 4>>};
+  const matrix<5, 4> value{kalman_filter::internal::make_zero<matrix<5, 4>>()};
 
   for (int row{0}; row < 5; ++row) {
     for (int column{0}; column < 4; ++column) {

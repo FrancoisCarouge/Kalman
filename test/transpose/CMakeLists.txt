@@ -36,5 +36,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-pass("1x1")
+build("1x1")
 pass("2x3" BACKENDS "eigen" "eigen_typed")

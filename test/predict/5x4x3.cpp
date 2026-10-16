@@ -50,7 +50,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! input set from its element values adds to the state through the default
 //! input control, the estimate uncertainty is kept.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<5, 5> i5x5{kf::one<matrix<5, 5>>};
+  const matrix<5, 5> i5x5{kf::make_one<matrix<5, 5>>()};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>};
 

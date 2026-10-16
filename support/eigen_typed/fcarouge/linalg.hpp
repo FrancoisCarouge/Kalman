@@ -74,13 +74,21 @@ struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
 
 //! @brief The one matrix indexed specialization.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline typed_matrix<decltype(one<Matrix>), RowIndexes, ColumnIndexes>
-    one<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{one<Matrix>};
+struct ones<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] static constexpr auto operator()() {
+    return typed_matrix<decltype(make_one<Matrix>()), RowIndexes,
+                        ColumnIndexes>{make_one<Matrix>()};
+  }
+};
 
 //! @brief The zero matrix indexed specialization.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-inline typed_matrix<decltype(zero<Matrix>), RowIndexes, ColumnIndexes>
-    zero<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{zero<Matrix>};
+struct zeros<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] static constexpr auto operator()() {
+    return typed_matrix<decltype(make_zero<Matrix>()), RowIndexes,
+                        ColumnIndexes>{make_zero<Matrix>()};
+  }
+};
 
 //! @}
 

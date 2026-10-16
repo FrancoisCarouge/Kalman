@@ -37,6 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 build("arguments_1x1x0")
+build("constant_1x1x0")
 build("rows")
 build("traits_1x1x0")
 build("traits_5x4x3" BACKENDS "eigen" "eigen_typed")
@@ -58,6 +59,13 @@ pass("default_float_1x1x1")
 pass("move_5x4x3" BACKENDS "eigen" "eigen_typed")
 pass("output_type_2x1x0" BACKENDS "eigen" "eigen_typed")
 pass("state_1x1x0")
+pass("static_1x1x0")
 pass("stored_2x1x0" BACKENDS "eigen" "eigen_typed")
 pass("stored_2x2x1" BACKENDS "eigen" "eigen_typed")
 pass("uncertainties_1x1x0")
+
+# The filter of the static storage test is constructed in a translation unit
+# linked after the one defining its owner, dynamically initialized first.
+target_sources(
+  kalman_constructor_static_1x1x0_pass_driver
+  PRIVATE "static_1x1x0_holder.cpp")

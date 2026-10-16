@@ -49,8 +49,8 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies the gain matrix K management overloads for
 //! multi-dimension filters.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<5, 4> ones{kf::one<matrix<5, 4>>};
-  const matrix<5, 4> zeros{kf::zero<matrix<5, 4>>};
+  const matrix<5, 4> ones{kf::make_one<matrix<5, 4>>()};
+  const matrix<5, 4> zeros{kf::make_zero<matrix<5, 4>>()};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>};
 

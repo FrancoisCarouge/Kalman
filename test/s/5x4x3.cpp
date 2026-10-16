@@ -49,8 +49,8 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies the innovation uncertainty matrix S management overloads for
 //! multi-dimension filters.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<4, 4> ones{kf::one<matrix<4, 4>>};
-  const matrix<4, 4> zeros{kf::zero<matrix<4, 4>>};
+  const matrix<4, 4> ones{kf::make_one<matrix<4, 4>>()};
+  const matrix<4, 4> zeros{kf::make_zero<matrix<4, 4>>()};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>};
 

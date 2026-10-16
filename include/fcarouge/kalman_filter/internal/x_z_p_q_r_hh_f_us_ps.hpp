@@ -70,22 +70,20 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
 
-  static inline const auto i{one<evaluate<product<gain, output_model>>>};
-
-  state x{zero<state>};
-  estimate_uncertainty p{one<estimate_uncertainty>};
-  process_uncertainty q{zero<process_uncertainty>};
-  output_uncertainty r{zero<output_uncertainty>};
+  state x{make_zero<state>()};
+  estimate_uncertainty p{make_one<estimate_uncertainty>()};
+  process_uncertainty q{make_zero<process_uncertainty>()};
+  output_uncertainty r{make_zero<output_uncertainty>()};
   observation_state_function observation_state_h;
   transition_function transition;
   observation_function observation;
 
-  output_model h{one<output_model>};
-  state_transition f{one<state_transition>};
-  gain k{one<gain>};
-  innovation y{zero<innovation>};
-  innovation_uncertainty s{one<innovation_uncertainty>};
-  output z{zero<output>};
+  output_model h{make_one<output_model>()};
+  state_transition f{make_one<state_transition>()};
+  gain k{make_one<gain>()};
+  innovation y{make_zero<innovation>()};
+  innovation_uncertainty s{make_one<innovation_uncertainty>()};
+  output z{make_zero<output>()};
   update_types update_arguments{};
   prediction_types prediction_arguments{};
 
@@ -94,6 +92,8 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
+    const auto i{make_one<evaluate<product<gain, output_model>>>()};
+
     update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};
     h = observation_state_h(x, update_pack...);

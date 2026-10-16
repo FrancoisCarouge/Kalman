@@ -66,11 +66,11 @@ inline constexpr mp_units::quantity<Reference, Representation>
     one<mp_units::quantity<Reference, Representation>>{1., Reference};
 
 template <auto Reference>
-inline mp_units::quantity_point<Reference>
+inline constexpr mp_units::quantity_point<Reference>
     one<mp_units::quantity_point<Reference>>{mp_units::point<Reference>(1.)};
 
 template <auto Reference>
-inline mp_units::quantity_point<Reference>
+inline constexpr mp_units::quantity_point<Reference>
     zero<mp_units::quantity_point<Reference>>{mp_units::point<Reference>(0.)};
 } // namespace fcarouge::kalman_filter::internal
 

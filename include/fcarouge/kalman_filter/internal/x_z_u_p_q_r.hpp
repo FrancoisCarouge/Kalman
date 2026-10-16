@@ -55,22 +55,22 @@ template <typename Type> struct x_z_u_p_q_r {
   using innovation_uncertainty = output_uncertainty;
   using gain = evaluate<quotient<state, innovation>>;
 
-  static inline const auto i{one<gain>};
-
-  state x{zero<state>};
-  estimate_uncertainty p{one<estimate_uncertainty>};
-  process_uncertainty q{zero<process_uncertainty>};
-  output_uncertainty r{zero<output_uncertainty>};
-  input u{zero<input>};
-  gain k{one<gain>};
-  innovation y{zero<innovation>};
-  innovation_uncertainty s{one<innovation_uncertainty>};
-  output z{zero<output>};
+  state x{make_zero<state>()};
+  estimate_uncertainty p{make_one<estimate_uncertainty>()};
+  process_uncertainty q{make_zero<process_uncertainty>()};
+  output_uncertainty r{make_zero<output_uncertainty>()};
+  input u{make_zero<input>()};
+  gain k{make_one<gain>()};
+  innovation y{make_zero<innovation>()};
+  innovation_uncertainty s{make_one<innovation_uncertainty>()};
+  output z{make_zero<output>()};
 
   constexpr void update(const auto &output_z, const auto &...outputs_z)
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
+    const auto i{make_one<gain>()};
+
     z = output{output_z, outputs_z...};
     s = p + r;
     k = p / s;
