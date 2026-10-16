@@ -38,22 +38,15 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman_filter/internal/utility.hpp"
 
-#include <cassert>
 #include <concepts>
 
 namespace fcarouge::test {
 namespace {
 //! @test Verifies the transpose of an arithmetic value is that value, of the
-//! same type.
-[[maybe_unused]] const auto test{[] -> int {
-  static_assert(
-      std::same_as<kalman_filter::internal::transpose<double>, double>);
-  static_assert(std::same_as<kalman_filter::internal::transpose<float>, float>);
-
-  assert(kalman_filter::internal::t(2.) == 2.);
-  assert(kalman_filter::internal::t(3.F) == 3.F);
-
-  return 0;
-}()};
+//! same type, in constant evaluation.
+static_assert(std::same_as<kalman_filter::internal::transpose<double>, double>);
+static_assert(std::same_as<kalman_filter::internal::transpose<float>, float>);
+static_assert(kalman_filter::internal::t(2.) == 2.);
+static_assert(kalman_filter::internal::t(3.F) == 3.F);
 } // namespace
 } // namespace fcarouge::test

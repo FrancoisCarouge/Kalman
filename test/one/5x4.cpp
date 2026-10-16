@@ -48,7 +48,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
 //! @test Verifies the rectangular one matrix has ones on its diagonal and zeros
 //! elsewhere.
 [[maybe_unused]] const auto test{[] -> int {
-  const matrix<5, 4> value{kalman_filter::internal::one<matrix<5, 4>>};
+  const matrix<5, 4> value{kalman_filter::internal::make_one<matrix<5, 4>>()};
 
   for (int row{0}; row < 5; ++row) {
     for (int column{0}; column < 4; ++column) {

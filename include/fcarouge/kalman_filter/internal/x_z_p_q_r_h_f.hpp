@@ -54,23 +54,23 @@ template <typename State, typename Output> struct x_z_p_q_r_h_f {
   using innovation_uncertainty = output_uncertainty;
   using gain = evaluate<quotient<state, innovation>>;
 
-  static inline const auto i{one<evaluate<product<gain, output_model>>>};
-
-  state x{zero<state>};
-  estimate_uncertainty p{one<estimate_uncertainty>};
-  process_uncertainty q{zero<process_uncertainty>};
-  output_uncertainty r{zero<output_uncertainty>};
-  output_model h{one<output_model>};
-  state_transition f{one<state_transition>};
-  gain k{one<gain>};
-  innovation y{zero<innovation>};
-  innovation_uncertainty s{one<innovation_uncertainty>};
-  output z{zero<output>};
+  state x{make_zero<state>()};
+  estimate_uncertainty p{make_one<estimate_uncertainty>()};
+  process_uncertainty q{make_zero<process_uncertainty>()};
+  output_uncertainty r{make_zero<output_uncertainty>()};
+  output_model h{make_one<output_model>()};
+  state_transition f{make_one<state_transition>()};
+  gain k{make_one<gain>()};
+  innovation y{make_zero<innovation>()};
+  innovation_uncertainty s{make_one<innovation_uncertainty>()};
+  output z{make_zero<output>()};
 
   constexpr void update(const auto &output_z, const auto &...outputs_z)
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
+    const auto i{make_one<evaluate<product<gain, output_model>>>()};
+
     z = output{output_z, outputs_z...};
     s = innovation_uncertainty{h * p * t(h) + r};
     k = p * t(h) / s;

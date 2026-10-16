@@ -48,8 +48,8 @@ template <auto Size> using vector = column_vector<double, Size>;
 //! @test Verifies the innovation column vector Y management overloads for
 //! multi-dimension filters.
 [[maybe_unused]] const auto test{[] -> int {
-  const vector<4> ones{kf::one<vector<4>>};
-  const vector<4> zeros{kf::zero<vector<4>>};
+  const vector<4> ones{kf::make_one<vector<4>>()};
+  const vector<4> zeros{kf::make_zero<vector<4>>()};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>};
 

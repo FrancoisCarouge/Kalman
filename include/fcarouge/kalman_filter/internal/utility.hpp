@@ -397,7 +397,7 @@ using transpose = std::invoke_result_t<transposes<Type>, const Type &>;
 //! @brief Transpose helper function.
 //!
 //! @details Enable readable linear algebra notation.
-template <typename Type> auto t(const Type &value) {
+template <typename Type> constexpr auto t(const Type &value) {
   return transposes<Type>{}(value);
 }
 
@@ -675,11 +675,26 @@ template <typename Type> struct not_implemented {
   static_assert(missing, "This type is not implemented. See compiler message.");
 };
 
+//! @brief Constant evaluation concept.
+//!
+//! @details The value built by the factory is a constant expression.
+template <typename Factory>
+concept constant_evaluable = requires {
+  typename std::bool_constant<(static_cast<void>(Factory{}()), true)>;
+};
+
 //! @brief The one matrix.
 //!
 //! @details User-defined matrix with all its diagonal elements equal
 //! to ones, and zeroes everywhere else. This matrix is also known as the
 //! identity matrix for square matrices of non-quantity scalar types.
+//!
+//! @warning A user-defined specialization must be a constant expression,
+//! declared `constexpr`. The dynamic initialization of a templated variable is
+//! unordered: a filter constructed during the dynamic initialization of another
+//! object of static storage duration would copy its zero-initialized storage.
+//! Specialize the `ones` factory instead for a value that is not a constant
+//! expression.
 template <typename Type = double>
 inline constexpr Type one{not_implemented<Type>{
     "Implement the linear algebra one-diagonal matrix for this type."}};
@@ -687,17 +702,60 @@ inline constexpr Type one{not_implemented<Type>{
 //! @brief The singleton one matrix specialization.
 template <arithmetic Arithmetic> inline constexpr Arithmetic one<Arithmetic>{1};
 
+//! @brief Linear algebra one matrix specialization point.
+//!
+//! @details Builds the one matrix at the point of use, never reading a variable
+//! of unordered dynamic initialization.
+template <typename Type> struct ones {
+  [[nodiscard]] static constexpr auto operator()() { return one<Type>; }
+};
+
 template <typename Type>
   requires requires { Type::Identity(); }
-inline auto one<Type>{Type::Identity()};
+struct ones<Type> {
+  [[nodiscard]] static constexpr auto operator()() { return Type::Identity(); }
+};
 
 template <typename Type>
   requires requires { Type::identity(); }
-inline auto one<Type>{Type::identity()};
+struct ones<Type> {
+  [[nodiscard]] static constexpr auto operator()() { return Type::identity(); }
+};
+
+//! @brief The constant one matrix specialization.
+//!
+//! @details Defined only for a backend whose one matrix is a constant
+//! expression, which is then constant-initialized.
+template <typename Type>
+  requires(
+              requires { Type::Identity(); } ||
+              requires { Type::identity(); }) &&
+          constant_evaluable<ones<Type>>
+inline constexpr auto one<Type>{ones<Type>{}()};
+
+//! @brief The one matrix built at the point of use.
+//!
+//! @details The constant one matrix when it is a constant expression, so that
+//! a filter is constant-initializable, otherwise the value built by its
+//! backend.
+template <typename Type> [[nodiscard]] constexpr auto make_one() {
+  if constexpr (constant_evaluable<ones<Type>>) {
+    return one<Type>;
+  } else {
+    return ones<Type>{}();
+  }
+}
 
 //! @brief The zero matrix.
 //!
 //! @details User-defined.
+//!
+//! @warning A user-defined specialization must be a constant expression,
+//! declared `constexpr`. The dynamic initialization of a templated variable is
+//! unordered: a filter constructed during the dynamic initialization of another
+//! object of static storage duration would copy its zero-initialized storage.
+//! Specialize the `zeros` factory instead for a value that is not a constant
+//! expression.
 template <typename Type = double>
 inline constexpr Type zero{kalman_filter::internal::not_implemented<Type>{
     "Implement the linear algebra zero matrix for this type."}};
@@ -706,13 +764,48 @@ inline constexpr Type zero{kalman_filter::internal::not_implemented<Type>{
 template <arithmetic Arithmetic>
 inline constexpr Arithmetic zero<Arithmetic>{0};
 
+//! @brief Linear algebra zero matrix specialization point.
+//!
+//! @details Builds the zero matrix at the point of use, never reading a
+//! variable of unordered dynamic initialization.
+template <typename Type> struct zeros {
+  [[nodiscard]] static constexpr auto operator()() { return zero<Type>; }
+};
+
 template <typename Type>
   requires requires { Type::Zero(); }
-inline auto zero<Type>{Type::Zero()};
+struct zeros<Type> {
+  [[nodiscard]] static constexpr auto operator()() { return Type::Zero(); }
+};
 
 template <typename Type>
   requires requires { Type::zero(); }
-inline auto zero<Type>{Type::zero()};
+struct zeros<Type> {
+  [[nodiscard]] static constexpr auto operator()() { return Type::zero(); }
+};
+
+//! @brief The constant zero matrix specialization.
+//!
+//! @details Defined only for a backend whose zero matrix is a constant
+//! expression, which is then constant-initialized.
+template <typename Type>
+  requires(
+              requires { Type::Zero(); } || requires { Type::zero(); }) &&
+          constant_evaluable<zeros<Type>>
+inline constexpr auto zero<Type>{zeros<Type>{}()};
+
+//! @brief The zero matrix built at the point of use.
+//!
+//! @details The constant zero matrix when it is a constant expression, so that
+//! a filter is constant-initializable, otherwise the value built by its
+//! backend.
+template <typename Type> [[nodiscard]] constexpr auto make_zero() {
+  if constexpr (constant_evaluable<zeros<Type>>) {
+    return zero<Type>;
+  } else {
+    return zeros<Type>{}();
+  }
+}
 
 template <typename Callable> struct scope_exit {
   Callable callable;

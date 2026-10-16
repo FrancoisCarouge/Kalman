@@ -48,8 +48,8 @@ template <auto Size> using vector = column_vector<double, Size>;
 //! @test Verifies the estimated state column vector X management overloads for
 //! multi-dimension filters.
 [[maybe_unused]] const auto test{[] -> int {
-  const vector<5> ones{kf::one<vector<5>>};
-  const vector<5> zeros{kf::zero<vector<5>>};
+  const vector<5> ones{kf::make_one<vector<5>>()};
+  const vector<5> zeros{kf::make_zero<vector<5>>()};
   kalman filter{state{vector<5>{0., 0., 0., 0., 0.}}, output<vector<4>>,
                 input<vector<3>>};
 
