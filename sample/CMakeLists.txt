@@ -40,6 +40,7 @@ if(NOT BUILD_TESTING)
   return()
 endif()
 
+add_subdirectory("ekf_3x1x0_beacon_position_unit")
 add_subdirectory("ekf_4x1x0_thermal_soaring")
 add_subdirectory("ekf_6x4x0_3d_apollo_position")
 add_subdirectory("kf_1x1x0_building_height")

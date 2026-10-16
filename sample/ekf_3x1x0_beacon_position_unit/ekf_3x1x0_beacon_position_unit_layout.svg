@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the ekf_3x1x0_beacon_position_unit sample, top view:
+     1 m = 36 px, x = 220 + 36 east, y = 500 - 36 north. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="630" viewBox="0 0 720 630" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Beacon Layout</title>
+  <rect x="0" y="0" width="720" height="630" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 3x1x0 Beacon Position</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Top View</text>
+
+  <!-- North and east axes, and the orientation of the beacons. -->
+  <line x1="50" y1="250" x2="50.0" y2="158.8" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="50.0,150.0 45.0,161.0 55.0,161.0" fill="#2f7d32"/>
+  <line x1="50" y1="250" x2="131.2" y2="250.0" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="140.0,250.0 129.0,245.1 129.0,254.9" fill="#2f7d32"/>
+  <text x="50" y="140" text-anchor="middle" fill="#2f7d32" font-weight="bold">North</text>
+  <text x="146" y="255" fill="#2f7d32" font-weight="bold">East</text>
+  <text x="20" y="285" font-size="12" fill="#444444">Beacon 1 to beacon 2</text>
+  <text x="20" y="300" font-size="12" fill="#444444">due north:</text>
+  <text x="20" y="315" font-size="12" fill="#444444">BCN_ORIENT_YAW = 0°</text>
+
+  <!-- The rectangle of the beacons. -->
+  <rect x="220" y="140" width="360" height="360" fill="none" stroke="#4a90c2" stroke-width="1.5"/>
+
+  <!-- The measured ranges from the receiver to the beacons. -->
+  <g stroke="#9a9a9a" stroke-width="1.5">
+    <line x1="364" y1="392" x2="220" y2="500"/>
+    <line x1="364" y1="392" x2="220" y2="140"/>
+    <line x1="364" y1="392" x2="580" y2="500"/>
+    <line x1="364" y1="392" x2="580" y2="140"/>
+  </g>
+  <text x="430" y="482" text-anchor="middle" font-size="12" fill="#666666">measured ranges</text>
+
+  <!-- The N pattern of increasing beacon identifiers. -->
+  <line x1="240" y1="470" x2="240.0" y2="176.8" stroke="#d9661f" stroke-width="2.5" stroke-dasharray="10 7"/>
+  <polygon points="240.0,168.0 235.1,179.0 244.9,179.0" fill="#d9661f"/>
+  <line x1="250" y1="168" x2="551.8" y2="469.8" stroke="#d9661f" stroke-width="2.5" stroke-dasharray="10 7"/>
+  <polygon points="558.0,476.0 553.7,464.7 546.7,471.7" fill="#d9661f"/>
+  <line x1="560" y1="470" x2="560.0" y2="176.8" stroke="#d9661f" stroke-width="2.5" stroke-dasharray="10 7"/>
+  <polygon points="560.0,168.0 555.0,179.0 565.0,179.0" fill="#d9661f"/>
+  <text x="400" y="122" text-anchor="middle" fill="#a8460c">Identifiers increase along an N pattern</text>
+
+  <!-- The wall and the multipath reflection of a range to beacon 1. -->
+  <path d="M182,580 l8,-8 M192,580 l8,-8 M202,580 l8,-8 M212,580 l8,-8 M222,580 l8,-8 M232,580 l8,-8 M242,580 l8,-8 M252,580 l8,-8 M262,580 l8,-8 M272,580 l8,-8 M282,580 l8,-8 M292,580 l8,-8 M302,580 l8,-8 M312,580 l8,-8 M322,580 l8,-8 M332,580 l8,-8 M342,580 l8,-8 M352,580 l8,-8 M362,580 l8,-8 M372,580 l8,-8 M382,580 l8,-8 M392,580 l8,-8 M402,580 l8,-8 M412,580 l8,-8 M422,580 l8,-8 M432,580 l8,-8 M442,580 l8,-8 M452,580 l8,-8 M462,580 l8,-8 M472,580 l8,-8 M482,580 l8,-8 M492,580 l8,-8 M502,580 l8,-8 M512,580 l8,-8 M522,580 l8,-8 M532,580 l8,-8 M542,580 l8,-8 M552,580 l8,-8 M562,580 l8,-8 M572,580 l8,-8 M582,580 l8,-8 M592,580 l8,-8 M602,580 l8,-8 M612,580 l8,-8" stroke="#888888" stroke-width="1.5" fill="none"/>
+  <line x1="180" y1="572" x2="620" y2="572" stroke="#777777" stroke-width="1.5"/>
+  <text x="626" y="580" fill="#555555">Wall</text>
+  <polyline points="220,500 261,572 357,404" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <polygon points="359.0,401.0 349.2,408.1 357.8,413.0" fill="#c0392b"/>
+  <text x="290" y="606" fill="#c0392b">Multipath reflection: a 3 m longer range, rejected</text>
+
+  <!-- The beacons, at their heights above the ground: down = - height. -->
+  <rect x="211" y="491" width="18" height="18" fill="#d62728"/>
+  <rect x="211" y="131" width="18" height="18" fill="#222222"/>
+  <rect x="571" y="491" width="18" height="18" fill="#222222"/>
+  <rect x="571" y="131" width="18" height="18" fill="#222222"/>
+  <text x="204" y="500" text-anchor="end" fill="#d62728" font-weight="bold">Beacon 1, origin</text>
+  <text x="204" y="516" text-anchor="end" font-size="12" fill="#444444">0 m N, 0 m E,</text>
+  <text x="204" y="530" text-anchor="end" font-size="12" fill="#444444">1 m high</text>
+  <text x="204" y="140" text-anchor="end" font-weight="bold">Beacon 2</text>
+  <text x="204" y="156" text-anchor="end" font-size="12" fill="#444444">10 m N, 0 m E,</text>
+  <text x="204" y="170" text-anchor="end" font-size="12" fill="#444444">3 m high</text>
+  <text x="596" y="500" font-weight="bold">Beacon 3</text>
+  <text x="596" y="516" font-size="12" fill="#444444">0 m N, 10 m E,</text>
+  <text x="596" y="530" font-size="12" fill="#444444">2 m high</text>
+  <text x="596" y="140" font-weight="bold">Beacon 4</text>
+  <text x="596" y="156" font-size="12" fill="#444444">10 m N, 10 m E,</text>
+  <text x="596" y="170" font-size="12" fill="#444444">1 m high</text>
+
+  <!-- The receiver at rest. -->
+  <rect x="374" y="346" width="160" height="40" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+  <text x="380" y="362" font-weight="bold" fill="#1f6fb2">Receiver</text>
+  <text x="380" y="378" font-size="12" fill="#444444">3 m N, 4 m E, 0.5 m high</text>
+  <circle cx="364" cy="392" r="8" fill="#1f6fb2" stroke="#ffffff" stroke-width="2"/>
+</svg>
