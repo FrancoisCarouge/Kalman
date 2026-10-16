@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the ekf_9x4x0_gimbal_attitude_unit sample, side view
+     at the start, the camera facing north: north to the right, down to the
+     bottom, east and the camera's right axis into the page. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="600" viewBox="0 0 720 600" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Gimbal Layout</title>
+  <rect x="0" y="0" width="720" height="600" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 9x4x0 Gimbal Attitude</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Side View</text>
+
+  <!-- The north, east, and down frame. -->
+  <line x1="50" y1="110" x2="131.2" y2="110" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="140.0,110.0 129.0,105.1 129.0,114.9" fill="#2f7d32"/>
+  <line x1="50" y1="110" x2="50" y2="181.2" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="50.0,190.0 45.0,179.0 55.0,179.0" fill="#2f7d32"/>
+  <circle cx="50" cy="110" r="8" fill="#ffffff" stroke="#2f7d32" stroke-width="2"/>
+  <path d="M44.3,104.3 L55.7,115.7 M55.7,104.3 L44.3,115.7" stroke="#2f7d32" stroke-width="2"/>
+  <text x="146" y="115" fill="#2f7d32" font-weight="bold">North</text>
+  <text x="50" y="208" text-anchor="middle" fill="#2f7d32" font-weight="bold">Down</text>
+  <text x="64" y="96" fill="#2f7d32" font-weight="bold">East, into the page</text>
+
+  <!-- Gravity. -->
+  <line x1="650" y1="300" x2="650" y2="371.2" stroke="#555555" stroke-width="3"/>
+  <polygon points="650.0,380.0 645.0,369.0 655.0,369.0" fill="#555555"/>
+  <text x="640" y="320" text-anchor="end" fill="#555555">Gravity</text>
+  <text x="640" y="336" text-anchor="end" font-size="12" fill="#555555">9.80665 m/s²</text>
+
+  <!-- The ground. -->
+  <path d="M122,530 l8,8 M142,530 l8,8 M162,530 l8,8 M182,530 l8,8 M202,530 l8,8 M222,530 l8,8 M242,530 l8,8 M262,530 l8,8 M282,530 l8,8 M302,530 l8,8 M322,530 l8,8 M342,530 l8,8 M362,530 l8,8 M382,530 l8,8 M402,530 l8,8 M422,530 l8,8 M442,530 l8,8 M462,530 l8,8 M482,530 l8,8 M502,530 l8,8 M522,530 l8,8 M542,530 l8,8 M562,530 l8,8 M582,530 l8,8" stroke="#888888" stroke-width="1.5" fill="none"/>
+  <line x1="120" y1="530" x2="600" y2="530" stroke="#777777" stroke-width="1.5"/>
+
+  <!-- The vehicle at rest. -->
+  <rect x="170" y="410" width="300" height="80" rx="8" fill="#e8e8e8" stroke="#666666" stroke-width="1.5"/>
+  <circle cx="225" cy="502" r="26" fill="#444444"/>
+  <circle cx="415" cy="502" r="26" fill="#444444"/>
+  <text x="320" y="446" text-anchor="middle" font-weight="bold">Vehicle at rest</text>
+  <text x="320" y="464" text-anchor="middle" font-size="12" fill="#444444">zero velocity observed, 10 Hz</text>
+
+  <!-- The compass on the vehicle. -->
+  <rect x="190" y="390" width="44" height="20" fill="#d9661f"/>
+  <text x="212" y="404" text-anchor="middle" font-size="11" fill="#ffffff" font-weight="bold">N</text>
+  <line x1="190" y1="400" x2="150" y2="360" stroke="#a8460c" stroke-width="1"/>
+  <text x="146" y="342" text-anchor="end" fill="#a8460c" font-weight="bold">Compass</text>
+  <text x="146" y="358" text-anchor="end" font-size="12" fill="#444444">heading ±50 mrad, 10 Hz</text>
+
+  <!-- The gimbal: the yaw motor on its mast, the yoke, and the camera. -->
+  <rect x="312" y="330" width="16" height="80" fill="#888888"/>
+  <rect x="300" y="312" width="40" height="20" rx="4" fill="#555555"/>
+  <path d="M270,312 L270,250 M370,312 L370,250 M270,312 L370,312" stroke="#555555" stroke-width="6" fill="none"/>
+  <rect x="280" y="226" width="80" height="44" rx="4" fill="#1f6fb2"/>
+  <rect x="360" y="234" width="22" height="28" fill="#174f80"/>
+  <rect x="290" y="236" width="30" height="22" fill="#ffffff" fill-opacity="0.9"/>
+  <text x="305" y="251" text-anchor="middle" font-size="10" font-weight="bold" fill="#1f6fb2">IMU</text>
+
+  <!-- The pan of the camera about the down axis. -->
+  <path d="M260,196 A60,14 0 1 0 380,196" fill="none" stroke="#c0392b" stroke-width="2"/>
+  <polygon points="380.0,196.0 371.5,188.4 369.8,199.1" fill="#c0392b"/>
+  <line x1="320" y1="150" x2="320" y2="226" stroke="#c0392b" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="390" y="174" fill="#c0392b" font-weight="bold">Pan about the down axis</text>
+  <text x="390" y="190" font-size="12" fill="#444444">yaw rate 0.1 rad/s</text>
+  <text x="390" y="206" font-size="12" fill="#444444">roll and pitch rates oscillate, ±0.05 rad/s</text>
+
+  <!-- The body frame of the camera. -->
+  <line x1="382" y1="248" x2="471.2" y2="248" stroke="#1f6fb2" stroke-width="2.5"/>
+  <polygon points="480.0,248.0 469.0,243.1 469.0,252.9" fill="#1f6fb2"/>
+  <text x="486" y="253" fill="#1f6fb2" font-weight="bold">Forward</text>
+  <text x="486" y="270" font-size="12" fill="#444444">right, into the page; down</text>
+
+  <!-- The inertial sensors. -->
+  <line x1="290" y1="247" x2="230" y2="247" stroke="#1f6fb2" stroke-width="1"/>
+  <text x="224" y="226" text-anchor="end" fill="#1f6fb2" font-weight="bold">Inertial sensors, 100 Hz</text>
+  <text x="224" y="242" text-anchor="end" font-size="12" fill="#444444">gyroscope, biased by</text>
+  <text x="224" y="256" text-anchor="end" font-size="12" fill="#444444">10, −20, 5 mrad/s</text>
+  <text x="224" y="270" text-anchor="end" font-size="12" fill="#444444">accelerometer</text>
+
+  <!-- The initial errors. -->
+  <text x="360" y="570" text-anchor="middle" font-size="12" fill="#444444">Initial error of the attitude estimate: 20, −30, 100 mrad about north, east, and down</text>
+</svg>
