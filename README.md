@@ -92,6 +92,7 @@ Designing a filter is as much art as science, with the following recipe. Model t
 | 6x2x0 constant acceleration dynamic model filter of the 2-dimension vehicle location, velocity, and acceleration. | [Usage example: `sample/kf_6x2x0_2d_vehicle_position/kf_6x2x0_2d_vehicle_position.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position/kf_6x2x0_2d_vehicle_position.cpp), [with units: `sample/kf_6x2x0_2d_vehicle_position_unit/kf_6x2x0_2d_vehicle_position_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position_unit/kf_6x2x0_2d_vehicle_position_unit.cpp). |
 | 6x4x0 extended filter of the 3-dimension position and velocity of the NASA Apollo lunar module abort guidance system for spacecraft rendezvous approaching the command/service module. | [Usage example: `sample/ekf_6x4x0_3d_apollo_position/ekf_6x4x0_3d_apollo_position.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_6x4x0_3d_apollo_position/ekf_6x4x0_3d_apollo_position.cpp). |
 | 8x4x0 constant velocity dynamic model filter of the 2-dimension position and velocity of the center, aspect ratio, and height of a bounding box. | [Usage example: `sample/kf_8x4x0_2d_bounding_box/kf_8x4x0_2d_bounding_box.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box/kf_8x4x0_2d_bounding_box.cpp). |
+| 9x4x0 error-state extended filter of the attitude, velocity, and gyroscope bias of a camera gimbal, from its inertial sensors, a zero velocity, and a compass heading, as in the ArduPilot autopilot. | [Usage example with units: `sample/ekf_9x4x0_gimbal_attitude_unit/ekf_9x4x0_gimbal_attitude_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_9x4x0_gimbal_attitude_unit/ekf_9x4x0_gimbal_attitude_unit.cpp). |
 
 #### 6x2 Constant Acceleration Dynamic Model Filter
 
@@ -354,6 +355,8 @@ The library is used in projects:
 - [Taking Static Type-Safety to the Next Level - Physical Units for Matrices](https://www.youtube.com/watch?v=aF3samjRzD4) by Daniel Withopf at CppCon 2022 [[slides](https://meetingcpp.com/mcpp/slides/2021/Physical-units-for-matrices6397.pdf)].
 - [Units Libraries and Autonomous Vehicles: Lessons from the Trenches](https://www.youtube.com/watch?v=5dhFtSu3wCo) by Chip Hogg at CppCon 2021.
 - [R-649: The Apollo Rendezvous Navigation Filter Theory, Description and Performance, Volume 1 of 2](https://archive.org/details/R649Volume1) by Eugene S. Muller, Jr., and Peter M. Kachmar.
+- [ArduPilot](https://ardupilot.org) by the ArduPilot Dev Team, whose [SmallEKF](https://github.com/ArduPilot/ardupilot/blob/Copter-3.3/libraries/AP_NavEKF/AP_SmallEKF.cpp) error-state filter estimates the attitude of a camera [gimbal](https://ardupilot.org/copter/docs/common-mounts.html).
+- [Quaternion Kinematics for the Error-State Kalman Filter](https://arxiv.org/abs/1711.02508) by Joan Solà. 2017.
 
 ### Third Party Acknowledgement
 
