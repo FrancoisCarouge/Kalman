@@ -150,6 +150,7 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
       "/diagnostics:caret"
       "/EHsc"
       "/FC"
+      "/permissive-"
       "/std:c++latest"
       "/UNDEBUG"
       "/utf-8"
