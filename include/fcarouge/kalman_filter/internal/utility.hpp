@@ -64,6 +64,62 @@ concept arithmetic = std::integral<Type> || std::floating_point<Type>;
 template <typename Type>
 concept algebraic = requires(Type value) { value(0, 0); };
 
+//! @brief The value copy-initializes the type without narrowing.
+//!
+//! @details The initialization of an array element from a braced list, where
+//! narrowing conversions and explicit constructors do not participate.
+template <typename Value, typename Type>
+concept converts_without_narrowing =
+    requires(Value value) { std::type_identity_t<Type[1]>{value}; };
+
+//! @brief Deduces the type of the element at the position of the type.
+//!
+//! @details A backend names the element type of its matrices its own way, if
+//! at all: the type is deduced from the element access instead. The
+//! compile-time indexed access `at<Position>()` of a typed matrix, whose
+//! elements may each have their own type, otherwise the call operator
+//! `(Position)` of a matrix whose elements share a type. Void for a type
+//! without indexed element access, an arithmetic type for one.
+template <typename Type, std::size_t Position>
+[[nodiscard]] consteval auto deduce_element() {
+  if constexpr (requires(const Type value) { value.template at<Position>(); }) {
+    return std::type_identity<std::remove_cvref_t<
+        decltype(std::declval<const Type &>().template at<Position>())>>{};
+  } else if constexpr (requires(const Type value) { value(Position); }) {
+    return std::type_identity<std::remove_cvref_t<
+        decltype(std::declval<const Type &>()(Position))>>{};
+  } else {
+    return std::type_identity<void>{};
+  }
+}
+
+//! @brief The type of the element at the position of the type.
+template <typename Type, std::size_t Position>
+using element = decltype(deduce_element<Type, Position>())::type;
+
+//! @brief Whether each value initializes the element at its position of the
+//! type without narrowing, where the type of the element is deduced.
+template <typename Type, typename... Values, std::size_t... Positions>
+[[nodiscard]] consteval auto
+converts_elements(std::index_sequence<Positions...> /*positions*/) -> bool {
+  return ((std::same_as<element<Type, Positions>, void> ||
+           converts_without_narrowing<Values, element<Type, Positions>>) &&
+          ...);
+}
+
+//! @brief The values initialize the elements of the type without narrowing.
+//!
+//! @details Several values initialize the type from its elements, one value
+//! per position. The constructor of a backend matrix converts the elements
+//! itself, narrowing included, and its constructor template accepts any
+//! element type: each value is checked against the element at its position
+//! instead, as a built-in arithmetic characteristic is. A single value
+//! initializes the type as a whole and is not an element.
+template <typename Type, typename... Values>
+concept initializes_elements =
+    sizeof...(Values) < 2 ||
+    converts_elements<Type, Values...>(std::index_sequence_for<Values...>{});
+
 //! @brief The values initialize a characteristic of the type, as opposed to
 //! its callable.
 //!
@@ -71,20 +127,24 @@ concept algebraic = requires(Type value) { value(0, 0); };
 //! conversion, and not by construction: a backend matrix may be explicitly
 //! constructible from any type, a callable included. Several values initialize
 //! the characteristic from its elements, by list-initialization. Either way,
-//! the values direct-list-initialize the characteristic, without narrowing.
+//! the values direct-list-initialize the characteristic, without narrowing,
+//! of the characteristic or of its elements.
 template <typename Type, typename... Values>
 concept initializes =
     (sizeof...(Values) > 1 || (sizeof...(Values) == 1 &&
                                (std::is_convertible_v<Values, Type> && ...))) &&
-    requires(Values... values) { Type{values...}; };
+    requires(Values... values) { Type{values...}; } &&
+    initializes_elements<Type, Values...>;
 
 //! @brief The values direct-list-initialize the type.
 //!
-//! @details Explicit constructors participate, narrowing conversions do not:
-//! the expression the filter evaluates to store the values.
+//! @details Explicit constructors participate, narrowing conversions do not,
+//! of the type or of its elements: the expression the filter evaluates to
+//! store the values.
 template <typename Type, typename... Values>
-concept list_initializes =
-    sizeof...(Values) > 0 && requires(Values... values) { Type{values...}; };
+concept list_initializes = sizeof...(Values) > 0 && requires(Values... values) {
+  Type{values...};
+} && initializes_elements<Type, Values...>;
 
 //! @brief The object, a reference to it, is not constant.
 template <typename Object>

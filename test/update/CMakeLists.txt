@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build("absent_1x1x0")
 build("position_1x1x0")
+build("values_2x2x0" BACKENDS "eigen" "eigen_typed")
 fail("arguments_fail")
 fail("output_1x1x0_fail")
 pass("1x1x0")

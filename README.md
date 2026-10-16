@@ -246,7 +246,7 @@ The member types are optionally present according to the filter configuration.
 | `y` | Manages the innovation column vector *Y*. Gets the value last computed during the update. The default value is the null column vector. |
 | `z` | Manages the observation column vector *Z*. Gets the value last used during the update. The default value is the null column vector. |
 
-The characteristics are optionally present according to the filter configuration. A characteristic is set from values that direct-list-initialize it, without narrowing, through a modifiable filter, or replaced by a callable of its configured type.
+The characteristics are optionally present according to the filter configuration. A characteristic is set from values that direct-list-initialize it, without narrowing of the characteristic nor of its elements, through a modifiable filter, or replaced by a callable of its configured type.
 
 ##### Modifiers
 
