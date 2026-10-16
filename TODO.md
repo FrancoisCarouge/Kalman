@@ -9,7 +9,7 @@ Findings and follow-up work not yet scheduled.
 
 ## Embedded use
 
-Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`, `docs/FCAROUGE_FINDINGS.md`, finding numbers in parentheses). Rechecked against `59c6e0d19`: all still apply.
+Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`, `docs/FCAROUGE_FINDINGS.md`, finding numbers in parentheses). Rechecked against `59c6e0d19` and `0c6e4ad64`: all still apply.
 
 - `kalman.hpp` always includes `<print>` and `<format>`, through `print.hpp` and `format.hpp`, and defines `print`. A program that never prints pays about 1.3 s of compile time per translation unit, and needs a hosted `<cstdio>`: firmware with a minimal C library builds only because its headers declare the names. Printing and formatting could be opt-in headers. (F2, F22)
 - Compile cost of `kalman.hpp` with g++ 15 at `-O2`: 2.2 s and 154 MB per translation unit. ArduPilot confines it to one source file per filter. (F22)

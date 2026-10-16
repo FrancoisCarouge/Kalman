@@ -2,7 +2,7 @@
 
 Defects found while reviewing and expanding the unit tests. This file records analysis only: what is wrong, where, how it shows, and what it affects. It does not propose changes.
 
-- Reviewed revision: `59c6e0d19`, library version 0.5.4.
+- Reviewed revision: `0c6e4ad64`, library version 0.5.4 (headers unchanged since `59c6e0d19`).
 - Each defect was reproduced with `clang++-21 -std=c++26` and `g++-14 -std=c++26` against the Eigen backend or built-in arithmetic types.
 - "Filter" names the internal struct deduced by the factory, as listed in `AGENTS.md`.
 - Line numbers refer to the reviewed revision.
