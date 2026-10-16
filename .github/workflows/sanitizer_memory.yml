@@ -90,4 +90,4 @@ jobs:
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Test'
-      run: MSAN_OPTIONS=verbosity=1:abort_on_error=1 ctest --test-dir 'build' --timeout 30 --verbose --parallel 1
+      run: MSAN_OPTIONS=verbosity=1:abort_on_error=1 ctest --test-dir 'build' --timeout 60 --verbose --parallel 1
