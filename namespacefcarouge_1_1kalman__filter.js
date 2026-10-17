@@ -22,6 +22,8 @@ var namespacefcarouge_1_1kalman__filter =
       [ "for_constexpr", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab58c8954326f0d1f628c70168168bafe", null ],
       [ "input_control", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d16c88e2bf4d10e77a72f6d73586f2a", null ],
       [ "input_control", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a788d65d976b6a412caf88748f782dfa7", null ],
+      [ "make_one", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aa2e38e5f129253b7d5d6b34a21f8df9b", null ],
+      [ "make_zero", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aecc1f84dced203078aa8042622b6e029", null ],
       [ "observation", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#afca0163b1b4f6d8ad382c9d7d52f0116", null ],
       [ "output_model", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aaf3957e1818ee6020e4299dc4d5cbccb", null ],
       [ "output_model", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272", null ],
@@ -33,14 +35,14 @@ var namespacefcarouge_1_1kalman__filter =
       [ "state", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d3017d60ba8bae573f39eb4765b6814", null ],
       [ "state_transition", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d3c952306d887b3d3d54f42b09952b4", null ],
       [ "state_transition", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb", null ],
-      [ "t", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a925c175b775d38db6815bab6301d3d07", null ],
+      [ "t", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a9f313ffb99383f4cdc23963798b101f8", null ],
       [ "transition", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab2a243dbef2d7378b11510473d5ac039", null ],
       [ "deducer", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a614975b5427a01c25a3b4a2a1a40ff55", null ],
       [ "first_v", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a01271fc54dbb6537b67ca8b3fb534d35", null ],
       [ "input", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec4e2c402956cd28819cbaa6f550514a", null ],
       [ "one", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a93649f95540d0d56f2fd9a4c97f5e670", null ],
       [ "one< Arithmetic >", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ae2b577a08caad06156e77360e0b6ce26", null ],
-      [ "one< Type >", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#af0116380aa1c6c954ece26f0a8abb244", null ],
+      [ "one< Type >", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aa452f764584e01f56725445e545ed786", null ],
       [ "output", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ad1d4f6fead3ba7743de6753f176887d4", null ],
       [ "prediction_types", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a707e960d17d3197e85cbdc4b8be06aa1", null ],
       [ "size", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a783f8eab232a31dd5eb09dbb0c4f8ef3", null ],
@@ -48,6 +50,6 @@ var namespacefcarouge_1_1kalman__filter =
       [ "Values", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a769bb512fd918dc04f97236caf382287", null ],
       [ "zero", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#acc45346aaa4066d7154772759722f97a", null ],
       [ "zero< Arithmetic >", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a5df90113051211fbf2793aadbdfd7e72", null ],
-      [ "zero< Type >", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aaf880a63b0a1e54a030a83611c16fe82", null ]
+      [ "zero< Type >", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#acd704bcc34e96aca1cd1a6690750863f", null ]
     ] ]
 ];

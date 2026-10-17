@@ -171,13 +171,13 @@ template&lt;auto Size&gt; </div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line">  <span class="keyword">const</span> vector&lt;3&gt; z3x1{kf::zero&lt;vector&lt;3&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="#a545b625b80e176db5925d773799e5263">matrix&lt;1, 5&gt;</a> i1x5{kf::one&lt;matrix&lt;1, 5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;5, 3&gt; i5x3{kf::one&lt;matrix&lt;5, 3&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;5, 1&gt; i5x1{kf::one&lt;matrix&lt;5, 1&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{kf::one&lt;matrix&lt;5, 5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> vector&lt;5&gt; z5x1{kf::zero&lt;vector&lt;5&gt;&gt;};</div>
-<div class="line">  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{kf::zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line">  <span class="keyword">const</span> vector&lt;3&gt; z3x1{kf::make_zero&lt;vector&lt;3&gt;&gt;()};</div>
+<div class="line">  <span class="keyword">const</span> <a class="code hl_typedef" href="#a545b625b80e176db5925d773799e5263">matrix&lt;1, 5&gt;</a> i1x5{kf::make_one&lt;matrix&lt;1, 5&gt;&gt;()};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;5, 3&gt; i5x3{kf::make_one&lt;matrix&lt;5, 3&gt;&gt;()};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;5, 1&gt; i5x1{kf::make_one&lt;matrix&lt;5, 1&gt;&gt;()};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{kf::make_one&lt;matrix&lt;5, 5&gt;&gt;()};</div>
+<div class="line">  <span class="keyword">const</span> vector&lt;5&gt; z5x1{kf::make_zero&lt;vector&lt;5&gt;&gt;()};</div>
+<div class="line">  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{kf::make_zero&lt;matrix&lt;5, 5&gt;&gt;()};</div>
 <div class="line">  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{vector&lt;5&gt;{0.0, 0.0, 0.0, 0.0, 0.0}}, output&lt;double&gt;,</div>
 <div class="line">                input&lt;vector&lt;3&gt;&gt;};</div>
 <div class="line"> </div>
@@ -212,17 +212,17 @@ template&lt;auto Size&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x1x3_8cpp_03_xhtml_a545b625b80e176db5925d773799e5263"><div class="ttname"><a href="#a545b625b80e176db5925d773799e5263">fcarouge::test::anonymous_namespace{default_5x1x3.cpp}::matrix</a></div><div class="ttdeci">matrix&lt; double, Row, Column &gt; matrix</div><div class="ttdef"><b>Definition</b> <a href="default__5x1x3_8cpp_source.xhtml#l00047">default_5x1x3.cpp:47</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03_xhtml_a3586a94458c3596c1f63221fc330e325"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">fcarouge::test::anonymous_namespace{traits_1x1x0.cpp}::filter</a></div><div class="ttdeci">decltype(kalman{}) filter</div><div class="ttdef"><b>Definition</b> <a href="assign_2traits__1x1x0_8cpp_source.xhtml#l00046">traits_1x1x0.cpp:46</a></div></div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000017">Test</a></b></dt><dd>Verifies default values are initialized for multi-dimension filters, single output edge case. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000016">Test</a></b></dt><dd>Verifies default values are initialized for multi-dimension filters, single output edge case. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="default__5x1x3_8cpp_source.xhtml#l00051">51</a> of file <a class="el" href="default__5x1x3_8cpp_source.xhtml">default_5x1x3.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   51</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#a0b2cb0381f3f5812c62cb5b82af399a2">vector&lt;3&gt;</a> z3x1{kf::zero&lt;vector&lt;3&gt;&gt;};</div>
-<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> matrix&lt;1, 5&gt; i1x5{kf::one&lt;matrix&lt;1, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   54</span>  <span class="keyword">const</span> matrix&lt;5, 3&gt; i5x3{kf::one&lt;matrix&lt;5, 3&gt;&gt;};</div>
-<div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> matrix&lt;5, 1&gt; i5x1{kf::one&lt;matrix&lt;5, 1&gt;&gt;};</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{kf::one&lt;matrix&lt;5, 5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> vector&lt;5&gt; z5x1{kf::zero&lt;vector&lt;5&gt;&gt;};</div>
-<div class="line"><span class="lineno">   58</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{kf::zero&lt;matrix&lt;5, 5&gt;&gt;};</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#a0b2cb0381f3f5812c62cb5b82af399a2">vector&lt;3&gt;</a> z3x1{kf::make_zero&lt;vector&lt;3&gt;&gt;()};</div>
+<div class="line"><span class="lineno">   53</span>  <span class="keyword">const</span> matrix&lt;1, 5&gt; i1x5{kf::make_one&lt;matrix&lt;1, 5&gt;&gt;()};</div>
+<div class="line"><span class="lineno">   54</span>  <span class="keyword">const</span> matrix&lt;5, 3&gt; i5x3{kf::make_one&lt;matrix&lt;5, 3&gt;&gt;()};</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keyword">const</span> matrix&lt;5, 1&gt; i5x1{kf::make_one&lt;matrix&lt;5, 1&gt;&gt;()};</div>
+<div class="line"><span class="lineno">   56</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; i5x5{kf::make_one&lt;matrix&lt;5, 5&gt;&gt;()};</div>
+<div class="line"><span class="lineno">   57</span>  <span class="keyword">const</span> vector&lt;5&gt; z5x1{kf::make_zero&lt;vector&lt;5&gt;&gt;()};</div>
+<div class="line"><span class="lineno">   58</span>  <span class="keyword">const</span> matrix&lt;5, 5&gt; z5x5{kf::make_zero&lt;matrix&lt;5, 5&gt;&gt;()};</div>
 <div class="line"><span class="lineno">   59</span>  <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{vector&lt;5&gt;{0.0, 0.0, 0.0, 0.0, 0.0}}, output&lt;double&gt;,</div>
 <div class="line"><span class="lineno">   60</span>                input&lt;vector&lt;3&gt;&gt;};</div>
 <div class="line"><span class="lineno">   61</span> </div>

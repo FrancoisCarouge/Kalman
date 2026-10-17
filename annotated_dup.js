@@ -15,6 +15,9 @@ var annotated_dup =
         [ "anonymous_namespace{absent_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03.xhtml", [
           [ "nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03_1_1nothing.xhtml", null ]
         ] ],
+        [ "anonymous_namespace{constant_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03.xhtml", [
+          [ "value", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03_1_1value.xhtml", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03_1_1value" ]
+        ] ],
         [ "anonymous_namespace{set_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml", [
           [ "nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1nothing.xhtml", null ],
           [ "output_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise" ],
@@ -47,7 +50,9 @@ var annotated_dup =
           [ "control", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1control.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1control" ],
           [ "process_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1process__noise.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1process__noise" ],
           [ "propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1propagation.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1propagation" ]
-        ] ]
+        ] ],
+        [ "holder", "structfcarouge_1_1test_1_1holder.xhtml", "structfcarouge_1_1test_1_1holder" ],
+        [ "value", "classfcarouge_1_1test_1_1value.xhtml", "classfcarouge_1_1test_1_1value" ]
       ] ],
       [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
       [ "printer", "structfcarouge_1_1printer.xhtml", null ]

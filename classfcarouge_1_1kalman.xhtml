@@ -222,7 +222,7 @@ class fcarouge::kalman&lt; typename &gt;</div><p>A generic Kalman filter. </p>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000007">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -787,7 +787,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000023">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000019">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_thermal_soaring_8cpp-example.xhtml#a1">ekf_4x1x0_thermal_soaring.cpp</a>, <a class="el" href="ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml#a1">ekf_6x4x0_3d_apollo_position.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_8cpp-example.xhtml#a1">kf_1x1x1_1d_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml#a1">kf_1x1x1_1d_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a5">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a4">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a1">kf_2x1x1_1d_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a1">kf_6x2x0_2d_vehicle_position.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a3">kf_6x2x0_2d_vehicle_position_unit.cpp</a>, and <a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a2">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
@@ -1073,11 +1073,20 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000026">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000022">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_thermal_soaring_8cpp-example.xhtml#a2">ekf_4x1x0_thermal_soaring.cpp</a>, <a class="el" href="ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml#a2">ekf_6x4x0_3d_apollo_position.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a3">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a4">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a4">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a4">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_8cpp-example.xhtml#a2">kf_1x1x1_1d_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml#a2">kf_1x1x1_1d_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a3">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a3">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a4">kf_2x1x1_1d_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a2">kf_6x2x0_2d_vehicle_position.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a4">kf_6x2x0_2d_vehicle_position_unit.cpp</a>, and <a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a3">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
 </dl>
+
+<p class="reference">Referenced by <a class="el" href="static__1x1x0__holder_8cpp_source.xhtml#l00048">fcarouge::test::holder::holder()</a>.</p>
+<div id="dynsection-11" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_ad173b50a3c8510c5a393d265085458be_icgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -1123,11 +1132,11 @@ template&lt;typename &gt; </div>
 </dl>
 
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
-<div id="dynsection-11" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_acb9134f0ff17c263fcc3fd4c79a5e461_icgraph.svg" width="348" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -1175,11 +1184,11 @@ template&lt;typename &gt; </div>
 </dl>
 
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
-<div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_aad52d4d8b58d348a0fbe34aae27ee5e3_icgraph.svg" width="348" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -1225,11 +1234,11 @@ template&lt;typename &gt; </div>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
-<div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-14" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classfcarouge_1_1kalman_afb2292220802a632357f4ee9419b1a13_icgraph.svg" width="348" height="67"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 

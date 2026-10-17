@@ -1,8 +1,6 @@
 var namespacefcarouge_1_1test =
 [
-    [ "anonymous_namespace{1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml", [
-      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml#a307416cd408bb3cea5e5a4d316135bc3", null ]
-    ] ],
+    [ "anonymous_namespace{1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1_8cpp_03.xhtml", null ],
     [ "anonymous_namespace{1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1x0_8cpp_03" ],
     [ "anonymous_namespace{1x1x1.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1x1_8cpp_03.xhtml", [
       [ "filter", "namespacefcarouge_1_1test_1_1anonymous__namespace_021x1x1_8cpp_03.xhtml#a355c2785e17fddefed2e5f291d7512c0", null ],
@@ -79,6 +77,7 @@ var namespacefcarouge_1_1test =
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02characteristics__2x1x0_8cpp_03.xhtml#af716362ca8428b0c272c846e5fd4e195", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02characteristics__2x1x0_8cpp_03.xhtml#a159341d8a409f440a511484d29ddd508", null ]
     ] ],
+    [ "anonymous_namespace{constant_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03" ],
     [ "anonymous_namespace{copy_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02copy__1x1x0_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02copy__1x1x0_8cpp_03.xhtml#ae699737ad47182072248ed68749283fd", null ]
     ] ],
@@ -226,6 +225,10 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{state_transition_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02state__transition__1x1x0_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02state__transition__1x1x0_8cpp_03.xhtml#a705e2bf813212715aa2b8255f0b9d428", null ]
     ] ],
+    [ "anonymous_namespace{static_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02static__1x1x0_8cpp_03.xhtml", [
+      [ "global_holder", "namespacefcarouge_1_1test_1_1anonymous__namespace_02static__1x1x0_8cpp_03.xhtml#a818a28834e6235001ffaf3216c502589", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02static__1x1x0_8cpp_03.xhtml#aad9d8a439565c2d1b50f4900d423f7ad", null ]
+    ] ],
     [ "anonymous_namespace{stored_2x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02stored__2x1x0_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02stored__2x1x0_8cpp_03.xhtml#a2db8452c615ecd93ba0ffc55f92e4a46", null ],
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02stored__2x1x0_8cpp_03.xhtml#a1e83ef22e05b8f40ab97d41f89c13d60", null ],
@@ -290,5 +293,7 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{x_z_u_p_q_r_h_f_g_us_ps.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__q__r__h__f__g__us__ps_8cpp_03.xhtml", [
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__q__r__h__f__g__us__ps_8cpp_03.xhtml#aa6415fd11bdf7961ca4b9aa0e925ce25", null ]
     ] ],
-    [ "anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03" ]
+    [ "anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03" ],
+    [ "holder", "structfcarouge_1_1test_1_1holder.xhtml", "structfcarouge_1_1test_1_1holder" ],
+    [ "value", "classfcarouge_1_1test_1_1value.xhtml", "classfcarouge_1_1test_1_1value" ]
 ];

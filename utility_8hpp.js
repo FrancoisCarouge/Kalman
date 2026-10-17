@@ -14,14 +14,16 @@ var utility_8hpp =
     [ "converts_elements", "utility_8hpp.xhtml#a8c94c0fdd8ebc07c874ba2fd619de1d7", null ],
     [ "deduce_element", "utility_8hpp.xhtml#a2ccc2670474c969ee84b5e21bd9bd781", null ],
     [ "for_constexpr", "utility_8hpp.xhtml#ab58c8954326f0d1f628c70168168bafe", null ],
-    [ "t", "utility_8hpp.xhtml#a925c175b775d38db6815bab6301d3d07", null ],
+    [ "make_one", "utility_8hpp.xhtml#aa2e38e5f129253b7d5d6b34a21f8df9b", null ],
+    [ "make_zero", "utility_8hpp.xhtml#aecc1f84dced203078aa8042622b6e029", null ],
+    [ "t", "utility_8hpp.xhtml#a9f313ffb99383f4cdc23963798b101f8", null ],
     [ "first_v", "utility_8hpp.xhtml#a01271fc54dbb6537b67ca8b3fb534d35", null ],
     [ "one", "utility_8hpp.xhtml#a93649f95540d0d56f2fd9a4c97f5e670", null ],
     [ "one< Arithmetic >", "utility_8hpp.xhtml#ae2b577a08caad06156e77360e0b6ce26", null ],
-    [ "one< Type >", "utility_8hpp.xhtml#af0116380aa1c6c954ece26f0a8abb244", null ],
+    [ "one< Type >", "utility_8hpp.xhtml#aa452f764584e01f56725445e545ed786", null ],
     [ "size", "utility_8hpp.xhtml#a783f8eab232a31dd5eb09dbb0c4f8ef3", null ],
     [ "Values", "utility_8hpp.xhtml#a769bb512fd918dc04f97236caf382287", null ],
     [ "zero", "utility_8hpp.xhtml#acc45346aaa4066d7154772759722f97a", null ],
     [ "zero< Arithmetic >", "utility_8hpp.xhtml#a5df90113051211fbf2793aadbdfd7e72", null ],
-    [ "zero< Type >", "utility_8hpp.xhtml#aaf880a63b0a1e54a030a83611c16fe82", null ]
+    [ "zero< Type >", "utility_8hpp.xhtml#acd704bcc34e96aca1cd1a6690750863f", null ]
 ];

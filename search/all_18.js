@@ -22,10 +22,13 @@ var searchData=
   ['state_5ft_19',['state_t',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a352669a205b5c40bbb6b82ca25034ddd',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::state_t'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#ae954946a9d672546e08408f707de82e5',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::state_t'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#abf4c9e07abbf90248159f6a31544499f',1,'fcarouge::test::anonymous_namespace{kf_6x2x0_2d_vehicle_position_unit.cpp}::state_t'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02set__unit__2x1x0_8cpp_03.xhtml#ac82924d2ba500d84da32d215d8055942',1,'fcarouge::test::anonymous_namespace{set_unit_2x1x0.cpp}::state_t']]],
   ['state_5ftransition_20',['state_transition',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb',1,'fcarouge::kalman_filter::internal::state_transition(Element) -&gt; state_transition&lt; Element &gt;'],['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d3c952306d887b3d3d54f42b09952b4',1,'fcarouge::kalman_filter::internal::state_transition(const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; state_transition&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;']]],
   ['state_5ftransition_5f1x1x0_2ecpp_21',['state_transition_1x1x0.cpp',['../state__transition__1x1x0_8cpp.xhtml',1,'']]],
-  ['stored_5f2x1x0_2ecpp_22',['stored_2x1x0.cpp',['../stored__2x1x0_8cpp.xhtml',1,'']]],
-  ['stored_5f2x2x1_2ecpp_23',['stored_2x2x1.cpp',['../stored__2x2x1_8cpp.xhtml',1,'']]],
-  ['support_20cmake_20tt_24',['Test/sample generation (&lt;tt&gt;support/support.cmake&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake',1,'']]],
-  ['support_20support_20cmake_20tt_25',['Test/sample generation (&lt;tt&gt;support/support.cmake&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake',1,'']]],
-  ['supported_20versions_26',['Supported Versions',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions',1,'']]],
-  ['supporting_20a_20new_20filter_20configuration_27',['Recipe: supporting a new filter configuration',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-supporting-a-new-filter-configuration',1,'']]]
+  ['static_5f1x1x0_2ecpp_22',['static_1x1x0.cpp',['../static__1x1x0_8cpp.xhtml',1,'']]],
+  ['static_5f1x1x0_2ehpp_23',['static_1x1x0.hpp',['../static__1x1x0_8hpp.xhtml',1,'']]],
+  ['static_5f1x1x0_5fholder_2ecpp_24',['static_1x1x0_holder.cpp',['../static__1x1x0__holder_8cpp.xhtml',1,'']]],
+  ['stored_5f2x1x0_2ecpp_25',['stored_2x1x0.cpp',['../stored__2x1x0_8cpp.xhtml',1,'']]],
+  ['stored_5f2x2x1_2ecpp_26',['stored_2x2x1.cpp',['../stored__2x2x1_8cpp.xhtml',1,'']]],
+  ['support_20cmake_20tt_27',['Test/sample generation (&lt;tt&gt;support/support.cmake&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake',1,'']]],
+  ['support_20support_20cmake_20tt_28',['Test/sample generation (&lt;tt&gt;support/support.cmake&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake',1,'']]],
+  ['supported_20versions_29',['Supported Versions',['../md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions',1,'']]],
+  ['supporting_20a_20new_20filter_20configuration_30',['Recipe: supporting a new filter configuration',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-supporting-a-new-filter-configuration',1,'']]]
 ];
