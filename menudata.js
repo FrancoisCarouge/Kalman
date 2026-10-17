@@ -63,6 +63,7 @@ var menudata={children:[
 {text:"s",url:"namespacemembers_vars.xhtml#index_s"},
 {text:"t",url:"namespacemembers_vars.xhtml#index_t"},
 {text:"u",url:"namespacemembers_vars.xhtml#index_u"},
+{text:"v",url:"namespacemembers_vars.xhtml#index_v"},
 {text:"z",url:"namespacemembers_vars.xhtml#index_z"}]},
 {text:"Typedefs",url:"namespacemembers_type.xhtml",children:[
 {text:"a",url:"namespacemembers_type.xhtml#index_a"},

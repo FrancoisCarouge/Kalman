@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['q_0',['q',['../classfcarouge_1_1kalman.xhtml#aec9d4bdd2bd73f22d915050155e44789',1,'fcarouge::kalman']]],
-  ['quantity_5fspec_1',['QUANTITY_SPEC',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a4e9f6d3f8d38636e06c58f838058a3c9',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::QUANTITY_SPEC()'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a18ca64b0dfaccf2a7c77d4a75aab3e93',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::QUANTITY_SPEC()']]]
+  ['p_0',['p',['../classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d',1,'fcarouge::kalman']]],
+  ['parse_1',['parse',['../structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml#a2f2a6d3d5bd654b13c78a74e42948b67',1,'std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;']]],
+  ['predict_2',['predict',['../classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d',1,'fcarouge::kalman::predict(const auto &amp;...arguments)'],['../classfcarouge_1_1kalman.xhtml#a031378c91aff4251804dfbbf65609b6f',1,'fcarouge::kalman::predict() const']]],
+  ['process_5funcertainty_3',['process_uncertainty',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43',1,'fcarouge::kalman_filter::internal::process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;'],['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a9757ee5f02786f560732088d70912272',1,'fcarouge::kalman_filter::internal::process_uncertainty(const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; process_uncertainty&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;']]]
 ];

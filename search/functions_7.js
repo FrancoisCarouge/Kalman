@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['k_0',['k',['../classfcarouge_1_1kalman.xhtml#a66b7fb5f4611f79fc9565a19853be657',1,'fcarouge::kalman']]],
-  ['kalman_1',['kalman',['../classfcarouge_1_1kalman.xhtml#a97302af7221f8e1f224002863f32f2d3',1,'fcarouge::kalman::kalman(Arguments... arguments)'],['../classfcarouge_1_1kalman.xhtml#a413e9589c51e5234e547106382dd6afd',1,'fcarouge::kalman::kalman(const kalman &amp;other)=default'],['../classfcarouge_1_1kalman.xhtml#a0c2291a1d9bd4cc169f91e9b10399b38',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=default'],['../namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6',1,'fcarouge::kalman()']]]
+  ['input_5fcontrol_0',['input_control',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a788d65d976b6a412caf88748f782dfa7',1,'fcarouge::kalman_filter::internal::input_control(Element) -&gt; input_control&lt; Element &gt;'],['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d16c88e2bf4d10e77a72f6d73586f2a',1,'fcarouge::kalman_filter::internal::input_control(const Element(&amp;row)[Columns], const Element(&amp;...rows)[Sizes]) -&gt; input_control&lt; row_list&lt; Element, 1+sizeof...(Sizes), Columns &gt; &gt;']]]
 ];

@@ -152,6 +152,22 @@ Functions</h2></td></tr>
 <tr class="memdesc:a854ecb970f13c91bf8706f26368fecac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a callable characteristic from its copied initializers.  <br /></td></tr>
 <tr class="separator:a854ecb970f13c91bf8706f26368fecac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Concepts</h2></td></tr>
+<tr class="memitem:ab06af670b0e49de4f355c7c4e195b26b" id="r_ab06af670b0e49de4f355c7c4e195b26b"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Position&gt; </td></tr>
+<tr class="memitem:ab06af670b0e49de4f355c7c4e195b26b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab06af670b0e49de4f355c7c4e195b26b">fcarouge::kalman_filter::internal::element</a> = decltype(<a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ccc2670474c969ee84b5e21bd9bd781">deduce_element</a>&lt;Type, Position&gt;())::type</td></tr>
+<tr class="memdesc:ab06af670b0e49de4f355c7c4e195b26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the position of the type.  <br /></td></tr>
+<tr class="separator:ab06af670b0e49de4f355c7c4e195b26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a769bb512fd918dc04f97236caf382287" id="r_a769bb512fd918dc04f97236caf382287"><td class="memItemLeft" align="right" valign="top">concept&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a769bb512fd918dc04f97236caf382287">fcarouge::kalman_filter::internal::Values</a></td></tr>
+<tr class="separator:a769bb512fd918dc04f97236caf382287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ccc2670474c969ee84b5e21bd9bd781" id="r_a2ccc2670474c969ee84b5e21bd9bd781"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Position&gt; </td></tr>
+<tr class="memitem:a2ccc2670474c969ee84b5e21bd9bd781"><td class="memTemplItemLeft" align="right" valign="top">consteval auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ccc2670474c969ee84b5e21bd9bd781">fcarouge::kalman_filter::internal::deduce_element</a> ()</td></tr>
+<tr class="memdesc:a2ccc2670474c969ee84b5e21bd9bd781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduces the type of the element at the position of the type.  <br /></td></tr>
+<tr class="separator:a2ccc2670474c969ee84b5e21bd9bd781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c94c0fdd8ebc07c874ba2fd619de1d7" id="r_a8c94c0fdd8ebc07c874ba2fd619de1d7"><td class="memTemplParams" colspan="2">template&lt;typename Type , typename... Values, std::size_t... Positions&gt; </td></tr>
+<tr class="memitem:a8c94c0fdd8ebc07c874ba2fd619de1d7"><td class="memTemplItemLeft" align="right" valign="top">consteval auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a8c94c0fdd8ebc07c874ba2fd619de1d7">fcarouge::kalman_filter::internal::converts_elements</a> (std::index_sequence&lt; Positions... &gt;) -&gt; bool</td></tr>
+<tr class="memdesc:a8c94c0fdd8ebc07c874ba2fd619de1d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether each value initializes the element at its position of the type without narrowing, where the type of the element is deduced.  <br /></td></tr>
+<tr class="separator:a8c94c0fdd8ebc07c874ba2fd619de1d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
 <tr class="memitem:a94790d4b89c5a5d249be974718936ed0" id="r_a94790d4b89c5a5d249be974718936ed0"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
 <tr class="memitem:a94790d4b89c5a5d249be974718936ed0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a94790d4b89c5a5d249be974718936ed0">fcarouge::kalman_filter::internal::quotient</a></td></tr>

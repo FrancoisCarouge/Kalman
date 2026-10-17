@@ -218,6 +218,8 @@ var namespacefcarouge_1_1test =
     ] ],
     [ "anonymous_namespace{rvalue_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rvalue__1x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02rvalue__1x1x0_8cpp_03" ],
     [ "anonymous_namespace{set_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03" ],
+    [ "anonymous_namespace{set_2x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__2x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__2x1x0_8cpp_03" ],
+    [ "anonymous_namespace{set_unit_2x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__unit__2x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__unit__2x1x0_8cpp_03" ],
     [ "anonymous_namespace{state_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02state__1x1x0_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02state__1x1x0_8cpp_03.xhtml#a2a274811e87ac2c54f434e0d400c2af3", null ]
     ] ],
@@ -267,6 +269,7 @@ var namespacefcarouge_1_1test =
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02values__2x1x1_8cpp_03.xhtml#a476cfb511ab1292ec27a2fbd24972c11", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02values__2x1x1_8cpp_03.xhtml#a68d52fc9f238b752021544cec3504075", null ]
     ] ],
+    [ "anonymous_namespace{values_2x2x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02values__2x2x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02values__2x2x0_8cpp_03" ],
     [ "anonymous_namespace{values_5x4x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02values__5x4x0_8cpp_03.xhtml", [
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02values__5x4x0_8cpp_03.xhtml#aeb072059cad99eff95918d7f0e17d865", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02values__5x4x0_8cpp_03.xhtml#a4b6fc1479b0df9285fd1ff81e57c696e", null ]

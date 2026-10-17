@@ -60,6 +60,7 @@ var hierarchy =
     ] ],
     [ "fcarouge::test::anonymous_namespace{absent_1x1x0.cpp}::nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03_1_1nothing.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{set_1x1x0.cpp}::nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1nothing.xhtml", null ],
+    [ "fcarouge::test::anonymous_namespace{set_2x1x0.cpp}::nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02set__2x1x0_8cpp_03_1_1nothing.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{set_1x1x0.cpp}::output_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_qq_rr_f.cpp}::output_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03_1_1output__noise.xhtml", null ],
     [ "fcarouge::printer", "structfcarouge_1_1printer.xhtml", null ],

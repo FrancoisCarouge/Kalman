@@ -365,6 +365,22 @@ Variables</h2></td></tr>
 <tr class="memitem:a707e960d17d3197e85cbdc4b8be06aa1"><td class="memTemplItemLeft" align="right" valign="top">prediction_types_t&lt; Types... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a707e960d17d3197e85cbdc4b8be06aa1">prediction_types</a> {}</td></tr>
 <tr class="separator:a707e960d17d3197e85cbdc4b8be06aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Concepts</h2></td></tr>
+<tr class="memitem:ab06af670b0e49de4f355c7c4e195b26b" id="r_ab06af670b0e49de4f355c7c4e195b26b"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Position&gt; </td></tr>
+<tr class="memitem:ab06af670b0e49de4f355c7c4e195b26b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab06af670b0e49de4f355c7c4e195b26b">element</a> = decltype(<a class="el" href="#a2ccc2670474c969ee84b5e21bd9bd781">deduce_element</a>&lt;Type, Position&gt;())::type</td></tr>
+<tr class="memdesc:ab06af670b0e49de4f355c7c4e195b26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the element at the position of the type.  <br /></td></tr>
+<tr class="separator:ab06af670b0e49de4f355c7c4e195b26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a769bb512fd918dc04f97236caf382287" id="r_a769bb512fd918dc04f97236caf382287"><td class="memItemLeft" align="right" valign="top">concept&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a769bb512fd918dc04f97236caf382287">Values</a></td></tr>
+<tr class="separator:a769bb512fd918dc04f97236caf382287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ccc2670474c969ee84b5e21bd9bd781" id="r_a2ccc2670474c969ee84b5e21bd9bd781"><td class="memTemplParams" colspan="2">template&lt;typename Type , std::size_t Position&gt; </td></tr>
+<tr class="memitem:a2ccc2670474c969ee84b5e21bd9bd781"><td class="memTemplItemLeft" align="right" valign="top">consteval auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2ccc2670474c969ee84b5e21bd9bd781">deduce_element</a> ()</td></tr>
+<tr class="memdesc:a2ccc2670474c969ee84b5e21bd9bd781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deduces the type of the element at the position of the type.  <br /></td></tr>
+<tr class="separator:a2ccc2670474c969ee84b5e21bd9bd781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c94c0fdd8ebc07c874ba2fd619de1d7" id="r_a8c94c0fdd8ebc07c874ba2fd619de1d7"><td class="memTemplParams" colspan="2">template&lt;typename Type , typename... Values, std::size_t... Positions&gt; </td></tr>
+<tr class="memitem:a8c94c0fdd8ebc07c874ba2fd619de1d7"><td class="memTemplItemLeft" align="right" valign="top">consteval auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8c94c0fdd8ebc07c874ba2fd619de1d7">converts_elements</a> (std::index_sequence&lt; Positions... &gt;) -&gt; bool</td></tr>
+<tr class="memdesc:a8c94c0fdd8ebc07c874ba2fd619de1d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether each value initializes the element at its position of the type without narrowing, where the type of the element is deduced.  <br /></td></tr>
+<tr class="separator:a8c94c0fdd8ebc07c874ba2fd619de1d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Types</h2></td></tr>
 <tr class="memitem:a94790d4b89c5a5d249be974718936ed0" id="r_a94790d4b89c5a5d249be974718936ed0"><td class="memTemplParams" colspan="2">template&lt;typename Lhs , typename Rhs &gt; </td></tr>
 <tr class="memitem:a94790d4b89c5a5d249be974718936ed0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a94790d4b89c5a5d249be974718936ed0">quotient</a></td></tr>
@@ -462,7 +478,7 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a2">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a1">kf_2x1x0_stock_price_unit.cpp</a>, and <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a1">kf_6x2x0_2d_vehicle_position_unit.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00451">451</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00511">511</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -502,7 +518,27 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 </div><!-- fragment -->
 <p>Helper type to deduce the result type of the minus, subtraction. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00446">446</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00506">506</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab06af670b0e49de4f355c7c4e195b26b" name="ab06af670b0e49de4f355c7c4e195b26b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab06af670b0e49de4f355c7c4e195b26b">&#9670;&#160;</a></span>element</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , std::size_t Position&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ab06af670b0e49de4f355c7c4e195b26b">fcarouge::kalman_filter::internal::element</a> = decltype(<a class="el" href="#a2ccc2670474c969ee84b5e21bd9bd781">deduce_element</a>&lt;Type, Position&gt;())::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The type of the element at the position of the type. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00098">98</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -524,7 +560,7 @@ template&lt;typename Type &gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a0">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a2">kf_2x1x0_stock_price_unit.cpp</a>, and <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a2">kf_6x2x0_2d_vehicle_position_unit.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00376">376</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00436">436</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -545,7 +581,7 @@ template&lt;typename... Types&gt; </div>
 <p>Unpack the first type of the type template parameter pack. </p>
 <p>Shorthand for <code>std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00408">408</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00468">468</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -569,7 +605,7 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a2">kf_1x1x0_building_height_unit.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00435">435</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00495">495</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -591,7 +627,7 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 </div><!-- fragment -->
 <p>Divider helper type. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00366">366</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00426">426</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -609,7 +645,7 @@ template&lt;typename Pack &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00649">649</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00709">709</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -629,7 +665,7 @@ template&lt;typename Type &gt; </div>
 
 <p>Transposer helper type. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00395">395</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00455">455</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -649,7 +685,7 @@ template&lt;typename Type , std::size_t Size&gt; </div>
 
 <p>An alias for making a tuple of the same type. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00425">425</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00485">485</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -686,20 +722,20 @@ template&lt;typename Callable &gt; </div>
 <p>Assigns a callable characteristic from its copied initializers. </p>
 <p>The closure type of a lambda expression with captures has a deleted copy assignment operator: such a callable is replaced in place instead. The replacement is constructed before the destruction of the assigned callable, and its non-throwing move construction never leaves the characteristic destroyed. Neither form allocates. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00619">619</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  619</span>                                                                 {</div>
-<div class="line"><span class="lineno">  620</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_move_assignable_v&lt;Callable&gt;) {</div>
-<div class="line"><span class="lineno">  621</span>    callable = Callable{values...};</div>
-<div class="line"><span class="lineno">  622</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  623</span>    <span class="keyword">static_assert</span>(std::is_nothrow_move_constructible_v&lt;Callable&gt;,</div>
-<div class="line"><span class="lineno">  624</span>                  <span class="stringliteral">&quot;The callable characteristic must be move assignable or &quot;</span></div>
-<div class="line"><span class="lineno">  625</span>                  <span class="stringliteral">&quot;non-throwing move constructible to be replaced.&quot;</span>);</div>
-<div class="line"><span class="lineno">  626</span> </div>
-<div class="line"><span class="lineno">  627</span>    Callable replacement{values...};</div>
-<div class="line"><span class="lineno">  628</span>    std::destroy_at(&amp;callable);</div>
-<div class="line"><span class="lineno">  629</span>    std::construct_at(&amp;callable, std::move(replacement));</div>
-<div class="line"><span class="lineno">  630</span>  }</div>
-<div class="line"><span class="lineno">  631</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00679">679</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  679</span>                                                                 {</div>
+<div class="line"><span class="lineno">  680</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_move_assignable_v&lt;Callable&gt;) {</div>
+<div class="line"><span class="lineno">  681</span>    callable = Callable{values...};</div>
+<div class="line"><span class="lineno">  682</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  683</span>    <span class="keyword">static_assert</span>(std::is_nothrow_move_constructible_v&lt;Callable&gt;,</div>
+<div class="line"><span class="lineno">  684</span>                  <span class="stringliteral">&quot;The callable characteristic must be move assignable or &quot;</span></div>
+<div class="line"><span class="lineno">  685</span>                  <span class="stringliteral">&quot;non-throwing move constructible to be replaced.&quot;</span>);</div>
+<div class="line"><span class="lineno">  686</span> </div>
+<div class="line"><span class="lineno">  687</span>    Callable replacement{values...};</div>
+<div class="line"><span class="lineno">  688</span>    std::destroy_at(&amp;callable);</div>
+<div class="line"><span class="lineno">  689</span>    std::construct_at(&amp;callable, std::move(replacement));</div>
+<div class="line"><span class="lineno">  690</span>  }</div>
+<div class="line"><span class="lineno">  691</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -764,6 +800,88 @@ template&lt;typename To , typename Element , std::size_t Rows, std::size_t Colum
 <div class="fragment"><div class="line"><span class="lineno">   68</span>                                                             {</div>
 <div class="line"><span class="lineno">   69</span>  <span class="keywordflow">return</span> value.template to&lt;To&gt;();</div>
 <div class="line"><span class="lineno">   70</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8c94c0fdd8ebc07c874ba2fd619de1d7" name="a8c94c0fdd8ebc07c874ba2fd619de1d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c94c0fdd8ebc07c874ba2fd619de1d7">&#9670;&#160;</a></span>converts_elements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , typename... Values, std::size_t... Positions&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::kalman_filter::internal::converts_elements </td>
+          <td>(</td>
+          <td class="paramtype">std::index_sequence&lt; Positions... &gt;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> -&gt; bool </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">consteval</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Whether each value initializes the element at its position of the type without narrowing, where the type of the element is deduced. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00104">104</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>                                                             {</div>
+<div class="line"><span class="lineno">  105</span>  <span class="keywordflow">return</span> ((std::same_as&lt;<a class="code hl_typedef" href="#ab06af670b0e49de4f355c7c4e195b26b">element&lt;Type, Positions&gt;</a>, <span class="keywordtype">void</span>&gt; ||</div>
+<div class="line"><span class="lineno">  106</span>           converts_without_narrowing&lt;Values, <a class="code hl_typedef" href="#ab06af670b0e49de4f355c7c4e195b26b">element&lt;Type, Positions&gt;</a>&gt;) &amp;&amp;</div>
+<div class="line"><span class="lineno">  107</span>          ...);</div>
+<div class="line"><span class="lineno">  108</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_ab06af670b0e49de4f355c7c4e195b26b"><div class="ttname"><a href="#ab06af670b0e49de4f355c7c4e195b26b">fcarouge::kalman_filter::internal::element</a></div><div class="ttdeci">decltype(deduce_element&lt; Type, Position &gt;())::type element</div><div class="ttdoc">The type of the element at the position of the type.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00098">utility.hpp:98</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00147">Values</a>.</p>
+
+</div>
+</div>
+<a id="a2ccc2670474c969ee84b5e21bd9bd781" name="a2ccc2670474c969ee84b5e21bd9bd781"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ccc2670474c969ee84b5e21bd9bd781">&#9670;&#160;</a></span>deduce_element()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , std::size_t Position&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto fcarouge::kalman_filter::internal::deduce_element </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span><span class="mlabel">consteval</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deduces the type of the element at the position of the type. </p>
+<p>A backend names the element type of its matrices its own way, if at all: the type is deduced from the element access instead. The compile-time indexed access <code>at&lt;Position&gt;()</code> of a typed matrix, whose elements may each have their own type, otherwise the call operator <code>(Position)</code> of a matrix whose elements share a type. Void for a type without indexed element access, an arithmetic type for one. </p>
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00084">84</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>                                              {</div>
+<div class="line"><span class="lineno">   85</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span>(<span class="keyword">const</span> Type value) { value.template at&lt;Position&gt;(); }) {</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">return</span> std::type_identity&lt;std::remove_cvref_t&lt;</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keyword">decltype</span>(std::declval&lt;const Type &amp;&gt;().template at&lt;Position&gt;())&gt;&gt;{};</div>
+<div class="line"><span class="lineno">   88</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span>(<span class="keyword">const</span> Type value) { value(Position); }) {</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> std::type_identity&lt;std::remove_cvref_t&lt;</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keyword">decltype</span>(std::declval&lt;const Type &amp;&gt;()(Position))&gt;&gt;{};</div>
+<div class="line"><span class="lineno">   91</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">return</span> std::type_identity&lt;void&gt;{};</div>
+<div class="line"><span class="lineno">   93</span>  }</div>
+<div class="line"><span class="lineno">   94</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -838,18 +956,18 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 <p>Compile-time for loop. </p>
 <p>Help compilers with non-type template parameters on members. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00603">603</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  603</span>                                                  {</div>
-<div class="line"><span class="lineno">  604</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
-<div class="line"><span class="lineno">  605</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;());</div>
-<div class="line"><span class="lineno">  606</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(</div>
-<div class="line"><span class="lineno">  607</span>        std::forward&lt;Function&gt;(function));</div>
-<div class="line"><span class="lineno">  608</span>  }</div>
-<div class="line"><span class="lineno">  609</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00663">663</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  663</span>                                                  {</div>
+<div class="line"><span class="lineno">  664</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
+<div class="line"><span class="lineno">  665</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;());</div>
+<div class="line"><span class="lineno">  666</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(</div>
+<div class="line"><span class="lineno">  667</span>        std::forward&lt;Function&gt;(function));</div>
+<div class="line"><span class="lineno">  668</span>  }</div>
+<div class="line"><span class="lineno">  669</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00603">for_constexpr()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00663">for_constexpr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00603">for_constexpr()</a>, and <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00663">for_constexpr()</a>, and <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -1159,10 +1277,10 @@ template&lt;typename Type &gt; </div>
 <p>Transpose helper function. </p>
 <p>Enable readable linear algebra notation. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00400">400</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  400</span>                                                   {</div>
-<div class="line"><span class="lineno">  401</span>  <span class="keywordflow">return</span> transposes&lt;Type&gt;{}(value);</div>
-<div class="line"><span class="lineno">  402</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00460">460</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  460</span>                                                   {</div>
+<div class="line"><span class="lineno">  461</span>  <span class="keywordflow">return</span> transposes&lt;Type&gt;{}(value);</div>
+<div class="line"><span class="lineno">  462</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1237,8 +1355,9 @@ template&lt;auto... Values&gt; </div>
 
 <p>Unpack the first value of the non-type template parameter pack. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00663">663</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  663</span>{first_value&lt;Values...&gt;::value};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00723">723</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  723</span>{first_value&lt;<a class="code hl_variable" href="#a769bb512fd918dc04f97236caf382287">Values</a>...&gt;::value};</div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a769bb512fd918dc04f97236caf382287"><div class="ttname"><a href="#a769bb512fd918dc04f97236caf382287">fcarouge::kalman_filter::internal::Values</a></div><div class="ttdeci">concept Values</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00147">utility.hpp:147</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1296,9 +1415,9 @@ template&lt;typename Type  = double&gt; </div>
 <p>The one matrix. </p>
 <p>User-defined matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This matrix is also known as the identity matrix for square matrices of non-quantity scalar types. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00684">684</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  684</span>                         {not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  685</span>    <span class="stringliteral">&quot;Implement the linear algebra one-diagonal matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00744">744</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  744</span>                         {not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  745</span>    <span class="stringliteral">&quot;Implement the linear algebra one-diagonal matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1326,8 +1445,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton one matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00688">688</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  688</span>{1};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00748">748</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  748</span>{1};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1354,8 +1473,8 @@ requires requires { Type::identity(); }</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00692">692</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  692</span>{Type::Identity()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00752">752</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  752</span>{Type::Identity()};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1438,8 +1557,8 @@ template&lt;typename Pack &gt; </div>
 <p>Size of tuple-like types. </p>
 <p>Convenient short form. In place of <code>std::tuple_size_v</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00655">655</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  655</span>{repacker&lt;Pack&gt;::size};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00715">715</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  715</span>{repacker&lt;Pack&gt;::size};</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
 
@@ -1472,6 +1591,24 @@ template&lt;typename... Types&gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a769bb512fd918dc04f97236caf382287" name="a769bb512fd918dc04f97236caf382287"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a769bb512fd918dc04f97236caf382287">&#9670;&#160;</a></span>Values</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">concept fcarouge::kalman_filter::internal::Values</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00147">147</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00104">converts_elements()</a>.</p>
+
+</div>
+</div>
 <a id="acc45346aaa4066d7154772759722f97a" name="acc45346aaa4066d7154772759722f97a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc45346aaa4066d7154772759722f97a">&#9670;&#160;</a></span>zero</h2>
 
@@ -1501,9 +1638,9 @@ template&lt;typename Type  = double&gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a1">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00702">702</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  702</span>                          {kalman_filter::internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  703</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00762">762</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  762</span>                          {kalman_filter::internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  763</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1531,8 +1668,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton zero matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00707">707</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  707</span>{0};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00767">767</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  767</span>{0};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1559,8 +1696,8 @@ requires requires { Type::zero(); }</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00711">711</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  711</span>{Type::Zero()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00771">771</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  771</span>{Type::Zero()};</div>
 </div><!-- fragment -->
 </div>
 </div>
