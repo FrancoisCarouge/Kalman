@@ -42,9 +42,9 @@ set -e
 rm -rf /tmp/kalman
 mkdir /tmp/kalman
 
-RESULTS=`find "kalman/sample" -name "result.json"`
+RESULTS=`find "kalman/sample" -name "*.json"`
 for RESULT in ${RESULTS}; do
-  NAME=$(basename $(dirname ${RESULT}))
+  NAME=$(basename ${RESULT} .json)
   jq --raw-output '.[] | [.[]] | @csv' ${RESULT} > /tmp/kalman/${NAME}.csv
 done
 
