@@ -38,8 +38,8 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build("1x1x0")
 build("1x1x1")
-build("5x4x0" BACKENDS "eigen" "eigen_typed")
-build("5x4x3" BACKENDS "eigen" "eigen_typed")
+build("5x4x0" BACKENDS "eigen" "eigexed")
+build("5x4x3" BACKENDS "eigen" "eigexed")
 build("arguments")
-build("output_type_2x1x0" BACKENDS "eigen" "eigen_typed")
+build("output_type_2x1x0" BACKENDS "eigen" "eigexed")
 fail("absent_1x1x0_fail")

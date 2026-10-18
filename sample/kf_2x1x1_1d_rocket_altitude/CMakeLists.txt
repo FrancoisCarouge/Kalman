@@ -36,4 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("kf_2x1x1_1d_rocket_altitude" BACKENDS "eigen" "eigen_typed")
+sample("kf_2x1x1_1d_rocket_altitude" BACKENDS "eigen" "eigexed")

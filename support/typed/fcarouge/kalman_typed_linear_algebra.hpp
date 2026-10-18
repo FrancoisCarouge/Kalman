@@ -36,79 +36,20 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> */
 
-#ifndef FCAROUGE_QUANTITY_HPP
-#define FCAROUGE_QUANTITY_HPP
+#ifndef FCAROUGE_KALMAN_TYPED_LINEAR_ALGEBRA_HPP
+#define FCAROUGE_KALMAN_TYPED_LINEAR_ALGEBRA_HPP
 
 //! @file
-//! @brief Indexed-based linear algebra with mp-units with Eigen
-//! implementations.
+//! @brief Kalman filter adaptation of the typed linear algebra.
+//!
+//! @details Specializes the filter's linear algebra customization points for
+//! the typed matrix, whatever its underlying matrix implementation: the
+//! evaluation, the transposition, and the named algebraic values.
 
-#include "fcarouge/eigen.hpp"
-#include "fcarouge/mp_units.hpp"
+#include "fcarouge/kalman_filter/internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
-namespace fcarouge {
-// Teach the typed linear algebra library how to convert underlying scalar types
-// to and from mp-units' types.
-template <typename To, mp_units::Quantity From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    using representation = typename std::remove_cvref_t<From>::rep;
-
-    static_assert(std::same_as<representation, std::remove_cvref_t<To>>,
-                  "The underlying storage type must be identical to the "
-                  "quantity representation type to guarantee the conversion is "
-                  "explicitly decided by the end-user.");
-
-    return value.numerical_value_in(value.unit);
-  }
-};
-
-template <mp_units::Quantity To, typename From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()(From value) -> To {
-    using representation = typename std::remove_cvref_t<To>::rep;
-
-    static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
-                  "The underlying storage type must be identical to the "
-                  "quantity representation type to guarantee the conversion is "
-                  "explicitly decided by the end-user.");
-
-    return value * To::reference;
-  }
-};
-
-template <mp_units::Quantity To, typename From>
-struct element_caster<To &, From &> {
-  // A quantity reference cannot be safely materialized out of a representation
-  // reference. It would be undefined behavior even if the size, padding,
-  // alignment, aliasing are controlled. Therefore the best we can do is to
-  // return a constant quantity value to inform the end-user lvalue reference
-  // assignment cannot be supported.
-  [[nodiscard]] static constexpr auto operator()(From value) -> const To {
-    using representation = typename std::remove_cvref_t<To>::rep;
-
-    static_assert(std::same_as<representation, std::remove_cvref_t<From>>,
-                  "The underlying storage type must be identical to the "
-                  "quantity representation type to guarantee the conversion is "
-                  "explicitly decided by the end-user.");
-
-    return value * To::reference;
-  }
-};
-
-template <typename To, mp_units::Reference From>
-struct element_caster<To, From> {
-  [[nodiscard]] static constexpr auto operator()([[maybe_unused]] From value)
-      -> To {
-    return 1.;
-  }
-};
-} // namespace fcarouge
-
-namespace fcarouge {
-namespace kalman_filter::internal {
-
+namespace fcarouge::kalman_filter::internal {
 //! @brief Specialization of the evaluation type.
 //!
 //! @note Implementation not needed.
@@ -150,13 +91,6 @@ struct zeros<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
 };
 
 //! @}
-} // namespace kalman_filter::internal
+} // namespace fcarouge::kalman_filter::internal
 
-//! @brief Quantity column vector with mp-units and Eigen implementations.
-template <typename Representation, typename... Types>
-using column_vector =
-    typed_column_vector<eigen::column_vector<Representation, sizeof...(Types)>,
-                        Types...>;
-} // namespace fcarouge
-
-#endif // FCAROUGE_QUANTITY_HPP
+#endif // FCAROUGE_KALMAN_TYPED_LINEAR_ALGEBRA_HPP

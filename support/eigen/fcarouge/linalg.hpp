@@ -39,7 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_LINALG_HPP
 #define FCAROUGE_LINALG_HPP
 
-#include "eigen.hpp"
+#include "fcarouge/eigen.hpp"
+#include "fcarouge/kalman_eigen.hpp"
 
 namespace fcarouge {
 using namespace eigen;

@@ -50,5 +50,12 @@ target_sources(
   INTERFACE
   FILE_SET "linalg_headers"
     TYPE "HEADERS"
-    FILES "fcarouge/eigen.hpp" "fcarouge/linalg.hpp")
+    FILES "fcarouge/eigen.hpp" "fcarouge/kalman_eigen.hpp" "fcarouge/linalg.hpp")
 target_link_libraries(kalman_linalg_eigen INTERFACE Eigen3::Eigen kalman)
+
+add_library(kalman_linalg_eigen_realtime OBJECT "realtime.cpp")
+target_link_libraries(kalman_linalg_eigen_realtime PRIVATE Eigen3::Eigen)
+
+target_sources(
+  kalman_linalg_eigen
+  INTERFACE "$<TARGET_OBJECTS:kalman_linalg_eigen_realtime>")

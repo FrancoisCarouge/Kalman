@@ -37,7 +37,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
-#include "fcarouge/mp_units.hpp"
+#include "fcarouge/kalman_mp_units.hpp"
 
 #include <cassert>
 

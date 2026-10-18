@@ -72,8 +72,8 @@ Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) a
 | --- | --- |
 | Built-in Types | No backend needed. |
 | Eigen | [Example backend: `support/eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen). |
-| Eigen + TypedLinearAlgebra | [Example backend: `support/eigen_typed`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen_typed). |
-| Eigen + TypedLinearAlgebra + mp-units | [Example backend: `support/quantity`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/quantity). |
+| Eigen + TypedLinearAlgebra | [Example backend: `support/eigexed`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigexed). |
+| Eigen + TypedLinearAlgebra + mp-units | [Example backend: `support/mp_units_eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units_eigen). |
 | mp-units | [Example backend: `support/mp_units`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units). |
 
 ### Samples

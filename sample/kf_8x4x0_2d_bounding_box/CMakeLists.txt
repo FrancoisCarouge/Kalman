@@ -36,4 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("kf_8x4x0_2d_bounding_box" BACKENDS "eigen" "eigen_typed")
+sample("kf_8x4x0_2d_bounding_box" BACKENDS "eigen" "eigexed")

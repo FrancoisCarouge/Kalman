@@ -37,14 +37,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 build("x_z_p_q_r")
-build("x_z_p_q_r_h_f" BACKENDS "eigen" "eigen_typed")
+build("x_z_p_q_r_h_f" BACKENDS "eigen" "eigexed")
 build("x_z_p_q_r_hh_f_us_ps")
 build("x_z_p_q_r_hh_ff_ps")
 build("x_z_p_qq_rr_f")
 build("x_z_p_r")
 build("x_z_p_r_f")
 build("x_z_u_p_q_r")
-build("x_z_u_p_q_r_h_f_g_us_ps" BACKENDS "eigen" "eigen_typed")
+build("x_z_u_p_q_r_h_f_g_us_ps" BACKENDS "eigen" "eigexed")
 build("x_z_u_p_qq_r_ff_gg_ps")
 fail("arithmetic_input_1x1x1_fail")
 fail("arithmetic_output_1x1x0_fail")

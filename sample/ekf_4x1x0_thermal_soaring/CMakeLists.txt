@@ -36,4 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("ekf_4x1x0_thermal_soaring" BACKENDS "eigen" "eigen_typed")
+sample("ekf_4x1x0_thermal_soaring" BACKENDS "eigen" "eigexed")

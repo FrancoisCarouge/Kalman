@@ -38,6 +38,6 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build("absent_1x1x0")
 pass("1x1x1")
-pass("5x4x3" BACKENDS "eigen" "eigen_typed")
+pass("5x4x3" BACKENDS "eigen" "eigexed")
 pass("callable_1x1x0")
-pass("values_2x1x0" BACKENDS "eigen" "eigen_typed")
+pass("values_2x1x0" BACKENDS "eigen" "eigexed")
