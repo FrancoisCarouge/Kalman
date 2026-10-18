@@ -36,4 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("kf_6x2x0_2d_vehicle_position_unit" BACKENDS "quantity")
+sample("kf_6x2x0_2d_vehicle_position_unit" BACKENDS "mp_units_eigen")

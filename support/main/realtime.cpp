@@ -71,11 +71,18 @@ namespace fcarouge {
 namespace {
 //! @brief Enters the real-time context ahead of the default-priority static
 //! initializers running the tests, samples, and benchmarks.
-[[gnu::constructor(101)]] void realtime_enter() { __rtsan_realtime_enter(); }
+//!
+//! @details The lowest user priority, 101, is left to the backends to
+//! initialize, ahead of the real-time context, the state a real-time
+//! application would initialize before entering its own.
+[[gnu::constructor(102)]] void realtime_enter() { __rtsan_realtime_enter(); }
 
 //! @brief Exits the real-time context after the default-priority static
 //! destructors.
-[[gnu::destructor(101)]] void realtime_exit() { __rtsan_realtime_exit(); }
+//!
+//! @details Mirrors the entry priority: the lowest user priority, 101, is left
+//! to the backends to finalize, after the real-time context.
+[[gnu::destructor(102)]] void realtime_exit() { __rtsan_realtime_exit(); }
 } // namespace
 
 void not_realtime::disable() { __rtsan_disable(); }

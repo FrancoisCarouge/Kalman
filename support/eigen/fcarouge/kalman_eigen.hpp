@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,15 +34,26 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(kalman_linalg_quantity INTERFACE)
-target_sources(
-  kalman_linalg_quantity
-  INTERFACE
-  FILE_SET "linalg_headers" TYPE "HEADERS" FILES "fcarouge/linalg.hpp")
-target_link_libraries(
-  kalman_linalg_quantity
-  INTERFACE
-    kalman kalman_linalg_eigen kalman_unit_mp_units
-    fcarouge-typed-linear-algebra::tlinalg)
+#ifndef FCAROUGE_KALMAN_EIGEN_HPP
+#define FCAROUGE_KALMAN_EIGEN_HPP
+
+//! @file
+//! @brief Kalman filter adaptation of the Eigen3 linear algebra facade.
+//!
+//! @details Specializes the filter's linear algebra customization points for
+//! the Eigen3 types: the evaluation of the lazy expression templates.
+
+#include "fcarouge/eigen.hpp"
+#include "fcarouge/kalman_filter/internal/utility.hpp"
+
+namespace fcarouge::kalman_filter::internal {
+//! @brief Specialization of the evaluation type.
+template <eigen::is_eigen Type> struct evaluates<Type> {
+  [[nodiscard]] static constexpr auto operator()() ->
+      typename Type::PlainMatrix;
+};
+} // namespace fcarouge::kalman_filter::internal
+
+#endif // FCAROUGE_KALMAN_EIGEN_HPP

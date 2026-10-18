@@ -36,4 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("kf_2x1x0_stock_price_unit" BACKENDS "quantity")
+sample("kf_2x1x0_stock_price_unit" BACKENDS "mp_units_eigen")

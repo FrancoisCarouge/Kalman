@@ -1,4 +1,4 @@
-#[[ __          _      __  __          _   _
+/*  __          _      __  __          _   _
 | |/ /    /\   | |    |  \/  |   /\   | \ | |
 | ' /    /  \  | |    | \  / |  /  \  |  \| |
 |  <    / /\ \ | |    | |\/| | / /\ \ | . ` |
@@ -34,13 +34,32 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <https://unlicense.org> ]]
+For more information, please refer to <https://unlicense.org> */
 
-add_library(kalman_linalg_eigen_typed INTERFACE)
-target_sources(
-  kalman_linalg_eigen_typed
-  INTERFACE
-  FILE_SET "linalg_headers" TYPE "HEADERS" FILES "fcarouge/linalg.hpp")
-target_link_libraries(
-  kalman_linalg_eigen_typed
-  INTERFACE kalman kalman_linalg_eigen fcarouge-typed-linear-algebra::tlinalg)
+#ifdef __has_feature
+#if __has_feature(realtime_sanitizer)
+#define FCAROUGE_REALTIME_SANITIZER
+#endif
+#endif
+
+#ifdef FCAROUGE_REALTIME_SANITIZER
+#include <Eigen/Core>
+
+namespace fcarouge::eigen {
+namespace {
+//! @brief Initializes the Eigen state lazily initialized on first use, ahead of
+//! the real-time context entered at the next constructor priority.
+//!
+//! @details Eigen sizes the blocking of its matrix kernels, for example the
+//! triangular solve of a division with a multi-column right-hand side, from
+//! CPU cache sizes held in a function-local static variable. Its thread-safe
+//! initialization on first use takes a lock, a real-time unsafe call. A
+//! real-time application initializes it before entering its real-time
+//! context, as done here for every test, sample, and benchmark of an Eigen
+//! backend.
+[[gnu::constructor(101)]] void realtime_prepare() {
+  static_cast<void>(Eigen::l1CacheSize());
+}
+} // namespace
+} // namespace fcarouge::eigen
+#endif

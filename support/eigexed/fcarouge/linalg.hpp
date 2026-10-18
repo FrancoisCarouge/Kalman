@@ -40,73 +40,35 @@ For more information, please refer to <https://unlicense.org> */
 #define FCAROUGE_LINALG_HPP
 
 //! @file
-//! @brief Scalar type indexed-based linear algebra with Eigen implementation.
+//! @brief Scalar type linear algebra with Eigen implementation.
 
 #include "fcarouge/eigen.hpp"
+#include "fcarouge/kalman_eigen.hpp"
 #include "fcarouge/kalman_filter/internal/utility.hpp"
+#include "fcarouge/kalman_typed_linear_algebra.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
 #include <cstddef>
 
 namespace fcarouge {
-namespace kalman_filter::internal {
-//! @brief Specialization of the evaluation type.
-//!
-//! @note Implementation not needed.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct evaluates<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] static constexpr auto operator()()
-      -> typed_matrix<evaluate<Matrix>, RowIndexes, ColumnIndexes>;
-};
-
-//! @brief Specialization of the transposes.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] static constexpr auto
-  operator()(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) {
-    return typed_matrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
-        t(value.data())};
-  }
-};
-
-//! @name Algebraic Named Values
-//! @{
-
-//! @brief The one matrix indexed specialization.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct ones<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] static constexpr auto operator()() {
-    return typed_matrix<decltype(make_one<Matrix>()), RowIndexes,
-                        ColumnIndexes>{make_one<Matrix>()};
-  }
-};
-
-//! @brief The zero matrix indexed specialization.
-template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
-struct zeros<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
-  [[nodiscard]] static constexpr auto operator()() {
-    return typed_matrix<decltype(make_zero<Matrix>()), RowIndexes,
-                        ColumnIndexes>{make_zero<Matrix>()};
-  }
-};
-
-//! @}
-
-} // namespace kalman_filter::internal
 
 //! @name Types
 //! @{
 
-//! @brief Scalar type indexed-based matrix with Eigen implementations.
+//! @brief Scalar type matrix with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1, std::size_t Column = 1>
 using matrix =
     typed_matrix<eigen::matrix<Type, Row, Column>,
                  kalman_filter::internal::tuple_n_type<Type, Row>,
                  kalman_filter::internal::tuple_n_type<Type, Column>>;
 
-//! @brief Scalar type indexed-based column vector with Eigen implementations.
+//! @brief Scalar type column vector with Eigen implementations.
 template <typename Type = double, std::size_t Row = 1>
 using column_vector = matrix<Type, Row, 1>;
+
+//! @brief Scalar type row vector with Eigen implementations.
+template <typename Type = double, std::size_t Column = 1>
+using row_vector = matrix<Type, 1, Column>;
 
 //! @}
 

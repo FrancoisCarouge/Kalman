@@ -43,11 +43,11 @@ if(NOT BUILD_TESTING)
 endif()
 
 add_subdirectory("eigen")
-add_subdirectory("eigen_typed")
+add_subdirectory("eigexed")
 add_subdirectory("main")
 add_subdirectory("matplot")
 add_subdirectory("mp_units")
-add_subdirectory("quantity")
+add_subdirectory("mp_units_eigen")
 add_subdirectory("typed")
 
 add_library(kalman_support_options INTERFACE)

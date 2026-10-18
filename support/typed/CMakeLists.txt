@@ -43,3 +43,14 @@ FetchContent_Declare(
   SYSTEM
   FIND_PACKAGE_ARGS NAMES fcarouge-typed-linear-algebra)
 FetchContent_MakeAvailable(fcarouge-typed-linear-algebra)
+
+add_library(kalman_typed_linear_algebra INTERFACE)
+target_sources(
+  kalman_typed_linear_algebra
+  INTERFACE
+  FILE_SET "typed_linear_algebra_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/kalman_typed_linear_algebra.hpp")
+target_link_libraries(
+  kalman_typed_linear_algebra
+  INTERFACE kalman fcarouge-typed-linear-algebra::tlinalg)

@@ -36,4 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("kf_6x2x0_2d_vehicle_position" BACKENDS "eigen" "eigen_typed")
+sample("kf_6x2x0_2d_vehicle_position" BACKENDS "eigen" "eigexed")

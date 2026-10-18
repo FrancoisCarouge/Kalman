@@ -38,7 +38,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
-#include "fcarouge/realtime.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -51,7 +50,6 @@ template <auto Size> using vector = column_vector<double, Size>;
 //! output noise the observed states are the output, their uncertainty vanishes,
 //! the unobserved state and its uncertainty are kept.
 [[maybe_unused]] const auto test{[] -> int {
-  const not_realtime opt_out;
   const auto near{[](const double &value, const double &expected) -> bool {
     return std::abs(value - expected) < 1e-12;
   }};
