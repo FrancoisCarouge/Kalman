@@ -19,7 +19,7 @@ Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilo
 - The update and prediction are dense, general expressions. Against the generated sparse code of ArduPilot's EKFGSF yaw estimator, five corrections take 1203 ns instead of 271 ns and five predictions 1019 ns instead of 550 ns (x86-64, g++ 15), with 7392 bytes more flash on Cortex-M7. A benchmark against hand-written code for a small filter would track it. (F37)
 - The covariance update is the Joseph form only. ArduPilot's filters use `P -= K * H * P` followed by symmetrization; matching them needs a selectable form. (F8)
 - ArduPilot's 24-state EKF needs sequential scalar updates, inhibited states, the innovation and its uncertainty readable before the correction (gating, rejection), a replaceable covariance prediction, and post-update steps (symmetrization, variance limits). A two-stage update, innovation then correction, would cover most. (F7)
-- The `one<>` and `zero<>` variables cost code and RAM besides defect 10 of `BUG.md`: 4072 bytes of code for a 4-state filter on Cortex-M4, against 1040 bytes for the hand-written one it replaced. (F21)
+- The `one<>` and `zero<>` variables cost 360 bytes of RAM and 4072 bytes of code for a 4-state filter on Cortex-M4, against 1040 bytes for the hand-written one it replaced (F21). To re-measure after `24a2f52cc`, which constant-initializes them for a backend whose identity is a constant expression, as ArduPilot's is.
 
 ## Missing functionality: ArduPilot filters as samples
 
