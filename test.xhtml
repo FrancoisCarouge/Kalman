@@ -110,12 +110,12 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <p class="interdd"><a class="anchor" id="_test000087"></a>Verifies the prediction of the filter with a process uncertainty: the state is kept, the estimate uncertainty grows by the process uncertainty. </p>
 <p class="interdd"><a class="anchor" id="_test000106"></a>Verifies the printer decorator for single-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000112"></a>Verifies printing the default filter compiles. </p>
-<p class="enddd"><a class="anchor" id="_test000129"></a>Verifies the update of the minimal filter against its equations: S = P + R, K = P.S⁻¹, Y = Z - X, X = X + K.Y, and the Joseph form P = (I - K).P.(I - K)ᵀ + K.R.Kᵀ.  </p>
+<p class="enddd"><a class="anchor" id="_test000131"></a>Verifies the update of the minimal filter against its equations: S = P + R, K = P.S⁻¹, Y = Z - X, X = X + K.Y, and the Joseph form P = (I - K).P.(I - K)ᵀ + K.R.Kᵀ.  </p>
 </dd>
 <dt>{1x1x1.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1x1_8cpp_03.xhtml#a355c2785e17fddefed2e5f291d7512c0">fcarouge::test::anonymous_namespace{1x1x1.cpp}::filter</a>  </dt>
 <dd><a class="anchor" id="_test000074"></a>Verifies the member types of the general filter are deduced from its declared arithmetic type.  </dd>
 <dt>{1x1x1.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x1x1_8cpp_03.xhtml#acb5b140f5867778310864a26f86b431c">fcarouge::test::anonymous_namespace{1x1x1.cpp}::test</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_test000063"></a>Verifies the control transition matrix G management overloads for single-dimension filters. </p>
+<dd><p class="startdd"><a class="anchor" id="_test000061"></a>Verifies the control transition matrix G management overloads for single-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000066"></a>Verifies the observation transition matrix H management overloads for single-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000071"></a>Verifies the gain matrix K management overloads for single-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000085"></a>Verifies the estimated covariance matrix P management overloads for single-dimension filters. </p>
@@ -127,61 +127,61 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <p class="interdd"><a class="anchor" id="_test000130"></a>Verifies the update of the general filter against its equations: S = H.P.Hᵀ + R, K = P.Hᵀ.S⁻¹, Y = Z - H.X, X = X + K.Y, and the Joseph form P = (I - K.H).P.(I - K.H)ᵀ + K.R.Kᵀ. </p>
 <p class="interdd"><a class="anchor" id="_test000146"></a>Verifies the estimated state column vector X management overloads for single-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000153"></a>Verifies the innovation column vector Y management overloads for single-dimension filters. </p>
-<p class="enddd"><a class="anchor" id="_test000154"></a>Verifies the observation column vector Z management overloads for single-dimension filters.  </p>
+<p class="enddd"><a class="anchor" id="_test000155"></a>Verifies the observation column vector Z management overloads for single-dimension filters.  </p>
 </dd>
 <dt>{<a class="el" href="1x4x3_8cpp.xhtml">1x4x3.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_021x4x3_8cpp_03.xhtml#abe229c3614f5d2f6dcb937b23fdd7058">fcarouge::test::anonymous_namespace{1x4x3.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000054"></a>Verifies formatting multi-dimension filters with a single-dimension state, with input control without additional arguments.  </dd>
 <dt>{<a class="el" href="2x1x0_8cpp.xhtml">2x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_022x1x0_8cpp_03.xhtml#aa888fdb880b98a9860eab367b0ee2dae">fcarouge::test::anonymous_namespace{2x1x0.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000131"></a>Verifies the update of a multi-dimension filter observing its first state against its equations.  </dd>
+<dd><a class="anchor" id="_test000129"></a>Verifies the update of a multi-dimension filter observing its first state against its equations.  </dd>
 <dt>{<a class="el" href="2x1x1_8cpp.xhtml">2x1x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_022x1x1_8cpp_03.xhtml#af77c569f0d9562b9e208832abacf0bfd">fcarouge::test::anonymous_namespace{2x1x1.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000089"></a>Verifies the prediction of a multi-dimension filter against its equations: X = F.X + G.U and P = F.P.Fᵀ + Q.  </dd>
 <dt>{<a class="el" href="2x3_8cpp.xhtml">2x3.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_022x3_8cpp_03.xhtml#ae42fa81889d34dd50a4fd9c66afb7576">fcarouge::test::anonymous_namespace{2x3.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000124"></a>Verifies the transpose of a rectangular matrix swaps its rows and columns.  </dd>
 <dt>{5x4.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_025x4_8cpp_03.xhtml#ade2ebb4b156d2a6ce715cfcec3efa707">fcarouge::test::anonymous_namespace{5x4.cpp}::test</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_test000081"></a>Verifies the rectangular one matrix has ones on its diagonal and zeros elsewhere. </p>
+<dd><p class="startdd"><a class="anchor" id="_test000080"></a>Verifies the rectangular one matrix has ones on its diagonal and zeros elsewhere. </p>
 <p class="enddd"><a class="anchor" id="_test000158"></a>Verifies the rectangular zero matrix has zeros everywhere.  </p>
 </dd>
 <dt>{<a class="el" href="5x4x0_8cpp.xhtml">5x4x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_025x4x0_8cpp_03.xhtml#a1ba7d4e8db6d0c61907f6a9b4e13d71b">fcarouge::test::anonymous_namespace{5x4x0.cpp}::filter</a>  </dt>
 <dd><a class="anchor" id="_test000076"></a>Verifies the member types of the multi-dimension filter without input are the vectors and matrices of the dimensions of its state and output.  </dd>
 <dt>{5x4x3.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_025x4x3_8cpp_03.xhtml#a2d7e19f9b2e103bcda8fb6d455c344d1">fcarouge::test::anonymous_namespace{5x4x3.cpp}::filter</a>  </dt>
-<dd><a class="anchor" id="_test000078"></a>Verifies the member types of the multi-dimension general filter are the vectors and matrices of the dimensions of its state, output, and input.  </dd>
+<dd><a class="anchor" id="_test000077"></a>Verifies the member types of the multi-dimension general filter are the vectors and matrices of the dimensions of its state, output, and input.  </dd>
 <dt>{5x4x3.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_025x4x3_8cpp_03.xhtml#a5c8cf78df8ea7ecb46a0e14b4968e625">fcarouge::test::anonymous_namespace{5x4x3.cpp}::test</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_test000051"></a>Verifies the state transition matrix F management overloads for the Eigen filter type. </p>
 <p class="interdd"><a class="anchor" id="_test000055"></a>Verifies formatting multi-dimension filters with input control without additional arguments. </p>
-<p class="interdd"><a class="anchor" id="_test000064"></a>Verifies the control transition matrix G management overloads for multi-dimension filters. </p>
+<p class="interdd"><a class="anchor" id="_test000065"></a>Verifies the control transition matrix G management overloads for multi-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000068"></a>Verifies the observation transition matrix H management overloads for the Eigen filter type. </p>
 <p class="interdd"><a class="anchor" id="_test000073"></a>Verifies the gain matrix K management overloads for multi-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000086"></a>Verifies the estimated covariance matrix P management overloads for multi-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000090"></a>Verifies the prediction of the default multi-dimension filter: the input set from its element values adds to the state through the default input control, the estimate uncertainty is kept. </p>
 <p class="interdd"><a class="anchor" id="_test000107"></a>Verifies the printer decorator for multi-dimension filters with input control without additional arguments. </p>
-<p class="interdd"><a class="anchor" id="_test000114"></a>Verifies the process noise covariance matrix Q management overloads for multi-dimension filters. </p>
+<p class="interdd"><a class="anchor" id="_test000115"></a>Verifies the process noise covariance matrix Q management overloads for multi-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000120"></a>Verifies the observation noise covariance matrix R management overloads for multi-dimension filters. </p>
-<p class="interdd"><a class="anchor" id="_test000123"></a>Verifies the innovation uncertainty matrix S management overloads for multi-dimension filters. </p>
-<p class="interdd"><a class="anchor" id="_test000127"></a>Verifies the control column vector U management overloads for multi-dimension filters. </p>
+<p class="interdd"><a class="anchor" id="_test000122"></a>Verifies the innovation uncertainty matrix S management overloads for multi-dimension filters. </p>
+<p class="interdd"><a class="anchor" id="_test000128"></a>Verifies the control column vector U management overloads for multi-dimension filters. </p>
 <p class="interdd"><a class="anchor" id="_test000132"></a>Verifies the update of the default multi-dimension filter: without output noise the observed states are the output, their uncertainty vanishes, the unobserved state and its uncertainty are kept. </p>
 <p class="interdd"><a class="anchor" id="_test000148"></a>Verifies the estimated state column vector X management overloads for multi-dimension filters. </p>
-<p class="interdd"><a class="anchor" id="_test000155"></a>Verifies the innovation column vector Y management overloads for multi-dimension filters. </p>
+<p class="interdd"><a class="anchor" id="_test000154"></a>Verifies the innovation column vector Y management overloads for multi-dimension filters. </p>
 <p class="enddd"><a class="anchor" id="_test000156"></a>Verifies the observation column vector Z management overloads for multi-dimension filters.  </p>
 </dd>
 <dt>{absent_1x1x0.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03.xhtml#a36bbbc25a767d6e1a9bed8f77050e0c4">fcarouge::test::anonymous_namespace{absent_1x1x0.cpp}::filter</a>  </dt>
-<dd><a class="anchor" id="_test000108"></a>Verifies the decorated filter accepts the calls the filter accepts, and only those.  </dd>
+<dd><a class="anchor" id="_test000110"></a>Verifies the decorated filter accepts the calls the filter accepts, and only those.  </dd>
 <dt>{absent_1x1x0_fail.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0__fail_8cpp_03.xhtml#a45ef2ab286b9cbd69653bfe19a185092">fcarouge::test::anonymous_namespace{absent_1x1x0_fail.cpp}::test</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_test000077"></a>Verifies the input member type is absent from a filter without input. </p>
-<p class="interdd"><a class="anchor" id="_test000092"></a>Verifies the prediction is rejected for the minimal filter: there is no process to predict. </p>
-<p class="interdd"><a class="anchor" id="_test000115"></a>Verifies the process noise covariance matrix Q cannot be accessed on a filter without process uncertainty. </p>
-<p class="enddd"><a class="anchor" id="_test000128"></a>Verifies the control column vector U cannot be accessed on a filter without input.  </p>
+<dd><p class="startdd"><a class="anchor" id="_test000078"></a>Verifies the input member type is absent from a filter without input. </p>
+<p class="interdd"><a class="anchor" id="_test000091"></a>Verifies the prediction is rejected for the minimal filter: there is no process to predict. </p>
+<p class="interdd"><a class="anchor" id="_test000114"></a>Verifies the process noise covariance matrix Q cannot be accessed on a filter without process uncertainty. </p>
+<p class="enddd"><a class="anchor" id="_test000126"></a>Verifies the control column vector U cannot be accessed on a filter without input.  </p>
 </dd>
 <dt>{arguments.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02arguments_8cpp_03.xhtml#ac8756e32df667a3790ddc83b5c2d6979">fcarouge::test::anonymous_namespace{arguments.cpp}::filter</a>  </dt>
 <dd><a class="anchor" id="_test000079"></a>Verifies the update and prediction member types pack the declared update and prediction types, in order.  </dd>
 <dt>{arguments.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02arguments_8cpp_03.xhtml#a35f0d2a427502a81eda7c2cb25260a5a">fcarouge::test::anonymous_namespace{arguments.cpp}::test</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_test000056"></a>Verifies formatting filters for single-dimension filters with input control and additional arguments. </p>
 <p class="interdd"><a class="anchor" id="_test000093"></a>Verifies the prediction arguments are value-initialized, then recorded by the prediction, in order and with their declared types. </p>
-<p class="interdd"><a class="anchor" id="_test000109"></a>Verifies the printer decorator forwards the prediction and update arguments access to the filter it decorates. </p>
-<p class="enddd"><a class="anchor" id="_test000135"></a>Verifies the update arguments are value-initialized, then recorded by the update, in order and with their declared types.  </p>
+<p class="interdd"><a class="anchor" id="_test000108"></a>Verifies the printer decorator forwards the prediction and update arguments access to the filter it decorates. </p>
+<p class="enddd"><a class="anchor" id="_test000134"></a>Verifies the update arguments are value-initialized, then recorded by the update, in order and with their declared types.  </p>
 </dd>
 <dt>{arguments_fail.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02arguments__fail_8cpp_03.xhtml#ac6e36eeddf3d707f22491932aa10281b">fcarouge::test::anonymous_namespace{arguments_fail.cpp}::test</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_test000094"></a>Verifies the prediction is rejected without its declared prediction arguments. </p>
-<p class="enddd"><a class="anchor" id="_test000134"></a>Verifies the update is rejected without its declared update arguments.  </p>
+<p class="enddd"><a class="anchor" id="_test000133"></a>Verifies the update is rejected without its declared update arguments.  </p>
 </dd>
 <dt>{<a class="el" href="arithmetic__input__1x1x1__fail_8cpp.xhtml">arithmetic_input_1x1x1_fail.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02arithmetic__input__1x1x1__fail_8cpp_03.xhtml#a82cee0f1cabae55398f2435f22741764">fcarouge::test::anonymous_namespace{arithmetic_input_1x1x1_fail.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000034"></a>Verifies a declaration mixing arithmetic types is rejected: an input type wider than the state and output type.  </dd>
@@ -203,8 +203,8 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <dt>{<a class="el" href="capturing__callable__1x1x0_8cpp.xhtml">capturing_callable_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02capturing__callable__1x1x0_8cpp_03.xhtml#a8806dab78e8cd224ff2dd8030273ad7a">fcarouge::test::anonymous_namespace{capturing_callable_1x1x0.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000001"></a>Verifies a filter configured with a capturing callable characteristic is copy constructible and not assignable: the closure type of a lambda expression with captures has no assignment operator.  </dd>
 <dt>{characteristics_1x1x1.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02characteristics__1x1x1_8cpp_03.xhtml#a48d329711ea75d41a30bd26d153dd832">fcarouge::test::anonymous_namespace{characteristics_1x1x1.cpp}::test</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_test000008"></a>Verifies every declared characteristic initializes the general single-dimension filter, other characteristics defaulted. </p>
-<p class="enddd"><a class="anchor" id="_test000110"></a>Verifies the printer decorator forwards the characteristics accesses, the prediction, and the update to the filter it decorates.  </p>
+<dd><p class="startdd"><a class="anchor" id="_test000007"></a>Verifies every declared characteristic initializes the general single-dimension filter, other characteristics defaulted. </p>
+<p class="enddd"><a class="anchor" id="_test000109"></a>Verifies the printer decorator forwards the characteristics accesses, the prediction, and the update to the filter it decorates.  </p>
 </dd>
 <dt>{<a class="el" href="characteristics__2x1x0_8cpp.xhtml">characteristics_2x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02characteristics__2x1x0_8cpp_03.xhtml#a159341d8a409f440a511484d29ddd508">fcarouge::test::anonymous_namespace{characteristics_2x1x0.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000009"></a>Verifies every declared characteristic initializes the multi-dimension filter without input, from matrices and from lists of rows.  </dd>
@@ -227,7 +227,7 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <dt>{<a class="el" href="default__1x1x0_8cpp.xhtml">default_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02default__1x1x0_8cpp_03.xhtml#ab55fc556537cc2d5546886a34300cff5">fcarouge::test::anonymous_namespace{default_1x1x0.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000013"></a>Verifies default values are initialized for single-dimension filters without input control.  </dd>
 <dt>{<a class="el" href="default__1x1x1_8cpp.xhtml">default_1x1x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02default__1x1x1_8cpp_03.xhtml#a1154724b40f622dbe4f8e5814b6217d0">fcarouge::test::anonymous_namespace{default_1x1x1.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000098"></a>Verifies the prediction of the default general filter: the input adds to the state, the estimate uncertainty is kept.  </dd>
+<dd><a class="anchor" id="_test000099"></a>Verifies the prediction of the default general filter: the input adds to the state, the estimate uncertainty is kept.  </dd>
 <dt>{<a class="el" href="default__1x1x3_8cpp.xhtml">default_1x1x3.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02default__1x1x3_8cpp_03.xhtml#a142c781b3fa446c13caed5ef5191623e">fcarouge::test::anonymous_namespace{default_1x1x3.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000014"></a>Verifies default values are initialized for multi-dimension filters.  </dd>
 <dt>{<a class="el" href="default__1x4x1_8cpp.xhtml">default_1x4x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02default__1x4x1_8cpp_03.xhtml#a59e9bdeed7e2b580769993370659ac93">fcarouge::test::anonymous_namespace{default_1x4x1.cpp}::test</a>  </dt>
@@ -241,13 +241,13 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <dt>{<a class="el" href="default__5x4x0_8cpp.xhtml">default_5x4x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x0_8cpp_03.xhtml#a0f0069ab7855b00243336dbd6df3a1b9">fcarouge::test::anonymous_namespace{default_5x4x0.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000019"></a>Verifies default values are initialized for multi-dimension filters, no input.  </dd>
 <dt>{<a class="el" href="default__5x4x1_8cpp.xhtml">default_5x4x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x1_8cpp_03.xhtml#a0d16aec43916c7b6c9bb936aa3c26063">fcarouge::test::anonymous_namespace{default_5x4x1.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000020"></a>Verifies default values are initialized for multi-dimension filters, single input edge case.  </dd>
+<dd><a class="anchor" id="_test000022"></a>Verifies default values are initialized for multi-dimension filters, single input edge case.  </dd>
 <dt>{<a class="el" href="default__5x4x3_8cpp.xhtml">default_5x4x3.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02default__5x4x3_8cpp_03.xhtml#a3c05c2785a1f971a73b714cd967d099a">fcarouge::test::anonymous_namespace{default_5x4x3.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000021"></a>Verifies default values are initialized for multi-dimension filters.  </dd>
 <dt>{<a class="el" href="default__float__1x1x1_8cpp.xhtml">default_float_1x1x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02default__float__1x1x1_8cpp_03.xhtml#aa07bd41202d229f72b2f481ceedcb9b5">fcarouge::test::anonymous_namespace{default_float_1x1x1.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000022"></a>Verifies default values are initialized for single-dimension filters with input control.  </dd>
+<dd><a class="anchor" id="_test000020"></a>Verifies default values are initialized for single-dimension filters with input control.  </dd>
 <dt>{f_1x1x0.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02f__1x1x0_8cpp_03.xhtml#a593e5c25d822075057090a0996f93574">fcarouge::test::anonymous_namespace{f_1x1x0.cpp}::test</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_test000099"></a>Verifies the prediction of the filter with a state transition and without process uncertainty: X = F.X and P = F.P.Fᵀ. </p>
+<dd><p class="startdd"><a class="anchor" id="_test000098"></a>Verifies the prediction of the filter with a state transition and without process uncertainty: X = F.X and P = F.P.Fᵀ. </p>
 <p class="enddd"><a class="anchor" id="_test000137"></a>Verifies the update of the filter with a state transition against its equations: S = P + R, K = P.S⁻¹, Y = Z - X, X = X + K.Y, and the Joseph form P = (I - K).P.(I - K)ᵀ + K.R.Kᵀ.  </p>
 </dd>
 <dt>{f_2x1x0.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02f__2x1x0_8cpp_03.xhtml#a560ce8ec7a6e9d00b1dc49a9ede27b3f">fcarouge::test::anonymous_namespace{f_2x1x0.cpp}::test</a>  </dt>
@@ -262,7 +262,7 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <dd><a class="anchor" id="_test000100"></a>Verifies the prediction is rejected without the input of a filter with input.  </dd>
 <dt>{move_5x4x3.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02move__5x4x3_8cpp_03.xhtml#a3b18cc8f5b742f42aa773e07e2383311">fcarouge::test::anonymous_namespace{move_5x4x3.cpp}::test</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_test000004"></a>Verifies the multi-dimension filter is move-assignable. </p>
-<p class="enddd"><a class="anchor" id="_test000023"></a>Verifies the multi-dimension filter is move-constructible.  </p>
+<p class="enddd"><a class="anchor" id="_test000024"></a>Verifies the multi-dimension filter is move-constructible.  </p>
 </dd>
 <dt>{<a class="el" href="move__callable__1x1x0_8cpp.xhtml">move_callable_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02move__callable__1x1x0_8cpp_03.xhtml#af5e7bb5efd7dd887b893da55f7bfa172">fcarouge::test::anonymous_namespace{move_callable_1x1x0.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000005"></a>Verifies the move assignment of an extended filter configured with callable characteristics: the assigned filter predicts with its own state transition, not with the one of the filter it was assigned from.  </dd>
@@ -275,17 +275,17 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <dt>{<a class="el" href="output__model__1x1x0_8cpp.xhtml">output_model_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02output__model__1x1x0_8cpp_03.xhtml#ac71af1fd58a4681e68810f5a68fa01c0">fcarouge::test::anonymous_namespace{output_model_1x1x0.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000142"></a>Verifies the update of the extended filter with a callable output model: the output model H and the observation are computed from the prior state.  </dd>
 <dt>{output_type_2x1x0.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02output__type__2x1x0_8cpp_03.xhtml#af684d7dc7bd330e0bc11c0e361d501c9">fcarouge::test::anonymous_namespace{output_type_2x1x0.cpp}::filter</a>  </dt>
-<dd><a class="anchor" id="_test000080"></a>Verifies the member types of the filter declared with a state transition and without process uncertainty follow the declared output type when different from the state type.  </dd>
+<dd><a class="anchor" id="_test000081"></a>Verifies the member types of the filter declared with a state transition and without process uncertainty follow the declared output type when different from the state type.  </dd>
 <dt>{output_type_2x1x0.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02output__type__2x1x0_8cpp_03.xhtml#a82fc58d9f90a6e4b9ccd23c08e694254">fcarouge::test::anonymous_namespace{output_type_2x1x0.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000026"></a>Verifies the declared uncertainties and state transition initialize their own characteristics of the multi-dimension filters with an output type different from their state type: the undeclared process uncertainty and output model keep their default values.  </dd>
+<dd><a class="anchor" id="_test000025"></a>Verifies the declared uncertainties and state transition initialize their own characteristics of the multi-dimension filters with an output type different from their state type: the undeclared process uncertainty and output model keep their default values.  </dd>
 <dt>{<a class="el" href="printer_8cpp.xhtml">printer.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02printer_8cpp_03.xhtml#af8bcc841d474b4700a6bb18fc099e693">fcarouge::test::anonymous_namespace{printer.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000059"></a>Verifies formatting decorated filters as the filters they decorate.  </dd>
 <dt>{<a class="el" href="q__1x1x0_8cpp.xhtml">q_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02q__1x1x0_8cpp_03.xhtml#a6f564237418ffc42edd330e619a5c753">fcarouge::test::anonymous_namespace{q_1x1x0.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000145"></a>Verifies the update of the filter with a process uncertainty against its equations: S = P + R, K = P.S⁻¹, Y = Z - X, X = X + K.Y, and the Joseph form P = (I - K).P.(I - K)ᵀ + K.R.Kᵀ.  </dd>
+<dd><a class="anchor" id="_test000143"></a>Verifies the update of the filter with a process uncertainty against its equations: S = P + R, K = P.S⁻¹, Y = Z - X, X = X + K.Y, and the Joseph form P = (I - K).P.(I - K)ᵀ + K.R.Kᵀ.  </dd>
 <dt>{<a class="el" href="rows_8cpp.xhtml">rows.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02rows_8cpp_03.xhtml#a1345f615ca407f1ee7987d8f1a8e743b">fcarouge::test::anonymous_namespace{rows.cpp}::p0</a>  </dt>
-<dd><a class="anchor" id="_test000024"></a>Verifies the characteristics declared from lists of rows are constant expressions: a constant cannot refer to the temporary elements of its declaration, they are owned.  </dd>
+<dd><a class="anchor" id="_test000023"></a>Verifies the characteristics declared from lists of rows are constant expressions: a constant cannot refer to the temporary elements of its declaration, they are owned.  </dd>
 <dt>{<a class="el" href="rows__fail_8cpp.xhtml">rows_fail.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02rows__fail_8cpp_03.xhtml#a0626ebdfda8253d6ca9199d6a247f73f">fcarouge::test::anonymous_namespace{rows_fail.cpp}::p0</a>  </dt>
-<dd><a class="anchor" id="_test000025"></a>Verifies the characteristic declared from a list of rows is rejected with rows of different sizes.  </dd>
+<dd><a class="anchor" id="_test000026"></a>Verifies the characteristic declared from a list of rows is rejected with rows of different sizes.  </dd>
 <dt>{set_1x1x0.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">fcarouge::test::anonymous_namespace{set_1x1x0.cpp}::value</a>  </dt>
 <dd><a class="anchor" id="_test000119"></a>Verifies the process noise covariance Q member function sets the characteristic from values initializing it without narrowing, or replaces its callable by a callable of the configured type, through a modifiable filter only.  </dd>
 <dt>{<a class="el" href="set__2x1x0_8cpp.xhtml">set_2x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__2x1x0_8cpp_03.xhtml#a5d1eea77d19f3a9eb3fe4b2d0d90d9d0">fcarouge::test::anonymous_namespace{set_2x1x0.cpp}::vector</a>  </dt>
@@ -304,22 +304,22 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <dd><a class="anchor" id="_test000030"></a>Verifies the characteristics declared from lists of rows own their elements: stored in a variable, they initialize the multi-dimension filter with input past the end of their declaration.  </dd>
 <dt>{traits_1x1x0.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">fcarouge::test::anonymous_namespace{traits_1x1x0.cpp}::filter</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_test000006"></a>Verifies the single-dimension filter is copy and move assignable. </p>
-<p class="interdd"><a class="anchor" id="_test000007"></a>Verifies the filter is constructible from the declarations of its configuration only: neither constructible nor implicitly convertible from unrelated arguments, nor from the declarations of another filter. </p>
+<p class="interdd"><a class="anchor" id="_test000008"></a>Verifies the filter is constructible from the declarations of its configuration only: neither constructible nor implicitly convertible from unrelated arguments, nor from the declarations of another filter. </p>
 <p class="interdd"><a class="anchor" id="_test000031"></a>Verifies the single-dimension filter is default, copy, and move constructible, and non-throwing move constructible. </p>
 <p class="interdd"><a class="anchor" id="_test000075"></a>Verifies the member types of the minimal filter: present for its characteristics, absent otherwise. </p>
 <p class="interdd"><a class="anchor" id="_test000111"></a>Verifies the printer decorator accepts an rvalue filter, and rejects an lvalue filter, <code>const</code> or not, and a non-class operand at the pipe expression rather than in the decorator class template. </p>
 <p class="enddd"><a class="anchor" id="_test000149"></a>Verifies the state X member function reads the characteristic of any filter, and sets it from values initializing the state without narrowing, through a modifiable filter only.  </p>
 </dd>
 <dt>{<a class="el" href="traits__5x4x3_8cpp.xhtml">traits_5x4x3.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__5x4x3_8cpp_03.xhtml#a6b5f1241703bb21d3f03464d7417698b">fcarouge::test::anonymous_namespace{traits_5x4x3.cpp}::filter</a>  </dt>
-<dd><a class="anchor" id="_test000032"></a>Verifies the multi-dimension filter is default, copy, and move constructible, and non-throwing move constructible.  </dd>
+<dd><a class="anchor" id="_test000033"></a>Verifies the multi-dimension filter is default, copy, and move constructible, and non-throwing move constructible.  </dd>
 <dt>{<a class="el" href="transition__1x1x0_8cpp.xhtml">transition_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02transition__1x1x0_8cpp_03.xhtml#a5c0ece91320c018c76cc6422442b20d0">fcarouge::test::anonymous_namespace{transition_1x1x0.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000105"></a>Verifies the prediction of the extended filter with a transition function: X = f(X, arguments) and P = F.P.Fᵀ + Q with the state transition F set by the caller.  </dd>
+<dd><a class="anchor" id="_test000104"></a>Verifies the prediction of the extended filter with a transition function: X = f(X, arguments) and P = F.P.Fᵀ + Q with the state transition F set by the caller.  </dd>
 <dt>{u_1x1x1.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02u__1x1x1_8cpp_03.xhtml#aace0aa98fe3ef6a829041abec673edd9">fcarouge::test::anonymous_namespace{u_1x1x1.cpp}::test</a>  </dt>
-<dd><p class="startdd"><a class="anchor" id="_test000104"></a>Verifies the prediction of the filter with same type state, output, and input against its equations: X = X + U and P = P + Q. The prior state participates in the prediction: the input adds to the state. </p>
-<p class="enddd"><a class="anchor" id="_test000144"></a>Verifies the update of the filter with same type state, output, and input against its equations: S = P + R, K = P.S⁻¹, Y = Z - X, X = X + K.Y, and the Joseph form P = (I - K).P.(I - K)ᵀ + K.R.Kᵀ.  </p>
+<dd><p class="startdd"><a class="anchor" id="_test000105"></a>Verifies the prediction of the filter with same type state, output, and input against its equations: X = X + U and P = P + Q. The prior state participates in the prediction: the input adds to the state. </p>
+<p class="enddd"><a class="anchor" id="_test000145"></a>Verifies the update of the filter with same type state, output, and input against its equations: S = P + R, K = P.S⁻¹, Y = Z - X, X = X + K.Y, and the Joseph form P = (I - K).P.(I - K)ᵀ + K.R.Kᵀ.  </p>
 </dd>
 <dt>{<a class="el" href="uncertainties__1x1x0_8cpp.xhtml">uncertainties_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02uncertainties__1x1x0_8cpp_03.xhtml#aedb51978697a1a8ebcb75d42ac75cd7e">fcarouge::test::anonymous_namespace{uncertainties_1x1x0.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000033"></a>Verifies the declared estimate, process, and output uncertainties initialize the single-dimension filters.  </dd>
+<dd><a class="anchor" id="_test000032"></a>Verifies the declared estimate, process, and output uncertainties initialize the single-dimension filters.  </dd>
 <dt>{unimplemented_fail.cpp} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03.xhtml#a9cf715ad07ae2a1208236c62b367cb1a">fcarouge::test::anonymous_namespace{unimplemented_fail.cpp}::test</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_test000084"></a>Verifies the one value of a type without implementation is rejected. </p>
 <p class="enddd"><a class="anchor" id="_test000160"></a>Verifies the zero value of a type without implementation is rejected.  </p>
@@ -327,7 +327,7 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <dt>{<a class="el" href="unsupported__fail_8cpp.xhtml">unsupported_fail.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02unsupported__fail_8cpp_03.xhtml#a875d791041544dc6a3940839ebe8360f">fcarouge::test::anonymous_namespace{unsupported_fail.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000038"></a>Verifies an unsupported declaration is rejected: a process uncertainty without estimate and output uncertainties.  </dd>
 <dt>{<a class="el" href="updated__1x1x0_8cpp.xhtml">updated_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02updated__1x1x0_8cpp_03.xhtml#a313d8d7d2b74a4e10a66cbb3c9bf13ed">fcarouge::test::anonymous_namespace{updated_1x1x0.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000061"></a>Verifies formatting the characteristics of a single-dimension filter after an update.  </dd>
+<dd><a class="anchor" id="_test000062"></a>Verifies formatting the characteristics of a single-dimension filter after an update.  </dd>
 <dt>{<a class="el" href="values__2x1x0_8cpp.xhtml">values_2x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02values__2x1x0_8cpp_03.xhtml#a8a1ea2b7eabe072fa802ec1745c1ff26">fcarouge::test::anonymous_namespace{values_2x1x0.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000072"></a>Verifies the observation transition matrix H is set from its element values.  </dd>
 <dt>{<a class="el" href="values__2x1x1_8cpp.xhtml">values_2x1x1.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02values__2x1x1_8cpp_03.xhtml#a68d52fc9f238b752021544cec3504075">fcarouge::test::anonymous_namespace{values_2x1x1.cpp}::test</a>  </dt>
@@ -337,7 +337,7 @@ $(function(){initNavTree('test.xhtml',''); initResizable(true); });
 <dt>{<a class="el" href="values__5x4x0_8cpp.xhtml">values_5x4x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02values__5x4x0_8cpp_03.xhtml#a4b6fc1479b0df9285fd1ff81e57c696e">fcarouge::test::anonymous_namespace{values_5x4x0.cpp}::test</a>  </dt>
 <dd><a class="anchor" id="_test000151"></a>Verifies the estimated state column vector X is set from its element values.  </dd>
 <dt>{<a class="el" href="wide__1x1x0_8cpp.xhtml">wide_1x1x0.cpp</a>} Member <a class="el" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02wide__1x1x0_8cpp_03.xhtml#a4ae0e86508e455a3ec15200c5972743c">fcarouge::test::anonymous_namespace{wide_1x1x0.cpp}::test</a>  </dt>
-<dd><a class="anchor" id="_test000062"></a>Verifies formatting single-dimension filters to wide characters. </dd>
+<dd><a class="anchor" id="_test000063"></a>Verifies formatting single-dimension filters to wide characters. </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
