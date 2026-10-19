@@ -38,6 +38,7 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build("arguments_1x1x0")
 build("constant_1x1x0")
+build("constant_factory_1x1x0")
 build("rows")
 build("traits_1x1x0")
 build("traits_5x4x3" BACKENDS "eigen" "eigexed")

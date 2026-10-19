@@ -793,6 +793,15 @@ template <typename Type>
           constant_evaluable<ones<Type>>
 inline constexpr auto one<Type>{ones<Type>{}()};
 
+//! @brief The constant one matrix of a constant-evaluable factory.
+//!
+//! @details Constant-initialized from the `ones` factory, whichever of its
+//! specializations applies, including a user-defined one for a type without a
+//! `one` specialization.
+template <typename Type>
+  requires constant_evaluable<ones<Type>>
+inline constexpr auto constant_one{ones<Type>{}()};
+
 //! @brief The one matrix built at the point of use.
 //!
 //! @details The constant one matrix when it is a constant expression, so that
@@ -800,7 +809,7 @@ inline constexpr auto one<Type>{ones<Type>{}()};
 //! backend.
 template <typename Type> [[nodiscard]] constexpr auto make_one() {
   if constexpr (constant_evaluable<ones<Type>>) {
-    return one<Type>;
+    return constant_one<Type>;
   } else {
     return ones<Type>{}();
   }
@@ -854,6 +863,15 @@ template <typename Type>
           constant_evaluable<zeros<Type>>
 inline constexpr auto zero<Type>{zeros<Type>{}()};
 
+//! @brief The constant zero matrix of a constant-evaluable factory.
+//!
+//! @details Constant-initialized from the `zeros` factory, whichever of its
+//! specializations applies, including a user-defined one for a type without a
+//! `zero` specialization.
+template <typename Type>
+  requires constant_evaluable<zeros<Type>>
+inline constexpr auto constant_zero{zeros<Type>{}()};
+
 //! @brief The zero matrix built at the point of use.
 //!
 //! @details The constant zero matrix when it is a constant expression, so that
@@ -861,7 +879,7 @@ inline constexpr auto zero<Type>{zeros<Type>{}()};
 //! backend.
 template <typename Type> [[nodiscard]] constexpr auto make_zero() {
   if constexpr (constant_evaluable<zeros<Type>>) {
-    return zero<Type>;
+    return constant_zero<Type>;
   } else {
     return zeros<Type>{}();
   }
