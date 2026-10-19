@@ -11,15 +11,13 @@ Findings and follow-up work not yet scheduled.
 
 Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`, `docs/FCAROUGE_FINDINGS.md`, finding numbers in parentheses). Rechecked against `59c6e0d19` and `0c6e4ad64`: all still apply.
 
-- `kalman.hpp` always includes `<print>` and `<format>`, through `print.hpp` and `format.hpp`, and defines `print`. A program that never prints pays about 1.3 s of compile time per translation unit, and needs a hosted `<cstdio>`: firmware with a minimal C library builds only because its headers declare the names. Printing and formatting could be opt-in headers. (F2, F22)
-- Compile cost of `kalman.hpp` with g++ 15 at `-O2`: 2.2 s and 154 MB per translation unit. ArduPilot confines it to one source file per filter. (F22)
+- Compile cost of `kalman.hpp` with g++ 15 at `-O2`: 2.2 s and 154 MB per translation unit, 1.3 s of it `<print>` and `<format>`, included even when nothing is formatted. ArduPilot confines it to one source file per filter. (F22)
 - No CI job builds the samples for a microcontroller: `arm-none-eabi`, `-fno-exceptions -fno-rtti -fsingle-precision-constant -Wdouble-promotion`, with code size and stack use reports. Nothing guards the embedded properties the items below depend on. (F4)
 - A filter stores every intermediate of its last step as a member: gain, innovation and its uncertainty, models, last arguments. A 3-state filter takes 180 bytes where the hand-written one kept 56, a 2-state one 116 where it kept 20. (F35)
 - `update()` evaluates each equation as one expression whose temporaries all live at once, and computes `i - k * h` twice. A 3-state, 2-output double precision update has a 1416-byte stack frame on Cortex-M7, above ArduPilot's 1300-byte limit per function, which the caller cannot reduce. (F38)
 - The update and prediction are dense, general expressions. Against the generated sparse code of ArduPilot's EKFGSF yaw estimator, five corrections take 1203 ns instead of 271 ns and five predictions 1019 ns instead of 550 ns (x86-64, g++ 15), with 7392 bytes more flash on Cortex-M7. A benchmark against hand-written code for a small filter would track it. (F37)
 - The covariance update is the Joseph form only. ArduPilot's filters use `P -= K * H * P` followed by symmetrization; matching them needs a selectable form. (F8)
 - ArduPilot's 24-state EKF needs sequential scalar updates, inhibited states, the innovation and its uncertainty readable before the correction (gating, rejection), a replaceable covariance prediction, and post-update steps (symmetrization, variance limits). A two-stage update, innovation then correction, would cover most. (F7)
-- The `one<>` and `zero<>` variables cost 360 bytes of RAM for a 4-state filter on Cortex-M4 (F21); since `24a2f52cc` they take none in ArduPilot's firmware, whose backend's identity is a constant expression (defect 11 aside). The filter's 4072 bytes of code, against 1040 for the hand-written one it replaced, remain.
 
 ## Missing functionality: ArduPilot filters as samples
 
@@ -32,18 +30,14 @@ Filters of ArduPilot that cannot be written as a library filter, only beside it,
 
 The filters the library does host would make samples too, as embedded examples with units, besides the thermal EKF of `sample/ekf_4x1x0_thermal_soaring`: a 2-state position and velocity filter per axis, a 3-state airspeed scale calibration, a bank of five 3-state yaw EKFs, a 2-state height above ground filter.
 
-## Usability
+## Configurations and integration
 
 - A configuration without initial `P`, `Q`, `R`, set later, fails with "This requested filter configuration is not yet supported" without listing the accepted configurations. (F23)
-- Spelling the matrix types of a filter, covariance, output model, output uncertainty, requires internal names: `evaluate`, `quotient`, `product`, and `ᴀʙᵀ`, a non-ASCII identifier many code bases reject. Public ASCII aliases would do. (F24)
-- Typed matrices require specializing internal customization points, `evaluates`, `transposes`, `one`, `zero`, which exist only in the `support/eigen_typed` and `support/quantity` facades. A public, installed integration header would do. (F16)
-- The backend contract includes divisions used only to form types, `state / state` and `scalar / state`, which a backend must implement in full because the division's return type is deduced. Undocumented. (F18)
-- The mp-units `element_caster` specializations are defined in `support/quantity/fcarouge/linalg.hpp` and in TypedLinearAlgebra's `support/mp_units/fcarouge/mp_units.hpp`: including both redefines them. (F17)
+- The mp-units `element_caster` specializations are defined in `support/mp_units/fcarouge/mp_units.hpp` and in TypedLinearAlgebra's file of the same path and name: including both redefines them, and putting both directories on an include path makes one shadow the other. (F17)
 
-## Releases
+## Build reproducibility
 
 - `support/typed/CMakeLists.txt` fetches TypedLinearAlgebra without `GIT_TAG`: every build takes its default branch at that moment, and no Kalman version names a compatible TypedLinearAlgebra version. (F12)
-- The headers declare 0.5.4 and the latest tag is `0.5.3`, from 2026-03-16. A consumer pinning a tag gets seven months old code. (F9, F11)
 
 ## Proposals from the ArduPilot integration
 
