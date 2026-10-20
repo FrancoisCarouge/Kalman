@@ -37,6 +37,8 @@ var namespacefcarouge_1_1kalman__filter =
       [ "state_transition", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb", null ],
       [ "t", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a9f313ffb99383f4cdc23963798b101f8", null ],
       [ "transition", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab2a243dbef2d7378b11510473d5ac039", null ],
+      [ "constant_one", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a88cc352e176a8bcdb1ad31101e83503c", null ],
+      [ "constant_zero", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a03e14f73cdb6651b0f949e7be87f9dfb", null ],
       [ "deducer", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a614975b5427a01c25a3b4a2a1a40ff55", null ],
       [ "first_v", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a01271fc54dbb6537b67ca8b3fb534d35", null ],
       [ "input", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec4e2c402956cd28819cbaa6f550514a", null ],

@@ -78,6 +78,7 @@ var namespacefcarouge_1_1test =
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02characteristics__2x1x0_8cpp_03.xhtml#a159341d8a409f440a511484d29ddd508", null ]
     ] ],
     [ "anonymous_namespace{constant_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03" ],
+    [ "anonymous_namespace{constant_factory_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03.xhtml", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03" ],
     [ "anonymous_namespace{copy_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02copy__1x1x0_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02copy__1x1x0_8cpp_03.xhtml#ae699737ad47182072248ed68749283fd", null ]
     ] ],

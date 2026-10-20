@@ -17,6 +17,8 @@ var utility_8hpp =
     [ "make_one", "utility_8hpp.xhtml#aa2e38e5f129253b7d5d6b34a21f8df9b", null ],
     [ "make_zero", "utility_8hpp.xhtml#aecc1f84dced203078aa8042622b6e029", null ],
     [ "t", "utility_8hpp.xhtml#a9f313ffb99383f4cdc23963798b101f8", null ],
+    [ "constant_one", "utility_8hpp.xhtml#a88cc352e176a8bcdb1ad31101e83503c", null ],
+    [ "constant_zero", "utility_8hpp.xhtml#a03e14f73cdb6651b0f949e7be87f9dfb", null ],
     [ "first_v", "utility_8hpp.xhtml#a01271fc54dbb6537b67ca8b3fb534d35", null ],
     [ "one", "utility_8hpp.xhtml#a93649f95540d0d56f2fd9a4c97f5e670", null ],
     [ "one< Arithmetic >", "utility_8hpp.xhtml#ae2b577a08caad06156e77360e0b6ce26", null ],

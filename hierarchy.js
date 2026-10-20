@@ -74,5 +74,6 @@ var hierarchy =
     [ "fcarouge::test::anonymous_namespace{unimplemented_fail.cpp}::unknown", "structfcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03_1_1unknown.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{unrelated.cpp}::unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{constant_1x1x0.cpp}::value", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03_1_1value.xhtml", null ],
+    [ "fcarouge::test::anonymous_namespace{constant_factory_1x1x0.cpp}::value", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03_1_1value.xhtml", null ],
     [ "fcarouge::test::value", "classfcarouge_1_1test_1_1value.xhtml", null ]
 ];

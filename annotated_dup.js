@@ -18,6 +18,9 @@ var annotated_dup =
         [ "anonymous_namespace{constant_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03.xhtml", [
           [ "value", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03_1_1value.xhtml", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03_1_1value" ]
         ] ],
+        [ "anonymous_namespace{constant_factory_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03.xhtml", [
+          [ "value", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03_1_1value.xhtml", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03_1_1value" ]
+        ] ],
         [ "anonymous_namespace{set_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml", [
           [ "nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1nothing.xhtml", null ],
           [ "output_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise.xhtml", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise" ],
