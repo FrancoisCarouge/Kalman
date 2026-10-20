@@ -1,7 +1,7 @@
 var searchData=
 [
   ['callable_5f1x1x0_2ecpp_0',['callable_1x1x0.cpp',['../format_2callable__1x1x0_8cpp.xhtml',1,'(Global Namespace)'],['../h_2callable__1x1x0_8cpp.xhtml',1,'(Global Namespace)'],['../predict_2callable__1x1x0_8cpp.xhtml',1,'(Global Namespace)'],['../q__r_2callable__1x1x0_8cpp.xhtml',1,'(Global Namespace)'],['../update_2callable__1x1x0_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['callable_5f1x1x1_2ecpp_1',['callable_1x1x1.cpp',['../f__g_2callable__1x1x1_8cpp.xhtml',1,'(Global Namespace)'],['../predict_2callable__1x1x1_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['callable_5f1x1x1_2ecpp_1',['callable_1x1x1.cpp',['../f__g_2callable__1x1x1_8cpp.xhtml',1,'(Global Namespace)'],['../predict_2callable__1x1x1_8cpp.xhtml',1,'(Global Namespace)'],['../update_2callable__1x1x1_8cpp.xhtml',1,'(Global Namespace)']]],
   ['capturing_5fcallable_5f1x1x0_2ecpp_2',['capturing_callable_1x1x0.cpp',['../capturing__callable__1x1x0_8cpp.xhtml',1,'']]],
   ['changelog_2emd_3',['CHANGELOG.md',['../_c_h_a_n_g_e_l_o_g_8md.xhtml',1,'']]],
   ['characteristics_5f1x1x1_2ecpp_4',['characteristics_1x1x1.cpp',['../constructor_2characteristics__1x1x1_8cpp.xhtml',1,'(Global Namespace)'],['../print_2characteristics__1x1x1_8cpp.xhtml',1,'(Global Namespace)']]],
