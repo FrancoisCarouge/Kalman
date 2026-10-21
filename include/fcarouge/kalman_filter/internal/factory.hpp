@@ -44,6 +44,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "x_z_p_q_r_h_f.hpp"
 #include "x_z_p_q_r_hh_f_us_ps.hpp"
 #include "x_z_p_q_r_hh_ff_ps.hpp"
+#include "x_z_p_q_r_hh_ff_us_ps.hpp"
 #include "x_z_p_qq_rr_f.hpp"
 #include "x_z_p_r.hpp"
 #include "x_z_p_r_f.hpp"
@@ -171,6 +172,36 @@ template <typename Filter = void> struct filter_deducer {
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
               typename kt::observation_state_function(h.value),
+              typename kt::transition_function(ff.value),
+              typename kt::observation_function(hh.value)};
+  }
+
+  template <typename X, typename Z, typename P, typename Q, typename R,
+            typename H, typename F, typename T, typename O, typename... Us,
+            typename... Ps>
+    requires requires() {
+      requires std::invocable<H, X, Us...>;
+      requires std::invocable<F, X, Ps...>;
+      requires std::invocable<T, X, Ps...>;
+      requires std::invocable<O, X, Us...>;
+    }
+  [[nodiscard]] static constexpr auto
+  operator()(state<X> x, [[maybe_unused]] output_t<Z> z,
+             estimate_uncertainty<P> p, process_uncertainty<Q> q,
+             output_uncertainty<R> r, output_model<H> h, state_transition<F> f,
+             transition<T> ff, observation<O> hh,
+             [[maybe_unused]] update_types_t<Us...> uts,
+             [[maybe_unused]] prediction_types_t<Ps...> pts) {
+    using kt =
+        x_z_p_q_r_hh_ff_us_ps<X, Z, repack<update_types_t<Us...>>,
+                              repack<prediction_types_t<Ps...>>, H, F, T, O>;
+
+    return kt{typename kt::state(x.value),
+              internal::convert<typename kt::estimate_uncertainty>(p.value),
+              internal::convert<typename kt::process_uncertainty>(q.value),
+              internal::convert<typename kt::output_uncertainty>(r.value),
+              typename kt::observation_state_function(h.value),
+              typename kt::transition_state_function(f.value),
               typename kt::transition_function(ff.value),
               typename kt::observation_function(hh.value)};
   }
