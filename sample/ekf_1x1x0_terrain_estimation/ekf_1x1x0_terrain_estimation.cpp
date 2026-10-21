@@ -56,27 +56,27 @@ enum class sensor : std::uint8_t { range_finder, optical_flow };
 //! divided by the cosine of the tilt [m]. The optical flow sensor measures the
 //! apparent angular rate of the ground, the horizontal velocity divided by the
 //! range along its axis [rad.s^-1].
-[[nodiscard]] auto predict_observation(double terrain, sensor kind,
-                                       double position_down, double cos_tilt,
-                                       double velocity) -> double {
+const auto predict_observation{[](double terrain, sensor kind,
+                                  double position_down, double cos_tilt,
+                                  double velocity) -> double {
   const double height_above_ground{terrain - position_down};
   if (kind == sensor::range_finder) {
     return height_above_ground / cos_tilt;
   }
   return velocity * cos_tilt / height_above_ground;
-}
+}};
 
 //! @brief The derivative of the predicted observation with respect to the
 //! terrain's vertical position.
-[[nodiscard]] auto observation_jacobian(double terrain, sensor kind,
-                                        double position_down, double cos_tilt,
-                                        double velocity) -> double {
+const auto observation_jacobian{[](double terrain, sensor kind,
+                                   double position_down, double cos_tilt,
+                                   double velocity) -> double {
   const double height_above_ground{terrain - position_down};
   if (kind == sensor::range_finder) {
     return 1 / cos_tilt;
   }
   return -velocity * cos_tilt / (height_above_ground * height_above_ground);
-}
+}};
 
 //! @brief Terrain height estimation from a range finder and optical flow.
 //!
