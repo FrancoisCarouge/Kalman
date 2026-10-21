@@ -51,10 +51,13 @@ var hierarchy =
     [ "fcarouge::test::anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}::control", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1control.xhtml", null ],
     [ "std::formatter< fcarouge::kalman< Filter >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml", null ],
     [ "fcarouge::test::holder", "structfcarouge_1_1test_1_1holder.xhtml", null ],
+    [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_us_ps.cpp}::jacobian", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__us__ps_8cpp_03_1_1jacobian.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_f_us_ps.cpp}::measurement", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1measurement.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_ps.cpp}::measurement", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1measurement.xhtml", null ],
+    [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_us_ps.cpp}::measurement", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__us__ps_8cpp_03_1_1measurement.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_f_us_ps.cpp}::model", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1model.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_ps.cpp}::model", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1model.xhtml", null ],
+    [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_us_ps.cpp}::model", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__us__ps_8cpp_03_1_1model.xhtml", null ],
     [ "mp_units::named_unit", null, [
       [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::us_dollar", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml", null ]
@@ -70,6 +73,7 @@ var hierarchy =
     [ "fcarouge::test::anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}::process_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1process__noise.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_f_us_ps.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1propagation.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_ps.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1propagation.xhtml", null ],
+    [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_us_ps.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__us__ps_8cpp_03_1_1propagation.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1propagation.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{unimplemented_fail.cpp}::unknown", "structfcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03_1_1unknown.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{unrelated.cpp}::unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml", null ],

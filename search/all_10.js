@@ -1,29 +1,6 @@
 var searchData=
 [
-  ['k_0',['k',['../classfcarouge_1_1kalman.xhtml#a66b7fb5f4611f79fc9565a19853be657',1,'fcarouge::kalman']]],
-  ['kalman_1',['Kalman',['../index.xhtml#class-kalman',1,'Class Kalman'],['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'Contributing to Kalman'],['../index.xhtml',1,'François Carouge / Kalman']]],
-  ['kalman_2',['kalman',['../classfcarouge_1_1kalman.xhtml',1,'fcarouge::kalman&lt; typename &gt;'],['../classfcarouge_1_1kalman.xhtml#a97302af7221f8e1f224002863f32f2d3',1,'fcarouge::kalman::kalman(Arguments... arguments)'],['../classfcarouge_1_1kalman.xhtml#a413e9589c51e5234e547106382dd6afd',1,'fcarouge::kalman::kalman(const kalman &amp;other)=default'],['../classfcarouge_1_1kalman.xhtml#a0c2291a1d9bd4cc169f91e9b10399b38',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=default'],['../namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6',1,'fcarouge::kalman()']]],
-  ['kalman_20compare_200_201_200_200_202_200_200_202_200_20a_202023_2008_2007_3',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.1.0...0.2.0&quot; &gt;0.2.0&lt;/a&gt; - 2023-08-07',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07',1,'']]],
-  ['kalman_20compare_200_202_200_200_203_200_200_203_200_20a_202024_2009_2016_4',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.2.0...0.3.0&quot; &gt;0.3.0&lt;/a&gt; - 2024-09-16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16',1,'']]],
-  ['kalman_20compare_200_203_200_200_204_200_200_204_200_20a_202025_2002_2028_5',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.3.0...0.4.0&quot; &gt;0.4.0&lt;/a&gt; - 2025-02-28',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28',1,'']]],
-  ['kalman_20compare_200_204_200_200_205_200_200_205_200_20a_202025_2005_2002_6',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.4.0...0.5.0&quot; &gt;0.5.0&lt;/a&gt; - 2025-05-02',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md050---2025-05-02',1,'']]],
-  ['kalman_20compare_200_205_200_200_205_201_200_205_201_20a_202025_2005_2002_7',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.0...0.5.1&quot; &gt;0.5.1&lt;/a&gt; - 2025-05-02',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02',1,'']]],
-  ['kalman_20compare_200_205_201_200_205_202_200_205_202_20a_202025_2005_2019_8',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2&quot; &gt;0.5.2&lt;/a&gt; - 2025-05-19',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19',1,'']]],
-  ['kalman_20compare_200_205_202_200_205_203_200_205_203_20a_202026_2003_2016_9',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3&quot; &gt;0.5.3&lt;/a&gt; - 2026-03-16',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16',1,'']]],
-  ['kalman_20releases_20tag_200_201_200_200_201_200_20a_202022_2011_2025_10',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/releases/tag/0.1.0&quot; &gt;0.1.0&lt;/a&gt; - 2022-11-25',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25',1,'']]],
-  ['kalman_2ehpp_11',['kalman.hpp',['../kalman_8hpp.xhtml',1,'']]],
-  ['kalman_5fforward_2ehpp_12',['kalman_forward.hpp',['../kalman__forward_8hpp.xhtml',1,'']]],
-  ['kf_5f1x1x0_5fbuilding_5fheight_2ecpp_13',['kf_1x1x0_building_height.cpp',['../kf__1x1x0__building__height_8cpp.xhtml',1,'']]],
-  ['kf_5f1x1x0_5fbuilding_5fheight_5funit_2ecpp_14',['kf_1x1x0_building_height_unit.cpp',['../kf__1x1x0__building__height__unit_8cpp.xhtml',1,'']]],
-  ['kf_5f1x1x0_5fliquid_5ftemperature_2ecpp_15',['kf_1x1x0_liquid_temperature.cpp',['../kf__1x1x0__liquid__temperature_8cpp.xhtml',1,'']]],
-  ['kf_5f1x1x0_5fliquid_5ftemperature_5funit_2ecpp_16',['kf_1x1x0_liquid_temperature_unit.cpp',['../kf__1x1x0__liquid__temperature__unit_8cpp.xhtml',1,'']]],
-  ['kf_5f1x1x1_5f1d_5fdog_5fposition_2ecpp_17',['kf_1x1x1_1d_dog_position.cpp',['../kf__1x1x1__1d__dog__position_8cpp.xhtml',1,'']]],
-  ['kf_5f1x1x1_5f1d_5fdog_5fposition_5funit_2ecpp_18',['kf_1x1x1_1d_dog_position_unit.cpp',['../kf__1x1x1__1d__dog__position__unit_8cpp.xhtml',1,'']]],
-  ['kf_5f2x1x0_5fpairs_5fhedge_5fratio_5funit_2ecpp_19',['kf_2x1x0_pairs_hedge_ratio_unit.cpp',['../kf__2x1x0__pairs__hedge__ratio__unit_8cpp.xhtml',1,'']]],
-  ['kf_5f2x1x0_5fstock_5fprice_5funit_2ecpp_20',['kf_2x1x0_stock_price_unit.cpp',['../kf__2x1x0__stock__price__unit_8cpp.xhtml',1,'']]],
-  ['kf_5f2x1x1_5f1d_5frocket_5faltitude_2ecpp_21',['kf_2x1x1_1d_rocket_altitude.cpp',['../kf__2x1x1__1d__rocket__altitude_8cpp.xhtml',1,'']]],
-  ['kf_5f6x2x0_5f2d_5fvehicle_5fposition_2ecpp_22',['kf_6x2x0_2d_vehicle_position.cpp',['../kf__6x2x0__2d__vehicle__position_8cpp.xhtml',1,'']]],
-  ['kf_5f6x2x0_5f2d_5fvehicle_5fposition_5funit_2ecpp_23',['kf_6x2x0_2d_vehicle_position_unit.cpp',['../kf__6x2x0__2d__vehicle__position__unit_8cpp.xhtml',1,'']]],
-  ['kf_5f8x4x0_5f2d_5fbounding_5fbox_2ecpp_24',['kf_8x4x0_2d_bounding_box.cpp',['../kf__8x4x0__2d__bounding__box_8cpp.xhtml',1,'']]],
-  ['kind_25',['KIND',['../_l_i_c_e_n_s_e_8txt.xhtml#afc5700c5d5aaba504edee07608863834',1,'LICENSE.txt']]]
+  ['jacobian_0',['jacobian',['../structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__us__ps_8cpp_03_1_1jacobian.xhtml',1,'fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_us_ps.cpp}']]],
+  ['jacobian_5f1x1x0_2ecpp_1',['jacobian_1x1x0.cpp',['../member__type_2jacobian__1x1x0_8cpp.xhtml',1,'(Global Namespace)'],['../predict_2jacobian__1x1x0_8cpp.xhtml',1,'(Global Namespace)'],['../update_2jacobian__1x1x0_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['jacobian_5f2x1x0_2ecpp_2',['jacobian_2x1x0.cpp',['../jacobian__2x1x0_8cpp.xhtml',1,'']]]
 ];
