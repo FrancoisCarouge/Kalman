@@ -42,6 +42,7 @@ endif()
 
 add_subdirectory("ekf_4x1x0_thermal_soaring")
 add_subdirectory("ekf_6x4x0_3d_apollo_position")
+add_subdirectory("ekf_9x4x0_gimbal_attitude_unit")
 add_subdirectory("kf_1x1x0_building_height")
 add_subdirectory("kf_1x1x0_building_height_unit")
 add_subdirectory("kf_1x1x0_liquid_temperature")
