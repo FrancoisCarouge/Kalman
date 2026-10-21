@@ -2,10 +2,6 @@
 
 Findings and follow-up work not yet scheduled.
 
-## Tests
-
-- The defects recorded in `BUG.md` each name the test missing from the suite under their "Test suite" heading.
-
 ## Embedded use
 
 Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`, `docs/FCAROUGE_FINDINGS.md`, finding numbers in parentheses). Rechecked against `59c6e0d19` and `0c6e4ad64`: all still apply.
