@@ -41,7 +41,6 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <cassert>
 
-#include <mp-units/compat_macros.h>
 #include <mp-units/framework/dimension.h>
 
 namespace fcarouge::sample {
@@ -50,7 +49,8 @@ namespace {
 //! own: a price never converts to nor compares with a physical quantity.
 constexpr struct dim_currency final : mp_units::base_dimension<"$"> {
 } dim_currency;
-QUANTITY_SPEC(currency, dim_currency);
+constexpr struct currency : mp_units::quantity_spec<dim_currency> {
+} currency;
 constexpr struct us_dollar final
     : mp_units::named_unit<"USD", mp_units::kind_of<currency>> {
 } us_dollar;
