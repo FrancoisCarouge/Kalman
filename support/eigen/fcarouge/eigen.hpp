@@ -46,7 +46,6 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @note The Eigen3 linear algebra is not constexpr-compatible as of July 2023.
 
-#include <concepts>
 #include <cstddef>
 #include <format>
 #include <sstream>
@@ -62,10 +61,6 @@ namespace fcarouge::eigen {
 //! @brief An Eigen3 algebraic concept.
 template <typename Type>
 concept is_eigen = requires { typename Type::PlainMatrix; };
-
-template <typename Type>
-concept derived_from_eigen_base =
-    std::derived_from<Type, Eigen::EigenBase<Type>>;
 
 template <typename Type>
 concept statically_sized =
@@ -217,21 +212,34 @@ struct std::formatter<fcarouge::eigen::matrix<Type, Row, Column>, Char> {
   }
 };
 
-//! @brief Tuple size specialization of Eigen types for structured bindings.
-template <typename Type>
-  requires fcarouge::eigen::derived_from_eigen_base<Type> &&
-           fcarouge::eigen::statically_sized<Type>
-struct std::tuple_size<Type>
-    : std::integral_constant<std::size_t, Type::RowsAtCompileTime *
-                                              Type::ColsAtCompileTime> {};
+//! @brief Tuple size specialization of Eigen matrices for structured bindings.
+//!
+//! @note The specializations match the `Eigen::Matrix` template arguments
+//! rather than a constrained arbitrary type: the more specialized argument
+//! pattern is selected over a third party's constrained arbitrary type
+//! specialization, such as mp-units' Eigen vector integration, instead of
+//! being ambiguous with it.
+template <typename Scalar, int Row, int Column, int Option, int MaximumRow,
+          int MaximumColumn>
+  requires fcarouge::eigen::statically_sized<
+      Eigen::Matrix<Scalar, Row, Column, Option, MaximumRow, MaximumColumn>>
+struct std::tuple_size<
+    Eigen::Matrix<Scalar, Row, Column, Option, MaximumRow, MaximumColumn>>
+    : std::integral_constant<std::size_t,
+                             static_cast<std::size_t>(Row) *
+                                 static_cast<std::size_t>(Column)> {};
 
-//! @brief Tuple element specialization of Eigen types for structured bindings.
-template <std::size_t Index, typename Type>
-  requires fcarouge::eigen::derived_from_eigen_base<Type> &&
-           fcarouge::eigen::statically_sized<Type> &&
-           (Index < std::tuple_size_v<Type>)
-struct std::tuple_element<Index, Type> {
-  using type = typename Type::Scalar;
+//! @brief Tuple element specialization of Eigen matrices for structured
+//! bindings.
+template <std::size_t Index, typename Scalar, int Row, int Column, int Option,
+          int MaximumRow, int MaximumColumn>
+  requires fcarouge::eigen::statically_sized<Eigen::Matrix<
+               Scalar, Row, Column, Option, MaximumRow, MaximumColumn>> &&
+           (Index < std::tuple_size_v<Eigen::Matrix<Scalar, Row, Column, Option,
+                                                    MaximumRow, MaximumColumn>>)
+struct std::tuple_element<Index, Eigen::Matrix<Scalar, Row, Column, Option,
+                                               MaximumRow, MaximumColumn>> {
+  using type = Scalar;
 };
 
 #endif // FCAROUGE_EIGEN_HPP
