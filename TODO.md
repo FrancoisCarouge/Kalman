@@ -29,6 +29,8 @@ The filters the library does host would make samples too, as embedded examples w
 
 ## Configurations and integration
 
+- No angle arithmetic: the innovation is `z - h(x)` and the correction `x + K y`, so an angle crossing ±π gives a 2π innovation. MRPT's range-bearing tracking filter diverges on the library (22.5 m off after 2000 steps of a target circling the sensor) unless the measured bearing is wrapped around the predicted one before `update()`; PX4's yaw models wrap their state through `x()` after each update. A customization point for the innovation difference and the correction sum would host them, as MRPT's `OnSubtractObservationVectors` does. (F45)
+
 - A configuration without initial `P`, `Q`, `R`, set later, fails with "This requested filter configuration is not yet supported" without listing the accepted configurations. (F23)
 - The mp-units `element_caster` specializations are defined in `support/mp_units/fcarouge/mp_units.hpp` and in TypedLinearAlgebra's file of the same path and name: including both redefines them, and putting both directories on an include path makes one shadow the other. (F17)
 
