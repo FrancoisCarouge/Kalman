@@ -4,7 +4,7 @@ Findings and follow-up work not yet scheduled.
 
 ## Embedded use
 
-Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`, `docs/FCAROUGE_FINDINGS.md`, finding numbers in parentheses). Rechecked against `59c6e0d19` and `0c6e4ad64`: all still apply.
+Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`), and since 2026-10-22 of PX4, MRPT and ROS 2; finding numbers in parentheses refer to the integration's findings table, kept in the owner's workspace. Rechecked against `a241cc447`: all still apply.
 
 - Compile cost of `kalman.hpp` with g++ 15 at `-O2`: 2.2 s and 154 MB per translation unit, 1.3 s of it `<print>` and `<format>`, included even when nothing is formatted. ArduPilot confines it to one source file per filter. (F22)
 - No CI job builds the samples for a microcontroller: `arm-none-eabi`, `-fno-exceptions -fno-rtti -fsingle-precision-constant -Wdouble-promotion`, with code size and stack use reports. Nothing guards the embedded properties the items below depend on. (F4)
