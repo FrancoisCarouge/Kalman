@@ -58,7 +58,7 @@ Options for the owner to decide, not implemented: each touches the named-argumen
 - A. A named `covariance_correction<joseph | simple | simple_symmetric>` declaration tag.
 - B. A callable `covariance_correction{callable(p, k, h, r) -> p}` for any form, the limited one included.
 
-**Configurations (F23).** No configuration combines a state transition F computed from prediction arguments with an output model H computed from update arguments (an `hh_ff_us_ps` filter); the gimbal sample sets F before each prediction instead. Supporting the combination, or deducing configurations from the present characteristics rather than an enumerated list, would cover it.
+**Configurations (F23).** `x_z_p_q_r_hh_ff_us_ps` (`4ad94d918`) now combines a state transition Jacobian F computed from the prediction arguments with an output model H computed from the update arguments; PX4's and ArduPilot's EKFGSF ports use it, and the gimbal sample could too. A callable Q beside a `transition` is still missing (the EKFGSF ports set `q()` before each prediction); deducing configurations from the present characteristics rather than an enumerated list would cover such combinations.
 
 **Several output types (F40).** The terrain and gimbal samples observe one state with sensors of different units and are therefore untyped.
 
