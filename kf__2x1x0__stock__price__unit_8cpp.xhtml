@@ -104,7 +104,6 @@ $(function(){initNavTree('kf__2x1x0__stock__price__unit_8cpp.xhtml',''); initRes
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">kf_2x1x0_stock_price_unit.cpp File Reference</div></div>
 </div><!--header-->
@@ -112,7 +111,6 @@ $(function(){initNavTree('kf__2x1x0__stock__price__unit_8cpp.xhtml',''); initRes
 <div class="textblock"><code>#include &quot;<a class="el" href="kalman_8hpp_source.xhtml">fcarouge/kalman.hpp</a>&quot;</code><br />
 <code>#include &quot;fcarouge/linalg.hpp&quot;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
-<code>#include &lt;mp-units/compat_macros.h&gt;</code><br />
 <code>#include &lt;mp-units/framework/dimension.h&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for kf_2x1x0_stock_price_unit.cpp:</div>
@@ -128,6 +126,8 @@ $(function(){initNavTree('kf__2x1x0__stock__price__unit_8cpp.xhtml',''); initRes
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The currency, not a physical quantity, is a base dimension of its own: a price never converts to nor compares with a physical quantity.  <a href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1currency.xhtml">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::currency</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,15 +157,12 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a64e12eedf5f118198041f66dcf30dc15" id="r_a64e12eedf5f118198041f66dcf30dc15"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a64e12eedf5f118198041f66dcf30dc15">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::output_t</a> = <a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aabf83d5b59010c1ee6d41c6f8b771211">vector</a>&lt;<a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aa5216a64e49528f9f743f2c222104a81">price</a>&gt;</td></tr>
 <tr class="separator:a64e12eedf5f118198041f66dcf30dc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a18ca64b0dfaccf2a7c77d4a75aab3e93" id="r_a18ca64b0dfaccf2a7c77d4a75aab3e93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a18ca64b0dfaccf2a7c77d4a75aab3e93">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::QUANTITY_SPEC</a> (currency, <a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml">dim_currency</a>)</td></tr>
-<tr class="separator:a18ca64b0dfaccf2a7c77d4a75aab3e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a21632fb99c18787e5da29e018ce9690f" id="r_a21632fb99c18787e5da29e018ce9690f"><td class="memItemLeft" align="right" valign="top">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a21632fb99c18787e5da29e018ce9690f">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency</a></td></tr>
 <tr class="separator:a21632fb99c18787e5da29e018ce9690f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57e03030052cfac38be2db9f30983067" id="r_a57e03030052cfac38be2db9f30983067"><td class="memItemLeft" align="right" valign="top">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::currency&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a57e03030052cfac38be2db9f30983067">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::currency</a></td></tr>
+<tr class="separator:a57e03030052cfac38be2db9f30983067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a676bc9f79c26574f36517994d2f42c33" id="r_a676bc9f79c26574f36517994d2f42c33"><td class="memItemLeft" align="right" valign="top">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a676bc9f79c26574f36517994d2f42c33">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::us_dollar</a></td></tr>
 <tr class="separator:a676bc9f79c26574f36517994d2f42c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19962552a964346dd868c6b2440dba53" id="r_a19962552a964346dd868c6b2440dba53"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a19962552a964346dd868c6b2440dba53">fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::USD</a> {<a class="el" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml">us_dollar</a>}</td></tr>

@@ -65,5 +65,6 @@ var searchData=
   ['copy_5fcallable_5f1x1x0_2ecpp_62',['copy_callable_1x1x0.cpp',['../copy__callable__1x1x0_8cpp.xhtml',1,'']]],
   ['corporations_20institutions_63',['Corporations &amp; Institutions',['../index.xhtml#corporations--institutions',1,'']]],
   ['covenant_20code_20of_20conduct_64',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
-  ['coverage_65',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]]
+  ['coverage_65',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
+  ['currency_66',['currency',['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1currency.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::currency'],['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1currency.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::currency'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ab13d872ff4a1a71a530b31501eddfc1c',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::currency'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a57e03030052cfac38be2db9f30983067',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::currency']]]
 ];

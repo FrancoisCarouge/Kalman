@@ -75,6 +75,10 @@ var hierarchy =
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_ps.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1propagation.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_us_ps.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__us__ps_8cpp_03_1_1propagation.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1propagation.xhtml", null ],
+    [ "mp_units::quantity_spec", null, [
+      [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1currency.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1currency.xhtml", null ]
+    ] ],
     [ "fcarouge::test::anonymous_namespace{unimplemented_fail.cpp}::unknown", "structfcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03_1_1unknown.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{unrelated.cpp}::unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{constant_1x1x0.cpp}::value", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03_1_1value.xhtml", null ],

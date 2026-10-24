@@ -156,14 +156,14 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;mp-units/compat_macros.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;mp-units/framework/dimension.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a> {</div>
 <div class="line"><span class="keyword">namespace </span>{</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>dim_currency final : mp_units::base_dimension&lt;&quot;$&quot;&gt; {</div>
 <div class="line">} dim_currency;</div>
-<div class="line">QUANTITY_SPEC(currency, dim_currency);</div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>currency : mp_units::quantity_spec&lt;dim_currency&gt; {</div>
+<div class="line">} currency;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>us_dollar final</div>
 <div class="line">    : mp_units::named_unit&lt;&quot;USD&quot;, mp_units::kind_of&lt;currency&gt;&gt; {</div>
 <div class="line">} us_dollar;</div>

@@ -3,10 +3,12 @@ var annotated_dup =
     [ "fcarouge", "namespacefcarouge.xhtml", [
       [ "sample", "namespacefcarouge_1_1sample.xhtml", [
         [ "anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml", [
+          [ "currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1currency.xhtml", null ],
           [ "dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1dim__currency.xhtml", null ],
           [ "us_dollar", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml", null ]
         ] ],
         [ "anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml", [
+          [ "currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1currency.xhtml", null ],
           [ "dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml", null ],
           [ "us_dollar", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml", null ]
         ] ]

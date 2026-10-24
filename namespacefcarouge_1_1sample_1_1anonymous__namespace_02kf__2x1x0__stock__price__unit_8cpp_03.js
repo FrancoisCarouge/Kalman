@@ -1,5 +1,6 @@
 var namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03 =
 [
+    [ "currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1currency.xhtml", null ],
     [ "dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml", null ],
     [ "us_dollar", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml", null ],
     [ "output_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a64e12eedf5f118198041f66dcf30dc15", null ],
@@ -7,7 +8,7 @@ var namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__pric
     [ "price_slope", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a2ead4356d36ec68f934aefb898f030b0", null ],
     [ "state_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#ae954946a9d672546e08408f707de82e5", null ],
     [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aabf83d5b59010c1ee6d41c6f8b771211", null ],
-    [ "QUANTITY_SPEC", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a18ca64b0dfaccf2a7c77d4a75aab3e93", null ],
+    [ "currency", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a57e03030052cfac38be2db9f30983067", null ],
     [ "dim_currency", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a21632fb99c18787e5da29e018ce9690f", null ],
     [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a4ae1f36cbdffd9bfb09ce267dc662d13", null ],
     [ "us_dollar", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a676bc9f79c26574f36517994d2f42c33", null ],
