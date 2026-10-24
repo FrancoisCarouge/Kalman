@@ -222,7 +222,7 @@ class fcarouge::kalman&lt; typename &gt;</div><p>A generic Kalman filter. </p>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000006">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000005">Todo</a></b></dt><dd><p class="startdd">Make this class usable in constant expressions. </p>
 <p class="interdd">Is this filter restricted to Newton's equations of motion? That is only a discretized continuous-time kinematic filter? How about non-Newtonian systems? </p>
 <p class="interdd">Symmetrization support might be superfluous. How to confirm it is safe to remove? Optional? </p>
 <p class="interdd">Would we want to support smoothers? </p>
@@ -420,6 +420,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
@@ -470,6 +471,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
@@ -520,6 +522,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
@@ -570,6 +573,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a5">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a5">kf_1x1x0_liquid_temperature_unit.cpp</a>, and <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a7">kf_2x1x0_stock_price_unit.cpp</a>.</dd>
 </dl>
@@ -698,6 +702,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a2">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a3">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a3">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a3">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a6">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a6">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a3">kf_2x1x1_1d_rocket_altitude.cpp</a>, and <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a4">kf_6x2x0_2d_vehicle_position.cpp</a>.</dd>
 </dl>
@@ -787,7 +792,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000017">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000018">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>PredictionTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_thermal_soaring_8cpp-example.xhtml#a1">ekf_4x1x0_thermal_soaring.cpp</a>, <a class="el" href="ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml#a1">ekf_6x4x0_3d_apollo_position.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a1">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_8cpp-example.xhtml#a1">kf_1x1x1_1d_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml#a1">kf_1x1x1_1d_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a5">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a4">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a1">kf_2x1x1_1d_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a1">kf_6x2x0_2d_vehicle_position.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a3">kf_6x2x0_2d_vehicle_position_unit.cpp</a>, and <a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a2">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
@@ -828,7 +833,11 @@ template&lt;typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional copied initializers to set the process noise covariance matrix Q characteristic. The characteristic may also be a callable of the form <code>process_uncertainty(const state &amp;, const ! PredictionTypes &amp;...)</code>, of the type configured at construction. <pre class="fragment">  \par Complexity
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the process noise covariance matrix Q characteristic. The characteristic may also be a callable of the form <code>process_uncertainty(const state &amp;, const ! PredictionTypes &amp;...)</code>, of the type configured at construction. <pre class="fragment">  @return A constant reference to the characteristic for an lvalue filter,
+  valid for the lifetime of the filter and reflecting its later changes, or
+  the moved characteristic for an rvalue filter.
+
+  \par Complexity
   Constant. 
 </pre> </td></tr>
   </table>
@@ -879,7 +888,11 @@ template&lt;typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>Explicit object parameter. Internal implementation detail. </td></tr>
-    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation noise covariance matrix R characteristic. The characteristic may also be a callable of the form <code>output_uncertainty(const state &amp;, const output &amp;, ! const UpdateTypes &amp;...)</code>, of the type configured at construction. <pre class="fragment">  \par Complexity
+    <tr><td class="paramname">values</td><td>The optional copied initializers to set the observation noise covariance matrix R characteristic. The characteristic may also be a callable of the form <code>output_uncertainty(const state &amp;, const output &amp;, ! const UpdateTypes &amp;...)</code>, of the type configured at construction. <pre class="fragment">  @return A constant reference to the characteristic for an lvalue filter,
+  valid for the lifetime of the filter and reflecting its later changes, or
+  the moved characteristic for an rvalue filter.
+
+  \par Complexity
   Constant. 
 </pre> </td></tr>
   </table>
@@ -934,6 +947,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a8">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</dd>
 </dl>
@@ -986,6 +1000,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>
@@ -1073,7 +1088,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000020">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
+<dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000021">Todo</a></b></dt><dd><p class="startdd">Consider if returning the state column vector X would be preferable? Or fluent interface? Would be compatible with an ES-EKF implementation? </p>
 <p class="enddd">Can the parameter pack of <code>UpdateTypes</code> be explicit in the method declaration for user clarity? </p>
 </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_thermal_soaring_8cpp-example.xhtml#a2">ekf_4x1x0_thermal_soaring.cpp</a>, <a class="el" href="ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml#a2">ekf_6x4x0_3d_apollo_position.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a3">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a4">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a4">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a4">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_8cpp-example.xhtml#a2">kf_1x1x1_1d_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml#a2">kf_1x1x1_1d_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a3">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a3">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a4">kf_2x1x1_1d_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a2">kf_6x2x0_2d_vehicle_position.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a4">kf_6x2x0_2d_vehicle_position_unit.cpp</a>, and <a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a3">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
@@ -1127,6 +1142,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="ekf_4x1x0_thermal_soaring_8cpp-example.xhtml#a3">ekf_4x1x0_thermal_soaring.cpp</a>, <a class="el" href="ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml#a3">ekf_6x4x0_3d_apollo_position.cpp</a>, <a class="el" href="kf_1x1x0_building_height_8cpp-example.xhtml#a1">kf_1x1x0_building_height.cpp</a>, <a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a1">kf_1x1x0_building_height_unit.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_8cpp-example.xhtml#a2">kf_1x1x0_liquid_temperature.cpp</a>, <a class="el" href="kf_1x1x0_liquid_temperature_unit_8cpp-example.xhtml#a2">kf_1x1x0_liquid_temperature_unit.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_8cpp-example.xhtml#a3">kf_1x1x1_1d_dog_position.cpp</a>, <a class="el" href="kf_1x1x1_1d_dog_position_unit_8cpp-example.xhtml#a3">kf_1x1x1_1d_dog_position_unit.cpp</a>, <a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a4">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>, <a class="el" href="kf_2x1x0_stock_price_unit_8cpp-example.xhtml#a5">kf_2x1x0_stock_price_unit.cpp</a>, <a class="el" href="kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml#a2">kf_2x1x1_1d_rocket_altitude.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml#a3">kf_6x2x0_2d_vehicle_position.cpp</a>, <a class="el" href="kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml#a5">kf_6x2x0_2d_vehicle_position_unit.cpp</a>, and <a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a4">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
 </dl>
@@ -1179,6 +1195,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml#a7">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</dd>
 </dl>
@@ -1231,6 +1248,7 @@ template&lt;typename &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the characteristic for an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, or the moved characteristic for an rvalue filter.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant. </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="format_8hpp_source.xhtml#l00063">std::formatter&lt; fcarouge::kalman&lt; Filter &gt;, Char &gt;::format()</a>.</p>

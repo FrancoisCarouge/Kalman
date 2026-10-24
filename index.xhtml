@@ -362,7 +362,7 @@ Characteristics</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>z</code>   </td><td class="markdownTableBodyNone">Manages the observation column vector <em>Z</em>. Gets the value last used during the update. The default value is the null column vector.   </td></tr>
 </table>
-<p>The characteristics are optionally present according to the filter configuration. A characteristic is set from values that direct-list-initialize it, without narrowing of the characteristic nor of its elements, through a modifiable filter, or replaced by a callable of its configured type.</p>
+<p>The characteristics are optionally present according to the filter configuration. A characteristic is set from values that direct-list-initialize it, without narrowing of the characteristic nor of its elements, through a modifiable filter, or replaced by a callable of its configured type. A characteristic is read as a constant reference from an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, and as a moved value from an rvalue filter.</p>
 <h4><a class="anchor" id="modifiers"></a>
 Modifiers</h4>
 <table class="markdownTable">
@@ -411,6 +411,7 @@ Selected Tradeoffs</h2>
 <li>A filter declaration has a single arithmetic type, so that the filter equations never narrow a result into a characteristic, at the cost of converting mixed precision values, for example a <code>float</code> measurement of a <code>double</code> state, before passing them to the filter.</li>
 <li>The ergonomics and precision of the default filter takes precedence over performance.</li>
 <li>Callable characteristics are stored by value, their types part of the deduced filter type, without type erasure, for real-time compatibility: constructing, copying, or reconfiguring a filter does not allocate memory, and the callables may be inlined. The costs are a filter type specific to its callables, a callable characteristic replaced only by a callable of the same type, and filter assignment available only for assignable callables, which a lambda expression with captures is not. Configuring a function pointer or a <code>std::function</code> restores the replacement by any compatible callable, at the cost of an indirection, and of allocations for <code>std::function</code>.</li>
+<li>A characteristic is read through a constant reference from an lvalue filter, without copying it, and written only through its accessor's setting overloads, which constrain the values. Reading from an rvalue filter moves the characteristic out instead, since a reference into the filter would dangle past the full-expression.</li>
 </ul>
 <h2><a class="anchor" id="lessons-learned"></a>
 Lessons Learned</h2>

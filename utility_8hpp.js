@@ -16,6 +16,7 @@ var utility_8hpp =
     [ "for_constexpr", "utility_8hpp.xhtml#ab58c8954326f0d1f628c70168168bafe", null ],
     [ "make_one", "utility_8hpp.xhtml#aa2e38e5f129253b7d5d6b34a21f8df9b", null ],
     [ "make_zero", "utility_8hpp.xhtml#aecc1f84dced203078aa8042622b6e029", null ],
+    [ "read", "utility_8hpp.xhtml#af191c9432f237e4cfb0fedc92bd0eb5a", null ],
     [ "t", "utility_8hpp.xhtml#a9f313ffb99383f4cdc23963798b101f8", null ],
     [ "constant_one", "utility_8hpp.xhtml#a88cc352e176a8bcdb1ad31101e83503c", null ],
     [ "constant_zero", "utility_8hpp.xhtml#a03e14f73cdb6651b0f949e7be87f9dfb", null ],
