@@ -44,6 +44,7 @@ endif()
 
 add_subdirectory("eigen")
 add_subdirectory("eigexed")
+add_subdirectory("freestanding")
 add_subdirectory("main")
 add_subdirectory("matplot")
 add_subdirectory("mp_units")

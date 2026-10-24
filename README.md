@@ -16,6 +16,7 @@ std::println("{}", filter);
 ```
 
 [![Pipeline](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/pipeline.yml)
+[![Freestanding](https://github.com/FrancoisCarouge/Kalman/actions/workflows/freestanding.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/freestanding.yml)
 [![Sanitizer](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/sanitizer.yml)
 [![Format](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/format.yml)
 [![ClangTidy](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml/badge.svg)](https://github.com/FrancoisCarouge/Kalman/actions/workflows/clang_tidy.yml)
@@ -74,6 +75,7 @@ Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) a
 | Eigen | [Example backend: `support/eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen). |
 | Eigen + TypedLinearAlgebra | [Example backend: `support/eigexed`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigexed). |
 | Eigen + TypedLinearAlgebra + mp-units | [Example backend: `support/mp_units_eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units_eigen). |
+| Freestanding | [Example backend: `support/freestanding`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/freestanding). |
 | mp-units | [Example backend: `support/mp_units`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units). |
 
 ### Samples
@@ -259,7 +261,7 @@ The prediction and the update take the arguments of their declared types followe
 
 ### Format
 
-A specialization of the standard formatter is provided for the filter. Use `std::format` to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported.
+A specialization of the standard formatter is provided for the filter. Use `std::format` to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported. Hosted implementation only.
 
 ```cpp
 kalman filter;
@@ -279,7 +281,7 @@ auto filter{kalman{...} | print};
 
 | Decorator | Definition |
 | --- | --- |
-| `print` | Print filter activities to the standard output. |
+| `print` | Print filter activities to the standard output. Hosted implementation only. |
 
 ## More
 
@@ -300,6 +302,7 @@ In theory there is no difference between theory and practice, while in practice 
 - The default floating point data type for the filter is `double` with about 16 significant digits to reduce loss of information compared to `float`.
 - A filter declaration has a single arithmetic type, so that the filter equations never narrow a result into a characteristic, at the cost of converting mixed precision values, for example a `float` measurement of a `double` state, before passing them to the filter.
 - The ergonomics and precision of the default filter takes precedence over performance.
+- The library is freestanding compatible, for embedded and bare-metal targets: it uses no hosted-only standard header, no exception, no run-time type information, and no memory allocation. The formatting and printing support, built on the hosted-only `<format>` and `<print>` headers, are omitted from a freestanding implementation rather than reimplemented. The same header serves both implementations without configuration.
 - Callable characteristics are stored by value, their types part of the deduced filter type, without type erasure, for real-time compatibility: constructing, copying, or reconfiguring a filter does not allocate memory, and the callables may be inlined. The costs are a filter type specific to its callables, a callable characteristic replaced only by a callable of the same type, and filter assignment available only for assignable callables, which a lambda expression with captures is not. Configuring a function pointer or a `std::function` restores the replacement by any compatible callable, at the cost of an indirection, and of allocations for `std::function`.
 
 ### Lessons Learned
