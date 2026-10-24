@@ -4,11 +4,10 @@ Findings and follow-up work not yet scheduled.
 
 ## Embedded use
 
-Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`), and since 2026-10-22 of PX4, MRPT and ROS 2; finding numbers in parentheses refer to the integration's findings table, kept in the owner's workspace. Rechecked against `a241cc447`: all still apply.
+Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`), and since 2026-10-22 of PX4, MRPT and ROS 2; finding numbers in parentheses refer to the integration's findings table, kept in the owner's workspace. Rechecked against `6ad1d91f1` (2026-10-23): F44 and F46 resolved there and removed, the others still apply.
 
 - Compile cost of `kalman.hpp` with g++ 15 at `-O2`: 2.2 s and 154 MB per translation unit, 1.3 s of it `<print>` and `<format>`, included even when nothing is formatted. ArduPilot confines it to one source file per filter. (F22)
-- No freestanding configuration: `kalman.hpp` always includes `<format>` and `<print>` and defines the `print` decorator. PX4's NuttX boards have no C++ standard library and a libc other than newlib, so only libstdc++'s freestanding subset compiles there, where both headers are an `#error`: the library cannot be included on a PX4 flight controller as published. PX4 predefines the include guards of `internal/format.hpp` and `internal/print.hpp` and declares the empty `fcarouge::printer` tag before including it. Guarding the formatting and printing support on `__STDC_HOSTED__`, or moving it into opt-in headers, would fix it and the compile cost above. (F44)
-- No CI job builds the samples for a microcontroller: `arm-none-eabi`, `-fno-exceptions -fno-rtti -fsingle-precision-constant -Wdouble-promotion`, with code size and stack use reports. Nothing guards the embedded properties the items below depend on. (F4)
+- The freestanding CI job (`freestanding.yml`, `arm-none-eabi -ffreestanding`) compiles but reports no costs: a filter that grows its object (F35), its frames (F38) or its code (F37) passes. Reporting the object size, the largest stack frame (`-fstack-usage`) and the code size of the freestanding samples, failing on an increase, would guard them. (F4)
 - A filter stores every intermediate of its last step as a member: gain, innovation and its uncertainty, models, last arguments. A 3-state filter takes 180 bytes where the hand-written one kept 56, a 2-state one 116 where it kept 20, and on PX4 a 1-state filter 100 bytes where it kept 56, a 2-state one 128 where it kept 36, each 3-state EKFGSF yaw model 232 where it kept 48. (F35)
 - `update()` evaluates each equation as one expression whose temporaries all live at once, and computes `i - k * h` twice. A 3-state, 2-output double precision update has a 1416-byte stack frame on Cortex-M7, above ArduPilot's 1300-byte limit per function, which the caller cannot reduce. On PX4, a 2-state, 1-output single precision filter's largest frame grows from 120 to 448 bytes and its code from 678 to 2396 bytes at `-Os`; the EKFGSF yaw model update from 224 to 808 bytes. (F38)
 - The update and prediction are dense, general expressions. Against the generated sparse code of ArduPilot's EKFGSF yaw estimator, five corrections take 1203 ns instead of 271 ns and five predictions 1019 ns instead of 550 ns (x86-64, g++ 15), with 7392 bytes more flash on Cortex-M7. A benchmark against hand-written code for a small filter would track it. (F37)
@@ -68,19 +67,7 @@ Options for the owner to decide, not implemented: each touches the named-argumen
 
 ## Proposals from the PX4, MRPT and ROS 2 integrations
 
-Options for the owner to decide, not implemented: the first changes the shape of the public `kalman` API, the second what its top-level header provides, the third the update equations.
-
-**Getter return types (F46, `BUG.md` 12).** The twelve getters return their characteristic by value, `decltype(auto)` of an unparenthesized member access: each read copies (4608 bytes for a 24-state double covariance read element by element through `p()`), their documentation states a constant complexity, and with TypedLinearAlgebra `const auto & s = filter.x().data();` dangles without a diagnostic.
-
-- A. A `const` reference for an lvalue filter, a value for an rvalue one: `filter.x()` reads in place and cannot write around the setter; `make_filter().x()` still yields a value, so no reference into a temporary. A caller holding the reference across `update()` or `predict()` sees the new value. Recommended.
-- B. Forwarding references, by parenthesizing the returned member access: writable characteristics for a non-`const` filter, `filter.x().at<0>(v)` changing the state without the setter, and an rvalue reference into an rvalue filter.
-- C. Keep the copies, and document them and their linear complexity.
-
-**A freestanding build (F44).** `kalman.hpp` always includes `<format>` and `<print>` and defines the `print` decorator, which a freestanding library (PX4's NuttX boards) cannot provide; PX4 includes it through a header that predefines the include guards of `format.hpp` and `print.hpp` and declares the `printer` tag.
-
-- A. Include `format.hpp` and `print.hpp`, and define `print`, only when `__STDC_HOSTED__`: no change for hosted users, no configuration macro, detected by the compiler (`-ffreestanding`).
-- B. Opt-in headers, `fcarouge/kalman_format.hpp` and `fcarouge/kalman_print.hpp`: also removes the 1.3 s of `<format>` and `<print>` from every translation unit (F22), but breaks users who format a filter without including them.
-- C. A `FCAROUGE_KALMAN_HOSTED` macro defaulting to `__STDC_HOSTED__`, as mp-units' `MP_UNITS_HOSTED`: A, overridable.
+Options for the owner to decide, not implemented. The getter return types (F46) and the freestanding build (F44) were decided and implemented on 2026-10-23 (`f8d89c95c`, `6ad1d91f1`).
 
 **Angle arithmetic (F45).** The innovation is `z - h(x)` and the correction `x + K y`: a bearing or yaw crossing ±π gives a 2π innovation (MRPT's range-bearing tracker ends 22.5 m off on the library without a workaround, 1.24 m with it).
 
