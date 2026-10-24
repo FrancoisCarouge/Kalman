@@ -136,7 +136,7 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a36bbbc25a767d6e1a9bed8f77050e0c4" id="r_a36bbbc25a767d6e1a9bed8f77050e0c4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36bbbc25a767d6e1a9bed8f77050e0c4">filter</a> = decltype(<a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>{} | <a class="el" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>)</td></tr>
+<tr class="memitem:a36bbbc25a767d6e1a9bed8f77050e0c4" id="r_a36bbbc25a767d6e1a9bed8f77050e0c4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36bbbc25a767d6e1a9bed8f77050e0c4">filter</a> = decltype(<a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>{} | print)</td></tr>
 <tr class="separator:a36bbbc25a767d6e1a9bed8f77050e0c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97fb36e7a7d514b394fa7d3600ec54e0" id="r_a97fb36e7a7d514b394fa7d3600ec54e0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97fb36e7a7d514b394fa7d3600ec54e0">arguments</a></td></tr>
 <tr class="separator:a97fb36e7a7d514b394fa7d3600ec54e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,8 +155,7 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> <span class="keyword">decltype</span>(<a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a>{state{0.}, output&lt;double&gt;, input&lt;double&gt;,</div>
 <div class="line">                                  update_types&lt;&gt;, prediction_types&lt;double&gt;} |</div>
-<div class="line">                           <a class="code hl_variable" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>)</div>
-<div class="ttc" id="anamespacefcarouge_xhtml_a5c3a03f73432710ac636a3a5f7e9e8e2"><div class="ttname"><a href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">fcarouge::print</a></div><div class="ttdeci">constexpr printer print</div><div class="ttdoc">Filter decorator to print activities to the standard output.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00643">kalman.hpp:643</a></div></div>
+<div class="line">                           print)</div>
 <div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="print_2absent__1x1x0_8cpp_source.xhtml#l00068">68</a> of file <a class="el" href="print_2absent__1x1x0_8cpp_source.xhtml">absent_1x1x0.cpp</a>.</p>
@@ -170,11 +169,11 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::test::anonymous_namespace{absent_1x1x0.cpp}::filter = decltype(<a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>{} | <a class="el" href="namespacefcarouge.xhtml#a5c3a03f73432710ac636a3a5f7e9e8e2">print</a>)</td>
+          <td class="memname">using fcarouge::test::anonymous_namespace{absent_1x1x0.cpp}::filter = decltype(<a class="el" href="classfcarouge_1_1kalman.xhtml">kalman</a>{} | print)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000115">Test</a></b></dt><dd>Verifies the decorated filter accepts the calls the filter accepts, and only those. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000122">Test</a></b></dt><dd>Verifies the decorated filter accepts the calls the filter accepts, and only those. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="print_2absent__1x1x0_8cpp_source.xhtml#l00067">67</a> of file <a class="el" href="print_2absent__1x1x0_8cpp_source.xhtml">absent_1x1x0.cpp</a>.</p>
 

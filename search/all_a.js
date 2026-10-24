@@ -26,7 +26,8 @@ var searchData=
   ['difference_23',['difference',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aaeb532535d3f2d2bc0833a388a94b498',1,'fcarouge::kalman_filter::internal']]],
   ['dim_5fcurrency_24',['dim_currency',['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1dim__currency.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::dim_currency'],['../structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#ab8764efbaa4d4f2f1b040411fb3b5320',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::dim_currency'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a21632fb99c18787e5da29e018ce9690f',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency']]],
   ['directories_25',['Other directories',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories',1,'']]],
-  ['documentation_2edox_26',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
-  ['dynamic_20model_20extended_20filter_27',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]],
-  ['dynamic_20model_20filter_28',['6x2 Constant Acceleration Dynamic Model Filter',['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'']]]
+  ['division_5f2x2_2ecpp_26',['division_2x2.cpp',['../division__2x2_8cpp.xhtml',1,'']]],
+  ['documentation_2edox_27',['documentation.dox',['../documentation_8dox.xhtml',1,'']]],
+  ['dynamic_20model_20extended_20filter_28',['4x1 Nonlinear Dynamic Model Extended Filter',['../index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter',1,'']]],
+  ['dynamic_20model_20filter_29',['6x2 Constant Acceleration Dynamic Model Filter',['../index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter',1,'']]]
 ];

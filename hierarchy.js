@@ -49,7 +49,6 @@ var hierarchy =
       [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, null ]
     ] ],
     [ "fcarouge::test::anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}::control", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1control.xhtml", null ],
-    [ "std::formatter< fcarouge::kalman< Filter >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml", null ],
     [ "fcarouge::test::holder", "structfcarouge_1_1test_1_1holder.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_ff_us_ps.cpp}::jacobian", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__us__ps_8cpp_03_1_1jacobian.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_q_r_hh_f_us_ps.cpp}::measurement", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1measurement.xhtml", null ],
@@ -67,7 +66,6 @@ var hierarchy =
     [ "fcarouge::test::anonymous_namespace{set_2x1x0.cpp}::nothing", "structfcarouge_1_1test_1_1anonymous__namespace_02set__2x1x0_8cpp_03_1_1nothing.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{set_1x1x0.cpp}::output_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_qq_rr_f.cpp}::output_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03_1_1output__noise.xhtml", null ],
-    [ "fcarouge::printer", "structfcarouge_1_1printer.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{set_1x1x0.cpp}::process_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1process__noise.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_p_qq_rr_f.cpp}::process_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03_1_1process__noise.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}::process_noise", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1process__noise.xhtml", null ],

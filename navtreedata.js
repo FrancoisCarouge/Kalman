@@ -150,11 +150,11 @@ var NAVTREEINDEX =
 [
 "1x1_8cpp.xhtml",
 "copy__callable__1x1x0_8cpp_source.xhtml",
-"kf__1x1x0__liquid__temperature_8cpp.xhtml#ae3577cde8ff6e54128772bbdcda7e5ac",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a352669a205b5c40bbb6b82ca25034ddd",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02stored__2x2x1_8cpp_03.xhtml#acc3381db7b6e8934d6ae1516c6bbc302",
-"structfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1output__noise.xhtml#aca118c48e28eb0895af2ef12e0a23ba5",
-"x__z__p__r__f_8hpp_source.xhtml"
+"kf__1x1x0__building__height_8cpp_source.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x1__1d__dog__position__unit_8cpp_03.xhtml#a92ea389b98f243709fadb6d1c2fd7048",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02static__1x1x0_8cpp_03.xhtml",
+"structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1dim__currency.xhtml",
+"x__z__p__q__r__hh__f__us__ps_8hpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -65,10 +65,6 @@ var annotated_dup =
         [ "holder", "structfcarouge_1_1test_1_1holder.xhtml", "structfcarouge_1_1test_1_1holder" ],
         [ "value", "classfcarouge_1_1test_1_1value.xhtml", "classfcarouge_1_1test_1_1value" ]
       ] ],
-      [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ],
-      [ "printer", "structfcarouge_1_1printer.xhtml", null ]
-    ] ],
-    [ "std", null, [
-      [ "formatter< fcarouge::kalman< Filter >, Char >", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4.xhtml", "structstd_1_1formatter_3_01fcarouge_1_1kalman_3_01_filter_01_4_00_01_char_01_4" ]
+      [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ]
     ] ]
 ];
