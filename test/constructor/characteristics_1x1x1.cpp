@@ -53,9 +53,7 @@ namespace {
                 output_uncertainty{4.},
                 output_model{5.},
                 state_transition{6.},
-                input_control{7.},
-                update_types<>,
-                prediction_types<>};
+                input_control{7.}};
 
   assert(filter.x() == 1.);
   assert(filter.p() == 2.);

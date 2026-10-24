@@ -66,7 +66,7 @@ struct nothing {};
 //! and only those.
 using filter = decltype(kalman{} | print);
 using arguments = decltype(kalman{state{0.}, output<double>, input<double>,
-                                  update_types<>, prediction_types<double>} |
+                                  prediction_types<double>} |
                            print);
 
 static_assert(not has_update<filter>);

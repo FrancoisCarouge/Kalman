@@ -50,17 +50,17 @@ concept has_predict =
 //! filter without prediction arguments, or at a position out of range, present
 //! otherwise.
 static_assert(not has_predict<decltype(kalman{}), 0>);
-static_assert(has_predict<decltype(kalman{state{0.}, output<double>,
-                                          input<double>, update_types<>,
-                                          prediction_types<double, float>}),
-                          0>);
-static_assert(has_predict<decltype(kalman{state{0.}, output<double>,
-                                          input<double>, update_types<>,
-                                          prediction_types<double, float>}),
-                          1>);
-static_assert(not has_predict<decltype(kalman{state{0.}, output<double>,
-                                              input<double>, update_types<>,
-                                              prediction_types<double, float>}),
-                              2>);
+static_assert(
+    has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
+                                prediction_types<double, float>}),
+                0>);
+static_assert(
+    has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
+                                prediction_types<double, float>}),
+                1>);
+static_assert(
+    not has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
+                                    prediction_types<double, float>}),
+                    2>);
 } // namespace
 } // namespace fcarouge::test

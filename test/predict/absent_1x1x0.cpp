@@ -77,15 +77,15 @@ static_assert(
                     double, double>);
 static_assert(
     not has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
-                                    update_types<>, prediction_types<double>}),
+                                    prediction_types<double>}),
                     double>);
 static_assert(
     has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
-                                update_types<>, prediction_types<double>}),
+                                prediction_types<double>}),
                 double, double>);
 static_assert(
     not has_predict<decltype(kalman{state{0.}, output<double>, input<double>,
-                                    update_types<>, prediction_types<double>}),
+                                    prediction_types<double>}),
                     nothing, double>);
 } // namespace
 } // namespace fcarouge::test

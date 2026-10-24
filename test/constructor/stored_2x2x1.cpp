@@ -65,9 +65,7 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
                 r0,
                 h0,
                 f0,
-                g0,
-                update_types<>,
-                prediction_types<>};
+                g0};
 
   assert((filter.x() == vector<2>{1., 2.}));
   assert((filter.p() == matrix<2, 2>{{2., 1.}, {1., 3.}}));

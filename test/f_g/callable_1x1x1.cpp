@@ -62,8 +62,7 @@ namespace {
           []([[maybe_unused]] const double &x) -> double { return 0.; }},
       output_uncertainty{1.},
       state_transition{make_transition(1.)},
-      input_control{make_control(1.)},
-      prediction_types<>};
+      input_control{make_control(1.)}};
 
   filter.f(make_transition(3.));
   filter.g(make_control(2.));

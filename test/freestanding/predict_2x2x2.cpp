@@ -55,9 +55,7 @@ static_assert([] -> bool {
                 output_uncertainty{{1., 0.}, {0., 1.}},
                 output_model{{1., 0.}, {0., 1.}},
                 state_transition{{1., 1.}, {0., 1.}},
-                input_control{{0.5, 0.}, {0., 1.}},
-                update_types<>,
-                prediction_types<>};
+                input_control{{0.5, 0.}, {0., 1.}}};
 
   filter.predict(2., 4.);
 

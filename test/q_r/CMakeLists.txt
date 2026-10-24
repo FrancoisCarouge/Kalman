@@ -37,3 +37,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("callable_1x1x0")
+pass("noise_jacobian_1x1x0")
