@@ -65,3 +65,25 @@ Options for the owner to decide, not implemented: each touches the named-argumen
 
 - A. `output<Z1, Z2, ...>` with `update<Zi>(arguments...)` selecting the observation, each with its own R, H and h.
 - B. One filter per observation type sharing a state and covariance by reference: no new vocabulary, but shared mutable state.
+
+## Proposals from the PX4, MRPT and ROS 2 integrations
+
+Options for the owner to decide, not implemented: the first changes the shape of the public `kalman` API, the second what its top-level header provides, the third the update equations.
+
+**Getter return types (F46, `BUG.md` 12).** The twelve getters return their characteristic by value, `decltype(auto)` of an unparenthesized member access: each read copies (4608 bytes for a 24-state double covariance read element by element through `p()`), their documentation states a constant complexity, and with TypedLinearAlgebra `const auto & s = filter.x().data();` dangles without a diagnostic.
+
+- A. A `const` reference for an lvalue filter, a value for an rvalue one: `filter.x()` reads in place and cannot write around the setter; `make_filter().x()` still yields a value, so no reference into a temporary. A caller holding the reference across `update()` or `predict()` sees the new value. Recommended.
+- B. Forwarding references, by parenthesizing the returned member access: writable characteristics for a non-`const` filter, `filter.x().at<0>(v)` changing the state without the setter, and an rvalue reference into an rvalue filter.
+- C. Keep the copies, and document them and their linear complexity.
+
+**A freestanding build (F44).** `kalman.hpp` always includes `<format>` and `<print>` and defines the `print` decorator, which a freestanding library (PX4's NuttX boards) cannot provide; PX4 includes it through a header that predefines the include guards of `format.hpp` and `print.hpp` and declares the `printer` tag.
+
+- A. Include `format.hpp` and `print.hpp`, and define `print`, only when `__STDC_HOSTED__`: no change for hosted users, no configuration macro, detected by the compiler (`-ffreestanding`).
+- B. Opt-in headers, `fcarouge/kalman_format.hpp` and `fcarouge/kalman_print.hpp`: also removes the 1.3 s of `<format>` and `<print>` from every translation unit (F22), but breaks users who format a filter without including them.
+- C. A `FCAROUGE_KALMAN_HOSTED` macro defaulting to `__STDC_HOSTED__`, as mp-units' `MP_UNITS_HOSTED`: A, overridable.
+
+**Angle arithmetic (F45).** The innovation is `z - h(x)` and the correction `x + K y`: a bearing or yaw crossing ±π gives a 2π innovation (MRPT's range-bearing tracker ends 22.5 m off on the library without a workaround, 1.24 m with it).
+
+- A. Named `innovation{callable(z, z_predicted) -> y}` and `correction{callable(x, dx) -> x}` declaration arguments, defaulting to the subtraction and the sum: MRPT's `OnSubtractObservationVectors` and `OnNormalizeStateVector`.
+- B. A customization point on the element types, picked up for an angle quantity type: no vocabulary change, but implicit.
+- C. Leave it to the caller, wrapping the measurement around the prediction before `update()` and the state through `x()` after it, and document the pattern in a sample.
