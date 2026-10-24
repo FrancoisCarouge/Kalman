@@ -65,7 +65,7 @@ constexpr decltype(auto) kalman<Filter>::x(this auto &&self,
     self.filter.x = typename Filter::state{values...};
   }
   //! @todo A conditional no_discard would be nice here.
-  return std::forward<decltype(self)>(self).filter.x;
+  return kf::read<decltype(self)>(self.filter.x);
 }
 
 template <typename Filter>
@@ -78,7 +78,7 @@ constexpr decltype(auto) kalman<Filter>::z(this auto &&self,
   if constexpr (sizeof...(values)) {
     self.filter.z = typename Filter::output{values...};
   }
-  return std::forward<decltype(self)>(self).filter.z;
+  return kf::read<decltype(self)>(self.filter.z);
 }
 
 template <typename Filter>
@@ -91,7 +91,7 @@ constexpr decltype(auto) kalman<Filter>::u(this auto &&self,
   if constexpr (sizeof...(values)) {
     self.filter.u = typename Filter::input{values...};
   }
-  return std::forward<decltype(self)>(self).filter.u;
+  return kf::read<decltype(self)>(self.filter.u);
 }
 
 template <typename Filter>
@@ -104,7 +104,7 @@ constexpr decltype(auto) kalman<Filter>::p(this auto &&self,
   if constexpr (sizeof...(values)) {
     self.filter.p = typename Filter::estimate_uncertainty{values...};
   }
-  return std::forward<decltype(self)>(self).filter.p;
+  return kf::read<decltype(self)>(self.filter.p);
 }
 
 template <typename Filter>
@@ -125,7 +125,7 @@ constexpr decltype(auto) kalman<Filter>::q(this auto &&self,
       kf::assign(self.filter.noise_process_q, values...);
     }
   }
-  return std::forward<decltype(self)>(self).filter.q;
+  return kf::read<decltype(self)>(self.filter.q);
 }
 
 template <typename Filter>
@@ -146,7 +146,7 @@ constexpr decltype(auto) kalman<Filter>::r(this auto &&self,
       kf::assign(self.filter.noise_observation_r, values...);
     }
   }
-  return std::forward<decltype(self)>(self).filter.r;
+  return kf::read<decltype(self)>(self.filter.r);
 }
 
 template <typename Filter>
@@ -167,7 +167,7 @@ constexpr decltype(auto) kalman<Filter>::f(this auto &&self,
       kf::assign(self.filter.transition_state_f, values...);
     }
   }
-  return std::forward<decltype(self)>(self).filter.f;
+  return kf::read<decltype(self)>(self.filter.f);
 }
 
 template <typename Filter>
@@ -188,7 +188,7 @@ constexpr decltype(auto) kalman<Filter>::h(this auto &&self,
       kf::assign(self.filter.observation_state_h, values...);
     }
   }
-  return std::forward<decltype(self)>(self).filter.h;
+  return kf::read<decltype(self)>(self.filter.h);
 }
 
 template <typename Filter>
@@ -209,7 +209,7 @@ constexpr decltype(auto) kalman<Filter>::g(this auto &&self,
       kf::assign(self.filter.transition_control_g, values...);
     }
   }
-  return std::forward<decltype(self)>(self).filter.g;
+  return kf::read<decltype(self)>(self.filter.g);
 }
 
 template <typename Filter>
@@ -221,7 +221,7 @@ constexpr decltype(auto) kalman<Filter>::k(this auto &&self,
   if constexpr (sizeof...(values)) {
     self.filter.k = typename Filter::gain{values...};
   }
-  return std::forward<decltype(self)>(self).filter.k;
+  return kf::read<decltype(self)>(self.filter.k);
 }
 
 template <typename Filter>
@@ -234,7 +234,7 @@ constexpr decltype(auto) kalman<Filter>::y(this auto &&self,
   if constexpr (sizeof...(values)) {
     self.filter.y = typename Filter::innovation{values...};
   }
-  return std::forward<decltype(self)>(self).filter.y;
+  return kf::read<decltype(self)>(self.filter.y);
 }
 
 template <typename Filter>
@@ -247,7 +247,7 @@ constexpr decltype(auto) kalman<Filter>::s(this auto &&self,
   if constexpr (sizeof...(values)) {
     self.filter.s = typename Filter::innovation_uncertainty{values...};
   }
-  return std::forward<decltype(self)>(self).filter.s;
+  return kf::read<decltype(self)>(self.filter.s);
 }
 
 template <typename Filter>

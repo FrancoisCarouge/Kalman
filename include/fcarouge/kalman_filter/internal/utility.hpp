@@ -690,6 +690,21 @@ constexpr void assign(Callable &callable, const auto &...values) {
   }
 }
 
+//! @brief Reads a characteristic of the object.
+//!
+//! @details A constant reference for an lvalue object: reading does not copy
+//! the characteristic, and writing goes through the constrained setters. The
+//! moved value for an rvalue object: a reference into the object would dangle
+//! past the full-expression.
+template <typename Object, typename Characteristic>
+constexpr decltype(auto) read(Characteristic &characteristic) {
+  if constexpr (std::is_lvalue_reference_v<Object>) {
+    return std::as_const(characteristic);
+  } else {
+    return std::remove_const_t<Characteristic>(std::move(characteristic));
+  }
+}
+
 //! @}
 
 //! @name Named Values

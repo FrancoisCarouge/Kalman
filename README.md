@@ -246,7 +246,7 @@ The member types are optionally present according to the filter configuration.
 | `y` | Manages the innovation column vector *Y*. Gets the value last computed during the update. The default value is the null column vector. |
 | `z` | Manages the observation column vector *Z*. Gets the value last used during the update. The default value is the null column vector. |
 
-The characteristics are optionally present according to the filter configuration. A characteristic is set from values that direct-list-initialize it, without narrowing of the characteristic nor of its elements, through a modifiable filter, or replaced by a callable of its configured type.
+The characteristics are optionally present according to the filter configuration. A characteristic is set from values that direct-list-initialize it, without narrowing of the characteristic nor of its elements, through a modifiable filter, or replaced by a callable of its configured type. A characteristic is read as a constant reference from an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, and as a moved value from an rvalue filter.
 
 ##### Modifiers
 
@@ -301,6 +301,7 @@ In theory there is no difference between theory and practice, while in practice 
 - A filter declaration has a single arithmetic type, so that the filter equations never narrow a result into a characteristic, at the cost of converting mixed precision values, for example a `float` measurement of a `double` state, before passing them to the filter.
 - The ergonomics and precision of the default filter takes precedence over performance.
 - Callable characteristics are stored by value, their types part of the deduced filter type, without type erasure, for real-time compatibility: constructing, copying, or reconfiguring a filter does not allocate memory, and the callables may be inlined. The costs are a filter type specific to its callables, a callable characteristic replaced only by a callable of the same type, and filter assignment available only for assignable callables, which a lambda expression with captures is not. Configuring a function pointer or a `std::function` restores the replacement by any compatible callable, at the cost of an indirection, and of allocations for `std::function`.
+- A characteristic is read through a constant reference from an lvalue filter, without copying it, and written only through its accessor's setting overloads, which constrain the values. Reading from an rvalue filter moves the characteristic out instead, since a reference into the filter would dangle past the full-expression.
 
 ### Lessons Learned
 
