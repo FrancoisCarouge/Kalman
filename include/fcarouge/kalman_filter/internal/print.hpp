@@ -39,6 +39,10 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_PRINT_HPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_PRINT_HPP
 
+// The standard `<print>` library is not part of the freestanding subset: a
+// freestanding implementation omits the printing decorator.
+#if __STDC_HOSTED__
+
 #include "utility.hpp"
 
 #include <cstddef>
@@ -348,4 +352,5 @@ operator|(Filter &&filter, [[maybe_unused]] const printer &decorator) {
 }
 } // namespace fcarouge
 
+#endif // __STDC_HOSTED__
 #endif // FCAROUGE_KALMAN_FILTER_INTERNAL_PRINT_HPP

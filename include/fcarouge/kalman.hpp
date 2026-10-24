@@ -45,6 +45,9 @@ For more information, please refer to <https://unlicense.org> */
 //! @details Provides the library public definitions of filters, algorithms,
 //! utilities, and documentation. Only this header file is intended for
 //! inclusion in third party software.
+//!
+//! @note Freestanding compatible. The formatting and printing support require
+//! a hosted implementation.
 
 #include "kalman_filter/internal/factory.hpp"
 #include "kalman_filter/internal/format.hpp"
@@ -628,6 +631,7 @@ kalman(Arguments... arguments) -> kalman<kf::deduce_filter<Arguments...>>;
 
 //! @}
 
+#if __STDC_HOSTED__
 //! @name Decorators
 //! @{
 
@@ -643,6 +647,7 @@ kalman(Arguments... arguments) -> kalman<kf::deduce_filter<Arguments...>>;
 inline constexpr printer print;
 
 //! @}
+#endif // __STDC_HOSTED__
 
 } // namespace fcarouge
 

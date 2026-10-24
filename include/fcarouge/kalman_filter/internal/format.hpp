@@ -41,6 +41,11 @@ For more information, please refer to <https://unlicense.org> */
 
 //! @file
 //! @brief Formatting support for the Kalman filter.
+//!
+//! @note The standard `<format>` library is not part of the freestanding
+//! subset: a freestanding implementation omits this formatting support.
+
+#if __STDC_HOSTED__
 
 #include "fcarouge/kalman_forward.hpp"
 #include "print.hpp"
@@ -177,4 +182,5 @@ template <typename Filter, typename Char>
 struct std::formatter<fcarouge::kalman_filter::internal::printer<Filter>, Char>
     : std::formatter<Filter, Char> {};
 
+#endif // __STDC_HOSTED__
 #endif // FCAROUGE_KALMAN_FILTER_INTERNAL_FORMAT_HPP

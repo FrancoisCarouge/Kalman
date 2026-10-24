@@ -1,0 +1,53 @@
+name: 'Freestanding'
+
+on:
+  push:
+    branches: [ 'master' ]
+  pull_request:
+    branches: [ 'master' ]
+  schedule:
+  - cron: '0 0 * * */5'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: read
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: lukka/get-cmake@a89e43e22a96abafcd7a62db652a65ecd33052c9 # v4.4.4
+    - name: 'Install: Arm GNU Toolchain'
+      run: |
+        sudo apt update
+        sudo apt install -y gcc-arm-none-eabi libstdc++-arm-none-eabi-dev
+    - name: 'Configure'
+      run: cmake -S . -B 'build' -D BUILD_TESTING=OFF
+    - name: 'Build: Amalgamate'
+      run: cmake --build 'build' --target amalgamate
+    # Cross-compile for a bare-metal Arm Cortex-M4 target, whose freestanding
+    # standard library rejects the inclusion of any hosted-only header.
+    - name: 'Build: Arm Cortex-M4'
+      run: |
+        flags=(
+          -std=c++26 -mcpu=cortex-m4 -mthumb
+          -ffreestanding -fno-exceptions -fno-rtti
+          -Wall -Wconversion -Werror -Wextra -pedantic -Wshadow
+          -Wsign-conversion -Wundef
+        )
+        echo '#include "kalman.h"' |
+          arm-none-eabi-g++ "${flags[@]}" -I 'build/amalgamate/fcarouge' \
+            -x c++ -c - -o /dev/null
+        for test in test/freestanding/*.cpp; do
+          arm-none-eabi-g++ "${flags[@]}" -I 'include' \
+            -I 'support/freestanding' -c "${test}" -o /dev/null
+        done
