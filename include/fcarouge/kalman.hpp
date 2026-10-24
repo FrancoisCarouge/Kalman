@@ -241,6 +241,10 @@ public:
   //! @param values The optional copied initializers to set the estimated state
   //! column vector X characteristic.
   //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
+  //!
   //! @complexity Constant.
   constexpr decltype(auto) x(this auto &&self, const auto &...values)
     requires(
@@ -252,6 +256,10 @@ public:
   //! @param self Explicit object parameter. Internal implementation detail.
   //! @param values The optional copied initializers to set the observation
   //! column vector Z characteristic.
+  //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) z(this auto &&self, const auto &...values)
@@ -265,6 +273,10 @@ public:
   //! @param values The optional copied initializers to set the control column
   //! vector U characteristic.
   //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
+  //!
   //! @complexity Constant.
   constexpr decltype(auto) u(this auto &&self, const auto &...values)
     requires(
@@ -276,6 +288,10 @@ public:
   //! @param self Explicit object parameter. Internal implementation detail.
   //! @param values The optional copied initializers to set the estimated
   //! covariance matrix P characteristic.
+  //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) p(this auto &&self, const auto &...values)
@@ -290,6 +306,10 @@ public:
   //! covariance matrix Q characteristic. The characteristic may also be a
   //! callable of the form `process_uncertainty(const state &, const
   //! PredictionTypes &...)`, of the type configured at construction.
+  //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) q(this auto &&self, const auto &...values)
@@ -308,6 +328,10 @@ public:
   //! noise covariance matrix R characteristic. The characteristic may also be a
   //! callable of the form `output_uncertainty(const state &, const output &,
   //! const UpdateTypes &...)`, of the type configured at construction.
+  //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) r(this auto &&self, const auto &...values)
@@ -333,6 +357,10 @@ public:
   //! contains the derivatives of the state transition function for every
   //! element j in the state column vector X.
   //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
+  //!
   //! @complexity Constant.
   constexpr decltype(auto) f(this auto &&self, const auto &...values)
     requires(kf::has_state_transition<Filter> &&
@@ -355,6 +383,10 @@ public:
   //! X. This member function is not present when the filter has no output
   //! model.
   //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
+  //!
   //! @complexity Constant.
   constexpr decltype(auto) h(this auto &&self, const auto &...values)
     requires(
@@ -374,6 +406,10 @@ public:
   //! type configured at construction. This member function is not present when
   //! the filter has no input control.
   //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
+  //!
   //! @complexity Constant.
   constexpr decltype(auto) g(this auto &&self, const auto &...values)
     requires(
@@ -390,6 +426,10 @@ public:
   //! @param values The optional copied initializers to set the gain matrix K
   //! characteristic.
   //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
+  //!
   //! @complexity Constant.
   constexpr decltype(auto) k(this auto &&self, const auto &...values)
     requires(
@@ -402,6 +442,10 @@ public:
   //! @param values The optional copied initializers to set the innovation
   //! column vector Y characteristic.
   //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
+  //!
   //! @complexity Constant.
   constexpr decltype(auto) y(this auto &&self, const auto &...values)
     requires(kf::has_innovation<Filter> &&
@@ -413,6 +457,10 @@ public:
   //! @param self Explicit object parameter. Internal implementation detail.
   //! @param values The optional copied initializers to set the innovation
   //! uncertainty matrix S characteristic.
+  //!
+  //! @return A constant reference to the characteristic for an lvalue filter,
+  //! valid for the lifetime of the filter and reflecting its later changes, or
+  //! the moved characteristic for an rvalue filter.
   //!
   //! @complexity Constant.
   constexpr decltype(auto) s(this auto &&self, const auto &...values)
