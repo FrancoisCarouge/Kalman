@@ -59,19 +59,18 @@ static_assert(not has_update<decltype(kalman{}), int>);
 static_assert(not has_update<decltype(kalman{}), double, double>);
 static_assert(
     not has_update<decltype(kalman{state{0.}, output<double>, input<double>,
-                                   update_types<double>, prediction_types<>}),
+                                   update_types<double>}),
                    double>);
-static_assert(
-    has_update<decltype(kalman{state{0.}, output<double>, input<double>,
-                               update_types<double>, prediction_types<>}),
-               double, double>);
+static_assert(has_update<decltype(kalman{state{0.}, output<double>,
+                                         input<double>, update_types<double>}),
+                         double, double>);
 static_assert(
     not has_update<decltype(kalman{state{0.}, output<double>, input<double>,
-                                   update_types<double>, prediction_types<>}),
+                                   update_types<double>}),
                    nothing, double>);
 static_assert(
     not has_update<decltype(kalman{state{0.}, output<double>, input<double>,
-                                   update_types<double>, prediction_types<>}),
+                                   update_types<double>}),
                    double, nothing>);
 } // namespace
 } // namespace fcarouge::test

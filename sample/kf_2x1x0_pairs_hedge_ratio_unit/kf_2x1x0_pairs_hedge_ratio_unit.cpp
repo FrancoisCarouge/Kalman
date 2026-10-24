@@ -124,16 +124,13 @@ using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
         return value;
       }},
       // The hedge ratio and intercept follow a random walk: their prediction
-      // is their last estimate.
-      transition{[](const state_t &x) -> state_t { return x; }},
+      // is their last estimate, so no transition function is declared.
       // The regression forecasts the dependent closing price: βx + α.
       observation{[](const state_t &x, const price &independent) -> output_t {
         return output_t{x.at<0>() * independent + x.at<1>()};
       }},
       // The filter update uses the independent closing price [$] parameter.
-      update_types<price>,
-      // The filter prediction uses no parameter.
-      prediction_types<>};
+      update_types<price>};
 
   // Verifies a value at the relative accuracy of its expectation.
   const auto near{

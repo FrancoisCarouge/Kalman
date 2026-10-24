@@ -46,7 +46,7 @@ namespace {
 //! @test Verifies the prediction arguments are value-initialized, then recorded
 //! by the prediction, in order and with their declared types.
 [[maybe_unused]] const auto test{[] -> int {
-  kalman filter{state{0.}, output<double>, input<double>, update_types<>,
+  kalman filter{state{0.}, output<double>, input<double>,
                 prediction_types<int, float, double>};
 
   static_assert(std::same_as<decltype(filter.predict<0>()), int>);

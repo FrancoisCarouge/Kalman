@@ -49,17 +49,17 @@ concept has_update =
 //! @test Verifies the update argument member function is absent from a filter
 //! without update arguments, or at a position out of range, present otherwise.
 static_assert(not has_update<decltype(kalman{}), 0>);
-static_assert(has_update<decltype(kalman{
-                             state{0.}, output<double>, input<double>,
-                             update_types<double, float>, prediction_types<>}),
-                         0>);
-static_assert(has_update<decltype(kalman{
-                             state{0.}, output<double>, input<double>,
-                             update_types<double, float>, prediction_types<>}),
-                         1>);
-static_assert(not has_update<
-              decltype(kalman{state{0.}, output<double>, input<double>,
-                              update_types<double, float>, prediction_types<>}),
-              2>);
+static_assert(
+    has_update<decltype(kalman{state{0.}, output<double>, input<double>,
+                               update_types<double, float>}),
+               0>);
+static_assert(
+    has_update<decltype(kalman{state{0.}, output<double>, input<double>,
+                               update_types<double, float>}),
+               1>);
+static_assert(
+    not has_update<decltype(kalman{state{0.}, output<double>, input<double>,
+                                   update_types<double, float>}),
+                   2>);
 } // namespace
 } // namespace fcarouge::test

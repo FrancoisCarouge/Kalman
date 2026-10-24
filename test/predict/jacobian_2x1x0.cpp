@@ -68,7 +68,6 @@ template <auto Row, auto Column> using matrix = matrix<double, Row, Column>;
         return vector<2>{x(0) + (step * x(1)), x(1) * x(1) / 2.};
       }},
       observation{[](const vector<2> &x) -> double { return x(0); }},
-      update_types<>,
       prediction_types<double>};
 
   filter.predict(0.5);

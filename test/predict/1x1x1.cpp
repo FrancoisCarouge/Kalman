@@ -53,9 +53,7 @@ namespace {
                 output_uncertainty{1.},
                 output_model{1.},
                 state_transition{2.},
-                input_control{4.},
-                update_types<>,
-                prediction_types<>};
+                input_control{4.}};
 
   filter.predict(5.);
 

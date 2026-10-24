@@ -60,8 +60,7 @@ namespace {
       observation{[](const double &x, const double &scale) -> double {
         return scale * x;
       }},
-      update_types<double>,
-      prediction_types<>};
+      update_types<double>};
 
   filter.update(2., 6.);
 

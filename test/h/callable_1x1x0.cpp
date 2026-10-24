@@ -61,8 +61,7 @@ namespace {
                                [[maybe_unused]] const double &scale) -> double {
                   return x;
                 }},
-                update_types<double>,
-                prediction_types<>};
+                update_types<double>};
 
   filter.h(make_output_model(2.));
   filter.update(3., 1.);

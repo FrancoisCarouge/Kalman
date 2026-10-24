@@ -42,8 +42,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the update is rejected without its declared update arguments.
 [[maybe_unused]] const auto test{[] -> int {
-  kalman filter{state{0.}, output<double>, input<double>, update_types<double>,
-                prediction_types<>};
+  kalman filter{state{0.}, output<double>, input<double>, update_types<double>};
 
   // Intended: filter.update(1., 0.);
   filter.update(0.);

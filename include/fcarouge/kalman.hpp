@@ -620,7 +620,10 @@ using kf::input_control;
 //! time the type of filter to use. The objective is to select the most
 //! performant filter within the defined configuration parameters. Declare the
 //! configuration with a single scalar representation to avoid narrowing in the
-//! filter equations: mixed built-in arithmetic types are rejected.
+//! filter equations: mixed built-in arithmetic types are rejected. A
+//! configuration with an observation function may omit the transition
+//! function: the state is then predicted by the state transition F, X = F.X, as
+//! for a state that does not change between predictions.
 //!
 //! @tparam Arguments The declarations of the filter configuration.
 //!

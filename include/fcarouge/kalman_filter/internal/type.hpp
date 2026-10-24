@@ -273,7 +273,6 @@ template <typename Type> struct observation {
 
 template <typename Element> observation(Element) -> observation<Element>;
 
-//! @todo Better name not ending by *_types?
 template <typename... Types> struct update_types_t {};
 
 template <typename... Types> inline update_types_t<Types...> update_types{};

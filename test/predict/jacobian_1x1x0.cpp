@@ -62,7 +62,6 @@ namespace {
         return step * x * x / 2.;
       }},
       observation{[](const double &x) -> double { return x; }},
-      update_types<>,
       prediction_types<double>};
 
   filter.predict(0.5);

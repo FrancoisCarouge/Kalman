@@ -43,7 +43,7 @@ namespace {
 //! @test Verifies the prediction is rejected without its declared prediction
 //! arguments.
 [[maybe_unused]] const auto test{[] -> int {
-  kalman filter{state{0.}, output<double>, input<double>, update_types<>,
+  kalman filter{state{0.}, output<double>, input<double>,
                 prediction_types<double>};
 
   // Intended: filter.predict(1., 0.);
