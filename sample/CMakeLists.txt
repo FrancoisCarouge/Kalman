@@ -41,6 +41,7 @@ if(NOT BUILD_TESTING)
 endif()
 
 add_subdirectory("ekf_4x1x0_thermal_soaring")
+add_subdirectory("ekf_4x2x0_range_bearing_tracking")
 add_subdirectory("ekf_6x4x0_3d_apollo_position")
 add_subdirectory("kf_1x1x0_building_height")
 add_subdirectory("kf_1x1x0_building_height_unit")
