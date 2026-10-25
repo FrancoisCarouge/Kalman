@@ -264,8 +264,7 @@ const auto heading_of{[](const attitude &body_to_ned) -> heading {
 
 //! @brief A heading wrapped within a half turn.
 const auto wrap{[](const heading &angle) -> heading {
-  return std::remainder(angle.numerical_value_in(rad), 2. * std::numbers::pi) *
-         down_angle[rad];
+  return remainder(angle, 2. * std::numbers::pi * down_angle[rad]);
 }};
 
 //! @brief The state transition F of the errors over a step: the propagation
@@ -367,8 +366,7 @@ const auto state_transition_of{
   const auto accelerometer_noise{0.05 * m / s2};
   // The bias random walk of 1e-4 rad.s^-1 per square root of second, over a
   // step.
-  const auto bias_noise{1e-4 * std::sqrt(time_step.numerical_value_in(s)) *
-                        rad / s};
+  const auto bias_noise{1e-4 * rad / (s * sqrt(s)) * sqrt(time_step)};
 
   kalman filter{
       // The state X: the errors, zero after each correction.
