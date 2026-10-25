@@ -12,9 +12,11 @@ var searchData=
   ['constant_5f1x1x0_2ecpp_9',['constant_1x1x0.cpp',['../constant__1x1x0_8cpp.xhtml',1,'']]],
   ['constant_5ffactory_5f1x1x0_2ecpp_10',['constant_factory_1x1x0.cpp',['../constant__factory__1x1x0_8cpp.xhtml',1,'']]],
   ['constant_5fjacobian_5f1x1x0_2ecpp_11',['constant_jacobian_1x1x0.cpp',['../constant__jacobian__1x1x0_8cpp.xhtml',1,'']]],
-  ['contributing_2emd_12',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.xhtml',1,'']]],
-  ['contributors_2emd_13',['CONTRIBUTORS.md',['../_c_o_n_t_r_i_b_u_t_o_r_s_8md.xhtml',1,'']]],
-  ['copy_5f1x1x0_2ecpp_14',['copy_1x1x0.cpp',['../copy__1x1x0_8cpp.xhtml',1,'']]],
-  ['copy_5f5x4x3_2ecpp_15',['copy_5x4x3.cpp',['../assign_2copy__5x4x3_8cpp.xhtml',1,'(Global Namespace)'],['../constructor_2copy__5x4x3_8cpp.xhtml',1,'(Global Namespace)']]],
-  ['copy_5fcallable_5f1x1x0_2ecpp_16',['copy_callable_1x1x0.cpp',['../copy__callable__1x1x0_8cpp.xhtml',1,'']]]
+  ['constant_5fnoise_5fjacobian_5f1x1x0_2ecpp_12',['constant_noise_jacobian_1x1x0.cpp',['../constant__noise__jacobian__1x1x0_8cpp.xhtml',1,'']]],
+  ['constant_5fnoise_5ftransition_5f1x1x0_2ecpp_13',['constant_noise_transition_1x1x0.cpp',['../constant__noise__transition__1x1x0_8cpp.xhtml',1,'']]],
+  ['contributing_2emd_14',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.xhtml',1,'']]],
+  ['contributors_2emd_15',['CONTRIBUTORS.md',['../_c_o_n_t_r_i_b_u_t_o_r_s_8md.xhtml',1,'']]],
+  ['copy_5f1x1x0_2ecpp_16',['copy_1x1x0.cpp',['../copy__1x1x0_8cpp.xhtml',1,'']]],
+  ['copy_5f5x4x3_2ecpp_17',['copy_5x4x3.cpp',['../assign_2copy__5x4x3_8cpp.xhtml',1,'(Global Namespace)'],['../constructor_2copy__5x4x3_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['copy_5fcallable_5f1x1x0_2ecpp_18',['copy_callable_1x1x0.cpp',['../copy__callable__1x1x0_8cpp.xhtml',1,'']]]
 ];

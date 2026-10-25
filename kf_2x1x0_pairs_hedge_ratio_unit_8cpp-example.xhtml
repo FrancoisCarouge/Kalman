@@ -212,16 +212,13 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line">        <span class="keywordflow">return</span> value;</div>
 <div class="line">      }},</div>
 <div class="line">      <span class="comment">// The hedge ratio and intercept follow a random walk: their prediction</span></div>
-<div class="line">      <span class="comment">// is their last estimate.</span></div>
-<div class="line">      transition{[](<span class="keyword">const</span> state_t &amp;x) -&gt; state_t { <span class="keywordflow">return</span> x; }},</div>
+<div class="line">      <span class="comment">// is their last estimate, so no transition function is declared.</span></div>
 <div class="line">      <span class="comment">// The regression forecasts the dependent closing price: βx + α.</span></div>
 <div class="line">      observation{[](<span class="keyword">const</span> state_t &amp;x, <span class="keyword">const</span> price &amp;independent) -&gt; output_t {</div>
 <div class="line">        <span class="keywordflow">return</span> output_t{x.at&lt;0&gt;() * independent + x.at&lt;1&gt;()};</div>
 <div class="line">      }},</div>
 <div class="line">      <span class="comment">// The filter update uses the independent closing price [$] parameter.</span></div>
-<div class="line">      update_types&lt;price&gt;,</div>
-<div class="line">      <span class="comment">// The filter prediction uses no parameter.</span></div>
-<div class="line">      prediction_types&lt;&gt;};</div>
+<div class="line">      update_types&lt;price&gt;};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Verifies a value at the relative accuracy of its expectation.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> near{</div>

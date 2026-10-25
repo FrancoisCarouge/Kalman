@@ -22,6 +22,10 @@ var concepts =
           [ "has_q", "conceptfcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03_1_1has__q.xhtml", null ],
           [ "has_u", "conceptfcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03_1_1has__u.xhtml", null ]
         ] ],
+        [ "anonymous_namespace{empty_arguments.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02empty__arguments_8cpp_03.xhtml", [
+          [ "stores_update_arguments", "conceptfcarouge_1_1test_1_1anonymous__namespace_02empty__arguments_8cpp_03_1_1stores__update__arguments.xhtml", null ],
+          [ "stores_prediction_arguments", "conceptfcarouge_1_1test_1_1anonymous__namespace_02empty__arguments_8cpp_03_1_1stores__prediction__arguments.xhtml", null ]
+        ] ],
         [ "anonymous_namespace{position_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02position__1x1x0_8cpp_03.xhtml", [
           [ "has_predict", "conceptfcarouge_1_1test_1_1anonymous__namespace_02position__1x1x0_8cpp_03_1_1has__predict.xhtml", null ],
           [ "has_update", "conceptfcarouge_1_1test_1_1anonymous__namespace_02position__1x1x0_8cpp_03_1_1has__update.xhtml", null ]
