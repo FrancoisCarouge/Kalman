@@ -58,6 +58,7 @@ Options for the owner to decide, not implemented: each touches the named-argumen
 
 - A. A named `covariance_correction<joseph | simple | simple_symmetric>` declaration tag.
 - B. A callable `covariance_correction{callable(p, k, h, r) -> p}` for any form, the limited one included.
+- Either way, the simple form is cheapest as `p - k * (h * p)`: for a scalar observation, a row of the covariance scaled by the gain, half the multiplications of `(i - k * h) * p` (PX4's typed wind estimator correction, so reordered, went from 1.57 to 1.27 times its original's time).
 
 **Configurations (F23).** Since `4ad94d918` and `9facffd80`, the forms combine a callable state transition Jacobian F of the prediction arguments, a callable Q, and a callable output model H of the update arguments (`x_z_p_qq_r_hh_ff_us_ps`), and a filter declares no empty argument lists; PX4's and ArduPilot's EKFGSF ports use them. Still enumerated: a declaration without P, Q and R is rejected, and the rejection does not list the accepted configurations. `AGENTS.md` states that an empty `update_types<>` or `prediction_types<>` is rejected by a `static_assert` in `type.hpp`, which has none: they are still accepted.
 
