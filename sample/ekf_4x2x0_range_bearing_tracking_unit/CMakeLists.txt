@@ -36,4 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("ekf_4x2x0_range_bearing_tracking" BACKENDS "eigen")
+sample("ekf_4x2x0_range_bearing_tracking_unit" BACKENDS "mp_units_eigen")
