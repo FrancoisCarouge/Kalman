@@ -4,7 +4,7 @@ Findings and follow-up work not yet scheduled.
 
 ## Embedded use
 
-Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`), and since 2026-10-22 of PX4, MRPT and ROS 2; finding numbers in parentheses refer to the integration's findings table, kept in the owner's workspace. Rechecked against `6ad1d91f1` (2026-10-23): F44 and F46 resolved there and removed, the others still apply.
+Found while replacing the Kalman filters of ArduPilot (`FrancoisCarouge/ardupilot`, branch `fcarouge`), and since 2026-10-22 of PX4, MRPT and ROS 2; finding numbers in parentheses refer to the integration's findings table, kept in the owner's workspace. Rechecked against `9facffd80` (2026-10-24): F44 and F46 resolved and removed, F23 narrowed, the others still apply.
 
 - Compile cost of `kalman.hpp` with g++ 15 at `-O2`: 2.2 s and 154 MB per translation unit, 1.3 s of it `<print>` and `<format>`, included even when nothing is formatted. ArduPilot confines it to one source file per filter. (F22)
 - The freestanding CI job (`freestanding.yml`, `arm-none-eabi -ffreestanding`) compiles but reports no costs: a filter that grows its object (F35), its frames (F38) or its code (F37) passes. Reporting the object size, the largest stack frame (`-fstack-usage`) and the code size of the freestanding samples, failing on an increase, would guard them. (F4)
@@ -59,7 +59,7 @@ Options for the owner to decide, not implemented: each touches the named-argumen
 - A. A named `covariance_correction<joseph | simple | simple_symmetric>` declaration tag.
 - B. A callable `covariance_correction{callable(p, k, h, r) -> p}` for any form, the limited one included.
 
-**Configurations (F23).** `x_z_p_q_r_hh_ff_us_ps` (`4ad94d918`) now combines a state transition Jacobian F computed from the prediction arguments with an output model H computed from the update arguments; PX4's and ArduPilot's EKFGSF ports use it, and the gimbal sample could too. A callable Q beside a `transition` is still missing (the EKFGSF ports set `q()` before each prediction); deducing configurations from the present characteristics rather than an enumerated list would cover such combinations.
+**Configurations (F23).** Since `4ad94d918` and `9facffd80`, the forms combine a callable state transition Jacobian F of the prediction arguments, a callable Q, and a callable output model H of the update arguments (`x_z_p_qq_r_hh_ff_us_ps`), and a filter declares no empty argument lists; PX4's and ArduPilot's EKFGSF ports use them. Still enumerated: a declaration without P, Q and R is rejected, and the rejection does not list the accepted configurations. `AGENTS.md` states that an empty `update_types<>` or `prediction_types<>` is rejected by a `static_assert` in `type.hpp`, which has none: they are still accepted.
 
 **Several output types (F40).** The terrain and gimbal samples observe one state with sensors of different units and are therefore untyped.
 
