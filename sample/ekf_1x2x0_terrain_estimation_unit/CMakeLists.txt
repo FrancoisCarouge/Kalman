@@ -36,4 +36,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-sample("ekf_1x1x0_terrain_estimation")
+sample("ekf_1x2x0_terrain_estimation_unit" BACKENDS "mp_units_eigen")
