@@ -819,12 +819,14 @@ inline constexpr auto constant_one{ones<Type>{}()};
 
 //! @brief The one matrix built at the point of use.
 //!
-//! @details The constant one matrix when it is a constant expression, so that
-//! a filter is constant-initializable, otherwise the value built by its
-//! backend.
-template <typename Type> [[nodiscard]] constexpr auto make_one() {
+//! @details A reference to the constant one matrix when it is a constant
+//! expression, so that a filter is constant-initializable and an update binds
+//! it without a copy on the stack, otherwise the value built by its backend.
+template <typename Type> [[nodiscard]] constexpr decltype(auto) make_one() {
   if constexpr (constant_evaluable<ones<Type>>) {
-    return constant_one<Type>;
+    // A cast: GCC deduces a value from a parenthesized variable template.
+    return static_cast<const decltype(constant_one<Type>) &>(
+        constant_one<Type>);
   } else {
     return ones<Type>{}();
   }
@@ -889,12 +891,14 @@ inline constexpr auto constant_zero{zeros<Type>{}()};
 
 //! @brief The zero matrix built at the point of use.
 //!
-//! @details The constant zero matrix when it is a constant expression, so that
-//! a filter is constant-initializable, otherwise the value built by its
-//! backend.
-template <typename Type> [[nodiscard]] constexpr auto make_zero() {
+//! @details A reference to the constant zero matrix when it is a constant
+//! expression, so that a filter is constant-initializable and an update binds
+//! it without a copy on the stack, otherwise the value built by its backend.
+template <typename Type> [[nodiscard]] constexpr decltype(auto) make_zero() {
   if constexpr (constant_evaluable<zeros<Type>>) {
-    return constant_zero<Type>;
+    // A cast: GCC deduces a value from a parenthesized variable template.
+    return static_cast<const decltype(constant_zero<Type>) &>(
+        constant_zero<Type>);
   } else {
     return zeros<Type>{}();
   }

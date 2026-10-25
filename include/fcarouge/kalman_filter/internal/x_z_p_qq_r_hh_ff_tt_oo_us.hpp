@@ -99,7 +99,7 @@ struct x_z_p_qq_r_hh_ff_tt_oo_us<State, Output, std::tuple<UpdateTypes...>,
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
-    const auto i{make_one<evaluate<product<gain, output_model>>>()};
+    const auto &i{make_one<evaluate<product<gain, output_model>>>()};
 
     update_arguments = {update_pack...};
     z = output{output_z, outputs_z...};

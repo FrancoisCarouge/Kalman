@@ -78,7 +78,7 @@ struct x_z_p_qq_rr_f {
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
-    const auto i{make_one<evaluate<product<gain, output_model>>>()};
+    const auto &i{make_one<evaluate<product<gain, output_model>>>()};
 
     z = output{output_z, outputs_z...};
     r = noise_observation_r(x, z);
