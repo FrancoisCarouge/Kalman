@@ -88,7 +88,7 @@ struct x_z_p_q_r_hh_f_tt_oo_ps<State, Output, std::tuple<PredictionTypes...>,
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
-    const auto i{make_one<evaluate<product<gain, output_model>>>()};
+    const auto &i{make_one<evaluate<product<gain, output_model>>>()};
     z = output{output_z, outputs_z...};
     h = observation_state_h(x);
     s = innovation_uncertainty{h * p * t(h) + r};

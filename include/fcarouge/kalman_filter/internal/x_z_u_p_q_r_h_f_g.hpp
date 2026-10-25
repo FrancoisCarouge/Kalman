@@ -78,7 +78,7 @@ struct x_z_u_p_q_r_h_f_g {
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
-    const auto i{make_one<evaluate<product<gain, output_model>>>()};
+    const auto &i{make_one<evaluate<product<gain, output_model>>>()};
     z = output{output_z, outputs_z...};
     s = h * p * t(h) + r;
     k = p * t(h) / s;
