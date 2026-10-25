@@ -553,14 +553,14 @@ Variables</h2></td></tr>
 <tr class="memitem:a03e14f73cdb6651b0f949e7be87f9dfb"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a03e14f73cdb6651b0f949e7be87f9dfb">constant_zero</a> {zeros&lt;Type&gt;{}()}</td></tr>
 <tr class="memdesc:a03e14f73cdb6651b0f949e7be87f9dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constant zero matrix of a constant-evaluable factory.  <br /></td></tr>
 <tr class="separator:a03e14f73cdb6651b0f949e7be87f9dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e38e5f129253b7d5d6b34a21f8df9b" id="r_aa2e38e5f129253b7d5d6b34a21f8df9b"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:aa2e38e5f129253b7d5d6b34a21f8df9b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa2e38e5f129253b7d5d6b34a21f8df9b">make_one</a> ()</td></tr>
-<tr class="memdesc:aa2e38e5f129253b7d5d6b34a21f8df9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The one matrix built at the point of use.  <br /></td></tr>
-<tr class="separator:aa2e38e5f129253b7d5d6b34a21f8df9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecc1f84dced203078aa8042622b6e029" id="r_aecc1f84dced203078aa8042622b6e029"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
-<tr class="memitem:aecc1f84dced203078aa8042622b6e029"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aecc1f84dced203078aa8042622b6e029">make_zero</a> ()</td></tr>
-<tr class="memdesc:aecc1f84dced203078aa8042622b6e029"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix built at the point of use.  <br /></td></tr>
-<tr class="separator:aecc1f84dced203078aa8042622b6e029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c80fe5303040082902b545f76027b3b" id="r_a8c80fe5303040082902b545f76027b3b"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:a8c80fe5303040082902b545f76027b3b"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8c80fe5303040082902b545f76027b3b">make_one</a> ()</td></tr>
+<tr class="memdesc:a8c80fe5303040082902b545f76027b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The one matrix built at the point of use.  <br /></td></tr>
+<tr class="separator:a8c80fe5303040082902b545f76027b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba9457c1c484e37b84ea323bc31e264f" id="r_aba9457c1c484e37b84ea323bc31e264f"><td class="memTemplParams" colspan="2">template&lt;typename Type &gt; </td></tr>
+<tr class="memitem:aba9457c1c484e37b84ea323bc31e264f"><td class="memTemplItemLeft" align="right" valign="top">constexpr decltype(auto)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aba9457c1c484e37b84ea323bc31e264f">make_zero</a> ()</td></tr>
+<tr class="memdesc:aba9457c1c484e37b84ea323bc31e264f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The zero matrix built at the point of use.  <br /></td></tr>
+<tr class="separator:aba9457c1c484e37b84ea323bc31e264f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Internal implementation details. </p>
@@ -1134,8 +1134,8 @@ template&lt;typename Element &gt; </div>
 
 </div>
 </div>
-<a id="aa2e38e5f129253b7d5d6b34a21f8df9b" name="aa2e38e5f129253b7d5d6b34a21f8df9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2e38e5f129253b7d5d6b34a21f8df9b">&#9670;&#160;</a></span>make_one()</h2>
+<a id="a8c80fe5303040082902b545f76027b3b" name="a8c80fe5303040082902b545f76027b3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c80fe5303040082902b545f76027b3b">&#9670;&#160;</a></span>make_one()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1146,7 +1146,7 @@ template&lt;typename Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto fcarouge::kalman_filter::internal::make_one </td>
+          <td class="memname">decltype(auto) fcarouge::kalman_filter::internal::make_one </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -1160,23 +1160,25 @@ template&lt;typename Type &gt; </div>
 </div><div class="memdoc">
 
 <p>The one matrix built at the point of use. </p>
-<p>The constant one matrix when it is a constant expression, so that a filter is constant-initializable, otherwise the value built by its backend. </p>
+<p>A reference to the constant one matrix when it is a constant expression, so that a filter is constant-initializable and an update binds it without a copy on the stack, otherwise the value built by its backend. </p>
 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00825">825</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  825</span>                                                                 {</div>
+<div class="fragment"><div class="line"><span class="lineno">  825</span>                                                                           {</div>
 <div class="line"><span class="lineno">  826</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (constant_evaluable&lt;ones&lt;Type&gt;&gt;) {</div>
-<div class="line"><span class="lineno">  827</span>    <span class="keywordflow">return</span> constant_one&lt;Type&gt;;</div>
-<div class="line"><span class="lineno">  828</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  829</span>    <span class="keywordflow">return</span> ones&lt;Type&gt;{}();</div>
-<div class="line"><span class="lineno">  830</span>  }</div>
-<div class="line"><span class="lineno">  831</span>}</div>
+<div class="line"><span class="lineno">  827</span>    <span class="comment">// A cast: GCC deduces a value from a parenthesized variable template.</span></div>
+<div class="line"><span class="lineno">  828</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>decltype(constant_one&lt;Type&gt;) &amp;<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  829</span>        constant_one&lt;Type&gt;);</div>
+<div class="line"><span class="lineno">  830</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  831</span>    <span class="keywordflow">return</span> ones&lt;Type&gt;{}();</div>
+<div class="line"><span class="lineno">  832</span>  }</div>
+<div class="line"><span class="lineno">  833</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00818">constant_one</a>.</p>
 
 </div>
 </div>
-<a id="aecc1f84dced203078aa8042622b6e029" name="aecc1f84dced203078aa8042622b6e029"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aecc1f84dced203078aa8042622b6e029">&#9670;&#160;</a></span>make_zero()</h2>
+<a id="aba9457c1c484e37b84ea323bc31e264f" name="aba9457c1c484e37b84ea323bc31e264f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba9457c1c484e37b84ea323bc31e264f">&#9670;&#160;</a></span>make_zero()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1187,7 +1189,7 @@ template&lt;typename Type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto fcarouge::kalman_filter::internal::make_zero </td>
+          <td class="memname">decltype(auto) fcarouge::kalman_filter::internal::make_zero </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -1201,20 +1203,22 @@ template&lt;typename Type &gt; </div>
 </div><div class="memdoc">
 
 <p>The zero matrix built at the point of use. </p>
-<p>The constant zero matrix when it is a constant expression, so that a filter is constant-initializable, otherwise the value built by its backend. </p>
+<p>A reference to the constant zero matrix when it is a constant expression, so that a filter is constant-initializable and an update binds it without a copy on the stack, otherwise the value built by its backend. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a1">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00895">895</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  895</span>                                                                  {</div>
-<div class="line"><span class="lineno">  896</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (constant_evaluable&lt;zeros&lt;Type&gt;&gt;) {</div>
-<div class="line"><span class="lineno">  897</span>    <span class="keywordflow">return</span> constant_zero&lt;Type&gt;;</div>
-<div class="line"><span class="lineno">  898</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  899</span>    <span class="keywordflow">return</span> zeros&lt;Type&gt;{}();</div>
-<div class="line"><span class="lineno">  900</span>  }</div>
-<div class="line"><span class="lineno">  901</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00897">897</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  897</span>                                                                            {</div>
+<div class="line"><span class="lineno">  898</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (constant_evaluable&lt;zeros&lt;Type&gt;&gt;) {</div>
+<div class="line"><span class="lineno">  899</span>    <span class="comment">// A cast: GCC deduces a value from a parenthesized variable template.</span></div>
+<div class="line"><span class="lineno">  900</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>decltype(constant_zero&lt;Type&gt;) &amp;<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  901</span>        constant_zero&lt;Type&gt;);</div>
+<div class="line"><span class="lineno">  902</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  903</span>    <span class="keywordflow">return</span> zeros&lt;Type&gt;{}();</div>
+<div class="line"><span class="lineno">  904</span>  }</div>
+<div class="line"><span class="lineno">  905</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00888">constant_zero</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00890">constant_zero</a>.</p>
 
 </div>
 </div>
@@ -1598,10 +1602,10 @@ template&lt;typename Type &gt; </div>
 <p>The constant zero matrix of a constant-evaluable factory. </p>
 <p>Constant-initialized from the <code>zeros</code> factory, whichever of its specializations applies, including a user-defined one for a type without a <code>zero</code> specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00888">888</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  888</span>{zeros&lt;Type&gt;{}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00890">890</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  890</span>{zeros&lt;Type&gt;{}()};</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00895">make_zero()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00897">make_zero()</a>.</p>
 
 </div>
 </div>
@@ -1939,9 +1943,9 @@ template&lt;typename Type  = double&gt; </div>
 <p>User-defined.</p>
 <dl class="section warning"><dt>Warning</dt><dd>A user-defined specialization must be a constant expression, declared <code>constexpr</code>. The dynamic initialization of a templated variable is unordered: a filter constructed during the dynamic initialization of another object of static storage duration would copy its zero-initialized storage. Specialize the <code>zeros</code> factory instead for a value that is not a constant expression. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00844">844</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  844</span>                          {kalman_filter::internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  845</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00846">846</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  846</span>                          {kalman_filter::internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  847</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1969,8 +1973,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton zero matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00849">849</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  849</span>{0};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00851">851</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  851</span>{0};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1999,8 +2003,8 @@ template&lt;typename Type &gt; </div>
 <p>The constant zero matrix specialization. </p>
 <p>Defined only for a backend whose zero matrix is a constant expression, which is then constant-initialized. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00879">879</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  879</span>{zeros&lt;Type&gt;{}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00881">881</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  881</span>{zeros&lt;Type&gt;{}()};</div>
 </div><!-- fragment -->
 </div>
 </div>
