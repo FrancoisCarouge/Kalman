@@ -69,7 +69,7 @@ template <typename Type> struct x_z_u_p_q_r {
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
-    const auto i{make_one<gain>()};
+    const auto &i{make_one<gain>()};
 
     z = output{output_z, outputs_z...};
     s = p + r;

@@ -49,6 +49,8 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman_filter/internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
+#include <type_traits>
+
 namespace fcarouge::kalman_filter::internal {
 //! @brief Specialization of the evaluation type.
 //!
@@ -76,8 +78,8 @@ struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct ones<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] static constexpr auto operator()() {
-    return typed_matrix<decltype(make_one<Matrix>()), RowIndexes,
-                        ColumnIndexes>{make_one<Matrix>()};
+    return typed_matrix<std::remove_cvref_t<decltype(make_one<Matrix>())>,
+                        RowIndexes, ColumnIndexes>{make_one<Matrix>()};
   }
 };
 
@@ -85,8 +87,8 @@ struct ones<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 struct zeros<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   [[nodiscard]] static constexpr auto operator()() {
-    return typed_matrix<decltype(make_zero<Matrix>()), RowIndexes,
-                        ColumnIndexes>{make_zero<Matrix>()};
+    return typed_matrix<std::remove_cvref_t<decltype(make_zero<Matrix>())>,
+                        RowIndexes, ColumnIndexes>{make_zero<Matrix>()};
   }
 };
 
