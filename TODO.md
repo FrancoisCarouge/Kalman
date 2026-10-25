@@ -70,6 +70,12 @@ Options for the owner to decide, not implemented: each touches the named-argumen
 
 Options for the owner to decide, not implemented. The getter return types (F46) and the freestanding build (F44) were decided and implemented on 2026-10-23 (`f8d89c95c`, `6ad1d91f1`).
 
+**Stored intermediates (F35, F37).** Every step stores its models, gain, innovation, innovation uncertainty, input and arguments as members, read back through the getters. The stores cost memory and time: ArduPilot's 2-state precision landing prediction runs in 15 ns, 10 ns with them kept local, against the original's 4.6 ns (host, `-O3`), and each PX4 EKFGSF model keeps 232 bytes where the original kept 48.
+
+- A. A declaration tag, `intermediates<stored | discarded>`: discarded removes the members and their getters, and the steps use locals; the default keeps today's behaviour.
+- B. Store only what a later step reads (x, p, and the models or values the user set), and compute the getters of the others on demand from the stored arguments: no new vocabulary, but a getter of a callable characteristic re-evaluates it.
+- C. Keep them, and document the cost.
+
 **Angle arithmetic (F45).** The innovation is `z - h(x)` and the correction `x + K y`: a bearing or yaw crossing ±π gives a 2π innovation (MRPT's range-bearing tracker ends 22.5 m off on the library without a workaround, 1.24 m with it).
 
 - A. Named `innovation{callable(z, z_predicted) -> y}` and `correction{callable(x, dx) -> x}` declaration arguments, defaulting to the subtraction and the sum: MRPT's `OnSubtractObservationVectors` and `OnNormalizeStateVector`.
