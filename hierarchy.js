@@ -147,6 +147,10 @@ var hierarchy =
     [ "fcarouge::test::anonymous_namespace{x_z_u_p_qq_r_ff_gg.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg_8cpp_03_1_1propagation.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{x_z_u_p_qq_r_ff_gg_ps.cpp}::propagation", "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__u__p__qq__r__ff__gg__ps_8cpp_03_1_1propagation.xhtml", null ],
     [ "mp_units::quantity_spec", null, [
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::down", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1down.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::east", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1east.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::ned_displacement", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1ned__displacement.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::north", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1north.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1currency.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1currency.xhtml", null ]
     ] ],
@@ -154,5 +158,8 @@ var hierarchy =
     [ "fcarouge::test::anonymous_namespace{unrelated.cpp}::unrelated", "structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{constant_1x1x0.cpp}::value", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03_1_1value.xhtml", null ],
     [ "fcarouge::test::anonymous_namespace{constant_factory_1x1x0.cpp}::value", "classfcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03_1_1value.xhtml", null ],
-    [ "fcarouge::test::value", "classfcarouge_1_1test_1_1value.xhtml", null ]
+    [ "fcarouge::test::value", "classfcarouge_1_1test_1_1value.xhtml", null ],
+    [ "mp_units::vector_axes", null, [
+      [ "mp_units::component_vectors< fcarouge::sample::ned_displacement >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__displacement_01_4.xhtml", null ]
+    ] ]
 ];

@@ -1,5 +1,6 @@
 var examples =
 [
+    [ "ekf_3x1x0_beacon_position_unit.cpp", "ekf_3x1x0_beacon_position_unit_8cpp-example.xhtml", null ],
     [ "ekf_4x1x0_thermal_soaring.cpp", "ekf_4x1x0_thermal_soaring_8cpp-example.xhtml", null ],
     [ "ekf_6x4x0_3d_apollo_position.cpp", "ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml", null ],
     [ "kf_1x1x0_building_height.cpp", "kf_1x1x0_building_height_8cpp-example.xhtml", null ],

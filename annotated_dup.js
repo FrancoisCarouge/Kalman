@@ -2,6 +2,12 @@ var annotated_dup =
 [
     [ "fcarouge", "namespacefcarouge.xhtml", [
       [ "sample", "namespacefcarouge_1_1sample.xhtml", [
+        [ "anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03.xhtml", [
+          [ "down", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1down.xhtml", null ],
+          [ "east", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1east.xhtml", null ],
+          [ "ned_displacement", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1ned__displacement.xhtml", null ],
+          [ "north", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1north.xhtml", null ]
+        ] ],
         [ "anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml", [
           [ "currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1currency.xhtml", null ],
           [ "dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1dim__currency.xhtml", null ],
@@ -177,5 +183,8 @@ var annotated_dup =
         [ "value", "classfcarouge_1_1test_1_1value.xhtml", "classfcarouge_1_1test_1_1value" ]
       ] ],
       [ "kalman", "classfcarouge_1_1kalman.xhtml", "classfcarouge_1_1kalman" ]
+    ] ],
+    [ "mp_units", null, [
+      [ "component_vectors< fcarouge::sample::ned_displacement >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__displacement_01_4.xhtml", null ]
     ] ]
 ];
