@@ -86,6 +86,8 @@ using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
 //! simulated with a hedge ratio drifting from 1.25 to 1.37 and a null
 //! intercept, which a small δ adapts slowly. Not trading advice.
 //!
+//! @image html kf_2x1x0_pairs_hedge_ratio_unit_layout.svg
+//!
 //! @image html kf_2x1x0_pairs_hedge_ratio_unit.svg
 //!
 //! @example kf_2x1x0_pairs_hedge_ratio_unit.cpp

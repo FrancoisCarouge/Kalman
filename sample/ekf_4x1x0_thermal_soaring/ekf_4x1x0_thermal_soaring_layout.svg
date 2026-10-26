@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the ekf_4x1x0_thermal_soaring sample, top view:
+     1 m = 2.2 px, x = 300 + 2.2 east, y = 420 - 2.2 north. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="680" viewBox="0 0 720 680" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Thermal Layout</title>
+  <rect x="0" y="0" width="720" height="680" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 4x1x0 Thermal Soaring</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Top View</text>
+
+  <!-- North and east axes. -->
+  <line x1="50" y1="190" x2="50" y2="98.8" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="50,90 55,101 45,101" fill="#2f7d32"/>
+  <line x1="50" y1="190" x2="131.2" y2="190" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="140,190 129,195 129,185" fill="#2f7d32"/>
+  <text x="50" y="80" text-anchor="middle" fill="#2f7d32" font-weight="bold">North</text>
+  <text x="146" y="195" fill="#2f7d32" font-weight="bold">East</text>
+
+  <!-- The thermal, by its estimated strength, radius, and center. -->
+  <circle cx="345.4" cy="369.5" r="202.2" fill="#fbe3d0"/>
+  <circle cx="345.4" cy="369.5" r="101.1" fill="#f6c7a3"/>
+  <circle cx="345.4" cy="369.5" r="202.2" fill="none" stroke="#d9661f" stroke-width="2"/>
+  <path d="M338.4,369.5 h14 M345.4,362.5 v14" stroke="#c0392b" stroke-width="2.5"/>
+  <line x1="345.4" y1="369.5" x2="540.7" y2="369.5" stroke="#a8460c" stroke-width="1.5"/>
+  <polygon points="547.5,369.5 538.5,373.5 538.5,365.5" fill="#a8460c"/>
+  <text x="446.4" y="361.5" text-anchor="middle" font-size="12" fill="#a8460c">R = 91.9 m</text>
+  <text x="355.4" y="391.5" font-size="12" fill="#c0392b" font-weight="bold">Estimated center</text>
+  <text x="355.4" y="406.5" font-size="12" fill="#c0392b">23.0 m north, 20.6 m east,</text>
+  <text x="355.4" y="421.5" font-size="12" fill="#c0392b">W = 0.35 m/s</text>
+  <text x="470" y="588" fill="#a8460c" font-weight="bold">Thermal</text>
+  <text x="470" y="604" font-size="12" fill="#a8460c">Updraft, at the distance d</text>
+  <text x="470" y="619" font-size="12" fill="#a8460c">from its center:</text>
+  <text x="470" y="634" font-size="12" fill="#a8460c">w = W exp(−d² / R²)</text>
+
+  <!-- The initial guess of the thermal. -->
+  <circle cx="300" cy="409" r="176" fill="none" stroke="#9a9a9a" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <circle cx="300" cy="409" r="3" fill="#9a9a9a"/>
+  <text x="300" y="607" text-anchor="middle" font-size="12" fill="#666666">Initial guess: 5 m north, 0 m east,</text>
+  <text x="300" y="622" text-anchor="middle" font-size="12" fill="#666666">R = 80 m, W = 0 m/s</text>
+
+  <!-- The drift of the thermal with the wind. -->
+  <line x1="375.4" y1="339.5" x2="409.1" y2="305.7" stroke="#2f7d32" stroke-width="2.5"/>
+  <polygon points="415.4,299.5 411.1,310.8 404,303.7" fill="#2f7d32"/>
+  <text x="367.4" y="293.5" text-anchor="end" font-size="12" fill="#2f7d32">Wind drift x, y,</text>
+  <text x="367.4" y="308.5" text-anchor="end" font-size="12" fill="#2f7d32">per prediction</text>
+
+  <!-- The sUAV and its variometer. -->
+  <path d="M280,422 L320,422 M300,410 L300,436 M293,434 L307,434" stroke="#1f6fb2" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <text x="270" y="424" text-anchor="end" fill="#1f6fb2" font-weight="bold">sUAV</text>
+  <text x="270" y="440" text-anchor="end" font-size="12" fill="#1f6fb2">at its position x, y: its</text>
+  <text x="270" y="455" text-anchor="end" font-size="12" fill="#1f6fb2">variometer measures w,</text>
+  <text x="270" y="470" text-anchor="end" font-size="12" fill="#1f6fb2">σ = 0.45 m/s</text>
+  <text x="40" y="650" font-size="12" fill="#666666">The measurements of the sample are randomly generated: the estimate illustrates</text>
+  <text x="40" y="665" font-size="12" fill="#666666">the model, not a recorded flight.</text>
+</svg>

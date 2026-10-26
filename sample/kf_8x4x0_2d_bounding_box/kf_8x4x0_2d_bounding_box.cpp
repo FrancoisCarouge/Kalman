@@ -58,6 +58,8 @@ using state = fcarouge::state<vector<8>>;
 //! velocities in image space. The filter models constant velocity dynamics.
 //! The prediction and observation models are linear.
 //!
+//! @image html kf_8x4x0_2d_bounding_box_layout.svg
+//!
 //! @note For information, the original sample appears to saturate the velocity
 //! precision early on.
 //!

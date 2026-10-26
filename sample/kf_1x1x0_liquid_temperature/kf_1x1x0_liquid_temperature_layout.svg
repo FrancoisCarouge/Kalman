@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the kf_1x1x0_liquid_temperature sample, side view,
+     not to scale. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="670" viewBox="0 0 720 670" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Tank Layout</title>
+  <rect x="0" y="0" width="720" height="670" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 1x1x0 Liquid Temperature</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Side View</text>
+
+  <!-- The tank and its liquid. -->
+  <rect x="200" y="250" width="280" height="300" fill="#cfe3f3"/>
+  <path d="M200,250 q17.5,-8 35,0 t35,0 t35,0 t35,0 t35,0 t35,0 t35,0 t35,0" fill="#cfe3f3" stroke="#4a90c2" stroke-width="1.5"/>
+  <path d="M200,150 L200,550 L480,550 L480,150" fill="none" stroke="#555555" stroke-width="4"/>
+  <text x="300" y="400" text-anchor="middle" fill="#1f6fb2" font-weight="bold">Liquid</text>
+  <text x="300" y="418" text-anchor="middle" font-size="12" fill="#444444">True temperature about 50 °C,</text>
+  <text x="300" y="433" text-anchor="middle" font-size="12" fill="#444444">fluctuating from 49.979 °C</text>
+  <text x="300" y="448" text-anchor="middle" font-size="12" fill="#444444">to 50.025 °C, modeled by the</text>
+  <text x="300" y="463" text-anchor="middle" font-size="12" fill="#444444">process noise q = 0.0001 °C²</text>
+  <text x="340" y="580" text-anchor="middle" font-weight="bold">Tank</text>
+
+  <!-- The thermometer immersed in the liquid. -->
+  <rect x="392" y="96" width="56" height="34" rx="3" fill="#1f6fb2"/>
+  <line x1="420" y1="130" x2="420" y2="470" stroke="#555555" stroke-width="5"/>
+  <circle cx="420" cy="478" r="10" fill="#c0392b"/>
+  <text x="420" y="118" text-anchor="middle" fill="#ffffff" font-weight="bold">°C</text>
+  <text x="460" y="104" fill="#1f6fb2" font-weight="bold">Thermometer</text>
+  <text x="460" y="120" font-size="12" fill="#444444">Measured temperature z,</text>
+  <text x="460" y="135" font-size="12" fill="#444444">σ = 0.1 °C: R = 0.01 °C²</text>
+
+  <!-- The guess of the temperature, the initial estimate. -->
+  <text x="500" y="300" fill="#a8460c" font-weight="bold">Initial guess</text>
+  <text x="500" y="316" font-size="12" fill="#a8460c">10 °C, σ = 100 °C:</text>
+  <text x="500" y="331" font-size="12" fill="#a8460c">P = 10,000 °C²</text>
+  <text x="500" y="380" fill="#1f6fb2" font-weight="bold">Estimate after ten</text>
+  <text x="500" y="396" font-size="12" fill="#1f6fb2">49.988 °C, σ = 0.036 °C</text>
+
+  <!-- The times of the measurements. -->
+  <line x1="100" y1="620" x2="630" y2="620" stroke="#444444" stroke-width="1.5"/>
+  <line x1="620" y1="620" x2="638.2" y2="620" stroke="#444444" stroke-width="1.5"/>
+  <polygon points="645,620 636,624 636,616" fill="#444444"/>
+  <line x1="160" y1="612" x2="160" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="160" y="646" text-anchor="middle" font-size="12" fill="#444444">z1</text>
+  <line x1="210" y1="612" x2="210" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="210" y="646" text-anchor="middle" font-size="12" fill="#444444">z2</text>
+  <line x1="260" y1="612" x2="260" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="260" y="646" text-anchor="middle" font-size="12" fill="#444444">z3</text>
+  <line x1="310" y1="612" x2="310" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="310" y="646" text-anchor="middle" font-size="12" fill="#444444">z4</text>
+  <line x1="360" y1="612" x2="360" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="360" y="646" text-anchor="middle" font-size="12" fill="#444444">z5</text>
+  <line x1="410" y1="612" x2="410" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="410" y="646" text-anchor="middle" font-size="12" fill="#444444">z6</text>
+  <line x1="460" y1="612" x2="460" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="460" y="646" text-anchor="middle" font-size="12" fill="#444444">z7</text>
+  <line x1="510" y1="612" x2="510" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="510" y="646" text-anchor="middle" font-size="12" fill="#444444">z8</text>
+  <line x1="560" y1="612" x2="560" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="560" y="646" text-anchor="middle" font-size="12" fill="#444444">z9</text>
+  <line x1="610" y1="612" x2="610" y2="628" stroke="#d9661f" stroke-width="2"/>
+  <text x="610" y="646" text-anchor="middle" font-size="12" fill="#444444">z10</text>
+  <text x="110" y="600" fill="#a8460c">Ten measurements, z1 to z10, Δt = 5 s apart</text>
+</svg>
