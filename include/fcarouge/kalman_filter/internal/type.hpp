@@ -281,6 +281,47 @@ template <typename... Types> struct prediction_types_t {};
 
 template <typename... Types>
 inline prediction_types_t<Types...> prediction_types{};
+
+struct joseph_form_t {};
+
+inline constexpr joseph_form_t joseph_form{};
+
+struct simple_form_t {};
+
+inline constexpr simple_form_t simple_form{};
+
+struct symmetric_form_t {};
+
+inline constexpr symmetric_form_t symmetric_form{};
+
+struct information_form_t {};
+
+inline constexpr information_form_t information_form{};
+
+struct symmetrize_t {};
+
+inline constexpr symmetrize_t symmetrize{};
+
+// The standard deviations, in the units of the state, below which the
+// estimate uncertainty variances are raised. The values are held in a tuple
+// rather than an array for heterogeneous, physically typed, states. Each
+// standard deviation is a runtime value, or a compile-time constant of an empty
+// type with a static value member, as the standard constant wrapper.
+template <typename... Types>
+  requires(sizeof...(Types) > 0)
+struct floors {
+  std::tuple<Types...> value;
+
+  constexpr explicit floors(Types... deviations) : value{deviations...} {}
+};
+
+template <typename... Types> floors(Types...) -> floors<Types...>;
+
+// The compile-time constant of the value, mirroring the standard
+// `std::cw<Value>` constant wrapper, not yet provided by the standard
+// libraries.
+template <auto Value>
+inline constexpr std::integral_constant<decltype(Value), Value> cw{};
 } // namespace fcarouge::kalman_filter::internal
 
 #endif // FCAROUGE_KALMAN_FILTER_INTERNAL_TYPE_HPP

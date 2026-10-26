@@ -47,6 +47,7 @@ target_sources(
       "fcarouge/kalman_filter/internal/factory.hpp"
       "fcarouge/kalman_filter/internal/format.hpp"
       "fcarouge/kalman_filter/internal/kalman.tpp"
+      "fcarouge/kalman_filter/internal/policy.hpp"
       "fcarouge/kalman_filter/internal/print.hpp"
       "fcarouge/kalman_filter/internal/type.hpp"
       "fcarouge/kalman_filter/internal/utility.hpp"

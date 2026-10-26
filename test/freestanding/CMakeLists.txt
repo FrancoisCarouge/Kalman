@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> ]]
 build("callable_1x1x0" BACKENDS "freestanding")
 build("division_2x2" BACKENDS "freestanding")
 build("freestanding" BACKENDS "freestanding")
+build("policy_2x2x0" BACKENDS "freestanding")
 build("predict_1x1x1" BACKENDS "freestanding")
 build("predict_2x2x2" BACKENDS "freestanding")
 build("update_1x1x0" BACKENDS "freestanding")

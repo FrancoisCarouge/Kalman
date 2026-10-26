@@ -86,12 +86,14 @@ namespace kf = kalman_filter::internal;
 //! filter type is a generalized, customizable, and extended filter. The default
 //! type parameters implement a one-state, one-output, and double-precision
 //! floating-point type filter. The default update equation uses the Joseph
-//! form. Examples illustrate various usages and implementation tradeoffs. A
-//! standard formatter specialization is included for representation of the
-//! filter states. Filters with `state x output x input` dimensions as 1x1x1 and
-//! 1x1x0 (no input) are supported through vanilla C++. Higher dimension filters
-//! require a linear algebra backend. Customization points and type injections
-//! allow for implementation tradeoffs.
+//! form. Optional policies declared with the filter select another update form
+//! or condition the estimate uncertainty, at compile-time. Examples illustrate
+//! various usages and implementation tradeoffs. A standard formatter
+//! specialization is included for representation of the filter states. Filters
+//! with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are
+//! supported through vanilla C++. Higher dimension filters require a linear
+//! algebra backend. Customization points and type injections allow for
+//! implementation tradeoffs.
 //!
 //! A member function participates in overload resolution only when the filter
 //! accepts its arguments, so that generic code may test a call in a
@@ -114,8 +116,6 @@ namespace kf = kalman_filter::internal;
 //! @todo Is this filter restricted to Newton's equations of motion? That is
 //! only a discretized continuous-time kinematic filter? How about non-Newtonian
 //! systems?
-//! @todo Symmetrization support might be superfluous. How to confirm it is safe
-//! to remove? Optional?
 //! @todo Would we want to support smoothers?
 //! @todo Prepare support for larger dataset recording for graphing, metrics of
 //! large test data to facilitate tuning.
@@ -608,6 +608,75 @@ using kf::state_transition;
 
 //! @brief Input control types wrapper for filter declaration support.
 using kf::input_control;
+
+//! @brief Joseph update form policy for filter declaration support.
+//!
+//! @details Updates the estimate uncertainty as `P = (I - KH)P(I - KH)ᵀ +
+//! KRKᵀ`, valid for any gain, a sum of products keeping the estimate
+//! uncertainty close to symmetric and usually positive semi-definite despite
+//! rounding. The most robust and the most expensive form, evaluated at a
+//! quadratic rather than a cubic cost in the state dimension for a scalar
+//! output. The default update form: declaring it explicitly is the default
+//! filter, of the same type. Incompatible with another update form.
+using kf::joseph_form;
+
+//! @brief Simple update form policy for filter declaration support.
+//!
+//! @details Updates the estimate uncertainty as `P = (I - KH)P`, the cheapest
+//! form. Valid for the optimal gain only, which the filter computes. Rounding
+//! loses the symmetry of the estimate uncertainty and may lose its positive
+//! semi-definiteness. Incompatible with another update form.
+using kf::simple_form;
+
+//! @brief Symmetric update form policy for filter declaration support.
+//!
+//! @details Updates the estimate uncertainty as `P = P - KSKᵀ`, symmetric in
+//! exact arithmetic, at a cost similar to the simple form. Valid for the
+//! optimal gain only, which the filter computes. Subtracting nearly equal
+//! matrices of a precise output may lose the positive semi-definiteness of the
+//! estimate uncertainty. Incompatible with another update form.
+using kf::symmetric_form;
+
+//! @brief Information update form policy for filter declaration support.
+//!
+//! @details Updates the estimate uncertainty as `P = (P⁻¹ + HᵀR⁻¹H)⁻¹`, the
+//! information added by the output. Inverts state-sized rather than
+//! output-sized matrices: cheaper only for outputs much larger than the state.
+//! Requires invertible estimate and output uncertainties: the default null
+//! output uncertainty is not. Incompatible with another update form.
+using kf::information_form;
+
+//! @brief Symmetrization conditioning policy for filter declaration support.
+//!
+//! @details Averages the estimate uncertainty with its transpose after each
+//! update and prediction, `P = (P + Pᵀ) / 2`, restoring its symmetry lost to
+//! rounding, not its positive semi-definiteness. A scalar estimate uncertainty
+//! is symmetric: the policy does nothing. Compatible with every update form and
+//! with the floors: its diagonal is unchanged, so their order does not matter.
+using kf::symmetrize;
+
+//! @brief Floors conditioning policy for filter declaration support.
+//!
+//! @details Raises each diagonal variance of the estimate uncertainty to at
+//! least the square of its floor after each update and prediction. One floor
+//! per state, in state order, is a standard deviation in the units of the
+//! state: a runtime value, stored in the filter, or a compile-time constant,
+//! `cw<0.1>`, without storage, and without runtime cost but the raise. The
+//! constants and the values may be mixed. The floors keep the estimate
+//! uncertainty consistent with the estimation error: they change it on purpose,
+//! a modelling decision rather than a numerical repair. A variance raised alone
+//! keeps its correlations, which may lose the positive semi-definiteness of the
+//! estimate uncertainty. Requires the elements of a matrix estimate uncertainty
+//! be assignable at compile-time positions.
+using kf::floors;
+
+//! @brief Compile-time constant of a value for filter declaration support.
+//!
+//! @details Mirrors the standard `std::cw` constant wrapper, which the standard
+//! libraries do not yet provide: a constant of an empty type with a static
+//! value member, as `std::integral_constant<decltype(Value), Value>`. A
+//! standard constant wrapper, or any such constant, is accepted in its place.
+using kf::cw;
 
 //! @}
 

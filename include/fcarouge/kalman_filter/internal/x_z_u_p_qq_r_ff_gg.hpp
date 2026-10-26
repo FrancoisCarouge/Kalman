@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_QQ_R_FF_GG_HPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_QQ_R_FF_GG_HPP
 
+#include "policy.hpp"
 #include "utility.hpp"
 
 #include <tuple>
@@ -46,7 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::kalman_filter::internal {
 template <typename State, typename Output, typename Input,
           typename NoiseProcess, typename TransitionState,
-          typename TransitionControl>
+          typename TransitionControl, typename Policies = policies<>>
 struct x_z_u_p_qq_r_ff_gg {
   using state = State;
   using output = Output;
@@ -66,6 +67,7 @@ struct x_z_u_p_qq_r_ff_gg {
   using prediction_types = std::tuple<>;
   using gain = evaluate<quotient<state, innovation>>;
 
+  [[no_unique_address]] Policies policies{};
   state x{make_zero<state>()};
   estimate_uncertainty p{make_one<estimate_uncertainty>()};
   noise_process_function noise_process_q;
@@ -94,7 +96,7 @@ struct x_z_u_p_qq_r_ff_gg {
     k = p * t(h) / s;
     y = z - h * x;
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    update_estimate_uncertainty(policies, p, i, k, h, r, s);
   }
 
   constexpr void predict(const auto &input_u, const auto &...inputs_u)
@@ -106,6 +108,7 @@ struct x_z_u_p_qq_r_ff_gg {
     g = transition_control_g();
     x = f * x + g * u;
     p = estimate_uncertainty{f * p * t(f) + q};
+    condition(policies, p);
   }
 };
 } // namespace fcarouge::kalman_filter::internal

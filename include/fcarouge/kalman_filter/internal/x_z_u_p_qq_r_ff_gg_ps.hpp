@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_QQ_R_FF_GG_PS_HPP
 
+#include "policy.hpp"
 #include "utility.hpp"
 
 #include <tuple>
@@ -46,16 +47,16 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::kalman_filter::internal {
 // Helper template to support multiple pack deduction.
 template <typename, typename, typename, typename, typename, typename, typename,
-          typename>
+          typename, typename = policies<>>
 struct x_z_u_p_qq_r_ff_gg_ps final {};
 
 template <typename State, typename Output, typename Input,
           typename... UpdateTypes, typename... PredictionTypes,
           typename NoiseProcess, typename TransitionState,
-          typename TransitionControl>
+          typename TransitionControl, typename Policies>
 struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
                              std::tuple<PredictionTypes...>, NoiseProcess,
-                             TransitionState, TransitionControl> {
+                             TransitionState, TransitionControl, Policies> {
   using state = State;
   using output = Output;
   using input = Input;
@@ -74,6 +75,7 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
 
+  [[no_unique_address]] Policies policies{};
   state x{make_zero<state>()};
   estimate_uncertainty p{make_one<estimate_uncertainty>()};
   noise_process_function noise_process_q;
@@ -103,7 +105,7 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
     k = p * t(h) / s;
     y = z - h * x;
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    update_estimate_uncertainty(policies, p, i, k, h, r, s);
   }
 
   constexpr void predict(const PredictionTypes &...prediction_pack,
@@ -117,6 +119,7 @@ struct x_z_u_p_qq_r_ff_gg_ps<State, Output, Input, std::tuple<UpdateTypes...>,
     g = transition_control_g(prediction_pack...);
     x = f * x + g * u;
     p = estimate_uncertainty{f * p * t(f) + q};
+    condition(policies, p);
   }
 };
 } // namespace fcarouge::kalman_filter::internal

@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_QQ_R_HH_FF_US_PS_HPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_QQ_R_HH_FF_US_PS_HPP
 
+#include "policy.hpp"
 #include "utility.hpp"
 
 #include <tuple>
@@ -46,7 +47,7 @@ For more information, please refer to <https://unlicense.org> */
 namespace fcarouge::kalman_filter::internal {
 // Helper template to support multiple pack deduction.
 template <typename, typename, typename, typename, typename, typename, typename,
-          typename, typename>
+          typename, typename, typename = policies<>>
 struct x_z_p_qq_r_hh_ff_us_ps final {};
 
 // The extended filter linearized about the state estimate entering each stage:
@@ -56,10 +57,11 @@ struct x_z_p_qq_r_hh_ff_us_ps final {};
 template <typename State, typename Output, typename... UpdateTypes,
           typename... PredictionTypes, typename NoiseProcess,
           typename ObservationState, typename TransitionState,
-          typename Transition, typename Observation>
-struct x_z_p_qq_r_hh_ff_us_ps<
-    State, Output, std::tuple<UpdateTypes...>, std::tuple<PredictionTypes...>,
-    NoiseProcess, ObservationState, TransitionState, Transition, Observation> {
+          typename Transition, typename Observation, typename Policies>
+struct x_z_p_qq_r_hh_ff_us_ps<State, Output, std::tuple<UpdateTypes...>,
+                              std::tuple<PredictionTypes...>, NoiseProcess,
+                              ObservationState, TransitionState, Transition,
+                              Observation, Policies> {
   using state = State;
   using output = Output;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -78,6 +80,7 @@ struct x_z_p_qq_r_hh_ff_us_ps<
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
 
+  [[no_unique_address]] Policies policies{};
   state x{make_zero<state>()};
   estimate_uncertainty p{make_one<estimate_uncertainty>()};
   noise_process_function noise_process_q;
@@ -111,7 +114,7 @@ struct x_z_p_qq_r_hh_ff_us_ps<
     k = p * t(h) / s;
     y = z - observation(x, update_pack...);
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    update_estimate_uncertainty(policies, p, i, k, h, r, s);
   }
 
   constexpr void predict(const PredictionTypes &...prediction_pack) {
@@ -123,6 +126,7 @@ struct x_z_p_qq_r_hh_ff_us_ps<
     q = noise_process_q(x, prediction_pack...);
     x = transition(x, prediction_pack...);
     p = estimate_uncertainty{f * p * t(f) + q};
+    condition(policies, p);
   }
 };
 } // namespace fcarouge::kalman_filter::internal
