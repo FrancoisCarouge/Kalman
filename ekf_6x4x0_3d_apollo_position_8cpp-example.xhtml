@@ -107,6 +107,9 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <p>Apollo lunar module abort guidance system rendezvous filter.</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from the NASA R-649/TN-D document. The Apollo Rendezvous Navigation Filter Theory, Description and Performance, Volume 1 of 2.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://archive.org/details/R649Volume1">https://archive.org/details/R649Volume1</a></dd></dl>
 <p>The NASA Apollo 6x4 Extended Kalman Filter (EKF) Lunar Module (LM) Abort Guidance System (AGS) for spacecraft rendezvous approaching the Command/Service Module (CSM). The filter estimates the 3D position and velocity of the spacecraft. Six states are estimated: relative position [rx, ry, rz] and relative velocity [vx, vy, vz]. The filter predicts the state forward in time. The AGS simplified model assumes constant relative velocity between updates: assumption for the short time steps of the Apollo guidance computer. The filter output definition is the Rendezvous Radar information. Four measurements are used: range (r), range rate (r_dot), shaft angle (beta), trunnion elevation angle (theta).</p>
+<div class="image">
+<object type="image/svg+xml" data="ekf_6x4x0_3d_apollo_position_layout.svg" style="pointer-events: none;"></object>
+</div>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>

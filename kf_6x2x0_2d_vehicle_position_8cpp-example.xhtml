@@ -107,6 +107,9 @@ $(function(){initNavTree('kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml',''); 
 <p>Estimating the vehicle location.</p><dl class="section copyright"><dt>Copyright</dt><dd>This example is transcribed from KalmanFilter.NET copyright Alex Becker.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://www.kalmanfilter.net/multiExamples.html#ex9">https://www.kalmanfilter.net/multiExamples.html#ex9</a></dd></dl>
 <p>In this example, we would like to estimate the location of the vehicle in the XY plane. The vehicle has an onboard location sensor that reports X and Y coordinates of the system. We assume constant acceleration dynamics. In this example we don't have a control variable u since we don't have control input. Let us assume a vehicle moving in a straight line in the X direction with a constant velocity. After traveling 400 meters the vehicle turns right, with a turning radius of 300 meters. During the turning maneuver, the vehicle experiences acceleration due to the circular motion (an angular acceleration). The measurements period: Δt = 1s (constant).</p>
+<div class="image">
+<object type="image/svg+xml" data="kf_6x2x0_2d_vehicle_position_layout.svg" style="pointer-events: none;"></object>
+</div>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>

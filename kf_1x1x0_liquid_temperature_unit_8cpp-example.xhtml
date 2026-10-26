@@ -111,6 +111,9 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <dd>
 <a href="https://github.com/mpusz/mp-units/blob/master/example/kalman_filter/kalman_filter-example_6.cpp">https://github.com/mpusz/mp-units/blob/master/example/kalman_filter/kalman_filter-example_6.cpp</a></dd></dl>
 <p>We would like to estimate the temperature of the liquid in a tank. We assume that at steady state the liquid temperature is constant. However, some fluctuations in the true liquid temperature are possible. We can describe the system dynamics by the following equation: xn = T + wn where: T is the constant temperature wn is a random process noise with variance q. Let us assume a true temperature of 50 degrees Celsius. The measurements are taken every 5 seconds. The true liquid temperature at the measurement points is: 49.979°C, 50.025°C, 50°C, 50.003°C, 49.994°C, 50.002°C, 49.999°C, 50.006°C, 49.998°C, and 49.991°C. The set of measurements is: 49.95°C, 49.967°C, 50.1°C, 50.106°C, 49.992°C, 49.819°C, 49.933°C, 50.007°C, 50.023°C, and 49.99°C.</p>
+<div class="image">
+<object type="image/svg+xml" data="kf_1x1x0_liquid_temperature_layout.svg" style="pointer-events: none;"></object>
+</div>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the ekf_6x4x0_3d_apollo_position sample, oblique view of
+     the relative position, not to scale. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="600" viewBox="0 0 720 600" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Rendezvous Layout</title>
+  <rect x="0" y="0" width="720" height="600" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 6x4x0 Apollo Position</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Oblique View</text>
+
+  <!-- The axes of the relative position. -->
+  <line x1="120" y1="480" x2="641.2" y2="480" stroke="#2f7d32" stroke-width="2.5"/>
+  <polygon points="650,480 639,485 639,475" fill="#2f7d32"/>
+  <line x1="120" y1="480" x2="276.9" y2="389.4" stroke="#2f7d32" stroke-width="2.5"/>
+  <polygon points="284.5,385 277.5,394.8 272.5,386.2" fill="#2f7d32"/>
+  <line x1="120" y1="480" x2="120" y2="158.8" stroke="#2f7d32" stroke-width="2.5"/>
+  <polygon points="120,150 125,161 115,161" fill="#2f7d32"/>
+  <text x="658" y="485" fill="#2f7d32" font-weight="bold">x</text>
+  <text x="293.2" y="380" fill="#2f7d32" font-weight="bold">y</text>
+  <text x="120" y="138" text-anchor="middle" fill="#2f7d32" font-weight="bold">z</text>
+
+  <!-- The line of sight and its projection on the xy plane. -->
+  <line x1="120" y1="480" x2="540" y2="400" stroke="#9a9a9a" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line x1="540" y1="400" x2="540" y2="300" stroke="#9a9a9a" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line x1="120" y1="480" x2="540" y2="300" stroke="#1f6fb2" stroke-width="2.5"/>
+  <text x="548" y="354" font-size="12" fill="#666666">rz</text>
+  <text x="300" y="345" text-anchor="middle" fill="#1f6fb2" font-weight="bold">Range r, range rate</text>
+
+  <!-- The shaft and trunnion angles. -->
+  <path d="M290,480 A170,170 0 0 0 287,448.2" fill="none" stroke="#d9661f" stroke-width="2"/>
+  <text x="298" y="474" font-size="12" fill="#a8460c" font-weight="bold">shaft β = atan2(ry, rx)</text>
+  <path d="M355.8,435.1 A240,240 0 0 0 340.6,385.5" fill="none" stroke="#c0392b" stroke-width="2"/>
+  <line x1="349.5" y1="409.9" x2="398" y2="444" stroke="#c0392b" stroke-width="1"/>
+  <text x="402" y="452" font-size="12" fill="#c0392b" font-weight="bold">trunnion θ = asin(rz / r)</text>
+
+  <!-- The command/service module at the origin. -->
+  <rect x="86" y="471" width="30" height="18" fill="#cccccc" stroke="#555555" stroke-width="1.5"/>
+  <path d="M116,471 L130,480 L116,489 Z" fill="#999999" stroke="#555555" stroke-width="1.5"/>
+  <text x="100" y="514" font-weight="bold">Command/Service Module (CSM),</text>
+  <text x="100" y="530" font-size="12" fill="#444444">the origin of the relative position</text>
+
+  <!-- The lunar module approaching. -->
+  <rect x="528" y="288" width="24" height="18" fill="#d9b44a" stroke="#555555" stroke-width="1.5"/>
+  <path d="M528,306 l-8,12 M552,306 l8,12" stroke="#555555" stroke-width="2" fill="none"/>
+  <line x1="516" y1="297" x2="444.8" y2="297" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="436,297 447,292 447,302" fill="#2f7d32"/>
+  <text x="476" y="284" text-anchor="middle" font-size="12" fill="#2f7d32">−100 m/s</text>
+  <text x="480" y="230" fill="#1f6fb2" font-weight="bold">Lunar Module (LM)</text>
+  <text x="480" y="246" font-size="12" fill="#444444">30 km away: [30, 1, 0.5] km,</text>
+  <text x="480" y="261" font-size="12" fill="#444444">its rendezvous radar tracking</text>
+
+  <!-- The rendezvous radar measurements. -->
+  <text x="360" y="560" text-anchor="middle" font-size="12" fill="#444444">Radar measurements, one per second: range r, σ = 30 m; range rate, σ = 0.5 m/s;</text>
+  <text x="360" y="575" text-anchor="middle" font-size="12" fill="#444444">shaft β and trunnion θ angles, σ = 0.005 rad. Not to scale: the angles are exaggerated.</text>
+</svg>

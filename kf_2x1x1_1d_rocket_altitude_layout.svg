@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the kf_2x1x1_1d_rocket_altitude sample, side view:
+     1 m = 0.55 px of altitude, y = 610 - 0.55 altitude, the rocket not to scale. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="670" viewBox="0 0 720 670" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Rocket Layout</title>
+  <rect x="0" y="0" width="720" height="670" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 2x1x1 Rocket Altitude</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Side View</text>
+
+  <!-- The altitude. -->
+  <line x1="110" y1="610" x2="110" y2="115" stroke="#444444" stroke-width="1.5"/>
+  <line x1="102" y1="610" x2="110" y2="610" stroke="#444444" stroke-width="1.5"/>
+  <line x1="102" y1="555" x2="110" y2="555" stroke="#444444" stroke-width="1.5"/>
+  <line x1="102" y1="500" x2="110" y2="500" stroke="#444444" stroke-width="1.5"/>
+  <text x="96" y="504" text-anchor="end" font-size="12" fill="#444444">200 m</text>
+  <line x1="102" y1="445" x2="110" y2="445" stroke="#444444" stroke-width="1.5"/>
+  <line x1="102" y1="390" x2="110" y2="390" stroke="#444444" stroke-width="1.5"/>
+  <text x="96" y="394" text-anchor="end" font-size="12" fill="#444444">400 m</text>
+  <line x1="102" y1="335" x2="110" y2="335" stroke="#444444" stroke-width="1.5"/>
+  <line x1="102" y1="280" x2="110" y2="280" stroke="#444444" stroke-width="1.5"/>
+  <text x="96" y="284" text-anchor="end" font-size="12" fill="#444444">600 m</text>
+  <line x1="102" y1="225" x2="110" y2="225" stroke="#444444" stroke-width="1.5"/>
+  <line x1="102" y1="170" x2="110" y2="170" stroke="#444444" stroke-width="1.5"/>
+  <text x="96" y="174" text-anchor="end" font-size="12" fill="#444444">800 m</text>
+  <line x1="102" y1="115" x2="110" y2="115" stroke="#444444" stroke-width="1.5"/>
+  <text x="110" y="101" text-anchor="middle" font-size="12" fill="#444444">Altitude</text>
+
+  <!-- The ground and the launch pad. -->
+  <path d="M30,618 l8,-8 M40,618 l8,-8 M50,618 l8,-8 M60,618 l8,-8 M70,618 l8,-8 M80,618 l8,-8 M90,618 l8,-8 M100,618 l8,-8 M110,618 l8,-8 M120,618 l8,-8 M130,618 l8,-8 M140,618 l8,-8 M150,618 l8,-8 M160,618 l8,-8 M170,618 l8,-8 M180,618 l8,-8 M190,618 l8,-8 M200,618 l8,-8 M210,618 l8,-8 M220,618 l8,-8 M230,618 l8,-8 M240,618 l8,-8 M250,618 l8,-8 M260,618 l8,-8 M270,618 l8,-8 M280,618 l8,-8 M290,618 l8,-8 M300,618 l8,-8 M310,618 l8,-8 M320,618 l8,-8 M330,618 l8,-8 M340,618 l8,-8 M350,618 l8,-8 M360,618 l8,-8 M370,618 l8,-8 M380,618 l8,-8 M390,618 l8,-8 M400,618 l8,-8 M410,618 l8,-8 M420,618 l8,-8 M430,618 l8,-8 M440,618 l8,-8 M450,618 l8,-8 M460,618 l8,-8 M470,618 l8,-8 M480,618 l8,-8 M490,618 l8,-8 M500,618 l8,-8 M510,618 l8,-8 M520,618 l8,-8 M530,618 l8,-8 M540,618 l8,-8 M550,618 l8,-8 M560,618 l8,-8 M570,618 l8,-8 M580,618 l8,-8 M590,618 l8,-8 M600,618 l8,-8 M610,618 l8,-8 M620,618 l8,-8 M630,618 l8,-8 M640,618 l8,-8 M650,618 l8,-8 M660,618 l8,-8 M670,618 l8,-8" stroke="#888888" stroke-width="1.5" fill="none"/>
+  <line x1="30" y1="610" x2="688" y2="610" stroke="#777777" stroke-width="1.5"/>
+  <rect x="320" y="600" width="60" height="10" fill="#777777"/>
+  <text x="350" y="644" text-anchor="middle" font-weight="bold">Launch pad</text>
+
+  <!-- The rocket boosting vertically. -->
+  <line x1="350" y1="600" x2="350" y2="182.7" stroke="#9a9a9a" stroke-width="2" stroke-dasharray="6 6"/>
+  <path d="M342,154.7 L350,178.7 L358,154.7 Z" fill="#d9661f"/>
+  <rect x="340" y="106.7" width="20" height="46" fill="#dddddd" stroke="#555555" stroke-width="1.5"/>
+  <path d="M340,106.7 L350,86.7 L360,106.7 Z" fill="#c0392b"/>
+  <path d="M340,140.7 L330,152.7 L340,152.7 Z M360,140.7 L370,152.7 L360,152.7 Z" fill="#555555"/>
+  <line x1="110" y1="152.7" x2="330" y2="152.7" stroke="#1f6fb2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="118" y="144.7" font-size="12" fill="#1f6fb2">Estimate: 831.5 m, 222.9 m/s</text>
+  <text x="360" y="500" font-size="12" fill="#666666">Boosting vertically,</text>
+  <text x="360" y="515" font-size="12" fill="#666666">Δt = 0.25 s</text>
+
+  <!-- The acceleration and gravity. -->
+  <line x1="395" y1="142.7" x2="395" y2="81.5" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="395,72.7 400,83.7 390,83.7" fill="#2f7d32"/>
+  <text x="405" y="88.7" fill="#2f7d32" font-weight="bold">Acceleration a = 30 m/s²</text>
+  <line x1="305" y1="182.7" x2="305" y2="233.9" stroke="#c0392b" stroke-width="3"/>
+  <polygon points="305,242.7 300,231.7 310,231.7" fill="#c0392b"/>
+  <text x="295" y="232.7" text-anchor="end" fill="#c0392b" font-weight="bold">Gravity g = −9.8 m/s²</text>
+
+  <!-- The onboard sensors. -->
+  <text x="430" y="290" fill="#1f6fb2" font-weight="bold">Altimeter</text>
+  <text x="430" y="306" font-size="12" fill="#444444">Measured altitude z, σ = 20 m:</text>
+  <text x="430" y="321" font-size="12" fill="#444444">R = 400 m²</text>
+  <text x="430" y="360" fill="#1f6fb2" font-weight="bold">Accelerometer</text>
+  <text x="430" y="376" font-size="12" fill="#444444">Senses a − g + ε, not gravity:</text>
+  <text x="430" y="391" font-size="12" fill="#444444">about 39.8 m/s², ε = 0.1 m/s².</text>
+  <text x="430" y="406" font-size="12" fill="#444444">Adding g yields the input u,</text>
+  <text x="430" y="421" font-size="12" fill="#444444">about 30 m/s², the control.</text>
+  <line x1="424" y1="300" x2="362" y2="122.7" stroke="#9a9a9a" stroke-width="1"/>
+  <line x1="424" y1="370" x2="362" y2="132.7" stroke="#9a9a9a" stroke-width="1"/>
+</svg>

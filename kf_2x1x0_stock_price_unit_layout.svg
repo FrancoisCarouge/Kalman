@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the kf_2x1x0_stock_price_unit sample, local linear
+     trend, illustrative values. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Stock Price Layout</title>
+  <rect x="0" y="0" width="720" height="540" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 2x1x0 Stock Price</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Local Linear Trend</text>
+
+  <!-- The trading days and the price. -->
+  <line x1="80" y1="470" x2="683.2" y2="470" stroke="#444444" stroke-width="1.5"/>
+  <polygon points="690,470 681,474 681,466" fill="#444444"/>
+  <line x1="80" y1="470" x2="80" y2="86.8" stroke="#444444" stroke-width="1.5"/>
+  <polygon points="80,80 84,89 76,89" fill="#444444"/>
+  <line x1="110" y1="470" x2="110" y2="478" stroke="#444444" stroke-width="1.5"/>
+  <text x="110" y="496" text-anchor="middle" font-size="12" fill="#444444">t − 3</text>
+  <line x1="220" y1="470" x2="220" y2="478" stroke="#444444" stroke-width="1.5"/>
+  <text x="220" y="496" text-anchor="middle" font-size="12" fill="#444444">t − 2</text>
+  <line x1="330" y1="470" x2="330" y2="478" stroke="#444444" stroke-width="1.5"/>
+  <text x="330" y="496" text-anchor="middle" font-size="12" fill="#444444">t − 1</text>
+  <line x1="440" y1="470" x2="440" y2="478" stroke="#444444" stroke-width="1.5"/>
+  <text x="440" y="496" text-anchor="middle" font-size="12" fill="#444444">t</text>
+  <line x1="550" y1="470" x2="550" y2="478" stroke="#444444" stroke-width="1.5"/>
+  <text x="550" y="496" text-anchor="middle" font-size="12" fill="#444444">t + 1</text>
+  <text x="690" y="520" text-anchor="end" font-size="12" fill="#444444">Trading day</text>
+  <text x="88" y="80" font-size="12" fill="#444444">Price ($)</text>
+
+  <!-- The unobserved level of the price. -->
+  <polyline points="110,306 220,274 330,250 440,214" fill="none" stroke="#1f6fb2" stroke-width="3"/>
+  <line x1="440" y1="214" x2="550" y2="182" stroke="#1f6fb2" stroke-width="3" stroke-dasharray="8 6"/>
+  <text x="100" y="330" fill="#1f6fb2" font-weight="bold">Level μ, unobserved</text>
+
+  <!-- The slope of the level, its trend. -->
+  <path d="M220,274 L330,274 L330,250" fill="none" stroke="#2f7d32" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="275" y="292" text-anchor="middle" font-size="12" fill="#2f7d32">1 day</text>
+  <text x="338" y="268" font-size="12" fill="#2f7d32" font-weight="bold">slope ν</text>
+  <text x="210" y="384" font-size="12" fill="#2f7d32">The slope ν drifts: σζ = 0.1 $ per day.</text>
+  <text x="210" y="399" font-size="12" fill="#2f7d32">The level μ moves by the slope, and drifts: σξ = 0.5 $.</text>
+
+  <!-- The measured closing prices, about the level. -->
+  <line x1="110" y1="306" x2="110" y2="270" stroke="#d9661f" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="110" cy="270" r="6" fill="#d9661f"/>
+  <line x1="220" y1="274" x2="220" y2="302" stroke="#d9661f" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="220" cy="302" r="6" fill="#d9661f"/>
+  <line x1="330" y1="250" x2="330" y2="206" stroke="#d9661f" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="330" cy="206" r="6" fill="#d9661f"/>
+  <line x1="440" y1="214" x2="440" y2="242" stroke="#d9661f" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="440" cy="242" r="6" fill="#d9661f"/>
+  <text x="318" y="192" text-anchor="end" fill="#a8460c" font-weight="bold">Closing price y = μ + ε</text>
+  <text x="318" y="208" text-anchor="end" font-size="12" fill="#a8460c">ε, the transient noise, such as</text>
+  <text x="318" y="223" text-anchor="end" font-size="12" fill="#a8460c">the bid-ask bounce: σε = 1 $</text>
+
+  <!-- The forecast of the next closing price. -->
+  <line x1="550" y1="118" x2="550" y2="246" stroke="#c0392b" stroke-width="2"/>
+  <line x1="542" y1="118" x2="558" y2="118" stroke="#c0392b" stroke-width="2"/>
+  <line x1="542" y1="246" x2="558" y2="246" stroke="#c0392b" stroke-width="2"/>
+  <circle cx="550" cy="182" r="7" fill="#ffffff" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="536" y="84" text-anchor="end" fill="#c0392b" font-weight="bold">Forecast</text>
+  <text x="536" y="100" text-anchor="end" font-size="12" fill="#c0392b">the predicted level μ + ν,</text>
+  <text x="536" y="115" text-anchor="end" font-size="12" fill="#c0392b">σ = √(Pμμ + σε²)</text>
+  <text x="88" y="520" font-size="12" fill="#666666">Illustrative values, not the sample's closing prices</text>
+</svg>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the kf_6x2x0_2d_vehicle_position sample, top view:
+     1 m = 0.8 px, x = 90 + 0.8 (X + 420), y = 410 - 0.8 (Y + 20). -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Vehicle Layout</title>
+  <rect x="0" y="0" width="720" height="470" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 6x2x0 Vehicle Position</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Top View</text>
+
+  <!-- The X and Y axes of the plane. -->
+  <line x1="90" y1="394" x2="691.2" y2="394" stroke="#444444" stroke-width="1.5"/>
+  <polygon points="698,394 689,398 689,390" fill="#444444"/>
+  <line x1="426" y1="410" x2="426" y2="128.8" stroke="#444444" stroke-width="1.5"/>
+  <polygon points="426,122 430,131 422,131" fill="#444444"/>
+  <line x1="106" y1="394" x2="106" y2="400" stroke="#444444" stroke-width="1.5"/>
+  <text x="106" y="416" text-anchor="middle" font-size="12" fill="#444444">-400 m</text>
+  <line x1="186" y1="394" x2="186" y2="400" stroke="#444444" stroke-width="1.5"/>
+  <text x="186" y="416" text-anchor="middle" font-size="12" fill="#444444">-300 m</text>
+  <line x1="266" y1="394" x2="266" y2="400" stroke="#444444" stroke-width="1.5"/>
+  <text x="266" y="416" text-anchor="middle" font-size="12" fill="#444444">-200 m</text>
+  <line x1="346" y1="394" x2="346" y2="400" stroke="#444444" stroke-width="1.5"/>
+  <text x="346" y="416" text-anchor="middle" font-size="12" fill="#444444">-100 m</text>
+  <line x1="426" y1="394" x2="426" y2="400" stroke="#444444" stroke-width="1.5"/>
+  <text x="426" y="416" text-anchor="middle" font-size="12" fill="#444444">0 m</text>
+  <line x1="506" y1="394" x2="506" y2="400" stroke="#444444" stroke-width="1.5"/>
+  <text x="506" y="416" text-anchor="middle" font-size="12" fill="#444444">100 m</text>
+  <line x1="586" y1="394" x2="586" y2="400" stroke="#444444" stroke-width="1.5"/>
+  <text x="586" y="416" text-anchor="middle" font-size="12" fill="#444444">200 m</text>
+  <line x1="666" y1="394" x2="666" y2="400" stroke="#444444" stroke-width="1.5"/>
+  <text x="666" y="416" text-anchor="middle" font-size="12" fill="#444444">300 m</text>
+  <line x1="420" y1="314" x2="426" y2="314" stroke="#444444" stroke-width="1.5"/>
+  <text x="416" y="318" text-anchor="end" font-size="12" fill="#444444">100 m</text>
+  <line x1="420" y1="234" x2="426" y2="234" stroke="#444444" stroke-width="1.5"/>
+  <text x="416" y="238" text-anchor="end" font-size="12" fill="#444444">200 m</text>
+  <text x="706" y="399" fill="#444444" font-weight="bold">X</text>
+  <text x="426" y="112" text-anchor="middle" fill="#444444" font-weight="bold">Y</text>
+
+  <!-- The true path of the vehicle. -->
+  <path d="M106,154 L426,154 A240,240 0 0 1 666,394" fill="none" stroke="#4a90c2" stroke-width="3"/>
+  <line x1="166" y1="132" x2="237.2" y2="132" stroke="#4a90c2" stroke-width="2.5"/>
+  <polygon points="246,132 235,137 235,127" fill="#4a90c2"/>
+  <text x="106" y="114" fill="#1f6fb2" font-weight="bold">Straight 400 m along X, constant velocity</text>
+  <text x="446" y="208" fill="#1f6fb2" font-weight="bold">Right turn,</text>
+  <text x="446" y="226" fill="#1f6fb2" font-weight="bold">300 m radius</text>
+  <line x1="426" y1="394" x2="595.7" y2="224.3" stroke="#9a9a9a" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="526" y="310" font-size="12" fill="#666666">300 m</text>
+
+  <!-- The measured locations. -->
+  <circle cx="111.1" cy="153.7" r="3.5" fill="#d9661f"/>
+  <circle cx="125.3" cy="152.6" r="3.5" fill="#d9661f"/>
+  <circle cx="145.2" cy="157.9" r="3.5" fill="#d9661f"/>
+  <circle cx="162.8" cy="149.8" r="3.5" fill="#d9661f"/>
+  <circle cx="186.5" cy="153.2" r="3.5" fill="#d9661f"/>
+  <circle cx="207.3" cy="152.4" r="3.5" fill="#d9661f"/>
+  <circle cx="229.3" cy="154" r="3.5" fill="#d9661f"/>
+  <circle cx="247.9" cy="151.1" r="3.5" fill="#d9661f"/>
+  <circle cx="267.6" cy="156.9" r="3.5" fill="#d9661f"/>
+  <circle cx="286.7" cy="155.9" r="3.5" fill="#d9661f"/>
+  <circle cx="308.9" cy="156.1" r="3.5" fill="#d9661f"/>
+  <circle cx="327" cy="154.3" r="3.5" fill="#d9661f"/>
+  <circle cx="343.2" cy="154.3" r="3.5" fill="#d9661f"/>
+  <circle cx="363.4" cy="152.1" r="3.5" fill="#d9661f"/>
+  <circle cx="383.9" cy="158" r="3.5" fill="#d9661f"/>
+  <circle cx="407.3" cy="153.9" r="3.5" fill="#d9661f"/>
+  <circle cx="446.8" cy="158.2" r="3.5" fill="#d9661f"/>
+  <circle cx="465.8" cy="155.1" r="3.5" fill="#d9661f"/>
+  <circle cx="487.6" cy="158.3" r="3.5" fill="#d9661f"/>
+  <circle cx="502.3" cy="166.1" r="3.5" fill="#d9661f"/>
+  <circle cx="521.9" cy="175.7" r="3.5" fill="#d9661f"/>
+  <circle cx="541.2" cy="182.1" r="3.5" fill="#d9661f"/>
+  <circle cx="555.5" cy="192.8" r="3.5" fill="#d9661f"/>
+  <circle cx="570.4" cy="201" r="3.5" fill="#d9661f"/>
+  <circle cx="587.1" cy="215.6" r="3.5" fill="#d9661f"/>
+  <circle cx="604.1" cy="231" r="3.5" fill="#d9661f"/>
+  <circle cx="617.5" cy="246.7" r="3.5" fill="#d9661f"/>
+  <circle cx="628" cy="261.1" r="3.5" fill="#d9661f"/>
+  <circle cx="639" cy="283" r="3.5" fill="#d9661f"/>
+  <circle cx="643.4" cy="298.2" r="3.5" fill="#d9661f"/>
+  <circle cx="647.9" cy="313.7" r="3.5" fill="#d9661f"/>
+  <circle cx="661.3" cy="330.2" r="3.5" fill="#d9661f"/>
+  <circle cx="667" cy="353.5" r="3.5" fill="#d9661f"/>
+  <circle cx="659.4" cy="367.6" r="3.5" fill="#d9661f"/>
+  <circle cx="665.9" cy="392.3" r="3.5" fill="#d9661f"/>
+  <text x="106" y="188" fill="#a8460c" font-weight="bold">Measured locations, every Δt = 1 s:</text>
+  <text x="106" y="204" font-size="12" fill="#a8460c">the onboard location sensor reports X and Y,</text>
+  <text x="106" y="219" font-size="12" fill="#a8460c">σ = 3 m: R = diag(9, 9) m²</text>
+
+  <!-- The vehicle at the start of its path. -->
+  <rect x="97" y="149" width="18" height="10" rx="2" fill="#1f6fb2"/>
+  <text x="92" y="159" text-anchor="end" fill="#1f6fb2" font-weight="bold">Vehicle</text>
+</svg>
