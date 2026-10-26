@@ -118,6 +118,10 @@ $(function(){initNavTree('kf_2x1x1_1d_rocket_altitude_8cpp-example.xhtml',''); i
 <div class="image">
 <object type="image/svg+xml" data="kf_2x1x1_1d_rocket_altitude_layout.svg" style="pointer-events: none;"></object>
 </div>
+<p>The errors are shown from a reference trajectory, a boost of 30 m.s^-2 from rest at the first measurement, which the altimeter measurements fit within their standard deviation. The velocity is not measured: from its initial guess at rest, its estimate overshoots while the first noisy altitudes dominate, then settles as the accurate accelerometer input carries the prediction. The gains fall, the altitude gain to 0.12, and the altitude estimate smooths the 20 m altimeter noise to a 7 m standard deviation.</p>
+<div class="image">
+<object type="image/svg+xml" data="kf_2x1x1_1d_rocket_altitude.svg" style="pointer-events: none;"></object>
+</div>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>

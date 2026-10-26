@@ -110,6 +110,10 @@ $(function(){initNavTree('kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml',''); 
 <div class="image">
 <object type="image/svg+xml" data="kf_6x2x0_2d_vehicle_position_layout.svg" style="pointer-events: none;"></object>
 </div>
+<p>The initial guess, at the origin, lies some 500 m from the vehicle, far beyond its 22 m standard deviation: the first innovations are inconsistent until the estimate converges. The turn, from the seventeenth measurement, surprises the constant acceleration model again. The acceleration is never measured, yet through the turn its estimate tracks the centripetal acceleration v²/R of a 25 m/s vehicle on a 300 m radius.</p>
+<div class="image">
+<object type="image/svg+xml" data="kf_6x2x0_2d_vehicle_position.svg" style="pointer-events: none;"></object>
+</div>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>

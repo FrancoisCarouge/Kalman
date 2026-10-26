@@ -52,6 +52,16 @@ var namespacefcarouge_1_1sample =
       [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position_8cpp_03.xhtml#a85e622eb36f6ca06972b6ff584156471", null ],
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position_8cpp_03.xhtml#aaf50e4d8ac630ec6a0c017029fb8ad19", null ]
     ] ],
+    [ "anonymous_namespace{kf_6x2x0_2d_vehicle_position_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml", [
+      [ "acceleration", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a7c95715b7fabb21028c5291b55771d68", null ],
+      [ "output_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a6ff6444b845208cc411c0ae4b77267b3", null ],
+      [ "position", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#aeef12ae941530fee994e1c5d8339e3cd", null ],
+      [ "state_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a7befbe775b8490903bda5e2ebb04543e", null ],
+      [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#aa328eb608227a883d1d82f3da1b67884", null ],
+      [ "velocity", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a24e000a790974e47da2ec220b30b6412", null ],
+      [ "s4", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#afffeb0f11bbf5382d6ab155ea8952a43", null ],
+      [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#aa4eaa978182aa021e2bf4210268f7a27", null ]
+    ] ],
     [ "anonymous_namespace{kf_8x4x0_2d_bounding_box.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__2d__bounding__box_8cpp_03.xhtml", [
       [ "state", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__2d__bounding__box_8cpp_03.xhtml#afda1cb7a5a824a6766b80dc727d98cde", null ],
       [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__2d__bounding__box_8cpp_03.xhtml#a43171ff6fb6c5c80e6ec8a791808b63e", null ],

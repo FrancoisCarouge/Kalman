@@ -110,6 +110,10 @@ $(function(){initNavTree('ekf_6x4x0_3d_apollo_position_8cpp-example.xhtml',''); 
 <div class="image">
 <object type="image/svg+xml" data="ekf_6x4x0_3d_apollo_position_layout.svg" style="pointer-events: none;"></object>
 </div>
+<p>The range and the range rate are consistent with the estimate from the start. The shaft and trunnion angles place the lunar module about a hundred meters closer to the line of the x-axis than its initial estimate, beyond its initial uncertainty. At 30 km, an angle uncertainty of 0.005 rad spans 150 m, so each angle measurement pulls the estimate only part of the way. The constant velocity model reads part of that offset as motion: the cross range velocity estimate grows, while the cross range position uncertainty grows with the velocity uncertainty.</p>
+<div class="image">
+<object type="image/svg+xml" data="ekf_6x4x0_3d_apollo_position.svg" style="pointer-events: none;"></object>
+</div>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>

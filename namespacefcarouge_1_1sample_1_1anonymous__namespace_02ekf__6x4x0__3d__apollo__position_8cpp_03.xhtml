@@ -189,129 +189,129 @@ template&lt;auto Size&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ekf__6x4x0__3d__apollo__position_8cpp_source.xhtml#l00073">73</a> of file <a class="el" href="ekf__6x4x0__3d__apollo__position_8cpp_source.xhtml">ekf_6x4x0_3d_apollo_position.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   73</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   74</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
-<div class="line"><span class="lineno">   75</span>      <span class="comment">// The six estimated states X initialization under the simulated scenario:</span></div>
-<div class="line"><span class="lineno">   76</span>      <span class="comment">// the lunar module is 30km away, approaching at 100 m/s relative to</span></div>
-<div class="line"><span class="lineno">   77</span>      <span class="comment">// command/service module.</span></div>
-<div class="line"><span class="lineno">   78</span>      <span class="comment">// Position: x=30km, y=1km, z=0.5km.</span></div>
-<div class="line"><span class="lineno">   79</span>      <span class="comment">// Velocity: Closing speed 100m/s.</span></div>
-<div class="line"><span class="lineno">   80</span>      <a class="code hl_typedef" href="#a3eef84b620201605062dc26c00053e29">state</a>{30000., 1000., 500., -100., 0., 0.},</div>
-<div class="line"><span class="lineno">   81</span>      <span class="comment">// The measurement definition Z for the Rendezvous Radar: range (r),</span></div>
-<div class="line"><span class="lineno">   82</span>      <span class="comment">// range rate (r_dot), shaft angle (beta), trunnion angle (theta).</span></div>
-<div class="line"><span class="lineno">   83</span>      output&lt;vector&lt;4&gt;&gt;,</div>
-<div class="line"><span class="lineno">   84</span>      <span class="comment">// The initial estimate uncertainty P is a high uncertainty in position</span></div>
-<div class="line"><span class="lineno">   85</span>      <span class="comment">// before radar lock. The velocity is somewhat known.</span></div>
-<div class="line"><span class="lineno">   86</span>      estimate_uncertainty{{1000., 0., 0., 0., 0., 0.},</div>
-<div class="line"><span class="lineno">   87</span>                           {0., 1000., 0., 0., 0., 0.},</div>
-<div class="line"><span class="lineno">   88</span>                           {0., 0., 1000., 0., 0., 0.},</div>
-<div class="line"><span class="lineno">   89</span>                           {0., 0., 0., 100., 0., 0.},</div>
-<div class="line"><span class="lineno">   90</span>                           {0., 0., 0., 0., 100., 0.},</div>
-<div class="line"><span class="lineno">   91</span>                           {0., 0., 0., 0., 0., 100.}},</div>
-<div class="line"><span class="lineno">   92</span>      <span class="comment">// The process uncertainty Q is a small accelerometer noise/drift.</span></div>
-<div class="line"><span class="lineno">   93</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a>{{0.01, 0., 0., 0., 0., 0.},</div>
-<div class="line"><span class="lineno">   94</span>                          {0., 0.01, 0., 0., 0., 0.},</div>
-<div class="line"><span class="lineno">   95</span>                          {0., 0., 0.01, 0., 0., 0.},</div>
-<div class="line"><span class="lineno">   96</span>                          {0., 0., 0., 0.01, 0., 0.},</div>
-<div class="line"><span class="lineno">   97</span>                          {0., 0., 0., 0., 0.01, 0.},</div>
-<div class="line"><span class="lineno">   98</span>                          {0., 0., 0., 0., 0., 0.01}},</div>
-<div class="line"><span class="lineno">   99</span>      <span class="comment">// The output uncertainty R is the radar specifications.</span></div>
-<div class="line"><span class="lineno">  100</span>      <span class="comment">// Range error: ~30m, Rate error: ~0.5m/s, Angles error: ~0.005 rad.</span></div>
-<div class="line"><span class="lineno">  101</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a>{{30. * 30., 0., 0., 0.},</div>
-<div class="line"><span class="lineno">  102</span>                         {0., 0.5 * 0.5, 0., 0.},</div>
-<div class="line"><span class="lineno">  103</span>                         {0., 0., 0.005 * 0.005, 0.},</div>
-<div class="line"><span class="lineno">  104</span>                         {0., 0., 0., 0.005 * 0.005}},</div>
-<div class="line"><span class="lineno">  105</span>      <span class="comment">// The output model H is the Jacobian, linearization around the current</span></div>
-<div class="line"><span class="lineno">  106</span>      <span class="comment">// state. Complex derivation omitted for brevity, using a simplified</span></div>
-<div class="line"><span class="lineno">  107</span>      <span class="comment">// approximation.</span></div>
-<div class="line"><span class="lineno">  108</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272">output_model</a>{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><span class="lineno">  109</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[rx, ry, rz, vx, vy, vz]{x};</div>
-<div class="line"><span class="lineno">  110</span>        <span class="keywordtype">double</span> range{std::sqrt((rx * rx) + (ry * ry) + (rz * rz))};</div>
-<div class="line"><span class="lineno">  111</span>        <span class="comment">// For production, guard against divide by zero range, if the spacecraft</span></div>
-<div class="line"><span class="lineno">  112</span>        <span class="comment">// are touching.</span></div>
-<div class="line"><span class="lineno">  113</span>        <span class="keywordtype">double</span> range_rate{(rx * vx + ry * vy + rz * vz) / range};</div>
-<div class="line"><span class="lineno">  114</span>        matrix&lt;4, 6&gt; h{matrix&lt;4, 6&gt;::Zero()};</div>
-<div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>        <span class="comment">// For range and range rate: the quotient rule applications for ∂ṙ/∂x.</span></div>
-<div class="line"><span class="lineno">  117</span>        <span class="comment">// d(Range) / d(State)</span></div>
-<div class="line"><span class="lineno">  118</span>        h[0, 0] = rx / range;</div>
-<div class="line"><span class="lineno">  119</span>        h[0, 1] = ry / range;</div>
-<div class="line"><span class="lineno">  120</span>        h[0, 2] = rz / range;</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>        <span class="comment">// d(RangeRate) / d(State): Complex derivation omitted for brevity,</span></div>
-<div class="line"><span class="lineno">  123</span>        <span class="comment">// simplified approximation.</span></div>
-<div class="line"><span class="lineno">  124</span>        h[1, 0] = (vx * range - rx * range_rate) / (range * range); <span class="comment">// dRR/dx</span></div>
-<div class="line"><span class="lineno">  125</span>        h[1, 1] = (vy * range - ry * range_rate) / (range * range); <span class="comment">// dRR/dy</span></div>
-<div class="line"><span class="lineno">  126</span>        h[1, 2] = (vz * range - rz * range_rate) / (range * range); <span class="comment">// dRR/dz</span></div>
-<div class="line"><span class="lineno">  127</span>        h[1, 3] = rx / range;                                       <span class="comment">// dRR/dvx</span></div>
-<div class="line"><span class="lineno">  128</span>        h[1, 4] = ry / range;                                       <span class="comment">// dRR/dvy</span></div>
-<div class="line"><span class="lineno">  129</span>        h[1, 5] = rz / range;                                       <span class="comment">// dRR/dvz</span></div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>        <span class="comment">// For the shaft/azimuth: the derivative of atan2.</span></div>
-<div class="line"><span class="lineno">  132</span>        <span class="comment">// d(Shaft) / d(State)</span></div>
-<div class="line"><span class="lineno">  133</span>        <span class="keywordtype">double</span> r2_xy{(rx * rx) + (ry * ry)};</div>
-<div class="line"><span class="lineno">  134</span>        <span class="comment">// For production, guard against divide by zero.</span></div>
-<div class="line"><span class="lineno">  135</span>        h[2, 0] = -ry / r2_xy;</div>
-<div class="line"><span class="lineno">  136</span>        h[2, 1] = rx / r2_xy;</div>
-<div class="line"><span class="lineno">  137</span> </div>
-<div class="line"><span class="lineno">  138</span>        <span class="comment">// For the trunnion/elevation: the derivative of asin(z/r):</span></div>
-<div class="line"><span class="lineno">  139</span>        <span class="comment">// d(z/r)/dState * sqrt(1-(z/r)^2). d(Trunnion) / d(State)</span></div>
-<div class="line"><span class="lineno">  140</span>        <span class="keywordtype">double</span> term{std::sqrt(1 - ((rz * rz) / (range * range)))};</div>
-<div class="line"><span class="lineno">  141</span>        h[3, 0] = (-rz * rx) / (range * range * range * term);</div>
-<div class="line"><span class="lineno">  142</span>        h[3, 1] = (-rz * ry) / (range * range * range * term);</div>
-<div class="line"><span class="lineno">  143</span>        h[3, 2] = (range * range - rz * rz) / (range * range * range * term);</div>
-<div class="line"><span class="lineno">  144</span> </div>
-<div class="line"><span class="lineno">  145</span>        <span class="keywordflow">return</span> h;</div>
-<div class="line"><span class="lineno">  146</span>      }},</div>
-<div class="line"><span class="lineno">  147</span>      <span class="comment">// The state transition matrix F:</span></div>
-<div class="line"><span class="lineno">  148</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb">state_transition</a>{[](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;dt) -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">return</span> matrix&lt;6, 6&gt;{{1., 0., 0., dt, 0., 0.}, <span class="comment">//</span></div>
-<div class="line"><span class="lineno">  150</span>                            {0., 1., 0., 0., dt, 0.}, <span class="comment">//</span></div>
-<div class="line"><span class="lineno">  151</span>                            {0., 0., 1., 0., 0., dt}, <span class="comment">//</span></div>
-<div class="line"><span class="lineno">  152</span>                            {0., 0., 0., 1., 0., 0.}, <span class="comment">//</span></div>
-<div class="line"><span class="lineno">  153</span>                            {0., 0., 0., 0., 1., 0.}, <span class="comment">//</span></div>
-<div class="line"><span class="lineno">  154</span>                            {0., 0., 0., 0., 0., 1.}};</div>
-<div class="line"><span class="lineno">  155</span>      }},</div>
-<div class="line"><span class="lineno">  156</span>      <span class="comment">// The observation estimation Z:</span></div>
-<div class="line"><span class="lineno">  157</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#afca0163b1b4f6d8ad382c9d7d52f0116">observation</a>{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><span class="lineno">  158</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[rx, ry, rz, vx, vy, vz]{x};</div>
-<div class="line"><span class="lineno">  159</span>        <span class="keywordtype">double</span> range{std::sqrt((rx * rx) + (ry * ry) + (rz * rz))};</div>
-<div class="line"><span class="lineno">  160</span>        <span class="comment">// For production, guard against divide by zero.</span></div>
-<div class="line"><span class="lineno">  161</span>        <span class="keywordtype">double</span> range_rate{(rx * vx + ry * vy + rz * vz) / range};</div>
-<div class="line"><span class="lineno">  162</span>        <span class="comment">// The shaft angle in the xy plane usually, or defined by radar gimbal</span></div>
-<div class="line"><span class="lineno">  163</span>        <span class="comment">// is simplified here for illustration.</span></div>
-<div class="line"><span class="lineno">  164</span>        <span class="keywordtype">double</span> shaft{std::atan2(ry, rx)};</div>
-<div class="line"><span class="lineno">  165</span>        <span class="keywordtype">double</span> trunnion{std::asin(rz / range)};</div>
-<div class="line"><span class="lineno">  166</span> </div>
-<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">return</span> vector&lt;4&gt;{range, range_rate, shaft, trunnion};</div>
-<div class="line"><span class="lineno">  168</span>      }},</div>
-<div class="line"><span class="lineno">  169</span>      <span class="comment">// One additional parameter for prediction: time update (dt).</span></div>
-<div class="line"><span class="lineno">  170</span>      prediction_types&lt;double&gt;</div>
-<div class="line"><span class="lineno">  171</span>      <span class="comment">// For production, the innovation angles, residuals should be normalized,</span></div>
-<div class="line"><span class="lineno">  172</span>      <span class="comment">// modulo in [-Pi; +Pi], to avoid failures at the wrap boundary.</span></div>
-<div class="line"><span class="lineno">  173</span>  };</div>
-<div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>  <span class="comment">// In a real system, the hardware would provide the data. True state would be</span></div>
-<div class="line"><span class="lineno">  176</span>  <span class="comment">// approximately `pos + vel*dt`. Simulate receiving 10 radar measurements, one</span></div>
-<div class="line"><span class="lineno">  177</span>  <span class="comment">// per second. Fake data decreasing range by 100m each second, with slight</span></div>
-<div class="line"><span class="lineno">  178</span>  <span class="comment">// angle offsets.</span></div>
-<div class="line"><span class="lineno">  179</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; 10; ++k) {</div>
-<div class="line"><span class="lineno">  180</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>(1.);</div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordtype">double</span> true_range{30000. - (100. * (k + 1))};</div>
-<div class="line"><span class="lineno">  182</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(true_range, -100., 0.03, 0.01);</div>
-<div class="line"><span class="lineno">  183</span>  }</div>
-<div class="line"><span class="lineno">  184</span> </div>
-<div class="line"><span class="lineno">  185</span>  <span class="keywordtype">double</span> range_r{vector&lt;3&gt;{<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().template head&lt;3&gt;()}.norm()};</div>
-<div class="line"><span class="lineno">  186</span>  <span class="keywordtype">double</span> velocity_x{<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[3]};</div>
-<div class="line"><span class="lineno">  187</span> </div>
-<div class="line"><span class="lineno">  188</span>  assert(std::abs(1 - (range_r / 29&#39;001.861&#39;093&#39;990)) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  189</span>         std::abs(1 - (velocity_x / -99.574&#39;527&#39;631&#39;012)) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
-<div class="line"><span class="lineno">  190</span>         <span class="stringliteral">&quot;After simulating 10 seconds, the estimated range is 29,001.86 meters &quot;</span></div>
-<div class="line"><span class="lineno">  191</span>         <span class="stringliteral">&quot;and an estimated closing velocity of 99.57 m/s.&quot;</span>);</div>
-<div class="line"><span class="lineno">  192</span> </div>
-<div class="line"><span class="lineno">  193</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  194</span>}()};</div>
+<p class="definition">Definition at line <a class="el" href="ekf__6x4x0__3d__apollo__position_8cpp_source.xhtml#l00084">84</a> of file <a class="el" href="ekf__6x4x0__3d__apollo__position_8cpp_source.xhtml">ekf_6x4x0_3d_apollo_position.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">   85</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
+<div class="line"><span class="lineno">   86</span>      <span class="comment">// The six estimated states X initialization under the simulated scenario:</span></div>
+<div class="line"><span class="lineno">   87</span>      <span class="comment">// the lunar module is 30km away, approaching at 100 m/s relative to</span></div>
+<div class="line"><span class="lineno">   88</span>      <span class="comment">// command/service module.</span></div>
+<div class="line"><span class="lineno">   89</span>      <span class="comment">// Position: x=30km, y=1km, z=0.5km.</span></div>
+<div class="line"><span class="lineno">   90</span>      <span class="comment">// Velocity: Closing speed 100m/s.</span></div>
+<div class="line"><span class="lineno">   91</span>      <a class="code hl_typedef" href="#a3eef84b620201605062dc26c00053e29">state</a>{30000., 1000., 500., -100., 0., 0.},</div>
+<div class="line"><span class="lineno">   92</span>      <span class="comment">// The measurement definition Z for the Rendezvous Radar: range (r),</span></div>
+<div class="line"><span class="lineno">   93</span>      <span class="comment">// range rate (r_dot), shaft angle (beta), trunnion angle (theta).</span></div>
+<div class="line"><span class="lineno">   94</span>      output&lt;vector&lt;4&gt;&gt;,</div>
+<div class="line"><span class="lineno">   95</span>      <span class="comment">// The initial estimate uncertainty P is a high uncertainty in position</span></div>
+<div class="line"><span class="lineno">   96</span>      <span class="comment">// before radar lock. The velocity is somewhat known.</span></div>
+<div class="line"><span class="lineno">   97</span>      estimate_uncertainty{{1000., 0., 0., 0., 0., 0.},</div>
+<div class="line"><span class="lineno">   98</span>                           {0., 1000., 0., 0., 0., 0.},</div>
+<div class="line"><span class="lineno">   99</span>                           {0., 0., 1000., 0., 0., 0.},</div>
+<div class="line"><span class="lineno">  100</span>                           {0., 0., 0., 100., 0., 0.},</div>
+<div class="line"><span class="lineno">  101</span>                           {0., 0., 0., 0., 100., 0.},</div>
+<div class="line"><span class="lineno">  102</span>                           {0., 0., 0., 0., 0., 100.}},</div>
+<div class="line"><span class="lineno">  103</span>      <span class="comment">// The process uncertainty Q is a small accelerometer noise/drift.</span></div>
+<div class="line"><span class="lineno">  104</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a>{{0.01, 0., 0., 0., 0., 0.},</div>
+<div class="line"><span class="lineno">  105</span>                          {0., 0.01, 0., 0., 0., 0.},</div>
+<div class="line"><span class="lineno">  106</span>                          {0., 0., 0.01, 0., 0., 0.},</div>
+<div class="line"><span class="lineno">  107</span>                          {0., 0., 0., 0.01, 0., 0.},</div>
+<div class="line"><span class="lineno">  108</span>                          {0., 0., 0., 0., 0.01, 0.},</div>
+<div class="line"><span class="lineno">  109</span>                          {0., 0., 0., 0., 0., 0.01}},</div>
+<div class="line"><span class="lineno">  110</span>      <span class="comment">// The output uncertainty R is the radar specifications.</span></div>
+<div class="line"><span class="lineno">  111</span>      <span class="comment">// Range error: ~30m, Rate error: ~0.5m/s, Angles error: ~0.005 rad.</span></div>
+<div class="line"><span class="lineno">  112</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a>{{30. * 30., 0., 0., 0.},</div>
+<div class="line"><span class="lineno">  113</span>                         {0., 0.5 * 0.5, 0., 0.},</div>
+<div class="line"><span class="lineno">  114</span>                         {0., 0., 0.005 * 0.005, 0.},</div>
+<div class="line"><span class="lineno">  115</span>                         {0., 0., 0., 0.005 * 0.005}},</div>
+<div class="line"><span class="lineno">  116</span>      <span class="comment">// The output model H is the Jacobian, linearization around the current</span></div>
+<div class="line"><span class="lineno">  117</span>      <span class="comment">// state. Complex derivation omitted for brevity, using a simplified</span></div>
+<div class="line"><span class="lineno">  118</span>      <span class="comment">// approximation.</span></div>
+<div class="line"><span class="lineno">  119</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272">output_model</a>{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  120</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[rx, ry, rz, vx, vy, vz]{x};</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordtype">double</span> range{std::sqrt((rx * rx) + (ry * ry) + (rz * rz))};</div>
+<div class="line"><span class="lineno">  122</span>        <span class="comment">// For production, guard against divide by zero range, if the spacecraft</span></div>
+<div class="line"><span class="lineno">  123</span>        <span class="comment">// are touching.</span></div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordtype">double</span> range_rate{(rx * vx + ry * vy + rz * vz) / range};</div>
+<div class="line"><span class="lineno">  125</span>        matrix&lt;4, 6&gt; h{matrix&lt;4, 6&gt;::Zero()};</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>        <span class="comment">// For range and range rate: the quotient rule applications for ∂ṙ/∂x.</span></div>
+<div class="line"><span class="lineno">  128</span>        <span class="comment">// d(Range) / d(State)</span></div>
+<div class="line"><span class="lineno">  129</span>        h[0, 0] = rx / range;</div>
+<div class="line"><span class="lineno">  130</span>        h[0, 1] = ry / range;</div>
+<div class="line"><span class="lineno">  131</span>        h[0, 2] = rz / range;</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>        <span class="comment">// d(RangeRate) / d(State): Complex derivation omitted for brevity,</span></div>
+<div class="line"><span class="lineno">  134</span>        <span class="comment">// simplified approximation.</span></div>
+<div class="line"><span class="lineno">  135</span>        h[1, 0] = (vx * range - rx * range_rate) / (range * range); <span class="comment">// dRR/dx</span></div>
+<div class="line"><span class="lineno">  136</span>        h[1, 1] = (vy * range - ry * range_rate) / (range * range); <span class="comment">// dRR/dy</span></div>
+<div class="line"><span class="lineno">  137</span>        h[1, 2] = (vz * range - rz * range_rate) / (range * range); <span class="comment">// dRR/dz</span></div>
+<div class="line"><span class="lineno">  138</span>        h[1, 3] = rx / range;                                       <span class="comment">// dRR/dvx</span></div>
+<div class="line"><span class="lineno">  139</span>        h[1, 4] = ry / range;                                       <span class="comment">// dRR/dvy</span></div>
+<div class="line"><span class="lineno">  140</span>        h[1, 5] = rz / range;                                       <span class="comment">// dRR/dvz</span></div>
+<div class="line"><span class="lineno">  141</span> </div>
+<div class="line"><span class="lineno">  142</span>        <span class="comment">// For the shaft/azimuth: the derivative of atan2.</span></div>
+<div class="line"><span class="lineno">  143</span>        <span class="comment">// d(Shaft) / d(State)</span></div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordtype">double</span> r2_xy{(rx * rx) + (ry * ry)};</div>
+<div class="line"><span class="lineno">  145</span>        <span class="comment">// For production, guard against divide by zero.</span></div>
+<div class="line"><span class="lineno">  146</span>        h[2, 0] = -ry / r2_xy;</div>
+<div class="line"><span class="lineno">  147</span>        h[2, 1] = rx / r2_xy;</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>        <span class="comment">// For the trunnion/elevation: the derivative of asin(z/r):</span></div>
+<div class="line"><span class="lineno">  150</span>        <span class="comment">// d(z/r)/dState * sqrt(1-(z/r)^2). d(Trunnion) / d(State)</span></div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordtype">double</span> term{std::sqrt(1 - ((rz * rz) / (range * range)))};</div>
+<div class="line"><span class="lineno">  152</span>        h[3, 0] = (-rz * rx) / (range * range * range * term);</div>
+<div class="line"><span class="lineno">  153</span>        h[3, 1] = (-rz * ry) / (range * range * range * term);</div>
+<div class="line"><span class="lineno">  154</span>        h[3, 2] = (range * range - rz * rz) / (range * range * range * term);</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>        <span class="keywordflow">return</span> h;</div>
+<div class="line"><span class="lineno">  157</span>      }},</div>
+<div class="line"><span class="lineno">  158</span>      <span class="comment">// The state transition matrix F:</span></div>
+<div class="line"><span class="lineno">  159</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb">state_transition</a>{[](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp;dt) -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  160</span>        <span class="keywordflow">return</span> matrix&lt;6, 6&gt;{{1., 0., 0., dt, 0., 0.}, <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  161</span>                            {0., 1., 0., 0., dt, 0.}, <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  162</span>                            {0., 0., 1., 0., 0., dt}, <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  163</span>                            {0., 0., 0., 1., 0., 0.}, <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  164</span>                            {0., 0., 0., 0., 1., 0.}, <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  165</span>                            {0., 0., 0., 0., 0., 1.}};</div>
+<div class="line"><span class="lineno">  166</span>      }},</div>
+<div class="line"><span class="lineno">  167</span>      <span class="comment">// The observation estimation Z:</span></div>
+<div class="line"><span class="lineno">  168</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#afca0163b1b4f6d8ad382c9d7d52f0116">observation</a>{[](<span class="keyword">const</span> vector&lt;6&gt; &amp;x) -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  169</span>        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;[rx, ry, rz, vx, vy, vz]{x};</div>
+<div class="line"><span class="lineno">  170</span>        <span class="keywordtype">double</span> range{std::sqrt((rx * rx) + (ry * ry) + (rz * rz))};</div>
+<div class="line"><span class="lineno">  171</span>        <span class="comment">// For production, guard against divide by zero.</span></div>
+<div class="line"><span class="lineno">  172</span>        <span class="keywordtype">double</span> range_rate{(rx * vx + ry * vy + rz * vz) / range};</div>
+<div class="line"><span class="lineno">  173</span>        <span class="comment">// The shaft angle in the xy plane usually, or defined by radar gimbal</span></div>
+<div class="line"><span class="lineno">  174</span>        <span class="comment">// is simplified here for illustration.</span></div>
+<div class="line"><span class="lineno">  175</span>        <span class="keywordtype">double</span> shaft{std::atan2(ry, rx)};</div>
+<div class="line"><span class="lineno">  176</span>        <span class="keywordtype">double</span> trunnion{std::asin(rz / range)};</div>
+<div class="line"><span class="lineno">  177</span> </div>
+<div class="line"><span class="lineno">  178</span>        <span class="keywordflow">return</span> vector&lt;4&gt;{range, range_rate, shaft, trunnion};</div>
+<div class="line"><span class="lineno">  179</span>      }},</div>
+<div class="line"><span class="lineno">  180</span>      <span class="comment">// One additional parameter for prediction: time update (dt).</span></div>
+<div class="line"><span class="lineno">  181</span>      prediction_types&lt;double&gt;</div>
+<div class="line"><span class="lineno">  182</span>      <span class="comment">// For production, the innovation angles, residuals should be normalized,</span></div>
+<div class="line"><span class="lineno">  183</span>      <span class="comment">// modulo in [-Pi; +Pi], to avoid failures at the wrap boundary.</span></div>
+<div class="line"><span class="lineno">  184</span>  };</div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>  <span class="comment">// In a real system, the hardware would provide the data. True state would be</span></div>
+<div class="line"><span class="lineno">  187</span>  <span class="comment">// approximately `pos + vel*dt`. Simulate receiving 10 radar measurements, one</span></div>
+<div class="line"><span class="lineno">  188</span>  <span class="comment">// per second. Fake data decreasing range by 100m each second, with slight</span></div>
+<div class="line"><span class="lineno">  189</span>  <span class="comment">// angle offsets.</span></div>
+<div class="line"><span class="lineno">  190</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; 10; ++k) {</div>
+<div class="line"><span class="lineno">  191</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>(1.);</div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordtype">double</span> true_range{30000. - (100. * (k + 1))};</div>
+<div class="line"><span class="lineno">  193</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(true_range, -100., 0.03, 0.01);</div>
+<div class="line"><span class="lineno">  194</span>  }</div>
+<div class="line"><span class="lineno">  195</span> </div>
+<div class="line"><span class="lineno">  196</span>  <span class="keywordtype">double</span> range_r{vector&lt;3&gt;{<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().template head&lt;3&gt;()}.norm()};</div>
+<div class="line"><span class="lineno">  197</span>  <span class="keywordtype">double</span> velocity_x{<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[3]};</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>  assert(std::abs(1 - (range_r / 29&#39;001.861&#39;093&#39;990)) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  200</span>         std::abs(1 - (velocity_x / -99.574&#39;527&#39;631&#39;012)) &lt; 0.000&#39;000&#39;001 &amp;&amp;</div>
+<div class="line"><span class="lineno">  201</span>         <span class="stringliteral">&quot;After simulating 10 seconds, the estimated range is 29,001.86 meters &quot;</span></div>
+<div class="line"><span class="lineno">  202</span>         <span class="stringliteral">&quot;and an estimated closing velocity of 99.57 m/s.&quot;</span>);</div>
+<div class="line"><span class="lineno">  203</span> </div>
+<div class="line"><span class="lineno">  204</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  205</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a72be5e8e9f3959187ca4ee7906d7e03d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>

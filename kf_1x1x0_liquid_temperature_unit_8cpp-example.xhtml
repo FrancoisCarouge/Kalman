@@ -114,6 +114,10 @@ This example also transcribes Mateusz Pusz's mp-units Kalman filter sample.</dd>
 <div class="image">
 <object type="image/svg+xml" data="kf_1x1x0_liquid_temperature_layout.svg" style="pointer-events: none;"></object>
 </div>
+<p>The estimate settles on the first measurement, its initial guess weighing nothing. Its standard deviation falls below the thermometer's 0.1°C toward a steady state, where the process noise balances each measurement: unlike an average, whose gain falls toward zero, the gain stays near its steady state, so the estimate keeps following the fluctuations of the true temperature.</p>
+<div class="image">
+<object type="image/svg+xml" data="kf_1x1x0_liquid_temperature.svg" style="pointer-events: none;"></object>
+</div>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
