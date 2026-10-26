@@ -67,6 +67,8 @@ using height = mp_units::quantity<mp_units::isq::height[m]>;
 //! deviation) is 5 meters. The set of ten measurements is: 48.54m, 47.11m,
 //! 55.01m, 55.15m, 49.89m, 40.85m, 46.72m, 50.05m, 51.27m, 49.95m.
 //!
+//! @image html kf_1x1x0_building_height_layout.svg
+//!
 //! @image html kf_1x1x0_building_height.svg
 //!
 //! @example kf_1x1x0_building_height_unit.cpp

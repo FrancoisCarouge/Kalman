@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the kf_2x1x0_pairs_hedge_ratio_unit sample, daily trading
+     loop, not to scale. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Pairs Trading Layout</title>
+  <rect x="0" y="0" width="720" height="540" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 2x1x0 Pairs Hedge Ratio</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Daily Trading Loop</text>
+
+  <!-- The pair of stocks and their closing prices. -->
+  <rect x="40" y="100" width="210" height="64" rx="4" fill="#ffffff" stroke="#2f7d32" stroke-width="2"/>
+  <text x="145" y="122" text-anchor="middle" fill="#2f7d32" font-weight="bold">Independent stock</text>
+  <text x="145" y="139" text-anchor="middle" font-size="12" fill="#444444">closing price x, 17.8 $ to 20.6 $</text>
+  <rect x="40" y="330" width="210" height="64" rx="4" fill="#ffffff" stroke="#2f7d32" stroke-width="2"/>
+  <text x="145" y="352" text-anchor="middle" fill="#2f7d32" font-weight="bold">Dependent stock</text>
+  <text x="145" y="369" text-anchor="middle" font-size="12" fill="#444444">closing price y, 22.7 $ to 26.1 $</text>
+
+  <!-- The regression of the dependent stock on the independent one. -->
+  <rect x="310" y="100" width="200" height="64" rx="4" fill="#ffffff" stroke="#1f6fb2" stroke-width="2"/>
+  <text x="410" y="122" text-anchor="middle" fill="#1f6fb2" font-weight="bold">Regression forecast</text>
+  <text x="410" y="139" text-anchor="middle" font-size="12" fill="#444444">β x + α</text>
+  <line x1="250" y1="132" x2="301.2" y2="132" stroke="#2f7d32" stroke-width="2.5"/>
+  <polygon points="310,132 299,137 299,127" fill="#2f7d32"/>
+  <text x="528" y="114" font-size="12" fill="#444444">The state, a random walk:</text>
+  <text x="528" y="129" font-size="12" fill="#444444">hedge ratio β, 1.25 to 1.37,</text>
+  <text x="528" y="144" font-size="12" fill="#444444">intercept α, near 0 $,</text>
+  <text x="528" y="159" font-size="12" fill="#444444">Q = δ / (1 − δ), δ = 0.0001</text>
+
+  <!-- The spread of the pair, the innovation. -->
+  <circle cx="410" cy="362" r="18" fill="#ffffff" stroke="#444444" stroke-width="2"/>
+  <text x="410" y="368" text-anchor="middle" font-size="18" fill="#444444" font-weight="bold">−</text>
+  <line x1="410" y1="164" x2="410" y2="335.2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <polygon points="410,344 405,333 415,333" fill="#1f6fb2"/>
+  <text x="402" y="270" text-anchor="end" font-size="12" fill="#1f6fb2">β x + α</text>
+  <line x1="250" y1="362" x2="383.2" y2="362" stroke="#2f7d32" stroke-width="2.5"/>
+  <polygon points="392,362 381,367 381,357" fill="#2f7d32"/>
+  <text x="321" y="354" text-anchor="middle" font-size="12" fill="#2f7d32">y</text>
+  <text x="410" y="404" text-anchor="middle" font-size="12" fill="#444444">Spread e = y − (β x + α):</text>
+  <text x="410" y="419" text-anchor="middle" font-size="12" fill="#444444">the innovation, of variance S,</text>
+  <text x="410" y="434" text-anchor="middle" font-size="12" fill="#444444">output noise Ve = 0.001 $²</text>
+
+  <!-- The correction of the hedge ratio and intercept. -->
+  <circle cx="470" cy="362" r="4" fill="#d9661f"/>
+  <line x1="470" y1="362" x2="470" y2="172.8" stroke="#d9661f" stroke-width="2" stroke-dasharray="6 4"/>
+  <polygon points="470,164 475,175 465,175" fill="#d9661f"/>
+  <text x="478" y="250" font-size="12" fill="#a8460c">update: the gain K</text>
+  <text x="478" y="265" font-size="12" fill="#a8460c">corrects β and α</text>
+
+  <!-- The entry signal of the mean reversion strategy. -->
+  <line x1="428" y1="362" x2="511.2" y2="362" stroke="#444444" stroke-width="2.5"/>
+  <polygon points="520,362 509,367 509,357" fill="#444444"/>
+  <rect x="520" y="290" width="170" height="144" rx="4" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
+  <text x="605" y="312" text-anchor="middle" fill="#c0392b" font-weight="bold">Entry signal</text>
+  <text x="605" y="329" text-anchor="middle" font-size="12" fill="#444444">e > √S: short the spread,</text>
+  <text x="605" y="346" text-anchor="middle" font-size="12" fill="#444444">sell y, buy β x;</text>
+  <text x="605" y="363" text-anchor="middle" font-size="12" fill="#444444">e &lt; −√S: long the spread,</text>
+  <text x="605" y="380" text-anchor="middle" font-size="12" fill="#444444">buy y, sell β x.</text>
+
+  <!-- The daily step of the filter. -->
+  <text x="360" y="490" text-anchor="middle" font-size="12" fill="#444444">Each trading day, predict the state, then update it with the day's</text>
+  <text x="360" y="507" text-anchor="middle" font-size="12" fill="#444444">closing prices: x, an update argument, and y, the output.</text>
+</svg>

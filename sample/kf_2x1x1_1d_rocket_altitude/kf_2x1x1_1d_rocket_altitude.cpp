@@ -85,6 +85,8 @@ using state = fcarouge::state<vector<2>>;
 //! - The altimeter measurement error standard deviation: σxm = 20m
 //! - The accelerometer measurement error standard deviation: ϵ = 0.1 m.s^-2
 //!
+//! @image html kf_2x1x1_1d_rocket_altitude_layout.svg
+//!
 //! @example kf_2x1x1_1d_rocket_altitude.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step

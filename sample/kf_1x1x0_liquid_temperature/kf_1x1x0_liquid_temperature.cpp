@@ -62,6 +62,8 @@ namespace {
 //! 49.967°C, 50.1°C, 50.106°C, 49.992°C, 49.819°C, 49.933°C, 50.007°C,
 //! 50.023°C, and 49.99°C.
 //!
+//! @image html kf_1x1x0_liquid_temperature_layout.svg
+//!
 //! @example kf_1x1x0_liquid_temperature.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A one-dimensional filter, constant system dynamic model.

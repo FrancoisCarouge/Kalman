@@ -67,6 +67,8 @@ namespace {
 //! overshoot by a little than a lot. Perhaps we can also model this with a
 //! Gaussian.
 //!
+//! @image html kf_1x1x1_1d_dog_position_layout.svg
+//!
 //! @example kf_1x1x1_1d_dog_position.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   kalman filter{
