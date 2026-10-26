@@ -60,6 +60,17 @@ using state = fcarouge::state<vector<8>>;
 //!
 //! @image html kf_8x4x0_2d_bounding_box_layout.svg
 //!
+//! The pedestrian walks left, back right, left again, then turns around. The
+//! uncertainties scale with the height of the box: a taller, closer box moves
+//! more pixels for the same motion. Deep SORT gates the association of a
+//! detection to a track by the squared Mahalanobis distance of the innovation,
+//! against the 95% quantile of the chi-square distribution of four degrees of
+//! freedom, 9.4877. Its mean, four for a consistent filter, is less than one:
+//! the noise model is conservative. Only the jump of the box height at the
+//! tenth frame falls beyond the gate.
+//!
+//! @image html kf_8x4x0_2d_bounding_box.svg
+//!
 //! @note For information, the original sample appears to saturate the velocity
 //! precision early on.
 //!

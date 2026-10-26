@@ -73,6 +73,15 @@ using position = mp_units::quantity<mp_units::isq::length[m]>;
 //!
 //! @image html kf_1x1x1_1d_dog_position_layout.svg
 //!
+//! Each step predicts the dog one meter further, adding the process variance,
+//! then corrects the prediction toward the measurement, removing part of it.
+//! The variances settle in a few steps, where the predicted variance equals the
+//! sensor variance and the gain is one half. The innovations stay within their
+//! predicted standard deviations, but at the ninth step, where the dog runs
+//! ahead of its prediction.
+//!
+//! @image html kf_1x1x1_1d_dog_position.svg
+//!
 //! @example kf_1x1x1_1d_dog_position_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   kalman filter{
@@ -91,7 +100,7 @@ using position = mp_units::quantity<mp_units::isq::length[m]>;
       // can think of this as saying "I believe with 99.7% accuracy the position
       // is 0 plus or minus 60 meters". This is because with Gaussians ~99.7% of
       // values fall within of the mean. The estimate uncertainty P:
-      estimate_uncertainty{20. * m2},
+      estimate_uncertainty{20 * 20. * m2},
       // Variance in the dog's movement. The process variance is how much error
       // there is in the process model. Dogs rarely do what we expect, and
       // things like hills or the whiff of a squirrel will change his progress.
@@ -122,11 +131,15 @@ using position = mp_units::quantity<mp_units::isq::length[m]>;
   filter.predict(position{1. * m});
   filter.update(position{14.8 * m});
 
+  assert(position{15.052 * m} < filter.x() &&
+         filter.x() < position{15.054 * m} &&
+         "The state estimates expected at 0.1% accuracy.");
   assert(
-      position{15.052 * m} < filter.x() && filter.x() < position{15.054 * m} &&
-      "Here we can see that the variance converges to 2.1623 in 9 steps. This "
-      "means that we have become very confident in our position estimate. It "
-      "is equal to meters. Contrast this to the sensor's meters.");
+      0.999 * m2 < filter.p() && filter.p() < 1.001 * m2 &&
+      "Here we can see that the variance converges to 1 in a few steps. This "
+      "means that we have become very confident in our position estimate. "
+      "Its standard deviation is 1 meter. Contrast this to the sensor's "
+      "standard deviation of 1.41 meters.");
 
   return 0;
 }()};

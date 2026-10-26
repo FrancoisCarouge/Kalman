@@ -69,6 +69,17 @@ using state = fcarouge::state<vector<6>>;
 //!
 //! @image html ekf_6x4x0_3d_apollo_position_layout.svg
 //!
+//! The range and the range rate are consistent with the estimate from the
+//! start. The shaft and trunnion angles place the lunar module about a hundred
+//! meters closer to the line of the x-axis than its initial estimate, beyond
+//! its initial uncertainty. At 30 km, an angle uncertainty of 0.005 rad spans
+//! 150 m, so each angle measurement pulls the estimate only part of the way.
+//! The constant velocity model reads part of that offset as motion: the cross
+//! range velocity estimate grows, while the cross range position uncertainty
+//! grows with the velocity uncertainty.
+//!
+//! @image html ekf_6x4x0_3d_apollo_position.svg
+//!
 //! @example ekf_6x4x0_3d_apollo_position.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   kalman filter{

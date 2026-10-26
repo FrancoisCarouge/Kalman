@@ -87,6 +87,16 @@ using state = fcarouge::state<vector<2>>;
 //!
 //! @image html kf_2x1x1_1d_rocket_altitude_layout.svg
 //!
+//! The errors are shown from a reference trajectory, a boost of 30 m.s^-2 from
+//! rest at the first measurement, which the altimeter measurements fit within
+//! their standard deviation. The velocity is not measured: from its initial
+//! guess at rest, its estimate overshoots while the first noisy altitudes
+//! dominate, then settles as the accurate accelerometer input carries the
+//! prediction. The gains fall, the altitude gain to 0.12, and the altitude
+//! estimate smooths the 20 m altimeter noise to a 7 m standard deviation.
+//!
+//! @image html kf_2x1x1_1d_rocket_altitude.svg
+//!
 //! @example kf_2x1x1_1d_rocket_altitude.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step

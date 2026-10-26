@@ -69,6 +69,11 @@ using height = mp_units::quantity<mp_units::isq::height[m]>;
 //!
 //! @image html kf_1x1x0_building_height_layout.svg
 //!
+//! With a constant height and no process noise, the filter weighs its initial
+//! guess as one more, less precise, measurement: the estimate nearly follows
+//! the running mean of the measurements, its gain nears the weight 1/n of an
+//! average, and its standard deviation falls below the altimeter's 5 meters.
+//!
 //! @image html kf_1x1x0_building_height.svg
 //!
 //! @example kf_1x1x0_building_height_unit.cpp
