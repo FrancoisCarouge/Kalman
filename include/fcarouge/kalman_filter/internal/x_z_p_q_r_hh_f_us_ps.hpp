@@ -39,21 +39,23 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_Q_R_HH_F_US_PS_HPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_Q_R_HH_F_US_PS_HPP
 
+#include "policy.hpp"
 #include "utility.hpp"
 
 #include <tuple>
 
 namespace fcarouge::kalman_filter::internal {
 // Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename, typename, typename, typename>
+template <typename, typename, typename, typename, typename, typename, typename,
+          typename = policies<>>
 struct x_z_p_q_r_hh_f_us_ps final {};
 
 template <typename State, typename Output, typename... UpdateTypes,
           typename... PredictionTypes, typename ObservationState,
-          typename Transition, typename Observation>
+          typename Transition, typename Observation, typename Policies>
 struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
                             std::tuple<PredictionTypes...>, ObservationState,
-                            Transition, Observation> {
+                            Transition, Observation, Policies> {
   using state = State;
   using output = Output;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -70,6 +72,7 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
 
+  [[no_unique_address]] Policies policies{};
   state x{make_zero<state>()};
   estimate_uncertainty p{make_one<estimate_uncertainty>()};
   process_uncertainty q{make_zero<process_uncertainty>()};
@@ -101,13 +104,14 @@ struct x_z_p_q_r_hh_f_us_ps<State, Output, std::tuple<UpdateTypes...>,
     k = p * t(h) / s;
     y = z - observation(x, update_pack...);
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    update_estimate_uncertainty(policies, p, i, k, h, r, s);
   }
 
   constexpr void predict(const PredictionTypes &...prediction_pack) {
     prediction_arguments = {prediction_pack...};
     x = transition(x, prediction_pack...);
     p = estimate_uncertainty{f * p * t(f) + q};
+    condition(policies, p);
   }
 };
 } // namespace fcarouge::kalman_filter::internal

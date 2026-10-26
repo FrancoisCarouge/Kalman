@@ -41,6 +41,7 @@ if(NOT BUILD_TESTING)
 endif()
 
 add_subdirectory("assign")
+add_subdirectory("conditioning")
 add_subdirectory("constructor")
 add_subdirectory("deduction")
 add_subdirectory("f")

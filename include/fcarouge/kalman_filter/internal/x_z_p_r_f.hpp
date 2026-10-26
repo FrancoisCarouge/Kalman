@@ -39,10 +39,11 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_R_F_HPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_R_F_HPP
 
+#include "policy.hpp"
 #include "utility.hpp"
 
 namespace fcarouge::kalman_filter::internal {
-template <typename State> struct x_z_p_r_f {
+template <typename State, typename Policies = policies<>> struct x_z_p_r_f {
   using state = State;
   using output = State;
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
@@ -52,6 +53,7 @@ template <typename State> struct x_z_p_r_f {
   using innovation_uncertainty = output_uncertainty;
   using gain = evaluate<quotient<state, innovation>>;
 
+  [[no_unique_address]] Policies policies{};
   state x{make_zero<state>()};
   estimate_uncertainty p{make_one<estimate_uncertainty>()};
   output_uncertainty r{make_zero<output_uncertainty>()};
@@ -72,12 +74,13 @@ template <typename State> struct x_z_p_r_f {
     k = p / s;
     y = z - x;
     x = x + k * y;
-    p = (i - k) * p * t(i - k) + k * r * t(k);
+    update_estimate_uncertainty(policies, p, i, k, r, s);
   }
 
   constexpr void predict() {
     x = f * x;
     p = f * p * t(f);
+    condition(policies, p);
   }
 };
 } // namespace fcarouge::kalman_filter::internal

@@ -260,6 +260,26 @@ The characteristics are optionally present according to the filter configuration
 
 The prediction and the update take the arguments of their declared types followed by values that direct-list-initialize the input and the output, respectively.
 
+##### Policies
+
+Declare zero, one, or more policies among the characteristics of a filter, in any order, to select its update form or to condition its estimate uncertainty. A policy is part of the filter type, selected at compile-time, at no runtime cost. An omitted policy selects the default filter.
+
+```cpp
+kalman filter{state{0., 0.}, output<double>, simple_form, symmetrize, floors{0.1, 0.2}};
+kalman constant{state{0., 0.}, output<double>, floors{cw<0.1>, cw<0.2>}};
+```
+
+| Policy | Definition |
+| --- | --- |
+| `joseph_form` | Updates the estimate uncertainty as *P = (I - KH)P(I - KH)ᵀ + KRKᵀ*, the default, declared explicitly. Valid for any gain, the most robust and the most expensive form, evaluated at a quadratic rather than a cubic cost in the state dimension for a scalar output. |
+| `information_form` | Updates the estimate uncertainty as *P = (P⁻¹ + HᵀR⁻¹H)⁻¹*. Inverts state-sized rather than output-sized matrices: cheaper only for outputs much larger than the state. Requires invertible estimate and output uncertainties. |
+| `simple_form` | Updates the estimate uncertainty as *P = (I - KH)P*, the cheapest form. Rounding loses the symmetry of the estimate uncertainty and may lose its positive semi-definiteness. |
+| `symmetric_form` | Updates the estimate uncertainty as *P = P - KSKᵀ*, symmetric in exact arithmetic. Subtracting nearly equal matrices of a precise output may lose the positive semi-definiteness of the estimate uncertainty. |
+| `symmetrize` | Averages the estimate uncertainty with its transpose after each update and prediction, *P = (P + Pᵀ) / 2*, restoring its symmetry lost to rounding. |
+| `floors{σ...}` | Keeps each state variance at least *σ²* after each update and prediction, one standard deviation *σ* per state in its units: a runtime value, or a compile-time constant `cw<σ>` without storage. Useful when a variance would otherwise collapse, an overconfident filter ignoring new outputs, for example under model errors or for weakly observable states. Requires an estimate uncertainty with assignable elements. |
+
+Without an update form policy, the filter updates the estimate uncertainty in the Joseph form: declaring `joseph_form` is the default filter, of the same type. The update forms agree in exact arithmetic since the filter computes the optimal gain: they trade numerical robustness for cost. A filter declares at most one update form, one symmetrization, and one floors. The symmetrization keeps the diagonal of the estimate uncertainty, which the floors change alone: their order does not matter.
+
 ### Format
 
 A specialization of the standard formatter is provided for the filter. Use `std::format` to store a formatted representation of all of the characteristics of the filter in a new string. Standard format parameters to be supported. Hosted implementation only.
@@ -303,6 +323,7 @@ In theory there is no difference between theory and practice, while in practice 
 - The default floating point data type for the filter is `double` with about 16 significant digits to reduce loss of information compared to `float`.
 - A filter declaration has a single arithmetic type, so that the filter equations never narrow a result into a characteristic, at the cost of converting mixed precision values, for example a `float` measurement of a `double` state, before passing them to the filter.
 - The ergonomics and precision of the default filter takes precedence over performance.
+- The update form and the conditioning of the estimate uncertainty are compile-time policies of the filter type rather than runtime options, for no runtime cost, at the cost of a distinct filter type per combination of policies.
 - The library is freestanding compatible, for embedded and bare-metal targets: it uses no hosted-only standard header, no exception, no run-time type information, and no memory allocation. The formatting and printing support, built on the hosted-only `<format>` and `<print>` headers, are omitted from a freestanding implementation rather than reimplemented. The same header serves both implementations without configuration.
 - Callable characteristics are stored by value, their types part of the deduced filter type, without type erasure, for real-time compatibility: constructing, copying, or reconfiguring a filter does not allocate memory, and the callables may be inlined. The costs are a filter type specific to its callables, a callable characteristic replaced only by a callable of the same type, and filter assignment available only for assignable callables, which a lambda expression with captures is not. Configuring a function pointer or a `std::function` restores the replacement by any compatible callable, at the cost of an indirection, and of allocations for `std::function`.
 - A characteristic is read through a constant reference from an lvalue filter, without copying it, and written only through its accessor's setting overloads, which constrain the values. Reading from an rvalue filter moves the characteristic out instead, since a reference into the filter would dangle past the full-expression.

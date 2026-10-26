@@ -39,19 +39,20 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_Q_R_H_F_G_PS_HPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_U_P_Q_R_H_F_G_PS_HPP
 
+#include "policy.hpp"
 #include "utility.hpp"
 
 #include <tuple>
 
 namespace fcarouge::kalman_filter::internal {
 // Helper template to support multiple pack deduction.
-template <typename, typename, typename, typename>
+template <typename, typename, typename, typename, typename = policies<>>
 struct x_z_u_p_q_r_h_f_g_ps final {};
 
 template <typename State, typename Output, typename Input,
-          typename... PredictionTypes>
+          typename... PredictionTypes, typename Policies>
 struct x_z_u_p_q_r_h_f_g_ps<State, Output, Input,
-                            std::tuple<PredictionTypes...>> {
+                            std::tuple<PredictionTypes...>, Policies> {
   using state = State;
   using output = Output;
   using input = Input;
@@ -67,6 +68,7 @@ struct x_z_u_p_q_r_h_f_g_ps<State, Output, Input,
   using prediction_types = std::tuple<PredictionTypes...>;
   using gain = evaluate<quotient<state, innovation>>;
 
+  [[no_unique_address]] Policies policies{};
   state x{make_zero<state>()};
   estimate_uncertainty p{make_one<estimate_uncertainty>()};
   process_uncertainty q{make_zero<process_uncertainty>()};
@@ -91,7 +93,7 @@ struct x_z_u_p_q_r_h_f_g_ps<State, Output, Input,
     k = p * t(h) / s;
     y = z - h * x;
     x = x + k * y;
-    p = (i - k * h) * p * t(i - k * h) + k * r * t(k);
+    update_estimate_uncertainty(policies, p, i, k, h, r, s);
   }
 
   //! @todo Add convertible requirements on input and output packs?
@@ -103,6 +105,7 @@ struct x_z_u_p_q_r_h_f_g_ps<State, Output, Input,
     u = input{input_u, inputs_u...};
     x = f * x + g * u;
     p = f * p * t(f) + q;
+    condition(policies, p);
   }
 };
 } // namespace fcarouge::kalman_filter::internal

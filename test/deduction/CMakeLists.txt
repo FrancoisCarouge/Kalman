@@ -36,6 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
+build("policy_1x1x0")
 build("x_z_p_q_r")
 build("x_z_p_q_r_h_f" BACKENDS "eigen" "eigexed")
 build("x_z_p_q_r_hh_f_oo")
@@ -71,5 +72,11 @@ build("x_z_u_p_qq_r_ff_gg_ps")
 fail("arithmetic_input_1x1x1_fail")
 fail("arithmetic_output_1x1x0_fail")
 fail("arithmetic_uncertainty_1x1x0_fail")
+fail("floors_1x1x0_fail")
+fail("floors_count_1x1x0_fail")
+fail("floors_count_3x2x0_fail" BACKENDS "eigen" "eigexed")
+fail("joseph_form_1x1x0_fail")
 fail("order_fail")
+fail("symmetrize_1x1x0_fail")
 fail("unsupported_fail")
+fail("update_form_1x1x0_fail")

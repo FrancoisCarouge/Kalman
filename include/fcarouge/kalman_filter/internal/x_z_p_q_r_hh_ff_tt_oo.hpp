@@ -39,6 +39,7 @@ For more information, please refer to <https://unlicense.org> */
 #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_Q_R_HH_FF_TT_OO_HPP
 #define FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_Q_R_HH_FF_TT_OO_HPP
 
+#include "policy.hpp"
 #include "utility.hpp"
 
 #include <tuple>
@@ -48,7 +49,8 @@ namespace fcarouge::kalman_filter::internal {
 // the output model H is computed from the state, the state transition F from
 // the state.
 template <typename State, typename Output, typename ObservationState,
-          typename TransitionState, typename Transition, typename Observation>
+          typename TransitionState, typename Transition, typename Observation,
+          typename Policies = policies<>>
 struct x_z_p_q_r_hh_ff_tt_oo {
   using state = State;
   using output = Output;
@@ -67,6 +69,7 @@ struct x_z_p_q_r_hh_ff_tt_oo {
   using prediction_types = std::tuple<>;
   using gain = evaluate<quotient<state, innovation>>;
 
+  [[no_unique_address]] Policies policies{};
   state x{make_zero<state>()};
   estimate_uncertainty p{make_one<estimate_uncertainty>()};
   process_uncertainty q{make_zero<process_uncertainty>()};
@@ -94,7 +97,7 @@ struct x_z_p_q_r_hh_ff_tt_oo {
     k = p * t(h) / s;
     y = z - observation(x);
     x = state{x + k * y};
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    update_estimate_uncertainty(policies, p, i, k, h, r, s);
   }
 
   // The state transition F is the Jacobian at the state estimate before the
@@ -103,6 +106,7 @@ struct x_z_p_q_r_hh_ff_tt_oo {
     f = transition_state_f(x);
     x = transition(x);
     p = estimate_uncertainty{f * p * t(f) + q};
+    condition(policies, p);
   }
 };
 } // namespace fcarouge::kalman_filter::internal
