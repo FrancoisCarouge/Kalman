@@ -69,6 +69,17 @@ using state = fcarouge::state<vector<4>>;
 //!
 //! @image html ekf_4x1x0_thermal_soaring_layout.svg
 //!
+//! The sUAV flies within a meter of its origin, near the thermal center, where
+//! the updraft is the strength W: the variometer measures the strength almost
+//! directly, but barely the radius and the center, whose uncertainties remain
+//! near their initial values. The strength approaches the mean variometer
+//! measurement, held back by its confident initial guess of a null updraft.
+//! Each prediction drifts the thermal with the wind, while each update draws
+//! its center back toward the sUAV, where the updraft measured is stronger than
+//! predicted.
+//!
+//! @image html ekf_4x1x0_thermal_soaring.svg
+//!
 //! @example ekf_4x1x0_thermal_soaring.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   const float trigger_strength{0};

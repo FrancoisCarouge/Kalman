@@ -67,6 +67,15 @@ using state = fcarouge::state<vector<6>>;
 //!
 //! @image html kf_6x2x0_2d_vehicle_position_layout.svg
 //!
+//! The initial guess, at the origin, lies some 500 m from the vehicle, far
+//! beyond its 22 m standard deviation: the first innovations are inconsistent
+//! until the estimate converges. The turn, from the seventeenth measurement,
+//! surprises the constant acceleration model again. The acceleration is never
+//! measured, yet through the turn its estimate tracks the centripetal
+//! acceleration v²/R of a 25 m/s vehicle on a 300 m radius.
+//!
+//! @image html kf_6x2x0_2d_vehicle_position.svg
+//!
 //! @example kf_6x2x0_2d_vehicle_position.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.

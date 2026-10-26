@@ -69,6 +69,15 @@ namespace {
 //!
 //! @image html kf_1x1x1_1d_dog_position_layout.svg
 //!
+//! Each step predicts the dog one meter further, adding the process variance,
+//! then corrects the prediction toward the measurement, removing part of it.
+//! The variances settle in a few steps, where the predicted variance equals the
+//! sensor variance and the gain is one half. The innovations stay within their
+//! predicted standard deviations, but at the ninth step, where the dog runs
+//! ahead of its prediction.
+//!
+//! @image html kf_1x1x1_1d_dog_position.svg
+//!
 //! @example kf_1x1x1_1d_dog_position.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   kalman filter{
@@ -118,12 +127,14 @@ namespace {
   filter.predict(1.);
   filter.update(14.8);
 
+  assert(std::abs(1 - (filter.x() / 15.053)) < 0.001 &&
+         "The state estimates expected at 0.1% accuracy.");
   assert(
-      std::abs(1 - (filter.x() / 15.053)) < 0.001 &&
-      "The state estimates expected at 0.1% accuracy."
-      "Here we can see that the variance converges to 2.1623 in 9 steps. This "
-      "means that we have become very confident in our position estimate. It "
-      "is equal to meters. Contrast this to the sensor's meters.");
+      std::abs(1 - filter.p()) < 0.001 &&
+      "Here we can see that the variance converges to 1 in a few steps. This "
+      "means that we have become very confident in our position estimate. "
+      "Its standard deviation is 1 meter. Contrast this to the sensor's "
+      "standard deviation of 1.41 meters.");
 
   return 0;
 }()};

@@ -43,7 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 
 #include <mp-units/systems/isq/space_and_time.h>
 
-namespace fcarouge::test {
+namespace fcarouge::sample {
 namespace {
 using mp_units::si::unit_symbols::m;
 using mp_units::si::unit_symbols::m2;
@@ -79,6 +79,18 @@ using output_t = vector<position, position>;
 //! (an angular acceleration). The measurements period: Δt = 1s (constant).
 //!
 //! @image html kf_6x2x0_2d_vehicle_position_layout.svg
+//!
+//! The initial guess, at the origin, lies some 500 m from the vehicle, far
+//! beyond its 22 m standard deviation: the first innovations are inconsistent
+//! until the estimate converges. The turn, from the seventeenth measurement,
+//! surprises the constant acceleration model again. The acceleration is never
+//! measured, yet through the turn its estimate tracks the centripetal
+//! acceleration v²/R of a 25 m/s vehicle on a 300 m radius.
+//!
+//! The plot shows the complete data of the sample without units, of which
+//! this sample filters the first two measurements.
+//!
+//! @image html kf_6x2x0_2d_vehicle_position.svg
 //!
 //! @example kf_6x2x0_2d_vehicle_position_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
@@ -203,4 +215,4 @@ using output_t = vector<position, position>;
   return 0;
 }()};
 } // namespace
-} // namespace fcarouge::test
+} // namespace fcarouge::sample

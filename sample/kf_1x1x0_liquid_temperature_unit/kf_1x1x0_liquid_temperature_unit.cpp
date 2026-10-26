@@ -75,6 +75,14 @@ constexpr auto deg_C2{pow<2>(deg_C)};
 //!
 //! @image html kf_1x1x0_liquid_temperature_layout.svg
 //!
+//! The estimate settles on the first measurement, its initial guess weighing
+//! nothing. Its standard deviation falls below the thermometer's 0.1°C toward
+//! a steady state, where the process noise balances each measurement: unlike an
+//! average, whose gain falls toward zero, the gain stays near its steady state,
+//! so the estimate keeps following the fluctuations of the true temperature.
+//!
+//! @image html kf_1x1x0_liquid_temperature.svg
+//!
 //! @example kf_1x1x0_liquid_temperature_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A one-dimensional filter, constant system dynamic model.
