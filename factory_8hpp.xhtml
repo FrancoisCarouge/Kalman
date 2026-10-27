@@ -108,7 +108,8 @@ $(function(){initNavTree('factory_8hpp.xhtml',''); initResizable(true); });
   <div class="headertitle"><div class="title">factory.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="type_8hpp_source.xhtml">type.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="type_8hpp_source.xhtml">type.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="x__z__p__q__r_8hpp_source.xhtml">x_z_p_q_r.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="x__z__p__q__r__h__f_8hpp_source.xhtml">x_z_p_q_r_h_f.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="x__z__p__q__r__hh__f__oo_8hpp_source.xhtml">x_z_p_q_r_hh_f_oo.hpp</a>&quot;</code><br />
@@ -145,12 +146,13 @@ $(function(){initNavTree('factory_8hpp.xhtml',''); initResizable(true); });
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for factory.hpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="factory_8hpp__incl.svg" width="100%" height="527"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="factory_8hpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -188,9 +190,27 @@ Functions</h2></td></tr>
 <tr class="memitem:ae693b4cd2c7defc575ff59765977810d" id="r_ae693b4cd2c7defc575ff59765977810d"><td class="memTemplParams" colspan="2">template&lt;typename To , typename Element , std::size_t Rows, std::size_t Columns&gt; </td></tr>
 <tr class="memitem:ae693b4cd2c7defc575ff59765977810d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ae693b4cd2c7defc575ff59765977810d">fcarouge::kalman_filter::internal::convert</a> (const row_list&lt; Element, Rows, Columns &gt; &amp;value) -&gt; To</td></tr>
 <tr class="separator:ae693b4cd2c7defc575ff59765977810d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7b81e85d8a6511dc61da8505dce008b" id="r_ac7b81e85d8a6511dc61da8505dce008b"><td class="memTemplParams" colspan="2">template&lt;template&lt; typename &gt; typename Predicate&gt; </td></tr>
+<tr class="memitem:ac7b81e85d8a6511dc61da8505dce008b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ac7b81e85d8a6511dc61da8505dce008b">fcarouge::kalman_filter::internal::pick</a> (const auto &amp;argument)</td></tr>
+<tr class="separator:ac7b81e85d8a6511dc61da8505dce008b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24b9ad2e00f06bd9ed20c224ae8a1484" id="r_a24b9ad2e00f06bd9ed20c224ae8a1484"><td class="memTemplParams" colspan="2">template&lt;typename Policies &gt; </td></tr>
+<tr class="memitem:a24b9ad2e00f06bd9ed20c224ae8a1484"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a24b9ad2e00f06bd9ed20c224ae8a1484">fcarouge::kalman_filter::internal::configure</a> (const auto &amp;...arguments) -&gt; Policies</td></tr>
+<tr class="separator:a24b9ad2e00f06bd9ed20c224ae8a1484"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1327142ae58484767c8438b74e83aeff" id="r_a1327142ae58484767c8438b74e83aeff"><td class="memTemplParams" colspan="2">template&lt;typename State , typename... Deviations&gt; </td></tr>
+<tr class="memitem:a1327142ae58484767c8438b74e83aeff"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a1327142ae58484767c8438b74e83aeff">fcarouge::kalman_filter::internal::state_of</a> (const Deviations &amp;...deviations) -&gt; State</td></tr>
+<tr class="separator:a1327142ae58484767c8438b74e83aeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae70c62d53ff30063a661af218f635bf2" id="r_ae70c62d53ff30063a661af218f635bf2"><td class="memTemplParams" colspan="2">template&lt;typename State , typename... Deviations&gt; </td></tr>
+<tr class="memitem:ae70c62d53ff30063a661af218f635bf2"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ae70c62d53ff30063a661af218f635bf2">fcarouge::kalman_filter::internal::check_floors</a> (std::type_identity&lt; std::tuple&lt; Deviations... &gt; &gt;)</td></tr>
+<tr class="separator:ae70c62d53ff30063a661af218f635bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab76a701c4922c3d0379f1b00c05293b4" id="r_ab76a701c4922c3d0379f1b00c05293b4"><td class="memTemplParams" colspan="2">template&lt;typename State , typename... Policies&gt; </td></tr>
+<tr class="memitem:ab76a701c4922c3d0379f1b00c05293b4"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab76a701c4922c3d0379f1b00c05293b4">fcarouge::kalman_filter::internal::check_floors</a> (std::type_identity&lt; policies&lt; Policies... &gt; &gt;)</td></tr>
+<tr class="separator:ab76a701c4922c3d0379f1b00c05293b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a0d2359a75154abf0f047c1e6c0b3d0c8" id="r_a0d2359a75154abf0f047c1e6c0b3d0c8"><td class="memTemplParams" colspan="2">template&lt;typename Filter , typename Policies , typename Characteristics &gt; </td></tr>
+<tr class="memitem:a0d2359a75154abf0f047c1e6c0b3d0c8"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d2359a75154abf0f047c1e6c0b3d0c8">fcarouge::kalman_filter::internal::buildable</a> {false}</td></tr>
+<tr class="separator:a0d2359a75154abf0f047c1e6c0b3d0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a614975b5427a01c25a3b4a2a1a40ff55" id="r_a614975b5427a01c25a3b4a2a1a40ff55"><td class="memTemplParams" colspan="2">template&lt;typename Filter &gt; </td></tr>
 <tr class="memitem:a614975b5427a01c25a3b4a2a1a40ff55"><td class="memTemplItemLeft" align="right" valign="top">constexpr filter_deducer&lt; Filter &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a614975b5427a01c25a3b4a2a1a40ff55">fcarouge::kalman_filter::internal::deducer</a> {}</td></tr>
 <tr class="separator:a614975b5427a01c25a3b4a2a1a40ff55"><td class="memSeparator" colspan="2">&#160;</td></tr>

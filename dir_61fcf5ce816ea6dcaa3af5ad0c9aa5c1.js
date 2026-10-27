@@ -11,8 +11,11 @@ var dir_61fcf5ce816ea6dcaa3af5ad0c9aa5c1 =
     [ "callable_1x1x1.cpp", "update_2callable__1x1x1_8cpp.xhtml", null ],
     [ "f_1x1x0.cpp", "update_2f__1x1x0_8cpp.xhtml", null ],
     [ "f_2x1x0.cpp", "update_2f__2x1x0_8cpp.xhtml", null ],
+    [ "forms_3x2x0.cpp", "forms__3x2x0_8cpp.xhtml", "forms__3x2x0_8cpp" ],
     [ "h_1x1x0.cpp", "h__1x1x0_8cpp.xhtml", "h__1x1x0_8cpp" ],
+    [ "information_1x1x0.cpp", "information__1x1x0_8cpp.xhtml", "information__1x1x0_8cpp" ],
     [ "jacobian_1x1x0.cpp", "update_2jacobian__1x1x0_8cpp.xhtml", null ],
+    [ "joseph_3x1x0.cpp", "joseph__3x1x0_8cpp.xhtml", "joseph__3x1x0_8cpp" ],
     [ "noise_jacobian_1x1x0.cpp", "update_2noise__jacobian__1x1x0_8cpp.xhtml", null ],
     [ "noise_transition_1x1x0.cpp", "update_2noise__transition__1x1x0_8cpp.xhtml", null ],
     [ "observation_1x1x0.cpp", "observation__1x1x0_8cpp.xhtml", "observation__1x1x0_8cpp" ],
@@ -21,6 +24,8 @@ var dir_61fcf5ce816ea6dcaa3af5ad0c9aa5c1 =
     [ "position_1x1x0.cpp", "update_2position__1x1x0_8cpp.xhtml", "update_2position__1x1x0_8cpp" ],
     [ "q_1x1x0.cpp", "q__1x1x0_8cpp.xhtml", "q__1x1x0_8cpp" ],
     [ "random_walk_1x1x0.cpp", "update_2random__walk__1x1x0_8cpp.xhtml", null ],
+    [ "simple_1x1x0.cpp", "simple__1x1x0_8cpp.xhtml", "simple__1x1x0_8cpp" ],
+    [ "symmetric_1x1x0.cpp", "symmetric__1x1x0_8cpp.xhtml", "symmetric__1x1x0_8cpp" ],
     [ "u_1x1x1.cpp", "update_2u__1x1x1_8cpp.xhtml", null ],
     [ "values_2x2x0.cpp", "values__2x2x0_8cpp.xhtml", "values__2x2x0_8cpp" ]
 ];

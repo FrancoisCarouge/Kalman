@@ -2,6 +2,7 @@ var dir_d5384b9eb69731f991f969bae863d0d5 =
 [
     [ "factory.hpp", "factory_8hpp.xhtml", "factory_8hpp" ],
     [ "format.hpp", "format_8hpp.xhtml", null ],
+    [ "policy.hpp", "policy_8hpp.xhtml", "policy_8hpp" ],
     [ "print.hpp", "print_8hpp.xhtml", null ],
     [ "type.hpp", "type_8hpp.xhtml", "type_8hpp" ],
     [ "utility.hpp", "utility_8hpp.xhtml", "utility_8hpp" ],

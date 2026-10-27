@@ -2,6 +2,7 @@ var type_8hpp =
 [
     [ "estimate_uncertainty", "type_8hpp.xhtml#a626060d9ae2238162bde5a22618152b0", null ],
     [ "estimate_uncertainty", "type_8hpp.xhtml#a67e72364f755af0934a50f5fce6dd778", null ],
+    [ "floors", "type_8hpp.xhtml#a094f1c8a1191b8bdd892ac06fbc93450", null ],
     [ "input_control", "type_8hpp.xhtml#a0d16c88e2bf4d10e77a72f6d73586f2a", null ],
     [ "input_control", "type_8hpp.xhtml#a788d65d976b6a412caf88748f782dfa7", null ],
     [ "observation", "type_8hpp.xhtml#afca0163b1b4f6d8ad382c9d7d52f0116", null ],
@@ -16,8 +17,14 @@ var type_8hpp =
     [ "state_transition", "type_8hpp.xhtml#a0d3c952306d887b3d3d54f42b09952b4", null ],
     [ "state_transition", "type_8hpp.xhtml#a19478b612027f688fd2d3ed290827afb", null ],
     [ "transition", "type_8hpp.xhtml#ab2a243dbef2d7378b11510473d5ac039", null ],
+    [ "cw", "type_8hpp.xhtml#a59efe71e049d3616fccfea0ddbb788e0", null ],
+    [ "information_form", "type_8hpp.xhtml#aefec008de648337f22ff454cd6924bcd", null ],
     [ "input", "type_8hpp.xhtml#aec4e2c402956cd28819cbaa6f550514a", null ],
+    [ "joseph_form", "type_8hpp.xhtml#a54ea817d70de516802f86f2a8c2a9fc8", null ],
     [ "output", "type_8hpp.xhtml#ad1d4f6fead3ba7743de6753f176887d4", null ],
     [ "prediction_types", "type_8hpp.xhtml#a707e960d17d3197e85cbdc4b8be06aa1", null ],
+    [ "simple_form", "type_8hpp.xhtml#a0565c379d1e159a400e04c816a534a9a", null ],
+    [ "symmetric_form", "type_8hpp.xhtml#a579d57780780de1b6fd487c35ed000b7", null ],
+    [ "symmetrize", "type_8hpp.xhtml#ace0b11626a1c7cec2d9b54f3726483ef", null ],
     [ "update_types", "type_8hpp.xhtml#aaaeba5a63d49843ca7b33a85a91ca041", null ]
 ];

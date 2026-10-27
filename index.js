@@ -17,7 +17,8 @@ var index =
         [ "Member Types", "index.xhtml#member-types", null ],
         [ "Member Functions", "index.xhtml#member-functions", [
           [ "Characteristics", "index.xhtml#characteristics", null ],
-          [ "Modifiers", "index.xhtml#modifiers", null ]
+          [ "Modifiers", "index.xhtml#modifiers", null ],
+          [ "Policies", "index.xhtml#policies", null ]
         ] ]
       ] ],
       [ "Format", "index.xhtml#format", null ],

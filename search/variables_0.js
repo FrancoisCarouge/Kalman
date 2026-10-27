@@ -5,5 +5,6 @@ var searchData=
   ['binary_2',['binary',['../_l_i_c_e_n_s_e_8txt.xhtml#a2706511dc478338509e6fc19480b6289',1,'LICENSE.txt']]],
   ['body_5fangular_5fvelocity_3',['body_angular_velocity',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#ab5d9d03044747e1701c977aa35c0552e',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
   ['body_5frotation_4',['body_rotation',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a602b993c0c0e1a78299ddba7b8154f0d',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
-  ['body_5fvelocity_5',['body_velocity',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a10a17448e98f98f176378a5405e9b334',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]]
+  ['body_5fvelocity_5',['body_velocity',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a10a17448e98f98f176378a5405e9b334',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
+  ['buildable_6',['buildable',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d2359a75154abf0f047c1e6c0b3d0c8',1,'fcarouge::kalman_filter::internal']]]
 ];
