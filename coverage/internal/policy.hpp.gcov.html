@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - FrancoisCarouge/Kalman - internal/policy.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory internal">internal</a> - policy.hpp<span style="font-size: 80%;"> (source / <a href="policy.hpp.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">FrancoisCarouge/Kalman</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntry">37</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2026-10-27 04:19:49</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">88</td>
+            <td class="headerCovTableEntry">88</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:&nbsp&nbsp&nbsp&nbsp
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+            <br>Branches:
+            <span class="coverLegendCov">+</span> taken
+            <span class="coverLegendNoCov">-</span> not taken
+            <span class="coverLegendNoCov">#</span> not executed
+</td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntryLo">50.9&nbsp;%</td>
+            <td class="headerCovTableEntry">114</td>
+            <td class="headerCovTableEntry">58</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">             Branch data     Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>                 :             : /*  __          _      __  __          _   _</span>
+<span id="L2"><span class="lineNum">       2</span>                 :             : | |/ /    /\   | |    |  \/  |   /\   | \ | |</span>
+<span id="L3"><span class="lineNum">       3</span>                 :             : | ' /    /  \  | |    | \  / |  /  \  |  \| |</span>
+<span id="L4"><span class="lineNum">       4</span>                 :             : |  &lt;    / /\ \ | |    | |\/| | / /\ \ | . ` |</span>
+<span id="L5"><span class="lineNum">       5</span>                 :             : | . \  / ____ \| |____| |  | |/ ____ \| |\  |</span>
+<span id="L6"><span class="lineNum">       6</span>                 :             : |_|\_\/_/    \_\______|_|  |_/_/    \_\_| \_|</span>
+<span id="L7"><span class="lineNum">       7</span>                 :             : </span>
+<span id="L8"><span class="lineNum">       8</span>                 :             : Kalman Filter</span>
+<span id="L9"><span class="lineNum">       9</span>                 :             : Version 0.5.4</span>
+<span id="L10"><span class="lineNum">      10</span>                 :             : https://github.com/FrancoisCarouge/Kalman</span>
+<span id="L11"><span class="lineNum">      11</span>                 :             : </span>
+<span id="L12"><span class="lineNum">      12</span>                 :             : SPDX-License-Identifier: Unlicense</span>
+<span id="L13"><span class="lineNum">      13</span>                 :             : </span>
+<span id="L14"><span class="lineNum">      14</span>                 :             : This is free and unencumbered software released into the public domain.</span>
+<span id="L15"><span class="lineNum">      15</span>                 :             : </span>
+<span id="L16"><span class="lineNum">      16</span>                 :             : Anyone is free to copy, modify, publish, use, compile, sell, or</span>
+<span id="L17"><span class="lineNum">      17</span>                 :             : distribute this software, either in source code form or as a compiled</span>
+<span id="L18"><span class="lineNum">      18</span>                 :             : binary, for any purpose, commercial or non-commercial, and by any</span>
+<span id="L19"><span class="lineNum">      19</span>                 :             : means.</span>
+<span id="L20"><span class="lineNum">      20</span>                 :             : </span>
+<span id="L21"><span class="lineNum">      21</span>                 :             : In jurisdictions that recognize copyright laws, the author or authors</span>
+<span id="L22"><span class="lineNum">      22</span>                 :             : of this software dedicate any and all copyright interest in the</span>
+<span id="L23"><span class="lineNum">      23</span>                 :             : software to the public domain. We make this dedication for the benefit</span>
+<span id="L24"><span class="lineNum">      24</span>                 :             : of the public at large and to the detriment of our heirs and</span>
+<span id="L25"><span class="lineNum">      25</span>                 :             : successors. We intend this dedication to be an overt act of</span>
+<span id="L26"><span class="lineNum">      26</span>                 :             : relinquishment in perpetuity of all present and future rights to this</span>
+<span id="L27"><span class="lineNum">      27</span>                 :             : software under copyright law.</span>
+<span id="L28"><span class="lineNum">      28</span>                 :             : </span>
+<span id="L29"><span class="lineNum">      29</span>                 :             : THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span>
+<span id="L30"><span class="lineNum">      30</span>                 :             : EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span>
+<span id="L31"><span class="lineNum">      31</span>                 :             : MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</span>
+<span id="L32"><span class="lineNum">      32</span>                 :             : IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR</span>
+<span id="L33"><span class="lineNum">      33</span>                 :             : OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,</span>
+<span id="L34"><span class="lineNum">      34</span>                 :             : ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span>
+<span id="L35"><span class="lineNum">      35</span>                 :             : OTHER DEALINGS IN THE SOFTWARE.</span>
+<span id="L36"><span class="lineNum">      36</span>                 :             : </span>
+<span id="L37"><span class="lineNum">      37</span>                 :             : For more information, please refer to &lt;https://unlicense.org&gt; */</span>
+<span id="L38"><span class="lineNum">      38</span>                 :             : </span>
+<span id="L39"><span class="lineNum">      39</span>                 :             : #ifndef FCAROUGE_KALMAN_FILTER_INTERNAL_POLICY_HPP</span>
+<span id="L40"><span class="lineNum">      40</span>                 :             : #define FCAROUGE_KALMAN_FILTER_INTERNAL_POLICY_HPP</span>
+<span id="L41"><span class="lineNum">      41</span>                 :             : </span>
+<span id="L42"><span class="lineNum">      42</span>                 :             : #include &quot;type.hpp&quot;</span>
+<span id="L43"><span class="lineNum">      43</span>                 :             : #include &quot;utility.hpp&quot;</span>
+<span id="L44"><span class="lineNum">      44</span>                 :             : </span>
+<span id="L45"><span class="lineNum">      45</span>                 :             : #include &lt;concepts&gt;</span>
+<span id="L46"><span class="lineNum">      46</span>                 :             : #include &lt;cstddef&gt;</span>
+<span id="L47"><span class="lineNum">      47</span>                 :             : #include &lt;tuple&gt;</span>
+<span id="L48"><span class="lineNum">      48</span>                 :             : #include &lt;type_traits&gt;</span>
+<span id="L49"><span class="lineNum">      49</span>                 :             : #include &lt;utility&gt;</span>
+<span id="L50"><span class="lineNum">      50</span>                 :             : </span>
+<span id="L51"><span class="lineNum">      51</span>                 :             : namespace fcarouge::kalman_filter::internal {</span>
+<span id="L52"><span class="lineNum">      52</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L53"><span class="lineNum">      53</span>                 :             : concept update_form =</span>
+<span id="L54"><span class="lineNum">      54</span>                 :             :     std::same_as&lt;Type, joseph_form_t&gt; || std::same_as&lt;Type, simple_form_t&gt; ||</span>
+<span id="L55"><span class="lineNum">      55</span>                 :             :     std::same_as&lt;Type, symmetric_form_t&gt; ||</span>
+<span id="L56"><span class="lineNum">      56</span>                 :             :     std::same_as&lt;Type, information_form_t&gt;;</span>
+<span id="L57"><span class="lineNum">      57</span>                 :             : </span>
+<span id="L58"><span class="lineNum">      58</span>                 :             : template &lt;typename Type&gt; struct is_floors_policy : std::false_type {};</span>
+<span id="L59"><span class="lineNum">      59</span>                 :             : </span>
+<span id="L60"><span class="lineNum">      60</span>                 :             : template &lt;typename... Types&gt;</span>
+<span id="L61"><span class="lineNum">      61</span>                 :             : struct is_floors_policy&lt;floors&lt;Types...&gt;&gt; : std::true_type {};</span>
+<span id="L62"><span class="lineNum">      62</span>                 :             : </span>
+<span id="L63"><span class="lineNum">      63</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L64"><span class="lineNum">      64</span>                 :             : concept floors_policy = is_floors_policy&lt;Type&gt;::value;</span>
+<span id="L65"><span class="lineNum">      65</span>                 :             : </span>
+<span id="L66"><span class="lineNum">      66</span>                 :             : // A compile-time constant: an empty type with a static value member, as the</span>
+<span id="L67"><span class="lineNum">      67</span>                 :             : // standard constant wrapper and integral constant.</span>
+<span id="L68"><span class="lineNum">      68</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L69"><span class="lineNum">      69</span>                 :             : concept constant = std::is_empty_v&lt;Type&gt; &amp;&amp; requires { Type::value; };</span>
+<span id="L70"><span class="lineNum">      70</span>                 :             : </span>
+<span id="L71"><span class="lineNum">      71</span>                 :             : template &lt;typename Type&gt; struct stores_floors : std::false_type {};</span>
+<span id="L72"><span class="lineNum">      72</span>                 :             : </span>
+<span id="L73"><span class="lineNum">      73</span>                 :             : template &lt;typename... Types&gt;</span>
+<span id="L74"><span class="lineNum">      74</span>                 :             : struct stores_floors&lt;floors&lt;Types...&gt;&gt;</span>
+<span id="L75"><span class="lineNum">      75</span>                 :             :     : std::bool_constant&lt;(not constant&lt;Types&gt; || ...)&gt; {};</span>
+<span id="L76"><span class="lineNum">      76</span>                 :             : </span>
+<span id="L77"><span class="lineNum">      77</span>                 :             : // The floors with a runtime standard deviation, stored in the filter.</span>
+<span id="L78"><span class="lineNum">      78</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L79"><span class="lineNum">      79</span>                 :             : concept stored_floors = stores_floors&lt;Type&gt;::value;</span>
+<span id="L80"><span class="lineNum">      80</span>                 :             : </span>
+<span id="L81"><span class="lineNum">      81</span>                 :             : // The type of the standard deviation, of a value or of a constant.</span>
+<span id="L82"><span class="lineNum">      82</span>                 :             : template &lt;typename Type&gt; struct deviation : std::type_identity&lt;Type&gt; {};</span>
+<span id="L83"><span class="lineNum">      83</span>                 :             : </span>
+<span id="L84"><span class="lineNum">      84</span>                 :             : template &lt;constant Type&gt;</span>
+<span id="L85"><span class="lineNum">      85</span>                 :             : struct deviation&lt;Type&gt;</span>
+<span id="L86"><span class="lineNum">      86</span>                 :             :     : std::type_identity&lt;std::remove_cvref_t&lt;decltype(Type::value)&gt;&gt; {};</span>
+<span id="L87"><span class="lineNum">      87</span>                 :             : </span>
+<span id="L88"><span class="lineNum">      88</span>                 :             : template &lt;typename Type&gt; using deviation_t = deviation&lt;Type&gt;::type;</span>
+<span id="L89"><span class="lineNum">      89</span>                 :             : </span>
+<span id="L90"><span class="lineNum">      90</span>                 :             : // The standard deviation of a value or of a constant.</span>
+<span id="L91"><span class="lineNum">      91</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L92"><span class="lineNum">      92</span>                 :<span class="tlaGNC">          18 : [[nodiscard]] constexpr auto deviation_of(const Type &amp;value)</span></span>
+<span id="L93"><span class="lineNum">      93</span>                 :             :     -&gt; deviation_t&lt;Type&gt; {</span>
+<span id="L94"><span class="lineNum">      94</span>                 :             :   if constexpr (constant&lt;Type&gt;) {</span>
+<span id="L95"><span class="lineNum">      95</span>                 :<span class="tlaGNC">           8 :     return Type::value;</span></span>
+<span id="L96"><span class="lineNum">      96</span>                 :             :   } else {</span>
+<span id="L97"><span class="lineNum">      97</span>                 :<span class="tlaGNC">          10 :     return value;</span></span>
+<span id="L98"><span class="lineNum">      98</span>                 :             :   }</span>
+<span id="L99"><span class="lineNum">      99</span>                 :             : }</span>
+<span id="L100"><span class="lineNum">     100</span>                 :             : </span>
+<span id="L101"><span class="lineNum">     101</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L102"><span class="lineNum">     102</span>                 :             : concept policy = update_form&lt;Type&gt; || std::same_as&lt;Type, symmetrize_t&gt; ||</span>
+<span id="L103"><span class="lineNum">     103</span>                 :             :                  floors_policy&lt;Type&gt;;</span>
+<span id="L104"><span class="lineNum">     104</span>                 :             : </span>
+<span id="L105"><span class="lineNum">     105</span>                 :             : // The policies of a filter, in their canonical order: the update form, the</span>
+<span id="L106"><span class="lineNum">     106</span>                 :             : // symmetrization, then the floors. The filter holds its policies as its first</span>
+<span id="L107"><span class="lineNum">     107</span>                 :             : // member, without a unique address, which stores nothing but the floors with a</span>
+<span id="L108"><span class="lineNum">     108</span>                 :             : // runtime standard deviation: a policy declared or not is part of the filter</span>
+<span id="L109"><span class="lineNum">     109</span>                 :             : // type, at no space cost, and its absence selects the default filter.</span>
+<span id="L110"><span class="lineNum">     110</span>                 :             : template &lt;typename... Policies&gt; struct policies {};</span>
+<span id="L111"><span class="lineNum">     111</span>                 :             : </span>
+<span id="L112"><span class="lineNum">     112</span>                 :             : template &lt;typename... Policies&gt;</span>
+<span id="L113"><span class="lineNum">     113</span>                 :             :   requires(stored_floors&lt;Policies&gt; || ...)</span>
+<span id="L114"><span class="lineNum">     114</span>                 :             : struct policies&lt;Policies...&gt; {</span>
+<span id="L115"><span class="lineNum">     115</span>                 :             :   decltype(std::tuple_element_t&lt;sizeof...(Policies) - 1,</span>
+<span id="L116"><span class="lineNum">     116</span>                 :             :                                 std::tuple&lt;Policies...&gt;&gt;::value) deviations;</span>
+<span id="L117"><span class="lineNum">     117</span>                 :             : };</span>
+<span id="L118"><span class="lineNum">     118</span>                 :             : </span>
+<span id="L119"><span class="lineNum">     119</span>                 :             : template &lt;typename Type, template &lt;typename&gt; typename Predicate&gt;</span>
+<span id="L120"><span class="lineNum">     120</span>                 :             : using select =</span>
+<span id="L121"><span class="lineNum">     121</span>                 :             :     std::conditional_t&lt;Predicate&lt;Type&gt;::value, std::tuple&lt;Type&gt;, std::tuple&lt;&gt;&gt;;</span>
+<span id="L122"><span class="lineNum">     122</span>                 :             : </span>
+<span id="L123"><span class="lineNum">     123</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L124"><span class="lineNum">     124</span>                 :             : using is_update_form = std::bool_constant&lt;update_form&lt;Type&gt;&gt;;</span>
+<span id="L125"><span class="lineNum">     125</span>                 :             : </span>
+<span id="L126"><span class="lineNum">     126</span>                 :             : // The update forms other than the default Joseph form: declaring the default</span>
+<span id="L127"><span class="lineNum">     127</span>                 :             : // form explicitly is the default filter, of the same type.</span>
+<span id="L128"><span class="lineNum">     128</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L129"><span class="lineNum">     129</span>                 :             : using is_other_update_form =</span>
+<span id="L130"><span class="lineNum">     130</span>                 :             :     std::bool_constant&lt;update_form&lt;Type&gt; &amp;&amp;</span>
+<span id="L131"><span class="lineNum">     131</span>                 :             :                        not std::same_as&lt;Type, joseph_form_t&gt;&gt;;</span>
+<span id="L132"><span class="lineNum">     132</span>                 :             : </span>
+<span id="L133"><span class="lineNum">     133</span>                 :             : template &lt;typename Type&gt; using is_symmetrize = std::is_same&lt;Type, symmetrize_t&gt;;</span>
+<span id="L134"><span class="lineNum">     134</span>                 :             : </span>
+<span id="L135"><span class="lineNum">     135</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L136"><span class="lineNum">     136</span>                 :             : using is_floors = std::bool_constant&lt;floors_policy&lt;Type&gt;&gt;;</span>
+<span id="L137"><span class="lineNum">     137</span>                 :             : </span>
+<span id="L138"><span class="lineNum">     138</span>                 :             : template &lt;typename Type&gt; using is_policy = std::bool_constant&lt;policy&lt;Type&gt;&gt;;</span>
+<span id="L139"><span class="lineNum">     139</span>                 :             : </span>
+<span id="L140"><span class="lineNum">     140</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L141"><span class="lineNum">     141</span>                 :             : using is_characteristic = std::bool_constant&lt;not policy&lt;Type&gt;&gt;;</span>
+<span id="L142"><span class="lineNum">     142</span>                 :             : </span>
+<span id="L143"><span class="lineNum">     143</span>                 :             : template &lt;typename Tuple&gt; struct policies_from;</span>
+<span id="L144"><span class="lineNum">     144</span>                 :             : </span>
+<span id="L145"><span class="lineNum">     145</span>                 :             : template &lt;typename... Policies&gt;</span>
+<span id="L146"><span class="lineNum">     146</span>                 :             : struct policies_from&lt;std::tuple&lt;Policies...&gt;&gt;</span>
+<span id="L147"><span class="lineNum">     147</span>                 :             :     : std::type_identity&lt;policies&lt;Policies...&gt;&gt; {};</span>
+<span id="L148"><span class="lineNum">     148</span>                 :             : </span>
+<span id="L149"><span class="lineNum">     149</span>                 :             : // The canonical policies of the declaration arguments: the order of declaration</span>
+<span id="L150"><span class="lineNum">     150</span>                 :             : // of the policies does not matter.</span>
+<span id="L151"><span class="lineNum">     151</span>                 :             : template &lt;typename... Arguments&gt;</span>
+<span id="L152"><span class="lineNum">     152</span>                 :             : using policies_of = policies_from&lt;decltype(std::tuple_cat(</span>
+<span id="L153"><span class="lineNum">     153</span>                 :             :     std::declval&lt;select&lt;Arguments, is_other_update_form&gt;&gt;()...,</span>
+<span id="L154"><span class="lineNum">     154</span>                 :             :     std::declval&lt;select&lt;Arguments, is_symmetrize&gt;&gt;()...,</span>
+<span id="L155"><span class="lineNum">     155</span>                 :             :     std::declval&lt;select&lt;Arguments, is_floors&gt;&gt;()...))&gt;::type;</span>
+<span id="L156"><span class="lineNum">     156</span>                 :             : </span>
+<span id="L157"><span class="lineNum">     157</span>                 :             : // The declaration arguments other than the policies.</span>
+<span id="L158"><span class="lineNum">     158</span>                 :             : template &lt;typename... Arguments&gt;</span>
+<span id="L159"><span class="lineNum">     159</span>                 :             : using characteristics_of = decltype(std::tuple_cat(</span>
+<span id="L160"><span class="lineNum">     160</span>                 :             :     std::declval&lt;select&lt;Arguments, is_characteristic&gt;&gt;()...));</span>
+<span id="L161"><span class="lineNum">     161</span>                 :             : </span>
+<span id="L162"><span class="lineNum">     162</span>                 :             : template &lt;template &lt;typename&gt; typename Predicate, typename... Arguments&gt;</span>
+<span id="L163"><span class="lineNum">     163</span>                 :             : inline constexpr std::size_t count_of{</span>
+<span id="L164"><span class="lineNum">     164</span>                 :             :     (0U + ... + std::size_t{Predicate&lt;Arguments&gt;::value})};</span>
+<span id="L165"><span class="lineNum">     165</span>                 :             : </span>
+<span id="L166"><span class="lineNum">     166</span>                 :             : template &lt;typename Policy, typename Policies&gt;</span>
+<span id="L167"><span class="lineNum">     167</span>                 :             : inline constexpr bool contains{false};</span>
+<span id="L168"><span class="lineNum">     168</span>                 :             : </span>
+<span id="L169"><span class="lineNum">     169</span>                 :             : template &lt;typename Policy, typename... Policies&gt;</span>
+<span id="L170"><span class="lineNum">     170</span>                 :             : inline constexpr bool contains&lt;Policy, policies&lt;Policies...&gt;&gt;{</span>
+<span id="L171"><span class="lineNum">     171</span>                 :             :     (std::same_as&lt;Policy, Policies&gt; || ...)};</span>
+<span id="L172"><span class="lineNum">     172</span>                 :             : </span>
+<span id="L173"><span class="lineNum">     173</span>                 :             : template &lt;std::size_t Index&gt;</span>
+<span id="L174"><span class="lineNum">     174</span>                 :             : inline constexpr std::integral_constant&lt;std::size_t, Index&gt; position{};</span>
+<span id="L175"><span class="lineNum">     175</span>                 :             : </span>
+<span id="L176"><span class="lineNum">     176</span>                 :             : // A matrix whose elements are accessed at compile-time positions, by the</span>
+<span id="L177"><span class="lineNum">     177</span>                 :             : // multidimensional subscript or the function call operators: no backend</span>
+<span id="L178"><span class="lineNum">     178</span>                 :             : // customization point, and heterogeneous typed matrices are supported.</span>
+<span id="L179"><span class="lineNum">     179</span>                 :             : template &lt;typename Type&gt;</span>
+<span id="L180"><span class="lineNum">     180</span>                 :             : concept indexable = requires(Type value) { value[position&lt;0&gt;, position&lt;0&gt;]; } ||</span>
+<span id="L181"><span class="lineNum">     181</span>                 :             :                     requires(Type value) { value(position&lt;0&gt;, position&lt;0&gt;); };</span>
+<span id="L182"><span class="lineNum">     182</span>                 :             : </span>
+<span id="L183"><span class="lineNum">     183</span>                 :             : template &lt;std::size_t Row, std::size_t Column&gt;</span>
+<span id="L184"><span class="lineNum">     184</span>                 :<span class="tlaGNC">          18 : [[nodiscard]] constexpr decltype(auto) at(auto &amp;value) {</span></span>
+<span id="L185"><span class="lineNum">     185</span>                 :             :   if constexpr (requires { value[position&lt;Row&gt;, position&lt;Column&gt;]; }) {</span>
+<span id="L186"><span class="lineNum">     186</span>                 :<span class="tlaGNC">          18 :     return value[position&lt;Row&gt;, position&lt;Column&gt;];</span></span>
+<span id="L187"><span class="lineNum">     187</span>                 :             :   } else {</span>
+<span id="L188"><span class="lineNum">     188</span>                 :             :     return value(position&lt;Row&gt;, position&lt;Column&gt;);</span>
+<span id="L189"><span class="lineNum">     189</span>                 :             :   }</span>
+<span id="L190"><span class="lineNum">     190</span>                 :             : }</span>
+<span id="L191"><span class="lineNum">     191</span>                 :             : </span>
+<span id="L192"><span class="lineNum">     192</span>                 :             : // Averages the estimate uncertainty with its transpose. A scalar is symmetric.</span>
+<span id="L193"><span class="lineNum">     193</span>                 :<span class="tlaGNC">           4 : template &lt;typename Type&gt; constexpr void symmetrize_estimate(Type &amp;p) {</span></span>
+<span id="L194"><span class="lineNum">     194</span>                 :             :   if constexpr (indexable&lt;Type&gt;) {</span>
+<span id="L195"><span class="lineNum">     195</span>                 :             :     using element = std::remove_cvref_t&lt;decltype(at&lt;0, 0&gt;(p))&gt;;</span>
+<span id="L196"><span class="lineNum">     196</span>                 :             : </span>
+<span id="L197"><span class="lineNum">     197</span>                 :             :     if constexpr (std::floating_point&lt;element&gt;) {</span>
+<span id="L198"><span class="lineNum">     198</span>   [<span class="tlaGBC" title="Branch 0 was taken 4 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 4 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           4 :       p = Type{(p + t(p)) * element{0.5}};</span></span>
+<span class="lineNum">        </span>    <span class="tlaGBC" title="Branch 4 was taken 4 times"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 4 times"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span>]
+<span id="L199"><span class="lineNum">     199</span>                 :             :     } else {</span>
+<span id="L200"><span class="lineNum">     200</span>                 :             :       p = Type{(p + t(p)) * 0.5};</span>
+<span id="L201"><span class="lineNum">     201</span>                 :             :     }</span>
+<span id="L202"><span class="lineNum">     202</span>                 :             :   }</span>
+<span id="L203"><span class="lineNum">     203</span>                 :<span class="tlaGNC">           4 : }</span></span>
+<span id="L204"><span class="lineNum">     204</span>                 :             : </span>
+<span id="L205"><span class="lineNum">     205</span>                 :             : // Raises the variance to the square of its standard deviation floor.</span>
+<span id="L206"><span class="lineNum">     206</span>                 :<span class="tlaGNC">          18 : constexpr void raise_variance(auto &amp;variance, const auto &amp;deviation) {</span></span>
+<span id="L207"><span class="lineNum">     207</span>                 :<span class="tlaGNC">          18 :   const auto floor{deviation * deviation};</span></span>
+<span id="L208"><span class="lineNum">     208</span>                 :             : </span>
+<span id="L209"><span class="lineNum">     209</span>         [<span class="tlaGBC" title="Branch 0 was taken 12 times"> + </span><span class="tlaGBC" title="Branch 1 was taken 6 times"> + </span>]:<span class="tlaGNC">          18 :   if (variance &lt; floor) {</span></span>
+<span id="L210"><span class="lineNum">     210</span>                 :<span class="tlaGNC">          12 :     variance = floor;</span></span>
+<span id="L211"><span class="lineNum">     211</span>                 :             :   }</span>
+<span id="L212"><span class="lineNum">     212</span>                 :<span class="tlaGNC">          18 : }</span></span>
+<span id="L213"><span class="lineNum">     213</span>                 :             : </span>
+<span id="L214"><span class="lineNum">     214</span>                 :             : // Raises each diagonal variance of the estimate uncertainty, in state order.</span>
+<span id="L215"><span class="lineNum">     215</span>                 :             : template &lt;typename Type, typename... Deviations&gt;</span>
+<span id="L216"><span class="lineNum">     216</span>                 :<span class="tlaGNC">           6 : constexpr void raise_variances(Type &amp;p,</span></span>
+<span id="L217"><span class="lineNum">     217</span>                 :             :                                const std::tuple&lt;Deviations...&gt; &amp;deviations) {</span>
+<span id="L218"><span class="lineNum">     218</span>                 :             :   if constexpr (indexable&lt;Type&gt;) {</span>
+<span id="L219"><span class="lineNum">     219</span>                 :             :     static_assert(std::is_lvalue_reference_v&lt;decltype(at&lt;0, 0&gt;(p))&gt;,</span>
+<span id="L220"><span class="lineNum">     220</span>                 :             :                   &quot;The floors require assignable estimate uncertainty &quot;</span>
+<span id="L221"><span class="lineNum">     221</span>                 :             :                   &quot;elements from the linear algebra backend.&quot;);</span>
+<span id="L222"><span class="lineNum">     222</span>                 :             : </span>
+<span id="L223"><span class="lineNum">     223</span>                 :<span class="tlaGNC">          24 :     [&amp;]&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</span></span>
+<span id="L224"><span class="lineNum">     224</span>                 :<span class="tlaGNC">          18 :       (raise_variance(at&lt;Indexes, Indexes&gt;(p),</span></span>
+<span id="L225"><span class="lineNum">     225</span>   [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">          24 :                       deviation_of(std::get&lt;Indexes&gt;(deviations))),</span></span>
+<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 2 times"> + </span> 
+<span class="lineNum">        </span> <span class="tlaUNC" title="Branch 9 was not taken"> - </span><span class="tlaGBC" title="Branch 10 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 11 was not taken"> - </span><span class="tlaGBC" title="Branch 12 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 13 was not taken"> - </span> 
+<span class="lineNum">        </span>    <span class="tlaGBC" title="Branch 14 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 15 was not taken"> - </span><span class="tlaGBC" title="Branch 16 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 17 was not taken"> - </span>]
+<span id="L226"><span class="lineNum">     226</span>                 :             :        ...);</span>
+<span id="L227"><span class="lineNum">     227</span>         [<span class="tlaGBC" title="Branch 0 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           6 :     }(std::index_sequence_for&lt;Deviations...&gt;{});</span></span>
+<span id="L228"><span class="lineNum">     228</span>                 :             :   } else {</span>
+<span id="L229"><span class="lineNum">     229</span>                 :             :     raise_variance(p, deviation_of(std::get&lt;0&gt;(deviations)));</span>
+<span id="L230"><span class="lineNum">     230</span>                 :             :   }</span>
+<span id="L231"><span class="lineNum">     231</span>                 :<span class="tlaGNC">           6 : }</span></span>
+<span id="L232"><span class="lineNum">     232</span>                 :             : </span>
+<span id="L233"><span class="lineNum">     233</span>                 :             : // Conditions the estimate uncertainty after an update or a prediction.</span>
+<span id="L234"><span class="lineNum">     234</span>                 :             : template &lt;typename... Policies&gt;</span>
+<span id="L235"><span class="lineNum">     235</span>                 :<span class="tlaGNC">        3988 : constexpr void condition(const policies&lt;Policies...&gt; &amp;configuration, auto &amp;p) {</span></span>
+<span id="L236"><span class="lineNum">     236</span>                 :             :   if constexpr ((std::same_as&lt;Policies, symmetrize_t&gt; || ...)) {</span>
+<span id="L237"><span class="lineNum">     237</span>                 :<span class="tlaGNC">           4 :     symmetrize_estimate(p);</span></span>
+<span id="L238"><span class="lineNum">     238</span>                 :             :   }</span>
+<span id="L239"><span class="lineNum">     239</span>                 :             : </span>
+<span id="L240"><span class="lineNum">     240</span>                 :             :   if constexpr (sizeof...(Policies) &gt; 0) {</span>
+<span id="L241"><span class="lineNum">     241</span>                 :             :     using last =</span>
+<span id="L242"><span class="lineNum">     242</span>                 :             :         std::tuple_element_t&lt;sizeof...(Policies) - 1, std::tuple&lt;Policies...&gt;&gt;;</span>
+<span id="L243"><span class="lineNum">     243</span>                 :             : </span>
+<span id="L244"><span class="lineNum">     244</span>                 :             :     if constexpr (stored_floors&lt;last&gt;) {</span>
+<span id="L245"><span class="lineNum">     245</span>                 :<span class="tlaGNC">           4 :       raise_variances(p, configuration.deviations);</span></span>
+<span id="L246"><span class="lineNum">     246</span>                 :             :     } else if constexpr (floors_policy&lt;last&gt;) {</span>
+<span id="L247"><span class="lineNum">     247</span>         [<span class="tlaGBC" title="Branch 0 was taken 2 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           2 :       raise_variances(p, decltype(last::value){});</span></span>
+<span id="L248"><span class="lineNum">     248</span>                 :             :     }</span>
+<span id="L249"><span class="lineNum">     249</span>                 :             :   }</span>
+<span id="L250"><span class="lineNum">     250</span>                 :<span class="tlaGNC">        3988 : }</span></span>
+<span id="L251"><span class="lineNum">     251</span>                 :             : </span>
+<span id="L252"><span class="lineNum">     252</span>                 :             : // Updates the estimate uncertainty of a filter with an output model H, then</span>
+<span id="L253"><span class="lineNum">     253</span>                 :             : // conditions it. The forms agree in exact arithmetic, the gain being optimal.</span>
+<span id="L254"><span class="lineNum">     254</span>                 :             : // The default Joseph form of a scalar output and a matrix state is associated</span>
+<span id="L255"><span class="lineNum">     255</span>                 :             : // as (P - K(HP)) - (P - K(HP))HᵀKᵀ + KRKᵀ: the same product, at a quadratic</span>
+<span id="L256"><span class="lineNum">     256</span>                 :             : // rather than a cubic cost in the state dimension.</span>
+<span id="L257"><span class="lineNum">     257</span>                 :             : template &lt;typename... Policies&gt;</span>
+<span id="L258"><span class="lineNum">     258</span>                 :             : constexpr void</span>
+<span id="L259"><span class="lineNum">     259</span>                 :<span class="tlaGNC">        1379 : update_estimate_uncertainty(const policies&lt;Policies...&gt; &amp;configuration, auto &amp;p,</span></span>
+<span id="L260"><span class="lineNum">     260</span>                 :             :                             const auto &amp;i, const auto &amp;k, const auto &amp;h,</span>
+<span id="L261"><span class="lineNum">     261</span>                 :             :                             const auto &amp;r, const auto &amp;s) {</span>
+<span id="L262"><span class="lineNum">     262</span>                 :             :   using estimate_uncertainty = std::remove_cvref_t&lt;decltype(p)&gt;;</span>
+<span id="L263"><span class="lineNum">     263</span>                 :             :   using kinds = policies&lt;Policies...&gt;;</span>
+<span id="L264"><span class="lineNum">     264</span>                 :             : </span>
+<span id="L265"><span class="lineNum">     265</span>                 :             :   if constexpr (contains&lt;simple_form_t, kinds&gt;) {</span>
+<span id="L266"><span class="lineNum">     266</span>   [<span class="tlaGBC" title="Branch 0 was taken 8 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 8 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           8 :     p = estimate_uncertainty{(i - k * h) * p};</span></span>
+<span class="lineNum">        </span>    <span class="tlaGBC" title="Branch 4 was taken 8 times"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 8 times"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span>]
+<span id="L267"><span class="lineNum">     267</span>                 :             :   } else if constexpr (contains&lt;symmetric_form_t, kinds&gt;) {</span>
+<span id="L268"><span class="lineNum">     268</span>   [<span class="tlaGBC" title="Branch 0 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           6 :     p = estimate_uncertainty{p - k * s * t(k)};</span></span>
+<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 6 times"> + </span> 
+<span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 9 was not taken"> - </span>]
+<span id="L269"><span class="lineNum">     269</span>                 :             :   } else if constexpr (contains&lt;information_form_t, kinds&gt;) {</span>
+<span id="L270"><span class="lineNum">     270</span>   [<span class="tlaGBC" title="Branch 0 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">           6 :     p = estimate_uncertainty{i / (i / p + t(h) / r * h)};</span></span>
+<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 6 times"> + </span> 
+<span class="lineNum">        </span>       <span class="tlaUNC" title="Branch 9 was not taken"> - </span><span class="tlaGBC" title="Branch 10 was taken 6 times"> + </span><span class="tlaUNC" title="Branch 11 was not taken"> - </span>]
+<span id="L271"><span class="lineNum">     271</span>                 :             :   } else if constexpr (indexable&lt;estimate_uncertainty&gt; &amp;&amp;</span>
+<span id="L272"><span class="lineNum">     272</span>                 :             :                        not indexable&lt;std::remove_cvref_t&lt;decltype(s)&gt;&gt;) {</span>
+<span id="L273"><span class="lineNum">     273</span>   [<span class="tlaGBC" title="Branch 0 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">         767 :     p = estimate_uncertainty{p - k * (h * p)};</span></span>
+<span class="lineNum">        </span>    <span class="tlaGBC" title="Branch 4 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span>]
+<span id="L274"><span class="lineNum">     274</span>   [<span class="tlaGBC" title="Branch 0 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">         767 :     p = estimate_uncertainty{p - p * t(h) * t(k) + k * r * t(k)};</span></span>
+<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 767 times"> + </span> 
+<span class="lineNum">        </span> <span class="tlaUNC" title="Branch 9 was not taken"> - </span><span class="tlaGBC" title="Branch 10 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 11 was not taken"> - </span><span class="tlaGBC" title="Branch 12 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 13 was not taken"> - </span> 
+<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 14 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 15 was not taken"> - </span><span class="tlaGBC" title="Branch 16 was taken 767 times"> + </span><span class="tlaUNC" title="Branch 17 was not taken"> - </span><span class="tlaGBC" title="Branch 18 was taken 767 times"> + </span> 
+<span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 19 was not taken"> - </span>]
+<span id="L275"><span class="lineNum">     275</span>                 :             :   } else {</span>
+<span id="L276"><span class="lineNum">     276</span>   [<span class="tlaGBC" title="Branch 0 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">         592 :     p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};</span></span>
+<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 590 times"> + </span> 
+<span class="lineNum">        </span> <span class="tlaUNC" title="Branch 9 was not taken"> - </span><span class="tlaGBC" title="Branch 10 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 11 was not taken"> - </span><span class="tlaGBC" title="Branch 12 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 13 was not taken"> - </span> 
+<span class="lineNum">        </span> <span class="tlaGBC" title="Branch 14 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 15 was not taken"> - </span><span class="tlaGBC" title="Branch 16 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 17 was not taken"> - </span><span class="tlaGBC" title="Branch 18 was taken 590 times"> + </span> 
+<span class="lineNum">        </span>    <span class="tlaUNC" title="Branch 19 was not taken"> - </span><span class="tlaGBC" title="Branch 20 was taken 590 times"> + </span><span class="tlaUNC" title="Branch 21 was not taken"> - </span><span class="tlaGBC" title="Branch 22 was taken 590 times"> + </span> 
+<span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 23 was not taken"> - </span>]
+<span id="L277"><span class="lineNum">     277</span>                 :             :   }</span>
+<span id="L278"><span class="lineNum">     278</span>                 :             : </span>
+<span id="L279"><span class="lineNum">     279</span>                 :<span class="tlaGNC">        1379 :   condition(configuration, p);</span></span>
+<span id="L280"><span class="lineNum">     280</span>                 :<span class="tlaGNC">        1379 : }</span></span>
+<span id="L281"><span class="lineNum">     281</span>                 :             : </span>
+<span id="L282"><span class="lineNum">     282</span>                 :             : // Updates the estimate uncertainty of a filter without an output model, the</span>
+<span id="L283"><span class="lineNum">     283</span>                 :             : // identity, then conditions it.</span>
+<span id="L284"><span class="lineNum">     284</span>                 :             : template &lt;typename... Policies&gt;</span>
+<span id="L285"><span class="lineNum">     285</span>                 :             : constexpr void</span>
+<span id="L286"><span class="lineNum">     286</span>                 :<span class="tlaGNC">          12 : update_estimate_uncertainty(const policies&lt;Policies...&gt; &amp;configuration, auto &amp;p,</span></span>
+<span id="L287"><span class="lineNum">     287</span>                 :             :                             const auto &amp;i, const auto &amp;k, const auto &amp;r,</span>
+<span id="L288"><span class="lineNum">     288</span>                 :             :                             const auto &amp;s) {</span>
+<span id="L289"><span class="lineNum">     289</span>                 :             :   using estimate_uncertainty = std::remove_cvref_t&lt;decltype(p)&gt;;</span>
+<span id="L290"><span class="lineNum">     290</span>                 :             :   using kinds = policies&lt;Policies...&gt;;</span>
+<span id="L291"><span class="lineNum">     291</span>                 :             : </span>
+<span id="L292"><span class="lineNum">     292</span>                 :             :   if constexpr (contains&lt;simple_form_t, kinds&gt;) {</span>
+<span id="L293"><span class="lineNum">     293</span>                 :             :     p = estimate_uncertainty{(i - k) * p};</span>
+<span id="L294"><span class="lineNum">     294</span>                 :             :   } else if constexpr (contains&lt;symmetric_form_t, kinds&gt;) {</span>
+<span id="L295"><span class="lineNum">     295</span>                 :             :     p = estimate_uncertainty{p - k * s * t(k)};</span>
+<span id="L296"><span class="lineNum">     296</span>                 :             :   } else if constexpr (contains&lt;information_form_t, kinds&gt;) {</span>
+<span id="L297"><span class="lineNum">     297</span>                 :             :     p = estimate_uncertainty{i / (i / p + i / r)};</span>
+<span id="L298"><span class="lineNum">     298</span>                 :             :   } else {</span>
+<span id="L299"><span class="lineNum">     299</span>                 :<span class="tlaGNC">          12 :     p = estimate_uncertainty{(i - k) * p * t(i - k) + k * r * t(k)};</span></span>
+<span id="L300"><span class="lineNum">     300</span>                 :             :   }</span>
+<span id="L301"><span class="lineNum">     301</span>                 :             : </span>
+<span id="L302"><span class="lineNum">     302</span>                 :<span class="tlaGNC">          12 :   condition(configuration, p);</span></span>
+<span id="L303"><span class="lineNum">     303</span>                 :<span class="tlaGNC">          12 : }</span></span>
+<span id="L304"><span class="lineNum">     304</span>                 :             : } // namespace fcarouge::kalman_filter::internal</span>
+<span id="L305"><span class="lineNum">     305</span>                 :             : </span>
+<span id="L306"><span class="lineNum">     306</span>                 :             : #endif // FCAROUGE_KALMAN_FILTER_INTERNAL_POLICY_HPP</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>
