@@ -3,6 +3,7 @@ var dir_c29eeb5af533606caea8a09e66794740 =
     [ "ekf_3x1x0_beacon_position_unit", "dir_36a9d6b97a213ac0f62e12149d45ea8e.xhtml", "dir_36a9d6b97a213ac0f62e12149d45ea8e" ],
     [ "ekf_4x1x0_thermal_soaring", "dir_2dcd0351b721b012f5eea0ea2083353d.xhtml", "dir_2dcd0351b721b012f5eea0ea2083353d" ],
     [ "ekf_6x4x0_3d_apollo_position", "dir_653739c75cdff68b8fc71d8aaf121515.xhtml", "dir_653739c75cdff68b8fc71d8aaf121515" ],
+    [ "ekf_9x4x0_gimbal_attitude_unit", "dir_97a4b99ee7b150a12de810664972dfa0.xhtml", "dir_97a4b99ee7b150a12de810664972dfa0" ],
     [ "kf_1x1x0_building_height", "dir_50b2078893863e567fcb70ba60ea71bf.xhtml", "dir_50b2078893863e567fcb70ba60ea71bf" ],
     [ "kf_1x1x0_building_height_unit", "dir_9213d4869a2ae32813c0c1aed80d388a.xhtml", "dir_9213d4869a2ae32813c0c1aed80d388a" ],
     [ "kf_1x1x0_liquid_temperature", "dir_c89f11128033dc6714067203b7d0432c.xhtml", "dir_c89f11128033dc6714067203b7d0432c" ],

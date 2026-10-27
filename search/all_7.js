@@ -40,5 +40,6 @@ var searchData=
   ['arithmetic_5foutput_5f1x1x0_5ffail_2ecpp_37',['arithmetic_output_1x1x0_fail.cpp',['../arithmetic__output__1x1x0__fail_8cpp.xhtml',1,'']]],
   ['arithmetic_5funcertainty_5f1x1x0_5ffail_2ecpp_38',['arithmetic_uncertainty_1x1x0_fail.cpp',['../arithmetic__uncertainty__1x1x0__fail_8cpp.xhtml',1,'']]],
   ['assign_39',['assign',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a854ecb970f13c91bf8706f26368fecac',1,'fcarouge::kalman_filter::internal']]],
-  ['attribution_40',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
+  ['attitude_5ft_40',['attitude_t',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a7dc80198d3aee0de268a8229b6eaa912',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
+  ['attribution_41',['Attribution',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution',1,'']]]
 ];

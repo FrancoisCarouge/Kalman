@@ -13,6 +13,7 @@ var namespacefcarouge_1_1sample =
       [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__6x4x0__3d__apollo__position_8cpp_03.xhtml#a16287893598f7ef3195e63b87f7e1b43", null ],
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__6x4x0__3d__apollo__position_8cpp_03.xhtml#a2e07ca0fedd077b098b1aad4513c1b68", null ]
     ] ],
+    [ "anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03" ],
     [ "anonymous_namespace{kf_1x1x0_building_height.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height_8cpp_03.xhtml", [
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__1x1x0__building__height_8cpp_03.xhtml#a18b390aa68f51d34983e5f7408b29de8", null ]
     ] ],

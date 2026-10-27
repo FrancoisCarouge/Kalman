@@ -187,7 +187,9 @@ Samples</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">6x4x0 extended filter of the 3-dimension position and velocity of the NASA Apollo lunar module abort guidance system for spacecraft rendezvous approaching the command/service module.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_6x4x0_3d_apollo_position/ekf_6x4x0_3d_apollo_position.cpp">Usage example: <code>sample/ekf_6x4x0_3d_apollo_position/ekf_6x4x0_3d_apollo_position.cpp</code></a>.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">8x4x0 constant velocity dynamic model filter of the 2-dimension position and velocity of the center, aspect ratio, and height of a bounding box.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box/kf_8x4x0_2d_bounding_box.cpp">Usage example: <code>sample/kf_8x4x0_2d_bounding_box/kf_8x4x0_2d_bounding_box.cpp</code></a>.   </td></tr>
+<td class="markdownTableBodyNone">8x4x0 constant velocity dynamic model filter of the 2-dimension position and velocity of the center, aspect ratio, and height of a bounding box.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box/kf_8x4x0_2d_bounding_box.cpp">Usage example: <code>sample/kf_8x4x0_2d_bounding_box/kf_8x4x0_2d_bounding_box.cpp</code></a>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">9x4x0 error-state extended filter of the attitude, velocity, and gyroscope bias of a camera gimbal, from its inertial sensors, a zero velocity, and a compass heading, as in the ArduPilot autopilot.   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_9x4x0_gimbal_attitude_unit/ekf_9x4x0_gimbal_attitude_unit.cpp">Usage example with units: <code>sample/ekf_9x4x0_gimbal_attitude_unit/ekf_9x4x0_gimbal_attitude_unit.cpp</code></a>.   </td></tr>
 </table>
 <h3><a class="anchor" id="autotoc_md6x2-constant-acceleration-dynamic-model-filter"></a>
 6x2 Constant Acceleration Dynamic Model Filter</h3>
@@ -466,9 +468,10 @@ Resources</h2>
 <li><a href="https://www.youtube.com/watch?v=aF3samjRzD4">Taking Static Type-Safety to the Next Level - Physical Units for Matrices</a> by Daniel Withopf at CppCon 2022 [<a href="https://meetingcpp.com/mcpp/slides/2021/Physical-units-for-matrices6397.pdf">slides</a>].</li>
 <li><a href="https://www.youtube.com/watch?v=5dhFtSu3wCo">Units Libraries and Autonomous Vehicles: Lessons from the Trenches</a> by Chip Hogg at CppCon 2021.</li>
 <li><a href="https://archive.org/details/R649Volume1">R-649: The Apollo Rendezvous Navigation Filter Theory, Description and Performance, Volume 1 of 2</a> by Eugene S. Muller, Jr., and Peter M. Kachmar.</li>
-<li><a href="https://ardupilot.org">ArduPilot</a> by the ArduPilot Dev Team, whose third generation extended Kalman filter aligns its position with <a href="https://ardupilot.org/copter/docs/common-pozyx.html">range beacons</a>.</li>
+<li><a href="https://ardupilot.org">ArduPilot</a> by the ArduPilot Dev Team.</li>
 <li><a href="https://github.com/priseborough/InertialNav">InertialNav</a> by Paul Riseborough, the derivations of the ArduPilot navigation filters, including its range beacon filter.</li>
 <li><a href="https://doi.org/10.1002/0471221279">Estimation with Applications to Tracking and Navigation</a> by Yaakov Bar-Shalom, X. Rong Li, and Thiagalingam Kirubarajan. John Wiley &amp; Sons 2001.</li>
+<li><a href="https://arxiv.org/abs/1711.02508">Quaternion Kinematics for the Error-State Kalman Filter</a> by Joan Solà. 2017.</li>
 </ul>
 <h2><a class="anchor" id="third-party-acknowledgement"></a>
 Third Party Acknowledgement</h2>
