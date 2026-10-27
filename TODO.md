@@ -53,7 +53,7 @@ Options for the owner to decide, not implemented: each touches the named-argumen
 - A. A named `constraint{callable(x, p)}` declaration argument applied at the end of `update()`: one hook for clamps, symmetrization and error-state resets.
 - B. Leave it to the caller through `x()` and `p()`, and document the pattern in a sample, as now.
 
-**Conditioning policies (F48, F49).** Since `5777b70f6` the ports declare their originals' update forms; three gaps remain.
+**Conditioning policies (F48, F49).** Since `5777b70f6` the ports declare their originals' update forms; three gaps remain. Fixes for the first and last are on branches `floors-setter` and `simple-form-order` (local, as patches for the owner); the update-only symmetrization and floors is a proposal.
 
 - `floors{σ...}` needs assignable elements, which a typed matrix of mp-units quantities cannot give: write the floors through `at<I, J>(value)` when the element access is not a reference. ArduPilot's airspeed calibration and both EKFGSF ports keep their floors by hand.
 - `symmetrize` runs after each prediction too, where the originals symmetrize after their updates: an update-only variant would keep ArduPilot's airspeed calibration at 1.48 times its original's time instead of 1.58.
