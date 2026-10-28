@@ -85,34 +85,34 @@ using mp_units::si::unit_symbols::m2;
 using length = mp_units::quantity<mp_units::isq::length[m]>;
 
 //! @brief A position: the displacement from the origin beacon, a vector [m].
-using position_t =
+using position =
     mp_units::quantity<ned_displacement[m],
                        mp_units::utility::cartesian_vector<double>>;
 
 template <typename... Types> using vector = column_vector<double, Types...>;
 //! @brief The state: the receiver's position, by its north, east, and down
 //! components [m].
-using state_t =
+using coordinates =
     vector<mp_units::quantity<north[m]>, mp_units::quantity<east[m]>,
            mp_units::quantity<down[m]>>;
 
-using output_t = vector<length>;
+using range = vector<length>;
 //! @brief The output model H: the derivatives of the range by the state
 //! components. The element of the output row and a state column is the product
 //! of the output element by the reciprocal of the state element [m/m].
-using output_model_t =
+using range_jacobian =
     matrix<double, std::tuple<length>,
            std::tuple<mp_units::quantity<mp_units::one / north[m]>,
                       mp_units::quantity<mp_units::one / east[m]>,
                       mp_units::quantity<mp_units::one / down[m]>>>;
 //! @brief A covariance of the state: the element of a row and a column is the
 //! product of the state elements they index [m^2].
-using covariance_t = matrix<double, state_t, state_t>;
+using covariance = matrix<double, coordinates, coordinates>;
 
 //! @brief The range from a point to a beacon: the magnitude of their
 //! displacement [m].
 const auto beacon_range{
-    [](const position_t &point, const position_t &beacon) -> length {
+    [](const position &point, const position &beacon) -> length {
       return (point - beacon).magnitude();
     }};
 
@@ -124,21 +124,20 @@ const auto beacon_range{
 //! range by that axis is the reciprocal quantity, length/north: their values
 //! are equal, their quantities distinct. The value of the component is
 //! therefore restated as the derivative.
-const auto beacon_range_jacobian{
-    [](const position_t &point, const position_t &beacon) -> output_model_t {
-      const position_t displacement{point - beacon};
-      const length range{displacement.magnitude()};
-      const auto [north_component, east_component,
-                  down_component]{displacement};
-      output_model_t value;
-      value.at<0>((north_component / range).numerical_value_in(mp_units::one) *
-                  (mp_units::isq::length / north)[mp_units::one]);
-      value.at<1>((east_component / range).numerical_value_in(mp_units::one) *
-                  (mp_units::isq::length / east)[mp_units::one]);
-      value.at<2>((down_component / range).numerical_value_in(mp_units::one) *
-                  (mp_units::isq::length / down)[mp_units::one]);
-      return value;
-    }};
+const auto beacon_range_jacobian{[](const position &point,
+                                    const position &beacon) -> range_jacobian {
+  const position displacement{point - beacon};
+  const length distance{displacement.magnitude()};
+  const auto [north_component, east_component, down_component]{displacement};
+  range_jacobian value;
+  value.at<0>((north_component / distance).numerical_value_in(mp_units::one) *
+              (mp_units::isq::length / north)[mp_units::one]);
+  value.at<1>((east_component / distance).numerical_value_in(mp_units::one) *
+              (mp_units::isq::length / east)[mp_units::one]);
+  value.at<2>((down_component / distance).numerical_value_in(mp_units::one) *
+              (mp_units::isq::length / down)[mp_units::one]);
+  return value;
+}};
 
 //! @brief Position of a receiver from its ranges to beacons at known
 //! positions.
@@ -204,31 +203,31 @@ const auto beacon_range_jacobian{
 //! @example ekf_3x1x0_beacon_position_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // The beacons, in the order of their identifiers along the N pattern.
-  const position_t beacons[]{{north(0. * m), east(0. * m), down(-1. * m)},
-                             {north(10. * m), east(0. * m), down(-3. * m)},
-                             {north(0. * m), east(10. * m), down(-2. * m)},
-                             {north(10. * m), east(10. * m), down(-1. * m)}};
-  const position_t receiver{north(3. * m), east(4. * m), down(-0.5 * m)};
+  const position beacons[]{{north(0. * m), east(0. * m), down(-1. * m)},
+                           {north(10. * m), east(0. * m), down(-3. * m)},
+                           {north(0. * m), east(10. * m), down(-2. * m)},
+                           {north(10. * m), east(10. * m), down(-1. * m)}};
+  const position receiver{north(3. * m), east(4. * m), down(-0.5 * m)};
   const auto range_variance{0.1 * 0.1 * m2};
   const double gate{3.}; // standard deviations
   const int alignment_ranges{100};
 
   kalman filter{
       // The state X: the receiver's position, initially the beacons' centre.
-      state{state_t{north(5. * m), east(5. * m), down(-1.75 * m)}},
+      state{coordinates{north(5. * m), east(5. * m), down(-1.75 * m)}},
       // The output Z: a range [m].
-      output<output_t>,
+      output<range>,
       // The estimate uncertainty P [m^2]:
-      estimate_uncertainty{[]() -> covariance_t {
-        covariance_t value;
+      estimate_uncertainty{[]() -> covariance {
+        covariance value;
         value.at<0, 0>(25. * m2);
         value.at<1, 1>(25. * m2);
         value.at<2, 2>(25. * m2);
         return value;
       }()},
       // The process uncertainty Q [m^2]:
-      process_uncertainty{[]() -> covariance_t {
-        covariance_t value;
+      process_uncertainty{[]() -> covariance {
+        covariance value;
         value.at<0, 0>(1e-4 * m2);
         value.at<1, 1>(1e-4 * m2);
         value.at<2, 2>(1e-4 * m2);
@@ -237,24 +236,22 @@ const auto beacon_range_jacobian{
       // The output uncertainty R [m^2]:
       output_uncertainty{range_variance},
       // The output model H = ∂h/∂X, for the beacon of the range:
-      output_model{[](const state_t &position,
-                      const position_t &beacon) -> output_model_t {
-        return beacon_range_jacobian(position, beacon);
+      output_model{[](const coordinates &point,
+                      const position &beacon) -> range_jacobian {
+        return beacon_range_jacobian(point, beacon);
       }},
       // The receiver is at rest: its prediction is its last estimate, so no
       // transition function is declared.
       // The observation h(X), the range to the beacon:
-      observation{
-          [](const state_t &position, const position_t &beacon) -> output_t {
-            return output_t{beacon_range(position, beacon)};
-          }},
+      observation{[](const coordinates &point, const position &beacon)
+                      -> range { return range{beacon_range(point, beacon)}; }},
       // The filter update uses the position of the ranged beacon.
-      update_types<position_t>};
+      update_types<position>};
 
   bool reflection_rejected{false};
   const int ranges{400};
   for (int index{0}; index < ranges; ++index) {
-    const position_t &beacon{beacons[index % 4]};
+    const position &beacon{beacons[index % 4]};
 
     // Deterministic measurement noise, within one standard deviation, and one
     // reflection three meters long.
@@ -269,7 +266,7 @@ const auto beacon_range_jacobian{
 
     // The consistency test of the range, computed outside of the filter.
     const length innovation{measured - beacon_range(filter.x(), beacon)};
-    const output_model_t jacobian{beacon_range_jacobian(filter.x(), beacon)};
+    const range_jacobian jacobian{beacon_range_jacobian(filter.x(), beacon)};
     // The one-element H P Hᵀ plus the variance R is the variance quantity S.
     const auto innovation_variance{
         (jacobian * filter.p() * transposed(jacobian)) + range_variance};
