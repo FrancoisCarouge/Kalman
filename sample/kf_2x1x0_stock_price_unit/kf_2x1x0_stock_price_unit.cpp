@@ -62,8 +62,8 @@ constexpr auto USD2{pow<2>(USD)};
 using price = mp_units::quantity<USD>;
 template <typename... Types> using vector = column_vector<double, Types...>;
 using price_slope = mp_units::quantity<USD / d>;
-using state_t = vector<price, price_slope>;
-using output_t = vector<price>;
+using trend = vector<price, price_slope>;
+using closing_price = vector<price>;
 
 //! @brief Forecasting the short-term stock price.
 //!
@@ -100,16 +100,15 @@ using output_t = vector<price>;
   kalman filter{
       // The state X is chosen to be the price level and slope: [μ, ν]. We don't
       // know the stock price; we will set the initial level and slope to 0.
-      state{state_t{price{0. * USD}, price_slope{0. * USD / d}}},
+      state{trend{price{0. * USD}, price_slope{0. * USD / d}}},
       // The filter observes the output Z closing price [$].
-      output<output_t>,
+      output<closing_price>,
       // Since our initial state is a guess, we will set a very high estimate
       // uncertainty, an approximation of the diffuse initialization of the
       // model. The first closing price then sets the level and the second one
       // sets the slope.
       estimate_uncertainty{[]() -> auto {
-        using estimate_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
-        estimate_uncertainty_t value;
+        kf::ᴀʙᵀ<trend, trend> value;
         value.at<0, 0>(1000. * USD2);
         value.at<1, 1>(1000. * USD2 / d / d);
         return value;
@@ -117,8 +116,7 @@ using output_t = vector<price>;
       // The process uncertainty Q holds the variances of the level and slope
       // disturbances: σξ^2 = 0.25 $^2 and σζ^2 = 0.01 $^2/d^2.
       process_uncertainty{[]() -> auto {
-        using process_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
-        process_uncertainty_t value;
+        kf::ᴀʙᵀ<trend, trend> value;
         value.at<0, 0>(0.25 * USD2);
         value.at<1, 1>(0.01 * USD2 / d / d);
         return value;
@@ -128,15 +126,13 @@ using output_t = vector<price>;
       output_uncertainty{1. * USD2},
       // The output model H observes the level only.
       output_model{[]() -> auto {
-        using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
-        output_model_t value;
+        kf::evaluate<kf::quotient<closing_price, trend>> value;
         value.at<0>(1.);
         return value;
       }()},
       // The state transition F adds the slope over one day to the level.
       state_transition{[]() -> auto {
-        using state_transition_t = kf::evaluate<kf::quotient<state_t, state_t>>;
-        state_transition_t value;
+        kf::evaluate<kf::quotient<trend, trend>> value;
         value.at<0, 0>(1.);
         value.at<0, 1>(1. * d);
         value.at<1, 1>(1.);

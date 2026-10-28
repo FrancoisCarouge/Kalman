@@ -132,7 +132,8 @@ function(pass TEST_NAME)
     add_test(
       NAME kalman_${CALLER}_${TEST_NAME}_pass
       COMMAND
-        ${TEST_COMMAND} $<TARGET_FILE:kalman_${CALLER}_${TEST_NAME}_pass_driver>)
+        ${TEST_COMMAND} $<TARGET_FILE:kalman_${CALLER}_${TEST_NAME}_pass_driver>
+    )
   else()
     foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
       add_executable(kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver

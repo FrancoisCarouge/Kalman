@@ -40,7 +40,9 @@ add_library(kalman_realtime OBJECT "realtime.cpp")
 target_sources(
   kalman_realtime
   PUBLIC
-  FILE_SET "realtime_headers" TYPE "HEADERS" FILES "fcarouge/realtime.hpp")
+  FILE_SET "realtime_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/realtime.hpp")
 
 add_library(kalman_main "main.cpp")
 target_link_libraries(kalman_main INTERFACE kalman_realtime)
