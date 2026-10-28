@@ -174,9 +174,9 @@ $(function(){initNavTree('kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml',
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> s4{pow&lt;4&gt;(s)};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types&gt; <span class="keyword">using </span>vector = column_vector&lt;double, Types...&gt;;</div>
-<div class="line"><span class="keyword">using </span>state_t =</div>
+<div class="line"><span class="keyword">using </span>motion =</div>
 <div class="line">    vector&lt;position, velocity, acceleration, position, velocity, acceleration&gt;;</div>
-<div class="line"><span class="keyword">using </span>output_t = vector&lt;position, position&gt;;</div>
+<div class="line"><span class="keyword">using </span>location = vector&lt;position, position&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="comment">// A 6x2x0 filter, constant acceleration dynamic model, no control.</span></div>
@@ -184,19 +184,18 @@ $(function(){initNavTree('kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml',
 <div class="line">      <span class="comment">// The state X is chosen to be the position, velocity, acceleration in the</span></div>
 <div class="line">      <span class="comment">// XY plane: [px, vx, ax, py, vy, ay]. We don&#39;t know the vehicle location;</span></div>
 <div class="line">      <span class="comment">// we will set initial position, velocity and acceleration to 0.</span></div>
-<div class="line">      state{state_t{position{0. * m}, velocity{0. * m / s},</div>
-<div class="line">                    acceleration{0. * m / s2}, position{0. * m},</div>
-<div class="line">                    velocity{0. * m / s}, acceleration{0. * m / s2}}},</div>
+<div class="line">      state{motion{position{0. * m}, velocity{0. * m / s},</div>
+<div class="line">                   acceleration{0. * m / s2}, position{0. * m},</div>
+<div class="line">                   velocity{0. * m / s}, acceleration{0. * m / s2}}},</div>
 <div class="line">      <span class="comment">// The vehicle has an onboard location sensor that reports output Z as X</span></div>
 <div class="line">      <span class="comment">// and Y coordinates of the system.</span></div>
-<div class="line">      output&lt;output_t&gt;,</div>
+<div class="line">      output&lt;location&gt;,</div>
 <div class="line">      <span class="comment">// The estimate uncertainty matrix P.</span></div>
 <div class="line">      <span class="comment">// Since our initial state vector is a guess, we will set a very high</span></div>
 <div class="line">      <span class="comment">// estimate uncertainty. The high estimate uncertainty results in a high</span></div>
 <div class="line">      <span class="comment">// Kalman Gain, giving a high weight to the measurement.</span></div>
 <div class="line">      estimate_uncertainty{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>estimate_uncertainty_t = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
-<div class="line">        estimate_uncertainty_t value;</div>
+<div class="line">        <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;motion, motion&gt;</a> value;</div>
 <div class="line">        value.at&lt;0, 0&gt;(500. * m2);</div>
 <div class="line">        value.at&lt;1, 1&gt;(500. * m2 / s2);</div>
 <div class="line">        value.at&lt;2, 2&gt;(500. * m2 / s4);</div>
@@ -208,8 +207,7 @@ $(function(){initNavTree('kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml',
 <div class="line">      <span class="comment">// The process uncertainty noise matrix Q, constant, computed in place,</span></div>
 <div class="line">      <span class="comment">// with  random acceleration standard deviation: σa = 0.2 m.s^-2.</span></div>
 <div class="line">      process_uncertainty{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>process_uncertainty_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
-<div class="line">        process_uncertainty_t value;</div>
+<div class="line">        <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;motion, motion&gt;</a> value;</div>
 <div class="line">        value.at&lt;0, 0&gt;(0.2 * 0.2 * 0.25 * m2);</div>
 <div class="line">        value.at&lt;0, 1&gt;(0.2 * 0.2 * 0.5 * m2 / s);</div>
 <div class="line">        value.at&lt;0, 2&gt;(0.2 * 0.2 * 0.5 * m2 / s2);</div>
@@ -245,16 +243,14 @@ $(function(){initNavTree('kf_6x2x0_2d_vehicle_position_unit_8cpp-example.xhtml',
 <div class="line">      <span class="comment">// of xn is 6x1. Therefore the dimension of the observation matrix H shall</span></div>
 <div class="line">      <span class="comment">// be 2x6.</span></div>
 <div class="line">      output_model{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>output_model_t = <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;output_t, state_t&gt;</a>&gt;;</div>
-<div class="line">        output_model_t value;</div>
+<div class="line">        <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;location, motion&gt;</a>&gt; value;</div>
 <div class="line">        value.at&lt;0, 0&gt;(1.);</div>
 <div class="line">        value.at&lt;1, 3&gt;(1.);</div>
 <div class="line">        <span class="keywordflow">return</span> value;</div>
 <div class="line">      }()},</div>
 <div class="line">      <span class="comment">// The state transition matrix F would be:</span></div>
 <div class="line">      state_transition{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>state_transition_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;state_t, state_t&gt;</a>&gt;;</div>
-<div class="line">        state_transition_t value;</div>
+<div class="line">        <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;motion, motion&gt;</a>&gt; value;</div>
 <div class="line">        value.at&lt;0, 0&gt;(1.);</div>
 <div class="line">        value.at&lt;0, 1&gt;(1. * s);</div>
 <div class="line">        value.at&lt;0, 2&gt;(0.5 * s2);</div>

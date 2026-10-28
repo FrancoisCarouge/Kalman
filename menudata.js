@@ -104,7 +104,6 @@ var menudata={children:[
 {text:"l",url:"namespacemembers_type.xhtml#index_l"},
 {text:"m",url:"namespacemembers_type.xhtml#index_m"},
 {text:"n",url:"namespacemembers_type.xhtml#index_n"},
-{text:"o",url:"namespacemembers_type.xhtml#index_o"},
 {text:"p",url:"namespacemembers_type.xhtml#index_p"},
 {text:"q",url:"namespacemembers_type.xhtml#index_q"},
 {text:"r",url:"namespacemembers_type.xhtml#index_r"},

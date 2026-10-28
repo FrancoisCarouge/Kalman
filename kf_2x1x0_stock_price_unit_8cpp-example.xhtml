@@ -181,8 +181,8 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line"><span class="keyword">using </span>price = mp_units::quantity&lt;USD&gt;;</div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types&gt; <span class="keyword">using </span>vector = column_vector&lt;double, Types...&gt;;</div>
 <div class="line"><span class="keyword">using </span>price_slope = mp_units::quantity&lt;USD / d&gt;;</div>
-<div class="line"><span class="keyword">using </span>state_t = vector&lt;price, price_slope&gt;;</div>
-<div class="line"><span class="keyword">using </span>output_t = vector&lt;price&gt;;</div>
+<div class="line"><span class="keyword">using </span>trend = vector&lt;price, price_slope&gt;;</div>
+<div class="line"><span class="keyword">using </span>closing_price = vector&lt;price&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="comment">// A 2x1x0 filter, local linear trend dynamic model, no control, constant</span></div>
@@ -190,16 +190,15 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X is chosen to be the price level and slope: [μ, ν]. We don&#39;t</span></div>
 <div class="line">      <span class="comment">// know the stock price; we will set the initial level and slope to 0.</span></div>
-<div class="line">      state{state_t{price{0. * USD}, price_slope{0. * USD / d}}},</div>
+<div class="line">      state{trend{price{0. * USD}, price_slope{0. * USD / d}}},</div>
 <div class="line">      <span class="comment">// The filter observes the output Z closing price [$].</span></div>
-<div class="line">      output&lt;output_t&gt;,</div>
+<div class="line">      output&lt;closing_price&gt;,</div>
 <div class="line">      <span class="comment">// Since our initial state is a guess, we will set a very high estimate</span></div>
 <div class="line">      <span class="comment">// uncertainty, an approximation of the diffuse initialization of the</span></div>
 <div class="line">      <span class="comment">// model. The first closing price then sets the level and the second one</span></div>
 <div class="line">      <span class="comment">// sets the slope.</span></div>
 <div class="line">      estimate_uncertainty{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>estimate_uncertainty_t = <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
-<div class="line">        estimate_uncertainty_t value;</div>
+<div class="line">        <a id="a1" name="a1"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;trend, trend&gt;</a> value;</div>
 <div class="line">        value.at&lt;0, 0&gt;(1000. * USD2);</div>
 <div class="line">        value.at&lt;1, 1&gt;(1000. * USD2 / d / d);</div>
 <div class="line">        <span class="keywordflow">return</span> value;</div>
@@ -207,8 +206,7 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line">      <span class="comment">// The process uncertainty Q holds the variances of the level and slope</span></div>
 <div class="line">      <span class="comment">// disturbances: σξ^2 = 0.25 $^2 and σζ^2 = 0.01 $^2/d^2.</span></div>
 <div class="line">      process_uncertainty{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>process_uncertainty_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
-<div class="line">        process_uncertainty_t value;</div>
+<div class="line">        <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;trend, trend&gt;</a> value;</div>
 <div class="line">        value.at&lt;0, 0&gt;(0.25 * USD2);</div>
 <div class="line">        value.at&lt;1, 1&gt;(0.01 * USD2 / d / d);</div>
 <div class="line">        <span class="keywordflow">return</span> value;</div>
@@ -218,15 +216,13 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line">      output_uncertainty{1. * USD2},</div>
 <div class="line">      <span class="comment">// The output model H observes the level only.</span></div>
 <div class="line">      output_model{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>output_model_t = <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;output_t, state_t&gt;</a>&gt;;</div>
-<div class="line">        output_model_t value;</div>
+<div class="line">        <a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;closing_price, trend&gt;</a>&gt; value;</div>
 <div class="line">        value.at&lt;0&gt;(1.);</div>
 <div class="line">        <span class="keywordflow">return</span> value;</div>
 <div class="line">      }()},</div>
 <div class="line">      <span class="comment">// The state transition F adds the slope over one day to the level.</span></div>
 <div class="line">      state_transition{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>state_transition_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;state_t, state_t&gt;</a>&gt;;</div>
-<div class="line">        state_transition_t value;</div>
+<div class="line">        <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;trend, trend&gt;</a>&gt; value;</div>
 <div class="line">        value.at&lt;0, 0&gt;(1.);</div>
 <div class="line">        value.at&lt;0, 1&gt;(1. * d);</div>
 <div class="line">        value.at&lt;1, 1&gt;(1.);</div>

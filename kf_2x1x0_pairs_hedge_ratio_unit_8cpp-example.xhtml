@@ -176,9 +176,9 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line"><span class="keyword">using </span>price = mp_units::quantity&lt;USD&gt;;</div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Types&gt; <span class="keyword">using </span>vector = column_vector&lt;double, Types...&gt;;</div>
 <div class="line"><span class="keyword">using </span>ratio = mp_units::quantity&lt;mp_units::one&gt;;</div>
-<div class="line"><span class="keyword">using </span>state_t = vector&lt;ratio, price&gt;;</div>
-<div class="line"><span class="keyword">using </span>output_t = vector&lt;price&gt;;</div>
-<div class="line"><span class="keyword">using </span>output_model_t = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;output_t, state_t&gt;</a>&gt;;</div>
+<div class="line"><span class="keyword">using </span>regression = vector&lt;ratio, price&gt;;</div>
+<div class="line"><span class="keyword">using </span>dependent_price = vector&lt;price&gt;;</div>
+<div class="line"><span class="keyword">using </span>regressor = <a id="a0" name="a0"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate&lt;kf::quotient&lt;dependent_price, regression&gt;</a>&gt;;</div>
 <div class="line"> </div>
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="comment">// A 2x1x0 filter, random walk dynamic model, no control, with the price of</span></div>
@@ -186,19 +186,18 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line">  <a id="a1" name="a1"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X is the hedge ratio and intercept: [β, α]. As in the</span></div>
 <div class="line">      <span class="comment">// reference, we start from a null hedge ratio and intercept.</span></div>
-<div class="line">      state{state_t{ratio{0. * mp_units::one}, price{0. * USD}}},</div>
+<div class="line">      state{regression{ratio{0. * mp_units::one}, price{0. * USD}}},</div>
 <div class="line">      <span class="comment">// The filter observes the output Z dependent closing price [$].</span></div>
-<div class="line">      output&lt;output_t&gt;,</div>
+<div class="line">      output&lt;dependent_price&gt;,</div>
 <div class="line">      <span class="comment">// As in the reference, the initial estimate uncertainty P is null: the</span></div>
 <div class="line">      <span class="comment">// first closing prices do not update the state, after which the process</span></div>
 <div class="line">      <span class="comment">// uncertainty accumulates.</span></div>
-<div class="line">      estimate_uncertainty{<a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;state_t, state_t&gt;</a>{}},</div>
+<div class="line">      estimate_uncertainty{<a id="a2" name="a2"></a><a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;regression, regression&gt;</a>{}},</div>
 <div class="line">      <span class="comment">// The process uncertainty Q: Vw = δ / (1 - δ) with δ = 0.0001, for the</span></div>
 <div class="line">      <span class="comment">// dimensionless hedge ratio and for the intercept in dollars.</span></div>
 <div class="line">      process_uncertainty{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">        <span class="keyword">using </span>process_uncertainty_t = <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;state_t, state_t&gt;</a>;</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">double</span> delta{0.0001};</div>
-<div class="line">        process_uncertainty_t value;</div>
+<div class="line">        <a class="code hl_typedef" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aec7df08ad8c0036e32481d4455b493b4">kf::ᴀʙᵀ&lt;regression, regression&gt;</a> value;</div>
 <div class="line">        value.at&lt;0, 0&gt;(delta / (1. - delta) * mp_units::one);</div>
 <div class="line">        value.at&lt;1, 1&gt;(delta / (1. - delta) * USD2);</div>
 <div class="line">        <span class="keywordflow">return</span> value;</div>
@@ -207,9 +206,9 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line">      output_uncertainty{0.001 * USD2},</div>
 <div class="line">      <span class="comment">// The output model H = [x, 1] of the regression changes every day with</span></div>
 <div class="line">      <span class="comment">// the independent closing price x.</span></div>
-<div class="line">      output_model{[]([[maybe_unused]] <span class="keyword">const</span> state_t &amp;x,</div>
-<div class="line">                      <span class="keyword">const</span> price &amp;independent) -&gt; output_model_t {</div>
-<div class="line">        output_model_t value;</div>
+<div class="line">      output_model{[]([[maybe_unused]] <span class="keyword">const</span> regression &amp;x,</div>
+<div class="line">                      <span class="keyword">const</span> price &amp;independent) -&gt; regressor {</div>
+<div class="line">        regressor value;</div>
 <div class="line">        value.at&lt;0&gt;(independent);</div>
 <div class="line">        value.at&lt;1&gt;(1.);</div>
 <div class="line">        <span class="keywordflow">return</span> value;</div>
@@ -217,9 +216,10 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line">      <span class="comment">// The hedge ratio and intercept follow a random walk: their prediction</span></div>
 <div class="line">      <span class="comment">// is their last estimate, so no transition function is declared.</span></div>
 <div class="line">      <span class="comment">// The regression forecasts the dependent closing price: βx + α.</span></div>
-<div class="line">      observation{[](<span class="keyword">const</span> state_t &amp;x, <span class="keyword">const</span> price &amp;independent) -&gt; output_t {</div>
-<div class="line">        <span class="keywordflow">return</span> output_t{x.at&lt;0&gt;() * independent + x.at&lt;1&gt;()};</div>
-<div class="line">      }},</div>
+<div class="line">      observation{</div>
+<div class="line">          [](<span class="keyword">const</span> regression &amp;x, <span class="keyword">const</span> price &amp;independent) -&gt; dependent_price {</div>
+<div class="line">            <span class="keywordflow">return</span> dependent_price{x.at&lt;0&gt;() * independent + x.at&lt;1&gt;()};</div>
+<div class="line">          }},</div>
 <div class="line">      <span class="comment">// The filter update uses the independent closing price [$] parameter.</span></div>
 <div class="line">      update_types&lt;price&gt;};</div>
 <div class="line"> </div>

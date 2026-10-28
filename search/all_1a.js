@@ -21,10 +21,12 @@ var searchData=
   ['traits_5f5x4x3_2ecpp_18',['traits_5x4x3.cpp',['../traits__5x4x3_8cpp.xhtml',1,'']]],
   ['transition_19',['transition',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab2a243dbef2d7378b11510473d5ac039',1,'fcarouge::kalman_filter::internal']]],
   ['transition_5f1x1x0_2ecpp_20',['transition_1x1x0.cpp',['../transition__1x1x0_8cpp.xhtml',1,'']]],
-  ['transpose_21',['transpose',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ac5ff65e9992d94d903483ab4a9867edc',1,'fcarouge::kalman_filter::internal']]],
-  ['tt_22',['Test/sample generation (&lt;tt&gt;support/support.cmake&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake',1,'']]],
-  ['tt_20support_20support_20cmake_20tt_23',['Test/sample generation (&lt;tt&gt;support/support.cmake&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake',1,'']]],
-  ['tuple_5fn_5ftype_24',['tuple_n_type',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ac9a28dd1d4eb342043833d76b69a2442',1,'fcarouge::kalman_filter::internal']]],
-  ['type_2ehpp_25',['type.hpp',['../type_8hpp.xhtml',1,'']]],
-  ['types_26',['Member Types',['../index.xhtml#member-types',1,'']]]
+  ['transition_5fjacobian_21',['transition_jacobian',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#ab8c2ac46a508e0b68b6e48de3ba846cb',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
+  ['transpose_22',['transpose',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ac5ff65e9992d94d903483ab4a9867edc',1,'fcarouge::kalman_filter::internal']]],
+  ['trend_23',['trend',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a89d2602be481264283df3853a7858ee0',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}']]],
+  ['tt_24',['Test/sample generation (&lt;tt&gt;support/support.cmake&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake',1,'']]],
+  ['tt_20support_20support_20cmake_20tt_25',['Test/sample generation (&lt;tt&gt;support/support.cmake&lt;/tt&gt;)',['../md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake',1,'']]],
+  ['tuple_5fn_5ftype_26',['tuple_n_type',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ac9a28dd1d4eb342043833d76b69a2442',1,'fcarouge::kalman_filter::internal']]],
+  ['type_2ehpp_27',['type.hpp',['../type_8hpp.xhtml',1,'']]],
+  ['types_28',['Member Types',['../index.xhtml#member-types',1,'']]]
 ];

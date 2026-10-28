@@ -55,9 +55,9 @@ var namespacefcarouge_1_1sample =
     ] ],
     [ "anonymous_namespace{kf_6x2x0_2d_vehicle_position_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml", [
       [ "acceleration", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a7c95715b7fabb21028c5291b55771d68", null ],
-      [ "output_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a6ff6444b845208cc411c0ae4b77267b3", null ],
+      [ "location", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a59e3fd23acdb54081ff2b850334d152e", null ],
+      [ "motion", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#adf0a1c3d2244eab0dee4dd26f23d398e", null ],
       [ "position", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#aeef12ae941530fee994e1c5d8339e3cd", null ],
-      [ "state_t", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a7befbe775b8490903bda5e2ebb04543e", null ],
       [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#aa328eb608227a883d1d82f3da1b67884", null ],
       [ "velocity", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#a24e000a790974e47da2ec220b30b6412", null ],
       [ "s4", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__6x2x0__2d__vehicle__position__unit_8cpp_03.xhtml#afffeb0f11bbf5382d6ab155ea8952a43", null ],
