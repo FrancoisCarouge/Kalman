@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the ekf_3x2x0_wind_airspeed_scale_unit sample, top view:
+     1 m = 0.6 px, x = 215 + 0.6 east, y = 585 - 0.6 north. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="660" viewBox="0 0 720 660" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Wind Layout</title>
+  <rect x="0" y="0" width="720" height="660" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 3x2x0 Wind and Airspeed Scale</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Top View</text>
+
+  <!-- North and east axes. -->
+  <line x1="50.0" y1="190.0" x2="50.0" y2="98.8" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="50.0,90.0 55.0,101.0 45.0,101.0" fill="#2f7d32"/>
+  <line x1="50.0" y1="190.0" x2="131.2" y2="190.0" stroke="#2f7d32" stroke-width="3"/>
+  <polygon points="140.0,190.0 129.0,194.9 129.0,185.1" fill="#2f7d32"/>
+  <text x="50" y="80" text-anchor="middle" fill="#2f7d32" font-weight="bold">North</text>
+  <text x="146" y="195" fill="#2f7d32" font-weight="bold">East</text>
+
+  <!-- The wind, blowing the air mass and the circles of the aircraft north-east. -->
+  <line x1="40.0" y1="290.0" x2="87.3" y2="227.0" stroke="#d9661f" stroke-width="4"/>
+  <polygon points="94.0,218.0 90.6,233.0 80.6,225.4" fill="#d9661f"/>
+  <text x="20" y="315" fill="#a8460c" font-weight="bold">Wind</text>
+  <text x="20" y="331" font-size="12" fill="#444444">4 m/s north, 3 m/s east:</text>
+  <text x="20" y="346" font-size="12" fill="#444444">from the south-west</text>
+
+  <!-- The ground track over the first 100 s: circles of the air mass, drifting with the wind. -->
+  <polyline points="215.0,585.0 216.0,577.8 217.4,570.6 219.0,563.5 221.0,556.4 223.2,549.3 225.8,542.3 228.6,535.5 231.7,528.7 235.0,522.0 238.7,515.5 242.6,509.1 246.8,502.8 251.2,496.8 255.8,490.9 260.7,485.2 265.8,479.7 271.1,474.4 276.6,469.4 282.3,464.6 288.2,460.0 294.2,455.7 300.4,451.7 306.7,447.9 313.1,444.4 319.7,441.1 326.3,438.2 333.0,435.5 339.8,433.1 346.6,431.1 353.5,429.3 360.4,427.8 367.3,426.7 374.2,425.8 381.1,425.2 387.9,424.9 394.7,424.9 401.4,425.2 408.0,425.8 414.5,426.7 420.9,427.9 427.2,429.3 433.4,431.0 439.4,433.0 445.2,435.2 450.9,437.6 456.4,440.3 461.6,443.2 466.7,446.3 471.5,449.7 476.1,453.2 480.5,456.9 484.6,460.7 488.5,464.8 492.1,468.9 495.4,473.2 498.5,477.6 501.2,482.1 503.7,486.7 505.9,491.3 507.8,496.1 509.4,500.8 510.7,505.6 511.7,510.4 512.4,515.2 512.8,520.0 512.9,524.7 512.7,529.4 512.2,534.1 511.4,538.6 510.4,543.1 509.0,547.5 507.4,551.7 505.5,555.8 503.4,559.8 501.0,563.6 498.3,567.2 495.4,570.7 492.3,573.9 489.0,577.0 485.4,579.8 481.7,582.4 477.8,584.8 473.7,586.9 469.4,588.8 465.0,590.4 460.5,591.7 455.8,592.8 451.1,593.6 446.2,594.1 441.3,594.3 436.3,594.2 431.3,593.8 426.2,593.2 421.1,592.2 416.0,590.9 410.9,589.3 405.8,587.5 400.8,585.3 395.9,582.8 391.0,580.1 386.2,577.0 381.4,573.7 376.8,570.1 372.4,566.2 368.0,562.1 363.9,557.7 359.9,553.0 356.0,548.1 352.4,543.0 349.0,537.7 345.7,532.1 342.7,526.4 340.0,520.4 337.4,514.3 335.2,508.0 333.1,501.6 331.4,495.0 329.9,488.3 328.7,481.4 327.8,474.5 327.1,467.5 326.8,460.5 326.8,453.3 327.0,446.2 327.6,439.0 328.4,431.8 329.6,424.6 331.0,417.4 332.8,410.3 334.8,403.2 337.1,396.2 339.8,389.2 342.7,382.4 345.9,375.6 349.3,369.0 353.1,362.5 357.1,356.2 361.3,350.0 365.8,344.0 370.5,338.2 375.5,332.5 380.7,327.1 386.0,321.9 391.6,317.0 397.3,312.2 403.3,307.7 409.4,303.5 415.6,299.6 421.9,295.9 428.4,292.4 435.0,289.3 441.6,286.4 448.4,283.9 455.2,281.6 462.0,279.6 468.9,278.0 475.8,276.6 482.7,275.5 489.6,274.8 496.5,274.3 503.3,274.1 510.0,274.2 516.7,274.6 523.3,275.3 529.8,276.3 536.2,277.5 542.4,279.1 548.5,280.8 554.5,282.9 560.2,285.2 565.8,287.7 571.2,290.5 576.4,293.5 581.4,296.6 586.2,300.0 590.7,303.6 595.0,307.4 599.1,311.3 602.8,315.3 606.3,319.5 609.6,323.9 612.5,328.3 615.2,332.8 617.6,337.5 619.7,342.1 621.5,346.9 623.0,351.6 624.2,356.4 625.1,361.2 625.7,366.0 626.0,370.8 626.0,375.5 625.7,380.2 625.1,384.8 624.2,389.3 623.1,393.8 621.6,398.1 619.9,402.3 617.9,406.4 615.7,410.3" fill="none" stroke="#9a9a9a" stroke-width="2" stroke-dasharray="8 5"/>
+  <circle cx="215.0" cy="585.0" r="5" fill="#9a9a9a"/>
+  <text x="205.0" y="607.0" font-size="12" fill="#666666">Start</text>
+  <text x="609.7" y="434.3" text-anchor="middle" font-size="12" fill="#666666">100 s</text>
+  <text x="520" y="610" text-anchor="middle" font-size="12" fill="#666666">Ground track: 20 m/s circles of 200 m radius,</text>
+  <text x="520" y="625" text-anchor="middle" font-size="12" fill="#666666">turning at 0.1 rad/s, drifting with the wind</text>
+
+  <!-- The aircraft on the track. -->
+  <polygon points="458.8,445.1 445.0,439.5 433.9,450.7 430.0,447.9 440.2,436.0 433.1,429.4 427.7,432.8 425.7,431.4 431.6,425.3 435.6,417.8 437.6,419.2 436.0,425.5 444.4,430.2 452.6,416.8 456.5,419.7 449.3,433.7" fill="#1f6fb2" stroke="#ffffff" stroke-width="1"/>
+  <text x="467.2" y="439.2" font-weight="bold" fill="#1f6fb2">Aircraft at 22 s</text>
+  <text x="467.2" y="454.2" font-size="12" fill="#444444">heading 126°</text>
+
+  <!-- The velocity triangle at 22 s, 1 m/s = 7 px: the ground velocity is the air velocity plus the wind. -->
+  <rect x="12" y="372" width="196" height="196" rx="4" fill="#f6f8fa" stroke="#c8cdd2"/>
+  <text x="110" y="392" text-anchor="middle" font-weight="bold">Velocity Triangle</text>
+  <line x1="30.0" y1="425.0" x2="136.1" y2="502.2" stroke="#1f6fb2" stroke-width="3"/>
+  <polygon points="143.2,507.4 131.4,504.9 137.2,496.9" fill="#1f6fb2"/>
+  <line x1="143.2" y1="507.4" x2="158.9" y2="486.4" stroke="#d9661f" stroke-width="3"/>
+  <polygon points="164.2,479.4 161.5,491.2 153.6,485.2" fill="#d9661f"/>
+  <line x1="30.0" y1="425.0" x2="156.0" y2="476.1" stroke="#222222" stroke-width="2.5"/>
+  <polygon points="164.2,479.4 152.1,479.8 155.9,470.7" fill="#222222"/>
+  <text x="56" y="424" font-size="12" font-weight="bold">Ground velocity</text>
+  <text x="22" y="535" font-size="12" font-weight="bold" fill="#1f6fb2">Air velocity, 20 m/s</text>
+  <text x="22" y="550" font-size="12" fill="#444444">along the heading</text>
+  <text x="166.2" y="505.4" font-size="12" font-weight="bold" fill="#a8460c">Wind</text>
+
+  <!-- The body frame and the air data of the update. -->
+  <rect x="470" y="76" width="236" height="214" rx="4" fill="#f6f8fa" stroke="#c8cdd2"/>
+  <text x="588.0" y="96" text-anchor="middle" font-weight="bold">Air Data, Body Frame</text>
+  <polygon points="540.0,165.2 546.6,191.6 575.2,196.0 575.2,204.8 546.6,202.6 544.4,220.2 555.4,224.6 555.4,229.0 540.0,226.8 524.6,229.0 524.6,224.6 535.6,220.2 533.4,202.6 504.8,204.8 504.8,196.0 533.4,191.6" fill="#1f6fb2" stroke="#ffffff" stroke-width="1"/>
+  <line x1="540.0" y1="160.0" x2="540.0" y2="126.8" stroke="#1f6fb2" stroke-width="2.5"/>
+  <polygon points="540.0,118.0 545.0,129.0 535.0,129.0" fill="#1f6fb2"/>
+  <text x="540" y="112" text-anchor="middle" font-size="12" fill="#1f6fb2">Forward</text>
+  <line x1="576.0" y1="196.0" x2="601.2" y2="196.0" stroke="#1f6fb2" stroke-width="2.5"/>
+  <polygon points="610.0,196.0 599.0,200.9 599.0,191.1" fill="#1f6fb2"/>
+  <text x="592" y="214" text-anchor="middle" font-size="12" fill="#1f6fb2">Right</text>
+  <line x1="514" y1="187" x2="514" y2="174" stroke="#c0392b" stroke-width="2"/>
+  <text x="510" y="182" text-anchor="end" font-size="12" fill="#c0392b">Pitot</text>
+  <text x="482" y="248" font-size="12" fill="#444444">Airspeed: 0.9 × true airspeed, ±0.5 m/s,</text>
+  <text x="482" y="263" font-size="12" fill="#c0392b">every tenth with a 30 m/s spike</text>
+  <text x="482" y="280" font-size="12" fill="#444444">Sideslip: right / forward = 0, ±0.05</text>
+</svg>
