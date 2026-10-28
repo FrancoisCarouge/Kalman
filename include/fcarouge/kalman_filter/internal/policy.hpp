@@ -251,9 +251,10 @@ constexpr void condition(const policies<Policies...> &configuration, auto &p) {
 
 // Updates the estimate uncertainty of a filter with an output model H, then
 // conditions it. The forms agree in exact arithmetic, the gain being optimal.
-// The default Joseph form of a scalar output and a matrix state is associated
-// as (P - K(HP)) - (P - K(HP))HᵀKᵀ + KRKᵀ: the same product, at a quadratic
-// rather than a cubic cost in the state dimension.
+// The simple form of a scalar output and a matrix state is associated as
+// P - K(HP), and the default Joseph form as (P - K(HP)) - (P - K(HP))HᵀKᵀ +
+// KRKᵀ: the same products, at a quadratic rather than a cubic cost in the state
+// dimension.
 template <typename... Policies>
 constexpr void
 update_estimate_uncertainty(const policies<Policies...> &configuration, auto &p,
@@ -262,14 +263,18 @@ update_estimate_uncertainty(const policies<Policies...> &configuration, auto &p,
   using estimate_uncertainty = std::remove_cvref_t<decltype(p)>;
   using kinds = policies<Policies...>;
 
-  if constexpr (contains<simple_form_t, kinds>) {
+  constexpr bool scalar_output{indexable<estimate_uncertainty> &&
+                               not indexable<std::remove_cvref_t<decltype(s)>>};
+
+  if constexpr (contains<simple_form_t, kinds> && scalar_output) {
+    p = estimate_uncertainty{p - k * (h * p)};
+  } else if constexpr (contains<simple_form_t, kinds>) {
     p = estimate_uncertainty{(i - k * h) * p};
   } else if constexpr (contains<symmetric_form_t, kinds>) {
     p = estimate_uncertainty{p - k * s * t(k)};
   } else if constexpr (contains<information_form_t, kinds>) {
     p = estimate_uncertainty{i / (i / p + t(h) / r * h)};
-  } else if constexpr (indexable<estimate_uncertainty> &&
-                       not indexable<std::remove_cvref_t<decltype(s)>>) {
+  } else if constexpr (scalar_output) {
     p = estimate_uncertainty{p - k * (h * p)};
     p = estimate_uncertainty{p - p * t(h) * t(k) + k * r * t(k)};
   } else {
