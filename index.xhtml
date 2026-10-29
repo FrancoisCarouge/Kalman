@@ -396,7 +396,7 @@ Policies</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>information_form</code>   </td><td class="markdownTableBodyNone">Updates the estimate uncertainty as <em>P = (P⁻¹ + HᵀR⁻¹H)⁻¹</em>. Inverts state-sized rather than output-sized matrices: cheaper only for outputs much larger than the state. Requires invertible estimate and output uncertainties.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>simple_form</code>   </td><td class="markdownTableBodyNone">Updates the estimate uncertainty as <em>P = (I - KH)P</em>, the cheapest form. Rounding loses the symmetry of the estimate uncertainty and may lose its positive semi-definiteness.    </td></tr>
+<td class="markdownTableBodyNone"><code>simple_form</code>   </td><td class="markdownTableBodyNone">Updates the estimate uncertainty as <em>P = (I - KH)P</em>, the cheapest form, evaluated at a quadratic rather than a cubic cost in the state dimension for a scalar output. Rounding loses the symmetry of the estimate uncertainty and may lose its positive semi-definiteness.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>symmetric_form</code>   </td><td class="markdownTableBodyNone">Updates the estimate uncertainty as <em>P = P - KSKᵀ</em>, symmetric in exact arithmetic. Subtracting nearly equal matrices of a precise output may lose the positive semi-definiteness of the estimate uncertainty.    </td></tr>
 <tr class="markdownTableRowOdd">

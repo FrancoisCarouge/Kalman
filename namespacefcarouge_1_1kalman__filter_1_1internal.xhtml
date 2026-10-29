@@ -1369,7 +1369,7 @@ template&lt;typename... Policies&gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00216">raise_variances()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00193">symmetrize_estimate()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00259">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00286">update_estimate_uncertainty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00260">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00291">update_estimate_uncertainty()</a>.</p>
 <div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -2444,7 +2444,7 @@ template&lt;typename Type &gt; </div>
 <div class="line"><span class="lineno">  461</span>  <span class="keywordflow">return</span> transposes&lt;Type&gt;{}(value);</div>
 <div class="line"><span class="lineno">  462</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00193">symmetrize_estimate()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00259">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00286">update_estimate_uncertainty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00193">symmetrize_estimate()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00260">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00291">update_estimate_uncertainty()</a>.</p>
 <div id="dynsection-18" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
@@ -2528,27 +2528,31 @@ template&lt;typename... Policies&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00259">259</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  261</span>                                                          {</div>
-<div class="line"><span class="lineno">  262</span>  <span class="keyword">using </span>estimate_uncertainty = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(p)&gt;;</div>
-<div class="line"><span class="lineno">  263</span>  <span class="keyword">using </span>kinds = policies&lt;Policies...&gt;;</div>
-<div class="line"><span class="lineno">  264</span> </div>
-<div class="line"><span class="lineno">  265</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  266</span>    p = estimate_uncertainty{(i - k * h) * p};</div>
-<div class="line"><span class="lineno">  267</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;symmetric_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  268</span>    p = estimate_uncertainty{p - k * s * t(k)};</div>
-<div class="line"><span class="lineno">  269</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;information_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  270</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{i / (i / p + <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(h) / r * h)};</div>
-<div class="line"><span class="lineno">  271</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (indexable&lt;estimate_uncertainty&gt; &amp;&amp;</div>
-<div class="line"><span class="lineno">  272</span>                       not indexable&lt;std::remove_cvref_t&lt;<span class="keyword">decltype</span>(s)&gt;&gt;) {</div>
-<div class="line"><span class="lineno">  273</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - k * (h * p)};</div>
-<div class="line"><span class="lineno">  274</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(h) * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
-<div class="line"><span class="lineno">  275</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  276</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{(i - k * h) * p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(i - k * h) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
-<div class="line"><span class="lineno">  277</span>  }</div>
-<div class="line"><span class="lineno">  278</span> </div>
-<div class="line"><span class="lineno">  279</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
-<div class="line"><span class="lineno">  280</span>}</div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00260">260</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  262</span>                                                          {</div>
+<div class="line"><span class="lineno">  263</span>  <span class="keyword">using </span>estimate_uncertainty = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(p)&gt;;</div>
+<div class="line"><span class="lineno">  264</span>  <span class="keyword">using </span>kinds = policies&lt;Policies...&gt;;</div>
+<div class="line"><span class="lineno">  265</span> </div>
+<div class="line"><span class="lineno">  266</span>  <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> scalar_output{indexable&lt;estimate_uncertainty&gt; &amp;&amp;</div>
+<div class="line"><span class="lineno">  267</span>                               not indexable&lt;std::remove_cvref_t&lt;<span class="keyword">decltype</span>(s)&gt;&gt;};</div>
+<div class="line"><span class="lineno">  268</span> </div>
+<div class="line"><span class="lineno">  269</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt; &amp;&amp; scalar_output) {</div>
+<div class="line"><span class="lineno">  270</span>    p = estimate_uncertainty{p - k * (h * p)};</div>
+<div class="line"><span class="lineno">  271</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  272</span>    p = estimate_uncertainty{(i - k * h) * p};</div>
+<div class="line"><span class="lineno">  273</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;symmetric_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  274</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - k * s * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
+<div class="line"><span class="lineno">  275</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;information_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  276</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{i / (i / p + <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(h) / r * h)};</div>
+<div class="line"><span class="lineno">  277</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (scalar_output) {</div>
+<div class="line"><span class="lineno">  278</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - k * (h * p)};</div>
+<div class="line"><span class="lineno">  279</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(h) * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
+<div class="line"><span class="lineno">  280</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  281</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{(i - k * h) * p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(i - k * h) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
+<div class="line"><span class="lineno">  282</span>  }</div>
+<div class="line"><span class="lineno">  283</span> </div>
+<div class="line"><span class="lineno">  284</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
+<div class="line"><span class="lineno">  285</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a5a8e6f0e735b9a2538262fbe471d59ef"><div class="ttname"><a href="#a5a8e6f0e735b9a2538262fbe471d59ef">fcarouge::kalman_filter::internal::condition</a></div><div class="ttdeci">constexpr void condition(const policies&lt; Policies... &gt; &amp;configuration, auto &amp;p)</div><div class="ttdef"><b>Definition</b> <a href="policy_8hpp_source.xhtml#l00235">policy.hpp:235</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a67e72364f755af0934a50f5fce6dd778"><div class="ttname"><a href="#a67e72364f755af0934a50f5fce6dd778">fcarouge::kalman_filter::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
 </div><!-- fragment -->
@@ -2612,23 +2616,23 @@ template&lt;typename... Policies&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00286">286</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  288</span>                                           {</div>
-<div class="line"><span class="lineno">  289</span>  <span class="keyword">using </span>estimate_uncertainty = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(p)&gt;;</div>
-<div class="line"><span class="lineno">  290</span>  <span class="keyword">using </span>kinds = policies&lt;Policies...&gt;;</div>
-<div class="line"><span class="lineno">  291</span> </div>
-<div class="line"><span class="lineno">  292</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  293</span>    p = estimate_uncertainty{(i - k) * p};</div>
-<div class="line"><span class="lineno">  294</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;symmetric_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  295</span>    p = estimate_uncertainty{p - k * s * t(k)};</div>
-<div class="line"><span class="lineno">  296</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;information_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  297</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{i / (i / p + i / r)};</div>
-<div class="line"><span class="lineno">  298</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  299</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{(i - k) * p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(i - k) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
-<div class="line"><span class="lineno">  300</span>  }</div>
-<div class="line"><span class="lineno">  301</span> </div>
-<div class="line"><span class="lineno">  302</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
-<div class="line"><span class="lineno">  303</span>}</div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00291">291</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  293</span>                                           {</div>
+<div class="line"><span class="lineno">  294</span>  <span class="keyword">using </span>estimate_uncertainty = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(p)&gt;;</div>
+<div class="line"><span class="lineno">  295</span>  <span class="keyword">using </span>kinds = policies&lt;Policies...&gt;;</div>
+<div class="line"><span class="lineno">  296</span> </div>
+<div class="line"><span class="lineno">  297</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  298</span>    p = estimate_uncertainty{(i - k) * p};</div>
+<div class="line"><span class="lineno">  299</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;symmetric_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  300</span>    p = estimate_uncertainty{p - k * s * t(k)};</div>
+<div class="line"><span class="lineno">  301</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;information_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  302</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{i / (i / p + i / r)};</div>
+<div class="line"><span class="lineno">  303</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  304</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{(i - k) * p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(i - k) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
+<div class="line"><span class="lineno">  305</span>  }</div>
+<div class="line"><span class="lineno">  306</span> </div>
+<div class="line"><span class="lineno">  307</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
+<div class="line"><span class="lineno">  308</span>}</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00235">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00460">t()</a>.</p>
 <div id="dynsection-20" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -2758,7 +2762,7 @@ template&lt;typename Policy , typename Policies &gt; </div>
 <p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00167">167</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  167</span>{<span class="keyword">false</span>};</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00259">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00286">update_estimate_uncertainty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00260">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00291">update_estimate_uncertainty()</a>.</p>
 
 </div>
 </div>
