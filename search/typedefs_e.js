@@ -1,10 +1,4 @@
 var searchData=
 [
-  ['range_0',['range',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03.xhtml#a89bfbc59e5b1487a288ae57fe474f06e',1,'fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}']]],
-  ['range_5fjacobian_1',['range_jacobian',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03.xhtml#a33f2792f1f9c6c5da11f577213363c63',1,'fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}']]],
-  ['ratio_2',['ratio',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#aaa6583ffeddac2f3aca9208dafe0c06a',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}']]],
-  ['reciprocal_5ferror_5fstate_3',['reciprocal_error_state',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a209474800fc1811cd6bbed64253cdfdf',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
-  ['regression_4',['regression',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a611dba75758a28d99aa04a54ac721d66',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}']]],
-  ['regressor_5',['regressor',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a8cb6d4a7d97efc8770e9b97b851159f8',1,'fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}']]],
-  ['repack_6',['repack',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a651b7b063d496faeaad8f0894b151f1c',1,'fcarouge::kalman_filter::internal']]]
+  ['quotient_0',['quotient',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a94790d4b89c5a5d249be974718936ed0',1,'fcarouge::kalman_filter::internal']]]
 ];
