@@ -254,9 +254,9 @@ namespace mp_units {
 // cycle is possible.
 template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
 inline constexpr bool disable_representation<
-    fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>> =
+    fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>{
     fcarouge::quantity_element_typed_matrix<
-        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>;
+        fcarouge::typed_matrix<Matrix, RowIndexes, ColumnIndexes>>};
 } // namespace mp_units
 
 #endif // FCAROUGE_MP_UNITS_HPP

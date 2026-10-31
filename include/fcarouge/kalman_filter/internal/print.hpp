@@ -348,7 +348,7 @@ template <typename Filter>
   requires(std::is_class_v<Filter>)
 [[nodiscard]] constexpr auto
 operator|(Filter &&filter, [[maybe_unused]] const printer &decorator) {
-  return kalman_filter::internal::printer<Filter>(std::forward<Filter>(filter));
+  return kalman_filter::internal::printer<Filter>{std::forward<Filter>(filter)};
 }
 } // namespace fcarouge
 

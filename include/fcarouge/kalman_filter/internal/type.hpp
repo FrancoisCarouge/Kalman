@@ -80,6 +80,9 @@ struct row_list {
       const std::initializer_list<std::initializer_list<Element>> list{
           lists...};
 
+      // Parentheses, not braces: a braced list would wrap the list of lists
+      // in yet another list, deducing the rows as the elements of a backend
+      // constructor templated on its element type.
       return Type(list);
     }
   }
@@ -113,7 +116,7 @@ template <typename Type> struct estimate_uncertainty {
   template <typename Element, std::size_t Columns, std::size_t... Sizes>
   constexpr explicit estimate_uncertainty(const Element (&row)[Columns],
                                           const Element (&...rows)[Sizes])
-      : value(row, rows...) {}
+      : value{row, rows...} {}
 
   template <typename Element>
   constexpr explicit estimate_uncertainty(Element p) : value{p} {}
@@ -136,7 +139,7 @@ template <typename Type> struct output_uncertainty {
   template <typename Element, std::size_t Columns, std::size_t... Sizes>
   constexpr explicit output_uncertainty(const Element (&row)[Columns],
                                         const Element (&...rows)[Sizes])
-      : value(row, rows...) {}
+      : value{row, rows...} {}
 
   template <typename Element>
   constexpr explicit output_uncertainty(Element r) : value{r} {}
@@ -159,7 +162,7 @@ template <typename Type> struct process_uncertainty {
   template <typename Element, std::size_t Columns, std::size_t... Sizes>
   constexpr explicit process_uncertainty(const Element (&row)[Columns],
                                          const Element (&...rows)[Sizes])
-      : value(row, rows...) {}
+      : value{row, rows...} {}
 
   template <typename Element>
   constexpr explicit process_uncertainty(Element q) : value{q} {}
@@ -194,7 +197,7 @@ template <typename Type> struct output_model {
   template <typename Element, std::size_t Columns, std::size_t... Sizes>
   constexpr explicit output_model(const Element (&row)[Columns],
                                   const Element (&...rows)[Sizes])
-      : value(row, rows...) {}
+      : value{row, rows...} {}
 
   template <typename Element>
   constexpr explicit output_model(Element h) : value{h} {}
@@ -215,7 +218,7 @@ template <typename Type> struct state_transition {
   template <typename Element, std::size_t Columns, std::size_t... Sizes>
   constexpr explicit state_transition(const Element (&row)[Columns],
                                       const Element (&...rows)[Sizes])
-      : value(row, rows...) {}
+      : value{row, rows...} {}
 
   template <typename Element>
   constexpr explicit state_transition(Element f) : value{f} {}
@@ -237,7 +240,7 @@ template <typename Type> struct input_control {
   template <typename Element, std::size_t Columns, std::size_t... Sizes>
   constexpr explicit input_control(const Element (&row)[Columns],
                                    const Element (&...rows)[Sizes])
-      : value(row, rows...) {}
+      : value{row, rows...} {}
 
   template <typename Element>
   constexpr explicit input_control(Element g) : value{g} {}
