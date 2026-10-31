@@ -12,6 +12,14 @@ var annotated_dup =
           [ "ned_displacement", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1ned__displacement.xhtml", null ],
           [ "north", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1north.xhtml", null ]
         ] ],
+        [ "anonymous_namespace{ekf_4x2x0_range_bearing_tracking_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml", [
+          [ "bearing", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1bearing.xhtml", null ],
+          [ "range", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1range.xhtml", null ],
+          [ "x_position", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1x__position.xhtml", null ],
+          [ "x_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1x__velocity.xhtml", null ],
+          [ "y_position", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1y__position.xhtml", null ],
+          [ "y_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1y__velocity.xhtml", null ]
+        ] ],
         [ "anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml", [
           [ "body_angular_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03_1_1body__angular__velocity.xhtml", null ],
           [ "body_rotation", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03_1_1body__rotation.xhtml", null ],

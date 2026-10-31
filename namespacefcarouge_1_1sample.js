@@ -8,6 +8,7 @@ var namespacefcarouge_1_1sample =
       [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#ad10c3847526ae930bb2e36e97faf02b1", null ],
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#ac2ef84570340d9cef875476138451f04", null ]
     ] ],
+    [ "anonymous_namespace{ekf_4x2x0_range_bearing_tracking_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03" ],
     [ "anonymous_namespace{ekf_6x4x0_3d_apollo_position.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__6x4x0__3d__apollo__position_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__6x4x0__3d__apollo__position_8cpp_03.xhtml#ab83dd70f43d9db02af0243b882564dd0", null ],
       [ "state", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__6x4x0__3d__apollo__position_8cpp_03.xhtml#a3eef84b620201605062dc26c00053e29", null ],

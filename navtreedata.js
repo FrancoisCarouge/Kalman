@@ -119,8 +119,8 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.xhtml", [
         [ "All", "namespacemembers.xhtml", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.xhtml", null ],
-        [ "Variables", "namespacemembers_vars.xhtml", null ],
-        [ "Typedefs", "namespacemembers_type.xhtml", null ]
+        [ "Variables", "namespacemembers_vars.xhtml", "namespacemembers_vars" ],
+        [ "Typedefs", "namespacemembers_type.xhtml", "namespacemembers_type" ]
       ] ]
     ] ],
     [ "Concepts", "concepts.xhtml", "concepts" ],
@@ -150,14 +150,15 @@ var NAVTREEINDEX =
 [
 "1x1_8cpp.xhtml",
 "constructor_2output__type__2x1x0_8cpp.xhtml#a7b2e7bd61f817a4064ccb1eccea08456",
-"f_25x4x3_8cpp.xhtml#a5c8cf78df8ea7ecb46a0e14b4968e625",
-"md__2github_2workspace_2_a_g_e_n_t_s.xhtml#linear-algebra-backends",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a550104553361f4bbd6290a3052a28dda",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02floors__count__1x1x0__fail_8cpp_03.xhtml#aa0b1e80e5afdb02fe7338268bee53bf2",
-"one_2unimplemented__fail_8cpp.xhtml#a9cf715ad07ae2a1208236c62b367cb1a",
-"structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1currency.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__f__us__ps_8cpp_03_1_1model.xhtml",
-"utility_8hpp.xhtml#a769bb512fd918dc04f97236caf382287"
+"ekf__9x4x0__gimbal__attitude__unit_8cpp.xhtml#af097c9558fe7886aad26035891d20d74",
+"kf__2x1x1__1d__rocket__altitude_8cpp.xhtml#aa468cd548bc36ec92d9e352f114e644a",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03.xhtml#ae1c20cf1a309f0dd554ef724ec0c2b62",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02default__1x1x3_8cpp_03.xhtml#a7a0ce567c9ccbde2373d50a105464133",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__tt__oo__ps_8cpp_03.xhtml",
+"r_25x4x3_8cpp_source.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__ff__ps_8cpp_03_1_1propagation.xhtml#a644c2ff3ba9dc63f8d5de8f97da5780e",
+"structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__rotation_01_4.xhtml",
+"x__z__p__qq__r__hh__ff__tt__oo__us_8cpp_source.xhtml"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
