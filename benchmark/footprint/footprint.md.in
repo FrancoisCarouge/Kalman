@@ -1,0 +1,6 @@
+# Embedded Footprint {#footprint}
+
+The code, data, and worst-case stack sizes in bytes of one filter step, one prediction and one update, per filter configuration, update form policy, and optimization level. Each step is linked alone, without any library, for a bare-metal Arm Cortex-M4 target with its single-precision floating-point unit, with @CMAKE_CXX_COMPILER_ID@ @CMAKE_CXX_COMPILER_VERSION@: `@CMAKE_CXX_FLAGS@`. The flash memory holds the `.text`, `.rodata`, and `.data` sections, the random-access memory the `.data` and `.bss` sections. The filter is statically allocated. The configurations are in [benchmark/footprint](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/footprint).
+
+| Configuration | Policy | Optimization | .text | .rodata | .data | .bss | Flash | RAM | Stack |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |

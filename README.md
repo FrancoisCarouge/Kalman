@@ -348,6 +348,8 @@ Safe physical linear algebra not only includes types and units safety, but also 
 
 The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
 
+The [embedded footprint](https://francoiscarouge.github.io/Kalman/footprint.xhtml) reports the flash, RAM, and worst-case stack sizes of filter configurations on a bare-metal Arm Cortex-M4 target.
+
 ![Eigen Update](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg)
 ![Float](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float.svg)
 
