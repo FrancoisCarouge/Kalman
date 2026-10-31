@@ -63,10 +63,16 @@ if(PROJECT_IS_TOP_LEVEL)
 
   include(support/support.cmake)
 
-  add_subdirectory("pkgconfig")
-  add_subdirectory("sample")
-  add_subdirectory("support")
-  add_subdirectory("test")
+  add_subdirectory("benchmark")
+
+  if(CMAKE_CROSSCOMPILING)
+    add_subdirectory("support/freestanding")
+  else()
+    add_subdirectory("pkgconfig")
+    add_subdirectory("sample")
+    add_subdirectory("support")
+    add_subdirectory("test")
+  endif()
 endif()
 
 add_subdirectory("cmake")
