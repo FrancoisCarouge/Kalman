@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Timeline of the kf_2x1x1_delayed_target_tracking_unit sample: a
+     measurement describing the prediction step k-5 arrives at the step k. The
+     late filter fuses it at k; the rewound filter restores its history of k-5,
+     updates it there, and replays the predictions to k. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Delayed Target Timeline</title>
+  <rect x="0" y="0" width="720" height="420" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 2x1x1 Delayed Target Tracking</text>
+  <text x="360" y="52" text-anchor="middle">Timeline of a Delayed Measurement</text>
+
+  <!-- The prediction steps. -->
+  <line x1="190" y1="70" x2="190" y2="370" stroke="#cccccc" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="282" y1="70" x2="282" y2="370" stroke="#cccccc" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="374" y1="70" x2="374" y2="370" stroke="#cccccc" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="466" y1="70" x2="466" y2="370" stroke="#cccccc" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="558" y1="70" x2="558" y2="370" stroke="#cccccc" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="650" y1="70" x2="650" y2="370" stroke="#cccccc" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="160" y1="370" x2="691.2" y2="370" stroke="#555555" stroke-width="1.5"/>
+  <polygon points="700.0,370.0 689.0,365.1 689.0,374.9" fill="#555555"/>
+  <text x="190" y="390" text-anchor="middle">k−5</text>
+  <text x="282" y="390" text-anchor="middle">k−4</text>
+  <text x="374" y="390" text-anchor="middle">k−3</text>
+  <text x="466" y="390" text-anchor="middle">k−2</text>
+  <text x="558" y="390" text-anchor="middle">k−1</text>
+  <text x="650" y="390" text-anchor="middle">k</text>
+  <text x="190" y="407" text-anchor="middle" font-size="12" fill="#444444">t − 0.1 s</text>
+  <text x="650" y="407" text-anchor="middle" font-size="12" fill="#444444">t</text>
+  <text x="20" y="390" font-weight="bold">Prediction step</text>
+  <text x="20" y="407" font-size="12" fill="#444444">every 0.02 s</text>
+
+  <!-- The camera: the image of k-5, delivered at k. -->
+  <text x="20" y="104" font-weight="bold" fill="#1f6fb2">Camera</text>
+  <rect x="182" y="92" width="16" height="16" rx="2" fill="#1f6fb2"/>
+  <text x="190" y="84" text-anchor="middle" font-size="12" fill="#444444">imaged</text>
+  <path d="M198,100 Q420,60 639.2,98.1" fill="none" stroke="#1f6fb2" stroke-width="2" stroke-dasharray="6 4"/>
+  <polygon points="650.0,100.0 638.3,103.0 640.1,93.2" fill="#1f6fb2"/>
+  <text x="650" y="84" text-anchor="middle" font-size="12" fill="#444444">delivered</text>
+  <text x="420" y="104" text-anchor="middle" font-size="12" fill="#444444">image processing, 0.1 s</text>
+
+  <!-- The late filter: the measurement fused at k, as if current. -->
+  <text x="20" y="174" font-weight="bold" fill="#9400d3">Late filter</text>
+  <line x1="190" y1="170" x2="650" y2="170" stroke="#9400d3" stroke-width="2"/>
+  <circle cx="190" cy="170" r="5" fill="#9400d3"/>
+  <circle cx="282" cy="170" r="5" fill="#9400d3"/>
+  <circle cx="374" cy="170" r="5" fill="#9400d3"/>
+  <circle cx="466" cy="170" r="5" fill="#9400d3"/>
+  <circle cx="558" cy="170" r="5" fill="#9400d3"/>
+  <polygon points="650,159 661,170 650,181 639,170" fill="#ffffff" stroke="#9400d3" stroke-width="2.5"/>
+  <text x="650" y="200" text-anchor="end" font-size="12" fill="#444444">update at k: the position of k−5 taken for the current one</text>
+
+  <!-- The rewound filter: its history of the track, the estimate uncertainty,
+       and the input after each prediction. -->
+  <text x="20" y="294" font-weight="bold" fill="#009e73">Rewound filter</text>
+  <text x="20" y="311" font-size="12" fill="#444444">history of x, P, U</text>
+  <rect x="168" y="277" width="44" height="26" rx="4" fill="#e6f5f0" stroke="#009e73" stroke-width="1.5"/>
+  <rect x="260" y="277" width="44" height="26" rx="4" fill="#e6f5f0" stroke="#009e73" stroke-width="1.5"/>
+  <rect x="352" y="277" width="44" height="26" rx="4" fill="#e6f5f0" stroke="#009e73" stroke-width="1.5"/>
+  <rect x="444" y="277" width="44" height="26" rx="4" fill="#e6f5f0" stroke="#009e73" stroke-width="1.5"/>
+  <rect x="536" y="277" width="44" height="26" rx="4" fill="#e6f5f0" stroke="#009e73" stroke-width="1.5"/>
+  <rect x="628" y="277" width="44" height="26" rx="4" fill="#e6f5f0" stroke="#009e73" stroke-width="1.5"/>
+  <text x="190" y="294" text-anchor="middle" font-size="11">x P U</text>
+  <text x="282" y="294" text-anchor="middle" font-size="11">x P U</text>
+  <text x="374" y="294" text-anchor="middle" font-size="11">x P U</text>
+  <text x="466" y="294" text-anchor="middle" font-size="11">x P U</text>
+  <text x="558" y="294" text-anchor="middle" font-size="11">x P U</text>
+  <text x="650" y="294" text-anchor="middle" font-size="11">x P U</text>
+
+  <!-- 1. Restore the track and the estimate uncertainty of k-5. -->
+  <path d="M650,275 Q420,215 200.6,272.2" fill="none" stroke="#c0392b" stroke-width="2"/>
+  <polygon points="190.0,275.0 199.4,267.4 201.9,277.0" fill="#c0392b"/>
+  <text x="420" y="236" text-anchor="middle" font-size="12" fill="#c0392b" font-weight="bold">1. Restore x and P of k−5</text>
+
+  <!-- 2. Update at k-5. -->
+  <polygon points="190,313 199,322 190,331 181,322" fill="#ffffff" stroke="#009e73" stroke-width="2.5"/>
+  <text x="190" y="350" text-anchor="middle" font-size="12" fill="#009e73" font-weight="bold">2. Update at k−5</text>
+
+  <!-- 3. Replay the predictions to k, refreshing the history. -->
+  <line x1="212" y1="290" x2="251.2" y2="290" stroke="#009e73" stroke-width="2"/>
+  <polygon points="260.0,290.0 249.0,285.1 249.0,294.9" fill="#009e73"/>
+  <line x1="304" y1="290" x2="343.2" y2="290" stroke="#009e73" stroke-width="2"/>
+  <polygon points="352.0,290.0 341.0,285.1 341.0,294.9" fill="#009e73"/>
+  <line x1="396" y1="290" x2="435.2" y2="290" stroke="#009e73" stroke-width="2"/>
+  <polygon points="444.0,290.0 433.0,285.1 433.0,294.9" fill="#009e73"/>
+  <line x1="488" y1="290" x2="527.2" y2="290" stroke="#009e73" stroke-width="2"/>
+  <polygon points="536.0,290.0 525.0,285.1 525.0,294.9" fill="#009e73"/>
+  <line x1="580" y1="290" x2="619.2" y2="290" stroke="#009e73" stroke-width="2"/>
+  <polygon points="628.0,290.0 617.0,285.1 617.0,294.9" fill="#009e73"/>
+  <text x="466" y="330" text-anchor="middle" font-size="12" fill="#009e73" font-weight="bold">3. Replay the predictions with their recorded inputs U</text>
+  <text x="466" y="347" text-anchor="middle" font-size="12" fill="#444444">the estimate at k is that of a filter without delay</text>
+</svg>
