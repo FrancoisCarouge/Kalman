@@ -1460,7 +1460,7 @@ template&lt;typename To , typename From &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l00086">86</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   86</span>                                                              {</div>
-<div class="line"><span class="lineno">   87</span>  <span class="keywordflow">return</span> To(value);</div>
+<div class="line"><span class="lineno">   87</span>  <span class="keywordflow">return</span> To{value};</div>
 <div class="line"><span class="lineno">   88</span>}</div>
 </div><!-- fragment -->
 </div>
@@ -1726,7 +1726,7 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 <p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00663">663</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  663</span>                                                  {</div>
 <div class="line"><span class="lineno">  664</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
-<div class="line"><span class="lineno">  665</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;());</div>
+<div class="line"><span class="lineno">  665</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;{});</div>
 <div class="line"><span class="lineno">  666</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(</div>
 <div class="line"><span class="lineno">  667</span>        std::forward&lt;Function&gt;(function));</div>
 <div class="line"><span class="lineno">  668</span>  }</div>
@@ -2224,7 +2224,7 @@ template&lt;typename Object , typename Characteristic &gt; </div>
 <div class="line"><span class="lineno">  701</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_lvalue_reference_v&lt;Object&gt;) {</div>
 <div class="line"><span class="lineno">  702</span>    <span class="keywordflow">return</span> std::as_const(characteristic);</div>
 <div class="line"><span class="lineno">  703</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  704</span>    <span class="keywordflow">return</span> std::remove_const_t&lt;Characteristic&gt;(std::move(characteristic));</div>
+<div class="line"><span class="lineno">  704</span>    <span class="keywordflow">return</span> std::remove_const_t&lt;Characteristic&gt;{std::move(characteristic)};</div>
 <div class="line"><span class="lineno">  705</span>  }</div>
 <div class="line"><span class="lineno">  706</span>}</div>
 </div><!-- fragment -->
@@ -2848,8 +2848,8 @@ template&lt;auto Value&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00324">324</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  324</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00327">327</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  327</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2930,8 +2930,8 @@ template&lt;auto... Values&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00299">299</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  299</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00302">302</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  302</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2957,8 +2957,8 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00181">181</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  181</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00184">184</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  184</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2982,8 +2982,8 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00287">287</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  287</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00290">290</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  290</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3102,8 +3102,8 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00187">187</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  187</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00190">190</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  190</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3158,8 +3158,8 @@ template&lt;typename... Types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00283">283</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  283</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00286">286</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  286</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3183,8 +3183,8 @@ template&lt;typename... Types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00291">291</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  291</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00294">294</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  294</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3238,8 +3238,8 @@ template&lt;typename Pack &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00295">295</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  295</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00298">298</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  298</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3263,8 +3263,8 @@ template&lt;typename Pack &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00303">303</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  303</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00306">306</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  306</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3290,8 +3290,8 @@ template&lt;typename... Types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00278">278</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  278</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="type_8hpp_source.xhtml#l00281">281</a> of file <a class="el" href="type_8hpp_source.xhtml">type.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  281</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

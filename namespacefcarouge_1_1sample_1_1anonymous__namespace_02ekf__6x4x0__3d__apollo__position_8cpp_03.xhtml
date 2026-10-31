@@ -296,7 +296,7 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  187</span>  <span class="comment">// approximately `pos + vel*dt`. Simulate receiving 10 radar measurements, one</span></div>
 <div class="line"><span class="lineno">  188</span>  <span class="comment">// per second. Fake data decreasing range by 100m each second, with slight</span></div>
 <div class="line"><span class="lineno">  189</span>  <span class="comment">// angle offsets.</span></div>
-<div class="line"><span class="lineno">  190</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; 10; ++k) {</div>
+<div class="line"><span class="lineno">  190</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k{0}; k &lt; 10; ++k) {</div>
 <div class="line"><span class="lineno">  191</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>(1.);</div>
 <div class="line"><span class="lineno">  192</span>    <span class="keywordtype">double</span> true_range{30000. - (100. * (k + 1))};</div>
 <div class="line"><span class="lineno">  193</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(true_range, -100., 0.03, 0.01);</div>

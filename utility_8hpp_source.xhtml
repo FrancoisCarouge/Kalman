@@ -559,7 +559,7 @@ $(function(){initNavTree('utility_8hpp_source.xhtml',''); initResizable(true); }
 <div class="foldopen" id="foldopen00663" data-start="{" data-end="}">
 <div class="line"><a id="l00663" name="l00663"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab58c8954326f0d1f628c70168168bafe">  663</a></span><span class="keyword">constexpr</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab58c8954326f0d1f628c70168168bafe">for_constexpr</a>(Function &amp;&amp;function) {</div>
 <div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;());</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;{});</div>
 <div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>    <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab58c8954326f0d1f628c70168168bafe">for_constexpr&lt;Begin + Increment, End, Increment&gt;</a>(</div>
 <div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>        std::forward&lt;Function&gt;(function));</div>
 <div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>  }</div>
@@ -589,7 +589,7 @@ $(function(){initNavTree('utility_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_lvalue_reference_v&lt;Object&gt;) {</div>
 <div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>    <span class="keywordflow">return</span> std::as_const(characteristic);</div>
 <div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>    <span class="keywordflow">return</span> std::remove_const_t&lt;Characteristic&gt;(std::move(characteristic));</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>    <span class="keywordflow">return</span> std::remove_const_t&lt;Characteristic&gt;{std::move(characteristic)};</div>
 <div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>  }</div>
 <div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>}</div>
 </div>
