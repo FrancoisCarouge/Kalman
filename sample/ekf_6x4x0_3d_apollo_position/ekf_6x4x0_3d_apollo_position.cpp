@@ -187,7 +187,7 @@ using state = fcarouge::state<vector<6>>;
   // approximately `pos + vel*dt`. Simulate receiving 10 radar measurements, one
   // per second. Fake data decreasing range by 100m each second, with slight
   // angle offsets.
-  for (int k = 0; k < 10; ++k) {
+  for (int k{0}; k < 10; ++k) {
     filter.predict(1.);
     double true_range{30000. - (100. * (k + 1))};
     filter.update(true_range, -100., 0.03, 0.01);
