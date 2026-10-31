@@ -101,14 +101,18 @@ endforeach()
 
 math(EXPR MEASURED_STACK "${ENTRY_FRAME} + ${LEAF_FRAME}")
 
-file(WRITE "${ROW}"
-     "| ${NAME} | ${POLICY} | -${OPTIMIZATION} | ${text} | ${rodata} | ${data} | ${bss} | ${MEASURED_FLASH} | ${MEASURED_RAM} | ${MEASURED_STACK} |\n")
+file(
+  WRITE "${ROW}"
+  "| ${NAME} | ${POLICY} | -${OPTIMIZATION} | ${text} | ${rodata} | ${data} | ${bss} | ${MEASURED_FLASH} | ${MEASURED_RAM} | ${MEASURED_STACK} |\n"
+)
 
 set(FAILURES "")
 foreach(METRIC IN ITEMS FLASH RAM STACK)
   if(NOT MEASURED_${METRIC} EQUAL ${METRIC})
-    string(APPEND FAILURES
-           "\n${NAME} ${POLICY} ${OPTIMIZATION} ${METRIC} ${MEASURED_${METRIC}}, expected ${${METRIC}}")
+    string(
+      APPEND FAILURES
+      "\n${NAME} ${POLICY} ${OPTIMIZATION} ${METRIC} ${MEASURED_${METRIC}}, expected ${${METRIC}}"
+    )
   endif()
 endforeach()
 
