@@ -36,7 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-if(NOT BUILD_TESTING)
+if(NOT BUILD_TESTING OR CMAKE_CROSSCOMPILING)
   return()
 endif()
 
