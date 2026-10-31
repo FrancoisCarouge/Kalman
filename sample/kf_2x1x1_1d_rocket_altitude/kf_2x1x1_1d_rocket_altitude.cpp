@@ -123,7 +123,7 @@ using state = fcarouge::state<vector<2>>;
       // makes our estimation uncertainty much lower!
       process_uncertainty{[]([[maybe_unused]] const vector<2> &x,
                              const milliseconds &delta_time) -> matrix<2, 2> {
-        const auto dt{std::chrono::duration<double>(delta_time).count()};
+        const auto dt{std::chrono::duration<double>{delta_time}.count()};
         return matrix<2, 2>{
             {0.1 * 0.1 * dt * dt * dt * dt / 4, 0.1 * 0.1 * dt * dt * dt / 2},
             {0.1 * 0.1 * dt * dt * dt / 2, 0.1 * 0.1 * dt * dt}};
@@ -134,12 +134,12 @@ using state = fcarouge::state<vector<2>>;
       // The state transition matrix F would be:
       state_transition{[]([[maybe_unused]] const acceleration &u,
                           const milliseconds &delta_time) -> matrix<2, 2> {
-        const auto dt{std::chrono::duration<double>(delta_time).count()};
+        const auto dt{std::chrono::duration<double>{delta_time}.count()};
         return matrix<2, 2>{{1., dt}, {0., 1.}};
       }},
       // The control matrix G would be:
       input_control{[](const milliseconds &delta_time) -> vector<2> {
-        const auto dt{std::chrono::duration<double>(delta_time).count()};
+        const auto dt{std::chrono::duration<double>{delta_time}.count()};
         return vector<2>{0.0313, dt};
       }},
       // The filter prediction uses a delta time [ms] parameter.
