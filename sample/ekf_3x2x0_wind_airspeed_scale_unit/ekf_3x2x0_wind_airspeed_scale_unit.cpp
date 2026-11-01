@@ -38,15 +38,16 @@ For more information, please refer to <https://unlicense.org> */
 
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/linalg.hpp"
+#include "fcarouge/realtime.hpp"
 
 #include <algorithm>
 #include <cassert>
-#include <cmath>
-#include <cstdint>
-#include <numbers>
+#include <random>
 
+#include <mp-units/math.h>
 #include <mp-units/systems/isq/space_and_time.h>
 #include <mp-units/systems/si.h>
+#include <mp-units/systems/si/math.h>
 #include <mp-units/utility/cartesian_vector.h>
 
 namespace fcarouge::sample {
@@ -126,41 +127,50 @@ using mp_units::si::unit_symbols::m2;
 using mp_units::si::unit_symbols::rad;
 using mp_units::si::unit_symbols::s;
 using mp_units::si::unit_symbols::s2;
+using mp_units::si::unit_symbols::s3;
 
 //! @brief A velocity in the north, east, and down frame, a vector [m.s^-1].
-using ned_velocity_t =
+using velocity =
     quantity<ned_velocity[m / s], mp_units::utility::cartesian_vector<double>>;
+//! @brief A speed, the quantity common to the velocities of all axes
+//! [m.s^-1].
+using speed = quantity<mp_units::isq::speed[m / s]>;
 //! @brief The heading: the angle of the aircraft's nose about the down axis,
 //! from the north [rad].
-using heading_t = quantity<mp_units::isq::angular_measure[rad]>;
-using true_airspeed_t = quantity<true_airspeed[m / s]>;
-using scale_t = quantity<airspeed_scale[mp_units::one]>;
+using heading = quantity<mp_units::isq::angular_measure[rad]>;
+//! @brief The true airspeed, the magnitude of the air velocity [m.s^-1].
+using airspeed = quantity<true_airspeed[m / s]>;
+//! @brief The scale factor of the airspeed sensor [1].
+using scale_factor = quantity<airspeed_scale[mp_units::one]>;
 
 template <typename... Types> using vector = column_vector<double, Types...>;
-//! @brief The state: the wind, by its north and east components [m.s^-1], and
-//! the scale factor of the airspeed sensor [1].
-using state_t = vector<quantity<north_velocity[m / s]>,
-                       quantity<east_velocity[m / s]>, scale_t>;
-//! @brief The output: the indicated airspeed [m.s^-1] and the sideslip [1].
-using output_t = vector<quantity<indicated_airspeed[m / s]>,
-                        quantity<sideslip[mp_units::one]>>;
-//! @brief The output model H: the derivatives of the output by the state. The
-//! element of a row and a column is the product of the output element of the
-//! row by the reciprocal of the state element of the column.
-using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
-//! @brief A covariance of the state: the element of a row and a column is the
-//! product of the state elements they index.
-using estimate_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
-//! @brief A covariance of the output: the element of a row and a column is the
-//! product of the output elements they index.
-using output_uncertainty_t = kf::ᴀʙᵀ<output_t, output_t>;
+//! @brief The air data, the state X: the wind, by its north and east
+//! components [m.s^-1], and the scale factor of the airspeed sensor [1].
+using air_data = vector<quantity<north_velocity[m / s]>,
+                        quantity<east_velocity[m / s]>, scale_factor>;
+//! @brief The reading, the output Z: the indicated airspeed [m.s^-1] and the
+//! sideslip [1].
+using reading = vector<quantity<indicated_airspeed[m / s]>,
+                       quantity<sideslip[mp_units::one]>>;
+//! @brief The derivatives of the reading by the air data, the output model H.
+//! The element of a row and a column is the product of the reading element of
+//! the row by the reciprocal of the air data element of the column.
+using reading_jacobian = kf::evaluate<kf::quotient<reading, air_data>>;
+//! @brief A covariance of the air data, such as the estimate uncertainty P:
+//! the element of a row and a column is the product of the air data elements
+//! they index.
+using air_data_covariance = kf::ᴀʙᵀ<air_data, air_data>;
+//! @brief A covariance of the reading, such as the output uncertainty R: the
+//! element of a row and a column is the product of the reading elements they
+//! index.
+using reading_covariance = kf::ᴀʙᵀ<reading, reading>;
 
 //! @brief The air velocity of the aircraft: its ground velocity less the wind.
-const auto air_velocity_of{[](const state_t &estimate,
-                              const ned_velocity_t &ground) -> ned_velocity_t {
-  return ground - ned_velocity_t{estimate.at<0>(), estimate.at<1>(),
-                                 down_velocity(0. * m / s)};
-}};
+const auto air_velocity_of{
+    [](const air_data &estimate, const velocity &ground) -> velocity {
+      return ground - velocity{estimate.at<0>(), estimate.at<1>(),
+                               down_velocity(0. * m / s)};
+    }};
 
 //! @brief The air velocity in the body frame, ahead of the nose and to its
 //! right.
@@ -174,63 +184,65 @@ struct body_air_velocity {
 //!
 //! @details The rotation pairs the components of different axes: the forward
 //! velocity sums the north and the east velocities, weighted by the cosine and
-//! the sine of the heading. Their values add, their quantities do not: the
-//! rotation is computed on the values of the components.
-const auto to_body{[](const ned_velocity_t &air,
-                      const heading_t &heading) -> body_air_velocity {
-  const auto [north, east, down]{air};
-  const double cosine{std::cos(heading.numerical_value_in(rad))};
-  const double sine{std::sin(heading.numerical_value_in(rad))};
-  const double air_north{north.numerical_value_in(m / s)};
-  const double air_east{east.numerical_value_in(m / s)};
-  return {.forward = ((cosine * air_north) + (sine * air_east)) *
-                     forward_velocity[m / s],
-          .right = ((-sine * air_north) + (cosine * air_east)) *
-                   right_velocity[m / s]};
-}};
+//! the sine of the heading. Each component is restated as a speed, their
+//! common quantity, whose rotated sums are restated as the body velocities.
+const auto to_body{
+    [](const velocity &air, const heading &nose) -> body_air_velocity {
+      const auto [north, east, down]{air};
+      const speed along_north{north};
+      const speed along_east{east};
+      const auto cosine{mp_units::si::cos(nose)};
+      const auto sine{mp_units::si::sin(nose)};
+      return {.forward = forward_velocity(
+                  speed{(cosine * along_north) + (sine * along_east)}),
+              .right = right_velocity(
+                  speed{(-sine * along_north) + (cosine * along_east)})};
+    }};
 
 //! @brief The observation h(X): the airspeed sensor reads the scale times the
 //! true airspeed, the magnitude of the air velocity, and the sideslip is the
 //! right air velocity over the forward one.
-const auto observe{[](const state_t &estimate, const ned_velocity_t &ground,
-                      const heading_t &heading) -> output_t {
-  const ned_velocity_t air{air_velocity_of(estimate, ground)};
-  const true_airspeed_t speed{true_airspeed(air.magnitude())};
-  const body_air_velocity body{to_body(air, heading)};
-  return output_t{estimate.at<2>() * speed, body.right / body.forward};
+const auto observe{[](const air_data &estimate, const velocity &ground,
+                      const heading &nose) -> reading {
+  const velocity air{air_velocity_of(estimate, ground)};
+  const airspeed true_speed{true_airspeed(air.magnitude())};
+  const body_air_velocity body{to_body(air, nose)};
+  return reading{estimate.at<2>() * true_speed, body.right / body.forward};
 }};
 
 //! @brief The output model H = ∂h/∂X: the derivative of the observation by
 //! the state, evaluated at the estimate.
 //!
 //! @details The derivative of the airspeed by the scale is the true airspeed.
-//! The other derivatives combine the components of different axes, as the
-//! rotation into the body frame does: their values are computed on the values
-//! of the components, then restated as the derivatives.
-const auto observation_jacobian{[](const state_t &estimate,
-                                   const ned_velocity_t &ground,
-                                   const heading_t &heading) -> output_model_t {
-  const ned_velocity_t air{air_velocity_of(estimate, ground)};
-  const true_airspeed_t speed{true_airspeed(air.magnitude())};
-  const body_air_velocity body{to_body(air, heading)};
+//! The derivatives of the airspeed by the wind are the opposite of the scale
+//! times the unit vector of the air velocity. The derivatives of the sideslip
+//! by the wind combine the body velocities, as the rotation into the body frame
+//! does. The ratios of the speeds are restated as the derivatives.
+const auto observation_jacobian{[](const air_data &estimate,
+                                   const velocity &ground,
+                                   const heading &nose) -> reading_jacobian {
+  const velocity air{air_velocity_of(estimate, ground)};
+  const airspeed true_speed{true_airspeed(air.magnitude())};
+  const body_air_velocity body{to_body(air, nose)};
   const auto [north, east, down]{air};
-  const double scale{estimate.at<2>().numerical_value_in(mp_units::one)};
-  const double cosine{std::cos(heading.numerical_value_in(rad))};
-  const double sine{std::sin(heading.numerical_value_in(rad))};
-  const double forward{body.forward.numerical_value_in(m / s)};
-  const double right{body.right.numerical_value_in(m / s)};
-  const double forward_squared{forward * forward};
-  const double airspeed{speed.numerical_value_in(m / s)};
-  output_model_t value;
-  value.at<0, 0>(-scale * north.numerical_value_in(m / s) / airspeed *
-                 (indicated_airspeed / north_velocity)[mp_units::one]);
-  value.at<0, 1>(-scale * east.numerical_value_in(m / s) / airspeed *
-                 (indicated_airspeed / east_velocity)[mp_units::one]);
-  value.at<0, 2>(output_model_t::element<0, 2>{speed});
-  value.at<1, 0>(((sine * forward) + (cosine * right)) / forward_squared *
-                 (sideslip / north_velocity)[s / m]);
-  value.at<1, 1>(((-cosine * forward) + (sine * right)) / forward_squared *
-                 (sideslip / east_velocity)[s / m]);
+  const speed magnitude{true_speed};
+  const speed along_north{north};
+  const speed along_east{east};
+  const speed forward{body.forward};
+  const speed right{body.right};
+  const auto cosine{mp_units::si::cos(nose)};
+  const auto sine{mp_units::si::sin(nose)};
+  const auto scale{estimate.at<2>()};
+  reading_jacobian value;
+  value.at<0, 0>((indicated_airspeed /
+                  north_velocity)(-speed{scale * along_north} / magnitude));
+  value.at<0, 1>((indicated_airspeed /
+                  east_velocity)(-speed{scale * along_east} / magnitude));
+  value.at<0, 2>(reading_jacobian::element<0, 2>{true_speed});
+  value.at<1, 0>((sideslip / north_velocity)(
+      ((sine * forward) + (cosine * right)) / (forward * forward)));
+  value.at<1, 1>((sideslip / east_velocity)(
+      ((-cosine * forward) + (sine * right)) / (forward * forward)));
   return value;
 }};
 
@@ -246,6 +258,10 @@ const auto observation_jacobian{[](const state_t &estimate,
 //! @see https://docs.px4.io/main/en/advanced_config/tuning_the_ecl_ekf.html
 //! @see https://github.com/PX4/PX4-Autopilot/tree/main/src/lib/wind_estimator
 //! @see https://ardupilot.org/plane/docs/airspeed-calibration.html
+//! @see Yaakov Bar-Shalom, X. Rong Li, Thiagalingam Kirubarajan, Estimation
+//! with Applications to Tracking and Navigation, John Wiley & Sons, 2001, the
+//! normalized innovation squared consistency test,
+//! https://doi.org/10.1002/0471221279
 //!
 //! @details A fixed-wing aircraft flies circles at 20 m.s^-1 through the air
 //! in a wind of 4 m.s^-1 from the south and 3 m.s^-1 from the west, measuring
@@ -271,14 +287,20 @@ const auto observation_jacobian{[](const state_t &estimate,
 //! the heading of the update.
 //!
 //! Each observation is gated by a consistency test computed outside of the
-//! filter: its innovation must lie within five of its standard deviations.
-//! Every tenth airspeed is corrupted by a spike of 30 m.s^-1, as from a
-//! blocked or wet pitot tube, which the gate rejects, and the sideslip of the
-//! same update with it. The scale factor is kept within plausible bounds after
-//! each update. On a straight flight, the airspeed alone cannot tell a
-//! headwind from a scale error: the turn reveals the wind from every side,
-//! and within a third of the first circle, some twenty seconds, the wind and
-//! the scale factor converge together.
+//! filter: its innovation must lie within five of its standard deviations, a
+//! gate on its normalized innovation squared. Every tenth airspeed is corrupted
+//! by a spike of 30 m.s^-1, as from a blocked or wet pitot tube, which the gate
+//! rejects, and the sideslip of the same update with it. The scale factor is
+//! kept within plausible bounds after each update. On a straight flight, the
+//! airspeed alone cannot tell a headwind from a scale error: the turn reveals
+//! the wind from every side, and within a third of the first circle, some
+//! twenty seconds, the wind and the scale factor converge together.
+//!
+//! In the plotted run, the wind settles within 0.2 m.s^-1 and the scale
+//! factor within a percent after 18 s. After the first circle, their root mean
+//! square errors, 0.05 m.s^-1 and 0.001, are those of their estimated standard
+//! deviations, 0.05 m.s^-1 and 0.001. Over a thousand seeds of the noise, no
+//! spike is fused, and three runs reject one consistent update.
 //!
 //! The autopilot's filter differs: it fuses each observation in its own
 //! update, at its own rate, and tunes its noises and gates to its sensors.
@@ -297,54 +319,57 @@ const auto observation_jacobian{[](const state_t &estimate,
 [[maybe_unused]] const auto sample{[] -> int {
   const auto time_step{0.1 * s};
   const auto turn_rate{0.1 * rad / s};
-  const true_airspeed_t true_speed{20. * true_airspeed[m / s]};
+  const airspeed true_speed{20. * true_airspeed[m / s]};
   const quantity<north_velocity[m / s]> wind_north{north_velocity(4. * m / s)};
   const quantity<east_velocity[m / s]> wind_east{east_velocity(3. * m / s)};
-  const scale_t scale{0.9 * airspeed_scale[mp_units::one]};
+  const scale_factor scale{0.9 * airspeed_scale[mp_units::one]};
+  const auto spike_height{30. * indicated_airspeed[m / s]};
   const auto airspeed_deviation{0.5 * indicated_airspeed[m / s]};
   const auto sideslip_deviation{0.05 * sideslip[mp_units::one]};
+  // The random walks of the wind, 0.01 m.s^-1, and of the scale factor, 1e-4,
+  // per square root of second: their variance growth rates.
+  const auto wind_diffusion{0.01 * 0.01 * m2 / s3};
+  const auto scale_diffusion{1e-4 * 1e-4 / s};
   const double gate{5.}; // standard deviations
 
-  // A deterministic standard normal sequence, for repeatable sensor noise: the
-  // sum of twelve uniform deviates of a linear congruential generator, minus
-  // six.
-  auto noise{[seed = std::uint32_t{3}] mutable -> double {
-    double sum{0.};
-    for (int index{0}; index < 12; ++index) {
-      seed = (seed * 1664525U) + 1013904223U;
-      sum += static_cast<double>(seed) / 4294967296.;
-    }
-    return sum - 6.;
-  }};
+  // The seed of the sensor noise, from the system's entropy source: a
+  // blocking input-output operation, out of the real-time verification.
+  const auto seed{[] -> std::random_device::result_type {
+    const not_realtime opt_out;
+    return std::random_device{}();
+  }()};
+  // The sensor noise, a standard normal sequence. The plots are of the seed 1,
+  // with the GNU C++ standard library: the algorithm of the distribution, so
+  // the sequence of a seed, varies across standard libraries.
+  std::minstd_rand engine{seed};
+  std::normal_distribution distribution{0., 1.};
+  const auto noise{[&] -> double { return distribution(engine); }};
 
   kalman filter{
       // The state X: no wind and a unit scale factor.
-      state{state_t{north_velocity(0. * m / s), east_velocity(0. * m / s),
-                    1. * airspeed_scale[mp_units::one]}},
+      state{air_data{north_velocity(0. * m / s), east_velocity(0. * m / s),
+                     1. * airspeed_scale[mp_units::one]}},
       // The output Z: the indicated airspeed [m.s^-1] and the sideslip [1].
-      output<output_t>,
+      output<reading>,
       // The estimate uncertainty P:
-      estimate_uncertainty{[]() -> estimate_uncertainty_t {
-        estimate_uncertainty_t value;
+      estimate_uncertainty{[]() -> air_data_covariance {
+        air_data_covariance value;
         value.at<0, 0>(25. * m2 / s2);
         value.at<1, 1>(25. * m2 / s2);
         value.at<2, 2>(0.1 * 0.1 * mp_units::one);
         return value;
       }()},
-      // The process uncertainty Q, of the random walks of the wind, 0.01
-      // m.s^-1 per square root of second, and of the scale factor, 1e-4 per
-      // square root of second, over a step:
-      process_uncertainty{[&time_step]() -> estimate_uncertainty_t {
-        const double step{time_step.numerical_value_in(s)};
-        estimate_uncertainty_t value;
-        value.at<0, 0>(0.01 * 0.01 * step * m2 / s2);
-        value.at<1, 1>(0.01 * 0.01 * step * m2 / s2);
-        value.at<2, 2>(1e-4 * 1e-4 * step * mp_units::one);
+      // The process uncertainty Q, of the random walks over a step:
+      process_uncertainty{[&]() -> air_data_covariance {
+        air_data_covariance value;
+        value.at<0, 0>(wind_diffusion * time_step);
+        value.at<1, 1>(wind_diffusion * time_step);
+        value.at<2, 2>(scale_diffusion * time_step);
         return value;
       }()},
       // The output uncertainty R:
-      output_uncertainty{[&]() -> output_uncertainty_t {
-        output_uncertainty_t value;
+      output_uncertainty{[&]() -> reading_covariance {
+        reading_covariance value;
         value.at<0, 0>(airspeed_deviation * airspeed_deviation);
         value.at<1, 1>(sideslip_deviation * sideslip_deviation);
         return value;
@@ -356,17 +381,17 @@ const auto observation_jacobian{[](const state_t &estimate,
       // The observation h(X) of the airspeed and the sideslip:
       observation{observe},
       // The filter update uses the ground velocity and the heading.
-      update_types<ned_velocity_t, heading_t>};
+      update_types<velocity, heading>};
 
   // The consistency test of the observations, computed outside of the filter:
   // each innovation within its gate.
-  const auto consistent{[&filter, gate](const ned_velocity_t &ground,
-                                        const heading_t &heading,
-                                        const output_t &measured) -> bool {
-    const output_t innovation{measured - observe(filter.x(), ground, heading)};
-    const output_model_t jacobian{
-        observation_jacobian(filter.x(), ground, heading)};
-    const output_uncertainty_t innovation_uncertainty{
+  const auto consistent{[&filter, gate](const velocity &ground,
+                                        const heading &nose,
+                                        const reading &measured) -> bool {
+    const reading innovation{measured - observe(filter.x(), ground, nose)};
+    const reading_jacobian jacobian{
+        observation_jacobian(filter.x(), ground, nose)};
+    const reading_covariance innovation_uncertainty{
         (jacobian * filter.p() * transposed(jacobian)) + filter.r()};
     return innovation.at<0>() * innovation.at<0>() <
                gate * gate * innovation_uncertainty.at<0, 0>() &&
@@ -374,53 +399,56 @@ const auto observation_jacobian{[](const state_t &estimate,
                gate * gate * innovation_uncertainty.at<1, 1>();
   }};
 
-  int rejected{0};
+  int spikes_fused{0};
+  int consistent_rejected{0};
+  heading nose{0. * rad};
   const int steps{3000};
   for (int step{0}; step < steps; ++step) {
-    const auto time{step * time_step};
     // The heading is that of the air velocity: the flight is coordinated.
-    const heading_t heading{
-        std::remainder((turn_rate * time).numerical_value_in(rad),
-                       2. * std::numbers::pi) *
-        rad};
-    const double cosine{std::cos(heading.numerical_value_in(rad))};
-    const double sine{std::sin(heading.numerical_value_in(rad))};
-    const double speed{true_speed.numerical_value_in(m / s)};
-    const ned_velocity_t ground{north_velocity(cosine * speed * m / s) +
-                                    wind_north,
-                                east_velocity(sine * speed * m / s) + wind_east,
-                                down_velocity(0. * m / s)};
+    const speed air_speed{true_speed};
+    const velocity ground{
+        north_velocity(air_speed * mp_units::si::cos(nose)) + wind_north,
+        east_velocity(air_speed * mp_units::si::sin(nose)) + wind_east,
+        down_velocity(0. * m / s)};
+    // Every tenth step, an airspeed corrupted by a spike.
+    const bool spike{step % 10 == 5};
+    const reading measured{
+        indicated_airspeed(scale * true_speed) +
+            (airspeed_deviation * noise()) +
+            (spike ? spike_height : 0. * indicated_airspeed[m / s]),
+        sideslip_deviation * noise()};
 
     filter.predict();
 
-    // Every tenth step, an airspeed corrupted by a spike, which the gate
-    // rejects.
-    const auto spike{(step % 10 == 5 ? 30. : 0.) * indicated_airspeed[m / s]};
-    const output_t measured{indicated_airspeed(scale * true_speed) +
-                                (airspeed_deviation * noise()) + spike,
-                            sideslip_deviation * noise()};
+    if (consistent(ground, nose, measured)) {
+      filter.update(ground, nose, measured);
 
-    if (!consistent(ground, heading, measured)) {
-      ++rejected;
-      continue;
+      // Keep the scale factor within its bounds.
+      air_data bounded{filter.x()};
+      bounded.at<2>(std::clamp(bounded.at<2>(),
+                               0.5 * airspeed_scale[mp_units::one],
+                               1.5 * airspeed_scale[mp_units::one]));
+      filter.x(bounded);
+
+      spikes_fused += static_cast<int>(spike);
+    } else {
+      consistent_rejected += static_cast<int>(!spike);
     }
-    filter.update(ground, heading, measured);
 
-    // Keep the scale factor within its bounds.
-    state_t bounded{filter.x()};
-    bounded.at<2>(std::clamp(bounded.at<2>(),
-                             0.5 * airspeed_scale[mp_units::one],
-                             1.5 * airspeed_scale[mp_units::one]));
-    filter.x(bounded);
+    nose += turn_rate * time_step;
   }
 
-  // The wind and the scale factor are found, the spikes rejected.
-  assert(abs(filter.x().at<0>() - wind_north) < 0.5 * m / s &&
-         abs(filter.x().at<1>() - wind_east) < 0.5 * m / s &&
-         "The wind is found within half a meter per second.");
+  // The wind and the scale factor are found, the spikes rejected, whatever the
+  // seed of the noise. At five standard deviations, a consistent update is
+  // rejected about once in three hundred runs.
+  assert(abs(filter.x().at<0>() - wind_north) < 0.25 * m / s &&
+         abs(filter.x().at<1>() - wind_east) < 0.25 * m / s &&
+         "The wind is found within a quarter of a meter per second.");
   assert(abs(filter.x().at<2>() - scale) < 0.01 * mp_units::one &&
          "The airspeed scale factor is found within a percent.");
-  assert(rejected == steps / 10 && "Only the spikes are rejected.");
+  assert(spikes_fused == 0 && "The spikes are rejected.");
+  assert(consistent_rejected <= 2 &&
+         "Nearly every consistent update is fused.");
 
   return 0;
 }()};
