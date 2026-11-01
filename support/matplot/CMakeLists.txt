@@ -52,5 +52,7 @@ add_library(kalman_plot INTERFACE)
 target_sources(
   kalman_plot
   INTERFACE
-  FILE_SET "linalg_headers" TYPE "HEADERS" FILES "fcarouge/plot.hpp")
+  FILE_SET "linalg_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/plot.hpp")
 target_link_libraries(kalman_plot INTERFACE matplot)

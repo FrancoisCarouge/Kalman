@@ -60,9 +60,9 @@ constexpr auto USD2{pow<2>(USD)};
 using price = mp_units::quantity<USD>;
 template <typename... Types> using vector = column_vector<double, Types...>;
 using ratio = mp_units::quantity<mp_units::one>;
-using state_t = vector<ratio, price>;
-using output_t = vector<price>;
-using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
+using regression = vector<ratio, price>;
+using dependent_price = vector<price>;
+using regressor = kf::evaluate<kf::quotient<dependent_price, regression>>;
 
 //! @brief Estimating the pairs trading hedge ratio.
 //!
@@ -97,19 +97,18 @@ using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
   kalman filter{
       // The state X is the hedge ratio and intercept: [β, α]. As in the
       // reference, we start from a null hedge ratio and intercept.
-      state{state_t{ratio{0. * mp_units::one}, price{0. * USD}}},
+      state{regression{ratio{0. * mp_units::one}, price{0. * USD}}},
       // The filter observes the output Z dependent closing price [$].
-      output<output_t>,
+      output<dependent_price>,
       // As in the reference, the initial estimate uncertainty P is null: the
       // first closing prices do not update the state, after which the process
       // uncertainty accumulates.
-      estimate_uncertainty{kf::ᴀʙᵀ<state_t, state_t>{}},
+      estimate_uncertainty{kf::ᴀʙᵀ<regression, regression>{}},
       // The process uncertainty Q: Vw = δ / (1 - δ) with δ = 0.0001, for the
       // dimensionless hedge ratio and for the intercept in dollars.
       process_uncertainty{[]() -> auto {
-        using process_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
         const double delta{0.0001};
-        process_uncertainty_t value;
+        kf::ᴀʙᵀ<regression, regression> value;
         value.at<0, 0>(delta / (1. - delta) * mp_units::one);
         value.at<1, 1>(delta / (1. - delta) * USD2);
         return value;
@@ -118,9 +117,9 @@ using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
       output_uncertainty{0.001 * USD2},
       // The output model H = [x, 1] of the regression changes every day with
       // the independent closing price x.
-      output_model{[]([[maybe_unused]] const state_t &x,
-                      const price &independent) -> output_model_t {
-        output_model_t value;
+      output_model{[]([[maybe_unused]] const regression &x,
+                      const price &independent) -> regressor {
+        regressor value;
         value.at<0>(independent);
         value.at<1>(1.);
         return value;
@@ -128,9 +127,10 @@ using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
       // The hedge ratio and intercept follow a random walk: their prediction
       // is their last estimate, so no transition function is declared.
       // The regression forecasts the dependent closing price: βx + α.
-      observation{[](const state_t &x, const price &independent) -> output_t {
-        return output_t{x.at<0>() * independent + x.at<1>()};
-      }},
+      observation{
+          [](const regression &x, const price &independent) -> dependent_price {
+            return dependent_price{x.at<0>() * independent + x.at<1>()};
+          }},
       // The filter update uses the independent closing price [$] parameter.
       update_types<price>};
 

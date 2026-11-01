@@ -50,7 +50,7 @@ using position = mp_units::quantity<mp_units::isq::length[m]>;
 using velocity = mp_units::quantity<mp_units::isq::velocity[m / s]>;
 
 template <typename... Types> using vector = column_vector<double, Types...>;
-using state_t = vector<position, velocity>;
+using motion = vector<position, velocity>;
 
 template <typename Filter, typename... Values>
 concept has_x =
@@ -59,9 +59,9 @@ concept has_x =
 //! @test Verifies the state X member function sets the column vector
 //! characteristic from element values initializing each its own element type,
 //! the quantity at its position.
-using filter = decltype(kalman{state{state_t{}}, output<vector<position>>});
+using filter = decltype(kalman{state{motion{}}, output<vector<position>>});
 
-static_assert(has_x<filter, state_t>);
+static_assert(has_x<filter, motion>);
 static_assert(has_x<filter, position, velocity>);
 static_assert(
     has_x<filter, mp_units::quantity<mp_units::isq::length[km]>, velocity>);

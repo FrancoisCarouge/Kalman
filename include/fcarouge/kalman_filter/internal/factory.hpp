@@ -84,7 +84,7 @@ namespace fcarouge::kalman_filter::internal {
 // Converts the value of a declared characteristic to the filter member type.
 template <typename To, typename From>
 [[nodiscard]] constexpr auto convert(const From &value) -> To {
-  return To(value);
+  return To{value};
 }
 
 template <typename To, typename Element, std::size_t Rows, std::size_t Columns>
@@ -119,21 +119,21 @@ template <typename Filter, typename Policies> struct filter_builder {
   template <typename X>
   [[nodiscard]] static constexpr auto operator()(const Policies &policies,
                                                  state<X> x) {
-    return x_z_p_r<X, Policies>(policies, x.value);
+    return x_z_p_r<X, Policies>{policies, x.value};
   }
 
   template <typename X>
   [[nodiscard]] static constexpr auto
   operator()(const Policies &policies, state<X> x,
              [[maybe_unused]] output_t<X> z) {
-    return x_z_p_r<X, Policies>(policies, x.value);
+    return x_z_p_r<X, Policies>{policies, x.value};
   }
 
   template <typename X, typename Z>
   [[nodiscard]] static constexpr auto
   operator()(const Policies &policies, state<X> x,
              [[maybe_unused]] output_t<Z> z) {
-    return x_z_p_q_r_h_f<X, Z, Policies>(policies, x.value);
+    return x_z_p_q_r_h_f<X, Z, Policies>{policies, x.value};
   }
 
   template <typename X, typename Z, typename U>
@@ -142,7 +142,7 @@ template <typename Filter, typename Policies> struct filter_builder {
              [[maybe_unused]] output_t<Z> z, [[maybe_unused]] input_t<U> u) {
     using kt = x_z_u_p_q_r_h_f_g<X, Z, U, Policies>;
 
-    return kt{policies, typename kt::state(x.value)};
+    return kt{policies, typename kt::state{x.value}};
   }
 
   template <typename X, typename Z, typename U, typename P, typename Q,
@@ -159,12 +159,12 @@ template <typename Filter, typename Policies> struct filter_builder {
                                      Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_control_function(g.value)};
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_control_function{g.value}};
   }
 
   template <typename X, typename Z, typename U, typename P, typename Q,
@@ -179,12 +179,12 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_u_p_qq_r_ff_gg<X, Z, U, Q, F, G, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_control_function(g.value)};
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_control_function{g.value}};
   }
 
   template <typename X, typename Z, typename U, typename... Us, typename... Ps>
@@ -197,7 +197,7 @@ template <typename Filter, typename Policies> struct filter_builder {
         x_z_u_p_q_r_h_f_g_us_ps<X, Z, U, repack<update_types_t<Us...>>,
                                 repack<prediction_types_t<Ps...>>, Policies>;
 
-    return kt{policies, typename kt::state(x.value)};
+    return kt{policies, typename kt::state{x.value}};
   }
 
   template <typename X, typename Z, typename U, typename... Ps>
@@ -208,7 +208,7 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_u_p_q_r_h_f_g_ps<X, Z, U, repack<prediction_types_t<Ps...>>,
                                     Policies>;
 
-    return kt{policies, typename kt::state(x.value)};
+    return kt{policies, typename kt::state{x.value}};
   }
 
   template <typename X, typename Z, typename U, typename... Us>
@@ -219,7 +219,7 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt =
         x_z_u_p_q_r_h_f_g_us<X, Z, U, repack<update_types_t<Us...>>, Policies>;
 
-    return kt{policies, typename kt::state(x.value)};
+    return kt{policies, typename kt::state{x.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -242,13 +242,13 @@ template <typename Filter, typename Policies> struct filter_builder {
                                     Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -269,13 +269,13 @@ template <typename Filter, typename Policies> struct filter_builder {
                                        H, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -296,13 +296,13 @@ template <typename Filter, typename Policies> struct filter_builder {
                                        T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -321,13 +321,13 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_q_r_hh_f_tt_oo<X, Z, H, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -347,12 +347,12 @@ template <typename Filter, typename Policies> struct filter_builder {
                                     Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -370,12 +370,12 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_q_r_hh_f_oo<X, Z, H, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -398,13 +398,13 @@ template <typename Filter, typename Policies> struct filter_builder {
                                      O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -425,13 +425,13 @@ template <typename Filter, typename Policies> struct filter_builder {
                                         Q, H, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -452,13 +452,13 @@ template <typename Filter, typename Policies> struct filter_builder {
                                         H, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -477,13 +477,13 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_qq_r_hh_f_tt_oo<X, Z, Q, H, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -508,14 +508,14 @@ template <typename Filter, typename Policies> struct filter_builder {
                                      O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -538,14 +538,14 @@ template <typename Filter, typename Policies> struct filter_builder {
                                         H, F, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -567,14 +567,14 @@ template <typename Filter, typename Policies> struct filter_builder {
                                         F, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -595,14 +595,14 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_q_r_hh_ff_tt_oo<X, Z, H, F, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -627,14 +627,14 @@ template <typename Filter, typename Policies> struct filter_builder {
                                       F, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -658,14 +658,14 @@ template <typename Filter, typename Policies> struct filter_builder {
                                   F, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -687,14 +687,14 @@ template <typename Filter, typename Policies> struct filter_builder {
                                          H, F, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -715,14 +715,14 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_qq_r_hh_ff_tt_oo<X, Z, Q, H, F, T, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
+              typename kt::noise_process_function{q.value},
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(h.value),
-              typename kt::transition_state_function(f.value),
-              typename kt::transition_function(ff.value),
-              typename kt::observation_function(hh.value)};
+              typename kt::observation_state_function{h.value},
+              typename kt::transition_state_function{f.value},
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -742,13 +742,13 @@ template <typename Filter, typename Policies> struct filter_builder {
                                   O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(hh.value),
-              typename kt::transition_state_function(ff.value),
-              typename kt::observation_function(obs.value)};
+              typename kt::observation_state_function{hh.value},
+              typename kt::transition_state_function{ff.value},
+              typename kt::observation_function{obs.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -766,13 +766,13 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_q_r_hh_ff_oo<X, Z, H, F, O, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
-              typename kt::observation_state_function(hh.value),
-              typename kt::transition_state_function(ff.value),
-              typename kt::observation_function(obs.value)};
+              typename kt::observation_state_function{hh.value},
+              typename kt::transition_state_function{ff.value},
+              typename kt::observation_function{obs.value}};
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
@@ -785,7 +785,7 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_q_r_h_f<X, Z, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
@@ -801,7 +801,7 @@ template <typename Filter, typename Policies> struct filter_builder {
              output_uncertainty<R> r) {
     using kt = x_z_p_r<X, Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::output_uncertainty>(r.value)};
   }
@@ -814,7 +814,7 @@ template <typename Filter, typename Policies> struct filter_builder {
              output_uncertainty<R> r, state_transition<F> f) {
     using kt = x_z_p_r_f<X, Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
               internal::convert<typename kt::state_transition>(f.value)};
@@ -827,7 +827,7 @@ template <typename Filter, typename Policies> struct filter_builder {
              output_uncertainty<R> r) {
     using kt = x_z_p_q_r_h_f<X, Z, Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               make_zero<typename kt::process_uncertainty>(),
               internal::convert<typename kt::output_uncertainty>(r.value)};
@@ -841,7 +841,7 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_q_r_h_f<X, Z, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               make_zero<typename kt::process_uncertainty>(),
               internal::convert<typename kt::output_uncertainty>(r.value),
@@ -856,7 +856,7 @@ template <typename Filter, typename Policies> struct filter_builder {
              process_uncertainty<Q> q, output_uncertainty<R> r) {
     using kt = x_z_p_q_r<X, Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value)};
@@ -871,7 +871,7 @@ template <typename Filter, typename Policies> struct filter_builder {
              output_uncertainty<R> r) {
     using kt = x_z_u_p_q_r_h_f_g<X, Z, U, Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value)};
@@ -890,7 +890,7 @@ template <typename Filter, typename Policies> struct filter_builder {
         x_z_u_p_q_r_h_f_g_us_ps<X, Z, U, repack<update_types_t<Us...>>,
                                 repack<prediction_types_t<Ps...>>, Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value)};
@@ -907,7 +907,7 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_u_p_q_r_h_f_g_ps<X, Z, U, repack<prediction_types_t<Ps...>>,
                                     Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value)};
@@ -924,7 +924,7 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt =
         x_z_u_p_q_r_h_f_g_us<X, Z, U, repack<update_types_t<Us...>>, Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value)};
@@ -938,7 +938,7 @@ template <typename Filter, typename Policies> struct filter_builder {
              output_uncertainty<R> r) {
     using kt = x_z_u_p_q_r<X, Policies>;
 
-    return kt{policies, typename kt::state(x.value),
+    return kt{policies, typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value)};
@@ -959,7 +959,7 @@ template <typename Filter, typename Policies> struct filter_builder {
                                 repack<prediction_types_t<Ps...>>, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
@@ -981,7 +981,7 @@ template <typename Filter, typename Policies> struct filter_builder {
                                     Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
@@ -1002,7 +1002,7 @@ template <typename Filter, typename Policies> struct filter_builder {
         x_z_u_p_q_r_h_f_g_us<X, Z, U, repack<update_types_t<Us...>>, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
@@ -1022,7 +1022,7 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_u_p_q_r_h_f_g<X, Z, U, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
               internal::convert<typename kt::process_uncertainty>(q.value),
               internal::convert<typename kt::output_uncertainty>(r.value),
@@ -1045,10 +1045,10 @@ template <typename Filter, typename Policies> struct filter_builder {
     using kt = x_z_p_qq_rr_f<X, Z, Q, R, Policies>;
 
     return kt{policies,
-              typename kt::state(x.value),
+              typename kt::state{x.value},
               internal::convert<typename kt::estimate_uncertainty>(p.value),
-              typename kt::noise_process_function(q.value),
-              typename kt::noise_observation_function(r.value),
+              typename kt::noise_process_function{q.value},
+              typename kt::noise_observation_function{r.value},
               internal::convert<typename kt::state_transition>(f.value)};
   }
 };

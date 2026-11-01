@@ -57,9 +57,9 @@ using acceleration = mp_units::quantity<mp_units::isq::acceleration[m / s2]>;
 constexpr auto s4{pow<4>(s)};
 
 template <typename... Types> using vector = column_vector<double, Types...>;
-using state_t =
+using motion =
     vector<position, velocity, acceleration, position, velocity, acceleration>;
-using output_t = vector<position, position>;
+using location = vector<position, position>;
 
 //! @brief Estimating the vehicle location.
 //!
@@ -99,19 +99,18 @@ using output_t = vector<position, position>;
       // The state X is chosen to be the position, velocity, acceleration in the
       // XY plane: [px, vx, ax, py, vy, ay]. We don't know the vehicle location;
       // we will set initial position, velocity and acceleration to 0.
-      state{state_t{position{0. * m}, velocity{0. * m / s},
-                    acceleration{0. * m / s2}, position{0. * m},
-                    velocity{0. * m / s}, acceleration{0. * m / s2}}},
+      state{motion{position{0. * m}, velocity{0. * m / s},
+                   acceleration{0. * m / s2}, position{0. * m},
+                   velocity{0. * m / s}, acceleration{0. * m / s2}}},
       // The vehicle has an onboard location sensor that reports output Z as X
       // and Y coordinates of the system.
-      output<output_t>,
+      output<location>,
       // The estimate uncertainty matrix P.
       // Since our initial state vector is a guess, we will set a very high
       // estimate uncertainty. The high estimate uncertainty results in a high
       // Kalman Gain, giving a high weight to the measurement.
       estimate_uncertainty{[]() -> auto {
-        using estimate_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
-        estimate_uncertainty_t value;
+        kf::ᴀʙᵀ<motion, motion> value;
         value.at<0, 0>(500. * m2);
         value.at<1, 1>(500. * m2 / s2);
         value.at<2, 2>(500. * m2 / s4);
@@ -123,8 +122,7 @@ using output_t = vector<position, position>;
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
       process_uncertainty{[]() -> auto {
-        using process_uncertainty_t = kf::ᴀʙᵀ<state_t, state_t>;
-        process_uncertainty_t value;
+        kf::ᴀʙᵀ<motion, motion> value;
         value.at<0, 0>(0.2 * 0.2 * 0.25 * m2);
         value.at<0, 1>(0.2 * 0.2 * 0.5 * m2 / s);
         value.at<0, 2>(0.2 * 0.2 * 0.5 * m2 / s2);
@@ -160,16 +158,14 @@ using output_t = vector<position, position>;
       // of xn is 6x1. Therefore the dimension of the observation matrix H shall
       // be 2x6.
       output_model{[]() -> auto {
-        using output_model_t = kf::evaluate<kf::quotient<output_t, state_t>>;
-        output_model_t value;
+        kf::evaluate<kf::quotient<location, motion>> value;
         value.at<0, 0>(1.);
         value.at<1, 3>(1.);
         return value;
       }()},
       // The state transition matrix F would be:
       state_transition{[]() -> auto {
-        using state_transition_t = kf::evaluate<kf::quotient<state_t, state_t>>;
-        state_transition_t value;
+        kf::evaluate<kf::quotient<motion, motion>> value;
         value.at<0, 0>(1.);
         value.at<0, 1>(1. * s);
         value.at<0, 2>(0.5 * s2);

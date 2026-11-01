@@ -40,7 +40,9 @@ add_library(kalman_linalg_mp_units_eigen INTERFACE)
 target_sources(
   kalman_linalg_mp_units_eigen
   INTERFACE
-  FILE_SET "linalg_headers" TYPE "HEADERS" FILES "fcarouge/linalg.hpp")
+  FILE_SET "linalg_headers"
+    TYPE "HEADERS"
+    FILES "fcarouge/linalg.hpp")
 target_link_libraries(
   kalman_linalg_mp_units_eigen
   INTERFACE
