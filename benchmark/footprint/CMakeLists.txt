@@ -83,6 +83,7 @@ function(footprint NAME POLICY OPTIMIZATION)
 
   string(TOLOWER "${NAME}_${POLICY}_${OPTIMIZATION}" MEASUREMENT)
   set(IMAGE kalman_footprint_${MEASUREMENT})
+  set(ROW "${CMAKE_CURRENT_BINARY_DIR}/row/${MEASUREMENT}.html")
   add_executable(${IMAGE} $<TARGET_OBJECTS:${CONFIGURATION}>
                  $<TARGET_OBJECTS:${MEMORY}>)
   set_target_properties(${IMAGE} PROPERTIES LINKER_LANGUAGE "CXX")
@@ -107,26 +108,24 @@ function(footprint NAME POLICY OPTIMIZATION)
       "-DFLASH=${EXPECTED_FLASH}"
       "-DRAM=${EXPECTED_RAM}"
       "-DSTACK=${EXPECTED_STACK}"
-      "-DROW=${CMAKE_CURRENT_BINARY_DIR}/row/${MEASUREMENT}.html"
+      "-DROW=${ROW}"
       -P
       "${CMAKE_CURRENT_SOURCE_DIR}/footprint.cmake")
   set_tests_properties(
     kalman_freestanding_footprint_${MEASUREMENT}_pass
     PROPERTIES FIXTURES_REQUIRED "kalman_footprint_page")
+  set_property(DIRECTORY APPEND PROPERTY FOOTPRINT_ROWS "${ROW}")
 endfunction(footprint)
 
-if(CMAKE_CROSSCOMPILING)
-  add_library(kalman_footprint_options INTERFACE)
-  target_compile_options(
-    kalman_footprint_options
-    INTERFACE "-ffunction-sections" "-fdata-sections" "-fstack-usage")
-
-  # Assemble the documentation page after every measurement, passed or failed.
+# Add the documentation page test, assembling the rows of every declared
+# measurement after them, passed or failed.
+function(footprint_page)
+  get_property(ROWS DIRECTORY PROPERTY FOOTPRINT_ROWS)
   add_test(
     NAME kalman_freestanding_footprint_page_pass
     COMMAND
       ${CMAKE_COMMAND}
-      "-DROWS=${CMAKE_CURRENT_BINARY_DIR}/row"
+      "-DROWS=${ROWS}"
       "-DTEMPLATE=${PROJECT_SOURCE_DIR}/documentation/html/footprint/index.html.in"
       "-DPAGE=${CMAKE_BINARY_DIR}/footprint/index.html"
       "-DCOMPILER=${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}"
@@ -136,6 +135,14 @@ if(CMAKE_CROSSCOMPILING)
   set_tests_properties(
     kalman_freestanding_footprint_page_pass
     PROPERTIES FIXTURES_CLEANUP "kalman_footprint_page")
+endfunction(footprint_page)
+
+if(CMAKE_CROSSCOMPILING)
+  add_library(kalman_footprint_options INTERFACE)
+  target_compile_options(
+    kalman_footprint_options
+    INTERFACE "-ffunction-sections" "-fdata-sections" "-fstack-usage")
+  cmake_language(DEFER CALL footprint_page)
 else()
   add_library(kalman_footprint_memory OBJECT "memory.cpp")
   set_target_properties(
