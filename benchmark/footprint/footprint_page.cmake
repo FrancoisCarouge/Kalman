@@ -37,14 +37,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 # Assemble the documentation page of the measured footprints from their table
-# rows.
-
-file(GLOB ROW_FILES "${ROWS}/*.html")
+# rows, skipping a measurement failed before writing its row.
 
 set(TABLE "")
-foreach(ROW_FILE IN LISTS ROW_FILES)
-  file(READ "${ROW_FILE}" ROW)
-  string(APPEND TABLE "${ROW}")
+foreach(ROW_FILE IN LISTS ROWS)
+  if(EXISTS "${ROW_FILE}")
+    file(READ "${ROW_FILE}" ROW)
+    string(APPEND TABLE "${ROW}")
+  endif()
 endforeach()
 
 configure_file("${TEMPLATE}" "${PAGE}" @ONLY)

@@ -44,6 +44,8 @@ For more information, please refer to <https://unlicense.org> ]]
 # being linked without any library. The worst-case stack is the entry point
 # frame and the largest frame of the leaf routines linked in the image.
 
+file(REMOVE "${ROW}")
+
 execute_process(
   COMMAND "${READELF}" --section-headers --wide "${IMAGE}"
   OUTPUT_VARIABLE HEADERS
