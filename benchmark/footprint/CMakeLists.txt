@@ -127,7 +127,7 @@ if(CMAKE_CROSSCOMPILING)
     COMMAND
       ${CMAKE_COMMAND}
       "-DROWS=${CMAKE_CURRENT_BINARY_DIR}/row"
-      "-DTEMPLATE=${CMAKE_CURRENT_SOURCE_DIR}/footprint.html.in"
+      "-DTEMPLATE=${PROJECT_SOURCE_DIR}/documentation/html/footprint/index.html.in"
       "-DPAGE=${CMAKE_BINARY_DIR}/footprint/index.html"
       "-DCOMPILER=${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}"
       "-DFLAGS=${CMAKE_CXX_FLAGS}"
