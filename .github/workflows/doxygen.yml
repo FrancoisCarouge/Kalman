@@ -34,7 +34,7 @@ jobs:
     - name: 'Footprint'
       run: |
         cmake -S . -B "${RUNNER_TEMP}/footprint" \
-          --toolchain 'support/freestanding/arm_cortex_m4.cmake'
+          --toolchain 'cmake/arm_cortex_m4_toolchain.cmake'
         cmake --build "${RUNNER_TEMP}/footprint" --parallel 4
         ctest --test-dir "${RUNNER_TEMP}/footprint" --parallel 4 || true
         cat "${RUNNER_TEMP}/footprint/footprint.md" \

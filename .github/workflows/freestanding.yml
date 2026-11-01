@@ -72,7 +72,7 @@ jobs:
     - name: 'Configure'
       run: |
         cmake -S . -B 'build' \
-          --toolchain 'support/freestanding/arm_cortex_m4.cmake'
+          --toolchain 'cmake/arm_cortex_m4_toolchain.cmake'
     - name: 'Build'
       run: cmake --build 'build' --parallel 4
     # Fails on any footprint change: commit the new criteria with its reason.
