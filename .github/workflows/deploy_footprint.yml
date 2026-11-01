@@ -1,0 +1,44 @@
+name: 'Deploy / Footprint'
+
+on:
+  workflow_run:
+    workflows: ['Deploy / Doxygen']
+    types:
+      - completed
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
+      with:
+        egress-policy: audit
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: lukka/get-cmake@a89e43e22a96abafcd7a62db652a65ecd33052c9 # v4.4.4
+    - name: 'Install: Arm GNU Toolchain'
+      run: |
+        sudo apt update
+        sudo apt install -y gcc-arm-none-eabi libstdc++-arm-none-eabi-dev
+    - name: 'Configure'
+      run: |
+        cmake -S . -B 'build' \
+          --toolchain 'cmake/toolchain_arm_cortex_m4.cmake'
+    - name: 'Build'
+      run: cmake --build 'build' --parallel 4
+    - name: 'Test'
+      run: ctest --test-dir 'build' --parallel 4
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/footprint
+        destination_dir: ./footprint

@@ -22,22 +22,6 @@ jobs:
         egress-policy: audit
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-    - name: 'Install: Latest CMake'
-      uses: lukka/get-cmake@a89e43e22a96abafcd7a62db652a65ecd33052c9 # v4.4.4
-    - name: 'Install: Arm GNU Toolchain'
-      run: |
-        sudo apt update
-        sudo apt install -y gcc-arm-none-eabi libstdc++-arm-none-eabi-dev
-    # Documents the measured footprint, gated by the freestanding workflow.
-    - name: 'Footprint'
-      run: |
-        cmake -S . -B "${RUNNER_TEMP}/footprint" \
-          --toolchain 'cmake/arm_cortex_m4_toolchain.cmake'
-        cmake --build "${RUNNER_TEMP}/footprint" --parallel 4
-        ctest --test-dir "${RUNNER_TEMP}/footprint" --parallel 4 || true
-        cat "${RUNNER_TEMP}/footprint/footprint.md" \
-          "${RUNNER_TEMP}/footprint/benchmark/footprint/row/"*.md \
-          > 'documentation/footprint.md'
     - name: Doxygen
       uses: mattnotmitt/doxygen-action@b84fe17600245bb5db3d6c247cc274ea98c15a3b # v1.12
       with:

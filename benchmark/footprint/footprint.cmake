@@ -101,10 +101,19 @@ endforeach()
 
 math(EXPR MEASURED_STACK "${ENTRY_FRAME} + ${LEAF_FRAME}")
 
-file(
-  WRITE "${ROW}"
-  "| ${NAME} | ${POLICY} | -${OPTIMIZATION} | ${text} | ${rodata} | ${data} | ${bss} | ${MEASURED_FLASH} | ${MEASURED_RAM} | ${MEASURED_STACK} |\n"
-)
+set(CELLS
+    ${NAME}
+    ${POLICY}
+    -${OPTIMIZATION}
+    ${text}
+    ${rodata}
+    ${data}
+    ${bss}
+    ${MEASURED_FLASH}
+    ${MEASURED_RAM}
+    ${MEASURED_STACK})
+list(JOIN CELLS "</td><td>" CELLS)
+file(WRITE "${ROW}" "<tr><td>${CELLS}</td></tr>\n")
 
 set(FAILURES "")
 foreach(METRIC IN ITEMS FLASH RAM STACK)

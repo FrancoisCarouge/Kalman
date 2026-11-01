@@ -107,9 +107,12 @@ function(footprint NAME POLICY OPTIMIZATION)
       "-DFLASH=${EXPECTED_FLASH}"
       "-DRAM=${EXPECTED_RAM}"
       "-DSTACK=${EXPECTED_STACK}"
-      "-DROW=${CMAKE_CURRENT_BINARY_DIR}/row/${MEASUREMENT}.md"
+      "-DROW=${CMAKE_CURRENT_BINARY_DIR}/row/${MEASUREMENT}.html"
       -P
       "${CMAKE_CURRENT_SOURCE_DIR}/footprint.cmake")
+  set_tests_properties(
+    kalman_freestanding_footprint_${MEASUREMENT}_pass
+    PROPERTIES FIXTURES_REQUIRED "kalman_footprint_page")
 endfunction(footprint)
 
 if(CMAKE_CROSSCOMPILING)
@@ -117,7 +120,22 @@ if(CMAKE_CROSSCOMPILING)
   target_compile_options(
     kalman_footprint_options
     INTERFACE "-ffunction-sections" "-fdata-sections" "-fstack-usage")
-  configure_file("footprint.md.in" "${CMAKE_BINARY_DIR}/footprint.md" @ONLY)
+
+  # Assemble the documentation page after every measurement, passed or failed.
+  add_test(
+    NAME kalman_freestanding_footprint_page_pass
+    COMMAND
+      ${CMAKE_COMMAND}
+      "-DROWS=${CMAKE_CURRENT_BINARY_DIR}/row"
+      "-DTEMPLATE=${CMAKE_CURRENT_SOURCE_DIR}/footprint.html.in"
+      "-DPAGE=${CMAKE_BINARY_DIR}/footprint/index.html"
+      "-DCOMPILER=${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}"
+      "-DFLAGS=${CMAKE_CXX_FLAGS}"
+      -P
+      "${CMAKE_CURRENT_SOURCE_DIR}/footprint_page.cmake")
+  set_tests_properties(
+    kalman_freestanding_footprint_page_pass
+    PROPERTIES FIXTURES_CLEANUP "kalman_footprint_page")
 else()
   add_library(kalman_footprint_memory OBJECT "memory.cpp")
   set_target_properties(
