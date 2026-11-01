@@ -1,31 +1,16 @@
 # Benchmarks
 
-Build and run the benchmarks on all platforms:
+## Embedded Footprint
+
+The [embedded footprint](https://francoiscarouge.github.io/Kalman/footprint.xhtml) measures the flash, RAM, and worst-case stack sizes of one filter step, one prediction and one update, for the [filter configurations](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/footprint), per update form policy and optimization level, on a bare-metal Arm Cortex-M4 target.
+
+Measure on Linux with the Arm GNU Toolchain:
 
 ```shell
 git clone --depth 1 "https://github.com/FrancoisCarouge/kalman"
-cmake -S "kalman" -B "build"
-cmake --build "build" --config "Release" --parallel
-ctest --test-dir "build" --build-config "Release" --tests-regex "kalman_benchmark"
+cmake -S "kalman" -B "build" --toolchain "cmake/toolchain_arm_cortex_m4.cmake"
+cmake --build "build" --parallel
+ctest --test-dir "build" --output-on-failure --parallel
 ```
 
-Plot the results on Linux:
-
-```shell
-./kalman/benchmark/script/plot.sh
-```
-
-# Results
-
-Run on Microsoft Windows 10 on native x64 with Visual Studio 2022 compiler 19.33 in release mode.
-
-![Eigen Update](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg)
-![Eigen Predict](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_predict.svg)
-![Float](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float.svg)
-![Float 1x1x0](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float_1x1x0.svg)
-![Float 1x1x1](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float_1x1x1.svg)
-![Baseline](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/baseline.svg)
-![Update Float 1x1x0](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/update_1x1x0.svg)
-![Update Float 1x1x1](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/update_1x1x1.svg)
-![Predict Float 1x1x0](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/predict_1x1x0.svg)
-![Predict Float 1x1x1](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/predict_1x1x1.svg)
+The tests write the measurements to `build/footprint/index.html`, and fail on any size change, larger or smaller, from its `footprint()` line in [footprint/CMakeLists.txt](https://github.com/FrancoisCarouge/Kalman/blob/master/benchmark/footprint/CMakeLists.txt). The criteria hold for the toolchain of the continuous integration runner, `gcc-arm-none-eabi` 14.2 on Ubuntu 26.04. To accept a change, update the line, with its reason in the commit message.
