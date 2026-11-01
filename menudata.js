@@ -161,6 +161,23 @@ var menudata={children:[
 {text:"Files",url:"files.xhtml",children:[
 {text:"File List",url:"files.xhtml"},
 {text:"File Members",url:"globals.xhtml",children:[
-{text:"All",url:"globals.xhtml"},
+{text:"All",url:"globals.xhtml",children:[
+{text:"b",url:"globals.xhtml#index_b"},
+{text:"c",url:"globals.xhtml#index_c"},
+{text:"f",url:"globals.xhtml#index_f"},
+{text:"i",url:"globals.xhtml#index_i"},
+{text:"j",url:"globals.xhtml#index_j"},
+{text:"k",url:"globals.xhtml#index_k"},
+{text:"l",url:"globals.xhtml#index_l"},
+{text:"m",url:"globals.xhtml#index_m"},
+{text:"o",url:"globals.xhtml#index_o"},
+{text:"p",url:"globals.xhtml#index_p"},
+{text:"s",url:"globals.xhtml#index_s"},
+{text:"u",url:"globals.xhtml#index_u"}]},
+{text:"Functions",url:"globals_func.xhtml",children:[
+{text:"f",url:"globals_func.xhtml#index_f"},
+{text:"i",url:"globals_func.xhtml#index_i"},
+{text:"j",url:"globals_func.xhtml#index_j"},
+{text:"s",url:"globals_func.xhtml#index_s"}]},
 {text:"Variables",url:"globals_vars.xhtml"}]}]},
 {text:"Examples",url:"examples.xhtml"}]}

@@ -41,7 +41,7 @@ var NAVTREE =
       [ "Conventions", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions", null ]
     ] ],
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
-      [ "Results", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results", null ]
+      [ "Embedded Footprint", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#embedded-footprint", null ]
     ] ],
     [ "Changelog", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml", [
       [ "0.5.3 - 2026-03-16", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16", [
@@ -97,6 +97,7 @@ var NAVTREE =
       [ "Pull Request Merge Checklist", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
     ] ],
     [ "Contributors", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
+    [ "Embedded Footprint", "footprint.xhtml", null ],
     [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
     [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
@@ -139,6 +140,7 @@ var NAVTREE =
       [ "File List", "files.xhtml", "files_dup" ],
       [ "File Members", "globals.xhtml", [
         [ "All", "globals.xhtml", null ],
+        [ "Functions", "globals_func.xhtml", null ],
         [ "Variables", "globals_vars.xhtml", null ]
       ] ]
     ] ],
@@ -150,15 +152,15 @@ var NAVTREEINDEX =
 [
 "1x1_8cpp.xhtml",
 "constructor_2output__type__2x1x0_8cpp.xhtml#a7b2e7bd61f817a4064ccb1eccea08456",
-"ekf__9x4x0__gimbal__attitude__unit_8cpp.xhtml#ae0f231c94e64986c86713b4544b6ec69",
-"kf__2x1x1__1d__rocket__altitude_8cpp.xhtml#a762f30f1ee6f756078f227826ef28195",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__1x2x0__terrain__estimation__unit_8cpp_03.xhtml#a99bf1f9600c76b57d458468248484d87",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02characteristics__2x1x0_8cpp_03.xhtml",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02values__2x1x0_8cpp_03.xhtml#a8a1ea2b7eabe072fa802ec1745c1ff26",
-"print_2arguments_8cpp.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__us__ps_8cpp_03_1_1measurement.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__rr__f_8cpp_03_1_1process__noise.xhtml#a726a72e59c0065b97fb1495500049866",
-"x__z__p__q__r__hh__ff__tt__oo__us_8cpp.xhtml"
+"ekf__9x4x0__gimbal__attitude__unit_8cpp.xhtml#a101bf2ad14c2d881970f987ba4f466d0",
+"kf__1x1x0__liquid__temperature__unit_8cpp.xhtml",
+"namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02kf__6x2x0_8cpp_03.xhtml",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02noise__jacobian__2x1x0_8cpp_03.xhtml#a714256956f05f035a78c4785379f794b",
+"one_2default_8cpp.xhtml",
+"structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03_1_1ned__acceleration.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__f__tt__oo__us_8cpp_03_1_1model.xhtml",
+"update__2x2x0_8cpp.xhtml#a823477430bc87fff700a38bb2451a5fd"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -325,20 +325,20 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  147</span> </div>
 <div class="line"><span class="lineno">  148</span>  <span class="comment">// Run a step of the filter, updating with the closing price of the day and</span></div>
 <div class="line"><span class="lineno">  149</span>  <span class="comment">// predicting the closing price of the next day, every trading day.</span></div>
-<div class="line"><span class="lineno">  150</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>](<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> close) -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><span class="lineno">  150</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>{[&amp;<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>](<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03.xhtml#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> close) -&gt; <span class="keywordtype">void</span> {</div>
 <div class="line"><span class="lineno">  151</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(close);</div>
 <div class="line"><span class="lineno">  152</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
 <div class="line"><span class="lineno">  153</span>  }};</div>
 <div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>  step(100.87 * USD);</div>
+<div class="line"><span class="lineno">  155</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(100.87 * USD);</div>
 <div class="line"><span class="lineno">  156</span> </div>
 <div class="line"><span class="lineno">  157</span>  <span class="comment">// The first closing price sets the level, the slope remains unknown.</span></div>
 <div class="line"><span class="lineno">  158</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 100.77 * USD, 0.001) &amp;&amp;</div>
 <div class="line"><span class="lineno">  159</span>         abs(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;()) &lt; 0.001 * USD / d &amp;&amp;</div>
 <div class="line"><span class="lineno">  160</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>  step(100.45 * USD);</div>
-<div class="line"><span class="lineno">  163</span>  step(99.86 * USD);</div>
+<div class="line"><span class="lineno">  162</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(100.45 * USD);</div>
+<div class="line"><span class="lineno">  163</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(99.86 * USD);</div>
 <div class="line"><span class="lineno">  164</span> </div>
 <div class="line"><span class="lineno">  165</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 99.447 * USD, 0.001) &amp;&amp;</div>
 <div class="line"><span class="lineno">  166</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), -0.4545 * USD / d, 0.001) &amp;&amp;</div>
@@ -349,43 +349,43 @@ template&lt;typename... Types&gt; </div>
 <div class="line"><span class="lineno">  171</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 1&gt;(), 0.64686 * USD2 / d / d, 0.001) &amp;&amp;</div>
 <div class="line"><span class="lineno">  172</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><span class="lineno">  173</span> </div>
-<div class="line"><span class="lineno">  174</span>  step(99.32 * USD);</div>
-<div class="line"><span class="lineno">  175</span>  step(100.53 * USD);</div>
-<div class="line"><span class="lineno">  176</span>  step(101.14 * USD);</div>
-<div class="line"><span class="lineno">  177</span>  step(98.63 * USD);</div>
-<div class="line"><span class="lineno">  178</span>  step(99.31 * USD);</div>
-<div class="line"><span class="lineno">  179</span>  step(103.04 * USD);</div>
-<div class="line"><span class="lineno">  180</span>  step(96.89 * USD);</div>
-<div class="line"><span class="lineno">  181</span>  step(99.94 * USD);</div>
-<div class="line"><span class="lineno">  182</span>  step(102.41 * USD);</div>
-<div class="line"><span class="lineno">  183</span>  step(101.85 * USD);</div>
-<div class="line"><span class="lineno">  184</span>  step(101.11 * USD);</div>
-<div class="line"><span class="lineno">  185</span>  step(100.59 * USD);</div>
-<div class="line"><span class="lineno">  186</span>  step(102.15 * USD);</div>
-<div class="line"><span class="lineno">  187</span>  step(99.28 * USD);</div>
-<div class="line"><span class="lineno">  188</span>  step(102.62 * USD);</div>
-<div class="line"><span class="lineno">  189</span>  step(101.88 * USD);</div>
-<div class="line"><span class="lineno">  190</span>  step(102.56 * USD);</div>
-<div class="line"><span class="lineno">  191</span>  step(103.11 * USD);</div>
-<div class="line"><span class="lineno">  192</span>  step(101.83 * USD);</div>
-<div class="line"><span class="lineno">  193</span>  step(103.25 * USD);</div>
-<div class="line"><span class="lineno">  194</span>  step(101.97 * USD);</div>
-<div class="line"><span class="lineno">  195</span>  step(101.6 * USD);</div>
-<div class="line"><span class="lineno">  196</span>  step(101.6 * USD);</div>
-<div class="line"><span class="lineno">  197</span>  step(100.14 * USD);</div>
-<div class="line"><span class="lineno">  198</span>  step(102.23 * USD);</div>
-<div class="line"><span class="lineno">  199</span>  step(100.59 * USD);</div>
-<div class="line"><span class="lineno">  200</span>  step(100.6 * USD);</div>
-<div class="line"><span class="lineno">  201</span>  step(98.47 * USD);</div>
-<div class="line"><span class="lineno">  202</span>  step(98.38 * USD);</div>
-<div class="line"><span class="lineno">  203</span>  step(99.53 * USD);</div>
-<div class="line"><span class="lineno">  204</span>  step(98.56 * USD);</div>
-<div class="line"><span class="lineno">  205</span>  step(96.41 * USD);</div>
-<div class="line"><span class="lineno">  206</span>  step(95.41 * USD);</div>
-<div class="line"><span class="lineno">  207</span>  step(94.07 * USD);</div>
-<div class="line"><span class="lineno">  208</span>  step(94.43 * USD);</div>
-<div class="line"><span class="lineno">  209</span>  step(91.81 * USD);</div>
-<div class="line"><span class="lineno">  210</span>  step(91.91 * USD);</div>
+<div class="line"><span class="lineno">  174</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(99.32 * USD);</div>
+<div class="line"><span class="lineno">  175</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(100.53 * USD);</div>
+<div class="line"><span class="lineno">  176</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(101.14 * USD);</div>
+<div class="line"><span class="lineno">  177</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(98.63 * USD);</div>
+<div class="line"><span class="lineno">  178</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(99.31 * USD);</div>
+<div class="line"><span class="lineno">  179</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(103.04 * USD);</div>
+<div class="line"><span class="lineno">  180</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(96.89 * USD);</div>
+<div class="line"><span class="lineno">  181</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(99.94 * USD);</div>
+<div class="line"><span class="lineno">  182</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(102.41 * USD);</div>
+<div class="line"><span class="lineno">  183</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(101.85 * USD);</div>
+<div class="line"><span class="lineno">  184</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(101.11 * USD);</div>
+<div class="line"><span class="lineno">  185</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(100.59 * USD);</div>
+<div class="line"><span class="lineno">  186</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(102.15 * USD);</div>
+<div class="line"><span class="lineno">  187</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(99.28 * USD);</div>
+<div class="line"><span class="lineno">  188</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(102.62 * USD);</div>
+<div class="line"><span class="lineno">  189</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(101.88 * USD);</div>
+<div class="line"><span class="lineno">  190</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(102.56 * USD);</div>
+<div class="line"><span class="lineno">  191</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(103.11 * USD);</div>
+<div class="line"><span class="lineno">  192</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(101.83 * USD);</div>
+<div class="line"><span class="lineno">  193</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(103.25 * USD);</div>
+<div class="line"><span class="lineno">  194</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(101.97 * USD);</div>
+<div class="line"><span class="lineno">  195</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(101.6 * USD);</div>
+<div class="line"><span class="lineno">  196</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(101.6 * USD);</div>
+<div class="line"><span class="lineno">  197</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(100.14 * USD);</div>
+<div class="line"><span class="lineno">  198</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(102.23 * USD);</div>
+<div class="line"><span class="lineno">  199</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(100.59 * USD);</div>
+<div class="line"><span class="lineno">  200</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(100.6 * USD);</div>
+<div class="line"><span class="lineno">  201</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(98.47 * USD);</div>
+<div class="line"><span class="lineno">  202</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(98.38 * USD);</div>
+<div class="line"><span class="lineno">  203</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(99.53 * USD);</div>
+<div class="line"><span class="lineno">  204</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(98.56 * USD);</div>
+<div class="line"><span class="lineno">  205</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(96.41 * USD);</div>
+<div class="line"><span class="lineno">  206</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(95.41 * USD);</div>
+<div class="line"><span class="lineno">  207</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(94.07 * USD);</div>
+<div class="line"><span class="lineno">  208</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(94.43 * USD);</div>
+<div class="line"><span class="lineno">  209</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(91.81 * USD);</div>
+<div class="line"><span class="lineno">  210</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(91.91 * USD);</div>
 <div class="line"><span class="lineno">  211</span> </div>
 <div class="line"><span class="lineno">  212</span>  <span class="comment">// The price turned down: the filter estimates a negative trend and forecasts</span></div>
 <div class="line"><span class="lineno">  213</span>  <span class="comment">// the next closing price below the last one, at 91.17$. The forecast</span></div>
@@ -412,6 +412,7 @@ template&lt;typename... Types&gt; </div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a94686c386c44f80cc386c067d726833d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03_xhtml_a9bf7db9d0738038331e9ea51a3b6521c"><div class="ttname"><a href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">fcarouge::benchmark::anonymous_namespace{ekf_1x2x0.cpp}::step</a></div><div class="ttdeci">const auto step</div><div class="ttdoc">Steps a terrain altitude filter, observing a range and a flow.</div><div class="ttdef"><b>Definition</b> <a href="ekf__1x2x0_8cpp_source.xhtml#l00049">ekf_1x2x0.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a183c70977c497ac30a3201051576e4ac"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">fcarouge::kalman_filter::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a19478b612027f688fd2d3ed290827afb"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb">fcarouge::kalman_filter::internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a35a41ff99d9716fe5b0757e207df8e43"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">fcarouge::kalman_filter::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>

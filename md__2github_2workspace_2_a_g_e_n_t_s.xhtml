@@ -207,7 +207,7 @@ Decorators</h2>
 <h2><a class="anchor" id="other-directories"></a>
 Other directories</h2>
 <ul>
-<li><code>benchmark/</code> — benchmark notes and result images; not wired into the CMake build.</li>
+<li><code>benchmark/</code> — benchmarks, described in its <code>README.md</code>. <code>benchmark/footprint/</code> holds the embedded footprint: ten filter configurations, each a <code>step</code> of one prediction and one update behind a flattened <code>extern "C"</code> entry point per update form policy, and their <code>footprint()</code> criteria lines. Configured with <code>--toolchain cmake/toolchain_arm_cortex_m4.cmake</code>, the build links each entry point alone, without any library, its tests measure the flash, RAM, and worst-case stack sizes, and a last test assembles them into <code>footprint/index.html</code> in the build tree; otherwise the configurations are <code>build()</code>-only tests. <code>.github/workflows/freestanding.yml</code> fails on any change, larger or smaller: update the criteria line, with its reason in the commit message. <code>.github/workflows/deploy_footprint.yml</code> publishes the page, embedded in the <code>footprint</code> Doxygen page.</li>
 <li><code>documentation/</code> — Doxygen config/theme.</li>
 <li><code>cmake/</code>, <code>pkgconfig/</code> — install/<code>find_package</code> export files (<code>fcarouge-kalman-config.cmake.in</code>, <code>.pc.in</code>).</li>
 <li>The root <code>CMakeLists.txt</code> only <code>add_subdirectory</code>s <code>pkgconfig</code>, <code>sample</code>, <code>support</code>, <code>test</code> when <code>PROJECT_IS_TOP_LEVEL</code> — so consumers using <code>FetchContent</code>/<code>find_package</code> only pull in <code>cmake/</code> + <code>include/</code>.</li>

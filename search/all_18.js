@@ -26,14 +26,13 @@ var searchData=
   ['requesting_20features_23',['Requesting Features',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features',1,'']]],
   ['resources_24',['Resources',['../index.xhtml#resources',1,'']]],
   ['responsibilities_25',['Our Responsibilities',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-responsibilities',1,'']]],
-  ['results_26',['Results',['../md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#results',1,'']]],
-  ['roll_5frate_27',['roll_rate',['../structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03_1_1roll__rate.xhtml',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}::roll_rate'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a8d1a7c08e8911a6ecf770bcae675b2ef',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}::roll_rate']]],
-  ['rom_5ffilter_28',['rom_filter',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03.xhtml#a56f04cb8b51b46ab2b89338d7758d022',1,'fcarouge::test::anonymous_namespace{constant_1x1x0.cpp}::rom_filter'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03.xhtml#a8108dbd9cb488bd6732d08dc99146588',1,'fcarouge::test::anonymous_namespace{constant_factory_1x1x0.cpp}::rom_filter']]],
-  ['rotate_5fbody_29',['rotate_body',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a0c421d9a489608df9389108f61518d0d',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
-  ['rotate_5fned_30',['rotate_ned',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a0f443c6d5eb88e4eccd99c0e352a731c',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
-  ['rotation_31',['rotation',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#ac603e86888f2daf82594b5795f1b4e75',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
-  ['rows_2ecpp_32',['rows.cpp',['../rows_8cpp.xhtml',1,'']]],
-  ['rows_5ffail_2ecpp_33',['rows_fail.cpp',['../rows__fail_8cpp.xhtml',1,'']]],
-  ['run_34',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
-  ['rvalue_5f1x1x0_2ecpp_35',['rvalue_1x1x0.cpp',['../rvalue__1x1x0_8cpp.xhtml',1,'']]]
+  ['roll_5frate_26',['roll_rate',['../structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03_1_1roll__rate.xhtml',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}::roll_rate'],['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a8d1a7c08e8911a6ecf770bcae675b2ef',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}::roll_rate']]],
+  ['rom_5ffilter_27',['rom_filter',['../namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__1x1x0_8cpp_03.xhtml#a56f04cb8b51b46ab2b89338d7758d022',1,'fcarouge::test::anonymous_namespace{constant_1x1x0.cpp}::rom_filter'],['../namespacefcarouge_1_1test_1_1anonymous__namespace_02constant__factory__1x1x0_8cpp_03.xhtml#a8108dbd9cb488bd6732d08dc99146588',1,'fcarouge::test::anonymous_namespace{constant_factory_1x1x0.cpp}::rom_filter']]],
+  ['rotate_5fbody_28',['rotate_body',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a0c421d9a489608df9389108f61518d0d',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
+  ['rotate_5fned_29',['rotate_ned',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#a0f443c6d5eb88e4eccd99c0e352a731c',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
+  ['rotation_30',['rotation',['../namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03.xhtml#ac603e86888f2daf82594b5795f1b4e75',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
+  ['rows_2ecpp_31',['rows.cpp',['../rows_8cpp.xhtml',1,'']]],
+  ['rows_5ffail_2ecpp_32',['rows_fail.cpp',['../rows__fail_8cpp.xhtml',1,'']]],
+  ['run_33',['Development Build &amp; Run',['../md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run',1,'']]],
+  ['rvalue_5f1x1x0_2ecpp_34',['rvalue_1x1x0.cpp',['../rvalue__1x1x0_8cpp.xhtml',1,'']]]
 ];

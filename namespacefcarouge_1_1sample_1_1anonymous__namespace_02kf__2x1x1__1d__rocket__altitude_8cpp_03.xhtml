@@ -332,14 +332,14 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  186</span>  <span class="comment">// measurements period: Δt = 250ms. The period is constant but passed as</span></div>
 <div class="line"><span class="lineno">  187</span>  <span class="comment">// variable for the example. The lambda helper shows how to simplify the</span></div>
 <div class="line"><span class="lineno">  188</span>  <span class="comment">// filter step call.</span></div>
-<div class="line"><span class="lineno">  189</span>  <span class="keyword">const</span> <span class="keyword">auto</span> step{</div>
+<div class="line"><span class="lineno">  189</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>{</div>
 <div class="line"><span class="lineno">  190</span>      [&amp;<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>, &amp;delta_time](<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__1x2x0__terrain__estimation__unit_8cpp_03.xhtml#a99bf1f9600c76b57d458468248484d87">altitude</a> measured_altitude,</div>
 <div class="line"><span class="lineno">  191</span>                             <a class="code hl_typedef" href="#a762f30f1ee6f756078f227826ef28195">acceleration</a> measured_acceleration) -&gt; <span class="keywordtype">void</span> {</div>
 <div class="line"><span class="lineno">  192</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(measured_altitude);</div>
 <div class="line"><span class="lineno">  193</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>(delta_time, measured_acceleration);</div>
 <div class="line"><span class="lineno">  194</span>      }};</div>
 <div class="line"><span class="lineno">  195</span> </div>
-<div class="line"><span class="lineno">  196</span>  step(-11.1, 40.02 + gravity);</div>
+<div class="line"><span class="lineno">  196</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(-11.1, 40.02 + gravity);</div>
 <div class="line"><span class="lineno">  197</span> </div>
 <div class="line"><span class="lineno">  198</span>  assert(std::abs(1 - (<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[0] / -12.3)) &lt; 0.002 &amp;&amp;</div>
 <div class="line"><span class="lineno">  199</span>         std::abs(1 - (<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[1] / 14.8)) &lt; 0.002 &amp;&amp;</div>
@@ -350,33 +350,33 @@ template&lt;auto Size&gt; </div>
 <div class="line"><span class="lineno">  204</span>         std::abs(1 - (<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>()(1, 1) / 438.8)) &lt; 0.001 &amp;&amp;</div>
 <div class="line"><span class="lineno">  205</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><span class="lineno">  206</span> </div>
-<div class="line"><span class="lineno">  207</span>  step(18., 39.97 + gravity);</div>
-<div class="line"><span class="lineno">  208</span>  step(22.9, 39.81 + gravity);</div>
-<div class="line"><span class="lineno">  209</span>  step(19.5, 39.75 + gravity);</div>
-<div class="line"><span class="lineno">  210</span>  step(28.5, 39.6 + gravity);</div>
-<div class="line"><span class="lineno">  211</span>  step(46.5, 39.77 + gravity);</div>
-<div class="line"><span class="lineno">  212</span>  step(68.9, 39.83 + gravity);</div>
-<div class="line"><span class="lineno">  213</span>  step(48.2, 39.73 + gravity);</div>
-<div class="line"><span class="lineno">  214</span>  step(56.1, 39.87 + gravity);</div>
-<div class="line"><span class="lineno">  215</span>  step(90.5, 39.81 + gravity);</div>
-<div class="line"><span class="lineno">  216</span>  step(104.9, 39.92 + gravity);</div>
-<div class="line"><span class="lineno">  217</span>  step(140.9, 39.78 + gravity);</div>
-<div class="line"><span class="lineno">  218</span>  step(148., 39.98 + gravity);</div>
-<div class="line"><span class="lineno">  219</span>  step(187.6, 39.76 + gravity);</div>
-<div class="line"><span class="lineno">  220</span>  step(209.2, 39.86 + gravity);</div>
-<div class="line"><span class="lineno">  221</span>  step(244.6, 39.61 + gravity);</div>
-<div class="line"><span class="lineno">  222</span>  step(276.4, 39.86 + gravity);</div>
-<div class="line"><span class="lineno">  223</span>  step(323.5, 39.74 + gravity);</div>
-<div class="line"><span class="lineno">  224</span>  step(357.3, 39.87 + gravity);</div>
-<div class="line"><span class="lineno">  225</span>  step(357.4, 39.63 + gravity);</div>
-<div class="line"><span class="lineno">  226</span>  step(398.3, 39.67 + gravity);</div>
-<div class="line"><span class="lineno">  227</span>  step(446.7, 39.96 + gravity);</div>
-<div class="line"><span class="lineno">  228</span>  step(465.1, 39.8 + gravity);</div>
-<div class="line"><span class="lineno">  229</span>  step(529.4, 39.89 + gravity);</div>
-<div class="line"><span class="lineno">  230</span>  step(570.4, 39.85 + gravity);</div>
-<div class="line"><span class="lineno">  231</span>  step(636.8, 39.9 + gravity);</div>
-<div class="line"><span class="lineno">  232</span>  step(693.3, 39.81 + gravity);</div>
-<div class="line"><span class="lineno">  233</span>  step(707.3, 39.81 + gravity);</div>
+<div class="line"><span class="lineno">  207</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18., 39.97 + gravity);</div>
+<div class="line"><span class="lineno">  208</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(22.9, 39.81 + gravity);</div>
+<div class="line"><span class="lineno">  209</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.5, 39.75 + gravity);</div>
+<div class="line"><span class="lineno">  210</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(28.5, 39.6 + gravity);</div>
+<div class="line"><span class="lineno">  211</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(46.5, 39.77 + gravity);</div>
+<div class="line"><span class="lineno">  212</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(68.9, 39.83 + gravity);</div>
+<div class="line"><span class="lineno">  213</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(48.2, 39.73 + gravity);</div>
+<div class="line"><span class="lineno">  214</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(56.1, 39.87 + gravity);</div>
+<div class="line"><span class="lineno">  215</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(90.5, 39.81 + gravity);</div>
+<div class="line"><span class="lineno">  216</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(104.9, 39.92 + gravity);</div>
+<div class="line"><span class="lineno">  217</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(140.9, 39.78 + gravity);</div>
+<div class="line"><span class="lineno">  218</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(148., 39.98 + gravity);</div>
+<div class="line"><span class="lineno">  219</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(187.6, 39.76 + gravity);</div>
+<div class="line"><span class="lineno">  220</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(209.2, 39.86 + gravity);</div>
+<div class="line"><span class="lineno">  221</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(244.6, 39.61 + gravity);</div>
+<div class="line"><span class="lineno">  222</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(276.4, 39.86 + gravity);</div>
+<div class="line"><span class="lineno">  223</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(323.5, 39.74 + gravity);</div>
+<div class="line"><span class="lineno">  224</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(357.3, 39.87 + gravity);</div>
+<div class="line"><span class="lineno">  225</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(357.4, 39.63 + gravity);</div>
+<div class="line"><span class="lineno">  226</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(398.3, 39.67 + gravity);</div>
+<div class="line"><span class="lineno">  227</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(446.7, 39.96 + gravity);</div>
+<div class="line"><span class="lineno">  228</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(465.1, 39.8 + gravity);</div>
+<div class="line"><span class="lineno">  229</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(529.4, 39.89 + gravity);</div>
+<div class="line"><span class="lineno">  230</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(570.4, 39.85 + gravity);</div>
+<div class="line"><span class="lineno">  231</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(636.8, 39.9 + gravity);</div>
+<div class="line"><span class="lineno">  232</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(693.3, 39.81 + gravity);</div>
+<div class="line"><span class="lineno">  233</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(707.3, 39.81 + gravity);</div>
 <div class="line"><span class="lineno">  234</span> </div>
 <div class="line"><span class="lineno">  235</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(748.5);</div>
 <div class="line"><span class="lineno">  236</span> </div>
@@ -414,6 +414,7 @@ template&lt;auto Size&gt; </div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a94686c386c44f80cc386c067d726833d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03_xhtml_a9bf7db9d0738038331e9ea51a3b6521c"><div class="ttname"><a href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">fcarouge::benchmark::anonymous_namespace{ekf_1x2x0.cpp}::step</a></div><div class="ttdeci">const auto step</div><div class="ttdoc">Steps a terrain altitude filter, observing a range and a flow.</div><div class="ttdef"><b>Definition</b> <a href="ekf__1x2x0_8cpp_source.xhtml#l00049">ekf_1x2x0.cpp:49</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a183c70977c497ac30a3201051576e4ac"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">fcarouge::kalman_filter::internal::output_uncertainty</a></div><div class="ttdeci">output_uncertainty(Element) -&gt; output_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a19478b612027f688fd2d3ed290827afb"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb">fcarouge::kalman_filter::internal::state_transition</a></div><div class="ttdeci">state_transition(Element) -&gt; state_transition&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a35a41ff99d9716fe5b0757e207df8e43"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">fcarouge::kalman_filter::internal::process_uncertainty</a></div><div class="ttdeci">process_uncertainty(Element) -&gt; process_uncertainty&lt; Element &gt;</div></div>

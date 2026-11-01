@@ -462,8 +462,8 @@ Lessons Learned</h2>
 <p><b>A specialized filter is an optimization of the general equations, not a new model.</b> A filter declared without a characteristic is the general filter as-if that characteristic were at its default value, with the unused algebra removed. The meaning of a prediction or an update is a property of the model alone, never of how the filter is declared. Each specialized filter should be tested to agree with the general filter.</p>
 <h2><a class="anchor" id="performance"></a>
 Performance</h2>
-<p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark">benchmarks</a> share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>
-<p><img src="https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg" alt="Eigen Update" style="pointer-events: none;" class="inline"/> <img src="https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float.svg" alt="Float" style="pointer-events: none;" class="inline"/></p>
+<p>Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.</p>
+<p>The <a href="https://francoiscarouge.github.io/Kalman/footprint.xhtml">embedded footprint</a> reports the flash, RAM, and worst-case stack sizes of filter configurations on a bare-metal Arm Cortex-M4 target.</p>
 <h2><a class="anchor" id="definitions"></a>
 Definitions</h2>
 <table class="markdownTable">
@@ -521,7 +521,6 @@ Third Party Acknowledgement</h2>
 <li><a href="https://eigen.tuxfamily.org/">Eigen</a> for linear algebra.</li>
 <li><a href="https://gcc.gnu.org">GCC</a> for compilation and code sanitizers.</li>
 <li><a href="https://github.com/gitleaks/gitleaks">gitleaks</a> for secret scanning.</li>
-<li><a href="https://github.com/google/benchmark">Google Benchmark</a> to implement the benchmarks.</li>
 <li><a href="https://github.com/gsl-lite/gsl-lite">gsl-lite</a> for guidelines support library.</li>
 <li><a href="http://ltp.sourceforge.net/coverage/lcov.php">lcov</a> to process coverage information.</li>
 <li><a href="https://github.com/alandefreitas/matplotplusplus">Matplot++</a> for plotting.</li>

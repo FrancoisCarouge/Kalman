@@ -1,6 +1,6 @@
 var namespacefcarouge =
 [
-    [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", null ],
+    [ "benchmark", "namespacefcarouge_1_1benchmark.xhtml", "namespacefcarouge_1_1benchmark" ],
     [ "kalman_filter", "namespacefcarouge_1_1kalman__filter.xhtml", "namespacefcarouge_1_1kalman__filter" ],
     [ "sample", "namespacefcarouge_1_1sample.xhtml", "namespacefcarouge_1_1sample" ],
     [ "test", "namespacefcarouge_1_1test.xhtml", "namespacefcarouge_1_1test" ],
