@@ -130,6 +130,7 @@ function(footprint_page)
       "-DPAGE=${CMAKE_BINARY_DIR}/footprint/index.html"
       "-DCOMPILER=${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}"
       "-DFLAGS=${CMAKE_CXX_FLAGS}"
+      "-DVERSION=${PROJECT_VERSION}"
       -P
       "${CMAKE_CURRENT_SOURCE_DIR}/footprint_page.cmake")
   set_tests_properties(
