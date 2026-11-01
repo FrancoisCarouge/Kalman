@@ -348,12 +348,9 @@ Safe physical linear algebra not only includes types and units safety, but also 
 
 ### Performance
 
-The [benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark) share some performance information. Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
+Custom specializations and implementations can outperform this library. Custom optimizations may include: using a different covariance estimation update formula; removing symmetry support; using a different matrix inversion formula; removing unused or identity model dynamics supports; implementing a generated, unrolled filter algebra expressions; or running on accelerator hardware.
 
 The [embedded footprint](https://francoiscarouge.github.io/Kalman/footprint.xhtml) reports the flash, RAM, and worst-case stack sizes of filter configurations on a bare-metal Arm Cortex-M4 target.
-
-![Eigen Update](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/eigen_update.svg)
-![Float](https://raw.githubusercontent.com/FrancoisCarouge/Kalman/master/benchmark/image/float.svg)
 
 ### Definitions
 
@@ -407,7 +404,6 @@ The library is designed, developed, and tested with the help of third-party tool
 - [Eigen](https://eigen.tuxfamily.org/) for linear algebra.
 - [GCC](https://gcc.gnu.org) for compilation and code sanitizers.
 - [gitleaks](https://github.com/gitleaks/gitleaks) for secret scanning.
-- [Google Benchmark](https://github.com/google/benchmark) to implement the benchmarks.
 - [gsl-lite](https://github.com/gsl-lite/gsl-lite) for guidelines support library.
 - [lcov](http://ltp.sourceforge.net/coverage/lcov.php) to process coverage information.
 - [Matplot++](https://github.com/alandefreitas/matplotplusplus) for plotting.
