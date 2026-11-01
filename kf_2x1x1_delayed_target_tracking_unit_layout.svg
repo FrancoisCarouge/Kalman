@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Situational layout of the kf_2x1x1_delayed_target_tracking_unit sample,
+     side view: the vehicle on the left, the target ahead of it on the right,
+     along the tracked axis, and the path of a measurement to the filter. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="460" viewBox="0 0 720 460" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Delayed Target Layout</title>
+  <rect x="0" y="0" width="720" height="460" fill="#ffffff"/>
+  <text x="360" y="32" text-anchor="middle" font-weight="bold" font-size="16">Sample 2x1x1 Delayed Target Tracking</text>
+  <text x="360" y="52" text-anchor="middle">Situational Layout, Side View</text>
+
+  <g transform="translate(0,-40)">
+  <!-- The ground. -->
+  <path d="M42,302 l8,8 M62,302 l8,8 M82,302 l8,8 M102,302 l8,8 M122,302 l8,8 M142,302 l8,8 M162,302 l8,8 M182,302 l8,8 M202,302 l8,8 M222,302 l8,8 M242,302 l8,8 M262,302 l8,8 M282,302 l8,8 M302,302 l8,8 M322,302 l8,8 M342,302 l8,8 M362,302 l8,8 M382,302 l8,8 M402,302 l8,8 M422,302 l8,8 M442,302 l8,8 M462,302 l8,8 M482,302 l8,8 M502,302 l8,8 M522,302 l8,8 M542,302 l8,8 M562,302 l8,8 M582,302 l8,8 M602,302 l8,8 M622,302 l8,8 M642,302 l8,8 M662,302 l8,8" stroke="#888888" stroke-width="1.5" fill="none"/>
+  <line x1="40" y1="302" x2="680" y2="302" stroke="#777777" stroke-width="1.5"/>
+
+  <!-- The sway of the vehicle. -->
+  <line x1="91" y1="200" x2="179" y2="200" stroke="#c0392b" stroke-width="2.5"/>
+  <polygon points="80.0,200.0 91.0,195.1 91.0,204.9" fill="#c0392b"/>
+  <polygon points="190.0,200.0 179.0,195.1 179.0,204.9" fill="#c0392b"/>
+  <text x="135" y="168" text-anchor="middle" fill="#c0392b" font-weight="bold">Sways back and forth</text>
+  <text x="135" y="186" text-anchor="middle" font-size="12" fill="#444444">2 sin(0.5 t) m/s²</text>
+
+  <!-- The vehicle, its accelerometer, and its camera. -->
+  <rect x="70" y="230" width="170" height="50" rx="8" fill="#e8e8e8" stroke="#666666" stroke-width="1.5"/>
+  <circle cx="105" cy="288" r="14" fill="#444444"/>
+  <circle cx="205" cy="288" r="14" fill="#444444"/>
+  <text x="150" y="252" text-anchor="middle" font-weight="bold">Vehicle</text>
+  <text x="150" y="268" text-anchor="middle" font-size="12" fill="#444444">accelerometer, 50 Hz</text>
+  <rect x="212" y="210" width="32" height="20" rx="3" fill="#1f6fb2"/>
+  <rect x="244" y="214" width="10" height="12" fill="#174f80"/>
+
+  <!-- The field of view of the camera. -->
+  <polygon points="254,220 520,150 520,300" fill="#eef4fa"/>
+  <line x1="254" y1="220" x2="520" y2="150" stroke="#1f6fb2" stroke-width="1" stroke-dasharray="5 4"/>
+  <line x1="254" y1="220" x2="520" y2="300" stroke="#1f6fb2" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="262" y="186" fill="#1f6fb2" font-weight="bold">Camera</text>
+  <text x="262" y="202" font-size="12" fill="#444444">relative position, ±0.1 m, 10 Hz</text>
+
+  <!-- The target as imaged, a delay earlier, farther ahead as the vehicle
+       closes in. -->
+  <rect x="580" y="240" width="80" height="40" rx="6" fill="none" stroke="#d9661f" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <circle cx="596" cy="290" r="12" fill="none" stroke="#d9661f" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="644" cy="290" r="12" fill="none" stroke="#d9661f" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="620" y="232" text-anchor="middle" font-size="12" fill="#a8460c">as imaged</text>
+
+  <!-- The target now. -->
+  <rect x="490" y="240" width="80" height="40" rx="6" fill="#d9661f"/>
+  <circle cx="506" cy="290" r="12" fill="#444444"/>
+  <circle cx="554" cy="290" r="12" fill="#444444"/>
+  <text x="530" y="265" text-anchor="middle" font-weight="bold" fill="#ffffff">Target</text>
+  <text x="530" y="232" text-anchor="middle" font-size="12" fill="#a8460c">now</text>
+
+  <!-- The relative position, the state. -->
+  <line x1="254" y1="226" x2="254" y2="360" stroke="#555555" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="490" y1="282" x2="490" y2="390" stroke="#555555" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="580" y1="282" x2="580" y2="390" stroke="#555555" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="264" y1="350" x2="480" y2="350" stroke="#2f7d32" stroke-width="2.5"/>
+  <polygon points="490.0,350.0 479.0,345.1 479.0,354.9" fill="#2f7d32"/>
+  <polygon points="254.0,350.0 265.0,345.1 265.0,354.9" fill="#2f7d32"/>
+  <text x="372" y="340" text-anchor="middle" fill="#2f7d32" font-weight="bold">Relative position and velocity, the state</text>
+  <text x="372" y="370" text-anchor="middle" font-size="12" fill="#444444">10 m ahead initially</text>
+
+  <!-- The motion during the delay. -->
+  <line x1="500" y1="380" x2="570" y2="380" stroke="#9400d3" stroke-width="2"/>
+  <polygon points="490.0,380.0 501.0,375.1 501.0,384.9" fill="#9400d3"/>
+  <polygon points="580.0,380.0 569.0,375.1 569.0,384.9" fill="#9400d3"/>
+  <text x="596" y="384" fill="#9400d3" font-weight="bold">0.1 s of motion</text>
+  <text x="596" y="400" font-size="12" fill="#444444">up to 0.8 m</text>
+
+  <!-- The path of a measurement to the filter. -->
+  <rect x="40" y="428" width="180" height="48" rx="6" fill="#ffffff" stroke="#1f6fb2" stroke-width="1.5"/>
+  <text x="130" y="448" text-anchor="middle" font-weight="bold" fill="#1f6fb2">Image</text>
+  <text x="130" y="465" text-anchor="middle" font-size="12" fill="#444444">at the instant it describes</text>
+  <line x1="220" y1="452" x2="261.2" y2="452" stroke="#555555" stroke-width="2"/>
+  <polygon points="270.0,452.0 259.0,447.1 259.0,456.9" fill="#555555"/>
+  <rect x="270" y="428" width="180" height="48" rx="6" fill="#ffffff" stroke="#555555" stroke-width="1.5"/>
+  <text x="360" y="448" text-anchor="middle" font-weight="bold">Image processing</text>
+  <text x="360" y="465" text-anchor="middle" font-size="12" fill="#444444">0.1 s, five predictions</text>
+  <line x1="450" y1="452" x2="491.2" y2="452" stroke="#555555" stroke-width="2"/>
+  <polygon points="500.0,452.0 489.0,447.1 489.0,456.9" fill="#555555"/>
+  <rect x="500" y="428" width="180" height="48" rx="6" fill="#ffffff" stroke="#009e73" stroke-width="1.5"/>
+  <text x="590" y="448" text-anchor="middle" font-weight="bold" fill="#009e73">Filter</text>
+  <text x="590" y="465" text-anchor="middle" font-size="12" fill="#444444">a measurement of the past</text>
+  </g>
+</svg>
