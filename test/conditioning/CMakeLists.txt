@@ -38,4 +38,5 @@ For more information, please refer to <https://unlicense.org> ]]
 
 pass("floors_1x1x0")
 pass("floors_3x2x0" BACKENDS "eigen" "eigexed")
+pass("floors_unit_2x2x0" BACKENDS "mp_units_eigen")
 pass("symmetrize_3x2x0" BACKENDS "eigen" "eigexed")

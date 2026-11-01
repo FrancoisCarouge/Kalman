@@ -211,18 +211,35 @@ constexpr void raise_variance(auto &variance, const auto &deviation) {
   }
 }
 
+// Raises the diagonal variance at the index to the square of its standard
+// deviation floor, through the element setter of a typed matrix, whose elements
+// of quantities cannot be referenced, otherwise through the element reference.
+template <std::size_t Index>
+constexpr void raise_variance_at(auto &p, const auto &deviation) {
+  if constexpr (requires {
+                  p.template at<Index, Index>(p.template at<Index, Index>());
+                }) {
+    auto variance{p.template at<Index, Index>()};
+
+    raise_variance(variance, deviation);
+    p.template at<Index, Index>(variance);
+  } else {
+    static_assert(std::is_lvalue_reference_v<decltype(at<Index, Index>(p))>,
+                  "The floors require assignable or settable estimate "
+                  "uncertainty elements from the linear algebra backend.");
+
+    raise_variance(at<Index, Index>(p), deviation);
+  }
+}
+
 // Raises each diagonal variance of the estimate uncertainty, in state order.
 template <typename Type, typename... Deviations>
 constexpr void raise_variances(Type &p,
                                const std::tuple<Deviations...> &deviations) {
   if constexpr (indexable<Type>) {
-    static_assert(std::is_lvalue_reference_v<decltype(at<0, 0>(p))>,
-                  "The floors require assignable estimate uncertainty "
-                  "elements from the linear algebra backend.");
-
     [&]<std::size_t... Indexes>(std::index_sequence<Indexes...>) {
-      (raise_variance(at<Indexes, Indexes>(p),
-                      deviation_of(std::get<Indexes>(deviations))),
+      (raise_variance_at<Indexes>(p,
+                                  deviation_of(std::get<Indexes>(deviations))),
        ...);
     }(std::index_sequence_for<Deviations...>{});
   } else {

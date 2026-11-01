@@ -666,8 +666,7 @@ using kf::symmetrize;
 //! uncertainty consistent with the estimation error: they change it on purpose,
 //! a modelling decision rather than a numerical repair. A variance raised alone
 //! keeps its correlations, which may lose the positive semi-definiteness of the
-//! estimate uncertainty. Requires the elements of a matrix estimate uncertainty
-//! be assignable at compile-time positions.
+//! estimate uncertainty.
 using kf::floors;
 
 //! @brief Compile-time constant of a value for filter declaration support.
