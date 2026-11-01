@@ -70,6 +70,12 @@ Options for the owner to decide, not implemented. The getter return types (F46) 
 - B. Store only what a later step reads (x, p, and the models or values the user set), and compute the getters of the others on demand from the stored arguments: no new vocabulary, but a getter of a callable characteristic re-evaluates it.
 - C. Keep them, and document the cost.
 
+**Higher-level semantics (F50, F51).** Owner's objective (2026-11-01): beat the hand-rolled filters by telling the toolchain what they encode by hand. Measured on ArduPilot's precision landing filter at the matrix level: 1.51 times its original's time with the models as members, 1.20 with their structure known at compile time; a bank of eight filters over an 8-lane SIMD element takes 0.33 to 0.70 times the time of eight hand-rolled ones.
+
+- A. Constant characteristics declared as compile-time values (`output_model{cw<H>}`, as the floors' `cw<σ>`), folded into the equations; the gain of a scalar output from the reciprocal of S.
+- B. Element types that are vectors of filters (C++26 `std::simd`): a bank of identical filters, conditioning without value branches (`max` for the floors). Candidates: the EKFGSF models, the per-axis filters.
+- C. A symmetric covariance type with operations specialized at fixed sizes: Eigen's generic self-adjoint path is slower at 2x2 (1.88 times the original).
+
 **Angle arithmetic (F45).** The innovation is `z - h(x)` and the correction `x + K y`: a bearing or yaw crossing ±π gives a 2π innovation (MRPT's range-bearing tracker ends 22.5 m off on the library without a workaround, 1.24 m with it).
 
 - A. Named `innovation{callable(z, z_predicted) -> y}` and `correction{callable(x, dx) -> x}` declaration arguments, defaulting to the subtraction and the sum: MRPT's `OnSubtractObservationVectors` and `OnNormalizeStateVector`.
