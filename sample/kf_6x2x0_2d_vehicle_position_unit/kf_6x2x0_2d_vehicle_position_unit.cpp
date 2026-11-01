@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <tuple>
 
 #include <mp-units/systems/isq/space_and_time.h>
 
@@ -59,7 +60,31 @@ constexpr auto s4{pow<4>(s)};
 template <typename... Types> using vector = column_vector<double, Types...>;
 using motion =
     vector<position, velocity, acceleration, position, velocity, acceleration>;
+//! @brief A covariance of the motion, the estimate uncertainty P and the
+//! process uncertainty Q: the element of a row and a column is the product of
+//! the motion elements they index.
+using motion_covariance =
+    matrix<double, motion::row_indexes, motion::row_indexes>;
 using location = vector<position, position>;
+using reciprocal_position =
+    mp_units::quantity<mp_units::one / mp_units::isq::length[m]>;
+using reciprocal_velocity =
+    mp_units::quantity<mp_units::one / mp_units::isq::velocity[m / s]>;
+using reciprocal_acceleration =
+    mp_units::quantity<mp_units::one / mp_units::isq::acceleration[m / s2]>;
+//! @brief The reciprocals of the motion elements: the column indexes of a
+//! derivative by the motion.
+using reciprocal_motion =
+    std::tuple<reciprocal_position, reciprocal_velocity,
+               reciprocal_acceleration, reciprocal_position,
+               reciprocal_velocity, reciprocal_acceleration>;
+//! @brief The state transition F: the derivatives of the motion by the motion
+//! [1, s, s^2].
+using motion_transition =
+    matrix<double, motion::row_indexes, reciprocal_motion>;
+//! @brief The output model H: the derivatives of the location by the motion [1,
+//! s, s^2].
+using location_model = matrix<double, location::row_indexes, reciprocal_motion>;
 
 //! @brief Estimating the vehicle location.
 //!
@@ -110,7 +135,7 @@ using location = vector<position, position>;
       // estimate uncertainty. The high estimate uncertainty results in a high
       // Kalman Gain, giving a high weight to the measurement.
       estimate_uncertainty{[]() -> auto {
-        kf::ᴀʙᵀ<motion, motion> value;
+        motion_covariance value;
         value.at<0, 0>(500. * m2);
         value.at<1, 1>(500. * m2 / s2);
         value.at<2, 2>(500. * m2 / s4);
@@ -122,7 +147,7 @@ using location = vector<position, position>;
       // The process uncertainty noise matrix Q, constant, computed in place,
       // with  random acceleration standard deviation: σa = 0.2 m.s^-2.
       process_uncertainty{[]() -> auto {
-        kf::ᴀʙᵀ<motion, motion> value;
+        motion_covariance value;
         value.at<0, 0>(0.2 * 0.2 * 0.25 * m2);
         value.at<0, 1>(0.2 * 0.2 * 0.5 * m2 / s);
         value.at<0, 2>(0.2 * 0.2 * 0.5 * m2 / s2);
@@ -158,14 +183,14 @@ using location = vector<position, position>;
       // of xn is 6x1. Therefore the dimension of the observation matrix H shall
       // be 2x6.
       output_model{[]() -> auto {
-        kf::evaluate<kf::quotient<location, motion>> value;
+        location_model value;
         value.at<0, 0>(1.);
         value.at<1, 3>(1.);
         return value;
       }()},
       // The state transition matrix F would be:
       state_transition{[]() -> auto {
-        kf::evaluate<kf::quotient<motion, motion>> value;
+        motion_transition value;
         value.at<0, 0>(1.);
         value.at<0, 1>(1. * s);
         value.at<0, 2>(0.5 * s2);

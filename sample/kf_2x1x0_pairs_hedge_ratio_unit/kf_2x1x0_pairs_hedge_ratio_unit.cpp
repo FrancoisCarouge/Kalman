@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <tuple>
 
 #include <mp-units/framework/dimension.h>
 
@@ -61,8 +62,20 @@ using price = mp_units::quantity<USD>;
 template <typename... Types> using vector = column_vector<double, Types...>;
 using ratio = mp_units::quantity<mp_units::one>;
 using regression = vector<ratio, price>;
+//! @brief A covariance of the regression, the estimate uncertainty P and the
+//! process uncertainty Q: the element of a row and a column is the product of
+//! the regression elements they index [1, $, $^2].
+using regression_covariance =
+    matrix<double, regression::row_indexes, regression::row_indexes>;
 using dependent_price = vector<price>;
-using regressor = kf::evaluate<kf::quotient<dependent_price, regression>>;
+//! @brief The reciprocals of the regression elements: the column indexes of a
+//! derivative by the regression.
+using reciprocal_regression =
+    std::tuple<ratio, mp_units::quantity<mp_units::one / USD>>;
+//! @brief The output model H: the derivatives of the dependent price by the
+//! regression [$, 1].
+using regressor =
+    matrix<double, dependent_price::row_indexes, reciprocal_regression>;
 
 //! @brief Estimating the pairs trading hedge ratio.
 //!
@@ -103,12 +116,12 @@ using regressor = kf::evaluate<kf::quotient<dependent_price, regression>>;
       // As in the reference, the initial estimate uncertainty P is null: the
       // first closing prices do not update the state, after which the process
       // uncertainty accumulates.
-      estimate_uncertainty{kf::ᴀʙᵀ<regression, regression>{}},
+      estimate_uncertainty{regression_covariance{}},
       // The process uncertainty Q: Vw = δ / (1 - δ) with δ = 0.0001, for the
       // dimensionless hedge ratio and for the intercept in dollars.
       process_uncertainty{[]() -> auto {
         const double delta{0.0001};
-        kf::ᴀʙᵀ<regression, regression> value;
+        regression_covariance value;
         value.at<0, 0>(delta / (1. - delta) * mp_units::one);
         value.at<1, 1>(delta / (1. - delta) * USD2);
         return value;
