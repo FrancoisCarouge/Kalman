@@ -40,6 +40,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/linalg.hpp"
 
 #include <cassert>
+#include <tuple>
 
 #include <mp-units/framework/dimension.h>
 
@@ -63,7 +64,22 @@ using price = mp_units::quantity<USD>;
 template <typename... Types> using vector = column_vector<double, Types...>;
 using price_slope = mp_units::quantity<USD / d>;
 using trend = vector<price, price_slope>;
+//! @brief A covariance of the trend, the estimate uncertainty P and the process
+//! uncertainty Q: the element of a row and a column is the product of the trend
+//! elements they index [$^2, $^2.d^-1, $^2.d^-2].
+using trend_covariance = matrix<double, trend::row_indexes, trend::row_indexes>;
 using closing_price = vector<price>;
+//! @brief The reciprocals of the trend elements: the column indexes of a
+//! derivative by the trend.
+using reciprocal_trend = std::tuple<mp_units::quantity<mp_units::one / USD>,
+                                    mp_units::quantity<d / USD>>;
+//! @brief The state transition F: the derivatives of the trend by the trend [1,
+//! d].
+using trend_transition = matrix<double, trend::row_indexes, reciprocal_trend>;
+//! @brief The output model H: the derivatives of the closing price by the trend
+//! [1, d].
+using closing_price_model =
+    matrix<double, closing_price::row_indexes, reciprocal_trend>;
 
 //! @brief Forecasting the short-term stock price.
 //!
@@ -108,7 +124,7 @@ using closing_price = vector<price>;
       // model. The first closing price then sets the level and the second one
       // sets the slope.
       estimate_uncertainty{[]() -> auto {
-        kf::ᴀʙᵀ<trend, trend> value;
+        trend_covariance value;
         value.at<0, 0>(1000. * USD2);
         value.at<1, 1>(1000. * USD2 / d / d);
         return value;
@@ -116,7 +132,7 @@ using closing_price = vector<price>;
       // The process uncertainty Q holds the variances of the level and slope
       // disturbances: σξ^2 = 0.25 $^2 and σζ^2 = 0.01 $^2/d^2.
       process_uncertainty{[]() -> auto {
-        kf::ᴀʙᵀ<trend, trend> value;
+        trend_covariance value;
         value.at<0, 0>(0.25 * USD2);
         value.at<1, 1>(0.01 * USD2 / d / d);
         return value;
@@ -126,13 +142,13 @@ using closing_price = vector<price>;
       output_uncertainty{1. * USD2},
       // The output model H observes the level only.
       output_model{[]() -> auto {
-        kf::evaluate<kf::quotient<closing_price, trend>> value;
+        closing_price_model value;
         value.at<0>(1.);
         return value;
       }()},
       // The state transition F adds the slope over one day to the level.
       state_transition{[]() -> auto {
-        kf::evaluate<kf::quotient<trend, trend>> value;
+        trend_transition value;
         value.at<0, 0>(1.);
         value.at<0, 1>(1. * d);
         value.at<1, 1>(1.);
