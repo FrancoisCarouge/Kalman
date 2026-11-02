@@ -14,6 +14,7 @@ var policy_8hpp =
     [ "condition", "policy_8hpp.xhtml#a5a8e6f0e735b9a2538262fbe471d59ef", null ],
     [ "deviation_of", "policy_8hpp.xhtml#a2d4446a89db6abd550d452ab84b34ff7", null ],
     [ "raise_variance", "policy_8hpp.xhtml#a09bf95c97544d096b0dff206da12239a", null ],
+    [ "raise_variance_at", "policy_8hpp.xhtml#ae4a930ac7d06563ed4abd66602625d81", null ],
     [ "raise_variances", "policy_8hpp.xhtml#a869f203d86632bf57d276e099b93ea08", null ],
     [ "symmetrize_estimate", "policy_8hpp.xhtml#a63eb6239e78d5f06fd3f6c1c1b0a4e3f", null ],
     [ "update_estimate_uncertainty", "policy_8hpp.xhtml#a999318df312db38926329bb1d7f03d13", null ],

@@ -50,6 +50,7 @@ var namespacefcarouge_1_1kalman__filter =
       [ "process_uncertainty", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a9757ee5f02786f560732088d70912272", null ],
       [ "process_uncertainty", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43", null ],
       [ "raise_variance", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a09bf95c97544d096b0dff206da12239a", null ],
+      [ "raise_variance_at", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ae4a930ac7d06563ed4abd66602625d81", null ],
       [ "raise_variances", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a869f203d86632bf57d276e099b93ea08", null ],
       [ "read", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#af191c9432f237e4cfb0fedc92bd0eb5a", null ],
       [ "state", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a37536dd9550790894dd0aaf5ce4f7a42", null ],

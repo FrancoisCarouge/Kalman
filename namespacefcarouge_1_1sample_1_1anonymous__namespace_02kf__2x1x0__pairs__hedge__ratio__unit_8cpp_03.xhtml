@@ -129,10 +129,17 @@ Typedefs</h2></td></tr>
 <tr class="separator:aaa6583ffeddac2f3aca9208dafe0c06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a611dba75758a28d99aa04a54ac721d66" id="r_a611dba75758a28d99aa04a54ac721d66"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a611dba75758a28d99aa04a54ac721d66">regression</a> = <a class="el" href="#a9a79b019c4fc93133871fc59055b3fcd">vector</a>&lt;<a class="el" href="#aaa6583ffeddac2f3aca9208dafe0c06a">ratio</a>, <a class="el" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a>&gt;</td></tr>
 <tr class="separator:a611dba75758a28d99aa04a54ac721d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a3fdc950af23f5e0f4243d0d6c5875" id="r_a08a3fdc950af23f5e0f4243d0d6c5875"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08a3fdc950af23f5e0f4243d0d6c5875">regression_covariance</a></td></tr>
+<tr class="memdesc:a08a3fdc950af23f5e0f4243d0d6c5875"><td class="mdescLeft">&#160;</td><td class="mdescRight">A covariance of the regression, the estimate uncertainty P and the process uncertainty Q: the element of a row and a column is the product of the regression elements they index [1, $, $^2].  <br /></td></tr>
+<tr class="separator:a08a3fdc950af23f5e0f4243d0d6c5875"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31066ec0adba65e6429e5ba5ac840d82" id="r_a31066ec0adba65e6429e5ba5ac840d82"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31066ec0adba65e6429e5ba5ac840d82">dependent_price</a> = <a class="el" href="#a9a79b019c4fc93133871fc59055b3fcd">vector</a>&lt;<a class="el" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a>&gt;</td></tr>
 <tr class="separator:a31066ec0adba65e6429e5ba5ac840d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cb6d4a7d97efc8770e9b97b851159f8" id="r_a8cb6d4a7d97efc8770e9b97b851159f8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cb6d4a7d97efc8770e9b97b851159f8">regressor</a> = <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate</a>&lt;<a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a94790d4b89c5a5d249be974718936ed0">kf::quotient</a>&lt;<a class="el" href="#a31066ec0adba65e6429e5ba5ac840d82">dependent_price</a>, <a class="el" href="#a611dba75758a28d99aa04a54ac721d66">regression</a>&gt;&gt;</td></tr>
-<tr class="separator:a8cb6d4a7d97efc8770e9b97b851159f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a616f6a995cfb16df3e31ff8c56ea3c76" id="r_a616f6a995cfb16df3e31ff8c56ea3c76"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a616f6a995cfb16df3e31ff8c56ea3c76">reciprocal_regression</a></td></tr>
+<tr class="memdesc:a616f6a995cfb16df3e31ff8c56ea3c76"><td class="mdescLeft">&#160;</td><td class="mdescRight">The reciprocals of the regression elements: the column indexes of a derivative by the regression.  <br /></td></tr>
+<tr class="separator:a616f6a995cfb16df3e31ff8c56ea3c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b071da838be5180cca65edbaf5eeb72" id="r_a1b071da838be5180cca65edbaf5eeb72"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b071da838be5180cca65edbaf5eeb72">regressor</a></td></tr>
+<tr class="memdesc:a1b071da838be5180cca65edbaf5eeb72"><td class="mdescLeft">&#160;</td><td class="mdescRight">The output model H: the derivatives of the dependent price by the regression [$, 1].  <br /></td></tr>
+<tr class="separator:a1b071da838be5180cca65edbaf5eeb72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -162,7 +169,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00064">64</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00070">70</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
 
 </div>
 </div>
@@ -178,7 +185,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00060">60</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00061">61</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
 
 </div>
 </div>
@@ -194,7 +201,29 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00062">62</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00063">63</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a616f6a995cfb16df3e31ff8c56ea3c76" name="a616f6a995cfb16df3e31ff8c56ea3c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a616f6a995cfb16df3e31ff8c56ea3c76">&#9670;&#160;</a></span>reciprocal_regression</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::reciprocal_regression</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    std::tuple&lt;<a class="code hl_typedef" href="#aaa6583ffeddac2f3aca9208dafe0c06a">ratio</a>, mp_units::quantity&lt;mp_units::one / <a class="code hl_variable" href="#af561b46fb32a7f9cbb038f0e1c61c350">USD</a>&gt;&gt;</div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_aaa6583ffeddac2f3aca9208dafe0c06a"><div class="ttname"><a href="#aaa6583ffeddac2f3aca9208dafe0c06a">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::ratio</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::one &gt; ratio</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00063">kf_2x1x0_pairs_hedge_ratio_unit.cpp:63</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_af561b46fb32a7f9cbb038f0e1c61c350"><div class="ttname"><a href="#af561b46fb32a7f9cbb038f0e1c61c350">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::USD</a></div><div class="ttdeci">constexpr auto USD</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00058">kf_2x1x0_pairs_hedge_ratio_unit.cpp:58</a></div></div>
+</div><!-- fragment -->
+<p>The reciprocals of the regression elements: the column indexes of a derivative by the regression. </p>
+
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00073">73</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
 
 </div>
 </div>
@@ -210,23 +239,47 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00063">63</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00064">64</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a8cb6d4a7d97efc8770e9b97b851159f8" name="a8cb6d4a7d97efc8770e9b97b851159f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cb6d4a7d97efc8770e9b97b851159f8">&#9670;&#160;</a></span>regressor</h2>
+<a id="a08a3fdc950af23f5e0f4243d0d6c5875" name="a08a3fdc950af23f5e0f4243d0d6c5875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08a3fdc950af23f5e0f4243d0d6c5875">&#9670;&#160;</a></span>regression_covariance</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::regressor = <a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a2ed3e98ff5d1b6cfb82d72f4d1c6f8b1">kf::evaluate</a>&lt;<a class="el" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a94790d4b89c5a5d249be974718936ed0">kf::quotient</a>&lt;<a class="el" href="#a31066ec0adba65e6429e5ba5ac840d82">dependent_price</a>, <a class="el" href="#a611dba75758a28d99aa04a54ac721d66">regression</a>&gt;&gt;</td>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::regression_covariance</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    matrix&lt;double, regression::row_indexes, regression::row_indexes&gt;</div>
+</div><!-- fragment -->
+<p>A covariance of the regression, the estimate uncertainty P and the process uncertainty Q: the element of a row and a column is the product of the regression elements they index [1, $, $^2]. </p>
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00065">65</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00068">68</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1b071da838be5180cca65edbaf5eeb72" name="a1b071da838be5180cca65edbaf5eeb72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b071da838be5180cca65edbaf5eeb72">&#9670;&#160;</a></span>regressor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::regressor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">    matrix&lt;double, dependent_price::row_indexes, reciprocal_regression&gt;</div>
+</div><!-- fragment -->
+<p>The output model H: the derivatives of the dependent price by the regression [$, 1]. </p>
+
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00077">77</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
 
 </div>
 </div>
@@ -244,7 +297,7 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00061">61</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00062">62</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
 
 </div>
 </div>
@@ -289,167 +342,167 @@ template&lt;typename... Types&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00094">94</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   95</span>  <span class="comment">// A 2x1x0 filter, random walk dynamic model, no control, with the price of</span></div>
-<div class="line"><span class="lineno">   96</span>  <span class="comment">// the independent stock as an update argument.</span></div>
-<div class="line"><span class="lineno">   97</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
-<div class="line"><span class="lineno">   98</span>      <span class="comment">// The state X is the hedge ratio and intercept: [β, α]. As in the</span></div>
-<div class="line"><span class="lineno">   99</span>      <span class="comment">// reference, we start from a null hedge ratio and intercept.</span></div>
-<div class="line"><span class="lineno">  100</span>      state{<a class="code hl_typedef" href="#a611dba75758a28d99aa04a54ac721d66">regression</a>{<a class="code hl_typedef" href="#aaa6583ffeddac2f3aca9208dafe0c06a">ratio</a>{0. * mp_units::one}, price{0. * USD}}},</div>
-<div class="line"><span class="lineno">  101</span>      <span class="comment">// The filter observes the output Z dependent closing price [$].</span></div>
-<div class="line"><span class="lineno">  102</span>      output&lt;dependent_price&gt;,</div>
-<div class="line"><span class="lineno">  103</span>      <span class="comment">// As in the reference, the initial estimate uncertainty P is null: the</span></div>
-<div class="line"><span class="lineno">  104</span>      <span class="comment">// first closing prices do not update the state, after which the process</span></div>
-<div class="line"><span class="lineno">  105</span>      <span class="comment">// uncertainty accumulates.</span></div>
-<div class="line"><span class="lineno">  106</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{kf::ᴀʙᵀ&lt;regression, regression&gt;{}},</div>
-<div class="line"><span class="lineno">  107</span>      <span class="comment">// The process uncertainty Q: Vw = δ / (1 - δ) with δ = 0.0001, for the</span></div>
-<div class="line"><span class="lineno">  108</span>      <span class="comment">// dimensionless hedge ratio and for the intercept in dollars.</span></div>
-<div class="line"><span class="lineno">  109</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
-<div class="line"><span class="lineno">  110</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> delta{0.0001};</div>
-<div class="line"><span class="lineno">  111</span>        kf::ᴀʙᵀ&lt;regression, regression&gt; <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>;</div>
-<div class="line"><span class="lineno">  112</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>.at&lt;0, 0&gt;(delta / (1. - delta) * mp_units::one);</div>
-<div class="line"><span class="lineno">  113</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>.at&lt;1, 1&gt;(delta / (1. - delta) * <a class="code hl_variable" href="#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a>);</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>;</div>
-<div class="line"><span class="lineno">  115</span>      }()},</div>
-<div class="line"><span class="lineno">  116</span>      <span class="comment">// The output uncertainty R: Ve = 0.001 $^2.</span></div>
-<div class="line"><span class="lineno">  117</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a>{0.001 * <a class="code hl_variable" href="#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a>},</div>
-<div class="line"><span class="lineno">  118</span>      <span class="comment">// The output model H = [x, 1] of the regression changes every day with</span></div>
-<div class="line"><span class="lineno">  119</span>      <span class="comment">// the independent closing price x.</span></div>
-<div class="line"><span class="lineno">  120</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272">output_model</a>{[]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="#a611dba75758a28d99aa04a54ac721d66">regression</a> &amp;x,</div>
-<div class="line"><span class="lineno">  121</span>                      <span class="keyword">const</span> <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> &amp;independent) -&gt; regressor {</div>
-<div class="line"><span class="lineno">  122</span>        <a class="code hl_typedef" href="#a8cb6d4a7d97efc8770e9b97b851159f8">regressor</a> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>;</div>
-<div class="line"><span class="lineno">  123</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>.at&lt;0&gt;(independent);</div>
-<div class="line"><span class="lineno">  124</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>.at&lt;1&gt;(1.);</div>
-<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>;</div>
-<div class="line"><span class="lineno">  126</span>      }},</div>
-<div class="line"><span class="lineno">  127</span>      <span class="comment">// The hedge ratio and intercept follow a random walk: their prediction</span></div>
-<div class="line"><span class="lineno">  128</span>      <span class="comment">// is their last estimate, so no transition function is declared.</span></div>
-<div class="line"><span class="lineno">  129</span>      <span class="comment">// The regression forecasts the dependent closing price: βx + α.</span></div>
-<div class="line"><span class="lineno">  130</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#afca0163b1b4f6d8ad382c9d7d52f0116">observation</a>{</div>
-<div class="line"><span class="lineno">  131</span>          [](<span class="keyword">const</span> <a class="code hl_typedef" href="#a611dba75758a28d99aa04a54ac721d66">regression</a> &amp;x, <span class="keyword">const</span> <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> &amp;independent) -&gt; dependent_price {</div>
-<div class="line"><span class="lineno">  132</span>            <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a31066ec0adba65e6429e5ba5ac840d82">dependent_price</a>{x.at&lt;0&gt;() * independent + x.at&lt;1&gt;()};</div>
-<div class="line"><span class="lineno">  133</span>          }},</div>
-<div class="line"><span class="lineno">  134</span>      <span class="comment">// The filter update uses the independent closing price [$] parameter.</span></div>
-<div class="line"><span class="lineno">  135</span>      update_types&lt;price&gt;};</div>
-<div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>  <span class="comment">// Verifies a value at the relative accuracy of its expectation.</span></div>
-<div class="line"><span class="lineno">  138</span>  <span class="keyword">const</span> <span class="keyword">auto</span> near{</div>
-<div class="line"><span class="lineno">  139</span>      [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;expected, <span class="keywordtype">double</span> accuracy) -&gt; <span class="keywordtype">bool</span> {</div>
-<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">return</span> abs(value - expected) &lt; accuracy * abs(expected);</div>
-<div class="line"><span class="lineno">  141</span>      }};</div>
-<div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>  <span class="comment">// The first day only updates the filter, as in the reference: with a null</span></div>
-<div class="line"><span class="lineno">  144</span>  <span class="comment">// estimate uncertainty, the gain is null and the state remains unchanged.</span></div>
-<div class="line"><span class="lineno">  145</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(20. * USD, 25. * USD);</div>
-<div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;() == 0. * mp_units::one &amp;&amp;</div>
-<div class="line"><span class="lineno">  148</span>         <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;() == 0. * USD &amp;&amp; <span class="stringliteral">&quot;The state remains null.&quot;</span>);</div>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00107">107</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  107</span>                                  {[] -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line"><span class="lineno">  108</span>  <span class="comment">// A 2x1x0 filter, random walk dynamic model, no control, with the price of</span></div>
+<div class="line"><span class="lineno">  109</span>  <span class="comment">// the independent stock as an update argument.</span></div>
+<div class="line"><span class="lineno">  110</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{</div>
+<div class="line"><span class="lineno">  111</span>      <span class="comment">// The state X is the hedge ratio and intercept: [β, α]. As in the</span></div>
+<div class="line"><span class="lineno">  112</span>      <span class="comment">// reference, we start from a null hedge ratio and intercept.</span></div>
+<div class="line"><span class="lineno">  113</span>      state{<a class="code hl_typedef" href="#a611dba75758a28d99aa04a54ac721d66">regression</a>{<a class="code hl_typedef" href="#aaa6583ffeddac2f3aca9208dafe0c06a">ratio</a>{0. * mp_units::one}, price{0. * USD}}},</div>
+<div class="line"><span class="lineno">  114</span>      <span class="comment">// The filter observes the output Z dependent closing price [$].</span></div>
+<div class="line"><span class="lineno">  115</span>      output&lt;dependent_price&gt;,</div>
+<div class="line"><span class="lineno">  116</span>      <span class="comment">// As in the reference, the initial estimate uncertainty P is null: the</span></div>
+<div class="line"><span class="lineno">  117</span>      <span class="comment">// first closing prices do not update the state, after which the process</span></div>
+<div class="line"><span class="lineno">  118</span>      <span class="comment">// uncertainty accumulates.</span></div>
+<div class="line"><span class="lineno">  119</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{<a class="code hl_typedef" href="#a08a3fdc950af23f5e0f4243d0d6c5875">regression_covariance</a>{}},</div>
+<div class="line"><span class="lineno">  120</span>      <span class="comment">// The process uncertainty Q: Vw = δ / (1 - δ) with δ = 0.0001, for the</span></div>
+<div class="line"><span class="lineno">  121</span>      <span class="comment">// dimensionless hedge ratio and for the intercept in dollars.</span></div>
+<div class="line"><span class="lineno">  122</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a35a41ff99d9716fe5b0757e207df8e43">process_uncertainty</a>{[]() -&gt; <span class="keyword">auto</span> {</div>
+<div class="line"><span class="lineno">  123</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> delta{0.0001};</div>
+<div class="line"><span class="lineno">  124</span>        <a class="code hl_typedef" href="#a08a3fdc950af23f5e0f4243d0d6c5875">regression_covariance</a> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>;</div>
+<div class="line"><span class="lineno">  125</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>.at&lt;0, 0&gt;(delta / (1. - delta) * mp_units::one);</div>
+<div class="line"><span class="lineno">  126</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>.at&lt;1, 1&gt;(delta / (1. - delta) * <a class="code hl_variable" href="#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a>);</div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>;</div>
+<div class="line"><span class="lineno">  128</span>      }()},</div>
+<div class="line"><span class="lineno">  129</span>      <span class="comment">// The output uncertainty R: Ve = 0.001 $^2.</span></div>
+<div class="line"><span class="lineno">  130</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a183c70977c497ac30a3201051576e4ac">output_uncertainty</a>{0.001 * <a class="code hl_variable" href="#a9eba0412ce80b21d27f609212b4a5eeb">USD2</a>},</div>
+<div class="line"><span class="lineno">  131</span>      <span class="comment">// The output model H = [x, 1] of the regression changes every day with</span></div>
+<div class="line"><span class="lineno">  132</span>      <span class="comment">// the independent closing price x.</span></div>
+<div class="line"><span class="lineno">  133</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272">output_model</a>{[]([[maybe_unused]] <span class="keyword">const</span> <a class="code hl_typedef" href="#a611dba75758a28d99aa04a54ac721d66">regression</a> &amp;x,</div>
+<div class="line"><span class="lineno">  134</span>                      <span class="keyword">const</span> <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> &amp;independent) -&gt; regressor {</div>
+<div class="line"><span class="lineno">  135</span>        <a class="code hl_typedef" href="#a1b071da838be5180cca65edbaf5eeb72">regressor</a> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>;</div>
+<div class="line"><span class="lineno">  136</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>.at&lt;0&gt;(independent);</div>
+<div class="line"><span class="lineno">  137</span>        <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>.at&lt;1&gt;(1.);</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">return</span> <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>;</div>
+<div class="line"><span class="lineno">  139</span>      }},</div>
+<div class="line"><span class="lineno">  140</span>      <span class="comment">// The hedge ratio and intercept follow a random walk: their prediction</span></div>
+<div class="line"><span class="lineno">  141</span>      <span class="comment">// is their last estimate, so no transition function is declared.</span></div>
+<div class="line"><span class="lineno">  142</span>      <span class="comment">// The regression forecasts the dependent closing price: βx + α.</span></div>
+<div class="line"><span class="lineno">  143</span>      <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#afca0163b1b4f6d8ad382c9d7d52f0116">observation</a>{</div>
+<div class="line"><span class="lineno">  144</span>          [](<span class="keyword">const</span> <a class="code hl_typedef" href="#a611dba75758a28d99aa04a54ac721d66">regression</a> &amp;x, <span class="keyword">const</span> <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> &amp;independent) -&gt; dependent_price {</div>
+<div class="line"><span class="lineno">  145</span>            <span class="keywordflow">return</span> <a class="code hl_typedef" href="#a31066ec0adba65e6429e5ba5ac840d82">dependent_price</a>{x.at&lt;0&gt;() * independent + x.at&lt;1&gt;()};</div>
+<div class="line"><span class="lineno">  146</span>          }},</div>
+<div class="line"><span class="lineno">  147</span>      <span class="comment">// The filter update uses the independent closing price [$] parameter.</span></div>
+<div class="line"><span class="lineno">  148</span>      update_types&lt;price&gt;};</div>
 <div class="line"><span class="lineno">  149</span> </div>
-<div class="line"><span class="lineno">  150</span>  <span class="comment">// Then, run a step of the filter every trading day, predicting the hedge</span></div>
-<div class="line"><span class="lineno">  151</span>  <span class="comment">// ratio and intercept of the day and updating them with the closing prices</span></div>
-<div class="line"><span class="lineno">  152</span>  <span class="comment">// of the independent and dependent stocks of the day.</span></div>
-<div class="line"><span class="lineno">  153</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>{[&amp;<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>](<a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> independent, <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> dependent) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line"><span class="lineno">  154</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
-<div class="line"><span class="lineno">  155</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(independent, dependent);</div>
-<div class="line"><span class="lineno">  156</span>  }};</div>
-<div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.94 * USD, 24.71 * USD);</div>
+<div class="line"><span class="lineno">  150</span>  <span class="comment">// Verifies a value at the relative accuracy of its expectation.</span></div>
+<div class="line"><span class="lineno">  151</span>  <span class="keyword">const</span> <span class="keyword">auto</span> near{</div>
+<div class="line"><span class="lineno">  152</span>      [](<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">value</a>, <span class="keyword">const</span> <span class="keyword">auto</span> &amp;expected, <span class="keywordtype">double</span> accuracy) -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><span class="lineno">  153</span>        <span class="keywordflow">return</span> abs(value - expected) &lt; accuracy * abs(expected);</div>
+<div class="line"><span class="lineno">  154</span>      }};</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>  <span class="comment">// The first day only updates the filter, as in the reference: with a null</span></div>
+<div class="line"><span class="lineno">  157</span>  <span class="comment">// estimate uncertainty, the gain is null and the state remains unchanged.</span></div>
+<div class="line"><span class="lineno">  158</span>  <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(20. * USD, 25. * USD);</div>
 <div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>  <span class="comment">// The process uncertainty accumulated over one day lets the second closing</span></div>
-<div class="line"><span class="lineno">  161</span>  <span class="comment">// prices set the hedge ratio.</span></div>
-<div class="line"><span class="lineno">  162</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.20586 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  163</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0604744 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  164</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  165</span> </div>
-<div class="line"><span class="lineno">  166</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.19 * USD, 24.97 * USD);</div>
-<div class="line"><span class="lineno">  167</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.99 * USD, 24.64 * USD);</div>
-<div class="line"><span class="lineno">  168</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.9 * USD, 24.35 * USD);</div>
-<div class="line"><span class="lineno">  169</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.09 * USD, 25.03 * USD);</div>
-<div class="line"><span class="lineno">  170</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.27 * USD, 25.16 * USD);</div>
-<div class="line"><span class="lineno">  171</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.56 * USD, 25.63 * USD);</div>
-<div class="line"><span class="lineno">  172</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.33 * USD, 25.53 * USD);</div>
-<div class="line"><span class="lineno">  173</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.46 * USD, 25.72 * USD);</div>
-<div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.25398 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  176</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0627996 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  160</span>  assert(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;() == 0. * mp_units::one &amp;&amp;</div>
+<div class="line"><span class="lineno">  161</span>         <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;() == 0. * USD &amp;&amp; <span class="stringliteral">&quot;The state remains null.&quot;</span>);</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>  <span class="comment">// Then, run a step of the filter every trading day, predicting the hedge</span></div>
+<div class="line"><span class="lineno">  164</span>  <span class="comment">// ratio and intercept of the day and updating them with the closing prices</span></div>
+<div class="line"><span class="lineno">  165</span>  <span class="comment">// of the independent and dependent stocks of the day.</span></div>
+<div class="line"><span class="lineno">  166</span>  <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>{[&amp;<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>](<a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> independent, <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> dependent) -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><span class="lineno">  167</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
+<div class="line"><span class="lineno">  168</span>    <a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(independent, dependent);</div>
+<div class="line"><span class="lineno">  169</span>  }};</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.94 * USD, 24.71 * USD);</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>  <span class="comment">// The process uncertainty accumulated over one day lets the second closing</span></div>
+<div class="line"><span class="lineno">  174</span>  <span class="comment">// prices set the hedge ratio.</span></div>
+<div class="line"><span class="lineno">  175</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.20586 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  176</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0604744 * USD, 0.001) &amp;&amp;</div>
 <div class="line"><span class="lineno">  177</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.32 * USD, 25.74 * USD);</div>
-<div class="line"><span class="lineno">  180</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.05 * USD, 25.33 * USD);</div>
-<div class="line"><span class="lineno">  181</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.84 * USD, 25.04 * USD);</div>
-<div class="line"><span class="lineno">  182</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.2 * USD, 25.67 * USD);</div>
-<div class="line"><span class="lineno">  183</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.22 * USD, 25.71 * USD);</div>
-<div class="line"><span class="lineno">  184</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.93 * USD, 25.4 * USD);</div>
-<div class="line"><span class="lineno">  185</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.04 * USD, 25.61 * USD);</div>
-<div class="line"><span class="lineno">  186</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.94 * USD, 25.82 * USD);</div>
-<div class="line"><span class="lineno">  187</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.73 * USD, 25.46 * USD);</div>
-<div class="line"><span class="lineno">  188</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.64 * USD, 25.29 * USD);</div>
-<div class="line"><span class="lineno">  189</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.21 * USD, 24.56 * USD);</div>
-<div class="line"><span class="lineno">  190</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.19 * USD, 24.6 * USD);</div>
-<div class="line"><span class="lineno">  191</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.31 * USD, 24.75 * USD);</div>
-<div class="line"><span class="lineno">  192</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.24 * USD, 24.99 * USD);</div>
-<div class="line"><span class="lineno">  193</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.36 * USD, 25.22 * USD);</div>
-<div class="line"><span class="lineno">  194</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.12 * USD, 25.06 * USD);</div>
-<div class="line"><span class="lineno">  195</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.1 * USD, 24.99 * USD);</div>
-<div class="line"><span class="lineno">  196</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.81 * USD, 24.77 * USD);</div>
-<div class="line"><span class="lineno">  197</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.86 * USD, 24.6 * USD);</div>
-<div class="line"><span class="lineno">  198</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.56 * USD, 24.05 * USD);</div>
-<div class="line"><span class="lineno">  199</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.73 * USD, 24.25 * USD);</div>
-<div class="line"><span class="lineno">  200</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.32 * USD, 23.46 * USD);</div>
-<div class="line"><span class="lineno">  201</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.14 * USD, 23.39 * USD);</div>
-<div class="line"><span class="lineno">  202</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.16 * USD, 23.58 * USD);</div>
-<div class="line"><span class="lineno">  203</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.05 * USD, 23.29 * USD);</div>
-<div class="line"><span class="lineno">  204</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(17.8 * USD, 22.86 * USD);</div>
-<div class="line"><span class="lineno">  205</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(17.79 * USD, 22.66 * USD);</div>
-<div class="line"><span class="lineno">  206</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.0 * USD, 23.34 * USD);</div>
-<div class="line"><span class="lineno">  207</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.23 * USD, 23.41 * USD);</div>
-<div class="line"><span class="lineno">  208</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.34 * USD, 23.99 * USD);</div>
-<div class="line"><span class="lineno">  209</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.6 * USD, 24.29 * USD);</div>
-<div class="line"><span class="lineno">  210</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.75 * USD, 24.6 * USD);</div>
-<div class="line"><span class="lineno">  211</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.47 * USD, 24.34 * USD);</div>
-<div class="line"><span class="lineno">  212</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.53 * USD, 24.29 * USD);</div>
-<div class="line"><span class="lineno">  213</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.37 * USD, 24.07 * USD);</div>
-<div class="line"><span class="lineno">  214</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.63 * USD, 24.55 * USD);</div>
-<div class="line"><span class="lineno">  215</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.83 * USD, 24.9 * USD);</div>
-<div class="line"><span class="lineno">  216</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.91 * USD, 25.29 * USD);</div>
-<div class="line"><span class="lineno">  217</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.72 * USD, 24.97 * USD);</div>
-<div class="line"><span class="lineno">  218</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.13 * USD, 25.59 * USD);</div>
-<div class="line"><span class="lineno">  219</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.19 * USD, 25.77 * USD);</div>
-<div class="line"><span class="lineno">  220</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.33 * USD, 26.08 * USD);</div>
-<div class="line"><span class="lineno">  221</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.02 * USD, 25.73 * USD);</div>
-<div class="line"><span class="lineno">  222</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.17 * USD, 25.91 * USD);</div>
-<div class="line"><span class="lineno">  223</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.88 * USD, 25.57 * USD);</div>
-<div class="line"><span class="lineno">  224</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.97 * USD, 25.69 * USD);</div>
-<div class="line"><span class="lineno">  225</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.07 * USD, 25.96 * USD);</div>
-<div class="line"><span class="lineno">  226</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.7 * USD, 25.54 * USD);</div>
-<div class="line"><span class="lineno">  227</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.47 * USD, 25.31 * USD);</div>
-<div class="line"><span class="lineno">  228</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.46 * USD, 25.58 * USD);</div>
-<div class="line"><span class="lineno">  229</span> </div>
-<div class="line"><span class="lineno">  230</span>  <span class="comment">// The estimated hedge ratio follows the drift of the simulated one, 1.371 on</span></div>
-<div class="line"><span class="lineno">  231</span>  <span class="comment">// the last day, with a slowly adapting intercept.</span></div>
-<div class="line"><span class="lineno">  232</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.38158 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  233</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0680987 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  234</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  235</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 0&gt;(), 2.00937e-05 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  236</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 1&gt;(), -0.000318419 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  237</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 0&gt;(), -0.000318419 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  238</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 1&gt;(), 0.00588099 * USD2, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  239</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line"><span class="lineno">  240</span> </div>
-<div class="line"><span class="lineno">  241</span>  <span class="comment">// On the last day, the spread, the innovation e = 0.286$, rises above its</span></div>
-<div class="line"><span class="lineno">  242</span>  <span class="comment">// standard deviation √S = 0.190$: the strategy enters a short position on</span></div>
-<div class="line"><span class="lineno">  243</span>  <span class="comment">// the spread, selling the dependent stock and buying β shares of the</span></div>
-<div class="line"><span class="lineno">  244</span>  <span class="comment">// independent stock.</span></div>
-<div class="line"><span class="lineno">  245</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> spread{<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aad52d4d8b58d348a0fbe34aae27ee5e3">y</a>().at&lt;&gt;()};</div>
-<div class="line"><span class="lineno">  246</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> deviation{sqrt(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a8523e6d9074c0d00621b4dea97c19cad">s</a>())};</div>
-<div class="line"><span class="lineno">  247</span> </div>
-<div class="line"><span class="lineno">  248</span>  assert(near(spread, 0.286032 * USD, 0.001) &amp;&amp;</div>
-<div class="line"><span class="lineno">  249</span>         near(deviation, 0.190136 * USD, 0.001) &amp;&amp; deviation &lt; spread &amp;&amp;</div>
-<div class="line"><span class="lineno">  250</span>         <span class="stringliteral">&quot;The spread signals a short entry.&quot;</span>);</div>
-<div class="line"><span class="lineno">  251</span> </div>
-<div class="line"><span class="lineno">  252</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  253</span>}()};</div>
+<div class="line"><span class="lineno">  179</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.19 * USD, 24.97 * USD);</div>
+<div class="line"><span class="lineno">  180</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.99 * USD, 24.64 * USD);</div>
+<div class="line"><span class="lineno">  181</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.9 * USD, 24.35 * USD);</div>
+<div class="line"><span class="lineno">  182</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.09 * USD, 25.03 * USD);</div>
+<div class="line"><span class="lineno">  183</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.27 * USD, 25.16 * USD);</div>
+<div class="line"><span class="lineno">  184</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.56 * USD, 25.63 * USD);</div>
+<div class="line"><span class="lineno">  185</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.33 * USD, 25.53 * USD);</div>
+<div class="line"><span class="lineno">  186</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.46 * USD, 25.72 * USD);</div>
+<div class="line"><span class="lineno">  187</span> </div>
+<div class="line"><span class="lineno">  188</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.25398 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  189</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0627996 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  190</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.32 * USD, 25.74 * USD);</div>
+<div class="line"><span class="lineno">  193</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.05 * USD, 25.33 * USD);</div>
+<div class="line"><span class="lineno">  194</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.84 * USD, 25.04 * USD);</div>
+<div class="line"><span class="lineno">  195</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.2 * USD, 25.67 * USD);</div>
+<div class="line"><span class="lineno">  196</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.22 * USD, 25.71 * USD);</div>
+<div class="line"><span class="lineno">  197</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.93 * USD, 25.4 * USD);</div>
+<div class="line"><span class="lineno">  198</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(20.04 * USD, 25.61 * USD);</div>
+<div class="line"><span class="lineno">  199</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.94 * USD, 25.82 * USD);</div>
+<div class="line"><span class="lineno">  200</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.73 * USD, 25.46 * USD);</div>
+<div class="line"><span class="lineno">  201</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.64 * USD, 25.29 * USD);</div>
+<div class="line"><span class="lineno">  202</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.21 * USD, 24.56 * USD);</div>
+<div class="line"><span class="lineno">  203</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.19 * USD, 24.6 * USD);</div>
+<div class="line"><span class="lineno">  204</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.31 * USD, 24.75 * USD);</div>
+<div class="line"><span class="lineno">  205</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.24 * USD, 24.99 * USD);</div>
+<div class="line"><span class="lineno">  206</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.36 * USD, 25.22 * USD);</div>
+<div class="line"><span class="lineno">  207</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.12 * USD, 25.06 * USD);</div>
+<div class="line"><span class="lineno">  208</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.1 * USD, 24.99 * USD);</div>
+<div class="line"><span class="lineno">  209</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.81 * USD, 24.77 * USD);</div>
+<div class="line"><span class="lineno">  210</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.86 * USD, 24.6 * USD);</div>
+<div class="line"><span class="lineno">  211</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.56 * USD, 24.05 * USD);</div>
+<div class="line"><span class="lineno">  212</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.73 * USD, 24.25 * USD);</div>
+<div class="line"><span class="lineno">  213</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.32 * USD, 23.46 * USD);</div>
+<div class="line"><span class="lineno">  214</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.14 * USD, 23.39 * USD);</div>
+<div class="line"><span class="lineno">  215</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.16 * USD, 23.58 * USD);</div>
+<div class="line"><span class="lineno">  216</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.05 * USD, 23.29 * USD);</div>
+<div class="line"><span class="lineno">  217</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(17.8 * USD, 22.86 * USD);</div>
+<div class="line"><span class="lineno">  218</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(17.79 * USD, 22.66 * USD);</div>
+<div class="line"><span class="lineno">  219</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.0 * USD, 23.34 * USD);</div>
+<div class="line"><span class="lineno">  220</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.23 * USD, 23.41 * USD);</div>
+<div class="line"><span class="lineno">  221</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.34 * USD, 23.99 * USD);</div>
+<div class="line"><span class="lineno">  222</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.6 * USD, 24.29 * USD);</div>
+<div class="line"><span class="lineno">  223</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.75 * USD, 24.6 * USD);</div>
+<div class="line"><span class="lineno">  224</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.47 * USD, 24.34 * USD);</div>
+<div class="line"><span class="lineno">  225</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.53 * USD, 24.29 * USD);</div>
+<div class="line"><span class="lineno">  226</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.37 * USD, 24.07 * USD);</div>
+<div class="line"><span class="lineno">  227</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.63 * USD, 24.55 * USD);</div>
+<div class="line"><span class="lineno">  228</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.83 * USD, 24.9 * USD);</div>
+<div class="line"><span class="lineno">  229</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.91 * USD, 25.29 * USD);</div>
+<div class="line"><span class="lineno">  230</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.72 * USD, 24.97 * USD);</div>
+<div class="line"><span class="lineno">  231</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.13 * USD, 25.59 * USD);</div>
+<div class="line"><span class="lineno">  232</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.19 * USD, 25.77 * USD);</div>
+<div class="line"><span class="lineno">  233</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.33 * USD, 26.08 * USD);</div>
+<div class="line"><span class="lineno">  234</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.02 * USD, 25.73 * USD);</div>
+<div class="line"><span class="lineno">  235</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.17 * USD, 25.91 * USD);</div>
+<div class="line"><span class="lineno">  236</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.88 * USD, 25.57 * USD);</div>
+<div class="line"><span class="lineno">  237</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.97 * USD, 25.69 * USD);</div>
+<div class="line"><span class="lineno">  238</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(19.07 * USD, 25.96 * USD);</div>
+<div class="line"><span class="lineno">  239</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.7 * USD, 25.54 * USD);</div>
+<div class="line"><span class="lineno">  240</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.47 * USD, 25.31 * USD);</div>
+<div class="line"><span class="lineno">  241</span>  <a class="code hl_variable" href="namespacefcarouge_1_1benchmark_1_1anonymous__namespace_02ekf__1x2x0_8cpp_03.xhtml#a9bf7db9d0738038331e9ea51a3b6521c">step</a>(18.46 * USD, 25.58 * USD);</div>
+<div class="line"><span class="lineno">  242</span> </div>
+<div class="line"><span class="lineno">  243</span>  <span class="comment">// The estimated hedge ratio follows the drift of the simulated one, 1.371 on</span></div>
+<div class="line"><span class="lineno">  244</span>  <span class="comment">// the last day, with a slowly adapting intercept.</span></div>
+<div class="line"><span class="lineno">  245</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.38158 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  246</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0680987 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  247</span>         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  248</span>  assert(near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 0&gt;(), 2.00937e-05 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  249</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 1&gt;(), -0.000318419 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  250</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 0&gt;(), -0.000318419 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  251</span>         near(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 1&gt;(), 0.00588099 * USD2, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  252</span>         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>  <span class="comment">// On the last day, the spread, the innovation e = 0.286$, rises above its</span></div>
+<div class="line"><span class="lineno">  255</span>  <span class="comment">// standard deviation √S = 0.190$: the strategy enters a short position on</span></div>
+<div class="line"><span class="lineno">  256</span>  <span class="comment">// the spread, selling the dependent stock and buying β shares of the</span></div>
+<div class="line"><span class="lineno">  257</span>  <span class="comment">// independent stock.</span></div>
+<div class="line"><span class="lineno">  258</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> spread{<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aad52d4d8b58d348a0fbe34aae27ee5e3">y</a>().at&lt;&gt;()};</div>
+<div class="line"><span class="lineno">  259</span>  <span class="keyword">const</span> <a class="code hl_typedef" href="#a4885e68d5f78955bf63fefcd4cb9dc4d">price</a> deviation{sqrt(<a class="code hl_typedef" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">filter</a>.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a8523e6d9074c0d00621b4dea97c19cad">s</a>())};</div>
+<div class="line"><span class="lineno">  260</span> </div>
+<div class="line"><span class="lineno">  261</span>  assert(near(spread, 0.286032 * USD, 0.001) &amp;&amp;</div>
+<div class="line"><span class="lineno">  262</span>         near(deviation, 0.190136 * USD, 0.001) &amp;&amp; deviation &lt; spread &amp;&amp;</div>
+<div class="line"><span class="lineno">  263</span>         <span class="stringliteral">&quot;The spread signals a short entry.&quot;</span>);</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  266</span>}()};</div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a72be5e8e9f3959187ca4ee7906d7e03d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a8523e6d9074c0d00621b4dea97c19cad"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a8523e6d9074c0d00621b4dea97c19cad">fcarouge::kalman::s</a></div><div class="ttdeci">constexpr decltype(auto) s(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the innovation uncertainty matrix S.</div></div>
@@ -463,12 +516,12 @@ template&lt;typename... Types&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a67e72364f755af0934a50f5fce6dd778"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778">fcarouge::kalman_filter::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a7806c4db6cb0477ea35494bc9015d272"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a7806c4db6cb0477ea35494bc9015d272">fcarouge::kalman_filter::internal::output_model</a></div><div class="ttdeci">output_model(Element) -&gt; output_model&lt; Element &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_afca0163b1b4f6d8ad382c9d7d52f0116"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#afca0163b1b4f6d8ad382c9d7d52f0116">fcarouge::kalman_filter::internal::observation</a></div><div class="ttdeci">observation(Element) -&gt; observation&lt; Element &gt;</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a31066ec0adba65e6429e5ba5ac840d82"><div class="ttname"><a href="#a31066ec0adba65e6429e5ba5ac840d82">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::dependent_price</a></div><div class="ttdeci">vector&lt; price &gt; dependent_price</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00064">kf_2x1x0_pairs_hedge_ratio_unit.cpp:64</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a4885e68d5f78955bf63fefcd4cb9dc4d"><div class="ttname"><a href="#a4885e68d5f78955bf63fefcd4cb9dc4d">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::price</a></div><div class="ttdeci">mp_units::quantity&lt; USD &gt; price</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00060">kf_2x1x0_pairs_hedge_ratio_unit.cpp:60</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a611dba75758a28d99aa04a54ac721d66"><div class="ttname"><a href="#a611dba75758a28d99aa04a54ac721d66">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::regression</a></div><div class="ttdeci">vector&lt; ratio, price &gt; regression</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00063">kf_2x1x0_pairs_hedge_ratio_unit.cpp:63</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a8cb6d4a7d97efc8770e9b97b851159f8"><div class="ttname"><a href="#a8cb6d4a7d97efc8770e9b97b851159f8">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::regressor</a></div><div class="ttdeci">kf::evaluate&lt; kf::quotient&lt; dependent_price, regression &gt; &gt; regressor</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00065">kf_2x1x0_pairs_hedge_ratio_unit.cpp:65</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a9eba0412ce80b21d27f609212b4a5eeb"><div class="ttname"><a href="#a9eba0412ce80b21d27f609212b4a5eeb">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::USD2</a></div><div class="ttdeci">constexpr auto USD2</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00058">kf_2x1x0_pairs_hedge_ratio_unit.cpp:58</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_aaa6583ffeddac2f3aca9208dafe0c06a"><div class="ttname"><a href="#aaa6583ffeddac2f3aca9208dafe0c06a">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::ratio</a></div><div class="ttdeci">mp_units::quantity&lt; mp_units::one &gt; ratio</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00062">kf_2x1x0_pairs_hedge_ratio_unit.cpp:62</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a08a3fdc950af23f5e0f4243d0d6c5875"><div class="ttname"><a href="#a08a3fdc950af23f5e0f4243d0d6c5875">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::regression_covariance</a></div><div class="ttdeci">matrix&lt; double, regression::row_indexes, regression::row_indexes &gt; regression_covariance</div><div class="ttdoc">A covariance of the regression, the estimate uncertainty P and the process uncertainty Q: the element...</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00068">kf_2x1x0_pairs_hedge_ratio_unit.cpp:68</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a1b071da838be5180cca65edbaf5eeb72"><div class="ttname"><a href="#a1b071da838be5180cca65edbaf5eeb72">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::regressor</a></div><div class="ttdeci">matrix&lt; double, dependent_price::row_indexes, reciprocal_regression &gt; regressor</div><div class="ttdoc">The output model H: the derivatives of the dependent price by the regression [$, 1].</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00077">kf_2x1x0_pairs_hedge_ratio_unit.cpp:77</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a31066ec0adba65e6429e5ba5ac840d82"><div class="ttname"><a href="#a31066ec0adba65e6429e5ba5ac840d82">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::dependent_price</a></div><div class="ttdeci">vector&lt; price &gt; dependent_price</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00070">kf_2x1x0_pairs_hedge_ratio_unit.cpp:70</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a4885e68d5f78955bf63fefcd4cb9dc4d"><div class="ttname"><a href="#a4885e68d5f78955bf63fefcd4cb9dc4d">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::price</a></div><div class="ttdeci">mp_units::quantity&lt; USD &gt; price</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00061">kf_2x1x0_pairs_hedge_ratio_unit.cpp:61</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a611dba75758a28d99aa04a54ac721d66"><div class="ttname"><a href="#a611dba75758a28d99aa04a54ac721d66">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::regression</a></div><div class="ttdeci">vector&lt; ratio, price &gt; regression</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00064">kf_2x1x0_pairs_hedge_ratio_unit.cpp:64</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_xhtml_a9eba0412ce80b21d27f609212b4a5eeb"><div class="ttname"><a href="#a9eba0412ce80b21d27f609212b4a5eeb">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::USD2</a></div><div class="ttdeci">constexpr auto USD2</div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00059">kf_2x1x0_pairs_hedge_ratio_unit.cpp:59</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_xhtml_a6a4f4f0ae82678e5e662fc77e5e404f0"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03.xhtml#a6a4f4f0ae82678e5e662fc77e5e404f0">fcarouge::test::anonymous_namespace{set_1x1x0.cpp}::value</a></div><div class="ttdeci">decltype(kalman{state{0.}, output&lt; double &gt;, estimate_uncertainty{1.}, process_uncertainty{1.}, output_uncertainty{1.}}) value</div><div class="ttdef"><b>Definition</b> <a href="q_2set__1x1x0_8cpp_source.xhtml#l00067">set_1x1x0.cpp:67</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03_xhtml_a3586a94458c3596c1f63221fc330e325"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">fcarouge::test::anonymous_namespace{traits_1x1x0.cpp}::filter</a></div><div class="ttdeci">decltype(kalman{}) filter</div><div class="ttdef"><b>Definition</b> <a href="assign_2traits__1x1x0_8cpp_source.xhtml#l00046">traits_1x1x0.cpp:46</a></div></div>
 </div><!-- fragment -->
@@ -508,9 +561,9 @@ template&lt;typename... Types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00057">57</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>{<a class="code hl_struct" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml">us_dollar</a>};</div>
-<div class="ttc" id="astructfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar_xhtml"><div class="ttname"><a href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::us_dollar</a></div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00054">kf_2x1x0_pairs_hedge_ratio_unit.cpp:55</a></div></div>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00058">58</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{<a class="code hl_struct" href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml">us_dollar</a>};</div>
+<div class="ttc" id="astructfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar_xhtml"><div class="ttname"><a href="structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1us__dollar.xhtml">fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::us_dollar</a></div><div class="ttdef"><b>Definition</b> <a href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00055">kf_2x1x0_pairs_hedge_ratio_unit.cpp:56</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -534,8 +587,8 @@ template&lt;typename... Types&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00058">58</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>{pow&lt;2&gt;(USD)};</div>
+<p class="definition">Definition at line <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml#l00059">59</a> of file <a class="el" href="kf__2x1x0__pairs__hedge__ratio__unit_8cpp_source.xhtml">kf_2x1x0_pairs_hedge_ratio_unit.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{pow&lt;2&gt;(USD)};</div>
 </div><!-- fragment -->
 </div>
 </div>
