@@ -2,6 +2,7 @@ var namespacefcarouge_1_1sample =
 [
     [ "anonymous_namespace{ekf_1x2x0_terrain_estimation_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__1x2x0__terrain__estimation__unit_8cpp_03.xhtml", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__1x2x0__terrain__estimation__unit_8cpp_03" ],
     [ "anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03.xhtml", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03" ],
+    [ "anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03.xhtml", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03" ],
     [ "anonymous_namespace{ekf_4x1x0_thermal_soaring.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a5ca9ce44a5f1c5bd75a8040df0f9f0ff", null ],
       [ "state", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00", null ],

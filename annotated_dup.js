@@ -12,6 +12,19 @@ var annotated_dup =
           [ "ned_displacement", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1ned__displacement.xhtml", null ],
           [ "north", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1north.xhtml", null ]
         ] ],
+        [ "anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03.xhtml", [
+          [ "airspeed_scale", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1airspeed__scale.xhtml", null ],
+          [ "body_air_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1body__air__velocity.xhtml", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1body__air__velocity" ],
+          [ "down_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1down__velocity.xhtml", null ],
+          [ "east_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1east__velocity.xhtml", null ],
+          [ "forward_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1forward__velocity.xhtml", null ],
+          [ "indicated_airspeed", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1indicated__airspeed.xhtml", null ],
+          [ "ned_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1ned__velocity.xhtml", null ],
+          [ "north_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1north__velocity.xhtml", null ],
+          [ "right_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1right__velocity.xhtml", null ],
+          [ "sideslip", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1sideslip.xhtml", null ],
+          [ "true_airspeed", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1true__airspeed.xhtml", null ]
+        ] ],
         [ "anonymous_namespace{ekf_4x2x0_range_bearing_tracking_unit.cpp}", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml", [
           [ "bearing", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1bearing.xhtml", null ],
           [ "range", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1range.xhtml", null ],

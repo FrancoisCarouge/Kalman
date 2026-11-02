@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['flow_5frate_0',['flow_rate',['../structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__1x2x0__terrain__estimation__unit_8cpp_03_1_1flow__rate.xhtml',1,'fcarouge::sample::anonymous_namespace{ekf_1x2x0_terrain_estimation_unit.cpp}']]]
+  ['east_0',['east',['../structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1east.xhtml',1,'fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}']]],
+  ['east_5fangle_1',['east_angle',['../structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03_1_1east__angle.xhtml',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}']]],
+  ['east_5fvelocity_2',['east_velocity',['../structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1east__velocity.xhtml',1,'fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::east_velocity'],['../structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__9x4x0__gimbal__attitude__unit_8cpp_03_1_1east__velocity.xhtml',1,'fcarouge::sample::anonymous_namespace{ekf_9x4x0_gimbal_attitude_unit.cpp}::east_velocity']]]
 ];

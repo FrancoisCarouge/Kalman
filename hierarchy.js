@@ -4,6 +4,7 @@ var hierarchy =
       [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1dim__currency.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml", null ]
     ] ],
+    [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::body_air_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1body__air__velocity.xhtml", null ],
     [ "fcarouge::kalman_filter::internal::conditional_estimate_uncertainty< Filter >", null, [
       [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, [
         [ "fcarouge::kalman< typename >", "classfcarouge_1_1kalman.xhtml", null ]
@@ -153,6 +154,16 @@ var hierarchy =
       [ "fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::east", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1east.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::ned_displacement", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1ned__displacement.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::north", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_1_1north.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::airspeed_scale", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1airspeed__scale.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::down_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1down__velocity.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::east_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1east__velocity.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::forward_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1forward__velocity.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::indicated_airspeed", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1indicated__airspeed.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::ned_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1ned__velocity.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::north_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1north__velocity.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::right_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1right__velocity.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::sideslip", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1sideslip.xhtml", null ],
+      [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::true_airspeed", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1true__airspeed.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{ekf_4x2x0_range_bearing_tracking_unit.cpp}::bearing", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1bearing.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{ekf_4x2x0_range_bearing_tracking_unit.cpp}::range", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1range.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{ekf_4x2x0_range_bearing_tracking_unit.cpp}::x_position", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03_1_1x__position.xhtml", null ],
@@ -186,6 +197,7 @@ var hierarchy =
       [ "mp_units::component_vectors< fcarouge::sample::body_angular_velocity >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1body__angular__velocity_01_4.xhtml", null ],
       [ "mp_units::component_vectors< fcarouge::sample::ned_displacement >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__displacement_01_4.xhtml", null ],
       [ "mp_units::component_vectors< fcarouge::sample::ned_rotation >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__rotation_01_4.xhtml", null ],
+      [ "mp_units::component_vectors< fcarouge::sample::ned_velocity >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__velocity_01_4.xhtml", null ],
       [ "mp_units::component_vectors< fcarouge::sample::ned_velocity >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__velocity_01_4.xhtml", null ]
     ] ]
 ];
