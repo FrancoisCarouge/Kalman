@@ -1,0 +1,185 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Typed Kalman Filter</title>
+<style>
+  html,body{margin:0;padding:0;background:#0b0912;}
+  svg{display:block;width:1920px;height:1080px;}
+  .title{font-family:"Inter Display";font-weight:800;letter-spacing:-2px;}
+  .sub{font-family:"Inter";font-style:italic;font-weight:400;}
+  .author{font-family:"Inter Display";font-weight:500;}
+  .event{font-family:"Inter Display";font-weight:600;}
+  .mono{font-family:"DejaVu Sans Mono";}
+  .math{font-family:"Latin Modern Roman";font-style:italic;}
+  .mathup{font-family:"Latin Modern Roman";}
+</style></head>
+<body>
+<svg id="s" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#07060d"/>
+      <stop offset="0.35" stop-color="#1a1220"/>
+      <stop offset="0.62" stop-color="#4a2a2a"/>
+      <stop offset="0.78" stop-color="#9a5a3a"/>
+      <stop offset="0.86" stop-color="#c9875a"/>
+    </linearGradient>
+    <!-- Martian sunsets are blue -->
+    <radialGradient id="halo" cx="1435" cy="790" r="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e8f3ff" stop-opacity="0.95"/>
+      <stop offset="0.08" stop-color="#bcd9ff" stop-opacity="0.75"/>
+      <stop offset="0.3" stop-color="#6f9bd6" stop-opacity="0.35"/>
+      <stop offset="0.65" stop-color="#3d5f99" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#3d5f99" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fillG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7ddf8a" stop-opacity="0.28"/><stop offset="1" stop-color="#7ddf8a" stop-opacity="0"/></linearGradient>
+    <linearGradient id="fillB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb2ff" stop-opacity="0.30"/><stop offset="1" stop-color="#7fb2ff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="fillR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7a52" stop-opacity="0.45"/><stop offset="1" stop-color="#ff7a52" stop-opacity="0"/></linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2"/></filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <linearGradient id="dust" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d79565" stop-opacity="0"/>
+      <stop offset="1" stop-color="#d79565" stop-opacity="0.22"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <g id="stars"></g>
+  <rect width="1920" height="1080" fill="url(#halo)"/>
+
+  <!-- Phobos -->
+  <g transform="translate(1040 150) rotate(-18)">
+    <ellipse rx="15" ry="11" fill="#b39a86" opacity="0.85"/>
+    <ellipse cx="4" cy="1" rx="15" ry="11" fill="#07060d" opacity="0.55"/>
+  </g>
+
+  <!-- Kalman update, drawn as a Martian sunrise -->
+  <g id="gauss"></g>
+
+  <!-- terrain layers -->
+  <path id="ridge3" fill="#6e3a2a"/>
+  <rect y="640" width="1920" height="200" fill="url(#dust)"/>
+  <path id="ridge2" fill="#4a2219"/>
+  <path id="ridge1" fill="#2a110d"/>
+  <path id="ridge0" fill="#170907"/>
+
+  <!-- descent trajectory with shrinking covariance -->
+  <g id="traj"></g>
+
+  <!-- event mark -->
+  <g transform="translate(150 118)">
+    <g transform="translate(26 -12)">
+      <ellipse rx="26" ry="14" transform="rotate(-25)" fill="none" stroke="#bcd9ff" stroke-width="2.4" opacity="0.55"/>
+      <ellipse rx="15" ry="8" transform="rotate(-25)" fill="none" stroke="#bcd9ff" stroke-width="2.4" opacity="0.8"/>
+      <circle r="4" fill="#ff7a52"/>
+    </g>
+    <text x="74" y="0" class="event" font-size="38" fill="#f3ece6">ROS <tspan fill="#ff9a6e">By-The-Bay</tspan></text>
+  </g>
+
+  <!-- typed covariance, top right -->
+  <g transform="translate(1550 108)" opacity="0.62" fill="#e9dccf">
+    <text x="-82" y="58" class="math" font-size="40">P</text>
+    <text x="-38" y="58" class="mathup" font-size="40">=</text>
+    <path d="M14 6 h-10 v96 h10 M254 6 h10 v96 h-10" fill="none" stroke="#e9dccf" stroke-width="2.4"/>
+    <text x="30" y="44" class="mathup" font-size="28">m²</text>
+    <text x="150" y="44" class="mathup" font-size="28">m²/s</text>
+    <text x="30" y="88" class="mathup" font-size="28">m²/s</text>
+    <text x="150" y="88" class="mathup" font-size="28">m²/s²</text>
+  </g>
+
+  <!-- title block -->
+  <g transform="translate(150 430)">
+    <text class="mono" font-size="26" fill="#ff9a6e" opacity="0.9" y="-108">kalman&lt;state&lt;position, velocity&gt;&gt; filter;</text>
+    <text class="title" font-size="150" fill="#fbf6f1" y="40">Typed Kalman Filter</text>
+    <text class="sub" font-size="64" fill="#e6d3c4" y="138">How to Not Crash on Mars</text>
+  </g>
+
+  <!-- author -->
+  <text x="150" y="985" class="author" font-size="60" fill="#f3ece6">François Carouge</text>
+
+  <!-- easter egg -->
+  <g transform="translate(1180 948)" class="mono" font-size="19">
+    <text fill="#a88672">// Mars Climate Orbiter, 1999: lbf·s ≠ N·s</text>
+    <text y="30" fill="#e08868">error: <tspan fill="#c7b2a4">cannot add 'impulse&lt;lbf·s&gt;' to 'impulse&lt;N·s&gt;'</tspan></text>
+    <text y="60" fill="#8fb4e6">note: <tspan fill="#c7b2a4">caught at compile time, not at 57 km</tspan></text>
+  </g>
+
+  <rect width="1920" height="1080" filter="url(#grain)" fill="#fff"/>
+</svg>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||document.getElementById('s')).appendChild(e);return e;};
+let seed=42;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+
+// stars
+const st=document.getElementById('stars');
+for(let i=0;i<170;i++){const x=rnd()*1920,y=rnd()*520,r=rnd()<0.08?1.6:0.5+rnd()*0.8;
+  el('circle',{cx:x,cy:y,r,fill:'#fff',opacity:(0.15+rnd()*0.6)*(1-y/620)},st);}
+
+// Gaussians: prior, measurement, and the actual posterior (product)
+const base=800, m1=1250,s1=140, m2=1545,s2=92;
+const s3=Math.sqrt(1/(1/(s1*s1)+1/(s2*s2)));
+const m3=(m1*s2*s2+m2*s1*s1)/(s1*s1+s2*s2);
+const k=250*s3; // tallest peak 250 px
+const g=document.getElementById('gauss');
+function curve(m,s,col,fill,w){
+  let d=`M ${m-4.2*s} ${base}`, h=k/s;
+  for(let x=m-4.2*s;x<=m+4.2*s;x+=2){d+=` L ${x.toFixed(1)} ${(base-h*Math.exp(-0.5*((x-m)/s)**2)).toFixed(1)}`;}
+  el('path',{d:d+` L ${m+4.2*s} ${base} Z`,fill:`url(#${fill})`},g);
+  el('path',{d,fill:'none',stroke:col,'stroke-width':w,filter:'url(#glow)','stroke-linecap':'round'},g);
+  el('line',{x1:m,y1:base-h,x2:m,y2:base,stroke:col,'stroke-width':2,'stroke-dasharray':'6 8',opacity:0.8},g);
+  return base-h;
+}
+const t1=curve(m1,s1,'#7ddf8a','fillG',3.5);
+const t2=curve(m2,s2,'#8fbcff','fillB',3.5);
+const t3=curve(m3,s3,'#ff8a5c','fillR',4.5);
+const lab=(x,y,txt,col,hat)=>{const t=el('text',{x,y,class:'math','font-size':40,fill:col,'text-anchor':'middle'},g);
+  t.innerHTML=hat?`x̂<tspan font-size="26" dy="8">k</tspan>`:`${txt}<tspan font-size="26" dy="8">k</tspan>`;};
+lab(m1-8,t1-22,'x','#9be8a5');
+lab(m2+10,t2-22,'y','#a9cbff');
+lab(m3,t3-24,'','#ffb08f',true);
+
+// terrain
+function ridge(id,y0,amp,rough,sd,peaks){
+  seed=sd;let pts=[],v=0;
+  for(let x=-20;x<=1940;x+=12){v=v*0.86+(rnd()-0.5)*rough;let y=y0+v*amp;
+    for(const p of peaks){y-=p.h*Math.max(0,1-Math.abs(x-p.x)/p.w)**1.6;}
+    pts.push([x,y]);}
+  let d=`M -20 1080 `+pts.map(p=>`L ${p[0]} ${p[1].toFixed(1)}`).join(' ')+` L 1940 1080 Z`;
+  document.getElementById(id).setAttribute('d',d);
+  return pts;
+}
+ridge('ridge3',760,14,1.4,11,[{x:300,h:90,w:260},{x:820,h:60,w:200},{x:1700,h:110,w:300}]);
+ridge('ridge2',800,12,1.4,23,[{x:120,h:120,w:300},{x:560,h:40,w:220},{x:1900,h:140,w:260}]);
+const r1=ridge('ridge1',860,10,1.3,37,[{x:40,h:110,w:380},{x:1000,h:30,w:260}]);
+ridge('ridge0',950,8,1.2,53,[{x:1650,h:40,w:420}]);
+
+// landing site on ridge1 at the posterior mean
+let land=r1.reduce((a,p)=>Math.abs(p[0]-m3)<Math.abs(a[0]-m3)?p:a);
+const tr=document.getElementById('traj');
+const P0=[1900,250],P1=[1640,290],P2=[m3+90,600],P3=[land[0],land[1]-6];
+const bez=(t)=>[0,1].map(i=>(1-t)**3*P0[i]+3*(1-t)**2*t*P1[i]+3*(1-t)*t*t*P2[i]+t**3*P3[i]);
+let d='M '+P0.join(' ');for(let t=0.02;t<=0.92;t+=0.02)d+=' L '+bez(t).map(v=>v.toFixed(1)).join(' ');
+el('path',{d,fill:'none',stroke:'#f3ece6','stroke-width':2.2,'stroke-dasharray':'2 10','stroke-linecap':'round',opacity:0.75},tr);
+[0.06,0.24,0.42,0.81].forEach((t,i)=>{const [x,y]=bez(t);const s=1-i*0.22;
+  el('ellipse',{cx:x,cy:y,rx:58*s,ry:28*s,transform:`rotate(-28 ${x} ${y})`,fill:'#bcd9ff','fill-opacity':0.06,stroke:'#bcd9ff','stroke-width':1.8,opacity:0.7},tr);
+  el('circle',{cx:x,cy:y,r:3.2,fill:'#f3ece6'},tr);});
+// lander
+const [lx,ly]=bez(0.93);
+const L=el('g',{transform:`translate(${lx} ${ly}) rotate(-12)`},tr);
+el('path',{d:'M -20 6 L 0 -14 L 20 6 Z',fill:'#e9e2da'},L);
+el('rect',{x:-22,y:6,width:44,height:10,rx:2,fill:'#c9c0b6'},L);
+el('path',{d:'M -16 16 L -26 32 M 16 16 L 26 32 M -31 32 h10 M 21 32 h10',stroke:'#e9e2da','stroke-width':2.6,fill:'none','stroke-linecap':'round'},L);
+el('path',{d:'M -8 18 L 0 46 L 8 18 Z',fill:'#ffb46a',opacity:0.9,filter:'url(#soft)'},L);
+el('circle',{cx:0,cy:-1,r:4,fill:'#5b7fb0'},L);
+// target marker
+el('ellipse',{cx:land[0],cy:land[1]+4,rx:34,ry:7,fill:'none',stroke:'#ff8a5c','stroke-width':2.4,opacity:0.9},tr);
+el('ellipse',{cx:land[0],cy:land[1]+4,rx:16,ry:3.5,fill:'#ff8a5c',opacity:0.7},tr);
+</script>
+</body></html>
