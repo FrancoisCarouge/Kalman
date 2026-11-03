@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 548" width="880" height="548" role="img" aria-labelledby="title description" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+  <title id="title">Where Kalman sits in the technical stack</title>
+  <desc id="description">The application sits on top. Kalman is the layer directly below it. It composes a linear algebra backend, optionally strongly typed by Typed Linear Algebra, itself layered as low-level mathematics, performance primitives, and fundamentals, and it adapts strong element types. Scalar filters need no backend.</desc>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .card { fill: #0d1117; stroke: #3d444d; }
+      .layer { fill: #151b23; stroke: #3d444d; }
+      .ink { fill: #f0f6fc; }
+      .muted { fill: #9198a1; }
+      .link { stroke: #9198a1; }
+      .accent { fill: #238636; }
+    }
+  </style>
+
+  <rect class="card" x="0.5" y="0.5" width="879" height="547" rx="10" fill="#ffffff" stroke="#d1d9e0"/>
+
+  <!-- Application -->
+  <rect class="layer" x="24" y="24" width="832" height="80" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="49" font-size="15" font-weight="600" fill="#1f2328">Application</text>
+  <text class="muted" x="40" y="69" font-size="12" fill="#59636e">domain-specific estimation</text>
+  <text class="ink" x="840" y="49" font-size="13" text-anchor="end" fill="#1f2328">guidance, navigation, and control · aerospace · robotics · sensor fusion · tracking</text>
+  <text class="ink" x="840" y="69" font-size="13" text-anchor="end" fill="#1f2328">signal processing · biomedical signals · computer vision · process control · structural monitoring</text>
+  <text class="ink" x="840" y="89" font-size="13" text-anchor="end" fill="#1f2328">data assimilation · weather and ocean prediction · forecasting · econometrics</text>
+
+  <!-- Kalman -->
+  <rect class="accent" x="24" y="120" width="832" height="100" rx="6" fill="#1a7f37"/>
+  <text x="40" y="151" font-size="19" font-weight="700" fill="#ffffff">Kalman</text>
+  <text x="40" y="177" font-size="13" fill="#ffffff">Recursive state estimation: predict and update the state and its uncertainty.</text>
+  <text x="40" y="199" font-size="13" fill="#ffffff">Named arguments configure the filter. Its type is deduced at compile time.</text>
+  <text x="840" y="147" font-size="11" text-anchor="end" fill="#ffffff" fill-opacity="0.8">prediction</text>
+  <text x="840" y="165" font-size="13" text-anchor="end" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">filter.predict(u)</text>
+  <text x="840" y="187" font-size="11" text-anchor="end" fill="#ffffff" fill-opacity="0.8">update</text>
+  <text x="840" y="205" font-size="13" text-anchor="end" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">filter.update(z)</text>
+
+  <!-- Composition links -->
+  <line class="link" x1="44" y1="220" x2="44" y2="260" stroke="#59636e" stroke-width="1.5"/>
+  <text class="muted" x="56" y="245" font-size="12" fill="#59636e">composes a linear algebra backend, beyond scalar filters</text>
+  <line class="link" x1="660" y1="220" x2="660" y2="260" stroke="#59636e" stroke-width="1.5"/>
+  <text class="muted" x="672" y="245" font-size="12" fill="#59636e">adapts strong element types</text>
+
+  <!-- Linear algebra backend -->
+  <rect class="layer" x="24" y="260" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="285" font-size="15" font-weight="600" fill="#1f2328">Typed Linear Algebra</text>
+  <text class="muted" x="40" y="305" font-size="12" fill="#59636e">optional strongly-typed matrix elements</text>
+  <text class="ink" x="608" y="285" font-size="13" text-anchor="end" fill="#1f2328">units · time · quantity points · axes · frames</text>
+  <text class="ink" x="608" y="305" font-size="13" text-anchor="end" fill="#1f2328">spaces · joints · instruments · risk factors · intervals</text>
+
+  <rect class="layer" x="24" y="328" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="353" font-size="15" font-weight="600" fill="#1f2328">Low-level mathematics</text>
+  <text class="muted" x="40" y="373" font-size="12" fill="#59636e">linear systems, least squares, eigenvalues</text>
+  <text class="ink" x="608" y="363" font-size="13" text-anchor="end" fill="#1f2328">Eigen · Armadillo · LAPACK</text>
+
+  <rect class="layer" x="24" y="396" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="421" font-size="15" font-weight="600" fill="#1f2328">Performance primitives</text>
+  <text class="muted" x="40" y="441" font-size="12" fill="#59636e">vector and matrix operations</text>
+  <text class="ink" x="608" y="431" font-size="13" text-anchor="end" fill="#1f2328">std::linalg · BLAS · NVBLAS</text>
+
+  <rect class="layer" x="24" y="464" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="489" font-size="15" font-weight="600" fill="#1f2328">Fundamentals</text>
+  <text class="muted" x="40" y="509" font-size="12" fill="#59636e">multidimensional arrays, iteration</text>
+  <text class="ink" x="608" y="499" font-size="13" text-anchor="end" fill="#1f2328">std::array · std::mdspan · Boost.Multi · Kokkos · std::simd</text>
+
+  <!-- Strong element types -->
+  <rect class="layer" x="640" y="260" width="216" height="264" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="656" y="285" font-size="15" font-weight="600" fill="#1f2328">Strong types</text>
+  <text class="muted" x="656" y="305" font-size="12" fill="#59636e">units, quantities, time</text>
+  <text class="ink" x="656" y="339" font-size="13" fill="#1f2328">Au</text>
+  <text class="ink" x="656" y="363" font-size="13" fill="#1f2328">mp-units</text>
+  <text class="ink" x="656" y="387" font-size="13" fill="#1f2328">nholthaus/units</text>
+  <text class="ink" x="656" y="411" font-size="13" fill="#1f2328">std::chrono</text>
+  <text class="ink" x="656" y="435" font-size="13" fill="#1f2328">built-in types</text>
+</svg>
