@@ -78,7 +78,7 @@ Options for the owner to decide, not implemented. The getter return types (F46) 
 
 **Unscented filter (F52).** The README defines the UKF and SR-UKF, no form implements them. ROS 2's `fusioncore` (23 states) and `multi_target_kf` (9 states) run UKFs: an unscented form over the transition and observation callables, with hooks for the mean and difference of angles and quaternions (F45), sigma points of fixed size, a natural bank (F51).
 
-**Angle arithmetic (F45).** The innovation is `z - h(x)` and the correction `x + K y`: a bearing or yaw crossing ±π gives a 2π innovation (MRPT's range-bearing tracker ends 22.5 m off on the library without a workaround, 1.24 m with it).
+**Angle arithmetic (F45).** The same hook serves a quaternion's double cover: ROS 2's `kinematic_arbiter` read a pose source's -q as an innovation of norm 2. The innovation is `z - h(x)` and the correction `x + K y`: a bearing or yaw crossing ±π gives a 2π innovation (MRPT's range-bearing tracker ends 22.5 m off on the library without a workaround, 1.24 m with it).
 
 - A. Named `innovation{callable(z, z_predicted) -> y}` and `correction{callable(x, dx) -> x}` declaration arguments, defaulting to the subtraction and the sum: MRPT's `OnSubtractObservationVectors` and `OnNormalizeStateVector`.
 - B. A customization point on the element types, picked up for an angle quantity type: no vocabulary change, but implicit.
