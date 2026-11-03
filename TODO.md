@@ -74,7 +74,7 @@ Options for the owner to decide, not implemented. The getter return types (F46) 
 
 - A. Constant characteristics declared as compile-time values (`output_model{cw<H>}`, as the floors' `cw<σ>`), folded into the equations; the gain of a scalar output from the reciprocal of S.
 - B. Element types that are vectors of filters (C++26 `std::simd`): a bank of identical filters, conditioning without value branches (`max` for the floors). Candidates: the EKFGSF models, the per-axis filters.
-- C. A symmetric covariance type with operations specialized at fixed sizes: Eigen's generic self-adjoint path is slower at 2x2 (1.88 times the original).
+- C. A symmetric covariance type with operations specialized at fixed sizes: Eigen's generic self-adjoint path is slower at 2x2 (1.88 times the original). It pays at large sizes: `fusioncore`'s 23-state covariance sum, 70% of its prediction, takes 0.41 times as long on its upper triangle; the whole prediction 0.61 times.
 
 **Unscented filter (F52).** The README defines the UKF and SR-UKF, no form implements them. ROS 2's `fusioncore` (23 states) and `multi_target_kf` (9 states) run UKFs: an unscented form over the transition and observation callables, with hooks for the mean and difference of angles and quaternions (F45), sigma points of fixed size, a natural bank (F51).
 
