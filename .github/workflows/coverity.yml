@@ -1,0 +1,72 @@
+name: 'Coverity Scan'
+
+on:
+  schedule:
+  - cron: '0 0 * * */5'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  COVERITY_PROJECT: 'FrancoisCarouge%2FKalman'
+
+jobs:
+  scan:
+    if: github.repository == 'FrancoisCarouge/Kalman'
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: read
+    steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@46b06cea07f9e64621fdf066ba77ac6915163d43 # v2.22.3
+      with:
+        egress-policy: audit
+    - name: 'Checkout'
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: 'Install: Latest CMake'
+      uses: lukka/get-cmake@f86dd60acae0d132056913e248bdabf0e0580b7a # v4.4.5
+    - name: 'Install: Coverity Build Tool'
+      env:
+        TOKEN: ${{ secrets.COVERITY_SCAN_TOKEN }}
+      run: |
+        curl 'https://scan.coverity.com/download/cxx/linux64' \
+          --data "project=${COVERITY_PROJECT}" \
+          --data-urlencode "token=${TOKEN}" \
+          --fail \
+          --no-progress-meter \
+          --output "${RUNNER_TEMP}/cov-analysis.tgz"
+        mkdir "${RUNNER_TEMP}/cov-analysis"
+        tar -xzf "${RUNNER_TEMP}/cov-analysis.tgz" --strip-components 1 -C "${RUNNER_TEMP}/cov-analysis"
+        echo "${RUNNER_TEMP}/cov-analysis/bin" >> "${GITHUB_PATH}"
+    - name: 'Configure'
+      env:
+        CXX: 'g++-14'
+        CC: 'gcc-14'
+      run: |
+        cov-configure --compiler "${CXX}" --comptype g++ --template
+        cmake -S . -B 'build' -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
+    - name: 'Build'
+      run: cov-build --dir 'cov-int' cmake --build 'build' --parallel 4
+    - name: 'Report'
+      if: ${{ !cancelled() }}
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: 'coverity-build-log'
+        path: 'cov-int/build-log.txt'
+        if-no-files-found: 'warn'
+    - name: 'Submit'
+      env:
+        EMAIL: ${{ secrets.COVERITY_SCAN_EMAIL }}
+        TOKEN: ${{ secrets.COVERITY_SCAN_TOKEN }}
+      run: |
+        tar -czf 'cov-int.tgz' 'cov-int'
+        curl "https://scan.coverity.com/builds?project=${COVERITY_PROJECT}" \
+          --fail-with-body \
+          --form "description=${GITHUB_REF_NAME}" \
+          --form "email=${EMAIL}" \
+          --form 'file=@cov-int.tgz' \
+          --form "token=${TOKEN}" \
+          --form "version=${GITHUB_SHA}" \
+          --no-progress-meter
