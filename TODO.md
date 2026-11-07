@@ -48,9 +48,9 @@ Options for the owner to decide, not implemented: each touches the named-argumen
 - A. A named `constraint{callable(x, p)}` declaration argument applied at the end of `update()`: one hook for clamps, symmetrization and error-state resets.
 - B. Leave it to the caller through `x()` and `p()`, and document the pattern in a sample, as now.
 
-**Conditioning policies (F48).** The ports declare their originals' update forms (since `5777b70f6`), and the simple form of a scalar output is associated at a quadratic cost (`e331e1691`); two gaps remain.
+**Conditioning policies (F48).** The ports declare their originals' update forms (since `5777b70f6`), and the simple form of a scalar output is associated at a quadratic cost (`e331e1691`); one gap remains.
 
-- `floors{σ...}` needs assignable elements, which a typed matrix of mp-units quantities cannot give: a fix writing the floors through `at<I, J>(value)` is on branch `floors-setter` (a patch for the owner). ArduPilot's airspeed calibration and both EKFGSF ports keep their floors by hand.
+- `floors{σ...}` on typed matrices: resolved on master (`a63d9769d`), through the element setter.
 - `symmetrize` and the floors run after each prediction too, where the originals condition after their updates only: an update-only variant would keep ArduPilot's airspeed calibration at its original's cost with the library floors (1.60 times its original's time with them, 1.48 with the hand clamp after the update).
 
 **Configurations (F23).** Since `4ad94d918` and `9facffd80`, the forms combine a callable state transition Jacobian F of the prediction arguments, a callable Q, and a callable output model H of the update arguments (`x_z_p_qq_r_hh_ff_us_ps`), and a filter declares no empty argument lists; PX4's and ArduPilot's EKFGSF ports use them. Still enumerated: a declaration without P, Q and R is rejected, and the rejection does not list the accepted configurations. `AGENTS.md` states that an empty `update_types<>` or `prediction_types<>` is rejected by a `static_assert` in `type.hpp`, which has none: they are still accepted.
@@ -75,6 +75,12 @@ Options for the owner to decide, not implemented. The getter return types (F46) 
 - A. Constant characteristics declared as compile-time values (`output_model{cw<H>}`, as the floors' `cw<σ>`), folded into the equations; the gain of a scalar output from the reciprocal of S.
 - B. Element types that are vectors of filters (C++26 `std::simd`): the library already compiles unchanged over such a backend, each lane identical to its single filter, a bank of 8 at 0.54 to 0.59 times the time of 8 filters (`multi_target_kf`'s 6 states, 3 outputs). Missing: conditioning without value branches (`max` for the floors), and the typed form, which mp-units' `RepresentationOf` rejects. Candidates: the EKFGSF models, the per-axis filters, tracks.
 - C. A symmetric covariance type with operations specialized at fixed sizes: Eigen's generic self-adjoint path is slower at 2x2 (1.88 times the original). It pays at large sizes: `fusioncore`'s 23-state covariance sum, 70% of its prediction, takes 0.41 times as long on its upper triangle; the whole prediction 0.61 times.
+
+**Declared characteristic types (F53).** The characteristic types are deduced from the state, output and input types, and each declared value or callable result is converted to them: a structured F, G, Q or H, such as a typed sparse matrix of TypedLinearAlgebra PR 579, becomes dense. Sparse backend study (2026-11-06, five filters of ArduPilot, PX4 and ROS 2): the same steps as sparse expressions beside the library run at 0.2 to 1.5 times the originals' time, the library over the same storage at 0.5 to 2.7, the stored characteristics dense; EKF3's airspeed fusion (H of 5 elements in 24) at 0.47 times master's hand-expanded loops, half its RAM. The library also needs a matrix division of the storage to deduce its types.
+
+- A. Take a characteristic's type from its declaration when given (the value's type, or the callable's result type), the deduced type by default; the equations' result types follow (`F P Fᵀ + Q` of a sparse F stays dense where P is).
+- B. A declaration tag naming the characteristic types, `characteristic_types<F, G, Q, H>`.
+- C. Keep the deduced types; structure only through compile-time constants (F50 A).
 
 **Unscented filter (F52).** The README defines the UKF and SR-UKF, no form implements them. ROS 2's `fusioncore` (23 states) and `multi_target_kf` (9 states) run UKFs: an unscented form over the transition and observation callables, with hooks for the mean and difference of angles and quaternions (F45), sigma points of fixed size, a natural bank (F51).
 
