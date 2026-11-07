@@ -441,6 +441,10 @@ Become a sponsor today! Support this project with coffee and infrastructure!
 
 Thanks everyone!
 
+### Commercial Support & Consulting
+
+Need help integrating, tuning, or extending Kalman filters in your product? Commercial support, consulting, training, and custom development are available. [Get in touch](https://www.linkedin.com/in/francoiscarouge/).
+
 
 ## License
 
