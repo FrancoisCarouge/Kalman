@@ -1078,10 +1078,11 @@ template <typename Policies>
 
 // Constructs the state from the floors standard deviations. Never evaluated,
 // only instantiated: some backends reject a number of elements other than
-// their size in the definition of their constructors only.
+// their size in the definition of their constructors only. The deduced return
+// type instantiates the definition from an unevaluated operand, which does not
+// odr-use the function, so no code is emitted for it.
 template <typename State, typename... Deviations>
-[[nodiscard]] constexpr auto state_of(const Deviations &...deviations)
-    -> State {
+[[nodiscard]] constexpr auto state_of(const Deviations &...deviations) {
   return State{deviations...};
 }
 
@@ -1092,8 +1093,8 @@ constexpr void check_floors(std::type_identity<std::tuple<Deviations...>>) {
                 "Declare one floor standard deviation per state, in the units "
                 "of the state.");
 
-  [[maybe_unused]] constexpr auto *instantiation{
-      &state_of<State, deviation_t<Deviations>...>};
+  using instantiation [[maybe_unused]] = decltype(state_of<State>(
+      std::declval<const deviation_t<Deviations> &>()...));
 }
 
 template <typename State, typename... Policies>
