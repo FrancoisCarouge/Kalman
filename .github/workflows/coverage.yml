@@ -64,3 +64,24 @@ jobs:
         path: |
           pull_request_id.txt
           coverage.txt
+    - name: 'Coverage: Threshold'
+      run: |
+        awk '
+          /^(lines|functions)\.+:/ {
+            found++
+            name = $1
+            sub(/\.+:$/, "", name)
+            hit = substr($3, 2)
+            if (hit != $5) {
+              printf "::error::Coverage of %s is %s: %s of %s covered, 100%% required.\n", name, $2, hit, $5
+              failed = 1
+            }
+          }
+          END {
+            if (found != 2) {
+              print "::error::The line and function coverage summary is missing."
+              exit 1
+            }
+            exit failed
+          }
+        ' coverage.txt
